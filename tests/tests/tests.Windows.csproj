@@ -562,7 +562,7 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cocos2d\cocos2d %28Windows%29.csproj">
+    <ProjectReference Include="..\..\cocos2d\cocos2d.Windows.csproj">
       <Project>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</Project>
       <Name>cocos2d %28Windows%29</Name>
     </ProjectReference>

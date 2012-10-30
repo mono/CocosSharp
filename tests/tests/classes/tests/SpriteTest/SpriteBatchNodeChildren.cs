@@ -33,7 +33,7 @@ namespace tests
             sprite1.AddChild(sprite3);
 
             // BEGIN NEW CODE
-            var animFrames = new List<CCObject>();
+            var animFrames = new List<CCSpriteFrame>();
             string str = "";
             for (int i = 1; i < 15; i++)
             {

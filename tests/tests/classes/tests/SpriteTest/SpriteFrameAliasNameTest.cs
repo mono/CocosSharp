@@ -44,7 +44,7 @@ namespace tests
             spriteBatch.AddChild(sprite);
             AddChild(spriteBatch);
 
-            var animFrames = new List<CCObject>(15);
+            var animFrames = new List<CCSpriteFrame>(15);
             string str = "";
             for (int i = 1; i < 15; i++)
             {

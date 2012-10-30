@@ -44,7 +44,7 @@ namespace tests
 
                 point.Position = sprite.Position;
 
-                var animFrames = new List<CCObject>(14);
+                var animFrames = new List<CCSpriteFrame>(14);
                 string str = "";
                 for (int j = 0; j < 14; j++)
                 {

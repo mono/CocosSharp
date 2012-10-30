@@ -1096,7 +1096,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cocos2d\cocos2d %28Phone%29.csproj">
+    <ProjectReference Include="..\..\cocos2d\cocos2d.Phone.csproj">
       <Project>{47EE6CE6-493D-4967-944A-5E55B71AA9FD}</Project>
       <Name>cocos2d %28Phone%29</Name>
     </ProjectReference>

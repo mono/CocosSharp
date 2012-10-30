@@ -18,7 +18,7 @@ namespace tests
             //
             // create animation "dance"
             //
-            var animFrames = new List<CCObject>(15);
+            var animFrames = new List<CCSpriteFrame>(15);
             string str = "";
             for (int i = 1; i < 15; i++)
             {

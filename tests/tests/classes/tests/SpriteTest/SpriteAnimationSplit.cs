@@ -29,7 +29,7 @@ namespace tests
             sprite.Position = (new CCPoint(s.width / 2 - 80, s.height / 2));
             AddChild(sprite);
 
-            var animFrames = new List<CCObject>(6);
+            var animFrames = new List<CCSpriteFrame>(6);
             animFrames.Add(frame0);
             animFrames.Add(frame1);
             animFrames.Add(frame2);

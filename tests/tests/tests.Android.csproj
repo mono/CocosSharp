@@ -1742,7 +1742,7 @@
     <AndroidResource Include="Resources\Drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cocos2d\cocos2d %28Android%29.csproj">
+    <ProjectReference Include="..\..\cocos2d\cocos2d.Android.csproj">
       <Project>{64725C5B-A1BC-4974-8538-A1158BABF572}</Project>
       <Name>cocos2d %28Android%29</Name>
     </ProjectReference>

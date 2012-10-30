@@ -47,7 +47,7 @@ namespace tests
                 CCSpriteBatchNode spritebatch = CCSpriteBatchNode.Create("animations/grossini");
                 AddChild(spritebatch);
 
-               var animFrames = new List<CCObject>();
+                var animFrames = new List<CCSpriteFrame>();
                 string tmp = "";
                 for (int j = 0; j < 14; j++)
                 {

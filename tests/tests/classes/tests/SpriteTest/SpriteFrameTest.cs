@@ -30,7 +30,7 @@ namespace tests
             spritebatch.AddChild(m_pSprite1);
             AddChild(spritebatch);
 
-            var animFrames = new List<CCObject>(15);
+            var animFrames = new List<CCSpriteFrame>(15);
 
             string str = "";
             for (int i = 1; i < 15; i++)
@@ -55,7 +55,7 @@ namespace tests
             AddChild(m_pSprite2);
 
 
-            var moreFrames = new List<CCObject>(20);
+            var moreFrames = new List<CCSpriteFrame>(20);
             for (int i = 1; i < 15; i++)
             {
                 string temp;
