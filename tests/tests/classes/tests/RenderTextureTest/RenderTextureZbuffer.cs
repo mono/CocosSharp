@@ -1,0 +1,158 @@
+using System.Collections.Generic;
+using cocos2d;
+
+namespace tests
+{
+    public class RenderTextureZbuffer : RenderTextureTestDemo
+    {
+        private readonly CCSpriteBatchNode mgr;
+
+        private readonly CCSprite sp1;
+        private readonly CCSprite sp2;
+        private readonly CCSprite sp3;
+        private readonly CCSprite sp4;
+        private readonly CCSprite sp5;
+        private readonly CCSprite sp6;
+        private readonly CCSprite sp7;
+        private readonly CCSprite sp8;
+        private readonly CCSprite sp9;
+
+        public RenderTextureZbuffer()
+        {
+            //this->setIsTouchEnabled(true);
+            TouchEnabled = true;
+            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCLabelTTF label = CCLabelTTF.Create("vertexZ = 50", "Marker Felt", 32);
+            label.Position = new CCPoint(size.width / 2, size.height * 0.25f);
+            AddChild(label);
+
+            CCLabelTTF label2 = CCLabelTTF.Create("vertexZ = 0", "Marker Felt", 32);
+            label2.Position = new CCPoint(size.width / 2, size.height * 0.5f);
+            AddChild(label2);
+
+            CCLabelTTF label3 = CCLabelTTF.Create("vertexZ = -50", "Marker Felt", 32);
+            label3.Position = new CCPoint(size.width / 2, size.height * 0.75f);
+            AddChild(label3);
+
+            label.VertexZ = 50;
+            label2.VertexZ = 0;
+            label3.VertexZ = -50;
+
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("Images/bugs/circle.plist");
+
+            mgr = CCSpriteBatchNode.Create("Images/bugs/circle", 9);
+            AddChild(mgr);
+
+            sp1 = CCSprite.Create("circle.png");
+            sp2 = CCSprite.Create("circle.png");
+            sp3 = CCSprite.Create("circle.png");
+            sp4 = CCSprite.Create("circle.png");
+            sp5 = CCSprite.Create("circle.png");
+            sp6 = CCSprite.Create("circle.png");
+            sp7 = CCSprite.Create("circle.png");
+            sp8 = CCSprite.Create("circle.png");
+            sp9 = CCSprite.Create("circle.png");
+
+            mgr.AddChild(sp1, 9);
+            mgr.AddChild(sp2, 8);
+            mgr.AddChild(sp3, 7);
+            mgr.AddChild(sp4, 6);
+            mgr.AddChild(sp5, 5);
+            mgr.AddChild(sp6, 4);
+            mgr.AddChild(sp7, 3);
+            mgr.AddChild(sp8, 2);
+            mgr.AddChild(sp9, 1);
+
+            sp1.VertexZ = 400;
+            sp2.VertexZ = 300;
+            sp3.VertexZ = 200;
+            sp4.VertexZ = 100;
+            sp5.VertexZ = 0;
+            sp6.VertexZ = -100;
+            sp7.VertexZ = -200;
+            sp8.VertexZ = -300;
+            sp9.VertexZ = -400;
+
+            sp9.Scale = 2;
+            sp9.Color = ccTypes.ccYELLOW;
+        }
+
+        public override void TouchesBegan(List<CCTouch> touches, CCEvent events)
+        {
+            foreach (CCTouch touch in touches)
+            {
+                CCPoint location = touch.Location;
+
+                sp1.Position = location;
+                sp2.Position = location;
+                sp3.Position = location;
+                sp4.Position = location;
+                sp5.Position = location;
+                sp6.Position = location;
+                sp7.Position = location;
+                sp8.Position = location;
+                sp9.Position = location;
+            }
+        }
+
+        public override void TouchesMoved(List<CCTouch> touches, CCEvent events)
+        {
+            foreach (CCTouch touch in touches)
+            {
+                CCPoint location = touch.Location;
+
+                sp1.Position = location;
+                sp2.Position = location;
+                sp3.Position = location;
+                sp4.Position = location;
+                sp5.Position = location;
+                sp6.Position = location;
+                sp7.Position = location;
+                sp8.Position = location;
+                sp9.Position = location;
+            }
+        }
+
+        public override void TouchesEnded(List<CCTouch> touches, CCEvent events)
+        {
+            renderScreenShot();
+        }
+
+        public override string title()
+        {
+            return "Testing Z Buffer in Render Texture";
+        }
+
+        public override string subtitle()
+        {
+            return "Touch screen. It should be green";
+        }
+
+        public void renderScreenShot()
+        {
+            var texture = CCRenderTexture.Create(512, 512);
+            
+            texture.AnchorPoint = new CCPoint(0, 0);
+            texture.Begin();
+
+            Visit();
+
+            texture.End();
+
+            CCSprite sprite = CCSprite.Create(texture.Sprite.Texture);
+
+            sprite.Position = new CCPoint(256, 256);
+            sprite.Opacity = 182;
+            //sprite.IsFlipY = true;
+            AddChild(sprite, 999999);
+            sprite.Color = ccTypes.ccGREEN;
+
+            sprite.RunAction(
+                CCSequence.Create(
+                    CCFadeTo.Create(2, 0),
+                    CCHide.Create()
+                    )
+                );
+        }
+    }
+}

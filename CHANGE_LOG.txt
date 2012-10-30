@@ -1,0 +1,10 @@
+2.0.3
+
+Original import of cocos2d-xna from cocos2d-x version 2.0.3 by Gena Minchuk
+and Totally Evil Entertainment, LLC.
+
+
+10/30/2012: Released
+
+========================================================================================
+

@@ -1,0 +1,72 @@
+using cocos2d;
+
+namespace tests
+{
+    public class CameraZoomTest : TestCocosNodeDemo
+    {
+        private float m_z;
+
+        public CameraZoomTest()
+        {
+            CCSize s = CCDirector.SharedDirector.WinSize;
+
+            CCSprite sprite;
+            CCCamera cam;
+
+            // LEFT
+            sprite = CCSprite.Create(TestResource.s_pPathGrossini);
+            AddChild(sprite, 0);
+            sprite.Position = (new CCPoint(s.width / 4 * 1, s.height / 2));
+            cam = sprite.Camera;
+            cam.SetEyeXyz(0, 0, 415 / 2);
+            cam.SetCenterXyz(0, 0, 0);
+
+            // CENTER
+            sprite = CCSprite.Create(TestResource.s_pPathGrossini);
+            AddChild(sprite, 0, 40);
+            sprite.Position = (new CCPoint(s.width / 4 * 2, s.height / 2));
+
+            // RIGHT
+            sprite = CCSprite.Create(TestResource.s_pPathGrossini);
+            AddChild(sprite, 0, 20);
+            sprite.Position = (new CCPoint(s.width / 4 * 3, s.height / 2));
+
+            m_z = 0;
+
+            ScheduleUpdate();
+        }
+
+        public override void Update(float dt)
+        {
+            CCNode sprite;
+            CCCamera cam;
+
+            m_z += dt * 100;
+
+            sprite = GetChildByTag(20);
+            cam = sprite.Camera;
+            cam.SetEyeXyz(0, 0, m_z);
+
+            sprite = GetChildByTag(40);
+            cam = sprite.Camera;
+            cam.SetEyeXyz(0, 0, -m_z);
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            CCDirector.SharedDirector.Projection = (ccDirectorProjection.kCCDirectorProjection3D);
+        }
+
+        public override void OnExit()
+        {
+            CCDirector.SharedDirector.Projection = (ccDirectorProjection.kCCDirectorProjection2D);
+            base.OnExit();
+        }
+
+        public override string title()
+        {
+            return "Camera Zoom test";
+        }
+    }
+}

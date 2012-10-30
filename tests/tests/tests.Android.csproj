@@ -1,0 +1,1764 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{96E8B92D-DC5C-4F50-9AE1-0B76BE9BBD15}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tests</RootNamespace>
+    <AssemblyName>Tests</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>true</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <AndroidSupportedAbis>armeabi-v7a</AndroidSupportedAbis>
+    <AndroidStoreUncompressedFileExtensions />
+    <MandroidI18n />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidLinkSkip />
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidLinkSkip />
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="Mono.CSharp" />
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\cocos2d\external lib\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\AppDelegate.cs" />
+    <Compile Include="Classes\controller.cs" />
+    <Compile Include="Classes\test.cs" />
+    <Compile Include="Classes\testBasic.cs" />
+    <Compile Include="Classes\testResource.cs" />
+    <Compile Include="Classes\tests\AccelerometerTest\AccelerometerTest.cs" />
+    <Compile Include="Classes\tests\ActionManagerTest\ActionManagerTest.cs" />
+    <Compile Include="Classes\tests\ActionManagerTest\ActionManagerTestScene.cs" />
+    <Compile Include="Classes\tests\ActionManagerTest\CrashTest.cs" />
+    <Compile Include="Classes\tests\ActionManagerTest\LogicTest.cs" />
+    <Compile Include="Classes\tests\ActionManagerTest\PauseTest.cs" />
+    <Compile Include="Classes\tests\ActionManagerTest\RemoveTest.cs" />
+    <Compile Include="Classes\tests\ActionManagerTest\ResumeTest.cs" />
+    <Compile Include="Classes\tests\ActionsTest\ActionsTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Box2dTestBedScene.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Box2DView.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\DebugViewXNA.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Collision.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Distance.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\DynamicTree.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\DynamicTreeBroadPhase.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\IBroadPhase.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\QuadTree.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\QuadTreeBroadPhase.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Shapes\CircleShape.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Shapes\EdgeShape.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Shapes\LoopShape.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Shapes\PolygonShape.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Shapes\Shape.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\TimeOfImpact.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\ConvexHull\ChainHull.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\ConvexHull\GiftWrap.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\ConvexHull\Melkman.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\BayazitDecomposer.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDTDecomposer.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\DelaunayTriangle.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\AdvancingFront.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\AdvancingFrontNode.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\DTSweep.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\DTSweepConstraint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\DTSweepContext.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\DTSweepPointComparator.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\PointOnEdgeException.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\ITriangulatable.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Orientation.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Polygon\Polygon.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Polygon\PolygonPoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Polygon\PolygonSet.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Sets\ConstrainedPointSet.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Sets\PointSet.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\TriangulationConstraint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\TriangulationContext.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\TriangulationMode.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\TriangulationPoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\TriangulationUtil.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Util\FixedArray3.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Util\FixedBitArray3.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Util\PointGenerator.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Util\PolygonGenerator.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\EarclipDecomposer.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\FlipcodeDecomposer.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\SeidelDecomposer.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\FixedArray.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\HashSet.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\LineTools.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Math.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Path.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PathManager.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PhysicsLogic\Explosion.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PhysicsLogic\PhysicsLogic.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PolygonManipulation\CuttingTools.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PolygonManipulation\SimplifyTools.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PolygonManipulation\YuPengClipper.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PolygonTools.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Serialization.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\TextureTools\MarchingSquares.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\TextureTools\MSTerrain.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\TextureTools\TextureConverter.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Vertices.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\AbstractForceController.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\BuoyancyController.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\Controller.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\GravityController.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\SimpleWindForce.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\VelocityLimitController.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\DebugView.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Body.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\BreakableBody.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\ContactManager.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Contacts\Contact.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Contacts\ContactSolver.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Fixture.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Island.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\AngleJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\DistanceJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedAngleJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedDistanceJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedFrictionJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedLineJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedMouseJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedPrismaticJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedRevoluteJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FrictionJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\GearJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\Joint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\LineJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\PrismaticJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\PulleyJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\RevoluteJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\RopeJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\SliderJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\WeldJoint.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\TimeStep.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\World.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\WorldCallbacks.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Factories\BodyFactory.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Factories\FixtureFactory.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Factories\JointFactory.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Factories\LinkFactory.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Settings.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\MenuLayer.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Test.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\AngleJointTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\ApplyForceTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\BodyTypesTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\BreakableTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\BridgeTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\BulletTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\BuoyancyTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\CantileverTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\CarTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\ChainTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\CharacterCollisionTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\CircleBenchmarkTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\CirclePenetrationTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\CloneTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\CollisionFilteringTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\CollisionProcessingTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\CompoundShapes.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\ConfinedTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\ContinuousTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\ControllerTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\ConvexHullTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\CuttingTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\DeletionTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\DestructibleTerrainMSTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\DestructibleTerrainYuPengTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\DistanceTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\DominosTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\DynamicTreeTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\EdgeShapeBenchmark.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\EdgeShapesTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\EdgeTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\ExplosionTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\GearsTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\LineJointTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\LockTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\OneSidedPlatformTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\PathTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\PinballTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\PolyCollisionTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\PolyShapesTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\PrismaticTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\PulleysTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\PyramidTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\QuadTreeTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\RaycastTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\RevoluteTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\RopeTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\RoundedRectangle.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\SensorTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\SerializationTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\ShapeEditingTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\SimpleWindForceTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\SliderCrankTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\SliderJointTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\SphereStackTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\TestEntries.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\TextureVerticesTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\TheoJansenTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\TilesTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\TimeOfImpactTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\Tumbler.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\VaryingFrictionTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\VaryingRestitutionTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\VerticalStackTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\WebTest.cs" />
+    <Compile Include="Classes\tests\Box2DTestBet\Tests\YuPengPolygonTest.cs" />
+    <Compile Include="Classes\tests\Box2DTest\Box2DTest.cs" />
+    <Compile Include="Classes\tests\BugsTest\Bug-458\Bug-458.cs" />
+    <Compile Include="Classes\tests\BugsTest\Bug-458\QuestionContainerSprite.cs" />
+    <Compile Include="Classes\tests\BugsTest\Bug1159Layer.cs" />
+    <Compile Include="Classes\tests\BugsTest\Bug1174Layer.cs" />
+    <Compile Include="Classes\tests\BugsTest\Bug350Layer.cs" />
+    <Compile Include="Classes\tests\BugsTest\Bug422Layer.cs" />
+    <Compile Include="Classes\tests\BugsTest\Bug624Layer.cs" />
+    <Compile Include="Classes\tests\BugsTest\Bug886Layer.cs" />
+    <Compile Include="Classes\tests\BugsTest\Bug899Layer.cs" />
+    <Compile Include="Classes\tests\BugsTest\Bug914Layer.cs" />
+    <Compile Include="Classes\tests\BugsTest\BugsTestBaseLayer.cs" />
+    <Compile Include="Classes\tests\BugsTest\BugsTestMainLayer.cs" />
+    <Compile Include="Classes\tests\BugsTest\BugsTestScene.cs" />
+    <Compile Include="Classes\tests\ClickAndMoveTest\ClickAndMoveTest.cs" />
+    <Compile Include="Classes\tests\CocosDenshionTest\CocosDenshionTest.cs" />
+    <Compile Include="Classes\tests\NodeTest\CameraCenterTest.cs" />
+    <Compile Include="Classes\tests\NodeTest\CameraOrbitTest.cs" />
+    <Compile Include="Classes\tests\NodeTest\CameraZoomTest.cs" />
+    <Compile Include="Classes\tests\NodeTest\CocosNodeTestScene.cs" />
+    <Compile Include="Classes\tests\NodeTest\CocosNodeTestStaticLibrary.cs" />
+    <Compile Include="Classes\tests\NodeTest\ConvertToNode.cs" />
+    <Compile Include="Classes\tests\NodeTest\NodeToWorld.cs" />
+    <Compile Include="Classes\tests\NodeTest\SchedulerTest1.cs" />
+    <Compile Include="Classes\tests\NodeTest\StressTest1.cs" />
+    <Compile Include="Classes\tests\NodeTest\StressTest2.cs" />
+    <Compile Include="Classes\tests\NodeTest\Test2.cs" />
+    <Compile Include="Classes\tests\NodeTest\Test4.cs" />
+    <Compile Include="Classes\tests\NodeTest\Test5.cs" />
+    <Compile Include="Classes\tests\NodeTest\Test6.cs" />
+    <Compile Include="Classes\tests\NodeTest\TestCocosNodeDemo.cs" />
+    <Compile Include="Classes\tests\DrawPrimitivesTest\DrawPrimitivesTest.cs" />
+    <Compile Include="Classes\tests\DrawPrimitivesTest\DrawPrimitivesTestScene.cs" />
+    <Compile Include="Classes\tests\ActionsEaseTest\EaseActionsTest.cs" />
+    <Compile Include="Classes\tests\EffectsAdvancedTest\Effect1.cs" />
+    <Compile Include="Classes\tests\EffectsAdvancedTest\Effect2.cs" />
+    <Compile Include="Classes\tests\EffectsAdvancedTest\Effect3.cs" />
+    <Compile Include="Classes\tests\EffectsAdvancedTest\Effect4.cs" />
+    <Compile Include="Classes\tests\EffectsAdvancedTest\Effect5.cs" />
+    <Compile Include="Classes\tests\EffectsAdvancedTest\EffectAdvanceScene.cs" />
+    <Compile Include="Classes\tests\EffectsAdvancedTest\EffectAdvanceTextLayer.cs" />
+    <Compile Include="Classes\tests\EffectsAdvancedTest\Issue631.cs" />
+    <Compile Include="Classes\tests\EffectsTest\EffectTestScene.cs" />
+    <Compile Include="Classes\tests\EffectsTest\FadeOutBLTilesDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\FadeOutDownTilesDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\FadeOutTRTilesDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\FadeOutUpTilesDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\FlipX3DDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\FlipY3DDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\JumpTiles3DDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\Lens3DDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\LiquidDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\PageTurn3DDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\Ripple3DDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\Shaky3DDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\ShakyTiles3DDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\ShatteredTiles3DDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\ShuffleTilesDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\SplitColsDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\SplitRowsDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\TextLayer.cs" />
+    <Compile Include="Classes\tests\EffectsTest\TurnOffTilesDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\TwirlDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\Waves3DDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\WavesDemo.cs" />
+    <Compile Include="Classes\tests\EffectsTest\WavesTiles3DDemo.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\CocosBuilderTest\AnimationTest.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\CocosBuilderTest\BaseLayer.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\CocosBuilderTest\ButtonTest.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\CocosBuilderTest\CocosBuilderTest.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\CocosBuilderTest\HelloCocosBuilder.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\CocosBuilderTest\MenuTestLayer.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\CocosBuilderTest\ParticleSystemTestLayer.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\CocosBuilderTest\ScrollViewTestLayer.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\CocosBuilderTest\SpriteTestLayer.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\CocosBuilderTest\TestHeader.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\ControlExtensionTest\CCControlScene.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSceneManager.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSliderTest\CCControlSliderTest.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSwitchTest\CCControlSwitchTest.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\ExtensionsTestMainLayer.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\ExtensionsTestScene.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\TableViewTest\CustomTableViewCell.cs" />
+    <Compile Include="Classes\tests\ExtensionsTest\TableViewTest\TableViewTestScene.cs" />
+    <Compile Include="Classes\tests\FontTest\FontTest.cs" />
+    <Compile Include="Classes\tests\IntervalTest\IntervalLayer.cs" />
+    <Compile Include="Classes\tests\IntervalTest\IntervalTestScene.cs" />
+    <Compile Include="Classes\tests\LabelTest\Atlas1.cs" />
+    <Compile Include="Classes\tests\LabelTest\Atlas3.cs" />
+    <Compile Include="Classes\tests\LabelTest\Atlas4.cs" />
+    <Compile Include="Classes\tests\LabelTest\Atlas5.cs" />
+    <Compile Include="Classes\tests\LabelTest\Atlas6.cs" />
+    <Compile Include="Classes\tests\LabelTest\AtlasBitmapColor.cs" />
+    <Compile Include="Classes\tests\LabelTest\AtlasFastBitmap.cs" />
+    <Compile Include="Classes\tests\LabelTest\AtlasTestScene.cs" />
+    <Compile Include="Classes\tests\LabelTest\BitmapFontMultiLine.cs" />
+    <Compile Include="Classes\tests\LabelTest\BitmapFontMultiLineAlignment.cs" />
+    <Compile Include="Classes\tests\LabelTest\BMFontInit.cs" />
+    <Compile Include="Classes\tests\LabelTest\BMFontOneAtlas.cs" />
+    <Compile Include="Classes\tests\LabelTest\BMFontUnicode.cs" />
+    <Compile Include="Classes\tests\LabelTest\Issue1343.cs" />
+    <Compile Include="Classes\tests\LabelTest\LabelAtlasColorTest.cs" />
+    <Compile Include="Classes\tests\LabelTest\LabelAtlasHD.cs" />
+    <Compile Include="Classes\tests\LabelTest\LabelAtlasTest.cs" />
+    <Compile Include="Classes\tests\LabelTest\LabelBMFontHD.cs" />
+    <Compile Include="Classes\tests\LabelTest\LabelGlyphDesigner.cs" />
+    <Compile Include="Classes\tests\LabelTest\LabelsEmpty.cs" />
+    <Compile Include="Classes\tests\LabelTest\LabelTest.cs" />
+    <Compile Include="Classes\tests\LabelTest\LabelTTFA8Test.cs" />
+    <Compile Include="Classes\tests\LabelTest\LabelTTFChinese.cs" />
+    <Compile Include="Classes\tests\LabelTest\LabelTTFMultiline.cs" />
+    <Compile Include="Classes\tests\LabelTest\LabelTTFTest.cs" />
+    <Compile Include="Classes\tests\LabelTest\TTFFontInit.cs" />
+    <Compile Include="Classes\tests\LayerTest\LayerGradient.cs" />
+    <Compile Include="Classes\tests\LayerTest\LayerScaleTest.cs" />
+    <Compile Include="Classes\tests\LayerTest\Layertest.cs" />
+    <Compile Include="Classes\tests\LayerTest\LayerTest1.cs" />
+    <Compile Include="Classes\tests\LayerTest\LayerTest2.cs" />
+    <Compile Include="Classes\tests\LayerTest\LayerTestBlend.cs" />
+    <Compile Include="Classes\tests\LayerTest\LayerTestScene.cs" />
+    <Compile Include="Classes\tests\MenuTest\MenuLayer1.cs" />
+    <Compile Include="Classes\tests\MenuTest\MenuLayer2.cs" />
+    <Compile Include="Classes\tests\MenuTest\MenuLayer3.cs" />
+    <Compile Include="Classes\tests\MenuTest\MenuLayer4.cs" />
+    <Compile Include="Classes\tests\MenuTest\MenuLayerPriorityTest.cs" />
+    <Compile Include="Classes\tests\MenuTest\MenuTestScene.cs" />
+    <Compile Include="Classes\tests\MotionStreakTest\Issue1358.cs" />
+    <Compile Include="Classes\tests\MotionStreakTest\MotionStreakTest.cs" />
+    <Compile Include="Classes\tests\MotionStreakTest\MotionStreakTest1.cs" />
+    <Compile Include="Classes\tests\MotionStreakTest\MotionStreakTest2.cs" />
+    <Compile Include="Classes\tests\MotionStreakTest\MotionStreakTestScene.cs" />
+    <Compile Include="Classes\tests\ParallaxTest\Parallax1.cs" />
+    <Compile Include="Classes\tests\ParallaxTest\Parallax2.cs" />
+    <Compile Include="Classes\tests\ParallaxTest\ParallaxDemo.cs" />
+    <Compile Include="Classes\tests\ParallaxTest\ParallaxTestScene.cs" />
+    <Compile Include="Classes\tests\ParticleTest\ParticleTest.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceMainLayer.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceNodeChildrenTest\AddRemoveSpriteSheet.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceNodeChildrenTest\AddSpriteSheet.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceNodeChildrenTest\IterateSpriteSheet.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceNodeChildrenTest\IterateSpriteSheetCArray.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceNodeChildrenTest\IterateSpriteSheetFastEnum.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceNodeChildrenTest\NodeChildrenMainScene.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceNodeChildrenTest\NodeChildrenMenuLayer.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceNodeChildrenTest\PerformanceNodeChildrenTest..cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceNodeChildrenTest\RemoveSpriteSheet.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceNodeChildrenTest\ReorderSpriteSheet.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceParticleTest\ParticleMainScene.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceParticleTest\ParticleMenuLayer.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceParticleTest\ParticlePerformTest1.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceParticleTest\ParticlePerformTest2.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceParticleTest\ParticlePerformTest3.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceParticleTest\ParticlePerformTest4.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceParticleTest\PerformanceParticleTest.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceSpriteTest\PerformanceSpriteTest.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceSpriteTest\SpriteMainScene.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceSpriteTest\SpriteMenuLayer.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest1.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest2.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest3.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest4.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest5.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest6.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest7.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceSpriteTest\SubTest.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceTestScene.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceTextureTest\PerformanceTextureTest.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceTextureTest\TextureMenuLayer.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceTextureTest\TextureTest.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceTouchesTest\PerformanceTouchesTest.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceTouchesTest\TouchesMainScene.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceTouchesTest\TouchesPerformTest1.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformanceTouchesTest\TouchesPerformTest2.cs" />
+    <Compile Include="Classes\tests\PerformanceTest\PerformBasicLayer.cs" />
+    <Compile Include="Classes\tests\ActionsProgressTest\ProgressActionsTestScene.cs" />
+    <Compile Include="Classes\tests\ActionsProgressTest\SpriteDemo.cs" />
+    <Compile Include="Classes\tests\ActionsProgressTest\SpriteProgressBarTintAndFade.cs" />
+    <Compile Include="Classes\tests\ActionsProgressTest\SpriteProgressBarVarious.cs" />
+    <Compile Include="Classes\tests\ActionsProgressTest\SpriteProgressToHorizontal.cs" />
+    <Compile Include="Classes\tests\ActionsProgressTest\SpriteProgressToRadial.cs" />
+    <Compile Include="Classes\tests\ActionsProgressTest\SpriteProgressToRadialMidpointChanged.cs" />
+    <Compile Include="Classes\tests\ActionsProgressTest\SpriteProgressToVertical.cs" />
+    <Compile Include="Classes\tests\ActionsProgressTest\SpriteProgressWithSpriteFrame.cs" />
+    <Compile Include="Classes\tests\RenderTextureTest\RenderTextureIssue937.cs" />
+    <Compile Include="Classes\tests\RenderTextureTest\RenderTextureSave.cs" />
+    <Compile Include="Classes\tests\RenderTextureTest\RenderTextureScene.cs" />
+    <Compile Include="Classes\tests\RenderTextureTest\RenderTextureTestDemo.cs" />
+    <Compile Include="Classes\tests\RenderTextureTest\RenderTextureTestDepthStencil.cs" />
+    <Compile Include="Classes\tests\RenderTextureTest\RenderTextureZbuffer.cs" />
+    <Compile Include="Classes\tests\RotateWorldTest\RotateWorldMainLayer.cs" />
+    <Compile Include="Classes\tests\RotateWorldTest\RotateWorldTestScene.cs" />
+    <Compile Include="Classes\tests\RotateWorldTest\SpriteLayer.cs" />
+    <Compile Include="Classes\tests\RotateWorldTest\TestLayer.cs" />
+    <Compile Include="Classes\tests\SceneTest\SceneTestLayer1.cs" />
+    <Compile Include="Classes\tests\SceneTest\SceneTestLayer2.cs" />
+    <Compile Include="Classes\tests\SceneTest\SceneTestLayer3.cs" />
+    <Compile Include="Classes\tests\SceneTest\SceneTestScene.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\RescheduleSelector.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\SchedulerAutoremove.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\SchedulerPauseResume.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\SchedulerSchedulesAndRemove.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\SchedulerTestLayer.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\SchedulerTestScene.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\SchedulerUnscheduleAll.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\SchedulerUnscheduleAllHard.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\SchedulerUpdate.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\SchedulerUpdateAndCustom.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\SchedulerUpdateFromCustom.cs" />
+    <Compile Include="Classes\tests\SchedulerTest\TestNode.cs" />
+    <Compile Include="Classes\tests\SpriteTest\AnimationCache.cs" />
+    <Compile Include="Classes\tests\SpriteTest\Sprite1.cs" />
+    <Compile Include="Classes\tests\SpriteTest\Sprite6.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteAliased.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteAnchorPoint.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteAnimationSplit.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNode1.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeAliased.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeAnchorPoint.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeChildren.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeChildrenAnchorPoint.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeChildrenChildren.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeChildrenScale.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeChildrenZ.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeColorOpacity.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeFlip.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeNewTexture.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorFlip.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorRotation.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorScale.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorSkew.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorSkewScale.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeReorder.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeReorderIssue744.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeReorderIssue766.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeReorderIssue767.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeZOrder.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteBatchNodeZVertex.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteChildrenAnchorPoint.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteChildrenChildren.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteChildrenVisibility.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteChildrenVisibilityIssue665.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteColorOpacity.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteFlip.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteFrameAliasNameTest.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteFrameTest.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteHybrid.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteNewTexture.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteNilTexture.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteOffsetAnchorFlip.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteOffsetAnchorRotation.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteOffsetAnchorScale.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteOffsetAnchorSkew.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteOffsetAnchorSkewScale.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteSubclass.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteTestDemo.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteTestScene.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteZOrder.cs" />
+    <Compile Include="Classes\tests\SpriteTest\SpriteZVertex.cs" />
+    <Compile Include="Classes\tests\TextInputTest\TextInputTest.cs" />
+    <Compile Include="Classes\tests\TextInputTest\TextInputTestScene.cs" />
+    <Compile Include="Classes\tests\Texture2dTest\Texture2dTest.cs" />
+    <Compile Include="Classes\tests\TileMapTest\TileMapTest.cs" />
+    <Compile Include="Classes\tests\TouchesTest\Ball.cs" />
+    <Compile Include="Classes\tests\TouchesTest\Paddle.cs" />
+    <Compile Include="Classes\tests\TouchesTest\PongLayer.cs" />
+    <Compile Include="Classes\tests\TouchesTest\PongScene.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\FadeWhiteTransition.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\FlipAngularLeftOver.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\FlipAngularRightOver.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\FlipXLeftOver.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\FlipXRightOver.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\FlipYDownOver.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\FlipYUpOver.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\PageTransitionBackward.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\PageTransitionForward.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\TestLayer1.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\TestLayer2.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\TransitionsTestScene.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\ZoomFlipAngularLeftOver.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\ZoomFlipAngularRightOver.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\ZoomFlipXLeftOver.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\ZoomFlipXRightOver.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\ZoomFlipYDownOver.cs" />
+    <Compile Include="Classes\tests\TransitionsTest\ZoomFlipYUpOver.cs" />
+    <Compile Include="Classes\tests\UserDefaultTest\UserDefaultTest.cs" />
+    <Compile Include="Classes\tests\UserDefaultTest\UserDefaultTestScene.cs" />
+    <Compile Include="Classes\tests\ZwoptexTest\ZwoptexGenericTest.cs" />
+    <Compile Include="Classes\tests\ZwoptexTest\ZwoptexTest.cs" />
+    <Compile Include="Classes\tests\ZwoptexTest\ZwoptexTestScene.cs" />
+    <Compile Include="Classes\tests\DeviceTest\OrientationTest.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\animations.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\dragon_animation-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\dragon_animation.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\ghosts.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\ghosts.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\grossini-aliases.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\grossini-aliases.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\grossini.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\grossini.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\grossini_blue.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\grossini_blue.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\grossini_family.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\grossini_family.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\grossini_gray.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\animations\grossini_gray.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\Arial.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\debugfont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\atlastest.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\b1-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\b1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\b2-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\b2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\background.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\background1-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\background1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\background2-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\background2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\background3-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\background3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\ball-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\ball.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\bitmapFontTest3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\blocks-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\blocks.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\BoilingFoam.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\btn-about-normal.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\btn-about-selected.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\btn-highscores-normal.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\btn-highscores-selected.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\btn-play-normal.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\btn-play-selected.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\BurstPipe.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\close-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\close.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\Comet.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\CometPlist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\debian.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\ExplodingRing.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\f1-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\f1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\f2-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\f2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\fire-grayscale.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\fire.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\FlowerPlist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\Fog.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\fps_images.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\GalaxyPlist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_02.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_03.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_04.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_05.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_06.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_07.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_08.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_09.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_10.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_12.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_13.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_14.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_atlas-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_atlas-mono.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_atlas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossini_dance_atlas_nomipmap.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossinis_sister1-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossinis_sister1-testalpha.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossinis_sister1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossinis_sister2-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\grossinis_sister2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\HelloWorld.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\Icon.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\landscape-1024x1024.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\LavaFlow.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\menuitemsprite.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\paddle-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\paddle.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\particles-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\particles.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\pattern1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\Pea.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\Phoenix.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\piece.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\PlanetCute-1024x1024.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\powered.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\r1-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\r1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\r2-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\r2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\SendScoreButton.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\SendScoreButtonPressed.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\snow.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\SpinningPeas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\SpinningPeasPlist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\Spiral.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\SpookyPeas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\SpookyPeasPlist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\spritesheet1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\stars-grayscale.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\stars.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\stars2-grayscale.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\stars2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\streak.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\test-rgba1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\test_blend.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\test_image.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\texture1024x1024.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\texture2048x2048.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\texture512x512.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\Upsidedown.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\BoilingFoam.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\BurstPipe.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\Comet.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\debian.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\ExplodingRing.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\Flower.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\Galaxy.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\LavaFlow.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\particleTexture.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\Phoenix.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\SmallSun.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\SpinningPeas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\Spiral.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\SpookyPeas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\TestPremultipliedAlpha.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Particles\Upsidedown.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Sounds\background.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Sounds\effect1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\arial16.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\fixed-ortho-test2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\hexa-test1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\hexa-tiles.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test-bug787.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test-movelayer.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test-objectgroup.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test-vertexz.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test-zorder.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test01.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test2-uncompressed.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso-test22.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\iso.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\levelmap.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\ortho-objects.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\ortho-test1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\ortho-test1_bw.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\ortho-test2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test-movelayer.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test-vertexz.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test-zorder.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test11.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test4-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test6-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test6.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\test-object-layer.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\tiles-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\tiles.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\tmw_desert_spacing-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\tmw_desert_spacing.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\zwoptex\grossini-generic.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\zwoptex\grossini-generic.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\zwoptex\grossini.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\zwoptex\grossini.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\white-512x512.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\ortho-rotation-test.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test1-tsx.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\A Damn Mess-26.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\Abberancy-26.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\Abduction-26.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-12.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-16.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-18.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-20.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-22.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-24.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-26.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-28.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-30.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-32.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-34.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-38.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-50.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-64.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-unicode-26.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial-unicode-26.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial16.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\arial16.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontChinese.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontChinese.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontTest.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontTest.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontTest2.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontTest2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontTest3.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontTest3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontTest4.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontTest4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontTest5.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\bitmapFontTest5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\font-issue1343-hd.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\font-issue1343-hd.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\font-issue1343.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\font-issue1343.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\futura-48.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\futura-48.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\geneva-32.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\helvetica-32.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\helvetica-geneva-32.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\konqa32.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\konqa32.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\labelatlas.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\larabie-16.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\larabie-16.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\markerFelt.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\markerFelt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\Paint Boy-26.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\Schwarzwald Regular-26.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\Scissor Cuts-26.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\strings.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\tuffy_bold_italic-charmap.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\tuffy_bold_italic-charmap.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\west_england-64.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\west_england-64.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\bugs\bug886.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\bugs\bug886_.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\bugs\circle.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\bugs\circle.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\bugs\corner.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\bugs\edge.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\bugs\fill.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\bugs\picture.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\bugs\RetinaDisplay.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-0-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-0-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-0-2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-0-3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-0-4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-0-5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-0-6.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-0-7.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-1-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-1-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-1-2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-1-3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-1-4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-1-5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-1-6.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-1-7.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-2-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-2-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-2-2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-2-3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-2-4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-2-5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-2-6.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-2-7.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-3-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-3-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-3-2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-3-3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-3-4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-3-5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-3-6.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-3-7.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-4-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-4-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-4-2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-4-3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-4-4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-4-5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-4-6.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-4-7.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-5-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-5-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-5-2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-5-3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-5-4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-5-5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-5-6.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-5-7.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-6-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-6-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-6-2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-6-3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-6-4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-6-5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-6-6.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-6-7.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-7-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-7-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-7-2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-7-3.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-7-4.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-7-5.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-7-6.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\sprites_test\sprite-7-7.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\arrows.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\arrowsBar.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\background.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\button.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\buttonBackground.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\buttonHighlighted.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\CCControlColourPickerSpriteSheet.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\CCControlColourPickerSpriteSheet.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\green_edit.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\orange_edit.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\ribbon.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\sliderProgress.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\sliderProgress2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\sliderThumb.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\sliderTrack.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\sliderTrack2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\switch-mask.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\switch-off.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\switch-on.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\switch-thumb.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\extensions\yellow_edit.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\animated-grossini.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\animated-grossini.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\btn-a-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\btn-a-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\btn-a-2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\btn-b-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\btn-b-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\btn-b-2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\btn-back-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\btn-back-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\btn-test-0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\btn-test-1.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\btn-test-2.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\burst.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\comic andy.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\flower.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\grossini-generic.plist.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\grossini-generic.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\HelloCocosBuilder.ccb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\HelloCocosBuilder.ccbi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\jungle-left.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\jungle-right.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\jungle.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\logo-icon.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\logo.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\markerfelt24shadow.fnt.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\markerfelt24shadow.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\particle-fire.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\particle-smoke.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\particle-snow.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\particle-stars.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\scale-9-demo.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestAnimations.ccb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestAnimations.ccbi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestAnimationsSub.ccb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestAnimationsSub.ccbi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestButtons.ccb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestButtons.ccbi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestHeader.ccb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestHeader.ccbi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestLabels.ccb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestLabels.ccbi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestMenus.ccb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestMenus.ccbi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestParticleSystems.ccb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestParticleSystems.ccbi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestScrollViews.ccb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestScrollViews.ccbi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestScrollViewsContentA.ccb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestScrollViewsContentA.ccbi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestSprites.ccb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\ccb\ccb\TestSprites.ccbi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\box2d\Circle.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\box2d\Rock.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\box2d\Terrain.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\box2d\Texture.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Layout\Main.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\cocos2d\cocos2d %28Android%29.csproj">
+      <Project>{64725C5B-A1BC-4974-8538-A1158BABF572}</Project>
+      <Name>cocos2d %28Android%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Sounds\background.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+     Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
