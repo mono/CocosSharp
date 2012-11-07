@@ -60,8 +60,10 @@ namespace cocos2d
             //allow DTD but not try to resolve it from web
             var settings = new XmlReaderSettings()
                 {
+#if !PSM
                     DtdProcessing = DtdProcessing.Ignore,
-                    //ProhibitDtd = false,
+#endif
+				//ProhibitDtd = false,
                     XmlResolver = null,
                 };
             using (var reader = XmlReader.Create(path, settings))
@@ -74,8 +76,10 @@ namespace cocos2d
             var settings = new XmlReaderSettings()
                 {
                     CloseInput = true,
+#if !PSM
                     DtdProcessing = DtdProcessing.Ignore,
-                    //ProhibitDtd = false,
+#endif
+				//ProhibitDtd = false,
                     XmlResolver = null,
                 };
             using (var reader = XmlReader.Create(new StringReader(data), settings))

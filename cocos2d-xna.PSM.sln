@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.PSM", "tests\tests\tests.PSM.csproj", "{33546FA7-14FD-472C-9CC2-C9B93562D458}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.PSM", "cocos2d\cocos2d.PSM.csproj", "{30E7611D-6275-4948-BF43-DA477399100E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33546FA7-14FD-472C-9CC2-C9B93562D458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33546FA7-14FD-472C-9CC2-C9B93562D458}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{33546FA7-14FD-472C-9CC2-C9B93562D458}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{33546FA7-14FD-472C-9CC2-C9B93562D458}.Debug|Mixed Platforms.Deploy.0 = Debug|Any CPU
+		{33546FA7-14FD-472C-9CC2-C9B93562D458}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{33546FA7-14FD-472C-9CC2-C9B93562D458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33546FA7-14FD-472C-9CC2-C9B93562D458}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{33546FA7-14FD-472C-9CC2-C9B93562D458}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{33546FA7-14FD-472C-9CC2-C9B93562D458}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
+		{33546FA7-14FD-472C-9CC2-C9B93562D458}.Release|x86.ActiveCfg = Release|Any CPU
+		{30E7611D-6275-4948-BF43-DA477399100E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30E7611D-6275-4948-BF43-DA477399100E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{30E7611D-6275-4948-BF43-DA477399100E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{30E7611D-6275-4948-BF43-DA477399100E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{30E7611D-6275-4948-BF43-DA477399100E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30E7611D-6275-4948-BF43-DA477399100E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{30E7611D-6275-4948-BF43-DA477399100E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{30E7611D-6275-4948-BF43-DA477399100E}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

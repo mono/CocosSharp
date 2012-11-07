@@ -47,9 +47,10 @@ namespace cocos2d
         private float m_fDeltaTime;
         internal CCSize m_obWinSizeInPixels;
         internal CCSize m_obWinSizeInPoints;
-
+#if !PSM
         private CCAccelerometer m_pAccelerometer;
-        private CCActionManager m_pActionManager;
+#endif
+		private CCActionManager m_pActionManager;
         private CCKeypadDispatcher m_pKeypadDispatcher;
         private CCScene m_pNextScene;
         private CCNode m_pNotificationNode;
@@ -190,12 +191,13 @@ namespace cocos2d
             set { m_pKeypadDispatcher = value; }
         }
 
-        public CCAccelerometer Accelerometer
+#if !PSM
+		public CCAccelerometer Accelerometer
         {
             get { return m_pAccelerometer; }
             set { m_pAccelerometer = value; }
         }
-
+#endif
         public CCScene RunningScene
         {
             get { return m_pRunningScene; }
@@ -291,9 +293,11 @@ namespace cocos2d
             // KeypadDispatcher
             m_pKeypadDispatcher = new CCKeypadDispatcher();
 
-            // Accelerometer
-            m_pAccelerometer = new CCAccelerometer();
 
+#if !PSM
+			// Accelerometer
+            m_pAccelerometer = new CCAccelerometer();
+#endif
             // create autorelease pool
             //CCPoolManager::sharedPoolManager()->push();
 

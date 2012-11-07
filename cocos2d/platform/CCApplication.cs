@@ -140,12 +140,12 @@ namespace cocos2d
             // We can now begin measuring our Update method
             //DebugSystem.Instance.TimeRuler.BeginMark("Update", Color.Blue);
 
-
+#if !PSM
             if (CCDirector.SharedDirector.Accelerometer != null)
             {
                 CCDirector.SharedDirector.Accelerometer.Update();
             }
-            
+#endif            
             // Process touch events 
             ProcessTouch();
 

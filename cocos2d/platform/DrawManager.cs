@@ -655,7 +655,7 @@ namespace cocos2d
                 {
                     m_quadsBuffer.Dispose();
                 }
-
+				
                 m_quadsBuffer = new DynamicVertexBuffer(graphicsDevice, typeof(ccV3F_C4B_T2F), capacity * 4, BufferUsage.WriteOnly);
 
                 if (m_vertices == null || m_vertices.Length < capacity * 4)

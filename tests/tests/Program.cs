@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework;
 
 namespace tests
 {
-#if WINDOWS || XBOX
+#if WINDOWS || XBOX || PSM
     static class Program
     {
         /// <summary>

@@ -45,7 +45,9 @@ namespace cocos2d
         {
             TextReader textReader = new StringReader(str);
             var setting = new XmlReaderSettings();
+#if !PSM
             setting.DtdProcessing = DtdProcessing.Ignore;
+#endif
             XmlReader xmlReader = XmlReader.Create(textReader, setting);
             int dataindex = 0;
 

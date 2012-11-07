@@ -39,6 +39,14 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="Lidgren.Network, Version=2011.3.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>external lib\Lidgren.Network.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>external lib\MonoGame.Framework.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>external lib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>

@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{64725C5B-A1BC-4974-8538-A1158BABF572}</ProjectGuid>
-    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{30E7611D-6275-4948-BF43-DA477399100E}</ProjectGuid>
+    <ProjectTypeGuids>{69878862-DA7D-4DC6-B0A1-50D8FAB4242F};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>cocos2d</RootNamespace>
@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;ANDROID,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX,CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;PSM,PSS,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX,CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -28,7 +28,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;ANDROID,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX,CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA</DefineConstants>
+    <DefineConstants>TRACE;PSM,PSS,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX,CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -37,23 +37,24 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>external lib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="Lidgren.Network, Version=2011.3.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>external lib\Android\Lidgren.Network.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Android" />
-    <Reference Include="MonoGame.Framework, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>external lib\Android\MonoGame.Framework.Android.dll</HintPath>
-    </Reference>
     <Reference Include="mscorlib" />
-    <Reference Include="OpenTK" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="Sce.PlayStation.Core" />
+    <Reference Include="Sce.PlayStation.HighLevel.GameEngine2D" />
+    <Reference Include="Sce.PlayStation.HighLevel.Model" />
+    <Reference Include="Sce.PlayStation.HighLevel.Physics2D" />
+    <Reference Include="Sce.PlayStation.HighLevel.UI" />
     <Reference Include="zlib.net">
       <HintPath>external lib\zlib.net.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework.PSMobile">
+      <HintPath>external lib\PSM\MonoGame.Framework.PSMobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network.PSMobile">
+      <HintPath>external lib\PSM\Lidgren.Network.PSMobile.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -279,7 +280,6 @@
     <Compile Include="particle_nodes\CCParticleExamples.cs" />
     <Compile Include="particle_nodes\CCParticleSystem.cs" />
     <Compile Include="particle_nodes\CCParticleSystemQuad.cs" />
-    <Compile Include="Platform\CCAccelerometer.cs" />
     <Compile Include="Platform\CCAccelerometerDelegate.cs" />
     <Compile Include="Platform\CCApplication.cs" />
     <Compile Include="Platform\CCDictMaker.cs" />
@@ -387,7 +387,7 @@
     <Compile Include="touch_dispatcher\IEGLTouchDelegate.cs" />
   </ItemGroup>
   <ItemGroup />
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

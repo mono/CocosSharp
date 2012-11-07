@@ -92,8 +92,10 @@ namespace cocos2d
             // add this layer to concern the Accelerometer Sensor
             if (m_bIsAccelerometerEnabled)
             {
+#if !PSM
                 director.Accelerometer.SetDelegate(this);
-            }
+#endif
+			}
 
             // add this layer to concern the kaypad msg
             if (m_bKeypadEnabled)
@@ -189,9 +191,16 @@ namespace cocos2d
 
         public bool AccelerometerEnabled
         {
-            get { return m_bIsAccelerometerEnabled; }
+            get { 
+#if !PSM
+				return m_bIsAccelerometerEnabled; 
+#else
+				return(false);
+#endif
+			}
             set
             {
+#if !PSM
                 if (value != m_bIsAccelerometerEnabled)
                 {
                     m_bIsAccelerometerEnabled = value;
@@ -202,7 +211,10 @@ namespace cocos2d
                         pDirector.Accelerometer.SetDelegate(value ? this : null);
                     }
                 }
-            }
+#else
+			m_bIsAccelerometerEnabled = false;
+#endif
+			}
         }
 
         public bool KeypadEnabled

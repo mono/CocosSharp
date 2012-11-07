@@ -48,8 +48,11 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.CSharp" />
-    <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\cocos2d\external lib\MonoGame.Framework.dll</HintPath>
+    <Reference Include="Lidgren.Network.Android">
+      <HintPath>..\..\cocos2d\external lib\Android\Lidgren.Network.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework.Android">
+      <HintPath>..\..\cocos2d\external lib\Android\MonoGame.Framework.Android.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK" />
     <Reference Include="mscorlib" />
@@ -1744,7 +1747,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\cocos2d\cocos2d.Android.csproj">
       <Project>{64725C5B-A1BC-4974-8538-A1158BABF572}</Project>
-      <Name>cocos2d %28Android%29</Name>
+      <Name>cocos2d.Android</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
