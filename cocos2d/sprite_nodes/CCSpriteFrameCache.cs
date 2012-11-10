@@ -20,6 +20,10 @@ namespace cocos2d
 
         public void AddSpriteFramesWithDictionary(PlistDictionary pobDictionary, CCTexture2D pobTexture)
         {
+            AddSpriteFramesWithDictionary(pobDictionary, pobTexture, string.Empty);
+        }
+        public void AddSpriteFramesWithDictionary(PlistDictionary pobDictionary, CCTexture2D pobTexture, string framePrefix)
+        {
             /*
             Supported Zwoptex Formats:
 
@@ -50,7 +54,10 @@ namespace cocos2d
             }
 
             // check the format
-            Debug.Assert(format >= 0 && format <= 3);
+            if (format < 0 || format > 3)
+            {
+                throw (new NotSupportedException("PList format " + format + " is not supported."));
+            }
 
             foreach (var pair in framesDict)
             {
@@ -59,19 +66,22 @@ namespace cocos2d
 
                 if (format == 0)
                 {
-                    float x = frameDict["x"].AsFloat;
-                    float y = frameDict["y"].AsFloat;
-                    float w = frameDict["width"].AsFloat;
-                    float h = frameDict["height"].AsFloat;
-                    float ox = frameDict["offsetX"].AsFloat;
-                    float oy = frameDict["offsetY"].AsFloat;
-                    int ow = frameDict["originalWidth"].AsInt;
-                    int oh = frameDict["originalHeight"].AsInt;
+                    float x=0f, y=0f, w=0f, h=0f;
+                    x = frameDict["x"].AsFloat;
+                    y = frameDict["y"].AsFloat;
+                    w = frameDict["width"].AsFloat;
+                    h = frameDict["height"].AsFloat;
+                    float ox = 0f, oy = 0f;
+                    ox = frameDict["offsetX"].AsFloat;
+                    oy = frameDict["offsetY"].AsFloat;
+                    int ow = 0, oh = 0;
+                    ow = frameDict["originalWidth"].AsInt;
+                    oh = frameDict["originalHeight"].AsInt;
                     // check ow/oh
                     if (ow == 0 || oh == 0)
                     {
                         CCLog.Log(
-                            "cocos2d: WARNING: originalWidth/Height not found on the CCSpriteFrame. AnchorPoint won't work as expected. Regenrate the .plist");
+                            "cocos2d: WARNING: originalWidth/Height not found on the CCSpriteFrame. AnchorPoint won't work as expected. Regenerate the .plist or check the 'format' metatag");
                     }
                     // abs ow/oh
                     ow = Math.Abs(ow);
@@ -154,11 +164,34 @@ namespace cocos2d
                 }
 
                 // add sprite frame
-                if (!m_pSpriteFrames.ContainsKey(pair.Key))
+                string key = framePrefix + pair.Key;
+                if (!m_pSpriteFrames.ContainsKey(key))
                 {
-                    m_pSpriteFrames.Add(pair.Key, spriteFrame);
+                    m_pSpriteFrames.Add(key, spriteFrame);
                 }
             }
+        }
+
+        private string ExtractPrefix(string source)
+        {
+            string framePrefix = source;
+            int idx = framePrefix.IndexOf('.');
+            while (idx > -1)
+            {
+                framePrefix = framePrefix.Substring(0, idx);
+                idx = framePrefix.IndexOf('.');
+            }
+            // Now remove the path
+            idx = framePrefix.Length - 1;
+            while (idx >= 0 && (framePrefix[idx] != '/' && framePrefix[idx] != '\\'))
+            {
+                idx--;
+            }
+            if (idx > 0)
+            {
+                framePrefix = framePrefix.Substring(idx);
+            }
+            return (framePrefix);
         }
 
         public void AddSpriteFramesWithFile(string pszPlist)
@@ -170,12 +203,14 @@ namespace cocos2d
             string texturePath = "";
             PlistDictionary metadataDict = dict.ContainsKey("metadata") ? dict["metadata"].AsDictionary : null;
 
+            string framePrefix = string.Empty;
             if (metadataDict != null)
             {
                 // try to read  texture file name from meta data
                 if (metadataDict.ContainsKey("textureFileName"))
                 {
                     texturePath = metadataDict["textureFileName"].AsString;
+                    framePrefix = ExtractPrefix(texturePath);
                 }
             }
 
@@ -199,7 +234,7 @@ namespace cocos2d
 
             if (pTexture != null)
             {
-                AddSpriteFramesWithDictionary(dict, pTexture);
+                AddSpriteFramesWithDictionary(dict, pTexture, framePrefix);
             }
             else
             {
@@ -209,12 +244,16 @@ namespace cocos2d
 
         public void AddSpriteFramesWithFile(string plist, string textureFileName)
         {
+            AddSpriteFramesWithFile(plist, textureFileName, ExtractPrefix(plist));
+        }
+        public void AddSpriteFramesWithFile(string plist, string textureFileName, string framePrefix)
+        {
             Debug.Assert(textureFileName != null);
             CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(textureFileName);
 
             if (texture != null)
             {
-                AddSpriteFramesWithFile(plist, texture);
+                AddSpriteFramesWithFile(plist, texture, framePrefix);
             }
             else
             {
@@ -224,11 +263,15 @@ namespace cocos2d
 
         public void AddSpriteFramesWithFile(string pszPlist, CCTexture2D pobTexture)
         {
+            AddSpriteFramesWithFile(pszPlist, pobTexture, ExtractPrefix(pszPlist));
+        }
+        public void AddSpriteFramesWithFile(string pszPlist, CCTexture2D pobTexture, string framePrefix)
+        {
             //string pszPath = CCFileUtils.fullPathFromRelativePath(pszPlist);
             //Dictionary<string, Object> dict = CCFileUtils.dictionaryWithContentsOfFile(pszPath);
             PlistDictionary dict = CCApplication.SharedApplication.Content.Load<PlistDocument>(pszPlist).Root.AsDictionary;
 
-            AddSpriteFramesWithDictionary(dict, pobTexture);
+            AddSpriteFramesWithDictionary(dict, pobTexture, framePrefix);
         }
 
         public void AddSpriteFrame(CCSpriteFrame pobFrame, string pszFrameName)
@@ -351,6 +394,11 @@ namespace cocos2d
                         CCLog.Log("cocos2d: CCSpriteFrameCahce: Frame '{0}' not found", pszName);
                     }
                 }
+            }
+
+            if (frame != null)
+            {
+                CCLog.Log("cocos2d: {0} frame {1}", pszName, frame.Rect.ToString());
             }
             return frame;
         }
