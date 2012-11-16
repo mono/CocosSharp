@@ -1,4 +1,4 @@
-
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -284,7 +284,7 @@ namespace cocos2d
                     ++columnsOccupied;
                     if (columnsOccupied >= rowColumns)
                     {
-                        height += rowHeight + 5;
+                            height += rowHeight + (int)kDefaultPadding;
 
                         columnsOccupied = 0;
                         rowHeight = 0;
@@ -313,15 +313,19 @@ namespace cocos2d
                     if (rowColumns == 0)
                     {
                         rowColumns = rows[row];
-                        w = winSize.width / (1 + rowColumns);
-                        x = w;
+                            if (rowColumns == 0)
+                            {
+                                throw (new ArgumentException("Can not have a zero column size for a row."));
+                            }
+                            w = (winSize.width - 2 * kDefaultPadding) / rowColumns; // 1 + rowColumns
+                            x = w/2f; // center of column
                     }
 
-                    float tmp = pChild.ContentSize.height;
+                        float tmp = pChild.ContentSize.height*pChild.ScaleY;
                     rowHeight = (int) ((rowHeight >= tmp || float.IsNaN(tmp)) ? rowHeight : tmp);
 
-                    pChild.Position = (new CCPoint(x - winSize.width / 2,
-                                                   y - pChild.ContentSize.height / 2));
+                        pChild.Position = new CCPoint(kDefaultPadding + x - (winSize.width - 2*kDefaultPadding) / 2,
+                                               y - pChild.ContentSize.height*pChild.ScaleY / 2);
 
                     x += w;
                     ++columnsOccupied;
@@ -344,8 +348,10 @@ namespace cocos2d
         {
             int[] columns = rows;
 
-            var columnWidths = new List<int>();
-            var columnHeights = new List<int>();
+            List<int> columnWidths = new List<int>();
+
+            List<int> columnHeights = new List<int>();
+
 
             int width = -10;
             int columnHeight = -5;
@@ -368,10 +374,11 @@ namespace cocos2d
                     Debug.Assert(columnRows > 0, "");
 
                     // columnWidth = fmaxf(columnWidth, [item contentSize].width);
-                    float tmp = pChild.ContentSize.width;
-                    columnWidth = (int) ((columnWidth >= tmp || float.IsNaN(tmp)) ? columnWidth : tmp);
+                    float tmp = pChild.ContentSize.width * pChild.ScaleX;
+                    columnWidth = (int)((columnWidth >= tmp || float.IsNaN(tmp)) ? columnWidth : tmp);
 
-                    columnHeight += (int) (pChild.ContentSize.height + 5);
+
+                    columnHeight += (int)(pChild.ContentSize.height * pChild.ScaleY + 5);
                     ++rowsOccupied;
 
                     if (rowsOccupied >= columnRows)
@@ -412,12 +419,12 @@ namespace cocos2d
                     }
 
                     // columnWidth = fmaxf(columnWidth, [item contentSize].width);
-                    float tmp = pChild.ContentSize.width;
-                    columnWidth = (int) ((columnWidth >= tmp || float.IsNaN(tmp)) ? columnWidth : tmp);
+                    float tmp = pChild.ContentSize.width * pChild.ScaleX;
+                    columnWidth = (int)((columnWidth >= tmp || float.IsNaN(tmp)) ? columnWidth : tmp);
 
-                    pChild.Position = new CCPoint(x + columnWidths[column] / 2, y - winSize.height / 2);
-
-                    y -= pChild.ContentSize.height + 10;
+                    pChild.Position = new CCPoint(x + columnWidths[column] / 2,
+                                                  y - winSize.height / 2);
+                    y -= pChild.ContentSize.height * pChild.ScaleY + 10;
                     ++rowsOccupied;
 
                     if (rowsOccupied >= columnRows)
