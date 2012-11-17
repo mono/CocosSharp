@@ -1,7 +1,7 @@
 
 namespace cocos2d
 {
-    public enum CCTMXOrientatio
+    public enum CCTMXOrientation
     {
         /// <summary>
         /// Orthogonal orientation
