@@ -130,7 +130,10 @@ namespace cocos2d
                 {
                     var frame = (CCAnimationFrame) frames[i];
                     var frameToDisplay = frame.SpriteFrame;
-                    ((CCSprite) m_pTarget).DisplayFrame = frameToDisplay;
+                    if (frameToDisplay != null)
+                    {
+                        ((CCSprite)m_pTarget).DisplayFrame = frameToDisplay;
+                    }
 
                     var dict = frame.UserInfo;
                     if (dict != null)

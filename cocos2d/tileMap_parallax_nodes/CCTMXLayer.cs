@@ -24,7 +24,7 @@ namespace cocos2d
         /** size of the map's tile (could be differnt from the tile's size) */
 
         private CCSize m_tMapTileSize;
-        private CCTMXOrientatio m_uLayerOrientation;
+        private CCTMXOrientation m_uLayerOrientation;
         protected uint m_uMaxGID;
         protected uint m_uMinGID;
 
@@ -58,7 +58,7 @@ namespace cocos2d
 
         /** Layer orientation, which is the same as the map orientation */
 
-        public CCTMXOrientatio LayerOrientation
+        public CCTMXOrientation LayerOrientation
         {
             get { return m_uLayerOrientation; }
             set { m_uLayerOrientation = value; }
@@ -119,7 +119,7 @@ namespace cocos2d
 
                 // mapInfo
                 m_tMapTileSize = mapInfo.TileSize;
-                m_uLayerOrientation = (CCTMXOrientatio) mapInfo.Orientation;
+                m_uLayerOrientation = (CCTMXOrientation) mapInfo.Orientation;
 
                 // offset (after layer orientation is set);
                 CCPoint offset = CalculateLayerOffset(layerInfo.m_tOffset);
@@ -347,13 +347,13 @@ namespace cocos2d
             CCPoint ret = CCPoint.Zero;
             switch (m_uLayerOrientation)
             {
-                case CCTMXOrientatio.CCTMXOrientationOrtho:
+                case CCTMXOrientation.CCTMXOrientationOrtho:
                     ret = PositionForOrthoAt(pos);
                     break;
-                case CCTMXOrientatio.CCTMXOrientationIso:
+                case CCTMXOrientation.CCTMXOrientationIso:
                     ret = PositionForIsoAt(pos);
                     break;
-                case CCTMXOrientatio.CCTMXOrientationHex:
+                case CCTMXOrientation.CCTMXOrientationHex:
                     ret = PositionForHexAt(pos);
                     break;
             }
@@ -483,14 +483,14 @@ namespace cocos2d
             CCPoint ret = CCPoint.Zero;
             switch (m_uLayerOrientation)
             {
-                case CCTMXOrientatio.CCTMXOrientationOrtho:
+                case CCTMXOrientation.CCTMXOrientationOrtho:
                     ret = new CCPoint(pos.x * m_tMapTileSize.width, -pos.y * m_tMapTileSize.height);
                     break;
-                case CCTMXOrientatio.CCTMXOrientationIso:
+                case CCTMXOrientation.CCTMXOrientationIso:
                     ret = new CCPoint((m_tMapTileSize.width / 2) * (pos.x - pos.y),
                                       (m_tMapTileSize.height / 2) * (-pos.x - pos.y));
                     break;
-                case CCTMXOrientatio.CCTMXOrientationHex:
+                case CCTMXOrientation.CCTMXOrientationHex:
                     Debug.Assert(pos.equals(CCPoint.Zero), "offset for hexagonal map not implemented yet");
                     break;
             }
@@ -706,14 +706,14 @@ namespace cocos2d
             {
                 switch (m_uLayerOrientation)
                 {
-                    case CCTMXOrientatio.CCTMXOrientationIso:
+                    case CCTMXOrientation.CCTMXOrientationIso:
                         var maxVal = (int) (m_tLayerSize.width + m_tLayerSize.height);
                         ret = (int) (-(maxVal - (pos.x + pos.y)));
                         break;
-                    case CCTMXOrientatio.CCTMXOrientationOrtho:
+                    case CCTMXOrientation.CCTMXOrientationOrtho:
                         ret = (int) (-(m_tLayerSize.height - pos.y));
                         break;
-                    case CCTMXOrientatio.CCTMXOrientationHex:
+                    case CCTMXOrientation.CCTMXOrientationHex:
                         Debug.Assert(false, "TMX Hexa zOrder not supported");
                         break;
                     default:

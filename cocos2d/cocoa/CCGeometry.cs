@@ -38,6 +38,12 @@ namespace cocos2d
             this.y = y;
         }
 
+        public CCPoint(CCPoint pt)
+        {
+            this.x = pt.x;
+            this.y = pt.y;
+        }
+
         public static bool CCPointEqualToPoint(CCPoint point1, CCPoint point2)
         {
             return ((point1.x == point2.x) && (point1.y == point2.y));
@@ -181,6 +187,22 @@ namespace cocos2d
         public static bool operator !=(CCSize p1, CCSize p2)
         {
             return (!p1.Equals(p2));
+        }
+        public static CCSize operator *(CCSize p, float f)
+        {
+            return(new CCSize(p.width*f, p.height*f));
+        }
+        public static CCSize operator /(CCSize p, float f)
+        {
+            return (new CCSize(p.width / f, p.height / f));
+        }
+        public static CCSize operator +(CCSize p, float f)
+        {
+            return (new CCSize(p.width + f, p.height + f));
+        }
+        public static CCSize operator -(CCSize p, float f)
+        {
+            return (new CCSize(p.width - f, p.height - f));
         }
     }
 

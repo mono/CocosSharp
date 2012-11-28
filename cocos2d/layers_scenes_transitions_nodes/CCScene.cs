@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 
 namespace cocos2d
 {
@@ -17,6 +19,34 @@ namespace cocos2d
             AnchorPoint = new CCPoint(0.5f, 0.5f);
         }
 
+        #region Game State Management
+        /// <summary>
+        /// Gets whether or not this scene is serializable. If this is true,
+        /// the screen will be recorded into the director's state and
+        /// its Serialize and Deserialize methods will be called as appropriate.
+        /// If this is false, the screen will be ignored during serialization.
+        /// By default, all screens are assumed to be serializable.
+        /// </summary>
+        public virtual bool IsSerializable
+        {
+            get { return m_isSerializable; }
+            protected set { m_isSerializable = value; }
+        }
+
+        private bool m_isSerializable = true;
+
+        /// <summary>
+        /// Tells the screen to serialize its state into the given stream.
+        /// </summary>
+        public virtual void Serialize(Stream stream) { }
+
+        /// <summary>
+        /// Tells the screen to deserialize its state from the given stream.
+        /// </summary>
+        public virtual void Deserialize(Stream stream) { }
+
+
+        #endregion
         public bool Init()
         {
             bool bRet = false;

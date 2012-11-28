@@ -394,8 +394,15 @@ namespace cocos2d
             catch
             {
                 CCLog.Log("Can't found {0}, use system default", fontName);
+                    try
+                    {
                 font = CCApplication.SharedApplication.Content.Load<SpriteFont>("fonts/" + DrawManager.DefaultFont + "-" + fontSize.ToString());
             }
+                    catch
+                    {
+                        font = CCApplication.SharedApplication.Content.Load<SpriteFont>("fonts/" + DrawManager.DefaultFont);
+                    }
+                }
             }
 
             if (dimensions.equals(CCSize.Zero))

@@ -8,3 +8,26 @@ and Totally Evil Entertainment, LLC.
 
 ========================================================================================
 
+* Fixed orientation changes and added a test case for the programmatic switching of orientation.
+* CCAnimate : Added some defensive code to CCAnimate to prevent NPE exceptions when bad frame refs occur.
+* CCNode : Added CCNode.ContentSizeInPixels
+* CCNode : Added comments to some methods in CCNode
+* CCPoint : Added the CCPoint(CCPoint) ctor.
+* CCPoint : Added arithmetic operators to CCPoint.
+* CCBMFontConfiguration : Removed an assert in the CCBMFontConfiguration class during FNT 
+  file parsing. Replaced it with an exception.
+* CCBMFontConfiguration: Added exception handling around the CCBMFontConfiguration parsing 
+  and recording of kerning elements to handle when duplicate kerning configurations are parsed.
+* CCLayer : Moved the initial setting of the content size to the ctor instead of "init".
+* CCScene : Added the game state management code
+* CCSpriteFrameCache : Added an attribute to control whether or not frame overwrite is allowed.
+* CCSpriteFrameCache : Replaced the use of "add(spriteFrame)" with the indexer on the sprite frame
+  dictionary.
+* CCSpriteFrameCache : Added ability to overwrite sprite frames in the sprite frame cache.
+* CCTexture2D : Added a non-size-specific file name fallback to the loading of the default
+  system font.
+* CCTMXLayer : Fixed a typo in the "CCTMXOrientatio" enum to be "CCTMXOrientation".
+* CCTMXMapInfo : Fixed a typo in the "CCTMXOrientatio" enum to be "CCTMXOrientation".
+* CCTMXXMLParser : Fixed a typo in the "CCTMXOrientatio" enum to be "CCTMXOrientation".
+* CCDirector : Added the state management code
+* CCDirector : Fixed an indexing error in ReplaceScene when the stack is empty.

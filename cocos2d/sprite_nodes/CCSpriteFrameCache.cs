@@ -10,12 +10,28 @@ namespace cocos2d
         public static CCSpriteFrameCache pSharedSpriteFrameCache = null;
         protected Dictionary<string, CCSpriteFrame> m_pSpriteFrames;
         protected Dictionary<string, string> m_pSpriteFramesAliases;
+        private bool _AllowFrameOverwrite = false;
 
         public bool Init()
         {
             m_pSpriteFrames = new Dictionary<string, CCSpriteFrame>();
             m_pSpriteFramesAliases = new Dictionary<string, string>();
             return true;
+        }
+
+        /// <summary>
+        /// When false, an exception is thrown if an animation frame is overwritten.
+        /// </summary>
+        public bool AllowFrameOverrite
+        {
+            get
+            {
+                return (_AllowFrameOverwrite);
+            }
+            set
+            {
+                _AllowFrameOverwrite = value;
+            }
         }
 
         public void AddSpriteFramesWithDictionary(PlistDictionary pobDictionary, CCTexture2D pobTexture)
@@ -165,9 +181,13 @@ namespace cocos2d
 
                 // add sprite frame
                 string key = framePrefix + pair.Key;
-                if (!m_pSpriteFrames.ContainsKey(key))
+                if (!_AllowFrameOverwrite && m_pSpriteFrames.ContainsKey(key))
                 {
-                    m_pSpriteFrames.Add(key, spriteFrame);
+                    CCLog.Log("Frame named " + key + " already exists in the animation cache. Not overwriting existing record.");
+                }
+                else if (_AllowFrameOverwrite || !m_pSpriteFrames.ContainsKey(key))
+                {
+                    m_pSpriteFrames[key] = spriteFrame;
                 }
             }
         }
@@ -276,7 +296,11 @@ namespace cocos2d
 
         public void AddSpriteFrame(CCSpriteFrame pobFrame, string pszFrameName)
         {
-            m_pSpriteFrames.Add(pszFrameName, pobFrame);
+            if (!_AllowFrameOverwrite && m_pSpriteFrames.ContainsKey(pszFrameName))
+            {
+                throw (new ArgumentException("The frame named " + pszFrameName + " already exists."));
+            }
+            m_pSpriteFrames[pszFrameName] = pobFrame;
         }
 
         public void RemoveSpriteFrames()

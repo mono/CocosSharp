@@ -171,6 +171,9 @@ namespace cocos2d
             set { m_fVertexZ = value; }
         }
 
+        /// <summary>
+        /// 2D rotation of the node relative to the 0,1 vector in a clock-wise orientation.
+        /// </summary>
         public virtual float Rotation
         {
             get { return m_fRotation; }
@@ -181,6 +184,9 @@ namespace cocos2d
             }
         }
 
+        /// <summary>
+        /// The general scale that applies to both X and Y directions.
+        /// </summary>
         public virtual float Scale
         {
             get
@@ -195,6 +201,9 @@ namespace cocos2d
             }
         }
 
+        /// <summary>
+        /// Scale of the node in the X direction (left to right)
+        /// </summary>
         public virtual float ScaleX
         {
             get { return m_fScaleX; }
@@ -205,6 +214,9 @@ namespace cocos2d
             }
         }
 
+        /// <summary>
+        /// Scale of the node in the Y direction (top to bottom)
+        /// </summary>
         public virtual float ScaleY
         {
             get { return m_fScaleY; }
@@ -215,6 +227,10 @@ namespace cocos2d
             }
         }
 
+        /// <summary>
+        /// Sets and gets the position of the node. For Menus, this is the center of the menu. For layers,
+        /// this is the lower left corner of the layer.
+        /// </summary>
         public virtual CCPoint Position
         {
             get { return m_tPosition; }
@@ -264,11 +280,18 @@ namespace cocos2d
             set { m_bIsVisible = value; }
         }
 
+        /// <summary>
+        /// Returns the anchor point in pixels, AnchorPoint * ContentSize. This does not use
+        /// the scale factor of the node.
+        /// </summary>
         public virtual CCPoint AnchorPointInPoints
         {
             get { return m_tAnchorPointInPoints; }
         }
 
+        /// <summary>
+        /// returns the Anchor Point of the node as a value [0,1], where 1 is 100% of the dimension and 0 is 0%.
+        /// </summary>
         public virtual CCPoint AnchorPoint
         {
             get { return m_tAnchorPoint; }
@@ -281,6 +304,17 @@ namespace cocos2d
                                                                   m_tContentSize.height * m_tAnchorPoint.y);
                     m_bIsTransformDirty = m_bIsInverseDirty = true;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Returns the content size with the scale applied.
+        /// </summary>
+        public virtual CCSize ContentSizeInPixels
+        {
+            get { 
+                CCSize size = new CCSize(ContentSize.width * ScaleX, ContentSize.height * ScaleY);
+                return (size);
             }
         }
 

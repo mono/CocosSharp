@@ -257,7 +257,15 @@ namespace cocos2d
             int index = line.IndexOf('=') + 1;
             int index2 = line.IndexOf(' ', index);
             string value = line.Substring(index, index2 - index);
-            Debug.Assert(Convert.ToInt32(value) == 0, "LabelBMFont file could not be found");
+            try
+            {
+                int ivalue = int.Parse(value);
+            }
+            catch (Exception)
+            {
+                throw (new ContentLoadException("Invalid page ID for FNT descriptor. Line=" + line + ", value=" + value + ", indices=" + index + "," + index2));
+            }
+//            Debug.Assert(Convert.ToInt32(value) == 0, "LabelBMFont file could not be found");
             // file 
             index = line.IndexOf('"') + 1;
             index2 = line.IndexOf('"', index);
@@ -294,10 +302,17 @@ namespace cocos2d
             value = line.Substring(index);
             amount = ccUtils.ccParseInt(value.Replace("amount=", ""));
 
+            try
+            {
             var element = new tKerningHashElement();
             element.amount = amount;
             element.key = (first << 16) | (second & 0xffff);
             m_pKerningDictionary.Add(element.key, element);
+        }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Failed to parse font line: {0}", line);
+            }
         }
 
         private void purgeKerningDictionary()

@@ -41,6 +41,11 @@ namespace cocos2d
         {
             AnchorPoint = CCPointExtension.ccp(0.5f, 0.5f);
             m_bIgnoreAnchorPointForPosition = true;
+            CCDirector director = CCDirector.SharedDirector;
+            if (director != null)
+            {
+                ContentSize = director.WinSize;
+            }
         }
 
         public new static CCLayer Create()
@@ -65,7 +70,7 @@ namespace cocos2d
                     break;
                 }
 
-                ContentSize = director.WinSize;
+//                ContentSize = director.WinSize;
                 m_bIsTouchEnabled = false;
                 m_bIsAccelerometerEnabled = false;
 
