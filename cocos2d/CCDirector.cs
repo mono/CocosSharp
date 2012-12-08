@@ -49,8 +49,10 @@ namespace cocos2d
         private ccDirectorProjection m_eProjection;
         private float m_fContentScaleFactor = 1.0f;
         private float m_fDeltaTime;
+        private bool m_NeedsInit = true;
         internal CCSize m_obWinSizeInPixels;
         internal CCSize m_obWinSizeInPoints;
+		
 #if !PSM
         private CCAccelerometer m_pAccelerometer;
 #endif
@@ -117,7 +119,7 @@ namespace cocos2d
                             }
                         }
                         // Write out our local state
-                        if (m_pRunningScene.IsSerializable)
+                        if (m_pRunningScene != null && m_pRunningScene.IsSerializable)
                         {
                             writer.Write("m_pRunningScene");
                             writer.Write(m_pRunningScene.GetType().AssemblyQualifiedName);
@@ -150,7 +152,7 @@ namespace cocos2d
                     }
                 }
                 // Write the current running scene
-                if (m_pRunningScene.IsSerializable)
+                if (m_pRunningScene != null && m_pRunningScene.IsSerializable)
                 {
                     fileName = string.Format(Path.Combine(m_sStorageDirName, m_sSceneSaveFileName), "XX");
                     // open up the stream and let the screen serialize whatever state it wants
@@ -432,6 +434,12 @@ namespace cocos2d
                 }
                 return s_sharedDirector;
             }
+            }
+
+        public virtual bool NeedsInit
+        {
+            get { return(m_NeedsInit); }
+            set { m_NeedsInit = value; }
         }
 
         public virtual bool Init()
@@ -491,6 +499,7 @@ namespace cocos2d
             // create autorelease pool
             //CCPoolManager::sharedPoolManager()->push();
 
+            m_NeedsInit = false;
             return true;
         }
 
@@ -525,7 +534,7 @@ namespace cocos2d
                     m_fDeltaTime = 1 / 60.0f;
                 }
 #endif
-
+                // In Seconds
                 m_pScheduler.update(m_fDeltaTime);
             }
 
@@ -695,6 +704,7 @@ namespace cocos2d
             // cocos2d-x specific data structures
             //CCUserDefault.purgeSharedUserDefault();
             //CCNotificationCenter.purgeNotificationCenter();
+            m_NeedsInit = true;
         }
 
         public void Pause()
@@ -713,6 +723,10 @@ namespace cocos2d
 
         public void Resume()
         {
+            if (m_NeedsInit)
+            {
+                Init();
+            }
             if (!m_bPaused)
             {
                 return;
@@ -792,6 +806,19 @@ namespace cocos2d
 
             m_pobScenesStack.Add(pScene);
             m_pNextScene = pScene;
+        }
+
+        /// <summary>
+        /// Returns true if there is more than 1 scene on the stack.
+        /// </summary>
+        /// <returns></returns>
+        public bool CanPopScene
+        {
+            get
+            {
+                int c = m_pobScenesStack.Count;
+                return (c > 1);
+            }
         }
 
         public void PopScene()

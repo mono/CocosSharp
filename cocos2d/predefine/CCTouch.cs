@@ -1,11 +1,21 @@
-
+using System;
 
 namespace cocos2d
 {
+    //
+    // TODO: Add CCGesture
+    //
+
     public class CCTouch : CCObject
     {
         private int m_nId;
+        /// <summary>
+        /// Point of action
+        /// </summary>
         private CCPoint m_point;
+        /// <summary>
+        /// Previous point in the action
+        /// </summary>
         private CCPoint m_prevPoint;
 
         public CCTouch()

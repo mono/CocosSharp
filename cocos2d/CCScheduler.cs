@@ -203,6 +203,8 @@ public class CCScheduler
     {
         m_bUpdateHashLocked = true;
 
+        try
+        {
         if (TimeScale != 1.0f)
         {
             dt *= TimeScale;
@@ -331,9 +333,14 @@ public class CCScheduler
                 RemoveUpdateFromHash(node.Value);
             }
         }
+        }
+        finally
+        {
+            // Always do this just in case there is a problem
 
         m_bUpdateHashLocked = false;
         m_pCurrentTarget = null;
+        }
     }
 
     /** The scheduled method will be called every 'interval' seconds.

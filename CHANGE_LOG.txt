@@ -31,3 +31,19 @@ and Totally Evil Entertainment, LLC.
 * CCTMXXMLParser : Fixed a typo in the "CCTMXOrientatio" enum to be "CCTMXOrientation".
 * CCDirector : Added the state management code
 * CCDirector : Fixed an indexing error in ReplaceScene when the stack is empty.
+* CCDirector : Fixed the pause/resume/purge/resurrect lifecycle when running on Android
+* CCNode : Added BoundingBoxInPixels
+* CCPoint : Added a copy ctor
+* CCPoint : Added a Length method
+* CCRect : Added an intersection method
+* CCMenu : Changed the ctor to set its content size as the window size.
+* CCMenu : Added checks for menu item visibility during layout functions.
+* CCMenu : Added the ability to set the content size of the menu and preserve it instead of
+  overwriting it with the window size during layout.
+* CCApplication : Added calls to the ApplicationWillEnterForeground and ApplicationDidEnterBackground
+  when activated and deactivated are called. These were not being called during the application lifecycle.
+* CCApplication : Began adding code to handle gestures (they consume touch begin states, beware).
+* CCTouch : Added some comments to remind us that we need to support gestures.
+* CCSprite : Added sprite collision detection. This appears to be very slow on some android devices.
+* CCDirector : Added CanPopScene to return true if there is more than one scene on the stack.
+* CCScheduler : Added try/finally to ensure that the update lock and current target get reset.

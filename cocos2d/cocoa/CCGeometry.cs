@@ -23,6 +23,8 @@ THE SOFTWARE.
 
 using System;
 using System.Diagnostics;
+using Microsoft.Xna.Framework;
+
 namespace cocos2d
 {
     public struct CCPoint
@@ -44,9 +46,23 @@ namespace cocos2d
             this.y = pt.y;
         }
 
+        public CCPoint(Point pt)
+        {
+            x = pt.X;
+            y = pt.Y;
+        }
+
         public static bool CCPointEqualToPoint(CCPoint point1, CCPoint point2)
         {
             return ((point1.x == point2.x) && (point1.y == point2.y));
+        }
+
+        public CCPoint Reverse
+        {
+            get
+            {
+                return (new CCPoint(-x, -y));
+            }
         }
 
         public override bool Equals(object obj)
@@ -76,6 +92,11 @@ namespace cocos2d
         public float LengthSQ
         {
             get { return x * x + y * y; }
+        }
+
+        public float Length
+        {
+            get { return (float)Math.Sqrt(x * x + y * y); }
         }
 
         public static CCPoint Perp(CCPoint p)
@@ -269,6 +290,62 @@ namespace cocos2d
             get { return origin.y; }
         }
 
+        public CCRect Intersection(CCRect rect)
+        {
+            if (!intersectsRect(rect))
+            {
+                return (CCRect.Zero);
+            }
+            CCRect r;
+            /*       +-------------+
+             *       |             |
+             *       |         +---+-----+
+             * +-----+---+     |   |     |
+             * |     |   |     |   |     |
+             * |     |   |     +---+-----+
+             * |     |   |         |
+             * |     |   |         |
+             * +-----+---+         |
+             *       |             |
+             *       +-------------+
+             */
+            float minx=0, miny=0, maxx=0, maxy=0;
+            // X
+            if (rect.MinX < MinX)
+            {
+                minx = MinX;
+            }
+            else if (rect.MinX < MaxX)
+            {
+                minx = rect.MinX;
+            }
+            if (rect.MaxX < MaxX)
+            {
+                maxx = rect.MaxX;
+            }
+            else if (rect.MaxX > MaxX)
+            {
+                maxx = MaxX;
+            }
+            //  Y
+            if (rect.MinY < MinY)
+            {
+                miny = MinY;
+            }
+            else if (rect.MinY < MaxY)
+            {
+                miny = rect.MinY;
+            }
+            if (rect.MaxY < MaxY)
+            {
+                maxy = rect.MaxY;
+            }
+            else if (rect.MaxY > MaxY)
+            {
+                maxy = MaxY;
+            }
+            return (new CCRect(minx, miny, maxx - minx, maxy - miny));
+        }
         public bool intersectsRect(CCRect rect)
         {
             return !(MaxX < rect.MinX || rect.MaxX < MinX || MaxY < rect.MinY || rect.MaxY < MinY);

@@ -67,6 +67,19 @@ namespace cocos2d
             game.IsFixedTimeStep = true;
 
             TouchPanel.EnabledGestures = GestureType.Tap;
+
+            game.Activated += new EventHandler<EventArgs>(game_Activated);
+            game.Deactivated += new EventHandler<EventArgs>(game_Deactivated);
+        }
+
+        private void game_Deactivated(object sender, EventArgs e)
+        {
+            ApplicationDidEnterBackground();
+        }
+
+        private void game_Activated(object sender, EventArgs e)
+        {
+            ApplicationWillEnterForeground();
         }
 
         protected virtual void ServiceDeviceCreated(object sender, EventArgs e)
@@ -104,6 +117,9 @@ namespace cocos2d
             m_pTouchMap.Clear();
         }
 
+        /// <summary>
+        /// Loads the content for the game and then calls ApplicationDidFinishLaunching.
+        /// </summary>
         protected override void LoadContent()
         {
             base.LoadContent();
@@ -176,6 +192,11 @@ namespace cocos2d
             //DebugSystem.Instance.TimeRuler.EndMark("Draw");
         }
 
+        protected virtual void HandleGesture(GestureSample gesture)
+        {
+            //TODO: Create CCGesture and convert the coordinates into the local coordinates.
+        }
+
         private void ProcessTouch()
         {
             if (m_pDelegate != null)
@@ -227,6 +248,12 @@ namespace cocos2d
 #endif
 
                 TouchCollection touchCollection = TouchPanel.GetState();
+
+                /*while (TouchPanel.IsGestureAvailable)
+                {
+                    HandleGesture(TouchPanel.ReadGesture());
+                }*/
+
 
                 foreach (TouchLocation touch in touchCollection)
                 {

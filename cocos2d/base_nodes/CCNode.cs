@@ -367,6 +367,16 @@ namespace cocos2d
             }
         }
 
+        public CCRect BoundingBoxInPixels
+        {
+            get
+            {
+                var rect = new CCRect(0, 0, ContentSizeInPixels.width, ContentSizeInPixels.height);
+                return CCAffineTransform.CCRectApplyAffineTransform(rect, NodeToParentTransform());
+            }
+        }
+
+
         #region SelectorProtocol Members
 
         public virtual void Update(float dt)

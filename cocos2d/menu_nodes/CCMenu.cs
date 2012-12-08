@@ -28,6 +28,14 @@ namespace cocos2d
         private byte m_cOpacity;
         private ccColor3B m_tColor;
 
+        /// <summary>
+        /// Default ctor that sets the content size of the menu to match the window size.
+        /// </summary>
+        private CCMenu() 
+        {
+            ContentSize = CCDirector.SharedDirector.WinSize;
+        }
+
         public bool Enabled
         {
             get { return m_bEnabled; }
@@ -56,6 +64,11 @@ namespace cocos2d
             return InitWithArray(items);
         }
 
+        /// <summary>
+        /// The position of the menu is set to the center of the main screen
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
         private bool InitWithArray(params CCMenuItem[] items)
         {
             if (base.Init())
@@ -68,7 +81,7 @@ namespace cocos2d
 
                 IgnoreAnchorPointForPosition = true;
                 AnchorPoint = new CCPoint(0.5f, 0.5f);
-                ContentSize = (s);
+                ContentSize = s;
 
                 Position = (new CCPoint(s.width / 2, s.height / 2));
 
@@ -210,6 +223,10 @@ namespace cocos2d
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
                     CCNode pChild = m_pChildren[i];
+                    if (!pChild.Visible)
+                    {
+                        continue;
+                    }
                     height += pChild.ContentSize.height * pChild.ScaleY + padding;
                 }
             }
@@ -221,6 +238,10 @@ namespace cocos2d
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
                     CCNode pChild = m_pChildren[i];
+                    if (!pChild.Visible)
+                    {
+                        continue;
+                    }
                     pChild.Position = new CCPoint(0, y - pChild.ContentSize.height * pChild.ScaleY / 2.0f);
                     y -= pChild.ContentSize.height * pChild.ScaleY + padding;
                 }
@@ -240,8 +261,11 @@ namespace cocos2d
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
                     CCNode pChild = m_pChildren[i];
+                    if (pChild.Visible)
+                    {
                     width += pChild.ContentSize.width * pChild.ScaleX + padding;
                 }
+            }
             }
 
             float x = -width / 2.0f;
@@ -251,10 +275,13 @@ namespace cocos2d
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
                     CCNode pChild = m_pChildren[i];
+                    if (pChild.Visible)
+                    {
                     pChild.Position = new CCPoint(x + pChild.ContentSize.width * pChild.ScaleX / 2.0f, 0);
                     x += pChild.ContentSize.width * pChild.ScaleX + padding;
                 }
             }
+        }
         }
 
         public void AlignItemsInColumns(params int[] columns)
@@ -272,6 +299,10 @@ namespace cocos2d
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
                     CCNode pChild = m_pChildren.Elements[i];
+                    if (!pChild.Visible)
+                    {
+                        continue;
+                    }
                     Debug.Assert(row < rows.Length, "");
 
                     rowColumns = rows[row];
@@ -296,7 +327,7 @@ namespace cocos2d
             // check if too many rows/columns for available menu items
             Debug.Assert(columnsOccupied == 0, "");
 
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = ContentSize; // CCDirector.SharedDirector.WinSize;
 
             row = 0;
             rowHeight = 0;
@@ -310,6 +341,10 @@ namespace cocos2d
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
                     CCNode pChild = m_pChildren.Elements[i];
+                    if (!pChild.Visible)
+                    {
+                        continue;
+                    }
                     if (rowColumns == 0)
                     {
                         rowColumns = rows[row];
@@ -365,6 +400,10 @@ namespace cocos2d
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
                     CCNode pChild = m_pChildren.Elements[i];
+                    if (!pChild.Visible)
+                    {
+                        continue;
+                    }
 
                     // check if too many menu items for the amount of rows/columns
                     Debug.Assert(column < columns.Length, "");
@@ -398,7 +437,7 @@ namespace cocos2d
             // check if too many rows/columns for available menu items.
             Debug.Assert(rowsOccupied == 0, "");
 
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = ContentSize; // CCDirector.SharedDirector.WinSize;
 
             column = 0;
             columnWidth = 0;
@@ -411,6 +450,10 @@ namespace cocos2d
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
                     CCNode pChild = m_pChildren.Elements[i];
+                    if (!pChild.Visible)
+                    {
+                        continue;
+                    }
 
                     if (columnRows == 0)
                     {
