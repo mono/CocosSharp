@@ -67,7 +67,14 @@ namespace cocos2d
             get { return m_pContainer.ContentSize; }
             set
             {
-                m_pContainer.ContentSize = value;
+                if (m_pContainer == null)
+                {
+                    InitWithViewSize(value, null);
+                }
+                else
+                {
+                    m_pContainer.ContentSize = value;
+                }
                 UpdateInset();
             }
         }
