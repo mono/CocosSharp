@@ -74,11 +74,19 @@ namespace cocos2d
 
         private void game_Deactivated(object sender, EventArgs e)
         {
+#if ANDROID
+            CCTextureCache.PurgeSharedTextureCache();
+#endif
             ApplicationDidEnterBackground();
+            CocosDenshion.SimpleAudioEngine.SharedEngine.RestoreMediaState();
         }
 
         private void game_Activated(object sender, EventArgs e)
         {
+            CocosDenshion.SimpleAudioEngine.SharedEngine.SaveMediaState();
+#if ANDROID
+            CCSpriteFontCache.SharedInstance.Clear();
+#endif
             ApplicationWillEnterForeground();
         }
 
@@ -97,7 +105,7 @@ namespace cocos2d
         /// <summary>
         /// Callback by CCDirector for limit FPS
         /// </summary>
-        /// <param name="interval">The time, which expressed in second in second, between current frame and next. </param>
+        /// <param name="interval">The time, which expressed in seconds, between current frame and next. </param>
         public virtual double AnimationInterval
         {
             get { return Game.TargetElapsedTime.Milliseconds / 10000000f; }
@@ -125,6 +133,9 @@ namespace cocos2d
             base.LoadContent();
             
             ApplicationDidFinishLaunching();
+#if ANDROID
+            CCDirector.SharedDirector.DirtyLabels();
+#endif
         }
 
         public override void Initialize()
@@ -369,14 +380,16 @@ namespace cocos2d
         }
 
         /// <summary>
-        ///  The function be called when the application enter background
+        /// Called when the game enters the background. This happens when the 'windows' button is pressed
+        /// on a WP phone. On Android, it happens when the device is ide or the power button is pressed.
         /// </summary>
         public virtual void ApplicationDidEnterBackground()
         {
         }
 
         /// <summary>
-        /// The function be called when the application enter foreground
+        /// Called when the game returns to the foreground, such as when the game is launched after
+        /// being paused.
         /// </summary>
         public virtual void ApplicationWillEnterForeground()
         {

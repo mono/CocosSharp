@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
@@ -28,6 +29,8 @@ namespace cocos2d
         protected ccBlendFunc m_sBlendFunc; // Needed for the texture protocol
         protected ccColor3B m_sColor;
 
+        private string m_TextureFile;
+
         // vertex coords, texture coords and color info
 
         // opacity and RGB protocol
@@ -36,10 +39,51 @@ namespace cocos2d
         protected CCAffineTransform m_transformToBatch; //
         protected int m_uAtlasIndex; // Absolute (real) Index on the SpriteSheet
 
+        public override void Serialize(System.IO.Stream stream)
+        {
+            base.Serialize(stream);
+            StreamWriter sw = new StreamWriter(stream);
+            SerializeData(Dirty, sw);
+            SerializeData(IsTextureRectRotated, sw);
+            SerializeData(AtlasIndex, sw);
+            SerializeData(TextureRect, sw);
+            SerializeData(OffsetPosition, sw);
+            sw.WriteLine(m_TextureFile == null ? "null" : m_TextureFile);
+        }
+
+        public override void Deserialize(System.IO.Stream stream)
+        {
+            base.Deserialize(stream);
+            StreamReader sr = new StreamReader(stream);
+            m_TextureFile = sr.ReadLine();
+            if (m_TextureFile == "null")
+            {
+                m_TextureFile = null;
+            }
+            else
+            {
+                CCLog.Log("CCSprite - deserialized with texture file " + m_TextureFile);
+                InitWithFile(m_TextureFile);
+            }
+            Dirty = DeSerializeBool(sr);
+            IsTextureRectRotated = DeSerializeBool(sr);
+            AtlasIndex = DeSerializeInt(sr);
+            TextureRect = DeSerializeRect(sr);
+            OffsetPosition = DeSerializePoint(sr);
+        }
+
         public virtual bool Dirty
         {
             get { return m_bDirty; }
-            set { m_bDirty = value; }
+            set
+            {
+                m_bDirty = value;
+                SetDirtyRecursively(value);
+                /*
+                if(m_bDirty) 
+                    SET_DIRTY_RECURSIVELY();
+                 */
+            }
         }
 
         public ccV3F_C4B_T2F_Quad Quad
@@ -52,6 +96,7 @@ namespace cocos2d
         public bool IsTextureRectRotated
         {
             get { return m_bRectRotated; }
+            private set { m_bRectRotated = value; }
         }
 
         public int AtlasIndex
@@ -70,6 +115,7 @@ namespace cocos2d
         {
             // read only
             get { return m_obOffsetPosition; }
+            private set { m_obOffsetPosition = value; }
         }
 
         public override CCPoint Position
@@ -307,9 +353,9 @@ namespace cocos2d
 
                 if (m_bOpacityModifyRGB)
                 {
-                    m_sColor.r = (byte) (value.r * m_nOpacity / 255f);
-                    m_sColor.g = (byte) (value.g * m_nOpacity / 255f);
-                    m_sColor.b = (byte) (value.b * m_nOpacity / 255f);
+                    m_sColor.r = (byte)(value.r * m_nOpacity / 255f);
+                    m_sColor.g = (byte)(value.g * m_nOpacity / 255f);
+                    m_sColor.b = (byte)(value.b * m_nOpacity / 255f);
                 }
 
                 UpdateColor();
@@ -489,6 +535,7 @@ namespace cocos2d
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
 
+            m_TextureFile = fileName;
             CCSpriteFrame pFrame = CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName(fileName);
             if (pFrame != null)
             {
@@ -511,6 +558,7 @@ namespace cocos2d
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
 
+            m_TextureFile = fileName;
             CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(fileName);
             if (pTexture != null)
             {
@@ -683,7 +731,7 @@ namespace cocos2d
             {
                 // If it is not visible, or one of its ancestors is not visible, then do nothing:
                 if (!m_bIsVisible ||
-                    (m_pParent != null && m_pParent != m_pobBatchNode && ((CCSprite) m_pParent).m_bShouldBeHidden))
+                    (m_pParent != null && m_pParent != m_pobBatchNode && ((CCSprite)m_pParent).m_bShouldBeHidden))
                 {
                     m_sQuad.br.vertices =
                         m_sQuad.tl.vertices = m_sQuad.tr.vertices = m_sQuad.bl.vertices = new ccVertex3F(0, 0, 0);
@@ -755,7 +803,7 @@ namespace cocos2d
                 {
                     for (int i = 0, count = m_pChildren.count; i < count; i++)
                     {
-                        ((CCSprite) elements[i]).UpdateTransform();
+                        ((CCSprite)elements[i]).UpdateTransform();
                     }
                 }
                 else
@@ -834,7 +882,7 @@ namespace cocos2d
         {
             if (m_pobBatchNode != null)
             {
-                m_pobBatchNode.RemoveSpriteFromAtlas((CCSprite) (child));
+                m_pobBatchNode.RemoveSpriteFromAtlas((CCSprite)(child));
             }
 
             base.RemoveChild(child, cleanup);
@@ -848,7 +896,7 @@ namespace cocos2d
                 CCNode[] elements = m_pChildren.Elements;
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
-                    batch.RemoveSpriteFromAtlas((CCSprite) elements[i]);
+                    batch.RemoveSpriteFromAtlas((CCSprite)elements[i]);
                 }
             }
 
@@ -903,7 +951,7 @@ namespace cocos2d
                 CCNode node = m_pParent;
                 while (node != null && node != m_pobBatchNode)
                 {
-                    ((CCSprite) node).SetReorderChildDirtyRecursively();
+                    ((CCSprite)node).SetReorderChildDirtyRecursively();
                     node = node.Parent;
                 }
             }
@@ -975,7 +1023,7 @@ namespace cocos2d
 
             Debug.Assert(a != null, "CCSprite#setDisplayFrameWithAnimationName: Frame not found");
 
-            var frame = (CCAnimationFrame) a.Frames[frameIndex];
+            var frame = (CCAnimationFrame)a.Frames[frameIndex];
 
             Debug.Assert(frame != null, "CCSprite#setDisplayFrame. Invalid frame");
 
@@ -1022,17 +1070,25 @@ namespace cocos2d
     }
 
     public bool CollidesWith(CCSprite other, out CCPoint hitPoint, bool calcPerPixel)
+        {
+            hitPoint = new CCPoint(0, 0);
+            if (other.Texture == null || other.Texture.Texture2D == null)
+            {
+                return (false);
+            }
+            if (Texture == null || Texture.Texture2D == null)
     {
+                return (false);
+            }
         // Get dimensions of texture
         int widthOther = other.Texture.Texture2D.Width;
         int heightOther = other.Texture.Texture2D.Height;
-        int widthMe =  Texture.Texture2D.Width;
+            int widthMe = Texture.Texture2D.Width;
         int heightMe = Texture.Texture2D.Height;
 
-        hitPoint = new CCPoint(0, 0);
         if (calcPerPixel &&                                // if we need per pixel
-            (( Math.Min(widthOther, heightOther) > 100) ||  // at least avoid doing it
-            ( Math.Min(widthMe, heightMe) > 100)))          // for small sizes (nobody will notice :P)
+                ((Math.Min(widthOther, heightOther) > 100) ||  // at least avoid doing it
+                (Math.Min(widthMe, heightMe) > 100)))          // for small sizes (nobody will notice :P)
         {
             return Bounds.Intersects(other.Bounds) // If simple intersection fails, don't even bother with per-pixel
                 && PerPixelCollision(this, other, out hitPoint);
@@ -1044,20 +1100,103 @@ namespace cocos2d
         return Bounds.Intersects(other.Bounds);
     }
 
-    static bool PerPixelCollision(CCSprite a, CCSprite b, out CCPoint hitPoint)
-    {
-        // Get Color data of each Texture
-        Color[] bitsA = new Color[a.Texture.Texture2D.Width * a.Texture.Texture2D.Height];
-        a.Texture.Texture2D.GetData(bitsA);
-        Color[] bitsB = new Color[b.Texture.Texture2D.Width * b.Texture.Texture2D.Height];
-        b.Texture.Texture2D.GetData(bitsB);
+        /// <summary>
+        /// This is the feature mask for the sprite.
+        /// </summary>
+        private byte[] _MyMask;
 
+        public byte[] CollisionMask
+    {
+            get
+            {
+                return (_MyMask);
+            }
+            set
+            {
+                _MyMask = value;
+                // Check the size?
+            }
+        }
+
+        /// <summary>
+        /// Tests the collision mask for the two sprites and returns true if there is a collision. The hit point of the
+        /// collision is returned.
+        /// </summary>
+        /// <param name="a">Sprite A</param>
+        /// <param name="b">Sprite B</param>
+        /// <param name="hitPoint">The place, in real space, where they collide</param>
+        /// <returns>True upon collision and false if not.</returns>
+        static bool MaskCollision(CCSprite a, CCSprite b, out CCPoint hitPoint)
+        {
+            long lStart = DateTime.Now.Ticks;
+            try
+            {
+                byte[] maskA = a.CollisionMask; // bitfield mask of sprite A
+                byte[] maskB = b.CollisionMask; // bitfield mask of sprite B
+                int aWidth = a.Texture.Texture2D.Width / 8; // bitwise stride
+                int bWidth = b.Texture.Texture2D.Width / 8; // bitwise stride
         // Calculate the intersecting rectangle
         int x1 = Math.Max(a.Bounds.X, b.Bounds.X);
         int x2 = Math.Min(a.Bounds.X + a.Bounds.Width, b.Bounds.X + b.Bounds.Width);
 
         int y1 = Math.Max(a.Bounds.Y, b.Bounds.Y);
         int y2 = Math.Min(a.Bounds.Y + a.Bounds.Height, b.Bounds.Y + b.Bounds.Height);
+                // Next extract the bitfields for the intersection rectangles
+                for (int y = y1; y < y2; ++y)
+                {
+                    for (int x = x1; x < x2; x += 8)
+                    {
+                        // Coordinates in the respective sprites
+                        int xA = x - a.Bounds.X;
+                        int yA = y - a.Bounds.Y;
+                        int xB = x - b.Bounds.X;
+                        int yB = y - b.Bounds.Y;
+                        // Get the color from each texture
+                        byte ca = maskA[xA + yA * aWidth];
+                        byte cb = maskB[xB + yB * bWidth];
+
+                        // CCLog.Log("Collision test[{0},{1}] = A{2} == B{3}", x, y, ca.A, cb.A);
+
+                        if (ca > 0 && cb > 0) // If both colors are not transparent (the alpha channel is not 0), then there is a collision
+                        {
+                            // Find the hit point, where on the sprite in real space the collision occurs.
+                            hitPoint = new CCPoint(a.Position.x - a.AnchorPoint.x * a.ContentSizeInPixels.width + x, a.Position.y - a.AnchorPoint.y * a.ContentSizeInPixels.height + y);
+                            return (true);
+                        }
+                    }
+                }
+                hitPoint = new CCPoint(0, 0);
+                return (false);
+            }
+            finally
+            {
+                long diff = DateTime.Now.Ticks - lStart;
+                CCLog.Log("Bitwise Collision took {0:N2} ms", new TimeSpan(diff).TotalMilliseconds);
+            }
+        }
+
+        static bool PerPixelCollision(CCSprite a, CCSprite b, out CCPoint hitPoint)
+        {
+            if (a.CollisionMask != null && b.CollisionMask != null)
+            {
+                return (MaskCollision(a, b, out hitPoint));
+            }
+            long lStart = DateTime.Now.Ticks;
+            try
+            {
+                // Get Color data of each Texture
+                Color[] bitsA = a.Texture.TextureData;
+                Color[] bitsB = b.Texture.TextureData;
+                int aW = a.Texture.Texture2D.Width;
+                int bW = b.Texture.Texture2D.Width;
+                // Calculate the intersecting rectangle
+                Rectangle aBounds = a.Bounds;
+                Rectangle bBounds = b.Bounds;
+                int x1 = Math.Max(aBounds.X, bBounds.X);
+                int x2 = Math.Min(aBounds.X + aBounds.Width, bBounds.X + bBounds.Width);
+
+                int y1 = Math.Max(aBounds.Y, bBounds.Y);
+                int y2 = Math.Min(aBounds.Y + aBounds.Height, bBounds.Y + bBounds.Height);
 
         hitPoint = new CCPoint(0, 0);
          // For each single pixel in the intersecting rectangle
@@ -1066,14 +1205,15 @@ namespace cocos2d
              for (int x = x1; x < x2; ++x)
              {
                  // Get the color from each texture
-                 Color ca = bitsA[(x - a.Bounds.X) + (y - a.Bounds.Y)*a.Texture.Texture2D.Width];
-                 Color cb = bitsB[(x - b.Bounds.X) + (y - b.Bounds.Y)*b.Texture.Texture2D.Width];
+                        Color ca = bitsA[(x - aBounds.X) + (y - aBounds.Y) * aW];
+                        Color cb = bitsB[(x - bBounds.X) + (y - bBounds.Y) * bW];
 
                  // CCLog.Log("Collision test[{0},{1}] = A{2} == B{3}", x, y, ca.A, cb.A);
 
                  if (ca.A != 0 && cb.A != 0) // If both colors are not transparent (the alpha channel is not 0), then there is a collision
                  {
-                     hitPoint = new CCPoint(a.Position.x + x, a.Position.y + y);
+                            // Find the hit point, where on the sprite in real space the collision occurs.
+                            hitPoint = new CCPoint(a.Position.x - a.AnchorPoint.x * a.ContentSizeInPixels.width + x, a.Position.y - a.AnchorPoint.y * a.ContentSizeInPixels.height + y);
                      return true;
                  }
              }
@@ -1081,6 +1221,12 @@ namespace cocos2d
         // If no collision occurred by now, we're clear.
         return false;
     }
+            finally
+            {
+                long diff = DateTime.Now.Ticks - lStart;
+                CCLog.Log("PerPixel Collision took {0:N2} ms", new TimeSpan(diff).TotalMilliseconds);
+            }
+        }
 
     private Rectangle bounds = Rectangle.Empty;
     public virtual Rectangle Bounds
@@ -1088,8 +1234,8 @@ namespace cocos2d
         get
         {
             return new Rectangle(
-                (int)(Position.x - Texture.ContentSize.width/2f),
-                (int)(Position.y - Texture.ContentSize.height/2f),
+                    (int)(Position.x - Texture.ContentSize.width / 2f),
+                    (int)(Position.y - Texture.ContentSize.height / 2f),
                 (int)Texture.ContentSize.width,
                 (int)Texture.ContentSize.height);
         }

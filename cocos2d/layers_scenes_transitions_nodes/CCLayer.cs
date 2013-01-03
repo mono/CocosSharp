@@ -33,7 +33,8 @@ namespace cocos2d
     {
         private bool m_bIsAccelerometerEnabled;
         private bool m_bKeypadEnabled;
-        private bool m_bIsTouchEnabled;
+        private bool m_bIsMultiTouchEnabled;
+        private bool m_bIsSingleTouchEnabled;
         //private bool m_bMouseEnabled;
         //private bool m_bGamePadEnabled;
 
@@ -71,7 +72,8 @@ namespace cocos2d
                 }
 
 //                ContentSize = director.WinSize;
-                m_bIsTouchEnabled = false;
+                m_bIsMultiTouchEnabled = false;
+                m_bIsSingleTouchEnabled = false;
                 m_bIsAccelerometerEnabled = false;
 
                 bRet = true;
@@ -84,7 +86,7 @@ namespace cocos2d
         {
             // register 'parent' nodes first
             // since events are propagated in reverse order
-            if (m_bIsTouchEnabled)
+            if (m_bIsMultiTouchEnabled || m_bIsSingleTouchEnabled)
             {
                 RegisterWithTouchDispatcher();
             }
@@ -113,7 +115,7 @@ namespace cocos2d
         {
             CCDirector director = CCDirector.SharedDirector;
 
-            if (m_bIsTouchEnabled)
+            if (m_bIsMultiTouchEnabled || m_bIsSingleTouchEnabled)
             {
                 director.TouchDispatcher.RemoveDelegate(this);
                 //unregisterScriptTouchHandler();
@@ -166,18 +168,48 @@ namespace cocos2d
                 return;
             }
             */
+            if (m_bIsSingleTouchEnabled)
+            {
+                pDispatcher.AddTargetedDelegate(this, 0, true);
+            }
+            if (m_bIsMultiTouchEnabled)
+            {
 
             pDispatcher.AddStandardDelegate(this, 0);
+            }
         }
 
-        public virtual bool TouchEnabled
+        public virtual bool SingleTouchEnabled
         {
-            get { return m_bIsTouchEnabled; }
+            get { return m_bIsSingleTouchEnabled; }
             set
             {
-                if (m_bIsTouchEnabled != value)
+                if (m_bIsSingleTouchEnabled != value)
                 {
-                    m_bIsTouchEnabled = value;
+                    m_bIsSingleTouchEnabled = value;
+
+                    if (m_bIsRunning)
+                    {
+                        if (value)
+                        {
+                            RegisterWithTouchDispatcher();
+                        }
+                        else
+                        {
+                            CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
+                        }
+                    }
+                }
+            }
+        }
+        public virtual bool TouchEnabled
+        {
+            get { return m_bIsMultiTouchEnabled; }
+            set
+            {
+                if (m_bIsMultiTouchEnabled != value)
+                {
+                    m_bIsMultiTouchEnabled = value;
 
                     if (m_bIsRunning)
                     {

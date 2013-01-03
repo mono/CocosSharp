@@ -22,6 +22,7 @@ THE SOFTWARE.
 ****************************************************************************/
 
 using System;
+using System.IO;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
@@ -57,6 +58,10 @@ namespace cocos2d
             return ((point1.x == point2.x) && (point1.y == point2.y));
         }
 
+        public CCPoint Offset(float dx, float dy)
+        {
+            return (new CCPoint(x + dx, y + dy));
+        }
         public CCPoint Reverse
         {
             get
@@ -234,6 +239,13 @@ namespace cocos2d
         public CCPoint origin;
         public CCSize size;
 
+        /// <summary>
+        /// Creates the rectangle at (x,y) -> (width,height)
+        /// </summary>
+        /// <param name="x">Lower Left corner X</param>
+        /// <param name="y">Lower left corner Y</param>
+        /// <param name="width">width of the rectangle</param>
+        /// <param name="height">height of the rectangle</param>
         public CCRect(float x, float y, float width, float height)
         {
             origin = new CCPoint();

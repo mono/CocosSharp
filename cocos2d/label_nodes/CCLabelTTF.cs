@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace cocos2d
 {
@@ -31,7 +32,7 @@ namespace cocos2d
                     m_pFontName = value;
                     if (m_pString.Length > 0)
                     {
-                        updateTexture();
+                        Refresh();
                     }
                 }
             }
@@ -47,7 +48,7 @@ namespace cocos2d
                     m_fFontSize = value;
                     if (m_pString.Length > 0)
                     {
-                        updateTexture();
+                        Refresh();
                     }
                 }
             }
@@ -63,7 +64,7 @@ namespace cocos2d
                     m_tDimensions = value;
                     if (m_pString.Length > 0)
                     {
-                        updateTexture();
+                        Refresh();
                     }
                 }
             }
@@ -79,7 +80,7 @@ namespace cocos2d
                     m_vAlignment = value;
                     if (m_pString.Length > 0)
                     {
-                        updateTexture();
+                        Refresh();
                     }
                 }
             }
@@ -95,21 +96,54 @@ namespace cocos2d
                     m_hAlignment = value;
                     if (m_pString.Length > 0)
                     {
-                        updateTexture();
+                        Refresh();
                     }
                 }
+                    }
+                }
+
+        internal void Refresh()
+        {
+            //
+            // This can only happen when the frame buffer is ready...
+            //
+            try
+            {
+                updateTexture();
+                Dirty = false;
+            }
+            catch (Exception)
+            {
             }
         }
 
         #region ICCLabelProtocol Members
 
+/*
+ * This is where the texture should be created, but it messes with the drawing 
+ * of the object tree
+ * 
+        public override void Draw()
+        {
+            if (Dirty)
+            {
+                updateTexture();
+                Dirty = false;
+            }
+            base.Draw();
+        }
+*/
+
         public void SetString(string label)
         {
+            // This is called in the update() call, so it should not do any drawing ...
             if (m_pString != label)
             {
                 m_pString = label;
                 updateTexture();
+                Dirty = false;
             }
+//            Dirty = true;
         }
 
         public string GetString()
@@ -194,6 +228,12 @@ namespace cocos2d
         private void updateTexture()
         {
             CCTexture2D tex;
+
+            // Dump the old one
+            if (Texture != null)
+            {
+                Texture.Dispose();
+            }
 
             // let system compute label's width or height when its value is 0
             // refer to cocos2d-x issue #1430

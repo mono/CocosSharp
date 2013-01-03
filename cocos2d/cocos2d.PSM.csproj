@@ -385,6 +385,8 @@
     <Compile Include="touch_dispatcher\ICCTargetedTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\IEGLTouchDelegate.cs" />
+    <Compile Include="Platform\CCAccelerometer.cs" />
+    <Compile Include="Platform\CCSpriteFontCache.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />

@@ -6,10 +6,9 @@ namespace cocos2d
 {
     public class CCAccelerometer
     {
-#if !WINDOWS
+#if !WINDOWS && !PSM
         // the accelerometer sensor on the device
-        private static Microsoft.Devices.Sensors.Accelerometer accelerometer = 
-            new Microsoft.Devices.Sensors.Accelerometer();
+        private static Microsoft.Devices.Sensors.Accelerometer accelerometer = null;
 #endif
 
         private const float TG3_GRAVITY_EARTH = 9.80665f;
@@ -18,6 +17,20 @@ namespace cocos2d
 
         private bool m_bActive;
         private bool m_bEmulation;
+
+        static CCAccelerometer()
+        {
+#if !WINDOWS && !PSM
+            try
+            {
+                accelerometer = new Microsoft.Devices.Sensors.Accelerometer();
+            }
+            catch (Exception ex)
+            {
+                CCLog.Log("No accelerometer on platform. CCAccelerometer will default to emulation code.");
+            }
+#endif
+        }
 
         private void ResetAccelerometer()
         {
@@ -31,22 +44,22 @@ namespace cocos2d
             m_pAccelDelegate = pDelegate;
 
             if (pDelegate != null && !m_bActive)
-            {
-#if !WINDOWS
-                if (Microsoft.Devices.Sensors.Accelerometer.IsSupported)            
                 {
+#if !WINDOWS && !PSM
                     try
+                {
+                    if (Microsoft.Devices.Sensors.Accelerometer.IsSupported)
                     {
                         accelerometer.CurrentValueChanged += accelerometer_CurrentValueChanged;
                         accelerometer.Start();
                         m_bActive = true;
                     }
-                    catch (Microsoft.Devices.Sensors.AccelerometerFailedException)
+                    else
                     {
                         m_bActive = false;
                     }
                 }
-                else
+                catch (Microsoft.Devices.Sensors.AccelerometerFailedException)
                 {
                     m_bActive = false;
                 }
@@ -65,9 +78,12 @@ namespace cocos2d
             {
                 if (m_bActive && !m_bEmulation)
                 {
-#if !WINDOWS
+#if !WINDOWS && !PSM
+                    if (accelerometer != null)
+                    {
                     accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
                     accelerometer.Stop();
+                    }
 #endif
                 }
                 
@@ -79,7 +95,7 @@ namespace cocos2d
         }
 
 
-#if !WINDOWS
+#if !WINDOWS && !PSM
         private void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
             // store the accelerometer value in our variable to be used on the next Update

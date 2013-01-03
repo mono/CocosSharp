@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace cocos2d
 {
@@ -117,6 +118,133 @@ namespace cocos2d
             m_pActionManager = director.ActionManager;
             m_pScheduler = director.Scheduler;
         }
+
+#if ANDROID
+        /// <summary>
+        /// Sets all of the sprite font labels as dirty so they redraw. This is necessary
+        /// in Android when the application resumes from the background.
+        /// </summary>
+        public virtual void DirtyLabels()
+        {
+            if (Children == null || Children.Count == 0)
+            {
+                return;
+            }
+            foreach (CCNode node in Children)
+            {
+                if (node == null)
+                {
+                    continue;
+                }
+                if (node is CCLabelTTF)
+                {
+                    ((CCLabelTTF)node).Dirty = true;
+                    ((CCLabelTTF)node).Refresh();
+                }
+                node.DirtyLabels();
+            }
+        }
+#endif
+        #region Game State Management
+        /// <summary>
+        /// Gets whether or not this scene is serializable. If this is true,
+        /// the screen will be recorded into the director's state and
+        /// its Serialize and Deserialize methods will be called as appropriate.
+        /// If this is false, the screen will be ignored during serialization.
+        /// By default, all screens are assumed to be serializable.
+        /// </summary>
+        public virtual bool IsSerializable
+        {
+            get { return m_isSerializable; }
+            protected set { m_isSerializable = value; }
+        }
+
+        private bool m_isSerializable = true;
+
+        /// <summary>
+        /// Tells the screen to serialize its state into the given stream.
+        /// </summary>
+        public virtual void Serialize(Stream stream) 
+        {
+            StreamWriter sw = new StreamWriter(stream);
+            SerializeData(m_bIsVisible, sw);
+            SerializeData(m_fRotation, sw);
+            SerializeData(m_fScaleX, sw);
+            SerializeData(m_fScaleY, sw);
+            SerializeData(m_fSkewX, sw);
+            SerializeData(m_fSkewY, sw);
+            SerializeData(m_fVertexZ, sw);
+            SerializeData(m_bIgnoreAnchorPointForPosition, sw);
+            SerializeData(m_bIsInverseDirty, sw);
+            SerializeData(m_bIsRunning, sw);
+            SerializeData(m_bIsTransformDirty, sw);
+            SerializeData(m_bReorderChildDirty, sw);
+            SerializeData(m_nOrderOfArrival, sw);
+            SerializeData(m_nTag, sw);
+            SerializeData(m_nZOrder, sw);
+            SerializeData(m_tAnchorPoint, sw);
+            SerializeData(m_tContentSize, sw);
+            SerializeData(Position, sw);
+            if (m_pChildren != null)
+            {
+                SerializeData(m_pChildren.Count, sw);
+                foreach (CCNode child in m_pChildren)
+                {
+                    sw.WriteLine(child.GetType().AssemblyQualifiedName);
+                }
+                foreach (CCNode child in m_pChildren)
+                {
+                    child.Serialize(stream);
+                }
+            }
+            else
+            {
+                SerializeData(0, sw); // No children
+            }
+        }
+
+        /// <summary>
+        /// Tells the screen to deserialize its state from the given stream.
+        /// </summary>
+        public virtual void Deserialize(Stream stream) 
+        {
+            StreamReader sr = new StreamReader(stream);
+            m_bIsVisible = DeSerializeBool(sr); 
+            m_fRotation = DeSerializeFloat(sr);
+            m_fScaleX = DeSerializeFloat(sr);
+            m_fScaleY = DeSerializeFloat(sr);
+            m_fSkewX = DeSerializeFloat(sr);
+            m_fSkewY = DeSerializeFloat(sr);
+            m_fVertexZ = DeSerializeFloat(sr);
+            m_bIgnoreAnchorPointForPosition = DeSerializeBool(sr);
+            m_bIsInverseDirty = DeSerializeBool(sr);
+            m_bIsRunning = DeSerializeBool(sr);
+            m_bIsTransformDirty = DeSerializeBool(sr);
+            m_bReorderChildDirty = DeSerializeBool(sr);
+            m_nOrderOfArrival = DeSerializeInt(sr);
+            m_nTag = DeSerializeInt(sr);
+            m_nZOrder = DeSerializeInt(sr);
+            AnchorPoint = DeSerializePoint(sr);
+            ContentSize = DeSerializeSize(sr);
+            Position = DeSerializePoint(sr);
+            // m_UserData is handled by the specialized class.
+            // TODO: Serializze the action manager
+            // TODO :Serialize the grid
+            // TODO: Serialize the camera
+            string s;
+            int count = DeSerializeInt(sr);
+            for (int i = 0; i < count; i++)
+            {
+                s = sr.ReadLine();
+                Type screenType = Type.GetType(s);
+                CCNode scene = Activator.CreateInstance(screenType) as CCNode;
+                AddChild(scene);
+                scene.Deserialize(stream);
+        }
+        }
+
+
+        #endregion
 
         public int Tag
         {

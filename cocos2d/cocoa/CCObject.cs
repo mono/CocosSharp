@@ -22,6 +22,9 @@ THE SOFTWARE.
 ****************************************************************************/
 
 using System.Diagnostics;
+using System.IO;
+using System;
+
 namespace cocos2d
 {
     public interface CCCopying
@@ -44,5 +47,95 @@ namespace cocos2d
             Debug.Assert(false);
             return null;
         }
+        #region Raw Serializers
+        protected void SerializeData(CCPoint pt, StreamWriter sw)
+        {
+            sw.WriteLine("{0} {1}", pt.x, pt.y);
+        }
+        protected void SerializeData(CCSize pt, StreamWriter sw)
+        {
+            sw.WriteLine("{0} {1}", pt.width, pt.height);
+        }
+        protected void SerializeData(float f, StreamWriter sw)
+        {
+            sw.WriteLine(f.ToString());
+        }
+        protected void SerializeData(int f, StreamWriter sw)
+        {
+            sw.WriteLine(f.ToString());
+        }
+        protected void SerializeData(bool f, StreamWriter sw)
+        {
+            sw.WriteLine(f.ToString());
+        }
+        protected void SerializeData(CCRect r, StreamWriter sw)
+        {
+            SerializeData(r.origin, sw);
+            SerializeData(r.size, sw);
+        }
+        protected bool DeSerializeBool(StreamReader sr)
+        {
+            string s = sr.ReadLine();
+            if (s == null)
+            {
+                CCLog.Log("DeSerializeBool: null");
+                return (false);
+            }
+            return (bool.Parse(s));
+        }
+        protected float DeSerializeFloat(StreamReader sr)
+        {
+            string s = sr.ReadLine();
+            if (s == null)
+            {
+                CCLog.Log("DeSerializeFloat: null");
+                return (0f);
+        }
+            return (ccUtils.ccParseFloat(s));
+        }
+        protected int DeSerializeInt(StreamReader sr)
+        {
+            string s = sr.ReadLine();
+            if (s == null)
+            {
+                CCLog.Log("DeSerializeInt: null");
+                return (0);
+            }
+            return (ccUtils.ccParseInt(s));
+        }
+        protected CCRect DeSerializeRect(StreamReader sr)
+        {
+            CCPoint pt = DeSerializePoint(sr);
+            CCSize sz = DeSerializeSize(sr);
+            return (new CCRect(pt.x, pt.y, sz.width, sz.height));
+        }
+        protected CCSize DeSerializeSize(StreamReader sr)
+        {
+            string x = sr.ReadLine();
+            if(x == null ){
+                CCLog.Log("DeSerializeSize: null");
+                return(CCSize.Zero);
+            }
+            CCSize pt = new CCSize();
+            string[] s = x.Split(' ');
+            pt.width = ccUtils.ccParseFloat(s[0]);
+            pt.height = ccUtils.ccParseFloat(s[1]);
+            return (pt);
+        }
+        protected CCPoint DeSerializePoint(StreamReader sr)
+        {
+            string x = sr.ReadLine();
+            if (x == null)
+            {
+                CCLog.Log("DeSerializePoint: null");
+                return (CCPoint.Zero);
+            }
+            CCPoint pt = new CCPoint();
+            string[] s = x.Split(' ');
+            pt.x = ccUtils.ccParseFloat(s[0]);
+            pt.y = ccUtils.ccParseFloat(s[1]);
+            return (pt);
+        }
+        #endregion
     }
 }

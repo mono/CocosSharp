@@ -91,7 +91,7 @@ namespace cocos2d
     /// Depending on how you create the CCTexture2D object, the actual image area of the texture might be smaller than the texture dimensions i.e. "contentSize" != (pixelsWide, pixelsHigh) and (maxS, maxT) != (1.0, 1.0).
     /// Be aware that the content of the generated textures will be upside-down!
     /// </summary>
-    public class CCTexture2D : CCObject
+    public class CCTexture2D : CCObject, IDisposable
     {
         // If the image has alpha, you can create RGBA8 (32-bit) or RGBA4 (16-bit) or RGB5A1 (16-bit)
         // Default is: RGBA8888 (32-bit textures)
@@ -108,9 +108,114 @@ namespace cocos2d
         private int m_uPixelsHigh;
 
         private int m_uPixelsWide;
-        public Texture2D texture2D;
+        private Texture2D m_texture2D;
+        private bool m_bIsManaged = false;
+        private string m_ContentFile = null;
+
+        public string ContentFile
+        {
+            get
+            {
+                return (m_ContentFile);
+            }
+            set
+            {
+                m_ContentFile = value;
+            }
+        }
+
+        public bool IsManaged
+        {
+            get
+            {
+                return (m_bIsManaged);
+            }
+            set
+            {
+                m_bIsManaged = value;
+            }
+        }
+
+        public bool IsTextureDefined
+        {
+            get
+            {
+                return (m_texture2D != null && !m_texture2D.IsDisposed);
+            }
+        }
+
+        public Texture2D texture2D
+        {
+            get
+            {
+                if (m_texture2D != null && m_texture2D.IsDisposed)
+                {
+                    // Need to get it from the cache?
+                    if (IsManaged)
+                    {
+                        CCTextureCache.SharedTextureCache.ReloadMyTexture(this);
+                    }
+                    else if (m_spriteFont != null && m_CallParams != null)
+                    {
+                        // THis is a label, so restore it using hte call parameters.
+                        InitWithString((string)m_CallParams[0], (CCSize)m_CallParams[1], (CCTextAlignment)m_CallParams[2], (CCVerticalTextAlignment)m_CallParams[3], (string)m_CallParams[4], (float)m_CallParams[5]);
+                    }
+                }
+                else if(m_texture2D == null)
+                {
+                    if (m_ContentFile != null)
+                    {
+                        CCLog.Log("CCTexture2D: Creating myself as a new texture from {0}", m_ContentFile);
+
+                        CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(m_ContentFile);
+                        m_texture2D = texture.m_texture2D;
+                    }
+                    else if (m_spriteFont != null && m_CallParams != null)
+                    {
+                        CCLog.Log("CCTexture2D: creating the sprite font label from call parameters.");
+                        // THis is a label, so restore it using hte call parameters.
+                        InitWithString((string)m_CallParams[0], (CCSize)m_CallParams[1], (CCTextAlignment)m_CallParams[2], (CCVerticalTextAlignment)m_CallParams[3], (string)m_CallParams[4], (float)m_CallParams[5]);
+                    }
+                    else if (m_spriteFont != null)
+                    {
+                        CCLog.Log("Oops - need to recreate the texture for the spritefont!");
+                    }
+                    else
+                    {
+                        // CCLog.Log("CCTexture2D: null Texture2D object, refresh the content manager!");
+                    }
+                }
+                return (m_texture2D);
+            }
+            set
+            {
+                m_texture2D = value;
+            }
+        }
 
         internal bool m_bAliased;
+
+        /// <summary>
+        /// Contains the full pixmap of the sprite - very expensive
+        /// </summary>
+        private Color[] _MyTextureData;
+
+        /// <summary>
+        /// Returns the pixmap of the sprite - this requries a tremendous amount of memory
+        /// </summary>
+        public Color[] TextureData
+        {
+            get
+            {
+                if (_MyTextureData == null)
+                {
+                    Color[] bitsA = new Color[Texture2D.Width * Texture2D.Height];
+                    Texture2D.GetData(bitsA);
+                    _MyTextureData = bitsA;
+                }
+                return (_MyTextureData);
+            }
+        }
 
         /// <summary>
         /// pixel format of the texture
@@ -362,166 +467,178 @@ namespace cocos2d
 
         #region create extensions
 
+        private object[] m_CallParams;
+
         public bool InitWithString(string text, string fontName, float fontSize)
         {
             return InitWithString(text, CCSize.Zero, CCTextAlignment.CCTextAlignmentCenter, CCVerticalTextAlignment.CCVerticalTextAlignmentTop,
                                   fontName, fontSize);
         }
 
+        private SpriteFont m_spriteFont;
+
         public bool InitWithString(string text, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, string fontName,
                                    float fontSize)
         {
-            Debug.Assert(dimensions.width >= 0 || dimensions.height >= 0);
-
-            if (string.IsNullOrEmpty(text))
-            {
-                return false;
-            }
-
-            SpriteFont font;
-
             try
             {
-                font = CCApplication.SharedApplication.Content.Load<SpriteFont>("fonts/" + fontName);
-            }
-            catch (Exception)
-            {
-                CCLog.Log("Can't found {0}, use {0}-{1} default", fontName, fontSize);
-                try
+                m_CallParams = new object[] { text, dimensions, hAlignment, vAlignment, fontName, fontSize };
+
+                CCLog.Log("InitWithString: text={0}", text);
+
+                Debug.Assert(dimensions.width >= 0 || dimensions.height >= 0);
+
+                if (string.IsNullOrEmpty(text))
                 {
-                font = CCApplication.SharedApplication.Content.Load<SpriteFont>("fonts/" + fontName + "-" + fontSize.ToString());
-            }
-            catch
-            {
-                CCLog.Log("Can't found {0}, use system default", fontName);
-                    try
-                    {
-                font = CCApplication.SharedApplication.Content.Load<SpriteFont>("fonts/" + DrawManager.DefaultFont + "-" + fontSize.ToString());
-            }
-                    catch
-                    {
-                        font = CCApplication.SharedApplication.Content.Load<SpriteFont>("fonts/" + DrawManager.DefaultFont);
-                    }
+                    return false;
                 }
-            }
 
-            if (dimensions.equals(CCSize.Zero))
-            {
-                Vector2 temp = font.MeasureString(text);
-                dimensions.width = temp.X;
-                dimensions.height = temp.Y;
-            }
+                SpriteFont font = m_spriteFont;
 
-            //float scale = 1.0f;//need refer fontSize;
-
-            var textList = new List<String>();
-            var nextText = new StringBuilder();
-            string[] lineList = text.Split('\n');
-
-            float spaceWidth = font.MeasureString(" ").X;
-
-            for (int j = 0; j < lineList.Length; ++j)
-            {
-                string[] wordList = lineList[j].Split(' ');
-
-                float lineWidth = 0;
-                bool firstWord = true;
-                for (int i = 0; i < wordList.Length; ++i)
+                if (font == null)
                 {
-                    lineWidth += font.MeasureString(wordList[i]).X;
-
-                    if (lineWidth > dimensions.width)
+                    font = CCSpriteFontCache.SharedInstance.GetFont(fontName, fontSize);
+                    if (font == null)
                     {
-                        lineWidth = 0;
-
-                        if (nextText.Length > 0)
+                        CCLog.Log("Can't find {0}, use system default ({1})", fontName, DrawManager.DefaultFont);
+                        font = CCSpriteFontCache.SharedInstance.GetFont(DrawManager.DefaultFont, fontSize);
+                        if (font == null)
                         {
-                            firstWord = true;
-                            textList.Add(nextText.ToString());
-                            nextText.Clear();
-                        }
-                        else
-                        {
-                            firstWord = false;
-                            textList.Add(wordList[i]);
-                            continue;
+                            CCLog.Log("Failed to load default font. No font supported.");
                         }
                     }
+                    // m_spriteFont = font;
+                }
+                
+                if (font == null)
+                    return (false);
 
-                    if (!firstWord)
+                // m_spriteFont = font;
+
+                if (dimensions.equals(CCSize.Zero))
+                {
+                    Vector2 temp = font.MeasureString(text);
+                    dimensions.width = temp.X;
+                    dimensions.height = temp.Y;
+                }
+
+                //float scale = 1.0f;//need refer fontSize;
+
+                var textList = new List<String>();
+                var nextText = new StringBuilder();
+                string[] lineList = text.Split('\n');
+
+                float spaceWidth = font.MeasureString(" ").X;
+
+                for (int j = 0; j < lineList.Length; ++j)
+                {
+                    string[] wordList = lineList[j].Split(' ');
+
+                    float lineWidth = 0;
+                    bool firstWord = true;
+                    for (int i = 0; i < wordList.Length; ++i)
                     {
-                        nextText.Append(' ');
-                        lineWidth += spaceWidth;
+                        lineWidth += font.MeasureString(wordList[i]).X;
+
+                        if (lineWidth > dimensions.width)
+                        {
+                            lineWidth = 0;
+
+                            if (nextText.Length > 0)
+                            {
+                                firstWord = true;
+                                textList.Add(nextText.ToString());
+                                nextText.Clear();
+                            }
+                            else
+                            {
+                                firstWord = false;
+                                textList.Add(wordList[i]);
+                                continue;
+                            }
+                        }
+
+                        if (!firstWord)
+                        {
+                            nextText.Append(' ');
+                            lineWidth += spaceWidth;
+                        }
+
+                        nextText.Append(wordList[i]);
+                        firstWord = false;
                     }
 
-                    nextText.Append(wordList[i]);
-                    firstWord = false;
+                    textList.Add(nextText.ToString());
+                    nextText.Clear();
                 }
 
-                textList.Add(nextText.ToString());
-                nextText.Clear();
-            }
-
-            if (dimensions.height == 0)
-            {
-                dimensions.height = textList.Count * font.LineSpacing;
-            }
-
-            //*  for render to texture
-            RenderTarget2D renderTarget = DrawManager.CreateRenderTarget((int) dimensions.width, (int) dimensions.height,
-                                                                         RenderTargetUsage.DiscardContents);
-            DrawManager.SetRenderTarget(renderTarget);
-            DrawManager.Clear(Color.Transparent);
-
-            SpriteBatch spriteBatch = DrawManager.spriteBatch;
-
-            spriteBatch.Begin();
-
-            int textHeight = textList.Count * font.LineSpacing;
-            float nextY = 0;
-
-            if (vAlignment == CCVerticalTextAlignment.CCVerticalTextAlignmentBottom)
-            {
-                nextY = dimensions.height - textHeight;
-            }
-            else if (vAlignment == CCVerticalTextAlignment.CCVerticalTextAlignmentCenter)
-            {
-                nextY = (dimensions.height - textHeight) / 2.0f;
-            }
-
-            for (int j = 0; j < textList.Count; ++j)
-            {
-                string line = textList[j];
-
-                var position = new Vector2(0, nextY);
-
-                if (hAlignment == CCTextAlignment.CCTextAlignmentRight)
+                if (dimensions.height == 0)
                 {
-                    position.X = dimensions.width - font.MeasureString(line).X;
+                    dimensions.height = textList.Count * font.LineSpacing;
                 }
-                else if (hAlignment == CCTextAlignment.CCTextAlignmentCenter)
+
+                //*  for render to texture
+                RenderTarget2D renderTarget = DrawManager.CreateRenderTarget((int)dimensions.width, (int)dimensions.height,
+                                                                              RenderTargetUsage.PreserveContents);
+                DrawManager.SetRenderTarget(renderTarget);
+
+                DrawManager.Clear(Color.Transparent);
+
+                SpriteBatch spriteBatch = DrawManager.spriteBatch;
+
+                spriteBatch.Begin();
+
+                int textHeight = textList.Count * font.LineSpacing;
+                float nextY = 0;
+
+                if (vAlignment == CCVerticalTextAlignment.CCVerticalTextAlignmentBottom)
                 {
-                    position.X = (dimensions.width - font.MeasureString(line).X) / 2.0f;
+                    nextY = dimensions.height - textHeight;
+                }
+                else if (vAlignment == CCVerticalTextAlignment.CCVerticalTextAlignmentCenter)
+                {
+                    nextY = (dimensions.height - textHeight) / 2.0f;
                 }
 
-                spriteBatch.DrawString(font, line, position, Color.White);
-                nextY += font.LineSpacing;
+                for (int j = 0; j < textList.Count; ++j)
+                {
+                    string line = textList[j];
+
+                    var position = new Vector2(0, nextY);
+
+                    if (hAlignment == CCTextAlignment.CCTextAlignmentRight)
+                    {
+                        position.X = dimensions.width - font.MeasureString(line).X;
+                    }
+                    else if (hAlignment == CCTextAlignment.CCTextAlignmentCenter)
+                    {
+                        position.X = (dimensions.width - font.MeasureString(line).X) / 2.0f;
+                    }
+
+                    spriteBatch.DrawString(font, line, position, Color.White);
+                    nextY += font.LineSpacing;
+                }
+                spriteBatch.End();
+
+                DrawManager.graphicsDevice.RasterizerState = RasterizerState.CullNone;
+                DrawManager.graphicsDevice.DepthStencilState = DepthStencilState.Default;
+
+                DrawManager.SetRenderTarget((RenderTarget2D)null);
+
+                // to copy the rendered target data to a plain texture(to the memory)
+                //            texture2D = DrawManager.CreateTexture2D(renderTarget.Width, renderTarget.Height);
+                // This is the old 3.1 way of doing things. 4.0 does not need this and it causes compatibility problems.
+
+                //            var colors1D = new Color[renderTarget.Width * renderTarget.Height];
+                //            renderTarget.GetData(colors1D);
+                //            texture2D.SetData(colors1D);
+                return InitWithTexture(renderTarget);
             }
-            spriteBatch.End();
-
-            DrawManager.graphicsDevice.RasterizerState = RasterizerState.CullNone;
-            DrawManager.graphicsDevice.DepthStencilState = DepthStencilState.Default;
-
-            DrawManager.SetRenderTarget((RenderTarget2D) null);
-
-            // to copy the rendered target data to a plain texture(to the memory)
-            texture2D = DrawManager.CreateTexture2D(renderTarget.Width, renderTarget.Height);
-
-            var colors1D = new Color[renderTarget.Width * renderTarget.Height];
-            renderTarget.GetData(colors1D);
-            texture2D.SetData(colors1D);
-
-            return InitWithTexture(texture2D);
+            catch (Exception ex)
+            {
+                CCLog.Log(ex.ToString());
+            }
+            return (false);
         }
 
         /** Initializes a texture from a PVR file */
@@ -551,12 +668,16 @@ namespace cocos2d
                                         maxTextureSize));
                 return false;
             }
-
+#if IPHONE
+            m_bHasPremultipliedAlpha = false;
+            return InitTextureWithImage(texture, texture.Width, texture.Height);
+#else
             return InitPremultipliedATextureWithImage(texture, texture.Width, texture.Height);
+#endif
         }
 
 
-        public bool InitPremultipliedATextureWithImage(Texture2D texture, int POTWide, int POTHigh)
+        public bool InitTextureWithImage(Texture2D texture, int POTWide, int POTHigh)
         {
             texture2D = texture;
             m_tContentSize.width = texture2D.Width;
@@ -567,9 +688,16 @@ namespace cocos2d
             //m_ePixelFormat = pixelFormat;
             m_fMaxS = m_tContentSize.width / (POTWide);
             m_fMaxT = m_tContentSize.height / (POTHigh);
+            return true;
+        }
 
+        public bool InitPremultipliedATextureWithImage(Texture2D texture, int POTWide, int POTHigh)
+        {
+            if (!InitTextureWithImage(texture, POTWide, POTHigh))
+            {
+                return (false);
+            }
             m_bHasPremultipliedAlpha = true;
-
             return true;
         }
 
@@ -588,5 +716,24 @@ namespace cocos2d
         //}
 
         // By default PVR images are treated as if they don't have the alpha channel premultiplied
+
+        #region IDisposable Members
+
+        /// <summary>
+        /// Dumps the texture2D used by this texture.
+        /// </summary>
+        public void Dispose()
+        {
+            if (!m_bIsManaged)
+            {
+                if (m_texture2D != null && !m_texture2D.IsDisposed)
+                {
+                    m_texture2D.Dispose();
+                    m_texture2D = null;
+                }
+            }
+        }
+
+        #endregion
     }
 }

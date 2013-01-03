@@ -47,3 +47,18 @@ and Totally Evil Entertainment, LLC.
 * CCSprite : Added sprite collision detection. This appears to be very slow on some android devices.
 * CCDirector : Added CanPopScene to return true if there is more than one scene on the stack.
 * CCScheduler : Added try/finally to ensure that the update lock and current target get reset.
+
+* CCNode : Added android specific code to refresh sprite font labels during re-activation.
+* CCGeometry : Adding convenience methods to CCPoint
+* CCObject : Added data serializers for data state deserialization.
+* CCLabelTTF : Added dispose calls on the CCTexture2D for rendered labels.
+* CCLayer : Added multi and single touch distinctions to touch handling.
+* CCApplication : Added android specific activation support code to fix disappearing textures and labels.
+* CCApplication : Added automatic media state recovery upon game deactivation.
+* DrawManager : Added code to check the status of the graphics device to prevent creating render targets
+  when the framebuffer is not initialized.
+* CCSprite : Added a bit based collision mask for sprite collisions.
+* CCTexture2D : Added smarter code to handle resurrecting textures after the game activates from a
+  sleep state.
+* CCTextureCache : Added a dispose method and code to reconstrucct the texture cache upon activation.
+* CCDirector : Improved the serialization and deserialization code.

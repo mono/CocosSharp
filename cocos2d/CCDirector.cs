@@ -105,9 +105,14 @@ namespace cocos2d
                 }
 
                 // create a file we'll use to store the list of screens in the stack
-                using (IsolatedStorageFileStream stream = storage.CreateFile(Path.Combine(m_sStorageDirName, m_sSaveFileName)))
+
+                CCLog.Log("Saving CCDirector state to file: " + Path.Combine(m_sStorageDirName, m_sSaveFileName));
+
+                try
                 {
-                    using (BinaryWriter writer = new BinaryWriter(stream))
+                    using (IsolatedStorageFileStream stream = storage.OpenFile(Path.Combine(m_sStorageDirName, m_sSaveFileName), FileMode.OpenOrCreate))
+                    {
+                        using (StreamWriter writer = new StreamWriter(stream))
                     {
                         // write out the full name of all the types in our stack so we can
                         // recreate them if needed.
@@ -115,14 +120,18 @@ namespace cocos2d
                         {
                             if (scene.IsSerializable)
                             {
-                                writer.Write(scene.GetType().AssemblyQualifiedName);
+                                    writer.WriteLine(scene.GetType().AssemblyQualifiedName);
+                                }
+                                else
+                                {
+                                    CCLog.Log("Scene is not serializable: " + scene.GetType().FullName);
                             }
                         }
                         // Write out our local state
                         if (m_pRunningScene != null && m_pRunningScene.IsSerializable)
                         {
-                            writer.Write("m_pRunningScene");
-                            writer.Write(m_pRunningScene.GetType().AssemblyQualifiedName);
+                                writer.WriteLine("m_pRunningScene");
+                                writer.WriteLine(m_pRunningScene.GetType().AssemblyQualifiedName);
                         }
                         // Add my own state 
                         // [*]name=value
@@ -162,6 +171,13 @@ namespace cocos2d
                     }
                 }
             }
+                catch (Exception ex)
+                {
+                    CCLog.Log("Failed to serialize the CCDirector state. Erasing the save files.");
+                    CCLog.Log(ex.ToString());
+                    DeleteState(storage);
+                }
+        }
         }
 
         private void DeserializeMyState(string name, string v)
@@ -171,6 +187,8 @@ namespace cocos2d
 
         public bool DeserializeState()
         {
+            try
+            {
             // open up isolated storage
             using (IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication())
             {
@@ -180,18 +198,28 @@ namespace cocos2d
                     string saveFile = System.IO.Path.Combine(m_sStorageDirName, m_sSaveFileName);
                     try
                     {
+                            CCLog.Log("Loading director data file: {0}", saveFile);
                         // see if we have a screen list
                         if (storage.FileExists(saveFile))
                         {
                             // load the list of screen types
                             using (IsolatedStorageFileStream stream = storage.OpenFile(saveFile, FileMode.Open, FileAccess.Read))
                             {
-                                using (BinaryReader reader = new BinaryReader(stream))
+                                    using (StreamReader reader = new StreamReader(stream))
                                 {
-                                    while (reader.BaseStream.Position < reader.BaseStream.Length)
+                                        CCLog.Log("Director save file contains {0} bytes.", reader.BaseStream.Length);
+                                        try
+                                        {
+                                            while (true)
                                     {
                                         // read a line from our file
-                                        string line = reader.ReadString();
+                                                string line = reader.ReadLine();
+                                                if (line == null)
+                                                {
+                                                    break;
+                                                }
+                                                CCLog.Log("Restoring: {0}", line);
+
                                         // if it isn't blank, we can create a screen from it
                                         if (!string.IsNullOrEmpty(line))
                                         {
@@ -204,6 +232,7 @@ namespace cocos2d
                                                 {
                                                     string name = s.Substring(0, idx);
                                                     string v = s.Substring(idx + 1);
+                                                            CCLog.Log("Restoring: {0} = {1}", name, v);
                                                     DeserializeMyState(name, v);
                                                 }
                                             }
@@ -211,38 +240,63 @@ namespace cocos2d
                                             {
                                                 Type screenType = Type.GetType(line);
                                                 CCScene scene = Activator.CreateInstance(screenType) as CCScene;
-                                                m_pobScenesStack.Add(scene);
+                                                        PushScene(scene);
+                                                        //                                                    m_pobScenesStack.Add(scene);
+                                                    }
+                                                }
                                             }
                                         }
+                                        catch (Exception ex)
+                                        {
+                                            // EndOfStreamException
+                                            // this is OK here.
                                     }
                                 }
                             }
                             // Now we deserialize our own state.
                         }
+                            else
+                            {
+                                CCLog.Log("save file does not exist.");
+                            }
 
                         // next we give each screen a chance to deserialize from the disk
                         for (int i = 0; i < m_pobScenesStack.Count; i++)
                         {
-                            string filename = System.IO.Path.Combine(m_sStorageDirName,  string.Format(m_sSceneSaveFileName, i));
+                                string filename = System.IO.Path.Combine(m_sStorageDirName, string.Format(m_sSceneSaveFileName, i));
+                                if (storage.FileExists(filename))
+                                {
                             using (IsolatedStorageFileStream stream = storage.OpenFile(filename, FileMode.Open, FileAccess.Read))
                             {
+                                        CCLog.Log("Restoring state for scene {0}", filename);
                                 m_pobScenesStack[i].Deserialize(stream);
                             }
                         }
+                            }
                         if (m_pobScenesStack.Count > 0)
                         {
+                                CCLog.Log("Director is running with scene..");
+
                             RunWithScene(m_pobScenesStack[m_pobScenesStack.Count - 1]); // always at the top of the stack
                         }
                         return (m_pobScenesStack.Count > 0 && m_pRunningScene != null);
                     }
-                    catch (Exception)
+                        catch (Exception ex)
                     {
                         // if an exception was thrown while reading, odds are we cannot recover
                         // from the saved state, so we will delete it so the game can correctly
                         // launch.
                         DeleteState(storage);
+                            CCLog.Log("Failed to deserialize the director state, removing old storage file.");
+                            CCLog.Log(ex.ToString());
                     }
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                CCLog.Log("Failed to deserialize director state.");
+                CCLog.Log(ex.ToString());
             }
 
             return false;
@@ -262,6 +316,16 @@ namespace cocos2d
                         }
 #endif
         #endregion
+
+#if ANDROID
+        public virtual void DirtyLabels()
+        {
+            foreach (CCNode node in m_pobScenesStack)
+            {
+                node.DirtyLabels();
+            }
+        }
+#endif
 
         public ccDirectorProjection Projection
         {
@@ -491,9 +555,8 @@ namespace cocos2d
             // KeypadDispatcher
             m_pKeypadDispatcher = new CCKeypadDispatcher();
 
-
-#if !PSM
 			// Accelerometer
+#if !PSM
             m_pAccelerometer = new CCAccelerometer();
 #endif
             // create autorelease pool
@@ -721,16 +784,33 @@ namespace cocos2d
             m_bPaused = true;
         }
 
+        public void ResumeFromBackground()
+        {
+            Resume();
+            if (m_pRunningScene != null)
+            {
+                bool runningIsTransition = m_pRunningScene is CCTransitionScene;
+                if (!runningIsTransition)
+                {
+                    m_pRunningScene.OnEnter();
+                    m_pRunningScene.OnEnterTransitionDidFinish();
+                }
+        }
+        }
+
         public void Resume()
         {
             if (m_NeedsInit)
             {
+                CCLog.Log("CCDirector(): Resume needs Init(). The director will re-initialize.");
                 Init();
             }
             if (!m_bPaused)
             {
                 return;
             }
+
+            CCLog.Log("CCDirector(): Resume called with {0} scenes", m_pobScenesStack.Count);
 
             AnimationInterval = m_dOldAnimationInterval;
 
@@ -771,10 +851,23 @@ namespace cocos2d
 
         #region Scene Management
 
+        public void ResetSceneStack()
+        {
+            CCLog.Log("CCDirector(): ResetSceneStack, clearing out {0} scenes.", m_pobScenesStack.Count);
+
+            m_pRunningScene = null;
+            m_pobScenesStack.Clear();
+            m_pNextScene = null;
+        }
+
         public void RunWithScene(CCScene pScene)
         {
             Debug.Assert(pScene != null, "pScene cannot be null");
-            Debug.Assert(m_pRunningScene == null, "m_pRunningScene cannot be null");
+            if (m_pRunningScene != null)
+            {
+                CCLog.Log("Current running scene is " + m_pRunningScene.GetType().FullName);
+                throw (new Exception("The current scene stack is not null (" + m_pobScenesStack.Count + " scenes). Use ReplaceScene() to run with a new scene."));
+            }
 
             PushScene(pScene);
             StartAnimation();
@@ -833,7 +926,7 @@ namespace cocos2d
 
             if (c == 0)
             {
-                End();
+                End(); // This should not happen here b/c we need to capture the current state and just deactivate the game (for Android).
             }
             else
             {
@@ -916,8 +1009,12 @@ namespace cocos2d
 //            m_fSecondsPerFrame = now.;
         }
 
+        private bool m_FailedToCreateStatsLabels = false;
+
         public void CreateStatsLabel()
         {
+            if (!m_FailedToCreateStatsLabels)
+            {
             try
             {
                 int fontSize = (int)(m_obWinSizeInPoints.height / 320.0f * 24);
@@ -942,7 +1039,12 @@ namespace cocos2d
             catch (Exception ex)
             {
                 CCLog.Log("Failed to create the stats labels.");
+#if DEBUG
                 CCLog.Log(ex.ToString());
+#endif
+                    m_FailedToCreateStatsLabels = true;
+                    m_bDisplayStats = false;
+                }
             }
         }
 

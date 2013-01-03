@@ -534,6 +534,8 @@ namespace cocos2d
         {
             Texture2D tex = texture == null ? null : texture.Texture2D;
 
+            if (!graphicsDevice.IsDisposed && graphicsDevice.GraphicsDeviceStatus == GraphicsDeviceStatus.Normal)
+            {
             if (texture != null && texture.m_bAliased)
             {
                 graphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
@@ -548,6 +550,7 @@ namespace cocos2d
                 m_currentTexture = tex;
                 m_textureChanged = true;
             }
+        }
         }
 
         public static void CreateRenderTarget(CCTexture2D pTexture, RenderTargetUsage usage)
@@ -593,6 +596,8 @@ namespace cocos2d
 
         public static void SetRenderTarget(RenderTarget2D renderTarget)
         {
+            if (graphicsDevice.GraphicsDeviceStatus == GraphicsDeviceStatus.Normal)
+            {
             if (renderTarget == null)
             {
                 graphicsDevice.SetRenderTarget(m_renderTarget);
@@ -603,7 +608,7 @@ namespace cocos2d
                 m_savedViewport = graphicsDevice.Viewport;
                 graphicsDevice.SetRenderTarget(renderTarget);
             }
-
+            }
             m_currRenderTarget = renderTarget;
         }
 

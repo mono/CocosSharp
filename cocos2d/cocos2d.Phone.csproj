@@ -299,6 +299,7 @@
     <Compile Include="platform\CCFileUtils.cs" />
     <Compile Include="platform\CCLog.cs" />
     <Compile Include="platform\CCSAXParser.cs" />
+    <Compile Include="platform\CCSpriteFontCache.cs" />
     <Compile Include="platform\DrawManager.cs" />
     <Compile Include="platform\ICCSAXDelegator.cs" />
     <Compile Include="platform\InputState.cs" />

@@ -287,6 +287,7 @@
     <Compile Include="Platform\CCFileUtils.cs" />
     <Compile Include="Platform\CCLog.cs" />
     <Compile Include="Platform\CCSAXParser.cs" />
+    <Compile Include="Platform\CCSpriteFontCache.cs" />
     <Compile Include="Platform\DrawManager.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
     <Compile Include="Platform\InputState.cs" />
@@ -386,7 +387,6 @@
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\IEGLTouchDelegate.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
