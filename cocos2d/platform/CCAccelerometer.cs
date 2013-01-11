@@ -6,7 +6,7 @@ namespace cocos2d
 {
     public class CCAccelerometer
     {
-#if !WINDOWS && !PSM
+#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360
         // the accelerometer sensor on the device
         private static Microsoft.Devices.Sensors.Accelerometer accelerometer = null;
 #endif
@@ -20,7 +20,7 @@ namespace cocos2d
 
         static CCAccelerometer()
         {
-#if !WINDOWS && !PSM
+#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360
             try
             {
                 accelerometer = new Microsoft.Devices.Sensors.Accelerometer();
@@ -44,8 +44,8 @@ namespace cocos2d
             m_pAccelDelegate = pDelegate;
 
             if (pDelegate != null && !m_bActive)
-                {
-#if !WINDOWS && !PSM
+            {
+#if !WINDOWS && !PSM && !OUYA && !XBOX360
                     try
                 {
                     if (Microsoft.Devices.Sensors.Accelerometer.IsSupported)
@@ -78,7 +78,7 @@ namespace cocos2d
             {
                 if (m_bActive && !m_bEmulation)
                 {
-#if !WINDOWS && !PSM
+#if !WINDOWS && !PSM && !OUYA && !XBOX360
                     if (accelerometer != null)
                     {
                     accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
@@ -95,7 +95,7 @@ namespace cocos2d
         }
 
 
-#if !WINDOWS && !PSM
+#if !WINDOWS && !PSM && !OUYA && !XBOX360
         private void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
             // store the accelerometer value in our variable to be used on the next Update

@@ -168,6 +168,8 @@
     <Compile Include="denshion\EffectPlayer.cs" />
     <Compile Include="denshion\MusicPlayer.cs" />
     <Compile Include="denshion\SimpleAudioEngine.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadButtonDispatcher.cs" />
     <Compile Include="platform\CCSpriteFontCache.cs" />
     <Compile Include="platform\DrawManager.cs" />
     <Compile Include="effects\CCGrid3D.cs" />

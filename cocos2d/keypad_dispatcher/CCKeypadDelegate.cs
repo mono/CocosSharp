@@ -5,7 +5,7 @@
         // The back key clicked
         void KeyBackClicked();
 
-        // The menu key clicked. only avialble on wophone & android
+        // The menu key clicked. only available on wophone & android
         void KeyMenuClicked();
     }
 

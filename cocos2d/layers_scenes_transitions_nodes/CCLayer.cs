@@ -29,10 +29,11 @@ using System.Diagnostics;
 
 namespace cocos2d
 {
-    public class CCLayer : CCNode, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate
+    public class CCLayer : CCNode, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate, CCKeypadDelegate, CCGamePadButtonDelegate
     {
         private bool m_bIsAccelerometerEnabled;
         private bool m_bKeypadEnabled;
+        private bool m_bGamePadEnabled;
         private bool m_bIsMultiTouchEnabled;
         private bool m_bIsSingleTouchEnabled;
         //private bool m_bMouseEnabled;
@@ -75,6 +76,8 @@ namespace cocos2d
                 m_bIsMultiTouchEnabled = false;
                 m_bIsSingleTouchEnabled = false;
                 m_bIsAccelerometerEnabled = false;
+                m_bKeypadEnabled = false;
+                m_bGamePadEnabled = false;
 
                 bRet = true;
             } while (false);
@@ -107,7 +110,12 @@ namespace cocos2d
             // add this layer to concern the kaypad msg
             if (m_bKeypadEnabled)
             {
-                //director.KeypadDispatcher.addDelegate(this);
+                director.KeypadDispatcher.AddDelegate(this);
+            }
+
+            if (GamePadEnabled && director.GamePadEnabled)
+            {
+                director.GamePadButtonDispatcher.AddDelegate(this);
             }
         }
 
@@ -130,9 +138,13 @@ namespace cocos2d
             // remove this layer from the delegates who concern the kaypad msg
             if (m_bKeypadEnabled)
             {
-                //director.KeypadDispatcher.removeDelegate(this);
+                director.KeypadDispatcher.RemoveDelegate(this);
             }
 
+            if (GamePadEnabled && director.GamePadEnabled)
+            {
+                director.GamePadButtonDispatcher.RemoveDelegate(this);
+            }
             base.OnExit();
         }
 
@@ -265,6 +277,7 @@ namespace cocos2d
                     
                     if (m_bIsRunning)
                     {
+                        /*
                         if (value)
                         {
                             throw new NotImplementedException();
@@ -273,7 +286,19 @@ namespace cocos2d
                         {
                             throw new NotImplementedException();
                         }
+                         */
                     }
+                }
+            }
+        }
+        public bool GamePadEnabled
+        {
+            get { return (m_bGamePadEnabled); }
+            set
+            {
+                if (value != m_bGamePadEnabled)
+                {
+                    m_bGamePadEnabled = value;
                 }
             }
         }
@@ -325,6 +350,42 @@ namespace cocos2d
         #endregion
 
         public virtual void DidAccelerate(CCAcceleration pAccelerationValue)
+        {
+        }
+
+        public virtual void KeyBackClicked()
+        {
+        }
+
+        public virtual void KeyMenuClicked()
+        {
+        }
+
+        public virtual void BackButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
+        {
+        }
+
+        public virtual void StartButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
+        {
+        }
+
+        public virtual void SystemButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
+        {
+        }
+
+        public virtual void AButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
+        {
+        }
+
+        public virtual void XButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
+        {
+        }
+
+        public virtual void YButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
+        {
+        }
+
+        public virtual void BButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
         {
         }
     }

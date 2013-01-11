@@ -578,6 +578,10 @@ namespace cocos2d
         public static Texture2D CreateTexture2D(int width, int height)
         {
             PresentationParameters pp = graphicsDevice.PresentationParameters;
+#if IPHONE || NEXUS
+            width = (int)ccUtils.ccNextPOT((long)width);
+            height = (int)ccUtils.ccNextPOT((long)height);
+#endif
             return new Texture2D(graphicsDevice, width, height, false, SurfaceFormat.Color);
         }
 
@@ -918,6 +922,9 @@ namespace cocos2d
             }
             if (bSwapDims)
             {
+                CCSize newSize = m_obDesignResolutionSize.Inverted;
+                DrawManager.SetDesignResolutionSize(newSize.width, newSize.height, m_eResolutionPolicy);
+                /*
                 m_obViewPortRect = m_obViewPortRect.InvertedSize;
                 m_obDesignResolutionSize = m_obDesignResolutionSize.Inverted;
                 CCDirector.SharedDirector.m_obWinSizeInPoints = CCDirector.SharedDirector.m_obWinSizeInPoints.Inverted;
@@ -926,6 +933,7 @@ namespace cocos2d
                 float f = m_fScaleX;
                 m_fScaleX = m_fScaleY;
                 m_fScaleY = f;
+                 */
             }
             int preferredBackBufferWidth = m_GraphicsDeviceMgr.PreferredBackBufferWidth;
             int preferredBackBufferHeight = m_GraphicsDeviceMgr.PreferredBackBufferHeight;

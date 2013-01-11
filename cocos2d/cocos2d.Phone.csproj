@@ -396,6 +396,8 @@
     <Compile Include="touch_dispatcher\ICCStandardTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTargetedTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadButtonDispatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="tools\Debug\" />

@@ -484,7 +484,7 @@ namespace cocos2d
             {
                 m_CallParams = new object[] { text, dimensions, hAlignment, vAlignment, fontName, fontSize };
 
-                CCLog.Log("InitWithString: text={0}", text);
+                // CCLog.Log("InitWithString: text={0}", text);
 
                 Debug.Assert(dimensions.width >= 0 || dimensions.height >= 0);
 

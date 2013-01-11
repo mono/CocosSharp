@@ -176,6 +176,13 @@ namespace cocos2d
             // Process touch events 
             ProcessTouch();
 
+            if (CCDirector.SharedDirector.GamePadEnabled)
+            {
+                // Process the game pad
+                // This consumes game pad state.
+                ProcessGamePad();
+            }
+
             CCDirector.SharedDirector.Update(gameTime);
 
             base.Update(gameTime);
@@ -208,6 +215,45 @@ namespace cocos2d
             //TODO: Create CCGesture and convert the coordinates into the local coordinates.
         }
 
+        private void ProcessGamePad()
+        {
+            CCGamePadButtonDispatcher dispatcher = CCDirector.SharedDirector.GamePadButtonDispatcher;
+
+            // On Android, the gamepad is always connected.
+            GamePadState gps = GamePad.GetState(PlayerIndex.One);
+            if (gps.IsConnected)
+            {
+                if (dispatcher != null)
+                {
+                    dispatcher.DispatchGamePadState(gps, PlayerIndex.One);
+                }
+            }
+            gps = GamePad.GetState(PlayerIndex.Two);
+            if (gps.IsConnected)
+            {
+                if (dispatcher != null)
+                {
+                    dispatcher.DispatchGamePadState(gps, PlayerIndex.Two);
+                }
+            }
+            gps = GamePad.GetState(PlayerIndex.Three); 
+            if (gps.IsConnected)
+            {
+                if (dispatcher != null)
+                {
+                    dispatcher.DispatchGamePadState(gps, PlayerIndex.Three);
+                }
+            }
+            gps = GamePad.GetState(PlayerIndex.Four); 
+            if (gps.IsConnected)
+            {
+                if (dispatcher != null)
+                {
+                    dispatcher.DispatchGamePadState(gps, PlayerIndex.Four);
+                }
+            }
+        }
+
         private void ProcessTouch()
         {
             if (m_pDelegate != null)
@@ -218,6 +264,8 @@ namespace cocos2d
 
                 CCRect viewPort = DrawManager.ViewPortRect;
                 CCPoint pos;
+
+                // TODO: allow configuration to treat the game pad as a touch device.
 
 #if WINDOWS
                 _prevMouseState = _lastMouseState;

@@ -11,7 +11,6 @@ namespace cocos2d
         protected string m_pString;
         private CCSize m_tDimensions;
         private CCVerticalTextAlignment m_vAlignment;
-        protected SpriteFont spriteFont;
 
         public CCLabelTTF()
         {

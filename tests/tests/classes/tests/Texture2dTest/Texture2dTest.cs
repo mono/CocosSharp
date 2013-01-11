@@ -242,14 +242,17 @@ namespace tests
             }
             else
                 CCLog.Log("Error\n");
-        // 	@todo
-        // 	CCLog("Loading 2048x2048 image...");
-        // 	sprite = CCSprite::create("Images/texture2048x2048.png");
-        // 	if( sprite )
-        // 		CCLog("OK\n");
-        // 	else
-        // 		CCLog("Error\n");
-        // 	
+            CCLog.Log("Loading 2048x2048 image...");
+            CCSprite sprite3 = CCSprite.Create("Images/texture2048x2048");
+            if (sprite3 != null)
+            {
+                CCLog.Log("OK\n");
+                this.AddChild(sprite3);
+            }
+            else
+                CCLog.Log("Error\n");
+            // 	@todo
+            // This won't work in XNA4 - max is 2048 x 2048.
         // 	CCLog("Loading 4096x4096 image...");
         // 	sprite = CCSprite::create("Images/texture4096x4096.png");
         // 	if( sprite )

@@ -62,3 +62,8 @@ and Totally Evil Entertainment, LLC.
   sleep state.
 * CCTextureCache : Added a dispose method and code to reconstrucct the texture cache upon activation.
 * CCDirector : Improved the serialization and deserialization code.
+
+* gamepad_dispatcher : Added two new classes to handle the gamepad state better.
+* CCTexture2D Test : Fixed a concurrent access exception in the CCTextureCache.
+* CCTexture2D Test : Changed the 512, 1024, and 2048 test patterns.
+* CCAccelerator : Added xbox/ouya ifdef tags to exclude them from building accelerometer support.

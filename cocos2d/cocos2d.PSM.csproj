@@ -387,6 +387,8 @@
     <Compile Include="touch_dispatcher\IEGLTouchDelegate.cs" />
     <Compile Include="Platform\CCAccelerometer.cs" />
     <Compile Include="Platform\CCSpriteFontCache.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadButtonDispatcher.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />
