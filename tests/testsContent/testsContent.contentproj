@@ -1047,11 +1047,6 @@
       <Processor>FontDescriptionProcessor</Processor>
       <SubType>Designer</SubType>
     </Compile>
-    <Compile Include="extensions\CCControlColourPickerSpriteSheet.plist">
-      <Name>CCControlColourPickerSpriteSheet.plist</Name>
-      <Importer>CocosPListImporter</Importer>
-      <Processor>CocosPListProcessor</Processor>
-    </Compile>
     <None Include="fonts\A Damn Mess.ttf">
       <Name>A Damn Mess</Name>
     </None>
@@ -1912,11 +1907,6 @@
     </Compile>
     <Compile Include="extensions\buttonHighlighted.png">
       <Name>buttonHighlighted</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="extensions\CCControlColourPickerSpriteSheet.png">
-      <Name>CCControlColourPickerSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
