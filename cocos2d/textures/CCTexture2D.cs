@@ -548,7 +548,11 @@ namespace cocos2d
                             {
                                 firstWord = true;
                                 textList.Add(nextText.ToString());
-                                nextText.Clear();
+#if XBOX || XBOX360
+                                nextText.Length = 0;
+#else
+                        nextText.Clear();
+#endif
                             }
                             else
                             {
@@ -569,7 +573,11 @@ namespace cocos2d
                     }
 
                     textList.Add(nextText.ToString());
-                    nextText.Clear();
+#if XBOX || XBOX360
+                    nextText.Length = 0;
+#else
+                        nextText.Clear();
+#endif
                 }
 
                 if (dimensions.height == 0)

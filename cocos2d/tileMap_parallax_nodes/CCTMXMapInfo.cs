@@ -5,8 +5,10 @@ using System.Linq;
 using cocos2d.Compression.Zlib;
 #if WINDOWS_PHONE
 using WP7Contrib.Communications.Compression;
-#else
+#elif !XBOX
 using System.IO.Compression;
+#else
+using ICSharpCode.SharpZipLib.GZip;
 #endif
 
 namespace cocos2d
@@ -478,8 +480,10 @@ namespace cocos2d
                     {
 #if WINDOWS_PHONE 
                         GZipStream inGZipStream = new GZipStream(new MemoryStream(pTMXMapInfo.CurrentString));
-#else
+#elif !XBOX
                         var inGZipStream = new GZipStream(new MemoryStream(pTMXMapInfo.CurrentString), CompressionMode.Decompress);
+#else
+                        var inGZipStream = new GZipInputStream(new MemoryStream(pTMXMapInfo.CurrentString));
 #endif
 
                         var outMemoryStream = new MemoryStream();

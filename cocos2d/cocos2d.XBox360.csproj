@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{D551499A-180B-40DA-BEB0-97E42B38BF95}</ProjectGuid>
+    <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cocos2d</RootNamespace>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
+    <XnaPlatform>Xbox 360</XnaPlatform>
+    <XnaProfile>HiDef</XnaProfile>
+    <XnaCrossPlatformGroupID>f651ca56-7702-4520-ae42-e26a4dbb705e</XnaCrossPlatformGroupID>
+    <XnaOutputType>Library</XnaOutputType>
+    <XnaRefreshLevel>1</XnaRefreshLevel>
+    <Thumbnail Condition="$(XnaOutputType)=='Game'">GameThumbnail.png</Thumbnail>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Xbox 360' ">
+    <OutputPath>bin\Xbox 360\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;XBOX;XBOX360;CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX,CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA</DefineConstants>
+    <XnaCompressContent>true</XnaCompressContent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Xbox 360' ">
+    <OutputPath>bin\Xbox 360\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>TRACE;DEBUG;XBOX;XBOX360;CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX,CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA</DefineConstants>
+    <XnaCompressContent>true</XnaCompressContent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="actions\action\CCAction.cs" />
+    <Compile Include="actions\action\CCFiniteTimeAction.cs" />
+    <Compile Include="actions\action\CCFollow.cs" />
+    <Compile Include="actions\action\CCSpeed.cs" />
+    <Compile Include="actions\action_camera\CCActionCamera.cs" />
+    <Compile Include="actions\action_camera\CCOrbitCamera.cs" />
+    <Compile Include="actions\action_catmull_rom\CCCardinalSplineTo.cs" />
+    <Compile Include="actions\action_ease\CCActionEase.cs" />
+    <Compile Include="actions\action_ease\CCEaseBackIn.cs" />
+    <Compile Include="actions\action_ease\CCEaseBackInOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseBackOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseBounce.cs" />
+    <Compile Include="actions\action_ease\CCEaseBounceIn.cs" />
+    <Compile Include="actions\action_ease\CCEaseBounceInOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseBounceOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseElastic.cs" />
+    <Compile Include="actions\action_ease\CCEaseElasticIn.cs" />
+    <Compile Include="actions\action_ease\CCEaseElasticInOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseElasticOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseExponentialIn.cs" />
+    <Compile Include="actions\action_ease\CCEaseExponentialInOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseExponentialOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseIn.cs" />
+    <Compile Include="actions\action_ease\CCEaseInOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseRateAction.cs" />
+    <Compile Include="actions\action_ease\CCEaseSineIn.cs" />
+    <Compile Include="actions\action_ease\CCEaseSineInOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseSineOut.cs" />
+    <Compile Include="actions\action_grid3d\CCFlipX3D.cs" />
+    <Compile Include="actions\action_grid3d\CCFlipY3D.cs" />
+    <Compile Include="actions\action_grid3d\CCLens3D.cs" />
+    <Compile Include="actions\action_grid3d\CCLiquid.cs" />
+    <Compile Include="actions\action_grid3d\CCPageTurn3D.cs" />
+    <Compile Include="actions\action_grid3d\CCRipple3D.cs" />
+    <Compile Include="actions\action_grid3d\CCShaky3D.cs" />
+    <Compile Include="actions\action_grid3d\CCTwirl.cs" />
+    <Compile Include="actions\action_grid3d\CCWaves.cs" />
+    <Compile Include="actions\action_grid3d\CCWaves3D.cs" />
+    <Compile Include="actions\action_grid\CCAccelAmplitude.cs" />
+    <Compile Include="actions\action_grid\CCAccelDeccelAmplitude.cs" />
+    <Compile Include="actions\action_grid\CCDeccelAmplitude.cs" />
+    <Compile Include="actions\action_grid\CCGrid3DAction.cs" />
+    <Compile Include="actions\action_grid\CCGridAction.cs" />
+    <Compile Include="actions\action_grid\CCTiledGrid3DAction.cs" />
+    <Compile Include="actions\action_instants\callfunc\CCCallFunc.cs" />
+    <Compile Include="actions\action_instants\callfunc\CCCallFuncN.cs" />
+    <Compile Include="actions\action_instants\callfunc\CCCallFuncND.cs" />
+    <Compile Include="actions\action_instants\callfunc\CCCallFuncO.cs" />
+    <Compile Include="actions\action_instants\CCFlipX.cs" />
+    <Compile Include="actions\action_instants\CCFlipY.cs" />
+    <Compile Include="actions\action_instants\CCHide.cs" />
+    <Compile Include="actions\action_instants\CCPlace.cs" />
+    <Compile Include="actions\action_instants\CCReuseGrid.cs" />
+    <Compile Include="actions\action_instants\CCShow.cs" />
+    <Compile Include="actions\action_instants\CCStopGrid.cs" />
+    <Compile Include="actions\action_instants\CCToggleVisibility.cs" />
+    <Compile Include="actions\action_intervals\CCActionTween.cs" />
+    <Compile Include="actions\action_intervals\CCAnimate.cs" />
+    <Compile Include="actions\action_intervals\CCBezierBy.cs" />
+    <Compile Include="actions\action_intervals\CCBezierTo.cs" />
+    <Compile Include="actions\action_intervals\CCBlink.cs" />
+    <Compile Include="actions\action_intervals\CCDelayTime.cs" />
+    <Compile Include="actions\action_intervals\CCFadeIn.cs" />
+    <Compile Include="actions\action_intervals\CCFadeOut.cs" />
+    <Compile Include="actions\action_intervals\CCFadeTo.cs" />
+    <Compile Include="actions\action_intervals\CCJumpBy.cs" />
+    <Compile Include="actions\action_intervals\CCJumpTo.cs" />
+    <Compile Include="actions\action_intervals\CCMoveBy.cs" />
+    <Compile Include="actions\action_intervals\CCMoveTo.cs" />
+    <Compile Include="actions\action_intervals\CCRepeat.cs" />
+    <Compile Include="actions\action_intervals\CCRepeatForever.cs" />
+    <Compile Include="actions\action_intervals\CCReverseTime.cs" />
+    <Compile Include="actions\action_intervals\CCRotateBy.cs" />
+    <Compile Include="actions\action_intervals\CCRotateTo.cs" />
+    <Compile Include="actions\action_intervals\CCScaleBy.cs" />
+    <Compile Include="actions\action_intervals\CCScaleTo.cs" />
+    <Compile Include="actions\action_intervals\CCSequence.cs" />
+    <Compile Include="actions\action_intervals\CCSkewBy.cs" />
+    <Compile Include="actions\action_intervals\CCSkewTo.cs" />
+    <Compile Include="actions\action_intervals\CCSpawn.cs" />
+    <Compile Include="actions\action_intervals\CCTargetedAction.cs" />
+    <Compile Include="actions\action_intervals\CCTintBy.cs" />
+    <Compile Include="actions\action_intervals\CCTintTo.cs" />
+    <Compile Include="actions\action_progress_timer\CCProgressFromTo.cs" />
+    <Compile Include="actions\action_progress_timer\CCProgressTo.cs" />
+    <Compile Include="actions\action_tiled_grid\CCFadeOutBLTiles.cs" />
+    <Compile Include="actions\action_tiled_grid\CCFadeOutDownTiles.cs" />
+    <Compile Include="actions\action_tiled_grid\CCFadeOutTRTiles.cs" />
+    <Compile Include="actions\action_tiled_grid\CCFadeOutUpTiles.cs" />
+    <Compile Include="actions\action_tiled_grid\CCJumpTiles3D.cs" />
+    <Compile Include="actions\action_tiled_grid\CCShakyTiles3D.cs" />
+    <Compile Include="actions\action_tiled_grid\CCShatteredTiles3D.cs" />
+    <Compile Include="actions\action_tiled_grid\CCShuffleTiles.cs" />
+    <Compile Include="actions\action_tiled_grid\CCSplitCols.cs" />
+    <Compile Include="actions\action_tiled_grid\CCSplitRows.cs" />
+    <Compile Include="actions\action_tiled_grid\CCTurnOffTiles.cs" />
+    <Compile Include="actions\action_tiled_grid\CCWavesTiles3D.cs" />
+    <Compile Include="actions\action_tiled_grid\Tile.cs" />
+    <Compile Include="CCContent.cs" />
+    <Compile Include="CCDrawingPrimitives.cs" />
+    <Compile Include="cocoa\CCData.cs" />
+    <Compile Include="cocoa\CCNS.cs" />
+    <Compile Include="denshion\EffectPlayer.cs" />
+    <Compile Include="denshion\MusicPlayer.cs" />
+    <Compile Include="denshion\SimpleAudioEngine.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadButtonDispatcher.cs" />
+    <Compile Include="platform\CCSpriteFontCache.cs" />
+    <Compile Include="platform\DrawManager.cs" />
+    <Compile Include="effects\CCGrid3D.cs" />
+    <Compile Include="effects\CCTiledGrid3D.cs" />
+    <Compile Include="effects\CCGrabber.cs" />
+    <Compile Include="actions\action_instants\CCActionInstant.cs" />
+    <Compile Include="actions\action_intervals\CCActionInterval.cs" />
+    <Compile Include="actions\CCActionManager.cs" />
+    <Compile Include="base_nodes\CCAtlasNode.cs" />
+    <Compile Include="base_nodes\CCNode.cs" />
+    <Compile Include="CCCamera.cs" />
+    <Compile Include="CCConfiguration.cs" />
+    <Compile Include="CCDirector.cs" />
+    <Compile Include="CCScheduler.cs" />
+    <Compile Include="cocoa\CCAffineTransform.cs" />
+    <Compile Include="CCDisplayLinkDirector.cs" />
+    <Compile Include="cocoa\CCGeometry.cs" />
+    <Compile Include="cocoa\CCObject.cs" />
+    <Compile Include="cocoa\CCZone.cs" />
+    <Compile Include="effects\CCGridBase.cs" />
+    <Compile Include="extentions\CCBReader\CCBAnimationManager.cs" />
+    <Compile Include="extentions\CCBReader\CCBFileLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCBKeyframe.cs" />
+    <Compile Include="extentions\CCBReader\CCBPosition.cs" />
+    <Compile Include="extentions\CCBReader\CCBReader.cs" />
+    <Compile Include="extentions\CCBReader\CCBSequence.cs" />
+    <Compile Include="extentions\CCBReader\CCBSequenceProperty.cs" />
+    <Compile Include="extentions\CCBReader\CCBValue.cs" />
+    <Compile Include="extentions\CCBReader\CCControlButtonLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCControlLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCLabelBMFontLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCLabelTTFLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCLayerColorLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCLayerGradientLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCLayerLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCMenuItemImageLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCMenuItemLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCMenuLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCNodeLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCNodeLoaderLibrary.cs" />
+    <Compile Include="extentions\CCBReader\CCParticleSystemQuadLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCScale9SpriteLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCScrollViewLoader.cs" />
+    <Compile Include="extentions\CCBReader\CCSpriteLoader.cs" />
+    <Compile Include="extentions\CCBReader\ICCBMemberVariableAssigner.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControl.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlButton.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlSlider.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlSwitch.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlUtils.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCInvocation.cs" />
+    <Compile Include="extentions\GUI\CCScrollView\CCScrollView.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCScale9Sprite.cs" />
+    <Compile Include="extentions\GUI\CCScrollView\CCSorting.cs" />
+    <Compile Include="extentions\GUI\CCScrollView\CCTableView.cs" />
+    <Compile Include="extentions\GUI\CCScrollView\CCTableViewCell.cs" />
+    <Compile Include="keypad_dispatcher\CCKeypadDelegate.cs" />
+    <Compile Include="keypad_dispatcher\CCKeypadDispatcher.cs" />
+    <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
+    <Compile Include="label_nodes\CCLabelAtlas.cs" />
+    <Compile Include="label_nodes\CCLabelBMFont.cs" />
+    <Compile Include="label_nodes\CCLabelTTF.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCLayer.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCLayerColor.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCLayerGradient.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCLayerMultiplex.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCScene.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeDown.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeUp.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFlipAngular.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFlipX.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFlipY.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionJumpZoom.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionMoveInB.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionMoveInL.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionMoveInR.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionMoveInT.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionPageTurn.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionProgress.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionRotoZoom.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionSceneOriented.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionShrinkGrow.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionSlideInB.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionSlideInL.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionSlideInR.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionSlideInT.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionSplitCols.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionSplitRows.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionTurnOffTiles.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipAngular.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipX.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipY.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\ICCTransitionEaseScene.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFade.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeBL.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeTR.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionScene.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionCrossFade.cs" />
+    <Compile Include="Math\Ease.cs" />
+    <Compile Include="Math\FastRandom.cs" />
+    <Compile Include="Math\MathHelper.cs" />
+    <Compile Include="Math\Random.cs" />
+    <Compile Include="Math\Spline.cs" />
+    <Compile Include="menu_nodes\CCMenu.cs" />
+    <Compile Include="menu_nodes\CCMenuItem.cs" />
+    <Compile Include="menu_nodes\CCMenuItemAtlasFont.cs" />
+    <Compile Include="menu_nodes\CCMenuItemFont.cs" />
+    <Compile Include="menu_nodes\CCMenuItemImage.cs" />
+    <Compile Include="menu_nodes\CCMenuItemLabel.cs" />
+    <Compile Include="menu_nodes\CCMenuItemSprite.cs" />
+    <Compile Include="menu_nodes\CCMenuItemToggle.cs" />
+    <Compile Include="misc_nodes\CCMotionStreak.cs" />
+    <Compile Include="misc_nodes\CCProgressTimer.cs" />
+    <Compile Include="misc_nodes\CCRenderTexture.cs" />
+    <Compile Include="particle_nodes\CCParticleBatchNode.cs" />
+    <Compile Include="particle_nodes\CCParticleExamples.cs" />
+    <Compile Include="particle_nodes\CCParticleSystem.cs" />
+    <Compile Include="particle_nodes\CCParticleSystemQuad.cs" />
+    <Compile Include="platform\CCAccelerometer.cs" />
+    <Compile Include="platform\CCAccelerometerDelegate.cs" />
+    <Compile Include="platform\CCApplication.cs" />
+    <Compile Include="platform\CCDictMaker.cs" />
+    <Compile Include="platform\CCFileData.cs" />
+    <Compile Include="platform\CCFileUtils.cs" />
+    <Compile Include="platform\CCLog.cs" />
+    <Compile Include="platform\CCSAXParser.cs" />
+    <Compile Include="platform\ICCSAXDelegator.cs" />
+    <Compile Include="platform\InputState.cs" />
+    <Compile Include="platform\OGLES.cs" />
+    <Compile Include="platform\PList\PlistArray.cs" />
+    <Compile Include="platform\PList\PlistBoolean.cs" />
+    <Compile Include="platform\PList\PlistData.cs" />
+    <Compile Include="platform\PList\PlistDate.cs" />
+    <Compile Include="platform\PList\PlistDictionary.cs" />
+    <Compile Include="platform\PList\PlistDocument.cs" />
+    <Compile Include="platform\PList\PlistInteger.cs" />
+    <Compile Include="platform\PList\PListNull.cs" />
+    <Compile Include="platform\PList\PlistObject.cs" />
+    <Compile Include="platform\PList\PlistObjectBase.cs" />
+    <Compile Include="platform\PList\PlistReal.cs" />
+    <Compile Include="platform\PList\PlistString.cs" />
+    <Compile Include="platform\PrimitiveBatch.cs" />
+    <Compile Include="platform\RawList.cs" />
+    <Compile Include="platform\ReusedObject.cs" />
+    <Compile Include="platform\Zlib\Adler32.cs" />
+    <Compile Include="platform\Zlib\Deflate.cs" />
+    <Compile Include="platform\Zlib\InfBlocks.cs" />
+    <Compile Include="platform\Zlib\InfCodes.cs" />
+    <Compile Include="platform\Zlib\Inflate.cs" />
+    <Compile Include="platform\Zlib\InfTree.cs" />
+    <Compile Include="platform\Zlib\StaticTree.cs" />
+    <Compile Include="platform\Zlib\SupportClass.cs" />
+    <Compile Include="platform\Zlib\Tree.cs" />
+    <Compile Include="platform\Zlib\ZInputStream.cs" />
+    <Compile Include="platform\Zlib\Zlib.cs" />
+    <Compile Include="platform\Zlib\ZOutputStream.cs" />
+    <Compile Include="platform\Zlib\ZStream.cs" />
+    <Compile Include="platform\Zlib\ZStreamException.cs" />
+    <Compile Include="predefine\ccConfig.cs" />
+    <Compile Include="predefine\ccMacros.cs" />
+    <Compile Include="predefine\CCPointExtension.cs" />
+    <Compile Include="predefine\CCProtocols.cs" />
+    <Compile Include="predefine\CCTouch.cs" />
+    <Compile Include="predefine\ccTypes.cs" />
+    <Compile Include="predefine\selector_protocol.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="script_support\CCScriptEngineManager.cs" />
+    <Compile Include="script_support\CCScriptEngineProtocol.cs" />
+    <Compile Include="sprite_nodes\CCAnimation.cs" />
+    <Compile Include="sprite_nodes\CCAnimationCache.cs" />
+    <Compile Include="sprite_nodes\CCAnimationFrame.cs" />
+    <Compile Include="sprite_nodes\CCSprite.cs" />
+    <Compile Include="sprite_nodes\CCSpriteBatchNode.cs" />
+    <Compile Include="sprite_nodes\CCSpriteFrame.cs" />
+    <Compile Include="sprite_nodes\CCSpriteFrameCache.cs" />
+    <Compile Include="support\ccUtils.cs" />
+    <Compile Include="support\Compression\Adler.cs" />
+    <Compile Include="support\Compression\Crc32.cs" />
+    <Compile Include="support\Compression\FlushType.cs" />
+    <Compile Include="support\Compression\GZipStream.cs" />
+    <Compile Include="support\Compression\InflateBlocks.cs" />
+    <Compile Include="support\Compression\InflateCodes.cs" />
+    <Compile Include="support\Compression\InflateManager.cs" />
+    <Compile Include="support\Compression\InfTree.cs" />
+    <Compile Include="support\Compression\SharedUtils.cs" />
+    <Compile Include="support\Compression\ZlibBaseStream.cs" />
+    <Compile Include="support\Compression\ZlibCodec.cs" />
+    <Compile Include="support\Compression\ZlibException.cs" />
+    <Compile Include="support\Compression\ZlibStreamFlavor.cs" />
+    <Compile Include="support\data_support\ccCArray.cs" />
+    <Compile Include="support\image_support\TGAlib.cs" />
+    <Compile Include="support\TransformUtils.cs" />
+    <Compile Include="support\zip_support\CCZHeader.cs" />
+    <Compile Include="support\zip_support\ZipUtils.cs" />
+    <Compile Include="textures\CCTextureAtlas.cs" />
+    <Compile Include="textures\CCTextureCache.cs" />
+    <Compile Include="textures\CCTexture2D.cs" />
+    <Compile Include="text_input_node\ICCIMEDelegate.cs" />
+    <Compile Include="text_input_node\CCIMEKeyboardNotificationInfo.cs" />
+    <Compile Include="text_input_node\CCTextFieldTTF .cs" />
+    <Compile Include="text_input_node\ICCTextFieldDelegate.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCParallaxNode.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCPointObject.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileMapAtlas.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTMXLayer.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTMXLayerInfo.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTMXMapInfo.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTMXObjectGroup.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTMXTiledMap.cs" />
+    <Compile Include="tileMap_parallax_nodes\ccTMXTileFlags_.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTMXTilesetInfo.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTMXXMLParser.cs" />
+    <Compile Include="touch_dispatcher\CCStandardTouchHandler.cs" />
+    <Compile Include="touch_dispatcher\CCTargetedTouchHandler.cs" />
+    <Compile Include="touch_dispatcher\CCTouchDelegate.cs" />
+    <Compile Include="touch_dispatcher\CCTouchDispatcher.cs" />
+    <Compile Include="touch_dispatcher\CCTouchHandler.cs" />
+    <Compile Include="touch_dispatcher\IEGLTouchDelegate.cs" />
+    <Compile Include="touch_dispatcher\ICCStandardTouchDelegate.cs" />
+    <Compile Include="touch_dispatcher\ICCTargetedTouchDelegate.cs" />
+    <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Xna.Framework.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft XNA Framework Redistributable 4.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>external lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="Microsoft.Xna.Framework.Game" />
+    <Reference Include="Microsoft.Xna.Framework.GamerServices" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics" />
+    <Reference Include="Microsoft.Xna.Framework.Input.Touch" />
+    <Reference Include="Microsoft.Xna.Framework.Net" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="zlib.net">
+      <HintPath>external lib\zlib.net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <!--
+      To modify your build process, add your task inside one of the targets below and uncomment it. 
+      Other similar extension points exist, see Microsoft.Common.targets.
+      <Target Name="BeforeBuild">
+      </Target>
+      <Target Name="AfterBuild">
+      </Target>
+    -->
+</Project>
