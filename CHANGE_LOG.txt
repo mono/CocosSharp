@@ -67,3 +67,4 @@ and Totally Evil Entertainment, LLC.
 * CCTexture2D Test : Fixed a concurrent access exception in the CCTextureCache.
 * CCTexture2D Test : Changed the 512, 1024, and 2048 test patterns.
 * CCAccelerator : Added xbox/ouya ifdef tags to exclude them from building accelerometer support.
+* Added XBox 360 project files for the framework and tests.
