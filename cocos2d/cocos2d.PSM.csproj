@@ -388,7 +388,10 @@
     <Compile Include="Platform\CCAccelerometer.cs" />
     <Compile Include="Platform\CCSpriteFontCache.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadButtonDispatcher.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadConnectionDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />
