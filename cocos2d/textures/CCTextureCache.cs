@@ -219,31 +219,23 @@ namespace cocos2d
         {
             int count = 0;
             int total = 0;
-            try
-            {
-                foreach (string key in m_pTextures.Keys) // System.InvalidOperationException: Collection was modified; enumeration operation may not execute.
+            foreach(var pair in m_pTextures) // invalid state exception
                 {
-                    CCTexture2D texture = m_pTextures[key];
-                    var bytes = texture.Texture2D.Width * texture.Texture2D.Height * 4;
+                var texture = pair.Value.Texture2D;
+                var bytes = texture.Width * texture.Height * 4;
 
                     count++;
                     total += bytes;
 
                     CCLog.Log("{0} {1} x {2} => {3} KB.",
-                        key,
-                        texture.Texture2D.Width,
-                        texture.Texture2D.Height,
+                    pair.Key,
+                    pair.Value.Texture2D.Width,
+                    pair.Value.Texture2D.Height,
                         bytes / 1024
                         );
                 }
 
                 CCLog.Log("{0} textures, for {1} KB ({2:00.00} MB)", count, total / 1024, total / (1024f * 1024f));
-            }
-            catch (Exception ex)
-            {
-                CCLog.Log("Oops, could not dump the texture cache information.");
-                CCLog.Log(ex.ToString());
-            }
         }
 
         #region IDisposable Members

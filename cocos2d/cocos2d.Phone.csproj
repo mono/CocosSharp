@@ -229,6 +229,11 @@
     <Compile Include="extentions\GUI\CCScrollView\CCSorting.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableView.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableViewCell.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadConnectionDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="keypad_dispatcher\CCKeypadDelegate.cs" />
     <Compile Include="keypad_dispatcher\CCKeypadDispatcher.cs" />
     <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
@@ -396,8 +401,6 @@
     <Compile Include="touch_dispatcher\ICCStandardTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTargetedTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadButtonDispatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="tools\Debug\" />

@@ -58,7 +58,6 @@ namespace cocos2d
 #endif
 		private CCActionManager m_pActionManager;
         private CCKeypadDispatcher m_pKeypadDispatcher;
-        private CCGamePadButtonDispatcher m_pGamePadButtonDispatcher;
         private CCScene m_pNextScene;
         private CCNode m_pNotificationNode;
 
@@ -442,12 +441,6 @@ namespace cocos2d
             set { m_pTouchDispatcher = value; }
         }
 
-        public CCGamePadButtonDispatcher GamePadButtonDispatcher
-        {
-            get { return m_pGamePadButtonDispatcher; }
-            set { m_pGamePadButtonDispatcher = value; }
-        }
-
         public CCKeypadDispatcher KeypadDispatcher
         {
             get { return m_pKeypadDispatcher; }
@@ -573,21 +566,15 @@ namespace cocos2d
             return true;
         }
 
+        private bool m_GamePadEnabled = false;
         /// <summary>
         /// Set to true if this platform has a game pad connected.
         /// </summary>
         public bool GamePadEnabled
         {
-            get { return (m_pGamePadButtonDispatcher != null); }
+            get { return (m_GamePadEnabled); }
             set {
-                if (!value)
-                {
-                    m_pGamePadButtonDispatcher = null;
-                }
-                else if (m_pGamePadButtonDispatcher == null)
-                {
-                    m_pGamePadButtonDispatcher = new CCGamePadButtonDispatcher();
-                }
+                m_GamePadEnabled = value;
             }
         }
 

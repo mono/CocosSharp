@@ -53,6 +53,12 @@ namespace cocos2d
             y = pt.Y;
         }
 
+        public CCPoint(Vector2 v)
+        {
+            x = v.X;
+            y = v.Y;
+        }
+
         public static bool CCPointEqualToPoint(CCPoint point1, CCPoint point2)
         {
             return ((point1.x == point2.x) && (point1.y == point2.y));

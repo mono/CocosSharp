@@ -455,6 +455,9 @@
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\IEGLTouchDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadButtonDispatcher.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadConnectionDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
+    <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
   </ItemGroup>
 </Project>

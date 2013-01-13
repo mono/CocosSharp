@@ -29,7 +29,7 @@ using System.Diagnostics;
 
 namespace cocos2d
 {
-    public class CCLayer : CCNode, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate, CCKeypadDelegate, CCGamePadButtonDelegate
+    public class CCLayer : CCNode, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate, CCKeypadDelegate
     {
         private bool m_bIsAccelerometerEnabled;
         private bool m_bKeypadEnabled;
@@ -48,6 +48,11 @@ namespace cocos2d
             {
                 ContentSize = director.WinSize;
             }
+            m_OnGamePadButtonUpdateDelegate = new CCGamePadButtonDelegate(OnGamePadButtonUpdate);
+            m_OnGamePadConnectionUpdateDelegate = new CCGamePadConnectionDelegate(OnGamePadConnectionUpdate);
+            m_OnGamePadDPadUpdateDelegate = new CCGamePadDPadDelegate(OnGamePadDPadUpdate);
+            m_OnGamePadStickUpdateDelegate = new CCGamePadStickUpdateDelegate(OnGamePadStickUpdate);
+            m_OnGamePadTriggerUpdateDelegate = new CCGamePadTriggerDelegate(OnGamePadTriggerUpdate);
         }
 
         public new static CCLayer Create()
@@ -78,7 +83,6 @@ namespace cocos2d
                 m_bIsAccelerometerEnabled = false;
                 m_bKeypadEnabled = false;
                 m_bGamePadEnabled = false;
-
                 bRet = true;
             } while (false);
 
@@ -98,6 +102,7 @@ namespace cocos2d
             base.OnEnter();
 
             CCDirector director = CCDirector.SharedDirector;
+            CCApplication application = CCApplication.SharedApplication;
 
             // add this layer to concern the Accelerometer Sensor
             if (m_bIsAccelerometerEnabled)
@@ -106,7 +111,6 @@ namespace cocos2d
                 director.Accelerometer.SetDelegate(this);
 #endif
 			}
-
             // add this layer to concern the kaypad msg
             if (m_bKeypadEnabled)
             {
@@ -115,13 +119,18 @@ namespace cocos2d
 
             if (GamePadEnabled && director.GamePadEnabled)
             {
-                director.GamePadButtonDispatcher.AddDelegate(this);
+                application.GamePadButtonUpdate += m_OnGamePadButtonUpdateDelegate;
+                application.GamePadConnectionUpdate += m_OnGamePadConnectionUpdateDelegate;
+                application.GamePadDPadUpdate += m_OnGamePadDPadUpdateDelegate;
+                application.GamePadStickUpdate += m_OnGamePadStickUpdateDelegate;
+                application.GamePadTriggerUpdate += m_OnGamePadTriggerUpdateDelegate;
             }
         }
 
         public override void OnExit()
         {
             CCDirector director = CCDirector.SharedDirector;
+            CCApplication application = CCApplication.SharedApplication;
 
             if (m_bIsMultiTouchEnabled || m_bIsSingleTouchEnabled)
             {
@@ -143,7 +152,11 @@ namespace cocos2d
 
             if (GamePadEnabled && director.GamePadEnabled)
             {
-                director.GamePadButtonDispatcher.RemoveDelegate(this);
+                application.GamePadButtonUpdate -= m_OnGamePadButtonUpdateDelegate;
+                application.GamePadConnectionUpdate -= m_OnGamePadConnectionUpdateDelegate;
+                application.GamePadDPadUpdate -= m_OnGamePadDPadUpdateDelegate;
+                application.GamePadStickUpdate -= m_OnGamePadStickUpdateDelegate;
+                application.GamePadTriggerUpdate -= m_OnGamePadTriggerUpdateDelegate;
             }
             base.OnExit();
         }
@@ -186,7 +199,6 @@ namespace cocos2d
             }
             if (m_bIsMultiTouchEnabled)
             {
-
             pDispatcher.AddStandardDelegate(this, 0);
             }
         }
@@ -303,7 +315,6 @@ namespace cocos2d
             }
         }
 
-
         #region touches
 
         #region ICCStandardTouchDelegate Members
@@ -361,32 +372,33 @@ namespace cocos2d
         {
         }
 
-        public virtual void BackButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
+        #region GamePad Support
+        private CCGamePadButtonDelegate m_OnGamePadButtonUpdateDelegate;
+        private CCGamePadConnectionDelegate m_OnGamePadConnectionUpdateDelegate;
+        private CCGamePadDPadDelegate m_OnGamePadDPadUpdateDelegate;
+        private CCGamePadStickUpdateDelegate m_OnGamePadStickUpdateDelegate;
+        private CCGamePadTriggerDelegate m_OnGamePadTriggerUpdateDelegate;
+
+        protected virtual void OnGamePadTriggerUpdate(float leftTriggerStrength, float rightTriggerStrength, Microsoft.Xna.Framework.PlayerIndex player)
         {
         }
 
-        public virtual void StartButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
+        protected virtual void OnGamePadStickUpdate(CCGameStickStatus leftStick, CCGameStickStatus rightStick, Microsoft.Xna.Framework.PlayerIndex player)
         {
         }
 
-        public virtual void SystemButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
+        protected virtual void OnGamePadDPadUpdate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player)
         {
         }
 
-        public virtual void AButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
+        protected virtual void OnGamePadConnectionUpdate(Microsoft.Xna.Framework.PlayerIndex player, bool IsConnected)
         {
         }
 
-        public virtual void XButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
+        protected virtual void OnGamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player)
         {
         }
+        #endregion
 
-        public virtual void YButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
-        {
-        }
-
-        public virtual void BButtonPressed(Microsoft.Xna.Framework.PlayerIndex player)
-        {
-        }
     }
 }
