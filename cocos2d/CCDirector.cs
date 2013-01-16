@@ -318,6 +318,11 @@ namespace cocos2d
         #endregion
 
 #if ANDROID
+        //
+        // This causes the labels to be reconstructed during the draw loop otherwise they will
+        // get collected by the GC and appear as black boxes. Recent changes to MonoGame's develop3d
+        // branch may have made this method obsolete.
+        //
         public virtual void DirtyLabels()
         {
             foreach (CCNode node in m_pobScenesStack)
@@ -348,7 +353,13 @@ namespace cocos2d
                             );
 
                         DrawManager.ViewMatrix = Matrix.Identity;
+#if XBOX
+                        // From Gena and empoc on CodePlex. Tilemaps have a weird misalignment when drawing
+                        // so this might help with that problem.
+                        DrawManager.WorldMatrix = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
+#else
                         DrawManager.WorldMatrix = Matrix.Identity;
+#endif
                         
                         /*
                         DrawManager.ProjectionMatrix = Matrix.Identity;
