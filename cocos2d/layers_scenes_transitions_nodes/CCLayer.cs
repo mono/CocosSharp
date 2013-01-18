@@ -312,6 +312,10 @@ namespace cocos2d
                 {
                     m_bGamePadEnabled = value;
                 }
+                if (value && !CCDirector.SharedDirector.GamePadEnabled)
+                {
+                    CCDirector.SharedDirector.GamePadEnabled = true;
+                }
             }
         }
 

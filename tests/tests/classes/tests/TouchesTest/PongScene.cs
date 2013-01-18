@@ -47,5 +47,14 @@ namespace tests
         {
             base.MainMenuCallback(pSender);
         }
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
     }
 }

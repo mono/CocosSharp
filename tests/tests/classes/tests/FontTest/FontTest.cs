@@ -37,6 +37,18 @@ namespace tests.FontTest
             CCDirector.SharedDirector.ReplaceScene(this);
         }
 
+        protected override void NextTestCase()
+        {
+            nextAction();
+        }
+        protected override void PreviousTestCase()
+        {
+            backAction();
+        }
+        protected override void RestTestCase()
+        {
+            restartAction();
+        }
         public static string nextAction()
         {
             fontIdx++;

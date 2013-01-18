@@ -40,6 +40,16 @@ namespace tests
         public static string s_pPathF1 = "Images/f1";
         public static string s_pPathF2 = "Images/f2";
 
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
+
         public static string[] transitions = new string[]
             {
                 "CCTransitionJumpZoom",

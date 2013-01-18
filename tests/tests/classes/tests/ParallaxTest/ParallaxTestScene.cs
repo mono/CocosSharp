@@ -18,6 +18,21 @@ namespace tests
 
         static int sceneIdx = -1;
         static int MAX_LAYER = 2;
+
+        protected override void NextTestCase()
+        {
+            nextParallaxAction();
+        }
+        protected override void PreviousTestCase()
+        {
+            backParallaxAction();
+        }
+        protected override void RestTestCase()
+        {
+            restartParallaxAction();
+        }
+
+
         public static CCLayer nextParallaxAction()
         {
             sceneIdx++;

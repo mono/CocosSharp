@@ -30,6 +30,18 @@ namespace tests
             }
             return null;
         }
+        protected override void NextTestCase()
+        {
+            nextTestAction();
+        }
+        protected override void PreviousTestCase()
+        {
+            backTestAction();
+        }
+        protected override void RestTestCase()
+        {
+            restartTestAction();
+        }
 
         public static CCLayer nextTestAction()
         {

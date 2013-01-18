@@ -4,6 +4,15 @@ namespace tests.Extensions
 {
     public class CocosBuilderTest : TestScene
     {
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
         public override void runThisTest()
         {
             /* Create an autorelease CCNodeLoaderLibrary. */

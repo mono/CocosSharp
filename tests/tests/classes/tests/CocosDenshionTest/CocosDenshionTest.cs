@@ -200,6 +200,15 @@ namespace tests
 
     public class CocosDenshionTestScene : TestScene
     {
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
         public override void runThisTest()
         {
 	        CCLayer pLayer = new CocosDenshionTest();

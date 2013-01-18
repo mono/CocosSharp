@@ -41,6 +41,18 @@ namespace tests
             return null;
         }
 
+        protected override void NextTestCase()
+        {
+            nextCocosNodeAction();
+        }
+        protected override void PreviousTestCase()
+        {
+            backCocosNodeAction();
+        }
+        protected override void RestTestCase()
+        {
+            restartCocosNodeAction();
+        }
         public static CCLayer nextCocosNodeAction()
         {
             sceneIdx++;

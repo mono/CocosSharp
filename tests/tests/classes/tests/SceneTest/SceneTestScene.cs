@@ -8,6 +8,15 @@ namespace tests
 {
     public class SceneTestScene : TestScene
     {
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
         public override void runThisTest()
         {
             CCLayer pLayer = new SceneTestLayer1();

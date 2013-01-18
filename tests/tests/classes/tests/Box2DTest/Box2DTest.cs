@@ -232,6 +232,15 @@ namespace tests
 
     internal class Box2DTestScene : TestScene
     {
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
         public override void runThisTest()
         {
             CCLayer pLayer = new Box2DTestLayer();

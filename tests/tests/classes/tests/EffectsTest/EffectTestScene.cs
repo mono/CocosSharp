@@ -14,6 +14,16 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(this);
         }
 
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
+
         public static int kTagTextLayer = 1;
         public static int kTagBackground = 1;
         public static int kTagLabel = 2;

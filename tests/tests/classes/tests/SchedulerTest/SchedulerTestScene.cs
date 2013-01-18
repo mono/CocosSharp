@@ -48,6 +48,18 @@ namespace tests
 
             return pLayer;
         }
+        protected override void NextTestCase()
+        {
+            nextSchedulerTest();
+        }
+        protected override void PreviousTestCase()
+        {
+            backSchedulerTest();
+        }
+        protected override void RestTestCase()
+        {
+            restartSchedulerTest();
+        }
 
         public static CCLayer nextSchedulerTest()
         {

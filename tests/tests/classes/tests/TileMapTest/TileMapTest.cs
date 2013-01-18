@@ -1585,6 +1585,20 @@ namespace tests
             return pLayer;
         }
 
+        protected override void RestTestCase()
+        {
+            restartTileMapAction();
+        }
+
+        protected override void NextTestCase()
+        {
+            nextTileMapAction();
+        }
+
+        protected override void PreviousTestCase()
+        {
+            backTileMapAction();
+        }
         public override void runThisTest()
         {
             CCLayer pLayer = nextTileMapAction();

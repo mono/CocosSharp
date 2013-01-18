@@ -173,6 +173,18 @@ namespace tests
 
             return pLayer;
         }
+        protected override void NextTestCase()
+        {
+            NextAction();
+        }
+        protected override void PreviousTestCase()
+        {
+            BackAction();
+        }
+        protected override void RestTestCase()
+        {
+            RestartAction();
+        }
 
         public static CCLayer NextAction()
         {

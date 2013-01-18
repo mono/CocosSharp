@@ -29,6 +29,18 @@ namespace tests
 
             return null;
         }
+        protected override void NextTestCase()
+        {
+            nextMotionAction();
+        }
+        protected override void PreviousTestCase()
+        {
+            backMotionAction();
+        }
+        protected override void RestTestCase()
+        {
+            restartMotionAction();
+        }
         public static CCLayer nextMotionAction()
         {
             sceneIdx++;

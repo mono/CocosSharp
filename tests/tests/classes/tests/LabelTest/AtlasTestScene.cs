@@ -11,6 +11,18 @@ namespace tests
         static int sceneIdx = -1;
         static readonly int MAX_LAYER = 25;
 
+        protected override void NextTestCase()
+        {
+            nextAtlasAction();
+        }
+        protected override void PreviousTestCase()
+        {
+            backAtlasAction();
+        }
+        protected override void RestTestCase()
+        {
+            restartAtlasAction();
+        }
         public static CCLayer nextAtlasAction()
         {
             sceneIdx++;

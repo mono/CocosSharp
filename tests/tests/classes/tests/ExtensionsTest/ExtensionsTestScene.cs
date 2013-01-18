@@ -14,6 +14,15 @@ namespace tests.Extensions
 			CCDirector.SharedDirector.ReplaceScene(this);
 		}
 
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
 
 		/*
 		TEST_NOTIFICATIONCENTER = 0,

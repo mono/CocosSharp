@@ -120,6 +120,18 @@ namespace tests
             return null;
         }
 
+        protected override void NextTestCase()
+        {
+            nextParticleAction();
+        }
+        protected override void PreviousTestCase()
+        {
+            backParticleAction();
+        }
+        protected override void RestTestCase()
+        {
+            restartParticleAction();
+        }
 
         public static CCLayer nextParticleAction()
         {

@@ -198,6 +198,15 @@ namespace tests
 
     public class OrientationTestScene : TestScene
     {
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
         public override void runThisTest()
         {
             OrientationTest.s_currentOrientation = DisplayOrientation.LandscapeLeft;

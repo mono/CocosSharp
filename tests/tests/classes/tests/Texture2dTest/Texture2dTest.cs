@@ -98,6 +98,18 @@ namespace tests
 
             return pLayer;
         }
+        protected override void NextTestCase()
+        {
+            nextTextureTest();
+        }
+        protected override void PreviousTestCase()
+        {
+            backTextureTest();
+        }
+        protected override void RestTestCase()
+        {
+            restartTextureTest();
+        }
 
         public static CCLayer nextTextureTest()
         {

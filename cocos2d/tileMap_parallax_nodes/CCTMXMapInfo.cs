@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -478,26 +479,33 @@ namespace cocos2d
                     //gzip compress
                     if ((pTMXMapInfo.LayerAttribs & (int) TMXLayerAttrib.TMXLayerAttribGzip) != 0)
                     {
+                        try
+                        {
 #if WINDOWS_PHONE 
                         GZipStream inGZipStream = new GZipStream(new MemoryStream(pTMXMapInfo.CurrentString));
 #elif !XBOX
-                        var inGZipStream = new GZipStream(new MemoryStream(pTMXMapInfo.CurrentString), CompressionMode.Decompress);
+                            var inGZipStream = new GZipStream(new MemoryStream(pTMXMapInfo.CurrentString), CompressionMode.Decompress);
 #else
                         var inGZipStream = new GZipInputStream(new MemoryStream(pTMXMapInfo.CurrentString));
 #endif
 
-                        var outMemoryStream = new MemoryStream();
+                            var outMemoryStream = new MemoryStream();
 
-                        var buffer = new byte[1024];
-                        while (true)
-                        {
-                            int bytesRead = inGZipStream.Read(buffer, 0, buffer.Length);
-                            if (bytesRead == 0)
-                                break;
-                            outMemoryStream.Write(buffer, 0, bytesRead);
+                            var buffer = new byte[1024];
+                            while (true)
+                            {
+                                int bytesRead = inGZipStream.Read(buffer, 0, buffer.Length);
+                                if (bytesRead == 0)
+                                    break;
+                                outMemoryStream.Write(buffer, 0, bytesRead);
+                            }
+                            encoded = outMemoryStream.ToArray();
                         }
-
-                        encoded = outMemoryStream.ToArray();
+                        catch (Exception ex)
+                        {
+                            CCLog.Log("failed to decompress embedded data object in TMX file.");
+                            CCLog.Log(ex.ToString());
+                        }
                     }
 
                     //zlib

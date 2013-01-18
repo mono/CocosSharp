@@ -24,6 +24,18 @@ namespace tests
             return null;
         }
 
+        protected override void NextTestCase()
+        {
+            nextTestCase();
+        }
+        protected override void PreviousTestCase()
+        {
+            backTestCase();
+        }
+        protected override void RestTestCase()
+        {
+            restartTestCase();
+        }
         public static CCLayer nextTestCase()
         {
             sceneIdx++;

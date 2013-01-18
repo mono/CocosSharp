@@ -16,6 +16,16 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(this);
         }
 
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
+
         public static int MAX_COUNT = 9;
         public static int LINE_SPACE = 40;
         public static int kItemTagBasic = 5432;

@@ -13,6 +13,11 @@ namespace tests
     {
         static int LINE_SPACE = 40;
         static CCPoint s_tCurPos = new CCPoint(0.0f, 0.0f);
+        private CCGamePadButtonDelegate _GamePadButtonDelegate;
+        private CCGamePadDPadDelegate _GamePadDPadDelegate;
+        private List<CCMenuItem> _Items = new List<CCMenuItem>();
+        private int _CurrentItemIndex = 0;
+        private CCSprite _menuIndicator;
 
         public TestController()
         {
@@ -20,28 +25,153 @@ namespace tests
             var pCloseItem = CCMenuItemImage.Create(TestResource.s_pPathClose, TestResource.s_pPathClose, closeCallback);
             var pMenu = CCMenu.Create(pCloseItem);
             var s = CCDirector.SharedDirector.WinSize;
+#if !XBOX
+            TouchEnabled = true;
+#else
+            GamePadEnabled = true;
+#endif
 
             pMenu.Position = new CCPoint(0.0f, 0.0f);
             pCloseItem.Position = new CCPoint(s.width - 30, s.height - 30);
 
+            CCLabelTTF versionLabel = CCLabelTTF.Create("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
+            versionLabel.Position = new CCPoint(versionLabel.ContentSizeInPixels.width/2f, s.height - 18f);
+            versionLabel.HorizontalAlignment = CCTextAlignment.CCTextAlignmentLeft;
+            AddChild(versionLabel, 20000);
             // add menu items for tests
-            m_pItemMenu = CCMenu.Create(null);
+            m_pItemMenu = CCMenu.Create();
             for (int i = 0; i < (int)(TestCases.TESTS_COUNT); ++i)
             {
                 var label = CCLabelTTF.Create(Tests.g_aTestNames[i], "arial", 24);
                 var pMenuItem = CCMenuItemLabel.Create(label, menuCallback);
 
-                m_pItemMenu.AddChild(pMenuItem, i + 10000);
+                pMenuItem.UserData = i;
+                m_pItemMenu.AddChild(pMenuItem, 10000);
+#if XBOX
+                pMenuItem.Position = new CCPoint(s.width / 2, -(i + 1) * LINE_SPACE);
+#else
                 pMenuItem.Position = new CCPoint(s.width / 2, (s.height - (i + 1) * LINE_SPACE));
+#endif
+                _Items.Add(pMenuItem);
             }
 
             m_pItemMenu.ContentSize = new CCSize(s.width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
-            m_pItemMenu.Position = s_tCurPos;
+#if XBOX
+            CCSprite sprite = CCSprite.Create("Images/aButton");
+            AddChild(sprite, 10001);
+            _menuIndicator = sprite;
+            // Center the menu on the first item so that it is 
+            // in the center of the screen
+            _HomePosition = new CCPoint(0f, s.height / 2f + LINE_SPACE / 2f);
+            _LastPosition = new CCPoint(0f, _HomePosition.y - (_Items.Count - 1) * LINE_SPACE);
+
+#else
+            _HomePosition = s_tCurPos;
+#endif
+            m_pItemMenu.Position = _HomePosition;
             AddChild(m_pItemMenu);
 
-            TouchEnabled = true;
-
             AddChild(pMenu, 1);
+
+            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
+            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
+            // set the first one to have the selection highlight
+            _CurrentItemIndex = 0;
+            SelectMenuItem();
+        }
+        private CCPoint _HomePosition;
+        private CCPoint _LastPosition;
+
+        private void SelectMenuItem()
+        {
+            _Items[_CurrentItemIndex].Selected();
+            if (_menuIndicator != null)
+            {
+                _menuIndicator.Position = new CCPoint(
+                    m_pItemMenu.Position.x + _Items[_CurrentItemIndex].Position.x - _Items[_CurrentItemIndex].ContentSizeInPixels.width / 2f - _menuIndicator.ContentSizeInPixels.width / 2f - 5f,
+                    m_pItemMenu.Position.y + _Items[_CurrentItemIndex].Position.y
+                    );
+            }
+        }
+
+        private void NextMenuItem() 
+        {
+            _Items[_CurrentItemIndex].Unselected();
+            _CurrentItemIndex = (_CurrentItemIndex + 1) % _Items.Count;
+            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            m_pItemMenu.Position = (new CCPoint(0, _HomePosition.y + _CurrentItemIndex * LINE_SPACE));
+            s_tCurPos = m_pItemMenu.Position;
+            SelectMenuItem();
+        }
+        private void PreviousMenuItem() 
+        {
+            _Items[_CurrentItemIndex].Unselected();
+            _CurrentItemIndex--;
+            if(_CurrentItemIndex < 0) {
+                _CurrentItemIndex = _Items.Count - 1;
+            }
+            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            m_pItemMenu.Position = (new CCPoint(0, _HomePosition.y + _CurrentItemIndex * LINE_SPACE));
+            s_tCurPos = m_pItemMenu.Position;
+            SelectMenuItem();
+        }
+        public override void OnEnter()
+        {
+            CCApplication.SharedApplication.GamePadDPadUpdate += _GamePadDPadDelegate;
+            CCApplication.SharedApplication.GamePadButtonUpdate += _GamePadButtonDelegate;
+        }
+
+        private bool _aButtonWasPressed = false;
+
+        private void MyOnGamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player)
+        {
+            if (aButton == CCGamePadButtonStatus.Pressed)
+            {
+                _aButtonWasPressed = true;
+            }
+            else if (aButton == CCGamePadButtonStatus.Released && _aButtonWasPressed)
+            {
+                // Select the menu
+                _Items[_CurrentItemIndex].Activate();
+                _Items[_CurrentItemIndex].Unselected();
+            }
+        }
+
+        private long _FirstTicks;
+        private bool _bDownPress = false;
+        private bool _bUpPress = false;
+
+        private void MyOnGamePadDPadUpdate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player)
+        {
+            // Down and Up only
+            if (downButton == CCGamePadButtonStatus.Pressed)
+            {
+                if (_FirstTicks == 0L)
+                {
+                    _FirstTicks = DateTime.Now.Ticks;
+                    _bDownPress = true;
+                }
+            }
+            else if (downButton == CCGamePadButtonStatus.Released && _FirstTicks > 0L && _bDownPress)
+            {
+                _FirstTicks = 0L;
+                NextMenuItem();
+                _bDownPress = false;
+            }
+            if (upButton == CCGamePadButtonStatus.Pressed)
+            {
+                if (_FirstTicks == 0L)
+                {
+                    _FirstTicks = DateTime.Now.Ticks;
+                    _bUpPress = true;
+                }
+            }
+            else if (upButton == CCGamePadButtonStatus.Released && _FirstTicks > 0L && _bUpPress)
+            {
+                _FirstTicks = 0L;
+                PreviousMenuItem();
+                _bUpPress = false;
+            }
         }
 
         ~TestController()
@@ -52,12 +182,14 @@ namespace tests
         {
             // get the userdata, it's the index of the menu item clicked
             CCMenuItem pMenuItem = (CCMenuItem)(pSender);
-            int nIdx = pMenuItem.ZOrder - 10000;
+            int nIdx = (int)pMenuItem.UserData;
 
             // create the test scene and run it
             TestScene pScene = CreateTestScene(nIdx);
             if (pScene != null)
             {
+                CCApplication.SharedApplication.GamePadDPadUpdate -= _GamePadDPadDelegate;
+                CCApplication.SharedApplication.GamePadButtonUpdate -= _GamePadButtonDelegate;
                 pScene.runThisTest();
             }
         }

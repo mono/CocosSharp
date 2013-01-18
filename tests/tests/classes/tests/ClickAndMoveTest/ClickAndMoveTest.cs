@@ -19,6 +19,15 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(this);
         }
 
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
     }
 
     public class MainLayer : CCLayer

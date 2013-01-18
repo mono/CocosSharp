@@ -36,6 +36,18 @@ namespace tests
             }
             return null;
         }
+        protected override void NextTestCase()
+        {
+            nextEffectAdvanceAction();
+        }
+        protected override void PreviousTestCase()
+        {
+            backEffectAdvanceAction();
+        }
+        protected override void RestTestCase()
+        {
+            restartEffectAdvanceAction();
+        }
 
         public static CCLayer nextEffectAdvanceAction()
         {

@@ -46,6 +46,18 @@ namespace cocos2d
             return null;
         }
 
+        protected override void NextTestCase()
+        {
+            nextTextInputTest();
+        }
+        protected override void PreviousTestCase()
+        {
+            backTextInputTest();
+        }
+        protected override void RestTestCase()
+        {
+            restartTextInputTest();
+        }
         public CCLayer restartTextInputTest()
         {
             TextInputTest pContainerLayer = new TextInputTest();

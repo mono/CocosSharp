@@ -106,6 +106,18 @@ namespace tests
             return null;
         }
 
+        protected override void NextTestCase()
+        {
+            nextSpriteTestAction();
+        }
+        protected override void PreviousTestCase()
+        {
+            backSpriteTestAction();
+        }
+        protected override void RestTestCase()
+        {
+            restartSpriteTestAction();
+        }
         public static CCLayer nextSpriteTestAction()
         {
             sceneIdx++;

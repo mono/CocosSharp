@@ -559,6 +559,15 @@ namespace tests
 
     public class EaseActionsTestScene : TestScene
     {
+        protected override void NextTestCase()
+        {
+        }
+        protected override void PreviousTestCase()
+        {
+        }
+        protected override void RestTestCase()
+        {
+        }
         public override void runThisTest()
         {
             var pLayer = EaseTest.nextEaseAction();
