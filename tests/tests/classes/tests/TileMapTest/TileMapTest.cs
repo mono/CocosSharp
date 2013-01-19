@@ -1385,12 +1385,18 @@ namespace tests
         private string s_pPathF2 = "Images/f2";
         private string s_pPathR1 = "Images/r1";
         private string s_pPathR2 = "Images/r2";
+        private CCGamePadButtonDelegate _GamePadButtonDelegate;
+        private CCGamePadDPadDelegate _GamePadDPadDelegate;
+        private CCGamePadStickUpdateDelegate _GamePadStickDelegate;
 
         public TileDemo()
         {
             TouchEnabled = true;
 
             CCSize s = CCDirector.SharedDirector.WinSize;
+            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
+            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
+            _GamePadStickDelegate = new CCGamePadStickUpdateDelegate(MyOnGameStickUpdate);
 
             m_label = CCLabelTTF.Create("", "arial", 28);
             AddChild(m_label, 1);
@@ -1420,6 +1426,59 @@ namespace tests
             AddChild(menu, 1);
         }
 
+        private bool _aButtonWasPressed = false;
+
+        private void MyOnGamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player)
+        {
+            if (aButton == CCGamePadButtonStatus.Pressed)
+            {
+                _aButtonWasPressed = true;
+            }
+            else if (aButton == CCGamePadButtonStatus.Released && _aButtonWasPressed)
+            {
+                // Select the menu
+                restartCallback(null);
+            }
+        }
+
+        private long _FirstTicks;
+        private bool _bDownPress = false;
+        private bool _bUpPress = false;
+
+        private void MyOnGamePadDPadUpdate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player)
+        {
+            // Down and Up only
+            if (rightButton == CCGamePadButtonStatus.Pressed)
+            {
+                if (_FirstTicks == 0L)
+                {
+                    _FirstTicks = DateTime.Now.Ticks;
+                    _bDownPress = true;
+                }
+            }
+            else if (rightButton == CCGamePadButtonStatus.Released && _FirstTicks > 0L && _bDownPress)
+            {
+                _FirstTicks = 0L;
+                nextCallback(null);
+                _bDownPress = false;
+            }
+            if (leftButton == CCGamePadButtonStatus.Pressed)
+            {
+                if (_FirstTicks == 0L)
+                {
+                    _FirstTicks = DateTime.Now.Ticks;
+                    _bUpPress = true;
+                }
+            }
+            else if (leftButton == CCGamePadButtonStatus.Released && _FirstTicks > 0L && _bUpPress)
+            {
+                _FirstTicks = 0L;
+                backCallback(null);
+                _bUpPress = false;
+            }
+        }
+
+
         public virtual string title()
         {
             return "No title";
@@ -1436,6 +1495,19 @@ namespace tests
 
             m_label.SetString(title());
             m_subtitle.SetString(subtitle());
+            CCApplication.SharedApplication.GamePadButtonUpdate += _GamePadButtonDelegate;
+            CCApplication.SharedApplication.GamePadDPadUpdate += _GamePadDPadDelegate;
+            CCApplication.SharedApplication.GamePadStickUpdate += _GamePadStickDelegate;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            CCDirector pDirector = CCDirector.SharedDirector;
+            pDirector.TouchDispatcher.RemoveDelegate(this);
+            CCApplication.SharedApplication.GamePadButtonUpdate -= _GamePadButtonDelegate;
+            CCApplication.SharedApplication.GamePadDPadUpdate -= _GamePadDPadDelegate;
+            CCApplication.SharedApplication.GamePadStickUpdate -= _GamePadStickDelegate;
         }
 
         private void restartCallback(CCObject pSender)
@@ -1485,17 +1557,36 @@ namespace tests
             CCPoint currentPos = node.Position;
             node.Position = currentPos + diff;
         }
+        private void MyOnGameStickUpdate(CCGameStickStatus left, CCGameStickStatus right, PlayerIndex player)
+        {
+            if (left.Magnitude > 0f)
+            {
+                // use the left stick to move the map
+                CCPoint diff = left.Direction * left.Magnitude * 10f;
+                CCNode node = GetChildByTag(kTagTileMap);
+                CCPoint currentPos = node.Position;
+                node.Position = currentPos + diff;
+            }
+        }
     }
 
     public class TileMapTestScene : TestScene
     {
         private static int sceneIdx = -1;
+#if XBOX
+        private static int MAX_LAYER = 1;
+#else
         private static int MAX_LAYER = 28;
+#endif
 
         private static CCLayer createTileMapLayer(int nIndex)
         {
             switch (nIndex)
             {
+#if XBOX
+                case 0:
+                    return new TMXUncompressedTest();
+#else
                 case 0:
                     return new TMXIsoZorder();
                 case 1:
@@ -1552,6 +1643,7 @@ namespace tests
                     return new TMXBug787();
                 case 27:
                     return new TMXGIDObjectsTest();
+#endif
             }
 
             return null;
