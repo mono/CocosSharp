@@ -1388,6 +1388,7 @@ namespace tests
         private CCGamePadButtonDelegate _GamePadButtonDelegate;
         private CCGamePadDPadDelegate _GamePadDPadDelegate;
         private CCGamePadStickUpdateDelegate _GamePadStickDelegate;
+        private CCGamePadTriggerDelegate _GamePadTriggerDelegate;
 
         public TileDemo()
         {
@@ -1397,6 +1398,7 @@ namespace tests
             _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
             _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
             _GamePadStickDelegate = new CCGamePadStickUpdateDelegate(MyOnGameStickUpdate);
+            _GamePadTriggerDelegate =  new CCGamePadTriggerDelegate(MyGamePadTriggerUpdate);
 
             m_label = CCLabelTTF.Create("", "arial", 28);
             AddChild(m_label, 1);
@@ -1427,6 +1429,8 @@ namespace tests
         }
 
         private bool _aButtonWasPressed = false;
+        private bool _yButtonWasPressed = false;
+        private bool _xButtonWasPressed = false;
 
         private void MyOnGamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player)
         {
@@ -1438,6 +1442,26 @@ namespace tests
             {
                 // Select the menu
                 restartCallback(null);
+            }
+
+            if (yButton == CCGamePadButtonStatus.Pressed)
+            {
+                _yButtonWasPressed = true;
+            }
+            else if (yButton == CCGamePadButtonStatus.Released && _yButtonWasPressed)
+            {
+                CCNode node = GetChildByTag(kTagTileMap);
+                node.RunAction(CCRotateBy.Create(1f,15f));
+            }
+
+            if (xButton == CCGamePadButtonStatus.Pressed)
+            {
+                _xButtonWasPressed = true;
+            }
+            else if (xButton == CCGamePadButtonStatus.Released && _xButtonWasPressed)
+            {
+                CCNode node = GetChildByTag(kTagTileMap);
+                node.RunAction(CCRotateBy.Create(1f, -15f));
             }
         }
 
@@ -1498,6 +1522,7 @@ namespace tests
             CCApplication.SharedApplication.GamePadButtonUpdate += _GamePadButtonDelegate;
             CCApplication.SharedApplication.GamePadDPadUpdate += _GamePadDPadDelegate;
             CCApplication.SharedApplication.GamePadStickUpdate += _GamePadStickDelegate;
+            CCApplication.SharedApplication.GamePadTriggerUpdate += _GamePadTriggerDelegate;
         }
 
         public override void OnExit()
@@ -1508,7 +1533,9 @@ namespace tests
             CCApplication.SharedApplication.GamePadButtonUpdate -= _GamePadButtonDelegate;
             CCApplication.SharedApplication.GamePadDPadUpdate -= _GamePadDPadDelegate;
             CCApplication.SharedApplication.GamePadStickUpdate -= _GamePadStickDelegate;
+            CCApplication.SharedApplication.GamePadTriggerUpdate -= _GamePadTriggerDelegate;
         }
+
 
         private void restartCallback(CCObject pSender)
         {
@@ -1557,15 +1584,30 @@ namespace tests
             CCPoint currentPos = node.Position;
             node.Position = currentPos + diff;
         }
+        private void MyGamePadTriggerUpdate(float leftTriggerStrength, float rightTriggerStrength, PlayerIndex player)
+        {
+            CCNode node = GetChildByTag(kTagTileMap);
+            node.Rotation += rightTriggerStrength * ccMacros.CC_DEGREES_TO_RADIANS(15f) - leftTriggerStrength * ccMacros.CC_DEGREES_TO_RADIANS(15f);
+        }
         private void MyOnGameStickUpdate(CCGameStickStatus left, CCGameStickStatus right, PlayerIndex player)
         {
+            CCNode node = GetChildByTag(kTagTileMap);
+            CCTMXTiledMap map = (CCTMXTiledMap)node;
             if (left.Magnitude > 0f)
             {
                 // use the left stick to move the map
-                CCPoint diff = left.Direction * left.Magnitude * 10f;
-                CCNode node = GetChildByTag(kTagTileMap);
+                CCPoint diff = left.Direction.InvertY * left.Magnitude * 10f;
                 CCPoint currentPos = node.Position;
                 node.Position = currentPos + diff;
+            }
+            if (right.Magnitude > 0f)
+            {
+                float scale = (1f - right.Direction.y * right.Magnitude);
+                node.Scale += scale;
+                if (node.Scale < 1f)
+                {
+                    node.Scale = 1f;
+                }
             }
         }
     }

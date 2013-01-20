@@ -52,7 +52,7 @@ namespace tests
             // top image is moved at a ratio of 3.0x, 2.5y
             voidNode.AddChild(cocosImage, 2, new CCPoint(3.0f, 2.5f), new CCPoint(200, 1000));
 
-            AddChild(voidNode, 0, (int) KTag.kTagNode);
+            AddChild(voidNode, -1, kTagTileMap); // 0, (int)KTag.kTagNode);
         }
 
         public override void RegisterWithTouchDispatcher()
@@ -75,7 +75,7 @@ namespace tests
 
             CCPoint diff = CCPointExtension.ccpSub(touchLocation, prevLocation);
 
-            CCNode node = GetChildByTag((int) KTag.kTagNode);
+            CCNode node = GetChildByTag(kTagTileMap); // (int) KTag.kTagNode);
             CCPoint currentPos = node.Position;
             node.Position = CCPointExtension.ccpAdd(currentPos, diff);
         }

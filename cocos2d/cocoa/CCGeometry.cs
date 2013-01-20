@@ -110,6 +110,17 @@ namespace cocos2d
             get { return (float)Math.Sqrt(x * x + y * y); }
         }
 
+        /// <summary>
+        /// Inverts the direction or location of the Y component.
+        /// </summary>
+        public CCPoint InvertY
+        {
+            get
+            {
+                return (new CCPoint(x, -y));
+            }
+        }
+
         public static CCPoint Perp(CCPoint p)
         {
             return new CCPoint(-p.y, p.x);

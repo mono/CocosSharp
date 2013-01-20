@@ -63,7 +63,7 @@ namespace tests
 
             voidNode.RunAction(CCRepeatForever.Create((CCActionInterval) seq));
 
-            AddChild(voidNode);
+            AddChild(voidNode, -1, kTagTileMap);
         }
 
         public virtual string title()
