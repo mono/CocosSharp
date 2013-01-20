@@ -68,3 +68,10 @@ and Totally Evil Entertainment, LLC.
 * CCTexture2D Test : Changed the 512, 1024, and 2048 test patterns.
 * CCAccelerator : Added xbox/ouya ifdef tags to exclude them from building accelerometer support.
 * Added XBox 360 project files for the framework and tests.
+* tests: TileMapTest : removed all but the uncompressed test for xbox deployment.
+* Added an xbox 360 version of the CSharpZipLib library that removes its encryption capabilities.
+* tests: ParallaxTest : Added gamepad support to test pan and rotation of the map.
+* tests: TileMapTest : Added gamepad support to test pan and rotation of the map.
+* tests: Added a new initial test menu that responds to the d-pad and gamepad buttons.
+* external lib: Added iOS and MacOS build libraries based upon MonoGame 3.0.0.0
+
