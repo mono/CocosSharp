@@ -1,0 +1,2117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{2CE0B38F-5C9C-4088-8FEC-D3B58EE48E35}</ProjectGuid>
+    <ProjectTypeGuids>{96E2B04D-8817-42c6-938A-82C39BA4D311};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
+    <OutputPath>bin\$(Platform)\iOS\$(Configuration)</OutputPath>
+    <ContentRootDirectory>Content</ContentRootDirectory>
+    <MonoGamePlatform>iOS</MonoGamePlatform>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>testsIOSContent</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MonoGameContentProcessors">
+      <HintPath>..\MonoGameContentBuilder\iOS\MonoGameContentProcessors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.FBXImporter" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.TextureImporter" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.XImporter" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.AudioImporters" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="animations\grossini.plist">
+      <SubType>Designer</SubType>
+      <Name>grossini.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\atlastest.png">
+      <Name>atlastest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\b1-hd.png">
+      <Name>b1-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\b1.png">
+      <Name>b1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\b2-hd.png">
+      <Name>b2-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\b2.png">
+      <Name>b2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\background.png">
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\background1-hd.png">
+      <Name>background1-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\background1.png">
+      <Name>background1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\background2-hd.png">
+      <Name>background2-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\background2.png">
+      <Name>background2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\background3-hd.png">
+      <Name>background3-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\background3.png">
+      <Name>background3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\ball-hd.png">
+      <Name>ball-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\ball.png">
+      <Name>ball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\bitmapFontTest3.png">
+      <Name>bitmapFontTest3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\blocks-hd.png">
+      <Name>blocks-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\blocks.png">
+      <Name>blocks</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\btn-about-normal.png">
+      <Name>btn-about-normal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\btn-about-selected.png">
+      <Name>btn-about-selected</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\btn-highscores-normal.png">
+      <Name>btn-highscores-normal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\btn-highscores-selected.png">
+      <Name>btn-highscores-selected</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\btn-play-normal.png">
+      <Name>btn-play-normal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\btn-play-selected.png">
+      <Name>btn-play-selected</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\close-hd.png">
+      <Name>close-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\close.png">
+      <Name>close</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Comet.png">
+      <Name>Comet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\f1-hd.png">
+      <Name>f1-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\f1.png">
+      <Name>f1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\f2-hd.png">
+      <Name>f2-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\f2.png">
+      <Name>f2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\fire-grayscale.png">
+      <Name>fire-grayscale</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\fire.png">
+      <Name>fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Fog.png">
+      <Name>Fog</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\fps_images.png">
+      <Name>fps_images</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini-hd.png">
+      <Name>grossini-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini.png">
+      <Name>grossini</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossinis_sister1-hd.png">
+      <Name>grossinis_sister1-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossinis_sister1-testalpha.png">
+      <Name>grossinis_sister1-testalpha</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossinis_sister1.png">
+      <Name>grossinis_sister1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossinis_sister2-hd.png">
+      <Name>grossinis_sister2-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossinis_sister2.png">
+      <Name>grossinis_sister2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_01.png">
+      <Name>grossini_dance_01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_02.png">
+      <Name>grossini_dance_02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_03.png">
+      <Name>grossini_dance_03</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_04.png">
+      <Name>grossini_dance_04</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_05.png">
+      <Name>grossini_dance_05</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_06.png">
+      <Name>grossini_dance_06</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_07.png">
+      <Name>grossini_dance_07</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_08.png">
+      <Name>grossini_dance_08</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_09.png">
+      <Name>grossini_dance_09</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_10.png">
+      <Name>grossini_dance_10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_11.png">
+      <Name>grossini_dance_11</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_12.png">
+      <Name>grossini_dance_12</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_13.png">
+      <Name>grossini_dance_13</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_14.png">
+      <Name>grossini_dance_14</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_atlas-hd.png">
+      <Name>grossini_dance_atlas-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_atlas-mono.png">
+      <Name>grossini_dance_atlas-mono</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_atlas.png">
+      <Name>grossini_dance_atlas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\grossini_dance_atlas_nomipmap.png">
+      <Name>grossini_dance_atlas_nomipmap</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\HelloWorld.png">
+      <Name>HelloWorld</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Icon.png">
+      <Name>Icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\landscape-1024x1024.png">
+      <Name>landscape-1024x1024</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\menuitemsprite.png">
+      <Name>menuitemsprite</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\paddle-hd.png">
+      <Name>paddle-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\paddle.png">
+      <Name>paddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\particles-hd.png">
+      <Name>particles-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\particles.png">
+      <Name>particles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\pattern1.png">
+      <Name>pattern1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Pea.png">
+      <Name>Pea</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\piece.png">
+      <Name>piece</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\PlanetCute-1024x1024.png">
+      <Name>PlanetCute-1024x1024</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\powered.png">
+      <Name>powered</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\r1-hd.png">
+      <Name>r1-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\r1.png">
+      <Name>r1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\r2-hd.png">
+      <Name>r2-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\r2.png">
+      <Name>r2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\SendScoreButton.png">
+      <Name>SendScoreButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\SendScoreButtonPressed.png">
+      <Name>SendScoreButtonPressed</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\snow.png">
+      <Name>snow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\SpinningPeas.png">
+      <Name>SpinningPeas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\SpookyPeas.png">
+      <Name>SpookyPeas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\spritesheet1.png">
+      <Name>spritesheet1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\stars-grayscale.png">
+      <Name>stars-grayscale</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\stars.png">
+      <Name>stars</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\stars2-grayscale.png">
+      <Name>stars2-grayscale</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\stars2.png">
+      <Name>stars2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\streak.png">
+      <Name>streak</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\test-rgba1.png">
+      <Name>test-rgba1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\test_blend.png">
+      <Name>test_blend</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\test_image.png">
+      <Name>test_image</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\texture1024x1024.png">
+      <Name>texture1024x1024</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\texture2048x2048.png">
+      <Name>texture2048x2048</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\texture512x512.png">
+      <Name>texture512x512</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\levelmap.tga">
+      <Name>levelmap</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\tiles.png">
+      <Name>tiles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="fonts\Arial.spritefont">
+      <Name>Arial</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sounds\background.mp3">
+      <Name>background</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>MGSongProcessor</Processor>
+    </Compile>
+    <Compile Include="Sounds\effect1.wav">
+      <Name>effect1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>MGSoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\cocos2d.Content.Pipeline.Importers\cocos2d.Content.Pipeline.Importers.csproj">
+      <Project>{FBE4633D-00D1-4391-8184-63B91DA28D4B}</Project>
+      <Name>cocos2d.Content.Pipeline.Importers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\iso.png">
+      <Name>iso</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\arial16.fnt">
+      <Name>arial16</Name>
+      <Importer>TextImporter</Importer>
+      <Processor>TextProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\orthogonal-test-zorder.tmx">
+      <Name>orthogonal-test-zorder</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\ortho-test1.png">
+      <Name>ortho-test1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\orthogonal-test1.tmx">
+      <Name>orthogonal-test1</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\iso-test1.png">
+      <Name>iso-test1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\fixed-ortho-test2.png">
+      <Name>fixed-ortho-test2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\hexa-tiles.png">
+      <Name>hexa-tiles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\iso-test.png">
+      <Name>iso-test</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\iso-test2.png">
+      <Name>iso-test2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\ortho-test1_bw.png">
+      <Name>ortho-test1_bw</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\ortho-test2.png">
+      <Name>ortho-test2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\tiles-hd.png">
+      <Name>tiles-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\tmw_desert_spacing-hd.png">
+      <Name>tmw_desert_spacing-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\tmw_desert_spacing.png">
+      <Name>tmw_desert_spacing</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\hexa-test1.tmx">
+      <Name>hexa-test1</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\iso-test-bug787.tmx">
+      <Name>iso-test-bug787</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\iso-test-movelayer.tmx">
+      <Name>iso-test-movelayer</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\iso-test-objectgroup.tmx">
+      <Name>iso-test-objectgroup</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\iso-test-vertexz.tmx">
+      <Name>iso-test-vertexz</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\iso-test-zorder.tmx">
+      <Name>iso-test-zorder</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\iso-test11.tmx">
+      <Name>iso-test11</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\iso-test2-uncompressed.tmx">
+      <Name>iso-test2-uncompressed</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TextProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\iso-test22.tmx">
+      <Name>iso-test22</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\ortho-objects.tmx">
+      <Name>ortho-objects</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\orthogonal-test-movelayer.tmx">
+      <Name>orthogonal-test-movelayer</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\orthogonal-test-vertexz.tmx">
+      <Name>orthogonal-test-vertexz</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\orthogonal-test11.tsx">
+      <Name>orthogonal-test11</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="TileMaps\orthogonal-test2.tmx">
+      <Name>orthogonal-test2</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\orthogonal-test3.tmx">
+      <Name>orthogonal-test3</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\orthogonal-test4-hd.tmx">
+      <Name>orthogonal-test4-hd</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\orthogonal-test4.tmx">
+      <Name>orthogonal-test4</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\orthogonal-test5.tmx">
+      <Name>orthogonal-test5</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\orthogonal-test6-hd.tmx">
+      <Name>orthogonal-test6-hd</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\orthogonal-test6.tmx">
+      <Name>orthogonal-test6</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\test-object-layer.tmx">
+      <Name>test-object-layer</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TextProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\iso-test01.tmx">
+      <Name>iso-test01</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="animations\animations-2.plist">
+      <Name>animations-2.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="animations\animations.plist">
+      <Name>animations.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <None Include="animations\grossini.plist.xml">
+      <Name>grossini.plist</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </None>
+    <Compile Include="zwoptex\grossini-generic.plist">
+      <Name>grossini-generic.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="zwoptex\grossini.plist">
+      <Name>grossini.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Phoenix.plist">
+      <Name>Phoenix</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="Images\BoilingFoam.plist">
+      <Name>BoilingFoam</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\BurstPipe.plist">
+      <Name>BurstPipe</Name>
+      <Processor>CocosPListProcessor</Processor>
+      <Importer>CocosPListImporter</Importer>
+    </Compile>
+    <Compile Include="Images\debian.plist">
+      <Name>debian</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\ExplodingRing.plist">
+      <Name>ExplodingRing</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\FlowerPlist.plist">
+      <Name>FlowerPlist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\GalaxyPlist.plist">
+      <Name>GalaxyPlist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\LavaFlow.plist">
+      <Name>LavaFlow</Name>
+      <Importer>TextImporter</Importer>
+      <Processor>TextProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Spiral.plist">
+      <Name>Spiral</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Upsidedown.plist">
+      <Name>Upsidedown</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\CometPlist.plist">
+      <Name>CometPlist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\SpinningPeasPlist.plist">
+      <Name>SpinningPeasPlist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\SpookyPeasPlist.plist">
+      <Name>SpookyPeasPlist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\BoilingFoam.plist">
+      <Name>BoilingFoam</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\BurstPipe.plist">
+      <Name>BurstPipe</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\Comet.plist">
+      <Name>Comet</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\debian.plist">
+      <Name>debian</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\ExplodingRing.plist">
+      <Name>ExplodingRing</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\Flower.plist">
+      <Name>Flower</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\Galaxy.plist">
+      <Name>Galaxy</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\LavaFlow.plist">
+      <Name>LavaFlow</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\Phoenix.plist">
+      <Name>Phoenix</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\SmallSun.plist">
+      <Name>SmallSun</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\SpinningPeas.plist">
+      <Name>SpinningPeas</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\Spiral.plist">
+      <Name>Spiral</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\SpookyPeas.plist">
+      <Name>SpookyPeas</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\TestPremultipliedAlpha.plist">
+      <Name>TestPremultipliedAlpha</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Particles\Upsidedown.plist">
+      <Name>Upsidedown</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\debugfont.spritefont">
+      <Name>debugfont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\orthogonal-test1.tsx">
+      <Name>orthogonal-test1-tsx</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TextProcessor</Processor>
+    </Compile>
+    <Compile Include="TileMaps\ortho-rotation-test.tmx">
+      <Name>ortho-rotation-test</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\bugs\circle.plist">
+      <Name>circle.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="ccb\animated-grossini.plist">
+      <Name>animated-grossini.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <None Include="ccb\ccb\TestAnimations.ccb">
+      <Name>TestAnimations</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestAnimations.ccbi">
+      <Name>TestAnimations</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestAnimationsSub.ccb">
+      <Name>TestAnimationsSub</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestAnimationsSub.ccbi">
+      <Name>TestAnimationsSub</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestButtons.ccb">
+      <Name>TestButtons</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestButtons.ccbi">
+      <Name>TestButtons</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestHeader.ccb">
+      <Name>TestHeader</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestHeader.ccbi">
+      <Name>TestHeader</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestLabels.ccb">
+      <Name>TestLabels</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestLabels.ccbi">
+      <Name>TestLabels</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestMenus.ccb">
+      <Name>TestMenus</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestMenus.ccbi">
+      <Name>TestMenus</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestParticleSystems.ccb">
+      <Name>TestParticleSystems</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestParticleSystems.ccbi">
+      <Name>TestParticleSystems</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestScrollViews.ccb">
+      <Name>TestScrollViews</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestScrollViews.ccbi">
+      <Name>TestScrollViews</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestScrollViewsContentA.ccb">
+      <Name>TestScrollViewsContentA</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestScrollViewsContentA.ccbi">
+      <Name>TestScrollViewsContentA</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestSprites.ccb">
+      <Name>TestSprites</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\ccb\TestSprites.ccbi">
+      <Name>TestSprites</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\comic andy.ttf">
+      <Name>comic andy</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Compile Include="ccb\grossini-generic.plist">
+      <Name>grossini-generic.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <None Include="ccb\HelloCocosBuilder.ccb">
+      <Name>HelloCocosBuilder</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ccb\HelloCocosBuilder.ccbi">
+      <Name>HelloCocosBuilder</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Compile Include="ccb\markerfelt24shadow.fnt">
+      <Name>markerfelt24shadow.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\A Damn Mess-26.spritefont">
+      <Name>A Damn Mess-26</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
+    </Compile>
+    <None Include="fonts\A Damn Mess.ttf">
+      <Name>A Damn Mess</Name>
+    </None>
+    <Compile Include="fonts\Abberancy-26.spritefont">
+      <Name>Abberancy-26</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <None Include="fonts\Abberancy.ttf">
+      <Name>Abberancy</Name>
+    </None>
+    <Compile Include="fonts\Abduction-26.spritefont">
+      <Name>Abduction-26</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <None Include="fonts\Abduction.ttf">
+      <Name>Abduction</Name>
+    </None>
+    <None Include="fonts\American Typewriter.ttf">
+      <Name>American Typewriter</Name>
+    </None>
+    <Compile Include="fonts\arial-unicode-26.fnt">
+      <Name>arial-unicode-26.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-24.spritefont">
+      <Name>arial-24</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-18.spritefont">
+      <Name>arial-18</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-22.spritefont">
+      <Name>arial-22</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-20.spritefont">
+      <Name>arial-20</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-16.spritefont">
+      <Name>arial-16</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-12.spritefont">
+      <Name>arial-12</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-50.spritefont">
+      <Name>arial-50</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-32.spritefont">
+      <Name>arial-32</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-38.spritefont">
+      <Name>arial-38</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-64.spritefont">
+      <Name>arial-64</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-30.spritefont">
+      <Name>arial-30</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-28.spritefont">
+      <Name>arial-28</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-34.spritefont">
+      <Name>arial-34</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial-26.spritefont">
+      <Name>arial-26</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <None Include="fonts\arial-unicode-26.GlyphProject">
+      <Name>arial-unicode-26</Name>
+    </None>
+    <None Include="fonts\arial.ttf">
+      <Name>arial</Name>
+    </None>
+    <Compile Include="fonts\arial16.fnt">
+      <Name>arial16.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontChinese.fnt">
+      <Name>bitmapFontChinese.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontTest.fnt">
+      <Name>bitmapFontTest.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontTest2.fnt">
+      <Name>bitmapFontTest2.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontTest3.fnt">
+      <Name>bitmapFontTest3.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontTest4.fnt">
+      <Name>bitmapFontTest4.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontTest5.fnt">
+      <Name>bitmapFontTest5.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <None Include="fonts\Courier New.ttf">
+      <Name>Courier New</Name>
+    </None>
+    <Compile Include="fonts\font-issue1343-hd.fnt">
+      <Name>font-issue1343-hd.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\font-issue1343.fnt">
+      <Name>font-issue1343.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\futura-48.fnt">
+      <Name>futura-48.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\geneva-32.fnt">
+      <Name>geneva-32.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\helvetica-32.fnt">
+      <Name>helvetica-32.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\konqa32.fnt">
+      <Name>konqa32.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\larabie-16.plist">
+      <Name>larabie-16.plist</Name>
+      <Importer>TextImporter</Importer>
+      <Processor>TextProcessor</Processor>
+    </Compile>
+    <None Include="fonts\Marker Felt.ttf">
+      <Name>Marker Felt</Name>
+    </None>
+    <Compile Include="fonts\markerFelt.fnt">
+      <Name>markerFelt.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\Paint Boy-26.spritefont">
+      <Name>Paint Boy-26</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <None Include="fonts\Paint Boy.ttf">
+      <Name>Paint Boy</Name>
+    </None>
+    <Compile Include="fonts\Schwarzwald Regular-26.spritefont">
+      <Name>Schwarzwald Regular-26</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <None Include="fonts\Schwarzwald Regular.ttf">
+      <Name>Schwarzwald Regular</Name>
+    </None>
+    <Compile Include="fonts\Scissor Cuts-26.spritefont">
+      <Name>Scissor Cuts-26</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <None Include="fonts\Scissor Cuts.ttf">
+      <Name>Scissor Cuts</Name>
+    </None>
+    <None Include="fonts\tahoma.ttf">
+      <Name>tahoma</Name>
+    </None>
+    <None Include="fonts\Thonburi.ttf">
+      <Name>Thonburi</Name>
+    </None>
+    <None Include="fonts\ThonburiBold.ttf">
+      <Name>ThonburiBold</Name>
+    </None>
+    <Compile Include="fonts\tuffy_bold_italic-charmap.plist">
+      <Name>tuffy_bold_italic-charmap.plist</Name>
+      <Importer>TextImporter</Importer>
+      <Processor>TextProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\west_england-64.fnt">
+      <Name>west_england-64.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="animations\ghosts.plist">
+      <Name>ghosts.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="animations\grossini-aliases.plist">
+      <Name>grossini-aliases.plist</Name>
+      <Processor>CocosPListProcessor</Processor>
+      <Importer>CocosPListImporter</Importer>
+    </Compile>
+    <Compile Include="animations\grossini_blue.plist">
+      <Name>grossini_blue.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="animations\grossini_family.plist">
+      <Name>grossini_family.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="animations\grossini_gray.plist">
+      <Name>grossini_gray.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="zwoptex\grossini-generic.png">
+      <Name>grossini-generic</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="zwoptex\grossini.png">
+      <Name>grossini</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="animations\dragon_animation-hd.png">
+      <Name>dragon_animation-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="animations\dragon_animation.png">
+      <Name>dragon_animation</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="animations\ghosts.png">
+      <Name>ghosts</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="animations\grossini-aliases.png">
+      <Name>grossini-aliases</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="animations\grossini_gray.png">
+      <Name>grossini_gray</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="animations\grossini_family.png">
+      <Name>grossini_family</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="animations\grossini_blue.png">
+      <Name>grossini_blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="animations\grossini.png">
+      <Name>grossini</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Particles\particleTexture.png">
+      <Name>particleTexture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\white-512x512.png">
+      <Name>white-512x512</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\arrows.png">
+      <Name>arrows</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\arrowsBar.png">
+      <Name>arrowsBar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\bugs\bug886.jpg">
+      <Name>bug886</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\bugs\bug886_.png">
+      <Name>bug886_</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\bugs\circle.png">
+      <Name>circle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\bugs\corner.png">
+      <Name>corner</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\bugs\edge.png">
+      <Name>edge</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\bugs\fill.png">
+      <Name>fill</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\bugs\picture.png">
+      <Name>picture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\bugs\RetinaDisplay.jpg">
+      <Name>RetinaDisplay</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\sprites_test\sprite-0-0.png">
+      <Name>sprite-0-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-0-1.png">
+      <Name>sprite-0-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-0-2.png">
+      <Name>sprite-0-2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-0-3.png">
+      <Name>sprite-0-3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-0-4.png">
+      <Name>sprite-0-4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-0-5.png">
+      <Name>sprite-0-5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-0-6.png">
+      <Name>sprite-0-6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-0-7.png">
+      <Name>sprite-0-7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-1-0.png">
+      <Name>sprite-1-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-1-1.png">
+      <Name>sprite-1-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-1-2.png">
+      <Name>sprite-1-2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-1-3.png">
+      <Name>sprite-1-3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-1-4.png">
+      <Name>sprite-1-4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-1-5.png">
+      <Name>sprite-1-5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-1-6.png">
+      <Name>sprite-1-6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-1-7.png">
+      <Name>sprite-1-7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-2-0.png">
+      <Name>sprite-2-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-2-1.png">
+      <Name>sprite-2-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-2-2.png">
+      <Name>sprite-2-2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-2-3.png">
+      <Name>sprite-2-3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-2-4.png">
+      <Name>sprite-2-4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-2-5.png">
+      <Name>sprite-2-5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-2-6.png">
+      <Name>sprite-2-6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-2-7.png">
+      <Name>sprite-2-7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-3-0.png">
+      <Name>sprite-3-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-3-1.png">
+      <Name>sprite-3-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-3-2.png">
+      <Name>sprite-3-2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-3-3.png">
+      <Name>sprite-3-3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-3-4.png">
+      <Name>sprite-3-4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-3-5.png">
+      <Name>sprite-3-5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-3-6.png">
+      <Name>sprite-3-6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-3-7.png">
+      <Name>sprite-3-7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-4-0.png">
+      <Name>sprite-4-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-4-1.png">
+      <Name>sprite-4-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-4-2.png">
+      <Name>sprite-4-2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-4-3.png">
+      <Name>sprite-4-3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-4-4.png">
+      <Name>sprite-4-4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-4-5.png">
+      <Name>sprite-4-5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-4-6.png">
+      <Name>sprite-4-6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-4-7.png">
+      <Name>sprite-4-7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-5-0.png">
+      <Name>sprite-5-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-5-1.png">
+      <Name>sprite-5-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-5-2.png">
+      <Name>sprite-5-2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-5-3.png">
+      <Name>sprite-5-3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-5-4.png">
+      <Name>sprite-5-4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-5-5.png">
+      <Name>sprite-5-5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-5-6.png">
+      <Name>sprite-5-6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-5-7.png">
+      <Name>sprite-5-7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-6-0.png">
+      <Name>sprite-6-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-6-1.png">
+      <Name>sprite-6-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-6-2.png">
+      <Name>sprite-6-2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-6-3.png">
+      <Name>sprite-6-3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-6-4.png">
+      <Name>sprite-6-4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-6-5.png">
+      <Name>sprite-6-5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-6-6.png">
+      <Name>sprite-6-6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-6-7.png">
+      <Name>sprite-6-7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-7-0.png">
+      <Name>sprite-7-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-7-1.png">
+      <Name>sprite-7-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-7-2.png">
+      <Name>sprite-7-2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-7-3.png">
+      <Name>sprite-7-3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-7-4.png">
+      <Name>sprite-7-4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-7-5.png">
+      <Name>sprite-7-5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-7-6.png">
+      <Name>sprite-7-6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\sprites_test\sprite-7-7.png">
+      <Name>sprite-7-7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ccb\animated-grossini.png">
+      <Name>animated-grossini</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\btn-a-0.png">
+      <Name>btn-a-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\btn-a-1.png">
+      <Name>btn-a-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\btn-a-2.png">
+      <Name>btn-a-2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\btn-b-0.png">
+      <Name>btn-b-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\btn-b-1.png">
+      <Name>btn-b-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\btn-b-2.png">
+      <Name>btn-b-2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\btn-back-0.png">
+      <Name>btn-back-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\btn-back-1.png">
+      <Name>btn-back-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\btn-test-0.png">
+      <Name>btn-test-0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\btn-test-1.png">
+      <Name>btn-test-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\btn-test-2.png">
+      <Name>btn-test-2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\burst.png">
+      <Name>burst</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\flower.jpg">
+      <Name>flower</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\grossini-generic.png">
+      <Name>grossini-generic</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\jungle-left.png">
+      <Name>jungle-left</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\jungle-right.png">
+      <Name>jungle-right</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\jungle.png">
+      <Name>jungle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\logo-icon.png">
+      <Name>logo-icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\logo.png">
+      <Name>logo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\markerfelt24shadow.png">
+      <Name>markerfelt24shadow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\particle-fire.png">
+      <Name>particle-fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\particle-smoke.png">
+      <Name>particle-smoke</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\particle-snow.png">
+      <Name>particle-snow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\particle-stars.png">
+      <Name>particle-stars</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="ccb\scale-9-demo.png">
+      <Name>scale-9-demo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="extensions\background.png">
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\button.png">
+      <Name>button</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\buttonBackground.png">
+      <Name>buttonBackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\buttonHighlighted.png">
+      <Name>buttonHighlighted</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\green_edit.png">
+      <Name>green_edit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\orange_edit.png">
+      <Name>orange_edit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\ribbon.png">
+      <Name>ribbon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\sliderProgress.png">
+      <Name>sliderProgress</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\sliderProgress2.png">
+      <Name>sliderProgress2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\sliderThumb.png">
+      <Name>sliderThumb</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\sliderTrack.png">
+      <Name>sliderTrack</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\sliderTrack2.png">
+      <Name>sliderTrack2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\switch-mask.png">
+      <Name>switch-mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\switch-off.png">
+      <Name>switch-off</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\switch-on.png">
+      <Name>switch-on</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\switch-thumb.png">
+      <Name>switch-thumb</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\yellow_edit.png">
+      <Name>yellow_edit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="fonts\arial-unicode-26.png">
+      <Name>arial-unicode-26</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\arial16.png">
+      <Name>arial16</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontChinese.png">
+      <Name>bitmapFontChinese</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontTest.png">
+      <Name>bitmapFontTest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontTest2.png">
+      <Name>bitmapFontTest2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontTest3.png">
+      <Name>bitmapFontTest3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontTest4.png">
+      <Name>bitmapFontTest4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\bitmapFontTest5.png">
+      <Name>bitmapFontTest5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\font-issue1343-hd.png">
+      <Name>font-issue1343-hd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\font-issue1343.png">
+      <Name>font-issue1343</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\futura-48.png">
+      <Name>futura-48</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\helvetica-geneva-32.png">
+      <Name>helvetica-geneva-32</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\konqa32.png">
+      <Name>konqa32</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\labelatlas.png">
+      <Name>labelatlas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\larabie-16.png">
+      <Name>larabie-16</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\markerFelt.png">
+      <Name>markerFelt</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\strings.xml">
+      <Name>strings.plist</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TextProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\tuffy_bold_italic-charmap.png">
+      <Name>tuffy_bold_italic-charmap</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\west_england-64.png">
+      <Name>west_england-64</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="box2d\Circle.png">
+      <Name>Circle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="box2d\Rock.png">
+      <Name>Rock</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="box2d\Terrain.png">
+      <Name>Terrain</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="box2d\Texture.png">
+      <Name>Texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\aButton.png">
+      <Name>aButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\bButton.png">
+      <Name>bButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <Import Project="..\MonoGameContentBuilder\iOS\MonoGame.ContentPipeline.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
+  <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

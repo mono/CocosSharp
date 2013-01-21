@@ -74,4 +74,6 @@ and Totally Evil Entertainment, LLC.
 * tests: TileMapTest : Added gamepad support to test pan and rotation of the map.
 * tests: Added a new initial test menu that responds to the d-pad and gamepad buttons.
 * external lib: Added iOS and MacOS build libraries based upon MonoGame 3.0.0.0
+* tests: Decompressed most of the tile map TMX test files and ran them on xbox 360.
+* tests: Added an iOS build of the test content.
 
