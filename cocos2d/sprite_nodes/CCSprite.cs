@@ -622,6 +622,12 @@ namespace cocos2d
                 float x2 = x1 + m_obRect.size.width;
                 float y2 = y1 + m_obRect.size.height;
 
+                //
+                // NOTE: [0,0] - [16,16] is a 17 x 17 sprite, not 16x16
+                //
+
+//                CCLog.Log("TextureRect = {0},{1} - {2},{3}", x1, y1, x2, y2);
+
                 // Don't update Z.
                 m_sQuad.bl.vertices = ccTypes.vertex3(x1, y1, 0);
                 m_sQuad.br.vertices = ccTypes.vertex3(x2, y1, 0);

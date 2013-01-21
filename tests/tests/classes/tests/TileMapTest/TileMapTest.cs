@@ -1592,7 +1592,6 @@ namespace tests
         private void MyOnGameStickUpdate(CCGameStickStatus left, CCGameStickStatus right, PlayerIndex player)
         {
             CCNode node = GetChildByTag(kTagTileMap);
-            CCTMXTiledMap map = (CCTMXTiledMap)node;
             if (left.Magnitude > 0f)
             {
                 // use the left stick to move the map
@@ -1616,7 +1615,7 @@ namespace tests
     {
         private static int sceneIdx = -1;
 #if XBOX
-        private static int MAX_LAYER = 1;
+        private static int MAX_LAYER = 28;
 #else
         private static int MAX_LAYER = 28;
 #endif
@@ -1627,7 +1626,65 @@ namespace tests
             {
 #if XBOX
                 case 0:
+                    return new TMXIsoZorder();
+                case 1:
+                    return new TMXOrthoZorder();
+                case 2:
+                case 3:
+                    return new TMXIsoVertexZ();
+/*                case 3:
+                    return new TMXOrthoVertexZ();
+ */
+                case 4:
+                    return new TMXOrthoTest();
+                case 5:
+                    return new TMXOrthoTest();
+                case 6:
+                    return new TMXOrthoTest3();
+                case 7:
+                    return new TMXOrthoTest4();
+                case 8:
+                    return new TMXIsoTest();
+                case 9:
+                    return new TMXIsoTest1();
+                case 10:
+                    return new TMXIsoTest2();
+                case 11:
+                case 12:
                     return new TMXUncompressedTest();
+//                    return new TMXHexTest();
+                case 13:
+                    return new TMXReadWriteTest();
+                case 14:
+                    return new TMXTilesetTest();
+                case 15:
+                    return new TMXOrthoObjectsTest();
+                case 16:
+                    return new TMXIsoObjectsTest();
+                case 17:
+                    return new TMXResizeTest();
+                case 18:
+                    return new TMXIsoMoveLayer();
+                case 19:
+                case 20:
+                    return new TMXOrthoMoveLayer();
+/*                case 20:
+                    return new TMXOrthoFlipTest();
+*/
+                case 21:
+                case 22:
+                    return new TMXOrthoFlipRunTimeTest();
+//                    return new TMXOrthoFromXMLTest();
+                case 23:
+                    return new TileMapTest();
+                case 24:
+                    return new TileMapEditTest();
+                case 25:
+                    return new TMXBug987();
+                case 26:
+                    return new TMXBug787();
+                case 27:
+                    return new TMXGIDObjectsTest();
 #else
                 case 0:
                     return new TMXIsoZorder();

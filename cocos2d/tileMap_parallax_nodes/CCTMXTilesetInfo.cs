@@ -3,19 +3,35 @@ namespace cocos2d
 {
     public class CCTMXTilesetInfo : CCObject
     {
+        /// <summary>
+        /// The name of this tileset.
+        /// </summary>
         public string m_sName;
-        //! filename containing the tiles (should be spritesheet / texture atlas)
+        /// <summary>
+        ///filename containing the tiles (should be spritesheet / texture atlas) 
+        /// </summary>
         public string m_sSourceImage;
-        //! size in pixels of the image
+        /// <summary>
+        /// size in pixels of the image
+        /// </summary>
         public CCSize m_tImageSize;
+        /// <summary>
+        /// The size of this tile in unscaled pixels
+        /// </summary>
         public CCSize m_tTileSize;
         public uint m_uFirstGid;
+        /// <summary>
+        /// the margin/border around the tilesheer
+        /// </summary>
         public int m_uMargin;
+        /// <summary>
+        /// Spacing between the tiles in the tilesheet
+        /// </summary>
         public int m_uSpacing;
 
         public CCRect RectForGID(uint gid)
         {
-            CCRect rect;
+            CCRect rect = new CCRect();
             rect.size = m_tTileSize;
             gid &= ccTMXTileFlags.kCCFlippedMask;
             gid = gid - m_uFirstGid;

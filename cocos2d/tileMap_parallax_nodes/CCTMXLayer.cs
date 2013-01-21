@@ -179,12 +179,18 @@ namespace cocos2d
                     rect = ccMacros.CC_RECT_PIXELS_TO_POINTS(rect);
 
                     tile = new CCSprite();
+                    //
+                    // do the init AFTER the batch node is set so that the tile is set to 
+                    // draw in batch mode instead of self draw mode.
+                    //
                     tile.InitWithTexture(Texture, rect);
                     tile.BatchNode = this;
                     tile.Position = PositionAt(pos);
                     tile.VertexZ = VertexZForPos(pos);
                     tile.AnchorPoint = CCPoint.Zero;
                     tile.Opacity = m_cOpacity;
+//                    tile.InitWithTexture(Texture, rect);
+//                    tile.BatchNode = this;
 
                     int indexForZ = AtlasIndexForExistantZ(z);
                     AddSpriteWithoutQuad(tile, indexForZ, z);
@@ -460,7 +466,7 @@ namespace cocos2d
 
         private CCPoint PositionForOrthoAt(CCPoint pos)
         {
-            var xy = new CCPoint(pos.x * m_tMapTileSize.width,
+            CCPoint xy = new CCPoint(pos.x * m_tMapTileSize.width,
                                  (m_tLayerSize.height - pos.y - 1) * m_tMapTileSize.height);
             return xy;
         }
@@ -638,8 +644,9 @@ namespace cocos2d
             {
                 // put the anchor in the middle for ease of rotation.
                 sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-                sprite.Position = new CCPoint(PositionAt(pos).x + sprite.ContentSize.height / 2,
-                                              PositionAt(pos).y + sprite.ContentSize.width / 2);
+                CCPoint pointAtPos = PositionAt(pos);
+                sprite.Position = new CCPoint(pointAtPos.x + sprite.ContentSize.height / 2,
+                                              pointAtPos.y + sprite.ContentSize.width / 2);
 
                 uint flag = gid & (ccTMXTileFlags.kCCTMXTileHorizontalFlag | ccTMXTileFlags.kCCTMXTileVerticalFlag);
 

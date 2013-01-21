@@ -120,7 +120,7 @@ namespace tests
             CCNode node = GetChildByTag(kTagTileMap);
             if (node != null)
             {
-                CCTMXTiledMap map = (CCTMXTiledMap)node;
+                CCParallaxNode map = (CCParallaxNode)node;
                 if (left.Magnitude > 0f)
                 {
                     // use the left stick to move the map

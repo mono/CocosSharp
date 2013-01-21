@@ -115,8 +115,15 @@ namespace tests
             s_tCurPos = m_pItemMenu.Position;
             SelectMenuItem();
         }
+        public override void OnExit()
+        {
+            base.OnExit();
+            CCApplication.SharedApplication.GamePadDPadUpdate -= _GamePadDPadDelegate;
+            CCApplication.SharedApplication.GamePadButtonUpdate -= _GamePadButtonDelegate;
+        }
         public override void OnEnter()
         {
+            base.OnEnter();
             CCApplication.SharedApplication.GamePadDPadUpdate += _GamePadDPadDelegate;
             CCApplication.SharedApplication.GamePadButtonUpdate += _GamePadButtonDelegate;
         }
