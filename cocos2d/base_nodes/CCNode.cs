@@ -751,14 +751,18 @@ namespace cocos2d
             }
         }
 
+        /// <summary>
+        /// This is called from the Visit() method. This is where you DRAW your node. Only
+        /// draw stuff from this method call.
+        /// </summary>
         public virtual void Draw()
         {
-            //CCAssert(0);
-            // override me
-            // Only use- this function to draw your stuff.
-            // DON'T draw your stuff outside this method
+            // Does nothing in the root node class.
         }
 
+        /// <summary>
+        /// This is called with every call to the MainLoop on the CCDirector class. In XNA, this is the same as the Draw() call.
+        /// </summary>
         public virtual void Visit()
         {
             // quick return if not visible. children won't be drawn.
@@ -791,7 +795,7 @@ namespace cocos2d
                 // draw children zOrder < 0
                 for (; i < count; ++i)
                 {
-                    if (elements[i].m_nZOrder < 0)
+                    if (elements[i].Visible && elements[i].m_nZOrder < 0)
                     {
                         elements[i].Visit();
                     }
@@ -803,11 +807,15 @@ namespace cocos2d
 
                 // self draw
                 Draw();
-
+                // draw the children
                 for (; i < count; ++i)
                 {
+                    // Draw the z >= 0 order children next.
+                    if (elements[i].Visible/* && elements[i].m_nZOrder >= 0*/)
+                    {
                     elements[i].Visit();
                 }
+            }
             }
             else
             {

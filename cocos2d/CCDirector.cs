@@ -999,18 +999,22 @@ namespace cocos2d
                 if (m_pRunningScene != null)
                 {
                     m_pRunningScene.OnExit();
-                }
 
                 // issue #709. the root node (scene) should receive the cleanup message too
                 // otherwise it might be leaked.
-                if (m_bSendCleanupToScene && m_pRunningScene != null)
+                    if (m_bSendCleanupToScene)
                 {
                     m_pRunningScene.Cleanup();
-                    
+
                     GC.Collect();
+                }
                 }
             }
 
+            if (m_pRunningScene != null)
+            {
+                m_pRunningScene.Visible = false;
+            }
             m_pRunningScene = m_pNextScene;
             m_pNextScene = null;
 

@@ -78,16 +78,20 @@ namespace cocos2d
             CCTextureCache.PurgeSharedTextureCache();
 #endif
             ApplicationDidEnterBackground();
+#if !IOS
             CocosDenshion.SimpleAudioEngine.SharedEngine.RestoreMediaState();
+#endif
         }
 
         private void game_Activated(object sender, EventArgs e)
         {
             // Clear out the prior gamepad state because we don't want it anymore.
             m_PriorGamePadState.Clear();
-            CocosDenshion.SimpleAudioEngine.SharedEngine.SaveMediaState();
 #if ANDROID
             CCSpriteFontCache.SharedInstance.Clear();
+#endif
+#if !IOS
+            CocosDenshion.SimpleAudioEngine.SharedEngine.SaveMediaState();
 #endif
             ApplicationWillEnterForeground();
         }

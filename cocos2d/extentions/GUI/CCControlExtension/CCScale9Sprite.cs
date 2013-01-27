@@ -2,6 +2,11 @@ using System.Diagnostics;
 
 namespace cocos2d
 {
+    /// <summary>
+    /// This is a special sprite container that represents a 9 point sprite region, where 8 of hte
+    /// points are along the perimeter, and the 9th is the center area. This special sprite is capable of resizing
+    /// itself to arbitrary scales.
+    /// </summary>
     public class CCScale9Sprite : CCNode, ICCRGBAProtocol
     {
         protected CCSprite bottom;

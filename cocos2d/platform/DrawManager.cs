@@ -965,6 +965,19 @@ namespace cocos2d
             }
             m_GraphicsDeviceMgr.SupportedOrientations = supportedOrientations;
 #endif
+#if IOS
+            if (bSwapDims)
+            {
+                m_GraphicsDeviceMgr.PreferredBackBufferWidth = preferredBackBufferHeight;
+                m_GraphicsDeviceMgr.PreferredBackBufferHeight = preferredBackBufferWidth;
+            }
+            else if (onlyLandscape && m_GraphicsDeviceMgr.PreferredBackBufferHeight > m_GraphicsDeviceMgr.PreferredBackBufferWidth)
+            {
+                m_GraphicsDeviceMgr.PreferredBackBufferWidth = preferredBackBufferHeight;
+                m_GraphicsDeviceMgr.PreferredBackBufferHeight = preferredBackBufferWidth;
+            }
+            m_GraphicsDeviceMgr.SupportedOrientations = supportedOrientations;
+#endif
 #if WINDOWS
             if (bSwapDims)
             {
