@@ -910,12 +910,21 @@ namespace cocos2d
 
             bool onlyLandscape = (ll || lr) && !p;
             bool onlyPortrait = !(ll || lr) && p;
+#if WINDOWS_PHONE
             bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & supportedOrientations) ==  DisplayOrientation.Default);
+#else
+            bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & supportedOrientations) == 0);
+#endif
             if (bSwapDims && (ll || lr))
             {
                 // Check for landscape changes that do not need a swap
+#if WINDOWS_PHONE
                 if (((m_GraphicsDeviceMgr.SupportedOrientations & DisplayOrientation.LandscapeLeft) != DisplayOrientation.Default) ||
                     ((m_GraphicsDeviceMgr.SupportedOrientations & DisplayOrientation.LandscapeRight) != DisplayOrientation.Default))
+#else
+                if (((m_GraphicsDeviceMgr.SupportedOrientations & DisplayOrientation.LandscapeLeft) != 0) ||
+                    ((m_GraphicsDeviceMgr.SupportedOrientations & DisplayOrientation.LandscapeRight) != 0))
+#endif
                 {
                     bSwapDims = false;
                 }
