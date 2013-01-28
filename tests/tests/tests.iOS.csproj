@@ -1495,29 +1495,28 @@
     <Compile Include="classes\tests\ExtensionsTest\ExtensionsTestScene.cs" />
     <Compile Include="classes\tests\ExtensionsTest\TableViewTest\CustomTableViewCell.cs" />
     <Compile Include="classes\tests\ExtensionsTest\TableViewTest\TableViewTestScene.cs" />
-    <Content Include="Game.ico" />
-    <Content Include="GameThumbnail.png" />
-    <Content Include="PhoneGameThumb.png">
-      <XnaPlatformSpecific>true</XnaPlatformSpecific>
-    </Content>
-    <Content Include="Background.png">
-      <XnaPlatformSpecific>true</XnaPlatformSpecific>
-    </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cocos2d\cocos2d.Phone.csproj">
+    <ProjectReference Include="..\..\cocos2d\cocos2d.iOS.csproj">
       <Project>{47EE6CE6-493D-4967-944A-5E55B71AA9FD}</Project>
-      <Name>cocos2d.Phone</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\testsContent\testsContent.contentproj">
-      <Name>testsContent %28Content%29</Name>
-      <XnaReferenceType>Content</XnaReferenceType>
-      <Project>{2CE0B38F-5C9C-4088-8FEC-D3B58EE48E35}</Project>
+      <Name>cocos2d.iOS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <Import Project="$(ProgramFiles)\MSBuild\MonoTouch\Novell.MonoTouch.Common.targets" Condition="'$(windir)' != '' " />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <StandardHeader Text="" IncludeInNewFiles="False" />
+          <TextStylePolicy FileWidth="120" NoTabsAfterNonTabs="True" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
+          <CSharpFormattingPolicy inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+          <TextStylePolicy FileWidth="120" RemoveTrailingWhitespace="False" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/plain" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
   <!--
       To modify your build process, add your task inside one of the targets below and uncomment it. 
       Other similar extension points exist, see Microsoft.Common.targets.
