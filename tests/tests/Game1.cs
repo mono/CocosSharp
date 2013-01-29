@@ -16,7 +16,7 @@ namespace tests
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-
+            
             graphics.IsFullScreen = false;
 
             // Frame rate is 30 fps by default for Windows Phone.
