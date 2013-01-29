@@ -518,7 +518,7 @@
     <Compile Include="fonts\Arial.spritefont">
       <Name>Arial</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -914,7 +914,7 @@
     <Compile Include="fonts\debugfont.spritefont">
       <Name>debugfont</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="TileMaps\orthogonal-test1.tsx">
       <Name>orthogonal-test1-tsx</Name>
@@ -1042,7 +1042,7 @@
     <Compile Include="fonts\A Damn Mess-26.spritefont">
       <Name>A Damn Mess-26</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
       <SubType>Designer</SubType>
     </Compile>
     <None Include="fonts\A Damn Mess.ttf">
@@ -1051,7 +1051,7 @@
     <Compile Include="fonts\Abberancy-26.spritefont">
       <Name>Abberancy-26</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <None Include="fonts\Abberancy.ttf">
       <Name>Abberancy</Name>
@@ -1059,7 +1059,7 @@
     <Compile Include="fonts\Abduction-26.spritefont">
       <Name>Abduction-26</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <None Include="fonts\Abduction.ttf">
       <Name>Abduction</Name>
@@ -1075,72 +1075,72 @@
     <Compile Include="fonts\arial-24.spritefont">
       <Name>arial-24</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-18.spritefont">
       <Name>arial-18</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-22.spritefont">
       <Name>arial-22</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-20.spritefont">
       <Name>arial-20</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-16.spritefont">
       <Name>arial-16</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-12.spritefont">
       <Name>arial-12</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-50.spritefont">
       <Name>arial-50</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-32.spritefont">
       <Name>arial-32</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-38.spritefont">
       <Name>arial-38</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-64.spritefont">
       <Name>arial-64</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-30.spritefont">
       <Name>arial-30</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-28.spritefont">
       <Name>arial-28</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-34.spritefont">
       <Name>arial-34</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <Compile Include="fonts\arial-26.spritefont">
       <Name>arial-26</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <None Include="fonts\arial-unicode-26.GlyphProject">
       <Name>arial-unicode-26</Name>
@@ -1232,7 +1232,7 @@
     <Compile Include="fonts\Paint Boy-26.spritefont">
       <Name>Paint Boy-26</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <None Include="fonts\Paint Boy.ttf">
       <Name>Paint Boy</Name>
@@ -1240,7 +1240,7 @@
     <Compile Include="fonts\Schwarzwald Regular-26.spritefont">
       <Name>Schwarzwald Regular-26</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <None Include="fonts\Schwarzwald Regular.ttf">
       <Name>Schwarzwald Regular</Name>
@@ -1248,7 +1248,7 @@
     <Compile Include="fonts\Scissor Cuts-26.spritefont">
       <Name>Scissor Cuts-26</Name>
       <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
     <None Include="fonts\Scissor Cuts.ttf">
       <Name>Scissor Cuts</Name>
