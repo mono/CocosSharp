@@ -10,7 +10,6 @@
     <MonoGamePlatform>iOS</MonoGamePlatform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>True</DebugSymbols>
@@ -30,6 +29,8 @@
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <MtouchProfiling>True</MtouchProfiling>
     <AssemblyName>cocos2dTests</AssemblyName>
+    <MtouchI18n />
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -40,6 +41,7 @@
     <DefineConstants>IPHONE;GLES;OPENGL;IOS</DefineConstants>
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <AssemblyName>cocos2dTests</AssemblyName>
+    <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>True</DebugSymbols>
@@ -58,6 +60,7 @@
     <MtouchI18n />
     <MtouchArch>ARMv7</MtouchArch>
     <AssemblyName>SantaShooter</AssemblyName>
+    <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -72,6 +75,7 @@
     <MtouchI18n />
     <MtouchArch>ARMv7, ARMv7s</MtouchArch>
     <AssemblyName>SantaShooter</AssemblyName>
+    <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
