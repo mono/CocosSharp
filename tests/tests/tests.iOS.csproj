@@ -59,7 +59,7 @@
     <IpaPackageName />
     <MtouchI18n />
     <MtouchArch>ARMv7</MtouchArch>
-    <AssemblyName>SantaShooter</AssemblyName>
+    <AssemblyName>cocos2d.tests</AssemblyName>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
@@ -74,7 +74,7 @@
     <MtouchUseLlvm>True</MtouchUseLlvm>
     <MtouchI18n />
     <MtouchArch>ARMv7, ARMv7s</MtouchArch>
-    <AssemblyName>SantaShooter</AssemblyName>
+    <AssemblyName>cocos2d.tests</AssemblyName>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>
