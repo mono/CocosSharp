@@ -76,4 +76,7 @@ and Totally Evil Entertainment, LLC.
 * external lib: Added iOS and MacOS build libraries based upon MonoGame 3.0.0.0
 * tests: Decompressed most of the tile map TMX test files and ran them on xbox 360.
 * tests: Added an iOS build of the test content.
+* tests: Updated the PSM project file to include all of the content files.
+* tests: Removed the display of the assembly version for PSM.
+* tests: Removed the PMA optimization directive for iOS. 
 
