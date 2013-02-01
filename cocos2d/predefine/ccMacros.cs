@@ -185,8 +185,8 @@ namespace cocos2d
         public static readonly int CC_BLEND_SRC = OGLES.GL_ONE;
         public static readonly int CC_BLEND_DST = OGLES.GL_ONE_MINUS_SRC_ALPHA;
 #else
-         public int CC_BLEND_SRC= OGLES.GL_SRC_ALPHA;
-         public int CC_BLEND_DST=  OGLES.GL_ONE_MINUS_SRC_ALPHA;
+         public static readonly int CC_BLEND_SRC= OGLES.GL_SRC_ALPHA;
+         public static readonly int CC_BLEND_DST=  OGLES.GL_ONE_MINUS_SRC_ALPHA;
 #endif
 
         // #define CC_BLEND_DST GL_ONE_MINUS_SRC_ALPHA
