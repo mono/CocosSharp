@@ -33,11 +33,12 @@ namespace tests
 
             pMenu.Position = new CCPoint(0.0f, 0.0f);
             pCloseItem.Position = new CCPoint(s.width - 30, s.height - 30);
-
+#if !PSM
             CCLabelTTF versionLabel = CCLabelTTF.Create("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
             versionLabel.Position = new CCPoint(versionLabel.ContentSizeInPixels.width/2f, s.height - 18f);
             versionLabel.HorizontalAlignment = CCTextAlignment.CCTextAlignmentLeft;
             AddChild(versionLabel, 20000);
+#endif
             // add menu items for tests
             m_pItemMenu = CCMenu.Create();
             for (int i = 0; i < (int)(TestCases.TESTS_COUNT); ++i)
