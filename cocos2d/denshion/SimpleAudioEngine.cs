@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace CocosDenshion
 {
@@ -58,16 +59,17 @@ namespace CocosDenshion
         @warning It must be called before the application exit, or a memroy leak will be casued.
         */
 
-        public void End()
+        public void End ()
         {
-            SharedMusic.Close();
+            SharedMusic.Close ();
 
-            foreach (var kvp in SharedList)
-            {
-                kvp.Value.Close();
+            lock (SharedList) {
+                foreach (var kvp in SharedList) {
+                    kvp.Value.Close ();
+                }
+
+                SharedList.Clear ();
             }
-
-            SharedList.Clear();
         }
 
         /// <summary>
@@ -117,6 +119,7 @@ namespace CocosDenshion
             {
                 return;
             }
+
             SharedMusic.Open(FullPath(pszFilePath), pszFilePath.GetHashCode());
             SharedMusic.Play(bLoop);
         }
@@ -211,17 +214,27 @@ namespace CocosDenshion
         @bLoop Whether to loop the effect playing, default value is false
         */
 
-        public int PlayEffect(string pszFilePath, bool bLoop)
+        private Dictionary<int,int> _LoopedSounds = new Dictionary<int,int>();
+
+        public int PlayEffect (string pszFilePath, bool bLoop)
         {
-            int nRet = pszFilePath.GetHashCode();
+            int nRet = pszFilePath.GetHashCode ();
 
-            PreloadEffect(pszFilePath);
+            PreloadEffect (pszFilePath);
 
-            foreach (var kvp in SharedList)
-            {
-                if (nRet == kvp.Key)
-                {
-                    kvp.Value.Play(bLoop);
+            lock (SharedList) {
+                try {
+                    foreach (var kvp in SharedList) {
+                        if (nRet == kvp.Key) {
+                            kvp.Value.Play (bLoop);
+                            if (bLoop)
+                            {
+                                _LoopedSounds[nRet] = nRet;
+                            }
+                        }
+                    }
+                } 
+                catch (Exception) {
                 }
             }
 
@@ -243,13 +256,36 @@ namespace CocosDenshion
         @param nSoundId The return value of function playEffect
         */
 
-        public void StopEffect(int nSoundId)
+        public void StopEffect (int nSoundId)
         {
-            foreach (var kvp in SharedList)
+            lock (SharedList) {
+                foreach (var kvp in SharedList) {
+                    if (nSoundId == kvp.Key) {
+                        kvp.Value.Stop ();
+                        if (_LoopedSounds.ContainsKey(nSoundId))
+                        {
+                            _LoopedSounds.Remove(nSoundId);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Stops all of the sound effects that are currently playing and looping.
+        /// </summary>
+        public void StopAllLoopingEffects()
+        {
+            lock (SharedList)
             {
-                if (nSoundId == kvp.Key)
+                if (_LoopedSounds.Count > 0)
                 {
-                    kvp.Value.Stop();
+                    int[] a = new int[_LoopedSounds.Keys.Count];
+                    _LoopedSounds.Keys.CopyTo(a, 0);
+                    foreach (int key in a)
+                    {
+                        StopEffect(key);
+                    }
                 }
             }
         }
@@ -260,26 +296,24 @@ namespace CocosDenshion
         internal buffer in SimpleaudioEngine
         */
 
-        public void PreloadEffect(string pszFilePath)
+        public void PreloadEffect (string pszFilePath)
         {
-            if (pszFilePath.Length <= 0)
-            {
+            if (pszFilePath.Length <= 0) {
                 return;
             }
 
-            int nId = pszFilePath.GetHashCode();
-
-            for (int i = 0; i < SharedList.Count; i++)
-            {
-                if (SharedList[i].Key == nId)
-                {
-                    return;
+            int nId = pszFilePath.GetHashCode ();
+            lock (SharedList) {
+                for (int i = 0; i < SharedList.Count; i++) {
+                    if (SharedList [i].Key == nId) {
+                        return;
+                    }
                 }
-            }
 
-            var eff = new EffectPlayer();
-            eff.Open(FullPath(pszFilePath), nId);
-            SharedList.Add(new KeyValuePair<int, EffectPlayer>(nId, eff));
+                var eff = new EffectPlayer ();
+                eff.Open (FullPath (pszFilePath), nId);
+                SharedList.Add (new KeyValuePair<int, EffectPlayer> (nId, eff));
+            }
         }
 
         /**
@@ -287,17 +321,19 @@ namespace CocosDenshion
         @param[in]		pszFilePath		The path of the effect file,or the FileName of T_SoundResInfo
         */
 
-        public void UnloadEffect(string pszFilePath)
+        public void UnloadEffect (string pszFilePath)
         {
-            int nId = pszFilePath.GetHashCode();
-
-            for (int i = 0; i < SharedList.Count; i++)
-            {
-                if (SharedList[i].Key == nId)
-                {
-                    SharedList.RemoveAt(i);
+            int nId = pszFilePath.GetHashCode ();
+            lock (SharedList) {
+                for (int i = 0; i < SharedList.Count; i++) {
+                    if (SharedList [i].Key == nId) {
+                        SharedList.RemoveAt (i);
+                    }
                 }
             }
+			if(_LoopedSounds.ContainsKey(nId)) {
+				_LoopedSounds.Remove(nId);
+			}
         }
     }
 }

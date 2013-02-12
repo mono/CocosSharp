@@ -7,6 +7,7 @@ namespace CocosDenshion
     {
         public static ulong s_mciError;
         private SoundEffect m_effect;
+        private SoundEffectInstance _sfxInstance;
         private int m_nSoundId;
 
         public EffectPlayer()
@@ -41,7 +42,8 @@ namespace CocosDenshion
             Close();
 
             m_effect = CCApplication.SharedApplication.Content.Load<SoundEffect>(pFileName);
-
+            // Do not get an instance here b/c it is very slow. 
+            //_sfxInstance = m_effect.CreateInstance();
             m_nSoundId = uId;
         }
 
@@ -51,8 +53,20 @@ namespace CocosDenshion
             {
                 return;
             }
-
-            m_effect.Play();
+            if (bLoop)
+            {
+                // If looping, then get an instance of this sound effect so that it can be
+                // stopped.
+                _sfxInstance = m_effect.CreateInstance();
+            }
+            if (_sfxInstance != null)
+            {
+                _sfxInstance.Play();
+            }
+            else
+            {
+                m_effect.Play();
+            }
         }
 
         public void Play()
@@ -69,17 +83,29 @@ namespace CocosDenshion
 
         public void Pause()
         {
-            CCLog.Log("Pause is invalid for sound effect");
+            if (_sfxInstance != null && !_sfxInstance.IsDisposed && _sfxInstance.State == SoundState.Playing)
+            {
+                _sfxInstance.Pause();
+            }
+//            CCLog.Log("Pause is invalid for sound effect");
         }
 
         public void Resume()
         {
-            CCLog.Log("Resume is invalid for sound effect");
+            if (_sfxInstance != null && !_sfxInstance.IsDisposed && _sfxInstance.State == SoundState.Paused)
+            {
+                _sfxInstance.Play();
+            }
+//            CCLog.Log("Resume is invalid for sound effect");
         }
 
         public void Stop()
         {
-            CCLog.Log("Stop is invalid for sound effect");
+            if (_sfxInstance != null && !_sfxInstance.IsDisposed && _sfxInstance.State == SoundState.Playing)
+            {
+                _sfxInstance.Stop();
+            }
+//            CCLog.Log("Stop is invalid for sound effect");
         }
 
         public void Rewind()
@@ -89,7 +115,11 @@ namespace CocosDenshion
 
         public bool IsPlaying()
         {
-            CCLog.Log("IsPlaying is invalid for sound effect");
+            if (_sfxInstance != null)
+            {
+                return (_sfxInstance.State == SoundState.Playing);
+            }
+//            CCLog.Log("IsPlaying is invalid for sound effect");
             return false;
         }
 

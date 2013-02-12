@@ -70,17 +70,30 @@ namespace CocosDenshion
         {
             if (m_SongToPlayAfterClose != null && m_didPlayGameSong)
             {
+                try
+                {
                 MediaPlayer.IsShuffled = m_IsShuffleAfterClose;
                 MediaPlayer.IsRepeating = m_IsRepeatingAfterClose;
                 MediaPlayer.Volume = m_VolumeAfterClose;
                 MediaPlayer.Play(m_SongToPlayAfterClose);
             }
+                catch (Exception)
+                {
+                }
+        }
         }
 
         ~MusicPlayer()
         {
             Close();
+            try
+            {
             RestoreMediaState();
+            }
+            catch (Exception)
+            {
+                // Ignore
+            }
         }
 
         public void Open(string pFileName, int uId)
