@@ -578,7 +578,7 @@ namespace cocos2d
         public static Texture2D CreateTexture2D(int width, int height)
         {
             PresentationParameters pp = graphicsDevice.PresentationParameters;
-#if IPHONE || NEXUS
+#if IPHONE || NEXUS || IOS
             width = (int)ccUtils.ccNextPOT((long)width);
             height = (int)ccUtils.ccNextPOT((long)height);
 #endif
@@ -929,6 +929,8 @@ namespace cocos2d
                     bSwapDims = false;
                 }
             }
+            int preferredBackBufferWidth = m_GraphicsDeviceMgr.PreferredBackBufferWidth;
+            int preferredBackBufferHeight = m_GraphicsDeviceMgr.PreferredBackBufferHeight;
             if (bSwapDims)
             {
                 CCSize newSize = m_obDesignResolutionSize.Inverted;
@@ -944,8 +946,8 @@ namespace cocos2d
                 m_fScaleY = f;
                  */
             }
-            int preferredBackBufferWidth = m_GraphicsDeviceMgr.PreferredBackBufferWidth;
-            int preferredBackBufferHeight = m_GraphicsDeviceMgr.PreferredBackBufferHeight;
+            preferredBackBufferWidth = m_GraphicsDeviceMgr.PreferredBackBufferWidth;
+            preferredBackBufferHeight = m_GraphicsDeviceMgr.PreferredBackBufferHeight;
 #if ANDROID
             if (onlyLandscape && m_GraphicsDeviceMgr.PreferredBackBufferHeight > m_GraphicsDeviceMgr.PreferredBackBufferWidth)
             {
@@ -974,7 +976,7 @@ namespace cocos2d
             }
             m_GraphicsDeviceMgr.SupportedOrientations = supportedOrientations;
 #endif
-#if IOS
+#if IOS || IPHONE
             if (bSwapDims)
             {
                 m_GraphicsDeviceMgr.PreferredBackBufferWidth = preferredBackBufferHeight;

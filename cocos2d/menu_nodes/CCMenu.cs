@@ -7,7 +7,8 @@ namespace cocos2d
     public enum CCMenuState
     {
         Waiting,
-        TrackingTouch
+        TrackingTouch,
+        Focused
     };
 
     /// <summary>
@@ -28,12 +29,102 @@ namespace cocos2d
         private byte m_cOpacity;
         private ccColor3B m_tColor;
 
+        private LinkedList<CCMenuItem> _Items = new LinkedList<CCMenuItem>();
+
+
         /// <summary>
         /// Default ctor that sets the content size of the menu to match the window size.
         /// </summary>
         private CCMenu() 
         {
-            ContentSize = CCDirector.SharedDirector.WinSize;
+            Init();
+//            ContentSize = CCDirector.SharedDirector.WinSize;
+        }
+        public CCMenu(params CCMenuItem[] items)
+        {
+            InitWithItems(items);
+        }
+
+        public override bool HasFocus
+        {
+            set
+            {
+                base.HasFocus = value;
+                // Set the first menu item to have the focus
+                if (ItemWithFocus == null)
+                {
+                    _Items.First.Value.HasFocus = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the button press event to track which focused menu item will get the activation
+        /// </summary>
+        /// <param name="backButton"></param>
+        /// <param name="startButton"></param>
+        /// <param name="systemButton"></param>
+        /// <param name="aButton"></param>
+        /// <param name="bButton"></param>
+        /// <param name="xButton"></param>
+        /// <param name="yButton"></param>
+        /// <param name="leftShoulder"></param>
+        /// <param name="rightShoulder"></param>
+        /// <param name="player"></param>
+        protected override void OnGamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player)
+        {
+            base.OnGamePadButtonUpdate(backButton, startButton, systemButton, aButton, bButton, xButton, yButton, leftShoulder, rightShoulder, player);
+            if (!HasFocus)
+            {
+                return;
+            }
+            if (backButton == CCGamePadButtonStatus.Pressed || aButton == CCGamePadButtonStatus.Pressed || bButton == CCGamePadButtonStatus.Pressed ||
+                xButton == CCGamePadButtonStatus.Pressed || yButton == CCGamePadButtonStatus.Pressed || leftShoulder == CCGamePadButtonStatus.Pressed ||
+                rightShoulder == CCGamePadButtonStatus.Pressed)
+            {
+                CCMenuItem item = ItemWithFocus;
+                item.Selected();
+                m_pSelectedItem = item;
+                m_eState = CCMenuState.TrackingTouch;
+            }
+            else if (backButton == CCGamePadButtonStatus.Released || aButton == CCGamePadButtonStatus.Released || bButton == CCGamePadButtonStatus.Released ||
+                xButton == CCGamePadButtonStatus.Released || yButton == CCGamePadButtonStatus.Released || leftShoulder == CCGamePadButtonStatus.Released ||
+                rightShoulder == CCGamePadButtonStatus.Released)
+            {
+                if (m_eState == CCMenuState.TrackingTouch)
+                {
+                    // Now we are selecting the menu item
+                    CCMenuItem item = ItemWithFocus;
+                    if (item != null && m_pSelectedItem == item)
+                    {
+                        // Activate this item
+                        item.Unselected();
+                        item.Activate();
+                        m_eState = CCMenuState.Waiting;
+                        m_pSelectedItem = null;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns the menu item with the focus. Note that this only has a value if the GamePad or Keyboard is enabled. Touch
+        /// devices do not have a "focus" concept.
+        /// </summary>
+        public CCMenuItem ItemWithFocus
+        {
+            get
+            {
+                // Find the item with the focus
+                foreach(CCMenuItem item in _Items) 
+                {
+                    if (item.HasFocus)
+                    {
+                        return (item);
+                    }
+                }
+                return (null);
+            }
         }
 
         public bool Enabled
@@ -42,16 +133,18 @@ namespace cocos2d
             set { m_bEnabled = value; }
         }
 
-        public new static CCMenu Create()
-        {
-            return Create(null);
-        }
-
+        [Obsolete("use the parameter ctor instead")]
         public static CCMenu Create(params CCMenuItem[] items)
         {
             var pRet = new CCMenu();
             pRet.InitWithItems(items);
             return pRet;
+        }
+        [Obsolete("use the default ctor")]
+        public new static CCMenu Create()
+        {
+            return (new CCMenu());
+//            return Create(null);
         }
 
         public override bool Init()
@@ -64,6 +157,14 @@ namespace cocos2d
             return InitWithArray(items);
         }
 
+        public override void RemoveChild(CCNode child, bool cleanup)
+        {
+            base.RemoveChild(child, cleanup);
+            if (_Items.Contains(child as CCMenuItem))
+            {
+                _Items.Remove(child as CCMenuItem);
+            }
+        }
         /// <summary>
         /// The position of the menu is set to the center of the main screen
         /// </summary>
@@ -71,6 +172,14 @@ namespace cocos2d
         /// <returns></returns>
         private bool InitWithArray(params CCMenuItem[] items)
         {
+            if (_Items.Count > 0)
+            {
+                List<CCMenuItem> copy = new List<CCMenuItem>(_Items);
+                foreach (CCMenuItem i in copy)
+                {
+                    RemoveChild(i, false);
+                }
+            }
             if (base.Init())
             {
                 TouchEnabled = true;
@@ -111,6 +220,23 @@ namespace cocos2d
         {
             Debug.Assert(child is CCMenuItem, "Menu only supports MenuItem objects as children");
             base.AddChild(child, zOrder, tag);
+            if (_Items.Count == 0)
+            {
+                _Items.AddFirst(child as CCMenuItem);
+            }
+            else
+            {
+                _Items.AddLast(child as CCMenuItem);
+            }
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            foreach (CCMenuItem item in _Items)
+            {
+                CCFocusManager.Instance.Add(item);
+        }
         }
 
         public override void OnExit()
@@ -121,7 +247,10 @@ namespace cocos2d
                 m_eState = CCMenuState.Waiting;
                 m_pSelectedItem = null;
             }
-
+            foreach (CCMenuItem item in _Items)
+            {
+                CCFocusManager.Instance.Remove(item);
+            }
             base.OnExit();
         }
 

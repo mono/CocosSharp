@@ -622,12 +622,6 @@ namespace cocos2d
                 float x2 = x1 + m_obRect.size.width;
                 float y2 = y1 + m_obRect.size.height;
 
-                //
-                // NOTE: [0,0] - [16,16] is a 17 x 17 sprite, not 16x16
-                //
-
-//                CCLog.Log("TextureRect = {0},{1} - {2},{3}", x1, y1, x2, y2);
-
                 // Don't update Z.
                 m_sQuad.bl.vertices = ccTypes.vertex3(x1, y1, 0);
                 m_sQuad.br.vertices = ccTypes.vertex3(x2, y1, 0);
@@ -1092,9 +1086,7 @@ namespace cocos2d
             int widthMe = Texture.Texture2D.Width;
         int heightMe = Texture.Texture2D.Height;
 
-        if (calcPerPixel &&                                // if we need per pixel
-                ((Math.Min(widthOther, heightOther) > 100) ||  // at least avoid doing it
-                (Math.Min(widthMe, heightMe) > 100)))          // for small sizes (nobody will notice :P)
+            if (calcPerPixel)
         {
             return Bounds.Intersects(other.Bounds) // If simple intersection fails, don't even bother with per-pixel
                 && PerPixelCollision(this, other, out hitPoint);
@@ -1102,8 +1094,9 @@ namespace cocos2d
         if (Bounds.Intersects(other.Bounds))
         {
             hitPoint = new CCPoint(Bounds.Center);
+                return (true);
         }
-        return Bounds.Intersects(other.Bounds);
+            return (false);
     }
 
         /// <summary>
@@ -1123,6 +1116,9 @@ namespace cocos2d
                 // Check the size?
             }
         }
+#if DEBUG
+        public bool DebugCollision = false;
+#endif
 
         /// <summary>
         /// Tests the collision mask for the two sprites and returns true if there is a collision. The hit point of the
@@ -1160,8 +1156,12 @@ namespace cocos2d
                         // Get the color from each texture
                         byte ca = maskA[xA + yA * aWidth];
                         byte cb = maskB[xB + yB * bWidth];
-
-                        // CCLog.Log("Collision test[{0},{1}] = A{2} == B{3}", x, y, ca.A, cb.A);
+#if DEBUG
+                        if(a.DebugCollision && b.DebugCollision) 
+                        {
+                            CCLog.Log("Collision test[{0},{1}] = A{2} == B{3} {4}", x, y, ca, cb, (ca == cb && ca > 0) ? "BOOM" : "");
+                        }
+#endif
 
                         if (ca > 0 && cb > 0) // If both colors are not transparent (the alpha channel is not 0), then there is a collision
                         {

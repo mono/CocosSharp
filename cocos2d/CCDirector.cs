@@ -943,6 +943,7 @@ namespace cocos2d
 
             if (m_pobScenesStack.Count > 0)
             {
+                CCScene s = m_pobScenesStack[m_pobScenesStack.Count - 1];
                 m_pobScenesStack.RemoveAt(m_pobScenesStack.Count - 1);
             }
             int c = m_pobScenesStack.Count;

@@ -53,30 +53,30 @@ namespace cocos2d
             m_OnGamePadDPadUpdateDelegate = new CCGamePadDPadDelegate(OnGamePadDPadUpdate);
             m_OnGamePadStickUpdateDelegate = new CCGamePadStickUpdateDelegate(OnGamePadStickUpdate);
             m_OnGamePadTriggerUpdateDelegate = new CCGamePadTriggerDelegate(OnGamePadTriggerUpdate);
+            Init();
         }
 
-        public new static CCLayer Create()
-        {
-            var ret = new CCLayer();
-            if (ret.Init())
+        private void _ctorInit()
             {
-                return ret;
             }
 
-            return null;
+        [Obsolete("Use the default ctor")]
+        public new static CCLayer Create()
+        {
+            return(new CCLayer());
         }
+
+        private bool m_bDidInit = false;
 
         public virtual bool Init()
         {
+            if(m_bDidInit) {
+                return (true);
+            }
             bool bRet = false;
-            do
-            {
                 CCDirector director = CCDirector.SharedDirector;
-                if (director == null)
+            if (director != null)
                 {
-                    break;
-                }
-
 //                ContentSize = director.WinSize;
                 m_bIsMultiTouchEnabled = false;
                 m_bIsSingleTouchEnabled = false;
@@ -84,13 +84,16 @@ namespace cocos2d
                 m_bKeypadEnabled = false;
                 m_bGamePadEnabled = false;
                 bRet = true;
-            } while (false);
-
+                m_bDidInit = true;
+            }
             return bRet;
         }
 
         public override void OnEnter()
         {
+            if(!m_bDidInit) {
+                Init();
+            }
             // register 'parent' nodes first
             // since events are propagated in reverse order
             if (m_bIsMultiTouchEnabled || m_bIsSingleTouchEnabled)
@@ -393,6 +396,10 @@ namespace cocos2d
 
         protected virtual void OnGamePadDPadUpdate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player)
         {
+            if (!HasFocus)
+            {
+                return;
+            }
         }
 
         protected virtual void OnGamePadConnectionUpdate(Microsoft.Xna.Framework.PlayerIndex player, bool IsConnected)

@@ -133,6 +133,12 @@ namespace cocos2d
             return true;
         }
 
+        public void AddSprite(CCSprite sprite)
+        {
+            CCSpriteFrame f = CCSpriteFrame.Create(sprite.Texture, new CCRect(0, 0, sprite.ContentSize.width, sprite.ContentSize.height));
+            AddSpriteFrame(f);
+        }
+
         public void AddSpriteFrame(CCSpriteFrame pFrame)
         {
             var animFrame = new CCAnimationFrame();

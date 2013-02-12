@@ -389,16 +389,19 @@ namespace cocos2d
             }
         }
 
+        /// <summary>
+        /// Default constructor. Does nothing
+        /// </summary>
+        public CCControl()
+        {
+        }
+
         // for the subclass of CCLayer, each has to implement the static "create" method 
+        [Obsolete("Use the default ctor")]
         public new static CCLayer Create()
         {
             var ret = new CCLayer();
-            if (ret.Init())
-            {
-                return ret;
-            }
-
-            return null;
+            return (ret);
         }
 
         public virtual void NeedsLayout()

@@ -64,7 +64,7 @@ namespace cocos2d
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-    public class CCNode : CCObject, SelectorProtocol
+    public class CCNode : CCObject, SelectorProtocol, CCIFocusable
     {
         private static int kCCNodeTagInvalid = -1;
         private static int s_globalOrderOfArrival = 1;
@@ -102,6 +102,7 @@ namespace cocos2d
         protected CCSize m_tContentSize;
         private CCAffineTransform m_tInverse;
         protected CCPoint m_tPosition;
+        private bool m_bHasFocus = false;
 
         public CCNode()
         {
@@ -244,6 +245,21 @@ namespace cocos2d
         }
 
 
+        #endregion
+
+        #region CCIFocusable
+        public virtual bool HasFocus
+        {
+            get { return (m_bHasFocus); }
+            set { m_bHasFocus = value; }
+        }
+        public virtual bool CanReceiveFocus
+        {
+            get
+            {
+                return (Visible);
+            }
+        }
         #endregion
 
         public int Tag

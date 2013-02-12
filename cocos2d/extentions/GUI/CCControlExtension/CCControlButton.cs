@@ -788,10 +788,17 @@ namespace cocos2d
             SetBackgroundSpriteForState(sprite, state);
         }
 
+        /// <summary>
+        /// Default ctor. Does nothing.
+        /// </summary>
+        public CCControlButton()
+        {
+        }
+
+        [Obsolete("Use the default ctor")]
         public new static CCControlButton Create()
         {
             var pControlButton = new CCControlButton();
-            pControlButton.Init();
             return pControlButton;
         }
     }
