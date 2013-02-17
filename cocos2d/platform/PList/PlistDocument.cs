@@ -33,6 +33,9 @@ using Microsoft.Xna.Framework.Content;
 
 namespace cocos2d
 {
+#if IOS
+    [MonoTouch.Foundation.Preserve (AllMembers = true)]
+#endif
     public class PlistDocument : PlistObjectBase
     {
         private const string version = "1.0";

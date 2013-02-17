@@ -31,6 +31,7 @@
     <AssemblyName>cocos2dTests</AssemblyName>
     <MtouchI18n />
     <MtouchArch>ARMv7</MtouchArch>
+    <MtouchExtraArgs>--linkskip=MonoGame.Framework</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>

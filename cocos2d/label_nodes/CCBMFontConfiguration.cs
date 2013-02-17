@@ -6,8 +6,14 @@ using cocos2d.Framework;
 
 namespace cocos2d
 {
+#if IOS
+    [MonoTouch.Foundation.Preserve (AllMembers = true)]
+#endif
     public class CCBMFontConfiguration : CCObject
     {
+#if IOS
+        public static ReflectiveReader<CCBMFontConfiguration> _dummy = new ReflectiveReader<CCBMFontConfiguration>();
+#endif
         [ContentSerializer] 
         internal int m_nCommonHeight;
 
@@ -27,6 +33,9 @@ namespace cocos2d
         {
             get { return m_sAtlasName; }
             set { m_sAtlasName = value; }
+        }
+
+        public CCBMFontConfiguration() {
         }
 
         public static CCBMFontConfiguration Create(string fntFile)
