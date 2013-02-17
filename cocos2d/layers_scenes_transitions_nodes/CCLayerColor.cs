@@ -46,7 +46,8 @@ namespace cocos2d
             m_tColor = new ccColor3B(0, 0, 0);
 
             // default blend function
-            m_tBlendFunc = new ccBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            m_tBlendFunc = new ccBlendFunc(ccMacros.CC_BLEND_SRC, ccMacros.CC_BLEND_DST);
+//            m_tBlendFunc = new ccBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
         }
 
         /// <summary>
@@ -103,8 +104,8 @@ namespace cocos2d
         public virtual bool InitWithColorWidthHeight(ccColor4B color, float width, float height)
         {
             // default blend function
-            m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
-            m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+            m_tBlendFunc.src = ccMacros.CC_BLEND_SRC; // OGLES.GL_SRC_ALPHA;
+            m_tBlendFunc.dst = ccMacros.CC_BLEND_DST; // OGLES.GL_ONE_MINUS_SRC_ALPHA;
 
             m_tColor.r = color.r;
             m_tColor.g = color.g;

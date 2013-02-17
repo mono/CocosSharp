@@ -54,7 +54,8 @@ namespace tests
             };
             // GL_SRC_ALPHA
 #if IOS
-            DrawManager.BlendFunc(new ccBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA));
+            DrawManager.BlendFunc(new ccBlendFunc(ccMacros.CC_BLEND_SRC, ccMacros.CC_BLEND_DST));
+            // OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA));
 #else
             DrawManager.BlendFunc(new ccBlendFunc(OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA));
 #endif
