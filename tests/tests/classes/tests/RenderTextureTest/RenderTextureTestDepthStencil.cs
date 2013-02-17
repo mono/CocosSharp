@@ -18,7 +18,11 @@ namespace tests
             CCSprite sprite = CCSprite.Create("Images/fire");
             sprite.Position = new CCPoint(s.width * 0.25f, 0);
             sprite.Scale = 10;
+#if IOS
+            CCRenderTexture rend = CCRenderTexture.Create((int)s.width, (int)s.height, SurfaceFormat.Color, DepthFormat.Depth16, RenderTargetUsage.DiscardContents);
+#else
             CCRenderTexture rend = CCRenderTexture.Create((int)s.width, (int)s.height, SurfaceFormat.Color, DepthFormat.Depth24Stencil8, RenderTargetUsage.DiscardContents);
+#endif
 
             rend.BeginWithClear(0, 0, 0, 0, 0);
 
@@ -48,7 +52,12 @@ namespace tests
                 StencilPass = StencilOperation.Keep,
                 ReferenceStencil = 1
             };
+            // GL_SRC_ALPHA
+#if IOS
+            DrawManager.BlendFunc(new ccBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA));
+#else
             DrawManager.BlendFunc(new ccBlendFunc(OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA));
+#endif
             
             //! move sprite half width and height, and draw only where not marked
             sprite.Position = sprite.Position + new CCPoint(sprite.ContentSize.width * sprite.Scale, sprite.ContentSize.height * sprite.Scale) * 0.5f;
