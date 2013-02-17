@@ -11,9 +11,6 @@ namespace cocos2d
 #endif
     public class CCBMFontConfiguration : CCObject
     {
-#if IOS
-        public static ReflectiveReader<CCBMFontConfiguration> _dummy = new ReflectiveReader<CCBMFontConfiguration>();
-#endif
         [ContentSerializer] 
         internal int m_nCommonHeight;
 
