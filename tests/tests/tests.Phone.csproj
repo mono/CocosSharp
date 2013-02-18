@@ -514,6 +514,7 @@
     <Compile Include="classes\tests\LabelTest\BMFontUnicode.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
     <Compile Include="classes\tests\LabelTest\Issue1343.cs">
       <SubType>Code</SubType>
     </Compile>
