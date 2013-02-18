@@ -102,7 +102,8 @@ namespace cocos2d
         /// </summary>
         public virtual bool InitWithColorWidthHeight(ccColor4B color, float width, float height)
         {
-            // default blend function
+            // default blend function for literal colors and no alpha blending 
+            // applied to the actual color.
             m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
             m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
 

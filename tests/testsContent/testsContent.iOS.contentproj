@@ -18,7 +18,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MonoGameContentProcessors">
-      <HintPath>..\MonoGameContentBuilder\iOS\MonoGameContentProcessors.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\core\svnroot\TotallyEvil\tools\MonoGameContentBuilder\iOS\MonoGameContentProcessors.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" />
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.FBXImporter" />
@@ -2105,7 +2105,7 @@
       <Processor>MGTextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <Import Project="..\MonoGameContentBuilder\iOS\MonoGame.ContentPipeline.targets" />
+  <Import Project="..\..\..\MonoGame\MonoGame.ContentPipeline\MonoGame.ContentPipeline.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
