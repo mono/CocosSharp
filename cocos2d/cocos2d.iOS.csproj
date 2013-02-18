@@ -11,7 +11,6 @@
     <Description>cocos2d for MonoTouch</Description>
     <RootNamespace>cocos2d</RootNamespace>
     <SynchReleaseVersion>False</SynchReleaseVersion>
-    <AssemblyName>cocos2d-xna.iOS</AssemblyName>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
@@ -31,6 +30,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>True</MtouchDebug>
     <MtouchUseArmv7>false</MtouchUseArmv7>
+    <AssemblyName>cocos2d-xna</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -41,6 +41,7 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <DefineConstants>IPHONE,IOS,GLES;OPENGL;CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX</DefineConstants>
     <MtouchUseArmv7>false</MtouchUseArmv7>
+    <AssemblyName>cocos2d-xna</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>True</DebugSymbols>
@@ -54,6 +55,7 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <MtouchDebug>True</MtouchDebug>
     <MtouchUseArmv7>false</MtouchUseArmv7>
+    <AssemblyName>cocos2d-xna.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -64,6 +66,7 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <DefineConstants>IPHONE,IOS,GLES;OPENGL;CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX</DefineConstants>
     <MtouchUseArmv7>false</MtouchUseArmv7>
+    <AssemblyName>cocos2d-xna.iOS</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

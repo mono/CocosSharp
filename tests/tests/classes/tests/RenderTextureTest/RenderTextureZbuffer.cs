@@ -43,15 +43,15 @@ namespace tests
             mgr = CCSpriteBatchNode.Create("Images/bugs/circle", 9);
             AddChild(mgr);
 
-            sp1 = CCSprite.Create("circle.png");
-            sp2 = CCSprite.Create("circle.png");
-            sp3 = CCSprite.Create("circle.png");
-            sp4 = CCSprite.Create("circle.png");
-            sp5 = CCSprite.Create("circle.png");
-            sp6 = CCSprite.Create("circle.png");
-            sp7 = CCSprite.Create("circle.png");
-            sp8 = CCSprite.Create("circle.png");
-            sp9 = CCSprite.Create("circle.png");
+            sp1 = CCSprite.Create("Images/bugs/circle");
+            sp2 = CCSprite.Create("Images/bugs/circle");
+            sp3 = CCSprite.Create("Images/bugs/circle");
+            sp4 = CCSprite.Create("Images/bugs/circle");
+            sp5 = CCSprite.Create("Images/bugs/circle");
+            sp6 = CCSprite.Create("Images/bugs/circle");
+            sp7 = CCSprite.Create("Images/bugs/circle");
+            sp8 = CCSprite.Create("Images/bugs/circle");
+            sp9 = CCSprite.Create("Images/bugs/circle");
 
             mgr.AddChild(sp1, 9);
             mgr.AddChild(sp2, 8);

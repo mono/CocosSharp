@@ -349,6 +349,7 @@
     <Compile Include="classes\tests\LabelTest\BMFontInit.cs" />
     <Compile Include="classes\tests\LabelTest\BMFontOneAtlas.cs" />
     <Compile Include="classes\tests\LabelTest\BMFontUnicode.cs" />
+    <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
     <Compile Include="classes\tests\LabelTest\Issue1343.cs" />
     <Compile Include="classes\tests\LabelTest\LabelAtlasColorTest.cs" />
     <Compile Include="classes\tests\LabelTest\LabelAtlasHD.cs" />

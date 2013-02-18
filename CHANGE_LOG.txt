@@ -79,6 +79,8 @@ and Totally Evil Entertainment, LLC.
 * tests: Updated the PSM project file to include all of the content files.
 * tests: Removed the display of the assembly version for PSM.
 * tests: Removed the PMA optimization directive for iOS. 
+* tests: Fixed a file name error in the particles test.
+* tests: Updated the XNB files for android and copied the plist and fnt xnb files over to iOS.
 
 * EffectPlayer : Added use of "CreateInstance()" to get an instance of a sound effect
   that can be stopped for looped sound effects. 

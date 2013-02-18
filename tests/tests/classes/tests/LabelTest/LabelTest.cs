@@ -75,7 +75,7 @@ namespace cocos2d
             CCMenuItemImage item2 = CCMenuItemImage.Create(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
             CCMenuItemImage item3 = CCMenuItemImage.Create(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
 
-            CCMenu menu = CCMenu.Create(item1, item2, item3);
+            CCMenu menu = new CCMenu(item1, item2, item3);
 
             menu.Position = new CCPoint();
             item1.Position = new CCPoint(s.width / 2 - 100, 30);

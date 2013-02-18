@@ -6,6 +6,9 @@ using cocos2d.Framework;
 
 namespace cocos2d
 {
+#if IOS
+    [MonoTouch.Foundation.Preserve (AllMembers = true)]
+#endif
     public class CCBMFontConfiguration : CCObject
     {
         [ContentSerializer] 
@@ -27,6 +30,9 @@ namespace cocos2d
         {
             get { return m_sAtlasName; }
             set { m_sAtlasName = value; }
+        }
+
+        public CCBMFontConfiguration() {
         }
 
         public static CCBMFontConfiguration Create(string fntFile)
