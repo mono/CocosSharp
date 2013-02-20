@@ -86,3 +86,17 @@ and Totally Evil Entertainment, LLC.
 * CCTransitionFlipY : Obsoleted the 'create' method and added a parameter ctor.
 * FlipXLeftOver, FlipYDownOver, FlipAngularRightOver, FlipYUpOver, FlipXRightOver : Added parameter ctor
 
+* EffectPlayer : Added use of "CreateInstance()" to get an instance of a sound effect
+  that can be stopped for looped sound effects. 
+* EffectPlayer : Added code for the control methods when the sound effect instance is in use.
+* SimpleAudioEngine : Added management of looped sound effects and a method to stop all
+  running looped sound effects.
+* MusicPlayer : Added some defensive code around SaveMediaState.
+
+* CCAnimation : Added a method to take a sprite as a frame.
+* CCMenu : Added focusable support.
+* CCSprite : Optimizations to the collision code to reduce the duplicate checks on bounding
+  box intersection.
+* DrawManager : Fixed a missing IPHONE compile directive check.
+* CCLayer : Changed the ctor to do the init and obsoleted the Create method.
+

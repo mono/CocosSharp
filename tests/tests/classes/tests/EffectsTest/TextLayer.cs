@@ -71,7 +71,7 @@ namespace tests
 
         public CCActionInterval createEffect(int nIndex, float t)
         {
-            CCDirector.SharedDirector.SetDepthTest(false);
+//            CCDirector.SharedDirector.SetDepthTest(false);
 
             switch (nIndex)
             {
