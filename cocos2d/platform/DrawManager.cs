@@ -556,7 +556,11 @@ namespace cocos2d
         public static void CreateRenderTarget(CCTexture2D pTexture, RenderTargetUsage usage)
         {
             CCSize size = pTexture.ContentSizeInPixels;
+#if IOS
+            pTexture.texture2D = CreateRenderTarget((int) size.width, (int) size.height, SurfaceFormat.Color, DepthFormat.Depth16, usage);
+#else
             pTexture.texture2D = CreateRenderTarget((int) size.width, (int) size.height, SurfaceFormat.Color, DepthFormat.Depth24, usage);
+#endif
         }
 
         public static RenderTarget2D CreateRenderTarget(int width, int height, RenderTargetUsage usage)
