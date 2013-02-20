@@ -81,4 +81,8 @@ and Totally Evil Entertainment, LLC.
 * tests: Removed the PMA optimization directive for iOS. 
 * tests: Fixed a file name error in the particles test.
 * tests: Updated the XNB files for android and copied the plist and fnt xnb files over to iOS.
+* CCTransitionFlipAngular : Obsoleted the 'create' method and added a parameter ctor.
+* CCTransitionFlipX: Obsoleted the 'create' method and added a parameter ctor.
+* CCTransitionFlipY : Obsoleted the 'create' method and added a parameter ctor.
+* FlipXLeftOver, FlipYDownOver, FlipAngularRightOver, FlipYUpOver, FlipXRightOver : Added parameter ctor
 

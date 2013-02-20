@@ -8,9 +8,14 @@ namespace tests
 {
     public class FlipXLeftOver : CCTransitionFlipX
     {
+        public FlipXLeftOver(float t, CCScene s)
+            : base(t, s, tOrientation.kOrientationLeftOver)
+        {
+        }
         public new static CCTransitionScene Create(float t, CCScene s)
         {
-            return CCTransitionFlipX.Create(t, s, tOrientation.kOrientationLeftOver);
+            return (new FlipXLeftOver(t, s));
+//            return CCTransitionFlipX.Create(t, s, tOrientation.kOrientationLeftOver);
         }
     }
 }

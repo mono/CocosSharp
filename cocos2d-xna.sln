@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.Content.Pipeline.Importers", "cocos2d.Content.Pipeline.Importers\cocos2d.Content.Pipeline.Importers.csproj", "{FBE4633D-00D1-4391-8184-63B91DA28D4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d (Windows)", "cocos2d\cocos2d.Windows.csproj", "{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.Windows", "cocos2d\cocos2d.Windows.csproj", "{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests (Windows)", "tests\tests\tests.Windows.csproj", "{8877C885-BEC4-4165-8A19-9C07FF9EC026}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.Windows", "tests\tests\tests.Windows.csproj", "{8877C885-BEC4-4165-8A19-9C07FF9EC026}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests (Phone)", "tests\tests\tests.Phone.csproj", "{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.Phone", "tests\tests\tests.Phone.csproj", "{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testsContent", "tests\testsContent\testsContent.contentproj", "{2CE0B38F-5C9C-4088-8FEC-D3B58EE48E35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d (Phone)", "cocos2d\cocos2d.Phone.csproj", "{47EE6CE6-493D-4967-944A-5E55B71AA9FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.Phone", "cocos2d\cocos2d.Phone.csproj", "{47EE6CE6-493D-4967-944A-5E55B71AA9FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d (Android)", "cocos2d\cocos2d.Android.csproj", "{64725C5B-A1BC-4974-8538-A1158BABF572}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.Android", "cocos2d\cocos2d.Android.csproj", "{64725C5B-A1BC-4974-8538-A1158BABF572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests (Android)", "tests\tests\tests.Android.csproj", "{96E8B92D-DC5C-4F50-9AE1-0B76BE9BBD15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.Android", "tests\tests\tests.Android.csproj", "{96E8B92D-DC5C-4F50-9AE1-0B76BE9BBD15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,7 +131,6 @@ Global
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{64725C5B-A1BC-4974-8538-A1158BABF572}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Debug|Windows Phone.ActiveCfg = Debug|Any CPU
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Release|Android.ActiveCfg = Release|Any CPU
@@ -147,7 +146,6 @@ Global
 		{96E8B92D-DC5C-4F50-9AE1-0B76BE9BBD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{96E8B92D-DC5C-4F50-9AE1-0B76BE9BBD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96E8B92D-DC5C-4F50-9AE1-0B76BE9BBD15}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{96E8B92D-DC5C-4F50-9AE1-0B76BE9BBD15}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{96E8B92D-DC5C-4F50-9AE1-0B76BE9BBD15}.Debug|Windows Phone.ActiveCfg = Debug|Any CPU
 		{96E8B92D-DC5C-4F50-9AE1-0B76BE9BBD15}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{96E8B92D-DC5C-4F50-9AE1-0B76BE9BBD15}.Release|Android.ActiveCfg = Release|Any CPU

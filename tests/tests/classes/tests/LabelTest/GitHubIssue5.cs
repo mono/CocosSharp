@@ -14,7 +14,7 @@ namespace tests
         public GitHubIssue5()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            _TestLabel = CCLabelTTF.Create("******* DEBUG MODE - please uncomment #define Debug *******", "Arial", 10);
+            _TestLabel = CCLabelTTF.Create("", "Arial", 10);
             AddChild(_TestLabel);
             _TestLabel.Position = new CCPoint(s.width / 2, s.height / 4 * 2);
         }

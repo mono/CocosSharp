@@ -22,6 +22,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
+using System;
 
 namespace cocos2d
 {
@@ -69,10 +70,15 @@ namespace cocos2d
             m_pOutScene.RunAction(outA);
         }
 
+        public CCTransitionFlipX(float t, CCScene s, tOrientation o)
+        {
+            InitWithDuration(t, s, o);
+        }
+
+        [Obsolete("Use the parameter ctor instead")]
         public new static CCTransitionFlipX Create(float t, CCScene s, tOrientation o)
         {
-            var pScene = new CCTransitionFlipX();
-            pScene.InitWithDuration(t, s, o);
+            var pScene = new CCTransitionFlipX(t, s, o);
             return pScene;
         }
     }

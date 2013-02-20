@@ -8,9 +8,14 @@ namespace tests
 {
     public class FlipAngularRightOver : CCTransitionFlipAngular
     {
+        public FlipAngularRightOver(float t, CCScene s)
+            : base(t, s, tOrientation.kOrientationRightOver)
+        {
+        }
         public new static CCTransitionScene Create(float t, CCScene s)
         {
-            return CCTransitionFlipAngular.Create(t, s, tOrientation.kOrientationRightOver);
+            return (new FlipAngularRightOver(t, s));
+//            return CCTransitionFlipAngular.Create(t, s, tOrientation.kOrientationRightOver);
         }
     }
 }
