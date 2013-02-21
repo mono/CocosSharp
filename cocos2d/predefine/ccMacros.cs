@@ -179,16 +179,17 @@ namespace cocos2d
         public static readonly int CCSpriteIndexNotInitialized = 320000000; // 0xffffffff; // CCSprite invalid index on the CCSpriteBatchode
 
 
-        // The following macros are defined for opengl es, they are not needed.
 
 #if CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA
         public static readonly int CC_BLEND_SRC = OGLES.GL_ONE;
         public static readonly int CC_BLEND_DST = OGLES.GL_ONE_MINUS_SRC_ALPHA;
 #else
+        // Not PMA - like iOS, textures do not have alpha blended in the pixels
          public static readonly int CC_BLEND_SRC= OGLES.GL_SRC_ALPHA;
          public static readonly int CC_BLEND_DST=  OGLES.GL_ONE_MINUS_SRC_ALPHA;
 #endif
 
+        // The following macros are defined for opengl es, they are not needed.
         // #define CC_BLEND_DST GL_ONE_MINUS_SRC_ALPHA
 
         // #define CC_ENABLE_DEFAULT_GL_STATES() {				\

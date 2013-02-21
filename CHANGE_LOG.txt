@@ -90,4 +90,5 @@ and Totally Evil Entertainment, LLC.
 * CCDirector : Fixed erroneous hiding of the current scene when switching to a transition scene.
 * XBox : Added the GitHubIssue5 test case to the project.
 * Tests : Removed the assembly name display on windows phone.
+* FadeWhiteTransition : Fixed broken blending state
 
