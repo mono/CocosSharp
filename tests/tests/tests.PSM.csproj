@@ -1459,11 +1459,11 @@
       <Project>{30E7611D-6275-4948-BF43-DA477399100E}</Project>
       <Name>cocos2d.PSM</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.PSMobile.csproj">
+    <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.PSMobile.csproj">
       <Project>{167676EE-E2D5-440A-BB2B-EFBD02BC8493}</Project>
       <Name>Lidgren.Network.PSMobile</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.PSMobile.csproj">
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.PSMobile.csproj">
       <Project>{EA26E76F-FDFE-4A8C-B5A3-C3B5761E28F9}</Project>
       <Name>MonoGame.Framework.PSMobile</Name>
     </ProjectReference>

@@ -37,15 +37,7 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>external lib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="Lidgren.Network.Android, Version=2011.3.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>external lib\Android\Lidgren.Network.Android.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Android" />
-    <Reference Include="MonoGame.Framework.Android, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>external lib\Android\MonoGame.Framework.Android.dll</HintPath>
-    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="OpenTK" />
     <Reference Include="System" />
@@ -393,6 +385,16 @@
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\IEGLTouchDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj">
+      <Project>{BA9476CF-99BA-4D03-92F2-73D2C5E58883}</Project>
+      <Name>MonoGame.Framework.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
+      <Project>{565129E0-4EE5-4F6F-B403-C3484C9740BE}</Project>
+      <Name>Lidgren.Network.Android</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
