@@ -89,4 +89,5 @@ and Totally Evil Entertainment, LLC.
 * CCTransitionScene : Added boolean to indicate whether the scene is a transition or not.
 * CCDirector : Fixed erroneous hiding of the current scene when switching to a transition scene.
 * XBox : Added the GitHubIssue5 test case to the project.
+* Tests : Removed the assembly name display on windows phone.
 
