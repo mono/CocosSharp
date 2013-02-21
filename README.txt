@@ -66,8 +66,9 @@ than your design resolution.
 "external lib"
 ==================================================================================================
 
-To support Android, iOS, and other platforms, you must have a version of MonoGame (develop3d) 
-version 3.0 available. We include a binary of a recent pull from that repository, but you should 
-get your own version and test with it. We only provide a binary of MonoGame for the test cases to
-run on Android.
+To support Android, iOS, and other platforms, you must have a version of MonoGame (develop) 
+version 3.0 available. The MonoGame repository is a submodule of this project now, so make sure
+that you get download the submodule if you do not have your own clone of MonoGame. Don't forget to use
+develop is you want the latest changes, or master if you want the most recent release.
+
 
