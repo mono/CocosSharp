@@ -12,13 +12,30 @@ namespace cocos2d
     /// </summary>
     public class CCScene : CCNode
     {
+        /// <summary>
+        /// Sets the anchor point to the middle of the scene but ignores the anchor for positioning.
+        /// </summary>
         public CCScene()
         {
             m_bIgnoreAnchorPointForPosition = true;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
         }
 
-        public bool Init()
+        /// <summary>
+        /// Returns false always unless this is a transition scene.
+        /// </summary>
+        public virtual bool IsTransition
+        {
+            get
+            {
+                return (false);
+            }
+        }
+        /// <summary>
+        /// Initialize this scene
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool Init()
         {
             bool bRet = false;
             do

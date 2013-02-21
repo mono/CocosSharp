@@ -896,6 +896,10 @@ namespace cocos2d
             StartAnimation();
         }
 
+        /// <summary>
+        /// Replaces the current scene at the top of the stack with the given scene.
+        /// </summary>
+        /// <param name="pScene"></param>
         public void ReplaceScene(CCScene pScene)
         {
             Debug.Assert(pScene != null, "pScene cannot be null");
@@ -914,6 +918,10 @@ namespace cocos2d
             m_pNextScene = pScene;
         }
 
+        /// <summary>
+        /// Push the given scene to the top of the scene stack.
+        /// </summary>
+        /// <param name="pScene"></param>
         public void PushScene(CCScene pScene)
         {
             Debug.Assert(pScene != null, "pScene cannot be null");
@@ -1012,7 +1020,7 @@ namespace cocos2d
                 }
             }
 
-            if (m_pRunningScene != null)
+            if (m_pRunningScene != null && !m_pNextScene.IsTransition)
             {
                 m_pRunningScene.Visible = false;
             }

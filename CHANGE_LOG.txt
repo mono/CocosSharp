@@ -86,4 +86,7 @@ and Totally Evil Entertainment, LLC.
 * CCTransitionFlipY : Obsoleted the 'create' method and added a parameter ctor.
 * FlipXLeftOver, FlipYDownOver, FlipAngularRightOver, FlipYUpOver, FlipXRightOver : Added parameter ctor
 * DrawManager: Changed the RenderTarget2D creation to set depth to Depth16 for iOS.
+* CCTransitionScene : Added boolean to indicate whether the scene is a transition or not.
+* CCDirector : Fixed erroneous hiding of the current scene when switching to a transition scene.
+* XBox : Added the GitHubIssue5 test case to the project.
 
