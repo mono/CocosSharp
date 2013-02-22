@@ -91,4 +91,6 @@ and Totally Evil Entertainment, LLC.
 * XBox : Added the GitHubIssue5 test case to the project.
 * Tests : Removed the assembly name display on windows phone.
 * FadeWhiteTransition : Fixed broken blending state
+* DrawManager : Added parsing of the GL capabilities to determine allowed depth and npot caps.
+* Fix for the EffectsTest on Android, GitHub issue #7.
 
