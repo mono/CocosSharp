@@ -30,3 +30,13 @@ namespace cocos2d
 		}
 	}
 }
+namespace System {
+    public class Console {
+        public static void WriteLine(string message) {
+            System.Diagnostics.Debug.WriteLine(message);
+        }
+        public static void WriteLine(string message, params object[] args){
+            System.Diagnostics.Debug.WriteLine(message, args);
+        }
+    }
+}
