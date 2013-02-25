@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-#if !PSM
+#if !PSM &&!NETFX_CORE
 using System.IO.IsolatedStorage;
 #endif
 using Microsoft.Xna.Framework;
@@ -79,7 +79,7 @@ namespace cocos2d
 
         #region State Management
 		
-#if !PSM
+#if !PSM &&!NETFX_CORE
         private string m_sStorageDirName = "cocos2dDirector";
         private string m_sSaveFileName = "SceneList.dat";
         private string m_sSceneSaveFileName = "Scene{0}.dat";

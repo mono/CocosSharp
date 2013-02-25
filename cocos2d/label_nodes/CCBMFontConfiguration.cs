@@ -317,7 +317,11 @@ namespace cocos2d
         }
             catch (Exception ex)
             {
+#if NETFX_CORE
+                System.Diagnostics.Debug.WriteLine("Failed to parse font line: {0}", line);
+#else
                 Console.WriteLine("Failed to parse font line: {0}", line);
+#endif
             }
         }
 
