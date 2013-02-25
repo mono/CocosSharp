@@ -116,6 +116,7 @@
     <Compile Include="..\tests\tests\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
+    <Compile Include="NotFiniteNumberException.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
