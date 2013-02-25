@@ -53,7 +53,7 @@ namespace cocos2d
         internal CCSize m_obWinSizeInPixels;
         internal CCSize m_obWinSizeInPoints;
 		
-#if !PSM
+#if !PSM &&!NETFX_CORE
         private CCAccelerometer m_pAccelerometer;
 #endif
 		private CCActionManager m_pActionManager;
@@ -458,7 +458,7 @@ namespace cocos2d
             set { m_pKeypadDispatcher = value; }
         }
 
-#if !PSM
+#if !PSM &&!NETFX_CORE
 		public CCAccelerometer Accelerometer
         {
             get { return m_pAccelerometer; }
@@ -567,7 +567,7 @@ namespace cocos2d
             m_pKeypadDispatcher = new CCKeypadDispatcher();
 
 			// Accelerometer
-#if !PSM
+#if !PSM &&!NETFX_CORE
             m_pAccelerometer = new CCAccelerometer();
 #endif
             // create autorelease pool
