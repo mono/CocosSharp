@@ -332,7 +332,7 @@ namespace cocos2d
                     Color = m_sColorUnmodified;
                 }
 
-                UpdateColor();
+                UpdateColor(true);
             }
         }
 
@@ -988,12 +988,34 @@ namespace cocos2d
             }
         }
 
-        private void UpdateColor()
+        private void UpdateColor(bool opacity = false)
         {
+
+            // I placed this in an #if def for now incase the following works on other systems and do not want to break them
+#if IOS
+            if (opacity) 
+            {
+                // The following code works on iOS
+                m_sQuad.bl.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.br.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.tl.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.tr.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+            }
+            else 
+            {
+                m_sQuad.bl.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
+                m_sQuad.br.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
+                m_sQuad.tl.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
+                m_sQuad.tr.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
+
+            }
+#else
+
             m_sQuad.bl.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
             m_sQuad.br.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
             m_sQuad.tl.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
             m_sQuad.tr.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
+#endif
 
             // renders using Sprite Manager
             if (m_pobBatchNode != null)
