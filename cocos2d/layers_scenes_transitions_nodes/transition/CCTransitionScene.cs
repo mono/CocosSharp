@@ -11,6 +11,14 @@ namespace cocos2d
         protected CCScene m_pInScene;
         protected CCScene m_pOutScene;
 
+        public override bool IsTransition
+        {
+            get
+            {
+                return (true);
+            }
+        }
+
         public override void Draw()
         {
             base.Draw();
@@ -72,6 +80,7 @@ namespace cocos2d
                 m_pOutScene = CCDirector.SharedDirector.RunningScene;
                 if (m_pOutScene == null)
                 {
+                    // Creating an empty scene.
                     m_pOutScene = Create();
                     m_pOutScene.Init();
                 }
@@ -130,7 +139,8 @@ namespace cocos2d
             // enable events while transitions
             director.TouchDispatcher.IsDispatchEvents = true;
             // issue #267
-            m_pOutScene.Visible = true;
+            // THis is not necessary here. We don't want to show the out scene because the in scene is fully drawn now
+            // m_pOutScene.Visible = true;
         }
     }
 }

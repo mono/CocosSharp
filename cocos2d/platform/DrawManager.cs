@@ -70,6 +70,13 @@ namespace cocos2d
         private static float m_fFrameZoomFactor = 1.0f;
         private static RasterizerState m_savedRasterizerState;
         private static RasterizerState m_scissorRasterizerState;
+        private static DepthFormat m_PlatformDepthFormat = DepthFormat.Depth24;
+#if GLES
+        // ref: http://www.khronos.org/registry/gles/extensions/NV/GL_NV_texture_npot_2D_mipmap.txt
+        private static bool m_AllowNonPower2Textures = true;
+#else
+        private static bool m_AllowNonPower2Textures = false;
+#endif
 
         public static bool VertexColorEnabled
         {
@@ -148,6 +155,7 @@ namespace cocos2d
             set
             {
                 m_depthTest = value;
+                // NOTE: This must be disabled when primitives are drawing, e.g. lines, polylines, etc.
                 graphicsDevice.DepthStencilState = value ? m_DepthEnableStencilState : m_DepthDisableStencilState;
                 //graphicsDevice.DepthStencilState = value ? DepthStencilState.Default : DepthStencilState.None;
             }
@@ -248,7 +256,27 @@ namespace cocos2d
                 {
                     DepthBufferEnable = false
                 };
-
+#if !WINDOWS_PHONE && !XBOX && !WINDOWS
+            List<string> extensions = ccUtils.GetGLExtensions();
+            foreach(string s in extensions) 
+            {
+                switch(s) 
+                {
+                    case "GL_OES_depth24":
+                        m_PlatformDepthFormat = DepthFormat.Depth24;
+                        break;
+                    case "GL_IMG_texture_npot":
+                        m_AllowNonPower2Textures = true;
+                        break;
+                    case "GL_NV_depth_nonlinear": // nVidia Depth 16 non-linear
+                        m_PlatformDepthFormat = DepthFormat.Depth16;
+                        break;
+                    case "GL_NV_texture_npot_2D_mipmap": // nVidia - nPot textures and mipmaps
+                        m_AllowNonPower2Textures = true;
+                        break;
+                }
+            }
+#endif
             PresentationParameters pp = graphicsDevice.PresentationParameters;
             //pp.RenderTargetUsage = RenderTargetUsage.PreserveContents;
             //_renderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, (int)pp.BackBufferHeight, false, pp.BackBufferFormat, pp.DepthStencilFormat, pp.MultiSampleCount, RenderTargetUsage.PreserveContents);
@@ -556,11 +584,7 @@ namespace cocos2d
         public static void CreateRenderTarget(CCTexture2D pTexture, RenderTargetUsage usage)
         {
             CCSize size = pTexture.ContentSizeInPixels;
-#if IOS
-            pTexture.texture2D = CreateRenderTarget((int) size.width, (int) size.height, SurfaceFormat.Color, DepthFormat.Depth16, usage);
-#else
-            pTexture.texture2D = CreateRenderTarget((int) size.width, (int) size.height, SurfaceFormat.Color, DepthFormat.Depth24, usage);
-#endif
+            pTexture.texture2D = CreateRenderTarget((int) size.width, (int) size.height, SurfaceFormat.Color, m_PlatformDepthFormat, usage);
         }
 
         public static RenderTarget2D CreateRenderTarget(int width, int height, RenderTargetUsage usage)
@@ -576,16 +600,22 @@ namespace cocos2d
         public static RenderTarget2D CreateRenderTarget(int width, int height, SurfaceFormat colorFormat, DepthFormat depthFormat,
                                                         RenderTargetUsage usage)
         {
+            if (!m_AllowNonPower2Textures)
+            {
+                width = ccUtils.ccNextPOT(width);
+                height = ccUtils.ccNextPOT(height);
+            }
             return new RenderTarget2D(graphicsDevice, width, height, false, colorFormat, depthFormat, 0, usage);
         }
 
         public static Texture2D CreateTexture2D(int width, int height)
         {
             PresentationParameters pp = graphicsDevice.PresentationParameters;
-#if IPHONE || NEXUS || IOS
-            width = (int)ccUtils.ccNextPOT((long)width);
-            height = (int)ccUtils.ccNextPOT((long)height);
-#endif
+            if (!m_AllowNonPower2Textures)
+            {
+                width = ccUtils.ccNextPOT(width);
+                height = ccUtils.ccNextPOT(height);
+            }
             return new Texture2D(graphicsDevice, width, height, false, SurfaceFormat.Color);
         }
 

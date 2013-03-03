@@ -86,4 +86,11 @@ and Totally Evil Entertainment, LLC.
 * CCTransitionFlipY : Obsoleted the 'create' method and added a parameter ctor.
 * FlipXLeftOver, FlipYDownOver, FlipAngularRightOver, FlipYUpOver, FlipXRightOver : Added parameter ctor
 * DrawManager: Changed the RenderTarget2D creation to set depth to Depth16 for iOS.
+* CCTransitionScene : Added boolean to indicate whether the scene is a transition or not.
+* CCDirector : Fixed erroneous hiding of the current scene when switching to a transition scene.
+* XBox : Added the GitHubIssue5 test case to the project.
+* Tests : Removed the assembly name display on windows phone.
+* FadeWhiteTransition : Fixed broken blending state
+* DrawManager : Added parsing of the GL capabilities to determine allowed depth and npot caps.
+* Fix for the EffectsTest on Android, GitHub issue #7.
 

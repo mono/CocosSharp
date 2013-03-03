@@ -28,7 +28,7 @@ namespace cocos2d
     {
         #region ICCTransitionEaseScene Members
 
-        public CCFiniteTimeAction EaseAction(CCActionInterval action)
+        public virtual CCFiniteTimeAction EaseAction(CCActionInterval action)
         {
             return CCEaseOut.Create(action, 2.0f);
         }
