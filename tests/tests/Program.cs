@@ -37,6 +37,7 @@ namespace tests
 	}
 #endif
 #if WINDOWS || XBOX || PSM
+#if !NETFX_CORE
     static class Program
     {
         /// <summary>
@@ -50,6 +51,7 @@ namespace tests
             }
         }
     }
+#endif
 #endif
 
 #if ANDROID
@@ -76,6 +78,16 @@ namespace tests
         }
     }
 #endif
-
+#if NETFX_CORE 
+    public static class Program {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        static void Main() {
+            var factory = new MonoGame.Framework.GameFrameworkViewSource<Game1>();
+            Windows.ApplicationModel.Core.CoreApplication.Run(factory);
+        }
+    }
+#endif
 }
 

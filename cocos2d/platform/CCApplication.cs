@@ -175,12 +175,12 @@ namespace cocos2d
             //DebugSystem.Instance.TimeRuler.BeginMark("Update", Color.Blue);
 
 
-#if !PSM
+#if !PSM &&!NETFX_CORE
             if (CCDirector.SharedDirector.Accelerometer != null)
             {
                 CCDirector.SharedDirector.Accelerometer.Update();
             }
-#endif            
+#endif
             // Process touch events 
             ProcessTouch();
 
@@ -376,6 +376,13 @@ namespace cocos2d
             ProcessGamePad(gps4, PlayerIndex.Four);
         }
 
+        private CCPoint TransformPoint(float x, float y) {
+            CCPoint newPoint;
+            newPoint.x = x * TouchPanel.DisplayWidth / Game.Window.ClientBounds.Width;
+            newPoint.y = y * TouchPanel.DisplayHeight / Game.Window.ClientBounds.Height;
+            return newPoint;
+        }
+
         private void ProcessTouch()
         {
             if (m_pDelegate != null)
@@ -395,8 +402,12 @@ namespace cocos2d
 
                 if (_prevMouseState.LeftButton == ButtonState.Released && _lastMouseState.LeftButton == ButtonState.Pressed)
                 {
+#if NETFX_CORE
+                    pos = TransformPoint(_lastMouseState.X, _lastMouseState.Y);
+                    pos = DrawManager.ScreenToWorld(pos.x, pos.y);
+#else
                     pos = DrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
-
+#endif
                     _lastMouseId++;
                     m_pTouches.AddLast(new CCTouch(_lastMouseId, pos.x, pos.y));
                     m_pTouchMap.Add(_lastMouseId, m_pTouches.Last);
@@ -410,8 +421,12 @@ namespace cocos2d
                     {
                         if (_prevMouseState.X != _lastMouseState.X || _prevMouseState.Y != _lastMouseState.Y)
                         {
+#if NETFX_CORE
+                            pos = TransformPoint(_lastMouseState.X, _lastMouseState.Y);
+                            pos = DrawManager.ScreenToWorld(pos.x, pos.y);
+#else
                             pos = DrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
-
+#endif
                             movedTouches.Add(m_pTouchMap[_lastMouseId].Value);
                             m_pTouchMap[_lastMouseId].Value.SetTouchInfo(_lastMouseId, pos.x, pos.y);
                         }

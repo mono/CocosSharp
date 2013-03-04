@@ -38,7 +38,11 @@ namespace tests.Extensions
             MethodInfo methodInfo = GetType().GetMethod(pSelectorName);
             if (methodInfo != null)
             {
+#if NETFX_CORE
+                return (SEL_MenuHandler)methodInfo.CreateDelegate(typeof(SEL_MenuHandler), target);
+#else
                 return (SEL_MenuHandler) Delegate.CreateDelegate(typeof(SEL_MenuHandler), this, methodInfo);
+#endif
             }
             return null;
         }
@@ -48,7 +52,11 @@ namespace tests.Extensions
             MethodInfo methodInfo = GetType().GetMethod(pSelectorName);
             if (methodInfo != null)
             {
+#if NETFX_CORE
+                return (SEL_CCControlHandler) methodInfo.CreateDelegate(typeof(SEL_CCControlHandler), target);
+#else
                 return (SEL_CCControlHandler) Delegate.CreateDelegate(typeof(SEL_CCControlHandler), this, methodInfo);
+#endif
             }
             return null;
         }

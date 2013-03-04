@@ -67,7 +67,9 @@ namespace cocos2d
                     DtdProcessing = DtdProcessing.Ignore,
 #endif
 				//ProhibitDtd = false,
+#if !NETFX_CORE
                     XmlResolver = null,
+#endif
                 };
             using (var reader = XmlReader.Create(path, settings))
                 LoadFromXml(reader);
@@ -83,7 +85,9 @@ namespace cocos2d
                     DtdProcessing = DtdProcessing.Ignore,
 #endif
 				//ProhibitDtd = false,
+#if !NETFX_CORE
                     XmlResolver = null,
+#endif
                 };
             using (var reader = XmlReader.Create(new StringReader(data), settings))
             {
@@ -164,7 +168,11 @@ namespace cocos2d
                 case "data":
                     return new PlistData(reader.ReadElementContentAsString());
                 case "date":
+#if NETFX_CORE
+                    return new PlistDate(DateTime.Parse(reader.ReadElementContentAsString()));
+#else
                     return new PlistDate(reader.ReadElementContentAsDateTime());
+#endif               
                 default:
                     throw new XmlException(String.Format("Plist Node `{0}' is not supported", reader.LocalName));
             }
@@ -246,7 +254,12 @@ namespace cocos2d
 
         public void WriteToFile(string filename)
         {
+#if NETFX_CORE
+            Stream writeStreamFromFileName = Win8StoreIOUtility.GetWriteStreamFromFileName(filename);
+            using (StreamWriter streamWriter = new StreamWriter(writeStreamFromFileName, System.Text.Encoding.UTF8))
+#else
             using (var streamWriter = new StreamWriter(filename, false, System.Text.Encoding.UTF8))
+#endif
             {
                 using (var writer = XmlWriter.Create(streamWriter))
                 {

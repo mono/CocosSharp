@@ -256,7 +256,7 @@ namespace cocos2d
                 {
                     DepthBufferEnable = false
                 };
-#if !WINDOWS_PHONE && !XBOX && !WINDOWS
+#if !WINDOWS_PHONE && !XBOX && !WINDOWS &&!NETFX_CORE
             List<string> extensions = ccUtils.GetGLExtensions();
             foreach(string s in extensions) 
             {

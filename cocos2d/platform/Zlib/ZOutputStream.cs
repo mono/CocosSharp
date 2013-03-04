@@ -212,8 +212,11 @@ namespace cocos2d.Compression.Zlib
             z.free();
             z = null;
         }
-
+#if NETFX_CORE
+        public void Close()
+#else
         public override void Close()
+#endif
         {
             try
             {
