@@ -136,6 +136,48 @@ namespace cocos2d
             return texture;
         }
 
+        public CCTexture2D AddImage(Stream imageStream, string assetName)
+        {
+            Debug.Assert(imageStream == null, "TextureCache: imageStream MUST not be NULL");
+            
+            CCTexture2D texture;
+
+            lock (m_pDictLock)
+            {
+                string pathKey = assetName;
+
+                bool bHasTexture = m_pTextures.TryGetValue(pathKey, out texture);
+                if(!bHasTexture || texture == null) 
+                {
+                    // Create a new one only if the current one does not exist
+                    texture = new CCTexture2D();
+                }
+                if(!texture.IsTextureDefined)
+                {
+                    // Either we are creating a new one or else we need to refresh the current one.
+                    // CCLog.Log("Loading texture {0}", fileimage);
+                    
+                    var textureXna = CCApplication.SharedApplication.Content.Load(imageStream, assetName);
+
+                    bool isInited = texture.InitWithTexture(textureXna);
+                    
+                    if (isInited)
+                    {
+                        texture.IsManaged = true;
+                        texture.ContentFile = assetName;
+                        m_pTextures[pathKey] = texture;
+                        m_pTextureRefNames[texture] = assetName;
+                    }
+                    else
+                    {
+                        Debug.Assert(false, "cocos2d: Couldn't add image:" + assetName + " in CCTextureCache");
+                        return null;
+                    }
+                }
+            }
+            return texture;
+        }
+
         public CCTexture2D TextureForKey(string key)
         {
             CCTexture2D texture = null;

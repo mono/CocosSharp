@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using Microsoft.Xna.Framework;
 
 namespace cocos2d
@@ -549,6 +550,18 @@ namespace cocos2d
                             int dataLen = textureData.Length;
                             if (dataLen != 0)
                             {
+
+                                var dataBytes = Convert.FromBase64String(textureData);
+                                Debug.Assert(dataBytes != null, "CCParticleSystem: error decoding textureImageData");
+
+                                var imageBytes = Inflate(dataBytes);
+                                Debug.Assert(imageBytes == null, "CCParticleSystem: error init image with Data");
+
+                                using (var imageStream = new MemoryStream(imageBytes))
+                                {
+                                    Texture = CCTextureCache.SharedTextureCache.AddImage(imageStream, textureName);
+                                }
+                                //CCTextureCache.SharedTextureCache.AddImage(
                                 /*
                                 var dataBytes = Convert.FromBase64String(textureData);
                                 Debug.Assert(dataBytes != null, "CCParticleSystem: error decoding textureImageData");
@@ -604,6 +617,42 @@ namespace cocos2d
             } while (false);
 
             return bRet;
+        }
+
+        private static byte[] Inflate(byte[] dataBytes)
+        {
+
+            byte[] outputBytes = null;
+            var zipInputStream = 
+                new ICSharpCode.SharpZipLib.Zip.ZipInputStream(new MemoryStream(dataBytes));
+
+            if (zipInputStream.CanDecompressEntry) {
+
+                MemoryStream zipoutStream = new MemoryStream();
+            
+                zipInputStream.CopyTo(zipoutStream);
+                outputBytes = zipoutStream.ToArray();
+            }
+            else {
+
+                try {
+                var gzipInputStream = 
+                    new ICSharpCode.SharpZipLib.GZip.GZipInputStream(new MemoryStream(dataBytes));
+
+
+                MemoryStream zipoutStream = new MemoryStream();
+                
+                gzipInputStream.CopyTo(zipoutStream);
+                outputBytes = zipoutStream.ToArray();
+                }
+                catch (Exception exc)
+                {
+                    CCLog.Log("Error decompressing image data: " + exc.Message);
+                }
+
+            }
+
+            return outputBytes;
         }
 
         public virtual bool InitWithTotalParticles(int numberOfParticles)
