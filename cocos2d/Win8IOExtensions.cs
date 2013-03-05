@@ -8,7 +8,7 @@ namespace cocos2d
 	{
 		public static void Close(this Stream stream)
 		{
-			stream.Flush();
+            //stream.Flush();
 			stream.Close();
 		}
 		public static MethodInfo GetMethod(this Type type, string name)
@@ -25,18 +25,9 @@ namespace cocos2d
 		}
 		public static void Close(this XmlWriter writer)
 		{
-			writer.Flush();
+            //writer.Flush();
 			writer.Dispose();
 		}
 	}
 }
-namespace System {
-    public class Console {
-        public static void WriteLine(string message) {
-            System.Diagnostics.Debug.WriteLine(message);
-        }
-        public static void WriteLine(string message, params object[] args){
-            System.Diagnostics.Debug.WriteLine(message, args);
-        }
-    }
-}
+
