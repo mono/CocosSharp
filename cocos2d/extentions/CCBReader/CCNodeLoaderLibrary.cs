@@ -8,7 +8,7 @@ namespace cocos2d
         
         private Dictionary<string, CCNodeLoader> mCCNodeLoaders = new Dictionary<string, CCNodeLoader>();
 
-        public void registerDefaultCCNodeLoaders()
+        public void RegisterDefaultCCNodeLoaders()
         {
             RegisterCCNodeLoader("CCNode", new CCNodeLoader());
             RegisterCCNodeLoader("CCLayer", new CCLayerLoader());
@@ -53,7 +53,7 @@ namespace cocos2d
                 if (sSharedCCNodeLoaderLibrary == null)
                 {
                     sSharedCCNodeLoaderLibrary = new CCNodeLoaderLibrary();
-                    sSharedCCNodeLoaderLibrary.registerDefaultCCNodeLoaders();
+                    sSharedCCNodeLoaderLibrary.RegisterDefaultCCNodeLoaders();
                 }
                 return sSharedCCNodeLoaderLibrary;
             }
@@ -67,7 +67,7 @@ namespace cocos2d
         public static CCNodeLoaderLibrary NewDefaultCCNodeLoaderLibrary()
         {
             var ccNodeLoaderLibrary = new CCNodeLoaderLibrary();
-            ccNodeLoaderLibrary.registerDefaultCCNodeLoaders();
+            ccNodeLoaderLibrary.RegisterDefaultCCNodeLoaders();
             return ccNodeLoaderLibrary;
         }
     }
