@@ -134,7 +134,7 @@ namespace cocos2d
 			}
 
 			if (dict.ContainsKey (key)) {
-				Console.WriteLine ("Warning: ignoring duplicate key: {0} (null? {1} empty? {2})", key, key == null, key == "");
+				CCLog.Log ("Warning: ignoring duplicate key: {0} (null? {1} empty? {2})", key, key == null, key == "");
 			} else {
 				dict.Add (key, value);
 			}

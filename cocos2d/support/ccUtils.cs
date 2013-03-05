@@ -23,7 +23,7 @@ THE SOFTWARE.
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using System.Globalization;
-#if !WINDOWS_PHONE && !XBOX && !WINDOWS
+#if !WINDOWS_PHONE && !XBOX && !WINDOWS &&!NETFX_CORE
 #if MONOMAC
 using MonoMac.OpenGL;
 #elif WINDOWSGL || LINUX

@@ -6,7 +6,7 @@ namespace cocos2d
 {
     public class CCAccelerometer
     {
-#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360
+#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE
         // the accelerometer sensor on the device
         private static Microsoft.Devices.Sensors.Accelerometer accelerometer = null;
 #endif
@@ -18,9 +18,8 @@ namespace cocos2d
         private bool m_bActive;
         private bool m_bEmulation;
 
-        static CCAccelerometer()
-        {
-#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360
+        static CCAccelerometer() {
+#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE
             try
             {
                 accelerometer = new Microsoft.Devices.Sensors.Accelerometer();
@@ -43,9 +42,8 @@ namespace cocos2d
         {
             m_pAccelDelegate = pDelegate;
 
-            if (pDelegate != null && !m_bActive)
-            {
-#if !WINDOWS && !PSM && !OUYA && !XBOX360
+            if (pDelegate != null && !m_bActive) {
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE
                     try
                 {
                     if (Microsoft.Devices.Sensors.Accelerometer.IsSupported)
@@ -76,9 +74,8 @@ namespace cocos2d
             }
             else
             {
-                if (m_bActive && !m_bEmulation)
-                {
-#if !WINDOWS && !PSM && !OUYA && !XBOX360
+                if (m_bActive && !m_bEmulation) {
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE
                     if (accelerometer != null)
                     {
                     accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
@@ -95,7 +92,7 @@ namespace cocos2d
         }
 
 
-#if !WINDOWS && !PSM && !OUYA && !XBOX360
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE
         private void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
             // store the accelerometer value in our variable to be used on the next Update

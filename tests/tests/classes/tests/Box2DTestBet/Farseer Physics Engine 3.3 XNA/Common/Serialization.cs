@@ -14,7 +14,11 @@ namespace FarseerPhysics.Common
     {
         public static void Serialize(World world, string filename)
         {
+#if NETFX_CORE
+            using (Stream fs = cocos2d.Win8StoreIOUtility.GetWriteStreamFromFileName(filename))
+#else
             using (FileStream fs = new FileStream(filename, FileMode.Create))
+#endif
             {
                 new WorldXmlSerializer().Serialize(world, fs);
             }
@@ -22,7 +26,11 @@ namespace FarseerPhysics.Common
 
         public static void Deserialize(World world, string filename)
         {
+#if NETFX_CORE
+            using (Stream fs = cocos2d.Win8StoreIOUtility.GetReadStreamFromFileName(filename))
+#else
             using (FileStream fs = new FileStream(filename, FileMode.Open))
+#endif
             {
                 new WorldXmlDeserializer().Deserialize(world, fs);
             }
@@ -30,7 +38,11 @@ namespace FarseerPhysics.Common
 
         public static World Deserialize(string filename)
         {
+#if NETFX_CORE
+            using (Stream fs = cocos2d.Win8StoreIOUtility.GetReadStreamFromFileName(filename))
+#else
             using (FileStream fs = new FileStream(filename, FileMode.Open))
+#endif
             {
                 return new WorldXmlDeserializer().Deserialize(fs);
             }
@@ -428,7 +440,12 @@ namespace FarseerPhysics.Common
             _writer.WriteEndElement();
 
             _writer.Flush();
+#if NETFX_CORE
+            _writer.Dispose();
+#else
             _writer.Close();
+#endif
+
         }
 
         private int FindBodyIndex(Body body)
@@ -1220,7 +1237,11 @@ namespace FarseerPhysics.Common
 
         public XMLFragmentParser(string fileName)
         {
+#if NETFX_CORE
+            using (Stream fs = cocos2d.Win8StoreIOUtility.GetReadStreamFromFileName(fileName))
+#else
             using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+#endif
                 Load(fs);
         }
 

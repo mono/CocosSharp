@@ -259,8 +259,13 @@ public class QuadTree<T>
         GetAllNodesR(ref allNodes);
 
         Clear();
-
+#if NETFX_CORE
+        foreach(var node in allNodes){
+           AddNode(node);
+        }
+#else
         allNodes.ForEach(AddNode);
+#endif
     }
 
     public void Clear()

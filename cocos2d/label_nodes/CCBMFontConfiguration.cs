@@ -317,7 +317,7 @@ namespace cocos2d
         }
             catch (Exception ex)
             {
-                Console.WriteLine("Failed to parse font line: {0}", line);
+                CCLog.Log("Failed to parse font line: {0}", line);
             }
         }
 

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-#if !PSM
+#if !PSM &&!NETFX_CORE
 using System.IO.IsolatedStorage;
 #endif
 using Microsoft.Xna.Framework;
@@ -53,7 +53,7 @@ namespace cocos2d
         internal CCSize m_obWinSizeInPixels;
         internal CCSize m_obWinSizeInPoints;
 		
-#if !PSM
+#if !PSM &&!NETFX_CORE
         private CCAccelerometer m_pAccelerometer;
 #endif
 		private CCActionManager m_pActionManager;
@@ -79,7 +79,7 @@ namespace cocos2d
 
         #region State Management
 		
-#if !PSM
+#if !PSM &&!NETFX_CORE
         private string m_sStorageDirName = "cocos2dDirector";
         private string m_sSaveFileName = "SceneList.dat";
         private string m_sSceneSaveFileName = "Scene{0}.dat";
@@ -458,7 +458,7 @@ namespace cocos2d
             set { m_pKeypadDispatcher = value; }
         }
 
-#if !PSM
+#if !PSM &&!NETFX_CORE
 		public CCAccelerometer Accelerometer
         {
             get { return m_pAccelerometer; }
@@ -567,7 +567,7 @@ namespace cocos2d
             m_pKeypadDispatcher = new CCKeypadDispatcher();
 
 			// Accelerometer
-#if !PSM
+#if !PSM &&!NETFX_CORE
             m_pAccelerometer = new CCAccelerometer();
 #endif
             // create autorelease pool
@@ -1000,30 +1000,27 @@ namespace cocos2d
 
         protected void SetNextScene()
         {
-            bool runningIsTransition = m_pRunningScene is CCTransitionScene;
+            bool runningIsTransition = m_pRunningScene != null && m_pRunningScene.IsTransition;// is CCTransitionScene;
 
             // If it is not a transition, call onExit/cleanup
-            if (!(m_pNextScene is CCTransitionScene))
+            if (!m_pNextScene.IsTransition)
             {
                 if (m_pRunningScene != null)
                 {
                     m_pRunningScene.OnExit();
 
-                // issue #709. the root node (scene) should receive the cleanup message too
-                // otherwise it might be leaked.
+                    // issue #709. the root node (scene) should receive the cleanup message too
+                    // otherwise it might be leaked.
                     if (m_bSendCleanupToScene)
-                {
-                    m_pRunningScene.Cleanup();
+                    {
+                        m_pRunningScene.Cleanup();
 
-                    GC.Collect();
-                }
+                        GC.Collect();
+                    }
+                    m_pRunningScene.Visible = false;
                 }
             }
 
-            if (m_pRunningScene != null && !m_pNextScene.IsTransition)
-            {
-                m_pRunningScene.Visible = false;
-            }
             m_pRunningScene = m_pNextScene;
             m_pNextScene = null;
 
@@ -1031,10 +1028,14 @@ namespace cocos2d
             {
                 m_pRunningScene.OnEnter();
                 m_pRunningScene.OnEnterTransitionDidFinish();
+                if (!m_pRunningScene.Visible)
+                {
+                    m_pRunningScene.Visible = true;
+                }
             }
         }
 
-        #endregion
+		#endregion
 
         private void CalculateMPF()
         {

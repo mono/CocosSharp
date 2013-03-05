@@ -203,8 +203,11 @@ namespace WP7Contrib.Communications.Compression
             this._z.EndInflate();
             this._z = (ZlibCodec)null;
         }
-
+#if NETFX_CORE
+        public void Close()
+#else
         public override void Close()
+#endif
         {
             if (this._stream == null)
                 return;
@@ -216,7 +219,14 @@ namespace WP7Contrib.Communications.Compression
             {
                 this.end();
                 if (!this._leaveOpen)
-                    this._stream.Close();
+#if NETFX_CORE
+                {
+                    this._stream.Flush();
+                    this._stream.Dispose();
+                }
+#else
+                this._stream.Close();
+#endif
                 this._stream = (Stream)null;
             }
         }

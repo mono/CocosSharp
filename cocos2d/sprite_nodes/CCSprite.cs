@@ -986,9 +986,17 @@ namespace cocos2d
                     SetDirtyRecursively(true);
                 }
             }
+		}
+
+        /// <summary>
+        /// Calls UpdateColor with opacity set to false.
+        /// </summary>
+        private void UpdateColor()
+        {
+            UpdateColor(false);
         }
 
-        private void UpdateColor(bool opacity = false)
+        private void UpdateColor(bool opacity)
         {
 
             // I placed this in an #if def for now incase the following works on other systems and do not want to break them
