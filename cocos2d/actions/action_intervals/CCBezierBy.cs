@@ -66,7 +66,7 @@ namespace cocos2d
 
                 float x = Bezierat(xa, xb, xc, xd, time);
                 float y = Bezierat(ya, yb, yc, yd, time);
-                m_pTarget.Position = CCPointExtension.ccpAdd(m_startPosition, CCPointExtension.ccp(x, y));
+                m_pTarget.Position = CCPointExtension.Add(m_startPosition, CCPointExtension.CreatePoint(x, y));
             }
         }
 
@@ -74,9 +74,9 @@ namespace cocos2d
         {
             ccBezierConfig r;
 
-            r.EndPosition = CCPointExtension.ccpNeg(m_sConfig.EndPosition);
-            r.ControlPoint1 = CCPointExtension.ccpAdd(m_sConfig.ControlPoint2, CCPointExtension.ccpNeg(m_sConfig.EndPosition));
-            r.ControlPoint2 = CCPointExtension.ccpAdd(m_sConfig.ControlPoint1, CCPointExtension.ccpNeg(m_sConfig.EndPosition));
+            r.EndPosition = CCPointExtension.Negative(m_sConfig.EndPosition);
+            r.ControlPoint1 = CCPointExtension.Add(m_sConfig.ControlPoint2, CCPointExtension.Negative(m_sConfig.EndPosition));
+            r.ControlPoint2 = CCPointExtension.Add(m_sConfig.ControlPoint1, CCPointExtension.Negative(m_sConfig.EndPosition));
 
             CCBezierBy action = Create(m_fDuration, r);
             return action;
@@ -92,7 +92,7 @@ namespace cocos2d
 
         // Bezier cubic formula:
         //	((1 - t) + t)3 = 1 
-        // Expands to¡­ 
+        // Expands toï¿½ï¿½ 
         //   (1 - t)3 + 3t(1-t)2 + 3t2(1 - t) + t3 = 1 
         protected float Bezierat(float a, float b, float c, float d, float t)
         {

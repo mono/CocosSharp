@@ -42,14 +42,14 @@ namespace cocos2d
         {
             base.StartWithTarget(target);
             m_startPosition = target.Position;
-            m_delta = CCPointExtension.ccpSub(m_endPosition, m_startPosition);
+            m_delta = CCPointExtension.Subtract(m_endPosition, m_startPosition);
         }
 
         public override void Update(float time)
         {
             if (m_pTarget != null)
             {
-                m_pTarget.Position = CCPointExtension.ccp(m_startPosition.x + m_delta.x * time,
+                m_pTarget.Position = CCPointExtension.CreatePoint(m_startPosition.x + m_delta.x * time,
                                                           m_startPosition.y + m_delta.y * time);
             }
         }

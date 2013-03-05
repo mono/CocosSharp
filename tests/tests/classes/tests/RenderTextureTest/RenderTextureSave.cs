@@ -59,7 +59,7 @@ namespace tests
 
             // for extra points, we'll draw this smoothly from the last position and vary the sprite's
             // scale/rotation/offset
-            float distance = CCPointExtension.ccpDistance(start, end);
+            float distance = CCPointExtension.Distance(start, end);
             if (distance > 1)
             {
                 var d = (int) distance;

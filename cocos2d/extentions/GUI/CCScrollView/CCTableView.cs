@@ -87,7 +87,7 @@ namespace cocos2d
 
             int startIdx = 0, endIdx = 0, idx = 0, maxIdx = 0;
 
-            CCPoint offset = CCPointExtension.ccpMult(GetContentOffset(), -1);
+            CCPoint offset = CCPointExtension.Multiply(GetContentOffset(), -1);
             maxIdx = Math.Max(uCountOfItems - 1, 0);
 
             CCSize cellSize = m_pDataSource.CellSizeForTable(this);

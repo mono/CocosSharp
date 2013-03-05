@@ -43,7 +43,7 @@ namespace cocos2d
 
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             m_obFullScreenSize = new CCPoint(winSize.Width, winSize.Height);
-            m_obHalfScreenSize = CCPointExtension.ccpMult(m_obFullScreenSize, 0.5f);
+            m_obHalfScreenSize = CCPointExtension.Multiply(m_obFullScreenSize, 0.5f);
 
             if (m_bBoundarySet)
             {
@@ -104,7 +104,7 @@ namespace cocos2d
                     return;
                 }
 
-                CCPoint tempPos = CCPointExtension.ccpSub(m_obHalfScreenSize, m_pobFollowedNode.Position);
+                CCPoint tempPos = CCPointExtension.Subtract(m_obHalfScreenSize, m_pobFollowedNode.Position);
 
                 m_pTarget.Position = new CCPoint(
                     MathHelper.Clamp(tempPos.x, m_fLeftBoundary, m_fRightBoundary),
@@ -113,7 +113,7 @@ namespace cocos2d
             }
             else
             {
-                m_pTarget.Position = CCPointExtension.ccpSub(m_obHalfScreenSize, m_pobFollowedNode.Position);
+                m_pTarget.Position = CCPointExtension.Subtract(m_obHalfScreenSize, m_pobFollowedNode.Position);
             }
         }
 

@@ -187,7 +187,7 @@ namespace cocos2d
 
         protected override void UpdateColor()
         {
-            float h = CCPointExtension.ccpLength(m_AlongVector);
+            float h = CCPointExtension.Length(m_AlongVector);
             if (h == 0)
                 return;
 
@@ -198,7 +198,7 @@ namespace cocos2d
             if (m_bCompressedInterpolation)
             {
                 float h2 = 1 / (Math.Abs(u.x) + Math.Abs(u.y));
-                u = CCPointExtension.ccpMult(u, h2 * (float) c);
+                u = CCPointExtension.Multiply(u, h2 * (float) c);
             }
 
             float opacityf = m_cOpacity / 255.0f;

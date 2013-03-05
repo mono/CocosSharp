@@ -315,7 +315,7 @@ namespace tests
 
             if (m_emitter != null)
             {
-                m_emitter.Position = CCPointExtension.ccpSub(convertedLocation, pos);
+                m_emitter.Position = CCPointExtension.Subtract(convertedLocation, pos);
             }
         }
 

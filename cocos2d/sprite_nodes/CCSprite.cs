@@ -488,7 +488,7 @@ namespace cocos2d
             m_bFlipX = m_bFlipY = false;
 
             // default transform anchor: center
-            AnchorPoint = CCPointExtension.ccp(0.5f, 0.5f);
+            AnchorPoint = CCPointExtension.CreatePoint(0.5f, 0.5f);
 
             // zwoptex default values
             m_obOffsetPosition = CCPoint.Zero;

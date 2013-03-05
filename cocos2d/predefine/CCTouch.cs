@@ -58,7 +58,7 @@ namespace cocos2d
 
         public CCPoint Delta
         {
-            get { return CCPointExtension.ccpSub(Location, PreviousLocation); }
+            get { return CCPointExtension.Subtract(Location, PreviousLocation); }
         }
 
         public void SetTouchInfo(int id, float x, float y)

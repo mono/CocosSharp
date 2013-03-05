@@ -117,12 +117,12 @@ namespace cocos2d
                     m_pContainer.Scale = Math.Max(m_fMinScale, Math.Min(m_fMaxScale, value));
                     CCPoint newCenter = m_pContainer.ConvertToWorldSpace(oldCenter);
 
-                    CCPoint offset = CCPointExtension.ccpSub(center, newCenter);
+                    CCPoint offset = CCPointExtension.Subtract(center, newCenter);
                     if (m_pDelegate != null)
                     {
                         m_pDelegate.ScrollViewDidZoom(this);
                     }
-                    SetContentOffset(CCPointExtension.ccpAdd(m_pContainer.Position, offset), false);
+                    SetContentOffset(CCPointExtension.Add(m_pContainer.Position, offset), false);
                 }
             }
         }
@@ -502,9 +502,9 @@ namespace cocos2d
             }
             else if (m_pTouches.Count == 2)
             {
-                m_tTouchPoint = CCPointExtension.ccpMidpoint(ConvertTouchToNodeSpace(m_pTouches[0]),
+                m_tTouchPoint = CCPointExtension.Midpoint(ConvertTouchToNodeSpace(m_pTouches[0]),
                                                              ConvertTouchToNodeSpace(m_pTouches[1]));
-                m_fTouchLength = CCPointExtension.ccpDistance(m_pContainer.ConvertTouchToNodeSpace(m_pTouches[0]),
+                m_fTouchLength = CCPointExtension.Distance(m_pContainer.ConvertTouchToNodeSpace(m_pTouches[0]),
                                                               m_pContainer.ConvertTouchToNodeSpace(m_pTouches[1]));
                 m_bDragging = false;
             }
@@ -528,7 +528,7 @@ namespace cocos2d
                     CCPoint frameOriginal = Parent.ConvertToWorldSpace(Position);
                     var frame = new CCRect(frameOriginal.x, frameOriginal.y, m_tViewSize.Width, m_tViewSize.Height);
                     CCPoint newPoint = ConvertTouchToNodeSpace(m_pTouches[0]);
-                    CCPoint moveDistance = CCPointExtension.ccpSub(newPoint, m_tTouchPoint);
+                    CCPoint moveDistance = CCPointExtension.Subtract(newPoint, m_tTouchPoint);
                     m_tTouchPoint = newPoint;
 
                     if (frame.ContainsPoint(ConvertToWorldSpace(newPoint)))
@@ -543,7 +543,7 @@ namespace cocos2d
                                 break;
                         }
 
-                        m_pContainer.Position = CCPointExtension.ccpAdd(m_pContainer.Position, moveDistance);
+                        m_pContainer.Position = CCPointExtension.Add(m_pContainer.Position, moveDistance);
 
                         CCPoint maxInset = m_fMaxInset;
                         CCPoint minInset = m_fMinInset;
@@ -555,14 +555,14 @@ namespace cocos2d
                         float newY = Math.Min(m_pContainer.Position.y, maxInset.y);
                         newY = Math.Max(newY, minInset.y);
 
-                        m_tScrollDistance = CCPointExtension.ccpSub(moveDistance,
+                        m_tScrollDistance = CCPointExtension.Subtract(moveDistance,
                                                                     new CCPoint(newX - m_pContainer.Position.x, newY - m_pContainer.Position.y));
                         SetContentOffset(new CCPoint(newX, newY), false);
                     }
                 }
                 else if (m_pTouches.Count == 2 && !m_bDragging)
                 {
-                    float len = CCPointExtension.ccpDistance(m_pContainer.ConvertTouchToNodeSpace(m_pTouches[0]),
+                    float len = CCPointExtension.Distance(m_pContainer.ConvertTouchToNodeSpace(m_pTouches[0]),
                                                              m_pContainer.ConvertTouchToNodeSpace(m_pTouches[1]));
                     ZoomScale = ZoomScale * len / m_fTouchLength;
                 }
@@ -777,7 +777,7 @@ namespace cocos2d
 
             CCPoint maxInset, minInset;
 
-            m_pContainer.Position = CCPointExtension.ccpAdd(m_pContainer.Position, m_tScrollDistance);
+            m_pContainer.Position = CCPointExtension.Add(m_pContainer.Position, m_tScrollDistance);
 
             if (m_bBounceable)
             {
@@ -796,8 +796,8 @@ namespace cocos2d
             float newY = Math.Min(m_pContainer.Position.y, maxInset.y);
             newY = Math.Max(newY, minInset.y);
 
-            m_tScrollDistance = CCPointExtension.ccpSub(m_tScrollDistance, new CCPoint(newX - m_pContainer.Position.x, newY - m_pContainer.Position.y));
-            m_tScrollDistance = CCPointExtension.ccpMult(m_tScrollDistance, SCROLL_DEACCEL_RATE);
+            m_tScrollDistance = CCPointExtension.Subtract(m_tScrollDistance, new CCPoint(newX - m_pContainer.Position.x, newY - m_pContainer.Position.y));
+            m_tScrollDistance = CCPointExtension.Multiply(m_tScrollDistance, SCROLL_DEACCEL_RATE);
             SetContentOffset(new CCPoint(newX, newY), false);
 
             if ((Math.Abs(m_tScrollDistance.x) <= SCROLL_DEACCEL_DIST &&

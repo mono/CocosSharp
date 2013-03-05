@@ -39,7 +39,7 @@ namespace tests
             start = CCDirector.SharedDirector.ConvertToGl(start);
 
             CCPoint diff = new CCPoint(s.Width / 2 - start.x, s.Height / 2 - start.y);
-            diff = CCPointExtension.ccpNormalize(diff);
+            diff = CCPointExtension.Normalize(diff);
 
             CCLayerGradient gradient = (CCLayerGradient)GetChildByTag(1);
             gradient.Vector = diff;

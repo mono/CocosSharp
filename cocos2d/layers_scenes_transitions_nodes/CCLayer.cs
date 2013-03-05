@@ -41,7 +41,7 @@ namespace cocos2d
 
         public CCLayer()
         {
-            AnchorPoint = CCPointExtension.ccp(0.5f, 0.5f);
+            AnchorPoint = CCPointExtension.CreatePoint(0.5f, 0.5f);
             m_bIgnoreAnchorPointForPosition = true;
             CCDirector director = CCDirector.SharedDirector;
             if (director != null)

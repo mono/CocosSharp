@@ -31,7 +31,7 @@ namespace cocos2d
         /// since v0.7.2
         /// </summary>
         /// <returns>CCPoint</returns>
-        public static CCPoint ccp(float x, float y)
+        public static CCPoint CreatePoint(float x, float y)
         {
             return new CCPoint(x, y);
         }
@@ -41,52 +41,52 @@ namespace cocos2d
         /// since v0.7.2
         /// </summary>
         /// <returns>CCPoint</returns>
-        public static CCPoint ccpNeg(CCPoint v)
+        public static CCPoint Negative(CCPoint v)
         {
-            return ccp(-v.x, -v.y);
+            return CreatePoint(-v.x, -v.y);
         }
 
         /// <summary>
         /// Calculates sum of two points.
         ///@since v0.7.2
         /// <returns>CCPoint</returns>
-        public static CCPoint ccpAdd(CCPoint v1, CCPoint v2)
+        public static CCPoint Add(CCPoint v1, CCPoint v2)
         {
-            return ccp(v1.x + v2.x, v1.y + v2.y);
+            return CreatePoint(v1.x + v2.x, v1.y + v2.y);
         }
 
         /** Calculates difference of two points.
             @return CCPoint
             @since v0.7.2
         */
-        public static CCPoint ccpSub(CCPoint v1, CCPoint v2)
+        public static CCPoint Subtract(CCPoint v1, CCPoint v2)
         {
-            return ccp(v1.x - v2.x, v1.y - v2.y);
+            return CreatePoint(v1.x - v2.x, v1.y - v2.y);
         }
 
         /** Returns point multiplied by given factor.
             @return CCPoint
             @since v0.7.2
         */
-        public static CCPoint ccpMult(CCPoint v, float s)
+        public static CCPoint Multiply(CCPoint v, float s)
         {
-            return ccp(v.x * s, v.y * s);
+            return CreatePoint(v.x * s, v.y * s);
         }
 
         /** Calculates midpoint between two points.
             @return CCPoint
             @since v0.7.2
         */
-        public static CCPoint ccpMidpoint(CCPoint v1, CCPoint v2)
+        public static CCPoint Midpoint(CCPoint v1, CCPoint v2)
         {
-            return ccpMult(ccpAdd(v1, v2), 0.5f);
+            return Multiply(Add(v1, v2), 0.5f);
         }
 
         /** Calculates dot product of two points.
             @return CGFloat
             @since v0.7.2
         */
-        public static float ccpDot(CCPoint v1, CCPoint v2)
+        public static float DotProduct(CCPoint v1, CCPoint v2)
         {
             return v1.x * v2.x + v1.y * v2.y;
         }
@@ -95,7 +95,7 @@ namespace cocos2d
             @return CGFloat
             @since v0.7.2
         */
-        public static float ccpCross(CCPoint v1, CCPoint v2)
+        public static float CrossProduct(CCPoint v1, CCPoint v2)
         {
             return v1.x * v2.y - v1.y * v2.x;
         }
@@ -104,97 +104,97 @@ namespace cocos2d
             @return CCPoint
             @since v0.7.2
         */
-        public static CCPoint ccpPerp(CCPoint v)
+        public static CCPoint PerpendicularCounterClockwise(CCPoint v)
         {
-            return ccp(-v.y, v.x);
+            return CreatePoint(-v.y, v.x);
         }
 
         /** Calculates perpendicular of v, rotated 90 degrees clockwise -- cross(v, rperp(v)) <= 0
             @return CCPoint
             @since v0.7.2
         */
-        public static CCPoint ccpRPerp(CCPoint v)
+        public static CCPoint PerpendicularClockwise(CCPoint v)
         {
-            return ccp(v.y, -v.x);
+            return CreatePoint(v.y, -v.x);
         }
 
         /** Calculates the projection of v1 over v2.
             @return CCPoint
             @since v0.7.2
         */
-        public static CCPoint ccpProject(CCPoint v1, CCPoint v2)
+        public static CCPoint Project(CCPoint v1, CCPoint v2)
         {
-            return ccpMult(v2, ccpDot(v1, v2) / ccpDot(v2, v2));
+            return Multiply(v2, DotProduct(v1, v2) / DotProduct(v2, v2));
         }
 
         /** Rotates two points.
             @return CCPoint
             @since v0.7.2
         */
-        public static CCPoint ccpRotate(CCPoint v1, CCPoint v2)
+        public static CCPoint Rotate(CCPoint v1, CCPoint v2)
         {
-            return ccp(v1.x * v2.x - v1.y * v2.y, v1.x * v2.y + v1.y * v2.x);
+            return CreatePoint(v1.x * v2.x - v1.y * v2.y, v1.x * v2.y + v1.y * v2.x);
         }
 
         /** Unrotates two points.
             @return CCPoint
             @since v0.7.2
         */
-        public static CCPoint ccpUnrotate(CCPoint v1, CCPoint v2)
+        public static CCPoint Unrotate(CCPoint v1, CCPoint v2)
         {
-            return ccp(v1.x * v2.x + v1.y * v2.y, v1.y * v2.x - v1.x * v2.y);
+            return CreatePoint(v1.x * v2.x + v1.y * v2.y, v1.y * v2.x - v1.x * v2.y);
         }
 
         /** Calculates the square length of a CCPoint (not calling sqrt() )
             @return CGFloat
             @since v0.7.2
         */
-        public static float ccpLengthSQ(CCPoint v)
+        public static float LengthSquare(CCPoint v)
         {
-            return ccpDot(v, v);
+            return DotProduct(v, v);
         }
 
         /** Calculates distance between point an origin
             @return CGFloat
             @since v0.7.2
         */
-        public static float ccpLength(CCPoint v)
+        public static float Length(CCPoint v)
         {
-            return (float)Math.Sqrt(ccpLengthSQ(v));
+            return (float)Math.Sqrt(LengthSquare(v));
         }
 
         /** Calculates the distance between two points
             @return CGFloat
             @since v0.7.2
         */
-        public static float ccpDistance(CCPoint v1, CCPoint v2)
+        public static float Distance(CCPoint v1, CCPoint v2)
         {
-            return ccpLength(ccpSub(v1, v2));
+            return Length(Subtract(v1, v2));
         }
 
         /** Returns point multiplied to a length of 1.
             @return CCPoint
             @since v0.7.2
         */
-        public static CCPoint ccpNormalize(CCPoint v)
+        public static CCPoint Normalize(CCPoint v)
         {
-            return ccpMult(v, 1.0f / ccpLength(v));
+            return Multiply(v, 1.0f / Length(v));
         }
 
         /** Converts radians to a normalized vector.
             @return CCPoint
             @since v0.7.2
         */
-        public static CCPoint ccpForAngle(float a)
+        public static CCPoint ForAngle(float a)
         {
-            return ccp((float)Math.Cos(a), (float)Math.Sin(a));
+            return CreatePoint((float)Math.Cos(a), (float)Math.Sin(a));
         }
 
         /** Converts a vector to radians.
             @return CGFloat
             @since v0.7.2
         */
-        public static float ccpToAngle(CCPoint v)
+        public static float ToAngle(CCPoint v)
         {
             return (float)Math.Atan2(v.y, v.x);
         }
@@ -203,7 +203,7 @@ namespace cocos2d
         /** Clamp a value between from and to.
             @since v0.99.1
         */
-        public static float clampf(float value, float min_inclusive, float max_inclusive)
+        public static float Clamp(float value, float min_inclusive, float max_inclusive)
         {
             if (min_inclusive > max_inclusive)
             {
@@ -219,17 +219,17 @@ namespace cocos2d
         /** Clamp a point between from and to.
             @since v0.99.1
         */
-        public static CCPoint ccpClamp(CCPoint p, CCPoint from, CCPoint to)
+        public static CCPoint Clamp(CCPoint p, CCPoint from, CCPoint to)
         {
-            return ccp(clampf(p.x, from.x, to.x), clampf(p.y, from.y, to.y));
+            return CreatePoint(Clamp(p.x, from.x, to.x), Clamp(p.y, from.y, to.y));
         }
 
         /** Quickly convert CCSize to a CCPoint
             @since v0.99.1
         */
-        public static CCPoint ccpFromSize(CCSize s)
+        public static CCPoint FromSize(CCSize s)
         {
-            return ccp(s.Width, s.Height);
+            return CreatePoint(s.Width, s.Height);
         }
 
         /** Run a math operation function on each point component
@@ -239,10 +239,10 @@ namespace cocos2d
          * ccpCompOp(p,floorf);
          @since v0.99.1
          */
-        public delegate float ccpCompOpDelegate(float a);
-        public static CCPoint ccpCompOp(CCPoint p, ccpCompOpDelegate del)
+        public delegate float ComputationOperationDelegate(float a);
+        public static CCPoint ComputationOperation(CCPoint p, ComputationOperationDelegate del)
         {
-            return ccp(del(p.x), del(p.y));
+            return CreatePoint(del(p.x), del(p.y));
         }
 
         /** Linear Interpolation between two points a and b
@@ -252,16 +252,16 @@ namespace cocos2d
               otherwise a value between a..b
             @since v0.99.1
        */
-        public static CCPoint ccpLerp(CCPoint a, CCPoint b, float alpha)
+        public static CCPoint Lerp(CCPoint a, CCPoint b, float alpha)
         {
-            return ccpAdd(ccpMult(a, 1.0f - alpha), ccpMult(b, alpha));
+            return Add(Multiply(a, 1.0f - alpha), Multiply(b, alpha));
         }
 
 
         /** @returns if points have fuzzy equality which means equal with some degree of variance.
             @since v0.99.1
         */
-        public static bool ccpFuzzyEqual(CCPoint a, CCPoint b, float variance)
+        public static bool FuzzyEqual(CCPoint a, CCPoint b, float variance)
         {
             if (a.x - variance <= b.x && b.x <= a.x + variance)
                 if (a.y - variance <= b.y && b.y <= a.y + variance)
@@ -275,19 +275,19 @@ namespace cocos2d
             @returns a component-wise multiplication
             @since v0.99.1
         */
-        public static CCPoint ccpCompMult(CCPoint a, CCPoint b)
+        public static CCPoint MultiplyComponents(CCPoint a, CCPoint b)
         {
-            return ccp(a.x * b.x, a.y * b.y);
+            return CreatePoint(a.x * b.x, a.y * b.y);
         }
 
         /** @returns the signed angle in radians between two vector directions
             @since v0.99.1
         */
-        public static float ccpAngleSigned(CCPoint a, CCPoint b)
+        public static float AngleSigned(CCPoint a, CCPoint b)
         {
-            CCPoint a2 = ccpNormalize(a);
-            CCPoint b2 = ccpNormalize(b);
-            float angle = (float)Math.Atan2(a2.x * b2.y - a2.y * b2.x, ccpDot(a2, b2));
+            CCPoint a2 = Normalize(a);
+            CCPoint b2 = Normalize(b);
+            float angle = (float)Math.Atan2(a2.x * b2.y - a2.y * b2.x, DotProduct(a2, b2));
 
             if (Math.Abs(angle) < ccMacros.FLT_EPSILON)
             {
@@ -300,9 +300,9 @@ namespace cocos2d
         /** @returns the angle in radians between two vector directions
             @since v0.99.1
         */
-        public static float ccpAngle(CCPoint a, CCPoint b)
+        public static float Angle(CCPoint a, CCPoint b)
         {
-            float angle = (float)Math.Acos(ccpDot(ccpNormalize(a), ccpNormalize(b)));
+            float angle = (float)Math.Acos(DotProduct(Normalize(a), Normalize(b)));
 
             if (Math.Abs(angle) < ccMacros.FLT_EPSILON)
             {
@@ -319,9 +319,9 @@ namespace cocos2d
             @returns the rotated point
             @since v0.99.1
         */
-        public static CCPoint ccpRotateByAngle(CCPoint v, CCPoint pivot, float angle)
+        public static CCPoint RotateByAngle(CCPoint v, CCPoint pivot, float angle)
         {
-            CCPoint r = ccpSub(v, pivot);
+            CCPoint r = Subtract(v, pivot);
             float cosa = (float)Math.Cos(angle), sina = (float)Math.Sin(angle);
             float t = r.x;
 
@@ -352,7 +352,7 @@ namespace cocos2d
             the hit point also is	p1 + s * (p2 - p1);
          @since v0.99.1
          */
-        public static bool ccpLineIntersect(CCPoint A, CCPoint B, CCPoint C, CCPoint D, ref float S, ref float T)
+        public static bool LineIntersect(CCPoint A, CCPoint B, CCPoint C, CCPoint D, ref float S, ref float T)
         {
             // FAIL: Line undefined
             if ((A.x == B.x && A.y == B.y) || (C.x == D.x && C.y == D.y))
@@ -398,11 +398,11 @@ namespace cocos2d
         ccpSegmentIntersect returns YES if Segment A-B intersects with segment C-D
         @since v1.0.0
         */
-        public static bool ccpSegmentIntersect(CCPoint A, CCPoint B, CCPoint C, CCPoint D)
+        public static bool SegmentIntersect(CCPoint A, CCPoint B, CCPoint C, CCPoint D)
         {
             float S = 0, T = 0;
 
-            if (ccpLineIntersect(A, B, C, D, ref S, ref T)
+            if (LineIntersect(A, B, C, D, ref S, ref T)
                 && (S >= 0.0f && S <= 1.0f && T >= 0.0f && T <= 1.0f))
             {
                 return true;
@@ -415,11 +415,11 @@ namespace cocos2d
         ccpIntersectPoint returns the intersection point of line A-B, C-D
         @since v1.0.0
         */
-        public static CCPoint ccpIntersectPoint(CCPoint A, CCPoint B, CCPoint C, CCPoint D)
+        public static CCPoint IntersectPoint(CCPoint A, CCPoint B, CCPoint C, CCPoint D)
         {
             float S = 0, T = 0;
 
-            if (ccpLineIntersect(A, B, C, D, ref S, ref T))
+            if (LineIntersect(A, B, C, D, ref S, ref T))
             {
                 // Point of intersection
                 CCPoint P = new CCPoint();

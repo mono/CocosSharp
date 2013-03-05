@@ -444,7 +444,7 @@ namespace cocos2d
                 if (!value.Equals(m_tAnchorPoint))
                 {
                     m_tAnchorPoint = value;
-                    m_tAnchorPointInPoints = CCPointExtension.ccp(m_tContentSize.Width * m_tAnchorPoint.x,
+                    m_tAnchorPointInPoints = CCPointExtension.CreatePoint(m_tContentSize.Width * m_tAnchorPoint.x,
                                                                   m_tContentSize.Height * m_tAnchorPoint.y);
                     m_bIsTransformDirty = m_bIsInverseDirty = true;
                 }
@@ -470,7 +470,7 @@ namespace cocos2d
                 if (!CCSize.CCSizeEqualToSize(value, m_tContentSize))
                 {
                     m_tContentSize = value;
-                    m_tAnchorPointInPoints = CCPointExtension.ccp(m_tContentSize.Width * m_tAnchorPoint.x,
+                    m_tAnchorPointInPoints = CCPointExtension.CreatePoint(m_tContentSize.Width * m_tAnchorPoint.x,
                                                                   m_tContentSize.Height * m_tAnchorPoint.y);
                     m_bIsTransformDirty = m_bIsInverseDirty = true;
                 }
@@ -1208,12 +1208,12 @@ namespace cocos2d
         public CCPoint ConvertToNodeSpaceAr(CCPoint worldPoint)
         {
             CCPoint nodePoint = ConvertToNodeSpace(worldPoint);
-            return CCPointExtension.ccpSub(nodePoint, m_tAnchorPointInPoints);
+            return CCPointExtension.Subtract(nodePoint, m_tAnchorPointInPoints);
         }
 
         public CCPoint ConvertToWorldSpaceAr(CCPoint nodePoint)
         {
-            CCPoint pt = CCPointExtension.ccpAdd(nodePoint, m_tAnchorPointInPoints);
+            CCPoint pt = CCPointExtension.Add(nodePoint, m_tAnchorPointInPoints);
             return ConvertToWorldSpace(pt);
         }
 

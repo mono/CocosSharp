@@ -78,7 +78,7 @@ namespace tests
                 p4 = new CCPoint(186, 416);
                 s = 0.0f;
                 t = 0.0f;
-                if (CCPointExtension.ccpLineIntersect(p1, p2, p3, p4, ref s, ref t))
+                if (CCPointExtension.LineIntersect(p1, p2, p3, p4, ref s, ref t))
                     check_for_error(p1, p2, p3, p4, s, t);
 
                 CCLog.Log("Test2 - End");
@@ -126,7 +126,7 @@ namespace tests
 
                     s = 0.0f;
                     t = 0.0f;
-                    if (CCPointExtension.ccpLineIntersect(p1, p2, p3, p4, ref s, ref t))
+                    if (CCPointExtension.LineIntersect(p1, p2, p3, p4, ref s, ref t))
                     {
                         if (check_for_error(p1, p2, p3, p4, s, t) != 0)
                             err++;
@@ -147,13 +147,13 @@ namespace tests
             //	the hit point is		p3 + t * (p4 - p3);
             //	the hit point also is	p1 + s * (p2 - p1);
 
-            CCPoint p4_p3 = CCPointExtension.ccpSub(p4, p3);
-            CCPoint p4_p3_t = CCPointExtension.ccpMult(p4_p3, t);
-            CCPoint hitPoint1 = CCPointExtension.ccpAdd(p3, p4_p3_t);
+            CCPoint p4_p3 = CCPointExtension.Subtract(p4, p3);
+            CCPoint p4_p3_t = CCPointExtension.Multiply(p4_p3, t);
+            CCPoint hitPoint1 = CCPointExtension.Add(p3, p4_p3_t);
 
-            CCPoint p2_p1 = CCPointExtension.ccpSub(p2, p1);
-            CCPoint p2_p1_s = CCPointExtension.ccpMult(p2_p1, s);
-            CCPoint hitPoint2 = CCPointExtension.ccpAdd(p1, p2_p1_s);
+            CCPoint p2_p1 = CCPointExtension.Subtract(p2, p1);
+            CCPoint p2_p1_s = CCPointExtension.Multiply(p2_p1, s);
+            CCPoint hitPoint2 = CCPointExtension.Add(p1, p2_p1_s);
 
             // Since float has rounding errors, only check if diff is < 0.05
             if ((Math.Abs(hitPoint1.x - hitPoint2.x) > 0.1f) || (Math.Abs(hitPoint1.y - hitPoint2.y) > 0.1f))
