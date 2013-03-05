@@ -167,9 +167,10 @@ namespace cocos2d
             mRunningSequence = GetSequence(nSeqId);
         }
 
-        public void debug()
-        {
-        }
+        // Commented out for now as it does not seem to be used
+//        public void Debug()
+//        {
+//        }
 
         private object GetBaseValue(CCNode node, string pPropName)
         {
