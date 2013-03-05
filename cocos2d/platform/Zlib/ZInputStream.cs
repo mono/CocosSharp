@@ -61,7 +61,7 @@ namespace cocos2d.Compression.Zlib
         {
             InitBlock();
             this.in_Renamed = in_Renamed;
-            z.inflateInit();
+            z.InflateInit();
             compress = false;
             z.next_in = buf;
             z.next_in_index = 0;
@@ -72,7 +72,7 @@ namespace cocos2d.Compression.Zlib
         {
             InitBlock();
             this.in_Renamed = in_Renamed;
-            z.deflateInit(level);
+            z.DeflateInit(level);
             compress = true;
             z.next_in = buf;
             z.next_in_index = 0;
@@ -138,9 +138,9 @@ namespace cocos2d.Compression.Zlib
                     }
                 }
                 if (compress)
-                    err = z.deflate(flush);
+                    err = z.Deflate(flush);
                 else
-                    err = z.inflate(flush);
+                    err = z.Inflate(flush);
                 if (nomoreinput && (err == zlibConst.Z_BUF_ERROR))
                     return (- 1);
                 if (err != zlibConst.Z_OK && err != zlibConst.Z_STREAM_END)

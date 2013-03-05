@@ -85,25 +85,25 @@ namespace cocos2d.Compression.Zlib
         public long total_in; // total nb of input bytes read so far
         public long total_out; // total nb of bytes output so far
 
-        public int inflateInit()
+        public int InflateInit()
         {
-            return inflateInit(DEF_WBITS);
+            return InflateInit(DEF_WBITS);
         }
 
-        public int inflateInit(int w)
+        public int InflateInit(int w)
         {
             istate = new Inflate();
             return istate.inflateInit(this, w);
         }
 
-        public int inflate(int f)
+        public int Inflate(int f)
         {
             if (istate == null)
                 return Z_STREAM_ERROR;
             return istate.inflate(this, f);
         }
 
-        public int inflateEnd()
+        public int InflateEnd()
         {
             if (istate == null)
                 return Z_STREAM_ERROR;
@@ -112,32 +112,32 @@ namespace cocos2d.Compression.Zlib
             return ret;
         }
 
-        public int inflateSync()
+        public int InflateSync()
         {
             if (istate == null)
                 return Z_STREAM_ERROR;
             return istate.inflateSync(this);
         }
 
-        public int inflateSetDictionary(byte[] dictionary, int dictLength)
+        public int InflateSetDictionary(byte[] dictionary, int dictLength)
         {
             if (istate == null)
                 return Z_STREAM_ERROR;
             return istate.inflateSetDictionary(this, dictionary, dictLength);
         }
 
-        public int deflateInit(int level)
+        public int DeflateInit(int level)
         {
-            return deflateInit(level, MAX_WBITS);
+            return DeflateInit(level, MAX_WBITS);
         }
 
-        public int deflateInit(int level, int bits)
+        public int DeflateInit(int level, int bits)
         {
             dstate = new Deflate();
             return dstate.deflateInit(this, level, bits);
         }
 
-        public int deflate(int flush)
+        public int Deflate(int flush)
         {
             if (dstate == null)
             {
@@ -146,7 +146,7 @@ namespace cocos2d.Compression.Zlib
             return dstate.deflate(this, flush);
         }
 
-        public int deflateEnd()
+        public int DeflateEnd()
         {
             if (dstate == null)
                 return Z_STREAM_ERROR;
@@ -155,14 +155,14 @@ namespace cocos2d.Compression.Zlib
             return ret;
         }
 
-        public int deflateParams(int level, int strategy)
+        public int DeflateParams(int level, int strategy)
         {
             if (dstate == null)
                 return Z_STREAM_ERROR;
             return dstate.deflateParams(this, level, strategy);
         }
 
-        public int deflateSetDictionary(byte[] dictionary, int dictLength)
+        public int DeflateSetDictionary(byte[] dictionary, int dictLength)
         {
             if (dstate == null)
                 return Z_STREAM_ERROR;
@@ -173,7 +173,7 @@ namespace cocos2d.Compression.Zlib
         // through this function so some applications may wish to modify it
         // to avoid allocating a large strm->next_out buffer and copying into it.
         // (See also read_buf()).
-        internal void flush_pending()
+        internal void FlushPending()
         {
             int len = dstate.pending;
 
@@ -207,7 +207,7 @@ namespace cocos2d.Compression.Zlib
         // this function so some applications may wish to modify it to avoid
         // allocating a large strm->next_in buffer and copying from it.
         // (See also flush_pending()).
-        internal int read_buf(byte[] buf, int start, int size)
+        internal int ReadBuffer(byte[] buf, int start, int size)
         {
             int len = avail_in;
 
@@ -228,7 +228,7 @@ namespace cocos2d.Compression.Zlib
             return len;
         }
 
-        public void free()
+        public void Free()
         {
             next_in = null;
             next_out = null;
