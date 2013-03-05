@@ -114,9 +114,7 @@ namespace cocos2d
                 {
                     // Either we are creating a new one or else we need to refresh the current one.
                     // CCLog.Log("Loading texture {0}", fileimage);
-
-                    var textureXna = CCApplication.SharedApplication.Content.Load<Texture2D>(fileimage);
-
+                    Texture2D textureXna = CCApplication.SharedApplication.Content.Load<Texture2D>(fileimage);
                     bool isInited = texture.InitWithTexture(textureXna);
 
                     if (isInited)
@@ -157,13 +155,22 @@ namespace cocos2d
                     // Either we are creating a new one or else we need to refresh the current one.
                     // CCLog.Log("Loading texture {0}", fileimage);
                     
-                    var textureXna = CCApplication.SharedApplication.Content.Load(imageStream, assetName);
+#if IOS || IPHONE
+					Texture2D textureXna = CCApplication.SharedApplication.Content.Load(imageStream, assetName);
+#else
+                    Texture2D textureXna = Texture2D.FromStream(CCApplication.SharedApplication.GraphicsDevice, imageStream);
+#endif
 
                     bool isInited = texture.InitWithTexture(textureXna);
                     
                     if (isInited)
                     {
+#if IOS || IPHONE
                         texture.IsManaged = true;
+#else
+							// Can only be true if the content manager loads the texture.
+                        texture.IsManaged = false;
+#endif
                         texture.ContentFile = assetName;
                         m_pTextures[pathKey] = texture;
                         m_pTextureRefNames[texture] = assetName;
