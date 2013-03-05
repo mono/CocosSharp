@@ -77,25 +77,25 @@ namespace cocos2d
             return ret;
         }
 
-        public int getIntValue()
+        public int GetIntValue()
         {
             Debug.Assert(mType == ValueType.kIntValue);
             return nValue;
         }
 
-        public float getFloatValue()
+        public float GetFloatValue()
         {
             Debug.Assert(mType == ValueType.kFloatValue);
             return fValue;
         }
 
-        public bool getBoolValue()
+        public bool GetBoolValue()
         {
             Debug.Assert(mType == ValueType.kBoolValue);
             return nValue == 1;
         }
 
-        public byte getByteValue()
+        public byte GetByteValue()
         {
             Debug.Assert(mType == ValueType.kUnsignedCharValue);
             return (byte) nValue;

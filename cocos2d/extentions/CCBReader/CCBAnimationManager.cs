@@ -210,12 +210,12 @@ namespace cocos2d
                 case "rotation":
                     {
                         var value = (CCBValue) pKeyframe1.Value;
-                        return CCBRotateTo.Create(duration, value.getFloatValue());
+                        return CCBRotateTo.Create(duration, value.GetFloatValue());
                     }
                 case "opacity":
                     {
                         var value = (CCBValue) pKeyframe1.Value;
-                        return CCFadeTo.Create(duration, value.getByteValue());
+                        return CCFadeTo.Create(duration, value.GetByteValue());
                     }
                 case "color":
                     {
@@ -227,7 +227,7 @@ namespace cocos2d
                 case "visible":
                     {
                         var value = (CCBValue) pKeyframe1.Value;
-                        if (value.getBoolValue())
+                        if (value.GetBoolValue())
                         {
                             return CCSequence.ActionOneTwo(CCDelayTime.Create(duration), CCShow.Create());
                         }
@@ -239,12 +239,12 @@ namespace cocos2d
                     {
                         // Get position type
                         var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                        var type = (kCCBPositionType) array[2].getIntValue();
+                        var type = (kCCBPositionType) array[2].GetIntValue();
 
                         // Get relative position
                         var value = (List<CCBValue>) pKeyframe1.Value;
-                        float x = value[0].getFloatValue();
-                        float y = value[1].getFloatValue();
+                        float x = value[0].GetFloatValue();
+                        float y = value[1].GetFloatValue();
 
                         CCSize containerSize = GetContainerSize(node.Parent);
 
@@ -256,12 +256,12 @@ namespace cocos2d
                     {
                         // Get position type
                         var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                        var type = (kCCBScaleType) array[2].getIntValue();
+                        var type = (kCCBScaleType) array[2].GetIntValue();
 
                         // Get relative scale
                         var value = (List<CCBValue>) pKeyframe1.Value;
-                        float x = value[0].getFloatValue();
-                        float y = value[1].getFloatValue();
+                        float x = value[0].GetFloatValue();
+                        float y = value[1].GetFloatValue();
 
                         if (type == kCCBScaleType.kCCBScaleTypeMultiplyResolution)
                         {
@@ -302,12 +302,12 @@ namespace cocos2d
                 {
                     // Get position type
                     var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                    var type = (kCCBPositionType) array[2].getIntValue();
+                    var type = (kCCBPositionType) array[2].GetIntValue();
 
                     // Get relative position
                     var value = (List<CCBValue>) pValue;
-                    float x = value[0].getFloatValue();
-                    float y = value[1].getFloatValue();
+                    float x = value[0].GetFloatValue();
+                    float y = value[1].GetFloatValue();
 
                     node.Position = CCBHelper.GetAbsolutePosition(new CCPoint(x, y), type, GetContainerSize(node.Parent), pPropName);
                 }
@@ -315,12 +315,12 @@ namespace cocos2d
                 {
                     // Get scale type
                     var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                    var type = (kCCBScaleType) array[2].getIntValue();
+                    var type = (kCCBScaleType) array[2].GetIntValue();
 
                     // Get relative scale
                     var value = (List<CCBValue>) pValue;
-                    float x = value[0].getFloatValue();
-                    float y = value[1].getFloatValue();
+                    float x = value[0].GetFloatValue();
+                    float y = value[1].GetFloatValue();
 
                     CCBHelper.SetRelativeScale(node, x, y, type, pPropName);
                 }
@@ -331,12 +331,12 @@ namespace cocos2d
                     // TODO only handle rotation, opacity, displayFrame, color
                     if (pPropName == "rotation")
                     {
-                        float rotate = ((CCBValue) pValue).getFloatValue();
+                        float rotate = ((CCBValue) pValue).GetFloatValue();
                         node.Rotation = rotate;
                     }
                     else if (pPropName == "opacity")
                     {
-                        byte opacity = ((CCBValue) pValue).getByteValue();
+                        byte opacity = ((CCBValue) pValue).GetByteValue();
                         ((ICCRGBAProtocol) node).Opacity = opacity;
                     }
                     else if (pPropName == "displayFrame")
