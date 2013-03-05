@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.Ouya", "tests\tests\t
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Ouya", "MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj", "{8BEA875D-66D2-4A5F-B137-83D262A3851D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ouya.Console.Api", "..\MonoGame-Slygamer\ouya-csharp-master\Ouya.Console.Api\Ouya.Console.Api.csproj", "{493A4B6F-98CE-4000-8A0C-4A4726299061}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Android = Debug|Android
@@ -79,6 +81,12 @@ Global
 		{8BEA875D-66D2-4A5F-B137-83D262A3851D}.Release|Android.ActiveCfg = Release|Any CPU
 		{8BEA875D-66D2-4A5F-B137-83D262A3851D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BEA875D-66D2-4A5F-B137-83D262A3851D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{493A4B6F-98CE-4000-8A0C-4A4726299061}.Debug|Android.ActiveCfg = Debug|Any CPU
+		{493A4B6F-98CE-4000-8A0C-4A4726299061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{493A4B6F-98CE-4000-8A0C-4A4726299061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{493A4B6F-98CE-4000-8A0C-4A4726299061}.Release|Android.ActiveCfg = Release|Any CPU
+		{493A4B6F-98CE-4000-8A0C-4A4726299061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{493A4B6F-98CE-4000-8A0C-4A4726299061}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

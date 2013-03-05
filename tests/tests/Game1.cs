@@ -29,6 +29,30 @@ namespace tests
             Components.Add(application);
         }
 
+#if OUYA
+        protected override void Draw(GameTime gameTime)
+        {
+            base.Draw(gameTime);
+            DrawManager.spriteBatch.Begin();
+            float y = 15;
+            for (int i = 0; i < 4; ++i)
+            {
+                GamePadState gs = GamePad.GetState((PlayerIndex)i, GamePadDeadZone.Circular);
+                string textToDraw = string.Format(
+                    "Pad: {0} Connected: {1} LS: ({2:F2}, {3:F2}) RS: ({4:F2}, {5:F2}) LT: {6:F2} RT: {7:F2}",
+                    i, gs.IsConnected,
+                    gs.ThumbSticks.Left.X, gs.ThumbSticks.Left.Y,
+                    gs.ThumbSticks.Right.X, gs.ThumbSticks.Right.Y,
+                    gs.Triggers.Left, gs.Triggers.Right);
+
+                DrawManager.spriteBatch.DrawString(CCSpriteFontCache.SharedInstance.GetFont("arial-20"), textToDraw, new Vector2(16, y), Color.White);
+                y += 25;
+            }
+            DrawManager.spriteBatch.End();
+
+        }
+#endif
+
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit

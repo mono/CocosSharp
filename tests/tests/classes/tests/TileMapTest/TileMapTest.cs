@@ -1614,7 +1614,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         private static int sceneIdx = -1;
-#if XBOX
+#if XBOX || OUYA
         private static int MAX_LAYER = 28;
 #else
         private static int MAX_LAYER = 28;
@@ -1624,7 +1624,7 @@ namespace tests
         {
             switch (nIndex)
             {
-#if XBOX
+#if XBOX || OUYA
                 case 0:
                     return new TMXIsoZorder();
                 case 1:

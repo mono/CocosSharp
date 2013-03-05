@@ -25,7 +25,7 @@ namespace tests
             var pCloseItem = CCMenuItemImage.Create(TestResource.s_pPathClose, TestResource.s_pPathClose, closeCallback);
             var pMenu = CCMenu.Create(pCloseItem);
             var s = CCDirector.SharedDirector.WinSize;
-#if !XBOX
+#if !XBOX && !OUYA
             TouchEnabled = true;
 #else
             GamePadEnabled = true;
@@ -52,8 +52,8 @@ namespace tests
 
                 pMenuItem.UserData = i;
                 m_pItemMenu.AddChild(pMenuItem, 10000);
-#if XBOX
-                pMenuItem.Position = new CCPoint(s.width / 2, -(i + 1) * LINE_SPACE);
+#if XBOX || OUYA
+                pMenuItem.Position = new CCPoint(s.Width / 2, -(i + 1) * LINE_SPACE);
 #else
                 pMenuItem.Position = new CCPoint(s.Width / 2, (s.Height - (i + 1) * LINE_SPACE));
 #endif
@@ -61,13 +61,13 @@ namespace tests
             }
 
             m_pItemMenu.ContentSize = new CCSize(s.Width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
-#if XBOX
+#if XBOX || OUYA
             CCSprite sprite = CCSprite.Create("Images/aButton");
             AddChild(sprite, 10001);
             _menuIndicator = sprite;
             // Center the menu on the first item so that it is 
             // in the center of the screen
-            _HomePosition = new CCPoint(0f, s.height / 2f + LINE_SPACE / 2f);
+            _HomePosition = new CCPoint(0f, s.Height / 2f + LINE_SPACE / 2f);
             _LastPosition = new CCPoint(0f, _HomePosition.y - (_Items.Count - 1) * LINE_SPACE);
 
 #else
