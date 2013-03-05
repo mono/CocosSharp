@@ -22,7 +22,7 @@ namespace tests
 
                 CCSize s = CCDirector.SharedDirector.WinSize;
 
-                CCPoint p = new CCPoint(ccMacros.CCRANDOM_0_1() * s.width, ccMacros.CCRANDOM_0_1() * s.height);
+                CCPoint p = new CCPoint(ccMacros.CCRANDOM_0_1() * s.Width, ccMacros.CCRANDOM_0_1() * s.Height);
                 label.Position = p;
                 label.AnchorPoint = new CCPoint(0.5f, 0.5f);
             }

@@ -24,7 +24,7 @@ namespace tests
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 24;
             var pMainItem = CCMenuItemFont.Create("Back", toMainLayer);
-            pMainItem.Position = new CCPoint(s.width - 50, 25);
+            pMainItem.Position = new CCPoint(s.Width - 50, 25);
             var pMenu = CCMenu.Create(pMainItem);
             pMenu.Position = new CCPoint(0, 0);
 
@@ -33,9 +33,9 @@ namespace tests
                 var item1 = CCMenuItemImage.Create("Images/b1", "Images/b2", backCallback);
                 var item2 = CCMenuItemImage.Create("Images/r1", "Images/r2", restartCallback);
                 var item3 = CCMenuItemImage.Create("Images/f1", "Images/f2", nextCallback);
-                item1.Position = new CCPoint(s.width / 2 - 100, 30);
-                item2.Position = new CCPoint(s.width / 2, 30);
-                item3.Position = new CCPoint(s.width / 2 + 100, 30);
+                item1.Position = new CCPoint(s.Width / 2 - 100, 30);
+                item2.Position = new CCPoint(s.Width / 2, 30);
+                item3.Position = new CCPoint(s.Width / 2 + 100, 30);
 
                 pMenu.AddChild(item1, PerformanceTestScene.kItemTagBasic);
                 pMenu.AddChild(item2, PerformanceTestScene.kItemTagBasic);

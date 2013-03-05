@@ -23,8 +23,8 @@ namespace tests
             AddChild(sister2);
             AddChild(layer1, 100, kTagLayer);
 
-            sister1.Position = new CCPoint(160, s.height / 2);
-            sister2.Position = new CCPoint(320, s.height / 2);
+            sister1.Position = new CCPoint(160, s.Height / 2);
+            sister2.Position = new CCPoint(320, s.Height / 2);
 
             Schedule(newBlend, 1.0f);
         }

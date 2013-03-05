@@ -56,14 +56,14 @@ namespace cocos2d
 
             CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 24);
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, s.height - 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             string subTitle = m_pNotificationLayer.subtitle();
             if (subTitle != null)
             {
                 CCLabelTTF l = CCLabelTTF.Create(subTitle, subtitle(), 16);
                 AddChild(l, 1);
-                l.Position = new CCPoint(s.width / 2, s.height - 80);
+                l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }
 
             CCMenuItemImage item1 = CCMenuItemImage.Create("Images/b1.png", "Images/b2.png", backCallback);
@@ -72,9 +72,9 @@ namespace cocos2d
 
             CCMenu menu = CCMenu.Create(item1, item2, item3);
             menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.width / 2, 30);
-            item3.Position = new CCPoint(s.width / 2 + 100, 30);
+            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
+            item2.Position = new CCPoint(s.Width / 2, 30);
+            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
 
             AddChild(menu, 1);
         }
@@ -114,7 +114,7 @@ namespace cocos2d
         public virtual void keyboardWillShow(CCIMEKeyboardNotificationInfo info)
         {
             CCLog.Log("TextInputTest:keyboardWillShowAt(origin:%f,%f, size:%f,%f)",
-        info.end.origin.x, info.end.origin.y, info.end.size.width, info.end.size.height);
+        info.end.origin.x, info.end.origin.y, info.end.size.Width, info.end.size.Height);
 
             if (m_pTrackNode != null)
             {
@@ -123,7 +123,7 @@ namespace cocos2d
 
             CCRect rectTracked = TextInputTestScene.getRect(m_pTrackNode);
             CCLog.Log("TextInputTest:trackingNodeAt(origin:%f,%f, size:%f,%f)",
-                rectTracked.origin.x, rectTracked.origin.y, rectTracked.size.width, rectTracked.size.height);
+                rectTracked.origin.x, rectTracked.origin.y, rectTracked.size.Width, rectTracked.size.Height);
 
             // if the keyboard area doesn't intersect with the tracking node area, nothing need to do.
             if (!CCRect.CCRectIntersetsRect(rectTracked, info.end))
@@ -186,7 +186,7 @@ namespace cocos2d
 
             rect = TextInputTestScene.getRect(m_pTrackNode);
             CCLog.Log("KeyboardNotificationLayer:TrackNode at(origin:%f,%f, size:%f,%f)",
-                rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+                rect.origin.x, rect.origin.y, rect.size.Width, rect.size.Height);
 
             this.onClickTrackNode(CCRect.CCRectContainsPoint(rect, point));
             CCLog.Log("----------------------------------");
@@ -375,10 +375,10 @@ namespace cocos2d
             CCPoint endPos = pSender.Position;
             if (pSender.CharCount > 0)
             {
-                endPos.x += pSender.ContentSize.width / 2;
+                endPos.x += pSender.ContentSize.Width / 2;
             }
             CCSize inputTextSize = label.ContentSize;
-            CCPoint beginPos = new CCPoint(endPos.x, CCDirector.SharedDirector.WinSize.height - inputTextSize.height * 2);
+            CCPoint beginPos = new CCPoint(endPos.x, CCDirector.SharedDirector.WinSize.Height - inputTextSize.Height * 2);
 
             float duration = 0.5f;
             label.Position = beginPos;
@@ -404,13 +404,13 @@ namespace cocos2d
             CCPoint beginPos = pSender.Position;
             CCSize textfieldSize = pSender.ContentSize;
             CCSize labelSize = label.ContentSize;
-            beginPos.x += (textfieldSize.width - labelSize.width) / 2.0f;
+            beginPos.x += (textfieldSize.Width - labelSize.Width) / 2.0f;
 
             int RAND_MAX = 32767;
             Random rand = new Random();
 
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            CCPoint endPos = new CCPoint(-winSize.width / 4.0f, winSize.height * (0.5f + (float)Random.Next() / (2.0f * RAND_MAX)));
+            CCPoint endPos = new CCPoint(-winSize.Width / 4.0f, winSize.Height * (0.5f + (float)Random.Next() / (2.0f * RAND_MAX)));
             float duration = 1;
             float rotateDuration = 0.2f;
             int repeatTime = 5;

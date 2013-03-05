@@ -26,7 +26,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
             CCSprite sprite = CCSprite.Create(s_pPathGrossini);
             AddChild(sprite);
-            sprite.Position = new CCPoint(s.width - 40, s.height / 2);
+            sprite.Position = new CCPoint(s.Width - 40, s.Height / 2);
             CCActionInterval rotate = CCRotateBy.Create(2, 360);
             CCAction repeat = CCRepeatForever.Create(rotate);
             sprite.RunAction(repeat);

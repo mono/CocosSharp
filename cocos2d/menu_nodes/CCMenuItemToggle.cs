@@ -28,7 +28,7 @@ namespace cocos2d
                     AddChild(item, 0, kCurrentItem);
                     CCSize s = item.ContentSize;
                     ContentSize = s;
-                    item.Position = new CCPoint(s.width / 2, s.height / 2);
+                    item.Position = new CCPoint(s.Width / 2, s.Height / 2);
                 }
             }
         }

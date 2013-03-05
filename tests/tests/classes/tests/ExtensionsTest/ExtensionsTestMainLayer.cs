@@ -17,7 +17,7 @@ namespace tests.Extensions
 			for (int i = 0; i < ExtensionsTestScene.TEST_MAX_COUNT; ++i)
 			{
 				var pItem = CCMenuItemFont.Create(ExtensionsTestScene.testsName[i], menuCallback);
-				pItem.Position = new CCPoint(s.width / 2, s.height - (i + 1) * ExtensionsTestScene.LINE_SPACE);
+				pItem.Position = new CCPoint(s.Width / 2, s.Height - (i + 1) * ExtensionsTestScene.LINE_SPACE);
 				pMenu.AddChild(pItem, ExtensionsTestScene.kItemTagBasic + i);
 			}
 

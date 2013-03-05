@@ -19,8 +19,8 @@ namespace tests
             float x, y;
 
             CCSize size = CCDirector.SharedDirector.WinSize;
-            x = size.width;
-            y = size.height;
+            x = size.Width;
+            y = size.Height;
 
             CCSprite sprite = CCSprite.Create(s_pPathGrossini);
             CCSprite spriteSister1 = CCSprite.Create(s_pPathSister1);

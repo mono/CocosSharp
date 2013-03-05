@@ -13,7 +13,7 @@ namespace tests.Extensions
                 CCSize screenSize = CCDirector.SharedDirector.WinSize;
 
                 CCNode layer = CCNode.Create();
-                layer.Position = new CCPoint(screenSize.width / 2, screenSize.height / 2);
+                layer.Position = new CCPoint(screenSize.Width / 2, screenSize.Height / 2);
                 AddChild(layer, 1);
 
                 float layer_width = 0.0f;
@@ -21,10 +21,10 @@ namespace tests.Extensions
                 // Add the black background for the text
                 CCScale9Sprite background = CCScale9Sprite.Create("extensions/buttonBackground");
                 background.ContentSize = new CCSize(80, 50);
-                background.Position = new CCPoint(layer_width + background.ContentSize.width / 2.0f, 0);
+                background.Position = new CCPoint(layer_width + background.ContentSize.Width / 2.0f, 0);
                 layer.AddChild(background);
 
-                layer_width += background.ContentSize.width;
+                layer_width += background.ContentSize.Width;
 
                 m_pDisplayValueLabel = CCLabelTTF.Create("#color", "Marker Felt", 30);
 
@@ -41,7 +41,7 @@ namespace tests.Extensions
                         CCLabelTTF.Create("On", "Arial-BoldMT", 16),
                         CCLabelTTF.Create("Off", "Arial-BoldMT", 16)
                     );
-                switchControl.Position = new CCPoint(layer_width + 10 + switchControl.ContentSize.width / 2, 0);
+                switchControl.Position = new CCPoint(layer_width + 10 + switchControl.ContentSize.Width / 2, 0);
                 layer.AddChild(switchControl);
 
                 switchControl.AddTargetWithActionForControlEvents(this, valueChanged, CCControlEvent.ValueChanged);

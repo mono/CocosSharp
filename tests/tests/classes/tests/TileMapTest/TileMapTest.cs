@@ -19,7 +19,7 @@ namespace tests
             map.Texture.SetAntiAliasTexParameters();
 
             CCSize s = map.ContentSize;
-            CCLog.Log("ContentSize: {0}, {1}", s.width, s.height);
+            CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
 
             // If you are not going to use the Map, you can free it now
             // NEW since v0.7
@@ -57,7 +57,7 @@ namespace tests
             map.Texture.SetAliasTexParameters();
 
             CCSize s = map.ContentSize;
-            CCLog.Log("ContentSize: {0}, {1}", s.width, s.height);
+            CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
 
             // If you are not going to use the Map, you can free it now
             // [tilemap releaseMap);
@@ -129,7 +129,7 @@ namespace tests
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
-            CCLog.Log("ContentSize: {0}, {1}", s.width, s.height);
+            CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
 
             /*
             CCArray pChildrenArray = map.getChildren();
@@ -279,11 +279,11 @@ namespace tests
             CCSprite sprite;
             sprite = layer.TileAt(new CCPoint(0, 0));
             sprite.Scale = (2);
-            sprite = layer.TileAt(new CCPoint(s.width - 1, 0));
+            sprite = layer.TileAt(new CCPoint(s.Width - 1, 0));
             sprite.Scale = (2);
-            sprite = layer.TileAt(new CCPoint(0, s.height - 1));
+            sprite = layer.TileAt(new CCPoint(0, s.Height - 1));
             sprite.Scale = (2);
-            sprite = layer.TileAt(new CCPoint(s.width - 1, s.height - 1));
+            sprite = layer.TileAt(new CCPoint(s.Width - 1, s.Height - 1));
             sprite.Scale = (2);
 
             Schedule(removeSprite, 2);
@@ -297,7 +297,7 @@ namespace tests
             CCTMXLayer layer = map.LayerNamed("Layer 0");
             CCSize s = layer.LayerSize;
 
-            CCSprite sprite = layer.TileAt(new CCPoint(s.width - 1, 0));
+            CCSprite sprite = layer.TileAt(new CCPoint(s.Width - 1, 0));
             layer.RemoveChild(sprite, true);
         }
 
@@ -394,7 +394,7 @@ namespace tests
 
             CCSize s = layer.LayerSize;
 
-            for (int y = 0; y < s.height; y++)
+            for (int y = 0; y < s.Height; y++)
             {
                 layer.SetTileGID(m_gid2, new CCPoint(3, y));
             }
@@ -408,9 +408,9 @@ namespace tests
             var layer = (CCTMXLayer) map.GetChildByTag(0);
 
             CCSize s = layer.LayerSize;
-            for (int x = 0; x < s.width; x++)
+            for (int x = 0; x < s.Width; x++)
             {
-                int y = (int) s.height - 1;
+                int y = (int) s.Height - 1;
                 uint tmpgid = layer.TileGIDAt(new CCPoint(x, y));
                 layer.SetTileGID(tmpgid + 1, new CCPoint(x, y));
             }
@@ -424,7 +424,7 @@ namespace tests
             var layer = (CCTMXLayer) map.GetChildByTag(0);
             CCSize s = layer.LayerSize;
 
-            for (int y = 0; y < s.height; y++)
+            for (int y = 0; y < s.Height; y++)
             {
                 layer.RemoveTileAt(new CCPoint(5.0f, y));
             }
@@ -490,7 +490,7 @@ namespace tests
             // move map to the center of the screen
             CCSize ms = map.MapSize;
             CCSize ts = map.TileSize;
-            map.RunAction(CCMoveTo.Create(1.0f, new CCPoint(-ms.width * ts.width / 2, -ms.height * ts.height / 2)));
+            map.RunAction(CCMoveTo.Create(1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
         }
 
         public override string title()
@@ -545,7 +545,7 @@ namespace tests
             // move map to the center of the screen
             CCSize ms = map.MapSize;
             CCSize ts = map.TileSize;
-            map.RunAction(CCMoveTo.Create(1.0f, new CCPoint(-ms.width * ts.width / 2, -ms.height * ts.height / 2)));
+            map.RunAction(CCMoveTo.Create(1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
         }
 
         public override string title()
@@ -574,7 +574,7 @@ namespace tests
             // move map to the center of the screen
             CCSize ms = map.MapSize;
             CCSize ts = map.TileSize;
-            map.RunAction(CCMoveTo.Create(1.0f, new CCPoint(-ms.width * ts.width / 2, -ms.height * ts.height / 2)));
+            map.RunAction(CCMoveTo.Create(1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
 
             /*
             // testing release map
@@ -798,9 +798,9 @@ namespace tests
             layer = map.LayerNamed("Layer 0");
 
             CCSize ls = layer.LayerSize;
-            for (uint y = 0; y < ls.height; y++)
+            for (uint y = 0; y < ls.Height; y++)
             {
-                for (uint x = 0; x < ls.width; x++)
+                for (uint x = 0; x < ls.Width; x++)
                 {
                     layer.SetTileGID(1, new CCPoint(x, y));
                 }
@@ -833,12 +833,12 @@ namespace tests
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
-            CCLog.Log("ContentSize: {0}, {1}", s.width, s.height);
-            map.Position = new CCPoint(-s.width / 2, 0);
+            CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
+            map.Position = new CCPoint(-s.Width / 2, 0);
 
             m_tamara = CCSprite.Create(s_pPathSister1);
             map.AddChild(m_tamara, map.Children.Count);
-            float mapWidth = map.MapSize.width * map.TileSize.width;
+            float mapWidth = map.MapSize.Width * map.TileSize.Width;
             m_tamara.Position = ccMacros.CC_POINT_PIXELS_TO_POINTS(new CCPoint(mapWidth / 2, 0));
             m_tamara.AnchorPoint = (new CCPoint(0.5f, 0));
 
@@ -962,7 +962,7 @@ namespace tests
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
-            map.Position = new CCPoint(-s.width / 2, 0);
+            map.Position = new CCPoint(-s.Width / 2, 0);
 
             // because I'm lazy, I'm reusing a tile as an sprite, but since this method uses vertexZ, you
             // can use any CCSprite and it will work OK.
@@ -1402,14 +1402,14 @@ namespace tests
 
             m_label = CCLabelTTF.Create("", "arial", 28);
             AddChild(m_label, 1);
-            m_label.Position = new CCPoint(s.width / 2, s.height - 50);
+            m_label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             string strSubtitle = subtitle();
             if (! string.IsNullOrEmpty(strSubtitle))
             {
                 CCLabelTTF l = CCLabelTTF.Create(strSubtitle, "arial", 16);
                 AddChild(l, 1);
-                l.Position = new CCPoint(s.width / 2, s.height - 80);
+                l.Position = new CCPoint(s.Width / 2, s.Height - 80);
 
                 m_subtitle = l;
             }
@@ -1421,9 +1421,9 @@ namespace tests
             CCMenu menu = CCMenu.Create(item1, item2, item3);
 
             menu.Position = CCPoint.Zero;
-            item1.Position = new CCPoint(s.width / 2 - item2.ContentSize.width * 2, item2.ContentSize.height / 2);
-            item2.Position = new CCPoint(s.width / 2, item2.ContentSize.height / 2);
-            item3.Position = new CCPoint(s.width / 2 + item2.ContentSize.width * 2, item2.ContentSize.height / 2);
+            item1.Position = new CCPoint(s.Width / 2 - item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
+            item2.Position = new CCPoint(s.Width / 2, item2.ContentSize.Height / 2);
+            item3.Position = new CCPoint(s.Width / 2 + item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
 
             AddChild(menu, 1);
         }

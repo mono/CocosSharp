@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,14 +32,14 @@ namespace tests
 #endif
 
             pMenu.Position = new CCPoint(0.0f, 0.0f);
-            pCloseItem.Position = new CCPoint(s.width - 30, s.height - 30);
+            pCloseItem.Position = new CCPoint(s.Width - 30, s.Height - 30);
 #if !PSM && !WINDOWS_PHONE
 #if NETFX_CORE
             CCLabelTTF versionLabel = CCLabelTTF.Create("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 12);
 #else
             CCLabelTTF versionLabel = CCLabelTTF.Create("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
 #endif
-            versionLabel.Position = new CCPoint(versionLabel.ContentSizeInPixels.width/2f, s.height - 18f);
+            versionLabel.Position = new CCPoint(versionLabel.ContentSizeInPixels.Width/2f, s.Height - 18f);
             versionLabel.HorizontalAlignment = CCTextAlignment.CCTextAlignmentLeft;
             AddChild(versionLabel, 20000);
 #endif
@@ -55,12 +55,12 @@ namespace tests
 #if XBOX
                 pMenuItem.Position = new CCPoint(s.width / 2, -(i + 1) * LINE_SPACE);
 #else
-                pMenuItem.Position = new CCPoint(s.width / 2, (s.height - (i + 1) * LINE_SPACE));
+                pMenuItem.Position = new CCPoint(s.Width / 2, (s.Height - (i + 1) * LINE_SPACE));
 #endif
                 _Items.Add(pMenuItem);
             }
 
-            m_pItemMenu.ContentSize = new CCSize(s.width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
+            m_pItemMenu.ContentSize = new CCSize(s.Width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
 #if XBOX
             CCSprite sprite = CCSprite.Create("Images/aButton");
             AddChild(sprite, 10001);
@@ -93,7 +93,7 @@ namespace tests
             if (_menuIndicator != null)
             {
                 _menuIndicator.Position = new CCPoint(
-                    m_pItemMenu.Position.x + _Items[_CurrentItemIndex].Position.x - _Items[_CurrentItemIndex].ContentSizeInPixels.width / 2f - _menuIndicator.ContentSizeInPixels.width / 2f - 5f,
+                    m_pItemMenu.Position.x + _Items[_CurrentItemIndex].Position.x - _Items[_CurrentItemIndex].ContentSizeInPixels.Width / 2f - _menuIndicator.ContentSizeInPixels.Width / 2f - 5f,
                     m_pItemMenu.Position.y + _Items[_CurrentItemIndex].Position.y
                     );
             }
@@ -237,9 +237,9 @@ namespace tests
                 return;
             }
 
-            if (nextPos.y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - winSize.height))
+            if (nextPos.y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - winSize.Height))
             {
-                m_pItemMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - winSize.height)));
+                m_pItemMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - winSize.Height)));
                 return;
             }
 

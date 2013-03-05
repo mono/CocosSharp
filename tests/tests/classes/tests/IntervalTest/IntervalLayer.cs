@@ -23,7 +23,7 @@ namespace tests
             // sun
             CCParticleSystem sun = CCParticleSun.Create();
             sun.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
-            sun.Position = (new CCPoint(s.width - 32, s.height - 32));
+            sun.Position = (new CCPoint(s.Width - 32, s.Height - 32));
 
             sun.TotalParticles = 130;
             sun.Life = (0.6f);
@@ -43,11 +43,11 @@ namespace tests
             Schedule(step3, 1.0f);
             Schedule(step4, 2.0f);
 
-            m_label0.Position = new CCPoint(s.width * 1 / 6, s.height / 2);
-            m_label1.Position = new CCPoint(s.width * 2 / 6, s.height / 2);
-            m_label2.Position = new CCPoint(s.width * 3 / 6, s.height / 2);
-            m_label3.Position = new CCPoint(s.width * 4 / 6, s.height / 2);
-            m_label4.Position = new CCPoint(s.width * 5 / 6, s.height / 2);
+            m_label0.Position = new CCPoint(s.Width * 1 / 6, s.Height / 2);
+            m_label1.Position = new CCPoint(s.Width * 2 / 6, s.Height / 2);
+            m_label2.Position = new CCPoint(s.Width * 3 / 6, s.Height / 2);
+            m_label3.Position = new CCPoint(s.Width * 4 / 6, s.Height / 2);
+            m_label4.Position = new CCPoint(s.Width * 5 / 6, s.Height / 2);
 
             AddChild(m_label0);
             AddChild(m_label1);
@@ -59,7 +59,7 @@ namespace tests
             CCSprite sprite = CCSprite.Create(s_pPathGrossini);
             sprite.Position = new CCPoint(40, 50);
 
-            CCJumpBy jump = CCJumpBy.Create(3, new CCPoint(s.width - 80, 0), 50, 4);
+            CCJumpBy jump = CCJumpBy.Create(3, new CCPoint(s.Width - 80, 0), 50, 4);
 
             AddChild(sprite);
             sprite.RunAction(CCRepeatForever.Create(
@@ -69,7 +69,7 @@ namespace tests
             // pause button
             CCMenuItem item1 = CCMenuItemFont.Create("Pause", onPause);
             CCMenu menu = CCMenu.Create(item1);
-            menu.Position = new CCPoint(s.width / 2, s.height - 50);
+            menu.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             AddChild(menu);
         }

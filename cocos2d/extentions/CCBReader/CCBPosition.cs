@@ -20,22 +20,22 @@ namespace cocos2d
             else if (nType == kCCBPositionType.kCCBPositionTypeRelativeTopLeft)
             {
                 absPt.x = pt.x;
-                absPt.y = containerSize.height - pt.y;
+                absPt.y = containerSize.Height - pt.y;
             }
             else if (nType == kCCBPositionType.kCCBPositionTypeRelativeTopRight)
             {
-                absPt.x = containerSize.width - pt.x;
-                absPt.y = containerSize.height - pt.y;
+                absPt.x = containerSize.Width - pt.x;
+                absPt.y = containerSize.Height - pt.y;
             }
             else if (nType == kCCBPositionType.kCCBPositionTypeRelativeBottomRight)
             {
-                absPt.x = containerSize.width - pt.x;
+                absPt.x = containerSize.Width - pt.x;
                 absPt.y = pt.y;
             }
             else if (nType == kCCBPositionType.kCCBPositionTypePercent)
             {
-                absPt.x = (int) (containerSize.width * pt.x / 100.0f);
-                absPt.y = (int) (containerSize.height * pt.y / 100.0f);
+                absPt.x = (int) (containerSize.Width * pt.x / 100.0f);
+                absPt.y = (int) (containerSize.Height * pt.y / 100.0f);
             }
             else if (nType == kCCBPositionType.kCCBPositionTypeMultiplyResolution)
             {

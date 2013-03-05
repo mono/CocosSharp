@@ -19,7 +19,7 @@ namespace tests
             CCMenuItem item = CCMenuItemImage.Create(TestResource.s_PlayNormal, TestResource.s_PlaySelect);
             CCMenu menu = CCMenu.Create(item);
             menu.AlignItemsVertically();
-            menu.Position = (new CCPoint(backSize.width / 2, backSize.height / 2));
+            menu.Position = (new CCPoint(backSize.Width / 2, backSize.Height / 2));
             back.AddChild(menu);
 
             CCActionInterval rot = CCRotateBy.Create(5, 360);

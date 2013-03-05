@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using cocos2d;
 
@@ -257,23 +257,23 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            m_grossini.Position = new CCPoint(s.width / 2, s.height / 3);
-            m_tamara.Position = new CCPoint(s.width / 2, 2 * s.height / 3);
-            m_kathia.Position = new CCPoint(s.width / 2, s.height / 2);
+            m_grossini.Position = new CCPoint(s.Width / 2, s.Height / 3);
+            m_tamara.Position = new CCPoint(s.Width / 2, 2 * s.Height / 3);
+            m_kathia.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
             // add title and subtitle
             var str = title();
             var pTitle = str;
             var label = CCLabelTTF.Create(pTitle, "arial", 18);
             AddChild(label, 1);
-            label.Position = new CCPoint(s.width / 2, s.height - 30);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 30);
 
             var strSubtitle = subtitle();
             if (! strSubtitle.Equals(""))
             {
                 var l = CCLabelTTF.Create(strSubtitle, "arial", 22);
                 AddChild(l, 1);
-                l.Position = new CCPoint(s.width / 2, s.height - 60);
+                l.Position = new CCPoint(s.Width / 2, s.Height - 60);
             }
 
             // add menu
@@ -284,9 +284,9 @@ namespace tests
             var menu = CCMenu.Create(item1, item2, item3);
 
             menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.width / 2, 30);
-            item3.Position = new CCPoint(s.width / 2 + 100, 30);
+            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
+            item2.Position = new CCPoint(s.Width / 2, 30);
+            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
 
             AddChild(menu, 1);
         }
@@ -331,19 +331,19 @@ namespace tests
             {
                 m_tamara.Visible = false;
                 m_kathia.Visible = false;
-                m_grossini.Position = new CCPoint(s.width / 2, s.height / 2);
+                m_grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
             }
             else if (numberOfSprites == 2)
             {
-                m_kathia.Position = new CCPoint(s.width / 3, s.height / 2);
-                m_tamara.Position = new CCPoint(2 * s.width / 3, s.height / 2);
+                m_kathia.Position = new CCPoint(s.Width / 3, s.Height / 2);
+                m_tamara.Position = new CCPoint(2 * s.Width / 3, s.Height / 2);
                 m_grossini.Visible = false;
             }
             else if (numberOfSprites == 3)
             {
-                m_grossini.Position = new CCPoint(s.width / 2, s.height / 2);
-                m_tamara.Position = new CCPoint(s.width / 4, s.height / 2);
-                m_kathia.Position = new CCPoint(3 * s.width / 4, s.height / 2);
+                m_grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
+                m_tamara.Position = new CCPoint(s.Width / 4, s.Height / 2);
+                m_kathia.Position = new CCPoint(3 * s.Width / 4, s.Height / 2);
             }
         }
 
@@ -355,19 +355,19 @@ namespace tests
             {
                 m_tamara.Visible = false;
                 m_kathia.Visible = false;
-                m_grossini.Position = new CCPoint(60, s.height / 2);
+                m_grossini.Position = new CCPoint(60, s.Height / 2);
             }
             else if (numberOfSprites == 2)
             {
-                m_kathia.Position = new CCPoint(60, s.height / 3);
-                m_tamara.Position = new CCPoint(60, 2 * s.height / 3);
+                m_kathia.Position = new CCPoint(60, s.Height / 3);
+                m_tamara.Position = new CCPoint(60, 2 * s.Height / 3);
                 m_grossini.Visible = false;
             }
             else if (numberOfSprites == 3)
             {
-                m_grossini.Position = new CCPoint(60, s.height / 2);
-                m_tamara.Position = new CCPoint(60, 2 * s.height / 3);
-                m_kathia.Position = new CCPoint(60, s.height / 3);
+                m_grossini.Position = new CCPoint(60, s.Height / 2);
+                m_tamara.Position = new CCPoint(60, 2 * s.Height / 3);
+                m_kathia.Position = new CCPoint(60, s.Height / 3);
             }
         }
     };
@@ -386,10 +386,10 @@ namespace tests
             m_tamara.Opacity = 128;
 
             m_grossini.Rotation = 120;
-            m_grossini.Position = new CCPoint(s.width / 2, s.height / 2);
+            m_grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
             m_grossini.Color = new ccColor3B(255, 0, 0);
 
-            m_kathia.Position = new CCPoint(s.width - 100, s.height / 2);
+            m_kathia.Position = new CCPoint(s.Width - 100, s.Height / 2);
             m_kathia.Color = new ccColor3B(0, 0, 255); // ccTypes.ccBLUE
         }
 
@@ -409,7 +409,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var actionTo = CCMoveTo.Create(2, new CCPoint(s.width - 40, s.height - 40));
+            var actionTo = CCMoveTo.Create(2, new CCPoint(s.Width - 40, s.Height - 40));
             var actionBy = CCMoveBy.Create(2, new CCPoint(80, 80));
             var actionByBack = actionBy.Reverse();
 
@@ -498,13 +498,13 @@ namespace tests
             var uL = CCLayerColor.Create(new ccColor4B(255, 0, 0, 255));
             box.AddChild(uL);
             uL.ContentSize = new CCSize(markrside, markrside);
-            uL.Position = new CCPoint(0.0f, boxSize.height - markrside);
+            uL.Position = new CCPoint(0.0f, boxSize.Height - markrside);
             uL.AnchorPoint = new CCPoint(0, 0);
 
             var uR = CCLayerColor.Create(new ccColor4B(0, 0, 255, 255));
             box.AddChild(uR);
             uR.ContentSize = new CCSize(markrside, markrside);
-            uR.Position = new CCPoint(boxSize.width - markrside, boxSize.height - markrside);
+            uR.Position = new CCPoint(boxSize.Width - markrside, boxSize.Height - markrside);
             uR.AnchorPoint = new CCPoint(0, 0);
             AddChild(box);
 
@@ -595,8 +595,8 @@ namespace tests
 
             // sprite 1
             ccBezierConfig bezier;
-            bezier.ControlPoint1 = new CCPoint(0, s.height / 2);
-            bezier.ControlPoint2 = new CCPoint(300, -s.height / 2);
+            bezier.ControlPoint1 = new CCPoint(0, s.Height / 2);
+            bezier.ControlPoint2 = new CCPoint(300, -s.Height / 2);
             bezier.EndPosition = new CCPoint(300, 100);
 
             var bezierForward = CCBezierBy.Create(3, bezier);
@@ -607,8 +607,8 @@ namespace tests
             // sprite 2
             m_tamara.Position = new CCPoint(80, 160);
             ccBezierConfig bezier2;
-            bezier2.ControlPoint1 = new CCPoint(100, s.height / 2);
-            bezier2.ControlPoint2 = new CCPoint(200, -s.height / 2);
+            bezier2.ControlPoint1 = new CCPoint(100, s.Height / 2);
+            bezier2.ControlPoint2 = new CCPoint(200, -s.Height / 2);
             bezier2.EndPosition = new CCPoint(240, 160);
 
             var bezierTo1 = CCBezierTo.Create(2, bezier2);
@@ -809,7 +809,7 @@ namespace tests
         {
             var s = CCDirector.SharedDirector.WinSize;
             var label = CCLabelTTF.Create("callback 1 called", "arial", 16);
-            label.Position = new CCPoint(s.width / 4 * 1, s.height / 2);
+            label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
             AddChild(label);
         }
@@ -818,7 +818,7 @@ namespace tests
         {
             var s = CCDirector.SharedDirector.WinSize;
             var label = CCLabelTTF.Create("callback 2 called", "arial", 16);
-            label.Position = new CCPoint(s.width / 4 * 2, s.height / 2);
+            label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
             AddChild(label);
         }
@@ -827,7 +827,7 @@ namespace tests
         {
             var s = CCDirector.SharedDirector.WinSize;
             var label = CCLabelTTF.Create("callback 3 called", "arial", 16);
-            label.Position = new CCPoint(s.width / 4 * 3, s.height / 2);
+            label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
 
             AddChild(label);
         }
@@ -870,7 +870,7 @@ namespace tests
         {
             var s = CCDirector.SharedDirector.WinSize;
             var label = CCLabelTTF.Create("callback 1 called", "arial", 16);
-            label.Position = new CCPoint(s.width / 4 * 1, s.height / 2);
+            label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
             AddChild(label);
         }
@@ -879,7 +879,7 @@ namespace tests
         {
             var s = CCDirector.SharedDirector.WinSize;
             var label = CCLabelTTF.Create("callback 2 called", "arial", 16);
-            label.Position = new CCPoint(s.width / 4 * 2, s.height / 2);
+            label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
             AddChild(label);
         }
@@ -888,7 +888,7 @@ namespace tests
         {
             var s = CCDirector.SharedDirector.WinSize;
             var label = CCLabelTTF.Create("callback 3 called", "arial", 16);
-            label.Position = new CCPoint(s.width / 4 * 3, s.height / 2);
+            label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
             AddChild(label);
         }
 
@@ -1199,15 +1199,15 @@ namespace tests
             centerSprites(1);
             var s = CCDirector.SharedDirector.WinSize;
 
-            m_grossini.Position = new CCPoint(-200, s.height / 2);
-            var move = CCMoveBy.Create(2, new CCPoint(s.width * 3, 0));
+            m_grossini.Position = new CCPoint(-200, s.Height / 2);
+            var move = CCMoveBy.Create(2, new CCPoint(s.Width * 3, 0));
             var move_back = move.Reverse();
             var seq = CCSequence.Create(move, move_back);
             var rep = CCRepeatForever.Create(seq);
 
             m_grossini.RunAction(rep);
 
-            RunAction(CCFollow.Create(m_grossini, new CCRect(0, 0, s.width * 2 - 100, s.height)));
+            RunAction(CCFollow.Create(m_grossini, new CCRect(0, 0, s.Width * 2 - 100, s.Height)));
         }
 
         public override string subtitle()
@@ -1230,9 +1230,9 @@ namespace tests
             var s = CCDirector.SharedDirector.WinSize;
 
             m_pArray.Add(new CCPoint(0, 0));
-            m_pArray.Add(new CCPoint(s.width / 2 - 30, 0));
-            m_pArray.Add(new CCPoint(s.width / 2 - 30, s.height - 80));
-            m_pArray.Add(new CCPoint(0, s.height - 80));
+            m_pArray.Add(new CCPoint(s.Width / 2 - 30, 0));
+            m_pArray.Add(new CCPoint(s.Width / 2 - 30, s.Height - 80));
+            m_pArray.Add(new CCPoint(0, s.Height - 80));
             m_pArray.Add(new CCPoint(0, 0));
 
             //
@@ -1260,7 +1260,7 @@ namespace tests
 
             var seq2 = CCSequence.Create(action2, reverse2);
 
-            m_kathia.SetPosition(s.width / 2, 50);
+            m_kathia.SetPosition(s.Width / 2, 50);
             m_kathia.RunAction(seq2);
         }
 
@@ -1277,7 +1277,7 @@ namespace tests
             var s = CCDirector.SharedDirector.WinSize;
 
             DrawManager.PushMatrix();
-            DrawManager.Translate(s.width / 2, 50, 0);
+            DrawManager.Translate(s.Width / 2, 50, 0);
             CCDrawingPrimitives.DrawCardinalSpline(m_pArray, 1, 100);
             DrawManager.PopMatrix();
         }
@@ -1319,11 +1319,11 @@ namespace tests
 
             m_pArray.Add(new CCPoint(0, 0));
             m_pArray.Add(new CCPoint(80, 80));
-            m_pArray.Add(new CCPoint(s.width - 80, 80));
-            m_pArray.Add(new CCPoint(s.width - 80, s.height - 80));
-            m_pArray.Add(new CCPoint(80, s.height - 80));
+            m_pArray.Add(new CCPoint(s.Width - 80, 80));
+            m_pArray.Add(new CCPoint(s.Width - 80, s.Height - 80));
+            m_pArray.Add(new CCPoint(80, s.Height - 80));
             m_pArray.Add(new CCPoint(80, 80));
-            m_pArray.Add(new CCPoint(s.width / 2, s.height / 2));
+            m_pArray.Add(new CCPoint(s.Width / 2, s.Height / 2));
 
             var action = CCCatmullRomBy.Create(3, m_pArray);
             var reverse = action.Reverse();
@@ -1341,11 +1341,11 @@ namespace tests
 
             m_pArray2.Clear();
 
-            m_pArray2.Add(new CCPoint(s.width / 2, 30));
-            m_pArray2.Add(new CCPoint(s.width - 80, 30));
-            m_pArray2.Add(new CCPoint(s.width - 80, s.height - 80));
-            m_pArray2.Add(new CCPoint(s.width / 2, s.height - 80));
-            m_pArray2.Add(new CCPoint(s.width / 2, 30));
+            m_pArray2.Add(new CCPoint(s.Width / 2, 30));
+            m_pArray2.Add(new CCPoint(s.Width - 80, 30));
+            m_pArray2.Add(new CCPoint(s.Width - 80, s.Height - 80));
+            m_pArray2.Add(new CCPoint(s.Width / 2, s.Height - 80));
+            m_pArray2.Add(new CCPoint(s.Width / 2, 30));
 
             var action2 = CCCatmullRomTo.Create(3, m_pArray2);
             var reverse2 = action2.Reverse();

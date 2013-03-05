@@ -26,7 +26,7 @@ namespace tests
             CCMenu menu = CCMenu.Create(item);
             AddChild(menu);
             CCSize s = CCDirector.SharedDirector.WinSize;
-            menu.Position = (new CCPoint(s.width / 2, 100));
+            menu.Position = (new CCPoint(s.Width / 2, 100));
         }
 
         public override void TouchesMoved(List<cocos2d.CCTouch> touches, cocos2d.CCEvent event_)
@@ -38,7 +38,7 @@ namespace tests
             CCPoint start = touch.LocationInView;
             start = CCDirector.SharedDirector.ConvertToGl(start);
 
-            CCPoint diff = new CCPoint(s.width / 2 - start.x, s.height / 2 - start.y);
+            CCPoint diff = new CCPoint(s.Width / 2 - start.x, s.Height / 2 - start.y);
             diff = CCPointExtension.ccpNormalize(diff);
 
             CCLayerGradient gradient = (CCLayerGradient)GetChildByTag(1);

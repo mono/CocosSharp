@@ -21,7 +21,7 @@ namespace cocos2d
             get { return m_position; }
             set
             {
-                if (!value.@equals(m_position))
+                if (!value.Equals(m_position))
                 {
                     m_position = value;
                     m_positionInPixels.x = value.x * CCDirector.SharedDirector.ContentScaleFactor;

@@ -229,7 +229,7 @@ namespace cocos2d
         */
         public static CCPoint ccpFromSize(CCSize s)
         {
-            return ccp(s.width, s.height);
+            return ccp(s.Width, s.Height);
         }
 
         /** Run a math operation function on each point component

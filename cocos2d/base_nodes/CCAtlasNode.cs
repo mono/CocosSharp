@@ -149,8 +149,8 @@ namespace cocos2d
         private void CalculateMaxItems()
         {
             CCSize s = m_pTextureAtlas.Texture.ContentSize;
-            m_uItemsPerColumn = (int) (s.height / m_uItemHeight);
-            m_uItemsPerRow = (int) (s.width / m_uItemWidth);
+            m_uItemsPerColumn = (int) (s.Height / m_uItemHeight);
+            m_uItemsPerRow = (int) (s.Width / m_uItemWidth);
         }
 
         public virtual void UpdateAtlasValues()

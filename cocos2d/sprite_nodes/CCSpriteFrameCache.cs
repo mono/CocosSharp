@@ -173,7 +173,7 @@ namespace cocos2d
                     // create frame
                     spriteFrame = new CCSpriteFrame();
                     spriteFrame.InitWithTexture(pobTexture,
-                                                new CCRect(textureRect.origin.x, textureRect.origin.y, spriteSize.width, spriteSize.height),
+                                                new CCRect(textureRect.origin.x, textureRect.origin.y, spriteSize.Width, spriteSize.Height),
                                                 textureRotated,
                                                 spriteOffset,
                                                 spriteSourceSize);

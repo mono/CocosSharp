@@ -50,7 +50,7 @@ namespace cocos2d
             base.OnEnter();
 
             CCSize s = CCDirector.SharedDirector.WinSize;
-            float aspect = s.width / s.height;
+            float aspect = s.Width / s.Height;
             var x = (int) (12 * aspect);
             int y = 12;
 

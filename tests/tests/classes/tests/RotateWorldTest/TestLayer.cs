@@ -13,8 +13,8 @@ namespace tests
             base.OnEnter();
             float x, y;
             CCSize size = CCDirector.SharedDirector.WinSize;
-            x = size.width;
-            y = size.height;
+            x = size.Width;
+            y = size.Height;
             //CCMutableArray *array = [UIFont familyNames];
             //for( CCString *s in array )
             //	NSLog( s );

@@ -14,17 +14,17 @@ namespace tests
             CCLabelBMFont label = null;
             label = CCLabelBMFont.Create("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, s.height / 2 + 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 2 + 50);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             label = CCLabelBMFont.Create("fafefifofu", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, s.height / 2);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 2);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             label = CCLabelBMFont.Create("aeiou", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, s.height / 2 - 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 2 - 50);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
         }
 

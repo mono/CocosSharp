@@ -16,7 +16,7 @@ namespace tests
             // Title
             CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 32);
             AddChild(label, 1);
-            label.Position = new CCPoint(s.width / 2, s.height - 32);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 32);
             label.Color = new ccColor3B(255, 255, 40);
 
             // Subtitle
@@ -25,7 +25,7 @@ namespace tests
             {
                 CCLabelTTF l = CCLabelTTF.Create(strSubTitle, "arial", 16);
                 AddChild(l, 1);
-                l.Position = new CCPoint(s.width / 2, s.height - 80);
+                l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }
 
             lastRenderedCount = 0;
@@ -40,12 +40,12 @@ namespace tests
 
             CCMenu menu = CCMenu.Create(decrease, increase);
             menu.AlignItemsHorizontally();
-            menu.Position = new CCPoint(s.width / 2, s.height / 2 + 15);
+            menu.Position = new CCPoint(s.Width / 2, s.Height / 2 + 15);
             AddChild(menu, 1);
 
             CCLabelTTF infoLabel = CCLabelTTF.Create("0 nodes", "arial", 30);
             infoLabel.Color = new ccColor3B(0, 200, 20);
-            infoLabel.Position = new CCPoint(s.width / 2, s.height / 2 - 15);
+            infoLabel.Position = new CCPoint(s.Width / 2, s.Height / 2 - 15);
             AddChild(infoLabel, 1, PerformanceNodeChildrenTest.kTagInfoLayer);
 
             NodeChildrenMenuLayer pMenu = new NodeChildrenMenuLayer(true, PerformanceNodeChildrenTest.TEST_COUNT, PerformanceNodeChildrenTest.s_nCurCase);

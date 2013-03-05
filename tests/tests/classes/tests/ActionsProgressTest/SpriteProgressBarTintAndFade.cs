@@ -1,4 +1,4 @@
-﻿using cocos2d;
+using cocos2d;
 
 namespace tests
 {
@@ -28,7 +28,7 @@ namespace tests
             //    Setup for a vertical bar since the bar change rate is 0 for x meaning no horizontal change
             left.BarChangeRate = new CCPoint(1, 0);
             AddChild(left);
-            left.Position = new CCPoint(100, s.height / 2);
+            left.Position = new CCPoint(100, s.Height / 2);
             left.RunAction(CCRepeatForever.Create((CCActionInterval) to.Copy()));
             left.RunAction(CCRepeatForever.Create((CCActionInterval) tint.Copy()));
 
@@ -41,7 +41,7 @@ namespace tests
             //    Setup for a vertical bar since the bar change rate is 0 for x meaning no horizontal change
             middle.BarChangeRate = new CCPoint(1, 1);
             AddChild(middle);
-            middle.Position = new CCPoint(s.width / 2, s.height / 2);
+            middle.Position = new CCPoint(s.Width / 2, s.Height / 2);
             middle.RunAction(CCRepeatForever.Create((CCActionInterval) to.Copy()));
             middle.RunAction(CCRepeatForever.Create((CCActionInterval) fade.Copy()));
 
@@ -54,7 +54,7 @@ namespace tests
             //    Setup for a vertical bar since the bar change rate is 0 for x meaning no horizontal change
             right.BarChangeRate = new CCPoint(0, 1);
             AddChild(right);
-            right.Position = new CCPoint(s.width - 100, s.height / 2);
+            right.Position = new CCPoint(s.Width - 100, s.Height / 2);
             right.RunAction(CCRepeatForever.Create((CCActionInterval) to.Copy()));
             right.RunAction(CCRepeatForever.Create((CCActionInterval) tint.Copy()));
             right.RunAction(CCRepeatForever.Create((CCActionInterval) fade.Copy()));

@@ -38,7 +38,7 @@ namespace tests
             //
 
             CCSprite sprite = CCSprite.Create("grossini_dance_01.png");
-            sprite.Position = (new CCPoint(s.width * 0.5f, s.height * 0.5f));
+            sprite.Position = (new CCPoint(s.Width * 0.5f, s.Height * 0.5f));
 
             CCSpriteBatchNode spriteBatch = CCSpriteBatchNode.Create("animations/grossini-aliases");
             spriteBatch.AddChild(sprite);

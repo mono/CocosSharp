@@ -156,14 +156,14 @@ namespace cocos2d
             }
             if (m_titleLabel != null)
             {
-                m_titleLabel.Position = new CCPoint(ContentSize.width / 2, ContentSize.height / 2);
+                m_titleLabel.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
             }
 
             // Update the background sprite
             BackgroundSprite = GetBackgroundSpriteForState(m_eState);
             if (m_backgroundSprite != null)
             {
-                m_backgroundSprite.Position = new CCPoint(ContentSize.width / 2, ContentSize.height / 2);
+                m_backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
             }
 
             // Get the title label size
@@ -179,7 +179,7 @@ namespace cocos2d
                 // Add the margins
                 if (m_backgroundSprite != null)
                 {
-                    m_backgroundSprite.ContentSize = new CCSize(titleLabelSize.width + m_marginH * 2, titleLabelSize.height + m_marginV * 2);
+                    m_backgroundSprite.ContentSize = new CCSize(titleLabelSize.Width + m_marginH * 2, titleLabelSize.Height + m_marginV * 2);
                 }
             }
             else
@@ -188,13 +188,13 @@ namespace cocos2d
                 if (m_backgroundSprite != null)
                 {
                     CCSize preferredSize = m_backgroundSprite.PreferredSize;
-                    if (preferredSize.width <= 0)
+                    if (preferredSize.Width <= 0)
                     {
-                        preferredSize.width = titleLabelSize.width;
+                        preferredSize.Width = titleLabelSize.Width;
                     }
-                    if (preferredSize.height <= 0)
+                    if (preferredSize.Height <= 0)
                     {
-                        preferredSize.height = titleLabelSize.height;
+                        preferredSize.Height = titleLabelSize.Height;
                     }
 
                     m_backgroundSprite.ContentSize = preferredSize;
@@ -214,18 +214,18 @@ namespace cocos2d
             }
 
             CCRect maxRect = CCControlUtils.CCRectUnion(rectTitle, rectBackground);
-            ContentSize = new CCSize(maxRect.size.width, maxRect.size.height);
+            ContentSize = new CCSize(maxRect.size.Width, maxRect.size.Height);
 
             if (m_titleLabel != null)
             {
-                m_titleLabel.Position = new CCPoint(ContentSize.width / 2, ContentSize.height / 2);
+                m_titleLabel.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
                 // Make visible label
                 m_titleLabel.Visible = true;
             }
 
             if (m_backgroundSprite != null)
             {
-                m_backgroundSprite.Position = new CCPoint(ContentSize.width / 2, ContentSize.height / 2);
+                m_backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
                 // Make visible the background
                 m_backgroundSprite.Visible = true;
             }
@@ -261,7 +261,7 @@ namespace cocos2d
             get { return m_preferredSize; }
             set
             {
-                if (value.width == 0 && value.height == 0)
+                if (value.Width == 0 && value.Height == 0)
                 {
                     m_doesAdjustBackgroundImage = true;
                 }
@@ -756,12 +756,12 @@ namespace cocos2d
             sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
             AddChild(sprite);
 
-            if (m_preferredSize.width != 0 || m_preferredSize.height != 0)
+            if (m_preferredSize.Width != 0 || m_preferredSize.Height != 0)
             {
-                if (oldPreferredSize.equals(m_preferredSize))
+                if (oldPreferredSize.Equals(m_preferredSize))
                 {
                     // Force update of preferred size
-                    sprite.PreferredSize = new CCSize(oldPreferredSize.width + 1, oldPreferredSize.height + 1);
+                    sprite.PreferredSize = new CCSize(oldPreferredSize.Width + 1, oldPreferredSize.Height + 1);
                 }
 
                 sprite.PreferredSize = m_preferredSize;

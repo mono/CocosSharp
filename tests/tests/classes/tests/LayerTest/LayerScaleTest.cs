@@ -18,20 +18,20 @@ namespace tests
             this.TouchEnabled = true;
 
             CCSize s = CCDirector.SharedDirector.WinSize;
-            CCLayerColor layer = CCLayerColor.Create(new ccColor4B(0xFF, 0x00, 0x00, 0x80), s.width * 0.75f, s.height * 0.75f);
+            CCLayerColor layer = CCLayerColor.Create(new ccColor4B(0xFF, 0x00, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
 
             layer.IgnoreAnchorPointForPosition = false;
-            layer.Position = (new CCPoint(s.width / 2, s.height / 2));
+            layer.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             AddChild(layer, 1, kTagLayer);
             //
             // Add two labels using BM label class
             // CCLabelBMFont
             CCLabelBMFont label1 = CCLabelBMFont.Create("LABEL1", "fonts/konqa32.fnt");
             layer.AddChild(label1);
-            label1.Position = new CCPoint(layer.ContentSize.width / 2, layer.ContentSize.height * 0.75f);
+            label1.Position = new CCPoint(layer.ContentSize.Width / 2, layer.ContentSize.Height * 0.75f);
             CCLabelBMFont label2 = CCLabelBMFont.Create("LABEL2", "fonts/konqa32.fnt");
             layer.AddChild(label2);
-            label2.Position = new CCPoint(layer.ContentSize.width / 2, layer.ContentSize.height * 0.25f);
+            label2.Position = new CCPoint(layer.ContentSize.Width / 2, layer.ContentSize.Height * 0.25f);
             //
             // Do the sequence of actions in the bug report
             float waitTime = 3f;

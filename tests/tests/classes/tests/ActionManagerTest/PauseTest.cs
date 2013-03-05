@@ -28,7 +28,7 @@ namespace tests
 
             CCLabelTTF l = CCLabelTTF.Create("After 5 seconds grossini should move", "arial", 16);
             AddChild(l);
-            l.Position = (new CCPoint(s.width / 2, 245));
+            l.Position = (new CCPoint(s.Width / 2, 245));
 
 
             //

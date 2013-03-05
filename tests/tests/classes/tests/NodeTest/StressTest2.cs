@@ -11,7 +11,7 @@ namespace tests
             CCLayer sublayer = CCLayer.Create();
 
             CCSprite sp1 = CCSprite.Create(TestResource.s_pPathSister1);
-            sp1.Position = (new CCPoint(80, s.height / 2));
+            sp1.Position = (new CCPoint(80, s.Height / 2));
 
             CCActionInterval move = CCMoveBy.Create(3, new CCPoint(350, 0));
             CCActionInterval move_ease_inout3 = CCEaseInOut.Create((CCActionInterval) (move.Copy()), 2.0f);
@@ -22,7 +22,7 @@ namespace tests
 
             CCParticleFire fire = CCParticleFire.Create();
             fire.Texture = (CCTextureCache.SharedTextureCache.AddImage("Images/fire"));
-            fire.Position = (new CCPoint(80, s.height / 2 - 50));
+            fire.Position = (new CCPoint(80, s.Height / 2 - 50));
 
             var copy_seq3 = (CCActionInterval) (seq3.Copy());
 

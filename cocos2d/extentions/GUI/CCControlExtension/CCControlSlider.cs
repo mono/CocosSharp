@@ -171,21 +171,21 @@ namespace cocos2d
 
                 // Defines the content size
                 CCRect maxRect = CCControlUtils.CCRectUnion(backgroundSprite.BoundingBox, thumbSprite.BoundingBox);
-                ContentSize = new CCSize(maxRect.size.width, maxRect.size.height);
+                ContentSize = new CCSize(maxRect.size.Width, maxRect.size.Height);
 
                 //setContentSize(CCSizeMake(backgroundSprite->getContentSize().width, thumbItem->getContentSize().height));
                 // Add the slider background
                 m_backgroundSprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-                m_backgroundSprite.Position = new CCPoint(ContentSize.width / 2, ContentSize.height / 2);
+                m_backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
                 AddChild(m_backgroundSprite);
 
                 // Add the progress bar
                 m_progressSprite.AnchorPoint = new CCPoint(0.0f, 0.5f);
-                m_progressSprite.Position = new CCPoint(0.0f, ContentSize.height / 2);
+                m_progressSprite.Position = new CCPoint(0.0f, ContentSize.Height / 2);
                 AddChild(m_progressSprite);
 
                 // Add the slider thumb  
-                m_thumbSprite.Position = new CCPoint(0, ContentSize.height / 2);
+                m_thumbSprite.Position = new CCPoint(0, ContentSize.Height / 2);
                 AddChild(m_thumbSprite);
 
                 // Init default values
@@ -262,9 +262,9 @@ namespace cocos2d
             {
                 touchLocation.x = 0;
             }
-            else if (touchLocation.x > m_backgroundSprite.ContentSize.width)
+            else if (touchLocation.x > m_backgroundSprite.ContentSize.Width)
             {
-                touchLocation.x = m_backgroundSprite.ContentSize.width;
+                touchLocation.x = m_backgroundSprite.ContentSize.Width;
             }
             return touchLocation;
         }
@@ -275,10 +275,10 @@ namespace cocos2d
             touchLocation = Parent.ConvertToNodeSpace(touchLocation);
 
             CCRect rect = BoundingBox;
-            rect.size.width += m_thumbSprite.ContentSize.width;
-            rect.origin.x -= m_thumbSprite.ContentSize.width / 2;
+            rect.size.Width += m_thumbSprite.ContentSize.Width;
+            rect.origin.x -= m_thumbSprite.ContentSize.Width / 2;
 
-            return rect.containsPoint(touchLocation);
+            return rect.ContainsPoint(touchLocation);
         }
 
         public override bool TouchBegan(CCTouch touch, CCEvent pEvent)
@@ -313,12 +313,12 @@ namespace cocos2d
             float percent = (m_value - m_minimumValue) / (m_maximumValue - m_minimumValue);
 
             CCPoint pos = m_thumbSprite.Position;
-            pos.x = percent * m_backgroundSprite.ContentSize.width;
+            pos.x = percent * m_backgroundSprite.ContentSize.Width;
             m_thumbSprite.Position = pos;
 
             // Stretches content proportional to newLevel
             CCRect textureRect = m_progressSprite.TextureRect;
-            textureRect = new CCRect(textureRect.origin.x, textureRect.origin.y, pos.x, textureRect.size.height);
+            textureRect = new CCRect(textureRect.origin.x, textureRect.origin.y, pos.x, textureRect.size.Height);
             m_progressSprite.SetTextureRect(textureRect, m_progressSprite.IsTextureRectRotated, textureRect.size);
         }
 
@@ -326,7 +326,7 @@ namespace cocos2d
 
         protected float ValueForLocation(CCPoint location)
         {
-            float percent = location.x / m_backgroundSprite.ContentSize.width;
+            float percent = location.x / m_backgroundSprite.ContentSize.Width;
             return Math.Max(Math.Min(m_minimumValue + percent * (m_maximumValue - m_minimumValue), m_maximumAllowedValue), m_minimumAllowedValue);
         }
     };

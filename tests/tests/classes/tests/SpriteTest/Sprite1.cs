@@ -13,7 +13,7 @@ namespace tests
             TouchEnabled = true;
 
             CCSize s = CCDirector.SharedDirector.WinSize;
-            addNewSpriteWithCoords(new CCPoint(s.width / 2, s.height / 2));
+            addNewSpriteWithCoords(new CCPoint(s.Width / 2, s.Height / 2));
         }
 
         public void addNewSpriteWithCoords(CCPoint p)

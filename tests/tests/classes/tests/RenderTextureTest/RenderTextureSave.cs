@@ -16,8 +16,8 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // create a render texture, this is what we are going to draw into
-            m_pTarget = CCRenderTexture.Create((int) s.width, (int) s.height, SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.PreserveContents);
-            m_pTarget.Position = new CCPoint(s.width / 2, s.height / 2);
+            m_pTarget = CCRenderTexture.Create((int) s.Width, (int) s.Height, SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.PreserveContents);
+            m_pTarget.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
             // note that the render texture is a CCNode, and contains a sprite of its texture for convience,
             // so we can just parent it to the scene like any other CCNode
@@ -35,7 +35,7 @@ namespace tests
             CCMenu menu = CCMenu.Create(item1, item2);
             AddChild(menu);
             menu.AlignItemsVertically();
-            menu.Position = new CCPoint(s.width - 80, s.height - 30);
+            menu.Position = new CCPoint(s.Width - 80, s.Height - 30);
         }
 
         public override string title()

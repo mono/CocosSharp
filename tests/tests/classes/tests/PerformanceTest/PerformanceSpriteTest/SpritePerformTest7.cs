@@ -18,7 +18,7 @@ namespace tests
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
             if (Random.Float_0_1() < 0.2f)
-                pSprite.Position = new CCPoint((Random.Next() % (int) size.width), (Random.Next() % (int) size.height));
+                pSprite.Position = new CCPoint((Random.Next() % (int) size.Width), (Random.Next() % (int) size.Height));
             else
                 pSprite.Position = new CCPoint(-1000, -1000);
 

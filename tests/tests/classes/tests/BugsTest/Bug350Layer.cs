@@ -14,7 +14,7 @@ namespace tests
             {
                 CCSize size = CCDirector.SharedDirector.WinSize;
                 CCSprite background = CCSprite.Create("Hello");
-                background.Position = new CCPoint(size.width / 2, size.height / 2);
+                background.Position = new CCPoint(size.Width / 2, size.Height / 2);
                 AddChild(background);
                 return true;
             }

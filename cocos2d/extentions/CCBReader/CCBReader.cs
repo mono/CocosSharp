@@ -628,7 +628,7 @@ namespace cocos2d
                 if (String.IsNullOrEmpty(spriteSheet))
                 {
                     CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.removeExtention(spriteFile));
-                    var bounds = new CCRect(0, 0, texture.ContentSize.width, texture.ContentSize.height);
+                    var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
                     spriteFrame = CCSpriteFrame.Create(texture, bounds);
                 }
                 else

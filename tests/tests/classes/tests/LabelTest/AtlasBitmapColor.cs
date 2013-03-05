@@ -36,18 +36,18 @@ namespace tests
             label = CCLabelBMFont.Create("Blue", "fonts/bitmapFontTest5.fnt");
             label.Color = ccBLUE;
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, s.height / 4);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             label = CCLabelBMFont.Create("Red", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, 2 * s.height / 4);
+            label.Position = new CCPoint(s.Width / 2, 2 * s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
             label.Color = ccRED;
 
             label = CCLabelBMFont.Create("G", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, 3 * s.height / 4);
+            label.Position = new CCPoint(s.Width / 2, 3 * s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
             label.Color = ccGREEN;
             label.SetString("Green");

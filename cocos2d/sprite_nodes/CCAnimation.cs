@@ -135,7 +135,7 @@ namespace cocos2d
 
         public void AddSprite(CCSprite sprite)
         {
-            CCSpriteFrame f = CCSpriteFrame.Create(sprite.Texture, new CCRect(0, 0, sprite.ContentSize.width, sprite.ContentSize.height));
+            CCSpriteFrame f = CCSpriteFrame.Create(sprite.Texture, new CCRect(0, 0, sprite.ContentSize.Width, sprite.ContentSize.Height));
             AddSpriteFrame(f);
         }
 

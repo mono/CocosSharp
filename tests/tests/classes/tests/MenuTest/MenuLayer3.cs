@@ -59,9 +59,9 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            item1.Position = new CCPoint(s.width / 2 - 150, s.height / 2);
-            item2.Position = new CCPoint(s.width / 2 - 200, s.height / 2);
-            item3.Position = new CCPoint(s.width / 2, s.height / 2 - 100);
+            item1.Position = new CCPoint(s.Width / 2 - 150, s.Height / 2);
+            item2.Position = new CCPoint(s.Width / 2 - 200, s.Height / 2);
+            item3.Position = new CCPoint(s.Width / 2, s.Height / 2 - 100);
             CCJumpBy jump = CCJumpBy.Create(3, new CCPoint(400, 0), 50, 4);
             item2.RunAction(CCRepeatForever.Create(
                                         (CCActionInterval)(CCSequence.Create(jump, jump.Reverse()))

@@ -21,7 +21,7 @@ namespace tests
             //
             // parents
             aParent = CCSpriteBatchNode.Create("animations/grossini", 50);
-            aParent.Position = (new CCPoint(s.width / 3, s.height / 2));
+            aParent.Position = (new CCPoint(s.Width / 3, s.Height / 2));
             AddChild(aParent, 0);
 
             sprite1 = CCSprite.Create("grossini_dance_01.png");
@@ -44,7 +44,7 @@ namespace tests
             // Sprite
             //
             aParent = CCNode.Create();
-            aParent.Position = (new CCPoint(2 * s.width / 3, s.height / 2));
+            aParent.Position = (new CCPoint(2 * s.Width / 3, s.Height / 2));
             AddChild(aParent, 0);
 
             sprite1 = CCSprite.Create("grossini_dance_01.png");

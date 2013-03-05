@@ -61,14 +61,14 @@ namespace cocos2d
 
             CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 28);
             AddChild(label, 1);
-            label.Position = new CCPoint(s.width / 2, s.height - 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             string strSubtitle = subtitle();
             if (strSubtitle != null)
             {
                 CCLabelTTF l = CCLabelTTF.Create(strSubtitle, "arial", 16);
                 AddChild(l, 1);
-                l.Position = new CCPoint(s.width / 2, s.height - 80);
+                l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }
 
             CCMenuItemImage item1 = CCMenuItemImage.Create(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
@@ -78,9 +78,9 @@ namespace cocos2d
             CCMenu menu = new CCMenu(item1, item2, item3);
 
             menu.Position = new CCPoint();
-            item1.Position = new CCPoint(s.width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.width / 2, 30);
-            item3.Position = new CCPoint(s.width / 2 + 100, 30);
+            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
+            item2.Position = new CCPoint(s.Width / 2, 30);
+            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
 
             AddChild(menu, 1);
 
@@ -263,7 +263,7 @@ namespace cocos2d
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            label.Position = new CCPoint(s.width / 2, s.height / 2);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 2);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
 
@@ -298,7 +298,7 @@ namespace cocos2d
             // Bottom Label
             CCLabelBMFont label2 = CCLabelBMFont.Create("00.0", "fonts/bitmapFontTest.fnt");
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
-            label2.Position = new CCPoint(s.width / 2.0f, 80);
+            label2.Position = new CCPoint(s.Width / 2.0f, 80);
 
             CCSprite lastChar = (CCSprite)label2.GetChildByTag(3);
             lastChar.RunAction((CCAction)(rot_4ever.Copy()));
@@ -349,7 +349,7 @@ namespace cocos2d
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            label.Position = new CCPoint(s.width / 2, s.height / 2);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 2);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
         }
         public override string title()
@@ -374,17 +374,17 @@ namespace cocos2d
             CCLabelBMFont label = null;
             label = CCLabelBMFont.Create("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, s.height / 2 + 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 2 + 50);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             label = CCLabelBMFont.Create("fafefifofu", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, s.height / 2);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 2);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             label = CCLabelBMFont.Create("aeiou", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, s.height / 2 - 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 2 - 50);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
         }
 
@@ -430,18 +430,18 @@ namespace cocos2d
             label = CCLabelBMFont.Create("Blue", "fonts/bitmapFontTest5.fnt");
             label.Color = ccBLUE;
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, s.height / 4);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             label = CCLabelBMFont.Create("Red", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, 2 * s.height / 4);
+            label.Position = new CCPoint(s.Width / 2, 2 * s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
             label.Color = ccRED;
 
             label = CCLabelBMFont.Create("G", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, 3 * s.height / 4);
+            label.Position = new CCPoint(s.Width / 2, 3 * s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
             label.Color = ccGREEN;
             label.SetString("Green");
@@ -476,7 +476,7 @@ namespace cocos2d
 
                 CCSize s = CCDirector.SharedDirector.WinSize;
 
-                CCPoint p = new CCPoint(ccMacros.CCRANDOM_0_1() * s.width, ccMacros.CCRANDOM_0_1() * s.height);
+                CCPoint p = new CCPoint(ccMacros.CCRANDOM_0_1() * s.Width, ccMacros.CCRANDOM_0_1() * s.Height);
                 label.Position = p;
                 label.AnchorPoint = new CCPoint(0.5f, 0.5f);
             }
@@ -508,7 +508,7 @@ namespace cocos2d
             s = label1.ContentSize;
 
             //CCLOG("content size: %.2fx%.2f", s.width, s.height);
-            CCLog.Log("content size: {0,0:2f}x{1,0:2f}", s.width, s.height);
+            CCLog.Log("content size: {0,0:2f}x{1,0:2f}", s.Width, s.Height);
 
 
             // Center
@@ -518,7 +518,7 @@ namespace cocos2d
 
             s = label2.ContentSize;
             //CCLOG("content size: %.2fx%.2f", s.width, s.height);
-            CCLog.Log("content size: {0,0:2f}x{1,0:2f}", s.width, s.height);
+            CCLog.Log("content size: {0,0:2f}x{1,0:2f}", s.Width, s.Height);
 
             // right
             CCLabelBMFont label3 = CCLabelBMFont.Create("Multi line\nRight\nThree lines Three", "fonts/bitmapFontTest3.fnt");
@@ -530,8 +530,8 @@ namespace cocos2d
 
             s = CCDirector.SharedDirector.WinSize;
             label1.Position = new CCPoint();
-            label2.Position = new CCPoint(s.width / 2, s.height / 2);
-            label3.Position = new CCPoint(s.width, s.height);
+            label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
+            label3.Position = new CCPoint(s.Width, s.Height);
         }
 
         public override string title()
@@ -555,17 +555,17 @@ namespace cocos2d
             // CCLabelBMFont
             CCLabelBMFont label1 = CCLabelBMFont.Create("", "fonts/bitmapFontTest3.fnt");
             AddChild(label1, 0, (int)TagSprite.kTagBitmapAtlas1);
-            label1.Position = new CCPoint(s.width / 2, s.height - 100);
+            label1.Position = new CCPoint(s.Width / 2, s.Height - 100);
 
             // CCLabelTTF
             CCLabelTTF label2 = CCLabelTTF.Create("", "arial", 24);
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
-            label2.Position = new CCPoint(s.width / 2, s.height / 2);
+            label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
             // CCLabelAtlas
             CCLabelAtlas label3 = CCLabelAtlas.Create("", "fonts/tuffy_bold_italic-charmap.png", 48, 64, ' ');
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);
-            label3.Position = new CCPoint(s.width / 2, 0 + 100);
+            label3.Position = new CCPoint(s.Width / 2, 0 + 100);
 
             base.Schedule(updateStrings, 1.0f);
 
@@ -620,7 +620,7 @@ namespace cocos2d
             // CCLabelBMFont
             CCLabelBMFont label1 = CCLabelBMFont.Create("TESTING RETINA DISPLAY", "fonts/konqa32.fnt");
             AddChild(label1);
-            label1.Position = new CCPoint(s.width / 2, s.height / 2);
+            label1.Position = new CCPoint(s.Width / 2, s.Height / 2);
         }
 
         public override string title()
@@ -646,7 +646,7 @@ namespace cocos2d
             label1.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             AddChild(label1);
-            label1.Position = new CCPoint(s.width / 2, s.height / 2);
+            label1.Position = new CCPoint(s.Width / 2, s.Height / 2);
         }
 
         public override string title()

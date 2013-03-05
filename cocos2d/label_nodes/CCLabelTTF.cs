@@ -58,7 +58,7 @@ namespace cocos2d
             get { return m_tDimensions; }
             set
             {
-                if (!m_tDimensions.equals(value))
+                if (!m_tDimensions.Equals(value))
                 {
                     m_tDimensions = value;
                     if (m_pString.Length > 0)
@@ -210,7 +210,7 @@ namespace cocos2d
                 // shader program
                 //this->setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(SHADER_PROGRAM));
 
-                m_tDimensions = new CCSize(dimensions.width, dimensions.height);
+                m_tDimensions = new CCSize(dimensions.Width, dimensions.Height);
                 m_hAlignment = hAlignment;
                 m_vAlignment = vAlignment;
                 m_pFontName = fontName;

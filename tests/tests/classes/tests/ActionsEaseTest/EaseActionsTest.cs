@@ -36,7 +36,7 @@ namespace tests
 
             var label = CCLabelTTF.Create(title(), "arial", 32);
             AddChild(label);
-            label.Position = new CCPoint(s.width / 2, s.height - 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             var item1 = CCMenuItemImage.Create(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
             var item2 = CCMenuItemImage.Create(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
@@ -44,9 +44,9 @@ namespace tests
 
             var menu = CCMenu.Create(item1, item2, item3);
             menu.Position = CCPoint.Zero;
-            item1.Position = new CCPoint(s.width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.width / 2, 30);
-            item3.Position = new CCPoint(s.width / 2 + 100, 30);
+            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
+            item2.Position = new CCPoint(s.Width / 2, 30);
+            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
 
             AddChild(menu, 1);
         }
@@ -89,7 +89,7 @@ namespace tests
 
             var size = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(size.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(size.Width - 130, 0));
             var move_back = (CCActionInterval) move.Reverse();
 
             var move_ease_in = CCEaseIn.Create((CCActionInterval) move.Copy(), 2.5f);
@@ -139,7 +139,7 @@ namespace tests
 
             var size = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(size.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(size.Width - 130, 0));
 
             var move_ease_inout1 = CCEaseInOut.Create((CCActionInterval) move.Copy(), 0.65f);
             var move_ease_inout_back1 = move_ease_inout1.Reverse();
@@ -177,7 +177,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease_in = CCEaseExponentialIn.Create((CCActionInterval) (move.Copy()));
@@ -213,7 +213,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease = CCEaseExponentialInOut.Create((CCActionInterval) move.Copy());
@@ -244,7 +244,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease_in = CCEaseSineIn.Create((CCActionInterval) move.Copy());
@@ -279,7 +279,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease = CCEaseSineInOut.Create((CCActionInterval) (move.Copy()));
@@ -310,7 +310,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease_in = CCEaseElasticIn.Create((CCActionInterval) (move.Copy()));
@@ -345,7 +345,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
 
             var move_ease_inout1 = CCEaseElasticInOut.Create((CCActionInterval) (move.Copy()), 0.3f);
             var move_ease_inout_back1 = move_ease_inout1.Reverse();
@@ -383,7 +383,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease_in = CCEaseBounceIn.Create((CCActionInterval) (move.Copy()));
@@ -418,7 +418,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease = CCEaseBounceInOut.Create((CCActionInterval) (move.Copy()));
@@ -449,7 +449,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease_in = CCEaseBackIn.Create((CCActionInterval) (move.Copy()));
@@ -484,7 +484,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.width - 130, 0));
+            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease = CCEaseBackInOut.Create((CCActionInterval) (move.Copy()));
@@ -516,7 +516,7 @@ namespace tests
             var s = CCDirector.SharedDirector.WinSize;
 
             // rotate and jump
-            var jump1 = CCJumpBy.Create(4, new CCPoint(-s.width + 80, 0), 100, 4);
+            var jump1 = CCJumpBy.Create(4, new CCPoint(-s.Width + 80, 0), 100, 4);
             var jump2 = jump1.Reverse();
             var rot1 = CCRotateBy.Create(4, 360 * 2);
             var rot2 = rot1.Reverse();

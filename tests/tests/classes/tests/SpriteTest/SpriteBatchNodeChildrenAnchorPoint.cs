@@ -26,7 +26,7 @@ namespace tests
 
             // anchor (0,0)
             sprite1 = CCSprite.Create("grossini_dance_08.png");
-            sprite1.Position = (new CCPoint(s.width / 4, s.height / 2));
+            sprite1.Position = (new CCPoint(s.Width / 4, s.Height / 2));
             sprite1.AnchorPoint = (new CCPoint(0, 0));
 
             sprite2 = CCSprite.Create("grossini_dance_02.png");
@@ -52,7 +52,7 @@ namespace tests
 
             // anchor (0.5, 0.5)
             sprite1 = CCSprite.Create("grossini_dance_08.png");
-            sprite1.Position = (new CCPoint(s.width / 2, s.height / 2));
+            sprite1.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             sprite1.AnchorPoint = (new CCPoint(0.5f, 0.5f));
 
             sprite2 = CCSprite.Create("grossini_dance_02.png");
@@ -78,7 +78,7 @@ namespace tests
 
             // anchor (1,1)
             sprite1 = CCSprite.Create("grossini_dance_08.png");
-            sprite1.Position = (new CCPoint(s.width / 2 + s.width / 4, s.height / 2));
+            sprite1.Position = (new CCPoint(s.Width / 2 + s.Width / 4, s.Height / 2));
             sprite1.AnchorPoint = (new CCPoint(1, 1));
 
             sprite2 = CCSprite.Create("grossini_dance_02.png");

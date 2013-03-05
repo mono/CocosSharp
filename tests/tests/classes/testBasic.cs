@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using cocos2d;
 
 namespace tests
@@ -36,7 +36,7 @@ namespace tests
             CCMenu pMenu = CCMenu.Create(pMenuItem);
             CCSize s = CCDirector.SharedDirector.WinSize;
             pMenu.Position = CCPoint.Zero;
-            pMenuItem.Position = new CCPoint(s.width - 50, 25);
+            pMenuItem.Position = new CCPoint(s.Width - 50, 25);
 
             AddChild(pMenu, 1);
             CCApplication.SharedApplication.GamePadDPadUpdate += _GamePadDPadDelegate;

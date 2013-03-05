@@ -1,4 +1,4 @@
-﻿/****************************************************************************
+/****************************************************************************
 Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2008-2009 Jason Booth
 Copyright (c) 2011-2012 openxlive.com
@@ -43,7 +43,7 @@ namespace tests
         public CCRect rect()
         {
             CCSize s = Texture.ContentSize;
-            return new CCRect(-s.width / 2, -s.height / 2, s.width, s.height);
+            return new CCRect(-s.Width / 2, -s.Height / 2, s.Width, s.Height);
         }
 
         public bool initWithTexture(CCTexture2D aTexture)

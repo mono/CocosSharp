@@ -409,24 +409,24 @@ namespace cocos2d
                     }
                 case kCCBSizeType.kCCBSizeTypeRelativeContainer:
                     {
-                        width = containerSize.width - width;
-                        height = containerSize.height - height;
+                        width = containerSize.Width - width;
+                        height = containerSize.Height - height;
                         break;
                     }
                 case kCCBSizeType.kCCBSizeTypePercent:
                     {
-                        width = (int) (containerSize.width * width / 100.0f);
-                        height = (int) (containerSize.height * height / 100.0f);
+                        width = (int) (containerSize.Width * width / 100.0f);
+                        height = (int) (containerSize.Height * height / 100.0f);
                         break;
                     }
                 case kCCBSizeType.kCCBSizeTypeHorizontalPercent:
                     {
-                        width = (int) (containerSize.width * width / 100.0f);
+                        width = (int) (containerSize.Width * width / 100.0f);
                         break;
                     }
                 case kCCBSizeType.kCCBSizeTypeVerticalPercent:
                     {
-                        height = (int) (containerSize.height * height / 100.0f);
+                        height = (int) (containerSize.Height * height / 100.0f);
                         break;
                     }
                 case kCCBSizeType.kCCBSizeTypeMultiplyResolution:
@@ -554,7 +554,7 @@ namespace cocos2d
                 if (spriteSheet.Length == 0)
                 {
                     CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.removeExtention(spriteFile));
-                    var bounds = new CCRect(0, 0, texture.ContentSize.width, texture.ContentSize.height);
+                    var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
                     spriteFrame = CCSpriteFrame.Create(texture, bounds);
                 }
                 else

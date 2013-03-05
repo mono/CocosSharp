@@ -1,4 +1,4 @@
-﻿namespace cocos2d
+namespace cocos2d
 {
     public abstract class CCTransitionProgress : CCTransitionScene
     {
@@ -18,9 +18,9 @@
             CCSize size = CCDirector.SharedDirector.WinSize;
 
             // create the second render texture for outScene
-            CCRenderTexture texture = CCRenderTexture.Create((int) size.width, (int) size.height);
+            CCRenderTexture texture = CCRenderTexture.Create((int) size.Width, (int) size.Height);
             texture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            texture.Position = new CCPoint(size.width / 2, size.height / 2);
+            texture.Position = new CCPoint(size.Width / 2, size.Height / 2);
             texture.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             // render outScene to its texturebuffer
@@ -97,7 +97,7 @@
             //    Return the radial type that we want to use
             node.ReverseDirection = false;
             node.Percentage = 100;
-            node.Position = new CCPoint(size.width / 2, size.height / 2);
+            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;
@@ -131,7 +131,7 @@
             //    Return the radial type that we want to use
             node.ReverseDirection = true;
             node.Percentage = 100;
-            node.Position = new CCPoint(size.width / 2, size.height / 2);
+            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;
@@ -165,7 +165,7 @@
             node.BarChangeRate = new CCPoint(1, 0);
 
             node.Percentage = 100;
-            node.Position = new CCPoint(size.width / 2, size.height / 2);
+            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;
@@ -197,7 +197,7 @@
             node.BarChangeRate = new CCPoint(0, 1);
 
             node.Percentage = 100;
-            node.Position = new CCPoint(size.width / 2, size.height / 2);
+            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;
@@ -227,7 +227,7 @@
             node.BarChangeRate = new CCPoint(1, 1);
 
             node.Percentage = 0;
-            node.Position = new CCPoint(size.width / 2, size.height / 2);
+            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;
@@ -269,7 +269,7 @@
             node.BarChangeRate = new CCPoint(1, 1);
 
             node.Percentage = 100;
-            node.Position = new CCPoint(size.width / 2, size.height / 2);
+            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;

@@ -23,7 +23,7 @@ namespace tests
             //    Setup for a horizontal bar since the bar change rate is 0 for y meaning no horizontaly change
             left.BarChangeRate = new CCPoint(0, 1);
             AddChild(left);
-            left.Position = new CCPoint(100, s.height / 2);
+            left.Position = new CCPoint(100, s.Height / 2);
             left.RunAction(CCRepeatForever.Create(to1));
 
             CCProgressTimer right = CCProgressTimer.Create(s_pPathSister2);
@@ -33,7 +33,7 @@ namespace tests
             //    Setup for a horizontal bar since the bar change rate is 0 for y meaning no horizontaly change
             right.BarChangeRate = new CCPoint(0, 1);
             AddChild(right);
-            right.Position = new CCPoint(s.width - 100, s.height / 2);
+            right.Position = new CCPoint(s.Width - 100, s.Height / 2);
             right.RunAction(CCRepeatForever.Create(to2));
         }
 

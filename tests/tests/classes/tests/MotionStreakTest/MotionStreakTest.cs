@@ -78,14 +78,14 @@ namespace tests
 
             var label = CCLabelTTF.Create(title(), "arial", 32);
             AddChild(label, 0, kTagLabel);
-            label.Position = new CCPoint(s.width / 2, s.height - 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             string subTitle = this.subtitle();
             if (subTitle.Length > 0)
             {
                 var l = CCLabelTTF.Create(subTitle, "arial", 16);
                 AddChild(l, 1);
-                l.Position = new CCPoint(s.width / 2, s.height - 80);
+                l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }
 
             var item1 = CCMenuItemImage.Create(s_pPathB1, s_pPathB2, backCallback);
@@ -95,9 +95,9 @@ namespace tests
             var menu = CCMenu.Create(item1, item2, item3);
 
             menu.Position = CCPoint.Zero;
-            item1.Position = new CCPoint(s.width / 2 - item2.ContentSize.width * 2, item2.ContentSize.height / 2);
-            item2.Position = new CCPoint(s.width / 2, item2.ContentSize.height / 2);
-            item3.Position = new CCPoint(s.width / 2 + item2.ContentSize.width * 2, item2.ContentSize.height / 2);
+            item1.Position = new CCPoint(s.Width / 2 - item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
+            item2.Position = new CCPoint(s.Width / 2, item2.ContentSize.Height / 2);
+            item3.Position = new CCPoint(s.Width / 2 + item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
 
             AddChild(menu, 1);
 
@@ -109,7 +109,7 @@ namespace tests
             var menuMode = CCMenu.Create(itemMode);
             AddChild(menuMode);
 
-            menuMode.Position = new CCPoint(s.width / 2, s.height / 4);
+            menuMode.Position = new CCPoint(s.Width / 2, s.Height / 4);
         }
 
         private void modeCallback(CCObject pSender)

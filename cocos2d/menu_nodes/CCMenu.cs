@@ -192,7 +192,7 @@ namespace cocos2d
                 AnchorPoint = new CCPoint(0.5f, 0.5f);
                 ContentSize = s;
 
-                Position = (new CCPoint(s.width / 2, s.height / 2));
+                Position = (new CCPoint(s.Width / 2, s.Height / 2));
 
                 if (items != null)
                 {
@@ -356,7 +356,7 @@ namespace cocos2d
                     {
                         continue;
                     }
-                    height += pChild.ContentSize.height * pChild.ScaleY + padding;
+                    height += pChild.ContentSize.Height * pChild.ScaleY + padding;
                 }
             }
 
@@ -371,8 +371,8 @@ namespace cocos2d
                     {
                         continue;
                     }
-                    pChild.Position = new CCPoint(0, y - pChild.ContentSize.height * pChild.ScaleY / 2.0f);
-                    y -= pChild.ContentSize.height * pChild.ScaleY + padding;
+                    pChild.Position = new CCPoint(0, y - pChild.ContentSize.Height * pChild.ScaleY / 2.0f);
+                    y -= pChild.ContentSize.Height * pChild.ScaleY + padding;
                 }
             }
         }
@@ -392,7 +392,7 @@ namespace cocos2d
                     CCNode pChild = m_pChildren[i];
                     if (pChild.Visible)
                     {
-                    width += pChild.ContentSize.width * pChild.ScaleX + padding;
+                    width += pChild.ContentSize.Width * pChild.ScaleX + padding;
                 }
             }
             }
@@ -406,8 +406,8 @@ namespace cocos2d
                     CCNode pChild = m_pChildren[i];
                     if (pChild.Visible)
                     {
-                    pChild.Position = new CCPoint(x + pChild.ContentSize.width * pChild.ScaleX / 2.0f, 0);
-                    x += pChild.ContentSize.width * pChild.ScaleX + padding;
+                    pChild.Position = new CCPoint(x + pChild.ContentSize.Width * pChild.ScaleX / 2.0f, 0);
+                    x += pChild.ContentSize.Width * pChild.ScaleX + padding;
                 }
             }
         }
@@ -438,7 +438,7 @@ namespace cocos2d
                     // can not have zero columns on a row
                     Debug.Assert(rowColumns > 0, "");
 
-                    float tmp = pChild.ContentSize.height;
+                    float tmp = pChild.ContentSize.Height;
                     rowHeight = (int) ((rowHeight >= tmp || float.IsNaN(tmp)) ? rowHeight : tmp);
 
                     ++columnsOccupied;
@@ -481,15 +481,15 @@ namespace cocos2d
                             {
                                 throw (new ArgumentException("Can not have a zero column size for a row."));
                             }
-                            w = (winSize.width - 2 * kDefaultPadding) / rowColumns; // 1 + rowColumns
+                            w = (winSize.Width - 2 * kDefaultPadding) / rowColumns; // 1 + rowColumns
                             x = w/2f; // center of column
                     }
 
-                        float tmp = pChild.ContentSize.height*pChild.ScaleY;
+                        float tmp = pChild.ContentSize.Height*pChild.ScaleY;
                     rowHeight = (int) ((rowHeight >= tmp || float.IsNaN(tmp)) ? rowHeight : tmp);
 
-                        pChild.Position = new CCPoint(kDefaultPadding + x - (winSize.width - 2*kDefaultPadding) / 2,
-                                               y - pChild.ContentSize.height*pChild.ScaleY / 2);
+                        pChild.Position = new CCPoint(kDefaultPadding + x - (winSize.Width - 2*kDefaultPadding) / 2,
+                                               y - pChild.ContentSize.Height*pChild.ScaleY / 2);
 
                     x += w;
                     ++columnsOccupied;
@@ -542,11 +542,11 @@ namespace cocos2d
                     Debug.Assert(columnRows > 0, "");
 
                     // columnWidth = fmaxf(columnWidth, [item contentSize].width);
-                    float tmp = pChild.ContentSize.width * pChild.ScaleX;
+                    float tmp = pChild.ContentSize.Width * pChild.ScaleX;
                     columnWidth = (int)((columnWidth >= tmp || float.IsNaN(tmp)) ? columnWidth : tmp);
 
 
-                    columnHeight += (int)(pChild.ContentSize.height * pChild.ScaleY + 5);
+                    columnHeight += (int)(pChild.ContentSize.Height * pChild.ScaleY + 5);
                     ++rowsOccupied;
 
                     if (rowsOccupied >= columnRows)
@@ -591,12 +591,12 @@ namespace cocos2d
                     }
 
                     // columnWidth = fmaxf(columnWidth, [item contentSize].width);
-                    float tmp = pChild.ContentSize.width * pChild.ScaleX;
+                    float tmp = pChild.ContentSize.Width * pChild.ScaleX;
                     columnWidth = (int)((columnWidth >= tmp || float.IsNaN(tmp)) ? columnWidth : tmp);
 
                     pChild.Position = new CCPoint(x + columnWidths[column] / 2,
-                                                  y - winSize.height / 2);
-                    y -= pChild.ContentSize.height * pChild.ScaleY + 10;
+                                                  y - winSize.Height / 2);
+                    y -= pChild.ContentSize.Height * pChild.ScaleY + 10;
                     ++rowsOccupied;
 
                     if (rowsOccupied >= columnRows)
@@ -676,7 +676,7 @@ namespace cocos2d
                         CCRect r = pChild.Rect();
                         r.origin = CCPoint.Zero;
 
-                        if (r.containsPoint(local))
+                        if (r.ContainsPoint(local))
                         {
                             return pChild;
                         }

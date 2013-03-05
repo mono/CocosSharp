@@ -23,7 +23,7 @@ namespace tests
             streak = CCMotionStreak.Create(3, 3, 64, ccTypes.ccWHITE, s_streak);
             AddChild(streak);
 
-            streak.Position = (new CCPoint(s.width / 2, s.height / 2));
+            streak.Position = (new CCPoint(s.Width / 2, s.Height / 2));
         }
 
         public override void TouchesMoved(List<CCTouch> touches, CCEvent event_)

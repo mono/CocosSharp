@@ -18,23 +18,23 @@ namespace tests
             CCDrawingPrimitives.Begin();
             
             // draw a simple line
-            CCDrawingPrimitives.DrawLine(new CCPoint(0, 0), new CCPoint(s.width, s.height), new ccColor4B(255, 255, 255, 255));
+            CCDrawingPrimitives.DrawLine(new CCPoint(0, 0), new CCPoint(s.Width, s.Height), new ccColor4B(255, 255, 255, 255));
 
             // line: color, width, aliased
-            CCDrawingPrimitives.DrawLine(new CCPoint(0, s.height), new CCPoint(s.width, 0), new ccColor4B(255, 0, 0, 255));
+            CCDrawingPrimitives.DrawLine(new CCPoint(0, s.Height), new CCPoint(s.Width, 0), new ccColor4B(255, 0, 0, 255));
 
             // draw big point in the center
-            CCDrawingPrimitives.DrawPoint(new CCPoint(s.width / 2, s.height / 2), 64, new ccColor4B(0, 0, 255, 128));
+            CCDrawingPrimitives.DrawPoint(new CCPoint(s.Width / 2, s.Height / 2), 64, new ccColor4B(0, 0, 255, 128));
 
             // draw 4 small points
             CCPoint[] points = { new CCPoint(60, 60), new CCPoint(70, 70), new CCPoint(60, 70), new CCPoint(70, 60) };
             CCDrawingPrimitives.DrawPoints(points, 4, 4, new ccColor4B(0, 255, 255, 255));
 
             // draw a green circle with 10 segments
-            CCDrawingPrimitives.DrawCircle(new CCPoint(s.width / 2, s.height / 2), 100, 0, 10, false, new ccColor4B(0, 255, 0, 255));
+            CCDrawingPrimitives.DrawCircle(new CCPoint(s.Width / 2, s.Height / 2), 100, 0, 10, false, new ccColor4B(0, 255, 0, 255));
 
             // draw a green circle with 50 segments with line to center
-            CCDrawingPrimitives.DrawCircle(new CCPoint(s.width / 2, s.height / 2), 50, ccMacros.CC_DEGREES_TO_RADIANS(90), 50, true, new ccColor4B(0, 255, 255, 255));
+            CCDrawingPrimitives.DrawCircle(new CCPoint(s.Width / 2, s.Height / 2), 50, ccMacros.CC_DEGREES_TO_RADIANS(90), 50, true, new ccColor4B(0, 255, 255, 255));
 
             // open yellow poly
             CCPoint[] vertices = { new CCPoint(0, 0), new CCPoint(50, 50), new CCPoint(100, 50), new CCPoint(100, 100), new CCPoint(50, 100) };
@@ -49,17 +49,17 @@ namespace tests
             CCDrawingPrimitives.DrawPoly(vertices2, 3, true, new ccColor4B(255, 0, 255, 255));
            
             // draw quad bezier path
-            CCDrawingPrimitives.DrawQuadBezier(new CCPoint(0, s.height), 
-                new CCPoint(s.width / 2, s.height / 2),
-                new CCPoint(s.width, s.height), 
+            CCDrawingPrimitives.DrawQuadBezier(new CCPoint(0, s.Height), 
+                new CCPoint(s.Width / 2, s.Height / 2),
+                new CCPoint(s.Width, s.Height), 
                 50,
                 new ccColor4B(255, 0, 255, 255));
 
             // draw cubic bezier path
-            CCDrawingPrimitives.DrawCubicBezier(new CCPoint(s.width / 2, s.height / 2),
-                new CCPoint(s.width / 2 + 30, s.height / 2 + 50),
-                new CCPoint(s.width / 2 + 60, s.height / 2 - 50),
-                new CCPoint(s.width, s.height / 2), 100,
+            CCDrawingPrimitives.DrawCubicBezier(new CCPoint(s.Width / 2, s.Height / 2),
+                new CCPoint(s.Width / 2 + 30, s.Height / 2 + 50),
+                new CCPoint(s.Width / 2 + 60, s.Height / 2 - 50),
+                new CCPoint(s.Width, s.Height / 2), 100,
                 new ccColor4B(255, 0, 255, 255));
 
             //draw a solid polygon

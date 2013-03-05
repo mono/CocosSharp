@@ -30,7 +30,7 @@ namespace cocos2d
             Debug.Assert(pFollowedNode != null);
 
             m_pobFollowedNode = pFollowedNode;
-            if (rect.equals(CCRect.Zero))
+            if (rect.Equals(CCRect.Zero))
             {
                 m_bBoundarySet = false;
             }
@@ -42,15 +42,15 @@ namespace cocos2d
             m_bBoundaryFullyCovered = false;
 
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            m_obFullScreenSize = new CCPoint(winSize.width, winSize.height);
+            m_obFullScreenSize = new CCPoint(winSize.Width, winSize.Height);
             m_obHalfScreenSize = CCPointExtension.ccpMult(m_obFullScreenSize, 0.5f);
 
             if (m_bBoundarySet)
             {
-                m_fLeftBoundary = -((rect.origin.x + rect.size.width) - m_obFullScreenSize.x);
+                m_fLeftBoundary = -((rect.origin.x + rect.size.Width) - m_obFullScreenSize.x);
                 m_fRightBoundary = -rect.origin.x;
                 m_fTopBoundary = -rect.origin.y;
-                m_fBottomBoundary = -((rect.origin.y + rect.size.height) - m_obFullScreenSize.y);
+                m_fBottomBoundary = -((rect.origin.y + rect.size.Height) - m_obFullScreenSize.y);
 
                 if (m_fRightBoundary < m_fLeftBoundary)
                 {

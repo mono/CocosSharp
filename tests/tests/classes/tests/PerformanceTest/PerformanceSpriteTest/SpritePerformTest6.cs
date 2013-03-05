@@ -17,7 +17,7 @@ namespace tests
         private void performanceActions(CCSprite pSprite)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
-            pSprite.Position = new CCPoint((Random.Next() % (int) size.width), (Random.Next() % (int) size.height));
+            pSprite.Position = new CCPoint((Random.Next() % (int) size.Width), (Random.Next() % (int) size.Height));
 
             float period = 0.5f + (Random.Next() % 1000) / 500.0f;
             CCRotateBy rot = CCRotateBy.Create(period, 360.0f * Random.Float_0_1());

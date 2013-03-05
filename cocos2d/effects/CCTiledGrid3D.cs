@@ -130,7 +130,7 @@ namespace cocos2d
         {
             float width = m_pTexture.PixelsWide;
             float height = m_pTexture.PixelsHigh;
-            float imageH = m_pTexture.ContentSizeInPixels.height;
+            float imageH = m_pTexture.ContentSizeInPixels.Height;
 
             int numQuads = m_sGridSize.x * m_sGridSize.y;
 

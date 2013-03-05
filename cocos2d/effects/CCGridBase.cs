@@ -91,8 +91,8 @@ namespace cocos2d
             m_bIsTextureFlipped = bFlipped;
 
             CCSize texSize = m_pTexture.ContentSize;
-            m_obStep.x = texSize.width / m_sGridSize.x;
-            m_obStep.y = texSize.height / m_sGridSize.y;
+            m_obStep.x = texSize.Width / m_sGridSize.x;
+            m_obStep.y = texSize.Height / m_sGridSize.y;
 
             m_pGrabber = new CCGrabber();
             if (m_pGrabber != null)
@@ -119,8 +119,8 @@ namespace cocos2d
         {
             //ulong POTWide = ccNextPOT((uint) size.width);
             //ulong POTHigh = ccNextPOT((uint) size.width);
-            ulong potWide = (uint) size.width;
-            ulong potHigh = (uint) size.height;
+            ulong potWide = (uint) size.Width;
+            ulong potHigh = (uint) size.Height;
 
             // we only use rgba8888
             var format = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888;
@@ -188,8 +188,8 @@ namespace cocos2d
             CCSize size = m_pTexture.ContentSizeInPixels;
 
             DrawManager.SetViewPort(0, 0,
-                                    (int) (size.width * ccMacros.CC_CONTENT_SCALE_FACTOR()),
-                                    (int) (size.height * ccMacros.CC_CONTENT_SCALE_FACTOR())
+                                    (int) (size.Width * ccMacros.CC_CONTENT_SCALE_FACTOR()),
+                                    (int) (size.Height * ccMacros.CC_CONTENT_SCALE_FACTOR())
                 );
 
             /*
@@ -207,7 +207,7 @@ namespace cocos2d
             DrawManager.ViewMatrix = Matrix.Identity;
             DrawManager.ProjectionMatrix = Matrix.Identity;
             
-            Matrix projection = Matrix.CreateOrthographicOffCenter(0, size.width, 0, size.height, -1024.0f, 1024.0f);
+            Matrix projection = Matrix.CreateOrthographicOffCenter(0, size.Width, 0, size.Height, -1024.0f, 1024.0f);
             Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
             DrawManager.WorldMatrix = (halfPixelOffset * projection);
             

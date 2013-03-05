@@ -27,14 +27,14 @@ namespace tests
 
 
             CCSize s = CCDirector.SharedDirector.WinSize;
-            sprite1.Position = new CCPoint((s.width / 5) * 1, (s.height / 3) * 1);
-            sprite2.Position = new CCPoint((s.width / 5) * 2, (s.height / 3) * 1);
-            sprite3.Position = new CCPoint((s.width / 5) * 3, (s.height / 3) * 1);
-            sprite4.Position = new CCPoint((s.width / 5) * 4, (s.height / 3) * 1);
-            sprite5.Position = new CCPoint((s.width / 5) * 1, (s.height / 3) * 2);
-            sprite6.Position = new CCPoint((s.width / 5) * 2, (s.height / 3) * 2);
-            sprite7.Position = new CCPoint((s.width / 5) * 3, (s.height / 3) * 2);
-            sprite8.Position = new CCPoint((s.width / 5) * 4, (s.height / 3) * 2);
+            sprite1.Position = new CCPoint((s.Width / 5) * 1, (s.Height / 3) * 1);
+            sprite2.Position = new CCPoint((s.Width / 5) * 2, (s.Height / 3) * 1);
+            sprite3.Position = new CCPoint((s.Width / 5) * 3, (s.Height / 3) * 1);
+            sprite4.Position = new CCPoint((s.Width / 5) * 4, (s.Height / 3) * 1);
+            sprite5.Position = new CCPoint((s.Width / 5) * 1, (s.Height / 3) * 2);
+            sprite6.Position = new CCPoint((s.Width / 5) * 2, (s.Height / 3) * 2);
+            sprite7.Position = new CCPoint((s.Width / 5) * 3, (s.Height / 3) * 2);
+            sprite8.Position = new CCPoint((s.Width / 5) * 4, (s.Height / 3) * 2);
 
             CCActionInterval action = CCFadeIn.Create(2);
             CCActionInterval action_back = (CCActionInterval)action.Reverse();

@@ -20,7 +20,7 @@ namespace tests
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("animations/grossini.plist");
 
             CCSprite sprite1 = CCSprite.Create("grossini_dance_01.png");
-            sprite1.Position = (new CCPoint(s.width / 3, s.height / 2));
+            sprite1.Position = (new CCPoint(s.Width / 3, s.Height / 2));
 
             CCSprite sprite2 = CCSprite.Create("grossini_dance_02.png");
             sprite2.Position = (new CCPoint(50, 50));

@@ -1,4 +1,4 @@
-﻿using cocos2d;
+using cocos2d;
 
 namespace tests
 {
@@ -14,7 +14,7 @@ namespace tests
             bmFont.FntFile = "fonts/helvetica-32.fnt";
             bmFont.SetString("It is working!");
             AddChild(bmFont);
-            bmFont.Position = new CCPoint(s.width / 2, s.height / 4 * 2);
+            bmFont.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
         }
 
         public override string title()

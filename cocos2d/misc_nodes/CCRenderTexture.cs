@@ -83,12 +83,12 @@ namespace cocos2d
             // Calculate the adjustment ratios based on the old and new projections
             CCDirector director = CCDirector.SharedDirector;
             CCSize size = director.WinSize;
-            float widthRatio = size.width / texSize.width;
-            float heightRatio = size.height / texSize.height;
+            float widthRatio = size.Width / texSize.Width;
+            float heightRatio = size.Height / texSize.Height;
 
             DrawManager.SetRenderTarget(m_pTexture);
 
-            DrawManager.SetViewPort(0, 0, (int) texSize.width, (int) texSize.height);
+            DrawManager.SetViewPort(0, 0, (int) texSize.Width, (int) texSize.Height);
 
             Matrix projection = Matrix.CreateOrthographicOffCenter(
                 -1.0f / widthRatio, 1.0f / widthRatio,

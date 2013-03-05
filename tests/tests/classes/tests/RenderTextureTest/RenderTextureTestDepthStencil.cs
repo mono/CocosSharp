@@ -16,12 +16,12 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCSprite sprite = CCSprite.Create("Images/fire");
-            sprite.Position = new CCPoint(s.width * 0.25f, 0);
+            sprite.Position = new CCPoint(s.Width * 0.25f, 0);
             sprite.Scale = 10;
 #if IOS
-            CCRenderTexture rend = CCRenderTexture.Create((int)s.width, (int)s.height, SurfaceFormat.Color, DepthFormat.Depth16, RenderTargetUsage.DiscardContents);
+            CCRenderTexture rend = CCRenderTexture.Create((int)s.Width, (int)s.Height, SurfaceFormat.Color, DepthFormat.Depth16, RenderTargetUsage.DiscardContents);
 #else
-            CCRenderTexture rend = CCRenderTexture.Create((int)s.width, (int)s.height, SurfaceFormat.Color, DepthFormat.Depth24Stencil8, RenderTargetUsage.DiscardContents);
+            CCRenderTexture rend = CCRenderTexture.Create((int)s.Width, (int)s.Height, SurfaceFormat.Color, DepthFormat.Depth24Stencil8, RenderTargetUsage.DiscardContents);
 #endif
 
             rend.BeginWithClear(0, 0, 0, 0, 0);
@@ -61,7 +61,7 @@ namespace tests
 #endif
             
             //! move sprite half width and height, and draw only where not marked
-            sprite.Position = sprite.Position + new CCPoint(sprite.ContentSize.width * sprite.Scale, sprite.ContentSize.height * sprite.Scale) * 0.5f;
+            sprite.Position = sprite.Position + new CCPoint(sprite.ContentSize.Width * sprite.Scale, sprite.ContentSize.Height * sprite.Scale) * 0.5f;
 
             sprite.Visit();
 
@@ -70,7 +70,7 @@ namespace tests
             rend.End();
 
 
-            rend.Position = new CCPoint(s.width * 0.5f, s.height * 0.5f);
+            rend.Position = new CCPoint(s.Width * 0.5f, s.Height * 0.5f);
 
             AddChild(rend);
         }

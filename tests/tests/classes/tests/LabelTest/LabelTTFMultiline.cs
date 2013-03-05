@@ -15,9 +15,9 @@ namespace tests
             // CCLabelBMFont
             CCLabelTTF center = CCLabelTTF.Create("word wrap \"testing\" (bla0) bla1 'bla2' [bla3] (bla4) {bla5} {bla6} [bla7] (bla8) [bla9] 'bla0' \"bla1\"",
                 "Paint Boy", 32, 
-                new CCSize(s.width / 2, 200), 
+                new CCSize(s.Width / 2, 200), 
                 CCTextAlignment.CCTextAlignmentCenter);
-            center.Position = new CCPoint(s.width / 2, 150);
+            center.Position = new CCPoint(s.Width / 2, 150);
 
             AddChild(center);
         }

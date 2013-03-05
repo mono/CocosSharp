@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +22,8 @@ namespace tests
             streak = CCMotionStreak.Create(2.0f, 1.0f, 50.0f, new ccColor3B(255, 255, 0), "Images/Icon");
             AddChild(streak);
 
-            m_center = new CCPoint(size.width / 2, size.height / 2);
-            m_fRadius = size.width / 3f;
+            m_center = new CCPoint(size.Width / 2, size.Height / 2);
+            m_fRadius = size.Width / 3f;
             m_fAngle = 0.0f;
 
             Schedule(onUpdate, 0);

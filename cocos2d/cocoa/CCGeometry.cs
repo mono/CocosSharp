@@ -78,9 +78,9 @@ namespace cocos2d
 
         public override bool Equals(object obj)
         {
-            return (equals((CCPoint)obj));
+            return (Equals((CCPoint)obj));
         }
-        public bool equals(CCPoint p)
+        public bool Equals(CCPoint p)
         {
             return x == p.x && y == p.y;
         }
@@ -179,13 +179,13 @@ namespace cocos2d
     {
         public static readonly CCSize Zero = new CCSize(0, 0);
  
-        public float width;
-        public float height;
+        public float Width;
+        public float Height;
 
         public CCSize(float width, float height)
         {
-            this.width = width;
-            this.height = height;
+            this.Width = width;
+            this.Height = height;
         }
 
         /// <summary>
@@ -195,33 +195,33 @@ namespace cocos2d
         {
             get
             {
-                CCSize c = new CCSize(height, width);
+                CCSize c = new CCSize(Height, Width);
                 return (c);
             }
         }
         public static bool CCSizeEqualToSize(CCSize size1, CCSize size2)
         {
-            return ((size1.width == size2.width) && (size1.height == size2.height));
+            return ((size1.Width == size2.Width) && (size1.Height == size2.Height));
         }
 
-        public bool equals(CCSize s)
+        public bool Equals(CCSize s)
         {
-            return width == s.width && height == s.height;
+            return Width == s.Width && Height == s.Height;
         }
 
         public override bool Equals(object obj)
         {
-            return (equals((CCSize)obj));
+            return (Equals((CCSize)obj));
         }
 
-        public CCPoint center
+        public CCPoint Center
         {
-            get { return new CCPoint(width / 2f, height / 2f); }
+            get { return new CCPoint(Width / 2f, Height / 2f); }
         }
 
         public override string ToString()
         {
-            return String.Format("{0} x {1}", width, height);
+            return String.Format("{0} x {1}", Width, Height);
         }
         public static bool operator ==(CCSize p1, CCSize p2)
         {
@@ -233,19 +233,19 @@ namespace cocos2d
         }
         public static CCSize operator *(CCSize p, float f)
         {
-            return(new CCSize(p.width*f, p.height*f));
+            return(new CCSize(p.Width*f, p.Height*f));
         }
         public static CCSize operator /(CCSize p, float f)
         {
-            return (new CCSize(p.width / f, p.height / f));
+            return (new CCSize(p.Width / f, p.Height / f));
         }
         public static CCSize operator +(CCSize p, float f)
         {
-            return (new CCSize(p.width + f, p.height + f));
+            return (new CCSize(p.Width + f, p.Height + f));
         }
         public static CCSize operator -(CCSize p, float f)
         {
-            return (new CCSize(p.width - f, p.height - f));
+            return (new CCSize(p.Width - f, p.Height - f));
         }
     }
 
@@ -274,8 +274,8 @@ namespace cocos2d
             origin.x = x;
             origin.y = y;
 
-            size.width = width;
-            size.height = height;
+            size.Width = width;
+            size.Height = height;
         }
 
         /// <summary>
@@ -285,18 +285,18 @@ namespace cocos2d
         {
             get
             {
-                CCRect c = new CCRect(origin.x, origin.y, size.height, size.width);
+                CCRect c = new CCRect(origin.x, origin.y, size.Height, size.Width);
                 return (c);
             }
         }
         public float MaxX
         {
-            get { return (float) (origin.x + size.width); }
+            get { return (float) (origin.x + size.Width); }
         }
 
         public float MidX
         {
-            get { return (float) (origin.x + size.width / 2.0); }
+            get { return (float) (origin.x + size.Width / 2.0); }
         }
 
         public float MinX
@@ -306,12 +306,12 @@ namespace cocos2d
 
         public float MaxY
         {
-            get { return origin.y + size.height; }
+            get { return origin.y + size.Height; }
         }
 
         public float MidY
         {
-            get { return (float) (origin.y + size.height / 2.0); }
+            get { return (float) (origin.y + size.Height / 2.0); }
         }
 
         public float MinY
@@ -321,7 +321,7 @@ namespace cocos2d
 
         public CCRect Intersection(CCRect rect)
         {
-            if (!intersectsRect(rect))
+            if (!IntersectsRect(rect))
             {
                 return (CCRect.Zero);
             }
@@ -375,22 +375,22 @@ namespace cocos2d
             }
             return (new CCRect(minx, miny, maxx - minx, maxy - miny));
         }
-        public bool intersectsRect(CCRect rect)
+        public bool IntersectsRect(CCRect rect)
         {
             return !(MaxX < rect.MinX || rect.MaxX < MinX || MaxY < rect.MinY || rect.MaxY < MinY);
         }
 
-        public bool intersectsRect(ref CCRect rect)
+        public bool IntersectsRect(ref CCRect rect)
         {
             return !(MaxX < rect.MinX || rect.MaxX < MinX || MaxY < rect.MinY || rect.MaxY < MinY);
         }
 
-        public bool containsPoint(CCPoint point)
+        public bool ContainsPoint(CCPoint point)
         {
             return point.x >= MinX && point.x <= MaxX && point.y >= MinY && point.y <= MaxY;
         }
 
-        public bool containsPoint(float x, float y)
+        public bool ContainsPoint(float x, float y)
         {
             return x >= MinX && x <= MaxX && y >= MinY && y <= MaxY;
         }
@@ -404,13 +404,13 @@ namespace cocos2d
         // return the rightmost x-value of 'rect'
         public static float CCRectGetMaxX(CCRect rect)
         {
-            return rect.origin.x + rect.size.width;
+            return rect.origin.x + rect.size.Width;
         }
 
         // return the midpoint x-value of 'rect'
         public static float CCRectGetMidX(CCRect rect)
         {
-            return (rect.origin.x + rect.size.width / 2.0f);
+            return (rect.origin.x + rect.size.Width / 2.0f);
         }
 
         // Return the bottommost y-value of 'rect'
@@ -422,18 +422,18 @@ namespace cocos2d
         // Return the topmost y-value of 'rect'
         public static float CCRectGetMaxY(CCRect rect)
         {
-            return rect.origin.y + rect.size.height;
+            return rect.origin.y + rect.size.Height;
         }
 
         // Return the midpoint y-value of 'rect'
         public static float CCRectGetMidY(CCRect rect)
         {
-            return (rect.origin.y + rect.size.height / 2.0f);
+            return (rect.origin.y + rect.size.Height / 2.0f);
         }
 
         public static bool CCRectEqualToRect(CCRect rect1, CCRect rect2)
         {
-            return (rect1.origin.equals(rect2.origin)) && (rect1.size.equals(rect2.size));
+            return (rect1.origin.Equals(rect2.origin)) && (rect1.size.Equals(rect2.size));
         }
 
         public static bool CCRectContainsPoint(CCRect rect, CCPoint point)
@@ -476,17 +476,17 @@ namespace cocos2d
 
         public override bool Equals(object obj)
         {
-            return (equals((CCRect)obj));
+            return (Equals((CCRect)obj));
         }
 
-        public bool equals(CCRect rect)
+        public bool Equals(CCRect rect)
         {
-            return (origin.equals(rect.origin)) && (size.equals(rect.size));
+            return (origin.Equals(rect.origin)) && (size.Equals(rect.size));
         }
 
         public override string ToString()
         {
-            return String.Format("CCRect : (x={0}, y={1}, width={2}, height={3})", origin.x, origin.y, size.width, size.height);
+            return String.Format("CCRect : (x={0}, y={1}, width={2}, height={3})", origin.x, origin.y, size.Width, size.Height);
         }
     }
 }

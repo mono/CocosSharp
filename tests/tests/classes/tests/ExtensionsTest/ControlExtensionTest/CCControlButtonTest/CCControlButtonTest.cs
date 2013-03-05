@@ -31,22 +31,22 @@ namespace tests.Extensions
 				{
 					// Creates a button with this string as title
 					var button = standardButtonWithTitle(title);
-					button.Position = new CCPoint (total_width + button.ContentSize.width / 2, button.ContentSize.height / 2);
+					button.Position = new CCPoint (total_width + button.ContentSize.Width / 2, button.ContentSize.Height / 2);
 					layer.AddChild(button);
             
 					// Compute the size of the layer
-					height = button.ContentSize.height;
-					total_width += button.ContentSize.width;
+					height = button.ContentSize.Height;
+					total_width += button.ContentSize.Width;
 				}
 
 				layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
 				layer.ContentSize = new CCSize(total_width, height);
-				layer.Position = new CCPoint(screenSize.width / 2.0f, screenSize.height / 2.0f);
+				layer.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
         
 				// Add the black background
 				var background = CCScale9Sprite.Create("extensions/buttonBackground");
 				background.ContentSize = new CCSize(total_width + 14, height + 14);
-				background.Position = new CCPoint(screenSize.width / 2.0f, screenSize.height / 2.0f);
+				background.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 				AddChild(background);
 				return true;
 			}
@@ -95,7 +95,7 @@ namespace tests.Extensions
 				// Add a label in which the button events will be displayed
 				setDisplayValueLabel(CCLabelTTF.Create("No Event", "Marker Felt", 32));
 				m_pDisplayValueLabel.AnchorPoint = new CCPoint(0.5f, -1);
-				m_pDisplayValueLabel.Position = new CCPoint(screenSize.width / 2.0f, screenSize.height / 2.0f);
+				m_pDisplayValueLabel.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 				AddChild(m_pDisplayValueLabel, 1);
         
 				// Add the button
@@ -111,13 +111,13 @@ namespace tests.Extensions
 				controlButton.SetTitleColorForState(ccTypes.ccWHITE, CCControlState.Highlighted);
         
 				controlButton.AnchorPoint = new CCPoint(0.5f, 1);
-				controlButton.Position = new CCPoint(screenSize.width / 2.0f, screenSize.height / 2.0f);
+				controlButton.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 				AddChild(controlButton, 1);
 
 				// Add the black background
 				var background = CCScale9Sprite.Create("extensions/buttonBackground");
 				background.ContentSize = new CCSize(300, 170);
-				background.Position = new CCPoint(screenSize.width / 2.0f, screenSize.height / 2.0f);
+				background.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 				AddChild(background);
         
 				// Sets up event handlers
@@ -222,23 +222,23 @@ namespace tests.Extensions
 						var button = standardButtonWithTitle(Random.Next(30).ToString());
 						button.SetAdjustBackgroundImage(false);  // Tells the button that the background image must not be adjust
 															// It'll use the prefered size of the background image
-                        button.Position = new CCPoint(button.ContentSize.width / 2 + (button.ContentSize.width + space) * i,
-                                               button.ContentSize.height / 2 + (button.ContentSize.height + space) * j);
+                        button.Position = new CCPoint(button.ContentSize.Width / 2 + (button.ContentSize.Width + space) * i,
+                                               button.ContentSize.Height / 2 + (button.ContentSize.Height + space) * j);
 						layer.AddChild(button);
 
-                        max_w = Math.Max(button.ContentSize.width * (i + 1) + space * i, max_w);
-                        max_h = Math.Max(button.ContentSize.height * (j + 1) + space * j, max_h);
+                        max_w = Math.Max(button.ContentSize.Width * (i + 1) + space * i, max_w);
+                        max_h = Math.Max(button.ContentSize.Height * (j + 1) + space * j, max_h);
 					}
 				}
         
 				layer.AnchorPoint = new CCPoint (0.5f, 0.5f);
 				layer.ContentSize = new CCSize(max_w, max_h);
-				layer.Position = new CCPoint(screenSize.width / 2.0f, screenSize.height / 2.0f);
+				layer.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
         
 				// Add the black background
 				var backgroundButton = CCScale9Sprite.Create("extensions/buttonBackground");
 				backgroundButton.ContentSize = new CCSize(max_w + 14, max_h + 14);
-				backgroundButton.Position = new CCPoint(screenSize.width / 2.0f, screenSize.height / 2.0f);
+				backgroundButton.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 				AddChild(backgroundButton);
 				return true;
 			}

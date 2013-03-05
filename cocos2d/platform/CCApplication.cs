@@ -461,7 +461,7 @@ namespace cocos2d
                                 break;
                             }
 
-                            if (viewPort.containsPoint(touch.Position.X, touch.Position.Y))
+                            if (viewPort.ContainsPoint(touch.Position.X, touch.Position.Y))
                             {
                                 pos = DrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using cocos2d;
 
@@ -41,7 +41,7 @@ namespace tests
             CCSize size = CCDirector.SharedDirector.WinSize;
 
             // create and initialize a Label
-            m_pLabelShouldRetain = CCLabelBMFont.Create(LongSentencesExample, "fonts/markerFelt.fnt", size.width / 1.5f,
+            m_pLabelShouldRetain = CCLabelBMFont.Create(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 1.5f,
                                                         CCTextAlignment.CCTextAlignmentCenter);
 
             m_pArrowsBarShouldRetain = CCSprite.Create("Images/arrowsBar");
@@ -75,18 +75,18 @@ namespace tests
             right.Tag = (RightAlign);
 
             // position the label on the center of the screen
-            m_pLabelShouldRetain.Position = new CCPoint(size.width / 2, size.height / 2);
+            m_pLabelShouldRetain.Position = new CCPoint(size.Width / 2, size.Height / 2);
 
             m_pArrowsBarShouldRetain.Visible = (false);
 
-            float arrowsWidth = (ArrowsMax - ArrowsMin) * size.width;
-            m_pArrowsBarShouldRetain.ScaleX = (arrowsWidth / m_pArrowsBarShouldRetain.ContentSize.width);
-            m_pArrowsBarShouldRetain.Position = new CCPoint(((ArrowsMax + ArrowsMin) / 2) * size.width, m_pLabelShouldRetain.Position.y);
+            float arrowsWidth = (ArrowsMax - ArrowsMin) * size.Width;
+            m_pArrowsBarShouldRetain.ScaleX = (arrowsWidth / m_pArrowsBarShouldRetain.ContentSize.Width);
+            m_pArrowsBarShouldRetain.Position = new CCPoint(((ArrowsMax + ArrowsMin) / 2) * size.Width, m_pLabelShouldRetain.Position.y);
 
             snapArrowsToEdge();
 
-            stringMenu.Position = new CCPoint(size.width / 2, size.height - menuItemPaddingCenter);
-            alignmentMenu.Position = new CCPoint(size.width / 2, menuItemPaddingCenter + 15);
+            stringMenu.Position = new CCPoint(size.Width / 2, size.Height - menuItemPaddingCenter);
+            alignmentMenu.Position = new CCPoint(size.Width / 2, menuItemPaddingCenter + 15);
 
             AddChild(m_pLabelShouldRetain);
             AddChild(m_pArrowsBarShouldRetain);
@@ -152,7 +152,7 @@ namespace tests
             CCTouch touch = pTouches[0];
             CCPoint location = touch.LocationInView;
 
-            if (m_pArrowsShouldRetain.BoundingBox.containsPoint(location))
+            if (m_pArrowsShouldRetain.BoundingBox.ContainsPoint(location))
             {
                 m_drag = true;
                 m_pArrowsBarShouldRetain.Visible = true;
@@ -179,7 +179,7 @@ namespace tests
 
             CCSize winSize = CCDirector.SharedDirector.WinSize;
 
-            m_pArrowsShouldRetain.Position = new CCPoint(Math.Max(Math.Min(location.x, ArrowsMax * winSize.width), ArrowsMin * winSize.width),
+            m_pArrowsShouldRetain.Position = new CCPoint(Math.Max(Math.Min(location.x, ArrowsMax * winSize.Width), ArrowsMin * winSize.Width),
                                                          m_pArrowsShouldRetain.Position.y);
 
             float labelWidth = Math.Abs(m_pArrowsShouldRetain.Position.x - m_pLabelShouldRetain.Position.x) * 2;
@@ -190,7 +190,7 @@ namespace tests
         private void snapArrowsToEdge()
         {
             m_pArrowsShouldRetain.Position =
-                new CCPoint(m_pLabelShouldRetain.Position.x + m_pLabelShouldRetain.ContentSize.width / 2,
+                new CCPoint(m_pLabelShouldRetain.Position.x + m_pLabelShouldRetain.ContentSize.Width / 2,
                             m_pLabelShouldRetain.Position.y);
         }
 

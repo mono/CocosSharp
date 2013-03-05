@@ -298,8 +298,8 @@ namespace cocos2d
             get
             {
                 var ret = new CCSize();
-                ret.width = m_tContentSize.width / ccMacros.CC_CONTENT_SCALE_FACTOR();
-                ret.height = m_tContentSize.height / ccMacros.CC_CONTENT_SCALE_FACTOR();
+                ret.Width = m_tContentSize.Width / ccMacros.CC_CONTENT_SCALE_FACTOR();
+                ret.Height = m_tContentSize.Height / ccMacros.CC_CONTENT_SCALE_FACTOR();
 
                 return ret;
             }
@@ -448,14 +448,14 @@ namespace cocos2d
         {
             CCApplication app = CCApplication.SharedApplication;
 
-            texture2D = new Texture2D(app.GraphicsDevice, (int) contentSize.width, (int) contentSize.height);
+            texture2D = new Texture2D(app.GraphicsDevice, (int) contentSize.Width, (int) contentSize.Height);
 
             m_tContentSize = contentSize;
             m_uPixelsWide = (int) pixelsWide;
             m_uPixelsHigh = (int) pixelsHigh;
             m_ePixelFormat = pixelFormat;
-            m_fMaxS = contentSize.width / (pixelsWide);
-            m_fMaxT = contentSize.height / (pixelsHigh);
+            m_fMaxS = contentSize.Width / (pixelsWide);
+            m_fMaxT = contentSize.Height / (pixelsHigh);
 
             m_bHasPremultipliedAlpha = false;
             //m_bHasMipmaps = false;
@@ -486,7 +486,7 @@ namespace cocos2d
 
                 // CCLog.Log("InitWithString: text={0}", text);
 
-                Debug.Assert(dimensions.width >= 0 || dimensions.height >= 0);
+                Debug.Assert(dimensions.Width >= 0 || dimensions.Height >= 0);
 
                 if (string.IsNullOrEmpty(text))
                 {
@@ -515,11 +515,11 @@ namespace cocos2d
 
                 // m_spriteFont = font;
 
-                if (dimensions.equals(CCSize.Zero))
+                if (dimensions.Equals(CCSize.Zero))
                 {
                     Vector2 temp = font.MeasureString(text);
-                    dimensions.width = temp.X;
-                    dimensions.height = temp.Y;
+                    dimensions.Width = temp.X;
+                    dimensions.Height = temp.Y;
                 }
 
                 //float scale = 1.0f;//need refer fontSize;
@@ -540,7 +540,7 @@ namespace cocos2d
                     {
                         lineWidth += font.MeasureString(wordList[i]).X;
 
-                        if (lineWidth > dimensions.width)
+                        if (lineWidth > dimensions.Width)
                         {
                             lineWidth = 0;
 
@@ -580,13 +580,13 @@ namespace cocos2d
 #endif
                 }
 
-                if (dimensions.height == 0)
+                if (dimensions.Height == 0)
                 {
-                    dimensions.height = textList.Count * font.LineSpacing;
+                    dimensions.Height = textList.Count * font.LineSpacing;
                 }
 
                 //*  for render to texture
-                RenderTarget2D renderTarget = DrawManager.CreateRenderTarget((int)dimensions.width, (int)dimensions.height,
+                RenderTarget2D renderTarget = DrawManager.CreateRenderTarget((int)dimensions.Width, (int)dimensions.Height,
                                                                               RenderTargetUsage.PreserveContents);
                 DrawManager.SetRenderTarget(renderTarget);
 
@@ -601,11 +601,11 @@ namespace cocos2d
 
                 if (vAlignment == CCVerticalTextAlignment.CCVerticalTextAlignmentBottom)
                 {
-                    nextY = dimensions.height - textHeight;
+                    nextY = dimensions.Height - textHeight;
                 }
                 else if (vAlignment == CCVerticalTextAlignment.CCVerticalTextAlignmentCenter)
                 {
-                    nextY = (dimensions.height - textHeight) / 2.0f;
+                    nextY = (dimensions.Height - textHeight) / 2.0f;
                 }
 
                 for (int j = 0; j < textList.Count; ++j)
@@ -616,11 +616,11 @@ namespace cocos2d
 
                     if (hAlignment == CCTextAlignment.CCTextAlignmentRight)
                     {
-                        position.X = dimensions.width - font.MeasureString(line).X;
+                        position.X = dimensions.Width - font.MeasureString(line).X;
                     }
                     else if (hAlignment == CCTextAlignment.CCTextAlignmentCenter)
                     {
-                        position.X = (dimensions.width - font.MeasureString(line).X) / 2.0f;
+                        position.X = (dimensions.Width - font.MeasureString(line).X) / 2.0f;
                     }
 
                     spriteBatch.DrawString(font, line, position, Color.White);
@@ -688,14 +688,14 @@ namespace cocos2d
         public bool InitTextureWithImage(Texture2D texture, int POTWide, int POTHigh)
         {
             texture2D = texture;
-            m_tContentSize.width = texture2D.Width;
-            m_tContentSize.height = texture2D.Height;
+            m_tContentSize.Width = texture2D.Width;
+            m_tContentSize.Height = texture2D.Height;
 
             m_uPixelsWide = POTWide;
             m_uPixelsHigh = POTHigh;
             //m_ePixelFormat = pixelFormat;
-            m_fMaxS = m_tContentSize.width / (POTWide);
-            m_fMaxT = m_tContentSize.height / (POTHigh);
+            m_fMaxS = m_tContentSize.Width / (POTWide);
+            m_fMaxT = m_tContentSize.Height / (POTHigh);
             return true;
         }
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using cocos2d;
 using Random = cocos2d.Random;
 
@@ -187,10 +187,10 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
             CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 28);
             AddChild(label, 100, 1000);
-            label.Position = new CCPoint(s.width / 2, s.height - 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             CCLabelTTF tapScreen = CCLabelTTF.Create(subtitle(), "arial", 20);
-            tapScreen.Position = new CCPoint(s.width / 2, s.height - 80);
+            tapScreen.Position = new CCPoint(s.Width / 2, s.Height - 80);
             AddChild(tapScreen, 100);
 
             CCMenuItemImage item1 = CCMenuItemImage.Create(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
@@ -205,9 +205,9 @@ namespace tests
             CCMenu menu = CCMenu.Create(item1, item2, item3, item4);
 
             menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.width / 2, 30);
-            item3.Position = new CCPoint(s.width / 2 + 100, 30);
+            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
+            item2.Position = new CCPoint(s.Width / 2, 30);
+            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
             item4.Position = new CCPoint(0, 100);
             item4.AnchorPoint = new CCPoint(0, 0);
 
@@ -215,12 +215,12 @@ namespace tests
 
             CCLabelAtlas labelAtlas = CCLabelAtlas.Create("0000", "Images/fps_images", 16, 24, '.');
             AddChild(labelAtlas, 100, ParticleTestScene.kTagLabelAtlas);
-            labelAtlas.Position = new CCPoint(s.width - 66, 50);
+            labelAtlas.Position = new CCPoint(s.Width - 66, 50);
 
             // moving background
             m_background = CCSprite.Create(TestResource.s_back3);
             AddChild(m_background, 5);
-            m_background.Position = new CCPoint(s.width / 2, s.height - 180);
+            m_background.Position = new CCPoint(s.Width / 2, s.Height - 180);
 
             CCActionInterval move = CCMoveBy.Create(4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
@@ -360,7 +360,7 @@ namespace tests
             {
                 CCSize s = CCDirector.SharedDirector.WinSize;
 
-                m_emitter.Position = new CCPoint(s.width / 2, s.height / 2 - 30);
+                m_emitter.Position = new CCPoint(s.Width / 2, s.Height / 2 - 30);
             }
         }
     };
@@ -858,7 +858,7 @@ namespace tests
             m_emitter.SpeedVar = (10);
 
             // emitter position
-            m_emitter.Position = new CCPoint(s.width / 2, s.height / 2);
+            m_emitter.Position = new CCPoint(s.Width / 2, s.Height / 2);
             m_emitter.PosVar = new CCPoint(0, 0);
 
             // life of particles
@@ -1053,7 +1053,7 @@ namespace tests
 
             // emitter position
             CCSize size = CCDirector.SharedDirector.WinSize;
-            m_emitter.Position = new CCPoint(size.width / 2, size.height / 2);
+            m_emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             m_emitter.PosVar = new CCPoint(0, 0);
 
             // life of particles
@@ -1135,7 +1135,7 @@ namespace tests
 
             // emitter position
             CCSize size = CCDirector.SharedDirector.WinSize;
-            m_emitter.Position = new CCPoint(size.width / 2, size.height / 2);
+            m_emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             m_emitter.PosVar = new CCPoint(0, 0);
 
             // life of particles
@@ -1217,7 +1217,7 @@ namespace tests
 
             // emitter position
             CCSize size = CCDirector.SharedDirector.WinSize;
-            m_emitter.Position = new CCPoint(size.width / 2, size.height / 2);
+            m_emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             m_emitter.PosVar = new CCPoint(0, 0);
 
             // life of particles
@@ -1351,9 +1351,9 @@ namespace tests
 
                 int neg = (i == 0 ? 1 : -1);
 
-                emitter1.Position = (new CCPoint(s.width / 2 - 30, s.height / 2 + 60 * neg));
-                emitter2.Position = (new CCPoint(s.width / 2, s.height / 2 + 60 * neg));
-                emitter3.Position = (new CCPoint(s.width / 2 + 30, s.height / 2 + 60 * neg));
+                emitter1.Position = (new CCPoint(s.Width / 2 - 30, s.Height / 2 + 60 * neg));
+                emitter2.Position = (new CCPoint(s.Width / 2, s.Height / 2 + 60 * neg));
+                emitter3.Position = (new CCPoint(s.Width / 2 + 30, s.Height / 2 + 60 * neg));
 
                 parent.AddChild(emitter1, 0, 1);
                 parent.AddChild(emitter2, 0, 2);
@@ -1481,9 +1481,9 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            emitter1.Position = (new CCPoint(s.width / 1.25f, s.height / 1.25f));
-            emitter2.Position = (new CCPoint(s.width / 2, s.height / 2));
-            emitter3.Position = (new CCPoint(s.width / 4, s.height / 4));
+            emitter1.Position = (new CCPoint(s.Width / 1.25f, s.Height / 1.25f));
+            emitter2.Position = (new CCPoint(s.Width / 2, s.Height / 2));
+            emitter3.Position = (new CCPoint(s.Width / 4, s.Height / 4));
 
             emitter1.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
             emitter2.Texture = emitter1.Texture;
@@ -1547,7 +1547,7 @@ namespace tests
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = (new CCPoint(winSize.width / 2, winSize.height / 2));
+                Position = (new CCPoint(winSize.Width / 2, winSize.Height / 2));
                 PosVar = (CCPoint.Zero);
 
                 // life of particles
@@ -1605,7 +1605,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            particle.Position = (new CCPoint(s.width / 2, s.height / 2));
+            particle.Position = (new CCPoint(s.Width / 2, s.Height / 2));
 
             m_emitter = particle;
         }

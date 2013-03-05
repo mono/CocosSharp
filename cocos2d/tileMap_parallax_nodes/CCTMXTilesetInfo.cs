@@ -35,10 +35,10 @@ namespace cocos2d
             rect.size = m_tTileSize;
             gid &= ccTMXTileFlags.kCCFlippedMask;
             gid = gid - m_uFirstGid;
-            var max_x = (int) ((m_tImageSize.width - m_uMargin * 2 + m_uSpacing) / (m_tTileSize.width + m_uSpacing));
+            var max_x = (int) ((m_tImageSize.Width - m_uMargin * 2 + m_uSpacing) / (m_tTileSize.Width + m_uSpacing));
             //	int max_y = (imageSize.height - margin*2 + spacing) / (tileSize.height + spacing);
-            rect.origin.x = (gid % max_x) * (m_tTileSize.width + m_uSpacing) + m_uMargin;
-            rect.origin.y = (gid / max_x) * (m_tTileSize.height + m_uSpacing) + m_uMargin;
+            rect.origin.x = (gid % max_x) * (m_tTileSize.Width + m_uSpacing) + m_uMargin;
+            rect.origin.y = (gid / max_x) * (m_tTileSize.Height + m_uSpacing) + m_uMargin;
             return rect;
         }
     }

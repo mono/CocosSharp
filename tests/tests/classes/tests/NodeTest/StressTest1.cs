@@ -11,7 +11,7 @@ namespace tests
             CCSprite sp1 = CCSprite.Create(TestResource.s_pPathSister1);
             AddChild(sp1, 0, CocosNodeTestStaticLibrary.kTagSprite1);
 
-            sp1.Position = (new CCPoint(s.width / 2, s.height / 2));
+            sp1.Position = (new CCPoint(s.Width / 2, s.Height / 2));
 
             Schedule((shouldNotCrash), 1.0f);
         }
@@ -29,7 +29,7 @@ namespace tests
             // if it doesn't, it works Ok.
             //	CocosNode *explosion = [Sprite create:@"grossinis_sister2.png");
 
-            explosion.Position = new CCPoint(s.width / 2, s.height / 2);
+            explosion.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
             RunAction(CCSequence.Create(
                 CCRotateBy.Create(2, 360),

@@ -54,7 +54,7 @@ namespace cocos2d
         }
         protected void SerializeData(CCSize pt, StreamWriter sw)
         {
-            sw.WriteLine("{0} {1}", pt.width, pt.height);
+            sw.WriteLine("{0} {1}", pt.Width, pt.Height);
         }
         protected void SerializeData(float f, StreamWriter sw)
         {
@@ -107,7 +107,7 @@ namespace cocos2d
         {
             CCPoint pt = DeSerializePoint(sr);
             CCSize sz = DeSerializeSize(sr);
-            return (new CCRect(pt.x, pt.y, sz.width, sz.height));
+            return (new CCRect(pt.x, pt.y, sz.Width, sz.Height));
         }
         protected CCSize DeSerializeSize(StreamReader sr)
         {
@@ -118,8 +118,8 @@ namespace cocos2d
             }
             CCSize pt = new CCSize();
             string[] s = x.Split(' ');
-            pt.width = ccUtils.ccParseFloat(s[0]);
-            pt.height = ccUtils.ccParseFloat(s[1]);
+            pt.Width = ccUtils.ccParseFloat(s[0]);
+            pt.Height = ccUtils.ccParseFloat(s[1]);
             return (pt);
         }
         protected CCPoint DeSerializePoint(StreamReader sr)

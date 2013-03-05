@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,7 @@ namespace tests
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
             CCLabelTTF pLable = CCLabelTTF.Create("中国", "Marker Felt", 30);
-            pLable.Position = new CCPoint(size.width / 2, size.height / 2);
+            pLable.Position = new CCPoint(size.Width / 2, size.Height / 2);
             AddChild(pLable);
         }
 
@@ -33,7 +33,7 @@ namespace tests
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
             var pLable = CCLabelBMFont.Create("中国", "fonts/bitmapFontChinese.fnt");
-            pLable.Position = new CCPoint(size.width / 2, size.height / 2);
+            pLable.Position = new CCPoint(size.Width / 2, size.Height / 2);
             AddChild(pLable);
         }
 

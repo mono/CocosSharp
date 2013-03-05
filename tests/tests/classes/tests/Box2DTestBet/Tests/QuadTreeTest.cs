@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
@@ -22,7 +22,7 @@ namespace FarseerPhysics.TestBed.Tests
             //GEN GameInstance.ViewCenter = Vector2.Zero;
 
             var size = CCDirector.SharedDirector.WinSize;
-            _worldSize = 2 * new Vector2(size.width, 0); //GEN GameInstance.ConvertScreenToWorld(GameInstance.Window.ClientBounds.Width, 0);
+            _worldSize = 2 * new Vector2(size.Width, 0); //GEN GameInstance.ConvertScreenToWorld(GameInstance.Window.ClientBounds.Width, 0);
 
             //Create a World using QuadTree constructor
             World = new World(new Vector2(0.0f, -10.0f), new AABB(-_worldSize / 2, _worldSize / 2));

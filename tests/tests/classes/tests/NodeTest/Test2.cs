@@ -15,8 +15,8 @@ namespace tests
             CCSprite sp3 = CCSprite.Create(TestResource.s_pPathSister1);
             CCSprite sp4 = CCSprite.Create(TestResource.s_pPathSister2);
 
-            sp1.Position = (new CCPoint(100, s.height / 2));
-            sp2.Position = (new CCPoint(380, s.height / 2));
+            sp1.Position = (new CCPoint(100, s.Height / 2));
+            sp2.Position = (new CCPoint(380, s.Height / 2));
             AddChild(sp1);
             AddChild(sp2);
 

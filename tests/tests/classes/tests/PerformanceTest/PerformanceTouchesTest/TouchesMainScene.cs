@@ -46,12 +46,12 @@ namespace tests
             // add title
             CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 32);
             AddChild(label, 1);
-            label.Position = new CCPoint(s.width / 2, s.height - 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
             CCNode ccnode = new CCNode();
             ccnode.ScheduleUpdate();
 
             m_plabel = CCLabelBMFont.Create("00.0", "fonts/arial16.fnt");
-            m_plabel.Position = new CCPoint(s.width / 2, s.height / 2);
+            m_plabel.Position = new CCPoint(s.Width / 2, s.Height / 2);
             AddChild(m_plabel);
 
             elapsedTime = 0;

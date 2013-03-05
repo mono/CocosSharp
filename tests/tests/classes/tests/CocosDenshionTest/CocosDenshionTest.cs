@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
@@ -54,10 +54,10 @@ namespace tests
                 CCMenuItemLabel pMenuItem = CCMenuItemLabel.Create(label, new SEL_MenuHandler(menuCallback));
 		
 		        m_pItmeMenu.AddChild(pMenuItem, i + 10000);
-		        pMenuItem.Position = new CCPoint( s.width / 2, (s.height - (i + 1) * LINE_SPACE) );
+		        pMenuItem.Position = new CCPoint( s.Width / 2, (s.Height - (i + 1) * LINE_SPACE) );
 	        }
 
-	        m_pItmeMenu.ContentSize = new CCSize(s.width, (m_nTestCount + 1) * LINE_SPACE);
+	        m_pItmeMenu.ContentSize = new CCSize(s.Width, (m_nTestCount + 1) * LINE_SPACE);
 	        m_pItmeMenu.Position = new CCPoint(0,0);
 	        AddChild(m_pItmeMenu);
 
@@ -184,9 +184,9 @@ namespace tests
 		        return;
 	        }
 
-	        if (nextPos.y > ((m_nTestCount + 1)* LINE_SPACE - winSize.height))
+	        if (nextPos.y > ((m_nTestCount + 1)* LINE_SPACE - winSize.Height))
 	        {
-		        m_pItmeMenu.Position = new CCPoint(0, ((m_nTestCount + 1)* LINE_SPACE - winSize.height));
+		        m_pItmeMenu.Position = new CCPoint(0, ((m_nTestCount + 1)* LINE_SPACE - winSize.Height));
 		        return;
 	        }
 

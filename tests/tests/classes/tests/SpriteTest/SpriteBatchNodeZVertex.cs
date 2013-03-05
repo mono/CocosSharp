@@ -41,15 +41,15 @@ namespace tests
 
 
             CCSize s = CCDirector.SharedDirector.WinSize;
-            float step = s.width / 12;
+            float step = s.Width / 12;
 
             // small capacity. Testing resizing.
             // Don't use capacity=1 in your real game. It is expensive to resize the capacity
             CCSpriteBatchNode batch = CCSpriteBatchNode.Create("Images/grossini_dance_atlas", 1);
             // camera uses the center of the image as the pivoting point
-            batch.ContentSize = new CCSize(s.width, s.height);
+            batch.ContentSize = new CCSize(s.Width, s.Height);
             batch.AnchorPoint = (new CCPoint(0.5f, 0.5f));
-            batch.Position = (new CCPoint(s.width / 2, s.height / 2));
+            batch.Position = (new CCPoint(s.Width / 2, s.Height / 2));
 
 
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
@@ -57,7 +57,7 @@ namespace tests
             for (int i = 0; i < 5; i++)
             {
                 CCSprite sprite = CCSprite.Create(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));
-                sprite.Position = (new CCPoint((i + 1) * step, s.height / 2));
+                sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
                 sprite.VertexZ = (10 + i * 40);
                 batch.AddChild(sprite, 0);
 
@@ -66,7 +66,7 @@ namespace tests
             for (int i = 5; i < 11; i++)
             {
                 CCSprite sprite = CCSprite.Create(batch.Texture, new CCRect(85 * 1, 121 * 0, 85, 121));
-                sprite.Position = (new CCPoint((i + 1) * step, s.height / 2));
+                sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
                 sprite.VertexZ = 10 + (10 - i) * 40;
                 batch.AddChild(sprite, 0);
             }

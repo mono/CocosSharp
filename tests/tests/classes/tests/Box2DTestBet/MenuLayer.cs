@@ -1,4 +1,4 @@
-﻿using FarseerPhysics.TestBed.Tests;
+using FarseerPhysics.TestBed.Tests;
 using cocos2d;
 
 namespace tests.classes.tests.Box2DTestBet
@@ -23,14 +23,14 @@ namespace tests.classes.tests.Box2DTestBet
             AddChild(view, 0, kTagBox2DNode);
             view.Scale = 10;
             view.AnchorPoint = new CCPoint(0, 0);
-            view.Position = new CCPoint(s.width / 2, s.height / 4);
+            view.Position = new CCPoint(s.Width / 2, s.Height / 4);
             //#if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
             //    CCLabelBMFont* label = CCLabelBMFont.Create(view.title().c_str(),  "fonts/arial16.fnt");
             //#else    
             CCLabelTTF label = CCLabelTTF.Create(view.title(), "arial", 28);
             //#endif
             AddChild(label, 1);
-            label.Position = new CCPoint(s.width / 2, s.height - 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             CCMenuItemImage item1 = CCMenuItemImage.Create("Images/b1", "Images/b2", backCallback);
             CCMenuItemImage item2 = CCMenuItemImage.Create("Images/r1", "Images/r2", restartCallback);
@@ -39,9 +39,9 @@ namespace tests.classes.tests.Box2DTestBet
             CCMenu menu = CCMenu.Create(item1, item2, item3);
 
             menu.Position = CCPoint.Zero;
-            item1.Position = new CCPoint(s.width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.width / 2, 30);
-            item3.Position = new CCPoint(s.width / 2 + 100, 30);
+            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
+            item2.Position = new CCPoint(s.Width / 2, 30);
+            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
 
             AddChild(menu, 1);
 
