@@ -183,7 +183,7 @@ namespace cocos2d
         public static Dictionary<string, object> dictionaryWithContentsOfFile(string pFileName)
         {
             CCDictMaker tMaker = new CCDictMaker();
-            return tMaker.dictionaryWithContentsOfFile(pFileName);
+            return tMaker.DictionaryWithContentsOfFile(pFileName);
         }
 
         /// <summary>

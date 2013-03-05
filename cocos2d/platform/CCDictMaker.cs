@@ -57,7 +57,7 @@ namespace cocos2d
             m_tState = CCSAXState.SAX_NONE;
         }
 
-        public Dictionary<string, Object> dictionaryWithContentsOfFile(string pFileName)
+        public Dictionary<string, Object> DictionaryWithContentsOfFile(string pFileName)
         {
             CCSAXParser parser = new CCSAXParser();
 
@@ -71,7 +71,7 @@ namespace cocos2d
             return m_pRootDict;
         }
 
-        public List<Object> arrayWithContentsOfFile(string pFileName)
+        public List<Object> ArrayWithContentsOfFile(string pFileName)
         {
             CCSAXParser parser = new CCSAXParser();
 
