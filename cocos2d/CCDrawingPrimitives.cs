@@ -11,7 +11,7 @@ namespace cocos2d
         private static float m_PointSize = 3f;
         private static ccColor4B m_Color;
 
-        public static void init(GraphicsDevice graphics)
+        public static void Init(GraphicsDevice graphics)
         {
             m_Batch = new PrimitiveBatch(graphics);
         }

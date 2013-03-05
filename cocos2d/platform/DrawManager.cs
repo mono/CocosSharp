@@ -288,7 +288,7 @@ namespace cocos2d
             m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
             m_obScreenSize = m_obDesignResolutionSize = m_obViewPortRect.size;
 
-            CCDrawingPrimitives.init(graphicsDevice);
+            CCDrawingPrimitives.Init(graphicsDevice);
         }
 
         private static void ResetDevice()
