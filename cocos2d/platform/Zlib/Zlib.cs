@@ -77,9 +77,9 @@ namespace cocos2d.Compression.Zlib
         public const int Z_BUF_ERROR = - 5;
         public const int Z_VERSION_ERROR = - 6;
 
-        public static String version()
+        public static String Version
         {
-            return version_Renamed_Field;
+            get { return version_Renamed_Field; }
         }
     }
 }
