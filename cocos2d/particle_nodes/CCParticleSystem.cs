@@ -561,56 +561,9 @@ namespace cocos2d
                                 {
                                     Texture = CCTextureCache.SharedTextureCache.AddImage(imageStream, textureName);
                                 }
-                                //CCTextureCache.SharedTextureCache.AddImage(
-                                /*
-                                var dataBytes = Convert.FromBase64String(textureData);
-                                Debug.Assert(dataBytes != null, "CCParticleSystem: error decoding textureImageData");
-
-                                //var aaa = File.OpenWrite(@"D:\aaa");
-                                //aaa.Write(dataBytes, 0, dataBytes.Length);
-                                //aaa.Dispose();
-
-                                var inZInputStream = new ICSharpCode.SharpZipLib.Zip.ZipInputStream(new MemoryStream(dataBytes));
-
-                                //ZInputStream inZInputStream = new ZInputStream(new MemoryStream(dataBytes));
-
-                                MemoryStream outMemoryStream = new MemoryStream();
-
-                                byte[] buf = new byte[1024];
-                                while (true)
-                                {
-                                    int bytesRead = inZInputStream.Read(buf, 0, buf.Length);
-                                    if (bytesRead == 0)
-                                        break;
-                                    outMemoryStream.Write(buf, 0, bytesRead);
-                                }
-
-                                dataBytes = outMemoryStream.ToArray();
-                                */
-
-                                /*
-                                // if it fails, try to get it from the base64-gzipped data    
-                                int decodeLen = base64Decode((unsigned char*)textureData, (unsigned int)dataLen, &buffer);
-                                Debug.Assert( buffer != null, "CCParticleSystem: error decoding textureImageData");
-                                CC_BREAK_IF(!buffer);
-                        
-                                int deflatedLen = ZipUtils.ccInflateMemory(buffer, decodeLen, &deflated);
-                                Debug.Assert( deflated != null, "CCParticleSystem: error ungzipping textureImageData");
-                                CC_BREAK_IF(!deflated);
-                        
-                                // For android, we should retain it in VolatileTexture.addCCImage which invoked in CCTextureCache.sharedTextureCache().addUIImage()
-                                image = new CCImage();
-                                bool isOK = image.initWithImageData(deflated, deflatedLen);
-                                Debug.Assert(isOK, "CCParticleSystem: error init image with Data");
-                                CC_BREAK_IF(!isOK);
-                        
-                                setTexture(CCTextureCache.sharedTextureCache().addUIImage(image, fullpath.c_str()));
-
-                                image.release();
-                                */
                             }
                         }
-                        //Debug.Assert(m_pTexture != null, "CCParticleSystem: error loading the texture");
+                        Debug.Assert(m_pTexture != null, "CCParticleSystem: error loading the texture");
                     }
                     bRet = true;
                 }
