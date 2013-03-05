@@ -33,7 +33,7 @@ namespace cocos2d
         /// </summary>
         /// <param name="layer"></param>
         /// <returns></returns>
-        public static CCLayerMultiplex layerWithLayer(CCLayer layer)
+        public static CCLayerMultiplex LayerWithLayer(CCLayer layer)
         {
             var pMultiplexLayer = new CCLayerMultiplex();
             pMultiplexLayer.InitWithLayer(layer);
