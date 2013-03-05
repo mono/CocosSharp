@@ -77,7 +77,7 @@ namespace cocos2d
             return new ccGridSize((int) (pos2.x - pos.x), (int) (pos2.y - pos.y));
         }
 
-        public void placeTile(ccGridSize pos, Tile t)
+        public void PlaceTile(ccGridSize pos, Tile t)
         {
             ccQuad3 coords = OriginalTile(pos);
 
@@ -152,7 +152,7 @@ namespace cocos2d
                 {
                     Tile item = m_pTiles[f];
                     item.Position = new CCPoint((item.Delta.x * time), (item.Delta.y * time));
-                    placeTile(new ccGridSize(i, j), item);
+                    PlaceTile(new ccGridSize(i, j), item);
 
                     f++;
                 }
