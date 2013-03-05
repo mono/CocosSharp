@@ -157,7 +157,13 @@ namespace cocos2d
                     // Either we are creating a new one or else we need to refresh the current one.
                     // CCLog.Log("Loading texture {0}", fileimage);
                     
-                    var textureXna = CCApplication.SharedApplication.Content.Load(imageStream, assetName);
+                    //var textureXna = CCApplication.SharedApplication.Content.Load(imageStream, assetName);
+                    var graphicsDeviceService = CCApplication.SharedApplication.Content.ServiceProvider.GetService(typeof(IGraphicsDeviceService)) as IGraphicsDeviceService;
+                    if (graphicsDeviceService == null)
+                    {
+                        throw new InvalidOperationException("No Graphics Device Service");
+                    }
+                    var textureXna = Texture2D.FromStream(graphicsDeviceService.GraphicsDevice, imageStream);
 
                     bool isInited = texture.InitWithTexture(textureXna);
                     
