@@ -636,14 +636,14 @@ namespace cocos2d
         {
             var parser = new CCSAXParser();
 
-            if (false == parser.init("UTF-8"))
+            if (false == parser.Init("UTF-8"))
             {
                 return false;
             }
 
-            parser.setDelegator(this);
+            parser.SetDelegator(this);
 
-            return parser.parse(data, data.Length);
+            return parser.Parse(data, data.Length);
         }
 
         /// <summary>
@@ -653,14 +653,14 @@ namespace cocos2d
         {
             var parser = new CCSAXParser();
 
-            if (false == parser.init("UTF-8"))
+            if (false == parser.Init("UTF-8"))
             {
                 return false;
             }
 
-            parser.setDelegator(this);
+            parser.SetDelegator(this);
 
-            return parser.parse(xmlFilename);
+            return parser.Parse(xmlFilename);
         }
 
         // the XML parser calls here with all the elements

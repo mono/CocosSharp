@@ -61,13 +61,13 @@ namespace cocos2d
         {
             CCSAXParser parser = new CCSAXParser();
 
-            if (false == parser.init("UTF-8"))
+            if (false == parser.Init("UTF-8"))
             {
                 return null;
             }
-            parser.setDelegator(this);
+            parser.SetDelegator(this);
 
-            parser.parse(pFileName);
+            parser.Parse(pFileName);
             return m_pRootDict;
         }
 
@@ -75,11 +75,11 @@ namespace cocos2d
         {
             CCSAXParser parser = new CCSAXParser();
 
-            if (false == parser.init("UTF-8"))
+            if (false == parser.Init("UTF-8"))
             {
                 return null;
             }
-            parser.setDelegator(this);
+            parser.SetDelegator(this);
 
             //byte[] root;
 
@@ -88,7 +88,7 @@ namespace cocos2d
             TextHandler(parser, System.Text.UTF8Encoding.UTF8.GetBytes("root"), 4);
             EndElement(parser, "key");
             
-            parser.parse(pFileName);
+            parser.Parse(pFileName);
 
             EndElement(parser, "dict");
 
