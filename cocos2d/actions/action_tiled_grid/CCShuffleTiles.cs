@@ -65,7 +65,7 @@ namespace cocos2d
             }
         }
 
-        public ccGridSize getDelta(ccGridSize pos)
+        public ccGridSize GetDelta(ccGridSize pos)
         {
             var pos2 = new CCPoint();
 
@@ -133,7 +133,7 @@ namespace cocos2d
                         {
                             Position = new CCPoint(i, j), 
                             StartPosition = new CCPoint(i, j), 
-                            Delta = getDelta(new ccGridSize(i, j))
+                            Delta = GetDelta(new ccGridSize(i, j))
                         };
 
                     f++;
