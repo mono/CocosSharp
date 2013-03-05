@@ -58,6 +58,7 @@ namespace CocosDenshion
                 // If looping, then get an instance of this sound effect so that it can be
                 // stopped.
                 _sfxInstance = m_effect.CreateInstance();
+                _sfxInstance.IsLooped = true;
             }
             if (_sfxInstance != null)
             {
