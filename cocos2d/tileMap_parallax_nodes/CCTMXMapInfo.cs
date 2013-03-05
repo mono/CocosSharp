@@ -232,7 +232,7 @@ namespace cocos2d
                 {
                     string externalTilesetFilename = attributeDict["source"];
 
-                    externalTilesetFilename = CCFileUtils.fullPathFromRelativeFile(externalTilesetFilename, pTMXMapInfo.TMXFileName);
+                    externalTilesetFilename = CCFileUtils.FullPathFromRelativeFile(externalTilesetFilename, pTMXMapInfo.TMXFileName);
                     pTMXMapInfo.ParseXmlFile(externalTilesetFilename);
                 }
                 else
@@ -329,7 +329,7 @@ namespace cocos2d
 
                 // build full path
                 string imagename = attributeDict["source"];
-                tileset.m_sSourceImage = CCFileUtils.fullPathFromRelativeFile(imagename, pTMXMapInfo.TMXFileName);
+                tileset.m_sSourceImage = CCFileUtils.FullPathFromRelativeFile(imagename, pTMXMapInfo.TMXFileName);
             }
             else if (elementName == "data")
             {
@@ -597,7 +597,7 @@ namespace cocos2d
 
             if (tmxFileName != null)
             {
-                m_sTMXFileName = CCFileUtils.fullPathFromRelativePath(tmxFileName);
+                m_sTMXFileName = CCFileUtils.FullPathFromRelativePath(tmxFileName);
             }
 
             if (resourcePath != null)

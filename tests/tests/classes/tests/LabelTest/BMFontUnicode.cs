@@ -6,7 +6,7 @@ namespace tests
     {
         public BMFontUnicode()
         {
-            var data = CCFileUtils.getFileData("fonts/strings.plist");
+            var data = CCFileUtils.GetFileData("fonts/strings.plist");
             PlistDocument doc = PlistDocument.Create(data);
             var strings = doc.Root as PlistDictionary;
 

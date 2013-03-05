@@ -309,8 +309,8 @@ namespace cocos2d
 
         public CCNode ReadNodeGraphFromFile(string fileName, CCObject owner, CCSize parentSize, ref CCBAnimationManager animationManager)
         {
-            string pPath = CCFileUtils.fullPathFromRelativePath(fileName);
-            byte[] pBytes = CCFileUtils.getFileBytes(pPath);
+            string pPath = CCFileUtils.FullPathFromRelativePath(fileName);
+            byte[] pBytes = CCFileUtils.GetFileBytes(pPath);
             CCNode ret = ReadNodeGraphFromData(pBytes, owner, parentSize, ref animationManager);
             return ret;
         }
@@ -627,7 +627,7 @@ namespace cocos2d
 
                 if (String.IsNullOrEmpty(spriteSheet))
                 {
-                    CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.removeExtention(spriteFile));
+                    CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
                     var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
                     spriteFrame = CCSpriteFrame.Create(texture, bounds);
                 }

@@ -64,8 +64,8 @@ namespace tests
 	        this.TouchEnabled = true;
 
 	        // preload background music and effect
-	        SimpleAudioEngine.SharedEngine.PreloadBackgroundMusic(CCFileUtils.fullPathFromRelativePath(MUSIC_FILE));
-	        SimpleAudioEngine.SharedEngine.PreloadEffect(CCFileUtils.fullPathFromRelativePath(EFFECT_FILE));
+	        SimpleAudioEngine.SharedEngine.PreloadBackgroundMusic(CCFileUtils.FullPathFromRelativePath(MUSIC_FILE));
+	        SimpleAudioEngine.SharedEngine.PreloadEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
     
             // set default volume
             SimpleAudioEngine.SharedEngine.EffectsVolume = 0.5f;
@@ -94,7 +94,7 @@ namespace tests
 	        // play background music
 	        case 0:
 
-		        SimpleAudioEngine.SharedEngine.PlayBackgroundMusic(CCFileUtils.fullPathFromRelativePath(MUSIC_FILE), true);
+		        SimpleAudioEngine.SharedEngine.PlayBackgroundMusic(CCFileUtils.FullPathFromRelativePath(MUSIC_FILE), true);
 		        break;
 	        // stop background music
 	        case 1:
@@ -125,11 +125,11 @@ namespace tests
 		        break;
 	        // play effect
 	        case 6:
-		        m_nSoundId = SimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.fullPathFromRelativePath(EFFECT_FILE));
+		        m_nSoundId = SimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
 		        break;
             // play effect
             case 7:
-                m_nSoundId = SimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.fullPathFromRelativePath(EFFECT_FILE), true);
+                m_nSoundId = SimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE), true);
                 break;
             // stop effect
 	        case 8:
@@ -137,7 +137,7 @@ namespace tests
 		        break;
 	        // unload effect
 	        case 9:
-		        SimpleAudioEngine.SharedEngine.UnloadEffect(CCFileUtils.fullPathFromRelativePath(EFFECT_FILE));
+		        SimpleAudioEngine.SharedEngine.UnloadEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
 		        break;
 		        // add bakcground music volume
 	        case 10:

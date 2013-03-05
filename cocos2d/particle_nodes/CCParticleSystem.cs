@@ -386,7 +386,7 @@ namespace cocos2d
         public bool InitWithFile(string plistFile)
         {
             bool bRet;
-            m_sPlistFile = CCFileUtils.fullPathFromRelativePath(plistFile);
+            m_sPlistFile = CCFileUtils.FullPathFromRelativePath(plistFile);
 
             //var content = CCApplication.SharedApplication.content.Load<CCContent>(m_sPlistFile);
             //PlistDocument dict = PlistDocument.Create(content.Content);
@@ -516,7 +516,7 @@ namespace cocos2d
                         // texture        
                         // Try to get the texture from the cache
                         string textureName = dictionary["textureFileName"].AsString;
-                        string fullpath = CCFileUtils.fullPathFromRelativeFile(textureName, m_sPlistFile);
+                        string fullpath = CCFileUtils.FullPathFromRelativeFile(textureName, m_sPlistFile);
 
                         CCTexture2D tex = null;
 

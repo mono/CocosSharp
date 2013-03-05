@@ -49,7 +49,7 @@ namespace cocos2d
 
         public bool InitWithString(string theString, string fntFile)
         {
-            string data = CCFileUtils.getFileData(fntFile);
+            string data = CCFileUtils.GetFileData(fntFile);
 
             PlistDocument doc = PlistDocument.Create(data);
             var dict = doc.Root as PlistDictionary;

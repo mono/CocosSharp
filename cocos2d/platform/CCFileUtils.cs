@@ -64,7 +64,7 @@ namespace cocos2d
         /// </summary>
         /// <param name="pszFileName"></param>
         /// <returns></returns>
-        public static string getFileData(string pszFileName)
+        public static string GetFileData(string pszFileName)
         {
             ContentManager content = CCApplication.SharedApplication.Content;
             CCContent data = content.Load<CCContent>(pszFileName);
@@ -72,7 +72,7 @@ namespace cocos2d
             return data.Content;
         }
 
-        public static byte[] getFileBytes(string pszFileName)
+        public static byte[] GetFileBytes(string pszFileName)
         {
             pszFileName = System.IO.Path.Combine(CCApplication.SharedApplication.Content.RootDirectory, pszFileName);
 
@@ -105,7 +105,7 @@ namespace cocos2d
         /// <param name="pszFileName"></param>
         /// <param name="pSize"></param>
         /// <returns></returns>
-        public static char[] getFileDataFromZip(string pszZipFilePath, string pszFileName, UInt64 pSize)
+        public static char[] GetFileDataFromZip(string pszZipFilePath, string pszFileName, UInt64 pSize)
         {
             throw new NotImplementedException("Cannot load zip files for this method has not been realized !");
         }
@@ -117,7 +117,7 @@ namespace cocos2d
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static string ccRemoveHDSuffixFromFile(string path)
+        public static string CCRemoveHDSuffixFromFile(string path)
         {
             throw new NotImplementedException("Remove hd picture !");
         }
@@ -132,7 +132,7 @@ namespace cocos2d
         /// </summary>
         /// <param name="pszRelativePath"></param>
         /// <returns></returns>
-        public static string fullPathFromRelativePath(string pszRelativePath)
+        public static string FullPathFromRelativePath(string pszRelativePath)
         {
             // todo: return self now
             return pszRelativePath;
@@ -142,13 +142,13 @@ namespace cocos2d
         /// <summary>
         /// 
         /// </summary>
-        public static string fullPathFromRelativeFile(string pszFilename, string pszRelativeFile)
+        public static string FullPathFromRelativeFile(string pszFilename, string pszRelativeFile)
         {
             string path = Path.GetDirectoryName(pszRelativeFile);
-            return Path.Combine(path, removeExtention(pszFilename));
+            return Path.Combine(path, RemoveExtension(pszFilename));
         }
 
-        public static string removeExtention(string fileName)
+        public static string RemoveExtension(string fileName)
         {
             int len = fileName.LastIndexOf('.');
             if (len != -1)
@@ -166,7 +166,7 @@ namespace cocos2d
         /// absolute path.
         /// </summary>
         /// <param name="?"></param>
-        public static void setResourcePath(string pszResourcePath)
+        public static void SetResourcePath(string pszResourcePath)
         {
             throw new NotImplementedException("win32 only definition does not realize !");
         }
@@ -180,7 +180,7 @@ namespace cocos2d
         /// <typeparam name="?"></typeparam>
         /// <param name="?"></param>
         /// <returns></returns>
-        public static Dictionary<string, object> dictionaryWithContentsOfFile(string pFileName)
+        public static Dictionary<string, object> DictionaryWithContentsOfFile(string pFileName)
         {
             CCDictMaker tMaker = new CCDictMaker();
             return tMaker.DictionaryWithContentsOfFile(pFileName);
@@ -191,7 +191,7 @@ namespace cocos2d
         /// @return  The path that can write/read file
         /// </summary>
         /// <returns></returns>
-        public static string getWriteablePath()
+        public static string GetWriteablePath()
         {
             throw new NotImplementedException("win32 only definition does not realize !");
         }
@@ -205,7 +205,7 @@ namespace cocos2d
         /// @param pszZipFileName The relative path of the .zip file
         /// </summary>
         /// <param name="pszZipFileName"></param>
-        public static void setResource(string pszZipFileName)
+        public static void SetResource(string pszZipFileName)
         {
             throw new NotImplementedException("win32 only definition does not realize !");
         }
@@ -213,7 +213,7 @@ namespace cocos2d
         ///////////////////////////////////////////////////
         // interfaces on ios
         ///////////////////////////////////////////////////
-        public static int ccLoadFileIntoMemory(string filename, out char[] file)
+        public static int CCLoadFileIntoMemory(string filename, out char[] file)
         {
             throw new NotImplementedException("win32 only definition does not realize !");
         }

@@ -84,7 +84,7 @@ namespace cocos2d
         {
             Debug.Assert(!string.IsNullOrEmpty(file), "file must be non-nil");
 
-            m_pTGAInfo = tImageTGA.tgaLoad(CCFileUtils.fullPathFromRelativePath(file));
+            m_pTGAInfo = tImageTGA.tgaLoad(CCFileUtils.FullPathFromRelativePath(file));
         }
 
         private void CalculateItemsToRender()

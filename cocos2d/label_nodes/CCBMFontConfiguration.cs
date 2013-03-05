@@ -277,7 +277,7 @@ namespace cocos2d
             index2 = line.IndexOf('"', index);
             value = line.Substring(index, index2 - index);
 
-            m_sAtlasName = CCFileUtils.fullPathFromRelativeFile(value, fntFile);
+            m_sAtlasName = CCFileUtils.FullPathFromRelativeFile(value, fntFile);
         }
 
         private void parseKerningEntry(string line)

@@ -553,7 +553,7 @@ namespace cocos2d
             {
                 if (spriteSheet.Length == 0)
                 {
-                    CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.removeExtention(spriteFile));
+                    CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
                     var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
                     spriteFrame = CCSpriteFrame.Create(texture, bounds);
                 }
@@ -611,7 +611,7 @@ namespace cocos2d
 
             if (!String.IsNullOrEmpty(spriteFile))
             {
-                return CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.removeExtention(spriteFile));
+                return CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
             }
             return null;
         }
@@ -880,10 +880,10 @@ namespace cocos2d
             ccbFileName = ccbFileWithoutPathExtension + ".ccbi";
 
             // Load sub file
-            string path = CCFileUtils.fullPathFromRelativePath(ccbFileName);
+            string path = CCFileUtils.FullPathFromRelativePath(ccbFileName);
             var ccbReader = new CCBReader(reader);
 
-            byte[] pBytes = CCFileUtils.getFileBytes(path);
+            byte[] pBytes = CCFileUtils.GetFileBytes(path);
             ccbReader.InitWithData(pBytes, reader.Owner);
             ccbReader.AnimationManager.RootContainerSize = parent.ContentSize;
 

@@ -216,7 +216,7 @@ namespace cocos2d
 
         public void AddSpriteFramesWithFile(string pszPlist)
         {
-            string pszPath = CCFileUtils.fullPathFromRelativePath(pszPlist);
+            string pszPath = CCFileUtils.FullPathFromRelativePath(pszPlist);
             //Dictionary<string, Object> dict = CCFileUtils.dictionaryWithContentsOfFile(pszPath);
             PlistDictionary dict = CCApplication.SharedApplication.Content.Load<PlistDocument>(pszPlist).Root.AsDictionary;
 
@@ -237,7 +237,7 @@ namespace cocos2d
             if (!string.IsNullOrEmpty(texturePath))
             {
                 // build texture path relative to plist file
-                texturePath = CCFileUtils.fullPathFromRelativeFile(texturePath, pszPath);
+                texturePath = CCFileUtils.FullPathFromRelativeFile(texturePath, pszPath);
             }
             else
             {
@@ -245,7 +245,7 @@ namespace cocos2d
                 texturePath = pszPath;
 
                 // remove .xxx
-                texturePath = CCFileUtils.removeExtention(texturePath);
+                texturePath = CCFileUtils.RemoveExtension(texturePath);
 
                 CCLog.Log("cocos2d: CCSpriteFrameCache: Trying to use file {0} as texture", texturePath);
             }
