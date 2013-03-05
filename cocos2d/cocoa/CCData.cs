@@ -9,17 +9,17 @@ namespace cocos2d
     {
         public CCData() { }
 
-        public byte[] bytes() 
+        public byte[] Bytes() 
         {
             return m_pData;
         }
 
-        public static CCData dataWithBytes(byte[] pBytes, int size) 
+        public static CCData DataWithBytes(byte[] pBytes, int size) 
         {
             return null;
         }
 
-        public static CCData dataWithContentsOfFile(string strPath)
+        public static CCData DataWithContentsOfFile(string strPath)
         {
             CCFileData data = new CCFileData(strPath, "rb");
             ulong nSize = data.Size;
