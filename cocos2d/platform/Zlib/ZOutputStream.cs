@@ -167,7 +167,7 @@ namespace cocos2d.Compression.Zlib
             } while (z.avail_in > 0 || z.avail_out == 0);
         }
 
-        public virtual void finish()
+        public virtual void Finish()
         {
             int err;
             do
@@ -199,7 +199,7 @@ namespace cocos2d.Compression.Zlib
             }
         }
 
-        public virtual void end()
+        public virtual void End()
         {
             if (compress)
             {
@@ -222,7 +222,7 @@ namespace cocos2d.Compression.Zlib
             {
                 try
                 {
-                    finish();
+                    Finish();
                 }
                 catch
                 {
@@ -230,7 +230,7 @@ namespace cocos2d.Compression.Zlib
             }
             finally
             {
-                end();
+                End();
                 out_Renamed.Close();
                 out_Renamed = null;
             }
