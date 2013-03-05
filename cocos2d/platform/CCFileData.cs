@@ -48,7 +48,7 @@ namespace cocos2d
             //m_pBuffer = CCFileUtils.getFileData(pszFileName, pszMode, m_uSize);
         }
 
-        public bool reset(string pszFileName, string pszMode)
+        public bool Reset(string pszFileName, string pszMode)
         {
             m_pBuffer = null;
             m_uSize = 0;
