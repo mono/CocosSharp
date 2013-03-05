@@ -93,4 +93,7 @@ and Totally Evil Entertainment, LLC.
 * FadeWhiteTransition : Fixed broken blending state
 * DrawManager : Added parsing of the GL capabilities to determine allowed depth and npot caps.
 * Fix for the EffectsTest on Android, GitHub issue #7.
-
+* EffectPlayer : Fixed looping of sound effects.
+* CCDirector : Fixed PopScene not setting the next scene to be visible.
+* CCParticleSystem : Work towards fixing the creation of runtime textures for particles.
+* CCSprite : Fixed an iOS color opacity check.
