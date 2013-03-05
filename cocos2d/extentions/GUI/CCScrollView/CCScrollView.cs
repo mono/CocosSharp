@@ -13,8 +13,8 @@ namespace cocos2d
 
     public interface CCScrollViewDelegate
     {
-        void scrollViewDidScroll(CCScrollView view);
-        void scrollViewDidZoom(CCScrollView view);
+        void ScrollViewDidScroll(CCScrollView view);
+        void ScrollViewDidZoom(CCScrollView view);
     }
 
     /**
@@ -120,7 +120,7 @@ namespace cocos2d
                     CCPoint offset = CCPointExtension.ccpSub(center, newCenter);
                     if (m_pDelegate != null)
                     {
-                        m_pDelegate.scrollViewDidZoom(this);
+                        m_pDelegate.ScrollViewDidZoom(this);
                     }
                     SetContentOffset(CCPointExtension.ccpAdd(m_pContainer.Position, offset), false);
                 }
@@ -310,7 +310,7 @@ namespace cocos2d
 
                 if (m_pDelegate != null)
                 {
-                    m_pDelegate.scrollViewDidScroll(this);
+                    m_pDelegate.ScrollViewDidScroll(this);
                 }
             }
         }
@@ -824,7 +824,7 @@ namespace cocos2d
 
             if (m_pDelegate != null)
             {
-                m_pDelegate.scrollViewDidScroll(this);
+                m_pDelegate.ScrollViewDidScroll(this);
             }
         }
 

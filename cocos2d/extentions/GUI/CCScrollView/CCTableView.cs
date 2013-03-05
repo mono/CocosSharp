@@ -77,7 +77,7 @@ namespace cocos2d
 
         #region CCScrollViewDelegate Members
 
-        public virtual void scrollViewDidScroll(CCScrollView view)
+        public virtual void ScrollViewDidScroll(CCScrollView view)
         {
             var uCountOfItems = m_pDataSource.NumberOfCellsInTableView(this);
             if (uCountOfItems == 0)
@@ -178,7 +178,7 @@ namespace cocos2d
             }
         }
 
-        public virtual void scrollViewDidZoom(CCScrollView view)
+        public virtual void ScrollViewDidZoom(CCScrollView view)
         {
         }
 
@@ -406,7 +406,7 @@ namespace cocos2d
             _updateContentSize();
             if (m_pDataSource.NumberOfCellsInTableView(this) > 0)
             {
-                scrollViewDidScroll(this);
+                ScrollViewDidScroll(this);
             }
         }
 

@@ -54,11 +54,11 @@ namespace tests.Extensions
 
 		//CREATE_FUNC(TableViewTestLayer);
     
-		public virtual void scrollViewDidScroll(CCScrollView view)
+		public virtual void ScrollViewDidScroll(CCScrollView view)
 		{
 		}
 
-		public virtual void scrollViewDidZoom(CCScrollView view)
+		public virtual void ScrollViewDidZoom(CCScrollView view)
 		{
 		}
 
