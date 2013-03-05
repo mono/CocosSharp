@@ -20,7 +20,7 @@ namespace tests
             {
                 CCMenuItemFont pItem = CCMenuItemFont.Create(BugsTestScene.testsName[i],
                                                             menuCallback);
-                pItem.Position = new CCPoint(s.width / 2, s.height - (i + 1) * BugsTestScene.LINE_SPACE);
+                pItem.Position = new CCPoint(s.Width / 2, s.Height - (i + 1) * BugsTestScene.LINE_SPACE);
                 m_pItmeMenu.AddChild(pItem, BugsTestScene.kItemTagBasic + i);
             }
 
@@ -112,9 +112,9 @@ namespace tests
                     return;
                 }
 
-                if (nextPos.y > ((BugsTestScene.MAX_COUNT + 1) * BugsTestScene.LINE_SPACE - winSize.height))
+                if (nextPos.y > ((BugsTestScene.MAX_COUNT + 1) * BugsTestScene.LINE_SPACE - winSize.Height))
                 {
-                    m_pItmeMenu.Position = new CCPoint(0, ((BugsTestScene.MAX_COUNT + 1) * BugsTestScene.LINE_SPACE - winSize.height));
+                    m_pItmeMenu.Position = new CCPoint(0, ((BugsTestScene.MAX_COUNT + 1) * BugsTestScene.LINE_SPACE - winSize.Height));
                     return;
                 }
 

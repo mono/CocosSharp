@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace cocos2d
@@ -106,7 +106,7 @@ namespace cocos2d
         {
             Debug.Assert(!string.IsNullOrEmpty(plist), "Invalid texture file name");
 
-            string path = CCFileUtils.fullPathFromRelativePath(plist);
+            string path = CCFileUtils.FullPathFromRelativePath(plist);
 
             var document = CCApplication.SharedApplication.Content.Load<PlistDocument>(path);
             PlistDictionary dict = document.Root.AsDictionary;

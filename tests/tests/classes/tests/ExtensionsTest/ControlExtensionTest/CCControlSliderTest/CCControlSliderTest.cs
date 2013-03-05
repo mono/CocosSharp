@@ -14,7 +14,7 @@ namespace tests.Extensions
 				// Add a label in which the slider value will be displayed
 				m_pDisplayValueLabel = CCLabelTTF.Create("Move the slider thumb!\nThe lower slider is restricted.", "Marker Felt", 32);
 				m_pDisplayValueLabel.AnchorPoint = new CCPoint(0.5f, -1.0f);
-				m_pDisplayValueLabel.Position = new CCPoint(screenSize.width / 1.7f, screenSize.height / 2.0f);
+				m_pDisplayValueLabel.Position = new CCPoint(screenSize.Width / 1.7f, screenSize.Height / 2.0f);
 				AddChild(m_pDisplayValueLabel);
 
 				// Add the slider
@@ -22,7 +22,7 @@ namespace tests.Extensions
 				slider.AnchorPoint = new CCPoint(0.5f, 1.0f);
 				slider.MinimumValue = 0.0f; // Sets the min value of range
 				slider.MaximumValue = 5.0f; // Sets the max value of range
-				slider.Position = new CCPoint(screenSize.width / 2.0f, screenSize.height / 2.0f + 16);
+				slider.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f + 16);
 				slider.Tag = 1;
 
 				// When the value of the slider will change, the given selector will be call
@@ -35,7 +35,7 @@ namespace tests.Extensions
 				restrictSlider.MaximumAllowedValue = 4.0f;
 				restrictSlider.MinimumAllowedValue = 1.5f;
 				restrictSlider.Value = 3.0f;
-				restrictSlider.Position = new CCPoint(screenSize.width / 2.0f, screenSize.height / 2.0f - 24);
+				restrictSlider.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f - 24);
 				restrictSlider.Tag = 2;
 
 				//same with restricted

@@ -23,14 +23,14 @@ namespace tests.Extensions
 
 			var tableView = CCTableView.Create(this, new CCSize(250, 60));
 			tableView.Direction = CCScrollViewDirection.Horizontal;
-			tableView.Position = new CCPoint(20,winSize.height/2-30);
+			tableView.Position = new CCPoint(20,winSize.Height/2-30);
 			tableView.Delegate = this;
 			this.AddChild(tableView);
 			tableView.ReloadData();
 
 			tableView = CCTableView.Create(this, new CCSize(60, 280));
 			tableView.Direction = CCScrollViewDirection.Vertical;
-			tableView.Position = new CCPoint(winSize.width - 150, winSize.height/2 - 120);
+			tableView.Position = new CCPoint(winSize.Width - 150, winSize.Height/2 - 120);
 			tableView.Delegate = this;
 			tableView.VerticalFillOrder = CCTableViewVerticalFillOrder.FillTopDown;
 			this.AddChild(tableView);
@@ -38,7 +38,7 @@ namespace tests.Extensions
 
 			// Back Menu
 			var itemBack = CCMenuItemFont.Create("Back", toExtensionsMainLayer);
-			itemBack.Position = new CCPoint(winSize.width - 50, 25);
+			itemBack.Position = new CCPoint(winSize.Width - 50, 25);
 			var menuBack = CCMenu.Create(itemBack);
 			menuBack.Position = CCPoint.Zero;
 			AddChild(menuBack);
@@ -54,17 +54,17 @@ namespace tests.Extensions
 
 		//CREATE_FUNC(TableViewTestLayer);
     
-		public virtual void scrollViewDidScroll(CCScrollView view)
+		public virtual void ScrollViewDidScroll(CCScrollView view)
 		{
 		}
 
-		public virtual void scrollViewDidZoom(CCScrollView view)
+		public virtual void ScrollViewDidZoom(CCScrollView view)
 		{
 		}
 
 		public virtual void TableCellTouched(CCTableView table, CCTableViewCell cell)
 		{
-			CCLog.Log("cell touched at index: %i", cell.getIdx());
+            CCLog.Log("cell touched at index: {0}", cell.Index);
 		}
 
 		public virtual CCSize CellSizeForTable(CCTableView table)

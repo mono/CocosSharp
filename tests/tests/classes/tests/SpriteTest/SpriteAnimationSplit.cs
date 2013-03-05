@@ -26,7 +26,7 @@ namespace tests
             // Animation using Sprite BatchNode
             //
             CCSprite sprite = CCSprite.Create(frame0);
-            sprite.Position = (new CCPoint(s.width / 2 - 80, s.height / 2));
+            sprite.Position = (new CCPoint(s.Width / 2 - 80, s.Height / 2));
             AddChild(sprite);
 
             var animFrames = new List<CCSpriteFrame>(6);

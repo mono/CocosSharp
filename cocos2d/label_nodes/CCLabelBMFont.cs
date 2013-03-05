@@ -27,7 +27,7 @@ namespace cocos2d
             get { return base.AnchorPoint; }
             set
             {
-                if (!m_tAnchorPoint.equals(value))
+                if (!m_tAnchorPoint.Equals(value))
                 {
                     base.AnchorPoint = value;
                     UpdateLabel();
@@ -365,8 +365,8 @@ namespace cocos2d
 
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
                 int yOffset = m_pConfiguration.m_nCommonHeight - fontDef.yOffset;
-                var fontPos = new CCPoint((float) nextFontPositionX + fontDef.xOffset + fontDef.rect.size.width * 0.5f + kerningAmount,
-                                          (float) nextFontPositionY + yOffset - rect.size.height * 0.5f * ccMacros.CC_CONTENT_SCALE_FACTOR());
+                var fontPos = new CCPoint((float) nextFontPositionX + fontDef.xOffset + fontDef.rect.size.Width * 0.5f + kerningAmount,
+                                          (float) nextFontPositionY + yOffset - rect.size.Height * 0.5f * ccMacros.CC_CONTENT_SCALE_FACTOR());
                 fontChar.Position = ccMacros.CC_POINT_PIXELS_TO_POINTS(fontPos);
 
                 // update kerning
@@ -391,8 +391,8 @@ namespace cocos2d
                 }
             }
 
-            tmpSize.width = longestLine;
-            tmpSize.height = totalHeight;
+            tmpSize.Width = longestLine;
+            tmpSize.Height = totalHeight;
 
             ContentSize = ccMacros.CC_SIZE_PIXELS_TO_POINTS(tmpSize);
         }
@@ -644,16 +644,16 @@ namespace cocos2d
                         if (lastChar == null)
                             continue;
 
-                        lineWidth = lastChar.Position.x + lastChar.ContentSize.width / 2.0f;
+                        lineWidth = lastChar.Position.x + lastChar.ContentSize.Width / 2.0f;
 
                         float shift = 0;
                         switch (m_pAlignment)
                         {
                             case CCTextAlignment.CCTextAlignmentCenter:
-                                shift = ContentSize.width / 2.0f - lineWidth / 2.0f;
+                                shift = ContentSize.Width / 2.0f - lineWidth / 2.0f;
                                 break;
                             case CCTextAlignment.CCTextAlignmentRight:
-                                shift = ContentSize.width - lineWidth;
+                                shift = ContentSize.Width - lineWidth;
                                 break;
                             default:
                                 break;
@@ -704,12 +704,12 @@ namespace cocos2d
 
         private float GetLetterPosXLeft(CCSprite sp)
         {
-            return sp.Position.x * m_fScaleX - (sp.ContentSize.width * m_fScaleX * sp.AnchorPoint.x);
+            return sp.Position.x * m_fScaleX - (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.x);
         }
 
         private float GetLetterPosXRight(CCSprite sp)
         {
-            return sp.Position.x * m_fScaleX + (sp.ContentSize.width * m_fScaleX * sp.AnchorPoint.x);
+            return sp.Position.x * m_fScaleX + (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.x);
         }
 
 

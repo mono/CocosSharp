@@ -22,7 +22,7 @@ namespace tests
                 // Animation using Sprite batch
                 //
                 CCSprite sprite = CCSprite.Create("grossini_dance_01.png");
-                sprite.Position = (new CCPoint(s.width / 4 * (i + 1), s.height / 2));
+                sprite.Position = (new CCPoint(s.Width / 4 * (i + 1), s.Height / 2));
 
                 CCSprite point = CCSprite.Create("Images/r1");
                 point.Scale = 0.25f;

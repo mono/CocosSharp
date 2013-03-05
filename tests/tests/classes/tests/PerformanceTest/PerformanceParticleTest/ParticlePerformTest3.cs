@@ -41,8 +41,8 @@ namespace tests
             particleSystem.SpeedVar = (50);
 
             // emitter position
-            particleSystem.Position = new CCPoint(s.width / 2, 100);
-            particleSystem.PosVar = new CCPoint(s.width / 2, 0);
+            particleSystem.Position = new CCPoint(s.Width / 2, 100);
+            particleSystem.PosVar = new CCPoint(s.Width / 2, 0);
 
             // life of particles
             particleSystem.Life = 2.0f;

@@ -167,7 +167,7 @@ namespace cocos2d
             {
                 if (m_eResolutionPolicy == ResolutionPolicy.NoBorder)
                 {
-                    return new CCSize(m_obScreenSize.width / m_fScaleX, m_obScreenSize.height / m_fScaleY);
+                    return new CCSize(m_obScreenSize.Width / m_fScaleX, m_obScreenSize.Height / m_fScaleY);
                 }
                 else
                 {
@@ -182,8 +182,8 @@ namespace cocos2d
             {
                 if (m_eResolutionPolicy == ResolutionPolicy.NoBorder)
                 {
-                    return new CCPoint((m_obDesignResolutionSize.width - m_obScreenSize.width / m_fScaleX) / 2,
-                                       (m_obDesignResolutionSize.height - m_obScreenSize.height / m_fScaleY) / 2);
+                    return new CCPoint((m_obDesignResolutionSize.Width - m_obScreenSize.Width / m_fScaleX) / 2,
+                                       (m_obDesignResolutionSize.Height - m_obScreenSize.Height / m_fScaleY) / 2);
                 }
                 else
                 {
@@ -288,7 +288,7 @@ namespace cocos2d
             m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
             m_obScreenSize = m_obDesignResolutionSize = m_obViewPortRect.size;
 
-            CCDrawingPrimitives.init(graphicsDevice);
+            CCDrawingPrimitives.Init(graphicsDevice);
         }
 
         private static void ResetDevice()
@@ -335,7 +335,7 @@ namespace cocos2d
 
                 if (m_eResolutionPolicy != ResolutionPolicy.UnKnown)
                 {
-                    SetDesignResolutionSize(m_obDesignResolutionSize.width, m_obDesignResolutionSize.height, m_eResolutionPolicy);
+                    SetDesignResolutionSize(m_obDesignResolutionSize.Width, m_obDesignResolutionSize.Height, m_eResolutionPolicy);
                 }
                 else
                 {
@@ -584,7 +584,7 @@ namespace cocos2d
         public static void CreateRenderTarget(CCTexture2D pTexture, RenderTargetUsage usage)
         {
             CCSize size = pTexture.ContentSizeInPixels;
-            pTexture.texture2D = CreateRenderTarget((int) size.width, (int) size.height, SurfaceFormat.Color, m_PlatformDepthFormat, usage);
+            pTexture.texture2D = CreateRenderTarget((int) size.Width, (int) size.Height, SurfaceFormat.Color, m_PlatformDepthFormat, usage);
         }
 
         public static RenderTarget2D CreateRenderTarget(int width, int height, RenderTargetUsage usage)
@@ -887,11 +887,11 @@ namespace cocos2d
                 return;
             }
 
-            m_obDesignResolutionSize.width = width;
-            m_obDesignResolutionSize.height = height;
+            m_obDesignResolutionSize.Width = width;
+            m_obDesignResolutionSize.Height = height;
 
-            m_fScaleX = m_obScreenSize.width / m_obDesignResolutionSize.width;
-            m_fScaleY = m_obScreenSize.height / m_obDesignResolutionSize.height;
+            m_fScaleX = m_obScreenSize.Width / m_obDesignResolutionSize.Width;
+            m_fScaleY = m_obScreenSize.Height / m_obDesignResolutionSize.Height;
 
             if (resolutionPolicy == ResolutionPolicy.NoBorder)
             {
@@ -904,17 +904,17 @@ namespace cocos2d
             }
 
             // calculate the rect of viewport    
-            float viewPortW = m_obDesignResolutionSize.width * m_fScaleX;
-            float viewPortH = m_obDesignResolutionSize.height * m_fScaleY;
+            float viewPortW = m_obDesignResolutionSize.Width * m_fScaleX;
+            float viewPortH = m_obDesignResolutionSize.Height * m_fScaleY;
 
-            m_obViewPortRect = new CCRect((m_obScreenSize.width - viewPortW) / 2, (m_obScreenSize.height - viewPortH) / 2, viewPortW, viewPortH);
+            m_obViewPortRect = new CCRect((m_obScreenSize.Width - viewPortW) / 2, (m_obScreenSize.Height - viewPortH) / 2, viewPortW, viewPortH);
 
             m_eResolutionPolicy = resolutionPolicy;
 
             // reset director's member variables to fit visible rect
             CCDirector.SharedDirector.m_obWinSizeInPoints = Size;
-            CCDirector.SharedDirector.m_obWinSizeInPixels = new CCSize(m_obDesignResolutionSize.width * ccMacros.CC_CONTENT_SCALE_FACTOR(),
-                                                                       m_obDesignResolutionSize.height * ccMacros.CC_CONTENT_SCALE_FACTOR());
+            CCDirector.SharedDirector.m_obWinSizeInPixels = new CCSize(m_obDesignResolutionSize.Width * ccMacros.CC_CONTENT_SCALE_FACTOR(),
+                                                                       m_obDesignResolutionSize.Height * ccMacros.CC_CONTENT_SCALE_FACTOR());
             CCDirector.SharedDirector.CreateStatsLabel();
             CCDirector.SharedDirector.SetGlDefaultValues();
         }
@@ -968,7 +968,7 @@ namespace cocos2d
             if (bSwapDims)
             {
                 CCSize newSize = m_obDesignResolutionSize.Inverted;
-                DrawManager.SetDesignResolutionSize(newSize.width, newSize.height, m_eResolutionPolicy);
+                DrawManager.SetDesignResolutionSize(newSize.Width, newSize.Height, m_eResolutionPolicy);
                 /*
                 m_obViewPortRect = m_obViewPortRect.InvertedSize;
                 m_obDesignResolutionSize = m_obDesignResolutionSize.Inverted;

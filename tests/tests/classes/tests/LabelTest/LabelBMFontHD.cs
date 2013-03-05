@@ -15,7 +15,7 @@ namespace tests
             // CCLabelBMFont
             CCLabelBMFont label1 = CCLabelBMFont.Create("TESTING RETINA DISPLAY", "fonts/konqa32.fnt");
             AddChild(label1);
-            label1.Position = new CCPoint(s.width / 2, s.height / 2);
+            label1.Position = new CCPoint(s.Width / 2, s.Height / 2);
         }
 
         public override string title()

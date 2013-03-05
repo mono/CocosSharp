@@ -15,8 +15,8 @@ namespace tests
             float x, y;
 
             CCSize size = CCDirector.SharedDirector.WinSize;
-            x = size.width;
-            y = size.height;
+            x = size.Width;
+            y = size.Height;
 
             CCNode blue = CCLayerColor.Create(new ccColor4B(0, 0, 255, 255));
             CCNode red = CCLayerColor.Create(new ccColor4B(255, 0, 0, 255));

@@ -71,8 +71,8 @@ namespace cocos2d
         public static CCSize CCSizeApplyAffineTransform(CCSize size, CCAffineTransform t)
         {
             var s = new CCSize();
-            s.width = (float) ((double) t.a * size.width + (double) t.c * size.height);
-            s.height = (float) ((double) t.b * size.width + (double) t.d * size.height);
+            s.Width = (float) ((double) t.a * size.Width + (double) t.c * size.Height);
+            s.Height = (float) ((double) t.b * size.Width + (double) t.d * size.Height);
             return s;
         }
 

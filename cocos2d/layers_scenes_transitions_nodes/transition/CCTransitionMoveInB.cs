@@ -29,7 +29,7 @@ namespace cocos2d
         public override void InitScenes()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            m_pInScene.Position = new CCPoint(0, -s.height);
+            m_pInScene.Position = new CCPoint(0, -s.Height);
         }
 
         public new static CCTransitionMoveInB Create(float t, CCScene scene)

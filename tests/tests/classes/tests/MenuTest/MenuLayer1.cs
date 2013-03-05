@@ -106,7 +106,7 @@ namespace tests
                         break;
                     child = (CCNode)pObject;
                     CCPoint dstPoint = child.Position;
-                    int offset = (int)(s.width / 2 + 50);
+                    int offset = (int)(s.Width / 2 + 50);
                     if (i % 2 == 0)
                         offset = -offset;
 

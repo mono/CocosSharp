@@ -212,13 +212,13 @@ namespace cocos2d
                     CCLog.Log("cocos2d: TMXFomat: Unsupported orientation: {0}", pTMXMapInfo.Orientation);
 
                 CCSize sMapSize;
-                sMapSize.width = ccUtils.ccParseFloat(attributeDict["width"]);
-                sMapSize.height = ccUtils.ccParseFloat(attributeDict["height"]);
+                sMapSize.Width = ccUtils.ccParseFloat(attributeDict["width"]);
+                sMapSize.Height = ccUtils.ccParseFloat(attributeDict["height"]);
                 pTMXMapInfo.MapSize = sMapSize;
 
                 CCSize sTileSize;
-                sTileSize.width = ccUtils.ccParseFloat(attributeDict["tilewidth"]);
-                sTileSize.height = ccUtils.ccParseFloat(attributeDict["tileheight"]);
+                sTileSize.Width = ccUtils.ccParseFloat(attributeDict["tilewidth"]);
+                sTileSize.Height = ccUtils.ccParseFloat(attributeDict["tileheight"]);
                 pTMXMapInfo.TileSize = sTileSize;
 
                 // The parent element is now "map"
@@ -232,7 +232,7 @@ namespace cocos2d
                 {
                     string externalTilesetFilename = attributeDict["source"];
 
-                    externalTilesetFilename = CCFileUtils.fullPathFromRelativeFile(externalTilesetFilename, pTMXMapInfo.TMXFileName);
+                    externalTilesetFilename = CCFileUtils.FullPathFromRelativeFile(externalTilesetFilename, pTMXMapInfo.TMXFileName);
                     pTMXMapInfo.ParseXmlFile(externalTilesetFilename);
                 }
                 else
@@ -249,8 +249,8 @@ namespace cocos2d
                         tileset.m_uMargin = int.Parse(attributeDict["margin"]);
 
                     CCSize s;
-                    s.width = ccUtils.ccParseFloat(attributeDict["tilewidth"]);
-                    s.height = ccUtils.ccParseFloat(attributeDict["tileheight"]);
+                    s.Width = ccUtils.ccParseFloat(attributeDict["tilewidth"]);
+                    s.Height = ccUtils.ccParseFloat(attributeDict["tileheight"]);
                     tileset.m_tTileSize = s;
 
                     pTMXMapInfo.Tilesets.Add(tileset);
@@ -271,11 +271,11 @@ namespace cocos2d
                 layer.m_sName = attributeDict["name"];
 
                 CCSize s;
-                s.width = ccUtils.ccParseFloat(attributeDict["width"]);
-                s.height = ccUtils.ccParseFloat(attributeDict["height"]);
+                s.Width = ccUtils.ccParseFloat(attributeDict["width"]);
+                s.Height = ccUtils.ccParseFloat(attributeDict["height"]);
                 layer.m_tLayerSize = s;
 
-                layer.m_pTiles = new uint[(int) s.width * (int) s.height];
+                layer.m_pTiles = new uint[(int) s.Width * (int) s.Height];
 
                 if (attributeDict.Keys.Contains("visible"))
                 {
@@ -313,9 +313,9 @@ namespace cocos2d
 
                 CCPoint positionOffset = CCPoint.Zero;
                 if (attributeDict.ContainsKey("x"))
-                    positionOffset.x = ccUtils.ccParseFloat(attributeDict["x"]) * pTMXMapInfo.TileSize.width;
+                    positionOffset.x = ccUtils.ccParseFloat(attributeDict["x"]) * pTMXMapInfo.TileSize.Width;
                 if (attributeDict.ContainsKey("y"))
-                    positionOffset.y = ccUtils.ccParseFloat(attributeDict["y"]) * pTMXMapInfo.TileSize.height;
+                    positionOffset.y = ccUtils.ccParseFloat(attributeDict["y"]) * pTMXMapInfo.TileSize.Height;
                 objectGroup.PositionOffset = positionOffset;
 
                 pTMXMapInfo.ObjectGroups.Add(objectGroup);
@@ -329,7 +329,7 @@ namespace cocos2d
 
                 // build full path
                 string imagename = attributeDict["source"];
-                tileset.m_sSourceImage = CCFileUtils.fullPathFromRelativeFile(imagename, pTMXMapInfo.TMXFileName);
+                tileset.m_sSourceImage = CCFileUtils.FullPathFromRelativeFile(imagename, pTMXMapInfo.TMXFileName);
             }
             else if (elementName == "data")
             {
@@ -384,7 +384,7 @@ namespace cocos2d
 
                 int y = int.Parse(attributeDict["y"]) + (int) objectGroup.PositionOffset.y;
                 // Correct y position. (Tiled uses Flipped, cocos2d uses Standard)
-                y = (int) (pTMXMapInfo.MapSize.height * pTMXMapInfo.TileSize.height) - y -
+                y = (int) (pTMXMapInfo.MapSize.Height * pTMXMapInfo.TileSize.Height) - y -
                     (attributeDict.ContainsKey("height") ? int.Parse(attributeDict["height"]) : 0);
                 dict.Add("y", y.ToString());
 
@@ -597,7 +597,7 @@ namespace cocos2d
 
             if (tmxFileName != null)
             {
-                m_sTMXFileName = CCFileUtils.fullPathFromRelativePath(tmxFileName);
+                m_sTMXFileName = CCFileUtils.FullPathFromRelativePath(tmxFileName);
             }
 
             if (resourcePath != null)
@@ -636,14 +636,14 @@ namespace cocos2d
         {
             var parser = new CCSAXParser();
 
-            if (false == parser.init("UTF-8"))
+            if (false == parser.Init("UTF-8"))
             {
                 return false;
             }
 
-            parser.setDelegator(this);
+            parser.SetDelegator(this);
 
-            return parser.parse(data, data.Length);
+            return parser.Parse(data, data.Length);
         }
 
         /// <summary>
@@ -653,14 +653,14 @@ namespace cocos2d
         {
             var parser = new CCSAXParser();
 
-            if (false == parser.init("UTF-8"))
+            if (false == parser.Init("UTF-8"))
             {
                 return false;
             }
 
-            parser.setDelegator(this);
+            parser.SetDelegator(this);
 
-            return parser.parse(xmlFilename);
+            return parser.Parse(xmlFilename);
         }
 
         // the XML parser calls here with all the elements

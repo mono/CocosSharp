@@ -13,11 +13,11 @@ namespace tests
             float x, y;
 
             CCSize size = CCDirector.SharedDirector.WinSize;
-            x = size.width;
-            y = size.height;
+            x = size.Width;
+            y = size.Height;
 
             CCSprite bg1 = CCSprite.Create(TransitionsTestScene.s_back2);
-            bg1.Position = new CCPoint(size.width / 2, size.height / 2);
+            bg1.Position = new CCPoint(size.Width / 2, size.Height / 2);
             AddChild(bg1, -1);
 
             CCLabelTTF title = CCLabelTTF.Create((TransitionsTestScene.transitions[TransitionsTestScene.s_nSceneIdx]), "arial", 32);

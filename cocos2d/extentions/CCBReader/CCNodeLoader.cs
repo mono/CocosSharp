@@ -409,24 +409,24 @@ namespace cocos2d
                     }
                 case kCCBSizeType.kCCBSizeTypeRelativeContainer:
                     {
-                        width = containerSize.width - width;
-                        height = containerSize.height - height;
+                        width = containerSize.Width - width;
+                        height = containerSize.Height - height;
                         break;
                     }
                 case kCCBSizeType.kCCBSizeTypePercent:
                     {
-                        width = (int) (containerSize.width * width / 100.0f);
-                        height = (int) (containerSize.height * height / 100.0f);
+                        width = (int) (containerSize.Width * width / 100.0f);
+                        height = (int) (containerSize.Height * height / 100.0f);
                         break;
                     }
                 case kCCBSizeType.kCCBSizeTypeHorizontalPercent:
                     {
-                        width = (int) (containerSize.width * width / 100.0f);
+                        width = (int) (containerSize.Width * width / 100.0f);
                         break;
                     }
                 case kCCBSizeType.kCCBSizeTypeVerticalPercent:
                     {
-                        height = (int) (containerSize.height * height / 100.0f);
+                        height = (int) (containerSize.Height * height / 100.0f);
                         break;
                     }
                 case kCCBSizeType.kCCBSizeTypeMultiplyResolution:
@@ -553,8 +553,8 @@ namespace cocos2d
             {
                 if (spriteSheet.Length == 0)
                 {
-                    CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.removeExtention(spriteFile));
-                    var bounds = new CCRect(0, 0, texture.ContentSize.width, texture.ContentSize.height);
+                    CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
+                    var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
                     spriteFrame = CCSpriteFrame.Create(texture, bounds);
                 }
                 else
@@ -611,7 +611,7 @@ namespace cocos2d
 
             if (!String.IsNullOrEmpty(spriteFile))
             {
-                return CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.removeExtention(spriteFile));
+                return CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
             }
             return null;
         }
@@ -880,10 +880,10 @@ namespace cocos2d
             ccbFileName = ccbFileWithoutPathExtension + ".ccbi";
 
             // Load sub file
-            string path = CCFileUtils.fullPathFromRelativePath(ccbFileName);
+            string path = CCFileUtils.FullPathFromRelativePath(ccbFileName);
             var ccbReader = new CCBReader(reader);
 
-            byte[] pBytes = CCFileUtils.getFileBytes(path);
+            byte[] pBytes = CCFileUtils.GetFileBytes(path);
             ccbReader.InitWithData(pBytes, reader.Owner);
             ccbReader.AnimationManager.RootContainerSize = parent.ContentSize;
 

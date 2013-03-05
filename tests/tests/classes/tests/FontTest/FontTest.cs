@@ -1,4 +1,4 @@
-﻿using cocos2d;
+using cocos2d;
 
 namespace tests.FontTest
 {
@@ -97,9 +97,9 @@ namespace tests.FontTest
 
             CCMenu menu = CCMenu.Create(item1, item2, item3);
             menu.Position = CCPoint.Zero;
-            item1.Position = new CCPoint(s.width / 2 - item2.ContentSize.width * 2, item2.ContentSize.height / 2);
-            item2.Position = new CCPoint(s.width / 2, item2.ContentSize.height / 2);
-            item3.Position = new CCPoint(s.width / 2 + item2.ContentSize.width * 2, item2.ContentSize.height / 2);
+            item1.Position = new CCPoint(s.Width / 2 - item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
+            item2.Position = new CCPoint(s.Width / 2, item2.ContentSize.Height / 2);
+            item3.Position = new CCPoint(s.Width / 2 + item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
             AddChild(menu, 1);
 
             showFont(FontTestScene.restartAction());
@@ -109,7 +109,7 @@ namespace tests.FontTest
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            var blockSize = new CCSize(s.width / 3, 200);
+            var blockSize = new CCSize(s.Width / 3, 200);
             float fontSize = 26;
 
             RemoveChildByTag(kTagLabel1, true);
@@ -128,9 +128,9 @@ namespace tests.FontTest
                                                  blockSize, CCTextAlignment.CCTextAlignmentRight,
                                                  FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
 
-            CCLayerColor leftColor = CCLayerColor.Create(new ccColor4B(100, 100, 100, 255), blockSize.width, blockSize.height);
-            CCLayerColor centerColor = CCLayerColor.Create(new ccColor4B(200, 100, 100, 255), blockSize.width, blockSize.height);
-            CCLayerColor rightColor = CCLayerColor.Create(new ccColor4B(100, 100, 200, 255), blockSize.width, blockSize.height);
+            CCLayerColor leftColor = CCLayerColor.Create(new ccColor4B(100, 100, 100, 255), blockSize.Width, blockSize.Height);
+            CCLayerColor centerColor = CCLayerColor.Create(new ccColor4B(200, 100, 100, 255), blockSize.Width, blockSize.Height);
+            CCLayerColor rightColor = CCLayerColor.Create(new ccColor4B(100, 100, 200, 255), blockSize.Width, blockSize.Height);
 
             leftColor.IgnoreAnchorPointForPosition = false;
             centerColor.IgnoreAnchorPointForPosition = false;
@@ -145,12 +145,12 @@ namespace tests.FontTest
             right.AnchorPoint = new CCPoint(0, 0.5f);
             rightColor.AnchorPoint = new CCPoint(0, 0.5f);
 
-            top.Position = new CCPoint(s.width / 2, s.height - 20);
-            left.Position = new CCPoint(0, s.height / 2);
+            top.Position = new CCPoint(s.Width / 2, s.Height - 20);
+            left.Position = new CCPoint(0, s.Height / 2);
             leftColor.Position = left.Position;
-            center.Position = new CCPoint(blockSize.width, s.height / 2);
+            center.Position = new CCPoint(blockSize.Width, s.Height / 2);
             centerColor.Position = center.Position;
-            right.Position = new CCPoint(blockSize.width * 2, s.height / 2);
+            right.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
             rightColor.Position = right.Position;
 
             AddChild(leftColor, -1);

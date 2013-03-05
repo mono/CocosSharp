@@ -21,7 +21,7 @@ namespace tests
             CCLayerColor layer = CCLayerColor.Create(new ccColor4B(0xFF, 0x00, 0x00, 0x80), 200, 200);
 
             layer.IgnoreAnchorPointForPosition = false;
-            layer.Position = (new CCPoint(s.width / 2, s.height / 2));
+            layer.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             AddChild(layer, 1, kTagLayer);
         }
 
@@ -38,7 +38,7 @@ namespace tests
         public void updateSize(CCPoint touchLocation)
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            CCSize newSize = new CCSize(Math.Abs(touchLocation.x - s.width / 2) * 2, Math.Abs(touchLocation.y - s.height / 2) * 2);
+            CCSize newSize = new CCSize(Math.Abs(touchLocation.x - s.Width / 2) * 2, Math.Abs(touchLocation.y - s.Height / 2) * 2);
             CCLayerColor l = (CCLayerColor)GetChildByTag(kTagLayer);
             l.ContentSize = newSize;
         }

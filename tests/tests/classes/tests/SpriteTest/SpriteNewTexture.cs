@@ -33,7 +33,7 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCPoint p = new CCPoint((float)(Random.NextDouble() * s.width), (float)(Random.NextDouble() * s.height));
+            CCPoint p = new CCPoint((float)(Random.NextDouble() * s.Width), (float)(Random.NextDouble() * s.Height));
 
             int idx = (int)(Random.NextDouble() * 1400 / 100);
             int x = (idx % 5) * 85;

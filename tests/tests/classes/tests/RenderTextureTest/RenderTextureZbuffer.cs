@@ -23,15 +23,15 @@ namespace tests
             TouchEnabled = true;
             CCSize size = CCDirector.SharedDirector.WinSize;
             CCLabelTTF label = CCLabelTTF.Create("vertexZ = 50", "Marker Felt", 32);
-            label.Position = new CCPoint(size.width / 2, size.height * 0.25f);
+            label.Position = new CCPoint(size.Width / 2, size.Height * 0.25f);
             AddChild(label);
 
             CCLabelTTF label2 = CCLabelTTF.Create("vertexZ = 0", "Marker Felt", 32);
-            label2.Position = new CCPoint(size.width / 2, size.height * 0.5f);
+            label2.Position = new CCPoint(size.Width / 2, size.Height * 0.5f);
             AddChild(label2);
 
             CCLabelTTF label3 = CCLabelTTF.Create("vertexZ = -50", "Marker Felt", 32);
-            label3.Position = new CCPoint(size.width / 2, size.height * 0.75f);
+            label3.Position = new CCPoint(size.Width / 2, size.Height * 0.75f);
             AddChild(label3);
 
             label.VertexZ = 50;

@@ -1,4 +1,4 @@
-﻿using cocos2d;
+using cocos2d;
 
 namespace tests
 {
@@ -11,12 +11,12 @@ namespace tests
             CCLabelBMFont label1 = CCLabelBMFont.Create("This is Helvetica", "fonts/helvetica-32.fnt", CCLabelBMFont.kCCLabelAutomaticWidth,
                                                         CCTextAlignment.CCTextAlignmentLeft, CCPoint.Zero);
             AddChild(label1);
-            label1.Position = new CCPoint(s.width / 2, s.height / 3 * 2);
+            label1.Position = new CCPoint(s.Width / 2, s.Height / 3 * 2);
 
             CCLabelBMFont label2 = CCLabelBMFont.Create("And this is Geneva", "fonts/geneva-32.fnt", CCLabelBMFont.kCCLabelAutomaticWidth,
                                                         CCTextAlignment.CCTextAlignmentLeft, new CCPoint(0, 128));
             AddChild(label2);
-            label2.Position = new CCPoint(s.width / 2, s.height / 3 * 1);
+            label2.Position = new CCPoint(s.Width / 2, s.Height / 3 * 1);
         }
 
         public override string title()

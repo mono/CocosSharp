@@ -44,12 +44,12 @@ namespace cocos2d
 		 * @param object to insert
 		 */
 
-        public void insertSortedObject(CCSortableObject obj)
+        public void InsertSortedObject(CCSortableObject obj)
         {
             int idx;
             var pObj = (CCObject) obj;
             Debug.Assert(pObj != null, "Invalid parameter.");
-            idx = indexOfSortedObject(obj);
+            idx = IndexOfSortedObject(obj);
 
             Insert(idx, pObj);
         }
@@ -63,7 +63,7 @@ namespace cocos2d
 		 * @param value to remove
 		 */
 
-        public void removeSortedObject(CCSortableObject obj)
+        public void RemoveSortedObject(CCSortableObject obj)
         {
             if (Count == 0)
             {
@@ -71,7 +71,7 @@ namespace cocos2d
             }
             int idx;
             CCSortableObject foundObj;
-            idx = indexOfSortedObject(obj);
+            idx = IndexOfSortedObject(obj);
 
             if (idx < Count && idx != CC_INVALID_INDEX)
             {
@@ -95,12 +95,12 @@ namespace cocos2d
 		 * @param object the object which has the value
 		 */
 
-        public void setObjectID_ofSortedObject(int tag, CCSortableObject obj)
+        public void SetObjectID_ofSortedObject(int tag, CCSortableObject obj)
         {
             CCSortableObject foundObj;
             int idx;
 
-            idx = indexOfSortedObject(obj);
+            idx = IndexOfSortedObject(obj);
             if (idx < Count && idx != CC_INVALID_INDEX)
             {
                 foundObj = (CCSortableObject) (this[idx]);
@@ -110,7 +110,7 @@ namespace cocos2d
                 {
                     RemoveAt(idx);
                     foundObj.ObjectID = tag;
-                    insertSortedObject(foundObj);
+                    InsertSortedObject(foundObj);
                 }
                 else
                 {
@@ -118,7 +118,7 @@ namespace cocos2d
             }
         }
 
-        public CCSortableObject objectWithObjectID(int tag)
+        public CCSortableObject ObjectWithObjectID(int tag)
         {
             if (Count == 0)
             {
@@ -130,7 +130,7 @@ namespace cocos2d
             foundObj = new CCSortedObject();
             foundObj.ObjectID = tag;
 
-            int idx = indexOfSortedObject(foundObj);
+            int idx = IndexOfSortedObject(foundObj);
 
             foundObj = null;
 
@@ -171,7 +171,7 @@ namespace cocos2d
 		 * @return index of an object found
 		 */
 
-        public int indexOfSortedObject(CCSortableObject obj)
+        public int IndexOfSortedObject(CCSortableObject obj)
         {
             int idx = 0;
             if (obj != null)

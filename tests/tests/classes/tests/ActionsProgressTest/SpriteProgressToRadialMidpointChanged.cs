@@ -1,4 +1,4 @@
-﻿using cocos2d;
+using cocos2d;
 
 namespace tests
 {
@@ -21,7 +21,7 @@ namespace tests
             left.Type = CCProgressTimerType.Radial;
             AddChild(left);
             left.Midpoint = new CCPoint(0.25f, 0.75f);
-            left.Position = new CCPoint(100, s.height / 2);
+            left.Position = new CCPoint(100, s.Height / 2);
             left.RunAction(CCRepeatForever.Create((CCActionInterval) action.Copy()));
 
             /**
@@ -36,7 +36,7 @@ namespace tests
            *  we get a counter clockwise progress.
            */
             AddChild(right);
-            right.Position = new CCPoint(s.width - 100, s.height / 2);
+            right.Position = new CCPoint(s.Width - 100, s.Height / 2);
             right.RunAction(CCRepeatForever.Create((CCActionInterval) action.Copy()));
         }
 

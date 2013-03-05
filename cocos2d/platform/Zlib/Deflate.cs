@@ -821,7 +821,7 @@ namespace cocos2d.Compression.Zlib
         {
             _tr_flush_block(block_start >= 0 ? block_start : - 1, strstart - block_start, eof);
             block_start = strstart;
-            strm.flush_pending();
+            strm.FlushPending();
         }
 
         // Copy without compression as much as possible from the input stream, return
@@ -1049,7 +1049,7 @@ namespace cocos2d.Compression.Zlib
                 // Otherwise, window_size == 2*WSIZE so more >= 2.
                 // If there was sliding, more >= WSIZE. So in all cases, more >= 2.
 
-                n = strm.read_buf(window, strstart + lookahead, more);
+                n = strm.ReadBuffer(window, strstart + lookahead, more);
                 lookahead += n;
 
                 // Initialize the hash value now that we have some input:
@@ -1545,7 +1545,7 @@ namespace cocos2d.Compression.Zlib
             if (config_table[level].func != config_table[_level].func && strm.total_in != 0)
             {
                 // Flush the last buffer:
-                err = strm.deflate(Z_PARTIAL_FLUSH);
+                err = strm.Deflate(Z_PARTIAL_FLUSH);
             }
 
             if (level != _level)
@@ -1651,7 +1651,7 @@ namespace cocos2d.Compression.Zlib
             // Flush as much pending output as possible
             if (pending != 0)
             {
-                strm.flush_pending();
+                strm.FlushPending();
                 if (strm.avail_out == 0)
                 {
                     //System.out.println("  avail_out==0");
@@ -1742,7 +1742,7 @@ namespace cocos2d.Compression.Zlib
                                 head[i] = 0;
                         }
                     }
-                    strm.flush_pending();
+                    strm.FlushPending();
                     if (strm.avail_out == 0)
                     {
                         last_flush = - 1; // avoid BUF_ERROR at next call, see above
@@ -1759,7 +1759,7 @@ namespace cocos2d.Compression.Zlib
             // Write the zlib trailer (adler32)
             putShortMSB((int) (SupportClass.URShift(strm.adler, 16)));
             putShortMSB((int) (strm.adler & 0xffff));
-            strm.flush_pending();
+            strm.FlushPending();
 
             // If avail_out is zero, the application will call deflate again
             // to flush the rest.

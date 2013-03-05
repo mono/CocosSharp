@@ -32,7 +32,7 @@ namespace tests
                 CCMenuItemSprite sprite2 = CCMenuItemSprite.Create(layer, layer2, this, selectAnswer);
                 CCMenu menu = CCMenu.Create(sprite, sprite2, null);
                 menu.AlignItemsVerticallyWithPadding(100);
-                menu.Position = new CCPoint(size.width / 2, size.height / 2);
+                menu.Position = new CCPoint(size.Width / 2, size.Height / 2);
 
                 // add the label as a child to this Layer
                 AddChild(menu);

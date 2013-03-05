@@ -16,7 +16,7 @@ namespace tests
             // LEFT
             sprite = CCSprite.Create(TestResource.s_pPathGrossini);
             AddChild(sprite, 0);
-            sprite.Position = (new CCPoint(s.width / 4 * 1, s.height / 2));
+            sprite.Position = (new CCPoint(s.Width / 4 * 1, s.Height / 2));
             cam = sprite.Camera;
             cam.SetEyeXyz(0, 0, 415 / 2);
             cam.SetCenterXyz(0, 0, 0);
@@ -24,12 +24,12 @@ namespace tests
             // CENTER
             sprite = CCSprite.Create(TestResource.s_pPathGrossini);
             AddChild(sprite, 0, 40);
-            sprite.Position = (new CCPoint(s.width / 4 * 2, s.height / 2));
+            sprite.Position = (new CCPoint(s.Width / 4 * 2, s.Height / 2));
 
             // RIGHT
             sprite = CCSprite.Create(TestResource.s_pPathGrossini);
             AddChild(sprite, 0, 20);
-            sprite.Position = (new CCPoint(s.width / 4 * 3, s.height / 2));
+            sprite.Position = (new CCPoint(s.Width / 4 * 3, s.Height / 2));
 
             m_z = 0;
 

@@ -32,7 +32,7 @@ namespace cocos2d
         public override void InitScenes()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            m_pInScene.Position = new CCPoint(s.width - 0.5f, 0);
+            m_pInScene.Position = new CCPoint(s.Width - 0.5f, 0);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace cocos2d
         public override CCActionInterval Action()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            return CCMoveBy.Create(m_fDuration, new CCPoint(-(s.width - 0.5f), 0));
+            return CCMoveBy.Create(m_fDuration, new CCPoint(-(s.Width - 0.5f), 0));
         }
 
         public new static CCTransitionSlideInR Create(float t, CCScene scene)

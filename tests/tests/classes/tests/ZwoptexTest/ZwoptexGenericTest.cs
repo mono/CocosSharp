@@ -19,22 +19,22 @@ namespace tests
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("zwoptex/grossini-generic.plist");
 
             CCLayerColor layer1 = CCLayerColor.Create(new ccColor4B(255, 0, 0, 255), 85, 121);
-            layer1.Position = new CCPoint(s.width / 2 - 80 - (85.0f * 0.5f), s.height / 2 - (121.0f * 0.5f));
+            layer1.Position = new CCPoint(s.Width / 2 - 80 - (85.0f * 0.5f), s.Height / 2 - (121.0f * 0.5f));
             AddChild(layer1);
 
             sprite1 = CCSprite.Create(CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName("grossini_dance_01.png"));
-            sprite1.Position = (new CCPoint(s.width / 2 - 80, s.height / 2));
+            sprite1.Position = (new CCPoint(s.Width / 2 - 80, s.Height / 2));
             AddChild(sprite1);
 
             sprite1.FlipX = false;
             sprite1.FlipY = false;
 
             CCLayerColor layer2 = CCLayerColor.Create(new ccColor4B(255, 0, 0, 255), 85, 121);
-            layer2.Position = new CCPoint(s.width / 2 + 80 - (85.0f * 0.5f), s.height / 2 - (121.0f * 0.5f));
+            layer2.Position = new CCPoint(s.Width / 2 + 80 - (85.0f * 0.5f), s.Height / 2 - (121.0f * 0.5f));
             AddChild(layer2);
 
             sprite2 = CCSprite.Create(CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName("grossini_dance_generic_01.png"));
-            sprite2.Position = (new CCPoint(s.width / 2 + 80, s.height / 2));
+            sprite2.Position = (new CCPoint(s.Width / 2 + 80, s.Height / 2));
             AddChild(sprite2);
 
             sprite2.FlipX = false;

@@ -34,7 +34,7 @@ namespace tests
     {
         public float radius()
         {
-            return Texture.ContentSize.width / 2;
+            return Texture.ContentSize.Width / 2;
         }
 
         //BOOL initWithTexture(CCTexture2D* aTexture);
@@ -42,7 +42,7 @@ namespace tests
         public void move(float delta)
         {
             this.Position = 
-            CCPointExtension.ccpAdd(Position, CCPointExtension.ccpMult(m_velocity, delta));
+            CCPointExtension.Add(Position, CCPointExtension.Multiply(m_velocity, delta));
             if (Position.x > 320 - radius())
             {
                 Position = new CCPoint(320 - radius(), Position.y);

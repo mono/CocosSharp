@@ -16,24 +16,24 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            float step = s.width / 11;
+            float step = s.Width / 11;
             for (int i = 0; i < 5; i++)
             {
                 CCSprite sprite = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(85 * 0, 121 * 1, 85, 121));
-                sprite.Position = (new CCPoint((i + 1) * step, s.height / 2));
+                sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
                 AddChild(sprite, i);
             }
 
             for (int i = 5; i < 10; i++)
             {
                 CCSprite sprite = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(85 * 1, 121 * 0, 85, 121));
-                sprite.Position = new CCPoint((i + 1) * step, s.height / 2);
+                sprite.Position = new CCPoint((i + 1) * step, s.Height / 2);
                 AddChild(sprite, 14 - i);
             }
 
             CCSprite sprite1 = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(85 * 3, 121 * 0, 85, 121));
             AddChild(sprite1, -1, (int)kTagSprite.kTagSprite1);
-            sprite1.Position = (new CCPoint(s.width / 2, s.height / 2 - 20));
+            sprite1.Position = (new CCPoint(s.Width / 2, s.Height / 2 - 20));
             sprite1.Scale = 6;
             sprite1.Color = new ccColor3B(Color.Red);
 

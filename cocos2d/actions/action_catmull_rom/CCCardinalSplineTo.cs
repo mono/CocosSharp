@@ -90,7 +90,7 @@ namespace cocos2d
             CCPoint pp2 = m_pPoints[Math.Min(c, Math.Max(p + 1, 0))];
             CCPoint pp3 = m_pPoints[Math.Min(c, Math.Max(p + 2, 0))];
 
-            CCPoint newPos = Spline.ccCardinalSplineAt(pp0, pp1, pp2, pp3, m_fTension, lt);
+            CCPoint newPos = Spline.CCCardinalSplineAt(pp0, pp1, pp2, pp3, m_fTension, lt);
 
             UpdatePosition(newPos);
         }
@@ -138,7 +138,7 @@ namespace cocos2d
             for (int i = 1; i < copyConfig.Count; ++i)
             {
                 CCPoint current = copyConfig[i];
-                CCPoint diff = CCPointExtension.ccpSub(current, p);
+                CCPoint diff = CCPointExtension.Subtract(current, p);
                 copyConfig[i] = diff;
 
                 p = current;
@@ -152,14 +152,14 @@ namespace cocos2d
             p = copyConfig[copyConfig.Count - 1];
             copyConfig.RemoveAt(copyConfig.Count - 1);
 
-            p = CCPointExtension.ccpNeg(p);
+            p = CCPointExtension.Negative(p);
             copyConfig.Insert(0, p);
 
             for (int i = 1; i < copyConfig.Count; ++i)
             {
                 CCPoint current = copyConfig[i];
-                current = CCPointExtension.ccpNeg(current);
-                CCPoint abs = CCPointExtension.ccpAdd(current, p);
+                current = CCPointExtension.Negative(current);
+                CCPoint abs = CCPointExtension.Add(current, p);
                 copyConfig[i] = abs;
 
                 p = abs;
@@ -170,7 +170,7 @@ namespace cocos2d
 
         public override void UpdatePosition(CCPoint newPos)
         {
-            m_pTarget.Position = CCPointExtension.ccpAdd(newPos, m_startPosition);
+            m_pTarget.Position = CCPointExtension.Add(newPos, m_startPosition);
         }
     }
 

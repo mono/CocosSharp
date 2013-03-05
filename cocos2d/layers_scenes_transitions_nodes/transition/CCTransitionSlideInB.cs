@@ -32,7 +32,7 @@ namespace cocos2d
         public override void InitScenes()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            m_pInScene.Position = new CCPoint(0, -(s.height - 0.5f));
+            m_pInScene.Position = new CCPoint(0, -(s.Height - 0.5f));
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace cocos2d
         public override CCActionInterval Action()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            return CCMoveBy.Create(m_fDuration, new CCPoint(0, s.height - 0.5f));
+            return CCMoveBy.Create(m_fDuration, new CCPoint(0, s.Height - 0.5f));
         }
 
         protected override void SceneOrder()

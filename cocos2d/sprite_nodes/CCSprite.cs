@@ -300,8 +300,8 @@ namespace cocos2d
 
                     float x1 = m_obOffsetPosition.x;
                     float y1 = m_obOffsetPosition.y;
-                    float x2 = x1 + m_obRect.size.width;
-                    float y2 = y1 + m_obRect.size.height;
+                    float x2 = x1 + m_obRect.size.Width;
+                    float y2 = y1 + m_obRect.size.Height;
 
                     m_sQuad.bl.vertices = new ccVertex3F(x1, y1, 0);
                     m_sQuad.br.vertices = new ccVertex3F(x2, y1, 0);
@@ -488,7 +488,7 @@ namespace cocos2d
             m_bFlipX = m_bFlipY = false;
 
             // default transform anchor: center
-            AnchorPoint = CCPointExtension.ccp(0.5f, 0.5f);
+            AnchorPoint = CCPointExtension.CreatePoint(0.5f, 0.5f);
 
             // zwoptex default values
             m_obOffsetPosition = CCPoint.Zero;
@@ -603,8 +603,8 @@ namespace cocos2d
                 relativeOffset.y = -relativeOffset.y;
             }
 
-            m_obOffsetPosition.x = relativeOffset.x + (m_tContentSize.width - m_obRect.size.width) / 2;
-            m_obOffsetPosition.y = relativeOffset.y + (m_tContentSize.height - m_obRect.size.height) / 2;
+            m_obOffsetPosition.x = relativeOffset.x + (m_tContentSize.Width - m_obRect.size.Width) / 2;
+            m_obOffsetPosition.y = relativeOffset.y + (m_tContentSize.Height - m_obRect.size.Height) / 2;
 
             // rendering using batch node
             if (m_pobBatchNode != null)
@@ -619,8 +619,8 @@ namespace cocos2d
                 // Atlas: Vertex
                 float x1 = 0 + m_obOffsetPosition.x;
                 float y1 = 0 + m_obOffsetPosition.y;
-                float x2 = x1 + m_obRect.size.width;
-                float y2 = y1 + m_obRect.size.height;
+                float x2 = x1 + m_obRect.size.Width;
+                float y2 = y1 + m_obRect.size.Height;
 
                 // Don't update Z.
                 m_sQuad.bl.vertices = ccTypes.vertex3(x1, y1, 0);
@@ -660,9 +660,9 @@ namespace cocos2d
                 bottom    = top+(rect.size.width*2-2)/(2*atlasHeight);
 #else
                 left = rect.origin.x / atlasWidth;
-                right = (rect.origin.x + rect.size.height) / atlasWidth;
+                right = (rect.origin.x + rect.size.Height) / atlasWidth;
                 top = rect.origin.y / atlasHeight;
-                bottom = (rect.origin.y + rect.size.width) / atlasHeight;
+                bottom = (rect.origin.y + rect.size.Width) / atlasHeight;
 #endif
                 // CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
 
@@ -694,9 +694,9 @@ namespace cocos2d
                 bottom    = top + (rect.size.height*2-2)/(2*atlasHeight);
 #else
                 left = rect.origin.x / atlasWidth;
-                right = (rect.origin.x + rect.size.width) / atlasWidth;
+                right = (rect.origin.x + rect.size.Width) / atlasWidth;
                 top = rect.origin.y / atlasHeight;
-                bottom = (rect.origin.y + rect.size.height) / atlasHeight;
+                bottom = (rect.origin.y + rect.size.Height) / atlasHeight;
 #endif
                 // ! CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
 
@@ -763,8 +763,8 @@ namespace cocos2d
                     float x1 = m_obOffsetPosition.x;
                     float y1 = m_obOffsetPosition.y;
 
-                    float x2 = x1 + size.width;
-                    float y2 = y1 + size.height;
+                    float x2 = x1 + size.Width;
+                    float y2 = y1 + size.Height;
                     float x = m_transformToBatch.tx;
                     float y = m_transformToBatch.ty;
 
@@ -1067,7 +1067,7 @@ namespace cocos2d
             return (
                        CCRect.CCRectEqualToRect(r, m_obRect) &&
                        pFrame.Texture.Name == m_pobTexture.Name &&
-                       pFrame.Offset.equals(m_obUnflippedOffsetPositionFromCenter)
+                       pFrame.Offset.Equals(m_obUnflippedOffsetPositionFromCenter)
                    );
         }
 
@@ -1164,10 +1164,10 @@ namespace cocos2d
             {
                 byte[] maskA = a.CollisionMask; // bitfield mask of sprite A
                 byte[] maskB = b.CollisionMask; // bitfield mask of sprite B
-                int aWidth = (int)a.Texture.ContentSize.width; // bitwise stride
-                int bWidth = (int)b.Texture.ContentSize.width; // bitwise stride
-                int aHeight = (int)a.Texture.ContentSize.height;
-                int bHeight = (int)b.Texture.ContentSize.height;
+                int aWidth = (int)a.Texture.ContentSize.Width; // bitwise stride
+                int bWidth = (int)b.Texture.ContentSize.Width; // bitwise stride
+                int aHeight = (int)a.Texture.ContentSize.Height;
+                int bHeight = (int)b.Texture.ContentSize.Height;
                 // Calculate the intersecting rectangle
                 int x1 = Math.Max(a.Bounds.X, b.Bounds.X);
                 int x2 = Math.Min(a.Bounds.X + a.Bounds.Width, b.Bounds.X + b.Bounds.Width);
@@ -1214,7 +1214,7 @@ namespace cocos2d
                         if (ca > 0 && cb > 0) // If both colors are not transparent (the alpha channel is not 0), then there is a collision
                         {
                             // Find the hit point, where on the sprite in real space the collision occurs.
-                            hitPoint = new CCPoint(a.Position.x - a.AnchorPoint.x * a.ContentSizeInPixels.width + x, a.Position.y - a.AnchorPoint.y * a.ContentSizeInPixels.height + y);
+                            hitPoint = new CCPoint(a.Position.x - a.AnchorPoint.x * a.ContentSizeInPixels.Width + x, a.Position.y - a.AnchorPoint.y * a.ContentSizeInPixels.Height + y);
                             return (true);
                         }
                     }
@@ -1267,7 +1267,7 @@ namespace cocos2d
                         if (ca.A != 0 && cb.A != 0) // If both colors are not transparent (the alpha channel is not 0), then there is a collision
                         {
                             // Find the hit point, where on the sprite in real space the collision occurs.
-                            hitPoint = new CCPoint(a.Position.x - a.AnchorPoint.x * a.ContentSizeInPixels.width + x, a.Position.y - a.AnchorPoint.y * a.ContentSizeInPixels.height + y);
+                            hitPoint = new CCPoint(a.Position.x - a.AnchorPoint.x * a.ContentSizeInPixels.Width + x, a.Position.y - a.AnchorPoint.y * a.ContentSizeInPixels.Height + y);
                             return true;
                         }
                     }
@@ -1288,10 +1288,10 @@ namespace cocos2d
             get
             {
                 return new Rectangle(
-                    (int)(Position.x - Texture.ContentSize.width / 2f),
-                    (int)(Position.y - Texture.ContentSize.height / 2f),
-                    (int)Texture.ContentSize.width,
-                    (int)Texture.ContentSize.height);
+                    (int)(Position.x - Texture.ContentSize.Width / 2f),
+                    (int)(Position.y - Texture.ContentSize.Height / 2f),
+                    (int)Texture.ContentSize.Width,
+                    (int)Texture.ContentSize.Height);
             }
 
         }

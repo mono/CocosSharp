@@ -173,8 +173,8 @@ object->propertyNamed(name_of_the_property);
                         // update content size with the max size
                         CCSize childSize = child.ContentSize;
                         CCSize currentSize = ContentSize;
-                        currentSize.width = Math.Max(currentSize.width, childSize.width);
-                        currentSize.height = Math.Max(currentSize.height, childSize.height);
+                        currentSize.Width = Math.Max(currentSize.Width, childSize.Width);
+                        currentSize.Height = Math.Max(currentSize.Height, childSize.Height);
                         ContentSize = currentSize;
 
                         idx++;
@@ -264,11 +264,11 @@ object->propertyNamed(name_of_the_property);
                     CCTMXTilesetInfo tileset = tilesets[i];
                     if (tileset != null)
                     {
-                        for (int y = 0; y < size.height; y++)
+                        for (int y = 0; y < size.Height; y++)
                         {
-                            for (int x = 0; x < size.width; x++)
+                            for (int x = 0; x < size.Width; x++)
                             {
-                                var pos = (int) (x + size.width * y);
+                                var pos = (int) (x + size.Width * y);
                                 uint gid = layerInfo.m_pTiles[pos];
 
                                 // gid are stored in little endian.

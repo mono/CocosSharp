@@ -45,7 +45,7 @@ namespace cocos2d
             CCLayerColor layer = CCLayerColor.Create(color);
 
             // create the first render texture for inScene
-            CCRenderTexture inTexture = CCRenderTexture.Create((int) size.width, (int) size.height);
+            CCRenderTexture inTexture = CCRenderTexture.Create((int) size.Width, (int) size.Height);
 
             if (null == inTexture)
             {
@@ -53,7 +53,7 @@ namespace cocos2d
             }
 
             inTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            inTexture.Position = new CCPoint(size.width / 2, size.height / 2);
+            inTexture.Position = new CCPoint(size.Width / 2, size.Height / 2);
             inTexture.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             //  render inScene to its texturebuffer
@@ -62,9 +62,9 @@ namespace cocos2d
             inTexture.End();
 
             // create the second render texture for outScene
-            CCRenderTexture outTexture = CCRenderTexture.Create((int) size.width, (int) size.height);
+            CCRenderTexture outTexture = CCRenderTexture.Create((int) size.Width, (int) size.Height);
             outTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            outTexture.Position = new CCPoint(size.width / 2, size.height / 2);
+            outTexture.Position = new CCPoint(size.Width / 2, size.Height / 2);
             outTexture.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             //  render outScene to its texturebuffer

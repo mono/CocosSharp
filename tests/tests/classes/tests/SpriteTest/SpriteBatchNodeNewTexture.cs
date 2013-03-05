@@ -30,7 +30,7 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCPoint p = new CCPoint((float)(Random.NextDouble() * s.width), (float)(Random.NextDouble() * s.height));
+            CCPoint p = new CCPoint((float)(Random.NextDouble() * s.Width), (float)(Random.NextDouble() * s.Height));
 
             CCSpriteBatchNode batch = (CCSpriteBatchNode)GetChildByTag((int)kTags.kTagSpriteBatchNode);
 

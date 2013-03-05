@@ -17,7 +17,7 @@ namespace tests
             label1.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             AddChild(label1);
-            label1.Position = new CCPoint(s.width / 2, s.height / 2);
+            label1.Position = new CCPoint(s.Width / 2, s.Height / 2);
         }
 
         public override string title()

@@ -37,7 +37,7 @@ namespace tests
                 {
                     layer = CCLayerColor.Create(new ccColor4B((byte)(i*20), (byte)(i*20), (byte)(i*20),255));
                     layer.ContentSize = new CCSize(i * 100, i * 100);
-                    layer.Position = new CCPoint(size.width / 2, size.height / 2);
+                    layer.Position = new CCPoint(size.Width / 2, size.Height / 2);
                     layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
                     layer.IgnoreAnchorPointForPosition = true;
                     AddChild(layer, -1 - i);
@@ -50,11 +50,11 @@ namespace tests
 
                 CCMenu menu = CCMenu.Create(item1);
                 menu.AlignItemsVertically();
-                menu.Position = new CCPoint(size.width / 2, 100);
+                menu.Position = new CCPoint(size.Width / 2, 100);
                 AddChild(menu);
 
                 // position the label on the center of the screen
-                label.Position = new CCPoint(size.width / 2, size.height / 2);
+                label.Position = new CCPoint(size.Width / 2, size.Height / 2);
 
                 // add the label as a child to this Layer
                 AddChild(label);

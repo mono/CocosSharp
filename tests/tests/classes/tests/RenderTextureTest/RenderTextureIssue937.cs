@@ -41,11 +41,11 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             /* A1: setup */
-            spr_premulti.Position = new CCPoint(s.width / 2 - 16, s.height / 2 + 16);
+            spr_premulti.Position = new CCPoint(s.Width / 2 - 16, s.Height / 2 + 16);
             /* B1: setup */
-            spr_nonpremulti.Position = new CCPoint(s.width / 2 - 16, s.height / 2 - 16);
+            spr_nonpremulti.Position = new CCPoint(s.Width / 2 - 16, s.Height / 2 - 16);
 
-            rend.Position = new CCPoint(s.width / 2 + 16, s.height / 2);
+            rend.Position = new CCPoint(s.Width / 2 + 16, s.Height / 2);
 
             AddChild(spr_nonpremulti);
             AddChild(spr_premulti);

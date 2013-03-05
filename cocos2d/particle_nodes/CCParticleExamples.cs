@@ -40,7 +40,7 @@ namespace cocos2d
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                SetPosition(winSize.width / 2, 60);
+                SetPosition(winSize.Width / 2, 60);
                 m_tPosVar = new CCPoint(40, 20);
 
                 // life of particles
@@ -117,7 +117,7 @@ namespace cocos2d
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = new CCPoint(winSize.width / 2, winSize.height / 2);
+                Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
 
                 // angle
                 m_fAngle = 90;
@@ -211,7 +211,7 @@ namespace cocos2d
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = new CCPoint(winSize.width / 2, winSize.height / 2);
+                Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
                 m_tPosVar = CCPoint.Zero;
 
                 // life of particles
@@ -293,7 +293,7 @@ namespace cocos2d
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = new CCPoint(winSize.width / 2, winSize.height / 2);
+                Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
                 m_tPosVar = CCPoint.Zero;
 
                 // life of particles
@@ -374,7 +374,7 @@ namespace cocos2d
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = new CCPoint(winSize.width / 2, winSize.height / 2);
+                Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
                 m_tPosVar = CCPoint.Zero;
 
                 // life of particles
@@ -455,7 +455,7 @@ namespace cocos2d
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = new CCPoint(winSize.width / 2, winSize.height / 2);
+                Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
                 m_tPosVar = CCPoint.Zero;
 
                 // life of particles
@@ -536,7 +536,7 @@ namespace cocos2d
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = new CCPoint(winSize.width / 2, winSize.height / 2);
+                Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
                 m_tPosVar = CCPoint.Zero;
 
                 // life of particles
@@ -616,7 +616,7 @@ namespace cocos2d
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = new CCPoint(winSize.width / 2, winSize.height / 2);
+                Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
                 m_tPosVar = CCPoint.Zero;
 
                 // life of particles
@@ -693,7 +693,7 @@ namespace cocos2d
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = new CCPoint(winSize.width / 2, 0);
+                Position = new CCPoint(winSize.Width / 2, 0);
                 m_tPosVar = new CCPoint(20, 0);
 
                 // life of particles
@@ -770,8 +770,8 @@ namespace cocos2d
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = new CCPoint(winSize.width / 2, winSize.height + 10);
-                m_tPosVar = new CCPoint(winSize.width / 2, 0);
+                Position = new CCPoint(winSize.Width / 2, winSize.Height + 10);
+                m_tPosVar = new CCPoint(winSize.Width / 2, 0);
 
                 // angle
                 m_fAngle = -90;
@@ -855,8 +855,8 @@ namespace cocos2d
 
                 // emitter position
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = new CCPoint(winSize.width / 2, winSize.height);
-                m_tPosVar = new CCPoint(winSize.width / 2, 0);
+                Position = new CCPoint(winSize.Width / 2, winSize.Height);
+                m_tPosVar = new CCPoint(winSize.Width / 2, 0);
 
                 // life of particles
                 m_fLife = 4.5f;

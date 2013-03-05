@@ -30,7 +30,7 @@ namespace tests
 
             CCLabelTTF l = CCLabelTTF.Create("Should not crash", "arial", 16);
             AddChild(l);
-            l.Position = (new CCPoint(s.width / 2, 245));
+            l.Position = (new CCPoint(s.Width / 2, 245));
 
             CCMoveBy pMove = CCMoveBy.Create(2, new CCPoint(200, 0));
             CCCallFunc pCallback = CCCallFunc.Create(stopAction);

@@ -15,7 +15,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            label.Position = new CCPoint(s.width / 2, s.height / 2);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 2);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
         }
         public override string title()

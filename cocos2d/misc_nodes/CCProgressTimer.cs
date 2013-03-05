@@ -339,11 +339,11 @@ namespace cocos2d
 
             float alpha = m_fPercentage / 100.0f;
             CCPoint alphaOffset =
-                CCPointExtension.ccpMult(
+                CCPointExtension.Multiply(
                     new CCPoint(1.0f * (1.0f - m_tBarChangeRate.x) + alpha * m_tBarChangeRate.x,
                                 1.0f * (1.0f - m_tBarChangeRate.y) + alpha * m_tBarChangeRate.y), 0.5f);
-            CCPoint min = CCPointExtension.ccpSub(m_tMidpoint, alphaOffset);
-            CCPoint max = CCPointExtension.ccpAdd(m_tMidpoint, alphaOffset);
+            CCPoint min = CCPointExtension.Subtract(m_tMidpoint, alphaOffset);
+            CCPoint max = CCPointExtension.Add(m_tMidpoint, alphaOffset);
 
             if (min.x < 0f)
             {
@@ -459,7 +459,7 @@ namespace cocos2d
             //    We know the first vector is the one @ 12 o'clock (top,mid) so we rotate
             //    from that by the progress angle around the m_tMidpoint pivot
             var topMid = new CCPoint(m_tMidpoint.x, 1f);
-            CCPoint percentagePt = CCPointExtension.ccpRotateByAngle(topMid, m_tMidpoint, angle);
+            CCPoint percentagePt = CCPointExtension.RotateByAngle(topMid, m_tMidpoint, angle);
 
 
             int index = 0;
@@ -498,16 +498,16 @@ namespace cocos2d
                     //    Let's deal with that here by finding the correct endpoints
                     if (i == 0)
                     {
-                        edgePtB = CCPointExtension.ccpLerp(edgePtA, edgePtB, 1 - m_tMidpoint.x);
+                        edgePtB = CCPointExtension.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.x);
                     }
                     else if (i == 4)
                     {
-                        edgePtA = CCPointExtension.ccpLerp(edgePtA, edgePtB, 1 - m_tMidpoint.x);
+                        edgePtA = CCPointExtension.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.x);
                     }
 
                     //    s and t are returned by ccpLineIntersect
                     float s = 0, t = 0;
-                    if (CCPointExtension.ccpLineIntersect(edgePtA, edgePtB, m_tMidpoint, percentagePt, ref s, ref t))
+                    if (CCPointExtension.LineIntersect(edgePtA, edgePtB, m_tMidpoint, percentagePt, ref s, ref t))
                     {
                         //    Since our hit test is on rays we have to deal with the top edge
                         //    being in split in half so we have to test as a segment
@@ -535,7 +535,7 @@ namespace cocos2d
                 }
 
                 //    Now that we have the minimum magnitude we can use that to find our intersection
-                hit = CCPointExtension.ccpAdd(m_tMidpoint, CCPointExtension.ccpMult(CCPointExtension.ccpSub(percentagePt, m_tMidpoint), min_t));
+                hit = CCPointExtension.Add(m_tMidpoint, CCPointExtension.Multiply(CCPointExtension.Subtract(percentagePt, m_tMidpoint), min_t));
             }
 
 

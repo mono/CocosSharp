@@ -93,8 +93,8 @@ namespace cocos2d
             CCRect rc = new CCRect();
             rc.origin = node.Position;
             rc.size = node.ContentSize;
-            rc.origin.x -= rc.size.width / 2;
-            rc.origin.y -= rc.size.height / 2;
+            rc.origin.x -= rc.size.Width / 2;
+            rc.origin.y -= rc.size.Height / 2;
             return rc;
         }
     }

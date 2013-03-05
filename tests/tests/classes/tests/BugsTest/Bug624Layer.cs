@@ -16,7 +16,7 @@ namespace tests
                 CCSize size = CCDirector.SharedDirector.WinSize;
                 CCLabelTTF label = CCLabelTTF.Create("Layer1", "Marker Felt", 36);
 
-                label.Position = new CCPoint(size.width / 2, size.height / 2);
+                label.Position = new CCPoint(size.Width / 2, size.Height / 2);
                 AddChild(label);
                 AccelerometerEnabled = true;
                 Schedule(switchLayer, 5.0f);
@@ -53,7 +53,7 @@ namespace tests
                 CCSize size = CCDirector.SharedDirector.WinSize;
                 CCLabelTTF label = CCLabelTTF.Create("Layer2", "Marker Felt", 36);
 
-                label.Position = new CCPoint(size.width / 2, size.height / 2);
+                label.Position = new CCPoint(size.Width / 2, size.Height / 2);
                 AddChild(label);
                 AccelerometerEnabled = true;
                 Schedule(switchLayer, 5.0f);

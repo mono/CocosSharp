@@ -14,9 +14,9 @@ namespace tests
             var blockSize = new CCSize(200, 160);
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLayerColor colorLayer = CCLayerColor.Create(new ccColor4B(100, 100, 100, 255), blockSize.width, blockSize.height);
+            CCLayerColor colorLayer = CCLayerColor.Create(new ccColor4B(100, 100, 100, 255), blockSize.Width, blockSize.Height);
             colorLayer.AnchorPoint = new CCPoint(0, 0);
-            colorLayer.Position = new CCPoint((s.width - blockSize.width) / 2, (s.height - blockSize.height) / 2);
+            colorLayer.Position = new CCPoint((s.Width - blockSize.Width) / 2, (s.Height - blockSize.Height) / 2);
 
             AddChild(colorLayer);
 
@@ -27,7 +27,7 @@ namespace tests
                 CCMenuItemFont.Create("Right", setAlignmentRight)
                 );
             menu.AlignItemsVerticallyWithPadding(4);
-            menu.Position = new CCPoint(50, s.height / 2 - 20);
+            menu.Position = new CCPoint(50, s.Height / 2 - 20);
             AddChild(menu);
 
             menu = CCMenu.Create(
@@ -36,7 +36,7 @@ namespace tests
                 CCMenuItemFont.Create("Bottom", setAlignmentBottom)
                 );
             menu.AlignItemsVerticallyWithPadding(4);
-            menu.Position = new CCPoint(s.width - 50, s.height / 2 - 20);
+            menu.Position = new CCPoint(s.Width - 50, s.Height / 2 - 20);
             AddChild(menu);
 
             m_plabel = null;
@@ -60,7 +60,7 @@ namespace tests
                                          blockSize, m_eHorizAlign, m_eVertAlign);
 
             m_plabel.AnchorPoint = new CCPoint(0, 0);
-            m_plabel.Position = new CCPoint((s.width - blockSize.width) / 2, (s.height - blockSize.height) / 2);
+            m_plabel.Position = new CCPoint((s.Width - blockSize.Width) / 2, (s.Height - blockSize.Height) / 2);
 
             AddChild(m_plabel);
         }

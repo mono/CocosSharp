@@ -24,7 +24,7 @@ namespace tests
                 CCSprite sprite2 = CCSprite.Create("Images/bugs/bug886");
                 sprite2.AnchorPoint = new CCPoint(0, 0);
                 sprite2.ScaleX = 0.6f;
-                sprite2.Position = new CCPoint(sprite.ContentSize.width * 0.6f + 10, 0);
+                sprite2.Position = new CCPoint(sprite.ContentSize.Width * 0.6f + 10, 0);
                 AddChild(sprite2);
 
                 return true;

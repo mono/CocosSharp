@@ -1,4 +1,4 @@
-﻿using cocos2d;
+using cocos2d;
 
 namespace tests
 {
@@ -15,7 +15,7 @@ namespace tests
             CCLabelTTF label1 = CCLabelTTF.Create("Testing A8 Format", "Marker Felt", 38);
             AddChild(label1);
             label1.Color = ccTypes.ccRED;
-            label1.Position = new CCPoint(s.width / 2, s.height / 2);
+            label1.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
             CCFadeOut fadeOut = CCFadeOut.Create(2);
             CCFadeIn fadeIn = CCFadeIn.Create(2);

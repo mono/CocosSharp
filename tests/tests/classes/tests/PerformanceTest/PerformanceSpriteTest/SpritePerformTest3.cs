@@ -22,7 +22,7 @@ namespace tests
         private void performanceRotationScale(CCSprite pSprite)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
-            pSprite.Position = new CCPoint((Random.Next() % (int)size.width), (Random.Next() % (int)size.height));
+            pSprite.Position = new CCPoint((Random.Next() % (int)size.Width), (Random.Next() % (int)size.Height));
             pSprite.Rotation = Random.Float_0_1() * 360;
             pSprite.Scale = Random.Float_0_1() * 2;
         }

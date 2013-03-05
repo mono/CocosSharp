@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +16,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
             _TestLabel = CCLabelTTF.Create("", "Arial", 10);
             AddChild(_TestLabel);
-            _TestLabel.Position = new CCPoint(s.width / 2, s.height / 4 * 2);
+            _TestLabel.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
         }
 
         public override void OnEnter()

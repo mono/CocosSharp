@@ -62,7 +62,7 @@ namespace cocos2d.Compression.Zlib
         {
             InitBlock();
             this.out_Renamed = out_Renamed;
-            z.inflateInit();
+            z.InflateInit();
             compress = false;
         }
 
@@ -70,7 +70,7 @@ namespace cocos2d.Compression.Zlib
         {
             InitBlock();
             this.out_Renamed = out_Renamed;
-            z.deflateInit(level);
+            z.DeflateInit(level);
             compress = true;
         }
 
@@ -158,16 +158,16 @@ namespace cocos2d.Compression.Zlib
                 z.next_out_index = 0;
                 z.avail_out = bufsize;
                 if (compress)
-                    err = z.deflate(flush_Renamed_Field);
+                    err = z.Deflate(flush_Renamed_Field);
                 else
-                    err = z.inflate(flush_Renamed_Field);
+                    err = z.Inflate(flush_Renamed_Field);
                 if (err != zlibConst.Z_OK && err != zlibConst.Z_STREAM_END)
                     throw new ZStreamException((compress ? "de" : "in") + "flating: " + z.msg);
                 out_Renamed.Write(buf, 0, bufsize - z.avail_out);
             } while (z.avail_in > 0 || z.avail_out == 0);
         }
 
-        public virtual void finish()
+        public virtual void Finish()
         {
             int err;
             do
@@ -177,11 +177,11 @@ namespace cocos2d.Compression.Zlib
                 z.avail_out = bufsize;
                 if (compress)
                 {
-                    err = z.deflate(zlibConst.Z_FINISH);
+                    err = z.Deflate(zlibConst.Z_FINISH);
                 }
                 else
                 {
-                    err = z.inflate(zlibConst.Z_FINISH);
+                    err = z.Inflate(zlibConst.Z_FINISH);
                 }
                 if (err != zlibConst.Z_STREAM_END && err != zlibConst.Z_OK)
                     throw new ZStreamException((compress ? "de" : "in") + "flating: " + z.msg);
@@ -199,17 +199,17 @@ namespace cocos2d.Compression.Zlib
             }
         }
 
-        public virtual void end()
+        public virtual void End()
         {
             if (compress)
             {
-                z.deflateEnd();
+                z.DeflateEnd();
             }
             else
             {
-                z.inflateEnd();
+                z.InflateEnd();
             }
-            z.free();
+            z.Free();
             z = null;
         }
 #if NETFX_CORE
@@ -222,7 +222,7 @@ namespace cocos2d.Compression.Zlib
             {
                 try
                 {
-                    finish();
+                    Finish();
                 }
                 catch
                 {
@@ -230,7 +230,7 @@ namespace cocos2d.Compression.Zlib
             }
             finally
             {
-                end();
+                End();
                 out_Renamed.Close();
                 out_Renamed = null;
             }

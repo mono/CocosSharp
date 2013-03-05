@@ -21,7 +21,7 @@ namespace tests
             s = label1.ContentSize;
 
             //CCLOG("content size: %.2fx%.2f", s.width, s.height);
-            CCLog.Log("content size: {0,0:2f}x{1,0:2f}", s.width, s.height);
+            CCLog.Log("content size: {0,0:2f}x{1,0:2f}", s.Width, s.Height);
 
 
             // Center
@@ -31,7 +31,7 @@ namespace tests
 
             s = label2.ContentSize;
             //CCLOG("content size: %.2fx%.2f", s.width, s.height);
-            CCLog.Log("content size: {0,0:2f}x{1,0:2f}", s.width, s.height);
+            CCLog.Log("content size: {0,0:2f}x{1,0:2f}", s.Width, s.Height);
 
             // right
             CCLabelBMFont label3 = CCLabelBMFont.Create("Multi line\nRight\nThree lines Three", "fonts/bitmapFontTest3.fnt");
@@ -43,8 +43,8 @@ namespace tests
 
             s = CCDirector.SharedDirector.WinSize;
             label1.Position = new CCPoint();
-            label2.Position = new CCPoint(s.width / 2, s.height / 2);
-            label3.Position = new CCPoint(s.width, s.height);
+            label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
+            label3.Position = new CCPoint(s.Width, s.Height);
         }
 
         public override string title()

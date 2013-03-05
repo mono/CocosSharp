@@ -21,7 +21,7 @@ namespace cocos2d
             get { return m_position; }
             set
             {
-                if (!value.@equals(m_position))
+                if (!value.Equals(m_position))
                 {
                     m_position = value;
                     m_positionInPixels.x = value.x * CCDirector.SharedDirector.ContentScaleFactor;
@@ -82,7 +82,7 @@ namespace cocos2d
                     {
                         ccVertex3F v = OriginalVertex(new ccGridSize(i, j));
                         var vect = new CCPoint(m_positionInPixels.x - v.x, m_positionInPixels.y - v.y);
-                        float r = CCPointExtension.ccpLength(vect);
+                        float r = CCPointExtension.Length(vect);
 
                         if (r < m_fRadius)
                         {
@@ -98,10 +98,10 @@ namespace cocos2d
 
                             if (Math.Sqrt((vect.x * vect.x + vect.y * vect.y)) > 0)
                             {
-                                vect = CCPointExtension.ccpNormalize(vect);
+                                vect = CCPointExtension.Normalize(vect);
 
-                                CCPoint new_vect = CCPointExtension.ccpMult(vect, new_r);
-                                v.z += CCPointExtension.ccpLength(new_vect) * m_fLensEffect;
+                                CCPoint new_vect = CCPointExtension.Multiply(vect, new_r);
+                                v.z += CCPointExtension.Length(new_vect) * m_fLensEffect;
                             }
                         }
 

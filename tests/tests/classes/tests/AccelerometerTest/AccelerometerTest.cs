@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,8 +33,8 @@ namespace tests
             ptTemp.y -= (float) pAccelerationValue.y * 9.81f;
 
             CCPoint ptNext = pDir.ConvertToGl(ptTemp);
-            ptNext.x = MathHelper.Clamp(ptNext.x, (ballSize.width / 2.0f), (winSize.width - ballSize.width / 2.0f));
-            ptNext.y = MathHelper.Clamp(ptNext.y, (ballSize.height / 2.0f), (winSize.height - ballSize.height / 2.0f));
+            ptNext.x = MathHelper.Clamp(ptNext.x, (ballSize.Width / 2.0f), (winSize.Width - ballSize.Width / 2.0f));
+            ptNext.y = MathHelper.Clamp(ptNext.y, (ballSize.Height / 2.0f), (winSize.Height - ballSize.Height / 2.0f));
             m_pBall.Position = ptNext;
         }
 
@@ -53,10 +53,10 @@ namespace tests
 
             CCLabelTTF label = CCLabelTTF.Create(title(), "Arial", 32);
             AddChild(label, 1);
-            label.Position = new CCPoint(s.width / 2, s.height - 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             m_pBall = CCSprite.Create("Images/ball");
-            m_pBall.Position = new CCPoint(s.width / 2, s.height / 2);
+            m_pBall.Position = new CCPoint(s.Width / 2, s.Height / 2);
             AddChild(m_pBall);
         }
     }

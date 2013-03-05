@@ -441,11 +441,11 @@ namespace cocos2d
             get { return m_tAnchorPoint; }
             set
             {
-                if (!value.equals(m_tAnchorPoint))
+                if (!value.Equals(m_tAnchorPoint))
                 {
                     m_tAnchorPoint = value;
-                    m_tAnchorPointInPoints = CCPointExtension.ccp(m_tContentSize.width * m_tAnchorPoint.x,
-                                                                  m_tContentSize.height * m_tAnchorPoint.y);
+                    m_tAnchorPointInPoints = CCPointExtension.CreatePoint(m_tContentSize.Width * m_tAnchorPoint.x,
+                                                                  m_tContentSize.Height * m_tAnchorPoint.y);
                     m_bIsTransformDirty = m_bIsInverseDirty = true;
                 }
             }
@@ -457,7 +457,7 @@ namespace cocos2d
         public virtual CCSize ContentSizeInPixels
         {
             get { 
-                CCSize size = new CCSize(ContentSize.width * ScaleX, ContentSize.height * ScaleY);
+                CCSize size = new CCSize(ContentSize.Width * ScaleX, ContentSize.Height * ScaleY);
                 return (size);
             }
         }
@@ -470,8 +470,8 @@ namespace cocos2d
                 if (!CCSize.CCSizeEqualToSize(value, m_tContentSize))
                 {
                     m_tContentSize = value;
-                    m_tAnchorPointInPoints = CCPointExtension.ccp(m_tContentSize.width * m_tAnchorPoint.x,
-                                                                  m_tContentSize.height * m_tAnchorPoint.y);
+                    m_tAnchorPointInPoints = CCPointExtension.CreatePoint(m_tContentSize.Width * m_tAnchorPoint.x,
+                                                                  m_tContentSize.Height * m_tAnchorPoint.y);
                     m_bIsTransformDirty = m_bIsInverseDirty = true;
                 }
             }
@@ -506,7 +506,7 @@ namespace cocos2d
         {
             get
             {
-                var rect = new CCRect(0, 0, m_tContentSize.width, m_tContentSize.height);
+                var rect = new CCRect(0, 0, m_tContentSize.Width, m_tContentSize.Height);
                 return CCAffineTransform.CCRectApplyAffineTransform(rect, NodeToParentTransform());
             }
         }
@@ -515,7 +515,7 @@ namespace cocos2d
         {
             get
             {
-                var rect = new CCRect(0, 0, ContentSizeInPixels.width, ContentSizeInPixels.height);
+                var rect = new CCRect(0, 0, ContentSizeInPixels.Width, ContentSizeInPixels.Height);
                 return CCAffineTransform.CCRectApplyAffineTransform(rect, NodeToParentTransform());
             }
         }
@@ -1116,7 +1116,7 @@ namespace cocos2d
 
                 // optimization:
                 // inline anchor point calculation if skew is not needed
-                if (!needsSkewMatrix && !m_tAnchorPointInPoints.equals(CCPoint.Zero))
+                if (!needsSkewMatrix && !m_tAnchorPointInPoints.Equals(CCPoint.Zero))
                 {
                     x += c * -m_tAnchorPointInPoints.x * m_fScaleX + -s * -m_tAnchorPointInPoints.y * m_fScaleY;
                     y += s * -m_tAnchorPointInPoints.x * m_fScaleX + c * -m_tAnchorPointInPoints.y * m_fScaleY;
@@ -1148,7 +1148,7 @@ namespace cocos2d
                     m_tTransform = CCAffineTransform.CCAffineTransformConcat(skewMatrix, m_tTransform);
 
                     // adjust anchor point
-                    if (!m_tAnchorPointInPoints.equals(CCPoint.Zero))
+                    if (!m_tAnchorPointInPoints.Equals(CCPoint.Zero))
                     {
                         m_tTransform = CCAffineTransform.CCAffineTransformTranslate(m_tTransform,
                                                                                     -m_tAnchorPointInPoints.x,
@@ -1208,12 +1208,12 @@ namespace cocos2d
         public CCPoint ConvertToNodeSpaceAr(CCPoint worldPoint)
         {
             CCPoint nodePoint = ConvertToNodeSpace(worldPoint);
-            return CCPointExtension.ccpSub(nodePoint, m_tAnchorPointInPoints);
+            return CCPointExtension.Subtract(nodePoint, m_tAnchorPointInPoints);
         }
 
         public CCPoint ConvertToWorldSpaceAr(CCPoint nodePoint)
         {
-            CCPoint pt = CCPointExtension.ccpAdd(nodePoint, m_tAnchorPointInPoints);
+            CCPoint pt = CCPointExtension.Add(nodePoint, m_tAnchorPointInPoints);
             return ConvertToWorldSpace(pt);
         }
 

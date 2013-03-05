@@ -126,12 +126,12 @@ namespace cocos2d
         /// <summary>
         /// returns whether or not an OpenGL is supported
         /// </summary>
-        public bool checkForGLExtension(string searchName)
+        public bool CheckForGLExtension(string searchName)
         {
             throw new NotImplementedException();
         }
 
-        public bool init()
+        public bool Init()
         {
             return true;
         }
@@ -146,7 +146,7 @@ namespace cocos2d
             get {
             if (!m_sharedConfiguration.m_bInited)
             {
-                m_sharedConfiguration.init();
+                m_sharedConfiguration.Init();
                 m_sharedConfiguration.m_bInited = true;
             }
 

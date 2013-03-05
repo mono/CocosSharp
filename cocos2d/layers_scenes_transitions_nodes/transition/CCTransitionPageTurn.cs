@@ -91,7 +91,7 @@ namespace cocos2d
 
             CCSize s = CCDirector.SharedDirector.WinSize;
             int x, y;
-            if (s.width > s.height)
+            if (s.Width > s.Height)
             {
                 x = 16;
                 y = 12;

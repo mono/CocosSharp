@@ -18,8 +18,8 @@ namespace tests
             float x, y;
 
             CCSize size = CCDirector.SharedDirector.WinSize;
-            x = size.width;
-            y = size.height;
+            x = size.Width;
+            y = size.Height;
 
 
             CCNode node = CCNode.Create();
@@ -30,7 +30,7 @@ namespace tests
             CCSprite bg = CCSprite.Create(TestResource.s_back3);
             node.AddChild(bg, 0);
             bg.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            bg.Position = new CCPoint(size.width / 2, size.height / 2);
+            bg.Position = new CCPoint(size.Width / 2, size.Height / 2);
 
             CCSprite grossini = CCSprite.Create(TestResource.s_pPathSister2);
             node.AddChild(grossini, 1);
@@ -60,9 +60,9 @@ namespace tests
             CCMenu menu = CCMenu.Create(item1, item2, item3);
 
             menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(size.width / 2 - 100, 30);
-            item2.Position = new CCPoint(size.width / 2, 30);
-            item3.Position = new CCPoint(size.width / 2 + 100, 30);
+            item1.Position = new CCPoint(size.Width / 2 - 100, 30);
+            item2.Position = new CCPoint(size.Width / 2, 30);
+            item3.Position = new CCPoint(size.Width / 2 + 100, 30);
 
             AddChild(menu, 1);
 

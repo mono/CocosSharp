@@ -339,7 +339,7 @@ namespace cocos2d
             {
                 CCSize size = m_obWinSizeInPoints;
 
-                DrawManager.SetViewPortInPoints(0, 0, (int)size.width, (int)size.height);
+                DrawManager.SetViewPortInPoints(0, 0, (int)size.Width, (int)size.Height);
 
                 switch (value)
                 {
@@ -347,8 +347,8 @@ namespace cocos2d
 
                         
                         DrawManager.ProjectionMatrix = Matrix.CreateOrthographicOffCenter(
-                            0, size.width,
-                            0, size.height,
+                            0, size.Width,
+                            0, size.Height,
                             -1024.0f, 1024.0f
                             );
 
@@ -373,13 +373,13 @@ namespace cocos2d
 
                         DrawManager.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(
                             MathHelper.Pi / 3.0f,
-                            size.width / size.height,
+                            size.Width / size.Height,
                             0.1f, ZEye * 2f
                             );
 
                         DrawManager.ViewMatrix = Matrix.CreateLookAt(
-                            new Vector3(size.width / 2.0f, size.height / 2.0f, ZEye),
-                            new Vector3(size.width / 2.0f, size.height / 2.0f, 0f),
+                            new Vector3(size.Width / 2.0f, size.Height / 2.0f, ZEye),
+                            new Vector3(size.Width / 2.0f, size.Height / 2.0f, 0f),
                             Vector3.Up
                             );
 
@@ -416,7 +416,7 @@ namespace cocos2d
 
         public float ZEye
         {
-            get { return (m_obWinSizeInPoints.height / 1.1566f); }
+            get { return (m_obWinSizeInPoints.Height / 1.1566f); }
         }
 
         public CCSize WinSizeInPixels
@@ -674,8 +674,8 @@ namespace cocos2d
         {
             // set size
             m_obWinSizeInPoints = DrawManager.Size;
-            m_obWinSizeInPixels = new CCSize(m_obWinSizeInPoints.width * m_fContentScaleFactor,
-                                             m_obWinSizeInPoints.height * m_fContentScaleFactor);
+            m_obWinSizeInPixels = new CCSize(m_obWinSizeInPoints.Width * m_fContentScaleFactor,
+                                             m_obWinSizeInPoints.Height * m_fContentScaleFactor);
 
             //createStatsLabel();
 
@@ -726,12 +726,12 @@ namespace cocos2d
 
         public CCPoint ConvertToGl(CCPoint uiPoint)
         {
-            return new CCPoint(uiPoint.x, m_obWinSizeInPoints.height - uiPoint.y);
+            return new CCPoint(uiPoint.x, m_obWinSizeInPoints.Height - uiPoint.y);
         }
 
         public CCPoint ConvertToUi(CCPoint glPoint)
         {
-            return new CCPoint(glPoint.x, m_obWinSizeInPoints.height - glPoint.y);
+            return new CCPoint(glPoint.x, m_obWinSizeInPoints.Height - glPoint.y);
         }
 
         public CCSize WinSize
@@ -742,8 +742,8 @@ namespace cocos2d
         public void ReshapeProjection(CCSize newWindowSize)
         {
             m_obWinSizeInPoints = DrawManager.Size;
-            m_obWinSizeInPixels = new CCSize(m_obWinSizeInPoints.width * m_fContentScaleFactor,
-                                             m_obWinSizeInPoints.height * m_fContentScaleFactor);
+            m_obWinSizeInPixels = new CCSize(m_obWinSizeInPoints.Width * m_fContentScaleFactor,
+                                             m_obWinSizeInPoints.Height * m_fContentScaleFactor);
 
             Projection = m_eProjection;
         }
@@ -1054,24 +1054,24 @@ namespace cocos2d
             {
             try
             {
-                int fontSize = (int)(m_obWinSizeInPoints.height / 320.0f * 24);
+                int fontSize = (int)(m_obWinSizeInPoints.Height / 320.0f * 24);
             m_pFPSLabel = CCLabelTTF.Create("00.0", "Arial", 24);
-            m_pFPSLabel.Scale = m_obWinSizeInPoints.height / 320.0f; // Use 320 here b/c we are optimizing at that scale.
+            m_pFPSLabel.Scale = m_obWinSizeInPoints.Height / 320.0f; // Use 320 here b/c we are optimizing at that scale.
             m_pSPFLabel = CCLabelTTF.Create("0.000", "Arial", 24);
-            m_pSPFLabel.Scale = m_obWinSizeInPoints.height / 320.0f;
+            m_pSPFLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
             m_pDrawsLabel = CCLabelTTF.Create("000", "Arial", 24);
-            m_pDrawsLabel.Scale = m_obWinSizeInPoints.height / 320.0f;
+            m_pDrawsLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
 
             //CCTexture2D::setDefaultAlphaPixelFormat(currentFormat);
 
             var pos = CCDirector.SharedDirector.VisibleOrigin;
 
             CCSize contentSize = m_pDrawsLabel.ContentSize;
-            m_pDrawsLabel.Position = new CCPoint(contentSize.width / 2, contentSize.height * 5 / 2) + pos;
+            m_pDrawsLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height * 5 / 2) + pos;
             contentSize = m_pSPFLabel.ContentSize;
-            m_pSPFLabel.Position = new CCPoint(contentSize.width / 2, contentSize.height * 3 / 2) + pos;
+            m_pSPFLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height * 3 / 2) + pos;
             contentSize = m_pFPSLabel.ContentSize;
-            m_pFPSLabel.Position = new CCPoint(contentSize.width / 2, contentSize.height / 2) + pos;
+            m_pFPSLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height / 2) + pos;
         }
             catch (Exception ex)
             {

@@ -13,7 +13,7 @@ namespace cocos2d
         {
             get
             {
-                if (m_pTarget != null && !m_pTarget.ContentSize.@equals(CCSize.Zero))
+                if (m_pTarget != null && !m_pTarget.ContentSize.Equals(CCSize.Zero))
                 {
                     m_pGrid = CCGrid3D.Create(m_sGridSize, m_pTarget.ContentSize);
                 }

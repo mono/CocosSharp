@@ -83,7 +83,7 @@ namespace cocos2d
         {
             CCPoint pos = AbsolutePosition();
             
-            if (!pos.equals(m_tLastPosition))
+            if (!pos.Equals(m_tLastPosition))
             {
                 for (int i = 0; i < m_pParallaxArray.Count; i++)
                 {

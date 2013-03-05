@@ -158,14 +158,14 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;	
             CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 26);
             AddChild(label, 1, (int)(enumTag.kTagLabel));
-            label.Position = new CCPoint(s.width/2, s.height-50);
+            label.Position = new CCPoint(s.Width/2, s.Height-50);
 
             string strSubtitle = subtitle();
             if(strSubtitle.Length > 0)
             {
                 CCLabelTTF l = CCLabelTTF.Create(strSubtitle, "arial", 16);
                 AddChild(l, 1);
-                l.Position = new CCPoint(s.width/2, s.height-80);
+                l.Position = new CCPoint(s.Width/2, s.Height-80);
             }
 
             CCMenuItemImage item1 = CCMenuItemImage.Create(TestResource.s_pPathB1, TestResource.s_pPathB2, (backCallback) );
@@ -174,9 +174,9 @@ namespace tests
 
             CCMenu menu = CCMenu.Create(item1, item2, item3);
             menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.width/2 - 100,30);
-            item2.Position = new CCPoint(s.width/2, 30);
-            item3.Position = new CCPoint(s.width/2 + 100,30);
+            item1.Position = new CCPoint(s.Width/2 - 100,30);
+            item2.Position = new CCPoint(s.Width/2, 30);
+            item3.Position = new CCPoint(s.Width/2 + 100,30);
             AddChild(menu, 1);	
             CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
         }
@@ -239,7 +239,7 @@ namespace tests
             if (sprite1 != null)
             {
                 CCLog.Log("OK\n");
-                sprite1.Position = new CCPoint(size.width - 50, size.height -50);
+                sprite1.Position = new CCPoint(size.Width - 50, size.Height -50);
                 this.AddChild(sprite1);
             }
             else
@@ -976,7 +976,7 @@ namespace tests
             // Default filter is GL_LINEAR
 	
             CCSprite sprite = CCSprite.Create("Images/grossinis_sister1");
-            sprite.Position = new CCPoint( s.width/3.0f, s.height/2.0f);
+            sprite.Position = new CCPoint( s.Width/3.0f, s.Height/2.0f);
             AddChild(sprite);
 	
             // this is the default filterting
@@ -987,7 +987,7 @@ namespace tests
             //	
 	
             CCSprite sprite2 = CCSprite.Create("Images/grossinis_sister2");
-            sprite2.Position = new CCPoint(2*s.width/3.0f, s.height/2.0f);
+            sprite2.Position = new CCPoint(2*s.Width/3.0f, s.Height/2.0f);
             AddChild(sprite2);
 	
             // Use Nearest in this one
@@ -1251,7 +1251,7 @@ namespace tests
             CCSprite sprite;
 
             sprite = CCSprite.Create("Images/grossinis_sister1");
-            sprite.Position = new CCPoint(s.width/5*1, s.height/2);
+            sprite.Position = new CCPoint(s.Width/5*1, s.Height/2);
             sprite.Texture.SetAliasTexParameters();
             sprite.Scale = 2;
             AddChild(sprite);
@@ -1259,7 +1259,7 @@ namespace tests
             CCTextureCache.SharedTextureCache.RemoveTexture(sprite.Texture);
 	
             sprite = CCSprite.Create("Images/grossinis_sister1");
-            sprite.Position = new CCPoint(s.width/5*2, s.height/2);
+            sprite.Position = new CCPoint(s.Width/5*2, s.Height/2);
             sprite.Texture.SetAntiAliasTexParameters();
             sprite.Scale = 2;
             AddChild(sprite);
@@ -1267,7 +1267,7 @@ namespace tests
             // 2nd set of sprites
 	
             sprite = CCSprite.Create("Images/grossinis_sister2");
-            sprite.Position = new CCPoint(s.width/5*3, s.height/2);
+            sprite.Position = new CCPoint(s.Width/5*3, s.Height/2);
             sprite.Texture.SetAliasTexParameters();
             sprite.Scale = 2;
             AddChild(sprite);
@@ -1275,7 +1275,7 @@ namespace tests
             CCTextureCache.SharedTextureCache.RemoveTextureForKey("Images/grossinis_sister2");
 
             sprite = CCSprite.Create("Images/grossinis_sister2");
-            sprite.Position = new CCPoint(s.width/5*4, s.height/2);
+            sprite.Position = new CCPoint(s.Width/5*4, s.Height/2);
             sprite.Texture.SetAntiAliasTexParameters();
             sprite.Scale = 2;
             AddChild(sprite);

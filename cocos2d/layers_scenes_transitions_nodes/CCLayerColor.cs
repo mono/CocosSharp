@@ -57,10 +57,10 @@ namespace cocos2d
             get { return base.ContentSize; }
             set
             {
-                m_pVertices[0].Position = new Vector3(0, value.height, 0);
-                m_pVertices[1].Position = new Vector3(value.width, value.height, 0);
+                m_pVertices[0].Position = new Vector3(0, value.Height, 0);
+                m_pVertices[1].Position = new Vector3(value.Width, value.Height, 0);
                 m_pVertices[2].Position = new Vector3(0, 0, 0);
-                m_pVertices[3].Position = new Vector3(value.width, 0, 0);
+                m_pVertices[3].Position = new Vector3(value.Width, 0, 0);
 
                 base.ContentSize = value;
 
@@ -124,7 +124,7 @@ namespace cocos2d
         public virtual bool InitWithColor(ccColor4B color)
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            InitWithColorWidthHeight(color, s.width, s.height);
+            InitWithColorWidthHeight(color, s.Width, s.Height);
             return true;
         }
 
@@ -138,7 +138,7 @@ namespace cocos2d
         /// <param name="w"></param>
         public void ChangeWidth(float w)
         {
-            ContentSize = new CCSize(w, m_tContentSize.height);
+            ContentSize = new CCSize(w, m_tContentSize.Height);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace cocos2d
         /// <param name="h"></param>
         public void ChangeHeight(float h)
         {
-            ContentSize = new CCSize(m_tContentSize.width, h);
+            ContentSize = new CCSize(m_tContentSize.Width, h);
         }
 
         /// <summary>

@@ -59,11 +59,11 @@ namespace cocos2d
             var rect = new CCRect(
                 pointRect.origin.x * ccMacros.CC_CONTENT_SCALE_FACTOR(),
                 pointRect.origin.y * ccMacros.CC_CONTENT_SCALE_FACTOR(),
-                pointRect.size.width * ccMacros.CC_CONTENT_SCALE_FACTOR(),
-                pointRect.size.height * ccMacros.CC_CONTENT_SCALE_FACTOR());
+                pointRect.size.Width * ccMacros.CC_CONTENT_SCALE_FACTOR(),
+                pointRect.size.Height * ccMacros.CC_CONTENT_SCALE_FACTOR());
 
-            float wide = pointRect.size.width;
-            float high = pointRect.size.height;
+            float wide = pointRect.size.Width;
+            float high = pointRect.size.Height;
 
             if (m_pTexture != null)
             {
@@ -79,8 +79,8 @@ namespace cocos2d
         #else
             float left = rect.origin.x / wide;
             float bottom = rect.origin.y / high;
-            float right = left + rect.size.width / wide;
-            float top = bottom + rect.size.height / high;
+            float right = left + rect.size.Width / wide;
+            float top = bottom + rect.size.Height / high;
 #endif
             // ! CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
 
@@ -138,13 +138,13 @@ namespace cocos2d
             set
             {
                 CCSize s = value.ContentSize;
-                SetTextureWithRect(value, new CCRect(0, 0, s.width, s.height));
+                SetTextureWithRect(value, new CCRect(0, 0, s.Width, s.Height));
             }
         }
 
         public void SetDisplayFrame(CCSpriteFrame spriteFrame)
         {
-            Debug.Assert(spriteFrame.OffsetInPixels.equals(CCPoint.Zero),
+            Debug.Assert(spriteFrame.OffsetInPixels.Equals(CCPoint.Zero),
                          "QuadParticle only supports SpriteFrames with no offsets");
 
             // update texture before updating texture rect

@@ -77,7 +77,7 @@ namespace cocos2d
 
         #region CCScrollViewDelegate Members
 
-        public virtual void scrollViewDidScroll(CCScrollView view)
+        public virtual void ScrollViewDidScroll(CCScrollView view)
         {
             var uCountOfItems = m_pDataSource.NumberOfCellsInTableView(this);
             if (uCountOfItems == 0)
@@ -87,26 +87,26 @@ namespace cocos2d
 
             int startIdx = 0, endIdx = 0, idx = 0, maxIdx = 0;
 
-            CCPoint offset = CCPointExtension.ccpMult(GetContentOffset(), -1);
+            CCPoint offset = CCPointExtension.Multiply(GetContentOffset(), -1);
             maxIdx = Math.Max(uCountOfItems - 1, 0);
 
             CCSize cellSize = m_pDataSource.CellSizeForTable(this);
 
             if (m_eVordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
-                offset.y = offset.y + m_tViewSize.height / Container.ScaleY - cellSize.height;
+                offset.y = offset.y + m_tViewSize.Height / Container.ScaleY - cellSize.Height;
             }
             startIdx = _indexFromOffset(offset);
 
             if (m_eVordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
-                offset.y -= m_tViewSize.height / Container.ScaleY;
+                offset.y -= m_tViewSize.Height / Container.ScaleY;
             }
             else
             {
-                offset.y += m_tViewSize.height / Container.ScaleY;
+                offset.y += m_tViewSize.Height / Container.ScaleY;
             }
-            offset.x += m_tViewSize.width / Container.ScaleX;
+            offset.x += m_tViewSize.Width / Container.ScaleX;
 
             endIdx = _indexFromOffset(offset);
 
@@ -133,14 +133,14 @@ namespace cocos2d
             {
                 var cell = (CCTableViewCell) m_pCellsUsed[0];
 
-                idx = cell.getIdx();
+                idx = cell.Index;
                 while (idx < startIdx)
                 {
                     _moveCellOutOfSight(cell);
                     if (m_pCellsUsed.Count > 0)
                     {
                         cell = (CCTableViewCell) m_pCellsUsed[0];
-                        idx = cell.getIdx();
+                        idx = cell.Index;
                     }
                     else
                     {
@@ -151,7 +151,7 @@ namespace cocos2d
             if (m_pCellsUsed.Count > 0)
             {
                 var cell = (CCTableViewCell) m_pCellsUsed[m_pCellsUsed.Count - 1];
-                idx = cell.getIdx();
+                idx = cell.Index;
 
                 while (idx <= maxIdx && idx > endIdx)
                 {
@@ -159,7 +159,7 @@ namespace cocos2d
                     if (m_pCellsUsed.Count > 0)
                     {
                         cell = (CCTableViewCell) m_pCellsUsed[m_pCellsUsed.Count - 1];
-                        idx = cell.getIdx();
+                        idx = cell.Index;
                     }
                     else
                     {
@@ -178,7 +178,7 @@ namespace cocos2d
             }
         }
 
-        public virtual void scrollViewDidZoom(CCScrollView view)
+        public virtual void ScrollViewDidZoom(CCScrollView view)
         {
         }
 
@@ -323,14 +323,14 @@ namespace cocos2d
             }
 
             int newIdx;
-            var cell = (CCTableViewCell) m_pCellsUsed.objectWithObjectID(idx);
+            var cell = (CCTableViewCell) m_pCellsUsed.ObjectWithObjectID(idx);
             if (cell != null)
             {
-                newIdx = m_pCellsUsed.indexOfSortedObject(cell);
+                newIdx = m_pCellsUsed.IndexOfSortedObject(cell);
                 for (int i = newIdx; i < m_pCellsUsed.Count; i++)
                 {
                     cell = (CCTableViewCell) m_pCellsUsed[i];
-                    _setIndexForCell(cell.getIdx() + 1, cell);
+                    _setIndexForCell(cell.Index + 1, cell);
                 }
             }
 
@@ -370,7 +370,7 @@ namespace cocos2d
                 return;
             }
 
-            newIdx = m_pCellsUsed.indexOfSortedObject(cell);
+            newIdx = m_pCellsUsed.IndexOfSortedObject(cell);
 
             //remove first
             _moveCellOutOfSight(cell);
@@ -380,7 +380,7 @@ namespace cocos2d
             for (int i = m_pCellsUsed.Count - 1; i > newIdx; i--)
             {
                 cell = (CCTableViewCell) m_pCellsUsed[i];
-                _setIndexForCell(cell.getIdx() - 1, cell);
+                _setIndexForCell(cell.Index - 1, cell);
             }
         }
 
@@ -406,7 +406,7 @@ namespace cocos2d
             _updateContentSize();
             if (m_pDataSource.NumberOfCellsInTableView(this) > 0)
             {
-                scrollViewDidScroll(this);
+                ScrollViewDidScroll(this);
             }
         }
 
@@ -461,7 +461,7 @@ namespace cocos2d
                 if (m_eVordering == CCTableViewVerticalFillOrder.FillTopDown)
                 {
                     CCSize cellSize = m_pDataSource.CellSizeForTable(this);
-                    point.y -= cellSize.height;
+                    point.y -= cellSize.Height;
                 }
                 index = _indexFromOffset(point);
                 cell = _cellWithIndex(index);
@@ -488,10 +488,10 @@ namespace cocos2d
             switch (Direction)
             {
                 case CCScrollViewDirection.Horizontal:
-                    index = (int) (offset.x / cellSize.width);
+                    index = (int) (offset.x / cellSize.Width);
                     break;
                 default:
-                    index = (int) (offset.y / cellSize.height);
+                    index = (int) (offset.y / cellSize.Height);
                     break;
             }
 
@@ -506,7 +506,7 @@ namespace cocos2d
             CCSize cellSize = m_pDataSource.CellSizeForTable(this);
             if (m_eVordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
-                offset.y = Container.ContentSize.height - offset.y - cellSize.height;
+                offset.y = Container.ContentSize.Height - offset.y - cellSize.Height;
             }
             index = Math.Max(0, __indexFromOffset(offset));
             index = Math.Min(index, maxIdx);
@@ -523,10 +523,10 @@ namespace cocos2d
             switch (Direction)
             {
                 case CCScrollViewDirection.Horizontal:
-                    offset = new CCPoint(cellSize.width * index, 0.0f);
+                    offset = new CCPoint(cellSize.Width * index, 0.0f);
                     break;
                 default:
-                    offset = new CCPoint(0.0f, cellSize.height * index);
+                    offset = new CCPoint(0.0f, cellSize.Height * index);
                     break;
             }
 
@@ -540,7 +540,7 @@ namespace cocos2d
             CCSize cellSize = m_pDataSource.CellSizeForTable(this);
             if (m_eVordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
-                offset.y = Container.ContentSize.height - offset.y - cellSize.height;
+                offset.y = Container.ContentSize.Height - offset.y - cellSize.Height;
             }
             return offset;
         }
@@ -556,10 +556,10 @@ namespace cocos2d
             switch (Direction)
             {
                 case CCScrollViewDirection.Horizontal:
-                    size = new CCSize(cellCount * cellSize.width, cellSize.height);
+                    size = new CCSize(cellCount * cellSize.Width, cellSize.Height);
                     break;
                 default:
-                    size = new CCSize(cellSize.width, cellCount * cellSize.height);
+                    size = new CCSize(cellSize.Width, cellCount * cellSize.Height);
                     break;
             }
             ContentSize = size;
@@ -584,7 +584,7 @@ namespace cocos2d
 
             if (m_pIndices.Contains(cellIndex))
             {
-                found = (CCTableViewCell) m_pCellsUsed.objectWithObjectID(cellIndex);
+                found = (CCTableViewCell) m_pCellsUsed.ObjectWithObjectID(cellIndex);
             }
 
             return found;
@@ -593,8 +593,8 @@ namespace cocos2d
         protected void _moveCellOutOfSight(CCTableViewCell cell)
         {
             m_pCellsFreed.Add(cell);
-            m_pCellsUsed.removeSortedObject(cell);
-            m_pIndices.Remove(cell.getIdx());
+            m_pCellsUsed.RemoveSortedObject(cell);
+            m_pIndices.Remove(cell.Index);
             cell.Reset();
 
             if (cell.Parent == Container)
@@ -607,7 +607,7 @@ namespace cocos2d
         {
             cell.AnchorPoint = CCPoint.Zero;
             cell.Position = _offsetFromIndex(index);
-            cell.setIdx(index);
+            cell.Index = index;
         }
 
         protected void _addCellIfNecessary(CCTableViewCell cell)
@@ -616,10 +616,10 @@ namespace cocos2d
             {
                 Container.AddChild(cell);
             }
-            m_pCellsUsed.insertSortedObject(cell);
+            m_pCellsUsed.InsertSortedObject(cell);
 
-            if (!m_pIndices.Contains(cell.getIdx()))
-                m_pIndices.Add(cell.getIdx());
+            if (!m_pIndices.Contains(cell.Index))
+                m_pIndices.Add(cell.Index);
         }
     }
 }

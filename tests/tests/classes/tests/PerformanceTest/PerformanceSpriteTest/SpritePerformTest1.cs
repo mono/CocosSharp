@@ -23,7 +23,7 @@ namespace tests
         private void performancePosition(CCSprite pSprite)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
-            pSprite.Position = new CCPoint((Random.Next() % (int)size.width), (Random.Next() % (int)size.height));
+            pSprite.Position = new CCPoint((Random.Next() % (int)size.Width), (Random.Next() % (int)size.Height));
         }
     }
 }

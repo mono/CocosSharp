@@ -21,7 +21,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            label.Position = new CCPoint(s.width / 2, s.height / 2);
+            label.Position = new CCPoint(s.Width / 2, s.Height / 2);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
 
@@ -55,7 +55,7 @@ namespace tests
             // Bottom Label
             CCLabelBMFont label2 = CCLabelBMFont.Create("00.0", "fonts/bitmapFontTest.fnt");
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
-            label2.Position = new CCPoint(s.width / 2.0f, 80);
+            label2.Position = new CCPoint(s.Width / 2.0f, 80);
 
             CCSprite lastChar = (CCSprite)label2.GetChildByTag(3);
             lastChar.RunAction((CCAction)(rot_4ever.Copy()));
@@ -83,8 +83,8 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawLine(new CCPoint(0, s.height / 2), new CCPoint(s.width, s.height / 2), new ccColor4B(255, 0, 0, 255));
-            CCDrawingPrimitives.DrawLine(new CCPoint(s.width / 2, 0), new CCPoint(s.width / 2, s.height), new ccColor4B(255, 0, 0, 255));
+            CCDrawingPrimitives.DrawLine(new CCPoint(0, s.Height / 2), new CCPoint(s.Width, s.Height / 2), new ccColor4B(255, 0, 0, 255));
+            CCDrawingPrimitives.DrawLine(new CCPoint(s.Width / 2, 0), new CCPoint(s.Width / 2, s.Height), new ccColor4B(255, 0, 0, 255));
             CCDrawingPrimitives.End();
         }
 

@@ -20,7 +20,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             batch.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            batch.ContentSize = (new CCSize(s.width, s.height));
+            batch.ContentSize = (new CCSize(s.Width, s.Height));
 
 
             // SpriteBatchNode actions
@@ -37,12 +37,12 @@ namespace tests
             CCActionInterval scale_seq = (CCActionInterval)(CCSequence.Create(scale, scale_back));
             CCAction scale_forever = CCRepeatForever.Create(scale_seq);
 
-            float step = s.width / 4;
+            float step = s.Width / 4;
 
             for (int i = 0; i < 3; i++)
             {
                 CCSprite sprite = CCSprite.Create(batch.Texture, new CCRect(85 * i, 121 * 1, 85, 121));
-                sprite.Position = (new CCPoint((i + 1) * step, s.height / 2));
+                sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
 
                 sprite.RunAction((CCAction)(action.Copy()));
                 batch.AddChild(sprite, i);

@@ -53,8 +53,8 @@ namespace tests
                 float y = -1000;
                 if (Random.NextDouble() < 0.2f)
                 {
-                    x = (float)(Random.NextDouble() * s.width);
-                    y = (float)(Random.NextDouble() * s.height);
+                    x = (float)(Random.NextDouble() * s.Width);
+                    y = (float)(Random.NextDouble() * s.Height);
                 }
                 sprite.Position = (new CCPoint(x, y));
 

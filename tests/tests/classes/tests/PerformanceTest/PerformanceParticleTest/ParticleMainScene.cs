@@ -27,18 +27,18 @@ namespace tests
 
             CCMenu menu = CCMenu.Create(decrease, increase);
             menu.AlignItemsHorizontally();
-            menu.Position = new CCPoint(s.width / 2, s.height / 2 + 15);
+            menu.Position = new CCPoint(s.Width / 2, s.Height / 2 + 15);
             AddChild(menu, 1);
 
             CCLabelTTF infoLabel = CCLabelTTF.Create("0 nodes", "Marker Felt", 30);
             infoLabel.Color = new ccColor3B(0, 200, 20);
-            infoLabel.Position = new CCPoint(s.width / 2, s.height - 90);
+            infoLabel.Position = new CCPoint(s.Width / 2, s.Height - 90);
             AddChild(infoLabel, 1, PerformanceParticleTest.kTagInfoLayer);
 
             // particles on stage
             CCLabelAtlas labelAtlas = CCLabelAtlas.Create("0000", "Images/fps_images", 16, 24, '.');
             AddChild(labelAtlas, 0, PerformanceParticleTest.kTagLabelAtlas);
-            labelAtlas.Position = new CCPoint(s.width - 66, 50);
+            labelAtlas.Position = new CCPoint(s.Width - 66, 50);
 
             // Next Prev Test
             ParticleMenuLayer pMenu = new ParticleMenuLayer(true, PerformanceParticleTest.TEST_COUNT, PerformanceParticleTest.s_nParCurIdx);
@@ -67,12 +67,12 @@ namespace tests
                 }
             }
             pSubMenu.AlignItemsHorizontally();
-            pSubMenu.Position = new CCPoint(s.width / 2, 80);
+            pSubMenu.Position = new CCPoint(s.Width / 2, 80);
             AddChild(pSubMenu, 2);
 
             CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 38);
             AddChild(label, 1);
-            label.Position = new CCPoint(s.width / 2, s.height - 32);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 32);
             label.Color = new ccColor3B(255, 255, 40);
 
             updateQuantityLabel();

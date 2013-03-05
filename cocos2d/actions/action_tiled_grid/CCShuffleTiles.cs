@@ -65,7 +65,7 @@ namespace cocos2d
             }
         }
 
-        public ccGridSize getDelta(ccGridSize pos)
+        public ccGridSize GetDelta(ccGridSize pos)
         {
             var pos2 = new CCPoint();
 
@@ -77,7 +77,7 @@ namespace cocos2d
             return new ccGridSize((int) (pos2.x - pos.x), (int) (pos2.y - pos.y));
         }
 
-        public void placeTile(ccGridSize pos, Tile t)
+        public void PlaceTile(ccGridSize pos, Tile t)
         {
             ccQuad3 coords = OriginalTile(pos);
 
@@ -133,7 +133,7 @@ namespace cocos2d
                         {
                             Position = new CCPoint(i, j), 
                             StartPosition = new CCPoint(i, j), 
-                            Delta = getDelta(new ccGridSize(i, j))
+                            Delta = GetDelta(new ccGridSize(i, j))
                         };
 
                     f++;
@@ -152,7 +152,7 @@ namespace cocos2d
                 {
                     Tile item = m_pTiles[f];
                     item.Position = new CCPoint((item.Delta.x * time), (item.Delta.y * time));
-                    placeTile(new ccGridSize(i, j), item);
+                    PlaceTile(new ccGridSize(i, j), item);
 
                     f++;
                 }

@@ -20,7 +20,7 @@ namespace tests
                 CCLayerColor sprite_a = CCLayerColor.Create(new ccColor4B(255, 0, 0, 255), 700, 700);
                 sprite_a.AnchorPoint = new CCPoint(0.5f, 0.5f);
                 sprite_a.IgnoreAnchorPointForPosition = true;
-                sprite_a.Position = new CCPoint(0.0f, s.height / 2);
+                sprite_a.Position = new CCPoint(0.0f, s.Height / 2);
                 AddChild(sprite_a);
 
                 sprite_a.RunAction(CCRepeatForever.Create((CCActionInterval)CCSequence.Create(
@@ -30,12 +30,12 @@ namespace tests
                 CCLayerColor sprite_b = CCLayerColor.Create(new ccColor4B(0, 0, 255, 255), 400, 400);
                 sprite_b.AnchorPoint = new CCPoint(0.5f, 0.5f);
                 sprite_b.IgnoreAnchorPointForPosition = true;
-                sprite_b.Position = new CCPoint(s.width / 2, s.height / 2);
+                sprite_b.Position = new CCPoint(s.Width / 2, s.Height / 2);
                 AddChild(sprite_b);
 
                 CCMenuItemLabel label = CCMenuItemLabel.Create(CCLabelTTF.Create("Flip Me", "Helvetica", 24), callBack);
                 CCMenu menu = CCMenu.Create(label);
-                menu.Position = new CCPoint(s.width - 200.0f, 50.0f);
+                menu.Position = new CCPoint(s.Width - 200.0f, 50.0f);
                 AddChild(menu);
 
                 return true;

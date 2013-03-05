@@ -18,7 +18,7 @@ namespace tests
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
             CCSprite sprite = CCSprite.Create(batch.Texture, new CCRect(0, 0, 85, 121));
-            sprite.Position = (new CCPoint(s.width / 2, s.height / 2));
+            sprite.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             batch.AddChild(sprite, 3);
             batch.ReorderChild(sprite, 1);
         }

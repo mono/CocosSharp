@@ -14,7 +14,7 @@ namespace tests
             // LEFT-TOP
             sprite = CCSprite.Create("Images/white-512x512");
             AddChild(sprite, 0);
-            sprite.Position = new CCPoint(s.width / 5 * 1, s.height / 5 * 1);
+            sprite.Position = new CCPoint(s.Width / 5 * 1, s.Height / 5 * 1);
             sprite.Color = ccTypes.ccRED;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0);
@@ -24,7 +24,7 @@ namespace tests
             // LEFT-BOTTOM
             sprite = CCSprite.Create("Images/white-512x512");
             AddChild(sprite, 0, 40);
-            sprite.Position = (new CCPoint(s.width / 5 * 1, s.height / 5 * 4));
+            sprite.Position = (new CCPoint(s.Width / 5 * 1, s.Height / 5 * 4));
             sprite.Color = ccTypes.ccBLUE;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0);
@@ -34,7 +34,7 @@ namespace tests
             // RIGHT-TOP
             sprite = CCSprite.Create("Images/white-512x512");
             AddChild(sprite, 0);
-            sprite.Position = (new CCPoint(s.width / 5 * 4, s.height / 5 * 1));
+            sprite.Position = (new CCPoint(s.Width / 5 * 4, s.Height / 5 * 1));
             sprite.Color = ccTypes.ccYELLOW;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0);
@@ -43,7 +43,7 @@ namespace tests
             // RIGHT-BOTTOM
             sprite = CCSprite.Create("Images/white-512x512");
             AddChild(sprite, 0, 40);
-            sprite.Position = (new CCPoint(s.width / 5 * 4, s.height / 5 * 4));
+            sprite.Position = (new CCPoint(s.Width / 5 * 4, s.Height / 5 * 4));
             sprite.Color = ccTypes.ccGREEN;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0);
@@ -52,7 +52,7 @@ namespace tests
             // CENTER
             sprite = CCSprite.Create("Images/white-512x512");
             AddChild(sprite, 0, 40);
-            sprite.Position = (new CCPoint(s.width / 2, s.height / 2));
+            sprite.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             sprite.Color = ccTypes.ccWHITE;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0);

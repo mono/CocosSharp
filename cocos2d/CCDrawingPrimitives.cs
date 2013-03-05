@@ -11,7 +11,7 @@ namespace cocos2d
         private static float m_PointSize = 3f;
         private static ccColor4B m_Color;
 
-        public static void init(GraphicsDevice graphics)
+        public static void Init(GraphicsDevice graphics)
         {
             m_Batch = new PrimitiveBatch(graphics);
         }
@@ -285,7 +285,7 @@ namespace cocos2d
                 CCPoint pp2 = config[Math.Min(c, Math.Max(p + 1, 0))];
                 CCPoint pp3 = config[Math.Min(c, Math.Max(p + 2, 0))];
 
-                CCPoint newPos = Spline.ccCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
+                CCPoint newPos = Spline.CCCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
 
                 vertices[i].Position.X = newPos.x;
                 vertices[i].Position.Y = newPos.y;

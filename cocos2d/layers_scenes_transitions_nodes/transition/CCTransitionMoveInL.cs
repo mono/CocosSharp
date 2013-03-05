@@ -41,7 +41,7 @@ namespace cocos2d
         public virtual void InitScenes()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            m_pInScene.Position = new CCPoint(-s.width, 0);
+            m_pInScene.Position = new CCPoint(-s.Width, 0);
         }
 
         /// <summary>

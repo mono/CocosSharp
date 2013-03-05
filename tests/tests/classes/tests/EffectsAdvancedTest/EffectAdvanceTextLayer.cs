@@ -25,8 +25,8 @@ namespace tests
             float x, y;
 
             CCSize size = CCDirector.SharedDirector.WinSize;
-            x = size.width;
-            y = size.height;
+            x = size.Width;
+            y = size.Height;
 
             CCSprite bg = CCSprite.Create("Images/background3");
             AddChild(bg, 0, EffectAdvanceScene.kTagBackground);
@@ -57,7 +57,7 @@ namespace tests
             {
                 CCLabelTTF l = CCLabelTTF.Create(strSubtitle, "arial", 16);
                 AddChild(l, 101);
-                l.Position = new CCPoint(size.width / 2, size.height - 80);
+                l.Position = new CCPoint(size.Width / 2, size.Height - 80);
             }
 
             CCMenuItemImage item1 = CCMenuItemImage.Create("Images/b1", "Images/b2", backCallback);
@@ -67,9 +67,9 @@ namespace tests
             CCMenu menu = CCMenu.Create(item1, item2, item3);
 
             menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(size.width / 2 - 100, 30);
-            item2.Position = new CCPoint(size.width / 2, 30);
-            item3.Position = new CCPoint(size.width / 2 + 100, 30);
+            item1.Position = new CCPoint(size.Width / 2 - 100, 30);
+            item2.Position = new CCPoint(size.Width / 2, 30);
+            item3.Position = new CCPoint(size.Width / 2 + 100, 30);
 
             AddChild(menu, 1);
         }

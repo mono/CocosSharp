@@ -117,7 +117,7 @@ namespace cocos2d
         {
             float width = m_pTexture.PixelsWide;
             float height = m_pTexture.PixelsHigh;
-            float imageH = m_pTexture.ContentSizeInPixels.height;
+            float imageH = m_pTexture.ContentSizeInPixels.Height;
 
             int numOfPoints = (m_sGridSize.x + 1) * (m_sGridSize.y + 1);
 

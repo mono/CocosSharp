@@ -25,7 +25,7 @@ namespace tests
             //
             aParent = CCNode.Create();
             sprite1 = CCSprite.Create("grossinis_sister1.png");
-            sprite1.Position = new CCPoint(s.width / 4, s.height / 4);
+            sprite1.Position = new CCPoint(s.Width / 4, s.Height / 4);
             sprite1.ScaleX = -0.5f;
             sprite1.ScaleY = 2.0f;
             sprite1.RunAction(seq);
@@ -46,7 +46,7 @@ namespace tests
 
             aParent = CCSpriteBatchNode.Create("animations/grossini_family");
             sprite1 = CCSprite.Create("grossinis_sister1.png");
-            sprite1.Position = new CCPoint(3 * s.width / 4, s.height / 4);
+            sprite1.Position = new CCPoint(3 * s.Width / 4, s.Height / 4);
             sprite1.ScaleX = -0.5f;
             sprite1.ScaleY = 2.0f;
             sprite1.RunAction((CCAction)(seq.Copy()));
@@ -66,7 +66,7 @@ namespace tests
 
             aParent = CCNode.Create();
             sprite1 = CCSprite.Create("grossinis_sister1.png");
-            sprite1.Position = (new CCPoint(s.width / 4, 2 * s.height / 3));
+            sprite1.Position = (new CCPoint(s.Width / 4, 2 * s.Height / 3));
             sprite1.ScaleX = (1.5f);
             sprite1.ScaleY = -0.5f;
             sprite1.RunAction((CCAction)(seq.Copy()));
@@ -85,7 +85,7 @@ namespace tests
 
             aParent = CCSpriteBatchNode.Create("animations/grossini_family");
             sprite1 = CCSprite.Create("grossinis_sister1.png");
-            sprite1.Position = (new CCPoint(3 * s.width / 4, 2 * s.height / 3));
+            sprite1.Position = (new CCPoint(3 * s.Width / 4, 2 * s.Height / 3));
             sprite1.ScaleX = 1.5f;
             sprite1.ScaleY = -0.5f;
             sprite1.RunAction((CCAction)(seq.Copy()));

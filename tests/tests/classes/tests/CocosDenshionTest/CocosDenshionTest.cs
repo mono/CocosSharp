@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
@@ -54,18 +54,18 @@ namespace tests
                 CCMenuItemLabel pMenuItem = CCMenuItemLabel.Create(label, new SEL_MenuHandler(menuCallback));
 		
 		        m_pItmeMenu.AddChild(pMenuItem, i + 10000);
-		        pMenuItem.Position = new CCPoint( s.width / 2, (s.height - (i + 1) * LINE_SPACE) );
+		        pMenuItem.Position = new CCPoint( s.Width / 2, (s.Height - (i + 1) * LINE_SPACE) );
 	        }
 
-	        m_pItmeMenu.ContentSize = new CCSize(s.width, (m_nTestCount + 1) * LINE_SPACE);
+	        m_pItmeMenu.ContentSize = new CCSize(s.Width, (m_nTestCount + 1) * LINE_SPACE);
 	        m_pItmeMenu.Position = new CCPoint(0,0);
 	        AddChild(m_pItmeMenu);
 
 	        this.TouchEnabled = true;
 
 	        // preload background music and effect
-	        SimpleAudioEngine.SharedEngine.PreloadBackgroundMusic(CCFileUtils.fullPathFromRelativePath(MUSIC_FILE));
-	        SimpleAudioEngine.SharedEngine.PreloadEffect(CCFileUtils.fullPathFromRelativePath(EFFECT_FILE));
+	        SimpleAudioEngine.SharedEngine.PreloadBackgroundMusic(CCFileUtils.FullPathFromRelativePath(MUSIC_FILE));
+	        SimpleAudioEngine.SharedEngine.PreloadEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
     
             // set default volume
             SimpleAudioEngine.SharedEngine.EffectsVolume = 0.5f;
@@ -94,7 +94,7 @@ namespace tests
 	        // play background music
 	        case 0:
 
-		        SimpleAudioEngine.SharedEngine.PlayBackgroundMusic(CCFileUtils.fullPathFromRelativePath(MUSIC_FILE), true);
+		        SimpleAudioEngine.SharedEngine.PlayBackgroundMusic(CCFileUtils.FullPathFromRelativePath(MUSIC_FILE), true);
 		        break;
 	        // stop background music
 	        case 1:
@@ -125,11 +125,11 @@ namespace tests
 		        break;
 	        // play effect
 	        case 6:
-		        m_nSoundId = SimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.fullPathFromRelativePath(EFFECT_FILE));
+		        m_nSoundId = SimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
 		        break;
             // play effect
             case 7:
-                m_nSoundId = SimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.fullPathFromRelativePath(EFFECT_FILE), true);
+                m_nSoundId = SimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE), true);
                 break;
             // stop effect
 	        case 8:
@@ -137,7 +137,7 @@ namespace tests
 		        break;
 	        // unload effect
 	        case 9:
-		        SimpleAudioEngine.SharedEngine.UnloadEffect(CCFileUtils.fullPathFromRelativePath(EFFECT_FILE));
+		        SimpleAudioEngine.SharedEngine.UnloadEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
 		        break;
 		        // add bakcground music volume
 	        case 10:
@@ -184,9 +184,9 @@ namespace tests
 		        return;
 	        }
 
-	        if (nextPos.y > ((m_nTestCount + 1)* LINE_SPACE - winSize.height))
+	        if (nextPos.y > ((m_nTestCount + 1)* LINE_SPACE - winSize.Height))
 	        {
-		        m_pItmeMenu.Position = new CCPoint(0, ((m_nTestCount + 1)* LINE_SPACE - winSize.height));
+		        m_pItmeMenu.Position = new CCPoint(0, ((m_nTestCount + 1)* LINE_SPACE - winSize.Height));
 		        return;
 	        }
 

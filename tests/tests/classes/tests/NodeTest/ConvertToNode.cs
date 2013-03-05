@@ -15,7 +15,7 @@ namespace tests
             for (int i = 0; i < 3; i++)
             {
                 CCSprite sprite = CCSprite.Create("Images/grossini");
-                sprite.Position = (new CCPoint(s.width / 4 * (i + 1), s.height / 2));
+                sprite.Position = (new CCPoint(s.Width / 4 * (i + 1), s.Height / 2));
 
                 CCSprite point = CCSprite.Create("Images/r1");
                 point.Scale = 0.25f;

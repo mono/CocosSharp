@@ -48,7 +48,7 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_fDuration, CCPointExtension.ccp(-m_delta.x, -m_delta.y));
+            return Create(m_fDuration, CCPointExtension.CreatePoint(-m_delta.x, -m_delta.y));
         }
 
         public new static CCMoveBy Create(float duration, CCPoint position)

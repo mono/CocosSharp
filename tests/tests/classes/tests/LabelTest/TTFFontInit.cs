@@ -1,4 +1,4 @@
-﻿using cocos2d;
+using cocos2d;
 
 namespace tests
 {
@@ -14,7 +14,7 @@ namespace tests
             font.FontSize = 38;
             font.SetString("It is working!");
             AddChild(font);
-            font.Position = new CCPoint(s.width / 2, s.height / 4 * 2);
+            font.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
         }
 
         public override string title()

@@ -54,14 +54,14 @@ namespace tests
 
             // MySprite1
             MySprite1 sprite = MySprite1.Create("father.gif");
-            sprite.Position = (new CCPoint(s.width / 4 * 1, s.height / 2));
+            sprite.Position = (new CCPoint(s.Width / 4 * 1, s.Height / 2));
             aParent.AddChild(sprite);
             AddChild(aParent);
 
             // MySprite2
             MySprite2 sprite2 = MySprite2.Create("Images/grossini");
             AddChild(sprite2);
-            sprite2.Position = (new CCPoint(s.width / 4 * 3, s.height / 2));
+            sprite2.Position = (new CCPoint(s.Width / 4 * 3, s.Height / 2));
         }
 
         public override string title()

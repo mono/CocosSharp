@@ -35,13 +35,13 @@ namespace cocos2d
     {
         private ICCSAXDelegator m_pDelegator;
 
-        public bool init(string pszEncoding)
+        public bool Init(string pszEncoding)
         {
             // nothing to do
             return true;
         }
 
-        public bool parse(string str, int length)
+        public bool Parse(string str, int length)
         {
             TextReader textReader = new StringReader(str);
             var setting = new XmlReaderSettings();
@@ -90,7 +90,7 @@ namespace cocos2d
                             // Move the reader back to the element node.
                             xmlReader.MoveToElement();
                         }
-                        startElement(this, name, attrs);
+                        StartElement(this, name, attrs);
 
                         byte[] buffer = null;
 
@@ -121,24 +121,24 @@ namespace cocos2d
                                 }
                             }
 
-                            textHandler(this, buffer, buffer.Length);
-                            endElement(this, name);
+                            TextHandler(this, buffer, buffer.Length);
+                            EndElement(this, name);
                         }
                         else if (name == "key" || name == "integer" || name == "real" || name == "string")
                         {
                             string value = xmlReader.ReadElementContentAsString();
                             buffer = Encoding.UTF8.GetBytes(value);
-                            textHandler(this, buffer, buffer.Length);
-                            endElement(this, name);
+                            TextHandler(this, buffer, buffer.Length);
+                            EndElement(this, name);
                         }
                         else if (xmlReader.IsEmptyElement)
                         {
-                            endElement(this, name);
+                            EndElement(this, name);
                         }
                         break;
 
                     case XmlNodeType.EndElement:
-                        endElement(this, xmlReader.Name);
+                        EndElement(this, xmlReader.Name);
                         dataindex++;
                         break;
 
@@ -150,28 +150,28 @@ namespace cocos2d
             return true;
         }
 
-        public bool parse(string pszFile)
+        public bool Parse(string pszFile)
         {
             var data = CCApplication.SharedApplication.Content.Load<CCContent>(pszFile);
-            return parse(data.Content, data.Content.Length);
+            return Parse(data.Content, data.Content.Length);
         }
 
-        public void setDelegator(ICCSAXDelegator pDelegator)
+        public void SetDelegator(ICCSAXDelegator pDelegator)
         {
             m_pDelegator = pDelegator;
         }
 
-        public static void startElement(object ctx, string name, string[] atts)
+        public static void StartElement(object ctx, string name, string[] atts)
         {
             ((CCSAXParser) (ctx)).m_pDelegator.StartElement(ctx, name, atts);
         }
 
-        public static void endElement(object ctx, string name)
+        public static void EndElement(object ctx, string name)
         {
             ((CCSAXParser) (ctx)).m_pDelegator.EndElement(ctx, name);
         }
 
-        public static void textHandler(object ctx, byte[] ch, int len)
+        public static void TextHandler(object ctx, byte[] ch, int len)
         {
             ((CCSAXParser) (ctx)).m_pDelegator.TextHandler(ctx, ch, len);
         }

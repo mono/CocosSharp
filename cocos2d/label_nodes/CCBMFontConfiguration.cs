@@ -167,13 +167,13 @@ namespace cocos2d
             index = line.IndexOf("width=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.size.width = ccUtils.ccParseFloat(value.Replace("width=", ""));
+            characterDefinition.rect.size.Width = ccUtils.ccParseFloat(value.Replace("width=", ""));
 
             // Character height
             index = line.IndexOf("height=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.size.height = ccUtils.ccParseFloat(value.Replace("height=", ""));
+            characterDefinition.rect.size.Height = ccUtils.ccParseFloat(value.Replace("height=", ""));
 
             // Character xoffset
             index = line.IndexOf("xoffset=");
@@ -277,7 +277,7 @@ namespace cocos2d
             index2 = line.IndexOf('"', index);
             value = line.Substring(index, index2 - index);
 
-            m_sAtlasName = CCFileUtils.fullPathFromRelativeFile(value, fntFile);
+            m_sAtlasName = CCFileUtils.FullPathFromRelativeFile(value, fntFile);
         }
 
         private void parseKerningEntry(string line)
