@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{96E8B92D-DC5C-4F50-9AE1-0B76BE9BBD15}</ProjectGuid>
+    <ProjectGuid>{A0FD9420-032C-4638-B3B5-4C77F1CFBA03}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -1740,17 +1740,17 @@
     <AndroidResource Include="Resources\Drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj">
-      <Project>{BA9476CF-99BA-4D03-92F2-73D2C5E58883}</Project>
-      <Name>MonoGame.Framework.Android</Name>
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
+      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
+      <Name>MonoGame.Framework.Ouya</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
       <Project>{565129E0-4EE5-4F6F-B403-C3484C9740BE}</Project>
-      <Name>Lidgren.Network.Android</Name>
+      <Name>Lidgren.Network.Ouya</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\cocos2d.Android.csproj">
-      <Project>{64725C5B-A1BC-4974-8538-A1158BABF572}</Project>
-      <Name>cocos2d.Android</Name>
+    <ProjectReference Include="..\..\cocos2d\cocos2d.Ouya.csproj">
+      <Project>{58B144AA-9409-439b-AEB0-144A1EA483E9}</Project>
+      <Name>cocos2d.Ouya</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

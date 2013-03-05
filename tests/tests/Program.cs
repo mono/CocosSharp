@@ -57,14 +57,25 @@ namespace tests
 #if ANDROID
     [Activity(
         Label = "Tests",
+        AlwaysRetainTaskState = true,
+        Icon = "@drawable/Icon",
+        Theme = "@style/Theme.NoTitleBar",
+        ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape,
+        LaunchMode = Android.Content.PM.LaunchMode.SingleInstance,
         MainLauncher = true,
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden)
     ]
+#if OUYA
+    [IntentFilter(new[] { Intent.ActionMain }, Categories = new[] { Intent.CategoryLauncher, "ouya.intent.category.GAME" })]
+#endif
     public class Activity1 : AndroidGameActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+#if OUYA
+            Ouya.Console.Api.OuyaFacade.Instance.Init(this, "f3366755-190b-4b95-af21-ca4a01a99478"); // Our UUID dev ID
+#endif
 
             Game1.Activity = this;
             var game = new Game1();
