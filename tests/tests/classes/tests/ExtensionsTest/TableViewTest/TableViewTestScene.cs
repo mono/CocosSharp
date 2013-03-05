@@ -64,7 +64,7 @@ namespace tests.Extensions
 
 		public virtual void TableCellTouched(CCTableView table, CCTableViewCell cell)
 		{
-			CCLog.Log("cell touched at index: %i", cell.getIdx());
+            CCLog.Log("cell touched at index: {0}", cell.Index);
 		}
 
 		public virtual CCSize CellSizeForTable(CCTableView table)

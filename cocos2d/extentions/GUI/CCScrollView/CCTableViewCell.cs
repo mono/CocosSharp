@@ -11,15 +11,11 @@ namespace cocos2d
 		/**
 		 * The index used internally by SWTableView and its subclasses
 		 */
-		public int getIdx()
-		{
-			return m_uIdx;
-		}
-
-		public void setIdx(int uIdx)
-		{
-			m_uIdx = uIdx;
-		}
+        public int Index 
+        {
+            get { return m_uIdx; }
+            set { m_uIdx = value; }
+        }
 
 		/**
 		 * Cleans up any resources linked to this cell and resets <code>idx</code> property.

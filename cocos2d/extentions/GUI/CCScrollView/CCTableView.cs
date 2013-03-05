@@ -133,14 +133,14 @@ namespace cocos2d
             {
                 var cell = (CCTableViewCell) m_pCellsUsed[0];
 
-                idx = cell.getIdx();
+                idx = cell.Index;
                 while (idx < startIdx)
                 {
                     _moveCellOutOfSight(cell);
                     if (m_pCellsUsed.Count > 0)
                     {
                         cell = (CCTableViewCell) m_pCellsUsed[0];
-                        idx = cell.getIdx();
+                        idx = cell.Index;
                     }
                     else
                     {
@@ -151,7 +151,7 @@ namespace cocos2d
             if (m_pCellsUsed.Count > 0)
             {
                 var cell = (CCTableViewCell) m_pCellsUsed[m_pCellsUsed.Count - 1];
-                idx = cell.getIdx();
+                idx = cell.Index;
 
                 while (idx <= maxIdx && idx > endIdx)
                 {
@@ -159,7 +159,7 @@ namespace cocos2d
                     if (m_pCellsUsed.Count > 0)
                     {
                         cell = (CCTableViewCell) m_pCellsUsed[m_pCellsUsed.Count - 1];
-                        idx = cell.getIdx();
+                        idx = cell.Index;
                     }
                     else
                     {
@@ -330,7 +330,7 @@ namespace cocos2d
                 for (int i = newIdx; i < m_pCellsUsed.Count; i++)
                 {
                     cell = (CCTableViewCell) m_pCellsUsed[i];
-                    _setIndexForCell(cell.getIdx() + 1, cell);
+                    _setIndexForCell(cell.Index + 1, cell);
                 }
             }
 
@@ -380,7 +380,7 @@ namespace cocos2d
             for (int i = m_pCellsUsed.Count - 1; i > newIdx; i--)
             {
                 cell = (CCTableViewCell) m_pCellsUsed[i];
-                _setIndexForCell(cell.getIdx() - 1, cell);
+                _setIndexForCell(cell.Index - 1, cell);
             }
         }
 
@@ -594,7 +594,7 @@ namespace cocos2d
         {
             m_pCellsFreed.Add(cell);
             m_pCellsUsed.RemoveSortedObject(cell);
-            m_pIndices.Remove(cell.getIdx());
+            m_pIndices.Remove(cell.Index);
             cell.Reset();
 
             if (cell.Parent == Container)
@@ -607,7 +607,7 @@ namespace cocos2d
         {
             cell.AnchorPoint = CCPoint.Zero;
             cell.Position = _offsetFromIndex(index);
-            cell.setIdx(index);
+            cell.Index = index;
         }
 
         protected void _addCellIfNecessary(CCTableViewCell cell)
@@ -618,8 +618,8 @@ namespace cocos2d
             }
             m_pCellsUsed.InsertSortedObject(cell);
 
-            if (!m_pIndices.Contains(cell.getIdx()))
-                m_pIndices.Add(cell.getIdx());
+            if (!m_pIndices.Contains(cell.Index))
+                m_pIndices.Add(cell.Index);
         }
     }
 }
