@@ -676,14 +676,14 @@ namespace cocos2d
                     ccMacros.CC_SWAP(ref left, ref right);
                 }
 
-                m_sQuad.bl.texCoords.u = left;
-                m_sQuad.bl.texCoords.v = top;
-                m_sQuad.br.texCoords.u = left;
-                m_sQuad.br.texCoords.v = bottom;
-                m_sQuad.tl.texCoords.u = right;
-                m_sQuad.tl.texCoords.v = top;
-                m_sQuad.tr.texCoords.u = right;
-                m_sQuad.tr.texCoords.v = bottom;
+                m_sQuad.bl.texCoords.U = left;
+                m_sQuad.bl.texCoords.V = top;
+                m_sQuad.br.texCoords.U = left;
+                m_sQuad.br.texCoords.V = bottom;
+                m_sQuad.tl.texCoords.U = right;
+                m_sQuad.tl.texCoords.V = top;
+                m_sQuad.tr.texCoords.U = right;
+                m_sQuad.tr.texCoords.V = bottom;
             }
             else
             {
@@ -710,14 +710,14 @@ namespace cocos2d
                     ccMacros.CC_SWAP(ref top, ref bottom);
                 }
 
-                m_sQuad.bl.texCoords.u = left;
-                m_sQuad.bl.texCoords.v = bottom;
-                m_sQuad.br.texCoords.u = right;
-                m_sQuad.br.texCoords.v = bottom;
-                m_sQuad.tl.texCoords.u = left;
-                m_sQuad.tl.texCoords.v = top;
-                m_sQuad.tr.texCoords.u = right;
-                m_sQuad.tr.texCoords.v = top;
+                m_sQuad.bl.texCoords.U = left;
+                m_sQuad.bl.texCoords.V = bottom;
+                m_sQuad.br.texCoords.U = right;
+                m_sQuad.br.texCoords.V = bottom;
+                m_sQuad.tl.texCoords.U = left;
+                m_sQuad.tl.texCoords.V = top;
+                m_sQuad.tr.texCoords.U = right;
+                m_sQuad.tr.texCoords.V = top;
             }
         }
 

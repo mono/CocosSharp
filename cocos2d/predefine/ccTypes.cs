@@ -212,7 +212,7 @@ namespace cocos2d
     /// A texcoord composed of 2 floats: u, y
     /// @since v0.8
     /// </summary>
-    public struct ccTex2F
+    public struct CCTex2F
     {
         /*
         public ccTex2F()
@@ -221,18 +221,18 @@ namespace cocos2d
             v = 0.0f;
         }
         */
-        public ccTex2F(float inu, float inv)
+        public CCTex2F(float inu, float inv)
         {
-            u = inu;
-            v = inv;
+            U = inu;
+            V = inv;
         }
 
-        public float u;
-        public float v;
+        public float U;
+        public float V;
 
         public override string ToString()
         {
-            return String.Format("ccTex2F u:{0}, v:{1}", u, v);
+            return String.Format("ccTex2F u:{0}, v:{1}", U, V);
         }
     }
 
@@ -316,7 +316,7 @@ namespace cocos2d
         {
             vertices = new CCVertex2F();
             colors = new CCColor4B();
-            texCoords = new ccTex2F();
+            texCoords = new CCTex2F();
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace cocos2d
         /// <summary>
         /// tex coords (2F)
         /// </summary>
-        public ccTex2F texCoords;
+        public CCTex2F texCoords;
     }
 
     /// <summary>
@@ -344,7 +344,7 @@ namespace cocos2d
         {
             vertices = new CCVertex2F();
             colors = new CCColor4F();
-            texCoords = new ccTex2F();
+            texCoords = new CCTex2F();
         }
 
         /// <summary>
@@ -360,7 +360,7 @@ namespace cocos2d
         /// <summary>
         /// tex coords (2F)
         /// </summary>
-        public ccTex2F texCoords;
+        public CCTex2F texCoords;
     }
 
     /// <summary>
@@ -382,7 +382,7 @@ namespace cocos2d
         /// <summary>
         /// tex coords (2F)
         /// </summary>
-        public ccTex2F texCoords;			// 8 byts
+        public CCTex2F texCoords;			// 8 byts
 
         public static readonly VertexDeclaration VertexDeclaration;
 
@@ -625,9 +625,9 @@ namespace cocos2d
             return c;
         }
 
-        public static ccTex2F tex2(float u, float v)
+        public static CCTex2F tex2(float u, float v)
         {
-            ccTex2F t = new ccTex2F(u, v);
+            CCTex2F t = new CCTex2F(u, v);
             return t;
         }
 

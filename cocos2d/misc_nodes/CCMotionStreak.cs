@@ -266,8 +266,8 @@ namespace cocos2d
                 float texDelta = 1.0f / m_uNuPoints;
                 for (i = 0; i < m_uNuPoints; i++)
                 {
-                    m_pVertices[i * 2].texCoords = new ccTex2F(0, texDelta * i);
-                    m_pVertices[i * 2 + 1].texCoords = new ccTex2F(1, texDelta * i);
+                    m_pVertices[i * 2].texCoords = new CCTex2F(0, texDelta * i);
+                    m_pVertices[i * 2 + 1].texCoords = new CCTex2F(1, texDelta * i);
                 }
 
                 m_uPreviousNuPoints = m_uNuPoints;

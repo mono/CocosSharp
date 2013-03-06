@@ -167,10 +167,10 @@ namespace cocos2d
                         newY2 = imageH - y2;
                     }
 
-                    vertArray[index + 0].texCoords = new ccTex2F(x1 / width, newY1 / height);
-                    vertArray[index + 1].texCoords = new ccTex2F(x2 / width, newY1 / height);
-                    vertArray[index + 2].texCoords = new ccTex2F(x1 / width, newY2 / height);
-                    vertArray[index + 3].texCoords = new ccTex2F(x2 / width, newY2 / height);
+                    vertArray[index + 0].texCoords = new CCTex2F(x1 / width, newY1 / height);
+                    vertArray[index + 1].texCoords = new CCTex2F(x2 / width, newY1 / height);
+                    vertArray[index + 2].texCoords = new CCTex2F(x1 / width, newY2 / height);
+                    vertArray[index + 3].texCoords = new CCTex2F(x2 / width, newY2 / height);
 
                     index += 4;
                 }

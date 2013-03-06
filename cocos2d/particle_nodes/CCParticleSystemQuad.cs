@@ -108,17 +108,17 @@ namespace cocos2d
             for (int i = start; i < end; i++)
             {
                 // bottom-left vertex:
-                quads[i].bl.texCoords.u = left;
-                quads[i].bl.texCoords.v = bottom;
+                quads[i].bl.texCoords.U = left;
+                quads[i].bl.texCoords.V = bottom;
                 // bottom-right vertex:
-                quads[i].br.texCoords.u = right;
-                quads[i].br.texCoords.v = bottom;
+                quads[i].br.texCoords.U = right;
+                quads[i].br.texCoords.V = bottom;
                 // top-left vertex:
-                quads[i].tl.texCoords.u = left;
-                quads[i].tl.texCoords.v = top;
+                quads[i].tl.texCoords.U = left;
+                quads[i].tl.texCoords.V = top;
                 // top-right vertex:
-                quads[i].tr.texCoords.u = right;
-                quads[i].tr.texCoords.v = top;
+                quads[i].tr.texCoords.U = right;
+                quads[i].tr.texCoords.V = top;
             }
         }
 

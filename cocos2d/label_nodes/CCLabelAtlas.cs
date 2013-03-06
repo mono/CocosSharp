@@ -111,14 +111,14 @@ namespace cocos2d
 
                 ccV3F_C4B_T2F_Quad quad;
               
-                quad.tl.texCoords.u = left;
-                quad.tl.texCoords.v = top;
-                quad.tr.texCoords.u = right;
-                quad.tr.texCoords.v = top;
-                quad.bl.texCoords.u = left;
-                quad.bl.texCoords.v = bottom;
-                quad.br.texCoords.u = right;
-                quad.br.texCoords.v = bottom;
+                quad.tl.texCoords.U = left;
+                quad.tl.texCoords.V = top;
+                quad.tr.texCoords.U = right;
+                quad.tr.texCoords.V = top;
+                quad.bl.texCoords.U = left;
+                quad.bl.texCoords.V = bottom;
+                quad.br.texCoords.U = right;
+                quad.br.texCoords.V = bottom;
 
                 quad.bl.vertices.X = i * m_uItemWidth;
                 quad.bl.vertices.Y = 0.0f;

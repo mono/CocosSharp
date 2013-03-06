@@ -14,7 +14,7 @@ namespace cocos2d
         /// <summary>
         /// tex coords (2F)
         /// </summary>
-        public ccTex2F texCoords; // 8 byts
+        public CCTex2F texCoords; // 8 byts
 
         static ccV3F_T2F()
         {
@@ -191,15 +191,15 @@ namespace cocos2d
                     {
                         vertArray[l1[i]].vertices = l2[i];
 
-                        vertArray[tex1[i]].texCoords.u = tex2[i].x / width;
+                        vertArray[tex1[i]].texCoords.U = tex2[i].x / width;
 
                         if (m_bIsTextureFlipped)
                         {
-                            vertArray[tex1[i]].texCoords.v = tex2[i].y / height;
+                            vertArray[tex1[i]].texCoords.V = tex2[i].y / height;
                         }
                         else
                         {
-                            vertArray[tex1[i]].texCoords.v = (imageH - tex2[i].y) / height;
+                            vertArray[tex1[i]].texCoords.V = (imageH - tex2[i].y) / height;
                         }
                     }
                 }
