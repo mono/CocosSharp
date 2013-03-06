@@ -66,7 +66,7 @@ namespace cocos2d
 
             for (j = 0; j < m_sGridSize.y; ++j)
             {
-                ccQuad3 coords = OriginalTile(new ccGridSize(0, j));
+                CCQuad3 coords = OriginalTile(new ccGridSize(0, j));
                 float direction = 1;
 
                 if ((j % 2) == 0)
@@ -74,10 +74,10 @@ namespace cocos2d
                     direction = -1;
                 }
 
-                coords.bl.X += direction * m_winSize.Width * time;
-                coords.br.X += direction * m_winSize.Width * time;
-                coords.tl.X += direction * m_winSize.Width * time;
-                coords.tr.X += direction * m_winSize.Width * time;
+                coords.BottomLeft.X += direction * m_winSize.Width * time;
+                coords.BottomRight.X += direction * m_winSize.Width * time;
+                coords.TopLeft.X += direction * m_winSize.Width * time;
+                coords.TopRight.X += direction * m_winSize.Width * time;
 
                 SetTile(new ccGridSize(0, j), ref coords);
             }

@@ -99,21 +99,21 @@ namespace cocos2d
             {
                 for (j = 0; j < m_sGridSize.y; j++)
                 {
-                    ccQuad3 coords = OriginalTile(new ccGridSize(i, j));
+                    CCQuad3 coords = OriginalTile(new ccGridSize(i, j));
 
                     if (((i + j) % 2) == 0)
                     {
-                        coords.bl.Z += sinz;
-                        coords.br.Z += sinz;
-                        coords.tl.Z += sinz;
-                        coords.tr.Z += sinz;
+                        coords.BottomLeft.Z += sinz;
+                        coords.BottomRight.Z += sinz;
+                        coords.TopLeft.Z += sinz;
+                        coords.TopRight.Z += sinz;
                     }
                     else
                     {
-                        coords.bl.Z += sinz2;
-                        coords.br.Z += sinz2;
-                        coords.tl.Z += sinz2;
-                        coords.tr.Z += sinz2;
+                        coords.BottomLeft.Z += sinz2;
+                        coords.BottomRight.Z += sinz2;
+                        coords.TopLeft.Z += sinz2;
+                        coords.TopRight.Z += sinz2;
                     }
 
                     SetTile(new ccGridSize(i, j), ref coords);

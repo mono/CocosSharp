@@ -79,20 +79,20 @@ namespace cocos2d
 
         public void PlaceTile(ccGridSize pos, Tile t)
         {
-            ccQuad3 coords = OriginalTile(pos);
+            CCQuad3 coords = OriginalTile(pos);
 
             CCPoint step = m_pTarget.Grid.Step;
-            coords.bl.X += (int) (t.Position.x * step.x);
-            coords.bl.Y += (int) (t.Position.y * step.y);
+            coords.BottomLeft.X += (int) (t.Position.x * step.x);
+            coords.BottomLeft.Y += (int) (t.Position.y * step.y);
 
-            coords.br.X += (int) (t.Position.x * step.x);
-            coords.br.Y += (int) (t.Position.y * step.y);
+            coords.BottomRight.X += (int) (t.Position.x * step.x);
+            coords.BottomRight.Y += (int) (t.Position.y * step.y);
 
-            coords.tl.X += (int) (t.Position.x * step.x);
-            coords.tl.Y += (int) (t.Position.y * step.y);
+            coords.TopLeft.X += (int) (t.Position.x * step.x);
+            coords.TopLeft.Y += (int) (t.Position.y * step.y);
 
-            coords.tr.X += (int) (t.Position.x * step.x);
-            coords.tr.Y += (int) (t.Position.y * step.y);
+            coords.TopRight.X += (int) (t.Position.x * step.x);
+            coords.TopRight.Y += (int) (t.Position.y * step.y);
 
             SetTile(pos, ref coords);
         }

@@ -32,32 +32,32 @@ namespace cocos2d
         private bool m_bDirty;
         private IndexBuffer m_pIndexBuffer;
         protected short[] m_pIndices;
-        protected ccQuad3[] m_pOriginalVertices;
+        protected CCQuad3[] m_pOriginalVertices;
         private VertexBuffer m_pVertexBuffer;
         protected ccV3F_T2F[] m_pVertices;
 
         /// <summary>
         ///  returns the tile at the given position
         /// </summary>
-        public ccQuad3 Tile(ccGridSize pos)
+        public CCQuad3 Tile(ccGridSize pos)
         {
             int idx = (m_sGridSize.y * pos.x + pos.y) * 4;
 
             ccV3F_T2F[] vertArray = m_pVertices;
 
-            return new ccQuad3
+            return new CCQuad3
                 {
-                    bl = vertArray[idx + 0].vertices,
-                    br = vertArray[idx + 1].vertices,
-                    tl = vertArray[idx + 2].vertices,
-                    tr = vertArray[idx + 3].vertices
+                    BottomLeft = vertArray[idx + 0].vertices,
+                    BottomRight = vertArray[idx + 1].vertices,
+                    TopLeft = vertArray[idx + 2].vertices,
+                    TopRight = vertArray[idx + 3].vertices
                 };
         }
 
         /// <summary>
         /// returns the original tile (untransformed) at the given position
         /// </summary>
-        public ccQuad3 OriginalTile(ccGridSize pos)
+        public CCQuad3 OriginalTile(ccGridSize pos)
         {
             int idx = (m_sGridSize.y * pos.x + pos.y);
             return m_pOriginalVertices[idx];
@@ -66,16 +66,16 @@ namespace cocos2d
         /// <summary>
         /// sets a new tile
         /// </summary>
-        public void SetTile(ccGridSize pos, ref ccQuad3 coords)
+        public void SetTile(ccGridSize pos, ref CCQuad3 coords)
         {
             int idx = (m_sGridSize.y * pos.x + pos.y) * 4;
 
             ccV3F_T2F[] vertArray = m_pVertices;
 
-            vertArray[idx + 0].vertices = coords.bl;
-            vertArray[idx + 1].vertices = coords.br;
-            vertArray[idx + 2].vertices = coords.tl;
-            vertArray[idx + 3].vertices = coords.tr;
+            vertArray[idx + 0].vertices = coords.BottomLeft;
+            vertArray[idx + 1].vertices = coords.BottomRight;
+            vertArray[idx + 2].vertices = coords.TopLeft;
+            vertArray[idx + 3].vertices = coords.TopRight;
 
             m_bDirty = true;
         }
@@ -110,16 +110,16 @@ namespace cocos2d
             {
                 int numQuads = m_sGridSize.x * m_sGridSize.y;
 
-                ccQuad3[] orig = m_pOriginalVertices;
+                CCQuad3[] orig = m_pOriginalVertices;
                 ccV3F_T2F[] verts = m_pVertices;
 
                 for (int i = 0; i < numQuads; i++)
                 {
                     int i4 = i * 4;
-                    orig[i].bl = verts[i4 + 0].vertices;
-                    orig[i].br = verts[i4 + 1].vertices;
-                    orig[i].tl = verts[i4 + 2].vertices;
-                    orig[i].tr = verts[i4 + 3].vertices;
+                    orig[i].BottomLeft = verts[i4 + 0].vertices;
+                    orig[i].BottomRight = verts[i4 + 1].vertices;
+                    orig[i].TopLeft = verts[i4 + 2].vertices;
+                    orig[i].TopRight = verts[i4 + 3].vertices;
                 }
 
                 --m_nReuseGrid;
@@ -135,7 +135,7 @@ namespace cocos2d
             int numQuads = m_sGridSize.x * m_sGridSize.y;
 
             m_pVertices = new ccV3F_T2F[numQuads * 4];
-            m_pOriginalVertices = new ccQuad3[numQuads];
+            m_pOriginalVertices = new CCQuad3[numQuads];
             m_pIndices = new short[numQuads * 6];
 
             ccV3F_T2F[] vertArray = m_pVertices;
@@ -192,10 +192,10 @@ namespace cocos2d
             for (int i = 0; i < numQuads; i++)
             {
                 int i4 = i * 4;
-                m_pOriginalVertices[i].bl = vertArray[i4 + 0].vertices;
-                m_pOriginalVertices[i].br = vertArray[i4 + 1].vertices;
-                m_pOriginalVertices[i].tl = vertArray[i4 + 2].vertices;
-                m_pOriginalVertices[i].tr = vertArray[i4 + 3].vertices;
+                m_pOriginalVertices[i].BottomLeft = vertArray[i4 + 0].vertices;
+                m_pOriginalVertices[i].BottomRight = vertArray[i4 + 1].vertices;
+                m_pOriginalVertices[i].TopLeft = vertArray[i4 + 2].vertices;
+                m_pOriginalVertices[i].TopRight = vertArray[i4 + 3].vertices;
             }
         }
 

@@ -275,7 +275,7 @@ namespace cocos2d
     /// <summary>
     /// A 3D Quad. 4 * 3 floats
     /// </summary>
-    public struct ccQuad3
+    public struct CCQuad3
     {
         /*
         public ccQuad3()
@@ -286,10 +286,10 @@ namespace cocos2d
             br = new ccVertex3F();
         }
         */
-        public CCVertex3F bl;
-        public CCVertex3F br;
-        public CCVertex3F tl;
-        public CCVertex3F tr;
+        public CCVertex3F BottomLeft;
+        public CCVertex3F BottomRight;
+        public CCVertex3F TopLeft;
+        public CCVertex3F TopRight;
     }
 
     /// <summary>

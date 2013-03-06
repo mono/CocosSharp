@@ -46,33 +46,33 @@ namespace cocos2d
 
         public void TurnOnTile(ccGridSize pos)
         {
-            ccQuad3 orig = OriginalTile(pos);
+            CCQuad3 orig = OriginalTile(pos);
             SetTile(pos, ref orig);
         }
 
         public void TurnOffTile(ccGridSize pos)
         {
-            var coords = new ccQuad3();
+            var coords = new CCQuad3();
             //memset(&coords, 0, sizeof(ccQuad3));
             SetTile(pos, ref coords);
         }
 
         public virtual void TransformTile(ccGridSize pos, float distance)
         {
-            ccQuad3 coords = OriginalTile(pos);
+            CCQuad3 coords = OriginalTile(pos);
             CCPoint step = m_pTarget.Grid.Step;
 
-            coords.bl.X += (step.x / 2) * (1.0f - distance);
-            coords.bl.Y += (step.y / 2) * (1.0f - distance);
+            coords.BottomLeft.X += (step.x / 2) * (1.0f - distance);
+            coords.BottomLeft.Y += (step.y / 2) * (1.0f - distance);
 
-            coords.br.X -= (step.x / 2) * (1.0f - distance);
-            coords.br.Y += (step.y / 2) * (1.0f - distance);
+            coords.BottomRight.X -= (step.x / 2) * (1.0f - distance);
+            coords.BottomRight.Y += (step.y / 2) * (1.0f - distance);
 
-            coords.tl.X += (step.x / 2) * (1.0f - distance);
-            coords.tl.Y -= (step.y / 2) * (1.0f - distance);
+            coords.TopLeft.X += (step.x / 2) * (1.0f - distance);
+            coords.TopLeft.Y -= (step.y / 2) * (1.0f - distance);
 
-            coords.tr.X -= (step.x / 2) * (1.0f - distance);
-            coords.tr.Y -= (step.y / 2) * (1.0f - distance);
+            coords.TopRight.X -= (step.x / 2) * (1.0f - distance);
+            coords.TopRight.Y -= (step.y / 2) * (1.0f - distance);
 
             SetTile(pos, ref coords);
         }

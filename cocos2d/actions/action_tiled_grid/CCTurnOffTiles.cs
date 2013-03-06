@@ -31,7 +31,7 @@ namespace cocos2d
     /// </summary>
     public class CCTurnOffTiles : CCTiledGrid3DAction
     {
-        private ccQuad3 m_pZero;
+        private CCQuad3 m_pZero;
         protected int m_nSeed;
         protected int m_nTilesCount;
         protected int[] m_pTilesOrder;
@@ -66,7 +66,7 @@ namespace cocos2d
 
         public void TurnOnTile(ccGridSize pos)
         {
-            ccQuad3 orig = OriginalTile(pos);
+            CCQuad3 orig = OriginalTile(pos);
             SetTile(pos, ref orig);
         }
 

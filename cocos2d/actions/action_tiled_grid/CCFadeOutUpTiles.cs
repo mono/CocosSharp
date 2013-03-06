@@ -46,13 +46,13 @@ namespace cocos2d
 
         public override void TransformTile(ccGridSize pos, float distance)
         {
-            ccQuad3 coords = OriginalTile(pos);
+            CCQuad3 coords = OriginalTile(pos);
             CCPoint step = m_pTarget.Grid.Step;
 
-            coords.bl.Y += (step.y / 2) * (1.0f - distance);
-            coords.br.Y += (step.y / 2) * (1.0f - distance);
-            coords.tl.Y -= (step.y / 2) * (1.0f - distance);
-            coords.tr.Y -= (step.y / 2) * (1.0f - distance);
+            coords.BottomLeft.Y += (step.y / 2) * (1.0f - distance);
+            coords.BottomRight.Y += (step.y / 2) * (1.0f - distance);
+            coords.TopLeft.Y -= (step.y / 2) * (1.0f - distance);
+            coords.TopRight.Y -= (step.y / 2) * (1.0f - distance);
 
             SetTile(pos, ref coords);
         }

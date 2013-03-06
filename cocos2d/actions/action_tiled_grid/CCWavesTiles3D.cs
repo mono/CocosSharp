@@ -98,13 +98,13 @@ namespace cocos2d
             {
                 for (j = 0; j < m_sGridSize.y; j++)
                 {
-                    ccQuad3 coords = OriginalTile(new ccGridSize(i, j));
+                    CCQuad3 coords = OriginalTile(new ccGridSize(i, j));
 
-                    coords.bl.Z = ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 +
-                                                    (coords.bl.Y + coords.bl.X) * .01f) * m_fAmplitude * m_fAmplitudeRate);
-                    coords.br.Z = coords.bl.Z;
-                    coords.tl.Z = coords.bl.Z;
-                    coords.tr.Z = coords.bl.Z;
+                    coords.BottomLeft.Z = ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 +
+                                                    (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) * m_fAmplitude * m_fAmplitudeRate);
+                    coords.BottomRight.Z = coords.BottomLeft.Z;
+                    coords.TopLeft.Z = coords.BottomLeft.Z;
+                    coords.TopRight.Z = coords.BottomLeft.Z;
 
                     SetTile(new ccGridSize(i, j), ref coords);
                 }
