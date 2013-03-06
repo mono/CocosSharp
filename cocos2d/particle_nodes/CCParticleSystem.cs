@@ -93,12 +93,12 @@ namespace cocos2d
         protected string m_sPlistFile;
         protected ccBlendFunc m_tBlendFunc;
 
-        protected ccColor4F m_tEndColor;
-        protected ccColor4F m_tEndColorVar;
+        protected CCColor4F m_tEndColor;
+        protected CCColor4F m_tEndColorVar;
         protected CCPoint m_tPosVar;
         protected CCPoint m_tSourcePosition;
-        protected ccColor4F m_tStartColor;
-        protected ccColor4F m_tStartColorVar;
+        protected CCColor4F m_tStartColor;
+        protected CCColor4F m_tStartColorVar;
         protected int m_uAllocatedParticles;
         protected int m_uAtlasIndex;
         protected int m_uParticleCount;
@@ -191,25 +191,25 @@ namespace cocos2d
             set { m_fEndSizeVar = value; }
         }
 
-        public ccColor4F StartColor
+        public CCColor4F StartColor
         {
             get { return m_tStartColor; }
             set { m_tStartColor = value; }
         }
 
-        public ccColor4F StartColorVar
+        public CCColor4F StartColorVar
         {
             get { return m_tStartColorVar; }
             set { m_tStartColorVar = value; }
         }
 
-        public ccColor4F EndColor
+        public CCColor4F EndColor
         {
             get { return m_tEndColor; }
             set { m_tEndColor = value; }
         }
 
-        public ccColor4F EndColorVar
+        public CCColor4F EndColorVar
         {
             get { return m_tEndColorVar; }
             set { m_tEndColorVar = value; }
@@ -690,13 +690,13 @@ namespace cocos2d
             particle.pos.y = m_tSourcePosition.y + m_tPosVar.y * Random.Float_Minus1_1();
 
             // Color
-            ccColor4F start;
+            CCColor4F start;
             start.r = MathHelper.Clamp(m_tStartColor.r + m_tStartColorVar.r * Random.Float_Minus1_1(), 0, 1);
             start.g = MathHelper.Clamp(m_tStartColor.g + m_tStartColorVar.g * Random.Float_Minus1_1(), 0, 1);
             start.b = MathHelper.Clamp(m_tStartColor.b + m_tStartColorVar.b * Random.Float_Minus1_1(), 0, 1);
             start.a = MathHelper.Clamp(m_tStartColor.a + m_tStartColorVar.a * Random.Float_Minus1_1(), 0, 1);
 
-            ccColor4F end;
+            CCColor4F end;
             end.r = MathHelper.Clamp(m_tEndColor.r + m_tEndColorVar.r * Random.Float_Minus1_1(), 0, 1);
             end.g = MathHelper.Clamp(m_tEndColor.g + m_tEndColorVar.g * Random.Float_Minus1_1(), 0, 1);
             end.b = MathHelper.Clamp(m_tEndColor.b + m_tEndColorVar.b * Random.Float_Minus1_1(), 0, 1);
@@ -1275,8 +1275,8 @@ namespace cocos2d
         protected struct CCParticle
         {
             public int atlasIndex;
-            public ccColor4F color;
-            public ccColor4F deltaColor;
+            public CCColor4F color;
+            public CCColor4F deltaColor;
 
             public float deltaRotation;
             public float deltaSize;

@@ -155,7 +155,7 @@ namespace cocos2d
             }
         }
 
-        protected override void OnHandlePropTypeColor4FVar(CCNode node, CCNode parent, string propertyName, ccColor4F[] colorVar,
+        protected override void OnHandlePropTypeColor4FVar(CCNode node, CCNode parent, string propertyName, CCColor4F[] colorVar,
                                                            CCBReader reader)
         {
             if (propertyName == PROPERTY_STARTCOLOR)

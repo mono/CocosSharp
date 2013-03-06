@@ -132,9 +132,9 @@ namespace cocos2d
     /// RGBA color composed of 4 floats
     /// @since v0.8
     /// </summary>
-    public struct ccColor4F
+    public struct CCColor4F
     {
-        public ccColor4F(float inr, float ing, float inb, float ina)
+        public CCColor4F(float inr, float ing, float inb, float ina)
         {
             r = inr;
             g = ing;
@@ -152,10 +152,10 @@ namespace cocos2d
             return (string.Format("{0},{1},{2},{3}", r, g, b, a));
         }
 
-        public static ccColor4F Parse(string s)
+        public static CCColor4F Parse(string s)
         {
             string[] f = s.Split(',');
-            return (new ccColor4F(float.Parse(f[0]), float.Parse(f[1]), float.Parse(f[2]), float.Parse(f[3])));
+            return (new CCColor4F(float.Parse(f[0]), float.Parse(f[1]), float.Parse(f[2]), float.Parse(f[3])));
         }
     }
 
@@ -343,7 +343,7 @@ namespace cocos2d
         public ccV2F_C4F_T2F()
         {
             vertices = new ccVertex2F();
-            colors = new ccColor4F();
+            colors = new CCColor4F();
             texCoords = new ccTex2F();
         }
 
@@ -355,7 +355,7 @@ namespace cocos2d
         /// <summary>
         /// colors (4F)
         /// </summary>
-        public ccColor4F colors;
+        public CCColor4F colors;
 
         /// <summary>
         /// tex coords (2F)
@@ -590,25 +590,25 @@ namespace cocos2d
         /** Returns a ccColor4F from a ccColor3B. Alpha will be 1.
          @since v0.99.1
          */
-        public static ccColor4F ccc4FFromccc3B(CCColor3B c)
+        public static CCColor4F ccc4FFromccc3B(CCColor3B c)
         {
-            ccColor4F c4 = new ccColor4F(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, 1.0f);
+            CCColor4F c4 = new CCColor4F(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, 1.0f);
             return c4;
         }
 
         /** Returns a ccColor4F from a ccColor4B.
          @since v0.99.1
          */
-        public static ccColor4F ccc4FFromccc4B(CCColor4B c)
+        public static CCColor4F ccc4FFromccc4B(CCColor4B c)
         {
-            ccColor4F c4 = new ccColor4F(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, c.A / 255.0f);
+            CCColor4F c4 = new CCColor4F(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, c.A / 255.0f);
             return c4;
         }
 
         /** returns YES if both ccColor4F are equal. Otherwise it returns NO.
          @since v0.99.1
          */
-        public static bool ccc4FEqual(ccColor4F a, ccColor4F b)
+        public static bool ccc4FEqual(CCColor4F a, CCColor4F b)
         {
             return a.r == b.r && a.g == b.g && a.b == b.b && a.a == b.a;
         }
