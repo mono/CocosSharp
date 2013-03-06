@@ -256,20 +256,20 @@ namespace cocos2d
     /// <summary>
     /// A 2D Quad. 4 * 2 floats
     /// </summary>
-    public class ccQuad2
+    public class CCQuad2
     {
-        public ccQuad2()
+        public CCQuad2()
         {
-            tl = new CCVertex2F();
-            tr = new CCVertex2F();
-            bl = new CCVertex2F();
-            br = new CCVertex2F();
+            TopLeft = new CCVertex2F();
+            TopRight = new CCVertex2F();
+            BottomLeft = new CCVertex2F();
+            BottomRight = new CCVertex2F();
         }
 
-        public CCVertex2F tl;
-        public CCVertex2F tr;
-        public CCVertex2F bl;
-        public CCVertex2F br;
+        public CCVertex2F TopLeft;
+        public CCVertex2F TopRight;
+        public CCVertex2F BottomLeft;
+        public CCVertex2F BottomRight;
     }
 
     /// <summary>
