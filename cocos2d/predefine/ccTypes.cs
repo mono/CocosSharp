@@ -106,7 +106,7 @@ namespace cocos2d
         public CCColor4B(Microsoft.Xna.Framework.Color color)
         {
             R = color.R;
-            G = color.B;
+            G = color.G;
             B = color.B;
             A = color.A;
         }
