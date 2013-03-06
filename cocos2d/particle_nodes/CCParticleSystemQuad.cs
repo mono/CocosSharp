@@ -184,14 +184,14 @@ namespace cocos2d
             {
                 color.R = (byte) (particle.color.r * particle.color.a * 255);
                 color.G = (byte) (particle.color.g * particle.color.a * 255);
-                color.b = (byte) (particle.color.b * particle.color.a * 255);
+                color.B = (byte) (particle.color.b * particle.color.a * 255);
                 color.a = (byte)(particle.color.a * 255);
             }
             else
             {
                 color.R = (byte)(particle.color.r * 255);
                 color.G = (byte)(particle.color.g * 255);
-                color.b = (byte)(particle.color.b * 255);
+                color.B = (byte)(particle.color.b * 255);
                 color.a = (byte)(particle.color.a * 255);
             }
 

@@ -166,7 +166,7 @@ namespace cocos2d
             m_endColor = new CCColor3B();
             m_endColor.R = end.R;
             m_endColor.G = end.G;
-            m_endColor.B = end.b;
+            m_endColor.B = end.B;
 
             m_cEndOpacity = end.a;
             m_cStartOpacity = start.a;
@@ -174,7 +174,7 @@ namespace cocos2d
 
             m_bCompressedInterpolation = true;
 
-            return base.InitWithColor(new CCColor4B(start.R, start.G, start.b, 255));
+            return base.InitWithColor(new CCColor4B(start.R, start.G, start.B, 255));
         }
 
 
@@ -207,7 +207,7 @@ namespace cocos2d
                 {
                     R = m_tColor.R,
                     G = m_tColor.G,
-                    b = m_tColor.B,
+                    B = m_tColor.B,
                     a = (byte) (m_cStartOpacity * opacityf)
                 };
 
@@ -215,7 +215,7 @@ namespace cocos2d
                 {
                     R = m_endColor.R,
                     G = m_endColor.G,
-                    b = m_endColor.B,
+                    B = m_endColor.B,
                     a = (byte) (m_cEndOpacity * opacityf)
                 };
 
@@ -223,7 +223,7 @@ namespace cocos2d
             m_pVertices[0].Color = new Color(
                 (byte) (E.R + (S.R - E.R) * ((c + u.x + u.y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c + u.x + u.y) / (2.0f * c))),
-                (byte) (E.b + (S.b - E.b) * ((c + u.x + u.y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c + u.x + u.y) / (2.0f * c))),
                 (byte) (E.a + (S.a - E.a) * ((c + u.x + u.y) / (2.0f * c)))
                 );
 
@@ -231,7 +231,7 @@ namespace cocos2d
             m_pVertices[1].Color = new Color(
                 (byte) (E.R + (S.R - E.R) * ((c - u.x + u.y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c - u.x + u.y) / (2.0f * c))),
-                (byte) (E.b + (S.b - E.b) * ((c - u.x + u.y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c - u.x + u.y) / (2.0f * c))),
                 (byte) (E.a + (S.a - E.a) * ((c - u.x + u.y) / (2.0f * c)))
                 );
 
@@ -239,7 +239,7 @@ namespace cocos2d
             m_pVertices[2].Color = new Color(
                 (byte) (E.R + (S.R - E.R) * ((c + u.x - u.y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c + u.x - u.y) / (2.0f * c))),
-                (byte) (E.b + (S.b - E.b) * ((c + u.x - u.y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c + u.x - u.y) / (2.0f * c))),
                 (byte) (E.a + (S.a - E.a) * ((c + u.x - u.y) / (2.0f * c)))
                 );
 
@@ -247,7 +247,7 @@ namespace cocos2d
             m_pVertices[3].Color = new Color(
                 (byte) (E.R + (S.R - E.R) * ((c - u.x - u.y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c - u.x - u.y) / (2.0f * c))),
-                (byte) (E.b + (S.b - E.b) * ((c - u.x - u.y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c - u.x - u.y) / (2.0f * c))),
                 (byte) (E.a + (S.a - E.a) * ((c - u.x - u.y) / (2.0f * c)))
                 );
 

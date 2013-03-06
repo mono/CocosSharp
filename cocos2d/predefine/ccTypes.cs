@@ -88,7 +88,7 @@ namespace cocos2d
         {
             R = inr;
             G = ing;
-            b = inb;
+            B = inb;
             a = ina;
         }
 
@@ -96,7 +96,7 @@ namespace cocos2d
         {
             R = (byte)inr;
             G = (byte)ing;
-            b = (byte)inb;
+            B = (byte)inb;
             a = (byte)ina;
         }
 
@@ -107,18 +107,18 @@ namespace cocos2d
         {
             R = color.R;
             G = color.B;
-            b = color.B;
+            B = color.B;
             a = color.A;
         }
 
         public byte R;
         public byte G;
-        public byte b;
+        public byte B;
         public byte a;
 
         public override string ToString()
         {
-            return (string.Format("{0},{1},{2},{3}", R, G, b, a));
+            return (string.Format("{0},{1},{2},{3}", R, G, B, a));
         }
 
         public static CCColor4B Parse(string s)
@@ -601,7 +601,7 @@ namespace cocos2d
          */
         public static ccColor4F ccc4FFromccc4B(CCColor4B c)
         {
-            ccColor4F c4 = new ccColor4F(c.R / 255.0f, c.G / 255.0f, c.b / 255.0f, c.a / 255.0f);
+            ccColor4F c4 = new ccColor4F(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, c.a / 255.0f);
             return c4;
         }
 
