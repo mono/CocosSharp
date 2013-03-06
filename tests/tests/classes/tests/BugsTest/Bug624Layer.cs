@@ -33,7 +33,7 @@ namespace tests
 
             CCScene scene = CCScene.Create();
             scene.AddChild(Bug624Layer2.Create(), 0);
-            CCDirector.SharedDirector.ReplaceScene(CCTransitionFade.Create(2.0f, scene, new CCColor3B { R = 255, g = 255, b = 255 }));
+            CCDirector.SharedDirector.ReplaceScene(CCTransitionFade.Create(2.0f, scene, new CCColor3B { R = 255, G = 255, b = 255 }));
         }
 
         public virtual void didAccelerate(CCAcceleration pAccelerationValue)
@@ -70,7 +70,7 @@ namespace tests
 
             CCScene scene = CCScene.Create();
             scene.AddChild(Bug624Layer.Create(), 0);
-            CCDirector.SharedDirector.ReplaceScene(CCTransitionFade.Create(2.0f, scene, new CCColor3B { R = 255, g = 0, b = 0 }));
+            CCDirector.SharedDirector.ReplaceScene(CCTransitionFade.Create(2.0f, scene, new CCColor3B { R = 255, G = 0, b = 0 }));
         }
 
         public virtual void didAccelerate(CCAcceleration pAccelerationValue)

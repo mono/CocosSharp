@@ -107,7 +107,7 @@ namespace cocos2d
             m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
 
             m_tColor.R = color.r;
-            m_tColor.g = color.g;
+            m_tColor.G = color.g;
             m_tColor.b = color.b;
             m_cOpacity = color.a;
 
@@ -234,7 +234,7 @@ namespace cocos2d
 
         protected virtual void UpdateColor()
         {
-            var color = new Color(m_tColor.R / 255.0f, m_tColor.g / 255.0f, m_tColor.b / 255.0f, m_cOpacity / 255.0f);
+            var color = new Color(m_tColor.R / 255.0f, m_tColor.G / 255.0f, m_tColor.b / 255.0f, m_cOpacity / 255.0f);
 
             m_pVertices[0].Color = m_pVertices[1].Color = m_pVertices[2].Color = m_pVertices[3].Color = color;
 

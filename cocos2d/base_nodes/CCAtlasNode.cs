@@ -73,13 +73,13 @@ namespace cocos2d
             }
             set
             {
-                m_tColor = new CCColor3B(value.R, value.g, value.b);
+                m_tColor = new CCColor3B(value.R, value.G, value.b);
                 m_tColorUnmodified = m_tColor;
 
                 if (m_bIsOpacityModifyRGB)
                 {
                     m_tColor.R = (byte) (value.R * m_cOpacity / 255);
-                    m_tColor.g = (byte) (value.g * m_cOpacity / 255);
+                    m_tColor.G = (byte) (value.G * m_cOpacity / 255);
                     m_tColor.b = (byte) (value.b * m_cOpacity / 255);
                 }
 

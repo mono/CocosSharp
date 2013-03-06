@@ -13,7 +13,7 @@ namespace cocos2d
 
         public CCTextFieldTTF()
         {
-            m_ColorSpaceHolder.R = m_ColorSpaceHolder.g = m_ColorSpaceHolder.b = 127;
+            m_ColorSpaceHolder.R = m_ColorSpaceHolder.G = m_ColorSpaceHolder.b = 127;
         }
 
         public ICCTextFieldDelegate Delegate

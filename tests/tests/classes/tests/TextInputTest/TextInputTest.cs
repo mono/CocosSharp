@@ -368,7 +368,7 @@ namespace cocos2d
             // create a insert text sprite and do some action
             CCLabelTTF label = CCLabelTTF.Create(text, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
             this.AddChild(label);
-            CCColor3B color = new CCColor3B { R = 226, g = 121, b = 7 };
+            CCColor3B color = new CCColor3B { R = 226, G = 121, b = 7 };
             label.Color = color;
 
             // move the sprite from top to position

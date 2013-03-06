@@ -11,21 +11,21 @@ namespace tests
         CCColor3B ccBLUE = new CCColor3B
         {
             R = 0,
-            g = 0,
+            G = 0,
             b = 255
         };
 
         CCColor3B ccRED = new CCColor3B
         {
             R = 255,
-            g = 0,
+            G = 0,
             b = 0
         };
 
         CCColor3B ccGREEN = new CCColor3B
         {
             R = 0,
-            g = 255,
+            G = 255,
             b = 0
         };
         public AtlasBitmapColor()

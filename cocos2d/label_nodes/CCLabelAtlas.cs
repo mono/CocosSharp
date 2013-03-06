@@ -133,7 +133,7 @@ namespace cocos2d
                 quad.tr.vertices.y = m_uItemHeight;
                 quad.tr.vertices.z = 0.0f;
 
-                quad.tl.colors = quad.tr.colors = quad.bl.colors = quad.br.colors = new ccColor4B(m_tColor.R, m_tColor.g, m_tColor.b, m_cOpacity);
+                quad.tl.colors = quad.tr.colors = quad.bl.colors = quad.br.colors = new ccColor4B(m_tColor.R, m_tColor.G, m_tColor.b, m_cOpacity);
 
                 m_pTextureAtlas.UpdateQuad(ref quad, i);
             }

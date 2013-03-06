@@ -10,7 +10,7 @@ namespace cocos2d
         {
             var ret = new ccColor3BWapper();
             ret.color.R = color.R;
-            ret.color.g = color.g;
+            ret.color.G = color.G;
             ret.color.b = color.b;
             return ret;
         }

@@ -43,7 +43,7 @@ namespace tests.Extensions
             /* Push the new scene with a fancy transition. */
             CCColor3B transitionColor;
             transitionColor.R = 0;
-            transitionColor.g = 0;
+            transitionColor.G = 0;
             transitionColor.b = 0;
 
             CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, scene, transitionColor));
@@ -95,7 +95,7 @@ namespace tests.Extensions
             /* Push the new scene with a fancy transition. */
             CCColor3B transitionColor;
             transitionColor.R = 0;
-            transitionColor.g = 0;
+            transitionColor.G = 0;
             transitionColor.b = 0;
 
             CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, scene, transitionColor));

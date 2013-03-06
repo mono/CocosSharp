@@ -13,7 +13,7 @@ namespace tests
         CCColor3B ccRED = new CCColor3B
         {
             R = 255,
-            g = 0,
+            G = 0,
             b = 0
         };
 

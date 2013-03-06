@@ -222,7 +222,7 @@ namespace cocos2d
                         var color = (ccColor3BWapper) pKeyframe1.Value;
                         CCColor3B c = color.getColor();
 
-                        return CCTintTo.Create(duration, c.R, c.g, c.b);
+                        return CCTintTo.Create(duration, c.R, c.G, c.b);
                     }
                 case "visible":
                     {

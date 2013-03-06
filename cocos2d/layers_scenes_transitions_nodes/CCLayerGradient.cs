@@ -165,7 +165,7 @@ namespace cocos2d
         {
             m_endColor = new CCColor3B();
             m_endColor.R = end.r;
-            m_endColor.g = end.g;
+            m_endColor.G = end.g;
             m_endColor.b = end.b;
 
             m_cEndOpacity = end.a;
@@ -206,7 +206,7 @@ namespace cocos2d
             var S = new ccColor4B
                 {
                     r = m_tColor.R,
-                    g = m_tColor.g,
+                    g = m_tColor.G,
                     b = m_tColor.b,
                     a = (byte) (m_cStartOpacity * opacityf)
                 };
@@ -214,7 +214,7 @@ namespace cocos2d
             var E = new ccColor4B
                 {
                     r = m_endColor.R,
-                    g = m_endColor.g,
+                    g = m_endColor.G,
                     b = m_endColor.b,
                     a = (byte) (m_cEndOpacity * opacityf)
                 };
