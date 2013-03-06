@@ -43,7 +43,7 @@ namespace cocos2d
         public CCLayerColor()
         {
             m_cOpacity = 0;
-            m_tColor = new ccColor3B(0, 0, 0);
+            m_tColor = new CCColor3B(0, 0, 0);
 
             // default blend function
             m_tBlendFunc = new ccBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
@@ -167,7 +167,7 @@ namespace cocos2d
 
         protected byte m_cOpacity;
         protected ccBlendFunc m_tBlendFunc;
-        protected ccColor3B m_tColor;
+        protected CCColor3B m_tColor;
 
         #region ICCBlendProtocol Members
 
@@ -194,7 +194,7 @@ namespace cocos2d
             }
         }
 
-        public virtual ccColor3B Color
+        public virtual CCColor3B Color
         {
             get { return m_tColor; }
             set

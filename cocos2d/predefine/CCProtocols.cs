@@ -29,7 +29,7 @@ namespace cocos2d
         /// <summary>
         /// Gets or sets the color
         /// </summary>
-        ccColor3B Color { get; set; }
+        CCColor3B Color { get; set; }
 
         /// <summary>
         /// Gets or sets the Opacity

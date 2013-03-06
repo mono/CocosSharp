@@ -220,7 +220,7 @@ namespace cocos2d
                 case "color":
                     {
                         var color = (ccColor3BWapper) pKeyframe1.Value;
-                        ccColor3B c = color.getColor();
+                        CCColor3B c = color.getColor();
 
                         return CCTintTo.Create(duration, c.r, c.g, c.b);
                     }

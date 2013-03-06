@@ -63,7 +63,7 @@ namespace tests.Extensions
     
 			var titleButton = CCLabelTTF.Create(title, "Marker Felt", 30);
 
-			titleButton.Color = new ccColor3B(159, 168, 176);
+			titleButton.Color = new CCColor3B(159, 168, 176);
 
             var button = CCControlButton.Create(titleButton, backgroundButton);
 			button.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
@@ -104,7 +104,7 @@ namespace tests.Extensions
         
 				var titleButton = CCLabelTTF.Create("Touch Me!", "Marker Felt", 30);
 
-				titleButton.Color = new ccColor3B(159, 168, 176);
+				titleButton.Color = new CCColor3B(159, 168, 176);
 
                 var controlButton = CCControlButton.Create(titleButton, backgroundButton);
 				controlButton.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
@@ -258,7 +258,7 @@ namespace tests.Extensions
     
 			var titleButton = CCLabelTTF.Create(title, "Marker Felt", 30);
 
-			titleButton.Color = new ccColor3B(159, 168, 176);
+			titleButton.Color = new CCColor3B(159, 168, 176);
 
             var button = CCControlButton.Create(titleButton, backgroundButton);
 			button.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);

@@ -27,14 +27,14 @@ namespace cocos2d
         protected CCTexture2D m_pobTexture; // Texture used to render the sprite
         protected CCTextureAtlas m_pobTextureAtlas; // Sprite Sheet texture atlas (weak reference)
         protected ccBlendFunc m_sBlendFunc; // Needed for the texture protocol
-        protected ccColor3B m_sColor;
+        protected CCColor3B m_sColor;
 
         private string m_TextureFile;
 
         // vertex coords, texture coords and color info
 
         // opacity and RGB protocol
-        protected ccColor3B m_sColorUnmodified;
+        protected CCColor3B m_sColorUnmodified;
         internal ccV3F_C4B_T2F_Quad m_sQuad;
         protected CCAffineTransform m_transformToBatch; //
         protected int m_uAtlasIndex; // Absolute (real) Index on the SpriteSheet
@@ -336,7 +336,7 @@ namespace cocos2d
             }
         }
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             get
             {
@@ -348,8 +348,8 @@ namespace cocos2d
             }
             set
             {
-                m_sColor = new ccColor3B(value.r, value.g, value.b);
-                m_sColorUnmodified = new ccColor3B(value.r, value.g, value.b);
+                m_sColor = new CCColor3B(value.r, value.g, value.b);
+                m_sColorUnmodified = new CCColor3B(value.r, value.g, value.b);
 
                 if (m_bOpacityModifyRGB)
                 {
@@ -367,7 +367,7 @@ namespace cocos2d
             get { return m_bOpacityModifyRGB; }
             set
             {
-                ccColor3B oldColor = m_sColor;
+                CCColor3B oldColor = m_sColor;
                 m_bOpacityModifyRGB = value;
                 m_sColor = oldColor;
             }

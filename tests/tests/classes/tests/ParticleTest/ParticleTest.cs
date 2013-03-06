@@ -987,7 +987,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = new ccColor3B(0, 0, 0);
+            Color = new CCColor3B(0, 0, 0);
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1021,7 +1021,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = new ccColor3B(0, 0, 0);
+            Color = new CCColor3B(0, 0, 0);
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1103,7 +1103,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = new ccColor3B(0, 0, 0);
+            Color = new CCColor3B(0, 0, 0);
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1185,7 +1185,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = new ccColor3B(0, 0, 0);
+            Color = new CCColor3B(0, 0, 0);
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1277,7 +1277,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = new ccColor3B(0, 0, 0);
+            Color = new CCColor3B(0, 0, 0);
             RemoveChild(m_background, true);
             m_background = null;
 

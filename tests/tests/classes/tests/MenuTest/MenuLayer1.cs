@@ -58,8 +58,8 @@ namespace tests
             // Label Item (LabelAtlas)
             CCLabelAtlas labelAtlas = CCLabelAtlas.Create("0123456789", "Images/fps_images", 16, 24, '.');
             CCMenuItemLabel item3 = CCMenuItemLabel.Create(labelAtlas, this.menuCallbackDisabled);
-            item3.DisabledColor = new ccColor3B(32, 32, 64);
-            item3.Color = new ccColor3B(200, 200, 255);
+            item3.DisabledColor = new CCColor3B(32, 32, 64);
+            item3.Color = new CCColor3B(200, 200, 255);
 
             // Font Item
             CCMenuItemFont item4 = CCMenuItemFont.Create("I toggle enable items", this.menuCallbackEnable);

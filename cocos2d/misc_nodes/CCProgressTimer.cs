@@ -139,7 +139,7 @@ namespace cocos2d
             set { m_pSprite.Opacity = value; }
         }
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             get { return m_pSprite.Color; }
             set { m_pSprite.Color = value; }

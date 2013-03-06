@@ -245,7 +245,7 @@ namespace cocos2d
                         }
                     case kCCBPropType.kCCBPropTypeColor3:
                         {
-                            ccColor3B color3B = ParsePropTypeColor3(node, parent, reader, propertyName);
+                            CCColor3B color3B = ParsePropTypeColor3(node, parent, reader, propertyName);
                             if (setProp)
                             {
                                 OnHandlePropTypeColor3(node, parent, propertyName, color3B, reader);
@@ -628,13 +628,13 @@ namespace cocos2d
             return ret;
         }
 
-        protected virtual ccColor3B ParsePropTypeColor3(CCNode node, CCNode parent, CCBReader reader, string propertyName)
+        protected virtual CCColor3B ParsePropTypeColor3(CCNode node, CCNode parent, CCBReader reader, string propertyName)
         {
             byte red = reader.ReadByte();
             byte green = reader.ReadByte();
             byte blue = reader.ReadByte();
 
-            var color = new ccColor3B(red, green, blue);
+            var color = new CCColor3B(red, green, blue);
             if (reader.AnimatedProperties.Contains(propertyName))
             {
                 ccColor3BWapper value = ccColor3BWapper.Create(color);
@@ -1053,7 +1053,7 @@ namespace cocos2d
             Debug.Assert(false);
         }
 
-        protected virtual void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, ccColor3B color, CCBReader reader)
+        protected virtual void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, CCColor3B color, CCBReader reader)
         {
             CCLog.Log("Unexpected property type: '{0}'!", propertyName);
             Debug.Assert(false);

@@ -387,10 +387,10 @@ namespace tests
 
             m_grossini.Rotation = 120;
             m_grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            m_grossini.Color = new ccColor3B(255, 0, 0);
+            m_grossini.Color = new CCColor3B(255, 0, 0);
 
             m_kathia.Position = new CCPoint(s.Width - 100, s.Height / 2);
-            m_kathia.Color = new ccColor3B(0, 0, 255); // ccTypes.ccBLUE
+            m_kathia.Color = new CCColor3B(0, 0, 255); // ccTypes.ccBLUE
         }
 
         public override string subtitle()

@@ -2,14 +2,14 @@ namespace cocos2d
 {
     public class CCTintTo : CCActionInterval
     {
-        protected ccColor3B m_from;
-        protected ccColor3B m_to;
+        protected CCColor3B m_from;
+        protected CCColor3B m_to;
 
         public bool InitWithDuration(float duration, byte red, byte green, byte blue)
         {
             if (base.InitWithDuration(duration))
             {
-                m_to = new ccColor3B(red, green, blue);
+                m_to = new CCColor3B(red, green, blue);
                 return true;
             }
 
@@ -57,7 +57,7 @@ namespace cocos2d
             var protocol = m_pTarget as ICCRGBAProtocol;
             if (protocol != null)
             {
-                protocol.Color = new ccColor3B((byte) (m_from.r + (m_to.r - m_from.r) * time),
+                protocol.Color = new CCColor3B((byte) (m_from.r + (m_to.r - m_from.r) * time),
                                                (byte) (m_from.g + (m_to.g - m_from.g) * time),
                                                (byte) (m_from.b + (m_to.b - m_from.b) * time));
             }

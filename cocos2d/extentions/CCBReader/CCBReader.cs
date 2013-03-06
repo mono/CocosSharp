@@ -600,7 +600,7 @@ namespace cocos2d
                 byte g = ReadByte();
                 byte b = ReadByte();
 
-                var c = new ccColor3B(r, g, b);
+                var c = new CCColor3B(r, g, b);
                 value = ccColor3BWapper.Create(c);
             }
             else if (type == kCCBPropType.kCCBPropTypeDegrees)

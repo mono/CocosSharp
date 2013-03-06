@@ -29,9 +29,9 @@ namespace tests
 
             CCMenuItemFont.FontSize = 64;
             CCMenuItemFont decrease = CCMenuItemFont.Create(" - ", onDecrease);
-            decrease.Color = new ccColor3B(0, 200, 20);
+            decrease.Color = new CCColor3B(0, 200, 20);
             CCMenuItemFont increase = CCMenuItemFont.Create(" + ", onIncrease);
-            increase.Color = new ccColor3B(0, 200, 20);
+            increase.Color = new CCColor3B(0, 200, 20);
 
             CCMenu menu = CCMenu.Create(decrease, increase);
             menu.AlignItemsHorizontally();
@@ -39,7 +39,7 @@ namespace tests
             AddChild(menu, 1);
 
             CCLabelTTF infoLabel = CCLabelTTF.Create("0 nodes", "Marker Felt", 30);
-            infoLabel.Color = new ccColor3B(0, 200, 20);
+            infoLabel.Color = new CCColor3B(0, 200, 20);
             infoLabel.Position = new CCPoint(s.Width / 2, s.Height - 90);
             AddChild(infoLabel, 1, PerformanceSpriteTest.kTagInfoLayer);
 
@@ -59,11 +59,11 @@ namespace tests
                 pSubMenu.AddChild(itemFont, 10);
 
                 if (i <= 3)
-                    itemFont.Color = new ccColor3B(200, 20, 20);
+                    itemFont.Color = new CCColor3B(200, 20, 20);
                 else if (i <= 6)
-                    itemFont.Color = new ccColor3B(0, 200, 20);
+                    itemFont.Color = new CCColor3B(0, 200, 20);
                 else
-                    itemFont.Color = new ccColor3B(0, 20, 200);
+                    itemFont.Color = new CCColor3B(0, 20, 200);
             }
 
             pSubMenu.AlignItemsHorizontally();
@@ -74,7 +74,7 @@ namespace tests
             CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 38);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 32);
-            label.Color = new ccColor3B(255, 255, 40);
+            label.Color = new CCColor3B(255, 255, 40);
 
             while (quantityNodes < nNodes)
                 onIncrease(this);

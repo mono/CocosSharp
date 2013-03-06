@@ -36,7 +36,7 @@ namespace cocos2d
     /// RGB color composed of bytes 3 bytes
     /// @since v0.8
     /// </summary>
-    public struct ccColor3B
+    public struct CCColor3B
     {
         /*
         public ccColor3B()
@@ -46,7 +46,7 @@ namespace cocos2d
             b = 0;
         }
         */
-        public ccColor3B(byte inr, byte ing, byte inb)
+        public CCColor3B(byte inr, byte ing, byte inb)
         {
             r = inr;
             g = ing;
@@ -56,7 +56,7 @@ namespace cocos2d
         /// <summary>
         /// Convert Color value of XNA Framework to ccColor3B type
         /// </summary>
-        public ccColor3B(Microsoft.Xna.Framework.Color color)
+        public CCColor3B(Microsoft.Xna.Framework.Color color)
         {
             r = color.R;
             g = color.G;
@@ -555,28 +555,28 @@ namespace cocos2d
     {
         //ccColor3B predefined colors
         //! White color (255,255,255)
-        public static readonly ccColor3B ccWHITE = new ccColor3B(255, 255, 255);
+        public static readonly CCColor3B ccWHITE = new CCColor3B(255, 255, 255);
         //! Yellow color (255,255,0)
-        public static readonly ccColor3B ccYELLOW = new ccColor3B(255, 255, 0);
+        public static readonly CCColor3B ccYELLOW = new CCColor3B(255, 255, 0);
         //! Blue color (0,0,255)
-        public static readonly ccColor3B ccBLUE = new ccColor3B(0, 0, 255);
+        public static readonly CCColor3B ccBLUE = new CCColor3B(0, 0, 255);
         //! Green Color (0,255,0)
-        public static readonly ccColor3B ccGREEN = new ccColor3B(0, 255, 0);
+        public static readonly CCColor3B ccGREEN = new CCColor3B(0, 255, 0);
         //! Red Color (255,0,0,)
-        public static readonly ccColor3B ccRED = new ccColor3B(255, 0, 0);
+        public static readonly CCColor3B ccRED = new CCColor3B(255, 0, 0);
         //! Magenta Color (255,0,255)
-        public static readonly ccColor3B ccMAGENTA = new ccColor3B(255, 0, 255);
+        public static readonly CCColor3B ccMAGENTA = new CCColor3B(255, 0, 255);
         //! Black Color (0,0,0)
-        public static readonly ccColor3B ccBLACK = new ccColor3B(0, 0, 0);
+        public static readonly CCColor3B ccBLACK = new CCColor3B(0, 0, 0);
         //! Orange Color (255,127,0)
-        public static readonly ccColor3B ccORANGE = new ccColor3B(255, 127, 0);
+        public static readonly CCColor3B ccORANGE = new CCColor3B(255, 127, 0);
         //! Gray Color (166,166,166)
-        public static readonly ccColor3B ccGRAY = new ccColor3B(166, 166, 166);
+        public static readonly CCColor3B ccGRAY = new CCColor3B(166, 166, 166);
 
         //! helper macro that creates an ccColor3B type
-        static public ccColor3B ccc3(byte r, byte g, byte b)
+        static public CCColor3B ccc3(byte r, byte g, byte b)
         {
-            ccColor3B c = new ccColor3B(r, g, b);
+            CCColor3B c = new CCColor3B(r, g, b);
             return c;
         }
 
@@ -590,7 +590,7 @@ namespace cocos2d
         /** Returns a ccColor4F from a ccColor3B. Alpha will be 1.
          @since v0.99.1
          */
-        public static ccColor4F ccc4FFromccc3B(ccColor3B c)
+        public static ccColor4F ccc4FFromccc3B(CCColor3B c)
         {
             ccColor4F c4 = new ccColor4F(c.r / 255.0f, c.g / 255.0f, c.b / 255.0f, 1.0f);
             return c4;

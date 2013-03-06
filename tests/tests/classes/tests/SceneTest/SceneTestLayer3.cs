@@ -51,7 +51,7 @@ namespace tests
         {
             var newScene = CCScene.Create();
             newScene.AddChild(new SceneTestLayer3());
-            CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, newScene, new ccColor3B(0, 255, 255)));
+            CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, newScene, new CCColor3B(0, 255, 255)));
         }
 
         public void item1Clicked(CCObject pSender)

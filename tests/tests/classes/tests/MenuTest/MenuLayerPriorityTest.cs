@@ -1,4 +1,4 @@
-﻿    /****************************************************************************
+    /****************************************************************************
     Copyright (c) 2010-2012 cocos2d-x.org
     Copyright (c) 2008-2009 Jason Booth
     Copyright (c) 2011-2012 openxlive.com
@@ -60,7 +60,7 @@ namespace tests
             //CCMenuItemFont.setFontSize(48);
             item1 = CCMenuItemFont.Create("Toggle priority", togglePriorityCallback);
             item1.Scale = 1.5f;
-            item1.Color = new ccColor3B(0, 0, 255);
+            item1.Color = new CCColor3B(0, 0, 255);
             m_pMenu2.AddChild(item1);
             AddChild(m_pMenu2);
         }

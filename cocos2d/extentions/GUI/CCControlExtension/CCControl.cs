@@ -115,7 +115,7 @@ namespace cocos2d
 
         public virtual byte Opacity { get; set; }
 
-        public ccColor3B Color { get; set; }
+        public CCColor3B Color { get; set; }
 
         public bool IsOpacityModifyRGB { get; set; }
 

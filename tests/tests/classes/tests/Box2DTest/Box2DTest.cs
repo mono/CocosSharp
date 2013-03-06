@@ -87,7 +87,7 @@ namespace tests
 
             CCLabelTTF label = CCLabelTTF.Create("Tap screen", "Marker Felt", 32);
             AddChild(label, 0);
-            label.Color = new ccColor3B(0, 0, 255);
+            label.Color = new CCColor3B(0, 0, 255);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             ScheduleUpdate();

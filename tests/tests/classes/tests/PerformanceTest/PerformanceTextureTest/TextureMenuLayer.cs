@@ -38,7 +38,7 @@ namespace tests
             CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 38);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 32);
-            label.Color = new ccColor3B(255, 255, 40);
+            label.Color = new CCColor3B(255, 255, 40);
 
             // Subtitle
             string strSubTitle = subtitle();

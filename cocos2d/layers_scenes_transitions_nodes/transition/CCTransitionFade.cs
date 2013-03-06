@@ -36,7 +36,7 @@ namespace cocos2d
         /// creates the transition with a duration and with an RGB color
         /// Example: FadeTransition::create(2, scene, ccc3(255,0,0); // red color
         /// </summary>
-        public static CCTransitionFade Create(float duration, CCScene scene, ccColor3B color)
+        public static CCTransitionFade Create(float duration, CCScene scene, CCColor3B color)
         {
             var pTransition = new CCTransitionFade();
             pTransition.InitWithDuration(duration, scene, color);
@@ -46,7 +46,7 @@ namespace cocos2d
         /// <summary>
         /// initializes the transition with a duration and with an RGB color 
         /// </summary>
-        public virtual bool InitWithDuration(float duration, CCScene scene, ccColor3B color)
+        public virtual bool InitWithDuration(float duration, CCScene scene, CCColor3B color)
         {
             if (base.InitWithDuration(duration, scene))
             {
@@ -57,12 +57,12 @@ namespace cocos2d
 
         public new static CCTransitionScene Create(float t, CCScene scene)
         {
-            return Create(t, scene, new ccColor3B());
+            return Create(t, scene, new CCColor3B());
         }
 
         public override bool InitWithDuration(float t, CCScene scene)
         {
-            InitWithDuration(t, scene, new ccColor3B(Color.Black));
+            InitWithDuration(t, scene, new CCColor3B(Color.Black));
             return true;
         }
 

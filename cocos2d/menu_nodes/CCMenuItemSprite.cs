@@ -85,7 +85,7 @@ namespace cocos2d
 
         #region ICCRGBAProtocol Members
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             get { return (m_pNormalImage as ICCRGBAProtocol).Color; }
             set

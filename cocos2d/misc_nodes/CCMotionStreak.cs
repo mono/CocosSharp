@@ -18,7 +18,7 @@ namespace cocos2d
         private CCTexture2D m_pTexture;
         private ccV3F_C4B_T2F[] m_pVertices;
         private ccBlendFunc m_tBlendFunc;
-        private ccColor3B m_tColor;
+        private CCColor3B m_tColor;
         private CCPoint m_tPositionR;
 
         private int m_uMaxPoints;
@@ -43,7 +43,7 @@ namespace cocos2d
 
         #region ICCRGBAProtocol Members
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             set { m_tColor = value; }
             get { return m_tColor; }
@@ -91,21 +91,21 @@ namespace cocos2d
             set { m_bStartingPositionInitialized = value; }
         }
 
-        public static CCMotionStreak Create(float fade, float minSeg, float stroke, ccColor3B color, string path)
+        public static CCMotionStreak Create(float fade, float minSeg, float stroke, CCColor3B color, string path)
         {
             var pRet = new CCMotionStreak();
             pRet.InitWithFade(fade, minSeg, stroke, color, path);
             return pRet;
         }
 
-        public static CCMotionStreak Create(float fade, float minSeg, float stroke, ccColor3B color, CCTexture2D texture)
+        public static CCMotionStreak Create(float fade, float minSeg, float stroke, CCColor3B color, CCTexture2D texture)
         {
             var pRet = new CCMotionStreak();
             pRet.InitWithFade(fade, minSeg, stroke, color, texture);
             return pRet;
         }
 
-        public bool InitWithFade(float fade, float minSeg, float stroke, ccColor3B color, string path)
+        public bool InitWithFade(float fade, float minSeg, float stroke, CCColor3B color, string path)
         {
             Debug.Assert(!String.IsNullOrEmpty(path), "Invalid filename");
 
@@ -113,7 +113,7 @@ namespace cocos2d
             return InitWithFade(fade, minSeg, stroke, color, texture);
         }
 
-        public bool InitWithFade(float fade, float minSeg, float stroke, ccColor3B color, CCTexture2D texture)
+        public bool InitWithFade(float fade, float minSeg, float stroke, CCColor3B color, CCTexture2D texture)
         {
             Position = CCPoint.Zero;
             AnchorPoint = CCPoint.Zero;
@@ -149,7 +149,7 @@ namespace cocos2d
             return true;
         }
 
-        public void TintWithColor(ccColor3B colors)
+        public void TintWithColor(CCColor3B colors)
         {
             Color = colors;
 

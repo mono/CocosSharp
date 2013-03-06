@@ -32,11 +32,11 @@ namespace tests
                 int a = 0;
 
                 if (a == 0)
-                    label.Color = new ccColor3B(0, 0, 255); //ccBLUE
+                    label.Color = new CCColor3B(0, 0, 255); //ccBLUE
                 else
                 {
                     CCLog.Log("Color changed");
-                    label.Color = new ccColor3B(255, 0, 0);
+                    label.Color = new CCColor3B(255, 0, 0);
                 }
                 a++;
                 //addChild(layer);

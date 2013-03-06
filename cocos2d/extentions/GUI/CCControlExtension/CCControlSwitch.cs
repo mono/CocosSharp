@@ -171,7 +171,7 @@ namespace cocos2d
 
             m_fInitialTouchXPosition = location.x - m_pSwitchSprite.SliderXPosition;
 
-            m_pSwitchSprite.ThumbSprite.Color = new ccColor3B(166, 166, 166);
+            m_pSwitchSprite.ThumbSprite.Color = new CCColor3B(166, 166, 166);
             m_pSwitchSprite.NeedsLayout();
 
             return true;
@@ -191,7 +191,7 @@ namespace cocos2d
         {
             CCPoint location = LocationFromTouch(pTouch);
 
-            m_pSwitchSprite.ThumbSprite.Color = new ccColor3B(255, 255, 255);
+            m_pSwitchSprite.ThumbSprite.Color = new CCColor3B(255, 255, 255);
 
             if (HasMoved())
             {
@@ -207,7 +207,7 @@ namespace cocos2d
         {
             CCPoint location = LocationFromTouch(pTouch);
 
-            m_pSwitchSprite.ThumbSprite.Color = new ccColor3B(255, 255, 255);
+            m_pSwitchSprite.ThumbSprite.Color = new CCColor3B(255, 255, 255);
 
             if (HasMoved())
             {

@@ -8,21 +8,21 @@ namespace tests
 {
     public class AtlasBitmapColor : AtlasDemo
     {
-        ccColor3B ccBLUE = new ccColor3B
+        CCColor3B ccBLUE = new CCColor3B
         {
             r = 0,
             g = 0,
             b = 255
         };
 
-        ccColor3B ccRED = new ccColor3B
+        CCColor3B ccRED = new CCColor3B
         {
             r = 255,
             g = 0,
             b = 0
         };
 
-        ccColor3B ccGREEN = new ccColor3B
+        CCColor3B ccGREEN = new CCColor3B
         {
             r = 0,
             g = 255,

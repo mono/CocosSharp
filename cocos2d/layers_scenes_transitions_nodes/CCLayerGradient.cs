@@ -63,15 +63,15 @@ namespace cocos2d
         private byte m_cEndOpacity;
         private byte m_cStartOpacity;
 
-        private ccColor3B m_endColor;
+        private CCColor3B m_endColor;
 
-        public ccColor3B StartColor
+        public CCColor3B StartColor
         {
             get { return m_tColor; }
             set { base.Color = value; }
         }
 
-        public ccColor3B EndColor
+        public CCColor3B EndColor
         {
             get { return m_endColor; }
             set
@@ -163,7 +163,7 @@ namespace cocos2d
         /// </summary>
         public virtual bool InitWithColor(ccColor4B start, ccColor4B end, CCPoint v)
         {
-            m_endColor = new ccColor3B();
+            m_endColor = new CCColor3B();
             m_endColor.r = end.r;
             m_endColor.g = end.g;
             m_endColor.b = end.b;
