@@ -545,17 +545,17 @@ namespace cocos2d
                         else
                         {
                             string textureData = dictionary["textureImageData"].AsString;
-                            Debug.Assert(textureData != null, "");
+                            Debug.Assert(textureData != null && textureData.Length > 0, string.Format("CCParticleSystem: textureData does not exist : {0}",textureName));
 
                             int dataLen = textureData.Length;
                             if (dataLen != 0)
                             {
 
                                 var dataBytes = Convert.FromBase64String(textureData);
-                                Debug.Assert(dataBytes != null, "CCParticleSystem: error decoding textureImageData");
+                                Debug.Assert(dataBytes != null, string.Format("CCParticleSystem: error decoding textureImageData : {0}",textureName));
 
                                 var imageBytes = Inflate(dataBytes);
-                                Debug.Assert(imageBytes == null, "CCParticleSystem: error init image with Data");
+                                Debug.Assert(imageBytes != null, string.Format("CCParticleSystem: error init image with Data for texture : {0}",textureName));
 
                                 using (var imageStream = new MemoryStream(imageBytes))
                                 {
@@ -563,7 +563,7 @@ namespace cocos2d
                                 }
                             }
                         }
-                        Debug.Assert(m_pTexture != null, "CCParticleSystem: error loading the texture");
+                        Debug.Assert(Texture != null, string.Format("CCParticleSystem: error loading the texture : {0}", textureName));
                     }
                     bRet = true;
                 }
