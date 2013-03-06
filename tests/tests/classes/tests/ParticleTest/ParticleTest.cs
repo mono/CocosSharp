@@ -1566,14 +1566,14 @@ namespace tests
                 StartColor = (new CCColor4F(50, 50, 50, 50));
                 EndColor = (new CCColor4F(0, 0, 0, 0));
 
-                m_tStartColorVar.r = 0.0f;
-                m_tStartColorVar.g = 0.0f;
-                m_tStartColorVar.b = 0.0f;
-                m_tStartColorVar.a = 0.0f;
-                m_tEndColorVar.r = 0.0f;
-                m_tEndColorVar.g = 0.0f;
-                m_tEndColorVar.b = 0.0f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColorVar.R = 0.0f;
+                m_tStartColorVar.G = 0.0f;
+                m_tStartColorVar.B = 0.0f;
+                m_tStartColorVar.A = 0.0f;
+                m_tEndColorVar.R = 0.0f;
+                m_tEndColorVar.G = 0.0f;
+                m_tEndColorVar.B = 0.0f;
+                m_tEndColorVar.A = 0.0f;
 
                 Texture = (CCTextureCache.SharedTextureCache.AddImage("Images/particles"));
                 return true;

@@ -423,25 +423,25 @@ namespace cocos2d
                     m_tBlendFunc.dst = dictionary["blendFuncDestination"].AsInt;
 
                     // color
-                    m_tStartColor.r = dictionary["startColorRed"].AsFloat;
-                    m_tStartColor.g = dictionary["startColorGreen"].AsFloat;
-                    m_tStartColor.b = dictionary["startColorBlue"].AsFloat;
-                    m_tStartColor.a = dictionary["startColorAlpha"].AsFloat;
+                    m_tStartColor.R = dictionary["startColorRed"].AsFloat;
+                    m_tStartColor.G = dictionary["startColorGreen"].AsFloat;
+                    m_tStartColor.B = dictionary["startColorBlue"].AsFloat;
+                    m_tStartColor.A = dictionary["startColorAlpha"].AsFloat;
 
-                    m_tStartColorVar.r = dictionary["startColorVarianceRed"].AsFloat;
-                    m_tStartColorVar.g = dictionary["startColorVarianceGreen"].AsFloat;
-                    m_tStartColorVar.b = dictionary["startColorVarianceBlue"].AsFloat;
-                    m_tStartColorVar.a = dictionary["startColorVarianceAlpha"].AsFloat;
+                    m_tStartColorVar.R = dictionary["startColorVarianceRed"].AsFloat;
+                    m_tStartColorVar.G = dictionary["startColorVarianceGreen"].AsFloat;
+                    m_tStartColorVar.B = dictionary["startColorVarianceBlue"].AsFloat;
+                    m_tStartColorVar.A = dictionary["startColorVarianceAlpha"].AsFloat;
 
-                    m_tEndColor.r = dictionary["finishColorRed"].AsFloat;
-                    m_tEndColor.g = dictionary["finishColorGreen"].AsFloat;
-                    m_tEndColor.b = dictionary["finishColorBlue"].AsFloat;
-                    m_tEndColor.a = dictionary["finishColorAlpha"].AsFloat;
+                    m_tEndColor.R = dictionary["finishColorRed"].AsFloat;
+                    m_tEndColor.G = dictionary["finishColorGreen"].AsFloat;
+                    m_tEndColor.B = dictionary["finishColorBlue"].AsFloat;
+                    m_tEndColor.A = dictionary["finishColorAlpha"].AsFloat;
 
-                    m_tEndColorVar.r = dictionary["finishColorVarianceRed"].AsFloat;
-                    m_tEndColorVar.g = dictionary["finishColorVarianceGreen"].AsFloat;
-                    m_tEndColorVar.b = dictionary["finishColorVarianceBlue"].AsFloat;
-                    m_tEndColorVar.a = dictionary["finishColorVarianceAlpha"].AsFloat;
+                    m_tEndColorVar.R = dictionary["finishColorVarianceRed"].AsFloat;
+                    m_tEndColorVar.G = dictionary["finishColorVarianceGreen"].AsFloat;
+                    m_tEndColorVar.B = dictionary["finishColorVarianceBlue"].AsFloat;
+                    m_tEndColorVar.A = dictionary["finishColorVarianceAlpha"].AsFloat;
 
                     // particle size
                     m_fStartSize = dictionary["startParticleSize"].AsFloat;
@@ -691,22 +691,22 @@ namespace cocos2d
 
             // Color
             CCColor4F start;
-            start.r = MathHelper.Clamp(m_tStartColor.r + m_tStartColorVar.r * Random.Float_Minus1_1(), 0, 1);
-            start.g = MathHelper.Clamp(m_tStartColor.g + m_tStartColorVar.g * Random.Float_Minus1_1(), 0, 1);
-            start.b = MathHelper.Clamp(m_tStartColor.b + m_tStartColorVar.b * Random.Float_Minus1_1(), 0, 1);
-            start.a = MathHelper.Clamp(m_tStartColor.a + m_tStartColorVar.a * Random.Float_Minus1_1(), 0, 1);
+            start.R = MathHelper.Clamp(m_tStartColor.R + m_tStartColorVar.R * Random.Float_Minus1_1(), 0, 1);
+            start.G = MathHelper.Clamp(m_tStartColor.G + m_tStartColorVar.G * Random.Float_Minus1_1(), 0, 1);
+            start.B = MathHelper.Clamp(m_tStartColor.B + m_tStartColorVar.B * Random.Float_Minus1_1(), 0, 1);
+            start.A = MathHelper.Clamp(m_tStartColor.A + m_tStartColorVar.A * Random.Float_Minus1_1(), 0, 1);
 
             CCColor4F end;
-            end.r = MathHelper.Clamp(m_tEndColor.r + m_tEndColorVar.r * Random.Float_Minus1_1(), 0, 1);
-            end.g = MathHelper.Clamp(m_tEndColor.g + m_tEndColorVar.g * Random.Float_Minus1_1(), 0, 1);
-            end.b = MathHelper.Clamp(m_tEndColor.b + m_tEndColorVar.b * Random.Float_Minus1_1(), 0, 1);
-            end.a = MathHelper.Clamp(m_tEndColor.a + m_tEndColorVar.a * Random.Float_Minus1_1(), 0, 1);
+            end.R = MathHelper.Clamp(m_tEndColor.R + m_tEndColorVar.R * Random.Float_Minus1_1(), 0, 1);
+            end.G = MathHelper.Clamp(m_tEndColor.G + m_tEndColorVar.G * Random.Float_Minus1_1(), 0, 1);
+            end.B = MathHelper.Clamp(m_tEndColor.B + m_tEndColorVar.B * Random.Float_Minus1_1(), 0, 1);
+            end.A = MathHelper.Clamp(m_tEndColor.A + m_tEndColorVar.A * Random.Float_Minus1_1(), 0, 1);
 
             particle.color = start;
-            particle.deltaColor.r = (end.r - start.r) / particle.timeToLive;
-            particle.deltaColor.g = (end.g - start.g) / particle.timeToLive;
-            particle.deltaColor.b = (end.b - start.b) / particle.timeToLive;
-            particle.deltaColor.a = (end.a - start.a) / particle.timeToLive;
+            particle.deltaColor.R = (end.R - start.R) / particle.timeToLive;
+            particle.deltaColor.G = (end.G - start.G) / particle.timeToLive;
+            particle.deltaColor.B = (end.B - start.B) / particle.timeToLive;
+            particle.deltaColor.A = (end.A - start.A) / particle.timeToLive;
 
             // size
             float startS = m_fStartSize + m_fStartSizeVar * Random.Float_Minus1_1();
@@ -874,10 +874,10 @@ namespace cocos2d
                 }
 
                 // color
-                p.color.r += (p.deltaColor.r * dt);
-                p.color.g += (p.deltaColor.g * dt);
-                p.color.b += (p.deltaColor.b * dt);
-                p.color.a += (p.deltaColor.a * dt);
+                p.color.R += (p.deltaColor.R * dt);
+                p.color.G += (p.deltaColor.G * dt);
+                p.color.B += (p.deltaColor.B * dt);
+                p.color.A += (p.deltaColor.A * dt);
 
                 // size
                 p.size += (p.deltaSize * dt);

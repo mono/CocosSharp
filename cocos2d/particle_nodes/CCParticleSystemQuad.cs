@@ -182,17 +182,17 @@ namespace cocos2d
             
             if  (m_bOpacityModifyRGB)
             {
-                color.R = (byte) (particle.color.r * particle.color.a * 255);
-                color.G = (byte) (particle.color.g * particle.color.a * 255);
-                color.B = (byte) (particle.color.b * particle.color.a * 255);
-                color.A = (byte)(particle.color.a * 255);
+                color.R = (byte) (particle.color.R * particle.color.A * 255);
+                color.G = (byte) (particle.color.G * particle.color.A * 255);
+                color.B = (byte) (particle.color.B * particle.color.A * 255);
+                color.A = (byte)(particle.color.A * 255);
             }
             else
             {
-                color.R = (byte)(particle.color.r * 255);
-                color.G = (byte)(particle.color.g * 255);
-                color.B = (byte)(particle.color.b * 255);
-                color.A = (byte)(particle.color.a * 255);
+                color.R = (byte)(particle.color.R * 255);
+                color.G = (byte)(particle.color.G * 255);
+                color.B = (byte)(particle.color.B * 255);
+                color.A = (byte)(particle.color.A * 255);
             }
 
             quad.bl.colors = color;

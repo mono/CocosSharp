@@ -52,16 +52,16 @@ namespace tests
             // emits per frame
             particleSystem.EmissionRate = (particleSystem.TotalParticles / particleSystem.Life);
             // color of particles
-            CCColor4F startColor = new CCColor4F { r = 0.5f, g = 0.5f, b = 0.5f, a = 1.0f };
+            CCColor4F startColor = new CCColor4F { R = 0.5f, G = 0.5f, B = 0.5f, A = 1.0f };
             particleSystem.StartColor = startColor;
 
-            CCColor4F startColorVar = new CCColor4F { r = 0.5f, g = 0.5f, b = 0.5f, a = 1.0f };
+            CCColor4F startColorVar = new CCColor4F { R = 0.5f, G = 0.5f, B = 0.5f, A = 1.0f };
             particleSystem.StartColorVar = startColorVar;
 
-            CCColor4F endColor = new CCColor4F { r = 0.1f, g = 0.1f, b = 0.1f, a = 0.2f };
+            CCColor4F endColor = new CCColor4F { R = 0.1f, G = 0.1f, B = 0.1f, A = 0.2f };
             particleSystem.EndColor = endColor;
 
-            CCColor4F endColorVar = new CCColor4F { r = 0.1f, g = 0.1f, b = 0.1f, a = 0.2f };
+            CCColor4F endColorVar = new CCColor4F { R = 0.1f, G = 0.1f, B = 0.1f, A = 0.2f };
             particleSystem.EndColorVar = endColorVar;
 
             // size, in pixels

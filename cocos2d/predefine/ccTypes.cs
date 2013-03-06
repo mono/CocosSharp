@@ -136,20 +136,20 @@ namespace cocos2d
     {
         public CCColor4F(float inr, float ing, float inb, float ina)
         {
-            r = inr;
-            g = ing;
-            b = inb;
-            a = ina;
+            R = inr;
+            G = ing;
+            B = inb;
+            A = ina;
         }
 
-        public float r;
-        public float g;
-        public float b;
-        public float a;
+        public float R;
+        public float G;
+        public float B;
+        public float A;
 
         public override string ToString()
         {
-            return (string.Format("{0},{1},{2},{3}", r, g, b, a));
+            return (string.Format("{0},{1},{2},{3}", R, G, B, A));
         }
 
         public static CCColor4F Parse(string s)
@@ -610,7 +610,7 @@ namespace cocos2d
          */
         public static bool ccc4FEqual(CCColor4F a, CCColor4F b)
         {
-            return a.r == b.r && a.g == b.g && a.b == b.b && a.a == b.a;
+            return a.R == b.R && a.G == b.G && a.B == b.B && a.A == b.A;
         }
 
         public static ccVertex2F vertex2(float x, float y)

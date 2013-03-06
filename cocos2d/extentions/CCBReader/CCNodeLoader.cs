@@ -655,15 +655,15 @@ namespace cocos2d
             float alphaVar = reader.ReadFloat();
 
             var colors = new CCColor4F[2];
-            colors[0].r = red;
-            colors[0].g = green;
-            colors[0].b = blue;
-            colors[0].a = alpha;
+            colors[0].R = red;
+            colors[0].G = green;
+            colors[0].B = blue;
+            colors[0].A = alpha;
 
-            colors[1].r = redVar;
-            colors[1].g = greenVar;
-            colors[1].b = blueVar;
-            colors[1].a = alphaVar;
+            colors[1].R = redVar;
+            colors[1].G = greenVar;
+            colors[1].B = blueVar;
+            colors[1].A = alphaVar;
 
             return colors;
         }
