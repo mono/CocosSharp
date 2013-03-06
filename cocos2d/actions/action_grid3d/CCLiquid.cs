@@ -63,9 +63,9 @@ namespace cocos2d
             {
                 for (j = 1; j < m_sGridSize.y; ++j)
                 {
-                    ccVertex3F v = OriginalVertex(new ccGridSize(i, j));
-                    v.x = (v.x + ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.x * .01f) * m_fAmplitude * m_fAmplitudeRate));
-                    v.y = (v.y + ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.y * .01f) * m_fAmplitude * m_fAmplitudeRate));
+                    CCVertex3F v = OriginalVertex(new ccGridSize(i, j));
+                    v.X = (v.X + ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.X * .01f) * m_fAmplitude * m_fAmplitudeRate));
+                    v.Y = (v.Y + ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.Y * .01f) * m_fAmplitude * m_fAmplitudeRate));
                     SetVertex(new ccGridSize(i, j), ref v);
                 }
             }

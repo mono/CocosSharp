@@ -153,10 +153,10 @@ namespace cocos2d
                     float y1 = y * m_obStep.y;
                     float y2 = y1 + m_obStep.y;
 
-                    vertArray[index + 0].vertices = new ccVertex3F(x1, y1, 0);
-                    vertArray[index + 1].vertices = new ccVertex3F(x2, y1, 0);
-                    vertArray[index + 2].vertices = new ccVertex3F(x1, y2, 0);
-                    vertArray[index + 3].vertices = new ccVertex3F(x2, y2, 0);
+                    vertArray[index + 0].vertices = new CCVertex3F(x1, y1, 0);
+                    vertArray[index + 1].vertices = new CCVertex3F(x2, y1, 0);
+                    vertArray[index + 2].vertices = new CCVertex3F(x1, y2, 0);
+                    vertArray[index + 3].vertices = new CCVertex3F(x2, y2, 0);
 
                     float newY1 = y1;
                     float newY2 = y2;

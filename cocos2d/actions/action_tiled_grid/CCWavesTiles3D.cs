@@ -100,11 +100,11 @@ namespace cocos2d
                 {
                     ccQuad3 coords = OriginalTile(new ccGridSize(i, j));
 
-                    coords.bl.z = ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 +
-                                                    (coords.bl.y + coords.bl.x) * .01f) * m_fAmplitude * m_fAmplitudeRate);
-                    coords.br.z = coords.bl.z;
-                    coords.tl.z = coords.bl.z;
-                    coords.tr.z = coords.bl.z;
+                    coords.bl.Z = ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 +
+                                                    (coords.bl.Y + coords.bl.X) * .01f) * m_fAmplitude * m_fAmplitudeRate);
+                    coords.br.Z = coords.bl.Z;
+                    coords.tl.Z = coords.bl.Z;
+                    coords.tr.Z = coords.bl.Z;
 
                     SetTile(new ccGridSize(i, j), ref coords);
                 }

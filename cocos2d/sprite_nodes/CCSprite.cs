@@ -303,10 +303,10 @@ namespace cocos2d
                     float x2 = x1 + m_obRect.size.Width;
                     float y2 = y1 + m_obRect.size.Height;
 
-                    m_sQuad.bl.vertices = new ccVertex3F(x1, y1, 0);
-                    m_sQuad.br.vertices = new ccVertex3F(x2, y1, 0);
-                    m_sQuad.tl.vertices = new ccVertex3F(x1, y2, 0);
-                    m_sQuad.tr.vertices = new ccVertex3F(x2, y2, 0);
+                    m_sQuad.bl.vertices = new CCVertex3F(x1, y1, 0);
+                    m_sQuad.br.vertices = new CCVertex3F(x2, y1, 0);
+                    m_sQuad.tl.vertices = new CCVertex3F(x1, y2, 0);
+                    m_sQuad.tr.vertices = new CCVertex3F(x2, y2, 0);
                 }
                 else
                 {
@@ -734,7 +734,7 @@ namespace cocos2d
                     (m_pParent != null && m_pParent != m_pobBatchNode && ((CCSprite)m_pParent).m_bShouldBeHidden))
                 {
                     m_sQuad.br.vertices =
-                        m_sQuad.tl.vertices = m_sQuad.tr.vertices = m_sQuad.bl.vertices = new ccVertex3F(0, 0, 0);
+                        m_sQuad.tl.vertices = m_sQuad.tr.vertices = m_sQuad.bl.vertices = new CCVertex3F(0, 0, 0);
                     m_bShouldBeHidden = true;
                 }
                 else
@@ -784,10 +784,10 @@ namespace cocos2d
                     float dx = x1 * cr - y2 * sr2 + x;
                     float dy = x1 * sr + y2 * cr2 + y;
 
-                    m_sQuad.bl.vertices = new ccVertex3F(ax, ay, m_fVertexZ);
-                    m_sQuad.br.vertices = new ccVertex3F(bx, by, m_fVertexZ);
-                    m_sQuad.tl.vertices = new ccVertex3F(dx, dy, m_fVertexZ);
-                    m_sQuad.tr.vertices = new ccVertex3F(cx, cy, m_fVertexZ);
+                    m_sQuad.bl.vertices = new CCVertex3F(ax, ay, m_fVertexZ);
+                    m_sQuad.br.vertices = new CCVertex3F(bx, by, m_fVertexZ);
+                    m_sQuad.tl.vertices = new CCVertex3F(dx, dy, m_fVertexZ);
+                    m_sQuad.tr.vertices = new CCVertex3F(cx, cy, m_fVertexZ);
                 }
 
                 m_pobTextureAtlas.UpdateQuad(ref m_sQuad, m_uAtlasIndex);

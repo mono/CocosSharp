@@ -74,10 +74,10 @@ namespace cocos2d
                     direction = -1;
                 }
 
-                coords.bl.x += direction * m_winSize.Width * time;
-                coords.br.x += direction * m_winSize.Width * time;
-                coords.tl.x += direction * m_winSize.Width * time;
-                coords.tr.x += direction * m_winSize.Width * time;
+                coords.bl.X += direction * m_winSize.Width * time;
+                coords.br.X += direction * m_winSize.Width * time;
+                coords.tl.X += direction * m_winSize.Width * time;
+                coords.tr.X += direction * m_winSize.Width * time;
 
                 SetTile(new ccGridSize(0, j), ref coords);
             }

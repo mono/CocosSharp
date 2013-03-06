@@ -79,7 +79,7 @@ namespace cocos2d
             {
                 for (j = 0; j < (m_sGridSize.y + 1); ++j)
                 {
-                    ccVertex3F v = OriginalVertex(new ccGridSize(i, j));
+                    CCVertex3F v = OriginalVertex(new ccGridSize(i, j));
 
                     var avg = new CCPoint(i - (m_sGridSize.x / 2.0f), j - (m_sGridSize.y / 2.0f));
                     var r = (float) Math.Sqrt((avg.x * avg.x + avg.y * avg.y));
@@ -87,11 +87,11 @@ namespace cocos2d
                     float amp = 0.1f * m_fAmplitude * m_fAmplitudeRate;
                     float a = r * (float) Math.Cos((float) Math.PI / 2.0f + time * (float) Math.PI * m_nTwirls * 2) * amp;
 
-                    float dx = (float) Math.Sin(a) * (v.y - c.y) + (float) Math.Cos(a) * (v.x - c.x);
-                    float dy = (float) Math.Cos(a) * (v.y - c.y) - (float) Math.Sin(a) * (v.x - c.x);
+                    float dx = (float) Math.Sin(a) * (v.Y - c.y) + (float) Math.Cos(a) * (v.X - c.x);
+                    float dy = (float) Math.Cos(a) * (v.Y - c.y) - (float) Math.Sin(a) * (v.X - c.x);
 
-                    v.x = c.x + dx;
-                    v.y = c.y + dy;
+                    v.X = c.x + dx;
+                    v.Y = c.y + dy;
 
                     SetVertex(new ccGridSize(i, j), ref v);
                 }

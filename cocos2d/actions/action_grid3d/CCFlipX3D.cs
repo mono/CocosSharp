@@ -53,14 +53,14 @@ namespace cocos2d
             angle = angle / 2.0f; // x calculates degrees from 0 to 90
             var mx = (float) Math.Cos(angle);
 
-            ccVertex3F v0, v1, v;
-            var diff = new ccVertex3F();
+            CCVertex3F v0, v1, v;
+            var diff = new CCVertex3F();
 
             v0 = OriginalVertex(new ccGridSize(1, 1));
             v1 = OriginalVertex(new ccGridSize(0, 0));
 
-            float x0 = v0.x;
-            float x1 = v1.x;
+            float x0 = v0.X;
+            float x1 = v1.X;
             float x;
             ccGridSize a, b, c, d;
 
@@ -83,31 +83,31 @@ namespace cocos2d
                 x = x1;
             }
 
-            diff.x = (x - x * mx);
-            diff.z = Math.Abs((float) Math.Floor((x * mz) / 4.0f));
+            diff.X = (x - x * mx);
+            diff.Z = Math.Abs((float) Math.Floor((x * mz) / 4.0f));
 
             // bottom-left
             v = OriginalVertex(a);
-            v.x = diff.x;
-            v.z += diff.z;
+            v.X = diff.X;
+            v.Z += diff.Z;
             SetVertex(a, ref v);
 
             // upper-left
             v = OriginalVertex(b);
-            v.x = diff.x;
-            v.z += diff.z;
+            v.X = diff.X;
+            v.Z += diff.Z;
             SetVertex(b, ref v);
 
             // bottom-right
             v = OriginalVertex(c);
-            v.x -= diff.x;
-            v.z -= diff.z;
+            v.X -= diff.X;
+            v.Z -= diff.Z;
             SetVertex(c, ref v);
 
             // upper-right
             v = OriginalVertex(d);
-            v.x -= diff.x;
-            v.z -= diff.z;
+            v.X -= diff.X;
+            v.Z -= diff.Z;
             SetVertex(d, ref v);
         }
 

@@ -87,10 +87,10 @@ namespace cocos2d
                     gs.x = i;
                     gs.y = j;
 
-                    ccVertex3F v = OriginalVertex(gs);
+                    CCVertex3F v = OriginalVertex(gs);
 
-                    float x = m_positionInPixels.x - v.x;
-                    float y = m_positionInPixels.y - v.y;
+                    float x = m_positionInPixels.x - v.X;
+                    float y = m_positionInPixels.y - v.Y;
 
                     var r = (float) Math.Sqrt((x * x + y * y));
 
@@ -99,7 +99,7 @@ namespace cocos2d
                         r = m_fRadius - r;
                         float r1 = r / m_fRadius;
                         float rate = r1 * r1;
-                        v.z += ((float) Math.Sin(time * MathHelper.Pi * m_nWaves * 2 + r * 0.1f) * m_fAmplitude * m_fAmplitudeRate * rate);
+                        v.Z += ((float) Math.Sin(time * MathHelper.Pi * m_nWaves * 2 + r * 0.1f) * m_fAmplitude * m_fAmplitudeRate * rate);
                     }
 
                     SetVertex(gs, ref v);

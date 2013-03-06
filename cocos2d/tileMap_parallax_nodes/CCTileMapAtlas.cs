@@ -139,18 +139,18 @@ namespace cocos2d
             quad.br.texCoords.u = right;
             quad.br.texCoords.v = bottom;
 
-            quad.bl.vertices.x = (x * m_uItemWidth);
-            quad.bl.vertices.y = (y * m_uItemHeight);
-            quad.bl.vertices.z = 0.0f;
-            quad.br.vertices.x = (x * m_uItemWidth + m_uItemWidth);
-            quad.br.vertices.y = (y * m_uItemHeight);
-            quad.br.vertices.z = 0.0f;
-            quad.tl.vertices.x = (x * m_uItemWidth);
-            quad.tl.vertices.y = (y * m_uItemHeight + m_uItemHeight);
-            quad.tl.vertices.z = 0.0f;
-            quad.tr.vertices.x = (x * m_uItemWidth + m_uItemWidth);
-            quad.tr.vertices.y = (y * m_uItemHeight + m_uItemHeight);
-            quad.tr.vertices.z = 0.0f;
+            quad.bl.vertices.X = (x * m_uItemWidth);
+            quad.bl.vertices.Y = (y * m_uItemHeight);
+            quad.bl.vertices.Z = 0.0f;
+            quad.br.vertices.X = (x * m_uItemWidth + m_uItemWidth);
+            quad.br.vertices.Y = (y * m_uItemHeight);
+            quad.br.vertices.Z = 0.0f;
+            quad.tl.vertices.X = (x * m_uItemWidth);
+            quad.tl.vertices.Y = (y * m_uItemHeight + m_uItemHeight);
+            quad.tl.vertices.Z = 0.0f;
+            quad.tr.vertices.X = (x * m_uItemWidth + m_uItemWidth);
+            quad.tr.vertices.Y = (y * m_uItemHeight + m_uItemHeight);
+            quad.tr.vertices.Z = 0.0f;
 
             var color = new CCColor4B(m_tColor.R, m_tColor.G, m_tColor.B, m_cOpacity);
             quad.tr.colors = color;

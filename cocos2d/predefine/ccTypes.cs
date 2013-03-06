@@ -187,24 +187,24 @@ namespace cocos2d
     /// A vertex composed of 2 floats: x, y
     /// @since v0.8
     /// </summary>
-    public struct ccVertex3F
+    public struct CCVertex3F
     {
-        public static readonly ccVertex3F Zero = new ccVertex3F();
+        public static readonly CCVertex3F Zero = new CCVertex3F();
 
-        public ccVertex3F(float inx, float iny, float inz)
+        public CCVertex3F(float inx, float iny, float inz)
         {
-            x = inx;
-            y = iny;
-            z = inz;
+            X = inx;
+            Y = iny;
+            Z = inz;
         }
 
-        public float x;
-        public float y;
-        public float z;
+        public float X;
+        public float Y;
+        public float Z;
 
         public override string ToString()
         {
-            return String.Format("ccVertex3F x:{0}, y:{1}, z:{2}", x, y, z);
+            return String.Format("ccVertex3F x:{0}, y:{1}, z:{2}", X, Y, Z);
         }
     }
 
@@ -286,10 +286,10 @@ namespace cocos2d
             br = new ccVertex3F();
         }
         */
-        public ccVertex3F bl;
-        public ccVertex3F br;
-        public ccVertex3F tl;
-        public ccVertex3F tr;
+        public CCVertex3F bl;
+        public CCVertex3F br;
+        public CCVertex3F tl;
+        public CCVertex3F tr;
     }
 
     /// <summary>
@@ -372,7 +372,7 @@ namespace cocos2d
         /// <summary>
         /// vertices (3F)
         /// </summary>
-        public ccVertex3F vertices;			// 12 bytes
+        public CCVertex3F vertices;			// 12 bytes
 
         /// <summary>
         /// colors (4B)
@@ -619,9 +619,9 @@ namespace cocos2d
             return c;
         }
 
-        public static ccVertex3F vertex3(float x, float y, float z)
+        public static CCVertex3F vertex3(float x, float y, float z)
         {
-            ccVertex3F c = new ccVertex3F(x, y, z);
+            CCVertex3F c = new CCVertex3F(x, y, z);
             return c;
         }
 

@@ -62,17 +62,17 @@ namespace cocos2d
             ccQuad3 coords = OriginalTile(pos);
             CCPoint step = m_pTarget.Grid.Step;
 
-            coords.bl.x += (step.x / 2) * (1.0f - distance);
-            coords.bl.y += (step.y / 2) * (1.0f - distance);
+            coords.bl.X += (step.x / 2) * (1.0f - distance);
+            coords.bl.Y += (step.y / 2) * (1.0f - distance);
 
-            coords.br.x -= (step.x / 2) * (1.0f - distance);
-            coords.br.y += (step.y / 2) * (1.0f - distance);
+            coords.br.X -= (step.x / 2) * (1.0f - distance);
+            coords.br.Y += (step.y / 2) * (1.0f - distance);
 
-            coords.tl.x += (step.x / 2) * (1.0f - distance);
-            coords.tl.y -= (step.y / 2) * (1.0f - distance);
+            coords.tl.X += (step.x / 2) * (1.0f - distance);
+            coords.tl.Y -= (step.y / 2) * (1.0f - distance);
 
-            coords.tr.x -= (step.x / 2) * (1.0f - distance);
-            coords.tr.y -= (step.y / 2) * (1.0f - distance);
+            coords.tr.X -= (step.x / 2) * (1.0f - distance);
+            coords.tr.Y -= (step.y / 2) * (1.0f - distance);
 
             SetTile(pos, ref coords);
         }

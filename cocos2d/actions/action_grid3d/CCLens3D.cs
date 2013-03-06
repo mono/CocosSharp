@@ -80,8 +80,8 @@ namespace cocos2d
                 {
                     for (j = 0; j < m_sGridSize.y + 1; ++j)
                     {
-                        ccVertex3F v = OriginalVertex(new ccGridSize(i, j));
-                        var vect = new CCPoint(m_positionInPixels.x - v.x, m_positionInPixels.y - v.y);
+                        CCVertex3F v = OriginalVertex(new ccGridSize(i, j));
+                        var vect = new CCPoint(m_positionInPixels.x - v.X, m_positionInPixels.y - v.Y);
                         float r = CCPointExtension.Length(vect);
 
                         if (r < m_fRadius)
@@ -101,7 +101,7 @@ namespace cocos2d
                                 vect = CCPointExtension.Normalize(vect);
 
                                 CCPoint new_vect = CCPointExtension.Multiply(vect, new_r);
-                                v.z += CCPointExtension.Length(new_vect) * m_fLensEffect;
+                                v.Z += CCPointExtension.Length(new_vect) * m_fLensEffect;
                             }
                         }
 

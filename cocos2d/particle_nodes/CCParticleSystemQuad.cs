@@ -225,38 +225,38 @@ namespace cocos2d
                 float dy = x1 * sr + y2 * cr + y;
 
                 // bottom-left
-                quad.bl.vertices.x = ax;
-                quad.bl.vertices.y = ay;
+                quad.bl.vertices.X = ax;
+                quad.bl.vertices.Y = ay;
 
                 // bottom-right vertex:
-                quad.br.vertices.x = bx;
-                quad.br.vertices.y = by;
+                quad.br.vertices.X = bx;
+                quad.br.vertices.Y = by;
 
                 // top-left vertex:
-                quad.tl.vertices.x = dx;
-                quad.tl.vertices.y = dy;
+                quad.tl.vertices.X = dx;
+                quad.tl.vertices.Y = dy;
 
                 // top-right vertex:
-                quad.tr.vertices.x = cx;
-                quad.tr.vertices.y = cy;
+                quad.tr.vertices.X = cx;
+                quad.tr.vertices.Y = cy;
             }
             else
             {
                 // bottom-left vertex:
-                quad.bl.vertices.x = newPosition.x - size_2;
-                quad.bl.vertices.y = newPosition.y - size_2;
+                quad.bl.vertices.X = newPosition.x - size_2;
+                quad.bl.vertices.Y = newPosition.y - size_2;
 
                 // bottom-right vertex:
-                quad.br.vertices.x = newPosition.x + size_2;
-                quad.br.vertices.y = newPosition.y - size_2;
+                quad.br.vertices.X = newPosition.x + size_2;
+                quad.br.vertices.Y = newPosition.y - size_2;
 
                 // top-left vertex:
-                quad.tl.vertices.x = newPosition.x - size_2;
-                quad.tl.vertices.y = newPosition.y + size_2;
+                quad.tl.vertices.X = newPosition.x - size_2;
+                quad.tl.vertices.Y = newPosition.y + size_2;
 
                 // top-right vertex:
-                quad.tr.vertices.x = newPosition.x + size_2;
-                quad.tr.vertices.y = newPosition.y + size_2;
+                quad.tr.vertices.X = newPosition.x + size_2;
+                quad.tr.vertices.Y = newPosition.y + size_2;
             }
         }
 

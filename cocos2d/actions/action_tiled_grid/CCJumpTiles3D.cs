@@ -103,17 +103,17 @@ namespace cocos2d
 
                     if (((i + j) % 2) == 0)
                     {
-                        coords.bl.z += sinz;
-                        coords.br.z += sinz;
-                        coords.tl.z += sinz;
-                        coords.tr.z += sinz;
+                        coords.bl.Z += sinz;
+                        coords.br.Z += sinz;
+                        coords.tl.Z += sinz;
+                        coords.tr.Z += sinz;
                     }
                     else
                     {
-                        coords.bl.z += sinz2;
-                        coords.br.z += sinz2;
-                        coords.tl.z += sinz2;
-                        coords.tr.z += sinz2;
+                        coords.bl.Z += sinz2;
+                        coords.br.Z += sinz2;
+                        coords.tl.Z += sinz2;
+                        coords.tr.Z += sinz2;
                     }
 
                     SetTile(new ccGridSize(i, j), ref coords);

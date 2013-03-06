@@ -9,7 +9,7 @@ namespace cocos2d
         /// <summary>
         /// vertices (3F)
         /// </summary>
-        public ccVertex3F vertices; // 12 bytes
+        public CCVertex3F vertices; // 12 bytes
 
         /// <summary>
         /// tex coords (2F)
@@ -44,7 +44,7 @@ namespace cocos2d
         private bool m_bDirty;
         private IndexBuffer m_pIndexBuffer;
         protected ushort[] m_pIndices;
-        protected ccVertex3F[] m_pOriginalVertices;
+        protected CCVertex3F[] m_pOriginalVertices;
         private VertexBuffer m_pVertexBuffer;
         protected ccV3F_T2F[] m_pVertices;
 
@@ -54,7 +54,7 @@ namespace cocos2d
         /// <summary>
         /// returns the vertex at a given position
         /// </summary>
-        public ccVertex3F Vertex(ccGridSize pos)
+        public CCVertex3F Vertex(ccGridSize pos)
         {
             return m_pVertices[pos.x * (m_sGridSize.y + 1) + pos.y].vertices;
         }
@@ -62,7 +62,7 @@ namespace cocos2d
         /// <summary>
         /// returns the original (non-transformed) vertex at a given position
         /// </summary>
-        public ccVertex3F OriginalVertex(ccGridSize pos)
+        public CCVertex3F OriginalVertex(ccGridSize pos)
         {
             return m_pOriginalVertices[pos.x * (m_sGridSize.y + 1) + pos.y];
         }
@@ -70,7 +70,7 @@ namespace cocos2d
         /// <summary>
         /// sets a new vertex at a given position
         /// </summary>
-        public void SetVertex(ccGridSize pos, ref ccVertex3F vertex)
+        public void SetVertex(ccGridSize pos, ref CCVertex3F vertex)
         {
             m_pVertices[pos.x * (m_sGridSize.y + 1) + pos.y].vertices = vertex;
             m_bDirty = true;
@@ -122,7 +122,7 @@ namespace cocos2d
             int numOfPoints = (m_sGridSize.x + 1) * (m_sGridSize.y + 1);
 
             m_pVertices = new ccV3F_T2F[numOfPoints];
-            m_pOriginalVertices = new ccVertex3F[numOfPoints];
+            m_pOriginalVertices = new CCVertex3F[numOfPoints];
             //m_pTexCoordinates = new CCPoint[numOfPoints];
             m_pIndices = new ushort[m_sGridSize.x * m_sGridSize.y * 6];
 
@@ -131,7 +131,7 @@ namespace cocos2d
             ushort[] idxArray = m_pIndices;
 
             var l1 = new int[4];
-            var l2 = new ccVertex3F[4];
+            var l2 = new CCVertex3F[4];
             var tex1 = new int[4];
             var tex2 = new CCPoint[4];
 
@@ -172,10 +172,10 @@ namespace cocos2d
                     //var g = new Vector3(x2, y2, 0);
                     //var h = new Vector3(x1, y2, 0);
 
-                    l2[0] = new ccVertex3F(x1, y1, 0);
-                    l2[1] = new ccVertex3F(x2, y1, 0);
-                    l2[2] = new ccVertex3F(x2, y2, 0);
-                    l2[3] = new ccVertex3F(x1, y2, 0);
+                    l2[0] = new CCVertex3F(x1, y1, 0);
+                    l2[1] = new CCVertex3F(x2, y1, 0);
+                    l2[2] = new CCVertex3F(x2, y2, 0);
+                    l2[3] = new CCVertex3F(x1, y2, 0);
 
                     tex1[0] = a;
                     tex1[1] = b;

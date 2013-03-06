@@ -295,9 +295,9 @@ namespace cocos2d
             return new ccTex2F(min.x * (1f - alpha.x) + max.x * alpha.x, min.y * (1f - alpha.y) + max.y * alpha.y);
         }
 
-        protected ccVertex3F VertexFromAlphaPoint(CCPoint alpha)
+        protected CCVertex3F VertexFromAlphaPoint(CCPoint alpha)
         {
-            var ret = new ccVertex3F(0.0f, 0.0f, 0.0f);
+            var ret = new CCVertex3F(0.0f, 0.0f, 0.0f);
 
             if (m_pSprite == null)
             {
@@ -306,11 +306,11 @@ namespace cocos2d
 
             ccV3F_C4B_T2F_Quad quad = m_pSprite.Quad;
 
-            var min = new CCPoint(quad.bl.vertices.x, quad.bl.vertices.y);
-            var max = new CCPoint(quad.tr.vertices.x, quad.tr.vertices.y);
+            var min = new CCPoint(quad.bl.vertices.X, quad.bl.vertices.Y);
+            var max = new CCPoint(quad.tr.vertices.X, quad.tr.vertices.Y);
 
-            ret.x = min.x * (1f - alpha.x) + max.x * alpha.x;
-            ret.y = min.y * (1f - alpha.y) + max.y * alpha.y;
+            ret.X = min.x * (1f - alpha.x) + max.x * alpha.x;
+            ret.Y = min.y * (1f - alpha.y) + max.y * alpha.y;
 
             return ret;
         }

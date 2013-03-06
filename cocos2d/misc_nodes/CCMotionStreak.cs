@@ -329,8 +329,8 @@ namespace cocos2d
 
                 perpVector = perpVector * stroke;
 
-                vertices[idx].vertices = new ccVertex3F(p1.x + perpVector.x, p1.y + perpVector.y, 0);
-                vertices[idx + 1].vertices = new ccVertex3F(p1.x - perpVector.x, p1.y - perpVector.y, 0);
+                vertices[idx].vertices = new CCVertex3F(p1.x + perpVector.x, p1.y + perpVector.y, 0);
+                vertices[idx + 1].vertices = new CCVertex3F(p1.x - perpVector.x, p1.y - perpVector.y, 0);
             }
 
             // Validate vertexes
@@ -340,13 +340,13 @@ namespace cocos2d
                 idx = i * 2;
                 int idx1 = idx + 2;
 
-                ccVertex3F p1 = vertices[idx].vertices;
-                ccVertex3F p2 = vertices[idx + 1].vertices;
-                ccVertex3F p3 = vertices[idx1].vertices;
-                ccVertex3F p4 = vertices[idx1 + 1].vertices;
+                CCVertex3F p1 = vertices[idx].vertices;
+                CCVertex3F p2 = vertices[idx + 1].vertices;
+                CCVertex3F p3 = vertices[idx1].vertices;
+                CCVertex3F p4 = vertices[idx1 + 1].vertices;
 
                 float s;
-                bool fixVertex = !ccVertexLineIntersect(p1.x, p1.y, p4.x, p4.y, p2.x, p2.y, p3.x, p3.y, out s);
+                bool fixVertex = !ccVertexLineIntersect(p1.X, p1.Y, p4.X, p4.Y, p2.X, p2.Y, p3.X, p3.Y, out s);
                 if (!fixVertex)
                 {
                     if (s < 0.0f || s > 1.0f)
