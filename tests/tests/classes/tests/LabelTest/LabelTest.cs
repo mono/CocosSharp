@@ -191,7 +191,7 @@ namespace cocos2d
         {
             R = 255,
             G = 0,
-            b = 0
+            B = 0
         };
 
         public LabelAtlasColorTest()
@@ -406,21 +406,21 @@ namespace cocos2d
       {
           R = 0,
           G = 0,
-          b = 255
+          B = 255
       };
 
         CCColor3B ccRED = new CCColor3B
        {
            R = 255,
            G = 0,
-           b = 0
+           B = 0
        };
 
         CCColor3B ccGREEN = new CCColor3B
        {
            R = 0,
            G = 255,
-           b = 0
+           B = 0
        };
         public AtlasBitmapColor()
         {

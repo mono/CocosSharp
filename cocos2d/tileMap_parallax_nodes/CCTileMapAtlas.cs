@@ -152,7 +152,7 @@ namespace cocos2d
             quad.tr.vertices.y = (y * m_uItemHeight + m_uItemHeight);
             quad.tr.vertices.z = 0.0f;
 
-            var color = new ccColor4B(m_tColor.R, m_tColor.G, m_tColor.b, m_cOpacity);
+            var color = new ccColor4B(m_tColor.R, m_tColor.G, m_tColor.B, m_cOpacity);
             quad.tr.colors = color;
             quad.tl.colors = color;
             quad.br.colors = color;

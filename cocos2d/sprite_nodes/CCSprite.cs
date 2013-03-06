@@ -348,14 +348,14 @@ namespace cocos2d
             }
             set
             {
-                m_sColor = new CCColor3B(value.R, value.G, value.b);
-                m_sColorUnmodified = new CCColor3B(value.R, value.G, value.b);
+                m_sColor = new CCColor3B(value.R, value.G, value.B);
+                m_sColorUnmodified = new CCColor3B(value.R, value.G, value.B);
 
                 if (m_bOpacityModifyRGB)
                 {
                     m_sColor.R = (byte)(value.R * m_nOpacity / 255f);
                     m_sColor.G = (byte)(value.G * m_nOpacity / 255f);
-                    m_sColor.b = (byte)(value.b * m_nOpacity / 255f);
+                    m_sColor.B = (byte)(value.B * m_nOpacity / 255f);
                 }
 
                 UpdateColor();
@@ -1011,18 +1011,18 @@ namespace cocos2d
             }
             else 
             {
-                m_sQuad.bl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.b, m_nOpacity);
-                m_sQuad.br.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.b, m_nOpacity);
-                m_sQuad.tl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.b, m_nOpacity);
-                m_sQuad.tr.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.b, m_nOpacity);
+                m_sQuad.bl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.br.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.tl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.tr.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
 
             }
 #else
 
-            m_sQuad.bl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.b, m_nOpacity);
-            m_sQuad.br.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.b, m_nOpacity);
-            m_sQuad.tl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.b, m_nOpacity);
-            m_sQuad.tr.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.b, m_nOpacity);
+            m_sQuad.bl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.br.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.tl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.tr.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
 #endif
 
             // renders using Sprite Manager

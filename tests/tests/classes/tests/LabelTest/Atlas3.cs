@@ -14,7 +14,7 @@ namespace tests
         {
             R = 255,
             G = 0,
-            b = 0
+            B = 0
         };
 
         public Atlas3()

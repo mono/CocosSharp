@@ -59,7 +59,7 @@ namespace cocos2d
                 CCColor3B color = protocol.Color;
                 m_fromR = color.R;
                 m_fromG = color.G;
-                m_fromB = color.b;
+                m_fromB = color.B;
             }
         }
 

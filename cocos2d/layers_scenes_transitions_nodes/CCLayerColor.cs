@@ -108,7 +108,7 @@ namespace cocos2d
 
             m_tColor.R = color.r;
             m_tColor.G = color.g;
-            m_tColor.b = color.b;
+            m_tColor.B = color.b;
             m_cOpacity = color.a;
 
             UpdateColor();
@@ -234,7 +234,7 @@ namespace cocos2d
 
         protected virtual void UpdateColor()
         {
-            var color = new Color(m_tColor.R / 255.0f, m_tColor.G / 255.0f, m_tColor.b / 255.0f, m_cOpacity / 255.0f);
+            var color = new Color(m_tColor.R / 255.0f, m_tColor.G / 255.0f, m_tColor.B / 255.0f, m_cOpacity / 255.0f);
 
             m_pVertices[0].Color = m_pVertices[1].Color = m_pVertices[2].Color = m_pVertices[3].Color = color;
 

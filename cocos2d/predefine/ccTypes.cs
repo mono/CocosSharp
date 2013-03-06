@@ -50,7 +50,7 @@ namespace cocos2d
         {
             R = inr;
             G = ing;
-            b = inb;
+            B = inb;
         }
 
         /// <summary>
@@ -60,12 +60,12 @@ namespace cocos2d
         {
             R = color.R;
             G = color.G;
-            b = color.B;
+            B = color.B;
         }
 
         public byte R;
         public byte G;
-        public byte b;
+        public byte B;
     }
 
     /// <summary>
@@ -592,7 +592,7 @@ namespace cocos2d
          */
         public static ccColor4F ccc4FFromccc3B(CCColor3B c)
         {
-            ccColor4F c4 = new ccColor4F(c.R / 255.0f, c.G / 255.0f, c.b / 255.0f, 1.0f);
+            ccColor4F c4 = new ccColor4F(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, 1.0f);
             return c4;
         }
 

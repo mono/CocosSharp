@@ -37,7 +37,7 @@ namespace cocos2d
 
             base.CopyWithZone(tmpZone);
 
-            ret.InitWithDuration(m_fDuration, m_to.R, m_to.G, m_to.b);
+            ret.InitWithDuration(m_fDuration, m_to.R, m_to.G, m_to.B);
 
             return ret;
         }
@@ -59,7 +59,7 @@ namespace cocos2d
             {
                 protocol.Color = new CCColor3B((byte) (m_from.R + (m_to.R - m_from.R) * time),
                                                (byte) (m_from.G + (m_to.G - m_from.G) * time),
-                                               (byte) (m_from.b + (m_to.b - m_from.b) * time));
+                                               (byte) (m_from.B + (m_to.B - m_from.B) * time));
             }
         }
 
