@@ -72,7 +72,7 @@ namespace cocos2d
     /// RGBA color composed of 4 bytes
     /// @since v0.8
     /// </summary>
-    public struct ccColor4B
+    public struct CCColor4B
     {
         /*
         public ccColor4B()
@@ -84,7 +84,7 @@ namespace cocos2d
         }
         */
 
-        public ccColor4B(byte inr, byte ing, byte inb, byte ina)
+        public CCColor4B(byte inr, byte ing, byte inb, byte ina)
         {
             r = inr;
             g = ing;
@@ -92,7 +92,7 @@ namespace cocos2d
             a = ina;
         }
 
-        public ccColor4B(float inr, float ing, float inb, float ina)
+        public CCColor4B(float inr, float ing, float inb, float ina)
         {
             r = (byte)inr;
             g = (byte)ing;
@@ -103,7 +103,7 @@ namespace cocos2d
         /// <summary>
         /// Convert Color value of XNA Framework to ccColor4B type
         /// </summary>
-        public ccColor4B(Microsoft.Xna.Framework.Color color)
+        public CCColor4B(Microsoft.Xna.Framework.Color color)
         {
             r = color.R;
             g = color.B;
@@ -121,10 +121,10 @@ namespace cocos2d
             return (string.Format("{0},{1},{2},{3}", r, g, b, a));
         }
 
-        public static ccColor4B Parse(string s)
+        public static CCColor4B Parse(string s)
         {
             string[] f = s.Split(',');
-            return (new ccColor4B(byte.Parse(f[0]), byte.Parse(f[1]), byte.Parse(f[2]), byte.Parse(f[3])));
+            return (new CCColor4B(byte.Parse(f[0]), byte.Parse(f[1]), byte.Parse(f[2]), byte.Parse(f[3])));
         }
     }
 
@@ -244,12 +244,12 @@ namespace cocos2d
         public ccPointSprite()
         {
             pos = new ccVertex2F();
-            color = new ccColor4B();
+            color = new CCColor4B();
             size = 0.0f;
         }
 
         public ccVertex2F pos;		// 8 bytes
-        public ccColor4B color;		// 4 bytes
+        public CCColor4B color;		// 4 bytes
         public float size;		// 4 bytes
     }
 
@@ -315,7 +315,7 @@ namespace cocos2d
         public ccV2F_C4B_T2F()
         {
             vertices = new ccVertex2F();
-            colors = new ccColor4B();
+            colors = new CCColor4B();
             texCoords = new ccTex2F();
         }
 
@@ -327,7 +327,7 @@ namespace cocos2d
         /// <summary>
         /// colors (4B)
         /// </summary>
-        public ccColor4B colors;
+        public CCColor4B colors;
 
         /// <summary>
         /// tex coords (2F)
@@ -377,7 +377,7 @@ namespace cocos2d
         /// <summary>
         /// colors (4B)
         /// </summary>
-        public ccColor4B colors;				// 4 bytes
+        public CCColor4B colors;				// 4 bytes
 
         /// <summary>
         /// tex coords (2F)
@@ -581,9 +581,9 @@ namespace cocos2d
         }
 
         //! helper macro that creates an ccColor4B type
-        public static ccColor4B ccc4(byte r, byte g, byte b, byte o)
+        public static CCColor4B ccc4(byte r, byte g, byte b, byte o)
         {
-            ccColor4B c = new ccColor4B(r, g, b, o);
+            CCColor4B c = new CCColor4B(r, g, b, o);
             return c;
         }
 
@@ -599,7 +599,7 @@ namespace cocos2d
         /** Returns a ccColor4F from a ccColor4B.
          @since v0.99.1
          */
-        public static ccColor4F ccc4FFromccc4B(ccColor4B c)
+        public static ccColor4F ccc4FFromccc4B(CCColor4B c)
         {
             ccColor4F c4 = new ccColor4F(c.r / 255.0f, c.g / 255.0f, c.b / 255.0f, c.a / 255.0f);
             return c4;

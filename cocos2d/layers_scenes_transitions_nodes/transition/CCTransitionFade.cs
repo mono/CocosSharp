@@ -30,7 +30,7 @@ namespace cocos2d
     public class CCTransitionFade : CCTransitionScene
     {
         private const int kSceneFade = 2147483647;
-        protected ccColor4B m_tColor;
+        protected CCColor4B m_tColor;
 
         /// <summary>
         /// creates the transition with a duration and with an RGB color
@@ -50,7 +50,7 @@ namespace cocos2d
         {
             if (base.InitWithDuration(duration, scene))
             {
-                m_tColor = new ccColor4B {r = color.R, g = color.G, b = color.B, a = 0};
+                m_tColor = new CCColor4B {r = color.R, g = color.G, b = color.B, a = 0};
             }
             return true;
         }

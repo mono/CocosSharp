@@ -35,7 +35,7 @@ namespace tests
                 CCLayerColor layer;
                 for (int i = 0; i < 5; i++)
                 {
-                    layer = CCLayerColor.Create(new ccColor4B((byte)(i*20), (byte)(i*20), (byte)(i*20),255));
+                    layer = CCLayerColor.Create(new CCColor4B((byte)(i*20), (byte)(i*20), (byte)(i*20),255));
                     layer.ContentSize = new CCSize(i * 100, i * 100);
                     layer.Position = new CCPoint(size.Width / 2, size.Height / 2);
                     layer.AnchorPoint = new CCPoint(0.5f, 0.5f);

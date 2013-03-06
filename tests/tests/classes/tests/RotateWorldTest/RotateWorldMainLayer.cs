@@ -18,10 +18,10 @@ namespace tests
             x = size.Width;
             y = size.Height;
 
-            CCNode blue = CCLayerColor.Create(new ccColor4B(0, 0, 255, 255));
-            CCNode red = CCLayerColor.Create(new ccColor4B(255, 0, 0, 255));
-            CCNode green = CCLayerColor.Create(new ccColor4B(0, 255, 0, 255));
-            CCNode white = CCLayerColor.Create(new ccColor4B(255, 255, 255, 255));
+            CCNode blue = CCLayerColor.Create(new CCColor4B(0, 0, 255, 255));
+            CCNode red = CCLayerColor.Create(new CCColor4B(255, 0, 0, 255));
+            CCNode green = CCLayerColor.Create(new CCColor4B(0, 255, 0, 255));
+            CCNode white = CCLayerColor.Create(new CCColor4B(255, 255, 255, 255));
 
             blue.Scale = (0.5f);
             blue.Position = (new CCPoint(-x / 4, -y / 4));

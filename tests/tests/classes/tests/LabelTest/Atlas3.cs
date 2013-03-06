@@ -21,7 +21,7 @@ namespace tests
         {
             m_time = 0;
 
-            CCLayerColor col = CCLayerColor.Create(new ccColor4B(128, 128, 128, 255));
+            CCLayerColor col = CCLayerColor.Create(new CCColor4B(128, 128, 128, 255));
             AddChild(col, -10);
 
             CCLabelBMFont label1 = CCLabelBMFont.Create("Test", "fonts/bitmapFontTest2.fnt");

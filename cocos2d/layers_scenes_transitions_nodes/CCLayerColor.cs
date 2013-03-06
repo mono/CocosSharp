@@ -80,7 +80,7 @@ namespace cocos2d
         /// <summary>
         /// creates a CCLayer with color, width and height in Points
         /// </summary>
-        public static CCLayerColor Create(ccColor4B color, float width, float height)
+        public static CCLayerColor Create(CCColor4B color, float width, float height)
         {
             var pLayer = new CCLayerColor();
             pLayer.InitWithColorWidthHeight(color, width, height);
@@ -90,7 +90,7 @@ namespace cocos2d
         /// <summary>
         /// creates a CCLayer with color. Width and height are the window size. 
         /// </summary>
-        public static CCLayerColor Create(ccColor4B color)
+        public static CCLayerColor Create(CCColor4B color)
         {
             var pLayer = new CCLayerColor();
             pLayer.InitWithColor(color);
@@ -100,7 +100,7 @@ namespace cocos2d
         /// <summary>
         ///  initializes a CCLayer with color, width and height in Points
         /// </summary>
-        public virtual bool InitWithColorWidthHeight(ccColor4B color, float width, float height)
+        public virtual bool InitWithColorWidthHeight(CCColor4B color, float width, float height)
         {
             // default blend function
             m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
@@ -121,7 +121,7 @@ namespace cocos2d
         /// <summary>
         /// initializes a CCLayer with color. Width and height are the window size.
         /// </summary>
-        public virtual bool InitWithColor(ccColor4B color)
+        public virtual bool InitWithColor(CCColor4B color)
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
             InitWithColorWidthHeight(color, s.Width, s.Height);

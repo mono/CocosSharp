@@ -17,7 +17,7 @@ namespace tests
 
         public override bool Init()
         {
-            InitWithColor(new ccColor4B(0, 0, 255, 255));
+            InitWithColor(new CCColor4B(0, 0, 255, 255));
 
             CCMenuItemFont item1 = CCMenuItemFont.Create("Touch to pushScene (self)", item0Clicked);
             CCMenuItemFont item2 = CCMenuItemFont.Create("Touch to popScene", item1Clicked);

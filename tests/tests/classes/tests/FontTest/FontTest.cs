@@ -128,9 +128,9 @@ namespace tests.FontTest
                                                  blockSize, CCTextAlignment.CCTextAlignmentRight,
                                                  FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
 
-            CCLayerColor leftColor = CCLayerColor.Create(new ccColor4B(100, 100, 100, 255), blockSize.Width, blockSize.Height);
-            CCLayerColor centerColor = CCLayerColor.Create(new ccColor4B(200, 100, 100, 255), blockSize.Width, blockSize.Height);
-            CCLayerColor rightColor = CCLayerColor.Create(new ccColor4B(100, 100, 200, 255), blockSize.Width, blockSize.Height);
+            CCLayerColor leftColor = CCLayerColor.Create(new CCColor4B(100, 100, 100, 255), blockSize.Width, blockSize.Height);
+            CCLayerColor centerColor = CCLayerColor.Create(new CCColor4B(200, 100, 100, 255), blockSize.Width, blockSize.Height);
+            CCLayerColor rightColor = CCLayerColor.Create(new CCColor4B(100, 100, 200, 255), blockSize.Width, blockSize.Height);
 
             leftColor.IgnoreAnchorPointForPosition = false;
             centerColor.IgnoreAnchorPointForPosition = false;

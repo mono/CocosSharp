@@ -125,7 +125,7 @@ namespace cocos2d
         /// <summary>
         /// Creates a full-screen CCLayer with a gradient between start and end.
         /// </summary>
-        public static CCLayerGradient Create(ccColor4B start, ccColor4B end)
+        public static CCLayerGradient Create(CCColor4B start, CCColor4B end)
         {
             var pLayer = new CCLayerGradient();
             if (pLayer.InitWithColor(start, end))
@@ -139,7 +139,7 @@ namespace cocos2d
         /// <summary>
         /// Creates a full-screen CCLayer with a gradient between start and end in the direction of v. 
         /// </summary>
-        public static CCLayerGradient Create(ccColor4B start, ccColor4B end, CCPoint v)
+        public static CCLayerGradient Create(CCColor4B start, CCColor4B end, CCPoint v)
         {
             var pLayer = new CCLayerGradient();
             if (pLayer.InitWithColor(start, end, v))
@@ -153,7 +153,7 @@ namespace cocos2d
         /// <summary>
         /// Initializes the CCLayer with a gradient between start and end.
         /// </summary>
-        public virtual bool InitWithColor(ccColor4B start, ccColor4B end)
+        public virtual bool InitWithColor(CCColor4B start, CCColor4B end)
         {
             return InitWithColor(start, end, new CCPoint(0, -1));
         }
@@ -161,7 +161,7 @@ namespace cocos2d
         /// <summary>
         /// Initializes the CCLayer with a gradient between start and end in the direction of v.
         /// </summary>
-        public virtual bool InitWithColor(ccColor4B start, ccColor4B end, CCPoint v)
+        public virtual bool InitWithColor(CCColor4B start, CCColor4B end, CCPoint v)
         {
             m_endColor = new CCColor3B();
             m_endColor.R = end.r;
@@ -174,7 +174,7 @@ namespace cocos2d
 
             m_bCompressedInterpolation = true;
 
-            return base.InitWithColor(new ccColor4B(start.r, start.g, start.b, 255));
+            return base.InitWithColor(new CCColor4B(start.r, start.g, start.b, 255));
         }
 
 
@@ -203,7 +203,7 @@ namespace cocos2d
 
             float opacityf = m_cOpacity / 255.0f;
 
-            var S = new ccColor4B
+            var S = new CCColor4B
                 {
                     r = m_tColor.R,
                     g = m_tColor.G,
@@ -211,7 +211,7 @@ namespace cocos2d
                     a = (byte) (m_cStartOpacity * opacityf)
                 };
 
-            var E = new ccColor4B
+            var E = new CCColor4B
                 {
                     r = m_endColor.R,
                     g = m_endColor.G,

@@ -40,7 +40,7 @@ namespace cocos2d
 
             // create a transparent color layer
             // in which we are going to add our rendertextures
-            var color = new ccColor4B(0, 0, 0, 0);
+            var color = new CCColor4B(0, 0, 0, 0);
             CCSize size = CCDirector.SharedDirector.WinSize;
             CCLayerColor layer = CCLayerColor.Create(color);
 

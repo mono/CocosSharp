@@ -38,7 +38,7 @@ namespace tests
 
             CCSprite sprite = CCSprite.Create(ClickAndMoveTest.s_pPathGrossini);
 
-            CCLayer layer = CCLayerColor.Create(new ccColor4B(255, 255, 0, 255));
+            CCLayer layer = CCLayerColor.Create(new CCColor4B(255, 255, 0, 255));
             AddChild(layer, -1);
 
             AddChild(sprite, 0, ClickAndMoveTest.kTagSprite);

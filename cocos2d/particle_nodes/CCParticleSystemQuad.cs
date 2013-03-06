@@ -178,7 +178,7 @@ namespace cocos2d
                 newPosition.y += m_tPosition.y;
             }
 
-            ccColor4B color;
+            CCColor4B color;
             
             if  (m_bOpacityModifyRGB)
             {

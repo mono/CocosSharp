@@ -590,7 +590,7 @@ namespace cocos2d
 
             if (m_pVertexData != null)
             {
-                ccColor4B sc = m_pSprite.Quad.tl.colors;
+                CCColor4B sc = m_pSprite.Quad.tl.colors;
                 for (int i = 0; i < m_nVertexDataCount; ++i)
                 {
                     m_pVertexData[i].colors = sc;

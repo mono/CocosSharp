@@ -83,8 +83,8 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawLine(new CCPoint(0, s.Height / 2), new CCPoint(s.Width, s.Height / 2), new ccColor4B(255, 0, 0, 255));
-            CCDrawingPrimitives.DrawLine(new CCPoint(s.Width / 2, 0), new CCPoint(s.Width / 2, s.Height), new ccColor4B(255, 0, 0, 255));
+            CCDrawingPrimitives.DrawLine(new CCPoint(0, s.Height / 2), new CCPoint(s.Width, s.Height / 2), new CCColor4B(255, 0, 0, 255));
+            CCDrawingPrimitives.DrawLine(new CCPoint(s.Width / 2, 0), new CCPoint(s.Width / 2, s.Height), new CCColor4B(255, 0, 0, 255));
             CCDrawingPrimitives.End();
         }
 

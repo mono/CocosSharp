@@ -18,7 +18,7 @@ namespace tests
             this.TouchEnabled = true;
 
             CCSize s = CCDirector.SharedDirector.WinSize;
-            CCLayerColor layer = CCLayerColor.Create(new ccColor4B(0xFF, 0x00, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
+            CCLayerColor layer = CCLayerColor.Create(new CCColor4B(0xFF, 0x00, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
 
             layer.IgnoreAnchorPointForPosition = false;
             layer.Position = (new CCPoint(s.Width / 2, s.Height / 2));

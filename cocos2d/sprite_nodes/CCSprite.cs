@@ -499,7 +499,7 @@ namespace cocos2d
             m_sQuad = new ccV3F_C4B_T2F_Quad();
 
             // Atlas: Color
-            var tmpColor = new ccColor4B(255, 255, 255, 255);
+            var tmpColor = new CCColor4B(255, 255, 255, 255);
             m_sQuad.bl.colors = tmpColor;
             m_sQuad.br.colors = tmpColor;
             m_sQuad.tl.colors = tmpColor;
@@ -1004,25 +1004,25 @@ namespace cocos2d
             if (opacity) 
             {
                 // The following code works on iOS
-                m_sQuad.bl.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.br.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.tl.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.tr.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.bl.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.br.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.tl.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.tr.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
             }
             else 
             {
-                m_sQuad.bl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-                m_sQuad.br.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-                m_sQuad.tl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-                m_sQuad.tr.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.bl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.br.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.tl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.tr.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
 
             }
 #else
 
-            m_sQuad.bl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-            m_sQuad.br.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-            m_sQuad.tl.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-            m_sQuad.tr.colors = new ccColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.bl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.br.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.tl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.tr.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
 #endif
 
             // renders using Sprite Manager

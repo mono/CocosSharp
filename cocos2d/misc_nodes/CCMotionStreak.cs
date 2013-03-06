@@ -155,7 +155,7 @@ namespace cocos2d
 
             for (int i = 0; i < m_uNuPoints * 2; i++)
             {
-                m_pVertices[i].colors = new ccColor4B(colors.R, colors.G, colors.B, 255);
+                m_pVertices[i].colors = new CCColor4B(colors.R, colors.G, colors.B, 255);
             }
         }
 
@@ -237,7 +237,7 @@ namespace cocos2d
 
                 // Color asignation
                 int offset = m_uNuPoints * 2;
-                m_pVertices[offset].colors = m_pVertices[offset + 1].colors = new ccColor4B(m_tColor.R, m_tColor.G, m_tColor.B, 255);
+                m_pVertices[offset].colors = m_pVertices[offset + 1].colors = new CCColor4B(m_tColor.R, m_tColor.G, m_tColor.B, 255);
 
                 // Generate polygon
                 if (m_uNuPoints > 0 && m_bFastMode)
