@@ -50,7 +50,7 @@ namespace cocos2d
         {
             if (base.InitWithDuration(duration, scene))
             {
-                m_tColor = new CCColor4B {r = color.R, g = color.G, b = color.B, a = 0};
+                m_tColor = new CCColor4B {R = color.R, g = color.G, b = color.B, a = 0};
             }
             return true;
         }

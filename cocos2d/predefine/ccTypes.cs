@@ -39,7 +39,7 @@ namespace cocos2d
     public struct CCColor3B
     {
         /*
-        public ccColor3B()
+        public CCColor3B()
         {
             r = 0;
             g = 0;
@@ -54,7 +54,7 @@ namespace cocos2d
         }
 
         /// <summary>
-        /// Convert Color value of XNA Framework to ccColor3B type
+        /// Convert Color value of XNA Framework to CCColor3B type
         /// </summary>
         public CCColor3B(Microsoft.Xna.Framework.Color color)
         {
@@ -75,7 +75,7 @@ namespace cocos2d
     public struct CCColor4B
     {
         /*
-        public ccColor4B()
+        public CCColor4B()
         {
             r = 0;
             g = 0;
@@ -86,7 +86,7 @@ namespace cocos2d
 
         public CCColor4B(byte inr, byte ing, byte inb, byte ina)
         {
-            r = inr;
+            R = inr;
             g = ing;
             b = inb;
             a = ina;
@@ -94,31 +94,31 @@ namespace cocos2d
 
         public CCColor4B(float inr, float ing, float inb, float ina)
         {
-            r = (byte)inr;
+            R = (byte)inr;
             g = (byte)ing;
             b = (byte)inb;
             a = (byte)ina;
         }
 
         /// <summary>
-        /// Convert Color value of XNA Framework to ccColor4B type
+        /// Convert Color value of XNA Framework to CCColor4B type
         /// </summary>
         public CCColor4B(Microsoft.Xna.Framework.Color color)
         {
-            r = color.R;
+            R = color.R;
             g = color.B;
             b = color.B;
             a = color.A;
         }
 
-        public byte r;
+        public byte R;
         public byte g;
         public byte b;
         public byte a;
 
         public override string ToString()
         {
-            return (string.Format("{0},{1},{2},{3}", r, g, b, a));
+            return (string.Format("{0},{1},{2},{3}", R, g, b, a));
         }
 
         public static CCColor4B Parse(string s)
@@ -601,7 +601,7 @@ namespace cocos2d
          */
         public static ccColor4F ccc4FFromccc4B(CCColor4B c)
         {
-            ccColor4F c4 = new ccColor4F(c.r / 255.0f, c.g / 255.0f, c.b / 255.0f, c.a / 255.0f);
+            ccColor4F c4 = new ccColor4F(c.R / 255.0f, c.g / 255.0f, c.b / 255.0f, c.a / 255.0f);
             return c4;
         }
 

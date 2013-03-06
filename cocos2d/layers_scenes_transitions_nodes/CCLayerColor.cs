@@ -106,7 +106,7 @@ namespace cocos2d
             m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
             m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
 
-            m_tColor.R = color.r;
+            m_tColor.R = color.R;
             m_tColor.G = color.g;
             m_tColor.B = color.b;
             m_cOpacity = color.a;
