@@ -163,7 +163,7 @@ namespace cocos2d
     /// A vertex composed of 2 floats: x, y
     /// @since v0.8
     /// </summary>
-    public struct ccVertex2F
+    public struct CCVertex2F
     {
         /*
         public ccVertex2F()
@@ -173,14 +173,14 @@ namespace cocos2d
         }
         */
 
-        public ccVertex2F(float inx, float iny)
+        public CCVertex2F(float inx, float iny)
         {
-            x = inx;
-            y = iny;
+            X = inx;
+            Y = iny;
         }
 
-        public float x;
-        public float y;
+        public float X;
+        public float Y;
     }
 
     /// <summary>
@@ -243,12 +243,12 @@ namespace cocos2d
     {
         public ccPointSprite()
         {
-            pos = new ccVertex2F();
+            pos = new CCVertex2F();
             color = new CCColor4B();
             size = 0.0f;
         }
 
-        public ccVertex2F pos;		// 8 bytes
+        public CCVertex2F pos;		// 8 bytes
         public CCColor4B color;		// 4 bytes
         public float size;		// 4 bytes
     }
@@ -260,16 +260,16 @@ namespace cocos2d
     {
         public ccQuad2()
         {
-            tl = new ccVertex2F();
-            tr = new ccVertex2F();
-            bl = new ccVertex2F();
-            br = new ccVertex2F();
+            tl = new CCVertex2F();
+            tr = new CCVertex2F();
+            bl = new CCVertex2F();
+            br = new CCVertex2F();
         }
 
-        public ccVertex2F tl;
-        public ccVertex2F tr;
-        public ccVertex2F bl;
-        public ccVertex2F br;
+        public CCVertex2F tl;
+        public CCVertex2F tr;
+        public CCVertex2F bl;
+        public CCVertex2F br;
     }
 
     /// <summary>
@@ -314,7 +314,7 @@ namespace cocos2d
     {
         public ccV2F_C4B_T2F()
         {
-            vertices = new ccVertex2F();
+            vertices = new CCVertex2F();
             colors = new CCColor4B();
             texCoords = new ccTex2F();
         }
@@ -322,7 +322,7 @@ namespace cocos2d
         /// <summary>
         /// vertices (2F)
         /// </summary>
-        public ccVertex2F vertices;
+        public CCVertex2F vertices;
 
         /// <summary>
         /// colors (4B)
@@ -342,7 +342,7 @@ namespace cocos2d
     {
         public ccV2F_C4F_T2F()
         {
-            vertices = new ccVertex2F();
+            vertices = new CCVertex2F();
             colors = new CCColor4F();
             texCoords = new ccTex2F();
         }
@@ -350,7 +350,7 @@ namespace cocos2d
         /// <summary>
         /// vertices (2F)
         /// </summary>
-        public ccVertex2F vertices;
+        public CCVertex2F vertices;
 
         /// <summary>
         /// colors (4F)
@@ -613,9 +613,9 @@ namespace cocos2d
             return a.R == b.R && a.G == b.G && a.B == b.B && a.A == b.A;
         }
 
-        public static ccVertex2F vertex2(float x, float y)
+        public static CCVertex2F vertex2(float x, float y)
         {
-            ccVertex2F c = new ccVertex2F(x, y);
+            CCVertex2F c = new CCVertex2F(x, y);
             return c;
         }
 
