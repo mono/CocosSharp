@@ -73,7 +73,7 @@ namespace cocos2d
         {
             float factor = CCDirector.SharedDirector.ContentScaleFactor;
 
-            var c = new Color(color.R, color.g, color.b, color.a);
+            var c = new Color(color.R, color.G, color.b, color.a);
 
             m_Batch.AddVertex(new Vector2(origin.x * factor, origin.y * factor), c, PrimitiveType.LineList);
             m_Batch.AddVertex(new Vector2(destination.x * factor, destination.y * factor), c, PrimitiveType.LineList);
@@ -94,7 +94,7 @@ namespace cocos2d
         /// </summary>
         public static void DrawPoly(CCPoint[] vertices, int numOfVertices, bool closePolygon, bool fill, CCColor4B color)
         {
-            var c = new Color(color.R, color.g, color.b, color.a);
+            var c = new Color(color.R, color.G, color.b, color.a);
 
             if (fill)
             {
@@ -134,7 +134,7 @@ namespace cocos2d
                 return;
             }
 
-            var colorFill = new Color(color.R, color.g, color.b, color.a);
+            var colorFill = new Color(color.R, color.G, color.b, color.a);
 
             colorFill = colorFill * (outline ? 0.5f : 1.0f);
 
@@ -187,13 +187,13 @@ namespace cocos2d
                 float y = (float) Math.Pow(1 - t, 2) * origin.y + 2.0f * (1 - t) * t * control.y + t * t * destination.y;
                 vertices[i] = new VertexPositionColor();
                 vertices[i].Position = new Vector3(x * factor, y * factor, 0);
-                vertices[i].Color = new Color(color.R, color.g, color.b, color.a);
+                vertices[i].Color = new Color(color.R, color.G, color.b, color.a);
                 t += 1.0f / segments;
             }
             vertices[segments] = new VertexPositionColor
                 {
                     Position = new Vector3(destination.x * factor, destination.y * factor, 0),
-                    Color = new Color(color.R, color.g, color.b, color.a),
+                    Color = new Color(color.R, color.G, color.b, color.a),
                 };
 
             BasicEffect basicEffect = DrawManager.PrimitiveEffect;
@@ -226,12 +226,12 @@ namespace cocos2d
                           3.0f * (1 - t) * t * t * control2.y + t * t * t * destination.y;
                 vertices[i] = new VertexPositionColor();
                 vertices[i].Position = new Vector3(x * factor, y * factor, 0);
-                vertices[i].Color = new Color(color.R, color.g, color.b, color.a);
+                vertices[i].Color = new Color(color.R, color.G, color.b, color.a);
                 t += 1.0f / segments;
             }
             vertices[segments] = new VertexPositionColor
                 {
-                    Color = new Color(color.R, color.g, color.b, color.a),
+                    Color = new Color(color.R, color.G, color.b, color.a),
                     Position = new Vector3(destination.x * factor, destination.y * factor, 0)
                 };
 

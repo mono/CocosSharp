@@ -87,7 +87,7 @@ namespace cocos2d
         public CCColor4B(byte inr, byte ing, byte inb, byte ina)
         {
             R = inr;
-            g = ing;
+            G = ing;
             b = inb;
             a = ina;
         }
@@ -95,7 +95,7 @@ namespace cocos2d
         public CCColor4B(float inr, float ing, float inb, float ina)
         {
             R = (byte)inr;
-            g = (byte)ing;
+            G = (byte)ing;
             b = (byte)inb;
             a = (byte)ina;
         }
@@ -106,19 +106,19 @@ namespace cocos2d
         public CCColor4B(Microsoft.Xna.Framework.Color color)
         {
             R = color.R;
-            g = color.B;
+            G = color.B;
             b = color.B;
             a = color.A;
         }
 
         public byte R;
-        public byte g;
+        public byte G;
         public byte b;
         public byte a;
 
         public override string ToString()
         {
-            return (string.Format("{0},{1},{2},{3}", R, g, b, a));
+            return (string.Format("{0},{1},{2},{3}", R, G, b, a));
         }
 
         public static CCColor4B Parse(string s)
@@ -601,7 +601,7 @@ namespace cocos2d
          */
         public static ccColor4F ccc4FFromccc4B(CCColor4B c)
         {
-            ccColor4F c4 = new ccColor4F(c.R / 255.0f, c.g / 255.0f, c.b / 255.0f, c.a / 255.0f);
+            ccColor4F c4 = new ccColor4F(c.R / 255.0f, c.G / 255.0f, c.b / 255.0f, c.a / 255.0f);
             return c4;
         }
 
