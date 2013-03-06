@@ -164,7 +164,7 @@ namespace cocos2d
         public virtual bool InitWithColor(ccColor4B start, ccColor4B end, CCPoint v)
         {
             m_endColor = new CCColor3B();
-            m_endColor.r = end.r;
+            m_endColor.R = end.r;
             m_endColor.g = end.g;
             m_endColor.b = end.b;
 
@@ -205,7 +205,7 @@ namespace cocos2d
 
             var S = new ccColor4B
                 {
-                    r = m_tColor.r,
+                    r = m_tColor.R,
                     g = m_tColor.g,
                     b = m_tColor.b,
                     a = (byte) (m_cStartOpacity * opacityf)
@@ -213,7 +213,7 @@ namespace cocos2d
 
             var E = new ccColor4B
                 {
-                    r = m_endColor.r,
+                    r = m_endColor.R,
                     g = m_endColor.g,
                     b = m_endColor.b,
                     a = (byte) (m_cEndOpacity * opacityf)

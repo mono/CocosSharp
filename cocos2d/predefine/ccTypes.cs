@@ -48,7 +48,7 @@ namespace cocos2d
         */
         public CCColor3B(byte inr, byte ing, byte inb)
         {
-            r = inr;
+            R = inr;
             g = ing;
             b = inb;
         }
@@ -58,12 +58,12 @@ namespace cocos2d
         /// </summary>
         public CCColor3B(Microsoft.Xna.Framework.Color color)
         {
-            r = color.R;
+            R = color.R;
             g = color.G;
             b = color.B;
         }
 
-        public byte r;
+        public byte R;
         public byte g;
         public byte b;
     }
@@ -592,7 +592,7 @@ namespace cocos2d
          */
         public static ccColor4F ccc4FFromccc3B(CCColor3B c)
         {
-            ccColor4F c4 = new ccColor4F(c.r / 255.0f, c.g / 255.0f, c.b / 255.0f, 1.0f);
+            ccColor4F c4 = new ccColor4F(c.R / 255.0f, c.g / 255.0f, c.b / 255.0f, 1.0f);
             return c4;
         }
 

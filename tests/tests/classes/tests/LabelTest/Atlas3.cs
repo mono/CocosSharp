@@ -12,7 +12,7 @@ namespace tests
         float m_time;
         CCColor3B ccRED = new CCColor3B
         {
-            r = 255,
+            R = 255,
             g = 0,
             b = 0
         };

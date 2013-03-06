@@ -189,7 +189,7 @@ namespace cocos2d
         float m_time;
         CCColor3B ccRED = new CCColor3B
         {
-            r = 255,
+            R = 255,
             g = 0,
             b = 0
         };
@@ -404,21 +404,21 @@ namespace cocos2d
     {
         CCColor3B ccBLUE = new CCColor3B
       {
-          r = 0,
+          R = 0,
           g = 0,
           b = 255
       };
 
         CCColor3B ccRED = new CCColor3B
        {
-           r = 255,
+           R = 255,
            g = 0,
            b = 0
        };
 
         CCColor3B ccGREEN = new CCColor3B
        {
-           r = 0,
+           R = 0,
            g = 255,
            b = 0
        };

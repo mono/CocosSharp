@@ -37,7 +37,7 @@ namespace cocos2d
 
             base.CopyWithZone(tmpZone);
 
-            ret.InitWithDuration(m_fDuration, m_to.r, m_to.g, m_to.b);
+            ret.InitWithDuration(m_fDuration, m_to.R, m_to.g, m_to.b);
 
             return ret;
         }
@@ -57,7 +57,7 @@ namespace cocos2d
             var protocol = m_pTarget as ICCRGBAProtocol;
             if (protocol != null)
             {
-                protocol.Color = new CCColor3B((byte) (m_from.r + (m_to.r - m_from.r) * time),
+                protocol.Color = new CCColor3B((byte) (m_from.R + (m_to.R - m_from.R) * time),
                                                (byte) (m_from.g + (m_to.g - m_from.g) * time),
                                                (byte) (m_from.b + (m_to.b - m_from.b) * time));
             }

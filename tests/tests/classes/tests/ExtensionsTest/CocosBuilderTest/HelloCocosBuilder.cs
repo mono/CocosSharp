@@ -42,7 +42,7 @@ namespace tests.Extensions
 
             /* Push the new scene with a fancy transition. */
             CCColor3B transitionColor;
-            transitionColor.r = 0;
+            transitionColor.R = 0;
             transitionColor.g = 0;
             transitionColor.b = 0;
 
@@ -94,7 +94,7 @@ namespace tests.Extensions
 
             /* Push the new scene with a fancy transition. */
             CCColor3B transitionColor;
-            transitionColor.r = 0;
+            transitionColor.R = 0;
             transitionColor.g = 0;
             transitionColor.b = 0;
 

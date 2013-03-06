@@ -9,7 +9,7 @@ namespace cocos2d
         public static ccColor3BWapper Create(CCColor3B color)
         {
             var ret = new ccColor3BWapper();
-            ret.color.r = color.r;
+            ret.color.R = color.R;
             ret.color.g = color.g;
             ret.color.b = color.b;
             return ret;

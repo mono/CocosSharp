@@ -57,7 +57,7 @@ namespace cocos2d
             if (protocol != null)
             {
                 CCColor3B color = protocol.Color;
-                m_fromR = color.r;
+                m_fromR = color.R;
                 m_fromG = color.g;
                 m_fromB = color.b;
             }
