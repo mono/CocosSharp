@@ -239,18 +239,18 @@ namespace cocos2d
     /// <summary>
     /// Point Sprite component
     /// </summary>
-    public class ccPointSprite
+    public class CCPointSprite
     {
-        public ccPointSprite()
+        public CCPointSprite()
         {
-            pos = new CCVertex2F();
-            color = new CCColor4B();
-            size = 0.0f;
+            Position = new CCVertex2F();
+            Color = new CCColor4B();
+            Size = 0.0f;
         }
 
-        public CCVertex2F pos;		// 8 bytes
-        public CCColor4B color;		// 4 bytes
-        public float size;		// 4 bytes
+        public CCVertex2F Position;		// 8 bytes
+        public CCColor4B Color;		// 4 bytes
+        public float Size;		// 4 bytes
     }
 
     /// <summary>
