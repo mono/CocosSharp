@@ -56,10 +56,10 @@ namespace cocos2d
             var protocol = target as ICCRGBAProtocol;
             if (protocol != null)
             {
-                ccColor3B color = protocol.Color;
-                m_fromR = color.r;
-                m_fromG = color.g;
-                m_fromB = color.b;
+                CCColor3B color = protocol.Color;
+                m_fromR = color.R;
+                m_fromG = color.G;
+                m_fromB = color.B;
             }
         }
 
@@ -68,7 +68,7 @@ namespace cocos2d
             var protocol = m_pTarget as ICCRGBAProtocol;
             if (protocol != null)
             {
-                protocol.Color = new ccColor3B((byte) (m_fromR + m_deltaR * time),
+                protocol.Color = new CCColor3B((byte) (m_fromR + m_deltaR * time),
                                                (byte) (m_fromG + m_deltaG * time),
                                                (byte) (m_fromB + m_deltaB * time));
             }

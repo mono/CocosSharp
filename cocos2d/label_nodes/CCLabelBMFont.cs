@@ -19,7 +19,7 @@ namespace cocos2d
         private string m_sFntFile;
         private string m_sInitialString;
         protected string m_sString = "";
-        private ccColor3B m_tColor;
+        private CCColor3B m_tColor;
         private CCPoint m_tImageOffset;
 
         public override CCPoint AnchorPoint
@@ -102,7 +102,7 @@ namespace cocos2d
 
         #region ICCRGBAProtocol Members
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             get { return m_tColor; }
             set

@@ -17,7 +17,7 @@ namespace tests
 
         public override bool Init()
         {
-            InitWithColor(new ccColor4B(0, 0, 255, 255));
+            InitWithColor(new CCColor4B(0, 0, 255, 255));
 
             CCMenuItemFont item1 = CCMenuItemFont.Create("Touch to pushScene (self)", item0Clicked);
             CCMenuItemFont item2 = CCMenuItemFont.Create("Touch to popScene", item1Clicked);
@@ -51,7 +51,7 @@ namespace tests
         {
             var newScene = CCScene.Create();
             newScene.AddChild(new SceneTestLayer3());
-            CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, newScene, new ccColor3B(0, 255, 255)));
+            CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, newScene, new CCColor3B(0, 255, 255)));
         }
 
         public void item1Clicked(CCObject pSender)

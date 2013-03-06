@@ -8,7 +8,7 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLayerColor layer = CCLayerColor.Create(new ccColor4B(128, 128, 128, 255));
+            CCLayerColor layer = CCLayerColor.Create(new CCColor4B(128, 128, 128, 255));
             AddChild(layer, -10);
 
             // CCLabelBMFont

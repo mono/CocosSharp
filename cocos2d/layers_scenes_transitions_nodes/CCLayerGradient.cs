@@ -63,15 +63,15 @@ namespace cocos2d
         private byte m_cEndOpacity;
         private byte m_cStartOpacity;
 
-        private ccColor3B m_endColor;
+        private CCColor3B m_endColor;
 
-        public ccColor3B StartColor
+        public CCColor3B StartColor
         {
             get { return m_tColor; }
             set { base.Color = value; }
         }
 
-        public ccColor3B EndColor
+        public CCColor3B EndColor
         {
             get { return m_endColor; }
             set
@@ -125,7 +125,7 @@ namespace cocos2d
         /// <summary>
         /// Creates a full-screen CCLayer with a gradient between start and end.
         /// </summary>
-        public static CCLayerGradient Create(ccColor4B start, ccColor4B end)
+        public static CCLayerGradient Create(CCColor4B start, CCColor4B end)
         {
             var pLayer = new CCLayerGradient();
             if (pLayer.InitWithColor(start, end))
@@ -139,7 +139,7 @@ namespace cocos2d
         /// <summary>
         /// Creates a full-screen CCLayer with a gradient between start and end in the direction of v. 
         /// </summary>
-        public static CCLayerGradient Create(ccColor4B start, ccColor4B end, CCPoint v)
+        public static CCLayerGradient Create(CCColor4B start, CCColor4B end, CCPoint v)
         {
             var pLayer = new CCLayerGradient();
             if (pLayer.InitWithColor(start, end, v))
@@ -153,7 +153,7 @@ namespace cocos2d
         /// <summary>
         /// Initializes the CCLayer with a gradient between start and end.
         /// </summary>
-        public virtual bool InitWithColor(ccColor4B start, ccColor4B end)
+        public virtual bool InitWithColor(CCColor4B start, CCColor4B end)
         {
             return InitWithColor(start, end, new CCPoint(0, -1));
         }
@@ -161,20 +161,20 @@ namespace cocos2d
         /// <summary>
         /// Initializes the CCLayer with a gradient between start and end in the direction of v.
         /// </summary>
-        public virtual bool InitWithColor(ccColor4B start, ccColor4B end, CCPoint v)
+        public virtual bool InitWithColor(CCColor4B start, CCColor4B end, CCPoint v)
         {
-            m_endColor = new ccColor3B();
-            m_endColor.r = end.r;
-            m_endColor.g = end.g;
-            m_endColor.b = end.b;
+            m_endColor = new CCColor3B();
+            m_endColor.R = end.R;
+            m_endColor.G = end.G;
+            m_endColor.B = end.B;
 
-            m_cEndOpacity = end.a;
-            m_cStartOpacity = start.a;
+            m_cEndOpacity = end.A;
+            m_cStartOpacity = start.A;
             m_AlongVector = v;
 
             m_bCompressedInterpolation = true;
 
-            return base.InitWithColor(new ccColor4B(start.r, start.g, start.b, 255));
+            return base.InitWithColor(new CCColor4B(start.R, start.G, start.B, 255));
         }
 
 
@@ -203,52 +203,52 @@ namespace cocos2d
 
             float opacityf = m_cOpacity / 255.0f;
 
-            var S = new ccColor4B
+            var S = new CCColor4B
                 {
-                    r = m_tColor.r,
-                    g = m_tColor.g,
-                    b = m_tColor.b,
-                    a = (byte) (m_cStartOpacity * opacityf)
+                    R = m_tColor.R,
+                    G = m_tColor.G,
+                    B = m_tColor.B,
+                    A = (byte) (m_cStartOpacity * opacityf)
                 };
 
-            var E = new ccColor4B
+            var E = new CCColor4B
                 {
-                    r = m_endColor.r,
-                    g = m_endColor.g,
-                    b = m_endColor.b,
-                    a = (byte) (m_cEndOpacity * opacityf)
+                    R = m_endColor.R,
+                    G = m_endColor.G,
+                    B = m_endColor.B,
+                    A = (byte) (m_cEndOpacity * opacityf)
                 };
 
             // (-1, -1)
             m_pVertices[0].Color = new Color(
-                (byte) (E.r + (S.r - E.r) * ((c + u.x + u.y) / (2.0f * c))),
-                (byte) (E.g + (S.g - E.g) * ((c + u.x + u.y) / (2.0f * c))),
-                (byte) (E.b + (S.b - E.b) * ((c + u.x + u.y) / (2.0f * c))),
-                (byte) (E.a + (S.a - E.a) * ((c + u.x + u.y) / (2.0f * c)))
+                (byte) (E.R + (S.R - E.R) * ((c + u.x + u.y) / (2.0f * c))),
+                (byte) (E.G + (S.G - E.G) * ((c + u.x + u.y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c + u.x + u.y) / (2.0f * c))),
+                (byte) (E.A + (S.A - E.A) * ((c + u.x + u.y) / (2.0f * c)))
                 );
 
             // (1, -1)
             m_pVertices[1].Color = new Color(
-                (byte) (E.r + (S.r - E.r) * ((c - u.x + u.y) / (2.0f * c))),
-                (byte) (E.g + (S.g - E.g) * ((c - u.x + u.y) / (2.0f * c))),
-                (byte) (E.b + (S.b - E.b) * ((c - u.x + u.y) / (2.0f * c))),
-                (byte) (E.a + (S.a - E.a) * ((c - u.x + u.y) / (2.0f * c)))
+                (byte) (E.R + (S.R - E.R) * ((c - u.x + u.y) / (2.0f * c))),
+                (byte) (E.G + (S.G - E.G) * ((c - u.x + u.y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c - u.x + u.y) / (2.0f * c))),
+                (byte) (E.A + (S.A - E.A) * ((c - u.x + u.y) / (2.0f * c)))
                 );
 
             // (-1, 1)
             m_pVertices[2].Color = new Color(
-                (byte) (E.r + (S.r - E.r) * ((c + u.x - u.y) / (2.0f * c))),
-                (byte) (E.g + (S.g - E.g) * ((c + u.x - u.y) / (2.0f * c))),
-                (byte) (E.b + (S.b - E.b) * ((c + u.x - u.y) / (2.0f * c))),
-                (byte) (E.a + (S.a - E.a) * ((c + u.x - u.y) / (2.0f * c)))
+                (byte) (E.R + (S.R - E.R) * ((c + u.x - u.y) / (2.0f * c))),
+                (byte) (E.G + (S.G - E.G) * ((c + u.x - u.y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c + u.x - u.y) / (2.0f * c))),
+                (byte) (E.A + (S.A - E.A) * ((c + u.x - u.y) / (2.0f * c)))
                 );
 
             // (1, 1)
             m_pVertices[3].Color = new Color(
-                (byte) (E.r + (S.r - E.r) * ((c - u.x - u.y) / (2.0f * c))),
-                (byte) (E.g + (S.g - E.g) * ((c - u.x - u.y) / (2.0f * c))),
-                (byte) (E.b + (S.b - E.b) * ((c - u.x - u.y) / (2.0f * c))),
-                (byte) (E.a + (S.a - E.a) * ((c - u.x - u.y) / (2.0f * c)))
+                (byte) (E.R + (S.R - E.R) * ((c - u.x - u.y) / (2.0f * c))),
+                (byte) (E.G + (S.G - E.G) * ((c - u.x - u.y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c - u.x - u.y) / (2.0f * c))),
+                (byte) (E.A + (S.A - E.A) * ((c - u.x - u.y) / (2.0f * c)))
                 );
 
             m_bChanged = true;

@@ -40,7 +40,7 @@ namespace tests
             batch.AddChild(sprite1, -1, (int)kTagSprite.kTagSprite1);
             sprite1.Position = (new CCPoint(s.Width / 2, s.Height / 2 - 20));
             sprite1.Scale = 6;
-            sprite1.Color = new ccColor3B(Color.Red);
+            sprite1.Color = new CCColor3B(Color.Red);
 
             Schedule(reorderSprite, 1);
         }

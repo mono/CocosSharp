@@ -18,7 +18,7 @@ namespace cocos2d
         private CCTexture2D m_pTexture;
         private ccV3F_C4B_T2F[] m_pVertices;
         private ccBlendFunc m_tBlendFunc;
-        private ccColor3B m_tColor;
+        private CCColor3B m_tColor;
         private CCPoint m_tPositionR;
 
         private int m_uMaxPoints;
@@ -43,7 +43,7 @@ namespace cocos2d
 
         #region ICCRGBAProtocol Members
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             set { m_tColor = value; }
             get { return m_tColor; }
@@ -91,21 +91,21 @@ namespace cocos2d
             set { m_bStartingPositionInitialized = value; }
         }
 
-        public static CCMotionStreak Create(float fade, float minSeg, float stroke, ccColor3B color, string path)
+        public static CCMotionStreak Create(float fade, float minSeg, float stroke, CCColor3B color, string path)
         {
             var pRet = new CCMotionStreak();
             pRet.InitWithFade(fade, minSeg, stroke, color, path);
             return pRet;
         }
 
-        public static CCMotionStreak Create(float fade, float minSeg, float stroke, ccColor3B color, CCTexture2D texture)
+        public static CCMotionStreak Create(float fade, float minSeg, float stroke, CCColor3B color, CCTexture2D texture)
         {
             var pRet = new CCMotionStreak();
             pRet.InitWithFade(fade, minSeg, stroke, color, texture);
             return pRet;
         }
 
-        public bool InitWithFade(float fade, float minSeg, float stroke, ccColor3B color, string path)
+        public bool InitWithFade(float fade, float minSeg, float stroke, CCColor3B color, string path)
         {
             Debug.Assert(!String.IsNullOrEmpty(path), "Invalid filename");
 
@@ -113,7 +113,7 @@ namespace cocos2d
             return InitWithFade(fade, minSeg, stroke, color, texture);
         }
 
-        public bool InitWithFade(float fade, float minSeg, float stroke, ccColor3B color, CCTexture2D texture)
+        public bool InitWithFade(float fade, float minSeg, float stroke, CCColor3B color, CCTexture2D texture)
         {
             Position = CCPoint.Zero;
             AnchorPoint = CCPoint.Zero;
@@ -149,13 +149,13 @@ namespace cocos2d
             return true;
         }
 
-        public void TintWithColor(ccColor3B colors)
+        public void TintWithColor(CCColor3B colors)
         {
             Color = colors;
 
             for (int i = 0; i < m_uNuPoints * 2; i++)
             {
-                m_pVertices[i].colors = new ccColor4B(colors.r, colors.g, colors.b, 255);
+                m_pVertices[i].colors = new CCColor4B(colors.R, colors.G, colors.B, 255);
             }
         }
 
@@ -207,7 +207,7 @@ namespace cocos2d
                         newIdx2 = newIdx * 2;
                     }
 
-                    m_pVertices[newIdx2].colors.a = m_pVertices[newIdx2 + 1].colors.a = (byte) (m_pPointState[newIdx] * 255.0f);
+                    m_pVertices[newIdx2].colors.A = m_pVertices[newIdx2 + 1].colors.A = (byte) (m_pPointState[newIdx] * 255.0f);
                 }
             }
             m_uNuPoints -= mov;
@@ -237,7 +237,7 @@ namespace cocos2d
 
                 // Color asignation
                 int offset = m_uNuPoints * 2;
-                m_pVertices[offset].colors = m_pVertices[offset + 1].colors = new ccColor4B(m_tColor.r, m_tColor.g, m_tColor.b, 255);
+                m_pVertices[offset].colors = m_pVertices[offset + 1].colors = new CCColor4B(m_tColor.R, m_tColor.G, m_tColor.B, 255);
 
                 // Generate polygon
                 if (m_uNuPoints > 0 && m_bFastMode)
@@ -266,8 +266,8 @@ namespace cocos2d
                 float texDelta = 1.0f / m_uNuPoints;
                 for (i = 0; i < m_uNuPoints; i++)
                 {
-                    m_pVertices[i * 2].texCoords = new ccTex2F(0, texDelta * i);
-                    m_pVertices[i * 2 + 1].texCoords = new ccTex2F(1, texDelta * i);
+                    m_pVertices[i * 2].texCoords = new CCTex2F(0, texDelta * i);
+                    m_pVertices[i * 2 + 1].texCoords = new CCTex2F(1, texDelta * i);
                 }
 
                 m_uPreviousNuPoints = m_uNuPoints;
@@ -329,8 +329,8 @@ namespace cocos2d
 
                 perpVector = perpVector * stroke;
 
-                vertices[idx].vertices = new ccVertex3F(p1.x + perpVector.x, p1.y + perpVector.y, 0);
-                vertices[idx + 1].vertices = new ccVertex3F(p1.x - perpVector.x, p1.y - perpVector.y, 0);
+                vertices[idx].vertices = new CCVertex3F(p1.x + perpVector.x, p1.y + perpVector.y, 0);
+                vertices[idx + 1].vertices = new CCVertex3F(p1.x - perpVector.x, p1.y - perpVector.y, 0);
             }
 
             // Validate vertexes
@@ -340,13 +340,13 @@ namespace cocos2d
                 idx = i * 2;
                 int idx1 = idx + 2;
 
-                ccVertex3F p1 = vertices[idx].vertices;
-                ccVertex3F p2 = vertices[idx + 1].vertices;
-                ccVertex3F p3 = vertices[idx1].vertices;
-                ccVertex3F p4 = vertices[idx1 + 1].vertices;
+                CCVertex3F p1 = vertices[idx].vertices;
+                CCVertex3F p2 = vertices[idx + 1].vertices;
+                CCVertex3F p3 = vertices[idx1].vertices;
+                CCVertex3F p4 = vertices[idx1 + 1].vertices;
 
                 float s;
-                bool fixVertex = !ccVertexLineIntersect(p1.x, p1.y, p4.x, p4.y, p2.x, p2.y, p3.x, p3.y, out s);
+                bool fixVertex = !ccVertexLineIntersect(p1.X, p1.Y, p4.X, p4.Y, p2.X, p2.Y, p3.X, p3.Y, out s);
                 if (!fixVertex)
                 {
                     if (s < 0.0f || s > 1.0f)

@@ -36,7 +36,7 @@ namespace cocos2d
         }
 
         public bool InitWithPosition(CCPoint pos, float r, int wav, float amp,
-                                     ccGridSize gridSize, float duration)
+                                     CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -78,19 +78,19 @@ namespace cocos2d
         {
             int i, j;
 
-            ccGridSize gs;
+            CCGridSize gs;
 
-            for (i = 0; i < (m_sGridSize.x + 1); ++i)
+            for (i = 0; i < (m_sGridSize.X + 1); ++i)
             {
-                for (j = 0; j < (m_sGridSize.y + 1); ++j)
+                for (j = 0; j < (m_sGridSize.Y + 1); ++j)
                 {
-                    gs.x = i;
-                    gs.y = j;
+                    gs.X = i;
+                    gs.Y = j;
 
-                    ccVertex3F v = OriginalVertex(gs);
+                    CCVertex3F v = OriginalVertex(gs);
 
-                    float x = m_positionInPixels.x - v.x;
-                    float y = m_positionInPixels.y - v.y;
+                    float x = m_positionInPixels.x - v.X;
+                    float y = m_positionInPixels.y - v.Y;
 
                     var r = (float) Math.Sqrt((x * x + y * y));
 
@@ -99,7 +99,7 @@ namespace cocos2d
                         r = m_fRadius - r;
                         float r1 = r / m_fRadius;
                         float rate = r1 * r1;
-                        v.z += ((float) Math.Sin(time * MathHelper.Pi * m_nWaves * 2 + r * 0.1f) * m_fAmplitude * m_fAmplitudeRate * rate);
+                        v.Z += ((float) Math.Sin(time * MathHelper.Pi * m_nWaves * 2 + r * 0.1f) * m_fAmplitude * m_fAmplitudeRate * rate);
                     }
 
                     SetVertex(gs, ref v);
@@ -107,7 +107,7 @@ namespace cocos2d
             }
         }
 
-        public static CCRipple3D Create(CCPoint pos, float r, int wav, float amp, ccGridSize gridSize, float duration)
+        public static CCRipple3D Create(CCPoint pos, float r, int wav, float amp, CCGridSize gridSize, float duration)
         {
             var pAction = new CCRipple3D();
             pAction.InitWithPosition(pos, r, wav, amp, gridSize, duration);

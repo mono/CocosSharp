@@ -26,7 +26,7 @@ namespace cocos2d
 {
     public class Tile
     {
-        public ccGridSize Delta;
+        public CCGridSize Delta;
         public CCPoint Position;
         public CCPoint StartPosition;
     }

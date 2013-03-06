@@ -546,16 +546,16 @@ namespace tests
             m_emitter.EndSpinVar = 0;
 
             // color of particles
-            var startColor = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColor = startColor;
 
-            var startColorVar = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColorVar = startColorVar;
 
-            var endColor = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColor = endColor;
 
-            var endColorVar = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColorVar = endColorVar;
 
             // size, in pixels
@@ -634,16 +634,16 @@ namespace tests
             m_emitter.EndSpinVar = 2000;
 
             // color of particles
-            var startColor = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColor = startColor;
 
-            var startColorVar = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColorVar = startColorVar;
 
-            var endColor = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColor = endColor;
 
-            var endColorVar = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColorVar = endColorVar;
 
             // size, in pixels
@@ -776,9 +776,9 @@ namespace tests
             m_emitter.Speed = (130);
             m_emitter.SpeedVar = (30);
 
-            m_emitter.StartColor = new ccColor4F(0.9f, 0.9f, 0.9f, 0f);
+            m_emitter.StartColor = new CCColor4F(0.9f, 0.9f, 0.9f, 0f);
 
-            m_emitter.StartColorVar = new ccColor4F(0f, 0f, 1f, 0f);
+            m_emitter.StartColorVar = new CCColor4F(0f, 0f, 1f, 0f);
             ;
 
             m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
@@ -869,16 +869,16 @@ namespace tests
             m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
 
             // color of particles
-            var startColor = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColor = startColor;
 
-            var startColorVar = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColorVar = startColorVar;
 
-            var endColor = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColor = endColor;
 
-            var endColorVar = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColorVar = endColorVar;
 
             // size, in pixels
@@ -987,7 +987,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = new ccColor3B(0, 0, 0);
+            Color = new CCColor3B(0, 0, 0);
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1021,7 +1021,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = new ccColor3B(0, 0, 0);
+            Color = new CCColor3B(0, 0, 0);
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1067,16 +1067,16 @@ namespace tests
             m_emitter.EndSpinVar = 0;
 
             // color of particles
-            var startColor = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColor = startColor;
 
-            var startColorVar = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColorVar = startColorVar;
 
-            var endColor = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColor = endColor;
 
-            var endColorVar = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColorVar = endColorVar;
 
             // size, in pixels
@@ -1103,7 +1103,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = new ccColor3B(0, 0, 0);
+            Color = new CCColor3B(0, 0, 0);
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1149,16 +1149,16 @@ namespace tests
             m_emitter.EndSpinVar = 0;
 
             // color of particles
-            var startColor = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColor = startColor;
 
-            var startColorVar = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColorVar = startColorVar;
 
-            var endColor = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColor = endColor;
 
-            var endColorVar = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColorVar = endColorVar;
 
             // size, in pixels
@@ -1185,7 +1185,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = new ccColor3B(0, 0, 0);
+            Color = new CCColor3B(0, 0, 0);
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1231,16 +1231,16 @@ namespace tests
             m_emitter.EndSpinVar = 0;
 
             // color of particles
-            var startColor = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColor = startColor;
 
-            var startColorVar = new ccColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             m_emitter.StartColorVar = startColorVar;
 
-            var endColor = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColor = endColor;
 
-            var endColorVar = new ccColor4F(0.1f, 0.1f, 0.1f, 0.2f);
+            var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
             m_emitter.EndColorVar = endColorVar;
 
             // size, in pixels
@@ -1277,7 +1277,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = new ccColor3B(0, 0, 0);
+            Color = new CCColor3B(0, 0, 0);
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1336,15 +1336,15 @@ namespace tests
 
                 CCParticleSystemQuad emitter1 = CCParticleSystemQuad.Create("Particles/SmallSun");
                 //emitter1.TotalParticles = 200;
-                emitter1.StartColor = (new ccColor4F(1, 0, 0, 1));
+                emitter1.StartColor = (new CCColor4F(1, 0, 0, 1));
                 emitter1.BlendAdditive = (false);
                 CCParticleSystemQuad emitter2 = CCParticleSystemQuad.Create("Particles/SmallSun");
                 //emitter2.TotalParticles = 200;
-                emitter2.StartColor = (new ccColor4F(0, 1, 0, 1));
+                emitter2.StartColor = (new CCColor4F(0, 1, 0, 1));
                 emitter2.BlendAdditive = (false);
                 CCParticleSystemQuad emitter3 = CCParticleSystemQuad.Create("Particles/SmallSun");
                 //emitter3.TotalParticles = 200;
-                emitter3.StartColor = (new ccColor4F(0, 0, 1, 1));
+                emitter3.StartColor = (new CCColor4F(0, 0, 1, 1));
                 emitter3.BlendAdditive = (false);
 
                 CCSize s = CCDirector.SharedDirector.WinSize;
@@ -1473,11 +1473,11 @@ namespace tests
             m_background = null;
 
             CCParticleSystemQuad emitter1 = CCParticleSystemQuad.Create("Particles/LavaFlow");
-            emitter1.StartColor = (new ccColor4F(1, 0, 0, 1));
+            emitter1.StartColor = (new CCColor4F(1, 0, 0, 1));
             CCParticleSystemQuad emitter2 = CCParticleSystemQuad.Create("Particles/LavaFlow");
-            emitter2.StartColor = (new ccColor4F(0, 1, 0, 1));
+            emitter2.StartColor = (new CCColor4F(0, 1, 0, 1));
             CCParticleSystemQuad emitter3 = CCParticleSystemQuad.Create("Particles/LavaFlow");
-            emitter3.StartColor = (new ccColor4F(0, 0, 1, 1));
+            emitter3.StartColor = (new CCColor4F(0, 0, 1, 1));
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
@@ -1563,17 +1563,17 @@ namespace tests
                 EmissionRate = (TotalParticles / Life);
 
                 // color of particles
-                StartColor = (new ccColor4F(50, 50, 50, 50));
-                EndColor = (new ccColor4F(0, 0, 0, 0));
+                StartColor = (new CCColor4F(50, 50, 50, 50));
+                EndColor = (new CCColor4F(0, 0, 0, 0));
 
-                m_tStartColorVar.r = 0.0f;
-                m_tStartColorVar.g = 0.0f;
-                m_tStartColorVar.b = 0.0f;
-                m_tStartColorVar.a = 0.0f;
-                m_tEndColorVar.r = 0.0f;
-                m_tEndColorVar.g = 0.0f;
-                m_tEndColorVar.b = 0.0f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColorVar.R = 0.0f;
+                m_tStartColorVar.G = 0.0f;
+                m_tStartColorVar.B = 0.0f;
+                m_tStartColorVar.A = 0.0f;
+                m_tEndColorVar.R = 0.0f;
+                m_tEndColorVar.G = 0.0f;
+                m_tEndColorVar.B = 0.0f;
+                m_tEndColorVar.A = 0.0f;
 
                 Texture = (CCTextureCache.SharedTextureCache.AddImage("Images/particles"));
                 return true;
@@ -1829,16 +1829,16 @@ namespace tests
                 // color of particles
                 var color = new float[3] {0, 0, 0};
                 color[i] = 1;
-                var startColor = new ccColor4F(color[0], color[1], color[2], 1.0f);
+                var startColor = new CCColor4F(color[0], color[1], color[2], 1.0f);
                 particleSystem.StartColor = (startColor);
 
-                var startColorVar = new ccColor4F(0, 0, 0, 0);
+                var startColorVar = new CCColor4F(0, 0, 0, 0);
                 particleSystem.StartColorVar = (startColorVar);
 
-                ccColor4F endColor = startColor;
+                CCColor4F endColor = startColor;
                 particleSystem.EndColor = (endColor);
 
-                ccColor4F endColorVar = startColorVar;
+                CCColor4F endColorVar = startColorVar;
                 particleSystem.EndColorVar = (endColorVar);
 
                 // size, in pixels
@@ -1905,10 +1905,10 @@ namespace tests
             // Toggle next line to see old behavior
             //	this->emitter.opacityModifyRGB = NO;
 
-            m_emitter.StartColor = new ccColor4F(1, 1, 1, 1);
-            m_emitter.EndColor = new ccColor4F(1, 1, 1, 0);
-            m_emitter.StartColorVar = new ccColor4F(0, 0, 0, 0);
-            m_emitter.EndColorVar = new ccColor4F(0, 0, 0, 0);
+            m_emitter.StartColor = new CCColor4F(1, 1, 1, 1);
+            m_emitter.EndColor = new CCColor4F(1, 1, 1, 0);
+            m_emitter.StartColorVar = new CCColor4F(0, 0, 0, 0);
+            m_emitter.EndColorVar = new CCColor4F(0, 0, 0, 0);
 
             AddChild(m_emitter, 10);
         }

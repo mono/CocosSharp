@@ -16,7 +16,7 @@ namespace cocos2d
         protected CCGrabber m_pGrabber;
         protected CCTexture2D m_pTexture;
 
-        protected ccGridSize m_sGridSize;
+        protected CCGridSize m_sGridSize;
 
         /// <summary>
         ///  wheter or not the grid is active
@@ -47,7 +47,7 @@ namespace cocos2d
         /// <summary>
         /// size of the grid 
         /// </summary>
-        public ccGridSize GridSize
+        public CCGridSize GridSize
         {
             get { return m_sGridSize; }
             set { m_sGridSize = value; }
@@ -78,7 +78,7 @@ namespace cocos2d
             }
         }
 
-        public bool InitWithSize(ccGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
+        public bool InitWithSize(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
         {
             bool bRet = true;
 
@@ -91,8 +91,8 @@ namespace cocos2d
             m_bIsTextureFlipped = bFlipped;
 
             CCSize texSize = m_pTexture.ContentSize;
-            m_obStep.x = texSize.Width / m_sGridSize.x;
-            m_obStep.y = texSize.Height / m_sGridSize.y;
+            m_obStep.x = texSize.Width / m_sGridSize.X;
+            m_obStep.y = texSize.Height / m_sGridSize.Y;
 
             m_pGrabber = new CCGrabber();
             if (m_pGrabber != null)
@@ -110,12 +110,12 @@ namespace cocos2d
             return bRet;
         }
 
-        public bool InitWithSize(ccGridSize gridSize)
+        public bool InitWithSize(CCGridSize gridSize)
         {
             return InitWithSize(gridSize, CCDirector.SharedDirector.WinSizeInPixels);
         }
 
-        public bool InitWithSize(ccGridSize gridSize, CCSize size)
+        public bool InitWithSize(CCGridSize gridSize, CCSize size)
         {
             //ulong POTWide = ccNextPOT((uint) size.width);
             //ulong POTHigh = ccNextPOT((uint) size.width);

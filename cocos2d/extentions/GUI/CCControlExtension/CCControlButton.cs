@@ -19,14 +19,14 @@ namespace cocos2d
         protected string m_currentTitle;
 
         /** The current color used to display the title. */
-        protected ccColor3B m_currentTitleColor;
+        protected CCColor3B m_currentTitleColor;
         protected bool m_doesAdjustBackgroundImage;
         protected bool m_isPushed;
         protected CCPoint m_labelAnchorPoint;
         protected int m_marginH;
         protected int m_marginV;
         protected CCSize m_preferredSize;
-        protected Dictionary<CCControlState, ccColor3B> m_titleColorDispatchTable;
+        protected Dictionary<CCControlState, CCColor3B> m_titleColorDispatchTable;
         protected Dictionary<CCControlState, string> m_titleDispatchTable;
         protected CCNode m_titleLabel;
         protected Dictionary<CCControlState, CCNode> m_titleLabelDispatchTable;
@@ -324,7 +324,7 @@ namespace cocos2d
 
                 // Initialize the button state tables
                 m_titleDispatchTable = new Dictionary<CCControlState, string>();
-                m_titleColorDispatchTable = new Dictionary<CCControlState, ccColor3B>();
+                m_titleColorDispatchTable = new Dictionary<CCControlState, CCColor3B>();
                 m_titleLabelDispatchTable = new Dictionary<CCControlState, CCNode>();
                 m_backgroundSpriteDispatchTable = new Dictionary<CCControlState, CCScale9Sprite>();
 
@@ -349,7 +349,7 @@ namespace cocos2d
                 BackgroundSprite = backgroundSprite;
 
                 // Set the default color and opacity
-                Color = new ccColor3B(255, 255, 255);
+                Color = new CCColor3B(255, 255, 255);
                 Opacity = 255;
                 IsOpacityModifyRGB = true;
 
@@ -544,11 +544,11 @@ namespace cocos2d
     * @return The color of the title for the specified state.
     */
 
-        public virtual ccColor3B GetTitleColorForState(CCControlState state)
+        public virtual CCColor3B GetTitleColorForState(CCControlState state)
         {
             if (m_titleColorDispatchTable != null)
             {
-                ccColor3B color;
+                CCColor3B color;
 
                 if (m_titleColorDispatchTable.TryGetValue(state, out color))
                 {
@@ -571,7 +571,7 @@ namespace cocos2d
     * in "CCControlState".
     */
 
-        public virtual void SetTitleColorForState(ccColor3B color, CCControlState state)
+        public virtual void SetTitleColorForState(CCColor3B color, CCControlState state)
         {
             if (m_titleColorDispatchTable.ContainsKey(state))
             {

@@ -108,17 +108,17 @@ namespace cocos2d
             for (int i = start; i < end; i++)
             {
                 // bottom-left vertex:
-                quads[i].bl.texCoords.u = left;
-                quads[i].bl.texCoords.v = bottom;
+                quads[i].bl.texCoords.U = left;
+                quads[i].bl.texCoords.V = bottom;
                 // bottom-right vertex:
-                quads[i].br.texCoords.u = right;
-                quads[i].br.texCoords.v = bottom;
+                quads[i].br.texCoords.U = right;
+                quads[i].br.texCoords.V = bottom;
                 // top-left vertex:
-                quads[i].tl.texCoords.u = left;
-                quads[i].tl.texCoords.v = top;
+                quads[i].tl.texCoords.U = left;
+                quads[i].tl.texCoords.V = top;
                 // top-right vertex:
-                quads[i].tr.texCoords.u = right;
-                quads[i].tr.texCoords.v = top;
+                quads[i].tr.texCoords.U = right;
+                quads[i].tr.texCoords.V = top;
             }
         }
 
@@ -178,21 +178,21 @@ namespace cocos2d
                 newPosition.y += m_tPosition.y;
             }
 
-            ccColor4B color;
+            CCColor4B color;
             
             if  (m_bOpacityModifyRGB)
             {
-                color.r = (byte) (particle.color.r * particle.color.a * 255);
-                color.g = (byte) (particle.color.g * particle.color.a * 255);
-                color.b = (byte) (particle.color.b * particle.color.a * 255);
-                color.a = (byte)(particle.color.a * 255);
+                color.R = (byte) (particle.color.R * particle.color.A * 255);
+                color.G = (byte) (particle.color.G * particle.color.A * 255);
+                color.B = (byte) (particle.color.B * particle.color.A * 255);
+                color.A = (byte)(particle.color.A * 255);
             }
             else
             {
-                color.r = (byte)(particle.color.r * 255);
-                color.g = (byte)(particle.color.g * 255);
-                color.b = (byte)(particle.color.b * 255);
-                color.a = (byte)(particle.color.a * 255);
+                color.R = (byte)(particle.color.R * 255);
+                color.G = (byte)(particle.color.G * 255);
+                color.B = (byte)(particle.color.B * 255);
+                color.A = (byte)(particle.color.A * 255);
             }
 
             quad.bl.colors = color;
@@ -225,38 +225,38 @@ namespace cocos2d
                 float dy = x1 * sr + y2 * cr + y;
 
                 // bottom-left
-                quad.bl.vertices.x = ax;
-                quad.bl.vertices.y = ay;
+                quad.bl.vertices.X = ax;
+                quad.bl.vertices.Y = ay;
 
                 // bottom-right vertex:
-                quad.br.vertices.x = bx;
-                quad.br.vertices.y = by;
+                quad.br.vertices.X = bx;
+                quad.br.vertices.Y = by;
 
                 // top-left vertex:
-                quad.tl.vertices.x = dx;
-                quad.tl.vertices.y = dy;
+                quad.tl.vertices.X = dx;
+                quad.tl.vertices.Y = dy;
 
                 // top-right vertex:
-                quad.tr.vertices.x = cx;
-                quad.tr.vertices.y = cy;
+                quad.tr.vertices.X = cx;
+                quad.tr.vertices.Y = cy;
             }
             else
             {
                 // bottom-left vertex:
-                quad.bl.vertices.x = newPosition.x - size_2;
-                quad.bl.vertices.y = newPosition.y - size_2;
+                quad.bl.vertices.X = newPosition.x - size_2;
+                quad.bl.vertices.Y = newPosition.y - size_2;
 
                 // bottom-right vertex:
-                quad.br.vertices.x = newPosition.x + size_2;
-                quad.br.vertices.y = newPosition.y - size_2;
+                quad.br.vertices.X = newPosition.x + size_2;
+                quad.br.vertices.Y = newPosition.y - size_2;
 
                 // top-left vertex:
-                quad.tl.vertices.x = newPosition.x - size_2;
-                quad.tl.vertices.y = newPosition.y + size_2;
+                quad.tl.vertices.X = newPosition.x - size_2;
+                quad.tl.vertices.Y = newPosition.y + size_2;
 
                 // top-right vertex:
-                quad.tr.vertices.x = newPosition.x + size_2;
-                quad.tr.vertices.y = newPosition.y + size_2;
+                quad.tr.vertices.X = newPosition.x + size_2;
+                quad.tr.vertices.Y = newPosition.y + size_2;
             }
         }
 

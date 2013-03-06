@@ -9,7 +9,7 @@ namespace cocos2d
     {
         private static PrimitiveBatch m_Batch;
         private static float m_PointSize = 3f;
-        private static ccColor4B m_Color;
+        private static CCColor4B m_Color;
 
         public static void Init(GraphicsDevice graphics)
         {
@@ -21,7 +21,7 @@ namespace cocos2d
             m_Batch.Begin();
         }
 
-        public ccColor4B DefaultColor
+        public CCColor4B DefaultColor
         {
             get { return m_Color; }
             set { m_Color = value; }
@@ -42,7 +42,7 @@ namespace cocos2d
             DrawPoint(point, size, m_Color);
         }
 
-        public static void DrawPoint(CCPoint p, float size, ccColor4B color)
+        public static void DrawPoint(CCPoint p, float size, CCColor4B color)
         {
             var verts = new CCPoint[4];
 
@@ -56,12 +56,12 @@ namespace cocos2d
             DrawPoly(verts, 4, false, true, color);
         }
 
-        public static void DrawPoints(CCPoint[] points, float size, ccColor4B color)
+        public static void DrawPoints(CCPoint[] points, float size, CCColor4B color)
         {
             DrawPoints(points, points.Length, size, color);
         }
 
-        public static void DrawPoints(CCPoint[] points, int numberOfPoints, float size, ccColor4B color)
+        public static void DrawPoints(CCPoint[] points, int numberOfPoints, float size, CCColor4B color)
         {
             for (int i = 0; i < numberOfPoints; i++)
             {
@@ -69,11 +69,11 @@ namespace cocos2d
             }
         }
 
-        public static void DrawLine(CCPoint origin, CCPoint destination, ccColor4B color)
+        public static void DrawLine(CCPoint origin, CCPoint destination, CCColor4B color)
         {
             float factor = CCDirector.SharedDirector.ContentScaleFactor;
 
-            var c = new Color(color.r, color.g, color.b, color.a);
+            var c = new Color(color.R, color.G, color.B, color.A);
 
             m_Batch.AddVertex(new Vector2(origin.x * factor, origin.y * factor), c, PrimitiveType.LineList);
             m_Batch.AddVertex(new Vector2(destination.x * factor, destination.y * factor), c, PrimitiveType.LineList);
@@ -83,7 +83,7 @@ namespace cocos2d
         /// draws a poligon given a pointer to CCPoint coordiantes and the number of vertices measured in points.
         /// The polygon can be closed or open
         /// </summary>
-        public static void DrawPoly(CCPoint[] vertices, int numOfVertices, bool closePolygon, ccColor4B color)
+        public static void DrawPoly(CCPoint[] vertices, int numOfVertices, bool closePolygon, CCColor4B color)
         {
             DrawPoly(vertices, numOfVertices, closePolygon, false, color);
         }
@@ -92,9 +92,9 @@ namespace cocos2d
         /// draws a poligon given a pointer to CCPoint coordiantes and the number of vertices measured in points.
         /// The polygon can be closed or open and optionally filled with current GL color
         /// </summary>
-        public static void DrawPoly(CCPoint[] vertices, int numOfVertices, bool closePolygon, bool fill, ccColor4B color)
+        public static void DrawPoly(CCPoint[] vertices, int numOfVertices, bool closePolygon, bool fill, CCColor4B color)
         {
-            var c = new Color(color.r, color.g, color.b, color.a);
+            var c = new Color(color.R, color.G, color.B, color.A);
 
             if (fill)
             {
@@ -121,12 +121,12 @@ namespace cocos2d
             }
         }
 
-        public static void DrawSolidPoly(CCPoint[] vertices, int count, ccColor4B color)
+        public static void DrawSolidPoly(CCPoint[] vertices, int count, CCColor4B color)
         {
             DrawSolidPoly(vertices, count, color, false);
         }
 
-        public static void DrawSolidPoly(CCPoint[] vertices, int count, ccColor4B color, bool outline)
+        public static void DrawSolidPoly(CCPoint[] vertices, int count, CCColor4B color, bool outline)
         {
             if (count == 2)
             {
@@ -134,7 +134,7 @@ namespace cocos2d
                 return;
             }
 
-            var colorFill = new Color(color.r, color.g, color.b, color.a);
+            var colorFill = new Color(color.R, color.G, color.B, color.A);
 
             colorFill = colorFill * (outline ? 0.5f : 1.0f);
 
@@ -151,7 +151,7 @@ namespace cocos2d
             }
         }
 
-        public static void DrawCircle(CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, ccColor4B color)
+        public static void DrawCircle(CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, CCColor4B color)
         {
             float increment = MathHelper.Pi * 2.0f / segments;
             double theta = 0.0;
@@ -175,7 +175,7 @@ namespace cocos2d
             }
         }
 
-        public static void DrawQuadBezier(CCPoint origin, CCPoint control, CCPoint destination, int segments, ccColor4B color)
+        public static void DrawQuadBezier(CCPoint origin, CCPoint control, CCPoint destination, int segments, CCColor4B color)
         {
             var vertices = new VertexPositionColor[segments + 1];
             float factor = CCDirector.SharedDirector.ContentScaleFactor;
@@ -187,13 +187,13 @@ namespace cocos2d
                 float y = (float) Math.Pow(1 - t, 2) * origin.y + 2.0f * (1 - t) * t * control.y + t * t * destination.y;
                 vertices[i] = new VertexPositionColor();
                 vertices[i].Position = new Vector3(x * factor, y * factor, 0);
-                vertices[i].Color = new Color(color.r, color.g, color.b, color.a);
+                vertices[i].Color = new Color(color.R, color.G, color.B, color.A);
                 t += 1.0f / segments;
             }
             vertices[segments] = new VertexPositionColor
                 {
                     Position = new Vector3(destination.x * factor, destination.y * factor, 0),
-                    Color = new Color(color.r, color.g, color.b, color.a),
+                    Color = new Color(color.R, color.G, color.B, color.A),
                 };
 
             BasicEffect basicEffect = DrawManager.PrimitiveEffect;
@@ -212,7 +212,7 @@ namespace cocos2d
         /// draws a cubic bezier path
         /// @since v0.8
         /// </summary>
-        public static void DrawCubicBezier(CCPoint origin, CCPoint control1, CCPoint control2, CCPoint destination, int segments, ccColor4B color)
+        public static void DrawCubicBezier(CCPoint origin, CCPoint control1, CCPoint control2, CCPoint destination, int segments, CCColor4B color)
         {
             var vertices = new VertexPositionColor[segments + 1];
             float factor = CCDirector.SharedDirector.ContentScaleFactor;
@@ -226,12 +226,12 @@ namespace cocos2d
                           3.0f * (1 - t) * t * t * control2.y + t * t * t * destination.y;
                 vertices[i] = new VertexPositionColor();
                 vertices[i].Position = new Vector3(x * factor, y * factor, 0);
-                vertices[i].Color = new Color(color.r, color.g, color.b, color.a);
+                vertices[i].Color = new Color(color.R, color.G, color.B, color.A);
                 t += 1.0f / segments;
             }
             vertices[segments] = new VertexPositionColor
                 {
-                    Color = new Color(color.r, color.g, color.b, color.a),
+                    Color = new Color(color.R, color.G, color.B, color.A),
                     Position = new Vector3(destination.x * factor, destination.y * factor, 0)
                 };
 

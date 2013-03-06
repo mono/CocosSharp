@@ -20,7 +20,7 @@ namespace cocos2d
             set { m_fAmplitudeRate = value; }
         }
 
-        public bool InitWithWaves(int wav, float amp, ccGridSize gridSize, float duration)
+        public bool InitWithWaves(int wav, float amp, CCGridSize gridSize, float duration)
         {
             if (InitWithSize(gridSize, duration))
             {
@@ -56,18 +56,18 @@ namespace cocos2d
         public override void Update(float time)
         {
             int i, j;
-            for (i = 0; i < m_sGridSize.x + 1; ++i)
+            for (i = 0; i < m_sGridSize.X + 1; ++i)
             {
-                for (j = 0; j < m_sGridSize.y + 1; ++j)
+                for (j = 0; j < m_sGridSize.Y + 1; ++j)
                 {
-                    ccVertex3F v = OriginalVertex(new ccGridSize(i, j));
-                    v.z += ((float) Math.Sin((float) Math.PI * time * m_nWaves * 2 + (v.y + v.x) * .01f) * m_fAmplitude * m_fAmplitudeRate);
-                    SetVertex(new ccGridSize(i, j), ref v);
+                    CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
+                    v.Z += ((float) Math.Sin((float) Math.PI * time * m_nWaves * 2 + (v.Y + v.X) * .01f) * m_fAmplitude * m_fAmplitudeRate);
+                    SetVertex(new CCGridSize(i, j), ref v);
                 }
             }
         }
 
-        public static CCWaves3D Create(int wav, float amp, ccGridSize gridSize, float duration)
+        public static CCWaves3D Create(int wav, float amp, CCGridSize gridSize, float duration)
         {
             var pAction = new CCWaves3D();
             pAction.InitWithWaves(wav, amp, gridSize, duration);

@@ -5,7 +5,7 @@ namespace cocos2d
     public class CCTextFieldTTF : CCLabelTTF, ICCIMEDelegate
     {
         private readonly CCLabelTTF cclabelttf = new CCLabelTTF();
-        private ccColor3B m_ColorSpaceHolder;
+        private CCColor3B m_ColorSpaceHolder;
         private int m_nCharCount;
         private ICCTextFieldDelegate m_pDelegate;
         protected string m_pInputText;
@@ -13,7 +13,7 @@ namespace cocos2d
 
         public CCTextFieldTTF()
         {
-            m_ColorSpaceHolder.r = m_ColorSpaceHolder.g = m_ColorSpaceHolder.b = 127;
+            m_ColorSpaceHolder.R = m_ColorSpaceHolder.G = m_ColorSpaceHolder.B = 127;
         }
 
         public ICCTextFieldDelegate Delegate
@@ -27,7 +27,7 @@ namespace cocos2d
             get { return m_nCharCount; }
         }
 
-        public ccColor3B ColorSpaceHolder
+        public CCColor3B ColorSpaceHolder
         {
             get { return m_ColorSpaceHolder; }
             set { m_ColorSpaceHolder = value; }

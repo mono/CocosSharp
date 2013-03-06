@@ -34,9 +34,9 @@ namespace cocos2d
         private CCSize m_originalSize;
         protected bool m_positionsAreDirty;
         private CCSize m_preferredSize;
-        protected ccColor3B m_sColorUnmodified;
+        protected CCColor3B m_sColorUnmodified;
         protected CCRect m_spriteRect;
-        protected ccColor3B m_tColor;
+        protected CCColor3B m_tColor;
         protected CCSprite right;
         protected CCSpriteBatchNode scale9Image;
         protected CCSprite top;
@@ -116,7 +116,7 @@ namespace cocos2d
 
         #region ICCRGBAProtocol Members
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             get { return m_tColor; }
             set
@@ -203,7 +203,7 @@ namespace cocos2d
         public bool UpdateWithBatchNode(CCSpriteBatchNode batchnode, CCRect rect, bool rotated, CCRect capInsets)
         {
             byte opacity = m_cOpacity;
-            ccColor3B color = m_tColor;
+            CCColor3B color = m_tColor;
 
             // Release old sprites
             RemoveAllChildrenWithCleanup(true);

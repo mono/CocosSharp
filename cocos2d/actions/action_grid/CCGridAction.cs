@@ -5,7 +5,7 @@ namespace cocos2d
 {
     public class CCGridAction : CCActionInterval
     {
-        protected ccGridSize m_sGridSize;
+        protected CCGridSize m_sGridSize;
 
         public override CCObject CopyWithZone(CCZone pZone)
         {
@@ -40,8 +40,8 @@ namespace cocos2d
             {
                 Grid = targetGrid;
 
-                if (targetGrid.Active && targetGrid.GridSize.x == m_sGridSize.x
-                    && targetGrid.GridSize.y == m_sGridSize.y /*&& dynamic_cast<CCGridBase*>(targetGrid) != NULL*/)
+                if (targetGrid.Active && targetGrid.GridSize.X == m_sGridSize.X
+                    && targetGrid.GridSize.Y == m_sGridSize.Y /*&& dynamic_cast<CCGridBase*>(targetGrid) != NULL*/)
                 {
                     targetGrid.Reuse();
                 }
@@ -75,14 +75,14 @@ namespace cocos2d
             get { return null; }
         }
 
-        public static CCGridAction Create(ccGridSize gridSize, float duration)
+        public static CCGridAction Create(CCGridSize gridSize, float duration)
         {
             var pAction = new CCGridAction();
             pAction.InitWithSize(gridSize, duration);
             return pAction;
         }
 
-        public virtual bool InitWithSize(ccGridSize gridSize, float duration)
+        public virtual bool InitWithSize(CCGridSize gridSize, float duration)
         {
             if (base.InitWithDuration(duration))
             {

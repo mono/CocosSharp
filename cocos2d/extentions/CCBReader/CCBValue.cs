@@ -4,18 +4,18 @@ namespace cocos2d
 {
     internal class ccColor3BWapper : CCObject
     {
-        private ccColor3B color;
+        private CCColor3B color;
 
-        public static ccColor3BWapper Create(ccColor3B color)
+        public static ccColor3BWapper Create(CCColor3B color)
         {
             var ret = new ccColor3BWapper();
-            ret.color.r = color.r;
-            ret.color.g = color.g;
-            ret.color.b = color.b;
+            ret.color.R = color.R;
+            ret.color.G = color.G;
+            ret.color.B = color.B;
             return ret;
         }
 
-        public ccColor3B getColor()
+        public CCColor3B getColor()
         {
             return color;
         }

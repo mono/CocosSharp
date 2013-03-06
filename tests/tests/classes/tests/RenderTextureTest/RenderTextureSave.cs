@@ -72,7 +72,7 @@ namespace tests
                     m_pBrush.Rotation = Random.Next() % 360;
                     float r = (Random.Next() % 50 / 50f) + 0.25f;
                     m_pBrush.Scale = r;
-                    m_pBrush.Color = new ccColor3B((byte) (Random.Next() % 127 + 128), 255, 255);
+                    m_pBrush.Color = new CCColor3B((byte) (Random.Next() % 127 + 128), 255, 255);
                     // Call visit to draw the brush, don't call draw..
                     m_pBrush.Visit();
                 }

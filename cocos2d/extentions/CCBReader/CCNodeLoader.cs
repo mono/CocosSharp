@@ -245,7 +245,7 @@ namespace cocos2d
                         }
                     case kCCBPropType.kCCBPropTypeColor3:
                         {
-                            ccColor3B color3B = ParsePropTypeColor3(node, parent, reader, propertyName);
+                            CCColor3B color3B = ParsePropTypeColor3(node, parent, reader, propertyName);
                             if (setProp)
                             {
                                 OnHandlePropTypeColor3(node, parent, propertyName, color3B, reader);
@@ -254,7 +254,7 @@ namespace cocos2d
                         }
                     case kCCBPropType.kCCBPropTypeColor4FVar:
                         {
-                            ccColor4F[] color4FVar = ParsePropTypeColor4FVar(node, parent, reader);
+                            CCColor4F[] color4FVar = ParsePropTypeColor4FVar(node, parent, reader);
                             if (setProp)
                             {
                                 OnHandlePropTypeColor4FVar(node, parent, propertyName, color4FVar, reader);
@@ -628,13 +628,13 @@ namespace cocos2d
             return ret;
         }
 
-        protected virtual ccColor3B ParsePropTypeColor3(CCNode node, CCNode parent, CCBReader reader, string propertyName)
+        protected virtual CCColor3B ParsePropTypeColor3(CCNode node, CCNode parent, CCBReader reader, string propertyName)
         {
             byte red = reader.ReadByte();
             byte green = reader.ReadByte();
             byte blue = reader.ReadByte();
 
-            var color = new ccColor3B(red, green, blue);
+            var color = new CCColor3B(red, green, blue);
             if (reader.AnimatedProperties.Contains(propertyName))
             {
                 ccColor3BWapper value = ccColor3BWapper.Create(color);
@@ -643,7 +643,7 @@ namespace cocos2d
             return color;
         }
 
-        protected virtual ccColor4F[] ParsePropTypeColor4FVar(CCNode node, CCNode parent, CCBReader reader)
+        protected virtual CCColor4F[] ParsePropTypeColor4FVar(CCNode node, CCNode parent, CCBReader reader)
         {
             float red = reader.ReadFloat();
             float green = reader.ReadFloat();
@@ -654,16 +654,16 @@ namespace cocos2d
             float blueVar = reader.ReadFloat();
             float alphaVar = reader.ReadFloat();
 
-            var colors = new ccColor4F[2];
-            colors[0].r = red;
-            colors[0].g = green;
-            colors[0].b = blue;
-            colors[0].a = alpha;
+            var colors = new CCColor4F[2];
+            colors[0].R = red;
+            colors[0].G = green;
+            colors[0].B = blue;
+            colors[0].A = alpha;
 
-            colors[1].r = redVar;
-            colors[1].g = greenVar;
-            colors[1].b = blueVar;
-            colors[1].a = alphaVar;
+            colors[1].R = redVar;
+            colors[1].G = greenVar;
+            colors[1].B = blueVar;
+            colors[1].A = alphaVar;
 
             return colors;
         }
@@ -1053,14 +1053,14 @@ namespace cocos2d
             Debug.Assert(false);
         }
 
-        protected virtual void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, ccColor3B color, CCBReader reader)
+        protected virtual void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, CCColor3B color, CCBReader reader)
         {
             CCLog.Log("Unexpected property type: '{0}'!", propertyName);
             Debug.Assert(false);
         }
 
 
-        protected virtual void OnHandlePropTypeColor4FVar(CCNode node, CCNode parent, string propertyName, ccColor4F[] colorVar,
+        protected virtual void OnHandlePropTypeColor4FVar(CCNode node, CCNode parent, string propertyName, CCColor4F[] colorVar,
                                                           CCBReader reader)
         {
             CCLog.Log("Unexpected property type: '{0}'!", propertyName);

@@ -36,46 +36,46 @@ namespace cocos2d
     /// RGB color composed of bytes 3 bytes
     /// @since v0.8
     /// </summary>
-    public struct ccColor3B
+    public struct CCColor3B
     {
         /*
-        public ccColor3B()
+        public CCColor3B()
         {
             r = 0;
             g = 0;
             b = 0;
         }
         */
-        public ccColor3B(byte inr, byte ing, byte inb)
+        public CCColor3B(byte inr, byte ing, byte inb)
         {
-            r = inr;
-            g = ing;
-            b = inb;
+            R = inr;
+            G = ing;
+            B = inb;
         }
 
         /// <summary>
-        /// Convert Color value of XNA Framework to ccColor3B type
+        /// Convert Color value of XNA Framework to CCColor3B type
         /// </summary>
-        public ccColor3B(Microsoft.Xna.Framework.Color color)
+        public CCColor3B(Microsoft.Xna.Framework.Color color)
         {
-            r = color.R;
-            g = color.G;
-            b = color.B;
+            R = color.R;
+            G = color.G;
+            B = color.B;
         }
 
-        public byte r;
-        public byte g;
-        public byte b;
+        public byte R;
+        public byte G;
+        public byte B;
     }
 
     /// <summary>
     /// RGBA color composed of 4 bytes
     /// @since v0.8
     /// </summary>
-    public struct ccColor4B
+    public struct CCColor4B
     {
         /*
-        public ccColor4B()
+        public CCColor4B()
         {
             r = 0;
             g = 0;
@@ -84,47 +84,47 @@ namespace cocos2d
         }
         */
 
-        public ccColor4B(byte inr, byte ing, byte inb, byte ina)
+        public CCColor4B(byte inr, byte ing, byte inb, byte ina)
         {
-            r = inr;
-            g = ing;
-            b = inb;
-            a = ina;
+            R = inr;
+            G = ing;
+            B = inb;
+            A = ina;
         }
 
-        public ccColor4B(float inr, float ing, float inb, float ina)
+        public CCColor4B(float inr, float ing, float inb, float ina)
         {
-            r = (byte)inr;
-            g = (byte)ing;
-            b = (byte)inb;
-            a = (byte)ina;
+            R = (byte)inr;
+            G = (byte)ing;
+            B = (byte)inb;
+            A = (byte)ina;
         }
 
         /// <summary>
-        /// Convert Color value of XNA Framework to ccColor4B type
+        /// Convert Color value of XNA Framework to CCColor4B type
         /// </summary>
-        public ccColor4B(Microsoft.Xna.Framework.Color color)
+        public CCColor4B(Microsoft.Xna.Framework.Color color)
         {
-            r = color.R;
-            g = color.B;
-            b = color.B;
-            a = color.A;
+            R = color.R;
+            G = color.G;
+            B = color.B;
+            A = color.A;
         }
 
-        public byte r;
-        public byte g;
-        public byte b;
-        public byte a;
+        public byte R;
+        public byte G;
+        public byte B;
+        public byte A;
 
         public override string ToString()
         {
-            return (string.Format("{0},{1},{2},{3}", r, g, b, a));
+            return (string.Format("{0},{1},{2},{3}", R, G, B, A));
         }
 
-        public static ccColor4B Parse(string s)
+        public static CCColor4B Parse(string s)
         {
             string[] f = s.Split(',');
-            return (new ccColor4B(byte.Parse(f[0]), byte.Parse(f[1]), byte.Parse(f[2]), byte.Parse(f[3])));
+            return (new CCColor4B(byte.Parse(f[0]), byte.Parse(f[1]), byte.Parse(f[2]), byte.Parse(f[3])));
         }
     }
 
@@ -132,30 +132,30 @@ namespace cocos2d
     /// RGBA color composed of 4 floats
     /// @since v0.8
     /// </summary>
-    public struct ccColor4F
+    public struct CCColor4F
     {
-        public ccColor4F(float inr, float ing, float inb, float ina)
+        public CCColor4F(float inr, float ing, float inb, float ina)
         {
-            r = inr;
-            g = ing;
-            b = inb;
-            a = ina;
+            R = inr;
+            G = ing;
+            B = inb;
+            A = ina;
         }
 
-        public float r;
-        public float g;
-        public float b;
-        public float a;
+        public float R;
+        public float G;
+        public float B;
+        public float A;
 
         public override string ToString()
         {
-            return (string.Format("{0},{1},{2},{3}", r, g, b, a));
+            return (string.Format("{0},{1},{2},{3}", R, G, B, A));
         }
 
-        public static ccColor4F Parse(string s)
+        public static CCColor4F Parse(string s)
         {
             string[] f = s.Split(',');
-            return (new ccColor4F(float.Parse(f[0]), float.Parse(f[1]), float.Parse(f[2]), float.Parse(f[3])));
+            return (new CCColor4F(float.Parse(f[0]), float.Parse(f[1]), float.Parse(f[2]), float.Parse(f[3])));
         }
     }
 
@@ -163,7 +163,7 @@ namespace cocos2d
     /// A vertex composed of 2 floats: x, y
     /// @since v0.8
     /// </summary>
-    public struct ccVertex2F
+    public struct CCVertex2F
     {
         /*
         public ccVertex2F()
@@ -173,38 +173,38 @@ namespace cocos2d
         }
         */
 
-        public ccVertex2F(float inx, float iny)
+        public CCVertex2F(float inx, float iny)
         {
-            x = inx;
-            y = iny;
+            X = inx;
+            Y = iny;
         }
 
-        public float x;
-        public float y;
+        public float X;
+        public float Y;
     }
 
     /// <summary>
     /// A vertex composed of 2 floats: x, y
     /// @since v0.8
     /// </summary>
-    public struct ccVertex3F
+    public struct CCVertex3F
     {
-        public static readonly ccVertex3F Zero = new ccVertex3F();
+        public static readonly CCVertex3F Zero = new CCVertex3F();
 
-        public ccVertex3F(float inx, float iny, float inz)
+        public CCVertex3F(float inx, float iny, float inz)
         {
-            x = inx;
-            y = iny;
-            z = inz;
+            X = inx;
+            Y = iny;
+            Z = inz;
         }
 
-        public float x;
-        public float y;
-        public float z;
+        public float X;
+        public float Y;
+        public float Z;
 
         public override string ToString()
         {
-            return String.Format("ccVertex3F x:{0}, y:{1}, z:{2}", x, y, z);
+            return String.Format("ccVertex3F x:{0}, y:{1}, z:{2}", X, Y, Z);
         }
     }
 
@@ -212,7 +212,7 @@ namespace cocos2d
     /// A texcoord composed of 2 floats: u, y
     /// @since v0.8
     /// </summary>
-    public struct ccTex2F
+    public struct CCTex2F
     {
         /*
         public ccTex2F()
@@ -221,61 +221,61 @@ namespace cocos2d
             v = 0.0f;
         }
         */
-        public ccTex2F(float inu, float inv)
+        public CCTex2F(float inu, float inv)
         {
-            u = inu;
-            v = inv;
+            U = inu;
+            V = inv;
         }
 
-        public float u;
-        public float v;
+        public float U;
+        public float V;
 
         public override string ToString()
         {
-            return String.Format("ccTex2F u:{0}, v:{1}", u, v);
+            return String.Format("ccTex2F u:{0}, v:{1}", U, V);
         }
     }
 
     /// <summary>
     /// Point Sprite component
     /// </summary>
-    public class ccPointSprite
+    public class CCPointSprite
     {
-        public ccPointSprite()
+        public CCPointSprite()
         {
-            pos = new ccVertex2F();
-            color = new ccColor4B();
-            size = 0.0f;
+            Position = new CCVertex2F();
+            Color = new CCColor4B();
+            Size = 0.0f;
         }
 
-        public ccVertex2F pos;		// 8 bytes
-        public ccColor4B color;		// 4 bytes
-        public float size;		// 4 bytes
+        public CCVertex2F Position;		// 8 bytes
+        public CCColor4B Color;		// 4 bytes
+        public float Size;		// 4 bytes
     }
 
     /// <summary>
     /// A 2D Quad. 4 * 2 floats
     /// </summary>
-    public class ccQuad2
+    public class CCQuad2
     {
-        public ccQuad2()
+        public CCQuad2()
         {
-            tl = new ccVertex2F();
-            tr = new ccVertex2F();
-            bl = new ccVertex2F();
-            br = new ccVertex2F();
+            TopLeft = new CCVertex2F();
+            TopRight = new CCVertex2F();
+            BottomLeft = new CCVertex2F();
+            BottomRight = new CCVertex2F();
         }
 
-        public ccVertex2F tl;
-        public ccVertex2F tr;
-        public ccVertex2F bl;
-        public ccVertex2F br;
+        public CCVertex2F TopLeft;
+        public CCVertex2F TopRight;
+        public CCVertex2F BottomLeft;
+        public CCVertex2F BottomRight;
     }
 
     /// <summary>
     /// A 3D Quad. 4 * 3 floats
     /// </summary>
-    public struct ccQuad3
+    public struct CCQuad3
     {
         /*
         public ccQuad3()
@@ -286,25 +286,25 @@ namespace cocos2d
             br = new ccVertex3F();
         }
         */
-        public ccVertex3F bl;
-        public ccVertex3F br;
-        public ccVertex3F tl;
-        public ccVertex3F tr;
+        public CCVertex3F BottomLeft;
+        public CCVertex3F BottomRight;
+        public CCVertex3F TopLeft;
+        public CCVertex3F TopRight;
     }
 
     /// <summary>
     /// A 2D grid size
     /// </summary>
-    public struct ccGridSize
+    public struct CCGridSize
     {
-        public ccGridSize(int inx, int iny)
+        public CCGridSize(int inx, int iny)
         {
-            x = inx;
-            y = iny;
+            X = inx;
+            Y = iny;
         }
 
-        public int x;
-        public int y;
+        public int X;
+        public int Y;
     }
 
     /// <summary>
@@ -314,25 +314,25 @@ namespace cocos2d
     {
         public ccV2F_C4B_T2F()
         {
-            vertices = new ccVertex2F();
-            colors = new ccColor4B();
-            texCoords = new ccTex2F();
+            vertices = new CCVertex2F();
+            colors = new CCColor4B();
+            texCoords = new CCTex2F();
         }
 
         /// <summary>
         /// vertices (2F)
         /// </summary>
-        public ccVertex2F vertices;
+        public CCVertex2F vertices;
 
         /// <summary>
         /// colors (4B)
         /// </summary>
-        public ccColor4B colors;
+        public CCColor4B colors;
 
         /// <summary>
         /// tex coords (2F)
         /// </summary>
-        public ccTex2F texCoords;
+        public CCTex2F texCoords;
     }
 
     /// <summary>
@@ -342,25 +342,25 @@ namespace cocos2d
     {
         public ccV2F_C4F_T2F()
         {
-            vertices = new ccVertex2F();
-            colors = new ccColor4F();
-            texCoords = new ccTex2F();
+            vertices = new CCVertex2F();
+            colors = new CCColor4F();
+            texCoords = new CCTex2F();
         }
 
         /// <summary>
         /// vertices (2F)
         /// </summary>
-        public ccVertex2F vertices;
+        public CCVertex2F vertices;
 
         /// <summary>
         /// colors (4F)
         /// </summary>
-        public ccColor4F colors;
+        public CCColor4F colors;
 
         /// <summary>
         /// tex coords (2F)
         /// </summary>
-        public ccTex2F texCoords;
+        public CCTex2F texCoords;
     }
 
     /// <summary>
@@ -372,17 +372,17 @@ namespace cocos2d
         /// <summary>
         /// vertices (3F)
         /// </summary>
-        public ccVertex3F vertices;			// 12 bytes
+        public CCVertex3F vertices;			// 12 bytes
 
         /// <summary>
         /// colors (4B)
         /// </summary>
-        public ccColor4B colors;				// 4 bytes
+        public CCColor4B colors;				// 4 bytes
 
         /// <summary>
         /// tex coords (2F)
         /// </summary>
-        public ccTex2F texCoords;			// 8 byts
+        public CCTex2F texCoords;			// 8 byts
 
         public static readonly VertexDeclaration VertexDeclaration;
 
@@ -555,86 +555,86 @@ namespace cocos2d
     {
         //ccColor3B predefined colors
         //! White color (255,255,255)
-        public static readonly ccColor3B ccWHITE = new ccColor3B(255, 255, 255);
+        public static readonly CCColor3B ccWHITE = new CCColor3B(255, 255, 255);
         //! Yellow color (255,255,0)
-        public static readonly ccColor3B ccYELLOW = new ccColor3B(255, 255, 0);
+        public static readonly CCColor3B ccYELLOW = new CCColor3B(255, 255, 0);
         //! Blue color (0,0,255)
-        public static readonly ccColor3B ccBLUE = new ccColor3B(0, 0, 255);
+        public static readonly CCColor3B ccBLUE = new CCColor3B(0, 0, 255);
         //! Green Color (0,255,0)
-        public static readonly ccColor3B ccGREEN = new ccColor3B(0, 255, 0);
+        public static readonly CCColor3B ccGREEN = new CCColor3B(0, 255, 0);
         //! Red Color (255,0,0,)
-        public static readonly ccColor3B ccRED = new ccColor3B(255, 0, 0);
+        public static readonly CCColor3B ccRED = new CCColor3B(255, 0, 0);
         //! Magenta Color (255,0,255)
-        public static readonly ccColor3B ccMAGENTA = new ccColor3B(255, 0, 255);
+        public static readonly CCColor3B ccMAGENTA = new CCColor3B(255, 0, 255);
         //! Black Color (0,0,0)
-        public static readonly ccColor3B ccBLACK = new ccColor3B(0, 0, 0);
+        public static readonly CCColor3B ccBLACK = new CCColor3B(0, 0, 0);
         //! Orange Color (255,127,0)
-        public static readonly ccColor3B ccORANGE = new ccColor3B(255, 127, 0);
+        public static readonly CCColor3B ccORANGE = new CCColor3B(255, 127, 0);
         //! Gray Color (166,166,166)
-        public static readonly ccColor3B ccGRAY = new ccColor3B(166, 166, 166);
+        public static readonly CCColor3B ccGRAY = new CCColor3B(166, 166, 166);
 
         //! helper macro that creates an ccColor3B type
-        static public ccColor3B ccc3(byte r, byte g, byte b)
+        static public CCColor3B ccc3(byte r, byte g, byte b)
         {
-            ccColor3B c = new ccColor3B(r, g, b);
+            CCColor3B c = new CCColor3B(r, g, b);
             return c;
         }
 
         //! helper macro that creates an ccColor4B type
-        public static ccColor4B ccc4(byte r, byte g, byte b, byte o)
+        public static CCColor4B ccc4(byte r, byte g, byte b, byte o)
         {
-            ccColor4B c = new ccColor4B(r, g, b, o);
+            CCColor4B c = new CCColor4B(r, g, b, o);
             return c;
         }
 
         /** Returns a ccColor4F from a ccColor3B. Alpha will be 1.
          @since v0.99.1
          */
-        public static ccColor4F ccc4FFromccc3B(ccColor3B c)
+        public static CCColor4F ccc4FFromccc3B(CCColor3B c)
         {
-            ccColor4F c4 = new ccColor4F(c.r / 255.0f, c.g / 255.0f, c.b / 255.0f, 1.0f);
+            CCColor4F c4 = new CCColor4F(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, 1.0f);
             return c4;
         }
 
         /** Returns a ccColor4F from a ccColor4B.
          @since v0.99.1
          */
-        public static ccColor4F ccc4FFromccc4B(ccColor4B c)
+        public static CCColor4F ccc4FFromccc4B(CCColor4B c)
         {
-            ccColor4F c4 = new ccColor4F(c.r / 255.0f, c.g / 255.0f, c.b / 255.0f, c.a / 255.0f);
+            CCColor4F c4 = new CCColor4F(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, c.A / 255.0f);
             return c4;
         }
 
         /** returns YES if both ccColor4F are equal. Otherwise it returns NO.
          @since v0.99.1
          */
-        public static bool ccc4FEqual(ccColor4F a, ccColor4F b)
+        public static bool ccc4FEqual(CCColor4F a, CCColor4F b)
         {
-            return a.r == b.r && a.g == b.g && a.b == b.b && a.a == b.a;
+            return a.R == b.R && a.G == b.G && a.B == b.B && a.A == b.A;
         }
 
-        public static ccVertex2F vertex2(float x, float y)
+        public static CCVertex2F vertex2(float x, float y)
         {
-            ccVertex2F c = new ccVertex2F(x, y);
+            CCVertex2F c = new CCVertex2F(x, y);
             return c;
         }
 
-        public static ccVertex3F vertex3(float x, float y, float z)
+        public static CCVertex3F vertex3(float x, float y, float z)
         {
-            ccVertex3F c = new ccVertex3F(x, y, z);
+            CCVertex3F c = new CCVertex3F(x, y, z);
             return c;
         }
 
-        public static ccTex2F tex2(float u, float v)
+        public static CCTex2F tex2(float u, float v)
         {
-            ccTex2F t = new ccTex2F(u, v);
+            CCTex2F t = new CCTex2F(u, v);
             return t;
         }
 
         //! helper function to create a ccGridSize
-        public static ccGridSize ccg(int x, int y)
+        public static CCGridSize ccg(int x, int y)
         {
-            ccGridSize v = new ccGridSize(x, y);
+            CCGridSize v = new CCGridSize(x, y);
             return v;
         }
     }

@@ -139,7 +139,7 @@ namespace cocos2d
             set { m_pSprite.Opacity = value; }
         }
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             get { return m_pSprite.Color; }
             set { m_pSprite.Color = value; }
@@ -272,9 +272,9 @@ namespace cocos2d
             return pProgressTimer;
         }
 
-        protected ccTex2F TextureCoordFromAlphaPoint(CCPoint alpha)
+        protected CCTex2F TextureCoordFromAlphaPoint(CCPoint alpha)
         {
-            var ret = new ccTex2F(0.0f, 0.0f);
+            var ret = new CCTex2F(0.0f, 0.0f);
             if (m_pSprite == null)
             {
                 return ret;
@@ -282,8 +282,8 @@ namespace cocos2d
 
             ccV3F_C4B_T2F_Quad quad = m_pSprite.Quad;
 
-            var min = new CCPoint(quad.bl.texCoords.u, quad.bl.texCoords.v);
-            var max = new CCPoint(quad.tr.texCoords.u, quad.tr.texCoords.v);
+            var min = new CCPoint(quad.bl.texCoords.U, quad.bl.texCoords.V);
+            var max = new CCPoint(quad.tr.texCoords.U, quad.tr.texCoords.V);
 
             //  Fix bug #1303 so that progress timer handles sprite frame texture rotation
             if (m_pSprite.IsTextureRectRotated)
@@ -292,12 +292,12 @@ namespace cocos2d
                 alpha.x = alpha.y;
                 alpha.y = tmp;
             }
-            return new ccTex2F(min.x * (1f - alpha.x) + max.x * alpha.x, min.y * (1f - alpha.y) + max.y * alpha.y);
+            return new CCTex2F(min.x * (1f - alpha.x) + max.x * alpha.x, min.y * (1f - alpha.y) + max.y * alpha.y);
         }
 
-        protected ccVertex3F VertexFromAlphaPoint(CCPoint alpha)
+        protected CCVertex3F VertexFromAlphaPoint(CCPoint alpha)
         {
-            var ret = new ccVertex3F(0.0f, 0.0f, 0.0f);
+            var ret = new CCVertex3F(0.0f, 0.0f, 0.0f);
 
             if (m_pSprite == null)
             {
@@ -306,11 +306,11 @@ namespace cocos2d
 
             ccV3F_C4B_T2F_Quad quad = m_pSprite.Quad;
 
-            var min = new CCPoint(quad.bl.vertices.x, quad.bl.vertices.y);
-            var max = new CCPoint(quad.tr.vertices.x, quad.tr.vertices.y);
+            var min = new CCPoint(quad.bl.vertices.X, quad.bl.vertices.Y);
+            var max = new CCPoint(quad.tr.vertices.X, quad.tr.vertices.Y);
 
-            ret.x = min.x * (1f - alpha.x) + max.x * alpha.x;
-            ret.y = min.y * (1f - alpha.y) + max.y * alpha.y;
+            ret.X = min.x * (1f - alpha.x) + max.x * alpha.x;
+            ret.Y = min.y * (1f - alpha.y) + max.y * alpha.y;
 
             return ret;
         }
@@ -590,7 +590,7 @@ namespace cocos2d
 
             if (m_pVertexData != null)
             {
-                ccColor4B sc = m_pSprite.Quad.tl.colors;
+                CCColor4B sc = m_pSprite.Quad.tl.colors;
                 for (int i = 0; i < m_nVertexDataCount; ++i)
                 {
                     m_pVertexData[i].colors = sc;

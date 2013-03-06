@@ -17,7 +17,7 @@ namespace tests
             CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 32);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 32);
-            label.Color = new ccColor3B(255, 255, 40);
+            label.Color = new CCColor3B(255, 255, 40);
 
             // Subtitle
             string strSubTitle = subtitle();
@@ -34,9 +34,9 @@ namespace tests
 
             CCMenuItemFont.FontSize = 64;
             CCMenuItemFont decrease = CCMenuItemFont.Create(" - ", onDecrease);
-            decrease.Color = new ccColor3B(0, 200, 20);
+            decrease.Color = new CCColor3B(0, 200, 20);
             CCMenuItemFont increase = CCMenuItemFont.Create(" + ", onIncrease);
-            increase.Color = new ccColor3B(0, 200, 20);
+            increase.Color = new CCColor3B(0, 200, 20);
 
             CCMenu menu = CCMenu.Create(decrease, increase);
             menu.AlignItemsHorizontally();
@@ -44,7 +44,7 @@ namespace tests
             AddChild(menu, 1);
 
             CCLabelTTF infoLabel = CCLabelTTF.Create("0 nodes", "arial", 30);
-            infoLabel.Color = new ccColor3B(0, 200, 20);
+            infoLabel.Color = new CCColor3B(0, 200, 20);
             infoLabel.Position = new CCPoint(s.Width / 2, s.Height / 2 - 15);
             AddChild(infoLabel, 1, PerformanceNodeChildrenTest.kTagInfoLayer);
 

@@ -27,7 +27,7 @@ namespace cocos2d
         protected CCMenuItem m_pSelectedItem;
 
         private byte m_cOpacity;
-        private ccColor3B m_tColor;
+        private CCColor3B m_tColor;
 
         private LinkedList<CCMenuItem> _Items = new LinkedList<CCMenuItem>();
 
@@ -615,7 +615,7 @@ namespace cocos2d
 
         #region Opacity Protocol
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             get { return m_tColor; }
             set

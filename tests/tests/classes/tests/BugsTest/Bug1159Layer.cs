@@ -14,10 +14,10 @@ namespace tests
             {
                 CCSize s = CCDirector.SharedDirector.WinSize;
 
-                CCLayerColor background = CCLayerColor.Create(new ccColor4B(255, 0, 255, 255));
+                CCLayerColor background = CCLayerColor.Create(new CCColor4B(255, 0, 255, 255));
                 AddChild(background);
 
-                CCLayerColor sprite_a = CCLayerColor.Create(new ccColor4B(255, 0, 0, 255), 700, 700);
+                CCLayerColor sprite_a = CCLayerColor.Create(new CCColor4B(255, 0, 0, 255), 700, 700);
                 sprite_a.AnchorPoint = new CCPoint(0.5f, 0.5f);
                 sprite_a.IgnoreAnchorPointForPosition = true;
                 sprite_a.Position = new CCPoint(0.0f, s.Height / 2);
@@ -27,7 +27,7 @@ namespace tests
                                                                        CCMoveTo.Create(1.0f, new CCPoint(1024.0f, 384.0f)),
                                                                        CCMoveTo.Create(1.0f, new CCPoint(0.0f, 384.0f)))));
 
-                CCLayerColor sprite_b = CCLayerColor.Create(new ccColor4B(0, 0, 255, 255), 400, 400);
+                CCLayerColor sprite_b = CCLayerColor.Create(new CCColor4B(0, 0, 255, 255), 400, 400);
                 sprite_b.AnchorPoint = new CCPoint(0.5f, 0.5f);
                 sprite_b.IgnoreAnchorPointForPosition = true;
                 sprite_b.Position = new CCPoint(s.Width / 2, s.Height / 2);

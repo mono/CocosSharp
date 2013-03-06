@@ -7,7 +7,7 @@ namespace cocos2d
     {
         private byte m_cOpacity;
         public List<CCMenuItem> m_pSubItems;
-        private ccColor3B m_tColor;
+        private CCColor3B m_tColor;
         private int m_uSelectedIndex;
 
         public int SelectedIndex
@@ -74,7 +74,7 @@ namespace cocos2d
             }
         }
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             get { return m_tColor; }
             set

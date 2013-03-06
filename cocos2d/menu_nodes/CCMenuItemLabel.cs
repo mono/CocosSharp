@@ -6,10 +6,10 @@ namespace cocos2d
     {
         protected float m_fOriginalScale;
         protected CCNode m_pLabel;
-        protected ccColor3B m_tColorBackup;
-        protected ccColor3B m_tDisabledColor;
+        protected CCColor3B m_tColorBackup;
+        protected CCColor3B m_tDisabledColor;
 
-        public ccColor3B DisabledColor
+        public CCColor3B DisabledColor
         {
             get { return m_tDisabledColor; }
             set { m_tDisabledColor = value; }
@@ -76,7 +76,7 @@ namespace cocos2d
             base.InitWithTarget(selector);
             m_fOriginalScale = 1.0f;
             m_tColorBackup = ccTypes.ccWHITE;
-            DisabledColor = new ccColor3B(126, 126, 126);
+            DisabledColor = new CCColor3B(126, 126, 126);
             Label = label;
             return true;
         }
@@ -135,7 +135,7 @@ namespace cocos2d
 
         #region CCRGBAProtocol interface
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             get { return (m_pLabel as ICCRGBAProtocol).Color; }
             set { (m_pLabel as ICCRGBAProtocol).Color = value; }

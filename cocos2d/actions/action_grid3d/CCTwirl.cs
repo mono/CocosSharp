@@ -33,7 +33,7 @@ namespace cocos2d
             set { m_fAmplitudeRate = value; }
         }
 
-        public bool InitWithPosition(CCPoint pos, int t, float amp, ccGridSize gridSize,
+        public bool InitWithPosition(CCPoint pos, int t, float amp, CCGridSize gridSize,
                                      float duration)
         {
             if (base.InitWithSize(gridSize, duration))
@@ -75,30 +75,30 @@ namespace cocos2d
             int i, j;
             CCPoint c = m_positionInPixels;
 
-            for (i = 0; i < (m_sGridSize.x + 1); ++i)
+            for (i = 0; i < (m_sGridSize.X + 1); ++i)
             {
-                for (j = 0; j < (m_sGridSize.y + 1); ++j)
+                for (j = 0; j < (m_sGridSize.Y + 1); ++j)
                 {
-                    ccVertex3F v = OriginalVertex(new ccGridSize(i, j));
+                    CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
 
-                    var avg = new CCPoint(i - (m_sGridSize.x / 2.0f), j - (m_sGridSize.y / 2.0f));
+                    var avg = new CCPoint(i - (m_sGridSize.X / 2.0f), j - (m_sGridSize.Y / 2.0f));
                     var r = (float) Math.Sqrt((avg.x * avg.x + avg.y * avg.y));
 
                     float amp = 0.1f * m_fAmplitude * m_fAmplitudeRate;
                     float a = r * (float) Math.Cos((float) Math.PI / 2.0f + time * (float) Math.PI * m_nTwirls * 2) * amp;
 
-                    float dx = (float) Math.Sin(a) * (v.y - c.y) + (float) Math.Cos(a) * (v.x - c.x);
-                    float dy = (float) Math.Cos(a) * (v.y - c.y) - (float) Math.Sin(a) * (v.x - c.x);
+                    float dx = (float) Math.Sin(a) * (v.Y - c.y) + (float) Math.Cos(a) * (v.X - c.x);
+                    float dy = (float) Math.Cos(a) * (v.Y - c.y) - (float) Math.Sin(a) * (v.X - c.x);
 
-                    v.x = c.x + dx;
-                    v.y = c.y + dy;
+                    v.X = c.x + dx;
+                    v.Y = c.y + dy;
 
-                    SetVertex(new ccGridSize(i, j), ref v);
+                    SetVertex(new CCGridSize(i, j), ref v);
                 }
             }
         }
 
-        public static CCTwirl Create(CCPoint pos, int t, float amp, ccGridSize gridSize, float duration)
+        public static CCTwirl Create(CCPoint pos, int t, float amp, CCGridSize gridSize, float duration)
         {
             var pAction = new CCTwirl();
             pAction.InitWithPosition(pos, t, amp, gridSize, duration);

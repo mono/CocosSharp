@@ -32,50 +32,50 @@ namespace cocos2d
         private bool m_bDirty;
         private IndexBuffer m_pIndexBuffer;
         protected short[] m_pIndices;
-        protected ccQuad3[] m_pOriginalVertices;
+        protected CCQuad3[] m_pOriginalVertices;
         private VertexBuffer m_pVertexBuffer;
         protected ccV3F_T2F[] m_pVertices;
 
         /// <summary>
         ///  returns the tile at the given position
         /// </summary>
-        public ccQuad3 Tile(ccGridSize pos)
+        public CCQuad3 Tile(CCGridSize pos)
         {
-            int idx = (m_sGridSize.y * pos.x + pos.y) * 4;
+            int idx = (m_sGridSize.Y * pos.X + pos.Y) * 4;
 
             ccV3F_T2F[] vertArray = m_pVertices;
 
-            return new ccQuad3
+            return new CCQuad3
                 {
-                    bl = vertArray[idx + 0].vertices,
-                    br = vertArray[idx + 1].vertices,
-                    tl = vertArray[idx + 2].vertices,
-                    tr = vertArray[idx + 3].vertices
+                    BottomLeft = vertArray[idx + 0].vertices,
+                    BottomRight = vertArray[idx + 1].vertices,
+                    TopLeft = vertArray[idx + 2].vertices,
+                    TopRight = vertArray[idx + 3].vertices
                 };
         }
 
         /// <summary>
         /// returns the original tile (untransformed) at the given position
         /// </summary>
-        public ccQuad3 OriginalTile(ccGridSize pos)
+        public CCQuad3 OriginalTile(CCGridSize pos)
         {
-            int idx = (m_sGridSize.y * pos.x + pos.y);
+            int idx = (m_sGridSize.Y * pos.X + pos.Y);
             return m_pOriginalVertices[idx];
         }
 
         /// <summary>
         /// sets a new tile
         /// </summary>
-        public void SetTile(ccGridSize pos, ref ccQuad3 coords)
+        public void SetTile(CCGridSize pos, ref CCQuad3 coords)
         {
-            int idx = (m_sGridSize.y * pos.x + pos.y) * 4;
+            int idx = (m_sGridSize.Y * pos.X + pos.Y) * 4;
 
             ccV3F_T2F[] vertArray = m_pVertices;
 
-            vertArray[idx + 0].vertices = coords.bl;
-            vertArray[idx + 1].vertices = coords.br;
-            vertArray[idx + 2].vertices = coords.tl;
-            vertArray[idx + 3].vertices = coords.tr;
+            vertArray[idx + 0].vertices = coords.BottomLeft;
+            vertArray[idx + 1].vertices = coords.BottomRight;
+            vertArray[idx + 2].vertices = coords.TopLeft;
+            vertArray[idx + 3].vertices = coords.TopRight;
 
             m_bDirty = true;
         }
@@ -108,18 +108,18 @@ namespace cocos2d
         {
             if (m_nReuseGrid > 0)
             {
-                int numQuads = m_sGridSize.x * m_sGridSize.y;
+                int numQuads = m_sGridSize.X * m_sGridSize.Y;
 
-                ccQuad3[] orig = m_pOriginalVertices;
+                CCQuad3[] orig = m_pOriginalVertices;
                 ccV3F_T2F[] verts = m_pVertices;
 
                 for (int i = 0; i < numQuads; i++)
                 {
                     int i4 = i * 4;
-                    orig[i].bl = verts[i4 + 0].vertices;
-                    orig[i].br = verts[i4 + 1].vertices;
-                    orig[i].tl = verts[i4 + 2].vertices;
-                    orig[i].tr = verts[i4 + 3].vertices;
+                    orig[i].BottomLeft = verts[i4 + 0].vertices;
+                    orig[i].BottomRight = verts[i4 + 1].vertices;
+                    orig[i].TopLeft = verts[i4 + 2].vertices;
+                    orig[i].TopRight = verts[i4 + 3].vertices;
                 }
 
                 --m_nReuseGrid;
@@ -132,10 +132,10 @@ namespace cocos2d
             float height = m_pTexture.PixelsHigh;
             float imageH = m_pTexture.ContentSizeInPixels.Height;
 
-            int numQuads = m_sGridSize.x * m_sGridSize.y;
+            int numQuads = m_sGridSize.X * m_sGridSize.Y;
 
             m_pVertices = new ccV3F_T2F[numQuads * 4];
-            m_pOriginalVertices = new ccQuad3[numQuads];
+            m_pOriginalVertices = new CCQuad3[numQuads];
             m_pIndices = new short[numQuads * 6];
 
             ccV3F_T2F[] vertArray = m_pVertices;
@@ -144,19 +144,19 @@ namespace cocos2d
 
             int index = 0;
 
-            for (int x = 0; x < m_sGridSize.x; x++)
+            for (int x = 0; x < m_sGridSize.X; x++)
             {
-                for (int y = 0; y < m_sGridSize.y; y++)
+                for (int y = 0; y < m_sGridSize.Y; y++)
                 {
                     float x1 = x * m_obStep.x;
                     float x2 = x1 + m_obStep.x;
                     float y1 = y * m_obStep.y;
                     float y2 = y1 + m_obStep.y;
 
-                    vertArray[index + 0].vertices = new ccVertex3F(x1, y1, 0);
-                    vertArray[index + 1].vertices = new ccVertex3F(x2, y1, 0);
-                    vertArray[index + 2].vertices = new ccVertex3F(x1, y2, 0);
-                    vertArray[index + 3].vertices = new ccVertex3F(x2, y2, 0);
+                    vertArray[index + 0].vertices = new CCVertex3F(x1, y1, 0);
+                    vertArray[index + 1].vertices = new CCVertex3F(x2, y1, 0);
+                    vertArray[index + 2].vertices = new CCVertex3F(x1, y2, 0);
+                    vertArray[index + 3].vertices = new CCVertex3F(x2, y2, 0);
 
                     float newY1 = y1;
                     float newY2 = y2;
@@ -167,10 +167,10 @@ namespace cocos2d
                         newY2 = imageH - y2;
                     }
 
-                    vertArray[index + 0].texCoords = new ccTex2F(x1 / width, newY1 / height);
-                    vertArray[index + 1].texCoords = new ccTex2F(x2 / width, newY1 / height);
-                    vertArray[index + 2].texCoords = new ccTex2F(x1 / width, newY2 / height);
-                    vertArray[index + 3].texCoords = new ccTex2F(x2 / width, newY2 / height);
+                    vertArray[index + 0].texCoords = new CCTex2F(x1 / width, newY1 / height);
+                    vertArray[index + 1].texCoords = new CCTex2F(x2 / width, newY1 / height);
+                    vertArray[index + 2].texCoords = new CCTex2F(x1 / width, newY2 / height);
+                    vertArray[index + 3].texCoords = new CCTex2F(x2 / width, newY2 / height);
 
                     index += 4;
                 }
@@ -192,14 +192,14 @@ namespace cocos2d
             for (int i = 0; i < numQuads; i++)
             {
                 int i4 = i * 4;
-                m_pOriginalVertices[i].bl = vertArray[i4 + 0].vertices;
-                m_pOriginalVertices[i].br = vertArray[i4 + 1].vertices;
-                m_pOriginalVertices[i].tl = vertArray[i4 + 2].vertices;
-                m_pOriginalVertices[i].tr = vertArray[i4 + 3].vertices;
+                m_pOriginalVertices[i].BottomLeft = vertArray[i4 + 0].vertices;
+                m_pOriginalVertices[i].BottomRight = vertArray[i4 + 1].vertices;
+                m_pOriginalVertices[i].TopLeft = vertArray[i4 + 2].vertices;
+                m_pOriginalVertices[i].TopRight = vertArray[i4 + 3].vertices;
             }
         }
 
-        public static CCTiledGrid3D Create(ccGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
+        public static CCTiledGrid3D Create(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
         {
             var pRet = new CCTiledGrid3D();
             if (pRet.InitWithSize(gridSize, pTexture, bFlipped))
@@ -209,7 +209,7 @@ namespace cocos2d
             return null;
         }
 
-        public static CCTiledGrid3D Create(ccGridSize gridSize)
+        public static CCTiledGrid3D Create(CCGridSize gridSize)
         {
             var pRet = new CCTiledGrid3D();
             if (pRet.InitWithSize(gridSize))

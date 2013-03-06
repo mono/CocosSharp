@@ -10,11 +10,11 @@ namespace tests
     {
         //ccTime m_time;
         float m_time;
-        ccColor3B ccRED = new ccColor3B
+        CCColor3B ccRED = new CCColor3B
         {
-            r = 255,
-            g = 0,
-            b = 0
+            R = 255,
+            G = 0,
+            B = 0
         };
 
         public LabelAtlasColorTest()

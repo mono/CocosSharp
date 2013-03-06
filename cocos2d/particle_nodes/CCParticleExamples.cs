@@ -57,22 +57,22 @@ namespace cocos2d
                 m_fEmissionRate = m_uTotalParticles / m_fLife;
 
                 // color of particles
-                m_tStartColor.r = 0.76f;
-                m_tStartColor.g = 0.25f;
-                m_tStartColor.b = 0.12f;
-                m_tStartColor.a = 1.0f;
-                m_tStartColorVar.r = 0.0f;
-                m_tStartColorVar.g = 0.0f;
-                m_tStartColorVar.b = 0.0f;
-                m_tStartColorVar.a = 0.0f;
-                m_tEndColor.r = 0.0f;
-                m_tEndColor.g = 0.0f;
-                m_tEndColor.b = 0.0f;
-                m_tEndColor.a = 1.0f;
-                m_tEndColorVar.r = 0.0f;
-                m_tEndColorVar.g = 0.0f;
-                m_tEndColorVar.b = 0.0f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColor.R = 0.76f;
+                m_tStartColor.G = 0.25f;
+                m_tStartColor.B = 0.12f;
+                m_tStartColor.A = 1.0f;
+                m_tStartColorVar.R = 0.0f;
+                m_tStartColorVar.G = 0.0f;
+                m_tStartColorVar.B = 0.0f;
+                m_tStartColorVar.A = 0.0f;
+                m_tEndColor.R = 0.0f;
+                m_tEndColor.G = 0.0f;
+                m_tEndColor.B = 0.0f;
+                m_tEndColor.A = 1.0f;
+                m_tEndColorVar.R = 0.0f;
+                m_tEndColorVar.G = 0.0f;
+                m_tEndColorVar.B = 0.0f;
+                m_tEndColorVar.A = 0.0f;
 
                 // additive
                 BlendAdditive = true;
@@ -131,22 +131,22 @@ namespace cocos2d
                 m_fEmissionRate = m_uTotalParticles / m_fLife;
 
                 // color of particles
-                m_tStartColor.r = 0.5f;
-                m_tStartColor.g = 0.5f;
-                m_tStartColor.b = 0.5f;
-                m_tStartColor.a = 1.0f;
-                m_tStartColorVar.r = 0.5f;
-                m_tStartColorVar.g = 0.5f;
-                m_tStartColorVar.b = 0.5f;
-                m_tStartColorVar.a = 0.1f;
-                m_tEndColor.r = 0.1f;
-                m_tEndColor.g = 0.1f;
-                m_tEndColor.b = 0.1f;
-                m_tEndColor.a = 0.2f;
-                m_tEndColorVar.r = 0.1f;
-                m_tEndColorVar.g = 0.1f;
-                m_tEndColorVar.b = 0.1f;
-                m_tEndColorVar.a = 0.2f;
+                m_tStartColor.R = 0.5f;
+                m_tStartColor.G = 0.5f;
+                m_tStartColor.B = 0.5f;
+                m_tStartColor.A = 1.0f;
+                m_tStartColorVar.R = 0.5f;
+                m_tStartColorVar.G = 0.5f;
+                m_tStartColorVar.B = 0.5f;
+                m_tStartColorVar.A = 0.1f;
+                m_tEndColor.R = 0.1f;
+                m_tEndColor.G = 0.1f;
+                m_tEndColor.B = 0.1f;
+                m_tEndColor.A = 0.2f;
+                m_tEndColorVar.R = 0.1f;
+                m_tEndColorVar.G = 0.1f;
+                m_tEndColorVar.B = 0.1f;
+                m_tEndColorVar.A = 0.2f;
 
                 // size, in pixels
                 m_fStartSize = 8.0f;
@@ -227,22 +227,22 @@ namespace cocos2d
                 m_fEmissionRate = m_uTotalParticles / m_fLife;
 
                 // color of particles
-                m_tStartColor.r = 0.76f;
-                m_tStartColor.g = 0.25f;
-                m_tStartColor.b = 0.12f;
-                m_tStartColor.a = 1.0f;
-                m_tStartColorVar.r = 0.0f;
-                m_tStartColorVar.g = 0.0f;
-                m_tStartColorVar.b = 0.0f;
-                m_tStartColorVar.a = 0.0f;
-                m_tEndColor.r = 0.0f;
-                m_tEndColor.g = 0.0f;
-                m_tEndColor.b = 0.0f;
-                m_tEndColor.a = 1.0f;
-                m_tEndColorVar.r = 0.0f;
-                m_tEndColorVar.g = 0.0f;
-                m_tEndColorVar.b = 0.0f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColor.R = 0.76f;
+                m_tStartColor.G = 0.25f;
+                m_tStartColor.B = 0.12f;
+                m_tStartColor.A = 1.0f;
+                m_tStartColorVar.R = 0.0f;
+                m_tStartColorVar.G = 0.0f;
+                m_tStartColorVar.B = 0.0f;
+                m_tStartColorVar.A = 0.0f;
+                m_tEndColor.R = 0.0f;
+                m_tEndColor.G = 0.0f;
+                m_tEndColor.B = 0.0f;
+                m_tEndColor.A = 1.0f;
+                m_tEndColorVar.R = 0.0f;
+                m_tEndColorVar.G = 0.0f;
+                m_tEndColorVar.B = 0.0f;
+                m_tEndColorVar.A = 0.0f;
 
                 return true;
             }
@@ -309,22 +309,22 @@ namespace cocos2d
                 m_fEmissionRate = m_uTotalParticles / m_fLife;
 
                 // color of particles
-                m_tStartColor.r = 0.12f;
-                m_tStartColor.g = 0.25f;
-                m_tStartColor.b = 0.76f;
-                m_tStartColor.a = 1.0f;
-                m_tStartColorVar.r = 0.0f;
-                m_tStartColorVar.g = 0.0f;
-                m_tStartColorVar.b = 0.0f;
-                m_tStartColorVar.a = 0.0f;
-                m_tEndColor.r = 0.0f;
-                m_tEndColor.g = 0.0f;
-                m_tEndColor.b = 0.0f;
-                m_tEndColor.a = 1.0f;
-                m_tEndColorVar.r = 0.0f;
-                m_tEndColorVar.g = 0.0f;
-                m_tEndColorVar.b = 0.0f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColor.R = 0.12f;
+                m_tStartColor.G = 0.25f;
+                m_tStartColor.B = 0.76f;
+                m_tStartColor.A = 1.0f;
+                m_tStartColorVar.R = 0.0f;
+                m_tStartColorVar.G = 0.0f;
+                m_tStartColorVar.B = 0.0f;
+                m_tStartColorVar.A = 0.0f;
+                m_tEndColor.R = 0.0f;
+                m_tEndColor.G = 0.0f;
+                m_tEndColor.B = 0.0f;
+                m_tEndColor.A = 1.0f;
+                m_tEndColorVar.R = 0.0f;
+                m_tEndColorVar.G = 0.0f;
+                m_tEndColorVar.B = 0.0f;
+                m_tEndColorVar.A = 0.0f;
 
                 // additive
                 BlendAdditive = true;
@@ -390,22 +390,22 @@ namespace cocos2d
                 m_fEmissionRate = m_uTotalParticles / m_fLife;
 
                 // color of particles
-                m_tStartColor.r = 0.50f;
-                m_tStartColor.g = 0.50f;
-                m_tStartColor.b = 0.50f;
-                m_tStartColor.a = 1.0f;
-                m_tStartColorVar.r = 0.5f;
-                m_tStartColorVar.g = 0.5f;
-                m_tStartColorVar.b = 0.5f;
-                m_tStartColorVar.a = 0.5f;
-                m_tEndColor.r = 0.0f;
-                m_tEndColor.g = 0.0f;
-                m_tEndColor.b = 0.0f;
-                m_tEndColor.a = 1.0f;
-                m_tEndColorVar.r = 0.0f;
-                m_tEndColorVar.g = 0.0f;
-                m_tEndColorVar.b = 0.0f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColor.R = 0.50f;
+                m_tStartColor.G = 0.50f;
+                m_tStartColor.B = 0.50f;
+                m_tStartColor.A = 1.0f;
+                m_tStartColorVar.R = 0.5f;
+                m_tStartColorVar.G = 0.5f;
+                m_tStartColorVar.B = 0.5f;
+                m_tStartColorVar.A = 0.5f;
+                m_tEndColor.R = 0.0f;
+                m_tEndColor.G = 0.0f;
+                m_tEndColor.B = 0.0f;
+                m_tEndColor.A = 1.0f;
+                m_tEndColorVar.R = 0.0f;
+                m_tEndColorVar.G = 0.0f;
+                m_tEndColorVar.B = 0.0f;
+                m_tEndColorVar.A = 0.0f;
 
                 // additive
                 BlendAdditive = true;
@@ -471,22 +471,22 @@ namespace cocos2d
                 m_fEmissionRate = m_uTotalParticles / m_fLife;
 
                 // color of particles
-                m_tStartColor.r = 0.2f;
-                m_tStartColor.g = 0.4f;
-                m_tStartColor.b = 0.7f;
-                m_tStartColor.a = 1.0f;
-                m_tStartColorVar.r = 0.0f;
-                m_tStartColorVar.g = 0.0f;
-                m_tStartColorVar.b = 0.2f;
-                m_tStartColorVar.a = 0.1f;
-                m_tEndColor.r = 0.0f;
-                m_tEndColor.g = 0.0f;
-                m_tEndColor.b = 0.0f;
-                m_tEndColor.a = 1.0f;
-                m_tEndColorVar.r = 0.0f;
-                m_tEndColorVar.g = 0.0f;
-                m_tEndColorVar.b = 0.0f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColor.R = 0.2f;
+                m_tStartColor.G = 0.4f;
+                m_tStartColor.B = 0.7f;
+                m_tStartColor.A = 1.0f;
+                m_tStartColorVar.R = 0.0f;
+                m_tStartColorVar.G = 0.0f;
+                m_tStartColorVar.B = 0.2f;
+                m_tStartColorVar.A = 0.1f;
+                m_tEndColor.R = 0.0f;
+                m_tEndColor.G = 0.0f;
+                m_tEndColor.B = 0.0f;
+                m_tEndColor.A = 1.0f;
+                m_tEndColorVar.R = 0.0f;
+                m_tEndColorVar.G = 0.0f;
+                m_tEndColorVar.B = 0.0f;
+                m_tEndColorVar.A = 0.0f;
 
                 // additive
                 BlendAdditive = true;
@@ -552,22 +552,22 @@ namespace cocos2d
                 m_fEmissionRate = m_uTotalParticles / m_fLife;
 
                 // color of particles
-                m_tStartColor.r = 0.5f;
-                m_tStartColor.g = 0.5f;
-                m_tStartColor.b = 0.5f;
-                m_tStartColor.a = 1.0f;
-                m_tStartColorVar.r = 0.5f;
-                m_tStartColorVar.g = 0.5f;
-                m_tStartColorVar.b = 0.5f;
-                m_tStartColorVar.a = 0.0f;
-                m_tEndColor.r = 0.5f;
-                m_tEndColor.g = 0.5f;
-                m_tEndColor.b = 0.5f;
-                m_tEndColor.a = 1.0f;
-                m_tEndColorVar.r = 0.5f;
-                m_tEndColorVar.g = 0.5f;
-                m_tEndColorVar.b = 0.5f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColor.R = 0.5f;
+                m_tStartColor.G = 0.5f;
+                m_tStartColor.B = 0.5f;
+                m_tStartColor.A = 1.0f;
+                m_tStartColorVar.R = 0.5f;
+                m_tStartColorVar.G = 0.5f;
+                m_tStartColorVar.B = 0.5f;
+                m_tStartColorVar.A = 0.0f;
+                m_tEndColor.R = 0.5f;
+                m_tEndColor.G = 0.5f;
+                m_tEndColor.B = 0.5f;
+                m_tEndColor.A = 1.0f;
+                m_tEndColorVar.R = 0.5f;
+                m_tEndColorVar.G = 0.5f;
+                m_tEndColorVar.B = 0.5f;
+                m_tEndColorVar.A = 0.0f;
 
                 // additive
                 BlendAdditive = false;
@@ -632,22 +632,22 @@ namespace cocos2d
                 m_fEmissionRate = m_uTotalParticles / m_fDuration;
 
                 // color of particles
-                m_tStartColor.r = 0.7f;
-                m_tStartColor.g = 0.1f;
-                m_tStartColor.b = 0.2f;
-                m_tStartColor.a = 1.0f;
-                m_tStartColorVar.r = 0.5f;
-                m_tStartColorVar.g = 0.5f;
-                m_tStartColorVar.b = 0.5f;
-                m_tStartColorVar.a = 0.0f;
-                m_tEndColor.r = 0.5f;
-                m_tEndColor.g = 0.5f;
-                m_tEndColor.b = 0.5f;
-                m_tEndColor.a = 0.0f;
-                m_tEndColorVar.r = 0.5f;
-                m_tEndColorVar.g = 0.5f;
-                m_tEndColorVar.b = 0.5f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColor.R = 0.7f;
+                m_tStartColor.G = 0.1f;
+                m_tStartColor.B = 0.2f;
+                m_tStartColor.A = 1.0f;
+                m_tStartColorVar.R = 0.5f;
+                m_tStartColorVar.G = 0.5f;
+                m_tStartColorVar.B = 0.5f;
+                m_tStartColorVar.A = 0.0f;
+                m_tEndColor.R = 0.5f;
+                m_tEndColor.G = 0.5f;
+                m_tEndColor.B = 0.5f;
+                m_tEndColor.A = 0.0f;
+                m_tEndColorVar.R = 0.5f;
+                m_tEndColorVar.G = 0.5f;
+                m_tEndColorVar.B = 0.5f;
+                m_tEndColorVar.A = 0.0f;
 
                 // additive
                 BlendAdditive = false;
@@ -709,22 +709,22 @@ namespace cocos2d
                 m_fEmissionRate = m_uTotalParticles / m_fLife;
 
                 // color of particles
-                m_tStartColor.r = 0.8f;
-                m_tStartColor.g = 0.8f;
-                m_tStartColor.b = 0.8f;
-                m_tStartColor.a = 1.0f;
-                m_tStartColorVar.r = 0.02f;
-                m_tStartColorVar.g = 0.02f;
-                m_tStartColorVar.b = 0.02f;
-                m_tStartColorVar.a = 0.0f;
-                m_tEndColor.r = 0.0f;
-                m_tEndColor.g = 0.0f;
-                m_tEndColor.b = 0.0f;
-                m_tEndColor.a = 1.0f;
-                m_tEndColorVar.r = 0.0f;
-                m_tEndColorVar.g = 0.0f;
-                m_tEndColorVar.b = 0.0f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColor.R = 0.8f;
+                m_tStartColor.G = 0.8f;
+                m_tStartColor.B = 0.8f;
+                m_tStartColor.A = 1.0f;
+                m_tStartColorVar.R = 0.02f;
+                m_tStartColorVar.G = 0.02f;
+                m_tStartColorVar.B = 0.02f;
+                m_tStartColorVar.A = 0.0f;
+                m_tEndColor.R = 0.0f;
+                m_tEndColor.G = 0.0f;
+                m_tEndColor.B = 0.0f;
+                m_tEndColor.A = 1.0f;
+                m_tEndColorVar.R = 0.0f;
+                m_tEndColorVar.G = 0.0f;
+                m_tEndColorVar.B = 0.0f;
+                m_tEndColorVar.A = 0.0f;
 
                 // additive
                 BlendAdditive = false;
@@ -790,22 +790,22 @@ namespace cocos2d
                 m_fEmissionRate = 10;
 
                 // color of particles
-                m_tStartColor.r = 1.0f;
-                m_tStartColor.g = 1.0f;
-                m_tStartColor.b = 1.0f;
-                m_tStartColor.a = 1.0f;
-                m_tStartColorVar.r = 0.0f;
-                m_tStartColorVar.g = 0.0f;
-                m_tStartColorVar.b = 0.0f;
-                m_tStartColorVar.a = 0.0f;
-                m_tEndColor.r = 1.0f;
-                m_tEndColor.g = 1.0f;
-                m_tEndColor.b = 1.0f;
-                m_tEndColor.a = 0.0f;
-                m_tEndColorVar.r = 0.0f;
-                m_tEndColorVar.g = 0.0f;
-                m_tEndColorVar.b = 0.0f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColor.R = 1.0f;
+                m_tStartColor.G = 1.0f;
+                m_tStartColor.B = 1.0f;
+                m_tStartColor.A = 1.0f;
+                m_tStartColorVar.R = 0.0f;
+                m_tStartColorVar.G = 0.0f;
+                m_tStartColorVar.B = 0.0f;
+                m_tStartColorVar.A = 0.0f;
+                m_tEndColor.R = 1.0f;
+                m_tEndColor.G = 1.0f;
+                m_tEndColor.B = 1.0f;
+                m_tEndColor.A = 0.0f;
+                m_tEndColorVar.R = 0.0f;
+                m_tEndColorVar.G = 0.0f;
+                m_tEndColorVar.B = 0.0f;
+                m_tEndColorVar.A = 0.0f;
 
                 // additive
                 BlendAdditive = false;
@@ -871,22 +871,22 @@ namespace cocos2d
                 m_fEmissionRate = 20;
 
                 // color of particles
-                m_tStartColor.r = 0.7f;
-                m_tStartColor.g = 0.8f;
-                m_tStartColor.b = 1.0f;
-                m_tStartColor.a = 1.0f;
-                m_tStartColorVar.r = 0.0f;
-                m_tStartColorVar.g = 0.0f;
-                m_tStartColorVar.b = 0.0f;
-                m_tStartColorVar.a = 0.0f;
-                m_tEndColor.r = 0.7f;
-                m_tEndColor.g = 0.8f;
-                m_tEndColor.b = 1.0f;
-                m_tEndColor.a = 0.5f;
-                m_tEndColorVar.r = 0.0f;
-                m_tEndColorVar.g = 0.0f;
-                m_tEndColorVar.b = 0.0f;
-                m_tEndColorVar.a = 0.0f;
+                m_tStartColor.R = 0.7f;
+                m_tStartColor.G = 0.8f;
+                m_tStartColor.B = 1.0f;
+                m_tStartColor.A = 1.0f;
+                m_tStartColorVar.R = 0.0f;
+                m_tStartColorVar.G = 0.0f;
+                m_tStartColorVar.B = 0.0f;
+                m_tStartColorVar.A = 0.0f;
+                m_tEndColor.R = 0.7f;
+                m_tEndColor.G = 0.8f;
+                m_tEndColor.B = 1.0f;
+                m_tEndColor.A = 0.5f;
+                m_tEndColorVar.R = 0.0f;
+                m_tEndColorVar.G = 0.0f;
+                m_tEndColorVar.B = 0.0f;
+                m_tEndColorVar.A = 0.0f;
 
                 // additive
                 BlendAdditive = false;

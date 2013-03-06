@@ -18,7 +18,7 @@ namespace tests
             *  B1: non-premulti sprite
             *  B2: non-premulti render
             */
-            CCLayerColor background = CCLayerColor.Create(new ccColor4B(200, 200, 200, 255));
+            CCLayerColor background = CCLayerColor.Create(new CCColor4B(200, 200, 200, 255));
             AddChild(background);
 
             CCSprite spr_premulti = CCSprite.Create("Images/fire");

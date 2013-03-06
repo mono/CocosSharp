@@ -11,8 +11,8 @@ namespace cocos2d
         protected CCTextureAtlas m_pTextureAtlas;
         protected ccBlendFunc m_tBlendFunc;
 
-        protected ccColor3B m_tColor;
-        protected ccColor3B m_tColorUnmodified;
+        protected CCColor3B m_tColor;
+        protected CCColor3B m_tColorUnmodified;
         protected int m_uItemHeight;
         protected int m_uItemWidth;
         protected int m_uItemsPerColumn;
@@ -40,7 +40,7 @@ namespace cocos2d
             get { return m_bIsOpacityModifyRGB; }
             set
             {
-                ccColor3B oldColor = m_tColor;
+                CCColor3B oldColor = m_tColor;
                 m_bIsOpacityModifyRGB = value;
                 m_tColor = oldColor;
             }
@@ -61,7 +61,7 @@ namespace cocos2d
             }
         }
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             get
             {
@@ -73,14 +73,14 @@ namespace cocos2d
             }
             set
             {
-                m_tColor = new ccColor3B(value.r, value.g, value.b);
+                m_tColor = new CCColor3B(value.R, value.G, value.B);
                 m_tColorUnmodified = m_tColor;
 
                 if (m_bIsOpacityModifyRGB)
                 {
-                    m_tColor.r = (byte) (value.r * m_cOpacity / 255);
-                    m_tColor.g = (byte) (value.g * m_cOpacity / 255);
-                    m_tColor.b = (byte) (value.b * m_cOpacity / 255);
+                    m_tColor.R = (byte) (value.R * m_cOpacity / 255);
+                    m_tColor.G = (byte) (value.G * m_cOpacity / 255);
+                    m_tColor.B = (byte) (value.B * m_cOpacity / 255);
                 }
 
                 UpdateAtlasValues();

@@ -14,7 +14,7 @@ namespace cocos2d
             return CCLayerGradient.Create();
         }
 
-        protected override void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, ccColor3B color, CCBReader reader)
+        protected override void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, CCColor3B color, CCBReader reader)
         {
             if (propertyName == PROPERTY_STARTCOLOR)
             {

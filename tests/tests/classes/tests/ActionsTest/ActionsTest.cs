@@ -387,10 +387,10 @@ namespace tests
 
             m_grossini.Rotation = 120;
             m_grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            m_grossini.Color = new ccColor3B(255, 0, 0);
+            m_grossini.Color = new CCColor3B(255, 0, 0);
 
             m_kathia.Position = new CCPoint(s.Width - 100, s.Height / 2);
-            m_kathia.Color = new ccColor3B(0, 0, 255); // ccTypes.ccBLUE
+            m_kathia.Color = new CCColor3B(0, 0, 255); // ccTypes.ccBLUE
         }
 
         public override string subtitle()
@@ -490,18 +490,18 @@ namespace tests
 
             var boxSize = new CCSize(100.0f, 100.0f);
 
-            var box = CCLayerColor.Create(new ccColor4B(255, 255, 0, 255));
+            var box = CCLayerColor.Create(new CCColor4B(255, 255, 0, 255));
             box.AnchorPoint = new CCPoint(0, 0);
             box.Position = new CCPoint(190, 110);
             box.ContentSize = boxSize;
 
-            var uL = CCLayerColor.Create(new ccColor4B(255, 0, 0, 255));
+            var uL = CCLayerColor.Create(new CCColor4B(255, 0, 0, 255));
             box.AddChild(uL);
             uL.ContentSize = new CCSize(markrside, markrside);
             uL.Position = new CCPoint(0.0f, boxSize.Height - markrside);
             uL.AnchorPoint = new CCPoint(0, 0);
 
-            var uR = CCLayerColor.Create(new ccColor4B(0, 0, 255, 255));
+            var uR = CCLayerColor.Create(new CCColor4B(0, 0, 255, 255));
             box.AddChild(uR);
             uR.ContentSize = new CCSize(markrside, markrside);
             uR.Position = new CCPoint(boxSize.Width - markrside, boxSize.Height - markrside);

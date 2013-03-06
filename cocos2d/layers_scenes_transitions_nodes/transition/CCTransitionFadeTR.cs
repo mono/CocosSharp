@@ -40,7 +40,7 @@ namespace cocos2d
 
         #endregion
 
-        public virtual CCActionInterval CreateAction(ccGridSize size)
+        public virtual CCActionInterval CreateAction(CCGridSize size)
         {
             return CCFadeOutTRTiles.Create(size, m_fDuration);
         }
@@ -54,7 +54,7 @@ namespace cocos2d
             var x = (int) (12 * aspect);
             int y = 12;
 
-            CCActionInterval action = CreateAction(new ccGridSize(x, y));
+            CCActionInterval action = CreateAction(new CCGridSize(x, y));
 
             m_pOutScene.RunAction
                 (

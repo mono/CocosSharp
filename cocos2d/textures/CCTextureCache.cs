@@ -136,7 +136,7 @@ namespace cocos2d
 
         public CCTexture2D AddImage(Stream imageStream, string assetName)
         {
-            Debug.Assert(imageStream == null, "TextureCache: imageStream MUST not be NULL");
+            Debug.Assert(imageStream != null, "TextureCache: imageStream MUST not be NULL");
             
             CCTexture2D texture;
 

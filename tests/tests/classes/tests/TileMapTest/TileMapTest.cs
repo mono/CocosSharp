@@ -92,14 +92,14 @@ namespace tests
             //    }
 
             // NEW since v0.7
-            Color c = tilemap.TileAt(new ccGridSize(13, 21));
+            Color c = tilemap.TileAt(new CCGridSize(13, 21));
             c.R++;
             c.R %= 50;
             if (c.R == 0)
                 c.R = 1;
 
             // NEW since v0.7
-            tilemap.SetTile(c, new ccGridSize(13, 21));
+            tilemap.SetTile(c, new CCGridSize(13, 21));
         }
 
         public override string title()
@@ -457,7 +457,7 @@ namespace tests
     {
         public TMXHexTest()
         {
-            CCLayerColor color = CCLayerColor.Create(new ccColor4B(64, 64, 64, 255));
+            CCLayerColor color = CCLayerColor.Create(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
             CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/hexa-test1");
@@ -481,7 +481,7 @@ namespace tests
     {
         public TMXIsoTest()
         {
-            CCLayerColor color = CCLayerColor.Create(new ccColor4B(64, 64, 64, 255));
+            CCLayerColor color = CCLayerColor.Create(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
             CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test01");
@@ -508,7 +508,7 @@ namespace tests
     {
         public TMXIsoTest1()
         {
-            CCLayerColor color = CCLayerColor.Create(new ccColor4B(64, 64, 64, 255));
+            CCLayerColor color = CCLayerColor.Create(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
             CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test11");
@@ -534,7 +534,7 @@ namespace tests
     {
         public TMXIsoTest2()
         {
-            CCLayerColor color = CCLayerColor.Create(new ccColor4B(64, 64, 64, 255));
+            CCLayerColor color = CCLayerColor.Create(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
             CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test22");
@@ -563,7 +563,7 @@ namespace tests
     {
         public TMXUncompressedTest()
         {
-            CCLayerColor color = CCLayerColor.Create(new ccColor4B(64, 64, 64, 255));
+            CCLayerColor color = CCLayerColor.Create(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
             CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test2-uncompressed");
@@ -682,7 +682,7 @@ namespace tests
 
                 //glLineWidth(3);
 
-                var color = new ccColor4B(255, 255, 0, 255);
+                var color = new CCColor4B(255, 255, 0, 255);
 
                 CCDrawingPrimitives.Begin();
                 CCDrawingPrimitives.DrawLine(new CCPoint(x, y), new CCPoint((x + width), y), color);
@@ -755,7 +755,7 @@ namespace tests
 
                 //glLineWidth(3);
 
-                var color = new ccColor4B(255, 255, 0, 255);
+                var color = new CCColor4B(255, 255, 0, 255);
 
                 CCDrawingPrimitives.Begin();
                 CCDrawingPrimitives.DrawLine(new CCPoint(x, y), new CCPoint(x + width, y), color);
@@ -1837,7 +1837,7 @@ namespace tests
 
                 //glLineWidth(3);
 
-                var color = new ccColor4B(255, 255, 0, 255);
+                var color = new CCColor4B(255, 255, 0, 255);
 
                 CCDrawingPrimitives.Begin();
                 CCDrawingPrimitives.DrawLine(new CCPoint(x, y), new CCPoint(x + width, y), color);

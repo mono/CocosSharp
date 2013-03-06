@@ -14,7 +14,7 @@ namespace tests
             var blockSize = new CCSize(200, 160);
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLayerColor colorLayer = CCLayerColor.Create(new ccColor4B(100, 100, 100, 255), blockSize.Width, blockSize.Height);
+            CCLayerColor colorLayer = CCLayerColor.Create(new CCColor4B(100, 100, 100, 255), blockSize.Width, blockSize.Height);
             colorLayer.AnchorPoint = new CCPoint(0, 0);
             colorLayer.Position = new CCPoint((s.Width - blockSize.Width) / 2, (s.Height - blockSize.Height) / 2);
 

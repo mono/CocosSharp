@@ -54,7 +54,7 @@ namespace cocos2d
         /// <summary>
         /// initializes the action with the number of jumps, the sin amplitude, the grid size and the duration 
         /// </summary>
-        public bool InitWithJumps(int j, float amp, ccGridSize gridSize, float duration)
+        public bool InitWithJumps(int j, float amp, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -95,33 +95,33 @@ namespace cocos2d
             float sinz = ((float) Math.Sin((float) Math.PI * time * m_nJumps * 2) * m_fAmplitude * m_fAmplitudeRate);
             var sinz2 = (float) (Math.Sin((float) Math.PI * (time * m_nJumps * 2 + 1)) * m_fAmplitude * m_fAmplitudeRate);
 
-            for (i = 0; i < m_sGridSize.x; i++)
+            for (i = 0; i < m_sGridSize.X; i++)
             {
-                for (j = 0; j < m_sGridSize.y; j++)
+                for (j = 0; j < m_sGridSize.Y; j++)
                 {
-                    ccQuad3 coords = OriginalTile(new ccGridSize(i, j));
+                    CCQuad3 coords = OriginalTile(new CCGridSize(i, j));
 
                     if (((i + j) % 2) == 0)
                     {
-                        coords.bl.z += sinz;
-                        coords.br.z += sinz;
-                        coords.tl.z += sinz;
-                        coords.tr.z += sinz;
+                        coords.BottomLeft.Z += sinz;
+                        coords.BottomRight.Z += sinz;
+                        coords.TopLeft.Z += sinz;
+                        coords.TopRight.Z += sinz;
                     }
                     else
                     {
-                        coords.bl.z += sinz2;
-                        coords.br.z += sinz2;
-                        coords.tl.z += sinz2;
-                        coords.tr.z += sinz2;
+                        coords.BottomLeft.Z += sinz2;
+                        coords.BottomRight.Z += sinz2;
+                        coords.TopLeft.Z += sinz2;
+                        coords.TopRight.Z += sinz2;
                     }
 
-                    SetTile(new ccGridSize(i, j), ref coords);
+                    SetTile(new CCGridSize(i, j), ref coords);
                 }
             }
         }
 
-        public static CCJumpTiles3D Create(int j, float amp, ccGridSize gridSize, float duration)
+        public static CCJumpTiles3D Create(int j, float amp, CCGridSize gridSize, float duration)
         {
             var pAction = new CCJumpTiles3D();
             pAction.InitWithJumps(j, amp, gridSize, duration);

@@ -43,7 +43,7 @@ namespace cocos2d
         public CCLayerColor()
         {
             m_cOpacity = 0;
-            m_tColor = new ccColor3B(0, 0, 0);
+            m_tColor = new CCColor3B(0, 0, 0);
 
             // default blend function
             m_tBlendFunc = new ccBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
@@ -80,7 +80,7 @@ namespace cocos2d
         /// <summary>
         /// creates a CCLayer with color, width and height in Points
         /// </summary>
-        public static CCLayerColor Create(ccColor4B color, float width, float height)
+        public static CCLayerColor Create(CCColor4B color, float width, float height)
         {
             var pLayer = new CCLayerColor();
             pLayer.InitWithColorWidthHeight(color, width, height);
@@ -90,7 +90,7 @@ namespace cocos2d
         /// <summary>
         /// creates a CCLayer with color. Width and height are the window size. 
         /// </summary>
-        public static CCLayerColor Create(ccColor4B color)
+        public static CCLayerColor Create(CCColor4B color)
         {
             var pLayer = new CCLayerColor();
             pLayer.InitWithColor(color);
@@ -100,16 +100,16 @@ namespace cocos2d
         /// <summary>
         ///  initializes a CCLayer with color, width and height in Points
         /// </summary>
-        public virtual bool InitWithColorWidthHeight(ccColor4B color, float width, float height)
+        public virtual bool InitWithColorWidthHeight(CCColor4B color, float width, float height)
         {
             // default blend function
             m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
             m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
 
-            m_tColor.r = color.r;
-            m_tColor.g = color.g;
-            m_tColor.b = color.b;
-            m_cOpacity = color.a;
+            m_tColor.R = color.R;
+            m_tColor.G = color.G;
+            m_tColor.B = color.B;
+            m_cOpacity = color.A;
 
             UpdateColor();
             
@@ -121,7 +121,7 @@ namespace cocos2d
         /// <summary>
         /// initializes a CCLayer with color. Width and height are the window size.
         /// </summary>
-        public virtual bool InitWithColor(ccColor4B color)
+        public virtual bool InitWithColor(CCColor4B color)
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
             InitWithColorWidthHeight(color, s.Width, s.Height);
@@ -167,7 +167,7 @@ namespace cocos2d
 
         protected byte m_cOpacity;
         protected ccBlendFunc m_tBlendFunc;
-        protected ccColor3B m_tColor;
+        protected CCColor3B m_tColor;
 
         #region ICCBlendProtocol Members
 
@@ -194,7 +194,7 @@ namespace cocos2d
             }
         }
 
-        public virtual ccColor3B Color
+        public virtual CCColor3B Color
         {
             get { return m_tColor; }
             set
@@ -234,7 +234,7 @@ namespace cocos2d
 
         protected virtual void UpdateColor()
         {
-            var color = new Color(m_tColor.r / 255.0f, m_tColor.g / 255.0f, m_tColor.b / 255.0f, m_cOpacity / 255.0f);
+            var color = new Color(m_tColor.R / 255.0f, m_tColor.G / 255.0f, m_tColor.B / 255.0f, m_cOpacity / 255.0f);
 
             m_pVertices[0].Color = m_pVertices[1].Color = m_pVertices[2].Color = m_pVertices[3].Color = color;
 

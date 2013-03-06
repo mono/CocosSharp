@@ -39,7 +39,7 @@ namespace cocos2d
         /// <summary>
         /// initializes the action with a random seed, the grid size and the duration
         /// </summary>
-        public bool InitWithSeed(int s, ccGridSize gridSize, float duration)
+        public bool InitWithSeed(int s, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -65,34 +65,34 @@ namespace cocos2d
             }
         }
 
-        public ccGridSize GetDelta(ccGridSize pos)
+        public CCGridSize GetDelta(CCGridSize pos)
         {
             var pos2 = new CCPoint();
 
-            int idx = pos.x * m_sGridSize.y + pos.y;
+            int idx = pos.X * m_sGridSize.Y + pos.Y;
 
-            pos2.x = (m_pTilesOrder[idx] / m_sGridSize.y);
-            pos2.y = (m_pTilesOrder[idx] % m_sGridSize.y);
+            pos2.x = (m_pTilesOrder[idx] / m_sGridSize.Y);
+            pos2.y = (m_pTilesOrder[idx] % m_sGridSize.Y);
 
-            return new ccGridSize((int) (pos2.x - pos.x), (int) (pos2.y - pos.y));
+            return new CCGridSize((int) (pos2.x - pos.X), (int) (pos2.y - pos.Y));
         }
 
-        public void PlaceTile(ccGridSize pos, Tile t)
+        public void PlaceTile(CCGridSize pos, Tile t)
         {
-            ccQuad3 coords = OriginalTile(pos);
+            CCQuad3 coords = OriginalTile(pos);
 
             CCPoint step = m_pTarget.Grid.Step;
-            coords.bl.x += (int) (t.Position.x * step.x);
-            coords.bl.y += (int) (t.Position.y * step.y);
+            coords.BottomLeft.X += (int) (t.Position.x * step.x);
+            coords.BottomLeft.Y += (int) (t.Position.y * step.y);
 
-            coords.br.x += (int) (t.Position.x * step.x);
-            coords.br.y += (int) (t.Position.y * step.y);
+            coords.BottomRight.X += (int) (t.Position.x * step.x);
+            coords.BottomRight.Y += (int) (t.Position.y * step.y);
 
-            coords.tl.x += (int) (t.Position.x * step.x);
-            coords.tl.y += (int) (t.Position.y * step.y);
+            coords.TopLeft.X += (int) (t.Position.x * step.x);
+            coords.TopLeft.Y += (int) (t.Position.y * step.y);
 
-            coords.tr.x += (int) (t.Position.x * step.x);
-            coords.tr.y += (int) (t.Position.y * step.y);
+            coords.TopRight.X += (int) (t.Position.x * step.x);
+            coords.TopRight.Y += (int) (t.Position.y * step.y);
 
             SetTile(pos, ref coords);
         }
@@ -106,7 +106,7 @@ namespace cocos2d
                 m_nSeed = Random.Next();
             }
 
-            m_nTilesCount = m_sGridSize.x * m_sGridSize.y;
+            m_nTilesCount = m_sGridSize.X * m_sGridSize.Y;
             m_pTilesOrder = new int[m_nTilesCount];
             int i, j;
             int k;
@@ -125,15 +125,15 @@ namespace cocos2d
             m_pTiles = new Tile[m_nTilesCount];
 
             int f = 0;
-            for (i = 0; i < m_sGridSize.x; ++i)
+            for (i = 0; i < m_sGridSize.X; ++i)
             {
-                for (j = 0; j < m_sGridSize.y; ++j)
+                for (j = 0; j < m_sGridSize.Y; ++j)
                 {
                     m_pTiles[f] = new Tile
                         {
                             Position = new CCPoint(i, j), 
                             StartPosition = new CCPoint(i, j), 
-                            Delta = GetDelta(new ccGridSize(i, j))
+                            Delta = GetDelta(new CCGridSize(i, j))
                         };
 
                     f++;
@@ -146,13 +146,13 @@ namespace cocos2d
             int i, j;
 
             int f = 0;
-            for (i = 0; i < m_sGridSize.x; ++i)
+            for (i = 0; i < m_sGridSize.X; ++i)
             {
-                for (j = 0; j < m_sGridSize.y; ++j)
+                for (j = 0; j < m_sGridSize.Y; ++j)
                 {
                     Tile item = m_pTiles[f];
-                    item.Position = new CCPoint((item.Delta.x * time), (item.Delta.y * time));
-                    PlaceTile(new ccGridSize(i, j), item);
+                    item.Position = new CCPoint((item.Delta.X * time), (item.Delta.Y * time));
+                    PlaceTile(new CCGridSize(i, j), item);
 
                     f++;
                 }
@@ -182,7 +182,7 @@ namespace cocos2d
         /// <summary>
         /// creates the action with a random seed, the grid size and the duration 
         /// </summary>
-        public static CCShuffleTiles Create(int s, ccGridSize gridSize, float duration)
+        public static CCShuffleTiles Create(int s, CCGridSize gridSize, float duration)
         {
             var pAction = new CCShuffleTiles();
             pAction.InitWithSeed(s, gridSize, duration);

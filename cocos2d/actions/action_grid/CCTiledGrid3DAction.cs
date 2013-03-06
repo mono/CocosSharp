@@ -7,17 +7,17 @@ namespace cocos2d
     {
         private CCTiledGrid3D m_pGrid;
 
-        public ccQuad3 Tile(ccGridSize pos)
+        public CCQuad3 Tile(CCGridSize pos)
         {
             return m_pGrid.Tile(pos);
         }
 
-        public ccQuad3 OriginalTile(ccGridSize pos)
+        public CCQuad3 OriginalTile(CCGridSize pos)
         {
             return m_pGrid.OriginalTile(pos);
         }
 
-        public void SetTile(ccGridSize pos, ref ccQuad3 coords)
+        public void SetTile(CCGridSize pos, ref CCQuad3 coords)
         {
             m_pGrid.SetTile(pos, ref coords);
         }

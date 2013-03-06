@@ -10,7 +10,7 @@ namespace tests
     {
         public new static CCActionInterval actionWithDuration(float t)
         {
-            CCShuffleTiles shuffle = CCShuffleTiles.Create(25, new ccGridSize(16, 12), t);
+            CCShuffleTiles shuffle = CCShuffleTiles.Create(25, new CCGridSize(16, 12), t);
             CCFiniteTimeAction shuffle_back = shuffle.Reverse();
             CCDelayTime delay = CCDelayTime.Create(2);
 

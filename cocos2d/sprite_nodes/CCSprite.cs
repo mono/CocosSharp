@@ -27,14 +27,14 @@ namespace cocos2d
         protected CCTexture2D m_pobTexture; // Texture used to render the sprite
         protected CCTextureAtlas m_pobTextureAtlas; // Sprite Sheet texture atlas (weak reference)
         protected ccBlendFunc m_sBlendFunc; // Needed for the texture protocol
-        protected ccColor3B m_sColor;
+        protected CCColor3B m_sColor;
 
         private string m_TextureFile;
 
         // vertex coords, texture coords and color info
 
         // opacity and RGB protocol
-        protected ccColor3B m_sColorUnmodified;
+        protected CCColor3B m_sColorUnmodified;
         internal ccV3F_C4B_T2F_Quad m_sQuad;
         protected CCAffineTransform m_transformToBatch; //
         protected int m_uAtlasIndex; // Absolute (real) Index on the SpriteSheet
@@ -303,10 +303,10 @@ namespace cocos2d
                     float x2 = x1 + m_obRect.size.Width;
                     float y2 = y1 + m_obRect.size.Height;
 
-                    m_sQuad.bl.vertices = new ccVertex3F(x1, y1, 0);
-                    m_sQuad.br.vertices = new ccVertex3F(x2, y1, 0);
-                    m_sQuad.tl.vertices = new ccVertex3F(x1, y2, 0);
-                    m_sQuad.tr.vertices = new ccVertex3F(x2, y2, 0);
+                    m_sQuad.bl.vertices = new CCVertex3F(x1, y1, 0);
+                    m_sQuad.br.vertices = new CCVertex3F(x2, y1, 0);
+                    m_sQuad.tl.vertices = new CCVertex3F(x1, y2, 0);
+                    m_sQuad.tr.vertices = new CCVertex3F(x2, y2, 0);
                 }
                 else
                 {
@@ -336,7 +336,7 @@ namespace cocos2d
             }
         }
 
-        public ccColor3B Color
+        public CCColor3B Color
         {
             get
             {
@@ -348,14 +348,14 @@ namespace cocos2d
             }
             set
             {
-                m_sColor = new ccColor3B(value.r, value.g, value.b);
-                m_sColorUnmodified = new ccColor3B(value.r, value.g, value.b);
+                m_sColor = new CCColor3B(value.R, value.G, value.B);
+                m_sColorUnmodified = new CCColor3B(value.R, value.G, value.B);
 
                 if (m_bOpacityModifyRGB)
                 {
-                    m_sColor.r = (byte)(value.r * m_nOpacity / 255f);
-                    m_sColor.g = (byte)(value.g * m_nOpacity / 255f);
-                    m_sColor.b = (byte)(value.b * m_nOpacity / 255f);
+                    m_sColor.R = (byte)(value.R * m_nOpacity / 255f);
+                    m_sColor.G = (byte)(value.G * m_nOpacity / 255f);
+                    m_sColor.B = (byte)(value.B * m_nOpacity / 255f);
                 }
 
                 UpdateColor();
@@ -367,7 +367,7 @@ namespace cocos2d
             get { return m_bOpacityModifyRGB; }
             set
             {
-                ccColor3B oldColor = m_sColor;
+                CCColor3B oldColor = m_sColor;
                 m_bOpacityModifyRGB = value;
                 m_sColor = oldColor;
             }
@@ -499,7 +499,7 @@ namespace cocos2d
             m_sQuad = new ccV3F_C4B_T2F_Quad();
 
             // Atlas: Color
-            var tmpColor = new ccColor4B(255, 255, 255, 255);
+            var tmpColor = new CCColor4B(255, 255, 255, 255);
             m_sQuad.bl.colors = tmpColor;
             m_sQuad.br.colors = tmpColor;
             m_sQuad.tl.colors = tmpColor;
@@ -676,14 +676,14 @@ namespace cocos2d
                     ccMacros.CC_SWAP(ref left, ref right);
                 }
 
-                m_sQuad.bl.texCoords.u = left;
-                m_sQuad.bl.texCoords.v = top;
-                m_sQuad.br.texCoords.u = left;
-                m_sQuad.br.texCoords.v = bottom;
-                m_sQuad.tl.texCoords.u = right;
-                m_sQuad.tl.texCoords.v = top;
-                m_sQuad.tr.texCoords.u = right;
-                m_sQuad.tr.texCoords.v = bottom;
+                m_sQuad.bl.texCoords.U = left;
+                m_sQuad.bl.texCoords.V = top;
+                m_sQuad.br.texCoords.U = left;
+                m_sQuad.br.texCoords.V = bottom;
+                m_sQuad.tl.texCoords.U = right;
+                m_sQuad.tl.texCoords.V = top;
+                m_sQuad.tr.texCoords.U = right;
+                m_sQuad.tr.texCoords.V = bottom;
             }
             else
             {
@@ -710,14 +710,14 @@ namespace cocos2d
                     ccMacros.CC_SWAP(ref top, ref bottom);
                 }
 
-                m_sQuad.bl.texCoords.u = left;
-                m_sQuad.bl.texCoords.v = bottom;
-                m_sQuad.br.texCoords.u = right;
-                m_sQuad.br.texCoords.v = bottom;
-                m_sQuad.tl.texCoords.u = left;
-                m_sQuad.tl.texCoords.v = top;
-                m_sQuad.tr.texCoords.u = right;
-                m_sQuad.tr.texCoords.v = top;
+                m_sQuad.bl.texCoords.U = left;
+                m_sQuad.bl.texCoords.V = bottom;
+                m_sQuad.br.texCoords.U = right;
+                m_sQuad.br.texCoords.V = bottom;
+                m_sQuad.tl.texCoords.U = left;
+                m_sQuad.tl.texCoords.V = top;
+                m_sQuad.tr.texCoords.U = right;
+                m_sQuad.tr.texCoords.V = top;
             }
         }
 
@@ -734,7 +734,7 @@ namespace cocos2d
                     (m_pParent != null && m_pParent != m_pobBatchNode && ((CCSprite)m_pParent).m_bShouldBeHidden))
                 {
                     m_sQuad.br.vertices =
-                        m_sQuad.tl.vertices = m_sQuad.tr.vertices = m_sQuad.bl.vertices = new ccVertex3F(0, 0, 0);
+                        m_sQuad.tl.vertices = m_sQuad.tr.vertices = m_sQuad.bl.vertices = new CCVertex3F(0, 0, 0);
                     m_bShouldBeHidden = true;
                 }
                 else
@@ -784,10 +784,10 @@ namespace cocos2d
                     float dx = x1 * cr - y2 * sr2 + x;
                     float dy = x1 * sr + y2 * cr2 + y;
 
-                    m_sQuad.bl.vertices = new ccVertex3F(ax, ay, m_fVertexZ);
-                    m_sQuad.br.vertices = new ccVertex3F(bx, by, m_fVertexZ);
-                    m_sQuad.tl.vertices = new ccVertex3F(dx, dy, m_fVertexZ);
-                    m_sQuad.tr.vertices = new ccVertex3F(cx, cy, m_fVertexZ);
+                    m_sQuad.bl.vertices = new CCVertex3F(ax, ay, m_fVertexZ);
+                    m_sQuad.br.vertices = new CCVertex3F(bx, by, m_fVertexZ);
+                    m_sQuad.tl.vertices = new CCVertex3F(dx, dy, m_fVertexZ);
+                    m_sQuad.tr.vertices = new CCVertex3F(cx, cy, m_fVertexZ);
                 }
 
                 m_pobTextureAtlas.UpdateQuad(ref m_sQuad, m_uAtlasIndex);
@@ -1004,25 +1004,25 @@ namespace cocos2d
             if (opacity) 
             {
                 // The following code works on iOS
-                m_sQuad.bl.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.br.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.tl.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.tr.colors = new ccColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.bl.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.br.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.tl.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.tr.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
             }
             else 
             {
-                m_sQuad.bl.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
-                m_sQuad.br.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
-                m_sQuad.tl.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
-                m_sQuad.tr.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
+                m_sQuad.bl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.br.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.tl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.tr.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
 
             }
 #else
 
-            m_sQuad.bl.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
-            m_sQuad.br.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
-            m_sQuad.tl.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
-            m_sQuad.tr.colors = new ccColor4B(m_sColor.r, m_sColor.g, m_sColor.b, m_nOpacity);
+            m_sQuad.bl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.br.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.tl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.tr.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
 #endif
 
             // renders using Sprite Manager
