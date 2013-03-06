@@ -109,7 +109,7 @@ namespace cocos2d
             m_tColor.R = color.R;
             m_tColor.G = color.G;
             m_tColor.B = color.B;
-            m_cOpacity = color.a;
+            m_cOpacity = color.A;
 
             UpdateColor();
             

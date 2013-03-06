@@ -168,8 +168,8 @@ namespace cocos2d
             m_endColor.G = end.G;
             m_endColor.B = end.B;
 
-            m_cEndOpacity = end.a;
-            m_cStartOpacity = start.a;
+            m_cEndOpacity = end.A;
+            m_cStartOpacity = start.A;
             m_AlongVector = v;
 
             m_bCompressedInterpolation = true;
@@ -208,7 +208,7 @@ namespace cocos2d
                     R = m_tColor.R,
                     G = m_tColor.G,
                     B = m_tColor.B,
-                    a = (byte) (m_cStartOpacity * opacityf)
+                    A = (byte) (m_cStartOpacity * opacityf)
                 };
 
             var E = new CCColor4B
@@ -216,7 +216,7 @@ namespace cocos2d
                     R = m_endColor.R,
                     G = m_endColor.G,
                     B = m_endColor.B,
-                    a = (byte) (m_cEndOpacity * opacityf)
+                    A = (byte) (m_cEndOpacity * opacityf)
                 };
 
             // (-1, -1)
@@ -224,7 +224,7 @@ namespace cocos2d
                 (byte) (E.R + (S.R - E.R) * ((c + u.x + u.y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c + u.x + u.y) / (2.0f * c))),
                 (byte) (E.B + (S.B - E.B) * ((c + u.x + u.y) / (2.0f * c))),
-                (byte) (E.a + (S.a - E.a) * ((c + u.x + u.y) / (2.0f * c)))
+                (byte) (E.A + (S.A - E.A) * ((c + u.x + u.y) / (2.0f * c)))
                 );
 
             // (1, -1)
@@ -232,7 +232,7 @@ namespace cocos2d
                 (byte) (E.R + (S.R - E.R) * ((c - u.x + u.y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c - u.x + u.y) / (2.0f * c))),
                 (byte) (E.B + (S.B - E.B) * ((c - u.x + u.y) / (2.0f * c))),
-                (byte) (E.a + (S.a - E.a) * ((c - u.x + u.y) / (2.0f * c)))
+                (byte) (E.A + (S.A - E.A) * ((c - u.x + u.y) / (2.0f * c)))
                 );
 
             // (-1, 1)
@@ -240,7 +240,7 @@ namespace cocos2d
                 (byte) (E.R + (S.R - E.R) * ((c + u.x - u.y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c + u.x - u.y) / (2.0f * c))),
                 (byte) (E.B + (S.B - E.B) * ((c + u.x - u.y) / (2.0f * c))),
-                (byte) (E.a + (S.a - E.a) * ((c + u.x - u.y) / (2.0f * c)))
+                (byte) (E.A + (S.A - E.A) * ((c + u.x - u.y) / (2.0f * c)))
                 );
 
             // (1, 1)
@@ -248,7 +248,7 @@ namespace cocos2d
                 (byte) (E.R + (S.R - E.R) * ((c - u.x - u.y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c - u.x - u.y) / (2.0f * c))),
                 (byte) (E.B + (S.B - E.B) * ((c - u.x - u.y) / (2.0f * c))),
-                (byte) (E.a + (S.a - E.a) * ((c - u.x - u.y) / (2.0f * c)))
+                (byte) (E.A + (S.A - E.A) * ((c - u.x - u.y) / (2.0f * c)))
                 );
 
             m_bChanged = true;

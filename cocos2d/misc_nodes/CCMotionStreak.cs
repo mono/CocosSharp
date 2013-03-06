@@ -207,7 +207,7 @@ namespace cocos2d
                         newIdx2 = newIdx * 2;
                     }
 
-                    m_pVertices[newIdx2].colors.a = m_pVertices[newIdx2 + 1].colors.a = (byte) (m_pPointState[newIdx] * 255.0f);
+                    m_pVertices[newIdx2].colors.A = m_pVertices[newIdx2 + 1].colors.A = (byte) (m_pPointState[newIdx] * 255.0f);
                 }
             }
             m_uNuPoints -= mov;
