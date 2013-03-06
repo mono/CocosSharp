@@ -56,7 +56,7 @@ namespace cocos2d
         /// <summary>
         ///  initializes the action with a number of waves, the waves amplitude, the grid size and the duration 
         /// </summary>
-        public bool InitWithWaves(int wav, float amp, ccGridSize gridSize, float duration)
+        public bool InitWithWaves(int wav, float amp, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -94,11 +94,11 @@ namespace cocos2d
         {
             int i, j;
 
-            for (i = 0; i < m_sGridSize.x; i++)
+            for (i = 0; i < m_sGridSize.X; i++)
             {
-                for (j = 0; j < m_sGridSize.y; j++)
+                for (j = 0; j < m_sGridSize.Y; j++)
                 {
-                    CCQuad3 coords = OriginalTile(new ccGridSize(i, j));
+                    CCQuad3 coords = OriginalTile(new CCGridSize(i, j));
 
                     coords.BottomLeft.Z = ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 +
                                                     (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) * m_fAmplitude * m_fAmplitudeRate);
@@ -106,7 +106,7 @@ namespace cocos2d
                     coords.TopLeft.Z = coords.BottomLeft.Z;
                     coords.TopRight.Z = coords.BottomLeft.Z;
 
-                    SetTile(new ccGridSize(i, j), ref coords);
+                    SetTile(new CCGridSize(i, j), ref coords);
                 }
             }
         }
@@ -114,7 +114,7 @@ namespace cocos2d
         /// <summary>
         /// creates the action with a number of waves, the waves amplitude, the grid size and the duration
         /// </summary>
-        public static CCWavesTiles3D Create(int wav, float amp, ccGridSize gridSize, float duration)
+        public static CCWavesTiles3D Create(int wav, float amp, CCGridSize gridSize, float duration)
         {
             var pAction = new CCWavesTiles3D();
             pAction.InitWithWaves(wav, amp, gridSize, duration);

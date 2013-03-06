@@ -31,7 +31,7 @@ namespace cocos2d
             }
         }
 
-        public bool InitWithPosition(CCPoint pos, float r, ccGridSize gridSize, float duration)
+        public bool InitWithPosition(CCPoint pos, float r, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -76,11 +76,11 @@ namespace cocos2d
             {
                 int i, j;
 
-                for (i = 0; i < m_sGridSize.x + 1; ++i)
+                for (i = 0; i < m_sGridSize.X + 1; ++i)
                 {
-                    for (j = 0; j < m_sGridSize.y + 1; ++j)
+                    for (j = 0; j < m_sGridSize.Y + 1; ++j)
                     {
-                        CCVertex3F v = OriginalVertex(new ccGridSize(i, j));
+                        CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
                         var vect = new CCPoint(m_positionInPixels.x - v.X, m_positionInPixels.y - v.Y);
                         float r = CCPointExtension.Length(vect);
 
@@ -105,7 +105,7 @@ namespace cocos2d
                             }
                         }
 
-                        SetVertex(new ccGridSize(i, j), ref v);
+                        SetVertex(new CCGridSize(i, j), ref v);
                     }
                 }
 
@@ -113,7 +113,7 @@ namespace cocos2d
             }
         }
 
-        public static CCLens3D Create(CCPoint pos, float r, ccGridSize gridSize, float duration)
+        public static CCLens3D Create(CCPoint pos, float r, CCGridSize gridSize, float duration)
         {
             var pAction = new CCLens3D();
             pAction.InitWithPosition(pos, r, gridSize, duration);

@@ -9,7 +9,7 @@ namespace cocos2d
     {
         //! numbers of tiles to render
         protected int m_nItemsToRender;
-        protected Dictionary<ccGridSize, int> m_pPosToAtlasIndex;
+        protected Dictionary<CCGridSize, int> m_pPosToAtlasIndex;
         private tImageTGA m_pTGAInfo;
 
         public tImageTGA TGAInfo
@@ -33,7 +33,7 @@ namespace cocos2d
             if (base.InitWithTileFile(tile, tileWidth, tileHeight, m_nItemsToRender))
             {
                 m_tColor = ccTypes.ccWHITE;
-                m_pPosToAtlasIndex = new Dictionary<ccGridSize, int>();
+                m_pPosToAtlasIndex = new Dictionary<CCGridSize, int>();
                 UpdateAtlasValues();
                 ContentSize = new CCSize(m_pTGAInfo.width * m_uItemWidth, m_pTGAInfo.height * m_uItemHeight);
                 return true;
@@ -41,31 +41,31 @@ namespace cocos2d
             return false;
         }
 
-        public Color TileAt(ccGridSize position)
+        public Color TileAt(CCGridSize position)
         {
             Debug.Assert(m_pTGAInfo != null, "tgaInfo must not be nil");
-            Debug.Assert(position.x < m_pTGAInfo.width, "Invalid position.x");
-            Debug.Assert(position.y < m_pTGAInfo.height, "Invalid position.y");
+            Debug.Assert(position.X < m_pTGAInfo.width, "Invalid position.x");
+            Debug.Assert(position.Y < m_pTGAInfo.height, "Invalid position.y");
 
-            return m_pTGAInfo.imageData[position.x + position.y * m_pTGAInfo.width];
+            return m_pTGAInfo.imageData[position.X + position.Y * m_pTGAInfo.width];
         }
 
-        public void SetTile(Color tile, ccGridSize position)
+        public void SetTile(Color tile, CCGridSize position)
         {
             Debug.Assert(m_pTGAInfo != null, "tgaInfo must not be nil");
             Debug.Assert(m_pPosToAtlasIndex != null, "posToAtlasIndex must not be nil");
-            Debug.Assert(position.x < m_pTGAInfo.width, "Invalid position.x");
-            Debug.Assert(position.y < m_pTGAInfo.height, "Invalid position.x");
+            Debug.Assert(position.X < m_pTGAInfo.width, "Invalid position.x");
+            Debug.Assert(position.Y < m_pTGAInfo.height, "Invalid position.x");
             Debug.Assert(tile.R != 0, "R component must be non 0");
 
-            Color value = m_pTGAInfo.imageData[position.x + position.y * m_pTGAInfo.width];
+            Color value = m_pTGAInfo.imageData[position.X + position.Y * m_pTGAInfo.width];
             if (value.R == 0)
             {
                 CCLog.Log("cocos2d: Value.r must be non 0.");
             }
             else
             {
-                m_pTGAInfo.imageData[position.x + position.y * m_pTGAInfo.width] = tile;
+                m_pTGAInfo.imageData[position.X + position.Y * m_pTGAInfo.width] = tile;
 
                 // XXX: this method consumes a lot of memory
                 // XXX: a tree of something like that shall be impolemented
@@ -102,10 +102,10 @@ namespace cocos2d
             }
         }
 
-        private void UpdateAtlasValueAt(ccGridSize pos, Color value, int index)
+        private void UpdateAtlasValueAt(CCGridSize pos, Color value, int index)
         {
-            int x = pos.x;
-            int y = pos.y;
+            int x = pos.X;
+            int y = pos.Y;
 
             float row = (float)(value.R % m_uItemsPerRow);
             float col = (float)(value.R / m_uItemsPerRow);
@@ -177,7 +177,7 @@ namespace cocos2d
 
                         if (value.R != 0)
                         {
-                            var pos = new ccGridSize(x, y);
+                            var pos = new CCGridSize(x, y);
                             UpdateAtlasValueAt(pos, value, total);
                             m_pPosToAtlasIndex.Add(pos, total);
 

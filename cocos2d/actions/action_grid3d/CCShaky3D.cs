@@ -5,7 +5,7 @@ namespace cocos2d
         protected bool m_bShakeZ;
         protected int m_nRandrange;
 
-        public bool InitWithRange(int range, bool shakeZ, ccGridSize gridSize, float duration)
+        public bool InitWithRange(int range, bool shakeZ, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -42,11 +42,11 @@ namespace cocos2d
         {
             int i, j;
 
-            for (i = 0; i < (m_sGridSize.x + 1); ++i)
+            for (i = 0; i < (m_sGridSize.X + 1); ++i)
             {
-                for (j = 0; j < (m_sGridSize.y + 1); ++j)
+                for (j = 0; j < (m_sGridSize.Y + 1); ++j)
                 {
-                    CCVertex3F v = OriginalVertex(new ccGridSize(i, j));
+                    CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
                     v.X += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     v.Y += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     if (m_bShakeZ)
@@ -54,12 +54,12 @@ namespace cocos2d
                         v.Z += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     }
 
-                    SetVertex(new ccGridSize(i, j), ref v);
+                    SetVertex(new CCGridSize(i, j), ref v);
                 }
             }
         }
 
-        public static CCShaky3D Create(int range, bool shakeZ, ccGridSize gridSize, float duration)
+        public static CCShaky3D Create(int range, bool shakeZ, CCGridSize gridSize, float duration)
         {
             var pAction = new CCShaky3D();
             pAction.InitWithRange(range, shakeZ, gridSize, duration);

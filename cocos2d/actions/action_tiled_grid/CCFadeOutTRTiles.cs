@@ -33,31 +33,31 @@ namespace cocos2d
     /// </summary>
     public class CCFadeOutTRTiles : CCTiledGrid3DAction
     {
-        public virtual float TestFunc(ccGridSize pos, float time)
+        public virtual float TestFunc(CCGridSize pos, float time)
         {
-            var n = new CCPoint((m_sGridSize.x * time), (m_sGridSize.y * time));
+            var n = new CCPoint((m_sGridSize.X * time), (m_sGridSize.Y * time));
             if ((n.x + n.y) == 0.0f)
             {
                 return 1.0f;
             }
 
-            return (float) Math.Pow((pos.x + pos.y) / (n.x + n.y), 6);
+            return (float) Math.Pow((pos.X + pos.Y) / (n.x + n.y), 6);
         }
 
-        public void TurnOnTile(ccGridSize pos)
+        public void TurnOnTile(CCGridSize pos)
         {
             CCQuad3 orig = OriginalTile(pos);
             SetTile(pos, ref orig);
         }
 
-        public void TurnOffTile(ccGridSize pos)
+        public void TurnOffTile(CCGridSize pos)
         {
             var coords = new CCQuad3();
             //memset(&coords, 0, sizeof(ccQuad3));
             SetTile(pos, ref coords);
         }
 
-        public virtual void TransformTile(ccGridSize pos, float distance)
+        public virtual void TransformTile(CCGridSize pos, float distance)
         {
             CCQuad3 coords = OriginalTile(pos);
             CCPoint step = m_pTarget.Grid.Step;
@@ -81,22 +81,22 @@ namespace cocos2d
         {
             int i, j;
 
-            for (i = 0; i < m_sGridSize.x; ++i)
+            for (i = 0; i < m_sGridSize.X; ++i)
             {
-                for (j = 0; j < m_sGridSize.y; ++j)
+                for (j = 0; j < m_sGridSize.Y; ++j)
                 {
-                    float distance = TestFunc(new ccGridSize(i, j), time);
+                    float distance = TestFunc(new CCGridSize(i, j), time);
                     if (distance == 0)
                     {
-                        TurnOffTile(new ccGridSize(i, j));
+                        TurnOffTile(new CCGridSize(i, j));
                     }
                     else if (distance < 1)
                     {
-                        TransformTile(new ccGridSize(i, j), distance);
+                        TransformTile(new CCGridSize(i, j), distance);
                     }
                     else
                     {
-                        TurnOnTile(new ccGridSize(i, j));
+                        TurnOnTile(new CCGridSize(i, j));
                     }
                 }
             }
@@ -105,7 +105,7 @@ namespace cocos2d
         /// <summary>
         /// creates the action with the grid size and the duration
         /// </summary>
-        public new static CCFadeOutTRTiles Create(ccGridSize gridSize, float time)
+        public new static CCFadeOutTRTiles Create(CCGridSize gridSize, float time)
         {
             var pAction = new CCFadeOutTRTiles();
             pAction.InitWithSize(gridSize, time);

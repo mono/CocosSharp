@@ -295,16 +295,16 @@ namespace cocos2d
     /// <summary>
     /// A 2D grid size
     /// </summary>
-    public struct ccGridSize
+    public struct CCGridSize
     {
-        public ccGridSize(int inx, int iny)
+        public CCGridSize(int inx, int iny)
         {
-            x = inx;
-            y = iny;
+            X = inx;
+            Y = iny;
         }
 
-        public int x;
-        public int y;
+        public int X;
+        public int Y;
     }
 
     /// <summary>
@@ -632,9 +632,9 @@ namespace cocos2d
         }
 
         //! helper function to create a ccGridSize
-        public static ccGridSize ccg(int x, int y)
+        public static CCGridSize ccg(int x, int y)
         {
-            ccGridSize v = new ccGridSize(x, y);
+            CCGridSize v = new CCGridSize(x, y);
             return v;
         }
     }

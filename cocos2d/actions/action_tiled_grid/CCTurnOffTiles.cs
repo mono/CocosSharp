@@ -39,7 +39,7 @@ namespace cocos2d
         /// <summary>
         /// initializes the action with a random seed, the grid size and the duration 
         /// </summary>
-        public bool InitWithSeed(int s, ccGridSize gridSize, float duration)
+        public bool InitWithSeed(int s, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -64,13 +64,13 @@ namespace cocos2d
             }
         }
 
-        public void TurnOnTile(ccGridSize pos)
+        public void TurnOnTile(CCGridSize pos)
         {
             CCQuad3 orig = OriginalTile(pos);
             SetTile(pos, ref orig);
         }
 
-        public void TurnOffTile(ccGridSize pos)
+        public void TurnOffTile(CCGridSize pos)
         {
             SetTile(pos, ref m_pZero);
         }
@@ -106,7 +106,7 @@ namespace cocos2d
                 Random.Next(m_nSeed);
             }
 
-            m_nTilesCount = m_sGridSize.x * m_sGridSize.y;
+            m_nTilesCount = m_sGridSize.X * m_sGridSize.Y;
             m_pTilesOrder = new int[m_nTilesCount];
 
             for (i = 0; i < m_nTilesCount; ++i)
@@ -126,7 +126,7 @@ namespace cocos2d
             for (i = 0; i < m_nTilesCount; i++)
             {
                 t = m_pTilesOrder[i];
-                var tilePos = new ccGridSize(t / m_sGridSize.y, t % m_sGridSize.y);
+                var tilePos = new CCGridSize(t / m_sGridSize.Y, t % m_sGridSize.Y);
 
                 if (i < l)
                 {
@@ -142,7 +142,7 @@ namespace cocos2d
         /// <summary>
         /// creates the action with the grid size and the duration
         /// </summary>
-        public new static CCTurnOffTiles Create(ccGridSize size, float d)
+        public new static CCTurnOffTiles Create(CCGridSize size, float d)
         {
             var pAction = new CCTurnOffTiles();
             pAction.InitWithSize(size, d);
@@ -152,7 +152,7 @@ namespace cocos2d
         /// <summary>
         /// creates the action with a random seed, the grid size and the duration 
         /// </summary>
-        public static CCTurnOffTiles Create(int s, ccGridSize gridSize, float duration)
+        public static CCTurnOffTiles Create(int s, CCGridSize gridSize, float duration)
         {
             var pAction = new CCTurnOffTiles();
             pAction.InitWithSeed(s, gridSize, duration);

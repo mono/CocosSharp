@@ -31,17 +31,17 @@ namespace cocos2d
             }
         }
 
-        public CCVertex3F Vertex(ccGridSize pos)
+        public CCVertex3F Vertex(CCGridSize pos)
         {
             return m_pGrid.Vertex(pos);
         }
 
-        public CCVertex3F OriginalVertex(ccGridSize pos)
+        public CCVertex3F OriginalVertex(CCGridSize pos)
         {
             return m_pGrid.OriginalVertex(pos);
         }
 
-        public void SetVertex(ccGridSize pos, ref CCVertex3F vertex)
+        public void SetVertex(CCGridSize pos, ref CCVertex3F vertex)
         {
             m_pGrid.SetVertex(pos, ref vertex);
         }

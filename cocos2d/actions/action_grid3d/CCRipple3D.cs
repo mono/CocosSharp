@@ -36,7 +36,7 @@ namespace cocos2d
         }
 
         public bool InitWithPosition(CCPoint pos, float r, int wav, float amp,
-                                     ccGridSize gridSize, float duration)
+                                     CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -78,14 +78,14 @@ namespace cocos2d
         {
             int i, j;
 
-            ccGridSize gs;
+            CCGridSize gs;
 
-            for (i = 0; i < (m_sGridSize.x + 1); ++i)
+            for (i = 0; i < (m_sGridSize.X + 1); ++i)
             {
-                for (j = 0; j < (m_sGridSize.y + 1); ++j)
+                for (j = 0; j < (m_sGridSize.Y + 1); ++j)
                 {
-                    gs.x = i;
-                    gs.y = j;
+                    gs.X = i;
+                    gs.Y = j;
 
                     CCVertex3F v = OriginalVertex(gs);
 
@@ -107,7 +107,7 @@ namespace cocos2d
             }
         }
 
-        public static CCRipple3D Create(CCPoint pos, float r, int wav, float amp, ccGridSize gridSize, float duration)
+        public static CCRipple3D Create(CCPoint pos, float r, int wav, float amp, CCGridSize gridSize, float duration)
         {
             var pAction = new CCRipple3D();
             pAction.InitWithPosition(pos, r, wav, amp, gridSize, duration);

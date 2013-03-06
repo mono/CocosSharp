@@ -68,7 +68,7 @@ namespace cocos2d
             return true;
         }
 
-        public CCActionInterval ActionWithSize(ccGridSize vector)
+        public CCActionInterval ActionWithSize(CCGridSize vector)
         {
             if (m_bBack)
             {

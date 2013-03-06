@@ -17,12 +17,12 @@ namespace cocos2d
             var sinTheta = (float) Math.Sin(theta);
             var cosTheta = (float) Math.Cos(theta);
 
-            for (int i = 0; i <= m_sGridSize.x; ++i)
+            for (int i = 0; i <= m_sGridSize.X; ++i)
             {
-                for (int j = 0; j <= m_sGridSize.y; ++j)
+                for (int j = 0; j <= m_sGridSize.Y; ++j)
                 {
                     // Get original vertex
-                    var gs = new ccGridSize(i, j);
+                    var gs = new CCGridSize(i, j);
                     CCVertex3F p = OriginalVertex(gs);
 
                     var R = (float) Math.Sqrt((p.X * p.X) + ((p.Y - ay) * (p.Y - ay)));
@@ -63,7 +63,7 @@ namespace cocos2d
             }
         }
 
-        public new static CCPageTurn3D Create(ccGridSize gridSize, float time)
+        public new static CCPageTurn3D Create(CCGridSize gridSize, float time)
         {
             var pAction = new CCPageTurn3D();
             pAction.InitWithSize(gridSize, time);

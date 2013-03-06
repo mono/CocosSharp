@@ -27,7 +27,7 @@ namespace cocos2d
 {
     public class CCTransitionFadeDown : CCTransitionFadeTR
     {
-        public override CCActionInterval CreateAction(ccGridSize size)
+        public override CCActionInterval CreateAction(CCGridSize size)
         {
             return CCFadeOutDownTiles.Create(size, m_fDuration);
         }

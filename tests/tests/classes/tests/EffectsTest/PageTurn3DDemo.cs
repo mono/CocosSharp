@@ -11,7 +11,7 @@ namespace tests
         public new static CCActionInterval actionWithDuration(float t)
         {
             CCDirector.SharedDirector.SetDepthTest(true);
-            return CCPageTurn3D.Create(new ccGridSize(15, 10), t);
+            return CCPageTurn3D.Create(new CCGridSize(15, 10), t);
         }
     }
 }

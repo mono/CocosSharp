@@ -33,18 +33,18 @@ namespace cocos2d
     /// </summary>
     public class CCFadeOutUpTiles : CCFadeOutTRTiles
     {
-        public override float TestFunc(ccGridSize pos, float time)
+        public override float TestFunc(CCGridSize pos, float time)
         {
-            var n = new CCPoint((m_sGridSize.x * time), (m_sGridSize.y * time));
+            var n = new CCPoint((m_sGridSize.X * time), (m_sGridSize.Y * time));
             if (n.y == 0.0f)
             {
                 return 1.0f;
             }
 
-            return (float) Math.Pow(pos.y / n.y, 6);
+            return (float) Math.Pow(pos.Y / n.y, 6);
         }
 
-        public override void TransformTile(ccGridSize pos, float distance)
+        public override void TransformTile(CCGridSize pos, float distance)
         {
             CCQuad3 coords = OriginalTile(pos);
             CCPoint step = m_pTarget.Grid.Step;
@@ -60,7 +60,7 @@ namespace cocos2d
         /// <summary>
         /// creates the action with the grid size and the duration 
         /// </summary>
-        public new static CCFadeOutUpTiles Create(ccGridSize gridSize, float time)
+        public new static CCFadeOutUpTiles Create(CCGridSize gridSize, float time)
         {
             var pAction = new CCFadeOutUpTiles();
             pAction.InitWithSize(gridSize, time);

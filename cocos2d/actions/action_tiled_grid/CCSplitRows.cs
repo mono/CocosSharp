@@ -37,7 +37,7 @@ namespace cocos2d
         {
             m_nRows = nRows;
 
-            return base.InitWithSize(new ccGridSize(1, nRows), duration);
+            return base.InitWithSize(new CCGridSize(1, nRows), duration);
         }
 
         public override CCObject CopyWithZone(CCZone pZone)
@@ -64,9 +64,9 @@ namespace cocos2d
         {
             int j;
 
-            for (j = 0; j < m_sGridSize.y; ++j)
+            for (j = 0; j < m_sGridSize.Y; ++j)
             {
-                CCQuad3 coords = OriginalTile(new ccGridSize(0, j));
+                CCQuad3 coords = OriginalTile(new CCGridSize(0, j));
                 float direction = 1;
 
                 if ((j % 2) == 0)
@@ -79,7 +79,7 @@ namespace cocos2d
                 coords.TopLeft.X += direction * m_winSize.Width * time;
                 coords.TopRight.X += direction * m_winSize.Width * time;
 
-                SetTile(new ccGridSize(0, j), ref coords);
+                SetTile(new CCGridSize(0, j), ref coords);
             }
         }
 

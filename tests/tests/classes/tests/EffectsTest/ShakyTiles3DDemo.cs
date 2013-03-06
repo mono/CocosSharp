@@ -10,7 +10,7 @@ namespace tests
     {
         public new static CCActionInterval actionWithDuration(float t)
         {
-            return CCShakyTiles3D.Create(5, true, new ccGridSize(16, 12), t);
+            return CCShakyTiles3D.Create(5, true, new CCGridSize(16, 12), t);
         }
     }
 }

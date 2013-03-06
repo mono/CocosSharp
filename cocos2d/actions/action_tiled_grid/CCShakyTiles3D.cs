@@ -33,7 +33,7 @@ namespace cocos2d
         /// <summary>
         ///  initializes the action with a range, whether or not to shake Z vertices, a grid size, and duration
         /// </summary>
-        public bool InitWithRange(int nRange, bool bShakeZ, ccGridSize gridSize,
+        public bool InitWithRange(int nRange, bool bShakeZ, CCGridSize gridSize,
                                   float duration)
         {
             if (base.InitWithSize(gridSize, duration))
@@ -72,11 +72,11 @@ namespace cocos2d
         {
             int i, j;
 
-            for (i = 0; i < m_sGridSize.x; ++i)
+            for (i = 0; i < m_sGridSize.X; ++i)
             {
-                for (j = 0; j < m_sGridSize.y; ++j)
+                for (j = 0; j < m_sGridSize.Y; ++j)
                 {
-                    CCQuad3 coords = OriginalTile(new ccGridSize(i, j));
+                    CCQuad3 coords = OriginalTile(new CCGridSize(i, j));
                     // X
                     coords.BottomLeft.X += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     coords.BottomRight.X += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
@@ -97,7 +97,7 @@ namespace cocos2d
                         coords.TopRight.Z += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     }
 
-                    SetTile(new ccGridSize(i, j), ref coords);
+                    SetTile(new CCGridSize(i, j), ref coords);
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace cocos2d
         /// <summary>
         /// creates the action with a range, whether or not to shake Z vertices, a grid size, and duration
         /// </summary>
-        public static CCShakyTiles3D Create(int nRange, bool bShakeZ, ccGridSize gridSize, float duration)
+        public static CCShakyTiles3D Create(int nRange, bool bShakeZ, CCGridSize gridSize, float duration)
         {
             var pAction = new CCShakyTiles3D();
             pAction.InitWithRange(nRange, bShakeZ, gridSize, duration);

@@ -39,9 +39,9 @@ namespace cocos2d
         /// <summary>
         ///  returns the tile at the given position
         /// </summary>
-        public CCQuad3 Tile(ccGridSize pos)
+        public CCQuad3 Tile(CCGridSize pos)
         {
-            int idx = (m_sGridSize.y * pos.x + pos.y) * 4;
+            int idx = (m_sGridSize.Y * pos.X + pos.Y) * 4;
 
             ccV3F_T2F[] vertArray = m_pVertices;
 
@@ -57,18 +57,18 @@ namespace cocos2d
         /// <summary>
         /// returns the original tile (untransformed) at the given position
         /// </summary>
-        public CCQuad3 OriginalTile(ccGridSize pos)
+        public CCQuad3 OriginalTile(CCGridSize pos)
         {
-            int idx = (m_sGridSize.y * pos.x + pos.y);
+            int idx = (m_sGridSize.Y * pos.X + pos.Y);
             return m_pOriginalVertices[idx];
         }
 
         /// <summary>
         /// sets a new tile
         /// </summary>
-        public void SetTile(ccGridSize pos, ref CCQuad3 coords)
+        public void SetTile(CCGridSize pos, ref CCQuad3 coords)
         {
-            int idx = (m_sGridSize.y * pos.x + pos.y) * 4;
+            int idx = (m_sGridSize.Y * pos.X + pos.Y) * 4;
 
             ccV3F_T2F[] vertArray = m_pVertices;
 
@@ -108,7 +108,7 @@ namespace cocos2d
         {
             if (m_nReuseGrid > 0)
             {
-                int numQuads = m_sGridSize.x * m_sGridSize.y;
+                int numQuads = m_sGridSize.X * m_sGridSize.Y;
 
                 CCQuad3[] orig = m_pOriginalVertices;
                 ccV3F_T2F[] verts = m_pVertices;
@@ -132,7 +132,7 @@ namespace cocos2d
             float height = m_pTexture.PixelsHigh;
             float imageH = m_pTexture.ContentSizeInPixels.Height;
 
-            int numQuads = m_sGridSize.x * m_sGridSize.y;
+            int numQuads = m_sGridSize.X * m_sGridSize.Y;
 
             m_pVertices = new ccV3F_T2F[numQuads * 4];
             m_pOriginalVertices = new CCQuad3[numQuads];
@@ -144,9 +144,9 @@ namespace cocos2d
 
             int index = 0;
 
-            for (int x = 0; x < m_sGridSize.x; x++)
+            for (int x = 0; x < m_sGridSize.X; x++)
             {
-                for (int y = 0; y < m_sGridSize.y; y++)
+                for (int y = 0; y < m_sGridSize.Y; y++)
                 {
                     float x1 = x * m_obStep.x;
                     float x2 = x1 + m_obStep.x;
@@ -199,7 +199,7 @@ namespace cocos2d
             }
         }
 
-        public static CCTiledGrid3D Create(ccGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
+        public static CCTiledGrid3D Create(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
         {
             var pRet = new CCTiledGrid3D();
             if (pRet.InitWithSize(gridSize, pTexture, bFlipped))
@@ -209,7 +209,7 @@ namespace cocos2d
             return null;
         }
 
-        public static CCTiledGrid3D Create(ccGridSize gridSize)
+        public static CCTiledGrid3D Create(CCGridSize gridSize)
         {
             var pRet = new CCTiledGrid3D();
             if (pRet.InitWithSize(gridSize))

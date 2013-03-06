@@ -92,14 +92,14 @@ namespace tests
             //    }
 
             // NEW since v0.7
-            Color c = tilemap.TileAt(new ccGridSize(13, 21));
+            Color c = tilemap.TileAt(new CCGridSize(13, 21));
             c.R++;
             c.R %= 50;
             if (c.R == 0)
                 c.R = 1;
 
             // NEW since v0.7
-            tilemap.SetTile(c, new ccGridSize(13, 21));
+            tilemap.SetTile(c, new CCGridSize(13, 21));
         }
 
         public override string title()

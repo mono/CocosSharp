@@ -11,7 +11,7 @@ namespace tests
         public new static CCActionInterval actionWithDuration(float t)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
-            return CCJumpTiles3D.Create(2, 30, new ccGridSize(15, 10), t);
+            return CCJumpTiles3D.Create(2, 30, new CCGridSize(15, 10), t);
         }
     }
 }

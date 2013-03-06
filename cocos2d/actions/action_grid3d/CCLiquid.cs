@@ -21,7 +21,7 @@ namespace cocos2d
         }
 
 
-        public bool InitWithWaves(int wav, float amp, ccGridSize gridSize, float duration)
+        public bool InitWithWaves(int wav, float amp, CCGridSize gridSize, float duration)
         {
             if (InitWithSize(gridSize, duration))
             {
@@ -59,19 +59,19 @@ namespace cocos2d
         {
             int i, j;
 
-            for (i = 1; i < m_sGridSize.x; ++i)
+            for (i = 1; i < m_sGridSize.X; ++i)
             {
-                for (j = 1; j < m_sGridSize.y; ++j)
+                for (j = 1; j < m_sGridSize.Y; ++j)
                 {
-                    CCVertex3F v = OriginalVertex(new ccGridSize(i, j));
+                    CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
                     v.X = (v.X + ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.X * .01f) * m_fAmplitude * m_fAmplitudeRate));
                     v.Y = (v.Y + ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.Y * .01f) * m_fAmplitude * m_fAmplitudeRate));
-                    SetVertex(new ccGridSize(i, j), ref v);
+                    SetVertex(new CCGridSize(i, j), ref v);
                 }
             }
         }
 
-        public static CCLiquid Create(int wav, float amp, ccGridSize gridSize, float duration)
+        public static CCLiquid Create(int wav, float amp, CCGridSize gridSize, float duration)
         {
             var pAction = new CCLiquid();
             pAction.InitWithWaves(wav, amp, gridSize, duration);

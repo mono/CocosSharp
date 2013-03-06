@@ -29,21 +29,21 @@ namespace cocos2d
 {
     public class CCFadeOutBLTiles : CCFadeOutTRTiles
     {
-        public override float TestFunc(ccGridSize pos, float time)
+        public override float TestFunc(CCGridSize pos, float time)
         {
-            var n = new CCPoint((m_sGridSize.x * (1.0f - time)), (m_sGridSize.y * (1.0f - time)));
-            if ((pos.x + pos.y) == 0)
+            var n = new CCPoint((m_sGridSize.X * (1.0f - time)), (m_sGridSize.Y * (1.0f - time)));
+            if ((pos.X + pos.Y) == 0)
             {
                 return 1.0f;
             }
 
-            return (float) Math.Pow((n.x + n.y) / (pos.x + pos.y), 6);
+            return (float) Math.Pow((n.x + n.y) / (pos.X + pos.Y), 6);
         }
 
         /// <summary>
         /// creates the action with the grid size and the duration
         /// </summary>
-        public new static CCFadeOutBLTiles Create(ccGridSize gridSize, float time)
+        public new static CCFadeOutBLTiles Create(CCGridSize gridSize, float time)
         {
             var pAction = new CCFadeOutBLTiles();
             pAction.InitWithSize(gridSize, time);
