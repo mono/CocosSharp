@@ -108,7 +108,7 @@ namespace cocos2d
         public CCRect TextureRect
         {
             get { return m_obRect; }
-            set { SetTextureRect(value, false, value.size); }
+            set { SetTextureRect(value, false, value.Size); }
         }
 
         public CCPoint OffsetPosition
@@ -298,10 +298,10 @@ namespace cocos2d
                     m_bRecursiveDirty = false;
                     Dirty = false;
 
-                    float x1 = m_obOffsetPosition.x;
-                    float y1 = m_obOffsetPosition.y;
-                    float x2 = x1 + m_obRect.size.Width;
-                    float y2 = y1 + m_obRect.size.Height;
+                    float x1 = m_obOffsetPosition.X;
+                    float y1 = m_obOffsetPosition.Y;
+                    float x2 = x1 + m_obRect.Size.Width;
+                    float y2 = y1 + m_obRect.Size.Height;
 
                     m_sQuad.BottomLeft.Vertices = new CCVertex3F(x1, y1, 0);
                     m_sQuad.BottomRight.Vertices = new CCVertex3F(x2, y1, 0);
@@ -507,7 +507,7 @@ namespace cocos2d
 
             // update texture (calls updateBlendFunc)
             Texture = pTexture;
-            SetTextureRect(rect, rotated, rect.size);
+            SetTextureRect(rect, rotated, rect.Size);
 
             // by default use "Self Render".
             // if the sprite is added to a batchnode, then it will automatically switch to "batchnode Render"
@@ -526,7 +526,7 @@ namespace cocos2d
             Debug.Assert(texture != null, "Invalid texture for sprite");
 
             var rect = new CCRect();
-            rect.size = texture.ContentSize;
+            rect.Size = texture.ContentSize;
 
             return InitWithTexture(texture, rect);
         }
@@ -547,7 +547,7 @@ namespace cocos2d
             if (null != pTexture)
             {
                 var rect = new CCRect();
-                rect.size = pTexture.ContentSize;
+                rect.Size = pTexture.ContentSize;
                 return InitWithTexture(pTexture, rect);
             }
 
@@ -580,7 +580,7 @@ namespace cocos2d
 
         public void SetTextureRect(CCRect rect)
         {
-            SetTextureRect(rect, false, rect.size);
+            SetTextureRect(rect, false, rect.Size);
         }
 
         public void SetTextureRect(CCRect value, bool rotated, CCSize untrimmedSize)
@@ -596,15 +596,15 @@ namespace cocos2d
             // issue #732
             if (m_bFlipX)
             {
-                relativeOffset.x = -relativeOffset.x;
+                relativeOffset.X = -relativeOffset.X;
             }
             if (m_bFlipY)
             {
-                relativeOffset.y = -relativeOffset.y;
+                relativeOffset.Y = -relativeOffset.Y;
             }
 
-            m_obOffsetPosition.x = relativeOffset.x + (m_tContentSize.Width - m_obRect.size.Width) / 2;
-            m_obOffsetPosition.y = relativeOffset.y + (m_tContentSize.Height - m_obRect.size.Height) / 2;
+            m_obOffsetPosition.X = relativeOffset.X + (m_tContentSize.Width - m_obRect.Size.Width) / 2;
+            m_obOffsetPosition.Y = relativeOffset.Y + (m_tContentSize.Height - m_obRect.Size.Height) / 2;
 
             // rendering using batch node
             if (m_pobBatchNode != null)
@@ -617,10 +617,10 @@ namespace cocos2d
                 // self rendering
 
                 // Atlas: Vertex
-                float x1 = 0 + m_obOffsetPosition.x;
-                float y1 = 0 + m_obOffsetPosition.y;
-                float x2 = x1 + m_obRect.size.Width;
-                float y2 = y1 + m_obRect.size.Height;
+                float x1 = 0 + m_obOffsetPosition.X;
+                float y1 = 0 + m_obOffsetPosition.Y;
+                float x2 = x1 + m_obRect.Size.Width;
+                float y2 = y1 + m_obRect.Size.Height;
 
                 // Don't update Z.
                 m_sQuad.BottomLeft.Vertices = CCTypes.Vertex3(x1, y1, 0);
@@ -659,10 +659,10 @@ namespace cocos2d
                 top        = (2*rect.origin.y+1)/(2*atlasHeight);
                 bottom    = top+(rect.size.width*2-2)/(2*atlasHeight);
 #else
-                left = rect.origin.x / atlasWidth;
-                right = (rect.origin.x + rect.size.Height) / atlasWidth;
-                top = rect.origin.y / atlasHeight;
-                bottom = (rect.origin.y + rect.size.Width) / atlasHeight;
+                left = rect.Origin.X / atlasWidth;
+                right = (rect.Origin.X + rect.Size.Height) / atlasWidth;
+                top = rect.Origin.Y / atlasHeight;
+                bottom = (rect.Origin.Y + rect.Size.Width) / atlasHeight;
 #endif
                 // CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
 
@@ -693,10 +693,10 @@ namespace cocos2d
                 top        = (2*rect.origin.y+1)/(2*atlasHeight);
                 bottom    = top + (rect.size.height*2-2)/(2*atlasHeight);
 #else
-                left = rect.origin.x / atlasWidth;
-                right = (rect.origin.x + rect.size.Width) / atlasWidth;
-                top = rect.origin.y / atlasHeight;
-                bottom = (rect.origin.y + rect.size.Height) / atlasHeight;
+                left = rect.Origin.X / atlasWidth;
+                right = (rect.Origin.X + rect.Size.Width) / atlasWidth;
+                top = rect.Origin.Y / atlasHeight;
+                bottom = (rect.Origin.Y + rect.Size.Height) / atlasHeight;
 #endif
                 // ! CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
 
@@ -758,10 +758,10 @@ namespace cocos2d
                     // calculate the Quad based on the Affine Matrix
                     //
 
-                    CCSize size = m_obRect.size;
+                    CCSize size = m_obRect.Size;
 
-                    float x1 = m_obOffsetPosition.x;
-                    float y1 = m_obOffsetPosition.y;
+                    float x1 = m_obOffsetPosition.X;
+                    float y1 = m_obOffsetPosition.Y;
 
                     float x2 = x1 + size.Width;
                     float y2 = y1 + size.Height;
@@ -1214,7 +1214,7 @@ namespace cocos2d
                         if (ca > 0 && cb > 0) // If both colors are not transparent (the alpha channel is not 0), then there is a collision
                         {
                             // Find the hit point, where on the sprite in real space the collision occurs.
-                            hitPoint = new CCPoint(a.Position.x - a.AnchorPoint.x * a.ContentSizeInPixels.Width + x, a.Position.y - a.AnchorPoint.y * a.ContentSizeInPixels.Height + y);
+                            hitPoint = new CCPoint(a.Position.X - a.AnchorPoint.X * a.ContentSizeInPixels.Width + x, a.Position.Y - a.AnchorPoint.Y * a.ContentSizeInPixels.Height + y);
                             return (true);
                         }
                     }
@@ -1267,7 +1267,7 @@ namespace cocos2d
                         if (ca.A != 0 && cb.A != 0) // If both colors are not transparent (the alpha channel is not 0), then there is a collision
                         {
                             // Find the hit point, where on the sprite in real space the collision occurs.
-                            hitPoint = new CCPoint(a.Position.x - a.AnchorPoint.x * a.ContentSizeInPixels.Width + x, a.Position.y - a.AnchorPoint.y * a.ContentSizeInPixels.Height + y);
+                            hitPoint = new CCPoint(a.Position.X - a.AnchorPoint.X * a.ContentSizeInPixels.Width + x, a.Position.Y - a.AnchorPoint.Y * a.ContentSizeInPixels.Height + y);
                             return true;
                         }
                     }
@@ -1288,8 +1288,8 @@ namespace cocos2d
             get
             {
                 return new Rectangle(
-                    (int)(Position.x - Texture.ContentSize.Width / 2f),
-                    (int)(Position.y - Texture.ContentSize.Height / 2f),
+                    (int)(Position.X - Texture.ContentSize.Width / 2f),
+                    (int)(Position.Y - Texture.ContentSize.Height / 2f),
                     (int)Texture.ContentSize.Width,
                     (int)Texture.ContentSize.Height);
             }

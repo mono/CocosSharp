@@ -32,13 +32,13 @@ namespace cocos2d
         public CCRect RectForGID(uint gid)
         {
             CCRect rect = new CCRect();
-            rect.size = m_tTileSize;
+            rect.Size = m_tTileSize;
             gid &= ccTMXTileFlags.kCCFlippedMask;
             gid = gid - m_uFirstGid;
             var max_x = (int) ((m_tImageSize.Width - m_uMargin * 2 + m_uSpacing) / (m_tTileSize.Width + m_uSpacing));
             //	int max_y = (imageSize.height - margin*2 + spacing) / (tileSize.height + spacing);
-            rect.origin.x = (gid % max_x) * (m_tTileSize.Width + m_uSpacing) + m_uMargin;
-            rect.origin.y = (gid / max_x) * (m_tTileSize.Height + m_uSpacing) + m_uMargin;
+            rect.Origin.X = (gid % max_x) * (m_tTileSize.Width + m_uSpacing) + m_uMargin;
+            rect.Origin.Y = (gid / max_x) * (m_tTileSize.Height + m_uSpacing) + m_uMargin;
             return rect;
         }
     }

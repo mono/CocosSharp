@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
@@ -52,7 +52,7 @@ namespace FarseerPhysics.TestBed.Tests
         public override void Mouse(MouseState state, MouseState oldState)
         {
             var pos = DrawManager.ScreenToWorld(state.X, state.Y);
-            _mousePos = new Vector2(pos.x, pos.y);
+            _mousePos = new Vector2(pos.X, pos.Y);
 
             if (state.LeftButton == ButtonState.Pressed)
             {

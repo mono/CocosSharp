@@ -192,12 +192,12 @@ namespace cocos2d
                 return;
 
             double c = Math.Sqrt(2.0);
-            var u = new CCPoint(m_AlongVector.x / h, m_AlongVector.y / h);
+            var u = new CCPoint(m_AlongVector.X / h, m_AlongVector.Y / h);
 
             // Compressed Interpolation mode
             if (m_bCompressedInterpolation)
             {
-                float h2 = 1 / (Math.Abs(u.x) + Math.Abs(u.y));
+                float h2 = 1 / (Math.Abs(u.X) + Math.Abs(u.Y));
                 u = CCPointExtension.Multiply(u, h2 * (float) c);
             }
 
@@ -221,34 +221,34 @@ namespace cocos2d
 
             // (-1, -1)
             m_pVertices[0].Color = new Color(
-                (byte) (E.R + (S.R - E.R) * ((c + u.x + u.y) / (2.0f * c))),
-                (byte) (E.G + (S.G - E.G) * ((c + u.x + u.y) / (2.0f * c))),
-                (byte) (E.B + (S.B - E.B) * ((c + u.x + u.y) / (2.0f * c))),
-                (byte) (E.A + (S.A - E.A) * ((c + u.x + u.y) / (2.0f * c)))
+                (byte) (E.R + (S.R - E.R) * ((c + u.X + u.Y) / (2.0f * c))),
+                (byte) (E.G + (S.G - E.G) * ((c + u.X + u.Y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c + u.X + u.Y) / (2.0f * c))),
+                (byte) (E.A + (S.A - E.A) * ((c + u.X + u.Y) / (2.0f * c)))
                 );
 
             // (1, -1)
             m_pVertices[1].Color = new Color(
-                (byte) (E.R + (S.R - E.R) * ((c - u.x + u.y) / (2.0f * c))),
-                (byte) (E.G + (S.G - E.G) * ((c - u.x + u.y) / (2.0f * c))),
-                (byte) (E.B + (S.B - E.B) * ((c - u.x + u.y) / (2.0f * c))),
-                (byte) (E.A + (S.A - E.A) * ((c - u.x + u.y) / (2.0f * c)))
+                (byte) (E.R + (S.R - E.R) * ((c - u.X + u.Y) / (2.0f * c))),
+                (byte) (E.G + (S.G - E.G) * ((c - u.X + u.Y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c - u.X + u.Y) / (2.0f * c))),
+                (byte) (E.A + (S.A - E.A) * ((c - u.X + u.Y) / (2.0f * c)))
                 );
 
             // (-1, 1)
             m_pVertices[2].Color = new Color(
-                (byte) (E.R + (S.R - E.R) * ((c + u.x - u.y) / (2.0f * c))),
-                (byte) (E.G + (S.G - E.G) * ((c + u.x - u.y) / (2.0f * c))),
-                (byte) (E.B + (S.B - E.B) * ((c + u.x - u.y) / (2.0f * c))),
-                (byte) (E.A + (S.A - E.A) * ((c + u.x - u.y) / (2.0f * c)))
+                (byte) (E.R + (S.R - E.R) * ((c + u.X - u.Y) / (2.0f * c))),
+                (byte) (E.G + (S.G - E.G) * ((c + u.X - u.Y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c + u.X - u.Y) / (2.0f * c))),
+                (byte) (E.A + (S.A - E.A) * ((c + u.X - u.Y) / (2.0f * c)))
                 );
 
             // (1, 1)
             m_pVertices[3].Color = new Color(
-                (byte) (E.R + (S.R - E.R) * ((c - u.x - u.y) / (2.0f * c))),
-                (byte) (E.G + (S.G - E.G) * ((c - u.x - u.y) / (2.0f * c))),
-                (byte) (E.B + (S.B - E.B) * ((c - u.x - u.y) / (2.0f * c))),
-                (byte) (E.A + (S.A - E.A) * ((c - u.x - u.y) / (2.0f * c)))
+                (byte) (E.R + (S.R - E.R) * ((c - u.X - u.Y) / (2.0f * c))),
+                (byte) (E.G + (S.G - E.G) * ((c - u.X - u.Y) / (2.0f * c))),
+                (byte) (E.B + (S.B - E.B) * ((c - u.X - u.Y) / (2.0f * c))),
+                (byte) (E.A + (S.A - E.A) * ((c - u.X - u.Y) / (2.0f * c)))
                 );
 
             m_bChanged = true;

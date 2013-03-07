@@ -160,7 +160,7 @@ namespace cocos2d
 
         public CCSprite TileAt(CCPoint pos)
         {
-            Debug.Assert(pos.x < m_tLayerSize.Width && pos.y < m_tLayerSize.Height && pos.x >= 0 && pos.y >= 0, "TMXLayer: invalid position");
+            Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
             Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
 
             CCSprite tile = null;
@@ -169,7 +169,7 @@ namespace cocos2d
             // if GID == 0, then no tile is present
             if (gid != 0)
             {
-                var z = (int) (pos.x + pos.y * m_tLayerSize.Width);
+                var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
                 tile = (CCSprite) GetChildByTag(z);
 
                 // tile not created yet. create it
@@ -218,10 +218,10 @@ namespace cocos2d
 
         public uint TileGIDAt(CCPoint pos, out uint flags)
         {
-            Debug.Assert(pos.x < m_tLayerSize.Width && pos.y < m_tLayerSize.Height && pos.x >= 0 && pos.y >= 0, "TMXLayer: invalid position");
+            Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
             Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
 
-            var idx = (int) (pos.x + pos.y * m_tLayerSize.Width);
+            var idx = (int) (pos.X + pos.Y * m_tLayerSize.Width);
             // Bits on the far end of the 32-bit global tile ID are used for tile flags
             uint tile = m_pTiles[idx];
 
@@ -250,7 +250,7 @@ namespace cocos2d
 
         public void SetTileGID(uint gid, CCPoint pos, uint flags)
         {
-            Debug.Assert(pos.x < m_tLayerSize.Width && pos.y < m_tLayerSize.Height && pos.x >= 0 && pos.y >= 0, "TMXLayer: invalid position");
+            Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
             Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
             Debug.Assert(gid == 0 || gid >= m_pTileSet.m_uFirstGid, "TMXLayer: invalid gid");
 
@@ -274,14 +274,14 @@ namespace cocos2d
                     // modifying an existing tile with a non-empty tile
                 else
                 {
-                    var z = (int) (pos.x + pos.y * m_tLayerSize.Width);
+                    var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
                     var sprite = (CCSprite) GetChildByTag(z);
                     if (sprite != null)
                     {
                         CCRect rect = m_pTileSet.RectForGID(gid);
                         rect = CCMacros.CCRectanglePixelsToPoints(rect);
 
-                        sprite.SetTextureRect(rect, false, rect.size);
+                        sprite.SetTextureRect(rect, false, rect.Size);
                         if (flags != 0)
                         {
                             SetupTileSprite(sprite, sprite.Position, gidAndFlags);
@@ -300,14 +300,14 @@ namespace cocos2d
 
         public void RemoveTileAt(CCPoint pos)
         {
-            Debug.Assert(pos.x < m_tLayerSize.Width && pos.y < m_tLayerSize.Height && pos.x >= 0 && pos.y >= 0, "TMXLayer: invalid position");
+            Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
             Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
 
             uint gid = TileGIDAt(pos);
 
             if (gid != 0)
             {
-                var z = (int) (pos.x + pos.y * m_tLayerSize.Width);
+                var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
                 int atlasIndex = AtlasIndexForExistantZ(z);
 
                 // remove tile from GID map
@@ -459,28 +459,28 @@ namespace cocos2d
 
         private CCPoint PositionForIsoAt(CCPoint pos)
         {
-            var xy = new CCPoint(m_tMapTileSize.Width / 2 * (m_tLayerSize.Width + pos.x - pos.y - 1),
-                                 m_tMapTileSize.Height / 2 * ((m_tLayerSize.Height * 2 - pos.x - pos.y) - 2));
+            var xy = new CCPoint(m_tMapTileSize.Width / 2 * (m_tLayerSize.Width + pos.X - pos.Y - 1),
+                                 m_tMapTileSize.Height / 2 * ((m_tLayerSize.Height * 2 - pos.X - pos.Y) - 2));
             return xy;
         }
 
         private CCPoint PositionForOrthoAt(CCPoint pos)
         {
-            CCPoint xy = new CCPoint(pos.x * m_tMapTileSize.Width,
-                                 (m_tLayerSize.Height - pos.y - 1) * m_tMapTileSize.Height);
+            CCPoint xy = new CCPoint(pos.X * m_tMapTileSize.Width,
+                                 (m_tLayerSize.Height - pos.Y - 1) * m_tMapTileSize.Height);
             return xy;
         }
 
         private CCPoint PositionForHexAt(CCPoint pos)
         {
             float diffY = 0;
-            if ((int) pos.x % 2 == 1)
+            if ((int) pos.X % 2 == 1)
             {
                 diffY = -m_tMapTileSize.Height / 2;
             }
 
-            var xy = new CCPoint(pos.x * m_tMapTileSize.Width * 3 / 4,
-                                 (m_tLayerSize.Height - pos.y - 1) * m_tMapTileSize.Height + diffY);
+            var xy = new CCPoint(pos.X * m_tMapTileSize.Width * 3 / 4,
+                                 (m_tLayerSize.Height - pos.Y - 1) * m_tMapTileSize.Height + diffY);
             return xy;
         }
 
@@ -490,11 +490,11 @@ namespace cocos2d
             switch (m_uLayerOrientation)
             {
                 case CCTMXOrientation.CCTMXOrientationOrtho:
-                    ret = new CCPoint(pos.x * m_tMapTileSize.Width, -pos.y * m_tMapTileSize.Height);
+                    ret = new CCPoint(pos.X * m_tMapTileSize.Width, -pos.Y * m_tMapTileSize.Height);
                     break;
                 case CCTMXOrientation.CCTMXOrientationIso:
-                    ret = new CCPoint((m_tMapTileSize.Width / 2) * (pos.x - pos.y),
-                                      (m_tMapTileSize.Height / 2) * (-pos.x - pos.y));
+                    ret = new CCPoint((m_tMapTileSize.Width / 2) * (pos.X - pos.Y),
+                                      (m_tMapTileSize.Height / 2) * (-pos.X - pos.Y));
                     break;
                 case CCTMXOrientation.CCTMXOrientationHex:
                     Debug.Assert(pos.Equals(CCPoint.Zero), "offset for hexagonal map not implemented yet");
@@ -510,7 +510,7 @@ namespace cocos2d
             CCRect rect = m_pTileSet.RectForGID(gid);
             rect = CCMacros.CCRectanglePixelsToPoints(rect);
 
-            var z = (int) (pos.x + pos.y * m_tLayerSize.Width);
+            var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
 
             CCSprite tile = ReusedTileWithRect(rect);
 
@@ -535,7 +535,7 @@ namespace cocos2d
             CCRect rect = m_pTileSet.RectForGID(gid);
             rect = CCMacros.CCRectanglePixelsToPoints(rect);
 
-            var z = (int) (pos.x + pos.y * m_tLayerSize.Width);
+            var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
 
             CCSprite tile = ReusedTileWithRect(rect);
 
@@ -573,9 +573,9 @@ namespace cocos2d
         private CCSprite UpdateTileForGID(uint gid, CCPoint pos)
         {
             CCRect rect = m_pTileSet.RectForGID(gid);
-            rect = new CCRect(rect.origin.x / m_fContentScaleFactor, rect.origin.y / m_fContentScaleFactor, rect.size.Width / m_fContentScaleFactor,
-                              rect.size.Height / m_fContentScaleFactor);
-            var z = (int) (pos.x + pos.y * m_tLayerSize.Width);
+            rect = new CCRect(rect.Origin.X / m_fContentScaleFactor, rect.Origin.Y / m_fContentScaleFactor, rect.Size.Width / m_fContentScaleFactor,
+                              rect.Size.Height / m_fContentScaleFactor);
+            var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
 
             CCSprite tile = ReusedTileWithRect(rect);
 
@@ -645,8 +645,8 @@ namespace cocos2d
                 // put the anchor in the middle for ease of rotation.
                 sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
                 CCPoint pointAtPos = PositionAt(pos);
-                sprite.Position = new CCPoint(pointAtPos.x + sprite.ContentSize.Height / 2,
-                                              pointAtPos.y + sprite.ContentSize.Width / 2);
+                sprite.Position = new CCPoint(pointAtPos.X + sprite.ContentSize.Height / 2,
+                                              pointAtPos.Y + sprite.ContentSize.Width / 2);
 
                 uint flag = gid & (ccTMXTileFlags.kCCTMXTileHorizontalFlag | ccTMXTileFlags.kCCTMXTileVerticalFlag);
 
@@ -715,10 +715,10 @@ namespace cocos2d
                 {
                     case CCTMXOrientation.CCTMXOrientationIso:
                         var maxVal = (int) (m_tLayerSize.Width + m_tLayerSize.Height);
-                        ret = (int) (-(maxVal - (pos.x + pos.y)));
+                        ret = (int) (-(maxVal - (pos.X + pos.Y)));
                         break;
                     case CCTMXOrientation.CCTMXOrientationOrtho:
-                        ret = (int) (-(m_tLayerSize.Height - pos.y));
+                        ret = (int) (-(m_tLayerSize.Height - pos.Y));
                         break;
                     case CCTMXOrientation.CCTMXOrientationHex:
                         Debug.Assert(false, "TMX Hexa zOrder not supported");

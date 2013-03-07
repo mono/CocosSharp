@@ -36,12 +36,12 @@ namespace cocos2d
         public override float TestFunc(CCGridSize pos, float time)
         {
             var n = new CCPoint((m_sGridSize.X * time), (m_sGridSize.Y * time));
-            if (n.y == 0.0f)
+            if (n.Y == 0.0f)
             {
                 return 1.0f;
             }
 
-            return (float) Math.Pow(pos.Y / n.y, 6);
+            return (float) Math.Pow(pos.Y / n.Y, 6);
         }
 
         public override void TransformTile(CCGridSize pos, float distance)
@@ -49,10 +49,10 @@ namespace cocos2d
             CCQuad3 coords = OriginalTile(pos);
             CCPoint step = m_pTarget.Grid.Step;
 
-            coords.BottomLeft.Y += (step.y / 2) * (1.0f - distance);
-            coords.BottomRight.Y += (step.y / 2) * (1.0f - distance);
-            coords.TopLeft.Y -= (step.y / 2) * (1.0f - distance);
-            coords.TopRight.Y -= (step.y / 2) * (1.0f - distance);
+            coords.BottomLeft.Y += (step.Y / 2) * (1.0f - distance);
+            coords.BottomRight.Y += (step.Y / 2) * (1.0f - distance);
+            coords.TopLeft.Y -= (step.Y / 2) * (1.0f - distance);
+            coords.TopRight.Y -= (step.Y / 2) * (1.0f - distance);
 
             SetTile(pos, ref coords);
         }

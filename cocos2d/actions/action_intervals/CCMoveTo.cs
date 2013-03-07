@@ -49,8 +49,8 @@ namespace cocos2d
         {
             if (m_pTarget != null)
             {
-                m_pTarget.Position = CCPointExtension.CreatePoint(m_startPosition.x + m_delta.x * time,
-                                                          m_startPosition.y + m_delta.y * time);
+                m_pTarget.Position = CCPointExtension.CreatePoint(m_startPosition.X + m_delta.X * time,
+                                                          m_startPosition.Y + m_delta.Y * time);
             }
         }
 

@@ -71,10 +71,10 @@ namespace cocos2d
 
             int idx = pos.X * m_sGridSize.Y + pos.Y;
 
-            pos2.x = (m_pTilesOrder[idx] / m_sGridSize.Y);
-            pos2.y = (m_pTilesOrder[idx] % m_sGridSize.Y);
+            pos2.X = (m_pTilesOrder[idx] / m_sGridSize.Y);
+            pos2.Y = (m_pTilesOrder[idx] % m_sGridSize.Y);
 
-            return new CCGridSize((int) (pos2.x - pos.X), (int) (pos2.y - pos.Y));
+            return new CCGridSize((int) (pos2.X - pos.X), (int) (pos2.Y - pos.Y));
         }
 
         public void PlaceTile(CCGridSize pos, Tile t)
@@ -82,17 +82,17 @@ namespace cocos2d
             CCQuad3 coords = OriginalTile(pos);
 
             CCPoint step = m_pTarget.Grid.Step;
-            coords.BottomLeft.X += (int) (t.Position.x * step.x);
-            coords.BottomLeft.Y += (int) (t.Position.y * step.y);
+            coords.BottomLeft.X += (int) (t.Position.X * step.X);
+            coords.BottomLeft.Y += (int) (t.Position.Y * step.Y);
 
-            coords.BottomRight.X += (int) (t.Position.x * step.x);
-            coords.BottomRight.Y += (int) (t.Position.y * step.y);
+            coords.BottomRight.X += (int) (t.Position.X * step.X);
+            coords.BottomRight.Y += (int) (t.Position.Y * step.Y);
 
-            coords.TopLeft.X += (int) (t.Position.x * step.x);
-            coords.TopLeft.Y += (int) (t.Position.y * step.y);
+            coords.TopLeft.X += (int) (t.Position.X * step.X);
+            coords.TopLeft.Y += (int) (t.Position.Y * step.Y);
 
-            coords.TopRight.X += (int) (t.Position.x * step.x);
-            coords.TopRight.Y += (int) (t.Position.y * step.y);
+            coords.TopRight.X += (int) (t.Position.X * step.X);
+            coords.TopRight.Y += (int) (t.Position.Y * step.Y);
 
             SetTile(pos, ref coords);
         }

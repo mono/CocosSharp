@@ -50,7 +50,7 @@ namespace cocos2d
         #region Raw Serializers
         protected void SerializeData(CCPoint pt, StreamWriter sw)
         {
-            sw.WriteLine("{0} {1}", pt.x, pt.y);
+            sw.WriteLine("{0} {1}", pt.X, pt.Y);
         }
         protected void SerializeData(CCSize pt, StreamWriter sw)
         {
@@ -70,8 +70,8 @@ namespace cocos2d
         }
         protected void SerializeData(CCRect r, StreamWriter sw)
         {
-            SerializeData(r.origin, sw);
-            SerializeData(r.size, sw);
+            SerializeData(r.Origin, sw);
+            SerializeData(r.Size, sw);
         }
         protected bool DeSerializeBool(StreamReader sr)
         {
@@ -107,7 +107,7 @@ namespace cocos2d
         {
             CCPoint pt = DeSerializePoint(sr);
             CCSize sz = DeSerializeSize(sr);
-            return (new CCRect(pt.x, pt.y, sz.Width, sz.Height));
+            return (new CCRect(pt.X, pt.Y, sz.Width, sz.Height));
         }
         protected CCSize DeSerializeSize(StreamReader sr)
         {
@@ -132,8 +132,8 @@ namespace cocos2d
             }
             CCPoint pt = new CCPoint();
             string[] s = x.Split(' ');
-            pt.x = CCUtils.CCParseFloat(s[0]);
-            pt.y = CCUtils.CCParseFloat(s[1]);
+            pt.X = CCUtils.CCParseFloat(s[0]);
+            pt.Y = CCUtils.CCParseFloat(s[1]);
             return (pt);
         }
         #endregion

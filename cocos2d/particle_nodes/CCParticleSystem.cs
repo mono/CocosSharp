@@ -453,8 +453,8 @@ namespace cocos2d
                     float x = dictionary["sourcePositionx"].AsFloat;
                     float y = dictionary["sourcePositiony"].AsFloat;
                     Position = new CCPoint(x, y);
-                    m_tPosVar.x = dictionary["sourcePositionVariancex"].AsFloat;
-                    m_tPosVar.y = dictionary["sourcePositionVariancey"].AsFloat;
+                    m_tPosVar.X = dictionary["sourcePositionVariancex"].AsFloat;
+                    m_tPosVar.Y = dictionary["sourcePositionVariancey"].AsFloat;
 
                     // Spinning
                     m_fStartSpin = dictionary["rotationStart"].AsFloat;
@@ -468,8 +468,8 @@ namespace cocos2d
                     if (m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity)
                     {
                         // gravity
-                        modeA.gravity.x = dictionary["gravityx"].AsFloat;
-                        modeA.gravity.y = dictionary["gravityy"].AsFloat;
+                        modeA.gravity.X = dictionary["gravityx"].AsFloat;
+                        modeA.gravity.Y = dictionary["gravityy"].AsFloat;
 
                         // speed
                         modeA.speed = dictionary["speed"].AsFloat;
@@ -686,8 +686,8 @@ namespace cocos2d
             particle.timeToLive = Math.Max(0, m_fLife + m_fLifeVar * Random.Float_Minus1_1());
 
             // position
-            particle.pos.x = m_tSourcePosition.x + m_tPosVar.x * Random.Float_Minus1_1();
-            particle.pos.y = m_tSourcePosition.y + m_tPosVar.y * Random.Float_Minus1_1();
+            particle.pos.X = m_tSourcePosition.X + m_tPosVar.X * Random.Float_Minus1_1();
+            particle.pos.Y = m_tSourcePosition.Y + m_tPosVar.Y * Random.Float_Minus1_1();
 
             // Color
             CCColor4F start;
@@ -819,8 +819,8 @@ namespace cocos2d
                     float tmp_x, tmp_y;
                     float tangential_x, tangential_y;
 
-                    float x = p.pos.x;
-                    float y = p.pos.y;
+                    float x = p.pos.X;
+                    float y = p.pos.Y;
 
                     if (x != 0 || y != 0)
                     {
@@ -852,14 +852,14 @@ namespace cocos2d
                     //tmp = CCPointExtension.ccpMult(p.modeA.dir, dt);
                     //p.pos = CCPointExtension.ccpAdd(p.pos, tmp);
 
-                    tmp_x = (radial_x + tangential_x + modeA.gravity.x) * dt;
-                    tmp_y = (radial_y + tangential_y + modeA.gravity.y) * dt;
+                    tmp_x = (radial_x + tangential_x + modeA.gravity.X) * dt;
+                    tmp_y = (radial_y + tangential_y + modeA.gravity.Y) * dt;
 
-                    p.modeA.dir.x += tmp_x;
-                    p.modeA.dir.y += tmp_y;
+                    p.modeA.dir.X += tmp_x;
+                    p.modeA.dir.Y += tmp_y;
 
-                    p.pos.x += p.modeA.dir.x * dt;
-                    p.pos.y += p.modeA.dir.y * dt;
+                    p.pos.X += p.modeA.dir.X * dt;
+                    p.pos.Y += p.modeA.dir.Y * dt;
                 }
 
                     // Mode B: radius movement
@@ -869,8 +869,8 @@ namespace cocos2d
                     p.modeB.angle += p.modeB.degreesPerSecond * dt;
                     p.modeB.radius += p.modeB.deltaRadius * dt;
 
-                    p.pos.x = -MHelper.Cos(p.modeB.angle) * p.modeB.radius;
-                    p.pos.y = -MHelper.Sin(p.modeB.angle) * p.modeB.radius;
+                    p.pos.X = -MHelper.Cos(p.modeB.angle) * p.modeB.radius;
+                    p.pos.Y = -MHelper.Sin(p.modeB.angle) * p.modeB.radius;
                 }
 
                 // color

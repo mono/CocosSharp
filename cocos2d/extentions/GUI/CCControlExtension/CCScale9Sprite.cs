@@ -228,15 +228,15 @@ namespace cocos2d
 
             // Set the given rect's size as original size
             m_spriteRect = rect;
-            m_originalSize = rect.size;
+            m_originalSize = rect.Size;
             m_preferredSize = m_originalSize;
             m_capInsetsInternal = capInsets;
 
             // Get the image edges
-            float l = rect.origin.x;
-            float t = rect.origin.y;
-            float h = rect.size.Height;
-            float w = rect.size.Width;
+            float l = rect.Origin.X;
+            float t = rect.Origin.Y;
+            float h = rect.Size.Height;
+            float w = rect.Size.Width;
 
             // If there is no specified center region
             if (m_capInsetsInternal.Equals(CCRect.Zero))
@@ -267,59 +267,59 @@ namespace cocos2d
                 // Bottom
                 bottom = new CCSprite();
                 bottom.InitWithTexture(scale9Image.Texture, new CCRect(l,
-                                                                       m_capInsetsInternal.origin.y,
-                                                                       m_capInsetsInternal.size.Width,
-                                                                       m_capInsetsInternal.origin.x - l),
+                                                                       m_capInsetsInternal.Origin.Y,
+                                                                       m_capInsetsInternal.Size.Width,
+                                                                       m_capInsetsInternal.Origin.X - l),
                                        rotated
                     );
                 scale9Image.AddChild(bottom, 1, (int) Positions.pBottom);
 
                 // Top
                 top = new CCSprite();
-                top.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.origin.x + m_capInsetsInternal.size.Height,
-                                                                    m_capInsetsInternal.origin.y,
-                                                                    m_capInsetsInternal.size.Width,
-                                                                    h - m_capInsetsInternal.size.Height - (m_capInsetsInternal.origin.x - l)),
+                top.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.Origin.X + m_capInsetsInternal.Size.Height,
+                                                                    m_capInsetsInternal.Origin.Y,
+                                                                    m_capInsetsInternal.Size.Width,
+                                                                    h - m_capInsetsInternal.Size.Height - (m_capInsetsInternal.Origin.X - l)),
                                     rotated
                     );
                 scale9Image.AddChild(top, 1, (int) Positions.pTop);
 
                 // Right
                 right = new CCSprite();
-                right.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.origin.x,
-                                                                      m_capInsetsInternal.origin.y + m_capInsetsInternal.size.Width,
-                                                                      w - (m_capInsetsInternal.origin.y - t) - m_capInsetsInternal.size.Width,
-                                                                      m_capInsetsInternal.size.Height),
+                right.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.Origin.X,
+                                                                      m_capInsetsInternal.Origin.Y + m_capInsetsInternal.Size.Width,
+                                                                      w - (m_capInsetsInternal.Origin.Y - t) - m_capInsetsInternal.Size.Width,
+                                                                      m_capInsetsInternal.Size.Height),
                                       rotated
                     );
                 scale9Image.AddChild(right, 1, (int) Positions.pRight);
 
                 // Left
                 left = new CCSprite();
-                left.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.origin.x,
+                left.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.Origin.X,
                                                                      t,
-                                                                     m_capInsetsInternal.origin.y - t,
-                                                                     m_capInsetsInternal.size.Height),
+                                                                     m_capInsetsInternal.Origin.Y - t,
+                                                                     m_capInsetsInternal.Size.Height),
                                      rotated
                     );
                 scale9Image.AddChild(left, 1, (int) Positions.pLeft);
 
                 // Top right
                 topRight = new CCSprite();
-                topRight.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.origin.x + m_capInsetsInternal.size.Height,
-                                                                         m_capInsetsInternal.origin.y + m_capInsetsInternal.size.Width,
-                                                                         w - (m_capInsetsInternal.origin.y - t) - m_capInsetsInternal.size.Width,
-                                                                         h - m_capInsetsInternal.size.Height - (m_capInsetsInternal.origin.x - l)),
+                topRight.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.Origin.X + m_capInsetsInternal.Size.Height,
+                                                                         m_capInsetsInternal.Origin.Y + m_capInsetsInternal.Size.Width,
+                                                                         w - (m_capInsetsInternal.Origin.Y - t) - m_capInsetsInternal.Size.Width,
+                                                                         h - m_capInsetsInternal.Size.Height - (m_capInsetsInternal.Origin.X - l)),
                                          rotated
                     );
                 scale9Image.AddChild(topRight, 2, (int) Positions.pTopRight);
 
                 // Top left
                 topLeft = new CCSprite();
-                topLeft.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.origin.x + m_capInsetsInternal.size.Height,
+                topLeft.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.Origin.X + m_capInsetsInternal.Size.Height,
                                                                         t,
-                                                                        m_capInsetsInternal.origin.y - t,
-                                                                        h - m_capInsetsInternal.size.Height - (m_capInsetsInternal.origin.x - l)),
+                                                                        m_capInsetsInternal.Origin.Y - t,
+                                                                        h - m_capInsetsInternal.Size.Height - (m_capInsetsInternal.Origin.X - l)),
                                         rotated
                     );
                 scale9Image.AddChild(topLeft, 2, (int) Positions.pTopLeft);
@@ -327,9 +327,9 @@ namespace cocos2d
                 // Bottom right
                 bottomRight = new CCSprite();
                 bottomRight.InitWithTexture(scale9Image.Texture, new CCRect(l,
-                                                                            m_capInsetsInternal.origin.y + m_capInsetsInternal.size.Width,
-                                                                            w - (m_capInsetsInternal.origin.y - t) - m_capInsetsInternal.size.Width,
-                                                                            m_capInsetsInternal.origin.x - l),
+                                                                            m_capInsetsInternal.Origin.Y + m_capInsetsInternal.Size.Width,
+                                                                            w - (m_capInsetsInternal.Origin.Y - t) - m_capInsetsInternal.Size.Width,
+                                                                            m_capInsetsInternal.Origin.X - l),
                                             rotated
                     );
                 scale9Image.AddChild(bottomRight, 2, (int) Positions.pBottomRight);
@@ -338,8 +338,8 @@ namespace cocos2d
                 bottomLeft = new CCSprite();
                 bottomLeft.InitWithTexture(scale9Image.Texture, new CCRect(l,
                                                                            t,
-                                                                           m_capInsetsInternal.origin.y - t,
-                                                                           m_capInsetsInternal.origin.x - l),
+                                                                           m_capInsetsInternal.Origin.Y - t,
+                                                                           m_capInsetsInternal.Origin.X - l),
                                            rotated
                     );
                 scale9Image.AddChild(bottomLeft, 2, (int) Positions.pBottomLeft);
@@ -354,20 +354,20 @@ namespace cocos2d
 
                 // Top
                 top = new CCSprite();
-                top.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.origin.x,
+                top.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.Origin.X,
                                                                     t,
-                                                                    m_capInsetsInternal.size.Width,
-                                                                    m_capInsetsInternal.origin.y - t),
+                                                                    m_capInsetsInternal.Size.Width,
+                                                                    m_capInsetsInternal.Origin.Y - t),
                                     rotated
                     );
                 scale9Image.AddChild(top, 1, (int) Positions.pTop);
 
                 // Bottom
                 bottom = new CCSprite();
-                bottom.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.origin.x,
-                                                                       m_capInsetsInternal.origin.y + m_capInsetsInternal.size.Height,
-                                                                       m_capInsetsInternal.size.Width,
-                                                                       h - (m_capInsetsInternal.origin.y - t + m_capInsetsInternal.size.Height)),
+                bottom.InitWithTexture(scale9Image.Texture, new CCRect(m_capInsetsInternal.Origin.X,
+                                                                       m_capInsetsInternal.Origin.Y + m_capInsetsInternal.Size.Height,
+                                                                       m_capInsetsInternal.Size.Width,
+                                                                       h - (m_capInsetsInternal.Origin.Y - t + m_capInsetsInternal.Size.Height)),
                                        rotated);
                 scale9Image.AddChild(bottom, 1, (int) Positions.pBottom);
 
@@ -375,19 +375,19 @@ namespace cocos2d
                 left = new CCSprite();
                 left.InitWithTexture(scale9Image.Texture, new CCRect(
                                                               l,
-                                                              m_capInsetsInternal.origin.y,
-                                                              m_capInsetsInternal.origin.x - l,
-                                                              m_capInsetsInternal.size.Height),
+                                                              m_capInsetsInternal.Origin.Y,
+                                                              m_capInsetsInternal.Origin.X - l,
+                                                              m_capInsetsInternal.Size.Height),
                                      rotated);
                 scale9Image.AddChild(left, 1, (int) Positions.pLeft);
 
                 // Right
                 right = new CCSprite();
                 right.InitWithTexture(scale9Image.Texture, new CCRect(
-                                                               m_capInsetsInternal.origin.x + m_capInsetsInternal.size.Width,
-                                                               m_capInsetsInternal.origin.y,
-                                                               w - (m_capInsetsInternal.origin.x - l + m_capInsetsInternal.size.Width),
-                                                               m_capInsetsInternal.size.Height),
+                                                               m_capInsetsInternal.Origin.X + m_capInsetsInternal.Size.Width,
+                                                               m_capInsetsInternal.Origin.Y,
+                                                               w - (m_capInsetsInternal.Origin.X - l + m_capInsetsInternal.Size.Width),
+                                                               m_capInsetsInternal.Size.Height),
                                       rotated);
                 scale9Image.AddChild(right, 1, (int) Positions.pRight);
 
@@ -396,8 +396,8 @@ namespace cocos2d
                 topLeft.InitWithTexture(scale9Image.Texture, new CCRect(
                                                                  l,
                                                                  t,
-                                                                 m_capInsetsInternal.origin.x - l,
-                                                                 m_capInsetsInternal.origin.y - t),
+                                                                 m_capInsetsInternal.Origin.X - l,
+                                                                 m_capInsetsInternal.Origin.Y - t),
                                         rotated);
 
                 scale9Image.AddChild(topLeft, 2, (int) Positions.pTopLeft);
@@ -405,10 +405,10 @@ namespace cocos2d
                 // Top right
                 topRight = new CCSprite();
                 topRight.InitWithTexture(scale9Image.Texture, new CCRect(
-                                                                  m_capInsetsInternal.origin.x + m_capInsetsInternal.size.Width,
+                                                                  m_capInsetsInternal.Origin.X + m_capInsetsInternal.Size.Width,
                                                                   t,
-                                                                  w - (m_capInsetsInternal.origin.x - l + m_capInsetsInternal.size.Width),
-                                                                  m_capInsetsInternal.origin.y - t),
+                                                                  w - (m_capInsetsInternal.Origin.X - l + m_capInsetsInternal.Size.Width),
+                                                                  m_capInsetsInternal.Origin.Y - t),
                                          rotated);
 
                 scale9Image.AddChild(topRight, 2, (int) Positions.pTopRight);
@@ -417,24 +417,24 @@ namespace cocos2d
                 bottomLeft = new CCSprite();
                 bottomLeft.InitWithTexture(scale9Image.Texture, new CCRect(
                                                                     l,
-                                                                    m_capInsetsInternal.origin.y + m_capInsetsInternal.size.Height,
-                                                                    m_capInsetsInternal.origin.x - l,
-                                                                    h - (m_capInsetsInternal.origin.y - t + m_capInsetsInternal.size.Height)),
+                                                                    m_capInsetsInternal.Origin.Y + m_capInsetsInternal.Size.Height,
+                                                                    m_capInsetsInternal.Origin.X - l,
+                                                                    h - (m_capInsetsInternal.Origin.Y - t + m_capInsetsInternal.Size.Height)),
                                            rotated);
                 scale9Image.AddChild(bottomLeft, 2, (int) Positions.pBottomLeft);
 
                 // Bottom right
                 bottomRight = new CCSprite();
                 bottomRight.InitWithTexture(scale9Image.Texture, new CCRect(
-                                                                     m_capInsetsInternal.origin.x + m_capInsetsInternal.size.Width,
-                                                                     m_capInsetsInternal.origin.y + m_capInsetsInternal.size.Height,
-                                                                     w - (m_capInsetsInternal.origin.x - l + m_capInsetsInternal.size.Width),
-                                                                     h - (m_capInsetsInternal.origin.y - t + m_capInsetsInternal.size.Height)),
+                                                                     m_capInsetsInternal.Origin.X + m_capInsetsInternal.Size.Width,
+                                                                     m_capInsetsInternal.Origin.Y + m_capInsetsInternal.Size.Height,
+                                                                     w - (m_capInsetsInternal.Origin.X - l + m_capInsetsInternal.Size.Width),
+                                                                     h - (m_capInsetsInternal.Origin.Y - t + m_capInsetsInternal.Size.Height)),
                                             rotated);
                 scale9Image.AddChild(bottomRight, 2, (int) Positions.pBottomRight);
             }
 
-            ContentSize = rect.size;
+            ContentSize = rect.Size;
             AddChild(scale9Image);
 
             if (m_bSpritesGenerated)
@@ -642,17 +642,17 @@ namespace cocos2d
             {
                 if (m_bSpriteFrameRotated)
                 {
-                    insets = new CCRect(m_spriteRect.origin.x + m_insetBottom,
-                                        m_spriteRect.origin.y + m_insetLeft,
-                                        m_spriteRect.size.Width - m_insetRight - m_insetLeft,
-                                        m_spriteRect.size.Height - m_insetTop - m_insetBottom);
+                    insets = new CCRect(m_spriteRect.Origin.X + m_insetBottom,
+                                        m_spriteRect.Origin.Y + m_insetLeft,
+                                        m_spriteRect.Size.Width - m_insetRight - m_insetLeft,
+                                        m_spriteRect.Size.Height - m_insetTop - m_insetBottom);
                 }
                 else
                 {
-                    insets = new CCRect(m_spriteRect.origin.x + m_insetLeft,
-                                        m_spriteRect.origin.y + m_insetTop,
-                                        m_spriteRect.size.Width - m_insetLeft - m_insetRight,
-                                        m_spriteRect.size.Height - m_insetTop - m_insetBottom);
+                    insets = new CCRect(m_spriteRect.Origin.X + m_insetLeft,
+                                        m_spriteRect.Origin.Y + m_insetTop,
+                                        m_spriteRect.Size.Width - m_insetLeft - m_insetRight,
+                                        m_spriteRect.Size.Height - m_insetTop - m_insetBottom);
                 }
             }
             CapInsets = insets;

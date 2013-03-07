@@ -43,7 +43,7 @@ namespace cocos2d
         /// <returns>CCPoint</returns>
         public static CCPoint Negative(CCPoint v)
         {
-            return CreatePoint(-v.x, -v.y);
+            return CreatePoint(-v.X, -v.Y);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace cocos2d
         /// <returns>CCPoint</returns>
         public static CCPoint Add(CCPoint v1, CCPoint v2)
         {
-            return CreatePoint(v1.x + v2.x, v1.y + v2.y);
+            return CreatePoint(v1.X + v2.X, v1.Y + v2.Y);
         }
 
         /** Calculates difference of two points.
@@ -61,7 +61,7 @@ namespace cocos2d
         */
         public static CCPoint Subtract(CCPoint v1, CCPoint v2)
         {
-            return CreatePoint(v1.x - v2.x, v1.y - v2.y);
+            return CreatePoint(v1.X - v2.X, v1.Y - v2.Y);
         }
 
         /** Returns point multiplied by given factor.
@@ -70,7 +70,7 @@ namespace cocos2d
         */
         public static CCPoint Multiply(CCPoint v, float s)
         {
-            return CreatePoint(v.x * s, v.y * s);
+            return CreatePoint(v.X * s, v.Y * s);
         }
 
         /** Calculates midpoint between two points.
@@ -88,7 +88,7 @@ namespace cocos2d
         */
         public static float DotProduct(CCPoint v1, CCPoint v2)
         {
-            return v1.x * v2.x + v1.y * v2.y;
+            return v1.X * v2.X + v1.Y * v2.Y;
         }
 
         /** Calculates cross product of two points.
@@ -97,7 +97,7 @@ namespace cocos2d
         */
         public static float CrossProduct(CCPoint v1, CCPoint v2)
         {
-            return v1.x * v2.y - v1.y * v2.x;
+            return v1.X * v2.Y - v1.Y * v2.X;
         }
 
         /** Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, perp(v)) >= 0
@@ -106,7 +106,7 @@ namespace cocos2d
         */
         public static CCPoint PerpendicularCounterClockwise(CCPoint v)
         {
-            return CreatePoint(-v.y, v.x);
+            return CreatePoint(-v.Y, v.X);
         }
 
         /** Calculates perpendicular of v, rotated 90 degrees clockwise -- cross(v, rperp(v)) <= 0
@@ -115,7 +115,7 @@ namespace cocos2d
         */
         public static CCPoint PerpendicularClockwise(CCPoint v)
         {
-            return CreatePoint(v.y, -v.x);
+            return CreatePoint(v.Y, -v.X);
         }
 
         /** Calculates the projection of v1 over v2.
@@ -133,7 +133,7 @@ namespace cocos2d
         */
         public static CCPoint Rotate(CCPoint v1, CCPoint v2)
         {
-            return CreatePoint(v1.x * v2.x - v1.y * v2.y, v1.x * v2.y + v1.y * v2.x);
+            return CreatePoint(v1.X * v2.X - v1.Y * v2.Y, v1.X * v2.Y + v1.Y * v2.X);
         }
 
         /** Unrotates two points.
@@ -142,7 +142,7 @@ namespace cocos2d
         */
         public static CCPoint Unrotate(CCPoint v1, CCPoint v2)
         {
-            return CreatePoint(v1.x * v2.x + v1.y * v2.y, v1.y * v2.x - v1.x * v2.y);
+            return CreatePoint(v1.X * v2.X + v1.Y * v2.Y, v1.Y * v2.X - v1.X * v2.Y);
         }
 
         /** Calculates the square length of a CCPoint (not calling sqrt() )
@@ -196,7 +196,7 @@ namespace cocos2d
         */
         public static float ToAngle(CCPoint v)
         {
-            return (float)Math.Atan2(v.y, v.x);
+            return (float)Math.Atan2(v.Y, v.X);
         }
 
 
@@ -221,7 +221,7 @@ namespace cocos2d
         */
         public static CCPoint Clamp(CCPoint p, CCPoint from, CCPoint to)
         {
-            return CreatePoint(Clamp(p.x, from.x, to.x), Clamp(p.y, from.y, to.y));
+            return CreatePoint(Clamp(p.X, from.X, to.X), Clamp(p.Y, from.Y, to.Y));
         }
 
         /** Quickly convert CCSize to a CCPoint
@@ -242,7 +242,7 @@ namespace cocos2d
         public delegate float ComputationOperationDelegate(float a);
         public static CCPoint ComputationOperation(CCPoint p, ComputationOperationDelegate del)
         {
-            return CreatePoint(del(p.x), del(p.y));
+            return CreatePoint(del(p.X), del(p.Y));
         }
 
         /** Linear Interpolation between two points a and b
@@ -263,8 +263,8 @@ namespace cocos2d
         */
         public static bool FuzzyEqual(CCPoint a, CCPoint b, float variance)
         {
-            if (a.x - variance <= b.x && b.x <= a.x + variance)
-                if (a.y - variance <= b.y && b.y <= a.y + variance)
+            if (a.X - variance <= b.X && b.X <= a.X + variance)
+                if (a.Y - variance <= b.Y && b.Y <= a.Y + variance)
                     return true;
 
             return false;
@@ -277,7 +277,7 @@ namespace cocos2d
         */
         public static CCPoint MultiplyComponents(CCPoint a, CCPoint b)
         {
-            return CreatePoint(a.x * b.x, a.y * b.y);
+            return CreatePoint(a.X * b.X, a.Y * b.Y);
         }
 
         /** @returns the signed angle in radians between two vector directions
@@ -287,7 +287,7 @@ namespace cocos2d
         {
             CCPoint a2 = Normalize(a);
             CCPoint b2 = Normalize(b);
-            float angle = (float)Math.Atan2(a2.x * b2.y - a2.y * b2.x, DotProduct(a2, b2));
+            float angle = (float)Math.Atan2(a2.X * b2.Y - a2.Y * b2.X, DotProduct(a2, b2));
 
             if (Math.Abs(angle) < CCMacros.FLT_EPSILON)
             {
@@ -323,10 +323,10 @@ namespace cocos2d
         {
             CCPoint r = Subtract(v, pivot);
             float cosa = (float)Math.Cos(angle), sina = (float)Math.Sin(angle);
-            float t = r.x;
+            float t = r.X;
 
-            r.x = t * cosa - r.y * sina + pivot.x;
-            r.y = t * sina + r.y * cosa + pivot.y;
+            r.X = t * cosa - r.Y * sina + pivot.X;
+            r.Y = t * sina + r.Y * cosa + pivot.Y;
 
             return r;
         }
@@ -355,17 +355,17 @@ namespace cocos2d
         public static bool LineIntersect(CCPoint A, CCPoint B, CCPoint C, CCPoint D, ref float S, ref float T)
         {
             // FAIL: Line undefined
-            if ((A.x == B.x && A.y == B.y) || (C.x == D.x && C.y == D.y))
+            if ((A.X == B.X && A.Y == B.Y) || (C.X == D.X && C.Y == D.Y))
             {
                 return false;
             }
 
-            float BAx = B.x - A.x;
-            float BAy = B.y - A.y;
-            float DCx = D.x - C.x;
-            float DCy = D.y - C.y;
-            float ACx = A.x - C.x;
-            float ACy = A.y - C.y;
+            float BAx = B.X - A.X;
+            float BAy = B.Y - A.Y;
+            float DCx = D.X - C.X;
+            float DCy = D.Y - C.Y;
+            float ACx = A.X - C.X;
+            float ACy = A.Y - C.Y;
 
             float denom = DCy * BAx - DCx * BAy;
 
@@ -423,8 +423,8 @@ namespace cocos2d
             {
                 // Point of intersection
                 CCPoint P = new CCPoint();
-                P.x = A.x + S * (B.x - A.x);
-                P.y = A.y + S * (B.y - A.y);
+                P.X = A.X + S * (B.X - A.X);
+                P.Y = A.Y + S * (B.Y - A.Y);
                 return P;
             }
 

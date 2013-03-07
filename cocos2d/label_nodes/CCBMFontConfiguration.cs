@@ -155,25 +155,25 @@ namespace cocos2d
             index = line.IndexOf("x=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.origin.x = CCUtils.CCParseFloat(value.Replace("x=", ""));
+            characterDefinition.rect.Origin.X = CCUtils.CCParseFloat(value.Replace("x=", ""));
 
             // Character y
             index = line.IndexOf("y=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.origin.y = CCUtils.CCParseFloat(value.Replace("y=", ""));
+            characterDefinition.rect.Origin.Y = CCUtils.CCParseFloat(value.Replace("y=", ""));
 
             // Character width
             index = line.IndexOf("width=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.size.Width = CCUtils.CCParseFloat(value.Replace("width=", ""));
+            characterDefinition.rect.Size.Width = CCUtils.CCParseFloat(value.Replace("width=", ""));
 
             // Character height
             index = line.IndexOf("height=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.size.Height = CCUtils.CCParseFloat(value.Replace("height=", ""));
+            characterDefinition.rect.Size.Height = CCUtils.CCParseFloat(value.Replace("height=", ""));
 
             // Character xoffset
             index = line.IndexOf("xoffset=");

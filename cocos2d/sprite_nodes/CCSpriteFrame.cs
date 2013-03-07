@@ -117,7 +117,7 @@ namespace cocos2d
         public bool InitWithTexture(CCTexture2D pobTexture, CCRect rect)
         {
             CCRect rectInPixels = CCMacros.CCRectanglePointsToPixels(rect);
-            return InitWithTexture(pobTexture, rectInPixels, false, new CCPoint(0, 0), rectInPixels.size);
+            return InitWithTexture(pobTexture, rectInPixels, false, new CCPoint(0, 0), rectInPixels.Size);
         }
 
         public bool InitWithTexture(CCTexture2D pobTexture, CCRect rect, bool rotated, CCPoint offset,
@@ -138,7 +138,7 @@ namespace cocos2d
 
         public bool InitWithTextureFilename(String filename, CCRect rect)
         {
-            return InitWithTextureFilename(filename, rect, false, CCPoint.Zero, rect.size);
+            return InitWithTextureFilename(filename, rect, false, CCPoint.Zero, rect.Size);
         }
 
         public bool InitWithTextureFilename(String filename, CCRect rect, bool rotated, CCPoint offset,

@@ -187,8 +187,8 @@ namespace cocos2d
 			float x2 = Math.Max(src1.MaxX, src2.MaxX);
 			float y2 = Math.Max(src1.MaxY, src2.MaxY);
     
-			result.origin = new CCPoint(x1,x2);
-			result.size = new CCSize(x2-x1, y2-y1);
+			result.Origin = new CCPoint(x1,x2);
+			result.Size = new CCSize(x2-x1, y2-y1);
 			return result;
 		}
 	}

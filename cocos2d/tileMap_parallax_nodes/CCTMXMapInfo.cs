@@ -313,9 +313,9 @@ namespace cocos2d
 
                 CCPoint positionOffset = CCPoint.Zero;
                 if (attributeDict.ContainsKey("x"))
-                    positionOffset.x = CCUtils.CCParseFloat(attributeDict["x"]) * pTMXMapInfo.TileSize.Width;
+                    positionOffset.X = CCUtils.CCParseFloat(attributeDict["x"]) * pTMXMapInfo.TileSize.Width;
                 if (attributeDict.ContainsKey("y"))
-                    positionOffset.y = CCUtils.CCParseFloat(attributeDict["y"]) * pTMXMapInfo.TileSize.Height;
+                    positionOffset.Y = CCUtils.CCParseFloat(attributeDict["y"]) * pTMXMapInfo.TileSize.Height;
                 objectGroup.PositionOffset = positionOffset;
 
                 pTMXMapInfo.ObjectGroups.Add(objectGroup);
@@ -379,10 +379,10 @@ namespace cocos2d
                 // But X and Y since they need special treatment
                 // X
 
-                int x = int.Parse(attributeDict["x"]) + (int) objectGroup.PositionOffset.x;
+                int x = int.Parse(attributeDict["x"]) + (int) objectGroup.PositionOffset.X;
                 dict.Add("x", x.ToString());
 
-                int y = int.Parse(attributeDict["y"]) + (int) objectGroup.PositionOffset.y;
+                int y = int.Parse(attributeDict["y"]) + (int) objectGroup.PositionOffset.Y;
                 // Correct y position. (Tiled uses Flipped, cocos2d uses Standard)
                 y = (int) (pTMXMapInfo.MapSize.Height * pTMXMapInfo.TileSize.Height) - y -
                     (attributeDict.ContainsKey("height") ? int.Parse(attributeDict["height"]) : 0);

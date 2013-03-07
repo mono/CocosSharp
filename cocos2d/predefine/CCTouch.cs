@@ -65,8 +65,8 @@ namespace cocos2d
         {
             m_nId = id;
             m_prevPoint = m_point;
-            m_point.x = x;
-            m_point.y = y;
+            m_point.X = x;
+            m_point.Y = y;
         }
     }
 

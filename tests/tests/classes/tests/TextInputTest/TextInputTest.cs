@@ -114,7 +114,7 @@ namespace cocos2d
         public virtual void keyboardWillShow(CCIMEKeyboardNotificationInfo info)
         {
             CCLog.Log("TextInputTest:keyboardWillShowAt(origin:%f,%f, size:%f,%f)",
-        info.end.origin.x, info.end.origin.y, info.end.size.Width, info.end.size.Height);
+        info.end.Origin.X, info.end.Origin.Y, info.end.Size.Width, info.end.Size.Height);
 
             if (m_pTrackNode != null)
             {
@@ -123,7 +123,7 @@ namespace cocos2d
 
             CCRect rectTracked = TextInputTestScene.getRect(m_pTrackNode);
             CCLog.Log("TextInputTest:trackingNodeAt(origin:%f,%f, size:%f,%f)",
-                rectTracked.origin.x, rectTracked.origin.y, rectTracked.size.Width, rectTracked.size.Height);
+                rectTracked.Origin.X, rectTracked.Origin.Y, rectTracked.Size.Width, rectTracked.Size.Height);
 
             // if the keyboard area doesn't intersect with the tracking node area, nothing need to do.
             if (!CCRect.CCRectIntersetsRect(rectTracked, info.end))
@@ -146,7 +146,7 @@ namespace cocos2d
             {
                 node = (CCNode)children[i];
                 pos = node.Position;
-                pos.y += adjustVert;
+                pos.Y += adjustVert;
                 node.Position = pos;
             }
         }
@@ -171,22 +171,22 @@ namespace cocos2d
             endPos = CCDirector.SharedDirector.ConvertToGl(endPos);
 
             float delta = 5.0f;
-            if (Math.Abs(endPos.x - m_beginPos.x) > delta
-                || Math.Abs(endPos.y - m_beginPos.y) > delta)
+            if (Math.Abs(endPos.X - m_beginPos.X) > delta
+                || Math.Abs(endPos.Y - m_beginPos.Y) > delta)
             {
                 // not click
-                m_beginPos.x = m_beginPos.y = -1;
+                m_beginPos.X = m_beginPos.Y = -1;
                 return;
             }
 
             // decide the trackNode is clicked.
             CCRect rect;
             CCPoint point = ConvertTouchToNodeSpaceAr(pTouch);
-            CCLog.Log("KeyboardNotificationLayer:clickedAt(%f,%f)", point.x, point.y);
+            CCLog.Log("KeyboardNotificationLayer:clickedAt(%f,%f)", point.X, point.Y);
 
             rect = TextInputTestScene.getRect(m_pTrackNode);
             CCLog.Log("KeyboardNotificationLayer:TrackNode at(origin:%f,%f, size:%f,%f)",
-                rect.origin.x, rect.origin.y, rect.size.Width, rect.size.Height);
+                rect.Origin.X, rect.Origin.Y, rect.Size.Width, rect.Size.Height);
 
             this.onClickTrackNode(CCRect.CCRectContainsPoint(rect, point));
             CCLog.Log("----------------------------------");
@@ -375,10 +375,10 @@ namespace cocos2d
             CCPoint endPos = pSender.Position;
             if (pSender.CharCount > 0)
             {
-                endPos.x += pSender.ContentSize.Width / 2;
+                endPos.X += pSender.ContentSize.Width / 2;
             }
             CCSize inputTextSize = label.ContentSize;
-            CCPoint beginPos = new CCPoint(endPos.x, CCDirector.SharedDirector.WinSize.Height - inputTextSize.Height * 2);
+            CCPoint beginPos = new CCPoint(endPos.X, CCDirector.SharedDirector.WinSize.Height - inputTextSize.Height * 2);
 
             float duration = 0.5f;
             label.Position = beginPos;
@@ -404,7 +404,7 @@ namespace cocos2d
             CCPoint beginPos = pSender.Position;
             CCSize textfieldSize = pSender.ContentSize;
             CCSize labelSize = label.ContentSize;
-            beginPos.x += (textfieldSize.Width - labelSize.Width) / 2.0f;
+            beginPos.X += (textfieldSize.Width - labelSize.Width) / 2.0f;
 
             int RAND_MAX = 32767;
             Random rand = new Random();

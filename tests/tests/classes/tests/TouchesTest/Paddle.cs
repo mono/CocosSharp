@@ -95,7 +95,7 @@ namespace tests
             CCPoint touchPoint = touch.LocationInView;
             touchPoint = CCDirector.SharedDirector.ConvertToGl(touchPoint);
 
-            base.Position = new CCPoint(touchPoint.x, base.Position.y);
+            base.Position = new CCPoint(touchPoint.X, base.Position.Y);
         }
 
         public virtual void TouchEnded(CCTouch touch, CCEvent eventer)

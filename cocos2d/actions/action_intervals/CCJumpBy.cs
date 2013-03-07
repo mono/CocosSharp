@@ -60,15 +60,15 @@ namespace cocos2d
                 // Is % equal to fmodf()???
                 float frac = (time * m_nJumps) % 1f;
                 float y = m_height * 4f * frac * (1f - frac);
-                y += m_delta.y * time;
-                float x = m_delta.x * time;
-                m_pTarget.Position = new CCPoint(m_startPosition.x + x, m_startPosition.y + y);
+                y += m_delta.Y * time;
+                float x = m_delta.X * time;
+                m_pTarget.Position = new CCPoint(m_startPosition.X + x, m_startPosition.Y + y);
             }
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_fDuration, new CCPoint(-m_delta.x, -m_delta.y), m_height, m_nJumps);
+            return Create(m_fDuration, new CCPoint(-m_delta.X, -m_delta.Y), m_height, m_nJumps);
         }
 
         public static CCJumpBy Create(float duration, CCPoint position, float height, uint jumps)

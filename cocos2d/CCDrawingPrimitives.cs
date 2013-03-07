@@ -75,8 +75,8 @@ namespace cocos2d
 
             var c = new Color(color.R, color.G, color.B, color.A);
 
-            m_Batch.AddVertex(new Vector2(origin.x * factor, origin.y * factor), c, PrimitiveType.LineList);
-            m_Batch.AddVertex(new Vector2(destination.x * factor, destination.y * factor), c, PrimitiveType.LineList);
+            m_Batch.AddVertex(new Vector2(origin.X * factor, origin.Y * factor), c, PrimitiveType.LineList);
+            m_Batch.AddVertex(new Vector2(destination.X * factor, destination.Y * factor), c, PrimitiveType.LineList);
         }
 
         /// <summary>
@@ -100,23 +100,23 @@ namespace cocos2d
             {
                 for (int i = 1; i < numOfVertices - 1; i++)
                 {
-                    m_Batch.AddVertex(new Vector2(vertices[0].x, vertices[0].y), c, PrimitiveType.TriangleList);
-                    m_Batch.AddVertex(new Vector2(vertices[i].x, vertices[i].y), c, PrimitiveType.TriangleList);
-                    m_Batch.AddVertex(new Vector2(vertices[i + 1].x, vertices[i + 1].y), c, PrimitiveType.TriangleList);
+                    m_Batch.AddVertex(new Vector2(vertices[0].X, vertices[0].Y), c, PrimitiveType.TriangleList);
+                    m_Batch.AddVertex(new Vector2(vertices[i].X, vertices[i].Y), c, PrimitiveType.TriangleList);
+                    m_Batch.AddVertex(new Vector2(vertices[i + 1].X, vertices[i + 1].Y), c, PrimitiveType.TriangleList);
                 }
             }
             else
             {
                 for (int i = 0; i < numOfVertices - 1; i++)
                 {
-                    m_Batch.AddVertex(new Vector2(vertices[i].x, vertices[i].y), c, PrimitiveType.LineList);
-                    m_Batch.AddVertex(new Vector2(vertices[i + 1].x, vertices[i + 1].y), c, PrimitiveType.LineList);
+                    m_Batch.AddVertex(new Vector2(vertices[i].X, vertices[i].Y), c, PrimitiveType.LineList);
+                    m_Batch.AddVertex(new Vector2(vertices[i + 1].X, vertices[i + 1].Y), c, PrimitiveType.LineList);
                 }
 
                 if (closePolygon)
                 {
-                    m_Batch.AddVertex(new Vector2(vertices[numOfVertices - 1].x, vertices[numOfVertices - 1].y), c, PrimitiveType.LineList);
-                    m_Batch.AddVertex(new Vector2(vertices[0].x, vertices[0].y), c, PrimitiveType.LineList);
+                    m_Batch.AddVertex(new Vector2(vertices[numOfVertices - 1].X, vertices[numOfVertices - 1].Y), c, PrimitiveType.LineList);
+                    m_Batch.AddVertex(new Vector2(vertices[0].X, vertices[0].Y), c, PrimitiveType.LineList);
                 }
             }
         }
@@ -140,9 +140,9 @@ namespace cocos2d
 
             for (int i = 1; i < count - 1; i++)
             {
-                m_Batch.AddVertex(new Vector2(vertices[0].x, vertices[0].y), colorFill, PrimitiveType.TriangleList);
-                m_Batch.AddVertex(new Vector2(vertices[i].x, vertices[i].y), colorFill, PrimitiveType.TriangleList);
-                m_Batch.AddVertex(new Vector2(vertices[i + 1].x, vertices[i + 1].y), colorFill, PrimitiveType.TriangleList);
+                m_Batch.AddVertex(new Vector2(vertices[0].X, vertices[0].Y), colorFill, PrimitiveType.TriangleList);
+                m_Batch.AddVertex(new Vector2(vertices[i].X, vertices[i].Y), colorFill, PrimitiveType.TriangleList);
+                m_Batch.AddVertex(new Vector2(vertices[i + 1].X, vertices[i + 1].Y), colorFill, PrimitiveType.TriangleList);
             }
 
             if (outline)
@@ -183,8 +183,8 @@ namespace cocos2d
             float t = 0.0f;
             for (int i = 0; i < segments; i++)
             {
-                float x = (float) Math.Pow(1 - t, 2) * origin.x + 2.0f * (1 - t) * t * control.x + t * t * destination.x;
-                float y = (float) Math.Pow(1 - t, 2) * origin.y + 2.0f * (1 - t) * t * control.y + t * t * destination.y;
+                float x = (float) Math.Pow(1 - t, 2) * origin.X + 2.0f * (1 - t) * t * control.X + t * t * destination.X;
+                float y = (float) Math.Pow(1 - t, 2) * origin.Y + 2.0f * (1 - t) * t * control.Y + t * t * destination.Y;
                 vertices[i] = new VertexPositionColor();
                 vertices[i].Position = new Vector3(x * factor, y * factor, 0);
                 vertices[i].Color = new Color(color.R, color.G, color.B, color.A);
@@ -192,7 +192,7 @@ namespace cocos2d
             }
             vertices[segments] = new VertexPositionColor
                 {
-                    Position = new Vector3(destination.x * factor, destination.y * factor, 0),
+                    Position = new Vector3(destination.X * factor, destination.Y * factor, 0),
                     Color = new Color(color.R, color.G, color.B, color.A),
                 };
 
@@ -220,10 +220,10 @@ namespace cocos2d
             float t = 0;
             for (int i = 0; i < segments; ++i)
             {
-                float x = (float) Math.Pow(1 - t, 3) * origin.x + 3.0f * (float) Math.Pow(1 - t, 2) * t * control1.x +
-                          3.0f * (1 - t) * t * t * control2.x + t * t * t * destination.x;
-                float y = (float) Math.Pow(1 - t, 3) * origin.y + 3.0f * (float) Math.Pow(1 - t, 2) * t * control1.y +
-                          3.0f * (1 - t) * t * t * control2.y + t * t * t * destination.y;
+                float x = (float) Math.Pow(1 - t, 3) * origin.X + 3.0f * (float) Math.Pow(1 - t, 2) * t * control1.X +
+                          3.0f * (1 - t) * t * t * control2.X + t * t * t * destination.X;
+                float y = (float) Math.Pow(1 - t, 3) * origin.Y + 3.0f * (float) Math.Pow(1 - t, 2) * t * control1.Y +
+                          3.0f * (1 - t) * t * t * control2.Y + t * t * t * destination.Y;
                 vertices[i] = new VertexPositionColor();
                 vertices[i].Position = new Vector3(x * factor, y * factor, 0);
                 vertices[i].Color = new Color(color.R, color.G, color.B, color.A);
@@ -232,7 +232,7 @@ namespace cocos2d
             vertices[segments] = new VertexPositionColor
                 {
                     Color = new Color(color.R, color.G, color.B, color.A),
-                    Position = new Vector3(destination.x * factor, destination.y * factor, 0)
+                    Position = new Vector3(destination.X * factor, destination.Y * factor, 0)
                 };
 
             BasicEffect basicEffect = DrawManager.PrimitiveEffect;
@@ -287,8 +287,8 @@ namespace cocos2d
 
                 CCPoint newPos = Spline.CCCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
 
-                vertices[i].Position.X = newPos.x;
-                vertices[i].Position.Y = newPos.y;
+                vertices[i].Position.X = newPos.X;
+                vertices[i].Position.Y = newPos.Y;
                 vertices[i].Color = Color.White;
             }
 

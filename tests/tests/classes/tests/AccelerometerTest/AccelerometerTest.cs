@@ -29,12 +29,12 @@ namespace tests
             CCPoint ptNow = m_pBall.Position;
             CCPoint ptTemp = pDir.ConvertToUi(ptNow);
 
-            ptTemp.x += (float) pAccelerationValue.x * 9.81f;
-            ptTemp.y -= (float) pAccelerationValue.y * 9.81f;
+            ptTemp.X += (float) pAccelerationValue.x * 9.81f;
+            ptTemp.Y -= (float) pAccelerationValue.y * 9.81f;
 
             CCPoint ptNext = pDir.ConvertToGl(ptTemp);
-            ptNext.x = MathHelper.Clamp(ptNext.x, (ballSize.Width / 2.0f), (winSize.Width - ballSize.Width / 2.0f));
-            ptNext.y = MathHelper.Clamp(ptNext.y, (ballSize.Height / 2.0f), (winSize.Height - ballSize.Height / 2.0f));
+            ptNext.X = MathHelper.Clamp(ptNext.X, (ballSize.Width / 2.0f), (winSize.Width - ballSize.Width / 2.0f));
+            ptNext.Y = MathHelper.Clamp(ptNext.Y, (ballSize.Height / 2.0f), (winSize.Height - ballSize.Height / 2.0f));
             m_pBall.Position = ptNext;
         }
 

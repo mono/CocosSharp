@@ -91,8 +91,8 @@ namespace cocos2d
             m_bIsTextureFlipped = bFlipped;
 
             CCSize texSize = m_pTexture.ContentSize;
-            m_obStep.x = texSize.Width / m_sGridSize.X;
-            m_obStep.y = texSize.Height / m_sGridSize.Y;
+            m_obStep.X = texSize.Width / m_sGridSize.X;
+            m_obStep.Y = texSize.Height / m_sGridSize.Y;
 
             m_pGrabber = new CCGrabber();
             if (m_pGrabber != null)
@@ -163,9 +163,9 @@ namespace cocos2d
             {
                 CCPoint offset = target.AnchorPointInPoints;
 
-                DrawManager.Translate(offset.x, offset.y, 0);
+                DrawManager.Translate(offset.X, offset.Y, 0);
                 target.Camera.Locate();
-                DrawManager.Translate(-offset.x, -offset.y, 0);
+                DrawManager.Translate(-offset.X, -offset.Y, 0);
             }
 
             DrawManager.BindTexture(m_pTexture);

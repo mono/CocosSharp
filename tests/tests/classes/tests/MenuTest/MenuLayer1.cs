@@ -110,8 +110,8 @@ namespace tests
                     if (i % 2 == 0)
                         offset = -offset;
 
-                    child.Position = new CCPoint(dstPoint.x + offset, dstPoint.y);
-                    child.RunAction(CCEaseElasticOut.Create(CCMoveBy.Create(2, new CCPoint(dstPoint.x - offset, 0)), 0.35f));
+                    child.Position = new CCPoint(dstPoint.X + offset, dstPoint.Y);
+                    child.RunAction(CCEaseElasticOut.Create(CCMoveBy.Create(2, new CCPoint(dstPoint.X - offset, 0)), 0.35f));
                     i++;
 
                 }

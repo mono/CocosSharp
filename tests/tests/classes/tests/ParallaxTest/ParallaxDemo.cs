@@ -130,7 +130,7 @@ namespace tests
                 }
                 if (right.Magnitude > 0f)
                 {
-                    float scale = (1f - right.Direction.y * right.Magnitude);
+                    float scale = (1f - right.Direction.Y * right.Magnitude);
                     node.Scale += scale;
                     if (node.Scale < 1f)
                     {

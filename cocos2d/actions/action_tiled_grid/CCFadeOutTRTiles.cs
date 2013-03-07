@@ -36,12 +36,12 @@ namespace cocos2d
         public virtual float TestFunc(CCGridSize pos, float time)
         {
             var n = new CCPoint((m_sGridSize.X * time), (m_sGridSize.Y * time));
-            if ((n.x + n.y) == 0.0f)
+            if ((n.X + n.Y) == 0.0f)
             {
                 return 1.0f;
             }
 
-            return (float) Math.Pow((pos.X + pos.Y) / (n.x + n.y), 6);
+            return (float) Math.Pow((pos.X + pos.Y) / (n.X + n.Y), 6);
         }
 
         public void TurnOnTile(CCGridSize pos)
@@ -62,17 +62,17 @@ namespace cocos2d
             CCQuad3 coords = OriginalTile(pos);
             CCPoint step = m_pTarget.Grid.Step;
 
-            coords.BottomLeft.X += (step.x / 2) * (1.0f - distance);
-            coords.BottomLeft.Y += (step.y / 2) * (1.0f - distance);
+            coords.BottomLeft.X += (step.X / 2) * (1.0f - distance);
+            coords.BottomLeft.Y += (step.Y / 2) * (1.0f - distance);
 
-            coords.BottomRight.X -= (step.x / 2) * (1.0f - distance);
-            coords.BottomRight.Y += (step.y / 2) * (1.0f - distance);
+            coords.BottomRight.X -= (step.X / 2) * (1.0f - distance);
+            coords.BottomRight.Y += (step.Y / 2) * (1.0f - distance);
 
-            coords.TopLeft.X += (step.x / 2) * (1.0f - distance);
-            coords.TopLeft.Y -= (step.y / 2) * (1.0f - distance);
+            coords.TopLeft.X += (step.X / 2) * (1.0f - distance);
+            coords.TopLeft.Y -= (step.Y / 2) * (1.0f - distance);
 
-            coords.TopRight.X -= (step.x / 2) * (1.0f - distance);
-            coords.TopRight.Y -= (step.y / 2) * (1.0f - distance);
+            coords.TopRight.X -= (step.X / 2) * (1.0f - distance);
+            coords.TopRight.Y -= (step.Y / 2) * (1.0f - distance);
 
             SetTile(pos, ref coords);
         }

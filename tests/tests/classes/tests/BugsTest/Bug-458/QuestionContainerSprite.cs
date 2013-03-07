@@ -45,42 +45,42 @@ namespace tests
                 AddChild(corner);
 
                 CCSprite corner2 = CCSprite.Create("Images/bugs/corner");
-                corner2.Position = new CCPoint(-corner.Position.x, corner.Position.y);
+                corner2.Position = new CCPoint(-corner.Position.X, corner.Position.Y);
                 corner2.FlipX = true;
                 AddChild(corner2);
 
                 CCSprite corner3 = CCSprite.Create("Images/bugs/corner");
-                corner3.Position = new CCPoint(corner.Position.x, -corner.Position.y);
+                corner3.Position = new CCPoint(corner.Position.X, -corner.Position.Y);
                 corner3.FlipY = true;
                 AddChild(corner3);
 
                 CCSprite corner4 = CCSprite.Create("Images/bugs/corner");
-                corner4.Position = new CCPoint(corner2.Position.x, -corner2.Position.y);
+                corner4.Position = new CCPoint(corner2.Position.X, -corner2.Position.Y);
                 corner4.FlipX = true;
                 corner4.FlipY = true;
                 AddChild(corner4);
 
                 CCSprite edge = CCSprite.Create("Images/bugs/edge");
                 edge.ScaleX = width;
-                edge.Position = new CCPoint(corner.Position.x + (corner.ContentSize.Width / 2) + (width / 2), corner.Position.y);
+                edge.Position = new CCPoint(corner.Position.X + (corner.ContentSize.Width / 2) + (width / 2), corner.Position.Y);
                 AddChild(edge);
 
                 CCSprite edge2 = CCSprite.Create("Images/bugs/edge");
                 edge2.ScaleX = width;
-                edge2.Position = new CCPoint(corner.Position.x + (corner.ContentSize.Width / 2) + (width / 2), -corner.Position.y);
+                edge2.Position = new CCPoint(corner.Position.X + (corner.ContentSize.Width / 2) + (width / 2), -corner.Position.Y);
                 edge2.FlipX = true;
                 AddChild(edge2);
 
                 CCSprite edge3 = CCSprite.Create("Images/bugs/edge");
                 edge3.Rotation = 90;
                 edge3.ScaleX = height;
-                edge3.Position = new CCPoint(corner.Position.x, corner.Position.y + (corner.ContentSize.Height / 2) + (height / 2));
+                edge3.Position = new CCPoint(corner.Position.X, corner.Position.Y + (corner.ContentSize.Height / 2) + (height / 2));
                 AddChild(edge3);
 
                 CCSprite edge4 = CCSprite.Create("Images/bugs/edge");
                 edge4.Rotation = 270;
                 edge4.ScaleX = height;
-                edge4.Position = new CCPoint(-corner.Position.x, corner.Position.y + (corner.ContentSize.Height / 2) + (height / 2));
+                edge4.Position = new CCPoint(-corner.Position.X, corner.Position.Y + (corner.ContentSize.Height / 2) + (height / 2));
                 AddChild(edge4);
 
                 AddChild(label);

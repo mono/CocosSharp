@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,7 +66,7 @@ namespace tests.classes.tests.Box2DTestBet
             CCPoint nodePosition = ConvertToNodeSpace(touchLocation);
             //    NSLog(@"pos: %f,%f -> %f,%f", touchLocation.x, touchLocation.y, nodePosition.x, nodePosition.y);
 
-            m_test.MouseDown(new Vector2(nodePosition.x, nodePosition.y));
+            m_test.MouseDown(new Vector2(nodePosition.X, nodePosition.Y));
 
             return true;
         }
@@ -76,7 +76,7 @@ namespace tests.classes.tests.Box2DTestBet
             CCPoint touchLocation = touch.Location;
             CCPoint nodePosition = ConvertToNodeSpace(touchLocation);
 
-            m_test.MouseMove(new Vector2(nodePosition.x, nodePosition.y));
+            m_test.MouseMove(new Vector2(nodePosition.X, nodePosition.Y));
         }
 
         public override void TouchEnded(CCTouch touch, CCEvent e)

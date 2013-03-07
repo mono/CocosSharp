@@ -43,23 +43,23 @@ namespace tests
         {
             this.Position = 
             CCPointExtension.Add(Position, CCPointExtension.Multiply(m_velocity, delta));
-            if (Position.x > 320 - radius())
+            if (Position.X > 320 - radius())
             {
-                Position = new CCPoint(320 - radius(), Position.y);
-                m_velocity.x *= -1;
+                Position = new CCPoint(320 - radius(), Position.Y);
+                m_velocity.X *= -1;
             }
-            else if (Position.x < radius())
+            else if (Position.X < radius())
             {
-                Position = new CCPoint(radius(), Position.y);
-                m_velocity.x *= -1;
+                Position = new CCPoint(radius(), Position.Y);
+                m_velocity.X *= -1;
             }
         }
 
         public void collideWithPaddle(Paddle paddle)
         {
             CCRect paddleRect = paddle.rect();
-            paddleRect.origin.x += paddle.Position.x;
-            paddleRect.origin.y += paddle.Position.y;
+            paddleRect.Origin.X += paddle.Position.X;
+            paddleRect.Origin.Y += paddle.Position.Y;
 
             float lowY = CCRect.CCRectGetMinY(paddleRect);
             float midY = CCRect.CCRectGetMidY(paddleRect);
@@ -68,33 +68,33 @@ namespace tests
             float leftX = CCRect.CCRectGetMinX(paddleRect);
             float rightX = CCRect.CCRectGetMaxX(paddleRect);
 
-            if (Position.x > leftX && Position.x < rightX)
+            if (Position.X > leftX && Position.X < rightX)
             {
 
                 bool hit = false;
                 float angleOffset = 0.0f;
 
-                if (Position.y > midY && Position.y <= highY + radius())
+                if (Position.Y > midY && Position.Y <= highY + radius())
                 {
-                    Position = new CCPoint(Position.x, highY + radius());
+                    Position = new CCPoint(Position.X, highY + radius());
                     hit = true;
                     angleOffset = (float)Math.PI / 2;
                 }
-                else if (Position.y < midY && Position.y >= lowY - radius())
+                else if (Position.Y < midY && Position.Y >= lowY - radius())
                 {
-                    Position = new CCPoint(Position.x, lowY - radius());
+                    Position = new CCPoint(Position.X, lowY - radius());
                     hit = true;
                     angleOffset = -(float)Math.PI / 2;
                 }
 
                 if (hit)
                 {
-                    float hitAngle = (float)Math.Atan2(new CCPoint(paddle.Position.x - Position.x, paddle.Position.y - Position.y).y, new CCPoint(paddle.Position.x - Position.x, paddle.Position.y - Position.y).x) + angleOffset;
+                    float hitAngle = (float)Math.Atan2(new CCPoint(paddle.Position.X - Position.X, paddle.Position.Y - Position.Y).Y, new CCPoint(paddle.Position.X - Position.X, paddle.Position.Y - Position.Y).X) + angleOffset;
 
-                    float scalarVelocity = (float)Math.Sqrt((double)(m_velocity.x * m_velocity.x + m_velocity.y * m_velocity.y)) * 1.05f;
-                    float velocityAngle = -(float)Math.Atan2(m_velocity.y, m_velocity.x) + 0.5f * hitAngle;
+                    float scalarVelocity = (float)Math.Sqrt((double)(m_velocity.X * m_velocity.X + m_velocity.Y * m_velocity.Y)) * 1.05f;
+                    float velocityAngle = -(float)Math.Atan2(m_velocity.Y, m_velocity.X) + 0.5f * hitAngle;
 
-                    m_velocity = new CCPoint(new CCPoint((float)Math.Cos(velocityAngle), (float)Math.Sin(velocityAngle)).x * scalarVelocity, new CCPoint((float)Math.Cos(velocityAngle), (float)Math.Sin(velocityAngle)).y * scalarVelocity);
+                    m_velocity = new CCPoint(new CCPoint((float)Math.Cos(velocityAngle), (float)Math.Sin(velocityAngle)).X * scalarVelocity, new CCPoint((float)Math.Cos(velocityAngle), (float)Math.Sin(velocityAngle)).Y * scalarVelocity);
                 }
             }
         }

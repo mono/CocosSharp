@@ -12,7 +12,7 @@ namespace cocos2d
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
-            m_delta = CCPointExtension.CreatePoint(m_delta.x - m_startPosition.x, m_delta.y - m_startPosition.y);
+            m_delta = CCPointExtension.CreatePoint(m_delta.X - m_startPosition.X, m_delta.Y - m_startPosition.Y);
         }
 
         public override CCObject CopyWithZone(CCZone zone)

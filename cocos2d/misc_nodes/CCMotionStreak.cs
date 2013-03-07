@@ -329,8 +329,8 @@ namespace cocos2d
 
                 perpVector = perpVector * stroke;
 
-                vertices[idx].Vertices = new CCVertex3F(p1.x + perpVector.x, p1.y + perpVector.y, 0);
-                vertices[idx + 1].Vertices = new CCVertex3F(p1.x - perpVector.x, p1.y - perpVector.y, 0);
+                vertices[idx].Vertices = new CCVertex3F(p1.X + perpVector.X, p1.Y + perpVector.Y, 0);
+                vertices[idx + 1].Vertices = new CCVertex3F(p1.X - perpVector.X, p1.Y - perpVector.Y, 0);
             }
 
             // Validate vertexes

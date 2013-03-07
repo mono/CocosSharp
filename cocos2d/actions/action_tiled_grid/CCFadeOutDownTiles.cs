@@ -41,7 +41,7 @@ namespace cocos2d
                 return 1.0f;
             }
 
-            return (float) Math.Pow(n.y / pos.Y, 6);
+            return (float) Math.Pow(n.Y / pos.Y, 6);
         }
 
         /// <summary>
