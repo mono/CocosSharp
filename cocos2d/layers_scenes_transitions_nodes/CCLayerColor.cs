@@ -46,7 +46,7 @@ namespace cocos2d
             m_tColor = new CCColor3B(0, 0, 0);
 
             // default blend function
-            m_tBlendFunc = new ccBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            m_tBlendFunc = new CCBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
         }
 
         /// <summary>
@@ -103,8 +103,8 @@ namespace cocos2d
         public virtual bool InitWithColorWidthHeight(CCColor4B color, float width, float height)
         {
             // default blend function
-            m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
-            m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+            m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
+            m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
 
             m_tColor.R = color.R;
             m_tColor.G = color.G;
@@ -166,7 +166,7 @@ namespace cocos2d
         #region ICCRGBAProtocol
 
         protected byte m_cOpacity;
-        protected ccBlendFunc m_tBlendFunc;
+        protected CCBlendFunc m_tBlendFunc;
         protected CCColor3B m_tColor;
 
         #region ICCBlendProtocol Members
@@ -174,7 +174,7 @@ namespace cocos2d
         /// <summary>
         /// BlendFunction. Conforms to CCBlendProtocol protocol 
         /// </summary>
-        public virtual ccBlendFunc BlendFunc
+        public virtual CCBlendFunc BlendFunc
         {
             get { return m_tBlendFunc; }
             set { m_tBlendFunc = value; }

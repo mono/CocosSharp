@@ -91,7 +91,7 @@ namespace cocos2d
         protected CCParticle[] m_pParticles;
         protected CCTexture2D m_pTexture;
         protected string m_sPlistFile;
-        protected ccBlendFunc m_tBlendFunc;
+        protected CCBlendFunc m_tBlendFunc;
 
         protected CCColor4F m_tEndColor;
         protected CCColor4F m_tEndColorVar;
@@ -353,12 +353,12 @@ namespace cocos2d
 
         #region ICCTextureProtocol Members
 
-        public ccBlendFunc BlendFunc
+        public CCBlendFunc BlendFunc
         {
             get { return m_tBlendFunc; }
             set
             {
-                if (m_tBlendFunc.src != value.src || m_tBlendFunc.dst != value.dst)
+                if (m_tBlendFunc.Source != value.Source || m_tBlendFunc.Destination != value.Destination)
                 {
                     m_tBlendFunc = value;
                     updateBlendFunc();
@@ -419,8 +419,8 @@ namespace cocos2d
                     m_fDuration = dictionary["duration"].AsFloat;
 
                     // blend function 
-                    m_tBlendFunc.src = dictionary["blendFuncSource"].AsInt;
-                    m_tBlendFunc.dst = dictionary["blendFuncDestination"].AsInt;
+                    m_tBlendFunc.Source = dictionary["blendFuncSource"].AsInt;
+                    m_tBlendFunc.Destination = dictionary["blendFuncDestination"].AsInt;
 
                     // color
                     m_tStartColor.R = dictionary["startColorRed"].AsFloat;
@@ -627,8 +627,8 @@ namespace cocos2d
             m_bIsActive = true;
 
             // default blend function
-            m_tBlendFunc.src = ccMacros.CC_BLEND_SRC;
-            m_tBlendFunc.dst = ccMacros.CC_BLEND_DST;
+            m_tBlendFunc.Source = ccMacros.CC_BLEND_SRC;
+            m_tBlendFunc.Destination = ccMacros.CC_BLEND_DST;
 
             // default movement type;
             m_ePositionType = CCPositionType.kCCPositionTypeFree;
@@ -1033,7 +1033,7 @@ namespace cocos2d
 
                 m_bOpacityModifyRGB = false;
 
-                if (m_tBlendFunc.src == ccMacros.CC_BLEND_SRC && m_tBlendFunc.dst == ccMacros.CC_BLEND_DST)
+                if (m_tBlendFunc.Source == ccMacros.CC_BLEND_SRC && m_tBlendFunc.Destination == ccMacros.CC_BLEND_DST)
                 {
                     if (premultiplied)
                     {
@@ -1041,8 +1041,8 @@ namespace cocos2d
                     }
                     else
                     {
-                        m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
-                        m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                        m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
+                        m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
                     }
                 }
             }
@@ -1054,25 +1054,25 @@ namespace cocos2d
 
         public bool BlendAdditive
         {
-            get { return (m_tBlendFunc.src == OGLES.GL_SRC_ALPHA && m_tBlendFunc.dst == OGLES.GL_ONE); }
+            get { return (m_tBlendFunc.Source == OGLES.GL_SRC_ALPHA && m_tBlendFunc.Destination == OGLES.GL_ONE); }
             set
             {
                 if (value)
                 {
-                    m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
-                    m_tBlendFunc.dst = OGLES.GL_ONE;
+                    m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
+                    m_tBlendFunc.Destination = OGLES.GL_ONE;
                 }
                 else
                 {
                     if (m_pTexture != null && !m_pTexture.HasPremultipliedAlpha)
                     {
-                        m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
-                        m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                        m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
+                        m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
                     }
                     else
                     {
-                        m_tBlendFunc.src = ccMacros.CC_BLEND_SRC;
-                        m_tBlendFunc.dst = ccMacros.CC_BLEND_DST;
+                        m_tBlendFunc.Source = ccMacros.CC_BLEND_SRC;
+                        m_tBlendFunc.Destination = ccMacros.CC_BLEND_DST;
                     }
                 }
             }

@@ -26,7 +26,7 @@ namespace cocos2d
         protected CCSpriteBatchNode m_pobBatchNode; // Used batch node (weak reference)
         protected CCTexture2D m_pobTexture; // Texture used to render the sprite
         protected CCTextureAtlas m_pobTextureAtlas; // Sprite Sheet texture atlas (weak reference)
-        protected ccBlendFunc m_sBlendFunc; // Needed for the texture protocol
+        protected CCBlendFunc m_sBlendFunc; // Needed for the texture protocol
         protected CCColor3B m_sColor;
 
         private string m_TextureFile;
@@ -377,7 +377,7 @@ namespace cocos2d
 
         #region ICCTextureProtocol Members
 
-        public ccBlendFunc BlendFunc
+        public CCBlendFunc BlendFunc
         {
             get { return m_sBlendFunc; }
             set { m_sBlendFunc = value; }
@@ -482,8 +482,8 @@ namespace cocos2d
             m_nOpacity = 255;
             m_sColor = m_sColorUnmodified = ccTypes.ccWHITE;
 
-            m_sBlendFunc.src = ccMacros.CC_BLEND_SRC;
-            m_sBlendFunc.dst = ccMacros.CC_BLEND_DST;
+            m_sBlendFunc.Source = ccMacros.CC_BLEND_SRC;
+            m_sBlendFunc.Destination = ccMacros.CC_BLEND_DST;
 
             m_bFlipX = m_bFlipY = false;
 
@@ -1080,14 +1080,14 @@ namespace cocos2d
             // it's possible to have an untextured sprite
             if (m_pobTexture == null || !m_pobTexture.HasPremultipliedAlpha)
             {
-                m_sBlendFunc.src = OGLES.GL_SRC_ALPHA;
-                m_sBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                m_sBlendFunc.Source = OGLES.GL_SRC_ALPHA;
+                m_sBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
                 IsOpacityModifyRGB = false;
             }
             else
             {
-                m_sBlendFunc.src = ccMacros.CC_BLEND_SRC;
-                m_sBlendFunc.dst = ccMacros.CC_BLEND_DST;
+                m_sBlendFunc.Source = ccMacros.CC_BLEND_SRC;
+                m_sBlendFunc.Destination = ccMacros.CC_BLEND_DST;
                 IsOpacityModifyRGB = true;
             }
         }

@@ -61,7 +61,7 @@ namespace cocos2d
             }
         }
 
-        protected override void OnHandlePropTypeBlendFunc(CCNode node, CCNode parent, string propertyName, ccBlendFunc blendFunc,
+        protected override void OnHandlePropTypeBlendFunc(CCNode node, CCNode parent, string propertyName, CCBlendFunc blendFunc,
                                                           CCBReader reader)
         {
             if (propertyName == PROPERTY_BLENDFUNC)

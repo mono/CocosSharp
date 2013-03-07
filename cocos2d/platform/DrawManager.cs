@@ -35,7 +35,7 @@ namespace cocos2d
         private static Texture2D m_currentTexture;
         private static bool m_vertexColorEnabled;
 
-        private static readonly Dictionary<ccBlendFunc, BlendState> m_blendStates = new Dictionary<ccBlendFunc, BlendState>();
+        private static readonly Dictionary<CCBlendFunc, BlendState> m_blendStates = new Dictionary<CCBlendFunc, BlendState>();
 
         private static DepthStencilState m_DepthEnableStencilState;
         private static DepthStencilState m_DepthDisableStencilState;
@@ -50,7 +50,7 @@ namespace cocos2d
         private static int m_lastWidth;
         private static int m_lastHeight;
         private static bool m_depthTest = true;
-        private static ccBlendFunc m_currBlend = new ccBlendFunc(ccMacros.CC_BLEND_SRC, ccMacros.CC_BLEND_DST);
+        private static CCBlendFunc m_currBlend = new CCBlendFunc(ccMacros.CC_BLEND_SRC, ccMacros.CC_BLEND_DST);
         private static RenderTarget2D m_currRenderTarget;
         private static Viewport m_savedViewport;
         private static DynamicVertexBuffer m_quadsBuffer;
@@ -99,8 +99,8 @@ namespace cocos2d
             set
             {
                 graphicsDevice.BlendState = value;
-                m_currBlend.src = -1;
-                m_currBlend.dst = -1;
+                m_currBlend.Source = -1;
+                m_currBlend.Destination = -1;
             }
         }
 
@@ -502,24 +502,24 @@ namespace cocos2d
         }
 
 
-        public static void BlendFunc(ccBlendFunc blendFunc)
+        public static void BlendFunc(CCBlendFunc blendFunc)
         {
-            if (m_currBlend.dst != blendFunc.dst || m_currBlend.src != blendFunc.src)
+            if (m_currBlend.Destination != blendFunc.Destination || m_currBlend.Source != blendFunc.Source)
             {
                 BlendState bs = null;
-                if (blendFunc.src == OGLES.GL_ONE && blendFunc.dst == OGLES.GL_ONE_MINUS_SRC_ALPHA)
+                if (blendFunc.Source == OGLES.GL_ONE && blendFunc.Destination == OGLES.GL_ONE_MINUS_SRC_ALPHA)
                 {
                     bs = BlendState.AlphaBlend;
                 }
-                else if (blendFunc.src == OGLES.GL_SRC_ALPHA && blendFunc.dst == OGLES.GL_ONE)
+                else if (blendFunc.Source == OGLES.GL_SRC_ALPHA && blendFunc.Destination == OGLES.GL_ONE)
                 {
                     bs = BlendState.Additive;
                 }
-                else if (blendFunc.src == OGLES.GL_SRC_ALPHA && blendFunc.dst == OGLES.GL_ONE_MINUS_SRC_ALPHA)
+                else if (blendFunc.Source == OGLES.GL_SRC_ALPHA && blendFunc.Destination == OGLES.GL_ONE_MINUS_SRC_ALPHA)
                 {
                     bs = BlendState.NonPremultiplied;
                 }
-                else if (blendFunc.src == OGLES.GL_ONE && blendFunc.dst == OGLES.GL_ZERO)
+                else if (blendFunc.Source == OGLES.GL_ONE && blendFunc.Destination == OGLES.GL_ZERO)
                 {
                     bs = BlendState.Opaque;
                 }
@@ -529,10 +529,10 @@ namespace cocos2d
                     {
                         bs = new BlendState();
 
-                        bs.ColorSourceBlend = OGLES.GetXNABlend(blendFunc.src);
-                        bs.AlphaSourceBlend = OGLES.GetXNABlend(blendFunc.src);
-                        bs.ColorDestinationBlend = OGLES.GetXNABlend(blendFunc.dst);
-                        bs.AlphaDestinationBlend = OGLES.GetXNABlend(blendFunc.dst);
+                        bs.ColorSourceBlend = OGLES.GetXNABlend(blendFunc.Source);
+                        bs.AlphaSourceBlend = OGLES.GetXNABlend(blendFunc.Source);
+                        bs.ColorDestinationBlend = OGLES.GetXNABlend(blendFunc.Destination);
+                        bs.AlphaDestinationBlend = OGLES.GetXNABlend(blendFunc.Destination);
 
                         m_blendStates.Add(blendFunc, bs);
                     }
@@ -540,8 +540,8 @@ namespace cocos2d
 
                 graphicsDevice.BlendState = bs;
 
-                m_currBlend.src = blendFunc.src;
-                m_currBlend.dst = blendFunc.dst;
+                m_currBlend.Source = blendFunc.Source;
+                m_currBlend.Destination = blendFunc.Destination;
             }
         }
 

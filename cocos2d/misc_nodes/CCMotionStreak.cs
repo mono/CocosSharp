@@ -17,7 +17,7 @@ namespace cocos2d
         /** texture used for the motion streak */
         private CCTexture2D m_pTexture;
         private CCV3F_C4B_T2F[] m_pVertices;
-        private ccBlendFunc m_tBlendFunc;
+        private CCBlendFunc m_tBlendFunc;
         private CCColor3B m_tColor;
         private CCPoint m_tPositionR;
 
@@ -29,7 +29,7 @@ namespace cocos2d
 
         public CCMotionStreak()
         {
-            m_tBlendFunc = new ccBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            m_tBlendFunc = new CCBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
         }
 
         public override CCPoint Position
@@ -71,7 +71,7 @@ namespace cocos2d
             set { m_pTexture = value; }
         }
 
-        public ccBlendFunc BlendFunc
+        public CCBlendFunc BlendFunc
         {
             set { m_tBlendFunc = value; }
             get { return (m_tBlendFunc); }
@@ -136,8 +136,8 @@ namespace cocos2d
             m_pVertices = new CCV3F_C4B_T2F[(m_uMaxPoints + 1) * 2];
 
             // Set blend mode
-            m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
-            m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+            m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
+            m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
 
             // shader program
             // setShaderProgram(CCShaderCache.sharedShaderCache().programForKey(kCCShader_PositionTextureColor));

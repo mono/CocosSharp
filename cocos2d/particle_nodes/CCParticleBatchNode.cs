@@ -7,7 +7,7 @@ namespace cocos2d
         public const int kCCParticleDefaultCapacity = 500;
 
         public readonly CCTextureAtlas TextureAtlas = new CCTextureAtlas();
-        private ccBlendFunc m_tBlendFunc;
+        private CCBlendFunc m_tBlendFunc;
 
         #region ICCTextureProtocol Members
 
@@ -20,15 +20,15 @@ namespace cocos2d
 
                 // If the new texture has No premultiplied alpha, AND the blendFunc hasn't been changed, then update it
                 if (value != null && ! value.HasPremultipliedAlpha &&
-                    (m_tBlendFunc.src == ccMacros.CC_BLEND_SRC && m_tBlendFunc.dst == ccMacros.CC_BLEND_DST))
+                    (m_tBlendFunc.Source == ccMacros.CC_BLEND_SRC && m_tBlendFunc.Destination == ccMacros.CC_BLEND_DST))
                 {
-                    m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
-                    m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                    m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
+                    m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
                 }
             }
         }
 
-        public ccBlendFunc BlendFunc
+        public CCBlendFunc BlendFunc
         {
             get { return m_tBlendFunc; }
             set { m_tBlendFunc = value; }
@@ -74,8 +74,8 @@ namespace cocos2d
             // no lazy alloc in this node
             m_pChildren = new RawList<CCNode>(capacity);
 
-            m_tBlendFunc.src = ccMacros.CC_BLEND_SRC;
-            m_tBlendFunc.dst = ccMacros.CC_BLEND_DST;
+            m_tBlendFunc.Source = ccMacros.CC_BLEND_SRC;
+            m_tBlendFunc.Destination = ccMacros.CC_BLEND_DST;
 
             //setShaderProgram(CCShaderCache::sharedShaderCache().programForKey(kCCShader_PositionTextureColor));
 
@@ -146,7 +146,7 @@ namespace cocos2d
                 BlendFunc = pChild.BlendFunc;
             }
 
-            Debug.Assert(m_tBlendFunc.src == pChild.BlendFunc.src && m_tBlendFunc.dst == pChild.BlendFunc.dst,
+            Debug.Assert(m_tBlendFunc.Source == pChild.BlendFunc.Source && m_tBlendFunc.Destination == pChild.BlendFunc.Destination,
                          "Can't add a PaticleSystem that uses a differnt blending function");
 
             //no lazy sorting, so don't call super addChild, call helper instead
@@ -468,8 +468,8 @@ namespace cocos2d
         {
             if (!TextureAtlas.Texture.HasPremultipliedAlpha)
             {
-                m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
-                m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
+                m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
             }
         }
     }

@@ -6,7 +6,7 @@ namespace cocos2d
     {
         private const int kDefaultSpriteBatchCapacity = 29;
 
-        protected ccBlendFunc m_blendFunc;
+        protected CCBlendFunc m_blendFunc;
         protected RawList<CCSprite> m_pobDescendants;
         protected CCTextureAtlas m_pobTextureAtlas;
 
@@ -23,7 +23,7 @@ namespace cocos2d
 
         #region ICCTextureProtocol Members
 
-        public ccBlendFunc BlendFunc
+        public CCBlendFunc BlendFunc
         {
             get { return m_blendFunc; }
             set { m_blendFunc = value; }
@@ -82,8 +82,8 @@ namespace cocos2d
 
         public bool InitWithTexture(CCTexture2D tex, int capacity)
         {
-            m_blendFunc.src = ccMacros.CC_BLEND_SRC;
-            m_blendFunc.dst = ccMacros.CC_BLEND_DST;
+            m_blendFunc.Source = ccMacros.CC_BLEND_SRC;
+            m_blendFunc.Destination = ccMacros.CC_BLEND_DST;
 
             m_pobTextureAtlas = new CCTextureAtlas();
 
@@ -639,8 +639,8 @@ namespace cocos2d
         {
             if (!m_pobTextureAtlas.Texture.HasPremultipliedAlpha)
             {
-                m_blendFunc.src = OGLES.GL_SRC_ALPHA;
-                m_blendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                m_blendFunc.Source = OGLES.GL_SRC_ALPHA;
+                m_blendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
             }
         }
 

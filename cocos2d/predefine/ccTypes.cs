@@ -518,23 +518,23 @@ namespace cocos2d
     /// <summary>
     /// Blend Function used for textures
     /// </summary>
-    public struct ccBlendFunc
+    public struct CCBlendFunc
     {
-        public ccBlendFunc(int src, int dst)
+        public CCBlendFunc(int src, int dst)
         {
-            this.src = src;
-            this.dst = dst;
+            this.Source = src;
+            this.Destination = dst;
         }
 
         /// <summary>
         /// source blend function
         /// </summary>
-        public int src;
+        public int Source;
 
         /// <summary>
         /// destination blend function
         /// </summary>
-        public int dst;
+        public int Destination;
     }
 
     public enum CCTextAlignment
