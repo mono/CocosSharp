@@ -99,3 +99,4 @@ and Totally Evil Entertainment, LLC.
 * CCSprite : Fixed an iOS color opacity check.
 * CCMacros : Refactoring
 * Continued major refactoring of names and method usage.
+* Issue #32: Fixed the scope identifier for sprite frame instances derived from a plist file.

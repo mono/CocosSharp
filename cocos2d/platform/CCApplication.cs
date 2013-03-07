@@ -409,7 +409,7 @@ namespace cocos2d
                     pos = DrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
 #endif
                     _lastMouseId++;
-                    m_pTouches.AddLast(new CCTouch(_lastMouseId, pos.x, pos.y));
+                    m_pTouches.AddLast(new CCTouch(_lastMouseId, pos.X, pos.Y));
                     m_pTouchMap.Add(_lastMouseId, m_pTouches.Last);
                     newTouches.Add(m_pTouches.Last.Value);
 
@@ -428,7 +428,7 @@ namespace cocos2d
                             pos = DrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
 #endif
                             movedTouches.Add(m_pTouchMap[_lastMouseId].Value);
-                            m_pTouchMap[_lastMouseId].Value.SetTouchInfo(_lastMouseId, pos.x, pos.y);
+                            m_pTouchMap[_lastMouseId].Value.SetTouchInfo(_lastMouseId, pos.X, pos.Y);
                         }
                     }
                 }
