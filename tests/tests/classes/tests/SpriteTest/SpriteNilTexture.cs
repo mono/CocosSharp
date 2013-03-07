@@ -20,7 +20,7 @@ namespace tests
             sprite = new CCSprite();
             sprite.Init();
             sprite.TextureRect = new CCRect(0, 0, 300, 300);
-            sprite.Color = ccTypes.ccRED;
+            sprite.Color = CCTypes.CCRed;
             sprite.Opacity = 128;
             sprite.Position = (new CCPoint(3 * s.Width / 4, s.Height / 2));
             AddChild(sprite, 100);
@@ -28,7 +28,7 @@ namespace tests
             sprite = new CCSprite();
             sprite.Init();
             sprite.TextureRect = new CCRect(0, 0, 300, 300);
-            sprite.Color = ccTypes.ccBLUE;
+            sprite.Color = CCTypes.CCBlue;
             sprite.Opacity = 128;
             sprite.Position = (new CCPoint(1 * s.Width / 4, s.Height / 2));
             AddChild(sprite, 100);

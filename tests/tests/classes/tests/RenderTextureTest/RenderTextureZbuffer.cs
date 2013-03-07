@@ -74,7 +74,7 @@ namespace tests
             sp9.VertexZ = -400;
 
             sp9.Scale = 2;
-            sp9.Color = ccTypes.ccYELLOW;
+            sp9.Color = CCTypes.CCYellow;
         }
 
         public override void TouchesBegan(List<CCTouch> touches, CCEvent events)
@@ -145,7 +145,7 @@ namespace tests
             sprite.Opacity = 182;
             //sprite.IsFlipY = true;
             AddChild(sprite, 999999);
-            sprite.Color = ccTypes.ccGREEN;
+            sprite.Color = CCTypes.CCGreen;
 
             sprite.RunAction(
                 CCSequence.Create(

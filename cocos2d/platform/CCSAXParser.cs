@@ -67,8 +67,8 @@ namespace cocos2d
 
                         if (name == "map")
                         {
-                            Width = ccUtils.ccParseInt(xmlReader.GetAttribute("width"));
-                            Height = ccUtils.ccParseInt(xmlReader.GetAttribute("height"));
+                            Width = CCUtils.CCParseInt(xmlReader.GetAttribute("width"));
+                            Height = CCUtils.CCParseInt(xmlReader.GetAttribute("height"));
                         }
 
                         if (xmlReader.HasAttributes)

@@ -234,7 +234,7 @@ namespace cocos2d
         protected void SliderBegan(CCPoint location)
         {
             Selected = true;
-            ThumbSprite.Color = ccTypes.ccGRAY;
+            ThumbSprite.Color = CCTypes.CCGray;
             Value = ValueForLocation(location);
         }
 
@@ -249,7 +249,7 @@ namespace cocos2d
             {
                 Value = ValueForLocation(m_thumbSprite.Position);
             }
-            m_thumbSprite.Color = ccTypes.ccWHITE;
+            m_thumbSprite.Color = CCTypes.CCWhite;
             Selected = false;
         }
 

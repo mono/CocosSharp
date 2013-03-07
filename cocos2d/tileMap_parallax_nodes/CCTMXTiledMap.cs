@@ -165,7 +165,7 @@ object->propertyNamed(name_of_the_property);
                 for (int i = 0; i < layers.Count; i++)
                 {
                     CCTMXLayerInfo layerInfo = layers[i];
-                    if (layerInfo != null && layerInfo.m_bVisible)
+                    if (layerInfo != null && layerInfo.Visible)
                     {
                         CCTMXLayer child = ParseLayer(layerInfo, mapInfo);
                         AddChild(child, idx, idx);
@@ -246,7 +246,7 @@ object->propertyNamed(name_of_the_property);
             CCTMXLayer layer = CCTMXLayer.Create(tileset, layerInfo, mapInfo);
 
             // tell the layerinfo to release the ownership of the tiles map.
-            layerInfo.m_bOwnTiles = false;
+            layerInfo.OwnTiles = false;
             layer.SetupTiles();
 
             return layer;
@@ -254,7 +254,7 @@ object->propertyNamed(name_of_the_property);
 
         private CCTMXTilesetInfo tilesetForLayer(CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
         {
-            CCSize size = layerInfo.m_tLayerSize;
+            CCSize size = layerInfo.LayerSize;
             List<CCTMXTilesetInfo> tilesets = mapInfo.Tilesets;
 
             if (tilesets != null && tilesets.Count > 0)
@@ -269,7 +269,7 @@ object->propertyNamed(name_of_the_property);
                             for (int x = 0; x < size.Width; x++)
                             {
                                 var pos = (int) (x + size.Width * y);
-                                uint gid = layerInfo.m_pTiles[pos];
+                                uint gid = layerInfo.Tiles[pos];
 
                                 // gid are stored in little endian.
                                 // if host is big endian, then swap
@@ -294,7 +294,7 @@ object->propertyNamed(name_of_the_property);
             }
 
             // If all the tiles are 0, return empty tileset
-            CCLog.Log("cocos2d: Warning: TMX Layer '{0}' has no tiles", layerInfo.m_sName);
+            CCLog.Log("cocos2d: Warning: TMX Layer '{0}' has no tiles", layerInfo.Name);
             return null;
         }
 

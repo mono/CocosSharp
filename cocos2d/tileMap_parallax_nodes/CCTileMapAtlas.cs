@@ -10,9 +10,9 @@ namespace cocos2d
         //! numbers of tiles to render
         protected int m_nItemsToRender;
         protected Dictionary<CCGridSize, int> m_pPosToAtlasIndex;
-        private tImageTGA m_pTGAInfo;
+        private ImageTGA m_pTGAInfo;
 
-        public tImageTGA TGAInfo
+        public ImageTGA TGAInfo
         {
             get { return m_pTGAInfo; }
             set { m_pTGAInfo = value; }
@@ -32,7 +32,7 @@ namespace cocos2d
 
             if (base.InitWithTileFile(tile, tileWidth, tileHeight, m_nItemsToRender))
             {
-                m_tColor = ccTypes.ccWHITE;
+                m_tColor = CCTypes.CCWhite;
                 m_pPosToAtlasIndex = new Dictionary<CCGridSize, int>();
                 UpdateAtlasValues();
                 ContentSize = new CCSize(m_pTGAInfo.width * m_uItemWidth, m_pTGAInfo.height * m_uItemHeight);
@@ -84,7 +84,7 @@ namespace cocos2d
         {
             Debug.Assert(!string.IsNullOrEmpty(file), "file must be non-nil");
 
-            m_pTGAInfo = tImageTGA.tgaLoad(CCFileUtils.FullPathFromRelativePath(file));
+            m_pTGAInfo = ImageTGA.Load(CCFileUtils.FullPathFromRelativePath(file));
         }
 
         private void CalculateItemsToRender()
@@ -128,35 +128,35 @@ namespace cocos2d
             float bottom = top + itemHeightInPixels / textureHigh;
 #endif
 
-            ccV3F_C4B_T2F_Quad quad;
+            CCV3F_C4B_T2F_Quad quad;
 
-            quad.tl.texCoords.U = left;
-            quad.tl.texCoords.V = top;
-            quad.tr.texCoords.U = right;
-            quad.tr.texCoords.V = top;
-            quad.bl.texCoords.U = left;
-            quad.bl.texCoords.V = bottom;
-            quad.br.texCoords.U = right;
-            quad.br.texCoords.V = bottom;
+            quad.TopLeft.TexCoords.U = left;
+            quad.TopLeft.TexCoords.V = top;
+            quad.TopRight.TexCoords.U = right;
+            quad.TopRight.TexCoords.V = top;
+            quad.BottomLeft.TexCoords.U = left;
+            quad.BottomLeft.TexCoords.V = bottom;
+            quad.BottomRight.TexCoords.U = right;
+            quad.BottomRight.TexCoords.V = bottom;
 
-            quad.bl.vertices.X = (x * m_uItemWidth);
-            quad.bl.vertices.Y = (y * m_uItemHeight);
-            quad.bl.vertices.Z = 0.0f;
-            quad.br.vertices.X = (x * m_uItemWidth + m_uItemWidth);
-            quad.br.vertices.Y = (y * m_uItemHeight);
-            quad.br.vertices.Z = 0.0f;
-            quad.tl.vertices.X = (x * m_uItemWidth);
-            quad.tl.vertices.Y = (y * m_uItemHeight + m_uItemHeight);
-            quad.tl.vertices.Z = 0.0f;
-            quad.tr.vertices.X = (x * m_uItemWidth + m_uItemWidth);
-            quad.tr.vertices.Y = (y * m_uItemHeight + m_uItemHeight);
-            quad.tr.vertices.Z = 0.0f;
+            quad.BottomLeft.Vertices.X = (x * m_uItemWidth);
+            quad.BottomLeft.Vertices.Y = (y * m_uItemHeight);
+            quad.BottomLeft.Vertices.Z = 0.0f;
+            quad.BottomRight.Vertices.X = (x * m_uItemWidth + m_uItemWidth);
+            quad.BottomRight.Vertices.Y = (y * m_uItemHeight);
+            quad.BottomRight.Vertices.Z = 0.0f;
+            quad.TopLeft.Vertices.X = (x * m_uItemWidth);
+            quad.TopLeft.Vertices.Y = (y * m_uItemHeight + m_uItemHeight);
+            quad.TopLeft.Vertices.Z = 0.0f;
+            quad.TopRight.Vertices.X = (x * m_uItemWidth + m_uItemWidth);
+            quad.TopRight.Vertices.Y = (y * m_uItemHeight + m_uItemHeight);
+            quad.TopRight.Vertices.Z = 0.0f;
 
             var color = new CCColor4B(m_tColor.R, m_tColor.G, m_tColor.B, m_cOpacity);
-            quad.tr.colors = color;
-            quad.tl.colors = color;
-            quad.br.colors = color;
-            quad.bl.colors = color;
+            quad.TopRight.Colors = color;
+            quad.TopLeft.Colors = color;
+            quad.BottomRight.Colors = color;
+            quad.BottomLeft.Colors = color;
 
             m_pTextureAtlas.UpdateQuad(ref quad, index);
         }

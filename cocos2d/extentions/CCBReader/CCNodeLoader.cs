@@ -272,7 +272,7 @@ namespace cocos2d
                         }
                     case kCCBPropType.kCCBPropTypeBlendmode:
                         {
-                            ccBlendFunc blendFunc = ParsePropTypeBlendFunc(node, parent, reader);
+                            CCBlendFunc blendFunc = ParsePropTypeBlendFunc(node, parent, reader);
                             if (setProp)
                             {
                                 OnHandlePropTypeBlendFunc(node, parent, propertyName, blendFunc, reader);
@@ -680,14 +680,14 @@ namespace cocos2d
             return arr;
         }
 
-        protected virtual ccBlendFunc ParsePropTypeBlendFunc(CCNode node, CCNode parent, CCBReader reader)
+        protected virtual CCBlendFunc ParsePropTypeBlendFunc(CCNode node, CCNode parent, CCBReader reader)
         {
             int source = reader.ReadInt(false);
             int destination = reader.ReadInt(false);
 
-            ccBlendFunc blendFunc;
-            blendFunc.src = source;
-            blendFunc.dst = destination;
+            CCBlendFunc blendFunc;
+            blendFunc.Source = source;
+            blendFunc.Destination = destination;
 
             return blendFunc;
         }
@@ -1075,7 +1075,7 @@ namespace cocos2d
         }
 
 
-        protected virtual void OnHandlePropTypeBlendFunc(CCNode node, CCNode parent, string propertyName, ccBlendFunc blendFunc,
+        protected virtual void OnHandlePropTypeBlendFunc(CCNode node, CCNode parent, string propertyName, CCBlendFunc blendFunc,
                                                          CCBReader reader)
         {
             CCLog.Log("Unexpected property type: '{0}'!", propertyName);

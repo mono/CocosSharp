@@ -9,7 +9,7 @@ namespace cocos2d
 
         protected byte m_cOpacity;
         protected CCTextureAtlas m_pTextureAtlas;
-        protected ccBlendFunc m_tBlendFunc;
+        protected CCBlendFunc m_tBlendFunc;
 
         protected CCColor3B m_tColor;
         protected CCColor3B m_tColorUnmodified;
@@ -91,7 +91,7 @@ namespace cocos2d
 
         #region ICCTextureProtocol Members
 
-        public ccBlendFunc BlendFunc
+        public CCBlendFunc BlendFunc
         {
             get { return m_tBlendFunc; }
             set { m_tBlendFunc = value; }
@@ -125,11 +125,11 @@ namespace cocos2d
             m_uItemHeight = tileHeight;
 
             m_cOpacity = 255;
-            m_tColor = m_tColorUnmodified = ccTypes.ccWHITE;
+            m_tColor = m_tColorUnmodified = CCTypes.CCWhite;
             m_bIsOpacityModifyRGB = true;
 
-            m_tBlendFunc.src = ccMacros.CC_BLEND_SRC;
-            m_tBlendFunc.dst = ccMacros.CC_BLEND_DST;
+            m_tBlendFunc.Source = ccMacros.CC_BLEND_SRC;
+            m_tBlendFunc.Destination = ccMacros.CC_BLEND_DST;
 
             var pNewAtlas = new CCTextureAtlas();
             pNewAtlas.InitWithFile(tile, itemsToRender);
@@ -169,8 +169,8 @@ namespace cocos2d
         {
             if (!m_pTextureAtlas.Texture.HasPremultipliedAlpha)
             {
-                m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
-                m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
+                m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
             }
         }
 

@@ -71,13 +71,13 @@ namespace cocos2d
                 {
                     cclabelttf.SetString(m_pInputText);
                 }
-                m_nCharCount = _calcCharCount(m_pInputText);
+                m_nCharCount = CalcCharCount(m_pInputText);
             }
         }
 
-        public bool attachWithIME()
+        public bool AttachWithIME()
         {
-            bool bRet = attachWithIME();
+            bool bRet = AttachWithIME();
             if (bRet)
             {
                 // open keyboard
@@ -90,9 +90,9 @@ namespace cocos2d
             return bRet;
         }
 
-        public bool detachWithIME()
+        public bool DetachWithIME()
         {
-            bool bRet = detachWithIME();
+            bool bRet = DetachWithIME();
             if (bRet)
             {
                 // close keyboard
@@ -105,27 +105,27 @@ namespace cocos2d
             return bRet;
         }
 
-        public bool canAttachWithIME()
+        public bool CanAttachWithIME()
         {
             return (m_pDelegate != null) ? (!m_pDelegate.onTextFieldAttachWithIME(this)) : true;
         }
 
-        public void didAttachWithIME()
+        public void DidAttachWithIME()
         {
             throw new NotImplementedException();
         }
 
-        public bool canDetachWithIME()
+        public bool CanDetachWithIME()
         {
             return (m_pDelegate != null) ? (!m_pDelegate.onTextFieldDetachWithIME(this)) : true;
         }
 
-        public void didDetachWithIME()
+        public void DidDetachWithIME()
         {
             throw new NotImplementedException();
         }
 
-        public void insertText(string text, int len)
+        public void InsertText(string text, int len)
         {
             // insert \n means input end
             //int nPos = sInsert.find('\n');
@@ -164,7 +164,7 @@ namespace cocos2d
             throw new NotImplementedException();
         }
 
-        public void deleteBackward()
+        public void DeleteBackward()
         {
             int nStrLen = m_pInputText.Length;
             if (nStrLen > 0)
@@ -202,36 +202,36 @@ namespace cocos2d
             //setString(sText);
         }
 
-        public string getContentText()
+        public string GetContentText()
         {
             return m_pInputText;
         }
 
-        public void keyboardWillShow(CCIMEKeyboardNotificationInfo info)
+        public void KeyboardWillShow(CCIMEKeyboardNotificationInfo info)
         {
             throw new NotImplementedException();
         }
 
-        public void keyboardDidShow(CCIMEKeyboardNotificationInfo info)
+        public void KeyboardDidShow(CCIMEKeyboardNotificationInfo info)
         {
             throw new NotImplementedException();
         }
 
-        public void keyboardWillHide(CCIMEKeyboardNotificationInfo info)
+        public void KeyboardWillHide(CCIMEKeyboardNotificationInfo info)
         {
             throw new NotImplementedException();
         }
 
-        public void keyboardDidHide(CCIMEKeyboardNotificationInfo info)
+        public void KeyboardDidHide(CCIMEKeyboardNotificationInfo info)
         {
             throw new NotImplementedException();
         }
 
-        public static CCTextFieldTTF textFieldWithPlaceHolder(string placeholder, CCSize dimensions, CCTextAlignment alignment, string fontName,
+        public static CCTextFieldTTF TextFieldWithPlaceHolder(string placeholder, CCSize dimensions, CCTextAlignment alignment, string fontName,
                                                               float fontSize)
         {
             var pRet = new CCTextFieldTTF();
-            pRet.initWithPlaceHolder("", dimensions, alignment, fontName, fontSize);
+            pRet.InitWithPlaceHolder("", dimensions, alignment, fontName, fontSize);
             if (placeholder != null)
             {
                 pRet.PlaceHolder = placeholder;
@@ -239,7 +239,7 @@ namespace cocos2d
             return pRet;
         }
 
-        public static CCTextFieldTTF textFieldWithPlaceHolder(string placeholder, string fontName, float fontSize)
+        public static CCTextFieldTTF TextFieldWithPlaceHolder(string placeholder, string fontName, float fontSize)
         {
             var pRet = new CCTextFieldTTF();
             pRet.InitWithString("", fontName, fontSize);
@@ -250,7 +250,7 @@ namespace cocos2d
             return pRet;
         }
 
-        public bool initWithPlaceHolder(string placeholder, CCSize dimensions, CCTextAlignment alignment, string fontName, float fontSize)
+        public bool InitWithPlaceHolder(string placeholder, CCSize dimensions, CCTextAlignment alignment, string fontName, float fontSize)
         {
             if (placeholder != null)
             {
@@ -259,7 +259,7 @@ namespace cocos2d
             return cclabelttf.InitWithString(m_pPlaceHolder, fontName, fontSize, dimensions, alignment);
         }
 
-        public bool initWithPlaceHolder(string placeholder, string fontName, float fontSize)
+        public bool InitWithPlaceHolder(string placeholder, string fontName, float fontSize)
         {
             if (placeholder != null)
             {
@@ -289,7 +289,7 @@ namespace cocos2d
             Color = color;
         }
 
-        public static int _calcCharCount(string pszText)
+        public static int CalcCharCount(string pszText)
         {
             return pszText.Length;
         }

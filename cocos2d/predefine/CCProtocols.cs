@@ -61,7 +61,7 @@ namespace cocos2d
         /// <summary>
         /// gets or sets the source blending function for the texture
         /// </summary>
-        ccBlendFunc BlendFunc { get; set; }
+        CCBlendFunc BlendFunc { get; set; }
     }
 
     /// <summary>

@@ -8,8 +8,8 @@ namespace cocos2d
     public interface ICCIMEDelegate
     {
 
-        bool attachWithIME();
-        bool detachWithIME();
+        bool AttachWithIME();
+        bool DetachWithIME();
 
         //friend class CCIMEDispatcher;
 
@@ -18,46 +18,46 @@ namespace cocos2d
 
         Called by CCIMEDispatcher.
         */
-        bool canAttachWithIME();
+        bool CanAttachWithIME();
         /**
         @brief	When the delegate detach with IME, this method call by CCIMEDispatcher.
         */
-        void didAttachWithIME();
+        void DidAttachWithIME();
 
         /**
         @brief	Decide the delegate instance can stop receive ime message or not.
         */
-        bool canDetachWithIME();
+        bool CanDetachWithIME();
 
         /**
         @brief	When the delegate detach with IME, this method call by CCIMEDispatcher.
         */
-        void didDetachWithIME();
+        void DidDetachWithIME();
 
         /**
         @brief	Called by CCIMEDispatcher when some text input from IME.
         */
-        void insertText(string text, int len);
+        void InsertText(string text, int len);
 
         /**
         @brief	Called by CCIMEDispatcher when user clicked the backward key.
         */
-        void deleteBackward();
+        void DeleteBackward();
 
         /**
         @brief	Called by CCIMEDispatcher for get text which delegate already has.
         */
-        string getContentText();
+        string GetContentText();
 
         //////////////////////////////////////////////////////////////////////////
         // keyboard show/hide notification
         //////////////////////////////////////////////////////////////////////////
-        void keyboardWillShow(CCIMEKeyboardNotificationInfo info);
+        void KeyboardWillShow(CCIMEKeyboardNotificationInfo info);
 
-        void keyboardDidShow(CCIMEKeyboardNotificationInfo info);
+        void KeyboardDidShow(CCIMEKeyboardNotificationInfo info);
 
-        void keyboardWillHide(CCIMEKeyboardNotificationInfo info);
+        void KeyboardWillHide(CCIMEKeyboardNotificationInfo info);
 
-        void keyboardDidHide(CCIMEKeyboardNotificationInfo info);
+        void KeyboardDidHide(CCIMEKeyboardNotificationInfo info);
     }
 }

@@ -92,7 +92,7 @@ namespace cocos2d
         public bool InitWithTilesetInfo(CCTMXTilesetInfo tilesetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
         {
             // XXX: is 35% a good estimate ?
-            CCSize size = layerInfo.m_tLayerSize;
+            CCSize size = layerInfo.LayerSize;
             float totalNumberOfTiles = size.Width * size.Height;
             float capacity = totalNumberOfTiles * 0.35f + 1; // 35 percent is occupied ?
 
@@ -105,12 +105,12 @@ namespace cocos2d
             if (base.InitWithTexture(texture, (int) capacity))
             {
                 // layerInfo
-                m_sLayerName = layerInfo.m_sName;
+                m_sLayerName = layerInfo.Name;
                 m_tLayerSize = size;
-                m_pTiles = layerInfo.m_pTiles;
-                m_uMinGID = layerInfo.m_uMinGID;
-                m_uMaxGID = layerInfo.m_uMaxGID;
-                m_cOpacity = layerInfo.m_cOpacity;
+                m_pTiles = layerInfo.Tiles;
+                m_uMinGID = layerInfo.MinGID;
+                m_uMaxGID = layerInfo.MaxGID;
+                m_cOpacity = layerInfo.Opacity;
                 Properties = new Dictionary<string, string>(layerInfo.Properties);
                 m_fContentScaleFactor = CCDirector.SharedDirector.ContentScaleFactor;
 
@@ -122,7 +122,7 @@ namespace cocos2d
                 m_uLayerOrientation = (CCTMXOrientation) mapInfo.Orientation;
 
                 // offset (after layer orientation is set);
-                CCPoint offset = CalculateLayerOffset(layerInfo.m_tOffset);
+                CCPoint offset = CalculateLayerOffset(layerInfo.Offset);
                 Position = ccMacros.CC_POINT_PIXELS_TO_POINTS(offset);
 
                 m_pAtlasIndexArray = new List<int>((int) totalNumberOfTiles);
@@ -610,7 +610,7 @@ namespace cocos2d
                     //float alphaFuncValue = 0.0f;
                     if (!String.IsNullOrEmpty(alphaFuncVal))
                     {
-                        m_fAlphaFuncValue = ccUtils.ccParseFloat(alphaFuncVal);
+                        m_fAlphaFuncValue = CCUtils.CCParseFloat(alphaFuncVal);
                     }
                     //setShaderProgram(CCShaderCache::sharedShaderCache().programForKey(kCCShader_PositionTextureColorAlphaTest));
 
@@ -621,7 +621,7 @@ namespace cocos2d
                 }
                 else
                 {
-                    m_nVertexZvalue = ccUtils.ccParseInt(vertexz);
+                    m_nVertexZvalue = CCUtils.CCParseInt(vertexz);
                 }
             }
         }

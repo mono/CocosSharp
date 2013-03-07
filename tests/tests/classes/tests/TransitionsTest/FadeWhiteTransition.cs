@@ -10,7 +10,7 @@ namespace tests
     {
         public new static CCTransitionScene Create(float t, CCScene s)
         {
-            return CCTransitionFade.Create(t, s, ccTypes.ccWHITE);
+            return CCTransitionFade.Create(t, s, CCTypes.CCWhite);
         }
     }
 }

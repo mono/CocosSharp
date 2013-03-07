@@ -26,7 +26,7 @@ namespace cocos2d
         protected CCSpriteBatchNode m_pobBatchNode; // Used batch node (weak reference)
         protected CCTexture2D m_pobTexture; // Texture used to render the sprite
         protected CCTextureAtlas m_pobTextureAtlas; // Sprite Sheet texture atlas (weak reference)
-        protected ccBlendFunc m_sBlendFunc; // Needed for the texture protocol
+        protected CCBlendFunc m_sBlendFunc; // Needed for the texture protocol
         protected CCColor3B m_sColor;
 
         private string m_TextureFile;
@@ -35,7 +35,7 @@ namespace cocos2d
 
         // opacity and RGB protocol
         protected CCColor3B m_sColorUnmodified;
-        internal ccV3F_C4B_T2F_Quad m_sQuad;
+        internal CCV3F_C4B_T2F_Quad m_sQuad;
         protected CCAffineTransform m_transformToBatch; //
         protected int m_uAtlasIndex; // Absolute (real) Index on the SpriteSheet
 
@@ -86,7 +86,7 @@ namespace cocos2d
             }
         }
 
-        public ccV3F_C4B_T2F_Quad Quad
+        public CCV3F_C4B_T2F_Quad Quad
         {
             // read only
             get { return m_sQuad; }
@@ -303,10 +303,10 @@ namespace cocos2d
                     float x2 = x1 + m_obRect.size.Width;
                     float y2 = y1 + m_obRect.size.Height;
 
-                    m_sQuad.bl.vertices = new CCVertex3F(x1, y1, 0);
-                    m_sQuad.br.vertices = new CCVertex3F(x2, y1, 0);
-                    m_sQuad.tl.vertices = new CCVertex3F(x1, y2, 0);
-                    m_sQuad.tr.vertices = new CCVertex3F(x2, y2, 0);
+                    m_sQuad.BottomLeft.Vertices = new CCVertex3F(x1, y1, 0);
+                    m_sQuad.BottomRight.Vertices = new CCVertex3F(x2, y1, 0);
+                    m_sQuad.TopLeft.Vertices = new CCVertex3F(x1, y2, 0);
+                    m_sQuad.TopRight.Vertices = new CCVertex3F(x2, y2, 0);
                 }
                 else
                 {
@@ -377,7 +377,7 @@ namespace cocos2d
 
         #region ICCTextureProtocol Members
 
-        public ccBlendFunc BlendFunc
+        public CCBlendFunc BlendFunc
         {
             get { return m_sBlendFunc; }
             set { m_sBlendFunc = value; }
@@ -480,10 +480,10 @@ namespace cocos2d
 
             m_bOpacityModifyRGB = true;
             m_nOpacity = 255;
-            m_sColor = m_sColorUnmodified = ccTypes.ccWHITE;
+            m_sColor = m_sColorUnmodified = CCTypes.CCWhite;
 
-            m_sBlendFunc.src = ccMacros.CC_BLEND_SRC;
-            m_sBlendFunc.dst = ccMacros.CC_BLEND_DST;
+            m_sBlendFunc.Source = ccMacros.CC_BLEND_SRC;
+            m_sBlendFunc.Destination = ccMacros.CC_BLEND_DST;
 
             m_bFlipX = m_bFlipY = false;
 
@@ -496,14 +496,14 @@ namespace cocos2d
             m_bHasChildren = false;
 
             // clean the Quad
-            m_sQuad = new ccV3F_C4B_T2F_Quad();
+            m_sQuad = new CCV3F_C4B_T2F_Quad();
 
             // Atlas: Color
             var tmpColor = new CCColor4B(255, 255, 255, 255);
-            m_sQuad.bl.colors = tmpColor;
-            m_sQuad.br.colors = tmpColor;
-            m_sQuad.tl.colors = tmpColor;
-            m_sQuad.tr.colors = tmpColor;
+            m_sQuad.BottomLeft.Colors = tmpColor;
+            m_sQuad.BottomRight.Colors = tmpColor;
+            m_sQuad.TopLeft.Colors = tmpColor;
+            m_sQuad.TopRight.Colors = tmpColor;
 
             // update texture (calls updateBlendFunc)
             Texture = pTexture;
@@ -623,10 +623,10 @@ namespace cocos2d
                 float y2 = y1 + m_obRect.size.Height;
 
                 // Don't update Z.
-                m_sQuad.bl.vertices = ccTypes.vertex3(x1, y1, 0);
-                m_sQuad.br.vertices = ccTypes.vertex3(x2, y1, 0);
-                m_sQuad.tl.vertices = ccTypes.vertex3(x1, y2, 0);
-                m_sQuad.tr.vertices = ccTypes.vertex3(x2, y2, 0);
+                m_sQuad.BottomLeft.Vertices = CCTypes.Vertex3(x1, y1, 0);
+                m_sQuad.BottomRight.Vertices = CCTypes.Vertex3(x2, y1, 0);
+                m_sQuad.TopLeft.Vertices = CCTypes.Vertex3(x1, y2, 0);
+                m_sQuad.TopRight.Vertices = CCTypes.Vertex3(x2, y2, 0);
             }
         }
 
@@ -676,14 +676,14 @@ namespace cocos2d
                     ccMacros.CC_SWAP(ref left, ref right);
                 }
 
-                m_sQuad.bl.texCoords.U = left;
-                m_sQuad.bl.texCoords.V = top;
-                m_sQuad.br.texCoords.U = left;
-                m_sQuad.br.texCoords.V = bottom;
-                m_sQuad.tl.texCoords.U = right;
-                m_sQuad.tl.texCoords.V = top;
-                m_sQuad.tr.texCoords.U = right;
-                m_sQuad.tr.texCoords.V = bottom;
+                m_sQuad.BottomLeft.TexCoords.U = left;
+                m_sQuad.BottomLeft.TexCoords.V = top;
+                m_sQuad.BottomRight.TexCoords.U = left;
+                m_sQuad.BottomRight.TexCoords.V = bottom;
+                m_sQuad.TopLeft.TexCoords.U = right;
+                m_sQuad.TopLeft.TexCoords.V = top;
+                m_sQuad.TopRight.TexCoords.U = right;
+                m_sQuad.TopRight.TexCoords.V = bottom;
             }
             else
             {
@@ -710,14 +710,14 @@ namespace cocos2d
                     ccMacros.CC_SWAP(ref top, ref bottom);
                 }
 
-                m_sQuad.bl.texCoords.U = left;
-                m_sQuad.bl.texCoords.V = bottom;
-                m_sQuad.br.texCoords.U = right;
-                m_sQuad.br.texCoords.V = bottom;
-                m_sQuad.tl.texCoords.U = left;
-                m_sQuad.tl.texCoords.V = top;
-                m_sQuad.tr.texCoords.U = right;
-                m_sQuad.tr.texCoords.V = top;
+                m_sQuad.BottomLeft.TexCoords.U = left;
+                m_sQuad.BottomLeft.TexCoords.V = bottom;
+                m_sQuad.BottomRight.TexCoords.U = right;
+                m_sQuad.BottomRight.TexCoords.V = bottom;
+                m_sQuad.TopLeft.TexCoords.U = left;
+                m_sQuad.TopLeft.TexCoords.V = top;
+                m_sQuad.TopRight.TexCoords.U = right;
+                m_sQuad.TopRight.TexCoords.V = top;
             }
         }
 
@@ -733,8 +733,8 @@ namespace cocos2d
                 if (!m_bIsVisible ||
                     (m_pParent != null && m_pParent != m_pobBatchNode && ((CCSprite)m_pParent).m_bShouldBeHidden))
                 {
-                    m_sQuad.br.vertices =
-                        m_sQuad.tl.vertices = m_sQuad.tr.vertices = m_sQuad.bl.vertices = new CCVertex3F(0, 0, 0);
+                    m_sQuad.BottomRight.Vertices =
+                        m_sQuad.TopLeft.Vertices = m_sQuad.TopRight.Vertices = m_sQuad.BottomLeft.Vertices = new CCVertex3F(0, 0, 0);
                     m_bShouldBeHidden = true;
                 }
                 else
@@ -784,10 +784,10 @@ namespace cocos2d
                     float dx = x1 * cr - y2 * sr2 + x;
                     float dy = x1 * sr + y2 * cr2 + y;
 
-                    m_sQuad.bl.vertices = new CCVertex3F(ax, ay, m_fVertexZ);
-                    m_sQuad.br.vertices = new CCVertex3F(bx, by, m_fVertexZ);
-                    m_sQuad.tl.vertices = new CCVertex3F(dx, dy, m_fVertexZ);
-                    m_sQuad.tr.vertices = new CCVertex3F(cx, cy, m_fVertexZ);
+                    m_sQuad.BottomLeft.Vertices = new CCVertex3F(ax, ay, m_fVertexZ);
+                    m_sQuad.BottomRight.Vertices = new CCVertex3F(bx, by, m_fVertexZ);
+                    m_sQuad.TopLeft.Vertices = new CCVertex3F(dx, dy, m_fVertexZ);
+                    m_sQuad.TopRight.Vertices = new CCVertex3F(cx, cy, m_fVertexZ);
                 }
 
                 m_pobTextureAtlas.UpdateQuad(ref m_sQuad, m_uAtlasIndex);
@@ -1004,25 +1004,25 @@ namespace cocos2d
             if (opacity) 
             {
                 // The following code works on iOS
-                m_sQuad.bl.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.br.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.tl.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.tr.colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.BottomLeft.Colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.BottomRight.Colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.TopLeft.Colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
+                m_sQuad.TopRight.Colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
             }
             else 
             {
-                m_sQuad.bl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-                m_sQuad.br.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-                m_sQuad.tl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-                m_sQuad.tr.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.BottomLeft.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.BottomRight.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.TopLeft.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+                m_sQuad.TopRight.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
 
             }
 #else
 
-            m_sQuad.bl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-            m_sQuad.br.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-            m_sQuad.tl.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-            m_sQuad.tr.colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.BottomLeft.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.BottomRight.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.TopLeft.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
+            m_sQuad.TopRight.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
 #endif
 
             // renders using Sprite Manager
@@ -1080,14 +1080,14 @@ namespace cocos2d
             // it's possible to have an untextured sprite
             if (m_pobTexture == null || !m_pobTexture.HasPremultipliedAlpha)
             {
-                m_sBlendFunc.src = OGLES.GL_SRC_ALPHA;
-                m_sBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                m_sBlendFunc.Source = OGLES.GL_SRC_ALPHA;
+                m_sBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
                 IsOpacityModifyRGB = false;
             }
             else
             {
-                m_sBlendFunc.src = ccMacros.CC_BLEND_SRC;
-                m_sBlendFunc.dst = ccMacros.CC_BLEND_DST;
+                m_sBlendFunc.Source = ccMacros.CC_BLEND_SRC;
+                m_sBlendFunc.Destination = ccMacros.CC_BLEND_DST;
                 IsOpacityModifyRGB = true;
             }
         }

@@ -400,7 +400,7 @@ namespace cocos2d
         public override void Draw()
         {
             DrawManager.BindTexture(Texture);
-            DrawManager.BlendFunc(new ccBlendFunc(ccMacros.CC_BLEND_SRC, ccMacros.CC_BLEND_DST)); // OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA));
+            DrawManager.BlendFunc(new CCBlendFunc(ccMacros.CC_BLEND_SRC, ccMacros.CC_BLEND_DST)); // OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA));
             DrawManager.DrawQuad(ref m_sQuad);
 
             //    /*
@@ -480,7 +480,7 @@ namespace cocos2d
             {
                 m_pMaskSprite = Create(m_pMaskTexture);
                 m_pMaskSprite.AnchorPoint = new CCPoint(0, 0);
-                m_pMaskSprite.BlendFunc = new ccBlendFunc(OGLES.GL_ZERO, OGLES.GL_SRC_ALPHA);
+                m_pMaskSprite.BlendFunc = new CCBlendFunc(OGLES.GL_ZERO, OGLES.GL_SRC_ALPHA);
             }
             else
             {

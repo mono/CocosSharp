@@ -67,7 +67,7 @@ namespace tests.Extensions
 
             var button = CCControlButton.Create(titleButton, backgroundButton);
 			button.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
-			button.SetTitleColorForState(ccTypes.ccWHITE, CCControlState.Highlighted);
+			button.SetTitleColorForState(CCTypes.CCWhite, CCControlState.Highlighted);
     
 			return button;
 		}
@@ -108,7 +108,7 @@ namespace tests.Extensions
 
                 var controlButton = CCControlButton.Create(titleButton, backgroundButton);
 				controlButton.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
-				controlButton.SetTitleColorForState(ccTypes.ccWHITE, CCControlState.Highlighted);
+				controlButton.SetTitleColorForState(CCTypes.CCWhite, CCControlState.Highlighted);
         
 				controlButton.AnchorPoint = new CCPoint(0.5f, 1);
 				controlButton.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
@@ -262,7 +262,7 @@ namespace tests.Extensions
 
             var button = CCControlButton.Create(titleButton, backgroundButton);
 			button.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
-			button.SetTitleColorForState(ccTypes.ccWHITE, CCControlState.Highlighted);
+			button.SetTitleColorForState(CCTypes.CCWhite, CCControlState.Highlighted);
     
 			return button;
 		}

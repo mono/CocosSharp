@@ -212,13 +212,13 @@ namespace cocos2d
                     CCLog.Log("cocos2d: TMXFomat: Unsupported orientation: {0}", pTMXMapInfo.Orientation);
 
                 CCSize sMapSize;
-                sMapSize.Width = ccUtils.ccParseFloat(attributeDict["width"]);
-                sMapSize.Height = ccUtils.ccParseFloat(attributeDict["height"]);
+                sMapSize.Width = CCUtils.CCParseFloat(attributeDict["width"]);
+                sMapSize.Height = CCUtils.CCParseFloat(attributeDict["height"]);
                 pTMXMapInfo.MapSize = sMapSize;
 
                 CCSize sTileSize;
-                sTileSize.Width = ccUtils.ccParseFloat(attributeDict["tilewidth"]);
-                sTileSize.Height = ccUtils.ccParseFloat(attributeDict["tileheight"]);
+                sTileSize.Width = CCUtils.CCParseFloat(attributeDict["tilewidth"]);
+                sTileSize.Height = CCUtils.CCParseFloat(attributeDict["tileheight"]);
                 pTMXMapInfo.TileSize = sTileSize;
 
                 // The parent element is now "map"
@@ -249,8 +249,8 @@ namespace cocos2d
                         tileset.m_uMargin = int.Parse(attributeDict["margin"]);
 
                     CCSize s;
-                    s.Width = ccUtils.ccParseFloat(attributeDict["tilewidth"]);
-                    s.Height = ccUtils.ccParseFloat(attributeDict["tileheight"]);
+                    s.Width = CCUtils.CCParseFloat(attributeDict["tilewidth"]);
+                    s.Height = CCUtils.CCParseFloat(attributeDict["tileheight"]);
                     tileset.m_tTileSize = s;
 
                     pTMXMapInfo.Tilesets.Add(tileset);
@@ -268,38 +268,38 @@ namespace cocos2d
             else if (elementName == "layer")
             {
                 var layer = new CCTMXLayerInfo();
-                layer.m_sName = attributeDict["name"];
+                layer.Name = attributeDict["name"];
 
                 CCSize s;
-                s.Width = ccUtils.ccParseFloat(attributeDict["width"]);
-                s.Height = ccUtils.ccParseFloat(attributeDict["height"]);
-                layer.m_tLayerSize = s;
+                s.Width = CCUtils.CCParseFloat(attributeDict["width"]);
+                s.Height = CCUtils.CCParseFloat(attributeDict["height"]);
+                layer.LayerSize = s;
 
-                layer.m_pTiles = new uint[(int) s.Width * (int) s.Height];
+                layer.Tiles = new uint[(int) s.Width * (int) s.Height];
 
                 if (attributeDict.Keys.Contains("visible"))
                 {
                     string visible = attributeDict["visible"];
-                    layer.m_bVisible = !(visible == "0");
+                    layer.Visible = !(visible == "0");
                 }
                 else
                 {
-                    layer.m_bVisible = true;
+                    layer.Visible = true;
                 }
 
                 if (attributeDict.Keys.Contains("opacity"))
                 {
                     string opacity = attributeDict["opacity"];
-                    layer.m_cOpacity = (byte) (255 * ccUtils.ccParseFloat(opacity));
+                    layer.Opacity = (byte) (255 * CCUtils.CCParseFloat(opacity));
                 }
                 else
                 {
-                    layer.m_cOpacity = 255;
+                    layer.Opacity = 255;
                 }
 
-                float x = attributeDict.Keys.Contains("x") ? ccUtils.ccParseFloat(attributeDict["x"]) : 0;
-                float y = attributeDict.Keys.Contains("y") ? ccUtils.ccParseFloat(attributeDict["y"]) : 0;
-                layer.m_tOffset = new CCPoint(x, y);
+                float x = attributeDict.Keys.Contains("x") ? CCUtils.CCParseFloat(attributeDict["x"]) : 0;
+                float y = attributeDict.Keys.Contains("y") ? CCUtils.CCParseFloat(attributeDict["y"]) : 0;
+                layer.Offset = new CCPoint(x, y);
 
                 pTMXMapInfo.Layers.Add(layer);
 
@@ -313,9 +313,9 @@ namespace cocos2d
 
                 CCPoint positionOffset = CCPoint.Zero;
                 if (attributeDict.ContainsKey("x"))
-                    positionOffset.x = ccUtils.ccParseFloat(attributeDict["x"]) * pTMXMapInfo.TileSize.Width;
+                    positionOffset.x = CCUtils.CCParseFloat(attributeDict["x"]) * pTMXMapInfo.TileSize.Width;
                 if (attributeDict.ContainsKey("y"))
-                    positionOffset.y = ccUtils.ccParseFloat(attributeDict["y"]) * pTMXMapInfo.TileSize.Height;
+                    positionOffset.y = CCUtils.CCParseFloat(attributeDict["y"]) * pTMXMapInfo.TileSize.Height;
                 objectGroup.PositionOffset = positionOffset;
 
                 pTMXMapInfo.ObjectGroups.Add(objectGroup);
@@ -532,7 +532,7 @@ namespace cocos2d
                     encoded = pTMXMapInfo.CurrentString;
                 }
 
-                for (int i = 0; i < layer.m_pTiles.Length; i++)
+                for (int i = 0; i < layer.Tiles.Length; i++)
                 {
                     int i4 = i * 4;
                     var gid = (uint) (
@@ -541,7 +541,7 @@ namespace cocos2d
                                          encoded[i4 + 2] << 16 |
                                          encoded[i4 + 3] << 24);
 
-                    layer.m_pTiles[i] = gid;
+                    layer.Tiles[i] = gid;
                 }
 
                 pTMXMapInfo.CurrentString = null;

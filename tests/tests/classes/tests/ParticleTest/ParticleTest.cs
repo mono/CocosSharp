@@ -178,7 +178,7 @@ namespace tests
 
         public ParticleDemo()
         {
-            InitWithColor(ccTypes.ccc4(127, 127, 127, 255));
+            InitWithColor(CCTypes.CreateColor(127, 127, 127, 255));
 
             m_emitter = null;
 
@@ -1320,7 +1320,7 @@ namespace tests
             base.OnEnter();
 
             m_nOrder = 0;
-            Color = ccTypes.ccBLACK;
+            Color = CCTypes.CCBlack;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1419,7 +1419,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = ccTypes.ccBLACK;
+            Color = CCTypes.CCBlack;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1468,7 +1468,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = ccTypes.ccBLACK;
+            Color = CCTypes.CCBlack;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1594,7 +1594,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = ccTypes.ccBLACK;
+            Color = CCTypes.CCBlack;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1627,7 +1627,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = ccTypes.ccBLACK;
+            Color = CCTypes.CCBlack;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1663,7 +1663,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = ccTypes.ccBLACK;
+            Color = CCTypes.CCBlack;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1706,7 +1706,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = ccTypes.ccBLACK;
+            Color = CCTypes.CCBlack;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1776,7 +1776,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = ccTypes.ccBLACK;
+            Color = CCTypes.CCBlack;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1887,7 +1887,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = ccTypes.ccBLACK;
+            Color = CCTypes.CCBlack;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1897,7 +1897,7 @@ namespace tests
             //this->emitter.blendFunc = (ccBlendFunc){ GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA };
 
             // Cocos2d "normal" blend func for premul causes alpha to be ignored (oversaturates colors)
-            var tBlendFunc = new ccBlendFunc(OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            var tBlendFunc = new CCBlendFunc(OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
             m_emitter.BlendFunc = tBlendFunc;
 
             //Debug.Assert(m_emitter.OpacityModifyRGB, "Particle texture does not have premultiplied alpha, test is useless");
@@ -1931,7 +1931,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = ccTypes.ccBLACK;
+            Color = CCTypes.CCBlack;
             RemoveChild(m_background, true);
             m_background = null;
 

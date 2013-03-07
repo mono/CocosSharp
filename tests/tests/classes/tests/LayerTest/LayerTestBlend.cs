@@ -36,7 +36,7 @@ namespace tests
             int src;
             int dst;
 
-            if (layer.BlendFunc.dst == OGLES.GL_ZERO)
+            if (layer.BlendFunc.Destination == OGLES.GL_ZERO)
             {
                 src = OGLES.GL_SRC_ALPHA;
                 dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
@@ -47,7 +47,7 @@ namespace tests
                 dst = OGLES.GL_ZERO;
             }
 
-            layer.BlendFunc = new ccBlendFunc(src, dst);
+            layer.BlendFunc = new CCBlendFunc(src, dst);
         }
 
         public override string title()

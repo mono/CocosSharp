@@ -35,7 +35,7 @@ namespace cocos2d
         private static Texture2D m_currentTexture;
         private static bool m_vertexColorEnabled;
 
-        private static readonly Dictionary<ccBlendFunc, BlendState> m_blendStates = new Dictionary<ccBlendFunc, BlendState>();
+        private static readonly Dictionary<CCBlendFunc, BlendState> m_blendStates = new Dictionary<CCBlendFunc, BlendState>();
 
         private static DepthStencilState m_DepthEnableStencilState;
         private static DepthStencilState m_DepthDisableStencilState;
@@ -50,17 +50,17 @@ namespace cocos2d
         private static int m_lastWidth;
         private static int m_lastHeight;
         private static bool m_depthTest = true;
-        private static ccBlendFunc m_currBlend = new ccBlendFunc(ccMacros.CC_BLEND_SRC, ccMacros.CC_BLEND_DST);
+        private static CCBlendFunc m_currBlend = new CCBlendFunc(ccMacros.CC_BLEND_SRC, ccMacros.CC_BLEND_DST);
         private static RenderTarget2D m_currRenderTarget;
         private static Viewport m_savedViewport;
         private static DynamicVertexBuffer m_quadsBuffer;
         private static IndexBuffer m_quadsIndexBuffer;
 
-        private static ccV3F_C4B_T2F[] m_vertices;
+        private static CCV3F_C4B_T2F[] m_vertices;
         private static short[] m_quadIndices;
 
         public static int DrawCount;
-        private static ccV3F_C4B_T2F[] m_quadVertices;
+        private static CCV3F_C4B_T2F[] m_quadVertices;
         private static float m_fScaleX;
         private static float m_fScaleY;
         private static CCRect m_obViewPortRect;
@@ -99,8 +99,8 @@ namespace cocos2d
             set
             {
                 graphicsDevice.BlendState = value;
-                m_currBlend.src = -1;
-                m_currBlend.dst = -1;
+                m_currBlend.Source = -1;
+                m_currBlend.Destination = -1;
             }
         }
 
@@ -253,7 +253,7 @@ namespace cocos2d
                     DepthBufferEnable = false
                 };
 #if !WINDOWS_PHONE && !XBOX && !WINDOWS &&!NETFX_CORE
-            List<string> extensions = ccUtils.GetGLExtensions();
+            List<string> extensions = CCUtils.GetGLExtensions();
             foreach(string s in extensions) 
             {
                 switch(s) 
@@ -502,24 +502,24 @@ namespace cocos2d
         }
 
 
-        public static void BlendFunc(ccBlendFunc blendFunc)
+        public static void BlendFunc(CCBlendFunc blendFunc)
         {
-            if (m_currBlend.dst != blendFunc.dst || m_currBlend.src != blendFunc.src)
+            if (m_currBlend.Destination != blendFunc.Destination || m_currBlend.Source != blendFunc.Source)
             {
                 BlendState bs = null;
-                if (blendFunc.src == OGLES.GL_ONE && blendFunc.dst == OGLES.GL_ONE_MINUS_SRC_ALPHA)
+                if (blendFunc.Source == OGLES.GL_ONE && blendFunc.Destination == OGLES.GL_ONE_MINUS_SRC_ALPHA)
                 {
                     bs = BlendState.AlphaBlend;
                 }
-                else if (blendFunc.src == OGLES.GL_SRC_ALPHA && blendFunc.dst == OGLES.GL_ONE)
+                else if (blendFunc.Source == OGLES.GL_SRC_ALPHA && blendFunc.Destination == OGLES.GL_ONE)
                 {
                     bs = BlendState.Additive;
                 }
-                else if (blendFunc.src == OGLES.GL_SRC_ALPHA && blendFunc.dst == OGLES.GL_ONE_MINUS_SRC_ALPHA)
+                else if (blendFunc.Source == OGLES.GL_SRC_ALPHA && blendFunc.Destination == OGLES.GL_ONE_MINUS_SRC_ALPHA)
                 {
                     bs = BlendState.NonPremultiplied;
                 }
-                else if (blendFunc.src == OGLES.GL_ONE && blendFunc.dst == OGLES.GL_ZERO)
+                else if (blendFunc.Source == OGLES.GL_ONE && blendFunc.Destination == OGLES.GL_ZERO)
                 {
                     bs = BlendState.Opaque;
                 }
@@ -529,10 +529,10 @@ namespace cocos2d
                     {
                         bs = new BlendState();
 
-                        bs.ColorSourceBlend = OGLES.GetXNABlend(blendFunc.src);
-                        bs.AlphaSourceBlend = OGLES.GetXNABlend(blendFunc.src);
-                        bs.ColorDestinationBlend = OGLES.GetXNABlend(blendFunc.dst);
-                        bs.AlphaDestinationBlend = OGLES.GetXNABlend(blendFunc.dst);
+                        bs.ColorSourceBlend = OGLES.GetXNABlend(blendFunc.Source);
+                        bs.AlphaSourceBlend = OGLES.GetXNABlend(blendFunc.Source);
+                        bs.ColorDestinationBlend = OGLES.GetXNABlend(blendFunc.Destination);
+                        bs.AlphaDestinationBlend = OGLES.GetXNABlend(blendFunc.Destination);
 
                         m_blendStates.Add(blendFunc, bs);
                     }
@@ -540,8 +540,8 @@ namespace cocos2d
 
                 graphicsDevice.BlendState = bs;
 
-                m_currBlend.src = blendFunc.src;
-                m_currBlend.dst = blendFunc.dst;
+                m_currBlend.Source = blendFunc.Source;
+                m_currBlend.Destination = blendFunc.Destination;
             }
         }
 
@@ -580,7 +580,7 @@ namespace cocos2d
         public static void CreateRenderTarget(CCTexture2D pTexture, RenderTargetUsage usage)
         {
             CCSize size = pTexture.ContentSizeInPixels;
-            pTexture.texture2D = CreateRenderTarget((int) size.Width, (int) size.Height, SurfaceFormat.Color, m_PlatformDepthFormat, usage);
+            pTexture.Texture = CreateRenderTarget((int) size.Width, (int) size.Height, SurfaceFormat.Color, m_PlatformDepthFormat, usage);
         }
 
         public static RenderTarget2D CreateRenderTarget(int width, int height, RenderTargetUsage usage)
@@ -598,8 +598,8 @@ namespace cocos2d
         {
             if (!m_AllowNonPower2Textures)
             {
-                width = ccUtils.ccNextPOT(width);
-                height = ccUtils.ccNextPOT(height);
+                width = CCUtils.CCNextPOT(width);
+                height = CCUtils.CCNextPOT(height);
             }
             return new RenderTarget2D(graphicsDevice, width, height, false, colorFormat, depthFormat, 0, usage);
         }
@@ -609,8 +609,8 @@ namespace cocos2d
             PresentationParameters pp = graphicsDevice.PresentationParameters;
             if (!m_AllowNonPower2Textures)
             {
-                width = ccUtils.ccNextPOT(width);
-                height = ccUtils.ccNextPOT(height);
+                width = CCUtils.CCNextPOT(width);
+                height = CCUtils.CCNextPOT(height);
             }
             return new Texture2D(graphicsDevice, width, height, false, SurfaceFormat.Color);
         }
@@ -623,8 +623,8 @@ namespace cocos2d
             }
             else
             {
-                Debug.Assert(pTexture.texture2D is RenderTarget2D);
-                SetRenderTarget((RenderTarget2D) pTexture.texture2D);
+                Debug.Assert(pTexture.Texture is RenderTarget2D);
+                SetRenderTarget((RenderTarget2D) pTexture.Texture);
             }
         }
 
@@ -695,34 +695,34 @@ namespace cocos2d
                     m_quadsBuffer.Dispose();
                 }
 				
-                m_quadsBuffer = new DynamicVertexBuffer(graphicsDevice, typeof(ccV3F_C4B_T2F), capacity * 4, BufferUsage.WriteOnly);
+                m_quadsBuffer = new DynamicVertexBuffer(graphicsDevice, typeof(CCV3F_C4B_T2F), capacity * 4, BufferUsage.WriteOnly);
 
                 if (m_vertices == null || m_vertices.Length < capacity * 4)
                 {
-                    m_vertices = new ccV3F_C4B_T2F[capacity * 4];
+                    m_vertices = new CCV3F_C4B_T2F[capacity * 4];
                 }
             }
         }
 
-        public static void DrawQuad(ref ccV3F_C4B_T2F_Quad quad)
+        public static void DrawQuad(ref CCV3F_C4B_T2F_Quad quad)
         {
-            ccV3F_C4B_T2F[] vertices = m_quadVertices;
+            CCV3F_C4B_T2F[] vertices = m_quadVertices;
 
             if (vertices == null)
             {
-                vertices = m_quadVertices = new ccV3F_C4B_T2F[4];
+                vertices = m_quadVertices = new CCV3F_C4B_T2F[4];
                 CheckQuadsIndexBuffer(1);
             }
 
-            vertices[0] = quad.tl;
-            vertices[1] = quad.bl;
-            vertices[2] = quad.tr;
-            vertices[3] = quad.br;
+            vertices[0] = quad.TopLeft;
+            vertices[1] = quad.BottomLeft;
+            vertices[2] = quad.TopRight;
+            vertices[3] = quad.BottomRight;
 
             DrawIndexedPrimitives(PrimitiveType.TriangleList, vertices, 0, 4, m_quadIndices, 0, 2);
         }
 
-        public static void DrawQuads(RawList<ccV3F_C4B_T2F_Quad> quads, int start, int n)
+        public static void DrawQuads(RawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
         {
             if (n == 0)
             {
@@ -801,27 +801,27 @@ namespace cocos2d
             DrawCount++;
         }
 
-        public static void SetQuadsToBuffer(VertexBuffer vertexBuffer, RawList<ccV3F_C4B_T2F_Quad> quads, int start, int n)
+        public static void SetQuadsToBuffer(VertexBuffer vertexBuffer, RawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
         {
             if (m_vertices == null || m_vertices.Length < quads.Capacity * 4)
             {
                 int capacity = Math.Max(quads.Capacity, DefaultQuadBufferSize);
-                m_vertices = new ccV3F_C4B_T2F[capacity * 4];
+                m_vertices = new CCV3F_C4B_T2F[capacity * 4];
             }
 
-            ccV3F_C4B_T2F_Quad[] elements = quads.Elements;
+            CCV3F_C4B_T2F_Quad[] elements = quads.Elements;
 
 #if ANDROID
             vertexBuffer.SetData(elements, start, n);
 #else
-            ccV3F_C4B_T2F[] vertices = m_vertices;
+            CCV3F_C4B_T2F[] vertices = m_vertices;
             int i4 = 0;
             for (int i = start; i < start + n; i++)
             {
-                vertices[i4 + 0] = elements[i].tl;
-                vertices[i4 + 1] = elements[i].bl;
-                vertices[i4 + 2] = elements[i].tr;
-                vertices[i4 + 3] = elements[i].br;
+                vertices[i4 + 0] = elements[i].TopLeft;
+                vertices[i4 + 1] = elements[i].BottomLeft;
+                vertices[i4 + 2] = elements[i].TopRight;
+                vertices[i4 + 3] = elements[i].BottomRight;
 
                 i4 += 4;
             }

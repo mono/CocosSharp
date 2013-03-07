@@ -16,8 +16,8 @@ namespace cocos2d
         private CCPoint[] m_pPointVertexes;
         /** texture used for the motion streak */
         private CCTexture2D m_pTexture;
-        private ccV3F_C4B_T2F[] m_pVertices;
-        private ccBlendFunc m_tBlendFunc;
+        private CCV3F_C4B_T2F[] m_pVertices;
+        private CCBlendFunc m_tBlendFunc;
         private CCColor3B m_tColor;
         private CCPoint m_tPositionR;
 
@@ -29,7 +29,7 @@ namespace cocos2d
 
         public CCMotionStreak()
         {
-            m_tBlendFunc = new ccBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            m_tBlendFunc = new CCBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
         }
 
         public override CCPoint Position
@@ -71,7 +71,7 @@ namespace cocos2d
             set { m_pTexture = value; }
         }
 
-        public ccBlendFunc BlendFunc
+        public CCBlendFunc BlendFunc
         {
             set { m_tBlendFunc = value; }
             get { return (m_tBlendFunc); }
@@ -133,11 +133,11 @@ namespace cocos2d
             m_pPointState = new float[m_uMaxPoints];
             m_pPointVertexes = new CCPoint[m_uMaxPoints];
 
-            m_pVertices = new ccV3F_C4B_T2F[(m_uMaxPoints + 1) * 2];
+            m_pVertices = new CCV3F_C4B_T2F[(m_uMaxPoints + 1) * 2];
 
             // Set blend mode
-            m_tBlendFunc.src = OGLES.GL_SRC_ALPHA;
-            m_tBlendFunc.dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+            m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
+            m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
 
             // shader program
             // setShaderProgram(CCShaderCache.sharedShaderCache().programForKey(kCCShader_PositionTextureColor));
@@ -155,7 +155,7 @@ namespace cocos2d
 
             for (int i = 0; i < m_uNuPoints * 2; i++)
             {
-                m_pVertices[i].colors = new CCColor4B(colors.R, colors.G, colors.B, 255);
+                m_pVertices[i].Colors = new CCColor4B(colors.R, colors.G, colors.B, 255);
             }
         }
 
@@ -195,19 +195,19 @@ namespace cocos2d
                         // Move vertices
                         i2 = i * 2;
                         newIdx2 = newIdx * 2;
-                        m_pVertices[newIdx2].vertices = m_pVertices[i2].vertices;
-                        m_pVertices[newIdx2 + 1].vertices = m_pVertices[i2 + 1].vertices;
+                        m_pVertices[newIdx2].Vertices = m_pVertices[i2].Vertices;
+                        m_pVertices[newIdx2 + 1].Vertices = m_pVertices[i2 + 1].Vertices;
 
                         // Move color
-                        m_pVertices[newIdx2].colors = m_pVertices[i2].colors;
-                        m_pVertices[newIdx2 + 1].colors = m_pVertices[i2 + 1].colors;
+                        m_pVertices[newIdx2].Colors = m_pVertices[i2].Colors;
+                        m_pVertices[newIdx2 + 1].Colors = m_pVertices[i2 + 1].Colors;
                     }
                     else
                     {
                         newIdx2 = newIdx * 2;
                     }
 
-                    m_pVertices[newIdx2].colors.A = m_pVertices[newIdx2 + 1].colors.A = (byte) (m_pPointState[newIdx] * 255.0f);
+                    m_pVertices[newIdx2].Colors.A = m_pVertices[newIdx2 + 1].Colors.A = (byte) (m_pPointState[newIdx] * 255.0f);
                 }
             }
             m_uNuPoints -= mov;
@@ -237,7 +237,7 @@ namespace cocos2d
 
                 // Color asignation
                 int offset = m_uNuPoints * 2;
-                m_pVertices[offset].colors = m_pVertices[offset + 1].colors = new CCColor4B(m_tColor.R, m_tColor.G, m_tColor.B, 255);
+                m_pVertices[offset].Colors = m_pVertices[offset + 1].Colors = new CCColor4B(m_tColor.R, m_tColor.G, m_tColor.B, 255);
 
                 // Generate polygon
                 if (m_uNuPoints > 0 && m_bFastMode)
@@ -266,8 +266,8 @@ namespace cocos2d
                 float texDelta = 1.0f / m_uNuPoints;
                 for (i = 0; i < m_uNuPoints; i++)
                 {
-                    m_pVertices[i * 2].texCoords = new CCTex2F(0, texDelta * i);
-                    m_pVertices[i * 2 + 1].texCoords = new CCTex2F(1, texDelta * i);
+                    m_pVertices[i * 2].TexCoords = new CCTex2F(0, texDelta * i);
+                    m_pVertices[i * 2 + 1].TexCoords = new CCTex2F(1, texDelta * i);
                 }
 
                 m_uPreviousNuPoints = m_uNuPoints;
@@ -275,7 +275,7 @@ namespace cocos2d
         }
 
 
-        private void VertexLineToPolygon(CCPoint[] points, float stroke, ccV3F_C4B_T2F[] vertices, int offset, int nuPoints)
+        private void VertexLineToPolygon(CCPoint[] points, float stroke, CCV3F_C4B_T2F[] vertices, int offset, int nuPoints)
         {
             nuPoints += offset;
             if (nuPoints <= 1) return;
@@ -329,8 +329,8 @@ namespace cocos2d
 
                 perpVector = perpVector * stroke;
 
-                vertices[idx].vertices = new CCVertex3F(p1.x + perpVector.x, p1.y + perpVector.y, 0);
-                vertices[idx + 1].vertices = new CCVertex3F(p1.x - perpVector.x, p1.y - perpVector.y, 0);
+                vertices[idx].Vertices = new CCVertex3F(p1.x + perpVector.x, p1.y + perpVector.y, 0);
+                vertices[idx + 1].Vertices = new CCVertex3F(p1.x - perpVector.x, p1.y - perpVector.y, 0);
             }
 
             // Validate vertexes
@@ -340,10 +340,10 @@ namespace cocos2d
                 idx = i * 2;
                 int idx1 = idx + 2;
 
-                CCVertex3F p1 = vertices[idx].vertices;
-                CCVertex3F p2 = vertices[idx + 1].vertices;
-                CCVertex3F p3 = vertices[idx1].vertices;
-                CCVertex3F p4 = vertices[idx1 + 1].vertices;
+                CCVertex3F p1 = vertices[idx].Vertices;
+                CCVertex3F p2 = vertices[idx + 1].Vertices;
+                CCVertex3F p3 = vertices[idx1].Vertices;
+                CCVertex3F p4 = vertices[idx1 + 1].Vertices;
 
                 float s;
                 bool fixVertex = !ccVertexLineIntersect(p1.X, p1.Y, p4.X, p4.Y, p2.X, p2.Y, p3.X, p3.Y, out s);
@@ -357,8 +357,8 @@ namespace cocos2d
 
                 if (fixVertex)
                 {
-                    vertices[idx1].vertices = p4;
-                    vertices[idx1 + 1].vertices = p3;
+                    vertices[idx1].Vertices = p4;
+                    vertices[idx1 + 1].Vertices = p3;
                 }
             }
         }

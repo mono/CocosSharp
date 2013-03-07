@@ -13,7 +13,7 @@ namespace tests
 
         public TextLayer()
         {
-            InitWithColor(ccTypes.ccc4(32, 32, 32, 255));
+            InitWithColor(CCTypes.CreateColor(32, 32, 32, 255));
 
             float x, y;
 

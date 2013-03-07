@@ -7,7 +7,7 @@ namespace cocos2d
 {
     public class CCParticleSystemQuad : CCParticleSystem
     {
-        private RawList<ccV3F_C4B_T2F_Quad> m_pQuads; // quads to be rendered
+        private RawList<CCV3F_C4B_T2F_Quad> m_pQuads; // quads to be rendered
 
         //implementation CCParticleSystemQuad
         // overriding the init method
@@ -89,7 +89,7 @@ namespace cocos2d
             top = bottom;
             bottom = tmp;
 
-            ccV3F_C4B_T2F_Quad[] quads;
+            CCV3F_C4B_T2F_Quad[] quads;
             int start, end;
             if (m_pBatchNode != null)
             {
@@ -108,17 +108,17 @@ namespace cocos2d
             for (int i = start; i < end; i++)
             {
                 // bottom-left vertex:
-                quads[i].bl.texCoords.U = left;
-                quads[i].bl.texCoords.V = bottom;
+                quads[i].BottomLeft.TexCoords.U = left;
+                quads[i].BottomLeft.TexCoords.V = bottom;
                 // bottom-right vertex:
-                quads[i].br.texCoords.U = right;
-                quads[i].br.texCoords.V = bottom;
+                quads[i].BottomRight.TexCoords.U = right;
+                quads[i].BottomRight.TexCoords.V = bottom;
                 // top-left vertex:
-                quads[i].tl.texCoords.U = left;
-                quads[i].tl.texCoords.V = top;
+                quads[i].TopLeft.TexCoords.U = left;
+                quads[i].TopLeft.TexCoords.V = top;
                 // top-right vertex:
-                quads[i].tr.texCoords.U = right;
-                quads[i].tr.texCoords.V = top;
+                quads[i].TopRight.TexCoords.U = right;
+                quads[i].TopRight.TexCoords.V = top;
             }
         }
 
@@ -156,7 +156,7 @@ namespace cocos2d
 
         private static CCPoint s_currentPosition;
 
-        private void UpdateQuad(ref ccV3F_C4B_T2F_Quad quad, ref CCParticle particle)
+        private void UpdateQuad(ref CCV3F_C4B_T2F_Quad quad, ref CCParticle particle)
         {
             CCPoint newPosition;
 
@@ -195,10 +195,10 @@ namespace cocos2d
                 color.A = (byte)(particle.color.A * 255);
             }
 
-            quad.bl.colors = color;
-            quad.br.colors = color;
-            quad.tl.colors = color;
-            quad.tr.colors = color;
+            quad.BottomLeft.Colors = color;
+            quad.BottomRight.Colors = color;
+            quad.TopLeft.Colors = color;
+            quad.TopRight.Colors = color;
 
             // vertices
             float size_2 = particle.size / 2;
@@ -225,38 +225,38 @@ namespace cocos2d
                 float dy = x1 * sr + y2 * cr + y;
 
                 // bottom-left
-                quad.bl.vertices.X = ax;
-                quad.bl.vertices.Y = ay;
+                quad.BottomLeft.Vertices.X = ax;
+                quad.BottomLeft.Vertices.Y = ay;
 
                 // bottom-right vertex:
-                quad.br.vertices.X = bx;
-                quad.br.vertices.Y = by;
+                quad.BottomRight.Vertices.X = bx;
+                quad.BottomRight.Vertices.Y = by;
 
                 // top-left vertex:
-                quad.tl.vertices.X = dx;
-                quad.tl.vertices.Y = dy;
+                quad.TopLeft.Vertices.X = dx;
+                quad.TopLeft.Vertices.Y = dy;
 
                 // top-right vertex:
-                quad.tr.vertices.X = cx;
-                quad.tr.vertices.Y = cy;
+                quad.TopRight.Vertices.X = cx;
+                quad.TopRight.Vertices.Y = cy;
             }
             else
             {
                 // bottom-left vertex:
-                quad.bl.vertices.X = newPosition.x - size_2;
-                quad.bl.vertices.Y = newPosition.y - size_2;
+                quad.BottomLeft.Vertices.X = newPosition.x - size_2;
+                quad.BottomLeft.Vertices.Y = newPosition.y - size_2;
 
                 // bottom-right vertex:
-                quad.br.vertices.X = newPosition.x + size_2;
-                quad.br.vertices.Y = newPosition.y - size_2;
+                quad.BottomRight.Vertices.X = newPosition.x + size_2;
+                quad.BottomRight.Vertices.Y = newPosition.y - size_2;
 
                 // top-left vertex:
-                quad.tl.vertices.X = newPosition.x - size_2;
-                quad.tl.vertices.Y = newPosition.y + size_2;
+                quad.TopLeft.Vertices.X = newPosition.x - size_2;
+                quad.TopLeft.Vertices.Y = newPosition.y + size_2;
 
                 // top-right vertex:
-                quad.tr.vertices.X = newPosition.x + size_2;
-                quad.tr.vertices.Y = newPosition.y + size_2;
+                quad.TopRight.Vertices.X = newPosition.x + size_2;
+                quad.TopRight.Vertices.Y = newPosition.y + size_2;
             }
         }
 
@@ -279,7 +279,7 @@ namespace cocos2d
                 s_currentPosition = m_tPosition;
             }
 
-            ccV3F_C4B_T2F_Quad[] quads;
+            CCV3F_C4B_T2F_Quad[] quads;
             if (m_pBatchNode != null)
             {
                 quads = m_pBatchNode.TextureAtlas.m_pQuads.Elements;
@@ -489,7 +489,7 @@ void setupVBOandVAO()
         {
             Debug.Assert(m_pBatchNode == null, "Memory should not be alloced when not using batchNode");
             Debug.Assert((m_pQuads == null), "Memory already alloced");
-            m_pQuads = new RawList<ccV3F_C4B_T2F_Quad>(m_uTotalParticles);
+            m_pQuads = new RawList<CCV3F_C4B_T2F_Quad>(m_uTotalParticles);
             return true;
         }
 
