@@ -610,7 +610,7 @@ namespace cocos2d
                     //float alphaFuncValue = 0.0f;
                     if (!String.IsNullOrEmpty(alphaFuncVal))
                     {
-                        m_fAlphaFuncValue = CCUtils.ccParseFloat(alphaFuncVal);
+                        m_fAlphaFuncValue = CCUtils.CCParseFloat(alphaFuncVal);
                     }
                     //setShaderProgram(CCShaderCache::sharedShaderCache().programForKey(kCCShader_PositionTextureColorAlphaTest));
 
@@ -621,7 +621,7 @@ namespace cocos2d
                 }
                 else
                 {
-                    m_nVertexZvalue = CCUtils.ccParseInt(vertexz);
+                    m_nVertexZvalue = CCUtils.CCParseInt(vertexz);
                 }
             }
         }

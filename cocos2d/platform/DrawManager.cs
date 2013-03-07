@@ -598,8 +598,8 @@ namespace cocos2d
         {
             if (!m_AllowNonPower2Textures)
             {
-                width = CCUtils.ccNextPOT(width);
-                height = CCUtils.ccNextPOT(height);
+                width = CCUtils.CCNextPOT(width);
+                height = CCUtils.CCNextPOT(height);
             }
             return new RenderTarget2D(graphicsDevice, width, height, false, colorFormat, depthFormat, 0, usage);
         }
@@ -609,8 +609,8 @@ namespace cocos2d
             PresentationParameters pp = graphicsDevice.PresentationParameters;
             if (!m_AllowNonPower2Textures)
             {
-                width = CCUtils.ccNextPOT(width);
-                height = CCUtils.ccNextPOT(height);
+                width = CCUtils.CCNextPOT(width);
+                height = CCUtils.CCNextPOT(height);
             }
             return new Texture2D(graphicsDevice, width, height, false, SurfaceFormat.Color);
         }

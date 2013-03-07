@@ -88,7 +88,7 @@ namespace cocos2d
         /// <param name="tension"></param>
         /// <param name="t"></param>
         /// <returns></returns>
-        public static CCPoint ccCardinalSplineAt(CCPoint p0, CCPoint p1, CCPoint p2, CCPoint p3, float tension, float t)
+        public static CCPoint CCCardinalSplineAt(CCPoint p0, CCPoint p1, CCPoint p2, CCPoint p3, float tension, float t)
         {
             float t2 = t * t;
             float t3 = t2 * t;
@@ -114,7 +114,7 @@ namespace cocos2d
         /// </summary>
         /// <param name="toParse">The value to parse</param>
         /// <returns>The int value of the string</returns>
-        public static int ccParseInt(string toParse)
+        public static int CCParseInt(string toParse)
         {
             // http://www.cocos2d-x.org/boards/17/topics/11690
             // Issue #17
@@ -129,7 +129,7 @@ namespace cocos2d
         /// <param name="toParse">The value to parse.</param>
         /// <param name="ns">The number style used to parse the int value.</param>
         /// <returns>The int value of the string.</returns>
-        public static int ccParseInt(string toParse, NumberStyles ns)
+        public static int CCParseInt(string toParse, NumberStyles ns)
         {
             // http://www.cocos2d-x.org/boards/17/topics/11690
             // Issue #17
@@ -142,7 +142,7 @@ namespace cocos2d
         /// </summary>
         /// <param name="toParse">The value to parse</param>
         /// <returns>The float value of the string.</returns>
-        public static float ccParseFloat(string toParse)
+        public static float CCParseFloat(string toParse)
         {
             // http://www.cocos2d-x.org/boards/17/topics/11690
             // Issue #17
@@ -157,7 +157,7 @@ namespace cocos2d
         /// <param name="toParse">The value to parse.</param>
         /// <param name="ns">The number style used to parse the float value.</param>
         /// <returns>The float value of the string.</returns>
-        public static float ccParseFloat(string toParse, NumberStyles ns)
+        public static float CCParseFloat(string toParse, NumberStyles ns)
         {
             // http://www.cocos2d-x.org/boards/17/topics/11690
             // https://github.com/cocos2d/cocos2d-x-for-xna/issues/17
@@ -171,7 +171,7 @@ namespace cocos2d
         /// </summary>
         /// <param name="x">The base of the POT test</param>
         /// <returns>The next power of 2 (1, 2, 4, 8, 16, 32, 64, 128, etc)</returns>
-        public static long ccNextPOT(long x)
+        public static long CCNextPOT(long x)
         {
             x = x - 1;
             x = x | (x >> 1);
@@ -189,7 +189,7 @@ namespace cocos2d
         /// </summary>
         /// <param name="x">The base of the POT test</param>
         /// <returns>The next power of 2 (1, 2, 4, 8, 16, 32, 64, 128, etc)</returns>
-        public static int ccNextPOT(int x)
+        public static int CCNextPOT(int x)
         {
             x = x - 1;
             x = x | (x >> 1);
