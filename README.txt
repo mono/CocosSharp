@@ -1,8 +1,6 @@
 This is a divergent repository from the cocos2d/cocos2d-x-for-xna repository 
 that was originally created for XNA but was later abandoned.
 
-We are as of February 2013 actively working on this tree.
-
 There are many differences between cocos2d-xna and cocos2d-x-for-xna. This repository
 reflects the cocos2d-xna source base which was written for .NET and C#. Attributes and
 other language/platform constructs specific to .NET have been used in lieu of the literal
@@ -71,7 +69,7 @@ than your design resolution.
 
 To support Android, iOS, and other platforms, you must have a version of MonoGame (develop) 
 version 3.0 available. The MonoGame repository is a submodule of this project now, so make sure
-that you get download the submodule if you do not have your own clone of MonoGame. Don't forget to use
-develop is you want the latest changes, or master if you want the most recent release.
+that you update and init the submodule if you do not have your own clone of MonoGame. Don't forget to use
+develop if you want the latest changes, or master if you want the most recent stable release.
 
 
