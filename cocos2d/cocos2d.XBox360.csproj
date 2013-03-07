@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{D551499A-180B-40DA-BEB0-97E42B38BF95}</ProjectGuid>
@@ -346,7 +346,7 @@
     <Compile Include="sprite_nodes\CCSpriteBatchNode.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrame.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrameCache.cs" />
-    <Compile Include="support\ccUtils.cs" />
+    <Compile Include="support\CCUtils.cs" />
     <Compile Include="support\Compression\Adler.cs" />
     <Compile Include="support\Compression\Crc32.cs" />
     <Compile Include="support\Compression\FlushType.cs" />
