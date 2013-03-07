@@ -295,7 +295,7 @@ namespace cocos2d
                     // Try to force GC collection of the texture because the ref name
                     // collection also holds on to this texture reference and prevents the texture2d from
                     // being collected.
-                    t.texture2D = null;
+                    t.Texture = null;
                 }
                 // m_pTextures.Clear();
             }

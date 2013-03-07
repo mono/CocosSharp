@@ -144,7 +144,7 @@ namespace cocos2d
             }
         }
 
-        public Texture2D texture2D
+        internal Texture2D Texture
         {
             get
             {
@@ -287,7 +287,7 @@ namespace cocos2d
 
         public Texture2D Texture2D
         {
-            get { return texture2D; }
+            get { return Texture; }
         }
 
         /// <summary>
@@ -327,17 +327,17 @@ namespace cocos2d
 
         public void SaveAsJpeg(Stream stream, int width, int height)
         {
-            if (texture2D != null)
+            if (Texture != null)
             {
-                texture2D.SaveAsJpeg(stream, width, height);
+                Texture.SaveAsJpeg(stream, width, height);
             }
         }
 
         public void SaveAsPng(Stream stream, int width, int height)
         {
-            if (texture2D != null)
+            if (Texture != null)
             {
-                texture2D.SaveAsPng(stream, width, height);
+                Texture.SaveAsPng(stream, width, height);
             }
         }
 
@@ -448,7 +448,7 @@ namespace cocos2d
         {
             CCApplication app = CCApplication.SharedApplication;
 
-            texture2D = new Texture2D(app.GraphicsDevice, (int) contentSize.Width, (int) contentSize.Height);
+            Texture = new Texture2D(app.GraphicsDevice, (int) contentSize.Width, (int) contentSize.Height);
 
             m_tContentSize = contentSize;
             m_uPixelsWide = (int) pixelsWide;
@@ -687,9 +687,9 @@ namespace cocos2d
 
         public bool InitTextureWithImage(Texture2D texture, int POTWide, int POTHigh)
         {
-            texture2D = texture;
-            m_tContentSize.Width = texture2D.Width;
-            m_tContentSize.Height = texture2D.Height;
+            Texture = texture;
+            m_tContentSize.Width = Texture.Width;
+            m_tContentSize.Height = Texture.Height;
 
             m_uPixelsWide = POTWide;
             m_uPixelsHigh = POTHigh;

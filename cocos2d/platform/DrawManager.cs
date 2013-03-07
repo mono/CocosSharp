@@ -580,7 +580,7 @@ namespace cocos2d
         public static void CreateRenderTarget(CCTexture2D pTexture, RenderTargetUsage usage)
         {
             CCSize size = pTexture.ContentSizeInPixels;
-            pTexture.texture2D = CreateRenderTarget((int) size.Width, (int) size.Height, SurfaceFormat.Color, m_PlatformDepthFormat, usage);
+            pTexture.Texture = CreateRenderTarget((int) size.Width, (int) size.Height, SurfaceFormat.Color, m_PlatformDepthFormat, usage);
         }
 
         public static RenderTarget2D CreateRenderTarget(int width, int height, RenderTargetUsage usage)
@@ -623,8 +623,8 @@ namespace cocos2d
             }
             else
             {
-                Debug.Assert(pTexture.texture2D is RenderTarget2D);
-                SetRenderTarget((RenderTarget2D) pTexture.texture2D);
+                Debug.Assert(pTexture.Texture is RenderTarget2D);
+                SetRenderTarget((RenderTarget2D) pTexture.Texture);
             }
         }
 
