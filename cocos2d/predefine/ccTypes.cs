@@ -406,35 +406,35 @@ namespace cocos2d
     /// <summary>
     /// 4 ccVertex2FTex2FColor4B Quad
     /// </summary>
-    public class ccV2F_C4B_T2F_Quad
+    public class CCV2F_C4B_T2F_Quad
     {
-        public ccV2F_C4B_T2F_Quad()
+        public CCV2F_C4B_T2F_Quad()
         {
-            bl = new CCV2F_C4B_T2F();
-            br = new CCV2F_C4B_T2F();
-            tl = new CCV2F_C4B_T2F();
-            tr = new CCV2F_C4B_T2F();
+            BottomLeft = new CCV2F_C4B_T2F();
+            BottomRight = new CCV2F_C4B_T2F();
+            TopLeft = new CCV2F_C4B_T2F();
+            TopRight = new CCV2F_C4B_T2F();
         }
 
         /// <summary>
         /// bottom left
         /// </summary>
-        public CCV2F_C4B_T2F bl;
+        public CCV2F_C4B_T2F BottomLeft;
 
         /// <summary>
         /// bottom right
         /// </summary>
-        public CCV2F_C4B_T2F br;
+        public CCV2F_C4B_T2F BottomRight;
 
         /// <summary>
         /// top left
         /// </summary>
-        public CCV2F_C4B_T2F tl;
+        public CCV2F_C4B_T2F TopLeft;
 
         /// <summary>
         /// top right
         /// </summary>
-        public CCV2F_C4B_T2F tr;
+        public CCV2F_C4B_T2F TopRight;
     }
 
     /// <summary>
