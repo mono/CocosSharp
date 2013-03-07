@@ -378,7 +378,6 @@
     <Compile Include="sprite_nodes\CCSpriteBatchNode.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrame.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrameCache.cs" />
-    <Compile Include="support\ccUtils.cs" />
     <Compile Include="support\Compression\Adler.cs" />
     <Compile Include="support\Compression\Crc32.cs" />
     <Compile Include="support\Compression\FlushType.cs" />
@@ -432,6 +431,7 @@
     <Compile Include="Platform\CCFocusManager.cs" />
     <Compile Include="Platform\CCIFocusable.cs" />
     <Compile Include="predefine\CCTypes.cs" />
+    <Compile Include="support\CCUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj">

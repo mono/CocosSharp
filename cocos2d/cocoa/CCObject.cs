@@ -91,7 +91,7 @@ namespace cocos2d
                 CCLog.Log("DeSerializeFloat: null");
                 return (0f);
         }
-            return (ccUtils.ccParseFloat(s));
+            return (CCUtils.ccParseFloat(s));
         }
         protected int DeSerializeInt(StreamReader sr)
         {
@@ -101,7 +101,7 @@ namespace cocos2d
                 CCLog.Log("DeSerializeInt: null");
                 return (0);
             }
-            return (ccUtils.ccParseInt(s));
+            return (CCUtils.ccParseInt(s));
         }
         protected CCRect DeSerializeRect(StreamReader sr)
         {
@@ -118,8 +118,8 @@ namespace cocos2d
             }
             CCSize pt = new CCSize();
             string[] s = x.Split(' ');
-            pt.Width = ccUtils.ccParseFloat(s[0]);
-            pt.Height = ccUtils.ccParseFloat(s[1]);
+            pt.Width = CCUtils.ccParseFloat(s[0]);
+            pt.Height = CCUtils.ccParseFloat(s[1]);
             return (pt);
         }
         protected CCPoint DeSerializePoint(StreamReader sr)
@@ -132,8 +132,8 @@ namespace cocos2d
             }
             CCPoint pt = new CCPoint();
             string[] s = x.Split(' ');
-            pt.x = ccUtils.ccParseFloat(s[0]);
-            pt.y = ccUtils.ccParseFloat(s[1]);
+            pt.x = CCUtils.ccParseFloat(s[0]);
+            pt.y = CCUtils.ccParseFloat(s[1]);
             return (pt);
         }
         #endregion
