@@ -704,7 +704,7 @@ namespace cocos2d
             }
         }
 
-        public static void DrawQuad(ref ccV3F_C4B_T2F_Quad quad)
+        public static void DrawQuad(ref CCV3F_C4B_T2F_Quad quad)
         {
             CCV3F_C4B_T2F[] vertices = m_quadVertices;
 
@@ -714,15 +714,15 @@ namespace cocos2d
                 CheckQuadsIndexBuffer(1);
             }
 
-            vertices[0] = quad.tl;
-            vertices[1] = quad.bl;
-            vertices[2] = quad.tr;
-            vertices[3] = quad.br;
+            vertices[0] = quad.TopLeft;
+            vertices[1] = quad.BottomLeft;
+            vertices[2] = quad.TopRight;
+            vertices[3] = quad.BottomRight;
 
             DrawIndexedPrimitives(PrimitiveType.TriangleList, vertices, 0, 4, m_quadIndices, 0, 2);
         }
 
-        public static void DrawQuads(RawList<ccV3F_C4B_T2F_Quad> quads, int start, int n)
+        public static void DrawQuads(RawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
         {
             if (n == 0)
             {
@@ -801,7 +801,7 @@ namespace cocos2d
             DrawCount++;
         }
 
-        public static void SetQuadsToBuffer(VertexBuffer vertexBuffer, RawList<ccV3F_C4B_T2F_Quad> quads, int start, int n)
+        public static void SetQuadsToBuffer(VertexBuffer vertexBuffer, RawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
         {
             if (m_vertices == null || m_vertices.Length < quads.Capacity * 4)
             {
@@ -809,7 +809,7 @@ namespace cocos2d
                 m_vertices = new CCV3F_C4B_T2F[capacity * 4];
             }
 
-            ccV3F_C4B_T2F_Quad[] elements = quads.Elements;
+            CCV3F_C4B_T2F_Quad[] elements = quads.Elements;
 
 #if ANDROID
             vertexBuffer.SetData(elements, start, n);
@@ -818,10 +818,10 @@ namespace cocos2d
             int i4 = 0;
             for (int i = start; i < start + n; i++)
             {
-                vertices[i4 + 0] = elements[i].tl;
-                vertices[i4 + 1] = elements[i].bl;
-                vertices[i4 + 2] = elements[i].tr;
-                vertices[i4 + 3] = elements[i].br;
+                vertices[i4 + 0] = elements[i].TopLeft;
+                vertices[i4 + 1] = elements[i].BottomLeft;
+                vertices[i4 + 2] = elements[i].TopRight;
+                vertices[i4 + 3] = elements[i].BottomRight;
 
                 i4 += 4;
             }

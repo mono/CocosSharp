@@ -280,10 +280,10 @@ namespace cocos2d
                 return ret;
             }
 
-            ccV3F_C4B_T2F_Quad quad = m_pSprite.Quad;
+            CCV3F_C4B_T2F_Quad quad = m_pSprite.Quad;
 
-            var min = new CCPoint(quad.bl.TexCoords.U, quad.bl.TexCoords.V);
-            var max = new CCPoint(quad.tr.TexCoords.U, quad.tr.TexCoords.V);
+            var min = new CCPoint(quad.BottomLeft.TexCoords.U, quad.BottomLeft.TexCoords.V);
+            var max = new CCPoint(quad.TopRight.TexCoords.U, quad.TopRight.TexCoords.V);
 
             //  Fix bug #1303 so that progress timer handles sprite frame texture rotation
             if (m_pSprite.IsTextureRectRotated)
@@ -304,10 +304,10 @@ namespace cocos2d
                 return ret;
             }
 
-            ccV3F_C4B_T2F_Quad quad = m_pSprite.Quad;
+            CCV3F_C4B_T2F_Quad quad = m_pSprite.Quad;
 
-            var min = new CCPoint(quad.bl.Vertices.X, quad.bl.Vertices.Y);
-            var max = new CCPoint(quad.tr.Vertices.X, quad.tr.Vertices.Y);
+            var min = new CCPoint(quad.BottomLeft.Vertices.X, quad.BottomLeft.Vertices.Y);
+            var max = new CCPoint(quad.TopRight.Vertices.X, quad.TopRight.Vertices.Y);
 
             ret.X = min.x * (1f - alpha.x) + max.x * alpha.x;
             ret.Y = min.y * (1f - alpha.y) + max.y * alpha.y;
@@ -590,7 +590,7 @@ namespace cocos2d
 
             if (m_pVertexData != null)
             {
-                CCColor4B sc = m_pSprite.Quad.tl.Colors;
+                CCColor4B sc = m_pSprite.Quad.TopLeft.Colors;
                 for (int i = 0; i < m_nVertexDataCount; ++i)
                 {
                     m_pVertexData[i].Colors = sc;

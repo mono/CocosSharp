@@ -342,12 +342,12 @@ namespace cocos2d
         private void Swap(int oldIndex, int newIndex)
         {
             CCSprite[] sprites = m_pobDescendants.Elements;
-            RawList<ccV3F_C4B_T2F_Quad> quads = m_pobTextureAtlas.m_pQuads;
+            RawList<CCV3F_C4B_T2F_Quad> quads = m_pobTextureAtlas.m_pQuads;
 
             m_pobTextureAtlas.Dirty = true;
 
             CCSprite tempItem = sprites[oldIndex];
-            ccV3F_C4B_T2F_Quad tempItemQuad = quads[oldIndex];
+            CCV3F_C4B_T2F_Quad tempItemQuad = quads[oldIndex];
 
             //update the index of other swapped item
             sprites[newIndex].AtlasIndex = oldIndex;

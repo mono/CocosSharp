@@ -20,25 +20,25 @@ namespace tests
             //
             // Notice: u,v tex coordinates are inverted
             //
-            ccV3F_C4B_T2F_Quad[] quads = 
+            CCV3F_C4B_T2F_Quad[] quads = 
             {
-               new  ccV3F_C4B_T2F_Quad() {
-                    bl = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(0,0,0), Colors = new CCColor4B(0,0,255,255),TexCoords = new CCTex2F(0.0f,1.0f)},				// bottom left
-                    br = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width,0,0), Colors = new CCColor4B(0,0,255,0),TexCoords = new CCTex2F(1.0f,1.0f)},			// bottom right
-                    tl = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(0,s.Height,0), Colors = new CCColor4B(0,0,255,0),TexCoords = new CCTex2F(0.0f,0.0f)},			// bottom right
-                    tr = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width,s.Height,0), Colors = new CCColor4B(0,0,255,255),TexCoords = new CCTex2F(1.0f,0.0f)},			// bottom right
+               new  CCV3F_C4B_T2F_Quad() {
+                    BottomLeft = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(0,0,0), Colors = new CCColor4B(0,0,255,255),TexCoords = new CCTex2F(0.0f,1.0f)},				// bottom left
+                    BottomRight = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width,0,0), Colors = new CCColor4B(0,0,255,0),TexCoords = new CCTex2F(1.0f,1.0f)},			// bottom right
+                    TopLeft = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(0,s.Height,0), Colors = new CCColor4B(0,0,255,0),TexCoords = new CCTex2F(0.0f,0.0f)},			// bottom right
+                    TopRight = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width,s.Height,0), Colors = new CCColor4B(0,0,255,255),TexCoords = new CCTex2F(1.0f,0.0f)},			// bottom right
                 },		
-               new  ccV3F_C4B_T2F_Quad() {
-                    bl = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(40,40,0), Colors = new CCColor4B(255,255,255,255),TexCoords = new CCTex2F(0.0f,0.2f)},				// bottom left
-                    br = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(120,80,0), Colors = new CCColor4B(255,0,0,255),TexCoords = new CCTex2F(0.5f,0.2f)},			// bottom right
-                    tl = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(40,160,0), Colors = new CCColor4B(255,255,255,255),TexCoords = new CCTex2F(0.0f,0.0f)},			// bottom right
-                    tr = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(160,160,0), Colors = new CCColor4B(0,255,0,255),TexCoords = new CCTex2F(0.5f,0.0f)},			// bottom right
+               new  CCV3F_C4B_T2F_Quad() {
+                    BottomLeft = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(40,40,0), Colors = new CCColor4B(255,255,255,255),TexCoords = new CCTex2F(0.0f,0.2f)},				// bottom left
+                    BottomRight = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(120,80,0), Colors = new CCColor4B(255,0,0,255),TexCoords = new CCTex2F(0.5f,0.2f)},			// bottom right
+                    TopLeft = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(40,160,0), Colors = new CCColor4B(255,255,255,255),TexCoords = new CCTex2F(0.0f,0.0f)},			// bottom right
+                    TopRight = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(160,160,0), Colors = new CCColor4B(0,255,0,255),TexCoords = new CCTex2F(0.5f,0.0f)},			// bottom right
                 },		
-               new  ccV3F_C4B_T2F_Quad() {
-                    bl = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width/2,40,0), Colors = new CCColor4B(255,0,0,255),TexCoords = new CCTex2F(0.0f,1.0f)},				// bottom left
-                    br = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width,40,0), Colors = new CCColor4B(0,255,0,255),TexCoords = new CCTex2F(1.0f,1.0f)},			// bottom right
-                    tl = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width/2-50,200,0), Colors = new CCColor4B(0,0,255,255),TexCoords = new CCTex2F(0.0f,0.0f)},			// bottom right
-                    tr = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width,100,0), Colors = new CCColor4B(255,255,0,255),TexCoords = new CCTex2F(1.0f,0.0f)},			// bottom right
+               new  CCV3F_C4B_T2F_Quad() {
+                    BottomLeft = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width/2,40,0), Colors = new CCColor4B(255,0,0,255),TexCoords = new CCTex2F(0.0f,1.0f)},				// bottom left
+                    BottomRight = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width,40,0), Colors = new CCColor4B(0,255,0,255),TexCoords = new CCTex2F(1.0f,1.0f)},			// bottom right
+                    TopLeft = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width/2-50,200,0), Colors = new CCColor4B(0,0,255,255),TexCoords = new CCTex2F(0.0f,0.0f)},			// bottom right
+                    TopRight = new CCV3F_C4B_T2F() { Vertices = new CCVertex3F(s.Width,100,0), Colors = new CCColor4B(255,255,0,255),TexCoords = new CCTex2F(1.0f,0.0f)},			// bottom right
                 },		
             };
 

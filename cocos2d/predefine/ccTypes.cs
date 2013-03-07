@@ -440,31 +440,31 @@ namespace cocos2d
     /// <summary>
     /// 4 ccVertex3FTex2FColor4B
     /// </summary>
-    public struct ccV3F_C4B_T2F_Quad : IVertexType
+    public struct CCV3F_C4B_T2F_Quad : IVertexType
     {
         /// <summary>
         /// top left
         /// </summary>
-        public CCV3F_C4B_T2F tl;
+        public CCV3F_C4B_T2F TopLeft;
 
         /// <summary>
         /// bottom left
         /// </summary>
-        public CCV3F_C4B_T2F bl;
+        public CCV3F_C4B_T2F BottomLeft;
 
         /// <summary>
         /// top right
         /// </summary>
-        public CCV3F_C4B_T2F tr;
+        public CCV3F_C4B_T2F TopRight;
 
         /// <summary>
         /// bottom right
         /// </summary>
-        public CCV3F_C4B_T2F br;
+        public CCV3F_C4B_T2F BottomRight;
 
         public static readonly VertexDeclaration VertexDeclaration;
 
-        static ccV3F_C4B_T2F_Quad()
+        static CCV3F_C4B_T2F_Quad()
         {
             var elements = new VertexElement[]
                 {

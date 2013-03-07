@@ -412,13 +412,13 @@ namespace cocos2d
         //sets a 0'd quad into the quads array
         public void DisableParticle(int particleIndex)
         {
-            ccV3F_C4B_T2F_Quad[] quads = TextureAtlas.m_pQuads.Elements;
+            CCV3F_C4B_T2F_Quad[] quads = TextureAtlas.m_pQuads.Elements;
             TextureAtlas.Dirty = true;
 
-            quads[particleIndex].br.Vertices = CCVertex3F.Zero;
-            quads[particleIndex].tr.Vertices = CCVertex3F.Zero;
-            quads[particleIndex].tl.Vertices = CCVertex3F.Zero;
-            quads[particleIndex].bl.Vertices = CCVertex3F.Zero;
+            quads[particleIndex].BottomRight.Vertices = CCVertex3F.Zero;
+            quads[particleIndex].TopRight.Vertices = CCVertex3F.Zero;
+            quads[particleIndex].TopLeft.Vertices = CCVertex3F.Zero;
+            quads[particleIndex].BottomLeft.Vertices = CCVertex3F.Zero;
         }
 
         // CCParticleBatchNode - add / remove / reorder helper methods

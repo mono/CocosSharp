@@ -128,35 +128,35 @@ namespace cocos2d
             float bottom = top + itemHeightInPixels / textureHigh;
 #endif
 
-            ccV3F_C4B_T2F_Quad quad;
+            CCV3F_C4B_T2F_Quad quad;
 
-            quad.tl.TexCoords.U = left;
-            quad.tl.TexCoords.V = top;
-            quad.tr.TexCoords.U = right;
-            quad.tr.TexCoords.V = top;
-            quad.bl.TexCoords.U = left;
-            quad.bl.TexCoords.V = bottom;
-            quad.br.TexCoords.U = right;
-            quad.br.TexCoords.V = bottom;
+            quad.TopLeft.TexCoords.U = left;
+            quad.TopLeft.TexCoords.V = top;
+            quad.TopRight.TexCoords.U = right;
+            quad.TopRight.TexCoords.V = top;
+            quad.BottomLeft.TexCoords.U = left;
+            quad.BottomLeft.TexCoords.V = bottom;
+            quad.BottomRight.TexCoords.U = right;
+            quad.BottomRight.TexCoords.V = bottom;
 
-            quad.bl.Vertices.X = (x * m_uItemWidth);
-            quad.bl.Vertices.Y = (y * m_uItemHeight);
-            quad.bl.Vertices.Z = 0.0f;
-            quad.br.Vertices.X = (x * m_uItemWidth + m_uItemWidth);
-            quad.br.Vertices.Y = (y * m_uItemHeight);
-            quad.br.Vertices.Z = 0.0f;
-            quad.tl.Vertices.X = (x * m_uItemWidth);
-            quad.tl.Vertices.Y = (y * m_uItemHeight + m_uItemHeight);
-            quad.tl.Vertices.Z = 0.0f;
-            quad.tr.Vertices.X = (x * m_uItemWidth + m_uItemWidth);
-            quad.tr.Vertices.Y = (y * m_uItemHeight + m_uItemHeight);
-            quad.tr.Vertices.Z = 0.0f;
+            quad.BottomLeft.Vertices.X = (x * m_uItemWidth);
+            quad.BottomLeft.Vertices.Y = (y * m_uItemHeight);
+            quad.BottomLeft.Vertices.Z = 0.0f;
+            quad.BottomRight.Vertices.X = (x * m_uItemWidth + m_uItemWidth);
+            quad.BottomRight.Vertices.Y = (y * m_uItemHeight);
+            quad.BottomRight.Vertices.Z = 0.0f;
+            quad.TopLeft.Vertices.X = (x * m_uItemWidth);
+            quad.TopLeft.Vertices.Y = (y * m_uItemHeight + m_uItemHeight);
+            quad.TopLeft.Vertices.Z = 0.0f;
+            quad.TopRight.Vertices.X = (x * m_uItemWidth + m_uItemWidth);
+            quad.TopRight.Vertices.Y = (y * m_uItemHeight + m_uItemHeight);
+            quad.TopRight.Vertices.Z = 0.0f;
 
             var color = new CCColor4B(m_tColor.R, m_tColor.G, m_tColor.B, m_cOpacity);
-            quad.tr.Colors = color;
-            quad.tl.Colors = color;
-            quad.br.Colors = color;
-            quad.bl.Colors = color;
+            quad.TopRight.Colors = color;
+            quad.TopLeft.Colors = color;
+            quad.BottomRight.Colors = color;
+            quad.BottomLeft.Colors = color;
 
             m_pTextureAtlas.UpdateQuad(ref quad, index);
         }

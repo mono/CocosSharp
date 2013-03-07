@@ -47,7 +47,7 @@ namespace cocos2d
     public class CCTextureAtlas : CCObject
     {
         internal bool Dirty = true; //indicates whether or not the array buffer of the VBO needs to be updated
-        public RawList<ccV3F_C4B_T2F_Quad> m_pQuads;
+        public RawList<CCV3F_C4B_T2F_Quad> m_pQuads;
         protected CCTexture2D m_pTexture;
 
         private VertexBuffer m_pVertexBuffer;
@@ -167,7 +167,7 @@ namespace cocos2d
                 return;
             }
 
-            var tmp = new ccV3F_C4B_T2F_Quad[amount];
+            var tmp = new CCV3F_C4B_T2F_Quad[amount];
             Array.Copy(m_pQuads.Elements, oldIndex, tmp, 0, amount);
 
             if (newIndex < oldIndex)
@@ -200,8 +200,8 @@ namespace cocos2d
         public void FillWithEmptyQuadsFromIndex(int index, int amount)
         {
             int to = index + amount;
-            ccV3F_C4B_T2F_Quad[] elements = m_pQuads.Elements;
-            var empty = new ccV3F_C4B_T2F_Quad();
+            CCV3F_C4B_T2F_Quad[] elements = m_pQuads.Elements;
+            var empty = new CCV3F_C4B_T2F_Quad();
 
             for (int i = index; i < to; i++)
             {
@@ -281,7 +281,7 @@ namespace cocos2d
                 capacity = 4;
             }
 
-            m_pQuads = new RawList<ccV3F_C4B_T2F_Quad>(capacity);
+            m_pQuads = new RawList<CCV3F_C4B_T2F_Quad>(capacity);
 
             Dirty = true;
 
@@ -314,7 +314,7 @@ namespace cocos2d
         /// index must be between 0 and the atlas capacity - 1
         /// @since v0.8
         /// </summary>
-        public void UpdateQuad(ref ccV3F_C4B_T2F_Quad quad, int index)
+        public void UpdateQuad(ref CCV3F_C4B_T2F_Quad quad, int index)
         {
             Debug.Assert(index >= 0 && index < m_pQuads.Capacity, "updateQuadWithTexture: Invalid index");
             m_pQuads.count = Math.Max(index + 1, m_pQuads.count);
@@ -327,7 +327,7 @@ namespace cocos2d
         /// index must be between 0 and the atlas capacity - 1
         /// @since v0.8
         /// </summary>
-        public void InsertQuad(ref ccV3F_C4B_T2F_Quad quad, int index)
+        public void InsertQuad(ref CCV3F_C4B_T2F_Quad quad, int index)
         {
             Debug.Assert(index < m_pQuads.Capacity, "insertQuadWithTexture: Invalid index");
             m_pQuads.Insert(index, quad);
@@ -356,9 +356,9 @@ namespace cocos2d
                 src = newIndex;
             }
 
-            ccV3F_C4B_T2F_Quad[] elements = m_pQuads.Elements;
+            CCV3F_C4B_T2F_Quad[] elements = m_pQuads.Elements;
 
-            ccV3F_C4B_T2F_Quad quadsBackup = elements[oldIndex];
+            CCV3F_C4B_T2F_Quad quadsBackup = elements[oldIndex];
             Array.Copy(elements, src, elements, dst, howMany);
             elements[newIndex] = quadsBackup;
 
