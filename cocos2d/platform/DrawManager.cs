@@ -71,12 +71,8 @@ namespace cocos2d
         private static RasterizerState m_savedRasterizerState;
         private static RasterizerState m_scissorRasterizerState;
         private static DepthFormat m_PlatformDepthFormat = DepthFormat.Depth24;
-#if GLES
         // ref: http://www.khronos.org/registry/gles/extensions/NV/GL_NV_texture_npot_2D_mipmap.txt
         private static bool m_AllowNonPower2Textures = true;
-#else
-        private static bool m_AllowNonPower2Textures = false;
-#endif
 
         public static bool VertexColorEnabled
         {

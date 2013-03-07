@@ -26,6 +26,7 @@ namespace cocos2d
             }
             catch (Exception ex)
             {
+                CCLog.Log(ex.ToString());
                 CCLog.Log("No accelerometer on platform. CCAccelerometer will default to emulation code.");
             }
 #endif
