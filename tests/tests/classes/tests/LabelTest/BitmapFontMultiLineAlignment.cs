@@ -54,7 +54,7 @@ namespace tests
             CCMenu stringMenu = CCMenu.Create(longSentences, lineBreaks, mixed);
             stringMenu.AlignItemsVertically();
 
-            longSentences.Color = ccTypes.ccRED;
+            longSentences.Color = CCTypes.CCRed;
             m_pLastSentenceItem = longSentences;
             longSentences.Tag = LongSentences;
             lineBreaks.Tag = LineBreaks;
@@ -68,7 +68,7 @@ namespace tests
             CCMenu alignmentMenu = CCMenu.Create(left, center, right);
             alignmentMenu.AlignItemsHorizontallyWithPadding(alignmentItemPadding);
 
-            center.Color = ccTypes.ccRED;
+            center.Color = CCTypes.CCRed;
             m_pLastAlignmentItem = center;
             left.Tag = (LeftAlign);
             center.Tag = (CenterAlign);
@@ -98,8 +98,8 @@ namespace tests
         private void stringChanged(CCObject sender)
         {
             var item = (CCMenuItemFont) sender;
-            item.Color = ccTypes.ccRED;
-            m_pLastAlignmentItem.Color = ccTypes.ccWHITE;
+            item.Color = CCTypes.CCRed;
+            m_pLastAlignmentItem.Color = CCTypes.CCWhite;
             m_pLastAlignmentItem = item;
 
             switch (item.Tag)
@@ -124,8 +124,8 @@ namespace tests
         private void alignmentChanged(CCObject sender)
         {
             var item = (CCMenuItemFont) sender;
-            item.Color = ccTypes.ccRED;
-            m_pLastAlignmentItem.Color = ccTypes.ccWHITE;
+            item.Color = CCTypes.CCRed;
+            m_pLastAlignmentItem.Color = CCTypes.CCWhite;
             m_pLastAlignmentItem = item;
 
             switch (item.Tag)

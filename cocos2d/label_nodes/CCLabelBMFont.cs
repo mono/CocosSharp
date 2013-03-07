@@ -267,7 +267,7 @@ namespace cocos2d
                 m_tImageOffset = imageOffset;
                 m_fWidth = width;
                 m_cOpacity = 255;
-                m_tColor = ccTypes.ccWHITE;
+                m_tColor = CCTypes.CCWhite;
                 m_tContentSize = CCSize.Zero;
                 m_bIsOpacityModifyRGB = m_pobTextureAtlas.Texture.HasPremultipliedAlpha;
                 SetString(theString);

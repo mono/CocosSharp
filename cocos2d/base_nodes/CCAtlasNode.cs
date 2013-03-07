@@ -125,7 +125,7 @@ namespace cocos2d
             m_uItemHeight = tileHeight;
 
             m_cOpacity = 255;
-            m_tColor = m_tColorUnmodified = ccTypes.ccWHITE;
+            m_tColor = m_tColorUnmodified = CCTypes.CCWhite;
             m_bIsOpacityModifyRGB = true;
 
             m_tBlendFunc.Source = ccMacros.CC_BLEND_SRC;

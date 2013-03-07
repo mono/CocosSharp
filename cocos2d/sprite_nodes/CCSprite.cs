@@ -480,7 +480,7 @@ namespace cocos2d
 
             m_bOpacityModifyRGB = true;
             m_nOpacity = 255;
-            m_sColor = m_sColorUnmodified = ccTypes.ccWHITE;
+            m_sColor = m_sColorUnmodified = CCTypes.CCWhite;
 
             m_sBlendFunc.Source = ccMacros.CC_BLEND_SRC;
             m_sBlendFunc.Destination = ccMacros.CC_BLEND_DST;
@@ -623,10 +623,10 @@ namespace cocos2d
                 float y2 = y1 + m_obRect.size.Height;
 
                 // Don't update Z.
-                m_sQuad.BottomLeft.Vertices = ccTypes.vertex3(x1, y1, 0);
-                m_sQuad.BottomRight.Vertices = ccTypes.vertex3(x2, y1, 0);
-                m_sQuad.TopLeft.Vertices = ccTypes.vertex3(x1, y2, 0);
-                m_sQuad.TopRight.Vertices = ccTypes.vertex3(x2, y2, 0);
+                m_sQuad.BottomLeft.Vertices = CCTypes.Vertex3(x1, y1, 0);
+                m_sQuad.BottomRight.Vertices = CCTypes.Vertex3(x2, y1, 0);
+                m_sQuad.TopLeft.Vertices = CCTypes.Vertex3(x1, y2, 0);
+                m_sQuad.TopRight.Vertices = CCTypes.Vertex3(x2, y2, 0);
             }
         }
 

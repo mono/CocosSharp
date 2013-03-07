@@ -560,7 +560,7 @@ namespace cocos2d
                     return color;
                 }
             }
-            return ccTypes.ccWHITE;
+            return CCTypes.CCWhite;
         }
 
         /**

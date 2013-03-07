@@ -102,7 +102,7 @@ namespace cocos2d
                 y = 16;
             }
 
-            CCActionInterval action = ActionWithSize(ccTypes.ccg(x, y));
+            CCActionInterval action = ActionWithSize(CCTypes.GridSize(x, y));
 
             if (!m_bBack)
             {

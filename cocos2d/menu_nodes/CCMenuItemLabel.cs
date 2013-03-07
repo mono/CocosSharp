@@ -75,7 +75,7 @@ namespace cocos2d
         {
             base.InitWithTarget(selector);
             m_fOriginalScale = 1.0f;
-            m_tColorBackup = ccTypes.ccWHITE;
+            m_tColorBackup = CCTypes.CCWhite;
             DisabledColor = new CCColor3B(126, 126, 126);
             Label = label;
             return true;

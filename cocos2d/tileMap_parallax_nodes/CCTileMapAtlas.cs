@@ -32,7 +32,7 @@ namespace cocos2d
 
             if (base.InitWithTileFile(tile, tileWidth, tileHeight, m_nItemsToRender))
             {
-                m_tColor = ccTypes.ccWHITE;
+                m_tColor = CCTypes.CCWhite;
                 m_pPosToAtlasIndex = new Dictionary<CCGridSize, int>();
                 UpdateAtlasValues();
                 ContentSize = new CCSize(m_pTGAInfo.width * m_uItemWidth, m_pTGAInfo.height * m_uItemHeight);
