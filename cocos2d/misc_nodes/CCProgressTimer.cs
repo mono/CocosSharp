@@ -29,7 +29,7 @@ namespace cocos2d
         protected float m_fPercentage;
         protected int m_nVertexDataCount;
         protected CCSprite m_pSprite;
-        protected ccV3F_C4B_T2F[] m_pVertexData;
+        protected CCV3F_C4B_T2F[] m_pVertexData;
         protected CCPoint m_tBarChangeRate;
         protected CCPoint m_tMidpoint;
 
@@ -282,8 +282,8 @@ namespace cocos2d
 
             ccV3F_C4B_T2F_Quad quad = m_pSprite.Quad;
 
-            var min = new CCPoint(quad.bl.texCoords.U, quad.bl.texCoords.V);
-            var max = new CCPoint(quad.tr.texCoords.U, quad.tr.texCoords.V);
+            var min = new CCPoint(quad.bl.TexCoords.U, quad.bl.TexCoords.V);
+            var max = new CCPoint(quad.tr.TexCoords.U, quad.tr.TexCoords.V);
 
             //  Fix bug #1303 so that progress timer handles sprite frame texture rotation
             if (m_pSprite.IsTextureRectRotated)
@@ -306,8 +306,8 @@ namespace cocos2d
 
             ccV3F_C4B_T2F_Quad quad = m_pSprite.Quad;
 
-            var min = new CCPoint(quad.bl.vertices.X, quad.bl.vertices.Y);
-            var max = new CCPoint(quad.tr.vertices.X, quad.tr.vertices.Y);
+            var min = new CCPoint(quad.bl.Vertices.X, quad.bl.Vertices.Y);
+            var max = new CCPoint(quad.tr.Vertices.X, quad.tr.Vertices.Y);
 
             ret.X = min.x * (1f - alpha.x) + max.x * alpha.x;
             ret.Y = min.y * (1f - alpha.y) + max.y * alpha.y;
@@ -375,63 +375,63 @@ namespace cocos2d
                 if (m_pVertexData == null)
                 {
                     m_nVertexDataCount = 4;
-                    m_pVertexData = new ccV3F_C4B_T2F[m_nVertexDataCount];
+                    m_pVertexData = new CCV3F_C4B_T2F[m_nVertexDataCount];
                 }
                 //    TOPLEFT
-                m_pVertexData[0].texCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, max.y));
-                m_pVertexData[0].vertices = VertexFromAlphaPoint(new CCPoint(min.x, max.y));
+                m_pVertexData[0].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, max.y));
+                m_pVertexData[0].Vertices = VertexFromAlphaPoint(new CCPoint(min.x, max.y));
 
                 //    BOTLEFT
-                m_pVertexData[1].texCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, min.y));
-                m_pVertexData[1].vertices = VertexFromAlphaPoint(new CCPoint(min.x, min.y));
+                m_pVertexData[1].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, min.y));
+                m_pVertexData[1].Vertices = VertexFromAlphaPoint(new CCPoint(min.x, min.y));
 
                 //    TOPRIGHT
-                m_pVertexData[2].texCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, max.y));
-                m_pVertexData[2].vertices = VertexFromAlphaPoint(new CCPoint(max.x, max.y));
+                m_pVertexData[2].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, max.y));
+                m_pVertexData[2].Vertices = VertexFromAlphaPoint(new CCPoint(max.x, max.y));
 
                 //    BOTRIGHT
-                m_pVertexData[3].texCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, min.y));
-                m_pVertexData[3].vertices = VertexFromAlphaPoint(new CCPoint(max.x, min.y));
+                m_pVertexData[3].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, min.y));
+                m_pVertexData[3].Vertices = VertexFromAlphaPoint(new CCPoint(max.x, min.y));
             }
             else
             {
                 if (m_pVertexData == null)
                 {
                     m_nVertexDataCount = 8;
-                    m_pVertexData = new ccV3F_C4B_T2F[m_nVertexDataCount];
+                    m_pVertexData = new CCV3F_C4B_T2F[m_nVertexDataCount];
 
                     //    TOPLEFT 1
-                    m_pVertexData[0].texCoords = TextureCoordFromAlphaPoint(new CCPoint(0, 1));
-                    m_pVertexData[0].vertices = VertexFromAlphaPoint(new CCPoint(0, 1));
+                    m_pVertexData[0].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(0, 1));
+                    m_pVertexData[0].Vertices = VertexFromAlphaPoint(new CCPoint(0, 1));
 
                     //    BOTLEFT 1
-                    m_pVertexData[1].texCoords = TextureCoordFromAlphaPoint(new CCPoint(0, 0));
-                    m_pVertexData[1].vertices = VertexFromAlphaPoint(new CCPoint(0, 0));
+                    m_pVertexData[1].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(0, 0));
+                    m_pVertexData[1].Vertices = VertexFromAlphaPoint(new CCPoint(0, 0));
 
                     //    TOPRIGHT 2
-                    m_pVertexData[6].texCoords = TextureCoordFromAlphaPoint(new CCPoint(1, 1));
-                    m_pVertexData[6].vertices = VertexFromAlphaPoint(new CCPoint(1, 1));
+                    m_pVertexData[6].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(1, 1));
+                    m_pVertexData[6].Vertices = VertexFromAlphaPoint(new CCPoint(1, 1));
 
                     //    BOTRIGHT 2
-                    m_pVertexData[7].texCoords = TextureCoordFromAlphaPoint(new CCPoint(1, 0));
-                    m_pVertexData[7].vertices = VertexFromAlphaPoint(new CCPoint(1, 0));
+                    m_pVertexData[7].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(1, 0));
+                    m_pVertexData[7].Vertices = VertexFromAlphaPoint(new CCPoint(1, 0));
                 }
 
                 //    TOPRIGHT 1
-                m_pVertexData[2].texCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, max.y));
-                m_pVertexData[2].vertices = VertexFromAlphaPoint(new CCPoint(min.x, max.y));
+                m_pVertexData[2].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, max.y));
+                m_pVertexData[2].Vertices = VertexFromAlphaPoint(new CCPoint(min.x, max.y));
 
                 //    BOTRIGHT 1
-                m_pVertexData[3].texCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, min.y));
-                m_pVertexData[3].vertices = VertexFromAlphaPoint(new CCPoint(min.x, min.y));
+                m_pVertexData[3].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, min.y));
+                m_pVertexData[3].Vertices = VertexFromAlphaPoint(new CCPoint(min.x, min.y));
 
                 //    TOPLEFT 2
-                m_pVertexData[4].texCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, max.y));
-                m_pVertexData[4].vertices = VertexFromAlphaPoint(new CCPoint(max.x, max.y));
+                m_pVertexData[4].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, max.y));
+                m_pVertexData[4].Vertices = VertexFromAlphaPoint(new CCPoint(max.x, max.y));
 
                 //    BOTLEFT 2
-                m_pVertexData[5].texCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, min.y));
-                m_pVertexData[5].vertices = VertexFromAlphaPoint(new CCPoint(max.x, min.y));
+                m_pVertexData[5].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, min.y));
+                m_pVertexData[5].Vertices = VertexFromAlphaPoint(new CCPoint(max.x, min.y));
             }
             UpdateColor();
         }
@@ -553,7 +553,7 @@ namespace cocos2d
             if (m_pVertexData == null)
             {
                 m_nVertexDataCount = index + 3;
-                m_pVertexData = new ccV3F_C4B_T2F[m_nVertexDataCount];
+                m_pVertexData = new CCV3F_C4B_T2F[m_nVertexDataCount];
             }
 
             UpdateColor();
@@ -562,23 +562,23 @@ namespace cocos2d
             {
                 //    First we populate the array with the m_tMidpoint, then all
                 //    vertices/texcoords/colors of the 12 'o clock start and edges and the hitpoint
-                m_pVertexData[0].texCoords = TextureCoordFromAlphaPoint(m_tMidpoint);
-                m_pVertexData[0].vertices = VertexFromAlphaPoint(m_tMidpoint);
+                m_pVertexData[0].TexCoords = TextureCoordFromAlphaPoint(m_tMidpoint);
+                m_pVertexData[0].Vertices = VertexFromAlphaPoint(m_tMidpoint);
 
-                m_pVertexData[1].texCoords = TextureCoordFromAlphaPoint(topMid);
-                m_pVertexData[1].vertices = VertexFromAlphaPoint(topMid);
+                m_pVertexData[1].TexCoords = TextureCoordFromAlphaPoint(topMid);
+                m_pVertexData[1].Vertices = VertexFromAlphaPoint(topMid);
 
                 for (int i = 0; i < index; ++i)
                 {
                     CCPoint alphaPoint = BoundaryTexCoord(i);
-                    m_pVertexData[i + 2].texCoords = TextureCoordFromAlphaPoint(alphaPoint);
-                    m_pVertexData[i + 2].vertices = VertexFromAlphaPoint(alphaPoint);
+                    m_pVertexData[i + 2].TexCoords = TextureCoordFromAlphaPoint(alphaPoint);
+                    m_pVertexData[i + 2].Vertices = VertexFromAlphaPoint(alphaPoint);
                 }
             }
 
             //    hitpoint will go last
-            m_pVertexData[m_nVertexDataCount - 1].texCoords = TextureCoordFromAlphaPoint(hit);
-            m_pVertexData[m_nVertexDataCount - 1].vertices = VertexFromAlphaPoint(hit);
+            m_pVertexData[m_nVertexDataCount - 1].TexCoords = TextureCoordFromAlphaPoint(hit);
+            m_pVertexData[m_nVertexDataCount - 1].Vertices = VertexFromAlphaPoint(hit);
         }
 
         protected void UpdateColor()
@@ -590,10 +590,10 @@ namespace cocos2d
 
             if (m_pVertexData != null)
             {
-                CCColor4B sc = m_pSprite.Quad.tl.colors;
+                CCColor4B sc = m_pSprite.Quad.tl.Colors;
                 for (int i = 0; i < m_nVertexDataCount; ++i)
                 {
-                    m_pVertexData[i].colors = sc;
+                    m_pVertexData[i].Colors = sc;
                 }
             }
         }

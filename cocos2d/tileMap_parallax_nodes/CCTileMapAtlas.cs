@@ -130,33 +130,33 @@ namespace cocos2d
 
             ccV3F_C4B_T2F_Quad quad;
 
-            quad.tl.texCoords.U = left;
-            quad.tl.texCoords.V = top;
-            quad.tr.texCoords.U = right;
-            quad.tr.texCoords.V = top;
-            quad.bl.texCoords.U = left;
-            quad.bl.texCoords.V = bottom;
-            quad.br.texCoords.U = right;
-            quad.br.texCoords.V = bottom;
+            quad.tl.TexCoords.U = left;
+            quad.tl.TexCoords.V = top;
+            quad.tr.TexCoords.U = right;
+            quad.tr.TexCoords.V = top;
+            quad.bl.TexCoords.U = left;
+            quad.bl.TexCoords.V = bottom;
+            quad.br.TexCoords.U = right;
+            quad.br.TexCoords.V = bottom;
 
-            quad.bl.vertices.X = (x * m_uItemWidth);
-            quad.bl.vertices.Y = (y * m_uItemHeight);
-            quad.bl.vertices.Z = 0.0f;
-            quad.br.vertices.X = (x * m_uItemWidth + m_uItemWidth);
-            quad.br.vertices.Y = (y * m_uItemHeight);
-            quad.br.vertices.Z = 0.0f;
-            quad.tl.vertices.X = (x * m_uItemWidth);
-            quad.tl.vertices.Y = (y * m_uItemHeight + m_uItemHeight);
-            quad.tl.vertices.Z = 0.0f;
-            quad.tr.vertices.X = (x * m_uItemWidth + m_uItemWidth);
-            quad.tr.vertices.Y = (y * m_uItemHeight + m_uItemHeight);
-            quad.tr.vertices.Z = 0.0f;
+            quad.bl.Vertices.X = (x * m_uItemWidth);
+            quad.bl.Vertices.Y = (y * m_uItemHeight);
+            quad.bl.Vertices.Z = 0.0f;
+            quad.br.Vertices.X = (x * m_uItemWidth + m_uItemWidth);
+            quad.br.Vertices.Y = (y * m_uItemHeight);
+            quad.br.Vertices.Z = 0.0f;
+            quad.tl.Vertices.X = (x * m_uItemWidth);
+            quad.tl.Vertices.Y = (y * m_uItemHeight + m_uItemHeight);
+            quad.tl.Vertices.Z = 0.0f;
+            quad.tr.Vertices.X = (x * m_uItemWidth + m_uItemWidth);
+            quad.tr.Vertices.Y = (y * m_uItemHeight + m_uItemHeight);
+            quad.tr.Vertices.Z = 0.0f;
 
             var color = new CCColor4B(m_tColor.R, m_tColor.G, m_tColor.B, m_cOpacity);
-            quad.tr.colors = color;
-            quad.tl.colors = color;
-            quad.br.colors = color;
-            quad.bl.colors = color;
+            quad.tr.Colors = color;
+            quad.tl.Colors = color;
+            quad.br.Colors = color;
+            quad.bl.Colors = color;
 
             m_pTextureAtlas.UpdateQuad(ref quad, index);
         }

@@ -56,11 +56,11 @@ namespace cocos2d
         private static DynamicVertexBuffer m_quadsBuffer;
         private static IndexBuffer m_quadsIndexBuffer;
 
-        private static ccV3F_C4B_T2F[] m_vertices;
+        private static CCV3F_C4B_T2F[] m_vertices;
         private static short[] m_quadIndices;
 
         public static int DrawCount;
-        private static ccV3F_C4B_T2F[] m_quadVertices;
+        private static CCV3F_C4B_T2F[] m_quadVertices;
         private static float m_fScaleX;
         private static float m_fScaleY;
         private static CCRect m_obViewPortRect;
@@ -699,22 +699,22 @@ namespace cocos2d
                     m_quadsBuffer.Dispose();
                 }
 				
-                m_quadsBuffer = new DynamicVertexBuffer(graphicsDevice, typeof(ccV3F_C4B_T2F), capacity * 4, BufferUsage.WriteOnly);
+                m_quadsBuffer = new DynamicVertexBuffer(graphicsDevice, typeof(CCV3F_C4B_T2F), capacity * 4, BufferUsage.WriteOnly);
 
                 if (m_vertices == null || m_vertices.Length < capacity * 4)
                 {
-                    m_vertices = new ccV3F_C4B_T2F[capacity * 4];
+                    m_vertices = new CCV3F_C4B_T2F[capacity * 4];
                 }
             }
         }
 
         public static void DrawQuad(ref ccV3F_C4B_T2F_Quad quad)
         {
-            ccV3F_C4B_T2F[] vertices = m_quadVertices;
+            CCV3F_C4B_T2F[] vertices = m_quadVertices;
 
             if (vertices == null)
             {
-                vertices = m_quadVertices = new ccV3F_C4B_T2F[4];
+                vertices = m_quadVertices = new CCV3F_C4B_T2F[4];
                 CheckQuadsIndexBuffer(1);
             }
 
@@ -810,7 +810,7 @@ namespace cocos2d
             if (m_vertices == null || m_vertices.Length < quads.Capacity * 4)
             {
                 int capacity = Math.Max(quads.Capacity, DefaultQuadBufferSize);
-                m_vertices = new ccV3F_C4B_T2F[capacity * 4];
+                m_vertices = new CCV3F_C4B_T2F[capacity * 4];
             }
 
             ccV3F_C4B_T2F_Quad[] elements = quads.Elements;
@@ -818,7 +818,7 @@ namespace cocos2d
 #if ANDROID
             vertexBuffer.SetData(elements, start, n);
 #else
-            ccV3F_C4B_T2F[] vertices = m_vertices;
+            CCV3F_C4B_T2F[] vertices = m_vertices;
             int i4 = 0;
             for (int i = start; i < start + n; i++)
             {

@@ -415,10 +415,10 @@ namespace cocos2d
             ccV3F_C4B_T2F_Quad[] quads = TextureAtlas.m_pQuads.Elements;
             TextureAtlas.Dirty = true;
 
-            quads[particleIndex].br.vertices = CCVertex3F.Zero;
-            quads[particleIndex].tr.vertices = CCVertex3F.Zero;
-            quads[particleIndex].tl.vertices = CCVertex3F.Zero;
-            quads[particleIndex].bl.vertices = CCVertex3F.Zero;
+            quads[particleIndex].br.Vertices = CCVertex3F.Zero;
+            quads[particleIndex].tr.Vertices = CCVertex3F.Zero;
+            quads[particleIndex].tl.Vertices = CCVertex3F.Zero;
+            quads[particleIndex].bl.Vertices = CCVertex3F.Zero;
         }
 
         // CCParticleBatchNode - add / remove / reorder helper methods

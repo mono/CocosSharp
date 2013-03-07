@@ -108,17 +108,17 @@ namespace cocos2d
             for (int i = start; i < end; i++)
             {
                 // bottom-left vertex:
-                quads[i].bl.texCoords.U = left;
-                quads[i].bl.texCoords.V = bottom;
+                quads[i].bl.TexCoords.U = left;
+                quads[i].bl.TexCoords.V = bottom;
                 // bottom-right vertex:
-                quads[i].br.texCoords.U = right;
-                quads[i].br.texCoords.V = bottom;
+                quads[i].br.TexCoords.U = right;
+                quads[i].br.TexCoords.V = bottom;
                 // top-left vertex:
-                quads[i].tl.texCoords.U = left;
-                quads[i].tl.texCoords.V = top;
+                quads[i].tl.TexCoords.U = left;
+                quads[i].tl.TexCoords.V = top;
                 // top-right vertex:
-                quads[i].tr.texCoords.U = right;
-                quads[i].tr.texCoords.V = top;
+                quads[i].tr.TexCoords.U = right;
+                quads[i].tr.TexCoords.V = top;
             }
         }
 
@@ -195,10 +195,10 @@ namespace cocos2d
                 color.A = (byte)(particle.color.A * 255);
             }
 
-            quad.bl.colors = color;
-            quad.br.colors = color;
-            quad.tl.colors = color;
-            quad.tr.colors = color;
+            quad.bl.Colors = color;
+            quad.br.Colors = color;
+            quad.tl.Colors = color;
+            quad.tr.Colors = color;
 
             // vertices
             float size_2 = particle.size / 2;
@@ -225,38 +225,38 @@ namespace cocos2d
                 float dy = x1 * sr + y2 * cr + y;
 
                 // bottom-left
-                quad.bl.vertices.X = ax;
-                quad.bl.vertices.Y = ay;
+                quad.bl.Vertices.X = ax;
+                quad.bl.Vertices.Y = ay;
 
                 // bottom-right vertex:
-                quad.br.vertices.X = bx;
-                quad.br.vertices.Y = by;
+                quad.br.Vertices.X = bx;
+                quad.br.Vertices.Y = by;
 
                 // top-left vertex:
-                quad.tl.vertices.X = dx;
-                quad.tl.vertices.Y = dy;
+                quad.tl.Vertices.X = dx;
+                quad.tl.Vertices.Y = dy;
 
                 // top-right vertex:
-                quad.tr.vertices.X = cx;
-                quad.tr.vertices.Y = cy;
+                quad.tr.Vertices.X = cx;
+                quad.tr.Vertices.Y = cy;
             }
             else
             {
                 // bottom-left vertex:
-                quad.bl.vertices.X = newPosition.x - size_2;
-                quad.bl.vertices.Y = newPosition.y - size_2;
+                quad.bl.Vertices.X = newPosition.x - size_2;
+                quad.bl.Vertices.Y = newPosition.y - size_2;
 
                 // bottom-right vertex:
-                quad.br.vertices.X = newPosition.x + size_2;
-                quad.br.vertices.Y = newPosition.y - size_2;
+                quad.br.Vertices.X = newPosition.x + size_2;
+                quad.br.Vertices.Y = newPosition.y - size_2;
 
                 // top-left vertex:
-                quad.tl.vertices.X = newPosition.x - size_2;
-                quad.tl.vertices.Y = newPosition.y + size_2;
+                quad.tl.Vertices.X = newPosition.x - size_2;
+                quad.tl.Vertices.Y = newPosition.y + size_2;
 
                 // top-right vertex:
-                quad.tr.vertices.X = newPosition.x + size_2;
-                quad.tr.vertices.Y = newPosition.y + size_2;
+                quad.tr.Vertices.X = newPosition.x + size_2;
+                quad.tr.Vertices.Y = newPosition.y + size_2;
             }
         }
 

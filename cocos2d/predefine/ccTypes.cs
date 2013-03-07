@@ -338,9 +338,9 @@ namespace cocos2d
     /// <summary>
     /// a Point with a vertex point, a tex coord point and a color 4F
     /// </summary>
-    public class ccV2F_C4F_T2F
+    public class CCV2F_C4F_T2F
     {
-        public ccV2F_C4F_T2F()
+        public CCV2F_C4F_T2F()
         {
             Vertices = new CCVertex2F();
             Colors = new CCColor4F();
@@ -367,26 +367,26 @@ namespace cocos2d
     /// a Point with a vertex point, a tex coord point and a color 4B
     /// </summary>
     //TODO: Use VertexPositionColorTexture
-    public struct ccV3F_C4B_T2F : IVertexType
+    public struct CCV3F_C4B_T2F : IVertexType
     {
         /// <summary>
         /// vertices (3F)
         /// </summary>
-        public CCVertex3F vertices;			// 12 bytes
+        public CCVertex3F Vertices;			// 12 bytes
 
         /// <summary>
         /// colors (4B)
         /// </summary>
-        public CCColor4B colors;				// 4 bytes
+        public CCColor4B Colors;				// 4 bytes
 
         /// <summary>
         /// tex coords (2F)
         /// </summary>
-        public CCTex2F texCoords;			// 8 byts
+        public CCTex2F TexCoords;			// 8 byts
 
         public static readonly VertexDeclaration VertexDeclaration;
 
-        static ccV3F_C4B_T2F()
+        static CCV3F_C4B_T2F()
         {
             var elements = new VertexElement[]
                 {
@@ -445,22 +445,22 @@ namespace cocos2d
         /// <summary>
         /// top left
         /// </summary>
-        public ccV3F_C4B_T2F tl;
+        public CCV3F_C4B_T2F tl;
 
         /// <summary>
         /// bottom left
         /// </summary>
-        public ccV3F_C4B_T2F bl;
+        public CCV3F_C4B_T2F bl;
 
         /// <summary>
         /// top right
         /// </summary>
-        public ccV3F_C4B_T2F tr;
+        public CCV3F_C4B_T2F tr;
 
         /// <summary>
         /// bottom right
         /// </summary>
-        public ccV3F_C4B_T2F br;
+        public CCV3F_C4B_T2F br;
 
         public static readonly VertexDeclaration VertexDeclaration;
 
@@ -488,31 +488,31 @@ namespace cocos2d
     {
         public ccV2F_C4F_T2F_Quad()
         {
-            tl = new ccV2F_C4F_T2F();
-            bl = new ccV2F_C4F_T2F();
-            tr = new ccV2F_C4F_T2F();
-            br = new ccV2F_C4F_T2F();
+            tl = new CCV2F_C4F_T2F();
+            bl = new CCV2F_C4F_T2F();
+            tr = new CCV2F_C4F_T2F();
+            br = new CCV2F_C4F_T2F();
         }
 
         /// <summary>
         /// bottom left
         /// </summary>
-        public ccV2F_C4F_T2F bl;
+        public CCV2F_C4F_T2F bl;
 
         /// <summary>
         /// bottom right
         /// </summary>
-        public ccV2F_C4F_T2F br;
+        public CCV2F_C4F_T2F br;
 
         /// <summary>
         /// top left
         /// </summary>
-        public ccV2F_C4F_T2F tl;
+        public CCV2F_C4F_T2F tl;
 
         /// <summary>
         /// top right
         /// </summary>
-        public ccV2F_C4F_T2F tr;
+        public CCV2F_C4F_T2F tr;
     }
 
     /// <summary>

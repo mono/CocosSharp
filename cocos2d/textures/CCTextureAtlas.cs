@@ -300,7 +300,7 @@ namespace cocos2d
                 {
                     m_pVertexBuffer.Dispose();
                 }
-                m_pVertexBuffer = new VertexBuffer(CCApplication.SharedApplication.GraphicsDevice, typeof(ccV3F_C4B_T2F), m_pQuads.Capacity * 4,
+                m_pVertexBuffer = new VertexBuffer(CCApplication.SharedApplication.GraphicsDevice, typeof(CCV3F_C4B_T2F), m_pQuads.Capacity * 4,
                                                 BufferUsage.WriteOnly);
             }
         }
