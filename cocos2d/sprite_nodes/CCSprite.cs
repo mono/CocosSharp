@@ -261,10 +261,10 @@ namespace cocos2d
             {
                 return CCSpriteFrame.Create(
                     m_pobTexture,
-                    ccMacros.CC_RECT_POINTS_TO_PIXELS(m_obRect),
+                    CCMacros.CCRectanglePointsToPixels(m_obRect),
                     m_bRectRotated,
-                    ccMacros.CC_POINT_POINTS_TO_PIXELS(m_obUnflippedOffsetPositionFromCenter),
-                    ccMacros.CC_SIZE_POINTS_TO_PIXELS(m_tContentSize)
+                    CCMacros.CCPointPointsToPixels(m_obUnflippedOffsetPositionFromCenter),
+                    CCMacros.CCSizePointsToPixels(m_tContentSize)
                     );
             }
             set
@@ -293,7 +293,7 @@ namespace cocos2d
 
                 if (value == null)
                 {
-                    m_uAtlasIndex = ccMacros.CCSpriteIndexNotInitialized;
+                    m_uAtlasIndex = CCMacros.CCSpriteIndexNotInitialized;
                     m_pobTextureAtlas = null;
                     m_bRecursiveDirty = false;
                     Dirty = false;
@@ -482,8 +482,8 @@ namespace cocos2d
             m_nOpacity = 255;
             m_sColor = m_sColorUnmodified = CCTypes.CCWhite;
 
-            m_sBlendFunc.Source = ccMacros.CC_BLEND_SRC;
-            m_sBlendFunc.Destination = ccMacros.CC_BLEND_DST;
+            m_sBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
+            m_sBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
 
             m_bFlipX = m_bFlipY = false;
 
@@ -638,7 +638,7 @@ namespace cocos2d
 
         private void SetTextureCoords(CCRect rect)
         {
-            rect = ccMacros.CC_RECT_POINTS_TO_PIXELS(rect);
+            rect = CCMacros.CCRectanglePointsToPixels(rect);
 
             CCTexture2D tex = m_pobBatchNode != null ? m_pobTextureAtlas.Texture : m_pobTexture;
             if (tex == null)
@@ -668,12 +668,12 @@ namespace cocos2d
 
                 if (m_bFlipX)
                 {
-                    ccMacros.CC_SWAP(ref top, ref bottom);
+                    CCMacros.CCSwap(ref top, ref bottom);
                 }
 
                 if (m_bFlipY)
                 {
-                    ccMacros.CC_SWAP(ref left, ref right);
+                    CCMacros.CCSwap(ref left, ref right);
                 }
 
                 m_sQuad.BottomLeft.TexCoords.U = left;
@@ -702,12 +702,12 @@ namespace cocos2d
 
                 if (m_bFlipX)
                 {
-                    ccMacros.CC_SWAP(ref left, ref right);
+                    CCMacros.CCSwap(ref left, ref right);
                 }
 
                 if (m_bFlipY)
                 {
-                    ccMacros.CC_SWAP(ref top, ref bottom);
+                    CCMacros.CCSwap(ref top, ref bottom);
                 }
 
                 m_sQuad.BottomLeft.TexCoords.U = left;
@@ -1028,7 +1028,7 @@ namespace cocos2d
             // renders using Sprite Manager
             if (m_pobBatchNode != null)
             {
-                if (m_uAtlasIndex != ccMacros.CCSpriteIndexNotInitialized)
+                if (m_uAtlasIndex != CCMacros.CCSpriteIndexNotInitialized)
                 {
                     m_pobTextureAtlas.UpdateQuad(ref m_sQuad, m_uAtlasIndex);
                 }
@@ -1086,8 +1086,8 @@ namespace cocos2d
             }
             else
             {
-                m_sBlendFunc.Source = ccMacros.CC_BLEND_SRC;
-                m_sBlendFunc.Destination = ccMacros.CC_BLEND_DST;
+                m_sBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
+                m_sBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
                 IsOpacityModifyRGB = true;
             }
         }

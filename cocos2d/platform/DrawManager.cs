@@ -50,7 +50,7 @@ namespace cocos2d
         private static int m_lastWidth;
         private static int m_lastHeight;
         private static bool m_depthTest = true;
-        private static CCBlendFunc m_currBlend = new CCBlendFunc(ccMacros.CC_BLEND_SRC, ccMacros.CC_BLEND_DST);
+        private static CCBlendFunc m_currBlend = new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending);
         private static RenderTarget2D m_currRenderTarget;
         private static Viewport m_savedViewport;
         private static DynamicVertexBuffer m_quadsBuffer;
@@ -909,8 +909,8 @@ namespace cocos2d
 
             // reset director's member variables to fit visible rect
             CCDirector.SharedDirector.m_obWinSizeInPoints = Size;
-            CCDirector.SharedDirector.m_obWinSizeInPixels = new CCSize(m_obDesignResolutionSize.Width * ccMacros.CC_CONTENT_SCALE_FACTOR(),
-                                                                       m_obDesignResolutionSize.Height * ccMacros.CC_CONTENT_SCALE_FACTOR());
+            CCDirector.SharedDirector.m_obWinSizeInPixels = new CCSize(m_obDesignResolutionSize.Width * CCMacros.CCContentScaleFactor(),
+                                                                       m_obDesignResolutionSize.Height * CCMacros.CCContentScaleFactor());
             CCDirector.SharedDirector.CreateStatsLabel();
             CCDirector.SharedDirector.SetGlDefaultValues();
         }

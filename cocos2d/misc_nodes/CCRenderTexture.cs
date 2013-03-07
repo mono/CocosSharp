@@ -52,8 +52,8 @@ namespace cocos2d
 
         public bool InitWithWidthAndHeight(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
         {
-            w = (w * ccMacros.CC_CONTENT_SCALE_FACTOR());
-            h = (h * ccMacros.CC_CONTENT_SCALE_FACTOR());
+            w = (w * CCMacros.CCContentScaleFactor());
+            h = (h * CCMacros.CCContentScaleFactor());
 
             m_pTexture = new CCTexture2D();
 
@@ -66,7 +66,7 @@ namespace cocos2d
 
             m_pSprite = CCSprite.Create(m_pTexture);
             //m_pSprite.scaleY = -1;
-            m_pSprite.BlendFunc = new CCBlendFunc(ccMacros.CC_BLEND_SRC, ccMacros.CC_BLEND_DST); // OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            m_pSprite.BlendFunc = new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending); // OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
 
             AddChild(m_pSprite);
 

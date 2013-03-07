@@ -627,8 +627,8 @@ namespace cocos2d
             m_bIsActive = true;
 
             // default blend function
-            m_tBlendFunc.Source = ccMacros.CC_BLEND_SRC;
-            m_tBlendFunc.Destination = ccMacros.CC_BLEND_DST;
+            m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
+            m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
 
             // default movement type;
             m_ePositionType = CCPositionType.kCCPositionTypeFree;
@@ -1033,7 +1033,7 @@ namespace cocos2d
 
                 m_bOpacityModifyRGB = false;
 
-                if (m_tBlendFunc.Source == ccMacros.CC_BLEND_SRC && m_tBlendFunc.Destination == ccMacros.CC_BLEND_DST)
+                if (m_tBlendFunc.Source == CCMacros.CCDefaultSourceBlending && m_tBlendFunc.Destination == CCMacros.CCDefaultDestinationBlending)
                 {
                     if (premultiplied)
                     {
@@ -1071,8 +1071,8 @@ namespace cocos2d
                     }
                     else
                     {
-                        m_tBlendFunc.Source = ccMacros.CC_BLEND_SRC;
-                        m_tBlendFunc.Destination = ccMacros.CC_BLEND_DST;
+                        m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
+                        m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
                     }
                 }
             }

@@ -1106,7 +1106,7 @@ namespace cocos2d
                 float c = 1, s = 0;
                 if (m_fRotation != 0.0f)
                 {
-                    float radians = -ccMacros.CC_DEGREES_TO_RADIANS(m_fRotation);
+                    float radians = -CCMacros.CCDegreesToRadians(m_fRotation);
                     c = (float) Math.Cos(radians);
                     s = (float) Math.Sin(radians);
                 }
@@ -1141,8 +1141,8 @@ namespace cocos2d
                 if (needsSkewMatrix)
                 {
                     var skewMatrix = new CCAffineTransform(
-                        1.0f, (float) Math.Tan(ccMacros.CC_DEGREES_TO_RADIANS(m_fSkewY)),
-                        (float) Math.Tan(ccMacros.CC_DEGREES_TO_RADIANS(m_fSkewX)), 1.0f,
+                        1.0f, (float) Math.Tan(CCMacros.CCDegreesToRadians(m_fSkewY)),
+                        (float) Math.Tan(CCMacros.CCDegreesToRadians(m_fSkewX)), 1.0f,
                         0.0f, 0.0f);
 
                     m_tTransform = CCAffineTransform.CCAffineTransformConcat(skewMatrix, m_tTransform);

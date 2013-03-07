@@ -25,12 +25,12 @@ using System;
 
 namespace cocos2d
 {
-    public class ccMacros
+    public class CCMacros
     {
         /// <summary>
         /// simple macro that swaps 2 variables
         /// </summary>
-        public static void CC_SWAP<T>(ref T x, ref T y)
+        public static void CCSwap<T>(ref T x, ref T y)
         {
             T temp = x;
             x = y;
@@ -42,7 +42,7 @@ namespace cocos2d
         /// <summary>
         /// returns a random float between -1 and 1
         /// </summary>
-        public static float CCRANDOM_MINUS1_1()
+        public static float CCRandomBetweenNegative1And1()
         {
             return (2.0f * ((float) rand.Next() / int.MaxValue)) - 1.0f;
         }
@@ -51,7 +51,7 @@ namespace cocos2d
             returns a random float between 0 and 1
          */
 
-        public static float CCRANDOM_0_1()
+        public static float CCRandomBetween0And1()
         {
             return (float) rand.Next() / int.MaxValue;
         }
@@ -60,7 +60,7 @@ namespace cocos2d
             converts degrees to radians
         */
 
-        public static float CC_DEGREES_TO_RADIANS(float angle)
+        public static float CCDegreesToRadians(float angle)
         {
             return angle * 0.01745329252f; // PI / 180
         }
@@ -69,65 +69,53 @@ namespace cocos2d
             converts radians to degrees
         */
 
-        public static float CC_RADIANS_TO_DEGREES(float angle)
+        public static float CCRadiansToDegrees(float angle)
         {
             return angle * 57.29577951f; // PI * 180
         }
 
-        public static readonly float FLT_EPSILON = 1.192092896e-07F;
+        [Obsolete("use float.Epsilon instead")]
+        public static readonly float FLT_EPSILON = float.Epsilon; // Was:  1.192092896e-07F;
 
-        public static int CC_CONTENT_SCALE_FACTOR()
+        public static int CCContentScaleFactor()
         {
             return 1;
         }
 
-        public static CCRect CC_RECT_PIXELS_TO_POINTS(CCRect pixels)
+        public static CCRect CCRectanglePixelsToPoints(CCRect pixels)
         {
             return pixels;
         }
 
-        public static CCRect CC_RECT_POINTS_TO_PIXELS(CCRect points)
+        public static CCRect CCRectanglePointsToPixels(CCRect points)
         {
             return points;
         }
 
-        public static CCSize CC_SIZE_POINTS_TO_PIXELS(CCSize size)
+        public static CCSize CCSizePointsToPixels(CCSize size)
         {
             return size;
         }
 
-        public static CCSize CC_SIZE_PIXELS_TO_POINTS(CCSize size)
+        public static CCSize CCSizePixelsToPoints(CCSize size)
         {
             return size;
         }
 
-        public static CCPoint CC_POINT_PIXELS_TO_POINTS(CCPoint point)
+        public static CCPoint CCPointPixelsToPoints(CCPoint point)
         {
             return point;
         }
 
-        public static CCPoint CC_POINT_POINTS_TO_PIXELS(CCPoint point)
+        public static CCPoint CCPointPointsToPixels(CCPoint point)
         {
             return point;
         }
-
+        /*
         public static bool CC_HOST_IS_BIG_ENDIAN()
         {
             return !BitConverter.IsLittleEndian;
         }
-
-        // Only unsigned int can use these functions.
-
-        public static uint CC_SWAP32(uint i)
-        {
-            return ((i & 0x000000ff) << 24 | (i & 0x0000ff00) << 8 | (i & 0x00ff0000) >> 8 | (i & 0xff000000) >> 24);
-        }
-
-        public static ushort CC_SWAP16(ushort i)
-        {
-            return (ushort) ((i & 0x00ff) << 8 | (i & 0xff00) >> 8);
-        }
-
         public static uint CC_SWAP_INT32_LITTLE_TO_HOST(uint i)
         {
             return (CC_HOST_IS_BIG_ENDIAN() ? CC_SWAP32(i) : (i));
@@ -147,21 +135,37 @@ namespace cocos2d
         {
             return (CC_HOST_IS_BIG_ENDIAN() ? (i) : CC_SWAP16(i));
         }
+        // Only unsigned int can use these functions.
+
+        public static uint CC_SWAP32(uint i)
+        {
+            return ((i & 0x000000ff) << 24 | (i & 0x0000ff00) << 8 | (i & 0x00ff0000) >> 8 | (i & 0xff000000) >> 24);
+        }
+
+        public static ushort CC_SWAP16(ushort i)
+        {
+            return (ushort) ((i & 0x00ff) << 8 | (i & 0xff00) >> 8);
+        }
+        */
+
 
         /*
          * Macros of CCGeometry.h
          */
 
+        [Obsolete("Use the CCPoint ctor")]
         public static CCPoint CCPointMake(float x, float y)
         {
             return new CCPoint(x, y);
         }
 
+        [Obsolete("Use the CCSize ctor")]
         public static CCSize CCSizeMake(float width, float height)
         {
             return new CCSize(width, height);
         }
 
+        [Obsolete("Use the CCRect ctor")]
         public static CCRect CCRectMake(float x, float y, float width, float height)
         {
             return new CCRect(x, y, width, height);
@@ -170,8 +174,8 @@ namespace cocos2d
         /*
          * Macros defined in ccConfig.h
          */
-        public static readonly string CC_RETINA_DISPLAY_FILENAME_SUFFIX = "-hd";
-        public static readonly float CC_DIRECTOR_STATS_INTERVAL = 0.5f;
+        public static readonly string CCHiResDisplayFilenameSuffix = "-hd";
+        public static readonly float CCDirectorStatsUpdateIntervalInSeconds = 0.5f;
 
         /*
          * Macros defined in CCSprite.h
@@ -181,16 +185,16 @@ namespace cocos2d
 
 
 #if CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA
-        public static readonly int CC_BLEND_SRC = OGLES.GL_ONE;
-        public static readonly int CC_BLEND_DST = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+        public static readonly int CCDefaultSourceBlending = OGLES.GL_ONE;
+        public static readonly int CCDefaultDestinationBlending = OGLES.GL_ONE_MINUS_SRC_ALPHA;
 #else
         // Not PMA - like iOS, textures do not have alpha blended in the pixels
-         public static readonly int CC_BLEND_SRC= OGLES.GL_SRC_ALPHA;
-         public static readonly int CC_BLEND_DST=  OGLES.GL_ONE_MINUS_SRC_ALPHA;
+         public static readonly int CCDefaultSourceBlending= OGLES.GL_SRC_ALPHA;
+         public static readonly int CCDefaultDestinationBlending=  OGLES.GL_ONE_MINUS_SRC_ALPHA;
 #endif
 
         // The following macros are defined for opengl es, they are not needed.
-        // #define CC_BLEND_DST GL_ONE_MINUS_SRC_ALPHA
+        // #define CCDefaultDestinationBlending GL_ONE_MINUS_SRC_ALPHA
 
         // #define CC_ENABLE_DEFAULT_GL_STATES() {				\
         // glEnableClientState(GL_VERTEX_ARRAY);			\

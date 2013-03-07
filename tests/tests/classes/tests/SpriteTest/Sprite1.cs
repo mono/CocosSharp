@@ -18,7 +18,7 @@ namespace tests
 
         public void addNewSpriteWithCoords(CCPoint p)
         {
-            int idx = (int)(ccMacros.CCRANDOM_0_1() * 1400.0f / 100.0f);
+            int idx = (int)(CCMacros.CCRandomBetween0And1() * 1400.0f / 100.0f);
             int x = (idx % 5) * 85;
             int y = (idx / 5) * 121;
 
@@ -28,7 +28,7 @@ namespace tests
             sprite.Position = p;
 
             CCActionInterval action;
-            float random = ccMacros.CCRANDOM_0_1();
+            float random = CCMacros.CCRandomBetween0And1();
 
             if (random < 0.20)
                 action = CCScaleBy.Create(3, 2);

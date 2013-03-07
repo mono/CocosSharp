@@ -188,8 +188,8 @@ namespace cocos2d
             CCSize size = m_pTexture.ContentSizeInPixels;
 
             DrawManager.SetViewPort(0, 0,
-                                    (int) (size.Width * ccMacros.CC_CONTENT_SCALE_FACTOR()),
-                                    (int) (size.Height * ccMacros.CC_CONTENT_SCALE_FACTOR())
+                                    (int) (size.Width * CCMacros.CCContentScaleFactor()),
+                                    (int) (size.Height * CCMacros.CCContentScaleFactor())
                 );
 
             /*

@@ -34,7 +34,7 @@ namespace tests
             CCDrawingPrimitives.DrawCircle(new CCPoint(s.Width / 2, s.Height / 2), 100, 0, 10, false, new CCColor4B(0, 255, 0, 255));
 
             // draw a green circle with 50 segments with line to center
-            CCDrawingPrimitives.DrawCircle(new CCPoint(s.Width / 2, s.Height / 2), 50, ccMacros.CC_DEGREES_TO_RADIANS(90), 50, true, new CCColor4B(0, 255, 255, 255));
+            CCDrawingPrimitives.DrawCircle(new CCPoint(s.Width / 2, s.Height / 2), 50, CCMacros.CCDegreesToRadians(90), 50, true, new CCColor4B(0, 255, 255, 255));
 
             // open yellow poly
             CCPoint[] vertices = { new CCPoint(0, 0), new CCPoint(50, 50), new CCPoint(100, 50), new CCPoint(100, 100), new CCPoint(50, 100) };

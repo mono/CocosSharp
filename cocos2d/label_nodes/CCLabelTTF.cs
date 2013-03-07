@@ -239,11 +239,11 @@ namespace cocos2d
             tex = new CCTexture2D();
 
             tex.InitWithString(m_pString,
-                               ccMacros.CC_SIZE_POINTS_TO_PIXELS(m_tDimensions),
+                               CCMacros.CCSizePointsToPixels(m_tDimensions),
                                m_hAlignment,
                                m_vAlignment,
                                m_pFontName,
-                               m_fFontSize * ccMacros.CC_CONTENT_SCALE_FACTOR());
+                               m_fFontSize * CCMacros.CCContentScaleFactor());
 
             Texture = tex;
 

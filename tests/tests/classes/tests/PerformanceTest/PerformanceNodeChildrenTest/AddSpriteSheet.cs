@@ -28,7 +28,7 @@ namespace tests
                 {
                     CCSprite pSprite = CCSprite.Create(batchNode.Texture, new CCRect(0, 0, 32, 32));
                     sprites.Add(pSprite);
-                    zs[i] = (int)(ccMacros.CCRANDOM_MINUS1_1() * 50);
+                    zs[i] = (int)(CCMacros.CCRandomBetweenNegative1And1() * 50);
 
                 }
 

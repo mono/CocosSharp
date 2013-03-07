@@ -298,8 +298,8 @@ namespace cocos2d
             get
             {
                 var ret = new CCSize();
-                ret.Width = m_tContentSize.Width / ccMacros.CC_CONTENT_SCALE_FACTOR();
-                ret.Height = m_tContentSize.Height / ccMacros.CC_CONTENT_SCALE_FACTOR();
+                ret.Width = m_tContentSize.Width / CCMacros.CCContentScaleFactor();
+                ret.Height = m_tContentSize.Height / CCMacros.CCContentScaleFactor();
 
                 return ret;
             }

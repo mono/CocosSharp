@@ -30,7 +30,7 @@ namespace tests
                 // add them with random Z (very important!)
                 for (int i = 0; i < totalToAdd; i++)
                 {
-                    batchNode.AddChild((CCNode)(sprites[i]), (int)(ccMacros.CCRANDOM_MINUS1_1() * 50), PerformanceNodeChildrenTest.kTagBase + i);
+                    batchNode.AddChild((CCNode)(sprites[i]), (int)(CCMacros.CCRandomBetweenNegative1And1() * 50), PerformanceNodeChildrenTest.kTagBase + i);
                 }
 
                 // remove them

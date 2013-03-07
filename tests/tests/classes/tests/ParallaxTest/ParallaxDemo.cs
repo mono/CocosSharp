@@ -112,7 +112,7 @@ namespace tests
             CCNode node = GetChildByTag(kTagTileMap);
             if (node != null)
             {
-                node.Rotation += rightTriggerStrength * ccMacros.CC_DEGREES_TO_RADIANS(15f) - leftTriggerStrength * ccMacros.CC_DEGREES_TO_RADIANS(15f);
+                node.Rotation += rightTriggerStrength * CCMacros.CCDegreesToRadians(15f) - leftTriggerStrength * CCMacros.CCDegreesToRadians(15f);
             }
         }
         private void MyOnGameStickUpdate(CCGameStickStatus left, CCGameStickStatus right, PlayerIndex player)

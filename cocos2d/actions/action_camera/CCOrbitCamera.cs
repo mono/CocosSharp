@@ -53,8 +53,8 @@ namespace cocos2d
                 m_fAngleX = angleX;
                 m_fDeltaAngleX = deltaAngleX;
 
-                m_fRadDeltaZ = ccMacros.CC_DEGREES_TO_RADIANS(deltaAngleZ);
-                m_fRadDeltaX = ccMacros.CC_DEGREES_TO_RADIANS(deltaAngleX);
+                m_fRadDeltaZ = CCMacros.CCDegreesToRadians(deltaAngleZ);
+                m_fRadDeltaX = CCMacros.CCDegreesToRadians(deltaAngleX);
                 return true;
             }
 
@@ -78,9 +78,9 @@ namespace cocos2d
             r = (float) Math.Sqrt((float) Math.Pow(x, 2) + (float) Math.Pow(y, 2) + (float) Math.Pow(z, 2));
             s = (float) Math.Sqrt((float) Math.Pow(x, 2) + (float) Math.Pow(y, 2));
             if (s == 0.0f)
-                s = ccMacros.FLT_EPSILON;
+                s = CCMacros.FLT_EPSILON;
             if (r == 0.0f)
-                r = ccMacros.FLT_EPSILON;
+                r = CCMacros.FLT_EPSILON;
 
             zenith = (float) Math.Acos(z / r);
             if (x < 0)
@@ -121,13 +121,13 @@ namespace cocos2d
                 m_fRadius = r;
 
             if (float.IsNaN(m_fAngleZ))
-                m_fAngleZ = ccMacros.CC_RADIANS_TO_DEGREES(zenith);
+                m_fAngleZ = CCMacros.CCRadiansToDegrees(zenith);
             
             if (float.IsNaN(m_fAngleX))
-                m_fAngleX = ccMacros.CC_RADIANS_TO_DEGREES(azimuth);
+                m_fAngleX = CCMacros.CCRadiansToDegrees(azimuth);
 
-            m_fRadZ = ccMacros.CC_DEGREES_TO_RADIANS(m_fAngleZ);
-            m_fRadX = ccMacros.CC_DEGREES_TO_RADIANS(m_fAngleX);
+            m_fRadZ = CCMacros.CCDegreesToRadians(m_fAngleZ);
+            m_fRadX = CCMacros.CCDegreesToRadians(m_fAngleX);
         }
 
         public override void Update(float time)

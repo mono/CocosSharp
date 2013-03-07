@@ -84,7 +84,7 @@ namespace tests
 
         public void clearImage(CCObject pSender)
         {
-            m_pTarget.Clear(ccMacros.CCRANDOM_0_1(), ccMacros.CCRANDOM_0_1(), ccMacros.CCRANDOM_0_1(), ccMacros.CCRANDOM_0_1());
+            m_pTarget.Clear(CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1());
         }
 
         public void saveImage(CCObject pSender)

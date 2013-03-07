@@ -82,8 +82,8 @@ namespace cocos2d
 
         public bool InitWithTexture(CCTexture2D tex, int capacity)
         {
-            m_blendFunc.Source = ccMacros.CC_BLEND_SRC;
-            m_blendFunc.Destination = ccMacros.CC_BLEND_DST;
+            m_blendFunc.Source = CCMacros.CCDefaultSourceBlending;
+            m_blendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
 
             m_pobTextureAtlas = new CCTextureAtlas();
 

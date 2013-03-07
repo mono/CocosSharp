@@ -57,8 +57,8 @@ namespace cocos2d
             Debug.Assert(dict["version"].AsInt == 1, "Unsupported version. Upgrade cocos2d version");
 
             string textureFilename = dict["textureFilename"].AsString;
-            int width = dict["itemWidth"].AsInt / ccMacros.CC_CONTENT_SCALE_FACTOR();
-            int height = dict["itemHeight"].AsInt / ccMacros.CC_CONTENT_SCALE_FACTOR();
+            int width = dict["itemWidth"].AsInt / CCMacros.CCContentScaleFactor();
+            int height = dict["itemHeight"].AsInt / CCMacros.CCContentScaleFactor();
             var startChar = (char) dict["firstChar"].AsInt;
 
 
@@ -86,8 +86,8 @@ namespace cocos2d
             float textureWide = texture.PixelsWide;
             float textureHigh = texture.PixelsHigh;
 
-            float itemWidthInPixels = m_uItemWidth * ccMacros.CC_CONTENT_SCALE_FACTOR();
-            float itemHeightInPixels = m_uItemHeight * ccMacros.CC_CONTENT_SCALE_FACTOR();
+            float itemWidthInPixels = m_uItemWidth * CCMacros.CCContentScaleFactor();
+            float itemHeightInPixels = m_uItemHeight * CCMacros.CCContentScaleFactor();
 
             for (int i = 0; i < n; i++)
             {

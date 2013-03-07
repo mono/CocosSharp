@@ -9,7 +9,7 @@ namespace cocos2d
     {
         public override CCNode CreateCCNode()
         {
-            return CCMenu.Create();
+            return new CCMenu();
         }
     }
 }

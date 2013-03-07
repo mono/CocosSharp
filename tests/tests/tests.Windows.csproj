@@ -72,6 +72,7 @@
     <StartupObject>tests.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
@@ -568,7 +569,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\cocos2d\cocos2d.Windows.csproj">
       <Project>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</Project>
-      <Name>cocos2d %28Windows%29</Name>
+      <Name>cocos2d.Windows</Name>
     </ProjectReference>
     <ProjectReference Include="..\testsContent\testsContent.contentproj">
       <Name>testsContent %28Content%29</Name>
@@ -578,10 +579,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\cocos2d\external lib\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />

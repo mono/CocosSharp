@@ -246,7 +246,7 @@ namespace cocos2d
                                                 }
                                             }
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
                                             // EndOfStreamException
                                             // this is OK here.
@@ -706,8 +706,8 @@ namespace cocos2d
             if (bOn)
             {
                 //glEnable(GL_BLEND);
-                //glBlendFunc(CC_BLEND_SRC, CC_BLEND_DST);
-                //DrawManager.BlendFunc(new ccBlendFunc(ccMacros.CC_BLEND_SRC, ccMacros.CC_BLEND_DST));
+                //glBlendFunc(CCDefaultSourceBlending, CCDefaultDestinationBlending);
+                //DrawManager.BlendFunc(new ccBlendFunc(ccMacros.CCDefaultSourceBlending, ccMacros.CCDefaultDestinationBlending));
             }
             else
             {
@@ -1096,7 +1096,7 @@ namespace cocos2d
             {
                 if (m_pFPSLabel != null && m_pSPFLabel != null && m_pDrawsLabel != null)
                 {
-                    if (m_fAccumDt > ccMacros.CC_DIRECTOR_STATS_INTERVAL)
+                    if (m_fAccumDt > CCMacros.CCDirectorStatsUpdateIntervalInSeconds)
                     {
                         m_pSPFLabel.SetString(String.Format("{0:0.000}", m_fSecondsPerFrame));
                 

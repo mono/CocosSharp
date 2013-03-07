@@ -250,7 +250,7 @@ namespace cocos2d
 
         public bool InitWithViewSize(CCSize size, CCNode container)
         {
-            m_pContainer = container ?? CCLayer.Create();
+            m_pContainer = container ?? new CCLayer();
 
             if (base.Init())
             {

@@ -128,8 +128,8 @@ namespace cocos2d
             m_tColor = m_tColorUnmodified = CCTypes.CCWhite;
             m_bIsOpacityModifyRGB = true;
 
-            m_tBlendFunc.Source = ccMacros.CC_BLEND_SRC;
-            m_tBlendFunc.Destination = ccMacros.CC_BLEND_DST;
+            m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
+            m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
 
             var pNewAtlas = new CCTextureAtlas();
             pNewAtlas.InitWithFile(tile, itemsToRender);

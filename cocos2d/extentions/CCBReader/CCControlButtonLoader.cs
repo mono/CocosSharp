@@ -24,7 +24,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCControlButton.Create();
+            return new CCControlButton();
         }
 
         protected override void OnHandlePropTypeCheck(CCNode node, CCNode parent, string propertyName, bool pCheck, CCBReader reader)

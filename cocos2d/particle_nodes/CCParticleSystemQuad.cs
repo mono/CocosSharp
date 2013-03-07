@@ -57,10 +57,10 @@ namespace cocos2d
             // convert to Tex coords
 
             var rect = new CCRect(
-                pointRect.origin.x * ccMacros.CC_CONTENT_SCALE_FACTOR(),
-                pointRect.origin.y * ccMacros.CC_CONTENT_SCALE_FACTOR(),
-                pointRect.size.Width * ccMacros.CC_CONTENT_SCALE_FACTOR(),
-                pointRect.size.Height * ccMacros.CC_CONTENT_SCALE_FACTOR());
+                pointRect.origin.x * CCMacros.CCContentScaleFactor(),
+                pointRect.origin.y * CCMacros.CCContentScaleFactor(),
+                pointRect.size.Width * CCMacros.CCContentScaleFactor(),
+                pointRect.size.Height * CCMacros.CCContentScaleFactor());
 
             float wide = pointRect.size.Width;
             float high = pointRect.size.Height;

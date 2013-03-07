@@ -839,7 +839,7 @@ namespace tests
             m_tamara = CCSprite.Create(s_pPathSister1);
             map.AddChild(m_tamara, map.Children.Count);
             float mapWidth = map.MapSize.Width * map.TileSize.Width;
-            m_tamara.Position = ccMacros.CC_POINT_PIXELS_TO_POINTS(new CCPoint(mapWidth / 2, 0));
+            m_tamara.Position = CCMacros.CCPointPixelsToPoints(new CCPoint(mapWidth / 2, 0));
             m_tamara.AnchorPoint = (new CCPoint(0.5f, 0));
 
 
@@ -860,7 +860,7 @@ namespace tests
         private void repositionSprite(float dt)
         {
             CCPoint p = m_tamara.Position;
-            p = ccMacros.CC_POINT_POINTS_TO_PIXELS(p);
+            p = CCMacros.CCPointPointsToPixels(p);
             CCNode map = GetChildByTag(kTagTileMap);
 
             // there are only 4 layers. (grass and 3 trees layers)
@@ -920,7 +920,7 @@ namespace tests
         private void repositionSprite(float dt)
         {
             CCPoint p = m_tamara.Position;
-            p = ccMacros.CC_POINT_POINTS_TO_PIXELS(p);
+            p = CCMacros.CCPointPointsToPixels(p);
             CCNode map = GetChildByTag(kTagTileMap);
 
             // there are only 4 layers. (grass and 3 trees layers)
@@ -969,7 +969,7 @@ namespace tests
             CCTMXLayer layer = map.LayerNamed("Trees");
             m_tamara = layer.TileAt(new CCPoint(29, 29));
 
-            CCMoveBy move = CCMoveBy.Create(10, new CCPoint(300, 250) * (1f / ccMacros.CC_CONTENT_SCALE_FACTOR()));
+            CCMoveBy move = CCMoveBy.Create(10, new CCPoint(300, 250) * (1f / CCMacros.CCContentScaleFactor()));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = CCSequence.Create(move, back);
             m_tamara.RunAction(CCRepeatForever.Create(seq));
@@ -984,7 +984,7 @@ namespace tests
             // tile height is 64x32
             // map size: 30x30
             CCPoint p = m_tamara.Position;
-            p = ccMacros.CC_POINT_POINTS_TO_PIXELS(p);
+            p = CCMacros.CCPointPointsToPixels(p);
             float newZ = -(p.y + 32) / 16;
             m_tamara.VertexZ = newZ;
         }
@@ -1038,7 +1038,7 @@ namespace tests
             m_tamara = layer.TileAt(new CCPoint(0, 11));
             CCLog.Log("tamara vertexZ: {0}", m_tamara.VertexZ);
 
-            CCMoveBy move = CCMoveBy.Create(10, new CCPoint(400, 450) * (1f / ccMacros.CC_CONTENT_SCALE_FACTOR()));
+            CCMoveBy move = CCMoveBy.Create(10, new CCPoint(400, 450) * (1f / CCMacros.CCContentScaleFactor()));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = CCSequence.Create(move, back);
             m_tamara.RunAction(CCRepeatForever.Create(seq));
@@ -1051,7 +1051,7 @@ namespace tests
             // tile height is 101x81
             // map size: 12x12
             CCPoint p = m_tamara.Position;
-            p = ccMacros.CC_POINT_POINTS_TO_PIXELS(p);
+            p = CCMacros.CCPointPointsToPixels(p);
             m_tamara.VertexZ = -((p.y + 81) / 81);
         }
 
@@ -1587,7 +1587,7 @@ namespace tests
         private void MyGamePadTriggerUpdate(float leftTriggerStrength, float rightTriggerStrength, PlayerIndex player)
         {
             CCNode node = GetChildByTag(kTagTileMap);
-            node.Rotation += rightTriggerStrength * ccMacros.CC_DEGREES_TO_RADIANS(15f) - leftTriggerStrength * ccMacros.CC_DEGREES_TO_RADIANS(15f);
+            node.Rotation += rightTriggerStrength * CCMacros.CCDegreesToRadians(15f) - leftTriggerStrength * CCMacros.CCDegreesToRadians(15f);
         }
         private void MyOnGameStickUpdate(CCGameStickStatus left, CCGameStickStatus right, PlayerIndex player)
         {

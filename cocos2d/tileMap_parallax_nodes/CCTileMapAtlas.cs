@@ -113,8 +113,8 @@ namespace cocos2d
             float textureWide = (m_pTextureAtlas.Texture.PixelsWide);
             float textureHigh = (m_pTextureAtlas.Texture.PixelsHigh);
 
-            float itemWidthInPixels = m_uItemWidth * ccMacros.CC_CONTENT_SCALE_FACTOR();
-            float itemHeightInPixels = m_uItemHeight * ccMacros.CC_CONTENT_SCALE_FACTOR();
+            float itemWidthInPixels = m_uItemWidth * CCMacros.CCContentScaleFactor();
+            float itemHeightInPixels = m_uItemHeight * CCMacros.CCContentScaleFactor();
 
 #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
             float left        = (2 * row * itemWidthInPixels + 1) / (2 * textureWide);

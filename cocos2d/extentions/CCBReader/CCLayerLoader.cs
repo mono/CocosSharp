@@ -9,7 +9,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCLayer.Create();
+            return new CCLayer();
         }
 
         protected override void OnHandlePropTypeCheck(CCNode node, CCNode parent, string propertyName, bool pCheck, CCBReader reader)

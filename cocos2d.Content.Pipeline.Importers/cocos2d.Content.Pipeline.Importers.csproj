@@ -33,10 +33,6 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\cocos2d\external lib\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <SpecificVersion>True</SpecificVersion>
     </Reference>
@@ -69,7 +65,7 @@
   <ItemGroup>
     <ProjectReference Include="..\cocos2d\cocos2d.Windows.csproj">
       <Project>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</Project>
-      <Name>cocos2d %28Windows%29</Name>
+      <Name>cocos2d.Windows</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

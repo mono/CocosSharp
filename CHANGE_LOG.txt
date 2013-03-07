@@ -97,3 +97,5 @@ and Totally Evil Entertainment, LLC.
 * CCDirector : Fixed PopScene not setting the next scene to be visible.
 * CCParticleSystem : Work towards fixing the creation of runtime textures for particles.
 * CCSprite : Fixed an iOS color opacity check.
+* CCMacros : Refactoring
+* Continued major refactoring of names and method usage.

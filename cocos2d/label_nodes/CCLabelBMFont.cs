@@ -339,7 +339,7 @@ namespace cocos2d
                 CCBMFontConfiguration.ccBMFontDef fontDef = m_pConfiguration.m_pFontDefDictionary[c];
 
                 CCRect rect = fontDef.rect;
-                rect = ccMacros.CC_RECT_PIXELS_TO_POINTS(rect);
+                rect = CCMacros.CCRectanglePixelsToPoints(rect);
 
                 rect.origin.x += m_tImageOffset.x;
                 rect.origin.y += m_tImageOffset.y;
@@ -366,8 +366,8 @@ namespace cocos2d
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
                 int yOffset = m_pConfiguration.m_nCommonHeight - fontDef.yOffset;
                 var fontPos = new CCPoint((float) nextFontPositionX + fontDef.xOffset + fontDef.rect.size.Width * 0.5f + kerningAmount,
-                                          (float) nextFontPositionY + yOffset - rect.size.Height * 0.5f * ccMacros.CC_CONTENT_SCALE_FACTOR());
-                fontChar.Position = ccMacros.CC_POINT_PIXELS_TO_POINTS(fontPos);
+                                          (float) nextFontPositionY + yOffset - rect.size.Height * 0.5f * CCMacros.CCContentScaleFactor());
+                fontChar.Position = CCMacros.CCPointPixelsToPoints(fontPos);
 
                 // update kerning
                 nextFontPositionX += fontDef.xAdvance + kerningAmount;
@@ -394,7 +394,7 @@ namespace cocos2d
             tmpSize.Width = longestLine;
             tmpSize.Height = totalHeight;
 
-            ContentSize = ccMacros.CC_SIZE_PIXELS_TO_POINTS(tmpSize);
+            ContentSize = CCMacros.CCSizePixelsToPoints(tmpSize);
         }
 
 

@@ -20,7 +20,7 @@ namespace cocos2d
 
                 // If the new texture has No premultiplied alpha, AND the blendFunc hasn't been changed, then update it
                 if (value != null && ! value.HasPremultipliedAlpha &&
-                    (m_tBlendFunc.Source == ccMacros.CC_BLEND_SRC && m_tBlendFunc.Destination == ccMacros.CC_BLEND_DST))
+                    (m_tBlendFunc.Source == CCMacros.CCDefaultSourceBlending && m_tBlendFunc.Destination == CCMacros.CCDefaultDestinationBlending))
                 {
                     m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
                     m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
@@ -74,8 +74,8 @@ namespace cocos2d
             // no lazy alloc in this node
             m_pChildren = new RawList<CCNode>(capacity);
 
-            m_tBlendFunc.Source = ccMacros.CC_BLEND_SRC;
-            m_tBlendFunc.Destination = ccMacros.CC_BLEND_DST;
+            m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
+            m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
 
             //setShaderProgram(CCShaderCache::sharedShaderCache().programForKey(kCCShader_PositionTextureColor));
 
