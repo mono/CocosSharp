@@ -268,38 +268,38 @@ namespace cocos2d
             else if (elementName == "layer")
             {
                 var layer = new CCTMXLayerInfo();
-                layer.m_sName = attributeDict["name"];
+                layer.Name = attributeDict["name"];
 
                 CCSize s;
                 s.Width = CCUtils.CCParseFloat(attributeDict["width"]);
                 s.Height = CCUtils.CCParseFloat(attributeDict["height"]);
-                layer.m_tLayerSize = s;
+                layer.LayerSize = s;
 
-                layer.m_pTiles = new uint[(int) s.Width * (int) s.Height];
+                layer.Tiles = new uint[(int) s.Width * (int) s.Height];
 
                 if (attributeDict.Keys.Contains("visible"))
                 {
                     string visible = attributeDict["visible"];
-                    layer.m_bVisible = !(visible == "0");
+                    layer.Visible = !(visible == "0");
                 }
                 else
                 {
-                    layer.m_bVisible = true;
+                    layer.Visible = true;
                 }
 
                 if (attributeDict.Keys.Contains("opacity"))
                 {
                     string opacity = attributeDict["opacity"];
-                    layer.m_cOpacity = (byte) (255 * CCUtils.CCParseFloat(opacity));
+                    layer.Opacity = (byte) (255 * CCUtils.CCParseFloat(opacity));
                 }
                 else
                 {
-                    layer.m_cOpacity = 255;
+                    layer.Opacity = 255;
                 }
 
                 float x = attributeDict.Keys.Contains("x") ? CCUtils.CCParseFloat(attributeDict["x"]) : 0;
                 float y = attributeDict.Keys.Contains("y") ? CCUtils.CCParseFloat(attributeDict["y"]) : 0;
-                layer.m_tOffset = new CCPoint(x, y);
+                layer.Offset = new CCPoint(x, y);
 
                 pTMXMapInfo.Layers.Add(layer);
 
@@ -532,7 +532,7 @@ namespace cocos2d
                     encoded = pTMXMapInfo.CurrentString;
                 }
 
-                for (int i = 0; i < layer.m_pTiles.Length; i++)
+                for (int i = 0; i < layer.Tiles.Length; i++)
                 {
                     int i4 = i * 4;
                     var gid = (uint) (
@@ -541,7 +541,7 @@ namespace cocos2d
                                          encoded[i4 + 2] << 16 |
                                          encoded[i4 + 3] << 24);
 
-                    layer.m_pTiles[i] = gid;
+                    layer.Tiles[i] = gid;
                 }
 
                 pTMXMapInfo.CurrentString = null;
