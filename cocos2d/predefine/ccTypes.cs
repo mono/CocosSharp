@@ -310,29 +310,29 @@ namespace cocos2d
     /// <summary>
     /// a Point with a vertex point, a tex coord point and a color 4B
     /// </summary>
-    public class ccV2F_C4B_T2F
+    public class CCV2F_C4B_T2F
     {
-        public ccV2F_C4B_T2F()
+        public CCV2F_C4B_T2F()
         {
-            vertices = new CCVertex2F();
-            colors = new CCColor4B();
-            texCoords = new CCTex2F();
+            Vertices = new CCVertex2F();
+            Colors = new CCColor4B();
+            TexCoords = new CCTex2F();
         }
 
         /// <summary>
         /// vertices (2F)
         /// </summary>
-        public CCVertex2F vertices;
+        public CCVertex2F Vertices;
 
         /// <summary>
         /// colors (4B)
         /// </summary>
-        public CCColor4B colors;
+        public CCColor4B Colors;
 
         /// <summary>
         /// tex coords (2F)
         /// </summary>
-        public CCTex2F texCoords;
+        public CCTex2F TexCoords;
     }
 
     /// <summary>
@@ -342,25 +342,25 @@ namespace cocos2d
     {
         public ccV2F_C4F_T2F()
         {
-            vertices = new CCVertex2F();
-            colors = new CCColor4F();
-            texCoords = new CCTex2F();
+            Vertices = new CCVertex2F();
+            Colors = new CCColor4F();
+            TexCoords = new CCTex2F();
         }
 
         /// <summary>
         /// vertices (2F)
         /// </summary>
-        public CCVertex2F vertices;
+        public CCVertex2F Vertices;
 
         /// <summary>
         /// colors (4F)
         /// </summary>
-        public CCColor4F colors;
+        public CCColor4F Colors;
 
         /// <summary>
         /// tex coords (2F)
         /// </summary>
-        public CCTex2F texCoords;
+        public CCTex2F TexCoords;
     }
 
     /// <summary>
@@ -410,31 +410,31 @@ namespace cocos2d
     {
         public ccV2F_C4B_T2F_Quad()
         {
-            bl = new ccV2F_C4B_T2F();
-            br = new ccV2F_C4B_T2F();
-            tl = new ccV2F_C4B_T2F();
-            tr = new ccV2F_C4B_T2F();
+            bl = new CCV2F_C4B_T2F();
+            br = new CCV2F_C4B_T2F();
+            tl = new CCV2F_C4B_T2F();
+            tr = new CCV2F_C4B_T2F();
         }
 
         /// <summary>
         /// bottom left
         /// </summary>
-        public ccV2F_C4B_T2F bl;
+        public CCV2F_C4B_T2F bl;
 
         /// <summary>
         /// bottom right
         /// </summary>
-        public ccV2F_C4B_T2F br;
+        public CCV2F_C4B_T2F br;
 
         /// <summary>
         /// top left
         /// </summary>
-        public ccV2F_C4B_T2F tl;
+        public CCV2F_C4B_T2F tl;
 
         /// <summary>
         /// top right
         /// </summary>
-        public ccV2F_C4B_T2F tr;
+        public CCV2F_C4B_T2F tr;
     }
 
     /// <summary>
