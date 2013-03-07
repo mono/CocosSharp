@@ -215,13 +215,13 @@ namespace cocos2d
             {
                 // TextFieldTTFTest be clicked
                 CCLog.Log("TextFieldTTFDefaultTest:CCTextFieldTTF attachWithIME");
-                pTextField.attachWithIME();
+                pTextField.AttachWithIME();
             }
             else
             {
                 // TextFieldTTFTest not be clicked
                 CCLog.Log("TextFieldTTFDefaultTest:CCTextFieldTTF detachWithIME");
-                pTextField.detachWithIME();
+                pTextField.DetachWithIME();
             }
         }
 
@@ -233,7 +233,7 @@ namespace cocos2d
             // add CCTextFieldTTF
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCTextFieldTTF pTextField = CCTextFieldTTF.textFieldWithPlaceHolder("<click here for input>",
+            CCTextFieldTTF pTextField = CCTextFieldTTF.TextFieldWithPlaceHolder("<click here for input>",
                 TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
             AddChild(pTextField);
 
@@ -278,13 +278,13 @@ namespace cocos2d
             {
                 // TextFieldTTFTest be clicked
                 CCLog.Log("TextFieldTTFActionTest:CCTextFieldTTF attachWithIME");
-                pTextField.attachWithIME();
+                pTextField.AttachWithIME();
             }
             else
             {
                 // TextFieldTTFTest not be clicked
                 CCLog.Log("TextFieldTTFActionTest:CCTextFieldTTF detachWithIME");
-                pTextField.detachWithIME();
+                pTextField.DetachWithIME();
             }
         }
 
@@ -305,7 +305,7 @@ namespace cocos2d
             // add CCTextFieldTTF
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            m_pTextField = CCTextFieldTTF.textFieldWithPlaceHolder("<click here for input>",
+            m_pTextField = CCTextFieldTTF.TextFieldWithPlaceHolder("<click here for input>",
             TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
             AddChild(m_pTextField);
 
