@@ -282,7 +282,7 @@ namespace cocos2d
             m_eResolutionPolicy = ResolutionPolicy.UnKnown;
 
             m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
-            m_obScreenSize = m_obDesignResolutionSize = m_obViewPortRect.size;
+            m_obScreenSize = m_obDesignResolutionSize = m_obViewPortRect.Size;
 
             CCDrawingPrimitives.Init(graphicsDevice);
         }
@@ -327,7 +327,7 @@ namespace cocos2d
             {
                 PresentationParameters pp = graphicsDevice.PresentationParameters;
                 m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
-                m_obScreenSize = m_obViewPortRect.size;
+                m_obScreenSize = m_obViewPortRect.Size;
 
                 if (m_eResolutionPolicy != ResolutionPolicy.UnKnown)
                 {
@@ -867,8 +867,8 @@ namespace cocos2d
         public static void SetViewPortInPoints(int x, int y, int width, int height)
         {
             graphicsDevice.Viewport = new Viewport(
-                (int) (x * m_fScaleX * m_fFrameZoomFactor + m_obViewPortRect.origin.x * m_fFrameZoomFactor),
-                (int) (y * m_fScaleY * m_fFrameZoomFactor + m_obViewPortRect.origin.y * m_fFrameZoomFactor),
+                (int) (x * m_fScaleX * m_fFrameZoomFactor + m_obViewPortRect.Origin.X * m_fFrameZoomFactor),
+                (int) (y * m_fScaleY * m_fFrameZoomFactor + m_obViewPortRect.Origin.Y * m_fFrameZoomFactor),
                 (int) (width * m_fScaleX * m_fFrameZoomFactor),
                 (int) (height * m_fScaleY * m_fFrameZoomFactor)
                 );
@@ -918,8 +918,8 @@ namespace cocos2d
         public static void SetScissorInPoints(float x, float y, float w, float h)
         {
             graphicsDevice.ScissorRectangle = new Rectangle(
-                (int) (x * m_fScaleX + m_obViewPortRect.origin.x),
-                (int) (y * m_fScaleY + m_obViewPortRect.origin.y),
+                (int) (x * m_fScaleX + m_obViewPortRect.Origin.X),
+                (int) (y * m_fScaleY + m_obViewPortRect.Origin.Y),
                 (int) (w * m_fScaleX),
                 (int) (h * m_fScaleY)
                 );

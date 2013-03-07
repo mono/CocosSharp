@@ -38,7 +38,7 @@ namespace tests
         public void updateSize(CCPoint touchLocation)
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            CCSize newSize = new CCSize(Math.Abs(touchLocation.x - s.Width / 2) * 2, Math.Abs(touchLocation.y - s.Height / 2) * 2);
+            CCSize newSize = new CCSize(Math.Abs(touchLocation.X - s.Width / 2) * 2, Math.Abs(touchLocation.Y - s.Height / 2) * 2);
             CCLayerColor l = (CCLayerColor)GetChildByTag(kTagLayer);
             l.ContentSize = newSize;
         }

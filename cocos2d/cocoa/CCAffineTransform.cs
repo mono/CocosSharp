@@ -63,8 +63,8 @@ namespace cocos2d
         public static CCPoint CCPointApplyAffineTransform(CCPoint point, CCAffineTransform t)
         {
             return new CCPoint(
-                t.a * point.x + t.c * point.y + t.tx,
-                t.b * point.x + t.d * point.y + t.ty
+                t.a * point.X + t.c * point.Y + t.tx,
+                t.b * point.X + t.d * point.Y + t.ty
                 );
         }
 
@@ -88,10 +88,10 @@ namespace cocos2d
             CCPoint bottomLeft = CCPointApplyAffineTransform(new CCPoint(left, bottom), anAffineTransform);
             CCPoint bottomRight = CCPointApplyAffineTransform(new CCPoint(right, bottom), anAffineTransform);
 
-            float minX = Math.Min(Math.Min(topLeft.x, topRight.x), Math.Min(bottomLeft.x, bottomRight.x));
-            float maxX = Math.Max(Math.Max(topLeft.x, topRight.x), Math.Max(bottomLeft.x, bottomRight.x));
-            float minY = Math.Min(Math.Min(topLeft.y, topRight.y), Math.Min(bottomLeft.y, bottomRight.y));
-            float maxY = Math.Max(Math.Max(topLeft.y, topRight.y), Math.Max(bottomLeft.y, bottomRight.y));
+            float minX = Math.Min(Math.Min(topLeft.X, topRight.X), Math.Min(bottomLeft.X, bottomRight.X));
+            float maxX = Math.Max(Math.Max(topLeft.X, topRight.X), Math.Max(bottomLeft.X, bottomRight.X));
+            float minY = Math.Min(Math.Min(topLeft.Y, topRight.Y), Math.Min(bottomLeft.Y, bottomRight.Y));
+            float maxY = Math.Max(Math.Max(topLeft.Y, topRight.Y), Math.Max(bottomLeft.Y, bottomRight.Y));
 
             return new CCRect(minX, minY, (maxX - minX), (maxY - minY));
         }

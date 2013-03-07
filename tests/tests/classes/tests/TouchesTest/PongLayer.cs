@@ -83,7 +83,7 @@ namespace tests
 
         public void resetAndScoreBallForPlayer(int player)
         {
-            m_ballStartingVelocity = new CCPoint(m_ballStartingVelocity.x * -1.1f, m_ballStartingVelocity.y * -1.1f);
+            m_ballStartingVelocity = new CCPoint(m_ballStartingVelocity.X * -1.1f, m_ballStartingVelocity.Y * -1.1f);
             m_ball.Velocity = m_ballStartingVelocity;
             m_ball.Position = new CCPoint(160.0f, 240.0f);
 
@@ -101,9 +101,9 @@ namespace tests
                 m_ball.collideWithPaddle(paddle);
             }
 
-            if (m_ball.Position.y > 480 - 20.0f + m_ball.radius())
+            if (m_ball.Position.Y > 480 - 20.0f + m_ball.radius())
                 resetAndScoreBallForPlayer((int)PlayerTouches.kLowPlayer);
-            else if (m_ball.Position.y < -m_ball.radius())
+            else if (m_ball.Position.Y < -m_ball.radius())
                 resetAndScoreBallForPlayer((int)PlayerTouches.kHighPlayer);
 
             // this code exists in c++ version,

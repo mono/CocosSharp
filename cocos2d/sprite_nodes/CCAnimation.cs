@@ -153,7 +153,7 @@ namespace cocos2d
         {
             CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(pszFileName);
             CCRect rect = CCRect.Zero;
-            rect.size = pTexture.ContentSize;
+            rect.Size = pTexture.ContentSize;
             CCSpriteFrame pFrame = CCSpriteFrame.Create(pTexture, rect);
             AddSpriteFrame(pFrame);
         }

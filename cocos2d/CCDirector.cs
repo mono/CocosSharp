@@ -726,12 +726,12 @@ namespace cocos2d
 
         public CCPoint ConvertToGl(CCPoint uiPoint)
         {
-            return new CCPoint(uiPoint.x, m_obWinSizeInPoints.Height - uiPoint.y);
+            return new CCPoint(uiPoint.X, m_obWinSizeInPoints.Height - uiPoint.Y);
         }
 
         public CCPoint ConvertToUi(CCPoint glPoint)
         {
-            return new CCPoint(glPoint.x, m_obWinSizeInPoints.Height - glPoint.y);
+            return new CCPoint(glPoint.X, m_obWinSizeInPoints.Height - glPoint.Y);
         }
 
         public CCSize WinSize

@@ -170,7 +170,7 @@ namespace cocos2d
             CCSize titleLabelSize = CCSize.Zero;
             if (m_titleLabel != null)
             {
-                titleLabelSize = m_titleLabel.BoundingBox.size;
+                titleLabelSize = m_titleLabel.BoundingBox.Size;
             }
 
             // Adjust the background image if necessary
@@ -214,7 +214,7 @@ namespace cocos2d
             }
 
             CCRect maxRect = CCControlUtils.CCRectUnion(rectTitle, rectBackground);
-            ContentSize = new CCSize(maxRect.size.Width, maxRect.size.Height);
+            ContentSize = new CCSize(maxRect.Size.Width, maxRect.Size.Height);
 
             if (m_titleLabel != null)
             {

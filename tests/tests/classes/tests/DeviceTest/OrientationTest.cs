@@ -180,7 +180,7 @@ namespace tests
                 CCDirector director = CCDirector.SharedDirector;
                 CCPoint b = director.ConvertToUi(director.ConvertToGl(a));
                 //CCLog("(%d,%d) == (%d,%d)", (int) a.x, (int)a.y, (int)b.x, (int)b.y );
-                CCLog.Log("({0},{1}) == ({2},{3})", (int)a.x, (int)a.y, (int)b.x, (int)b.y);
+                CCLog.Log("({0},{1}) == ({2},{3})", (int)a.X, (int)a.Y, (int)b.X, (int)b.Y);
             }
         }
 

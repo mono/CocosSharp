@@ -32,8 +32,8 @@ namespace tests
         public void onUpdate(float delta)
         {
             m_fAngle += 1.0f;
-            streak.Position = new CCPoint(m_center.x + (float) Math.Cos(m_fAngle / 180f * Math.PI) * m_fRadius,
-                                          m_center.y + (float) Math.Sin(m_fAngle / 180f * Math.PI) * m_fRadius);
+            streak.Position = new CCPoint(m_center.X + (float) Math.Cos(m_fAngle / 180f * Math.PI) * m_fRadius,
+                                          m_center.Y + (float) Math.Sin(m_fAngle / 180f * Math.PI) * m_fRadius);
         }
 
         public override string title()

@@ -186,7 +186,7 @@ namespace FarseerPhysics.TestBed.Framework
         public virtual void Mouse(MouseState state, MouseState oldState)
         {
             var p = DrawManager.ScreenToWorld(state.X, state.Y);
-            Vector2 position = new Vector2(p.x, p.y);
+            Vector2 position = new Vector2(p.X, p.Y);
 
             if (state.LeftButton == ButtonState.Released && oldState.LeftButton == ButtonState.Pressed)
             {

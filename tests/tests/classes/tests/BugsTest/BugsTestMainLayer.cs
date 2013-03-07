@@ -101,18 +101,18 @@ namespace tests
 
                 CCPoint touchLocation = touch.LocationInView;
                 touchLocation = CCDirector.SharedDirector.ConvertToGl(touchLocation);
-                float nMoveY = touchLocation.y - m_tBeginPos.y;
+                float nMoveY = touchLocation.Y - m_tBeginPos.Y;
 
                 CCPoint curPos = m_pItmeMenu.Position;
-                CCPoint nextPos = new CCPoint(curPos.x, curPos.y + nMoveY);
+                CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
-                if (nextPos.y < 0.0f)
+                if (nextPos.Y < 0.0f)
                 {
                     m_pItmeMenu.Position = new CCPoint(0, 0);
                     return;
                 }
 
-                if (nextPos.y > ((BugsTestScene.MAX_COUNT + 1) * BugsTestScene.LINE_SPACE - winSize.Height))
+                if (nextPos.Y > ((BugsTestScene.MAX_COUNT + 1) * BugsTestScene.LINE_SPACE - winSize.Height))
                 {
                     m_pItmeMenu.Position = new CCPoint(0, ((BugsTestScene.MAX_COUNT + 1) * BugsTestScene.LINE_SPACE - winSize.Height));
                     return;

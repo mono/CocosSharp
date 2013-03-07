@@ -44,7 +44,7 @@ namespace tests
             CCSprite sprite = CCSprite.Create(m_texture1, new CCRect(x, y, 85, 121));
             node.AddChild(sprite);
 
-            sprite.Position = (new CCPoint(p.x, p.y));
+            sprite.Position = (new CCPoint(p.X, p.Y));
 
             CCActionInterval action;
             float random = (float)Random.NextDouble();

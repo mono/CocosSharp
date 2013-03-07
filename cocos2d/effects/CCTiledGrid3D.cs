@@ -148,10 +148,10 @@ namespace cocos2d
             {
                 for (int y = 0; y < m_sGridSize.Y; y++)
                 {
-                    float x1 = x * m_obStep.x;
-                    float x2 = x1 + m_obStep.x;
-                    float y1 = y * m_obStep.y;
-                    float y2 = y1 + m_obStep.y;
+                    float x1 = x * m_obStep.X;
+                    float x2 = x1 + m_obStep.X;
+                    float y1 = y * m_obStep.Y;
+                    float y2 = y1 + m_obStep.Y;
 
                     vertArray[index + 0].vertices = new CCVertex3F(x1, y1, 0);
                     vertArray[index + 1].vertices = new CCVertex3F(x2, y1, 0);

@@ -140,10 +140,10 @@ namespace cocos2d
             {
                 for (int y = 0; y < m_sGridSize.Y; ++y)
                 {
-                    float x1 = x * m_obStep.x;
-                    float x2 = x1 + m_obStep.x;
-                    float y1 = y * m_obStep.y;
-                    float y2 = y1 + m_obStep.y;
+                    float x1 = x * m_obStep.X;
+                    float x2 = x1 + m_obStep.X;
+                    float y1 = y * m_obStep.Y;
+                    float y2 = y1 + m_obStep.Y;
 
                     var a = (short) (x * (m_sGridSize.Y + 1) + y);
                     var b = (short) ((x + 1) * (m_sGridSize.Y + 1) + y);
@@ -191,15 +191,15 @@ namespace cocos2d
                     {
                         vertArray[l1[i]].vertices = l2[i];
 
-                        vertArray[tex1[i]].texCoords.U = tex2[i].x / width;
+                        vertArray[tex1[i]].texCoords.U = tex2[i].X / width;
 
                         if (m_bIsTextureFlipped)
                         {
-                            vertArray[tex1[i]].texCoords.V = tex2[i].y / height;
+                            vertArray[tex1[i]].texCoords.V = tex2[i].Y / height;
                         }
                         else
                         {
-                            vertArray[tex1[i]].texCoords.V = (imageH - tex2[i].y) / height;
+                            vertArray[tex1[i]].texCoords.V = (imageH - tex2[i].Y) / height;
                         }
                     }
                 }

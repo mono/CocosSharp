@@ -18,8 +18,8 @@ namespace cocos2d
             set
             {
                 m_position = value;
-                m_positionInPixels.x = value.x * CCDirector.SharedDirector.ContentScaleFactor;
-                m_positionInPixels.y = value.y * CCDirector.SharedDirector.ContentScaleFactor;
+                m_positionInPixels.X = value.X * CCDirector.SharedDirector.ContentScaleFactor;
+                m_positionInPixels.Y = value.Y * CCDirector.SharedDirector.ContentScaleFactor;
             }
         }
 
@@ -89,8 +89,8 @@ namespace cocos2d
 
                     CCVertex3F v = OriginalVertex(gs);
 
-                    float x = m_positionInPixels.x - v.X;
-                    float y = m_positionInPixels.y - v.Y;
+                    float x = m_positionInPixels.X - v.X;
+                    float y = m_positionInPixels.Y - v.Y;
 
                     var r = (float) Math.Sqrt((x * x + y * y));
 

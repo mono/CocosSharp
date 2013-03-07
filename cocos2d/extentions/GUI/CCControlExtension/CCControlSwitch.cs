@@ -169,7 +169,7 @@ namespace cocos2d
 
             CCPoint location = LocationFromTouch(pTouch);
 
-            m_fInitialTouchXPosition = location.x - m_pSwitchSprite.SliderXPosition;
+            m_fInitialTouchXPosition = location.X - m_pSwitchSprite.SliderXPosition;
 
             m_pSwitchSprite.ThumbSprite.Color = new CCColor3B(166, 166, 166);
             m_pSwitchSprite.NeedsLayout();
@@ -180,11 +180,11 @@ namespace cocos2d
         public override void TouchMoved(CCTouch pTouch, CCEvent pEvent)
         {
             CCPoint location = LocationFromTouch(pTouch);
-            location = new CCPoint(location.x - m_fInitialTouchXPosition, 0);
+            location = new CCPoint(location.X - m_fInitialTouchXPosition, 0);
 
             m_bMoved = true;
 
-            m_pSwitchSprite.SliderXPosition = location.x;
+            m_pSwitchSprite.SliderXPosition = location.X;
         }
 
         public override void TouchEnded(CCTouch pTouch, CCEvent pEvent)
@@ -195,7 +195,7 @@ namespace cocos2d
 
             if (HasMoved())
             {
-                SetOn(!(location.x < m_pSwitchSprite.ContentSize.Width / 2), true);
+                SetOn(!(location.X < m_pSwitchSprite.ContentSize.Width / 2), true);
             }
             else
             {
@@ -211,7 +211,7 @@ namespace cocos2d
 
             if (HasMoved())
             {
-                SetOn(!(location.x < m_pSwitchSprite.ContentSize.Width / 2), true);
+                SetOn(!(location.X < m_pSwitchSprite.ContentSize.Width / 2), true);
             }
             else
             {
@@ -450,12 +450,12 @@ namespace cocos2d
 
             if (m_pOnLabel != null)
             {
-                m_pOnLabel.Position = new CCPoint(m_pOnSprite.Position.x - m_ThumbSprite.ContentSize.Width / 6,
+                m_pOnLabel.Position = new CCPoint(m_pOnSprite.Position.X - m_ThumbSprite.ContentSize.Width / 6,
                                                   m_pOnSprite.ContentSize.Height / 2);
             }
             if (m_pOffLabel != null)
             {
-                m_pOffLabel.Position = new CCPoint(m_pOffSprite.Position.x + m_ThumbSprite.ContentSize.Width / 6,
+                m_pOffLabel.Position = new CCPoint(m_pOffSprite.Position.X + m_ThumbSprite.ContentSize.Width / 6,
                                                    m_pOffSprite.ContentSize.Height / 2);
             }
 

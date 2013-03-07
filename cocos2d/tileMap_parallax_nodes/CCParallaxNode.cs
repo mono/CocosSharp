@@ -41,8 +41,8 @@ namespace cocos2d
             m_pParallaxArray.Add(obj);
 
             CCPoint pos = m_tPosition;
-            pos.x = pos.x * ratio.x + offset.x;
-            pos.y = pos.y * ratio.y + offset.y;
+            pos.X = pos.X * ratio.X + offset.X;
+            pos.Y = pos.Y * ratio.Y + offset.Y;
             child.Position = pos;
 
             base.AddChild(child, z, child.Tag);
@@ -74,7 +74,7 @@ namespace cocos2d
             while (cn.Parent != null)
             {
                 cn = cn.Parent;
-                ret = new CCPoint(ret.x + cn.Position.x, ret.y + cn.Position.y);
+                ret = new CCPoint(ret.X + cn.Position.X, ret.Y + cn.Position.Y);
             }
             return ret;
         }
@@ -88,8 +88,8 @@ namespace cocos2d
                 for (int i = 0; i < m_pParallaxArray.Count; i++)
                 {
                     var point = m_pParallaxArray[i];
-                    float x = -pos.x + pos.x * point.Ratio.x + point.Offset.x;
-                    float y = -pos.y + pos.y * point.Ratio.y + point.Offset.y;
+                    float x = -pos.X + pos.X * point.Ratio.X + point.Offset.X;
+                    float y = -pos.Y + pos.Y * point.Ratio.Y + point.Offset.Y;
                     point.Child.Position = new CCPoint(x, y);
                 }
                 

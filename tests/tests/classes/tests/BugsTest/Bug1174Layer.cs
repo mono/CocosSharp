@@ -156,9 +156,9 @@ namespace tests
             CCPoint hitPoint2 = CCPointExtension.Add(p1, p2_p1_s);
 
             // Since float has rounding errors, only check if diff is < 0.05
-            if ((Math.Abs(hitPoint1.x - hitPoint2.x) > 0.1f) || (Math.Abs(hitPoint1.y - hitPoint2.y) > 0.1f))
+            if ((Math.Abs(hitPoint1.X - hitPoint2.X) > 0.1f) || (Math.Abs(hitPoint1.Y - hitPoint2.Y) > 0.1f))
             {
-                CCLog.Log("ERROR: (%f,%f) != (%f,%f)", hitPoint1.x, hitPoint1.y, hitPoint2.x, hitPoint2.y);
+                CCLog.Log("ERROR: (%f,%f) != (%f,%f)", hitPoint1.X, hitPoint1.Y, hitPoint2.X, hitPoint2.Y);
                 return 1;
             }
 

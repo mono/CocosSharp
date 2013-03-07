@@ -81,7 +81,7 @@ namespace tests
 
             float arrowsWidth = (ArrowsMax - ArrowsMin) * size.Width;
             m_pArrowsBarShouldRetain.ScaleX = (arrowsWidth / m_pArrowsBarShouldRetain.ContentSize.Width);
-            m_pArrowsBarShouldRetain.Position = new CCPoint(((ArrowsMax + ArrowsMin) / 2) * size.Width, m_pLabelShouldRetain.Position.y);
+            m_pArrowsBarShouldRetain.Position = new CCPoint(((ArrowsMax + ArrowsMin) / 2) * size.Width, m_pLabelShouldRetain.Position.Y);
 
             snapArrowsToEdge();
 
@@ -179,10 +179,10 @@ namespace tests
 
             CCSize winSize = CCDirector.SharedDirector.WinSize;
 
-            m_pArrowsShouldRetain.Position = new CCPoint(Math.Max(Math.Min(location.x, ArrowsMax * winSize.Width), ArrowsMin * winSize.Width),
-                                                         m_pArrowsShouldRetain.Position.y);
+            m_pArrowsShouldRetain.Position = new CCPoint(Math.Max(Math.Min(location.X, ArrowsMax * winSize.Width), ArrowsMin * winSize.Width),
+                                                         m_pArrowsShouldRetain.Position.Y);
 
-            float labelWidth = Math.Abs(m_pArrowsShouldRetain.Position.x - m_pLabelShouldRetain.Position.x) * 2;
+            float labelWidth = Math.Abs(m_pArrowsShouldRetain.Position.X - m_pLabelShouldRetain.Position.X) * 2;
 
             m_pLabelShouldRetain.SetWidth(labelWidth);
         }
@@ -190,8 +190,8 @@ namespace tests
         private void snapArrowsToEdge()
         {
             m_pArrowsShouldRetain.Position =
-                new CCPoint(m_pLabelShouldRetain.Position.x + m_pLabelShouldRetain.ContentSize.Width / 2,
-                            m_pLabelShouldRetain.Position.y);
+                new CCPoint(m_pLabelShouldRetain.Position.X + m_pLabelShouldRetain.ContentSize.Width / 2,
+                            m_pLabelShouldRetain.Position.Y);
         }
 
         public override string title()

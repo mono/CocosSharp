@@ -1,4 +1,4 @@
-﻿using FarseerPhysics.Controllers;
+using FarseerPhysics.Controllers;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.TestBed.Framework;
@@ -122,7 +122,7 @@ namespace FarseerPhysics.TestBed.Tests
         {
             //base.Mouse(state, oldState);
             var pos = DrawManager.ScreenToWorld(state.X, state.Y);
-            Vector2 MouseWorld = new Vector2(pos.x, pos.y);
+            Vector2 MouseWorld = new Vector2(pos.X, pos.Y);
 
             //SimpleWind.Position = MouseWorld;
             _simpleWind.Direction = MouseWorld - _simpleWind.Position;

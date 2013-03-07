@@ -341,8 +341,8 @@ namespace cocos2d
                 CCRect rect = fontDef.rect;
                 rect = CCMacros.CCRectanglePixelsToPoints(rect);
 
-                rect.origin.x += m_tImageOffset.x;
-                rect.origin.y += m_tImageOffset.y;
+                rect.Origin.X += m_tImageOffset.X;
+                rect.Origin.Y += m_tImageOffset.Y;
 
                 CCSprite fontChar;
 
@@ -356,7 +356,7 @@ namespace cocos2d
                 else
                 {
                     // reusing fonts
-                    fontChar.SetTextureRect(rect, false, rect.size);
+                    fontChar.SetTextureRect(rect, false, rect.Size);
 
                     // restore to default in case they were modified
                     fontChar.Visible = true;
@@ -365,8 +365,8 @@ namespace cocos2d
 
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
                 int yOffset = m_pConfiguration.m_nCommonHeight - fontDef.yOffset;
-                var fontPos = new CCPoint((float) nextFontPositionX + fontDef.xOffset + fontDef.rect.size.Width * 0.5f + kerningAmount,
-                                          (float) nextFontPositionY + yOffset - rect.size.Height * 0.5f * CCMacros.CCContentScaleFactor());
+                var fontPos = new CCPoint((float) nextFontPositionX + fontDef.xOffset + fontDef.rect.Size.Width * 0.5f + kerningAmount,
+                                          (float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
                 fontChar.Position = CCMacros.CCPointPixelsToPoints(fontPos);
 
                 // update kerning
@@ -644,7 +644,7 @@ namespace cocos2d
                         if (lastChar == null)
                             continue;
 
-                        lineWidth = lastChar.Position.x + lastChar.ContentSize.Width / 2.0f;
+                        lineWidth = lastChar.Position.X + lastChar.ContentSize.Width / 2.0f;
 
                         float shift = 0;
                         switch (m_pAlignment)
@@ -704,12 +704,12 @@ namespace cocos2d
 
         private float GetLetterPosXLeft(CCSprite sp)
         {
-            return sp.Position.x * m_fScaleX - (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.x);
+            return sp.Position.X * m_fScaleX - (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
         }
 
         private float GetLetterPosXRight(CCSprite sp)
         {
-            return sp.Position.x * m_fScaleX + (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.x);
+            return sp.Position.X * m_fScaleX + (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
         }
 
 

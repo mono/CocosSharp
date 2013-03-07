@@ -387,14 +387,14 @@ namespace cocos2d
 
         public float PositionX
         {
-            get { return m_tPosition.x; }
-            set { SetPosition(value, m_tPosition.y); }
+            get { return m_tPosition.X; }
+            set { SetPosition(value, m_tPosition.Y); }
         }
 
         public float PositionY
         {
-            get { return m_tPosition.y; }
-            set { SetPosition(m_tPosition.x, value); }
+            get { return m_tPosition.Y; }
+            set { SetPosition(m_tPosition.X, value); }
         }
 
         public RawList<CCNode> Children
@@ -444,8 +444,8 @@ namespace cocos2d
                 if (!value.Equals(m_tAnchorPoint))
                 {
                     m_tAnchorPoint = value;
-                    m_tAnchorPointInPoints = CCPointExtension.CreatePoint(m_tContentSize.Width * m_tAnchorPoint.x,
-                                                                  m_tContentSize.Height * m_tAnchorPoint.y);
+                    m_tAnchorPointInPoints = CCPointExtension.CreatePoint(m_tContentSize.Width * m_tAnchorPoint.X,
+                                                                  m_tContentSize.Height * m_tAnchorPoint.Y);
                     m_bIsTransformDirty = m_bIsInverseDirty = true;
                 }
             }
@@ -470,8 +470,8 @@ namespace cocos2d
                 if (!CCSize.CCSizeEqualToSize(value, m_tContentSize))
                 {
                     m_tContentSize = value;
-                    m_tAnchorPointInPoints = CCPointExtension.CreatePoint(m_tContentSize.Width * m_tAnchorPoint.x,
-                                                                  m_tContentSize.Height * m_tAnchorPoint.y);
+                    m_tAnchorPointInPoints = CCPointExtension.CreatePoint(m_tContentSize.Width * m_tAnchorPoint.X,
+                                                                  m_tContentSize.Height * m_tAnchorPoint.Y);
                     m_bIsTransformDirty = m_bIsInverseDirty = true;
                 }
             }
@@ -537,14 +537,14 @@ namespace cocos2d
 
         public void GetPosition(out float x, out float y)
         {
-            x = m_tPosition.x;
-            y = m_tPosition.y;
+            x = m_tPosition.X;
+            y = m_tPosition.Y;
         }
 
         public void SetPosition(float x, float y)
         {
-            m_tPosition.x = x;
-            m_tPosition.y = y;
+            m_tPosition.X = x;
+            m_tPosition.Y = y;
             m_bIsTransformDirty = m_bIsInverseDirty = true;
         }
 
@@ -868,18 +868,18 @@ namespace cocos2d
             // XXX: Expensive calls. Camera should be integrated into the cached affine matrix
             if (m_pCamera != null && !(m_pGrid != null && m_pGrid.Active))
             {
-                bool translate = (m_tAnchorPointInPoints.x != 0.0f || m_tAnchorPointInPoints.y != 0.0f);
+                bool translate = (m_tAnchorPointInPoints.X != 0.0f || m_tAnchorPointInPoints.Y != 0.0f);
 
                 if (translate)
                 {
-                    DrawManager.Translate(m_tAnchorPointInPoints.x, m_tAnchorPointInPoints.y, 0);
+                    DrawManager.Translate(m_tAnchorPointInPoints.X, m_tAnchorPointInPoints.Y, 0);
                 }
 
                 m_pCamera.Locate();
 
                 if (translate)
                 {
-                    DrawManager.Translate(-m_tAnchorPointInPoints.x, -m_tAnchorPointInPoints.y, 0);
+                    DrawManager.Translate(-m_tAnchorPointInPoints.X, -m_tAnchorPointInPoints.Y, 0);
                 }
             }
         }
@@ -1093,13 +1093,13 @@ namespace cocos2d
             if (m_bIsTransformDirty)
             {
                 // Translate values
-                float x = m_tPosition.x;
-                float y = m_tPosition.y;
+                float x = m_tPosition.X;
+                float y = m_tPosition.Y;
 
                 if (m_bIgnoreAnchorPointForPosition)
                 {
-                    x += m_tAnchorPointInPoints.x;
-                    y += m_tAnchorPointInPoints.y;
+                    x += m_tAnchorPointInPoints.X;
+                    y += m_tAnchorPointInPoints.Y;
                 }
 
                 // Rotation values
@@ -1118,8 +1118,8 @@ namespace cocos2d
                 // inline anchor point calculation if skew is not needed
                 if (!needsSkewMatrix && !m_tAnchorPointInPoints.Equals(CCPoint.Zero))
                 {
-                    x += c * -m_tAnchorPointInPoints.x * m_fScaleX + -s * -m_tAnchorPointInPoints.y * m_fScaleY;
-                    y += s * -m_tAnchorPointInPoints.x * m_fScaleX + c * -m_tAnchorPointInPoints.y * m_fScaleY;
+                    x += c * -m_tAnchorPointInPoints.X * m_fScaleX + -s * -m_tAnchorPointInPoints.Y * m_fScaleY;
+                    y += s * -m_tAnchorPointInPoints.X * m_fScaleX + c * -m_tAnchorPointInPoints.Y * m_fScaleY;
                 }
 
                 // Build Transform Matrix
@@ -1151,8 +1151,8 @@ namespace cocos2d
                     if (!m_tAnchorPointInPoints.Equals(CCPoint.Zero))
                     {
                         m_tTransform = CCAffineTransform.CCAffineTransformTranslate(m_tTransform,
-                                                                                    -m_tAnchorPointInPoints.x,
-                                                                                    -m_tAnchorPointInPoints.y);
+                                                                                    -m_tAnchorPointInPoints.X,
+                                                                                    -m_tAnchorPointInPoints.Y);
                     }
                 }
 

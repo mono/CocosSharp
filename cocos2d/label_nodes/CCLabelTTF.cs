@@ -248,7 +248,7 @@ namespace cocos2d
             Texture = tex;
 
             CCRect rect = CCRect.Zero;
-            rect.size = m_pobTexture.ContentSize;
+            rect.Size = m_pobTexture.ContentSize;
             SetTextureRect(rect);
         }
     }

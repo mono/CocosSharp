@@ -24,8 +24,8 @@ namespace cocos2d
                 if (!value.Equals(m_position))
                 {
                     m_position = value;
-                    m_positionInPixels.x = value.x * CCDirector.SharedDirector.ContentScaleFactor;
-                    m_positionInPixels.y = value.y * CCDirector.SharedDirector.ContentScaleFactor;
+                    m_positionInPixels.X = value.X * CCDirector.SharedDirector.ContentScaleFactor;
+                    m_positionInPixels.Y = value.Y * CCDirector.SharedDirector.ContentScaleFactor;
                     m_bDirty = true;
                 }
             }
@@ -81,7 +81,7 @@ namespace cocos2d
                     for (j = 0; j < m_sGridSize.Y + 1; ++j)
                     {
                         CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
-                        var vect = new CCPoint(m_positionInPixels.x - v.X, m_positionInPixels.y - v.Y);
+                        var vect = new CCPoint(m_positionInPixels.X - v.X, m_positionInPixels.Y - v.Y);
                         float r = CCPointExtension.Length(vect);
 
                         if (r < m_fRadius)
@@ -96,7 +96,7 @@ namespace cocos2d
                             float l = (float) Math.Log(pre_log) * m_fLensEffect;
                             float new_r = (float) Math.Exp(l) * m_fRadius;
 
-                            if (Math.Sqrt((vect.x * vect.x + vect.y * vect.y)) > 0)
+                            if (Math.Sqrt((vect.X * vect.X + vect.Y * vect.Y)) > 0)
                             {
                                 vect = CCPointExtension.Normalize(vect);
 

@@ -34,8 +34,8 @@ namespace tests
 
             if (IgnoreAnchorPointForPosition)
             {
-                x += m_tAnchorPointInPoints.x;
-                y += m_tAnchorPointInPoints.y;
+                x += m_tAnchorPointInPoints.X;
+                y += m_tAnchorPointInPoints.Y;
             }
 
             // Make matrix
@@ -45,8 +45,8 @@ namespace tests
 
             if (! m_tAnchorPointInPoints.Equals(CCPoint.Zero))
             {
-                x += c * -m_tAnchorPointInPoints.x + -s * -m_tAnchorPointInPoints.y;
-                y += s * -m_tAnchorPointInPoints.x + c * -m_tAnchorPointInPoints.y;
+                x += c * -m_tAnchorPointInPoints.X + -s * -m_tAnchorPointInPoints.Y;
+                y += s * -m_tAnchorPointInPoints.X + c * -m_tAnchorPointInPoints.Y;
             }
 
             // Rot, Translate Matrix
@@ -183,7 +183,7 @@ namespace tests
 
         public void addNewSpriteAtPosition(CCPoint p)
         {
-            CCLog.Log("Add sprite {0} x {1}", p.x, p.y);
+            CCLog.Log("Add sprite {0} x {1}", p.X, p.Y);
             CCNode parent = GetChildByTag(kTagParentNode);
 
             //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
@@ -195,11 +195,11 @@ namespace tests
 
             parent.AddChild(sprite);
 
-            sprite.Position = new CCPoint(p.x, p.y);
+            sprite.Position = new CCPoint(p.X, p.Y);
 
             // Define the dynamic body.
             //Set up a 1m squared box in the physics world
-            Body body = BodyFactory.CreateBody(world, new Vector2(p.x / PTM_RATIO, p.y / PTM_RATIO));
+            Body body = BodyFactory.CreateBody(world, new Vector2(p.X / PTM_RATIO, p.Y / PTM_RATIO));
             body.BodyType = BodyType.Dynamic;
 
             // Define another box shape for our dynamic body.

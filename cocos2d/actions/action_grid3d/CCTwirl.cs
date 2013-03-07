@@ -16,8 +16,8 @@ namespace cocos2d
             set
             {
                 m_position = value;
-                m_positionInPixels.x = value.x * CCDirector.SharedDirector.ContentScaleFactor;
-                m_positionInPixels.y = value.y * CCDirector.SharedDirector.ContentScaleFactor;
+                m_positionInPixels.X = value.X * CCDirector.SharedDirector.ContentScaleFactor;
+                m_positionInPixels.Y = value.Y * CCDirector.SharedDirector.ContentScaleFactor;
             }
         }
 
@@ -82,16 +82,16 @@ namespace cocos2d
                     CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
 
                     var avg = new CCPoint(i - (m_sGridSize.X / 2.0f), j - (m_sGridSize.Y / 2.0f));
-                    var r = (float) Math.Sqrt((avg.x * avg.x + avg.y * avg.y));
+                    var r = (float) Math.Sqrt((avg.X * avg.X + avg.Y * avg.Y));
 
                     float amp = 0.1f * m_fAmplitude * m_fAmplitudeRate;
                     float a = r * (float) Math.Cos((float) Math.PI / 2.0f + time * (float) Math.PI * m_nTwirls * 2) * amp;
 
-                    float dx = (float) Math.Sin(a) * (v.Y - c.y) + (float) Math.Cos(a) * (v.X - c.x);
-                    float dy = (float) Math.Cos(a) * (v.Y - c.y) - (float) Math.Sin(a) * (v.X - c.x);
+                    float dx = (float) Math.Sin(a) * (v.Y - c.Y) + (float) Math.Cos(a) * (v.X - c.X);
+                    float dy = (float) Math.Cos(a) * (v.Y - c.Y) - (float) Math.Sin(a) * (v.X - c.X);
 
-                    v.X = c.x + dx;
-                    v.Y = c.y + dy;
+                    v.X = c.X + dx;
+                    v.Y = c.Y + dy;
 
                     SetVertex(new CCGridSize(i, j), ref v);
                 }

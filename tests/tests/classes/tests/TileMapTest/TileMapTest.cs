@@ -868,7 +868,7 @@ namespace tests
             // if tamara < 96, z=3
             // if tamara < 144,z=2
 
-            int newZ = (int)(4 - (p.y / 48));
+            int newZ = (int)(4 - (p.Y / 48));
             newZ = Math.Max(newZ, 0);
 
             if (m_tamara.ZOrder != newZ)
@@ -929,7 +929,7 @@ namespace tests
             // if tamara < 243,z=2
 
             // -10: customization for this particular sample
-            int newZ = (int)(4 - ((p.y - 10) / 81));
+            int newZ = (int)(4 - ((p.Y - 10) / 81));
             newZ = Math.Max(newZ, 0);
 
             map.ReorderChild(m_tamara, newZ);
@@ -974,7 +974,7 @@ namespace tests
             CCSequence seq = CCSequence.Create(move, back);
             m_tamara.RunAction(CCRepeatForever.Create(seq));
 
-            m_tamara.Position = new CCPoint(m_tamara.Position.x + 100, m_tamara.Position.y + 100);
+            m_tamara.Position = new CCPoint(m_tamara.Position.X + 100, m_tamara.Position.Y + 100);
 
             Schedule(repositionSprite);
         }
@@ -985,7 +985,7 @@ namespace tests
             // map size: 30x30
             CCPoint p = m_tamara.Position;
             p = CCMacros.CCPointPointsToPixels(p);
-            float newZ = -(p.y + 32) / 16;
+            float newZ = -(p.Y + 32) / 16;
             m_tamara.VertexZ = newZ;
         }
 
@@ -1052,7 +1052,7 @@ namespace tests
             // map size: 12x12
             CCPoint p = m_tamara.Position;
             p = CCMacros.CCPointPointsToPixels(p);
-            m_tamara.VertexZ = -((p.y + 81) / 81);
+            m_tamara.VertexZ = -((p.Y + 81) / 81);
         }
 
         public override void OnEnter()
@@ -1601,7 +1601,7 @@ namespace tests
             }
             if (right.Magnitude > 0f)
             {
-                float scale = (1f - right.Direction.y * right.Magnitude);
+                float scale = (1f - right.Direction.Y * right.Magnitude);
                 node.Scale += scale;
                 if (node.Scale < 1f)
                 {

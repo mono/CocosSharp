@@ -93,8 +93,8 @@ namespace tests
             if (_menuIndicator != null)
             {
                 _menuIndicator.Position = new CCPoint(
-                    m_pItemMenu.Position.x + _Items[_CurrentItemIndex].Position.x - _Items[_CurrentItemIndex].ContentSizeInPixels.Width / 2f - _menuIndicator.ContentSizeInPixels.Width / 2f - 5f,
-                    m_pItemMenu.Position.y + _Items[_CurrentItemIndex].Position.y
+                    m_pItemMenu.Position.X + _Items[_CurrentItemIndex].Position.X - _Items[_CurrentItemIndex].ContentSizeInPixels.Width / 2f - _menuIndicator.ContentSizeInPixels.Width / 2f - 5f,
+                    m_pItemMenu.Position.Y + _Items[_CurrentItemIndex].Position.Y
                     );
             }
         }
@@ -104,7 +104,7 @@ namespace tests
             _Items[_CurrentItemIndex].Unselected();
             _CurrentItemIndex = (_CurrentItemIndex + 1) % _Items.Count;
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            m_pItemMenu.Position = (new CCPoint(0, _HomePosition.y + _CurrentItemIndex * LINE_SPACE));
+            m_pItemMenu.Position = (new CCPoint(0, _HomePosition.Y + _CurrentItemIndex * LINE_SPACE));
             s_tCurPos = m_pItemMenu.Position;
             SelectMenuItem();
         }
@@ -116,7 +116,7 @@ namespace tests
                 _CurrentItemIndex = _Items.Count - 1;
             }
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            m_pItemMenu.Position = (new CCPoint(0, _HomePosition.y + _CurrentItemIndex * LINE_SPACE));
+            m_pItemMenu.Position = (new CCPoint(0, _HomePosition.Y + _CurrentItemIndex * LINE_SPACE));
             s_tCurPos = m_pItemMenu.Position;
             SelectMenuItem();
         }
@@ -226,18 +226,18 @@ namespace tests
 
             CCPoint touchLocation = touch.LocationInView;
             touchLocation = CCDirector.SharedDirector.ConvertToGl(touchLocation);
-            float nMoveY = touchLocation.y - m_tBeginPos.y;
+            float nMoveY = touchLocation.Y - m_tBeginPos.Y;
 
             CCPoint curPos = m_pItemMenu.Position;
-            CCPoint nextPos = new CCPoint(curPos.x, curPos.y + nMoveY);
+            CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            if (nextPos.y < 0.0f)
+            if (nextPos.Y < 0.0f)
             {
                 m_pItemMenu.Position = new CCPoint(0, 0);
                 return;
             }
 
-            if (nextPos.y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - winSize.Height))
+            if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - winSize.Height))
             {
                 m_pItemMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - winSize.Height)));
                 return;

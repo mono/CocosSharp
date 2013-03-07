@@ -38,7 +38,7 @@ namespace tests
             CCPoint start = touch.LocationInView;
             start = CCDirector.SharedDirector.ConvertToGl(start);
 
-            CCPoint diff = new CCPoint(s.Width / 2 - start.x, s.Height / 2 - start.y);
+            CCPoint diff = new CCPoint(s.Width / 2 - start.X, s.Height / 2 - start.Y);
             diff = CCPointExtension.Normalize(diff);
 
             CCLayerGradient gradient = (CCLayerGradient)GetChildByTag(1);

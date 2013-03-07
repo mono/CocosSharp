@@ -78,8 +78,8 @@ namespace cocos2d
         /// <returns></returns>
         public CCRect Rect()
         {
-            return new CCRect(m_tPosition.x - m_tContentSize.Width * m_tAnchorPoint.x,
-                              m_tPosition.y - m_tContentSize.Height * m_tAnchorPoint.y,
+            return new CCRect(m_tPosition.X - m_tContentSize.Width * m_tAnchorPoint.X,
+                              m_tPosition.Y - m_tContentSize.Height * m_tAnchorPoint.Y,
                               m_tContentSize.Width,
                               m_tContentSize.Height);
         }

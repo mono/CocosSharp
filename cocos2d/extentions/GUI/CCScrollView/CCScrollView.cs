@@ -147,11 +147,11 @@ namespace cocos2d
                 m_tViewSize = value;
 
                 m_fMaxInset = MaxContainerOffset;
-                m_fMaxInset = new CCPoint(m_fMaxInset.x + m_tViewSize.Width * INSET_RATIO,
-                                          m_fMaxInset.y + m_tViewSize.Height * INSET_RATIO);
+                m_fMaxInset = new CCPoint(m_fMaxInset.X + m_tViewSize.Width * INSET_RATIO,
+                                          m_fMaxInset.Y + m_tViewSize.Height * INSET_RATIO);
                 m_fMinInset = MinContainerOffset;
-                m_fMinInset = new CCPoint(m_fMinInset.x - m_tViewSize.Width * INSET_RATIO,
-                                          m_fMinInset.y - m_tViewSize.Height * INSET_RATIO);
+                m_fMinInset = new CCPoint(m_fMinInset.X - m_tViewSize.Width * INSET_RATIO,
+                                          m_fMinInset.Y - m_tViewSize.Height * INSET_RATIO);
             }
         }
 
@@ -302,8 +302,8 @@ namespace cocos2d
                     CCPoint minOffset = MinContainerOffset;
                     CCPoint maxOffset = MaxContainerOffset;
 
-                    offset.x = Math.Max(minOffset.x, Math.Min(maxOffset.x, offset.x));
-                    offset.y = Math.Max(minOffset.y, Math.Min(maxOffset.y, offset.y));
+                    offset.X = Math.Max(minOffset.X, Math.Min(maxOffset.X, offset.X));
+                    offset.Y = Math.Max(minOffset.Y, Math.Min(maxOffset.Y, offset.Y));
                 }
 
                 m_pContainer.Position = offset;
@@ -412,7 +412,7 @@ namespace cocos2d
             CCSize size = ViewSize;
             float scale = ZoomScale;
 
-            var viewRect = new CCRect(-offset.x / scale, -offset.y / scale, size.Width / scale, size.Height / scale);
+            var viewRect = new CCRect(-offset.X / scale, -offset.Y / scale, size.Width / scale, size.Height / scale);
 
             return viewRect.IntersectsRect(node.BoundingBox);
         }
@@ -476,7 +476,7 @@ namespace cocos2d
             }
 
             CCPoint frameOriginal = Parent.ConvertToWorldSpace(Position);
-            var frame = new CCRect(frameOriginal.x, frameOriginal.y, m_tViewSize.Width, m_tViewSize.Height);
+            var frame = new CCRect(frameOriginal.X, frameOriginal.Y, m_tViewSize.Width, m_tViewSize.Height);
 
             //dispatcher does not know about clipping. reject touches outside visible bounds.
             if (m_pTouches.Count > 2 ||
@@ -526,7 +526,7 @@ namespace cocos2d
 
                     m_bTouchMoved = true;
                     CCPoint frameOriginal = Parent.ConvertToWorldSpace(Position);
-                    var frame = new CCRect(frameOriginal.x, frameOriginal.y, m_tViewSize.Width, m_tViewSize.Height);
+                    var frame = new CCRect(frameOriginal.X, frameOriginal.Y, m_tViewSize.Width, m_tViewSize.Height);
                     CCPoint newPoint = ConvertTouchToNodeSpace(m_pTouches[0]);
                     CCPoint moveDistance = CCPointExtension.Subtract(newPoint, m_tTouchPoint);
                     m_tTouchPoint = newPoint;
@@ -536,10 +536,10 @@ namespace cocos2d
                         switch (m_eDirection)
                         {
                             case CCScrollViewDirection.Vertical:
-                                moveDistance = new CCPoint(0.0f, moveDistance.y);
+                                moveDistance = new CCPoint(0.0f, moveDistance.Y);
                                 break;
                             case CCScrollViewDirection.Horizontal:
-                                moveDistance = new CCPoint(moveDistance.x, 0.0f);
+                                moveDistance = new CCPoint(moveDistance.X, 0.0f);
                                 break;
                         }
 
@@ -550,13 +550,13 @@ namespace cocos2d
 
 
                         //check to see if offset lies within the inset bounds
-                        float newX = Math.Min(m_pContainer.Position.x, maxInset.x);
-                        newX = Math.Max(newX, minInset.x);
-                        float newY = Math.Min(m_pContainer.Position.y, maxInset.y);
-                        newY = Math.Max(newY, minInset.y);
+                        float newX = Math.Min(m_pContainer.Position.X, maxInset.X);
+                        newX = Math.Max(newX, minInset.X);
+                        float newY = Math.Min(m_pContainer.Position.Y, maxInset.Y);
+                        newY = Math.Max(newY, minInset.Y);
 
                         m_tScrollDistance = CCPointExtension.Subtract(moveDistance,
-                                                                    new CCPoint(newX - m_pContainer.Position.x, newY - m_pContainer.Position.y));
+                                                                    new CCPoint(newX - m_pContainer.Position.X, newY - m_pContainer.Position.Y));
                         SetContentOffset(new CCPoint(newX, newY), false);
                     }
                 }
@@ -584,8 +584,8 @@ namespace cocos2d
                     {
                         if (Direction == CCScrollViewDirection.Horizontal)
                         {
-                            var curPage = (int) Math.Round(-Container.Position.x / m_tViewSize.Width);
-                            curPage += (m_tScrollDistance.x > 10) ? -1 : 0 + ((m_tScrollDistance.x < -10) ? 1 : 0);
+                            var curPage = (int) Math.Round(-Container.Position.X / m_tViewSize.Width);
+                            curPage += (m_tScrollDistance.X > 10) ? -1 : 0 + ((m_tScrollDistance.X < -10) ? 1 : 0);
                             curPage = (curPage < 0) ? 0 : curPage;
                             curPage = (curPage > m_uPagesCount - 1) ? m_uPagesCount - 1 : curPage;
 
@@ -594,8 +594,8 @@ namespace cocos2d
 
                         else if (Direction == CCScrollViewDirection.Vertical)
                         {
-                            var curPage = (int) Math.Round(-Container.Position.y / m_tViewSize.Height);
-                            curPage += (m_tScrollDistance.y > 10) ? -1 : 0 + ((m_tScrollDistance.y < -10) ? 1 : 0);
+                            var curPage = (int) Math.Round(-Container.Position.Y / m_tViewSize.Height);
+                            curPage += (m_tScrollDistance.Y > 10) ? -1 : 0 + ((m_tScrollDistance.Y < -10) ? 1 : 0);
                             curPage = (curPage < 0) ? 0 : curPage;
                             curPage = (curPage > m_uPagesCount - 1) ? m_uPagesCount - 1 : curPage;
 
@@ -740,21 +740,21 @@ namespace cocos2d
 
             CCPoint oldPoint = m_pContainer.Position;
 
-            float newX = oldPoint.x;
-            float newY = oldPoint.y;
+            float newX = oldPoint.X;
+            float newY = oldPoint.Y;
             if (m_eDirection == CCScrollViewDirection.Both || m_eDirection == CCScrollViewDirection.Horizontal)
             {
-                newX = Math.Min(newX, max.x);
-                newX = Math.Max(newX, min.x);
+                newX = Math.Min(newX, max.X);
+                newX = Math.Max(newX, min.X);
             }
 
             if (m_eDirection == CCScrollViewDirection.Both || m_eDirection == CCScrollViewDirection.Vertical)
             {
-                newY = Math.Min(newY, max.y);
-                newY = Math.Max(newY, min.y);
+                newY = Math.Min(newY, max.Y);
+                newY = Math.Max(newY, min.Y);
             }
 
-            if (newY != oldPoint.y || newX != oldPoint.x)
+            if (newY != oldPoint.Y || newX != oldPoint.X)
             {
                 SetContentOffset(new CCPoint(newX, newY), animated);
             }
@@ -791,19 +791,19 @@ namespace cocos2d
             }
 
             //check to see if offset lies within the inset bounds
-            float newX = Math.Min(m_pContainer.Position.x, maxInset.x);
-            newX = Math.Max(newX, minInset.x);
-            float newY = Math.Min(m_pContainer.Position.y, maxInset.y);
-            newY = Math.Max(newY, minInset.y);
+            float newX = Math.Min(m_pContainer.Position.X, maxInset.X);
+            newX = Math.Max(newX, minInset.X);
+            float newY = Math.Min(m_pContainer.Position.Y, maxInset.Y);
+            newY = Math.Max(newY, minInset.Y);
 
-            m_tScrollDistance = CCPointExtension.Subtract(m_tScrollDistance, new CCPoint(newX - m_pContainer.Position.x, newY - m_pContainer.Position.y));
+            m_tScrollDistance = CCPointExtension.Subtract(m_tScrollDistance, new CCPoint(newX - m_pContainer.Position.X, newY - m_pContainer.Position.Y));
             m_tScrollDistance = CCPointExtension.Multiply(m_tScrollDistance, SCROLL_DEACCEL_RATE);
             SetContentOffset(new CCPoint(newX, newY), false);
 
-            if ((Math.Abs(m_tScrollDistance.x) <= SCROLL_DEACCEL_DIST &&
-                 Math.Abs(m_tScrollDistance.y) <= SCROLL_DEACCEL_DIST) ||
-                newX == maxInset.x || newX == minInset.x ||
-                newY == maxInset.y || newY == minInset.y)
+            if ((Math.Abs(m_tScrollDistance.X) <= SCROLL_DEACCEL_DIST &&
+                 Math.Abs(m_tScrollDistance.Y) <= SCROLL_DEACCEL_DIST) ||
+                newX == maxInset.X || newX == minInset.X ||
+                newY == maxInset.Y || newY == minInset.Y)
             {
                 Unschedule(DeaccelerateScrolling);
                 RelocateContainer(true);
@@ -855,7 +855,7 @@ namespace cocos2d
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
 
                 DrawManager.ScissorRectEnabled = true;
-                DrawManager.SetScissorInPoints(screenPos.x, winSize.Height - (screenPos.y + m_tViewSize.Height * s), m_tViewSize.Width * s,
+                DrawManager.SetScissorInPoints(screenPos.X, winSize.Height - (screenPos.Y + m_tViewSize.Height * s), m_tViewSize.Width * s,
                                                m_tViewSize.Height * s);
             }
         }
@@ -878,11 +878,11 @@ namespace cocos2d
             if (m_pContainer != null)
             {
                 m_fMaxInset = MaxContainerOffset;
-                m_fMaxInset = new CCPoint(m_fMaxInset.x + m_tViewSize.Width * INSET_RATIO,
-                                          m_fMaxInset.y + m_tViewSize.Height * INSET_RATIO);
+                m_fMaxInset = new CCPoint(m_fMaxInset.X + m_tViewSize.Width * INSET_RATIO,
+                                          m_fMaxInset.Y + m_tViewSize.Height * INSET_RATIO);
                 m_fMinInset = MinContainerOffset;
-                m_fMinInset = new CCPoint(m_fMinInset.x - m_tViewSize.Width * INSET_RATIO,
-                                          m_fMinInset.y - m_tViewSize.Height * INSET_RATIO);
+                m_fMinInset = new CCPoint(m_fMinInset.X - m_tViewSize.Width * INSET_RATIO,
+                                          m_fMinInset.Y - m_tViewSize.Height * INSET_RATIO);
             }
         }
     }

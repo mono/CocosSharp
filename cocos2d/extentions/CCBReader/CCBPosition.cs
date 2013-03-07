@@ -19,30 +19,30 @@ namespace cocos2d
             }
             else if (nType == kCCBPositionType.kCCBPositionTypeRelativeTopLeft)
             {
-                absPt.x = pt.x;
-                absPt.y = containerSize.Height - pt.y;
+                absPt.X = pt.X;
+                absPt.Y = containerSize.Height - pt.Y;
             }
             else if (nType == kCCBPositionType.kCCBPositionTypeRelativeTopRight)
             {
-                absPt.x = containerSize.Width - pt.x;
-                absPt.y = containerSize.Height - pt.y;
+                absPt.X = containerSize.Width - pt.X;
+                absPt.Y = containerSize.Height - pt.Y;
             }
             else if (nType == kCCBPositionType.kCCBPositionTypeRelativeBottomRight)
             {
-                absPt.x = containerSize.Width - pt.x;
-                absPt.y = pt.y;
+                absPt.X = containerSize.Width - pt.X;
+                absPt.Y = pt.Y;
             }
             else if (nType == kCCBPositionType.kCCBPositionTypePercent)
             {
-                absPt.x = (int) (containerSize.Width * pt.x / 100.0f);
-                absPt.y = (int) (containerSize.Height * pt.y / 100.0f);
+                absPt.X = (int) (containerSize.Width * pt.X / 100.0f);
+                absPt.Y = (int) (containerSize.Height * pt.Y / 100.0f);
             }
             else if (nType == kCCBPositionType.kCCBPositionTypeMultiplyResolution)
             {
                 float resolutionScale = CCBReader.ResolutionScale;
 
-                absPt.x = pt.x * resolutionScale;
-                absPt.y = pt.y * resolutionScale;
+                absPt.X = pt.X * resolutionScale;
+                absPt.Y = pt.Y * resolutionScale;
             }
 
             return absPt;

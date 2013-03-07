@@ -1,4 +1,4 @@
-﻿/*
+/*
 * Farseer Physics Engine based on Box2D.XNA port:
 * Copyright (c) 2010 Ian Qvist
 * 
@@ -240,7 +240,7 @@ namespace FarseerPhysics.TestBed.Tests
         public override void Mouse(MouseState state, MouseState oldState)
         {
             var pos = DrawManager.ScreenToWorld(state.X, state.Y);
-            Vector2 position = new Vector2(pos.x, pos.y);
+            Vector2 position = new Vector2(pos.X, pos.Y);
 
             if (state.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released)
             {

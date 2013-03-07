@@ -94,19 +94,19 @@ namespace cocos2d
 
             if (m_eVordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
-                offset.y = offset.y + m_tViewSize.Height / Container.ScaleY - cellSize.Height;
+                offset.Y = offset.Y + m_tViewSize.Height / Container.ScaleY - cellSize.Height;
             }
             startIdx = _indexFromOffset(offset);
 
             if (m_eVordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
-                offset.y -= m_tViewSize.Height / Container.ScaleY;
+                offset.Y -= m_tViewSize.Height / Container.ScaleY;
             }
             else
             {
-                offset.y += m_tViewSize.Height / Container.ScaleY;
+                offset.Y += m_tViewSize.Height / Container.ScaleY;
             }
-            offset.x += m_tViewSize.Width / Container.ScaleX;
+            offset.X += m_tViewSize.Width / Container.ScaleX;
 
             endIdx = _indexFromOffset(offset);
 
@@ -461,7 +461,7 @@ namespace cocos2d
                 if (m_eVordering == CCTableViewVerticalFillOrder.FillTopDown)
                 {
                     CCSize cellSize = m_pDataSource.CellSizeForTable(this);
-                    point.y -= cellSize.Height;
+                    point.Y -= cellSize.Height;
                 }
                 index = _indexFromOffset(point);
                 cell = _cellWithIndex(index);
@@ -488,10 +488,10 @@ namespace cocos2d
             switch (Direction)
             {
                 case CCScrollViewDirection.Horizontal:
-                    index = (int) (offset.x / cellSize.Width);
+                    index = (int) (offset.X / cellSize.Width);
                     break;
                 default:
-                    index = (int) (offset.y / cellSize.Height);
+                    index = (int) (offset.Y / cellSize.Height);
                     break;
             }
 
@@ -506,7 +506,7 @@ namespace cocos2d
             CCSize cellSize = m_pDataSource.CellSizeForTable(this);
             if (m_eVordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
-                offset.y = Container.ContentSize.Height - offset.y - cellSize.Height;
+                offset.Y = Container.ContentSize.Height - offset.Y - cellSize.Height;
             }
             index = Math.Max(0, __indexFromOffset(offset));
             index = Math.Min(index, maxIdx);
@@ -540,7 +540,7 @@ namespace cocos2d
             CCSize cellSize = m_pDataSource.CellSizeForTable(this);
             if (m_eVordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
-                offset.y = Container.ContentSize.Height - offset.y - cellSize.Height;
+                offset.Y = Container.ContentSize.Height - offset.Y - cellSize.Height;
             }
             return offset;
         }
@@ -572,7 +572,7 @@ namespace cocos2d
                 }
                 else
                 {
-                    SetContentOffset(new CCPoint(0, MinContainerOffset.y));
+                    SetContentOffset(new CCPoint(0, MinContainerOffset.Y));
                 }
                 m_eOldDirection = m_eDirection;
             }

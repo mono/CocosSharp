@@ -674,7 +674,7 @@ namespace cocos2d
                     {
                         CCPoint local = pChild.ConvertToNodeSpace(touchLocation);
                         CCRect r = pChild.Rect();
-                        r.origin = CCPoint.Zero;
+                        r.Origin = CCPoint.Zero;
 
                         if (r.ContainsPoint(local))
                         {

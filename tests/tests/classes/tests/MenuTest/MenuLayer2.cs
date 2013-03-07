@@ -54,7 +54,7 @@ namespace tests
                     // TIP: if no padding, padding = 5
                     menu.AlignItemsHorizontally();
                     CCPoint p = menu.Position;
-                    menu.Position = new CCPoint(p.x + 0, p.y + 30);
+                    menu.Position = new CCPoint(p.X + 0, p.Y + 30);
 
                 }
                 else
@@ -62,7 +62,7 @@ namespace tests
                     // TIP: but padding is configurable
                     menu.AlignItemsHorizontallyWithPadding(40);
                     CCPoint p = menu.Position;
-                    menu.Position = new CCPoint(p.x - 0, p.y - 30);
+                    menu.Position = new CCPoint(p.X - 0, p.Y - 30);
                 }
             }
         }
@@ -77,14 +77,14 @@ namespace tests
                     // TIP: if no padding, padding = 5
                     menu.AlignItemsVertically();
                     CCPoint p = menu.Position;
-                    menu.Position = new CCPoint(p.x + 100, p.y);
+                    menu.Position = new CCPoint(p.X + 100, p.Y);
                 }
                 else
                 {
                     // TIP: but padding is configurable
                     menu.AlignItemsVerticallyWithPadding(40);
                     CCPoint p = menu.Position;
-                    menu.Position = new CCPoint(p.x - 100, p.y);
+                    menu.Position = new CCPoint(p.X - 100, p.Y);
                 }
             }
         }

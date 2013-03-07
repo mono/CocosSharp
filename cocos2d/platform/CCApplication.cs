@@ -378,8 +378,8 @@ namespace cocos2d
 
         private CCPoint TransformPoint(float x, float y) {
             CCPoint newPoint;
-            newPoint.x = x * TouchPanel.DisplayWidth / Game.Window.ClientBounds.Width;
-            newPoint.y = y * TouchPanel.DisplayHeight / Game.Window.ClientBounds.Height;
+            newPoint.X = x * TouchPanel.DisplayWidth / Game.Window.ClientBounds.Width;
+            newPoint.Y = y * TouchPanel.DisplayHeight / Game.Window.ClientBounds.Height;
             return newPoint;
         }
 
@@ -465,7 +465,7 @@ namespace cocos2d
                             {
                                 pos = DrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
 
-                                m_pTouches.AddLast(new CCTouch(touch.Id, pos.x, pos.y));
+                                m_pTouches.AddLast(new CCTouch(touch.Id, pos.X, pos.Y));
                                 m_pTouchMap.Add(touch.Id, m_pTouches.Last);
                                 newTouches.Add(m_pTouches.Last.Value);
                             }
@@ -480,7 +480,7 @@ namespace cocos2d
                                 if (delta.LengthSQ > 1.0f)
                                 {
                                     movedTouches.Add(existingTouch.Value);
-                                    existingTouch.Value.SetTouchInfo(touch.Id, pos.x, pos.y);
+                                    existingTouch.Value.SetTouchInfo(touch.Id, pos.X, pos.Y);
                                 }
                             }
                             break;

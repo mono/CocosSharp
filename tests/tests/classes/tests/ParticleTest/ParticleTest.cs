@@ -406,7 +406,7 @@ namespace tests
 
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_fire); //.pvr"];
             CCPoint p = m_emitter.Position;
-            m_emitter.Position = new CCPoint(p.x, 100);
+            m_emitter.Position = new CCPoint(p.X, 100);
 
             setEmitterPosition();
         }
@@ -743,7 +743,7 @@ namespace tests
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_fire);
 
             CCPoint p = m_emitter.Position;
-            m_emitter.Position = new CCPoint(p.x, 100);
+            m_emitter.Position = new CCPoint(p.X, 100);
 
             setEmitterPosition();
         }
@@ -765,7 +765,7 @@ namespace tests
             m_background.AddChild(m_emitter, 10);
 
             CCPoint p = m_emitter.Position;
-            m_emitter.Position = new CCPoint(p.x, p.y - 110);
+            m_emitter.Position = new CCPoint(p.X, p.Y - 110);
             m_emitter.Life = 3;
             m_emitter.LifeVar = 1;
 
@@ -805,7 +805,7 @@ namespace tests
             m_background.AddChild(m_emitter, 10);
 
             CCPoint p = m_emitter.Position;
-            m_emitter.Position = new CCPoint(p.x, p.y - 100);
+            m_emitter.Position = new CCPoint(p.X, p.Y - 100);
             m_emitter.Life = 4;
 
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_fire);

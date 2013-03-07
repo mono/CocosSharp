@@ -47,10 +47,10 @@ namespace cocos2d
 
             if (m_bBoundarySet)
             {
-                m_fLeftBoundary = -((rect.origin.x + rect.size.Width) - m_obFullScreenSize.x);
-                m_fRightBoundary = -rect.origin.x;
-                m_fTopBoundary = -rect.origin.y;
-                m_fBottomBoundary = -((rect.origin.y + rect.size.Height) - m_obFullScreenSize.y);
+                m_fLeftBoundary = -((rect.Origin.X + rect.Size.Width) - m_obFullScreenSize.X);
+                m_fRightBoundary = -rect.Origin.X;
+                m_fTopBoundary = -rect.Origin.Y;
+                m_fBottomBoundary = -((rect.Origin.Y + rect.Size.Height) - m_obFullScreenSize.Y);
 
                 if (m_fRightBoundary < m_fLeftBoundary)
                 {
@@ -107,8 +107,8 @@ namespace cocos2d
                 CCPoint tempPos = CCPointExtension.Subtract(m_obHalfScreenSize, m_pobFollowedNode.Position);
 
                 m_pTarget.Position = new CCPoint(
-                    MathHelper.Clamp(tempPos.x, m_fLeftBoundary, m_fRightBoundary),
-                    MathHelper.Clamp(tempPos.y, m_fBottomBoundary, m_fTopBoundary)
+                    MathHelper.Clamp(tempPos.X, m_fLeftBoundary, m_fRightBoundary),
+                    MathHelper.Clamp(tempPos.Y, m_fBottomBoundary, m_fTopBoundary)
                     );
             }
             else

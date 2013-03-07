@@ -113,8 +113,8 @@ namespace cocos2d
             get { return m_tMidpoint; }
             set
             {
-                m_tMidpoint.x = MathHelper.Clamp(value.x, 0, 1);
-                m_tMidpoint.y = MathHelper.Clamp(value.y, 0, 1);
+                m_tMidpoint.X = MathHelper.Clamp(value.X, 0, 1);
+                m_tMidpoint.Y = MathHelper.Clamp(value.Y, 0, 1);
             }
         }
 
@@ -288,11 +288,11 @@ namespace cocos2d
             //  Fix bug #1303 so that progress timer handles sprite frame texture rotation
             if (m_pSprite.IsTextureRectRotated)
             {
-                float tmp = alpha.x;
-                alpha.x = alpha.y;
-                alpha.y = tmp;
+                float tmp = alpha.X;
+                alpha.X = alpha.Y;
+                alpha.Y = tmp;
             }
-            return new CCTex2F(min.x * (1f - alpha.x) + max.x * alpha.x, min.y * (1f - alpha.y) + max.y * alpha.y);
+            return new CCTex2F(min.X * (1f - alpha.X) + max.X * alpha.X, min.Y * (1f - alpha.Y) + max.Y * alpha.Y);
         }
 
         protected CCVertex3F VertexFromAlphaPoint(CCPoint alpha)
@@ -309,8 +309,8 @@ namespace cocos2d
             var min = new CCPoint(quad.BottomLeft.Vertices.X, quad.BottomLeft.Vertices.Y);
             var max = new CCPoint(quad.TopRight.Vertices.X, quad.TopRight.Vertices.Y);
 
-            ret.X = min.x * (1f - alpha.x) + max.x * alpha.x;
-            ret.Y = min.y * (1f - alpha.y) + max.y * alpha.y;
+            ret.X = min.X * (1f - alpha.X) + max.X * alpha.X;
+            ret.Y = min.Y * (1f - alpha.Y) + max.Y * alpha.Y;
 
             return ret;
         }
@@ -340,33 +340,33 @@ namespace cocos2d
             float alpha = m_fPercentage / 100.0f;
             CCPoint alphaOffset =
                 CCPointExtension.Multiply(
-                    new CCPoint(1.0f * (1.0f - m_tBarChangeRate.x) + alpha * m_tBarChangeRate.x,
-                                1.0f * (1.0f - m_tBarChangeRate.y) + alpha * m_tBarChangeRate.y), 0.5f);
+                    new CCPoint(1.0f * (1.0f - m_tBarChangeRate.X) + alpha * m_tBarChangeRate.X,
+                                1.0f * (1.0f - m_tBarChangeRate.Y) + alpha * m_tBarChangeRate.Y), 0.5f);
             CCPoint min = CCPointExtension.Subtract(m_tMidpoint, alphaOffset);
             CCPoint max = CCPointExtension.Add(m_tMidpoint, alphaOffset);
 
-            if (min.x < 0f)
+            if (min.X < 0f)
             {
-                max.x += -min.x;
-                min.x = 0f;
+                max.X += -min.X;
+                min.X = 0f;
             }
 
-            if (max.x > 1f)
+            if (max.X > 1f)
             {
-                min.x -= max.x - 1f;
-                max.x = 1f;
+                min.X -= max.X - 1f;
+                max.X = 1f;
             }
 
-            if (min.y < 0f)
+            if (min.Y < 0f)
             {
-                max.y += -min.y;
-                min.y = 0f;
+                max.Y += -min.Y;
+                min.Y = 0f;
             }
 
-            if (max.y > 1f)
+            if (max.Y > 1f)
             {
-                min.y -= max.y - 1f;
-                max.y = 1f;
+                min.Y -= max.Y - 1f;
+                max.Y = 1f;
             }
 
 
@@ -378,20 +378,20 @@ namespace cocos2d
                     m_pVertexData = new CCV3F_C4B_T2F[m_nVertexDataCount];
                 }
                 //    TOPLEFT
-                m_pVertexData[0].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, max.y));
-                m_pVertexData[0].Vertices = VertexFromAlphaPoint(new CCPoint(min.x, max.y));
+                m_pVertexData[0].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, max.Y));
+                m_pVertexData[0].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, max.Y));
 
                 //    BOTLEFT
-                m_pVertexData[1].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, min.y));
-                m_pVertexData[1].Vertices = VertexFromAlphaPoint(new CCPoint(min.x, min.y));
+                m_pVertexData[1].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, min.Y));
+                m_pVertexData[1].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, min.Y));
 
                 //    TOPRIGHT
-                m_pVertexData[2].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, max.y));
-                m_pVertexData[2].Vertices = VertexFromAlphaPoint(new CCPoint(max.x, max.y));
+                m_pVertexData[2].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, max.Y));
+                m_pVertexData[2].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, max.Y));
 
                 //    BOTRIGHT
-                m_pVertexData[3].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, min.y));
-                m_pVertexData[3].Vertices = VertexFromAlphaPoint(new CCPoint(max.x, min.y));
+                m_pVertexData[3].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, min.Y));
+                m_pVertexData[3].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, min.Y));
             }
             else
             {
@@ -418,20 +418,20 @@ namespace cocos2d
                 }
 
                 //    TOPRIGHT 1
-                m_pVertexData[2].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, max.y));
-                m_pVertexData[2].Vertices = VertexFromAlphaPoint(new CCPoint(min.x, max.y));
+                m_pVertexData[2].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, max.Y));
+                m_pVertexData[2].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, max.Y));
 
                 //    BOTRIGHT 1
-                m_pVertexData[3].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.x, min.y));
-                m_pVertexData[3].Vertices = VertexFromAlphaPoint(new CCPoint(min.x, min.y));
+                m_pVertexData[3].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, min.Y));
+                m_pVertexData[3].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, min.Y));
 
                 //    TOPLEFT 2
-                m_pVertexData[4].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, max.y));
-                m_pVertexData[4].Vertices = VertexFromAlphaPoint(new CCPoint(max.x, max.y));
+                m_pVertexData[4].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, max.Y));
+                m_pVertexData[4].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, max.Y));
 
                 //    BOTLEFT 2
-                m_pVertexData[5].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.x, min.y));
-                m_pVertexData[5].Vertices = VertexFromAlphaPoint(new CCPoint(max.x, min.y));
+                m_pVertexData[5].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, min.Y));
+                m_pVertexData[5].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, min.Y));
             }
             UpdateColor();
         }
@@ -458,7 +458,7 @@ namespace cocos2d
             //    We find the vector to do a hit detection based on the percentage
             //    We know the first vector is the one @ 12 o'clock (top,mid) so we rotate
             //    from that by the progress angle around the m_tMidpoint pivot
-            var topMid = new CCPoint(m_tMidpoint.x, 1f);
+            var topMid = new CCPoint(m_tMidpoint.X, 1f);
             CCPoint percentagePt = CCPointExtension.RotateByAngle(topMid, m_tMidpoint, angle);
 
 
@@ -498,11 +498,11 @@ namespace cocos2d
                     //    Let's deal with that here by finding the correct endpoints
                     if (i == 0)
                     {
-                        edgePtB = CCPointExtension.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.x);
+                        edgePtB = CCPointExtension.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.X);
                     }
                     else if (i == 4)
                     {
-                        edgePtA = CCPointExtension.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.x);
+                        edgePtA = CCPointExtension.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.X);
                     }
 
                     //    s and t are returned by ccpLineIntersect

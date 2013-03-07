@@ -57,13 +57,13 @@ namespace cocos2d
             // convert to Tex coords
 
             var rect = new CCRect(
-                pointRect.origin.x * CCMacros.CCContentScaleFactor(),
-                pointRect.origin.y * CCMacros.CCContentScaleFactor(),
-                pointRect.size.Width * CCMacros.CCContentScaleFactor(),
-                pointRect.size.Height * CCMacros.CCContentScaleFactor());
+                pointRect.Origin.X * CCMacros.CCContentScaleFactor(),
+                pointRect.Origin.Y * CCMacros.CCContentScaleFactor(),
+                pointRect.Size.Width * CCMacros.CCContentScaleFactor(),
+                pointRect.Size.Height * CCMacros.CCContentScaleFactor());
 
-            float wide = pointRect.size.Width;
-            float high = pointRect.size.Height;
+            float wide = pointRect.Size.Width;
+            float high = pointRect.Size.Height;
 
             if (m_pTexture != null)
             {
@@ -77,10 +77,10 @@ namespace cocos2d
     float right = left + (rect.size.width*2-2) / (wide*2);
     float top = bottom + (rect.size.height*2-2) / (high*2);
         #else
-            float left = rect.origin.x / wide;
-            float bottom = rect.origin.y / high;
-            float right = left + rect.size.Width / wide;
-            float top = bottom + rect.size.Height / high;
+            float left = rect.Origin.X / wide;
+            float bottom = rect.Origin.Y / high;
+            float right = left + rect.Size.Width / wide;
+            float top = bottom + rect.Size.Height / high;
 #endif
             // ! CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
 
@@ -162,8 +162,8 @@ namespace cocos2d
 
             if (m_ePositionType == CCPositionType.kCCPositionTypeFree || m_ePositionType == CCPositionType.kCCPositionTypeRelative)
             {
-                newPosition.x = particle.pos.x - (s_currentPosition.x - particle.startPos.x);
-                newPosition.y = particle.pos.y - (s_currentPosition.y - particle.startPos.y);
+                newPosition.X = particle.pos.X - (s_currentPosition.X - particle.startPos.X);
+                newPosition.Y = particle.pos.Y - (s_currentPosition.Y - particle.startPos.Y);
             }
             else
             {
@@ -174,8 +174,8 @@ namespace cocos2d
             // don't update the particle with the new position information, it will interfere with the radius and tangential calculations
             if (m_pBatchNode != null)
             {
-                newPosition.x += m_tPosition.x;
-                newPosition.y += m_tPosition.y;
+                newPosition.X += m_tPosition.X;
+                newPosition.Y += m_tPosition.Y;
             }
 
             CCColor4B color;
@@ -209,8 +209,8 @@ namespace cocos2d
 
                 float x2 = size_2;
                 float y2 = size_2;
-                float x = newPosition.x;
-                float y = newPosition.y;
+                float x = newPosition.X;
+                float y = newPosition.Y;
 
                 float r = -MathHelper.ToRadians(particle.rotation);
                 float cr = MHelper.Cos(r);
@@ -243,20 +243,20 @@ namespace cocos2d
             else
             {
                 // bottom-left vertex:
-                quad.BottomLeft.Vertices.X = newPosition.x - size_2;
-                quad.BottomLeft.Vertices.Y = newPosition.y - size_2;
+                quad.BottomLeft.Vertices.X = newPosition.X - size_2;
+                quad.BottomLeft.Vertices.Y = newPosition.Y - size_2;
 
                 // bottom-right vertex:
-                quad.BottomRight.Vertices.X = newPosition.x + size_2;
-                quad.BottomRight.Vertices.Y = newPosition.y - size_2;
+                quad.BottomRight.Vertices.X = newPosition.X + size_2;
+                quad.BottomRight.Vertices.Y = newPosition.Y - size_2;
 
                 // top-left vertex:
-                quad.TopLeft.Vertices.X = newPosition.x - size_2;
-                quad.TopLeft.Vertices.Y = newPosition.y + size_2;
+                quad.TopLeft.Vertices.X = newPosition.X - size_2;
+                quad.TopLeft.Vertices.Y = newPosition.Y + size_2;
 
                 // top-right vertex:
-                quad.TopRight.Vertices.X = newPosition.x + size_2;
-                quad.TopRight.Vertices.Y = newPosition.y + size_2;
+                quad.TopRight.Vertices.X = newPosition.X + size_2;
+                quad.TopRight.Vertices.Y = newPosition.Y + size_2;
             }
         }
 

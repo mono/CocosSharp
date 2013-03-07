@@ -65,10 +65,10 @@ namespace tests
                 var d = (int) distance;
                 for (int i = 0; i < d; i++)
                 {
-                    float difx = end.x - start.x;
-                    float dify = end.y - start.y;
+                    float difx = end.X - start.X;
+                    float dify = end.Y - start.Y;
                     float delta = i / distance;
-                    m_pBrush.Position = new CCPoint(start.x + (difx * delta), start.y + (dify * delta));
+                    m_pBrush.Position = new CCPoint(start.X + (difx * delta), start.Y + (dify * delta));
                     m_pBrush.Rotation = Random.Next() % 360;
                     float r = (Random.Next() % 50 / 50f) + 0.25f;
                     m_pBrush.Scale = r;

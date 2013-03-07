@@ -55,14 +55,14 @@ namespace cocos2d
             if (m_pTarget != null)
             {
                 float xa = 0;
-                float xb = m_sConfig.ControlPoint1.x;
-                float xc = m_sConfig.ControlPoint2.x;
-                float xd = m_sConfig.EndPosition.x;
+                float xb = m_sConfig.ControlPoint1.X;
+                float xc = m_sConfig.ControlPoint2.X;
+                float xd = m_sConfig.EndPosition.X;
 
                 float ya = 0;
-                float yb = m_sConfig.ControlPoint1.y;
-                float yc = m_sConfig.ControlPoint2.y;
-                float yd = m_sConfig.EndPosition.y;
+                float yb = m_sConfig.ControlPoint1.Y;
+                float yc = m_sConfig.ControlPoint2.Y;
+                float yd = m_sConfig.EndPosition.Y;
 
                 float x = Bezierat(xa, xb, xc, xd, time);
                 float y = Bezierat(ya, yb, yc, yd, time);
