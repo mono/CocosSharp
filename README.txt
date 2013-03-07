@@ -1,5 +1,4 @@
-This is a fork of github.com/totallyevil/cocos2d-xna into the Mono Organization.  The
-cocos2d-xna project is a divergent repository from the cocos2d/cocos2d-x-for-xna repository 
+This is a divergent repository from the cocos2d/cocos2d-x-for-xna repository 
 that was originally created for XNA but was later abandoned.
 
 We are as of February 2013 actively working on this tree.
