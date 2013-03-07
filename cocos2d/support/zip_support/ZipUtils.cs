@@ -54,7 +54,7 @@ namespace cocos2d
         /// <param name="inLength"></param>
         /// <param name="parameterout"></param>
         /// <returns></returns>
-        public static int ccInflateMemory(byte[] parameterin, uint inLength, byte[] parameterout)
+        public static int InflateMemory(byte[] parameterin, uint inLength, byte[] parameterout)
         {
             // 256k for hint
             //return ccInflateMemoryWithHint(parameterin, inLength, out, 256 * 1024);
@@ -71,7 +71,7 @@ namespace cocos2d
         *
         @since v1.0.0
         */
-        public static int ccInflateMemoryWithHint(byte[] parameterin, int inLength, byte[] parameterout, int outLenghtHint)
+        public static int InflateMemoryWithHint(byte[] parameterin, int inLength, byte[] parameterout, int outLenghtHint)
         {
             throw new NotImplementedException();
         }
@@ -82,7 +82,7 @@ namespace cocos2d
         *
         * @since v0.99.5
         */
-        public static int ccInflateGZipFile(char filename, byte[] parameterout)
+        public static int InflateGZipFile(char filename, byte[] parameterout)
         {
             throw new NotImplementedException();
         }
@@ -93,12 +93,12 @@ namespace cocos2d
         *
         * @since v0.99.5
         */
-        public static int ccInflateCCZFile(string filename, byte[] parameterout)
+        public static int InflateCCZFile(string filename, byte[] parameterout)
         {
             throw new NotImplementedException();
         }
 
-        private static int ccInflateMemoryWithHint(byte[] parameterin, uint inLength, byte[] parameterout, uint[] outLength,
+        private static int InflateMemoryWithHint(byte[] parameterin, uint inLength, byte[] parameterout, uint[] outLength,
                  uint outLenghtHint)
         {
             //    /* ret value */
