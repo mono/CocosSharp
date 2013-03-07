@@ -10,9 +10,9 @@ namespace cocos2d
         //! numbers of tiles to render
         protected int m_nItemsToRender;
         protected Dictionary<CCGridSize, int> m_pPosToAtlasIndex;
-        private tImageTGA m_pTGAInfo;
+        private ImageTGA m_pTGAInfo;
 
-        public tImageTGA TGAInfo
+        public ImageTGA TGAInfo
         {
             get { return m_pTGAInfo; }
             set { m_pTGAInfo = value; }
@@ -84,7 +84,7 @@ namespace cocos2d
         {
             Debug.Assert(!string.IsNullOrEmpty(file), "file must be non-nil");
 
-            m_pTGAInfo = tImageTGA.tgaLoad(CCFileUtils.FullPathFromRelativePath(file));
+            m_pTGAInfo = ImageTGA.Load(CCFileUtils.FullPathFromRelativePath(file));
         }
 
         private void CalculateItemsToRender()
