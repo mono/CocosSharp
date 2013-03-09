@@ -51,20 +51,28 @@ namespace tests
 	{
 		private Game1 game;
 
-		public override void FinishedLaunching (NSApplication app)
+		public override void FinishedLaunching (MonoMac.Foundation.NSObject notification)
 		{
 			// Fun begins..
 			game = new Game1();
 			game.Run();
 		}
-		
+
+		public override bool ApplicationShouldTerminateAfterLastWindowClosed (NSApplication sender)
+		{
+			return true;
+		}
+
 		// This is the main entry point of the application.
 		static void Main (string[] args)
 		{
+			NSApplication.Init ();
 			
-			// if you want to use a different Application Delegate class from "AppDelegate"
-			// you can specify it here.
-			NSApplication.Main (args, null, "AppDelegate");
+			using (var p = new NSAutoreleasePool ()) {
+				NSApplication.SharedApplication.Delegate = new Program();
+				NSApplication.Main(args);
+			}
+			
 		}
 	}
 	#endif
