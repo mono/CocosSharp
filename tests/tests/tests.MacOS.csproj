@@ -1,0 +1,1492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}</ProjectGuid>
+    <ProjectTypeGuids>{948B3504-5B70-4649-8FE4-BDE1FB46EC69};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>tests</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG; MONOMAC</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <EnableCodeSigning>false</EnableCodeSigning>
+    <CreatePackage>false</CreatePackage>
+    <EnablePackageSigning>false</EnablePackageSigning>
+    <IncludeMonoRuntime>false</IncludeMonoRuntime>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>MONOMAC</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <EnableCodeSigning>false</EnableCodeSigning>
+    <CreatePackage>false</CreatePackage>
+    <EnablePackageSigning>false</EnablePackageSigning>
+    <IncludeMonoRuntime>false</IncludeMonoRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="MonoMac" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="classes\AppDelegate.cs" />
+    <Compile Include="classes\controller.cs" />
+    <Compile Include="classes\test.cs" />
+    <Compile Include="classes\testBasic.cs" />
+    <Compile Include="classes\testResource.cs" />
+    <Compile Include="classes\tests\AccelerometerTest\AccelerometerTest.cs" />
+    <Compile Include="classes\tests\ActionManagerTest\ActionManagerTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ActionManagerTest\ActionManagerTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ActionManagerTest\CrashTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ActionManagerTest\LogicTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ActionManagerTest\PauseTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ActionManagerTest\RemoveTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ActionManagerTest\ResumeTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ActionsEaseTest\EaseActionsTest.cs" />
+    <Compile Include="classes\tests\ActionsProgressTest\ProgressActionsTestScene.cs" />
+    <Compile Include="classes\tests\ActionsProgressTest\SpriteDemo.cs" />
+    <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressBarTintAndFade.cs" />
+    <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressBarVarious.cs" />
+    <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressToHorizontal.cs" />
+    <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressToRadial.cs" />
+    <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressToRadialMidpointChanged.cs" />
+    <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressToVertical.cs" />
+    <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressWithSpriteFrame.cs" />
+    <Compile Include="classes\tests\ActionsTest\ActionsTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\Box2DTestBet\Box2dTestBedScene.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Box2DView.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\DebugViewXNA.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Collision.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Distance.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\DynamicTree.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\DynamicTreeBroadPhase.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\IBroadPhase.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\QuadTree.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\QuadTreeBroadPhase.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Shapes\CircleShape.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Shapes\EdgeShape.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Shapes\LoopShape.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Shapes\PolygonShape.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Shapes\Shape.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\TimeOfImpact.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\ConvexHull\ChainHull.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\ConvexHull\GiftWrap.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\ConvexHull\Melkman.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\BayazitDecomposer.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDTDecomposer.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\DelaunayTriangle.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\AdvancingFront.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\AdvancingFrontNode.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\DTSweep.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\DTSweepConstraint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\DTSweepContext.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\DTSweepPointComparator.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Delaunay\Sweep\PointOnEdgeException.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\ITriangulatable.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Orientation.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Polygon\Polygon.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Polygon\PolygonPoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Polygon\PolygonSet.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Sets\ConstrainedPointSet.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Sets\PointSet.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\TriangulationConstraint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\TriangulationContext.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\TriangulationMode.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\TriangulationPoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\TriangulationUtil.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Util\FixedArray3.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Util\FixedBitArray3.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Util\PointGenerator.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\CDT\Util\PolygonGenerator.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\EarclipDecomposer.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\FlipcodeDecomposer.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Decomposition\SeidelDecomposer.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\FixedArray.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\HashSet.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\LineTools.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Math.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Path.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PathManager.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PhysicsLogic\Explosion.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PhysicsLogic\PhysicsLogic.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PolygonManipulation\CuttingTools.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PolygonManipulation\SimplifyTools.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PolygonManipulation\YuPengClipper.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\PolygonTools.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Serialization.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\TextureTools\MarchingSquares.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\TextureTools\MSTerrain.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\TextureTools\TextureConverter.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Common\Vertices.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\AbstractForceController.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\BuoyancyController.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\Controller.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\GravityController.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\SimpleWindForce.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Controllers\VelocityLimitController.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\DebugView.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Body.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\BreakableBody.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\ContactManager.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Contacts\Contact.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Contacts\ContactSolver.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Fixture.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Island.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\AngleJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\DistanceJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedAngleJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedDistanceJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedFrictionJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedLineJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedMouseJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedPrismaticJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FixedRevoluteJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\FrictionJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\GearJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\Joint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\LineJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\PrismaticJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\PulleyJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\RevoluteJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\RopeJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\SliderJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\Joints\WeldJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\TimeStep.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\World.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Dynamics\WorldCallbacks.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Factories\BodyFactory.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Factories\FixtureFactory.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Factories\JointFactory.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Factories\LinkFactory.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Settings.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\MenuLayer.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Test.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\AngleJointTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\ApplyForceTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\BodyTypesTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\BreakableTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\BridgeTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\BulletTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\BuoyancyTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\CantileverTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\CarTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\ChainTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\CharacterCollisionTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\CircleBenchmarkTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\CirclePenetrationTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\CloneTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\CollisionFilteringTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\CollisionProcessingTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\CompoundShapes.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\ConfinedTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\ContinuousTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\ControllerTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\ConvexHullTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\CuttingTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\DeletionTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\DestructibleTerrainMSTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\DestructibleTerrainYuPengTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\DistanceTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\DominosTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\DynamicTreeTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\EdgeShapeBenchmark.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\EdgeShapesTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\EdgeTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\ExplosionTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\GearsTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\LineJointTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\LockTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\OneSidedPlatformTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\PathTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\PinballTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\PolyCollisionTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\PolyShapesTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\PrismaticTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\PulleysTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\PyramidTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\QuadTreeTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\RaycastTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\RevoluteTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\RopeTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\RoundedRectangle.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\SensorTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\SerializationTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\ShapeEditingTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\SimpleWindForceTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\SliderCrankTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\SliderJointTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\SphereStackTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\TestEntries.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\TextureVerticesTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\TheoJansenTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\TilesTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\TimeOfImpactTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\Tumbler.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\VaryingFrictionTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\VaryingRestitutionTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\VerticalStackTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\WebTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet\Tests\YuPengPolygonTest.cs" />
+    <Compile Include="classes\tests\Box2DTest\Box2DTest.cs" />
+    <Compile Include="classes\tests\BugsTest\Bug-458\Bug-458.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\Bug-458\QuestionContainerSprite.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\Bug1159Layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\Bug1174Layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\Bug350Layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\Bug422Layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\Bug624Layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\Bug886Layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\Bug899Layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\Bug914Layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\BugsTestBaseLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\BugsTestMainLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\BugsTest\BugsTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ClickAndMoveTest\ClickAndMoveTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\CocosDenshionTest\CocosDenshionTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\DeviceTest\OrientationTest.cs" />
+    <Compile Include="classes\tests\DrawPrimitivesTest\DrawPrimitivesTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\DrawPrimitivesTest\DrawPrimitivesTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsAdvancedTest\Effect1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsAdvancedTest\Effect2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsAdvancedTest\Effect3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsAdvancedTest\Effect4.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsAdvancedTest\Effect5.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsAdvancedTest\EffectAdvanceScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsAdvancedTest\EffectAdvanceTextLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsAdvancedTest\Issue631.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\EffectTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\FadeOutBLTilesDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\FadeOutDownTilesDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\FadeOutTRTilesDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\FadeOutUpTilesDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\FlipX3DDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\FlipY3DDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\JumpTiles3DDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\Lens3DDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\LiquidDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\PageTurn3DDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\Ripple3DDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\Shaky3DDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\ShakyTiles3DDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\ShatteredTiles3DDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\ShuffleTilesDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\SplitColsDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\SplitRowsDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\TextLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\TurnOffTilesDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\TwirlDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\Waves3DDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\WavesDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\EffectsTest\WavesTiles3DDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\AnimationTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\BaseLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\ButtonTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\CocosBuilderTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\HelloCocosBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\MenuTestLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\ParticleSystemTestLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\ScrollViewTestLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\SpriteTestLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\TestHeader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSwitchTest\CCControlSwitchTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\FontTest\FontTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\IntervalTest\IntervalLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\IntervalTest\IntervalTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\Atlas1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\Atlas3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\Atlas4.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\Atlas5.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\Atlas6.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\AtlasBitmapColor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\AtlasFastBitmap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\AtlasTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\BitmapFontMultiLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\BitmapFontMultiLineAlignment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\BMFontInit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\BMFontOneAtlas.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\BMFontUnicode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\Issue1343.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\LabelAtlasColorTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\LabelAtlasHD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\LabelAtlasTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\LabelBMFontHD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\LabelGlyphDesigner.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\LabelsEmpty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\LabelTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\LabelTTFA8Test.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\LabelTTFChinese.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\LabelTTFMultiline.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\LabelTTFTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTest\TTFFontInit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LayerTest\LayerGradient.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LayerTest\LayerScaleTest.cs" />
+    <Compile Include="classes\tests\LayerTest\Layertest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LayerTest\LayerTest1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LayerTest\LayerTest2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LayerTest\LayerTestBlend.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LayerTest\LayerTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\MenuTest\MenuLayer1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\MenuTest\MenuLayer2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\MenuTest\MenuLayer3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\MenuTest\MenuLayer4.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\MenuTest\MenuLayerPriorityTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\MenuTest\MenuTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\MotionStreakTest\Issue1358.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\MotionStreakTest\MotionStreakTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\MotionStreakTest\MotionStreakTest1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\MotionStreakTest\MotionStreakTest2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\MotionStreakTest\MotionStreakTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\NodeTest\CameraCenterTest.cs" />
+    <Compile Include="classes\tests\NodeTest\CameraOrbitTest.cs" />
+    <Compile Include="classes\tests\NodeTest\CameraZoomTest.cs" />
+    <Compile Include="classes\tests\NodeTest\CocosNodeTestScene.cs" />
+    <Compile Include="classes\tests\NodeTest\CocosNodeTestStaticLibrary.cs" />
+    <Compile Include="classes\tests\NodeTest\ConvertToNode.cs" />
+    <Compile Include="classes\tests\NodeTest\NodeToWorld.cs" />
+    <Compile Include="classes\tests\NodeTest\SchedulerTest1.cs" />
+    <Compile Include="classes\tests\NodeTest\StressTest1.cs" />
+    <Compile Include="classes\tests\NodeTest\StressTest2.cs" />
+    <Compile Include="classes\tests\NodeTest\Test2.cs" />
+    <Compile Include="classes\tests\NodeTest\Test4.cs" />
+    <Compile Include="classes\tests\NodeTest\Test5.cs" />
+    <Compile Include="classes\tests\NodeTest\Test6.cs" />
+    <Compile Include="classes\tests\NodeTest\TestCocosNodeDemo.cs" />
+    <Compile Include="classes\tests\ParallaxTest\Parallax1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ParallaxTest\Parallax2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ParallaxTest\ParallaxDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ParallaxTest\ParallaxTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ParticleTest\ParticleTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceMainLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceNodeChildrenTest\AddRemoveSpriteSheet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceNodeChildrenTest\AddSpriteSheet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceNodeChildrenTest\IterateSpriteSheet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceNodeChildrenTest\IterateSpriteSheetCArray.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceNodeChildrenTest\IterateSpriteSheetFastEnum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceNodeChildrenTest\NodeChildrenMainScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceNodeChildrenTest\NodeChildrenMenuLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceNodeChildrenTest\PerformanceNodeChildrenTest..cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceNodeChildrenTest\RemoveSpriteSheet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceNodeChildrenTest\ReorderSpriteSheet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceParticleTest\ParticleMainScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceParticleTest\ParticleMenuLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceParticleTest\ParticlePerformTest1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceParticleTest\ParticlePerformTest2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceParticleTest\ParticlePerformTest3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceParticleTest\ParticlePerformTest4.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceParticleTest\PerformanceParticleTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceSpriteTest\PerformanceSpriteTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceSpriteTest\SpriteMainScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceSpriteTest\SpriteMenuLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest4.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest5.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest6.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceSpriteTest\SpritePerformTest7.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceSpriteTest\SubTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceTextureTest\PerformanceTextureTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceTextureTest\TextureMenuLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceTextureTest\TextureTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceTouchesTest\PerformanceTouchesTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceTouchesTest\TouchesMainScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceTouchesTest\TouchesPerformTest1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformanceTouchesTest\TouchesPerformTest2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\PerformanceTest\PerformBasicLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\RenderTextureTest\RenderTextureIssue937.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\RenderTextureTest\RenderTextureSave.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\RenderTextureTest\RenderTextureScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\RenderTextureTest\RenderTextureTestDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\RenderTextureTest\RenderTextureTestDepthStencil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\RenderTextureTest\RenderTextureZbuffer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\RotateWorldTest\RotateWorldMainLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\RotateWorldTest\RotateWorldTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\RotateWorldTest\SpriteLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\RotateWorldTest\TestLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SceneTest\SceneTestLayer1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SceneTest\SceneTestLayer2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SceneTest\SceneTestLayer3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SceneTest\SceneTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\RescheduleSelector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\SchedulerAutoremove.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\SchedulerPauseResume.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\SchedulerSchedulesAndRemove.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\SchedulerTestLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\SchedulerTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\SchedulerUnscheduleAll.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\SchedulerUnscheduleAllHard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\SchedulerUpdate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\SchedulerUpdateAndCustom.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\SchedulerUpdateFromCustom.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SchedulerTest\TestNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\AnimationCache.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\Sprite1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\Sprite6.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteAliased.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteAnchorPoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteAnimationSplit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNode1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeAliased.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeAnchorPoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeChildren.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeChildrenAnchorPoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeChildrenChildren.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeChildrenScale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeChildrenZ.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeColorOpacity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeFlip.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeNewTexture.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorFlip.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorRotation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorScale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorSkew.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorSkewScale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeReorder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeReorderIssue744.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeReorderIssue766.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeReorderIssue767.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeZOrder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeZVertex.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteChildrenAnchorPoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteChildrenChildren.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteChildrenVisibility.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteChildrenVisibilityIssue665.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteColorOpacity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteFlip.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteFrameAliasNameTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteFrameTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteHybrid.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteNewTexture.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteNilTexture.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteOffsetAnchorFlip.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteOffsetAnchorRotation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteOffsetAnchorScale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteOffsetAnchorSkew.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteOffsetAnchorSkewScale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteSubclass.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteTestDemo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteZOrder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\SpriteTest\SpriteZVertex.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TextInputTest\TextInputTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TextInputTest\TextInputTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\Texture2dTest\Texture2dTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TileMapTest\TileMapTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TouchesTest\Ball.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TouchesTest\Paddle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TouchesTest\PongLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TouchesTest\PongScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\FadeWhiteTransition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\FlipAngularLeftOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\FlipAngularRightOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\FlipXLeftOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\FlipXRightOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\FlipYDownOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\FlipYUpOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\PageTransitionBackward.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\PageTransitionForward.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\TestLayer1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\TestLayer2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\TransitionsTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\ZoomFlipAngularLeftOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\ZoomFlipAngularRightOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\ZoomFlipXLeftOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\ZoomFlipXRightOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\ZoomFlipYDownOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\TransitionsTest\ZoomFlipYUpOver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\UserDefaultTest\UserDefaultTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\UserDefaultTest\UserDefaultTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ZwoptexTest\ZwoptexGenericTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ZwoptexTest\ZwoptexTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\ZwoptexTest\ZwoptexTestScene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.iOS.plist">
+      <Link>Info.plist</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\animations\animations-2.plist.xnb" />
+    <Content Include="Content\animations\animations.plist.xnb" />
+    <Content Include="Content\animations\dragon_animation-hd.xnb" />
+    <Content Include="Content\animations\dragon_animation.xnb" />
+    <Content Include="Content\animations\ghosts.plist.xnb" />
+    <Content Include="Content\animations\ghosts.xnb" />
+    <Content Include="Content\animations\grossini-aliases.plist.xnb" />
+    <Content Include="Content\animations\grossini-aliases.xnb" />
+    <Content Include="Content\animations\grossini.plist.xnb" />
+    <Content Include="Content\animations\grossini.xnb" />
+    <Content Include="Content\animations\grossini_blue.plist.xnb" />
+    <Content Include="Content\animations\grossini_blue.xnb" />
+    <Content Include="Content\animations\grossini_family.plist.xnb" />
+    <Content Include="Content\animations\grossini_family.xnb" />
+    <Content Include="Content\animations\grossini_gray.plist.xnb" />
+    <Content Include="Content\animations\grossini_gray.xnb" />
+    <Content Include="Content\box2d\Circle.xnb" />
+    <Content Include="Content\box2d\Rock.xnb" />
+    <Content Include="Content\box2d\Terrain.xnb" />
+    <Content Include="Content\box2d\Texture.xnb" />
+    <Content Include="Content\ccb\animated-grossini.plist.xnb" />
+    <Content Include="Content\ccb\animated-grossini.xnb" />
+    <Content Include="Content\ccb\btn-a-0.xnb" />
+    <Content Include="Content\ccb\btn-a-1.xnb" />
+    <Content Include="Content\ccb\btn-a-2.xnb" />
+    <Content Include="Content\ccb\btn-b-0.xnb" />
+    <Content Include="Content\ccb\btn-b-1.xnb" />
+    <Content Include="Content\ccb\btn-b-2.xnb" />
+    <Content Include="Content\ccb\btn-back-0.xnb" />
+    <Content Include="Content\ccb\btn-back-1.xnb" />
+    <Content Include="Content\ccb\btn-test-0.xnb" />
+    <Content Include="Content\ccb\btn-test-1.xnb" />
+    <Content Include="Content\ccb\btn-test-2.xnb" />
+    <Content Include="Content\ccb\burst.xnb" />
+    <Content Include="Content\ccb\flower.xnb" />
+    <Content Include="Content\ccb\grossini-generic.plist.xnb" />
+    <Content Include="Content\ccb\grossini-generic.xnb" />
+    <Content Include="Content\ccb\HelloCocosBuilder.ccb" />
+    <Content Include="Content\ccb\HelloCocosBuilder.ccbi" />
+    <Content Include="Content\ccb\jungle-left.xnb" />
+    <Content Include="Content\ccb\jungle-right.xnb" />
+    <Content Include="Content\ccb\jungle.xnb" />
+    <Content Include="Content\ccb\logo-icon.xnb" />
+    <Content Include="Content\ccb\logo.xnb" />
+    <Content Include="Content\ccb\markerfelt24shadow.fnt.xnb" />
+    <Content Include="Content\ccb\markerfelt24shadow.xnb" />
+    <Content Include="Content\ccb\particle-fire.xnb" />
+    <Content Include="Content\ccb\particle-smoke.xnb" />
+    <Content Include="Content\ccb\particle-snow.xnb" />
+    <Content Include="Content\ccb\particle-stars.xnb" />
+    <Content Include="Content\ccb\scale-9-demo.xnb" />
+    <Content Include="Content\ccb\ccb\TestAnimations.ccb" />
+    <Content Include="Content\ccb\ccb\TestAnimations.ccbi" />
+    <Content Include="Content\ccb\ccb\TestAnimationsSub.ccb" />
+    <Content Include="Content\ccb\ccb\TestAnimationsSub.ccbi" />
+    <Content Include="Content\ccb\ccb\TestButtons.ccb" />
+    <Content Include="Content\ccb\ccb\TestButtons.ccbi" />
+    <Content Include="Content\ccb\ccb\TestHeader.ccb" />
+    <Content Include="Content\ccb\ccb\TestHeader.ccbi" />
+    <Content Include="Content\ccb\ccb\TestLabels.ccb" />
+    <Content Include="Content\ccb\ccb\TestLabels.ccbi" />
+    <Content Include="Content\ccb\ccb\TestMenus.ccb" />
+    <Content Include="Content\ccb\ccb\TestMenus.ccbi" />
+    <Content Include="Content\ccb\ccb\TestParticleSystems.ccb" />
+    <Content Include="Content\ccb\ccb\TestParticleSystems.ccbi" />
+    <Content Include="Content\ccb\ccb\TestScrollViews.ccb" />
+    <Content Include="Content\ccb\ccb\TestScrollViews.ccbi" />
+    <Content Include="Content\ccb\ccb\TestScrollViewsContentA.ccb" />
+    <Content Include="Content\ccb\ccb\TestScrollViewsContentA.ccbi" />
+    <Content Include="Content\ccb\ccb\TestSprites.ccb" />
+    <Content Include="Content\ccb\ccb\TestSprites.ccbi" />
+    <Content Include="Content\extensions\background.xnb" />
+    <Content Include="Content\extensions\button.xnb" />
+    <Content Include="Content\extensions\buttonBackground.xnb" />
+    <Content Include="Content\extensions\buttonHighlighted.xnb" />
+    <Content Include="Content\extensions\green_edit.xnb" />
+    <Content Include="Content\extensions\orange_edit.xnb" />
+    <Content Include="Content\extensions\ribbon.xnb" />
+    <Content Include="Content\extensions\sliderProgress.xnb" />
+    <Content Include="Content\extensions\sliderProgress2.xnb" />
+    <Content Include="Content\extensions\sliderThumb.xnb" />
+    <Content Include="Content\extensions\sliderTrack.xnb" />
+    <Content Include="Content\extensions\sliderTrack2.xnb" />
+    <Content Include="Content\extensions\switch-mask.xnb" />
+    <Content Include="Content\extensions\switch-off.xnb" />
+    <Content Include="Content\extensions\switch-on.xnb" />
+    <Content Include="Content\extensions\switch-thumb.xnb" />
+    <Content Include="Content\extensions\yellow_edit.xnb" />
+    <Content Include="Content\fonts\A Damn Mess-26.xnb" />
+    <Content Include="Content\fonts\Abberancy-26.xnb" />
+    <Content Include="Content\fonts\Abduction-26.xnb" />
+    <Content Include="Content\fonts\arial-12.xnb" />
+    <Content Include="Content\fonts\arial-16.xnb" />
+    <Content Include="Content\fonts\arial-18.xnb" />
+    <Content Include="Content\fonts\arial-20.xnb" />
+    <Content Include="Content\fonts\arial-22.xnb" />
+    <Content Include="Content\fonts\arial-24.xnb" />
+    <Content Include="Content\fonts\arial-26.xnb" />
+    <Content Include="Content\fonts\arial-28.xnb" />
+    <Content Include="Content\fonts\arial-30.xnb" />
+    <Content Include="Content\fonts\arial-32.xnb" />
+    <Content Include="Content\fonts\arial-34.xnb" />
+    <Content Include="Content\fonts\arial-38.xnb" />
+    <Content Include="Content\fonts\arial-50.xnb" />
+    <Content Include="Content\fonts\arial-64.xnb" />
+    <Content Include="Content\fonts\arial-unicode-26.fnt.xnb" />
+    <Content Include="Content\fonts\arial-unicode-26.xnb" />
+    <Content Include="Content\fonts\Arial.xnb" />
+    <Content Include="Content\fonts\arial16.fnt.xnb" />
+    <Content Include="Content\fonts\arial16.xnb" />
+    <Content Include="Content\fonts\bitmapFontChinese.fnt.xnb" />
+    <Content Include="Content\fonts\bitmapFontChinese.xnb" />
+    <Content Include="Content\fonts\bitmapFontTest.fnt.xnb" />
+    <Content Include="Content\fonts\bitmapFontTest.xnb" />
+    <Content Include="Content\fonts\bitmapFontTest2.fnt.xnb" />
+    <Content Include="Content\fonts\bitmapFontTest2.xnb" />
+    <Content Include="Content\fonts\bitmapFontTest3.fnt.xnb" />
+    <Content Include="Content\fonts\bitmapFontTest3.xnb" />
+    <Content Include="Content\fonts\bitmapFontTest4.fnt.xnb" />
+    <Content Include="Content\fonts\bitmapFontTest4.xnb" />
+    <Content Include="Content\fonts\bitmapFontTest5.fnt.xnb" />
+    <Content Include="Content\fonts\bitmapFontTest5.xnb" />
+    <Content Include="Content\fonts\debugfont.xnb" />
+    <Content Include="Content\fonts\font-issue1343-hd.fnt.xnb" />
+    <Content Include="Content\fonts\font-issue1343-hd.xnb" />
+    <Content Include="Content\fonts\font-issue1343.fnt.xnb" />
+    <Content Include="Content\fonts\font-issue1343.xnb" />
+    <Content Include="Content\fonts\futura-48.fnt.xnb" />
+    <Content Include="Content\fonts\futura-48.xnb" />
+    <Content Include="Content\fonts\geneva-32.fnt.xnb" />
+    <Content Include="Content\fonts\helvetica-32.fnt.xnb" />
+    <Content Include="Content\fonts\helvetica-geneva-32.xnb" />
+    <Content Include="Content\fonts\konqa32.fnt.xnb" />
+    <Content Include="Content\fonts\konqa32.xnb" />
+    <Content Include="Content\fonts\labelatlas.xnb" />
+    <Content Include="Content\fonts\larabie-16.plist.xnb" />
+    <Content Include="Content\fonts\larabie-16.xnb" />
+    <Content Include="Content\fonts\markerFelt.fnt.xnb" />
+    <Content Include="Content\fonts\markerFelt.xnb" />
+    <Content Include="Content\fonts\Paint Boy-26.xnb" />
+    <Content Include="Content\fonts\Schwarzwald Regular-26.xnb" />
+    <Content Include="Content\fonts\Scissor Cuts-26.xnb" />
+    <Content Include="Content\fonts\strings.plist.xnb" />
+    <Content Include="Content\fonts\tuffy_bold_italic-charmap.plist.xnb" />
+    <Content Include="Content\fonts\tuffy_bold_italic-charmap.xnb" />
+    <Content Include="Content\fonts\west_england-64.fnt.xnb" />
+    <Content Include="Content\fonts\west_england-64.xnb" />
+    <Content Include="Content\Images\aButton.xnb" />
+    <Content Include="Content\Images\arrows.xnb" />
+    <Content Include="Content\Images\arrowsBar.xnb" />
+    <Content Include="Content\Images\atlastest.xnb" />
+    <Content Include="Content\Images\b1-hd.xnb" />
+    <Content Include="Content\Images\b1.xnb" />
+    <Content Include="Content\Images\b2-hd.xnb" />
+    <Content Include="Content\Images\b2.xnb" />
+    <Content Include="Content\Images\background.xnb" />
+    <Content Include="Content\Images\background1-hd.xnb" />
+    <Content Include="Content\Images\background1.xnb" />
+    <Content Include="Content\Images\background2-hd.xnb" />
+    <Content Include="Content\Images\background2.xnb" />
+    <Content Include="Content\Images\background3-hd.xnb" />
+    <Content Include="Content\Images\background3.xnb" />
+    <Content Include="Content\Images\ball-hd.xnb" />
+    <Content Include="Content\Images\ball.xnb" />
+    <Content Include="Content\Images\bButton.xnb" />
+    <Content Include="Content\Images\bitmapFontTest3.xnb" />
+    <Content Include="Content\Images\blocks-hd.xnb" />
+    <Content Include="Content\Images\blocks.xnb" />
+    <Content Include="Content\Images\BoilingFoam.xnb" />
+    <Content Include="Content\Images\btn-about-normal.xnb" />
+    <Content Include="Content\Images\btn-about-selected.xnb" />
+    <Content Include="Content\Images\btn-highscores-normal.xnb" />
+    <Content Include="Content\Images\btn-highscores-selected.xnb" />
+    <Content Include="Content\Images\btn-play-normal.xnb" />
+    <Content Include="Content\Images\btn-play-selected.xnb" />
+    <Content Include="Content\Images\BurstPipe.xnb" />
+    <Content Include="Content\Images\close-hd.xnb" />
+    <Content Include="Content\Images\close.xnb" />
+    <Content Include="Content\Images\Comet.xnb" />
+    <Content Include="Content\Images\CometPlist.xnb" />
+    <Content Include="Content\Images\debian.xnb" />
+    <Content Include="Content\Images\ExplodingRing.xnb" />
+    <Content Include="Content\Images\f1-hd.xnb" />
+    <Content Include="Content\Images\f1.xnb" />
+    <Content Include="Content\Images\f2-hd.xnb" />
+    <Content Include="Content\Images\f2.xnb" />
+    <Content Include="Content\Images\fire-grayscale.xnb" />
+    <Content Include="Content\Images\fire.xnb" />
+    <Content Include="Content\Images\FlowerPlist.xnb" />
+    <Content Include="Content\Images\Fog.xnb" />
+    <Content Include="Content\Images\fps_Images.xnb" />
+    <Content Include="Content\Images\GalaxyPlist.xnb" />
+    <Content Include="Content\Images\grossini-hd.xnb" />
+    <Content Include="Content\Images\grossini.xnb" />
+    <Content Include="Content\Images\grossinis_sister1-hd.xnb" />
+    <Content Include="Content\Images\grossinis_sister1-testalpha.xnb" />
+    <Content Include="Content\Images\grossinis_sister1.xnb" />
+    <Content Include="Content\Images\grossinis_sister2-hd.xnb" />
+    <Content Include="Content\Images\grossinis_sister2.xnb" />
+    <Content Include="Content\Images\grossini_dance_01.xnb" />
+    <Content Include="Content\Images\grossini_dance_02.xnb" />
+    <Content Include="Content\Images\grossini_dance_03.xnb" />
+    <Content Include="Content\Images\grossini_dance_04.xnb" />
+    <Content Include="Content\Images\grossini_dance_05.xnb" />
+    <Content Include="Content\Images\grossini_dance_06.xnb" />
+    <Content Include="Content\Images\grossini_dance_07.xnb" />
+    <Content Include="Content\Images\grossini_dance_08.xnb" />
+    <Content Include="Content\Images\grossini_dance_09.xnb" />
+    <Content Include="Content\Images\grossini_dance_10.xnb" />
+    <Content Include="Content\Images\grossini_dance_11.xnb" />
+    <Content Include="Content\Images\grossini_dance_12.xnb" />
+    <Content Include="Content\Images\grossini_dance_13.xnb" />
+    <Content Include="Content\Images\grossini_dance_14.xnb" />
+    <Content Include="Content\Images\grossini_dance_atlas-hd.xnb" />
+    <Content Include="Content\Images\grossini_dance_atlas-mono.xnb" />
+    <Content Include="Content\Images\grossini_dance_atlas.xnb" />
+    <Content Include="Content\Images\grossini_dance_atlas_nomipmap.xnb" />
+    <Content Include="Content\Images\HelloWorld.xnb" />
+    <Content Include="Content\Images\Icon.xnb" />
+    <Content Include="Content\Images\landscape-1024x1024.xnb" />
+    <Content Include="Content\Images\LavaFlow.xnb" />
+    <Content Include="Content\Images\menuitemsprite.xnb" />
+    <Content Include="Content\Images\paddle-hd.xnb" />
+    <Content Include="Content\Images\paddle.xnb" />
+    <Content Include="Content\Images\particles-hd.xnb" />
+    <Content Include="Content\Images\particles.xnb" />
+    <Content Include="Content\Images\pattern1.xnb" />
+    <Content Include="Content\Images\Pea.xnb" />
+    <Content Include="Content\Images\Phoenix.xnb" />
+    <Content Include="Content\Images\piece.xnb" />
+    <Content Include="Content\Images\PlanetCute-1024x1024.xnb" />
+    <Content Include="Content\Images\powered.xnb" />
+    <Content Include="Content\Images\r1-hd.xnb" />
+    <Content Include="Content\Images\r1.xnb" />
+    <Content Include="Content\Images\r2-hd.xnb" />
+    <Content Include="Content\Images\r2.xnb" />
+    <Content Include="Content\Images\SendScoreButton.xnb" />
+    <Content Include="Content\Images\SendScoreButtonPressed.xnb" />
+    <Content Include="Content\Images\snow.xnb" />
+    <Content Include="Content\Images\SpinningPeas.xnb" />
+    <Content Include="Content\Images\SpinningPeasPlist.xnb" />
+    <Content Include="Content\Images\Spiral.xnb" />
+    <Content Include="Content\Images\SpookyPeas.xnb" />
+    <Content Include="Content\Images\SpookyPeasPlist.xnb" />
+    <Content Include="Content\Images\spritesheet1.xnb" />
+    <Content Include="Content\Images\stars-grayscale.xnb" />
+    <Content Include="Content\Images\stars.xnb" />
+    <Content Include="Content\Images\stars2-grayscale.xnb" />
+    <Content Include="Content\Images\stars2.xnb" />
+    <Content Include="Content\Images\streak.xnb" />
+    <Content Include="Content\Images\test-rgba1.xnb" />
+    <Content Include="Content\Images\test_blend.xnb" />
+    <Content Include="Content\Images\test_image.xnb" />
+    <Content Include="Content\Images\texture1024x1024.xnb" />
+    <Content Include="Content\Images\texture2048x2048.xnb" />
+    <Content Include="Content\Images\texture512x512.xnb" />
+    <Content Include="Content\Images\Upsidedown.xnb" />
+    <Content Include="Content\Images\white-512x512.xnb" />
+    <Content Include="Content\Images\bugs\bug886.xnb" />
+    <Content Include="Content\Images\bugs\bug886_.xnb" />
+    <Content Include="Content\Images\bugs\circle.plist.xnb" />
+    <Content Include="Content\Images\bugs\circle.xnb" />
+    <Content Include="Content\Images\bugs\corner.xnb" />
+    <Content Include="Content\Images\bugs\edge.xnb" />
+    <Content Include="Content\Images\bugs\fill.xnb" />
+    <Content Include="Content\Images\bugs\picture.xnb" />
+    <Content Include="Content\Images\bugs\RetinaDisplay.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-0-0.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-0-1.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-0-2.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-0-3.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-0-4.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-0-5.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-0-6.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-0-7.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-1-0.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-1-1.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-1-2.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-1-3.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-1-4.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-1-5.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-1-6.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-1-7.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-2-0.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-2-1.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-2-2.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-2-3.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-2-4.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-2-5.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-2-6.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-2-7.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-3-0.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-3-1.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-3-2.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-3-3.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-3-4.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-3-5.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-3-6.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-3-7.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-4-0.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-4-1.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-4-2.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-4-3.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-4-4.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-4-5.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-4-6.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-4-7.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-5-0.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-5-1.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-5-2.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-5-3.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-5-4.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-5-5.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-5-6.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-5-7.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-6-0.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-6-1.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-6-2.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-6-3.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-6-4.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-6-5.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-6-6.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-6-7.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-7-0.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-7-1.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-7-2.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-7-3.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-7-4.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-7-5.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-7-6.xnb" />
+    <Content Include="Content\Images\sprites_test\sprite-7-7.xnb" />
+    <Content Include="Content\Particles\BoilingFoam.xnb" />
+    <Content Include="Content\Particles\BurstPipe.xnb" />
+    <Content Include="Content\Particles\Comet.xnb" />
+    <Content Include="Content\Particles\debian.xnb" />
+    <Content Include="Content\Particles\ExplodingRing.xnb" />
+    <Content Include="Content\Particles\Flower.xnb" />
+    <Content Include="Content\Particles\Galaxy.xnb" />
+    <Content Include="Content\Particles\LavaFlow.xnb" />
+    <Content Include="Content\Particles\particleTexture.xnb" />
+    <Content Include="Content\Particles\Phoenix.xnb" />
+    <Content Include="Content\Particles\SmallSun.xnb" />
+    <Content Include="Content\Particles\SpinningPeas.xnb" />
+    <Content Include="Content\Particles\Spiral.xnb" />
+    <Content Include="Content\Particles\SpookyPeas.xnb" />
+    <Content Include="Content\Particles\TestPremultipliedAlpha.xnb" />
+    <Content Include="Content\Particles\Upsidedown.xnb" />
+    <Content Include="Content\Sounds\background.mp3" />
+    <Content Include="Content\Sounds\effect1.xnb" />
+    <Content Include="Content\TileMaps\arial16.xnb" />
+    <Content Include="Content\TileMaps\fixed-ortho-test2.xnb" />
+    <Content Include="Content\TileMaps\hexa-test1.xnb" />
+    <Content Include="Content\TileMaps\hexa-tiles.xnb" />
+    <Content Include="Content\TileMaps\iso-test-bug787.xnb" />
+    <Content Include="Content\TileMaps\iso-test-movelayer.xnb" />
+    <Content Include="Content\TileMaps\iso-test-objectgroup.xnb" />
+    <Content Include="Content\TileMaps\iso-test-vertexz.xnb" />
+    <Content Include="Content\TileMaps\iso-test-zorder.xnb" />
+    <Content Include="Content\TileMaps\iso-test.xnb" />
+    <Content Include="Content\TileMaps\iso-test01.xnb" />
+    <Content Include="Content\TileMaps\iso-test1.xnb" />
+    <Content Include="Content\TileMaps\iso-test11.xnb" />
+    <Content Include="Content\TileMaps\iso-test2-uncompressed.xnb" />
+    <Content Include="Content\TileMaps\iso-test2.xnb" />
+    <Content Include="Content\TileMaps\iso-test22.xnb" />
+    <Content Include="Content\TileMaps\iso.xnb" />
+    <Content Include="Content\TileMaps\levelmap.xnb" />
+    <Content Include="Content\TileMaps\ortho-objects.xnb" />
+    <Content Include="Content\TileMaps\ortho-rotation-test.xnb" />
+    <Content Include="Content\TileMaps\ortho-test1.xnb" />
+    <Content Include="Content\TileMaps\ortho-test1_bw.xnb" />
+    <Content Include="Content\TileMaps\ortho-test2.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test-movelayer.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test-vertexz.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test-zorder.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test1-tsx.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test1.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test11.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test2.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test3.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test4-hd.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test4.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test5.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test6-hd.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test6.xnb" />
+    <Content Include="Content\TileMaps\test-object-layer.xnb" />
+    <Content Include="Content\TileMaps\tiles-hd.xnb" />
+    <Content Include="Content\TileMaps\tiles.xnb" />
+    <Content Include="Content\TileMaps\tmw_desert_spacing-hd.xnb" />
+    <Content Include="Content\TileMaps\tmw_desert_spacing.xnb" />
+    <Content Include="Content\zwoptex\grossini-generic.plist.xnb" />
+    <Content Include="Content\zwoptex\grossini-generic.xnb" />
+    <Content Include="Content\zwoptex\grossini.plist.xnb" />
+    <Content Include="Content\zwoptex\grossini.xnb" />
+    <Content Include="PhoneGameThumb_iPad.png" />
+    <Content Include="PhoneGameThumb_iPhone.png" />
+    <Content Include="PhoneGameThumb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlScene.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSceneManager.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSliderTest\CCControlSliderTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ExtensionsTestMainLayer.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ExtensionsTestScene.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\TableViewTest\CustomTableViewCell.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\TableViewTest\TableViewTestScene.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\cocos2d\cocos2d.MacOS.csproj">
+      <Project>{A83510D8-7AED-411E-9616-DCFEA180969E}</Project>
+      <Name>cocos2d.MacOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj">
+      <Project>{AE483C29-042E-4226-BA52-D247CE7676DA}</Project>
+      <Name>Lidgren.Network.MacOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">
+      <Project>{36C538E6-C32A-4A8D-A39C-566173D7118E}</Project>
+      <Name>MonoGame.Framework.MacOS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Mono\MonoMac\v0.0\Mono.MonoMac.targets" />
+  <!--
+      To modify your build process, add your task inside one of the targets below and uncomment it. 
+      Other similar extension points exist, see Microsoft.Common.targets.
+      <Target Name="BeforeBuild">
+      </Target>
+      <Target Name="AfterBuild">
+      </Target>
+    -->
+</Project>

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.iOS", "cocos2d\cocos2d.MacOS.csproj", "{A83510D8-7AED-411E-9616-DCFEA180969E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.iOS", "tests\tests\tests.MacOS.csproj", "{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.MacOS", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.iOS.csproj", "{36C538E6-C32A-4A8D-A39C-566173D7118E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.MacOS", "..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj", "{AE483C29-042E-4226-BA52-D247CE7676DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36C538E6-C32A-4A8D-A39C-566173D7118E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C538E6-C32A-4A8D-A39C-566173D7118E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C538E6-C32A-4A8D-A39C-566173D7118E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C538E6-C32A-4A8D-A39C-566173D7118E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A83510D8-7AED-411E-9616-DCFEA180969E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A83510D8-7AED-411E-9616-DCFEA180969E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A83510D8-7AED-411E-9616-DCFEA180969E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A83510D8-7AED-411E-9616-DCFEA180969E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Release|Any CPU.Build.0 = Release|Any CPU
+|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = tests\tests\tests.MacOS.csproj
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

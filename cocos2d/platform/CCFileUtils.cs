@@ -140,7 +140,8 @@ namespace cocos2d
         }
 
         /// <summary>
-        /// 
+        /// extracts the directory from the pszRelativeFile and uses that directory path as the
+        /// path for the pszFilename.
         /// </summary>
         public static string FullPathFromRelativeFile(string pszFilename, string pszRelativeFile)
         {
@@ -168,7 +169,7 @@ namespace cocos2d
         /// <param name="?"></param>
         public static void SetResourcePath(string pszResourcePath)
         {
-            throw new NotImplementedException("win32 only definition does not realize !");
+            throw new NotSupportedException ("Not supported in XNA");
         }
 
         /// <summary>
@@ -193,7 +194,7 @@ namespace cocos2d
         /// <returns></returns>
         public static string GetWriteablePath()
         {
-            throw new NotImplementedException("win32 only definition does not realize !");
+            throw new NotSupportedException("Use IsolatedStorage in XNA");
         }
 
 
