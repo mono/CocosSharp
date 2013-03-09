@@ -68,7 +68,7 @@ namespace tests
             item4.FontNameObj = "arial";
 
             // Label Item (CCLabelBMFont)
-            CCLabelBMFont label = CCLabelBMFont.Create("configuration", "fonts/bitmapFontTest3.fnt");
+            CCLabelBMFont label = CCLabelBMFont.Create("configuration", "fonts/bitmapFontTest3");
             CCMenuItemLabel item5 = CCMenuItemLabel.Create(label, this.menuCallbackConfig);
             
 
