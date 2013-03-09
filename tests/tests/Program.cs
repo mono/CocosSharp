@@ -46,7 +46,6 @@ namespace tests
 	}
 #endif
 	#if MONOMAC
-	[Register ("AppDelegate")]
 	class Program : NSApplicationDelegate 
 	{
 		private Game1 game;
@@ -68,7 +67,7 @@ namespace tests
 		{
 			NSApplication.Init ();
 			
-			using (var p = new NSAutoreleasePool ()) {
+			using (var p = new MonoMac.Foundation.NSAutoreleasePool ()) {
 				NSApplication.SharedApplication.Delegate = new Program();
 				NSApplication.Main(args);
 			}
