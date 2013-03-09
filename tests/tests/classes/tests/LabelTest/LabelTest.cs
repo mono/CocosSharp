@@ -563,7 +563,7 @@ namespace cocos2d
             label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
             // CCLabelAtlas
-            CCLabelAtlas label3 = CCLabelAtlas.Create("", "fonts/tuffy_bold_italic-charmap.png", 48, 64, ' ');
+            CCLabelAtlas label3 = CCLabelAtlas.Create("", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);
             label3.Position = new CCPoint(s.Width / 2, 0 + 100);
 
@@ -642,7 +642,7 @@ namespace cocos2d
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // CCLabelBMFont
-            CCLabelAtlas label1 = CCLabelAtlas.Create("TESTING RETINA DISPLAY", "fonts/larabie-16.png", 10, 20, 'A');
+            CCLabelAtlas label1 = CCLabelAtlas.Create("TESTING RETINA DISPLAY", "fonts/larabie-16", 10, 20, 'A');
             label1.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             AddChild(label1);
@@ -671,7 +671,7 @@ namespace cocos2d
             //addChild(layer, -10);
 
             //// CCLabelBMFont
-            //CCLabelBMFont label1 = CCLabelBMFont.labelWithString("Testing Glyph Designer", "fonts/futura-48.fnt");
+            //CCLabelBMFont label1 = CCLabelBMFont.labelWithString("Testing Glyph Designer", "fonts/futura-48");
             //addChild(label1);
             //label1.position = new CCPoint(s.width / 2, s.height / 2);
         }
