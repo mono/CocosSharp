@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}</ProjectGuid>
@@ -79,7 +79,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
-    <Reference Include="MonoMac" />
+    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\AppDelegate.cs" />
@@ -1085,11 +1087,6 @@
     <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Info.iOS.plist">
-      <Link>Info.plist</Link>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />
     <Content Include="Content\animations\animations.plist.xnb" />
     <Content Include="Content\animations\dragon_animation-hd.xnb" />
@@ -1523,4 +1520,9 @@
       <Target Name="AfterBuild">
       </Target>
     -->
+  <ItemGroup>
+    <None Include="Info.Mac.plist">
+      <Link>Info.plist</Link>
+    </None>
+  </ItemGroup>
 </Project>
