@@ -49,6 +49,7 @@ namespace cocos2d
 {
     public class CCUtils
     {
+
         #if !WINDOWS_PHONE && !XBOX
         #if OPENGL
         private static List<string> _GLExtensions = null;
@@ -60,10 +61,20 @@ namespace cocos2d
                 List<string> extensions = new List<string>();
                 #if GLES
                 var extstring = GL.GetString(RenderbufferStorage.Extensions);                       
-                #else
+				GraphicsExtensions.CheckGLError();
+				#elif MONOMAC
+
+				// for right now there are errors with GL before we even get here so the 
+				// CheckGLError for MONOMAC is throwing errors even though the extensions are read
+				// correctly.  Placed this here for now so that we can continue the processing
+				// until we find the real error.
+				var extstring = GL.GetString(StringName.Extensions);
+
+				#else
                 var extstring = GL.GetString(StringName.Extensions);
+				GraphicsExtensions.CheckGLError();
                 #endif
-                GraphicsExtensions.CheckGLError();
+                
                 if (!string.IsNullOrEmpty(extstring))
                 {
                     extensions.AddRange(extstring.Split(' '));
