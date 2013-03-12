@@ -20,6 +20,8 @@ using MonoMac;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 #endif
+using cocos2d;
+using Microsoft.Xna.Framework.Content;
 
 namespace tests
 {
@@ -31,7 +33,12 @@ namespace tests
 
 		public override void FinishedLaunching (UIApplication app)
 		{
-			// Fun begins..
+            // More shameless hacking to bypass AOT
+            var hHack = new ReflectiveReader<CCBMFontConfiguration>();
+            var hFoo = new PlistDocument.PlistDocumentReader ();
+
+            // Fun begins..
+
 			game = new Game1();
 			game.Run();
 		}
