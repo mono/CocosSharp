@@ -1087,403 +1087,1197 @@
     <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\animations\animations-2.plist.xnb" />
-    <Content Include="Content\animations\animations.plist.xnb" />
-    <Content Include="Content\animations\dragon_animation-hd.xnb" />
-    <Content Include="Content\animations\dragon_animation.xnb" />
-    <Content Include="Content\animations\ghosts.plist.xnb" />
-    <Content Include="Content\animations\ghosts.xnb" />
-    <Content Include="Content\animations\grossini-aliases.plist.xnb" />
-    <Content Include="Content\animations\grossini-aliases.xnb" />
-    <Content Include="Content\animations\grossini.plist.xnb" />
-    <Content Include="Content\animations\grossini.xnb" />
-    <Content Include="Content\animations\grossini_blue.plist.xnb" />
-    <Content Include="Content\animations\grossini_blue.xnb" />
-    <Content Include="Content\animations\grossini_family.plist.xnb" />
-    <Content Include="Content\animations\grossini_family.xnb" />
-    <Content Include="Content\animations\grossini_gray.plist.xnb" />
-    <Content Include="Content\animations\grossini_gray.xnb" />
-    <Content Include="Content\box2d\Circle.xnb" />
-    <Content Include="Content\box2d\Rock.xnb" />
-    <Content Include="Content\box2d\Terrain.xnb" />
-    <Content Include="Content\box2d\Texture.xnb" />
-    <Content Include="Content\ccb\animated-grossini.plist.xnb" />
-    <Content Include="Content\ccb\animated-grossini.xnb" />
-    <Content Include="Content\ccb\btn-a-0.xnb" />
-    <Content Include="Content\ccb\btn-a-1.xnb" />
-    <Content Include="Content\ccb\btn-a-2.xnb" />
-    <Content Include="Content\ccb\btn-b-0.xnb" />
-    <Content Include="Content\ccb\btn-b-1.xnb" />
-    <Content Include="Content\ccb\btn-b-2.xnb" />
-    <Content Include="Content\ccb\btn-back-0.xnb" />
-    <Content Include="Content\ccb\btn-back-1.xnb" />
-    <Content Include="Content\ccb\btn-test-0.xnb" />
-    <Content Include="Content\ccb\btn-test-1.xnb" />
-    <Content Include="Content\ccb\btn-test-2.xnb" />
-    <Content Include="Content\ccb\burst.xnb" />
-    <Content Include="Content\ccb\flower.xnb" />
-    <Content Include="Content\ccb\grossini-generic.plist.xnb" />
-    <Content Include="Content\ccb\grossini-generic.xnb" />
-    <Content Include="Content\ccb\HelloCocosBuilder.ccb" />
-    <Content Include="Content\ccb\HelloCocosBuilder.ccbi" />
-    <Content Include="Content\ccb\jungle-left.xnb" />
-    <Content Include="Content\ccb\jungle-right.xnb" />
-    <Content Include="Content\ccb\jungle.xnb" />
-    <Content Include="Content\ccb\logo-icon.xnb" />
-    <Content Include="Content\ccb\logo.xnb" />
-    <Content Include="Content\ccb\markerfelt24shadow.fnt.xnb" />
-    <Content Include="Content\ccb\markerfelt24shadow.xnb" />
-    <Content Include="Content\ccb\particle-fire.xnb" />
-    <Content Include="Content\ccb\particle-smoke.xnb" />
-    <Content Include="Content\ccb\particle-snow.xnb" />
-    <Content Include="Content\ccb\particle-stars.xnb" />
-    <Content Include="Content\ccb\scale-9-demo.xnb" />
-    <Content Include="Content\ccb\ccb\TestAnimations.ccb" />
-    <Content Include="Content\ccb\ccb\TestAnimations.ccbi" />
-    <Content Include="Content\ccb\ccb\TestAnimationsSub.ccb" />
-    <Content Include="Content\ccb\ccb\TestAnimationsSub.ccbi" />
-    <Content Include="Content\ccb\ccb\TestButtons.ccb" />
-    <Content Include="Content\ccb\ccb\TestButtons.ccbi" />
-    <Content Include="Content\ccb\ccb\TestHeader.ccb" />
-    <Content Include="Content\ccb\ccb\TestHeader.ccbi" />
-    <Content Include="Content\ccb\ccb\TestLabels.ccb" />
-    <Content Include="Content\ccb\ccb\TestLabels.ccbi" />
-    <Content Include="Content\ccb\ccb\TestMenus.ccb" />
-    <Content Include="Content\ccb\ccb\TestMenus.ccbi" />
-    <Content Include="Content\ccb\ccb\TestParticleSystems.ccb" />
-    <Content Include="Content\ccb\ccb\TestParticleSystems.ccbi" />
-    <Content Include="Content\ccb\ccb\TestScrollViews.ccb" />
-    <Content Include="Content\ccb\ccb\TestScrollViews.ccbi" />
-    <Content Include="Content\ccb\ccb\TestScrollViewsContentA.ccb" />
-    <Content Include="Content\ccb\ccb\TestScrollViewsContentA.ccbi" />
-    <Content Include="Content\ccb\ccb\TestSprites.ccb" />
-    <Content Include="Content\ccb\ccb\TestSprites.ccbi" />
-    <Content Include="Content\extensions\background.xnb" />
-    <Content Include="Content\extensions\button.xnb" />
-    <Content Include="Content\extensions\buttonBackground.xnb" />
-    <Content Include="Content\extensions\buttonHighlighted.xnb" />
-    <Content Include="Content\extensions\green_edit.xnb" />
-    <Content Include="Content\extensions\orange_edit.xnb" />
-    <Content Include="Content\extensions\ribbon.xnb" />
-    <Content Include="Content\extensions\sliderProgress.xnb" />
-    <Content Include="Content\extensions\sliderProgress2.xnb" />
-    <Content Include="Content\extensions\sliderThumb.xnb" />
-    <Content Include="Content\extensions\sliderTrack.xnb" />
-    <Content Include="Content\extensions\sliderTrack2.xnb" />
-    <Content Include="Content\extensions\switch-mask.xnb" />
-    <Content Include="Content\extensions\switch-off.xnb" />
-    <Content Include="Content\extensions\switch-on.xnb" />
-    <Content Include="Content\extensions\switch-thumb.xnb" />
-    <Content Include="Content\extensions\yellow_edit.xnb" />
-    <Content Include="Content\fonts\A Damn Mess-26.xnb" />
-    <Content Include="Content\fonts\Abberancy-26.xnb" />
-    <Content Include="Content\fonts\Abduction-26.xnb" />
-    <Content Include="Content\fonts\arial-12.xnb" />
-    <Content Include="Content\fonts\arial-16.xnb" />
-    <Content Include="Content\fonts\arial-18.xnb" />
-    <Content Include="Content\fonts\arial-20.xnb" />
-    <Content Include="Content\fonts\arial-22.xnb" />
-    <Content Include="Content\fonts\arial-24.xnb" />
-    <Content Include="Content\fonts\arial-26.xnb" />
-    <Content Include="Content\fonts\arial-28.xnb" />
-    <Content Include="Content\fonts\arial-30.xnb" />
-    <Content Include="Content\fonts\arial-32.xnb" />
-    <Content Include="Content\fonts\arial-34.xnb" />
-    <Content Include="Content\fonts\arial-38.xnb" />
-    <Content Include="Content\fonts\arial-50.xnb" />
-    <Content Include="Content\fonts\arial-64.xnb" />
-    <Content Include="Content\fonts\arial-unicode-26.fnt.xnb" />
-    <Content Include="Content\fonts\arial-unicode-26.xnb" />
-    <Content Include="Content\fonts\Arial.xnb" />
-    <Content Include="Content\fonts\arial16.fnt.xnb" />
-    <Content Include="Content\fonts\arial16.xnb" />
-    <Content Include="Content\fonts\bitmapFontChinese.fnt.xnb" />
-    <Content Include="Content\fonts\bitmapFontChinese.xnb" />
-    <Content Include="Content\fonts\bitmapFontTest.fnt.xnb" />
-    <Content Include="Content\fonts\bitmapFontTest.xnb" />
-    <Content Include="Content\fonts\bitmapFontTest2.fnt.xnb" />
-    <Content Include="Content\fonts\bitmapFontTest2.xnb" />
-    <Content Include="Content\fonts\bitmapFontTest3.fnt.xnb" />
-    <Content Include="Content\fonts\bitmapFontTest3.xnb" />
-    <Content Include="Content\fonts\bitmapFontTest4.fnt.xnb" />
-    <Content Include="Content\fonts\bitmapFontTest4.xnb" />
-    <Content Include="Content\fonts\bitmapFontTest5.fnt.xnb" />
-    <Content Include="Content\fonts\bitmapFontTest5.xnb" />
-    <Content Include="Content\fonts\debugfont.xnb" />
-    <Content Include="Content\fonts\font-issue1343-hd.fnt.xnb" />
-    <Content Include="Content\fonts\font-issue1343-hd.xnb" />
-    <Content Include="Content\fonts\font-issue1343.fnt.xnb" />
-    <Content Include="Content\fonts\font-issue1343.xnb" />
-    <Content Include="Content\fonts\futura-48.fnt.xnb" />
-    <Content Include="Content\fonts\futura-48.xnb" />
-    <Content Include="Content\fonts\geneva-32.fnt.xnb" />
-    <Content Include="Content\fonts\helvetica-32.fnt.xnb" />
-    <Content Include="Content\fonts\helvetica-geneva-32.xnb" />
-    <Content Include="Content\fonts\konqa32.fnt.xnb" />
-    <Content Include="Content\fonts\konqa32.xnb" />
-    <Content Include="Content\fonts\labelatlas.xnb" />
-    <Content Include="Content\fonts\larabie-16.plist.xnb" />
-    <Content Include="Content\fonts\larabie-16.xnb" />
-    <Content Include="Content\fonts\markerFelt.fnt.xnb" />
-    <Content Include="Content\fonts\markerFelt.xnb" />
-    <Content Include="Content\fonts\Paint Boy-26.xnb" />
-    <Content Include="Content\fonts\Schwarzwald Regular-26.xnb" />
-    <Content Include="Content\fonts\Scissor Cuts-26.xnb" />
-    <Content Include="Content\fonts\strings.plist.xnb" />
-    <Content Include="Content\fonts\tuffy_bold_italic-charmap.plist.xnb" />
-    <Content Include="Content\fonts\tuffy_bold_italic-charmap.xnb" />
-    <Content Include="Content\fonts\west_england-64.fnt.xnb" />
-    <Content Include="Content\fonts\west_england-64.xnb" />
-    <Content Include="Content\Images\aButton.xnb" />
-    <Content Include="Content\Images\arrows.xnb" />
-    <Content Include="Content\Images\arrowsBar.xnb" />
-    <Content Include="Content\Images\atlastest.xnb" />
-    <Content Include="Content\Images\b1-hd.xnb" />
-    <Content Include="Content\Images\b1.xnb" />
-    <Content Include="Content\Images\b2-hd.xnb" />
-    <Content Include="Content\Images\b2.xnb" />
-    <Content Include="Content\Images\background.xnb" />
-    <Content Include="Content\Images\background1-hd.xnb" />
-    <Content Include="Content\Images\background1.xnb" />
-    <Content Include="Content\Images\background2-hd.xnb" />
-    <Content Include="Content\Images\background2.xnb" />
-    <Content Include="Content\Images\background3-hd.xnb" />
-    <Content Include="Content\Images\background3.xnb" />
-    <Content Include="Content\Images\ball-hd.xnb" />
-    <Content Include="Content\Images\ball.xnb" />
-    <Content Include="Content\Images\bButton.xnb" />
-    <Content Include="Content\Images\bitmapFontTest3.xnb" />
-    <Content Include="Content\Images\blocks-hd.xnb" />
-    <Content Include="Content\Images\blocks.xnb" />
-    <Content Include="Content\Images\BoilingFoam.xnb" />
-    <Content Include="Content\Images\btn-about-normal.xnb" />
-    <Content Include="Content\Images\btn-about-selected.xnb" />
-    <Content Include="Content\Images\btn-highscores-normal.xnb" />
-    <Content Include="Content\Images\btn-highscores-selected.xnb" />
-    <Content Include="Content\Images\btn-play-normal.xnb" />
-    <Content Include="Content\Images\btn-play-selected.xnb" />
-    <Content Include="Content\Images\BurstPipe.xnb" />
-    <Content Include="Content\Images\close-hd.xnb" />
-    <Content Include="Content\Images\close.xnb" />
-    <Content Include="Content\Images\Comet.xnb" />
-    <Content Include="Content\Images\CometPlist.xnb" />
-    <Content Include="Content\Images\debian.xnb" />
-    <Content Include="Content\Images\ExplodingRing.xnb" />
-    <Content Include="Content\Images\f1-hd.xnb" />
-    <Content Include="Content\Images\f1.xnb" />
-    <Content Include="Content\Images\f2-hd.xnb" />
-    <Content Include="Content\Images\f2.xnb" />
-    <Content Include="Content\Images\fire-grayscale.xnb" />
-    <Content Include="Content\Images\fire.xnb" />
-    <Content Include="Content\Images\FlowerPlist.xnb" />
-    <Content Include="Content\Images\Fog.xnb" />
-    <Content Include="Content\Images\fps_Images.xnb" />
-    <Content Include="Content\Images\GalaxyPlist.xnb" />
-    <Content Include="Content\Images\grossini-hd.xnb" />
-    <Content Include="Content\Images\grossini.xnb" />
-    <Content Include="Content\Images\grossinis_sister1-hd.xnb" />
-    <Content Include="Content\Images\grossinis_sister1-testalpha.xnb" />
-    <Content Include="Content\Images\grossinis_sister1.xnb" />
-    <Content Include="Content\Images\grossinis_sister2-hd.xnb" />
-    <Content Include="Content\Images\grossinis_sister2.xnb" />
-    <Content Include="Content\Images\grossini_dance_01.xnb" />
-    <Content Include="Content\Images\grossini_dance_02.xnb" />
-    <Content Include="Content\Images\grossini_dance_03.xnb" />
-    <Content Include="Content\Images\grossini_dance_04.xnb" />
-    <Content Include="Content\Images\grossini_dance_05.xnb" />
-    <Content Include="Content\Images\grossini_dance_06.xnb" />
-    <Content Include="Content\Images\grossini_dance_07.xnb" />
-    <Content Include="Content\Images\grossini_dance_08.xnb" />
-    <Content Include="Content\Images\grossini_dance_09.xnb" />
-    <Content Include="Content\Images\grossini_dance_10.xnb" />
-    <Content Include="Content\Images\grossini_dance_11.xnb" />
-    <Content Include="Content\Images\grossini_dance_12.xnb" />
-    <Content Include="Content\Images\grossini_dance_13.xnb" />
-    <Content Include="Content\Images\grossini_dance_14.xnb" />
-    <Content Include="Content\Images\grossini_dance_atlas-hd.xnb" />
-    <Content Include="Content\Images\grossini_dance_atlas-mono.xnb" />
-    <Content Include="Content\Images\grossini_dance_atlas.xnb" />
-    <Content Include="Content\Images\grossini_dance_atlas_nomipmap.xnb" />
-    <Content Include="Content\Images\HelloWorld.xnb" />
-    <Content Include="Content\Images\Icon.xnb" />
-    <Content Include="Content\Images\landscape-1024x1024.xnb" />
-    <Content Include="Content\Images\LavaFlow.xnb" />
-    <Content Include="Content\Images\menuitemsprite.xnb" />
-    <Content Include="Content\Images\paddle-hd.xnb" />
-    <Content Include="Content\Images\paddle.xnb" />
-    <Content Include="Content\Images\particles-hd.xnb" />
-    <Content Include="Content\Images\particles.xnb" />
-    <Content Include="Content\Images\pattern1.xnb" />
-    <Content Include="Content\Images\Pea.xnb" />
-    <Content Include="Content\Images\Phoenix.xnb" />
-    <Content Include="Content\Images\piece.xnb" />
-    <Content Include="Content\Images\PlanetCute-1024x1024.xnb" />
-    <Content Include="Content\Images\powered.xnb" />
-    <Content Include="Content\Images\r1-hd.xnb" />
-    <Content Include="Content\Images\r1.xnb" />
-    <Content Include="Content\Images\r2-hd.xnb" />
-    <Content Include="Content\Images\r2.xnb" />
-    <Content Include="Content\Images\SendScoreButton.xnb" />
-    <Content Include="Content\Images\SendScoreButtonPressed.xnb" />
-    <Content Include="Content\Images\snow.xnb" />
-    <Content Include="Content\Images\SpinningPeas.xnb" />
-    <Content Include="Content\Images\SpinningPeasPlist.xnb" />
-    <Content Include="Content\Images\Spiral.xnb" />
-    <Content Include="Content\Images\SpookyPeas.xnb" />
-    <Content Include="Content\Images\SpookyPeasPlist.xnb" />
-    <Content Include="Content\Images\spritesheet1.xnb" />
-    <Content Include="Content\Images\stars-grayscale.xnb" />
-    <Content Include="Content\Images\stars.xnb" />
-    <Content Include="Content\Images\stars2-grayscale.xnb" />
-    <Content Include="Content\Images\stars2.xnb" />
-    <Content Include="Content\Images\streak.xnb" />
-    <Content Include="Content\Images\test-rgba1.xnb" />
-    <Content Include="Content\Images\test_blend.xnb" />
-    <Content Include="Content\Images\test_image.xnb" />
-    <Content Include="Content\Images\texture1024x1024.xnb" />
-    <Content Include="Content\Images\texture2048x2048.xnb" />
-    <Content Include="Content\Images\texture512x512.xnb" />
-    <Content Include="Content\Images\Upsidedown.xnb" />
-    <Content Include="Content\Images\white-512x512.xnb" />
-    <Content Include="Content\Images\bugs\bug886.xnb" />
-    <Content Include="Content\Images\bugs\bug886_.xnb" />
-    <Content Include="Content\Images\bugs\circle.plist.xnb" />
-    <Content Include="Content\Images\bugs\circle.xnb" />
-    <Content Include="Content\Images\bugs\corner.xnb" />
-    <Content Include="Content\Images\bugs\edge.xnb" />
-    <Content Include="Content\Images\bugs\fill.xnb" />
-    <Content Include="Content\Images\bugs\picture.xnb" />
-    <Content Include="Content\Images\bugs\RetinaDisplay.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-0-0.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-0-1.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-0-2.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-0-3.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-0-4.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-0-5.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-0-6.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-0-7.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-1-0.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-1-1.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-1-2.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-1-3.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-1-4.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-1-5.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-1-6.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-1-7.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-2-0.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-2-1.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-2-2.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-2-3.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-2-4.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-2-5.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-2-6.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-2-7.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-3-0.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-3-1.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-3-2.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-3-3.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-3-4.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-3-5.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-3-6.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-3-7.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-4-0.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-4-1.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-4-2.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-4-3.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-4-4.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-4-5.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-4-6.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-4-7.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-5-0.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-5-1.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-5-2.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-5-3.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-5-4.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-5-5.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-5-6.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-5-7.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-6-0.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-6-1.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-6-2.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-6-3.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-6-4.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-6-5.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-6-6.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-6-7.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-7-0.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-7-1.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-7-2.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-7-3.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-7-4.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-7-5.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-7-6.xnb" />
-    <Content Include="Content\Images\sprites_test\sprite-7-7.xnb" />
-    <Content Include="Content\Particles\BoilingFoam.xnb" />
-    <Content Include="Content\Particles\BurstPipe.xnb" />
-    <Content Include="Content\Particles\Comet.xnb" />
-    <Content Include="Content\Particles\debian.xnb" />
-    <Content Include="Content\Particles\ExplodingRing.xnb" />
-    <Content Include="Content\Particles\Flower.xnb" />
-    <Content Include="Content\Particles\Galaxy.xnb" />
-    <Content Include="Content\Particles\LavaFlow.xnb" />
-    <Content Include="Content\Particles\particleTexture.xnb" />
-    <Content Include="Content\Particles\Phoenix.xnb" />
-    <Content Include="Content\Particles\SmallSun.xnb" />
-    <Content Include="Content\Particles\SpinningPeas.xnb" />
-    <Content Include="Content\Particles\Spiral.xnb" />
-    <Content Include="Content\Particles\SpookyPeas.xnb" />
-    <Content Include="Content\Particles\TestPremultipliedAlpha.xnb" />
-    <Content Include="Content\Particles\Upsidedown.xnb" />
-    <Content Include="Content\Sounds\background.mp3" />
-    <Content Include="Content\Sounds\effect1.xnb" />
-    <Content Include="Content\TileMaps\arial16.xnb" />
-    <Content Include="Content\TileMaps\fixed-ortho-test2.xnb" />
-    <Content Include="Content\TileMaps\hexa-test1.xnb" />
-    <Content Include="Content\TileMaps\hexa-tiles.xnb" />
-    <Content Include="Content\TileMaps\iso-test-bug787.xnb" />
-    <Content Include="Content\TileMaps\iso-test-movelayer.xnb" />
-    <Content Include="Content\TileMaps\iso-test-objectgroup.xnb" />
-    <Content Include="Content\TileMaps\iso-test-vertexz.xnb" />
-    <Content Include="Content\TileMaps\iso-test-zorder.xnb" />
-    <Content Include="Content\TileMaps\iso-test.xnb" />
-    <Content Include="Content\TileMaps\iso-test01.xnb" />
-    <Content Include="Content\TileMaps\iso-test1.xnb" />
-    <Content Include="Content\TileMaps\iso-test11.xnb" />
-    <Content Include="Content\TileMaps\iso-test2-uncompressed.xnb" />
-    <Content Include="Content\TileMaps\iso-test2.xnb" />
-    <Content Include="Content\TileMaps\iso-test22.xnb" />
-    <Content Include="Content\TileMaps\iso.xnb" />
-    <Content Include="Content\TileMaps\levelmap.xnb" />
-    <Content Include="Content\TileMaps\ortho-objects.xnb" />
-    <Content Include="Content\TileMaps\ortho-rotation-test.xnb" />
-    <Content Include="Content\TileMaps\ortho-test1.xnb" />
-    <Content Include="Content\TileMaps\ortho-test1_bw.xnb" />
-    <Content Include="Content\TileMaps\ortho-test2.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test-movelayer.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test-vertexz.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test-zorder.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test1-tsx.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test1.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test11.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test2.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test3.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test4-hd.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test4.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test5.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test6-hd.xnb" />
-    <Content Include="Content\TileMaps\orthogonal-test6.xnb" />
-    <Content Include="Content\TileMaps\test-object-layer.xnb" />
-    <Content Include="Content\TileMaps\tiles-hd.xnb" />
-    <Content Include="Content\TileMaps\tiles.xnb" />
-    <Content Include="Content\TileMaps\tmw_desert_spacing-hd.xnb" />
-    <Content Include="Content\TileMaps\tmw_desert_spacing.xnb" />
-    <Content Include="Content\zwoptex\grossini-generic.plist.xnb" />
-    <Content Include="Content\zwoptex\grossini-generic.xnb" />
-    <Content Include="Content\zwoptex\grossini.plist.xnb" />
-    <Content Include="Content\zwoptex\grossini.xnb" />
     <Content Include="PhoneGameThumb_iPad.png" />
     <Content Include="PhoneGameThumb_iPhone.png" />
     <Content Include="PhoneGameThumb.png" />
+    <Content Include="Assets\Content\fonts\A Damn Mess-26.xnb">
+      <Link>Content\fonts\A Damn Mess-26.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Abberancy-26.xnb">
+      <Link>Content\fonts\Abberancy-26.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Abduction-26.xnb">
+      <Link>Content\fonts\Abduction-26.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Arial.xnb">
+      <Link>Content\fonts\Arial.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Paint Boy-26.xnb">
+      <Link>Content\fonts\Paint Boy-26.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Schwarzwald Regular-26.xnb">
+      <Link>Content\fonts\Schwarzwald Regular-26.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Scissor Cuts-26.xnb">
+      <Link>Content\fonts\Scissor Cuts-26.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-12.xnb">
+      <Link>Content\fonts\arial-12.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-16.xnb">
+      <Link>Content\fonts\arial-16.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-18.xnb">
+      <Link>Content\fonts\arial-18.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-20.xnb">
+      <Link>Content\fonts\arial-20.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-22.xnb">
+      <Link>Content\fonts\arial-22.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-24.xnb">
+      <Link>Content\fonts\arial-24.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-26.xnb">
+      <Link>Content\fonts\arial-26.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-28.xnb">
+      <Link>Content\fonts\arial-28.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-30.xnb">
+      <Link>Content\fonts\arial-30.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-32.xnb">
+      <Link>Content\fonts\arial-32.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-34.xnb">
+      <Link>Content\fonts\arial-34.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-38.xnb">
+      <Link>Content\fonts\arial-38.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-50.xnb">
+      <Link>Content\fonts\arial-50.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-64.xnb">
+      <Link>Content\fonts\arial-64.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-unicode-26.fnt.xnb">
+      <Link>Content\fonts\arial-unicode-26.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-unicode-26.xnb">
+      <Link>Content\fonts\arial-unicode-26.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial16.fnt.xnb">
+      <Link>Content\fonts\arial16.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial16.xnb">
+      <Link>Content\fonts\arial16.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontChinese.fnt.xnb">
+      <Link>Content\fonts\bitmapFontChinese.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontChinese.xnb">
+      <Link>Content\fonts\bitmapFontChinese.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontTest.fnt.xnb">
+      <Link>Content\fonts\bitmapFontTest.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontTest.xnb">
+      <Link>Content\fonts\bitmapFontTest.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontTest2.fnt.xnb">
+      <Link>Content\fonts\bitmapFontTest2.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontTest2.xnb">
+      <Link>Content\fonts\bitmapFontTest2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontTest3.fnt.xnb">
+      <Link>Content\fonts\bitmapFontTest3.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontTest3.xnb">
+      <Link>Content\fonts\bitmapFontTest3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontTest4.fnt.xnb">
+      <Link>Content\fonts\bitmapFontTest4.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontTest4.xnb">
+      <Link>Content\fonts\bitmapFontTest4.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontTest5.fnt.xnb">
+      <Link>Content\fonts\bitmapFontTest5.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\bitmapFontTest5.xnb">
+      <Link>Content\fonts\bitmapFontTest5.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\debugfont.xnb">
+      <Link>Content\fonts\debugfont.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\font-issue1343-hd.fnt.xnb">
+      <Link>Content\fonts\font-issue1343-hd.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\font-issue1343-hd.xnb">
+      <Link>Content\fonts\font-issue1343-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\font-issue1343.fnt.xnb">
+      <Link>Content\fonts\font-issue1343.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\font-issue1343.xnb">
+      <Link>Content\fonts\font-issue1343.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\futura-48.fnt.xnb">
+      <Link>Content\fonts\futura-48.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\futura-48.xnb">
+      <Link>Content\fonts\futura-48.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\geneva-32.fnt.xnb">
+      <Link>Content\fonts\geneva-32.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\helvetica-32.fnt.xnb">
+      <Link>Content\fonts\helvetica-32.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\helvetica-geneva-32.xnb">
+      <Link>Content\fonts\helvetica-geneva-32.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\konqa32.fnt.xnb">
+      <Link>Content\fonts\konqa32.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\konqa32.xnb">
+      <Link>Content\fonts\konqa32.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\labelatlas.xnb">
+      <Link>Content\fonts\labelatlas.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\larabie-16.plist.xnb">
+      <Link>Content\fonts\larabie-16.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\larabie-16.xnb">
+      <Link>Content\fonts\larabie-16.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\markerFelt.fnt.xnb">
+      <Link>Content\fonts\markerFelt.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\markerFelt.xnb">
+      <Link>Content\fonts\markerFelt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\strings.plist.xnb">
+      <Link>Content\fonts\strings.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\tuffy_bold_italic-charmap.plist.xnb">
+      <Link>Content\fonts\tuffy_bold_italic-charmap.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\tuffy_bold_italic-charmap.xnb">
+      <Link>Content\fonts\tuffy_bold_italic-charmap.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\west_england-64.fnt.xnb">
+      <Link>Content\fonts\west_england-64.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\west_england-64.xnb">
+      <Link>Content\fonts\west_england-64.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\BoilingFoam.xnb">
+      <Link>Content\Images\BoilingFoam.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\BurstPipe.xnb">
+      <Link>Content\Images\BurstPipe.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\Comet.xnb">
+      <Link>Content\Images\Comet.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\CometPlist.xnb">
+      <Link>Content\Images\CometPlist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\ExplodingRing.xnb">
+      <Link>Content\Images\ExplodingRing.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\FlowerPlist.xnb">
+      <Link>Content\Images\FlowerPlist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\Fog.xnb">
+      <Link>Content\Images\Fog.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\GalaxyPlist.xnb">
+      <Link>Content\Images\GalaxyPlist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\arrows.xnb">
+      <Link>Content\Images\arrows.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\arrowsBar.xnb">
+      <Link>Content\Images\arrowsBar.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\atlastest.xnb">
+      <Link>Content\Images\atlastest.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\b1-hd.xnb">
+      <Link>Content\Images\b1-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\b1.xnb">
+      <Link>Content\Images\b1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\b2-hd.xnb">
+      <Link>Content\Images\b2-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\b2.xnb">
+      <Link>Content\Images\b2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\background.xnb">
+      <Link>Content\Images\background.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\background1-hd.xnb">
+      <Link>Content\Images\background1-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\background1.xnb">
+      <Link>Content\Images\background1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\background2-hd.xnb">
+      <Link>Content\Images\background2-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\background2.xnb">
+      <Link>Content\Images\background2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\background3-hd.xnb">
+      <Link>Content\Images\background3-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\background3.xnb">
+      <Link>Content\Images\background3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\ball-hd.xnb">
+      <Link>Content\Images\ball-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\ball.xnb">
+      <Link>Content\Images\ball.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\bitmapFontTest3.xnb">
+      <Link>Content\Images\bitmapFontTest3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\blocks-hd.xnb">
+      <Link>Content\Images\blocks-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\blocks.xnb">
+      <Link>Content\Images\blocks.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\btn-about-normal.xnb">
+      <Link>Content\Images\btn-about-normal.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\btn-about-selected.xnb">
+      <Link>Content\Images\btn-about-selected.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\btn-highscores-normal.xnb">
+      <Link>Content\Images\btn-highscores-normal.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\btn-highscores-selected.xnb">
+      <Link>Content\Images\btn-highscores-selected.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\btn-play-normal.xnb">
+      <Link>Content\Images\btn-play-normal.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\btn-play-selected.xnb">
+      <Link>Content\Images\btn-play-selected.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\close-hd.xnb">
+      <Link>Content\Images\close-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\close.xnb">
+      <Link>Content\Images\close.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\debian.xnb">
+      <Link>Content\Images\debian.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\f1-hd.xnb">
+      <Link>Content\Images\f1-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\f1.xnb">
+      <Link>Content\Images\f1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\f2-hd.xnb">
+      <Link>Content\Images\f2-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\f2.xnb">
+      <Link>Content\Images\f2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\fire-grayscale.xnb">
+      <Link>Content\Images\fire-grayscale.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\fire.xnb">
+      <Link>Content\Images\fire.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\fps_images.xnb">
+      <Link>Content\Images\fps_images.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini.xnb">
+      <Link>Content\Images\grossini.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\HelloWorld.xnb">
+      <Link>Content\Images\HelloWorld.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\Icon.xnb">
+      <Link>Content\Images\Icon.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\LavaFlow.xnb">
+      <Link>Content\Images\LavaFlow.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\Pea.xnb">
+      <Link>Content\Images\Pea.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\Phoenix.xnb">
+      <Link>Content\Images\Phoenix.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\PlanetCute-1024x1024.xnb">
+      <Link>Content\Images\PlanetCute-1024x1024.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\SendScoreButton.xnb">
+      <Link>Content\Images\SendScoreButton.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\SendScoreButtonPressed.xnb">
+      <Link>Content\Images\SendScoreButtonPressed.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\SpinningPeas.xnb">
+      <Link>Content\Images\SpinningPeas.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\SpinningPeasPlist.xnb">
+      <Link>Content\Images\SpinningPeasPlist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\Spiral.xnb">
+      <Link>Content\Images\Spiral.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini-hd.xnb">
+      <Link>Content\Images\grossini-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_01.xnb">
+      <Link>Content\Images\grossini_dance_01.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_02.xnb">
+      <Link>Content\Images\grossini_dance_02.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_03.xnb">
+      <Link>Content\Images\grossini_dance_03.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_04.xnb">
+      <Link>Content\Images\grossini_dance_04.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_05.xnb">
+      <Link>Content\Images\grossini_dance_05.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_06.xnb">
+      <Link>Content\Images\grossini_dance_06.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_07.xnb">
+      <Link>Content\Images\grossini_dance_07.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_08.xnb">
+      <Link>Content\Images\grossini_dance_08.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_09.xnb">
+      <Link>Content\Images\grossini_dance_09.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_10.xnb">
+      <Link>Content\Images\grossini_dance_10.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_11.xnb">
+      <Link>Content\Images\grossini_dance_11.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_12.xnb">
+      <Link>Content\Images\grossini_dance_12.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_13.xnb">
+      <Link>Content\Images\grossini_dance_13.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_14.xnb">
+      <Link>Content\Images\grossini_dance_14.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_atlas-hd.xnb">
+      <Link>Content\Images\grossini_dance_atlas-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_atlas-mono.xnb">
+      <Link>Content\Images\grossini_dance_atlas-mono.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_atlas.xnb">
+      <Link>Content\Images\grossini_dance_atlas.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossini_dance_atlas_nomipmap.xnb">
+      <Link>Content\Images\grossini_dance_atlas_nomipmap.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossinis_sister1-hd.xnb">
+      <Link>Content\Images\grossinis_sister1-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossinis_sister1-testalpha.xnb">
+      <Link>Content\Images\grossinis_sister1-testalpha.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossinis_sister1.xnb">
+      <Link>Content\Images\grossinis_sister1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossinis_sister2-hd.xnb">
+      <Link>Content\Images\grossinis_sister2-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\grossinis_sister2.xnb">
+      <Link>Content\Images\grossinis_sister2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\landscape-1024x1024.xnb">
+      <Link>Content\Images\landscape-1024x1024.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\menuitemsprite.xnb">
+      <Link>Content\Images\menuitemsprite.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\paddle-hd.xnb">
+      <Link>Content\Images\paddle-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\paddle.xnb">
+      <Link>Content\Images\paddle.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\particles-hd.xnb">
+      <Link>Content\Images\particles-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\particles.xnb">
+      <Link>Content\Images\particles.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\pattern1.xnb">
+      <Link>Content\Images\pattern1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\piece.xnb">
+      <Link>Content\Images\piece.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\powered.xnb">
+      <Link>Content\Images\powered.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\r1-hd.xnb">
+      <Link>Content\Images\r1-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\r1.xnb">
+      <Link>Content\Images\r1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\r2-hd.xnb">
+      <Link>Content\Images\r2-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\r2.xnb">
+      <Link>Content\Images\r2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\snow.xnb">
+      <Link>Content\Images\snow.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\SpookyPeas.xnb">
+      <Link>Content\Images\SpookyPeas.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\SpookyPeasPlist.xnb">
+      <Link>Content\Images\SpookyPeasPlist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\Upsidedown.xnb">
+      <Link>Content\Images\Upsidedown.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\spritesheet1.xnb">
+      <Link>Content\Images\spritesheet1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\stars-grayscale.xnb">
+      <Link>Content\Images\stars-grayscale.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\stars.xnb">
+      <Link>Content\Images\stars.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\stars2-grayscale.xnb">
+      <Link>Content\Images\stars2-grayscale.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\stars2.xnb">
+      <Link>Content\Images\stars2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\streak.xnb">
+      <Link>Content\Images\streak.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\test-rgba1.xnb">
+      <Link>Content\Images\test-rgba1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\test_blend.xnb">
+      <Link>Content\Images\test_blend.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\test_image.xnb">
+      <Link>Content\Images\test_image.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\texture1024x1024.xnb">
+      <Link>Content\Images\texture1024x1024.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\texture2048x2048.xnb">
+      <Link>Content\Images\texture2048x2048.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\texture512x512.xnb">
+      <Link>Content\Images\texture512x512.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\white-512x512.xnb">
+      <Link>Content\Images\white-512x512.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-0-0.xnb">
+      <Link>Content\Images\sprites_test\sprite-0-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-0-1.xnb">
+      <Link>Content\Images\sprites_test\sprite-0-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-0-2.xnb">
+      <Link>Content\Images\sprites_test\sprite-0-2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-0-3.xnb">
+      <Link>Content\Images\sprites_test\sprite-0-3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-0-4.xnb">
+      <Link>Content\Images\sprites_test\sprite-0-4.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-0-5.xnb">
+      <Link>Content\Images\sprites_test\sprite-0-5.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-0-6.xnb">
+      <Link>Content\Images\sprites_test\sprite-0-6.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-0-7.xnb">
+      <Link>Content\Images\sprites_test\sprite-0-7.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-1-0.xnb">
+      <Link>Content\Images\sprites_test\sprite-1-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-1-1.xnb">
+      <Link>Content\Images\sprites_test\sprite-1-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-1-2.xnb">
+      <Link>Content\Images\sprites_test\sprite-1-2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-1-3.xnb">
+      <Link>Content\Images\sprites_test\sprite-1-3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-1-4.xnb">
+      <Link>Content\Images\sprites_test\sprite-1-4.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-1-5.xnb">
+      <Link>Content\Images\sprites_test\sprite-1-5.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-1-6.xnb">
+      <Link>Content\Images\sprites_test\sprite-1-6.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-1-7.xnb">
+      <Link>Content\Images\sprites_test\sprite-1-7.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-2-0.xnb">
+      <Link>Content\Images\sprites_test\sprite-2-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-2-1.xnb">
+      <Link>Content\Images\sprites_test\sprite-2-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-2-2.xnb">
+      <Link>Content\Images\sprites_test\sprite-2-2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-2-3.xnb">
+      <Link>Content\Images\sprites_test\sprite-2-3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-2-4.xnb">
+      <Link>Content\Images\sprites_test\sprite-2-4.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-2-5.xnb">
+      <Link>Content\Images\sprites_test\sprite-2-5.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-2-6.xnb">
+      <Link>Content\Images\sprites_test\sprite-2-6.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-2-7.xnb">
+      <Link>Content\Images\sprites_test\sprite-2-7.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-3-0.xnb">
+      <Link>Content\Images\sprites_test\sprite-3-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-3-1.xnb">
+      <Link>Content\Images\sprites_test\sprite-3-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-3-2.xnb">
+      <Link>Content\Images\sprites_test\sprite-3-2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-3-3.xnb">
+      <Link>Content\Images\sprites_test\sprite-3-3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-3-4.xnb">
+      <Link>Content\Images\sprites_test\sprite-3-4.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-3-5.xnb">
+      <Link>Content\Images\sprites_test\sprite-3-5.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-3-6.xnb">
+      <Link>Content\Images\sprites_test\sprite-3-6.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-3-7.xnb">
+      <Link>Content\Images\sprites_test\sprite-3-7.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-4-0.xnb">
+      <Link>Content\Images\sprites_test\sprite-4-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-4-1.xnb">
+      <Link>Content\Images\sprites_test\sprite-4-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-4-2.xnb">
+      <Link>Content\Images\sprites_test\sprite-4-2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-4-3.xnb">
+      <Link>Content\Images\sprites_test\sprite-4-3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-4-4.xnb">
+      <Link>Content\Images\sprites_test\sprite-4-4.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-4-5.xnb">
+      <Link>Content\Images\sprites_test\sprite-4-5.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-4-6.xnb">
+      <Link>Content\Images\sprites_test\sprite-4-6.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-4-7.xnb">
+      <Link>Content\Images\sprites_test\sprite-4-7.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-5-0.xnb">
+      <Link>Content\Images\sprites_test\sprite-5-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-5-1.xnb">
+      <Link>Content\Images\sprites_test\sprite-5-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-5-2.xnb">
+      <Link>Content\Images\sprites_test\sprite-5-2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-5-3.xnb">
+      <Link>Content\Images\sprites_test\sprite-5-3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-5-4.xnb">
+      <Link>Content\Images\sprites_test\sprite-5-4.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-5-5.xnb">
+      <Link>Content\Images\sprites_test\sprite-5-5.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-5-6.xnb">
+      <Link>Content\Images\sprites_test\sprite-5-6.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-5-7.xnb">
+      <Link>Content\Images\sprites_test\sprite-5-7.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-6-0.xnb">
+      <Link>Content\Images\sprites_test\sprite-6-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-6-1.xnb">
+      <Link>Content\Images\sprites_test\sprite-6-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-6-2.xnb">
+      <Link>Content\Images\sprites_test\sprite-6-2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-6-3.xnb">
+      <Link>Content\Images\sprites_test\sprite-6-3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-6-4.xnb">
+      <Link>Content\Images\sprites_test\sprite-6-4.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-6-5.xnb">
+      <Link>Content\Images\sprites_test\sprite-6-5.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-6-6.xnb">
+      <Link>Content\Images\sprites_test\sprite-6-6.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-6-7.xnb">
+      <Link>Content\Images\sprites_test\sprite-6-7.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-7-0.xnb">
+      <Link>Content\Images\sprites_test\sprite-7-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-7-1.xnb">
+      <Link>Content\Images\sprites_test\sprite-7-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-7-2.xnb">
+      <Link>Content\Images\sprites_test\sprite-7-2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-7-3.xnb">
+      <Link>Content\Images\sprites_test\sprite-7-3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-7-4.xnb">
+      <Link>Content\Images\sprites_test\sprite-7-4.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-7-5.xnb">
+      <Link>Content\Images\sprites_test\sprite-7-5.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-7-6.xnb">
+      <Link>Content\Images\sprites_test\sprite-7-6.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\sprites_test\sprite-7-7.xnb">
+      <Link>Content\Images\sprites_test\sprite-7-7.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\bugs\RetinaDisplay.xnb">
+      <Link>Content\Images\bugs\RetinaDisplay.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\bugs\bug886.xnb">
+      <Link>Content\Images\bugs\bug886.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\bugs\bug886_.xnb">
+      <Link>Content\Images\bugs\bug886_.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\bugs\circle.plist.xnb">
+      <Link>Content\Images\bugs\circle.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\bugs\circle.xnb">
+      <Link>Content\Images\bugs\circle.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\bugs\corner.xnb">
+      <Link>Content\Images\bugs\corner.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\bugs\edge.xnb">
+      <Link>Content\Images\bugs\edge.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\bugs\fill.xnb">
+      <Link>Content\Images\bugs\fill.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\bugs\picture.xnb">
+      <Link>Content\Images\bugs\picture.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\BoilingFoam.xnb">
+      <Link>Content\Particles\BoilingFoam.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\BurstPipe.xnb">
+      <Link>Content\Particles\BurstPipe.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\Comet.xnb">
+      <Link>Content\Particles\Comet.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\ExplodingRing.xnb">
+      <Link>Content\Particles\ExplodingRing.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\Flower.xnb">
+      <Link>Content\Particles\Flower.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\Galaxy.xnb">
+      <Link>Content\Particles\Galaxy.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\LavaFlow.xnb">
+      <Link>Content\Particles\LavaFlow.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\Phoenix.xnb">
+      <Link>Content\Particles\Phoenix.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\SmallSun.xnb">
+      <Link>Content\Particles\SmallSun.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\SpinningPeas.xnb">
+      <Link>Content\Particles\SpinningPeas.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\Spiral.xnb">
+      <Link>Content\Particles\Spiral.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\SpookyPeas.xnb">
+      <Link>Content\Particles\SpookyPeas.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\TestPremultipliedAlpha.xnb">
+      <Link>Content\Particles\TestPremultipliedAlpha.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\Upsidedown.xnb">
+      <Link>Content\Particles\Upsidedown.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\debian.xnb">
+      <Link>Content\Particles\debian.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Particles\particleTexture.xnb">
+      <Link>Content\Particles\particleTexture.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\animations-2.plist.xnb">
+      <Link>Content\animations\animations-2.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\animations.plist.xnb">
+      <Link>Content\animations\animations.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\dragon_animation-hd.xnb">
+      <Link>Content\animations\dragon_animation-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\dragon_animation.xnb">
+      <Link>Content\animations\dragon_animation.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\ghosts.plist.xnb">
+      <Link>Content\animations\ghosts.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\ghosts.xnb">
+      <Link>Content\animations\ghosts.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\grossini-aliases.plist.xnb">
+      <Link>Content\animations\grossini-aliases.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\grossini-aliases.xnb">
+      <Link>Content\animations\grossini-aliases.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\grossini.plist.xnb">
+      <Link>Content\animations\grossini.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\grossini.xnb">
+      <Link>Content\animations\grossini.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\grossini_blue.plist.xnb">
+      <Link>Content\animations\grossini_blue.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\grossini_blue.xnb">
+      <Link>Content\animations\grossini_blue.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\grossini_family.plist.xnb">
+      <Link>Content\animations\grossini_family.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\grossini_family.xnb">
+      <Link>Content\animations\grossini_family.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\grossini_gray.plist.xnb">
+      <Link>Content\animations\grossini_gray.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\animations\grossini_gray.xnb">
+      <Link>Content\animations\grossini_gray.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\box2d\Circle.xnb">
+      <Link>Content\box2d\Circle.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\box2d\Rock.xnb">
+      <Link>Content\box2d\Rock.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\box2d\Terrain.xnb">
+      <Link>Content\box2d\Terrain.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\box2d\Texture.xnb">
+      <Link>Content\box2d\Texture.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\HelloCocosBuilder.ccb">
+      <Link>Content\ccb\HelloCocosBuilder.ccb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\HelloCocosBuilder.ccbi">
+      <Link>Content\ccb\HelloCocosBuilder.ccbi</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\animated-grossini.plist.xnb">
+      <Link>Content\ccb\animated-grossini.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\animated-grossini.xnb">
+      <Link>Content\ccb\animated-grossini.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\btn-a-0.xnb">
+      <Link>Content\ccb\btn-a-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\btn-a-1.xnb">
+      <Link>Content\ccb\btn-a-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\btn-a-2.xnb">
+      <Link>Content\ccb\btn-a-2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\btn-b-0.xnb">
+      <Link>Content\ccb\btn-b-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\btn-b-1.xnb">
+      <Link>Content\ccb\btn-b-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\btn-b-2.xnb">
+      <Link>Content\ccb\btn-b-2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\btn-back-0.xnb">
+      <Link>Content\ccb\btn-back-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\btn-back-1.xnb">
+      <Link>Content\ccb\btn-back-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\btn-test-0.xnb">
+      <Link>Content\ccb\btn-test-0.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\btn-test-1.xnb">
+      <Link>Content\ccb\btn-test-1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\btn-test-2.xnb">
+      <Link>Content\ccb\btn-test-2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\burst.xnb">
+      <Link>Content\ccb\burst.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\comic andy.ttf">
+      <Link>Content\ccb\comic andy.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\flower.xnb">
+      <Link>Content\ccb\flower.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\grossini-generic.plist.xnb">
+      <Link>Content\ccb\grossini-generic.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\grossini-generic.xnb">
+      <Link>Content\ccb\grossini-generic.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\jungle-left.xnb">
+      <Link>Content\ccb\jungle-left.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\jungle-right.xnb">
+      <Link>Content\ccb\jungle-right.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\jungle.xnb">
+      <Link>Content\ccb\jungle.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\logo-icon.xnb">
+      <Link>Content\ccb\logo-icon.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\logo.xnb">
+      <Link>Content\ccb\logo.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\markerfelt24shadow.fnt.xnb">
+      <Link>Content\ccb\markerfelt24shadow.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\markerfelt24shadow.xnb">
+      <Link>Content\ccb\markerfelt24shadow.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\particle-fire.xnb">
+      <Link>Content\ccb\particle-fire.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\particle-smoke.xnb">
+      <Link>Content\ccb\particle-smoke.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\particle-snow.xnb">
+      <Link>Content\ccb\particle-snow.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\particle-stars.xnb">
+      <Link>Content\ccb\particle-stars.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\scale-9-demo.xnb">
+      <Link>Content\ccb\scale-9-demo.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestAnimations.ccb">
+      <Link>Content\ccb\ccb\TestAnimations.ccb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestAnimations.ccbi">
+      <Link>Content\ccb\ccb\TestAnimations.ccbi</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestAnimationsSub.ccb">
+      <Link>Content\ccb\ccb\TestAnimationsSub.ccb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestAnimationsSub.ccbi">
+      <Link>Content\ccb\ccb\TestAnimationsSub.ccbi</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestButtons.ccb">
+      <Link>Content\ccb\ccb\TestButtons.ccb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestButtons.ccbi">
+      <Link>Content\ccb\ccb\TestButtons.ccbi</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestHeader.ccb">
+      <Link>Content\ccb\ccb\TestHeader.ccb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestHeader.ccbi">
+      <Link>Content\ccb\ccb\TestHeader.ccbi</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestLabels.ccb">
+      <Link>Content\ccb\ccb\TestLabels.ccb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestLabels.ccbi">
+      <Link>Content\ccb\ccb\TestLabels.ccbi</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestMenus.ccb">
+      <Link>Content\ccb\ccb\TestMenus.ccb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestMenus.ccbi">
+      <Link>Content\ccb\ccb\TestMenus.ccbi</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestParticleSystems.ccb">
+      <Link>Content\ccb\ccb\TestParticleSystems.ccb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestParticleSystems.ccbi">
+      <Link>Content\ccb\ccb\TestParticleSystems.ccbi</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestScrollViews.ccb">
+      <Link>Content\ccb\ccb\TestScrollViews.ccb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestScrollViews.ccbi">
+      <Link>Content\ccb\ccb\TestScrollViews.ccbi</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestScrollViewsContentA.ccb">
+      <Link>Content\ccb\ccb\TestScrollViewsContentA.ccb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestScrollViewsContentA.ccbi">
+      <Link>Content\ccb\ccb\TestScrollViewsContentA.ccbi</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestSprites.ccb">
+      <Link>Content\ccb\ccb\TestSprites.ccb</Link>
+    </Content>
+    <Content Include="Assets\Content\ccb\ccb\TestSprites.ccbi">
+      <Link>Content\ccb\ccb\TestSprites.ccbi</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\CCControlColourPickerSpriteSheet.plist.xnb">
+      <Link>Content\extensions\CCControlColourPickerSpriteSheet.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\CCControlColourPickerSpriteSheet.xnb">
+      <Link>Content\extensions\CCControlColourPickerSpriteSheet.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\background.xnb">
+      <Link>Content\extensions\background.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\button.xnb">
+      <Link>Content\extensions\button.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\buttonBackground.xnb">
+      <Link>Content\extensions\buttonBackground.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\buttonHighlighted.xnb">
+      <Link>Content\extensions\buttonHighlighted.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\green_edit.xnb">
+      <Link>Content\extensions\green_edit.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\orange_edit.xnb">
+      <Link>Content\extensions\orange_edit.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\ribbon.xnb">
+      <Link>Content\extensions\ribbon.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\sliderProgress.xnb">
+      <Link>Content\extensions\sliderProgress.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\sliderProgress2.xnb">
+      <Link>Content\extensions\sliderProgress2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\sliderThumb.xnb">
+      <Link>Content\extensions\sliderThumb.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\sliderTrack.xnb">
+      <Link>Content\extensions\sliderTrack.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\sliderTrack2.xnb">
+      <Link>Content\extensions\sliderTrack2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\switch-mask.xnb">
+      <Link>Content\extensions\switch-mask.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\switch-off.xnb">
+      <Link>Content\extensions\switch-off.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\switch-on.xnb">
+      <Link>Content\extensions\switch-on.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\switch-thumb.xnb">
+      <Link>Content\extensions\switch-thumb.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\extensions\yellow_edit.xnb">
+      <Link>Content\extensions\yellow_edit.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Sounds\background.wma">
+      <Link>Content\Sounds\background.wma</Link>
+    </Content>
+    <Content Include="Assets\Content\Sounds\background.xnb">
+      <Link>Content\Sounds\background.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Sounds\effect1.xnb">
+      <Link>Content\Sounds\effect1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\arial16.xnb">
+      <Link>Content\TileMaps\arial16.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\fixed-ortho-test2.xnb">
+      <Link>Content\TileMaps\fixed-ortho-test2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\hexa-test1.xnb">
+      <Link>Content\TileMaps\hexa-test1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\hexa-tiles.xnb">
+      <Link>Content\TileMaps\hexa-tiles.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test-bug787.xnb">
+      <Link>Content\TileMaps\iso-test-bug787.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test-movelayer.xnb">
+      <Link>Content\TileMaps\iso-test-movelayer.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test-objectgroup.xnb">
+      <Link>Content\TileMaps\iso-test-objectgroup.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test-vertexz.xnb">
+      <Link>Content\TileMaps\iso-test-vertexz.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test-zorder.xnb">
+      <Link>Content\TileMaps\iso-test-zorder.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test.xnb">
+      <Link>Content\TileMaps\iso-test.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test01.xnb">
+      <Link>Content\TileMaps\iso-test01.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test1.xnb">
+      <Link>Content\TileMaps\iso-test1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test11.xnb">
+      <Link>Content\TileMaps\iso-test11.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test2-uncompressed.xnb">
+      <Link>Content\TileMaps\iso-test2-uncompressed.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test2.xnb">
+      <Link>Content\TileMaps\iso-test2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso-test22.xnb">
+      <Link>Content\TileMaps\iso-test22.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\iso.xnb">
+      <Link>Content\TileMaps\iso.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\levelmap.xnb">
+      <Link>Content\TileMaps\levelmap.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\ortho-objects.xnb">
+      <Link>Content\TileMaps\ortho-objects.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\ortho-rotation-test.xnb">
+      <Link>Content\TileMaps\ortho-rotation-test.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\ortho-test1.xnb">
+      <Link>Content\TileMaps\ortho-test1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\ortho-test1_bw.xnb">
+      <Link>Content\TileMaps\ortho-test1_bw.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\ortho-test2.xnb">
+      <Link>Content\TileMaps\ortho-test2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test-movelayer.xnb">
+      <Link>Content\TileMaps\orthogonal-test-movelayer.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test-vertexz.xnb">
+      <Link>Content\TileMaps\orthogonal-test-vertexz.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test-zorder.xnb">
+      <Link>Content\TileMaps\orthogonal-test-zorder.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test1-tsx.xnb">
+      <Link>Content\TileMaps\orthogonal-test1-tsx.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test1.xnb">
+      <Link>Content\TileMaps\orthogonal-test1.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test11.xnb">
+      <Link>Content\TileMaps\orthogonal-test11.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test2.xnb">
+      <Link>Content\TileMaps\orthogonal-test2.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test3.xnb">
+      <Link>Content\TileMaps\orthogonal-test3.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test4-hd.xnb">
+      <Link>Content\TileMaps\orthogonal-test4-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test4.xnb">
+      <Link>Content\TileMaps\orthogonal-test4.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test5.xnb">
+      <Link>Content\TileMaps\orthogonal-test5.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test6-hd.xnb">
+      <Link>Content\TileMaps\orthogonal-test6-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\orthogonal-test6.xnb">
+      <Link>Content\TileMaps\orthogonal-test6.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\test-object-layer.xnb">
+      <Link>Content\TileMaps\test-object-layer.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\tiles-hd.xnb">
+      <Link>Content\TileMaps\tiles-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\tiles.xnb">
+      <Link>Content\TileMaps\tiles.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\tmw_desert_spacing-hd.xnb">
+      <Link>Content\TileMaps\tmw_desert_spacing-hd.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\TileMaps\tmw_desert_spacing.xnb">
+      <Link>Content\TileMaps\tmw_desert_spacing.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\zwoptex\grossini-generic.plist.xnb">
+      <Link>Content\zwoptex\grossini-generic.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\zwoptex\grossini-generic.xnb">
+      <Link>Content\zwoptex\grossini-generic.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\zwoptex\grossini.plist.xnb">
+      <Link>Content\zwoptex\grossini.plist.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\zwoptex\grossini.xnb">
+      <Link>Content\zwoptex\grossini.xnb</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
@@ -1496,10 +2290,6 @@
     <Compile Include="classes\tests\ExtensionsTest\TableViewTest\TableViewTestScene.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cocos2d\cocos2d.MacOS.csproj">
-      <Project>{A83510D8-7AED-411E-9616-DCFEA180969E}</Project>
-      <Name>cocos2d.MacOS</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">
       <Project>{36C538E6-C32A-4A8D-A39C-566173D7118E}</Project>
       <Name>MonoGame.Framework.MacOS</Name>
@@ -1507,6 +2297,10 @@
     <ProjectReference Include="..\..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj">
       <Project>{AE483C29-042E-4226-BA52-D247CE7676DA}</Project>
       <Name>Lidgren.Network.MacOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cocos2d\cocos2d.MacOS.csproj">
+      <Project>{A83510D8-7AED-411E-9616-DCFEA180969E}</Project>
+      <Name>cocos2d.MacOS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
@@ -1524,5 +2318,8 @@
     <None Include="Info.Mac.plist">
       <Link>Info.plist</Link>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\" />
   </ItemGroup>
 </Project>
