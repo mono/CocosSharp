@@ -25,10 +25,11 @@ namespace tests
             var pCloseItem = CCMenuItemImage.Create(TestResource.s_pPathClose, TestResource.s_pPathClose, closeCallback);
             var pMenu = CCMenu.Create(pCloseItem);
             var s = CCDirector.SharedDirector.WinSize;
-#if !XBOX && !OUYA
+#if !XBOX && !OUYA && !MONOMAC
             TouchEnabled = true;
 #else
             GamePadEnabled = true;
+			KeypadEnabled = true;
 #endif
 
             pMenu.Position = new CCPoint(0.0f, 0.0f);
@@ -52,7 +53,7 @@ namespace tests
 
                 pMenuItem.UserData = i;
                 m_pItemMenu.AddChild(pMenuItem, 10000);
-#if XBOX || OUYA
+#if XBOX || OUYA || MONOMAC
                 pMenuItem.Position = new CCPoint(s.Width / 2, -(i + 1) * LINE_SPACE);
 #else
                 pMenuItem.Position = new CCPoint(s.Width / 2, (s.Height - (i + 1) * LINE_SPACE));
@@ -61,14 +62,14 @@ namespace tests
             }
 
             m_pItemMenu.ContentSize = new CCSize(s.Width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
-#if XBOX || OUYA
+#if XBOX || OUYA || MONOMAC
             CCSprite sprite = CCSprite.Create("Images/aButton");
             AddChild(sprite, 10001);
             _menuIndicator = sprite;
             // Center the menu on the first item so that it is 
             // in the center of the screen
             _HomePosition = new CCPoint(0f, s.Height / 2f + LINE_SPACE / 2f);
-            _LastPosition = new CCPoint(0f, _HomePosition.y - (_Items.Count - 1) * LINE_SPACE);
+            _LastPosition = new CCPoint(0f, _HomePosition.Y - (_Items.Count - 1) * LINE_SPACE);
 
 #else
             _HomePosition = s_tCurPos;
@@ -80,10 +81,12 @@ namespace tests
 
             _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
             _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
+
             // set the first one to have the selection highlight
             _CurrentItemIndex = 0;
             SelectMenuItem();
         }
+
         private CCPoint _HomePosition;
         private CCPoint _LastPosition;
 

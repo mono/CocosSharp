@@ -32,9 +32,13 @@ namespace tests
             CCRenderTexture rend = CCRenderTexture.Create(32, 64);
 
             // It's possible to modify the RenderTexture blending function by
-            //		[[rend sprite] setBlendFunc:(ccBlendFunc) {GL_ONE, GL_ONE_MINUS_SRC_ALPHA}];
+            //CCBlendFunc bf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            //rend.Sprite.BlendFunc = bf;
+
             rend.Begin();
+            // A2
             spr_premulti.Visit();
+            // B2
             spr_nonpremulti.Visit();
             rend.End();
 

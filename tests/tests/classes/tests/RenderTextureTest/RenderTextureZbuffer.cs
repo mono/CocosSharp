@@ -130,8 +130,10 @@ namespace tests
 
         public void renderScreenShot()
         {
-            var texture = CCRenderTexture.Create(512, 512);
-            
+            var size = CCDirector.SharedDirector.WinSize;
+            var texture = CCRenderTexture.Create((int)size.Width, (int)size.Height);
+            //var texture = CCRenderTexture.Create(512, 512);
+
             texture.AnchorPoint = new CCPoint(0, 0);
             texture.Begin();
 
@@ -141,7 +143,8 @@ namespace tests
 
             CCSprite sprite = CCSprite.Create(texture.Sprite.Texture);
 
-            sprite.Position = new CCPoint(256, 256);
+            //sprite.Position = new CCPoint(256, 256);
+            sprite.Position = new CCPoint(size.Width/2, size.Height / 2);
             sprite.Opacity = 182;
             //sprite.IsFlipY = true;
             AddChild(sprite, 999999);

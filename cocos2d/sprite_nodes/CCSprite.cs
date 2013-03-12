@@ -332,7 +332,7 @@ namespace cocos2d
                     Color = m_sColorUnmodified;
                 }
 
-                UpdateColor(true);
+                UpdateColor();
             }
         }
 
@@ -988,42 +988,14 @@ namespace cocos2d
             }
 		}
 
-        /// <summary>
-        /// Calls UpdateColor with opacity set to false.
-        /// </summary>
         private void UpdateColor()
         {
-            UpdateColor(false);
-        }
 
-        private void UpdateColor(bool opacity)
-        {
-
-            // I placed this in an #if def for now incase the following works on other systems and do not want to break them
-#if IOS
-            if (opacity) 
-            {
-                // The following code works on iOS
-                m_sQuad.BottomLeft.Colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.BottomRight.Colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.TopLeft.Colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-                m_sQuad.TopRight.Colors = new CCColor4B(m_nOpacity, m_nOpacity, m_nOpacity, 255);
-            }
-            else 
-            {
-                m_sQuad.BottomLeft.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-                m_sQuad.BottomRight.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-                m_sQuad.TopLeft.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-                m_sQuad.TopRight.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-
-            }
-#else
 
             m_sQuad.BottomLeft.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
             m_sQuad.BottomRight.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
             m_sQuad.TopLeft.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
             m_sQuad.TopRight.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-#endif
 
             // renders using Sprite Manager
             if (m_pobBatchNode != null)
@@ -1078,7 +1050,8 @@ namespace cocos2d
                          "CCSprite: updateBlendFunc doesn't work when the sprite is rendered using a CCSpriteSheet");
 
             // it's possible to have an untextured sprite
-            if (m_pobTexture == null || !m_pobTexture.HasPremultipliedAlpha)
+            //if (m_pobTexture == null || !m_pobTexture.HasPremultipliedAlpha)
+            if (m_pobTexture == null)  // || !m_pobTexture.HasPremultipliedAlpha)
             {
                 m_sBlendFunc.Source = OGLES.GL_SRC_ALPHA;
                 m_sBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;

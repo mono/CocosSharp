@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using cocos2d;
 
 namespace tests
@@ -19,12 +20,21 @@ namespace tests
             m_pTarget = CCRenderTexture.Create((int) s.Width, (int) s.Height, SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.PreserveContents);
             m_pTarget.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
+            // It's possible to modify the RenderTexture blending function by
+            //CCBlendFunc tbf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            //m_pTarget.Sprite.BlendFunc = tbf;
+
             // note that the render texture is a CCNode, and contains a sprite of its texture for convience,
             // so we can just parent it to the scene like any other CCNode
             AddChild(m_pTarget, -1);
 
             // create a brush image to draw into the texture with
             m_pBrush = CCSprite.Create("Images/fire");
+            // It's possible to modify the Brushes blending function by
+            CCBlendFunc bbf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            m_pBrush.BlendFunc = bbf;
+
+            m_pBrush.Color = new CCColor3B (Color.Red);
             m_pBrush.Opacity = 20;
             TouchEnabled = true;
 
@@ -32,7 +42,7 @@ namespace tests
             CCMenuItemFont.FontSize = 16;
             CCMenuItem item1 = CCMenuItemFont.Create("Save Image", saveImage);
             CCMenuItem item2 = CCMenuItemFont.Create("Clear", clearImage);
-            CCMenu menu = CCMenu.Create(item1, item2);
+            var menu = new CCMenu(item1, item2);
             AddChild(menu);
             menu.AlignItemsVertically();
             menu.Position = new CCPoint(s.Width - 80, s.Height - 30);
@@ -72,7 +82,10 @@ namespace tests
                     m_pBrush.Rotation = Random.Next() % 360;
                     float r = (Random.Next() % 50 / 50f) + 0.25f;
                     m_pBrush.Scale = r;
+
+                    // Comment out the following line to show just the initial red color set
                     m_pBrush.Color = new CCColor3B((byte) (Random.Next() % 127 + 128), 255, 255);
+
                     // Call visit to draw the brush, don't call draw..
                     m_pBrush.Visit();
                 }
