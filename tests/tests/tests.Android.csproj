@@ -713,7 +713,7 @@
     <AndroidAsset Include="Assets\Content\Images\Fog.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AndroidAsset>
-    <AndroidAsset Include="Assets\Content\Images\fps_images.xnb">
+    <AndroidAsset Include="Assets\Content\Images\fps_Images.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AndroidAsset>
     <AndroidAsset Include="Assets\Content\Images\GalaxyPlist.xnb">
