@@ -34,8 +34,8 @@ namespace tests
 		public override void FinishedLaunching (UIApplication app)
 		{
             // More shameless hacking to bypass AOT
-            var hHack = new ReflectiveReader<CCBMFontConfiguration>();
-            var hFoo = new PlistDocument.PlistDocumentReader ();
+            //var hHack = new ReflectiveReader<CCBMFontConfiguration>();
+            //var hFoo = new PlistDocument.PlistDocumentReader ();
 
             // Fun begins..
 
