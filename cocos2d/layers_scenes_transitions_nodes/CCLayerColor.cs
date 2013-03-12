@@ -39,7 +39,7 @@ namespace cocos2d
         protected VertexPositionColor[] m_pVertices = new VertexPositionColor[4];
         private VertexBuffer m_pVertexBuffer;
         protected bool m_bChanged;
-        protected bool m_opacityChanged;
+        //protected bool m_opacityChanged;
 
         public CCLayerColor()
         {
@@ -47,7 +47,8 @@ namespace cocos2d
             m_tColor = new CCColor3B(0, 0, 0);
 
             // default blend function
-            m_tBlendFunc = new CCBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            m_tBlendFunc = new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending);
+
         }
 
         /// <summary>
@@ -104,15 +105,14 @@ namespace cocos2d
         public virtual bool InitWithColorWidthHeight(CCColor4B color, float width, float height)
         {
             // default blend function
-            m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
-            m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+            m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
+            m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
 
             m_tColor.R = color.R;
             m_tColor.G = color.G;
             m_tColor.B = color.B;
             m_cOpacity = color.A;
 
-            m_opacityChanged = true;
             UpdateColor();
             
             ContentSize = new CCSize(width, height);
@@ -192,8 +192,6 @@ namespace cocos2d
             set
             {
                 m_cOpacity = value;
-                // make sure that UpdateColor knows that the change was due to opacity.
-                m_opacityChanged = true;
                 UpdateColor();
             }
         }
@@ -204,7 +202,6 @@ namespace cocos2d
             set
             {
                 m_tColor = value;
-                m_opacityChanged = false;
                 UpdateColor();
             }
         }
@@ -241,23 +238,12 @@ namespace cocos2d
 
         protected virtual void UpdateColor()
         {
-            var color = new Color(m_tColor.R / 255.0f, m_tColor.G / 255.0f, m_tColor.B / 255.0f, m_cOpacity / 255.0f);
 
-            // This was placed in an #ifdef so as not to break other systems.
-#if IOS
-            // This checks if the method was caused by an opacity modification or not.
-            if (m_opacityChanged) 
-            {
-                color.R *= color.A;
-                color.G *= color.A;
-                color.B *= color.A;
-            }
-#endif
+            var color = new Color(m_tColor.R / 255.0f, m_tColor.G / 255.0f, m_tColor.B / 255.0f, m_cOpacity / 255.0f);
 
             m_pVertices[0].Color = m_pVertices[1].Color = m_pVertices[2].Color = m_pVertices[3].Color = color;
 
             m_bChanged = true;
-            m_opacityChanged = false;
         }
     }
 

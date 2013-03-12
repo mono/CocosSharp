@@ -504,8 +504,12 @@ namespace cocos2d
 
         public static void BlendFunc(CCBlendFunc blendFunc)
         {
-            if (m_currBlend.Destination != blendFunc.Destination || m_currBlend.Source != blendFunc.Source)
-            {
+
+            // It looks like the blend state is being reset somewhere so this check of not setting
+            // the blend states is causing multiple problems.  Took this check out and setting the 
+            // blend state seems the correct modification for now.
+            //if (m_currBlend.Destination != blendFunc.Destination || m_currBlend.Source != blendFunc.Source)
+            //{
                 BlendState bs = null;
                 if (blendFunc.Source == OGLES.GL_ONE && blendFunc.Destination == OGLES.GL_ONE_MINUS_SRC_ALPHA)
                 {
@@ -542,7 +546,8 @@ namespace cocos2d
 
                 m_currBlend.Source = blendFunc.Source;
                 m_currBlend.Destination = blendFunc.Destination;
-            }
+
+            //}
         }
 
         public static void BindTexture(Texture2D texture)

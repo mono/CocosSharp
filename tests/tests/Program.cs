@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 #if ANDROID
 using Android.Content.PM;
@@ -52,6 +53,13 @@ namespace tests
 
 		public override void FinishedLaunching (MonoMac.Foundation.NSObject notification)
 		{
+#if DEBUG
+			/* Create a listener that outputs to the console screen, and 
+  			* add it to the debug listeners. */
+			TextWriterTraceListener debugConsoleWriter = new 
+				TextWriterTraceListener(System.Console.Out);
+			Debug.Listeners.Add(debugConsoleWriter);
+#endif
 			// Fun begins..
 			game = new Game1();
 			game.Run();
