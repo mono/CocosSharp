@@ -559,7 +559,15 @@ namespace cocos2d
 
                                 using (var imageStream = new MemoryStream(imageBytes))
                                 {
-                                    Texture = CCTextureCache.SharedTextureCache.AddImage(imageStream, textureName);
+                                    try
+                                    {
+                                        Texture = CCTextureCache.SharedTextureCache.AddImage(imageStream, textureName);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        CCLog.Log(ex.ToString());
+                                        throw (new NotSupportedException("Embedded textureImageData is a format that this platform does not understand. Use PNG, GIF, or JPEG for your particle systems."));
+                                    }
                                 }
                             }
                         }
@@ -572,6 +580,11 @@ namespace cocos2d
             return bRet;
         }
 
+        /// <summary>
+        /// Decompresses the given data stream from its source ZIP or GZIP format.
+        /// </summary>
+        /// <param name="dataBytes"></param>
+        /// <returns></returns>
         private static byte[] Inflate(byte[] dataBytes)
         {
 
