@@ -76,11 +76,22 @@ namespace cocos2d
             // Due to the AOT problem with iOS we will add our own content managers here
             // I really think the plist XNB names should be normalized here but for right now
             // this works.
+
+            // Plist Document Reader
             ContentTypeReaderManager.AddTypeCreator (
                 "cocos2d.PlistDocument+PlistDocumentReader, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null",
                 ( ) => new PlistDocument.PlistDocumentReader ()
                 
                 );
+
+            // .FNT Reader
+//            ContentTypeReaderManager.AddTypeCreator (
+//                "cocos2d.CCBMFontConfiguration, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null",
+//                ( ) => new REPLACE WITH NEW .FNT READER ---> See Plist Document Reader above for example
+//                
+//                );
+
+
 #endif
 
         }
