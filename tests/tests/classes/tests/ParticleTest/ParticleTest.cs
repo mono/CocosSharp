@@ -784,10 +784,15 @@ namespace tests
             m_emitter.Speed = (130);
             m_emitter.SpeedVar = (30);
 
-            m_emitter.StartColor = new CCColor4F(0.9f, 0.9f, 0.9f, 0f);
+            var startColor = m_emitter.StartColor;
+            startColor.R = 0.9f;
+            startColor.G = 0.9f;
+            startColor.B = 0.9f;
+            m_emitter.StartColor = startColor;
 
-            m_emitter.StartColorVar = new CCColor4F(0f, 0f, 1f, 0f);
-            ;
+            var startColorVar = m_emitter.StartColorVar;
+            startColorVar.B = 0.1f;
+            m_emitter.StartColorVar = startColorVar;
 
             m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
 
