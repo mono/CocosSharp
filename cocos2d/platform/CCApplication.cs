@@ -70,6 +70,19 @@ namespace cocos2d
 
             game.Activated += new EventHandler<EventArgs>(game_Activated);
             game.Deactivated += new EventHandler<EventArgs>(game_Deactivated);
+
+
+#if IOS
+            // Due to the AOT problem with iOS we will add our own content managers here
+            // I really think the plist XNB names should be normalized here but for right now
+            // this works.
+            ContentTypeReaderManager.AddTypeCreator (
+                "cocos2d.PlistDocument+PlistDocumentReader, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null",
+                ( ) => new PlistDocument.PlistDocumentReader ()
+                
+                );
+#endif
+
         }
 
         private void game_Deactivated(object sender, EventArgs e)
