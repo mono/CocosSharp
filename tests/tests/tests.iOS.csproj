@@ -55,12 +55,12 @@
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
     <MtouchDebug>True</MtouchDebug>
     <MtouchUseArmv7>false</MtouchUseArmv7>
-    <CodesignKey>iPhone Developer: jacob anderson (49YP447S66)</CodesignKey>
+    <CodesignKey>iPhone Developer: Kenneth James Pouncey (83ASFFXWXR)</CodesignKey>
     <IpaPackageName />
     <MtouchI18n />
     <MtouchArch>ARMv7</MtouchArch>
     <AssemblyName>cocos2dtests</AssemblyName>
-    <MtouchSdkVersion>6.1</MtouchSdkVersion>
+    <CrashReportingApiKey />
     <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
