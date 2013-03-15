@@ -31,7 +31,7 @@ namespace cocos2d
         private readonly LinkedList<CCTouch> m_pTouches = new LinkedList<CCTouch>();
         private readonly List<CCTouch> movedTouches = new List<CCTouch>();
         private readonly List<CCTouch> newTouches = new List<CCTouch>();
-#if WINDOWS
+#if WINDOWS || MONOMAC
         private int _lastMouseId;
         private MouseState _lastMouseState;
         private MouseState _prevMouseState;
@@ -451,7 +451,7 @@ namespace cocos2d
 
                 // TODO: allow configuration to treat the game pad as a touch device.
 
-#if WINDOWS
+#if WINDOWS || MONOMAC
                 _prevMouseState = _lastMouseState;
                 _lastMouseState = Mouse.GetState();
 

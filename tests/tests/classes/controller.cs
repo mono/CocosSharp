@@ -25,7 +25,7 @@ namespace tests
             var pCloseItem = CCMenuItemImage.Create(TestResource.s_pPathClose, TestResource.s_pPathClose, closeCallback);
             var pMenu = CCMenu.Create(pCloseItem);
             var s = CCDirector.SharedDirector.WinSize;
-#if !XBOX && !OUYA && !MONOMAC
+#if !XBOX && !OUYA
             TouchEnabled = true;
 #else
             GamePadEnabled = true;
@@ -53,7 +53,7 @@ namespace tests
 
                 pMenuItem.UserData = i;
                 m_pItemMenu.AddChild(pMenuItem, 10000);
-#if XBOX || OUYA || MONOMAC
+#if XBOX || OUYA
                 pMenuItem.Position = new CCPoint(s.Width / 2, -(i + 1) * LINE_SPACE);
 #else
                 pMenuItem.Position = new CCPoint(s.Width / 2, (s.Height - (i + 1) * LINE_SPACE));
@@ -62,7 +62,7 @@ namespace tests
             }
 
             m_pItemMenu.ContentSize = new CCSize(s.Width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
-#if XBOX || OUYA || MONOMAC
+#if XBOX || OUYA
             CCSprite sprite = CCSprite.Create("Images/aButton");
             AddChild(sprite, 10001);
             _menuIndicator = sprite;
