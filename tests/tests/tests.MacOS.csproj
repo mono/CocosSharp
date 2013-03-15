@@ -2278,7 +2278,9 @@
     <Content Include="Assets\Content\zwoptex\grossini.xnb">
       <Link>Content\zwoptex\grossini.xnb</Link>
     </Content>
-    <Content Include="Content\Images\aButton.xnb" />
+    <Content Include="Assets\Content\Images\aButton.xnb" >
+      <Link>Content\Images\aButton.xnb</Link>
+	</Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
