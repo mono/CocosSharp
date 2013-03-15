@@ -122,7 +122,7 @@ namespace cocos2d
             set
             {
                 m_tColor = value;
-                if (scale9Image.Children != null && scale9Image.Children.count != 0)
+                if (scale9Image != null && scale9Image.Children != null && scale9Image.Children.count != 0)
                 {
                     for (int i = 0; i < scale9Image.Children.count; i++)
                     {
@@ -142,7 +142,7 @@ namespace cocos2d
             set
             {
                 m_cOpacity = value;
-                if (scale9Image.Children != null && scale9Image.Children.count != 0)
+                if (scale9Image != null && scale9Image.Children != null && scale9Image.Children.count != 0)
                 {
                     for (int i = 0; i < scale9Image.Children.count; i++)
                     {
@@ -162,7 +162,7 @@ namespace cocos2d
             set
             {
                 m_bIsOpacityModifyRGB = value;
-                if (scale9Image.Children != null && scale9Image.Children.count != 0)
+                if (scale9Image != null && scale9Image.Children != null && scale9Image.Children.count != 0)
                 {
                     for (int i = 0; i < scale9Image.Children.count; i++)
                     {
