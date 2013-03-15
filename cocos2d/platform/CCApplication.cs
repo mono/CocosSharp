@@ -438,6 +438,10 @@ namespace cocos2d
             return newPoint;
         }
 
+		MouseState _prevMouseState;
+		MouseState _lastMouseState;
+		int _lastMouseId;
+
         private void ProcessTouch()
         {
             if (m_pDelegate != null)
@@ -451,7 +455,7 @@ namespace cocos2d
 
                 // TODO: allow configuration to treat the game pad as a touch device.
 
-#if WINDOWS
+#if WINDOWS || MONOMAC
                 _prevMouseState = _lastMouseState;
                 _lastMouseState = Mouse.GetState();
 
