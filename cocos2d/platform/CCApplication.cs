@@ -36,6 +36,8 @@ namespace cocos2d
         private MouseState _lastMouseState;
         private MouseState _prevMouseState;
 #endif
+        private CCBMFontConfiguration.ccBMFontDef hangOnToMe;
+
         protected bool m_bCaptured;
         protected IEGLTouchDelegate m_pDelegate;
 
@@ -71,26 +73,55 @@ namespace cocos2d
             game.Activated += new EventHandler<EventArgs>(game_Activated);
             game.Deactivated += new EventHandler<EventArgs>(game_Deactivated);
 
-
 #if IOS
-            // Due to the AOT problem with iOS we will add our own content managers here
-            // I really think the plist XNB names should be normalized here but for right now
-            // this works.
+            // Please read the following discussions for the reasons of this.
+            // http://monogame.codeplex.com/discussions/393775
+            // http://monogame.codeplex.com/discussions/396792
+            // 
+            // https://github.com/mono/MonoGame/pull/726
+            //
+            // Also search Google for -> ContentTypeReaderManager.AddTypeCreator
 
-            // Plist Document Reader
+            // .FNT Reader
             ContentTypeReaderManager.AddTypeCreator (
-                "cocos2d.PlistDocument+PlistDocumentReader, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null",
-                ( ) => new PlistDocument.PlistDocumentReader ()
+                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[cocos2d.CCBMFontConfiguration+ccBMFontDef, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                ( ) => new DictionaryReader<Int32, CCBMFontConfiguration.ccBMFontDef> ()
+
+                );
+
+            ContentTypeReaderManager.AddTypeCreator (
+                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[cocos2d.CCBMFontConfiguration+tKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                ( ) => new DictionaryReader<Int32, CCBMFontConfiguration.tKerningHashElement> ()
+                
+                );
+            ContentTypeReaderManager.AddTypeCreator (
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[cocos2d.CCRect, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                ( ) => new CCRectReader ()
+
+                );
+
+            ContentTypeReaderManager.AddTypeCreator (
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[cocos2d.CCPoint, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                ( ) => new CCPointReader ()
+                
+                );
+            ContentTypeReaderManager.AddTypeCreator (
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[cocos2d.CCSize, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                ( ) => new CCSizeReader ()
                 
                 );
 
-            // .FNT Reader
-//            ContentTypeReaderManager.AddTypeCreator (
-//                "cocos2d.CCBMFontConfiguration, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null",
-//                ( ) => new REPLACE WITH NEW .FNT READER ---> See Plist Document Reader above for example
-//                
-//                );
+            ContentTypeReaderManager.AddTypeCreator (
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[cocos2d.CCBMFontConfiguration+tKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                ( ) => new KerningHashElementReader ()
+                
+                );
 
+            ContentTypeReaderManager.AddTypeCreator (
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[cocos2d.CCBMFontConfiguration+ccBMFontPadding, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                ( ) => new CCBMFontPaddingtReader ()
+                
+                );
 
 #endif
 
