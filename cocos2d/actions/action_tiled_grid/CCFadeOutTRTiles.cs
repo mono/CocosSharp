@@ -35,13 +35,14 @@ namespace cocos2d
     {
         public virtual float TestFunc(CCGridSize pos, float time)
         {
-            var n = new CCPoint((m_sGridSize.X * time), (m_sGridSize.Y * time));
-            if ((n.X + n.Y) == 0.0f)
+            float px = m_sGridSize.X * time;
+            float py = m_sGridSize.Y * time;
+            if ((px + py) == 0.0f)
             {
                 return 1.0f;
             }
 
-            return (float) Math.Pow((pos.X + pos.Y) / (n.X + n.Y), 6);
+            return (float) Math.Pow((pos.X + pos.Y) / (px + py), 6);
         }
 
         public void TurnOnTile(CCGridSize pos)
@@ -62,17 +63,20 @@ namespace cocos2d
             CCQuad3 coords = OriginalTile(pos);
             CCPoint step = m_pTarget.Grid.Step;
 
-            coords.BottomLeft.X += (step.X / 2) * (1.0f - distance);
-            coords.BottomLeft.Y += (step.Y / 2) * (1.0f - distance);
+            float dx = (step.X / 2) * (1.0f - distance);
+            float dy = (step.Y / 2) * (1.0f - distance);
 
-            coords.BottomRight.X -= (step.X / 2) * (1.0f - distance);
-            coords.BottomRight.Y += (step.Y / 2) * (1.0f - distance);
+            coords.BottomLeft.X += dx; 
+            coords.BottomLeft.Y += dy;
 
-            coords.TopLeft.X += (step.X / 2) * (1.0f - distance);
-            coords.TopLeft.Y -= (step.Y / 2) * (1.0f - distance);
+            coords.BottomRight.X -= dx;
+            coords.BottomRight.Y += dy;
 
-            coords.TopRight.X -= (step.X / 2) * (1.0f - distance);
-            coords.TopRight.Y -= (step.Y / 2) * (1.0f - distance);
+            coords.TopLeft.X += dx;
+            coords.TopLeft.Y -= dy;
+
+            coords.TopRight.X -= dx;
+            coords.TopRight.Y -= dy; 
 
             SetTile(pos, ref coords);
         }
@@ -80,23 +84,25 @@ namespace cocos2d
         public override void Update(float time)
         {
             int i, j;
-
+            CCGridSize grid;
             for (i = 0; i < m_sGridSize.X; ++i)
             {
+                grid.X = i;
                 for (j = 0; j < m_sGridSize.Y; ++j)
                 {
-                    float distance = TestFunc(new CCGridSize(i, j), time);
+                    grid.Y = j;
+                    float distance = TestFunc(grid, time);
                     if (distance == 0)
                     {
-                        TurnOffTile(new CCGridSize(i, j));
+                        TurnOffTile(grid);
                     }
                     else if (distance < 1)
                     {
-                        TransformTile(new CCGridSize(i, j), distance);
+                        TransformTile(grid, distance);
                     }
                     else
                     {
-                        TurnOnTile(new CCGridSize(i, j));
+                        TurnOnTile(grid);
                     }
                 }
             }
