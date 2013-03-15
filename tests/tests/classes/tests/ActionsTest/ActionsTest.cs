@@ -562,7 +562,7 @@ namespace tests
 
             centerSprites(3);
 
-            var actionTo = CCJumpBy.Create(2, new CCPoint(300, 300), 50, 4);
+            var actionTo = CCJumpTo.Create(2, new CCPoint(300, 300), 50, 4);
             var actionBy = CCJumpBy.Create(2, new CCPoint(300, 0), 50, 4);
             var actionUp = CCJumpBy.Create(2, new CCPoint(0, 0), 80, 4);
             var actionByBack = actionBy.Reverse();
