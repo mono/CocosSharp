@@ -11,7 +11,7 @@
     <Description>cocos2d for MonoMac</Description>
     <RootNamespace>cocos2d</RootNamespace>
     <SuppressXamMacUpsell>True</SuppressXamMacUpsell>
-    <AssemblyName>cocos2d.MacOS</AssemblyName>
+    <AssemblyName>cocos2d-xna</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
