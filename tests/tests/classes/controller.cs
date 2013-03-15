@@ -31,6 +31,9 @@ namespace tests
             GamePadEnabled = true;
 			KeypadEnabled = true;
 #endif
+#if WINDOWS || MONOMAC
+			GamePadEnabled = true;
+#endif
 
             pMenu.Position = new CCPoint(0.0f, 0.0f);
             pCloseItem.Position = new CCPoint(s.Width - 30, s.Height - 30);
