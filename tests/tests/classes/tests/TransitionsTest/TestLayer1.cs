@@ -18,6 +18,8 @@ namespace tests
 
             CCSprite bg1 = CCSprite.Create(TransitionsTestScene.s_back1);
             bg1.Position = (new CCPoint(size.Width / 2, size.Height / 2));
+			bg1.ScaleX = size.Width / bg1.ContentSize.Width;
+			bg1.ScaleY = size.Height / bg1.ContentSize.Height;
             AddChild(bg1, -1);
 
             CCLabelTTF title = CCLabelTTF.Create((TransitionsTestScene.transitions[TransitionsTestScene.s_nSceneIdx]), "arial", 32);
@@ -25,7 +27,7 @@ namespace tests
             title.Color = new CCColor3B(255, 32, 32);
             title.Position = new CCPoint(x / 2, y - 100);
 
-            CCLabelTTF label = CCLabelTTF.Create("SCENE 1", "arial", 38);
+			CCLabelTTF label = CCLabelTTF.Create("SCENE 1", "markerFelt", 38);
             label.Color = (new CCColor3B(16, 16, 255));
             label.Position = (new CCPoint(x / 2, y / 2));
             AddChild(label);
@@ -35,12 +37,12 @@ namespace tests
             CCMenuItemImage item2 = CCMenuItemImage.Create(TransitionsTestScene.s_pPathR1, TransitionsTestScene.s_pPathR2, restartCallback);
             CCMenuItemImage item3 = CCMenuItemImage.Create(TransitionsTestScene.s_pPathF1, TransitionsTestScene.s_pPathF2, nextCallback);
 
-            CCMenu menu = CCMenu.Create(item1, item2, item3);
+            CCMenu menu = new CCMenu(item1, item2, item3);
 
-            menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(size.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(size.Width / 2, 30);
-            item3.Position = new CCPoint(size.Width / 2 + 100, 30);
+            menu.Position = CCPoint.Zero;
+			item1.Position = new CCPoint(x / 2 - item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
+			item2.Position = new CCPoint(x / 2, item2.ContentSize.Height / 2);
+			item3.Position = new CCPoint(x / 2 + item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
 
             AddChild(menu, 1);
             Schedule(step, 1.0f);
