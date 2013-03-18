@@ -86,7 +86,7 @@ namespace tests
             {
                 CCLabelTTF infoLabel = (CCLabelTTF)GetChildByTag(PerformanceSpriteTest.kTagInfoLayer);
                 var str = string.Format("{0} nodes", quantityNodes);
-                infoLabel.SetString(str);
+                infoLabel.String = (str);
 
                 lastRenderedCount = quantityNodes;
             }

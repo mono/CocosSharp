@@ -40,17 +40,17 @@ namespace tests
 
             if (!setEmpty)
             {
-                label1.SetString("not empty");
-                label2.SetString("not empty");
-                label3.SetString("hi");
+                label1.String = ("not empty");
+                label2.String = ("not empty");
+                label3.String = ("hi");
 
                 setEmpty = true;
             }
             else
             {
-                label1.SetString("");
-                label2.SetString("");
-                label3.SetString("");
+                label1.String = ("");
+                label2.String = ("");
+                label3.String = ("");
 
                 setEmpty = false;
             }

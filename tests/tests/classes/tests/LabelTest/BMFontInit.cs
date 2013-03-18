@@ -12,7 +12,7 @@ namespace tests
             bmFont.Init();
             //CCLabelBMFont* bmFont = [CCLabelBMFont create:@"Foo" fntFile:@"arial-unicode-26"];
             bmFont.FntFile = "fonts/helvetica-32.fnt";
-            bmFont.SetString("It is working!");
+            bmFont.String = ("It is working!");
             AddChild(bmFont);
             bmFont.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
         }

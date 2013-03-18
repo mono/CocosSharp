@@ -93,7 +93,7 @@ namespace tests.Extensions
 		    var controlLayer = new CCControlScene();
 		    if (controlLayer != null && controlLayer.Init())
 		    {
-		        controlLayer.getSceneTitleLabel().SetString(title);
+		        controlLayer.getSceneTitleLabel().String = (title);
 		        pScene.AddChild(controlLayer);
 		    }
 			return pScene;

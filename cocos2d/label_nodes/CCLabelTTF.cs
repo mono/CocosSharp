@@ -132,22 +132,20 @@ namespace cocos2d
             base.Draw();
         }
 */
-
-        public void SetString(string label)
+        public string String
         {
-            // This is called in the update() call, so it should not do any drawing ...
-            if (m_pString != label)
+            get { return m_pString; }
+            set
             {
-                m_pString = label;
-                updateTexture();
-                Dirty = false;
+                // This is called in the update() call, so it should not do any drawing ...
+                if (m_pString != value)
+                {
+                    m_pString = value;
+                    updateTexture();
+                    Dirty = false;
+                }
+                //            Dirty = true;
             }
-//            Dirty = true;
-        }
-
-        public string GetString()
-        {
-            return m_pString;
         }
 
         #endregion
@@ -216,7 +214,7 @@ namespace cocos2d
                 m_pFontName = fontName;
                 m_fFontSize = fontSize;
 
-                SetString(text);
+                String = (text);
 
                 return true;
             }

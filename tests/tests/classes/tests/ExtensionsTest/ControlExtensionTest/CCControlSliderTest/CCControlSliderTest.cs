@@ -53,9 +53,9 @@ namespace tests.Extensions
 			var pSlider = (CCControlSlider)sender;
 			// Change value of label.
 			if (pSlider.Tag == 1)
-				m_pDisplayValueLabel.SetString(String.Format("Upper slider value = {0:2}", pSlider.Value));
+				m_pDisplayValueLabel.String = (String.Format("Upper slider value = {0:2}", pSlider.Value));
 			if (pSlider.Tag == 2)
-				m_pDisplayValueLabel.SetString(String.Format("Lower slider value = {0:2}", pSlider.Value));
+				m_pDisplayValueLabel.String = (String.Format("Lower slider value = {0:2}", pSlider.Value));
 		}
 
 
@@ -68,7 +68,7 @@ namespace tests.Extensions
 			var controlLayer = new CCControlSliderTest();
 			if (controlLayer != null && controlLayer.Init())
 			{
-				controlLayer.getSceneTitleLabel().SetString(title);
+				controlLayer.getSceneTitleLabel().String = (title);
 				pScene.AddChild(controlLayer);
 			}
 			return pScene;

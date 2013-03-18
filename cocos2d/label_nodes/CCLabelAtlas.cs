@@ -8,27 +8,27 @@ namespace cocos2d
         protected string m_sString = "";
 
         #region ICCLabelProtocol Members
-
-        public void SetString(string label)
+        public string String
         {
-            int len = label.Length;
-            if (len > m_pTextureAtlas.TotalQuads)
-            {
-                m_pTextureAtlas.ResizeCapacity(len);
+            get { return m_sString; }
+            set 
+            {            
+                // TODO: Check for null????
+                int len = value.Length;
+                if (len > m_pTextureAtlas.TotalQuads)
+                {
+                    m_pTextureAtlas.ResizeCapacity(len);
+                }
+                
+                m_sString = value;
+                
+                UpdateAtlasValues();
+                
+                ContentSize = new CCSize(len * m_uItemWidth, m_uItemHeight);
+                
+                m_uQuadsToDraw = len;
+
             }
-
-            m_sString = label;
-
-            UpdateAtlasValues();
-
-            ContentSize = new CCSize(len * m_uItemWidth, m_uItemHeight);
-
-            m_uQuadsToDraw = len;
-        }
-
-        public string GetString()
-        {
-            return m_sString;
         }
 
         #endregion
@@ -71,7 +71,7 @@ namespace cocos2d
             if (base.InitWithTileFile(charMapFile, itemWidth, itemHeight, label.Length))
             {
                 m_cMapStartChar = startCharMap;
-                SetString(label);
+                String = (label);
                 return true;
             }
             return false;

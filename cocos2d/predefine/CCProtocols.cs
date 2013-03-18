@@ -83,14 +83,13 @@ namespace cocos2d
         /// </summary>
         CCTexture2D Texture { get; set; }
     }
-
+    /// <summary>
+    /// gets or sets a new Label string.
+    /// </summary>
     public interface ICCLabelProtocol
     {
-        // sets a new label using an string
-        void SetString(string label);
-
-        // returns the string that is rendered
-        string GetString();
+ 
+        string String { get; set; }
     }
 
     /// <summary>

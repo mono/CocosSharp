@@ -8,17 +8,17 @@ namespace tests.Extensions
 
         public void onMenuItemAClicked(CCObject pSender)
         {
-            mMenuItemStatusLabelBMFont.SetString("Menu Item A clicked.");
+            mMenuItemStatusLabelBMFont.String = ("Menu Item A clicked.");
         }
 
         public void onMenuItemBClicked(CCObject pSender)
         {
-            mMenuItemStatusLabelBMFont.SetString("Menu Item B clicked.");
+            mMenuItemStatusLabelBMFont.String = ("Menu Item B clicked.");
         }
 
         public void onMenuItemCClicked(CCObject pSender)
         {
-            mMenuItemStatusLabelBMFont.SetString("Menu Item C clicked.");
+            mMenuItemStatusLabelBMFont.String = ("Menu Item C clicked.");
         }
     }
 }
