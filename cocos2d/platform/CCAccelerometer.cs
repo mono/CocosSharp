@@ -34,9 +34,9 @@ namespace cocos2d
 
         private void ResetAccelerometer()
         {
-            m_obAccelerationValue.x = 0;
-            m_obAccelerationValue.y = 0;
-            m_obAccelerationValue.z = 0;
+            m_obAccelerationValue.X = 0;
+            m_obAccelerationValue.Y = 0;
+            m_obAccelerationValue.Z = 0;
         }
 
         public void SetDelegate(ICCAccelerometerDelegate pDelegate)
@@ -97,10 +97,10 @@ namespace cocos2d
         private void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
             // store the accelerometer value in our variable to be used on the next Update
-            m_obAccelerationValue.x = e.SensorReading.Acceleration.Y;
-            m_obAccelerationValue.y = -e.SensorReading.Acceleration.X;
-            m_obAccelerationValue.z = e.SensorReading.Acceleration.Z;
-            m_obAccelerationValue.timestamp = e.SensorReading.Timestamp.Ticks;
+            m_obAccelerationValue.X = e.SensorReading.Acceleration.Y;
+            m_obAccelerationValue.Y = -e.SensorReading.Acceleration.X;
+            m_obAccelerationValue.Z = e.SensorReading.Acceleration.Z;
+            m_obAccelerationValue.TimeStamp = e.SensorReading.Timestamp.Ticks;
         }
 #endif
 
@@ -129,10 +129,10 @@ namespace cocos2d
 
                     stateValue.Normalize();
 
-                    m_obAccelerationValue.x = stateValue.X;
-                    m_obAccelerationValue.y = stateValue.Y;
-                    m_obAccelerationValue.z = stateValue.Z;
-                    m_obAccelerationValue.timestamp = DateTime.Now.Ticks;
+                    m_obAccelerationValue.X = stateValue.X;
+                    m_obAccelerationValue.Y = stateValue.Y;
+                    m_obAccelerationValue.Z = stateValue.Z;
+                    m_obAccelerationValue.TimeStamp = DateTime.Now.Ticks;
                 }
 
                 m_pAccelDelegate.DidAccelerate(m_obAccelerationValue);
