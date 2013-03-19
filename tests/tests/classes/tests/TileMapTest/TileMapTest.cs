@@ -1517,8 +1517,8 @@ namespace tests
         {
             base.OnEnter();
 
-            m_label.String = (title());
-            m_subtitle.String = (subtitle());
+            m_label.Label = (title());
+            m_subtitle.Label = (subtitle());
             CCApplication.SharedApplication.GamePadButtonUpdate += _GamePadButtonDelegate;
             CCApplication.SharedApplication.GamePadDPadUpdate += _GamePadDPadDelegate;
             CCApplication.SharedApplication.GamePadStickUpdate += _GamePadStickDelegate;

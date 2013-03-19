@@ -75,7 +75,7 @@ namespace tests
             // 	string.format("%04.1f", m_time);
 
             CCLabelBMFont label1 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
-            label1.String = (Stepstring);
+            label1.Label = (Stepstring);
         }
 
         public override void Draw()

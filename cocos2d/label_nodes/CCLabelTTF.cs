@@ -132,7 +132,7 @@ namespace cocos2d
             base.Draw();
         }
 */
-        public string String
+        public string Label
         {
             get { return m_pString; }
             set
@@ -146,6 +146,18 @@ namespace cocos2d
                 }
                 //            Dirty = true;
             }
+        }
+
+        [Obsolete("Use Label Property")]
+        public void SetString(string label)
+        {
+            Label = label;
+        }
+        
+        [Obsolete("Use Label Property")]
+        public string GetString() 
+        {
+            return Label;
         }
 
         #endregion
@@ -214,7 +226,7 @@ namespace cocos2d
                 m_pFontName = fontName;
                 m_fFontSize = fontSize;
 
-                String = (text);
+                Label = (text);
 
                 return true;
             }

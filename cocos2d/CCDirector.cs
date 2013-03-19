@@ -1098,15 +1098,15 @@ namespace cocos2d
                 {
                     if (m_fAccumDt > CCMacros.CCDirectorStatsUpdateIntervalInSeconds)
                     {
-                        m_pSPFLabel.String = (String.Format("{0:0.000}", m_fSecondsPerFrame));
+                        m_pSPFLabel.Label = (String.Format("{0:0.000}", m_fSecondsPerFrame));
                 
                         m_fFrameRate = m_uFrames / m_fAccumDt;
                         m_uFrames = 0;
                         m_fAccumDt = 0;
                 
-                        m_pFPSLabel.String = (String.Format("{0:00.0}", m_fFrameRate));
+                        m_pFPSLabel.Label = (String.Format("{0:00.0}", m_fFrameRate));
                  
-                        m_pDrawsLabel.String = (String.Format("{0:000}", DrawManager.DrawCount));
+                        m_pDrawsLabel.Label = (String.Format("{0:000}", DrawManager.DrawCount));
                     }
             
                     m_pDrawsLabel.Visit();

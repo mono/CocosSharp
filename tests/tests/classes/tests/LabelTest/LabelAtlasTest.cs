@@ -39,13 +39,13 @@ namespace tests
             //Stepstring.format("%2.2f Test", m_time);
 
             CCLabelAtlas label1 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite1);
-            label1.String = (Stepstring);
+            label1.Label = (Stepstring);
 
             CCLabelAtlas label2 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite2);
             //sprintf(Stepstring, "%d", (int)m_time);
             Stepstring = m_time.ToString();
             Stepstring = string.Format("{0:d}", (int)m_time);
-            label2.String = (Stepstring);
+            label2.Label = (Stepstring);
         }
 
         public override string title()

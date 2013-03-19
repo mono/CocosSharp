@@ -88,13 +88,25 @@ namespace cocos2d
 
         #region ICCLabelProtocol Members
 
-        public virtual string String
+        public virtual string Label
         {
             get { return m_sInitialString; }
             set 
             {
                 SetString(value, false);
             }
+        }
+
+        [Obsolete("Use Label Property")]
+        public void SetString(string label)
+        {
+            Label = label;
+        }
+        
+        [Obsolete("Use Label Property")]
+        public string GetString() 
+        {
+            return Label;
         }
 
         #endregion
@@ -269,7 +281,7 @@ namespace cocos2d
                 m_tColor = CCTypes.CCWhite;
                 m_tContentSize = CCSize.Zero;
                 m_bIsOpacityModifyRGB = m_pobTextureAtlas.Texture.HasPremultipliedAlpha;
-                String = (theString);
+                Label = (theString);
                 AnchorPoint = new CCPoint(0.5f, 0.5f);
                 return true;
             }

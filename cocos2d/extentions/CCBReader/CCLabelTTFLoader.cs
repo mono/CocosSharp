@@ -70,7 +70,7 @@ namespace cocos2d
         {
             if (propertyName == PROPERTY_STRING)
             {
-                ((CCLabelTTF) node).String = (pText);
+                ((CCLabelTTF) node).Label = (pText);
             }
             else
             {

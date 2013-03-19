@@ -65,7 +65,7 @@ namespace cocos2d
 
         protected void RecreateLabel()
         {
-            CCLabelTTF label = CCLabelTTF.Create((m_pLabel as ICCLabelProtocol).String, m_strFontName, m_uFontSize);
+            CCLabelTTF label = CCLabelTTF.Create((m_pLabel as ICCLabelProtocol).Label, m_strFontName, m_uFontSize);
             Label = label;
         }
     }

@@ -68,13 +68,13 @@ namespace tests
             stepString = string.Format("{0,2:f2} Test j", m_time);
 
             CCLabelBMFont label1 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas1);
-            label1.String = (stepString);
+            label1.Label = (stepString);
 
             CCLabelBMFont label2 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
-            label2.String = (stepString);
+            label2.Label = (stepString);
 
             CCLabelBMFont label3 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas3);
-            label3.String = (stepString);
+            label3.Label = (stepString);
         }
 
         public override string title()

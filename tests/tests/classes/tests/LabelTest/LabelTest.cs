@@ -228,12 +228,12 @@ namespace cocos2d
             stepstring = string.Format("{0,2:f2} Test", m_time);
             //std::string string = std::string::stringWithFormat("%2.2f Test", m_time);
             CCLabelAtlas label1 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite1);
-            label1.String = (stepstring);
+            label1.Label = (stepstring);
 
             CCLabelAtlas label2 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite2);
             //sprintf(string, "%d", (int)m_time);
             stepstring = m_time.ToString();
-            label2.String = (stepstring);
+            label2.Label = (stepstring);
         }
 
         public override string title()
@@ -318,7 +318,7 @@ namespace cocos2d
             // 	string.format("%04.1f", m_time);
 
             CCLabelBMFont label1 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
-            label1.String = (Stepstring);
+            label1.Label = (Stepstring);
         }
 
         public override void Draw()
@@ -444,7 +444,7 @@ namespace cocos2d
             label.Position = new CCPoint(s.Width / 2, 3 * s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
             label.Color = ccGREEN;
-            label.String = ("Green");
+            label.Label = ("Green");
         }
 
         public override string title()
@@ -580,17 +580,17 @@ namespace cocos2d
 
             if (!setEmpty)
             {
-                label1.String = ("not empty");
-                label2.String = ("not empty");
-                label3.String = ("hi");
+                label1.Label = ("not empty");
+                label2.Label = ("not empty");
+                label3.Label = ("hi");
 
                 setEmpty = true;
             }
             else
             {
-                label1.String = ("");
-                label2.String = ("");
-                label3.String = ("");
+                label1.Label = ("");
+                label2.Label = ("");
+                label3.Label = ("");
 
                 setEmpty = false;
             }

@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System;
 
 namespace cocos2d
 {
@@ -8,7 +9,7 @@ namespace cocos2d
         protected string m_sString = "";
 
         #region ICCLabelProtocol Members
-        public string String
+        public string Label
         {
             get { return m_sString; }
             set 
@@ -29,6 +30,18 @@ namespace cocos2d
                 m_uQuadsToDraw = len;
 
             }
+        }
+
+        [Obsolete("Use Label Property")]
+        public void SetString(string label)
+        {
+            Label = label;
+        }
+
+        [Obsolete("Use Label Property")]
+        public string GetString() 
+        {
+            return Label;
         }
 
         #endregion
@@ -71,7 +84,7 @@ namespace cocos2d
             if (base.InitWithTileFile(charMapFile, itemWidth, itemHeight, label.Length))
             {
                 m_cMapStartChar = startCharMap;
-                String = (label);
+                Label = (label);
                 return true;
             }
             return false;

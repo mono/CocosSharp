@@ -36,13 +36,13 @@ namespace tests
             switch (_Index % 3)
             {
                 case 0:
-                    _TestLabel.String = ("******* DEBUG MODE - please uncomment #define Debug *******");
+                    _TestLabel.Label = ("******* DEBUG MODE - please uncomment #define Debug *******");
                     break;
                 case 1:
-                      _TestLabel.String = ("******* [" + String.Format("{0:0.##}", 50) + "] p " + _Index + " z X *******");
+                      _TestLabel.Label = ("******* [" + String.Format("{0:0.##}", 50) + "] p " + _Index + " z X *******");
                     break;
                 case 2:
-                    _TestLabel.String = ("");
+                    _TestLabel.Label = ("");
                     break;
             }
             _Index++;

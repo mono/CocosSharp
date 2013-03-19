@@ -146,7 +146,7 @@ namespace cocos2d
             var label = (ICCLabelProtocol) m_titleLabel;
             if (label != null && !String.IsNullOrEmpty(m_currentTitle))
             {
-                label.String = (m_currentTitle);
+                label.Label = (m_currentTitle);
             }
 
             var rgbaLabel = (ICCRGBAProtocol) m_titleLabel;
@@ -355,7 +355,7 @@ namespace cocos2d
 
                 // Initialize the dispatch table
 
-                string tempString = label.String;
+                string tempString = label.Label;
                 //tempString->autorelease();
                 SetTitleForState(tempString, CCControlState.Normal);
                 SetTitleColorForState(rgbaLabel.Color, CCControlState.Normal);

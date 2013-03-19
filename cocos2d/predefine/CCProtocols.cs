@@ -22,6 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
+using System;
+
 namespace cocos2d
 {
     public interface ICCRGBAProtocol
@@ -89,7 +91,15 @@ namespace cocos2d
     public interface ICCLabelProtocol
     {
  
-        string String { get; set; }
+        string Label { get; set; }
+
+        // sets a new label using an string
+        [Obsolete("Use Label Property")]
+        void SetString(string label);
+        
+        // returns the string that is rendered
+        [Obsolete("Use Label Property")]
+        string GetString();
     }
 
     /// <summary>
