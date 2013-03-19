@@ -69,7 +69,6 @@ namespace tests
 #endif
 			// Fun begins..
 			game = new Game1();
-			game.IsMouseVisible = true;
 			game.Run();
 		}
 
