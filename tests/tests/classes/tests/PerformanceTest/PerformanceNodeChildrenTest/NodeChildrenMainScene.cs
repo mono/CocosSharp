@@ -92,7 +92,7 @@ namespace tests
             if (quantityOfNodes != lastRenderedCount)
             {
                 CCLabelTTF infoLabel = (CCLabelTTF)GetChildByTag(PerformanceNodeChildrenTest.kTagInfoLayer);
-                infoLabel.SetString(string.Format("{0} nodes", quantityOfNodes));
+                infoLabel.Label = (string.Format("{0} nodes", quantityOfNodes));
 
                 lastRenderedCount = quantityOfNodes;
             }

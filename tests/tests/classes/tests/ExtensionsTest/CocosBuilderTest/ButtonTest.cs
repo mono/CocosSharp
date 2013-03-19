@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using cocos2d;
 
 namespace tests.Extensions
@@ -12,31 +12,31 @@ namespace tests.Extensions
             switch (pCCControlEvent)
             {
                 case CCControlEvent.TouchDown:
-                    mCCControlEventLabel.SetString("Touch Down.");
+                    mCCControlEventLabel.Label = ("Touch Down.");
                     break;
                 case CCControlEvent.TouchDragInside:
-                    mCCControlEventLabel.SetString("Touch Drag Inside.");
+                    mCCControlEventLabel.Label = ("Touch Drag Inside.");
                     break;
                 case CCControlEvent.TouchDragOutside:
-                    mCCControlEventLabel.SetString("Touch Drag Outside.");
+                    mCCControlEventLabel.Label = ("Touch Drag Outside.");
                     break;
                 case CCControlEvent.TouchDragEnter:
-                    mCCControlEventLabel.SetString("Touch Drag Enter.");
+                    mCCControlEventLabel.Label = ("Touch Drag Enter.");
                     break;
                 case CCControlEvent.TouchDragExit:
-                    mCCControlEventLabel.SetString("Touch Drag Exit.");
+                    mCCControlEventLabel.Label = ("Touch Drag Exit.");
                     break;
                 case CCControlEvent.TouchUpInside:
-                    mCCControlEventLabel.SetString("Touch Up Inside.");
+                    mCCControlEventLabel.Label = ("Touch Up Inside.");
                     break;
                 case CCControlEvent.TouchUpOutside:
-                    mCCControlEventLabel.SetString("Touch Up Outside.");
+                    mCCControlEventLabel.Label = ("Touch Up Outside.");
                     break;
                 case CCControlEvent.TouchCancel:
-                    mCCControlEventLabel.SetString("Touch Cancel.");
+                    mCCControlEventLabel.Label = ("Touch Cancel.");
                     break;
                 case CCControlEvent.ValueChanged:
-                    mCCControlEventLabel.SetString("Value Changed.");
+                    mCCControlEventLabel.Label = ("Value Changed.");
                     break;
                 default:
                     Debug.Assert(false); // OH SHIT!

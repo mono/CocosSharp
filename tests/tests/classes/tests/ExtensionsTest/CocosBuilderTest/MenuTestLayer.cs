@@ -1,4 +1,4 @@
-﻿using cocos2d;
+using cocos2d;
 
 namespace tests.Extensions
 {
@@ -8,17 +8,17 @@ namespace tests.Extensions
 
         public void onMenuItemAClicked(CCObject pSender)
         {
-            mMenuItemStatusLabelBMFont.SetString("Menu Item A clicked.");
+            mMenuItemStatusLabelBMFont.Label = ("Menu Item A clicked.");
         }
 
         public void onMenuItemBClicked(CCObject pSender)
         {
-            mMenuItemStatusLabelBMFont.SetString("Menu Item B clicked.");
+            mMenuItemStatusLabelBMFont.Label = ("Menu Item B clicked.");
         }
 
         public void onMenuItemCClicked(CCObject pSender)
         {
-            mMenuItemStatusLabelBMFont.SetString("Menu Item C clicked.");
+            mMenuItemStatusLabelBMFont.Label = ("Menu Item C clicked.");
         }
     }
 }

@@ -80,7 +80,7 @@ namespace tests
                 string str;
                 //sprintf(str, "%.1f %.1f %.1f %.1f", frameRateB, frameRateM, frameRateE, frameRateC);
                 str = string.Format("{0:1f},{1:1f},{2:1f},{3:1f}", frameRateB, frameRateM, frameRateE, frameRateC);
-                m_plabel.SetString(str);
+                m_plabel.Label = (str);
             }
         }
 

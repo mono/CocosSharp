@@ -7,10 +7,10 @@ namespace cocos2d
 {
     public class CCAcceleration
     {
-        public double x;
-        public double y;
-        public double z;
-        public double timestamp;
+        public double X;
+        public double Y;
+        public double Z;
+        public double TimeStamp;
     }
     
     public interface ICCAccelerometerDelegate
