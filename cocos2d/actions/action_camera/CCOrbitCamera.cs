@@ -75,12 +75,12 @@ namespace cocos2d
             y = ey - cy;
             z = ez - cz;
 
-            r = (float) Math.Sqrt((float) Math.Pow(x, 2) + (float) Math.Pow(y, 2) + (float) Math.Pow(z, 2));
-            s = (float) Math.Sqrt((float) Math.Pow(x, 2) + (float) Math.Pow(y, 2));
+            r = (float) Math.Sqrt(x*x + y*y + z*z);
+            s = (float) Math.Sqrt(x*x + y*y);
             if (s == 0.0f)
-                s = CCMacros.FLT_EPSILON;
+                s = float.Epsilon;
             if (r == 0.0f)
-                r = CCMacros.FLT_EPSILON;
+                r = float.Epsilon;
 
             zenith = (float) Math.Acos(z / r);
             if (x < 0)

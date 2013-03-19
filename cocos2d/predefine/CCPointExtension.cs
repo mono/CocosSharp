@@ -289,7 +289,7 @@ namespace cocos2d
             CCPoint b2 = Normalize(b);
             float angle = (float)Math.Atan2(a2.X * b2.Y - a2.Y * b2.X, DotProduct(a2, b2));
 
-            if (Math.Abs(angle) < CCMacros.FLT_EPSILON)
+            if (Math.Abs(angle) < float.Epsilon)
             {
                 return 0.0f;
             }
@@ -304,7 +304,7 @@ namespace cocos2d
         {
             float angle = (float)Math.Acos(DotProduct(Normalize(a), Normalize(b)));
 
-            if (Math.Abs(angle) < CCMacros.FLT_EPSILON)
+            if (Math.Abs(angle) < float.Epsilon)
             {
                 return 0.0f;
             }
