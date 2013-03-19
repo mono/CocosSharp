@@ -91,8 +91,14 @@ namespace Jumpy
 			base.OnEnter ();
 			Schedule(Step);
 
-			TouchEnabled = false;
-			//IsAccelerometerEnabled = true;
+#if WINDOWS || MONOMAC
+            AccelerometerEnabled = false;
+            SingleTouchEnabled = true;
+#else	
+            AccelerometerEnabled = true;
+            SingleTouchEnabled = false;
+#endif
+            //IsAccelerometerEnabled = true;
 
 			// CCDirector.SharedDirector.Accelerometer.SetDelegate(new AccelerometerDelegate(DidAccelerate);
 			StartGame ();
@@ -382,13 +388,24 @@ namespace Jumpy
 			if (old_part!=null)
 				RemoveChild(old_part,true);
 
-			var particle = new CCParticleFireworks() {
-				Position = bird_pos,
-				Gravity = new CCPoint(0,-5000),
-				Duration = .3f,
-			};
+			var particle = CCParticleFireworks.Create();
+			particle.Position = bird_pos;
+			particle.Gravity = new CCPoint(0,-5000);
+			particle.Duration = .3f;
 			AddChild(particle,-1,(int)Tags.Particles);
 		}
+
+        public override bool TouchBegan(CCTouch touch, CCEvent event_)
+        {
+            return (true);
+        }
+        public override void TouchEnded(CCTouch touch, CCEvent event_)
+        {
+            float accel_filter = 0.1f;
+            float ax = ConvertTouchToNodeSpace(touch).X - ConvertToNodeSpace(touch.PreviousLocationInView).X;
+            ax /= 500;
+            bird_vel.X = bird_vel.X * accel_filter + (float)ax * (1.0f - accel_filter) * 500.0f;
+        }
 
 		void HandleAccelerate (CCAcceleration acceleration)
 		{

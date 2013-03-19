@@ -12,30 +12,30 @@ namespace tests
         {
             switch (nIndex)
             {
-                case 0:
-                    return new CameraCenterTest();
-                case 1:
-                    return new Test2();
-                case 2:
-                    return new Test4();
-                case 3:
-                    return new Test5();
-                case 4:
-                    return new Test6();
-                case 5:
-                    return new StressTest1();
-                case 6:
-                    return new StressTest2();
-                case 7:
-                    return new NodeToWorld();
-                case 8:
-                    return new SchedulerTest1();
-                case 9:
-                    return new CameraOrbitTest();
-                case 10:
-                    return new CameraZoomTest();
-                case 11:
-                    return new ConvertToNode();
+            case 0:
+                return new Test2();
+            case 1:
+                return new Test4();
+            case 2:
+                return new Test5();
+            case 3:
+                return new Test6();
+            case 4:
+                return new StressTest1();
+            case 5:
+                return new StressTest2();
+            case 6:
+                return new NodeToWorld();
+            case 7:
+                return new SchedulerTest1();
+            case 8:
+                return new CameraOrbitTest();
+            case 9:
+                return new CameraZoomTest();
+            case 10:
+                return new CameraCenterTest();
+            case 11:
+                return new ConvertToNode();            
             }
 
             return null;

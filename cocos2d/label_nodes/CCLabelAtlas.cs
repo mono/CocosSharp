@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System;
 
 namespace cocos2d
 {
@@ -8,27 +9,39 @@ namespace cocos2d
         protected string m_sString = "";
 
         #region ICCLabelProtocol Members
-
-        public void SetString(string label)
+        public string Label
         {
-            int len = label.Length;
-            if (len > m_pTextureAtlas.TotalQuads)
-            {
-                m_pTextureAtlas.ResizeCapacity(len);
+            get { return m_sString; }
+            set 
+            {            
+                // TODO: Check for null????
+                int len = value.Length;
+                if (len > m_pTextureAtlas.TotalQuads)
+                {
+                    m_pTextureAtlas.ResizeCapacity(len);
+                }
+                
+                m_sString = value;
+                
+                UpdateAtlasValues();
+                
+                ContentSize = new CCSize(len * m_uItemWidth, m_uItemHeight);
+                
+                m_uQuadsToDraw = len;
+
             }
-
-            m_sString = label;
-
-            UpdateAtlasValues();
-
-            ContentSize = new CCSize(len * m_uItemWidth, m_uItemHeight);
-
-            m_uQuadsToDraw = len;
         }
 
-        public string GetString()
+        [Obsolete("Use Label Property")]
+        public void SetString(string label)
         {
-            return m_sString;
+            Label = label;
+        }
+
+        [Obsolete("Use Label Property")]
+        public string GetString() 
+        {
+            return Label;
         }
 
         #endregion
@@ -71,7 +84,7 @@ namespace cocos2d
             if (base.InitWithTileFile(charMapFile, itemWidth, itemHeight, label.Length))
             {
                 m_cMapStartChar = startCharMap;
-                SetString(label);
+                Label = (label);
                 return true;
             }
             return false;

@@ -43,7 +43,7 @@ namespace cocos2d
                 if (m_pInputText.Length > 0)
                 {
                     var cclablettf = new CCLabelTTF();
-                    cclablettf.SetString(m_pPlaceHolder);
+                    cclablettf.Label = (m_pPlaceHolder);
                 }
             }
         }
@@ -65,11 +65,11 @@ namespace cocos2d
                 // if there is no input text, display placeholder instead
                 if (m_pInputText.Length > 0)
                 {
-                    cclabelttf.SetString(m_pPlaceHolder);
+                    cclabelttf.Label = (m_pPlaceHolder);
                 }
                 else
                 {
-                    cclabelttf.SetString(m_pInputText);
+                    cclabelttf.Label = (m_pInputText);
                 }
                 m_nCharCount = CalcCharCount(m_pInputText);
             }
@@ -193,7 +193,7 @@ namespace cocos2d
                 //CC_SAFE_DELETE(m_pInputText);
                 m_pInputText = "";
                 m_nCharCount = 0;
-                cclabelttf.SetString(m_pPlaceHolder);
+                cclabelttf.Label = (m_pPlaceHolder);
                 return;
             }
 

@@ -78,7 +78,7 @@ namespace tests.Extensions
 			var pScene = CCScene.Create();
 			var controlLayer = new CCControlButtonTest_HelloVariableSize();
 		    controlLayer.Init();
-    		controlLayer.getSceneTitleLabel().SetString(title);
+    		controlLayer.getSceneTitleLabel().Label = (title);
 			pScene.AddChild(controlLayer);
 			return pScene;
 		}
@@ -137,41 +137,41 @@ namespace tests.Extensions
 	
 		public void touchDownAction(CCObject sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.SetString("Touch Down");
+			m_pDisplayValueLabel.Label = ("Touch Down");
 		}
 		public void touchDragInsideAction(CCObject sender, CCControlEvent controlEvent)
 		{
-			    m_pDisplayValueLabel.SetString("Drag Inside");
+			    m_pDisplayValueLabel.Label = ("Drag Inside");
 		}
 
 		public void touchDragOutsideAction(CCObject sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.SetString("Drag Outside");
+			m_pDisplayValueLabel.Label = ("Drag Outside");
 		}
 
 		public void touchDragEnterAction(CCObject sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.SetString("Drag Enter");
+			m_pDisplayValueLabel.Label = ("Drag Enter");
 		}
 
 		public void touchDragExitAction(CCObject sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.SetString("Drag Exit");
+			m_pDisplayValueLabel.Label = ("Drag Exit");
 		}
 		
 		public void touchUpInsideAction(CCObject sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.SetString("Touch Up Inside.");
+			m_pDisplayValueLabel.Label = ("Touch Up Inside.");
 		}
 		
 		public void touchUpOutsideAction(CCObject sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.SetString("Touch Up Outside.");
+			m_pDisplayValueLabel.Label = ("Touch Up Outside.");
 		}
 
 		public void touchCancelAction(CCObject sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.SetString("Touch Cancel");
+			m_pDisplayValueLabel.Label = ("Touch Cancel");
 		}
 	
 		private CCLabelTTF m_pDisplayValueLabel; 
@@ -190,7 +190,7 @@ namespace tests.Extensions
 			var controlLayer = new CCControlButtonTest_Event();
 			if (controlLayer != null && controlLayer.Init())
 			{
-				controlLayer.getSceneTitleLabel().SetString(title);
+				controlLayer.getSceneTitleLabel().Label = (title);
 				pScene.AddChild(controlLayer);
 			}
 			return pScene;
@@ -273,7 +273,7 @@ namespace tests.Extensions
 			var controlLayer = new CCControlButtonTest_Styling();
 			if (controlLayer != null && controlLayer.Init())
 			{
-				controlLayer.getSceneTitleLabel().SetString(title);
+				controlLayer.getSceneTitleLabel().Label = (title);
 				pScene.AddChild(controlLayer);
 			}
 			return pScene;

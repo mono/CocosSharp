@@ -69,7 +69,7 @@ namespace Jumpy
 
             // create a scene. it's an autorelease object
             CCScene pScene = CCScene.Create();
-            CCLayer pLayer = new MainLayer();
+            CCLayer pLayer = new GameLayer();
 
             pScene.AddChild(pLayer);
             pDirector.RunWithScene(pScene);

@@ -93,7 +93,7 @@ namespace tests.Extensions
 			else
 			{
 				var label = (CCLabelTTF)cell.GetChildByTag(123);
-				label.SetString(str);
+				label.Label = (str);
 			}
 
 

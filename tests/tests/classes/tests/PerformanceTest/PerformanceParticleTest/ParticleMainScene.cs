@@ -92,7 +92,7 @@ namespace tests
             CCParticleSystem emitter = (CCParticleSystem)GetChildByTag(PerformanceParticleTest.kTagParticleSystem);
 
             var str = string.Format("{0:0000}", emitter.ParticleCount);
-            atlas.SetString(str);
+            atlas.Label = (str);
         }
 
         public void createParticleSystem()
@@ -208,7 +208,7 @@ namespace tests
             {
                 CCLabelTTF infoLabel = (CCLabelTTF)GetChildByTag(PerformanceParticleTest.kTagInfoLayer);
                 string str = string.Format("{0} particles", quantityParticles);
-                infoLabel.SetString(str);
+                infoLabel.Label = (str);
 
                 lastRenderedCount = quantityParticles;
             }

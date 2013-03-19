@@ -12,7 +12,7 @@ namespace tests
             font.Init();
             font.FontName = "Marker Felt";
             font.FontSize = 38;
-            font.SetString("It is working!");
+            font.Label = ("It is working!");
             AddChild(font);
             font.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
         }
