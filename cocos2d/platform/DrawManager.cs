@@ -1062,7 +1062,7 @@ namespace cocos2d
             graphics.IsFullScreen = true;
 #endif
 
-#if WINDOWS
+#if WINDOWS || MONOMAC
             game.IsMouseVisible = true;
             graphics.IsFullScreen = false;
 #endif
