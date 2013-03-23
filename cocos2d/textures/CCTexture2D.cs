@@ -476,7 +476,9 @@ namespace cocos2d
         }
 
         private SpriteFont m_spriteFont;
-
+#if MONOMAC
+		private static SpriteFont hackFont = CCSpriteFontCache.SharedInstance.GetFont("arial", 0);
+#endif
         public bool InitWithString(string text, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, string fontName,
                                    float fontSize)
         {
@@ -623,6 +625,14 @@ namespace cocos2d
                         position.X = (dimensions.Width - font.MeasureString(line).X) / 2.0f;
                     }
 
+#if MONOMAC
+					// It seems that MonoGame has an initialization problem with MONOMAC
+					// what we are doing here is a HACK and no doubt about it.  We can take this
+					// work around out when the issue is addressed in MonoGame.
+					// The issue is that if we do not re-initialize the font for some reason it is 
+					// not drawing the next label if it is the same font and size.
+					spriteBatch.DrawString(hackFont, " ", position, Color.White);
+#endif
                     spriteBatch.DrawString(font, line, position, Color.White);
                     nextY += font.LineSpacing;
                 }
