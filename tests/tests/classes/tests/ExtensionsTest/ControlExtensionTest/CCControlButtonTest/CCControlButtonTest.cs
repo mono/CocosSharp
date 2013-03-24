@@ -4,7 +4,7 @@ using Random = cocos2d.Random;
 
 namespace tests.Extensions
 {
-    public class CCControlButtonTest_HelloVariableSize : CCControlScene
+    class CCControlButtonTest_HelloVariableSize : CCControlScene
 	{
 		public override bool Init()
 		{
@@ -83,6 +83,103 @@ namespace tests.Extensions
 			return pScene;
 		}
 	}
+
+    class CCControlButtonTest_Inset : CCControlScene
+    {
+        public override bool Init()
+        {
+            if (base.Init())
+            {
+                CCSize screenSize = CCDirector.SharedDirector.WinSize;
+
+                // Defines an array of title to create buttons dynamically
+                var stringArray = new[] {
+					"Inset",
+					"Inset",
+					"Inset"
+				};
+
+                CCNode layer = CCNode.Create();
+                AddChild(layer, 1);
+
+                float total_width = 0, height = 0;
+
+                // For each title in the array
+                CCObject pObj = null;
+                foreach (var title in stringArray)
+                {
+                    // Creates a button with this string as title
+                    CCControlButton button = insetButtonWithTitle(title, new CCRect(5, 5, 5, 5));
+                    button.Position = new CCPoint(total_width + button.ContentSize.Width / 2, button.ContentSize.Height / 2);
+                    layer.AddChild(button);
+
+                    // Compute the size of the layer
+                    height = button.ContentSize.Height;
+                    total_width += button.ContentSize.Width;
+                }
+
+                layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+                layer.ContentSize = new CCSize(total_width, height);
+                layer.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
+
+                // Add the black background
+                var background = CCScale9Sprite.Create("extensions/buttonBackground");
+                background.ContentSize = new CCSize(total_width + 14, height + 14);
+                background.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
+                AddChild(background);
+                return true;
+            }
+            return false;
+        }
+
+
+        /** Creates and return a button with a default background and title color. */
+        public CCControlButton standardButtonWithTitle(string title)
+        {
+            /** Creates and return a button with a default background and title color. */
+            var backgroundButton = CCScale9Sprite.Create("extensions/button");
+            var backgroundHighlightedButton = CCScale9Sprite.Create("extensions/buttonHighlighted");
+
+            var titleButton = CCLabelTTF.Create(title, "Marker Felt", 30);
+
+            titleButton.Color = new CCColor3B(159, 168, 176);
+
+            var button = CCControlButton.Create(titleButton, backgroundButton);
+            button.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
+            button.SetTitleColorForState(CCTypes.CCWhite, CCControlState.Highlighted);
+
+            return button;
+        }
+
+        public CCControlButton insetButtonWithTitle(string title, CCRect inset)
+        {
+            /** Creates and return a button with a default background and title color. */
+            var backgroundButton = CCScale9Sprite.Create("extensions/button");
+            var backgroundHighlightedButton = CCScale9Sprite.Create("extensions/buttonHighlighted");
+            backgroundButton.CapInsets = inset;
+            backgroundHighlightedButton.CapInsets = inset;
+
+            var titleButton = CCLabelTTF.Create(title, "Marker Felt", 30);
+
+            titleButton.Color = new CCColor3B(159, 168, 176);
+
+            var button = CCControlButton.Create(titleButton, backgroundButton);
+            button.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
+            button.SetTitleColorForState(CCTypes.CCWhite, CCControlState.Highlighted);
+
+            return button;
+        }
+
+        public new static CCScene sceneWithTitle(string title)
+        {
+            var pScene = CCScene.Create();
+            var controlLayer = new CCControlButtonTest_Inset();
+            controlLayer.Init();
+            controlLayer.getSceneTitleLabel().Label = (title);
+            pScene.AddChild(controlLayer);
+            return pScene;
+        }
+    }
 
 	class CCControlButtonTest_Event : CCControlScene
 	{
@@ -196,7 +293,6 @@ namespace tests.Extensions
 			return pScene;
 		}
 	}
-
 
 	class CCControlButtonTest_Styling : CCControlScene
 	{

@@ -5,13 +5,15 @@ namespace tests.Extensions
 {
 	public class CCControlSceneManager : CCObject
 	{
-		public const int kCCControlSliderTest = 0;
+        public const int kCCControlTestMax = 6;
+        
+        public const int kCCControlSliderTest = 0;
 		//public const int kCCControlColourPickerTest = 2;
 		public const int kCCControlSwitchTest = 1;
 		public const int kCCControlButtonTest_HelloVariableSize = 2;
 		public const int kCCControlButtonTest_Event = 3;
 		public const int kCCControlButtonTest_Styling = 4;
-		public const int kCCControlTestMax = 5;
+        public const int kCCControlButtonTest_Inset = 5;
 
 
 		public CCControlSceneManager()
@@ -26,7 +28,8 @@ namespace tests.Extensions
 		    "ControlSwitchTest",
 		    "ControlButtonTest_HelloVariableSize",
 		    "ControlButtonTest_Event",
-		    "ControlButtonTest_Styling"
+		    "ControlButtonTest_Styling",
+            "ControlButtontest_Inset"
 		};
 
 		private static CCControlSceneManager sharedInstance = null;
@@ -83,6 +86,8 @@ namespace tests.Extensions
 					return CCControlButtonTest_Event.sceneWithTitle(s_testArray[m_nCurrentControlSceneId]);
 				case kCCControlButtonTest_Styling:
 					return CCControlButtonTest_Styling.sceneWithTitle(s_testArray[m_nCurrentControlSceneId]);
+                case kCCControlButtonTest_Inset:
+                    return CCControlButtonTest_Inset.sceneWithTitle(s_testArray[m_nCurrentControlSceneId]);
 			}
 			return null;
 		}

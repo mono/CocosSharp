@@ -14,7 +14,7 @@ namespace tests.Extensions
 
 				var pBackItem = CCMenuItemFont.Create("Back", toExtensionsMainLayer);
 				pBackItem.Position = new CCPoint(screensize.Width - 50, 25);
-				var pBackMenu = CCMenu.Create(pBackItem);
+				var pBackMenu = new CCMenu(pBackItem);
 				pBackMenu.Position =  CCPoint.Zero;
 				AddChild(pBackMenu, 10);
 
@@ -39,7 +39,7 @@ namespace tests.Extensions
 				var item2 = CCMenuItemImage.Create("Images/r1", "Images/r2", restartCallback);
 				var item3 = CCMenuItemImage.Create("Images/f1", "Images/f2", nextCallback);
         
-				var menu = CCMenu.Create(item1, item3, item2);
+				var menu = new CCMenu(item1, item3, item2);
 				menu.Position = CCPoint.Zero;
 				item1.Position = new CCPoint(screensize.Width / 2 - 100, 37);
 				item2.Position = new CCPoint(screensize.Width / 2, 35);
