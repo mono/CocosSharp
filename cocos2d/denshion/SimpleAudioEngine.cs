@@ -1,35 +1,44 @@
 using System.Collections.Generic;
 using System;
+using cocos2d;
 
 namespace CocosDenshion
 {
     public class SimpleAudioEngine
     {
-        //private static string s_szRootPath;
-        //private static ulong s_dwRootLen;
-        //private static string s_szFullPath;
+        /// <summary>
+        /// The list of sounds that are configured for looping. These need to be stopped when the game pauses.
+        /// </summary>
+        private Dictionary<int, int> _LoopedSounds = new Dictionary<int, int>();
 
-        private static SimpleAudioEngine s_SharedEngine;
-        private static List<KeyValuePair<int, EffectPlayer>> s_List;
-        private static MusicPlayer s_Music;
-
-        public static List<KeyValuePair<int, EffectPlayer>> SharedList
+        /// <summary>
+        /// The shared sound effect list. The key is the hashcode of the file path.
+        /// </summary>
+        public static Dictionary<int, EffectPlayer> SharedList
         {
-            get { return s_List ?? (s_List = new List<KeyValuePair<int, EffectPlayer>>()); }
+            get
+            {
+                return (s_List);
+            }
         }
 
+        /// <summary>
+        /// The shared music player.
+        /// </summary>
         private static MusicPlayer SharedMusic
         {
-            get { return s_Music ?? (s_Music = new MusicPlayer()); }
+            get 
+            { 
+                return(s_Music); 
+            }
         }
 
-        /**
-        @brief Get the shared Engine object,it will new one when first time be called
-        */
-
+        /// <summary>
+        /// The singleton instance of this class.
+        /// </summary>
         public static SimpleAudioEngine SharedEngine
         {
-            get { return s_SharedEngine ?? (s_SharedEngine = new SimpleAudioEngine()); }
+            get { return _Instance; }
         }
 
         public float BackgroundMusicVolume
@@ -92,7 +101,7 @@ namespace CocosDenshion
         @brief  Set the zip file name
         @param pszZipFileName The relative path of the .zip file
         */
-
+        [Obsolete("This is not used in this version of the library")]
         public static void SetResource(string pszZipFileName)
         {
         }
@@ -202,71 +211,69 @@ namespace CocosDenshion
             return SharedMusic.IsPlaying();
         }
 
-        // properties
-        /**
-        @brief the volume of the background music max value is 1.0,the min value is 0.0
-        */
-
-        // for sound effects
-        /**
-        @brief Play sound effect
-        @param pszFilePath The path of the effect file,or the FileName of T_SoundResInfo
-        @bLoop Whether to loop the effect playing, default value is false
-        */
-
-        private Dictionary<int,int> _LoopedSounds = new Dictionary<int,int>();
-
+        /// <summary>
+        /// Play the sound effect with the given path and optionally set it to lopo.
+        /// </summary>
+        /// <param name="pszFilePath">The path to the sound effect file.</param>
+        /// <param name="bLoop">True if the sound effect will play continuously, and false if it will play then stop.</param>
+        /// <returns></returns>
         public int PlayEffect (string pszFilePath, bool bLoop)
         {
-            int nRet = pszFilePath.GetHashCode ();
+            int nId = pszFilePath.GetHashCode ();
 
             PreloadEffect (pszFilePath);
 
-            lock (SharedList) {
-                try {
-                    foreach (var kvp in SharedList) {
-                        if (nRet == kvp.Key) {
-                            kvp.Value.Play (bLoop);
-                            if (bLoop)
-                            {
-                                _LoopedSounds[nRet] = nRet;
-                            }
+            lock (SharedList)
+            {
+                try
+                {
+                    if (SharedList.ContainsKey(nId))
+                    {
+                        SharedList[nId].Play(bLoop);
+                        if (bLoop)
+                        {
+                            _LoopedSounds[nId] = nId;
                         }
                     }
-                } 
-                catch (Exception) {
+                }
+                catch (Exception ex)
+                {
+                    CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", pszFilePath);
+                    CCLog.Log(ex.ToString());
                 }
             }
 
-            return nRet;
+            return nId;
         }
-
-        /**
-        @brief Play sound effect
-        @param pszFilePath The path of the effect file,or the FileName of T_SoundResInfo
-        */
-
+        
+        /// <summary>
+        /// Plays the given sound effect without looping.
+        /// </summary>
+        /// <param name="pszFilePath">The path to the sound effect</param>
+        /// <returns></returns>
         public int PlayEffect(string pszFilePath)
         {
             return PlayEffect(pszFilePath, false);
         }
 
-        /**
-        @brief Stop playing sound effect
-        @param nSoundId The return value of function playEffect
-        */
-
-        public void StopEffect (int nSoundId)
+        /// <summary>
+        /// Stops the sound effect with the given id. 
+        /// </summary>
+        /// <param name="nSoundId"></param>
+        public void StopEffect(int nSoundId)
         {
-            lock (SharedList) {
-                foreach (var kvp in SharedList) {
-                    if (nSoundId == kvp.Key) {
-                        kvp.Value.Stop ();
-                        if (_LoopedSounds.ContainsKey(nSoundId))
-                        {
-                            _LoopedSounds.Remove(nSoundId);
-                        }
-                    }
+            lock (SharedList)
+            {
+                if (SharedList.ContainsKey(nSoundId))
+                {
+                    SharedList[nSoundId].Stop();
+                }
+            }
+            lock (_LoopedSounds)
+            {
+                if (_LoopedSounds.ContainsKey(nSoundId))
+                {
+                    _LoopedSounds.Remove(nSoundId);
                 }
             }
         }
@@ -296,24 +303,29 @@ namespace CocosDenshion
         internal buffer in SimpleaudioEngine
         */
 
-        public void PreloadEffect (string pszFilePath)
+
+        /// <summary>
+        /// Load the sound effect found with the given path. The sound effect is only loaded one time and the
+        /// effect is cached as an instance of EffectPlayer.
+        /// </summary>
+        public void PreloadEffect(string pszFilePath)
         {
-            if (pszFilePath.Length <= 0) {
+            if (string.IsNullOrEmpty(pszFilePath))
+            {
                 return;
             }
 
-            int nId = pszFilePath.GetHashCode ();
-            lock (SharedList) {
-                for (int i = 0; i < SharedList.Count; i++) {
-                    if (SharedList [i].Key == nId) {
-                        return;
-                    }
+            int nId = pszFilePath.GetHashCode();
+            lock (SharedList)
+            {
+                if (SharedList.ContainsKey(nId))
+                {
+                    return;
                 }
-
-                var eff = new EffectPlayer ();
-                eff.Open (FullPath (pszFilePath), nId);
-                SharedList.Add (new KeyValuePair<int, EffectPlayer> (nId, eff));
             }
+            EffectPlayer eff = new EffectPlayer();
+            eff.Open(FullPath(pszFilePath), nId);
+            SharedList[nId] = eff;
         }
 
         /**
@@ -325,15 +337,22 @@ namespace CocosDenshion
         {
             int nId = pszFilePath.GetHashCode ();
             lock (SharedList) {
-                for (int i = 0; i < SharedList.Count; i++) {
-                    if (SharedList [i].Key == nId) {
-                        SharedList.RemoveAt (i);
-                    }
+                if (SharedList.ContainsKey(nId))
+                {
+                    SharedList.Remove(nId);
                 }
             }
-			if(_LoopedSounds.ContainsKey(nId)) {
-				_LoopedSounds.Remove(nId);
-			}
+            lock (_LoopedSounds)
+            {
+                if (_LoopedSounds.ContainsKey(nId))
+                {
+                    _LoopedSounds.Remove(nId);
+                }
+            }
         }
+
+        private static Dictionary<int, EffectPlayer> s_List = new Dictionary<int,EffectPlayer>();
+        private static MusicPlayer s_Music = new MusicPlayer();
+        private static SimpleAudioEngine _Instance = new SimpleAudioEngine();
     }
 }
