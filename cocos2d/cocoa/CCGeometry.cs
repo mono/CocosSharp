@@ -24,10 +24,14 @@ THE SOFTWARE.
 using System;
 using System.IO;
 using System.Diagnostics;
+using System.ComponentModel;
+using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
 
 namespace cocos2d
 {
+
+	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCPointConverter))]
     public struct CCPoint
     {
         public static readonly CCPoint Zero = new CCPoint(0, 0);
@@ -76,6 +80,10 @@ namespace cocos2d
             }
         }
 
+		public override int GetHashCode ()
+		{
+			return this.X.GetHashCode() + this.Y.GetHashCode();
+		}
         public override bool Equals(object obj)
         {
             return (Equals((CCPoint)obj));
@@ -173,8 +181,14 @@ namespace cocos2d
         {
             return new CCPoint(p.X * value, p.Y * value);
         }
+
+		public static CCPoint Parse(string s) 
+		{
+			return (CCPoint)TypeDescriptor.GetConverter(typeof(CCPoint)).ConvertFromString (s);
+		}
     }
 
+	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCSizeConverter))]
     public struct CCSize
     {
         public static readonly CCSize Zero = new CCSize(0, 0);
@@ -203,6 +217,11 @@ namespace cocos2d
         {
             return ((size1.Width == size2.Width) && (size1.Height == size2.Height));
         }
+
+		public override int GetHashCode()
+		{
+			return (this.Width.GetHashCode() + this.Height.GetHashCode());
+		}
 
         public bool Equals(CCSize s)
         {
@@ -247,8 +266,14 @@ namespace cocos2d
         {
             return (new CCSize(p.Width - f, p.Height - f));
         }
+
+		public static CCSize Parse(string s) 
+		{
+			return (CCSize)TypeDescriptor.GetConverter(typeof(CCSize)).ConvertFromString (s);
+		}
     }
 
+	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCRectConverter))]
     public struct CCRect
     {
         public static readonly CCRect Zero = new CCRect(0, 0, 0, 0);
@@ -474,6 +499,12 @@ namespace cocos2d
             return (!p1.Equals(p2));
         }
 
+		public override int GetHashCode()
+		{
+			//return (this.Origin.X.GetHashCode() + this.Origin.Y.GetHashCode() + this.Size.Width.GetHashCode() + this.Size.Height.GetHashCode());
+			return this.Origin.GetHashCode() + this.Size.GetHashCode();
+		}
+
         public override bool Equals(object obj)
         {
             return (Equals((CCRect)obj));
@@ -488,5 +519,10 @@ namespace cocos2d
         {
             return String.Format("CCRect : (x={0}, y={1}, width={2}, height={3})", Origin.X, Origin.Y, Size.Width, Size.Height);
         }
+
+		public static CCRect Parse(string s) 
+		{
+			return (CCRect)TypeDescriptor.GetConverter(typeof(CCRect)).ConvertFromString (s);
+		}
     }
 }
