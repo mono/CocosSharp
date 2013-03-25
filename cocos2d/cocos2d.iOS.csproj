@@ -210,7 +210,6 @@
     <Compile Include="cocoa\CCAffineTransform.cs" />
     <Compile Include="cocoa\CCData.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
-    <Compile Include="cocoa\CCNS.cs" />
     <Compile Include="cocoa\CCObject.cs" />
     <Compile Include="cocoa\CCZone.cs" />
     <Compile Include="denshion\EffectPlayer.cs" />
@@ -437,6 +436,9 @@
     <Compile Include="Platform\ContentReaders\CCRectReader.cs" />
     <Compile Include="Platform\ContentReaders\CCSizeReader.cs" />
     <Compile Include="Platform\ContentReaders\KerningHashElementReader.cs" />
+    <Compile Include="support\Converters\CCPointConverter.cs" />
+    <Compile Include="support\Converters\CCRectConverter.cs" />
+    <Compile Include="support\Converters\CCSizeConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj">
@@ -450,5 +452,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />
+    <Folder Include="support\Converters\" />
   </ItemGroup>
 </Project>

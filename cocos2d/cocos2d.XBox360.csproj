@@ -160,7 +160,6 @@
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="cocoa\CCData.cs" />
-    <Compile Include="cocoa\CCNS.cs" />
     <Compile Include="denshion\EffectPlayer.cs" />
     <Compile Include="denshion\MusicPlayer.cs" />
     <Compile Include="denshion\SimpleAudioEngine.cs" />
@@ -347,6 +346,9 @@
     <Compile Include="sprite_nodes\CCSpriteFrame.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrameCache.cs" />
     <Compile Include="support\CCUtils.cs" />
+    <Compile Include="support\Converters\CCRectConverter.cs" />
+    <Compile Include="support\Converters\CCPointConverter.cs" />
+    <Compile Include="support\Converters\CCSizeConverter.cs" />
     <Compile Include="support\Compression\Adler.cs" />
     <Compile Include="support\Compression\Crc32.cs" />
     <Compile Include="support\Compression\FlushType.cs" />

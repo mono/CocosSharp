@@ -190,7 +190,6 @@
     <Compile Include="cocoa\CCAffineTransform.cs" />
     <Compile Include="cocoa\CCData.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
-    <Compile Include="cocoa\CCNS.cs" />
     <Compile Include="cocoa\CCObject.cs" />
     <Compile Include="cocoa\CCZone.cs" />
     <Compile Include="denshion\EffectPlayer.cs" />
@@ -412,6 +411,9 @@
     <Compile Include="Platform\CCIFocusable.cs" />
     <Compile Include="predefine\CCTypes.cs" />
     <Compile Include="support\CCUtils.cs" />
+    <Compile Include="support\Converters\CCRectConverter.cs" />
+    <Compile Include="support\Converters\CCPointConverter.cs" />
+    <Compile Include="support\Converters\CCSizeConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">
@@ -422,5 +424,8 @@
       <Project>{AE483C29-042E-4226-BA52-D247CE7676DA}</Project>
       <Name>Lidgren.Network.MacOS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="support\Converters\" />
   </ItemGroup>
 </Project>

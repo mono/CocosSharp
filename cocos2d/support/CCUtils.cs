@@ -210,5 +210,81 @@ namespace cocos2d
             x = x | (x >> 16);
             return x + 1;
         }
+
+		public static void Split(string src, string token, List<string> vect)
+		{
+			int nend = 0;
+			int nbegin = 0;
+			while (nend != -1)
+			{
+				nend = src.IndexOf(token, nbegin);
+				if (nend == -1)
+					vect.Add(src.Substring(nbegin, src.Length - nbegin));
+				else
+					vect.Add(src.Substring(nbegin, nend - nbegin));
+				nbegin = nend + token.Length;
+			}
+		}
+		
+		// first, judge whether the form of the string like this: {x,y}
+		// if the form is right,the string will be splited into the parameter strs;
+		// or the parameter strs will be empty.
+		// if the form is right return true,else return false.
+		public static bool SplitWithForm(string pStr, List<string> strs)
+		{
+			bool bRet = false;
+			
+			do
+			{
+				if (pStr == null)
+				{
+					break;
+				}
+				
+				// string is empty
+				string content = pStr;
+				if (content.Length == 0)
+				{
+					break;
+				}
+				
+				int nPosLeft = content.IndexOf('{');
+				int nPosRight = content.IndexOf('}');
+				
+				// don't have '{' and '}'
+				if (nPosLeft == -1 || nPosRight == -1)
+				{
+					break;
+				}
+				// '}' is before '{'
+				if (nPosLeft > nPosRight)
+				{
+					break;
+				}
+				
+				string pointStr = content.Substring(nPosLeft + 1, nPosRight - nPosLeft - 1);
+				// nothing between '{' and '}'
+				if (pointStr.Length == 0)
+				{
+					break;
+				}
+				
+				int nPos1 = pointStr.IndexOf('{');
+				int nPos2 = pointStr.IndexOf('}');
+				// contain '{' or '}' 
+				if (nPos1 != -1 || nPos2 != -1) break;
+				
+				Split(pointStr, ",", strs);
+				if (strs.Count != 2 || strs[0].Length == 0 || strs[1].Length == 0)
+				{
+					strs.Clear();
+					break;
+				}
+				
+				bRet = true;
+			} while (false);
+			
+			return bRet;
+		}
     }
 }

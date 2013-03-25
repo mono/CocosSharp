@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.ComponentModel;
 using System.Linq;
 
 namespace cocos2d
@@ -113,7 +114,7 @@ namespace cocos2d
                 }
                 else if (format == 1 || format == 2)
                 {
-                    CCRect frame = CCNS.CCRectFromString(frameDict["frame"].AsString);
+					CCRect frame = CCRect.Parse(frameDict["frame"].AsString);
                     bool rotated = false;
 
                     // rotation
@@ -125,8 +126,8 @@ namespace cocos2d
                         }
                     }
 
-                    CCPoint offset = CCNS.CCPointFromString(frameDict["offset"].AsString);
-                    CCSize sourceSize = CCNS.CCSizeFromString(frameDict["sourceSize"].AsString);
+                    CCPoint offset = CCPoint.Parse(frameDict["offset"].AsString);
+					CCSize sourceSize = CCSize.Parse (frameDict["sourceSize"].AsString);
 
                     // create frame
                     spriteFrame = new CCSpriteFrame();
@@ -140,10 +141,10 @@ namespace cocos2d
                 else if (format == 3)
                 {
                     // get values
-                    CCSize spriteSize = CCNS.CCSizeFromString(frameDict["spriteSize"].AsString);
-                    CCPoint spriteOffset = CCNS.CCPointFromString(frameDict["spriteOffset"].AsString);
-                    CCSize spriteSourceSize = CCNS.CCSizeFromString(frameDict["spriteSourceSize"].AsString);
-                    CCRect textureRect = CCNS.CCRectFromString(frameDict["textureRect"].AsString);
+                    CCSize spriteSize = CCSize.Parse (frameDict["spriteSize"].AsString);
+                    CCPoint spriteOffset = CCPoint.Parse(frameDict["spriteOffset"].AsString);
+					CCSize spriteSourceSize = CCSize.Parse (frameDict["spriteSourceSize"].AsString);
+                    CCRect textureRect = CCRect.Parse(frameDict["textureRect"].AsString);
                     bool textureRotated = false;
                     if (frameDict.ContainsKey("textureRotated"))
                     {
