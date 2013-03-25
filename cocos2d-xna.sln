@@ -195,14 +195,12 @@ Global
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Android.ActiveCfg = Debug|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Windows Phone.ActiveCfg = Debug|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|x86.ActiveCfg = Debug|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|x86.Build.0 = Debug|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Android.ActiveCfg = Release|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Any CPU.ActiveCfg = Release|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Mixed Platforms.Build.0 = Release|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Windows Phone.ActiveCfg = Release|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|x86.ActiveCfg = Release|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|x86.Build.0 = Release|x86
