@@ -16,10 +16,6 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#include <Box2D/Dynamics/Joints/b2FrictionJoint.h>
-#include <Box2D/Dynamics/b2Body.h>
-#include <Box2D/Dynamics/b2TimeStep.h>
-
 // Point-to-point constraint
 // Cdot = v2 - v1
 //      = v2 + cross(w2, r2) - v1 - cross(w1, r1)
@@ -31,17 +27,14 @@
 // Cdot = w2 - w1
 // J = [0 0 -1 0 0 1]
 // K = invI1 + invI2
+using System;
+using Box2D.Common;
 
-void b2FrictionJointDef::Initialize(b2Body* bA, b2Body* bB, const b2Vec2& anchor)
+namespace Box2D.Dynamics.Joints
 {
-    bodyA = bA;
-    bodyB = bB;
-    localAnchorA = bodyA.GetLocalPoint(anchor);
-    localAnchorB = bodyB.GetLocalPoint(anchor);
-}
-
-b2FrictionJoint::b2FrictionJoint(const b2FrictionJointDef* def)
-: b2Joint(def)
+public class b2FrictionJoint : b2Joint
+{
+public b2FrictionJoint(b2FrictionJointDef def) : base(def)
 {
     m_localAnchorA = def.localAnchorA;
     m_localAnchorB = def.localAnchorB;
@@ -53,7 +46,7 @@ b2FrictionJoint::b2FrictionJoint(const b2FrictionJointDef* def)
     m_maxTorque = def.maxTorque;
 }
 
-void b2FrictionJoint::InitVelocityConstraints(const b2SolverData& data)
+public virtual void InitVelocityConstraints(b2SolverData data)
 {
     m_indexA = m_bodyA.m_islandIndex;
     m_indexB = m_bodyB.m_islandIndex;
@@ -64,19 +57,20 @@ void b2FrictionJoint::InitVelocityConstraints(const b2SolverData& data)
     m_invIA = m_bodyA.m_invI;
     m_invIB = m_bodyB.m_invI;
 
-    float32 aA = data.positions[m_indexA].a;
+    float aA = data.positions[m_indexA].a;
     b2Vec2 vA = data.velocities[m_indexA].v;
-    float32 wA = data.velocities[m_indexA].w;
+    float wA = data.velocities[m_indexA].w;
 
-    float32 aB = data.positions[m_indexB].a;
+    float aB = data.positions[m_indexB].a;
     b2Vec2 vB = data.velocities[m_indexB].v;
-    float32 wB = data.velocities[m_indexB].w;
+    float wB = data.velocities[m_indexB].w;
 
-    b2Rot qA(aA), qB(aB);
+    b2Rot qA = new b2Rot(aA);
+    b2Rot qB = new b2Rot(aB);
 
     // Compute the effective mass matrix.
-    m_rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
-    m_rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
+    m_rA = b2Math.b2Mul(qA, m_localAnchorA - m_localCenterA);
+    m_rB = b2Math.b2Mul(qB, m_localAnchorB - m_localCenterB);
 
     // J = [-I -r1_skew I r2_skew]
     //     [ 0       -1 0       1]
@@ -87,8 +81,8 @@ void b2FrictionJoint::InitVelocityConstraints(const b2SolverData& data)
     //     [  -r1y*iA*r1x-r2y*iB*r2x, mA+r1x^2*iA+mB+r2x^2*iB,           r1x*iA+r2x*iB]
     //     [          -r1y*iA-r2y*iB,           r1x*iA+r2x*iB,                   iA+iB]
 
-    float32 mA = m_invMassA, mB = m_invMassB;
-    float32 iA = m_invIA, iB = m_invIB;
+    float mA = m_invMassA, mB = m_invMassB;
+    float iA = m_invIA, iB = m_invIB;
 
     b2Mat22 K;
     K.ex.x = mA + mB + iA * m_rA.y * m_rA.y + iB * m_rB.y * m_rB.y;
@@ -128,26 +122,26 @@ void b2FrictionJoint::InitVelocityConstraints(const b2SolverData& data)
     data.velocities[m_indexB].w = wB;
 }
 
-void b2FrictionJoint::SolveVelocityConstraints(const b2SolverData& data)
+public virtual void SolveVelocityConstraints(b2SolverData data)
 {
     b2Vec2 vA = data.velocities[m_indexA].v;
-    float32 wA = data.velocities[m_indexA].w;
+    float wA = data.velocities[m_indexA].w;
     b2Vec2 vB = data.velocities[m_indexB].v;
-    float32 wB = data.velocities[m_indexB].w;
+    float wB = data.velocities[m_indexB].w;
 
-    float32 mA = m_invMassA, mB = m_invMassB;
-    float32 iA = m_invIA, iB = m_invIB;
+    float mA = m_invMassA, mB = m_invMassB;
+    float iA = m_invIA, iB = m_invIB;
 
-    float32 h = data.step.dt;
+    float h = data.step.dt;
 
     // Solve angular friction
     {
-        float32 Cdot = wB - wA;
-        float32 impulse = -m_angularMass * Cdot;
+        float Cdot = wB - wA;
+        float impulse = -m_angularMass * Cdot;
 
-        float32 oldImpulse = m_angularImpulse;
-        float32 maxImpulse = h * m_maxTorque;
-        m_angularImpulse = b2Clamp(m_angularImpulse + impulse, -maxImpulse, maxImpulse);
+        float oldImpulse = m_angularImpulse;
+        float maxImpulse = h * m_maxTorque;
+        m_angularImpulse = b2Math.b2Clamp(m_angularImpulse + impulse, -maxImpulse, maxImpulse);
         impulse = m_angularImpulse - oldImpulse;
 
         wA -= iA * impulse;
@@ -156,13 +150,13 @@ void b2FrictionJoint::SolveVelocityConstraints(const b2SolverData& data)
 
     // Solve linear friction
     {
-        b2Vec2 Cdot = vB + b2Cross(wB, m_rB) - vA - b2Cross(wA, m_rA);
+        b2Vec2 Cdot = vB + b2Math.b2Cross(wB, m_rB) - vA - b2Cross(wA, m_rA);
 
         b2Vec2 impulse = -b2Mul(m_linearMass, Cdot);
         b2Vec2 oldImpulse = m_linearImpulse;
         m_linearImpulse += impulse;
 
-        float32 maxImpulse = h * m_maxForce;
+        float maxImpulse = h * m_maxForce;
 
         if (m_linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
         {
@@ -185,67 +179,67 @@ void b2FrictionJoint::SolveVelocityConstraints(const b2SolverData& data)
     data.velocities[m_indexB].w = wB;
 }
 
-bool b2FrictionJoint::SolvePositionConstraints(const b2SolverData& data)
+public virtual bool SolvePositionConstraints(b2SolverData data)
 {
-    B2_NOT_USED(data);
-
     return true;
 }
 
-b2Vec2 b2FrictionJoint::GetAnchorA() const
+public virtual b2Vec2 GetAnchorA()
 {
     return m_bodyA.GetWorldPoint(m_localAnchorA);
 }
 
-b2Vec2 b2FrictionJoint::GetAnchorB() const
+public virtual b2Vec2 GetAnchorB()
 {
     return m_bodyB.GetWorldPoint(m_localAnchorB);
 }
 
-b2Vec2 b2FrictionJoint::GetReactionForce(float32 inv_dt) const
+public virtual b2Vec2 GetReactionForce(float inv_dt)
 {
     return inv_dt * m_linearImpulse;
 }
 
-float32 b2FrictionJoint::GetReactionTorque(float32 inv_dt) const
+public virtual float GetReactionTorque(float inv_dt)
 {
     return inv_dt * m_angularImpulse;
 }
 
-void b2FrictionJoint::SetMaxForce(float32 force)
+public virtual void SetMaxForce(float force)
 {
     b2Assert(b2IsValid(force) && force >= 0.0f);
     m_maxForce = force;
 }
 
-float32 b2FrictionJoint::GetMaxForce() const
+public virtual float GetMaxForce(
 {
     return m_maxForce;
 }
 
-void b2FrictionJoint::SetMaxTorque(float32 torque)
+public virtual void SetMaxTorque(float torque)
 {
     b2Assert(b2IsValid(torque) && torque >= 0.0f);
     m_maxTorque = torque;
 }
 
-float32 b2FrictionJoint::GetMaxTorque() const
+public virtual float GetMaxTorque(
 {
     return m_maxTorque;
 }
 
-void b2FrictionJoint::Dump()
+public virtual void Dump()
 {
-    int32 indexA = m_bodyA.m_islandIndex;
-    int32 indexB = m_bodyB.m_islandIndex;
+    int indexA = m_bodyA.m_islandIndex;
+    int indexB = m_bodyB.m_islandIndex;
 
-    b2Log("  b2FrictionJointDef jd;\n");
-    b2Log("  jd.bodyA = bodies[%d];\n", indexA);
-    b2Log("  jd.bodyB = bodies[%d];\n", indexB);
-    b2Log("  jd.collideConnected = bool(%d);\n", m_collideConnected);
-    b2Log("  jd.localAnchorA.Set(%.15lef, %.15lef);\n", m_localAnchorA.x, m_localAnchorA.y);
-    b2Log("  jd.localAnchorB.Set(%.15lef, %.15lef);\n", m_localAnchorB.x, m_localAnchorB.y);
-    b2Log("  jd.maxForce = %.15lef;\n", m_maxForce);
-    b2Log("  jd.maxTorque = %.15lef;\n", m_maxTorque);
-    b2Log("  joints[%d] = m_world.CreateJoint(&jd);\n", m_index);
+    b2Settings.b2Log("  b2FrictionJointDef jd;\n");
+    b2Settings.b2Log("  jd.bodyA = bodies[{0}];\n", indexA);
+    b2Settings.b2Log("  jd.bodyB = bodies[{0}];\n", indexB);
+    b2Settings.b2Log("  jd.collideConnected = bool({0});\n", m_collideConnected);
+    b2Settings.b2Log("  jd.localAnchorA.Set({0:F5}, {1:F5});\n", m_localAnchorA.x, m_localAnchorA.y);
+    b2Settings.b2Log("  jd.localAnchorB.Set({0:F5}, {1:F5});\n", m_localAnchorB.x, m_localAnchorB.y);
+    b2Settings.b2Log("  jd.maxForce = {0:F5};\n", m_maxForce);
+    b2Settings.b2Log("  jd.maxTorque = {0:F5};\n", m_maxTorque);
+    b2Settings.b2Log("  joints[{0}] = m_world.CreateJoint(&jd);\n", m_index);
+}
+}
 }

@@ -1267,7 +1267,7 @@ namespace Box2D.Dynamics
             System.Diagnostics.Debug.WriteLine("b2Vec2 g({0:N5}, {0:N5});", m_gravity.x, m_gravity.y);
             System.Diagnostics.Debug.WriteLine("m_world.SetGravity(g);");
 
-            System.Diagnostics.Debug.WriteLine("b2Body* bodies = (b2Body)b2Alloc({0} * sizeof(b2Body));", m_bodyCount);
+            System.Diagnostics.Debug.WriteLine("b2Body bodies = (b2Body)b2Alloc({0} * sizeof(b2Body));", m_bodyCount);
             System.Diagnostics.Debug.WriteLine("b2Joint joints = (b2Joint)b2Alloc({0} * sizeof(b2Joint));", m_jointCount);
             int i = 0;
             for (b2Body b = m_bodyList; b != null; b = b.Next)

@@ -7,7 +7,7 @@ using Box2D.Common;
 
 namespace Box2D.Dynamics.Joints
 {
-    public struct b2DistanceJointDef : b2JointDef
+    public class b2DistanceJointDef : b2JointDef
     {
         /// The local anchor point relative to bodyA's origin.
         public b2Vec2 localAnchorA;
@@ -25,6 +25,15 @@ namespace Box2D.Dynamics.Joints
         /// The damping ratio. 0 = no damping, 1 = critical damping.
         public float dampingRatio;
 
+        public b2DistanceJointDef()
+        {
+            type = b2JointType.e_distanceJoint;
+            localAnchorA.Set(0.0f, 0.0f);
+            localAnchorB.Set(0.0f, 0.0f);
+            length = 1.0f;
+            frequencyHz = 0.0f;
+            dampingRatio = 0.0f;
+        }
         public void Initialize(b2Body b1, b2Body b2,
                                     b2Vec2 anchor1, b2Vec2 anchor2)
         {
