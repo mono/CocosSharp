@@ -27,6 +27,12 @@ namespace Box2D.Common
             _ey.x = a12; _ey.y = a22;
         }
 
+        public float exx { set { _ex.x = value; } }
+        public float exy { set { _ex.y = value; } }
+        public float eyx { set { _ey.x = value; } }
+        public float eyy { set { _ey.y = value; } }
+
+
         /// Initialize this matrix using columns.
         public void Set(b2Vec2 c1, b2Vec2 c2)
         {

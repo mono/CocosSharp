@@ -23,20 +23,20 @@ namespace Box2D.Dynamics.Joints
 {
     public class b2Joint
     {
-        private b2JointType m_type;
-        private b2Joint m_prev;
-        private b2Joint m_next;
-        private b2JointEdge m_edgeA;
-        private b2JointEdge m_edgeB;
-        private b2Body m_bodyA;
-        private b2Body m_bodyB;
+        protected b2JointType m_type;
+        protected b2Joint m_prev;
+        protected b2Joint m_next;
+        protected b2JointEdge m_edgeA;
+        protected b2JointEdge m_edgeB;
+        protected b2Body m_bodyA;
+        protected b2Body m_bodyB;
 
-        private int m_index;
+        protected int m_index;
 
-        private bool m_islandFlag;
-        private bool m_collideConnected;
+        protected bool m_islandFlag;
+        protected bool m_collideConnected;
 
-        private object m_userData;
+        protected object m_userData;
 
         public static b2Joint Create(b2JointDef def)
         {
