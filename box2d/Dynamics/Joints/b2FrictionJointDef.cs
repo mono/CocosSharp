@@ -8,13 +8,21 @@ namespace Box2D.Dynamics.Joints
 {
     public class b2FrictionJointDef : b2JointDef
     {
-        public void Initialize(b2Body bA, b2Body bB, b2Vec2 anchor)
+        public b2FrictionJointDef()
         {
             type = b2JointType.e_frictionJoint;
             localAnchorA.SetZero();
             localAnchorB.SetZero();
             maxForce = 0.0f;
             maxTorque = 0.0f;
+        }
+
+        public void Initialize(b2Body bA, b2Body bB, b2Vec2 anchor)
+        {
+            bodyA = bA;
+            bodyB = bB;
+            localAnchorA = bodyA.GetLocalPoint(anchor);
+            localAnchorB = bodyB.GetLocalPoint(anchor);
         }
 
         /// The local anchor point relative to bodyA's origin.

@@ -8,7 +8,7 @@ namespace Box2D.Dynamics.Joints
 {
     public class b2MouseJointDef : b2JointDef
     {
-        public void Defaults()
+        public void b2MouseJointDef()
         {
             type = b2JointType.e_mouseJoint;
             target.Set(0.0f, 0.0f);
