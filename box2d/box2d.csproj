@@ -99,9 +99,11 @@
     <Compile Include="Dynamics\Joints\b2FrictionJoint.cs" />
     <Compile Include="Dynamics\Joints\b2FrictionJointDef.cs" />
     <Compile Include="Dynamics\Joints\b2GearJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2GearJointDef.cs" />
     <Compile Include="Dynamics\Joints\b2Joint.cs" />
     <Compile Include="Dynamics\Joints\b2JointDef.cs" />
     <Compile Include="Dynamics\Joints\b2MouseJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2MouseJointDef.cs" />
     <Compile Include="Dynamics\Joints\b2PrismaticJoint.cs" />
     <Compile Include="Dynamics\Joints\b2PulleyJoint.cs" />
     <Compile Include="Dynamics\Joints\b2RevoluteJoint.cs" />

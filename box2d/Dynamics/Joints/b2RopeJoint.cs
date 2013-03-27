@@ -29,7 +29,7 @@
 // K = J * invM * JT
 //   = invMassA + invIA * cross(rA, u)^2 + invMassB + invIB * cross(rB, u)^2
 
-b2RopeJoint::b2RopeJoint(const b2RopeJointDef* def)
+b2RopeJoint::b2RopeJoint(b2RopeJointDef* def)
 : b2Joint(def)
 {
     m_localAnchorA = def.localAnchorA;
@@ -43,7 +43,7 @@ b2RopeJoint::b2RopeJoint(const b2RopeJointDef* def)
     m_length = 0.0f;
 }
 
-void b2RopeJoint::InitVelocityConstraints(const b2SolverData& data)
+void b2RopeJoint::InitVelocityConstraints(b2SolverData& data)
 {
     m_indexA = m_bodyA.m_islandIndex;
     m_indexB = m_bodyB.m_islandIndex;
@@ -66,8 +66,8 @@ void b2RopeJoint::InitVelocityConstraints(const b2SolverData& data)
 
     b2Rot qA(aA), qB(aB);
 
-    m_rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
-    m_rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
+    m_rA = b2Math.b2Mul(qA, m_localAnchorA - m_localCenterA);
+    m_rB = b2Math.b2Mul(qB, m_localAnchorB - m_localCenterB);
     m_u = cB + m_rB - cA - m_rA;
 
     m_length = m_u.Length();
@@ -95,8 +95,8 @@ void b2RopeJoint::InitVelocityConstraints(const b2SolverData& data)
     }
 
     // Compute effective mass.
-    float crA = b2Cross(m_rA, m_u);
-    float crB = b2Cross(m_rB, m_u);
+    float crA = b2Math.b2Cross(m_rA, m_u);
+    float crB = b2Math.b2Cross(m_rB, m_u);
     float invMass = m_invMassA + m_invIA * crA * crA + m_invMassB + m_invIB * crB * crB;
 
     m_mass = invMass != 0.0f ? 1.0f / invMass : 0.0f;
@@ -108,9 +108,9 @@ void b2RopeJoint::InitVelocityConstraints(const b2SolverData& data)
 
         b2Vec2 P = m_impulse * m_u;
         vA -= m_invMassA * P;
-        wA -= m_invIA * b2Cross(m_rA, P);
+        wA -= m_invIA * b2Math.b2Cross(m_rA, P);
         vB += m_invMassB * P;
-        wB += m_invIB * b2Cross(m_rB, P);
+        wB += m_invIB * b2Math.b2Cross(m_rB, P);
     }
     else
     {
@@ -123,7 +123,7 @@ void b2RopeJoint::InitVelocityConstraints(const b2SolverData& data)
     data.velocities[m_indexB].w = wB;
 }
 
-void b2RopeJoint::SolveVelocityConstraints(const b2SolverData& data)
+void b2RopeJoint::SolveVelocityConstraints(b2SolverData& data)
 {
     b2Vec2 vA = data.velocities[m_indexA].v;
     float wA = data.velocities[m_indexA].w;
@@ -131,10 +131,10 @@ void b2RopeJoint::SolveVelocityConstraints(const b2SolverData& data)
     float wB = data.velocities[m_indexB].w;
 
     // Cdot = dot(u, v + cross(w, r))
-    b2Vec2 vpA = vA + b2Cross(wA, m_rA);
-    b2Vec2 vpB = vB + b2Cross(wB, m_rB);
+    b2Vec2 vpA = vA + b2Math.b2Cross(wA, m_rA);
+    b2Vec2 vpB = vB + b2Math.b2Cross(wB, m_rB);
     float C = m_length - m_maxLength;
-    float Cdot = b2Dot(m_u, vpB - vpA);
+    float Cdot = b2Math.b2Dot(m_u, vpB - vpA);
 
     // Predictive constraint.
     if (C < 0.0f)
@@ -149,9 +149,9 @@ void b2RopeJoint::SolveVelocityConstraints(const b2SolverData& data)
 
     b2Vec2 P = impulse * m_u;
     vA -= m_invMassA * P;
-    wA -= m_invIA * b2Cross(m_rA, P);
+    wA -= m_invIA * b2Math.b2Cross(m_rA, P);
     vB += m_invMassB * P;
-    wB += m_invIB * b2Cross(m_rB, P);
+    wB += m_invIB * b2Math.b2Cross(m_rB, P);
 
     data.velocities[m_indexA].v = vA;
     data.velocities[m_indexA].w = wA;
@@ -159,7 +159,7 @@ void b2RopeJoint::SolveVelocityConstraints(const b2SolverData& data)
     data.velocities[m_indexB].w = wB;
 }
 
-bool b2RopeJoint::SolvePositionConstraints(const b2SolverData& data)
+bool b2RopeJoint::SolvePositionConstraints(b2SolverData& data)
 {
     b2Vec2 cA = data.positions[m_indexA].c;
     float aA = data.positions[m_indexA].a;
@@ -168,8 +168,8 @@ bool b2RopeJoint::SolvePositionConstraints(const b2SolverData& data)
 
     b2Rot qA(aA), qB(aB);
 
-    b2Vec2 rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
-    b2Vec2 rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
+    b2Vec2 rA = b2Math.b2Mul(qA, m_localAnchorA - m_localCenterA);
+    b2Vec2 rB = b2Math.b2Mul(qB, m_localAnchorB - m_localCenterB);
     b2Vec2 u = cB + rB - cA - rA;
 
     float length = u.Normalize();
@@ -181,9 +181,9 @@ bool b2RopeJoint::SolvePositionConstraints(const b2SolverData& data)
     b2Vec2 P = impulse * u;
 
     cA -= m_invMassA * P;
-    aA -= m_invIA * b2Cross(rA, P);
+    aA -= m_invIA * b2Math.b2Cross(rA, P);
     cB += m_invMassB * P;
-    aB += m_invIB * b2Cross(rB, P);
+    aB += m_invIB * b2Math.b2Cross(rB, P);
 
     data.positions[m_indexA].c = cA;
     data.positions[m_indexA].a = aA;

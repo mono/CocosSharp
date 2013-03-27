@@ -36,7 +36,7 @@ namespace Box2D.Common
         /// @param alpha the new initial time.
         public void Advance(float alpha)
         {
-//            b2Assert(alpha0 < 1.0f);
+            Debug.Assert(alpha0 < 1.0f);
             float beta = (alpha - alpha0) / (1.0f - alpha0);
             c0 = (1.0f - beta) * c0 + beta * c;
             a0 = (1.0f - beta) * a0 + beta * a;

@@ -33,7 +33,7 @@
 // J = [0 0 -1 0 0 1]
 // K = invI1 + invI2
 
-void b2RevoluteJointDef::Initialize(b2Body bA, b2Body bB, const b2Vec2 anchor)
+void b2RevoluteJointDef::Initialize(b2Body bA, b2Body bB, b2Vec2 anchor)
 {
     bodyA = bA;
     bodyB = bB;
@@ -42,7 +42,7 @@ void b2RevoluteJointDef::Initialize(b2Body bA, b2Body bB, const b2Vec2 anchor)
     referenceAngle = bodyB.GetAngle() - bodyA.GetAngle();
 }
 
-b2RevoluteJoint::b2RevoluteJoint(const b2RevoluteJointDef* def)
+b2RevoluteJoint::b2RevoluteJoint(b2RevoluteJointDef* def)
 : b2Joint(def)
 {
     m_localAnchorA = def.localAnchorA;
@@ -61,7 +61,7 @@ b2RevoluteJoint::b2RevoluteJoint(const b2RevoluteJointDef* def)
     m_limitState = e_inactiveLimit;
 }
 
-void b2RevoluteJoint::InitVelocityConstraints(const b2SolverData& data)
+void b2RevoluteJoint::InitVelocityConstraints(b2SolverData& data)
 {
     m_indexA = m_bodyA.m_islandIndex;
     m_indexB = m_bodyB.m_islandIndex;
@@ -84,8 +84,8 @@ void b2RevoluteJoint::InitVelocityConstraints(const b2SolverData& data)
 
     b2Rot qA(aA), qB(aB);
 
-    m_rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
-    m_rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
+    m_rA = b2Math.b2Mul(qA, m_localAnchorA - m_localCenterA);
+    m_rB = b2Math.b2Mul(qB, m_localAnchorB - m_localCenterB);
 
     // J = [-I -r1_skew I r2_skew]
     //     [ 0       -1 0       1]
@@ -182,7 +182,7 @@ void b2RevoluteJoint::InitVelocityConstraints(const b2SolverData& data)
     data.velocities[m_indexB].w = wB;
 }
 
-void b2RevoluteJoint::SolveVelocityConstraints(const b2SolverData& data)
+void b2RevoluteJoint::SolveVelocityConstraints(b2SolverData& data)
 {
     b2Vec2 vA = data.velocities[m_indexA].v;
     float wA = data.velocities[m_indexA].w;
@@ -211,7 +211,7 @@ void b2RevoluteJoint::SolveVelocityConstraints(const b2SolverData& data)
     // Solve limit constraint.
     if (m_enableLimit && m_limitState != e_inactiveLimit && fixedRotation == false)
     {
-        b2Vec2 Cdot1 = vB + b2Cross(wB, m_rB) - vA - b2Cross(wA, m_rA);
+        b2Vec2 Cdot1 = vB + b2Math.b2Cross(wB, m_rB) - vA - b2Math.b2Cross(wA, m_rA);
         float Cdot2 = wB - wA;
         b2Vec3 Cdot(Cdot1.x, Cdot1.y, Cdot2);
 
@@ -271,17 +271,17 @@ void b2RevoluteJoint::SolveVelocityConstraints(const b2SolverData& data)
     else
     {
         // Solve point-to-point constraint
-        b2Vec2 Cdot = vB + b2Cross(wB, m_rB) - vA - b2Cross(wA, m_rA);
+        b2Vec2 Cdot = vB + b2Math.b2Cross(wB, m_rB) - vA - b2Math.b2Cross(wA, m_rA);
         b2Vec2 impulse = m_mass.Solve22(-Cdot);
 
         m_impulse.x += impulse.x;
         m_impulse.y += impulse.y;
 
         vA -= mA * impulse;
-        wA -= iA * b2Cross(m_rA, impulse);
+        wA -= iA * b2Math.b2Cross(m_rA, impulse);
 
         vB += mB * impulse;
-        wB += iB * b2Cross(m_rB, impulse);
+        wB += iB * b2Math.b2Cross(m_rB, impulse);
     }
 
     data.velocities[m_indexA].v = vA;
@@ -290,7 +290,7 @@ void b2RevoluteJoint::SolveVelocityConstraints(const b2SolverData& data)
     data.velocities[m_indexB].w = wB;
 }
 
-bool b2RevoluteJoint::SolvePositionConstraints(const b2SolverData& data)
+bool b2RevoluteJoint::SolvePositionConstraints(b2SolverData& data)
 {
     b2Vec2 cA = data.positions[m_indexA].c;
     float aA = data.positions[m_indexA].a;
@@ -344,8 +344,8 @@ bool b2RevoluteJoint::SolvePositionConstraints(const b2SolverData& data)
     {
         qA.Set(aA);
         qB.Set(aB);
-        b2Vec2 rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
-        b2Vec2 rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
+        b2Vec2 rA = b2Math.b2Mul(qA, m_localAnchorA - m_localCenterA);
+        b2Vec2 rB = b2Math.b2Mul(qB, m_localAnchorB - m_localCenterB);
 
         b2Vec2 C = cB + rB - cA - rA;
         positionError = C.Length();
@@ -362,10 +362,10 @@ bool b2RevoluteJoint::SolvePositionConstraints(const b2SolverData& data)
         b2Vec2 impulse = -K.Solve(C);
 
         cA -= mA * impulse;
-        aA -= iA * b2Cross(rA, impulse);
+        aA -= iA * b2Math.b2Cross(rA, impulse);
 
         cB += mB * impulse;
-        aB += iB * b2Cross(rB, impulse);
+        aB += iB * b2Math.b2Cross(rB, impulse);
     }
 
     data.positions[m_indexA].c = cA;
@@ -470,7 +470,7 @@ float b2RevoluteJoint::GetUpperLimit(
 
 void b2RevoluteJoint::SetLimits(float lower, float upper)
 {
-    b2Assert(lower <= upper);
+    Debug.Assert(lower <= upper);
     
     if (lower != m_lowerAngle || upper != m_upperAngle)
     {

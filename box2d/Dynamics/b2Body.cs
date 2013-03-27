@@ -619,16 +619,16 @@ public virtual b2Fixture CreateFixture(b2Shape shape, float density)
 
 public virtual void DestroyFixture(b2Fixture fixture)
 {
-    b2Assert(m_world.IsLocked() == false);
+    Debug.Assert(m_world.IsLocked() == false);
     if (m_world.IsLocked() == true)
     {
         return;
     }
 
-    b2Assert(fixture.m_body == this);
+    Debug.Assert(fixture.m_body == this);
 
     // Remove the fixture from this body's singly linked list.
-    b2Assert(m_fixtureCount > 0);
+    Debug.Assert(m_fixtureCount > 0);
     b2Fixture* node = &m_fixtureList;
     bool found = false;
     while (*node != null)
@@ -644,7 +644,7 @@ public virtual void DestroyFixture(b2Fixture fixture)
     }
 
     // You tried to remove a shape that is not attached to this body.
-    b2Assert(found);
+    Debug.Assert(found);
 
     // Destroy any contacts associated with the fixture.
     b2ContactEdge* edge = m_contactList;
@@ -702,7 +702,7 @@ public virtual void ResetMassData()
         return;
     }
 
-    b2Assert(m_type == b2_dynamicBody);
+    Debug.Assert(m_type == b2_dynamicBody);
 
     // Accumulate mass over all fixtures.
     b2Vec2 localCenter = b2Vec2_zero;
@@ -736,8 +736,8 @@ public virtual void ResetMassData()
     if (m_I > 0.0f && (m_flags & e_fixedRotationFlag) == 0)
     {
         // Center the inertia about the center of mass.
-        m_I -= m_mass * b2Dot(localCenter, localCenter);
-        b2Assert(m_I > 0.0f);
+        m_I -= m_mass * b2Math.b2Dot(localCenter, localCenter);
+        Debug.Assert(m_I > 0.0f);
         m_invI = 1.0f / m_I;
 
     }
@@ -750,15 +750,15 @@ public virtual void ResetMassData()
     // Move center of mass.
     b2Vec2 oldCenter = m_sweep.c;
     m_sweep.localCenter = localCenter;
-    m_sweep.c0 = m_sweep.c = b2Mul(m_xf, m_sweep.localCenter);
+    m_sweep.c0 = m_sweep.c = b2Math.b2Mul(m_xf, m_sweep.localCenter);
 
     // Update center of mass velocity.
-    m_linearVelocity += b2Cross(m_angularVelocity, m_sweep.c - oldCenter);
+    m_linearVelocity += b2Math.b2Cross(m_angularVelocity, m_sweep.c - oldCenter);
 }
 
 public virtual void SetMassData(b2MassData massData)
 {
-    b2Assert(m_world.IsLocked() == false);
+    Debug.Assert(m_world.IsLocked() == false);
     if (m_world.IsLocked() == true)
     {
         return;
@@ -783,18 +783,18 @@ public virtual void SetMassData(b2MassData massData)
 
     if (massData.I > 0.0f && (m_flags & e_fixedRotationFlag) == 0)
     {
-        m_I = massData.I - m_mass * b2Dot(massData.center, massData.center);
-        b2Assert(m_I > 0.0f);
+        m_I = massData.I - m_mass * b2Math.b2Dot(massData.center, massData.center);
+        Debug.Assert(m_I > 0.0f);
         m_invI = 1.0f / m_I;
     }
 
     // Move center of mass.
     b2Vec2 oldCenter = m_sweep.c;
     m_sweep.localCenter =  massData.center;
-    m_sweep.c0 = m_sweep.c = b2Mul(m_xf, m_sweep.localCenter);
+    m_sweep.c0 = m_sweep.c = b2Math.b2Mul(m_xf, m_sweep.localCenter);
 
     // Update center of mass velocity.
-    m_linearVelocity += b2Cross(m_angularVelocity, m_sweep.c - oldCenter);
+    m_linearVelocity += b2Math.b2Cross(m_angularVelocity, m_sweep.c - oldCenter);
 }
 
 public virtual bool ShouldCollide(b2Body other)
@@ -830,7 +830,7 @@ public virtual void SetTransform(b2Vec2 position, float angle)
     m_xf.q.Set(angle);
     m_xf.p = position;
 
-    m_sweep.c = b2Mul(m_xf, m_sweep.localCenter);
+    m_sweep.c = b2Math.b2Mul(m_xf, m_sweep.localCenter);
     m_sweep.a = angle;
 
     m_sweep.c0 = m_sweep.c;
@@ -849,7 +849,7 @@ public virtual void SynchronizeFixtures()
 {
     b2Transform xf1 = new b2Transform();
     xf1.q.Set(m_sweep.a0);
-    xf1.p = m_sweep.c0 - b2Mul(xf1.q, m_sweep.localCenter);
+    xf1.p = m_sweep.c0 - b2Math.b2Mul(xf1.q, m_sweep.localCenter);
 
     b2BroadPhase broadPhase = m_world.ContactManager.BroadPhase;
     for (b2Fixture f = m_fixtureList; f != null; f = f.Next)

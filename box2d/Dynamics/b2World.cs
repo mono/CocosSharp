@@ -1049,8 +1049,8 @@ namespace Box2D.Dynamics
                 case b2ShapeType.e_edge:
                     {
                         b2EdgeShape edge = (b2EdgeShape)fixture.Shape;
-                        b2Vec2 v1 = b2Mul(xf, edge.m_vertex1);
-                        b2Vec2 v2 = b2Mul(xf, edge.m_vertex2);
+                        b2Vec2 v1 = b2Math.b2Mul(xf, edge.m_vertex1);
+                        b2Vec2 v2 = b2Math.b2Mul(xf, edge.m_vertex2);
                         m_debugDraw.DrawSegment(v1, v2, color);
                     }
                     break;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using Box2D.Common;
 
 namespace Box2D.Collision.Shapes
@@ -163,7 +164,7 @@ namespace Box2D.Collision.Shapes
                 int i1 = i;
                 int i2 = i + 1 < m_vertexCount ? i + 1 : 0;
                 b2Vec2 edge = m_vertices[i2] - m_vertices[i1];
-                //        b2Assert(edge.LengthSquared() > b2_epsilon * b2_epsilon);
+                 Debug.Assert(edge.LengthSquared() > b2Settings.b2_epsilon * b2Settings.b2_epsilon);
                 m_normals[i] = b2Math.b2Cross(edge, 1.0f);
                 m_normals[i].Normalize();
             }
@@ -277,7 +278,7 @@ namespace Box2D.Collision.Shapes
                 }
             }
 
-            //    b2Assert(0.0f <= lower && lower <= input.maxFraction);
+            //    Debug.Assert(0.0f <= lower && lower <= input.maxFraction);
 
             if (index >= 0)
             {

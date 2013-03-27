@@ -38,6 +38,12 @@ namespace Box2D.Dynamics.Joints
 
         protected object m_userData;
 
+        public int Index
+        {
+            get { return (m_index); }
+            set { m_index = value; }
+        }
+
         public static b2Joint Create(b2JointDef def)
         {
             b2Joint joint = null;

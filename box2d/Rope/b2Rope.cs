@@ -42,7 +42,7 @@ namespace Box2D.Rope
 
         public void Initialize(b2RopeDef def)
         {
-            //    b2Assert(def.count >= 3);
+            //    Debug.Assert(def.count >= 3);
             m_count = def.count;
             m_ps = new b2Vec2[m_count];
             m_p0s = new b2Vec2[m_count];
