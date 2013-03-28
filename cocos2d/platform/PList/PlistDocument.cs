@@ -192,9 +192,11 @@ namespace cocos2d
                 if (result != null)
                     dict.Add(key, result);
                 
-                // value node is already read, here (LoadFromNode(...)), so we are already
-                // at the next key element -> don't proceed further (would jump over)
-                //reader.ReadToNextSibling("key");                
+                // when there is no whitespace between nodes, we might already be at
+                // the next key element, so reading to next sibling would jump over
+                // the next (current) key element
+                if (!reader.Name.Equals("key"))
+                    reader.ReadToNextSibling("key");                
             }
             return dict;
         }
