@@ -168,27 +168,27 @@ namespace cocos2d
         public virtual void Serialize(Stream stream) 
         {
             StreamWriter sw = new StreamWriter(stream);
-            SerializeData(m_bIsVisible, sw);
-            SerializeData(m_fRotation, sw);
-            SerializeData(m_fScaleX, sw);
-            SerializeData(m_fScaleY, sw);
-            SerializeData(m_fSkewX, sw);
-            SerializeData(m_fSkewY, sw);
-            SerializeData(m_fVertexZ, sw);
-            SerializeData(m_bIgnoreAnchorPointForPosition, sw);
-            SerializeData(m_bIsInverseDirty, sw);
-            SerializeData(m_bIsRunning, sw);
-            SerializeData(m_bIsTransformDirty, sw);
-            SerializeData(m_bReorderChildDirty, sw);
-            SerializeData(m_nOrderOfArrival, sw);
-            SerializeData(m_nTag, sw);
-            SerializeData(m_nZOrder, sw);
-            SerializeData(m_tAnchorPoint, sw);
-            SerializeData(m_tContentSize, sw);
-            SerializeData(Position, sw);
+            CCSerialization.SerializeData(m_bIsVisible, sw);
+            CCSerialization.SerializeData(m_fRotation, sw);
+            CCSerialization.SerializeData(m_fScaleX, sw);
+            CCSerialization.SerializeData(m_fScaleY, sw);
+            CCSerialization.SerializeData(m_fSkewX, sw);
+            CCSerialization.SerializeData(m_fSkewY, sw);
+            CCSerialization.SerializeData(m_fVertexZ, sw);
+            CCSerialization.SerializeData(m_bIgnoreAnchorPointForPosition, sw);
+            CCSerialization.SerializeData(m_bIsInverseDirty, sw);
+            CCSerialization.SerializeData(m_bIsRunning, sw);
+            CCSerialization.SerializeData(m_bIsTransformDirty, sw);
+            CCSerialization.SerializeData(m_bReorderChildDirty, sw);
+            CCSerialization.SerializeData(m_nOrderOfArrival, sw);
+            CCSerialization.SerializeData(m_nTag, sw);
+            CCSerialization.SerializeData(m_nZOrder, sw);
+            CCSerialization.SerializeData(m_tAnchorPoint, sw);
+            CCSerialization.SerializeData(m_tContentSize, sw);
+            CCSerialization.SerializeData(Position, sw);
             if (m_pChildren != null)
             {
-                SerializeData(m_pChildren.Count, sw);
+                CCSerialization.SerializeData(m_pChildren.Count, sw);
                 foreach (CCNode child in m_pChildren)
                 {
                     sw.WriteLine(child.GetType().AssemblyQualifiedName);
@@ -200,7 +200,7 @@ namespace cocos2d
             }
             else
             {
-                SerializeData(0, sw); // No children
+                CCSerialization.SerializeData(0, sw); // No children
             }
         }
 
@@ -210,30 +210,30 @@ namespace cocos2d
         public virtual void Deserialize(Stream stream) 
         {
             StreamReader sr = new StreamReader(stream);
-            m_bIsVisible = DeSerializeBool(sr); 
-            m_fRotation = DeSerializeFloat(sr);
-            m_fScaleX = DeSerializeFloat(sr);
-            m_fScaleY = DeSerializeFloat(sr);
-            m_fSkewX = DeSerializeFloat(sr);
-            m_fSkewY = DeSerializeFloat(sr);
-            m_fVertexZ = DeSerializeFloat(sr);
-            m_bIgnoreAnchorPointForPosition = DeSerializeBool(sr);
-            m_bIsInverseDirty = DeSerializeBool(sr);
-            m_bIsRunning = DeSerializeBool(sr);
-            m_bIsTransformDirty = DeSerializeBool(sr);
-            m_bReorderChildDirty = DeSerializeBool(sr);
-            m_nOrderOfArrival = DeSerializeInt(sr);
-            m_nTag = DeSerializeInt(sr);
-            m_nZOrder = DeSerializeInt(sr);
-            AnchorPoint = DeSerializePoint(sr);
-            ContentSize = DeSerializeSize(sr);
-            Position = DeSerializePoint(sr);
+            m_bIsVisible = CCSerialization.DeSerializeBool(sr); 
+            m_fRotation = CCSerialization.DeSerializeFloat(sr);
+            m_fScaleX = CCSerialization.DeSerializeFloat(sr);
+            m_fScaleY = CCSerialization.DeSerializeFloat(sr);
+            m_fSkewX = CCSerialization.DeSerializeFloat(sr);
+            m_fSkewY = CCSerialization.DeSerializeFloat(sr);
+            m_fVertexZ = CCSerialization.DeSerializeFloat(sr);
+            m_bIgnoreAnchorPointForPosition = CCSerialization.DeSerializeBool(sr);
+            m_bIsInverseDirty = CCSerialization.DeSerializeBool(sr);
+            m_bIsRunning = CCSerialization.DeSerializeBool(sr);
+            m_bIsTransformDirty = CCSerialization.DeSerializeBool(sr);
+            m_bReorderChildDirty = CCSerialization.DeSerializeBool(sr);
+            m_nOrderOfArrival = CCSerialization.DeSerializeInt(sr);
+            m_nTag = CCSerialization.DeSerializeInt(sr);
+            m_nZOrder = CCSerialization.DeSerializeInt(sr);
+            AnchorPoint = CCSerialization.DeSerializePoint(sr);
+            ContentSize = CCSerialization.DeSerializeSize(sr);
+            Position = CCSerialization.DeSerializePoint(sr);
             // m_UserData is handled by the specialized class.
             // TODO: Serializze the action manager
             // TODO :Serialize the grid
             // TODO: Serialize the camera
             string s;
-            int count = DeSerializeInt(sr);
+            int count = CCSerialization.DeSerializeInt(sr);
             for (int i = 0; i < count; i++)
             {
                 s = sr.ReadLine();

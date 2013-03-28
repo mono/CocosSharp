@@ -439,6 +439,7 @@
     <Compile Include="support\Converters\CCPointConverter.cs" />
     <Compile Include="support\Converters\CCRectConverter.cs" />
     <Compile Include="support\Converters\CCSizeConverter.cs" />
+    <Compile Include="support\Serialization\CCSerialization.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj">
