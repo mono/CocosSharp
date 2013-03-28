@@ -12,14 +12,26 @@ namespace Box2D.Common
         public b2Vec3 ey { get { return (_ey); } set { _ey = value; } }
         public b2Vec3 ez { get { return (_ez); } set { _ez = value; } }
 
-/*
-        public b2Mat33()
-        {
-            _ex = new b2Vec3();
-            _ey = new b2Vec3();
-            _ez = new b2Vec3();
-        }
-*/
+        public float exx { get { return _ex.x; } set { _ex.x = value; } }
+        public float exy { get { return _ex.y; } set { _ex.y = value; } }
+        public float exz { get { return _ex.z; } set { _ex.z = value; } }
+
+        public float eyx { get { return _ey.x; } set { _ey.x = value; } }
+        public float eyy { get { return _ey.y; } set { _ey.y = value; } }
+        public float eyz { get { return _ey.z; } set { _ey.z = value; } }
+
+        public float ezx { get { return _ez.x; } set { _ez.x = value; } }
+        public float ezy { get { return _ez.y; } set { _ez.y = value; } }
+        public float ezz { get { return _ez.z; } set { _ez.z = value; } }
+
+        /*
+                public b2Mat33()
+                {
+                    _ex = new b2Vec3();
+                    _ey = new b2Vec3();
+                    _ez = new b2Vec3();
+                }
+        */
 
         /// ruct this matrix using columns.
         public b2Mat33(b2Vec3 c1, b2Vec3 c2, b2Vec3 c3)
@@ -72,7 +84,7 @@ namespace Box2D.Common
 
         /// Get the inverse of this matrix as a 2-by-2.
         /// Returns the zero matrix if singular.
-        public void GetInverse22(b2Mat33 M)
+        public b2Mat33 GetInverse22(b2Mat33 M)
         {
             float a = _ex.x, b = _ey.x, c = _ex.y, d = _ey.y;
             float det = a * d - b * c;
@@ -84,11 +96,12 @@ namespace Box2D.Common
             M._ex.x = det * d; M._ey.x = -det * b; M._ex.z = 0.0f;
             M._ex.y = -det * c; M._ey.y = det * a; M._ey.z = 0.0f;
             M._ez.x = 0.0f; M._ez.y = 0.0f; M._ez.z = 0.0f;
+            return (M);
         }
 
         /// Get the symmetric inverse of this matrix as a 3-by-3.
         /// Returns the zero matrix if singular.
-        public void GetSymInverse33(b2Mat33 M)
+        public b2Mat33 GetSymInverse33(b2Mat33 M)
         {
             float det = b2Math.b2Dot(_ex, b2Math.b2Cross(_ey, _ez));
             if (det != 0.0f)
@@ -111,6 +124,7 @@ namespace Box2D.Common
             M._ez.x = M._ex.z;
             M._ez.y = M._ey.z;
             M._ez.z = det * (a11 * a22 - a12 * a12);
+            return (M);
         }
 
         private b2Vec3 _ex, _ey, _ez;
