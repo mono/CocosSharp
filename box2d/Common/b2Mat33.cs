@@ -19,7 +19,7 @@ namespace Box2D.Common
             _ey = new b2Vec3();
             _ez = new b2Vec3();
         }
- */
+*/
 
         /// ruct this matrix using columns.
         public b2Mat33(b2Vec3 c1, b2Vec3 c2, b2Vec3 c3)

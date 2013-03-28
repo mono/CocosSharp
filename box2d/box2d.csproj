@@ -105,9 +105,13 @@
     <Compile Include="Dynamics\Joints\b2MouseJoint.cs" />
     <Compile Include="Dynamics\Joints\b2MouseJointDef.cs" />
     <Compile Include="Dynamics\Joints\b2PrismaticJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2PrismaticJointDef.cs" />
     <Compile Include="Dynamics\Joints\b2PulleyJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2PullyJointDef.cs" />
     <Compile Include="Dynamics\Joints\b2RevoluteJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2RevoluteJointDef.cs" />
     <Compile Include="Dynamics\Joints\b2RopeJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2RopeJointDef.cs" />
     <Compile Include="Dynamics\Joints\b2WeldJoint.cs" />
     <Compile Include="Dynamics\Joints\b2WheelJoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
