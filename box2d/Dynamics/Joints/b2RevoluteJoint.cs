@@ -213,7 +213,7 @@ namespace Box2D.Dynamics.Joints
                 m_impulse *= data.step.dtRatio;
                 m_motorImpulse *= data.step.dtRatio;
 
-                b2Vec2 P(m_impulse.x, m_impulse.y);
+                b2Vec2 P = new b2Vec2(m_impulse.x, m_impulse.y);
 
                 vA -= mA * P;
                 wA -= iA * (b2Math.b2Cross(m_rA, P) + m_motorImpulse + m_impulse.z);
@@ -264,7 +264,7 @@ namespace Box2D.Dynamics.Joints
             {
                 b2Vec2 Cdot1 = vB + b2Math.b2Cross(wB, m_rB) - vA - b2Math.b2Cross(wA, m_rA);
                 float Cdot2 = wB - wA;
-                b2Vec3 Cdot(Cdot1.x, Cdot1.y, Cdot2);
+                b2Vec3 Cdot = new b2Vec3(Cdot1.x, Cdot1.y, Cdot2);
 
                 b2Vec3 impulse = -m_mass.Solve33(Cdot);
 
@@ -311,7 +311,7 @@ namespace Box2D.Dynamics.Joints
                     }
                 }
 
-                b2Vec2 P(impulse.x, impulse.y);
+                b2Vec2 P = new b2Vec2(impulse.x, impulse.y);
 
                 vA -= mA * P;
                 wA -= iA * (b2Math.b2Cross(m_rA, P) + impulse.z);
@@ -405,7 +405,7 @@ namespace Box2D.Dynamics.Joints
                 float mA = m_invMassA, mB = m_invMassB;
                 float iA = m_invIA, iB = m_invIB;
 
-                b2Mat22 K;
+                b2Mat22 K = new b2Mat22();
                 K.exx = mA + mB + iA * rA.y * rA.y + iB * rB.y * rB.y;
                 K.exy = -iA * rA.x * rA.y - iB * rB.x * rB.y;
                 K.eyx = K.ex.y;

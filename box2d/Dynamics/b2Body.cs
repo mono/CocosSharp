@@ -630,7 +630,7 @@ public virtual void DestroyFixture(b2Fixture fixture)
 
     // Remove the fixture from this body's singly linked list.
     Debug.Assert(m_fixtureCount > 0);
-    b2Fixture* node = &m_fixtureList;
+    b2Fixture node = &m_fixtureList;
     bool found = false;
     while (*node != null)
     {
@@ -651,7 +651,7 @@ public virtual void DestroyFixture(b2Fixture fixture)
     b2ContactEdge* edge = m_contactList;
     while (edge)
     {
-        b2Contact* c = edge.contact;
+        b2Contact c = edge.contact;
         edge = edge.next;
 
         b2Fixture fixtureA = c.GetFixtureA();

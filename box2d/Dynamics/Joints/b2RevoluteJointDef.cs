@@ -17,7 +17,7 @@ namespace Box2D.Dynamics.Joints
     /// 1. you might not know where the center of mass will be.
     /// 2. if you add/remove shapes from a body and recompute the mass,
     ///    the joints will be broken.
-    class b2RevoluteJointDef : b2JointDef
+    public class b2RevoluteJointDef : b2JointDef
     {
         public b2RevoluteJointDef()
         {

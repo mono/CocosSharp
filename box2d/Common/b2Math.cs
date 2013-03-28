@@ -7,6 +7,21 @@ namespace Box2D.Common
 {
     public class b2Math
     {
+
+        /// Friction mixing law. The idea is to allow either fixture to drive the restitution to zero.
+        /// For example, anything slides on ice.
+        public float b2MixFriction(float friction1, float friction2)
+        {
+            return (friction1 * friction2);
+        }
+
+        /// Restitution mixing law. The idea is allow for anything to bounce off an inelastic surface.
+        /// For example, a superball bounces on anything.
+        public float b2MixRestitution(float restitution1, float restitution2)
+        {
+            return restitution1 > restitution2 ? restitution1 : restitution2;
+        }
+
         /// This function is used to ensure that a floating point number is
         /// not a NaN or infinity.
         public static bool b2IsValid(float x)
