@@ -349,6 +349,7 @@
     <Compile Include="support\Converters\CCRectConverter.cs" />
     <Compile Include="support\Converters\CCPointConverter.cs" />
     <Compile Include="support\Converters\CCSizeConverter.cs" />
+    <Compile Include="support\Serialization\CCSerialization.cs" />
     <Compile Include="support\Compression\Adler.cs" />
     <Compile Include="support\Compression\Crc32.cs" />
     <Compile Include="support\Compression\FlushType.cs" />

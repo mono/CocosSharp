@@ -414,6 +414,7 @@
     <Compile Include="support\Converters\CCRectConverter.cs" />
     <Compile Include="support\Converters\CCPointConverter.cs" />
     <Compile Include="support\Converters\CCSizeConverter.cs" />
+t
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">
@@ -427,5 +428,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />
+    <Folder Include="support\Serialization\" />
   </ItemGroup>
 </Project>

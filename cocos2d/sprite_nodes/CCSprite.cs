@@ -43,11 +43,11 @@ namespace cocos2d
         {
             base.Serialize(stream);
             StreamWriter sw = new StreamWriter(stream);
-            SerializeData(Dirty, sw);
-            SerializeData(IsTextureRectRotated, sw);
-            SerializeData(AtlasIndex, sw);
-            SerializeData(TextureRect, sw);
-            SerializeData(OffsetPosition, sw);
+            CCSerialization.SerializeData(Dirty, sw);
+            CCSerialization.SerializeData(IsTextureRectRotated, sw);
+            CCSerialization.SerializeData(AtlasIndex, sw);
+            CCSerialization.SerializeData(TextureRect, sw);
+            CCSerialization.SerializeData(OffsetPosition, sw);
             sw.WriteLine(m_TextureFile == null ? "null" : m_TextureFile);
         }
 
@@ -65,11 +65,11 @@ namespace cocos2d
                 CCLog.Log("CCSprite - deserialized with texture file " + m_TextureFile);
                 InitWithFile(m_TextureFile);
             }
-            Dirty = DeSerializeBool(sr);
-            IsTextureRectRotated = DeSerializeBool(sr);
-            AtlasIndex = DeSerializeInt(sr);
-            TextureRect = DeSerializeRect(sr);
-            OffsetPosition = DeSerializePoint(sr);
+            Dirty = CCSerialization.DeSerializeBool(sr);
+            IsTextureRectRotated = CCSerialization.DeSerializeBool(sr);
+            AtlasIndex = CCSerialization.DeSerializeInt(sr);
+            TextureRect = CCSerialization.DeSerializeRect(sr);
+            OffsetPosition = CCSerialization.DeSerializePoint(sr);
         }
 
         public virtual bool Dirty
