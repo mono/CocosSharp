@@ -191,7 +191,10 @@ namespace cocos2d
                 PlistObjectBase result = LoadFromNode(reader);
                 if (result != null)
                     dict.Add(key, result);
-                reader.ReadToNextSibling("key");
+                
+                // value node is already read, here (LoadFromNode(...)), so we are already
+                // at the next key element -> don't proceed further (would jump over)
+                //reader.ReadToNextSibling("key");                
             }
             return dict;
         }
