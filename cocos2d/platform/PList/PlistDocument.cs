@@ -191,7 +191,12 @@ namespace cocos2d
                 PlistObjectBase result = LoadFromNode(reader);
                 if (result != null)
                     dict.Add(key, result);
-                reader.ReadToNextSibling("key");
+                
+                // when there is no whitespace between nodes, we might already be at
+                // the next key element, so reading to next sibling would jump over
+                // the next (current) key element
+                if (!"key".Equals(reader.Name))
+                    reader.ReadToNextSibling("key");                
             }
             return dict;
         }
