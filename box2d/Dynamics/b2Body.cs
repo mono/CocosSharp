@@ -5,6 +5,7 @@ using System.Text;
 using Box2D.Common;
 using Box2D.Collision;
 using Box2D.Collision.Shapes;
+using Box2D.Dynamics.Joints;
 
 namespace Box2D.Dynamics
 {
