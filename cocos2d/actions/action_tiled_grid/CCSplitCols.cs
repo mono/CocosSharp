@@ -39,20 +39,20 @@ namespace cocos2d
             return base.InitWithSize(new CCGridSize(nCols, 1), duration);
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCSplitCols pCopy;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
-                pCopy = (CCSplitCols) (pZone.m_pCopyObject);
+                pCopy = (CCSplitCols) (pZone);
             }
             else
             {
                 pCopy = new CCSplitCols();
-                pZone = new CCZone(pCopy);
+                pZone =  (pCopy);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
             pCopy.InitWithCols(m_nCols, m_fDuration);
 
             return pCopy;

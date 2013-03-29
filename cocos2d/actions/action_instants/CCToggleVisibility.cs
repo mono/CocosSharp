@@ -8,22 +8,22 @@
             return pRet;
         }
 
-        public override object CopyWithZone(CCZone zone)
+        public override object Copy(ICopyable zone)
         {
-            CCZone tmpZone = zone;
+            ICopyable tmpZone = zone;
             CCActionInstant ret;
 
-            if (tmpZone != null && tmpZone.m_pCopyObject != null)
+            if (tmpZone != null && tmpZone != null)
             {
-                ret = (CCToggleVisibility) tmpZone.m_pCopyObject;
+                ret = (CCToggleVisibility) tmpZone;
             }
             else
             {
                 ret = new CCToggleVisibility();
-                tmpZone = new CCZone(ret);
+                tmpZone =  (ret);
             }
 
-            base.CopyWithZone(tmpZone);
+            base.Copy(tmpZone);
             return ret;
         }
 

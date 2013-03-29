@@ -166,16 +166,16 @@ namespace cocos2d
 
 		public CCAnimation Copy()
 		{
-			return (CCAnimation)CopyWithZone(null);
+			return (CCAnimation)Copy(null);
 		}
 
-        public object CopyWithZone(CCZone pZone)
+        public object Copy(ICopyable pZone)
         {
             CCAnimation pCopy = null;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCAnimation) (pZone.m_pCopyObject);
+                pCopy = (CCAnimation) (pZone);
             }
             else
             {

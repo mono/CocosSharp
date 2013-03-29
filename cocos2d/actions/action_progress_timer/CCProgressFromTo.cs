@@ -23,21 +23,21 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCProgressFromTo pCopy;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCProgressFromTo) (pZone.m_pCopyObject);
+                pCopy = (CCProgressFromTo) (pZone);
             }
             else
             {
                 pCopy = new CCProgressFromTo();
-                pZone = new CCZone(pCopy);
+                pZone =  (pCopy);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
             pCopy.InitWithDuration(m_fDuration, m_fFrom, m_fTo);
 
             return pCopy;

@@ -25,21 +25,21 @@ namespace cocos2d
             return base.InitWithSize(gridSize, duration);
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCFlipX3D pCopy;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCFlipX3D) (pZone.m_pCopyObject);
+                pCopy = (CCFlipX3D) (pZone);
             }
             else
             {
                 pCopy = new CCFlipX3D();
-                pZone = new CCZone(pCopy);
+                pZone = pCopy;
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pCopy.InitWithSize(m_sGridSize, m_fDuration);
 

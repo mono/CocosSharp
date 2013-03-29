@@ -75,20 +75,20 @@ namespace cocos2d
             SetTile(pos, ref m_pZero);
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCTurnOffTiles pCopy;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
-                pCopy = (CCTurnOffTiles) (pZone.m_pCopyObject);
+                pCopy = (CCTurnOffTiles) (pZone);
             }
             else
             {
                 pCopy = new CCTurnOffTiles();
-                pZone = new CCZone(pCopy);
+                pZone =  (pCopy);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pCopy.InitWithSeed(m_nSeed, m_sGridSize, m_fDuration);
 

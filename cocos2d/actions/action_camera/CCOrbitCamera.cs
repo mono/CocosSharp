@@ -91,19 +91,19 @@ namespace cocos2d
             newRadius = r / CCCamera.GetZEye();
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCOrbitCamera pRet;
 
-            if (pZone != null && pZone.m_pCopyObject != null) //in case of being called at sub class
-                pRet = (CCOrbitCamera) (pZone.m_pCopyObject);
+            if (pZone != null) //in case of being called at sub class
+                pRet = (CCOrbitCamera) (pZone);
             else
             {
                 pRet = new CCOrbitCamera();
-                pZone = new CCZone();
+				pZone = pRet;
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pRet.InitWithDuration(m_fDuration, m_fRadius, m_fDeltaRadius, m_fAngleZ, m_fDeltaAngleZ, m_fAngleX, m_fDeltaAngleX);
 

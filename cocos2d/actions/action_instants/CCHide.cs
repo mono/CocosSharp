@@ -19,21 +19,21 @@
             return (CCShow.Create());
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCHide pRet;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
-                pRet = (CCHide) (pZone.m_pCopyObject);
+                pRet = (CCHide) (pZone);
             }
             else
             {
                 pRet = new CCHide();
-                pZone = new CCZone(pRet);
+                pZone =  (pRet);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
             return pRet;
         }
     }

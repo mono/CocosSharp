@@ -38,14 +38,14 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone zone)
+        public override object Copy(ICopyable zone)
         {
-            CCZone tmpZone = zone;
+            ICopyable tmpZone = zone;
             CCRepeat ret;
 
-            if (tmpZone != null && tmpZone.m_pCopyObject != null)
+            if (tmpZone != null && tmpZone != null)
             {
-                ret = tmpZone.m_pCopyObject as CCRepeat;
+                ret = tmpZone as CCRepeat;
                 if (ret == null)
                 {
                     return null;
@@ -54,10 +54,10 @@ namespace cocos2d
             else
             {
                 ret = new CCRepeat();
-                tmpZone = new CCZone(ret);
+                tmpZone =  (ret);
             }
 
-            base.CopyWithZone(tmpZone);
+            base.Copy(tmpZone);
 
             var param = m_pInnerAction.Copy() as CCFiniteTimeAction;
             if (param == null)

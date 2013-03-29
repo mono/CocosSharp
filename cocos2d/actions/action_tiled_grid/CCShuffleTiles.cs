@@ -159,20 +159,20 @@ namespace cocos2d
             }
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCShuffleTiles pCopy;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
-                pCopy = (CCShuffleTiles) (pZone.m_pCopyObject);
+                pCopy = (CCShuffleTiles) (pZone);
             }
             else
             {
                 pCopy = new CCShuffleTiles();
-                pZone = new CCZone(pCopy);
+                pZone =  (pCopy);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pCopy.InitWithSeed(m_nSeed, m_sGridSize, m_fDuration);
 

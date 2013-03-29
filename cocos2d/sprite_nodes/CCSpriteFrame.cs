@@ -93,10 +93,10 @@ namespace cocos2d
 
 		public CCSpriteFrame Copy()
 		{
-			return (CCSpriteFrame)CopyWithZone(null);
+			return (CCSpriteFrame)Copy(null);
 		}
 
-        public object CopyWithZone(CCZone pZone)
+        public object Copy(ICopyable pZone)
         {
             var pCopy = new CCSpriteFrame();
             pCopy.InitWithTexture(m_pobTexture, m_obRectInPixels, m_bRotated, m_obOffsetInPixels, m_obOriginalSizeInPixels);

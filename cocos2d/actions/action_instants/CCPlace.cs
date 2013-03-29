@@ -17,21 +17,21 @@
             return true;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCPlace pRet;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
-                pRet = (CCPlace) (pZone.m_pCopyObject);
+                pRet = (CCPlace) (pZone);
             }
             else
             {
                 pRet = new CCPlace();
-                pZone = new CCZone(pRet);
+                pZone =  (pRet);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
             pRet.InitWithPosition(m_tPosition);
             return pRet;
         }

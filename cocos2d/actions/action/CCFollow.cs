@@ -74,21 +74,21 @@ namespace cocos2d
             return true;
         }
 
-        public override object CopyWithZone(CCZone zone)
+        public override object Copy(ICopyable zone)
         {
-            CCZone tempZone = zone;
+            ICopyable tempZone = zone;
             CCFollow ret;
-            if (tempZone != null && tempZone.m_pCopyObject != null)
+            if (tempZone != null)
             {
-                ret = (CCFollow) tempZone.m_pCopyObject;
+                ret = (CCFollow) tempZone;
             }
             else
             {
                 ret = new CCFollow();
-                tempZone = new CCZone(ret);
+                tempZone = ret;
             }
 
-            base.CopyWithZone(tempZone);
+            base.Copy(tempZone);
             ret.m_nTag = m_nTag;
 
             return ret;

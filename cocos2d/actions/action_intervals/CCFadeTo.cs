@@ -16,21 +16,21 @@
             return false;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCFadeTo pCopy;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCFadeTo) (pZone.m_pCopyObject);
+                pCopy = (CCFadeTo) (pZone);
             }
             else
             {
                 pCopy = new CCFadeTo();
-                pZone = new CCZone(pCopy);
+                pZone =  (pCopy);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pCopy.InitWithDuration(m_fDuration, m_toOpacity);
 

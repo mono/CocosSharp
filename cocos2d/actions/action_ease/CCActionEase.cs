@@ -15,21 +15,21 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCActionEase pCopy;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone.m_pCopyObject as CCActionEase;
+                pCopy = pZone as CCActionEase;
             }
             else
             {
                 pCopy = new CCActionEase();
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
 

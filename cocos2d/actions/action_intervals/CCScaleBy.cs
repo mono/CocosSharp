@@ -14,22 +14,22 @@ namespace cocos2d
             return Create(m_fDuration, 1 / m_fEndScaleX, 1 / m_fEndScaleY);
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCScaleTo pCopy;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCScaleBy) (pZone.m_pCopyObject);
+                pCopy = (CCScaleBy) (pZone);
             }
             else
             {
                 pCopy = new CCScaleBy();
-                pZone = new CCZone(pCopy);
+                pZone =  (pCopy);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pCopy.InitWithDuration(m_fDuration, m_fEndScaleX, m_fEndScaleY);
 

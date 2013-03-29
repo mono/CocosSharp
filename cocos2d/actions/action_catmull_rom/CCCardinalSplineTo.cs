@@ -39,20 +39,20 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCCardinalSplineTo pRet;
-            if (pZone != null && pZone.m_pCopyObject != null) //in case of being called at sub class
+            if (pZone != null) //in case of being called at sub class
             {
-                pRet = (CCCardinalSplineTo) (pZone.m_pCopyObject);
+                pRet = (CCCardinalSplineTo) (pZone);
             }
             else
             {
                 pRet = new CCCardinalSplineTo();
-                pZone = new CCZone(pRet);
+                pZone = pRet;
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pRet.InitWithDuration(Duration, m_pPoints, m_fTension);
 

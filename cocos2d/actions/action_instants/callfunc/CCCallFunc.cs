@@ -35,22 +35,22 @@ namespace cocos2d
             Execute();
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCCallFunc pRet;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pRet = (CCCallFunc) (pZone.m_pCopyObject);
+                pRet = (CCCallFunc) (pZone);
             }
             else
             {
                 pRet = new CCCallFunc();
-                pZone = new CCZone(pRet);
+                pZone =  (pRet);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
             pRet.m_pCallFunc = m_pCallFunc;
             pRet.m_scriptFuncName = m_scriptFuncName;
             return pRet;

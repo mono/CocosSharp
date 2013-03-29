@@ -28,21 +28,21 @@
             return Create(!m_bFlipX);
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCFlipX pRet;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
-                pRet = (CCFlipX) (pZone.m_pCopyObject);
+                pRet = (CCFlipX) (pZone);
             }
             else
             {
                 pRet = new CCFlipX();
-                pZone = new CCZone(pRet);
+                pZone =  (pRet);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
             pRet.InitWithFlipX(m_bFlipX);
             return pRet;
         }

@@ -15,14 +15,14 @@ namespace cocos2d
             m_delta = CCPointExtension.CreatePoint(m_delta.X - m_startPosition.X, m_delta.Y - m_startPosition.Y);
         }
 
-        public override object CopyWithZone(CCZone zone)
+        public override object Copy(ICopyable zone)
         {
-            CCZone tmpZone = zone;
+            ICopyable tmpZone = zone;
             CCJumpTo ret;
 
-            if (tmpZone != null && tmpZone.m_pCopyObject != null)
+            if (tmpZone != null && tmpZone != null)
             {
-                ret = tmpZone.m_pCopyObject as CCJumpTo;
+                ret = tmpZone as CCJumpTo;
                 if (ret == null)
                 {
                     return null;
@@ -31,10 +31,10 @@ namespace cocos2d
             else
             {
                 ret = new CCJumpTo();
-                tmpZone = new CCZone(ret);
+                tmpZone =  (ret);
             }
 
-            base.CopyWithZone(tmpZone);
+            base.Copy(tmpZone);
 
             ret.InitWithDuration(m_fDuration, m_delta, m_height, m_nJumps);
 

@@ -31,20 +31,20 @@ namespace cocos2d
             return true;
         }
 
-        public override object CopyWithZone(CCZone zone)
+        public override object Copy(ICopyable zone)
         {
             CCSpeed ret;
 
-            if (zone != null && zone.m_pCopyObject != null)
+            if (zone != null)
             {
-                ret = (CCSpeed) zone.m_pCopyObject;
+                ret = (CCSpeed) zone;
             }
             else
             {
                 ret = new CCSpeed();
             }
 
-            base.CopyWithZone(zone);
+            base.Copy(zone);
 
             ret.InitWithAction((CCActionInterval) m_pInnerAction.Copy(), m_fSpeed);
 

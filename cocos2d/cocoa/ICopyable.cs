@@ -4,7 +4,7 @@ namespace cocos2d
 {
 	public interface ICopyable
 	{
-		Object CopyWithZone(CCZone zone);
+		Object Copy(ICopyable zone);
 	}
 }
 

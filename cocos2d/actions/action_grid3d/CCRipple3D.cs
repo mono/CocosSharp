@@ -54,21 +54,21 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCRipple3D pCopy;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCRipple3D) (pZone.m_pCopyObject);
+                pCopy = (CCRipple3D) (pZone);
             }
             else
             {
                 pCopy = new CCRipple3D();
-                pZone = new CCZone(pCopy);
+                pZone =  (pCopy);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
             pCopy.InitWithPosition(m_position, m_fRadius, m_nWaves, m_fAmplitude, m_sGridSize, m_fDuration);
 
             return pCopy;

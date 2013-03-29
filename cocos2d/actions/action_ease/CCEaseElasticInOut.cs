@@ -43,14 +43,14 @@ namespace cocos2d
             return Create((CCActionInterval)m_pOther.Reverse(), m_fPeriod);
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCEaseElasticInOut pCopy;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone.m_pCopyObject as CCEaseElasticInOut;
+                pCopy = pZone as CCEaseElasticInOut;
             }
             else
             {
