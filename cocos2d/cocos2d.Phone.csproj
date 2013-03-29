@@ -170,7 +170,6 @@
     <Compile Include="actions\action_tiled_grid\Tile.cs" />
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
-    <Compile Include="cocoa\CCData.cs" />
     <Compile Include="denshion\EffectPlayer.cs" />
     <Compile Include="denshion\MusicPlayer.cs" />
     <Compile Include="denshion\SimpleAudioEngine.cs" />

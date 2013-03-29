@@ -188,7 +188,6 @@
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="CCScheduler.cs" />
     <Compile Include="cocoa\CCAffineTransform.cs" />
-    <Compile Include="cocoa\CCData.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
     <Compile Include="denshion\EffectPlayer.cs" />
     <Compile Include="denshion\MusicPlayer.cs" />
