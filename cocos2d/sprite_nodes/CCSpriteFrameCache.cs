@@ -79,7 +79,7 @@ namespace cocos2d
             foreach (var pair in framesDict)
             {
                 PlistDictionary frameDict = pair.Value.AsDictionary;
-                var spriteFrame = new CCSpriteFrame();
+                CCSpriteFrame spriteFrame = null;
 
                 if (format == 0)
                 {

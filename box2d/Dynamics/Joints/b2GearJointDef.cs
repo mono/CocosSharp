@@ -7,7 +7,7 @@ namespace Box2D.Dynamics.Joints
 {
     public class b2GearJointDef : b2JointDef
     {
-        public void b2GearJointDef()
+        public b2GearJointDef()
         {
             type = b2JointType.e_gearJoint;
             joint1 = null;

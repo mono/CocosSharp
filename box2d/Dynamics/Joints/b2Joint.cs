@@ -168,11 +168,6 @@ namespace Box2D.Dynamics.Joints
             return m_next;
         }
 
-        public virtual b2Joint GetNext()
-        {
-            return m_next;
-        }
-
         public virtual object GetUserData()
         {
             return m_userData;
