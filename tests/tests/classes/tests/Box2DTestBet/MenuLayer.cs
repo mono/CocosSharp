@@ -48,7 +48,7 @@ namespace tests.classes.tests.Box2DTestBet
             return true;
         }
 
-        public void restartCallback(CCObject sender)
+        public void restartCallback(object sender)
         {
             CCScene s = new Box2dTestBedScene();
             MenuLayer box = menuWithEntryID(m_entryID);
@@ -56,7 +56,7 @@ namespace tests.classes.tests.Box2DTestBet
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject sender)
+        public void nextCallback(object sender)
         {
             CCScene s = new Box2dTestBedScene();
             int next = m_entryID + 1;
@@ -67,7 +67,7 @@ namespace tests.classes.tests.Box2DTestBet
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject sender)
+        public void backCallback(object sender)
         {
             CCScene s = new Box2dTestBedScene();
             int next = m_entryID - 1;

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace cocos2d
 {
-    public class CCGrabber : CCObject
+    public class CCGrabber
     {
         private RenderTarget2D m_pOldRenderTarget;
 

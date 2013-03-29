@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace cocos2d
 {
-    public class CCTMXLayerInfo : CCObject
+    public class CCTMXLayerInfo 
     {
         public Dictionary<string, string> Properties = new Dictionary<string, string>();
         private bool m_bOwnTiles = true;

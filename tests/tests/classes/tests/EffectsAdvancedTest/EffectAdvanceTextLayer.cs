@@ -84,7 +84,7 @@ namespace tests
             return "";
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new EffectAdvanceScene();
             s.AddChild(EffectAdvanceScene.restartEffectAdvanceAction());
@@ -92,14 +92,14 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = new EffectAdvanceScene();
             s.AddChild(EffectAdvanceScene.nextEffectAdvanceAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = new EffectAdvanceScene();
             s.AddChild(EffectAdvanceScene.backEffectAdvanceAction());

@@ -48,7 +48,7 @@ namespace tests
             Schedule(step, 1.0f);
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new TransitionsTestScene();
 
@@ -63,7 +63,7 @@ namespace tests
             }
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             TransitionsTestScene.s_nSceneIdx++;
             TransitionsTestScene.s_nSceneIdx = TransitionsTestScene.s_nSceneIdx % TransitionsTestScene.MAX_LAYER;
@@ -80,7 +80,7 @@ namespace tests
             }
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             TransitionsTestScene.s_nSceneIdx--;
             int total = TransitionsTestScene.MAX_LAYER;

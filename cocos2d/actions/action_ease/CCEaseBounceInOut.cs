@@ -20,7 +20,7 @@ namespace cocos2d
             m_pOther.Update(newT);
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCEaseBounceInOut pCopy;
 

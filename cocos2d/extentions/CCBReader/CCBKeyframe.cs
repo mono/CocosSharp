@@ -1,6 +1,6 @@
 namespace cocos2d
 {
-    public class CCBKeyframe : CCObject
+    public class CCBKeyframe 
     {
         public object Value;
         public float Time;

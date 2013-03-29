@@ -134,7 +134,7 @@ namespace tests
             /*
             CCArray pChildrenArray = map.getChildren();
             CCSpriteBatchNode* child = NULL;
-            CCObject* pObject = NULL;
+            object* pObject = NULL;
             CCARRAY_FOREACH(pChildrenArray, pObject)
             {
                 child = (CCSpriteBatchNode*) pObject;
@@ -185,7 +185,7 @@ namespace tests
             /*
             CCArray* pChildrenArray = map.getChildren();
             CCSpriteBatchNode* child = NULL;
-            CCObject* pObject = NULL;
+            object* pObject = NULL;
             CCARRAY_FOREACH(pChildrenArray, pObject)
             {
                 child = (CCSpriteBatchNode*) pObject;
@@ -221,7 +221,7 @@ namespace tests
             /*
             CCArray* pChildrenArray = map.getChildren();
             CCSpriteBatchNode* child = NULL;
-            CCObject* pObject = NULL;
+            object* pObject = NULL;
             CCARRAY_FOREACH(pChildrenArray, pObject)
             {
                 child = (CCSpriteBatchNode*) pObject;
@@ -259,7 +259,7 @@ namespace tests
             /*
             CCArray* pChildrenArray = map.getChildren();
             CCSpriteBatchNode* child = NULL;
-            CCObject* pObject = NULL;
+            object* pObject = NULL;
             CCARRAY_FOREACH(pChildrenArray, pObject)
             {
                 child = (CCSpriteBatchNode*) pObject;
@@ -580,7 +580,7 @@ namespace tests
             // testing release map
             CCArray* pChildrenArray = map.getChildren();
             CCTMXLayer layer;
-            CCObject* pObject = NULL;
+            object* pObject = NULL;
             CCARRAY_FOREACH(pChildrenArray, pObject)
             {
                 layer = (CCTMXLayer) pObject;
@@ -650,7 +650,7 @@ namespace tests
             CCArray objects = group.getObjects();
 
             CCDictionary* dict = NULL;
-            CCObject* pObj = NULL;
+            object* pObj = NULL;
             CCARRAY_FOREACH(objects, pObj)
             {
                 dict = (CCDictionary*) pObj; //dynamic_cast<CCStringToStringDictionary*>(*it);
@@ -727,7 +727,7 @@ namespace tests
             CCArray* objects = group.getObjects();
             //UxMutableDictionary<string>* dict;
             CCDictionary* dict;
-            CCObject* pObj = NULL;
+            object* pObj = NULL;
             CCARRAY_FOREACH(objects, pObj)
             {
                 dict = (CCDictionary*) pObj;
@@ -1174,7 +1174,7 @@ namespace tests
             AddChild(map, 0, kTagTileMap);
 
             /*
-            CCObject* pObj = NULL;
+            object* pObj = NULL;
             CCARRAY_FOREACH(map.getChildren(), pObj)
             {
                 CCSpriteBatchNode* child = (CCSpriteBatchNode*) pObj;
@@ -1205,7 +1205,7 @@ namespace tests
             AddChild(map, 0, kTagTileMap);
 
             /*
-            CCObject* pObj = NULL;
+            object* pObj = NULL;
             CCARRAY_FOREACH(map.getChildren(), pObj)
             {
                 CCSpriteBatchNode* child = (CCSpriteBatchNode*) pObj;
@@ -1280,7 +1280,7 @@ namespace tests
             AddChild(map, 0, kTagTileMap);
 
             /*
-            CCObject* pObj = NULL;
+            object* pObj = NULL;
             CCARRAY_FOREACH(map.getChildren(), pObj)
             {
                 CCSpriteBatchNode* child = (CCSpriteBatchNode*) pObj;
@@ -1313,7 +1313,7 @@ namespace tests
             /*
             CCArray* childs = map.getChildren();
             CCTMXLayer* node;
-            CCObject* pObject = NULL;
+            object* pObject = NULL;
             CCARRAY_FOREACH(childs, pObject)
             {
                 node = (CCTMXLayer*) pObject;
@@ -1537,21 +1537,21 @@ namespace tests
         }
 
 
-        private void restartCallback(CCObject pSender)
+        private void restartCallback(object pSender)
         {
             CCScene s = new TileMapTestScene();
             s.AddChild(TileMapTestScene.restartTileMapAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        private void nextCallback(CCObject pSender)
+        private void nextCallback(object pSender)
         {
             CCScene s = new TileMapTestScene();
             s.AddChild(TileMapTestScene.nextTileMapAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        private void backCallback(CCObject pSender)
+        private void backCallback(object pSender)
         {
             CCScene s = new TileMapTestScene();
             s.AddChild(TileMapTestScene.backTileMapAction());

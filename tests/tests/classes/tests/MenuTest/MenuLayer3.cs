@@ -77,17 +77,17 @@ namespace tests
 
             AddChild(menu);
         }
-        public void menuCallback(CCObject pSender)
+        public void menuCallback(object pSender)
         {
             ((CCLayerMultiplex)m_pParent).SwitchTo(0);
         }
-        public void menuCallback2(CCObject pSender)
+        public void menuCallback2(object pSender)
         {
             //UXLOG("Label clicked. Toogling AtlasSprite");
             m_disabledItem.Enabled = !m_disabledItem.Enabled;
             m_disabledItem.StopAllActions();
         }
-        public void menuCallback3(CCObject pSender)
+        public void menuCallback3(object pSender)
         {
             //UXLOG("MenuItemSprite clicked");
         }

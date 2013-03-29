@@ -51,7 +51,7 @@ namespace tests
             //UXLOG("SceneTestLayer1:testDealloc");    
         }
 
-        public void onPushScene(CCObject pSender)
+        public void onPushScene(object pSender)
         {
             CCScene scene = new SceneTestScene();
             CCLayer pLayer = new SceneTestLayer2();
@@ -59,7 +59,7 @@ namespace tests
             CCDirector.SharedDirector.PushScene(scene);
         }
 
-        public void onPushSceneTran(CCObject pSender)
+        public void onPushSceneTran(object pSender)
         {
             CCScene scene = new SceneTestScene();
             CCLayer pLayer = new SceneTestLayer2();
@@ -68,7 +68,7 @@ namespace tests
             CCDirector.SharedDirector.PushScene(CCTransitionSlideInT.Create(1f, scene));
         }
 
-        public void onQuit(CCObject pSender) 
+        public void onQuit(object pSender) 
         {
             //getCocosApp()->exit();
             //CCDirector::sharedDirector()->popScene();

@@ -8,7 +8,7 @@
             return pRet;
         }
 
-        public override CCObject CopyWithZone(CCZone zone)
+        public override object CopyWithZone(CCZone zone)
         {
             CCZone tmpZone = zone;
             CCActionInstant ret;

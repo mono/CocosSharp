@@ -19,7 +19,7 @@ namespace cocos2d
             m_sConfig.EndPosition = CCPointExtension.Subtract(m_sConfig.EndPosition, m_startPosition);
         }
 
-        public override CCObject CopyWithZone(CCZone zone)
+        public override object CopyWithZone(CCZone zone)
         {
             CCZone tmpZone = zone;
             CCBezierTo ret;

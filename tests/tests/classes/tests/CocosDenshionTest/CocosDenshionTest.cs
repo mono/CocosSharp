@@ -83,7 +83,7 @@ namespace tests
 	        SimpleAudioEngine.SharedEngine.End();
         }
 
-        public void menuCallback(CCObject pSender)
+        public void menuCallback(object pSender)
         {
 	        // get the userdata, it's the index of the menu item clicked
 	        CCMenuItem pMenuItem = (CCMenuItem)(pSender);

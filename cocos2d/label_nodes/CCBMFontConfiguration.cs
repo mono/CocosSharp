@@ -9,7 +9,7 @@ namespace cocos2d
 #if IOS
     [MonoTouch.Foundation.Preserve (AllMembers = true)]
 #endif
-    public class CCBMFontConfiguration : CCObject
+    public class CCBMFontConfiguration 
     {
         [ContentSerializer] 
         internal int m_nCommonHeight;

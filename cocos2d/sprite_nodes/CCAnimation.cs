@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace cocos2d
 {
-    public class CCAnimation : CCObject
+    public class CCAnimation : ICopyable
     {
         protected bool m_bRestoreOriginalFrame;
         protected float m_fDelayPerUnit;
@@ -81,7 +81,7 @@ namespace cocos2d
         {
             if (pFrames != null)
             {/*
-                foreach (CCObject frame in pFrames)
+                foreach (object frame in pFrames)
                 {
                     Debug.Assert(frame is CCSpriteFrame, "element type is wrong!");
                 }
@@ -112,7 +112,7 @@ namespace cocos2d
         {
             if (arrayOfAnimationFrames != null)
             {/*
-                foreach (CCObject frame in arrayOfAnimationFrames)
+                foreach (object frame in arrayOfAnimationFrames)
                 {
                     Debug.Assert(frame is CCAnimationFrame, "element type is wrong!");
                 }
@@ -164,7 +164,12 @@ namespace cocos2d
             AddSpriteFrame(pFrame);
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+		public CCAnimation Copy()
+		{
+			return (CCAnimation)CopyWithZone(null);
+		}
+
+        public object CopyWithZone(CCZone pZone)
         {
             CCAnimation pCopy = null;
             if (pZone != null && pZone.m_pCopyObject != null)

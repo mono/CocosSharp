@@ -43,12 +43,12 @@ namespace tests
             //	onReplaceScene(this);
         }
 
-        public void onGoBack(CCObject pSender)
+        public void onGoBack(object pSender)
         {
             CCDirector.SharedDirector.PopScene();
         }
 
-        public void onReplaceScene(CCObject pSender)
+        public void onReplaceScene(object pSender)
         {
             CCScene pScene = new SceneTestScene();
             CCLayer pLayer = new SceneTestLayer3();
@@ -56,7 +56,7 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(pScene);
         }
 
-        public void onReplaceSceneTran(CCObject pSender)
+        public void onReplaceSceneTran(object pSender)
         {
             CCScene pScene = new SceneTestScene();
             CCLayer pLayer = new SceneTestLayer3();

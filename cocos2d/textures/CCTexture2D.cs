@@ -91,7 +91,7 @@ namespace cocos2d
     /// Depending on how you create the CCTexture2D object, the actual image area of the texture might be smaller than the texture dimensions i.e. "contentSize" != (pixelsWide, pixelsHigh) and (maxS, maxT) != (1.0, 1.0).
     /// Be aware that the content of the generated textures will be upside-down!
     /// </summary>
-    public class CCTexture2D : CCObject, IDisposable
+    public class CCTexture2D : IDisposable
     {
         // If the image has alpha, you can create RGBA8 (32-bit) or RGBA4 (16-bit) or RGB5A1 (16-bit)
         // Default is: RGBA8888 (32-bit textures)

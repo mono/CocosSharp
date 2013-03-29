@@ -99,12 +99,12 @@ namespace tests
             AddChild(menu);
         }
 
-        public void menuCallback(CCObject pSender)
+        public void menuCallback(object pSender)
         {
             //UXLOG("selected item: %x index:%d", dynamic_cast<CCMenuItemToggle*>(sender)->selectedItem(), dynamic_cast<CCMenuItemToggle*>(sender)->selectedIndex() ); 
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             ((CCLayerMultiplex)m_pParent).SwitchTo(0);
         }

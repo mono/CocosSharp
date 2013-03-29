@@ -476,7 +476,7 @@ void setupVBOandVAO()
 
 #endif
 
-        private void ListenBackToForeground(CCObject obj)
+        private void ListenBackToForeground(object obj)
         {
 #if CC_TEXTURE_ATLAS_USE_VAO
             setupVBOandVAO();

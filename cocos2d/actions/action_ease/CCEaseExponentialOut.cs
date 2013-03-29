@@ -15,7 +15,7 @@ namespace cocos2d
             return CCEaseExponentialIn.Create((CCActionInterval) m_pOther.Reverse());
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCEaseExponentialOut pCopy;
 

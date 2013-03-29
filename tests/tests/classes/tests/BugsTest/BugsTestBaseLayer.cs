@@ -24,7 +24,7 @@ namespace tests
             AddChild(pMenu);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             //CCDirector.SharedDirector.EnableRetinaDisplay(false);
             BugsTestScene pScene = new BugsTestScene();

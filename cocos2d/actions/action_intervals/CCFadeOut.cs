@@ -9,7 +9,7 @@
             return pAction;
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCFadeOut pCopy;
             if (pZone != null && pZone.m_pCopyObject != null)

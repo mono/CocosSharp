@@ -17,7 +17,7 @@
             return true;
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCPlace pRet;
 

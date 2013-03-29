@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace cocos2d
 {
-    public class CCNodeLoaderLibrary : CCObject
+    public class CCNodeLoaderLibrary 
     {
         private static CCNodeLoaderLibrary sSharedCCNodeLoaderLibrary;
         

@@ -4,7 +4,7 @@ namespace cocos2d
     public class CCCallFuncO : CCCallFunc
     {
         private SEL_CallFuncO m_pCallFuncO;
-        private CCObject m_pObject;
+        private object m_pObject;
 
         public CCCallFuncO()
         {
@@ -12,14 +12,14 @@ namespace cocos2d
             m_pCallFuncO = null;
         }
 
-        public static CCCallFuncO Create(SEL_CallFuncO selector, CCObject pObject)
+        public static CCCallFuncO Create(SEL_CallFuncO selector, object pObject)
         {
             var pRet = new CCCallFuncO();
             pRet.InitWithTarget(selector, pObject);
             return pRet;
         }
 
-        public bool InitWithTarget(SEL_CallFuncO selector, CCObject pObject)
+        public bool InitWithTarget(SEL_CallFuncO selector, object pObject)
         {
             m_pObject = pObject;
             m_pCallFuncO = selector;
@@ -27,7 +27,7 @@ namespace cocos2d
         }
 
         // super methods
-        public override CCObject CopyWithZone(CCZone zone)
+        public override object CopyWithZone(CCZone zone)
         {
             CCCallFuncO pRet;
 
@@ -60,7 +60,7 @@ namespace cocos2d
             //}
         }
 
-        public CCObject Object
+        public object Object
         {
             get { return m_pObject; }
             set { m_pObject = value; }

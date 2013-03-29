@@ -39,7 +39,7 @@ namespace cocos2d
             return false;
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCCardinalSplineTo pRet;
             if (pZone != null && pZone.m_pCopyObject != null) //in case of being called at sub class

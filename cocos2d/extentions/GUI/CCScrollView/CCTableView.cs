@@ -112,7 +112,7 @@ namespace cocos2d
 
 #if DEBUG_ // For Testing.
 			int i = 0;
-			foreach (CCObject pObj in m_pCellsUsed)
+			foreach (object pObj in m_pCellsUsed)
 			{
 				var pCell = (CCTableViewCell)pObj;
 				CCLog.Log("cells Used index {0}, value = {1}", i, pCell.getIdx());
@@ -120,7 +120,7 @@ namespace cocos2d
 			}
 			CCLog.Log("---------------------------------------");
 			i = 0;
-			foreach(CCObject pObj in m_pCellsFreed)
+			foreach(object pObj in m_pCellsFreed)
 			{
 				var pCell = (CCTableViewCell)pObj;
 				CCLog.Log("cells freed index {0}, value = {1}", i, pCell.getIdx());

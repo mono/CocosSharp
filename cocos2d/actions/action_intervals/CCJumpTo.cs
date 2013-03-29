@@ -15,7 +15,7 @@ namespace cocos2d
             m_delta = CCPointExtension.CreatePoint(m_delta.X - m_startPosition.X, m_delta.Y - m_startPosition.Y);
         }
 
-        public override CCObject CopyWithZone(CCZone zone)
+        public override object CopyWithZone(CCZone zone)
         {
             CCZone tmpZone = zone;
             CCJumpTo ret;

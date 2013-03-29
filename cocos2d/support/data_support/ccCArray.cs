@@ -9,7 +9,7 @@ namespace cocos2d
     public class CCCArray
     {
         public int num, max;
-        public int[] arr; //equals CCObject** arr;
+        public int[] arr; //equals object** arr;
 
         /// <summary>
         /// Allocates and initializes a new C array with specified capacity

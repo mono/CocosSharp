@@ -155,7 +155,7 @@ namespace tests
             AddChild(menu, -1);
         }
 
-        public void reset(CCObject sender)
+        public void reset(object sender)
         {
             CCScene s = new Box2DTestScene();
             var child = new Box2DTestLayer();

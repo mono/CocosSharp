@@ -162,17 +162,17 @@ namespace tests.FontTest
             AddChild(top, 0, kTagLabel4);
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             showFont(FontTestScene.restartAction());
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             showFont(FontTestScene.nextAction());
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             showFont(FontTestScene.backAction());
         }

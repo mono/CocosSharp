@@ -6,7 +6,7 @@ namespace cocos2d
     // TODO: Add CCGesture
     //
 
-    public class CCTouch : CCObject
+    public class CCTouch 
     {
         private int m_nId;
         /// <summary>
@@ -70,7 +70,7 @@ namespace cocos2d
         }
     }
 
-    public class CCEvent : CCObject
+    public class CCEvent 
     {
     }
 }

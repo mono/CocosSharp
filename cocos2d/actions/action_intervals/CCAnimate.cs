@@ -53,7 +53,12 @@ namespace cocos2d
             return false;
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+		public virtual CCAnimate Copy()
+		{
+			return (CCAnimate)CopyWithZone(null);
+		}
+
+        public virtual object CopyWithZone(CCZone pZone)
         {
             CCAnimate pCopy;
             if (pZone != null && pZone.m_pCopyObject != null)

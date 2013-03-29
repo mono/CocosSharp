@@ -57,7 +57,7 @@ namespace cocos2d
             return false;
         }
 
-        public virtual bool ExecuteCallFunc0(string pszFuncName, CCObject pObject)
+        public virtual bool ExecuteCallFunc0(string pszFuncName, object pObject)
         {
             return false;
         }

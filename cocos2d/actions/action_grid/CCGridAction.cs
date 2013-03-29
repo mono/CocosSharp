@@ -7,7 +7,7 @@ namespace cocos2d
     {
         protected CCGridSize m_sGridSize;
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCGridAction pCopy = null;
 

@@ -11,22 +11,22 @@ namespace tests.Extensions
             mAnimationManager = pAnimationManager;
         }
 
-        public void onCCControlButtonIdleClicked(CCObject pSender, CCControlEvent pCCControlEvent)
+        public void onCCControlButtonIdleClicked(object pSender, CCControlEvent pCCControlEvent)
         {
             mAnimationManager.RunAnimations("Idle", 0.3f);
         }
 
-        public void onCCControlButtonWaveClicked(CCObject pSender, CCControlEvent pCCControlEvent)
+        public void onCCControlButtonWaveClicked(object pSender, CCControlEvent pCCControlEvent)
         {
             mAnimationManager.RunAnimations("Wave", 0.3f);
         }
 
-        public void onCCControlButtonJumpClicked(CCObject pSender, CCControlEvent pCCControlEvent)
+        public void onCCControlButtonJumpClicked(object pSender, CCControlEvent pCCControlEvent)
         {
             mAnimationManager.RunAnimations("Jump", 0.3f);
         }
 
-        public void onCCControlButtonFunkyClicked(CCObject pSender, CCControlEvent pCCControlEvent)
+        public void onCCControlButtonFunkyClicked(object pSender, CCControlEvent pCCControlEvent)
         {
             mAnimationManager.RunAnimations("Funky", 0.3f);
         }

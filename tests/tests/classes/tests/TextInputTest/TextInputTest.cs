@@ -13,7 +13,7 @@ namespace cocos2d
         KeyboardNotificationLayer m_pNotificationLayer;
         TextInputTestScene textinputTestScene = new TextInputTestScene();
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.restartTextInputTest());
@@ -21,7 +21,7 @@ namespace cocos2d
             //s->release();
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.nextTextInputTest());
@@ -29,7 +29,7 @@ namespace cocos2d
             //s->release();
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.backTextInputTest());

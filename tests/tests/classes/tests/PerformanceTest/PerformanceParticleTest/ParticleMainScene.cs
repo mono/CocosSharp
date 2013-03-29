@@ -174,7 +174,7 @@ namespace tests
             CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888;
         }
 
-        public void onDecrease(CCObject pSender)
+        public void onDecrease(object pSender)
         {
             quantityParticles -= PerformanceParticleTest.kNodesIncrease;
             if (quantityParticles < 0)
@@ -184,7 +184,7 @@ namespace tests
             createParticleSystem();
         }
 
-        public void onIncrease(CCObject pSender)
+        public void onIncrease(object pSender)
         {
             quantityParticles += PerformanceParticleTest.kNodesIncrease;
             if (quantityParticles > PerformanceParticleTest.kMaxParticles)
@@ -194,7 +194,7 @@ namespace tests
             createParticleSystem();
         }
 
-        public void testNCallback(CCObject pSender)
+        public void testNCallback(object pSender)
         {
             subtestNumber = ((CCNode)pSender).Tag;
 

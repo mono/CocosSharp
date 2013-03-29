@@ -64,21 +64,21 @@ namespace tests
             AddChild(menu, 1);
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new LayerTestScene();
             s.AddChild(LayerTestScene.restartTestAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = new LayerTestScene();
             s.AddChild(LayerTestScene.nextTestAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = new LayerTestScene();
             s.AddChild(LayerTestScene.backTestAction());

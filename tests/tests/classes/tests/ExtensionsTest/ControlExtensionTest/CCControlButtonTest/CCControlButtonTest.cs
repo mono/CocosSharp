@@ -26,7 +26,7 @@ namespace tests.Extensions
 				float total_width = 0, height = 0;
         
 				// For each title in the array
-				CCObject pObj = null;
+				object pObj = null;
 				foreach(var title in stringArray)
 				{
 					// Creates a button with this string as title
@@ -105,7 +105,7 @@ namespace tests.Extensions
                 float total_width = 0, height = 0;
 
                 // For each title in the array
-                CCObject pObj = null;
+                object pObj = null;
                 foreach (var title in stringArray)
                 {
                     // Creates a button with this string as title
@@ -232,41 +232,41 @@ namespace tests.Extensions
 		}
 
 	
-		public void touchDownAction(CCObject sender, CCControlEvent controlEvent)
+		public void touchDownAction(object sender, CCControlEvent controlEvent)
 		{
 			m_pDisplayValueLabel.Label = ("Touch Down");
 		}
-		public void touchDragInsideAction(CCObject sender, CCControlEvent controlEvent)
+		public void touchDragInsideAction(object sender, CCControlEvent controlEvent)
 		{
 			    m_pDisplayValueLabel.Label = ("Drag Inside");
 		}
 
-		public void touchDragOutsideAction(CCObject sender, CCControlEvent controlEvent)
+		public void touchDragOutsideAction(object sender, CCControlEvent controlEvent)
 		{
 			m_pDisplayValueLabel.Label = ("Drag Outside");
 		}
 
-		public void touchDragEnterAction(CCObject sender, CCControlEvent controlEvent)
+		public void touchDragEnterAction(object sender, CCControlEvent controlEvent)
 		{
 			m_pDisplayValueLabel.Label = ("Drag Enter");
 		}
 
-		public void touchDragExitAction(CCObject sender, CCControlEvent controlEvent)
+		public void touchDragExitAction(object sender, CCControlEvent controlEvent)
 		{
 			m_pDisplayValueLabel.Label = ("Drag Exit");
 		}
 		
-		public void touchUpInsideAction(CCObject sender, CCControlEvent controlEvent)
+		public void touchUpInsideAction(object sender, CCControlEvent controlEvent)
 		{
 			m_pDisplayValueLabel.Label = ("Touch Up Inside.");
 		}
 		
-		public void touchUpOutsideAction(CCObject sender, CCControlEvent controlEvent)
+		public void touchUpOutsideAction(object sender, CCControlEvent controlEvent)
 		{
 			m_pDisplayValueLabel.Label = ("Touch Up Outside.");
 		}
 
-		public void touchCancelAction(CCObject sender, CCControlEvent controlEvent)
+		public void touchCancelAction(object sender, CCControlEvent controlEvent)
 		{
 			m_pDisplayValueLabel.Label = ("Touch Cancel");
 		}

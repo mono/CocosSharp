@@ -4,7 +4,7 @@ namespace tests.Extensions
 {
     public class TestHeaderLayer : BaseLayer
     {
-        public void onBackClicked(CCObject pSender)
+        public void onBackClicked(object pSender)
         {
             CCDirector.SharedDirector.PopScene();
         }

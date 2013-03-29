@@ -25,13 +25,13 @@ namespace cocos2d
 {
     public class CCZone
     {
-        public CCZone(CCObject obj)
+        public CCZone(ICopyable obj)
         {
             this.m_pCopyObject = obj;
         }
 
         public CCZone() { }
 
-        public CCObject m_pCopyObject;
+        public ICopyable m_pCopyObject;
     }
 }

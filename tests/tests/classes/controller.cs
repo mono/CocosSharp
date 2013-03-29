@@ -196,7 +196,7 @@ namespace tests
         {
         }
 
-        public void menuCallback(CCObject pSender)
+        public void menuCallback(object pSender)
         {
             // get the userdata, it's the index of the menu item clicked
             CCMenuItem pMenuItem = (CCMenuItem)(pSender);
@@ -212,7 +212,7 @@ namespace tests
             }
         }
 
-        public void closeCallback(CCObject pSender)
+        public void closeCallback(object pSender)
         {
             CCDirector.SharedDirector.End();
             CCApplication.SharedApplication.Game.Exit();

@@ -16,7 +16,7 @@
             return false;
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCFadeTo pCopy;
             if (pZone != null && pZone.m_pCopyObject != null)

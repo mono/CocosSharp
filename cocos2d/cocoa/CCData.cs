@@ -5,7 +5,7 @@ using System.Text;
 
 namespace cocos2d
 {
-    public class CCData : CCObject
+    public class CCData
     {
         public CCData() { }
 

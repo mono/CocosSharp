@@ -91,7 +91,7 @@ namespace cocos2d
             newRadius = r / CCCamera.GetZEye();
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCOrbitCamera pRet;
 

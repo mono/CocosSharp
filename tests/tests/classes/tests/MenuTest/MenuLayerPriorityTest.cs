@@ -65,12 +65,12 @@ namespace tests
             AddChild(m_pMenu2);
         }
 
-        public void menuCallback(CCObject pSender)
+        public void menuCallback(object pSender)
         {
             ((CCLayerMultiplex) m_pParent).SwitchTo(0);
         }
 
-        public void disableMenuCallback(CCObject pSender)
+        public void disableMenuCallback(object pSender)
         {
             m_pMenu1.Enabled = false;
             CCDelayTime wait = CCDelayTime.Create(5);
@@ -85,7 +85,7 @@ namespace tests
             m_pMenu1.Enabled = true;
         }
 
-        private void togglePriorityCallback(CCObject pSender)
+        private void togglePriorityCallback(object pSender)
         {
             if (m_bPriority)
             {

@@ -24,7 +24,7 @@ namespace cocos2d
             return false;
         }
 
-        public override CCObject CopyWithZone(CCZone zone)
+        public override object CopyWithZone(CCZone zone)
         {
             CCCallFuncN pRet;
 
@@ -53,7 +53,7 @@ namespace cocos2d
                 m_pCallFuncN(m_pTarget);
             }
             //if (m_nScriptHandler) {
-            //    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithCCObject(m_nScriptHandler, m_pTarget, "CCNode");
+            //    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithobject(m_nScriptHandler, m_pTarget, "CCNode");
             //}
         }
     }

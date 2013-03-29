@@ -56,7 +56,7 @@ namespace tests
             AddChild(background, -10);
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new ProgressActionsTestScene();
             s.AddChild(ProgressActionsTestScene.restartAction());
@@ -65,7 +65,7 @@ namespace tests
             //s->release();
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = new ProgressActionsTestScene();
             s.AddChild(ProgressActionsTestScene.nextAction());
@@ -73,7 +73,7 @@ namespace tests
             //s->release();
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = new ProgressActionsTestScene();
             s.AddChild(ProgressActionsTestScene.backAction());

@@ -86,7 +86,7 @@ namespace cocos2d
 
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new AtlasTestScene();
             s.AddChild(AtlasTestScene.restartAtlasAction());
@@ -94,7 +94,7 @@ namespace cocos2d
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
 
             CCScene s = new AtlasTestScene();
@@ -105,7 +105,7 @@ namespace cocos2d
 
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
 
             CCScene s = new AtlasTestScene();

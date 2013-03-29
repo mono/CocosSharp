@@ -12,7 +12,7 @@ namespace cocos2d
         MenuClicked,
     }
 
-    public class CCKeypadDispatcher : CCObject
+    public class CCKeypadDispatcher 
     {
         protected List<CCKeypadHandler> m_pDelegates = new List<CCKeypadHandler>();
         protected bool m_bLocked;

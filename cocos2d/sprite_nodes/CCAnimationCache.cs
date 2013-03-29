@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace cocos2d
 {
-    public class CCAnimationCache : CCObject
+    public class CCAnimationCache 
     {
         private static CCAnimationCache s_pSharedAnimationCache;
         private Dictionary<string, CCAnimation> m_pAnimations;

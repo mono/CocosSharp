@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace cocos2d
 {
     //TODO: AsyncLoad
-    public class CCTextureCache : CCObject, IDisposable
+    public class CCTextureCache : IDisposable
     {
         private readonly object m_pDictLock;
 

@@ -5,7 +5,7 @@ namespace cocos2d
     /// <summary>
     /// Base class for other
     /// </summary>
-    public abstract class CCGridBase : CCObject
+    public abstract class CCGridBase 
     {
         protected bool m_bActive;
         protected bool m_bIsTextureFlipped;

@@ -50,7 +50,7 @@ namespace tests
             AddChild(menu, 1);
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new ActionManagerTestScene();
             s.AddChild(restartActionManagerAction());
@@ -58,14 +58,14 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = new ActionManagerTestScene();
             s.AddChild(nextActionManagerAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = new ActionManagerTestScene();
             s.AddChild(backActionManagerAction());

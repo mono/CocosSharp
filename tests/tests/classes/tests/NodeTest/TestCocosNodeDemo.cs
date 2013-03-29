@@ -46,7 +46,7 @@ namespace tests
             AddChild(menu, 1);
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new CocosNodeTestScene(); //CCScene.node();
             s.AddChild(CocosNodeTestScene.restartCocosNodeAction());
@@ -54,14 +54,14 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = new CocosNodeTestScene(); //CCScene.node();
             s.AddChild(CocosNodeTestScene.nextCocosNodeAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = new CocosNodeTestScene(); //CCScene.node();
             s.AddChild(CocosNodeTestScene.backCocosNodeAction());

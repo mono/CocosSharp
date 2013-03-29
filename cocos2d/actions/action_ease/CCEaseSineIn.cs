@@ -16,7 +16,7 @@ namespace cocos2d
             return CCEaseSineOut.Create((CCActionInterval) m_pOther.Reverse());
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCEaseSineIn pCopy;
 

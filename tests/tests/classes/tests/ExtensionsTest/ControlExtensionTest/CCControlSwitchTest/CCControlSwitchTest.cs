@@ -59,7 +59,7 @@ namespace tests.Extensions
 
         /* Callback for the change value. */
 
-        public void valueChanged(CCObject sender, CCControlEvent controlEvent)
+        public void valueChanged(object sender, CCControlEvent controlEvent)
         {
             var pSwitch = (CCControlSwitch) sender;
             if (pSwitch.IsOn())

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace cocos2d
 {
-    public class CCTMXObjectGroup : CCObject
+    public class CCTMXObjectGroup 
     {
         protected List<Dictionary<string, string>> m_pObjects;
         protected Dictionary<string, string> m_pProperties;

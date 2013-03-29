@@ -73,7 +73,7 @@ namespace tests
             ccTouchesMoved(touches, eventn);
         }
 
-        public void restart(CCObject sender)
+        public void restart(object sender)
         {
             CCDirector.SharedDirector.ReplaceScene(Bug914Layer.scene());
         }

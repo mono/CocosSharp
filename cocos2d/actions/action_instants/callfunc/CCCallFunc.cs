@@ -35,7 +35,7 @@ namespace cocos2d
             Execute();
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCCallFunc pRet;
 

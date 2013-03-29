@@ -95,7 +95,7 @@ namespace tests
             int i = 0;
             CCNode child;
             var pArray = menu.Children;
-            CCObject pObject = null;
+            object pObject = null;
             if (pArray.Count > 0)
             {
                 for (int j = 0; j < pArray.Count; j++)
@@ -123,7 +123,7 @@ namespace tests
         }
 
 
-        void menuCallbackPriorityTest(CCObject pSender)
+        void menuCallbackPriorityTest(object pSender)
         {
             ((CCLayerMultiplex)m_pParent).SwitchTo(4);
         }
@@ -155,30 +155,30 @@ namespace tests
             base.UnscheduleAllSelectors();
             CCLog.Log("TOUCHES ALLOWED AGAIN");
         }
-        public void menuCallback(CCObject pSender)
+        public void menuCallback(object pSender)
         {
             ((CCLayerMultiplex)m_pParent).SwitchTo(1);
         }
-        public void menuCallbackConfig(CCObject pSender)
+        public void menuCallbackConfig(object pSender)
         {
             ((CCLayerMultiplex)m_pParent).SwitchTo(3);
         }
-        public void menuCallbackDisabled(CCObject pSender)
+        public void menuCallbackDisabled(object pSender)
         {
             // hijack all touch events for 5 seconds
             CCDirector.SharedDirector.TouchDispatcher.SetPriority(-128 - 1, this);
             base.Schedule(this.allowTouches, 5.0f);
             CCLog.Log("TOUCHES DISABLED FOR 5 SECONDS");
         }
-        public void menuCallbackEnable(CCObject pSender)
+        public void menuCallbackEnable(object pSender)
         {
             m_disabledItem.Enabled = !m_disabledItem.Enabled;
         }
-        public void menuCallback2(CCObject pSender)
+        public void menuCallback2(object pSender)
         {
             (m_pParent as CCLayerMultiplex).SwitchTo(2);
         }
-        public void onQuit(CCObject pSender)
+        public void onQuit(object pSender)
         {
             //[[Director sharedDirector] end];
             //getCocosApp()->exit();

@@ -37,7 +37,7 @@ namespace cocos2d
             get { return m_elapsed >= m_fDuration; }
         }
 
-        public override CCObject CopyWithZone(CCZone zone)
+        public override object CopyWithZone(CCZone zone)
         {
             CCActionInterval ret;
 

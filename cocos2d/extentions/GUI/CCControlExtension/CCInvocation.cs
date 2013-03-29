@@ -5,18 +5,18 @@
 
 namespace cocos2d
 {
-    public delegate void SEL_CCControlHandler(CCObject obj, CCControlEvent ce);
+    public delegate void SEL_CCControlHandler(object obj, CCControlEvent ce);
 
     //#define cccontrol_selector(_SELECTOR) (SEL_CCControlHandler)(&_SELECTOR)
 
-    public class CCInvocation : CCObject
+    public class CCInvocation 
     {
         private readonly SEL_CCControlHandler m_pAction;
         private readonly CCControlEvent m_pControlEvent;
 
-        private readonly CCObject m_target;
+        private readonly object m_target;
 
-        public CCInvocation(CCObject target, SEL_CCControlHandler action, CCControlEvent controlEvent)
+        public CCInvocation(object target, SEL_CCControlHandler action, CCControlEvent controlEvent)
         {
             m_target = target;
             m_pAction = action;
@@ -28,7 +28,7 @@ namespace cocos2d
             get { return m_pAction; }
         }
 
-        public CCObject Target
+        public object Target
         {
             get { return m_target; }
         }
@@ -38,7 +38,7 @@ namespace cocos2d
             get { return m_pControlEvent; }
         }
 
-        public void Invoke(CCObject sender)
+        public void Invoke(object sender)
         {
             if (m_target != null && m_pAction != null)
             {

@@ -2,7 +2,7 @@ using System;
 
 namespace cocos2d
 {
-    public class CCBSequence : CCObject
+    public class CCBSequence 
     {
         public float Duration;
         public string Name = String.Empty;

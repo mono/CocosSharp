@@ -95,12 +95,12 @@ namespace tests
             m_pTarget.End();
         }
 
-        public void clearImage(CCObject pSender)
+        public void clearImage(object pSender)
         {
             m_pTarget.Clear(CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1());
         }
 
-        public void saveImage(CCObject pSender)
+        public void saveImage(object pSender)
         {
             using (var stream = new MemoryStream())
             {

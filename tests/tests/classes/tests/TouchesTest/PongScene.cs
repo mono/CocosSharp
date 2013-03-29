@@ -43,7 +43,7 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(this);
         }
 
-        public override void MainMenuCallback(CCObject pSender)
+        public override void MainMenuCallback(object pSender)
         {
             base.MainMenuCallback(pSender);
         }
