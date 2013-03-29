@@ -19,14 +19,14 @@ namespace cocos2d
             }
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCEaseInOut pCopy;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone.m_pCopyObject as CCEaseInOut;
+                pCopy = pZone as CCEaseInOut;
             }
             else
             {

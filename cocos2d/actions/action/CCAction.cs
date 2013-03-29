@@ -43,16 +43,16 @@ namespace cocos2d
 
 		public virtual CCAction Copy()
 		{
-			return (CCAction)CopyWithZone(null);
+			return (CCAction)Copy(null);
 		}
 
-        public virtual object CopyWithZone(CCZone zone)
+        public virtual object Copy(ICopyable zone)
         {
-            CCZone tmpZone = zone;
+            ICopyable tmpZone = zone;
             CCAction ret;
-            if (tmpZone != null && tmpZone.m_pCopyObject != null)
+            if (tmpZone != null)
             {
-                ret = (CCAction) tmpZone.m_pCopyObject;
+                ret = (CCAction) tmpZone;
             }
             else
             {

@@ -16,14 +16,14 @@ namespace cocos2d
             return CCEaseSineOut.Create((CCActionInterval) m_pOther.Reverse());
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCEaseSineIn pCopy;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCEaseSineIn) (pZone.m_pCopyObject);
+                pCopy = (CCEaseSineIn) (pZone);
             }
             else
             {

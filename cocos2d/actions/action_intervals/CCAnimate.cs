@@ -55,24 +55,24 @@ namespace cocos2d
 
 		public virtual CCAnimate Copy()
 		{
-			return (CCAnimate)CopyWithZone(null);
+			return (CCAnimate)Copy(null);
 		}
 
-        public virtual object CopyWithZone(CCZone pZone)
+        public virtual object Copy(ICopyable pZone)
         {
             CCAnimate pCopy;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCAnimate) (pZone.m_pCopyObject);
+                pCopy = (CCAnimate) (pZone);
             }
             else
             {
                 pCopy = new CCAnimate();
-                pZone = new CCZone(pCopy);
+                pZone =  (pCopy);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pCopy.InitWithAnimation((CCAnimation) m_pAnimation.Copy());
 

@@ -3,22 +3,22 @@ namespace cocos2d
 {
     public class CCActionInstant : CCFiniteTimeAction
     {
-        public override object CopyWithZone(CCZone zone)
+        public override object Copy(ICopyable zone)
         {
-            CCZone tmpZone = zone;
+            ICopyable tmpZone = zone;
             CCActionInstant ret;
 
-            if (tmpZone != null && tmpZone.m_pCopyObject != null)
+            if (tmpZone != null && tmpZone != null)
             {
-                ret = (CCActionInstant) tmpZone.m_pCopyObject;
+                ret = (CCActionInstant) tmpZone;
             }
             else
             {
                 ret = new CCActionInstant();
-                tmpZone = new CCZone(ret);
+                tmpZone =  (ret);
             }
 
-            base.CopyWithZone(tmpZone);
+            base.Copy(tmpZone);
             return ret;
         }
 

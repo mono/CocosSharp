@@ -37,21 +37,21 @@ namespace cocos2d
             get { return m_elapsed >= m_fDuration; }
         }
 
-        public override object CopyWithZone(CCZone zone)
+        public override object Copy(ICopyable zone)
         {
             CCActionInterval ret;
 
-            if (zone != null && zone.m_pCopyObject != null)
+            if (zone != null)
             {
-                ret = (CCActionInterval)(zone.m_pCopyObject);
+                ret = (CCActionInterval)(zone);
             }
             else
             {
                 ret = new CCActionInterval();
-                zone = new CCZone(ret);
+                zone =  (ret);
             }
 
-            base.CopyWithZone(zone);
+            base.Copy(zone);
 
             ret.InitWithDuration(m_fDuration);
 

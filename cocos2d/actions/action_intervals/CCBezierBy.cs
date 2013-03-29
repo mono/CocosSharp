@@ -18,14 +18,14 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone zone)
+        public override object Copy(ICopyable zone)
         {
-            CCZone tmpZone = zone;
+            ICopyable tmpZone = zone;
             CCBezierBy ret;
 
-            if (tmpZone != null && tmpZone.m_pCopyObject != null)
+            if (tmpZone != null && tmpZone != null)
             {
-                ret = tmpZone.m_pCopyObject as CCBezierBy;
+                ret = tmpZone as CCBezierBy;
                 if (ret == null)
                 {
                     return null;
@@ -34,10 +34,10 @@ namespace cocos2d
             else
             {
                 ret = new CCBezierBy();
-                tmpZone = new CCZone(ret);
+                tmpZone =  (ret);
             }
 
-            base.CopyWithZone(tmpZone);
+            base.Copy(tmpZone);
 
             ret.InitWithDuration(m_fDuration, m_sConfig);
 

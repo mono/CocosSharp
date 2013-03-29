@@ -10,14 +10,14 @@ namespace cocos2d
             m_pOther.Update(-0.5f * ((float) Math.Cos((float) Math.PI * time) - 1));
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCEaseSineInOut pCopy;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCEaseSineInOut) (pZone.m_pCopyObject);
+                pCopy = (CCEaseSineInOut) (pZone);
             }
             else
             {

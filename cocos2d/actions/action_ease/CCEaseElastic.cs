@@ -33,14 +33,14 @@ namespace cocos2d
             return null;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCEaseElastic pCopy;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone.m_pCopyObject as CCEaseElastic;
+                pCopy = pZone as CCEaseElastic;
             }
             else
             {

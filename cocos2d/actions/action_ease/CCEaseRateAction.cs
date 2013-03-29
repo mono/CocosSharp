@@ -22,14 +22,14 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCEaseRateAction pCopy;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCEaseRateAction) (pZone.m_pCopyObject);
+                pCopy = (CCEaseRateAction) (pZone);
             }
             else
             {

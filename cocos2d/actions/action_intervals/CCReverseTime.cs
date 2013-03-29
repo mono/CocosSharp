@@ -21,14 +21,14 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone zone)
+        public override object Copy(ICopyable zone)
         {
-            CCZone tmpZone = zone;
+            ICopyable tmpZone = zone;
             CCReverseTime ret;
 
-            if (tmpZone != null && tmpZone.m_pCopyObject != null)
+            if (tmpZone != null && tmpZone != null)
             {
-                ret = tmpZone.m_pCopyObject as CCReverseTime;
+                ret = tmpZone as CCReverseTime;
                 if (ret == null)
                 {
                     return null;
@@ -37,10 +37,10 @@ namespace cocos2d
             else
             {
                 ret = new CCReverseTime();
-                tmpZone = new CCZone(ret);
+                tmpZone =  (ret);
             }
 
-            base.CopyWithZone(tmpZone);
+            base.Copy(tmpZone);
 
             ret.InitWithAction(m_pOther.Copy() as CCFiniteTimeAction);
 

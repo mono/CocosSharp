@@ -68,20 +68,20 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCJumpTiles3D pCopy;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
-                pCopy = (CCJumpTiles3D) (pZone.m_pCopyObject);
+                pCopy = (CCJumpTiles3D) (pZone);
             }
             else
             {
                 pCopy = new CCJumpTiles3D();
-                pZone = new CCZone(pCopy);
+                pZone =  (pCopy);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pCopy.InitWithJumps(m_nJumps, m_fAmplitude, m_sGridSize, m_fDuration);
 

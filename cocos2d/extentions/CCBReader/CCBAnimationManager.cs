@@ -499,22 +499,22 @@ namespace cocos2d
             ((CCSprite) m_pTarget).DisplayFrame = mSpriteFrame;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCBSetSpriteFrame pRet;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
-                pRet = (CCBSetSpriteFrame) (pZone.m_pCopyObject);
+                pRet = (CCBSetSpriteFrame) (pZone);
             }
             else
             {
                 pRet = new CCBSetSpriteFrame();
-                pZone = new CCZone(pRet);
+                pZone =  (pRet);
             }
 
             pRet.InitWithSpriteFrame(mSpriteFrame);
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
             return pRet;
         }
     }
@@ -548,22 +548,22 @@ namespace cocos2d
             m_pTarget.Rotation = mStartAngle + (mDiffAngle * time);
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCBRotateTo pRet;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
-                pRet = (CCBRotateTo) (pZone.m_pCopyObject);
+                pRet = (CCBRotateTo) (pZone);
             }
             else
             {
                 pRet = new CCBRotateTo();
-                pZone = new CCZone(pRet);
+                pZone =  (pRet);
             }
 
             pRet.InitWithDuration(m_fDuration, mDstAngle);
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
             return pRet;
         }
 

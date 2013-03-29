@@ -7,22 +7,22 @@ namespace cocos2d
     {
         protected CCGridSize m_sGridSize;
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCGridAction pCopy = null;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCGridAction) (pZone.m_pCopyObject);
+                pCopy = (CCGridAction) (pZone);
             }
             else
             {
                 pCopy = new CCGridAction();
-                pZone = new CCZone(pCopy);
+                pZone =  (pCopy);
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pCopy.InitWithSize(m_sGridSize, m_fDuration);
 

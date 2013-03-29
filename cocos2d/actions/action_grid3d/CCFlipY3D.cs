@@ -69,21 +69,21 @@ namespace cocos2d
             SetVertex(d, ref v);
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCFlipY3D pCopy;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCFlipY3D) (pZone.m_pCopyObject);
+                pCopy = (CCFlipY3D) (pZone);
             }
             else
             {
                 pCopy = new CCFlipY3D();
-                pZone = new CCZone(pCopy);
+                pZone = pCopy;
             }
 
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pCopy.InitWithSize(m_sGridSize, m_fDuration);
 

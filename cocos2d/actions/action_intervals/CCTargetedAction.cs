@@ -28,19 +28,19 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCTargetedAction pRet;
-            if (pZone != null && pZone.m_pCopyObject != null) //in case of being called at sub class
+            if (pZone != null) //in case of being called at sub class
             {
-                pRet = (CCTargetedAction) (pZone.m_pCopyObject);
+                pRet = (CCTargetedAction) (pZone);
             }
             else
             {
                 pRet = new CCTargetedAction();
-                pZone = new CCZone(pRet);
+                pZone =  (pRet);
             }
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
             // win32 : use the m_pOther's copy object.
             pRet.InitWithTarget(m_pTarget, (CCFiniteTimeAction) m_pAction.Copy());
             return pRet;

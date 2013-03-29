@@ -17,22 +17,22 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone zone)
+        public override object Copy(ICopyable zone)
         {
-            CCZone tmpZone = zone;
+            ICopyable tmpZone = zone;
             CCMoveTo ret;
 
-            if (tmpZone != null && tmpZone.m_pCopyObject != null)
+            if (tmpZone != null && tmpZone != null)
             {
-                ret = (CCMoveTo) tmpZone.m_pCopyObject;
+                ret = (CCMoveTo) tmpZone;
             }
             else
             {
                 ret = new CCMoveTo();
-                tmpZone = new CCZone(ret);
+                tmpZone =  (ret);
             }
 
-            base.CopyWithZone(tmpZone);
+            base.Copy(tmpZone);
             ret.InitWithDuration(m_fDuration, m_endPosition);
 
             return ret;

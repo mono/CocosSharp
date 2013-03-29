@@ -26,14 +26,14 @@ namespace cocos2d
             return 7.5625f * time * time + 0.984375f;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCEaseBounce pCopy;
 
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone.m_pCopyObject as CCEaseBounce;
+                pCopy = pZone as CCEaseBounce;
             }
             else
             {

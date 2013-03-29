@@ -51,21 +51,21 @@ namespace cocos2d
             return false;
         }
 
-        public override object CopyWithZone(CCZone pZone)
+        public override object Copy(ICopyable pZone)
         {
             CCShatteredTiles3D pCopy;
-            if (pZone != null && pZone.m_pCopyObject != null)
+            if (pZone != null)
             {
-                pCopy = (CCShatteredTiles3D) (pZone.m_pCopyObject);
+                pCopy = (CCShatteredTiles3D) (pZone);
             }
             else
             {
                 pCopy = new CCShatteredTiles3D();
-                pZone = new CCZone(pCopy);
+                pZone =  (pCopy);
             }
 
             //copy super class's member
-            base.CopyWithZone(pZone);
+            base.Copy(pZone);
 
             pCopy.InitWithRange(m_nRandrange, m_bShatterZ, m_sGridSize, m_fDuration);
 
