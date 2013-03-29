@@ -6,7 +6,7 @@ using Box2D.Common;
 
 namespace Box2D.Collision.Shapes
 {
-    public enum b2ShapeType
+    public enum b2ShapeType : int
     {
         e_circle = 0,
         e_edge = 1,

@@ -16,38 +16,29 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#include <Box2D/Dynamics/Contacts/b2CircleContact.h>
-#include <Box2D/Dynamics/b2Body.h>
-#include <Box2D/Dynamics/b2Fixture.h>
-#include <Box2D/Dynamics/b2WorldCallbacks.h>
-#include <Box2D/Common/b2BlockAllocator.h>
-#include <Box2D/Collision/b2TimeOfImpact.h>
+using System;
+using System.Diagnostics;
+using Box2D.Common;
+using Box2D.Collision.Shapes;
+using Box2D.Collision;
 
-#include <new>
-using namespace std;
-
-b2Contact b2CircleContact::Create(b2Fixture fixtureA, int, b2Fixture fixtureB, int)
+namespace Box2D.Dynamics.Contact
 {
-    void* mem = allocator.Allocate(sizeof(b2CircleContact));
-    return new (mem) b2CircleContact(fixtureA, fixtureB);
-}
+    public class b2CircleContact : b2Contact
+    {
 
-void b2CircleContact::Destroy(b2Contact contact)
-{
-    ((b2CircleContact*)contact).~b2CircleContact();
-    allocator.Free(contact, sizeof(b2CircleContact));
-}
+        public b2CircleContact(b2Fixture fixtureA, b2Fixture fixtureB)
+            : base(fixtureA, 0, fixtureB, 0)
+        {
+            Debug.Assert(m_fixtureA.ShapeType == b2ShapeType.e_circle);
+            Debug.Assert(m_fixtureB.ShapeType == b2ShapeType.e_circle);
+        }
 
-b2CircleContact::b2CircleContact(b2Fixture fixtureA, b2Fixture fixtureB)
-    : b2Contact(fixtureA, 0, fixtureB, 0)
-{
-    Debug.Assert(m_fixtureA.GetType() == b2ShapeType.e_circle);
-    Debug.Assert(m_fixtureB.GetType() == b2ShapeType.e_circle);
-}
-
-void b2CircleContact::Evaluate(b2Manifold manifold, const b2Transform& xfA, const b2Transform& xfB)
-{
-    b2CollideCircles(manifold,
-                    (b2CircleShape*)m_fixtureA.GetShape(), xfA,
-                    (b2CircleShape*)m_fixtureB.GetShape(), xfB);
+        public override void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
+        {
+            b2CollideCircles(manifold,
+                            (b2CircleShape)m_fixtureA.Shape, xfA,
+                            (b2CircleShape)m_fixtureB.Shape, xfB);
+        }
+    }
 }

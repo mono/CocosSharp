@@ -20,14 +20,15 @@ using System;
 using System.Diagnostics;
 using Box2D.Common;
 using Box2D.Collision.Shapes;
+using Box2D.Collision;
 
-namespace Box2D.Dynamics.Contact 
+namespace Box2D.Dynamics.Contacts 
 {
 
     public struct b2ContactRegister
     {
-        public Type createFcn;
-        bool primary;
+        public Type contactType;
+        public bool isPrimary;
     }
 
     /// A contact edge is used to connect bodies and contacts together
@@ -67,8 +68,6 @@ namespace Box2D.Dynamics.Contact
     }
     public abstract class b2Contact {
 
-            static bool s_initialized;
-
     protected uint m_flags;
 
     // World pool and list pointers.
@@ -93,71 +92,60 @@ namespace Box2D.Dynamics.Contact
     protected float m_friction;
     protected float m_restitution;
 
-protected b2ContactRegister[][] s_registers = new b2ContactRegister[b2ShapeType.e_typeCount][b2ShapeType.e_typeCount];
-protected bool s_initialized = false;
 
     /// Evaluate this contact with your own manifold and transforms.
     public abstract void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB);
 
-private void InitializeRegisters()
-{
-    AddType(typeof(b2CircleContact), b2ShapeType.e_circle, b2ShapeType.e_circle);
-    AddType(typeof(b2PolygonAndCircleContact), b2ShapeType.e_polygon, b2ShapeType.e_circle);
-    AddType(typeof(b2PolygonContact),  b2ShapeType.e_polygon, b2ShapeType.e_polygon);
-    AddType(typeof(b2EdgeAndCircleContact), b2ShapeType.e_edge, b2ShapeType.e_circle);
-    AddType(typeof(b2EdgeAndPolygonContact), b2ShapeType.e_edge, b2ShapeType.e_polygon);
-    AddType(typeof(b2ChainAndCircleContact),  b2ShapeType.e_chain, b2ShapeType.e_circle);
-    AddType(typeof(b2ChainAndPolygonContact),  b2ShapeType.e_chain, b2ShapeType.e_polygon);
-}
-
-public virtual void AddType(Type createFcn,
-                        b2ShapeType type1, b2ShapeType type2)
-{
-    Debug.Assert(0 <= type1 && type1 < b2ShapeType.e_typeCount);
-    Debug.Assert(0 <= type2 && type2 < b2ShapeType.e_typeCount);
-    
-    s_registers[type1][type2].createFcn = createFcn;
-    s_registers[type1][type2].destroyFcn = destoryFcn;
-    s_registers[type1][type2].primary = true;
-
-    if (type1 != type2)
+    protected static b2ContactRegister[,] s_registers = new b2ContactRegister[(int)b2ShapeType.e_typeCount, (int)b2ShapeType.e_typeCount];
+    static b2Contact()
     {
-        s_registers[type2][type1].createFcn = createFcn;
-        s_registers[type2][type1].destroyFcn = destoryFcn;
-        s_registers[type2][type1].primary = false;
+        AddType(typeof(b2CircleContact), b2ShapeType.e_circle, b2ShapeType.e_circle);
+        AddType(typeof(b2PolygonAndCircleContact), b2ShapeType.e_polygon, b2ShapeType.e_circle);
+        AddType(typeof(b2PolygonContact),  b2ShapeType.e_polygon, b2ShapeType.e_polygon);
+        AddType(typeof(b2EdgeAndCircleContact), b2ShapeType.e_edge, b2ShapeType.e_circle);
+        AddType(typeof(b2EdgeAndPolygonContact), b2ShapeType.e_edge, b2ShapeType.e_polygon);
+        AddType(typeof(b2ChainAndCircleContact),  b2ShapeType.e_chain, b2ShapeType.e_circle);
+        AddType(typeof(b2ChainAndPolygonContact),  b2ShapeType.e_chain, b2ShapeType.e_polygon);
     }
-}
+
+    private static void AddType(Type createType,
+                            b2ShapeType type1, b2ShapeType type2)
+    {
+        Debug.Assert(0 <= type1 && type1 < b2ShapeType.e_typeCount);
+        Debug.Assert(0 <= type2 && type2 < b2ShapeType.e_typeCount);
+
+        s_registers[(int)type1, (int)type2].contactType = createType;
+        s_registers[(int)type1,(int)type2].isPrimary = true;
+
+        if (type1 != type2)
+        {
+            s_registers[(int)type2,(int)type1].contactType = createType;
+            s_registers[(int)type2,(int)type1].isPrimary = false;
+        }
+    }
 
 public b2Contact Create(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB)
 {
-    if (s_initialized == false)
-    {
-        InitializeRegisters();
-        s_initialized = true;
-    }
 
-    b2ShapeType type1 = fixtureA.GetType();
-    b2ShapeType type2 = fixtureB.GetType();
+    b2ShapeType type1 = fixtureA.ShapeType;
+    b2ShapeType type2 = fixtureB.ShapeType;
 
     Debug.Assert(0 <= type1 && type1 < b2ShapeType.e_typeCount);
     Debug.Assert(0 <= type2 && type2 < b2ShapeType.e_typeCount);
     
-    Type createFcn = s_registers[type1][type2].createFcn;
+    Type createFcn = s_registers[(int)type1,(int)type2].contactType;
     if (createFcn != null)
     {
-        if (s_registers[type1][type2].primary)
+        if (s_registers[(int)type1, (int)type2].isPrimary)
         {
-            return createFcn(fixtureA, indexA, fixtureB, indexB, allocator);
+            return((b2Contact) Activator.CreateInstance(createFcn, new object[] { fixtureA, indexA, fixtureB, indexB }));
         }
         else
         {
-            return createFcn(fixtureB, indexB, fixtureA, indexA, allocator);
+            return ((b2Contact)Activator.CreateInstance(createFcn, new object[] { fixtureB, indexB, fixtureA, indexA }));
         }
     }
-    else
-    {
-        return NULL;
-    }
+    return(null);
 }
 
 public b2Contact(b2Fixture fA, int indexA, b2Fixture fB, int indexB)
@@ -367,12 +355,12 @@ protected virtual void FlagForFiltering()
     m_flags |= b2ContactFlags.e_filterFlag;
 }
 
-protected virtual void SetFriction(float32 friction)
+protected virtual void SetFriction(float friction)
 {
     m_friction = friction;
 }
 
-protected virtual float32 GetFriction()
+protected virtual float GetFriction()
 {
     return m_friction;
 }
@@ -387,7 +375,7 @@ protected virtual void SetRestitution(float restitution)
     m_restitution = restitution;
 }
 
-protected virtual float32 GetRestitution()
+protected virtual float GetRestitution()
 {
     return m_restitution;
 }

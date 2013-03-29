@@ -16,29 +16,29 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
+using System;
+using System.Diagnostics;
+using Box2D.Common;
+using Box2D.Collision.Shapes;
+using Box2D.Collision;
 
-b2Contact b2EdgeAndCircleContact::Create(b2Fixture fixtureA, int, b2Fixture fixtureB, int)
+namespace Box2D.Dynamics.Contact
 {
-    void* mem = allocator.Allocate(sizeof(b2EdgeAndCircleContact));
-    return new (mem) b2EdgeAndCircleContact(fixtureA, fixtureB);
-}
 
-void b2EdgeAndCircleContact::Destroy(b2Contact contact)
-{
-    ((b2EdgeAndCircleContact*)contact).~b2EdgeAndCircleContact();
-    allocator.Free(contact, sizeof(b2EdgeAndCircleContact));
-}
+    public class b2EdgeAndCircleContact : b2Contact
+    {
+        public b2EdgeAndCircleContact(b2Fixture fixtureA, b2Fixture fixtureB)
+            : base(fixtureA, 0, fixtureB, 0)
+        {
+            Debug.Assert(m_fixtureA.ShapeType == b2ShapeType.e_edge);
+            Debug.Assert(m_fixtureB.ShapeType == b2ShapeType.e_circle);
+        }
 
-b2EdgeAndCircleContact::b2EdgeAndCircleContact(b2Fixture fixtureA, b2Fixture fixtureB)
-: b2Contact(fixtureA, 0, fixtureB, 0)
-{
-    Debug.Assert(m_fixtureA.GetType() == b2ShapeType.e_edge);
-    Debug.Assert(m_fixtureB.GetType() == b2ShapeType.e_circle);
-}
-
-void b2EdgeAndCircleContact::Evaluate(b2Manifold manifold, const b2Transform& xfA, const b2Transform& xfB)
-{
-    b2CollideEdgeAndCircle(    manifold,
-                                (b2EdgeShape*)m_fixtureA.GetShape(), xfA,
-                                (b2CircleShape*)m_fixtureB.GetShape(), xfB);
+        public override void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
+        {
+            b2CollideEdgeAndCircle(manifold,
+                                        (b2EdgeShape)m_fixtureA.Shape, xfA,
+                                        (b2CircleShape)m_fixtureB.Shape, xfB);
+        }
+    }
 }

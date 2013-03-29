@@ -16,28 +16,28 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-b2Contact b2EdgeAndPolygonContact::Create(b2Fixture fixtureA, int, b2Fixture fixtureB, int)
-{
-    void* mem = allocator.Allocate(sizeof(b2EdgeAndPolygonContact));
-    return new (mem) b2EdgeAndPolygonContact(fixtureA, fixtureB);
-}
+using System;
+using System.Diagnostics;
+using Box2D.Common;
+using Box2D.Collision.Shapes;
+using Box2D.Collision;
 
-void b2EdgeAndPolygonContact::Destroy(b2Contact contact)
+namespace Box2D.Dynamics.Contact
 {
-    ((b2EdgeAndPolygonContact*)contact).~b2EdgeAndPolygonContact();
-    allocator.Free(contact, sizeof(b2EdgeAndPolygonContact));
-}
+    public class b2EdgeAndPolygonContact : b2Contact
+    {
+        public b2EdgeAndPolygonContact(b2Fixture fixtureA, b2Fixture fixtureB)
+            : base(fixtureA, 0, fixtureB, 0)
+        {
+            Debug.Assert(m_fixtureA.ShapeType == b2ShapeType.e_edge);
+            Debug.Assert(m_fixtureB.ShapeType == b2ShapeType.e_polygon);
+        }
 
-b2EdgeAndPolygonContact::b2EdgeAndPolygonContact(b2Fixture fixtureA, b2Fixture fixtureB)
-: b2Contact(fixtureA, 0, fixtureB, 0)
-{
-    Debug.Assert(m_fixtureA.GetType() == b2ShapeType.e_edge);
-    Debug.Assert(m_fixtureB.GetType() == b2ShapeType.e_polygon);
-}
-
-void b2EdgeAndPolygonContact::Evaluate(b2Manifold manifold, const b2Transform& xfA, const b2Transform& xfB)
-{
-    b2CollideEdgeAndPolygon(    manifold,
-                                (b2EdgeShape*)m_fixtureA.GetShape(), xfA,
-                                (b2PolygonShape*)m_fixtureB.GetShape(), xfB);
+        public override void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
+        {
+            b2CollideEdgeAndPolygon(manifold,
+                                        (b2EdgeShape)m_fixtureA.Shape, xfA,
+                                        (b2PolygonShape)m_fixtureB.Shape, xfB);
+        }
+    }
 }

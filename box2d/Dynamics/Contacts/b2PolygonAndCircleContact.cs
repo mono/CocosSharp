@@ -16,29 +16,29 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
+using System;
+using System.Diagnostics;
+using Box2D.Common;
+using Box2D.Collision.Shapes;
+using Box2D.Collision;
 
-b2Contact b2PolygonAndCircleContact::Create(b2Fixture fixtureA, int, b2Fixture fixtureB, int)
+namespace Box2D.Dynamics.Contact
 {
-    void* mem = allocator.Allocate(sizeof(b2PolygonAndCircleContact));
-    return new (mem) b2PolygonAndCircleContact(fixtureA, fixtureB);
-}
+    public class b2PolygonAndCircleContact : b2Contact
+    {
 
-void b2PolygonAndCircleContact::Destroy(b2Contact contact)
-{
-    ((b2PolygonAndCircleContact*)contact).~b2PolygonAndCircleContact();
-    allocator.Free(contact, sizeof(b2PolygonAndCircleContact));
-}
+        public b2PolygonAndCircleContact(b2Fixture fixtureA, b2Fixture fixtureB)
+            : base(fixtureA, 0, fixtureB, 0)
+        {
+            Debug.Assert(m_fixtureA.ShapeType == b2ShapeType.e_polygon);
+            Debug.Assert(m_fixtureB.ShapeType == b2ShapeType.e_circle);
+        }
 
-b2PolygonAndCircleContact::b2PolygonAndCircleContact(b2Fixture fixtureA, b2Fixture fixtureB)
-: b2Contact(fixtureA, 0, fixtureB, 0)
-{
-    Debug.Assert(m_fixtureA.GetType() == b2ShapeType.e_polygon);
-    Debug.Assert(m_fixtureB.GetType() == b2ShapeType.e_circle);
-}
-
-void b2PolygonAndCircleContact::Evaluate(b2Manifold manifold, const b2Transform& xfA, const b2Transform& xfB)
-{
-    b2CollidePolygonAndCircle(    manifold,
-                                (b2PolygonShape*)m_fixtureA.GetShape(), xfA,
-                                (b2CircleShape*)m_fixtureB.GetShape(), xfB);
+        public override void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
+        {
+            b2CollidePolygonAndCircle(manifold,
+                                        (b2PolygonShape)m_fixtureA.Shape, xfA,
+                                        (b2CircleShape)m_fixtureB.Shape, xfB);
+        }
+    }
 }
