@@ -74,7 +74,7 @@ namespace cocos2d
             return true;
         }
 
-        public override CCObject CopyWithZone(CCZone zone)
+        public override object CopyWithZone(CCZone zone)
         {
             CCZone tempZone = zone;
             CCFollow ret;

@@ -7,18 +7,18 @@ namespace cocos2d
     public class BlockData
     {
         public SEL_MenuHandler mSELMenuHandler;
-        public CCObject mTarget;
+        public object mTarget;
     }
 
     public class BlockCCControlData
     {
         public CCControlEvent mControlEvents;
         public SEL_CCControlHandler mSELCCControlHandler;
-        public CCObject mTarget;
+        public object mTarget;
     }
 
 
-    public class CCNodeLoader : CCObject
+    public class CCNodeLoader 
     {
         protected const string PROPERTY_POSITION = "position";
         protected const string PROPERTY_CONTENTSIZE = "contentSize";
@@ -732,7 +732,7 @@ namespace cocos2d
 
             if (selectorTarget != kCCBTargetType.kCCBTargetTypeNone)
             {
-                CCObject target = null;
+                object target = null;
                 if (selectorTarget == kCCBTargetType.kCCBTargetTypeDocumentRoot)
                 {
                     target = reader.AnimationManager.RootNode;
@@ -750,7 +750,7 @@ namespace cocos2d
                         var proxy = (CCBScriptOwnerProtocol) reader.Owner;
                         if (proxy != null)
                         {
-                            target = proxy.CreateNew() as CCObject;
+                            target = proxy.CreateNew() as object;
                         }
                     }
                 }
@@ -812,7 +812,7 @@ namespace cocos2d
 
             if (selectorTarget != kCCBTargetType.kCCBTargetTypeNone)
             {
-                CCObject target = null;
+                object target = null;
                 if (selectorTarget == kCCBTargetType.kCCBTargetTypeDocumentRoot)
                 {
                     target = reader.AnimationManager.RootNode;

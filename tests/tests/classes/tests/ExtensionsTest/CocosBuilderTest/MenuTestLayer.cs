@@ -6,17 +6,17 @@ namespace tests.Extensions
     {
         public CCLabelBMFont mMenuItemStatusLabelBMFont;
 
-        public void onMenuItemAClicked(CCObject pSender)
+        public void onMenuItemAClicked(object pSender)
         {
             mMenuItemStatusLabelBMFont.Label = ("Menu Item A clicked.");
         }
 
-        public void onMenuItemBClicked(CCObject pSender)
+        public void onMenuItemBClicked(object pSender)
         {
             mMenuItemStatusLabelBMFont.Label = ("Menu Item B clicked.");
         }
 
-        public void onMenuItemCClicked(CCObject pSender)
+        public void onMenuItemCClicked(object pSender)
         {
             mMenuItemStatusLabelBMFont.Label = ("Menu Item C clicked.");
         }

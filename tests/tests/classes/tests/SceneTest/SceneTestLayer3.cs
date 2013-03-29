@@ -47,19 +47,19 @@ namespace tests
 
         }
 
-        public void item0Clicked(CCObject pSender)
+        public void item0Clicked(object pSender)
         {
             var newScene = CCScene.Create();
             newScene.AddChild(new SceneTestLayer3());
             CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, newScene, new CCColor3B(0, 255, 255)));
         }
 
-        public void item1Clicked(CCObject pSender)
+        public void item1Clicked(object pSender)
         {
             CCDirector.SharedDirector.PopScene();
         }
 
-        public void item2Clicked(CCObject pSender)
+        public void item2Clicked(object pSender)
         {
             CCDirector.SharedDirector.PopToRootScene();
         }

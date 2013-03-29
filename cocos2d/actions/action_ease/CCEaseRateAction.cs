@@ -22,7 +22,7 @@ namespace cocos2d
             return false;
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCEaseRateAction pCopy;
 

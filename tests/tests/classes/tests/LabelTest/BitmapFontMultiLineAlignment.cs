@@ -95,7 +95,7 @@ namespace tests
             AddChild(alignmentMenu);
         }
 
-        private void stringChanged(CCObject sender)
+        private void stringChanged(object sender)
         {
             var item = (CCMenuItemFont) sender;
             item.Color = CCTypes.CCRed;
@@ -121,7 +121,7 @@ namespace tests
             snapArrowsToEdge();
         }
 
-        private void alignmentChanged(CCObject sender)
+        private void alignmentChanged(object sender)
         {
             var item = (CCMenuItemFont) sender;
             item.Color = CCTypes.CCRed;

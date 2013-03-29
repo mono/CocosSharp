@@ -7,7 +7,7 @@ namespace cocos2d
         kCCActionTagInvalid = -1,
     }
 
-    public class CCAction : CCObject
+    public class CCAction : ICopyable
     {
         protected int m_nTag;
         protected CCNode m_pOriginalTarget;
@@ -41,7 +41,12 @@ namespace cocos2d
             set { m_nTag = value; }
         }
 
-        public override CCObject CopyWithZone(CCZone zone)
+		public virtual CCAction Copy()
+		{
+			return (CCAction)CopyWithZone(null);
+		}
+
+        public virtual object CopyWithZone(CCZone zone)
         {
             CCZone tmpZone = zone;
             CCAction ret;

@@ -92,14 +92,14 @@ namespace tests
             }
         }
 
-        public void testNCallback(CCObject pSender)
+        public void testNCallback(object pSender)
         {
             subtestNumber = ((CCMenuItemFont)pSender).Tag;
             SpriteMenuLayer pMenu = (SpriteMenuLayer)GetChildByTag(PerformanceSpriteTest.kTagMenuLayer);
             pMenu.restartCallback(pSender);
         }
 
-        public void onIncrease(CCObject pSender)
+        public void onIncrease(object pSender)
         {
             if (quantityNodes >= PerformanceSpriteTest.kMaxNodes)
                 return;
@@ -114,7 +114,7 @@ namespace tests
             updateNodes();
         }
 
-        public void onDecrease(CCObject pSender)
+        public void onDecrease(object pSender)
         {
             if (quantityNodes <= 0)
                 return;

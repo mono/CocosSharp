@@ -114,7 +114,7 @@ namespace tests
         protected abstract void PreviousTestCase();
         protected abstract void RestTestCase();
 
-        public virtual void MainMenuCallback(CCObject pSender)
+        public virtual void MainMenuCallback(object pSender)
         {
             CCScene pScene = CCScene.Create();
             CCLayer pLayer = new TestController();

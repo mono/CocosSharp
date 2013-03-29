@@ -28,7 +28,7 @@ namespace tests
             AddChild(pMenu);
         }
 
-        public void menuCallback(CCObject pSender)
+        public void menuCallback(object pSender)
         {
             CCMenuItemFont pItem = (CCMenuItemFont)pSender;
             int nIndex = pItem.ZOrder - PerformanceTestScene.kItemTagBasic;

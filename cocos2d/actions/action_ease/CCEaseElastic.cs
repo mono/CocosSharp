@@ -33,7 +33,7 @@ namespace cocos2d
             return null;
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCEaseElastic pCopy;
 

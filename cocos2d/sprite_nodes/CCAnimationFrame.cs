@@ -1,7 +1,7 @@
 
 namespace cocos2d
 {
-    public class CCAnimationFrame : CCObject
+    public class CCAnimationFrame : ICopyable
     {
         private float m_fDelayUnits;
         private CCSpriteFrame m_pSpriteFrame;
@@ -22,7 +22,12 @@ namespace cocos2d
             get { return m_pUserInfo; }
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+		public CCAnimationFrame Copy()
+		{
+			return (CCAnimationFrame)CopyWithZone(null);
+		}
+
+        public object CopyWithZone(CCZone pZone)
         {
             CCAnimationFrame pCopy;
             if (pZone != null && pZone.m_pCopyObject != null)

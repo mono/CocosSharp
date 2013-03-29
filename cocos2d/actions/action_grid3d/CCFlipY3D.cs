@@ -69,7 +69,7 @@ namespace cocos2d
             SetVertex(d, ref v);
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCFlipY3D pCopy;
             if (pZone != null && pZone.m_pCopyObject != null)

@@ -10,7 +10,7 @@ namespace cocos2d
             m_pOther.Update((float) (Math.Pow(time, 1 / m_fRate)));
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCEaseOut pCopy;
 

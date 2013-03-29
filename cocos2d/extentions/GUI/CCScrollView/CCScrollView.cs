@@ -421,7 +421,7 @@ namespace cocos2d
      * Provided to make scroll view compatible with SWLayer's pause method
      */
 
-        public void Pause(CCObject sender)
+        public void Pause(object sender)
         {
             m_pContainer.PauseSchedulerAndActions();
 
@@ -440,7 +440,7 @@ namespace cocos2d
      * Provided to make scroll view compatible with SWLayer's resume method
      */
 
-        public void Resume(CCObject sender)
+        public void Resume(object sender)
         {
             RawList<CCNode> pChildren = m_pContainer.Children;
 

@@ -113,12 +113,12 @@ namespace tests
             m_alignedH = true;
             alignMenusH();
         }
-        public void menuCallback(CCObject pSender)
+        public void menuCallback(object pSender)
         {
             CCLayerMultiplex m = m_pParent as CCLayerMultiplex;
             m.SwitchTo(0);
         }
-        public void menuCallbackOpacity(CCObject pSender)
+        public void menuCallbackOpacity(object pSender)
         {
             CCMenu menu = (CCMenu)(((CCNode)(pSender)).Parent);
             byte opacity = menu.Opacity;
@@ -127,7 +127,7 @@ namespace tests
             else
                 menu.Opacity = 128;
         }
-        public void menuCallbackAlign(CCObject pSender)
+        public void menuCallbackAlign(object pSender)
         {
             m_alignedH = !m_alignedH;
 

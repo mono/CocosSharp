@@ -121,13 +121,13 @@ namespace tests
             base.OnEnter();
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             /*newOrientation();*/
             newScene();
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             // update the action index
             EffectTestScene.actionIdx++;
@@ -137,7 +137,7 @@ namespace tests
             newScene();
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             // update the action index
             EffectTestScene.actionIdx--;

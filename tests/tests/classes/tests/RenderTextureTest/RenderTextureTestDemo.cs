@@ -45,21 +45,21 @@ namespace tests
             return "";
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new RenderTextureScene();
             s.AddChild(RenderTextureScene.restartTestCase());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = new RenderTextureScene();
             s.AddChild(RenderTextureScene.nextTestCase());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = new RenderTextureScene();
             s.AddChild(RenderTextureScene.backTestCase());

@@ -184,7 +184,7 @@ namespace tests
             CCApplication.SharedApplication.GamePadTriggerUpdate -= _GamePadTriggerDelegate;
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new ParallaxTestScene();
             s.AddChild(ParallaxTestScene.restartParallaxAction());
@@ -192,14 +192,14 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = new ParallaxTestScene();
             s.AddChild(ParallaxTestScene.nextParallaxAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = new ParallaxTestScene();
             s.AddChild(ParallaxTestScene.backParallaxAction());

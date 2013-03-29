@@ -49,7 +49,7 @@ namespace tests
             return "";
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene pScene = new SchedulerTestScene();
             CCLayer pLayer = SchedulerTestScene.backSchedulerTest();
@@ -58,7 +58,7 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(pScene);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene pScene = new SchedulerTestScene();
             CCLayer pLayer = SchedulerTestScene.nextSchedulerTest();
@@ -67,7 +67,7 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(pScene);
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene pScene = new SchedulerTestScene();
             CCLayer pLayer = SchedulerTestScene.restartSchedulerTest();

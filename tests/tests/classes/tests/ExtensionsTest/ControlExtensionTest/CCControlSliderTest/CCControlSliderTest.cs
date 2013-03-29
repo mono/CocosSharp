@@ -48,7 +48,7 @@ namespace tests.Extensions
 			return false;
 		}
 
-		public void valueChanged(CCObject sender, CCControlEvent controlEvent)
+		public void valueChanged(object sender, CCControlEvent controlEvent)
 		{
 			var pSlider = (CCControlSlider)sender;
 			// Change value of label.

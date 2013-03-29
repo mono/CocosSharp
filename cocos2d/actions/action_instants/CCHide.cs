@@ -19,7 +19,7 @@
             return (CCShow.Create());
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCHide pRet;
 

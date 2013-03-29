@@ -67,7 +67,7 @@ namespace tests
 
         public abstract void updateQuantityOfNodes();
 
-        public void onDecrease(CCObject pSender)
+        public void onDecrease(object pSender)
         {
             quantityOfNodes -= PerformanceNodeChildrenTest.kNodesIncrease;
             if (quantityOfNodes < 0)
@@ -77,7 +77,7 @@ namespace tests
             updateQuantityOfNodes();
         }
 
-        public void onIncrease(CCObject pSender)
+        public void onIncrease(object pSender)
         {
             quantityOfNodes += PerformanceNodeChildrenTest.kNodesIncrease;
             if (quantityOfNodes > PerformanceNodeChildrenTest.kMaxNodes)

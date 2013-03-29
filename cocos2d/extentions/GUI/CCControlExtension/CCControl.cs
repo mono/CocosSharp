@@ -233,7 +233,7 @@ namespace cocos2d
         * action message is sent. See "CCControlEvent" for bitmask constants.
         */
 
-        public virtual void AddTargetWithActionForControlEvents(CCObject target, SEL_CCControlHandler action, CCControlEvent controlEvents)
+        public virtual void AddTargetWithActionForControlEvents(object target, SEL_CCControlHandler action, CCControlEvent controlEvents)
         {
             // For each control events
             for (int i = 0; i < kControlEventTotalNumber; i++)
@@ -259,7 +259,7 @@ namespace cocos2d
         * target and action. See "CCControlEvent" for bitmask constants.
         */
 
-        public virtual void RemoveTargetWithActionForControlEvents(CCObject target, SEL_CCControlHandler action, CCControlEvent controlEvents)
+        public virtual void RemoveTargetWithActionForControlEvents(object target, SEL_CCControlHandler action, CCControlEvent controlEvents)
         {
             // For each control events
             for (int i = 0; i < kControlEventTotalNumber; i++)
@@ -316,7 +316,7 @@ namespace cocos2d
          * @return an CCInvocation object able to construct messages using a given 
          * target-action pair.
          */
-        //protected CCInvocation invocationWithTargetAndActionForControlEvent(CCObject target, SEL_CCControlHandler action, CCControlEvent controlEvent)
+        //protected CCInvocation invocationWithTargetAndActionForControlEvent(object target, SEL_CCControlHandler action, CCControlEvent controlEvent)
         //{
         //}
 
@@ -344,7 +344,7 @@ namespace cocos2d
         }
 
 
-        public void AddTargetWithActionForControlEvent(CCObject target, SEL_CCControlHandler action, CCControlEvent controlEvent)
+        public void AddTargetWithActionForControlEvent(object target, SEL_CCControlHandler action, CCControlEvent controlEvent)
         {
             // Create the invocation object
             var invocation = new CCInvocation(target, action, controlEvent);
@@ -354,7 +354,7 @@ namespace cocos2d
             eventInvocationList.Add(invocation);
         }
 
-        public void RemoveTargetWithActionForControlEvent(CCObject target, SEL_CCControlHandler action, CCControlEvent controlEvent)
+        public void RemoveTargetWithActionForControlEvent(object target, SEL_CCControlHandler action, CCControlEvent controlEvent)
         {
             // Retrieve all invocations for the given control event
             //<CCInvocation*>

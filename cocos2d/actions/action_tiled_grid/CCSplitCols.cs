@@ -39,7 +39,7 @@ namespace cocos2d
             return base.InitWithSize(new CCGridSize(nCols, 1), duration);
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCSplitCols pCopy;
             if (pZone != null && pZone.m_pCopyObject != null)

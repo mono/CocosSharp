@@ -44,7 +44,7 @@ namespace cocos2d
     /// The quads are rendered using an OpenGL ES VBO.
     /// To render the quads using an interleaved vertex array list, you should modify the ccConfig.h file 
     ///</remarks>
-    public class CCTextureAtlas : CCObject
+    public class CCTextureAtlas 
     {
         internal bool Dirty = true; //indicates whether or not the array buffer of the VBO needs to be updated
         public RawList<CCV3F_C4B_T2F_Quad> m_pQuads;

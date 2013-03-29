@@ -18,7 +18,7 @@ namespace tests.Extensions
     {
         #region CCBMemberVariableAssigner Members
 
-        public bool OnAssignCCBMemberVariable(CCObject target, string memberVariableName, CCNode node)
+        public bool OnAssignCCBMemberVariable(object target, string memberVariableName, CCNode node)
         {
             FieldInfo fieldInfo = GetType().GetField(memberVariableName);
             if (fieldInfo != null)
@@ -33,7 +33,7 @@ namespace tests.Extensions
 
         #region CCBSelectorResolver Members
 
-        public SEL_MenuHandler OnResolveCCBCCMenuItemSelector(CCObject target, string pSelectorName)
+        public SEL_MenuHandler OnResolveCCBCCMenuItemSelector(object target, string pSelectorName)
         {
             MethodInfo methodInfo = GetType().GetMethod(pSelectorName);
             if (methodInfo != null)
@@ -47,7 +47,7 @@ namespace tests.Extensions
             return null;
         }
 
-        public SEL_CCControlHandler OnResolveCCBCCControlSelector(CCObject target, string pSelectorName)
+        public SEL_CCControlHandler OnResolveCCBCCControlSelector(object target, string pSelectorName)
         {
             MethodInfo methodInfo = GetType().GetMethod(pSelectorName);
             if (methodInfo != null)

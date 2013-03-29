@@ -54,7 +54,7 @@ namespace tests
         public void check(CCNode t)
         {
             //List<CCNode> array = t.children;
-            //CCObject pChild = null;
+            //object pChild = null;
             //foreach (var array in pChild)
             //{
             //     //CC_BREAK_IF(! pChild);
@@ -64,7 +64,7 @@ namespace tests
             //}
 
             //CCArray *array = t->getChildren();
-            //CCObject* pChild = NULL;
+            //object* pChild = NULL;
             //CCARRAY_FOREACH(array, pChild)
             //{
             //    CC_BREAK_IF(! pChild);
@@ -76,7 +76,7 @@ namespace tests
             
         }
 
-        public void menuCallback(CCObject sender)
+        public void menuCallback(object sender)
         {
             reset();
         }

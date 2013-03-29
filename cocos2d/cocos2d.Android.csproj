@@ -166,7 +166,6 @@
     <Compile Include="cocoa\CCAffineTransform.cs" />
     <Compile Include="cocoa\CCData.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
-    <Compile Include="cocoa\CCObject.cs" />
     <Compile Include="cocoa\CCZone.cs" />
     <Compile Include="denshion\EffectPlayer.cs" />
     <Compile Include="denshion\MusicPlayer.cs" />
@@ -391,6 +390,7 @@
     <Compile Include="support\Converters\CCRectConverter.cs" />
     <Compile Include="support\Converters\CCSizeConverter.cs" />
     <Compile Include="support\Serialization\CCSerialization.cs" />
+    <Compile Include="cocoa\ICopyable.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj">

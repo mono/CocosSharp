@@ -74,7 +74,7 @@ namespace tests
             AddChild(menu);
         }
 
-        public void onPause(CCObject pSender)
+        public void onPause(object pSender)
         {
             if (CCDirector.SharedDirector.IsPaused)
                 CCDirector.SharedDirector.Resume();

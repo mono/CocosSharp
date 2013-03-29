@@ -187,21 +187,21 @@ namespace tests
             CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.restartTextureTest());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.nextTextureTest());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.backTextureTest());

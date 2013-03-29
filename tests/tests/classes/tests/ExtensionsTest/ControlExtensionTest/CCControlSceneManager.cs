@@ -3,7 +3,7 @@ using cocos2d;
 
 namespace tests.Extensions
 {
-	public class CCControlSceneManager : CCObject
+	public class CCControlSceneManager 
 	{
         public const int kCCControlTestMax = 6;
         

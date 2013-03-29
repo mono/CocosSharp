@@ -88,21 +88,21 @@ namespace tests
             return bRet;
         }
 
-        public void RestartCallback(CCObject pSender)
+        public void RestartCallback(object pSender)
         {
             CCScene s = new OrientationTestScene();
             s.AddChild(RestartOrientationTestCase());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void NextCallback(CCObject pSender)
+        public void NextCallback(object pSender)
         {
             CCScene s = new OrientationTestScene();
             s.AddChild(NextOrientationTestCase());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void BackCallback(CCObject pSender)
+        public void BackCallback(object pSender)
         {
             CCScene s = new OrientationTestScene();
             s.AddChild(BackOrientationTestCase());
@@ -161,7 +161,7 @@ namespace tests
             DrawManager.SetOrientation(s_currentOrientation);
         }
 
-        public void RotateDevice(CCObject pSender)
+        public void RotateDevice(object pSender)
         {
             NewOrientation();
             RestartCallback(null);
@@ -216,7 +216,7 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(this);
         }
 
-        public override void MainMenuCallback(CCObject pSender)
+        public override void MainMenuCallback(object pSender)
         {
             DrawManager.graphicsDevice.PresentationParameters.DisplayOrientation = DisplayOrientation.LandscapeLeft;
             base.MainMenuCallback(pSender);

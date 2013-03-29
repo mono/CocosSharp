@@ -260,7 +260,7 @@ namespace tests
             return "No title";
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             if (m_emitter != null)
             {
@@ -268,21 +268,21 @@ namespace tests
             }
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             var s = new ParticleTestScene();
             s.AddChild(ParticleTestScene.nextParticleAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             var s = new ParticleTestScene();
             s.AddChild(ParticleTestScene.backParticleAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void toggleCallback(CCObject pSender)
+        public void toggleCallback(object pSender)
         {
             if (m_emitter != null)
             {

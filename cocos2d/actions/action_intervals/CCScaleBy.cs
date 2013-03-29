@@ -14,7 +14,7 @@ namespace cocos2d
             return Create(m_fDuration, 1 / m_fEndScaleX, 1 / m_fEndScaleY);
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCScaleTo pCopy;
 

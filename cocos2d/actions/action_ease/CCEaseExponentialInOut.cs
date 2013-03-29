@@ -28,7 +28,7 @@ namespace cocos2d
             }
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCEaseExponentialInOut pCopy;
 

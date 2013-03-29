@@ -1,7 +1,7 @@
 
 namespace cocos2d
 {
-    public class CCTMXTilesetInfo : CCObject
+    public class CCTMXTilesetInfo 
     {
         /// <summary>
         /// The name of this tileset.

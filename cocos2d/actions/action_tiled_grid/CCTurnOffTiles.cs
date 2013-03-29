@@ -75,7 +75,7 @@ namespace cocos2d
             SetTile(pos, ref m_pZero);
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCTurnOffTiles pCopy;
             if (pZone != null && pZone.m_pCopyObject != null)

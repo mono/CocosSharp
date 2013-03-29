@@ -26,7 +26,7 @@ namespace cocos2d
             return 7.5625f * time * time + 0.984375f;
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCEaseBounce pCopy;
 

@@ -42,7 +42,7 @@ namespace tests
             return false;
         }
 
-        public void selectAnswer(CCObject sender)
+        public void selectAnswer(object sender)
         {
             CCLog.Log("Selected");
         }

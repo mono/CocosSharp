@@ -44,12 +44,12 @@ namespace tests
             AddChild(pMenu);
         }
 
-        public virtual void restartCallback(CCObject pSender)
+        public virtual void restartCallback(object pSender)
         {
             showCurrentTest();
         }
 
-        public virtual void nextCallback(CCObject pSender)
+        public virtual void nextCallback(object pSender)
         {
             m_nCurCase++;
             m_nCurCase = m_nCurCase % m_nMaxCases;
@@ -57,7 +57,7 @@ namespace tests
             showCurrentTest();
         }
 
-        public virtual void backCallback(CCObject pSender)
+        public virtual void backCallback(object pSender)
         {
             m_nCurCase--;
             if (m_nCurCase < 0)
@@ -71,7 +71,7 @@ namespace tests
             throw new NotFiniteNumberException();
         }
 
-        public virtual void toMainLayer(CCObject pSender)
+        public virtual void toMainLayer(object pSender)
         {
             var pScene = new PerformanceTestScene();
             pScene.runThisTest();

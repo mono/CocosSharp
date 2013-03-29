@@ -4,12 +4,12 @@ using System.Diagnostics;
 
 namespace cocos2d
 {
-    public class CCActionManager : CCObject, SelectorProtocol
+    public class CCActionManager : SelectorProtocol
     {
-        private static CCObject[] m_pTmpKeysArray = new CCObject[128];
+        private static object[] m_pTmpKeysArray = new object[128];
         private bool m_bCurrentTargetSalvaged;
         private HashElement m_pCurrentTarget;
-        private readonly Dictionary<CCObject, HashElement> m_pTargets = new Dictionary<CCObject, HashElement>();
+        private readonly Dictionary<object, HashElement> m_pTargets = new Dictionary<object, HashElement>();
 
         #region SelectorProtocol Members
 
@@ -18,7 +18,7 @@ namespace cocos2d
             int count = m_pTargets.Keys.Count;
             while (m_pTmpKeysArray.Length < count)
             {
-                m_pTmpKeysArray = new CCObject[m_pTmpKeysArray.Length * 2];
+                m_pTmpKeysArray = new object[m_pTmpKeysArray.Length * 2];
             }
 
             m_pTargets.Keys.CopyTo(m_pTmpKeysArray, 0);
@@ -136,7 +136,7 @@ namespace cocos2d
             }
         }
 
-        public void PauseTarget(CCObject target)
+        public void PauseTarget(object target)
         {
             HashElement element;
             if (m_pTargets.TryGetValue(target, out element))
@@ -145,7 +145,7 @@ namespace cocos2d
             }
         }
 
-        public void ResumeTarget(CCObject target)
+        public void ResumeTarget(object target)
         {
             HashElement element;
             if (m_pTargets.TryGetValue(target, out element))
@@ -154,9 +154,9 @@ namespace cocos2d
             }
         }
 
-        public List<CCObject> PauseAllRunningActions()
+        public List<object> PauseAllRunningActions()
         {
-            var idsWithActions = new List<CCObject>();
+            var idsWithActions = new List<object>();
 
             foreach (var element in m_pTargets.Values)
             {
@@ -170,7 +170,7 @@ namespace cocos2d
             return idsWithActions;
         }
 
-        public void ResumeTargets(List<CCObject> targetsToResume)
+        public void ResumeTargets(List<object> targetsToResume)
         {
             for (int i = 0; i < targetsToResume.Count; i++)
             {
@@ -205,7 +205,7 @@ namespace cocos2d
             int count = m_pTargets.Keys.Count;
             if (m_pTmpKeysArray.Length < count)
             {
-                m_pTmpKeysArray = new CCObject[m_pTmpKeysArray.Length * 2];
+                m_pTmpKeysArray = new object[m_pTmpKeysArray.Length * 2];
             }
 
             m_pTargets.Keys.CopyTo(m_pTmpKeysArray, 0);
@@ -216,7 +216,7 @@ namespace cocos2d
             }
         }
 
-        public void RemoveAllActionsFromTarget(CCObject target)
+        public void RemoveAllActionsFromTarget(object target)
         {
             if (target == null)
             {
@@ -251,7 +251,7 @@ namespace cocos2d
                 return;
             }
 
-            CCObject target = action.OriginalTarget;
+            object target = action.OriginalTarget;
             HashElement element;
             if (m_pTargets.TryGetValue(target, out element))
             {
@@ -268,7 +268,7 @@ namespace cocos2d
             }
         }
 
-        public void RemoveActionByTag(int tag, CCObject target)
+        public void RemoveActionByTag(int tag, object target)
         {
             Debug.Assert((tag != (int) ActionTag.kCCActionTagInvalid));
             Debug.Assert(target != null);
@@ -290,7 +290,7 @@ namespace cocos2d
             }
         }
 
-        public CCAction GetActionByTag(int tag, CCObject target)
+        public CCAction GetActionByTag(int tag, object target)
         {
             Debug.Assert(tag != (int) ActionTag.kCCActionTagInvalid);
 
@@ -316,7 +316,7 @@ namespace cocos2d
             return null;
         }
 
-        public int NumberOfRunningActionsInTarget(CCObject target)
+        public int NumberOfRunningActionsInTarget(object target)
         {
             HashElement element;
             if (m_pTargets.TryGetValue(target, out element))
@@ -333,7 +333,7 @@ namespace cocos2d
             public CCAction CurrentAction;
             public bool CurrentActionSalvaged;
             public bool Paused;
-            public CCObject Target;
+            public object Target;
         }
     }
 

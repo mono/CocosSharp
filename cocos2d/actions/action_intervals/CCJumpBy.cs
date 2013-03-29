@@ -21,7 +21,7 @@ namespace cocos2d
             return false;
         }
 
-        public override CCObject CopyWithZone(CCZone zone)
+        public override object CopyWithZone(CCZone zone)
         {
             CCZone tmpZone = zone;
             CCJumpBy ret;

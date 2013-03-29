@@ -34,7 +34,7 @@ namespace cocos2d
     ///     - GL_TEXTURE_COORD_ARRAY is enabled.  
     /// </summary>
 
-    public abstract class CCDirector : CCObject
+    public abstract class CCDirector
     {
         private static CCDirector s_sharedDirector;
 

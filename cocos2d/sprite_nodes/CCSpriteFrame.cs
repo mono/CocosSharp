@@ -4,7 +4,7 @@ using System;
 
 namespace cocos2d
 {
-    public class CCSpriteFrame : CCObject
+    public class CCSpriteFrame : ICopyable
     {
         #region properties
 
@@ -91,7 +91,12 @@ namespace cocos2d
 
         #endregion
 
-        public override CCObject CopyWithZone(CCZone pZone)
+		public CCSpriteFrame Copy()
+		{
+			return (CCSpriteFrame)CopyWithZone(null);
+		}
+
+        public object CopyWithZone(CCZone pZone)
         {
             var pCopy = new CCSpriteFrame();
             pCopy.InitWithTexture(m_pobTexture, m_obRectInPixels, m_bRotated, m_obOffsetInPixels, m_obOriginalSizeInPixels);

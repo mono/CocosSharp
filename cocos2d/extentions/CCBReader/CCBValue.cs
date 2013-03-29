@@ -2,7 +2,7 @@ using System.Diagnostics;
 
 namespace cocos2d
 {
-    internal class ccColor3BWapper : CCObject
+    internal class ccColor3BWapper 
     {
         private CCColor3B color;
 
@@ -30,7 +30,7 @@ namespace cocos2d
         kUnsignedCharValue,
     }
 
-    internal class CCBValue : CCObject
+    internal class CCBValue 
     {
         private float fValue;
         private ValueType mType;

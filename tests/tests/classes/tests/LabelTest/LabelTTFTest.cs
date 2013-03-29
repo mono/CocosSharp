@@ -65,37 +65,37 @@ namespace tests
             AddChild(m_plabel);
         }
 
-        private void setAlignmentLeft(CCObject pSender)
+        private void setAlignmentLeft(object pSender)
         {
             m_eHorizAlign = CCTextAlignment.CCTextAlignmentLeft;
             updateAlignment();
         }
 
-        private void setAlignmentCenter(CCObject pSender)
+        private void setAlignmentCenter(object pSender)
         {
             m_eHorizAlign = CCTextAlignment.CCTextAlignmentCenter;
             updateAlignment();
         }
 
-        private void setAlignmentRight(CCObject pSender)
+        private void setAlignmentRight(object pSender)
         {
             m_eHorizAlign = CCTextAlignment.CCTextAlignmentRight;
             updateAlignment();
         }
 
-        private void setAlignmentTop(CCObject pSender)
+        private void setAlignmentTop(object pSender)
         {
             m_eVertAlign = CCVerticalTextAlignment.CCVerticalTextAlignmentTop;
             updateAlignment();
         }
 
-        private void setAlignmentMiddle(CCObject pSender)
+        private void setAlignmentMiddle(object pSender)
         {
             m_eVertAlign = CCVerticalTextAlignment.CCVerticalTextAlignmentCenter;
             updateAlignment();
         }
 
-        private void setAlignmentBottom(CCObject pSender)
+        private void setAlignmentBottom(object pSender)
         {
             m_eVertAlign = CCVerticalTextAlignment.CCVerticalTextAlignmentBottom;
             updateAlignment();

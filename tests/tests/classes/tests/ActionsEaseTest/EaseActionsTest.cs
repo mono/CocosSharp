@@ -51,14 +51,14 @@ namespace tests
             AddChild(menu, 1);
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new EaseActionsTestScene();
             s.AddChild(EaseTest.restartEaseAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = new EaseActionsTestScene();
             s.AddChild(EaseTest.nextEaseAction());
@@ -66,7 +66,7 @@ namespace tests
             ;
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = new EaseActionsTestScene();
             s.AddChild(EaseTest.backEaseAction());

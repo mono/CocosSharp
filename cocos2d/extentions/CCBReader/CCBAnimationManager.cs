@@ -5,7 +5,7 @@ namespace cocos2d
 {
     public delegate void CCBAnimationManagerDelegate(string name);
 
-    public class CCBAnimationManager : CCObject
+    public class CCBAnimationManager 
     {
         private readonly Dictionary<CCNode, Dictionary<string, object>> mBaseValues = new Dictionary<CCNode, Dictionary<string, object>>();
 
@@ -499,7 +499,7 @@ namespace cocos2d
             ((CCSprite) m_pTarget).DisplayFrame = mSpriteFrame;
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCBSetSpriteFrame pRet;
 
@@ -548,7 +548,7 @@ namespace cocos2d
             m_pTarget.Rotation = mStartAngle + (mDiffAngle * time);
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCBRotateTo pRet;
 

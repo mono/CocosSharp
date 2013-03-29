@@ -26,7 +26,7 @@ namespace cocos2d
             return bRet;
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCSkewTo pCopy;
 

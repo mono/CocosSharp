@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace cocos2d
 {
-    public class CCBSequenceProperty : CCObject
+    public class CCBSequenceProperty 
     {
         public string Name;
         public kCCBPropType Type { get; set; }

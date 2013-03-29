@@ -35,7 +35,7 @@ namespace tests
         string s_Ball = "Images/ball";
         string s_Paddle = "Images/paddle";
         Ball m_ball;
-        List<CCObject> m_paddles;
+        List<object> m_paddles;
         CCPoint m_ballStartingVelocity;
 
         public PongLayer()
@@ -49,7 +49,7 @@ namespace tests
 
             CCTexture2D paddleTexture = CCTextureCache.SharedTextureCache.AddImage(s_Paddle);
 
-            List<CCObject> paddlesM = new List<CCObject>(4);
+            List<object> paddlesM = new List<object>(4);
 
             Paddle paddle = Paddle.paddleWithTexture(paddleTexture);
             paddle.Position = new CCPoint(160, 15);

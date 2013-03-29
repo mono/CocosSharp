@@ -112,27 +112,27 @@ namespace tests
             menuMode.Position = new CCPoint(s.Width / 2, s.Height / 4);
         }
 
-        private void modeCallback(CCObject pSender)
+        private void modeCallback(object pSender)
         {
             bool fastMode = streak.FastMode;
             streak.FastMode = !fastMode;
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = new MotionStreakTestScene(); 
             s.AddChild(restartMotionAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = new MotionStreakTestScene(); 
             s.AddChild(nextMotionAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = new MotionStreakTestScene(); 
             s.AddChild(backMotionAction());

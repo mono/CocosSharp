@@ -25,7 +25,7 @@ namespace tests.Extensions
 
 		}
 
-		public void menuCallback(CCObject pSender)
+		public void menuCallback(object pSender)
 		{
 			var pItem = (CCMenuItemFont)pSender;
 			var nIndex = pItem.ZOrder - ExtensionsTestScene.kItemTagBasic;

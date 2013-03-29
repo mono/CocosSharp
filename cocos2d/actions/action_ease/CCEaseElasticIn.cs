@@ -29,7 +29,7 @@ namespace cocos2d
             return CCEaseElasticOut.Create((CCActionInterval) m_pOther.Reverse(), m_fPeriod);
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCEaseElasticIn pCopy;
 

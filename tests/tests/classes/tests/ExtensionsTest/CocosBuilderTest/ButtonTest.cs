@@ -7,7 +7,7 @@ namespace tests.Extensions
     {
         public CCLabelBMFont mCCControlEventLabel;
 
-        public void onCCControlButtonClicked(CCObject obj, CCControlEvent pCCControlEvent)
+        public void onCCControlButtonClicked(object obj, CCControlEvent pCCControlEvent)
         {
             switch (pCCControlEvent)
             {

@@ -8,7 +8,7 @@ namespace cocos2d
         int ObjectID { set; get; }
     }
 
-    internal class CCSortedObject : CCObject, CCSortableObject
+    internal class CCSortedObject : CCSortableObject
     {
         private int objectID;
 
@@ -28,7 +28,7 @@ namespace cocos2d
         #endregion
     };
 
-    public class CCArrayForObjectSorting : List<CCObject>
+    public class CCArrayForObjectSorting : List<object>
     {
         public const int CC_INVALID_INDEX = -1;
 
@@ -47,7 +47,7 @@ namespace cocos2d
         public void InsertSortedObject(CCSortableObject obj)
         {
             int idx;
-            var pObj = (CCObject) obj;
+            var pObj = (object) obj;
             Debug.Assert(pObj != null, "Invalid parameter.");
             idx = IndexOfSortedObject(obj);
 
@@ -104,7 +104,7 @@ namespace cocos2d
             if (idx < Count && idx != CC_INVALID_INDEX)
             {
                 foundObj = (CCSortableObject) (this[idx]);
-                var pObj = (CCObject) foundObj;
+                var pObj = (object) foundObj;
 
                 if (foundObj.ObjectID == obj.ObjectID)
                 {
@@ -176,12 +176,12 @@ namespace cocos2d
             int idx = 0;
             if (obj != null)
             {
-                //       CCObject* pObj = (CCObject*)bsearch((CCObject*)&object, data->arr, data->num, sizeof(CCObject*), _compareObject);
+                //       object* pObj = (object*)bsearch((object*)&object, data->arr, data->num, sizeof(object*), _compareObject);
                 // FIXME: need to use binary search to improve performance
                 int uPrevObjectID = 0;
                 int uOfSortObjectID = obj.ObjectID;
 
-                foreach (CCObject pObj in this)
+                foreach (object pObj in this)
                 {
                     var pSortableObj = (CCSortableObject) pObj;
 

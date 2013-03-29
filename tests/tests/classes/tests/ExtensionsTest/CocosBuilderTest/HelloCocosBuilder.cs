@@ -49,22 +49,22 @@ namespace tests.Extensions
             CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, scene, transitionColor));
         }
 
-        public void onMenuTestClicked(CCObject pSender, CCControlEvent pCCControlEvent)
+        public void onMenuTestClicked(object pSender, CCControlEvent pCCControlEvent)
         {
             openTest("ccb/ccb/TestMenus.ccbi", "TestMenusLayer", new Loader<MenuTestLayer>());
         }
 
-        public void onSpriteTestClicked(CCObject pSender, CCControlEvent pCCControlEvent)
+        public void onSpriteTestClicked(object pSender, CCControlEvent pCCControlEvent)
         {
             openTest("ccb/ccb/TestSprites.ccbi", "TestSpritesLayer", new Loader<SpriteTestLayer>());
         }
 
-        public void onButtonTestClicked(CCObject pSender, CCControlEvent pCCControlEvent)
+        public void onButtonTestClicked(object pSender, CCControlEvent pCCControlEvent)
         {
             openTest("ccb/ccb/TestButtons.ccbi", "TestButtonsLayer", new Loader<ButtonTestLayer>());
         }
 
-        public void onAnimationsTestClicked(CCObject pSender, CCControlEvent pCCControlEvent)
+        public void onAnimationsTestClicked(object pSender, CCControlEvent pCCControlEvent)
         {
             // Load node graph (TestAnimations is a sub class of CCLayer) and retrieve the ccb action manager
             CCBAnimationManager actionManager = null;
@@ -101,12 +101,12 @@ namespace tests.Extensions
             CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, scene, transitionColor));
         }
 
-        public void onParticleSystemTestClicked(CCObject pSender, CCControlEvent pCCControlEvent)
+        public void onParticleSystemTestClicked(object pSender, CCControlEvent pCCControlEvent)
         {
             openTest("ccb/ccb/TestParticleSystems.ccbi", "TestParticleSystemsLayer", new Loader<ParticleSystemTestLayer>());
         }
 
-        public void onScrollViewTestClicked(CCObject pSender, CCControlEvent pCCControlEvent)
+        public void onScrollViewTestClicked(object pSender, CCControlEvent pCCControlEvent)
         {
             openTest("ccb/ccb/TestScrollViews.ccbi", "TestScrollViewsLayer", new Loader<ScrollViewTestLayer>());
         }

@@ -27,7 +27,7 @@ namespace cocos2d
     ///
     ///This information is obtained from the TMX file.
     /// </summary>
-    public class CCTMXMapInfo : CCObject, ICCSAXDelegator
+    public class CCTMXMapInfo : ICCSAXDelegator
     {
         #region properties
 

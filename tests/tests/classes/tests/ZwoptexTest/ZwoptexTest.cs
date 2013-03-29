@@ -39,21 +39,21 @@ namespace tests
             AddChild(menu, 1);
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             CCScene s = ZwoptexTestScene.node();
             s.AddChild(restartZwoptexTest());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             CCScene s = ZwoptexTestScene.node();
             s.AddChild(nextZwoptexTest());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             CCScene s = ZwoptexTestScene.node();
             s.AddChild(backZwoptexTest());

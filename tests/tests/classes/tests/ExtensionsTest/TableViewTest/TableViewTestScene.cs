@@ -46,7 +46,7 @@ namespace tests.Extensions
 			return true;
 		}
    
-		public void toExtensionsMainLayer(CCObject sender)
+		public void toExtensionsMainLayer(object sender)
 		{
 			var pScene = new ExtensionsTestScene();
 			pScene.runThisTest();

@@ -296,21 +296,21 @@ namespace tests
             base.OnExit();
         }
 
-        public void restartCallback(CCObject pSender)
+        public void restartCallback(object pSender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.RestartAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void nextCallback(CCObject pSender)
+        public void nextCallback(object pSender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.NextAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(CCObject pSender)
+        public void backCallback(object pSender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.BackAction());
@@ -1619,7 +1619,7 @@ namespace tests
 
     public class PauseResumeActions : ActionsDemo
     {
-        private List<CCObject> m_pPausedTargets;
+        private List<object> m_pPausedTargets;
 
         public override void OnEnter()
         {

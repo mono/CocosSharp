@@ -9,7 +9,7 @@
         void KeyMenuClicked();
     }
 
-    public class CCKeypadHandler : CCObject
+    public class CCKeypadHandler 
     {
         protected CCKeypadDelegate m_pDelegate;
 

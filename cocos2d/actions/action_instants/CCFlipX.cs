@@ -28,7 +28,7 @@
             return Create(!m_bFlipX);
         }
 
-        public override CCObject CopyWithZone(CCZone pZone)
+        public override object CopyWithZone(CCZone pZone)
         {
             CCFlipX pRet;
 
