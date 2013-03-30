@@ -32,7 +32,7 @@ namespace tests
             pGrossini.RunAction(CCScaleBy.Create(2, 2));
 
             CCDirector.SharedDirector.ActionManager.PauseTarget(pGrossini);
-            pGrossini.RunAction(CCRotateBy.Create(2, 360));
+            pGrossini.RunAction(new CCRotateBy (2, 360));
 
             this.Schedule(resumeGrossini, 3.0f);
         }

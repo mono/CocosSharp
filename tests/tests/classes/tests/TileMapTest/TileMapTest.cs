@@ -340,7 +340,7 @@ namespace tests
             tile3.AnchorPoint = (new CCPoint(0.5f, 0.5f));
 
             CCMoveBy move = CCMoveBy.Create(0.5f, new CCPoint(0, 160));
-            CCRotateBy rotate = CCRotateBy.Create(2, 360);
+            CCRotateBy rotate = new CCRotateBy (2, 360);
             CCScaleBy scale = CCScaleBy.Create(2, 5);
             CCFadeOut opacity = CCFadeOut.Create(2);
             CCFadeIn fadein = CCFadeIn.Create(2);
@@ -1451,7 +1451,7 @@ namespace tests
             else if (yButton == CCGamePadButtonStatus.Released && _yButtonWasPressed)
             {
                 CCNode node = GetChildByTag(kTagTileMap);
-                node.RunAction(CCRotateBy.Create(1f,15f));
+                node.RunAction(new CCRotateBy (1f,15f));
             }
 
             if (xButton == CCGamePadButtonStatus.Pressed)
@@ -1461,7 +1461,7 @@ namespace tests
             else if (xButton == CCGamePadButtonStatus.Released && _xButtonWasPressed)
             {
                 CCNode node = GetChildByTag(kTagTileMap);
-                node.RunAction(CCRotateBy.Create(1f, -15f));
+                node.RunAction(new CCRotateBy (1f, -15f));
             }
         }
 

@@ -24,7 +24,7 @@ namespace tests
 
 
             // SpriteBatchNode actions
-            CCActionInterval rotate = CCRotateBy.Create(5, 360);
+            CCActionInterval rotate = new CCRotateBy (5, 360);
             CCAction action = CCRepeatForever.Create(rotate);
 
             // SpriteBatchNode actions

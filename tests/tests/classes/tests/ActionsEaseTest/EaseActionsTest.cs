@@ -518,7 +518,7 @@ namespace tests
             // rotate and jump
             var jump1 = CCJumpBy.Create(4, new CCPoint(-s.Width + 80, 0), 100, 4);
             var jump2 = jump1.Reverse();
-            var rot1 = CCRotateBy.Create(4, 360 * 2);
+            var rot1 = new CCRotateBy (4, 360 * 2);
             var rot2 = rot1.Reverse();
 
             var seq3_1 = CCSequence.Create(jump2, jump1);

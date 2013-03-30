@@ -67,7 +67,7 @@ namespace tests
                                         (CCActionInterval)(CCSequence.Create(jump, jump.Reverse()))
                                         )
                             );
-            CCActionInterval spin1 = CCRotateBy.Create(3, 360);
+            CCActionInterval spin1 = new CCRotateBy (3, 360);
             CCActionInterval spin2 = (CCActionInterval)(spin1.Copy());
             CCActionInterval spin3 = (CCActionInterval)(spin1.Copy());
 

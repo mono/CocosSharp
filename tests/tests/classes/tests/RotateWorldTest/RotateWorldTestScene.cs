@@ -21,7 +21,7 @@ namespace tests
         {
             CCLayer pLayer = RotateWorldMainLayer.node();
             AddChild(pLayer);
-            RunAction(CCRotateBy.Create(4, -360));
+            RunAction(new CCRotateBy (4, -360));
             CCDirector.SharedDirector.ReplaceScene(this);
         }
     }

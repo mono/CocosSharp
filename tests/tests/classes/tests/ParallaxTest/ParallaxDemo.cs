@@ -53,7 +53,7 @@ namespace tests
             else if (yButton == CCGamePadButtonStatus.Released && _yButtonWasPressed)
             {
                 CCNode node = GetChildByTag(kTagTileMap);
-                node.RunAction(CCRotateBy.Create(1f, 15f));
+                node.RunAction(new CCRotateBy (1f, 15f));
             }
 
             if (xButton == CCGamePadButtonStatus.Pressed)
@@ -65,7 +65,7 @@ namespace tests
                 CCNode node = GetChildByTag(kTagTileMap);
                 if (node != null)
                 {
-                    node.RunAction(CCRotateBy.Create(1f, -15f));
+                    node.RunAction(new CCRotateBy (1f, -15f));
                 }
             }
         }

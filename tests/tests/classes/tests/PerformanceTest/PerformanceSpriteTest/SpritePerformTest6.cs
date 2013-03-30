@@ -20,7 +20,7 @@ namespace tests
             pSprite.Position = new CCPoint((Random.Next() % (int) size.Width), (Random.Next() % (int) size.Height));
 
             float period = 0.5f + (Random.Next() % 1000) / 500.0f;
-            CCRotateBy rot = CCRotateBy.Create(period, 360.0f * Random.Float_0_1());
+            CCRotateBy rot = new CCRotateBy (period, 360.0f * Random.Float_0_1());
             var rot_back = rot.Reverse();
             CCAction permanentRotation = CCRepeatForever.Create(CCSequence.Create(rot, rot_back));
             pSprite.RunAction(permanentRotation);

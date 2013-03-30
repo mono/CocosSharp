@@ -30,7 +30,7 @@ namespace tests
             CCSprite AChar = (CCSprite)label.GetChildByTag(12);
 
 
-            CCActionInterval rotate = CCRotateBy.Create(2, 360);
+            CCActionInterval rotate = new CCRotateBy (2, 360);
             CCAction rot_4ever = CCRepeatForever.Create(rotate);
 
             CCActionInterval scale = CCScaleBy.Create(2, 1.5f);

@@ -13,7 +13,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
 
-            CCActionInterval rotate = CCRotateBy.Create(10, 360);
+            CCActionInterval rotate = new CCRotateBy (10, 360);
             CCAction action = CCRepeatForever.Create(rotate);
 
             for (int i = 0; i < 3; i++)

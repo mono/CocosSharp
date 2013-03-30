@@ -22,7 +22,7 @@ namespace tests
             menu.Position = (new CCPoint(backSize.Width / 2, backSize.Height / 2));
             back.AddChild(menu);
 
-            CCActionInterval rot = CCRotateBy.Create(5, 360);
+            CCActionInterval rot = new CCRotateBy (5, 360);
             CCAction fe = CCRepeatForever.Create(rot);
             item.RunAction(fe);
 
