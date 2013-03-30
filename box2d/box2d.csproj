@@ -63,7 +63,10 @@
     <Compile Include="Collision\b2BroadPhase.cs" />
     <Compile Include="Collision\b2Collision.cs" />
     <Compile Include="Collision\b2ContactFeature.cs" />
+    <Compile Include="Collision\b2Distance.cs" />
+    <Compile Include="Collision\b2DynamicTree.cs" />
     <Compile Include="Collision\b2Manifold.cs" />
+    <Compile Include="Collision\b2TimeOfImpact.cs" />
     <Compile Include="Collision\Shapes\b2ChainShape.cs" />
     <Compile Include="Collision\Shapes\b2CircleShape.cs" />
     <Compile Include="Collision\Shapes\b2EdgeShape.cs" />

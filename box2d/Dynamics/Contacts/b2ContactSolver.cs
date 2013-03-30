@@ -264,7 +264,7 @@ namespace Box2D.Dynamics.Contacts
                     float k12 = mA + mB + iA * rn1A * rn2A + iB * rn1B * rn2B;
 
                     // Ensure a reasonable condition number.
-                    const float k_maxConditionNumber = 1000.0f;
+                    float k_maxConditionNumber = 1000.0f;
                     if (k11 * k11 < k_maxConditionNumber * (k11 * k22 - k12 * k12))
                     {
                         // K is safe to invert.
@@ -457,7 +457,7 @@ namespace Box2D.Dynamics.Contacts
             // Compute b'
             b -= b2Math.b2Mul(vc.K, a);
 
-            const float k_errorTol = 1e-3f;
+            float k_errorTol = 1e-3f;
             B2_NOT_USED(k_errorTol);
 
             for (;;)
