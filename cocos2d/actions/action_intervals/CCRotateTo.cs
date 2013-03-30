@@ -6,7 +6,20 @@ namespace cocos2d
         protected float m_fDstAngle;
         protected float m_fStartAngle;
 
-        public bool InitWithDuration(float duration, float fDeltaAngle)
+        private CCRotateTo () {}
+
+        public CCRotateTo (float duration, float fDeltaAngle)
+        {
+            InitWithDuration(duration, fDeltaAngle);
+        }
+
+        public CCRotateTo (CCRotateTo rotateTo)
+        {
+            base.Copy(rotateTo);
+            InitWithDuration(rotateTo.m_fDuration, rotateTo.m_fDstAngle);
+        }
+
+        private bool InitWithDuration(float duration, float fDeltaAngle)
         {
             if (base.InitWithDuration(duration))
             {
@@ -19,28 +32,24 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCRotateTo ret;
 
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null)
             {
-                ret = tmpZone as CCRotateTo;
+                var ret = zone as CCRotateTo;
                 if (ret == null)
                 {
                     return null;
                 }
+                base.Copy(ret);
+                
+                ret.InitWithDuration(m_fDuration, m_fDstAngle);
+                return ret;
             }
             else
             {
-                ret = new CCRotateTo();
-                tmpZone =  (ret);
+                return new CCRotateTo(this);
             }
 
-            base.Copy(tmpZone);
-
-            ret.InitWithDuration(m_fDuration, m_fDstAngle);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -78,11 +87,5 @@ namespace cocos2d
             }
         }
 
-        public static CCRotateTo Create(float duration, float fDeltaAngle)
-        {
-            var ret = new CCRotateTo();
-            ret.InitWithDuration(duration, fDeltaAngle);
-            return ret;
-        }
     }
 }

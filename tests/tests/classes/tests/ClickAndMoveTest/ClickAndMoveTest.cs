@@ -77,7 +77,7 @@ namespace tests
                     at = 180 - Math.Abs(at);
             }
 
-            s.RunAction(CCRotateTo.Create(1, at));
+            s.RunAction(new CCRotateTo (1, at));
         }
     }
 }

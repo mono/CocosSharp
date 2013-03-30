@@ -509,11 +509,11 @@ namespace tests
             AddChild(box);
 
             var actionTo = CCSkewTo.Create(2, 0.0f, 2.0f);
-            var rotateTo = CCRotateTo.Create(2, 61.0f);
+            var rotateTo = new CCRotateTo (2, 61.0f);
             var actionScaleTo = CCScaleTo.Create(2, -0.44f, 0.47f);
 
             var actionScaleToBack = CCScaleTo.Create(2, 1.0f, 1.0f);
-            var rotateToBack = CCRotateTo.Create(2, 0);
+            var rotateToBack = new CCRotateTo (2, 0);
             var actionToBack = CCSkewTo.Create(2, 0, 0);
 
             box.RunAction(CCSequence.Create(actionTo, actionToBack));
@@ -535,9 +535,9 @@ namespace tests
 
             centerSprites(3);
 
-            var actionTo = CCRotateTo.Create(2, 45);
-            var actionTo2 = CCRotateTo.Create(2, -45);
-            var actionTo0 = CCRotateTo.Create(2, 0);
+            var actionTo = new CCRotateTo (2, 45);
+            var actionTo2 = new CCRotateTo (2, -45);
+            var actionTo0 = new CCRotateTo (2, 0);
             m_tamara.RunAction(CCSequence.Create(actionTo, actionTo0));
 
             var actionBy = CCRotateBy.Create(2, 360);
@@ -988,8 +988,8 @@ namespace tests
 
             centerSprites(2);
 
-            var act1 = CCRotateTo.Create(1, 90);
-            var act2 = CCRotateTo.Create(1, 0);
+            var act1 = new CCRotateTo (1, 90);
+            var act2 = new CCRotateTo (1, 0);
             var seq = (CCSequence.Create(act1, act2));
             var rep1 = CCRepeatForever.Create((CCActionInterval)seq);
             var rep2 = CCRepeat.Create((CCFiniteTimeAction)(seq.Copy()), 10);
@@ -1013,8 +1013,8 @@ namespace tests
             centerSprites(2);
 
             var seq = CCSequence.Create(
-                CCRotateTo.Create(0.5f, -20),
-                CCRotateTo.Create(0.5f, 20));
+                new CCRotateTo (0.5f, -20),
+                new CCRotateTo (0.5f, 20));
 
             var rep1 = CCRepeat.Create(seq, 10);
             var rep2 = CCRepeatForever.Create((CCActionInterval)(seq.Copy()));
