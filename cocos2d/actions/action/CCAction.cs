@@ -53,7 +53,16 @@ namespace cocos2d
 
         public virtual object Copy(ICopyable zone)
         {
-            return zone == null ? new CCAction() : new CCAction((CCAction)zone);
+
+            if (zone != null)
+            {
+                ((CCAction) zone).m_nTag = m_nTag;
+                return zone;
+            }
+            else
+            {
+                return new CCAction(this);
+            }
         }
 
         public virtual bool IsDone
