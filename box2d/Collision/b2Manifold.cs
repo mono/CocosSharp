@@ -54,7 +54,7 @@ namespace Box2D.Collision
         /// modest motion from the original state. This does not change the
         /// point count, impulses, etc. The radii must come from the shapes
         /// that generated the manifold.
-        public void Initialize(b2Manifold[] manifold,
+        public void Initialize(b2Manifold manifold,
                         b2Transform xfA, float radiusA,
                         b2Transform xfB, float radiusB)
         {

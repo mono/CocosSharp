@@ -6,6 +6,7 @@ using Box2D.Common;
 using Box2D.Collision;
 using Box2D.Collision.Shapes;
 using Box2D.Dynamics.Joints;
+using Box2D.Dynamics.Contacts;
 
 namespace Box2D.Dynamics
 {
@@ -665,19 +666,15 @@ public virtual void DestroyFixture(b2Fixture fixture)
         }
     }
 
-    b2BlockAllocator* allocator = m_world.m_blockAllocator;
 
-    if (m_flags & e_activeFlag)
+    if (m_flags.HasFlag(b2BodyFlags.e_activeFlag))
     {
         b2BroadPhase broadPhase = m_world.ContactManager.BroadPhase;
         fixture.DestroyProxies(broadPhase);
     }
 
-    fixture.Destroy(allocator);
-    fixture.m_body = null;
+    fixture.Body = null;
     fixture.Next = null;
-    fixture.~b2Fixture();
-    allocator.Free(fixture, sizeof(b2Fixture));
 
     --m_fixtureCount;
 

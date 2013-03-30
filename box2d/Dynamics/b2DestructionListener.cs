@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Box2D.Common;
+using Box2D.Dynamics.Joints;
 
 namespace Box2D.Dynamics
 {

@@ -18,27 +18,26 @@
 using System;
 using System.Diagnostics;
 using Box2D.Common;
+using Box2D.Collision.Shapes;
+using Box2D.Collision;
+
 namespace Box2D.Dynamics.Contacts
 {
 
     public class b2PolygonContact : b2Contact
-{
-b2Contact Create(b2Fixture fixtureA, int, b2Fixture fixtureB, int)
-{
-    return new b2PolygonContact(fixtureA, fixtureB);
-}
+    {
+        public b2PolygonContact(b2Fixture fixtureA, b2Fixture fixtureB)
+            : base(fixtureA, 0, fixtureB, 0)
+        {
+            Debug.Assert(m_fixtureA.ShapeType == b2ShapeType.e_polygon);
+            Debug.Assert(m_fixtureB.ShapeType == b2ShapeType.e_polygon);
+        }
 
-public b2PolygonContact(b2Fixture fixtureA, b2Fixture fixtureB) : base(fixtureA, 0, fixtureB, 0)
-{
-    Debug.Assert(m_fixtureA.GetType() == b2ShapeType.e_polygon);
-    Debug.Assert(m_fixtureB.GetType() == b2ShapeType.e_polygon);
-}
-
-public virtual void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
-{
-    b2CollidePolygons(    manifold,
-                        (b2PolygonShape)m_fixtureA.GetShape(), xfA,
-                        (b2PolygonShape)m_fixtureB.GetShape(), xfB);
-}
-}
+        public virtual void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
+        {
+            b2Collision.b2CollidePolygons(manifold,
+                                (b2PolygonShape)m_fixtureA.Shape, xfA,
+                                (b2PolygonShape)m_fixtureB.Shape, xfB);
+        }
+    }
 }

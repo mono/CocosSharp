@@ -18,27 +18,33 @@
 using System;
 using System.Diagnostics;
 using Box2D.Common;
+using Box2D.Collision.Shapes;
+using Box2D.Collision;
+
 namespace Box2D.Dynamics.Contacts
 {
 
     public class b2ChainAndCircleContact : b2Contact
     {
-b2Contact Create(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB)
-{
-    return new b2ChainAndCircleContact(fixtureA, indexA, fixtureB, indexB);
-}
+        b2Contact Create(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB)
+        {
+            return new b2ChainAndCircleContact(fixtureA, indexA, fixtureB, indexB);
+        }
 
-public b2ChainAndCircleContact(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB) : base(fixtureA, indexA, fixtureB, indexB)
-{
-    Debug.Assert(m_fixtureA.GetFixtureType() == b2FixtureType.e_chain);
-    Debug.Assert(m_fixtureB.GetFixtureType() == b2FixtureType.e_circle);
-}
+        public b2ChainAndCircleContact(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB)
+            : base(fixtureA, indexA, fixtureB, indexB)
+        {
+            Debug.Assert(m_fixtureA.ShapeType == b2ShapeType.e_chain);
+            Debug.Assert(m_fixtureB.ShapeType == b2ShapeType.e_circle);
+        }
 
-public void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
-{
-    b2ChainShape chain = m_fixtureA.GetShape();
-    b2EdgeShape edge;
-    chain.GetChildEdge(&edge, m_indexA);
-    b2CollideEdgeAndCircle(    manifold, &edge, xfA,
-                            (b2CircleShape*)m_fixtureB.GetShape(), xfB);
+        public void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
+        {
+            b2ChainShape chain = (b2ChainShape)m_fixtureA.Shape;
+            b2EdgeShape edge;
+            edge = chain.GetChildEdge(m_indexA);
+            b2Collision.b2CollideEdgeAndCircle(manifold, edge, xfA,
+                                    (b2CircleShape)m_fixtureB.Shape, xfB);
+        }
+    }
 }

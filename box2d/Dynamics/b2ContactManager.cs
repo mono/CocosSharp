@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Box2D.Collision;
+using Box2D.Dynamics.Contacts;
 
 namespace Box2D.Dynamics
 {

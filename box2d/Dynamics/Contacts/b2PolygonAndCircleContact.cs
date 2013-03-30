@@ -22,7 +22,7 @@ using Box2D.Common;
 using Box2D.Collision.Shapes;
 using Box2D.Collision;
 
-namespace Box2D.Dynamics.Contact
+namespace Box2D.Dynamics.Contacts
 {
     public class b2PolygonAndCircleContact : b2Contact
     {
@@ -36,7 +36,7 @@ namespace Box2D.Dynamics.Contact
 
         public override void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
         {
-            b2CollidePolygonAndCircle(manifold,
+            b2Collision.b2CollidePolygonAndCircle(manifold,
                                         (b2PolygonShape)m_fixtureA.Shape, xfA,
                                         (b2CircleShape)m_fixtureB.Shape, xfB);
         }
