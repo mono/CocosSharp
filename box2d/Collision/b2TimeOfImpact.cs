@@ -354,7 +354,7 @@ void b2TimeOfImpact(b2TOIOutput* output, b2TOIInput* input)
         // Initialize the separating axis.
         b2SeparationFunction fcn;
         fcn.Initialize(&cache, proxyA, sweepA, proxyB, sweepB, t1);
-#if 0
+#if false
         // Dump the curve seen by the root finder
         {
             int N = 100;
@@ -389,7 +389,7 @@ void b2TimeOfImpact(b2TOIOutput* output, b2TOIInput* input)
         {
             // Find the deepest point at t2. Store the witness point indices.
             int indexA, indexB;
-            float s2 = fcn.FindMinSeparation(&indexA, &indexB, t2);
+            float s2 = fcn.FindMinSeparation(indexA, indexB, t2);
 
             // Is the final configuration separated?
             if (s2 > target + tolerance)
@@ -501,11 +501,11 @@ void b2TimeOfImpact(b2TOIOutput* output, b2TOIInput* input)
         if (iter == k_maxIterations)
         {
             // Root finder got stuck. Semi-victory.
-            output.state = b2TOIOutput::e_failed;
+            output.state = b2TOIOutput.e_failed;
             output.t = t1;
             break;
         }
     }
 
-    b2_toiMaxIters = b2Max(b2_toiMaxIters, iter);
+    b2_toiMaxIters = Math.Max(b2_toiMaxIters, iter);
 }

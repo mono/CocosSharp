@@ -23,7 +23,44 @@ using Box2D.Common;
 
 namespace Box2D.Collision {
 
+/// A node in the dynamic tree. The client does not interact with this directly.
+public class b2TreeNode
+{
+    public const int b2_nullNode = -1;
+
+    public bool IsLeaf()
+    {
+        return child1 == b2_nullNode;
+    }
+
+    /// Enlarged AABB
+    public b2AABB aabb;
+
+    public object userData;
+    public int parent;
+    public int next;
+
+    public int child1;
+    public int child2;
+
+    // leaf = 0, free node = -1
+    public int height;
+};
+
     public class b2DynamicTree {
+
+            private int m_root;
+
+    private b2TreeNode[] m_nodes;
+    private int m_nodeCount;
+    private int m_nodeCapacity;
+
+    private int m_freeList;
+
+    /// This is used to incrementally traverse the tree for re-balancing.
+    private uint m_path;
+
+    private int m_insertionCount;
 
 public b2DynamicTree()
 {
@@ -31,8 +68,7 @@ public b2DynamicTree()
 
     m_nodeCapacity = 16;
     m_nodeCount = 0;
-    m_nodes = (b2TreeNode*)b2Alloc(m_nodeCapacity * sizeof(b2TreeNode));
-    memset(m_nodes, 0, m_nodeCapacity * sizeof(b2TreeNode));
+    m_nodes = new b2TreeNode[m_nodeCapacity];
 
     // Build a linked list for the free list.
     for (int i = 0; i < m_nodeCapacity - 1; ++i)
@@ -49,14 +85,8 @@ public b2DynamicTree()
     m_insertionCount = 0;
 }
 
-~b2DynamicTree()
-{
-    // This frees the entire tree in one shot.
-    b2Free(m_nodes);
-}
-
 // Allocate a node from the pool. Grow the pool if necessary.
-int AllocateNode()
+public int AllocateNode()
 {
     // Expand the node pool as needed.
     if (m_freeList == b2_nullNode)
@@ -64,11 +94,9 @@ int AllocateNode()
         Debug.Assert(m_nodeCount == m_nodeCapacity);
 
         // The free list is empty. Rebuild a bigger pool.
-        b2TreeNode* oldNodes = m_nodes;
+        b2TreeNode oldNodes = m_nodes;
         m_nodeCapacity *= 2;
-        m_nodes = (b2TreeNode*)b2Alloc(m_nodeCapacity * sizeof(b2TreeNode));
-        memcpy(m_nodes, oldNodes, m_nodeCount * sizeof(b2TreeNode));
-        b2Free(oldNodes);
+        m_nodes = new b2TreeNode[m_nodeCapacity];
 
         // Build a linked list for the free list. The parent
         // pointer becomes the "next" pointer.
@@ -771,6 +799,138 @@ void RebuildBottomUp()
     b2Free(nodes);
 
     Validate();
+}
+
+inline void* b2DynamicTree::GetUserData(int32 proxyId) const
+{
+    b2Assert(0 <= proxyId && proxyId < m_nodeCapacity);
+    return m_nodes[proxyId].userData;
+}
+
+inline const b2AABB& b2DynamicTree::GetFatAABB(int32 proxyId) const
+{
+    b2Assert(0 <= proxyId && proxyId < m_nodeCapacity);
+    return m_nodes[proxyId].aabb;
+}
+
+template <typename T>
+inline void b2DynamicTree::Query(T* callback, const b2AABB& aabb) const
+{
+    b2GrowableStack<int32, 256> stack;
+    stack.Push(m_root);
+
+    while (stack.GetCount() > 0)
+    {
+        int32 nodeId = stack.Pop();
+        if (nodeId == b2_nullNode)
+        {
+            continue;
+        }
+
+        const b2TreeNode* node = m_nodes + nodeId;
+
+        if (b2TestOverlap(node->aabb, aabb))
+        {
+            if (node->IsLeaf())
+            {
+                bool proceed = callback->QueryCallback(nodeId);
+                if (proceed == false)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                stack.Push(node->child1);
+                stack.Push(node->child2);
+            }
+        }
+    }
+}
+
+public void RayCast<T>(T callback, refb2RayCastInput input) 
+{
+    b2Vec2 p1 = input.p1;
+    b2Vec2 p2 = input.p2;
+    b2Vec2 r = p2 - p1;
+    b2Assert(r.LengthSquared() > 0.0f);
+    r.Normalize();
+
+    // v is perpendicular to the segment.
+    b2Vec2 v = b2Cross(1.0f, r);
+    b2Vec2 abs_v = b2Abs(v);
+
+    // Separating axis for segment (Gino, p80).
+    // |dot(v, p1 - c)| > dot(|v|, h)
+
+    float32 maxFraction = input.maxFraction;
+
+    // Build a bounding box for the segment.
+    b2AABB segmentAABB;
+    {
+        b2Vec2 t = p1 + maxFraction * (p2 - p1);
+        segmentAABB.lowerBound = b2Min(p1, t);
+        segmentAABB.upperBound = b2Max(p1, t);
+    }
+
+    b2GrowableStack<int32, 256> stack;
+    stack.Push(m_root);
+
+    while (stack.GetCount() > 0)
+    {
+        int32 nodeId = stack.Pop();
+        if (nodeId == b2_nullNode)
+        {
+            continue;
+        }
+
+        const b2TreeNode* node = m_nodes + nodeId;
+
+        if (b2TestOverlap(node->aabb, segmentAABB) == false)
+        {
+            continue;
+        }
+
+        // Separating axis for segment (Gino, p80).
+        // |dot(v, p1 - c)| > dot(|v|, h)
+        b2Vec2 c = node->aabb.GetCenter();
+        b2Vec2 h = node->aabb.GetExtents();
+        float32 separation = b2Abs(b2Dot(v, p1 - c)) - b2Dot(abs_v, h);
+        if (separation > 0.0f)
+        {
+            continue;
+        }
+
+        if (node->IsLeaf())
+        {
+            b2RayCastInput subInput;
+            subInput.p1 = input.p1;
+            subInput.p2 = input.p2;
+            subInput.maxFraction = maxFraction;
+
+            float32 value = callback->RayCastCallback(subInput, nodeId);
+
+            if (value == 0.0f)
+            {
+                // The client has terminated the ray cast.
+                return;
+            }
+
+            if (value > 0.0f)
+            {
+                // Update segment bounding box.
+                maxFraction = value;
+                b2Vec2 t = p1 + maxFraction * (p2 - p1);
+                segmentAABB.lowerBound = b2Min(p1, t);
+                segmentAABB.upperBound = b2Max(p1, t);
+            }
+        }
+        else
+        {
+            stack.Push(node->child1);
+            stack.Push(node->child2);
+        }
+    }
 }
 }
 }
