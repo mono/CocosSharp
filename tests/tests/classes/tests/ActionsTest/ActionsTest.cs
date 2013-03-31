@@ -1207,7 +1207,7 @@ namespace tests
 
             m_grossini.RunAction(rep);
 
-            RunAction(CCFollow.Create(m_grossini, new CCRect(0, 0, s.Width * 2 - 100, s.Height)));
+            RunAction(new CCFollow (m_grossini, new CCRect(0, 0, s.Width * 2 - 100, s.Height)));
         }
 
         public override string subtitle()

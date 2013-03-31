@@ -16,6 +16,17 @@ namespace cocos2d
         protected CCPoint m_obHalfScreenSize;
         protected CCNode m_pobFollowedNode;
 
+        public CCFollow (CCNode followedNode, CCRect rect)
+        {
+            InitWithTarget(followedNode, rect);
+        }
+
+        protected CCFollow (CCFollow follow) 
+        {
+            base.Copy(this);
+            m_nTag = follow.m_nTag;
+        }
+
         /// <summary>
         /// whether camera should be limited to certain area
         /// </summary>
@@ -25,7 +36,7 @@ namespace cocos2d
             set { m_bBoundarySet = value; }
         }
 
-        public bool InitWithTarget(CCNode pFollowedNode, CCRect rect)
+        private bool InitWithTarget(CCNode pFollowedNode, CCRect rect)
         {
             Debug.Assert(pFollowedNode != null);
 
@@ -76,22 +87,19 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tempZone = zone;
-            CCFollow ret;
-            if (tempZone != null)
+ 
+            if (zone != null)
             {
-                ret = (CCFollow) tempZone;
+                var ret = (CCFollow) zone;
+                base.Copy(zone);
+                ret.m_nTag = m_nTag;
+                return ret;
             }
             else
             {
-                ret = new CCFollow();
-                tempZone = ret;
+                return new CCFollow(this);
             }
 
-            base.Copy(tempZone);
-            ret.m_nTag = m_nTag;
-
-            return ret;
         }
 
         public override void Step(float dt)
@@ -128,11 +136,6 @@ namespace cocos2d
             base.Stop();
         }
 
-        public static CCFollow Create(CCNode followedNode, CCRect rect)
-        {
-            var ret = new CCFollow();
-            ret.InitWithTarget(followedNode, rect);
-            return ret;
-        }
+ 
     }
 }
