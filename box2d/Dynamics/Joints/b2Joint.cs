@@ -182,5 +182,12 @@ namespace Box2D.Dynamics.Joints
         {
             return m_collideConnected;
         }
+
+        protected virtual void InitVelocityConstraints(b2SolverData data) { }
+        protected virtual void SolveVelocityConstraints(b2SolverData data) { }
+        protected virtual bool SolvePositionConstraints(b2SolverData data) { return (false); }
+        public virtual void Dump() { }
+        public virtual b2Vec2 GetAnchorA() { return(b2Vec2.Zero); }
+        public virtual b2Vec2 GetAnchorB() { return (b2Vec2.Zero); }
     }
 }

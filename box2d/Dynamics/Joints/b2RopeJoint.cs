@@ -209,7 +209,8 @@ namespace Box2D.Dynamics.Joints
     b2Vec2 cB = data.positions[m_indexB].c;
     float aB = data.positions[m_indexB].a;
 
-    b2Rot qA(aA), qB(aB);
+    b2Rot qA = new b2Rot(aA);
+            b2Rot qB = new b2Rot(aB);
 
     b2Vec2 rA = b2Math.b2Mul(qA, m_localAnchorA - m_localCenterA);
     b2Vec2 rB = b2Math.b2Mul(qB, m_localAnchorB - m_localCenterB);
@@ -236,33 +237,33 @@ namespace Box2D.Dynamics.Joints
     return length - m_maxLength < b2Settings.b2_linearSlop;
 }
 
-        public override b2Vec2 GetAnchorA()
+        public virtual b2Vec2 GetAnchorA()
         {
             return m_bodyA.GetWorldPoint(m_localAnchorA);
         }
 
-        public override b2Vec2 GetAnchorB()
+        public virtual b2Vec2 GetAnchorB()
         {
             return m_bodyB.GetWorldPoint(m_localAnchorB);
         }
 
-        public override b2Vec2 GetReactionForce(float inv_dt)
+        public virtual b2Vec2 GetReactionForce(float inv_dt)
         {
             b2Vec2 F = (inv_dt * m_impulse) * m_u;
             return F;
         }
 
-        public override float GetReactionTorque(float inv_dt)
+        public virtual float GetReactionTorque(float inv_dt)
         {
             return 0.0f;
         }
 
-        public override float GetMaxLength()
+        public virtual float GetMaxLength()
         {
             return m_maxLength;
         }
 
-        public override b2LimitState GetLimitState()
+        public virtual b2LimitState GetLimitState()
         {
             return m_state;
         }

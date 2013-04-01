@@ -101,13 +101,13 @@ namespace Box2D.Collision.Shapes
             m_hasNextVertex = clone.m_hasNextVertex;
         }
 
-        public virtual b2Shape Clone()
+        public override b2Shape Clone()
         {
             b2ChainShape clone = new b2ChainShape(this);
             return clone;
         }
 
-        public virtual int GetChildCount()
+        public override int GetChildCount()
         {
             // edge count = vertex count - 1
             return m_count - 1;
@@ -146,12 +146,12 @@ namespace Box2D.Collision.Shapes
             return (edge);
         }
 
-        public virtual bool TestPoint(b2Transform xf, b2Vec2 p)
+        public override bool TestPoint(b2Transform xf, b2Vec2 p)
         {
             return false;
         }
 
-        public virtual bool RayCast(out b2RayCastOutput output, b2RayCastInput input,
+        public override bool RayCast(out b2RayCastOutput output, b2RayCastInput input,
                                     b2Transform xf, int childIndex)
         {
             b2EdgeShape edgeShape = new b2EdgeShape();
@@ -173,7 +173,7 @@ namespace Box2D.Collision.Shapes
             return (b);
         }
 
-        public virtual b2AABB ComputeAABB(b2Transform xf, int childIndex)
+        public override b2AABB ComputeAABB(b2Transform xf, int childIndex)
         {
             int i1 = childIndex;
             int i2 = childIndex + 1;
@@ -191,7 +191,7 @@ namespace Box2D.Collision.Shapes
             return (aabb);
         }
 
-        public virtual b2MassData ComputeMass(float density)
+        public override b2MassData ComputeMass(float density)
         {
             b2MassData massData = new b2MassData();
             massData.mass = 0.0f;

@@ -33,7 +33,7 @@ namespace Box2D.Dynamics.Contacts
             Debug.Assert(m_fixtureB.ShapeType == b2ShapeType.e_polygon);
         }
 
-        public virtual void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
+        public override void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
         {
             b2Collision.b2CollidePolygons(manifold,
                                 (b2PolygonShape)m_fixtureA.Shape, xfA,

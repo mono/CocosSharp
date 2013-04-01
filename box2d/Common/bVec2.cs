@@ -8,6 +8,8 @@ namespace Box2D.Common
     /// A 2D column vector.
     public struct b2Vec2
     {
+        public static b2Vec2 Zero = new b2Vec2(0f, 0f);
+
         /// Construct using coordinates.
         public b2Vec2(float x, float y)
         {

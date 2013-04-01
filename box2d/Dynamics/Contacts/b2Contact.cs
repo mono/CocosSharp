@@ -38,7 +38,7 @@ namespace Box2D.Dynamics.Contacts
     /// maintained in each attached body. Each contact has two contact
     /// nodes, one for each attached body.
     /// </summary>
-    public struct b2ContactEdge
+    public class b2ContactEdge
     {
         public b2Body other;            ///< provides quick access to the other body attached.
         public b2Contact contact;        ///< the contact

@@ -78,18 +78,18 @@ namespace Box2D.Collision.Shapes
             m_hasVertex3 = false;
         }
 
-        public virtual b2Shape Clone()
+        public override b2Shape Clone()
         {
             b2EdgeShape clone = new b2EdgeShape(this);
             return clone;
         }
 
-        public virtual int GetChildCount()
+        public override int GetChildCount()
         {
             return 1;
         }
 
-        public virtual bool TestPoint(b2Transform xf, b2Vec2 p)
+        public override bool TestPoint(b2Transform xf, b2Vec2 p)
         {
             return false;
         }
@@ -98,7 +98,7 @@ namespace Box2D.Collision.Shapes
         // v = v1 + s * e
         // p1 + t * d = v1 + s * e
         // s * e - t * d = p1 - v1
-        public virtual bool RayCast(out b2RayCastOutput output, b2RayCastInput input,
+        public override bool RayCast(out b2RayCastOutput output, b2RayCastInput input,
                                     b2Transform xf, int childIndex)
         {
             output = b2RayCastOutput.Zero;
@@ -160,7 +160,7 @@ namespace Box2D.Collision.Shapes
             return true;
         }
 
-        public virtual b2AABB ComputeAABB(b2Transform xf, int childIndex)
+        public override b2AABB ComputeAABB(b2Transform xf, int childIndex)
         {
             b2Vec2 v1 = b2Math.b2Mul(xf, m_vertex1);
             b2Vec2 v2 = b2Math.b2Mul(xf, m_vertex2);
@@ -168,14 +168,14 @@ namespace Box2D.Collision.Shapes
             b2Vec2 lower = b2Math.b2Min(v1, v2);
             b2Vec2 upper = b2Math.b2Max(v1, v2);
 
-            b2Vec2 r(m_radius, m_radius);
+            b2Vec2 r = new b2Vec2(m_radius, m_radius);
             b2AABB aabb = new b2AABB();
             aabb.lowerBound = lower - r;
             aabb.upperBound = upper + r;
             return(aabb);
         }
 
-        public virtual b2MassData ComputeMass(float density)
+        public override b2MassData ComputeMass(float density)
         {
             b2MassData massData = new b2MassData();
             massData.mass = 0.0f;

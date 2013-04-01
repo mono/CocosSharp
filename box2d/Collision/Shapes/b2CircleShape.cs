@@ -42,24 +42,24 @@ namespace Box2D.Collision.Shapes
             return m_p;
         }
         /// Get the vertex count.
-        public int GetChildCount()
+        public override int GetChildCount()
         {
             return 1;
         }
 
         public b2CircleShape(b2CircleShape copy)
-            : base((b2Shape)copy)
+            : base(copy)
         {
             m_p = copy.m_p;
         }
 
-        public virtual b2Shape Clone()
+        public override b2Shape Clone()
         {
             b2CircleShape clone = new b2CircleShape(this);
             return clone;
         }
 
-        public virtual bool TestPoint(b2Transform transform, b2Vec2 p)
+        public override bool TestPoint(b2Transform transform, b2Vec2 p)
         {
             b2Vec2 center = transform.p + b2Math.b2Mul(transform.q, m_p);
             b2Vec2 d = p - center;
@@ -70,7 +70,7 @@ namespace Box2D.Collision.Shapes
         // From Section 3.1.2
         // x = s + a * r
         // norm(x) = radius
-        public virtual bool RayCast(out b2RayCastOutput output, b2RayCastInput input,
+        public override bool RayCast(out b2RayCastOutput output, b2RayCastInput input,
                                     b2Transform transform, int childIndex)
         {
             output = b2RayCastOutput.Zero;
@@ -107,7 +107,7 @@ namespace Box2D.Collision.Shapes
             return false;
         }
 
-        public virtual b2AABB ComputeAABB(b2Transform transform, int childIndex)
+        public override b2AABB ComputeAABB(b2Transform transform, int childIndex)
         {
             b2Vec2 p = transform.p + b2Math.b2Mul(transform.q, m_p);
             b2AABB aabb = new b2AABB();
@@ -116,7 +116,7 @@ namespace Box2D.Collision.Shapes
             return (aabb);
         }
 
-        public virtual b2MassData ComputeMass(float density)
+        public override b2MassData ComputeMass(float density)
         {
             b2MassData massData = new b2MassData();
             massData.mass = density * (float)Math.PI * m_radius * m_radius;
