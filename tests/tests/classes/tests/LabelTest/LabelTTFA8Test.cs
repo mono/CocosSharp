@@ -17,8 +17,8 @@ namespace tests
             label1.Color = CCTypes.CCRed;
             label1.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
-            CCFadeOut fadeOut = CCFadeOut.Create(2);
-            CCFadeIn fadeIn = CCFadeIn.Create(2);
+            CCFadeOut fadeOut = new CCFadeOut  (2);
+            CCFadeIn fadeIn = new CCFadeIn  (2);
             CCFiniteTimeAction seq = CCSequence.Create(fadeOut, fadeIn);
             CCRepeatForever forever = CCRepeatForever.Create((CCActionInterval) seq);
             label1.RunAction(forever);

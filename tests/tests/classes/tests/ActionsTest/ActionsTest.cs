@@ -658,10 +658,10 @@ namespace tests
             centerSprites(2);
 
             m_tamara.Opacity = 0;
-            var action1 = CCFadeIn.Create(1.0f);
+            var action1 = new CCFadeIn  (1.0f);
             var action1Back = action1.Reverse();
 
-            var action2 = CCFadeOut.Create(1.0f);
+            var action2 = new CCFadeOut  (1.0f);
             var action2Back = action2.Reverse();
 
             m_tamara.RunAction(CCSequence.Create(action1, action1Back));
@@ -852,12 +852,12 @@ namespace tests
 
             var action2 = CCSequence.Create(
                 CCScaleBy.Create(2, 2),
-                CCFadeOut.Create(2),
+                new CCFadeOut  (2),
                 CCCallFuncN.Create(callback2));
 
             var action3 = CCSequence.Create(
                 new CCRotateBy (3, 360),
-                CCFadeOut.Create(2),
+                new CCFadeOut  (2),
                 CCCallFuncND.Create(callback3, 0xbebabeba));
 
             m_grossini.RunAction(action);

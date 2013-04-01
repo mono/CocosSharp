@@ -29,7 +29,7 @@ namespace tests
             // testing anchors
             label1.AnchorPoint = new CCPoint(0, 0);
             AddChild(label1, 0, (int)TagSprite.kTagBitmapAtlas1);
-            CCActionInterval fade = CCFadeOut.Create(1.0f);
+            CCActionInterval fade = new CCFadeOut  (1.0f);
             CCFiniteTimeAction fade_in = fade.Reverse();
             CCFiniteTimeAction seq = CCSequence.Create(fade, fade_in);
             CCAction repeat = CCRepeatForever.Create((CCActionInterval)seq);

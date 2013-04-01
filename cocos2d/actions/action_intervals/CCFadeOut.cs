@@ -2,30 +2,27 @@
 {
     public class CCFadeOut : CCActionInterval
     {
-        public new static CCFadeOut Create(float d)
+        public CCFadeOut (float d)
         {
-            var pAction = new CCFadeOut();
-            pAction.InitWithDuration(d);
-            return pAction;
+            InitWithDuration(d);
         }
+
+        protected CCFadeOut (CCFadeOut fadeOut) : base (fadeOut)
+        {}
 
         public override object Copy(ICopyable pZone)
         {
-            CCFadeOut pCopy;
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCFadeOut) (pZone);
+                var pCopy = (CCFadeOut) (pZone);
+                base.Copy(pZone);
+                return pCopy;
             }
             else
             {
-                pCopy = new CCFadeOut();
-                pZone =  (pCopy);
+                return new CCFadeOut(this);
             }
-
-            base.Copy(pZone);
-
-            return pCopy;
         }
 
         public override void Update(float time)
@@ -39,7 +36,7 @@
 
         public override CCFiniteTimeAction Reverse()
         {
-            return CCFadeIn.Create(m_fDuration);
+            return new CCFadeIn (m_fDuration);
         }
     }
 }

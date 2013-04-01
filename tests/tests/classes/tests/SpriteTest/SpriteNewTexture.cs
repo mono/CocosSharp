@@ -58,7 +58,7 @@ namespace tests
             else if (random < 0.8)
                 action = CCTintBy.Create(2, 0, -255, -255);
             else
-                action = CCFadeOut.Create(2);
+                action = new CCFadeOut  (2);
 
             CCActionInterval action_back = (CCActionInterval)action.Reverse();
             CCActionInterval seq = (CCActionInterval)(CCSequence.Create(action, action_back));

@@ -342,8 +342,8 @@ namespace tests
             CCMoveBy move = CCMoveBy.Create(0.5f, new CCPoint(0, 160));
             CCRotateBy rotate = new CCRotateBy (2, 360);
             CCScaleBy scale = CCScaleBy.Create(2, 5);
-            CCFadeOut opacity = CCFadeOut.Create(2);
-            CCFadeIn fadein = CCFadeIn.Create(2);
+            CCFadeOut opacity = new CCFadeOut  (2);
+            CCFadeIn fadein = new CCFadeIn  (2);
             CCScaleTo scaleback = CCScaleTo.Create(1, 1);
             CCCallFuncN finish = CCCallFuncN.Create(removeSprite);
             CCSequence seq0 = CCSequence.Create(move, rotate, scale, opacity, fadein, scaleback, finish);

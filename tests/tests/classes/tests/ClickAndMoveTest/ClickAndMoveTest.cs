@@ -48,8 +48,8 @@ namespace tests
 
             layer.RunAction(CCRepeatForever.Create(
                                                                 (CCActionInterval)(CCSequence.Create(
-                                                                                    CCFadeIn.Create(1),
-                                                                                    CCFadeOut.Create(1)))
+                                                                                    new CCFadeIn  (1),
+                                                                                    new CCFadeOut  (1)))
                                                                 ));
         }
 
