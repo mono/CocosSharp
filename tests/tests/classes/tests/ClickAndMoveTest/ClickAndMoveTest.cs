@@ -44,7 +44,7 @@ namespace tests
             AddChild(sprite, 0, ClickAndMoveTest.kTagSprite);
             sprite.Position = new CCPoint(20, 150);
 
-            sprite.RunAction(CCJumpTo.Create(4, new CCPoint(300, 48), 100, 4));
+            sprite.RunAction(new CCJumpTo (4, new CCPoint(300, 48), 100, 4));
 
             layer.RunAction(CCRepeatForever.Create(
                                                                 (CCActionInterval)(CCSequence.Create(

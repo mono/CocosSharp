@@ -516,7 +516,7 @@ namespace tests
             var s = CCDirector.SharedDirector.WinSize;
 
             // rotate and jump
-            var jump1 = CCJumpBy.Create(4, new CCPoint(-s.Width + 80, 0), 100, 4);
+            var jump1 = new CCJumpBy (4, new CCPoint(-s.Width + 80, 0), 100, 4);
             var jump2 = jump1.Reverse();
             var rot1 = new CCRotateBy (4, 360 * 2);
             var rot2 = rot1.Reverse();

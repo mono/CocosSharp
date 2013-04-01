@@ -38,7 +38,7 @@ namespace tests
             CCFiniteTimeAction scale_seq = CCSequence.Create(scale, scale_back);
             CCAction scale_4ever = CCRepeatForever.Create((CCActionInterval)scale_seq);
 
-            CCActionInterval jump = CCJumpBy.Create(0.5f, new CCPoint(), 60, 1);
+            CCActionInterval jump = new CCJumpBy (0.5f, new CCPoint(), 60, 1);
             CCAction jump_4ever = CCRepeatForever.Create(jump);
 
             CCActionInterval fade_out = new CCFadeOut  (1);

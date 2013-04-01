@@ -562,9 +562,9 @@ namespace tests
 
             centerSprites(3);
 
-            var actionTo = CCJumpTo.Create(2, new CCPoint(300, 300), 50, 4);
-            var actionBy = CCJumpBy.Create(2, new CCPoint(300, 0), 50, 4);
-            var actionUp = CCJumpBy.Create(2, new CCPoint(0, 0), 80, 4);
+            var actionTo = new CCJumpTo (2, new CCPoint(300, 300), 50, 4);
+            var actionBy = new CCJumpBy (2, new CCPoint(300, 0), 50, 4);
+            var actionUp = new CCJumpBy (2, new CCPoint(0, 0), 80, 4);
             var actionByBack = actionBy.Reverse();
 
             m_tamara.RunAction(actionTo);
@@ -940,7 +940,7 @@ namespace tests
             alignSpritesLeft(1);
 
             var action = CCSpawn.Create(
-                CCJumpBy.Create(2, new CCPoint(300, 0), 50, 4),
+                new CCJumpBy (2, new CCPoint(300, 0), 50, 4),
                 new CCRotateBy (2, 720));
 
             m_grossini.RunAction(action);
@@ -1037,7 +1037,7 @@ namespace tests
 
             alignSpritesLeft(1);
 
-            var jump = CCJumpBy.Create(2, new CCPoint(300, 0), 50, 4);
+            var jump = new CCJumpBy (2, new CCPoint(300, 0), 50, 4);
             var action = CCSequence.Create(jump, jump.Reverse());
 
             m_grossini.RunAction(action);
@@ -1387,7 +1387,7 @@ namespace tests
 
             centerSprites(2);
 
-            var jump1 = CCJumpBy.Create(2, CCPoint.Zero, 100, 3);
+            var jump1 = new CCJumpBy (2, CCPoint.Zero, 100, 3);
             var jump2 = (CCJumpBy) jump1.Copy();
             var rot1 = new CCRotateBy (1, 360);
             var rot2 = (CCRotateBy) rot1.Copy();

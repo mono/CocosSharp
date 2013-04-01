@@ -62,7 +62,7 @@ namespace tests
             item1.Position = new CCPoint(s.Width / 2 - 150, s.Height / 2);
             item2.Position = new CCPoint(s.Width / 2 - 200, s.Height / 2);
             item3.Position = new CCPoint(s.Width / 2, s.Height / 2 - 100);
-            CCJumpBy jump = CCJumpBy.Create(3, new CCPoint(400, 0), 50, 4);
+            CCJumpBy jump = new CCJumpBy (3, new CCPoint(400, 0), 50, 4);
             item2.RunAction(CCRepeatForever.Create(
                                         (CCActionInterval)(CCSequence.Create(jump, jump.Reverse()))
                                         )
