@@ -13,9 +13,8 @@ namespace cocos2d
             InitWithDuration(duration, fDeltaAngle);
         }
 
-        internal CCRotateTo (CCRotateTo rotateTo)
+        protected CCRotateTo (CCRotateTo rotateTo) : base (rotateTo)
         {
-            base.Copy(this);
             InitWithDuration(rotateTo.m_fDuration, rotateTo.m_fDstAngle);
         }
 

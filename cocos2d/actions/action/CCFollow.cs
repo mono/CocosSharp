@@ -21,9 +21,8 @@ namespace cocos2d
             InitWithTarget(followedNode, rect);
         }
 
-        protected CCFollow (CCFollow follow) 
+        protected CCFollow (CCFollow follow) : base (follow)
         {
-            base.Copy(this);
             m_nTag = follow.m_nTag;
         }
 

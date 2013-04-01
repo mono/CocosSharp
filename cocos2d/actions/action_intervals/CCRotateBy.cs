@@ -5,15 +5,13 @@ namespace cocos2d
         protected float m_fAngle;
         protected float m_fStartAngle;
 
-        private CCRotateBy() {}
         public CCRotateBy (float duration, float fDeltaAngle)
         {
             InitWithDuration(duration, fDeltaAngle);
         }
 
-        internal CCRotateBy (CCRotateBy rotateTo)
+        protected CCRotateBy (CCRotateBy rotateTo) : base(rotateTo)
         {
-            base.Copy(this);
             InitWithDuration(rotateTo.m_fDuration, rotateTo.m_fAngle);
         }
 

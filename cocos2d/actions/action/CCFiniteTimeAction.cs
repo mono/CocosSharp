@@ -5,6 +5,10 @@ namespace cocos2d
     {
         protected float m_fDuration;
 
+        protected CCFiniteTimeAction () {}
+        protected CCFiniteTimeAction (CCFiniteTimeAction finiteTimeAction) : base(finiteTimeAction) 
+        {}
+      
         public float Duration
         {
             get { return m_fDuration; }

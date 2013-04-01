@@ -9,12 +9,26 @@ namespace cocos2d
         protected bool m_bFirstTick;
         protected float m_elapsed;
 
+        protected CCActionInterval () {}
+
+        public CCActionInterval (float d)
+        {
+            InitWithDuration(d);
+        }
+
+        protected CCActionInterval (CCActionInterval actionInterval) : base (actionInterval)
+        {
+            //base.Copy(this);
+            InitWithDuration(actionInterval.m_fDuration);
+
+        }
+
         public float Elapsed
         {
             get { return m_elapsed; }
         }
 
-        public bool InitWithDuration(float d)
+        protected bool InitWithDuration(float d)
         {
             m_fDuration = d;
 
@@ -39,23 +53,21 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            CCActionInterval ret;
 
             if (zone != null)
             {
-                ret = (CCActionInterval)(zone);
+                var ret = (CCActionInterval)(zone);
+                base.Copy(zone);
+                
+                ret.InitWithDuration(m_fDuration);
+                return ret;
+
             }
             else
             {
-                ret = new CCActionInterval();
-                zone =  (ret);
+                return new CCActionInterval(this);
             }
 
-            base.Copy(zone);
-
-            ret.InitWithDuration(m_fDuration);
-
-            return ret;
         }
 
         public override void Step(float dt)
@@ -100,11 +112,6 @@ namespace cocos2d
             set { Debug.Assert(false); }
         }
 
-        public static CCActionInterval Create(float d)
-        {
-            var ret = new CCActionInterval();
-            ret.InitWithDuration(d);
-            return ret;
-        }
+
     }
 }

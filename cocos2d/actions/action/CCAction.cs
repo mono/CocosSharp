@@ -18,7 +18,7 @@ namespace cocos2d
             m_nTag = (int) ActionTag.kCCActionTagInvalid;
         }
 
-        public CCAction(CCAction action)
+        protected CCAction(CCAction action)
         {
             m_nTag = action.m_nTag;
         }
