@@ -31,7 +31,9 @@ using Microsoft.Xna.Framework;
 namespace cocos2d
 {
 
+#if !WINDOWS_PHONE
 	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCPointConverter))]
+#endif
     public struct CCPoint
     {
         public static readonly CCPoint Zero = new CCPoint(0, 0);
@@ -184,11 +186,18 @@ namespace cocos2d
 
 		public static CCPoint Parse(string s) 
 		{
+#if !WINDOWS_PHONE
 			return (CCPoint)TypeDescriptor.GetConverter(typeof(CCPoint)).ConvertFromString (s);
+#else
+
+            throw(new NotImplementedException("Serialization is not supported on the WindowsPhone device."));
+#endif
 		}
     }
 
+#if !WINDOWS_PHONE
 	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCSizeConverter))]
+#endif
     public struct CCSize
     {
         public static readonly CCSize Zero = new CCSize(0, 0);
@@ -269,11 +278,17 @@ namespace cocos2d
 
 		public static CCSize Parse(string s) 
 		{
+#if !WINDOWS_PHONE
 			return (CCSize)TypeDescriptor.GetConverter(typeof(CCSize)).ConvertFromString (s);
+#else
+            throw(new NotImplementedException("Serialization is not supported on the WindowsPhone device."));
+#endif
 		}
     }
 
+#if !WINDOWS_PHONE
 	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCRectConverter))]
+#endif
     public struct CCRect
     {
         public static readonly CCRect Zero = new CCRect(0, 0, 0, 0);
@@ -522,7 +537,11 @@ namespace cocos2d
 
 		public static CCRect Parse(string s) 
 		{
+#if !WINDOWS_PHONE
 			return (CCRect)TypeDescriptor.GetConverter(typeof(CCRect)).ConvertFromString (s);
-		}
+#else
+            throw(new NotImplementedException("Serialization is not supported on the WindowsPhone device."));
+#endif
+        }
     }
 }
