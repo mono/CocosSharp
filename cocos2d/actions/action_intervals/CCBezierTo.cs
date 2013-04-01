@@ -3,12 +3,14 @@ namespace cocos2d
 {
     public class CCBezierTo : CCBezierBy
     {
-        public new static CCBezierTo Create(float t, ccBezierConfig c)
+        public CCBezierTo (float t, ccBezierConfig c) : base (t, c)
         {
-            var ret = new CCBezierTo();
-            ret.InitWithDuration(t, c);
+            InitWithDuration(t, c);
+        }
 
-            return ret;
+        protected CCBezierTo (CCBezierTo bezierTo) : base (bezierTo)
+        {
+            InitWithDuration(bezierTo.m_fDuration, bezierTo.m_sConfig);
         }
 
         public override void StartWithTarget(CCNode target)
@@ -21,28 +23,25 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCBezierTo ret;
 
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null && zone != null)
             {
-                ret = tmpZone as CCBezierTo;
+                var ret = zone as CCBezierTo;
                 if (ret == null)
                 {
                     return null;
                 }
+                base.Copy(zone);
+                
+                ret.InitWithDuration(m_fDuration, m_sConfig);
+                
+                return ret;
             }
             else
             {
-                ret = new CCBezierTo();
-                tmpZone =  (ret);
+                return new CCBezierTo(this);
             }
 
-            base.Copy(tmpZone);
-
-            ret.InitWithDuration(m_fDuration, m_sConfig);
-
-            return ret;
         }
     }
 }

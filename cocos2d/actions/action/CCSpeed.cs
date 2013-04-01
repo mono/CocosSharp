@@ -8,20 +8,17 @@ namespace cocos2d
         protected float m_fSpeed;
         protected CCActionInterval m_pInnerAction;
 
-        public float Speed
+        public CCSpeed (CCActionInterval action, float fRate)
         {
-            get { return m_fSpeed; }
-            set { m_fSpeed = value; }
+            InitWithAction(action, fRate);
         }
 
-        public static CCSpeed Create(CCActionInterval action, float fRate)
-        {
-            var ret = new CCSpeed();
-            ret.InitWithAction(action, fRate);
-            return ret;
-        }
+		protected CCSpeed (CCSpeed speed) : base (speed)
+		{
+			InitWithAction((CCActionInterval) speed.m_pInnerAction.Copy(), speed.m_fSpeed);
+		}
 
-        public bool InitWithAction(CCActionInterval action, float fRate)
+        protected bool InitWithAction(CCActionInterval action, float fRate)
         {
             Debug.Assert(action != null);
 
@@ -33,24 +30,29 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            CCSpeed ret;
-
             if (zone != null)
             {
-                ret = (CCSpeed) zone;
+                var ret = (CCSpeed) zone;
+				base.Copy(zone);
+				
+				ret.InitWithAction((CCActionInterval) m_pInnerAction.Copy(), m_fSpeed);
+				
+				return ret;
             }
             else
             {
-                ret = new CCSpeed();
+                return new CCSpeed(this);
             }
 
-            base.Copy(zone);
 
-            ret.InitWithAction((CCActionInterval) m_pInnerAction.Copy(), m_fSpeed);
-
-            return ret;
         }
 
+		public float Speed
+		{
+			get { return m_fSpeed; }
+			set { m_fSpeed = value; }
+		}
+		
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
@@ -75,7 +77,7 @@ namespace cocos2d
 
         public virtual CCActionInterval Reverse()
         {
-            return (CCActionInterval) (CCAction) Create((CCActionInterval) m_pInnerAction.Reverse(), m_fSpeed);
+            return (CCActionInterval) (CCAction) new CCSpeed ((CCActionInterval) m_pInnerAction.Reverse(), m_fSpeed);
         }
     }
 }

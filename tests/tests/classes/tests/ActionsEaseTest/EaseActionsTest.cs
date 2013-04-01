@@ -524,7 +524,7 @@ namespace tests
             var seq3_1 = CCSequence.Create(jump2, jump1);
             var seq3_2 = CCSequence.Create(rot1, rot2);
             var spawn = CCSpawn.Create(seq3_1, seq3_2);
-            var action = CCSpeed.Create(CCRepeatForever.Create(spawn), 1.0f);
+            var action = new CCSpeed (CCRepeatForever.Create(spawn), 1.0f);
             action.Tag = EaseTest.kTagAction1;
 
             var action2 = (CCAction) (action.Copy());

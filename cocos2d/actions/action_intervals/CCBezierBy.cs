@@ -7,7 +7,18 @@ namespace cocos2d
         protected ccBezierConfig m_sConfig;
         protected CCPoint m_startPosition;
 
-        public bool InitWithDuration(float t, ccBezierConfig c)
+        public CCBezierBy (float t, ccBezierConfig c)
+        {
+            InitWithDuration(t, c);
+        }
+
+        protected CCBezierBy (CCBezierBy bezierBy) : base (bezierBy)
+        {
+            InitWithDuration(bezierBy.m_fDuration, bezierBy.m_sConfig);
+
+        }
+
+        protected bool InitWithDuration(float t, ccBezierConfig c)
         {
             if (base.InitWithDuration(t))
             {
@@ -20,28 +31,24 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCBezierBy ret;
-
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null && zone != null)
             {
-                ret = tmpZone as CCBezierBy;
+                var ret = zone as CCBezierBy;
                 if (ret == null)
                 {
                     return null;
                 }
+                base.Copy(zone);
+                
+                ret.InitWithDuration(m_fDuration, m_sConfig);
+                
+                return ret;
             }
             else
             {
-                ret = new CCBezierBy();
-                tmpZone =  (ret);
+                return new CCBezierBy(this);
             }
 
-            base.Copy(tmpZone);
-
-            ret.InitWithDuration(m_fDuration, m_sConfig);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -78,16 +85,8 @@ namespace cocos2d
             r.ControlPoint1 = CCPointExtension.Add(m_sConfig.ControlPoint2, CCPointExtension.Negative(m_sConfig.EndPosition));
             r.ControlPoint2 = CCPointExtension.Add(m_sConfig.ControlPoint1, CCPointExtension.Negative(m_sConfig.EndPosition));
 
-            CCBezierBy action = Create(m_fDuration, r);
+            var action = new CCBezierBy(m_fDuration, r);
             return action;
-        }
-
-        public static CCBezierBy Create(float t, ccBezierConfig c)
-        {
-            var ret = new CCBezierBy();
-            ret.InitWithDuration(t, c);
-
-            return ret;
         }
 
         // Bezier cubic formula:
