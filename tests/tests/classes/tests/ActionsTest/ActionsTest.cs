@@ -636,8 +636,8 @@ namespace tests
 
             centerSprites(2);
 
-            var action1 = CCBlink.Create(2, 10);
-            var action2 = CCBlink.Create(2, 5);
+            var action1 = new CCBlink (2, 10);
+            var action2 = new CCBlink (2, 5);
 
             m_tamara.RunAction(action1);
             m_kathia.RunAction(action2);
