@@ -55,9 +55,9 @@ namespace tests
             // now create some actions that will move the 'void' node
             // and the children of the 'void' node will move at different
             // speed, thus, simulation the 3D environment
-            CCMoveBy goUp = CCMoveBy.Create(4, new CCPoint(0, -500));
+            CCMoveBy goUp = new CCMoveBy (4, new CCPoint(0, -500));
             CCFiniteTimeAction goDown = goUp.Reverse();
-            CCMoveBy go = CCMoveBy.Create(8, new CCPoint(-1000, 0));
+            CCMoveBy go = new CCMoveBy (8, new CCPoint(-1000, 0));
             CCFiniteTimeAction goBack = go.Reverse();
             CCFiniteTimeAction seq = CCSequence.Create(goUp, go, goDown, goBack);
 

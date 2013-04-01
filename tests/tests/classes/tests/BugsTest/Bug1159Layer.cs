@@ -24,8 +24,8 @@ namespace tests
                 AddChild(sprite_a);
 
                 sprite_a.RunAction(CCRepeatForever.Create((CCActionInterval)CCSequence.Create(
-                                                                       CCMoveTo.Create(1.0f, new CCPoint(1024.0f, 384.0f)),
-                                                                       CCMoveTo.Create(1.0f, new CCPoint(0.0f, 384.0f)))));
+                                                                       new CCMoveTo (1.0f, new CCPoint(1024.0f, 384.0f)),
+                                                                       new CCMoveTo (1.0f, new CCPoint(0.0f, 384.0f)))));
 
                 CCLayerColor sprite_b = CCLayerColor.Create(new CCColor4B(0, 0, 255, 255), 400, 400);
                 sprite_b.AnchorPoint = new CCPoint(0.5f, 0.5f);

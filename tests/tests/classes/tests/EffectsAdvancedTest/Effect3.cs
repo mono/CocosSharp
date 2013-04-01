@@ -23,7 +23,7 @@ namespace tests
             target2.RunAction(CCRepeatForever.Create(shaky));
 
             // moving background. Testing issue #244
-            CCActionInterval move = CCMoveBy.Create(3, new CCPoint(200, 0));
+            CCActionInterval move = new CCMoveBy (3, new CCPoint(200, 0));
             bg.RunAction(CCRepeatForever.Create(CCSequence.Create(move, move.Reverse())));
         }
 

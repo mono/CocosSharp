@@ -89,7 +89,7 @@ namespace tests
 
             var size = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(size.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(size.Width - 130, 0));
             var move_back = (CCActionInterval) move.Reverse();
 
             var move_ease_in = CCEaseIn.Create((CCActionInterval) move.Copy(), 2.5f);
@@ -139,7 +139,7 @@ namespace tests
 
             var size = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(size.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(size.Width - 130, 0));
 
             var move_ease_inout1 = CCEaseInOut.Create((CCActionInterval) move.Copy(), 0.65f);
             var move_ease_inout_back1 = move_ease_inout1.Reverse();
@@ -177,7 +177,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease_in = CCEaseExponentialIn.Create((CCActionInterval) (move.Copy()));
@@ -213,7 +213,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease = CCEaseExponentialInOut.Create((CCActionInterval) move.Copy());
@@ -244,7 +244,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease_in = CCEaseSineIn.Create((CCActionInterval) move.Copy());
@@ -279,7 +279,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease = CCEaseSineInOut.Create((CCActionInterval) (move.Copy()));
@@ -310,7 +310,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease_in = CCEaseElasticIn.Create((CCActionInterval) (move.Copy()));
@@ -345,7 +345,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
 
             var move_ease_inout1 = CCEaseElasticInOut.Create((CCActionInterval) (move.Copy()), 0.3f);
             var move_ease_inout_back1 = move_ease_inout1.Reverse();
@@ -383,7 +383,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease_in = CCEaseBounceIn.Create((CCActionInterval) (move.Copy()));
@@ -418,7 +418,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease = CCEaseBounceInOut.Create((CCActionInterval) (move.Copy()));
@@ -449,7 +449,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease_in = CCEaseBackIn.Create((CCActionInterval) (move.Copy()));
@@ -484,7 +484,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var move = CCMoveBy.Create(3, new CCPoint(s.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease = CCEaseBackInOut.Create((CCActionInterval) (move.Copy()));

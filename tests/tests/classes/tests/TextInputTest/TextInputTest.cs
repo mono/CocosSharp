@@ -386,7 +386,7 @@ namespace cocos2d
 
             CCAction seq = CCSequence.Create(
                 CCSpawn.Create(
-                    CCMoveTo.Create(duration, endPos),
+                    new CCMoveTo (duration, endPos),
                     CCScaleTo.Create(duration, 1),
                     new CCFadeOut  (duration)),
                 CCCallFuncN.Create(callbackRemoveNodeWhenDidAction));
@@ -418,7 +418,7 @@ namespace cocos2d
 
             CCAction seq = CCSequence.Create(
                 CCSpawn.Create(
-                    CCMoveTo.Create(duration, endPos),
+                    new CCMoveTo (duration, endPos),
                     CCRepeat.Create(
                         new CCRotateBy (rotateDuration, (Random.Next() % 2 > 0) ? 360 : -360),
                         (uint)repeatTime),

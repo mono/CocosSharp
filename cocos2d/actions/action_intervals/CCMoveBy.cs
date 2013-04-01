@@ -2,7 +2,17 @@ namespace cocos2d
 {
     public class CCMoveBy : CCMoveTo
     {
-        public new bool InitWithDuration(float duration, CCPoint position)
+
+        public CCMoveBy (float duration, CCPoint position) : base (duration, position)
+        {
+            InitWithDuration(duration, position);
+        }
+
+        protected CCMoveBy (CCMoveBy moveBy) : base (moveBy)
+        {
+            InitWithDuration (moveBy.m_fDuration, moveBy.m_delta);
+        }
+        protected new bool InitWithDuration(float duration, CCPoint position)
         {
             if (base.InitWithDuration(duration))
             {
@@ -15,28 +25,28 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCMoveBy ret;
-            if (tmpZone != null && tmpZone != null)
+
+            if (zone != null)
             {
-                ret = tmpZone as CCMoveBy;
+                var ret = zone as CCMoveBy;
 
                 if (ret == null)
                 {
                     return null;
                 }
+
+                base.Copy(zone);
+                
+                ret.InitWithDuration(m_fDuration, m_delta);
+                
+                return ret;
             }
             else
             {
-                ret = new CCMoveBy();
-                tmpZone =  (ret);
+                return new CCMoveBy(this);
             }
 
-            base.Copy(tmpZone);
 
-            ret.InitWithDuration(m_fDuration, m_delta);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -48,14 +58,8 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_fDuration, CCPointExtension.CreatePoint(-m_delta.X, -m_delta.Y));
+            return new CCMoveBy (m_fDuration, CCPointExtension.CreatePoint(-m_delta.X, -m_delta.Y));
         }
 
-        public new static CCMoveBy Create(float duration, CCPoint position)
-        {
-            var ret = new CCMoveBy();
-            ret.InitWithDuration(duration, position);
-            return ret;
-        }
     }
 }

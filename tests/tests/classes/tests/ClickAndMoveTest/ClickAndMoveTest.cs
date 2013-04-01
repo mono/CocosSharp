@@ -64,7 +64,7 @@ namespace tests
 
             CCNode s = GetChildByTag(ClickAndMoveTest.kTagSprite);
             s.StopAllActions();
-            s.RunAction(CCMoveTo.Create(1, new CCPoint(convertedLocation.X, convertedLocation.Y)));
+            s.RunAction(new CCMoveTo (1, new CCPoint(convertedLocation.X, convertedLocation.Y)));
             float o = convertedLocation.X - s.Position.X;
             float a = convertedLocation.Y - s.Position.Y;
             float at = (float)(Math.Atan(o / a) * 57.29577951f);

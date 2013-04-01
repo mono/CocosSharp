@@ -26,7 +26,7 @@ namespace tests
             CCAction fe = CCRepeatForever.Create(rot);
             item.RunAction(fe);
 
-            CCActionInterval move = CCMoveBy.Create(3, new CCPoint(200, 0));
+            CCActionInterval move = new CCMoveBy (3, new CCPoint(200, 0));
             var move_back = (CCActionInterval) move.Reverse();
             CCFiniteTimeAction seq = CCSequence.Create(move, move_back);
             CCAction fe2 = CCRepeatForever.Create((CCActionInterval) seq);

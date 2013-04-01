@@ -339,7 +339,7 @@ namespace tests
             tile2.AnchorPoint = (new CCPoint(0.5f, 0.5f));
             tile3.AnchorPoint = (new CCPoint(0.5f, 0.5f));
 
-            CCMoveBy move = CCMoveBy.Create(0.5f, new CCPoint(0, 160));
+            CCMoveBy move = new CCMoveBy (0.5f, new CCPoint(0, 160));
             CCRotateBy rotate = new CCRotateBy (2, 360);
             CCScaleBy scale = CCScaleBy.Create(2, 5);
             CCFadeOut opacity = new CCFadeOut  (2);
@@ -490,7 +490,7 @@ namespace tests
             // move map to the center of the screen
             CCSize ms = map.MapSize;
             CCSize ts = map.TileSize;
-            map.RunAction(CCMoveTo.Create(1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
+            map.RunAction(new CCMoveTo (1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
         }
 
         public override string title()
@@ -545,7 +545,7 @@ namespace tests
             // move map to the center of the screen
             CCSize ms = map.MapSize;
             CCSize ts = map.TileSize;
-            map.RunAction(CCMoveTo.Create(1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
+            map.RunAction(new CCMoveTo (1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
         }
 
         public override string title()
@@ -574,7 +574,7 @@ namespace tests
             // move map to the center of the screen
             CCSize ms = map.MapSize;
             CCSize ts = map.TileSize;
-            map.RunAction(CCMoveTo.Create(1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
+            map.RunAction(new CCMoveTo (1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
 
             /*
             // testing release map
@@ -843,7 +843,7 @@ namespace tests
             m_tamara.AnchorPoint = (new CCPoint(0.5f, 0));
 
 
-            CCMoveBy move = CCMoveBy.Create(10, new CCPoint(300, 250));
+            CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = CCSequence.Create(move, back);
             m_tamara.RunAction(CCRepeatForever.Create(seq));
@@ -909,7 +909,7 @@ namespace tests
             m_tamara.AnchorPoint = (new CCPoint(0.5f, 0));
 
 
-            CCMoveBy move = CCMoveBy.Create(10, new CCPoint(400, 450));
+            CCMoveBy move = new CCMoveBy (10, new CCPoint(400, 450));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = CCSequence.Create(move, back);
             m_tamara.RunAction(CCRepeatForever.Create(seq));
@@ -969,7 +969,7 @@ namespace tests
             CCTMXLayer layer = map.LayerNamed("Trees");
             m_tamara = layer.TileAt(new CCPoint(29, 29));
 
-            CCMoveBy move = CCMoveBy.Create(10, new CCPoint(300, 250) * (1f / CCMacros.CCContentScaleFactor()));
+            CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250) * (1f / CCMacros.CCContentScaleFactor()));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = CCSequence.Create(move, back);
             m_tamara.RunAction(CCRepeatForever.Create(seq));
@@ -1038,7 +1038,7 @@ namespace tests
             m_tamara = layer.TileAt(new CCPoint(0, 11));
             CCLog.Log("tamara vertexZ: {0}", m_tamara.VertexZ);
 
-            CCMoveBy move = CCMoveBy.Create(10, new CCPoint(400, 450) * (1f / CCMacros.CCContentScaleFactor()));
+            CCMoveBy move = new CCMoveBy (10, new CCPoint(400, 450) * (1f / CCMacros.CCContentScaleFactor()));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = CCSequence.Create(move, back);
             m_tamara.RunAction(CCRepeatForever.Create(seq));

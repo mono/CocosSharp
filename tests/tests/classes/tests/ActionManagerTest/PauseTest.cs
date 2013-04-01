@@ -38,7 +38,7 @@ namespace tests
             AddChild(grossini, 0, kTagGrossini);
             grossini.Position = (new CCPoint(200, 200));
 
-            CCAction action = CCMoveBy.Create(1, new CCPoint(150, 0));
+            CCAction action = new CCMoveBy (1, new CCPoint(150, 0));
 
             CCDirector.SharedDirector.ActionManager.AddAction(action, grossini, true);
 

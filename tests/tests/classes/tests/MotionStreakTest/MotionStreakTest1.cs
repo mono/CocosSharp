@@ -45,7 +45,7 @@ namespace tests
             var a1 = new CCRotateBy (2, 360);
 
             var action1 = CCRepeatForever.Create(a1);
-            var motion = CCMoveBy.Create(2, new CCPoint(100, 0));
+            var motion = new CCMoveBy (2, new CCPoint(100, 0));
             m_root.RunAction(CCRepeatForever.Create((CCActionInterval)CCSequence.Create(motion, motion.Reverse())));
             m_root.RunAction(action1);
 

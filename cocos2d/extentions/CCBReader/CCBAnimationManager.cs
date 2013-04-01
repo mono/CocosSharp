@@ -250,7 +250,7 @@ namespace cocos2d
 
                         CCPoint absPos = CCBHelper.GetAbsolutePosition(new CCPoint(x, y), type, containerSize, pPropName);
 
-                        return CCMoveTo.Create(duration, absPos);
+                        return new CCMoveTo (duration, absPos);
                     }
                 case "scale":
                     {

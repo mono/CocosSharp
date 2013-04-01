@@ -24,7 +24,7 @@ namespace tests
             grossini.Position = (new CCPoint(200, 200));
 
             grossini.RunAction(CCSequence.Create(
-                                                        CCMoveBy.Create(1, new CCPoint(150, 0)),
+                                                        new CCMoveBy (1, new CCPoint(150, 0)),
                                                         CCCallFuncN.Create(bugMe))
                                 );
         }
