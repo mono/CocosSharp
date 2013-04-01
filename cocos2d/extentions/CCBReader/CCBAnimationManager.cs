@@ -215,7 +215,7 @@ namespace cocos2d
                 case "opacity":
                     {
                         var value = (CCBValue) pKeyframe1.Value;
-                        return CCFadeTo.Create(duration, value.GetByteValue());
+                        return new CCFadeTo (duration, value.GetByteValue());
                     }
                 case "color":
                     {
