@@ -297,8 +297,8 @@ namespace cocos2d
 
             m_pTextFieldAction = CCRepeatForever.Create(
                 (CCActionInterval)CCSequence.Create(
-                    CCFadeOut.Create(0.25f),
-                    CCFadeIn.Create(0.25f)));
+                    new CCFadeOut  (0.25f),
+                    new CCFadeIn  (0.25f)));
             //m_pTextFieldAction->retain();
             m_bAction = false;
 
@@ -386,9 +386,9 @@ namespace cocos2d
 
             CCAction seq = CCSequence.Create(
                 CCSpawn.Create(
-                    CCMoveTo.Create(duration, endPos),
+                    new CCMoveTo (duration, endPos),
                     CCScaleTo.Create(duration, 1),
-                    CCFadeOut.Create(duration)),
+                    new CCFadeOut  (duration)),
                 CCCallFuncN.Create(callbackRemoveNodeWhenDidAction));
             label.RunAction(seq);
             return false;
@@ -418,11 +418,11 @@ namespace cocos2d
 
             CCAction seq = CCSequence.Create(
                 CCSpawn.Create(
-                    CCMoveTo.Create(duration, endPos),
+                    new CCMoveTo (duration, endPos),
                     CCRepeat.Create(
                         new CCRotateBy (rotateDuration, (Random.Next() % 2 > 0) ? 360 : -360),
                         (uint)repeatTime),
-                    CCFadeOut.Create(duration)),
+                    new CCFadeOut  (duration)),
                 CCCallFuncN.Create(callbackRemoveNodeWhenDidAction));
             label.RunAction(seq);
             return false;

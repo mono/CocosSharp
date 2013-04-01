@@ -36,7 +36,7 @@ namespace tests
             sprite7.Position = new CCPoint((s.Width / 5) * 3, (s.Height / 3) * 2);
             sprite8.Position = new CCPoint((s.Width / 5) * 4, (s.Height / 3) * 2);
 
-            CCActionInterval action = CCFadeIn.Create(2);
+            CCActionInterval action = new CCFadeIn  (2);
             CCActionInterval action_back = (CCActionInterval)action.Reverse();
             CCAction fade = CCRepeatForever.Create((CCActionInterval)(CCSequence.Create(action, action_back)));
 

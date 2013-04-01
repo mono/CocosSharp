@@ -6,7 +6,18 @@ namespace cocos2d
         protected CCPoint m_endPosition;
         protected CCPoint m_startPosition;
 
-        public bool InitWithDuration(float duration, CCPoint position)
+        public CCMoveTo (float duration, CCPoint position)
+        {
+            InitWithDuration(duration, position);
+        }
+
+        protected CCMoveTo (CCMoveTo moveTo) : base (moveTo)
+        {
+            InitWithDuration(moveTo.m_fDuration, moveTo.m_endPosition);
+
+        }
+
+        protected bool InitWithDuration(float duration, CCPoint position)
         {
             if (base.InitWithDuration(duration))
             {
@@ -19,23 +30,19 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCMoveTo ret;
-
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null)
             {
-                ret = (CCMoveTo) tmpZone;
+                var ret = (CCMoveTo) zone;
+                base.Copy(zone);
+                ret.InitWithDuration(m_fDuration, m_endPosition);
+                
+                return ret;
             }
             else
             {
-                ret = new CCMoveTo();
-                tmpZone =  (ret);
+                return new CCMoveTo(this);
             }
 
-            base.Copy(tmpZone);
-            ret.InitWithDuration(m_fDuration, m_endPosition);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -54,12 +61,5 @@ namespace cocos2d
             }
         }
 
-        public static CCMoveTo Create(float duration, CCPoint position)
-        {
-            var moveTo = new CCMoveTo();
-            moveTo.InitWithDuration(duration, position);
-
-            return moveTo;
-        }
     }
 }

@@ -42,7 +42,7 @@ namespace tests
 
             sprite.RunAction(rot);
 
-            CCActionInterval jump1 = CCJumpBy.Create(4, new CCPoint(-400, 0), 100, 4);
+            CCActionInterval jump1 = new CCJumpBy (4, new CCPoint(-400, 0), 100, 4);
             CCActionInterval jump2 = (CCActionInterval)jump1.Reverse();
 
             CCActionInterval rot1 = new CCRotateBy (4, 360 * 2);

@@ -38,11 +38,11 @@ namespace tests
             CCFiniteTimeAction scale_seq = CCSequence.Create(scale, scale_back);
             CCAction scale_4ever = CCRepeatForever.Create((CCActionInterval)scale_seq);
 
-            CCActionInterval jump = CCJumpBy.Create(0.5f, new CCPoint(), 60, 1);
+            CCActionInterval jump = new CCJumpBy (0.5f, new CCPoint(), 60, 1);
             CCAction jump_4ever = CCRepeatForever.Create(jump);
 
-            CCActionInterval fade_out = CCFadeOut.Create(1);
-            CCActionInterval fade_in = CCFadeIn.Create(1);
+            CCActionInterval fade_out = new CCFadeOut  (1);
+            CCActionInterval fade_in = new CCFadeIn  (1);
             CCFiniteTimeAction seq = CCSequence.Create(fade_out, fade_in);
             CCAction fade_4ever = CCRepeatForever.Create((CCActionInterval)seq);
 

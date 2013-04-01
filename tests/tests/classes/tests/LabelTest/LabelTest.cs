@@ -207,7 +207,7 @@ namespace cocos2d
             //label2.setColor( ccRED );
             label2.Color = ccRED;
 
-            CCActionInterval fade = CCFadeOut.Create(1.0f);
+            CCActionInterval fade = new CCFadeOut  (1.0f);
             //CCActionInterval fade_in = fade.reverse();
             CCActionInterval fade_in = null;
             CCFiniteTimeAction seq = CCSequence.Create(fade, fade_in, null);
@@ -281,11 +281,11 @@ namespace cocos2d
             CCFiniteTimeAction scale_seq = CCSequence.Create(scale, scale_back, null);
             CCAction scale_4ever = CCRepeatForever.Create((CCActionInterval)scale_seq);
 
-            CCActionInterval jump = CCJumpBy.Create(0.5f, new CCPoint(), 60, 1);
+            CCActionInterval jump = new CCJumpBy (0.5f, new CCPoint(), 60, 1);
             CCAction jump_4ever = CCRepeatForever.Create(jump);
 
-            CCActionInterval fade_out = CCFadeOut.Create(1);
-            CCActionInterval fade_in = CCFadeIn.Create(1);
+            CCActionInterval fade_out = new CCFadeOut  (1);
+            CCActionInterval fade_in = new CCFadeIn  (1);
             CCFiniteTimeAction seq = CCSequence.Create(fade_out, fade_in, null);
             CCAction fade_4ever = CCRepeatForever.Create((CCActionInterval)seq);
 

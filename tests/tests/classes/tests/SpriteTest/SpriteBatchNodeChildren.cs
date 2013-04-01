@@ -55,7 +55,7 @@ namespace tests
             sprite1.RunAction(CCRepeatForever.Create(CCAnimate.Create(animation)));
             // END NEW CODE
 
-            CCActionInterval action = CCMoveBy.Create(2, new CCPoint(200, 0));
+            CCActionInterval action = new CCMoveBy (2, new CCPoint(200, 0));
             CCActionInterval action_back = (CCActionInterval)action.Reverse();
             CCActionInterval action_rot = new CCRotateBy (2, 360);
             CCActionInterval action_s = CCScaleBy.Create(2, 2);

@@ -44,12 +44,12 @@ namespace tests
             AddChild(sprite, 0, ClickAndMoveTest.kTagSprite);
             sprite.Position = new CCPoint(20, 150);
 
-            sprite.RunAction(CCJumpTo.Create(4, new CCPoint(300, 48), 100, 4));
+            sprite.RunAction(new CCJumpTo (4, new CCPoint(300, 48), 100, 4));
 
             layer.RunAction(CCRepeatForever.Create(
                                                                 (CCActionInterval)(CCSequence.Create(
-                                                                                    CCFadeIn.Create(1),
-                                                                                    CCFadeOut.Create(1)))
+                                                                                    new CCFadeIn  (1),
+                                                                                    new CCFadeOut  (1)))
                                                                 ));
         }
 
@@ -64,7 +64,7 @@ namespace tests
 
             CCNode s = GetChildByTag(ClickAndMoveTest.kTagSprite);
             s.StopAllActions();
-            s.RunAction(CCMoveTo.Create(1, new CCPoint(convertedLocation.X, convertedLocation.Y)));
+            s.RunAction(new CCMoveTo (1, new CCPoint(convertedLocation.X, convertedLocation.Y)));
             float o = convertedLocation.X - s.Position.X;
             float a = convertedLocation.Y - s.Position.Y;
             float at = (float)(Math.Atan(o / a) * 57.29577951f);

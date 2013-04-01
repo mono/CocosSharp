@@ -42,7 +42,7 @@ namespace cocos2d
         public override CCActionInterval Action()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            return CCMoveBy.Create(m_fDuration, new CCPoint(0, s.Height - 0.5f));
+            return new CCMoveBy (m_fDuration, new CCPoint(0, s.Height - 0.5f));
         }
 
         protected override void SceneOrder()

@@ -51,7 +51,7 @@ namespace cocos2d
         public virtual CCActionInterval Action()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            return CCMoveBy.Create(m_fDuration, new CCPoint(s.Width - 0.5f, 0));
+            return new CCMoveBy (m_fDuration, new CCPoint(s.Width - 0.5f, 0));
         }
 
         public override void OnEnter()

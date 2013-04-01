@@ -5,7 +5,17 @@
         protected byte m_fromOpacity;
         protected byte m_toOpacity;
 
-        public bool InitWithDuration(float duration, byte opacity)
+        public CCFadeTo (float duration, byte opacity)
+        {
+            InitWithDuration(duration, opacity);
+        }
+
+        protected CCFadeTo (CCFadeTo fadeTo) : base (fadeTo)
+        {
+            InitWithDuration(fadeTo.m_fDuration, fadeTo.m_toOpacity);
+        }
+
+        protected bool InitWithDuration(float duration, byte opacity)
         {
             if (base.InitWithDuration(duration))
             {
@@ -18,23 +28,22 @@
 
         public override object Copy(ICopyable pZone)
         {
-            CCFadeTo pCopy;
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCFadeTo) (pZone);
+                var pCopy = (CCFadeTo) (pZone);
+                base.Copy(pZone);
+                
+                pCopy.InitWithDuration(m_fDuration, m_toOpacity);
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCFadeTo();
-                pZone =  (pCopy);
+                return new CCFadeTo(this);
             }
 
-            base.Copy(pZone);
 
-            pCopy.InitWithDuration(m_fDuration, m_toOpacity);
-
-            return pCopy;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -57,12 +66,5 @@
             }
         }
 
-        public static CCFadeTo Create(float duration, byte opacity)
-        {
-            var pFadeTo = new CCFadeTo();
-            pFadeTo.InitWithDuration(duration, opacity);
-
-            return pFadeTo;
-        }
     }
 }

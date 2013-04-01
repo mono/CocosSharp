@@ -28,7 +28,7 @@ namespace tests
             CCActionInterval seq1 = (CCActionInterval)CCSequence.Create(actionTint, actionTintBack);
             layer1.RunAction(seq1);
 
-            CCActionInterval actionFade = CCFadeOut.Create(2.0f);
+            CCActionInterval actionFade = new CCFadeOut  (2.0f);
             CCActionInterval actionFadeBack = (CCActionInterval)actionFade.Reverse();
             CCActionInterval seq2 = (CCActionInterval)CCSequence.Create(actionFade, actionFadeBack);
             layer2.RunAction(seq2);

@@ -32,7 +32,7 @@ namespace tests
             AddChild(l);
             l.Position = (new CCPoint(s.Width / 2, 245));
 
-            CCMoveBy pMove = CCMoveBy.Create(2, new CCPoint(200, 0));
+            CCMoveBy pMove = new CCMoveBy (2, new CCPoint(200, 0));
             CCCallFunc pCallback = CCCallFunc.Create(stopAction);
             CCActionInterval pSequence = (CCActionInterval)CCSequence.Create(pMove, pCallback);
             pSequence.Tag = (int)KTag.kTagSequence;

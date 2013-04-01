@@ -4,14 +4,17 @@
     {
         protected uint m_nTimes;
 
-        public static CCBlink Create(float duration, uint uBlinks)
+        public CCBlink (float duration, uint uBlinks)
         {
-            var pBlink = new CCBlink();
-            pBlink.InitWithDuration(duration, uBlinks);
-            return pBlink;
+            InitWithDuration(duration, uBlinks);
         }
 
-        public bool InitWithDuration(float duration, uint uBlinks)
+        protected CCBlink (CCBlink blink) : base (blink)
+        {
+            InitWithDuration(m_fDuration, m_nTimes);
+        }
+
+        protected bool InitWithDuration(float duration, uint uBlinks)
         {
             if (base.InitWithDuration(duration))
             {
@@ -24,23 +27,21 @@
 
         public override object Copy(ICopyable pZone)
         {
-            CCBlink pCopy;
+
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCBlink) (pZone);
+                var pCopy = (CCBlink) (pZone);
+                base.Copy(pZone);
+                
+                pCopy.InitWithDuration(m_fDuration, m_nTimes);
+                return pCopy;
             }
             else
             {
-                pCopy = new CCBlink();
-                pZone =  (pCopy);
+                return new CCBlink(this);
             }
 
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_nTimes);
-
-            return pCopy;
         }
 
         public override void Update(float time)
@@ -56,7 +57,7 @@
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_fDuration, m_nTimes);
+            return new CCBlink(m_fDuration, m_nTimes);
         }
     }
 }

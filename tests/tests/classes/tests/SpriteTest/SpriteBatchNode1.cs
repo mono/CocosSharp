@@ -42,11 +42,11 @@ namespace tests
             else if (random < 0.40)
                 action = new CCRotateBy (3, 360);
             else if (random < 0.60)
-                action = CCBlink.Create(1, 3);
+                action = new CCBlink (1, 3);
             else if (random < 0.8)
                 action = CCTintBy.Create(2, 0, -255, -255);
             else
-                action = CCFadeOut.Create(2);
+                action = new CCFadeOut  (2);
 
             CCActionInterval action_back = (CCActionInterval)action.Reverse();
             CCActionInterval seq = (CCActionInterval)(CCSequence.Create(action, action_back));

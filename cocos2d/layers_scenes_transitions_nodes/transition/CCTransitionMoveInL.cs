@@ -50,7 +50,7 @@ namespace cocos2d
         /// <returns></returns>
         public virtual CCActionInterval Action()
         {
-            return CCMoveTo.Create(m_fDuration, new CCPoint(0, 0));
+            return new CCMoveTo (m_fDuration, new CCPoint(0, 0));
         }
 
         public override void OnEnter()

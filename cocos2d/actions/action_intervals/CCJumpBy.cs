@@ -7,7 +7,18 @@ namespace cocos2d
         protected uint m_nJumps;
         protected CCPoint m_startPosition;
 
-        public bool InitWithDuration(float duration, CCPoint position, float height, uint jumps)
+        
+        public CCJumpBy (float duration, CCPoint position, float height, uint jumps)
+        {
+            InitWithDuration(duration, position, height, jumps);
+        }
+
+        protected CCJumpBy (CCJumpBy jumpBy) : base (jumpBy)
+        {
+            InitWithDuration(jumpBy.m_fDuration, jumpBy.m_delta, jumpBy.m_height, jumpBy.m_nJumps);
+        }
+
+        protected bool InitWithDuration(float duration, CCPoint position, float height, uint jumps)
         {
             if (base.InitWithDuration(duration))
             {
@@ -23,28 +34,23 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCJumpBy ret;
-
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null)
             {
-                ret = tmpZone as CCJumpBy;
+                var ret = zone as CCJumpBy;
                 if (ret == null)
                 {
                     return null;
                 }
+                base.Copy(zone);
+                
+                ret.InitWithDuration(m_fDuration, m_delta, m_height, m_nJumps);
+                
+                return ret;
             }
             else
             {
-                ret = new CCJumpBy();
-                tmpZone =  (ret);
+                return new CCJumpBy(this);
             }
-
-            base.Copy(tmpZone);
-
-            ret.InitWithDuration(m_fDuration, m_delta, m_height, m_nJumps);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -68,14 +74,8 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_fDuration, new CCPoint(-m_delta.X, -m_delta.Y), m_height, m_nJumps);
+            return new CCJumpBy (m_fDuration, new CCPoint(-m_delta.X, -m_delta.Y), m_height, m_nJumps);
         }
 
-        public static CCJumpBy Create(float duration, CCPoint position, float height, uint jumps)
-        {
-            var ret = new CCJumpBy();
-            ret.InitWithDuration(duration, position, height, jumps);
-            return ret;
-        }
     }
 }

@@ -2,11 +2,15 @@ namespace cocos2d
 {
     public class CCJumpTo : CCJumpBy
     {
-        public new static CCJumpTo Create(float duration, CCPoint position, float height, uint jumps)
+        public CCJumpTo (float duration, CCPoint position, float height, uint jumps) :
+            base (duration, position, height, jumps)
         {
-            var ret = new CCJumpTo();
-            ret.InitWithDuration(duration, position, height, jumps);
-            return ret;
+            InitWithDuration(duration, position, height, jumps);
+        }
+
+        protected CCJumpTo (CCJumpTo jumpTo) : base (jumpTo)
+        {
+            InitWithDuration(jumpTo.m_fDuration, jumpTo.m_delta, jumpTo.m_height, jumpTo.m_nJumps);
         }
 
         public override void StartWithTarget(CCNode target)
@@ -17,28 +21,25 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCJumpTo ret;
-
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null)
             {
-                ret = tmpZone as CCJumpTo;
+                var ret = zone as CCJumpTo;
                 if (ret == null)
                 {
                     return null;
                 }
+                base.Copy(zone);
+                
+                ret.InitWithDuration(m_fDuration, m_delta, m_height, m_nJumps);
+                
+                return ret;
             }
             else
             {
-                ret = new CCJumpTo();
-                tmpZone =  (ret);
+                return new CCJumpTo(this);
             }
 
-            base.Copy(tmpZone);
 
-            ret.InitWithDuration(m_fDuration, m_delta, m_height, m_nJumps);
-
-            return ret;
         }
     }
 }

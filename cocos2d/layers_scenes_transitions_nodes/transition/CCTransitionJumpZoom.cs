@@ -13,7 +13,7 @@ namespace cocos2d
             m_pInScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_pOutScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            CCActionInterval jump = CCJumpBy.Create(m_fDuration / 4, new CCPoint(-s.Width, 0), s.Width / 4, 2);
+            CCActionInterval jump = new CCJumpBy (m_fDuration / 4, new CCPoint(-s.Width, 0), s.Width / 4, 2);
             CCActionInterval scaleIn = CCScaleTo.Create(m_fDuration / 4, 1.0f);
             CCActionInterval scaleOut = CCScaleTo.Create(m_fDuration / 4, 0.5f);
 

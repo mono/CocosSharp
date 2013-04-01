@@ -409,13 +409,13 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var actionTo = CCMoveTo.Create(2, new CCPoint(s.Width - 40, s.Height - 40));
-            var actionBy = CCMoveBy.Create(2, new CCPoint(80, 80));
+            var actionTo = new CCMoveTo (2, new CCPoint(s.Width - 40, s.Height - 40));
+            var actionBy = new CCMoveBy (2, new CCPoint(80, 80));
             var actionByBack = actionBy.Reverse();
 
             m_tamara.RunAction(actionTo);
             m_grossini.RunAction(CCSequence.Create(actionBy, actionByBack));
-            m_kathia.RunAction(CCMoveTo.Create(1, new CCPoint(40, 40)));
+            m_kathia.RunAction(new CCMoveTo (1, new CCPoint(40, 40)));
         }
 
         public override string subtitle()
@@ -562,9 +562,9 @@ namespace tests
 
             centerSprites(3);
 
-            var actionTo = CCJumpTo.Create(2, new CCPoint(300, 300), 50, 4);
-            var actionBy = CCJumpBy.Create(2, new CCPoint(300, 0), 50, 4);
-            var actionUp = CCJumpBy.Create(2, new CCPoint(0, 0), 80, 4);
+            var actionTo = new CCJumpTo (2, new CCPoint(300, 300), 50, 4);
+            var actionBy = new CCJumpBy (2, new CCPoint(300, 0), 50, 4);
+            var actionUp = new CCJumpBy (2, new CCPoint(0, 0), 80, 4);
             var actionByBack = actionBy.Reverse();
 
             m_tamara.RunAction(actionTo);
@@ -636,8 +636,8 @@ namespace tests
 
             centerSprites(2);
 
-            var action1 = CCBlink.Create(2, 10);
-            var action2 = CCBlink.Create(2, 5);
+            var action1 = new CCBlink (2, 10);
+            var action2 = new CCBlink (2, 5);
 
             m_tamara.RunAction(action1);
             m_kathia.RunAction(action2);
@@ -658,10 +658,10 @@ namespace tests
             centerSprites(2);
 
             m_tamara.Opacity = 0;
-            var action1 = CCFadeIn.Create(1.0f);
+            var action1 = new CCFadeIn  (1.0f);
             var action1Back = action1.Reverse();
 
-            var action2 = CCFadeOut.Create(1.0f);
+            var action2 = new CCFadeOut  (1.0f);
             var action2Back = action2.Reverse();
 
             m_tamara.RunAction(CCSequence.Create(action1, action1Back));
@@ -772,7 +772,7 @@ namespace tests
             alignSpritesLeft(1);
 
             var action = CCSequence.Create(
-                CCMoveBy.Create(2, new CCPoint(240, 0)),
+                new CCMoveBy (2, new CCPoint(240, 0)),
                 new CCRotateBy (2, 540));
 
             m_grossini.RunAction(action);
@@ -797,7 +797,7 @@ namespace tests
             var action = CCSequence.Create(
                 CCPlace.Create(new CCPoint(200, 200)),
                 CCShow.Create(),
-                CCMoveBy.Create(1, new CCPoint(100, 0)),
+                new CCMoveBy (1, new CCPoint(100, 0)),
                 CCCallFunc.Create(callback1),
                 CCCallFuncN.Create(callback2),
                 CCCallFuncND.Create(callback3, 0xbebabeba));
@@ -847,17 +847,17 @@ namespace tests
             centerSprites(3);
 
             var action = CCSequence.Create(
-                CCMoveBy.Create(2, new CCPoint(200, 0)),
+                new CCMoveBy (2, new CCPoint(200, 0)),
                 CCCallFunc.Create(callback1));
 
             var action2 = CCSequence.Create(
                 CCScaleBy.Create(2, 2),
-                CCFadeOut.Create(2),
+                new CCFadeOut  (2),
                 CCCallFuncN.Create(callback2));
 
             var action3 = CCSequence.Create(
                 new CCRotateBy (3, 360),
-                CCFadeOut.Create(2),
+                new CCFadeOut  (2),
                 CCCallFuncND.Create(callback3, 0xbebabeba));
 
             m_grossini.RunAction(action);
@@ -907,7 +907,7 @@ namespace tests
             centerSprites(1);
 
             var action = CCSequence.Create(
-                CCMoveBy.Create(2.0f, new CCPoint(200, 0)),
+                new CCMoveBy (2.0f, new CCPoint(200, 0)),
                 CCCallFuncND.Create(removeFromParentAndCleanup, true)
                 );
 
@@ -940,7 +940,7 @@ namespace tests
             alignSpritesLeft(1);
 
             var action = CCSpawn.Create(
-                CCJumpBy.Create(2, new CCPoint(300, 0), 50, 4),
+                new CCJumpBy (2, new CCPoint(300, 0), 50, 4),
                 new CCRotateBy (2, 720));
 
             m_grossini.RunAction(action);
@@ -1037,7 +1037,7 @@ namespace tests
 
             alignSpritesLeft(1);
 
-            var jump = CCJumpBy.Create(2, new CCPoint(300, 0), 50, 4);
+            var jump = new CCJumpBy (2, new CCPoint(300, 0), 50, 4);
             var action = CCSequence.Create(jump, jump.Reverse());
 
             m_grossini.RunAction(action);
@@ -1057,7 +1057,7 @@ namespace tests
 
             alignSpritesLeft(1);
 
-            var move = CCMoveBy.Create(1, new CCPoint(150, 0));
+            var move = new CCMoveBy (1, new CCPoint(150, 0));
             var action = CCSequence.Create(move, CCDelayTime.Create(2), move);
 
             m_grossini.RunAction(action);
@@ -1077,8 +1077,8 @@ namespace tests
 
             alignSpritesLeft(1);
 
-            var move1 = CCMoveBy.Create(1, new CCPoint(250, 0));
-            var move2 = CCMoveBy.Create(1, new CCPoint(0, 50));
+            var move1 = new CCMoveBy (1, new CCPoint(250, 0));
+            var move2 = new CCMoveBy (1, new CCPoint(0, 50));
             var seq = CCSequence.Create(move1, move2, move1.Reverse());
             var action = CCSequence.Create(seq, seq.Reverse());
 
@@ -1101,8 +1101,8 @@ namespace tests
 
             // Test:
             //   Sequence should work both with IntervalAction and InstantActions
-            var move1 = CCMoveBy.Create(1, new CCPoint(250, 0));
-            var move2 = CCMoveBy.Create(1, new CCPoint(0, 50));
+            var move1 = new CCMoveBy (1, new CCPoint(250, 0));
+            var move2 = new CCMoveBy (1, new CCPoint(0, 50));
             var tog1 = new CCToggleVisibility();
             var tog2 = new CCToggleVisibility();
             var seq = CCSequence.Create(move1, tog1, move2, tog2, move1.Reverse());
@@ -1112,8 +1112,8 @@ namespace tests
             //   Also test that the reverse of Hide is Show, and vice-versa
             m_kathia.RunAction(action);
 
-            var move_tamara = CCMoveBy.Create(1, new CCPoint(100, 0));
-            var move_tamara2 = CCMoveBy.Create(1, new CCPoint(50, 0));
+            var move_tamara = new CCMoveBy (1, new CCPoint(100, 0));
+            var move_tamara2 = new CCMoveBy (1, new CCPoint(50, 0));
             var hide = new CCHide();
             var seq_tamara = CCSequence.Create(move_tamara, hide, move_tamara2);
             var seq_back = seq_tamara.Reverse();
@@ -1134,7 +1134,7 @@ namespace tests
 
             alignSpritesLeft(2);
 
-            var a1 = CCMoveBy.Create(1, new CCPoint(150, 0));
+            var a1 = new CCMoveBy (1, new CCPoint(150, 0));
             var action1 = CCRepeat.Create(
                 CCSequence.Create(CCPlace.Create(new CCPoint(60, 60)), a1),
                 3);
@@ -1175,7 +1175,7 @@ namespace tests
             m_tamara.RunAction(CCRepeatForever.Create(action2));
             m_grossini.RunAction(CCRepeatForever.Create(action3));
 
-            var move = CCMoveBy.Create(3, new CCPoint(100, -100));
+            var move = new CCMoveBy (3, new CCPoint(100, -100));
             var move_back = move.Reverse();
             var seq = CCSequence.Create(move, move_back);
             var rfe = CCRepeatForever.Create(seq);
@@ -1200,7 +1200,7 @@ namespace tests
             var s = CCDirector.SharedDirector.WinSize;
 
             m_grossini.Position = new CCPoint(-200, s.Height / 2);
-            var move = CCMoveBy.Create(2, new CCPoint(s.Width * 3, 0));
+            var move = new CCMoveBy (2, new CCPoint(s.Width * 3, 0));
             var move_back = move.Reverse();
             var seq = CCSequence.Create(move, move_back);
             var rep = CCRepeatForever.Create(seq);
@@ -1387,7 +1387,7 @@ namespace tests
 
             centerSprites(2);
 
-            var jump1 = CCJumpBy.Create(2, CCPoint.Zero, 100, 3);
+            var jump1 = new CCJumpBy (2, CCPoint.Zero, 100, 3);
             var jump2 = (CCJumpBy) jump1.Copy();
             var rot1 = new CCRotateBy (1, 360);
             var rot2 = (CCRotateBy) rot1.Copy();
@@ -1470,14 +1470,14 @@ namespace tests
             spr.Position = new CCPoint(200, 200);
             AddChild(spr);
 
-            var act1 = CCMoveBy.Create(2, new CCPoint(0, 100));
+            var act1 = new CCMoveBy (2, new CCPoint(0, 100));
 
             var act2 = CCCallFunc.Create(log1);
-            var act3 = CCMoveBy.Create(2, new CCPoint(0, -100));
+            var act3 = new CCMoveBy (2, new CCPoint(0, -100));
             var act4 = CCCallFunc.Create(log2);
-            var act5 = CCMoveBy.Create(2, new CCPoint(100, -100));
+            var act5 = new CCMoveBy (2, new CCPoint(100, -100));
             var act6 = CCCallFunc.Create(log3);
-            var act7 = CCMoveBy.Create(2, new CCPoint(-100, 0));
+            var act7 = new CCMoveBy (2, new CCPoint(-100, 0));
             var act8 = CCCallFunc.Create(log4);
 
             var actF = CCSequence.Create(act1, act2, act3, act4, act5, act6, act7, act8);
@@ -1529,7 +1529,7 @@ namespace tests
             spr.Position = new CCPoint(100, 100);
             AddChild(spr);
 
-            var act1 = CCMoveBy.Create(0.5f, new CCPoint(100, 0));
+            var act1 = new CCMoveBy (0.5f, new CCPoint(100, 0));
             var act2 = (CCMoveBy) act1.Reverse();
             var act3 = CCSequence.Create(act1, act2);
             var act4 = CCRepeat.Create(act3, 2);
@@ -1560,7 +1560,7 @@ namespace tests
             spr.Position = new CCPoint(100, 100);
             AddChild(spr);
 
-            var act1 = CCMoveBy.Create(0.5f, new CCPoint(100, 0));
+            var act1 = new CCMoveBy (0.5f, new CCPoint(100, 0));
             spr.RunAction(CCRepeat.Create(act1, 1));
         }
 

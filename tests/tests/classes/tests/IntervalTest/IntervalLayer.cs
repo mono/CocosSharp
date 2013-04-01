@@ -59,7 +59,7 @@ namespace tests
             CCSprite sprite = CCSprite.Create(s_pPathGrossini);
             sprite.Position = new CCPoint(40, 50);
 
-            CCJumpBy jump = CCJumpBy.Create(3, new CCPoint(s.Width - 80, 0), 50, 4);
+            CCJumpBy jump = new CCJumpBy (3, new CCPoint(s.Width - 80, 0), 50, 4);
 
             AddChild(sprite);
             sprite.RunAction(CCRepeatForever.Create(

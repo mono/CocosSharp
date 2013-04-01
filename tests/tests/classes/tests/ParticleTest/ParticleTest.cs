@@ -230,7 +230,7 @@ namespace tests
             AddChild(m_background, 5);
             m_background.Position = new CCPoint(s.Width / 2, s.Height - 180);
 
-            CCActionInterval move = CCMoveBy.Create(4, new CCPoint(300, 0));
+            CCActionInterval move = new CCMoveBy (4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
             CCFiniteTimeAction seq = CCSequence.Create(move, move_back);
             m_background.RunAction(CCRepeatForever.Create((CCActionInterval) seq));
@@ -971,7 +971,7 @@ namespace tests
             p2.AddChild(par, 10);
             par.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_fire);
 
-            CCActionInterval move = CCMoveBy.Create(4, new CCPoint(300, 0));
+            CCActionInterval move = new CCMoveBy (4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
             CCFiniteTimeAction seq = CCSequence.Create(move, move_back);
             p.RunAction(CCRepeatForever.Create((CCActionInterval) seq));

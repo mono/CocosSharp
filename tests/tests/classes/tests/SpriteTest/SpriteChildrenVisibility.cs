@@ -39,7 +39,7 @@ namespace tests
             sprite1.AddChild(sprite2, -2);
             sprite1.AddChild(sprite3, 2);
 
-            sprite1.RunAction(CCBlink.Create(5, 10));
+            sprite1.RunAction(new CCBlink (5, 10));
 
             //
             // Sprite
@@ -61,7 +61,7 @@ namespace tests
             sprite1.AddChild(sprite2, -2);
             sprite1.AddChild(sprite3, 2);
 
-            sprite1.RunAction(CCBlink.Create(5, 10));
+            sprite1.RunAction(new CCBlink (5, 10));
         }
 
         public override void OnExit()

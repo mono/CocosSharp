@@ -92,7 +92,7 @@ namespace cocos2d
             // create the blend action
             CCAction layerAction = CCSequence.Create
                 (
-                    CCFadeTo.Create(m_fDuration, 0),
+                    new CCFadeTo (m_fDuration, 0),
                     CCCallFunc.Create((HideOutShowIn)),
                     CCCallFunc.Create((Finish))
                 );

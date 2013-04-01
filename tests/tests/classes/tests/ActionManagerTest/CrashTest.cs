@@ -28,7 +28,7 @@ namespace tests
             child.RunAction(new CCRotateBy (1.5f, 90));
             child.RunAction(CCSequence.Create(
                                                     CCDelayTime.Create(1.4f),
-                                                    CCFadeOut.Create(1.1f))
+                                                    new CCFadeOut  (1.1f))
                             );
 
             //After 1.5 second, self will be removed.
