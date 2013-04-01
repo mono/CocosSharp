@@ -430,6 +430,7 @@
     <Compile Include="Classes\tests\ActionsProgressTest\SpriteProgressToVertical.cs" />
     <Compile Include="Classes\tests\ActionsProgressTest\SpriteProgressWithSpriteFrame.cs" />
     <Compile Include="Classes\tests\RenderTextureTest\RenderTextureIssue937.cs" />
+    <Compile Include="classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs" />
     <Compile Include="Classes\tests\RenderTextureTest\RenderTextureSave.cs" />
     <Compile Include="Classes\tests\RenderTextureTest\RenderTextureScene.cs" />
     <Compile Include="Classes\tests\RenderTextureTest\RenderTextureTestDemo.cs" />
