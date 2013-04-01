@@ -98,12 +98,12 @@ namespace Box2D.Dynamics.Joints
         public virtual float GetReferenceAngle() { return m_referenceAngle; }
 
         /// The local anchor point relative to bodyA's origin.
-        public override b2Vec2 GetLocalAnchorA() { return m_localAnchorA; }
+        public virtual b2Vec2 GetLocalAnchorA() { return m_localAnchorA; }
 
         /// The local anchor point relative to bodyB's origin.
-        public override b2Vec2 GetLocalAnchorB() { return m_localAnchorB; }
+        public virtual b2Vec2 GetLocalAnchorB() { return m_localAnchorB; }
 
-        public override float GetMotorSpeed()
+        public virtual float GetMotorSpeed()
         {
             return m_motorSpeed;
         }
