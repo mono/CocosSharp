@@ -42,7 +42,7 @@ namespace tests
             AddChild(green);
             AddChild(red);
 
-            CCAction rot = CCRotateBy.Create(8, 720);
+            CCAction rot = new CCRotateBy (8, 720);
 
             blue.RunAction(rot);
             red.RunAction((CCAction)(rot.Copy()));

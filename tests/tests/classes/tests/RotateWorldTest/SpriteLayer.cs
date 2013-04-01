@@ -34,7 +34,7 @@ namespace tests
             spriteSister1.Position = (new CCPoint(40, y / 2));
             spriteSister2.Position = (new CCPoint(x - 40, y / 2));
 
-            CCAction rot = CCRotateBy.Create(16, -3600);
+            CCAction rot = new CCRotateBy (16, -3600);
 
             AddChild(sprite);
             AddChild(spriteSister1);
@@ -45,7 +45,7 @@ namespace tests
             CCActionInterval jump1 = CCJumpBy.Create(4, new CCPoint(-400, 0), 100, 4);
             CCActionInterval jump2 = (CCActionInterval)jump1.Reverse();
 
-            CCActionInterval rot1 = CCRotateBy.Create(4, 360 * 2);
+            CCActionInterval rot1 = new CCRotateBy (4, 360 * 2);
             CCActionInterval rot2 = (CCActionInterval)rot1.Reverse();
 
             spriteSister1.RunAction(CCRepeat.Create(CCSequence.Create(jump2, jump1), 5));

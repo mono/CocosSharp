@@ -25,7 +25,7 @@ namespace tests
             AddChild(child, 1);
 
             //Sum of all action's duration is 1.5 second.
-            child.RunAction(CCRotateBy.Create(1.5f, 90));
+            child.RunAction(new CCRotateBy (1.5f, 90));
             child.RunAction(CCSequence.Create(
                                                     CCDelayTime.Create(1.4f),
                                                     CCFadeOut.Create(1.1f))

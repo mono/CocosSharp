@@ -40,7 +40,7 @@ namespace tests
             if (random < 0.20)
                 action = CCScaleBy.Create(3, 2);
             else if (random < 0.40)
-                action = CCRotateBy.Create(3, 360);
+                action = new CCRotateBy (3, 360);
             else if (random < 0.60)
                 action = CCBlink.Create(1, 3);
             else if (random < 0.8)

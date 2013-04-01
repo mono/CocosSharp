@@ -509,11 +509,11 @@ namespace tests
             AddChild(box);
 
             var actionTo = CCSkewTo.Create(2, 0.0f, 2.0f);
-            var rotateTo = CCRotateTo.Create(2, 61.0f);
+            var rotateTo = new CCRotateTo (2, 61.0f);
             var actionScaleTo = CCScaleTo.Create(2, -0.44f, 0.47f);
 
             var actionScaleToBack = CCScaleTo.Create(2, 1.0f, 1.0f);
-            var rotateToBack = CCRotateTo.Create(2, 0);
+            var rotateToBack = new CCRotateTo (2, 0);
             var actionToBack = CCSkewTo.Create(2, 0, 0);
 
             box.RunAction(CCSequence.Create(actionTo, actionToBack));
@@ -535,12 +535,12 @@ namespace tests
 
             centerSprites(3);
 
-            var actionTo = CCRotateTo.Create(2, 45);
-            var actionTo2 = CCRotateTo.Create(2, -45);
-            var actionTo0 = CCRotateTo.Create(2, 0);
+            var actionTo = new CCRotateTo (2, 45);
+            var actionTo2 = new CCRotateTo (2, -45);
+            var actionTo0 = new CCRotateTo (2, 0);
             m_tamara.RunAction(CCSequence.Create(actionTo, actionTo0));
 
-            var actionBy = CCRotateBy.Create(2, 360);
+            var actionBy = new CCRotateBy (2, 360);
             var actionByBack = actionBy.Reverse();
             m_grossini.RunAction(CCSequence.Create(actionBy, actionByBack));
 
@@ -773,7 +773,7 @@ namespace tests
 
             var action = CCSequence.Create(
                 CCMoveBy.Create(2, new CCPoint(240, 0)),
-                CCRotateBy.Create(2, 540));
+                new CCRotateBy (2, 540));
 
             m_grossini.RunAction(action);
         }
@@ -856,7 +856,7 @@ namespace tests
                 CCCallFuncN.Create(callback2));
 
             var action3 = CCSequence.Create(
-                CCRotateBy.Create(3, 360),
+                new CCRotateBy (3, 360),
                 CCFadeOut.Create(2),
                 CCCallFuncND.Create(callback3, 0xbebabeba));
 
@@ -941,7 +941,7 @@ namespace tests
 
             var action = CCSpawn.Create(
                 CCJumpBy.Create(2, new CCPoint(300, 0), 50, 4),
-                CCRotateBy.Create(2, 720));
+                new CCRotateBy (2, 720));
 
             m_grossini.RunAction(action);
         }
@@ -969,7 +969,7 @@ namespace tests
 
         public void repeatForever(CCNode pSender)
         {
-            var repeat = CCRepeatForever.Create(CCRotateBy.Create(1.0f, 360));
+            var repeat = CCRepeatForever.Create(new CCRotateBy (1.0f, 360));
 
             pSender.RunAction(repeat);
         }
@@ -988,8 +988,8 @@ namespace tests
 
             centerSprites(2);
 
-            var act1 = CCRotateTo.Create(1, 90);
-            var act2 = CCRotateTo.Create(1, 0);
+            var act1 = new CCRotateTo (1, 90);
+            var act2 = new CCRotateTo (1, 0);
             var seq = (CCSequence.Create(act1, act2));
             var rep1 = CCRepeatForever.Create((CCActionInterval)seq);
             var rep2 = CCRepeat.Create((CCFiniteTimeAction)(seq.Copy()), 10);
@@ -1013,8 +1013,8 @@ namespace tests
             centerSprites(2);
 
             var seq = CCSequence.Create(
-                CCRotateTo.Create(0.5f, -20),
-                CCRotateTo.Create(0.5f, 20));
+                new CCRotateTo (0.5f, -20),
+                new CCRotateTo (0.5f, 20));
 
             var rep1 = CCRepeat.Create(seq, 10);
             var rep2 = CCRepeatForever.Create((CCActionInterval)(seq.Copy()));
@@ -1207,7 +1207,7 @@ namespace tests
 
             m_grossini.RunAction(rep);
 
-            RunAction(CCFollow.Create(m_grossini, new CCRect(0, 0, s.Width * 2 - 100, s.Height)));
+            RunAction(new CCFollow (m_grossini, new CCRect(0, 0, s.Width * 2 - 100, s.Height)));
         }
 
         public override string subtitle()
@@ -1389,7 +1389,7 @@ namespace tests
 
             var jump1 = CCJumpBy.Create(2, CCPoint.Zero, 100, 3);
             var jump2 = (CCJumpBy) jump1.Copy();
-            var rot1 = CCRotateBy.Create(1, 360);
+            var rot1 = new CCRotateBy (1, 360);
             var rot2 = (CCRotateBy) rot1.Copy();
 
             var t1 = CCTargetedAction.Create(m_kathia, jump2);
@@ -1588,13 +1588,13 @@ namespace tests
             AddChild(spr);
 
             var act1 = CCCallFuncN.Create(logSprRotation);
-            var act2 = CCRotateBy.Create(0.25f, 45);
+            var act2 = new CCRotateBy (0.25f, 45);
             var act3 = CCCallFuncN.Create(logSprRotation);
-            var act4 = CCRotateBy.Create(0.25f, 45);
+            var act4 = new CCRotateBy (0.25f, 45);
             var act5 = CCCallFuncN.Create(logSprRotation);
-            var act6 = CCRotateBy.Create(0.25f, 45);
+            var act6 = new CCRotateBy (0.25f, 45);
             var act7 = CCCallFuncN.Create(logSprRotation);
-            var act8 = CCRotateBy.Create(0.25f, 45);
+            var act8 = new CCRotateBy (0.25f, 45);
             var act9 = CCCallFuncN.Create(logSprRotation);
 
             var actF = CCSequence.Create(act1, act2, act3, act4, act5, act6, act7, act8, act9);
@@ -1627,9 +1627,9 @@ namespace tests
 
             centerSprites(2);
 
-            m_tamara.RunAction(CCRepeatForever.Create(CCRotateBy.Create(3, 360)));
-            m_grossini.RunAction(CCRepeatForever.Create(CCRotateBy.Create(3, -360)));
-            m_kathia.RunAction(CCRepeatForever.Create(CCRotateBy.Create(3, 360)));
+            m_tamara.RunAction(CCRepeatForever.Create(new CCRotateBy (3, 360)));
+            m_grossini.RunAction(CCRepeatForever.Create(new CCRotateBy (3, -360)));
+            m_kathia.RunAction(CCRepeatForever.Create(new CCRotateBy (3, 360)));
 
             ScheduleOnce(pause, 3);
             ScheduleOnce(resume, 5);

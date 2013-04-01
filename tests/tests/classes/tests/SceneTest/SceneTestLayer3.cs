@@ -33,7 +33,7 @@ namespace tests
             AddChild(sprite);
             
             sprite.Position = new CCPoint(s.Width /2, 40);
-            CCActionInterval rotate = CCRotateBy.Create(2, 360);
+            CCActionInterval rotate = new CCRotateBy (2, 360);
             CCAction repeat = CCRepeatForever.Create(rotate);
             sprite.RunAction(repeat);
 

@@ -16,7 +16,7 @@ namespace tests
 
             CCNode aParent;
             CCSprite l1, l2a, l2b, l3a1, l3a2, l3b1, l3b2;
-            CCActionInterval rot = CCRotateBy.Create(10, 360);
+            CCActionInterval rot = new CCRotateBy (10, 360);
             CCAction seq = CCRepeatForever.Create(rot);
 
             CCActionInterval rot_back = (CCActionInterval)rot.Reverse();

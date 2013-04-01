@@ -10,7 +10,7 @@ namespace tests
             TouchEnabled = true;
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCRotateBy rotate = CCRotateBy.Create(10, 360);
+            CCRotateBy rotate = new CCRotateBy (10, 360);
             CCRepeatForever action = CCRepeatForever.Create(rotate);
             for (int i = 0; i < 3; i++)
             {

@@ -26,7 +26,7 @@ namespace tests
             sp1.AddChild(sp3);
             sp2.AddChild(sp4);
 
-            CCActionInterval a1 = CCRotateBy.Create(2, 360);
+            CCActionInterval a1 = new CCRotateBy (2, 360);
             CCActionInterval a2 = CCScaleBy.Create(2, 2);
 
             CCAction action1 = CCRepeatForever.Create((CCActionInterval)CCSequence.Create(a1, a2, a2.Reverse())

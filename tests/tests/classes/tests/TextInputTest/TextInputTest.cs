@@ -420,7 +420,7 @@ namespace cocos2d
                 CCSpawn.Create(
                     CCMoveTo.Create(duration, endPos),
                     CCRepeat.Create(
-                        CCRotateBy.Create(rotateDuration, (Random.Next() % 2 > 0) ? 360 : -360),
+                        new CCRotateBy (rotateDuration, (Random.Next() % 2 > 0) ? 360 : -360),
                         (uint)repeatTime),
                     CCFadeOut.Create(duration)),
                 CCCallFuncN.Create(callbackRemoveNodeWhenDidAction));

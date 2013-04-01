@@ -58,7 +58,7 @@ namespace tests
                 }
                 sprite.Position = (new CCPoint(x, y));
 
-                CCActionInterval action = CCRotateBy.Create(4, 360);
+                CCActionInterval action = new CCRotateBy (4, 360);
                 sprite.RunAction(CCRepeatForever.Create(action));
             }
 

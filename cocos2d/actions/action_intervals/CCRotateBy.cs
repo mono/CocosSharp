@@ -5,7 +5,17 @@ namespace cocos2d
         protected float m_fAngle;
         protected float m_fStartAngle;
 
-        public bool InitWithDuration(float duration, float fDeltaAngle)
+        public CCRotateBy (float duration, float fDeltaAngle)
+        {
+            InitWithDuration(duration, fDeltaAngle);
+        }
+
+        protected CCRotateBy (CCRotateBy rotateTo) : base(rotateTo)
+        {
+            InitWithDuration(rotateTo.m_fDuration, rotateTo.m_fAngle);
+        }
+
+        private bool InitWithDuration(float duration, float fDeltaAngle)
         {
             if (base.InitWithDuration(duration))
             {
@@ -18,28 +28,25 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCRotateBy ret;
 
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null)
             {
-                ret = tmpZone as CCRotateBy;
+                var ret = zone as CCRotateBy;
                 if (ret == null)
                 {
                     return null;
                 }
+                base.Copy(ret);
+                
+                ret.InitWithDuration(m_fDuration, m_fAngle);
+
+                return ret;
             }
             else
             {
-                ret = new CCRotateBy();
-                tmpZone =  (ret);
+                return new CCRotateBy(this);
             }
 
-            base.Copy(tmpZone);
-
-            ret.InitWithDuration(m_fDuration, m_fAngle);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -59,14 +66,9 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_fDuration, -m_fAngle);
+            return new CCRotateBy (m_fDuration, -m_fAngle);
         }
 
-        public static CCRotateBy Create(float duration, float fDeltaAngle)
-        {
-            var ret = new CCRotateBy();
-            ret.InitWithDuration(duration, fDeltaAngle);
-            return ret;
-        }
+
     }
 }

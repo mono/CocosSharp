@@ -18,6 +18,11 @@ namespace cocos2d
             m_nTag = (int) ActionTag.kCCActionTagInvalid;
         }
 
+        protected CCAction(CCAction action)
+        {
+            m_nTag = action.m_nTag;
+        }
+
         public CCNode Target
         {
             get { return m_pTarget; }
@@ -48,19 +53,16 @@ namespace cocos2d
 
         public virtual object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCAction ret;
-            if (tmpZone != null)
+
+            if (zone != null)
             {
-                ret = (CCAction) tmpZone;
+                ((CCAction) zone).m_nTag = m_nTag;
+                return zone;
             }
             else
             {
-                ret = new CCAction();
+                return new CCAction(this);
             }
-
-            ret.m_nTag = m_nTag;
-            return ret;
         }
 
         public virtual bool IsDone
@@ -88,9 +90,5 @@ namespace cocos2d
             CCLog.Log("[Action update]. override me");
         }
 
-        public static CCAction Create()
-        {
-            return new CCAction();
-        }
     }
 }

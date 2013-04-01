@@ -57,7 +57,7 @@ namespace tests
 
             CCActionInterval action = CCMoveBy.Create(2, new CCPoint(200, 0));
             CCActionInterval action_back = (CCActionInterval)action.Reverse();
-            CCActionInterval action_rot = CCRotateBy.Create(2, 360);
+            CCActionInterval action_rot = new CCRotateBy (2, 360);
             CCActionInterval action_s = CCScaleBy.Create(2, 2);
             CCActionInterval action_s_back = (CCActionInterval)action_s.Reverse();
 

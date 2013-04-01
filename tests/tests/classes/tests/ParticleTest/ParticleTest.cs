@@ -1267,7 +1267,7 @@ namespace tests
             // additive
             m_emitter.BlendAdditive = false;
 
-            CCRotateBy rot = CCRotateBy.Create(16, 360);
+            CCRotateBy rot = new CCRotateBy (16, 360);
             m_emitter.RunAction(CCRepeatForever.Create(rot));
         }
 

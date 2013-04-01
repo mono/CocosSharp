@@ -42,7 +42,7 @@ namespace tests
             // schedule an update on each frame so we can syncronize the streak with the target
             Schedule(onUpdate);
 
-            var a1 = CCRotateBy.Create(2, 360);
+            var a1 = new CCRotateBy (2, 360);
 
             var action1 = CCRepeatForever.Create(a1);
             var motion = CCMoveBy.Create(2, new CCPoint(100, 0));
