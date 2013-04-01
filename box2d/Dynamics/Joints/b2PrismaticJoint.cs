@@ -122,7 +122,7 @@ namespace Box2D.Dynamics.Joints
         protected b2Mat33 m_K;
         protected float m_motorMass;
 
-        b2PrismaticJoint(b2PrismaticJointDef def)
+        public b2PrismaticJoint(b2PrismaticJointDef def)
             : base(def)
         {
             m_localAnchorA = def.localAnchorA;
@@ -133,7 +133,7 @@ namespace Box2D.Dynamics.Joints
             m_referenceAngle = def.referenceAngle;
 
             m_impulse.SetZero();
-            m_motorMass = 0.0;
+            m_motorMass = 0.0f;
             m_motorImpulse = 0.0f;
 
             m_lowerTranslation = def.lowerTranslation;
@@ -142,7 +142,7 @@ namespace Box2D.Dynamics.Joints
             m_motorSpeed = def.motorSpeed;
             m_enableLimit = def.enableLimit;
             m_enableMotor = def.enableMotor;
-            m_limitState = e_inactiveLimit;
+            m_limitState = b2LimitState.e_inactiveLimit;
 
             m_axis.SetZero();
             m_perp.SetZero();

@@ -35,19 +35,19 @@ namespace Box2D.Collision.Shapes
     /// Shapes used for simulation in b2World are created automatically when a b2Fixture
     /// is created. Shapes may encapsulate a one or more child shapes.
     /// </summary>
-    public class b2Shape
+    public abstract class b2Shape
     {
         public b2Shape()
         {
         }
 
-        public b2ShapeType ShapeType
+        public virtual b2ShapeType ShapeType
         {
             get { return (m_type); }
             set { m_type = value; }
         }
 
-        public float Radius
+        public virtual float Radius
         {
             get { return (m_radius); }
             set { m_radius = value; }

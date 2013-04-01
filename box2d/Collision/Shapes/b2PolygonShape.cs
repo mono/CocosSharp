@@ -58,7 +58,7 @@ namespace Box2D.Collision.Shapes
             m_vertexCount = copy.m_vertexCount;
         }
 
-        public virtual b2Shape Clone()
+        public override b2Shape Clone()
         {
             b2PolygonShape clone = new b2PolygonShape(this);
             return clone;
@@ -103,7 +103,7 @@ namespace Box2D.Collision.Shapes
             }
         }
 
-        public virtual int GetChildCount()
+        public override int GetChildCount()
         {
             return 1;
         }
@@ -203,7 +203,7 @@ namespace Box2D.Collision.Shapes
             m_centroid = ComputeCentroid(m_vertices, m_vertexCount);
         }
 
-        public virtual bool TestPoint(b2Transform xf, b2Vec2 p)
+        public override bool TestPoint(b2Transform xf, b2Vec2 p)
         {
             b2Vec2 pLocal = b2Math.b2MulT(xf.q, p - xf.p);
 
@@ -219,7 +219,7 @@ namespace Box2D.Collision.Shapes
             return true;
         }
 
-        public virtual bool RayCast(out b2RayCastOutput output, b2RayCastInput input,
+        public override bool RayCast(out b2RayCastOutput output, b2RayCastInput input,
                                         b2Transform xf, int childIndex)
         {
             output = b2RayCastOutput.Zero;
@@ -290,7 +290,7 @@ namespace Box2D.Collision.Shapes
             return false;
         }
 
-        public virtual b2AABB ComputeAABB(b2Transform xf, int childIndex)
+        public override b2AABB ComputeAABB(b2Transform xf, int childIndex)
         {
             b2Vec2 lower = b2Math.b2Mul(xf, m_vertices[0]);
             b2Vec2 upper = lower;
@@ -309,7 +309,7 @@ namespace Box2D.Collision.Shapes
             return(aabb);
         }
 
-        public virtual b2MassData ComputeMass(float density)
+        public override b2MassData ComputeMass(float density)
         {
             // Polygon mass, centroid, and inertia.
             // Let rho be the polygon density in mass per unit area.

@@ -26,17 +26,17 @@ namespace Box2D.Collision
 
     /// Used to warm start b2Math.b2Distance.
     /// Set count to zero on first call.
-    public struct b2SimplexCache
+    public class b2SimplexCache
     {
         public float metric;        ///< length or area
-        public uint count;
+        public int count;
         public uint[] indexA = new uint[3];    ///< vertices on shape A
         public uint[] indexB = new uint[3];    ///< vertices on shape B
     }
     /// Input for b2Math.b2Distance.
     /// You have to option to use the shape radii
     /// in the computation. Even 
-    public struct b2DistanceInput
+    public class b2DistanceInput
     {
         public b2DistanceProxy proxyA;
         public b2DistanceProxy proxyB;
@@ -46,7 +46,7 @@ namespace Box2D.Collision
     };
 
     /// Output for b2Math.b2Distance.
-    public struct b2DistanceOutput
+    public class b2DistanceOutput
     {
         public b2Vec2 pointA;        ///< closest point on shapeA
         public b2Vec2 pointB;        ///< closest point on shapeB
@@ -55,7 +55,7 @@ namespace Box2D.Collision
     };
 
 
-    public struct b2SimplexVertex
+    public class b2SimplexVertex
     {
         public b2Vec2 wA;        // support point in proxyA
         public b2Vec2 wB;        // support point in proxyB
@@ -69,7 +69,7 @@ namespace Box2D.Collision
 
 
 
-    public struct b2Simplex
+    public class b2Simplex
     {
         private b2Vec2 b2Vec2_zero = new b2Vec2(0f, 0f);
 

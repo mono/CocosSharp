@@ -26,11 +26,6 @@ namespace Box2D.Dynamics.Contacts
 
     public class b2ChainAndCircleContact : b2Contact
     {
-        b2Contact Create(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB)
-        {
-            return new b2ChainAndCircleContact(fixtureA, indexA, fixtureB, indexB);
-        }
-
         public b2ChainAndCircleContact(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB)
             : base(fixtureA, indexA, fixtureB, indexB)
         {
@@ -38,7 +33,7 @@ namespace Box2D.Dynamics.Contacts
             Debug.Assert(m_fixtureB.ShapeType == b2ShapeType.e_circle);
         }
 
-        public void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
+        public override void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
         {
             b2ChainShape chain = (b2ChainShape)m_fixtureA.Shape;
             b2EdgeShape edge;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Box2D.Common;
+using Box2D.Collision.Shapes;
 using System.Diagnostics;
 
 namespace Box2D.Collision

@@ -251,7 +251,7 @@ namespace Box2D.Collision
 
 
     /// Input parameters for b2TimeOfImpact
-    struct b2TOIInput
+    public struct b2TOIInput
     {
         public b2DistanceProxy proxyA;
         public b2DistanceProxy proxyB;
@@ -270,7 +270,7 @@ namespace Box2D.Collision
     };
 
     // Output parameters for b2TimeOfImpact.
-    struct b2TOIOutput
+    public struct b2TOIOutput
     {
         public b2ImpactState state;
         public float t;
@@ -287,7 +287,7 @@ namespace Box2D.Collision
 
         // CCD via the local separating axis method. This seeks progression
         // by computing the largest time at which separation is maintained.
-        void b2TimeOfImpact(b2TOIOutput output, b2TOIInput input)
+        public b2TimeOfImpact(b2TOIOutput output, b2TOIInput input)
         {
             ++b2_toiCalls;
 
@@ -390,7 +390,7 @@ namespace Box2D.Collision
                 bool done = false;
                 float t2 = tMax;
                 int pushBackIter = 0;
-                for (; ; )
+                while(true)
                 {
                     // Find the deepest point at t2. Store the witness point indices.
                     int indexA, indexB;
