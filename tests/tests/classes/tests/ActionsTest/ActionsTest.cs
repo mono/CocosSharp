@@ -599,7 +599,7 @@ namespace tests
             bezier.ControlPoint2 = new CCPoint(300, -s.Height / 2);
             bezier.EndPosition = new CCPoint(300, 100);
 
-            var bezierForward = CCBezierBy.Create(3, bezier);
+            var bezierForward = new CCBezierBy (3, bezier);
             var bezierBack = bezierForward.Reverse();
             var rep = CCRepeatForever.Create((CCActionInterval)CCSequence.Create(bezierForward, bezierBack));
 
@@ -611,11 +611,11 @@ namespace tests
             bezier2.ControlPoint2 = new CCPoint(200, -s.Height / 2);
             bezier2.EndPosition = new CCPoint(240, 160);
 
-            var bezierTo1 = CCBezierTo.Create(2, bezier2);
+            var bezierTo1 = new CCBezierTo (2, bezier2);
 
             // sprite 3
             m_kathia.Position = new CCPoint(400, 160);
-            var bezierTo2 = CCBezierTo.Create(2, bezier2);
+            var bezierTo2 = new CCBezierTo (2, bezier2);
 
             m_grossini.RunAction(rep);
             m_tamara.RunAction(bezierTo1);
