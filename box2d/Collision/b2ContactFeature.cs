@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Box2D.Collision
 {
-    public enum b2ContactFeatureType
+    public enum b2ContactFeatureType : byte
     {
         e_vertex = 0,
         e_face = 1
@@ -34,6 +34,16 @@ namespace Box2D.Collision
             return (indexA == bcf.indexA && indexB == bcf.indexB && typeA == bcf.typeA && typeB == bcf.typeB);
         }
 
+        /// <summary>
+        /// Hack to make the b2ContactID union from Box2D work.
+        /// </summary>
+        public int key
+        {
+            get
+            {
+                return (indexA << 24 | indexB << 16 | ((byte)typeA) << 8 | (byte)typeB);
+            }
+        }
 
         public static b2ContactFeature Zero = new b2ContactFeature(0, 0, 0, 0);
     }

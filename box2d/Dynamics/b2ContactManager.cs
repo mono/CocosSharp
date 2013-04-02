@@ -23,6 +23,12 @@ namespace Box2D.Dynamics
             m_contactListener = b2ContactListener.b2_defaultListener;
         }
 
+        public b2Contact ContactList
+        {
+            get { return (m_contactList); }
+            set { m_contactList = value; }
+        }
+
         public int ContactCount
         {
             get { return (m_contactCount); }
@@ -151,8 +157,8 @@ namespace Box2D.Dynamics
                     c.Flags &= ~b2ContactFlags.e_filterFlag;
                 }
 
-                bool activeA = bodyA.IsAwake() && bodyA.m_type != b2BodyType.b2_staticBody;
-                bool activeB = bodyB.IsAwake() && bodyB.m_type != b2BodyType.b2_staticBody;
+                bool activeA = bodyA.IsAwake() && bodyA.BodyType != b2BodyType.b2_staticBody;
+                bool activeB = bodyB.IsAwake() && bodyB.BodyType != b2BodyType.b2_staticBody;
 
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if (activeA == false && activeB == false)
@@ -161,8 +167,8 @@ namespace Box2D.Dynamics
                     continue;
                 }
 
-                int proxyIdA = fixtureA.m_proxies[indexA].proxyId;
-                int proxyIdB = fixtureB.m_proxies[indexB].proxyId;
+                int proxyIdA = fixtureA.Proxies[indexA].proxyId;
+                int proxyIdB = fixtureB.Proxies[indexB].proxyId;
                 bool overlap = m_broadPhase.TestOverlap(proxyIdA, proxyIdB);
 
                 // Here we destroy contacts that cease to overlap in the broad-phase.
@@ -196,8 +202,8 @@ namespace Box2D.Dynamics
             int indexA = proxyA.childIndex;
             int indexB = proxyB.childIndex;
 
-            b2Body bodyA = fixtureA.GetBody();
-            b2Body bodyB = fixtureB.GetBody();
+            b2Body bodyA = fixtureA.Body;
+            b2Body bodyB = fixtureB.Body;
 
             // Are the fixtures on the same body?
             if (bodyA == bodyB)
@@ -208,8 +214,8 @@ namespace Box2D.Dynamics
             // TODO_ERIN use a hash table to remove a potential bottleneck when both
             // bodies have a lot of contacts.
             // Does a contact already exist?
-            b2ContactEdge edge = bodyB.GetContactList();
-            while (edge)
+            b2ContactEdge edge = bodyB.ContactList;
+            while (edge != null)
             {
                 if (edge.Other == bodyA)
                 {
@@ -241,13 +247,13 @@ namespace Box2D.Dynamics
             }
 
             // Check user filtering.
-            if (m_contactFilter && m_contactFilter.ShouldCollide(fixtureA, fixtureB) == false)
+            if (m_contactFilter != null && !m_contactFilter.ShouldCollide(fixtureA, fixtureB))
             {
                 return;
             }
 
             // Call the factory.
-            b2Contact c = b2Contact.Create(fixtureA, indexA, fixtureB, indexB, m_allocator);
+            b2Contact c = b2Contact.Create(fixtureA, indexA, fixtureB, indexB);
             if (c == null)
             {
                 return;
@@ -258,8 +264,8 @@ namespace Box2D.Dynamics
             fixtureB = c.GetFixtureB();
             indexA = c.GetChildIndexA();
             indexB = c.GetChildIndexB();
-            bodyA = fixtureA.GetBody();
-            bodyB = fixtureB.GetBody();
+            bodyA = fixtureA.Body;
+            bodyB = fixtureB.Body;
 
             // Insert into the world.
             c.Prev = null;
@@ -277,24 +283,24 @@ namespace Box2D.Dynamics
             c.NodeA.Other = bodyB;
 
             c.NodeA.Prev = null;
-            c.NodeA.Next = bodyA.m_contactList;
-            if (bodyA.m_contactList != null)
+            c.NodeA.Next = bodyA.ContactList;
+            if (bodyA.ContactList != null)
             {
-                bodyA.m_contactList.Prev = &c.NodeA;
+                bodyA.ContactList.Prev = c.NodeA;
             }
-            bodyA.m_contactList = &c.NodeA;
+            bodyA.ContactList = c.NodeA;
 
             // Connect to body B
             c.NodeB.Contact = c;
             c.NodeB.Other = bodyA;
 
             c.NodeB.Prev = null;
-            c.NodeB.Next = bodyB.m_contactList;
-            if (bodyB.m_contactList != null)
+            c.NodeB.Next = bodyB.ContactList;
+            if (bodyB.ContactList != null)
             {
-                bodyB.m_contactList.Prev = &c.NodeB;
+                bodyB.ContactList.Prev = c.NodeB;
             }
-            bodyB.m_contactList = &c.NodeB;
+            bodyB.ContactList = c.NodeB;
 
             // Wake up the bodies
             bodyA.SetAwake(true);

@@ -809,11 +809,11 @@ namespace Box2D.Dynamics
             }
 
             // Does a joint prevent collision?
-            for (b2JointEdge jn = m_jointList; jn != null; jn = jn.next)
+            for (b2JointEdge jn = m_jointList; jn != null; jn = jn.Next)
             {
-                if (jn.other == other)
+                if (jn.Other == other)
                 {
-                    if (jn.joint.GetCollideConnected() == false)
+                    if (jn.Joint.GetCollideConnected() == false)
                     {
                         return false;
                     }

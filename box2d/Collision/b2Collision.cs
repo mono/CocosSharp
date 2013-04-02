@@ -242,7 +242,7 @@ namespace Box2D.Collision
             b2Vec2[] vertices1 = poly1.Vertices;
             b2Vec2[] normals1 = poly1.Normals;
 
-            int count2 = poly2.GetVertexCount();
+            int count2 = poly2.VertexCount;
             b2Vec2[] vertices2 = poly2.Vertices;
 
             // Convert normal from poly1's frame into poly2's frame.
@@ -343,7 +343,7 @@ namespace Box2D.Collision
                                          b2PolygonShape poly1, b2Transform xf1,
                                          b2PolygonShape poly2, b2Transform xf2)
         {
-            int count1 = poly1.GetVertexCount();
+            int count1 = poly1.VertexCount;
             b2Vec2[] normals1 = poly1.Normals;
 
             // Vector pointing from the centroid of poly1 to the centroid of poly2.
@@ -427,7 +427,7 @@ namespace Box2D.Collision
         {
             b2Vec2[] normals1 = poly1.Normals;
 
-            int count2 = poly2.GetVertexCount();
+            int count2 = poly2.VertexCount;
             b2Vec2[] vertices2 = poly2.Vertices;
             b2Vec2[] normals2 = poly2.Normals;
 

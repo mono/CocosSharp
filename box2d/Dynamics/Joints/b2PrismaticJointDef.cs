@@ -17,7 +17,7 @@ namespace Box2D.Dynamics.Joints
     {
         public b2PrismaticJointDef()
         {
-            type = b2JointType.e_prismaticJoint;
+            JointType = b2JointType.e_prismaticJoint;
             localAnchorA.SetZero();
             localAnchorB.SetZero();
             localAxisA.Set(1.0f, 0.0f);
@@ -34,12 +34,12 @@ namespace Box2D.Dynamics.Joints
         /// anchor and unit world axis.
         public void Initialize(b2Body bA, b2Body bB, b2Vec2 anchor, b2Vec2 axis)
         {
-            bodyA = bA;
-            bodyB = bB;
-            localAnchorA = bodyA.GetLocalPoint(anchor);
-            localAnchorB = bodyB.GetLocalPoint(anchor);
-            localAxisA = bodyA.GetLocalVector(axis);
-            referenceAngle = bodyB.Angle - bodyA.Angle;
+            BodyA = bA;
+            BodyB = bB;
+            localAnchorA = BodyA.GetLocalPoint(anchor);
+            localAnchorB = BodyB.GetLocalPoint(anchor);
+            localAxisA = BodyA.GetLocalVector(axis);
+            referenceAngle = BodyB.Angle - BodyA.Angle;
         }
 
         /// The local anchor point relative to bodyA's origin.

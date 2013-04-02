@@ -162,7 +162,7 @@ namespace Box2D.Dynamics.Joints
 
         public virtual float GetMaxMotorForce() { return m_maxMotorForce; }
 
-        protected override void InitVelocityConstraints(b2SolverData data)
+        public override void InitVelocityConstraints(b2SolverData data)
         {
             m_indexA = m_bodyA.IslandIndex;
             m_indexB = m_bodyB.IslandIndex;
@@ -300,7 +300,7 @@ namespace Box2D.Dynamics.Joints
             data.velocities[m_indexB].w = wB;
         }
 
-        protected override void SolveVelocityConstraints(b2SolverData data)
+        public override void SolveVelocityConstraints(b2SolverData data)
 {
     b2Vec2 vA = data.velocities[m_indexA].v;
     float wA = data.velocities[m_indexA].w;
@@ -408,7 +408,7 @@ namespace Box2D.Dynamics.Joints
     data.velocities[m_indexB].w = wB;
 }
 
-        protected override bool SolvePositionConstraints(b2SolverData data)
+        public override bool SolvePositionConstraints(b2SolverData data)
         {
             b2Vec2 cA = data.positions[m_indexA].c;
             float aA = data.positions[m_indexA].a;

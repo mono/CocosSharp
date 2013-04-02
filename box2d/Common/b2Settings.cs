@@ -53,47 +53,47 @@ namespace Box2D.Common
         // Dynamics
 
         /// Maximum number of contacts to be handled to solve a TOI impact.
-        public static int b2_maxTOIContacts = 32;
+        public static readonly int b2_maxTOIContacts = 32;
 
         /// A velocity threshold for elastic collisions. Any collision with a relative linear
         /// velocity below this threshold will be treated as inelastic.
-        public static float b2_velocityThreshold = 1.0f;
+        public static readonly float b2_velocityThreshold = 1.0f;
 
         /// The maximum linear position correction used when solving constraints. This helps to
         /// prevent overshoot.
-        public static float b2_maxLinearCorrection = 0.2f;
+        public static readonly float b2_maxLinearCorrection = 0.2f;
 
         /// The maximum angular position correction used when solving constraints. This helps to
         /// prevent overshoot.
-        public static float b2_maxAngularCorrection = (8.0f / 180.0f * b2_pi);
+        public static readonly float b2_maxAngularCorrection = (8.0f / 180.0f * b2_pi);
 
         /// The maximum linear velocity of a body. This limit is very large and is used
         /// to prevent numerical problems. You shouldn't need to adjust this.
-        public static float b2_maxTranslation = 2.0f;
-        public static float b2_maxTranslationSquared = (b2_maxTranslation * b2_maxTranslation);
+        public static readonly float b2_maxTranslation = 2.0f;
+        public static readonly float b2_maxTranslationSquared = (b2_maxTranslation * b2_maxTranslation);
 
         /// The maximum angular velocity of a body. This limit is very large and is used
         /// to prevent numerical problems. You shouldn't need to adjust this.
-        public static float b2_maxRotation = (0.5f * b2_pi);
-        public static float b2_maxRotationSquared = (b2_maxRotation * b2_maxRotation);
+        public static readonly float b2_maxRotation = (0.5f * b2_pi);
+        public static readonly float b2_maxRotationSquared = (b2_maxRotation * b2_maxRotation);
 
         /// This scale factor controls how fast overlap is resolved. Ideally this would be 1 so
         /// that overlap is removed in one time step. However using values close to 1 often lead
         /// to overshoot.
-        public static float b2_baumgarte = 0.2f;
-        public static float b2_toiBaugarte = 0.75f;
+        public static readonly float b2_baumgarte = 0.2f;
+        public static readonly float b2_toiBaugarte = 0.75f;
 
 
         // Sleep
 
         /// The time that a body must be still before it will go to sleep.
-        public static float b2_timeToSleep = 0.5f;
+        public static readonly float b2_timeToSleep = 0.5f;
 
         /// A body cannot sleep if its linear velocity is above this tolerance.
-        public static float b2_linearSleepTolerance = 0.01f;
+        public static readonly float b2_linearSleepTolerance = 0.01f;
 
         /// A body cannot sleep if its angular velocity is above this tolerance.
-        public static float b2_angularSleepTolerance = (2.0f / 180.0f * b2_pi);
+        public static readonly float b2_angularSleepTolerance = (2.0f / 180.0f * b2_pi);
 
 
         /// Logging function.

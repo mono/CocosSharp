@@ -24,16 +24,16 @@ namespace Box2D.Dynamics.Joints
     public class b2Joint
     {
         protected b2JointType m_type;
-        protected b2Joint Prev;
-        protected b2Joint Next;
-        protected b2JointEdge m_edgeA;
-        protected b2JointEdge m_edgeB;
-        protected b2Body m_bodyA;
-        protected b2Body m_bodyB;
+        public b2Joint Prev;
+        public b2Joint Next;
+        public b2JointEdge m_edgeA;
+        public b2JointEdge m_edgeB;
+        public b2Body m_bodyA;
+        public b2Body m_bodyB;
 
         protected int m_index;
 
-        protected bool m_islandFlag;
+        public bool m_islandFlag;
         protected bool m_collideConnected;
 
         protected object m_userData;
@@ -48,7 +48,7 @@ namespace Box2D.Dynamics.Joints
         {
             b2Joint joint = null;
 
-            switch (def.type)
+            switch (def.JointType)
             {
                 case b2JointType.e_distanceJoint:
                     {
@@ -120,27 +120,27 @@ namespace Box2D.Dynamics.Joints
 
         public b2Joint(b2JointDef def)
         {
-            Debug.Assert(def.bodyA != def.bodyB);
+            Debug.Assert(def.BodyA != def.BodyB);
 
-            m_type = def.type;
+            m_type = def.JointType;
             Prev = null;
             Next = null;
-            m_bodyA = def.bodyA;
-            m_bodyB = def.bodyB;
+            m_bodyA = def.BodyA;
+            m_bodyB = def.BodyB;
             m_index = 0;
-            m_collideConnected = def.collideConnected;
+            m_collideConnected = def.CollideConnected;
             m_islandFlag = false;
-            m_userData = def.userData;
+            m_userData = def.UserData;
 
-            m_edgeA.joint = null;
-            m_edgeA.other = null;
-            m_edgeA.prev = null;
-            m_edgeA.next = null;
+            m_edgeA.Joint = null;
+            m_edgeA.Other = null;
+            m_edgeA.Prev = null;
+            m_edgeA.Next = null;
 
-            m_edgeB.joint = null;
-            m_edgeB.other = null;
-            m_edgeB.prev = null;
-            m_edgeB.next = null;
+            m_edgeB.Joint = null;
+            m_edgeB.Other = null;
+            m_edgeB.Prev = null;
+            m_edgeB.Next = null;
         }
 
         public bool IsActive()
@@ -183,9 +183,9 @@ namespace Box2D.Dynamics.Joints
             return m_collideConnected;
         }
 
-        protected virtual void InitVelocityConstraints(b2SolverData data) { }
-        protected virtual void SolveVelocityConstraints(b2SolverData data) { }
-        protected virtual bool SolvePositionConstraints(b2SolverData data) { return (false); }
+        public virtual void InitVelocityConstraints(b2SolverData data) { }
+        public virtual void SolveVelocityConstraints(b2SolverData data) { }
+        public virtual bool SolvePositionConstraints(b2SolverData data) { return (false); }
         public virtual void Dump() { }
         public virtual b2Vec2 GetAnchorA() { return(b2Vec2.Zero); }
         public virtual b2Vec2 GetAnchorB() { return (b2Vec2.Zero); }

@@ -10,7 +10,7 @@ namespace Box2D.Common
     /// Shapes are defined with respect to the body origin, which may
     /// no coincide with the center of mass. However, to support dynamics
     /// we must interpolate the center of mass position.
-    public struct b2Sweep
+    public class b2Sweep
     {
         /*public b2Sweep()
         {

@@ -33,9 +33,9 @@ namespace Box2D.Dynamics.Joints
 
     public struct b2Jacobian
     {
-        b2Vec2 linear;
-        public float angularA;
-        public float angularB;
+        public b2Vec2 Linear;
+        public float AngularA;
+        public float AngularB;
     };
 
     /// <summary>
@@ -50,19 +50,19 @@ namespace Box2D.Dynamics.Joints
         /// <summary>
         /// provides quick access to the other body attached.
         /// </summary>
-        public b2Body other;
+        public b2Body Other;
         /// <summary>
         /// the joint
         /// </summary>
-        public b2Joint joint;
+        public b2Joint Joint;
         /// <summary>
         /// the previous joint edge in the body's joint list
         /// </summary>
-        public b2JointEdge prev;
+        public b2JointEdge Prev;
         /// <summary>
         /// the next joint edge in the body's joint list
         /// </summary>
-        public b2JointEdge next;
+        public b2JointEdge Next;
     };
 
 
@@ -70,26 +70,26 @@ namespace Box2D.Dynamics.Joints
     {
         public b2JointDef()
         {
-            type = b2JointType.e_unknownJoint;
-            userData = null;
-            bodyA = null;
-            bodyB = null;
-            collideConnected = false;
+            JointType = b2JointType.e_unknownJoint;
+            UserData = null;
+            BodyA = null;
+            BodyB = null;
+            CollideConnected = false;
         }
         /// The joint type is set automatically for concrete joint types.
-        public b2JointType type;
+        public b2JointType JointType;
 
         /// Use this to attach application specific data to your joints.
-        public object userData;
+        public object UserData;
 
         /// The first attached body.
-        public b2Body bodyA;
+        public b2Body BodyA;
 
         /// The second attached body.
-        public b2Body bodyB;
+        public b2Body BodyB;
 
         /// Set this flag to true if the attached bodies should collide.
-        public bool collideConnected;
+        public bool CollideConnected;
 
     }
 }

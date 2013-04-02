@@ -246,9 +246,17 @@ namespace Box2D.Common
             return new b2Mat22(b2Abs(A.ex), b2Abs(A.ey));
         }
 
+        /// <summary>
+        /// Returns a vectors that uses the minimum value of the individual
+        /// components, not a minimum length vector or other minimum attribute
+        /// of the vectors. Min ( (5,4), (3,5) ) = (3,4)
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static b2Vec2 b2Min(b2Vec2 a, b2Vec2 b)
         {
-            return new b2Vec2(b2Min(a.x, b.x), b2Min(a.y, b.y));
+            return new b2Vec2(Math.Min(a.x, b.x), Math.Min(a.y, b.y));
         }
 
         public static b2Vec2 b2Max(b2Vec2 a, b2Vec2 b)

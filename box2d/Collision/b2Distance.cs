@@ -415,9 +415,7 @@ namespace Box2D.Collision
             m_count = 3;
         }
 
-        public void b2Distance(b2DistanceOutput output,
-                        b2SimplexCache cache,
-                        b2DistanceInput input)
+        public void b2Distance(ref b2DistanceOutput output, b2SimplexCache cache, b2DistanceInput input)
         {
             ++b2DistanceProxy.b2_gjkCalls;
 
@@ -428,7 +426,7 @@ namespace Box2D.Collision
             b2Transform transformB = input.transformB;
 
             // Initialize the simplex.
-            b2Simplex simplex;
+            b2Simplex simplex = new b2Simplex();
             simplex.ReadCache(cache, proxyA, transformA, proxyB, transformB);
 
             // Get simplex vertices as an array.
@@ -544,7 +542,7 @@ namespace Box2D.Collision
 
             // Prepare output.
             simplex.GetWitnessPoints(ref output.pointA, ref output.pointB);
-            output.distance = b2Distance(output.pointA, output.pointB);
+            output.distance = b2Math.b2Distance(output.pointA, output.pointB);
             output.iterations = iter;
 
             // Cache the simplex.

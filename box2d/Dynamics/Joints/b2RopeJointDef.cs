@@ -14,7 +14,7 @@ namespace Box2D.Dynamics.Joints
     {
         public b2RopeJointDef()
         {
-            type = b2JointType.e_ropeJoint;
+            JointType = b2JointType.e_ropeJoint;
             localAnchorA.Set(-1.0f, 0.0f);
             localAnchorB.Set(1.0f, 0.0f);
             maxLength = 0.0f;

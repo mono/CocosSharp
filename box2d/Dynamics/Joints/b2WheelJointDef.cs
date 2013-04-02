@@ -16,7 +16,7 @@ namespace Box2D.Dynamics.Joints
     {
         public b2WheelJointDef()
         {
-            type = b2JointType.e_wheelJoint;
+            JointType = b2JointType.e_wheelJoint;
             localAnchorA.SetZero();
             localAnchorB.SetZero();
             localAxisA.Set(1.0f, 0.0f);
@@ -31,11 +31,11 @@ namespace Box2D.Dynamics.Joints
         /// anchor and world axis.
         public void Initialize(b2Body bA, b2Body bB, b2Vec2 anchor, b2Vec2 axis)
         {
-            bodyA = bA;
-            bodyB = bB;
-            localAnchorA = bodyA.GetLocalPoint(anchor);
-            localAnchorB = bodyB.GetLocalPoint(anchor);
-            localAxisA = bodyA.GetLocalVector(axis);
+            BodyA = bA;
+            BodyB = bB;
+            localAnchorA = BodyA.GetLocalPoint(anchor);
+            localAnchorB = BodyB.GetLocalPoint(anchor);
+            localAxisA = BodyA.GetLocalVector(axis);
         }
 
         /// The local anchor point relative to bodyA's origin.

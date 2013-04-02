@@ -119,8 +119,8 @@ namespace Box2D.Dynamics.Contacts
 
         protected b2Manifold m_manifold;
 
-        protected int m_toiCount;
-        protected float m_toi;
+        public int m_toiCount;
+        public float m_toi;
 
         protected float m_friction;
         public float Friction { get { return (m_friction); } set { m_friction = value; } }
@@ -159,7 +159,7 @@ namespace Box2D.Dynamics.Contacts
             }
         }
 
-        public b2Contact Create(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB)
+        public static b2Contact Create(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB)
         {
 
             b2ShapeType type1 = fixtureA.ShapeType;
@@ -216,7 +216,7 @@ namespace Box2D.Dynamics.Contacts
 
         // Update the contact manifold and touching status.
         // Note: do not assume the fixture AABBs are overlapping or are valid.
-        protected virtual void Update(b2ContactListener listener)
+        public virtual void Update(b2ContactListener listener)
         {
             b2Manifold oldManifold = m_manifold;
 
@@ -257,7 +257,7 @@ namespace Box2D.Dynamics.Contacts
                     b2ManifoldPoint mp2 = m_manifold.points[i];
                     mp2.normalImpulse = 0.0f;
                     mp2.tangentImpulse = 0.0f;
-                    b2ContactID id2 = mp2.id;
+                    b2ContactFeature id2 = mp2.id;
 
                     for (int j = 0; j < oldManifold.pointCount; ++j)
                     {
@@ -370,7 +370,7 @@ namespace Box2D.Dynamics.Contacts
             return m_indexB;
         }
 
-        protected virtual void FlagForFiltering()
+        public virtual void FlagForFiltering()
         {
             m_flags |= b2ContactFlags.e_filterFlag;
         }

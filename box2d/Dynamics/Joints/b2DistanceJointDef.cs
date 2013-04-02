@@ -27,7 +27,7 @@ namespace Box2D.Dynamics.Joints
 
         public b2DistanceJointDef()
         {
-            type = b2JointType.e_distanceJoint;
+            JointType = b2JointType.e_distanceJoint;
             localAnchorA.Set(0.0f, 0.0f);
             localAnchorB.Set(0.0f, 0.0f);
             length = 1.0f;
@@ -37,10 +37,10 @@ namespace Box2D.Dynamics.Joints
         public void Initialize(b2Body b1, b2Body b2,
                                     b2Vec2 anchor1, b2Vec2 anchor2)
         {
-            bodyA = b1;
-            bodyB = b2;
-            localAnchorA = bodyA.GetLocalPoint(anchor1);
-            localAnchorB = bodyB.GetLocalPoint(anchor2);
+            BodyA = b1;
+            BodyB = b2;
+            localAnchorA = BodyA.GetLocalPoint(anchor1);
+            localAnchorB = BodyB.GetLocalPoint(anchor2);
             b2Vec2 d = anchor2 - anchor1;
             length = d.Length();
         }

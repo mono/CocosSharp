@@ -81,6 +81,7 @@
     <Compile Include="Common\b2Rot.cs" />
     <Compile Include="Common\b2Settings.cs" />
     <Compile Include="Common\b2Sweep.cs" />
+    <Compile Include="Common\b2Timer.cs" />
     <Compile Include="Common\b2Transform.cs" />
     <Compile Include="Common\bVec2.cs" />
     <Compile Include="Common\bVec3.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Dynamics\b2DestructionListener.cs" />
     <Compile Include="Dynamics\b2Fixture.cs" />
     <Compile Include="Dynamics\b2FixtureDef.cs" />
+    <Compile Include="Dynamics\b2Island.cs" />
     <Compile Include="Dynamics\b2QueryCallback.cs" />
     <Compile Include="Dynamics\b2RayCastCallback.cs" />
     <Compile Include="Dynamics\b2TimeStep.cs" />

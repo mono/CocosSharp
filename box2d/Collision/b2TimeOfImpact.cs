@@ -186,9 +186,9 @@ namespace Box2D.Collision
 
         public float Evaluate(int indexA, int indexB, float t)
         {
-            b2Transform xfA, xfB;
-            xfA = m_sweepA.GetTransform(t);
-            xfB = m_sweepB.GetTransform(t);
+            b2Transform xfA = new b2Transform(), xfB = new b2Transform();
+            xfA = m_sweepA.GetTransform(xfA, t);
+            xfB = m_sweepB.GetTransform(xfB, t);
 
             switch (m_type)
             {
@@ -287,8 +287,9 @@ namespace Box2D.Collision
 
         // CCD via the local separating axis method. This seeks progression
         // by computing the largest time at which separation is maintained.
-        public b2TimeOfImpact(b2TOIOutput output, b2TOIInput input)
+        public b2TOIOutput Compute(b2TOIInput input)
         {
+            b2TOIOutput output = new b2TOIOutput();
             ++b2_toiCalls;
 
             output.state = b2ImpactState.e_unknown;
@@ -319,7 +320,7 @@ namespace Box2D.Collision
             // Prepare input for distance query.
             b2SimplexCache cache;
             cache.count = 0;
-            b2DistanceInput distanceInput;
+            b2DistanceInput distanceInput = new b2DistanceInput();
             distanceInput.proxyA = input.proxyA;
             distanceInput.proxyB = input.proxyB;
             distanceInput.useRadii = false;
@@ -328,16 +329,16 @@ namespace Box2D.Collision
             // This loop terminates when an axis is repeated (no progress is made).
             while (true)
             {
-                b2Transform xfA, xfB;
-                xfA = sweepA.GetTransform(t1);
-                xfB = sweepB.GetTransform(t1);
+                b2Transform xfA = new b2Transform(), xfB = new b2Transform();
+                xfA = sweepA.GetTransform(xfA, t1);
+                xfB = sweepB.GetTransform(xfB, t1);
 
                 // Get the distance between shapes. We can also use the results
                 // to get a separating axis.
                 distanceInput.transformA = xfA;
                 distanceInput.transformB = xfB;
-                b2DistanceOutput distanceOutput;
-                b2Distance(ref distanceOutput, cache, ref distanceInput);
+                b2DistanceOutput distanceOutput = new b2DistanceOutput();
+                b2Simplex.b2Distance(ref distanceOutput, cache, distanceInput);
 
                 // If the shapes are overlapped, we give up on continuous collision.
                 if (distanceOutput.distance <= 0.0f)
@@ -357,8 +358,7 @@ namespace Box2D.Collision
                 }
 
                 // Initialize the separating axis.
-                b2SeparationFunction fcn;
-                fcn.Initialize(cache, proxyA, sweepA, proxyB, sweepB, t1);
+                b2SeparationFunction fcn = new b2SeparationFunction(cache, proxyA, sweepA, proxyB, sweepB, t1);
 #if false
         // Dump the curve seen by the root finder
         {
@@ -513,6 +513,7 @@ namespace Box2D.Collision
             }
 
             b2_toiMaxIters = Math.Max(b2_toiMaxIters, iter);
+            return (output);
         }
     }
 }

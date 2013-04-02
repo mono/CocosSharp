@@ -111,7 +111,7 @@ namespace Box2D.Dynamics.Joints
             m_ay.SetZero();
         }
 
-        protected override void InitVelocityConstraints(b2SolverData data)
+        public override void InitVelocityConstraints(b2SolverData data)
         {
             m_indexA = m_bodyA.IslandIndex;
             m_indexB = m_bodyB.IslandIndex;
@@ -176,7 +176,7 @@ namespace Box2D.Dynamics.Joints
                     float C = b2Math.b2Dot(d, m_ax);
 
                     // Frequency
-                    float omega = 2.0f * b2_pi * m_frequencyHz;
+                    float omega = 2.0f * (float)Math.PI * m_frequencyHz;
 
                     // Damping coefficient
                     float d = 2.0f * m_springMass * m_dampingRatio * omega;
@@ -251,7 +251,7 @@ namespace Box2D.Dynamics.Joints
             data.velocities[m_indexB].w = wB;
         }
 
-        protected override void SolveVelocityConstraints(b2SolverData data)
+        public override void SolveVelocityConstraints(b2SolverData data)
         {
             float mA = m_invMassA, mB = m_invMassB;
             float iA = m_invIA, iB = m_invIB;
@@ -315,7 +315,7 @@ namespace Box2D.Dynamics.Joints
             data.velocities[m_indexB].w = wB;
         }
 
-        protected override bool SolvePositionConstraints(b2SolverData data)
+        public override bool SolvePositionConstraints(b2SolverData data)
         {
             b2Vec2 cA = data.positions[m_indexA].c;
             float aA = data.positions[m_indexA].a;

@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Box2D.Collision.Shapes;
 using Box2D.Common;
+using Box2D.Dynamics;
 
 namespace Box2D.Collision
 {
@@ -214,10 +215,10 @@ namespace Box2D.Collision
         {
             ++m_insertionCount;
 
-            if (m_root == b2TreeNode.b2TreeNode.b2_nullNode)
+            if (m_root == b2TreeNode.b2_nullNode)
             {
                 m_root = leaf;
-                m_nodes[m_root].parent = b2TreeNode.b2TreeNode.b2_nullNode;
+                m_nodes[m_root].parent = b2TreeNode.b2_nullNode;
                 return;
             }
 
@@ -302,7 +303,7 @@ namespace Box2D.Collision
             m_nodes[newParent].aabb.Combine(leafAABB, m_nodes[sibling].aabb);
             m_nodes[newParent].height = m_nodes[sibling].height + 1;
 
-            if (oldParent != b2TreeNode.b2TreeNode.b2_nullNode)
+            if (oldParent != b2TreeNode.b2_nullNode)
             {
                 // The sibling was not the root.
                 if (m_nodes[oldParent].child1 == sibling)
@@ -331,15 +332,15 @@ namespace Box2D.Collision
 
             // Walk back up the tree fixing heights and AABBs
             index = m_nodes[leaf].parent;
-            while (index != b2TreeNode.b2TreeNode.b2_nullNode)
+            while (index != b2TreeNode.b2_nullNode)
             {
                 index = Balance(index);
 
                 int child1 = m_nodes[index].child1;
                 int child2 = m_nodes[index].child2;
 
-                Debug.Assert(child1 != b2TreeNode.b2TreeNode.b2_nullNode);
-                Debug.Assert(child2 != b2TreeNode.b2TreeNode.b2_nullNode);
+                Debug.Assert(child1 != b2TreeNode.b2_nullNode);
+                Debug.Assert(child2 != b2TreeNode.b2_nullNode);
 
                 m_nodes[index].height = 1 + Math.Max(m_nodes[child1].height, m_nodes[child2].height);
                 m_nodes[index].aabb.Combine(m_nodes[child1].aabb, m_nodes[child2].aabb);
@@ -354,7 +355,7 @@ namespace Box2D.Collision
         {
             if (leaf == m_root)
             {
-                m_root = b2TreeNode.b2TreeNode.b2_nullNode;
+                m_root = b2TreeNode.b2_nullNode;
                 return;
             }
 
@@ -370,7 +371,7 @@ namespace Box2D.Collision
                 sibling = m_nodes[parent].child1;
             }
 
-            if (grandParent != b2TreeNode.b2TreeNode.b2_nullNode)
+            if (grandParent != b2TreeNode.b2_nullNode)
             {
                 // Destroy parent and connect sibling to grandParent.
                 if (m_nodes[grandParent].child1 == parent)
@@ -386,7 +387,7 @@ namespace Box2D.Collision
 
                 // Adjust ancestor bounds.
                 int index = grandParent;
-                while (index != b2TreeNode.b2TreeNode.b2_nullNode)
+                while (index != b2TreeNode.b2_nullNode)
                 {
                     index = Balance(index);
 
@@ -402,7 +403,7 @@ namespace Box2D.Collision
             else
             {
                 m_root = sibling;
-                m_nodes[sibling].parent = b2TreeNode.b2TreeNode.b2_nullNode;
+                m_nodes[sibling].parent = b2TreeNode.b2_nullNode;
                 FreeNode(parent);
             }
 
@@ -413,7 +414,7 @@ namespace Box2D.Collision
         // Returns the new root index.
         int Balance(int iA)
         {
-            Debug.Assert(iA != b2TreeNode.b2TreeNode.b2_nullNode);
+            Debug.Assert(iA != b2TreeNode.b2_nullNode);
 
             b2TreeNode A = m_nodes[iA];
             if (A.IsLeaf() || A.height < 2)
@@ -447,7 +448,7 @@ namespace Box2D.Collision
                 A.parent = iC;
 
                 // A's old parent should point to C
-                if (C.parent != b2TreeNode.b2TreeNode.b2_nullNode)
+                if (C.parent != b2TreeNode.b2_nullNode)
                 {
                     if (m_nodes[C.parent].child1 == iA)
                     {
@@ -507,7 +508,7 @@ namespace Box2D.Collision
                 A.parent = iB;
 
                 // A's old parent should point to B
-                if (B.parent != b2TreeNode.b2TreeNode.b2_nullNode)
+                if (B.parent != b2TreeNode.b2_nullNode)
                 {
                     if (m_nodes[B.parent].child1 == iA)
                     {
@@ -556,7 +557,7 @@ namespace Box2D.Collision
 
         public int GetHeight()
         {
-            if (m_root == b2TreeNode.b2TreeNode.b2_nullNode)
+            if (m_root == b2TreeNode.b2_nullNode)
             {
                 return 0;
             }
@@ -567,7 +568,7 @@ namespace Box2D.Collision
         //
         public float GetAreaRatio()
         {
-            if (m_root == b2TreeNode.b2TreeNode.b2_nullNode)
+            if (m_root == b2TreeNode.b2_nullNode)
             {
                 return 0.0f;
             }
@@ -615,14 +616,14 @@ namespace Box2D.Collision
 
         public void ValidateStructure(int index)
         {
-            if (index == b2TreeNode.b2TreeNode.b2_nullNode)
+            if (index == b2TreeNode.b2_nullNode)
             {
                 return;
             }
 
             if (index == m_root)
             {
-                Debug.Assert(m_nodes[index].parent == b2TreeNode.b2TreeNode.b2_nullNode);
+                Debug.Assert(m_nodes[index].parent == b2TreeNode.b2_nullNode);
             }
 
             b2TreeNode node = m_nodes[index];
@@ -632,8 +633,8 @@ namespace Box2D.Collision
 
             if (node.IsLeaf())
             {
-                Debug.Assert(child1 == b2TreeNode.b2TreeNode.b2_nullNode);
-                Debug.Assert(child2 == b2TreeNode.b2TreeNode.b2_nullNode);
+                Debug.Assert(child1 == b2TreeNode.b2_nullNode);
+                Debug.Assert(child2 == b2TreeNode.b2_nullNode);
                 Debug.Assert(node.height == 0);
                 return;
             }
@@ -650,7 +651,7 @@ namespace Box2D.Collision
 
         public void ValidateMetrics(int index)
         {
-            if (index == b2TreeNode.b2TreeNode.b2_nullNode)
+            if (index == b2TreeNode.b2_nullNode)
             {
                 return;
             }
@@ -677,7 +678,7 @@ namespace Box2D.Collision
             height = 1 + Math.Max(height1, height2);
             Debug.Assert(node.height == height);
 
-            b2AABB aabb;
+            b2AABB aabb = new b2AABB();
             aabb.Combine(m_nodes[child1].aabb, m_nodes[child2].aabb);
 
             Debug.Assert(aabb.lowerBound == node.aabb.lowerBound);
@@ -721,7 +722,7 @@ namespace Box2D.Collision
 
                 int child1 = node.child1;
                 int child2 = node.child2;
-                int balance = b2Abs(m_nodes[child2].height - m_nodes[child1].height);
+                int balance = Math.Abs(m_nodes[child2].height - m_nodes[child1].height);
                 maxBalance = Math.Max(maxBalance, balance);
             }
 
@@ -756,7 +757,7 @@ namespace Box2D.Collision
 
             while (count > 1)
             {
-                float minCost = b2_maxFloat;
+                float minCost = b2Settings.b2_maxFloat;
                 int iMin = -1, jMin = -1;
                 for (int i = 0; i < count; ++i)
                 {
@@ -765,7 +766,7 @@ namespace Box2D.Collision
                     for (int j = i + 1; j < count; ++j)
                     {
                         b2AABB aabbj = m_nodes[nodes[j]].aabb;
-                        b2AABB b;
+                        b2AABB b = new b2AABB();
                         b.Combine(aabbi, aabbj);
                         float cost = b.GetPerimeter();
                         if (cost < minCost)
@@ -799,7 +800,6 @@ namespace Box2D.Collision
             }
 
             m_root = nodes[0];
-            b2Free(nodes);
 
             Validate();
         }
@@ -817,7 +817,7 @@ namespace Box2D.Collision
         }
 
 
-        public void Query<T>(T callback, b2AABB aabb)
+        public void Query(b2QueryCallback callback, b2AABB aabb)
         {
             Stack<int> stack = new Stack<int>();
             stack.Push(m_root);
@@ -825,18 +825,18 @@ namespace Box2D.Collision
             while (stack.Count > 0)
             {
                 int nodeId = stack.Pop();
-                if (nodeId == b2TreeNode.b2TreeNode.b2_nullNode)
+                if (nodeId == b2TreeNode.b2_nullNode)
                 {
                     continue;
                 }
 
                 b2TreeNode node = m_nodes[nodeId];
 
-                if (b2TestOverlap(node.aabb, aabb))
+                if (b2Collision.b2TestOverlap(node.aabb, aabb))
                 {
                     if (node.IsLeaf())
                     {
-                        bool proceed = callback.QueryCallback(nodeId);
+                        bool proceed = callback.ReportFixture(nodeId);
                         if (proceed == false)
                         {
                             return;
@@ -851,12 +851,12 @@ namespace Box2D.Collision
             }
         }
 
-        public void RayCast<T>(T callback, ref b2RayCastInput input)
+        public void RayCast(b2RayCastCallback callback, b2RayCastInput input)
         {
             b2Vec2 p1 = input.p1;
             b2Vec2 p2 = input.p2;
             b2Vec2 r = p2 - p1;
-            b2Assert(r.LengthSquared() > 0.0f);
+            Debug.Assert(r.LengthSquared() > 0.0f);
             r.Normalize();
 
             // v is perpendicular to the segment.
@@ -872,8 +872,8 @@ namespace Box2D.Collision
             b2AABB segmentAABB;
             {
                 b2Vec2 t = p1 + maxFraction * (p2 - p1);
-                segmentAABB.lowerBound = Math.Min(p1, t);
-                segmentAABB.upperBound = Math.Max(p1, t);
+                segmentAABB.lowerBound = b2Math.b2Min(p1, t);
+                segmentAABB.upperBound = b2Math.b2Max(p1, t);
             }
 
             Stack<int> stack = new Stack<int>();
@@ -882,14 +882,14 @@ namespace Box2D.Collision
             while (stack.Count > 0)
             {
                 int nodeId = stack.Pop();
-                if (nodeId == b2TreeNode.b2TreeNode.b2_nullNode)
+                if (nodeId == b2TreeNode.b2_nullNode)
                 {
                     continue;
                 }
 
                 b2TreeNode node = m_nodes[nodeId];
 
-                if (b2TestOverlap(node.aabb, segmentAABB) == false)
+                if (b2Collision.b2TestOverlap(node.aabb, segmentAABB) == false)
                 {
                     continue;
                 }
@@ -906,12 +906,12 @@ namespace Box2D.Collision
 
                 if (node.IsLeaf())
                 {
-                    b2RayCastInput subInput;
+                    b2RayCastInput subInput = new b2RayCastInput();
                     subInput.p1 = input.p1;
                     subInput.p2 = input.p2;
                     subInput.maxFraction = maxFraction;
 
-                    float value = callback.RayCastCallback(subInput, nodeId);
+                    float value = callback.ReportFixture(subInput, nodeId);
 
                     if (value == 0.0f)
                     {
@@ -924,8 +924,8 @@ namespace Box2D.Collision
                         // Update segment bounding box.
                         maxFraction = value;
                         b2Vec2 t = p1 + maxFraction * (p2 - p1);
-                        segmentAABB.lowerBound = Math.Min(p1, t);
-                        segmentAABB.upperBound = Math.Max(p1, t);
+                        segmentAABB.lowerBound = b2Math.b2Min(p1, t);
+                        segmentAABB.upperBound = b2Math.b2Max(p1, t);
                     }
                 }
                 else

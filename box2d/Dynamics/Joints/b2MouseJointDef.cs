@@ -10,7 +10,7 @@ namespace Box2D.Dynamics.Joints
     {
         public b2MouseJointDef()
         {
-            type = b2JointType.e_mouseJoint;
+            JointType = b2JointType.e_mouseJoint;
             target.Set(0.0f, 0.0f);
             maxForce = 0.0f;
             frequencyHz = 5.0f;

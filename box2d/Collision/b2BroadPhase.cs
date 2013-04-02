@@ -212,8 +212,8 @@ namespace Box2D.Collision
             while (i2 < m_pairCount)
             {
                 int i1 = i2;
-                object userDataA = m_tree.GetUserData(m_pairBuffer[i].proxyIdA);
-                object userDataB = m_tree.GetUserData(m_pairBuffer[i].proxyIdB);
+                object userDataA = m_tree.GetUserData(m_pairBuffer[i2].proxyIdA);
+                object userDataB = m_tree.GetUserData(m_pairBuffer[i2].proxyIdB);
 
                 callback.AddPair(userDataA, userDataB);
                 ++i2;

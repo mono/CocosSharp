@@ -12,7 +12,7 @@ namespace Box2D.Dynamics.Joints
     {
         b2PulleyJointDef()
         {
-            type = b2JointType.e_pulleyJoint;
+            JointType = b2JointType.e_pulleyJoint;
             groundAnchorA.Set(-1.0f, 1.0f);
             groundAnchorB.Set(1.0f, 1.0f);
             localAnchorA.Set(-1.0f, 0.0f);
@@ -20,7 +20,7 @@ namespace Box2D.Dynamics.Joints
             lengthA = 0.0f;
             lengthB = 0.0f;
             ratio = 1.0f;
-            collideConnected = true;
+            CollideConnected = true;
         }
 
 
@@ -30,12 +30,12 @@ public void Initialize(b2Body bA, b2Body bB,
                 b2Vec2 anchorA, b2Vec2 anchorB,
                 float r)
 {
-    bodyA = bA;
-    bodyB = bB;
+    BodyA = bA;
+    BodyB = bB;
     groundAnchorA = groundA;
     groundAnchorB = groundB;
-    localAnchorA = bodyA.GetLocalPoint(anchorA);
-    localAnchorB = bodyB.GetLocalPoint(anchorB);
+    localAnchorA = BodyA.GetLocalPoint(anchorA);
+    localAnchorB = BodyB.GetLocalPoint(anchorB);
     b2Vec2 dA = anchorA - groundA;
     lengthA = dA.Length();
     b2Vec2 dB = anchorB - groundB;

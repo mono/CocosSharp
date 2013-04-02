@@ -242,7 +242,7 @@ namespace Box2D.Dynamics.Contacts
                     // Setup a velocity bias for restitution.
                     vcp.velocityBias = 0.0f;
                     float vRel = b2Math.b2Dot(vc.normal, vB + b2Math.b2Cross(wB, vcp.rB) - vA - b2Math.b2Cross(wA, vcp.rA));
-                    if (vRel < -b2_velocityThreshold)
+                    if (vRel < -b2Settings.b2_velocityThreshold)
                     {
                         vcp.velocityBias = -vc.restitution * vRel;
                     }
@@ -351,7 +351,7 @@ namespace Box2D.Dynamics.Contacts
         // than friction.
         for (int j = 0; j < pointCount; ++j)
         {
-            b2VelocityConstraintPoint* vcp = vc.points + j;
+            b2VelocityConstraintPoint vcp = vc.points[j];
 
             // Relative velocity at contact
             b2Vec2 dv = vB + b2Math.b2Cross(wB, vcp.rB) - vA - b2Math.b2Cross(wA, vcp.rA);
@@ -360,9 +360,9 @@ namespace Box2D.Dynamics.Contacts
             float vt = b2Math.b2Dot(dv, tangent);
             float lambda = vcp.tangentMass * (-vt);
 
-            // b2Clamp the accumulated force
+            // b2Math.b2Clamp the accumulated force
             float maxFriction = friction * vcp.normalImpulse;
-            float newImpulse = b2Clamp(vcp.tangentImpulse + lambda, -maxFriction, maxFriction);
+            float newImpulse = b2Math.b2Clamp(vcp.tangentImpulse + lambda, -maxFriction, maxFriction);
             lambda = newImpulse - vcp.tangentImpulse;
             vcp.tangentImpulse = newImpulse;
 
@@ -388,7 +388,7 @@ namespace Box2D.Dynamics.Contacts
             float vn = b2Math.b2Dot(dv, normal);
             float lambda = -vcp.normalMass * (vn - vcp.velocityBias);
 
-            // b2Clamp the accumulated impulse
+            // b2Math.b2Clamp the accumulated impulse
             float newImpulse = Math.Max(vcp.normalImpulse + lambda, 0.0f);
             lambda = newImpulse - vcp.normalImpulse;
             vcp.normalImpulse = newImpulse;
@@ -450,7 +450,7 @@ namespace Box2D.Dynamics.Contacts
             float vn1 = b2Math.b2Dot(dv1, normal);
             float vn2 = b2Math.b2Dot(dv2, normal);
 
-            b2Vec2 b;
+            b2Vec2 b = new b2Vec2();
             b.x = vn1 - cp1.velocityBias;
             b.y = vn2 - cp2.velocityBias;
 
@@ -458,9 +458,8 @@ namespace Box2D.Dynamics.Contacts
             b -= b2Math.b2Mul(vc.K, a);
 
             float k_errorTol = 1e-3f;
-            B2_NOT_USED(k_errorTol);
 
-            for (;;)
+            while(true)
             {
                 //
                 // Case 1: vn = 0
@@ -636,7 +635,7 @@ namespace Box2D.Dynamics.Contacts
         {
             for (int i = 0; i < m_count; ++i)
             {
-                b2ContactVelocityConstraint* vc = m_velocityConstraints + i;
+                b2ContactVelocityConstraint vc = m_velocityConstraints[i];
                 b2Manifold manifold = m_contacts[vc.contactIndex].GetManifold();
 
                 for (int j = 0; j < vc.pointCount; ++j)
@@ -655,7 +654,7 @@ namespace Box2D.Dynamics.Contacts
 
                 switch (pc.type)
                 {
-                    case b2Manifold.e_circles:
+                    case b2ManifoldType.e_circles:
                         {
                             b2Vec2 pointA = b2Math.b2Mul(xfA, pc.localPoint);
                             b2Vec2 pointB = b2Math.b2Mul(xfB, pc.localPoints[0]);
@@ -666,7 +665,7 @@ namespace Box2D.Dynamics.Contacts
                         }
                         break;
 
-                    case b2Manifold.e_faceA:
+                    case b2ManifoldType.e_faceA:
                         {
                             normal = b2Math.b2Mul(xfA.q, pc.localNormal);
                             b2Vec2 planePoint = b2Math.b2Mul(xfA, pc.localPoint);
@@ -677,7 +676,7 @@ namespace Box2D.Dynamics.Contacts
                         }
                         break;
 
-                    case b2Manifold.e_faceB:
+                    case b2ManifoldType.e_faceB:
                         {
                             normal = b2Math.b2Mul(xfB.q, pc.localNormal);
                             b2Vec2 planePoint = b2Math.b2Mul(xfB, pc.localPoint);
@@ -693,19 +692,19 @@ namespace Box2D.Dynamics.Contacts
                 }
             }
 
-            protected b2Vec2 normal;
-            protected b2Vec2 point;
-            protected float separation;
+            public b2Vec2 normal;
+            public b2Vec2 point;
+            public float separation;
         }
 
         // Sequential solver.
-        protected bool SolvePositionConstraints()
+        public bool SolvePositionConstraints()
         {
             float minSeparation = 0.0f;
 
             for (int i = 0; i < m_count; ++i)
             {
-                b2ContactPositionConstraint* pc = m_positionConstraints + i;
+                b2ContactPositionConstraint pc = m_positionConstraints[i];
 
                 int indexA = pc.indexA;
                 int indexB = pc.indexB;
@@ -726,14 +725,13 @@ namespace Box2D.Dynamics.Contacts
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    b2Transform xfA, xfB;
+                    b2Transform xfA = new b2Transform(), xfB = new b2Transform();
                     xfA.q.Set(aA);
                     xfB.q.Set(aB);
                     xfA.p = cA - b2Math.b2Mul(xfA.q, localCenterA);
                     xfB.p = cB - b2Math.b2Mul(xfB.q, localCenterB);
 
-                    b2PositionSolverManifold psm;
-                    psm.Initialize(pc, xfA, xfB, j);
+                    b2PositionSolverManifold psm = new b2PositionSolverManifold(pc, xfA, xfB, j);
                     b2Vec2 normal = psm.normal;
 
                     b2Vec2 point = psm.point;
@@ -743,10 +741,10 @@ namespace Box2D.Dynamics.Contacts
                     b2Vec2 rB = point - cB;
 
                     // Track max constraint error.
-                    minSeparation = b2Min(minSeparation, separation);
+                    minSeparation = Math.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float C = b2Clamp(b2_baumgarte * (separation + b2_linearSlop), -b2_maxLinearCorrection, 0.0f);
+                    float C = b2Math.b2Math.b2Clamp(b2Settings.b2_baumgarte * (separation + b2Settings.b2_linearSlop), -b2Settings.b2_maxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
                     float rnA = b2Math.b2Cross(rA, normal);
@@ -774,17 +772,17 @@ namespace Box2D.Dynamics.Contacts
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't
             // push the separation above -b2_linearSlop.
-            return minSeparation >= -3.0f * b2_linearSlop;
+            return minSeparation >= -3.0f * b2Settings.b2_linearSlop;
         }
 
         // Sequential position solver for position constraints.
-        bool SolveTOIPositionConstraints(int toiIndexA, int toiIndexB)
+        public bool SolveTOIPositionConstraints(int toiIndexA, int toiIndexB)
         {
             float minSeparation = 0.0f;
 
             for (int i = 0; i < m_count; ++i)
             {
-                b2ContactPositionConstraint* pc = m_positionConstraints + i;
+                b2ContactPositionConstraint pc = m_positionConstraints[i];
 
                 int indexA = pc.indexA;
                 int indexB = pc.indexB;
@@ -817,14 +815,13 @@ namespace Box2D.Dynamics.Contacts
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    b2Transform xfA, xfB;
+                    b2Transform xfA = new b2Transform(), xfB = new b2Transform();
                     xfA.q.Set(aA);
                     xfB.q.Set(aB);
                     xfA.p = cA - b2Math.b2Mul(xfA.q, localCenterA);
                     xfB.p = cB - b2Math.b2Mul(xfB.q, localCenterB);
 
-                    b2PositionSolverManifold psm;
-                    psm.Initialize(pc, xfA, xfB, j);
+                    b2PositionSolverManifold psm = new b2PositionSolverManifold(pc, xfA, xfB, j);
                     b2Vec2 normal = psm.normal;
 
                     b2Vec2 point = psm.point;
@@ -834,10 +831,10 @@ namespace Box2D.Dynamics.Contacts
                     b2Vec2 rB = point - cB;
 
                     // Track max constraint error.
-                    minSeparation = b2Min(minSeparation, separation);
+                    minSeparation = Math.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float C = b2Clamp(b2_toiBaugarte * (separation + b2_linearSlop), -b2_maxLinearCorrection, 0.0f);
+                    float C = b2Math.b2Math.b2Clamp(b2Settings.b2_toiBaugarte * (separation + b2Settings.b2_linearSlop), -b2Settings.b2_maxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
                     float rnA = b2Math.b2Cross(rA, normal);
@@ -865,7 +862,7 @@ namespace Box2D.Dynamics.Contacts
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't
             // push the separation above -b2_linearSlop.
-            return minSeparation >= -1.5f * b2_linearSlop;
+            return minSeparation >= -1.5f * b2Settings.b2_linearSlop;
         }
     }
 }
