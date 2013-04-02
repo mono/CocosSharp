@@ -17,10 +17,10 @@ namespace tests
             CCNode aParent;
             CCSprite l1, l2a, l2b, l3a1, l3a2, l3b1, l3b2;
             CCActionInterval rot = new CCRotateBy (10, 360);
-            CCAction seq = CCRepeatForever.Create(rot);
+            CCAction seq = new CCRepeatForever (rot);
 
             CCActionInterval rot_back = (CCActionInterval)rot.Reverse();
-            CCAction rot_back_fe = CCRepeatForever.Create(rot_back);
+            CCAction rot_back_fe = new CCRepeatForever (rot_back);
 
             //
             // SpriteBatchNode: 3 levels of children

@@ -12,9 +12,9 @@ namespace tests
         {
             CCShuffleTiles shuffle = CCShuffleTiles.Create(25, new CCGridSize(16, 12), t);
             CCFiniteTimeAction shuffle_back = shuffle.Reverse();
-            CCDelayTime delay = CCDelayTime.Create(2);
+            CCDelayTime delay = new CCDelayTime (2);
 
-            return (CCActionInterval)(CCSequence.Create(shuffle, delay, shuffle_back));
+            return (CCActionInterval)(CCSequence.FromActions(shuffle, delay, shuffle_back));
         }
     }
 }

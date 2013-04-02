@@ -11,7 +11,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCRotateBy rotate = new CCRotateBy (10, 360);
-            CCRepeatForever action = CCRepeatForever.Create(rotate);
+            CCRepeatForever action = new CCRepeatForever (rotate);
             for (int i = 0; i < 3; i++)
             {
                 CCSprite sprite = CCSprite.Create("Images/grossini");

@@ -62,8 +62,8 @@ namespace tests
             CCJumpBy jump = new CCJumpBy (3, new CCPoint(s.Width - 80, 0), 50, 4);
 
             AddChild(sprite);
-            sprite.RunAction(CCRepeatForever.Create(
-                (CCActionInterval) (CCSequence.Create(jump, jump.Reverse())))
+            sprite.RunAction(new CCRepeatForever (
+                (CCActionInterval) (CCSequence.FromActions(jump, jump.Reverse())))
                 );
 
             // pause button

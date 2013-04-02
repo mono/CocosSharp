@@ -50,10 +50,10 @@ namespace cocos2d
                 outDeltaZ = -90;
                 outAngleZ = 0;
             }
-            inA = CCSequence.Create
+            inA = CCSequence.FromActions
                 (
-                    CCDelayTime.Create(m_fDuration / 2),
-                    CCSpawn.Create
+                    new CCDelayTime (m_fDuration / 2),
+                    CCSpawn.FromActions
                         (
                             CCOrbitCamera.Create(m_fDuration / 2, 1, 0, inAngleZ, inDeltaZ, 0, 0),
                             CCScaleTo.Create(m_fDuration / 2, 1),
@@ -61,15 +61,15 @@ namespace cocos2d
                         ),
                     CCCallFunc.Create(Finish)
                 );
-            outA = CCSequence.Create
+            outA = CCSequence.FromActions
                 (
-                    CCSpawn.Create
+                    CCSpawn.FromActions
                         (
                             CCOrbitCamera.Create(m_fDuration / 2, 1, 0, outAngleZ, outDeltaZ, 0, 0),
                             CCScaleTo.Create(m_fDuration / 2, 0.5f)
                         ),
                     CCHide.Create(),
-                    CCDelayTime.Create(m_fDuration / 2)
+                    new CCDelayTime (m_fDuration / 2)
                 );
 
             m_pInScene.Scale = 0.5f;

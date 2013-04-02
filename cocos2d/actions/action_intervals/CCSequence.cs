@@ -9,6 +9,22 @@ namespace cocos2d
         protected CCFiniteTimeAction[] m_pActions = new CCFiniteTimeAction[2];
         protected float m_split;
 
+
+		public CCSequence (CCFiniteTimeAction action1, CCFiniteTimeAction action2)
+		{
+			InitOneTwo(action1, action2);
+		}
+
+		protected CCSequence (CCSequence sequence) : base (sequence)
+		{
+
+			var param1 = sequence.m_pActions[0].Copy() as CCFiniteTimeAction;
+			var param2 = sequence.m_pActions[1].Copy() as CCFiniteTimeAction;
+
+			InitOneTwo(param1, param2);
+			
+		}
+
         protected bool InitOneTwo(CCFiniteTimeAction actionOne, CCFiniteTimeAction aciontTwo)
         {
             Debug.Assert(actionOne != null);
@@ -35,26 +51,26 @@ namespace cocos2d
                 {
                     return null;
                 }
+				base.Copy(tmpZone);
+				
+				var param1 = m_pActions[0].Copy() as CCFiniteTimeAction;
+				var param2 = m_pActions[1].Copy() as CCFiniteTimeAction;
+				
+				if (param1 == null || param2 == null)
+				{
+					return null;
+				}
+				
+				ret.InitOneTwo(param1, param2);
+				
+				return ret;
             }
             else
             {
-                ret = new CCSequence();
-                tmpZone =  (ret);
+                return new CCSequence(this);
             }
 
-            base.Copy(tmpZone);
 
-            var param1 = m_pActions[0].Copy() as CCFiniteTimeAction;
-            var param2 = m_pActions[1].Copy() as CCFiniteTimeAction;
-
-            if (param1 == null || param2 == null)
-            {
-                return null;
-            }
-
-            ret.InitOneTwo(param1, param2);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -134,27 +150,21 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_pActions[1].Reverse(), m_pActions[0].Reverse());
+            return new CCSequence (m_pActions[1].Reverse(), m_pActions[0].Reverse());
         }
 
-        public static CCSequence Create(params CCFiniteTimeAction[] actions)
-        {
-            CCFiniteTimeAction prev = actions[0];
-
-            for (int i = 1; i < actions.Length; i++)
-            {
-                prev = ActionOneTwo(prev, actions[i]);
-            }
-
-            return (CCSequence) prev;
-        }
-
-        public static CCSequence ActionOneTwo(CCFiniteTimeAction action1, CCFiniteTimeAction action2)
-        {
-            var ret = new CCSequence();
-            ret.InitOneTwo(action1, action2);
-            return ret;
-        }
+		public static CCSequence FromActions(params CCFiniteTimeAction[] actions)
+		{
+			CCFiniteTimeAction prev = actions[0];
+			
+			for (int i = 1; i < actions.Length; i++)
+			{
+				prev = new CCSequence (prev, actions[i]);
+			}
+			
+			return (CCSequence) prev;
+		}
+		
 
     }
 }

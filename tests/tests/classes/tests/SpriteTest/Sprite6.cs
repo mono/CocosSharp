@@ -25,17 +25,17 @@ namespace tests
 
             // SpriteBatchNode actions
             CCActionInterval rotate = new CCRotateBy (5, 360);
-            CCAction action = CCRepeatForever.Create(rotate);
+            CCAction action = new CCRepeatForever (rotate);
 
             // SpriteBatchNode actions
             CCActionInterval rotate_back = (CCActionInterval)rotate.Reverse();
-            CCActionInterval rotate_seq = (CCActionInterval)(CCSequence.Create(rotate, rotate_back));
-            CCAction rotate_forever = CCRepeatForever.Create(rotate_seq);
+            CCActionInterval rotate_seq = (CCActionInterval)(CCSequence.FromActions(rotate, rotate_back));
+            CCAction rotate_forever = new CCRepeatForever (rotate_seq);
 
             CCActionInterval scale = CCScaleBy.Create(5, 1.5f);
             CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
-            CCActionInterval scale_seq = (CCActionInterval)(CCSequence.Create(scale, scale_back));
-            CCAction scale_forever = CCRepeatForever.Create(scale_seq);
+            CCActionInterval scale_seq = (CCActionInterval)(CCSequence.FromActions(scale, scale_back));
+            CCAction scale_forever = new CCRepeatForever (scale_seq);
 
             float step = s.Width / 4;
 

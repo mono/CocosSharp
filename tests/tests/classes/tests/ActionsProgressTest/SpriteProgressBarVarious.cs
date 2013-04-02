@@ -24,7 +24,7 @@ namespace tests
             left.BarChangeRate = new CCPoint(1, 0);
             AddChild(left);
             left.Position = new CCPoint(100, s.Height / 2);
-            left.RunAction(CCRepeatForever.Create((CCActionInterval) to.Copy()));
+            left.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
 
             CCProgressTimer middle = CCProgressTimer.Create(CCSprite.Create(s_pPathSister2));
             middle.Type = CCProgressTimerType.Bar;
@@ -34,7 +34,7 @@ namespace tests
             middle.BarChangeRate = new CCPoint(1, 1);
             AddChild(middle);
             middle.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            middle.RunAction(CCRepeatForever.Create((CCActionInterval) to.Copy()));
+            middle.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
 
             CCProgressTimer right = CCProgressTimer.Create(CCSprite.Create(s_pPathSister2));
             right.Type = CCProgressTimerType.Bar;
@@ -44,7 +44,7 @@ namespace tests
             right.BarChangeRate = new CCPoint(0, 1);
             AddChild(right);
             right.Position = new CCPoint(s.Width - 100, s.Height / 2);
-            right.RunAction(CCRepeatForever.Create((CCActionInterval) to.Copy()));
+            right.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
         }
 
         public override string subtitle()

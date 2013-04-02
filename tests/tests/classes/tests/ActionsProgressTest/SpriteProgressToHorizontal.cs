@@ -24,7 +24,7 @@ namespace tests
             left.BarChangeRate = new CCPoint(1, 0);
             AddChild(left);
             left.Position = new CCPoint(100, s.Height / 2);
-            left.RunAction(CCRepeatForever.Create(to1));
+            left.RunAction(new CCRepeatForever (to1));
 
             CCProgressTimer right = CCProgressTimer.Create(s_pPathSister2);
             right.Type = CCProgressTimerType.Bar;
@@ -34,7 +34,7 @@ namespace tests
             right.BarChangeRate = new CCPoint(1, 0);
             AddChild(right);
             right.Position = new CCPoint(s.Width - 100, s.Height / 2);
-            right.RunAction(CCRepeatForever.Create(to2));
+            right.RunAction(new CCRepeatForever (to2));
         }
 
         public override string subtitle()

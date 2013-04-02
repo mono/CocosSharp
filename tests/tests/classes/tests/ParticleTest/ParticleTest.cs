@@ -232,8 +232,8 @@ namespace tests
 
             CCActionInterval move = new CCMoveBy (4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
-            CCFiniteTimeAction seq = CCSequence.Create(move, move_back);
-            m_background.RunAction(CCRepeatForever.Create((CCActionInterval) seq));
+            CCFiniteTimeAction seq = CCSequence.FromActions(move, move_back);
+            m_background.RunAction(new CCRepeatForever ((CCActionInterval) seq));
 
             Schedule(step);
         }
@@ -973,8 +973,8 @@ namespace tests
 
             CCActionInterval move = new CCMoveBy (4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
-            CCFiniteTimeAction seq = CCSequence.Create(move, move_back);
-            p.RunAction(CCRepeatForever.Create((CCActionInterval) seq));
+            CCFiniteTimeAction seq = CCSequence.FromActions(move, move_back);
+            p.RunAction(new CCRepeatForever ((CCActionInterval) seq));
         }
 
         public override string title()
@@ -1268,7 +1268,7 @@ namespace tests
             m_emitter.BlendAdditive = false;
 
             CCRotateBy rot = new CCRotateBy (16, 360);
-            m_emitter.RunAction(CCRepeatForever.Create(rot));
+            m_emitter.RunAction(new CCRepeatForever (rot));
         }
 
         public override string title()

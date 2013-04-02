@@ -156,8 +156,8 @@ namespace cocos2d
 
             // Make callback at end of sequence
             CCBSequence seq = GetSequence(nSeqId);
-            CCAction completeAction = CCSequence.ActionOneTwo(
-                CCDelayTime.Create(seq.Duration + fTweenDuration),
+            CCAction completeAction = new CCSequence (
+                new CCDelayTime (seq.Duration + fTweenDuration),
                 CCCallFunc.Create(SequenceCompleted)
                 );
 
@@ -229,12 +229,12 @@ namespace cocos2d
                         var value = (CCBValue) pKeyframe1.Value;
                         if (value.GetBoolValue())
                         {
-                            return CCSequence.ActionOneTwo(CCDelayTime.Create(duration), CCShow.Create());
+                            return new CCSequence (new CCDelayTime (duration), CCShow.Create());
                         }
-                        return CCSequence.ActionOneTwo(CCDelayTime.Create(duration), CCHide.Create());
+                        return new CCSequence (new CCDelayTime (duration), CCHide.Create());
                     }
                 case "displayFrame":
-                    return CCSequence.ActionOneTwo(CCDelayTime.Create(duration), CCBSetSpriteFrame.Create((CCSpriteFrame) pKeyframe1.Value));
+                    return new CCSequence (new CCDelayTime (duration), CCBSetSpriteFrame.Create((CCSpriteFrame) pKeyframe1.Value));
                 case "position":
                     {
                         // Get position type
@@ -428,7 +428,7 @@ namespace cocos2d
 
                 if (timeFirst > 0)
                 {
-                    actions.Add(CCDelayTime.Create(timeFirst));
+                    actions.Add(new CCDelayTime (timeFirst));
                 }
 
                 for (int i = 0; i < numKeyframes - 1; ++i)
@@ -448,7 +448,7 @@ namespace cocos2d
 
                 if (actions.Count > 1)
                 {
-                    CCFiniteTimeAction seq = CCSequence.Create(actions.ToArray());
+                    CCFiniteTimeAction seq = CCSequence.FromActions(actions.ToArray());
                     node.RunAction(seq);
                 }
                 else

@@ -10,7 +10,7 @@ namespace tests.Extensions
         public override void OnNodeLoaded(CCNode node, CCNodeLoader nodeLoader)
         {
             CCRotateBy ccRotateBy = new CCRotateBy (20.0f, 360);
-            CCRepeatForever ccRepeatForever = CCRepeatForever.Create(ccRotateBy);
+            CCRepeatForever ccRepeatForever = new CCRepeatForever (ccRotateBy);
             mBurstSprite.RunAction(ccRepeatForever);
         }
 

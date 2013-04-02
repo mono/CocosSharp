@@ -106,7 +106,7 @@ namespace cocos2d
 
             if (!m_bBack)
             {
-                m_pOutScene.RunAction(CCSequence.Create
+                m_pOutScene.RunAction(CCSequence.FromActions
                                           (
                                               action,
                                               CCCallFunc.Create(Finish),
@@ -116,7 +116,7 @@ namespace cocos2d
             {
                 // to prevent initial flicker
                 m_pInScene.Visible = false;
-                m_pInScene.RunAction(CCSequence.Create
+                m_pInScene.RunAction(CCSequence.FromActions
                                          (
                                              CCShow.Create(),
                                              action,

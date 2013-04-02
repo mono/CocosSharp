@@ -29,10 +29,10 @@ namespace tests
             CCActionInterval a1 = new CCRotateBy (2, 360);
             CCActionInterval a2 = CCScaleBy.Create(2, 2);
 
-            CCAction action1 = CCRepeatForever.Create((CCActionInterval)CCSequence.Create(a1, a2, a2.Reverse())
+            CCAction action1 = new CCRepeatForever ((CCActionInterval)CCSequence.FromActions(a1, a2, a2.Reverse())
                 );
-            CCAction action2 = CCRepeatForever.Create((CCActionInterval)
-                (CCSequence.Create(
+            CCAction action2 = new CCRepeatForever ((CCActionInterval)
+                (CCSequence.FromActions(
                     (CCActionInterval) (a1.Copy()),
                     (CCActionInterval) (a2.Copy()),
                     a2.Reverse()))

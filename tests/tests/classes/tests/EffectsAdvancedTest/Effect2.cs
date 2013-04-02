@@ -26,13 +26,13 @@ namespace tests
             //   turnon tiles will use a new grid
             CCFiniteTimeAction reuse = CCReuseGrid.Create(2);
 
-            CCActionInterval delay = CCDelayTime.Create(1);
+            CCActionInterval delay = new CCDelayTime (1);
 
             //	id orbit = [OrbitCamera::actionWithDuration:5 radius:1 deltaRadius:2 angleZ:0 deltaAngleZ:180 angleX:0 deltaAngleX:-90];
             //	id orbit_back = [orbit reverse];
             //
             //	[target runAction: [RepeatForever::actionWithAction: [Sequence actions: orbit, orbit_back, nil]]];
-            target.RunAction((CCSequence.Create(shaky, delay, reuse, shuffle, (CCFiniteTimeAction) delay.Copy(), turnoff, turnon)));
+            target.RunAction((CCSequence.FromActions(shaky, delay, reuse, shuffle, (CCFiniteTimeAction) delay.Copy(), turnoff, turnon)));
         }
 
         public override string title()

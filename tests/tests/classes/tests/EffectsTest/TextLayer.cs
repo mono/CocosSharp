@@ -37,7 +37,7 @@ namespace tests
             grossini.Position = new CCPoint(x / 3, y / 2);
             CCActionInterval sc = CCScaleBy.Create(2, 5);
             CCFiniteTimeAction sc_back = sc.Reverse();
-            grossini.RunAction(CCRepeatForever.Create((CCActionInterval)(CCSequence.Create(sc, sc_back))));
+            grossini.RunAction(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(sc, sc_back))));
             //grossini.runAction(effect);
 
             CCSprite tamara = CCSprite.Create(TestResource.s_pPathSister1);
@@ -45,7 +45,7 @@ namespace tests
             tamara.Position = new CCPoint(2 * x / 3, y / 2);
             CCActionInterval sc2 = CCScaleBy.Create(2, 5);
             CCFiniteTimeAction sc2_back = sc2.Reverse();
-            tamara.RunAction(CCRepeatForever.Create((CCActionInterval)(CCSequence.Create(sc2, sc2_back))));
+            tamara.RunAction(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(sc2, sc2_back))));
 
             CCLabelTTF label = CCLabelTTF.Create(EffectTestScene.effectsList[EffectTestScene.actionIdx], "arial", 32);
 

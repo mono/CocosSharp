@@ -13,14 +13,12 @@ namespace cocos2d
         protected float m_fFrom, m_fTo;
         protected string m_strKey;
 
-        public static CCActionTween Create(float aDuration, string key, float from, float to)
+        public CCActionTween (float aDuration, string key, float from, float to)
         {
-            var pRet = new CCActionTween();
-            pRet.InitWithDuration(aDuration, key, from, to);
-            return pRet;
+            InitWithDuration(aDuration, key, from, to);
         }
 
-        public bool InitWithDuration(float aDuration, string key, float from, float to)
+        protected bool InitWithDuration(float aDuration, string key, float from, float to)
         {
             if (base.InitWithDuration(aDuration))
             {
@@ -47,7 +45,7 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_fDuration, m_strKey, m_fTo, m_fFrom);
+            return new CCActionTween (m_fDuration, m_strKey, m_fTo, m_fFrom);
         }
     }
 }

@@ -54,7 +54,7 @@ namespace tests
                 }
 
                 CCAnimation animation = CCAnimation.Create(animFrames, 0.3f);
-                sprite.RunAction(CCRepeatForever.Create(new CCAnimate (animation)));
+                sprite.RunAction(new CCRepeatForever (new CCAnimate (animation)));
 
                 animFrames = null;
 
@@ -63,8 +63,8 @@ namespace tests
                 CCSkewBy skewY = new CCSkewBy (2, 0, 45);
                 CCActionInterval skewY_back = (CCActionInterval)skewY.Reverse();
 
-                CCFiniteTimeAction seq_skew = CCSequence.Create(skewX, skewX_back, skewY, skewY_back);
-                sprite.RunAction(CCRepeatForever.Create((CCActionInterval)seq_skew));
+                CCFiniteTimeAction seq_skew = CCSequence.FromActions(skewX, skewX_back, skewY, skewY_back);
+                sprite.RunAction(new CCRepeatForever ((CCActionInterval)seq_skew));
 
                 AddChild(sprite, 0);
             }

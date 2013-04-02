@@ -210,8 +210,8 @@ namespace cocos2d
             CCActionInterval fade = new CCFadeOut  (1.0f);
             //CCActionInterval fade_in = fade.reverse();
             CCActionInterval fade_in = null;
-            CCFiniteTimeAction seq = CCSequence.Create(fade, fade_in, null);
-            CCAction repeat = CCRepeatForever.Create((CCActionInterval)seq);
+            CCFiniteTimeAction seq = CCSequence.FromActions(fade, fade_in, null);
+            CCAction repeat = new CCRepeatForever ((CCActionInterval)seq);
             label2.RunAction(repeat);
 
             m_time = 0;
@@ -273,21 +273,21 @@ namespace cocos2d
 
 
             CCActionInterval rotate = new CCRotateBy (2, 360);
-            CCAction rot_4ever = CCRepeatForever.Create(rotate);
+            CCAction rot_4ever = new CCRepeatForever (rotate);
 
             CCActionInterval scale = CCScaleBy.Create(2, 1.5f);
             //CCActionInterval scale_back = scale.reverse();
             CCActionInterval scale_back = null;
-            CCFiniteTimeAction scale_seq = CCSequence.Create(scale, scale_back, null);
-            CCAction scale_4ever = CCRepeatForever.Create((CCActionInterval)scale_seq);
+            CCFiniteTimeAction scale_seq = CCSequence.FromActions(scale, scale_back, null);
+            CCAction scale_4ever = new CCRepeatForever ((CCActionInterval)scale_seq);
 
             CCActionInterval jump = new CCJumpBy (0.5f, new CCPoint(), 60, 1);
-            CCAction jump_4ever = CCRepeatForever.Create(jump);
+            CCAction jump_4ever = new CCRepeatForever (jump);
 
             CCActionInterval fade_out = new CCFadeOut  (1);
             CCActionInterval fade_in = new CCFadeIn  (1);
-            CCFiniteTimeAction seq = CCSequence.Create(fade_out, fade_in, null);
-            CCAction fade_4ever = CCRepeatForever.Create((CCActionInterval)seq);
+            CCFiniteTimeAction seq = CCSequence.FromActions(fade_out, fade_in, null);
+            CCAction fade_4ever = new CCRepeatForever ((CCActionInterval)seq);
 
             BChar.RunAction(rot_4ever);
             BChar.RunAction(scale_4ever);

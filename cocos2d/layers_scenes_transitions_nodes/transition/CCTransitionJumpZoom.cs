@@ -17,15 +17,15 @@ namespace cocos2d
             CCActionInterval scaleIn = CCScaleTo.Create(m_fDuration / 4, 1.0f);
             CCActionInterval scaleOut = CCScaleTo.Create(m_fDuration / 4, 0.5f);
 
-            CCSequence jumpZoomOut = (CCSequence.Create(scaleOut, jump));
-            CCSequence jumpZoomIn = (CCSequence.Create((CCActionInterval) jump.Copy(), scaleIn));
+            CCSequence jumpZoomOut = (CCSequence.FromActions(scaleOut, jump));
+            CCSequence jumpZoomIn = (CCSequence.FromActions((CCActionInterval) jump.Copy(), scaleIn));
 
-            CCActionInterval delay = CCDelayTime.Create(m_fDuration / 2);
+            CCActionInterval delay = new CCDelayTime (m_fDuration / 2);
 
             m_pOutScene.RunAction(jumpZoomOut);
             m_pInScene.RunAction
                 (
-                    CCSequence.Create
+                    CCSequence.FromActions
                         (
                             delay,
                             jumpZoomIn,

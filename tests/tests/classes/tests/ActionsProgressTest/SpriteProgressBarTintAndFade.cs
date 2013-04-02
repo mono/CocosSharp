@@ -14,10 +14,10 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCProgressTo to = CCProgressTo.Create(6, 100);
-            CCAction tint = CCSequence.Create(new CCTintTo (1, 255, 0, 0),
+            CCAction tint = CCSequence.FromActions(new CCTintTo (1, 255, 0, 0),
                                               new CCTintTo (1, 0, 255, 0),
                                               new CCTintTo (1, 0, 0, 255));
-            CCAction fade = CCSequence.Create(new CCFadeTo (1.0f, 0),
+            CCAction fade = CCSequence.FromActions(new CCFadeTo (1.0f, 0),
                                               new CCFadeTo (1.0f, 255));
 
             CCProgressTimer left = CCProgressTimer.Create(CCSprite.Create(s_pPathSister1));
@@ -29,8 +29,8 @@ namespace tests
             left.BarChangeRate = new CCPoint(1, 0);
             AddChild(left);
             left.Position = new CCPoint(100, s.Height / 2);
-            left.RunAction(CCRepeatForever.Create((CCActionInterval) to.Copy()));
-            left.RunAction(CCRepeatForever.Create((CCActionInterval) tint.Copy()));
+            left.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
+            left.RunAction(new CCRepeatForever ((CCActionInterval) tint.Copy()));
 
             left.AddChild(CCLabelTTF.Create("Tint", "arial", 20.0f));
 
@@ -42,8 +42,8 @@ namespace tests
             middle.BarChangeRate = new CCPoint(1, 1);
             AddChild(middle);
             middle.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            middle.RunAction(CCRepeatForever.Create((CCActionInterval) to.Copy()));
-            middle.RunAction(CCRepeatForever.Create((CCActionInterval) fade.Copy()));
+            middle.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
+            middle.RunAction(new CCRepeatForever ((CCActionInterval) fade.Copy()));
 
             middle.AddChild(CCLabelTTF.Create("Fade", "arial", 20.0f));
 
@@ -55,9 +55,9 @@ namespace tests
             right.BarChangeRate = new CCPoint(0, 1);
             AddChild(right);
             right.Position = new CCPoint(s.Width - 100, s.Height / 2);
-            right.RunAction(CCRepeatForever.Create((CCActionInterval) to.Copy()));
-            right.RunAction(CCRepeatForever.Create((CCActionInterval) tint.Copy()));
-            right.RunAction(CCRepeatForever.Create((CCActionInterval) fade.Copy()));
+            right.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
+            right.RunAction(new CCRepeatForever ((CCActionInterval) tint.Copy()));
+            right.RunAction(new CCRepeatForever ((CCActionInterval) fade.Copy()));
 
             right.AddChild(CCLabelTTF.Create("Tint and Fade", "arial", 20.0f));
         }

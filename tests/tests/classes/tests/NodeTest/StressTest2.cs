@@ -16,8 +16,8 @@ namespace tests
             CCActionInterval move = new CCMoveBy (3, new CCPoint(350, 0));
             CCActionInterval move_ease_inout3 = CCEaseInOut.Create((CCActionInterval) (move.Copy()), 2.0f);
             var move_ease_inout_back3 = (CCActionInterval) move_ease_inout3.Reverse();
-            CCFiniteTimeAction seq3 = CCSequence.Create(move_ease_inout3, move_ease_inout_back3);
-            sp1.RunAction(CCRepeatForever.Create((CCActionInterval) seq3));
+            CCFiniteTimeAction seq3 = CCSequence.FromActions(move_ease_inout3, move_ease_inout_back3);
+            sp1.RunAction(new CCRepeatForever ((CCActionInterval) seq3));
             sublayer.AddChild(sp1, 1);
 
             CCParticleFire fire = CCParticleFire.Create();
@@ -26,7 +26,7 @@ namespace tests
 
             var copy_seq3 = (CCActionInterval) (seq3.Copy());
 
-            fire.RunAction(CCRepeatForever.Create(copy_seq3));
+            fire.RunAction(new CCRepeatForever (copy_seq3));
             sublayer.AddChild(fire, 2);
 
             Schedule((shouldNotLeak), 6.0f);

@@ -39,13 +39,13 @@ namespace tests
 
             CCAnimation animation = CCAnimation.Create(animFrames, 0.2f);
             CCAnimate animate = new CCAnimate (animation);
-            CCActionInterval seq = (CCActionInterval)(CCSequence.Create(animate,
+            CCActionInterval seq = (CCActionInterval)(CCSequence.FromActions(animate,
                                CCFlipX.Create(true),
                               (CCFiniteTimeAction)animate.Copy(),
                                CCFlipX.Create(false)
                                ));
 
-            sprite.RunAction(CCRepeatForever.Create(seq));
+            sprite.RunAction(new CCRepeatForever (seq));
             //animFrames->release();    // win32 : memory leak    2010-0415
         }
 

@@ -20,13 +20,13 @@ namespace tests
             CCActionInterval waves = CCWaves3D.Create(18, 15, new CCGridSize(15, 10), 10);
 
             CCFiniteTimeAction reuse = CCReuseGrid.Create(1);
-            CCActionInterval delay = CCDelayTime.Create(8);
+            CCActionInterval delay = new CCDelayTime (8);
 
             CCActionInterval orbit = CCOrbitCamera.Create(5, 1, 2, 0, 180, 0, -90);
             CCFiniteTimeAction orbit_back = orbit.Reverse();
 
-            target.RunAction(CCRepeatForever.Create((CCSequence.Create(orbit, orbit_back))));
-            target.RunAction(CCSequence.Create(lens, delay, reuse, waves));
+            target.RunAction(new CCRepeatForever ((CCSequence.FromActions(orbit, orbit_back))));
+            target.RunAction(CCSequence.FromActions(lens, delay, reuse, waves));
         }
 
         public override string title()

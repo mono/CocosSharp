@@ -37,14 +37,14 @@ namespace tests
             grossini.Position = new CCPoint(x / 3.0f, 200);
             CCActionInterval sc = CCScaleBy.Create(2, 5);
             CCFiniteTimeAction sc_back = sc.Reverse();
-            grossini.RunAction(CCRepeatForever.Create((CCActionInterval)(CCSequence.Create(sc, sc_back))));
+            grossini.RunAction(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(sc, sc_back))));
 
             tamara = CCSprite.Create("Images/grossinis_sister1");
             bg.AddChild(tamara, 1, EffectAdvanceScene.kTagSprite2);
             tamara.Position = new CCPoint(2 * x / 3.0f, 200);
             CCActionInterval sc2 = CCScaleBy.Create(2, 5);
             CCFiniteTimeAction sc2_back = sc2.Reverse();
-            tamara.RunAction(CCRepeatForever.Create((CCActionInterval)(CCSequence.Create(sc2, sc2_back))));
+            tamara.RunAction(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(sc2, sc2_back))));
 
             CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 28);
 

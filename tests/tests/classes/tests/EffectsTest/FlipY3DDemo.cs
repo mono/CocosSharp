@@ -8,9 +8,9 @@ namespace tests
         {
             CCFlipX3D flipx = Create(t);
             CCFiniteTimeAction flipx_back = flipx.Reverse();
-            CCDelayTime delay = CCDelayTime.Create(2);
+            CCDelayTime delay = new CCDelayTime (2);
 
-            return (CCSequence.Create(flipx, delay, flipx_back));
+            return (CCSequence.FromActions(flipx, delay, flipx_back));
         }
     }
 }

@@ -8,7 +8,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCActionInterval effect = (CCSequence.Create(CCDelayTime.Create(2.0f), CCShaky3D.Create(16, false, new CCGridSize(5, 5), 5.0f)));
+            CCActionInterval effect = (CCSequence.FromActions(new CCDelayTime (2.0f), CCShaky3D.Create(16, false, new CCGridSize(5, 5), 5.0f)));
 
             // cleanup
             CCNode bg = GetChildByTag(EffectAdvanceScene.kTagBackground);
@@ -30,7 +30,7 @@ namespace tests
             layer2.AddChild(fog, 1);
             AddChild(layer2, 1);
 
-            layer2.RunAction(CCRepeatForever.Create(effect));
+            layer2.RunAction(new CCRepeatForever (effect));
         }
 
         public override string title()

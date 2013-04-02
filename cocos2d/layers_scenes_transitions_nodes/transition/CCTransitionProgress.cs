@@ -39,7 +39,7 @@ namespace cocos2d
             CCProgressTimer node = ProgressTimerNodeWithRenderTexture(texture);
 
             // create the blend action
-            CCSequence layerAction = CCSequence.Create(
+            CCSequence layerAction = CCSequence.FromActions(
                 CCProgressFromTo.Create(m_fDuration, m_fFrom, m_fTo),
                 CCCallFunc.Create(Finish)
                 );

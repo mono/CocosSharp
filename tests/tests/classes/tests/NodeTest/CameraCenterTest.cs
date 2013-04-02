@@ -18,7 +18,7 @@ namespace tests
             sprite.Color = CCTypes.CCRed;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0);
-            sprite.RunAction(CCRepeatForever.Create(orbit));
+            sprite.RunAction(new CCRepeatForever (orbit));
 
 
             // LEFT-BOTTOM
@@ -28,7 +28,7 @@ namespace tests
             sprite.Color = CCTypes.CCBlue;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0);
-            sprite.RunAction(CCRepeatForever.Create(orbit));
+            sprite.RunAction(new CCRepeatForever (orbit));
 
 
             // RIGHT-TOP
@@ -38,7 +38,7 @@ namespace tests
             sprite.Color = CCTypes.CCYellow;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0);
-            sprite.RunAction(CCRepeatForever.Create(orbit));
+            sprite.RunAction(new CCRepeatForever (orbit));
 
             // RIGHT-BOTTOM
             sprite = CCSprite.Create("Images/white-512x512");
@@ -47,7 +47,7 @@ namespace tests
             sprite.Color = CCTypes.CCGreen;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0);
-            sprite.RunAction(CCRepeatForever.Create(orbit));
+            sprite.RunAction(new CCRepeatForever (orbit));
 
             // CENTER
             sprite = CCSprite.Create("Images/white-512x512");
@@ -56,7 +56,7 @@ namespace tests
             sprite.Color = CCTypes.CCWhite;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0);
-            sprite.RunAction(CCRepeatForever.Create(orbit));
+            sprite.RunAction(new CCRepeatForever (orbit));
         }
 
         public override string title()

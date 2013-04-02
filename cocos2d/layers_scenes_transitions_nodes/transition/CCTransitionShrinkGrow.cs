@@ -53,7 +53,7 @@ namespace cocos2d
             m_pInScene.RunAction(EaseAction(scaleIn));
             m_pOutScene.RunAction
                 (
-                    CCSequence.Create
+                    CCSequence.FromActions
                         (
                             EaseAction(scaleOut),
                             CCCallFunc.Create((Finish))

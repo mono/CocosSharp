@@ -76,7 +76,7 @@ namespace cocos2d
             AddChild(l, 2, kSceneFade);
             CCNode f = GetChildByTag(kSceneFade);
 
-            var a = (CCActionInterval) CCSequence.Create
+            var a = (CCActionInterval) CCSequence.FromActions
                                            (
                                                new CCFadeIn (m_fDuration / 2),
                                                CCCallFunc.Create((HideOutShowIn)),

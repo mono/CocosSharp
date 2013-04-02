@@ -10,14 +10,17 @@ namespace cocos2d
             get { return m_pForcedTarget; }
         }
 
-        public static CCTargetedAction Create(CCNode target, CCFiniteTimeAction pAction)
+        public CCTargetedAction (CCNode target, CCFiniteTimeAction pAction)
         {
-            var p = new CCTargetedAction();
-            p.InitWithTarget(target, pAction);
-            return p;
+            InitWithTarget(target, pAction);
         }
 
-        public bool InitWithTarget(CCNode target, CCFiniteTimeAction pAction)
+		public CCTargetedAction (CCTargetedAction targetedAction) : base (targetedAction)
+		{
+			InitWithTarget(targetedAction.m_pTarget, (CCFiniteTimeAction) targetedAction.m_pAction.Copy());
+		}
+
+		protected bool InitWithTarget(CCNode target, CCFiniteTimeAction pAction)
         {
             if (base.InitWithDuration(pAction.Duration))
             {
@@ -30,20 +33,20 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCTargetedAction pRet;
+ 
             if (pZone != null) //in case of being called at sub class
             {
-                pRet = (CCTargetedAction) (pZone);
+                var pRet = (CCTargetedAction) (pZone);
+				base.Copy(pZone);
+				// win32 : use the m_pOther's copy object.
+				pRet.InitWithTarget(m_pTarget, (CCFiniteTimeAction) m_pAction.Copy());
+				return pRet;
             }
             else
             {
-                pRet = new CCTargetedAction();
-                pZone =  (pRet);
+                return new CCTargetedAction(this);
             }
-            base.Copy(pZone);
-            // win32 : use the m_pOther's copy object.
-            pRet.InitWithTarget(m_pTarget, (CCFiniteTimeAction) m_pAction.Copy());
-            return pRet;
+
         }
 
         public override void StartWithTarget(CCNode target)
@@ -64,7 +67,7 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_pForcedTarget, m_pAction.Reverse());
+            return new CCTargetedAction(m_pForcedTarget, m_pAction.Reverse());
         }
     }
 }

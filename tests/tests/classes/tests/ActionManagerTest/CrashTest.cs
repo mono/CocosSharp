@@ -26,14 +26,14 @@ namespace tests
 
             //Sum of all action's duration is 1.5 second.
             child.RunAction(new CCRotateBy (1.5f, 90));
-            child.RunAction(CCSequence.Create(
-                                                    CCDelayTime.Create(1.4f),
+            child.RunAction(CCSequence.FromActions(
+                                                    new CCDelayTime (1.4f),
                                                     new CCFadeOut  (1.1f))
                             );
 
             //After 1.5 second, self will be removed.
-            RunAction(CCSequence.Create(
-                                            CCDelayTime.Create(1.4f),
+            RunAction(CCSequence.FromActions(
+                                            new CCDelayTime (1.4f),
                                             CCCallFunc.Create((removeThis)))
                      );
         }

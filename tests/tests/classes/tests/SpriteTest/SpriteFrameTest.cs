@@ -41,7 +41,7 @@ namespace tests
             }
 
             CCAnimation animation = CCAnimation.Create(animFrames, 0.3f);
-            m_pSprite1.RunAction(CCRepeatForever.Create(new CCAnimate (animation)));
+            m_pSprite1.RunAction(new CCRepeatForever (new CCAnimate (animation)));
 
             // to test issue #732, uncomment the following line
             m_pSprite1.FlipX = false;
@@ -77,7 +77,7 @@ namespace tests
             CCAnimation animMixed = CCAnimation.Create(moreFrames, 0.3f);
 
 
-            m_pSprite2.RunAction(CCRepeatForever.Create(new CCAnimate (animMixed)));
+            m_pSprite2.RunAction(new CCRepeatForever (new CCAnimate (animMixed)));
 
 
 

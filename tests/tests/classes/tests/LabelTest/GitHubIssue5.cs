@@ -24,9 +24,9 @@ namespace tests
             base.OnEnter();
             _Index++;
             // Start the ticker
-            RunAction(CCRepeatForever.Create(
-                CCSequence.Create(
-                CCDelayTime.Create(1f),
+            RunAction(new CCRepeatForever (
+                CCSequence.FromActions(
+                new CCDelayTime (1f),
                 CCCallFunc.Create(new SEL_CallFunc(UpdateLabel)))
                 ));
         }

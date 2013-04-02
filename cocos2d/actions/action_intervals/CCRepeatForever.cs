@@ -13,14 +13,18 @@ namespace cocos2d
             set { m_pInnerAction = value; }
         }
 
-        public static CCRepeatForever Create(CCActionInterval action)
+        public CCRepeatForever (CCActionInterval action)
         {
-            var ret = new CCRepeatForever();
-            ret.InitWithAction(action);
-            return ret;
+            InitWithAction(action);
         }
 
-        public bool InitWithAction(CCActionInterval action)
+		protected CCRepeatForever (CCRepeatForever repeatForever) : base (repeatForever)
+		{
+			var param = repeatForever.m_pInnerAction.Copy() as CCActionInterval;
+			InitWithAction(param);
+
+		}
+        protected bool InitWithAction(CCActionInterval action)
         {
             Debug.Assert(action != null);
             m_pInnerAction = action;
@@ -29,33 +33,30 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCRepeatForever ret;
 
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null)
             {
-                ret = tmpZone as CCRepeatForever;
+                var ret = zone as CCRepeatForever;
                 if (ret == null)
                 {
                     return null;
                 }
-            }
+				base.Copy(zone);
+				
+				var param = m_pInnerAction.Copy() as CCActionInterval;
+				if (param == null)
+				{
+					return null;
+				}
+				ret.InitWithAction(param);
+				
+				return ret;
+			}
             else
             {
-                ret = new CCRepeatForever();
-                tmpZone =  (ret);
+                return new CCRepeatForever(this);
             }
 
-            base.Copy(tmpZone);
-
-            var param = m_pInnerAction.Copy() as CCActionInterval;
-            if (param == null)
-            {
-                return null;
-            }
-            ret.InitWithAction(param);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -84,7 +85,7 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_pInnerAction.Reverse() as CCActionInterval);
+            return new CCRepeatForever (m_pInnerAction.Reverse() as CCActionInterval);
         }
 
     }

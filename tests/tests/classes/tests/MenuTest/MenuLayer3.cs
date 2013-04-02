@@ -63,17 +63,17 @@ namespace tests
             item2.Position = new CCPoint(s.Width / 2 - 200, s.Height / 2);
             item3.Position = new CCPoint(s.Width / 2, s.Height / 2 - 100);
             CCJumpBy jump = new CCJumpBy (3, new CCPoint(400, 0), 50, 4);
-            item2.RunAction(CCRepeatForever.Create(
-                                        (CCActionInterval)(CCSequence.Create(jump, jump.Reverse()))
+            item2.RunAction(new CCRepeatForever (
+                                        (CCActionInterval)(CCSequence.FromActions(jump, jump.Reverse()))
                                         )
                             );
             CCActionInterval spin1 = new CCRotateBy (3, 360);
             CCActionInterval spin2 = (CCActionInterval)(spin1.Copy());
             CCActionInterval spin3 = (CCActionInterval)(spin1.Copy());
 
-            item1.RunAction(CCRepeatForever.Create(spin1));
-            item2.RunAction(CCRepeatForever.Create(spin2));
-            item3.RunAction(CCRepeatForever.Create(spin3));
+            item1.RunAction(new CCRepeatForever (spin1));
+            item2.RunAction(new CCRepeatForever (spin2));
+            item3.RunAction(new CCRepeatForever (spin3));
 
             AddChild(menu);
         }

@@ -34,7 +34,7 @@ namespace tests
 
             CCMoveBy pMove = new CCMoveBy (2, new CCPoint(200, 0));
             CCCallFunc pCallback = CCCallFunc.Create(stopAction);
-            CCActionInterval pSequence = (CCActionInterval)CCSequence.Create(pMove, pCallback);
+            CCActionInterval pSequence = (CCActionInterval)CCSequence.FromActions(pMove, pCallback);
             pSequence.Tag = (int)KTag.kTagSequence;
 
             CCSprite pChild = CCSprite.Create(s_pPathGrossini);

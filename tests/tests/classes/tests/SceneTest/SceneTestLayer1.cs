@@ -28,7 +28,7 @@ namespace tests
             AddChild(sprite);
             sprite.Position = new CCPoint(s.Width - 40, s.Height / 2);
             CCActionInterval rotate = new CCRotateBy (2, 360);
-            CCAction repeat = CCRepeatForever.Create(rotate);
+            CCAction repeat = new CCRepeatForever (rotate);
             sprite.RunAction(repeat);
 
             Schedule(testDealloc);

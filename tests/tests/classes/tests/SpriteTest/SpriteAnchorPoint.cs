@@ -14,7 +14,7 @@ namespace tests
 
 
             CCActionInterval rotate = new CCRotateBy (10, 360);
-            CCAction action = CCRepeatForever.Create(rotate);
+            CCAction action = new CCRepeatForever (rotate);
 
             for (int i = 0; i < 3; i++)
             {

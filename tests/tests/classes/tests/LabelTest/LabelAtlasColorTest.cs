@@ -31,8 +31,8 @@ namespace tests
 
             CCActionInterval fade = new CCFadeOut  (1.0f);
             CCFiniteTimeAction fade_in = fade.Reverse();
-            CCFiniteTimeAction seq = CCSequence.Create(fade, fade_in);
-            CCAction repeat = CCRepeatForever.Create((CCActionInterval)seq);
+            CCFiniteTimeAction seq = CCSequence.FromActions(fade, fade_in);
+            CCAction repeat = new CCRepeatForever ((CCActionInterval)seq);
             label2.RunAction(repeat);
 
             m_time = 0;
