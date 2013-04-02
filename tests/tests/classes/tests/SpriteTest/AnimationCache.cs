@@ -76,9 +76,9 @@ namespace tests
             CCAnimation dance_blue = animCache.AnimationByName("dance_blue");
             dance_blue.RestoreOriginalFrame = true;
 
-            CCAnimate animN = CCAnimate.Create(normal);
-            CCAnimate animG = CCAnimate.Create(dance_grey);
-            CCAnimate animB = CCAnimate.Create(dance_blue);
+            CCAnimate animN = new CCAnimate (normal);
+            CCAnimate animG = new CCAnimate (dance_grey);
+            CCAnimate animB = new CCAnimate (dance_blue);
 
             CCFiniteTimeAction seq = CCSequence.Create(animN, animG, animB);
 

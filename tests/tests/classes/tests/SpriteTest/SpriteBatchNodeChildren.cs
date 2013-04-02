@@ -52,7 +52,7 @@ namespace tests
             }
 
             CCAnimation animation = CCAnimation.Create(animFrames, 0.2f);
-            sprite1.RunAction(CCRepeatForever.Create(CCAnimate.Create(animation)));
+            sprite1.RunAction(CCRepeatForever.Create(new CCAnimate (animation)));
             // END NEW CODE
 
             CCActionInterval action = new CCMoveBy (2, new CCPoint(200, 0));

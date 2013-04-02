@@ -12,14 +12,17 @@ namespace cocos2d
         protected CCSpriteFrame m_pOrigFrame;
         private uint m_uExecutedLoops;
 
-        public static CCAnimate Create(CCAnimation pAnimation)
+        public CCAnimate (CCAnimation pAnimation)
         {
-            var pAnimate = new CCAnimate();
-            pAnimate.InitWithAnimation(pAnimation);
-            return pAnimate;
+            InitWithAnimation(pAnimation);
         }
 
-        public bool InitWithAnimation(CCAnimation pAnimation)
+        protected CCAnimate (CCAnimate animate) : base (animate)
+        {
+            InitWithAnimation((CCAnimation) animate.m_pAnimation.Copy());
+        }
+
+        protected bool InitWithAnimation(CCAnimation pAnimation)
         {
             Debug.Assert(pAnimation != null);
 
@@ -53,30 +56,25 @@ namespace cocos2d
             return false;
         }
 
-		public virtual CCAnimate Copy()
-		{
-			return (CCAnimate)Copy(null);
-		}
-
-        public virtual object Copy(ICopyable pZone)
+        public override object Copy(ICopyable pZone)
         {
-            CCAnimate pCopy;
+      
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCAnimate) (pZone);
+                var pCopy = (CCAnimate) (pZone);
+                base.Copy(pZone);
+                
+                pCopy.InitWithAnimation((CCAnimation) m_pAnimation.Copy());
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCAnimate();
-                pZone =  (pCopy);
+                return new CCAnimate(this);
             }
 
-            base.Copy(pZone);
 
-            pCopy.InitWithAnimation((CCAnimation) m_pAnimation.Copy());
-
-            return pCopy;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -175,7 +173,7 @@ namespace cocos2d
 
             var newAnim = CCAnimation.Create(pNewArray, m_pAnimation.DelayPerUnit, m_pAnimation.Loops);
             newAnim.RestoreOriginalFrame = m_pAnimation.RestoreOriginalFrame;
-            return Create(newAnim);
+            return new CCAnimate (newAnim);
         }
     }
 }

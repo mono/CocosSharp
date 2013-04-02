@@ -66,7 +66,7 @@ namespace tests
                 }
 
                 CCAnimation animation = CCAnimation.Create(animFrames, 0.3f);
-                sprite.RunAction(CCRepeatForever.Create(CCAnimate.Create(animation)));
+                sprite.RunAction(CCRepeatForever.Create(new CCAnimate (animation)));
 
                 animFrames = null;
 

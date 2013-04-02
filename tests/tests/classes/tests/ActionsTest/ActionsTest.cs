@@ -718,7 +718,7 @@ namespace tests
             animation.DelayPerUnit = 2.8f / 14.0f;
             animation.RestoreOriginalFrame = true;
 
-            var action = CCAnimate.Create(animation);
+            var action = new CCAnimate (animation);
             m_grossini.RunAction(CCSequence.Create(action, action.Reverse()));
 
             //
@@ -729,7 +729,7 @@ namespace tests
             cache.AddAnimationsWithFile("animations/animations-2.plist");
             var animation2 = cache.AnimationByName("dance_1");
 
-            var action2 = CCAnimate.Create(animation2);
+            var action2 = new CCAnimate (animation2);
             m_tamara.RunAction(CCSequence.Create(action2, action2.Reverse()));
 
             // TODO:
@@ -748,7 +748,7 @@ namespace tests
             animation3.Loops = 4;
 
 
-            var action3 = CCAnimate.Create(animation3);
+            var action3 = new CCAnimate (animation3);
             m_kathia.RunAction(action3);
         }
 
