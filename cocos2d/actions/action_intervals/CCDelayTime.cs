@@ -2,31 +2,30 @@
 {
     public class CCDelayTime : CCActionInterval
     {
-        public new static CCDelayTime Create(float d)
+        public CCDelayTime (float d)
         {
-            var pAction = new CCDelayTime();
-            pAction.InitWithDuration(d);
-            return pAction;
+            InitWithDuration(d);
         }
+
+		protected CCDelayTime (CCDelayTime delayTime) : base (delayTime)
+		{ }
 
         public override object Copy(ICopyable pZone)
         {
-            CCDelayTime pCopy;
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCDelayTime) (pZone);
-            }
+                var pCopy = (CCDelayTime) (pZone);
+				base.Copy(pZone);
+				
+				return pCopy;
+			}
             else
             {
-                pCopy = new CCDelayTime();
-                pZone =  (pCopy);
+                return new CCDelayTime(this);
             }
 
 
-            base.Copy(pZone);
-
-            return pCopy;
         }
 
         public override void Update(float time)
@@ -35,7 +34,7 @@
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_fDuration);
+            return new CCDelayTime (m_fDuration);
         }
     }
 }

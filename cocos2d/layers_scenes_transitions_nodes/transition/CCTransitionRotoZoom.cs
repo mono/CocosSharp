@@ -43,7 +43,7 @@ namespace cocos2d
                             CCScaleBy.Create(m_fDuration / 2, 0.001f),
                             new CCRotateBy (m_fDuration / 2, 360 * 2)
                         ),
-                    CCDelayTime.Create(m_fDuration / 2)
+                    new CCDelayTime (m_fDuration / 2)
                 );
 
             m_pOutScene.RunAction(rotozoom);

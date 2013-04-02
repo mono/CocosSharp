@@ -98,7 +98,7 @@ namespace tests
             var move_ease_out = CCEaseOut.Create((CCActionInterval) move.Copy(), 2.5f);
             var move_ease_out_back = move_ease_out.Reverse();
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
@@ -150,7 +150,7 @@ namespace tests
             var move_ease_inout3 = CCEaseInOut.Create((CCActionInterval) move.Copy(), 1.0f);
             var move_ease_inout_back3 = move_ease_inout3.Reverse() as CCActionInterval;
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move_ease_inout1, delay, move_ease_inout_back1, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease_inout2, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back2,
@@ -186,7 +186,7 @@ namespace tests
             var move_ease_out = CCEaseExponentialOut.Create((CCActionInterval) (move.Copy()));
             var move_ease_out_back = move_ease_out.Reverse();
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
@@ -219,7 +219,7 @@ namespace tests
             var move_ease = CCEaseExponentialInOut.Create((CCActionInterval) move.Copy());
             var move_ease_back = move_ease.Reverse(); //-. reverse()
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());
@@ -253,7 +253,7 @@ namespace tests
             var move_ease_out = CCEaseSineOut.Create((CCActionInterval) move.Copy());
             var move_ease_out_back = move_ease_out.Reverse();
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
@@ -285,7 +285,7 @@ namespace tests
             var move_ease = CCEaseSineInOut.Create((CCActionInterval) (move.Copy()));
             var move_ease_back = move_ease.Reverse();
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());
@@ -319,7 +319,7 @@ namespace tests
             var move_ease_out = CCEaseElasticOut.Create((CCActionInterval) (move.Copy()));
             var move_ease_out_back = move_ease_out.Reverse();
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
@@ -356,7 +356,7 @@ namespace tests
             var move_ease_inout3 = CCEaseElasticInOut.Create((CCActionInterval) (move.Copy()), 0.6f);
             var move_ease_inout_back3 = move_ease_inout3.Reverse();
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move_ease_inout1, delay, move_ease_inout_back1, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease_inout2, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back2,
@@ -392,7 +392,7 @@ namespace tests
             var move_ease_out = CCEaseBounceOut.Create((CCActionInterval) (move.Copy()));
             var move_ease_out_back = move_ease_out.Reverse();
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
@@ -424,7 +424,7 @@ namespace tests
             var move_ease = CCEaseBounceInOut.Create((CCActionInterval) (move.Copy()));
             var move_ease_back = move_ease.Reverse();
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());
@@ -458,7 +458,7 @@ namespace tests
             var move_ease_out = CCEaseBackOut.Create((CCActionInterval) (move.Copy()));
             var move_ease_out_back = move_ease_out.Reverse();
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
@@ -490,7 +490,7 @@ namespace tests
             var move_ease = CCEaseBackInOut.Create((CCActionInterval) (move.Copy()));
             var move_ease_back = move_ease.Reverse() as CCActionInterval;
 
-            var delay = CCDelayTime.Create(0.25f);
+            var delay = new CCDelayTime (0.25f);
 
             var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
             var seq2 = CCSequence.FromActions(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());

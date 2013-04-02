@@ -53,7 +53,7 @@ namespace cocos2d
 
             inA = CCSequence.FromActions
                 (
-                    CCDelayTime.Create(m_fDuration / 2),
+                    new CCDelayTime (m_fDuration / 2),
                     CCShow.Create(),
                     CCOrbitCamera.Create(m_fDuration / 2, 1, 0, inAngleZ, inDeltaZ, -45, 0),
                     CCCallFunc.Create(Finish)
@@ -62,7 +62,7 @@ namespace cocos2d
                 (
                     CCOrbitCamera.Create(m_fDuration / 2, 1, 0, outAngleZ, outDeltaZ, 45, 0),
                     CCHide.Create(),
-                    CCDelayTime.Create(m_fDuration / 2)
+                    new CCDelayTime (m_fDuration / 2)
                 );
 
             m_pInScene.RunAction(inA);

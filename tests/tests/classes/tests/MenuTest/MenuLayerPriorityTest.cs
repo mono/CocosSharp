@@ -73,7 +73,7 @@ namespace tests
         public void disableMenuCallback(object pSender)
         {
             m_pMenu1.Enabled = false;
-            CCDelayTime wait = CCDelayTime.Create(5);
+            CCDelayTime wait = new CCDelayTime (5);
             CCCallFunc enable = CCCallFunc.Create(enableMenuCallback);
 
             CCFiniteTimeAction seq = CCSequence.FromActions(wait, enable);

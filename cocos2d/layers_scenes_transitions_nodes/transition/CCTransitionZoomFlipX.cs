@@ -52,7 +52,7 @@ namespace cocos2d
             }
             inA = CCSequence.FromActions
                 (
-                    CCDelayTime.Create(m_fDuration / 2),
+                    new CCDelayTime (m_fDuration / 2),
                     CCSpawn.FromActions
                         (
                             CCOrbitCamera.Create(m_fDuration / 2, 1, 0, inAngleZ, inDeltaZ, 0, 0),
@@ -69,7 +69,7 @@ namespace cocos2d
                             CCScaleTo.Create(m_fDuration / 2, 0.5f)
                         ),
                     CCHide.Create(),
-                    CCDelayTime.Create(m_fDuration / 2)
+                    new CCDelayTime (m_fDuration / 2)
                 );
 
             m_pInScene.Scale = 0.5f;

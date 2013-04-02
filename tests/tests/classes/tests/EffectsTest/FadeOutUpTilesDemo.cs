@@ -12,7 +12,7 @@ namespace tests
         {
             CCFadeOutUpTiles fadeout = CCFadeOutUpTiles.Create(new CCGridSize(16, 12), t);
             CCFiniteTimeAction back = fadeout.Reverse();
-            CCDelayTime delay = CCDelayTime.Create(0.5f);
+            CCDelayTime delay = new CCDelayTime (0.5f);
 
             return (CCActionInterval)(CCSequence.FromActions(fadeout, delay, back));
         }

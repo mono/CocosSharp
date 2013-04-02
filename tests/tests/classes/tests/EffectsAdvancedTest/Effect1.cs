@@ -20,7 +20,7 @@ namespace tests
             CCActionInterval waves = CCWaves3D.Create(18, 15, new CCGridSize(15, 10), 10);
 
             CCFiniteTimeAction reuse = CCReuseGrid.Create(1);
-            CCActionInterval delay = CCDelayTime.Create(8);
+            CCActionInterval delay = new CCDelayTime (8);
 
             CCActionInterval orbit = CCOrbitCamera.Create(5, 1, 2, 0, 180, 0, -90);
             CCFiniteTimeAction orbit_back = orbit.Reverse();

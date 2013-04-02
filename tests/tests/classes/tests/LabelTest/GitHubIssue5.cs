@@ -26,7 +26,7 @@ namespace tests
             // Start the ticker
             RunAction(CCRepeatForever.Create(
                 CCSequence.FromActions(
-                CCDelayTime.Create(1f),
+                new CCDelayTime (1f),
                 CCCallFunc.Create(new SEL_CallFunc(UpdateLabel)))
                 ));
         }

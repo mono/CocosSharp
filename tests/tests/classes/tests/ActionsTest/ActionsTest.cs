@@ -963,7 +963,7 @@ namespace tests
             centerSprites(1);
 
             var action = CCSequence.FromActions(
-                CCDelayTime.Create(1),
+                new CCDelayTime (1),
                 CCCallFuncN.Create(repeatForever));
 
             m_grossini.RunAction(action);
@@ -1060,7 +1060,7 @@ namespace tests
             alignSpritesLeft(1);
 
             var move = new CCMoveBy (1, new CCPoint(150, 0));
-            var action = CCSequence.FromActions(move, CCDelayTime.Create(2), move);
+            var action = CCSequence.FromActions(move, new CCDelayTime (2), move);
 
             m_grossini.RunAction(action);
         }
