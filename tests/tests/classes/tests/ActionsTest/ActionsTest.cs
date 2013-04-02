@@ -1394,8 +1394,8 @@ namespace tests
             var rot1 = new CCRotateBy (1, 360);
             var rot2 = (CCRotateBy) rot1.Copy();
 
-            var t1 = CCTargetedAction.Create(m_kathia, jump2);
-            var t2 = CCTargetedAction.Create(m_kathia, rot2);
+            var t1 = new CCTargetedAction (m_kathia, jump2);
+            var t2 = new CCTargetedAction (m_kathia, rot2);
 
 
             var seq = CCSequence.FromActions(jump1, t1, rot1, t2);
