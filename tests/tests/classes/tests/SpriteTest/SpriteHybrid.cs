@@ -59,7 +59,7 @@ namespace tests
                 sprite.Position = (new CCPoint(x, y));
 
                 CCActionInterval action = new CCRotateBy (4, 360);
-                sprite.RunAction(CCRepeatForever.Create(action));
+                sprite.RunAction(new CCRepeatForever (action));
             }
 
             m_usingSpriteBatchNode = false;

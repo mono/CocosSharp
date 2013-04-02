@@ -62,7 +62,7 @@ namespace tests
             CCJumpBy jump = new CCJumpBy (3, new CCPoint(s.Width - 80, 0), 50, 4);
 
             AddChild(sprite);
-            sprite.RunAction(CCRepeatForever.Create(
+            sprite.RunAction(new CCRepeatForever (
                 (CCActionInterval) (CCSequence.FromActions(jump, jump.Reverse())))
                 );
 

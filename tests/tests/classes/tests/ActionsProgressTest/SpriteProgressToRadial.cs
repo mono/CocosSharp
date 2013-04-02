@@ -20,14 +20,14 @@ namespace tests
             left.Type = CCProgressTimerType.Radial;
             AddChild(left);
             left.Position = new CCPoint(100, s.Height / 2);
-            left.RunAction(CCRepeatForever.Create(to1));
+            left.RunAction(new CCRepeatForever (to1));
 
             CCProgressTimer right = CCProgressTimer.Create(s_pPathBlock);
             right.Type = CCProgressTimerType.Radial;
             right.ReverseProgress = true;
             AddChild(right);
             right.Position = new CCPoint(s.Width - 100, s.Height / 2);
-            right.RunAction(CCRepeatForever.Create(to2));
+            right.RunAction(new CCRepeatForever (to2));
         }
 
         public override string subtitle()

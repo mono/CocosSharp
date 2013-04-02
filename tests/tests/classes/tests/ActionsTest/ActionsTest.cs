@@ -571,7 +571,7 @@ namespace tests
 
             m_tamara.RunAction(actionTo);
             m_grossini.RunAction(CCSequence.FromActions(actionBy, actionByBack));
-            m_kathia.RunAction(CCRepeatForever.Create(actionUp));
+            m_kathia.RunAction(new CCRepeatForever (actionUp));
         }
 
         public override string subtitle()
@@ -603,7 +603,7 @@ namespace tests
 
             var bezierForward = new CCBezierBy (3, bezier);
             var bezierBack = bezierForward.Reverse();
-            var rep = CCRepeatForever.Create((CCActionInterval)CCSequence.FromActions(bezierForward, bezierBack));
+            var rep = new CCRepeatForever ((CCActionInterval)CCSequence.FromActions(bezierForward, bezierBack));
 
 
             // sprite 2
@@ -971,7 +971,7 @@ namespace tests
 
         public void repeatForever(CCNode pSender)
         {
-            var repeat = CCRepeatForever.Create(new CCRotateBy (1.0f, 360));
+            var repeat = new CCRepeatForever (new CCRotateBy (1.0f, 360));
 
             pSender.RunAction(repeat);
         }
@@ -993,7 +993,7 @@ namespace tests
             var act1 = new CCRotateTo (1, 90);
             var act2 = new CCRotateTo (1, 0);
             var seq = (CCSequence.FromActions(act1, act2));
-            var rep1 = CCRepeatForever.Create((CCActionInterval)seq);
+            var rep1 = new CCRepeatForever ((CCActionInterval)seq);
             var rep2 = CCRepeat.Create((CCFiniteTimeAction)(seq.Copy()), 10);
 
             m_tamara.RunAction(rep1);
@@ -1019,7 +1019,7 @@ namespace tests
                 new CCRotateTo (0.5f, 20));
 
             var rep1 = CCRepeat.Create(seq, 10);
-            var rep2 = CCRepeatForever.Create((CCActionInterval)(seq.Copy()));
+            var rep2 = new CCRepeatForever ((CCActionInterval)(seq.Copy()));
 
             m_tamara.RunAction(rep1);
             m_kathia.RunAction(rep2);
@@ -1140,7 +1140,7 @@ namespace tests
             var action1 = CCRepeat.Create(
                 CCSequence.FromActions(CCPlace.Create(new CCPoint(60, 60)), a1),
                 3);
-            var action2 = CCRepeatForever.Create(
+            var action2 = new CCRepeatForever (
                 (CCSequence.FromActions((CCActionInterval) (a1.Copy()), a1.Reverse()))
                 );
 
@@ -1173,14 +1173,14 @@ namespace tests
             var orbit3 = CCOrbitCamera.Create(2, 1, 0, 0, 180, 90, 0);
             var action3 = CCSequence.FromActions(orbit3, orbit3.Reverse());
 
-            m_kathia.RunAction(CCRepeatForever.Create(action1));
-            m_tamara.RunAction(CCRepeatForever.Create(action2));
-            m_grossini.RunAction(CCRepeatForever.Create(action3));
+            m_kathia.RunAction(new CCRepeatForever (action1));
+            m_tamara.RunAction(new CCRepeatForever (action2));
+            m_grossini.RunAction(new CCRepeatForever (action3));
 
             var move = new CCMoveBy (3, new CCPoint(100, -100));
             var move_back = move.Reverse();
             var seq = CCSequence.FromActions(move, move_back);
-            var rfe = CCRepeatForever.Create(seq);
+            var rfe = new CCRepeatForever (seq);
             m_kathia.RunAction(rfe);
             m_tamara.RunAction((CCAction) (rfe.Copy()));
             m_grossini.RunAction((CCAction) (rfe.Copy()));
@@ -1205,7 +1205,7 @@ namespace tests
             var move = new CCMoveBy (2, new CCPoint(s.Width * 3, 0));
             var move_back = move.Reverse();
             var seq = CCSequence.FromActions(move, move_back);
-            var rep = CCRepeatForever.Create(seq);
+            var rep = new CCRepeatForever (seq);
 
             m_grossini.RunAction(rep);
 
@@ -1399,7 +1399,7 @@ namespace tests
 
 
             var seq = CCSequence.FromActions(jump1, t1, rot1, t2);
-            var always = CCRepeatForever.Create(seq);
+            var always = new CCRepeatForever (seq);
 
             m_tamara.RunAction(always);
         }
@@ -1629,9 +1629,9 @@ namespace tests
 
             centerSprites(2);
 
-            m_tamara.RunAction(CCRepeatForever.Create(new CCRotateBy (3, 360)));
-            m_grossini.RunAction(CCRepeatForever.Create(new CCRotateBy (3, -360)));
-            m_kathia.RunAction(CCRepeatForever.Create(new CCRotateBy (3, 360)));
+            m_tamara.RunAction(new CCRepeatForever (new CCRotateBy (3, 360)));
+            m_grossini.RunAction(new CCRepeatForever (new CCRotateBy (3, -360)));
+            m_kathia.RunAction(new CCRepeatForever (new CCRotateBy (3, 360)));
 
             ScheduleOnce(pause, 3);
             ScheduleOnce(resume, 5);

@@ -105,13 +105,13 @@ namespace tests
             var seq3 = CCSequence.FromActions(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
                                                 (CCFiniteTimeAction) delay.Copy());
 
-            var a2 = m_grossini.RunAction(CCRepeatForever.Create((CCActionInterval)seq1));
+            var a2 = m_grossini.RunAction(new CCRepeatForever ((CCActionInterval)seq1));
             a2.Tag = 1;
 
-            var a1 = m_tamara.RunAction(CCRepeatForever.Create((CCActionInterval)seq2));
+            var a1 = m_tamara.RunAction(new CCRepeatForever ((CCActionInterval)seq2));
             a1.Tag = 1;
 
-            var a = m_kathia.RunAction(CCRepeatForever.Create((CCActionInterval)seq3));
+            var a = m_kathia.RunAction(new CCRepeatForever ((CCActionInterval)seq3));
             a.Tag = 1;
 
             Schedule(testStopAction, 6.25f);
@@ -158,9 +158,9 @@ namespace tests
             var seq3 = CCSequence.FromActions(move_ease_inout3, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back3,
                                                 (CCFiniteTimeAction) delay.Copy());
 
-            m_tamara.RunAction(CCRepeatForever.Create((CCActionInterval)seq1));
-            m_kathia.RunAction(CCRepeatForever.Create((CCActionInterval)seq2));
-            m_grossini.RunAction(CCRepeatForever.Create((CCActionInterval)seq3));
+            m_tamara.RunAction(new CCRepeatForever ((CCActionInterval)seq1));
+            m_kathia.RunAction(new CCRepeatForever ((CCActionInterval)seq2));
+            m_grossini.RunAction(new CCRepeatForever ((CCActionInterval)seq3));
         }
 
         public override String title()
@@ -194,9 +194,9 @@ namespace tests
                                                 (CCFiniteTimeAction) delay.Copy());
 
 
-            m_grossini.RunAction(CCRepeatForever.Create(seq1));
-            m_tamara.RunAction(CCRepeatForever.Create(seq2));
-            m_kathia.RunAction(CCRepeatForever.Create(seq3));
+            m_grossini.RunAction(new CCRepeatForever (seq1));
+            m_tamara.RunAction(new CCRepeatForever (seq2));
+            m_kathia.RunAction(new CCRepeatForever (seq3));
         }
 
         public override String title()
@@ -226,8 +226,8 @@ namespace tests
 
             positionForTwo();
 
-            m_grossini.RunAction(CCRepeatForever.Create(seq1));
-            m_tamara.RunAction(CCRepeatForever.Create(seq2));
+            m_grossini.RunAction(new CCRepeatForever (seq1));
+            m_tamara.RunAction(new CCRepeatForever (seq2));
         }
 
         public override String title()
@@ -260,9 +260,9 @@ namespace tests
             var seq3 = CCSequence.FromActions(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
                                                 (CCFiniteTimeAction) delay.Copy());
 
-            m_grossini.RunAction(CCRepeatForever.Create(seq1));
-            m_tamara.RunAction(CCRepeatForever.Create(seq2));
-            m_kathia.RunAction(CCRepeatForever.Create(seq3));
+            m_grossini.RunAction(new CCRepeatForever (seq1));
+            m_tamara.RunAction(new CCRepeatForever (seq2));
+            m_kathia.RunAction(new CCRepeatForever (seq3));
         }
 
         public override String title()
@@ -292,8 +292,8 @@ namespace tests
 
             positionForTwo();
 
-            m_grossini.RunAction(CCRepeatForever.Create(seq1));
-            m_tamara.RunAction(CCRepeatForever.Create(seq2));
+            m_grossini.RunAction(new CCRepeatForever (seq1));
+            m_tamara.RunAction(new CCRepeatForever (seq2));
         }
 
         public override String title()
@@ -326,9 +326,9 @@ namespace tests
             var seq3 = CCSequence.FromActions(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
                                                 (CCFiniteTimeAction) delay.Copy());
 
-            m_grossini.RunAction(CCRepeatForever.Create(seq1));
-            m_tamara.RunAction(CCRepeatForever.Create(seq2));
-            m_kathia.RunAction(CCRepeatForever.Create(seq3));
+            m_grossini.RunAction(new CCRepeatForever (seq1));
+            m_tamara.RunAction(new CCRepeatForever (seq2));
+            m_kathia.RunAction(new CCRepeatForever (seq3));
         }
 
         public override String title()
@@ -364,9 +364,9 @@ namespace tests
             var seq3 = CCSequence.FromActions(move_ease_inout3, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back3,
                                                 (CCFiniteTimeAction) delay.Copy());
 
-            m_tamara.RunAction(CCRepeatForever.Create(seq1));
-            m_kathia.RunAction(CCRepeatForever.Create(seq2));
-            m_grossini.RunAction(CCRepeatForever.Create(seq3));
+            m_tamara.RunAction(new CCRepeatForever (seq1));
+            m_kathia.RunAction(new CCRepeatForever (seq2));
+            m_grossini.RunAction(new CCRepeatForever (seq3));
         }
 
         public override String title()
@@ -399,9 +399,9 @@ namespace tests
             var seq3 = CCSequence.FromActions(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
                                                 (CCFiniteTimeAction) delay.Copy());
 
-            m_grossini.RunAction(CCRepeatForever.Create(seq1));
-            m_tamara.RunAction(CCRepeatForever.Create(seq2));
-            m_kathia.RunAction(CCRepeatForever.Create(seq3));
+            m_grossini.RunAction(new CCRepeatForever (seq1));
+            m_tamara.RunAction(new CCRepeatForever (seq2));
+            m_kathia.RunAction(new CCRepeatForever (seq3));
         }
 
         public override String title()
@@ -431,8 +431,8 @@ namespace tests
 
             positionForTwo();
 
-            m_grossini.RunAction(CCRepeatForever.Create(seq1));
-            m_tamara.RunAction(CCRepeatForever.Create(seq2));
+            m_grossini.RunAction(new CCRepeatForever (seq1));
+            m_tamara.RunAction(new CCRepeatForever (seq2));
         }
 
         public override String title()
@@ -465,9 +465,9 @@ namespace tests
             var seq3 = CCSequence.FromActions(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
                                                 (CCFiniteTimeAction) delay.Copy());
 
-            m_grossini.RunAction(CCRepeatForever.Create(seq1));
-            m_tamara.RunAction(CCRepeatForever.Create(seq2));
-            m_kathia.RunAction(CCRepeatForever.Create(seq3));
+            m_grossini.RunAction(new CCRepeatForever (seq1));
+            m_tamara.RunAction(new CCRepeatForever (seq2));
+            m_kathia.RunAction(new CCRepeatForever (seq3));
         }
 
         public override String title()
@@ -497,8 +497,8 @@ namespace tests
 
             positionForTwo();
 
-            m_grossini.RunAction(CCRepeatForever.Create(seq1));
-            m_tamara.RunAction(CCRepeatForever.Create(seq2));
+            m_grossini.RunAction(new CCRepeatForever (seq1));
+            m_tamara.RunAction(new CCRepeatForever (seq2));
         }
 
         public override String title()
@@ -524,7 +524,7 @@ namespace tests
             var seq3_1 = CCSequence.FromActions(jump2, jump1);
             var seq3_2 = CCSequence.FromActions(rot1, rot2);
             var spawn = CCSpawn.FromActions(seq3_1, seq3_2);
-            var action = new CCSpeed (CCRepeatForever.Create(spawn), 1.0f);
+            var action = new CCSpeed (new CCRepeatForever (spawn), 1.0f);
             action.Tag = EaseTest.kTagAction1;
 
             var action2 = (CCAction) (action.Copy());

@@ -45,7 +45,7 @@ namespace tests
                                CCFlipX.Create(false)
                                ));
 
-            sprite.RunAction(CCRepeatForever.Create(seq));
+            sprite.RunAction(new CCRepeatForever (seq));
             //animFrames->release();    // win32 : memory leak    2010-0415
         }
 

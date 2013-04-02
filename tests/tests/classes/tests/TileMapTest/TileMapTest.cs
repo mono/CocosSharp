@@ -34,7 +34,7 @@ namespace tests
 
             var seq = CCSequence.FromActions(scale, scaleBack);
 
-            map.RunAction(CCRepeatForever.Create((CCActionInterval)seq));
+            map.RunAction(new CCRepeatForever ((CCActionInterval)seq));
         }
 
         public override string title()
@@ -846,7 +846,7 @@ namespace tests
             CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = CCSequence.FromActions(move, back);
-            m_tamara.RunAction(CCRepeatForever.Create(seq));
+            m_tamara.RunAction(new CCRepeatForever (seq));
 
             Schedule(repositionSprite);
         }
@@ -912,7 +912,7 @@ namespace tests
             CCMoveBy move = new CCMoveBy (10, new CCPoint(400, 450));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = CCSequence.FromActions(move, back);
-            m_tamara.RunAction(CCRepeatForever.Create(seq));
+            m_tamara.RunAction(new CCRepeatForever (seq));
 
             Schedule(repositionSprite);
         }
@@ -972,7 +972,7 @@ namespace tests
             CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250) * (1f / CCMacros.CCContentScaleFactor()));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = CCSequence.FromActions(move, back);
-            m_tamara.RunAction(CCRepeatForever.Create(seq));
+            m_tamara.RunAction(new CCRepeatForever (seq));
 
             m_tamara.Position = new CCPoint(m_tamara.Position.X + 100, m_tamara.Position.Y + 100);
 
@@ -1041,7 +1041,7 @@ namespace tests
             CCMoveBy move = new CCMoveBy (10, new CCPoint(400, 450) * (1f / CCMacros.CCContentScaleFactor()));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = CCSequence.FromActions(move, back);
-            m_tamara.RunAction(CCRepeatForever.Create(seq));
+            m_tamara.RunAction(new CCRepeatForever (seq));
 
             Schedule(repositionSprite);
         }

@@ -25,7 +25,7 @@ namespace tests
             CCActionInterval orbit = CCOrbitCamera.Create(5, 1, 2, 0, 180, 0, -90);
             CCFiniteTimeAction orbit_back = orbit.Reverse();
 
-            target.RunAction(CCRepeatForever.Create((CCSequence.FromActions(orbit, orbit_back))));
+            target.RunAction(new CCRepeatForever ((CCSequence.FromActions(orbit, orbit_back))));
             target.RunAction(CCSequence.FromActions(lens, delay, reuse, waves));
         }
 

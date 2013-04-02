@@ -26,7 +26,7 @@ namespace tests
             CCActionInterval scale = CCScaleBy.Create(2, 5);
             CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
             CCActionInterval seq = (CCActionInterval)(CCSequence.FromActions(scale, scale_back));
-            CCAction repeat = CCRepeatForever.Create(seq);
+            CCAction repeat = new CCRepeatForever (seq);
 
             CCAction repeat2 = (CCAction)(repeat.Copy());
 

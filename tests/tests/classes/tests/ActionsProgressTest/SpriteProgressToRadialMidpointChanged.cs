@@ -22,7 +22,7 @@ namespace tests
             AddChild(left);
             left.Midpoint = new CCPoint(0.25f, 0.75f);
             left.Position = new CCPoint(100, s.Height / 2);
-            left.RunAction(CCRepeatForever.Create((CCActionInterval) action.Copy()));
+            left.RunAction(new CCRepeatForever ((CCActionInterval) action.Copy()));
 
             /**
            *  Our image on the left should be a radial progress indicator, counter clockwise
@@ -37,7 +37,7 @@ namespace tests
            */
             AddChild(right);
             right.Position = new CCPoint(s.Width - 100, s.Height / 2);
-            right.RunAction(CCRepeatForever.Create((CCActionInterval) action.Copy()));
+            right.RunAction(new CCRepeatForever ((CCActionInterval) action.Copy()));
         }
 
         public override string subtitle()

@@ -295,7 +295,7 @@ namespace cocos2d
 
             m_nCharLimit = 12;
 
-            m_pTextFieldAction = CCRepeatForever.Create(
+            m_pTextFieldAction = new CCRepeatForever (
                 (CCActionInterval)CCSequence.FromActions(
                     new CCFadeOut  (0.25f),
                     new CCFadeIn  (0.25f)));

@@ -19,12 +19,12 @@ namespace tests
             CCActionInterval waves = CCWaves.Create(5, 20, true, false, new CCGridSize(15, 10), 5);
             CCActionInterval shaky = CCShaky3D.Create(4, false, new CCGridSize(15, 10), 5);
 
-            target1.RunAction(CCRepeatForever.Create(waves));
-            target2.RunAction(CCRepeatForever.Create(shaky));
+            target1.RunAction(new CCRepeatForever (waves));
+            target2.RunAction(new CCRepeatForever (shaky));
 
             // moving background. Testing issue #244
             CCActionInterval move = new CCMoveBy (3, new CCPoint(200, 0));
-            bg.RunAction(CCRepeatForever.Create(CCSequence.FromActions(move, move.Reverse())));
+            bg.RunAction(new CCRepeatForever (CCSequence.FromActions(move, move.Reverse())));
         }
 
         public override string title()

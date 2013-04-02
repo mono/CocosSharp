@@ -23,13 +23,13 @@ namespace tests
             back.AddChild(menu);
 
             CCActionInterval rot = new CCRotateBy (5, 360);
-            CCAction fe = CCRepeatForever.Create(rot);
+            CCAction fe = new CCRepeatForever (rot);
             item.RunAction(fe);
 
             CCActionInterval move = new CCMoveBy (3, new CCPoint(200, 0));
             var move_back = (CCActionInterval) move.Reverse();
             CCFiniteTimeAction seq = CCSequence.FromActions(move, move_back);
-            CCAction fe2 = CCRepeatForever.Create((CCActionInterval) seq);
+            CCAction fe2 = new CCRepeatForever ((CCActionInterval) seq);
             back.RunAction(fe2);
         }
 

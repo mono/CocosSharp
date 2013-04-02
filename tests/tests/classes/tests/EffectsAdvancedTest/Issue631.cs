@@ -30,7 +30,7 @@ namespace tests
             layer2.AddChild(fog, 1);
             AddChild(layer2, 1);
 
-            layer2.RunAction(CCRepeatForever.Create(effect));
+            layer2.RunAction(new CCRepeatForever (effect));
         }
 
         public override string title()

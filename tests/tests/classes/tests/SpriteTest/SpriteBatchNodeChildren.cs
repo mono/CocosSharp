@@ -52,7 +52,7 @@ namespace tests
             }
 
             CCAnimation animation = CCAnimation.Create(animFrames, 0.2f);
-            sprite1.RunAction(CCRepeatForever.Create(new CCAnimate (animation)));
+            sprite1.RunAction(new CCRepeatForever (new CCAnimate (animation)));
             // END NEW CODE
 
             CCActionInterval action = new CCMoveBy (2, new CCPoint(200, 0));
@@ -62,11 +62,11 @@ namespace tests
             CCActionInterval action_s_back = (CCActionInterval)action_s.Reverse();
 
             CCActionInterval seq2 = (CCActionInterval)action_rot.Reverse();
-            sprite2.RunAction(CCRepeatForever.Create(seq2));
+            sprite2.RunAction(new CCRepeatForever (seq2));
 
-            sprite1.RunAction((CCAction)(CCRepeatForever.Create(action_rot)));
-            sprite1.RunAction((CCAction)(CCRepeatForever.Create((CCActionInterval)(CCSequence.FromActions(action, action_back)))));
-            sprite1.RunAction((CCAction)(CCRepeatForever.Create((CCActionInterval)(CCSequence.FromActions(action_s, action_s_back)))));
+            sprite1.RunAction((CCAction)(new CCRepeatForever (action_rot)));
+            sprite1.RunAction((CCAction)(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(action, action_back)))));
+            sprite1.RunAction((CCAction)(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(action_s, action_s_back)))));
 
         }
 

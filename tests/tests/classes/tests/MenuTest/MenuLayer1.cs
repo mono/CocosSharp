@@ -85,7 +85,7 @@ namespace tests
             CCActionInterval color_action = new CCTintBy (0.5f, 0, -255, -255);
             CCActionInterval color_back = (CCActionInterval)color_action.Reverse();
             CCFiniteTimeAction seq = CCSequence.FromActions(color_action, color_back);
-            item7.RunAction(CCRepeatForever.Create((CCActionInterval)seq));
+            item7.RunAction(new CCRepeatForever ((CCActionInterval)seq));
 
             CCMenu menu = CCMenu.Create(item1, item2, item3, item4, item5, item6, item7);
             menu.AlignItemsVertically();

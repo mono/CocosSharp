@@ -56,7 +56,7 @@ namespace tests
 
             CCAnimation animation = CCAnimation.Create(animFrames, 0.3f);
             // 14 frames * 1sec = 14 seconds
-            sprite.RunAction(CCRepeatForever.Create(new CCAnimate (animation)));
+            sprite.RunAction(new CCRepeatForever (new CCAnimate (animation)));
         }
 
         public override string title()

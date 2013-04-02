@@ -63,7 +63,7 @@ namespace tests
                 }
 
                 CCAnimation animation = CCAnimation.Create(animFrames, 0.3f);
-                sprite.RunAction(CCRepeatForever.Create(new CCAnimate (animation)));
+                sprite.RunAction(new CCRepeatForever (new CCAnimate (animation)));
 
                 animFrames = null;
 
@@ -71,7 +71,7 @@ namespace tests
                 CCFlipY flip_back = CCFlipY.Create(false);
                 CCDelayTime delay = new CCDelayTime (1);
                 CCFiniteTimeAction seq = CCSequence.FromActions((CCFiniteTimeAction)delay, (CCFiniteTimeAction)flip, (CCFiniteTimeAction)delay.Copy(null), flip_back);
-                sprite.RunAction(CCRepeatForever.Create((CCActionInterval)seq));
+                sprite.RunAction(new CCRepeatForever ((CCActionInterval)seq));
 
                 AddChild(sprite, 0);
             }

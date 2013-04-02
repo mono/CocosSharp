@@ -53,8 +53,8 @@ namespace tests
                 }
 
                 CCAnimation animation = CCAnimation.Create(animFrames, 0.3f);
-                sprite.RunAction(CCRepeatForever.Create(new CCAnimate (animation)));
-                sprite.RunAction(CCRepeatForever.Create(new CCRotateBy (10, 360)));
+                sprite.RunAction(new CCRepeatForever (new CCAnimate (animation)));
+                sprite.RunAction(new CCRepeatForever (new CCRotateBy (10, 360)));
 
                 AddChild(sprite, 0);
 

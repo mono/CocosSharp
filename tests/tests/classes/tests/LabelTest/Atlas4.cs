@@ -31,20 +31,20 @@ namespace tests
 
 
             CCActionInterval rotate = new CCRotateBy (2, 360);
-            CCAction rot_4ever = CCRepeatForever.Create(rotate);
+            CCAction rot_4ever = new CCRepeatForever (rotate);
 
             CCActionInterval scale = CCScaleBy.Create(2, 1.5f);
             CCFiniteTimeAction scale_back = scale.Reverse();
             CCFiniteTimeAction scale_seq = CCSequence.FromActions(scale, scale_back);
-            CCAction scale_4ever = CCRepeatForever.Create((CCActionInterval)scale_seq);
+            CCAction scale_4ever = new CCRepeatForever ((CCActionInterval)scale_seq);
 
             CCActionInterval jump = new CCJumpBy (0.5f, new CCPoint(), 60, 1);
-            CCAction jump_4ever = CCRepeatForever.Create(jump);
+            CCAction jump_4ever = new CCRepeatForever (jump);
 
             CCActionInterval fade_out = new CCFadeOut  (1);
             CCActionInterval fade_in = new CCFadeIn  (1);
             CCFiniteTimeAction seq = CCSequence.FromActions(fade_out, fade_in);
-            CCAction fade_4ever = CCRepeatForever.Create((CCActionInterval)seq);
+            CCAction fade_4ever = new CCRepeatForever ((CCActionInterval)seq);
 
             BChar.RunAction(rot_4ever);
             BChar.RunAction(scale_4ever);
