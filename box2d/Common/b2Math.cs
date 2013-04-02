@@ -232,14 +232,6 @@ namespace Box2D.Common
             return C;
         }
 
-        public static float b2Min(float a, float b)
-        {
-            return (Math.Min(a, b));
-        }
-        public static float Math.Max(float a, float b)
-        {
-            return (Math.Max(a, b));
-        }
         public static float b2Abs(float a)
         {
             return (Math.Abs(a));
@@ -259,7 +251,7 @@ namespace Box2D.Common
             return new b2Vec2(b2Min(a.x, b.x), b2Min(a.y, b.y));
         }
 
-        public static b2Vec2 Math.Max(b2Vec2 a, b2Vec2 b)
+        public static b2Vec2 b2Max(b2Vec2 a, b2Vec2 b)
         {
             return new b2Vec2(Math.Max(a.x, b.x), Math.Max(a.y, b.y));
         }
@@ -271,7 +263,7 @@ namespace Box2D.Common
 
         public static b2Vec2 b2Clamp(b2Vec2 a, b2Vec2 low, b2Vec2 high)
         {
-            return Math.Max(low, b2Min(a, high));
+            return b2Max(low, b2Min(a, high));
         }
 
         public static void b2Swap<T>(T a, T b)

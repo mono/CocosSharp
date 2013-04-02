@@ -340,7 +340,7 @@ namespace Box2D.Dynamics.Joints
         // Solve prismatic and limit constraint in block form.
         float Cdot2;
         Cdot2 = b2Math.b2Dot(m_axis, vB - vA) + m_a2 * wB - m_a1 * wA;
-        b2Vec3 Cdot(Cdot1.x, Cdot1.y, Cdot2);
+        b2Vec3 Cdot = new b2Vec3(Cdot1.x, Cdot1.y, Cdot2);
 
         b2Vec3 f1 = m_impulse;
         b2Vec3 df =  m_K.Solve33(-Cdot);
@@ -348,11 +348,11 @@ namespace Box2D.Dynamics.Joints
 
         if (m_limitState == b2LimitState.e_atLowerLimit)
         {
-            m_impulse.z = b2Math.Math.Max(m_impulse.z, 0.0f);
+            m_impulse.z = Math.Max(m_impulse.z, 0.0f);
         }
         else if (m_limitState == b2LimitState.e_atUpperLimit)
         {
-            m_impulse.z = b2Math.b2Min(m_impulse.z, 0.0f);
+            m_impulse.z = Math.Min(m_impulse.z, 0.0f);
         }
 
         // f2(1:2) = invK(1:2,1:2) * (-Cdot(1:2) - K(1:2,3) * (f2(3) - f1(3))) + f1(1:2)
@@ -451,21 +451,21 @@ namespace Box2D.Dynamics.Joints
                 {
                     // Prevent large angular corrections
                     C2 = b2Math.b2Clamp(translation, -b2Settings.b2_maxLinearCorrection, b2Settings.b2_maxLinearCorrection);
-                    linearError = b2Math.Math.Max(linearError, b2Math.b2Abs(translation));
+                    linearError = Math.Max(linearError, b2Math.b2Abs(translation));
                     active = true;
                 }
                 else if (translation <= m_lowerTranslation)
                 {
                     // Prevent large linear corrections and allow some slop.
                     C2 = b2Math.b2Clamp(translation - m_lowerTranslation + b2Settings.b2_linearSlop, -b2Settings.b2_maxLinearCorrection, 0.0f);
-                    linearError = b2Math.Math.Max(linearError, m_lowerTranslation - translation);
+                    linearError = Math.Max(linearError, m_lowerTranslation - translation);
                     active = true;
                 }
                 else if (translation >= m_upperTranslation)
                 {
                     // Prevent large linear corrections and allow some slop.
                     C2 = b2Math.b2Clamp(translation - m_upperTranslation - b2Settings.b2_linearSlop, 0.0f, b2Settings.b2_maxLinearCorrection);
-                    linearError = b2Math.Math.Max(linearError, translation - m_upperTranslation);
+                    linearError = Math.Max(linearError, translation - m_upperTranslation);
                     active = true;
                 }
             }
@@ -484,15 +484,12 @@ namespace Box2D.Dynamics.Joints
                 float k23 = iA * a1 + iB * a2;
                 float k33 = mA + mB + iA * a1 * a1 + iB * a2 * a2;
 
-                b2Mat33 K;
-                K.ex.Set(k11, k12, k13);
-                K.ey.Set(k12, k22, k23);
-                K.ez.Set(k13, k23, k33);
+                b2Mat33 K = new b2Mat33(
+                    new b2Vec3(k11, k12, k13),
+                    new b2Vec3(k12, k22, k23),
+                    new b2Vec3(k13, k23, k33));
 
-                b2Vec3 C;
-                C.x = C1.x;
-                C.y = C1.y;
-                C.z = C2;
+                b2Vec3 C = new b2Vec3(C1.x, C1.y, C2);
 
                 impulse = K.Solve33(-C);
             }
@@ -534,7 +531,10 @@ namespace Box2D.Dynamics.Joints
             return linearError <= b2Settings.b2_linearSlop && angularError <= b2Settings.b2_angularSlop;
         }
 
-        public override b2Vec2 GetAnchorA()
+        public virtual b2Vec2 GetLocalXAxisA() {
+            return (m_localXAxisA);
+        }
+    public override b2Vec2 GetAnchorA()
         {
             return m_bodyA.GetWorldPoint(m_localAnchorA);
         }
@@ -544,17 +544,17 @@ namespace Box2D.Dynamics.Joints
             return m_bodyB.GetWorldPoint(m_localAnchorB);
         }
 
-        public override b2Vec2 GetReactionForce(float inv_dt)
+        public virtual b2Vec2 GetReactionForce(float inv_dt)
         {
             return inv_dt * (m_impulse.x * m_perp + (m_motorImpulse + m_impulse.z) * m_axis);
         }
 
-        public override float GetReactionTorque(float inv_dt)
+        public virtual float GetReactionTorque(float inv_dt)
         {
             return inv_dt * m_impulse.y;
         }
 
-        public override float GetJointTranslation()
+        public virtual float GetJointTranslation()
         {
             b2Vec2 pA = m_bodyA.GetWorldPoint(m_localAnchorA);
             b2Vec2 pB = m_bodyB.GetWorldPoint(m_localAnchorB);
@@ -565,7 +565,7 @@ namespace Box2D.Dynamics.Joints
             return translation;
         }
 
-        public override float GetJointSpeed()
+        public virtual float GetJointSpeed()
         {
             b2Body bA = m_bodyA;
             b2Body bB = m_bodyB;
@@ -575,7 +575,7 @@ namespace Box2D.Dynamics.Joints
             b2Vec2 p1 = bA.Sweep.c + rA;
             b2Vec2 p2 = bB.Sweep.c + rB;
             b2Vec2 d = p2 - p1;
-            b2Vec2 axis = b2Math.b2Mul(bA.m_xf.q, m_localXAxisA);
+            b2Vec2 axis = b2Math.b2Mul(bA.XF.q, m_localXAxisA);
 
             b2Vec2 vA = bA.LinearVelocity;
             b2Vec2 vB = bB.LinearVelocity;

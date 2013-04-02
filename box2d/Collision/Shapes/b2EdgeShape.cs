@@ -166,7 +166,7 @@ namespace Box2D.Collision.Shapes
             b2Vec2 v2 = b2Math.b2Mul(xf, m_vertex2);
 
             b2Vec2 lower = b2Math.b2Min(v1, v2);
-            b2Vec2 upper = b2Math.Math.Max(v1, v2);
+            b2Vec2 upper = b2Math.b2Max(v1, v2);
 
             b2Vec2 r = new b2Vec2(m_radius, m_radius);
             b2AABB aabb = new b2AABB();

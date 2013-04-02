@@ -30,9 +30,10 @@ namespace Box2D.Common
         }
 
         /// Get the drawing flags.
-        public b2DrawFlags GetFlags()
+        public b2DrawFlags Flags
         {
-            return (m_drawFlags);
+            get { return (m_drawFlags); }
+            set { m_drawFlags = value; }
         }
 
         /// Append flags to the current flags.

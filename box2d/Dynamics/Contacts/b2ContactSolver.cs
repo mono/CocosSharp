@@ -108,7 +108,7 @@ namespace Box2D.Dynamics.Contacts
                 float radiusB = shapeB.Radius;
                 b2Body bodyA = fixtureA.Body;
                 b2Body bodyB = fixtureB.Body;
-                b2Manifold manifold = contact.Manifold;
+                b2Manifold manifold = contact.GetManifold();
 
                 int pointCount = manifold.pointCount;
                 Debug.Assert(pointCount > 0);
@@ -127,15 +127,15 @@ namespace Box2D.Dynamics.Contacts
                 vc.K.SetZero();
                 vc.normalMass.SetZero();
 
-                b2ContactPositionConstraint* pc = m_positionConstraints + i;
-                pc.indexA = bodyA.m_islandIndex;
-                pc.indexB = bodyB.m_islandIndex;
-                pc.invMassA = bodyA.m_invMass;
-                pc.invMassB = bodyB.m_invMass;
-                pc.localCenterA = bodyA.m_sweep.localCenter;
-                pc.localCenterB = bodyB.m_sweep.localCenter;
-                pc.invIA = bodyA.m_invI;
-                pc.invIB = bodyB.m_invI;
+                b2ContactPositionConstraint pc = m_positionConstraints[i];
+                pc.indexA = bodyA.IslandIndex;
+                pc.indexB = bodyB.IslandIndex;
+                pc.invMassA = bodyA.InvertedMass;
+                pc.invMassB = bodyB.InvertedMass;
+                pc.localCenterA = bodyA.Sweep.localCenter;
+                pc.localCenterB = bodyB.Sweep.localCenter;
+                pc.invIA = bodyA.InvertedI;
+                pc.invIB = bodyB.InvertedI;
                 pc.localNormal = manifold.localNormal;
                 pc.localPoint = manifold.localPoint;
                 pc.pointCount = pointCount;
@@ -145,8 +145,8 @@ namespace Box2D.Dynamics.Contacts
 
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    b2ManifoldPoint* cp = manifold.points + j;
-                    b2VelocityConstraintPoint* vcp = vc.points + j;
+                    b2ManifoldPoint cp = manifold.points[j];
+                    b2VelocityConstraintPoint vcp = vc.points[j];
 
                     if (m_step.warmStarting)
                     {

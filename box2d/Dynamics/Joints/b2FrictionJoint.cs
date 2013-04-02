@@ -108,7 +108,7 @@ namespace Box2D.Dynamics.Joints
             float mA = m_invMassA, mB = m_invMassB;
             float iA = m_invIA, iB = m_invIB;
 
-            b2Mat22 K;
+            b2Mat22 K = new b2Mat22();
             K.exx = mA + mB + iA * m_rA.y * m_rA.y + iB * m_rB.y * m_rB.y;
             K.exy = -iA * m_rA.x * m_rA.y - iB * m_rB.x * m_rB.y;
             K.eyx = K.ex.y;

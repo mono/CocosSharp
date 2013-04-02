@@ -24,8 +24,8 @@ namespace Box2D.Dynamics.Joints
     public class b2Joint
     {
         protected b2JointType m_type;
-        protected b2Joint m_prev;
-        protected b2Joint m_next;
+        protected b2Joint Prev;
+        protected b2Joint Next;
         protected b2JointEdge m_edgeA;
         protected b2JointEdge m_edgeB;
         protected b2Body m_bodyA;
@@ -123,8 +123,8 @@ namespace Box2D.Dynamics.Joints
             Debug.Assert(def.bodyA != def.bodyB);
 
             m_type = def.type;
-            m_prev = null;
-            m_next = null;
+            Prev = null;
+            Next = null;
             m_bodyA = def.bodyA;
             m_bodyB = def.bodyB;
             m_index = 0;
@@ -165,7 +165,7 @@ namespace Box2D.Dynamics.Joints
 
         public virtual b2Joint GetNext()
         {
-            return m_next;
+            return Next;
         }
 
         public virtual object GetUserData()

@@ -320,21 +320,38 @@ namespace Box2D.Dynamics.Joints
         }
 
         /// The local anchor point relative to bodyA's origin.
-        public override b2Vec2 GetLocalAnchorA() { return m_localAnchorA; }
-
+        public virtual b2Vec2 LocalAnchorA
+        {
+            get { return (m_localAnchorA); }
+            set { m_localAnchorA = value; }
+        }
         /// The local anchor point relative to bodyB's origin.
-        public override b2Vec2 GetLocalAnchorB() { return m_localAnchorB; }
+        public virtual b2Vec2 LocalAnchorB
+        {
+            get { return (m_localAnchorB); }
+            set { m_localAnchorB = value; }
+        }
 
         /// Get the reference angle.
-        public override float GetReferenceAngle() { return m_referenceAngle; }
+        public virtual float ReferenceAngle
+        {
+            get { return (m_referenceAngle); }
+            set { m_referenceAngle = value; }
+        }
 
         /// Set/get frequency in Hz.
-        public override void SetFrequency(float hz) { m_frequencyHz = hz; }
-        public override float GetFrequency() { return m_frequencyHz; }
+        public virtual float Frequency
+        {
+            get { return (m_frequencyHz); }
+            set { m_frequencyHz = value; }
+        }
 
         /// Set/get damping ratio.
-        public override void SetDampingRatio(float ratio) { m_dampingRatio = ratio; }
-        public override float GetDampingRatio() { return m_dampingRatio; }
+        public float DampingRatio
+        {
+            get { return (m_dampingRatio); }
+            set { m_dampingRatio = value; }
+        }
 
         public override b2Vec2 GetAnchorA()
         {
@@ -346,13 +363,13 @@ namespace Box2D.Dynamics.Joints
             return m_bodyB.GetWorldPoint(m_localAnchorB);
         }
 
-        public override b2Vec2 GetReactionForce(float inv_dt)
+        public virtual b2Vec2 GetReactionForce(float inv_dt)
         {
             b2Vec2 P = new b2Vec2(m_impulse.x, m_impulse.y);
             return inv_dt * P;
         }
 
-        public override float GetReactionTorque(float inv_dt)
+        public virtual float GetReactionTorque(float inv_dt)
         {
             return inv_dt * m_impulse.z;
         }

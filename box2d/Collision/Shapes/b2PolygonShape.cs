@@ -299,7 +299,7 @@ namespace Box2D.Collision.Shapes
             {
                 b2Vec2 v = b2Math.b2Mul(xf, m_vertices[i]);
                 lower = b2Math.b2Min(lower, v);
-                upper = b2Math.Math.Max(upper, v);
+                upper = Math.Max(upper, v);
             }
 
             b2Vec2 r = new b2Vec2(m_radius, m_radius);

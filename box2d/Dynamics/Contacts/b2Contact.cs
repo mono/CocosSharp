@@ -75,22 +75,44 @@ namespace Box2D.Dynamics.Contacts
 
         protected b2ContactFlags m_flags;
 
+        public b2ContactFlags Flags
+        {
+            get { return (m_flags); }
+            set { m_flags = value; }
+        }
+
         // World pool and list pointers.
-        protected b2Contact m_prev;
-        public b2Contact Prev { get { return (m_prev); } }
-        protected b2Contact m_next;
-        public b2Contact Next { get { return (m_next); } }
+        protected b2Contact m_Prev;
+        public b2Contact Prev { 
+            get { return (m_Prev); }
+            set { m_Prev = value; }
+        }
+        protected b2Contact m_Next;
+        public b2Contact Next {
+            get { return (m_Next); }
+            set { m_Next = value; }
+        }
 
         // Nodes for connecting bodies.
-        protected b2ContactEdge m_nodeA;
-        public b2ContactEdge NodeA { get { return (m_nodeA); } }
+        protected b2ContactEdge m_NodeA;
+        public b2ContactEdge NodeA {
+            get { return (m_NodeA); }
+            set { m_NodeA = value; }
+        }
         protected b2ContactEdge m_nodeB;
-        public b2ContactEdge NodeB { get { return (m_nodeB); } }
+        public b2ContactEdge NodeB { 
+            get { return (m_nodeB); }
+            set { m_nodeB = value; }
+        }
 
         protected b2Fixture m_fixtureA;
-        public b2Fixture FixtureA { get { return (m_fixtureA); } }
+        public b2Fixture FixtureA { get { return (m_fixtureA); }
+            set { m_fixtureA = value; }
+        }
         protected b2Fixture m_fixtureB;
-        public b2Fixture FixtureB { get { return (m_fixtureB); } }
+        public b2Fixture FixtureB { get { return (m_fixtureB); }
+            set { m_fixtureB = value; }
+        }
 
         protected int m_indexA;
         protected int m_indexB;
@@ -109,6 +131,7 @@ namespace Box2D.Dynamics.Contacts
         public abstract void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB);
 
         protected static b2ContactRegister[,] s_registers = new b2ContactRegister[(int)b2ShapeType.e_typeCount, (int)b2ShapeType.e_typeCount];
+
         static b2Contact()
         {
             AddType(typeof(b2CircleContact), b2ShapeType.e_circle, b2ShapeType.e_circle);
@@ -172,13 +195,13 @@ namespace Box2D.Dynamics.Contacts
 
             m_manifold.pointCount = 0;
 
-            m_prev = null;
-            m_next = null;
+            Prev = null;
+            Next = null;
 
-            m_nodeA.Contact = null;
-            m_nodeA.hasPrev = false;
-            m_nodeA.hasNext = false;
-            m_nodeA.Other = null;
+            NodeA.Contact = null;
+            NodeA.hasPrev = false;
+            NodeA.hasNext = false;
+            NodeA.Other = null;
 
             m_nodeB.Contact = null;
             m_nodeB.hasPrev = false;
@@ -280,12 +303,12 @@ namespace Box2D.Dynamics.Contacts
                 listener.PreSolve(this, oldManifold);
             }
         }
-        protected virtual b2Manifold GetManifold()
+        public virtual b2Manifold GetManifold()
         {
             return m_manifold;
         }
 
-        protected virtual void GetWorldManifold(b2WorldManifold worldManifold)
+        public virtual void GetWorldManifold(b2WorldManifold worldManifold)
         {
             b2Body bodyA = m_fixtureA.Body;
             b2Body bodyB = m_fixtureB.Body;
@@ -295,7 +318,7 @@ namespace Box2D.Dynamics.Contacts
             worldManifold.Initialize(m_manifold, bodyA.Transform, shapeA.Radius, bodyB.Transform, shapeB.Radius);
         }
 
-        protected virtual void SetEnabled(bool flag)
+        public virtual void SetEnabled(bool flag)
         {
             if (flag)
             {
@@ -307,42 +330,42 @@ namespace Box2D.Dynamics.Contacts
             }
         }
 
-        protected virtual bool IsEnabled()
+        public virtual bool IsEnabled()
         {
             return (m_flags.HasFlag(b2ContactFlags.e_enabledFlag));
         }
 
-        protected virtual bool IsTouching()
+        public virtual bool IsTouching()
         {
             return (m_flags.HasFlag(b2ContactFlags.e_touchingFlag));
         }
 
-        protected virtual b2Contact GetNext()
+        public virtual b2Contact GetNext()
         {
-            return m_next;
+            return Next;
         }
 
-        protected virtual b2Contact GetPrev()
+        public virtual b2Contact GetPrev()
         {
-            return m_prev;
+            return Prev;
         }
 
-        protected virtual b2Fixture GetFixtureA()
+        public virtual b2Fixture GetFixtureA()
         {
             return m_fixtureA;
         }
 
-        protected virtual b2Fixture GetFixtureB()
+        public virtual b2Fixture GetFixtureB()
         {
             return m_fixtureB;
         }
 
-        protected virtual int GetChildIndexA()
+        public virtual int GetChildIndexA()
         {
             return m_indexA;
         }
 
-        protected virtual int GetChildIndexB()
+        public virtual int GetChildIndexB()
         {
             return m_indexB;
         }
@@ -352,32 +375,32 @@ namespace Box2D.Dynamics.Contacts
             m_flags |= b2ContactFlags.e_filterFlag;
         }
 
-        protected virtual void SetFriction(float friction)
+        public virtual void SetFriction(float friction)
         {
             m_friction = friction;
         }
 
-        protected virtual float GetFriction()
+        public virtual float GetFriction()
         {
             return m_friction;
         }
 
-        protected virtual void ResetFriction()
+        public virtual void ResetFriction()
         {
             m_friction = b2MixFriction(m_fixtureA.Friction, m_fixtureB.Friction);
         }
 
-        protected virtual void SetRestitution(float restitution)
+        public virtual void SetRestitution(float restitution)
         {
             m_restitution = restitution;
         }
 
-        protected virtual float GetRestitution()
+        public virtual float GetRestitution()
         {
             return m_restitution;
         }
 
-        protected virtual void ResetRestitution()
+        public virtual void ResetRestitution()
         {
             m_restitution = b2MixRestitution(m_fixtureA.Restitution, m_fixtureB.Restitution);
         }

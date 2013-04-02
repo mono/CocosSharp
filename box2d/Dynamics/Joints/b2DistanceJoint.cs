@@ -78,14 +78,14 @@ namespace Box2D.Dynamics.Joints
 
         public void InitVelocityConstraints(b2SolverData data)
         {
-            m_indexA = m_bodyA.m_islandIndex;
-            m_indexB = m_bodyB.m_islandIndex;
-            m_localCenterA = m_bodyA.m_sweep.localCenter;
-            m_localCenterB = m_bodyB.m_sweep.localCenter;
-            m_invMassA = m_bodyA.m_invMass;
-            m_invMassB = m_bodyB.m_invMass;
-            m_invIA = m_bodyA.m_invI;
-            m_invIB = m_bodyB.m_invI;
+            m_indexA = m_bodyA.IslandIndex;
+            m_indexB = m_bodyB.IslandIndex;
+            m_localCenterA = m_bodyA.Sweep.localCenter;
+            m_localCenterB = m_bodyB.Sweep.localCenter;
+            m_invMassA = m_bodyA.InvertedMass;
+            m_invMassB = m_bodyB.InvertedMass;
+            m_invIA = m_bodyA.InvertedI;
+            m_invIB = m_bodyB.InvertedI;
 
             b2Vec2 cA = data.positions[m_indexA].c;
             float aA = data.positions[m_indexA].a;
@@ -262,8 +262,8 @@ namespace Box2D.Dynamics.Joints
 
         public virtual void Dump()
         {
-            int indexA = m_bodyA.m_islandIndex;
-            int indexB = m_bodyB.m_islandIndex;
+            int indexA = m_bodyA.IslandIndex;
+            int indexB = m_bodyB.IslandIndex;
 
             System.Diagnostics.Debug.WriteLine("  b2DistanceJointDef jd;\n");
             b2Settings.b2Log("  jd.bodyA = bodies[{0}];\n", indexA);
