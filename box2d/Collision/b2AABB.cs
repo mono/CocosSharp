@@ -41,14 +41,14 @@ namespace Box2D.Collision
         public void Combine(b2AABB aabb)
         {
             m_lowerBound = b2Math.b2Min(m_lowerBound, aabb.m_lowerBound);
-            m_upperBound = b2Math.b2Max(m_upperBound, aabb.m_upperBound);
+            m_upperBound = b2Math.Math.Max(m_upperBound, aabb.m_upperBound);
         }
 
         /// Combine two AABBs into this one.
         public void Combine(b2AABB aabb1, b2AABB aabb2)
         {
             m_lowerBound = b2Math.b2Min(aabb1.m_lowerBound, aabb2.m_lowerBound);
-            m_upperBound = b2Math.b2Max(aabb1.m_upperBound, aabb2.m_upperBound);
+            m_upperBound = b2Math.Math.Max(aabb1.m_upperBound, aabb2.m_upperBound);
         }
 
         /// Does this aabb contain the provided AABB.

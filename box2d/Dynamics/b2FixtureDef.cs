@@ -23,7 +23,7 @@ namespace Box2D.Dynamics
     public class b2FixtureDef
     {
         /// The constructor sets the default fixture definition values.
-        b2FixtureDef()
+        public b2FixtureDef()
         {
             shape = null;
             userData = null;

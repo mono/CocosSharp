@@ -40,12 +40,12 @@ namespace Box2D.Dynamics.Contacts
     /// </summary>
     public class b2ContactEdge
     {
-        public b2Body other;            ///< provides quick access to the other body attached.
-        public b2Contact contact;        ///< the contact
+        public b2Body Other;            ///< provides quick access to the other body attached.
+        public b2Contact Contact;        ///< the contact
         public bool hasPrev;
-        public b2ContactEdge prev;    ///< the previous contact edge in the body's contact list
+        public b2ContactEdge Prev;    ///< the previous contact edge in the body's contact list
         public bool hasNext;
-        public b2ContactEdge next;    ///< the next contact edge in the body's contact list
+        public b2ContactEdge Next;    ///< the next contact edge in the body's contact list
     }
 
     [Flags]
@@ -175,15 +175,15 @@ namespace Box2D.Dynamics.Contacts
             m_prev = null;
             m_next = null;
 
-            m_nodeA.contact = null;
+            m_nodeA.Contact = null;
             m_nodeA.hasPrev = false;
             m_nodeA.hasNext = false;
-            m_nodeA.other = null;
+            m_nodeA.Other = null;
 
-            m_nodeB.contact = null;
+            m_nodeB.Contact = null;
             m_nodeB.hasPrev = false;
             m_nodeB.hasNext = false;
-            m_nodeB.other = null;
+            m_nodeB.Other = null;
 
             m_toiCount = 0;
 

@@ -389,7 +389,7 @@ namespace Box2D.Dynamics.Contacts
             float lambda = -vcp.normalMass * (vn - vcp.velocityBias);
 
             // b2Clamp the accumulated impulse
-            float newImpulse = b2Max(vcp.normalImpulse + lambda, 0.0f);
+            float newImpulse = Math.Max(vcp.normalImpulse + lambda, 0.0f);
             lambda = newImpulse - vcp.normalImpulse;
             vcp.normalImpulse = newImpulse;
 
