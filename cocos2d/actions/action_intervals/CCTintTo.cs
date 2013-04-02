@@ -5,6 +5,16 @@ namespace cocos2d
         protected CCColor3B m_from;
         protected CCColor3B m_to;
 
+		public CCTintTo (float duration, byte red, byte green, byte blue)
+		{
+			InitWithDuration(duration, red, green, blue);
+		}
+
+		protected CCTintTo (CCTintTo tintTo) : base (tintTo)
+		{
+			InitWithDuration(tintTo.m_fDuration, tintTo.m_to.R, tintTo.m_to.G, tintTo.m_to.B);
+		}
+
         public bool InitWithDuration(float duration, byte red, byte green, byte blue)
         {
             if (base.InitWithDuration(duration))
@@ -18,28 +28,24 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCTintTo ret;
-
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null && zone != null)
             {
-                ret = tmpZone as CCTintTo;
+                var ret = zone as CCTintTo;
                 if (ret == null)
                 {
                     return null;
                 }
-            }
+				
+				base.Copy(zone);
+				
+				ret.InitWithDuration(m_fDuration, m_to.R, m_to.G, m_to.B);
+				
+				return ret;
+			}
             else
             {
-                ret = new CCTintTo();
-                tmpZone =  (ret);
+                return new CCTintTo(this);
             }
-
-            base.Copy(tmpZone);
-
-            ret.InitWithDuration(m_fDuration, m_to.R, m_to.G, m_to.B);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -63,11 +69,5 @@ namespace cocos2d
             }
         }
 
-        public static CCTintTo Create(float duration, byte red, byte green, byte blue)
-        {
-            var ret = new CCTintTo();
-            ret.InitWithDuration(duration, red, green, blue);
-            return ret;
-        }
     }
 }

@@ -682,8 +682,8 @@ namespace tests
 
             centerSprites(2);
 
-            var action1 = CCTintTo.Create(2, 255, 0, 255);
-            var action2 = CCTintBy.Create(2, -127, -255, -127);
+            var action1 = new CCTintTo (2, 255, 0, 255);
+            var action2 = new CCTintBy (2, -127, -255, -127);
             var action2Back = action2.Reverse();
 
             m_tamara.RunAction(action1);

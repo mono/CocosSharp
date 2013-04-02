@@ -14,9 +14,9 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCProgressTo to = CCProgressTo.Create(6, 100);
-            CCAction tint = CCSequence.Create(CCTintTo.Create(1, 255, 0, 0),
-                                              CCTintTo.Create(1, 0, 255, 0),
-                                              CCTintTo.Create(1, 0, 0, 255));
+            CCAction tint = CCSequence.Create(new CCTintTo (1, 255, 0, 0),
+                                              new CCTintTo (1, 0, 255, 0),
+                                              new CCTintTo (1, 0, 0, 255));
             CCAction fade = CCSequence.Create(new CCFadeTo (1.0f, 0),
                                               new CCFadeTo (1.0f, 255));
 

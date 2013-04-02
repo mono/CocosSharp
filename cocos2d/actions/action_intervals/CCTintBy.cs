@@ -9,7 +9,17 @@ namespace cocos2d
         protected short m_fromG;
         protected short m_fromR;
 
-        public bool InitWithDuration(float duration, short deltaRed, short deltaGreen, short deltaBlue)
+		public CCTintBy (float duration, short deltaRed, short deltaGreen, short deltaBlue)
+		{
+			InitWithDuration(duration, deltaRed, deltaGreen, deltaBlue);
+		}
+
+		protected CCTintBy (CCTintBy tintBy) : base (tintBy)
+		{
+			InitWithDuration(tintBy.m_fDuration, tintBy.m_deltaR, tintBy.m_deltaG, tintBy.m_deltaB);
+		}
+
+		public bool InitWithDuration(float duration, short deltaRed, short deltaGreen, short deltaBlue)
         {
             if (base.InitWithDuration(duration))
             {
@@ -25,28 +35,24 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCTintBy ret;
-
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null && zone != null)
             {
-                ret = tmpZone as CCTintBy;
+                var ret = zone as CCTintBy;
                 if (ret == null)
                 {
                     return null;
                 }
-            }
+				base.Copy(zone);
+				
+				ret.InitWithDuration(m_fDuration, m_deltaR, m_deltaG, m_deltaB);
+				
+				return ret;
+			}
             else
             {
-                ret = new CCTintBy();
-                tmpZone =  (ret);
+                return new CCTintBy(this);
             }
 
-            base.Copy(tmpZone);
-
-            ret.InitWithDuration(m_fDuration, m_deltaR, m_deltaG, m_deltaB);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -76,14 +82,8 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_fDuration, (short) -m_deltaR, (short) -m_deltaG, (short) -m_deltaB);
+            return new CCTintBy (m_fDuration, (short) -m_deltaR, (short) -m_deltaG, (short) -m_deltaB);
         }
 
-        public static CCTintBy Create(float duration, short deltaRed, short deltaGreen, short deltaBlue)
-        {
-            var ret = new CCTintBy();
-            ret.InitWithDuration(duration, deltaRed, deltaGreen, deltaBlue);
-            return ret;
-        }
     }
 }
