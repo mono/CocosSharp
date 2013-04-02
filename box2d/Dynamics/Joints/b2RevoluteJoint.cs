@@ -438,68 +438,68 @@ namespace Box2D.Dynamics.Joints
             return m_bodyB.GetWorldPoint(m_localAnchorB);
         }
 
-        public override b2Vec2 GetReactionForce(float inv_dt)
+        public virtual b2Vec2 GetReactionForce(float inv_dt)
         {
             b2Vec2 P = new b2Vec2(m_impulse.x, m_impulse.y);
             return inv_dt * P;
         }
 
-        public override float GetReactionTorque(float inv_dt)
+        public virtual float GetReactionTorque(float inv_dt)
         {
             return inv_dt * m_impulse.z;
         }
 
-        public override float GetJointAngle()
+        public virtual float GetJointAngle()
         {
             b2Body bA = m_bodyA;
             b2Body bB = m_bodyB;
             return bB.Sweep.a - bA.Sweep.a - m_referenceAngle;
         }
 
-        public override float GetJointSpeed()
+        public virtual float GetJointSpeed()
         {
             b2Body bA = m_bodyA;
             b2Body bB = m_bodyB;
             return bB.AngularVelocity - bA.AngularVelocity;
         }
 
-        public override bool IsMotorEnabled()
+        public virtual bool IsMotorEnabled()
         {
             return m_enableMotor;
         }
 
-        public override void EnableMotor(bool flag)
+        public virtual void EnableMotor(bool flag)
         {
             m_bodyA.SetAwake(true);
             m_bodyB.SetAwake(true);
             m_enableMotor = flag;
         }
 
-        public override float GetMotorTorque(float inv_dt)
+        public virtual float GetMotorTorque(float inv_dt)
         {
             return inv_dt * m_motorImpulse;
         }
 
-        public override void SetMotorSpeed(float speed)
+        public virtual void SetMotorSpeed(float speed)
         {
             m_bodyA.SetAwake(true);
             m_bodyB.SetAwake(true);
             m_motorSpeed = speed;
         }
 
-        public override void SetMaxMotorTorque(float torque)
+        public virtual void SetMaxMotorTorque(float torque)
         {
             m_bodyA.SetAwake(true);
             m_bodyB.SetAwake(true);
             m_maxMotorTorque = torque;
         }
 
-        public override bool IsLimitEnabled()
+        public virtual bool IsLimitEnabled()
         {
             return m_enableLimit;
         }
 
-        public override void EnableLimit(bool flag)
+        public virtual void EnableLimit(bool flag)
         {
             if (flag != m_enableLimit)
             {
@@ -510,17 +510,17 @@ namespace Box2D.Dynamics.Joints
             }
         }
 
-        public override float GetLowerLimit()
+        public virtual float GetLowerLimit()
         {
             return m_lowerAngle;
         }
 
-        public override float GetUpperLimit()
+        public virtual float GetUpperLimit()
         {
             return m_upperAngle;
         }
 
-        public override void SetLimits(float lower, float upper)
+        public virtual void SetLimits(float lower, float upper)
         {
             Debug.Assert(lower <= upper);
 

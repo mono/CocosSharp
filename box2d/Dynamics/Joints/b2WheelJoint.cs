@@ -92,7 +92,7 @@ namespace Box2D.Dynamics.Joints
 
             m_mass = 0.0f;
             m_impulse = 0.0f;
-            m_motorMass = 0.0;
+            m_motorMass = 0.0f;
             m_motorImpulse = 0.0f;
             m_springMass = 0.0f;
             m_springImpulse = 0.0f;
@@ -375,17 +375,17 @@ namespace Box2D.Dynamics.Joints
             return m_bodyB.GetWorldPoint(m_localAnchorB);
         }
 
-        public override b2Vec2 GetReactionForce(float inv_dt)
+        public virtual b2Vec2 GetReactionForce(float inv_dt)
         {
             return inv_dt * (m_impulse * m_ay + m_springImpulse * m_ax);
         }
 
-        public override float GetReactionTorque(float inv_dt)
+        public virtual float GetReactionTorque(float inv_dt)
         {
             return inv_dt * m_motorImpulse;
         }
 
-        public override float GetJointTranslation()
+        public virtual float GetJointTranslation()
         {
             b2Body bA = m_bodyA;
             b2Body bB = m_bodyB;
@@ -399,40 +399,40 @@ namespace Box2D.Dynamics.Joints
             return translation;
         }
 
-        public override float GetJointSpeed()
+        public virtual float GetJointSpeed()
         {
             float wA = m_bodyA.AngularVelocity;
             float wB = m_bodyB.AngularVelocity;
             return wB - wA;
         }
 
-        public override bool IsMotorEnabled()
+        public virtual bool IsMotorEnabled()
         {
             return m_enableMotor;
         }
 
-        public override void EnableMotor(bool flag)
+        public virtual void EnableMotor(bool flag)
         {
             m_bodyA.SetAwake(true);
             m_bodyB.SetAwake(true);
             m_enableMotor = flag;
         }
 
-        public override void SetMotorSpeed(float speed)
+        public virtual void SetMotorSpeed(float speed)
         {
             m_bodyA.SetAwake(true);
             m_bodyB.SetAwake(true);
             m_motorSpeed = speed;
         }
 
-        public override void SetMaxMotorTorque(float torque)
+        public virtual void SetMaxMotorTorque(float torque)
         {
             m_bodyA.SetAwake(true);
             m_bodyB.SetAwake(true);
             m_maxMotorTorque = torque;
         }
 
-        public override float GetMotorTorque(float inv_dt)
+        public virtual float GetMotorTorque(float inv_dt)
         {
             return inv_dt * m_motorImpulse;
         }

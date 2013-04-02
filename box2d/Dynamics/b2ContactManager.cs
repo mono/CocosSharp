@@ -48,66 +48,65 @@ namespace Box2D.Dynamics
 
         public void Destroy(b2Contact c)
         {
-            b2Fixture fixtureA = c.GetFixtureA();
-            b2Fixture fixtureB = c.GetFixtureB();
-            b2Body bodyA = fixtureA.GetBody();
-            b2Body bodyB = fixtureB.GetBody();
+            b2Fixture fixtureA = c.FixtureA;
+            b2Fixture fixtureB = c.FixtureB;
+            b2Body bodyA = fixtureA.Body;
+            b2Body bodyB = fixtureB.Body;
 
-            if (m_contactListener && c.IsTouching())
+            if (m_contactListener != null && c.IsTouching())
             {
                 m_contactListener.EndContact(c);
             }
 
             // Remove from the world.
-            if (c.m_prev)
+            if (c.Prev != null)
             {
-                c.m_prev.m_next = c.m_next;
+                c.Prev.Next = c.Next;
             }
 
-            if (c.m_next)
+            if (c.Next != null)
             {
-                c.m_next.m_prev = c.m_prev;
+                c.Next.Prev = c.Prev;
             }
 
             if (c == m_contactList)
             {
-                m_contactList = c.m_next;
+                m_contactList = c.Next;
             }
 
             // Remove from body 1
-            if (c.m_nodeA.Prev)
+            if (c.NodeA.Prev != null)
             {
-                c.m_nodeA.Prev.Next = c.m_nodeA.Next;
+                c.NodeA.Prev.Next = c.NodeA.Next;
             }
 
-            if (c.m_nodeA.Next)
+            if (c.NodeA.Next != null)
             {
-                c.m_nodeA.Next.Prev = c.m_nodeA.Prev;
+                c.NodeA.Next.Prev = c.NodeA.Prev;
             }
 
-            if (c.m_nodeA == bodyA.m_contactList)
+            if (c.NodeA == bodyA.ContactList)
             {
-                bodyA.m_contactList = c.m_nodeA.Next;
+                bodyA.ContactList = c.NodeA.Next;
             }
 
             // Remove from body 2
-            if (c.m_nodeB.Prev)
+            if (c.NodeB.Prev != null)
             {
-                c.m_nodeB.Prev.Next = c.m_nodeB.Next;
+                c.NodeB.Prev.Next = c.NodeB.Next;
             }
 
-            if (c.m_nodeB.Next)
+            if (c.NodeB.Next != null)
             {
-                c.m_nodeB.Next.Prev = c.m_nodeB.Prev;
+                c.NodeB.Next.Prev = c.NodeB.Prev;
             }
 
-            if (c.m_nodeB == bodyB.m_contactList)
+            if (c.NodeB == bodyB.ContactList)
             {
-                bodyB.m_contactList = c.m_nodeB.Next;
+                bodyB.ContactList = c.NodeB.Next;
             }
 
             // Call the factory.
-            b2Contact.Destroy(c);
             --m_contactCount;
         }
 
@@ -118,17 +117,17 @@ namespace Box2D.Dynamics
         {
             // Update awake contacts.
             b2Contact c = m_contactList;
-            while (c)
+            while (c != null)
             {
                 b2Fixture fixtureA = c.GetFixtureA();
                 b2Fixture fixtureB = c.GetFixtureB();
                 int indexA = c.GetChildIndexA();
                 int indexB = c.GetChildIndexB();
-                b2Body bodyA = fixtureA.GetBody();
-                b2Body bodyB = fixtureB.GetBody();
+                b2Body bodyA = fixtureA.Body;
+                b2Body bodyB = fixtureB.Body;
 
                 // Is this contact flagged for filtering?
-                if (c.m_flags & b2Contact.e_filterFlag)
+                if (c.Flags.HasFlag(b2ContactFlags.e_filterFlag))
                 {
                     // Should these bodies collide?
                     if (bodyB.ShouldCollide(bodyA) == false)
@@ -140,7 +139,7 @@ namespace Box2D.Dynamics
                     }
 
                     // Check user filtering.
-                    if (m_contactFilter && m_contactFilter.ShouldCollide(fixtureA, fixtureB) == false)
+                    if (m_contactFilter != null && m_contactFilter.ShouldCollide(fixtureA, fixtureB) == false)
                     {
                         b2Contact cNuke = c;
                         c = cNuke.GetNext();
@@ -149,7 +148,7 @@ namespace Box2D.Dynamics
                     }
 
                     // Clear the filtering flag.
-                    c.m_flags &= ~b2Contact.e_filterFlag;
+                    c.Flags &= ~b2ContactFlags.e_filterFlag;
                 }
 
                 bool activeA = bodyA.IsAwake() && bodyA.m_type != b2BodyType.b2_staticBody;
@@ -263,39 +262,39 @@ namespace Box2D.Dynamics
             bodyB = fixtureB.GetBody();
 
             // Insert into the world.
-            c.m_prev = null;
-            c.m_next = m_contactList;
+            c.Prev = null;
+            c.Next = m_contactList;
             if (m_contactList != null)
             {
-                m_contactList.m_prev = c;
+                m_contactList.Prev = c;
             }
             m_contactList = c;
 
             // Connect to island graph.
 
             // Connect to body A
-            c.m_nodeA.Contact = c;
-            c.m_nodeA.Other = bodyB;
+            c.NodeA.Contact = c;
+            c.NodeA.Other = bodyB;
 
-            c.m_nodeA.Prev = null;
-            c.m_nodeA.Next = bodyA.m_contactList;
+            c.NodeA.Prev = null;
+            c.NodeA.Next = bodyA.m_contactList;
             if (bodyA.m_contactList != null)
             {
-                bodyA.m_contactList.Prev = &c.m_nodeA;
+                bodyA.m_contactList.Prev = &c.NodeA;
             }
-            bodyA.m_contactList = &c.m_nodeA;
+            bodyA.m_contactList = &c.NodeA;
 
             // Connect to body B
-            c.m_nodeB.Contact = c;
-            c.m_nodeB.Other = bodyA;
+            c.NodeB.Contact = c;
+            c.NodeB.Other = bodyA;
 
-            c.m_nodeB.Prev = null;
-            c.m_nodeB.Next = bodyB.m_contactList;
+            c.NodeB.Prev = null;
+            c.NodeB.Next = bodyB.m_contactList;
             if (bodyB.m_contactList != null)
             {
-                bodyB.m_contactList.Prev = &c.m_nodeB;
+                bodyB.m_contactList.Prev = &c.NodeB;
             }
-            bodyB.m_contactList = &c.m_nodeB;
+            bodyB.m_contactList = &c.NodeB;
 
             // Wake up the bodies
             bodyA.SetAwake(true);

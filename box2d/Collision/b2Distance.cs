@@ -126,7 +126,7 @@ namespace Box2D.Collision
         public void WriteCache(b2SimplexCache cache)
         {
             cache.metric = GetMetric();
-            cache.count = (uint)m_count;
+            cache.count = m_count;
             b2SimplexVertex[] vertices = new b2SimplexVertex[] { m_v1, m_v2, m_v3 };
             for (int i = 0; i < m_count; ++i)
             {

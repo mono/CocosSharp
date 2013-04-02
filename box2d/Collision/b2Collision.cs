@@ -132,14 +132,14 @@ namespace Box2D.Collision
             manifold.pointCount = 0;
 
             // Compute circle position in the frame of the polygon.
-            b2Vec2 c = b2Math.b2Mul(xfB, circleB.m_p);
+            b2Vec2 c = b2Math.b2Mul(xfB, circleB.Position);
             b2Vec2 cLocal = b2Math.b2MulT(xfA, c);
 
             // Find the min separating edge.
             int normalIndex = 0;
             float separation = -b2Settings.b2_maxFloat;
             float radius = polygonA.Radius + circleB.Radius;
-            int vertexCount = polygonA.GetVertexCount();
+            int vertexCount = polygonA.VertexCount;
             b2Vec2[] vertices = polygonA.Vertices;
             b2Vec2[] normals = polygonA.Normals;
 

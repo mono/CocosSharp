@@ -291,28 +291,28 @@ namespace Box2D.Dynamics.Joints
             return m_bodyB.GetWorldPoint(m_localAnchorB);
         }
 
-        public override b2Vec2 GetReactionForce(float inv_dt)
+        public virtual b2Vec2 GetReactionForce(float inv_dt)
         {
             b2Vec2 P = m_impulse * m_uB;
             return inv_dt * P;
         }
 
-        public override float GetReactionTorque(float inv_dt)
+        public virtual float GetReactionTorque(float inv_dt)
         {
             return 0.0f;
         }
 
-        public override b2Vec2 GetGroundAnchorA()
+        public virtual b2Vec2 GetGroundAnchorA()
         {
             return m_groundAnchorA;
         }
 
-        public override b2Vec2 GetGroundAnchorB()
+        public virtual b2Vec2 GetGroundAnchorB()
         {
             return m_groundAnchorB;
         }
 
-        public override float GetLengthA()
+        public virtual float GetLengthA()
         {
             b2Vec2 p = m_bodyA.GetWorldPoint(m_localAnchorA);
             b2Vec2 s = m_groundAnchorA;
@@ -320,7 +320,7 @@ namespace Box2D.Dynamics.Joints
             return d.Length();
         }
 
-        public override float GetLengthB()
+        public virtual float GetLengthB()
         {
             b2Vec2 p = m_bodyB.GetWorldPoint(m_localAnchorB);
             b2Vec2 s = m_groundAnchorB;
@@ -328,7 +328,7 @@ namespace Box2D.Dynamics.Joints
             return d.Length();
         }
 
-        public override float GetRatio()
+        public virtual float GetRatio()
         {
             return m_ratio;
         }

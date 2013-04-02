@@ -97,7 +97,7 @@ namespace Box2D.Collision
                 Debug.Assert(m_nodeCount == m_nodeCapacity);
 
                 // The free list is empty. Rebuild a bigger pool.
-                b2TreeNode oldNodes = m_nodes;
+                b2TreeNode[] oldNodes = m_nodes;
                 m_nodeCapacity *= 2;
                 m_nodes = new b2TreeNode[m_nodeCapacity];
 
@@ -144,7 +144,7 @@ namespace Box2D.Collision
             int proxyId = AllocateNode();
 
             // Fatten the aabb.
-            b2Vec2 r = new b2Vec2(b2_aabbExtension, b2_aabbExtension);
+            b2Vec2 r = new b2Vec2(b2Settings.b2_aabbExtension, b2Settings.b2_aabbExtension);
             m_nodes[proxyId].aabb.lowerBound = aabb.lowerBound - r;
             m_nodes[proxyId].aabb.upperBound = aabb.upperBound + r;
             m_nodes[proxyId].userData = userData;

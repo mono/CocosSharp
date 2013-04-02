@@ -107,17 +107,17 @@ namespace Box2D.Dynamics.Joints
     m_bodyA = m_joint1.GetBodyB();
 
     // Get geometry of joint1
-    b2Transform xfA = m_bodyA.m_xf;
-    float aA = m_bodyA.m_sweep.a;
-    b2Transform xfC = m_bodyC.m_xf;
-    float aC = m_bodyC.m_sweep.a;
+    b2Transform xfA = m_bodyA.XF;
+    float aA = m_bodyA.Sweep.a;
+    b2Transform xfC = m_bodyC.XF;
+    float aC = m_bodyC.Sweep.a;
 
     if (m_typeA == b2JointType.e_revoluteJoint)
     {
         b2RevoluteJoint revolute = (b2RevoluteJoint)def.joint1;
-        m_localAnchorC = revolute.m_localAnchorA;
-        m_localAnchorA = revolute.m_localAnchorB;
-        m_referenceAngleA = revolute.m_referenceAngle;
+        m_localAnchorC = revolute.GetLocalAnchorA();
+        m_localAnchorA = revolute.GetLocalAnchorB();
+        m_referenceAngleA = revolute.GetReferenceAngle();
         m_localAxisC.SetZero();
 
         coordinateA = aA - aC - m_referenceAngleA;
@@ -125,10 +125,10 @@ namespace Box2D.Dynamics.Joints
     else
     {
         b2PrismaticJoint prismatic = (b2PrismaticJoint)def.joint1;
-        m_localAnchorC = prismatic.m_localAnchorA;
-        m_localAnchorA = prismatic.m_localAnchorB;
-        m_referenceAngleA = prismatic.m_referenceAngle;
-        m_localAxisC = prismatic.m_localXAxisA;
+        m_localAnchorC = prismatic.GetLocalAnchorA();
+        m_localAnchorA = prismatic.GetLocalAnchorB();
+        m_referenceAngleA = prismatic.GetReferenceAngle();
+        m_localAxisC = prismatic.GetLocalXAxisA();
 
         b2Vec2 pC = m_localAnchorC;
         b2Vec2 pA = b2Math.b2MulT(xfC.q, b2Math.b2Mul(xfA.q, m_localAnchorA) + (xfA.p - xfC.p));
@@ -139,17 +139,17 @@ namespace Box2D.Dynamics.Joints
     m_bodyB = m_joint2.GetBodyB();
 
     // Get geometry of joint2
-    b2Transform xfB = m_bodyB.m_xf;
-    float aB = m_bodyB.m_sweep.a;
-    b2Transform xfD = m_bodyD.m_xf;
-    float aD = m_bodyD.m_sweep.a;
+    b2Transform xfB = m_bodyB.XF;
+    float aB = m_bodyB.Sweep.a;
+    b2Transform xfD = m_bodyD.XF;
+    float aD = m_bodyD.Sweep.a;
 
     if (m_typeB == b2JointType.e_revoluteJoint)
     {
         b2RevoluteJoint revolute = (b2RevoluteJoint)def.joint2;
-        m_localAnchorD = revolute.m_localAnchorA;
-        m_localAnchorB = revolute.m_localAnchorB;
-        m_referenceAngleB = revolute.m_referenceAngle;
+        m_localAnchorD = revolute.GetLocalAnchorA();
+        m_localAnchorB = revolute.GetLocalAnchorB();
+        m_referenceAngleB = revolute.GetReferenceAngle();
         m_localAxisD.SetZero();
 
         coordinateB = aB - aD - m_referenceAngleB;
@@ -337,13 +337,16 @@ public virtual bool SolvePositionConstraints(b2SolverData data)
     b2Vec2 cD = data.positions[m_indexD].c;
     float aD = data.positions[m_indexD].a;
 
-    b2Rot qA(aA), qB(aB), qC(aC), qD(aD);
+    b2Rot qA = new b2Rot(aA);
+    b2Rot qB = new b2Rot(aB);
+    b2Rot qC = new b2Rot(aC);
+    b2Rot qD = new b2Rot(aD);
 
     float linearError = 0.0f;
 
     float coordinateA, coordinateB;
 
-    b2Vec2 JvAC, JvBD;
+    b2Vec2 JvAC = b2Vec2.Zero, JvBD = b2Vec2.Zero;
     float JwA, JwB, JwC, JwD;
     float mass = 0.0f;
 

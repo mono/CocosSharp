@@ -630,7 +630,7 @@ namespace Box2D.Dynamics
                 for (b2Body b = m_bodyList; b; b = b.Next)
                 {
                     b.BodyFlags &= ~b2BodyFlags.e_islandFlag;
-                    b.m_sweep.alpha0 = 0.0f;
+                    b.Sweep.alpha0 = 0.0f;
                 }
 
                 for (b2Contact c = m_contactManager.ContactList; c; c = c.Next)

@@ -146,17 +146,17 @@ namespace Box2D.Dynamics
             get { return (m_world); }
             set { m_world = value; }
         }
-        protected b2Body m_prev;
+        protected b2Body m_Prev;
         public b2Body Prev
         {
-            get { return (m_prev); }
-            set { m_prev = value; }
+            get { return (m_Prev); }
+            set { m_Prev = value; }
         }
-        protected b2Body m_next;
+        protected b2Body m_Next;
         public b2Body Next
         {
-            get { return (m_next); }
-            set { m_next = value; }
+            get { return (m_Next); }
+            set { m_Next = value; }
         }
 
         /// <summary>
@@ -293,8 +293,8 @@ namespace Box2D.Dynamics
 
             m_jointList = null;
             m_contactList = null;
-            m_prev = null;
-            m_next = null;
+            Prev = null;
+            Next = null;
 
             m_linearVelocity = bd.linearVelocity;
             m_angularVelocity = bd.angularVelocity;

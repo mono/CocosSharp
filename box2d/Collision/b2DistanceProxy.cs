@@ -32,6 +32,11 @@ namespace Box2D.Collision
             Debug.Assert(0 <= index && index < m_count);
             return m_vertices[index];
         }
+        public b2Vec2 GetVertex(uint index)
+        {
+            Debug.Assert(0 <= index && index < m_count);
+            return m_vertices[index];
+        }
 
         public int GetSupport(b2Vec2 d)
         {

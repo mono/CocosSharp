@@ -49,15 +49,15 @@ namespace Box2D.Collision
             m_sweepA = sweepA;
             m_sweepB = sweepB;
 
-            b2Transform xfA, xfB;
-            xfA = m_sweepA.GetTransform(t1);
-            xfB = m_sweepB.GetTransform(t1);
+            b2Transform xfA = new b2Transform(), xfB = new b2Transform();
+            xfA = m_sweepA.GetTransform(xfA, t1);
+            xfB = m_sweepB.GetTransform(xfB, t1);
 
             if (count == 1)
             {
                 m_type = SeparationType.e_points;
-                b2Vec2 localPointA = m_proxyA.GetVertex(cache.indexA[0]);
-                b2Vec2 localPointB = m_proxyB.GetVertex(cache.indexB[0]);
+                b2Vec2 localPointA = m_proxyA.GetVertex((int)cache.indexA[0]);
+                b2Vec2 localPointB = m_proxyB.GetVertex((int)cache.indexB[0]);
                 b2Vec2 pointA = b2Math.b2Mul(xfA, localPointA);
                 b2Vec2 pointB = b2Math.b2Mul(xfB, localPointB);
                 m_axis = pointB - pointA;
@@ -68,8 +68,8 @@ namespace Box2D.Collision
             {
                 // Two points on B and one on A.
                 m_type = SeparationType.e_faceB;
-                b2Vec2 localPointB1 = proxyB.GetVertex(cache.indexB[0]);
-                b2Vec2 localPointB2 = proxyB.GetVertex(cache.indexB[1]);
+                b2Vec2 localPointB1 = proxyB.GetVertex((int)cache.indexB[0]);
+                b2Vec2 localPointB2 = proxyB.GetVertex((int)cache.indexB[1]);
 
                 m_axis = b2Math.b2Cross(localPointB2 - localPointB1, 1.0f);
                 m_axis.Normalize();
@@ -78,7 +78,7 @@ namespace Box2D.Collision
                 m_localPoint = 0.5f * (localPointB1 + localPointB2);
                 b2Vec2 pointB = b2Math.b2Mul(xfB, m_localPoint);
 
-                b2Vec2 localPointA = proxyA.GetVertex(cache.indexA[0]);
+                b2Vec2 localPointA = proxyA.GetVertex((int)cache.indexA[0]);
                 b2Vec2 pointA = b2Math.b2Mul(xfA, localPointA);
 
                 float s = b2Math.b2Dot(pointA - pointB, normal);
@@ -118,9 +118,9 @@ namespace Box2D.Collision
 
         public float FindMinSeparation(ref int indexA, ref int indexB, float t)
         {
-            b2Transform xfA, xfB;
-            xfA = m_sweepA.GetTransform(t);
-            xfB = m_sweepB.GetTransform(t);
+            b2Transform xfA = new b2Transform(), xfB = new b2Transform();
+            xfA = m_sweepA.GetTransform(xfA,t);
+            xfB = m_sweepB.GetTransform(xfB,t);
 
             switch (m_type)
             {

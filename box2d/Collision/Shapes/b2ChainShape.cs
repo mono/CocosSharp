@@ -22,18 +22,18 @@ namespace Box2D.Collision.Shapes
             get { return (m_count); }
             set { m_count = value; }
         }
-        protected b2Vec2 m_prevVertex = new b2Vec2();
+        protected b2Vec2 m_PrevVertex = new b2Vec2();
         public b2Vec2 PrevVertex
         {
-            get { return (m_prevVertex); }
-            set { m_prevVertex = value; }
+            get { return (m_PrevVertex); }
+            set { m_PrevVertex = value; }
         }
 
-        protected b2Vec2 m_nextVertex = new b2Vec2();
+        protected b2Vec2 m_NextVertex = new b2Vec2();
         public b2Vec2 NextVertex
         {
-            get { return (m_nextVertex); }
-            set { m_nextVertex = value; }
+            get { return (m_NextVertex); }
+            set { m_NextVertex = value; }
         }
         protected bool m_hasPrevVertex, m_hasNextVertex;
         public bool HasPrevVertex
@@ -64,8 +64,8 @@ namespace Box2D.Collision.Shapes
             m_vertices = new b2Vec2[m_count];
             Array.Copy(vertices, m_vertices, count);
             m_vertices[count] = m_vertices[0];
-            m_prevVertex = m_vertices[m_count - 2];
-            m_nextVertex = m_vertices[1];
+            PrevVertex = m_vertices[m_count - 2];
+            NextVertex = m_vertices[1];
             m_hasPrevVertex = true;
             m_hasNextVertex = true;
         }
@@ -81,13 +81,13 @@ namespace Box2D.Collision.Shapes
 
         public virtual void SetPrevVertex(b2Vec2 prevVertex)
         {
-            m_prevVertex = prevVertex;
+            PrevVertex = prevVertex;
             m_hasPrevVertex = true;
         }
 
         public virtual void SetNextVertex(b2Vec2 nextVertex)
         {
-            m_nextVertex = nextVertex;
+            NextVertex = nextVertex;
             m_hasNextVertex = true;
         }
 
@@ -95,8 +95,8 @@ namespace Box2D.Collision.Shapes
             : base((b2Shape)clone)
         {
             CreateChain(clone.m_vertices, m_count);
-            m_prevVertex = clone.m_prevVertex;
-            m_nextVertex = clone.m_nextVertex;
+            PrevVertex = clone.PrevVertex;
+            NextVertex = clone.NextVertex;
             m_hasPrevVertex = clone.m_hasPrevVertex;
             m_hasNextVertex = clone.m_hasNextVertex;
         }
@@ -129,7 +129,7 @@ namespace Box2D.Collision.Shapes
             }
             else
             {
-                edge.Vertex0 = m_prevVertex;
+                edge.Vertex0 = PrevVertex;
                 edge.HasVertex0 = m_hasPrevVertex;
             }
 
@@ -140,7 +140,7 @@ namespace Box2D.Collision.Shapes
             }
             else
             {
-                edge.Vertex3 = m_nextVertex;
+                edge.Vertex3 = NextVertex;
                 edge.HasVertex3 = m_hasNextVertex;
             }
             return (edge);
@@ -187,7 +187,7 @@ namespace Box2D.Collision.Shapes
 
             b2AABB aabb = new b2AABB();
             aabb.lowerBound = b2Math.b2Min(v1, v2);
-            aabb.upperBound = b2Math.Math.Max(v1, v2);
+            aabb.upperBound = Math.Max(v1, v2);
             return (aabb);
         }
 

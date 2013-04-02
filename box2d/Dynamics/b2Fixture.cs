@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Box2D.Collision.Shapes;
 using Box2D.Collision;
+using Box2D.Dynamics.Contacts;
 using Box2D.Common;
 
 namespace Box2D.Dynamics
@@ -46,11 +47,11 @@ namespace Box2D.Dynamics
             get { return (m_density); }
             set { m_density = value; }
         }
-        private b2Fixture m_next;
+        private b2Fixture m_Next;
         public b2Fixture Next
         {
-            get { return (m_next); }
-            set { m_next = value; }
+            get { return (m_Next); }
+            set { m_Next = value; }
         }
         private b2Body m_body;
         public b2Body Body
@@ -149,7 +150,7 @@ namespace Box2D.Dynamics
             m_restitution = def.restitution;
 
             m_body = body;
-            m_next = null;
+            Next = null;
 
             m_filter = def.filter;
 
@@ -309,11 +310,11 @@ namespace Box2D.Dynamics
                         b2PolygonShape s = (b2PolygonShape)m_shape;
                         System.Diagnostics.Debug.WriteLine("    b2PolygonShape shape;");
                         System.Diagnostics.Debug.WriteLine("    b2Vec2 vs[{0}];", b2Settings.b2_maxPolygonVertices);
-                        for (int i = 0; i < s.GetVertexCount(); ++i)
+                        for (int i = 0; i < s.VertexCount; ++i)
                         {
                             System.Diagnostics.Debug.WriteLine("    vs[{0}].Set({0:N5}, {0:N5});", i, s.Vertices[i].x, s.Vertices[i].y);
                         }
-                        System.Diagnostics.Debug.WriteLine("    shape.Set(vs, {0});", s.GetVertexCount());
+                        System.Diagnostics.Debug.WriteLine("    shape.Set(vs, {0});", s.VertexCount);
                     }
                     break;
 
@@ -327,8 +328,8 @@ namespace Box2D.Dynamics
                             System.Diagnostics.Debug.WriteLine("    vs[{0}].Set({0:N5}, {0:N5});", i, s.Vertices[i].x, s.Vertices[i].y);
                         }
                         System.Diagnostics.Debug.WriteLine("    shape.CreateChain(vs, {0});", s.Count);
-                        System.Diagnostics.Debug.WriteLine("    shape.m_prevVertex.Set({0:N5}, {0:N5});", s.PrevVertex.x, s.PrevVertex.y);
-                        System.Diagnostics.Debug.WriteLine("    shape.m_nextVertex.Set({0:N5}, {0:N5});", s.NextVertex.x, s.NextVertex.y);
+                        System.Diagnostics.Debug.WriteLine("    shape.PrevVertex.Set({0:N5}, {0:N5});", s.PrevVertex.x, s.PrevVertex.y);
+                        System.Diagnostics.Debug.WriteLine("    shape.NextVertex.Set({0:N5}, {0:N5});", s.NextVertex.x, s.NextVertex.y);
                         System.Diagnostics.Debug.WriteLine("    shape.m_hasPrevVertex = bool({0});", s.HasPrevVertex);
                         System.Diagnostics.Debug.WriteLine("    shape.m_hasNextVertex = bool({0});", s.HasNextVertex);
                     }
