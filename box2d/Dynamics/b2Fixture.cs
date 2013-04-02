@@ -244,7 +244,7 @@ namespace Box2D.Dynamics
             b2ContactEdge edge = m_body.ContactList;
             while (edge != null)
             {
-                b2Contact contact = edge.contact;
+                b2Contact contact = edge.Contact;
                 b2Fixture fixtureA = contact.GetFixtureA();
                 b2Fixture fixtureB = contact.GetFixtureB();
                 if (fixtureA == this || fixtureB == this)
@@ -252,7 +252,7 @@ namespace Box2D.Dynamics
                     contact.FlagForFiltering();
                 }
 
-                edge = edge.next;
+                edge = edge.Next;
             }
 
             b2World world = m_body.World;

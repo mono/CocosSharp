@@ -394,7 +394,7 @@ namespace Box2D.Collision
                 {
                     // Find the deepest point at t2. Store the witness point indices.
                     int indexA, indexB;
-                    float s2 = fcn.FindMinSeparation(indexA, indexB, t2);
+                    float s2 = fcn.FindMinSeparation(ref indexA, ref indexB, t2);
 
                     // Is the final configuration separated?
                     if (s2 > target + tolerance)

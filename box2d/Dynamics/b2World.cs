@@ -202,7 +202,7 @@ namespace Box2D.Dynamics
 
             // Delete the attached joints.
             b2JointEdge je = b.JointList;
-            while (je)
+            while (je != null)
             {
                 b2JointEdge je0 = je;
                 je = je.Next;
@@ -459,7 +459,7 @@ namespace Box2D.Dynamics
             {
                 c.Flags &= ~b2ContactFlags.e_islandFlag;
             }
-            for (b2Joint j = m_jointList; j; j = j.Next)
+            for (b2Joint j = m_jointList; j != null; j = j.Next)
             {
                 j.m_islandFlag = false;
             }
@@ -550,7 +550,7 @@ namespace Box2D.Dynamics
                     }
 
                     // Search all joints connect to this body.
-                    for (b2JointEdge je = b.JointList; je; je = je.Next)
+                    for (b2JointEdge je = b.JointList; je != null; je = je.Next)
                     {
                         if (je.Joint.m_islandFlag == true)
                         {
@@ -596,7 +596,7 @@ namespace Box2D.Dynamics
             }
 
             {
-                b2Timer timer;
+                b2Timer timer = new b2Timer();
                 // Synchronize fixtures, check for out of range bodies.
                 for (b2Body b = m_bodyList; b != null; b = b.Next)
                 {
@@ -628,7 +628,7 @@ namespace Box2D.Dynamics
 
             if (m_stepComplete)
             {
-                for (b2Body b = m_bodyList; b; b = b.Next)
+                for (b2Body b = m_bodyList; b != null; b = b.Next)
                 {
                     b.BodyFlags &= ~b2BodyFlags.e_islandFlag;
                     b.Sweep.alpha0 = 0.0f;
@@ -1151,7 +1151,7 @@ namespace Box2D.Dynamics
 
             if (flags.HasFlag(b2DrawFlags.e_shapeBit))
             {
-                for (b2Body b = m_bodyList; b; b = b.Next)
+                for (b2Body b = m_bodyList; b != null; b = b.Next)
                 {
                     b2Transform xf = b.Transform;
                     for (b2Fixture f = b.FixtureList; f != null; f = f.Next)

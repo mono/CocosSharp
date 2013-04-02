@@ -470,6 +470,7 @@ namespace Box2D.Collision
 
                     default:
                         Debug.Assert(false);
+                        break;
                 }
 
                 // If we have 3 points, then the origin is in the corresponding triangle.

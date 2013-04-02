@@ -179,14 +179,14 @@ namespace Box2D.Dynamics.Joints
                     float omega = 2.0f * (float)Math.PI * m_frequencyHz;
 
                     // Damping coefficient
-                    float d = 2.0f * m_springMass * m_dampingRatio * omega;
+                    float dx = 2.0f * m_springMass * m_dampingRatio * omega;
 
                     // Spring stiffness
                     float k = m_springMass * omega * omega;
 
                     // magic formulas
                     float h = data.step.dt;
-                    m_gamma = h * (d + h * k);
+                    m_gamma = h * (dx + h * k);
                     if (m_gamma > 0.0f)
                     {
                         m_gamma = 1.0f / m_gamma;

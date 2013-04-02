@@ -7,7 +7,7 @@ using Box2D.Collision;
 
 namespace Box2D.Dynamics
 {
-    public class b2WorldQueryWrapper
+    public class b2WorldQueryWrapper : Ib2QueryCallback
     {
         public bool QueryCallback(int proxyId)
         {

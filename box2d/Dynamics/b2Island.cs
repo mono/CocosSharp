@@ -218,7 +218,7 @@ namespace Box2D.Dynamics
 
         public void Solve(ref b2Profile profile, b2TimeStep step, b2Vec2 gravity, bool allowSleep)
         {
-            b2Timer timer;
+            b2Timer timer = new b2Timer();
 
             float h = step.dt;
 
@@ -347,9 +347,9 @@ namespace Box2D.Dynamics
                 bool contactsOkay = contactSolver.SolvePositionConstraints();
 
                 bool jointsOkay = true;
-                for (int i = 0; i < m_jointCount; ++i)
+                for (int i2 = 0; i2 < m_jointCount; ++i2)
                 {
-                    bool jointOkay = m_joints[i].SolvePositionConstraints(solverData);
+                    bool jointOkay = m_joints[i2].SolvePositionConstraints(solverData);
                     jointsOkay = jointsOkay && jointOkay;
                 }
 

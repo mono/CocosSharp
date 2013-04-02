@@ -14,7 +14,7 @@ namespace Box2D.Collision
         public int next;
     };
 
-    public class b2BroadPhase : IComparer<b2Pair>
+    public class b2BroadPhase : Ib2QueryCallback, IComparer<b2Pair>
     {
         public static int e_nullProxy = -1;
 
@@ -101,7 +101,7 @@ namespace Box2D.Collision
         }
 
         // This is called from b2DynamicTreeQuery when we are gathering pairs.
-        public bool QueryCallback(int proxyId)
+        public virtual bool QueryCallback(int proxyId)
         {
             // A proxy cannot form a pair with itself.
             if (proxyId == m_queryProxyId)
@@ -233,14 +233,14 @@ namespace Box2D.Collision
             //m_tree.Rebalance(4);
         }
 
-        public void Query<T>(T callback, b2AABB aabb)
+        public virtual void Query(Ib2QueryCallback q, b2AABB aabb)
         {
-            m_tree.Query(callback, aabb);
+            m_tree.Query(q, aabb);
         }
 
-        public void RayCast<T>(T callback, b2RayCastInput input)
+        public virtual void RayCast(b2WorldRayCastWrapper w, b2RayCastInput input)
         {
-            m_tree.RayCast(callback, input);
+            m_tree.RayCast(w, input);
         }
 
         #region IComparer<b2Pair> Members
@@ -251,5 +251,6 @@ namespace Box2D.Collision
         }
 
         #endregion
+
     }
 }

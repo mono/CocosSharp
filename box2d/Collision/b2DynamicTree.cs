@@ -189,20 +189,20 @@ namespace Box2D.Collision
 
             if (d.x < 0.0f)
             {
-                b.lowerBound.x += d.x;
+                b.lowerBoundx += d.x;
             }
             else
             {
-                b.upperBound.x += d.x;
+                b.upperBoundx += d.x;
             }
 
             if (d.y < 0.0f)
             {
-                b.lowerBound.y += d.y;
+                b.lowerBoundy += d.y;
             }
             else
             {
-                b.upperBound.y += d.y;
+                b.upperBoundy += d.y;
             }
 
             m_nodes[proxyId].aabb = b;
@@ -817,7 +817,7 @@ namespace Box2D.Collision
         }
 
 
-        public void Query(b2QueryCallback callback, b2AABB aabb)
+        public void Query(Ib2QueryCallback w, b2AABB aabb)
         {
             Stack<int> stack = new Stack<int>();
             stack.Push(m_root);
@@ -836,7 +836,7 @@ namespace Box2D.Collision
                 {
                     if (node.IsLeaf())
                     {
-                        bool proceed = callback.ReportFixture(nodeId);
+                        bool proceed = w.QueryCallback(nodeId);
                         if (proceed == false)
                         {
                             return;
@@ -851,7 +851,7 @@ namespace Box2D.Collision
             }
         }
 
-        public void RayCast(b2RayCastCallback callback, b2RayCastInput input)
+        public void RayCast(b2WorldRayCastWrapper callback, b2RayCastInput input)
         {
             b2Vec2 p1 = input.p1;
             b2Vec2 p2 = input.p2;
@@ -869,7 +869,7 @@ namespace Box2D.Collision
             float maxFraction = input.maxFraction;
 
             // Build a bounding box for the segment.
-            b2AABB segmentAABB;
+            b2AABB segmentAABB = new b2AABB();
             {
                 b2Vec2 t = p1 + maxFraction * (p2 - p1);
                 segmentAABB.lowerBound = b2Math.b2Min(p1, t);
@@ -911,7 +911,7 @@ namespace Box2D.Collision
                     subInput.p2 = input.p2;
                     subInput.maxFraction = maxFraction;
 
-                    float value = callback.ReportFixture(subInput, nodeId);
+                    float value = callback.RayCastCallback(subInput, nodeId);
 
                     if (value == 0.0f)
                     {
