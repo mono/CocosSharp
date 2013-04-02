@@ -189,8 +189,7 @@ namespace cocos2d
 #if !WINDOWS_PHONE
 			return (CCPoint)TypeDescriptor.GetConverter(typeof(CCPoint)).ConvertFromString (s);
 #else
-
-            throw(new NotImplementedException("Serialization is not supported on the WindowsPhone device."));
+            return (CCPointConverter.CCPointFromString(s));
 #endif
 		}
     }
@@ -281,7 +280,7 @@ namespace cocos2d
 #if !WINDOWS_PHONE
 			return (CCSize)TypeDescriptor.GetConverter(typeof(CCSize)).ConvertFromString (s);
 #else
-            throw(new NotImplementedException("Serialization is not supported on the WindowsPhone device."));
+            return (CCSizeConverter.CCSizeFromString(s));
 #endif
 		}
     }
@@ -540,7 +539,7 @@ namespace cocos2d
 #if !WINDOWS_PHONE
 			return (CCRect)TypeDescriptor.GetConverter(typeof(CCRect)).ConvertFromString (s);
 #else
-            throw(new NotImplementedException("Serialization is not supported on the WindowsPhone device."));
+            return (CCRectConverter.CCRectFromString(s));
 #endif
         }
     }

@@ -38,7 +38,7 @@ namespace cocos2d
 			return base.ConvertTo(context, culture, value, destinationType);
 		}
 
-		private static CCRect CCRectFromString(string pszContent)
+		public static CCRect CCRectFromString(string pszContent)
 		{
 			CCRect result = CCRect.Zero;
 			
