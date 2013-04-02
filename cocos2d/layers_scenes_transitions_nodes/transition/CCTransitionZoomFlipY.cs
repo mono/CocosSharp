@@ -54,7 +54,7 @@ namespace cocos2d
             inA = CCSequence.FromActions
                 (
                     CCDelayTime.Create(m_fDuration / 2),
-                    CCSpawn.Create
+                    CCSpawn.FromActions
                         (
                             CCOrbitCamera.Create(m_fDuration / 2, 1, 0, inAngleZ, inDeltaZ, 90, 0),
                             CCScaleTo.Create(m_fDuration / 2, 1),
@@ -65,7 +65,7 @@ namespace cocos2d
 
             outA = CCSequence.FromActions
                 (
-                    CCSpawn.Create
+                    CCSpawn.FromActions
                         (
                             CCOrbitCamera.Create(m_fDuration / 2, 1, 0, outAngleZ, outDeltaZ, 90, 0),
                             CCScaleTo.Create(m_fDuration / 2, 0.5f)

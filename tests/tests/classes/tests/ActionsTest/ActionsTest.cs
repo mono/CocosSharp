@@ -941,7 +941,7 @@ namespace tests
 
             alignSpritesLeft(1);
 
-            var action = CCSpawn.Create(
+            var action = CCSpawn.FromActions(
                 new CCJumpBy (2, new CCPoint(300, 0), 50, 4),
                 new CCRotateBy (2, 720));
 

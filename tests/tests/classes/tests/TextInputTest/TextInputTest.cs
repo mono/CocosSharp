@@ -385,7 +385,7 @@ namespace cocos2d
             label.Scale = 8;
 
             CCAction seq = CCSequence.FromActions(
-                CCSpawn.Create(
+                CCSpawn.FromActions(
                     new CCMoveTo (duration, endPos),
                     CCScaleTo.Create(duration, 1),
                     new CCFadeOut  (duration)),
@@ -417,7 +417,7 @@ namespace cocos2d
             label.Position = beginPos;
 
             CCAction seq = CCSequence.FromActions(
-                CCSpawn.Create(
+                CCSpawn.FromActions(
                     new CCMoveTo (duration, endPos),
                     CCRepeat.Create(
                         new CCRotateBy (rotateDuration, (Random.Next() % 2 > 0) ? 360 : -360),

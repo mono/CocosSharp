@@ -38,7 +38,7 @@ namespace cocos2d
 
             CCActionInterval rotozoom = CCSequence.FromActions
                 (
-                    CCSpawn.Create
+                    CCSpawn.FromActions
                         (
                             CCScaleBy.Create(m_fDuration / 2, 0.001f),
                             new CCRotateBy (m_fDuration / 2, 360 * 2)

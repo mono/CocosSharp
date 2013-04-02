@@ -9,25 +9,31 @@ namespace cocos2d
         protected CCFiniteTimeAction m_pOne;
         protected CCFiniteTimeAction m_pTwo;
 
-        public static CCSpawn Create(params CCFiniteTimeAction[] actions)
+        public static CCSpawn FromActions(params CCFiniteTimeAction[] actions)
         {
             CCFiniteTimeAction prev = actions[0];
 
             for (int i = 1; i < actions.Length; i++)
             {
-                prev = ActionOneTwo(prev, actions[i]);
+                prev = new CCSpawn (prev, actions[i]);
             }
 
             return (CCSpawn) prev;
         }
 
-        protected static CCSpawn ActionOneTwo(CCFiniteTimeAction action1, CCFiniteTimeAction action2)
+        protected CCSpawn (CCFiniteTimeAction action1, CCFiniteTimeAction action2)
         {
-            var spawn = new CCSpawn();
-            spawn.InitOneTwo(action1, action2);
-
-            return spawn;
+            InitOneTwo(action1, action2);
         }
+
+		protected CCSpawn (CCSpawn spawn) : base (spawn)
+		{
+			var param1 = spawn.m_pOne.Copy() as CCFiniteTimeAction;
+			var param2 = spawn.m_pTwo.Copy() as CCFiniteTimeAction;
+
+			InitOneTwo(param1, param2);
+
+		}
 
         protected bool InitOneTwo(CCFiniteTimeAction action1, CCFiniteTimeAction action2)
         {
@@ -61,35 +67,31 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCSpawn ret;
-
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null)
             {
-                ret = tmpZone as CCSpawn;
+                var ret = zone as CCSpawn;
                 if (ret == null)
                 {
                     return null;
                 }
-            }
+				base.Copy(zone);
+				
+				var param1 = m_pOne.Copy() as CCFiniteTimeAction;
+				var param2 = m_pTwo.Copy() as CCFiniteTimeAction;
+				if (param1 == null || param2 == null)
+				{
+					return null;
+				}
+				
+				ret.InitOneTwo(param1, param2);
+				
+				return ret;
+			}
             else
             {
-                ret = new CCSpawn();
-                tmpZone =  (ret);
+                return new CCSpawn(this);
             }
 
-            base.Copy(tmpZone);
-
-            var param1 = m_pOne.Copy() as CCFiniteTimeAction;
-            var param2 = m_pTwo.Copy() as CCFiniteTimeAction;
-            if (param1 == null || param2 == null)
-            {
-                return null;
-            }
-
-            ret.InitOneTwo(param1, param2);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -121,7 +123,7 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return ActionOneTwo(m_pOne.Reverse(), m_pTwo.Reverse());
+            return new CCSpawn (m_pOne.Reverse(), m_pTwo.Reverse());
         }
     }
 }
