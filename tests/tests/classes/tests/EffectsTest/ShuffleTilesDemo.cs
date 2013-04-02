@@ -14,7 +14,7 @@ namespace tests
             CCFiniteTimeAction shuffle_back = shuffle.Reverse();
             CCDelayTime delay = CCDelayTime.Create(2);
 
-            return (CCActionInterval)(CCSequence.Create(shuffle, delay, shuffle_back));
+            return (CCActionInterval)(CCSequence.FromActions(shuffle, delay, shuffle_back));
         }
     }
 }

@@ -10,7 +10,7 @@ namespace tests
             CCFiniteTimeAction flipx_back = flipx.Reverse();
             CCDelayTime delay = CCDelayTime.Create(2);
 
-            return (CCSequence.Create(flipx, delay, flipx_back));
+            return (CCSequence.FromActions(flipx, delay, flipx_back));
         }
     }
 }

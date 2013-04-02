@@ -24,7 +24,7 @@ namespace tests
 
             // moving background. Testing issue #244
             CCActionInterval move = new CCMoveBy (3, new CCPoint(200, 0));
-            bg.RunAction(CCRepeatForever.Create(CCSequence.Create(move, move.Reverse())));
+            bg.RunAction(CCRepeatForever.Create(CCSequence.FromActions(move, move.Reverse())));
         }
 
         public override string title()

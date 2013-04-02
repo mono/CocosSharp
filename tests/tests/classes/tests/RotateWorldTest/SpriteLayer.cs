@@ -48,11 +48,11 @@ namespace tests
             CCActionInterval rot1 = new CCRotateBy (4, 360 * 2);
             CCActionInterval rot2 = (CCActionInterval)rot1.Reverse();
 
-            spriteSister1.RunAction(CCRepeat.Create(CCSequence.Create(jump2, jump1), 5));
-            spriteSister2.RunAction(CCRepeat.Create(CCSequence.Create((CCFiniteTimeAction)(jump1.Copy()), (CCFiniteTimeAction)(jump2.Copy())), 5));
+            spriteSister1.RunAction(CCRepeat.Create(CCSequence.FromActions(jump2, jump1), 5));
+            spriteSister2.RunAction(CCRepeat.Create(CCSequence.FromActions((CCFiniteTimeAction)(jump1.Copy()), (CCFiniteTimeAction)(jump2.Copy())), 5));
 
-            spriteSister1.RunAction(CCRepeat.Create(CCSequence.Create(rot1, rot2), 5));
-            spriteSister2.RunAction(CCRepeat.Create(CCSequence.Create((CCFiniteTimeAction)(rot2.Copy()), (CCFiniteTimeAction)(rot1.Copy())), 5));
+            spriteSister1.RunAction(CCRepeat.Create(CCSequence.FromActions(rot1, rot2), 5));
+            spriteSister2.RunAction(CCRepeat.Create(CCSequence.FromActions((CCFiniteTimeAction)(rot2.Copy()), (CCFiniteTimeAction)(rot1.Copy())), 5));
         }
 
         public static new SpriteLayer node()

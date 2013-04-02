@@ -14,10 +14,10 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCProgressTo to = CCProgressTo.Create(6, 100);
-            CCAction tint = CCSequence.Create(new CCTintTo (1, 255, 0, 0),
+            CCAction tint = CCSequence.FromActions(new CCTintTo (1, 255, 0, 0),
                                               new CCTintTo (1, 0, 255, 0),
                                               new CCTintTo (1, 0, 0, 255));
-            CCAction fade = CCSequence.Create(new CCFadeTo (1.0f, 0),
+            CCAction fade = CCSequence.FromActions(new CCFadeTo (1.0f, 0),
                                               new CCFadeTo (1.0f, 255));
 
             CCProgressTimer left = CCProgressTimer.Create(CCSprite.Create(s_pPathSister1));

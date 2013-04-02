@@ -46,11 +46,11 @@ namespace cocos2d
 
                 if (d1 > d2)
                 {
-                    m_pTwo = CCSequence.ActionOneTwo(action2, CCDelayTime.Create(d1 - d2));
+                    m_pTwo = new CCSequence (action2, CCDelayTime.Create(d1 - d2));
                 }
                 else if (d1 < d2)
                 {
-                    m_pOne = CCSequence.ActionOneTwo(action1, CCDelayTime.Create(d2 - d1));
+                    m_pOne = new CCSequence (action1, CCDelayTime.Create(d2 - d1));
                 }
 
                 bRet = true;

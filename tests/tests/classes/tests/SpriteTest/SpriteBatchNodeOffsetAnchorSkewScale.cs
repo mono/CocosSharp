@@ -76,13 +76,13 @@ namespace tests
                 CCSkewBy skewY = new CCSkewBy (2, 0, 45);
                 CCActionInterval skewY_back = (CCActionInterval)skewY.Reverse();
 
-                CCFiniteTimeAction seq_skew = CCSequence.Create(skewX, skewX_back, skewY, skewY_back);
+                CCFiniteTimeAction seq_skew = CCSequence.FromActions(skewX, skewX_back, skewY, skewY_back);
                 sprite.RunAction(CCRepeatForever.Create((CCActionInterval)seq_skew));
 
                 // scale 
                 CCScaleBy scale = CCScaleBy.Create(2, 2);
                 CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
-                CCFiniteTimeAction seq_scale = CCSequence.Create(scale, scale_back);
+                CCFiniteTimeAction seq_scale = CCSequence.FromActions(scale, scale_back);
                 sprite.RunAction(CCRepeatForever.Create((CCActionInterval)seq_scale));
 
                 spritebatch.AddChild(sprite, i);

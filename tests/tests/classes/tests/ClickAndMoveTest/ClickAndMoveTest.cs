@@ -47,7 +47,7 @@ namespace tests
             sprite.RunAction(new CCJumpTo (4, new CCPoint(300, 48), 100, 4));
 
             layer.RunAction(CCRepeatForever.Create(
-                                                                (CCActionInterval)(CCSequence.Create(
+                                                                (CCActionInterval)(CCSequence.FromActions(
                                                                                     new CCFadeIn  (1),
                                                                                     new CCFadeOut  (1)))
                                                                 ));

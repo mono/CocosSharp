@@ -58,7 +58,7 @@ namespace cocos2d
 
             m_pOutScene.RunAction
                 (
-                    CCSequence.Create
+                    CCSequence.FromActions
                         (
                             EaseAction(action),
                             CCCallFunc.Create(Finish),

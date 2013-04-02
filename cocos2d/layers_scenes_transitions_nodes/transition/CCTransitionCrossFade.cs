@@ -90,7 +90,7 @@ namespace cocos2d
             outTexture.Sprite.Opacity = 255;
 
             // create the blend action
-            CCAction layerAction = CCSequence.Create
+            CCAction layerAction = CCSequence.FromActions
                 (
                     new CCFadeTo (m_fDuration, 0),
                     CCCallFunc.Create((HideOutShowIn)),

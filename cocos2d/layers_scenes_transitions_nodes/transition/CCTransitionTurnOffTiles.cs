@@ -52,7 +52,7 @@ namespace cocos2d
             CCFiniteTimeAction action = EaseAction(toff);
             m_pOutScene.RunAction
                 (
-                    CCSequence.Create
+                    CCSequence.FromActions
                         (
                             action,
                             CCCallFunc.Create((Finish)),

@@ -35,7 +35,7 @@ namespace tests
 
             CCActionInterval scale = CCScaleBy.Create(2, 1.5f);
             CCFiniteTimeAction scale_back = scale.Reverse();
-            CCFiniteTimeAction scale_seq = CCSequence.Create(scale, scale_back);
+            CCFiniteTimeAction scale_seq = CCSequence.FromActions(scale, scale_back);
             CCAction scale_4ever = CCRepeatForever.Create((CCActionInterval)scale_seq);
 
             CCActionInterval jump = new CCJumpBy (0.5f, new CCPoint(), 60, 1);
@@ -43,7 +43,7 @@ namespace tests
 
             CCActionInterval fade_out = new CCFadeOut  (1);
             CCActionInterval fade_in = new CCFadeIn  (1);
-            CCFiniteTimeAction seq = CCSequence.Create(fade_out, fade_in);
+            CCFiniteTimeAction seq = CCSequence.FromActions(fade_out, fade_in);
             CCAction fade_4ever = CCRepeatForever.Create((CCActionInterval)seq);
 
             BChar.RunAction(rot_4ever);

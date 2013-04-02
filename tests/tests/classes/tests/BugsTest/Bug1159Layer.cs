@@ -23,7 +23,7 @@ namespace tests
                 sprite_a.Position = new CCPoint(0.0f, s.Height / 2);
                 AddChild(sprite_a);
 
-                sprite_a.RunAction(CCRepeatForever.Create((CCActionInterval)CCSequence.Create(
+                sprite_a.RunAction(CCRepeatForever.Create((CCActionInterval)CCSequence.FromActions(
                                                                        new CCMoveTo (1.0f, new CCPoint(1024.0f, 384.0f)),
                                                                        new CCMoveTo (1.0f, new CCPoint(0.0f, 384.0f)))));
 

@@ -62,7 +62,7 @@ namespace cocos2d
 
             m_pInScene.RunAction
                 (
-                    CCSequence.Create
+                    CCSequence.FromActions
                         (
                             EaseAction(a),
                             CCCallFunc.Create(Finish)

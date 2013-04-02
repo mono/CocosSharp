@@ -296,7 +296,7 @@ namespace cocos2d
             m_nCharLimit = 12;
 
             m_pTextFieldAction = CCRepeatForever.Create(
-                (CCActionInterval)CCSequence.Create(
+                (CCActionInterval)CCSequence.FromActions(
                     new CCFadeOut  (0.25f),
                     new CCFadeIn  (0.25f)));
             //m_pTextFieldAction->retain();
@@ -384,7 +384,7 @@ namespace cocos2d
             label.Position = beginPos;
             label.Scale = 8;
 
-            CCAction seq = CCSequence.Create(
+            CCAction seq = CCSequence.FromActions(
                 CCSpawn.Create(
                     new CCMoveTo (duration, endPos),
                     CCScaleTo.Create(duration, 1),
@@ -416,7 +416,7 @@ namespace cocos2d
             int repeatTime = 5;
             label.Position = beginPos;
 
-            CCAction seq = CCSequence.Create(
+            CCAction seq = CCSequence.FromActions(
                 CCSpawn.Create(
                     new CCMoveTo (duration, endPos),
                     CCRepeat.Create(

@@ -46,7 +46,7 @@ namespace tests
             CCScaleTo scaleTo4 = CCScaleTo.Create(runTime * 0.25f, 1.1f);
             CCScaleTo scaleTo5 = CCScaleTo.Create(runTime * 0.25f, 1.0f);
 
-            CCFiniteTimeAction seq = CCSequence.Create(hide, scaleTo1, show, delay, scaleTo2, scaleTo3, scaleTo4, scaleTo5);
+            CCFiniteTimeAction seq = CCSequence.FromActions(hide, scaleTo1, show, delay, scaleTo2, scaleTo3, scaleTo4, scaleTo5);
 
             layer.RunAction(seq);
 

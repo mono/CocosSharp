@@ -70,7 +70,7 @@ namespace tests
                 CCFlipY flip = CCFlipY.Create(true);
                 CCFlipY flip_back = CCFlipY.Create(false);
                 CCDelayTime delay = CCDelayTime.Create(1);
-                CCFiniteTimeAction seq = CCSequence.Create((CCFiniteTimeAction)delay, (CCFiniteTimeAction)flip, (CCFiniteTimeAction)delay.Copy(null), flip_back);
+                CCFiniteTimeAction seq = CCSequence.FromActions((CCFiniteTimeAction)delay, (CCFiniteTimeAction)flip, (CCFiniteTimeAction)delay.Copy(null), flip_back);
                 sprite.RunAction(CCRepeatForever.Create((CCActionInterval)seq));
 
                 AddChild(sprite, 0);

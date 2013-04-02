@@ -32,7 +32,7 @@ namespace tests
             //	id orbit_back = [orbit reverse];
             //
             //	[target runAction: [RepeatForever::actionWithAction: [Sequence actions: orbit, orbit_back, nil]]];
-            target.RunAction((CCSequence.Create(shaky, delay, reuse, shuffle, (CCFiniteTimeAction) delay.Copy(), turnoff, turnon)));
+            target.RunAction((CCSequence.FromActions(shaky, delay, reuse, shuffle, (CCFiniteTimeAction) delay.Copy(), turnoff, turnon)));
         }
 
         public override string title()

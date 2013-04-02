@@ -51,7 +51,7 @@ namespace cocos2d
                 outAngleZ = 0;
             }
 
-            inA = CCSequence.Create
+            inA = CCSequence.FromActions
                 (
                     CCDelayTime.Create(m_fDuration / 2),
                     CCSpawn.Create
@@ -63,7 +63,7 @@ namespace cocos2d
                     CCShow.Create(),
                     CCCallFunc.Create(Finish)
                 );
-            outA = CCSequence.Create
+            outA = CCSequence.FromActions
                 (
                     CCSpawn.Create
                         (

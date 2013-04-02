@@ -80,7 +80,7 @@ namespace tests
             CCAnimate animG = new CCAnimate (dance_grey);
             CCAnimate animB = new CCAnimate (dance_blue);
 
-            CCFiniteTimeAction seq = CCSequence.Create(animN, animG, animB);
+            CCFiniteTimeAction seq = CCSequence.FromActions(animN, animG, animB);
 
             // create an sprite without texture
             CCSprite grossini = CCSprite.Create();

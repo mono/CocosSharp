@@ -51,14 +51,14 @@ namespace cocos2d
             m_pInScene.Visible = false;
 
             CCActionInterval split = Action();
-            CCActionInterval seq = CCSequence.Create
+            CCActionInterval seq = CCSequence.FromActions
                 (
                     split,
                     CCCallFunc.Create((HideOutShowIn)),
                     split.Reverse()
                 );
 
-            RunAction(CCSequence.Create(
+            RunAction(CCSequence.FromActions(
                 EaseAction(seq),
                 CCCallFunc.Create(Finish),
                 CCStopGrid.Create()));

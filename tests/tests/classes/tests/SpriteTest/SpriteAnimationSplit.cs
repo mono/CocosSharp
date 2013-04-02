@@ -39,7 +39,7 @@ namespace tests
 
             CCAnimation animation = CCAnimation.Create(animFrames, 0.2f);
             CCAnimate animate = new CCAnimate (animation);
-            CCActionInterval seq = (CCActionInterval)(CCSequence.Create(animate,
+            CCActionInterval seq = (CCActionInterval)(CCSequence.FromActions(animate,
                                CCFlipX.Create(true),
                               (CCFiniteTimeAction)animate.Copy(),
                                CCFlipX.Create(false)

@@ -17,7 +17,7 @@ namespace tests
 
             CCActionInterval rot = new CCRotateBy (2, 360);
             var rot_back = rot.Reverse() as CCActionInterval;
-            CCAction forever1 = CCRepeatForever.Create((CCActionInterval)CCSequence.Create(rot, rot_back));
+            CCAction forever1 = CCRepeatForever.Create((CCActionInterval)CCSequence.FromActions(rot, rot_back));
             var forever11 = (CCAction) (forever1.Copy());
 
             var forever2 = (CCAction) (forever1.Copy());

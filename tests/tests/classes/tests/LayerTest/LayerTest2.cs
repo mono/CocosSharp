@@ -25,12 +25,12 @@ namespace tests
 
             CCActionInterval actionTint = new CCTintBy (2, -255, -127, 0);
             CCActionInterval actionTintBack = (CCActionInterval)actionTint.Reverse();
-            CCActionInterval seq1 = (CCActionInterval)CCSequence.Create(actionTint, actionTintBack);
+            CCActionInterval seq1 = (CCActionInterval)CCSequence.FromActions(actionTint, actionTintBack);
             layer1.RunAction(seq1);
 
             CCActionInterval actionFade = new CCFadeOut  (2.0f);
             CCActionInterval actionFadeBack = (CCActionInterval)actionFade.Reverse();
-            CCActionInterval seq2 = (CCActionInterval)CCSequence.Create(actionFade, actionFadeBack);
+            CCActionInterval seq2 = (CCActionInterval)CCSequence.FromActions(actionFade, actionFadeBack);
             layer2.RunAction(seq2);
         }
 

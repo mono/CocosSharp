@@ -156,7 +156,7 @@ namespace cocos2d
 
             // Make callback at end of sequence
             CCBSequence seq = GetSequence(nSeqId);
-            CCAction completeAction = CCSequence.ActionOneTwo(
+            CCAction completeAction = new CCSequence (
                 CCDelayTime.Create(seq.Duration + fTweenDuration),
                 CCCallFunc.Create(SequenceCompleted)
                 );
@@ -229,12 +229,12 @@ namespace cocos2d
                         var value = (CCBValue) pKeyframe1.Value;
                         if (value.GetBoolValue())
                         {
-                            return CCSequence.ActionOneTwo(CCDelayTime.Create(duration), CCShow.Create());
+                            return new CCSequence (CCDelayTime.Create(duration), CCShow.Create());
                         }
-                        return CCSequence.ActionOneTwo(CCDelayTime.Create(duration), CCHide.Create());
+                        return new CCSequence (CCDelayTime.Create(duration), CCHide.Create());
                     }
                 case "displayFrame":
-                    return CCSequence.ActionOneTwo(CCDelayTime.Create(duration), CCBSetSpriteFrame.Create((CCSpriteFrame) pKeyframe1.Value));
+                    return new CCSequence (CCDelayTime.Create(duration), CCBSetSpriteFrame.Create((CCSpriteFrame) pKeyframe1.Value));
                 case "position":
                     {
                         // Get position type
@@ -448,7 +448,7 @@ namespace cocos2d
 
                 if (actions.Count > 1)
                 {
-                    CCFiniteTimeAction seq = CCSequence.Create(actions.ToArray());
+                    CCFiniteTimeAction seq = CCSequence.FromActions(actions.ToArray());
                     node.RunAction(seq);
                 }
                 else

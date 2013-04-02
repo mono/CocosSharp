@@ -75,7 +75,7 @@ namespace tests
                 CCSkewBy skewY = new CCSkewBy (2, 0, 45);
                 CCActionInterval skewY_back = (CCActionInterval)skewY.Reverse();
 
-                CCFiniteTimeAction seq_skew = CCSequence.Create(skewX, skewX_back, skewY, skewY_back);
+                CCFiniteTimeAction seq_skew = CCSequence.FromActions(skewX, skewX_back, skewY, skewY_back);
                 sprite.RunAction(CCRepeatForever.Create((CCActionInterval)seq_skew));
 
                 spritebatch.AddChild(sprite, i);

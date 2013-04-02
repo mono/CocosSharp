@@ -36,7 +36,7 @@ namespace cocos2d
             m_pInScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_pOutScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            CCActionInterval rotozoom = CCSequence.Create
+            CCActionInterval rotozoom = CCSequence.FromActions
                 (
                     CCSpawn.Create
                         (
@@ -49,7 +49,7 @@ namespace cocos2d
             m_pOutScene.RunAction(rotozoom);
             m_pInScene.RunAction
                 (
-                    CCSequence.Create
+                    CCSequence.FromActions
                         (
                             rotozoom.Reverse(),
                             CCCallFunc.Create((Finish))

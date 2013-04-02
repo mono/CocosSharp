@@ -14,7 +14,7 @@ namespace tests
             CCFiniteTimeAction back = fadeout.Reverse();
             CCDelayTime delay = CCDelayTime.Create(0.5f);
 
-            return (CCActionInterval)(CCSequence.Create(fadeout, delay, back));
+            return (CCActionInterval)(CCSequence.FromActions(fadeout, delay, back));
         }
     }
 }

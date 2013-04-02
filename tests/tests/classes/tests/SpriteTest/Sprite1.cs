@@ -42,7 +42,7 @@ namespace tests
                 action = new CCFadeOut  (2);
             object obj = action.Reverse();
             CCActionInterval action_back = (CCActionInterval)action.Reverse();
-            CCActionInterval seq = (CCActionInterval)(CCSequence.Create(action, action_back));
+            CCActionInterval seq = (CCActionInterval)(CCSequence.FromActions(action, action_back));
 
             sprite.RunAction(CCRepeatForever.Create(seq));
         }
