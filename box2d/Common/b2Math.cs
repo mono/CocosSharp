@@ -7,6 +7,9 @@ namespace Box2D.Common
 {
     public class b2Math
     {
+        /// Useful ant
+        public static b2Vec2 b2Vec2_zero = b2Vec2.Zero;
+
 
         /// Friction mixing law. The idea is to allow either fixture to drive the restitution to zero.
         /// For example, anything slides on ice.
@@ -60,11 +63,6 @@ namespace Box2D.Common
 
         public static float b2Sqrt(float x) { return ((float)Math.Sqrt(x)); }
         public static float b2Atan2(float y, float x) { return ((float)Math.Atan2(y, x)); }
-
-
-
-        /// Useful ant
-        public static b2Vec2 b2Vec2_zero = new b2Vec2(0f,0f);
 
         /// Perform the dot product on two vectors.
         public static float b2Dot(b2Vec2 a, b2Vec2 b)
@@ -238,7 +236,7 @@ namespace Box2D.Common
         {
             return (Math.Min(a, b));
         }
-        public static float b2Max(float a, float b)
+        public static float Math.Max(float a, float b)
         {
             return (Math.Max(a, b));
         }
@@ -261,9 +259,9 @@ namespace Box2D.Common
             return new b2Vec2(b2Min(a.x, b.x), b2Min(a.y, b.y));
         }
 
-        public static b2Vec2 b2Max(b2Vec2 a, b2Vec2 b)
+        public static b2Vec2 Math.Max(b2Vec2 a, b2Vec2 b)
         {
-            return new b2Vec2(b2Max(a.x, b.x), b2Max(a.y, b.y));
+            return new b2Vec2(Math.Max(a.x, b.x), Math.Max(a.y, b.y));
         }
 
         public static float b2Clamp(float a, float low, float high)
@@ -273,7 +271,7 @@ namespace Box2D.Common
 
         public static b2Vec2 b2Clamp(b2Vec2 a, b2Vec2 low, b2Vec2 high)
         {
-            return b2Max(low, b2Min(a, high));
+            return Math.Max(low, b2Min(a, high));
         }
 
         public static void b2Swap<T>(T a, T b)

@@ -33,6 +33,10 @@ namespace Box2D.Dynamics
     public class b2World
     {
 
+        public bool IsLocked
+        {
+            get { return (m_flags.HasFlag(b2WorldFlags.e_locked)); }
+        }
         private b2WorldFlags m_flags;
         public b2WorldFlags Flags
         {

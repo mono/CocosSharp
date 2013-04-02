@@ -348,7 +348,7 @@ namespace Box2D.Dynamics.Joints
 
         if (m_limitState == b2LimitState.e_atLowerLimit)
         {
-            m_impulse.z = b2Math.b2Max(m_impulse.z, 0.0f);
+            m_impulse.z = b2Math.Math.Max(m_impulse.z, 0.0f);
         }
         else if (m_limitState == b2LimitState.e_atUpperLimit)
         {
@@ -451,21 +451,21 @@ namespace Box2D.Dynamics.Joints
                 {
                     // Prevent large angular corrections
                     C2 = b2Math.b2Clamp(translation, -b2Settings.b2_maxLinearCorrection, b2Settings.b2_maxLinearCorrection);
-                    linearError = b2Math.b2Max(linearError, b2Math.b2Abs(translation));
+                    linearError = b2Math.Math.Max(linearError, b2Math.b2Abs(translation));
                     active = true;
                 }
                 else if (translation <= m_lowerTranslation)
                 {
                     // Prevent large linear corrections and allow some slop.
                     C2 = b2Math.b2Clamp(translation - m_lowerTranslation + b2Settings.b2_linearSlop, -b2Settings.b2_maxLinearCorrection, 0.0f);
-                    linearError = b2Math.b2Max(linearError, m_lowerTranslation - translation);
+                    linearError = b2Math.Math.Max(linearError, m_lowerTranslation - translation);
                     active = true;
                 }
                 else if (translation >= m_upperTranslation)
                 {
                     // Prevent large linear corrections and allow some slop.
                     C2 = b2Math.b2Clamp(translation - m_upperTranslation - b2Settings.b2_linearSlop, 0.0f, b2Settings.b2_maxLinearCorrection);
-                    linearError = b2Math.b2Max(linearError, translation - m_upperTranslation);
+                    linearError = b2Math.Math.Max(linearError, translation - m_upperTranslation);
                     active = true;
                 }
             }
