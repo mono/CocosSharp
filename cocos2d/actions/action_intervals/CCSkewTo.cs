@@ -11,7 +11,17 @@ namespace cocos2d
         protected float m_fStartSkewX;
         protected float m_fStartSkewY;
 
-        public virtual bool InitWithDuration(float t, float sx, float sy)
+		public CCSkewTo (float t, float sx, float sy)
+		{
+			InitWithDuration(t, sx, sy);
+		}
+
+		protected CCSkewTo (CCSkewTo skewTo) : base (skewTo)
+		{
+			InitWithDuration (skewTo.m_fDuration, skewTo.m_fEndSkewX, skewTo.m_fStartSkewY);
+		}
+
+        protected virtual bool InitWithDuration(float t, float sx, float sy)
         {
             bool bRet = false;
 
@@ -28,24 +38,22 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCSkewTo pCopy;
 
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCSkewTo) (pZone);
-            }
+                var pCopy = (CCSkewTo) (pZone);
+				base.Copy(pZone);
+				
+				pCopy.InitWithDuration(m_fDuration, m_fEndSkewX, m_fEndSkewY);
+				
+				return pCopy;
+			}
             else
             {
-                pCopy = new CCSkewTo();
-                pZone =  (pCopy);
+                return new CCSkewTo(this);
             }
 
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_fEndSkewX, m_fEndSkewY);
-
-            return pCopy;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -103,11 +111,5 @@ namespace cocos2d
             m_pTarget.SkewY = m_fStartSkewY + m_fDeltaY * time;
         }
 
-        public static CCSkewTo Create(float t, float sx, float sy)
-        {
-            var pSkewTo = new CCSkewTo();
-            pSkewTo.InitWithDuration(t, sx, sy);
-            return pSkewTo;
-        }
     }
 }

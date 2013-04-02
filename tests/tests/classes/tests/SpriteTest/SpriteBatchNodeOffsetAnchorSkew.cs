@@ -70,9 +70,9 @@ namespace tests
 
                 animFrames = null;
 
-                CCSkewBy skewX = CCSkewBy.Create(2, 45, 0);
+                CCSkewBy skewX = new CCSkewBy (2, 45, 0);
                 CCActionInterval skewX_back = (CCActionInterval)skewX.Reverse();
-                CCSkewBy skewY = CCSkewBy.Create(2, 0, 45);
+                CCSkewBy skewY = new CCSkewBy (2, 0, 45);
                 CCActionInterval skewY_back = (CCActionInterval)skewY.Reverse();
 
                 CCFiniteTimeAction seq_skew = CCSequence.Create(skewX, skewX_back, skewY, skewY_back);

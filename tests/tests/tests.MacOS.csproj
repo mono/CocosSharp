@@ -763,9 +763,9 @@
     <Compile Include="classes\tests\PerformanceTest\PerformBasicLayer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs" >
-	  <SubType>Code</SubType>
-	</Compile>
+    <Compile Include="classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureIssue937.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -2281,9 +2281,9 @@
     <Content Include="Assets\Content\zwoptex\grossini.xnb">
       <Link>Content\zwoptex\grossini.xnb</Link>
     </Content>
-    <Content Include="Assets\Content\Images\aButton.xnb" >
+    <Content Include="Assets\Content\Images\aButton.xnb">
       <Link>Content\Images\aButton.xnb</Link>
-	</Content>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
