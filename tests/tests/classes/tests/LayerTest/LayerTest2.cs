@@ -23,7 +23,7 @@ namespace tests
             layer2.IgnoreAnchorPointForPosition = false;
             AddChild(layer2, 1);
 
-            CCActionInterval actionTint = CCTintBy.Create(2, -255, -127, 0);
+            CCActionInterval actionTint = new CCTintBy (2, -255, -127, 0);
             CCActionInterval actionTintBack = (CCActionInterval)actionTint.Reverse();
             CCActionInterval seq1 = (CCActionInterval)CCSequence.Create(actionTint, actionTintBack);
             layer1.RunAction(seq1);

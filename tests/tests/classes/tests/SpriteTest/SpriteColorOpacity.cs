@@ -34,15 +34,15 @@ namespace tests
             CCActionInterval action_back = (CCActionInterval)action.Reverse();
             CCAction fade = CCRepeatForever.Create((CCActionInterval)(CCSequence.Create(action, action_back)));
 
-            CCActionInterval tintred = CCTintBy.Create(2, 0, -255, -255);
+            CCActionInterval tintred = new CCTintBy (2, 0, -255, -255);
             CCActionInterval tintred_back = (CCActionInterval)tintred.Reverse();
             CCAction red = CCRepeatForever.Create((CCActionInterval)(CCSequence.Create(tintred, tintred_back)));
 
-            CCActionInterval tintgreen = CCTintBy.Create(2, -255, 0, -255);
+            CCActionInterval tintgreen = new CCTintBy (2, -255, 0, -255);
             CCActionInterval tintgreen_back = (CCActionInterval)tintgreen.Reverse();
             CCAction green = CCRepeatForever.Create((CCActionInterval)(CCSequence.Create(tintgreen, tintgreen_back)));
 
-            CCActionInterval tintblue = CCTintBy.Create(2, -255, -255, 0);
+            CCActionInterval tintblue = new CCTintBy (2, -255, -255, 0);
             CCActionInterval tintblue_back = (CCActionInterval)tintblue.Reverse();
             CCAction blue = CCRepeatForever.Create((CCActionInterval)(CCSequence.Create(tintblue, tintblue_back)));
 

@@ -456,10 +456,10 @@ namespace tests
 
             centerSprites(3);
 
-            var actionTo = CCSkewTo.Create(2, 37.2f, -37.2f);
-            var actionToBack = CCSkewTo.Create(2, 0, 0);
-            var actionBy = CCSkewBy.Create(2, 0.0f, -90.0f);
-            var actionBy2 = CCSkewBy.Create(2, 45.0f, 45.0f);
+            var actionTo = new CCSkewTo (2, 37.2f, -37.2f);
+            var actionToBack = new CCSkewTo (2, 0, 0);
+            var actionBy = new CCSkewBy (2, 0.0f, -90.0f);
+            var actionBy2 = new CCSkewBy (2, 45.0f, 45.0f);
             var actionByBack = actionBy.Reverse();
 
             m_tamara.RunAction(CCSequence.Create(actionTo, actionToBack));
@@ -508,13 +508,13 @@ namespace tests
             uR.AnchorPoint = new CCPoint(0, 0);
             AddChild(box);
 
-            var actionTo = CCSkewTo.Create(2, 0.0f, 2.0f);
+            var actionTo = new CCSkewTo (2, 0.0f, 2.0f);
             var rotateTo = new CCRotateTo (2, 61.0f);
             var actionScaleTo = CCScaleTo.Create(2, -0.44f, 0.47f);
 
             var actionScaleToBack = CCScaleTo.Create(2, 1.0f, 1.0f);
             var rotateToBack = new CCRotateTo (2, 0);
-            var actionToBack = CCSkewTo.Create(2, 0, 0);
+            var actionToBack = new CCSkewTo (2, 0, 0);
 
             box.RunAction(CCSequence.Create(actionTo, actionToBack));
             box.RunAction(CCSequence.Create(rotateTo, rotateToBack));
@@ -682,8 +682,8 @@ namespace tests
 
             centerSprites(2);
 
-            var action1 = CCTintTo.Create(2, 255, 0, 255);
-            var action2 = CCTintBy.Create(2, -127, -255, -127);
+            var action1 = new CCTintTo (2, 255, 0, 255);
+            var action2 = new CCTintBy (2, -127, -255, -127);
             var action2Back = action2.Reverse();
 
             m_tamara.RunAction(action1);
@@ -718,7 +718,7 @@ namespace tests
             animation.DelayPerUnit = 2.8f / 14.0f;
             animation.RestoreOriginalFrame = true;
 
-            var action = CCAnimate.Create(animation);
+            var action = new CCAnimate (animation);
             m_grossini.RunAction(CCSequence.Create(action, action.Reverse()));
 
             //
@@ -729,7 +729,7 @@ namespace tests
             cache.AddAnimationsWithFile("animations/animations-2.plist");
             var animation2 = cache.AnimationByName("dance_1");
 
-            var action2 = CCAnimate.Create(animation2);
+            var action2 = new CCAnimate (animation2);
             m_tamara.RunAction(CCSequence.Create(action2, action2.Reverse()));
 
             // TODO:
@@ -748,7 +748,7 @@ namespace tests
             animation3.Loops = 4;
 
 
-            var action3 = CCAnimate.Create(animation3);
+            var action3 = new CCAnimate (animation3);
             m_kathia.RunAction(action3);
         }
 

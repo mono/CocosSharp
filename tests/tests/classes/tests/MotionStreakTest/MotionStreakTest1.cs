@@ -51,13 +51,13 @@ namespace tests
 
             var colorAction = CCRepeatForever.Create((CCActionInterval)
                 CCSequence.Create(
-                    CCTintTo.Create(0.2f, 255, 0, 0),
-                    CCTintTo.Create(0.2f, 0, 255, 0),
-                    CCTintTo.Create(0.2f, 0, 0, 255),
-                    CCTintTo.Create(0.2f, 0, 255, 255),
-                    CCTintTo.Create(0.2f, 255, 255, 0),
-                    CCTintTo.Create(0.2f, 255, 0, 255),
-                    CCTintTo.Create(0.2f, 255, 255, 255)
+                    new CCTintTo (0.2f, 255, 0, 0),
+                    new CCTintTo (0.2f, 0, 255, 0),
+                    new CCTintTo (0.2f, 0, 0, 255),
+                    new CCTintTo (0.2f, 0, 255, 255),
+                    new CCTintTo (0.2f, 255, 255, 0),
+                    new CCTintTo (0.2f, 255, 0, 255),
+                    new CCTintTo (0.2f, 255, 255, 255)
                     )
                 );
 

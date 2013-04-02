@@ -63,7 +63,7 @@ namespace tests
                 }
 
                 CCAnimation animation = CCAnimation.Create(animFrames, 0.3f);
-                sprite.RunAction(CCRepeatForever.Create(CCAnimate.Create(animation)));
+                sprite.RunAction(CCRepeatForever.Create(new CCAnimate (animation)));
 
                 CCActionInterval scale = CCScaleBy.Create(2, 2);
                 CCActionInterval scale_back = (CCActionInterval)scale.Reverse();

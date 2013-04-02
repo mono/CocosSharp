@@ -155,7 +155,7 @@ namespace tests
                 frameList.Add(sprite);
             }
             var animation = CCAnimation.Create(frameList, 0.1f);
-            var animate = CCAnimate.Create(animation);
+            var animate = new CCAnimate (animation);
 
             return animate;
         }

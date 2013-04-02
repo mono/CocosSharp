@@ -44,7 +44,7 @@ namespace tests
             else if (random < 0.60)
                 action = new CCBlink (1, 3);
             else if (random < 0.8)
-                action = CCTintBy.Create(2, 0, -255, -255);
+                action = new CCTintBy (2, 0, -255, -255);
             else
                 action = new CCFadeOut  (2);
 
