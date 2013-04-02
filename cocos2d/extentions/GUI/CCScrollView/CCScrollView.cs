@@ -368,7 +368,7 @@ namespace cocos2d
             {
                 if (m_pContainer.Scale != s)
                 {
-                    CCActionTween scaleAction = CCActionTween.Create(dt, "zoomScale", m_pContainer.Scale, s);
+                    CCActionTween scaleAction = new CCActionTween (dt, "zoomScale", m_pContainer.Scale, s);
                     RunAction(scaleAction);
                 }
             }

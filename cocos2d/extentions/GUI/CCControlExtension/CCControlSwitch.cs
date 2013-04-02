@@ -127,7 +127,7 @@ namespace cocos2d
             m_bOn = isOn;
 
             m_pSwitchSprite.RunAction(
-                CCActionTween.Create(
+                new CCActionTween (
                     0.2f,
                     "sliderXPosition",
                     m_pSwitchSprite.SliderXPosition,

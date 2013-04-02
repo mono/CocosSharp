@@ -18,7 +18,6 @@ namespace cocos2d
 
         protected CCActionInterval (CCActionInterval actionInterval) : base (actionInterval)
         {
-            //base.Copy(this);
             InitWithDuration(actionInterval.m_fDuration);
 
         }
