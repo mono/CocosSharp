@@ -66,7 +66,7 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return CCReverseTime.Create(this);
+            return new CCReverseTime(this);
         }
 
         public virtual CCGridBase Grid

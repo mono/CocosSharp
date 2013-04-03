@@ -2,7 +2,7 @@ namespace cocos2d
 {
     public class CCScaleBy : CCScaleTo
     {
-        public CCScaleBy(CCScaleBy copy)
+        protected CCScaleBy(CCScaleBy copy)
             : base(copy)
         {
             // Handled by the base class.

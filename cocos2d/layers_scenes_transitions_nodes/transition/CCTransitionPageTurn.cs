@@ -73,7 +73,7 @@ namespace cocos2d
             if (m_bBack)
             {
                 // Get hold of the PageTurn3DAction
-                return CCReverseTime.Create
+                return new CCReverseTime
                     (
                         CCPageTurn3D.Create(vector, m_fDuration)
                     );

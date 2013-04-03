@@ -11,7 +11,7 @@ namespace cocos2d
         protected float m_fStartScaleX;
         protected float m_fStartScaleY;
 
-        public CCScaleTo(CCScaleTo copy)
+        protected CCScaleTo(CCScaleTo copy)
             : base(copy)
         {
             m_fEndScaleX = copy.m_fEndScaleX;
