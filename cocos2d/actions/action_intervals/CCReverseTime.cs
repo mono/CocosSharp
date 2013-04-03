@@ -6,7 +6,17 @@ namespace cocos2d
     {
         protected CCFiniteTimeAction m_pOther;
 
-        public bool InitWithAction(CCFiniteTimeAction action)
+        public CCReverseTime (CCFiniteTimeAction action)
+        {
+            InitWithAction(action);
+        }
+
+        protected CCReverseTime (CCReverseTime reverseTime) : base (reverseTime)
+        {
+            InitWithAction(reverseTime.m_pOther.Copy() as CCFiniteTimeAction);
+        }
+
+        protected bool InitWithAction(CCFiniteTimeAction action)
         {
             Debug.Assert(action != null);
             Debug.Assert(action != m_pOther);
@@ -23,28 +33,25 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCReverseTime ret;
 
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null)
             {
-                ret = tmpZone as CCReverseTime;
+                var ret = zone as CCReverseTime;
                 if (ret == null)
                 {
                     return null;
                 }
+                base.Copy(zone);
+                
+                ret.InitWithAction(m_pOther.Copy() as CCFiniteTimeAction);
+                
+                return ret;
             }
             else
             {
-                ret = new CCReverseTime();
-                tmpZone =  (ret);
+                return new CCReverseTime(this);
             }
 
-            base.Copy(tmpZone);
-
-            ret.InitWithAction(m_pOther.Copy() as CCFiniteTimeAction);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -72,11 +79,5 @@ namespace cocos2d
             return m_pOther.Copy() as CCFiniteTimeAction;
         }
 
-        public static CCReverseTime Create(CCFiniteTimeAction action)
-        {
-            var ret = new CCReverseTime();
-            ret.InitWithAction(action);
-            return ret;
-        }
     }
 }
