@@ -1243,7 +1243,7 @@ namespace tests
             // Spline with no tension (tension==0)
             //
 
-            var action = CCCardinalSplineBy.Create(3, m_pArray, 0);
+            var action = new CCCardinalSplineBy (3, m_pArray, 0);
             var reverse = action.Reverse();
 
             var seq = CCSequence.FromActions(action, reverse);
@@ -1257,7 +1257,7 @@ namespace tests
             // Spline with high tension (tension==1)
             //
 
-            var action2 = CCCardinalSplineBy.Create(3, m_pArray, 1);
+            var action2 = new CCCardinalSplineBy (3, m_pArray, 1);
             var reverse2 = action2.Reverse();
 
             var seq2 = CCSequence.FromActions(action2, reverse2);
@@ -1327,7 +1327,7 @@ namespace tests
             m_pArray.Add(new CCPoint(80, 80));
             m_pArray.Add(new CCPoint(s.Width / 2, s.Height / 2));
 
-            var action = CCCatmullRomBy.Create(3, m_pArray);
+            var action = new CCCatmullRomBy (3, m_pArray);
             var reverse = action.Reverse();
 
             CCFiniteTimeAction seq = CCSequence.FromActions(action, reverse);
@@ -1349,7 +1349,7 @@ namespace tests
             m_pArray2.Add(new CCPoint(s.Width / 2, s.Height - 80));
             m_pArray2.Add(new CCPoint(s.Width / 2, 30));
 
-            var action2 = CCCatmullRomTo.Create(3, m_pArray2);
+            var action2 = new CCCatmullRomTo (3, m_pArray2);
             var reverse2 = action2.Reverse();
 
             CCFiniteTimeAction seq2 = CCSequence.FromActions(action2, reverse2);
