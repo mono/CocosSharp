@@ -1164,13 +1164,13 @@ namespace tests
 
             centerSprites(3);
 
-            var orbit1 = CCOrbitCamera.Create(2, 1, 0, 0, 180, 0, 0);
+            var orbit1 = new CCOrbitCamera(2, 1, 0, 0, 180, 0, 0);
             var action1 = CCSequence.FromActions(orbit1,orbit1.Reverse());
 
-            var orbit2 = CCOrbitCamera.Create(2, 1, 0, 0, 180, -45, 0);
+            var orbit2 = new CCOrbitCamera(2, 1, 0, 0, 180, -45, 0);
             var action2 = CCSequence.FromActions(orbit2, orbit2.Reverse());
 
-            var orbit3 = CCOrbitCamera.Create(2, 1, 0, 0, 180, 90, 0);
+            var orbit3 = new CCOrbitCamera(2, 1, 0, 0, 180, 90, 0);
             var action3 = CCSequence.FromActions(orbit3, orbit3.Reverse());
 
             m_kathia.RunAction(new CCRepeatForever (action1));

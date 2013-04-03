@@ -71,7 +71,7 @@ namespace tests
                 batch.AddChild(sprite, 0);
             }
 
-            batch.RunAction(CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0));
+            batch.RunAction(new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0));
         }
 
         public override string title()

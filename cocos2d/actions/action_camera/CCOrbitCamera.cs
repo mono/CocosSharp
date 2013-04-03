@@ -34,18 +34,19 @@ namespace cocos2d
             m_fRadDeltaX = 0.0f;
         }
 
-        public static CCOrbitCamera Create(float t, float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX,
-                                                       float deltaAngleX)
+        protected CCOrbitCamera(CCOrbitCamera copy) : base(copy)
         {
-            var pRet = new CCOrbitCamera();
-            pRet.InitWithDuration(t, radius, deltaRadius, angleZ, deltaAngleZ, angleX, deltaAngleX);
-            return pRet;
+            Init(copy.m_fRadius, copy.m_fDeltaRadius, copy.m_fAngleZ, copy.m_fDeltaAngleZ, copy.m_fAngleX, copy.m_fDeltaAngleX);
         }
 
-        public bool InitWithDuration(float t, float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX, float deltaAngleX)
+        public CCOrbitCamera(float t, float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX,
+                                                       float deltaAngleX) : base(t)
         {
-            if (InitWithDuration(t))
-            {
+            Init(radius, deltaRadius, angleZ, deltaAngleZ, angleX, deltaAngleX);
+        }
+
+        private void Init(float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX, float deltaAngleX)
+        {
                 m_fRadius = radius;
                 m_fDeltaRadius = deltaRadius;
                 m_fAngleZ = angleZ;
@@ -55,10 +56,6 @@ namespace cocos2d
 
                 m_fRadDeltaZ = CCMacros.CCDegreesToRadians(deltaAngleZ);
                 m_fRadDeltaX = CCMacros.CCDegreesToRadians(deltaAngleX);
-                return true;
-            }
-
-            return false;
         }
 
         public void SphericalRadius(out float newRadius, out float zenith, out float azimuth)
@@ -91,23 +88,19 @@ namespace cocos2d
             newRadius = r / CCCamera.GetZEye();
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICopyable zone)
         {
-            CCOrbitCamera pRet;
-
-            if (pZone != null) //in case of being called at sub class
-                pRet = (CCOrbitCamera) (pZone);
+            if (zone != null)
+            {
+                var ret = zone as CCOrbitCamera;
+                base.Copy(zone);
+                Init(ret.m_fRadius, ret.m_fDeltaRadius, ret.m_fAngleZ, ret.m_fDeltaAngleZ, ret.m_fAngleX, ret.m_fDeltaAngleX);
+                return ret;
+            }
             else
             {
-                pRet = new CCOrbitCamera();
-				pZone = pRet;
+                return new CCOrbitCamera(this);
             }
-
-            base.Copy(pZone);
-
-            pRet.InitWithDuration(m_fDuration, m_fRadius, m_fDeltaRadius, m_fAngleZ, m_fDeltaAngleZ, m_fAngleX, m_fDeltaAngleX);
-
-            return pRet;
         }
 
         public override void StartWithTarget(CCNode target)

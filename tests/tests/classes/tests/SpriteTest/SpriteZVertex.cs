@@ -66,7 +66,7 @@ namespace tests
                 node.AddChild(sprite, 0);
             }
 
-            node.RunAction(CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 0));
+            node.RunAction(new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0));
         }
 
         public override string title()

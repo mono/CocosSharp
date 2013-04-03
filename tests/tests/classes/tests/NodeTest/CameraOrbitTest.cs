@@ -25,7 +25,7 @@ namespace tests
             p.AddChild(sprite, 0);
             sprite.Position = (new CCPoint(s.Width / 4 * 1, s.Height / 2));
             cam = sprite.Camera;
-            orbit = CCOrbitCamera.Create(2, 1, 0, 0, 360, 0, 0);
+            orbit = new CCOrbitCamera(2, 1, 0, 0, 360, 0, 0);
             sprite.RunAction(new CCRepeatForever (orbit));
 
             // CENTER
@@ -33,7 +33,7 @@ namespace tests
             sprite.Scale = 1.0f;
             p.AddChild(sprite, 0);
             sprite.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
-            orbit = CCOrbitCamera.Create(2, 1, 0, 0, 360, 45, 0);
+            orbit = new CCOrbitCamera(2, 1, 0, 0, 360, 45, 0);
             sprite.RunAction(new CCRepeatForever (orbit));
 
 
@@ -43,12 +43,12 @@ namespace tests
             p.AddChild(sprite, 0);
             sprite.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
             ss = sprite.ContentSize;
-            orbit = CCOrbitCamera.Create(2, 1, 0, 0, 360, 90, -45);
+            orbit = new CCOrbitCamera(2, 1, 0, 0, 360, 90, -45);
             sprite.RunAction(new CCRepeatForever (orbit));
 
 
             // PARENT
-            orbit = CCOrbitCamera.Create(10, 1, 0, 0, 360, 0, 90);
+            orbit = new CCOrbitCamera(10, 1, 0, 0, 360, 0, 90);
             p.RunAction(new CCRepeatForever (orbit));
             Scale = 1;
         }
