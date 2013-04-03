@@ -318,7 +318,7 @@ namespace Box2D.Collision
             int iter = 0;
 
             // Prepare input for distance query.
-            b2SimplexCache cache;
+            b2SimplexCache cache = new b2SimplexCache();
             cache.count = 0;
             b2DistanceInput distanceInput = new b2DistanceInput();
             distanceInput.proxyA = input.proxyA;
@@ -338,7 +338,8 @@ namespace Box2D.Collision
                 distanceInput.transformA = xfA;
                 distanceInput.transformB = xfB;
                 b2DistanceOutput distanceOutput = new b2DistanceOutput();
-                b2Simplex.b2Distance(ref distanceOutput, cache, distanceInput);
+                b2Simplex sx = new b2Simplex();
+                sx.b2Distance(ref distanceOutput, cache, distanceInput);
 
                 // If the shapes are overlapped, we give up on continuous collision.
                 if (distanceOutput.distance <= 0.0f)
@@ -358,7 +359,8 @@ namespace Box2D.Collision
                 }
 
                 // Initialize the separating axis.
-                b2SeparationFunction fcn = new b2SeparationFunction(cache, proxyA, sweepA, proxyB, sweepB, t1);
+                b2SeparationFunction fcn = new b2SeparationFunction();
+                fcn.Initialize(cache, proxyA, sweepA, proxyB, sweepB, t1);
 #if false
         // Dump the curve seen by the root finder
         {
@@ -393,7 +395,7 @@ namespace Box2D.Collision
                 while(true)
                 {
                     // Find the deepest point at t2. Store the witness point indices.
-                    int indexA, indexB;
+                    int indexA = 0, indexB = 0;
                     float s2 = fcn.FindMinSeparation(ref indexA, ref indexB, t2);
 
                     // Is the final configuration separated?

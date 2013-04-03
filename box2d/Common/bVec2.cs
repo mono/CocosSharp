@@ -10,6 +10,17 @@ namespace Box2D.Common
     {
         public static b2Vec2 Zero = new b2Vec2(0f, 0f);
 
+        public override bool Equals(object obj)
+        {
+            b2Vec2 o = (b2Vec2)obj;
+            return (_x == o.x && _y == o.y);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         /// Construct using coordinates.
         public b2Vec2(float x, float y)
         {

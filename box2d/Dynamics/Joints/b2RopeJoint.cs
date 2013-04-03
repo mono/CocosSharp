@@ -237,12 +237,12 @@ namespace Box2D.Dynamics.Joints
     return length - m_maxLength < b2Settings.b2_linearSlop;
 }
 
-        public virtual b2Vec2 GetAnchorA()
+        public override b2Vec2 GetAnchorA()
         {
             return m_bodyA.GetWorldPoint(m_localAnchorA);
         }
 
-        public virtual b2Vec2 GetAnchorB()
+        public override b2Vec2 GetAnchorB()
         {
             return m_bodyB.GetWorldPoint(m_localAnchorB);
         }

@@ -76,7 +76,7 @@ namespace Box2D.Dynamics.Joints
             m_bias = 0.0f;
         }
 
-        public void InitVelocityConstraints(b2SolverData data)
+        public override void InitVelocityConstraints(b2SolverData data)
         {
             m_indexA = m_bodyA.IslandIndex;
             m_indexB = m_bodyB.IslandIndex;
@@ -172,7 +172,7 @@ namespace Box2D.Dynamics.Joints
             data.velocities[m_indexB].w = wB;
         }
 
-        public virtual void SolveVelocityConstraints(b2SolverData data)
+        public override void SolveVelocityConstraints(b2SolverData data)
         {
             b2Vec2 vA = data.velocities[m_indexA].v;
             float wA = data.velocities[m_indexA].w;
@@ -199,7 +199,7 @@ namespace Box2D.Dynamics.Joints
             data.velocities[m_indexB].w = wB;
         }
 
-        public virtual bool SolvePositionConstraints(b2SolverData data)
+        public override bool SolvePositionConstraints(b2SolverData data)
         {
             if (m_frequencyHz > 0.0f)
             {
@@ -239,12 +239,12 @@ namespace Box2D.Dynamics.Joints
             return b2Math.b2Abs(C) < b2Settings.b2_linearSlop;
         }
 
-        public virtual b2Vec2 GetAnchorA()
+        public override b2Vec2 GetAnchorA()
         {
             return m_bodyA.GetWorldPoint(m_localAnchorA);
         }
 
-        public virtual b2Vec2 GetAnchorB()
+        public override b2Vec2 GetAnchorB()
         {
             return m_bodyB.GetWorldPoint(m_localAnchorB);
         }
@@ -260,7 +260,7 @@ namespace Box2D.Dynamics.Joints
             return 0.0f;
         }
 
-        public virtual void Dump()
+        public override void Dump()
         {
             int indexA = m_bodyA.IslandIndex;
             int indexB = m_bodyB.IslandIndex;
