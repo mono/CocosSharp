@@ -419,7 +419,7 @@ namespace cocos2d
             CCAction seq = CCSequence.FromActions(
                 CCSpawn.FromActions(
                     new CCMoveTo (duration, endPos),
-                    CCRepeat.Create(
+                    new CCRepeat (
                         new CCRotateBy (rotateDuration, (Random.Next() % 2 > 0) ? 360 : -360),
                         (uint)repeatTime),
                     new CCFadeOut  (duration)),
