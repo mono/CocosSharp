@@ -31,13 +31,9 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            if (zone != null && zone != null)
+            if (zone != null)
             {
                 var ret = zone as CCBezierBy;
-                if (ret == null)
-                {
-                    return null;
-                }
                 base.Copy(zone);
                 
                 ret.InitWithDuration(m_fDuration, m_sConfig);

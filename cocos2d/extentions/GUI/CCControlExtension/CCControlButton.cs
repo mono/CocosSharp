@@ -106,7 +106,7 @@ namespace cocos2d
                 if (m_zoomOnTouchDown)
                 {
                     float scaleValue = (Highlighted && Enabled && !Selected) ? 1.1f : 1.0f;
-                    CCAction zoomAction = CCScaleTo.Create(0.05f, scaleValue);
+                    CCAction zoomAction = new CCScaleTo(0.05f, scaleValue);
                     zoomAction.Tag = kZoomActionTag;
                     RunAction(zoomAction);
                 }

@@ -47,8 +47,8 @@ namespace cocos2d
             m_pInScene.AnchorPoint = new CCPoint(2 / 3.0f, 0.5f);
             m_pOutScene.AnchorPoint = new CCPoint(1 / 3.0f, 0.5f);
 
-            CCActionInterval scaleOut = CCScaleTo.Create(m_fDuration, 0.01f);
-            CCActionInterval scaleIn = CCScaleTo.Create(m_fDuration, 1.0f);
+            CCActionInterval scaleOut = new CCScaleTo(m_fDuration, 0.01f);
+            CCActionInterval scaleIn = new CCScaleTo(m_fDuration, 1.0f);
 
             m_pInScene.RunAction(EaseAction(scaleIn));
             m_pOutScene.RunAction

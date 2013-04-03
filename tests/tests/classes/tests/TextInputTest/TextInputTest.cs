@@ -387,7 +387,7 @@ namespace cocos2d
             CCAction seq = CCSequence.FromActions(
                 CCSpawn.FromActions(
                     new CCMoveTo (duration, endPos),
-                    CCScaleTo.Create(duration, 1),
+                    new CCScaleTo(duration, 1),
                     new CCFadeOut  (duration)),
                 CCCallFuncN.Create(callbackRemoveNodeWhenDidAction));
             label.RunAction(seq);

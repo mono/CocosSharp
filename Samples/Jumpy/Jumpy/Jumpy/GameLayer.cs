@@ -286,8 +286,8 @@ namespace Jumpy
 					var scorelabel = GetChildByTag((int)Tags.ScoreLabel) as CCLabelBMFont;
 					scorelabel.SetString(score.ToString());
 
-					var a1 = CCScaleTo.Create(.2f,1.5f,.08f);
-					var a2 = CCScaleTo.Create(.2f,1f,1f);
+					var a1 = new CCScaleTo(.2f,1.5f,.08f);
+					var a2 = new CCScaleTo(.2f,1f,1f);
 					var a3 = CCSequence.Create(a1,a2,a1,a2,a1,a2);
 					scorelabel.RunAction(a3);
 					ResetBonus ();

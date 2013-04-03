@@ -2,6 +2,22 @@ namespace cocos2d
 {
     public class CCScaleBy : CCScaleTo
     {
+        public CCScaleBy(CCScaleBy copy)
+            : base(copy)
+        {
+            // Handled by the base class.
+        }
+
+        public CCScaleBy(float duration, float s)
+            : base(duration, s)
+        {
+        }
+
+        public CCScaleBy(float duration, float sx, float sy)
+            : base(duration, sx, sy)
+        {
+        }
+
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
@@ -11,44 +27,22 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_fDuration, 1 / m_fEndScaleX, 1 / m_fEndScaleY);
+            return new CCScaleBy(m_fDuration, 1 / m_fEndScaleX, 1 / m_fEndScaleY);
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICopyable zone)
         {
-            CCScaleTo pCopy;
-
-            if (pZone != null)
+            if (zone != null)
             {
-                //in case of being called at sub class
-                pCopy = (CCScaleBy) (pZone);
+                var ret = zone as CCScaleBy;
+                base.Copy(zone); // Handles all data copying.
+                return ret;
             }
             else
             {
-                pCopy = new CCScaleBy();
-                pZone =  (pCopy);
+                return new CCScaleBy(this);
             }
-
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_fEndScaleX, m_fEndScaleY);
-
-            return pCopy;
         }
 
-        public new static CCScaleBy Create(float duration, float s)
-        {
-            var pScaleBy = new CCScaleBy();
-            pScaleBy.InitWithDuration(duration, s);
-
-            return pScaleBy;
-        }
-
-        public new static CCScaleBy Create(float duration, float sx, float sy)
-        {
-            var pScaleBy = new CCScaleBy();
-            pScaleBy.InitWithDuration(duration, sx, sy);
-            return pScaleBy;
-        }
     }
 }

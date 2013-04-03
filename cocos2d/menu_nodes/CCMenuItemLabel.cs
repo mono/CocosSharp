@@ -114,7 +114,7 @@ namespace cocos2d
                     m_fOriginalScale = Scale;
                 }
 
-                CCAction zoomAction = CCScaleTo.Create(0.1f, m_fOriginalScale * 1.2f);
+                CCAction zoomAction = new CCScaleTo(0.1f, m_fOriginalScale * 1.2f);
                 zoomAction.Tag = unchecked((int) kZoomActionTag);
                 RunAction(zoomAction);
             }
@@ -127,7 +127,7 @@ namespace cocos2d
             {
                 base.Unselected();
                 StopActionByTag(unchecked((int) kZoomActionTag));
-                CCAction zoomAction = CCScaleTo.Create(0.1f, m_fOriginalScale);
+                CCAction zoomAction = new CCScaleTo(0.1f, m_fOriginalScale);
                 zoomAction.Tag = unchecked((int) kZoomActionTag);
                 RunAction(zoomAction);
             }

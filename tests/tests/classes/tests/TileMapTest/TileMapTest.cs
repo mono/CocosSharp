@@ -29,7 +29,7 @@ namespace tests
 
             map.AnchorPoint = (new CCPoint(0, 0.5f));
 
-            CCScaleBy scale = CCScaleBy.Create(4, 0.8f);
+            CCScaleBy scale = new CCScaleBy(4, 0.8f);
             CCFiniteTimeAction scaleBack = scale.Reverse();
 
             var seq = CCSequence.FromActions(scale, scaleBack);
@@ -197,7 +197,7 @@ namespace tests
             }
             */
 
-            map.RunAction(CCScaleBy.Create(2, 0.5f));
+            map.RunAction(new CCScaleBy(2, 0.5f));
         }
 
         public override string title()
@@ -341,10 +341,10 @@ namespace tests
 
             CCMoveBy move = new CCMoveBy (0.5f, new CCPoint(0, 160));
             CCRotateBy rotate = new CCRotateBy (2, 360);
-            CCScaleBy scale = CCScaleBy.Create(2, 5);
+            CCScaleBy scale = new CCScaleBy(2, 5);
             CCFadeOut opacity = new CCFadeOut  (2);
             CCFadeIn fadein = new CCFadeIn  (2);
-            CCScaleTo scaleback = CCScaleTo.Create(1, 1);
+            CCScaleTo scaleback = new CCScaleTo(1, 1);
             CCCallFuncN finish = CCCallFuncN.Create(removeSprite);
             CCSequence seq0 = CCSequence.FromActions(move, rotate, scale, opacity, fadein, scaleback, finish);
             var seq1 = (CCActionInterval) (seq0.Copy());
@@ -1182,7 +1182,7 @@ namespace tests
             }
             */
 
-            CCScaleBy action = CCScaleBy.Create(2, 0.5f);
+            CCScaleBy action = new CCScaleBy(2, 0.5f);
             map.RunAction(action);
         }
 
@@ -1213,7 +1213,7 @@ namespace tests
             }
             */
 
-            CCScaleBy action = CCScaleBy.Create(2, 0.5f);
+            CCScaleBy action = new CCScaleBy(2, 0.5f);
             map.RunAction(action);
 
             Schedule(flipIt, 1.0f);
@@ -1288,7 +1288,7 @@ namespace tests
             }
             */
 
-            CCScaleBy action = CCScaleBy.Create(2, 0.5f);
+            CCScaleBy action = new CCScaleBy(2, 0.5f);
             map.RunAction(action);
         }
 

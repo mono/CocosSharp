@@ -33,7 +33,7 @@ namespace tests
             CCActionInterval rotate = new CCRotateBy (2, 360);
             CCAction rot_4ever = new CCRepeatForever (rotate);
 
-            CCActionInterval scale = CCScaleBy.Create(2, 1.5f);
+            CCActionInterval scale = new CCScaleBy(2, 1.5f);
             CCFiniteTimeAction scale_back = scale.Reverse();
             CCFiniteTimeAction scale_seq = CCSequence.FromActions(scale, scale_back);
             CCAction scale_4ever = new CCRepeatForever ((CCActionInterval)scale_seq);

@@ -56,7 +56,7 @@ namespace cocos2d
                     CCSpawn.FromActions
                         (
                             CCOrbitCamera.Create(m_fDuration / 2, 1, 0, inAngleZ, inDeltaZ, 0, 0),
-                            CCScaleTo.Create(m_fDuration / 2, 1),
+                            new CCScaleTo(m_fDuration / 2, 1),
                             CCShow.Create()
                         ),
                     CCCallFunc.Create(Finish)
@@ -66,7 +66,7 @@ namespace cocos2d
                     CCSpawn.FromActions
                         (
                             CCOrbitCamera.Create(m_fDuration / 2, 1, 0, outAngleZ, outDeltaZ, 0, 0),
-                            CCScaleTo.Create(m_fDuration / 2, 0.5f)
+                            new CCScaleTo(m_fDuration / 2, 0.5f)
                         ),
                     CCHide.Create(),
                     new CCDelayTime (m_fDuration / 2)

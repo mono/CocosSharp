@@ -994,7 +994,7 @@ namespace tests
             sprite2.Texture.SetAliasTexParameters();
 		
             // scale them to show
-            CCScaleBy sc = CCScaleBy.Create(3, 8.0f);
+            CCScaleBy sc = new CCScaleBy(3, 8.0f);
             CCScaleBy sc_back = (CCScaleBy) (sc.Reverse());
             CCRepeatForever scaleforever = new CCRepeatForever ((CCActionInterval) (CCSequence.FromActions(sc, sc_back)));
             CCRepeatForever scaleToo = (CCRepeatForever) (scaleforever.Copy());

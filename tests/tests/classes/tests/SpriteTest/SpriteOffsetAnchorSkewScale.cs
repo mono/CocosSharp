@@ -68,7 +68,7 @@ namespace tests
                 sprite.RunAction(new CCRepeatForever ((CCActionInterval)seq_skew));
 
                 // Scale
-                CCScaleBy scale = CCScaleBy.Create(2, 2);
+                CCScaleBy scale = new CCScaleBy(2, 2);
                 CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
                 CCFiniteTimeAction seq_scale = CCSequence.FromActions(scale, scale_back);
                 sprite.RunAction(new CCRepeatForever ((CCActionInterval)seq_scale));

@@ -270,7 +270,7 @@ namespace cocos2d
                             y *= resolutionScale;
                         }
 
-                        return CCScaleTo.Create(duration, x, y);
+                        return new CCScaleTo(duration, x, y);
                     }
                 default:
                     CCLog.Log("CCBReader: Failed to create animation for property: {0}", pPropName);

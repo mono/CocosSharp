@@ -275,7 +275,7 @@ namespace cocos2d
             CCActionInterval rotate = new CCRotateBy (2, 360);
             CCAction rot_4ever = new CCRepeatForever (rotate);
 
-            CCActionInterval scale = CCScaleBy.Create(2, 1.5f);
+            CCActionInterval scale = new CCScaleBy(2, 1.5f);
             //CCActionInterval scale_back = scale.reverse();
             CCActionInterval scale_back = null;
             CCFiniteTimeAction scale_seq = CCSequence.FromActions(scale, scale_back, null);

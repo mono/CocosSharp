@@ -50,7 +50,7 @@ namespace tests
             float random = (float)Random.NextDouble();
 
             if (random < 0.20)
-                action = CCScaleBy.Create(3, 2);
+                action = new CCScaleBy(3, 2);
             else if (random < 0.40)
                 action = new CCRotateBy (3, 360);
             else if (random < 0.60)

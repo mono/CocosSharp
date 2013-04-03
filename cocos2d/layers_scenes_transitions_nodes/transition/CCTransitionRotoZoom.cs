@@ -40,7 +40,7 @@ namespace cocos2d
                 (
                     CCSpawn.FromActions
                         (
-                            CCScaleBy.Create(m_fDuration / 2, 0.001f),
+                            new CCScaleBy(m_fDuration / 2, 0.001f),
                             new CCRotateBy (m_fDuration / 2, 360 * 2)
                         ),
                     new CCDelayTime (m_fDuration / 2)

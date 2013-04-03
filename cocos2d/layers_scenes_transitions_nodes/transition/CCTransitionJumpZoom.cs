@@ -14,8 +14,8 @@ namespace cocos2d
             m_pOutScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             CCActionInterval jump = new CCJumpBy (m_fDuration / 4, new CCPoint(-s.Width, 0), s.Width / 4, 2);
-            CCActionInterval scaleIn = CCScaleTo.Create(m_fDuration / 4, 1.0f);
-            CCActionInterval scaleOut = CCScaleTo.Create(m_fDuration / 4, 0.5f);
+            CCActionInterval scaleIn = new CCScaleTo(m_fDuration / 4, 1.0f);
+            CCActionInterval scaleOut = new CCScaleTo(m_fDuration / 4, 0.5f);
 
             CCSequence jumpZoomOut = (CCSequence.FromActions(scaleOut, jump));
             CCSequence jumpZoomIn = (CCSequence.FromActions((CCActionInterval) jump.Copy(), scaleIn));
