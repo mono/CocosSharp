@@ -994,7 +994,7 @@ namespace tests
             var act2 = new CCRotateTo (1, 0);
             var seq = (CCSequence.FromActions(act1, act2));
             var rep1 = new CCRepeatForever ((CCActionInterval)seq);
-            var rep2 = CCRepeat.Create((CCFiniteTimeAction)(seq.Copy()), 10);
+            var rep2 = new CCRepeat ((CCFiniteTimeAction)(seq.Copy()), 10);
 
             m_tamara.RunAction(rep1);
             m_kathia.RunAction(rep2);
@@ -1018,7 +1018,7 @@ namespace tests
                 new CCRotateTo (0.5f, -20),
                 new CCRotateTo (0.5f, 20));
 
-            var rep1 = CCRepeat.Create(seq, 10);
+            var rep1 = new CCRepeat (seq, 10);
             var rep2 = new CCRepeatForever ((CCActionInterval)(seq.Copy()));
 
             m_tamara.RunAction(rep1);
@@ -1108,7 +1108,7 @@ namespace tests
             var tog1 = new CCToggleVisibility();
             var tog2 = new CCToggleVisibility();
             var seq = CCSequence.FromActions(move1, tog1, move2, tog2, move1.Reverse());
-            var action = CCRepeat.Create((CCSequence.FromActions(seq, seq.Reverse())), 3);
+            var action = new CCRepeat ((CCSequence.FromActions(seq, seq.Reverse())), 3);
 
             // Test:
             //   Also test that the reverse of Hide is Show, and vice-versa
@@ -1137,7 +1137,7 @@ namespace tests
             alignSpritesLeft(2);
 
             var a1 = new CCMoveBy (1, new CCPoint(150, 0));
-            var action1 = CCRepeat.Create(
+            var action1 = new CCRepeat (
                 CCSequence.FromActions(CCPlace.Create(new CCPoint(60, 60)), a1),
                 3);
             var action2 = new CCRepeatForever (
@@ -1243,7 +1243,7 @@ namespace tests
             // Spline with no tension (tension==0)
             //
 
-            var action = CCCardinalSplineBy.Create(3, m_pArray, 0);
+            var action = new CCCardinalSplineBy (3, m_pArray, 0);
             var reverse = action.Reverse();
 
             var seq = CCSequence.FromActions(action, reverse);
@@ -1257,7 +1257,7 @@ namespace tests
             // Spline with high tension (tension==1)
             //
 
-            var action2 = CCCardinalSplineBy.Create(3, m_pArray, 1);
+            var action2 = new CCCardinalSplineBy (3, m_pArray, 1);
             var reverse2 = action2.Reverse();
 
             var seq2 = CCSequence.FromActions(action2, reverse2);
@@ -1327,7 +1327,7 @@ namespace tests
             m_pArray.Add(new CCPoint(80, 80));
             m_pArray.Add(new CCPoint(s.Width / 2, s.Height / 2));
 
-            var action = CCCatmullRomBy.Create(3, m_pArray);
+            var action = new CCCatmullRomBy (3, m_pArray);
             var reverse = action.Reverse();
 
             CCFiniteTimeAction seq = CCSequence.FromActions(action, reverse);
@@ -1349,7 +1349,7 @@ namespace tests
             m_pArray2.Add(new CCPoint(s.Width / 2, s.Height - 80));
             m_pArray2.Add(new CCPoint(s.Width / 2, 30));
 
-            var action2 = CCCatmullRomTo.Create(3, m_pArray2);
+            var action2 = new CCCatmullRomTo (3, m_pArray2);
             var reverse2 = action2.Reverse();
 
             CCFiniteTimeAction seq2 = CCSequence.FromActions(action2, reverse2);
@@ -1534,7 +1534,7 @@ namespace tests
             var act1 = new CCMoveBy (0.5f, new CCPoint(100, 0));
             var act2 = (CCMoveBy) act1.Reverse();
             var act3 = CCSequence.FromActions(act1, act2);
-            var act4 = CCRepeat.Create(act3, 2);
+            var act4 = new CCRepeat (act3, 2);
 
             spr.RunAction(act4);
         }
@@ -1563,7 +1563,7 @@ namespace tests
             AddChild(spr);
 
             var act1 = new CCMoveBy (0.5f, new CCPoint(100, 0));
-            spr.RunAction(CCRepeat.Create(act1, 1));
+            spr.RunAction(new CCRepeat (act1, 1));
         }
 
         public override string title()

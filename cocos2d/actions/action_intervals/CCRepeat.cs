@@ -9,6 +9,18 @@ namespace cocos2d
         protected uint m_uTimes;
         protected uint m_uTotal;
 
+
+        public CCRepeat (CCFiniteTimeAction action, uint times)
+        {
+            InitWithAction(action, times);
+        }
+
+        protected CCRepeat (CCRepeat repeat) : base (repeat)
+        {
+            var param = repeat.m_pInnerAction.Copy() as CCFiniteTimeAction;
+            InitWithAction(param, repeat.m_uTimes);
+        }
+
         public CCFiniteTimeAction InnerAction
         {
             get { return m_pInnerAction; }
@@ -40,33 +52,30 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            ICopyable tmpZone = zone;
-            CCRepeat ret;
 
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null)
             {
-                ret = tmpZone as CCRepeat;
+                var ret = zone as CCRepeat;
                 if (ret == null)
                 {
                     return null;
                 }
+                base.Copy(zone);
+                
+                var param = m_pInnerAction.Copy() as CCFiniteTimeAction;
+                if (param == null)
+                {
+                    return null;
+                }
+                ret.InitWithAction(param, m_uTimes);
+                
+                return ret;
             }
             else
             {
-                ret = new CCRepeat();
-                tmpZone =  (ret);
+                return new CCRepeat(this);
             }
 
-            base.Copy(tmpZone);
-
-            var param = m_pInnerAction.Copy() as CCFiniteTimeAction;
-            if (param == null)
-            {
-                return null;
-            }
-            ret.InitWithAction(param, m_uTimes);
-
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -133,15 +142,8 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_pInnerAction.Reverse(), m_uTimes);
+            return new CCRepeat (m_pInnerAction.Reverse(), m_uTimes);
         }
 
-        public static CCRepeat Create(CCFiniteTimeAction action, uint times)
-        {
-            var ret = new CCRepeat();
-            ret.InitWithAction(action, times);
-
-            return ret;
-        }
     }
 }

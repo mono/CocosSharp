@@ -17,11 +17,14 @@ namespace cocos2d
             set { m_pPoints = value; }
         }
 
-        public static CCCardinalSplineTo Create(float duration, List<CCPoint> points, float tension)
+        public CCCardinalSplineTo (float duration, List<CCPoint> points, float tension)
         {
-            var ret = new CCCardinalSplineTo();
-            ret.InitWithDuration(duration, points, tension);
-            return ret;
+            InitWithDuration(duration, points, tension);
+        }
+
+        protected CCCardinalSplineTo (CCCardinalSplineTo cardinalSplineTo) : base (cardinalSplineTo)
+        {
+            InitWithDuration(cardinalSplineTo.m_fDuration, cardinalSplineTo.m_pPoints, cardinalSplineTo.m_fTension);
         }
 
         public bool InitWithDuration(float duration, List<CCPoint> points, float tension)
@@ -41,22 +44,20 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCCardinalSplineTo pRet;
             if (pZone != null) //in case of being called at sub class
             {
-                pRet = (CCCardinalSplineTo) (pZone);
+                var pRet = (CCCardinalSplineTo) (pZone);
+                base.Copy(pZone);
+                
+                pRet.InitWithDuration(Duration, m_pPoints, m_fTension);
+                
+                return pRet;
             }
             else
             {
-                pRet = new CCCardinalSplineTo();
-                pZone = pRet;
+                return new CCCardinalSplineTo(this);
             }
 
-            base.Copy(pZone);
-
-            pRet.InitWithDuration(Duration, m_pPoints, m_fTension);
-
-            return pRet;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -100,7 +101,7 @@ namespace cocos2d
             List<CCPoint> pReverse = m_pPoints.ToList();
             pReverse.Reverse();
 
-            return Create(m_fDuration, pReverse, m_fTension);
+            return new CCCardinalSplineTo (m_fDuration, pReverse, m_fTension);
         }
 
         public virtual void UpdatePosition(CCPoint newPos)
@@ -113,11 +114,9 @@ namespace cocos2d
     {
         protected CCPoint m_startPosition;
 
-        public new static CCCardinalSplineBy Create(float duration, List<CCPoint> points, float tension)
+        public CCCardinalSplineBy (float duration, List<CCPoint> points, float tension) : base (duration, points, tension)
         {
-            var ret = new CCCardinalSplineBy();
-            ret.InitWithDuration(duration, points, tension);
-            return ret;
+            InitWithDuration(duration, points, tension);
         }
 
         public override void StartWithTarget(CCNode target)
@@ -165,7 +164,7 @@ namespace cocos2d
                 p = abs;
             }
 
-            return Create(m_fDuration, copyConfig, m_fTension);
+            return new CCCardinalSplineBy(m_fDuration, copyConfig, m_fTension);
         }
 
         public override void UpdatePosition(CCPoint newPos)
@@ -176,11 +175,9 @@ namespace cocos2d
 
     public class CCCatmullRomTo : CCCardinalSplineTo
     {
-        public static CCCatmullRomTo Create(float dt, List<CCPoint> points)
+        public CCCatmullRomTo (float dt, List<CCPoint> points) : base (dt, points, 0.5f)
         {
-            var ret = new CCCatmullRomTo();
-            ret.InitWithDuration(dt, points);
-            return ret;
+            InitWithDuration(dt, points);
         }
 
         public bool InitWithDuration(float dt, List<CCPoint> points)
@@ -195,11 +192,9 @@ namespace cocos2d
 
     public class CCCatmullRomBy : CCCardinalSplineBy
     {
-        public static CCCatmullRomBy Create(float dt, List<CCPoint> points)
+        public CCCatmullRomBy (float dt, List<CCPoint> points) : base (dt, points, 0.5f)
         {
-            var ret = new CCCatmullRomBy();
-            ret.InitWithDuration(dt, points);
-            return ret;
+            InitWithDuration(dt, points);
         }
 
         public bool InitWithDuration(float dt, List<CCPoint> points)
