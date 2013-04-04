@@ -134,6 +134,9 @@ namespace Box2D.Dynamics
             m_flags = b2WorldFlags.e_clearForces;
 
             m_inv_dt0 = 0.0f;
+
+			// setup up our default Contact Manager 
+			m_contactManager = new b2ContactManager();
         }
 
         /// Enable/disable sleep.
