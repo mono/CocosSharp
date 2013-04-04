@@ -43,6 +43,7 @@ namespace Box2D.Collision
             m_moveCapacity = 16;
             m_moveCount = 0;
             m_moveBuffer = new int[m_moveCapacity];
+			m_tree = new b2DynamicTree();
         }
 
         public int CreateProxy(b2AABB aabb, object userData)
