@@ -8,7 +8,7 @@ namespace cocos2d
     public class Random
     {
         // random seed 
-        private static readonly System.Random _random = new System.Random();
+		private static readonly System.Random _random = new System.Random((int)DateTime.Now.Ticks);
 
         //---------------------------------------------------------------- 
         // returns int from [min to max] 
