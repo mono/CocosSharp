@@ -16,7 +16,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // parents
-            CCNode parent1 = CCNode.Create();
+            CCNode parent1 = new CCNode ();
             CCSpriteBatchNode parent2 = CCSpriteBatchNode.Create("animations/grossini", 50);
 
             AddChild(parent1, 0, (int)kTags.kTagNode);

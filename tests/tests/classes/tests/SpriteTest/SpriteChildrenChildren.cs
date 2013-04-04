@@ -26,7 +26,7 @@ namespace tests
             // SpriteBatchNode: 3 levels of children
             //
 
-            aParent = CCNode.Create();
+            aParent = new CCNode ();
             AddChild(aParent);
 
             // parent

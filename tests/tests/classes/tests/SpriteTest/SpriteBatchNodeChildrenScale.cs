@@ -23,7 +23,7 @@ namespace tests
             // Children + Scale using Sprite
             // Test 1
             //
-            aParent = CCNode.Create();
+            aParent = new CCNode ();
             sprite1 = CCSprite.Create("grossinis_sister1.png");
             sprite1.Position = new CCPoint(s.Width / 4, s.Height / 4);
             sprite1.ScaleX = -0.5f;
@@ -64,7 +64,7 @@ namespace tests
             // Test 3
             //
 
-            aParent = CCNode.Create();
+            aParent = new CCNode ();
             sprite1 = CCSprite.Create("grossinis_sister1.png");
             sprite1.Position = (new CCPoint(s.Width / 4, 2 * s.Height / 3));
             sprite1.ScaleX = (1.5f);

@@ -21,7 +21,7 @@ namespace tests
             //
             // parents
 
-            aParent = CCNode.Create();
+            aParent = new CCNode ();
             AddChild(aParent, 0);
 
             // anchor (0,0)

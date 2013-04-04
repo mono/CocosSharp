@@ -43,7 +43,7 @@ namespace tests
             //
             // Sprite
             //
-            aParent = CCNode.Create();
+            aParent = new CCNode ();
             aParent.Position = (new CCPoint(2 * s.Width / 3, s.Height / 2));
             AddChild(aParent, 0);
 

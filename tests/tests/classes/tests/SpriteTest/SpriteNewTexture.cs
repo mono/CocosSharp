@@ -17,7 +17,7 @@ namespace tests
         {
             base.TouchEnabled = true;
 
-            CCNode node = CCNode.Create();
+            CCNode node = new CCNode ();
             AddChild(node, 0, (int)kTags.kTagSpriteBatchNode);
 
             m_texture1 = CCTextureCache.SharedTextureCache.AddImage("Images/grossini_dance_atlas");

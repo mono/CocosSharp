@@ -548,11 +548,6 @@ namespace cocos2d
             m_bIsTransformDirty = m_bIsInverseDirty = true;
         }
 
-        public static CCNode Create()
-        {
-            return new CCNode();
-        }
-
         public virtual void Cleanup()
         {
             // actions

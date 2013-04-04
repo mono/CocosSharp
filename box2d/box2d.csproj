@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</ProjectGuid>
@@ -83,8 +83,8 @@
     <Compile Include="Common\b2Sweep.cs" />
     <Compile Include="Common\b2Timer.cs" />
     <Compile Include="Common\b2Transform.cs" />
-    <Compile Include="Common\bVec2.cs" />
-    <Compile Include="Common\bVec3.cs" />
+    <Compile Include="Common\b2Vec2.cs" />
+    <Compile Include="Common\b2Vec3.cs" />
     <Compile Include="Dynamics\b2Body.cs" />
     <Compile Include="Dynamics\b2BodyDef.cs" />
     <Compile Include="Dynamics\b2ContactFilter.cs" />

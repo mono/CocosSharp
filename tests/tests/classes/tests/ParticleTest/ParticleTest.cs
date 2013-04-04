@@ -1339,7 +1339,7 @@ namespace tests
 
             CCParticleSystemQuad ignore = CCParticleSystemQuad.Create("Particles/SmallSun");
             //ignore.TotalParticles = 200;
-            CCNode parent1 = CCNode.Create();
+            CCNode parent1 = new CCNode ();
             CCParticleBatchNode parent2 = CCParticleBatchNode.Create(ignore.Texture);
             ignore.UnscheduleUpdate();
 

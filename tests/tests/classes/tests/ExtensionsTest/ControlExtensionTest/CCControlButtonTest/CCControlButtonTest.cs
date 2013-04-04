@@ -20,7 +20,7 @@ namespace tests.Extensions
 					"!"
 				};
         
-				CCNode layer = CCNode.Create();
+				CCNode layer = new CCNode ();
 				AddChild(layer, 1);
         
 				float total_width = 0, height = 0;
@@ -99,7 +99,7 @@ namespace tests.Extensions
 					"Inset"
 				};
 
-                CCNode layer = CCNode.Create();
+                CCNode layer = new CCNode ();
                 AddChild(layer, 1);
 
                 float total_width = 0, height = 0;
@@ -302,7 +302,7 @@ namespace tests.Extensions
 			{
 				CCSize screenSize = CCDirector.SharedDirector.WinSize;
 
-				var layer = CCNode.Create();
+				var layer = new CCNode ();
 				AddChild(layer, 1);
         
 				int space = 10; // px
