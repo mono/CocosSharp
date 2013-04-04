@@ -31,7 +31,7 @@ namespace cocos2d
 
         public virtual CCNode CreateCCNode()
         {
-            return CCNode.Create();
+            return new CCNode ();
         }
 
         public virtual CCNode LoadCCNode(CCNode parent, CCBReader reader)

@@ -42,7 +42,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
             float step = s.Width / 12;
 
-            CCNode node = CCNode.Create();
+            CCNode node = new CCNode ();
             // camera uses the center of the image as the pivoting point
             node.ContentSize = (new CCSize(s.Width, s.Height));
             node.AnchorPoint = (new CCPoint(0.5f, 0.5f));

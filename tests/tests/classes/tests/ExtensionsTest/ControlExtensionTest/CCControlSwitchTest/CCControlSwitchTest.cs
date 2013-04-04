@@ -12,7 +12,7 @@ namespace tests.Extensions
             {
                 CCSize screenSize = CCDirector.SharedDirector.WinSize;
 
-                CCNode layer = CCNode.Create();
+                CCNode layer = new CCNode ();
                 layer.Position = new CCPoint(screenSize.Width / 2, screenSize.Height / 2);
                 AddChild(layer, 1);
 

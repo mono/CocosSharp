@@ -22,7 +22,7 @@ namespace tests
             y = size.Height;
 
 
-            CCNode node = CCNode.Create();
+            CCNode node = new CCNode ();
             CCActionInterval effect = getAction();
             node.RunAction(effect);
             AddChild(node, 0, EffectTestScene.kTagBackground);
