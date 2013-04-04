@@ -387,6 +387,8 @@
     <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
+    <Compile Include="Platform\CCFocusManager.cs" />
+    <Compile Include="Platform\CCIFocusable.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />
@@ -398,11 +400,11 @@
   </Target>
   -->
   <ItemGroup>
-    <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.PSMobile.csproj">
+    <ProjectReference Include="..\..\mono\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.PSMobile.csproj">
       <Project>{167676EE-E2D5-440A-BB2B-EFBD02BC8493}</Project>
       <Name>Lidgren.Network.PSMobile</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.PSMobile.csproj">
+    <ProjectReference Include="..\..\mono\MonoGame\MonoGame.Framework\MonoGame.Framework.PSMobile.csproj">
       <Project>{EA26E76F-FDFE-4A8C-B5A3-C3B5761E28F9}</Project>
       <Name>MonoGame.Framework.PSMobile</Name>
     </ProjectReference>

@@ -224,7 +224,7 @@ namespace Box2D.Collision
                 manifold.type = b2ManifoldType.e_faceA;
                 manifold.localNormal = normals[vertIndex1];
                 manifold.localPoint = faceCenter;
-                manifold.points[0].localPoint = circleB.m_p;
+                manifold.points[0].localPoint = circleB.Position;
                 manifold.points[0].id = b2ContactFeature.Zero;
             }
         }
@@ -336,6 +336,7 @@ namespace Box2D.Collision
                              b2Shape shapeB, int indexB,
                             b2Transform xfA, b2Transform xfB)
         {
+            return (false);
         }
 
         // Find the max separation between poly1 and poly2 using edge normals from poly1.

@@ -23,7 +23,7 @@ namespace tests
             sprite2.Position = (new CCPoint(s.Width / 2 + 100, s.Height / 2));
             batch.AddChild(sprite2, 0, (int)kTagSprite.kTagSprite2);
 
-            CCActionInterval scale = CCScaleBy.Create(2, 5);
+            CCActionInterval scale = new CCScaleBy(2, 5);
             CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
             CCActionInterval seq = (CCActionInterval)(CCSequence.FromActions(scale, scale_back));
             CCAction repeat = new CCRepeatForever (seq);

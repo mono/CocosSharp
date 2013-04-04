@@ -432,9 +432,9 @@ namespace tests
 
             centerSprites(3);
 
-            var actionTo = CCScaleTo.Create(2, 0.5f);
-            var actionBy = CCScaleBy.Create(2, 1, 10);
-            var actionBy2 = CCScaleBy.Create(2, 5f, 1.0f);
+            var actionTo = new CCScaleTo(2, 0.5f);
+            var actionBy = new CCScaleBy(2, 1, 10);
+            var actionBy2 = new CCScaleBy(2, 5f, 1.0f);
             var actionByBack = actionBy.Reverse();
 
             m_grossini.RunAction(actionTo);
@@ -512,9 +512,9 @@ namespace tests
 
             var actionTo = new CCSkewTo (2, 0.0f, 2.0f);
             var rotateTo = new CCRotateTo (2, 61.0f);
-            var actionScaleTo = CCScaleTo.Create(2, -0.44f, 0.47f);
+            var actionScaleTo = new CCScaleTo(2, -0.44f, 0.47f);
 
-            var actionScaleToBack = CCScaleTo.Create(2, 1.0f, 1.0f);
+            var actionScaleToBack = new CCScaleTo(2, 1.0f, 1.0f);
             var rotateToBack = new CCRotateTo (2, 0);
             var actionToBack = new CCSkewTo (2, 0, 0);
 
@@ -853,7 +853,7 @@ namespace tests
                 CCCallFunc.Create(callback1));
 
             var action2 = CCSequence.FromActions(
-                CCScaleBy.Create(2, 2),
+                new CCScaleBy(2, 2),
                 new CCFadeOut  (2),
                 CCCallFuncN.Create(callback2));
 
@@ -1164,13 +1164,13 @@ namespace tests
 
             centerSprites(3);
 
-            var orbit1 = CCOrbitCamera.Create(2, 1, 0, 0, 180, 0, 0);
+            var orbit1 = new CCOrbitCamera(2, 1, 0, 0, 180, 0, 0);
             var action1 = CCSequence.FromActions(orbit1,orbit1.Reverse());
 
-            var orbit2 = CCOrbitCamera.Create(2, 1, 0, 0, 180, -45, 0);
+            var orbit2 = new CCOrbitCamera(2, 1, 0, 0, 180, -45, 0);
             var action2 = CCSequence.FromActions(orbit2, orbit2.Reverse());
 
-            var orbit3 = CCOrbitCamera.Create(2, 1, 0, 0, 180, 90, 0);
+            var orbit3 = new CCOrbitCamera(2, 1, 0, 0, 180, 90, 0);
             var action3 = CCSequence.FromActions(orbit3, orbit3.Reverse());
 
             m_kathia.RunAction(new CCRepeatForever (action1));

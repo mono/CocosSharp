@@ -38,13 +38,13 @@ namespace tests
             float runTime = 12f;
             layer.Visible = false;
             CCHide hide = CCHide.Create();
-            CCScaleTo scaleTo1 = CCScaleTo.Create(0.0f, 0.0f);
+            CCScaleTo scaleTo1 = new CCScaleTo(0.0f, 0.0f);
             CCShow show = CCShow.Create();
             CCDelayTime delay = new CCDelayTime (waitTime);
-            CCScaleTo scaleTo2 = CCScaleTo.Create(runTime * 0.25f, 1.2f);
-            CCScaleTo scaleTo3 = CCScaleTo.Create(runTime * 0.25f, 0.95f);
-            CCScaleTo scaleTo4 = CCScaleTo.Create(runTime * 0.25f, 1.1f);
-            CCScaleTo scaleTo5 = CCScaleTo.Create(runTime * 0.25f, 1.0f);
+            CCScaleTo scaleTo2 = new CCScaleTo(runTime * 0.25f, 1.2f);
+            CCScaleTo scaleTo3 = new CCScaleTo(runTime * 0.25f, 0.95f);
+            CCScaleTo scaleTo4 = new CCScaleTo(runTime * 0.25f, 1.1f);
+            CCScaleTo scaleTo5 = new CCScaleTo(runTime * 0.25f, 1.0f);
 
             CCFiniteTimeAction seq = CCSequence.FromActions(hide, scaleTo1, show, delay, scaleTo2, scaleTo3, scaleTo4, scaleTo5);
 

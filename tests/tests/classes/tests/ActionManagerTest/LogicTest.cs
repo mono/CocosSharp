@@ -32,7 +32,7 @@ namespace tests
         public void bugMe(CCNode node)
         {
             node.StopAllActions(); //After this stop next action not working, if remove this stop everything is working
-            node.RunAction(CCScaleTo.Create(2, 2));
+            node.RunAction(new CCScaleTo(2, 2));
         }
     }
 }

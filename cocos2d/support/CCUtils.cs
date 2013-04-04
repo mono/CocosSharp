@@ -23,7 +23,7 @@ THE SOFTWARE.
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using System.Globalization;
-#if !WINDOWS_PHONE && !XBOX && !WINDOWS &&!NETFX_CORE
+#if !WINDOWS_PHONE && !XBOX && !WINDOWS &&!NETFX_CORE && !PSM
 #if MONOMAC
 using MonoMac.OpenGL;
 #elif WINDOWSGL || LINUX
@@ -50,7 +50,7 @@ namespace cocos2d
     public class CCUtils
     {
 
-        #if !WINDOWS_PHONE && !XBOX
+        #if !WINDOWS_PHONE && !XBOX && !PSM
         #if OPENGL
         private static List<string> _GLExtensions = null;
         

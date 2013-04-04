@@ -22,7 +22,7 @@ namespace tests
             CCFiniteTimeAction reuse = CCReuseGrid.Create(1);
             CCActionInterval delay = new CCDelayTime (8);
 
-            CCActionInterval orbit = CCOrbitCamera.Create(5, 1, 2, 0, 180, 0, -90);
+            CCActionInterval orbit = new CCOrbitCamera(5, 1, 2, 0, 180, 0, -90);
             CCFiniteTimeAction orbit_back = orbit.Reverse();
 
             target.RunAction(new CCRepeatForever ((CCSequence.FromActions(orbit, orbit_back))));

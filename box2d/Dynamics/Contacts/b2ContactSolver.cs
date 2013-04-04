@@ -180,7 +180,7 @@ namespace Box2D.Dynamics.Contacts
 
                 float radiusA = pc.radiusA;
                 float radiusB = pc.radiusB;
-                b2Manifold manifold = m_contacts[vc.contactIndex].Manifold;
+                b2Manifold manifold = m_contacts[vc.contactIndex].GetManifold();
 
                 int indexA = vc.indexA;
                 int indexB = vc.indexB;
@@ -204,13 +204,13 @@ namespace Box2D.Dynamics.Contacts
 
                 Debug.Assert(manifold.pointCount > 0);
 
-                b2Transform xfA, xfB;
+                b2Transform xfA = new b2Transform(), xfB = new b2Transform();
                 xfA.q.Set(aA);
                 xfB.q.Set(aB);
                 xfA.p = cA - b2Math.b2Mul(xfA.q, localCenterA);
                 xfB.p = cB - b2Math.b2Mul(xfB.q, localCenterB);
 
-                b2WorldManifold worldManifold;
+                b2WorldManifold worldManifold = new b2WorldManifold();
                 worldManifold.Initialize(manifold, xfA, radiusA, xfB, radiusB);
 
                 vc.normal = worldManifold.normal;
@@ -744,7 +744,7 @@ namespace Box2D.Dynamics.Contacts
                     minSeparation = Math.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float C = b2Math.b2Math.b2Clamp(b2Settings.b2_baumgarte * (separation + b2Settings.b2_linearSlop), -b2Settings.b2_maxLinearCorrection, 0.0f);
+                    float C = b2Math.b2Clamp(b2Settings.b2_baumgarte * (separation + b2Settings.b2_linearSlop), -b2Settings.b2_maxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
                     float rnA = b2Math.b2Cross(rA, normal);
@@ -834,7 +834,7 @@ namespace Box2D.Dynamics.Contacts
                     minSeparation = Math.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float C = b2Math.b2Math.b2Clamp(b2Settings.b2_toiBaugarte * (separation + b2Settings.b2_linearSlop), -b2Settings.b2_maxLinearCorrection, 0.0f);
+                    float C = b2Math.b2Clamp(b2Settings.b2_toiBaugarte * (separation + b2Settings.b2_linearSlop), -b2Settings.b2_maxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
                     float rnA = b2Math.b2Cross(rA, normal);

@@ -29,7 +29,7 @@ namespace tests
             AddChild(pGrossini, 0, (int)KTag.kTagGrossini);
             pGrossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
-            pGrossini.RunAction(CCScaleBy.Create(2, 2));
+            pGrossini.RunAction(new CCScaleBy(2, 2));
 
             CCDirector.SharedDirector.ActionManager.PauseTarget(pGrossini);
             pGrossini.RunAction(new CCRotateBy (2, 360));

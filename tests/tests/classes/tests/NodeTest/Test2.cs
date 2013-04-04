@@ -27,7 +27,7 @@ namespace tests
             sp2.AddChild(sp4);
 
             CCActionInterval a1 = new CCRotateBy (2, 360);
-            CCActionInterval a2 = CCScaleBy.Create(2, 2);
+            CCActionInterval a2 = new CCScaleBy(2, 2);
 
             CCAction action1 = new CCRepeatForever ((CCActionInterval)CCSequence.FromActions(a1, a2, a2.Reverse())
                 );

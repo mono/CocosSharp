@@ -31,7 +31,7 @@ namespace tests
             float random = CCMacros.CCRandomBetween0And1();
 
             if (random < 0.20)
-                action = CCScaleBy.Create(3, 2);
+                action = new CCScaleBy(3, 2);
             else if (random < 0.40)
                 action = new CCRotateBy (3, 360);
             else if (random < 0.60)

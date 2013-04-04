@@ -68,7 +68,7 @@ namespace tests
                 CCAnimation animation = CCAnimation.Create(animFrames, 0.3f);
                 sprite.RunAction(new CCRepeatForever (new CCAnimate (animation)));
 
-                CCActionInterval scale = CCScaleBy.Create(2, 2);
+                CCActionInterval scale = new CCScaleBy(2, 2);
                 CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
                 CCActionInterval seq_scale = (CCActionInterval)(CCSequence.FromActions(scale, scale_back));
                 sprite.RunAction(new CCRepeatForever (seq_scale));

@@ -15,6 +15,26 @@ namespace cocos2d
         protected float m_fUpYOrig;
         protected float m_fUpZOrig;
 
+        protected CCActionCamera(float duration)
+            : base(duration)
+        {
+        }
+
+        protected CCActionCamera(CCActionCamera copy) : base(copy)
+        {
+            m_fCenterXOrig = copy.m_fCenterXOrig;
+            m_fCenterYOrig = copy.m_fCenterYOrig;
+            m_fCenterZOrig = copy.m_fCenterZOrig;
+
+            m_fEyeXOrig = copy.m_fEyeXOrig;
+            m_fEyeYOrig = copy.m_fEyeYOrig;
+            m_fEyeZOrig = copy.m_fEyeZOrig;
+
+            m_fUpXOrig = copy.m_fUpXOrig;
+            m_fUpYOrig = copy.m_fUpYOrig;
+            m_fUpZOrig = copy.m_fUpZOrig;
+        }
+
         public CCActionCamera()
         {
             m_fCenterXOrig = 0;
@@ -43,7 +63,5 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCReverseTime (this);
-        }
     }
 }

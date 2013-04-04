@@ -35,7 +35,7 @@ namespace tests
             CCSprite grossini = CCSprite.Create(TestResource.s_pPathSister2);
             node.AddChild(grossini, 1);
             grossini.Position = new CCPoint(x / 3, y / 2);
-            CCActionInterval sc = CCScaleBy.Create(2, 5);
+            CCActionInterval sc = new CCScaleBy(2, 5);
             CCFiniteTimeAction sc_back = sc.Reverse();
             grossini.RunAction(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(sc, sc_back))));
             //grossini.runAction(effect);
@@ -43,7 +43,7 @@ namespace tests
             CCSprite tamara = CCSprite.Create(TestResource.s_pPathSister1);
             node.AddChild(tamara, 1);
             tamara.Position = new CCPoint(2 * x / 3, y / 2);
-            CCActionInterval sc2 = CCScaleBy.Create(2, 5);
+            CCActionInterval sc2 = new CCScaleBy(2, 5);
             CCFiniteTimeAction sc2_back = sc2.Reverse();
             tamara.RunAction(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(sc2, sc2_back))));
 

@@ -11,51 +11,39 @@ namespace cocos2d
         protected float m_fStartScaleX;
         protected float m_fStartScaleY;
 
-        public bool InitWithDuration(float duration, float s)
+        protected CCScaleTo(CCScaleTo copy)
+            : base(copy)
         {
-            if (base.InitWithDuration(duration))
-            {
-                m_fEndScaleX = s;
-                m_fEndScaleY = s;
-
-                return true;
-            }
-
-            return false;
+            m_fEndScaleX = copy.m_fEndScaleX;
+            m_fEndScaleY = copy.m_fEndScaleY;
         }
 
-        public bool InitWithDuration(float duration, float sx, float sy)
+        public CCScaleTo(float duration, float s) : base(duration)
         {
-            if (base.InitWithDuration(duration))
-            {
-                m_fEndScaleX = sx;
-                m_fEndScaleY = sy;
-
-                return true;
-            }
-
-            return false;
+            m_fEndScaleX = s;
+            m_fEndScaleY = s;
         }
 
-        public override object Copy(ICopyable pZone)
+        public CCScaleTo(float duration, float sx, float sy) : base(duration)
         {
-            CCScaleTo pCopy;
-            if (pZone != null)
+            m_fEndScaleX = sx;
+            m_fEndScaleY = sy;
+        }
+
+        public override object Copy(ICopyable zone)
+        {
+            if (zone != null)
             {
-                //in case of being called at sub class
-                pCopy = (CCScaleTo) (pZone);
+                var ret = zone as CCScaleTo;
+                base.Copy(zone);
+                m_fEndScaleX = ret.m_fEndScaleX;
+                m_fEndScaleY = ret.m_fEndScaleY;
+                return ret;
             }
             else
             {
-                pCopy = new CCScaleTo();
-                pZone =  (pCopy);
+                return new CCScaleTo(this);
             }
-
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_fEndScaleX, m_fEndScaleY);
-
-            return pCopy;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -76,20 +64,5 @@ namespace cocos2d
             }
         }
 
-        public static CCScaleTo Create(float duration, float s)
-        {
-            var pScaleTo = new CCScaleTo();
-            pScaleTo.InitWithDuration(duration, s);
-            //pScaleTo->autorelease();
-
-            return pScaleTo;
-        }
-
-        public static CCScaleTo Create(float duration, float sx, float sy)
-        {
-            var pScaleTo = new CCScaleTo();
-            pScaleTo.InitWithDuration(duration, sx, sy);
-            return pScaleTo;
-        }
     }
 }

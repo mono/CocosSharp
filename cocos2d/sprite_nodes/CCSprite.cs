@@ -1064,7 +1064,7 @@ namespace cocos2d
                 IsOpacityModifyRGB = true;
             }
         }
-        #region Sprite Collission
+        #region Sprite Collision
 
         public virtual bool CollidesWith(CCSprite other, out CCPoint hitPoint)
         {
@@ -1192,7 +1192,8 @@ namespace cocos2d
                         }
                     }
                 }
-                hitPoint = new CCPoint(0, 0);
+                hitPoint.X = 0;
+                hitPoint.Y = 0;
                 return (false);
             }
             finally
