@@ -487,7 +487,7 @@ namespace tests
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
-            var move_ease = CCEaseBackInOut.Create((CCActionInterval) (move.Copy()));
+            var move_ease = new CCEaseBackInOut((CCActionInterval) (move.Copy()));
             var move_ease_back = move_ease.Reverse() as CCActionInterval;
 
             var delay = new CCDelayTime (0.25f);

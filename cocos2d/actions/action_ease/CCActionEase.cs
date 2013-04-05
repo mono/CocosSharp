@@ -11,7 +11,7 @@ namespace cocos2d
 
         public CCActionEase (CCActionInterval pAction)
         {
-            InitWithAction(pAction);
+			InitWithAction(pAction);
         }
 
         protected CCActionEase (CCActionEase actionEase) : base (actionEase)
