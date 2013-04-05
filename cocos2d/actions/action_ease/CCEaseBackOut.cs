@@ -12,7 +12,7 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return CCEaseBackIn.Create((CCActionInterval) m_pOther.Reverse());
+            return new CCEaseBackIn ((CCActionInterval) m_pOther.Reverse());
         }
 
         public override object Copy(ICopyable pZone)
