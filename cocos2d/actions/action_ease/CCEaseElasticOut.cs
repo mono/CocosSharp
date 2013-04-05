@@ -6,6 +6,16 @@ namespace cocos2d
 {
     public class CCEaseElasticOut : CCEaseElastic
     {
+
+		public CCEaseElasticOut (CCActionInterval pAction) : base(pAction)
+		{ }
+		
+		public CCEaseElasticOut (CCActionInterval pAction, float fPeriod) : base (pAction, fPeriod)
+		{ }
+		
+		protected CCEaseElasticOut (CCEaseElasticOut easeElasticOut) : base (easeElasticOut)
+		{ }
+
         public override void Update(float time)
         {
             float newT;
@@ -25,41 +35,25 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return CCEaseElasticIn.Create((CCActionInterval) m_pOther.Reverse(), m_fPeriod);
+            return new CCEaseElasticIn((CCActionInterval) m_pOther.Reverse(), m_fPeriod);
         }
 
         public override object Copy(ICopyable pZone)
         {
-            CCEaseElasticOut pCopy;
-
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone as CCEaseElasticOut;
-            }
+                var pCopy = pZone as CCEaseElasticOut;
+				pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()), m_fPeriod);
+				
+				return pCopy;
+			}
             else
             {
-                pCopy = new CCEaseElasticOut();
+                return new CCEaseElasticOut(this);
             }
 
-            pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()), m_fPeriod);
-
-            return pCopy;
         }
 
-        public new static CCEaseElasticOut Create(CCActionInterval pAction)
-        {
-            var pRet = new CCEaseElasticOut();
-            pRet.InitWithAction(pAction);
-            return pRet;
-        }
-
-
-        public new static CCEaseElasticOut Create(CCActionInterval pAction, float fPeriod)
-        {
-            var pRet = new CCEaseElasticOut();
-            pRet.InitWithAction(pAction, fPeriod);
-            return pRet;
-        }
     }
 }

@@ -390,11 +390,11 @@ namespace cocos2d
                 case kCCBKeyframeEasing.kCCBKeyframeEasingCubicInOut:
                     return CCEaseInOut.Create(pAction, fEasingOpt);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingBackIn:
-                    return CCEaseBackIn.Create(pAction);
+                    return new CCEaseBackIn(pAction);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingBackOut:
-                    return CCEaseBackOut.Create(pAction);
+                    return new CCEaseBackOut(pAction);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingBackInOut:
-                    return CCEaseBackInOut.Create(pAction);
+                    return new CCEaseBackInOut(pAction);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingBounceIn:
                     return CCEaseBounceIn.Create(pAction);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingBounceOut:
@@ -402,11 +402,11 @@ namespace cocos2d
                 case kCCBKeyframeEasing.kCCBKeyframeEasingBounceInOut:
                     return CCEaseBounceInOut.Create(pAction);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingElasticIn:
-                    return CCEaseElasticIn.Create(pAction, fEasingOpt);
+                    return new CCEaseElasticIn(pAction, fEasingOpt);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingElasticOut:
-                    return CCEaseElasticOut.Create(pAction, fEasingOpt);
+                    return new CCEaseElasticOut(pAction, fEasingOpt);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingElasticInOut:
-                    return CCEaseElasticInOut.Create(pAction, fEasingOpt);
+                    return new CCEaseElasticInOut(pAction, fEasingOpt);
                 default:
                     CCLog.Log("CCBReader: Unkown easing type {0}", nEasingType);
                     return pAction;

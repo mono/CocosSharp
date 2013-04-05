@@ -5,7 +5,21 @@ namespace cocos2d
     {
         protected CCActionInterval m_pOther;
 
-        public bool InitWithAction(CCActionInterval pAction)
+		// This can be taken out once all the classes that extend it have had their constructors created.
+		protected CCActionEase ()
+		{}
+
+        public CCActionEase (CCActionInterval pAction)
+        {
+			InitWithAction(pAction);
+        }
+
+        protected CCActionEase (CCActionEase actionEase) : base (actionEase)
+        {
+            InitWithAction((CCActionInterval) (actionEase.m_pOther.Copy()));
+        }
+
+        protected bool InitWithAction(CCActionInterval pAction)
         {
             if (base.InitWithDuration(pAction.Duration))
             {
@@ -17,23 +31,21 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCActionEase pCopy;
-
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone as CCActionEase;
+                var pCopy = pZone as CCActionEase;
+                base.Copy(pZone);
+                
+                pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCActionEase();
+                return new CCActionEase(this);
             }
 
-            base.Copy(pZone);
-
-            pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
-
-            return pCopy;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -55,14 +67,8 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create((CCActionInterval) m_pOther.Reverse());
+            return new CCActionEase((CCActionInterval) m_pOther.Reverse());
         }
 
-        public static CCActionEase Create(CCActionInterval pAction)
-        {
-            var pRet = new CCActionEase();
-            pRet.InitWithAction(pAction);
-            return pRet;
-        }
     }
 }
