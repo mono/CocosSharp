@@ -16,7 +16,7 @@ namespace tests
             back.AnchorPoint = (new CCPoint(0, 0));
             CCSize backSize = back.ContentSize;
 
-            CCMenuItem item = CCMenuItemImage.Create(TestResource.s_PlayNormal, TestResource.s_PlaySelect);
+            CCMenuItem item = new CCMenuItemImage(TestResource.s_PlayNormal, TestResource.s_PlaySelect);
             CCMenu menu = CCMenu.Create(item);
             menu.AlignItemsVertically();
             menu.Position = (new CCPoint(backSize.Width / 2, backSize.Height / 2));

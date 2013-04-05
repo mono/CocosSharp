@@ -28,6 +28,16 @@ namespace cocos2d
             m_pfnSelector = null;
         }
 
+        /// <summary>
+        /// Creates a CCMenuItem with a target/selector
+        /// </summary>
+        /// <param name="selector"></param>
+        /// <returns></returns>
+        public CCMenuItem(SEL_MenuHandler selector)
+        {
+            InitWithTarget(selector);
+        }
+
         public virtual bool Enabled
         {
             get { return m_bIsEnabled; }
@@ -37,25 +47,6 @@ namespace cocos2d
         public virtual bool IsSelected
         {
             get { return m_bIsSelected; }
-        }
-
-        public new static CCMenuItem Create()
-        {
-            var ret = new CCMenuItem();
-            return ret;
-        }
-
-        /// <summary>
-        /// Creates a CCMenuItem with a target/selector
-        /// </summary>
-        /// <param name="selector"></param>
-        /// <returns></returns>
-        public static CCMenuItem Create(SEL_MenuHandler selector)
-        {
-            var pRet = new CCMenuItem();
-            pRet.InitWithTarget(selector);
-
-            return pRet;
         }
 
         /// <summary>
@@ -126,7 +117,7 @@ namespace cocos2d
         /// <param name="pszFunctionName"></param>
         public virtual void RegisterScriptHandler(string pszFunctionName)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("CCMenuItem.RegisterScriptHandler is not supported in this version of Cocos2d-XNA");
         }
 
         /// <summary>

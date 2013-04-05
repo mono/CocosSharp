@@ -131,29 +131,32 @@ namespace cocos2d
 
         #endregion
 
-        public static CCMenuItemSprite Create(string normalSprite, string selectedSprite, SEL_MenuHandler selector)
+        public CCMenuItemSprite()
+            : this(null, null, null, null)
         {
-            return Create(new CCSprite(normalSprite), new CCSprite(selectedSprite), null, selector);
         }
 
-        public static CCMenuItemSprite Create(CCNode normalSprite, CCNode selectedSprite)
+        public CCMenuItemSprite(SEL_MenuHandler selector)
+            : base(selector)
         {
-            return Create(normalSprite, selectedSprite, null, null);
         }
 
-        public static CCMenuItemSprite Create(CCNode normalSprite, CCNode selectedSprite, SEL_MenuHandler selector)
+        public CCMenuItemSprite(string normalSprite, string selectedSprite, SEL_MenuHandler selector)
+            :this(new CCSprite(normalSprite), new CCSprite(selectedSprite), null, selector)
         {
-            return Create(normalSprite, selectedSprite, null, selector);
         }
 
-        public static CCMenuItemSprite Create(CCNode normalSprite, CCNode selectedSprite, CCNode disabledSprite, SEL_MenuHandler selector)
+        public CCMenuItemSprite(CCNode normalSprite, CCNode selectedSprite)
+            :this(normalSprite, selectedSprite, null, null)
         {
-            var pRet = new CCMenuItemSprite();
-            pRet.InitFromNormalSprite(normalSprite, selectedSprite, disabledSprite, selector);
-            return pRet;
         }
 
-        public bool InitFromNormalSprite(CCNode normalSprite, CCNode selectedSprite, CCNode disabledSprite, SEL_MenuHandler selector)
+        public CCMenuItemSprite(CCNode normalSprite, CCNode selectedSprite, SEL_MenuHandler selector)
+            :this(normalSprite, selectedSprite, null, selector)
+        {
+        }
+
+        public CCMenuItemSprite(CCNode normalSprite, CCNode selectedSprite, CCNode disabledSprite, SEL_MenuHandler selector)
         {
             InitWithTarget(selector);
 
@@ -165,9 +168,7 @@ namespace cocos2d
             {
                 ContentSize = m_pNormalImage.ContentSize;
             }
-            return true;
         }
-
 
         public override void Selected()
         {

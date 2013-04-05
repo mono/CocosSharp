@@ -145,7 +145,7 @@ namespace tests
 
         public void createResetButton()
         {
-            CCMenuItemImage res = CCMenuItemImage.Create("Images/r1", "Images/r2", reset);
+            CCMenuItemImage res = new CCMenuItemImage("Images/r1", "Images/r2", reset);
 
             CCMenu menu = CCMenu.Create(res);
 

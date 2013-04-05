@@ -33,9 +33,9 @@ namespace tests
             AddChild(label);
 
             // menu
-            CCMenuItemImage item1 = CCMenuItemImage.Create(TransitionsTestScene.s_pPathB1, TransitionsTestScene.s_pPathB2, backCallback);
-            CCMenuItemImage item2 = CCMenuItemImage.Create(TransitionsTestScene.s_pPathR1, TransitionsTestScene.s_pPathR2, restartCallback);
-            CCMenuItemImage item3 = CCMenuItemImage.Create(TransitionsTestScene.s_pPathF1, TransitionsTestScene.s_pPathF2, nextCallback);
+            CCMenuItemImage item1 = new CCMenuItemImage(TransitionsTestScene.s_pPathB1, TransitionsTestScene.s_pPathB2, backCallback);
+            CCMenuItemImage item2 = new CCMenuItemImage(TransitionsTestScene.s_pPathR1, TransitionsTestScene.s_pPathR2, restartCallback);
+            CCMenuItemImage item3 = new CCMenuItemImage(TransitionsTestScene.s_pPathF1, TransitionsTestScene.s_pPathF2, nextCallback);
 
             CCMenu menu = new CCMenu(item1, item2, item3);
 

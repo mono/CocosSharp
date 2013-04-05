@@ -22,7 +22,7 @@ namespace tests
         public TestController()
         {
             // add close menu
-            var pCloseItem = CCMenuItemImage.Create(TestResource.s_pPathClose, TestResource.s_pPathClose, closeCallback);
+            var pCloseItem = new CCMenuItemImage(TestResource.s_pPathClose, TestResource.s_pPathClose, closeCallback);
             var pMenu = CCMenu.Create(pCloseItem);
             var s = CCDirector.SharedDirector.WinSize;
 #if !XBOX && !OUYA

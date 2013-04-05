@@ -32,9 +32,9 @@ namespace tests.classes.tests.Box2DTestBet
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
-            CCMenuItemImage item1 = CCMenuItemImage.Create("Images/b1", "Images/b2", backCallback);
-            CCMenuItemImage item2 = CCMenuItemImage.Create("Images/r1", "Images/r2", restartCallback);
-            CCMenuItemImage item3 = CCMenuItemImage.Create("Images/f1", "Images/f2", nextCallback);
+            CCMenuItemImage item1 = new CCMenuItemImage("Images/b1", "Images/b2", backCallback);
+            CCMenuItemImage item2 = new CCMenuItemImage("Images/r1", "Images/r2", restartCallback);
+            CCMenuItemImage item3 = new CCMenuItemImage("Images/f1", "Images/f2", nextCallback);
 
             CCMenu menu = CCMenu.Create(item1, item2, item3);
 

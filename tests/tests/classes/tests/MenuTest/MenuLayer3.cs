@@ -50,7 +50,7 @@ namespace tests
             CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
 
 
-            CCMenuItemSprite item3 = CCMenuItemSprite.Create(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback3);
+            CCMenuItemSprite item3 = new CCMenuItemSprite(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback3);
             m_disabledItem = item3;
             m_disabledItem.Enabled = false;
 

@@ -13,7 +13,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCMenuItemImage.Create();
+            return new CCMenuItemImage();
         }
 
         protected override void OnHandlePropTypeSpriteFrame(CCNode node, CCNode parent, string propertyName, CCSpriteFrame spriteFrame,

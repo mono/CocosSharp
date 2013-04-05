@@ -50,10 +50,10 @@ namespace tests
             CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
             CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
 
-            CCMenuItemSprite item1 = CCMenuItemSprite.Create(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
+            CCMenuItemSprite item1 = new CCMenuItemSprite(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
 
             // Image Item
-            CCMenuItem item2 = CCMenuItemImage.Create(s_SendScore, s_PressSendScore, this.menuCallback2);
+            CCMenuItem item2 = new CCMenuItemImage(s_SendScore, s_PressSendScore, this.menuCallback2);
 
             // Label Item (LabelAtlas)
             CCLabelAtlas labelAtlas = CCLabelAtlas.Create("0123456789", "Images/fps_Images", 16, 24, '.');

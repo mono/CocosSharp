@@ -30,9 +30,9 @@ namespace tests
 
             if (m_bControlMenuVisible)
             {
-                var item1 = CCMenuItemImage.Create("Images/b1", "Images/b2", backCallback);
-                var item2 = CCMenuItemImage.Create("Images/r1", "Images/r2", restartCallback);
-                var item3 = CCMenuItemImage.Create("Images/f1", "Images/f2", nextCallback);
+                var item1 = new CCMenuItemImage("Images/b1", "Images/b2", backCallback);
+                var item2 = new CCMenuItemImage("Images/r1", "Images/r2", restartCallback);
+                var item3 = new CCMenuItemImage("Images/f1", "Images/f2", nextCallback);
                 item1.Position = new CCPoint(s.Width / 2 - 100, 30);
                 item2.Position = new CCPoint(s.Width / 2, 30);
                 item3.Position = new CCPoint(s.Width / 2 + 100, 30);

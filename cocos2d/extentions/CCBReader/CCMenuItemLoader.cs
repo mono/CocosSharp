@@ -12,7 +12,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCMenuItem.Create();
+            return new CCMenuItem();
         }
 
         protected override void OnHandlePropTypeBlock(CCNode node, CCNode parent, string propertyName, BlockData pBlockData, CCBReader reader)

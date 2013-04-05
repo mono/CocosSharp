@@ -56,11 +56,11 @@ namespace Jumpy
 
 
 
-			var button1 = CCMenuItemImage.Create("Images/playAgainButton", "Images/playAgainButton", 
+			var button1 = new CCMenuItemImage("Images/playAgainButton", "Images/playAgainButton", 
                 new SEL_MenuHandler((sender)=>{
 				CCDirector.SharedDirector.ReplaceScene(CCTransitionFade.Create(.5f, GameLayer.Scene, new CCColor3B(255,255,255)));
                 }));
-			var button2 = CCMenuItemImage.Create("Images/changePlayerButton", "Images/changePlayerButton", new SEL_MenuHandler((sender)=>{
+			var button2 = new CCMenuItemImage("Images/changePlayerButton", "Images/changePlayerButton", new SEL_MenuHandler((sender)=>{
                 // do nothing
 			}));
 			var menu = new CCMenu(button1,button2);

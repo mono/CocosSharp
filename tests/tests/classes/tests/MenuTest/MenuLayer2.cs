@@ -93,9 +93,9 @@ namespace tests
         {
             for (int i = 0; i < 2; i++)
             {
-                CCMenuItemImage item1 = CCMenuItemImage.Create(s_PlayNormal, s_PlaySelect, menuCallback);
-                CCMenuItemImage item2 = CCMenuItemImage.Create(s_HighNormal, s_HighSelect, menuCallbackOpacity);
-                CCMenuItemImage item3 = CCMenuItemImage.Create(s_AboutNormal, s_AboutSelect, menuCallbackAlign);
+                CCMenuItemImage item1 = new CCMenuItemImage(s_PlayNormal, s_PlaySelect, menuCallback);
+                CCMenuItemImage item2 = new CCMenuItemImage(s_HighNormal, s_HighSelect, menuCallbackOpacity);
+                CCMenuItemImage item3 = new CCMenuItemImage(s_AboutNormal, s_AboutSelect, menuCallbackAlign);
 
                 item1.ScaleX = 1.5f;
                 item2.ScaleX = 0.5f;

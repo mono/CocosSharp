@@ -36,9 +36,9 @@ namespace tests
             AddChild(label, 1);
             label.Position = (new CCPoint(s.Width / 2, s.Height - 50));
 
-            CCMenuItemImage item1 = CCMenuItemImage.Create(s_pPathB1, s_pPathB2, backCallback);
-            CCMenuItemImage item2 = CCMenuItemImage.Create(s_pPathR1, s_pPathR2, restartCallback);
-            CCMenuItemImage item3 = CCMenuItemImage.Create(s_pPathF1, s_pPathF2, nextCallback);
+            CCMenuItemImage item1 = new CCMenuItemImage(s_pPathB1, s_pPathB2, backCallback);
+            CCMenuItemImage item2 = new CCMenuItemImage(s_pPathR1, s_pPathR2, restartCallback);
+            CCMenuItemImage item3 = new CCMenuItemImage(s_pPathF1, s_pPathF2, nextCallback);
 
             CCMenu menu = CCMenu.Create(item1, item2, item3);
 
