@@ -5,13 +5,29 @@ namespace cocos2d
     {
         protected float m_fPeriod;
 
+		public CCEaseElastic (CCActionInterval pAction)
+		{
+			InitWithAction(pAction);
+		}
+		
+		public CCEaseElastic (CCActionInterval pAction, float fPeriod)
+		{
+			InitWithAction(pAction, fPeriod);
+		}
+
+		protected CCEaseElastic (CCEaseElastic easeElastic) : base (easeElastic)
+		{
+			InitWithAction((CCActionInterval) (easeElastic.m_pOther.Copy()), easeElastic.m_fPeriod);
+
+		}
+
         public float Period
         {
             get { return m_fPeriod; }
             set { m_fPeriod = value; }
         }
 
-        public bool InitWithAction(CCActionInterval pAction, float fPeriod)
+        protected bool InitWithAction(CCActionInterval pAction, float fPeriod)
         {
             if (base.InitWithAction(pAction))
             {
@@ -22,7 +38,7 @@ namespace cocos2d
             return false;
         }
 
-        public new bool InitWithAction(CCActionInterval pAction)
+        protected new bool InitWithAction(CCActionInterval pAction)
         {
             return InitWithAction(pAction, 0.3f);
         }
@@ -35,36 +51,21 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCEaseElastic pCopy;
 
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone as CCEaseElastic;
-            }
+                var pCopy = pZone as CCEaseElastic;
+				pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()), m_fPeriod);
+				
+				return pCopy;
+			}
             else
             {
-                pCopy = new CCEaseElastic();
+                return new CCEaseElastic(this);
             }
 
-            pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()), m_fPeriod);
-
-            return pCopy;
         }
 
-
-        public new static CCEaseElastic Create(CCActionInterval pAction)
-        {
-            var pRet = new CCEaseElastic();
-            pRet.InitWithAction(pAction);
-            return pRet;
-        }
-
-        public static CCEaseElastic Create(CCActionInterval pAction, float fPeriod)
-        {
-            var pRet = new CCEaseElastic();
-            pRet.InitWithAction(pAction, fPeriod);
-            return pRet;
-        }
     }
 }

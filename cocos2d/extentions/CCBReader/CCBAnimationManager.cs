@@ -402,11 +402,11 @@ namespace cocos2d
                 case kCCBKeyframeEasing.kCCBKeyframeEasingBounceInOut:
                     return CCEaseBounceInOut.Create(pAction);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingElasticIn:
-                    return CCEaseElasticIn.Create(pAction, fEasingOpt);
+                    return new CCEaseElasticIn(pAction, fEasingOpt);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingElasticOut:
-                    return CCEaseElasticOut.Create(pAction, fEasingOpt);
+                    return new CCEaseElasticOut(pAction, fEasingOpt);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingElasticInOut:
-                    return CCEaseElasticInOut.Create(pAction, fEasingOpt);
+                    return new CCEaseElasticInOut(pAction, fEasingOpt);
                 default:
                     CCLog.Log("CCBReader: Unkown easing type {0}", nEasingType);
                     return pAction;

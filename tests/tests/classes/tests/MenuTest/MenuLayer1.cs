@@ -111,7 +111,7 @@ namespace tests
                         offset = -offset;
 
                     child.Position = new CCPoint(dstPoint.X + offset, dstPoint.Y);
-                    child.RunAction(CCEaseElasticOut.Create(new CCMoveBy (2, new CCPoint(dstPoint.X - offset, 0)), 0.35f));
+                    child.RunAction(new CCEaseElasticOut(new CCMoveBy (2, new CCPoint(dstPoint.X - offset, 0)), 0.35f));
                     i++;
 
                 }
