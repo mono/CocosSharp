@@ -15,15 +15,15 @@ namespace tests
             CCSpriteBatchNode batch = CCSpriteBatchNode.Create("Images/grossini_dance_atlas", 1);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-            CCSprite sprite1 = CCSprite.Create(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));
-            CCSprite sprite2 = CCSprite.Create(batch.Texture, new CCRect(85 * 1, 121 * 1, 85, 121));
-            CCSprite sprite3 = CCSprite.Create(batch.Texture, new CCRect(85 * 2, 121 * 1, 85, 121));
-            CCSprite sprite4 = CCSprite.Create(batch.Texture, new CCRect(85 * 3, 121 * 1, 85, 121));
+            CCSprite sprite1 = new CCSprite(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));
+            CCSprite sprite2 = new CCSprite(batch.Texture, new CCRect(85 * 1, 121 * 1, 85, 121));
+            CCSprite sprite3 = new CCSprite(batch.Texture, new CCRect(85 * 2, 121 * 1, 85, 121));
+            CCSprite sprite4 = new CCSprite(batch.Texture, new CCRect(85 * 3, 121 * 1, 85, 121));
 
-            CCSprite sprite5 = CCSprite.Create(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));
-            CCSprite sprite6 = CCSprite.Create(batch.Texture, new CCRect(85 * 1, 121 * 1, 85, 121));
-            CCSprite sprite7 = CCSprite.Create(batch.Texture, new CCRect(85 * 2, 121 * 1, 85, 121));
-            CCSprite sprite8 = CCSprite.Create(batch.Texture, new CCRect(85 * 3, 121 * 1, 85, 121));
+            CCSprite sprite5 = new CCSprite(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));
+            CCSprite sprite6 = new CCSprite(batch.Texture, new CCRect(85 * 1, 121 * 1, 85, 121));
+            CCSprite sprite7 = new CCSprite(batch.Texture, new CCRect(85 * 2, 121 * 1, 85, 121));
+            CCSprite sprite8 = new CCSprite(batch.Texture, new CCRect(85 * 3, 121 * 1, 85, 121));
 
 
             CCSize s = CCDirector.SharedDirector.WinSize;

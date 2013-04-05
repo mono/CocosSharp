@@ -23,13 +23,13 @@ namespace tests
             batch = CCSpriteBatchNode.Create("animations/grossini", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-            sprite1 = CCSprite.Create("grossini_dance_01.png");
+            sprite1 = new CCSprite("grossini_dance_01.png");
             sprite1.Position = (new CCPoint(s.Width / 3, s.Height / 2));
 
-            sprite2 = CCSprite.Create("grossini_dance_02.png");
+            sprite2 = new CCSprite("grossini_dance_02.png");
             sprite2.Position = (new CCPoint(20, 30));
 
-            sprite3 = CCSprite.Create("grossini_dance_03.png");
+            sprite3 = new CCSprite("grossini_dance_03.png");
             sprite3.Position = (new CCPoint(-20, 30));
 
             batch.AddChild(sprite1);
@@ -40,13 +40,13 @@ namespace tests
             batch = CCSpriteBatchNode.Create("animations/grossini", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-            sprite1 = CCSprite.Create("grossini_dance_01.png");
+            sprite1 = new CCSprite("grossini_dance_01.png");
             sprite1.Position = (new CCPoint(2 * s.Width / 3, s.Height / 2));
 
-            sprite2 = CCSprite.Create("grossini_dance_02.png");
+            sprite2 = new CCSprite("grossini_dance_02.png");
             sprite2.Position = (new CCPoint(20, 30));
 
-            sprite3 = CCSprite.Create("grossini_dance_03.png");
+            sprite3 = new CCSprite("grossini_dance_03.png");
             sprite3.Position = (new CCPoint(-20, 30));
 
             batch.AddChild(sprite1);
@@ -57,13 +57,13 @@ namespace tests
             batch = CCSpriteBatchNode.Create("animations/grossini", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-            sprite1 = CCSprite.Create("grossini_dance_01.png");
+            sprite1 = new CCSprite("grossini_dance_01.png");
             sprite1.Position = (new CCPoint(s.Width / 2 - 90, s.Height / 4));
 
-            sprite2 = CCSprite.Create("grossini_dance_02.png");
+            sprite2 = new CCSprite("grossini_dance_02.png");
             sprite2.Position = (new CCPoint(s.Width / 2 - 60, s.Height / 4));
 
-            sprite3 = CCSprite.Create("grossini_dance_03.png");
+            sprite3 = new CCSprite("grossini_dance_03.png");
             sprite3.Position = (new CCPoint(s.Width / 2 - 30, s.Height / 4));
 
             batch.AddChild(sprite1, 10);
@@ -74,13 +74,13 @@ namespace tests
             batch = CCSpriteBatchNode.Create("animations/grossini", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-            sprite1 = CCSprite.Create("grossini_dance_01.png");
+            sprite1 = new CCSprite("grossini_dance_01.png");
             sprite1.Position = (new CCPoint(s.Width / 2 + 30, s.Height / 4));
 
-            sprite2 = CCSprite.Create("grossini_dance_02.png");
+            sprite2 = new CCSprite("grossini_dance_02.png");
             sprite2.Position = (new CCPoint(s.Width / 2 + 60, s.Height / 4));
 
-            sprite3 = CCSprite.Create("grossini_dance_03.png");
+            sprite3 = new CCSprite("grossini_dance_03.png");
             sprite3.Position = (new CCPoint(s.Width / 2 + 90, s.Height / 4));
 
             batch.AddChild(sprite1, -10);

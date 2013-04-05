@@ -17,7 +17,7 @@ namespace tests
             CCSpriteBatchNode batch = CCSpriteBatchNode.Create("Images/grossini_dance_atlas", 15);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-            CCSprite sprite = CCSprite.Create(batch.Texture, new CCRect(0, 0, 85, 121));
+            CCSprite sprite = new CCSprite(batch.Texture, new CCRect(0, 0, 85, 121));
             sprite.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             batch.AddChild(sprite, 3);
             batch.ReorderChild(sprite, 1);

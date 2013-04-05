@@ -41,7 +41,7 @@ namespace tests
 
 
             CCNode node = GetChildByTag((int)kTags.kTagSpriteBatchNode);
-            CCSprite sprite = CCSprite.Create(m_texture1, new CCRect(x, y, 85, 121));
+            CCSprite sprite = new CCSprite(m_texture1, new CCRect(x, y, 85, 121));
             node.AddChild(sprite);
 
             sprite.Position = (new CCPoint(p.X, p.Y));

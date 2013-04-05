@@ -79,7 +79,7 @@ namespace tests.Extensions
 			
 			if (cell == null) {
 				cell = new CustomTableViewCell();
-				var sprite = CCSprite.Create("Images/Icon");
+				var sprite = new CCSprite("Images/Icon");
 				sprite.AnchorPoint = CCPoint.Zero;
 				sprite.Position = new CCPoint(0, 0);
 				cell.AddChild(sprite);

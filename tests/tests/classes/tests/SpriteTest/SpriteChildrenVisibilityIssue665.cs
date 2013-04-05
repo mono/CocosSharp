@@ -24,13 +24,13 @@ namespace tests
             aParent.Position = (new CCPoint(s.Width / 3, s.Height / 2));
             AddChild(aParent, 0);
 
-            sprite1 = CCSprite.Create("grossini_dance_01.png");
+            sprite1 = new CCSprite("grossini_dance_01.png");
             sprite1.Position = (new CCPoint(0, 0));
 
-            sprite2 = CCSprite.Create("grossini_dance_02.png");
+            sprite2 = new CCSprite("grossini_dance_02.png");
             sprite2.Position = (new CCPoint(20, 30));
 
-            sprite3 = CCSprite.Create("grossini_dance_03.png");
+            sprite3 = new CCSprite("grossini_dance_03.png");
             sprite3.Position = (new CCPoint(-20, 30));
 
             // test issue #665
@@ -47,13 +47,13 @@ namespace tests
             aParent.Position = (new CCPoint(2 * s.Width / 3, s.Height / 2));
             AddChild(aParent, 0);
 
-            sprite1 = CCSprite.Create("grossini_dance_01.png");
+            sprite1 = new CCSprite("grossini_dance_01.png");
             sprite1.Position = (new CCPoint(0, 0));
 
-            sprite2 = CCSprite.Create("grossini_dance_02.png");
+            sprite2 = new CCSprite("grossini_dance_02.png");
             sprite2.Position = (new CCPoint(20, 30));
 
-            sprite3 = CCSprite.Create("grossini_dance_03.png");
+            sprite3 = new CCSprite("grossini_dance_03.png");
             sprite3.Position = (new CCPoint(-20, 30));
 
             // test issue #665

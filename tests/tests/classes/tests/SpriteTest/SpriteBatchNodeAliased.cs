@@ -15,11 +15,11 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCSprite sprite1 = CCSprite.Create(batch.Texture, new CCRect(85 * 1, 121 * 1, 85, 121));
+            CCSprite sprite1 = new CCSprite(batch.Texture, new CCRect(85 * 1, 121 * 1, 85, 121));
             sprite1.Position = (new CCPoint(s.Width / 2 - 100, s.Height / 2));
             batch.AddChild(sprite1, 0, (int)kTagSprite.kTagSprite1);
 
-            CCSprite sprite2 = CCSprite.Create(batch.Texture, new CCRect(85 * 1, 121 * 1, 85, 121));
+            CCSprite sprite2 = new CCSprite(batch.Texture, new CCRect(85 * 1, 121 * 1, 85, 121));
             sprite2.Position = (new CCPoint(s.Width / 2 + 100, s.Height / 2));
             batch.AddChild(sprite2, 0, (int)kTagSprite.kTagSprite2);
 

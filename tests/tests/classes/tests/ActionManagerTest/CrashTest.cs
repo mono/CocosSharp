@@ -20,7 +20,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSprite child = CCSprite.Create(s_pPathGrossini);
+            CCSprite child = new CCSprite(s_pPathGrossini);
             child.Position = (new CCPoint(200, 200));
             AddChild(child, 1);
 

@@ -19,7 +19,7 @@ namespace tests.Extensions
 				AddChild(pBackMenu, 10);
 
 				// Add the generated background
-				var background = CCSprite.Create("extensions/background");
+				var background = new CCSprite("extensions/background");
 				background.Position = new CCPoint(screensize.Width / 2, screensize.Height / 2);
 				AddChild(background);
         

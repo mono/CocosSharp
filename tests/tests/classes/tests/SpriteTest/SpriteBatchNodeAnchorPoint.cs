@@ -22,10 +22,10 @@ namespace tests
             CCAction action = new CCRepeatForever (rotate);
             for (int i = 0; i < 3; i++)
             {
-                CCSprite sprite = CCSprite.Create(batch.Texture, new CCRect(85 * i, 121 * 1, 85, 121));
+                CCSprite sprite = new CCSprite(batch.Texture, new CCRect(85 * i, 121 * 1, 85, 121));
                 sprite.Position = (new CCPoint(s.Width / 4 * (i + 1), s.Height / 2));
 
-                CCSprite point = CCSprite.Create("Images/r1");
+                CCSprite point = new CCSprite("Images/r1");
                 point.Scale = 0.25f;
                 point.Position = sprite.Position;
                 AddChild(point, 1);

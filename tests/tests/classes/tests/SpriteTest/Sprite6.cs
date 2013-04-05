@@ -41,7 +41,7 @@ namespace tests
 
             for (int i = 0; i < 3; i++)
             {
-                CCSprite sprite = CCSprite.Create(batch.Texture, new CCRect(85 * i, 121 * 1, 85, 121));
+                CCSprite sprite = new CCSprite(batch.Texture, new CCRect(85 * i, 121 * 1, 85, 121));
                 sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
 
                 sprite.RunAction((CCAction)(action.Copy()));

@@ -44,8 +44,8 @@ namespace tests
             m_pLabelShouldRetain = CCLabelBMFont.Create(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 1.5f,
                                                         CCTextAlignment.CCTextAlignmentCenter);
 
-            m_pArrowsBarShouldRetain = CCSprite.Create("Images/arrowsBar");
-            m_pArrowsShouldRetain = CCSprite.Create("Images/arrows");
+            m_pArrowsBarShouldRetain = new CCSprite("Images/arrowsBar");
+            m_pArrowsShouldRetain = new CCSprite("Images/arrows");
 
             CCMenuItemFont.FontSize = 20;
             CCMenuItemFont longSentences = CCMenuItemFont.Create("Long Flowing Sentences", stringChanged);

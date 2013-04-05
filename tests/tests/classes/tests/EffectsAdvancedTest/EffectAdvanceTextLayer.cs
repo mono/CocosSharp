@@ -28,18 +28,18 @@ namespace tests
             x = size.Width;
             y = size.Height;
 
-            CCSprite bg = CCSprite.Create("Images/background3");
+            CCSprite bg = new CCSprite("Images/background3");
             AddChild(bg, 0, EffectAdvanceScene.kTagBackground);
             bg.Position = new CCPoint(x / 2, y / 2);
 
-            grossini = CCSprite.Create("Images/grossinis_sister2");
+            grossini = new CCSprite("Images/grossinis_sister2");
             bg.AddChild(grossini, 1, EffectAdvanceScene.kTagSprite1);
             grossini.Position = new CCPoint(x / 3.0f, 200);
             CCActionInterval sc = new CCScaleBy(2, 5);
             CCFiniteTimeAction sc_back = sc.Reverse();
             grossini.RunAction(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(sc, sc_back))));
 
-            tamara = CCSprite.Create("Images/grossinis_sister1");
+            tamara = new CCSprite("Images/grossinis_sister1");
             bg.AddChild(tamara, 1, EffectAdvanceScene.kTagSprite2);
             tamara.Position = new CCPoint(2 * x / 3.0f, 200);
             CCActionInterval sc2 = new CCScaleBy(2, 5);

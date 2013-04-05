@@ -15,7 +15,7 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCSprite sprite = CCSprite.Create("Images/fire");
+            CCSprite sprite = new CCSprite("Images/fire");
             sprite.Position = new CCPoint(s.Width * 0.25f, 0);
             sprite.Scale = 10;
 

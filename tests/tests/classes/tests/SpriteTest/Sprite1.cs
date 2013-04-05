@@ -22,7 +22,7 @@ namespace tests
             int x = (idx % 5) * 85;
             int y = (idx / 5) * 121;
 
-            CCSprite sprite = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(x, y, 85, 121));
+            CCSprite sprite = new CCSprite("Images/grossini_dance_atlas", new CCRect(x, y, 85, 121));
             AddChild(sprite);
 
             sprite.Position = p;

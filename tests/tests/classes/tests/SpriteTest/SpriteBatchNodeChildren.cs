@@ -19,13 +19,13 @@ namespace tests
 
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("animations/grossini.plist");
 
-            CCSprite sprite1 = CCSprite.Create("grossini_dance_01.png");
+            CCSprite sprite1 = new CCSprite("grossini_dance_01.png");
             sprite1.Position = (new CCPoint(s.Width / 3, s.Height / 2));
 
-            CCSprite sprite2 = CCSprite.Create("grossini_dance_02.png");
+            CCSprite sprite2 = new CCSprite("grossini_dance_02.png");
             sprite2.Position = (new CCPoint(50, 50));
 
-            CCSprite sprite3 = CCSprite.Create("grossini_dance_03.png");
+            CCSprite sprite3 = new CCSprite("grossini_dance_03.png");
             sprite3.Position = (new CCPoint(-50, -50));
 
             batch.AddChild(sprite1);

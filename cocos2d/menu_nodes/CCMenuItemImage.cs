@@ -47,17 +47,17 @@ namespace cocos2d
 
             if (!string.IsNullOrEmpty(normalImage))
             {
-                normalSprite = CCSprite.Create(normalImage);
+                normalSprite = new CCSprite(normalImage);
             }
 
             if (!string.IsNullOrEmpty(selectedImage))
             {
-                selectedSprite = CCSprite.Create(selectedImage);
+                selectedSprite = new CCSprite(selectedImage);
             }
 
             if (!string.IsNullOrEmpty(disabledImage))
             {
-                disabledSprite = CCSprite.Create(disabledImage);
+                disabledSprite = new CCSprite(disabledImage);
             }
 
             return InitFromNormalSprite(normalSprite, selectedSprite, disabledSprite, selector);
@@ -65,17 +65,17 @@ namespace cocos2d
 
         public void SetNormalSpriteFrame(CCSpriteFrame frame)
         {
-            NormalImage = CCSprite.Create(frame);
+            NormalImage = new CCSprite(frame);
         }
 
         public void SetSelectedSpriteFrame(CCSpriteFrame frame)
         {
-            SelectedImage = CCSprite.Create(frame);
+            SelectedImage = new CCSprite(frame);
         }
 
         public void SetDisabledSpriteFrame(CCSpriteFrame frame)
         {
-            DisabledImage = CCSprite.Create(frame);
+            DisabledImage = new CCSprite(frame);
         }
     }
 }

@@ -36,7 +36,7 @@ namespace tests
         {
             base.TouchEnabled = true;
 
-            CCSprite sprite = CCSprite.Create(ClickAndMoveTest.s_pPathGrossini);
+            CCSprite sprite = new CCSprite(ClickAndMoveTest.s_pPathGrossini);
 
             CCLayer layer = CCLayerColor.Create(new CCColor4B(255, 255, 0, 255));
             AddChild(layer, -1);

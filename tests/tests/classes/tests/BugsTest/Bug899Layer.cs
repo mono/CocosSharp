@@ -13,7 +13,7 @@ namespace tests
             //CCDirector.SharedDirector.EnableRetinaDisplay(true);
             if (base.Init())
             {
-                CCSprite bg = CCSprite.Create("Images/bugs/RetinaDisplay");
+                CCSprite bg = new CCSprite("Images/bugs/RetinaDisplay");
                 AddChild(bg, 0);
                 bg.AnchorPoint = new CCPoint(0, 0);
 

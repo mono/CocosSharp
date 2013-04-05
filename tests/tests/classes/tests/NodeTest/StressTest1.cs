@@ -8,7 +8,7 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCSprite sp1 = CCSprite.Create(TestResource.s_pPathSister1);
+            CCSprite sp1 = new CCSprite(TestResource.s_pPathSister1);
             AddChild(sp1, 0, CocosNodeTestStaticLibrary.kTagSprite1);
 
             sp1.Position = (new CCPoint(s.Width / 2, s.Height / 2));

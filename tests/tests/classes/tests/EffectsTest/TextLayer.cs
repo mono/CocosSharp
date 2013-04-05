@@ -27,12 +27,12 @@ namespace tests
             node.RunAction(effect);
             AddChild(node, 0, EffectTestScene.kTagBackground);
 
-            CCSprite bg = CCSprite.Create(TestResource.s_back3);
+            CCSprite bg = new CCSprite(TestResource.s_back3);
             node.AddChild(bg, 0);
             bg.AnchorPoint = new CCPoint(0.5f, 0.5f);
             bg.Position = new CCPoint(size.Width / 2, size.Height / 2);
 
-            CCSprite grossini = CCSprite.Create(TestResource.s_pPathSister2);
+            CCSprite grossini = new CCSprite(TestResource.s_pPathSister2);
             node.AddChild(grossini, 1);
             grossini.Position = new CCPoint(x / 3, y / 2);
             CCActionInterval sc = new CCScaleBy(2, 5);
@@ -40,7 +40,7 @@ namespace tests
             grossini.RunAction(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(sc, sc_back))));
             //grossini.runAction(effect);
 
-            CCSprite tamara = CCSprite.Create(TestResource.s_pPathSister1);
+            CCSprite tamara = new CCSprite(TestResource.s_pPathSister1);
             node.AddChild(tamara, 1);
             tamara.Position = new CCPoint(2 * x / 3, y / 2);
             CCActionInterval sc2 = new CCScaleBy(2, 5);

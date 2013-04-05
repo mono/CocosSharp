@@ -43,15 +43,15 @@ namespace tests
             mgr = CCSpriteBatchNode.Create("Images/bugs/circle", 9);
             AddChild(mgr);
 
-            sp1 = CCSprite.Create("Images/bugs/circle");
-            sp2 = CCSprite.Create("Images/bugs/circle");
-            sp3 = CCSprite.Create("Images/bugs/circle");
-            sp4 = CCSprite.Create("Images/bugs/circle");
-            sp5 = CCSprite.Create("Images/bugs/circle");
-            sp6 = CCSprite.Create("Images/bugs/circle");
-            sp7 = CCSprite.Create("Images/bugs/circle");
-            sp8 = CCSprite.Create("Images/bugs/circle");
-            sp9 = CCSprite.Create("Images/bugs/circle");
+            sp1 = new CCSprite("Images/bugs/circle");
+            sp2 = new CCSprite("Images/bugs/circle");
+            sp3 = new CCSprite("Images/bugs/circle");
+            sp4 = new CCSprite("Images/bugs/circle");
+            sp5 = new CCSprite("Images/bugs/circle");
+            sp6 = new CCSprite("Images/bugs/circle");
+            sp7 = new CCSprite("Images/bugs/circle");
+            sp8 = new CCSprite("Images/bugs/circle");
+            sp9 = new CCSprite("Images/bugs/circle");
 
             mgr.AddChild(sp1, 9);
             mgr.AddChild(sp2, 8);
@@ -141,7 +141,7 @@ namespace tests
 
             texture.End();
 
-            CCSprite sprite = CCSprite.Create(texture.Sprite.Texture);
+            CCSprite sprite = new CCSprite(texture.Sprite.Texture);
 
             //sprite.Position = new CCPoint(256, 256);
             sprite.Position = new CCPoint(size.Width/2, size.Height / 2);

@@ -10,15 +10,15 @@ namespace tests
     {
         public SpriteColorOpacity()
         {
-            CCSprite sprite1 = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(85 * 0, 121 * 1, 85, 121));
-            CCSprite sprite2 = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(85 * 1, 121 * 1, 85, 121));
-            CCSprite sprite3 = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(85 * 2, 121 * 1, 85, 121));
-            CCSprite sprite4 = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(85 * 3, 121 * 1, 85, 121));
+            CCSprite sprite1 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 0, 121 * 1, 85, 121));
+            CCSprite sprite2 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 1, 121 * 1, 85, 121));
+            CCSprite sprite3 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 2, 121 * 1, 85, 121));
+            CCSprite sprite4 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 3, 121 * 1, 85, 121));
 
-            CCSprite sprite5 = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(85 * 0, 121 * 1, 85, 121));
-            CCSprite sprite6 = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(85 * 1, 121 * 1, 85, 121));
-            CCSprite sprite7 = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(85 * 2, 121 * 1, 85, 121));
-            CCSprite sprite8 = CCSprite.Create("Images/grossini_dance_atlas", new CCRect(85 * 3, 121 * 1, 85, 121));
+            CCSprite sprite5 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 0, 121 * 1, 85, 121));
+            CCSprite sprite6 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 1, 121 * 1, 85, 121));
+            CCSprite sprite7 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 2, 121 * 1, 85, 121));
+            CCSprite sprite8 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 3, 121 * 1, 85, 121));
 
             CCSize s = CCDirector.SharedDirector.WinSize;
             sprite1.Position = new CCPoint((s.Width / 5) * 1, (s.Height / 3) * 1);

@@ -16,7 +16,7 @@ namespace tests
 
             for (int i = 0; i < 10; i++)
             {
-                CCSprite s1 = CCSprite.Create(asmtest.Texture, new CCRect(0, 0, 50, 50));
+                CCSprite s1 = new CCSprite(asmtest.Texture, new CCRect(0, 0, 50, 50));
                 a.Add(s1);
                 asmtest.AddChild(s1, 10);
             }

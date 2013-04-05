@@ -836,7 +836,7 @@ namespace tests
             CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
             map.Position = new CCPoint(-s.Width / 2, 0);
 
-            m_tamara = CCSprite.Create(s_pPathSister1);
+            m_tamara = new CCSprite(s_pPathSister1);
             map.AddChild(m_tamara, map.Children.Count);
             float mapWidth = map.MapSize.Width * map.TileSize.Width;
             m_tamara.Position = CCMacros.CCPointPixelsToPoints(new CCPoint(mapWidth / 2, 0));
@@ -904,7 +904,7 @@ namespace tests
 
             CCSize s = map.ContentSize;
 
-            m_tamara = CCSprite.Create(s_pPathSister1);
+            m_tamara = new CCSprite(s_pPathSister1);
             map.AddChild(m_tamara, map.Children.Count);
             m_tamara.AnchorPoint = (new CCPoint(0.5f, 0));
 

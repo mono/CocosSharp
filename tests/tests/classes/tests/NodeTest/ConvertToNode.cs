@@ -14,10 +14,10 @@ namespace tests
             CCRepeatForever action = new CCRepeatForever (rotate);
             for (int i = 0; i < 3; i++)
             {
-                CCSprite sprite = CCSprite.Create("Images/grossini");
+                CCSprite sprite = new CCSprite("Images/grossini");
                 sprite.Position = (new CCPoint(s.Width / 4 * (i + 1), s.Height / 2));
 
-                CCSprite point = CCSprite.Create("Images/r1");
+                CCSprite point = new CCSprite("Images/r1");
                 point.Scale = 0.25f;
                 point.Position = sprite.Position;
                 AddChild(point, 10, 100 + i);

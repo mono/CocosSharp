@@ -16,7 +16,7 @@ namespace tests
             x = size.Width;
             y = size.Height;
 
-            CCSprite bg2 = CCSprite.Create(TransitionsTestScene.s_back2);
+            CCSprite bg2 = new CCSprite(TransitionsTestScene.s_back2);
             bg2.Position = new CCPoint(size.Width / 2, size.Height / 2);
 			bg2.ScaleX = size.Width / bg2.ContentSize.Width;
 			bg2.ScaleY = size.Height / bg2.ContentSize.Height;

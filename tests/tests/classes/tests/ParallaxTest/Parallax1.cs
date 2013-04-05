@@ -11,7 +11,7 @@ namespace tests
         public Parallax1()
         {
             // Top Layer, a simple image
-            CCSprite cocosImage = CCSprite.Create(s_Power);
+            CCSprite cocosImage = new CCSprite(s_Power);
             // scale the image (optional)
             cocosImage.Scale = 2.5f;
             // change the transform anchor point to 0,0 (optional)
@@ -30,7 +30,7 @@ namespace tests
 
 
             // background layer: another image
-            CCSprite background = CCSprite.Create(TestResource.s_back);
+            CCSprite background = new CCSprite(TestResource.s_back);
             // scale the image (optional)
             background.Scale = 1.5f;
             // change the transform anchor point (optional)

@@ -20,9 +20,9 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            m_grossini = CCSprite.Create(TestResource.s_pPathGrossini);
-            m_tamara = CCSprite.Create(TestResource.s_pPathSister1);
-            m_kathia = CCSprite.Create(TestResource.s_pPathSister2);
+            m_grossini = new CCSprite(TestResource.s_pPathGrossini);
+            m_tamara = new CCSprite(TestResource.s_pPathSister1);
+            m_kathia = new CCSprite(TestResource.s_pPathSister2);
 
             AddChild(m_grossini, 3);
             AddChild(m_kathia, 2);

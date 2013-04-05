@@ -11,7 +11,7 @@ namespace tests
             //  - It tests different anchor Points
             //  - It tests different children anchor points
 
-            CCSprite back = CCSprite.Create(TestResource.s_back3);
+            CCSprite back = new CCSprite(TestResource.s_back3);
             AddChild(back, -10);
             back.AnchorPoint = (new CCPoint(0, 0));
             CCSize backSize = back.ContentSize;

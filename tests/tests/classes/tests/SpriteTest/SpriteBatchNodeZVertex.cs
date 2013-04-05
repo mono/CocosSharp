@@ -56,7 +56,7 @@ namespace tests
 
             for (int i = 0; i < 5; i++)
             {
-                CCSprite sprite = CCSprite.Create(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));
+                CCSprite sprite = new CCSprite(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));
                 sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
                 sprite.VertexZ = (10 + i * 40);
                 batch.AddChild(sprite, 0);
@@ -65,7 +65,7 @@ namespace tests
 
             for (int i = 5; i < 11; i++)
             {
-                CCSprite sprite = CCSprite.Create(batch.Texture, new CCRect(85 * 1, 121 * 0, 85, 121));
+                CCSprite sprite = new CCSprite(batch.Texture, new CCRect(85 * 1, 121 * 0, 85, 121));
                 sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
                 sprite.VertexZ = 10 + (10 - i) * 40;
                 batch.AddChild(sprite, 0);

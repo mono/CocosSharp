@@ -37,7 +37,7 @@ namespace tests
             // and therefore all the animation sprites are also drawn as part of the CCSpriteBatchNode
             //
 
-            CCSprite sprite = CCSprite.Create("grossini_dance_01.png");
+            CCSprite sprite = new CCSprite("grossini_dance_01.png");
             sprite.Position = (new CCPoint(s.Width * 0.5f, s.Height * 0.5f));
 
             CCSpriteBatchNode spriteBatch = CCSpriteBatchNode.Create("animations/grossini-aliases");

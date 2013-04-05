@@ -133,7 +133,7 @@ namespace cocos2d
 
         public static CCMenuItemSprite Create(string normalSprite, string selectedSprite, SEL_MenuHandler selector)
         {
-            return Create(CCSprite.Create(normalSprite), CCSprite.Create(selectedSprite), null, selector);
+            return Create(new CCSprite(normalSprite), new CCSprite(selectedSprite), null, selector);
         }
 
         public static CCMenuItemSprite Create(CCNode normalSprite, CCNode selectedSprite)

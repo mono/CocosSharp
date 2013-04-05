@@ -8,7 +8,7 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCSprite p = CCSprite.Create(TestResource.s_back3);
+            CCSprite p = new CCSprite(TestResource.s_back3);
             AddChild(p, 0);
             p.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             p.Opacity = 128;
@@ -20,7 +20,7 @@ namespace tests
 
             // LEFT
             s = p.ContentSize;
-            sprite = CCSprite.Create(TestResource.s_pPathGrossini);
+            sprite = new CCSprite(TestResource.s_pPathGrossini);
             sprite.Scale = (0.5f);
             p.AddChild(sprite, 0);
             sprite.Position = (new CCPoint(s.Width / 4 * 1, s.Height / 2));
@@ -29,7 +29,7 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (orbit));
 
             // CENTER
-            sprite = CCSprite.Create(TestResource.s_pPathGrossini);
+            sprite = new CCSprite(TestResource.s_pPathGrossini);
             sprite.Scale = 1.0f;
             p.AddChild(sprite, 0);
             sprite.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
@@ -38,7 +38,7 @@ namespace tests
 
 
             // RIGHT
-            sprite = CCSprite.Create(TestResource.s_pPathGrossini);
+            sprite = new CCSprite(TestResource.s_pPathGrossini);
             sprite.Scale = 2.0f;
             p.AddChild(sprite, 0);
             sprite.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);

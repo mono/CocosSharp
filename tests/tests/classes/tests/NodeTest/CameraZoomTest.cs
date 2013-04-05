@@ -14,7 +14,7 @@ namespace tests
             CCCamera cam;
 
             // LEFT
-            sprite = CCSprite.Create(TestResource.s_pPathGrossini);
+            sprite = new CCSprite(TestResource.s_pPathGrossini);
             AddChild(sprite, 0);
             sprite.Position = (new CCPoint(s.Width / 4 * 1, s.Height / 2));
             cam = sprite.Camera;
@@ -22,12 +22,12 @@ namespace tests
             cam.SetCenterXyz(0, 0, 0);
 
             // CENTER
-            sprite = CCSprite.Create(TestResource.s_pPathGrossini);
+            sprite = new CCSprite(TestResource.s_pPathGrossini);
             AddChild(sprite, 0, 40);
             sprite.Position = (new CCPoint(s.Width / 4 * 2, s.Height / 2));
 
             // RIGHT
-            sprite = CCSprite.Create(TestResource.s_pPathGrossini);
+            sprite = new CCSprite(TestResource.s_pPathGrossini);
             AddChild(sprite, 0, 20);
             sprite.Position = (new CCPoint(s.Width / 4 * 3, s.Height / 2));
 

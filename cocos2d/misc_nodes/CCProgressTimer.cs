@@ -260,7 +260,7 @@ namespace cocos2d
 
         public static CCProgressTimer Create(string fileName)
         {
-            return Create(CCSprite.Create(fileName));
+            return Create(new CCSprite(fileName));
         }
 
         /** Creates a progress timer with the sprite as the shape the timer goes through */

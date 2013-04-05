@@ -6,11 +6,11 @@ namespace tests
     {
         public Test6()
         {
-            CCSprite sp1 = CCSprite.Create(TestResource.s_pPathSister1);
-            CCSprite sp11 = CCSprite.Create(TestResource.s_pPathSister1);
+            CCSprite sp1 = new CCSprite(TestResource.s_pPathSister1);
+            CCSprite sp11 = new CCSprite(TestResource.s_pPathSister1);
 
-            CCSprite sp2 = CCSprite.Create(TestResource.s_pPathSister2);
-            CCSprite sp21 = CCSprite.Create(TestResource.s_pPathSister2);
+            CCSprite sp2 = new CCSprite(TestResource.s_pPathSister2);
+            CCSprite sp21 = new CCSprite(TestResource.s_pPathSister2);
 
             sp1.Position = (new CCPoint(100, 160));
             sp2.Position = (new CCPoint(380, 160));

@@ -206,13 +206,13 @@ namespace cocos2d
         public static CCControlSlider Create(string bgFile, string progressFile, string thumbFile)
         {
             // Prepare background for slider
-            CCSprite backgroundSprite = CCSprite.Create(bgFile);
+            CCSprite backgroundSprite = new CCSprite(bgFile);
 
             // Prepare progress for slider
-            CCSprite progressSprite = CCSprite.Create(progressFile);
+            CCSprite progressSprite = new CCSprite(progressFile);
 
             // Prepare thumb (menuItem) for slider
-            CCSprite thumbSprite = CCSprite.Create(thumbFile);
+            CCSprite thumbSprite = new CCSprite(thumbFile);
 
             return Create(backgroundSprite, progressSprite, thumbSprite);
         }

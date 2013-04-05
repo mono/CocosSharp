@@ -66,7 +66,7 @@ namespace tests
 
             m_pItemMenu.ContentSize = new CCSize(s.Width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
 #if XBOX || OUYA
-            CCSprite sprite = CCSprite.Create("Images/aButton");
+            CCSprite sprite = new CCSprite("Images/aButton");
             AddChild(sprite, 10001);
             _menuIndicator = sprite;
             // Center the menu on the first item so that it is 

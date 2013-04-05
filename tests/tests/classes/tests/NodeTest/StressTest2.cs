@@ -10,7 +10,7 @@ namespace tests
 
             CCLayer sublayer = CCLayer.Create();
 
-            CCSprite sp1 = CCSprite.Create(TestResource.s_pPathSister1);
+            CCSprite sp1 = new CCSprite(TestResource.s_pPathSister1);
             sp1.Position = (new CCPoint(80, s.Height / 2));
 
             CCActionInterval move = new CCMoveBy (3, new CCPoint(350, 0));

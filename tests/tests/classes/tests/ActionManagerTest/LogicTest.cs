@@ -19,7 +19,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSprite grossini = CCSprite.Create(s_pPathGrossini);
+            CCSprite grossini = new CCSprite(s_pPathGrossini);
             AddChild(grossini, 0, 2);
             grossini.Position = (new CCPoint(200, 200));
 
