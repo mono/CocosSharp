@@ -26,7 +26,7 @@ namespace tests
                 // Don't include the sprite creation time and random as part of the profiling
                 for (int i = 0; i < totalToAdd; i++)
                 {
-                    CCSprite pSprite = CCSprite.Create(batchNode.Texture, new CCRect(0, 0, 32, 32));
+                    CCSprite pSprite = new CCSprite(batchNode.Texture, new CCRect(0, 0, 32, 32));
                     sprites.Add(pSprite);
                     zs[i] = (int)(CCMacros.CCRandomBetweenNegative1And1() * 50);
 

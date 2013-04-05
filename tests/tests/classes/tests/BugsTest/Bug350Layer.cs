@@ -13,7 +13,7 @@ namespace tests
             if (base.Init())
             {
                 CCSize size = CCDirector.SharedDirector.WinSize;
-                CCSprite background = CCSprite.Create("Hello");
+                CCSprite background = new CCSprite("Hello");
                 background.Position = new CCPoint(size.Width / 2, size.Height / 2);
                 AddChild(background);
                 return true;

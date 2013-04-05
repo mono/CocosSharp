@@ -55,7 +55,7 @@ namespace tests
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
-            m_pBall = CCSprite.Create("Images/ball");
+            m_pBall = new CCSprite("Images/ball");
             m_pBall.Position = new CCPoint(s.Width / 2, s.Height / 2);
             AddChild(m_pBall);
         }

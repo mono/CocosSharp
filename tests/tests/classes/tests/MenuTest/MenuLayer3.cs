@@ -45,9 +45,9 @@ namespace tests
             CCMenuItemLabel item1 = CCMenuItemLabel.Create(label, this.menuCallback2);
             CCMenuItemFont item2 = CCMenuItemFont.Create("--- Go Back ---", this.menuCallback);
 
-            CCSprite spriteNormal = CCSprite.Create(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
-            CCSprite spriteSelected = CCSprite.Create(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
-            CCSprite spriteDisabled = CCSprite.Create(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
+            CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
+            CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
+            CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
 
 
             CCMenuItemSprite item3 = CCMenuItemSprite.Create(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback3);

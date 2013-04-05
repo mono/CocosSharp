@@ -29,7 +29,7 @@ namespace tests
             AddChild(menu);
 
             CCSize s = CCDirector.SharedDirector.WinSize;
-            CCSprite sprite = CCSprite.Create(s_pPathGrossini);
+            CCSprite sprite = new CCSprite(s_pPathGrossini);
             AddChild(sprite);
             
             sprite.Position = new CCPoint(s.Width /2, 40);

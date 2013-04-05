@@ -42,15 +42,15 @@ namespace tests
 
         public CCSprite makeSpriteZ(int aZ)
         {
-            CCSprite sprite = CCSprite.Create(batchNode.Texture, new CCRect(128, 0, 64, 64));
+            CCSprite sprite = new CCSprite(batchNode.Texture, new CCRect(128, 0, 64, 64));
             batchNode.AddChild(sprite, aZ + 1, 0);
 
             //children
-            CCSprite spriteShadow = CCSprite.Create(batchNode.Texture, new CCRect(0, 0, 64, 64));
+            CCSprite spriteShadow = new CCSprite(batchNode.Texture, new CCRect(0, 0, 64, 64));
             spriteShadow.Opacity = 128;
             sprite.AddChild(spriteShadow, aZ, 3);
 
-            CCSprite spriteTop = CCSprite.Create(batchNode.Texture, new CCRect(64, 0, 64, 64));
+            CCSprite spriteTop = new CCSprite(batchNode.Texture, new CCRect(64, 0, 64, 64));
             sprite.AddChild(spriteTop, aZ + 2, 3);
 
             return sprite;

@@ -23,7 +23,7 @@ namespace tests
             //
             // Animation using Sprite BatchNode
             //
-            m_pSprite1 = CCSprite.Create("grossini_dance_01.png");
+            m_pSprite1 = new CCSprite("grossini_dance_01.png");
             m_pSprite1.Position = (new CCPoint(s.Width / 2 -80, s.Height / 2));
 
             CCSpriteBatchNode spritebatch = CCSpriteBatchNode.Create("animations/grossini");
@@ -50,7 +50,7 @@ namespace tests
             //
             // Animation using standard Sprite
             //
-            m_pSprite2 = CCSprite.Create("grossini_dance_01.png");
+            m_pSprite2 = new CCSprite("grossini_dance_01.png");
             m_pSprite2.Position = (new CCPoint(s.Width / 2 + 80, s.Height / 2));
             AddChild(m_pSprite2);
 

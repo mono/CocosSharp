@@ -17,13 +17,13 @@ namespace tests
             // background
             CCLayerColor layer = CCLayerColor.Create(new CCColor4B(255, 0, 0, 255));
             AddChild(layer, -10);
-            CCSprite sprite = CCSprite.Create("Images/grossini");
+            CCSprite sprite = new CCSprite("Images/grossini");
             sprite.Position = new CCPoint(50, 80);
             layer.AddChild(sprite, 10);
 
             // foreground
             CCLayerColor layer2 = CCLayerColor.Create(new CCColor4B(0, 255, 0, 255));
-            CCSprite fog = CCSprite.Create("Images/Fog");
+            CCSprite fog = new CCSprite("Images/Fog");
 
             var bf = new CCBlendFunc {Source = OGLES.GL_SRC_ALPHA, Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA};
             fog.BlendFunc = bf;

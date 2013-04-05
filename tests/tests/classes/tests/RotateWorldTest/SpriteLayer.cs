@@ -22,9 +22,9 @@ namespace tests
             x = size.Width;
             y = size.Height;
 
-            CCSprite sprite = CCSprite.Create(s_pPathGrossini);
-            CCSprite spriteSister1 = CCSprite.Create(s_pPathSister1);
-            CCSprite spriteSister2 = CCSprite.Create(s_pPathSister2);
+            CCSprite sprite = new CCSprite(s_pPathGrossini);
+            CCSprite spriteSister1 = new CCSprite(s_pPathSister1);
+            CCSprite spriteSister2 = new CCSprite(s_pPathSister2);
 
             sprite.Scale = (1.5f);
             spriteSister1.Scale = (1.5f);

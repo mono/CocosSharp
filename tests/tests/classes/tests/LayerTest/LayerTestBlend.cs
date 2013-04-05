@@ -16,8 +16,8 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
             CCLayerColor layer1 = CCLayerColor.Create(new CCColor4B(255, 255, 255, 80));
 
-            CCSprite sister1 = CCSprite.Create(s_pPathSister1);
-            CCSprite sister2 = CCSprite.Create(s_pPathSister2);
+            CCSprite sister1 = new CCSprite(s_pPathSister1);
+            CCSprite sister2 = new CCSprite(s_pPathSister2);
 
             AddChild(sister1);
             AddChild(sister2);

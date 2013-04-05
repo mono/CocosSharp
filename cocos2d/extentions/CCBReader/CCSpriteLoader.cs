@@ -10,7 +10,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCSprite.Create();
+            return new CCSprite();
         }
 
         protected override void OnHandlePropTypeSpriteFrame(CCNode node, CCNode parent, string propertyName, CCSpriteFrame spriteFrame,

@@ -25,7 +25,7 @@ namespace tests
             AddChild(l);
             l.Position = (new CCPoint(s.Width / 2, 245));
 
-            CCSprite pGrossini = CCSprite.Create(s_pPathGrossini);
+            CCSprite pGrossini = new CCSprite(s_pPathGrossini);
             AddChild(pGrossini, 0, (int)KTag.kTagGrossini);
             pGrossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
 

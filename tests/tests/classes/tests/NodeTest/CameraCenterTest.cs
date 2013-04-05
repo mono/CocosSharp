@@ -12,7 +12,7 @@ namespace tests
             CCOrbitCamera orbit;
 
             // LEFT-TOP
-            sprite = CCSprite.Create("Images/white-512x512");
+            sprite = new CCSprite("Images/white-512x512");
             AddChild(sprite, 0);
             sprite.Position = new CCPoint(s.Width / 5 * 1, s.Height / 5 * 1);
             sprite.Color = CCTypes.CCRed;
@@ -22,7 +22,7 @@ namespace tests
 
 
             // LEFT-BOTTOM
-            sprite = CCSprite.Create("Images/white-512x512");
+            sprite = new CCSprite("Images/white-512x512");
             AddChild(sprite, 0, 40);
             sprite.Position = (new CCPoint(s.Width / 5 * 1, s.Height / 5 * 4));
             sprite.Color = CCTypes.CCBlue;
@@ -32,7 +32,7 @@ namespace tests
 
 
             // RIGHT-TOP
-            sprite = CCSprite.Create("Images/white-512x512");
+            sprite = new CCSprite("Images/white-512x512");
             AddChild(sprite, 0);
             sprite.Position = (new CCPoint(s.Width / 5 * 4, s.Height / 5 * 1));
             sprite.Color = CCTypes.CCYellow;
@@ -41,7 +41,7 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (orbit));
 
             // RIGHT-BOTTOM
-            sprite = CCSprite.Create("Images/white-512x512");
+            sprite = new CCSprite("Images/white-512x512");
             AddChild(sprite, 0, 40);
             sprite.Position = (new CCPoint(s.Width / 5 * 4, s.Height / 5 * 4));
             sprite.Color = CCTypes.CCGreen;
@@ -50,7 +50,7 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (orbit));
 
             // CENTER
-            sprite = CCSprite.Create("Images/white-512x512");
+            sprite = new CCSprite("Images/white-512x512");
             AddChild(sprite, 0, 40);
             sprite.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             sprite.Color = CCTypes.CCWhite;

@@ -39,7 +39,7 @@ namespace tests
             int y = (idx / 5) * 121;
 
 
-            CCSprite sprite = CCSprite.Create(batch.Texture, new CCRect(x, y, 85, 121));
+            CCSprite sprite = new CCSprite(batch.Texture, new CCRect(x, y, 85, 121));
             batch.AddChild(sprite);
 
             sprite.Position = (new CCPoint(p.X, p.Y));

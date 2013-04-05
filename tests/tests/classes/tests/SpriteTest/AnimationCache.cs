@@ -83,7 +83,7 @@ namespace tests
             CCFiniteTimeAction seq = CCSequence.FromActions(animN, animG, animB);
 
             // create an sprite without texture
-            CCSprite grossini = CCSprite.Create();
+            CCSprite grossini = new CCSprite();
             grossini.DisplayFrame = frameCache.SpriteFrameByName("grossini_dance_01.png");
 
             CCSize winSize = CCDirector.SharedDirector.WinSize;

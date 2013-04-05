@@ -22,7 +22,7 @@ namespace tests
             layer1.Position = new CCPoint(s.Width / 2 - 80 - (85.0f * 0.5f), s.Height / 2 - (121.0f * 0.5f));
             AddChild(layer1);
 
-            sprite1 = CCSprite.Create(CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName("grossini_dance_01.png"));
+            sprite1 = new CCSprite(CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName("grossini_dance_01.png"));
             sprite1.Position = (new CCPoint(s.Width / 2 - 80, s.Height / 2));
             AddChild(sprite1);
 
@@ -33,7 +33,7 @@ namespace tests
             layer2.Position = new CCPoint(s.Width / 2 + 80 - (85.0f * 0.5f), s.Height / 2 - (121.0f * 0.5f));
             AddChild(layer2);
 
-            sprite2 = CCSprite.Create(CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName("grossini_dance_generic_01.png"));
+            sprite2 = new CCSprite(CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName("grossini_dance_generic_01.png"));
             sprite2.Position = (new CCPoint(s.Width / 2 + 80, s.Height / 2));
             AddChild(sprite2);
 

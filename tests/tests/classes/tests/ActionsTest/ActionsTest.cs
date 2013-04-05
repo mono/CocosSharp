@@ -245,11 +245,11 @@ namespace tests
             base.OnEnter();
 
             // Or you can create an sprite using a filename. only PNG is supported now. Probably TIFF too
-            m_grossini = CCSprite.Create(TestResource.s_pPathGrossini);
+            m_grossini = new CCSprite(TestResource.s_pPathGrossini);
 
-            m_tamara = CCSprite.Create(TestResource.s_pPathSister1);
+            m_tamara = new CCSprite(TestResource.s_pPathSister1);
 
-            m_kathia = CCSprite.Create(TestResource.s_pPathSister2);
+            m_kathia = new CCSprite(TestResource.s_pPathSister2);
 
             AddChild(m_grossini, 1);
             AddChild(m_tamara, 2);
@@ -1426,7 +1426,7 @@ namespace tests
 
             centerSprites(0);
 
-            m_pSpriteTmp = CCSprite.Create("Images/grossini");
+            m_pSpriteTmp = new CCSprite("Images/grossini");
             /* c++ can't support block, so we use CCCallFuncN instead.
             [spriteTmp_ runAction:[CCCallBlockN actionWithBlock:^(CCNode* node) {
                 NSLog(@"This message SHALL ONLY appear when the sprite is added to the scene, NOT BEFORE");
@@ -1468,7 +1468,7 @@ namespace tests
 
             centerSprites(0);
 
-            var spr = CCSprite.Create("Images/grossini");
+            var spr = new CCSprite("Images/grossini");
             spr.Position = new CCPoint(200, 200);
             AddChild(spr);
 
@@ -1527,7 +1527,7 @@ namespace tests
 
             centerSprites(0);
 
-            var spr = CCSprite.Create("Images/grossini");
+            var spr = new CCSprite("Images/grossini");
             spr.Position = new CCPoint(100, 100);
             AddChild(spr);
 
@@ -1558,7 +1558,7 @@ namespace tests
 
             centerSprites(0);
 
-            var spr = CCSprite.Create("Images/grossini");
+            var spr = new CCSprite("Images/grossini");
             spr.Position = new CCPoint(100, 100);
             AddChild(spr);
 
@@ -1585,7 +1585,7 @@ namespace tests
 
             centerSprites(0);
 
-            var spr = CCSprite.Create("Images/grossini");
+            var spr = new CCSprite("Images/grossini");
             spr.Position = new CCPoint(100, 100);
             AddChild(spr);
 

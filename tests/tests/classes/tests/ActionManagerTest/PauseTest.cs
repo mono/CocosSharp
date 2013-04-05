@@ -34,7 +34,7 @@ namespace tests
             //
             // Also, this test MUST be done, after [super onEnter]
             //
-            CCSprite grossini = CCSprite.Create(s_pPathGrossini);
+            CCSprite grossini = new CCSprite(s_pPathGrossini);
             AddChild(grossini, 0, kTagGrossini);
             grossini.Position = (new CCPoint(200, 200));
 

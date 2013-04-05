@@ -41,14 +41,14 @@ namespace tests
             {
                 case 1:
                     {
-                        sprite = CCSprite.Create("Images/grossinis_sister1");
+                        sprite = new CCSprite("Images/grossinis_sister1");
                         parent.AddChild(sprite, 0, tag + 100);
                         break;
                     }
                 case 2:
                 case 3:
                     {
-                        sprite = CCSprite.Create(batchNode.Texture, new CCRect(0, 0, 52, 139));
+                        sprite = new CCSprite(batchNode.Texture, new CCRect(0, 0, 52, 139));
                         batchNode.AddChild(sprite, 0, tag + 100);
                         break;
                     }
@@ -56,7 +56,7 @@ namespace tests
                     {
                         var idx = Random.Next(1, 14);
                         string str = string.Format("Images/grossini_dance_{0:00}", idx);
-                        sprite = CCSprite.Create(str);
+                        sprite = new CCSprite(str);
                         parent.AddChild(sprite, 0, tag + 100);
                         break;
                     }
@@ -71,7 +71,7 @@ namespace tests
 
                         x *= 85;
                         y *= 121;
-                        sprite = CCSprite.Create(batchNode.Texture, new CCRect(x, y, 85, 121));
+                        sprite = new CCSprite(batchNode.Texture, new CCRect(x, y, 85, 121));
                         batchNode.AddChild(sprite, 0, tag + 100);
                         break;
                     }
@@ -85,7 +85,7 @@ namespace tests
                         x = r % 8;
 
                         string str = string.Format("Images/sprites_test/sprite-{0}-{1}", x, y);
-                        sprite = CCSprite.Create(str);
+                        sprite = new CCSprite(str);
                         parent.AddChild(sprite, 0, tag + 100);
                         break;
                     }
@@ -101,7 +101,7 @@ namespace tests
 
                         x *= 32;
                         y *= 32;
-                        sprite = CCSprite.Create(batchNode.Texture, new CCRect(x, y, 32, 32));
+                        sprite = new CCSprite(batchNode.Texture, new CCRect(x, y, 32, 32));
                         batchNode.AddChild(sprite, 0, tag + 100);
                         break;
                     }

@@ -26,12 +26,12 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // the root object just rotates around
-            m_root = CCSprite.Create(s_pPathR1);
+            m_root = new CCSprite(s_pPathR1);
             AddChild(m_root, 1);
             m_root.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
             // the target object is offset from root, and the streak is moved to follow it
-            m_target = CCSprite.Create(s_pPathR1);
+            m_target = new CCSprite(s_pPathR1);
             m_root.AddChild(m_target);
             m_target.Position = new CCPoint(s.Width / 4, 0);
 

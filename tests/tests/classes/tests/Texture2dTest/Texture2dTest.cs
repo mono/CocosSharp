@@ -235,7 +235,7 @@ namespace tests
             CCSize size = CCDirector.SharedDirector.WinSize;
 
             CCLog.Log("Loading 512x512 image...");
-            CCSprite sprite1 = CCSprite.Create("Images/texture512x512");
+            CCSprite sprite1 = new CCSprite("Images/texture512x512");
             if (sprite1 != null)
             {
                 CCLog.Log("OK\n");
@@ -246,7 +246,7 @@ namespace tests
                 CCLog.Log("Error\n");
 
             CCLog.Log("Loading 1024x1024 image...");
-            CCSprite sprite2 = CCSprite.Create("Images/texture1024x1024");
+            CCSprite sprite2 = new CCSprite("Images/texture1024x1024");
             if (sprite2 != null)
             {
                 CCLog.Log("OK\n");
@@ -255,7 +255,7 @@ namespace tests
             else
                 CCLog.Log("Error\n");
             CCLog.Log("Loading 2048x2048 image...");
-            CCSprite sprite3 = CCSprite.Create("Images/texture2048x2048");
+            CCSprite sprite3 = new CCSprite("Images/texture2048x2048");
             if (sprite3 != null)
             {
                 CCLog.Log("OK\n");
@@ -975,7 +975,7 @@ namespace tests
             //
             // Default filter is GL_LINEAR
 	
-            CCSprite sprite = CCSprite.Create("Images/grossinis_sister1");
+            CCSprite sprite = new CCSprite("Images/grossinis_sister1");
             sprite.Position = new CCPoint( s.Width/3.0f, s.Height/2.0f);
             AddChild(sprite);
 	
@@ -986,7 +986,7 @@ namespace tests
             // Sprite 1: GL_NEAREST
             //	
 	
-            CCSprite sprite2 = CCSprite.Create("Images/grossinis_sister2");
+            CCSprite sprite2 = new CCSprite("Images/grossinis_sister2");
             sprite2.Position = new CCPoint(2*s.Width/3.0f, s.Height/2.0f);
             AddChild(sprite2);
 	
@@ -1250,7 +1250,7 @@ namespace tests
 	
             CCSprite sprite;
 
-            sprite = CCSprite.Create("Images/grossinis_sister1");
+            sprite = new CCSprite("Images/grossinis_sister1");
             sprite.Position = new CCPoint(s.Width/5*1, s.Height/2);
             sprite.Texture.SetAliasTexParameters();
             sprite.Scale = 2;
@@ -1258,7 +1258,7 @@ namespace tests
 
             CCTextureCache.SharedTextureCache.RemoveTexture(sprite.Texture);
 	
-            sprite = CCSprite.Create("Images/grossinis_sister1");
+            sprite = new CCSprite("Images/grossinis_sister1");
             sprite.Position = new CCPoint(s.Width/5*2, s.Height/2);
             sprite.Texture.SetAntiAliasTexParameters();
             sprite.Scale = 2;
@@ -1266,7 +1266,7 @@ namespace tests
 
             // 2nd set of sprites
 	
-            sprite = CCSprite.Create("Images/grossinis_sister2");
+            sprite = new CCSprite("Images/grossinis_sister2");
             sprite.Position = new CCPoint(s.Width/5*3, s.Height/2);
             sprite.Texture.SetAliasTexParameters();
             sprite.Scale = 2;
@@ -1274,7 +1274,7 @@ namespace tests
 	
             CCTextureCache.SharedTextureCache.RemoveTextureForKey("Images/grossinis_sister2");
 
-            sprite = CCSprite.Create("Images/grossinis_sister2");
+            sprite = new CCSprite("Images/grossinis_sister2");
             sprite.Position = new CCPoint(s.Width/5*4, s.Height/2);
             sprite.Texture.SetAntiAliasTexParameters();
             sprite.Scale = 2;

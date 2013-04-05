@@ -46,7 +46,7 @@ namespace tests
                 }
                 str = string.Format("grossini_dance_{0}.png", temp);
                 CCSpriteFrame frame = CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName(str);
-                CCSprite sprite = CCSprite.Create(frame);
+                CCSprite sprite = new CCSprite(frame);
                 parent1.AddChild(sprite, i, i);
 
                 float x = -1000;

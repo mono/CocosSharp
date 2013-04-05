@@ -21,10 +21,10 @@ namespace tests
                 //
                 // Animation using Sprite BatchNode
                 //
-                CCSprite sprite = CCSprite.Create("grossini_dance_01.png");
+                CCSprite sprite = new CCSprite("grossini_dance_01.png");
                 sprite.Position = (new CCPoint(s.Width / 4 * (i + 1), s.Height / 2));
 
-                CCSprite point = CCSprite.Create("Images/r1");
+                CCSprite point = new CCSprite("Images/r1");
                 point.Scale = 0.25f;
                 point.Position = sprite.Position;
                 AddChild(point, 1);

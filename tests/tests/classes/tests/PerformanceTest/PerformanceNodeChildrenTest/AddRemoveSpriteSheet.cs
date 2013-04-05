@@ -18,7 +18,7 @@ namespace tests
             {
                 for (int i = 0; i < (quantityOfNodes - currentQuantityOfNodes); i++)
                 {
-                    CCSprite sprite = CCSprite.Create(batchNode.Texture, new CCRect(0, 0, 32, 32));
+                    CCSprite sprite = new CCSprite(batchNode.Texture, new CCRect(0, 0, 32, 32));
                     batchNode.AddChild(sprite);
                     sprite.Position = new CCPoint(Random.Next() * s.Width, Random.Next() * s.Height);
                     sprite.Visible = false;

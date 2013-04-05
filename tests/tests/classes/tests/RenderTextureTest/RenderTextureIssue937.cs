@@ -21,10 +21,10 @@ namespace tests
             CCLayerColor background = CCLayerColor.Create(new CCColor4B(200, 200, 200, 255));
             AddChild(background);
 
-            CCSprite spr_premulti = CCSprite.Create("Images/fire");
+            CCSprite spr_premulti = new CCSprite("Images/fire");
             spr_premulti.Position = new CCPoint(16, 48);
 
-            CCSprite spr_nonpremulti = CCSprite.Create("Images/fire");
+            CCSprite spr_nonpremulti = new CCSprite("Images/fire");
             spr_nonpremulti.Position = new CCPoint(16, 16);
 
 

@@ -64,7 +64,7 @@ namespace cocos2d
 
             m_pTexture.SetAliasTexParameters();
 
-            m_pSprite = CCSprite.Create(m_pTexture);
+            m_pSprite = new CCSprite(m_pTexture);
             //m_pSprite.scaleY = -1;
             m_pSprite.BlendFunc = new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending); // OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
 

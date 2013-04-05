@@ -53,7 +53,7 @@ namespace cocos2d
 	
 		public static CCSprite AddSpriteToTargetWithPosAndAnchor(string spriteName, CCNode target, CCPoint pos, CCPoint anchor)
 		{
-			var sprite = CCSprite.Create(spriteName);
+			var sprite = new CCSprite(spriteName);
     
 			if (sprite == null)
 				return null;

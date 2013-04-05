@@ -34,10 +34,10 @@ namespace tests.Extensions
                 // Create the switch
                 CCControlSwitch switchControl = CCControlSwitch.Create
                     (
-                        CCSprite.Create("extensions/switch-mask"),
-                        CCSprite.Create("extensions/switch-on"),
-                        CCSprite.Create("extensions/switch-off"),
-                        CCSprite.Create("extensions/switch-thumb"),
+                        new CCSprite("extensions/switch-mask"),
+                        new CCSprite("extensions/switch-on"),
+                        new CCSprite("extensions/switch-off"),
+                        new CCSprite("extensions/switch-thumb"),
                         CCLabelTTF.Create("On", "Arial-BoldMT", 16),
                         CCLabelTTF.Create("Off", "Arial-BoldMT", 16)
                     );

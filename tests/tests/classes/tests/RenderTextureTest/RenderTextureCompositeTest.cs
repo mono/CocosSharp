@@ -30,8 +30,8 @@ namespace tests
             var winSize = CCDirector.SharedDirector.WinSize;
             var characterSpriteFactory = new CharacterSpriteFactory();
 
-            _testSprite = CCSprite.Create(@"Images\grossini_dance_01");
-            _testSprite2 = CCSprite.Create(@"Images\grossini_dance_02");
+            _testSprite = new CCSprite(@"Images\grossini_dance_01");
+            _testSprite2 = new CCSprite(@"Images\grossini_dance_02");
 
             _swingAnimate = characterSpriteFactory.CreateAnimateAction();
             _thrustAnimate = characterSpriteFactory.CreateAnimateAction();
@@ -81,7 +81,7 @@ namespace tests
     {
         private CCSprite CreateCustomisationSprite()
         {
-            var sprite = CCSprite.Create(@"Images\grossini_dance_01");
+            var sprite = new CCSprite(@"Images\grossini_dance_01");
             sprite.Color = new CCColor3B
             {
                 B = (byte)cocos2d.Random.Next(0, 255),

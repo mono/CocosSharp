@@ -29,7 +29,7 @@ namespace tests
             AddChild(m_pTarget, -1);
 
             // create a brush image to draw into the texture with
-            m_pBrush = CCSprite.Create("Images/fire");
+            m_pBrush = new CCSprite("Images/fire");
             // It's possible to modify the Brushes blending function by
             CCBlendFunc bbf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
             m_pBrush.BlendFunc = bbf;
@@ -113,7 +113,7 @@ namespace tests
                 Texture2D xnatex = Texture2D.FromStream(DrawManager.graphicsDevice, stream);
                 var tex = new CCTexture2D();
                 tex.InitWithTexture(xnatex);
-                CCSprite sprite = CCSprite.Create(tex);
+                CCSprite sprite = new CCSprite(tex);
 
                 sprite.Scale = 0.3f;
                 AddChild(sprite);

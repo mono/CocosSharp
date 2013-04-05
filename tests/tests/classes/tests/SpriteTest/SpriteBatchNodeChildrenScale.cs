@@ -24,14 +24,14 @@ namespace tests
             // Test 1
             //
             aParent = new CCNode ();
-            sprite1 = CCSprite.Create("grossinis_sister1.png");
+            sprite1 = new CCSprite("grossinis_sister1.png");
             sprite1.Position = new CCPoint(s.Width / 4, s.Height / 4);
             sprite1.ScaleX = -0.5f;
             sprite1.ScaleY = 2.0f;
             sprite1.RunAction(seq);
 
 
-            sprite2 = CCSprite.Create("grossinis_sister2.png");
+            sprite2 = new CCSprite("grossinis_sister2.png");
             sprite2.Position = (new CCPoint(50, 0));
 
             AddChild(aParent);
@@ -45,13 +45,13 @@ namespace tests
             //
 
             aParent = CCSpriteBatchNode.Create("animations/grossini_family");
-            sprite1 = CCSprite.Create("grossinis_sister1.png");
+            sprite1 = new CCSprite("grossinis_sister1.png");
             sprite1.Position = new CCPoint(3 * s.Width / 4, s.Height / 4);
             sprite1.ScaleX = -0.5f;
             sprite1.ScaleY = 2.0f;
             sprite1.RunAction((CCAction)(seq.Copy()));
 
-            sprite2 = CCSprite.Create("grossinis_sister2.png");
+            sprite2 = new CCSprite("grossinis_sister2.png");
             sprite2.Position = (new CCPoint(50, 0));
 
             AddChild(aParent);
@@ -65,13 +65,13 @@ namespace tests
             //
 
             aParent = new CCNode ();
-            sprite1 = CCSprite.Create("grossinis_sister1.png");
+            sprite1 = new CCSprite("grossinis_sister1.png");
             sprite1.Position = (new CCPoint(s.Width / 4, 2 * s.Height / 3));
             sprite1.ScaleX = (1.5f);
             sprite1.ScaleY = -0.5f;
             sprite1.RunAction((CCAction)(seq.Copy()));
 
-            sprite2 = CCSprite.Create("grossinis_sister2.png");
+            sprite2 = new CCSprite("grossinis_sister2.png");
             sprite2.Position = (new CCPoint(50, 0));
 
             AddChild(aParent);
@@ -84,13 +84,13 @@ namespace tests
             //
 
             aParent = CCSpriteBatchNode.Create("animations/grossini_family");
-            sprite1 = CCSprite.Create("grossinis_sister1.png");
+            sprite1 = new CCSprite("grossinis_sister1.png");
             sprite1.Position = (new CCPoint(3 * s.Width / 4, 2 * s.Height / 3));
             sprite1.ScaleX = 1.5f;
             sprite1.ScaleY = -0.5f;
             sprite1.RunAction((CCAction)(seq.Copy()));
 
-            sprite2 = CCSprite.Create("grossinis_sister2.png");
+            sprite2 = new CCSprite("grossinis_sister2.png");
             sprite2.Position = (new CCPoint(50, 0));
 
             AddChild(aParent);

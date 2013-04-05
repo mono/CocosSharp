@@ -37,7 +37,7 @@ namespace tests
             CCActionInterval pSequence = (CCActionInterval)CCSequence.FromActions(pMove, pCallback);
             pSequence.Tag = (int)KTag.kTagSequence;
 
-            CCSprite pChild = CCSprite.Create(s_pPathGrossini);
+            CCSprite pChild = new CCSprite(s_pPathGrossini);
             pChild.Position = (new CCPoint(200, 200));
 
             AddChild(pChild, 1, kTagGrossini);

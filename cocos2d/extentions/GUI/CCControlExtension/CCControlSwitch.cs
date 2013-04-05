@@ -478,7 +478,7 @@ namespace cocos2d
 
             if (m_pMaskSprite == null)
             {
-                m_pMaskSprite = Create(m_pMaskTexture);
+                m_pMaskSprite = new CCSprite(m_pMaskTexture);
                 m_pMaskSprite.AnchorPoint = new CCPoint(0, 0);
                 m_pMaskSprite.BlendFunc = new CCBlendFunc(OGLES.GL_ZERO, OGLES.GL_SRC_ALPHA);
             }

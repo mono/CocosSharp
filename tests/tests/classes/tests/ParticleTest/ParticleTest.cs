@@ -226,7 +226,7 @@ namespace tests
             labelAtlas.Position = new CCPoint(s.Width - 66, 50);
 
             // moving background
-            m_background = CCSprite.Create(TestResource.s_back3);
+            m_background = new CCSprite(TestResource.s_back3);
             AddChild(m_background, 5);
             m_background.Position = new CCPoint(s.Width / 2, s.Height - 180);
 
@@ -954,8 +954,8 @@ namespace tests
             CCParallaxNode p = CCParallaxNode.Create();
             AddChild(p, 5);
 
-            CCSprite p1 = CCSprite.Create(TestResource.s_back3);
-            CCSprite p2 = CCSprite.Create(TestResource.s_back3);
+            CCSprite p1 = new CCSprite(TestResource.s_back3);
+            CCSprite p2 = new CCSprite(TestResource.s_back3);
 
             p.AddChild(p1, 1, new CCPoint(0.5f, 1), new CCPoint(0, 250));
             p.AddChild(p2, 2, new CCPoint(1.5f, 1), new CCPoint(0, 50));

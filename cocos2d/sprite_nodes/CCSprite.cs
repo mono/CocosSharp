@@ -402,65 +402,53 @@ namespace cocos2d
 
         #endregion
 
-        public static CCSprite Create(CCTexture2D texture)
+        public CCSprite (CCTexture2D texture)
         {
-            var sprite = new CCSprite();
-            if (sprite.InitWithTexture(texture))
+            if (!InitWithTexture(texture))
             {
-                return sprite;
+				CCLog.Log("CCSprite (CCTexture2D texture): Problems initializing class"); 
             }
-            return null;
         }
 
-        public static CCSprite Create(CCTexture2D texture, CCRect rect)
+        public CCSprite (CCTexture2D texture, CCRect rect)
         {
-            var sprite = new CCSprite();
-            if (sprite.InitWithTexture(texture, rect))
+            if (!InitWithTexture(texture, rect))
             {
-                return sprite;
+				CCLog.Log("CCSprite (CCTexture2D texture, CCRect rect): Problems initializing class"); 
+
             }
-            return null;
         }
 
-        public static CCSprite Create(string fileName)
+        public CCSprite (string fileName)
         {
-            var sprite = new CCSprite();
-            if (sprite.InitWithFile(fileName))
+            if (!InitWithFile(fileName))
             {
-                return sprite;
-            }
-
-            return null;
+				CCLog.Log("CCSprite (string fileName): Problems initializing class"); 
+			}
         }
 
-        public static CCSprite Create(string fileName, CCRect rect)
+        public CCSprite (string fileName, CCRect rect)
         {
-            var sprite = new CCSprite();
-            if (sprite.InitWithFile(fileName, rect))
+            if (!InitWithFile(fileName, rect))
             {
-                return sprite;
-            }
-            return null;
+				CCLog.Log("CCSprite (string fileName, CCRect rect): Problems initializing class"); 
+			}
         }
 
-        public static CCSprite Create(CCSpriteFrame pSpriteFrame)
+        public CCSprite (CCSpriteFrame pSpriteFrame)
         {
-            var pobSprite = new CCSprite();
-            if (pobSprite.InitWithSpriteFrame(pSpriteFrame))
+            if (!InitWithSpriteFrame(pSpriteFrame))
             {
-                return pobSprite;
-            }
-            return null;
+				CCLog.Log("CCSprite (CCSpriteFrame pSpriteFrame): Problems initializing class"); 
+			}
         }
 
-        public new static CCSprite Create()
+        public CCSprite ()
         {
-            var pobSprite = new CCSprite();
-            if (pobSprite.Init())
+            if (!Init())
             {
-                return pobSprite;
-            }
-            return null;
+				CCLog.Log("CCSprite (): Problems initializing class"); 
+			}
         }
 
         public virtual bool Init()
