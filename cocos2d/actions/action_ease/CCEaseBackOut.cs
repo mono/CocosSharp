@@ -2,7 +2,14 @@ namespace cocos2d
 {
     public class CCEaseBackOut : CCActionEase
     {
-        public override void Update(float time)
+
+		public CCEaseBackOut (CCActionInterval pAction) : base (pAction)
+		{ }
+
+		protected CCEaseBackOut (CCEaseBackOut easeBackOut) : base (easeBackOut)
+		{}
+
+		public override void Update(float time)
         {
             const float overshoot = 1.70158f;
 
@@ -17,28 +24,19 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCEaseBackOut pCopy;
-
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone as CCEaseBackOut;
-            }
+                var pCopy = pZone as CCEaseBackOut;
+				pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
+				
+				return pCopy;
+			}
             else
             {
-                pCopy = new CCEaseBackOut();
+                return new CCEaseBackOut(this);
             }
 
-            pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
-
-            return pCopy;
-        }
-
-        public new static CCEaseBackOut Create(CCActionInterval pAction)
-        {
-            var pRet = new CCEaseBackOut();
-            pRet.InitWithAction(pAction);
-            return pRet;
         }
     }
 }

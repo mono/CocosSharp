@@ -392,7 +392,7 @@ namespace cocos2d
                 case kCCBKeyframeEasing.kCCBKeyframeEasingBackIn:
                     return new CCEaseBackIn(pAction);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingBackOut:
-                    return CCEaseBackOut.Create(pAction);
+                    return new CCEaseBackOut(pAction);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingBackInOut:
                     return CCEaseBackInOut.Create(pAction);
                 case kCCBKeyframeEasing.kCCBKeyframeEasingBounceIn:

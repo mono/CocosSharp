@@ -455,7 +455,7 @@ namespace tests
             var move_ease_in = new CCEaseBackIn((CCActionInterval) (move.Copy()));
             var move_ease_in_back = move_ease_in.Reverse();
 
-            var move_ease_out = CCEaseBackOut.Create((CCActionInterval) (move.Copy()));
+            var move_ease_out = new CCEaseBackOut((CCActionInterval) (move.Copy()));
             var move_ease_out_back = move_ease_out.Reverse();
 
             var delay = new CCDelayTime (0.25f);
