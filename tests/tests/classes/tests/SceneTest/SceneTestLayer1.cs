@@ -11,17 +11,20 @@ namespace tests
     public class SceneTestLayer1 : CCLayer
     {
         string s_pPathGrossini = "Images/grossini";
+        private CCMenuItemFont _PopMenuItem;
+        private CCMenu _TheMenu;
 
         public SceneTestLayer1()
         {
             CCMenuItemFont item1 = CCMenuItemFont.Create("Test pushScene", onPushScene);
             CCMenuItemFont item2 = CCMenuItemFont.Create("Test pushScene w/transition", onPushSceneTran);
             CCMenuItemFont item3 = CCMenuItemFont.Create("Quit", onQuit);
+            _PopMenuItem = CCMenuItemFont.Create("Test popScene w/transition", onPopSceneTran);
 
-            CCMenu menu = CCMenu.Create(item1, item2, item3);
-            menu.AlignItemsVertically();
+            _TheMenu = new CCMenu(item1, item2, item3, _PopMenuItem);
+            _TheMenu.AlignItemsVertically();
 
-            AddChild(menu);
+            AddChild(_TheMenu);
 
             CCSize s = CCDirector.SharedDirector.WinSize;
             CCSprite sprite = new CCSprite(s_pPathGrossini);
@@ -38,6 +41,8 @@ namespace tests
         {
             CCLog.Log("SceneTestLayer1#onEnter");
             base.OnEnter();
+            _PopMenuItem.Visible = CCDirector.SharedDirector.CanPopScene;
+            _TheMenu.AlignItemsVerticallyWithPadding(12f);
         }
 
         public override void OnEnterTransitionDidFinish()
@@ -66,6 +71,15 @@ namespace tests
             scene.AddChild(pLayer, 0);
 
             CCDirector.SharedDirector.PushScene(CCTransitionSlideInT.Create(1f, scene));
+        }
+
+        public void onPopSceneTran(object pSender)
+        {
+            CCScene scene = new SceneTestScene();
+            CCLayer pLayer = new SceneTestLayer2();
+            scene.AddChild(pLayer, 0);
+
+            CCDirector.SharedDirector.PopScene(1f, CCTransitionSlideInB.Create(1f, scene));
         }
 
         public void onQuit(object pSender) 
