@@ -253,6 +253,18 @@ namespace Box2D.Collision
 	/// Input parameters for b2TimeOfImpact
 	public struct b2TOIInput
 	{
+		public static b2TOIInput Zero = b2TOIInput.Create();
+
+		public static b2TOIInput Create()
+		{
+			var toi = new b2TOIInput();
+			toi.proxyA = new b2DistanceProxy();
+			toi.proxyB = new b2DistanceProxy();
+			toi.sweepA = new b2Sweep();
+			toi.sweepB = new b2Sweep();
+			return toi;
+		}
+
 		public b2DistanceProxy proxyA;
 		public b2DistanceProxy proxyB;
 		public b2Sweep sweepA;
