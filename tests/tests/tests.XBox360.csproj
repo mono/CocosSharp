@@ -562,6 +562,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\box2d\box2d.XBox360.csproj">
+      <Project>{2429512B-C898-49C5-84BE-E4A659FC1647}</Project>
+      <Name>box2d.XBox360</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\cocos2d\cocos2d.XBox360.csproj">
       <Project>{D551499A-180B-40DA-BEB0-97E42B38BF95}</Project>
       <Name>cocos2d.XBox360</Name>

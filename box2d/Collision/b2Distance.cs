@@ -240,8 +240,10 @@ namespace Box2D.Collision
         }
 
 
-        b2SimplexVertex m_v1, m_v2, m_v3;
-        int m_count;
+        private b2SimplexVertex m_v1 = new b2SimplexVertex();
+        private b2SimplexVertex m_v2 = new b2SimplexVertex();
+        private b2SimplexVertex m_v3 = new b2SimplexVertex();
+        private int m_count;
 
 
         // Solve a line segment using barycentric coordinates.
@@ -509,7 +511,7 @@ namespace Box2D.Collision
                 b2SimplexVertex vertex = vertices[simplex.m_count];
                 vertex.indexA = proxyA.GetSupport(b2Math.b2MulT(transformA.q, -d));
                 vertex.wA = b2Math.b2Mul(transformA, proxyA.GetVertex(vertex.indexA));
-                b2Vec2 wBLocal;
+//                b2Vec2 wBLocal = new b2Vec2();
                 vertex.indexB = proxyB.GetSupport(b2Math.b2MulT(transformB.q, d));
                 vertex.wB = b2Math.b2Mul(transformB, proxyB.GetVertex(vertex.indexB));
                 vertex.w = vertex.wB - vertex.wA;
