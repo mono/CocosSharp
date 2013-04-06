@@ -62,7 +62,7 @@ namespace Box2D.Collision
         private int m_freeList;
 
         /// This is used to incrementally traverse the tree for re-balancing.
-        private uint m_path;
+//        private uint m_path;
 
         private int m_insertionCount;
 
@@ -90,7 +90,7 @@ namespace Box2D.Collision
             m_nodes[m_nodeCapacity - 1].height = -1;
             m_freeList = 0;
 
-            m_path = 0;
+//            m_path = 0;
 
             m_insertionCount = 0;
         }

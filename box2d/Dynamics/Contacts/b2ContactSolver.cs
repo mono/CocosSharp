@@ -457,7 +457,7 @@ namespace Box2D.Dynamics.Contacts
             // Compute b'
             b -= b2Math.b2Mul(vc.K, a);
 
-            float k_errorTol = 1e-3f;
+//            float k_errorTol = 1e-3f;
 
             while(true)
             {

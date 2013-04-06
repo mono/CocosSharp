@@ -25,8 +25,6 @@ namespace Box2D.Common
     {
         private long m_tickStart = 0L;
 
-        static float s_invFrequency = 0.0f;
-
         public b2Timer()
         {
             Reset();

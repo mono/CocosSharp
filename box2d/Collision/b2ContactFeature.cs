@@ -28,6 +28,11 @@ namespace Box2D.Collision
             typeB = tB;
         }
 
+        public override int GetHashCode()
+        {
+            return key;
+        }
+
         public override bool Equals(object o)
         {
             b2ContactFeature bcf = (b2ContactFeature)o;

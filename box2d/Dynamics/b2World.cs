@@ -36,7 +36,11 @@ namespace Box2D.Dynamics
 
         public bool IsLocked
         {
+#if XBOX
+            get { return ((m_flags & b2WorldFlags.e_locked) == b2WorldFlags.e_locked); }
+#else
             get { return (m_flags.HasFlag(b2WorldFlags.e_locked)); }
+#endif
         }
         private b2WorldFlags m_flags;
         public b2WorldFlags Flags

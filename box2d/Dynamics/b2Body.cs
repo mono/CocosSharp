@@ -8,9 +8,11 @@ using Box2D.Collision;
 using Box2D.Collision.Shapes;
 using Box2D.Dynamics.Joints;
 using Box2D.Dynamics.Contacts;
+using Box2D;
 
 namespace Box2D.Dynamics
 {
+
     public enum b2BodyType
     {
         b2_staticBody = 0,
