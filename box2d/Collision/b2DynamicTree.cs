@@ -108,13 +108,26 @@ namespace Box2D.Collision
                 m_nodeCapacity *= 2;
                 m_nodes = new b2TreeNode[m_nodeCapacity];
 
+				// initialize new b2TreeNode
+				for (int i = 0; i < m_nodeCount; i++)
+				{
+					m_nodes[i] = oldNodes[i];
+				}
+
                 // Build a linked list for the free list. The parent
                 // pointer becomes the "next" pointer.
                 for (int i = m_nodeCount; i < m_nodeCapacity - 1; ++i)
                 {
+					if (m_nodes[i] == null)
+						m_nodes[i] = new b2TreeNode();
+
                     m_nodes[i].next = i + 1;
                     m_nodes[i].height = -1;
                 }
+
+				if (m_nodes[m_nodeCapacity - 1] == null)
+					m_nodes[m_nodeCapacity - 1] = new b2TreeNode();
+
                 m_nodes[m_nodeCapacity - 1].next = b2TreeNode.b2_nullNode;
                 m_nodes[m_nodeCapacity - 1].height = -1;
                 m_freeList = m_nodeCount;

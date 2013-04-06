@@ -731,7 +731,7 @@ namespace Box2D.Dynamics
                         int indexB = c.GetChildIndexB();
 
                         // Compute the time of impact in interval [0, minTOI]
-                        b2TOIInput input = new b2TOIInput();
+                        b2TOIInput input = b2TOIInput.Zero;
                         input.proxyA.Set(fA.Shape, indexA);
                         input.proxyB.Set(fB.Shape, indexB);
                         input.sweepA = bA.Sweep;

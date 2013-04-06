@@ -27,6 +27,11 @@ namespace Box2D.Dynamics.Contacts
 
     public class b2EdgeAndCircleContact : b2Contact
     {
+
+		public b2EdgeAndCircleContact(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB)
+			: this(fixtureA, fixtureB)
+		{ }
+
         public b2EdgeAndCircleContact(b2Fixture fixtureA, b2Fixture fixtureB)
             : base(fixtureA, 0, fixtureB, 0)
         {

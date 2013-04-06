@@ -40,12 +40,12 @@ namespace Box2D.Dynamics.Contacts
     /// </summary>
     public class b2ContactEdge
     {
-        public b2Body Other;            ///< provides quick access to the other body attached.
-        public b2Contact Contact;        ///< the contact
+        public b2Body Other;            //< provides quick access to the other body attached.
+        public b2Contact Contact;        //< the contact
         public bool hasPrev;
-        public b2ContactEdge Prev;    ///< the previous contact edge in the body's contact list
+        public b2ContactEdge Prev;    //< the previous contact edge in the body's contact list
         public bool hasNext;
-        public b2ContactEdge Next;    ///< the next contact edge in the body's contact list
+        public b2ContactEdge Next;    //< the next contact edge in the body's contact list
     }
 
     [Flags]
@@ -169,6 +169,8 @@ namespace Box2D.Dynamics.Contacts
             Debug.Assert(0 <= type2 && type2 < b2ShapeType.e_typeCount);
 
             Type createFcn = s_registers[(int)type1, (int)type2].contactType;
+
+
             if (createFcn != null)
             {
                 if (s_registers[(int)type1, (int)type2].isPrimary)
@@ -193,16 +195,19 @@ namespace Box2D.Dynamics.Contacts
             m_indexA = indexA;
             m_indexB = indexB;
 
+			m_manifold = new b2Manifold();
             m_manifold.pointCount = 0;
 
             Prev = null;
             Next = null;
 
-            NodeA.Contact = null;
-            NodeA.hasPrev = false;
-            NodeA.hasNext = false;
-            NodeA.Other = null;
+			m_NodeA = new b2ContactEdge();
+			m_NodeA.Contact = null;
+			m_NodeA.hasPrev = false;
+			m_NodeA.hasNext = false;
+			m_NodeA.Other = null;
 
+			m_nodeB = new b2ContactEdge();
             m_nodeB.Contact = null;
             m_nodeB.hasPrev = false;
             m_nodeB.hasNext = false;
