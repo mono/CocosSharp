@@ -19,6 +19,7 @@ namespace cocos2d
         {
             m_bIgnoreAnchorPointForPosition = true;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
+            ContentSize = CCDirector.SharedDirector.WinSize;
         }
 
         /// <summary>
@@ -37,20 +38,7 @@ namespace cocos2d
         /// <returns></returns>
         public virtual bool Init()
         {
-            bool bRet = false;
-            do
-            {
-                CCDirector director = CCDirector.SharedDirector;
-                if (director == null)
-                {
-                    break;
-                }
-
-                ContentSize = director.WinSize;
-                // success
-                bRet = true;
-            } while (false);
-            return bRet;
+            return (true);
         }
 
         public new static CCScene Create()

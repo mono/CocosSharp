@@ -78,7 +78,7 @@ namespace tests
         public void onPopSceneTran(object pSender)
         {
             CCScene scene = new SceneTestScene();
-            CCLayer pLayer = new SceneTestLayer2();
+            CCLayer pLayer = new SceneTestLayer1();
             scene.AddChild(pLayer, 0);
 
             CCDirector.SharedDirector.PopScene(1f, CCTransitionSlideInB.Create(1f, scene));
