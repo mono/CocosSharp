@@ -28,10 +28,10 @@ namespace Box2D.Collision
     /// Set count to zero on first call.
     public class b2SimplexCache
     {
-        public float metric;        ///< length or area
+        public float metric;        //< length or area
         public int count;
-        public uint[] indexA = new uint[3];    ///< vertices on shape A
-        public uint[] indexB = new uint[3];    ///< vertices on shape B
+        public uint[] indexA = new uint[3];    //< vertices on shape A
+        public uint[] indexB = new uint[3];    //< vertices on shape B
     }
     /// Input for b2Math.b2Distance.
     /// You have to option to use the shape radii
@@ -48,10 +48,10 @@ namespace Box2D.Collision
     /// Output for b2Math.b2Distance.
     public class b2DistanceOutput
     {
-        public b2Vec2 pointA;        ///< closest point on shapeA
-        public b2Vec2 pointB;        ///< closest point on shapeB
+        public b2Vec2 pointA;        //< closest point on shapeA
+        public b2Vec2 pointB;        //< closest point on shapeB
         public float distance;
-        public int iterations;    ///< number of GJK iterations used
+        public int iterations;    //< number of GJK iterations used
     };
 
 
@@ -82,8 +82,12 @@ namespace Box2D.Collision
             // Copy data from cache.
             m_count = (int)cache.count;
             b2SimplexVertex[] vertices = new b2SimplexVertex[] { m_v1, m_v2, m_v3 };
+
             for (int i = 0; i < m_count; ++i)
             {
+				if (vertices[i] == null)
+					vertices[i] = new b2SimplexVertex();
+
                 b2SimplexVertex v = vertices[i];
                 v.indexA = (int)cache.indexA[i];
                 v.indexB = (int)cache.indexB[i];
@@ -111,7 +115,7 @@ namespace Box2D.Collision
             // If the cache is empty or invalid ...
             if (m_count == 0)
             {
-                b2SimplexVertex v = vertices[0];
+				b2SimplexVertex v = vertices[0];
                 v.indexA = 0;
                 v.indexB = 0;
                 b2Vec2 wALocal = proxyA.GetVertex(0);
@@ -240,7 +244,7 @@ namespace Box2D.Collision
         }
 
 
-        b2SimplexVertex m_v1, m_v2, m_v3;
+		b2SimplexVertex m_v1= new b2SimplexVertex(), m_v2= new b2SimplexVertex(), m_v3 = new b2SimplexVertex();
         int m_count;
 
 

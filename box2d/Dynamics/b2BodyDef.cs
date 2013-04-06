@@ -10,24 +10,34 @@ namespace Box2D.Dynamics
     /// You can safely re-use body definitions. Shapes are added to a body after construction.
     public struct b2BodyDef
     {
-        public void Defaults() 
+
+		public static b2BodyDef Default = b2BodyDef.Create();
+
+		public void Defaults() 
+		{
+			userData = null;
+			position = b2Vec2.Zero;
+			position.Set(0.0f, 0.0f);
+			angle = 0.0f;
+			linearVelocity = b2Vec2.Zero;
+			linearVelocity.Set(0.0f, 0.0f);
+			angularVelocity = 0.0f;
+			linearDamping = 0.0f;
+			angularDamping = 0.0f;
+			allowSleep = true;
+			awake = true;
+			fixedRotation = false;
+			bullet = false;
+			type = b2BodyType.b2_staticBody;
+			active = true;
+			gravityScale = 1.0f;
+		}
+
+		static public b2BodyDef Create() 
         {
-            userData = null;
-            position = new b2Vec2();
-            position.Set(0.0f, 0.0f);
-            angle = 0.0f;
-            linearVelocity = new b2Vec2();
-            linearVelocity.Set(0.0f, 0.0f);
-            angularVelocity = 0.0f;
-            linearDamping = 0.0f;
-            angularDamping = 0.0f;
-            allowSleep = true;
-            awake = true;
-            fixedRotation = false;
-            bullet = false;
-            type = b2BodyType.b2_staticBody;
-            active = true;
-            gravityScale = 1.0f;
+			var bodyDef = new b2BodyDef();
+			bodyDef.Defaults();
+			return bodyDef;
         }
 
         /// The body type: static, kinematic, or dynamic.
