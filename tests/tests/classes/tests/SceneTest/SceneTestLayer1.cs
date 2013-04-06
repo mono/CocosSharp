@@ -16,10 +16,10 @@ namespace tests
 
         public SceneTestLayer1()
         {
-            CCMenuItemFont item1 = CCMenuItemFont.Create("Test pushScene", onPushScene);
-            CCMenuItemFont item2 = CCMenuItemFont.Create("Test pushScene w/transition", onPushSceneTran);
-            CCMenuItemFont item3 = CCMenuItemFont.Create("Quit", onQuit);
-            _PopMenuItem = CCMenuItemFont.Create("Test popScene w/transition", onPopSceneTran);
+            CCMenuItemFont item1 = CCMenuItemFont.Create("(1) Test pushScene", onPushScene);
+            CCMenuItemFont item2 = CCMenuItemFont.Create("(1) Test pushScene w/transition", onPushSceneTran);
+            CCMenuItemFont item3 = CCMenuItemFont.Create("(1) Quit", onQuit);
+            _PopMenuItem = CCMenuItemFont.Create("(1) Test popScene w/transition", onPopSceneTran);
 
             _TheMenu = new CCMenu(item1, item2, item3, _PopMenuItem);
             _TheMenu.AlignItemsVertically();
@@ -33,8 +33,6 @@ namespace tests
             CCActionInterval rotate = new CCRotateBy (2, 360);
             CCAction repeat = new CCRepeatForever (rotate);
             sprite.RunAction(repeat);
-
-            Schedule(testDealloc);
         }
 
         public override void OnEnter()
@@ -49,11 +47,6 @@ namespace tests
         {
             CCLog.Log("SceneTestLayer1#onEnterTransitionDidFinish");
             base.OnEnterTransitionDidFinish();
-        }
-
-        public void testDealloc(float dt)
-        {
-            //UXLOG("SceneTestLayer1:testDealloc");    
         }
 
         public void onPushScene(object pSender)
@@ -84,13 +77,7 @@ namespace tests
 
         public void onQuit(object pSender) 
         {
-            //getCocosApp()->exit();
-            //CCDirector::sharedDirector()->popScene();
-
-            //// HA HA... no more terminate on sdk v3.0
-            //// http://developer.apple.com/iphone/library/qa/qa2008/qa1561.html
-            //if( [[UIApplication sharedApplication] respondsToSelector:@selector(terminate)] )
-            //	[[UIApplication sharedApplication] performSelector:@selector(terminate)];
+            CCDirector.SharedDirector.PopToRootScene();
         }
     }
 }

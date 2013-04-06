@@ -18,10 +18,10 @@ namespace tests
         {
             m_timeCounter = 0;
 
-            CCMenuItemFont item1 = CCMenuItemFont.Create("replaceScene", onReplaceScene);
-            CCMenuItemFont item2 = CCMenuItemFont.Create("replaceScene w/transition", onReplaceSceneTran);
-            CCMenuItemFont item3 = CCMenuItemFont.Create("Go Back", onGoBack);
-            _PopMenuItem = CCMenuItemFont.Create("Test popScene w/transition", onPopSceneTran);
+            CCMenuItemFont item1 = CCMenuItemFont.Create("(2) replaceScene", onReplaceScene);
+            CCMenuItemFont item2 = CCMenuItemFont.Create("(2) replaceScene w/transition", onReplaceSceneTran);
+            CCMenuItemFont item3 = CCMenuItemFont.Create("(2) Go Back", onGoBack);
+            _PopMenuItem = CCMenuItemFont.Create("(2) Test popScene w/transition", onPopSceneTran);
 
             _TheMenu = new CCMenu(item1, item2, item3, _PopMenuItem);
             _TheMenu.AlignItemsVertically();
@@ -53,7 +53,7 @@ namespace tests
 
         public override void OnEnter()
         {
-            CCLog.Log("SceneTestLayer1#onEnter");
+            CCLog.Log("SceneTestLayer2#onEnter");
             base.OnEnter();
             _PopMenuItem.Visible = CCDirector.SharedDirector.CanPopScene;
             _TheMenu.AlignItemsVerticallyWithPadding(12f);

@@ -19,9 +19,9 @@ namespace tests
         {
             InitWithColor(new CCColor4B(0, 0, 255, 255));
 
-            CCMenuItemFont item1 = CCMenuItemFont.Create("Touch to pushScene (self)", item0Clicked);
-            CCMenuItemFont item2 = CCMenuItemFont.Create("Touch to popScene", item1Clicked);
-            CCMenuItemFont item3 = CCMenuItemFont.Create("Touch to popToRootScene", item2Clicked);
+            CCMenuItemFont item1 = CCMenuItemFont.Create("(3) Touch to pushScene (self)", item0Clicked);
+            CCMenuItemFont item2 = CCMenuItemFont.Create("(3) Touch to popScene", item1Clicked);
+            CCMenuItemFont item3 = CCMenuItemFont.Create("(3) Touch to popToRootScene", item2Clicked);
 
             CCMenu menu = CCMenu.Create(item1, item2, item3);
             menu.AlignItemsVertically();
