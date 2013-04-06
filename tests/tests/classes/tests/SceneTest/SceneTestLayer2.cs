@@ -11,19 +11,22 @@ namespace tests
     {
         string s_pPathGrossini = "Images/grossini";
         float m_timeCounter;
+        private CCMenuItemFont _PopMenuItem;
+        private CCMenu _TheMenu;
 
         public SceneTestLayer2()
         {
             m_timeCounter = 0;
 
-            CCMenuItemFont item1 = CCMenuItemFont.Create("replaceScene", onReplaceScene);
-            CCMenuItemFont item2 = CCMenuItemFont.Create("replaceScene w/transition", onReplaceSceneTran);
-            CCMenuItemFont item3 = CCMenuItemFont.Create("Go Back", onGoBack);
+            CCMenuItemFont item1 = CCMenuItemFont.Create("(2) replaceScene", onReplaceScene);
+            CCMenuItemFont item2 = CCMenuItemFont.Create("(2) replaceScene w/transition", onReplaceSceneTran);
+            CCMenuItemFont item3 = CCMenuItemFont.Create("(2) Go Back", onGoBack);
+            _PopMenuItem = CCMenuItemFont.Create("(2) Test popScene w/transition", onPopSceneTran);
 
-            CCMenu menu = CCMenu.Create(item1, item2, item3);
-            menu.AlignItemsVertically();
+            _TheMenu = new CCMenu(item1, item2, item3, _PopMenuItem);
+            _TheMenu.AlignItemsVertically();
 
-            AddChild(menu);
+            AddChild(_TheMenu);
 
             CCSize s = CCDirector.SharedDirector.WinSize;
             CCSprite sprite = new CCSprite(s_pPathGrossini);
@@ -48,6 +51,14 @@ namespace tests
             CCDirector.SharedDirector.PopScene();
         }
 
+        public override void OnEnter()
+        {
+            CCLog.Log("SceneTestLayer2#onEnter");
+            base.OnEnter();
+            _PopMenuItem.Visible = CCDirector.SharedDirector.CanPopScene;
+            _TheMenu.AlignItemsVerticallyWithPadding(12f);
+        }
+
         public void onReplaceScene(object pSender)
         {
             CCScene pScene = new SceneTestScene();
@@ -61,7 +72,16 @@ namespace tests
             CCScene pScene = new SceneTestScene();
             CCLayer pLayer = new SceneTestLayer3();
             pScene.AddChild(pLayer, 0);
-            CCDirector.SharedDirector.ReplaceScene(CCTransitionFlipX.Create(2, pScene, tOrientation.kOrientationUpOver));
+            CCDirector.SharedDirector.ReplaceScene(new CCTransitionFlipX(2, pScene, tOrientation.kOrientationUpOver));
+        }
+
+        public void onPopSceneTran(object pSender)
+        {
+            CCScene scene = new SceneTestScene();
+            CCLayer pLayer = new SceneTestLayer1();
+            scene.AddChild(pLayer, 0);
+
+            CCDirector.SharedDirector.PopScene(1f, CCTransitionSlideInB.Create(1f, scene));
         }
 
         //CREATE_NODE(SceneTestLayer2);

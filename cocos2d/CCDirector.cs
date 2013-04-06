@@ -818,7 +818,7 @@ namespace cocos2d
                     m_pRunningScene.OnEnter();
                     m_pRunningScene.OnEnterTransitionDidFinish();
                 }
-        }
+            }
         }
 
         public void Resume()
@@ -945,13 +945,46 @@ namespace cocos2d
             }
         }
 
-        public void PopScene()
+        public void PopScene(float t, CCTransitionScene s)
         {
             Debug.Assert(m_pRunningScene != null, "m_pRunningScene cannot be null");
 
             if (m_pobScenesStack.Count > 0)
             {
-                CCScene s = m_pobScenesStack[m_pobScenesStack.Count - 1];
+                // CCScene s = m_pobScenesStack[m_pobScenesStack.Count - 1];
+                m_pobScenesStack.RemoveAt(m_pobScenesStack.Count - 1);
+            }
+            int c = m_pobScenesStack.Count;
+
+            if (c == 0)
+            {
+                End(); // This should not happen here b/c we need to capture the current state and just deactivate the game (for Android).
+            }
+            else
+            {
+                m_bSendCleanupToScene = true;
+                m_pNextScene = m_pobScenesStack[c - 1];
+                if (s != null)
+                {
+                    m_pNextScene.Visible = true;
+                    s.InitWithDuration(t, m_pNextScene);
+                    m_pobScenesStack.Add(s);
+                    m_pNextScene = s;
+                }
+            }
+        }
+
+        public void PopScene()
+        {
+            PopScene(0, null);
+        }
+        /*
+         * old popscene
+            Debug.Assert(m_pRunningScene != null, "m_pRunningScene cannot be null");
+
+            if (m_pobScenesStack.Count > 0)
+            {
+                // CCScene s = m_pobScenesStack[m_pobScenesStack.Count - 1];
                 m_pobScenesStack.RemoveAt(m_pobScenesStack.Count - 1);
             }
             int c = m_pobScenesStack.Count;
@@ -966,6 +999,7 @@ namespace cocos2d
                 m_pNextScene = m_pobScenesStack[c - 1];
             }
         }
+         */
 
         public void PopToRootScene()
         {

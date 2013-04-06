@@ -11,17 +11,20 @@ namespace tests
     public class SceneTestLayer1 : CCLayer
     {
         string s_pPathGrossini = "Images/grossini";
+        private CCMenuItemFont _PopMenuItem;
+        private CCMenu _TheMenu;
 
         public SceneTestLayer1()
         {
-            CCMenuItemFont item1 = CCMenuItemFont.Create("Test pushScene", onPushScene);
-            CCMenuItemFont item2 = CCMenuItemFont.Create("Test pushScene w/transition", onPushSceneTran);
-            CCMenuItemFont item3 = CCMenuItemFont.Create("Quit", onQuit);
+            CCMenuItemFont item1 = CCMenuItemFont.Create("(1) Test pushScene", onPushScene);
+            CCMenuItemFont item2 = CCMenuItemFont.Create("(1) Test pushScene w/transition", onPushSceneTran);
+            CCMenuItemFont item3 = CCMenuItemFont.Create("(1) Quit", onQuit);
+            _PopMenuItem = CCMenuItemFont.Create("(1) Test popScene w/transition", onPopSceneTran);
 
-            CCMenu menu = CCMenu.Create(item1, item2, item3);
-            menu.AlignItemsVertically();
+            _TheMenu = new CCMenu(item1, item2, item3, _PopMenuItem);
+            _TheMenu.AlignItemsVertically();
 
-            AddChild(menu);
+            AddChild(_TheMenu);
 
             CCSize s = CCDirector.SharedDirector.WinSize;
             CCSprite sprite = new CCSprite(s_pPathGrossini);
@@ -30,25 +33,20 @@ namespace tests
             CCActionInterval rotate = new CCRotateBy (2, 360);
             CCAction repeat = new CCRepeatForever (rotate);
             sprite.RunAction(repeat);
-
-            Schedule(testDealloc);
         }
 
         public override void OnEnter()
         {
             CCLog.Log("SceneTestLayer1#onEnter");
             base.OnEnter();
+            _PopMenuItem.Visible = CCDirector.SharedDirector.CanPopScene;
+            _TheMenu.AlignItemsVerticallyWithPadding(12f);
         }
 
         public override void OnEnterTransitionDidFinish()
         {
             CCLog.Log("SceneTestLayer1#onEnterTransitionDidFinish");
             base.OnEnterTransitionDidFinish();
-        }
-
-        public void testDealloc(float dt)
-        {
-            //UXLOG("SceneTestLayer1:testDealloc");    
         }
 
         public void onPushScene(object pSender)
@@ -68,15 +66,18 @@ namespace tests
             CCDirector.SharedDirector.PushScene(CCTransitionSlideInT.Create(1f, scene));
         }
 
+        public void onPopSceneTran(object pSender)
+        {
+            CCScene scene = new SceneTestScene();
+            CCLayer pLayer = new SceneTestLayer2();
+            scene.AddChild(pLayer, 0);
+
+            CCDirector.SharedDirector.PopScene(1f, CCTransitionSlideInB.Create(1f, scene));
+        }
+
         public void onQuit(object pSender) 
         {
-            //getCocosApp()->exit();
-            //CCDirector::sharedDirector()->popScene();
-
-            //// HA HA... no more terminate on sdk v3.0
-            //// http://developer.apple.com/iphone/library/qa/qa2008/qa1561.html
-            //if( [[UIApplication sharedApplication] respondsToSelector:@selector(terminate)] )
-            //	[[UIApplication sharedApplication] performSelector:@selector(terminate)];
+            CCDirector.SharedDirector.PopToRootScene();
         }
     }
 }
