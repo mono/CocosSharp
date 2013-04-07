@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</ProjectGuid>
@@ -166,6 +166,7 @@
     <Compile Include="denshion\EffectPlayer.cs" />
     <Compile Include="denshion\MusicPlayer.cs" />
     <Compile Include="denshion\SimpleAudioEngine.cs" />
+    <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadConnectionDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
@@ -398,7 +399,6 @@
     <Compile Include="touch_dispatcher\ICCTargetedTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>
@@ -445,6 +445,12 @@
     <Reference Include="zlib.net">
       <HintPath>external lib\zlib.net.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\box2d\box2d.csproj">
+      <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
+      <Name>box2d</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

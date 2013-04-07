@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{D551499A-180B-40DA-BEB0-97E42B38BF95}</ProjectGuid>
@@ -162,6 +162,7 @@
     <Compile Include="denshion\EffectPlayer.cs" />
     <Compile Include="denshion\MusicPlayer.cs" />
     <Compile Include="denshion\SimpleAudioEngine.cs" />
+    <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadConnectionDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
@@ -394,7 +395,6 @@
     <Compile Include="touch_dispatcher\ICCTargetedTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>

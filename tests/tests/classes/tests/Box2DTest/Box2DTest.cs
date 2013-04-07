@@ -94,7 +94,7 @@ namespace tests
         }
 
 
-        public void initPhysics()
+        private void initPhysics()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
@@ -118,17 +118,18 @@ namespace tests
             // Call the body factory which allocates memory for the ground body
             // from a pool and creates the ground box shape (also from a pool).
             // The body is also added to the world.
-            b2BodyDef def = new b2BodyDef();
+            b2BodyDef def = b2BodyDef.Create();
             def.allowSleep = true;
             def.position = b2Vec2.Zero;
-            b2Body groundBody = new b2Body(def, world);
+            b2Body groundBody = world.CreateBody(def);
+            groundBody.SetActive(true);
 
             // Define the ground box shape.
 
             // bottom
             b2EdgeShape groundBox = new b2EdgeShape();
-            groundBox.Set(new b2Vec2(0f, 0f), new b2Vec2(s.Width / PTM_RATIO, 0));
-            b2FixtureDef fd = new b2FixtureDef();
+            groundBox.Set(b2Vec2.Zero, new b2Vec2(s.Width / PTM_RATIO, 0));
+            b2FixtureDef fd = b2FixtureDef.Create();
             fd.shape = groundBox;
             groundBody.CreateFixture(fd);
 
@@ -140,7 +141,7 @@ namespace tests
 
             // left
             groundBox = new b2EdgeShape();
-            groundBox.Set(new b2Vec2(0, s.Height / PTM_RATIO), new b2Vec2(0, 0));
+            groundBox.Set(new b2Vec2(0, s.Height / PTM_RATIO), b2Vec2.Zero);
             fd.shape = groundBox;
             groundBody.CreateFixture(fd);
 
@@ -169,6 +170,7 @@ namespace tests
             var child = new Box2DTestLayer();
             s.AddChild(child);
             CCDirector.SharedDirector.ReplaceScene(s);
+            world.SetDebugDraw(new CCDraw());
         }
 
         public override void Draw()
@@ -184,7 +186,9 @@ namespace tests
 
             //kmGLPushMatrix();
 
+            CCDrawingPrimitives.Begin();
             world.DrawDebugData();
+            CCDrawingPrimitives.End();
 
             //world.DrawDebugData();
 
