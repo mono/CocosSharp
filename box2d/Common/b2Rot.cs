@@ -8,6 +8,16 @@ namespace Box2D.Common
     /// Rotation
     public struct b2Rot
     {
+
+        public static b2Rot Default = b2Rot.Create();
+        
+        public static b2Rot Create()
+        {
+            var rot = new b2Rot();
+            rot.SetIdentity();
+            return rot;
+        }
+
         public float s { get { return (_s); } set { _s = value; } }
         public float c { get { return (_c); } set { _c = value; } }
 

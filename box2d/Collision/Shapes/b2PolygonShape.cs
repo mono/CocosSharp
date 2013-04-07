@@ -91,7 +91,7 @@ namespace Box2D.Collision.Shapes
             m_normals[3].Set(-1.0f, 0.0f);
             m_centroid = center;
 
-            b2Transform xf = new b2Transform();
+            b2Transform xf = b2Transform.Default;
             xf.p = center;
             xf.q.Set(angle);
 

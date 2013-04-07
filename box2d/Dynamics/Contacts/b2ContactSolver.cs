@@ -204,7 +204,7 @@ namespace Box2D.Dynamics.Contacts
 
                 Debug.Assert(manifold.pointCount > 0);
 
-                b2Transform xfA = new b2Transform(), xfB = new b2Transform();
+                b2Transform xfA = b2Transform.Default, xfB = b2Transform.Default;
                 xfA.q.Set(aA);
                 xfB.q.Set(aB);
                 xfA.p = cA - b2Math.b2Mul(xfA.q, localCenterA);
@@ -725,7 +725,7 @@ namespace Box2D.Dynamics.Contacts
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    b2Transform xfA = new b2Transform(), xfB = new b2Transform();
+                    b2Transform xfA = b2Transform.Default, xfB = b2Transform.Default;
                     xfA.q.Set(aA);
                     xfB.q.Set(aB);
                     xfA.p = cA - b2Math.b2Mul(xfA.q, localCenterA);
@@ -815,7 +815,7 @@ namespace Box2D.Dynamics.Contacts
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    b2Transform xfA = new b2Transform(), xfB = new b2Transform();
+                    b2Transform xfA = b2Transform.Default, xfB = b2Transform.Default;
                     xfA.q.Set(aA);
                     xfB.q.Set(aB);
                     xfA.p = cA - b2Math.b2Mul(xfA.q, localCenterA);
