@@ -125,7 +125,7 @@ namespace Box2D.Collision
                 case b2ShapeType.e_edge:
                     {
                         b2EdgeShape edge = (b2EdgeShape)shape;
-                        m_vertices = new b2Vec2[] { edge.Vertex1 };
+                        m_vertices = new b2Vec2[] { edge.Vertex1, edge.Vertex2 };
                         m_count = 2;
                         m_radius = edge.Radius;
                     }
