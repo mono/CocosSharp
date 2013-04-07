@@ -65,12 +65,12 @@ namespace tests
         private const int kTagParentNode = 1;
         private readonly CCTexture2D m_pSpriteTexture; // weak ref
         private b2World world;
+        private CCSpriteBatchNode batch;
 
         public Box2DTestLayer()
         {
             TouchEnabled = true;
             AccelerometerEnabled = true;
-
             CCSize s = CCDirector.SharedDirector.WinSize;
             // init physics
             initPhysics();
@@ -79,9 +79,9 @@ namespace tests
 
             //Set up sprite
             // Use batch node. Faster
-            CCSpriteBatchNode parent = CCSpriteBatchNode.Create("Images/blocks", 100);
-            m_pSpriteTexture = parent.Texture;
-            AddChild(parent, 0, kTagParentNode);
+            batch = CCSpriteBatchNode.Create("Images/blocks", 100);
+            m_pSpriteTexture = batch.Texture;
+            AddChild(batch, 0, kTagParentNode);
 
             addNewSpriteAtPosition(new CCPoint(s.Width / 2, s.Height / 2));
 
@@ -100,8 +100,11 @@ namespace tests
 
             var gravity = new b2Vec2(0.0f, -10.0f);
             world = new b2World(gravity);
-
-            // Do we want to let bodies sleep?
+            CCDraw debugDraw = new CCDraw();
+            debugDraw.AppendFlags(b2DrawFlags.e_shapeBit);
+            world.SetDebugDraw(debugDraw);
+            world.SetAllowSleeping(true);
+            world.SetContinuousPhysics(true);
 
             //m_debugDraw = new GLESDebugDraw( PTM_RATIO );
             //world->SetDebugDraw(m_debugDraw);
@@ -170,7 +173,6 @@ namespace tests
             var child = new Box2DTestLayer();
             s.AddChild(child);
             CCDirector.SharedDirector.ReplaceScene(s);
-            world.SetDebugDraw(new CCDraw());
         }
 
         public override void Draw()
@@ -207,7 +209,8 @@ namespace tests
             var sprite = new PhysicsSprite();
             sprite.InitWithTexture(m_pSpriteTexture, new CCRect(32 * idx, 32 * idy, 32, 32));
 
-            parent.AddChild(sprite);
+            batch.AddChild(sprite);
+//            parent.AddChild(sprite);
 
             sprite.Position = new CCPoint(p.X, p.Y);
 
@@ -217,18 +220,18 @@ namespace tests
             def.position = new b2Vec2(p.X / PTM_RATIO, p.Y / PTM_RATIO);
             b2Body body = world.CreateBody(def);
             body.BodyType = b2BodyType.b2_dynamicBody;
-            body.SetActive(true);
+            //body.SetActive(true);
             // Define another box shape for our dynamic body.
             var dynamicBox = new b2PolygonShape();
-            // 5f
             dynamicBox.Radius = 5f;
-            dynamicBox.SetAsBox(.5f, .5f, b2Vec2.Zero, 0f); // .SetAsBox(.5f, .5f); //These are mid points for our 1m box
+            dynamicBox.SetAsBox(.5f, .5f); //These are mid points for our 1m box
 
             // Define the dynamic body fixture.
             b2FixtureDef fd = b2FixtureDef.Create();
             fd.shape = dynamicBox;
+            fd.friction = 0.3f;
+            fd.density = 1f;
             b2Fixture fixture = body.CreateFixture(fd);
-            fixture.Friction = 0.3f;
 
             sprite.setPhysicsBody(body);
         }

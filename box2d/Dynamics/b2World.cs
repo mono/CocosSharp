@@ -631,6 +631,9 @@ namespace Box2D.Dynamics
         }
 
         // Find TOI contacts and solve them.
+
+        // TODO: Make this faster, it's very slow.
+
         public void SolveTOI(b2TimeStep step)
         {
             b2Island island = new b2Island(2 * b2Settings.b2_maxTOIContacts, b2Settings.b2_maxTOIContacts, 0, m_contactManager.ContactListener);

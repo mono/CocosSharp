@@ -64,7 +64,7 @@ namespace Box2D.Collision.Shapes
             return clone;
         }
 
-        void SetAsBox(float hx, float hy)
+        public void SetAsBox(float hx, float hy)
         {
             m_vertexCount = 4;
             m_vertices[0].Set(-hx, -hy);
@@ -108,7 +108,7 @@ namespace Box2D.Collision.Shapes
             return 1;
         }
 
-        static b2Vec2 ComputeCentroid(b2Vec2[] vs, int count)
+        public static b2Vec2 ComputeCentroid(b2Vec2[] vs, int count)
         {
             b2Vec2 c = new b2Vec2();
             c.Set(0.0f, 0.0f);

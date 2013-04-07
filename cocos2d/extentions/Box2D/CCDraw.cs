@@ -50,12 +50,12 @@ namespace cocos2d
 
         public override void DrawSolidCircle(b2Vec2 center, float radius, b2Vec2 axis, b2Color color)
         {
-            throw new NotImplementedException();
+            DrawCircle(center, radius, color); // TODO: Implement this
         }
 
         public override void DrawSegment(b2Vec2 p1, b2Vec2 p2, b2Color color)
         {
-            throw new NotImplementedException();
+            CCDrawingPrimitives.DrawLine(p1, p2, color);
         }
 
         public override void DrawTransform(b2Transform xf)
