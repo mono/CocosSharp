@@ -207,9 +207,11 @@ namespace Box2D.Collision
             // Sort the pair buffer to expose duplicates.
             // Sort starting with the m_pairCount
             Array.Sort(m_pairBuffer, 0, m_pairCount, this);
-
+			if (m_pairCount > 0)
+				Console.WriteLine("UpdateParis " + m_pairCount);
             // Send the pairs back to the client.
             int i2 = 0;
+
             while (i2 < m_pairCount)
             {
                 int i1 = i2;

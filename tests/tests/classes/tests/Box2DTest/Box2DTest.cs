@@ -118,7 +118,7 @@ namespace tests
             // Call the body factory which allocates memory for the ground body
             // from a pool and creates the ground box shape (also from a pool).
             // The body is also added to the world.
-            b2BodyDef def = new b2BodyDef();
+            b2BodyDef def = b2BodyDef.Default;
             def.allowSleep = true;
             def.position = b2Vec2.Zero;
             b2Body groundBody = new b2Body(def, world);
@@ -128,7 +128,7 @@ namespace tests
             // bottom
             b2EdgeShape groundBox = new b2EdgeShape();
             groundBox.Set(new b2Vec2(0f, 0f), new b2Vec2(s.Width / PTM_RATIO, 0));
-            b2FixtureDef fd = new b2FixtureDef();
+            b2FixtureDef fd = b2FixtureDef.Create();
             fd.shape = groundBox;
             groundBody.CreateFixture(fd);
 
