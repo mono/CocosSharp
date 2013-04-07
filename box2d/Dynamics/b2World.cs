@@ -444,7 +444,7 @@ namespace Box2D.Dynamics
             }
         }
 
-        // Find islands, integrate and solveraints, solve positionraints
+        // Find islands, integrate and solve raints, solve position raints
         public void Solve(b2TimeStep step)
         {
             m_profile.solveInit = 0.0f;
@@ -483,12 +483,14 @@ namespace Box2D.Dynamics
 
                 if (seed.IsAwake() == false || seed.IsActive() == false)
                 {
+                    Console.WriteLine("Body is not awake or not active, skipping");
                     continue;
                 }
 
                 // The seed can be dynamic or kinematic.
                 if (seed.BodyType == b2BodyType.b2_staticBody)
                 {
+                    Console.WriteLine("Body is a static body, skipping");
                     continue;
                 }
 
@@ -976,9 +978,9 @@ namespace Box2D.Dynamics
 
             step.warmStarting = m_warmStarting;
 
+            b2Timer timer = new b2Timer();
             // Update contacts. This is where some contacts are destroyed.
             {
-                b2Timer timer = new b2Timer();
                 m_contactManager.Collide();
                 m_profile.collide = timer.GetMilliseconds();
             }
@@ -986,7 +988,7 @@ namespace Box2D.Dynamics
             // Integrate velocities, solve velocityraints, and integrate positions.
             if (m_stepComplete && step.dt > 0.0f)
             {
-                b2Timer timer = new b2Timer();
+                timer.Reset();
                 Solve(step);
                 m_profile.solve = timer.GetMilliseconds();
             }
@@ -994,7 +996,7 @@ namespace Box2D.Dynamics
             // Handle TOI events.
             if (m_continuousPhysics && step.dt > 0.0f)
             {
-                b2Timer timer = new b2Timer();
+                timer.Reset();
                 SolveTOI(step);
                 m_profile.solveTOI = timer.GetMilliseconds();
             }

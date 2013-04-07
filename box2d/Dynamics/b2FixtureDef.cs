@@ -20,10 +20,9 @@ namespace Box2D.Dynamics
     /// A fixture definition is used to create a fixture. This class defines an
     /// abstract fixture definition. You can reuse fixture definitions safely.
     /// </summary>
-    public class b2FixtureDef
+    public struct b2FixtureDef
     {
-        /// The constructor sets the default fixture definition values.
-        public b2FixtureDef()
+        public void Defaults() 
         {
             shape = null;
             userData = null;
@@ -31,6 +30,13 @@ namespace Box2D.Dynamics
             restitution = 0.0f;
             density = 0.0f;
             isSensor = false;
+        }
+
+        public static b2FixtureDef Create()
+        {
+            b2FixtureDef d = new b2FixtureDef();
+            d.Defaults();
+            return (d);
         }
 
         /// The shape, this must be set. The shape will be cloned, so you

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using FarseerPhysics;
-using FarseerPhysics.Collision.Shapes;
-using FarseerPhysics.Dynamics;
-using FarseerPhysics.Factories;
+using Box2D;
+using Box2D.Common;
+using Box2D.Collision.Shapes;
+using Box2D.Dynamics;
 using Microsoft.Xna.Framework;
 using cocos2d;
 using Random = cocos2d.Random;
@@ -12,7 +12,7 @@ namespace tests
 {
     internal class PhysicsSprite : CCSprite
     {
-        private Body m_pBody; // strong ref
+        private b2Body m_pBody; // strong ref
 
         public override bool Dirty
         {
@@ -20,17 +20,17 @@ namespace tests
             set { base.Dirty = value; }
         }
 
-        public void setPhysicsBody(Body body)
+        public void setPhysicsBody(b2Body body)
         {
             m_pBody = body;
         }
 
         public override CCAffineTransform NodeToParentTransform()
         {
-            Vector2 pos = m_pBody.Position;
+            b2Vec2 pos = m_pBody.Position;
 
-            float x = pos.X * Box2DTestLayer.PTM_RATIO;
-            float y = pos.Y * Box2DTestLayer.PTM_RATIO;
+            float x = pos.x * Box2DTestLayer.PTM_RATIO;
+            float y = pos.y * Box2DTestLayer.PTM_RATIO;
 
             if (IgnoreAnchorPointForPosition)
             {
@@ -39,7 +39,7 @@ namespace tests
             }
 
             // Make matrix
-            float radians = m_pBody.Rotation;
+            float radians = m_pBody.Angle;
             var c = (float) Math.Cos(radians);
             var s = (float) Math.Sin(radians);
 
@@ -64,7 +64,7 @@ namespace tests
 
         private const int kTagParentNode = 1;
         private readonly CCTexture2D m_pSpriteTexture; // weak ref
-        private World world;
+        private b2World world;
 
         public Box2DTestLayer()
         {
@@ -98,14 +98,10 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            var gravity = new Vector2(0.0f, -10.0f);
-            world = new World(gravity);
+            var gravity = new b2Vec2(0.0f, -10.0f);
+            world = new b2World(gravity);
 
             // Do we want to let bodies sleep?
-            Settings.AllowSleep = true;
-            Settings.ContinuousPhysics = true;
-            Settings.VelocityIterations = 8;
-            Settings.PositionIterations = 1;
 
             //m_debugDraw = new GLESDebugDraw( PTM_RATIO );
             //world->SetDebugDraw(m_debugDraw);
@@ -122,32 +118,44 @@ namespace tests
             // Call the body factory which allocates memory for the ground body
             // from a pool and creates the ground box shape (also from a pool).
             // The body is also added to the world.
-            Body groundBody = BodyFactory.CreateBody(world, new Vector2(0f, 0f));
+            b2BodyDef def = new b2BodyDef();
+            def.allowSleep = true;
+            def.position = b2Vec2.Zero;
+            b2Body groundBody = new b2Body(def, world);
 
             // Define the ground box shape.
 
             // bottom
-            var groundBox = new EdgeShape(new Vector2(0f, 0f), new Vector2(s.Width / PTM_RATIO, 0));
-            groundBody.CreateFixture(groundBox);
+            b2EdgeShape groundBox = new b2EdgeShape();
+            groundBox.Set(new b2Vec2(0f, 0f), new b2Vec2(s.Width / PTM_RATIO, 0));
+            b2FixtureDef fd = new b2FixtureDef();
+            fd.shape = groundBox;
+            groundBody.CreateFixture(fd);
 
             // top
-            groundBox.Set(new Vector2(0, s.Height / PTM_RATIO), new Vector2(s.Width / PTM_RATIO, s.Height / PTM_RATIO));
-            groundBody.CreateFixture(groundBox);
+            groundBox = new b2EdgeShape();
+            groundBox.Set(new b2Vec2(0, s.Height / PTM_RATIO), new b2Vec2(s.Width / PTM_RATIO, s.Height / PTM_RATIO));
+            fd.shape = groundBox;
+            groundBody.CreateFixture(fd);
 
             // left
-            groundBox.Set(new Vector2(0, s.Height / PTM_RATIO), new Vector2(0, 0));
-            groundBody.CreateFixture(groundBox);
+            groundBox = new b2EdgeShape();
+            groundBox.Set(new b2Vec2(0, s.Height / PTM_RATIO), new b2Vec2(0, 0));
+            fd.shape = groundBox;
+            groundBody.CreateFixture(fd);
 
             // right
-            groundBox.Set(new Vector2(s.Width / PTM_RATIO, s.Height / PTM_RATIO), new Vector2(s.Width / PTM_RATIO, 0));
-            groundBody.CreateFixture(groundBox);
+            groundBox = new b2EdgeShape();
+            groundBox.Set(new b2Vec2(s.Width / PTM_RATIO, s.Height / PTM_RATIO), new b2Vec2(s.Width / PTM_RATIO, 0));
+            fd.shape = groundBox;
+            groundBody.CreateFixture(fd);
         }
 
         public void createResetButton()
         {
             CCMenuItemImage res = new CCMenuItemImage("Images/r1", "Images/r2", reset);
 
-            CCMenu menu = CCMenu.Create(res);
+            CCMenu menu = new CCMenu(res);
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
@@ -176,6 +184,8 @@ namespace tests
 
             //kmGLPushMatrix();
 
+            world.DrawDebugData();
+
             //world.DrawDebugData();
 
             //kmGLPopMatrix();
@@ -199,15 +209,21 @@ namespace tests
 
             // Define the dynamic body.
             //Set up a 1m squared box in the physics world
-            Body body = BodyFactory.CreateBody(world, new Vector2(p.X / PTM_RATIO, p.Y / PTM_RATIO));
-            body.BodyType = BodyType.Dynamic;
-
+            b2BodyDef def = b2BodyDef.Create();
+            def.position = new b2Vec2(p.X / PTM_RATIO, p.Y / PTM_RATIO);
+            b2Body body = world.CreateBody(def);
+            body.BodyType = b2BodyType.b2_dynamicBody;
+            body.SetActive(true);
             // Define another box shape for our dynamic body.
-            var dynamicBox = new PolygonShape(5.0f);
-            dynamicBox.SetAsBox(.5f, .5f); //These are mid points for our 1m box
+            var dynamicBox = new b2PolygonShape();
+            // 5f
+            dynamicBox.Radius = 5f;
+            dynamicBox.SetAsBox(.5f, .5f, b2Vec2.Zero, 0f); // .SetAsBox(.5f, .5f); //These are mid points for our 1m box
 
             // Define the dynamic body fixture.
-            Fixture fixture = body.CreateFixture(dynamicBox);
+            b2FixtureDef fd = b2FixtureDef.Create();
+            fd.shape = dynamicBox;
+            b2Fixture fixture = body.CreateFixture(fd);
             fixture.Friction = 0.3f;
 
             sprite.setPhysicsBody(body);
@@ -215,7 +231,7 @@ namespace tests
 
         public override void Update(float dt)
         {
-            world.Step(dt);
+            world.Step(dt, 8, 1);
         }
 
         public override void TouchesEnded(List<CCTouch> touches, CCEvent e)
