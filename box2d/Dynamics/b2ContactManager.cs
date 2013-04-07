@@ -190,6 +190,7 @@ namespace Box2D.Dynamics
 
         public void FindNewContacts()
         {
+
             m_broadPhase.UpdatePairs(this);
         }
 
@@ -242,8 +243,10 @@ namespace Box2D.Dynamics
                 edge = edge.Next;
             }
 
+
+
             // Does a joint override collision? Is at least one body dynamic?
-            if (bodyB.ShouldCollide(bodyA) == false)
+            if (!bodyB.ShouldCollide(bodyA))
             {
                 return;
             }
