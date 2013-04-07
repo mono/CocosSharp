@@ -158,8 +158,8 @@ namespace Box2D.Collision
         public b2Vec2 lowerBound { get { return (m_lowerBound); } set { m_lowerBound = value; } }
         public b2Vec2 upperBound { get { return (m_upperBound); } set { m_upperBound = value; } }
 
-        private b2Vec2 m_lowerBound;    ///< the lower vertex
-        private b2Vec2 m_upperBound;    ///< the upper vertex
+        private b2Vec2 m_lowerBound;    //< the lower vertex
+        private b2Vec2 m_upperBound;    //< the upper vertex
 
     }
 }

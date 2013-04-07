@@ -58,7 +58,7 @@ namespace Box2D.Dynamics
             set { m_islandIndex = value; }
         }
 
-        protected b2Transform m_xf = new b2Transform();        // the body origin transform
+        protected b2Transform m_xf = b2Transform.Default;        // the body origin transform
         public b2Transform XF
         {
             get { return (m_xf); }
@@ -618,11 +618,9 @@ namespace Box2D.Dynamics
 
         public virtual b2Fixture CreateFixture(b2Shape shape, float density)
         {
-            b2FixtureDef def = new b2FixtureDef
-                {
-                    shape = shape,
-                    density = density,
-                };
+            b2FixtureDef def = b2FixtureDef.Default;
+            def.shape = shape;
+            def.density = density;
             return CreateFixture(def);
         }
 
@@ -852,7 +850,7 @@ namespace Box2D.Dynamics
 
         public virtual void SynchronizeFixtures()
         {
-            b2Transform xf1 = new b2Transform();
+            b2Transform xf1 = b2Transform.Default;
             xf1.q.Set(m_sweep.a0);
             xf1.p = m_sweep.c0 - b2Math.b2Mul(xf1.q, m_sweep.localCenter);
 

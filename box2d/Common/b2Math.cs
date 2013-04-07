@@ -163,7 +163,7 @@ namespace Box2D.Common
             // [qs  qc]   [rs  rc]   [qs*rc+qc*rs -qs*rs+qc*rc]
             // s = qs * rc + qc * rs
             // c = qc * rc - qs * rs
-            b2Rot qr = new b2Rot();
+            b2Rot qr = b2Rot.Default;
             qr.s = q.s * r.c + q.c * r.s;
             qr.c = q.c * r.c - q.s * r.s;
             return qr;
@@ -176,7 +176,7 @@ namespace Box2D.Common
             // [-qs qc]   [rs  rc]   [-qs*rc+qc*rs qs*rs+qc*rc]
             // s = qc * rs - qs * rc
             // c = qc * rc + qs * rs
-            b2Rot qr = new b2Rot();
+            b2Rot qr = b2Rot.Default;
             qr.s = q.c * r.s - q.s * r.c;
             qr.c = q.c * r.c + q.s * r.s;
             return qr;
@@ -216,7 +216,7 @@ namespace Box2D.Common
         //    = (A.q * B.q).Rot(v1) + A.q.Rot(B.p) + A.p
         public static b2Transform b2Mul(b2Transform A, b2Transform B)
         {
-            b2Transform C = new b2Transform();
+            b2Transform C = b2Transform.Default;
             C.q = b2Mul(A.q, B.q);
             C.p = b2Mul(A.q, B.p) + A.p;
             return C;
@@ -226,7 +226,7 @@ namespace Box2D.Common
         //    = A.q' * B.q * v1 + A.q' * (B.p - A.p)
         public static b2Transform b2MulT(b2Transform A, b2Transform B)
         {
-            b2Transform C = new b2Transform();
+            b2Transform C = b2Transform.Default;
             C.q = b2MulT(A.q, B.q);
             C.p = b2MulT(A.q, B.p - A.p);
             return C;

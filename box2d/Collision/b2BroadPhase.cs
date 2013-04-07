@@ -208,7 +208,7 @@ namespace Box2D.Collision
             // Sort starting with the m_pairCount
             Array.Sort(m_pairBuffer, 0, m_pairCount, this);
 			if (m_pairCount > 0)
-				Console.WriteLine("UpdateParis " + m_pairCount);
+				Console.WriteLine("UpdatePairs " + m_pairCount);
             // Send the pairs back to the client.
             int i2 = 0;
 
