@@ -483,14 +483,14 @@ namespace Box2D.Dynamics
 
                 if (seed.IsAwake() == false || seed.IsActive() == false)
                 {
-                    Console.WriteLine("Body is not awake or not active, skipping");
+                    //System.Diagnostics.Debug.WriteLine("Body is not awake or not active, skipping");
                     continue;
                 }
 
                 // The seed can be dynamic or kinematic.
                 if (seed.BodyType == b2BodyType.b2_staticBody)
                 {
-                    Console.WriteLine("Body is a static body, skipping");
+                    //System.Diagnostics.Debug.WriteLine("Body is a static body, skipping");
                     continue;
                 }
 
