@@ -22,6 +22,9 @@ namespace Box2D.Dynamics
     /// </summary>
     public struct b2FixtureDef
     {
+
+        public static b2FixtureDef Default = b2FixtureDef.Create();
+
         public void Defaults() 
         {
             shape = null;

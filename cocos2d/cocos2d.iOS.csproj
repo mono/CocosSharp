@@ -438,6 +438,234 @@
     <Compile Include="support\Converters\CCRectConverter.cs" />
     <Compile Include="support\Converters\CCSizeConverter.cs" />
     <Compile Include="support\Serialization\CCSerialization.cs" />
+    <Compile Include="..\box2d\b2FlagExtensions.cs">
+      <Link>box2d\b2FlagExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\b2AABB.cs">
+      <Link>box2d\Collision\b2AABB.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\b2BroadPhase.cs">
+      <Link>box2d\Collision\b2BroadPhase.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\b2Collision.cs">
+      <Link>box2d\Collision\b2Collision.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\b2ContactFeature.cs">
+      <Link>box2d\Collision\b2ContactFeature.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\b2Distance.cs">
+      <Link>box2d\Collision\b2Distance.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\b2DistanceProxy.cs">
+      <Link>box2d\Collision\b2DistanceProxy.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\b2DynamicTree.cs">
+      <Link>box2d\Collision\b2DynamicTree.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\b2Manifold.cs">
+      <Link>box2d\Collision\b2Manifold.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\b2TimeOfImpact.cs">
+      <Link>box2d\Collision\b2TimeOfImpact.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\Shapes\b2ChainShape.cs">
+      <Link>box2d\Collision\Shapes\b2ChainShape.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\Shapes\b2CircleShape.cs">
+      <Link>box2d\Collision\Shapes\b2CircleShape.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\Shapes\b2EdgeShape.cs">
+      <Link>box2d\Collision\Shapes\b2EdgeShape.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\Shapes\b2PolygonShape.cs">
+      <Link>box2d\Collision\Shapes\b2PolygonShape.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Collision\Shapes\b2Shape.cs">
+      <Link>box2d\Collision\Shapes\b2Shape.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Color.cs">
+      <Link>box2d\Common\b2Color.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Draw.cs">
+      <Link>box2d\Common\b2Draw.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Mat22.cs">
+      <Link>box2d\Common\b2Mat22.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Mat33.cs">
+      <Link>box2d\Common\b2Mat33.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Math.cs">
+      <Link>box2d\Common\b2Math.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Rot.cs">
+      <Link>box2d\Common\b2Rot.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Settings.cs">
+      <Link>box2d\Common\b2Settings.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Sweep.cs">
+      <Link>box2d\Common\b2Sweep.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Timer.cs">
+      <Link>box2d\Common\b2Timer.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Transform.cs">
+      <Link>box2d\Common\b2Transform.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Vec2.cs">
+      <Link>box2d\Common\b2Vec2.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Common\b2Vec3.cs">
+      <Link>box2d\Common\b2Vec3.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Ib2QueryCallback.cs">
+      <Link>box2d\Dynamics\Ib2QueryCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2Body.cs">
+      <Link>box2d\Dynamics\b2Body.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2BodyDef.cs">
+      <Link>box2d\Dynamics\b2BodyDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2ContactFilter.cs">
+      <Link>box2d\Dynamics\b2ContactFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2ContactListener.cs">
+      <Link>box2d\Dynamics\b2ContactListener.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2ContactManager.cs">
+      <Link>box2d\Dynamics\b2ContactManager.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2DestructionListener.cs">
+      <Link>box2d\Dynamics\b2DestructionListener.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2Fixture.cs">
+      <Link>box2d\Dynamics\b2Fixture.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2FixtureDef.cs">
+      <Link>box2d\Dynamics\b2FixtureDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2Island.cs">
+      <Link>box2d\Dynamics\b2Island.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2QueryCallback.cs">
+      <Link>box2d\Dynamics\b2QueryCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2RayCastCallback.cs">
+      <Link>box2d\Dynamics\b2RayCastCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2TimeStep.cs">
+      <Link>box2d\Dynamics\b2TimeStep.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2World.cs">
+      <Link>box2d\Dynamics\b2World.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2WorldQueryWrapper.cs">
+      <Link>box2d\Dynamics\b2WorldQueryWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\b2WorldRayCastWrapper.cs">
+      <Link>box2d\Dynamics\b2WorldRayCastWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Contacts\b2ChainAndCircleContact.cs">
+      <Link>box2d\Dynamics\Contacts\b2ChainAndCircleContact.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Contacts\b2ChainAndPolygonContact.cs">
+      <Link>box2d\Dynamics\Contacts\b2ChainAndPolygonContact.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Contacts\b2CircleContact.cs">
+      <Link>box2d\Dynamics\Contacts\b2CircleContact.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Contacts\b2Contact.cs">
+      <Link>box2d\Dynamics\Contacts\b2Contact.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Contacts\b2ContactSolver.cs">
+      <Link>box2d\Dynamics\Contacts\b2ContactSolver.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Contacts\b2EdgeAndCircleContact.cs">
+      <Link>box2d\Dynamics\Contacts\b2EdgeAndCircleContact.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Contacts\b2EdgeAndPolygonContact.cs">
+      <Link>box2d\Dynamics\Contacts\b2EdgeAndPolygonContact.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Contacts\b2PolygonAndCircleContact.cs">
+      <Link>box2d\Dynamics\Contacts\b2PolygonAndCircleContact.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Contacts\b2PolygonContact.cs">
+      <Link>box2d\Dynamics\Contacts\b2PolygonContact.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2DistanceJoint.cs">
+      <Link>box2d\Dynamics\Joints\b2DistanceJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2DistanceJointDef.cs">
+      <Link>box2d\Dynamics\Joints\b2DistanceJointDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2FrictionJoint.cs">
+      <Link>box2d\Dynamics\Joints\b2FrictionJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2FrictionJointDef.cs">
+      <Link>box2d\Dynamics\Joints\b2FrictionJointDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2GearJoint.cs">
+      <Link>box2d\Dynamics\Joints\b2GearJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2GearJointDef.cs">
+      <Link>box2d\Dynamics\Joints\b2GearJointDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2Joint.cs">
+      <Link>box2d\Dynamics\Joints\b2Joint.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2JointDef.cs">
+      <Link>box2d\Dynamics\Joints\b2JointDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2MouseJoint.cs">
+      <Link>box2d\Dynamics\Joints\b2MouseJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2MouseJointDef.cs">
+      <Link>box2d\Dynamics\Joints\b2MouseJointDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2PrismaticJoint.cs">
+      <Link>box2d\Dynamics\Joints\b2PrismaticJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2PrismaticJointDef.cs">
+      <Link>box2d\Dynamics\Joints\b2PrismaticJointDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2PulleyJoint.cs">
+      <Link>box2d\Dynamics\Joints\b2PulleyJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2PullyJointDef.cs">
+      <Link>box2d\Dynamics\Joints\b2PullyJointDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2RevoluteJoint.cs">
+      <Link>box2d\Dynamics\Joints\b2RevoluteJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2RevoluteJointDef.cs">
+      <Link>box2d\Dynamics\Joints\b2RevoluteJointDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2RopeJoint.cs">
+      <Link>box2d\Dynamics\Joints\b2RopeJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2RopeJointDef.cs">
+      <Link>box2d\Dynamics\Joints\b2RopeJointDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2WeldJoint.cs">
+      <Link>box2d\Dynamics\Joints\b2WeldJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2WeldJointDef.cs">
+      <Link>box2d\Dynamics\Joints\b2WeldJointDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2WheelJoint.cs">
+      <Link>box2d\Dynamics\Joints\b2WheelJoint.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Dynamics\Joints\b2WheelJointDef.cs">
+      <Link>box2d\Dynamics\Joints\b2WheelJointDef.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Rope\b2Rope.cs">
+      <Link>box2d\Rope\b2Rope.cs</Link>
+    </Compile>
+    <Compile Include="..\box2d\Rope\b2RopeDef.cs">
+      <Link>box2d\Rope\b2RopeDef.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj">
@@ -452,5 +680,11 @@
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />
     <Folder Include="support\Converters\" />
+    <Folder Include="box2d\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\box2d\Collision\b2Distance.cs.orig">
+      <Link>box2d\Collision\b2Distance.cs.orig</Link>
+    </None>
   </ItemGroup>
 </Project>
