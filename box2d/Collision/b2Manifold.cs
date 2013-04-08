@@ -18,10 +18,10 @@ namespace Box2D.Collision
     /// provide reliable contact forces, especially for high speed collisions.
     public struct b2ManifoldPoint
     {
-        public b2Vec2 localPoint;       ///< usage depends on manifold type
-        public float normalImpulse;     ///< the non-penetration impulse
-        public float tangentImpulse;    ///< the friction impulse
-        public b2ContactFeature id;     ///< uniquely identifies a contact point between two shapes
+        public b2Vec2 localPoint;       //< usage depends on manifold type
+        public float normalImpulse;     //< the non-penetration impulse
+        public float tangentImpulse;    //< the friction impulse
+        public b2ContactFeature id;     //< uniquely identifies a contact point between two shapes
     }
 
     /// A manifold for two touching convex shapes.
@@ -47,31 +47,94 @@ namespace Box2D.Collision
         e_faceB
     }
 
-    /// This is used to compute the current state of a contact manifold.
+    // This is used to compute the current state of a contact manifold.
     public struct b2WorldManifold
     {
-        /// Evaluate the manifold with supplied transforms. This assumes
-        /// modest motion from the original state. This does not change the
-        /// point count, impulses, etc. The radii must come from the shapes
-        /// that generated the manifold.
+        // Evaluate the manifold with supplied transforms. This assumes
+        // modest motion from the original state. This does not change the
+        // point count, impulses, etc. The radii must come from the shapes
+        // that generated the manifold.
         public void Initialize(b2Manifold manifold,
                         b2Transform xfA, float radiusA,
                         b2Transform xfB, float radiusB)
         {
+
             points = new b2Vec2[b2Settings.b2_maxManifoldPoints];
+            for (int p = 0; p < b2Settings.b2_maxManifoldPoints; p++)
+                points[p] = b2Vec2.Zero;
+
+            normal = b2Vec2.Zero;
+
+            if (manifold.pointCount == 0)
+            {
+                return;
+            }
+            
+            switch (manifold.type)
+            {
+            case b2ManifoldType.e_circles:
+            {
+                normal.Set(1.0f, 0.0f);
+                b2Vec2 pointA = b2Math.b2Mul(xfA, manifold.localPoint);
+                b2Vec2 pointB = b2Math.b2Mul(xfB, manifold.points[0].localPoint);
+                if (b2Math.b2DistanceSquared(pointA, pointB) > b2Settings.b2_epsilonSqrd)
+                {
+                    normal = pointB - pointA;
+                    normal.Normalize();
+                }
+                
+                b2Vec2 cA = pointA + radiusA * normal;
+                b2Vec2 cB = pointB - radiusB * normal;
+                points[0] = 0.5f * (cA + cB);
+            }
+                break;
+                
+            case b2ManifoldType.e_faceA:
+            {
+                normal = b2Math.b2Mul(xfA.q, manifold.localNormal);
+                b2Vec2 planePoint = b2Math.b2Mul(xfA, manifold.localPoint);
+                
+                for (int i = 0; i < manifold.pointCount; ++i)
+                {
+                    b2Vec2 clipPoint = b2Math.b2Mul(xfB, manifold.points[i].localPoint);
+                    b2Vec2 cA = clipPoint + (radiusA - b2Math.b2Dot(clipPoint - planePoint, normal)) * normal;
+                    b2Vec2 cB = clipPoint - radiusB * normal;
+                    points[i] = 0.5f * (cA + cB);
+                }
+            }
+                break;
+                
+            case b2ManifoldType.e_faceB:
+            {
+                normal = b2Math.b2Mul(xfB.q, manifold.localNormal);
+                b2Vec2 planePoint = b2Math.b2Mul(xfB, manifold.localPoint);
+                
+                for (int i = 0; i < manifold.pointCount; ++i)
+                {
+                    b2Vec2 clipPoint = b2Math.b2Mul(xfA, manifold.points[i].localPoint);
+                    b2Vec2 cB = clipPoint + (radiusB - b2Math.b2Dot(clipPoint - planePoint, normal)) * normal;
+                    b2Vec2 cA = clipPoint - radiusA * normal;
+                    points[i] = 0.5f * (cA + cB);
+                }
+                
+                // Ensure normal points from A to B.
+                normal = -normal;
+            }
+                break;
+            }
         }
 
-        public b2Vec2 normal;      ///< world vector pointing from A to B
-        public b2Vec2[] points;    ///< world contact point (point of intersection)
+        public b2Vec2 normal;      //< world vector pointing from A to B
+        public b2Vec2[] points;    //< world contact point (point of intersection)
     }
 
     public class b2Manifold
     {
-        public b2ManifoldPoint[] points = new b2ManifoldPoint[b2Settings.b2_maxManifoldPoints];    ///< the points of contact
-        public b2Vec2 localNormal;                                ///< not use for Type::e_points
-        public b2Vec2 localPoint;                                ///< usage depends on manifold type
+        public b2ManifoldPoint[] points = new b2ManifoldPoint[b2Settings.b2_maxManifoldPoints];    //< the points of contact
+        public b2Vec2 localNormal;                                //< not use for Type::e_points
+        public b2Vec2 localPoint;                                //< usage depends on manifold type
         public b2ManifoldType type;
-        public int pointCount;                                ///< the number of manifold points
+        public int pointCount;                                //< the number of manifold points
     }
 
 }
