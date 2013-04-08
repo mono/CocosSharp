@@ -17,6 +17,7 @@ namespace Box2D.Dynamics
         public float solvePosition;
         public float broadphase;
         public float solveTOI;
+        public float solveTOIAdvance;
         public float computeTOI;
         public float timeInInit;
         public int jointCount;

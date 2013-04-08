@@ -813,6 +813,7 @@ namespace Box2D.Dynamics
                     break;
                 }
                 {
+                    b2Timer bt = new b2Timer();
                     // Advance the bodies to the TOI.
                     b2Fixture fA = minContact.GetFixtureA();
                     b2Fixture fB = minContact.GetFixtureB();
@@ -986,6 +987,7 @@ namespace Box2D.Dynamics
                         m_stepComplete = false;
                         break;
                     }
+                    m_profile.solveTOIAdvance += bt.GetMilliseconds();
                 }
             }
         }

@@ -215,6 +215,7 @@ namespace Box2D.Collision
             while (i2 < m_pairCount)
             {
                 int i1 = i2;
+                b2Pair primaryPair = m_pairBuffer[i2];
                 object userDataA = m_tree.GetUserData(m_pairBuffer[i2].proxyIdA);
                 object userDataB = m_tree.GetUserData(m_pairBuffer[i2].proxyIdB);
 
@@ -224,7 +225,8 @@ namespace Box2D.Collision
                 // Skip any duplicate pairs.
                 while (i2 < m_pairCount)
                 {
-                    if (m_pairBuffer[i1].proxyIdA != m_pairBuffer[i2].proxyIdA || m_pairBuffer[i2].proxyIdB != m_pairBuffer[i1].proxyIdB)
+                    b2Pair pair = m_pairBuffer[i2];
+                    if (pair.proxyIdA != primaryPair.proxyIdA || pair.proxyIdB != primaryPair.proxyIdB)
                     {
                         break;
                     }

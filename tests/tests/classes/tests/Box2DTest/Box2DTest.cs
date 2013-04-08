@@ -124,6 +124,7 @@ namespace tests
             b2BodyDef def = b2BodyDef.Default;
             def.allowSleep = true;
             def.position = b2Vec2.Zero;
+            def.type = b2BodyType.b2_staticBody;
             b2Body groundBody = world.CreateBody(def);
             groundBody.SetActive(true);
 
@@ -216,8 +217,8 @@ namespace tests
             //Set up a 1m squared box in the physics world
             b2BodyDef def = b2BodyDef.Create();
             def.position = new b2Vec2(p.X / PTM_RATIO, p.Y / PTM_RATIO);
+            def.type = b2BodyType.b2_dynamicBody;
             b2Body body = world.CreateBody(def);
-            body.BodyType = b2BodyType.b2_dynamicBody;
             //body.SetActive(true);
             // Define another box shape for our dynamic body.
             var dynamicBox = new b2PolygonShape();
@@ -244,7 +245,11 @@ namespace tests
             CCLog.Log("# contacts = {0}", profile.contactCount);
             CCLog.Log("# joints = {0}", profile.jointCount);
             CCLog.Log("# toi iters = {0}", profile.toiSolverIterations);
-            CCLog.Log("Solve TOI Time = {0:F4} {1:F2}%", profile.solveTOI, profile.solveTOI / profile.step * 100f);
+            if (profile.step > 0f)
+            {
+                CCLog.Log("Solve TOI Time = {0:F4} {1:F2}%", profile.solveTOI, profile.solveTOI / profile.step * 100f);
+                CCLog.Log("Solve TOI Advance Time = {0:F4} {1:F2}%", profile.solveTOIAdvance, profile.solveTOIAdvance / profile.step * 100f);
+            }
             /*
             CCLog.Log("BroadPhase Time = {0:F4}", profile.broadphase);
             CCLog.Log("Collision Time = {0:F4}", profile.collide);
