@@ -299,7 +299,7 @@ namespace Box2D.Collision
 		
 		// CCD via the local separating axis method. This seeks progression
 		// by computing the largest time at which separation is maintained.
-		public b2TOIOutput Compute(b2TOIInput input)
+		public static b2TOIOutput Compute(b2TOIInput input)
 		{
 			b2TOIOutput output = new b2TOIOutput();
 			++b2_toiCalls;

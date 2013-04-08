@@ -751,8 +751,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs">
-	<SubType>Code</SubType>
-	</Compile>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureIssue937.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1081,6 +1081,7 @@
     </None>
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <None Include="tests.Phone_2013_04_07_19_23_35.sap" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
@@ -1101,6 +1102,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\box2d\box2d.Phone.csproj">
+      <Project>{8165599E-6F37-41B7-91CD-C7C66232B5F2}</Project>
+      <Name>box2d.Phone</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\cocos2d\cocos2d.Phone.csproj">
       <Project>{47EE6CE6-493D-4967-944A-5E55B71AA9FD}</Project>
       <Name>cocos2d.Phone</Name>

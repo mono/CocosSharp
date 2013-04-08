@@ -444,30 +444,53 @@ namespace Box2D.Dynamics
             }
         }
 
+        private b2Island m_Island;
+
         // Find islands, integrate and solve raints, solve position raints
         public void Solve(b2TimeStep step)
         {
             m_profile.solveInit = 0.0f;
             m_profile.solveVelocity = 0.0f;
             m_profile.solvePosition = 0.0f;
+            m_profile.computeTOI = 0f;
+            m_profile.jointCount = 0;
+            m_profile.contactCount = 0;
+            m_profile.bodyCount = 0;
+            m_profile.toiSolverIterations = 0;
+            m_profile.timeInInit = 0f;
 
             // Size the island for the worst case.
-            b2Island island = new b2Island(m_bodyCount,
+            if (m_Island == null)
+            {
+                m_Island = new b2Island(m_bodyCount,
                             m_contactManager.ContactCount,
                             m_jointCount,
                             m_contactManager.ContactListener);
+            }
+            else
+            {
+                m_Island.Reset(m_bodyCount,
+                            m_contactManager.ContactCount,
+                            m_jointCount,
+                            m_contactManager.ContactListener);
+            }
+
+            b2Island island = m_Island;
 
             // Clear all the island flags.
             for (b2Body b = m_bodyList; b != null; b = b.Next)
             {
+                m_profile.bodyCount++;
                 b.BodyFlags &= ~b2BodyFlags.e_islandFlag;
             }
             for (b2Contact c = m_contactManager.ContactList; c != null; c = c.Next)
             {
+                m_profile.contactCount++;
                 c.Flags &= ~b2ContactFlags.e_islandFlag;
             }
             for (b2Joint j = m_jointList; j != null; j = j.Next)
             {
+                m_profile.jointCount++;
                 j.m_islandFlag = false;
             }
 
@@ -500,7 +523,7 @@ namespace Box2D.Dynamics
                 stack[stackCount++] = seed;
                 seed.BodyFlags |= b2BodyFlags.e_islandFlag;
 
-                // Perform a depth first search (DFS) on theraint graph.
+                // Perform a depth first search (DFS) on the raint graph.
                 while (stackCount > 0)
                 {
                     // Grab the next body off the stack and add it to the island.
@@ -561,6 +584,7 @@ namespace Box2D.Dynamics
                     // Search all joints connect to this body.
                     for (b2JointEdge je = b.JointList; je != null; je = je.Next)
                     {
+                        m_profile.jointCount++;
                         if (je.Joint.m_islandFlag == true)
                         {
                             continue;
@@ -604,30 +628,28 @@ namespace Box2D.Dynamics
                 }
             }
 
+            b2Timer timer = new b2Timer();
+            // Synchronize fixtures, check for out of range bodies.
+            for (b2Body b = m_bodyList; b != null; b = b.Next)
             {
-                b2Timer timer = new b2Timer();
-                // Synchronize fixtures, check for out of range bodies.
-                for (b2Body b = m_bodyList; b != null; b = b.Next)
+                // If a body was not in an island then it did not move.
+                if ((!b.BodyFlags.HasFlag(b2BodyFlags.e_islandFlag)))
                 {
-                    // If a body was not in an island then it did not move.
-                    if ((!b.BodyFlags.HasFlag(b2BodyFlags.e_islandFlag)))
-                    {
-                        continue;
-                    }
-
-                    if (b.BodyType == b2BodyType.b2_staticBody)
-                    {
-                        continue;
-                    }
-
-                    // Update fixtures (for broad-phase).
-                    b.SynchronizeFixtures();
+                    continue;
                 }
 
-                // Look for new contacts.
-                m_contactManager.FindNewContacts();
-                m_profile.broadphase = timer.GetMilliseconds();
+                if (b.BodyType == b2BodyType.b2_staticBody)
+                {
+                    continue;
+                }
+
+                // Update fixtures (for broad-phase).
+                b.SynchronizeFixtures();
             }
+
+            // Look for new contacts.
+            m_contactManager.FindNewContacts();
+            m_profile.broadphase = timer.GetMilliseconds();
         }
 
         // Find TOI contacts and solve them.
@@ -656,8 +678,11 @@ namespace Box2D.Dynamics
             }
 
             // Find TOI events and solve them.
+            b2Body[] bodies = new b2Body[2];
+            b2Timer computeTimer = new b2Timer();
             for (; ; )
             {
+                m_profile.toiSolverIterations++;
                 // Find the first TOI.
                 b2Contact minContact = null;
                 float minAlpha = 1.0f;
@@ -743,7 +768,10 @@ namespace Box2D.Dynamics
                         input.sweepB = bB.Sweep;
                         input.tMax = 1.0f;
 
-                        b2TOIOutput output = (new b2TimeOfImpact()).Compute(input);
+                        computeTimer.Reset();
+                        b2TOIOutput output = b2TimeOfImpact.Compute(input);
+                        m_profile.computeTOI += computeTimer.GetMilliseconds();
+                        // Console.WriteLine("b2TimeOfImpact.compute tool {0:F4} ms", m_profile.computeTOI);
 
                         // Beta is the fraction of the remaining portion of the .
                         float beta = output.t;
@@ -768,7 +796,7 @@ namespace Box2D.Dynamics
                     }
                 }
 
-                if (minContact == null || 1.0f - 10.0f * b2Settings.b2_epsilon < minAlpha)
+                if (minContact == null || b2Settings.b2_alphaEpsilon < minAlpha)
                 {
                     // No more TOI events. Done!
                     m_stepComplete = true;
@@ -818,7 +846,8 @@ namespace Box2D.Dynamics
                     minContact.Flags |= b2ContactFlags.e_islandFlag;
 
                     // Get contacts on bodyA and bodyB.
-                    b2Body[] bodies = new b2Body[] { bA, bB };
+                    bodies[0] = bA;
+                    bodies[1] = bB;
                     for (int i = 0; i < 2; ++i)
                     {
                         b2Body body = bodies[i];

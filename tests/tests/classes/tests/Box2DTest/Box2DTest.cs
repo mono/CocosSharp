@@ -199,8 +199,7 @@ namespace tests
 
         public void addNewSpriteAtPosition(CCPoint p)
         {
-            CCLog.Log("Add sprite {0} x {1}", p.X, p.Y);
-            CCNode parent = GetChildByTag(kTagParentNode);
+            CCLog.Log("Add sprite #{2} : {0} x {1}", p.X, p.Y, batch.ChildrenCount+1);
 
             //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
             //just randomly picking one of the images
@@ -210,7 +209,6 @@ namespace tests
             sprite.InitWithTexture(m_pSpriteTexture, new CCRect(32 * idx, 32 * idy, 32, 32));
 
             batch.AddChild(sprite);
-//            parent.AddChild(sprite);
 
             sprite.Position = new CCPoint(p.X, p.Y);
 
@@ -239,6 +237,21 @@ namespace tests
         public override void Update(float dt)
         {
             world.Step(dt, 8, 1);
+            b2Profile profile = world.Profile;
+            CCLog.Log("]-----------[{0:F4}]-----------------------[", profile.step);
+            CCLog.Log("Solve Time = {0:F4}", profile.solve);
+            CCLog.Log("# bodies = {0}", profile.bodyCount);
+            CCLog.Log("# contacts = {0}", profile.contactCount);
+            CCLog.Log("# joints = {0}", profile.jointCount);
+            CCLog.Log("# toi iters = {0}", profile.toiSolverIterations);
+            CCLog.Log("Solve TOI Time = {0:F4} {1:F2}%", profile.solveTOI, profile.solveTOI / profile.step * 100f);
+            /*
+            CCLog.Log("BroadPhase Time = {0:F4}", profile.broadphase);
+            CCLog.Log("Collision Time = {0:F4}", profile.collide);
+            CCLog.Log("Solve Velocity Time = {0:F4}", profile.solveVelocity);
+            CCLog.Log("Solve Position Time = {0:F4}", profile.solvePosition);
+            CCLog.Log("Step Time = {0:F4}", profile.step);
+             */
         }
 
         public override void TouchesEnded(List<CCTouch> touches, CCEvent e)

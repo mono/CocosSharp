@@ -11,7 +11,7 @@ using Box2D.Dynamics.Joints;
 
 namespace Box2D
 {
-#if XBOX
+#if XBOX || WINDOWS_PHONE
     public static class b2FlagExtensions
     {
             public static bool HasFlag(this b2BodyFlags flag, b2BodyFlags testFlag)

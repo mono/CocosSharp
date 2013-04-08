@@ -76,6 +76,7 @@
     <None Include="GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
+    <None Include="tests.Phone_2013_04_07_19_23_35.sap" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\AppDelegate.cs" />

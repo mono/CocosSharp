@@ -198,21 +198,38 @@ namespace Box2D.Dynamics
             int jointCapacity,
             b2ContactListener listener)
         {
-            m_bodyCapacity = bodyCapacity;
-            m_contactCapacity = contactCapacity;
-            m_jointCapacity = jointCapacity;
+            Reset(bodyCapacity, contactCapacity, jointCapacity, listener);
+        }
+
+        public void Reset(int bodyCapacity,
+            int contactCapacity,
+            int jointCapacity,
+            b2ContactListener listener)
+        {
+            if (m_bodyCapacity < bodyCapacity)
+            {
+                m_bodies = new b2Body[bodyCapacity];
+                m_bodyCapacity = bodyCapacity;
+                m_velocities = new b2Velocity[m_bodyCapacity];
+                m_positions = new b2Position[m_bodyCapacity];
+            }
+            if (m_contactCapacity < contactCapacity)
+            {
+                m_contacts = new b2Contact[contactCapacity];
+                m_contactCapacity = contactCapacity;
+            }
+            if (m_jointCapacity < jointCapacity)
+            {
+                m_joints = new b2Joint[jointCapacity];
+                m_jointCapacity = jointCapacity;
+            }
+
             m_bodyCount = 0;
             m_contactCount = 0;
             m_jointCount = 0;
 
             m_listener = listener;
 
-            m_bodies = new b2Body[bodyCapacity];
-            m_contacts = new b2Contact[contactCapacity];
-            m_joints = new b2Joint[jointCapacity];
-
-            m_velocities = new b2Velocity[m_bodyCapacity];
-            m_positions = new b2Position[m_bodyCapacity];
         }
 
 

@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.Android", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d", "box2d\box2d.csproj", "{B81B6701-7A78-4846-BF6F-04E0591F0F38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.Phone", "box2d\box2d.Phone.csproj", "{8165599E-6F37-41B7-91CD-C7C66232B5F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Android = Debug|Android
@@ -191,6 +193,7 @@ Global
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Android.ActiveCfg = Debug|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Windows Phone.ActiveCfg = Debug|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|x86.ActiveCfg = Debug|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|x86.Build.0 = Debug|x86
@@ -200,6 +203,20 @@ Global
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Windows Phone.ActiveCfg = Release|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|x86.ActiveCfg = Release|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|x86.Build.0 = Release|x86
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Debug|Android.ActiveCfg = Debug|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Debug|Any CPU.ActiveCfg = Debug|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Debug|Mixed Platforms.ActiveCfg = Debug|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Debug|Mixed Platforms.Build.0 = Debug|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Debug|x86.ActiveCfg = Debug|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Release|Android.ActiveCfg = Release|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Release|Any CPU.ActiveCfg = Release|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Release|Mixed Platforms.ActiveCfg = Release|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Release|Mixed Platforms.Build.0 = Release|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Release|Windows Phone.Build.0 = Release|Windows Phone
+		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Release|x86.ActiveCfg = Release|Windows Phone
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

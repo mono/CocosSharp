@@ -334,7 +334,7 @@ namespace Box2D.Dynamics
 
         public virtual b2MassData GetMassData()
         {
-            b2MassData data = new b2MassData();
+            b2MassData data;
             data.mass = m_mass;
             data.I = m_I + m_mass * b2Math.b2Dot(m_sweep.localCenter, m_sweep.localCenter);
             data.center = m_sweep.localCenter;
@@ -383,14 +383,14 @@ namespace Box2D.Dynamics
 
         public virtual bool IsBullet()
         {
-            return (m_flags & b2BodyFlags.e_bulletFlag) == b2BodyFlags.e_bulletFlag;
+            return (m_flags.HasFlag(b2BodyFlags.e_bulletFlag));
         }
 
         public virtual void SetAwake(bool flag)
         {
             if (flag)
             {
-                if ((m_flags & b2BodyFlags.e_awakeFlag) == 0)
+               if (!m_flags.HasFlag(b2BodyFlags.e_awakeFlag))
                 {
                     m_flags |= b2BodyFlags.e_awakeFlag;
                     m_sleepTime = 0.0f;
@@ -398,33 +398,44 @@ namespace Box2D.Dynamics
             }
             else
             {
-                m_flags &= ~b2BodyFlags.e_awakeFlag;
-                m_sleepTime = 0.0f;
-                m_linearVelocity.SetZero();
-                m_angularVelocity = 0.0f;
-                m_force.SetZero();
-                m_torque = 0.0f;
+                if (m_flags.HasFlag(b2BodyFlags.e_awakeFlag))
+                {
+                    m_flags &= ~b2BodyFlags.e_awakeFlag;
+                    m_sleepTime = 0.0f;
+                    m_linearVelocity.SetZero();
+                    m_angularVelocity = 0.0f;
+                    m_force.SetZero();
+                    m_torque = 0.0f;
+                }
             }
         }
 
         public virtual bool IsAwake()
         {
-            return (m_flags & b2BodyFlags.e_awakeFlag) == b2BodyFlags.e_awakeFlag;
+            return (m_flags.HasFlag(b2BodyFlags.e_awakeFlag));
         }
 
         public virtual bool IsActive()
         {
-            return (m_flags & b2BodyFlags.e_activeFlag) == b2BodyFlags.e_activeFlag;
+            return (m_flags.HasFlag(b2BodyFlags.e_activeFlag));
         }
 
         public virtual void SetFixedRotation(bool flag)
         {
             if (flag)
             {
+                if (m_flags.HasFlag(b2BodyFlags.e_fixedRotationFlag))
+                {
+                    return;
+                }
                 m_flags |= b2BodyFlags.e_fixedRotationFlag;
             }
             else
             {
+                if (!m_flags.HasFlag(b2BodyFlags.e_fixedRotationFlag))
+                {
+                    return;
+                }
                 m_flags &= ~b2BodyFlags.e_fixedRotationFlag;
             }
 

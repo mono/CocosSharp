@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{47EE6CE6-493D-4967-944A-5E55B71AA9FD}</ProjectGuid>
@@ -190,6 +190,7 @@
     <Compile Include="cocoa\CCGeometry.cs" />
     <Compile Include="cocoa\ICopyable.cs" />
     <Compile Include="effects\CCGridBase.cs" />
+    <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="extentions\CCBReader\CCBAnimationManager.cs" />
     <Compile Include="extentions\CCBReader\CCBFileLoader.cs" />
     <Compile Include="extentions\CCBReader\CCBKeyframe.cs" />
@@ -409,6 +410,10 @@
     <Folder Include="tools\Debug\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\box2d\box2d.Phone.csproj">
+      <Project>{8165599E-6F37-41B7-91CD-C7C66232B5F2}</Project>
+      <Name>box2d.Phone</Name>
+    </ProjectReference>
     <ProjectReference Include="..\cocos2d.Content.Pipeline.Importers\cocos2d.Content.Pipeline.Importers.csproj">
       <Project>{FBE4633D-00D1-4391-8184-63B91DA28D4B}</Project>
       <Name>cocos2d.Content.Pipeline.Importers</Name>

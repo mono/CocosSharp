@@ -17,6 +17,12 @@ namespace Box2D.Dynamics
         public float solvePosition;
         public float broadphase;
         public float solveTOI;
+        public float computeTOI;
+        public float timeInInit;
+        public int jointCount;
+        public int bodyCount;
+        public int contactCount;
+        public int toiSolverIterations;
     }
 
     /// This is an internal structure.
