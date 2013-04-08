@@ -11,6 +11,7 @@ namespace Box2D.Common
         public static float b2_epsilon = float.Epsilon;
         public static float b2_alphaEpsilon = 1.0f - 10.0f * b2Settings.b2_epsilon;
         public static float b2_pi = (float)Math.PI;
+        public static float b2_epsilonSqrd = b2_epsilon * b2_epsilon;
 
         /// Global tuning constants based on meters-kilograms-seconds (MKS) units.
         ///

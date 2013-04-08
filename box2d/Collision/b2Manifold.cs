@@ -77,7 +77,7 @@ namespace Box2D.Collision
                 normal.Set(1.0f, 0.0f);
                 b2Vec2 pointA = b2Math.b2Mul(xfA, manifold.localPoint);
                 b2Vec2 pointB = b2Math.b2Mul(xfB, manifold.points[0].localPoint);
-                if (b2Math.b2DistanceSquared(pointA, pointB) > b2Settings.b2_epsilon * b2Settings.b2_epsilon)
+                if (b2Math.b2DistanceSquared(pointA, pointB) > b2Settings.b2_epsilonSqrd)
                 {
                     normal = pointB - pointA;
                     normal.Normalize();
