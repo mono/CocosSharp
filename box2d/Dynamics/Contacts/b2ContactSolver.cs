@@ -26,6 +26,21 @@ namespace Box2D.Dynamics.Contacts
 
     public struct b2VelocityConstraintPoint
     {
+        public static b2VelocityConstraintPoint Default = b2VelocityConstraintPoint.Create();
+        
+        public void Defaults() 
+        {
+            rA = b2Vec2.Zero;
+            rB = b2Vec2.Zero;
+        }
+        
+        static public b2VelocityConstraintPoint Create() 
+        {
+            var vcp = new b2VelocityConstraintPoint();
+            vcp.Defaults();
+            return vcp;
+        }
+
         public b2Vec2 rA;
         public b2Vec2 rB;
         public float normalImpulse;
@@ -37,6 +52,22 @@ namespace Box2D.Dynamics.Contacts
 
     public struct b2ContactVelocityConstraint
     {
+        public static b2ContactVelocityConstraint Default = b2ContactVelocityConstraint.Create();
+        
+        public void Defaults() 
+        {
+            points = new b2VelocityConstraintPoint[2] {b2VelocityConstraintPoint.Default, b2VelocityConstraintPoint.Default};
+            normal = b2Vec2.Zero;
+
+        }
+        
+        static public b2ContactVelocityConstraint Create() 
+        {
+            var cvc = new b2ContactVelocityConstraint();
+            cvc.Defaults();
+            return cvc;
+        }
+
         public b2VelocityConstraintPoint[] points;
         public b2Vec2 normal;
         public b2Mat22 normalMass;
@@ -62,6 +93,23 @@ namespace Box2D.Dynamics.Contacts
 
     public struct b2ContactPositionConstraint
     {
+        public static b2ContactPositionConstraint Default = b2ContactPositionConstraint.Create();
+        
+        public void Defaults() 
+        {
+            localPoints = new b2Vec2[] { b2Vec2.Zero, b2Vec2.Zero};
+            localNormal = b2Vec2.Zero;
+            localPoint = b2Vec2.Zero;
+
+        }
+        
+        static public b2ContactPositionConstraint Create() 
+        {
+            var cvc = new b2ContactPositionConstraint();
+            cvc.Defaults();
+            return cvc;
+        }
+
         public b2Vec2[] localPoints;
         public b2Vec2 localNormal;
         public b2Vec2 localPoint;
@@ -90,7 +138,13 @@ namespace Box2D.Dynamics.Contacts
             m_step = def.step;
             m_count = def.count;
             m_positionConstraints = new b2ContactPositionConstraint[m_count];
+            for (int pc = 0; pc < m_count; pc++)
+                m_positionConstraints[pc] = b2ContactPositionConstraint.Default;
+
             m_velocityConstraints = new b2ContactVelocityConstraint[m_count];
+            for (int vc = 0; vc < m_count; vc++)
+                m_velocityConstraints[vc] = b2ContactVelocityConstraint.Default;
+
             m_positions = def.positions;
             m_velocities = def.velocities;
             m_contacts = def.contacts;
