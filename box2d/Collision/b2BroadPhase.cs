@@ -216,8 +216,8 @@ namespace Box2D.Collision
             {
                 int i1 = i2;
                 b2Pair primaryPair = m_pairBuffer[i2];
-                object userDataA = m_tree.GetUserData(m_pairBuffer[i2].proxyIdA);
-                object userDataB = m_tree.GetUserData(m_pairBuffer[i2].proxyIdB);
+                object userDataA = m_tree.GetUserData(primaryPair.proxyIdA);
+                object userDataB = m_tree.GetUserData(primaryPair.proxyIdB);
 
                 callback.AddPair(userDataA, userDataB);
                 ++i2;
