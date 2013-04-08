@@ -656,9 +656,19 @@ namespace Box2D.Dynamics
 
         // TODO: Make this faster, it's very slow.
 
+        private b2Island m_TOIIsland;
+
         public void SolveTOI(b2TimeStep step)
         {
-            b2Island island = new b2Island(2 * b2Settings.b2_maxTOIContacts, b2Settings.b2_maxTOIContacts, 0, m_contactManager.ContactListener);
+            if (m_TOIIsland == null)
+            {
+                m_TOIIsland = new b2Island(2 * b2Settings.b2_maxTOIContacts, b2Settings.b2_maxTOIContacts, 0, m_contactManager.ContactListener);
+            }
+            else
+            {
+                m_TOIIsland.Reset(2 * b2Settings.b2_maxTOIContacts, b2Settings.b2_maxTOIContacts, 0, m_contactManager.ContactListener);
+            }
+            b2Island island = m_TOIIsland;
 
             if (m_stepComplete)
             {
