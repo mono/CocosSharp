@@ -682,12 +682,12 @@ namespace Box2D.Dynamics.Contacts
                             break;
                         }
 
-                        vc.points[0] = cp1;
-                        vc.points[1] = cp2;
 
                         // No solution, give up. This is hit sometimes, but it doesn't seem to matter.
                         break;
                     }
+                    vc.points[0] = cp1;
+                    vc.points[1] = cp2;
                     m_velocityConstraints[i] = vc;
                 }
 
