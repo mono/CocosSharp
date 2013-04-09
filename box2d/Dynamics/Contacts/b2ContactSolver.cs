@@ -220,7 +220,11 @@ namespace Box2D.Dynamics.Contacts
                     vcp.velocityBias = 0.0f;
 
                     pc.localPoints[j] = cp.localPoint;
+                    vc.points[j] = vcp;
                 }
+                //Put back the struct data since struct data is copied by value
+                m_positionConstraints[i] = pc;
+                m_velocityConstraints[i] = vc;
             }
         }
 
@@ -300,6 +304,7 @@ namespace Box2D.Dynamics.Contacts
                     {
                         vcp.velocityBias = -vc.restitution * vRel;
                     }
+                    vc.points[j] = vcp;
                 }
 
                 // If we have two points, then prepare the block solver.
@@ -333,6 +338,8 @@ namespace Box2D.Dynamics.Contacts
                         vc.pointCount = 1;
                     }
                 }
+                m_positionConstraints[i] = pc;
+                m_velocityConstraints[i] = vc;
             }
         }
 
@@ -428,6 +435,7 @@ namespace Box2D.Dynamics.Contacts
 
             vB += mB * P;
             wB += iB * b2Math.b2Cross(vcp.rB, P);
+            vc.points[j] = vcp;
         }
 
         // Solve normal constraints
@@ -454,6 +462,7 @@ namespace Box2D.Dynamics.Contacts
 
             vB += mB * P;
             wB += iB * b2Math.b2Cross(vcp.rB, P);
+            vc.points[0] = vcp;
         }
         else
         {
@@ -673,9 +682,13 @@ namespace Box2D.Dynamics.Contacts
                     break;
                 }
 
+                vc.points[0] = cp1;
+                vc.points[1] = cp2;
+
                 // No solution, give up. This is hit sometimes, but it doesn't seem to matter.
                 break;
             }
+            m_velocityConstraints[i] = vc;
         }
 
         m_velocities[indexA].v = vA;

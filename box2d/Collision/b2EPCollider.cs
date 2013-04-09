@@ -265,6 +265,7 @@ namespace Box2D.Collision
             }
 
             // Get polygonB in frameA
+            m_polygonB = b2TempPolygon.Default;
             m_polygonB.count = polygonB.VertexCount;
             for (int i = 0; i < polygonB.VertexCount; ++i)
             {
