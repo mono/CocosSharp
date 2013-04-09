@@ -10,9 +10,10 @@ namespace Box2D.Common
     /// Shapes are defined with respect to the body origin, which may
     /// no coincide with the center of mass. However, to support dynamics
     /// we must interpolate the center of mass position.
-    public class b2Sweep
+    public struct b2Sweep
     {
-        /*public b2Sweep()
+        public static b2Sweep Default = b2Sweep.Create();
+        public void Defaults()
         {
             localCenter = new b2Vec2();
             c0 = new b2Vec2();
@@ -20,7 +21,15 @@ namespace Box2D.Common
             a0 = 0f;
             a = 0f;
             alpha0 = 0f;
-        }*/
+        }
+
+        public static b2Sweep Create()
+        {
+            b2Sweep w = new b2Sweep();
+            w.Defaults();
+            return (w);
+        }
+
         /// Get the interpolated transform at a specific time.
         /// @param beta is a factor in [0,1], where 0 indicates alpha0.
         public b2Transform GetTransform(b2Transform xfb, float beta)

@@ -33,6 +33,14 @@ namespace Box2D.Collision
             return key;
         }
 
+        public void Set(b2ContactFeature cf)
+        {
+            indexA = cf.indexA;
+            indexB = cf.indexB;
+            typeA = cf.typeA;
+            typeB = cf.typeB;
+        }
+
         public override bool Equals(object o)
         {
             b2ContactFeature bcf = (b2ContactFeature)o;
@@ -47,6 +55,13 @@ namespace Box2D.Collision
             get
             {
                 return (indexA << 24 | indexB << 16 | ((byte)typeA) << 8 | (byte)typeB);
+            }
+            set
+            {
+                indexA = (byte) ((value >> 24) & 0xFF);
+                indexB = (byte) ((value >> 16) & 0xFF);
+                typeA = (((value >> 8) & 0xFF) == 0 ? b2ContactFeatureType.e_vertex : b2ContactFeatureType.e_face);
+                typeB = ((value & 0xFF) == 0 ? b2ContactFeatureType.e_vertex : b2ContactFeatureType.e_face);
             }
         }
 

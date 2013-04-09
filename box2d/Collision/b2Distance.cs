@@ -55,6 +55,13 @@ namespace Box2D.Collision
 	/// in the computation. Even 
 	public struct b2DistanceInput
 	{
+        public static b2DistanceInput Default = b2DistanceInput.Create();
+
+        public static b2DistanceInput Create()
+        {
+            return (new b2DistanceInput());
+        }
+
 		public b2DistanceProxy proxyA;
 		public b2DistanceProxy proxyB;
 		public b2Transform transformA;
@@ -74,7 +81,14 @@ namespace Box2D.Collision
 	
 	public struct b2SimplexVertex
 	{
-		public b2Vec2 wA;        // support point in proxyA
+        public static b2SimplexVertex Default = b2SimplexVertex.Create();
+
+        public static b2SimplexVertex Create()
+        {
+            return (new b2SimplexVertex());
+        }
+        
+        public b2Vec2 wA;        // support point in proxyA
 		public b2Vec2 wB;        // support point in proxyB
 		public b2Vec2 w;        // wB - wA
 		public float a;        // barycentric coordinate for closest point

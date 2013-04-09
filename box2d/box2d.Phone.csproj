@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{8165599e-6f37-41b7-91cd-c7c66232b5f2}</ProjectGuid>
+    <ProjectGuid>{8165599E-6F37-41B7-91CD-C7C66232B5F2}</ProjectGuid>
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">Windows Phone</Platform>
@@ -58,6 +58,7 @@
     <Compile Include="Collision\b2Distance.cs" />
     <Compile Include="Collision\b2DistanceProxy.cs" />
     <Compile Include="Collision\b2DynamicTree.cs" />
+    <Compile Include="Collision\b2EPCollider.cs" />
     <Compile Include="Collision\b2Manifold.cs" />
     <Compile Include="Collision\b2TimeOfImpact.cs" />
     <Compile Include="Collision\Shapes\b2ChainShape.cs" />
