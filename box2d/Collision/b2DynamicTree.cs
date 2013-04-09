@@ -118,10 +118,7 @@ namespace Box2D.Collision
                 m_nodes = new b2TreeNode[m_nodeCapacity];
 
 				// initialize new b2TreeNode
-				for (int i = 0; i < m_nodeCount; i++)
-				{
-					m_nodes[i] = oldNodes[i];
-				}
+                oldNodes.CopyTo(m_nodes, 0);
 
                 // Build a linked list for the free list. The parent
                 // pointer becomes the "next" pointer.

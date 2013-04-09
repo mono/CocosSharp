@@ -11,10 +11,10 @@ namespace Box2D.Collision
     /// This is used for determining the state of contact points.
     public enum b2PointState
     {
-        b2_nullState,        ///< point does not exist
-        b2_addState,        ///< point was added in the update
-        b2_persistState,    ///< point persisted across the update
-        b2_removeState        ///< point was removed in the update
+        b2_nullState,        //< point does not exist
+        b2_addState,        //< point was added in the update
+        b2_persistState,    //< point persisted across the update
+        b2_removeState        //< point was removed in the update
     }
 
     /// Used for computing contact manifolds.
