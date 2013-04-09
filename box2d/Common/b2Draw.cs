@@ -18,11 +18,21 @@ namespace Box2D.Common
     public abstract class b2Draw
     {
         private b2DrawFlags m_drawFlags = 0x0;
+        private int _PTMRatio = 1;
 
         public b2Draw()
         {
         }
 
+        public b2Draw(int ptm)
+        {
+            _PTMRatio = ptm;
+        }
+
+        public int PTMRatio
+        {
+            get { return (_PTMRatio); }
+        }
         /// Set the drawing flags.
         public void SetFlags(b2DrawFlags flags)
         {

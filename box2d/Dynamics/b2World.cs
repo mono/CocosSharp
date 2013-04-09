@@ -781,7 +781,7 @@ namespace Box2D.Dynamics
                         computeTimer.Reset();
                         b2TOIOutput output = b2TimeOfImpact.Compute(input);
 
-                        Console.WriteLine("TOI Output={0}, t={1}", output.state, output.t);
+                        // Console.WriteLine("TOI Output={0}, t={1}", output.state, output.t);
 
                         m_profile.computeTOI += computeTimer.GetMilliseconds();
                         // Console.WriteLine("b2TimeOfImpact.compute tool {0:F4} ms", m_profile.computeTOI);

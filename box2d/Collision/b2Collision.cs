@@ -355,6 +355,7 @@ namespace Box2D.Collision
                         cp.id.typeA = cf.typeB;
                         cp.id.typeB = cf.typeA;
                     }
+                    manifold.points[pointCount] = cp;
                     ++pointCount;
                 }
             }

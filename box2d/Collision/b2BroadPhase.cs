@@ -185,7 +185,7 @@ namespace Box2D.Collision
             m_pairCount = 0;
 
             // Perform tree queries for all moving proxies.
-            Console.WriteLine("move_count={0}", m_moveCount);
+            // Console.WriteLine("move_count={0}", m_moveCount);
 
             for (int i = 0; i < m_moveCount; ++i)
             {
@@ -209,8 +209,8 @@ namespace Box2D.Collision
             // Sort the pair buffer to expose duplicates.
             // Sort starting with the m_pairCount
             Array.Sort(m_pairBuffer, 0, m_pairCount, this);
-			if (m_pairCount > 0)
-				Console.WriteLine("UpdatePairs " + m_pairCount);
+//			if (m_pairCount > 0)
+//				Console.WriteLine("UpdatePairs " + m_pairCount);
             // Send the pairs back to the client.
             int i2 = 0;
 

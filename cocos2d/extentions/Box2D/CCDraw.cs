@@ -29,23 +29,47 @@ namespace cocos2d
 {
 	public class CCDraw : b2Draw
 	{
-		public CCDraw() 
+        private b2Vec2 _Center = new b2Vec2(0f, 0f);
+
+		public CCDraw(int ptm) 
+            : base(ptm)
 		{
 		}
 
+        public CCDraw(b2Vec2 drawCenter)
+        {
+            _Center = drawCenter;
+        }
+
+        public CCDraw(b2Vec2 drawCenter, int ptm)
+            : base(ptm)
+        {
+            _Center = drawCenter;
+        }
+
         public override void DrawPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
         {
-            CCDrawingPrimitives.DrawPoly(vertices, vertexCount, true, color);
+            b2Vec2[] alt = new b2Vec2[vertexCount];
+            for (int i = 0; i < vertexCount; i++)
+            {
+                alt[i] = vertices[i] * PTMRatio + _Center;
+            }
+            CCDrawingPrimitives.DrawPoly(alt, vertexCount, true, color);
         }
 
         public override void DrawSolidPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
         {
-            CCDrawingPrimitives.DrawSolidPoly(vertices, vertexCount, color);
+            b2Vec2[] alt = new b2Vec2[vertexCount];
+            for (int i = 0; i < vertexCount; i++)
+            {
+                alt[i] = vertices[i] * PTMRatio + _Center;
+            }
+            CCDrawingPrimitives.DrawSolidPoly(alt, vertexCount, color);
         }
 
         public override void DrawCircle(b2Vec2 center, float radius, b2Color color)
         {
-            CCDrawingPrimitives.DrawCircle(center, radius, color);
+            CCDrawingPrimitives.DrawCircle(center * PTMRatio + _Center, radius * PTMRatio, color);
         }
 
         public override void DrawSolidCircle(b2Vec2 center, float radius, b2Vec2 axis, b2Color color)
@@ -55,7 +79,7 @@ namespace cocos2d
 
         public override void DrawSegment(b2Vec2 p1, b2Vec2 p2, b2Color color)
         {
-            CCDrawingPrimitives.DrawLine(p1, p2, color);
+            CCDrawingPrimitives.DrawLine(p1 * PTMRatio + _Center, p2 * PTMRatio + _Center, color);
         }
 
         public override void DrawTransform(b2Transform xf)

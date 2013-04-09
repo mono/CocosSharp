@@ -100,7 +100,9 @@ namespace tests
 
             var gravity = new b2Vec2(0.0f, -10.0f);
             world = new b2World(gravity);
-            CCDraw debugDraw = new CCDraw();
+            float debugWidth = s.Width / PTM_RATIO * 2f;
+            float debugHeight = s.Height / PTM_RATIO * 2f;
+            CCDraw debugDraw = new CCDraw(new b2Vec2(debugWidth / 2f + 10, s.Height - debugHeight - 10), 2);
             debugDraw.AppendFlags(b2DrawFlags.e_shapeBit);
             world.SetDebugDraw(debugDraw);
             world.SetAllowSleeping(true);
@@ -238,6 +240,8 @@ namespace tests
         public override void Update(float dt)
         {
             world.Step(dt, 8, 1);
+
+            /*
             b2Profile profile = world.Profile;
             CCLog.Log("]-----------[{0:F4}]-----------------------[", profile.step);
             CCLog.Log("Solve Time = {0:F4}", profile.solve);
@@ -250,7 +254,7 @@ namespace tests
                 CCLog.Log("Solve TOI Time = {0:F4} {1:F2}%", profile.solveTOI, profile.solveTOI / profile.step * 100f);
                 CCLog.Log("Solve TOI Advance Time = {0:F4} {1:F2}%", profile.solveTOIAdvance, profile.solveTOIAdvance / profile.step * 100f);
             }
-            /*
+
             CCLog.Log("BroadPhase Time = {0:F4}", profile.broadphase);
             CCLog.Log("Collision Time = {0:F4}", profile.collide);
             CCLog.Log("Solve Velocity Time = {0:F4}", profile.solveVelocity);
