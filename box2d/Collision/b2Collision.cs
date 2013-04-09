@@ -316,7 +316,7 @@ namespace Box2D.Collision
             return numOut;
         }
 
-        public static bool b2TestOverlap(b2AABB a, b2AABB b)
+        public static bool b2TestOverlap(ref b2AABB a, ref b2AABB b)
         {
             b2Vec2 d1, d2;
             d1 = b.lowerBound - a.upperBound;
@@ -336,7 +336,20 @@ namespace Box2D.Collision
                              b2Shape shapeB, int indexB,
                             b2Transform xfA, b2Transform xfB)
         {
-            return (false);
+            b2DistanceInput input;
+            input.proxyA = new b2DistanceProxy(shapeA, indexA);
+            input.proxyB = new b2DistanceProxy(shapeB, indexB);
+            input.transformA = xfA;
+            input.transformB = xfB;
+            input.useRadii = true;
+
+            b2SimplexCache cache = b2SimplexCache.Default;
+
+            b2DistanceOutput output = new b2DistanceOutput();
+
+            b2Simplex.b2Distance(ref output, ref cache, ref input);
+
+            return output.distance < 10.0f * b2Settings.b2_epsilon;
         }
 
         // Find the max separation between poly1 and poly2 using edge normals from poly1.

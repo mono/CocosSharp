@@ -50,7 +50,7 @@ namespace cocos2d
 
         public override void DrawSolidCircle(b2Vec2 center, float radius, b2Vec2 axis, b2Color color)
         {
-            DrawCircle(center, radius, color); // TODO: Implement this
+            DrawCircle(center, radius, color); 
         }
 
         public override void DrawSegment(b2Vec2 p1, b2Vec2 p2, b2Color color)
@@ -60,7 +60,17 @@ namespace cocos2d
 
         public override void DrawTransform(b2Transform xf)
         {
-            throw new NotImplementedException();
+            float axisScale = 0.4f;
+            b2Vec2 p1 = xf.p;
+
+            b2Vec2 col1 = new b2Vec2(xf.q.c, xf.q.s);
+            b2Vec2 col2 = new b2Vec2(-xf.q.s, xf.q.c);
+
+            b2Vec2 p2 = p1 + axisScale * col1;
+            DrawSegment(p1, p2, new b2Color(1f, 0f, 0f));
+
+            p2 = p1 + axisScale * col2; 
+            DrawSegment(p1, p2, new b2Color(0f, 0f, 1f));
         }
     }
 }

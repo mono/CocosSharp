@@ -26,17 +26,34 @@ namespace Box2D.Collision
 	
 	/// Used to warm start b2Math.b2Distance.
 	/// Set count to zero on first call.
-	public class b2SimplexCache
+	public struct b2SimplexCache
 	{
+        public static b2SimplexCache Default = b2SimplexCache.Create();
+
+        public void Defaults()
+        {
+            metric = 0f;
+            count = 0;
+            indexA = new uint[3];
+            indexB = new uint[3];
+        }
+
+        public static b2SimplexCache Create()
+        {
+            b2SimplexCache obj = new b2SimplexCache();
+            obj.Defaults();
+            return (obj);
+        }
+
 		public float metric;        ///< length or area
 		public int count;
-		public uint[] indexA = new uint[3];    ///< vertices on shape A
-		public uint[] indexB = new uint[3];    ///< vertices on shape B
+		public uint[] indexA;    ///< vertices on shape A
+		public uint[] indexB;    ///< vertices on shape B
 	}
 	/// Input for b2Math.b2Distance.
 	/// You have to option to use the shape radii
 	/// in the computation. Even 
-	public class b2DistanceInput
+	public struct b2DistanceInput
 	{
 		public b2DistanceProxy proxyA;
 		public b2DistanceProxy proxyB;
@@ -46,7 +63,7 @@ namespace Box2D.Collision
 	};
 	
 	/// Output for b2Math.b2Distance.
-	public class b2DistanceOutput
+	public struct b2DistanceOutput
 	{
 		public b2Vec2 pointA;        ///< closest point on shapeA
 		public b2Vec2 pointB;        ///< closest point on shapeB
@@ -55,7 +72,7 @@ namespace Box2D.Collision
 	};
 	
 	
-	public class b2SimplexVertex
+	public struct b2SimplexVertex
 	{
 		public b2Vec2 wA;        // support point in proxyA
 		public b2Vec2 wB;        // support point in proxyB
@@ -417,7 +434,7 @@ namespace Box2D.Collision
 			m_count = 3;
 		}
 		
-		public void b2Distance(ref b2DistanceOutput output, b2SimplexCache cache, b2DistanceInput input)
+		public static void b2Distance(ref b2DistanceOutput output, ref b2SimplexCache cache, ref b2DistanceInput input)
 		{
 			++b2DistanceProxy.b2_gjkCalls;
 			

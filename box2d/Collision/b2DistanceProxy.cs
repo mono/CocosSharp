@@ -21,6 +21,17 @@ namespace Box2D.Collision
         public float Radius { get { return (m_radius); } set { m_radius = value; } }
         public int Count { get { return (m_count); } set { m_count = value; } }
 
+        public b2DistanceProxy()
+        {
+            m_vertices = null;
+            m_count = 0;
+            m_radius = 0.0f;
+        }
+
+        public b2DistanceProxy(b2Shape shape, int index)
+        {
+            Set(shape, index);
+        }
 
         public int GetVertexCount()
         {
@@ -70,13 +81,6 @@ namespace Box2D.Collision
             }
 
             return m_vertices[bestIndex];
-        }
-
-        public b2DistanceProxy()
-        {
-            m_vertices = null;
-            m_count = 0;
-            m_radius = 0.0f;
         }
 
         public virtual void Set(b2Shape shape, int index)

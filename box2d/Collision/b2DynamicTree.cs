@@ -860,7 +860,7 @@ namespace Box2D.Collision
 
                 b2TreeNode node = m_nodes[nodeId];
 
-                if (b2Collision.b2TestOverlap(node.aabb, aabb))
+                if (b2Collision.b2TestOverlap(ref node.aabb, ref aabb))
                 {
                     if (node.IsLeaf())
                     {
@@ -872,8 +872,10 @@ namespace Box2D.Collision
                     }
                     else
                     {
-                        stack.Push(node.child1);
-                        stack.Push(node.child2);
+                        if(node.child1 != b2TreeNode.b2_nullNode)
+                            stack.Push(node.child1);
+                        if (node.child2 != b2TreeNode.b2_nullNode)
+                            stack.Push(node.child2);
                     }
                 }
             }
@@ -917,7 +919,7 @@ namespace Box2D.Collision
 
                 b2TreeNode node = m_nodes[nodeId];
 
-                if (b2Collision.b2TestOverlap(node.aabb, segmentAABB) == false)
+                if (b2Collision.b2TestOverlap(ref node.aabb, ref segmentAABB) == false)
                 {
                     continue;
                 }
