@@ -151,7 +151,7 @@ namespace Box2D.Collision
         {
             b2AABB aabbA = m_tree.GetFatAABB(proxyIdA);
             b2AABB aabbB = m_tree.GetFatAABB(proxyIdB);
-            return b2Collision.b2TestOverlap(aabbA, aabbB);
+            return b2Collision.b2TestOverlap(ref aabbA, ref aabbB);
         }
 
         public b2AABB GetFatAABB(int proxyId)
@@ -185,6 +185,8 @@ namespace Box2D.Collision
             m_pairCount = 0;
 
             // Perform tree queries for all moving proxies.
+            Console.WriteLine("move_count={0}", m_moveCount);
+
             for (int i = 0; i < m_moveCount; ++i)
             {
                 m_queryProxyId = m_moveBuffer[i];

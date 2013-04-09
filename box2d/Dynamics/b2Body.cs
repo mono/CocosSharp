@@ -74,23 +74,24 @@ namespace Box2D.Dynamics
             get { return (m_xf.p); }
         }
 
-        protected b2Sweep m_sweep = new b2Sweep();        // the swept motion for CCD
-        public b2Sweep Sweep
+        public b2Sweep Sweep = b2Sweep.Default;        // the swept motion for CCD
+/*        public b2Sweep Sweep
         {
             get { return (m_sweep); }
             set { m_sweep = value; }
         }
+ */
         public float Angle
         {
-            get { return (m_sweep.a); }
+            get { return (Sweep.a); }
         }
         public b2Vec2 WorldCenter
         {
-            get { return (m_sweep.c); }
+            get { return (Sweep.c); }
         }
         public b2Vec2 LocalCenter
         {
-            get { return (m_sweep.localCenter); }
+            get { return (Sweep.localCenter); }
         }
 
         protected b2Vec2 m_linearVelocity = new b2Vec2();
@@ -213,7 +214,7 @@ namespace Box2D.Dynamics
         {
             get
             {
-                return m_I + m_mass * b2Math.b2Dot(m_sweep.localCenter, m_sweep.localCenter);
+                return m_I + m_mass * b2Math.b2Dot(Sweep.localCenter, Sweep.localCenter);
             }
         }
         public float InvertedI
@@ -286,12 +287,12 @@ namespace Box2D.Dynamics
             m_xf.p = bd.position;
             m_xf.q.Set(bd.angle);
 
-            m_sweep.localCenter.SetZero();
-            m_sweep.c0 = m_xf.p;
-            m_sweep.c = m_xf.p;
-            m_sweep.a0 = bd.angle;
-            m_sweep.a = bd.angle;
-            m_sweep.alpha0 = 0.0f;
+            Sweep.localCenter.SetZero();
+            Sweep.c0 = m_xf.p;
+            Sweep.c = m_xf.p;
+            Sweep.a0 = bd.angle;
+            Sweep.a = bd.angle;
+            Sweep.alpha0 = 0.0f;
 
             m_jointList = null;
             m_contactList = null;
@@ -336,8 +337,8 @@ namespace Box2D.Dynamics
         {
             b2MassData data;
             data.mass = m_mass;
-            data.I = m_I + m_mass * b2Math.b2Dot(m_sweep.localCenter, m_sweep.localCenter);
-            data.center = m_sweep.localCenter;
+            data.I = m_I + m_mass * b2Math.b2Dot(Sweep.localCenter, Sweep.localCenter);
+            data.center = Sweep.localCenter;
             return (data);
         }
         public virtual b2Vec2 GetWorldPoint(b2Vec2 localPoint)
@@ -362,7 +363,7 @@ namespace Box2D.Dynamics
 
         public virtual b2Vec2 GetLinearVelocityFromWorldPoint(b2Vec2 worldPoint)
         {
-            return m_linearVelocity + b2Math.b2Cross(m_angularVelocity, worldPoint - m_sweep.c);
+            return m_linearVelocity + b2Math.b2Cross(m_angularVelocity, worldPoint - Sweep.c);
         }
 
         public virtual b2Vec2 GetLinearVelocityFromLocalPoint(b2Vec2 localPoint)
@@ -477,7 +478,7 @@ namespace Box2D.Dynamics
             }
 
             m_force += force;
-            m_torque += b2Math.b2Cross(point - m_sweep.c, force);
+            m_torque += b2Math.b2Cross(point - Sweep.c, force);
         }
 
         public virtual void ApplyForceToCenter(b2Vec2 force)
@@ -522,7 +523,7 @@ namespace Box2D.Dynamics
                 SetAwake(true);
             }
             m_linearVelocity += m_invMass * impulse;
-            m_angularVelocity += m_invI * b2Math.b2Cross(point - m_sweep.c, impulse);
+            m_angularVelocity += m_invI * b2Math.b2Cross(point - Sweep.c, impulse);
         }
 
         public virtual void ApplyAngularImpulse(float impulse)
@@ -541,18 +542,18 @@ namespace Box2D.Dynamics
 
         public virtual void SynchronizeTransform()
         {
-            m_xf.q.Set(m_sweep.a);
-            m_xf.p = m_sweep.c - b2Math.b2Mul(m_xf.q, m_sweep.localCenter);
+            m_xf.q.Set(Sweep.a);
+            m_xf.p = Sweep.c - b2Math.b2Mul(m_xf.q, Sweep.localCenter);
         }
 
         public virtual void Advance(float alpha)
         {
             // Advance to the new safe time. This doesn't sync the broad-phase.
-            m_sweep.Advance(alpha);
-            m_sweep.c = m_sweep.c0;
-            m_sweep.a = m_sweep.a0;
-            m_xf.q.Set(m_sweep.a);
-            m_xf.p = m_sweep.c - b2Math.b2Mul(m_xf.q, m_sweep.localCenter);
+            Sweep.Advance(alpha);
+            Sweep.c = Sweep.c0;
+            Sweep.a = Sweep.a0;
+            m_xf.q.Set(Sweep.a);
+            m_xf.p = Sweep.c - b2Math.b2Mul(m_xf.q, Sweep.localCenter);
         }
 
         public virtual void SetType(b2BodyType type)
@@ -575,8 +576,8 @@ namespace Box2D.Dynamics
             {
                 m_linearVelocity.SetZero();
                 m_angularVelocity = 0.0f;
-                m_sweep.a0 = m_sweep.a;
-                m_sweep.c0 = m_sweep.c;
+                Sweep.a0 = Sweep.a;
+                Sweep.c0 = Sweep.c;
                 SynchronizeFixtures();
             }
 
@@ -705,14 +706,14 @@ namespace Box2D.Dynamics
             m_invMass = 0.0f;
             m_I = 0.0f;
             m_invI = 0.0f;
-            m_sweep.localCenter.SetZero();
+            Sweep.localCenter.SetZero();
 
             // Static and kinematic bodies have zero mass.
             if (m_type == b2BodyType.b2_staticBody || m_type == b2BodyType.b2_kinematicBody)
             {
-                m_sweep.c0 = m_xf.p;
-                m_sweep.c = m_xf.p;
-                m_sweep.a0 = m_sweep.a;
+                Sweep.c0 = m_xf.p;
+                Sweep.c = m_xf.p;
+                Sweep.a0 = Sweep.a;
                 return;
             }
 
@@ -762,12 +763,12 @@ namespace Box2D.Dynamics
             }
 
             // Move center of mass.
-            b2Vec2 oldCenter = m_sweep.c;
-            m_sweep.localCenter = localCenter;
-            m_sweep.c0 = m_sweep.c = b2Math.b2Mul(m_xf, m_sweep.localCenter);
+            b2Vec2 oldCenter = Sweep.c;
+            Sweep.localCenter = localCenter;
+            Sweep.c0 = Sweep.c = b2Math.b2Mul(m_xf, Sweep.localCenter);
 
             // Update center of mass velocity.
-            m_linearVelocity += b2Math.b2Cross(m_angularVelocity, m_sweep.c - oldCenter);
+            m_linearVelocity += b2Math.b2Cross(m_angularVelocity, Sweep.c - oldCenter);
         }
 
         public virtual void SetMassData(b2MassData massData)
@@ -803,12 +804,12 @@ namespace Box2D.Dynamics
             }
 
             // Move center of mass.
-            b2Vec2 oldCenter = m_sweep.c;
-            m_sweep.localCenter = massData.center;
-            m_sweep.c0 = m_sweep.c = b2Math.b2Mul(m_xf, m_sweep.localCenter);
+            b2Vec2 oldCenter = Sweep.c;
+            Sweep.localCenter = massData.center;
+            Sweep.c0 = Sweep.c = b2Math.b2Mul(m_xf, Sweep.localCenter);
 
             // Update center of mass velocity.
-            m_linearVelocity += b2Math.b2Cross(m_angularVelocity, m_sweep.c - oldCenter);
+            m_linearVelocity += b2Math.b2Cross(m_angularVelocity, Sweep.c - oldCenter);
         }
 
         public virtual bool ShouldCollide(b2Body other)
@@ -844,11 +845,11 @@ namespace Box2D.Dynamics
             m_xf.q.Set(angle);
             m_xf.p = position;
 
-            m_sweep.c = b2Math.b2Mul(m_xf, m_sweep.localCenter);
-            m_sweep.a = angle;
+            Sweep.c = b2Math.b2Mul(m_xf, Sweep.localCenter);
+            Sweep.a = angle;
 
-            m_sweep.c0 = m_sweep.c;
-            m_sweep.a0 = angle;
+            Sweep.c0 = Sweep.c;
+            Sweep.a0 = angle;
 
             b2BroadPhase broadPhase = m_world.ContactManager.BroadPhase;
             for (b2Fixture f = m_fixtureList; f != null; f = f.Next)
@@ -862,8 +863,8 @@ namespace Box2D.Dynamics
         public virtual void SynchronizeFixtures()
         {
             b2Transform xf1 = b2Transform.Default;
-            xf1.q.Set(m_sweep.a0);
-            xf1.p = m_sweep.c0 - b2Math.b2Mul(xf1.q, m_sweep.localCenter);
+            xf1.q.Set(Sweep.a0);
+            xf1.p = Sweep.c0 - b2Math.b2Mul(xf1.q, Sweep.localCenter);
 
             b2BroadPhase broadPhase = m_world.ContactManager.BroadPhase;
             for (b2Fixture f = m_fixtureList; f != null; f = f.Next)
@@ -924,7 +925,7 @@ namespace Box2D.Dynamics
             System.Diagnostics.Debug.WriteLine("  b2BodyDef bd;");
             System.Diagnostics.Debug.WriteLine("  bd.type = b2BodyType({0});", m_type);
             System.Diagnostics.Debug.WriteLine("  bd.position.Set({0:N5}, {1:N5});", m_xf.p.x, m_xf.p.y);
-            System.Diagnostics.Debug.WriteLine("  bd.angle = {0:N5};", m_sweep.a);
+            System.Diagnostics.Debug.WriteLine("  bd.angle = {0:N5};", Sweep.a);
             System.Diagnostics.Debug.WriteLine("  bd.linearVelocity.Set({0:N5}, {1:N5});", m_linearVelocity.x, m_linearVelocity.y);
             System.Diagnostics.Debug.WriteLine("  bd.angularVelocity = {0:N5};", m_angularVelocity);
             System.Diagnostics.Debug.WriteLine("  bd.linearDamping = {0:N5};", m_linearDamping);

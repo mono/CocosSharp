@@ -37,11 +37,11 @@ namespace Box2D.Dynamics.Contacts
             Debug.Assert(m_fixtureB.ShapeType == b2ShapeType.e_circle);
         }
 
-        public override void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB)
+        public override void Evaluate(b2Manifold manifold, ref b2Transform xfA, ref b2Transform xfB)
         {
             b2Collision.b2CollidePolygonAndCircle(manifold,
-                                        (b2PolygonShape)m_fixtureA.Shape, xfA,
-                                        (b2CircleShape)m_fixtureB.Shape, xfB);
+                                        (b2PolygonShape)m_fixtureA.Shape, ref xfA,
+                                        (b2CircleShape)m_fixtureB.Shape, ref xfB);
         }
     }
 }

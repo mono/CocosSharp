@@ -128,7 +128,7 @@ namespace Box2D.Dynamics.Contacts
         public float Restitution { get { return (m_restitution); } set { m_restitution = value; } }
 
         /// Evaluate this contact with your own manifold and transforms.
-        public abstract void Evaluate(b2Manifold manifold, b2Transform xfA, b2Transform xfB);
+        public abstract void Evaluate(b2Manifold manifold, ref b2Transform xfA, ref b2Transform xfB);
 
         protected static b2ContactRegister[,] s_registers = new b2ContactRegister[(int)b2ShapeType.e_typeCount, (int)b2ShapeType.e_typeCount];
 
@@ -252,7 +252,7 @@ namespace Box2D.Dynamics.Contacts
             }
             else
             {
-                Evaluate(m_manifold, xfA, xfB);
+                Evaluate(m_manifold, ref xfA, ref xfB);
                 touching = m_manifold.pointCount > 0;
 
                 // Match old contact ids to new contact ids and copy the

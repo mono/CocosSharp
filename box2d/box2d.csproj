@@ -68,6 +68,7 @@
     <Compile Include="Collision\b2Distance.cs" />
     <Compile Include="Collision\b2DistanceProxy.cs" />
     <Compile Include="Collision\b2DynamicTree.cs" />
+    <Compile Include="Collision\b2EPCollider.cs" />
     <Compile Include="Collision\b2Manifold.cs" />
     <Compile Include="Collision\b2TimeOfImpact.cs" />
     <Compile Include="Collision\Shapes\b2ChainShape.cs" />

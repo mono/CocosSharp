@@ -330,8 +330,7 @@ namespace Box2D.Collision
 			int iter = 0;
 			
 			// Prepare input for distance query.
-			b2SimplexCache cache = new b2SimplexCache();
-			cache.count = 0;
+			b2SimplexCache cache = b2SimplexCache.Default;
 			b2DistanceInput distanceInput = new b2DistanceInput();
 			distanceInput.proxyA = input.proxyA;
 			distanceInput.proxyB = input.proxyB;
@@ -350,8 +349,7 @@ namespace Box2D.Collision
 				distanceInput.transformA = xfA;
 				distanceInput.transformB = xfB;
 				b2DistanceOutput distanceOutput = new b2DistanceOutput();
-				b2Simplex sx = new b2Simplex();
-				sx.b2Distance(ref distanceOutput, cache, distanceInput);
+				b2Simplex.b2Distance(ref distanceOutput, ref cache, ref distanceInput);
 				
 				// If the shapes are overlapped, we give up on continuous collision.
 				if (distanceOutput.distance <= 0.0f)

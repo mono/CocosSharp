@@ -98,8 +98,8 @@ namespace Box2D.Collision
 
         /// Compute the collision manifold between two circles.
         public static void b2CollideCircles(b2Manifold manifold,
-                               b2CircleShape circleA, b2Transform xfA,
-                               b2CircleShape circleB, b2Transform xfB)
+                               b2CircleShape circleA, ref b2Transform xfA,
+                               b2CircleShape circleB, ref b2Transform xfB)
         {
             manifold.pointCount = 0;
 
@@ -126,8 +126,8 @@ namespace Box2D.Collision
 
         /// Compute the collision manifold between a polygon and a circle.
         public static void b2CollidePolygonAndCircle(b2Manifold manifold,
-                                        b2PolygonShape polygonA, b2Transform xfA,
-                                        b2CircleShape circleB, b2Transform xfB)
+                                        b2PolygonShape polygonA, ref b2Transform xfA,
+                                        b2CircleShape circleB, ref b2Transform xfB)
         {
             manifold.pointCount = 0;
 
@@ -230,10 +230,136 @@ namespace Box2D.Collision
         }
 
         /// Compute the collision manifold between two polygons.
+        // Find edge normal of max separation on A - return if separating axis is found
+        // Find edge normal of max separation on B - return if separation axis is found
+        // Choose reference edge as min(minA, minB)
+        // Find incident edge
+        // Clip
+        // The normal points from 1 to 2
         public static void b2CollidePolygons(b2Manifold manifold,
-                                b2PolygonShape polygonA, b2Transform xfA,
-                                b2PolygonShape polygonB, b2Transform xfB)
+                                b2PolygonShape polyA, ref b2Transform xfA,
+                                b2PolygonShape polyB, ref b2Transform xfB)
         {
+            manifold.pointCount = 0;
+            float totalRadius = polyA.Radius + polyB.Radius;
+
+            int edgeA = 0;
+            float separationA = b2FindMaxSeparation(out edgeA, polyA, xfA, polyB, xfB);
+            if (separationA > totalRadius)
+                return;
+
+            int edgeB = 0;
+            float separationB = b2FindMaxSeparation(out edgeB, polyB, xfB, polyA, xfA);
+            if (separationB > totalRadius)
+                return;
+
+            b2PolygonShape poly1;	// reference polygon
+            b2PolygonShape poly2;	// incident polygon
+            b2Transform xf1, xf2;
+            int edge1;		// reference edge
+            byte flip;
+            const float k_relativeTol = 0.98f;
+            const float k_absoluteTol = 0.001f;
+
+            if (separationB > k_relativeTol * separationA + k_absoluteTol)
+            {
+                poly1 = polyB;
+                poly2 = polyA;
+                xf1 = xfB;
+                xf2 = xfA;
+                edge1 = edgeB;
+                manifold.type = b2ManifoldType.e_faceB;
+                flip = 1;
+            }
+            else
+            {
+                poly1 = polyA;
+                poly2 = polyB;
+                xf1 = xfA;
+                xf2 = xfB;
+                edge1 = edgeA;
+                manifold.type = b2ManifoldType.e_faceA;
+                flip = 0;
+            }
+
+            b2ClipVertex[] incidentEdge = new b2ClipVertex[2];
+            b2FindIncidentEdge(incidentEdge, poly1, xf1, edge1, poly2, xf2);
+
+            int count1 = poly1.VertexCount;
+            b2Vec2[] vertices1 = poly1.Vertices;
+
+            int iv1 = edge1;
+            int iv2 = edge1 + 1 < count1 ? edge1 + 1 : 0;
+
+            b2Vec2 v11 = vertices1[iv1];
+            b2Vec2 v12 = vertices1[iv2];
+
+            b2Vec2 localTangent = v12 - v11;
+            localTangent.Normalize();
+
+            b2Vec2 localNormal = b2Math.b2Cross(localTangent, 1.0f);
+            b2Vec2 planePoint = 0.5f * (v11 + v12);
+
+            b2Vec2 tangent = b2Math.b2Mul(xf1.q, localTangent);
+            b2Vec2 normal = b2Math.b2Cross(tangent, 1.0f);
+
+            v11 = b2Math.b2Mul(xf1, v11);
+            v12 = b2Math.b2Mul(xf1, v12);
+
+            // Face offset.
+            float frontOffset = b2Math.b2Dot(normal, v11);
+
+            // Side offsets, extended by polytope skin thickness.
+            float sideOffset1 = -b2Math.b2Dot(tangent, v11) + totalRadius;
+            float sideOffset2 = b2Math.b2Dot(tangent, v12) + totalRadius;
+
+            // Clip incident edge against extruded edge1 side edges.
+            b2ClipVertex[] clipPoints1 = new b2ClipVertex[2];
+            b2ClipVertex[] clipPoints2 = new b2ClipVertex[2];
+            int np;
+
+            // Clip to box side 1
+            np = b2ClipSegmentToLine(clipPoints1, incidentEdge, -tangent, sideOffset1, (byte)iv1);
+
+            if (np < 2)
+                return;
+
+            // Clip to negative box side 1
+            np = b2ClipSegmentToLine(clipPoints2, clipPoints1, tangent, sideOffset2, (byte)iv2);
+
+            if (np < 2)
+            {
+                return;
+            }
+
+            // Now clipPoints2 contains the clipped points.
+            manifold.localNormal = localNormal;
+            manifold.localPoint = planePoint;
+
+            int pointCount = 0;
+            for (int i = 0; i < b2Settings.b2_maxManifoldPoints; ++i)
+            {
+                float separation = b2Math.b2Dot(normal, clipPoints2[i].v) - frontOffset;
+
+                if (separation <= totalRadius)
+                {
+                    b2ManifoldPoint cp = manifold.points[pointCount];
+                    cp.localPoint = b2Math.b2MulT(xf2, clipPoints2[i].v);
+                    cp.id = clipPoints2[i].id;
+                    if (flip != 0)
+                    {
+                        // Swap features
+                        b2ContactFeature cf = cp.id;
+                        cp.id.indexA = cf.indexB;
+                        cp.id.indexB = cf.indexA;
+                        cp.id.typeA = cf.typeB;
+                        cp.id.typeB = cf.typeA;
+                    }
+                    ++pointCount;
+                }
+            }
+
+            manifold.pointCount = pointCount;
         }
 
         public static float b2EdgeSeparation(b2PolygonShape poly1, b2Transform xf1, int edge1,
@@ -271,16 +397,139 @@ namespace Box2D.Collision
 
         /// Compute the collision manifold between an edge and a circle.
         public static void b2CollideEdgeAndCircle(b2Manifold manifold,
-                                        b2EdgeShape polygonA, b2Transform xfA,
-                                        b2CircleShape circleB, b2Transform xfB)
+                                        b2EdgeShape edgeA, ref b2Transform xfA,
+                                        b2CircleShape circleB, ref b2Transform xfB)
         {
+            manifold.pointCount = 0;
+
+            // Compute circle in frame of edge
+            b2Vec2 Q = b2Math.b2MulT(xfA, b2Math.b2Mul(xfB, circleB.Position));
+
+            b2Vec2 A = edgeA.Vertex1, B = edgeA.Vertex2;
+            b2Vec2 e = B - A;
+
+            // Barycentric coordinates
+            float u = b2Math.b2Dot(e, B - Q);
+            float v = b2Math.b2Dot(e, Q - A);
+
+            float radius = edgeA.Radius + circleB.Radius;
+
+            b2ContactFeature cf = b2ContactFeature.Zero;
+            cf.indexB = 0;
+            cf.typeB = b2ContactFeatureType.e_vertex;
+
+            // Region A
+            if (v <= 0.0f)
+            {
+                b2Vec2 P = A;
+                b2Vec2 d = Q - P;
+                float dd = b2Math.b2Dot(d, d);
+                if (dd > radius * radius)
+                {
+                    return;
+                }
+
+                // Is there an edge connected to A?
+                if (edgeA.HasVertex0)
+                {
+                    b2Vec2 A1 = edgeA.Vertex0;
+                    b2Vec2 B1 = A;
+                    b2Vec2 e1 = B1 - A1;
+                    float u1 = b2Math.b2Dot(e1, B1 - Q);
+
+                    // Is the circle in Region AB of the previous edge?
+                    if (u1 > 0.0f)
+                    {
+                        return;
+                    }
+                }
+
+                cf.indexA = 0;
+                cf.typeA = b2ContactFeatureType.e_vertex;
+                manifold.pointCount = 1;
+                manifold.type = b2ManifoldType.e_circles;
+                manifold.localNormal.SetZero();
+                manifold.localPoint = P;
+                manifold.points[0].id.key = 0;
+                manifold.points[0].id.Set(cf);
+                manifold.points[0].localPoint = circleB.Position;
+                return;
+            }
+
+            // Region B
+            if (u <= 0.0f)
+            {
+                b2Vec2 P = B;
+                b2Vec2 d = Q - P;
+                float dd = b2Math.b2Dot(d, d);
+                if (dd > radius * radius)
+                {
+                    return;
+                }
+
+                // Is there an edge connected to B?
+                if (edgeA.HasVertex3)
+                {
+                    b2Vec2 B2 = edgeA.Vertex3;
+                    b2Vec2 A2 = B;
+                    b2Vec2 e2 = B2 - A2;
+                    float v2 = b2Math.b2Dot(e2, Q - A2);
+
+                    // Is the circle in Region AB of the next edge?
+                    if (v2 > 0.0f)
+                    {
+                        return;
+                    }
+                }
+
+                cf.indexA = 1;
+                cf.typeA = b2ContactFeatureType.e_vertex;
+                manifold.pointCount = 1;
+                manifold.type = b2ManifoldType.e_circles;
+                manifold.localNormal.SetZero();
+                manifold.localPoint = P;
+                manifold.points[0].id.key = 0;
+                manifold.points[0].id.Set(cf);
+                manifold.points[0].localPoint = circleB.Position;
+                return;
+            }
+
+            // Region AB
+            float den = b2Math.b2Dot(e, e);
+            System.Diagnostics.Debug.Assert(den > 0.0f);
+            b2Vec2 xP = (1.0f / den) * (u * A + v * B);
+            b2Vec2 xd = Q - xP;
+            float xdd = b2Math.b2Dot(xd, xd);
+            if (xdd > radius * radius)
+            {
+                return;
+            }
+
+            b2Vec2 n = new b2Vec2(-e.y, e.x);
+            if (b2Math.b2Dot(n, Q - A) < 0.0f)
+            {
+                n.Set(-n.x, -n.y);
+            }
+            n.Normalize();
+
+            cf.indexA = 0;
+            cf.typeA = b2ContactFeatureType.e_face;
+            manifold.pointCount = 1;
+            manifold.type = b2ManifoldType.e_faceA;
+            manifold.localNormal = n;
+            manifold.localPoint = A;
+            manifold.points[0].id.key = 0;
+            manifold.points[0].id.Set(cf);
+            manifold.points[0].localPoint = circleB.Position;
         }
 
         /// Compute the collision manifold between an edge and a circle.
         public static void b2CollideEdgeAndPolygon(b2Manifold manifold,
-                                        b2EdgeShape edgeA, b2Transform xfA,
-                                        b2PolygonShape circleB, b2Transform xfB)
+                                        b2EdgeShape edgeA, ref b2Transform xfA,
+                                        b2PolygonShape polygonB, ref b2Transform xfB)
         {
+            b2EPCollider b = new b2EPCollider();
+            b.Collide(manifold, edgeA, ref xfA, polygonB, ref xfB);
         }
 
         /// Clipping for contact manifolds.
@@ -316,7 +565,7 @@ namespace Box2D.Collision
             return numOut;
         }
 
-        public static bool b2TestOverlap(b2AABB a, b2AABB b)
+        public static bool b2TestOverlap(ref b2AABB a, ref b2AABB b)
         {
             b2Vec2 d1, d2;
             d1 = b.lowerBound - a.upperBound;
@@ -336,7 +585,20 @@ namespace Box2D.Collision
                              b2Shape shapeB, int indexB,
                             b2Transform xfA, b2Transform xfB)
         {
-            return (false);
+            b2DistanceInput input = b2DistanceInput.Default;
+            input.proxyA = new b2DistanceProxy(shapeA, indexA);
+            input.proxyB = new b2DistanceProxy(shapeB, indexB);
+            input.transformA = xfA;
+            input.transformB = xfB;
+            input.useRadii = true;
+
+            b2SimplexCache cache = b2SimplexCache.Default;
+
+            b2DistanceOutput output = new b2DistanceOutput();
+
+            b2Simplex.b2Distance(ref output, ref cache, ref input);
+
+            return output.distance < 10.0f * b2Settings.b2_epsilon;
         }
 
         // Find the max separation between poly1 and poly2 using edge normals from poly1.
