@@ -666,6 +666,10 @@
     <Compile Include="..\box2d\Rope\b2RopeDef.cs">
       <Link>box2d\Rope\b2RopeDef.cs</Link>
     </Compile>
+    <Compile Include="..\box2d\Collision\b2EPCollider.cs">
+      <Link>box2d\Collision\b2EPCollider.cs</Link>
+    </Compile>
+    <Compile Include="extentions\Box2D\CCDraw.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj">
@@ -681,6 +685,7 @@
     <Folder Include="Platform\ContentReaders\" />
     <Folder Include="support\Converters\" />
     <Folder Include="box2d\" />
+    <Folder Include="extentions\Box2D\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\box2d\Collision\b2Distance.cs.orig">
