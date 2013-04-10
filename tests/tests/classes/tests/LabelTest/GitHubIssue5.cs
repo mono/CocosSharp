@@ -14,7 +14,7 @@ namespace tests
         public GitHubIssue5()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            _TestLabel = CCLabelTTF.Create("", "Arial", 10);
+            _TestLabel = new CCLabelTTF("", "Arial", 10);
             AddChild(_TestLabel);
             _TestLabel.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
         }

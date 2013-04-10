@@ -1089,11 +1089,11 @@ namespace cocos2d
             try
             {
                 int fontSize = (int)(m_obWinSizeInPoints.Height / 320.0f * 24);
-            m_pFPSLabel = CCLabelTTF.Create("00.0", "Arial", 24);
+            m_pFPSLabel = new CCLabelTTF("00.0", "Arial", 24);
             m_pFPSLabel.Scale = m_obWinSizeInPoints.Height / 320.0f; // Use 320 here b/c we are optimizing at that scale.
-            m_pSPFLabel = CCLabelTTF.Create("0.000", "Arial", 24);
+            m_pSPFLabel = new CCLabelTTF("0.000", "Arial", 24);
             m_pSPFLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
-            m_pDrawsLabel = CCLabelTTF.Create("000", "Arial", 24);
+            m_pDrawsLabel = new CCLabelTTF("000", "Arial", 24);
             m_pDrawsLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
 
             //CCTexture2D::setDefaultAlphaPixelFormat(currentFormat);

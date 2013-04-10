@@ -307,7 +307,7 @@ namespace cocos2d
 
         public override bool Init()
         {
-            return InitWithLabelAndBackgroundSprite(CCLabelTTF.Create("", "Helvetica", 12), CCScale9Sprite.Create());
+            return InitWithLabelAndBackgroundSprite(new CCLabelTTF("", "Helvetica", 12), CCScale9Sprite.Create());
         }
 
         public virtual bool InitWithLabelAndBackgroundSprite(CCNode node, CCScale9Sprite backgroundSprite)
@@ -381,7 +381,7 @@ namespace cocos2d
 
         public virtual bool InitWithTitleAndFontNameAndFontSize(string title, string fontName, float fontSize)
         {
-            CCLabelTTF label = CCLabelTTF.Create(title, fontName, fontSize);
+            CCLabelTTF label = new CCLabelTTF(title, fontName, fontSize);
             return InitWithLabelAndBackgroundSprite(label, CCScale9Sprite.Create());
         }
 
@@ -394,7 +394,7 @@ namespace cocos2d
 
         public virtual bool InitWithBackgroundSprite(CCScale9Sprite sprite)
         {
-            CCLabelTTF label = CCLabelTTF.Create("", "arial", 30);
+            CCLabelTTF label = new CCLabelTTF("", "arial", 30);
             return InitWithLabelAndBackgroundSprite(label, sprite);
         }
 
@@ -646,7 +646,7 @@ namespace cocos2d
             {
                 title = String.Empty;
             }
-            SetTitleLabelForState(CCLabelTTF.Create(title, fntFile, 12), state);
+            SetTitleLabelForState(new CCLabelTTF(title, fntFile, 12), state);
         }
 
         public virtual string GetTitleTtfForState(CCControlState state)

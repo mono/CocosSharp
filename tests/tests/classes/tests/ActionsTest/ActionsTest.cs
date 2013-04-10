@@ -264,14 +264,14 @@ namespace tests
             // add title and subtitle
             var str = title();
             var pTitle = str;
-            var label = CCLabelTTF.Create(pTitle, "arial", 18);
+            var label = new CCLabelTTF(pTitle, "arial", 18);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 30);
 
             var strSubtitle = subtitle();
             if (! strSubtitle.Equals(""))
             {
-                var l = CCLabelTTF.Create(strSubtitle, "arial", 22);
+                var l = new CCLabelTTF(strSubtitle, "arial", 22);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 60);
             }
@@ -810,7 +810,7 @@ namespace tests
         public void callback1()
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 1 called", "arial", 16);
+            var label = new CCLabelTTF("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
             AddChild(label);
@@ -819,7 +819,7 @@ namespace tests
         public void callback2(CCNode sender)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 2 called", "arial", 16);
+            var label = new CCLabelTTF("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
             AddChild(label);
@@ -828,7 +828,7 @@ namespace tests
         public void callback3(CCNode sender, object data)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 3 called", "arial", 16);
+            var label = new CCLabelTTF("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
 
             AddChild(label);
@@ -871,7 +871,7 @@ namespace tests
         public void callback1()
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 1 called", "arial", 16);
+            var label = new CCLabelTTF("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
             AddChild(label);
@@ -880,7 +880,7 @@ namespace tests
         public void callback2(CCNode pSender)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 2 called", "arial", 16);
+            var label = new CCLabelTTF("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
             AddChild(label);
@@ -889,7 +889,7 @@ namespace tests
         public void callback3(CCNode target, object data)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 3 called", "arial", 16);
+            var label = new CCLabelTTF("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
             AddChild(label);
         }

@@ -27,7 +27,7 @@ namespace tests.classes.tests.Box2DTestBet
             //#if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
             //    CCLabelBMFont* label = CCLabelBMFont.Create(view.title().c_str(),  "fonts/arial16.fnt");
             //#else    
-            CCLabelTTF label = CCLabelTTF.Create(view.title(), "arial", 28);
+            CCLabelTTF label = new CCLabelTTF(view.title(), "arial", 28);
             //#endif
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);

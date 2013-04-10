@@ -14,7 +14,7 @@ namespace tests
             if (base.Init())
             {
                 CCSize size = CCDirector.SharedDirector.WinSize;
-                CCLabelTTF label = CCLabelTTF.Create("Layer1", "Marker Felt", 36);
+                CCLabelTTF label = new CCLabelTTF("Layer1", "Marker Felt", 36);
 
                 label.Position = new CCPoint(size.Width / 2, size.Height / 2);
                 AddChild(label);
@@ -51,7 +51,7 @@ namespace tests
             if (base.Init())
             {
                 CCSize size = CCDirector.SharedDirector.WinSize;
-                CCLabelTTF label = CCLabelTTF.Create("Layer2", "Marker Felt", 36);
+                CCLabelTTF label = new CCLabelTTF("Layer2", "Marker Felt", 36);
 
                 label.Position = new CCPoint(size.Width / 2, size.Height / 2);
                 AddChild(label);

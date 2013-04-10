@@ -18,7 +18,7 @@ namespace tests
             label1.Position = new CCPoint(s.Width / 2, s.Height - 100);
 
             // CCLabelTTF
-            CCLabelTTF label2 = CCLabelTTF.Create("", "arial", 24);
+            CCLabelTTF label2 = new CCLabelTTF("", "arial", 24);
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
             label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
 

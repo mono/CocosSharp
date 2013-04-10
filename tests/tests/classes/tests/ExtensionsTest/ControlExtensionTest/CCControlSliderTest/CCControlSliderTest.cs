@@ -12,7 +12,7 @@ namespace tests.Extensions
 				CCSize screenSize = CCDirector.SharedDirector.WinSize;
 
 				// Add a label in which the slider value will be displayed
-				m_pDisplayValueLabel = CCLabelTTF.Create("Move the slider thumb!\nThe lower slider is restricted.", "Marker Felt", 32);
+				m_pDisplayValueLabel = new CCLabelTTF("Move the slider thumb!\nThe lower slider is restricted.", "Marker Felt", 32);
 				m_pDisplayValueLabel.AnchorPoint = new CCPoint(0.5f, -1.0f);
 				m_pDisplayValueLabel.Position = new CCPoint(screenSize.Width / 1.7f, screenSize.Height / 2.0f);
 				AddChild(m_pDisplayValueLabel);

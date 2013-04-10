@@ -30,7 +30,7 @@ namespace tests.Extensions
 				AddChild(ribbon);
         
 				// Add the title
-				setSceneTitleLabel(CCLabelTTF.Create("Title", "arial", 12));
+				setSceneTitleLabel(new CCLabelTTF("Title", "arial", 12));
 				m_pSceneTitleLabel.Position = new CCPoint(screensize.Width / 2, screensize.Height - m_pSceneTitleLabel.ContentSize.Height / 2 - 5);
 				AddChild(m_pSceneTitleLabel, 1);
         

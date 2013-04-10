@@ -14,7 +14,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCLabelTTF.Create();
+            return new CCLabelTTF();
         }
 
         protected override void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, CCColor3B color, CCBReader reader)

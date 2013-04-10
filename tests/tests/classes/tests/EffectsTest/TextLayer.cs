@@ -47,7 +47,7 @@ namespace tests
             CCFiniteTimeAction sc2_back = sc2.Reverse();
             tamara.RunAction(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(sc2, sc2_back))));
 
-            CCLabelTTF label = CCLabelTTF.Create(EffectTestScene.effectsList[EffectTestScene.actionIdx], "arial", 32);
+            CCLabelTTF label = new CCLabelTTF(EffectTestScene.effectsList[EffectTestScene.actionIdx], "arial", 32);
 
             label.Position = new CCPoint(x / 2, y - 80);
             AddChild(label);
