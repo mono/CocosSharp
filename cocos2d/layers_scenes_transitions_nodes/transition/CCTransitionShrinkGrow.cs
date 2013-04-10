@@ -56,7 +56,7 @@ namespace cocos2d
                     CCSequence.FromActions
                         (
                             EaseAction(scaleOut),
-                            CCCallFunc.Create((Finish))
+                            new CCCallFunc((Finish))
                         )
                 );
         }

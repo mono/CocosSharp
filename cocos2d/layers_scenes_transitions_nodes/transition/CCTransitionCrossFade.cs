@@ -93,8 +93,8 @@ namespace cocos2d
             CCAction layerAction = CCSequence.FromActions
                 (
                     new CCFadeTo (m_fDuration, 0),
-                    CCCallFunc.Create((HideOutShowIn)),
-                    CCCallFunc.Create((Finish))
+                    new CCCallFunc((HideOutShowIn)),
+                    new CCCallFunc((Finish))
                 );
 
 

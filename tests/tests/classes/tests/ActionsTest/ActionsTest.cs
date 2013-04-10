@@ -800,7 +800,7 @@ namespace tests
                 CCPlace.Create(new CCPoint(200, 200)),
                 CCShow.Create(),
                 new CCMoveBy (1, new CCPoint(100, 0)),
-                CCCallFunc.Create(callback1),
+                new CCCallFunc(callback1),
                 CCCallFuncN.Create(callback2),
                 CCCallFuncND.Create(callback3, 0xbebabeba));
 
@@ -850,7 +850,7 @@ namespace tests
 
             var action = CCSequence.FromActions(
                 new CCMoveBy (2, new CCPoint(200, 0)),
-                CCCallFunc.Create(callback1));
+                new CCCallFunc(callback1));
 
             var action2 = CCSequence.FromActions(
                 new CCScaleBy(2, 2),
@@ -1474,13 +1474,13 @@ namespace tests
 
             var act1 = new CCMoveBy (2, new CCPoint(0, 100));
 
-            var act2 = CCCallFunc.Create(log1);
+            var act2 = new CCCallFunc(log1);
             var act3 = new CCMoveBy (2, new CCPoint(0, -100));
-            var act4 = CCCallFunc.Create(log2);
+            var act4 = new CCCallFunc(log2);
             var act5 = new CCMoveBy (2, new CCPoint(100, -100));
-            var act6 = CCCallFunc.Create(log3);
+            var act6 = new CCCallFunc(log3);
             var act7 = new CCMoveBy (2, new CCPoint(-100, 0));
-            var act8 = CCCallFunc.Create(log4);
+            var act8 = new CCCallFunc(log4);
 
             var actF = CCSequence.FromActions(act1, act2, act3, act4, act5, act6, act7, act8);
 

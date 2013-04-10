@@ -52,7 +52,7 @@ namespace cocos2d
                     CCSequence.FromActions
                         (
                             rotozoom.Reverse(),
-                            CCCallFunc.Create((Finish))
+                            new CCCallFunc((Finish))
                         )
                 );
         }

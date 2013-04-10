@@ -34,7 +34,7 @@ namespace tests
             //After 1.5 second, self will be removed.
             RunAction(CCSequence.FromActions(
                                             new CCDelayTime (1.4f),
-                                            CCCallFunc.Create((removeThis)))
+                                            new CCCallFunc((removeThis)))
                      );
         }
 

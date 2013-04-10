@@ -59,7 +59,7 @@ namespace cocos2d
                             new CCScaleTo(m_fDuration / 2, 1),
                             CCShow.Create()
                         ),
-                    CCCallFunc.Create(Finish)
+                    new CCCallFunc(Finish)
                 );
             outA = CCSequence.FromActions
                 (

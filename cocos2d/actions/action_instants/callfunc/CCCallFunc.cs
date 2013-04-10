@@ -12,12 +12,17 @@ namespace cocos2d
             m_pCallFunc = null;
         }
 
-        public static CCCallFunc Create(SEL_CallFunc selector)
+        public CCCallFunc (SEL_CallFunc selector) : base ()
         {
-            var pRet = new CCCallFunc();
-            pRet.m_pCallFunc = selector;
-            return pRet;
+            m_pCallFunc = selector;
         }
+
+		protected CCCallFunc (CCCallFunc callFunc) : base (callFunc)
+		{
+			m_pCallFunc = callFunc.m_pCallFunc;
+			m_scriptFuncName = callFunc.m_scriptFuncName;
+
+		}
 
         public virtual void Execute()
         {
@@ -37,23 +42,21 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCCallFunc pRet;
 
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pRet = (CCCallFunc) (pZone);
-            }
+                var pRet = (CCCallFunc) (pZone);
+				base.Copy(pZone);
+				pRet.m_pCallFunc = m_pCallFunc;
+				pRet.m_scriptFuncName = m_scriptFuncName;
+				return pRet;
+			}
             else
             {
-                pRet = new CCCallFunc();
-                pZone =  (pRet);
+                return new CCCallFunc(this);
             }
 
-            base.Copy(pZone);
-            pRet.m_pCallFunc = m_pCallFunc;
-            pRet.m_scriptFuncName = m_scriptFuncName;
-            return pRet;
         }
     }
 }

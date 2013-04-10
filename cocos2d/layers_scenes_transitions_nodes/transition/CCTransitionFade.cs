@@ -77,9 +77,9 @@ namespace cocos2d
             var a = (CCActionInterval) CCSequence.FromActions
                                            (
                                                new CCFadeIn (m_fDuration / 2),
-                                               CCCallFunc.Create((HideOutShowIn)),
+                                               new CCCallFunc((HideOutShowIn)),
                                                new CCFadeOut  (m_fDuration / 2),
-                                               CCCallFunc.Create((Finish))
+                                               new CCCallFunc((Finish))
                                            );
 
             f.RunAction(a);

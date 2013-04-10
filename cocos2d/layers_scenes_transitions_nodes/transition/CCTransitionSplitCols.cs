@@ -54,13 +54,13 @@ namespace cocos2d
             CCActionInterval seq = CCSequence.FromActions
                 (
                     split,
-                    CCCallFunc.Create((HideOutShowIn)),
+                    new CCCallFunc((HideOutShowIn)),
                     split.Reverse()
                 );
 
             RunAction(CCSequence.FromActions(
                 EaseAction(seq),
-                CCCallFunc.Create(Finish),
+                new CCCallFunc(Finish),
                 CCStopGrid.Create()));
         }
 

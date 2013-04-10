@@ -33,7 +33,7 @@ namespace tests
             l.Position = (new CCPoint(s.Width / 2, 245));
 
             CCMoveBy pMove = new CCMoveBy (2, new CCPoint(200, 0));
-            CCCallFunc pCallback = CCCallFunc.Create(stopAction);
+            CCCallFunc pCallback = new CCCallFunc(stopAction);
             CCActionInterval pSequence = (CCActionInterval)CCSequence.FromActions(pMove, pCallback);
             pSequence.Tag = (int)KTag.kTagSequence;
 
