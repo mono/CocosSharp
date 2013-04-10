@@ -11,6 +11,15 @@ namespace cocos2d
         protected CCScene m_pInScene;
         protected CCScene m_pOutScene;
 
+        // This can be taken out once all the transitions have been modified with constructors.
+        protected CCTransitionScene() {}
+
+        public CCTransitionScene (float t, CCScene scene)
+        {
+            InitWithDuration(t, scene);
+        }
+        
+
         public override bool IsTransition
         {
             get
@@ -58,13 +67,6 @@ namespace cocos2d
 
             if (m_bIsSendCleanupToScene)
                 m_pOutScene.Cleanup();
-        }
-
-        public static CCTransitionScene Create(float t, CCScene scene)
-        {
-            var pScene = new CCTransitionScene();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
         }
 
         public virtual bool InitWithDuration(float t, CCScene scene)
