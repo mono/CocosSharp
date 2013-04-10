@@ -802,7 +802,7 @@ namespace tests
                 new CCMoveBy (1, new CCPoint(100, 0)),
                 new CCCallFunc(callback1),
                 new CCCallFuncN(callback2),
-                CCCallFuncND.Create(callback3, 0xbebabeba));
+                new CCCallFuncND(callback3, 0xbebabeba));
 
             m_grossini.RunAction(action);
         }
@@ -860,7 +860,7 @@ namespace tests
             var action3 = CCSequence.FromActions(
                 new CCRotateBy (3, 360),
                 new CCFadeOut  (2),
-                CCCallFuncND.Create(callback3, 0xbebabeba));
+                new CCCallFuncND(callback3, 0xbebabeba));
 
             m_grossini.RunAction(action);
             m_tamara.RunAction(action2);
@@ -910,7 +910,7 @@ namespace tests
 
             var action = CCSequence.FromActions(
                 new CCMoveBy (2.0f, new CCPoint(200, 0)),
-                CCCallFuncND.Create(removeFromParentAndCleanup, true)
+                new CCCallFuncND(removeFromParentAndCleanup, true)
                 );
 
             m_grossini.RunAction(action);
