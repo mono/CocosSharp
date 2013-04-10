@@ -89,7 +89,7 @@ namespace tests.Extensions
 		/** Title label of the scene. */
 		public static CCScene sceneWithTitle(string title)
 		{
-			var pScene = CCScene.Create();
+			var pScene = new CCScene();
 		    var controlLayer = new CCControlScene();
 		    if (controlLayer != null && controlLayer.Init())
 		    {

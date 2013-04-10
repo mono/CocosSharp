@@ -75,7 +75,7 @@ namespace tests.Extensions
 
 		public new static CCScene sceneWithTitle(string title)
 		{
-			var pScene = CCScene.Create();
+			var pScene = new CCScene();
 			var controlLayer = new CCControlButtonTest_HelloVariableSize();
 		    controlLayer.Init();
     		controlLayer.getSceneTitleLabel().Label = (title);
@@ -172,7 +172,7 @@ namespace tests.Extensions
 
         public new static CCScene sceneWithTitle(string title)
         {
-            var pScene = CCScene.Create();
+            var pScene = new CCScene();
             var controlLayer = new CCControlButtonTest_Inset();
             controlLayer.Init();
             controlLayer.getSceneTitleLabel().Label = (title);
@@ -283,7 +283,7 @@ namespace tests.Extensions
 		
 		public new static CCScene sceneWithTitle(string title)
 		{
-			var pScene = CCScene.Create();
+			var pScene = new CCScene();
 			var controlLayer = new CCControlButtonTest_Event();
 			if (controlLayer != null && controlLayer.Init())
 			{
@@ -365,7 +365,7 @@ namespace tests.Extensions
 
 		public new static CCScene sceneWithTitle(string title)
 		{
-			var pScene = CCScene.Create();
+			var pScene = new CCScene();
 			var controlLayer = new CCControlButtonTest_Styling();
 			if (controlLayer != null && controlLayer.Init())
 			{

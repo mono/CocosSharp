@@ -37,7 +37,7 @@ namespace tests.Extensions
 
             mTestTitleLabelTTF.Label = (pCCBFileName);
 
-            CCScene scene = CCScene.Create();
+            CCScene scene = new CCScene();
             scene.AddChild(node);
 
             /* Push the new scene with a fancy transition. */
@@ -89,7 +89,7 @@ namespace tests.Extensions
 
             mTestTitleLabelTTF.Label = ("TestAnimations.ccbi");
 
-            CCScene scene = CCScene.Create();
+            CCScene scene = new CCScene();
             scene.AddChild(animationsTest);
 
             /* Push the new scene with a fancy transition. */

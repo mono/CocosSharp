@@ -64,7 +64,7 @@ namespace tests.Extensions
 
 		public new static CCScene sceneWithTitle(string title)
 		{
-			var pScene = CCScene.Create();
+			var pScene = new CCScene();
 			var controlLayer = new CCControlSliderTest();
 			if (controlLayer != null && controlLayer.Init())
 			{

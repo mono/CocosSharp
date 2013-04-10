@@ -49,7 +49,7 @@ namespace tests
 
         public void item0Clicked(object pSender)
         {
-            var newScene = CCScene.Create();
+            var newScene = new CCScene();
             newScene.AddChild(new SceneTestLayer3());
             CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, newScene, new CCColor3B(0, 255, 255)));
         }

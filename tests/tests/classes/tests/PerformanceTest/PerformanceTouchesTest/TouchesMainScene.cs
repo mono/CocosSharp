@@ -30,7 +30,7 @@ namespace tests
 
             if (pLayer != null)
             {
-                CCScene pScene = CCScene.Create();
+                CCScene pScene = new CCScene();
                 pScene.AddChild(pLayer);
 
                 CCDirector.SharedDirector.ReplaceScene(pScene);

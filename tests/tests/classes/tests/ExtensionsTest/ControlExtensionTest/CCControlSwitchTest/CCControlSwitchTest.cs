@@ -75,7 +75,7 @@ namespace tests.Extensions
 
         public static CCScene sceneWithTitle(string title)
         {
-            CCScene pScene = CCScene.Create();
+            CCScene pScene = new CCScene();
             var controlLayer = new CCControlSwitchTest();
             if (controlLayer != null && controlLayer.Init())
             {

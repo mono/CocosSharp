@@ -31,7 +31,7 @@ namespace tests
         {
             //unschedule(Bug624Layer.switchLayer);
 
-            CCScene scene = CCScene.Create();
+            CCScene scene = new CCScene();
             scene.AddChild(Bug624Layer2.Create(), 0);
             CCDirector.SharedDirector.ReplaceScene(CCTransitionFade.Create(2.0f, scene, new CCColor3B { R = 255, G = 255, B = 255 }));
         }
@@ -68,7 +68,7 @@ namespace tests
         {
             //unschedule(schedule_selector(Bug624Layer::switchLayer));
 
-            CCScene scene = CCScene.Create();
+            CCScene scene = new CCScene();
             scene.AddChild(Bug624Layer.Create(), 0);
             CCDirector.SharedDirector.ReplaceScene(CCTransitionFade.Create(2.0f, scene, new CCColor3B { R = 255, G = 0, B = 0 }));
         }

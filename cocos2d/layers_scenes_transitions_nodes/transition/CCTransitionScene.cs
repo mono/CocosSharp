@@ -81,7 +81,7 @@ namespace cocos2d
                 if (m_pOutScene == null)
                 {
                     // Creating an empty scene.
-                    m_pOutScene = Create();
+                    m_pOutScene = new CCScene();
                     m_pOutScene.Init();
                 }
 

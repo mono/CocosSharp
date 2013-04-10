@@ -34,7 +34,7 @@ namespace tests
             CCMenuItemFont pItem = (CCMenuItemFont)pSender;
             int nIndex = pItem.ZOrder - BugsTestScene.kItemTagBasic;
 
-            CCScene pScene = CCScene.Create();
+            CCScene pScene = new CCScene();
             CCLayer pLayer = null;
 
             switch (nIndex)

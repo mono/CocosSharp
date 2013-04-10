@@ -46,7 +46,7 @@ namespace tests
 
         public static CCScene scene()
         {
-            CCScene pScene = CCScene.Create();
+            CCScene pScene = new CCScene();
             //Bug1159Layer layer = Bug1159Layer.node();
             //pScene.addChild(layer);
 

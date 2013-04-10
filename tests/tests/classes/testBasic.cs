@@ -116,7 +116,7 @@ namespace tests
 
         public virtual void MainMenuCallback(object pSender)
         {
-            CCScene pScene = CCScene.Create();
+            CCScene pScene = new CCScene();
             CCLayer pLayer = new TestController();
 
             pScene.AddChild(pLayer);

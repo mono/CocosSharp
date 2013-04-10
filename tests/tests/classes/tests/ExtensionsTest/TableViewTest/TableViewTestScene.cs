@@ -7,7 +7,7 @@ namespace tests.Extensions
 	{
 		public static void runTableViewTest()
 		{
-			var pScene = CCScene.Create();
+			var pScene = new CCScene();
 			var pLayer = new TableViewTestLayer();
 			pLayer.Init();
 			pScene.AddChild(pLayer);

@@ -57,7 +57,7 @@ namespace tests
             pDirector.AnimationInterval = 1.0 / 60;
 
             // create a scene. it's an autorelease object
-            CCScene pScene = CCScene.Create();
+            CCScene pScene = new CCScene();
             CCLayer pLayer = new TestController();
             
             /*           
