@@ -41,11 +41,5 @@ namespace cocos2d
             return (true);
         }
 
-        public new static CCScene Create()
-        {
-            var pRet = new CCScene();
-            pRet.Init();
-            return pRet;
-        }
     }
 }

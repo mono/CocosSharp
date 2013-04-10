@@ -85,7 +85,7 @@ namespace tests
 
             addNewSpriteAtPosition(new CCPoint(s.Width / 2, s.Height / 2));
 
-            CCLabelTTF label = CCLabelTTF.Create("Tap screen", "Marker Felt", 32);
+            CCLabelTTF label = new CCLabelTTF("Tap screen", "Marker Felt", 32);
             AddChild(label, 0);
             label.Color = new CCColor3B(0, 0, 255);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);

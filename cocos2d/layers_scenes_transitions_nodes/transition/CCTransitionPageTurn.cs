@@ -109,7 +109,7 @@ namespace cocos2d
                 m_pOutScene.RunAction(CCSequence.FromActions
                                           (
                                               action,
-                                              CCCallFunc.Create(Finish),
+                                              new CCCallFunc(Finish),
                                               CCStopGrid.Create()));
             }
             else
@@ -120,7 +120,7 @@ namespace cocos2d
                                          (
                                              CCShow.Create(),
                                              action,
-                                             CCCallFunc.Create(Finish),
+                                             new CCCallFunc(Finish),
                                              CCStopGrid.Create()));
             }
         }

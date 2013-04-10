@@ -280,7 +280,7 @@ namespace tests
 
         public static CCScene scene()
         {
-            CCScene pScene = CCScene.Create();
+            CCScene pScene = new CCScene();
             TextureTest layer = new TextureTest(false, PerformanceTextureTest.TEST_COUNT, PerformanceTextureTest.s_nTexCurCase);
             pScene.AddChild(layer);
 

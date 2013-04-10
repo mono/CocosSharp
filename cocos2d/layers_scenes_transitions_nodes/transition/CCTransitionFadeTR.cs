@@ -61,7 +61,7 @@ namespace cocos2d
                     CCSequence.FromActions
                         (
                             EaseAction(action),
-                            CCCallFunc.Create(Finish),
+                            new CCCallFunc(Finish),
                             CCStopGrid.Create()
                         )
                 );

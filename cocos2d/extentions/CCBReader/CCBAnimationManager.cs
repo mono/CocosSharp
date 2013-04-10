@@ -158,7 +158,7 @@ namespace cocos2d
             CCBSequence seq = GetSequence(nSeqId);
             CCAction completeAction = new CCSequence (
                 new CCDelayTime (seq.Duration + fTweenDuration),
-                CCCallFunc.Create(SequenceCompleted)
+                new CCCallFunc(SequenceCompleted)
                 );
 
             mRootNode.RunAction(completeAction);

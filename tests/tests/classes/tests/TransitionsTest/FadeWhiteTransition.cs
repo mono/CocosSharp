@@ -8,9 +8,8 @@ namespace tests
 {
     public class FadeWhiteTransition : CCTransitionFade
     {
-        public new static CCTransitionScene Create(float t, CCScene s)
-        {
-            return CCTransitionFade.Create(t, s, CCTypes.CCWhite);
-        }
+        public FadeWhiteTransition (float t, CCScene s) : base (t, s, CCTypes.CCWhite)
+        {  }
+
     }
 }

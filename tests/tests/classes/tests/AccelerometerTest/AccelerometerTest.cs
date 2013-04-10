@@ -51,7 +51,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLabelTTF label = CCLabelTTF.Create(title(), "Arial", 32);
+            CCLabelTTF label = new CCLabelTTF(title(), "Arial", 32);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 

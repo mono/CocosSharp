@@ -264,14 +264,14 @@ namespace tests
             // add title and subtitle
             var str = title();
             var pTitle = str;
-            var label = CCLabelTTF.Create(pTitle, "arial", 18);
+            var label = new CCLabelTTF(pTitle, "arial", 18);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 30);
 
             var strSubtitle = subtitle();
             if (! strSubtitle.Equals(""))
             {
-                var l = CCLabelTTF.Create(strSubtitle, "arial", 22);
+                var l = new CCLabelTTF(strSubtitle, "arial", 22);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 60);
             }
@@ -800,9 +800,9 @@ namespace tests
                 CCPlace.Create(new CCPoint(200, 200)),
                 CCShow.Create(),
                 new CCMoveBy (1, new CCPoint(100, 0)),
-                CCCallFunc.Create(callback1),
-                CCCallFuncN.Create(callback2),
-                CCCallFuncND.Create(callback3, 0xbebabeba));
+                new CCCallFunc(callback1),
+                new CCCallFuncN(callback2),
+                new CCCallFuncND(callback3, 0xbebabeba));
 
             m_grossini.RunAction(action);
         }
@@ -810,7 +810,7 @@ namespace tests
         public void callback1()
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 1 called", "arial", 16);
+            var label = new CCLabelTTF("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
             AddChild(label);
@@ -819,7 +819,7 @@ namespace tests
         public void callback2(CCNode sender)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 2 called", "arial", 16);
+            var label = new CCLabelTTF("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
             AddChild(label);
@@ -828,7 +828,7 @@ namespace tests
         public void callback3(CCNode sender, object data)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 3 called", "arial", 16);
+            var label = new CCLabelTTF("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
 
             AddChild(label);
@@ -850,17 +850,17 @@ namespace tests
 
             var action = CCSequence.FromActions(
                 new CCMoveBy (2, new CCPoint(200, 0)),
-                CCCallFunc.Create(callback1));
+                new CCCallFunc(callback1));
 
             var action2 = CCSequence.FromActions(
                 new CCScaleBy(2, 2),
                 new CCFadeOut  (2),
-                CCCallFuncN.Create(callback2));
+                new CCCallFuncN(callback2));
 
             var action3 = CCSequence.FromActions(
                 new CCRotateBy (3, 360),
                 new CCFadeOut  (2),
-                CCCallFuncND.Create(callback3, 0xbebabeba));
+                new CCCallFuncND(callback3, 0xbebabeba));
 
             m_grossini.RunAction(action);
             m_tamara.RunAction(action2);
@@ -871,7 +871,7 @@ namespace tests
         public void callback1()
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 1 called", "arial", 16);
+            var label = new CCLabelTTF("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
             AddChild(label);
@@ -880,7 +880,7 @@ namespace tests
         public void callback2(CCNode pSender)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 2 called", "arial", 16);
+            var label = new CCLabelTTF("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
             AddChild(label);
@@ -889,7 +889,7 @@ namespace tests
         public void callback3(CCNode target, object data)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = CCLabelTTF.Create("callback 3 called", "arial", 16);
+            var label = new CCLabelTTF("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
             AddChild(label);
         }
@@ -910,7 +910,7 @@ namespace tests
 
             var action = CCSequence.FromActions(
                 new CCMoveBy (2.0f, new CCPoint(200, 0)),
-                CCCallFuncND.Create(removeFromParentAndCleanup, true)
+                new CCCallFuncND(removeFromParentAndCleanup, true)
                 );
 
             m_grossini.RunAction(action);
@@ -964,7 +964,7 @@ namespace tests
 
             var action = CCSequence.FromActions(
                 new CCDelayTime (1),
-                CCCallFuncN.Create(repeatForever));
+                new CCCallFuncN(repeatForever));
 
             m_grossini.RunAction(action);
         }
@@ -1433,7 +1433,7 @@ namespace tests
             }] ];
             */
 
-            m_pSpriteTmp.RunAction(CCCallFuncN.Create(log));
+            m_pSpriteTmp.RunAction(new CCCallFuncN(log));
 
             ScheduleOnce(addSprite, 2);
         }
@@ -1474,13 +1474,13 @@ namespace tests
 
             var act1 = new CCMoveBy (2, new CCPoint(0, 100));
 
-            var act2 = CCCallFunc.Create(log1);
+            var act2 = new CCCallFunc(log1);
             var act3 = new CCMoveBy (2, new CCPoint(0, -100));
-            var act4 = CCCallFunc.Create(log2);
+            var act4 = new CCCallFunc(log2);
             var act5 = new CCMoveBy (2, new CCPoint(100, -100));
-            var act6 = CCCallFunc.Create(log3);
+            var act6 = new CCCallFunc(log3);
             var act7 = new CCMoveBy (2, new CCPoint(-100, 0));
-            var act8 = CCCallFunc.Create(log4);
+            var act8 = new CCCallFunc(log4);
 
             var actF = CCSequence.FromActions(act1, act2, act3, act4, act5, act6, act7, act8);
 
@@ -1589,15 +1589,15 @@ namespace tests
             spr.Position = new CCPoint(100, 100);
             AddChild(spr);
 
-            var act1 = CCCallFuncN.Create(logSprRotation);
+            var act1 = new CCCallFuncN(logSprRotation);
             var act2 = new CCRotateBy (0.25f, 45);
-            var act3 = CCCallFuncN.Create(logSprRotation);
+            var act3 = new CCCallFuncN(logSprRotation);
             var act4 = new CCRotateBy (0.25f, 45);
-            var act5 = CCCallFuncN.Create(logSprRotation);
+            var act5 = new CCCallFuncN(logSprRotation);
             var act6 = new CCRotateBy (0.25f, 45);
-            var act7 = CCCallFuncN.Create(logSprRotation);
+            var act7 = new CCCallFuncN(logSprRotation);
             var act8 = new CCRotateBy (0.25f, 45);
-            var act9 = CCCallFuncN.Create(logSprRotation);
+            var act9 = new CCCallFuncN(logSprRotation);
 
             var actF = CCSequence.FromActions(act1, act2, act3, act4, act5, act6, act7, act8, act9);
             spr.RunAction(actF);

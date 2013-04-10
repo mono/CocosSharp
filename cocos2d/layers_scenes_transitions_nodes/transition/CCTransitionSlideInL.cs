@@ -66,7 +66,7 @@ namespace cocos2d
             CCActionInterval outAction = CCSequence.FromActions
                 (
                     EaseAction(outcAction),
-                    CCCallFunc.Create((Finish))
+                    new CCCallFunc((Finish))
                 );
             m_pInScene.RunAction(inAction);
             m_pOutScene.RunAction(outAction);

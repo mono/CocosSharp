@@ -34,7 +34,7 @@ namespace tests
             m_kathia.Position = new CCPoint(60, 150);
             m_tamara.Position = new CCPoint(60, 250);
 
-            var label = CCLabelTTF.Create(title(), "arial", 32);
+            var label = new CCLabelTTF(title(), "arial", 32);
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 

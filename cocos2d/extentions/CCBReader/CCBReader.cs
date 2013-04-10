@@ -367,7 +367,7 @@ namespace cocos2d
                                                         ref CCBAnimationManager animationManager)
         {
             CCNode node = ReadNodeGraphFromFile(fileName, owner, parentSize, ref animationManager);
-            CCScene pScene = CCScene.Create();
+            CCScene pScene = new CCScene();
             pScene.AddChild(node);
 
             return pScene;

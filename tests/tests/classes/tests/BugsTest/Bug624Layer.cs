@@ -14,7 +14,7 @@ namespace tests
             if (base.Init())
             {
                 CCSize size = CCDirector.SharedDirector.WinSize;
-                CCLabelTTF label = CCLabelTTF.Create("Layer1", "Marker Felt", 36);
+                CCLabelTTF label = new CCLabelTTF("Layer1", "Marker Felt", 36);
 
                 label.Position = new CCPoint(size.Width / 2, size.Height / 2);
                 AddChild(label);
@@ -31,9 +31,9 @@ namespace tests
         {
             //unschedule(Bug624Layer.switchLayer);
 
-            CCScene scene = CCScene.Create();
+            CCScene scene = new CCScene();
             scene.AddChild(Bug624Layer2.Create(), 0);
-            CCDirector.SharedDirector.ReplaceScene(CCTransitionFade.Create(2.0f, scene, new CCColor3B { R = 255, G = 255, B = 255 }));
+            CCDirector.SharedDirector.ReplaceScene(new CCTransitionFade(2.0f, scene, new CCColor3B { R = 255, G = 255, B = 255 }));
         }
 
         public virtual void didAccelerate(CCAcceleration pAccelerationValue)
@@ -51,7 +51,7 @@ namespace tests
             if (base.Init())
             {
                 CCSize size = CCDirector.SharedDirector.WinSize;
-                CCLabelTTF label = CCLabelTTF.Create("Layer2", "Marker Felt", 36);
+                CCLabelTTF label = new CCLabelTTF("Layer2", "Marker Felt", 36);
 
                 label.Position = new CCPoint(size.Width / 2, size.Height / 2);
                 AddChild(label);
@@ -68,9 +68,9 @@ namespace tests
         {
             //unschedule(schedule_selector(Bug624Layer::switchLayer));
 
-            CCScene scene = CCScene.Create();
+            CCScene scene = new CCScene();
             scene.AddChild(Bug624Layer.Create(), 0);
-            CCDirector.SharedDirector.ReplaceScene(CCTransitionFade.Create(2.0f, scene, new CCColor3B { R = 255, G = 0, B = 0 }));
+            CCDirector.SharedDirector.ReplaceScene(new CCTransitionFade(2.0f, scene, new CCColor3B { R = 255, G = 0, B = 0 }));
         }
 
         public virtual void didAccelerate(CCAcceleration pAccelerationValue)

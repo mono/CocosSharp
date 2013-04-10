@@ -39,9 +39,9 @@ namespace tests
             pCloseItem.Position = new CCPoint(s.Width - 30, s.Height - 30);
 #if !PSM && !WINDOWS_PHONE
 #if NETFX_CORE
-            CCLabelTTF versionLabel = CCLabelTTF.Create("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 12);
+            CCLabelTTF versionLabel = new CCLabelTTF("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 12);
 #else
-            CCLabelTTF versionLabel = CCLabelTTF.Create("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
+            CCLabelTTF versionLabel = new CCLabelTTF("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
 #endif
             versionLabel.Position = new CCPoint(versionLabel.ContentSizeInPixels.Width/2f, s.Height - 18f);
             versionLabel.HorizontalAlignment = CCTextAlignment.CCTextAlignmentLeft;
@@ -51,7 +51,7 @@ namespace tests
             m_pItemMenu = CCMenu.Create();
             for (int i = 0; i < (int)(TestCases.TESTS_COUNT); ++i)
             {
-                var label = CCLabelTTF.Create(Tests.g_aTestNames[i], "arial", 24);
+                var label = new CCLabelTTF(Tests.g_aTestNames[i], "arial", 24);
                 var pMenuItem = CCMenuItemLabel.Create(label, menuCallback);
 
                 pMenuItem.UserData = i;

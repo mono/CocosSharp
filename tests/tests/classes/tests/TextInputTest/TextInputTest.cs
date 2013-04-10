@@ -54,14 +54,14 @@ namespace cocos2d
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 24);
+            CCLabelTTF label = new CCLabelTTF(title(), "arial", 24);
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             string subTitle = m_pNotificationLayer.subtitle();
             if (subTitle != null)
             {
-                CCLabelTTF l = CCLabelTTF.Create(subTitle, subtitle(), 16);
+                CCLabelTTF l = new CCLabelTTF(subTitle, subtitle(), 16);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }
@@ -366,7 +366,7 @@ namespace cocos2d
             }
 
             // create a insert text sprite and do some action
-            CCLabelTTF label = CCLabelTTF.Create(text, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
+            CCLabelTTF label = new CCLabelTTF(text, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
             this.AddChild(label);
             CCColor3B color = new CCColor3B { R = 226, G = 121, B = 7 };
             label.Color = color;
@@ -389,7 +389,7 @@ namespace cocos2d
                     new CCMoveTo (duration, endPos),
                     new CCScaleTo(duration, 1),
                     new CCFadeOut  (duration)),
-                CCCallFuncN.Create(callbackRemoveNodeWhenDidAction));
+                new CCCallFuncN(callbackRemoveNodeWhenDidAction));
             label.RunAction(seq);
             return false;
         }
@@ -397,7 +397,7 @@ namespace cocos2d
         public virtual bool onTextFieldDeleteBackward(CCTextFieldTTF pSender, string delText, int nLen)
         {
             // create a delete text sprite and do some action
-            CCLabelTTF label = CCLabelTTF.Create(delText, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
+            CCLabelTTF label = new CCLabelTTF(delText, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
             this.AddChild(label);
 
             // move the sprite to fly out
@@ -423,7 +423,7 @@ namespace cocos2d
                         new CCRotateBy (rotateDuration, (Random.Next() % 2 > 0) ? 360 : -360),
                         (uint)repeatTime),
                     new CCFadeOut  (duration)),
-                CCCallFuncN.Create(callbackRemoveNodeWhenDidAction));
+                new CCCallFuncN(callbackRemoveNodeWhenDidAction));
             label.RunAction(seq);
             return false;
         }

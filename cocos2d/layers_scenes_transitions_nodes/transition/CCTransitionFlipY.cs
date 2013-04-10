@@ -57,7 +57,7 @@ namespace cocos2d
                     new CCDelayTime (m_fDuration / 2),
                     CCShow.Create(),
                     new CCOrbitCamera(m_fDuration / 2, 1, 0, inAngleZ, inDeltaZ, 90, 0),
-                    CCCallFunc.Create(Finish)
+                    new CCCallFunc(Finish)
                 );
             outA = CCSequence.FromActions
                 (
