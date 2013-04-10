@@ -33,7 +33,7 @@ namespace tests
 
             RunAction(CCSequence.FromActions(
                 new CCRotateBy (2, 360),
-                CCCallFuncN.Create((removeMe))
+                new CCCallFuncN((removeMe))
                           ));
 
             AddChild(explosion);

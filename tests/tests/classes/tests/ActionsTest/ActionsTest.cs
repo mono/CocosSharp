@@ -801,7 +801,7 @@ namespace tests
                 CCShow.Create(),
                 new CCMoveBy (1, new CCPoint(100, 0)),
                 new CCCallFunc(callback1),
-                CCCallFuncN.Create(callback2),
+                new CCCallFuncN(callback2),
                 CCCallFuncND.Create(callback3, 0xbebabeba));
 
             m_grossini.RunAction(action);
@@ -855,7 +855,7 @@ namespace tests
             var action2 = CCSequence.FromActions(
                 new CCScaleBy(2, 2),
                 new CCFadeOut  (2),
-                CCCallFuncN.Create(callback2));
+                new CCCallFuncN(callback2));
 
             var action3 = CCSequence.FromActions(
                 new CCRotateBy (3, 360),
@@ -964,7 +964,7 @@ namespace tests
 
             var action = CCSequence.FromActions(
                 new CCDelayTime (1),
-                CCCallFuncN.Create(repeatForever));
+                new CCCallFuncN(repeatForever));
 
             m_grossini.RunAction(action);
         }
@@ -1433,7 +1433,7 @@ namespace tests
             }] ];
             */
 
-            m_pSpriteTmp.RunAction(CCCallFuncN.Create(log));
+            m_pSpriteTmp.RunAction(new CCCallFuncN(log));
 
             ScheduleOnce(addSprite, 2);
         }
@@ -1589,15 +1589,15 @@ namespace tests
             spr.Position = new CCPoint(100, 100);
             AddChild(spr);
 
-            var act1 = CCCallFuncN.Create(logSprRotation);
+            var act1 = new CCCallFuncN(logSprRotation);
             var act2 = new CCRotateBy (0.25f, 45);
-            var act3 = CCCallFuncN.Create(logSprRotation);
+            var act3 = new CCCallFuncN(logSprRotation);
             var act4 = new CCRotateBy (0.25f, 45);
-            var act5 = CCCallFuncN.Create(logSprRotation);
+            var act5 = new CCCallFuncN(logSprRotation);
             var act6 = new CCRotateBy (0.25f, 45);
-            var act7 = CCCallFuncN.Create(logSprRotation);
+            var act7 = new CCCallFuncN(logSprRotation);
             var act8 = new CCRotateBy (0.25f, 45);
-            var act9 = CCCallFuncN.Create(logSprRotation);
+            var act9 = new CCCallFuncN(logSprRotation);
 
             var actF = CCSequence.FromActions(act1, act2, act3, act4, act5, act6, act7, act8, act9);
             spr.RunAction(actF);

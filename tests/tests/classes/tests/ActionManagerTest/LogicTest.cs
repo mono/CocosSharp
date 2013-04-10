@@ -25,7 +25,7 @@ namespace tests
 
             grossini.RunAction(CCSequence.FromActions(
                                                         new CCMoveBy (1, new CCPoint(150, 0)),
-                                                        CCCallFuncN.Create(bugMe))
+                                                        new CCCallFuncN(bugMe))
                                 );
         }
 

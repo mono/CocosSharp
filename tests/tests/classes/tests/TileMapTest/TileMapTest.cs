@@ -345,7 +345,7 @@ namespace tests
             CCFadeOut opacity = new CCFadeOut  (2);
             CCFadeIn fadein = new CCFadeIn  (2);
             CCScaleTo scaleback = new CCScaleTo(1, 1);
-            CCCallFuncN finish = CCCallFuncN.Create(removeSprite);
+            CCCallFuncN finish = new CCCallFuncN(removeSprite);
             CCSequence seq0 = CCSequence.FromActions(move, rotate, scale, opacity, fadein, scaleback, finish);
             var seq1 = (CCActionInterval) (seq0.Copy());
             var seq2 = (CCActionInterval) (seq0.Copy());

@@ -389,7 +389,7 @@ namespace cocos2d
                     new CCMoveTo (duration, endPos),
                     new CCScaleTo(duration, 1),
                     new CCFadeOut  (duration)),
-                CCCallFuncN.Create(callbackRemoveNodeWhenDidAction));
+                new CCCallFuncN(callbackRemoveNodeWhenDidAction));
             label.RunAction(seq);
             return false;
         }
@@ -423,7 +423,7 @@ namespace cocos2d
                         new CCRotateBy (rotateDuration, (Random.Next() % 2 > 0) ? 360 : -360),
                         (uint)repeatTime),
                     new CCFadeOut  (duration)),
-                CCCallFuncN.Create(callbackRemoveNodeWhenDidAction));
+                new CCCallFuncN(callbackRemoveNodeWhenDidAction));
             label.RunAction(seq);
             return false;
         }
