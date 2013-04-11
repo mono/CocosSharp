@@ -130,7 +130,6 @@ namespace Box2D.Collision
 
     public struct b2Manifold
     {
-        public static b2Manifold Default = b2Manifold.Create();
         public b2ManifoldPoint[] CopyPoints()
         {
             b2ManifoldPoint[] copy = new b2ManifoldPoint[points.Length];

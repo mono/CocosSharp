@@ -586,14 +586,14 @@ namespace Box2D.Collision
                              b2Shape shapeB, int indexB,
                             ref b2Transform xfA, ref b2Transform xfB)
         {
-            b2DistanceInput input = b2DistanceInput.Default;
+            b2DistanceInput input = b2DistanceInput.Create();
             input.proxyA = new b2DistanceProxy(shapeA, indexA);
             input.proxyB = new b2DistanceProxy(shapeB, indexB);
             input.transformA = xfA;
             input.transformB = xfB;
             input.useRadii = true;
 
-            b2SimplexCache cache = b2SimplexCache.Default;
+            b2SimplexCache cache = b2SimplexCache.Create();
 
             b2DistanceOutput output = new b2DistanceOutput();
 

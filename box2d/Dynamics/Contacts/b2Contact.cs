@@ -195,7 +195,7 @@ namespace Box2D.Dynamics.Contacts
             m_indexA = indexA;
             m_indexB = indexB;
 
-			m_manifold = b2Manifold.Default;
+			m_manifold = b2Manifold.Create();
             m_manifold.pointCount = 0;
 
             Prev = null;

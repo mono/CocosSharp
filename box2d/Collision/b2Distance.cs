@@ -28,8 +28,6 @@ namespace Box2D.Collision
 	/// Set count to zero on first call.
 	public struct b2SimplexCache
 	{
-        public static b2SimplexCache Default = b2SimplexCache.Create();
-
         public void Defaults()
         {
             metric = 0f;
@@ -55,8 +53,6 @@ namespace Box2D.Collision
 	/// in the computation. Even 
 	public struct b2DistanceInput
 	{
-        public static b2DistanceInput Default = b2DistanceInput.Create();
-
         public static b2DistanceInput Create()
         {
             return (new b2DistanceInput());

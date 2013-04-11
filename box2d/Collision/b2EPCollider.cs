@@ -25,11 +25,9 @@ namespace Box2D.Collision
     // This holds polygon B expressed in frame A.
     public struct b2TempPolygon
     {
-        public static b2TempPolygon Default = b2TempPolygon.Create();
-
         public static b2TempPolygon Create()
         {
-            b2TempPolygon bt = new b2TempPolygon();
+            b2TempPolygon bt;
             bt.vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
             bt.normals = new b2Vec2[b2Settings.b2_maxPolygonVertices];
             bt.count = 0;
@@ -265,7 +263,7 @@ namespace Box2D.Collision
             }
 
             // Get polygonB in frameA
-            m_polygonB = b2TempPolygon.Default;
+            m_polygonB = b2TempPolygon.Create();
             m_polygonB.count = polygonB.VertexCount;
             for (int i = 0; i < polygonB.VertexCount; ++i)
             {

@@ -95,7 +95,7 @@ namespace Box2D.Dynamics
         {
             get { return (m_proxies.Count); }
         }
-        private b2Filter m_filter;
+        private b2Filter m_filter = b2Filter.Default;
         public b2Filter Filter
         {
             get { return (m_filter); }
@@ -115,7 +115,7 @@ namespace Box2D.Dynamics
             }
         }
 
-        object m_userData;
+        private object m_userData;
         public object UserData
         {
             get { return (m_userData); }
@@ -187,9 +187,9 @@ namespace Box2D.Dynamics
             {
                 b2FixtureProxy proxy = m_proxies[i];
                 proxy.aabb = m_shape.ComputeAABB(xf, i);
-                proxy.proxyId = broadPhase.CreateProxy(proxy.aabb, proxy);
                 proxy.fixture = this;
                 proxy.childIndex = i;
+                proxy.proxyId = broadPhase.CreateProxy(proxy.aabb, ref proxy);
                 m_proxies[i] = proxy;
             }
         }
@@ -277,10 +277,10 @@ namespace Box2D.Dynamics
             System.Diagnostics.Debug.WriteLine("    fd.friction = {0:N5};", m_friction);
             System.Diagnostics.Debug.WriteLine("    fd.restitution = {0:N5};", m_restitution);
             System.Diagnostics.Debug.WriteLine("    fd.density = {0:N5};", m_density);
-            System.Diagnostics.Debug.WriteLine("    fd.isSensor = bool({0});", m_isSensor);
-            System.Diagnostics.Debug.WriteLine("    fd.filter.categoryBits = uint16({0});", m_filter.categoryBits);
-            System.Diagnostics.Debug.WriteLine("    fd.filter.maskBits = uint16({0});", m_filter.maskBits);
-            System.Diagnostics.Debug.WriteLine("    fd.filter.groupIndex = int16({0});", m_filter.groupIndex);
+            System.Diagnostics.Debug.WriteLine("    fd.isSensor = {0};", m_isSensor);
+            System.Diagnostics.Debug.WriteLine("    fd.filter.categoryBits = {0};", m_filter.categoryBits);
+            System.Diagnostics.Debug.WriteLine("    fd.filter.maskBits = {0};", m_filter.maskBits);
+            System.Diagnostics.Debug.WriteLine("    fd.filter.groupIndex = {0};", m_filter.groupIndex);
 
             switch (m_shape.ShapeType)
             {
@@ -302,8 +302,8 @@ namespace Box2D.Dynamics
                         System.Diagnostics.Debug.WriteLine("    shape.m_vertex1.Set({0:N5}, {0:N5});", s.Vertex1.x, s.Vertex1.y);
                         System.Diagnostics.Debug.WriteLine("    shape.m_vertex2.Set({0:N5}, {0:N5});", s.Vertex2.x, s.Vertex2.y);
                         System.Diagnostics.Debug.WriteLine("    shape.m_vertex3.Set({0:N5}, {0:N5});", s.Vertex3.x, s.Vertex3.y);
-                        System.Diagnostics.Debug.WriteLine("    shape.m_hasVertex0 = bool({0});", s.HasVertex0);
-                        System.Diagnostics.Debug.WriteLine("    shape.m_hasVertex3 = bool({0});", s.HasVertex3);
+                        System.Diagnostics.Debug.WriteLine("    shape.m_hasVertex0 = {0};", s.HasVertex0);
+                        System.Diagnostics.Debug.WriteLine("    shape.m_hasVertex3 = {0};", s.HasVertex3);
                     }
                     break;
 
@@ -332,8 +332,8 @@ namespace Box2D.Dynamics
                         System.Diagnostics.Debug.WriteLine("    shape.CreateChain(vs, {0});", s.Count);
                         System.Diagnostics.Debug.WriteLine("    shape.PrevVertex.Set({0:N5}, {0:N5});", s.PrevVertex.x, s.PrevVertex.y);
                         System.Diagnostics.Debug.WriteLine("    shape.NextVertex.Set({0:N5}, {0:N5});", s.NextVertex.x, s.NextVertex.y);
-                        System.Diagnostics.Debug.WriteLine("    shape.m_hasPrevVertex = bool({0});", s.HasPrevVertex);
-                        System.Diagnostics.Debug.WriteLine("    shape.m_hasNextVertex = bool({0});", s.HasNextVertex);
+                        System.Diagnostics.Debug.WriteLine("    shape.m_hasPrevVertex = {0};", s.HasPrevVertex);
+                        System.Diagnostics.Debug.WriteLine("    shape.m_hasNextVertex = {0};", s.HasNextVertex);
                     }
                     break;
 
@@ -342,9 +342,9 @@ namespace Box2D.Dynamics
             }
 
             System.Diagnostics.Debug.WriteLine("");
-            System.Diagnostics.Debug.WriteLine("    fd.shape = &shape;");
+            System.Diagnostics.Debug.WriteLine("    fd.shape = shape;");
             System.Diagnostics.Debug.WriteLine("");
-            System.Diagnostics.Debug.WriteLine("    bodies[{0}].CreateFixture(&fd);", bodyIndex);
+            System.Diagnostics.Debug.WriteLine("    bodies[{0}].CreateFixture(fd);", bodyIndex);
         }
     }
 }

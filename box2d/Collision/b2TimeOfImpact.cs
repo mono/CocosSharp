@@ -330,7 +330,7 @@ namespace Box2D.Collision
 			int iter = 0;
 			
 			// Prepare input for distance query.
-			b2SimplexCache cache = b2SimplexCache.Default;
+			b2SimplexCache cache = b2SimplexCache.Create();
 			b2DistanceInput distanceInput = new b2DistanceInput();
 			distanceInput.proxyA = input.proxyA;
 			distanceInput.proxyB = input.proxyB;
