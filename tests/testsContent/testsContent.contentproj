@@ -1235,6 +1235,22 @@
       <Importer>CocosFontImporter</Importer>
       <Processor>CocosFontProcessor</Processor>
     </Compile>
+    <Compile Include="fonts\MarkerFelt-16.spritefont">
+      <Name>MarkerFelt-16</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="fonts\MarkerFelt-18.spritefont">
+      <Name>MarkerFelt-18</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\MarkerFelt-22.spritefont">
+      <Name>MarkerFelt-22</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="animations\ghosts.plist">

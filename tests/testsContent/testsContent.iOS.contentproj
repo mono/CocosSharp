@@ -520,6 +520,21 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
+    <Compile Include="fonts\MarkerFelt-16.spritefont">
+      <Name>MarkerFelt-16</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\MarkerFelt-18.spritefont">
+      <Name>MarkerFelt-18</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\MarkerFelt-22.spritefont">
+      <Name>MarkerFelt-22</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sounds\background.mp3">
@@ -2105,7 +2120,7 @@
       <Processor>MGTextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <Import Project="..\..\..\MonoGame\MonoGame.ContentPipeline\MonoGame.ContentPipeline.targets" />
+  <Import Project="..\iOSContent\ContentBuilder\Dependencies\MonoGame.ContentPipeline.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
