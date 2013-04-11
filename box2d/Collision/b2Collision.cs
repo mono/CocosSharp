@@ -587,8 +587,8 @@ namespace Box2D.Collision
                             ref b2Transform xfA, ref b2Transform xfB)
         {
             b2DistanceInput input = b2DistanceInput.Create();
-            input.proxyA = new b2DistanceProxy(shapeA, indexA);
-            input.proxyB = new b2DistanceProxy(shapeB, indexB);
+            input.proxyA = b2DistanceProxy.Create(shapeA, indexA);
+            input.proxyB = b2DistanceProxy.Create(shapeB, indexB);
             input.transformA = xfA;
             input.transformB = xfB;
             input.useRadii = true;
@@ -599,7 +599,7 @@ namespace Box2D.Collision
 
             b2Simplex.b2Distance(ref output, ref cache, ref input);
 
-            Console.WriteLine("{2} vs {3}: distance={0} after {1} iters", output.distance, output.iterations, shapeA.ShapeType, shapeB.ShapeType);
+//            Console.WriteLine("{2} vs {3}: distance={0} after {1} iters", output.distance, output.iterations, shapeA.ShapeType, shapeB.ShapeType);
 
             return output.distance < 10.0f * b2Settings.b2_epsilon;
         }

@@ -100,8 +100,8 @@ namespace Box2D.Collision
 	{
 		
 		public void ReadCache(ref b2SimplexCache cache,
-		                      b2DistanceProxy proxyA, ref b2Transform transformA,
-		                      b2DistanceProxy proxyB, ref b2Transform transformB)
+		                      ref b2DistanceProxy proxyA, ref b2Transform transformA,
+		                      ref b2DistanceProxy proxyB, ref b2Transform transformB)
 		{
 			Debug.Assert(cache.count <= 3);
 			
@@ -446,15 +446,15 @@ namespace Box2D.Collision
 		{
 			++b2DistanceProxy.b2_gjkCalls;
 			
-			b2DistanceProxy proxyA = input.proxyA;
-			b2DistanceProxy proxyB = input.proxyB;
+			b2DistanceProxy proxyA = input.proxyA.Copy();
+			b2DistanceProxy proxyB = input.proxyB.Copy();
 			
 			b2Transform transformA = input.transformA;
 			b2Transform transformB = input.transformB;
 			
 			// Initialize the simplex.
 			b2Simplex simplex = new b2Simplex();
-			simplex.ReadCache(ref cache, proxyA, ref transformA, proxyB, ref transformB);
+			simplex.ReadCache(ref cache, ref proxyA, ref transformA, ref proxyB, ref transformB);
 			
 			// Get simplex vertices as an array.
 			b2SimplexVertex[] vertices = new b2SimplexVertex[] { simplex.m_vertices[0], simplex.m_vertices[1], simplex.m_vertices[2] };

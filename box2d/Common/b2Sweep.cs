@@ -32,7 +32,7 @@ namespace Box2D.Common
 
         /// Get the interpolated transform at a specific time.
         /// @param beta is a factor in [0,1], where 0 indicates alpha0.
-        public b2Transform GetTransform(b2Transform xfb, float beta)
+        public void GetTransform(ref b2Transform xfb, float beta)
         {
             xfb.p = (1.0f - beta) * c0 + beta * c;
             float angle = (1.0f - beta) * a0 + beta * a;
@@ -40,7 +40,7 @@ namespace Box2D.Common
 
             // Shift to origin
             xfb.p -= b2Math.b2Mul(xfb.q, localCenter);
-            return (xfb);
+//            return (xfb);
         }
 
         /// Advance the sweep forward, yielding a new initial state.
