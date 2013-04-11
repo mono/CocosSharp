@@ -571,7 +571,7 @@ namespace Box2D.Dynamics
                 return;
             }
 
-            b2ContactImpulse impulse = new b2ContactImpulse();
+            b2ContactImpulse impulse = b2ContactImpulse.Create();
             for (int i = 0; i < m_contactCount; ++i)
             {
                 b2Contact c = m_contacts[i];
@@ -585,7 +585,7 @@ namespace Box2D.Dynamics
                     impulse.tangentImpulses[j] = vc.points[j].tangentImpulse;
                 }
 
-                m_listener.PostSolve(c, impulse);
+                m_listener.PostSolve(c, ref impulse);
             }
         }
     }

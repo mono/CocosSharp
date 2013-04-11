@@ -10,7 +10,7 @@ using Random = cocos2d.Random;
 
 namespace tests
 {
-    internal class PhysicsSprite : CCSprite
+    internal class CCPhysicsSprite : CCSprite
     {
         private b2Body m_pBody; // strong ref
 
@@ -20,10 +20,7 @@ namespace tests
             set { base.Dirty = value; }
         }
 
-        public void setPhysicsBody(b2Body body)
-        {
-            m_pBody = body;
-        }
+        public b2Body PhysicsBody { get { return (m_pBody); } set { m_pBody = value; } }
 
         public override CCAffineTransform NodeToParentTransform()
         {
@@ -200,6 +197,8 @@ namespace tests
             //kmGLPopMatrix();
         }
 
+        private const int kTagForPhysicsSprite = 99999;
+
         public void addNewSpriteAtPosition(CCPoint p)
         {
             CCLog.Log("Add sprite #{2} : {0} x {1}", p.X, p.Y, batch.ChildrenCount+1);
@@ -208,10 +207,10 @@ namespace tests
             //just randomly picking one of the images
             int idx = (Random.Float_0_1() > .5 ? 0 : 1);
             int idy = (Random.Float_0_1() > .5 ? 0 : 1);
-            var sprite = new PhysicsSprite();
+            var sprite = new CCPhysicsSprite();
             sprite.InitWithTexture(m_pSpriteTexture, new CCRect(32 * idx, 32 * idy, 32, 32));
 
-            batch.AddChild(sprite);
+            batch.AddChild(sprite, 0, kTagForPhysicsSprite);
 
             sprite.Position = new CCPoint(p.X, p.Y);
 
@@ -234,13 +233,17 @@ namespace tests
             fd.density = 1f;
             b2Fixture fixture = body.CreateFixture(fd);
 
-            sprite.setPhysicsBody(body);
+            sprite.PhysicsBody = body;
         }
 
         public override void Update(float dt)
         {
             world.Step(dt, 8, 1);
 
+            foreach (CCPhysicsSprite sprite in batch.Children)
+            {
+                sprite.PhysicsBody.Dump();
+            }
             /*
             b2Profile profile = world.Profile;
             CCLog.Log("]-----------[{0:F4}]-----------------------[", profile.step);

@@ -190,6 +190,7 @@ namespace Box2D.Dynamics
                 proxy.proxyId = broadPhase.CreateProxy(proxy.aabb, proxy);
                 proxy.fixture = this;
                 proxy.childIndex = i;
+                m_proxies[i] = proxy;
             }
         }
         public virtual void DestroyProxies(b2BroadPhase broadPhase)
@@ -200,6 +201,7 @@ namespace Box2D.Dynamics
                 b2FixtureProxy proxy = m_proxies[i];
                 broadPhase.DestroyProxy(proxy.proxyId);
                 proxy.proxyId = b2BroadPhase.e_nullProxy;
+                m_proxies[i] = proxy;
             }
             m_proxies.Clear();
             m_proxyCount = 0;

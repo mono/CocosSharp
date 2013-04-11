@@ -8,7 +8,7 @@ using Box2D.Collision;
 namespace Box2D.Dynamics
 {
     /// This proxy is used internally to connect fixtures to the broad-phase.
-    public class b2FixtureProxy
+    public struct b2FixtureProxy
     {
         public b2AABB aabb;
         public b2Fixture fixture;

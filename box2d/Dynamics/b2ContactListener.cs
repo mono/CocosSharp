@@ -51,7 +51,7 @@ namespace Box2D.Dynamics
         /// in a separate data structure.
         /// Note: this is only called for contacts that are touching, solid, and awake.
         /// </summary>
-        public abstract void PostSolve(b2Contact contact, b2ContactImpulse impulse);
+        public abstract void PostSolve(b2Contact contact, ref b2ContactImpulse impulse);
 
         public static b2ContactListener b2_defaultListener;
     }

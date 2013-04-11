@@ -15,10 +15,18 @@ namespace Box2D.Dynamics
     /// sub-step forces may approach infinity for rigid body collisions. These
     /// match up one-to-one with the contact points in b2Manifold.
     /// </summary>
-    public class b2ContactImpulse
+    public struct b2ContactImpulse
     {
-        public float[] normalImpulses = new float[b2Settings.b2_maxManifoldPoints];
-        public float[] tangentImpulses = new float[b2Settings.b2_maxManifoldPoints];
+        public static b2ContactImpulse Create()
+        {
+            b2ContactImpulse b = new b2ContactImpulse();
+            b.normalImpulses = new float[b2Settings.b2_maxManifoldPoints];
+            b.tangentImpulses = new float[b2Settings.b2_maxManifoldPoints];
+            b.count = 0;
+            return (b);
+        }
+        public float[] normalImpulses;
+        public float[] tangentImpulses;
         public int count;
     }
 

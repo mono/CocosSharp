@@ -56,8 +56,11 @@ namespace Box2D.Collision
         {
             bool result = true;
             result = result && m_lowerBound.x <= aabb.m_lowerBound.x;
+            if(result)
             result = result && m_lowerBound.y <= aabb.m_lowerBound.y;
+            if(result)
             result = result && aabb.m_upperBound.x <= m_upperBound.x;
+            if(result)
             result = result && aabb.m_upperBound.y <= m_upperBound.y;
             return result;
         }
