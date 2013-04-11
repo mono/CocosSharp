@@ -128,7 +128,7 @@ namespace Box2D.Dynamics.Contacts
         public float Restitution { get { return (m_restitution); } set { m_restitution = value; } }
 
         /// Evaluate this contact with your own manifold and transforms.
-        public abstract void Evaluate(b2Manifold manifold, ref b2Transform xfA, ref b2Transform xfB);
+        public abstract void Evaluate(ref b2Manifold manifold, ref b2Transform xfA, ref b2Transform xfB);
 
         protected static b2ContactRegister[,] s_registers = new b2ContactRegister[(int)b2ShapeType.e_typeCount, (int)b2ShapeType.e_typeCount];
 
@@ -195,7 +195,7 @@ namespace Box2D.Dynamics.Contacts
             m_indexA = indexA;
             m_indexB = indexB;
 
-			m_manifold = new b2Manifold();
+			m_manifold = b2Manifold.Default;
             m_manifold.pointCount = 0;
 
             Prev = null;
@@ -224,6 +224,8 @@ namespace Box2D.Dynamics.Contacts
         public virtual void Update(b2ContactListener listener)
         {
             b2Manifold oldManifold = m_manifold;
+            oldManifold.points = m_manifold.CopyPoints();
+
 
             // Re-enable this contact.
             m_flags |= b2ContactFlags.e_enabledFlag;
@@ -245,14 +247,14 @@ namespace Box2D.Dynamics.Contacts
             {
                 b2Shape shapeA = m_fixtureA.Shape;
                 b2Shape shapeB = m_fixtureB.Shape;
-                touching = b2Collision.b2TestOverlap(shapeA, m_indexA, shapeB, m_indexB, xfA, xfB);
+                touching = b2Collision.b2TestOverlap(shapeA, m_indexA, shapeB, m_indexB, ref xfA, ref xfB);
 
                 // Sensors don't generate manifolds.
                 m_manifold.pointCount = 0;
             }
             else
             {
-                Evaluate(m_manifold, ref xfA, ref xfB);
+                Evaluate(ref m_manifold, ref xfA, ref xfB);
                 touching = m_manifold.pointCount > 0;
 
                 // Match old contact ids to new contact ids and copy the
@@ -275,6 +277,7 @@ namespace Box2D.Dynamics.Contacts
                             break;
                         }
                     }
+                    m_manifold.points[i] = mp2;
                 }
 
                 if (touching != wasTouching)
@@ -305,7 +308,7 @@ namespace Box2D.Dynamics.Contacts
 
             if (sensor == false && touching && listener != null)
             {
-                listener.PreSolve(this, oldManifold);
+                listener.PreSolve(this, ref oldManifold);
             }
         }
         public virtual b2Manifold GetManifold()
@@ -320,7 +323,7 @@ namespace Box2D.Dynamics.Contacts
             b2Shape shapeA = m_fixtureA.Shape;
             b2Shape shapeB = m_fixtureB.Shape;
 
-            worldManifold.Initialize(m_manifold, bodyA.Transform, shapeA.Radius, bodyB.Transform, shapeB.Radius);
+            worldManifold.Initialize(ref m_manifold, bodyA.Transform, shapeA.Radius, bodyB.Transform, shapeB.Radius);
         }
 
         public virtual void SetEnabled(bool flag)

@@ -54,7 +54,7 @@ namespace Box2D.Collision
         // modest motion from the original state. This does not change the
         // point count, impulses, etc. The radii must come from the shapes
         // that generated the manifold.
-        public void Initialize(b2Manifold manifold,
+        public void Initialize(ref b2Manifold manifold,
                         b2Transform xfA, float radiusA,
                         b2Transform xfB, float radiusB)
         {
@@ -128,9 +128,22 @@ namespace Box2D.Collision
         public b2Vec2[] points;    //< world contact point (point of intersection)
     }
 
-    public class b2Manifold
+    public struct b2Manifold
     {
-        public b2ManifoldPoint[] points = new b2ManifoldPoint[b2Settings.b2_maxManifoldPoints];    //< the points of contact
+        public static b2Manifold Default = b2Manifold.Create();
+        public b2ManifoldPoint[] CopyPoints()
+        {
+            b2ManifoldPoint[] copy = new b2ManifoldPoint[points.Length];
+            points.CopyTo(copy, 0);
+            return (copy);
+        }
+        public static b2Manifold Create()
+        {
+            b2Manifold m = new b2Manifold();
+            m.points =  new b2ManifoldPoint[b2Settings.b2_maxManifoldPoints];
+            return (m);
+        }
+        public b2ManifoldPoint[] points;//  = new b2ManifoldPoint[b2Settings.b2_maxManifoldPoints];    //< the points of contact
         public b2Vec2 localNormal;                                //< not use for Type::e_points
         public b2Vec2 localPoint;                                //< usage depends on manifold type
         public b2ManifoldType type;

@@ -269,7 +269,7 @@ namespace Box2D.Dynamics.Contacts
                 xfB.p = cB - b2Math.b2Mul(xfB.q, localCenterB);
 
                 b2WorldManifold worldManifold = new b2WorldManifold();
-                worldManifold.Initialize(manifold, xfA, radiusA, xfB, radiusB);
+                worldManifold.Initialize(ref manifold, xfA, radiusA, xfB, radiusB);
 
                 vc.normal = worldManifold.normal;
 

@@ -285,7 +285,7 @@ namespace Box2D.Dynamics
             solverData.velocities = m_velocities;
 
             // Initialize velocity constraints.
-            b2ContactSolverDef contactSolverDef = new b2ContactSolverDef();
+            b2ContactSolverDef contactSolverDef;
             contactSolverDef.step = step;
             contactSolverDef.contacts = m_contacts;
             contactSolverDef.count = m_contactCount;

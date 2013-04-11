@@ -41,7 +41,7 @@ namespace Box2D.Dynamics
         /// get an EndContact callback. However, you may get a BeginContact callback
         /// the next step.
         /// </summary>
-        public abstract void PreSolve(b2Contact contact, b2Manifold oldManifold);
+        public abstract void PreSolve(b2Contact contact, ref b2Manifold oldManifold);
 
         /// <summary>
         /// This lets you inspect a contact after the solver is finished. This is useful

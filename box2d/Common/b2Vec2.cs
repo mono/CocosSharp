@@ -26,16 +26,52 @@ namespace Box2D.Common
         {
             _x = x;
             _y = y;
+#if DEBUG
+            if (!IsValid())
+            {
+                Console.WriteLine("Invalid vector - this message is here for the sake of a breakpoint");
+            }
+#endif
         }
 
-        public float x { get { return (_x); } set { _x = value; } }
-        public float y { get { return (_y); } set { _y = value; } }
+        public float x { get { return (_x); } 
+            set { 
+            _x = value;
+#if DEBUG
+            if (!IsValid())
+            {
+                Console.WriteLine("Invalid vector - this message is here for the sake of a breakpoint");
+            }
+#endif
+        } 
+        }
+        public float y { get { return (_y); } 
+            set { 
+                _y = value;
+#if DEBUG
+                if (!IsValid())
+                {
+                    Console.WriteLine("Invalid vector - this message is here for the sake of a breakpoint");
+                }
+#endif
+            } 
+        }
 
         /// Set this vector to all zeros.
         public void SetZero() { _x = 0f; _y = 0f; }
 
         /// Set this vector to some specified coordinates.
-        public void Set(float x_, float y_) { _x = x_; _y = y_; }
+        public void Set(float x_, float y_) 
+        { 
+            _x = x_; 
+            _y = y_;
+#if DEBUG
+            if (!IsValid())
+            {
+                Console.WriteLine("Invalid vector - this message is here for the sake of a breakpoint");
+            }
+#endif
+        }
 
         /// Negate this vector.
         public static b2Vec2 operator -(b2Vec2 b)
