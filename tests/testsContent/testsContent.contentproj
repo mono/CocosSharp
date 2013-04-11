@@ -1047,28 +1047,16 @@
       <Processor>FontDescriptionProcessor</Processor>
       <SubType>Designer</SubType>
     </Compile>
-    <None Include="fonts\A Damn Mess.ttf">
-      <Name>A Damn Mess</Name>
-    </None>
     <Compile Include="fonts\Abberancy-26.spritefont">
       <Name>Abberancy-26</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
-    <None Include="fonts\Abberancy.ttf">
-      <Name>Abberancy</Name>
-    </None>
     <Compile Include="fonts\Abduction-26.spritefont">
       <Name>Abduction-26</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
-    <None Include="fonts\Abduction.ttf">
-      <Name>Abduction</Name>
-    </None>
-    <None Include="fonts\American Typewriter.ttf">
-      <Name>American Typewriter</Name>
-    </None>
     <Compile Include="fonts\arial-unicode-26.fnt">
       <Name>arial-unicode-26.fnt</Name>
       <Importer>CocosFontImporter</Importer>
@@ -1147,9 +1135,6 @@
     <None Include="fonts\arial-unicode-26.GlyphProject">
       <Name>arial-unicode-26</Name>
     </None>
-    <None Include="fonts\arial.ttf">
-      <Name>arial</Name>
-    </None>
     <Compile Include="fonts\arial16.fnt">
       <Name>arial16.fnt</Name>
       <Importer>CocosFontImporter</Importer>
@@ -1185,9 +1170,6 @@
       <Importer>CocosFontImporter</Importer>
       <Processor>CocosFontProcessor</Processor>
     </Compile>
-    <None Include="fonts\Courier New.ttf">
-      <Name>Courier New</Name>
-    </None>
     <Compile Include="fonts\font-issue1343-hd.fnt">
       <Name>font-issue1343-hd.fnt</Name>
       <Importer>CocosFontImporter</Importer>
@@ -1223,9 +1205,6 @@
       <Importer>TextImporter</Importer>
       <Processor>TextProcessor</Processor>
     </Compile>
-    <None Include="fonts\Marker Felt.ttf">
-      <Name>Marker Felt</Name>
-    </None>
     <Compile Include="fonts\markerFelt.fnt">
       <Name>markerFelt.fnt</Name>
       <Importer>CocosFontImporter</Importer>
@@ -1236,34 +1215,16 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
-    <None Include="fonts\Paint Boy.ttf">
-      <Name>Paint Boy</Name>
-    </None>
     <Compile Include="fonts\Schwarzwald Regular-26.spritefont">
       <Name>Schwarzwald Regular-26</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
-    <None Include="fonts\Schwarzwald Regular.ttf">
-      <Name>Schwarzwald Regular</Name>
-    </None>
     <Compile Include="fonts\Scissor Cuts-26.spritefont">
       <Name>Scissor Cuts-26</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
-    <None Include="fonts\Scissor Cuts.ttf">
-      <Name>Scissor Cuts</Name>
-    </None>
-    <None Include="fonts\tahoma.ttf">
-      <Name>tahoma</Name>
-    </None>
-    <None Include="fonts\Thonburi.ttf">
-      <Name>Thonburi</Name>
-    </None>
-    <None Include="fonts\ThonburiBold.ttf">
-      <Name>ThonburiBold</Name>
-    </None>
     <Compile Include="fonts\tuffy_bold_italic-charmap.plist">
       <Name>tuffy_bold_italic-charmap.plist</Name>
       <Importer>TextImporter</Importer>
