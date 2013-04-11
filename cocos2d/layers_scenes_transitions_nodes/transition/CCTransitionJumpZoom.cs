@@ -29,7 +29,7 @@ namespace cocos2d
                         (
                             delay,
                             jumpZoomIn,
-                            CCCallFunc.Create(Finish)
+                            new CCCallFunc(Finish)
                         )
                 );
         }

@@ -30,7 +30,7 @@ namespace tests.Extensions
 				AddChild(ribbon);
         
 				// Add the title
-				setSceneTitleLabel(CCLabelTTF.Create("Title", "arial", 12));
+				setSceneTitleLabel(new CCLabelTTF("Title", "arial", 12));
 				m_pSceneTitleLabel.Position = new CCPoint(screensize.Width / 2, screensize.Height - m_pSceneTitleLabel.ContentSize.Height / 2 - 5);
 				AddChild(m_pSceneTitleLabel, 1);
         
@@ -89,7 +89,7 @@ namespace tests.Extensions
 		/** Title label of the scene. */
 		public static CCScene sceneWithTitle(string title)
 		{
-			var pScene = CCScene.Create();
+			var pScene = new CCScene();
 		    var controlLayer = new CCControlScene();
 		    if (controlLayer != null && controlLayer.Init())
 		    {

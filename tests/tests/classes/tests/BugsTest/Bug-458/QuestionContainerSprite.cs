@@ -14,7 +14,7 @@ namespace tests
             if (base.Init())
             {
                 //Add label
-                CCLabelTTF label = CCLabelTTF.Create("Answer 1", "arial", 12);
+                CCLabelTTF label = new CCLabelTTF("Answer 1", "arial", 12);
                 label.Tag = 100;
 
                 //Add the background

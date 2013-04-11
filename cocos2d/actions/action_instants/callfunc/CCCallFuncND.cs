@@ -6,12 +6,15 @@ namespace cocos2d
         protected SEL_CallFuncND m_pCallFuncND;
         protected object m_pData;
 
-        public static CCCallFuncND Create(SEL_CallFuncND selector, object d)
+        public CCCallFuncND (SEL_CallFuncND selector, object d) : base()
         {
-            var pRet = new CCCallFuncND();
-            pRet.InitWithTarget(selector, d);
-            return pRet;
+            InitWithTarget(selector, d);
         }
+
+		public CCCallFuncND (CCCallFuncND callFuncND) : base (callFuncND)
+		{
+			InitWithTarget(callFuncND.m_pCallFuncND, callFuncND.m_pData);
+		}
 
         public bool InitWithTarget(SEL_CallFuncND selector, object d)
         {
@@ -22,22 +25,20 @@ namespace cocos2d
 
         public override object Copy(ICopyable zone)
         {
-            CCCallFuncND pRet;
 
             if (zone != null)
             {
                 //in case of being called at sub class
-                pRet = (CCCallFuncND) (zone);
-            }
+                var pRet = (CCCallFuncND) (zone);
+				base.Copy(zone);
+				pRet.InitWithTarget(m_pCallFuncND, m_pData);
+				return pRet;
+			}
             else
             {
-                pRet = new CCCallFuncND();
-                zone =  (pRet);
+                return new CCCallFuncND(this);
             }
 
-            base.Copy(zone);
-            pRet.InitWithTarget(m_pCallFuncND, m_pData);
-            return pRet;
         }
 
         public override void Execute()

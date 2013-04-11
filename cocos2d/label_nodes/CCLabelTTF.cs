@@ -12,13 +12,30 @@ namespace cocos2d
         private CCSize m_tDimensions;
         private CCVerticalTextAlignment m_vAlignment;
 
-        public CCLabelTTF()
+        public CCLabelTTF ()
         {
             m_hAlignment = CCTextAlignment.CCTextAlignmentCenter;
             m_vAlignment = CCVerticalTextAlignment.CCVerticalTextAlignmentTop;
             m_pFontName = string.Empty;
             m_fFontSize = 0.0f;
             m_pString = string.Empty;
+
+            Init();
+        }
+        
+        public CCLabelTTF (string text, string fontName, float fontSize) : 
+            this (text, fontName, fontSize, CCSize.Zero, CCTextAlignment.CCTextAlignmentCenter,
+                  CCVerticalTextAlignment.CCVerticalTextAlignmentTop)
+        { }
+        
+        public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) :
+            this (text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.CCVerticalTextAlignmentTop)
+        { }
+        
+        public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment,
+                           CCVerticalTextAlignment vAlignment)
+        {
+            InitWithString(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
         }
 
         public string FontName
@@ -165,33 +182,6 @@ namespace cocos2d
         public override string ToString()
         {
             return string.Format("FontName:{0}, FontSize:{1}", m_pFontName, m_fFontSize);
-        }
-
-
-        public new static CCLabelTTF Create()
-        {
-            var pRet = new CCLabelTTF();
-            pRet.Init();
-            return pRet;
-        }
-
-        public static CCLabelTTF Create(string text, string fontName, float fontSize)
-        {
-            return Create(text, fontName, fontSize, CCSize.Zero, CCTextAlignment.CCTextAlignmentCenter,
-                          CCVerticalTextAlignment.CCVerticalTextAlignmentTop);
-        }
-
-        public static CCLabelTTF Create(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment)
-        {
-            return Create(text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.CCVerticalTextAlignmentTop);
-        }
-
-        public static CCLabelTTF Create(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment,
-                                        CCVerticalTextAlignment vAlignment)
-        {
-            var pRet = new CCLabelTTF();
-            pRet.InitWithString(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
-            return pRet;
         }
 
         public override bool Init()

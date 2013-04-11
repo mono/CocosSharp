@@ -30,7 +30,7 @@ namespace tests
             base.OnEnter();
 
             //add the menu item for back to main menu
-            CCLabelTTF label = CCLabelTTF.Create("MainMenu", "arial", 20);
+            CCLabelTTF label = new CCLabelTTF("MainMenu", "arial", 20);
             CCMenuItemLabel pMenuItem = CCMenuItemLabel.Create(label, MainMenuCallback);
 
             CCMenu pMenu = CCMenu.Create(pMenuItem);
@@ -116,7 +116,7 @@ namespace tests
 
         public virtual void MainMenuCallback(object pSender)
         {
-            CCScene pScene = CCScene.Create();
+            CCScene pScene = new CCScene();
             CCLayer pLayer = new TestController();
 
             pScene.AddChild(pLayer);

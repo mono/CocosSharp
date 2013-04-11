@@ -331,7 +331,7 @@ namespace cocos2d
         public void SetContentOffsetInDuration(CCPoint offset, float dt)
         {
             CCMoveTo scroll = new CCMoveTo (dt, offset);
-            CCCallFuncN expire = CCCallFuncN.Create(StoppedAnimatedScroll);
+            CCCallFuncN expire = new CCCallFuncN(StoppedAnimatedScroll);
             m_pContainer.RunAction(CCSequence.FromActions(scroll, expire));
             Schedule(PerformedAnimatedScroll);
         }

@@ -32,7 +32,7 @@ namespace tests
             left.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
             left.RunAction(new CCRepeatForever ((CCActionInterval) tint.Copy()));
 
-            left.AddChild(CCLabelTTF.Create("Tint", "arial", 20.0f));
+            left.AddChild(new CCLabelTTF("Tint", "arial", 20.0f));
 
             CCProgressTimer middle = CCProgressTimer.Create(new CCSprite(s_pPathSister2));
             middle.Type = CCProgressTimerType.Bar;
@@ -45,7 +45,7 @@ namespace tests
             middle.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
             middle.RunAction(new CCRepeatForever ((CCActionInterval) fade.Copy()));
 
-            middle.AddChild(CCLabelTTF.Create("Fade", "arial", 20.0f));
+            middle.AddChild(new CCLabelTTF("Fade", "arial", 20.0f));
 
             CCProgressTimer right = CCProgressTimer.Create(new CCSprite(s_pPathSister2));
             right.Type = CCProgressTimerType.Bar;
@@ -59,7 +59,7 @@ namespace tests
             right.RunAction(new CCRepeatForever ((CCActionInterval) tint.Copy()));
             right.RunAction(new CCRepeatForever ((CCActionInterval) fade.Copy()));
 
-            right.AddChild(CCLabelTTF.Create("Tint and Fade", "arial", 20.0f));
+            right.AddChild(new CCLabelTTF("Tint and Fade", "arial", 20.0f));
         }
 
         public override string subtitle()

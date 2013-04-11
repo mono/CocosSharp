@@ -12,7 +12,7 @@ namespace tests
             AddChild(layer, -10);
 
             // CCLabelBMFont
-            CCLabelTTF label1 = CCLabelTTF.Create("Testing A8 Format", "Marker Felt", 38);
+            CCLabelTTF label1 = new CCLabelTTF("Testing A8 Format", "Marker Felt", 38);
             AddChild(label1);
             label1.Color = CCTypes.CCRed;
             label1.Position = new CCPoint(s.Width / 2, s.Height / 2);

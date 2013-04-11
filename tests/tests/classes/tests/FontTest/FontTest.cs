@@ -117,14 +117,14 @@ namespace tests.FontTest
             RemoveChildByTag(kTagLabel3, true);
             RemoveChildByTag(kTagLabel4, true);
 
-            CCLabelTTF top = CCLabelTTF.Create(pFont, pFont, 24);
-            CCLabelTTF left = CCLabelTTF.Create("alignment left", pFont, fontSize,
+            CCLabelTTF top = new CCLabelTTF(pFont, pFont, 24);
+            CCLabelTTF left = new CCLabelTTF("alignment left", pFont, fontSize,
                                                 blockSize, CCTextAlignment.CCTextAlignmentLeft,
                                                 FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
-            CCLabelTTF center = CCLabelTTF.Create("alignment center", pFont, fontSize,
+            CCLabelTTF center = new CCLabelTTF("alignment center", pFont, fontSize,
                                                   blockSize, CCTextAlignment.CCTextAlignmentCenter,
                                                   FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
-            CCLabelTTF right = CCLabelTTF.Create("alignment right", pFont, fontSize,
+            CCLabelTTF right = new CCLabelTTF("alignment right", pFont, fontSize,
                                                  blockSize, CCTextAlignment.CCTextAlignmentRight,
                                                  FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
 

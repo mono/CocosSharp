@@ -345,7 +345,7 @@ namespace tests
             CCFadeOut opacity = new CCFadeOut  (2);
             CCFadeIn fadein = new CCFadeIn  (2);
             CCScaleTo scaleback = new CCScaleTo(1, 1);
-            CCCallFuncN finish = CCCallFuncN.Create(removeSprite);
+            CCCallFuncN finish = new CCCallFuncN(removeSprite);
             CCSequence seq0 = CCSequence.FromActions(move, rotate, scale, opacity, fadein, scaleback, finish);
             var seq1 = (CCActionInterval) (seq0.Copy());
             var seq2 = (CCActionInterval) (seq0.Copy());
@@ -1400,14 +1400,14 @@ namespace tests
             _GamePadStickDelegate = new CCGamePadStickUpdateDelegate(MyOnGameStickUpdate);
             _GamePadTriggerDelegate =  new CCGamePadTriggerDelegate(MyGamePadTriggerUpdate);
 
-            m_label = CCLabelTTF.Create("", "arial", 28);
+            m_label = new CCLabelTTF("", "arial", 28);
             AddChild(m_label, 1);
             m_label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             string strSubtitle = subtitle();
             if (! string.IsNullOrEmpty(strSubtitle))
             {
-                CCLabelTTF l = CCLabelTTF.Create(strSubtitle, "arial", 16);
+                CCLabelTTF l = new CCLabelTTF(strSubtitle, "arial", 16);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 80);
 

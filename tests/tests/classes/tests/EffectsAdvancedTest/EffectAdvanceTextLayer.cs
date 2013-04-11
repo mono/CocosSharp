@@ -46,7 +46,7 @@ namespace tests
             CCFiniteTimeAction sc2_back = sc2.Reverse();
             tamara.RunAction(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(sc2, sc2_back))));
 
-            CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 28);
+            CCLabelTTF label = new CCLabelTTF(title(), "arial", 28);
 
             label.Position = new CCPoint(x / 2, y - 80);
             AddChild(label);
@@ -55,7 +55,7 @@ namespace tests
             string strSubtitle = subtitle();
             if (strSubtitle != null)
             {
-                CCLabelTTF l = CCLabelTTF.Create(strSubtitle, "arial", 16);
+                CCLabelTTF l = new CCLabelTTF(strSubtitle, "arial", 16);
                 AddChild(l, 101);
                 l.Position = new CCPoint(size.Width / 2, size.Height - 80);
             }

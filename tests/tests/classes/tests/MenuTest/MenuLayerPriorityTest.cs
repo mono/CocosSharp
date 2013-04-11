@@ -74,7 +74,7 @@ namespace tests
         {
             m_pMenu1.Enabled = false;
             CCDelayTime wait = new CCDelayTime (5);
-            CCCallFunc enable = CCCallFunc.Create(enableMenuCallback);
+            CCCallFunc enable = new CCCallFunc(enableMenuCallback);
 
             CCFiniteTimeAction seq = CCSequence.FromActions(wait, enable);
             m_pMenu1.RunAction(seq);

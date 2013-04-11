@@ -22,12 +22,12 @@ namespace tests
 			bg1.ScaleY = size.Height / bg1.ContentSize.Height;
             AddChild(bg1, -1);
 
-            CCLabelTTF title = CCLabelTTF.Create((TransitionsTestScene.transitions[TransitionsTestScene.s_nSceneIdx]), "arial", 32);
+            CCLabelTTF title = new CCLabelTTF((TransitionsTestScene.transitions[TransitionsTestScene.s_nSceneIdx]), "arial", 32);
             AddChild(title);
             title.Color = new CCColor3B(255, 32, 32);
             title.Position = new CCPoint(x / 2, y - 100);
 
-			CCLabelTTF label = CCLabelTTF.Create("SCENE 1", "markerFelt", 38);
+			CCLabelTTF label = new CCLabelTTF("SCENE 1", "markerFelt", 38);
             label.Color = (new CCColor3B(16, 16, 255));
             label.Position = (new CCPoint(x / 2, y / 2));
             AddChild(label);

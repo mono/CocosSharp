@@ -140,8 +140,8 @@ namespace tests
                 case 15: return CCTransitionSplitRows.Create(t, s);
                 case 16: return CCTransitionSplitCols.Create(t, s);
 
-                case 17: return CCTransitionFade.Create(t, s);
-                case 18: return FadeWhiteTransition.Create(t, s);
+                case 17: return new CCTransitionFade(t, s);
+                case 18: return new FadeWhiteTransition(t, s);
 
                 case 19: return FlipXLeftOver.Create(t, s);
                 case 20: return FlipXRightOver.Create(t, s);

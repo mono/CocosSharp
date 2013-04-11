@@ -37,7 +37,7 @@ namespace tests.Extensions
 
             mTestTitleLabelTTF.Label = (pCCBFileName);
 
-            CCScene scene = CCScene.Create();
+            CCScene scene = new CCScene();
             scene.AddChild(node);
 
             /* Push the new scene with a fancy transition. */
@@ -46,7 +46,7 @@ namespace tests.Extensions
             transitionColor.G = 0;
             transitionColor.B = 0;
 
-            CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, scene, transitionColor));
+            CCDirector.SharedDirector.PushScene(new CCTransitionFade(0.5f, scene, transitionColor));
         }
 
         public void onMenuTestClicked(object pSender, CCControlEvent pCCControlEvent)
@@ -89,7 +89,7 @@ namespace tests.Extensions
 
             mTestTitleLabelTTF.Label = ("TestAnimations.ccbi");
 
-            CCScene scene = CCScene.Create();
+            CCScene scene = new CCScene();
             scene.AddChild(animationsTest);
 
             /* Push the new scene with a fancy transition. */
@@ -98,7 +98,7 @@ namespace tests.Extensions
             transitionColor.G = 0;
             transitionColor.B = 0;
 
-            CCDirector.SharedDirector.PushScene(CCTransitionFade.Create(0.5f, scene, transitionColor));
+            CCDirector.SharedDirector.PushScene(new CCTransitionFade(0.5f, scene, transitionColor));
         }
 
         public void onParticleSystemTestClicked(object pSender, CCControlEvent pCCControlEvent)

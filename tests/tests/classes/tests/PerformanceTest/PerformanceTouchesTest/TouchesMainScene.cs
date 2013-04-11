@@ -30,7 +30,7 @@ namespace tests
 
             if (pLayer != null)
             {
-                CCScene pScene = CCScene.Create();
+                CCScene pScene = new CCScene();
                 pScene.AddChild(pLayer);
 
                 CCDirector.SharedDirector.ReplaceScene(pScene);
@@ -44,7 +44,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // add title
-            CCLabelTTF label = CCLabelTTF.Create(title(), "arial", 32);
+            CCLabelTTF label = new CCLabelTTF(title(), "arial", 32);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
             CCNode ccnode = new CCNode();

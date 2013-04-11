@@ -61,7 +61,7 @@ namespace cocos2d
                             CCShow.Create()
                         ),
                     CCShow.Create(),
-                    CCCallFunc.Create(Finish)
+                    new CCCallFunc(Finish)
                 );
             outA = CCSequence.FromActions
                 (

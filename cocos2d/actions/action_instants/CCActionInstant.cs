@@ -3,6 +3,12 @@ namespace cocos2d
 {
     public class CCActionInstant : CCFiniteTimeAction
     {
+
+		protected CCActionInstant () {}
+
+		protected CCActionInstant (CCActionInstant actionInstant) : base (actionInstant)
+		{ }
+
         public override object Copy(ICopyable zone)
         {
             ICopyable tmpZone = zone;

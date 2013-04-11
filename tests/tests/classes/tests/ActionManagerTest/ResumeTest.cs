@@ -21,7 +21,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLabelTTF l = CCLabelTTF.Create("Grossini only rotate/scale in 3 seconds", "arial", 16);
+            CCLabelTTF l = new CCLabelTTF("Grossini only rotate/scale in 3 seconds", "arial", 16);
             AddChild(l);
             l.Position = (new CCPoint(s.Width / 2, 245));
 
