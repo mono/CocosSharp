@@ -103,17 +103,17 @@ public class CCUserDefault {
 		}
 	}
 
-	public void purgeSharedUserDefault()
+	public void PurgeSharedUserDefault()
 	{
 		m_spUserDefault = null;
 	}
 
-    public bool getBoolForKey(string pKey)
+    public bool GetBoolForKey(string pKey)
     {
-        return getBoolForKey(pKey, false);
+        return GetBoolForKey(pKey, false);
     }
 
-	public bool getBoolForKey(string pKey, bool defaultValue)
+	public bool GetBoolForKey(string pKey, bool defaultValue)
 	{
 		string value = getValueForKey(pKey);
 		bool ret = defaultValue;
@@ -126,12 +126,12 @@ public class CCUserDefault {
 		return ret;
 	}
 
-    public int getIntegerForKey(string pKey)
+    public int GetIntegerForKey(string pKey)
     {
-        return getIntegerForKey(pKey, 0);
+        return GetIntegerForKey(pKey, 0);
     }
 
-	public int getIntegerForKey(string pKey, int defaultValue)
+	public int GetIntegerForKey(string pKey, int defaultValue)
 	{
 		string value = getValueForKey(pKey);
 		int ret = defaultValue;
@@ -144,14 +144,14 @@ public class CCUserDefault {
 		return ret;
 	}
 
-	public float getFloatForKey(string pKey, float defaultValue)
+	public float GetFloatForKey(string pKey, float defaultValue)
 	{
-		float ret = (float)getDoubleForKey(pKey, (double)defaultValue);
+		float ret = (float)GetDoubleForKey(pKey, (double)defaultValue);
  
 		return ret;
 	}
 
-	public double getDoubleForKey(string pKey, double defaultValue)
+	public double GetDoubleForKey(string pKey, double defaultValue)
 	{
 		string value = getValueForKey(pKey);
 		double ret = defaultValue;
@@ -164,7 +164,7 @@ public class CCUserDefault {
 		return ret;
 	}
 
-	public string getStringForKey(string pKey, string defaultValue)
+	public string GetStringForKey(string pKey, string defaultValue)
 	{
 		string value = getValueForKey(pKey);
 		string ret = defaultValue;
@@ -177,7 +177,7 @@ public class CCUserDefault {
 		return ret;
 	}
 
-	public void setBoolForKey(string pKey, bool value)
+	public void SetBoolForKey(string pKey, bool value)
 	{
 		// check key
 		if (pKey == null) {
@@ -185,10 +185,10 @@ public class CCUserDefault {
 		}
 
 		// save bool value as string
-		setStringForKey(pKey, value.ToString());
+		SetStringForKey(pKey, value.ToString());
 	}
 
-	public void setIntegerForKey(string pKey, int value)
+	public void SetIntegerForKey(string pKey, int value)
 	{
 		// check key
 		if (pKey == null)
@@ -200,12 +200,12 @@ public class CCUserDefault {
 		setValueForKey(pKey, value.ToString());
 	}
 
-	public void setFloatForKey(string pKey, float value)
+	public void SetFloatForKey(string pKey, float value)
 	{
-		setDoubleForKey(pKey, value);
+		SetDoubleForKey(pKey, value);
 	}
 
-	public void setDoubleForKey(string pKey, double value)
+	public void SetDoubleForKey(string pKey, double value)
 	{
 		// check key
 		if (pKey == null)
@@ -217,7 +217,7 @@ public class CCUserDefault {
 		setValueForKey(pKey, value.ToString());
 	}
 
-	public void setStringForKey(string pKey, string value)
+	public void SetStringForKey(string pKey, string value)
 	{
 		// check key
 		if (pKey == null)
@@ -229,14 +229,16 @@ public class CCUserDefault {
 		setValueForKey(pKey, value.ToString());
 	}
 
-	public static CCUserDefault sharedUserDefault()
+	public static CCUserDefault SharedUserDefault
 	{
-		if (m_spUserDefault == null)
-		{
-			m_spUserDefault = new CCUserDefault();
-		}
+        get {
+    		if (m_spUserDefault == null)
+    		{
+    			m_spUserDefault = new CCUserDefault();
+    		}
 
-		return m_spUserDefault;
+    		return m_spUserDefault;
+        }
 	}
 
 	private bool isXMLFileExist()
@@ -265,7 +267,7 @@ public class CCUserDefault {
 		return bRet;
 	}
 
-	public void flush()
+	public void Flush()
 	{
 		using (StreamWriter stream = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage))) 
 		{
