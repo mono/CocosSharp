@@ -108,6 +108,11 @@ public class CCUserDefault {
 		m_spUserDefault = null;
 	}
 
+    public bool getBoolForKey(string pKey)
+    {
+        return getBoolForKey(pKey, false);
+    }
+
 	public bool getBoolForKey(string pKey, bool defaultValue)
 	{
 		string value = getValueForKey(pKey);
@@ -121,6 +126,11 @@ public class CCUserDefault {
 		return ret;
 	}
 
+    public int getIntegerForKey(string pKey)
+    {
+        return getIntegerForKey(pKey, 0);
+    }
+
 	public int getIntegerForKey(string pKey, int defaultValue)
 	{
 		string value = getValueForKey(pKey);
@@ -128,7 +138,7 @@ public class CCUserDefault {
 
 		if (value != null)
 		{
-			ret = ccUtils.ccParseInt(value);
+			ret = CCUtils.CCParseInt(value);
 		}
 
 		return ret;
