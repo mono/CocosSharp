@@ -46,7 +46,7 @@ namespace Box2D.Collision
 			m_tree = new b2DynamicTree();
         }
 
-        public int CreateProxy(b2AABB aabb, object userData)
+        public int CreateProxy(b2AABB aabb, ref b2FixtureProxy userData)
         {
             int proxyId = m_tree.CreateProxy(aabb, userData);
             ++m_proxyCount;

@@ -25,11 +25,9 @@ namespace Box2D.Collision
     // This holds polygon B expressed in frame A.
     public struct b2TempPolygon
     {
-        public static b2TempPolygon Default = b2TempPolygon.Create();
-
         public static b2TempPolygon Create()
         {
-            b2TempPolygon bt = new b2TempPolygon();
+            b2TempPolygon bt;
             bt.vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
             bt.normals = new b2Vec2[b2Settings.b2_maxPolygonVertices];
             bt.count = 0;
@@ -67,7 +65,7 @@ namespace Box2D.Collision
         // 6. Visit each separating axes, only accept axes within the range
         // 7. Return if _any_ axis indicates separation
         // 8. Clip
-        public void Collide(b2Manifold manifold, b2EdgeShape edgeA, ref b2Transform xfA,
+        public void Collide(ref b2Manifold manifold, b2EdgeShape edgeA, ref b2Transform xfA,
                                    b2PolygonShape polygonB, ref b2Transform xfB)
         {
             m_xf = b2Math.b2MulT(xfA, xfB);
@@ -265,7 +263,7 @@ namespace Box2D.Collision
             }
 
             // Get polygonB in frameA
-            m_polygonB = b2TempPolygon.Default;
+            m_polygonB = b2TempPolygon.Create();
             m_polygonB.count = polygonB.VertexCount;
             for (int i = 0; i < polygonB.VertexCount; ++i)
             {
@@ -278,6 +276,8 @@ namespace Box2D.Collision
             manifold.pointCount = 0;
 
             b2EPAxis edgeAxis = ComputeEdgeSeparation();
+
+//            Console.WriteLine("b2EPAxis: {0} {1} {2}", edgeAxis.index, edgeAxis.separation, edgeAxis.type);
 
             // If no valid normal can be found than this edge should not collide.
             if (edgeAxis.type == b2EPAxisType.e_unknown)
@@ -451,6 +451,7 @@ namespace Box2D.Collision
                         cp.id.indexB = clipPoints2[i].id.indexA;
                     }
 
+                    manifold.points[pointCount] = cp;
                     ++pointCount;
                 }
             }

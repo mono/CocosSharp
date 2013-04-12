@@ -8,12 +8,12 @@ using System.Diagnostics;
 
 namespace Box2D.Collision
 {
-    public class b2DistanceProxy
+    public struct b2DistanceProxy
     {
         // GJK using Voronoi regions (Christer Ericson) and Barycentric coordinates.
         public static int b2_gjkCalls, b2_gjkIters, b2_gjkMaxIters;
 
-        private b2Vec2[] m_buffer = new b2Vec2[2];
+        private b2Vec2[] m_buffer;
         private b2Vec2[] m_vertices;
         private int m_count;
         private float m_radius;
@@ -21,16 +21,36 @@ namespace Box2D.Collision
         public float Radius { get { return (m_radius); } set { m_radius = value; } }
         public int Count { get { return (m_count); } set { m_count = value; } }
 
-        public b2DistanceProxy()
+        public b2DistanceProxy Copy()
         {
-            m_vertices = null;
-            m_count = 0;
-            m_radius = 0.0f;
+            b2DistanceProxy bp = b2DistanceProxy.Create();
+            bp.m_buffer[0] = m_buffer[0];
+            bp.m_buffer[1] = m_buffer[1];
+            if (m_vertices != null)
+            {
+                bp.m_vertices = new b2Vec2[m_vertices.Length];
+                m_vertices.CopyTo(bp.m_vertices, 0);
+            }
+            bp.m_count = m_count;
+            bp.m_radius = m_radius;
+            return (bp);
         }
 
-        public b2DistanceProxy(b2Shape shape, int index)
+        public static b2DistanceProxy Create()
         {
-            Set(shape, index);
+            b2DistanceProxy bp = new b2DistanceProxy();
+            bp.m_vertices = null;
+            bp.m_count = 0;
+            bp.m_radius = 0.0f;
+            bp.m_buffer = new b2Vec2[2];
+            return (bp);
+        }
+
+        public static b2DistanceProxy Create(b2Shape shape, int index)
+        {
+            b2DistanceProxy bp = Create();
+            bp.Set(shape, index);
+            return (bp);
         }
 
         public int GetVertexCount()
@@ -83,7 +103,7 @@ namespace Box2D.Collision
             return m_vertices[bestIndex];
         }
 
-        public virtual void Set(b2Shape shape, int index)
+        public void Set(b2Shape shape, int index)
         {
             switch (shape.ShapeType)
             {
