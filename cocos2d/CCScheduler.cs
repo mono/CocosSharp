@@ -250,15 +250,16 @@ public class CCScheduler
         {
             s_pTmpSelectorArray = new SelectorProtocol[s_pTmpSelectorArray.Length * 2];
         }
-#if WINDOWS
-        lock (this)
-        {
-#endif
             m_pHashForSelectors.Keys.CopyTo(s_pTmpSelectorArray, 0);
 
             for (int i = 0; i < count; i++)
             {
-                HashSelectorEntry elt = m_pHashForSelectors[s_pTmpSelectorArray[i]];
+                SelectorProtocol key = s_pTmpSelectorArray[i];
+                if (!m_pHashForSelectors.ContainsKey(key))
+                {
+                    continue;
+                }
+                HashSelectorEntry elt = m_pHashForSelectors[key];
 
                 m_pCurrentTarget = elt;
                 m_bCurrentTargetSalvaged = false;
@@ -283,9 +284,6 @@ public class CCScheduler
                     RemoveHashElement(m_pCurrentTarget);
                 }
             }
-#if WINDOWS
-        }
-#endif
         /*
             // Iterate over all the script callbacks
             if (m_pScriptHandlerEntries)
