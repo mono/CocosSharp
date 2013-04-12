@@ -37,7 +37,9 @@ public class CCUserDefault {
 	private static string USERDEFAULT_ROOT_NAME = "userDefaultRoot";
 	private static string XML_FILE_NAME = "UserDefault.xml";
 
+#if !WINDOWS && !MACOS && !LINUX
 	private IsolatedStorageFile myIsolatedStorage;
+#endif
 	private Dictionary<string, string> values = new Dictionary<string, string>();
 
     private bool parseXMLFile(Stream xmlFile)
@@ -98,7 +100,7 @@ public class CCUserDefault {
 		if ((!isXMLFileExist())) {
 			createXMLFile();
 		}
-		using (FileStream fileStream = new FileInfo(XML_FILE_NAME).OpenRead())) {
+		using (FileStream fileStream = new FileInfo(XML_FILE_NAME).OpenRead()){
 			parseXMLFile(fileStream);
 		}
 #else
@@ -257,7 +259,7 @@ public class CCUserDefault {
 	{
 		bool bRet = false;
 #if WINDOWS || LINUX || MACOS
-		if (new FileInfo(XML_FILE_NAME).Exists()) 
+		if (new FileInfo(XML_FILE_NAME).Exists) 
 		{
 			bRet = true;
 		}
