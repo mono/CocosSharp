@@ -25,7 +25,9 @@ THE SOFTWARE.
 
 using cocos2d;
 using System.IO;
+#if !WINDOWS && !MACOS && !LINUX
 using System.IO.IsolatedStorage;
+#endif
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
@@ -38,7 +40,7 @@ public class CCUserDefault {
 	private IsolatedStorageFile myIsolatedStorage;
 	private Dictionary<string, string> values = new Dictionary<string, string>();
 
-	private bool parseXMLFile(IsolatedStorageFileStream xmlFile)
+    private bool parseXMLFile(Stream xmlFile)
 	{
 		values.Clear();
 
@@ -91,7 +93,16 @@ public class CCUserDefault {
 	 */
 	private CCUserDefault()
 	{
-		myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication();
+#if WINDOWS || MACOS || LINUX
+		// only create xml file once if it doesnt exist
+		if ((!isXMLFileExist())) {
+			createXMLFile();
+		}
+		using (FileStream fileStream = new FileInfo(XML_FILE_NAME).OpenRead())) {
+			parseXMLFile(fileStream);
+		}
+#else
+        myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication();
 
 		// only create xml file once if it doesnt exist
 		if ((!isXMLFileExist())) {
@@ -101,6 +112,7 @@ public class CCUserDefault {
 		using (IsolatedStorageFileStream fileStream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.Open, FileAccess.Read)) {
 			parseXMLFile(fileStream);
 		}
+#endif
 	}
 
 	public void PurgeSharedUserDefault()
@@ -244,12 +256,17 @@ public class CCUserDefault {
 	private bool isXMLFileExist()
 	{
 		bool bRet = false;
-
-		if (myIsolatedStorage.FileExists(XML_FILE_NAME)) 
+#if WINDOWS || LINUX || MACOS
+		if (new FileInfo(XML_FILE_NAME).Exists()) 
 		{
 			bRet = true;
 		}
-
+#else
+        if (myIsolatedStorage.FileExists(XML_FILE_NAME)) 
+		{
+			bRet = true;
+		}
+#endif
 		return bRet;
 	}
 
@@ -258,7 +275,11 @@ public class CCUserDefault {
 	{
 		bool bRet = false;
 
-		using (StreamWriter writeFile = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage))) 
+#if WINDOWS || LINUX || MACOS
+		using (StreamWriter writeFile = new StreamWriter(XML_FILE_NAME)) 
+#else
+        using (StreamWriter writeFile = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage)))
+#endif
 		{
 			string someTextData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><userDefaultRoot></userDefaultRoot>";
 			writeFile.WriteLine(someTextData);
@@ -269,7 +290,11 @@ public class CCUserDefault {
 
 	public void Flush()
 	{
+#if WINDOWS || LINUX || MACOS
+		using (StreamWriter stream = new StreamWriter(XML_FILE_NAME)) 
+#else
 		using (StreamWriter stream = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage))) 
+#endif
 		{
 			//create xml doc
 			XmlWriterSettings ws = new XmlWriterSettings();
