@@ -225,14 +225,14 @@ namespace tests
             //body.SetActive(true);
             // Define another box shape for our dynamic body.
             var dynamicBox = new b2PolygonShape();
-            dynamicBox.Radius = 5f;
-            dynamicBox.SetAsBox(.5f, .5f); //These are mid points for our 1m box
+            dynamicBox.Radius = 32f / PTM_RATIO;
+            dynamicBox.SetAsBox(dynamicBox.Radius / 2, dynamicBox.Radius/2); //These are mid points for our 1m box
 
             // Define the dynamic body fixture.
             b2FixtureDef fd = b2FixtureDef.Create();
             fd.shape = dynamicBox;
-            fd.friction = 0.3f;
-            fd.density = 1f;
+            fd.friction = CCMacros.CCRandomBetween0And1();
+            fd.density = 10f * CCMacros.CCRandomBetween0And1();
             b2Fixture fixture = body.CreateFixture(fd);
 
             sprite.PhysicsBody = body;

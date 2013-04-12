@@ -277,6 +277,8 @@ namespace Box2D.Collision
 
             b2EPAxis edgeAxis = ComputeEdgeSeparation();
 
+//            Console.WriteLine("b2EPAxis: {0} {1} {2}", edgeAxis.index, edgeAxis.separation, edgeAxis.type);
+
             // If no valid normal can be found than this edge should not collide.
             if (edgeAxis.type == b2EPAxisType.e_unknown)
             {
