@@ -13,7 +13,7 @@ namespace Box2D.Common
         public override bool Equals(object obj)
         {
             b2Vec2 o = (b2Vec2)obj;
-            return (_x == o.x && _y == o.y);
+            return (x == o.x && y == o.y);
         }
 
         public override int GetHashCode()
@@ -22,49 +22,26 @@ namespace Box2D.Common
         }
 
         /// Construct using coordinates.
-        public b2Vec2(float x, float y)
+        public b2Vec2(float x_, float y_)
         {
-            _x = x;
-            _y = y;
+            x = x_;
+            y = y_;
 #if DEBUG
             if (!IsValid())
             {
                 Console.WriteLine("Invalid vector - this message is here for the sake of a breakpoint");
             }
 #endif
-        }
-
-        public float x { get { return (_x); } 
-            set { 
-            _x = value;
-#if DEBUG
-            if (!IsValid())
-            {
-                Console.WriteLine("Invalid vector - this message is here for the sake of a breakpoint");
-            }
-#endif
-        } 
-        }
-        public float y { get { return (_y); } 
-            set { 
-                _y = value;
-#if DEBUG
-                if (!IsValid())
-                {
-                    Console.WriteLine("Invalid vector - this message is here for the sake of a breakpoint");
-                }
-#endif
-            } 
         }
 
         /// Set this vector to all zeros.
-        public void SetZero() { _x = 0f; _y = 0f; }
+        public void SetZero() { x = 0f; y = 0f; }
 
         /// Set this vector to some specified coordinates.
         public void Set(float x_, float y_) 
         { 
-            _x = x_; 
-            _y = y_;
+            x = x_; 
+            y = y_;
 #if DEBUG
             if (!IsValid())
             {
@@ -76,7 +53,9 @@ namespace Box2D.Common
         /// Negate this vector.
         public static b2Vec2 operator -(b2Vec2 b)
         {
-            b2Vec2 v = new b2Vec2(-b.x, -b.y);
+            b2Vec2 v = b2Vec2.Zero;
+            v.x = -b.x;
+            v.y = -b.y;
             return v;
         }
 
@@ -107,7 +86,7 @@ namespace Box2D.Common
         /// Get the length of this vector (the norm).
         public float Length()
         {
-            return b2Math.b2Sqrt(_x * _x + _y * _y);
+            return b2Math.b2Sqrt(x * x + y * y);
         }
 
         public static bool operator ==(b2Vec2 a, b2Vec2 b)
@@ -124,7 +103,7 @@ namespace Box2D.Common
         /// b2Vec2::Length (if possible).
         public float LengthSquared()
         {
-            return _x * _x + _y * _y;
+            return x * x + y * y;
         }
 
         /// Convert this vector into a unit vector. Returns the length.
@@ -148,12 +127,12 @@ namespace Box2D.Common
             return b2Math.b2IsValid(x) && b2Math.b2IsValid(y);
         }
 
-        /// Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
+        /// Get the skew vector such that dot(skewvec, other) == cross(vec, other)
         public b2Vec2 Skew()
         {
             return new b2Vec2(-y, x);
         }
 
-        private float _x, _y;
+        public float x, y;
     }
 }

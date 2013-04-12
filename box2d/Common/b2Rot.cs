@@ -18,57 +18,54 @@ namespace Box2D.Common
             return rot;
         }
 
-        public float s { get { return (_s); } set { _s = value; } }
-        public float c { get { return (_c); } set { _c = value; } }
-
         /*public b2Rot() 
         {
-            _s = 0f; // sine of zero
-            _c = 1f; // cosine of zero
+            s = 0f; // sine of zero
+            c = 1f; // cosine of zero
         }*/
 
         /// Initialize from an angle in radians
         public b2Rot(float angle)
         {
             /// TODO_ERIN optimize
-            _s = (float)Math.Sin(angle);
-            _c = (float)Math.Cos(angle);
+            s = (float)Math.Sin(angle);
+            c = (float)Math.Cos(angle);
         }
 
         /// Set using an angle in radians.
         public void Set(float angle)
         {
             /// TODO_ERIN optimize
-            _s = (float)Math.Sin(angle);
-            _c = (float)Math.Cos(angle);
+            s = (float)Math.Sin(angle);
+            c = (float)Math.Cos(angle);
         }
 
         /// Set to the identity rotation
         public void SetIdentity()
         {
-            _s = 0.0f;
-            _c = 1.0f;
+            s = 0.0f;
+            c = 1.0f;
         }
 
         /// Get the angle in radians
         public float GetAngle()
         {
-            return b2Math.b2Atan2(_s, _c);
+            return b2Math.b2Atan2(s, c);
         }
 
         /// Get the x-axis
         public b2Vec2 GetXAxis()
         {
-            return new b2Vec2(_c, _s);
+            return new b2Vec2(c, s);
         }
 
         /// Get the u-axis
         public b2Vec2 GetYAxis()
         {
-            return new b2Vec2(-_s, _c);
+            return new b2Vec2(-s, c);
         }
 
         /// Sine and cosine
-        private float _s, _c;
+        public float s, c;
     }
 }

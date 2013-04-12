@@ -8,36 +8,33 @@ namespace Box2D.Common
     /// A 2-by-2 matrix. Stored in column-major order.
     public struct b2Mat22
     {
-        public b2Vec2 ex { get { return (_ex); } set { _ex = value; } }
-        public b2Vec2 ey { get { return (_ey); } set { _ey = value; } }
 
         /// Construct this matrix using columns.
         public b2Mat22(b2Vec2 c1, b2Vec2 c2)
         {
-            _ex = c1;
-            _ey = c2;
+            ex = c1;
+            ey = c2;
         }
 
         /// Construct this matrix using scalars.
         public b2Mat22(float a11, float a12, float a21, float a22)
         {
-            _ex = new b2Vec2();
-            _ey = new b2Vec2();
-            _ex.x = a11; _ex.y = a21;
-            _ey.x = a12; _ey.y = a22;
+            ex = b2Vec2.Zero;
+            ey = b2Vec2.Zero;
+            ex.x = a11; ex.y = a21;
+            ey.x = a12; ey.y = a22;
         }
 
-        public float exx { set { _ex.x = value; } }
-        public float exy { set { _ex.y = value; } }
-        public float eyx { set { _ey.x = value; } }
-        public float eyy { set { _ey.y = value; } }
-
-
+        public float exx { set { ex.x = value; } }
+        public float exy { set { ex.y = value; } }
+        public float eyx { set { ey.x = value; } }
+        public float eyy { set { ey.y = value; } }
+        
         /// Initialize this matrix using columns.
         public void Set(b2Vec2 c1, b2Vec2 c2)
         {
-            _ex = c1;
-            _ey = c2;
+            ex = c1;
+            ey = c2;
         }
 
         /// Multiply a matrix times a vector. If a rotation matrix is provided,
@@ -66,15 +63,15 @@ namespace Box2D.Common
         /// Set this to the identity matrix.
         public void SetIdentity()
         {
-            _ex.x = 1.0f; _ey.x = 0.0f;
-            _ex.y = 0.0f; _ey.y = 1.0f;
+            ex.x = 1.0f; ey.x = 0.0f;
+            ex.y = 0.0f; ey.y = 1.0f;
         }
 
         /// Set this matrix to all zeros.
         public void SetZero()
         {
-            _ex.x = 0.0f; _ey.x = 0.0f;
-            _ex.y = 0.0f; _ey.y = 0.0f;
+            ex.x = 0.0f; ey.x = 0.0f;
+            ex.y = 0.0f; ey.y = 0.0f;
         }
 
         public b2Mat22 GetInverse()
@@ -86,8 +83,8 @@ namespace Box2D.Common
             {
                 det = 1.0f / det;
             }
-            B._ex.x = det * d; B._ey.x = -det * b;
-            B._ex.y = -det * c; B._ey.y = det * a;
+            B.ex.x = det * d; B.ey.x = -det * b;
+            B.ex.y = -det * c; B.ey.y = det * a;
             return B;
         }
 
@@ -101,12 +98,12 @@ namespace Box2D.Common
             {
                 det = 1.0f / det;
             }
-            b2Vec2 x = new b2Vec2();
+            b2Vec2 x = b2Vec2.Zero;
             x.x = det * (a22 * b.x - a12 * b.y);
             x.y = det * (a11 * b.y - a21 * b.x);
             return x;
         }
 
-        private b2Vec2 _ex, _ey;
+        public b2Vec2 ex, ey;
     }
 }

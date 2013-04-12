@@ -250,37 +250,42 @@ public class CCScheduler
         {
             s_pTmpSelectorArray = new SelectorProtocol[s_pTmpSelectorArray.Length * 2];
         }
-
-        m_pHashForSelectors.Keys.CopyTo(s_pTmpSelectorArray, 0);
-
-        for (int i = 0; i < count; i++)
+#if WINDOWS
+        lock (this)
         {
-            HashSelectorEntry elt = m_pHashForSelectors[s_pTmpSelectorArray[i]];
+#endif
+            m_pHashForSelectors.Keys.CopyTo(s_pTmpSelectorArray, 0);
 
-            m_pCurrentTarget = elt;
-            m_bCurrentTargetSalvaged = false;
-
-            if (!m_pCurrentTarget.Paused)
+            for (int i = 0; i < count; i++)
             {
-                // The 'timers' array may change while inside this loop
-                for (elt.TimerIndex = 0; elt.TimerIndex < elt.Timers.Count; ++elt.TimerIndex)
+                HashSelectorEntry elt = m_pHashForSelectors[s_pTmpSelectorArray[i]];
+
+                m_pCurrentTarget = elt;
+                m_bCurrentTargetSalvaged = false;
+
+                if (!m_pCurrentTarget.Paused)
                 {
-                    elt.CurrentTimer = elt.Timers[elt.TimerIndex];
-                    elt.CurrentTimerSalvaged = false;
+                    // The 'timers' array may change while inside this loop
+                    for (elt.TimerIndex = 0; elt.TimerIndex < elt.Timers.Count; ++elt.TimerIndex)
+                    {
+                        elt.CurrentTimer = elt.Timers[elt.TimerIndex];
+                        elt.CurrentTimerSalvaged = false;
 
-                    elt.CurrentTimer.Update(dt);
+                        elt.CurrentTimer.Update(dt);
 
-                    elt.CurrentTimer = null;
+                        elt.CurrentTimer = null;
+                    }
+                }
+
+                // only delete currentTarget if no actions were scheduled during the cycle (issue #481)
+                if (m_bCurrentTargetSalvaged && m_pCurrentTarget.Timers.Count == 0)
+                {
+                    RemoveHashElement(m_pCurrentTarget);
                 }
             }
-
-            // only delete currentTarget if no actions were scheduled during the cycle (issue #481)
-            if (m_bCurrentTargetSalvaged && m_pCurrentTarget.Timers.Count == 0)
-            {
-                RemoveHashElement(m_pCurrentTarget);
-            }
+#if WINDOWS
         }
-
+#endif
         /*
             // Iterate over all the script callbacks
             if (m_pScriptHandlerEntries)

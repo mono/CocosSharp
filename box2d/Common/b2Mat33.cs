@@ -8,60 +8,56 @@ namespace Box2D.Common
     /// A 3-by-3 matrix. Stored in column-major order.
     public struct b2Mat33
     {
-        public b2Vec3 ex { get { return (_ex); } set { _ex = value; } }
-        public b2Vec3 ey { get { return (_ey); } set { _ey = value; } }
-        public b2Vec3 ez { get { return (_ez); } set { _ez = value; } }
+        public float exx { get { return ex.x; } set { ex.x = value; } }
+        public float exy { get { return ex.y; } set { ex.y = value; } }
+        public float exz { get { return ex.z; } set { ex.z = value; } }
 
-        public float exx { get { return _ex.x; } set { _ex.x = value; } }
-        public float exy { get { return _ex.y; } set { _ex.y = value; } }
-        public float exz { get { return _ex.z; } set { _ex.z = value; } }
+        public float eyx { get { return ey.x; } set { ey.x = value; } }
+        public float eyy { get { return ey.y; } set { ey.y = value; } }
+        public float eyz { get { return ey.z; } set { ey.z = value; } }
 
-        public float eyx { get { return _ey.x; } set { _ey.x = value; } }
-        public float eyy { get { return _ey.y; } set { _ey.y = value; } }
-        public float eyz { get { return _ey.z; } set { _ey.z = value; } }
-
-        public float ezx { get { return _ez.x; } set { _ez.x = value; } }
-        public float ezy { get { return _ez.y; } set { _ez.y = value; } }
-        public float ezz { get { return _ez.z; } set { _ez.z = value; } }
+        public float ezx { get { return ez.x; } set { ez.x = value; } }
+        public float ezy { get { return ez.y; } set { ez.y = value; } }
+        public float ezz { get { return ez.z; } set { ez.z = value; } }
 
         /*
                 public b2Mat33()
                 {
-                    _ex = new b2Vec3();
-                    _ey = new b2Vec3();
-                    _ez = new b2Vec3();
+                    ex = new b2Vec3();
+                    ey = new b2Vec3();
+                    ez = new b2Vec3();
                 }
         */
 
         /// ruct this matrix using columns.
         public b2Mat33(b2Vec3 c1, b2Vec3 c2, b2Vec3 c3)
         {
-            _ex = c1;
-            _ey = c2;
-            _ez = c3;
+            ex = c1;
+            ey = c2;
+            ez = c3;
         }
 
         /// Set this matrix to all zeros.
         public void SetZero()
         {
-            _ex.SetZero();
-            _ey.SetZero();
-            _ez.SetZero();
+            ex.SetZero();
+            ey.SetZero();
+            ez.SetZero();
         }
 
         /// Solve A * x = b, where b is a column vector. This is more efficient
         /// than computing the inverse in one-shot cases.
         public b2Vec3 Solve33(b2Vec3 b)
         {
-            float det = b2Math.b2Dot(_ex, b2Math.b2Cross(_ey, _ez));
+            float det = b2Math.b2Dot(ex, b2Math.b2Cross(ey, ez));
             if (det != 0.0f)
             {
                 det = 1.0f / det;
             }
             b2Vec3 x = new b2Vec3();
-            x.x = det * b2Math.b2Dot(b, b2Math.b2Cross(_ey, _ez));
-            x.y = det * b2Math.b2Dot(_ex, b2Math.b2Cross(b, _ez));
-            x.z = det * b2Math.b2Dot(_ex, b2Math.b2Cross(_ey, b));
+            x.x = det * b2Math.b2Dot(b, b2Math.b2Cross(ey, ez));
+            x.y = det * b2Math.b2Dot(ex, b2Math.b2Cross(b, ez));
+            x.z = det * b2Math.b2Dot(ex, b2Math.b2Cross(ey, b));
             return x;
         }
 
@@ -70,7 +66,7 @@ namespace Box2D.Common
         /// 2-by-2 matrix equation.
         public b2Vec2 Solve22(b2Vec2 b)
         {
-            float a11 = _ex.x, a12 = _ey.x, a21 = _ex.y, a22 = _ey.y;
+            float a11 = ex.x, a12 = ey.x, a21 = ex.y, a22 = ey.y;
             float det = a11 * a22 - a12 * a21;
             if (det != 0.0f)
             {
@@ -86,16 +82,16 @@ namespace Box2D.Common
         /// Returns the zero matrix if singular.
         public b2Mat33 GetInverse22(b2Mat33 M)
         {
-            float a = _ex.x, b = _ey.x, c = _ex.y, d = _ey.y;
+            float a = ex.x, b = ey.x, c = ex.y, d = ey.y;
             float det = a * d - b * c;
             if (det != 0.0f)
             {
                 det = 1.0f / det;
             }
 
-            M._ex.x = det * d; M._ey.x = -det * b; M._ex.z = 0.0f;
-            M._ex.y = -det * c; M._ey.y = det * a; M._ey.z = 0.0f;
-            M._ez.x = 0.0f; M._ez.y = 0.0f; M._ez.z = 0.0f;
+            M.ex.x = det * d; M.ey.x = -det * b; M.ex.z = 0.0f;
+            M.ex.y = -det * c; M.ey.y = det * a; M.ey.z = 0.0f;
+            M.ez.x = 0.0f; M.ez.y = 0.0f; M.ez.z = 0.0f;
             return (M);
         }
 
@@ -103,30 +99,30 @@ namespace Box2D.Common
         /// Returns the zero matrix if singular.
         public b2Mat33 GetSymInverse33(b2Mat33 M)
         {
-            float det = b2Math.b2Dot(_ex, b2Math.b2Cross(_ey, _ez));
+            float det = b2Math.b2Dot(ex, b2Math.b2Cross(ey, ez));
             if (det != 0.0f)
             {
                 det = 1.0f / det;
             }
 
-            float a11 = _ex.x, a12 = _ey.x, a13 = _ez.x;
-            float a22 = _ey.y, a23 = _ez.y;
-            float a33 = _ez.z;
+            float a11 = ex.x, a12 = ey.x, a13 = ez.x;
+            float a22 = ey.y, a23 = ez.y;
+            float a33 = ez.z;
 
-            M._ex.x = det * (a22 * a33 - a23 * a23);
-            M._ex.y = det * (a13 * a23 - a12 * a33);
-            M._ex.z = det * (a12 * a23 - a13 * a22);
+            M.ex.x = det * (a22 * a33 - a23 * a23);
+            M.ex.y = det * (a13 * a23 - a12 * a33);
+            M.ex.z = det * (a12 * a23 - a13 * a22);
 
-            M._ey.x = M._ex.y;
-            M._ey.y = det * (a11 * a33 - a13 * a13);
-            M._ey.z = det * (a13 * a12 - a11 * a23);
+            M.ey.x = M.ex.y;
+            M.ey.y = det * (a11 * a33 - a13 * a13);
+            M.ey.z = det * (a13 * a12 - a11 * a23);
 
-            M._ez.x = M._ex.z;
-            M._ez.y = M._ey.z;
-            M._ez.z = det * (a11 * a22 - a12 * a12);
+            M.ez.x = M.ex.z;
+            M.ez.y = M.ey.z;
+            M.ez.z = det * (a11 * a22 - a12 * a12);
             return (M);
         }
 
-        private b2Vec3 _ex, _ey, _ez;
+        public b2Vec3 ex, ey, ez;
     }
 }

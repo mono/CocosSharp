@@ -9,22 +9,18 @@ namespace Box2D.Common
     public struct b2Vec3
     {
         /// Construct using coordinates.
-        public b2Vec3(float x, float y, float z)
+        public b2Vec3(float ix, float iy, float iz)
         {
-            _x = x;
-            _y = y;
-            _z = z;
+            x = ix;
+            y = iy;
+            z = iz;
         }
 
-        public float x { get { return (_x); } set { _x = value; } }
-        public float y { get { return (_y); } set { _y = value; } }
-        public float z { get { return (_z); } set { _z = value; } }
-
         /// Set this vector to all zeros.
-        public void SetZero() { _x = 0f; _y = 0f; _z = 0f; }
+        public void SetZero() { x = 0f; y = 0f; z = 0f; }
 
         /// Set this vector to some specified coordinates.
-        public void Set(float x_, float y_, float z_) { _x = x_; _y = y_; _z = z_; }
+        public void Set(float ix, float iy, float iz) { x = ix; y = iy; z = iz; }
 
         /// Negate this vector.
         public static b2Vec3 operator -(b2Vec3 b)
@@ -60,14 +56,14 @@ namespace Box2D.Common
         /// Get the length of this vector (the norm).
         public float Length()
         {
-            return b2Math.b2Sqrt(_x * _x + _y * _y + _z*_z);
+            return b2Math.b2Sqrt(x * x + y * y + z*z);
         }
 
         /// Get the length squared. For performance, use this instead of
         /// b2Vec2::Length (if possible).
         public float LengthSquared()
         {
-            return _x * _x + _y * _y + _z*_z;
+            return x * x + y * y + z*z;
         }
 
         /// Convert this vector into a unit vector. Returns the length.
@@ -79,9 +75,9 @@ namespace Box2D.Common
                 return 0.0f;
             }
             float invLength = 1.0f / length;
-            _x *= invLength;
-            _y *= invLength;
-            _z *= invLength;
+            x *= invLength;
+            y *= invLength;
+            z *= invLength;
 
             return length;
         }
@@ -89,15 +85,15 @@ namespace Box2D.Common
         /// Does this vector contain finite coordinates?
         public bool IsValid()
         {
-            return b2Math.b2IsValid(_x) && b2Math.b2IsValid(_y) && b2Math.b2IsValid(_z);
+            return b2Math.b2IsValid(x) && b2Math.b2IsValid(y) && b2Math.b2IsValid(z);
         }
 
-        /// Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
+        /// Get the skew vector such that dot(skewvec, other) == cross(vec, other)
         public b2Vec3 Skew()
         {
-            return new b2Vec3(-_y, _x, _z);
+            return new b2Vec3(-y, x, z);
         }
 
-        private float _x, _y, _z;
+        public float x, y, z;
     }
 }
