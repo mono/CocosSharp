@@ -315,6 +315,10 @@ namespace Box2D.Dynamics.Contacts
         {
             return m_manifold;
         }
+        public virtual void SetManifold(b2Manifold m)
+        {
+            m_manifold = m;
+        }
 
         public virtual void GetWorldManifold(b2WorldManifold worldManifold)
         {

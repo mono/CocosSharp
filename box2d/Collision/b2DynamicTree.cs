@@ -171,8 +171,8 @@ namespace Box2D.Collision
 
             // Fatten the aabb.
             b2Vec2 r = new b2Vec2(b2Settings.b2_aabbExtension, b2Settings.b2_aabbExtension);
-            m_nodes[proxyId].aabb.lowerBound = aabb.lowerBound - r;
-            m_nodes[proxyId].aabb.upperBound = aabb.upperBound + r;
+            m_nodes[proxyId].aabb.m_lowerBound = aabb.m_lowerBound - r;
+            m_nodes[proxyId].aabb.m_upperBound = aabb.m_upperBound + r;
             m_nodes[proxyId].userData = userData;
             m_nodes[proxyId].height = 0;
 
@@ -206,28 +206,28 @@ namespace Box2D.Collision
             // Extend AABB.
             b2AABB b = aabb;
             b2Vec2 r = new b2Vec2(b2Settings.b2_aabbExtension, b2Settings.b2_aabbExtension);
-            b.lowerBound = b.lowerBound - r;
-            b.upperBound = b.upperBound + r;
+            b.m_lowerBound = b.m_lowerBound - r;
+            b.m_upperBound = b.m_upperBound + r;
 
             // Predict AABB displacement.
             b2Vec2 d = b2Settings.b2_aabbMultiplier * displacement;
 
             if (d.x < 0.0f)
             {
-                b.lowerBoundx += d.x;
+                b.m_lowerBound.x += d.x;
             }
             else
             {
-                b.upperBoundx += d.x;
+                b.m_upperBound.x += d.x;
             }
 
             if (d.y < 0.0f)
             {
-                b.lowerBoundy += d.y;
+                b.m_lowerBound.y += d.y;
             }
             else
             {
-                b.upperBoundy += d.y;
+                b.m_upperBound.y += d.y;
             }
 
             m_nodes[proxyId].aabb = b;
@@ -706,8 +706,8 @@ namespace Box2D.Collision
             b2AABB aabb = new b2AABB();
             aabb.Combine(m_nodes[child1].aabb, m_nodes[child2].aabb);
 
-            Debug.Assert(aabb.lowerBound == node.aabb.lowerBound);
-            Debug.Assert(aabb.upperBound == node.aabb.upperBound);
+            Debug.Assert(aabb.m_lowerBound == node.aabb.m_lowerBound);
+            Debug.Assert(aabb.m_upperBound == node.aabb.m_upperBound);
 
             ValidateMetrics(child1);
             ValidateMetrics(child2);
@@ -899,8 +899,8 @@ namespace Box2D.Collision
             b2AABB segmentAABB = new b2AABB();
             {
                 b2Vec2 t = p1 + maxFraction * (p2 - p1);
-                segmentAABB.lowerBound = b2Math.b2Min(p1, t);
-                segmentAABB.upperBound = b2Math.b2Max(p1, t);
+                segmentAABB.m_lowerBound = b2Math.b2Min(p1, t);
+                segmentAABB.m_upperBound = b2Math.b2Max(p1, t);
             }
 
             Stack<int> stack = new Stack<int>();
@@ -951,8 +951,8 @@ namespace Box2D.Collision
                         // Update segment bounding box.
                         maxFraction = value;
                         b2Vec2 t = p1 + maxFraction * (p2 - p1);
-                        segmentAABB.lowerBound = b2Math.b2Min(p1, t);
-                        segmentAABB.upperBound = b2Math.b2Max(p1, t);
+                        segmentAABB.m_lowerBound = b2Math.b2Min(p1, t);
+                        segmentAABB.m_upperBound = b2Math.b2Max(p1, t);
                     }
                 }
                 else

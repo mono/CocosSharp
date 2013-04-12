@@ -139,11 +139,11 @@ namespace Box2D.Dynamics.Contacts
             m_count = def.count;
             m_positionConstraints = new b2ContactPositionConstraint[m_count];
             for (int pc = 0; pc < m_count; pc++)
-                m_positionConstraints[pc] = b2ContactPositionConstraint.Default;
+                m_positionConstraints[pc] = b2ContactPositionConstraint.Create();
 
             m_velocityConstraints = new b2ContactVelocityConstraint[m_count];
             for (int vc = 0; vc < m_count; vc++)
-                m_velocityConstraints[vc] = b2ContactVelocityConstraint.Default;
+                m_velocityConstraints[vc] = b2ContactVelocityConstraint.Create();
 
             m_positions = def.positions;
             m_velocities = def.velocities;
@@ -513,7 +513,7 @@ namespace Box2D.Dynamics.Contacts
                     float vn1 = b2Math.b2Dot(dv1, normal);
                     float vn2 = b2Math.b2Dot(dv2, normal);
 
-                    b2Vec2 b = new b2Vec2();
+                    b2Vec2 b = b2Vec2.Zero;
                     b.x = vn1 - cp1.velocityBias;
                     b.y = vn2 - cp2.velocityBias;
 
@@ -521,7 +521,7 @@ namespace Box2D.Dynamics.Contacts
                     b -= b2Math.b2Mul(vc.K, a);
 
                     //            float k_errorTol = 1e-3f;
-
+                    #region Iteration 
                     while (true)
                     {
                         //
@@ -686,15 +686,16 @@ namespace Box2D.Dynamics.Contacts
                         // No solution, give up. This is hit sometimes, but it doesn't seem to matter.
                         break;
                     }
+                    #endregion
                     vc.points[0] = cp1;
                     vc.points[1] = cp2;
-                    m_velocityConstraints[i] = vc;
                 }
 
                 m_velocities[indexA].v = vA;
                 m_velocities[indexA].w = wA;
                 m_velocities[indexB].v = vB;
                 m_velocities[indexB].w = wB;
+                m_velocityConstraints[i] = vc;
             }
         }
 
@@ -710,12 +711,13 @@ namespace Box2D.Dynamics.Contacts
                     manifold.points[j].normalImpulse = vc.points[j].normalImpulse;
                     manifold.points[j].tangentImpulse = vc.points[j].tangentImpulse;
                 }
+                m_contacts[vc.contactIndex].SetManifold(manifold);
             }
         }
 
         public class b2PositionSolverManifold
         {
-            public b2PositionSolverManifold(b2ContactPositionConstraint pc, b2Transform xfA, b2Transform xfB, int index)
+            public b2PositionSolverManifold(ref b2ContactPositionConstraint pc, ref b2Transform xfA, ref b2Transform xfB, int index)
             {
                 Debug.Assert(pc.pointCount > 0);
 
@@ -798,7 +800,7 @@ namespace Box2D.Dynamics.Contacts
                     xfA.p = cA - b2Math.b2Mul(xfA.q, localCenterA);
                     xfB.p = cB - b2Math.b2Mul(xfB.q, localCenterB);
 
-                    b2PositionSolverManifold psm = new b2PositionSolverManifold(pc, xfA, xfB, j);
+                    b2PositionSolverManifold psm = new b2PositionSolverManifold(ref pc, ref xfA, ref xfB, j);
                     b2Vec2 normal = psm.normal;
 
                     b2Vec2 point = psm.point;
@@ -835,6 +837,8 @@ namespace Box2D.Dynamics.Contacts
 
                 m_positions[indexB].c = cB;
                 m_positions[indexB].a = aB;
+
+                m_positionConstraints[i] = pc;
             }
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't
@@ -888,7 +892,7 @@ namespace Box2D.Dynamics.Contacts
                     xfA.p = cA - b2Math.b2Mul(xfA.q, localCenterA);
                     xfB.p = cB - b2Math.b2Mul(xfB.q, localCenterB);
 
-                    b2PositionSolverManifold psm = new b2PositionSolverManifold(pc, xfA, xfB, j);
+                    b2PositionSolverManifold psm = new b2PositionSolverManifold(ref pc, ref xfA, ref xfB, j);
                     b2Vec2 normal = psm.normal;
 
                     b2Vec2 point = psm.point;
@@ -925,6 +929,8 @@ namespace Box2D.Dynamics.Contacts
 
                 m_positions[indexB].c = cB;
                 m_positions[indexB].a = aB;
+
+                m_positionConstraints[i] = pc;
             }
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't

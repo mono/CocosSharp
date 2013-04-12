@@ -1286,10 +1286,10 @@ namespace Box2D.Dynamics
                             b2FixtureProxy proxy = f.Proxies[i];
                             b2AABB aabb = bp.GetFatAABB(proxy.proxyId);
                             b2Vec2[] vs = new b2Vec2[4];
-                            vs[0].Set(aabb.lowerBound.x, aabb.lowerBound.y);
-                            vs[1].Set(aabb.upperBound.x, aabb.lowerBound.y);
-                            vs[2].Set(aabb.upperBound.x, aabb.upperBound.y);
-                            vs[3].Set(aabb.lowerBound.x, aabb.upperBound.y);
+                            vs[0].Set(aabb.m_lowerBound.x, aabb.m_lowerBound.y);
+                            vs[1].Set(aabb.m_upperBound.x, aabb.m_lowerBound.y);
+                            vs[2].Set(aabb.m_upperBound.x, aabb.m_upperBound.y);
+                            vs[3].Set(aabb.m_lowerBound.x, aabb.m_upperBound.y);
 
                             m_debugDraw.DrawPolygon(vs, 4, color);
                         }

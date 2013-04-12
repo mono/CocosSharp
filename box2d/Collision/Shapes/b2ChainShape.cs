@@ -186,8 +186,8 @@ namespace Box2D.Collision.Shapes
             b2Vec2 v2 = b2Math.b2Mul(xf, m_vertices[i2]);
 
             b2AABB aabb = new b2AABB();
-            aabb.lowerBound = b2Math.b2Min(v1, v2);
-            aabb.upperBound = b2Math.b2Max(v1, v2);
+            aabb.m_lowerBound = b2Math.b2Min(v1, v2);
+            aabb.m_upperBound = b2Math.b2Max(v1, v2);
             return (aabb);
         }
 

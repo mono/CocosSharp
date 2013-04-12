@@ -169,9 +169,9 @@ namespace Box2D.Collision.Shapes
             b2Vec2 upper = b2Math.b2Max(v1, v2);
 
             b2Vec2 r = new b2Vec2(m_radius, m_radius);
-            b2AABB aabb = new b2AABB();
-            aabb.lowerBound = lower - r;
-            aabb.upperBound = upper + r;
+            b2AABB aabb = new b2AABB(); // TODO: Convert to b2AABB.Zero
+            aabb.m_lowerBound = lower - r;
+            aabb.m_upperBound = upper + r;
             return(aabb);
         }
 

@@ -111,8 +111,8 @@ namespace Box2D.Collision.Shapes
         {
             b2Vec2 p = transform.p + b2Math.b2Mul(transform.q, m_p);
             b2AABB aabb = new b2AABB();
-            aabb.lowerBound.Set(p.x - m_radius, p.y - m_radius);
-            aabb.upperBound.Set(p.x + m_radius, p.y + m_radius);
+            aabb.m_lowerBound.Set(p.x - m_radius, p.y - m_radius);
+            aabb.m_upperBound.Set(p.x + m_radius, p.y + m_radius);
             return (aabb);
         }
 

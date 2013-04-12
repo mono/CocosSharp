@@ -22,6 +22,11 @@ namespace Box2D.Collision
     {
         public b2Vec2 v;
         public b2ContactFeature id;
+
+        public void Dump()
+        {
+            Console.WriteLine("b2ClipVertex {{ v={0},{1} - feature={4}@{2},{5}@{3} }}", v.x, v.y, id.indexA, id.indexB, id.typeA, id.typeB);
+        }
     };
 
     /// Ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).
@@ -43,7 +48,7 @@ namespace Box2D.Collision
             normal = b;
             fraction = f;
         }
-        public static b2RayCastOutput Zero = new b2RayCastOutput(new b2Vec2(), 0f);
+        public static b2RayCastOutput Zero = new b2RayCastOutput(b2Vec2.Zero, 0f);
     }
 
     public abstract class b2Collision
@@ -569,8 +574,8 @@ namespace Box2D.Collision
         public static bool b2TestOverlap(ref b2AABB a, ref b2AABB b)
         {
             b2Vec2 d1, d2;
-            d1 = b.lowerBound - a.upperBound;
-            d2 = a.lowerBound - b.upperBound;
+            d1 = b.m_lowerBound - a.m_upperBound;
+            d2 = a.m_lowerBound - b.m_upperBound;
 
             if (d1.x > 0.0f || d1.y > 0.0f)
                 return false;

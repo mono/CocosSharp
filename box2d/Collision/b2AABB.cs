@@ -151,18 +151,8 @@ namespace Box2D.Collision
             output.normal = normal;
             return true;
         }
-
-        public float lowerBoundx { get { return (m_lowerBound.x); } set { m_lowerBound.x = value; } }
-        public float lowerBoundy { get { return (m_lowerBound.y); } set { m_lowerBound.y = value; } }
-
-        public float upperBoundx { get { return (m_upperBound.x); } set { m_upperBound.x = value; } }
-        public float upperBoundy { get { return (m_upperBound.y); } set { m_upperBound.y = value; } }
-
-        public b2Vec2 lowerBound { get { return (m_lowerBound); } set { m_lowerBound = value; } }
-        public b2Vec2 upperBound { get { return (m_upperBound); } set { m_upperBound = value; } }
-
-        private b2Vec2 m_lowerBound;    //< the lower vertex
-        private b2Vec2 m_upperBound;    //< the upper vertex
+        public b2Vec2 m_lowerBound;    //< the lower vertex
+        public b2Vec2 m_upperBound;    //< the upper vertex
 
     }
 }

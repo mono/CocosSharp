@@ -57,6 +57,24 @@ namespace tests
 
     public class Box2DTestLayer : CCLayer
     {
+        public class Myb2Listener : b2ContactListener
+        {
+
+            public override void PreSolve(Box2D.Dynamics.Contacts.b2Contact contact, ref Box2D.Collision.b2Manifold oldManifold)
+            {
+                // CCLog.Log("Pre solve: {0} vs {1}", contact.FixtureA.Body.BodyType, contact.FixtureB.Body.BodyType);
+                if (contact.FixtureA.Body.BodyType == contact.FixtureB.Body.BodyType)
+                {
+                    contact.FixtureB.Body.World.Dump();
+                }
+            }
+
+            public override void PostSolve(Box2D.Dynamics.Contacts.b2Contact contact, ref b2ContactImpulse impulse)
+            {
+                // CCLog.Log("Post solve: {0} vs {1}", contact.FixtureA.Body.BodyType, contact.FixtureB.Body.BodyType);
+            }
+        }
+
         public const int PTM_RATIO = 32;
 
         private const int kTagParentNode = 1;
@@ -236,6 +254,7 @@ namespace tests
             b2Fixture fixture = body.CreateFixture(fd);
 
             sprite.PhysicsBody = body;
+            _world.SetContactListener(new Myb2Listener());
 
             // _world.Dump();
         }
