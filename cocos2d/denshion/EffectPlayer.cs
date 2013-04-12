@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Audio;
+﻿using System;
+using Microsoft.Xna.Framework.Audio;
 using cocos2d;
 
 namespace CocosDenshion
@@ -41,7 +42,19 @@ namespace CocosDenshion
 
             Close();
 
-            m_effect = CCApplication.SharedApplication.Content.Load<SoundEffect>(pFileName);
+            try
+            {
+                m_effect = CCApplication.SharedApplication.Content.Load<SoundEffect>(pFileName);
+            }
+            catch (Exception)
+            {
+                string srcfile = pFileName;
+                if (srcfile.IndexOf('.') > -1)
+                {
+                    srcfile = srcfile.Substring(0, srcfile.LastIndexOf('.'));
+                    m_effect = CCApplication.SharedApplication.Content.Load<SoundEffect>(srcfile);
+                }
+            }
             // Do not get an instance here b/c it is very slow. 
             //_sfxInstance = m_effect.CreateInstance();
             m_nSoundId = uId;

@@ -114,7 +114,21 @@ namespace cocos2d
                 {
                     // Either we are creating a new one or else we need to refresh the current one.
                     // CCLog.Log("Loading texture {0}", fileimage);
-                    Texture2D textureXna = CCApplication.SharedApplication.Content.Load<Texture2D>(fileimage);
+                    Texture2D textureXna = null;
+                    try
+                    {
+                        textureXna = CCApplication.SharedApplication.Content.Load<Texture2D>(fileimage);
+                    }
+                    catch (Exception)
+                    {
+                        string srcfile = fileimage;
+                        if (srcfile.IndexOf('.') > -1)
+                        {
+                            // Remove the extension
+                            srcfile = srcfile.Substring(0, srcfile.LastIndexOf('.'));
+                        }
+                        textureXna = CCApplication.SharedApplication.Content.Load<Texture2D>(srcfile);
+                    }
                     bool isInited = texture.InitWithTexture(textureXna);
 
                     if (isInited)
