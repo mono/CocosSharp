@@ -15,10 +15,18 @@ namespace Box2D.Dynamics
     /// sub-step forces may approach infinity for rigid body collisions. These
     /// match up one-to-one with the contact points in b2Manifold.
     /// </summary>
-    public class b2ContactImpulse
+    public struct b2ContactImpulse
     {
-        public float[] normalImpulses = new float[b2Settings.b2_maxManifoldPoints];
-        public float[] tangentImpulses = new float[b2Settings.b2_maxManifoldPoints];
+        public static b2ContactImpulse Create()
+        {
+            b2ContactImpulse b = new b2ContactImpulse();
+            b.normalImpulses = new float[b2Settings.b2_maxManifoldPoints];
+            b.tangentImpulses = new float[b2Settings.b2_maxManifoldPoints];
+            b.count = 0;
+            return (b);
+        }
+        public float[] normalImpulses;
+        public float[] tangentImpulses;
         public int count;
     }
 
@@ -1327,27 +1335,25 @@ namespace Box2D.Dynamics
                 return;
             }
 
-            System.Diagnostics.Debug.WriteLine("b2Vec2 g({0:N5}, {0:N5});", m_gravity.x, m_gravity.y);
+            System.Diagnostics.Debug.WriteLine("b2Vec2 g = new b2Vec2({0:N5}, {1:N5});", m_gravity.x, m_gravity.y);
             System.Diagnostics.Debug.WriteLine("m_world.SetGravity(g);");
 
-            System.Diagnostics.Debug.WriteLine("b2Body bodies = (b2Body)b2Alloc({0} * sizeof(b2Body));", m_bodyCount);
-            System.Diagnostics.Debug.WriteLine("b2Joint joints = (b2Joint)b2Alloc({0} * sizeof(b2Joint));", m_jointCount);
+            System.Diagnostics.Debug.WriteLine("b2Body bodies = new b2Body[{0}];", m_bodyCount);
+            System.Diagnostics.Debug.WriteLine("b2Joint joints = new b2Joint[{0}];", m_jointCount);
             int i = 0;
-            for (b2Body b = m_bodyList; b != null; b = b.Next)
+            for (b2Body b = m_bodyList; b != null; b = b.Next, i++)
             {
                 b.IslandIndex = i;
                 b.Dump();
-                ++i;
             }
 
             i = 0;
-            for (b2Joint j = m_jointList; j != null; j = j.Next)
+            for (b2Joint j = m_jointList; j != null; j = j.Next, i++)
             {
                 j.Index = i;
-                ++i;
             }
 
-            // First pass on joints, skip gear joints.
+            // First pass on joints, only gear joints.
             for (b2Joint j = m_jointList; j != null; j = j.Next)
             {
                 if (j.GetJointType() == b2JointType.e_gearJoint)
@@ -1360,7 +1366,7 @@ namespace Box2D.Dynamics
                 System.Diagnostics.Debug.WriteLine("}");
             }
 
-            // Second pass on joints, only gear joints.
+            // Second pass on joints, skip gear joints.
             for (b2Joint j = m_jointList; j != null; j = j.Next)
             {
                 if (j.GetJointType() != b2JointType.e_gearJoint)
@@ -1373,10 +1379,6 @@ namespace Box2D.Dynamics
                 System.Diagnostics.Debug.WriteLine("}");
             }
 
-            System.Diagnostics.Debug.WriteLine("b2Free(joints);");
-            System.Diagnostics.Debug.WriteLine("b2Free(bodies);");
-            System.Diagnostics.Debug.WriteLine("joints = null;");
-            System.Diagnostics.Debug.WriteLine("bodies = null;");
         }
     }
 }

@@ -923,20 +923,20 @@ namespace Box2D.Dynamics
 
             System.Diagnostics.Debug.WriteLine("{");
             System.Diagnostics.Debug.WriteLine("  b2BodyDef bd;");
-            System.Diagnostics.Debug.WriteLine("  bd.type = b2BodyType({0});", m_type);
+            System.Diagnostics.Debug.WriteLine("  bd.type = {0};", m_type);
             System.Diagnostics.Debug.WriteLine("  bd.position.Set({0:N5}, {1:N5});", m_xf.p.x, m_xf.p.y);
             System.Diagnostics.Debug.WriteLine("  bd.angle = {0:N5};", Sweep.a);
             System.Diagnostics.Debug.WriteLine("  bd.linearVelocity.Set({0:N5}, {1:N5});", m_linearVelocity.x, m_linearVelocity.y);
             System.Diagnostics.Debug.WriteLine("  bd.angularVelocity = {0:N5};", m_angularVelocity);
             System.Diagnostics.Debug.WriteLine("  bd.linearDamping = {0:N5};", m_linearDamping);
             System.Diagnostics.Debug.WriteLine("  bd.angularDamping = {0:N5};", m_angularDamping);
-            System.Diagnostics.Debug.WriteLine("  bd.allowSleep = bool({0});", m_flags.HasFlag(b2BodyFlags.e_autoSleepFlag));
-            System.Diagnostics.Debug.WriteLine("  bd.awake = bool({0});", m_flags.HasFlag(b2BodyFlags.e_awakeFlag));
-            System.Diagnostics.Debug.WriteLine("  bd.fixedRotation = bool({0});", m_flags.HasFlag(b2BodyFlags.e_fixedRotationFlag));
-            System.Diagnostics.Debug.WriteLine("  bd.bullet = bool({0});", m_flags.HasFlag(b2BodyFlags.e_bulletFlag));
-            System.Diagnostics.Debug.WriteLine("  bd.active = bool({0});", m_flags.HasFlag(b2BodyFlags.e_activeFlag));
+            System.Diagnostics.Debug.WriteLine("  bd.allowSleep = {0};", m_flags.HasFlag(b2BodyFlags.e_autoSleepFlag));
+            System.Diagnostics.Debug.WriteLine("  bd.awake = {0};", m_flags.HasFlag(b2BodyFlags.e_awakeFlag));
+            System.Diagnostics.Debug.WriteLine("  bd.fixedRotation = {0};", m_flags.HasFlag(b2BodyFlags.e_fixedRotationFlag));
+            System.Diagnostics.Debug.WriteLine("  bd.bullet = {0};", m_flags.HasFlag(b2BodyFlags.e_bulletFlag));
+            System.Diagnostics.Debug.WriteLine("  bd.active = {0};", m_flags.HasFlag(b2BodyFlags.e_activeFlag));
             System.Diagnostics.Debug.WriteLine("  bd.gravityScale = {0:N5};", m_gravityScale);
-            System.Diagnostics.Debug.WriteLine("  bodies[{0}] = m_world.CreateBody(&bd);", m_islandIndex);
+            System.Diagnostics.Debug.WriteLine("  bodies[{0}] = m_world.CreateBody(bd);", m_islandIndex);
             System.Diagnostics.Debug.WriteLine("");
             for (b2Fixture f = m_fixtureList; f != null; f = f.Next)
             {

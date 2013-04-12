@@ -53,7 +53,7 @@ namespace Box2D.Collision
         /// Compute the point states given two manifolds. The states pertain to the transition from manifold1
         /// to manifold2. So state1 is either persist or remove while state2 is either add or persist.
         public static void b2GetPointStates(b2PointState[] state1, b2PointState[] state2,
-                              b2Manifold manifold1, b2Manifold manifold2)
+                              ref b2Manifold manifold1, ref b2Manifold manifold2)
         {
             for (int i = 0; i < b2Settings.b2_maxManifoldPoints; ++i)
             {
@@ -97,7 +97,7 @@ namespace Box2D.Collision
         }
 
         /// Compute the collision manifold between two circles.
-        public static void b2CollideCircles(b2Manifold manifold,
+        public static void b2CollideCircles(ref b2Manifold manifold,
                                b2CircleShape circleA, ref b2Transform xfA,
                                b2CircleShape circleB, ref b2Transform xfB)
         {
@@ -125,7 +125,7 @@ namespace Box2D.Collision
         }
 
         /// Compute the collision manifold between a polygon and a circle.
-        public static void b2CollidePolygonAndCircle(b2Manifold manifold,
+        public static void b2CollidePolygonAndCircle(ref b2Manifold manifold,
                                         b2PolygonShape polygonA, ref b2Transform xfA,
                                         b2CircleShape circleB, ref b2Transform xfB)
         {
@@ -236,7 +236,7 @@ namespace Box2D.Collision
         // Find incident edge
         // Clip
         // The normal points from 1 to 2
-        public static void b2CollidePolygons(b2Manifold manifold,
+        public static void b2CollidePolygons(ref b2Manifold manifold,
                                 b2PolygonShape polyA, ref b2Transform xfA,
                                 b2PolygonShape polyB, ref b2Transform xfB)
         {
@@ -244,12 +244,12 @@ namespace Box2D.Collision
             float totalRadius = polyA.Radius + polyB.Radius;
 
             int edgeA = 0;
-            float separationA = b2FindMaxSeparation(out edgeA, polyA, xfA, polyB, xfB);
+            float separationA = b2FindMaxSeparation(out edgeA, polyA, ref xfA, polyB, ref xfB);
             if (separationA > totalRadius)
                 return;
 
             int edgeB = 0;
-            float separationB = b2FindMaxSeparation(out edgeB, polyB, xfB, polyA, xfA);
+            float separationB = b2FindMaxSeparation(out edgeB, polyB, ref xfB, polyA, ref xfA);
             if (separationB > totalRadius)
                 return;
 
@@ -397,7 +397,7 @@ namespace Box2D.Collision
         }
 
         /// Compute the collision manifold between an edge and a circle.
-        public static void b2CollideEdgeAndCircle(b2Manifold manifold,
+        public static void b2CollideEdgeAndCircle(ref b2Manifold manifold,
                                         b2EdgeShape edgeA, ref b2Transform xfA,
                                         b2CircleShape circleB, ref b2Transform xfB)
         {
@@ -525,12 +525,12 @@ namespace Box2D.Collision
         }
 
         /// Compute the collision manifold between an edge and a circle.
-        public static void b2CollideEdgeAndPolygon(b2Manifold manifold,
+        public static void b2CollideEdgeAndPolygon(ref b2Manifold manifold,
                                         b2EdgeShape edgeA, ref b2Transform xfA,
                                         b2PolygonShape polygonB, ref b2Transform xfB)
         {
             b2EPCollider b = new b2EPCollider();
-            b.Collide(manifold, edgeA, ref xfA, polygonB, ref xfB);
+            b.Collide(ref manifold, edgeA, ref xfA, polygonB, ref xfB);
         }
 
         /// Clipping for contact manifolds.
@@ -584,28 +584,30 @@ namespace Box2D.Collision
         /// Determine if two generic shapes overlap.
         public static bool b2TestOverlap(b2Shape shapeA, int indexA,
                              b2Shape shapeB, int indexB,
-                            b2Transform xfA, b2Transform xfB)
+                            ref b2Transform xfA, ref b2Transform xfB)
         {
-            b2DistanceInput input = b2DistanceInput.Default;
-            input.proxyA = new b2DistanceProxy(shapeA, indexA);
-            input.proxyB = new b2DistanceProxy(shapeB, indexB);
+            b2DistanceInput input = b2DistanceInput.Create();
+            input.proxyA = b2DistanceProxy.Create(shapeA, indexA);
+            input.proxyB = b2DistanceProxy.Create(shapeB, indexB);
             input.transformA = xfA;
             input.transformB = xfB;
             input.useRadii = true;
 
-            b2SimplexCache cache = b2SimplexCache.Default;
+            b2SimplexCache cache = b2SimplexCache.Create();
 
             b2DistanceOutput output = new b2DistanceOutput();
 
             b2Simplex.b2Distance(ref output, ref cache, ref input);
+
+//            Console.WriteLine("{2} vs {3}: distance={0} after {1} iters", output.distance, output.iterations, shapeA.ShapeType, shapeB.ShapeType);
 
             return output.distance < 10.0f * b2Settings.b2_epsilon;
         }
 
         // Find the max separation between poly1 and poly2 using edge normals from poly1.
         public static float b2FindMaxSeparation(out int edgeIndex,
-                                         b2PolygonShape poly1, b2Transform xf1,
-                                         b2PolygonShape poly2, b2Transform xf2)
+                                         b2PolygonShape poly1, ref b2Transform xf1,
+                                         b2PolygonShape poly2, ref b2Transform xf2)
         {
             int count1 = poly1.VertexCount;
             b2Vec2[] normals1 = poly1.Normals;

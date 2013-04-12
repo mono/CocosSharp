@@ -33,12 +33,12 @@ namespace Box2D.Dynamics.Contacts
             Debug.Assert(m_fixtureB.ShapeType == b2ShapeType.e_polygon);
         }
 
-        public override void Evaluate(b2Manifold manifold, ref b2Transform xfA, ref b2Transform xfB)
+        public override void Evaluate(ref b2Manifold manifold, ref b2Transform xfA, ref b2Transform xfB)
         {
             b2ChainShape chain = (b2ChainShape)m_fixtureA.Shape;
             b2EdgeShape edge;
             edge = chain.GetChildEdge(m_indexA);
-            b2Collision.b2CollideEdgeAndPolygon(manifold, edge, ref xfA,
+            b2Collision.b2CollideEdgeAndPolygon(ref manifold, edge, ref xfA,
                                         (b2PolygonShape)m_fixtureB.Shape, ref xfB);
         }
     }

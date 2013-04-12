@@ -10,7 +10,7 @@ using Random = cocos2d.Random;
 
 namespace tests
 {
-    internal class PhysicsSprite : CCSprite
+    internal class CCPhysicsSprite : CCSprite
     {
         private b2Body m_pBody; // strong ref
 
@@ -20,10 +20,7 @@ namespace tests
             set { base.Dirty = value; }
         }
 
-        public void setPhysicsBody(b2Body body)
-        {
-            m_pBody = body;
-        }
+        public b2Body PhysicsBody { get { return (m_pBody); } set { m_pBody = value; } }
 
         public override CCAffineTransform NodeToParentTransform()
         {
@@ -64,8 +61,8 @@ namespace tests
 
         private const int kTagParentNode = 1;
         private readonly CCTexture2D m_pSpriteTexture; // weak ref
-        private b2World world;
-        private CCSpriteBatchNode batch;
+        private b2World _world;
+        private CCSpriteBatchNode _batch;
 
         public Box2DTestLayer()
         {
@@ -79,9 +76,9 @@ namespace tests
 
             //Set up sprite
             // Use batch node. Faster
-            batch = CCSpriteBatchNode.Create("Images/blocks", 100);
-            m_pSpriteTexture = batch.Texture;
-            AddChild(batch, 0, kTagParentNode);
+            _batch = CCSpriteBatchNode.Create("Images/blocks", 100);
+            m_pSpriteTexture = _batch.Texture;
+            AddChild(_batch, 0, kTagParentNode);
 
             addNewSpriteAtPosition(new CCPoint(s.Width / 2, s.Height / 2));
 
@@ -99,14 +96,14 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             var gravity = new b2Vec2(0.0f, -10.0f);
-            world = new b2World(gravity);
+            _world = new b2World(gravity);
             float debugWidth = s.Width / PTM_RATIO * 2f;
             float debugHeight = s.Height / PTM_RATIO * 2f;
             CCDraw debugDraw = new CCDraw(new b2Vec2(debugWidth / 2f + 10, s.Height - debugHeight - 10), 2);
             debugDraw.AppendFlags(b2DrawFlags.e_shapeBit);
-            world.SetDebugDraw(debugDraw);
-            world.SetAllowSleeping(true);
-            world.SetContinuousPhysics(true);
+            _world.SetDebugDraw(debugDraw);
+            _world.SetAllowSleeping(true);
+            _world.SetContinuousPhysics(true);
 
             //m_debugDraw = new GLESDebugDraw( PTM_RATIO );
             //world->SetDebugDraw(m_debugDraw);
@@ -127,7 +124,7 @@ namespace tests
             def.allowSleep = true;
             def.position = b2Vec2.Zero;
             def.type = b2BodyType.b2_staticBody;
-            b2Body groundBody = world.CreateBody(def);
+            b2Body groundBody = _world.CreateBody(def);
             groundBody.SetActive(true);
 
             // Define the ground box shape.
@@ -156,6 +153,8 @@ namespace tests
             groundBox.Set(new b2Vec2(s.Width / PTM_RATIO, s.Height / PTM_RATIO), new b2Vec2(s.Width / PTM_RATIO, 0));
             fd.shape = groundBox;
             groundBody.CreateFixture(fd);
+
+            // _world.Dump();
         }
 
         public void createResetButton()
@@ -192,7 +191,7 @@ namespace tests
             //kmGLPushMatrix();
 
             CCDrawingPrimitives.Begin();
-            world.DrawDebugData();
+            _world.DrawDebugData();
             CCDrawingPrimitives.End();
 
             //world.DrawDebugData();
@@ -200,18 +199,20 @@ namespace tests
             //kmGLPopMatrix();
         }
 
+        private const int kTagForPhysicsSprite = 99999;
+
         public void addNewSpriteAtPosition(CCPoint p)
         {
-            CCLog.Log("Add sprite #{2} : {0} x {1}", p.X, p.Y, batch.ChildrenCount+1);
+            CCLog.Log("Add sprite #{2} : {0} x {1}", p.X, p.Y, _batch.ChildrenCount+1);
 
             //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
             //just randomly picking one of the images
             int idx = (Random.Float_0_1() > .5 ? 0 : 1);
             int idy = (Random.Float_0_1() > .5 ? 0 : 1);
-            var sprite = new PhysicsSprite();
+            var sprite = new CCPhysicsSprite();
             sprite.InitWithTexture(m_pSpriteTexture, new CCRect(32 * idx, 32 * idy, 32, 32));
 
-            batch.AddChild(sprite);
+            _batch.AddChild(sprite, 0, kTagForPhysicsSprite);
 
             sprite.Position = new CCPoint(p.X, p.Y);
 
@@ -220,47 +221,62 @@ namespace tests
             b2BodyDef def = b2BodyDef.Create();
             def.position = new b2Vec2(p.X / PTM_RATIO, p.Y / PTM_RATIO);
             def.type = b2BodyType.b2_dynamicBody;
-            b2Body body = world.CreateBody(def);
+            b2Body body = _world.CreateBody(def);
             //body.SetActive(true);
             // Define another box shape for our dynamic body.
             var dynamicBox = new b2PolygonShape();
-            dynamicBox.Radius = 5f;
-            dynamicBox.SetAsBox(.5f, .5f); //These are mid points for our 1m box
+            dynamicBox.Radius = 32f / PTM_RATIO;
+            dynamicBox.SetAsBox(dynamicBox.Radius / 2, dynamicBox.Radius/2); //These are mid points for our 1m box
 
             // Define the dynamic body fixture.
             b2FixtureDef fd = b2FixtureDef.Create();
             fd.shape = dynamicBox;
-            fd.friction = 0.3f;
-            fd.density = 1f;
+            fd.friction = CCMacros.CCRandomBetween0And1();
+            fd.density = 10f * CCMacros.CCRandomBetween0And1();
             b2Fixture fixture = body.CreateFixture(fd);
 
-            sprite.setPhysicsBody(body);
+            sprite.PhysicsBody = body;
+
+            // _world.Dump();
         }
 
         public override void Update(float dt)
         {
-            world.Step(dt, 8, 1);
+            _world.Step(dt, 8, 1);
 
-            /*
-            b2Profile profile = world.Profile;
-            CCLog.Log("]-----------[{0:F4}]-----------------------[", profile.step);
-            CCLog.Log("Solve Time = {0:F4}", profile.solve);
-            CCLog.Log("# bodies = {0}", profile.bodyCount);
-            CCLog.Log("# contacts = {0}", profile.contactCount);
-            CCLog.Log("# joints = {0}", profile.jointCount);
-            CCLog.Log("# toi iters = {0}", profile.toiSolverIterations);
-            if (profile.step > 0f)
+            foreach (CCPhysicsSprite sprite in _batch.Children)
             {
-                CCLog.Log("Solve TOI Time = {0:F4} {1:F2}%", profile.solveTOI, profile.solveTOI / profile.step * 100f);
-                CCLog.Log("Solve TOI Advance Time = {0:F4} {1:F2}%", profile.solveTOIAdvance, profile.solveTOIAdvance / profile.step * 100f);
+                if (sprite.Visible && sprite.PhysicsBody.Position.y < 0f)
+                {
+                    _world.DestroyBody(sprite.PhysicsBody);
+                    sprite.Visible = false;
+                }
             }
 
-            CCLog.Log("BroadPhase Time = {0:F4}", profile.broadphase);
-            CCLog.Log("Collision Time = {0:F4}", profile.collide);
-            CCLog.Log("Solve Velocity Time = {0:F4}", profile.solveVelocity);
-            CCLog.Log("Solve Position Time = {0:F4}", profile.solvePosition);
-            CCLog.Log("Step Time = {0:F4}", profile.step);
-             */
+            InputState.Instance.Update(dt);
+            PlayerIndex p;
+            if (InputState.Instance.IsKeyPress(Microsoft.Xna.Framework.Input.Keys.D, PlayerIndex.One, out p))
+            {
+                _world.Dump();
+                b2Profile profile = _world.Profile;
+                CCLog.Log("]-----------[{0:F4}]-----------------------[", profile.step);
+                CCLog.Log("Solve Time = {0:F4}", profile.solve);
+                CCLog.Log("# bodies = {0}", profile.bodyCount);
+                CCLog.Log("# contacts = {0}", profile.contactCount);
+                CCLog.Log("# joints = {0}", profile.jointCount);
+                CCLog.Log("# toi iters = {0}", profile.toiSolverIterations);
+                if (profile.step > 0f)
+                {
+                    CCLog.Log("Solve TOI Time = {0:F4} {1:F2}%", profile.solveTOI, profile.solveTOI / profile.step * 100f);
+                    CCLog.Log("Solve TOI Advance Time = {0:F4} {1:F2}%", profile.solveTOIAdvance, profile.solveTOIAdvance / profile.step * 100f);
+                }
+
+                CCLog.Log("BroadPhase Time = {0:F4}", profile.broadphase);
+                CCLog.Log("Collision Time = {0:F4}", profile.collide);
+                CCLog.Log("Solve Velocity Time = {0:F4}", profile.solveVelocity);
+                CCLog.Log("Solve Position Time = {0:F4}", profile.solvePosition);
+                CCLog.Log("Step Time = {0:F4}", profile.step);
+            }
         }
 
         public override void TouchesEnded(List<CCTouch> touches, CCEvent e)
