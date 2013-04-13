@@ -31,7 +31,7 @@ using Microsoft.Xna.Framework;
 namespace cocos2d
 {
 
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !XBOX
 	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCPointConverter))]
 #endif
     public struct CCPoint
@@ -184,9 +184,9 @@ namespace cocos2d
             return new CCPoint(p.X * value, p.Y * value);
         }
 
-		public static CCPoint Parse(string s) 
-		{
-#if !WINDOWS_PHONE
+		public static CCPoint Parse(string s)
+        {
+#if !WINDOWS_PHONE && !XBOX
 			return (CCPoint)TypeDescriptor.GetConverter(typeof(CCPoint)).ConvertFromString (s);
 #else
             return (CCPointConverter.CCPointFromString(s));
@@ -194,7 +194,7 @@ namespace cocos2d
 		}
     }
 
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !XBOX
 	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCSizeConverter))]
 #endif
     public struct CCSize
@@ -275,9 +275,9 @@ namespace cocos2d
             return (new CCSize(p.Width - f, p.Height - f));
         }
 
-		public static CCSize Parse(string s) 
-		{
-#if !WINDOWS_PHONE
+		public static CCSize Parse(string s)
+        {
+#if !WINDOWS_PHONE && !XBOX
 			return (CCSize)TypeDescriptor.GetConverter(typeof(CCSize)).ConvertFromString (s);
 #else
             return (CCSizeConverter.CCSizeFromString(s));
@@ -285,7 +285,7 @@ namespace cocos2d
 		}
     }
 
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !XBOX
 	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCRectConverter))]
 #endif
     public struct CCRect
@@ -534,9 +534,9 @@ namespace cocos2d
             return String.Format("CCRect : (x={0}, y={1}, width={2}, height={3})", Origin.X, Origin.Y, Size.Width, Size.Height);
         }
 
-		public static CCRect Parse(string s) 
-		{
-#if !WINDOWS_PHONE
+		public static CCRect Parse(string s)
+        {
+#if !WINDOWS_PHONE && !XBOX
 			return (CCRect)TypeDescriptor.GetConverter(typeof(CCRect)).ConvertFromString (s);
 #else
             return (CCRectConverter.CCRectFromString(s));

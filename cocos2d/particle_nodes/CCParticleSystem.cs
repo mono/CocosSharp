@@ -595,8 +595,21 @@ namespace cocos2d
             if (zipInputStream.CanDecompressEntry) {
 
                 MemoryStream zipoutStream = new MemoryStream();
-            
+#if XBOX
+                byte[] buf = new byte[4096];
+                int amt = -1;
+                while (true)
+                {
+                    amt = zipInputStream.Read(buf, 0, buf.Length);
+                    if (amt == -1)
+                    {
+                        break;
+                    }
+                    zipoutStream.Write(buf, 0, amt);
+                }
+#else
                 zipInputStream.CopyTo(zipoutStream);
+#endif
                 outputBytes = zipoutStream.ToArray();
             }
             else {
@@ -607,8 +620,22 @@ namespace cocos2d
 
 
                 MemoryStream zipoutStream = new MemoryStream();
-                
+
+#if XBOX
+                byte[] buf = new byte[4096];
+                int amt = -1;
+                while (true)
+                {
+                    amt = gzipInputStream.Read(buf, 0, buf.Length);
+                    if (amt == -1)
+                    {
+                        break;
+                    }
+                    zipoutStream.Write(buf, 0, amt);
+                }
+#else
                 gzipInputStream.CopyTo(zipoutStream);
+#endif
                 outputBytes = zipoutStream.ToArray();
                 }
                 catch (Exception exc)
