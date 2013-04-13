@@ -121,13 +121,32 @@ namespace cocos2d
                     }
                     catch (Exception)
                     {
+                    }
+                    if(textureXna == null) 
+                    {
                         string srcfile = fileimage;
                         if (srcfile.IndexOf('.') > -1)
                         {
                             // Remove the extension
                             srcfile = srcfile.Substring(0, srcfile.LastIndexOf('.'));
                         }
-                        textureXna = CCApplication.SharedApplication.Content.Load<Texture2D>(srcfile);
+                        try {
+                            textureXna = CCApplication.SharedApplication.Content.Load<Texture2D>(srcfile);
+                        }
+                        catch(Exception) {
+                            if(!srcfile.EndsWith ("-hd")) {
+                                srcfile = srcfile + "-hd";
+                            try 
+                            {
+                                textureXna = CCApplication.SharedApplication.Content.Load<Texture2D>(srcfile);
+                            }
+                            catch(Exception) {
+                            }
+                            }
+                        }
+                    }
+                    if(textureXna == null) {
+                        throw(new ArgumentException("Texture " + fileimage + " was not found."));
                     }
                     bool isInited = texture.InitWithTexture(textureXna);
 
