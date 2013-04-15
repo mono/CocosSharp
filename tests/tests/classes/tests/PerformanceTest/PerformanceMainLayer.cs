@@ -14,7 +14,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCMenu pMenu = CCMenu.Create(null);
+            CCMenu pMenu = new CCMenu(null);
             pMenu.Position = new CCPoint(0, 0);
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 24;

@@ -33,7 +33,7 @@ namespace tests
             CCLabelTTF label = new CCLabelTTF("MainMenu", "arial", 20);
             CCMenuItemLabel pMenuItem = CCMenuItemLabel.Create(label, MainMenuCallback);
 
-            CCMenu pMenu = CCMenu.Create(pMenuItem);
+            CCMenu pMenu = new CCMenu(pMenuItem);
             CCSize s = CCDirector.SharedDirector.WinSize;
             pMenu.Position = CCPoint.Zero;
             pMenuItem.Position = new CCPoint(s.Width - 50, 25);

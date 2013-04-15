@@ -202,7 +202,7 @@ namespace tests
                                                                      CCMenuItemFont.Create("Relative Movement"),
                                                                      CCMenuItemFont.Create("Grouped Movement"));
 
-            CCMenu menu = CCMenu.Create(item1, item2, item3, item4);
+            CCMenu menu = new CCMenu(item1, item2, item3, item4);
 
             menu.Position = new CCPoint(0, 0);
             item1.Position = new CCPoint(s.Width / 2 - 100, 30);

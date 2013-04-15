@@ -39,8 +39,8 @@ namespace tests
         public MenuLayerPriorityTest()
         {
             // Testing empty menu
-            m_pMenu1 = CCMenu.Create();
-            m_pMenu2 = CCMenu.Create();
+            m_pMenu1 = new CCMenu();
+            m_pMenu2 = new CCMenu();
 
 
             // Menu 1

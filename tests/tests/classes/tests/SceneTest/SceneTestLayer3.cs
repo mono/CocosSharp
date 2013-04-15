@@ -23,7 +23,7 @@ namespace tests
             CCMenuItemFont item2 = CCMenuItemFont.Create("(3) Touch to popScene", item1Clicked);
             CCMenuItemFont item3 = CCMenuItemFont.Create("(3) Touch to popToRootScene", item2Clicked);
 
-            CCMenu menu = CCMenu.Create(item1, item2, item3);
+            CCMenu menu = new CCMenu(item1, item2, item3);
             menu.AlignItemsVertically();
 
             AddChild(menu);

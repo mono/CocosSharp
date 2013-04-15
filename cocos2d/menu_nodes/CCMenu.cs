@@ -133,20 +133,6 @@ namespace cocos2d
             set { m_bEnabled = value; }
         }
 
-        [Obsolete("use the parameter ctor instead")]
-        public static CCMenu Create(params CCMenuItem[] items)
-        {
-            var pRet = new CCMenu();
-            pRet.InitWithItems(items);
-            return pRet;
-        }
-        [Obsolete("use the default ctor")]
-        public new static CCMenu Create()
-        {
-            return (new CCMenu());
-//            return Create(null);
-        }
-
         public override bool Init()
         {
             return InitWithArray(null);

@@ -25,7 +25,7 @@ namespace tests
             CCMenuItemFont.FontSize = 24;
             var pMainItem = CCMenuItemFont.Create("Back", toMainLayer);
             pMainItem.Position = new CCPoint(s.Width - 50, 25);
-            var pMenu = CCMenu.Create(pMainItem);
+            var pMenu = new CCMenu(pMainItem);
             pMenu.Position = new CCPoint(0, 0);
 
             if (m_bControlMenuVisible)

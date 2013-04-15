@@ -54,7 +54,7 @@ namespace tests
             m_disabledItem = item3;
             m_disabledItem.Enabled = false;
 
-            CCMenu menu = CCMenu.Create(item1, item2, item3);
+            CCMenu menu = new CCMenu(item1, item2, item3);
             menu.Position = new CCPoint(0, 0);
 
             CCSize s = CCDirector.SharedDirector.WinSize;

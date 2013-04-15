@@ -44,7 +44,7 @@ namespace tests
 	        };
 
 	        // add menu items for tests
-	        m_pItmeMenu = CCMenu.Create(null);
+	        m_pItmeMenu = new CCMenu(null);
 	        CCSize s = CCDirector.SharedDirector.WinSize;
 	        m_nTestCount = testItems.Count<string>();
 

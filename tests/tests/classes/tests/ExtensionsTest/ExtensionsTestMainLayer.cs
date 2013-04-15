@@ -10,7 +10,7 @@ namespace tests.Extensions
 
 			var	s = CCDirector.SharedDirector.WinSize;
 
-			var pMenu = CCMenu.Create();
+			var pMenu = new CCMenu();
 			pMenu.Position = CCPoint.Zero;
 			CCMenuItemFont.FontName = "arial";
 			CCMenuItemFont.FontSize = 24;
