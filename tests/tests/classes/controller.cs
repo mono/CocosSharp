@@ -23,7 +23,7 @@ namespace tests
         {
             // add close menu
             var pCloseItem = new CCMenuItemImage(TestResource.s_pPathClose, TestResource.s_pPathClose, closeCallback);
-            var pMenu = CCMenu.Create(pCloseItem);
+            var pMenu = new CCMenu(pCloseItem);
             var s = CCDirector.SharedDirector.WinSize;
 #if !XBOX && !OUYA
             TouchEnabled = true;
@@ -48,7 +48,7 @@ namespace tests
             AddChild(versionLabel, 20000);
 #endif
             // add menu items for tests
-            m_pItemMenu = CCMenu.Create();
+            m_pItemMenu = new CCMenu();
             for (int i = 0; i < (int)(TestCases.TESTS_COUNT); ++i)
             {
                 var label = new CCLabelTTF(Tests.g_aTestNames[i], "arial", 24);
