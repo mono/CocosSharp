@@ -36,7 +36,7 @@ namespace tests.classes.tests.Box2DTestBet
             CCMenuItemImage item2 = new CCMenuItemImage("Images/r1", "Images/r2", restartCallback);
             CCMenuItemImage item3 = new CCMenuItemImage("Images/f1", "Images/f2", nextCallback);
 
-            CCMenu menu = CCMenu.Create(item1, item2, item3);
+            CCMenu menu = new CCMenu(item1, item2, item3);
 
             menu.Position = CCPoint.Zero;
             item1.Position = new CCPoint(s.Width / 2 - 100, 30);

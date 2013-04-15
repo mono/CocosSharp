@@ -76,7 +76,7 @@ namespace tests
                 CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2,  new SEL_MenuHandler(RestartCallback));
                 CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2,  new SEL_MenuHandler(NextCallback));
 
-                CCMenu menu = CCMenu.Create(item1, item2, item3);
+                CCMenu menu = new CCMenu(item1, item2, item3);
                 menu.Position = new CCPoint();
                 item1.Position = new CCPoint(s.Width / 2 - 100, 30);
                 item2.Position = new CCPoint(s.Width / 2, 30);
@@ -134,7 +134,7 @@ namespace tests
 
 
                 CCMenuItem item = CCMenuItemFont.Create("Rotate Device", new SEL_MenuHandler(RotateDevice));
-                CCMenu menu = CCMenu.Create(item);
+                CCMenu menu = new CCMenu(item);
                 menu.Position = new CCPoint(s.Width / 2, s.Height / 2);
                 AddChild(menu);
 

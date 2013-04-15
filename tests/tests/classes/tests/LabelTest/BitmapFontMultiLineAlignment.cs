@@ -51,7 +51,7 @@ namespace tests
             CCMenuItemFont longSentences = CCMenuItemFont.Create("Long Flowing Sentences", stringChanged);
             CCMenuItemFont lineBreaks = CCMenuItemFont.Create("Short Sentences With Intentional Line Breaks", stringChanged);
             CCMenuItemFont mixed = CCMenuItemFont.Create("Long Sentences Mixed With Intentional Line Breaks", stringChanged);
-            CCMenu stringMenu = CCMenu.Create(longSentences, lineBreaks, mixed);
+            CCMenu stringMenu = new CCMenu(longSentences, lineBreaks, mixed);
             stringMenu.AlignItemsVertically();
 
             longSentences.Color = CCTypes.CCRed;
@@ -65,7 +65,7 @@ namespace tests
             CCMenuItemFont left = CCMenuItemFont.Create("Left", alignmentChanged);
             CCMenuItemFont center = CCMenuItemFont.Create("Center", alignmentChanged);
             CCMenuItemFont right = CCMenuItemFont.Create("Right", alignmentChanged);
-            CCMenu alignmentMenu = CCMenu.Create(left, center, right);
+            CCMenu alignmentMenu = new CCMenu(left, center, right);
             alignmentMenu.AlignItemsHorizontallyWithPadding(alignmentItemPadding);
 
             center.Color = CCTypes.CCRed;

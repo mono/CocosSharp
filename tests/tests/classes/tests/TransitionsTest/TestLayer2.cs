@@ -37,7 +37,7 @@ namespace tests
             CCMenuItemImage item2 = new CCMenuItemImage(TransitionsTestScene.s_pPathR1, TransitionsTestScene.s_pPathR2, restartCallback);
             CCMenuItemImage item3 = new CCMenuItemImage(TransitionsTestScene.s_pPathF1, TransitionsTestScene.s_pPathF2, nextCallback);
 
-            CCMenu menu = CCMenu.Create(item1, item2, item3);
+            CCMenu menu = new CCMenu(item1, item2, item3);
 
             menu.Position = CCPoint.Zero;
             item1.Position = new CCPoint(x / 2 - item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);

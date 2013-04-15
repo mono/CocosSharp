@@ -34,7 +34,7 @@ namespace tests
                 AddChild(sprite_b);
 
                 CCMenuItemLabel label = CCMenuItemLabel.Create(new CCLabelTTF("Flip Me", "Helvetica", 24), callBack);
-                CCMenu menu = CCMenu.Create(label);
+                CCMenu menu = new CCMenu(label);
                 menu.Position = new CCPoint(s.Width - 200.0f, 50.0f);
                 AddChild(menu);
 

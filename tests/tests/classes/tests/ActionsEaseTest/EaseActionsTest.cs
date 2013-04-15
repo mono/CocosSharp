@@ -42,7 +42,7 @@ namespace tests
             var item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
             var item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
 
-            var menu = CCMenu.Create(item1, item2, item3);
+            var menu = new CCMenu(item1, item2, item3);
             menu.Position = CCPoint.Zero;
             item1.Position = new CCPoint(s.Width / 2 - 100, 30);
             item2.Position = new CCPoint(s.Width / 2, 30);

@@ -92,7 +92,7 @@ namespace tests
             var item2 = new CCMenuItemImage(s_pPathR1, s_pPathR2, restartCallback);
             var item3 = new CCMenuItemImage(s_pPathF1, s_pPathF2, nextCallback);
 
-            var menu = CCMenu.Create(item1, item2, item3);
+            var menu = new CCMenu(item1, item2, item3);
 
             menu.Position = CCPoint.Zero;
             item1.Position = new CCPoint(s.Width / 2 - item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
@@ -106,7 +106,7 @@ namespace tests
                                                    CCMenuItemFont.Create("Use Fast Mode")
                 );
 
-            var menuMode = CCMenu.Create(itemMode);
+            var menuMode = new CCMenu(itemMode);
             AddChild(menuMode);
 
             menuMode.Position = new CCPoint(s.Width / 2, s.Height / 4);

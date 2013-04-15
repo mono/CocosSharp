@@ -101,7 +101,7 @@ namespace tests
                 item2.ScaleX = 0.5f;
                 item3.ScaleX = 0.5f;
 
-                CCMenu menu = CCMenu.Create(item1, item2, item3);
+                CCMenu menu = new CCMenu(item1, item2, item3);
 
                 menu.Tag = (int)kTag.kTagMenu;
 
