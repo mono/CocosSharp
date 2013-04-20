@@ -392,6 +392,15 @@
     <Compile Include="support\Serialization\CCSerialization.cs" />
     <Compile Include="cocoa\ICopyable.cs" />
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.Android.csproj">
       <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
@@ -406,13 +415,4 @@
       <Name>MonoGame.Framework.Android</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
-  <ItemGroup />
 </Project>
