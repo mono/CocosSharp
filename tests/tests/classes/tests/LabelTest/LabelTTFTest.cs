@@ -21,7 +21,7 @@ namespace tests
             AddChild(colorLayer);
 
             CCMenuItemFont.FontSize = 30;
-            CCMenu menu = CCMenu.Create(
+            CCMenu menu = new CCMenu(
                 CCMenuItemFont.Create("Left", setAlignmentLeft),
                 CCMenuItemFont.Create("Center", setAlignmentCenter),
                 CCMenuItemFont.Create("Right", setAlignmentRight)
@@ -30,7 +30,7 @@ namespace tests
             menu.Position = new CCPoint(50, s.Height / 2 - 20);
             AddChild(menu);
 
-            menu = CCMenu.Create(
+            menu = new CCMenu(
                 CCMenuItemFont.Create("Top", setAlignmentTop),
                 CCMenuItemFont.Create("Middle", setAlignmentMiddle),
                 CCMenuItemFont.Create("Bottom", setAlignmentBottom)

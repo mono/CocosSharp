@@ -87,7 +87,7 @@ namespace tests
             CCLabelBMFont label = CCLabelBMFont.Create("go back", "fonts/bitmapFontTest3.fnt");
             CCMenuItemLabel back = CCMenuItemLabel.Create(label, this.backCallback);
 
-            CCMenu menu = CCMenu.Create(
+            CCMenu menu = new CCMenu(
                           title1, title2,
                           item1, item2,
                           title3, title4,

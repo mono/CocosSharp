@@ -39,7 +39,7 @@ namespace tests.Extensions
 			// Back Menu
 			var itemBack = CCMenuItemFont.Create("Back", toExtensionsMainLayer);
 			itemBack.Position = new CCPoint(winSize.Width - 50, 25);
-			var menuBack = CCMenu.Create(itemBack);
+			var menuBack = new CCMenu(itemBack);
 			menuBack.Position = CCPoint.Zero;
 			AddChild(menuBack);
 

@@ -13,7 +13,7 @@ namespace tests
             base.OnEnter();
 
             CCSize s = CCDirector.SharedDirector.WinSize;
-            m_pItmeMenu = CCMenu.Create(null);
+            m_pItmeMenu = new CCMenu(null);
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 24;
             for (int i = 0; i < BugsTestScene.MAX_COUNT; ++i)

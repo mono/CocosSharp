@@ -19,7 +19,7 @@ namespace tests
             CCMenuItemFont pMainItem = CCMenuItemFont.Create("Back",
                 backCallback);
             pMainItem.Position = new CCPoint(s.Width - 50, 25);
-            CCMenu pMenu = CCMenu.Create(pMainItem, null);
+            CCMenu pMenu = new CCMenu(pMainItem, null);
             pMenu.Position = new CCPoint(0, 0);
             AddChild(pMenu);
         }

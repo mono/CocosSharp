@@ -33,7 +33,7 @@ namespace tests
             CCMenuItemFont increase = CCMenuItemFont.Create(" + ", onIncrease);
             increase.Color = new CCColor3B(0, 200, 20);
 
-            CCMenu menu = CCMenu.Create(decrease, increase);
+            CCMenu menu = new CCMenu(decrease, increase);
             menu.AlignItemsHorizontally();
             menu.Position = new CCPoint(s.Width / 2, s.Height - 65);
             AddChild(menu, 1);
@@ -49,7 +49,7 @@ namespace tests
 
             // Sub Tests
             CCMenuItemFont.FontSize = 32;
-            CCMenu pSubMenu = CCMenu.Create(null);
+            CCMenu pSubMenu = new CCMenu(null);
             for (int i = 1; i <= 9; ++i)
             {
                 //char str[10] = {0};

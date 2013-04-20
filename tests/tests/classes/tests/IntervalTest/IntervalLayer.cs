@@ -68,7 +68,7 @@ namespace tests
 
             // pause button
             CCMenuItem item1 = CCMenuItemFont.Create("Pause", onPause);
-            CCMenu menu = CCMenu.Create(item1);
+            CCMenu menu = new CCMenu(item1);
             menu.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             AddChild(menu);

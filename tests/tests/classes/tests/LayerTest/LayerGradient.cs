@@ -23,7 +23,7 @@ namespace tests
             CCMenuItemLabel item2 = CCMenuItemLabel.Create(label2);
             CCMenuItemToggle item = CCMenuItemToggle.Create((toggleItem), item1, item2);
 
-            CCMenu menu = CCMenu.Create(item);
+            CCMenu menu = new CCMenu(item);
             AddChild(menu);
             CCSize s = CCDirector.SharedDirector.WinSize;
             menu.Position = (new CCPoint(s.Width / 2, 100));

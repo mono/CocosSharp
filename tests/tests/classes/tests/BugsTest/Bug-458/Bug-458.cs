@@ -30,7 +30,7 @@ namespace tests
 
                 CCLayerColor layer2 = CCLayerColor.Create(new CCColor4B(255, 0, 0, 255), 100, 100);
                 CCMenuItemSprite sprite2 = new CCMenuItemSprite(layer, layer2, this, selectAnswer);
-                CCMenu menu = CCMenu.Create(sprite, sprite2, null);
+                CCMenu menu = new CCMenu(sprite, sprite2, null);
                 menu.AlignItemsVerticallyWithPadding(100);
                 menu.Position = new CCPoint(size.Width / 2, size.Height / 2);
 

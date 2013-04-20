@@ -48,7 +48,7 @@ namespace tests
                 CCLabelTTF label = new CCLabelTTF("Hello World", "Marker Felt", 64);
                 CCMenuItem item1 = CCMenuItemFont.Create("restart", restart);
 
-                CCMenu menu = CCMenu.Create(item1);
+                CCMenu menu = new CCMenu(item1);
                 menu.AlignItemsVertically();
                 menu.Position = new CCPoint(size.Width / 2, 100);
                 AddChild(menu);

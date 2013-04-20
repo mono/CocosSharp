@@ -40,7 +40,7 @@ namespace tests
             CCMenuItem item1 = CCMenuItemFont.Create("One", menuCallback);
             CCLog.Log("MenuItemFont: %p", item1);
             CCMenuItem item2 = CCMenuItemFont.Create("Two", menuCallback);
-            CCMenu menu = CCMenu.Create(item1, item2);
+            CCMenu menu = new CCMenu(item1, item2);
             menu.AlignItemsVertically();
 
             float x = Random.Next() * 50;
