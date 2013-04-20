@@ -9,8 +9,6 @@ namespace Box2D.Common
     public struct b2Rot
     {
 
-        public static b2Rot Default = b2Rot.Create();
-        
         public static b2Rot Create()
         {
             var rot = new b2Rot();

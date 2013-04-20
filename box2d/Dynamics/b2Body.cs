@@ -58,7 +58,7 @@ namespace Box2D.Dynamics
             set { m_islandIndex = value; }
         }
 
-        protected b2Transform m_xf = b2Transform.Default;        // the body origin transform
+        protected b2Transform m_xf = b2Transform.Create();        // the body origin transform
         public b2Transform XF
         {
             get { return (m_xf); }
@@ -74,7 +74,7 @@ namespace Box2D.Dynamics
             get { return (m_xf.p); }
         }
 
-        public b2Sweep Sweep = b2Sweep.Default;        // the swept motion for CCD
+        public b2Sweep Sweep = b2Sweep.Create();        // the swept motion for CCD
 /*        public b2Sweep Sweep
         {
             get { return (m_sweep); }
@@ -630,7 +630,7 @@ namespace Box2D.Dynamics
 
         public virtual b2Fixture CreateFixture(b2Shape shape, float density)
         {
-            b2FixtureDef def = b2FixtureDef.Default;
+            b2FixtureDef def = b2FixtureDef.Create();
             def.shape = shape;
             def.density = density;
             return CreateFixture(def);
@@ -862,7 +862,7 @@ namespace Box2D.Dynamics
 
         public virtual void SynchronizeFixtures()
         {
-            b2Transform xf1 = b2Transform.Default;
+            b2Transform xf1 = b2Transform.Create();
             xf1.q.Set(Sweep.a0);
             xf1.p = Sweep.c0 - b2Math.b2Mul(xf1.q, Sweep.localCenter);
 

@@ -138,7 +138,7 @@ namespace tests
             // Call the body factory which allocates memory for the ground body
             // from a pool and creates the ground box shape (also from a pool).
             // The body is also added to the world.
-            b2BodyDef def = b2BodyDef.Default;
+            b2BodyDef def = b2BodyDef.Create ();
             def.allowSleep = true;
             def.position = b2Vec2.Zero;
             def.type = b2BodyType.b2_staticBody;

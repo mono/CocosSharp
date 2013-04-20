@@ -11,8 +11,6 @@ namespace Box2D.Dynamics
     public struct b2BodyDef
     {
 
-		public static b2BodyDef Default = b2BodyDef.Create();
-
 		public void Defaults() 
 		{
 			userData = null;
