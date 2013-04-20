@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{58B144AA-9409-439b-AEB0-144A1EA483E9}</ProjectGuid>
+    <ProjectGuid>{58B144AA-9409-439B-AEB0-144A1EA483E9}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -13,6 +13,7 @@
     <AssemblyName>cocos2d-xna</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -170,6 +171,7 @@
     <Compile Include="effects\CCGrid3D.cs" />
     <Compile Include="effects\CCGridBase.cs" />
     <Compile Include="effects\CCTiledGrid3D.cs" />
+    <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="extentions\CCBReader\CCBAnimationManager.cs" />
     <Compile Include="extentions\CCBReader\CCBFileLoader.cs" />
     <Compile Include="extentions\CCBReader\CCBKeyframe.cs" />
@@ -335,6 +337,7 @@
     <Compile Include="sprite_nodes\CCSpriteBatchNode.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrame.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrameCache.cs" />
+    <Compile Include="support\CCUserDefault.cs" />
     <Compile Include="support\CCUtils.cs" />
     <Compile Include="support\Converters\CCRectConverter.cs" />
     <Compile Include="support\Converters\CCPointConverter.cs" />
@@ -388,13 +391,17 @@
     <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
       <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
-      <Name>MonoGame.Framework.Android</Name>
+      <Name>MonoGame.Framework.Ouya</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
+    <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
       <Project>{565129E0-4EE5-4F6F-B403-C3484C9740BE}</Project>
       <Name>Lidgren.Network.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\box2d\box2d.Android.csproj">
+      <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
+      <Name>box2d.Android</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

@@ -138,7 +138,7 @@ namespace tests
             // Call the body factory which allocates memory for the ground body
             // from a pool and creates the ground box shape (also from a pool).
             // The body is also added to the world.
-            b2BodyDef def = b2BodyDef.Default;
+            b2BodyDef def = b2BodyDef.Create();
             def.allowSleep = true;
             def.position = b2Vec2.Zero;
             def.type = b2BodyType.b2_staticBody;
@@ -240,17 +240,15 @@ namespace tests
             def.position = new b2Vec2(p.X / PTM_RATIO, p.Y / PTM_RATIO);
             def.type = b2BodyType.b2_dynamicBody;
             b2Body body = _world.CreateBody(def);
-            //body.SetActive(true);
             // Define another box shape for our dynamic body.
             var dynamicBox = new b2PolygonShape();
-            dynamicBox.Radius = 32f / PTM_RATIO;
-            dynamicBox.SetAsBox(dynamicBox.Radius / 2, dynamicBox.Radius/2); //These are mid points for our 1m box
+            dynamicBox.SetAsBox(.5f, .5f); //These are mid points for our 1m box
 
             // Define the dynamic body fixture.
             b2FixtureDef fd = b2FixtureDef.Create();
             fd.shape = dynamicBox;
-            fd.friction = CCMacros.CCRandomBetween0And1();
-            fd.density = 10f * CCMacros.CCRandomBetween0And1();
+            fd.density = 1f;
+            fd.friction = 0.3f;
             b2Fixture fixture = body.CreateFixture(fd);
 
             sprite.PhysicsBody = body;

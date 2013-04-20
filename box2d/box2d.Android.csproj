@@ -11,6 +11,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <RootNamespace>Box2D</RootNamespace>
     <AssemblyName>box2d</AssemblyName>
+    <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

@@ -52,7 +52,7 @@ namespace Box2D.Dynamics.Contacts
 
     public struct b2ContactVelocityConstraint
     {
-        public static b2ContactVelocityConstraint Default = b2ContactVelocityConstraint.Create();
+//        public static b2ContactVelocityConstraint Default = b2ContactVelocityConstraint.Create();
         
         public void Defaults() 
         {
@@ -93,7 +93,7 @@ namespace Box2D.Dynamics.Contacts
 
     public struct b2ContactPositionConstraint
     {
-        public static b2ContactPositionConstraint Default = b2ContactPositionConstraint.Create();
+//        public static b2ContactPositionConstraint Default = b2ContactPositionConstraint.Create();
         
         public void Defaults() 
         {

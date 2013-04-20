@@ -19,6 +19,7 @@ namespace Box2D.Common
             transform.q = b2Rot.Default;
             return transform;
         }
+
         /// The default ructor does nothing.
         /*public b2Transform()
         {

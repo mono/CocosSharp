@@ -630,7 +630,7 @@ namespace Box2D.Dynamics
 
         public virtual b2Fixture CreateFixture(b2Shape shape, float density)
         {
-            b2FixtureDef def = b2FixtureDef.Default;
+            b2FixtureDef def = b2FixtureDef.Create();
             def.shape = shape;
             def.density = density;
             return CreateFixture(def);
