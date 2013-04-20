@@ -10,13 +10,11 @@ namespace Box2D.Common
     public struct b2Transform
     {
 
-        public static b2Transform Default = b2Transform.Create();
-        
         public static b2Transform Create()
         {
-            var transform = b2Transform.Default;
+            var transform = new b2Transform();
             transform.p = b2Vec2.Zero;
-            transform.q = b2Rot.Default;
+            transform.q = b2Rot.Create();
             return transform;
         }
 

@@ -1095,6 +1095,9 @@
     <None Include="Info.iOS.plist">
       <Link>Info.plist</Link>
     </None>
+    <None Include="Content\fonts\MarkerFelt-22.xnb" />
+    <None Include="Content\fonts\MarkerFelt-18.xnb" />
+    <None Include="Content\fonts\MarkerFelt-16.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />
@@ -1518,6 +1521,10 @@
       <Project>{DB8508BB-9849-4CC2-BC0F-8EB5DACB3C47}</Project>
       <Name>MonoGame.Framework.iOS</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\box2d\box2d.iOS.csproj">
+      <Project>{7877D4F9-F781-465A-9C1F-D113F246A994}</Project>
+      <Name>box2d.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(ProgramFiles)\MSBuild\MonoTouch\Novell.MonoTouch.Common.targets" Condition="'$(windir)' != '' " />
@@ -1543,9 +1550,6 @@
       </Target>
     -->
   <ItemGroup>
-    <BundleResource Include="Content\fonts\MarkerFelt-18.xnb" />
-    <BundleResource Include="Content\fonts\MarkerFelt-22.xnb" />
-    <BundleResource Include="Content\fonts\MarkerFelt-16.xnb" />
     <BundleResource Include="Content\fonts\Marker Felt.xnb" />
   </ItemGroup>
 </Project>

@@ -12,7 +12,6 @@ namespace Box2D.Common
     /// we must interpolate the center of mass position.
     public struct b2Sweep
     {
-        public static b2Sweep Default = b2Sweep.Create();
         public void Defaults()
         {
             localCenter = new b2Vec2();

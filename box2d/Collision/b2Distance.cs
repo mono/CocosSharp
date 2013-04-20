@@ -77,8 +77,6 @@ namespace Box2D.Collision
 	
 	public struct b2SimplexVertex
 	{
-        public static b2SimplexVertex Default = b2SimplexVertex.Create();
-
         public static b2SimplexVertex Create()
         {
             return (new b2SimplexVertex());
