@@ -5,13 +5,23 @@ namespace cocos2d
     {
         protected float m_fRate;
 
+        public CCEaseRateAction (CCActionInterval pAction, float fRate)
+        {
+            InitWithAction(pAction, fRate);
+        }
+
+        public CCEaseRateAction (CCEaseRateAction easeRateAction) : base (easeRateAction)
+        {
+            InitWithAction((CCActionInterval) (easeRateAction.m_pOther.Copy()), easeRateAction.m_fRate);
+        }
+
         public float Rate
         {
             get { return m_fRate; }
             set { m_fRate = value; }
         }
 
-        public bool InitWithAction(CCActionInterval pAction, float fRate)
+        protected bool InitWithAction(CCActionInterval pAction, float fRate)
         {
             if (base.InitWithAction(pAction))
             {
@@ -24,33 +34,27 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCEaseRateAction pCopy;
 
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCEaseRateAction) (pZone);
+                var pCopy = (CCEaseRateAction) (pZone);
+                pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()), m_fRate);
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCEaseRateAction();
+                return new CCEaseRateAction(this);
             }
 
-            pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()), m_fRate);
-
-            return pCopy;
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create((CCActionInterval) m_pOther.Reverse(), 1 / m_fRate);
+            return new CCEaseRateAction((CCActionInterval) m_pOther.Reverse(), 1 / m_fRate);
         }
 
-        public static CCEaseRateAction Create(CCActionInterval pAction, float fRate)
-        {
-            var pRet = new CCEaseRateAction();
-            pRet.InitWithAction(pAction, fRate);
-            return pRet;
-        }
+
     }
 }

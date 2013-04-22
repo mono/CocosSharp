@@ -92,10 +92,10 @@ namespace tests
             var move = new CCMoveBy (3, new CCPoint(size.Width - 130, 0));
             var move_back = (CCActionInterval) move.Reverse();
 
-            var move_ease_in = CCEaseIn.Create((CCActionInterval) move.Copy(), 2.5f);
+            var move_ease_in = new CCEaseIn((CCActionInterval) move.Copy(), 2.5f);
             var move_ease_in_back = move_ease_in.Reverse();
 
-            var move_ease_out = CCEaseOut.Create((CCActionInterval) move.Copy(), 2.5f);
+            var move_ease_out = new CCEaseOut((CCActionInterval) move.Copy(), 2.5f);
             var move_ease_out_back = move_ease_out.Reverse();
 
             var delay = new CCDelayTime (0.25f);
@@ -141,13 +141,13 @@ namespace tests
 
             var move = new CCMoveBy (3, new CCPoint(size.Width - 130, 0));
 
-            var move_ease_inout1 = CCEaseInOut.Create((CCActionInterval) move.Copy(), 0.65f);
+            var move_ease_inout1 = new CCEaseInOut((CCActionInterval) move.Copy(), 0.65f);
             var move_ease_inout_back1 = move_ease_inout1.Reverse();
 
-            var move_ease_inout2 = CCEaseInOut.Create((CCActionInterval) move.Copy(), 1.35f);
+            var move_ease_inout2 = new CCEaseInOut((CCActionInterval) move.Copy(), 1.35f);
             var move_ease_inout_back2 = move_ease_inout2.Reverse();
 
-            var move_ease_inout3 = CCEaseInOut.Create((CCActionInterval) move.Copy(), 1.0f);
+            var move_ease_inout3 = new CCEaseInOut((CCActionInterval) move.Copy(), 1.0f);
             var move_ease_inout_back3 = move_ease_inout3.Reverse() as CCActionInterval;
 
             var delay = new CCDelayTime (0.25f);

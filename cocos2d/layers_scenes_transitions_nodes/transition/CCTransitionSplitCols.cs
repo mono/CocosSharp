@@ -35,7 +35,7 @@ namespace cocos2d
 
         public virtual CCFiniteTimeAction EaseAction(CCActionInterval action)
         {
-            return CCEaseInOut.Create(action, 3.0f);
+            return new CCEaseInOut(action, 3.0f);
         }
 
         #endregion
