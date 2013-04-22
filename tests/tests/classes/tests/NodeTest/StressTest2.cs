@@ -14,7 +14,7 @@ namespace tests
             sp1.Position = (new CCPoint(80, s.Height / 2));
 
             CCActionInterval move = new CCMoveBy (3, new CCPoint(350, 0));
-            CCActionInterval move_ease_inout3 = CCEaseInOut.Create((CCActionInterval) (move.Copy()), 2.0f);
+            CCActionInterval move_ease_inout3 = new CCEaseInOut((CCActionInterval) (move.Copy()), 2.0f);
             var move_ease_inout_back3 = (CCActionInterval) move_ease_inout3.Reverse();
             CCFiniteTimeAction seq3 = CCSequence.FromActions(move_ease_inout3, move_ease_inout_back3);
             sp1.RunAction(new CCRepeatForever ((CCActionInterval) seq3));
