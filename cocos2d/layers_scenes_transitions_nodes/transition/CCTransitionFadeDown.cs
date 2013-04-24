@@ -29,18 +29,12 @@ namespace cocos2d
     {
         public override CCActionInterval CreateAction(CCGridSize size)
         {
-            return CCFadeOutDownTiles.Create(size, m_fDuration);
+            return new CCFadeOutDownTiles(size, m_fDuration);
         }
 
-        public new static CCTransitionFadeDown Create(float t, CCScene scene)
+        public CCTransitionFadeDown(float t, CCScene scene) : base(t, scene)
         {
-            var pScene = new CCTransitionFadeDown();
-            if (pScene.InitWithDuration(t, scene))
-            {
-                return pScene;
-            }
-
-            return null;
+            InitWithDuration(t, scene);
         }
     }
 }

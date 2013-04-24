@@ -33,7 +33,7 @@ namespace cocos2d
         /// <summary>
         ///  initializes the action with a range, whether or not to shake Z vertices, a grid size, and duration
         /// </summary>
-        public bool InitWithRange(int nRange, bool bShakeZ, CCGridSize gridSize,
+        protected virtual bool InitWithRange(int nRange, bool bShakeZ, CCGridSize gridSize,
                                   float duration)
         {
             if (base.InitWithSize(gridSize, duration))
@@ -102,14 +102,16 @@ namespace cocos2d
             }
         }
 
+        public CCShakyTiles3D()
+        {
+        }
+
         /// <summary>
         /// creates the action with a range, whether or not to shake Z vertices, a grid size, and duration
         /// </summary>
-        public static CCShakyTiles3D Create(int nRange, bool bShakeZ, CCGridSize gridSize, float duration)
+        public CCShakyTiles3D(int nRange, bool bShakeZ, CCGridSize gridSize, float duration) : base(duration)
         {
-            var pAction = new CCShakyTiles3D();
-            pAction.InitWithRange(nRange, bShakeZ, gridSize, duration);
-            return pAction;
+            InitWithRange(nRange, bShakeZ, gridSize, duration);
         }
     }
 }

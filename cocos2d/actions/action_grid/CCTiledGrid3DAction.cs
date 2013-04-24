@@ -7,6 +7,15 @@ namespace cocos2d
     {
         private CCTiledGrid3D m_pGrid;
 
+        public CCTiledGrid3DAction()
+        {
+        }
+
+        public CCTiledGrid3DAction(float duration)
+            : base(duration)
+        {
+        }
+
         public CCQuad3 Tile(CCGridSize pos)
         {
             return m_pGrid.Tile(pos);
@@ -26,7 +35,7 @@ namespace cocos2d
         {
             get
             {
-                m_pGrid = CCTiledGrid3D.Create(m_sGridSize);
+                m_pGrid = new CCTiledGrid3D(m_sGridSize);
                 return m_pGrid;
             }
             set

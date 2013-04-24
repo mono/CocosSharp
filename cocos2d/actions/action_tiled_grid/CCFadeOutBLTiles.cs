@@ -40,14 +40,16 @@ namespace cocos2d
             return (float) Math.Pow((n.X + n.Y) / (pos.X + pos.Y), 6);
         }
 
+        public CCFadeOutBLTiles()  
+        {
+        }
+
         /// <summary>
         /// creates the action with the grid size and the duration
         /// </summary>
-        public new static CCFadeOutBLTiles Create(CCGridSize gridSize, float time)
+        public CCFadeOutBLTiles(CCGridSize gridSize, float time) : base(time)
         {
-            var pAction = new CCFadeOutBLTiles();
-            pAction.InitWithSize(gridSize, time);
-            return pAction;
+            InitWithSize(gridSize, time);
         }
     }
 }

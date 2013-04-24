@@ -56,7 +56,7 @@ namespace cocos2d
         /// <summary>
         ///  initializes the action with a number of waves, the waves amplitude, the grid size and the duration 
         /// </summary>
-        public bool InitWithWaves(int wav, float amp, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithWaves(int wav, float amp, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -111,14 +111,16 @@ namespace cocos2d
             }
         }
 
+        public CCWavesTiles3D() 
+        {
+        }
+
         /// <summary>
         /// creates the action with a number of waves, the waves amplitude, the grid size and the duration
         /// </summary>
-        public static CCWavesTiles3D Create(int wav, float amp, CCGridSize gridSize, float duration)
+        public CCWavesTiles3D(int wav, float amp, CCGridSize gridSize, float duration)  :base(duration)
         {
-            var pAction = new CCWavesTiles3D();
-            pAction.InitWithWaves(wav, amp, gridSize, duration);
-            return pAction;
+            InitWithWaves(wav, amp, gridSize, duration);
         }
     }
 }

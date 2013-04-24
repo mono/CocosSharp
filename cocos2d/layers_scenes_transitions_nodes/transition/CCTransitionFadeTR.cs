@@ -42,7 +42,7 @@ namespace cocos2d
 
         public virtual CCActionInterval CreateAction(CCGridSize size)
         {
-            return CCFadeOutTRTiles.Create(size, m_fDuration);
+            return new CCFadeOutTRTiles(size, m_fDuration);
         }
 
         public override void OnEnter()
@@ -67,11 +67,9 @@ namespace cocos2d
                 );
         }
 
-        public new static CCTransitionFadeTR Create(float t, CCScene scene)
+        public CCTransitionFadeTR(float t, CCScene scene) : base(t, scene)
         {
-            var pScene = new CCTransitionFadeTR();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
+            InitWithDuration(t, scene);
         }
 
         protected override void SceneOrder()

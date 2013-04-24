@@ -44,14 +44,16 @@ namespace cocos2d
             return (float) Math.Pow(n.Y / pos.Y, 6);
         }
 
+        public CCFadeOutDownTiles()
+        {
+        }
+
         /// <summary>
         ///  creates the action with the grid size and the duration 
         /// </summary>
-        public new static CCFadeOutDownTiles Create(CCGridSize gridSize, float time)
+        public CCFadeOutDownTiles(CCGridSize gridSize, float time) : base(gridSize, time)
         {
-            var pAction = new CCFadeOutDownTiles();
-            pAction.InitWithSize(gridSize, time);
-            return pAction;
+            InitWithSize(gridSize, time);
         }
     }
 }

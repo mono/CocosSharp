@@ -73,15 +73,22 @@ namespace cocos2d
 			set { }
 			get { return null; }
 		}
-		
-		public static CCGridAction Create(CCGridSize gridSize, float duration)
+
+        public CCGridAction()
+        {
+        }
+
+        public CCGridAction(float duration)
+            : base(duration)
+        {
+        }
+
+		public CCGridAction(CCGridSize gridSize, float duration) : base(duration)
 		{
-			var pAction = new CCGridAction();
-			pAction.InitWithSize(gridSize, duration);
-			return pAction;
+			InitWithSize(gridSize, duration);
 		}
 		
-		public virtual bool InitWithSize(CCGridSize gridSize, float duration)
+		protected virtual bool InitWithSize(CCGridSize gridSize, float duration)
 		{
 			if (base.InitWithDuration(duration))
 			{

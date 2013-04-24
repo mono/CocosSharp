@@ -48,7 +48,7 @@ namespace cocos2d
             var x = (int) (12 * aspect);
             int y = 12;
 
-            CCTurnOffTiles toff = CCTurnOffTiles.Create(new CCGridSize(x, y), m_fDuration);
+            CCTurnOffTiles toff = new CCTurnOffTiles(new CCGridSize(x, y), m_fDuration);
             CCFiniteTimeAction action = EaseAction(toff);
             m_pOutScene.RunAction
                 (

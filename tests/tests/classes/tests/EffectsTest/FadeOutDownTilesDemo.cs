@@ -10,7 +10,7 @@ namespace tests
     {
         public new static CCActionInterval actionWithDuration(float t)
         {
-            CCFadeOutDownTiles fadeout = CCFadeOutDownTiles.Create(new CCGridSize(16, 12), t);
+            CCFadeOutDownTiles fadeout = new CCFadeOutDownTiles(new CCGridSize(16, 12), t);
             CCFiniteTimeAction back = fadeout.Reverse();
             CCDelayTime delay = new CCDelayTime (0.5f);
 

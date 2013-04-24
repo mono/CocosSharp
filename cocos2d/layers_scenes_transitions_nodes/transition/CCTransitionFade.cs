@@ -49,7 +49,7 @@ namespace cocos2d
         /// <summary>
         /// initializes the transition with a duration and with an RGB color 
         /// </summary>
-        public virtual bool InitWithDuration(float duration, CCScene scene, CCColor3B color)
+        protected virtual bool InitWithDuration(float duration, CCScene scene, CCColor3B color)
         {
             if (base.InitWithDuration(duration, scene))
             {
@@ -58,7 +58,7 @@ namespace cocos2d
             return true;
         }
 
-        public override bool InitWithDuration(float t, CCScene scene)
+        protected override bool InitWithDuration(float t, CCScene scene)
         {
             InitWithDuration(t, scene, new CCColor3B(Color.Black));
             return true;

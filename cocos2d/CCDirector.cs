@@ -967,7 +967,7 @@ namespace cocos2d
                 if (s != null)
                 {
                     m_pNextScene.Visible = true;
-                    s.InitWithDuration(t, m_pNextScene);
+                    s.Reset(t, m_pNextScene);
                     m_pobScenesStack.Add(s);
                     m_pNextScene = s;
                 }

@@ -108,14 +108,21 @@ namespace cocos2d
             }
         }
 
+        public CCFadeOutTRTiles()
+        {
+        }
+
+        public CCFadeOutTRTiles(float duration)
+            : base(duration)
+        {
+        }
+
         /// <summary>
         /// creates the action with the grid size and the duration
         /// </summary>
-        public new static CCFadeOutTRTiles Create(CCGridSize gridSize, float time)
+        public CCFadeOutTRTiles(CCGridSize gridSize, float time) : base(time)
         {
-            var pAction = new CCFadeOutTRTiles();
-            pAction.InitWithSize(gridSize, time);
-            return pAction;
+            InitWithSize(gridSize, time);
         }
     }
 }

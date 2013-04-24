@@ -33,7 +33,7 @@ namespace cocos2d
         /// <summary>
         /// initializes the action with the number of rows to split and the duration
         /// </summary>
-        public bool InitWithRows(int nRows, float duration)
+        protected virtual bool InitWithRows(int nRows, float duration)
         {
             m_nRows = nRows;
 
@@ -89,14 +89,16 @@ namespace cocos2d
             m_winSize = CCDirector.SharedDirector.WinSizeInPixels;
         }
 
+        public CCSplitRows()
+        {
+        }
+
         /// <summary>
         ///  creates the action with the number of rows to split and the duration 
         /// </summary>
-        public static CCSplitRows Create(int nRows, float duration)
+        public CCSplitRows(int nRows, float duration) : base(duration)
         {
-            var pAction = new CCSplitRows();
-            pAction.InitWithRows(nRows, duration);
-            return pAction;
+            InitWithRows(nRows, duration);
         }
     }
 }

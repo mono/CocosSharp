@@ -13,7 +13,7 @@ namespace cocos2d
             return InitWithSize(new CCGridSize(1, 1), duration);
         }
 
-        public override bool InitWithSize(CCGridSize gridSize, float duration)
+        protected override bool InitWithSize(CCGridSize gridSize, float duration)
         {
             if (gridSize.X != 1 || gridSize.Y != 1)
             {

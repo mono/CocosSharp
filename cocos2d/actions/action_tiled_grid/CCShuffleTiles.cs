@@ -39,7 +39,7 @@ namespace cocos2d
         /// <summary>
         /// initializes the action with a random seed, the grid size and the duration
         /// </summary>
-        public bool InitWithSeed(int s, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithSeed(int s, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -179,14 +179,16 @@ namespace cocos2d
             return pCopy;
         }
 
+        public CCShuffleTiles()
+        {
+        }
+
         /// <summary>
         /// creates the action with a random seed, the grid size and the duration 
         /// </summary>
-        public static CCShuffleTiles Create(int s, CCGridSize gridSize, float duration)
+        public CCShuffleTiles(int s, CCGridSize gridSize, float duration) : base(duration)
         {
-            var pAction = new CCShuffleTiles();
-            pAction.InitWithSeed(s, gridSize, duration);
-            return pAction;
+            InitWithSeed(s, gridSize, duration);
         }
     }
 }

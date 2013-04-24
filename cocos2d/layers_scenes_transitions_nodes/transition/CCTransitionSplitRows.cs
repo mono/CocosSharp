@@ -33,14 +33,12 @@ namespace cocos2d
     {
         public override CCActionInterval Action()
         {
-            return CCSplitRows.Create(3, m_fDuration / 2.0f);
+            return new CCSplitRows(3, m_fDuration / 2.0f);
         }
 
-        public new static CCTransitionSplitRows Create(float t, CCScene scene)
+        public CCTransitionSplitRows(float t, CCScene scene) : base(t, scene)
         {
-            var pScene = new CCTransitionSplitRows();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
+            InitWithDuration(t, scene);
         }
     }
 }
