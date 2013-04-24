@@ -247,10 +247,10 @@ namespace tests
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
-            var move_ease_in = CCEaseSineIn.Create((CCActionInterval) move.Copy());
+            var move_ease_in = new CCEaseSineIn((CCActionInterval) move.Copy());
             var move_ease_in_back = move_ease_in.Reverse();
 
-            var move_ease_out = CCEaseSineOut.Create((CCActionInterval) move.Copy());
+            var move_ease_out = new CCEaseSineOut((CCActionInterval) move.Copy());
             var move_ease_out_back = move_ease_out.Reverse();
 
             var delay = new CCDelayTime (0.25f);
@@ -282,7 +282,7 @@ namespace tests
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
 
-            var move_ease = CCEaseSineInOut.Create((CCActionInterval) (move.Copy()));
+            var move_ease = new CCEaseSineInOut((CCActionInterval) (move.Copy()));
             var move_ease_back = move_ease.Reverse();
 
             var delay = new CCDelayTime (0.25f);

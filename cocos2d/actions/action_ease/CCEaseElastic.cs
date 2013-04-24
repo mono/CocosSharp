@@ -5,14 +5,14 @@ namespace cocos2d
     {
         protected float m_fPeriod;
 
-		public CCEaseElastic (CCActionInterval pAction)
+		public CCEaseElastic (CCActionInterval pAction) : base (pAction)
 		{
 			InitWithAction(pAction);
 		}
 		
-		public CCEaseElastic (CCActionInterval pAction, float fPeriod)
+		public CCEaseElastic (CCActionInterval pAction, float fPeriod) : base (pAction)
 		{
-			InitWithAction(pAction, fPeriod);
+            m_fPeriod = fPeriod;
 		}
 
 		protected CCEaseElastic (CCEaseElastic easeElastic) : base (easeElastic)
