@@ -6,8 +6,8 @@ namespace cocos2d
         protected CCActionInterval m_pOther;
 
 		// This can be taken out once all the classes that extend it have had their constructors created.
-		protected CCActionEase ()
-		{}
+//		protected CCActionEase ()
+//		{}
 
         public CCActionEase (CCActionInterval pAction)
         {

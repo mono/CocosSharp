@@ -5,9 +5,9 @@ namespace cocos2d
     {
         protected float m_fRate;
 
-        public CCEaseRateAction (CCActionInterval pAction, float fRate)
+        public CCEaseRateAction (CCActionInterval pAction, float fRate) : base (pAction)
         {
-            InitWithAction(pAction, fRate);
+            m_fRate = fRate;
         }
 
         public CCEaseRateAction (CCEaseRateAction easeRateAction) : base (easeRateAction)

@@ -6,6 +6,13 @@ namespace cocos2d
 {
     public class CCEaseSineIn : CCActionEase
     {
+
+        public CCEaseSineIn (CCActionInterval pAction) : base (pAction)
+        { }
+
+        public CCEaseSineIn (CCEaseSineIn easesineIn) : base (easesineIn)
+        { }
+
         public override void Update(float time)
         {
             m_pOther.Update(-1 * (float) Math.Cos(time * MathHelper.PiOver2) + 1);
@@ -13,34 +20,27 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return CCEaseSineOut.Create((CCActionInterval) m_pOther.Reverse());
+            return new CCEaseSineOut((CCActionInterval) m_pOther.Reverse());
         }
 
         public override object Copy(ICopyable pZone)
         {
-            CCEaseSineIn pCopy;
 
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCEaseSineIn) (pZone);
+                var pCopy = (CCEaseSineIn) (pZone);
+                pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCEaseSineIn();
+                return new CCEaseSineIn(this);
             }
 
-            pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
-
-            return pCopy;
         }
 
 
-        public new static CCEaseSineIn Create(CCActionInterval pAction)
-        {
-            var pRet = new CCEaseSineIn();
-            pRet.InitWithAction(pAction);
-            return pRet;
-        }
     }
 }
