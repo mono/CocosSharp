@@ -3,6 +3,13 @@ namespace cocos2d
 {
     public class CCEaseBounce : CCActionEase
     {
+
+        public CCEaseBounce (CCActionInterval pAction) : base (pAction)
+        { }
+
+        public CCEaseBounce (CCEaseBounce easeBounce) : base (easeBounce)
+        { }
+
         public float BounceTime(float time)
         {
             if (time < 1 / 2.75)
@@ -28,28 +35,22 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCEaseBounce pCopy;
 
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone as CCEaseBounce;
+                var pCopy = pZone as CCEaseBounce;
+                pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCEaseBounce();
+                return new CCEaseBounce(this);
+
             }
 
-            pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
-
-            return pCopy;
         }
 
-        public new static CCEaseBounce Create(CCActionInterval pAction)
-        {
-            var pRet = new CCEaseBounce();
-            pRet.InitWithAction(pAction);
-            return pRet;
-        }
     }
 }

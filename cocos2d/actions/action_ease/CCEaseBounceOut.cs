@@ -3,6 +3,13 @@ namespace cocos2d
 {
     public class CCEaseBounceOut : CCEaseBounce
     {
+
+        public CCEaseBounceOut (CCActionInterval pAction) : base (pAction)
+        { }
+
+        public CCEaseBounceOut (CCEaseBounceOut easeBounceOut) : base (easeBounceOut)
+        { }
+
         public override void Update(float time)
         {
             float newT = BounceTime(time);
@@ -11,33 +18,26 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return CCEaseBounceIn.Create((CCActionInterval) m_pOther.Reverse());
+            return new CCEaseBounceIn((CCActionInterval) m_pOther.Reverse());
         }
 
         public override object Copy(ICopyable pZone)
         {
-            CCEaseBounceOut pCopy;
 
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone as CCEaseBounceOut;
+                var pCopy = pZone as CCEaseBounceOut;
+                pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCEaseBounceOut();
+                return new CCEaseBounceOut(this);
             }
 
-            pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
-
-            return pCopy;
         }
 
-        public new static CCEaseBounceOut Create(CCActionInterval pAction)
-        {
-            var pRet = new CCEaseBounceOut();
-            pRet.InitWithAction(pAction);
-            return pRet;
-        }
     }
 }

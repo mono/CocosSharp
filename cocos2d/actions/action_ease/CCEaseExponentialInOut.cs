@@ -5,6 +5,13 @@ namespace cocos2d
 {
     public class CCEaseExponentialInOut : CCActionEase
     {
+
+        public CCEaseExponentialInOut (CCActionInterval pAction) : base (pAction)
+        { }
+
+        public CCEaseExponentialInOut (CCEaseExponentialInOut easeExponentialInOut) : base (easeExponentialInOut)
+        { }
+
         public override void Update(float time)
         {
             if (time == 0 || time == 1)
@@ -30,33 +37,26 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCEaseExponentialInOut pCopy;
-
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = pZone as CCEaseExponentialInOut;
+                var pCopy = pZone as CCEaseExponentialInOut;
+                pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCEaseExponentialInOut();
+                return new CCEaseExponentialInOut(this);
             }
 
-            pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
-
-            return pCopy;
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create((CCActionInterval)m_pOther.Reverse());
+            return new CCEaseExponentialInOut((CCActionInterval)m_pOther.Reverse());
         }
 
-        public new static CCEaseExponentialInOut Create(CCActionInterval pAction)
-        {
-            var pRet = new CCEaseExponentialInOut();
-            pRet.InitWithAction(pAction);
-            return pRet;
-        }
+
     }
 }
