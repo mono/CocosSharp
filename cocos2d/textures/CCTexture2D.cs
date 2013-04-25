@@ -91,10 +91,10 @@ namespace cocos2d
     /// </summary>
     public struct CCTexParams
     {
-        public uint magFilter;
-        public uint minFilter;
-        public uint wrapS;
-        public uint wrapT;
+        public uint MagFilter;
+        public uint MinFilter;
+        public uint WrapS;
+        public uint WrapT;
     }
 
     /// <summary>
@@ -366,9 +366,9 @@ namespace cocos2d
             {
 #if OPENGL
                 m_samplerState = new SamplerState();
-                m_samplerState.Filter = GetFilter(value.magFilter, value.minFilter);
-                m_samplerState.AddressU = GetWrapMode(value.wrapS);
-                m_samplerState.AddressV = GetWrapMode(value.wrapT);
+                m_samplerState.Filter = GetFilter(value.MagFilter, value.MinFilter);
+                m_samplerState.AddressU = GetWrapMode(value.WrapS);
+                m_samplerState.AddressV = GetWrapMode(value.WrapT);
 #else
                 // We will just return the default for now for non OpenGL
                 // Non OpenGL systems should use the SamplerState property

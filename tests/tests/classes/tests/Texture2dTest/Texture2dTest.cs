@@ -1278,10 +1278,10 @@ namespace tests
             sprite.Position = new CCPoint(size.Width/2,size.Height/2);
 
 #if OPENGL
-            sprite.Texture.TexParameters = new CCTexParams() {  magFilter = (uint)All.Linear,
-                                                                minFilter = (uint)All.Linear,
-                                                                wrapS = (uint)All.Repeat,
-                                                                wrapT = (uint)All.Repeat
+            sprite.Texture.TexParameters = new CCTexParams() {  MagFilter = (uint)All.Linear,
+                                                                MinFilter = (uint)All.Linear,
+                                                                WrapS = (uint)All.Repeat,
+                                                                WrapT = (uint)All.Repeat
                                                               };
 #endif
             var rotate = new CCRotateBy(4, 360);
