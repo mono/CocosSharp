@@ -440,6 +440,8 @@
     <Compile Include="support\Serialization\CCSerialization.cs" />
     <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="support\CCUserDefault.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />

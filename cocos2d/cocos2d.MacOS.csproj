@@ -646,6 +646,8 @@
       <Link>box2d\Rope\b2RopeDef.cs</Link>
     </Compile>
     <Compile Include="support\CCUserDefault.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">
