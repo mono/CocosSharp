@@ -37,44 +37,34 @@ namespace cocos2d
         private int nValue;
         private byte[] pointer;
 
-        public static CCBValue Create(int nValue)
+        public CCBValue (int nValue)
         {
-            var ret = new CCBValue();
-            ret.nValue = nValue;
-            ret.mType = ValueType.kIntValue;
-            return ret;
+            nValue = nValue;
+            mType = ValueType.kIntValue;
         }
 
-        public static CCBValue Create(bool bValue)
+        public CCBValue (bool bValue)
         {
-            var ret = new CCBValue();
-            ret.nValue = bValue ? 1 : 0;
-            ret.mType = ValueType.kBoolValue;
-            return ret;
+            nValue = bValue ? 1 : 0;
+            mType = ValueType.kBoolValue;
         }
 
-        public static CCBValue Create(float fValue)
+        public CCBValue (float fValue)
         {
-            var ret = new CCBValue();
-            ret.fValue = fValue;
-            ret.mType = ValueType.kFloatValue;
-            return ret;
+            fValue = fValue;
+            mType = ValueType.kFloatValue;
         }
 
-        public static CCBValue Create(byte bValue)
+        public CCBValue (byte bValue)
         {
-            var ret = new CCBValue();
-            ret.nValue = bValue;
-            ret.mType = ValueType.kUnsignedCharValue;
-            return ret;
+            nValue = bValue;
+            mType = ValueType.kUnsignedCharValue;
         }
 
-        public static CCBValue Create(byte[] pointer)
+        public CCBValue (byte[] pointer)
         {
-            var ret = new CCBValue();
-            ret.pointer = pointer;
-            ret.mType = ValueType.kPointerValue;
-            return ret;
+            pointer = pointer;
+            mType = ValueType.kPointerValue;
         }
 
         public int GetIntValue()
