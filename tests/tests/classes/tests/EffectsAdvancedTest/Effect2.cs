@@ -24,7 +24,7 @@ namespace tests
             //   1 for shuffle
             //   2 for turn off
             //   turnon tiles will use a new grid
-            CCFiniteTimeAction reuse = CCReuseGrid.Create(2);
+            CCFiniteTimeAction reuse = new CCReuseGrid(2);
 
             CCActionInterval delay = new CCDelayTime (1);
 

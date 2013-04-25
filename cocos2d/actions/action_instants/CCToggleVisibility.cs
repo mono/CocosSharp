@@ -2,10 +2,8 @@
 {
     public class CCToggleVisibility : CCActionInstant
     {
-        public new static CCToggleVisibility Create()
+        public CCToggleVisibility()
         {
-            var pRet = new CCToggleVisibility();
-            return pRet;
         }
 
         public override object Copy(ICopyable zone)

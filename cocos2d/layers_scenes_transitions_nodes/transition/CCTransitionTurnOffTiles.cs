@@ -56,7 +56,7 @@ namespace cocos2d
                         (
                             action,
                             new CCCallFunc((Finish)),
-                            CCStopGrid.Create()
+                            new CCStopGrid()
                         )
                 );
         }

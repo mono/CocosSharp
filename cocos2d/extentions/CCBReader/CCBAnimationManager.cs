@@ -229,9 +229,9 @@ namespace cocos2d
                         var value = (CCBValue) pKeyframe1.Value;
                         if (value.GetBoolValue())
                         {
-                            return new CCSequence (new CCDelayTime (duration), CCShow.Create());
+                            return new CCSequence (new CCDelayTime (duration), new CCShow());
                         }
-                        return new CCSequence (new CCDelayTime (duration), CCHide.Create());
+                        return new CCSequence (new CCDelayTime (duration), new CCHide());
                     }
                 case "displayFrame":
                     return new CCSequence (new CCDelayTime (duration), CCBSetSpriteFrame.Create((CCSpriteFrame) pKeyframe1.Value));

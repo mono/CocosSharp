@@ -4,7 +4,7 @@
     {
         protected int m_nTimes;
 
-        public bool InitWithTimes(int times)
+        protected virtual bool InitWithTimes(int times)
         {
             m_nTimes = times;
             return true;
@@ -20,11 +20,12 @@
             }
         }
 
-        public static CCReuseGrid Create(int times)
+        public CCReuseGrid()
         {
-            var pAction = new CCReuseGrid();
-            pAction.InitWithTimes(times);
-            return pAction;
+        }
+        public CCReuseGrid(int times)
+        {
+            InitWithTimes(times);
         }
     }
 }

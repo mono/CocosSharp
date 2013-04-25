@@ -4,14 +4,15 @@
     {
         private bool m_bFlipX;
 
-        public static CCFlipX Create(bool x)
+        protected CCFlipX()
         {
-            var pRet = new CCFlipX();
-            pRet.InitWithFlipX(x);
-            return pRet;
+        }
+        public CCFlipX(bool x)
+        {
+            InitWithFlipX(x);
         }
 
-        public bool InitWithFlipX(bool x)
+        protected virtual bool InitWithFlipX(bool x)
         {
             m_bFlipX = x;
             return true;
@@ -25,7 +26,7 @@
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(!m_bFlipX);
+            return new CCFlipX(!m_bFlipX);
         }
 
         public override object Copy(ICopyable pZone)

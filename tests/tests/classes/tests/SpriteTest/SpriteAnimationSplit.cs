@@ -40,9 +40,9 @@ namespace tests
             CCAnimation animation = CCAnimation.Create(animFrames, 0.2f);
             CCAnimate animate = new CCAnimate (animation);
             CCActionInterval seq = (CCActionInterval)(CCSequence.FromActions(animate,
-                               CCFlipX.Create(true),
+                               new CCFlipX(true),
                               (CCFiniteTimeAction)animate.Copy(),
-                               CCFlipX.Create(false)
+                               new CCFlipX(false)
                                ));
 
             sprite.RunAction(new CCRepeatForever (seq));

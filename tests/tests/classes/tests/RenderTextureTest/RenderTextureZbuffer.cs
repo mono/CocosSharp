@@ -153,7 +153,7 @@ namespace tests
             sprite.RunAction(
                 CCSequence.FromActions(
                     new CCFadeTo (2, 0),
-                    CCHide.Create()
+                    new CCHide()
                     )
                 );
         }

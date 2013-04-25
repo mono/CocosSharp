@@ -797,8 +797,8 @@ namespace tests
             m_grossini.Visible = false;
 
             var action = CCSequence.FromActions(
-                CCPlace.Create(new CCPoint(200, 200)),
-                CCShow.Create(),
+                new CCPlace(new CCPoint(200, 200)),
+                new CCShow(),
                 new CCMoveBy (1, new CCPoint(100, 0)),
                 new CCCallFunc(callback1),
                 new CCCallFuncN(callback2),
@@ -1138,7 +1138,7 @@ namespace tests
 
             var a1 = new CCMoveBy (1, new CCPoint(150, 0));
             var action1 = new CCRepeat (
-                CCSequence.FromActions(CCPlace.Create(new CCPoint(60, 60)), a1),
+                CCSequence.FromActions(new CCPlace(new CCPoint(60, 60)), a1),
                 3);
             var action2 = new CCRepeatForever (
                 (CCSequence.FromActions((CCActionInterval) (a1.Copy()), a1.Reverse()))

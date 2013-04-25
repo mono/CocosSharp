@@ -62,7 +62,7 @@ namespace cocos2d
                         (
                             EaseAction(action),
                             new CCCallFunc(Finish),
-                            CCStopGrid.Create()
+                            new CCStopGrid()
                         )
                 );
         }

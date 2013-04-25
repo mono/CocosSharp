@@ -19,7 +19,7 @@ namespace tests
             CCActionInterval stopEffect = (CCActionInterval)(CCSequence.FromActions(
                                                  effect,
                                                  new CCDelayTime (2),
-                                                 CCStopGrid.Create()
+                                                 new CCStopGrid()
                 //					 [DelayTime::actionWithDuration:2],
                 //					 [[effect copy] autorelease],
                                                  ));

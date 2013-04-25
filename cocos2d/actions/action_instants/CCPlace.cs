@@ -4,14 +4,15 @@
     {
         private CCPoint m_tPosition;
 
-        public static CCPlace Create(CCPoint pos)
+        protected CCPlace()
         {
-            var pRet = new CCPlace();
-            pRet.InitWithPosition(pos);
-            return pRet;
+        }
+        public CCPlace(CCPoint pos)
+        {
+            InitWithPosition(pos);
         }
 
-        public bool InitWithPosition(CCPoint pos)
+        protected virtual bool InitWithPosition(CCPoint pos)
         {
             m_tPosition = pos;
             return true;

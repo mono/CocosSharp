@@ -61,7 +61,7 @@ namespace cocos2d
             RunAction(CCSequence.FromActions(
                 EaseAction(seq),
                 new CCCallFunc(Finish),
-                CCStopGrid.Create()));
+                new CCStopGrid()));
         }
 
         public CCTransitionSplitCols(float t, CCScene scene) : base(t, scene)

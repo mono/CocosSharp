@@ -67,8 +67,8 @@ namespace tests
 
                 animFrames = null;
 
-                CCFlipY flip = CCFlipY.Create(true);
-                CCFlipY flip_back = CCFlipY.Create(false);
+                CCFlipY flip = new CCFlipY(true);
+                CCFlipY flip_back = new CCFlipY(false);
                 CCDelayTime delay = new CCDelayTime (1);
                 CCFiniteTimeAction seq = CCSequence.FromActions((CCFiniteTimeAction)delay, (CCFiniteTimeAction)flip, (CCFiniteTimeAction)delay.Copy(null), flip_back);
                 sprite.RunAction(new CCRepeatForever ((CCActionInterval)seq));

@@ -37,9 +37,9 @@ namespace tests
             float waitTime = 3f;
             float runTime = 12f;
             layer.Visible = false;
-            CCHide hide = CCHide.Create();
+            CCHide hide = new CCHide();
             CCScaleTo scaleTo1 = new CCScaleTo(0.0f, 0.0f);
-            CCShow show = CCShow.Create();
+            CCShow show = new CCShow();
             CCDelayTime delay = new CCDelayTime (waitTime);
             CCScaleTo scaleTo2 = new CCScaleTo(runTime * 0.25f, 1.2f);
             CCScaleTo scaleTo3 = new CCScaleTo(runTime * 0.25f, 0.95f);

@@ -57,7 +57,7 @@ namespace cocos2d
                         (
                             new CCOrbitCamera(m_fDuration / 2, 1, 0, inAngleZ, inDeltaZ, 0, 0),
                             new CCScaleTo(m_fDuration / 2, 1),
-                            CCShow.Create()
+                            new CCShow()
                         ),
                     new CCCallFunc(Finish)
                 );
@@ -68,7 +68,7 @@ namespace cocos2d
                             new CCOrbitCamera(m_fDuration / 2, 1, 0, outAngleZ, outDeltaZ, 0, 0),
                             new CCScaleTo(m_fDuration / 2, 0.5f)
                         ),
-                    CCHide.Create(),
+                    new CCHide(),
                     new CCDelayTime (m_fDuration / 2)
                 );
 

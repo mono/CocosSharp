@@ -110,7 +110,7 @@ namespace cocos2d
                                           (
                                               action,
                                               new CCCallFunc(Finish),
-                                              CCStopGrid.Create()));
+                                              new CCStopGrid()));
             }
             else
             {
@@ -118,10 +118,10 @@ namespace cocos2d
                 m_pInScene.Visible = false;
                 m_pInScene.RunAction(CCSequence.FromActions
                                          (
-                                             CCShow.Create(),
+                                             new CCShow(),
                                              action,
                                              new CCCallFunc(Finish),
-                                             CCStopGrid.Create()));
+                                             new CCStopGrid()));
             }
         }
 

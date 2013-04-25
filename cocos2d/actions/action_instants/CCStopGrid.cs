@@ -13,10 +13,8 @@
             }
         }
 
-        public new static CCStopGrid Create()
+        public CCStopGrid()
         {
-            var pAction = new CCStopGrid();
-            return pAction;
         }
     }
 }

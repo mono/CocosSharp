@@ -2,10 +2,8 @@
 {
     public class CCHide : CCActionInstant
     {
-        public new static CCHide Create()
+        public CCHide()
         {
-            var pRet = new CCHide();
-            return pRet;
         }
 
         public override void StartWithTarget(CCNode target)
@@ -16,7 +14,7 @@
 
         public override CCFiniteTimeAction Reverse()
         {
-            return (CCShow.Create());
+            return (new CCShow());
         }
 
         public override object Copy(ICopyable pZone)
