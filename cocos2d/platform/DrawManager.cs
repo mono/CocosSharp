@@ -565,21 +565,13 @@ namespace cocos2d
 
             if (!graphicsDevice.IsDisposed && graphicsDevice.GraphicsDeviceStatus == GraphicsDeviceStatus.Normal)
             {
-            if (texture != null && texture.m_bAliased)
-            {
-                graphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
+                graphicsDevice.SamplerStates[0] = texture.m_samplerState;
+                if (m_currentTexture != tex)
+                {
+                    m_currentTexture = tex;
+                    m_textureChanged = true;
+                }
             }
-            else
-            {
-                graphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
-            }
-
-            if (m_currentTexture != tex)
-            {
-                m_currentTexture = tex;
-                m_textureChanged = true;
-            }
-        }
         }
 
         public static void CreateRenderTarget(CCTexture2D pTexture, RenderTargetUsage usage)
