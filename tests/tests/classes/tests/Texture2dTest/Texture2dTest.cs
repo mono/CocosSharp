@@ -202,11 +202,7 @@ namespace tests
         {
             CCTextureCache.SharedTextureCache.RemoveUnusedTextures();
 
-            // Put a try around this because we are getting an error for Sync
-            try {
-                CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
-            }
-            catch {}
+            CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
         }
 
         public void restartCallback(object pSender)
@@ -1243,6 +1239,8 @@ namespace tests
                 WrapS = (uint)All.ClampToEdge,
                 WrapT = (uint)All.ClampToEdge
             };
+#else
+			sprite.Texture.SamplerState = SamplerState.LinearClamp;
 #endif
             var rotate = new CCRotateBy(4, 360);
             sprite.RunAction(rotate);
@@ -1289,6 +1287,8 @@ namespace tests
                                                                 WrapS = (uint)All.Repeat,
                                                                 WrapT = (uint)All.Repeat
                                                               };
+#else
+            sprite.Texture.SamplerState = SamplerState.LinearWrap;
 #endif
             var rotate = new CCRotateBy(4, 360);
             sprite.RunAction(rotate);
