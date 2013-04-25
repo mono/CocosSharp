@@ -1219,45 +1219,6 @@ namespace tests
     //}
 
 
-    public class PatternSprite : CCSprite
-    {
-
-        public PatternSprite (string imageName) : base (imageName)
-        {}
-
-        public PatternSprite (string imageName, CCRect rect) : base (imageName,rect)
-        {}
-
-        public override void Draw()
-        //public void Draw2()
-        {
-            base.Draw();
-//            DrawManager.BlendFunc(m_sBlendFunc);
-//            DrawManager.BindTexture(Texture);
-//            DrawManager.SamplerStateWrap();
-//            DrawManager.DrawQuad(ref m_sQuad);
-
-            //var sb = DrawManager.spriteBatch;
-            //var transf = NodeToParentTransform();
-
-
-//            var position = Vector2.Zero;
-//            var origin = Vector2.Zero;
-//            var color =  new Color(this.Color.R, this.Color.G, this.Color.B, Opacity);
-//            var destRect = new Rectangle(0,0,256,256);
-//            position.X = PositionX;
-//            position.Y = PositionY;
-//            position = Vector2.Zero;
-
-
-//            var origin = new Vector2(PositionX, PositionY);
-//            sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Matrix.Identity);   
-//            sb.Draw(Texture.Texture2D, position , destRect, color, 0, origin, 1, SpriteEffects.None, 0);
-//            sb.End();
-            
-        }
-    }
-
 
     //------------------------------------------------------------------
     //
