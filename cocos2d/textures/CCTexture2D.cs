@@ -31,6 +31,18 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+#if OPENGL
+#if MONOMAC
+using MonoMac.OpenGL;
+#elif WINDOWS || LINUX
+using OpenTK.Graphics.OpenGL;
+#elif GLES
+using OpenTK.Graphics.ES20;
+using TextureTarget = OpenTK.Graphics.ES20.All;
+using TextureMinFilter = OpenTK.Graphics.ES20.All;
+#endif
+#endif
+
 namespace cocos2d
 {
     /// <summary>
@@ -77,7 +89,7 @@ namespace cocos2d
     /// <summary>
     /// Extension to set the Min / Mag filter
     /// </summary>
-    public struct ccTexParams
+    public struct CCTexParams
     {
         public uint magFilter;
         public uint minFilter;
@@ -111,6 +123,8 @@ namespace cocos2d
         private Texture2D m_texture2D;
         private bool m_bIsManaged = false;
         private string m_ContentFile = null;
+
+        internal SamplerState m_samplerState;
 
         public string ContentFile
         {
@@ -192,8 +206,6 @@ namespace cocos2d
                 m_texture2D = value;
             }
         }
-
-        internal bool m_bAliased;
 
         /// <summary>
         /// Contains the full pixmap of the sprite - very expensive
@@ -316,6 +328,9 @@ namespace cocos2d
             m_bHasPremultipliedAlpha = false;
             m_bPVRHaveAlphaPremultiplied = true;
             m_tContentSize = new CCSize();
+
+            // We will default to LinearClamp which is the default for SpriteBatch.Begin()
+            m_samplerState = SamplerState.LinearClamp;
         }
 
         public override string ToString()
@@ -345,10 +360,82 @@ namespace cocos2d
         If the texture size is NPOT (non power of 2), then in can only use GL_CLAMP_TO_EDGE in GL_TEXTURE_WRAP_{S,T}.
         @since v0.8
         */
-
-        public void SetTexParameters(ccTexParams texParams)
+        public CCTexParams TexParameters
         {
-            //throw new NotImplementedException();
+            set 
+            {
+#if OPENGL
+                m_samplerState = new SamplerState();
+                m_samplerState.Filter = GetFilter(value.magFilter, value.minFilter);
+                m_samplerState.AddressU = GetWrapMode(value.wrapS);
+                m_samplerState.AddressV = GetWrapMode(value.wrapT);
+#else
+                // We will just return the default for now for non OpenGL
+                // Non OpenGL systems should use the SamplerState property
+                m_samplerState = SamplerState.LinearClamp;
+#endif
+
+            }
+        }
+
+        /**
+         * Sets the XNA sampler state for the Texture in those cases where OpenGL is not the platform
+         * 
+         */
+        public SamplerState SamplerState
+        {
+            set
+            {
+                m_samplerState = value;
+            }
+
+        }
+
+        private TextureAddressMode GetWrapMode(uint param)
+        {
+#if OPENGL
+            switch ((All)param)
+            {
+            case All.Repeat :
+                return TextureAddressMode.Wrap;
+            case All.ClampToEdge:
+                return TextureAddressMode.Clamp;
+            case All.MirroredRepeat:
+                return TextureAddressMode.Mirror;
+            default:
+                return TextureAddressMode.Clamp;
+            }
+#else
+            return TextureAddressMode.Clamp;
+
+#endif
+        }
+
+        /**
+         * Gets the Filter of the SamplerState based on parameters magFilter and minFilter
+         * 
+         * Right now we are only setting based on magFilter to control the TextureFilter
+         * We will probably want to modify this in the future and base it off of a 
+         * combination of both the magFilter and minFilter
+         * 
+         * TODO: Look deeper at the combinations of the magFilter and minFilter parameters to 
+         * determine the correct SamplterState TextureFilter to be used.
+         */
+        private TextureFilter GetFilter (uint magFilter, uint minFilter)
+        {
+#if OPENGL
+            switch ((All)magFilter)
+            {
+            case All.Linear:
+                return TextureFilter.Linear;
+            case All.Nearest:
+                return TextureFilter.Point;
+            default:
+                return TextureFilter.Linear;
+            }
+#else
+            return TextureFilter.Linear;
+#endif
         }
 
         /** sets antialias texture parameters:
@@ -360,7 +447,7 @@ namespace cocos2d
 
         public void SetAntiAliasTexParameters()
         {
-            m_bAliased = false;
+            m_samplerState.Filter = TextureFilter.Point;
         }
 
         /** sets alias texture parameters:
@@ -372,7 +459,7 @@ namespace cocos2d
 
         public void SetAliasTexParameters()
         {
-            m_bAliased = true;
+            m_samplerState.Filter = TextureFilter.Linear;
         }
 
 
@@ -519,7 +606,7 @@ namespace cocos2d
 
                 if (dimensions.Equals(CCSize.Zero))
                 {
-                    Vector2 temp = font.MeasureString(text);
+                    Microsoft.Xna.Framework.Vector2 temp = font.MeasureString(text);
                     dimensions.Width = temp.X;
                     dimensions.Height = temp.Y;
                 }
@@ -614,7 +701,7 @@ namespace cocos2d
                 {
                     string line = textList[j];
 
-                    var position = new Vector2(0, nextY);
+					var position = new Microsoft.Xna.Framework.Vector2(0, nextY);
 
                     if (hAlignment == CCTextAlignment.CCTextAlignmentRight)
                     {
