@@ -8,7 +8,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCLayerColor.Create();
+            return new CCLayerColor();
         }
 
         protected override void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, CCColor3B color, CCBReader reader)
