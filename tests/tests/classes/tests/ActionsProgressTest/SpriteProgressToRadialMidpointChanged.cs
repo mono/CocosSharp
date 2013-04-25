@@ -12,7 +12,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTo action = CCProgressTo.Create(2, 100);
+            CCProgressTo action = new CCProgressTo(2, 100);
 
             /**
            *  Our image on the left should be a radial progress indicator, clockwise

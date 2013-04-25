@@ -10,7 +10,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTo to = CCProgressTo.Create(6, 100);
+            CCProgressTo to = new CCProgressTo(6, 100);
 
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("zwoptex/grossini.plist");
 

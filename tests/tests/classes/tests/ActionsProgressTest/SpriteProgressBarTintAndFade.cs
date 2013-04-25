@@ -13,7 +13,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTo to = CCProgressTo.Create(6, 100);
+            CCProgressTo to = new CCProgressTo(6, 100);
             CCAction tint = CCSequence.FromActions(new CCTintTo (1, 255, 0, 0),
                                               new CCTintTo (1, 0, 255, 0),
                                               new CCTintTo (1, 0, 0, 255));

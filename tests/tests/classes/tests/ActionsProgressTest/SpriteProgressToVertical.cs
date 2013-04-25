@@ -13,8 +13,8 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTo to1 = CCProgressTo.Create(2, 100);
-            CCProgressTo to2 = CCProgressTo.Create(2, 100);
+            CCProgressTo to1 = new CCProgressTo(2, 100);
+            CCProgressTo to2 = new CCProgressTo(2, 100);
 
             CCProgressTimer left = CCProgressTimer.Create(s_pPathSister1);
             left.Type = CCProgressTimerType.Bar;
