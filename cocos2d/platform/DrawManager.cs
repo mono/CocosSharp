@@ -565,7 +565,14 @@ namespace cocos2d
 
             if (!graphicsDevice.IsDisposed && graphicsDevice.GraphicsDeviceStatus == GraphicsDeviceStatus.Normal)
             {
-                graphicsDevice.SamplerStates[0] = texture.m_samplerState;
+                if (tex == null)
+                {
+                    graphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
+                }
+                else
+                {
+                    graphicsDevice.SamplerStates[0] = texture.m_samplerState;
+                }
                 if (m_currentTexture != tex)
                 {
                     m_currentTexture = tex;
