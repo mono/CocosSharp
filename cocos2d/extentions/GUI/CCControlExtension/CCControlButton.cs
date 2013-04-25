@@ -307,7 +307,7 @@ namespace cocos2d
 
         public override bool Init()
         {
-            return InitWithLabelAndBackgroundSprite(new CCLabelTTF("", "Helvetica", 12), CCScale9Sprite.Create());
+            return InitWithLabelAndBackgroundSprite(new CCLabelTTF("", "Helvetica", 12), new CCScale9Sprite());
         }
 
         public virtual bool InitWithLabelAndBackgroundSprite(CCNode node, CCScale9Sprite backgroundSprite)
@@ -372,37 +372,31 @@ namespace cocos2d
             return false;
         }
 
-        public static CCControlButton Create(CCNode label, CCScale9Sprite backgroundSprite)
+        public CCControlButton(CCNode label, CCScale9Sprite backgroundSprite)
         {
-            var pRet = new CCControlButton();
-            pRet.InitWithLabelAndBackgroundSprite(label, backgroundSprite);
-            return pRet;
+            InitWithLabelAndBackgroundSprite(label, backgroundSprite);
         }
 
-        public virtual bool InitWithTitleAndFontNameAndFontSize(string title, string fontName, float fontSize)
+        protected virtual bool InitWithTitleAndFontNameAndFontSize(string title, string fontName, float fontSize)
         {
             CCLabelTTF label = new CCLabelTTF(title, fontName, fontSize);
-            return InitWithLabelAndBackgroundSprite(label, CCScale9Sprite.Create());
+            return InitWithLabelAndBackgroundSprite(label, new CCScale9Sprite());
         }
 
-        public static CCControlButton Create(string title, string fontName, float fontSize)
+        public CCControlButton(string title, string fontName, float fontSize)
         {
-            var pRet = new CCControlButton();
-            pRet.InitWithTitleAndFontNameAndFontSize(title, fontName, fontSize);
-            return pRet;
+            InitWithTitleAndFontNameAndFontSize(title, fontName, fontSize);
         }
 
-        public virtual bool InitWithBackgroundSprite(CCScale9Sprite sprite)
+        protected virtual bool InitWithBackgroundSprite(CCScale9Sprite sprite)
         {
             CCLabelTTF label = new CCLabelTTF("", "arial", 30);
             return InitWithLabelAndBackgroundSprite(label, sprite);
         }
 
-        public static CCControlButton Create(CCScale9Sprite sprite)
+        public CCControlButton(CCScale9Sprite sprite)
         {
-            var pRet = new CCControlButton();
-            pRet.InitWithBackgroundSprite(sprite);
-            return pRet;
+            InitWithBackgroundSprite(sprite);
         }
 
         //events
@@ -784,7 +778,7 @@ namespace cocos2d
 
         public virtual void SetBackgroundSpriteFrameForState(CCSpriteFrame spriteFrame, CCControlState state)
         {
-            CCScale9Sprite sprite = CCScale9Sprite.CreateWithSpriteFrame(spriteFrame);
+            CCScale9Sprite sprite = new CCScale9SpriteFrame(spriteFrame);
             SetBackgroundSpriteForState(sprite, state);
         }
 

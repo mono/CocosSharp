@@ -56,13 +56,12 @@ namespace cocos2d
             h = (h * CCMacros.CCContentScaleFactor());
 
             m_pTexture = new CCTexture2D();
+            m_pTexture.SetAliasTexParameters();
 
             m_pRenderTarget2D = DrawManager.CreateRenderTarget(w, h, colorFormat, depthFormat, usage);
             m_pTexture.InitWithTexture(m_pRenderTarget2D);
 
             m_bFirstUsage = true;
-
-            m_pTexture.SetAliasTexParameters();
 
             m_pSprite = new CCSprite(m_pTexture);
             //m_pSprite.scaleY = -1;

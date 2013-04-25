@@ -203,7 +203,7 @@ namespace cocos2d
 		* thumb image filename.
 		*/
 
-        public static CCControlSlider Create(string bgFile, string progressFile, string thumbFile)
+        public CCControlSlider(string bgFile, string progressFile, string thumbFile)
         {
             // Prepare background for slider
             CCSprite backgroundSprite = new CCSprite(bgFile);
@@ -214,7 +214,7 @@ namespace cocos2d
             // Prepare thumb (menuItem) for slider
             CCSprite thumbSprite = new CCSprite(thumbFile);
 
-            return Create(backgroundSprite, progressSprite, thumbSprite);
+            InitWithSprites(backgroundSprite, progressSprite, thumbSprite);
         }
 
         /** 
@@ -224,11 +224,9 @@ namespace cocos2d
 		* @see initWithBackgroundSprite:progressSprite:thumbMenuItem:
 		*/
 
-        public static CCControlSlider Create(CCSprite backgroundSprite, CCSprite pogressSprite, CCSprite thumbSprite)
+        public CCControlSlider(CCSprite backgroundSprite, CCSprite progressSprite, CCSprite thumbSprite)
         {
-            var pRet = new CCControlSlider();
-            pRet.InitWithSprites(backgroundSprite, pogressSprite, thumbSprite);
-            return pRet;
+            InitWithSprites(backgroundSprite, progressSprite, thumbSprite);
         }
 
         protected void SliderBegan(CCPoint location)

@@ -15,7 +15,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCScale9Sprite.Create();
+            return new CCScale9Sprite();
         }
 
         protected override void OnHandlePropTypeSpriteFrame(CCNode node, CCNode parent, string propertyName, CCSpriteFrame spriteFrame,

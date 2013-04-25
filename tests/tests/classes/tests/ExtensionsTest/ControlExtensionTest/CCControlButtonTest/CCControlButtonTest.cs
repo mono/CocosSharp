@@ -44,7 +44,7 @@ namespace tests.Extensions
 				layer.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
         
 				// Add the black background
-				var background = CCScale9Sprite.Create("extensions/buttonBackground");
+				var background = new CCScale9SpriteFile("extensions/buttonBackground");
 				background.ContentSize = new CCSize(total_width + 14, height + 14);
 				background.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 				AddChild(background);
@@ -58,14 +58,14 @@ namespace tests.Extensions
 		public CCControlButton standardButtonWithTitle(string title)
 		{
 			/** Creates and return a button with a default background and title color. */
-			var backgroundButton = CCScale9Sprite.Create("extensions/button");
-			var backgroundHighlightedButton = CCScale9Sprite.Create("extensions/buttonHighlighted");
+			var backgroundButton = new CCScale9SpriteFile("extensions/button");
+			var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
     
 			var titleButton = new CCLabelTTF(title, "Marker Felt", 30);
 
 			titleButton.Color = new CCColor3B(159, 168, 176);
 
-            var button = CCControlButton.Create(titleButton, backgroundButton);
+            var button = new CCControlButton(titleButton, backgroundButton);
 			button.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
 			button.SetTitleColorForState(CCTypes.CCWhite, CCControlState.Highlighted);
     
@@ -123,7 +123,7 @@ namespace tests.Extensions
                 layer.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 
                 // Add the black background
-                var background = CCScale9Sprite.Create("extensions/buttonBackground");
+                var background = new CCScale9SpriteFile("extensions/buttonBackground");
                 background.ContentSize = new CCSize(total_width + 14, height + 14);
                 background.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
                 AddChild(background);
@@ -137,14 +137,14 @@ namespace tests.Extensions
         public CCControlButton standardButtonWithTitle(string title)
         {
             /** Creates and return a button with a default background and title color. */
-            var backgroundButton = CCScale9Sprite.Create("extensions/button");
-            var backgroundHighlightedButton = CCScale9Sprite.Create("extensions/buttonHighlighted");
+            var backgroundButton = new CCScale9SpriteFile("extensions/button");
+            var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
 
             var titleButton = new CCLabelTTF(title, "Marker Felt", 30);
 
             titleButton.Color = new CCColor3B(159, 168, 176);
 
-            var button = CCControlButton.Create(titleButton, backgroundButton);
+            var button = new CCControlButton(titleButton, backgroundButton);
             button.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
             button.SetTitleColorForState(CCTypes.CCWhite, CCControlState.Highlighted);
 
@@ -154,8 +154,8 @@ namespace tests.Extensions
         public CCControlButton insetButtonWithTitle(string title, CCRect inset)
         {
             /** Creates and return a button with a default background and title color. */
-            var backgroundButton = CCScale9Sprite.Create("extensions/button");
-            var backgroundHighlightedButton = CCScale9Sprite.Create("extensions/buttonHighlighted");
+            var backgroundButton = new CCScale9SpriteFile("extensions/button");
+            var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
             backgroundButton.CapInsets = inset;
             backgroundHighlightedButton.CapInsets = inset;
 
@@ -163,7 +163,7 @@ namespace tests.Extensions
 
             titleButton.Color = new CCColor3B(159, 168, 176);
 
-            var button = CCControlButton.Create(titleButton, backgroundButton);
+            var button = new CCControlButton(titleButton, backgroundButton);
             button.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
             button.SetTitleColorForState(CCTypes.CCWhite, CCControlState.Highlighted);
 
@@ -196,14 +196,14 @@ namespace tests.Extensions
 				AddChild(m_pDisplayValueLabel, 1);
         
 				// Add the button
-				var backgroundButton = CCScale9Sprite.Create("extensions/button");
-				var backgroundHighlightedButton = CCScale9Sprite.Create("extensions/buttonHighlighted");
+				var backgroundButton = new CCScale9SpriteFile("extensions/button");
+				var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
         
 				var titleButton = new CCLabelTTF("Touch Me!", "Marker Felt", 30);
 
 				titleButton.Color = new CCColor3B(159, 168, 176);
 
-                var controlButton = CCControlButton.Create(titleButton, backgroundButton);
+                var controlButton = new CCControlButton(titleButton, backgroundButton);
 				controlButton.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
 				controlButton.SetTitleColorForState(CCTypes.CCWhite, CCControlState.Highlighted);
         
@@ -212,7 +212,7 @@ namespace tests.Extensions
 				AddChild(controlButton, 1);
 
 				// Add the black background
-				var background = CCScale9Sprite.Create("extensions/buttonBackground");
+				var background = new CCScale9SpriteFile("extensions/buttonBackground");
 				background.ContentSize = new CCSize(300, 170);
 				background.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 				AddChild(background);
@@ -332,7 +332,7 @@ namespace tests.Extensions
 				layer.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
         
 				// Add the black background
-				var backgroundButton = CCScale9Sprite.Create("extensions/buttonBackground");
+				var backgroundButton = new CCScale9SpriteFile("extensions/buttonBackground");
 				backgroundButton.ContentSize = new CCSize(max_w + 14, max_h + 14);
 				backgroundButton.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 				AddChild(backgroundButton);
@@ -347,16 +347,16 @@ namespace tests.Extensions
 		public CCControlButton standardButtonWithTitle(string title)
 		{
 			/** Creates and return a button with a default background and title color. */
-			var backgroundButton = CCScale9Sprite.Create("extensions/button");
+			var backgroundButton = new CCScale9SpriteFile("extensions/button");
 			backgroundButton.PreferredSize = new CCSize(45, 45);  // Set the prefered size
-			var backgroundHighlightedButton = CCScale9Sprite.Create("extensions/buttonHighlighted");
+			var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
 			backgroundHighlightedButton.PreferredSize = new CCSize(45, 45);  // Set the prefered size
     
 			var titleButton = new CCLabelTTF(title, "Marker Felt", 30);
 
 			titleButton.Color = new CCColor3B(159, 168, 176);
 
-            var button = CCControlButton.Create(titleButton, backgroundButton);
+            var button = new CCControlButton(titleButton, backgroundButton);
 			button.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
 			button.SetTitleColorForState(CCTypes.CCWhite, CCControlState.Highlighted);
     

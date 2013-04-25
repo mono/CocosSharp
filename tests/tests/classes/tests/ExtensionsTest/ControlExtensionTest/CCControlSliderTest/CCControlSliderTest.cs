@@ -18,7 +18,7 @@ namespace tests.Extensions
 				AddChild(m_pDisplayValueLabel);
 
 				// Add the slider
-                var slider = CCControlSlider.Create("extensions/sliderTrack", "extensions/sliderProgress", "extensions/sliderThumb");
+                var slider = new CCControlSlider("extensions/sliderTrack", "extensions/sliderProgress", "extensions/sliderThumb");
 				slider.AnchorPoint = new CCPoint(0.5f, 1.0f);
 				slider.MinimumValue = 0.0f; // Sets the min value of range
 				slider.MaximumValue = 5.0f; // Sets the max value of range
@@ -28,7 +28,7 @@ namespace tests.Extensions
 				// When the value of the slider will change, the given selector will be call
 				slider.AddTargetWithActionForControlEvents(this, valueChanged, CCControlEvent.ValueChanged);
 
-                var restrictSlider = CCControlSlider.Create("extensions/sliderTrack", "extensions/sliderProgress", "extensions/sliderThumb");
+                var restrictSlider = new CCControlSlider("extensions/sliderTrack", "extensions/sliderProgress", "extensions/sliderThumb");
 				restrictSlider.AnchorPoint = new CCPoint(0.5f, 1.0f);
 				restrictSlider.MinimumValue = 0.0f; // Sets the min value of range
 				restrictSlider.MaximumValue = 5.0f; // Sets the max value of range

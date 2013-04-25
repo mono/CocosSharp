@@ -497,7 +497,8 @@ namespace cocos2d
             centre.Position = new CCPoint(leftWidth, bottomHeight);
         }
 
-        public bool InitWithFile(string file, CCRect rect, CCRect capInsets)
+        #region File Init Methods
+        internal virtual bool InitWithFile(string file, CCRect rect, CCRect capInsets)
         {
             Debug.Assert(!string.IsNullOrEmpty(file), "Invalid file for sprite");
 
@@ -506,55 +507,29 @@ namespace cocos2d
             return pReturn;
         }
 
-        public static CCScale9Sprite Create(string file, CCRect rect, CCRect capInsets)
-        {
-            var pReturn = new CCScale9Sprite();
-            pReturn.InitWithFile(file, rect, capInsets);
-            return pReturn;
-        }
-
-        public bool InitWithFile(string file, CCRect rect)
+        internal virtual bool InitWithFile(string file, CCRect rect)
         {
             Debug.Assert(!string.IsNullOrEmpty(file), "Invalid file for sprite");
             bool pReturn = InitWithFile(file, rect, CCRect.Zero);
             return pReturn;
         }
 
-        public static CCScale9Sprite Create(string file, CCRect rect)
-        {
-            var pReturn = new CCScale9Sprite();
-            pReturn.InitWithFile(file, rect);
-            return pReturn;
-        }
-
-
-        public bool InitWithFile(CCRect capInsets, string file)
+        internal virtual bool InitWithFile(CCRect capInsets, string file)
         {
             bool pReturn = InitWithFile(file, CCRect.Zero, capInsets);
             return pReturn;
         }
 
-        public static CCScale9Sprite Create(CCRect capInsets, string file)
-        {
-            var pReturn = new CCScale9Sprite();
-            pReturn.InitWithFile(file, capInsets);
-            return pReturn;
-        }
-
-        public bool InitWithFile(string file)
+        internal virtual bool InitWithFile(string file)
         {
             bool pReturn = InitWithFile(file, CCRect.Zero);
             return pReturn;
         }
+        #endregion
 
-        public static CCScale9Sprite Create(string file)
-        {
-            var pReturn = new CCScale9Sprite();
-            pReturn.InitWithFile(file);
-            return pReturn;
-        }
+        #region SpriteFrame Methods
 
-        public bool InitWithSpriteFrame(CCSpriteFrame spriteFrame, CCRect capInsets)
+        internal virtual bool InitWithSpriteFrame(CCSpriteFrame spriteFrame, CCRect capInsets)
         {
             Debug.Assert(spriteFrame != null, "Sprite frame must be not nil");
 
@@ -563,28 +538,14 @@ namespace cocos2d
             return pReturn;
         }
 
-        public static CCScale9Sprite CreateWithSpriteFrame(CCSpriteFrame spriteFrame, CCRect capInsets)
-        {
-            var pReturn = new CCScale9Sprite();
-            pReturn.InitWithSpriteFrame(spriteFrame, capInsets);
-            return pReturn;
-        }
-
-        public bool InitWithSpriteFrame(CCSpriteFrame spriteFrame)
+        internal virtual bool InitWithSpriteFrame(CCSpriteFrame spriteFrame)
         {
             Debug.Assert(spriteFrame != null, "Invalid spriteFrame for sprite");
             bool pReturn = InitWithSpriteFrame(spriteFrame, CCRect.Zero);
             return pReturn;
         }
 
-        public static CCScale9Sprite CreateWithSpriteFrame(CCSpriteFrame spriteFrame)
-        {
-            var pReturn = new CCScale9Sprite();
-            pReturn.InitWithSpriteFrame(spriteFrame);
-            return pReturn;
-        }
-
-        public bool InitWithSpriteFrameName(string spriteFrameName, CCRect capInsets)
+        internal virtual bool InitWithSpriteFrameName(string spriteFrameName, CCRect capInsets)
         {
             Debug.Assert(spriteFrameName != null, "Invalid spriteFrameName for sprite");
 
@@ -593,42 +554,21 @@ namespace cocos2d
             return pReturn;
         }
 
-        public static CCScale9Sprite CreateWithSpriteFrameName(string spriteFrameName, CCRect capInsets)
-        {
-            var pReturn = new CCScale9Sprite();
-            pReturn.InitWithSpriteFrameName(spriteFrameName, capInsets);
-            return pReturn;
-        }
-
-        public bool InitWithSpriteFrameName(string spriteFrameName)
+        internal virtual bool InitWithSpriteFrameName(string spriteFrameName)
         {
             bool pReturn = InitWithSpriteFrameName(spriteFrameName, CCRect.Zero);
             return pReturn;
         }
 
-        public static CCScale9Sprite SpriteWithSpriteFrameName(string spriteFrameName)
+        #endregion
+
+        public CCScale9Sprite(CCRect capInsets)
         {
-            return CreateWithSpriteFrameName(spriteFrameName);
+            InitWithBatchNode(scale9Image, m_spriteRect, capInsets);
         }
 
-        public static CCScale9Sprite CreateWithSpriteFrameName(string spriteFrameName)
+        public CCScale9Sprite()
         {
-            var pReturn = new CCScale9Sprite();
-            pReturn.InitWithSpriteFrameName(spriteFrameName);
-            return pReturn;
-        }
-
-        public CCScale9Sprite ResizableSpriteWithCapInsets(CCRect capInsets)
-        {
-            var pReturn = new CCScale9Sprite();
-            pReturn.InitWithBatchNode(scale9Image, m_spriteRect, capInsets);
-            return pReturn;
-        }
-
-        public new static CCScale9Sprite Create()
-        {
-            var pReturn = new CCScale9Sprite();
-            return pReturn;
         }
 
         protected void UpdateCapInset()

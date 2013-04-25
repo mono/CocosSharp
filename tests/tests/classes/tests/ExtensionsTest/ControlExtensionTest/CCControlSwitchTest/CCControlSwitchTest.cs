@@ -19,7 +19,7 @@ namespace tests.Extensions
                 float layer_width = 0.0f;
 
                 // Add the black background for the text
-                CCScale9Sprite background = CCScale9Sprite.Create("extensions/buttonBackground");
+                CCScale9Sprite background = new CCScale9SpriteFile("extensions/buttonBackground");
                 background.ContentSize = new CCSize(80, 50);
                 background.Position = new CCPoint(layer_width + background.ContentSize.Width / 2.0f, 0);
                 layer.AddChild(background);
@@ -32,7 +32,7 @@ namespace tests.Extensions
                 layer.AddChild(m_pDisplayValueLabel);
 
                 // Create the switch
-                CCControlSwitch switchControl = CCControlSwitch.Create
+                CCControlSwitch switchControl = new CCControlSwitch
                     (
                         new CCSprite("extensions/switch-mask"),
                         new CCSprite("extensions/switch-on"),

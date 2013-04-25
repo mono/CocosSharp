@@ -55,23 +55,21 @@ namespace cocos2d
             }
         }
 
-        public bool InitWithMaskSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite)
+        protected virtual bool InitWithMaskSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite)
         {
             return InitWithMaskSprite(maskSprite, onSprite, offSprite, thumbSprite, null, null);
         }
 
         /** Creates a switch with a mask sprite, on/off sprites for on/off states and a thumb sprite. */
 
-        public static CCControlSwitch Create(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite)
+        public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite)
         {
-            var pRet = new CCControlSwitch();
-            pRet.InitWithMaskSprite(maskSprite, onSprite, offSprite, thumbSprite, null, null);
-            return pRet;
+            InitWithMaskSprite(maskSprite, onSprite, offSprite, thumbSprite, null, null);
         }
 
         /** Initializes a switch with a mask sprite, on/off sprites for on/off states, a thumb sprite and an on/off labels. */
 
-        public bool InitWithMaskSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, CCLabelTTF onLabel,
+        protected virtual bool InitWithMaskSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, CCLabelTTF onLabel,
                                        CCLabelTTF offLabel)
         {
             if (base.Init())
@@ -100,12 +98,10 @@ namespace cocos2d
 
         /** Creates a switch with a mask sprite, on/off sprites for on/off states, a thumb sprite and an on/off labels. */
 
-        public static CCControlSwitch Create(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, CCLabelTTF onLabel,
+        public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, CCLabelTTF onLabel,
                                              CCLabelTTF offLabel)
         {
-            var pRet = new CCControlSwitch();
-            pRet.InitWithMaskSprite(maskSprite, onSprite, offSprite, thumbSprite, onLabel, offLabel);
-            return pRet;
+            InitWithMaskSprite(maskSprite, onSprite, offSprite, thumbSprite, onLabel, offLabel);
         }
 
         /**
