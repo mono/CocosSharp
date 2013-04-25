@@ -40,7 +40,7 @@ namespace cocos2d
 
             // create the blend action
             CCSequence layerAction = CCSequence.FromActions(
-                CCProgressFromTo.Create(m_fDuration, m_fFrom, m_fTo),
+                new CCProgressFromTo(m_fDuration, m_fFrom, m_fTo),
                 new CCCallFunc(Finish)
                 );
 

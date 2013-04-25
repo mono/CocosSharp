@@ -9,7 +9,7 @@ namespace cocos2d
         /// <summary>
         /// Initializes with a duration and a percent
         /// </summary>
-        public bool InitWithDuration(float duration, float fPercent)
+        protected virtual bool InitWithDuration(float duration, float fPercent)
         {
             if (base.InitWithDuration(duration))
             {
@@ -59,15 +59,16 @@ namespace cocos2d
             ((CCProgressTimer) m_pTarget).Percentage = m_fFrom + (m_fTo - m_fFrom) * time;
         }
 
+        protected CCProgressTo()
+        {
+        }
+
         /// <summary>
         /// Creates and initializes with a duration and a percent
         /// </summary>
-        public static CCProgressTo Create(float duration, float fPercent)
+        public CCProgressTo(float duration, float fPercent) : base(duration)
         {
-            var pProgressTo = new CCProgressTo();
-            pProgressTo.InitWithDuration(duration, fPercent);
-
-            return pProgressTo;
+            InitWithDuration(duration, fPercent);
         }
     }
 }

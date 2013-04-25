@@ -10,7 +10,7 @@ namespace cocos2d
         /// <summary>
         /// Initializes the action with a duration, a "from" percentage and a "to" percentage
         /// </summary>
-        public bool InitWithDuration(float duration, float fFromPercentage, float fToPercentage)
+        protected virtual bool InitWithDuration(float duration, float fFromPercentage, float fToPercentage)
         {
             // if (CCActionInterval::initWithDuration(duration))
             if (InitWithDuration(duration))
@@ -45,7 +45,7 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_fDuration, m_fTo, m_fFrom);
+            return new CCProgressFromTo(m_fDuration, m_fTo, m_fFrom);
         }
 
         public override void StartWithTarget(CCNode target)
@@ -59,14 +59,16 @@ namespace cocos2d
             ((CCProgressTimer) (m_pTarget)).Percentage = m_fFrom + (m_fTo - m_fFrom) * time;
         }
 
+        protected CCProgressFromTo()
+        {
+        }
+
         /// <summary>
         /// Creates and initializes the action with a duration, a "from" percentage and a "to" percentage
         /// </summary>
-        public static CCProgressFromTo Create(float duration, float fFromPercentage, float fToPercentage)
+        public CCProgressFromTo(float duration, float fFromPercentage, float fToPercentage) : base(duration)
         {
-            var pProgressFromTo = new CCProgressFromTo();
-            pProgressFromTo.InitWithDuration(duration, fFromPercentage, fToPercentage);
-            return pProgressFromTo;
+            InitWithDuration(duration, fFromPercentage, fToPercentage);
         }
     }
 }
