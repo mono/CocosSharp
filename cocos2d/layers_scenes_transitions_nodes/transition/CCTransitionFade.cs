@@ -68,7 +68,7 @@ namespace cocos2d
         {
             base.OnEnter();
 
-            CCLayerColor l = CCLayerColor.Create(m_tColor);
+            CCLayerColor l = new CCLayerColor(m_tColor);
             m_pInScene.Visible = false;
 
             AddChild(l, 2, kSceneFade);

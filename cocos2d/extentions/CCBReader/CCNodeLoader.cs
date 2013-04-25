@@ -365,9 +365,9 @@ namespace cocos2d
             {
                 var baseValue = new List<CCBValue>
                     {
-                        CCBValue.Create(x),
-                        CCBValue.Create(y),
-                        CCBValue.Create((int) type)
+                        new CCBValue(x),
+                        new CCBValue(y),
+                        new CCBValue((int) type)
                     };
                 reader.AnimationManager.SetBaseValue(baseValue, node, propertyName);
             }
@@ -457,9 +457,9 @@ namespace cocos2d
             {
                 var baseValue = new List<CCBValue>
                     {
-                        CCBValue.Create(x),
-                        CCBValue.Create(y),
-                        CCBValue.Create((int) type)
+                        new CCBValue(x),
+                        new CCBValue(y),
+                        new CCBValue((int) type)
                     };
                 reader.AnimationManager.SetBaseValue(baseValue, node, propertyName);
             }
@@ -487,7 +487,7 @@ namespace cocos2d
             float ret = reader.ReadFloat();
             if (reader.AnimatedProperties.Contains(propertyName))
             {
-                CCBValue value = CCBValue.Create(ret);
+                CCBValue value = new CCBValue(ret);
                 reader.AnimationManager.SetBaseValue(value, node, propertyName);
             }
 
@@ -536,7 +536,7 @@ namespace cocos2d
 
             if (reader.AnimatedProperties.Contains(propertyName))
             {
-                CCBValue value = CCBValue.Create(ret);
+                CCBValue value = new CCBValue(ret);
                 reader.AnimationManager.SetBaseValue(value, node, propertyName);
             }
 
@@ -622,7 +622,7 @@ namespace cocos2d
 
             if (reader.AnimatedProperties.Contains(propertyName))
             {
-                reader.AnimationManager.SetBaseValue(CCBValue.Create(ret), node, propertyName);
+                reader.AnimationManager.SetBaseValue(new CCBValue(ret), node, propertyName);
             }
 
             return ret;

@@ -447,7 +447,12 @@ namespace cocos2d
 
         public void SetAntiAliasTexParameters()
         {
+            var saveState = m_samplerState;
+            m_samplerState = new SamplerState();
             m_samplerState.Filter = TextureFilter.Point;
+            m_samplerState.AddressU = saveState.AddressU;
+            m_samplerState.AddressV = saveState.AddressV;
+            m_samplerState.AddressW = saveState.AddressW;
         }
 
         /** sets alias texture parameters:
@@ -459,7 +464,12 @@ namespace cocos2d
 
         public void SetAliasTexParameters()
         {
+            var saveState = m_samplerState;
+            m_samplerState = new SamplerState();
             m_samplerState.Filter = TextureFilter.Linear;
+            m_samplerState.AddressU = saveState.AddressU;
+            m_samplerState.AddressV = saveState.AddressV;
+            m_samplerState.AddressW = saveState.AddressW;
         }
 
 

@@ -30,7 +30,7 @@ namespace tests
     public class TextureTestScene : TestScene
     {
 
-        static int TEST_CASE_COUNT = 3;
+        static int TEST_CASE_COUNT = 4;
 
         static int sceneIdx = -1;
 
@@ -46,6 +46,8 @@ namespace tests
                 pLayer = new TextureSizeTest(); break;
             case 2:
                 pLayer = new TextureGLRepeat(); break;
+            case 3:
+                pLayer = new TextureGLClamp(); break;
 
             //case 0:
             //    pLayer = new TextureAlias(); break;
@@ -200,11 +202,7 @@ namespace tests
         {
             CCTextureCache.SharedTextureCache.RemoveUnusedTextures();
 
-            // Put a try around this because we are getting an error for Sync
-            try {
-                CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
-            }
-            catch {}
+            CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
         }
 
         public void restartCallback(object pSender)
@@ -1217,45 +1215,51 @@ namespace tests
     //{
     //    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
     //}
-
-
-    public class PatternSprite : CCSprite
+    //------------------------------------------------------------------
+    //
+    // TextureGLClamp
+    //
+    //------------------------------------------------------------------
+    public class TextureGLClamp : TextureDemo
     {
-
-        public PatternSprite (string imageName) : base (imageName)
-        {}
-
-        public PatternSprite (string imageName, CCRect rect) : base (imageName,rect)
-        {}
-
-        public override void Draw()
-        //public void Draw2()
+        public override void OnEnter()
         {
-            base.Draw();
-//            DrawManager.BlendFunc(m_sBlendFunc);
-//            DrawManager.BindTexture(Texture);
-//            DrawManager.SamplerStateWrap();
-//            DrawManager.DrawQuad(ref m_sQuad);
-
-            //var sb = DrawManager.spriteBatch;
-            //var transf = NodeToParentTransform();
-
-
-//            var position = Vector2.Zero;
-//            var origin = Vector2.Zero;
-//            var color =  new Color(this.Color.R, this.Color.G, this.Color.B, Opacity);
-//            var destRect = new Rectangle(0,0,256,256);
-//            position.X = PositionX;
-//            position.Y = PositionY;
-//            position = Vector2.Zero;
-
-
-//            var origin = new Vector2(PositionX, PositionY);
-//            sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Matrix.Identity);   
-//            sb.Draw(Texture.Texture2D, position , destRect, color, 0, origin, 1, SpriteEffects.None, 0);
-//            sb.End();
+            base.OnEnter();
+            CCSize size = CCDirector.SharedDirector.WinSize;
             
+            // The .png image MUST be power of 2 in order to create a continue effect.
+            // eg: 32x64, 512x128, 256x1024, 64x64, etc..
+            var sprite = new CCSprite("Images/pattern1.png", new CCRect(0, 0, 512, 256));
+            AddChild(sprite, -1, (int)enumTag.kTagSprite1);
+            sprite.Position = new CCPoint(size.Width/2,size.Height/2);
+            
+#if OPENGL
+            sprite.Texture.TexParameters = new CCTexParams() {  MagFilter = (uint)All.Linear,
+                MinFilter = (uint)All.Linear,
+                WrapS = (uint)All.ClampToEdge,
+                WrapT = (uint)All.ClampToEdge
+            };
+#else
+			sprite.Texture.SamplerState = SamplerState.LinearClamp;
+#endif
+            var rotate = new CCRotateBy(4, 360);
+            sprite.RunAction(rotate);
+            var scale = new CCScaleBy(2, 0.04f);
+            var scaleBack = (CCScaleBy)scale.Reverse();
+            var seq = new CCSequence(scale, scaleBack);
+            sprite.RunAction(seq);
+
         }
+        
+        public override string title()
+        {
+            return "Texture GL_CLAMP";
+        }
+        
+//        public override string subtitle()
+//        {
+//            return "Texture is repeated within the area.";
+//        }
     }
 
 
@@ -1283,6 +1287,8 @@ namespace tests
                                                                 WrapS = (uint)All.Repeat,
                                                                 WrapT = (uint)All.Repeat
                                                               };
+#else
+            sprite.Texture.SamplerState = SamplerState.LinearWrap;
 #endif
             var rotate = new CCRotateBy(4, 360);
             sprite.RunAction(rotate);
@@ -1303,43 +1309,6 @@ namespace tests
             return "Texture is repeated within the area.";
         }
     }
-
-    ////------------------------------------------------------------------
-    ////
-    //// TextureGlRepeat
-    ////
-    ////------------------------------------------------------------------
-    //void TextureGlRepeat::onEnter()
-    //{
-    //    TextureDemo::onEnter();
-
-    //    CCSize size = CCDirector::sharedDirector()->getWinSize();
-	
-    //    // The .png image MUST be power of 2 in order to create a continue effect.
-    //    // eg: 32x64, 512x128, 256x1024, 64x64, etc..
-    //    CCSprite *sprite = CCSprite::create("Images/pattern1.png", CCRectMake(0, 0, 4096, 4096));
-    //    addChild(sprite, -1, kTagSprite1);
-    //    sprite->setPosition(ccp(size.width/2,size.height/2));
-    //    ccTexParams params = {GL_LINEAR,GL_LINEAR,GL_REPEAT,GL_REPEAT};
-    //    sprite->getTexture()->setTexParameters(&params);
-	
-    //    CCRotateBy* rotate = CCRotateBy::actionWithDuration(4, 360);
-    //    sprite->runAction(rotate);
-    //    CCScaleBy* scale = CCScaleBy::actionWithDuration(2, 0.04f);
-    //    CCScaleBy* scaleBack = (CCScaleBy*) (scale->reverse());
-    //    CCFiniteTimeAction* seq = CCSequence::actions(scale, scaleBack, NULL);
-    //    sprite->runAction(seq);
-    //}
-
-    //std::string TextureGlRepeat::title()
-    //{
-    //    return "Texture GL_REPEAT";
-    //}
-
-    //TextureGlRepeat::~TextureGlRepeat()
-    //{
-    //    CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-    //}
 
     //------------------------------------------------------------------
     //
