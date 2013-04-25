@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+te<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -205,6 +205,8 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCControlUtils.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCInvocation.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9Sprite.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCScrollView.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCSorting.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableView.cs" />
