@@ -54,7 +54,7 @@ namespace cocos2d
         /// <summary>
         /// initializes the action with the number of jumps, the sin amplitude, the grid size and the duration 
         /// </summary>
-        public bool InitWithJumps(int j, float amp, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithJumps(int j, float amp, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -121,11 +121,13 @@ namespace cocos2d
             }
         }
 
-        public static CCJumpTiles3D Create(int j, float amp, CCGridSize gridSize, float duration)
+        public CCJumpTiles3D()
         {
-            var pAction = new CCJumpTiles3D();
-            pAction.InitWithJumps(j, amp, gridSize, duration);
-            return pAction;
+        }
+
+        public CCJumpTiles3D(int j, float amp, CCGridSize gridSize, float duration) : base(duration)
+        {
+            InitWithJumps(j, amp, gridSize, duration);
         }
     }
 }

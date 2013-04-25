@@ -130,15 +130,15 @@ namespace tests
 
                 case 8: return PageTransitionForward.Create(t, s);
                 case 9: return PageTransitionBackward.Create(t, s);
-                case 10: return CCTransitionFadeTR.Create(t, s);
-                case 11: return CCTransitionFadeBL.Create(t, s);
-                case 12: return CCTransitionFadeUp.Create(t, s);
-                case 13: return CCTransitionFadeDown.Create(t, s);
+                case 10: return new CCTransitionFadeTR(t, s);
+                case 11: return new CCTransitionFadeBL(t, s);
+                case 12: return new CCTransitionFadeUp(t, s);
+                case 13: return new CCTransitionFadeDown(t, s);
 
                 case 14: return CCTransitionTurnOffTiles.Create(t, s);
 
-                case 15: return CCTransitionSplitRows.Create(t, s);
-                case 16: return CCTransitionSplitCols.Create(t, s);
+                case 15: return new CCTransitionSplitRows(t, s);
+                case 16: return new CCTransitionSplitCols(t, s);
 
                 case 17: return new CCTransitionFade(t, s);
                 case 18: return new FadeWhiteTransition(t, s);

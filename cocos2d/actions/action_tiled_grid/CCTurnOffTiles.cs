@@ -39,7 +39,7 @@ namespace cocos2d
         /// <summary>
         /// initializes the action with a random seed, the grid size and the duration 
         /// </summary>
-        public bool InitWithSeed(int s, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithSeed(int s, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -142,21 +142,21 @@ namespace cocos2d
         /// <summary>
         /// creates the action with the grid size and the duration
         /// </summary>
-        public new static CCTurnOffTiles Create(CCGridSize size, float d)
+        public CCTurnOffTiles(CCGridSize size, float d)  :base(d)
         {
-            var pAction = new CCTurnOffTiles();
-            pAction.InitWithSize(size, d);
-            return pAction;
+            InitWithSize(size, d);
+        }
+
+        public CCTurnOffTiles()
+        {
         }
 
         /// <summary>
         /// creates the action with a random seed, the grid size and the duration 
         /// </summary>
-        public static CCTurnOffTiles Create(int s, CCGridSize gridSize, float duration)
+        public CCTurnOffTiles(int s, CCGridSize gridSize, float duration) : base(duration)
         {
-            var pAction = new CCTurnOffTiles();
-            pAction.InitWithSeed(s, gridSize, duration);
-            return pAction;
+            InitWithSeed(s, gridSize, duration);
         }
     }
 }

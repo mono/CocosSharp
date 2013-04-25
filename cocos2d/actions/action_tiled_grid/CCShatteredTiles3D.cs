@@ -37,7 +37,7 @@ namespace cocos2d
         /// <summary>
         /// initializes the action with a range, whether or not to shatter Z vertices, a grid size and duration
         /// </summary>
-        public bool InitWithRange(int nRange, bool bShatterZ, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithRange(int nRange, bool bShatterZ, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -112,14 +112,16 @@ namespace cocos2d
             }
         }
 
+        public CCShatteredTiles3D()
+        {
+        }
+
         /// <summary>
         /// creates the action with a range, whether of not to shatter Z vertices, a grid size and duration
         /// </summary>
-        public static CCShatteredTiles3D Create(int nRange, bool bShatterZ, CCGridSize gridSize, float duration)
+        public CCShatteredTiles3D(int nRange, bool bShatterZ, CCGridSize gridSize, float duration) : base(duration)
         {
-            var pAction = new CCShatteredTiles3D();
-            pAction.InitWithRange(nRange, bShatterZ, gridSize, duration);
-            return pAction;
+            InitWithRange(nRange, bShatterZ, gridSize, duration);
         }
     }
 }

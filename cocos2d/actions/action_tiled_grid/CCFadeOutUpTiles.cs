@@ -57,14 +57,16 @@ namespace cocos2d
             SetTile(pos, ref coords);
         }
 
+        public CCFadeOutUpTiles()
+        {
+        }
+
         /// <summary>
         /// creates the action with the grid size and the duration 
         /// </summary>
-        public new static CCFadeOutUpTiles Create(CCGridSize gridSize, float time)
+        public CCFadeOutUpTiles(CCGridSize gridSize, float duration) : base(duration)
         {
-            var pAction = new CCFadeOutUpTiles();
-            pAction.InitWithSize(gridSize, time);
-            return pAction;
+            InitWithSize(gridSize, duration);
         }
     }
 }

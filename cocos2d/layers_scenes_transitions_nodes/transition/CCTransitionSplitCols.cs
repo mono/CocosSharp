@@ -42,7 +42,7 @@ namespace cocos2d
 
         public virtual CCActionInterval Action()
         {
-            return CCSplitCols.Create(3, m_fDuration / 2.0f);
+            return new CCSplitCols(3, m_fDuration / 2.0f);
         }
 
         public override void OnEnter()
@@ -64,15 +64,9 @@ namespace cocos2d
                 CCStopGrid.Create()));
         }
 
-        public new static CCTransitionSplitCols Create(float t, CCScene scene)
+        public CCTransitionSplitCols(float t, CCScene scene) : base(t, scene)
         {
-            var pScene = new CCTransitionSplitCols();
-            if (pScene.InitWithDuration(t, scene))
-            {
-                return pScene;
-            }
-
-            return null;
+            InitWithDuration(t, scene);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace cocos2d
         /// <summary>
         ///  initializes the action with the number of columns to split and the duration 
         /// </summary>
-        public bool InitWithCols(int nCols, float duration)
+        protected virtual bool InitWithCols(int nCols, float duration)
         {
             m_nCols = nCols;
             return base.InitWithSize(new CCGridSize(nCols, 1), duration);
@@ -87,14 +87,16 @@ namespace cocos2d
             m_winSize = CCDirector.SharedDirector.WinSizeInPixels;
         }
 
+        public CCSplitCols()
+        {
+        }
+
         /// <summary>
         /// creates the action with the number of columns to split and the duration
         /// </summary>
-        public static CCSplitCols Create(int nCols, float duration)
+        public CCSplitCols(int nCols, float duration) : base(duration)
         {
-            var pAction = new CCSplitCols();
-            pAction.InitWithCols(nCols, duration);
-            return pAction;
+            InitWithCols(nCols, duration);
         }
     }
 }
