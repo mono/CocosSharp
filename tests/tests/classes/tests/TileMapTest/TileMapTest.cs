@@ -122,7 +122,7 @@ namespace tests
             //
             // it should not flicker. No artifacts should appear
             //
-            //CCLayerColor* color = CCLayerColor.Create( ccc4(64,64,64,255) );
+            //CCLayerColor* color = new CCLayerColor( ccc4(64,64,64,255) );
             //addChild(color, -1);
 
             CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test2");
@@ -457,7 +457,7 @@ namespace tests
     {
         public TMXHexTest()
         {
-            CCLayerColor color = CCLayerColor.Create(new CCColor4B(64, 64, 64, 255));
+            CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
             CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/hexa-test1");
@@ -481,7 +481,7 @@ namespace tests
     {
         public TMXIsoTest()
         {
-            CCLayerColor color = CCLayerColor.Create(new CCColor4B(64, 64, 64, 255));
+            CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
             CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test01");
@@ -508,7 +508,7 @@ namespace tests
     {
         public TMXIsoTest1()
         {
-            CCLayerColor color = CCLayerColor.Create(new CCColor4B(64, 64, 64, 255));
+            CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
             CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test11");
@@ -534,7 +534,7 @@ namespace tests
     {
         public TMXIsoTest2()
         {
-            CCLayerColor color = CCLayerColor.Create(new CCColor4B(64, 64, 64, 255));
+            CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
             CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test22");
@@ -563,7 +563,7 @@ namespace tests
     {
         public TMXUncompressedTest()
         {
-            CCLayerColor color = CCLayerColor.Create(new CCColor4B(64, 64, 64, 255));
+            CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
             CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test2-uncompressed");

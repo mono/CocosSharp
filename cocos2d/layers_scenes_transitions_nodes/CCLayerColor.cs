@@ -48,7 +48,24 @@ namespace cocos2d
 
             // default blend function
             m_tBlendFunc = new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending);
+            Init ();
 
+        }
+
+        /// <summary>
+        /// creates a CCLayer with color, width and height in Points
+        /// </summary>
+        public CCLayerColor (CCColor4B color, float width, float height) : this()
+        {
+            InitWithColorWidthHeight(color, width, height);
+        }
+        
+        /// <summary>
+        /// creates a CCLayer with color. Width and height are the window size. 
+        /// </summary>
+        public CCLayerColor (CCColor4B color) : this()
+        {
+            InitWithColor(color);
         }
 
         /// <summary>
@@ -70,34 +87,8 @@ namespace cocos2d
             }
         }
 
-        #region create and init
+        #region InitWithXXX
 
-        public new static CCLayerColor Create()
-        {
-            var pRet = new CCLayerColor();
-            pRet.Init();
-            return pRet;
-        }
-
-        /// <summary>
-        /// creates a CCLayer with color, width and height in Points
-        /// </summary>
-        public static CCLayerColor Create(CCColor4B color, float width, float height)
-        {
-            var pLayer = new CCLayerColor();
-            pLayer.InitWithColorWidthHeight(color, width, height);
-            return pLayer;
-        }
-
-        /// <summary>
-        /// creates a CCLayer with color. Width and height are the window size. 
-        /// </summary>
-        public static CCLayerColor Create(CCColor4B color)
-        {
-            var pLayer = new CCLayerColor();
-            pLayer.InitWithColor(color);
-            return pLayer;
-        }
 
         /// <summary>
         ///  initializes a CCLayer with color, width and height in Points

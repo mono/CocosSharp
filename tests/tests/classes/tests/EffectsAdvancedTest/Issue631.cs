@@ -15,14 +15,14 @@ namespace tests
             RemoveChild(bg, true);
 
             // background
-            CCLayerColor layer = CCLayerColor.Create(new CCColor4B(255, 0, 0, 255));
+            CCLayerColor layer = new CCLayerColor(new CCColor4B(255, 0, 0, 255));
             AddChild(layer, -10);
             CCSprite sprite = new CCSprite("Images/grossini");
             sprite.Position = new CCPoint(50, 80);
             layer.AddChild(sprite, 10);
 
             // foreground
-            CCLayerColor layer2 = CCLayerColor.Create(new CCColor4B(0, 255, 0, 255));
+            CCLayerColor layer2 = new CCLayerColor(new CCColor4B(0, 255, 0, 255));
             CCSprite fog = new CCSprite("Images/Fog");
 
             var bf = new CCBlendFunc {Source = OGLES.GL_SRC_ALPHA, Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA};

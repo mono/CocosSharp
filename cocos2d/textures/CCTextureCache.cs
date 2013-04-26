@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
@@ -293,8 +294,11 @@ namespace cocos2d
         {
             int count = 0;
             int total = 0;
-            foreach(var pair in m_pTextures) // invalid state exception
-                {
+
+			var copy = m_pTextures.ToList();
+
+			foreach (var pair in copy)
+            {
                 var texture = pair.Value.Texture2D;
                 var bytes = texture.Width * texture.Height * 4;
 

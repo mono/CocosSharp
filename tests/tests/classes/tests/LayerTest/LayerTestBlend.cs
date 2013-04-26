@@ -14,7 +14,7 @@ namespace tests
         public LayerTestBlend()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            CCLayerColor layer1 = CCLayerColor.Create(new CCColor4B(255, 255, 255, 80));
+            CCLayerColor layer1 = new CCLayerColor(new CCColor4B(255, 255, 255, 80));
 
             CCSprite sister1 = new CCSprite(s_pPathSister1);
             CCSprite sister2 = new CCSprite(s_pPathSister2);

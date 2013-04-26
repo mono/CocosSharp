@@ -42,7 +42,7 @@ namespace cocos2d
             // in which we are going to add our rendertextures
             var color = new CCColor4B(0, 0, 0, 0);
             CCSize size = CCDirector.SharedDirector.WinSize;
-            CCLayerColor layer = CCLayerColor.Create(color);
+            CCLayerColor layer = new CCLayerColor(color);
 
             // create the first render texture for inScene
             CCRenderTexture inTexture = CCRenderTexture.Create((int) size.Width, (int) size.Height);

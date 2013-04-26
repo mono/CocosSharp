@@ -205,6 +205,8 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCControlUtils.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCInvocation.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9Sprite.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCScrollView.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCSorting.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableView.cs" />

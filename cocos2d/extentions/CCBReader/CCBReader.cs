@@ -588,11 +588,11 @@ namespace cocos2d
 
             if (type == kCCBPropType.kCCBPropTypeCheck)
             {
-                value = CCBValue.Create(ReadBool());
+                value = new CCBValue(ReadBool());
             }
             else if (type == kCCBPropType.kCCBPropTypeByte)
             {
-                value = CCBValue.Create(ReadByte());
+                value = new CCBValue(ReadByte());
             }
             else if (type == kCCBPropType.kCCBPropTypeColor3)
             {
@@ -605,7 +605,7 @@ namespace cocos2d
             }
             else if (type == kCCBPropType.kCCBPropTypeDegrees)
             {
-                value = CCBValue.Create(ReadFloat());
+                value = new CCBValue(ReadFloat());
             }
             else if (type == kCCBPropType.kCCBPropTypeScaleLock || type == kCCBPropType.kCCBPropTypePosition)
             {
@@ -614,8 +614,8 @@ namespace cocos2d
 
                 value = new List<CCBValue>
                     {
-                        CCBValue.Create(a),
-                        CCBValue.Create(b)
+                        new CCBValue(a),
+                        new CCBValue(b)
                     };
             }
             else if (type == kCCBPropType.kCCBPropTypeSpriteFrame)
