@@ -8,7 +8,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCLens3D lens = CCLens3D.Create(new CCPoint(100, 180), 150, new CCGridSize(32, 24), 10);
+            CCLens3D lens = new CCLens3D(new CCPoint(100, 180), 150, new CCGridSize(32, 24), 10);
             CCJumpBy move = new CCJumpBy (5, new CCPoint(380, 0), 100, 4);
             var move_back = (CCActionInterval) move.Reverse();
             CCSequence seq = CCSequence.FromActions(move, move_back);

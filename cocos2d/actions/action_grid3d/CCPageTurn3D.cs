@@ -5,6 +5,15 @@ namespace cocos2d
 {
     public class CCPageTurn3D : CCGrid3DAction
     {
+
+        public CCPageTurn3D () 
+        { }
+
+        public CCPageTurn3D (CCGridSize gridSize, float time)
+        {
+            InitWithSize(gridSize, time);
+        }
+
         public override void Update(float time)
         {
             float tt = Math.Max(0, time - 0.25f);
@@ -63,11 +72,5 @@ namespace cocos2d
             }
         }
 
-        public new static CCPageTurn3D Create(CCGridSize gridSize, float time)
-        {
-            var pAction = new CCPageTurn3D();
-            pAction.InitWithSize(gridSize, time);
-            return pAction;
-        }
     }
 }

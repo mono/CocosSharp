@@ -4,6 +4,18 @@ namespace cocos2d
 {
     public class CCFlipY3D : CCFlipX3D
     {
+
+        /** creates the action with duration */
+
+        public CCFlipY3D ()
+        { }
+
+        public CCFlipY3D (float duration) : base (duration)
+        { }
+
+        public CCFlipY3D (CCFlipY3D flipY3D) : base (flipY3D)
+        { }
+
         public override void Update(float time)
         {
             float angle = (float) Math.PI * time; // 180 degrees
@@ -71,32 +83,24 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCFlipY3D pCopy;
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCFlipY3D) (pZone);
+                var pCopy = (CCFlipY3D) (pZone);
+                base.Copy(pZone);
+                
+                pCopy.InitWithSize(m_sGridSize, m_fDuration);
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCFlipY3D();
-                pZone = pCopy;
+                return new CCFlipY3D(this);
             }
 
-            base.Copy(pZone);
 
-            pCopy.InitWithSize(m_sGridSize, m_fDuration);
-
-            return pCopy;
         }
 
-        /** creates the action with duration */
 
-        public new static CCFlipY3D Create(float duration)
-        {
-            var pAction = new CCFlipY3D();
-            pAction.InitWithSize(new CCGridSize(1, 1), duration);
-            return pAction;
-        }
     }
 }

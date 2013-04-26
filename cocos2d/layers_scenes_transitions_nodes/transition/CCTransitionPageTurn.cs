@@ -75,13 +75,13 @@ namespace cocos2d
                 // Get hold of the PageTurn3DAction
                 return new CCReverseTime
                     (
-                        CCPageTurn3D.Create(vector, m_fDuration)
+                        new CCPageTurn3D (vector, m_fDuration)
                     );
             }
             else
             {
                 // Get hold of the PageTurn3DAction
-                return CCPageTurn3D.Create(vector, m_fDuration);
+                return new CCPageTurn3D (vector, m_fDuration);
             }
         }
 
