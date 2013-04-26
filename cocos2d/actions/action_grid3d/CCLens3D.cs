@@ -10,6 +10,19 @@ namespace cocos2d
         protected CCPoint m_position;
         protected CCPoint m_positionInPixels;
 
+        public CCLens3D ()
+        { }
+
+        public CCLens3D (CCPoint pos, float r, CCGridSize gridSize, float duration) : base()
+        {
+            InitWithPosition(pos, r, gridSize, duration);
+        }
+
+        public CCLens3D (CCLens3D lens3D)
+        {
+            InitWithPosition(lens3D.m_position, lens3D.m_fRadius, lens3D.m_sGridSize, lens3D.m_fDuration);
+        }
+
         public float LensEffect
         {
             get { return m_fLensEffect; }
@@ -51,23 +64,21 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCLens3D pCopy;
             if (pZone != null)
             {
                 // in case of being called at sub class
-                pCopy = (CCLens3D) (pZone);
+                var pCopy = (CCLens3D) (pZone);
+                base.Copy(pZone);
+                
+                pCopy.InitWithPosition(m_position, m_fRadius, m_sGridSize, m_fDuration);
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCLens3D();
-                pZone = pCopy;
+                return new CCLens3D(this);
             }
 
-            base.Copy(pZone);
-
-            pCopy.InitWithPosition(m_position, m_fRadius, m_sGridSize, m_fDuration);
-
-            return pCopy;
         }
 
         public override void Update(float time)
@@ -113,11 +124,5 @@ namespace cocos2d
             }
         }
 
-        public static CCLens3D Create(CCPoint pos, float r, CCGridSize gridSize, float duration)
-        {
-            var pAction = new CCLens3D();
-            pAction.InitWithPosition(pos, r, gridSize, duration);
-            return pAction;
-        }
     }
 }
