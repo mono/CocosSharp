@@ -8,7 +8,7 @@ namespace tests
 {
     public class Waves3DDemo : CCWaves3D
     {
-        public new static CCActionInterval actionWithDuration(float t)
+        public static CCActionInterval actionWithDuration(float t)
         {
             return new CCWaves3D(5, 40, new CCGridSize(15, 10), t);
         }
