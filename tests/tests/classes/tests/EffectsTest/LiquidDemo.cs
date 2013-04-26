@@ -10,7 +10,7 @@ namespace tests
     {
         public static CCActionInterval actionWithDuration(float t)
         {
-            return CCLiquid.Create(4, 20, new CCGridSize(16, 12), t);
+            return new CCLiquid (4, 20, new CCGridSize(16, 12), t);
         }
     }
 }

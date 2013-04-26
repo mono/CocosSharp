@@ -8,6 +8,19 @@ namespace cocos2d
         protected float m_fAmplitudeRate;
         protected int m_nWaves;
 
+        public CCLiquid ()
+        { }
+
+        public CCLiquid (int wav, float amp, CCGridSize gridSize, float duration)
+        {
+            InitWithWaves(wav, amp, gridSize, duration);
+        }
+
+        public CCLiquid (CCLiquid liquid) 
+        {
+            InitWithWaves(liquid.m_nWaves, liquid.m_fAmplitude, liquid.m_sGridSize, liquid.m_fDuration);
+        }
+
         public float Amplitude
         {
             get { return m_fAmplitude; }
@@ -36,23 +49,21 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCLiquid pCopy;
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCLiquid) (pZone);
+                var pCopy = (CCLiquid) (pZone);
+                base.Copy(pZone);
+                
+                pCopy.InitWithWaves(m_nWaves, m_fAmplitude, m_sGridSize, m_fDuration);
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCLiquid();
-                pZone = pCopy;
+                return new CCLiquid(this);
             }
 
-            base.Copy(pZone);
-
-            pCopy.InitWithWaves(m_nWaves, m_fAmplitude, m_sGridSize, m_fDuration);
-
-            return pCopy;
         }
 
         public override void Update(float time)
@@ -71,11 +82,5 @@ namespace cocos2d
             }
         }
 
-        public static CCLiquid Create(int wav, float amp, CCGridSize gridSize, float duration)
-        {
-            var pAction = new CCLiquid();
-            pAction.InitWithWaves(wav, amp, gridSize, duration);
-            return pAction;
-        }
     }
 }
