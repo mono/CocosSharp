@@ -14,7 +14,7 @@ namespace cocos2d
             set { m_fRate = value; }
         }
 
-        public bool InitWithAction(CCAction pAction, float duration)
+        protected virtual bool InitWithAction(CCAction pAction, float duration)
         {
             if (base.InitWithDuration(duration))
             {
@@ -48,14 +48,12 @@ namespace cocos2d
 
         public override CCFiniteTimeAction Reverse()
         {
-            return Create(m_pOther.Reverse(), m_fDuration);
+            return new CCAccelDeccelAmplitude(m_pOther.Reverse(), m_fDuration);
         }
 
-        public static CCAccelDeccelAmplitude Create(CCAction pAction, float duration)
+        public CCAccelDeccelAmplitude(CCAction pAction, float duration) : base(duration)
         {
-            var pRet = new CCAccelDeccelAmplitude();
-            pRet.InitWithAction(pAction, duration);
-            return pRet;
+            InitWithAction(pAction, duration);
         }
     }
 }

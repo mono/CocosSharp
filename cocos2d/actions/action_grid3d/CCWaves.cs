@@ -22,7 +22,7 @@ namespace cocos2d
             set { m_fAmplitudeRate = value; }
         }
 
-        public bool InitWithWaves(int wav, float amp, bool h, bool v, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithWaves(int wav, float amp, bool h, bool v, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -84,11 +84,12 @@ namespace cocos2d
             }
         }
 
-        public static CCWaves Create(int wav, float amp, bool h, bool v, CCGridSize gridSize, float duration)
+        protected CCWaves()
         {
-            var pAction = new CCWaves();
-            pAction.InitWithWaves(wav, amp, h, v, gridSize, duration);
-            return pAction;
+        }
+        public CCWaves(int wav, float amp, bool h, bool v, CCGridSize gridSize, float duration) : base(duration)
+        {
+            InitWithWaves(wav, amp, h, v, gridSize, duration);
         }
     }
 }

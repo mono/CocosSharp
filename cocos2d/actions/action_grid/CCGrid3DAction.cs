@@ -9,6 +9,13 @@ namespace cocos2d
     {
         private CCGrid3D m_pGrid;
 
+        protected CCGrid3DAction(float duration)
+            : base(duration)
+        {
+        }
+        protected CCGrid3DAction()
+        {
+        }
         public override CCGridBase Grid
         {
             get

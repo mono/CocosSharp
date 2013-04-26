@@ -10,7 +10,7 @@ namespace tests
     {
         public static CCActionInterval actionWithDuration(float t)
         {
-            return CCWaves.Create(4, 20, true, true, new CCGridSize(16, 12), t);
+            return new CCWaves(4, 20, true, true, new CCGridSize(16, 12), t);
         }
     }
 }

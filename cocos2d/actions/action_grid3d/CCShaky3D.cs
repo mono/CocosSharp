@@ -5,7 +5,7 @@ namespace cocos2d
         protected bool m_bShakeZ;
         protected int m_nRandrange;
 
-        public bool InitWithRange(int range, bool shakeZ, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithRange(int range, bool shakeZ, CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
             {
@@ -59,11 +59,12 @@ namespace cocos2d
             }
         }
 
-        public static CCShaky3D Create(int range, bool shakeZ, CCGridSize gridSize, float duration)
+        protected CCShaky3D()
         {
-            var pAction = new CCShaky3D();
-            pAction.InitWithRange(range, shakeZ, gridSize, duration);
-            return pAction;
+        }
+        public CCShaky3D(int range, bool shakeZ, CCGridSize gridSize, float duration) : base(duration)
+        {
+            InitWithRange(range, shakeZ, gridSize, duration);
         }
     }
 }
