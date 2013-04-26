@@ -6,26 +6,51 @@ namespace cocos2d
 	{
 		protected CCGridSize m_sGridSize;
 		
+        public CCGridAction()
+        {
+        }
+        
+        public CCGridAction(float duration)
+            : base(duration)
+        {
+        }
+        
+        public CCGridAction(CCGridSize gridSize, float duration) : base(duration)
+        {
+            InitWithSize(gridSize, duration);
+        }
+        
+        protected virtual bool InitWithSize(CCGridSize gridSize, float duration)
+        {
+            if (base.InitWithDuration(duration))
+            {
+                m_sGridSize = gridSize;
+                return true;
+            }
+            return false;
+        }
+
+        public CCGridAction (CCGridAction gridAction) : this (gridAction.m_sGridSize, gridAction.m_fDuration)
+        { }
+
 		public override object Copy(ICopyable pZone)
 		{
-			CCGridAction pCopy = null;
-			
+		
 			if (pZone != null)
 			{
 				//in case of being called at sub class
-				pCopy = (CCGridAction) (pZone);
-			}
+				var pCopy = (CCGridAction) (pZone);
+                base.Copy(pZone);
+                
+                pCopy.InitWithSize(m_sGridSize, m_fDuration);
+                
+                return pCopy;
+            }
 			else
 			{
-				pCopy = new CCGridAction();
-				pZone =  (pCopy);
+				return new CCGridAction(this);
 			}
 			
-			base.Copy(pZone);
-			
-			pCopy.InitWithSize(m_sGridSize, m_fDuration);
-			
-			return pCopy;
 		}
 		
 		public override void StartWithTarget(CCNode target)
@@ -74,28 +99,5 @@ namespace cocos2d
 			get { return null; }
 		}
 
-        public CCGridAction()
-        {
-        }
-
-        public CCGridAction(float duration)
-            : base(duration)
-        {
-        }
-
-		public CCGridAction(CCGridSize gridSize, float duration) : base(duration)
-		{
-			InitWithSize(gridSize, duration);
-		}
-		
-		protected virtual bool InitWithSize(CCGridSize gridSize, float duration)
-		{
-			if (base.InitWithDuration(duration))
-			{
-				m_sGridSize = gridSize;
-				return true;
-			}
-			return false;
-		}
 	}
 }

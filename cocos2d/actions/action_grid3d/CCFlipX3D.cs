@@ -5,6 +5,20 @@ namespace cocos2d
 {
     public class CCFlipX3D : CCGrid3DAction
     {
+
+        public CCFlipX3D ()
+        { }
+
+        public CCFlipX3D (float duration)
+        {
+            InitWithSize(new CCGridSize(1, 1), duration);
+        }
+
+        public CCFlipX3D (CCFlipX3D flipX3D) 
+        {
+            InitWithSize(flipX3D.m_sGridSize, flipX3D.m_fDuration);
+        }
+
         /// <summary>
         /// initializes the action with duration
         /// </summary>
@@ -27,23 +41,21 @@ namespace cocos2d
 
         public override object Copy(ICopyable pZone)
         {
-            CCFlipX3D pCopy;
             if (pZone != null)
             {
                 //in case of being called at sub class
-                pCopy = (CCFlipX3D) (pZone);
+                var pCopy = (CCFlipX3D) (pZone);
+                base.Copy(pZone);
+                
+                pCopy.InitWithSize(m_sGridSize, m_fDuration);
+                
+                return pCopy;
             }
             else
             {
-                pCopy = new CCFlipX3D();
-                pZone = pCopy;
+                return new CCFlipX3D(this);
             }
 
-            base.Copy(pZone);
-
-            pCopy.InitWithSize(m_sGridSize, m_fDuration);
-
-            return pCopy;
         }
 
         public override void Update(float time)
@@ -111,11 +123,6 @@ namespace cocos2d
             SetVertex(d, ref v);
         }
 
-        public new static CCFlipX3D Create(float duration)
-        {
-            var pAction = new CCFlipX3D();
-            pAction.InitWithSize(new CCGridSize(1, 1), duration);
-            return pAction;
-        }
+
     }
 }
