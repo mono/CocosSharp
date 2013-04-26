@@ -16,8 +16,8 @@ namespace tests
             CCNode target1 = bg.GetChildByTag(EffectAdvanceScene.kTagSprite1);
             CCNode target2 = bg.GetChildByTag(EffectAdvanceScene.kTagSprite2);
 
-            CCActionInterval waves = CCWaves.Create(5, 20, true, false, new CCGridSize(15, 10), 5);
-            CCActionInterval shaky = CCShaky3D.Create(4, false, new CCGridSize(15, 10), 5);
+            CCActionInterval waves = new CCWaves(5, 20, true, false, new CCGridSize(15, 10), 5);
+            CCActionInterval shaky = new CCShaky3D(4, false, new CCGridSize(15, 10), 5);
 
             target1.RunAction(new CCRepeatForever (waves));
             target2.RunAction(new CCRepeatForever (shaky));

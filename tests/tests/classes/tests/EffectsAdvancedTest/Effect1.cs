@@ -17,7 +17,7 @@ namespace tests
 
             CCSize size = CCDirector.SharedDirector.WinSize;
             CCActionInterval lens = CCLens3D.Create(new CCPoint(size.Width / 2, size.Height / 2), 240, new CCGridSize(15, 10), 0.0f);
-            CCActionInterval waves = CCWaves3D.Create(18, 15, new CCGridSize(15, 10), 10);
+            CCActionInterval waves = new CCWaves3D(18, 15, new CCGridSize(15, 10), 10);
 
             CCFiniteTimeAction reuse = new CCReuseGrid(1);
             CCActionInterval delay = new CCDelayTime (8);

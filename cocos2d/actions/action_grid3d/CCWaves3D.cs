@@ -67,11 +67,12 @@ namespace cocos2d
             }
         }
 
-        public static CCWaves3D Create(int wav, float amp, CCGridSize gridSize, float duration)
+        protected CCWaves3D()
         {
-            var pAction = new CCWaves3D();
-            pAction.InitWithWaves(wav, amp, gridSize, duration);
-            return pAction;
+        }
+        public CCWaves3D(int wav, float amp, CCGridSize gridSize, float duration) : base(duration)
+        {
+            InitWithWaves(wav, amp, gridSize, duration);
         }
     }
 }

@@ -261,6 +261,10 @@ namespace cocos2d
                 {
                     RemoveActionAtIndex(i, element);
                 }
+                else
+                {
+                    CCLog.Log("cocos2d: removeAction: Action not found");
+                }
             }
             else
             {
@@ -287,6 +291,11 @@ namespace cocos2d
                         break;
                     }
                 }
+                CCLog.Log("cocos2d : removeActionByTag: Tag " + tag + " not found");
+            }
+            else
+            {
+                CCLog.Log("cocos2d : removeActionByTag: Target not found");
             }
         }
 
@@ -309,10 +318,13 @@ namespace cocos2d
                             return action;
                         }
                     }
+                    CCLog.Log("cocos2d : getActionByTag: Tag " + tag + " not found");
                 }
             }
-
-            CCLog.Log("cocos2d : getActionByTag: Target not found");
+            else
+            {
+                CCLog.Log("cocos2d : getActionByTag: Target not found");
+            }
             return null;
         }
 

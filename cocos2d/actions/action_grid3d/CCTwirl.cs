@@ -33,7 +33,7 @@ namespace cocos2d
             set { m_fAmplitudeRate = value; }
         }
 
-        public bool InitWithPosition(CCPoint pos, int t, float amp, CCGridSize gridSize,
+        protected virtual bool InitWithPosition(CCPoint pos, int t, float amp, CCGridSize gridSize,
                                      float duration)
         {
             if (base.InitWithSize(gridSize, duration))
@@ -98,11 +98,12 @@ namespace cocos2d
             }
         }
 
-        public static CCTwirl Create(CCPoint pos, int t, float amp, CCGridSize gridSize, float duration)
+        protected CCTwirl()
         {
-            var pAction = new CCTwirl();
-            pAction.InitWithPosition(pos, t, amp, gridSize, duration);
-            return pAction;
+        }
+        public CCTwirl(CCPoint pos, int t, float amp, CCGridSize gridSize, float duration) : base(duration)
+        {
+            InitWithPosition(pos, t, amp, gridSize, duration);
         }
     }
 }
