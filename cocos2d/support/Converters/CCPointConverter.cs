@@ -5,6 +5,7 @@ using System.Globalization;
 
 namespace cocos2d
 {
+#if !NETFX_CORE
 	public class CCPointConverter : TypeConverter
 	{
 		// Overrides the CanConvertFrom method of TypeConverter.
@@ -58,5 +59,30 @@ namespace cocos2d
 		}
 
 	}
+#else
+    public class CCPointConverter
+    {
+        public static CCPoint CCPointFromString(string pszContent)
+        {
+            CCPoint ret = CCPoint.Zero;
+
+            do
+            {
+                List<string> strs = new List<string>();
+                if (!CCUtils.SplitWithForm(pszContent, strs)) break;
+
+                float x = CCUtils.CCParseFloat(strs[0]);
+                float y = CCUtils.CCParseFloat(strs[1]);
+
+                ret.X = x;
+                ret.Y = y;
+
+            } while (false);
+
+            return ret;
+        }
+
+    }
+#endif
 }
 

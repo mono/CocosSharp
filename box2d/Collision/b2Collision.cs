@@ -25,7 +25,7 @@ namespace Box2D.Collision
 
         public void Dump()
         {
-            Console.WriteLine("b2ClipVertex {{ v={0},{1} - feature={4}@{2},{5}@{3} }}", v.x, v.y, id.indexA, id.indexB, id.typeA, id.typeB);
+            System.Diagnostics.Debug.WriteLine("b2ClipVertex {{ v={0},{1} - feature={4}@{2},{5}@{3} }}", v.x, v.y, id.indexA, id.indexB, id.typeA, id.typeB);
         }
     };
 

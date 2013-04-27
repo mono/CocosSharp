@@ -29,7 +29,7 @@ namespace Box2D.Common
 #if DEBUG
             if (!IsValid())
             {
-                Console.WriteLine("Invalid vector - this message is here for the sake of a breakpoint");
+                System.Diagnostics.Debug.WriteLine("Invalid vector - this message is here for the sake of a breakpoint");
             }
 #endif
         }
@@ -45,7 +45,7 @@ namespace Box2D.Common
 #if DEBUG
             if (!IsValid())
             {
-                Console.WriteLine("Invalid vector - this message is here for the sake of a breakpoint");
+                System.Diagnostics.Debug.WriteLine("Invalid vector - this message is here for the sake of a breakpoint");
             }
 #endif
         }

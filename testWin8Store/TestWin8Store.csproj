@@ -15,7 +15,7 @@
     <PackageCertificateKeyFile>TestWin8Store_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>ARM</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -101,6 +101,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <ProjectReference Include="..\box2d\box2d.Windows8.csproj">
+      <Project>{b81b6701-7a78-4846-bf6f-04e0591f0f38}</Project>
+      <Name>box2d.Windows8</Name>
+    </ProjectReference>
     <ProjectReference Include="..\cocos2d\Cocos2d.WinRT.csproj">
       <Project>{dc731e59-0193-4f7c-bc61-b53ba0bf1f3c}</Project>
       <Name>Cocos2d.WinRT</Name>

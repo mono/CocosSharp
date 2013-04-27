@@ -23,24 +23,33 @@ THE SOFTWARE.
 ****************************************************************************/
 // root name of xml
 
+using System;
 using cocos2d;
 using System.IO;
-#if !WINDOWS && !MACOS && !LINUX
+#if !WINDOWS && !MACOS && !LINUX && !NETFX_CORE
 using System.IO.IsolatedStorage;
+#endif
+#if NETFX_CORE
+using Microsoft.Xna.Framework.Storage;
 #endif
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 
-public class CCUserDefault {
+public class CCUserDefault 
+{
+
 	private static CCUserDefault m_spUserDefault = null;
 	private static string USERDEFAULT_ROOT_NAME = "userDefaultRoot";
 	private static string XML_FILE_NAME = "UserDefault.xml";
 
-#if !WINDOWS && !MACOS && !LINUX
+#if !WINDOWS && !MACOS && !LINUX && !NETFX_CORE
 	private IsolatedStorageFile myIsolatedStorage;
+#elif NETFX_CORE
+    private StorageContainer myIsolatedStorage;
+    private StorageDevice myDevice;
 #endif
-	private Dictionary<string, string> values = new Dictionary<string, string>();
+    private Dictionary<string, string> values = new Dictionary<string, string>();
 
     private bool parseXMLFile(Stream xmlFile)
 	{
@@ -50,8 +59,6 @@ public class CCUserDefault {
 
 		// Create an XmlReader
 		using (XmlReader reader = XmlReader.Create(xmlFile)) {
-			XmlWriterSettings ws = new XmlWriterSettings();
-			ws.Indent = false;
 				// Parse the file and display each of the nodes.
 				while (reader.Read()) {
 					switch (reader.NodeType) {
@@ -89,6 +96,27 @@ public class CCUserDefault {
 		values[key] = value;
 	}
 
+#if NETFX_CORE
+    private StorageDevice CheckStorageDevice() {
+        if(myDevice != null) {
+            return(myDevice);
+        }
+        IAsyncResult result = StorageDevice.BeginShowSelector(null, null);
+        // Wait for the WaitHandle to become signaled.
+        result.AsyncWaitHandle.WaitOne();
+        myDevice = StorageDevice.EndShowSelector(result);
+        if(myDevice != null) {
+            result =
+                myDevice.BeginOpenContainer("Save Your Game...", null, null);
+            // Wait for the WaitHandle to become signaled.
+            result.AsyncWaitHandle.WaitOne();
+            myIsolatedStorage = myDevice.EndOpenContainer(result);
+            // Close the wait handle.
+            result.AsyncWaitHandle.Dispose();
+        }
+        return(myDevice);
+    }
+#endif
 
 	/**
 	 * implements of CCUserDefault
@@ -103,6 +131,22 @@ public class CCUserDefault {
 		using (FileStream fileStream = new FileInfo(XML_FILE_NAME).OpenRead()){
 			parseXMLFile(fileStream);
 		}
+#elif NETFX_CORE
+        if(myIsolatedStorage == null) {
+            CheckStorageDevice();
+        }
+        if(myIsolatedStorage != null) 
+        {
+            // only create xml file once if it doesnt exist
+            if ((!isXMLFileExist()))
+            {
+                createXMLFile();
+            }
+            using (Stream s = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate))
+            {
+                parseXMLFile(s);
+            }
+        }
 #else
         myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication();
 
@@ -115,7 +159,7 @@ public class CCUserDefault {
 			parseXMLFile(fileStream);
 		}
 #endif
-	}
+    }
 
 	public void PurgeSharedUserDefault()
 	{
@@ -263,6 +307,12 @@ public class CCUserDefault {
 		{
 			bRet = true;
 		}
+#elif NETFX_CORE
+        // use the StorageContainer to determine if the file exists.
+        if (myIsolatedStorage.FileExists(XML_FILE_NAME))
+        {
+            bRet = true;
+        }
 #else
         if (myIsolatedStorage.FileExists(XML_FILE_NAME)) 
 		{
@@ -279,14 +329,17 @@ public class CCUserDefault {
 
 #if WINDOWS || LINUX || MACOS
 		using (StreamWriter writeFile = new StreamWriter(XML_FILE_NAME)) 
+#elif NETFX_CORE
+        using (StreamWriter writeFile = new StreamWriter(myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate)))
 #else
         using (StreamWriter writeFile = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage)))
 #endif
-		{
-			string someTextData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><userDefaultRoot></userDefaultRoot>";
-			writeFile.WriteLine(someTextData);
-			writeFile.Close();
-		}
+        {
+            string someTextData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><userDefaultRoot>";
+            writeFile.WriteLine(someTextData);
+            // Do not write anything here. This just creates the temporary xml save file.
+            writeFile.WriteLine("</userDefaultRoot>");
+        }
 		return bRet;
 	}
 
@@ -294,6 +347,8 @@ public class CCUserDefault {
 	{
 #if WINDOWS || LINUX || MACOS
 		using (StreamWriter stream = new StreamWriter(XML_FILE_NAME)) 
+#elif NETFX_CORE
+        using (Stream stream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate))
 #else
 		using (StreamWriter stream = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage))) 
 #endif

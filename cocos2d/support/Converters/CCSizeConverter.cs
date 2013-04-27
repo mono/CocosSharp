@@ -5,6 +5,7 @@ using System.Globalization;
 
 namespace cocos2d
 {
+#if !NETFX_CORE
 	public class CCSizeConverter : TypeConverter
 	{
 		// Overrides the CanConvertFrom method of TypeConverter.
@@ -56,5 +57,28 @@ namespace cocos2d
 		}
 		
 	}
-}
+#else
+    public class CCSizeConverter
+    {
+        public static CCSize CCSizeFromString(string pszContent)
+        {
+            CCSize ret = new CCSize();
+
+            do
+            {
+                List<string> strs = new List<string>();
+                if (!CCUtils.SplitWithForm(pszContent, strs)) break;
+
+                float width = CCUtils.CCParseFloat(strs[0]);
+                float height = CCUtils.CCParseFloat(strs[1]);
+
+                ret = new CCSize(width, height);
+            } while (false);
+
+            return ret;
+        }
+
+    }
+#endif
+    }
 
