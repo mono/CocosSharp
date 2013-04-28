@@ -187,7 +187,11 @@ namespace cocos2d
             {
                 int primitiveCount = _triangleVertsCount / 3;
                 // submit the draw call to the graphics card
+#if NETFX_CORE
+                _device.SamplerStates[0] = SamplerState.LinearClamp;
+#else
                 _device.SamplerStates[0] = SamplerState.AnisotropicClamp;
+#endif
                 _device.DrawUserPrimitives(PrimitiveType.TriangleList, _triangleVertices, 0, primitiveCount);
                 _triangleVertsCount -= primitiveCount * 3;
 
@@ -206,7 +210,11 @@ namespace cocos2d
             {
                 int primitiveCount = _lineVertsCount / 2;
                 // submit the draw call to the graphics card
+#if NETFX_CORE
+                _device.SamplerStates[0] = SamplerState.LinearClamp;
+#else
                 _device.SamplerStates[0] = SamplerState.AnisotropicClamp;
+#endif
                 _device.DrawUserPrimitives(PrimitiveType.LineList, _lineVertices, 0, primitiveCount);
                 _lineVertsCount -= primitiveCount * 2;
 
