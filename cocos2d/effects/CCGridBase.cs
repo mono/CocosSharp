@@ -78,7 +78,7 @@ namespace cocos2d
             }
         }
 
-        public bool InitWithSize(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
+        protected virtual bool InitWithSize(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
         {
             bool bRet = true;
 
@@ -110,12 +110,12 @@ namespace cocos2d
             return bRet;
         }
 
-        public bool InitWithSize(CCGridSize gridSize)
+        protected virtual bool InitWithSize(CCGridSize gridSize)
         {
             return InitWithSize(gridSize, CCDirector.SharedDirector.WinSizeInPixels);
         }
 
-        public bool InitWithSize(CCGridSize gridSize, CCSize size)
+        protected virtual bool InitWithSize(CCGridSize gridSize, CCSize size)
         {
             //ulong POTWide = ccNextPOT((uint) size.width);
             //ulong POTHigh = ccNextPOT((uint) size.width);
@@ -144,7 +144,7 @@ namespace cocos2d
             return x + 1;
         }
 
-        public void BeforeDraw()
+        public virtual void BeforeDraw()
         {
             m_directorProjection = CCDirector.SharedDirector.Projection;
 
@@ -153,7 +153,7 @@ namespace cocos2d
             Set2DProjection();
         }
 
-        public void AfterDraw(CCNode target)
+        public virtual void AfterDraw(CCNode target)
         {
             m_pGrabber.AfterRender(m_pTexture);
 

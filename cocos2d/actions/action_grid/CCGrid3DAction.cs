@@ -22,11 +22,11 @@ namespace cocos2d
             {
                 if (m_pTarget != null && !m_pTarget.ContentSize.Equals(CCSize.Zero))
                 {
-                    m_pGrid = CCGrid3D.Create(m_sGridSize, m_pTarget.ContentSize);
+                    m_pGrid = new CCGrid3D(m_sGridSize, m_pTarget.ContentSize);
                 }
                 else
                 {
-                    m_pGrid = CCGrid3D.Create(m_sGridSize);
+                    m_pGrid = new CCGrid3D(m_sGridSize);
                 }
 
                 return m_pGrid;

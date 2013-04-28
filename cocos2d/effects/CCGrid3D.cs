@@ -214,34 +214,19 @@ namespace cocos2d
             m_bDirty = true;
         }
 
-        public static CCGrid3D Create(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
+        public CCGrid3D(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
         {
-            var pRet = new CCGrid3D();
-            if (pRet.InitWithSize(gridSize, pTexture, bFlipped))
-            {
-                return pRet;
-            }
-            return null;
+            InitWithSize(gridSize, pTexture, bFlipped);
         }
 
-        public static CCGrid3D Create(CCGridSize gridSize)
+        public CCGrid3D(CCGridSize gridSize)
         {
-            var pRet = new CCGrid3D();
-            if (pRet.InitWithSize(gridSize))
-            {
-                return pRet;
-            }
-            return null;
+            InitWithSize(gridSize);
         }
 
-        public static CCGrid3D Create(CCGridSize gridSize, CCSize size)
+        public CCGrid3D(CCGridSize gridSize, CCSize size)
         {
-            var pRet = new CCGrid3D();
-            if (pRet.InitWithSize(gridSize, size))
-            {
-                return pRet;
-            }
-            return null;
+            InitWithSize(gridSize, size);
         }
     }
 }

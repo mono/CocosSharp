@@ -35,7 +35,7 @@ namespace cocos2d
             get { return m_fAmplitudeRate; }
         }
 
-        public bool InitWithPosition(CCPoint pos, float r, int wav, float amp,
+        protected virtual bool InitWithPosition(CCPoint pos, float r, int wav, float amp,
                                      CCGridSize gridSize, float duration)
         {
             if (base.InitWithSize(gridSize, duration))
