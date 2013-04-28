@@ -14,12 +14,12 @@ namespace tests
             Schedule(schedUpdate, 2.0f);
         }
 
-        public virtual string title()
+        public override string title()
         {
             return "Schedule Update in 2 sec";
         }
 
-        public virtual string subtitle()
+        public override string subtitle()
         {
             return "Update schedules in 2 secs. Stops 2 sec later. See console";
         }

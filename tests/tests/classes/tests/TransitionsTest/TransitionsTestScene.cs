@@ -144,8 +144,8 @@ namespace tests
                 case 18: return new FadeWhiteTransition(t, s);
 
                 case 19: return FlipXLeftOver.Create(t, s);
-                case 20: return FlipXRightOver.Create(t, s);
-                case 21: return FlipYUpOver.Create(t, s);
+                case 20: return new FlipXRightOver(t, s);
+                case 21: return new FlipYUpOver(t, s);
                 case 22: return FlipYDownOver.Create(t, s);
                 case 23: return FlipAngularLeftOver.Create(t, s);
                 case 24: return FlipAngularRightOver.Create(t, s);

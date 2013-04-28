@@ -23,7 +23,7 @@ namespace tests
             return "Pause / Resume";
         }
 
-        public virtual string subtitle()
+        public override string subtitle()
         {
             return "Scheduler should be paused after 3 seconds. See console";
         }

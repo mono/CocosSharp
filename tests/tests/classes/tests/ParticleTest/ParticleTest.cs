@@ -1446,7 +1446,7 @@ namespace tests
 
             Schedule(switchRender, 2.0f);
 
-            CCLayer node = Create();
+            CCLayer node = new CCLayer();
             AddChild(node);
 
             m_pParent1 = batch;

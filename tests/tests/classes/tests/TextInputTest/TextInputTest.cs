@@ -101,7 +101,7 @@ namespace cocos2d
             throw new NotFiniteNumberException();
         }
 
-        public void onClickTrackNode(bool bClicked)
+        public virtual void onClickTrackNode(bool bClicked)
         {
             throw new NotFiniteNumberException();
         }
@@ -113,7 +113,7 @@ namespace cocos2d
 
         public virtual void keyboardWillShow(CCIMEKeyboardNotificationInfo info)
         {
-            CCLog.Log("TextInputTest:keyboardWillShowAt(origin:%f,%f, size:%f,%f)",
+            CCLog.Log("TextInputTest:keyboardWillShowAt(origin:{0:F3},{1:F3}, size:{2:F3},{3:F3})",
         info.end.Origin.X, info.end.Origin.Y, info.end.Size.Width, info.end.Size.Height);
 
             if (m_pTrackNode != null)
@@ -122,7 +122,7 @@ namespace cocos2d
             }
 
             CCRect rectTracked = TextInputTestScene.getRect(m_pTrackNode);
-            CCLog.Log("TextInputTest:trackingNodeAt(origin:%f,%f, size:%f,%f)",
+            CCLog.Log("TextInputTest:trackingNodeAt(origin:{0:F3},{1:F3}, size:{2:F3},{3:F3})",
                 rectTracked.Origin.X, rectTracked.Origin.Y, rectTracked.Size.Width, rectTracked.Size.Height);
 
             // if the keyboard area doesn't intersect with the tracking node area, nothing need to do.
@@ -133,7 +133,7 @@ namespace cocos2d
 
             // assume keyboard at the bottom of screen, calculate the vertical adjustment.
             float adjustVert = CCRect.CCRectGetMaxY(info.end) - CCRect.CCRectGetMinY(rectTracked);
-            CCLog.Log("TextInputTest:needAdjustVerticalPosition(%f)", adjustVert);
+            CCLog.Log("TextInputTest:needAdjustVerticalPosition({0:F3})", adjustVert);
 
             // move all the children node of KeyboardNotificationLayer
             CCNode ccnoed = new CCNode();
@@ -203,12 +203,12 @@ namespace cocos2d
     public class TextFieldTTFDefaultTest : KeyboardNotificationLayer
     {
         // KeyboardNotificationLayer
-        public virtual string subtitle()
+        public override string subtitle()
         {
             return "TextFieldTTF with default behavior test";
         }
 
-        public virtual void onClickTrackNode(bool bClicked)
+        public override void onClickTrackNode(bool bClicked)
         {
             CCTextFieldTTF pTextField = (CCTextFieldTTF)m_pTrackNode;
             if (bClicked)
@@ -271,7 +271,7 @@ namespace cocos2d
             return "CCTextFieldTTF with action and char limit test";
         }
 
-        public virtual void onClickTrackNode(bool bClicked)
+        public override void onClickTrackNode(bool bClicked)
         {
             CCTextFieldTTF pTextField = (CCTextFieldTTF)m_pTrackNode;
             if (bClicked)

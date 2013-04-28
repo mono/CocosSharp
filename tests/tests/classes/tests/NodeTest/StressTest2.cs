@@ -8,7 +8,7 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLayer sublayer = CCLayer.Create();
+            CCLayer sublayer = new CCLayer();
 
             CCSprite sp1 = new CCSprite(TestResource.s_pPathSister1);
             sp1.Position = (new CCPoint(80, s.Height / 2));

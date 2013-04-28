@@ -73,7 +73,7 @@ namespace tests.Extensions
         }
 
 
-        public static CCScene sceneWithTitle(string title)
+        public new static CCScene sceneWithTitle(string title)
         {
             CCScene pScene = new CCScene();
             var controlLayer = new CCControlSwitchTest();

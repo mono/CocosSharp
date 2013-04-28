@@ -6,7 +6,7 @@ namespace tests
     {
         public SchedulerTest1()
         {
-            CCLayer layer = CCLayer.Create();
+            CCLayer layer = new CCLayer();
             //UXLOG("retain count after init is %d", layer->retainCount());                // 1
 
             AddChild(layer, 0);

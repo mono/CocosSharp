@@ -8,7 +8,7 @@ namespace tests
 {
     public class FadeOutDownTilesDemo : CCFadeOutDownTiles
     {
-        public new static CCActionInterval actionWithDuration(float t)
+        public static CCActionInterval actionWithDuration(float t)
         {
             CCFadeOutDownTiles fadeout = new CCFadeOutDownTiles(new CCGridSize(16, 12), t);
             CCFiniteTimeAction back = fadeout.Reverse();

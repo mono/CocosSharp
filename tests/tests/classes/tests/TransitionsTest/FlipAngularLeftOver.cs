@@ -11,7 +11,7 @@ namespace tests
         public FlipAngularLeftOver(float t, CCScene s) : base(t, s, tOrientation.kOrientationLeftOver)
         {
         }
-        public new static CCTransitionScene Create(float t, CCScene s)
+        public static CCTransitionScene Create(float t, CCScene s)
         {
             return (new FlipAngularLeftOver(t, s));
 //            return CCTransitionFlipAngular.Create(t, s, tOrientation.kOrientationLeftOver);

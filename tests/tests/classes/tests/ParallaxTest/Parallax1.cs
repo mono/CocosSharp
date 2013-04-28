@@ -66,7 +66,7 @@ namespace tests
             AddChild(voidNode, -1, kTagTileMap);
         }
 
-        public virtual string title()
+        public override string title()
         {
             return "Parallax: parent and 3 children";
         }
