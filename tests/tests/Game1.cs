@@ -20,7 +20,9 @@ namespace tests
             graphics.IsFullScreen = false;
 
             // Frame rate is 30 fps by default for Windows Phone.
+            // Divide by 2 to make it 60 fps
             TargetElapsedTime = TimeSpan.FromTicks(333333 / 2);
+            IsFixedTimeStep = true;
 
             // Extend battery life under lock.
             //InactiveSleepTime = TimeSpan.FromSeconds(1);

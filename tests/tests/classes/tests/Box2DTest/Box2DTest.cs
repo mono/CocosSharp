@@ -62,16 +62,10 @@ namespace tests
 
             public override void PreSolve(Box2D.Dynamics.Contacts.b2Contact contact, ref Box2D.Collision.b2Manifold oldManifold)
             {
-                // CCLog.Log("Pre solve: {0} vs {1}", contact.FixtureA.Body.BodyType, contact.FixtureB.Body.BodyType);
-                if (contact.FixtureA.Body.BodyType == contact.FixtureB.Body.BodyType)
-                {
-                    contact.FixtureB.Body.World.Dump();
-                }
             }
 
             public override void PostSolve(Box2D.Dynamics.Contacts.b2Contact contact, ref b2ContactImpulse impulse)
             {
-                // CCLog.Log("Post solve: {0} vs {1}", contact.FixtureA.Body.BodyType, contact.FixtureB.Body.BodyType);
             }
         }
 
@@ -100,7 +94,7 @@ namespace tests
 
             addNewSpriteAtPosition(new CCPoint(s.Width / 2, s.Height / 2));
 
-            CCLabelTTF label = new CCLabelTTF("Tap screen", "Marker Felt", 32);
+            CCLabelTTF label = new CCLabelTTF("Tap screen", "MarkerFelt", 32);
             AddChild(label, 0);
             label.Color = new CCColor3B(0, 0, 255);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
@@ -252,7 +246,7 @@ namespace tests
             b2Fixture fixture = body.CreateFixture(fd);
 
             sprite.PhysicsBody = body;
-            _world.SetContactListener(new Myb2Listener());
+            //_world.SetContactListener(new Myb2Listener());
 
             // _world.Dump();
         }
