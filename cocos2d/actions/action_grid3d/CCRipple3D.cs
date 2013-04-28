@@ -107,11 +107,18 @@ namespace cocos2d
             }
         }
 
-        public static CCRipple3D Create(CCPoint pos, float r, int wav, float amp, CCGridSize gridSize, float duration)
+        public CCRipple3D()
         {
-            var pAction = new CCRipple3D();
-            pAction.InitWithPosition(pos, r, wav, amp, gridSize, duration);
-            return pAction;
+        }
+
+        public CCRipple3D(float duration)
+            : base(duration)
+        {
+        }
+
+        public CCRipple3D(CCPoint pos, float r, int wav, float amp, CCGridSize gridSize, float duration) : base(duration)
+        {
+            InitWithPosition(pos, r, wav, amp, gridSize, duration);
         }
     }
 }
