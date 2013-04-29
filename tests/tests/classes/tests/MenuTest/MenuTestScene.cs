@@ -41,7 +41,7 @@ namespace tests
             CCLayer pLayer5 = new MenuLayerPriorityTest();
 
 
-            CCLayerMultiplex layer = CCLayerMultiplex.Create(pLayer1, pLayer2, pLayer3, pLayer4, pLayer5);
+            CCLayerMultiplex layer = new CCLayerMultiplex(pLayer1, pLayer2, pLayer3, pLayer4, pLayer5);
             AddChild(layer, 0);
 
             CCDirector.SharedDirector.ReplaceScene(this);
