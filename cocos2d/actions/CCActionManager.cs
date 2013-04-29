@@ -6,7 +6,7 @@ namespace cocos2d
 {
     public class CCActionManager : SelectorProtocol
     {
-        private static object[] m_pTmpKeysArray = new object[128];
+        private static CCNode[] m_pTmpKeysArray = new CCNode[128];
         private bool m_bCurrentTargetSalvaged;
         private HashElement m_pCurrentTarget;
         private readonly Dictionary<object, HashElement> m_pTargets = new Dictionary<object, HashElement>();
@@ -18,7 +18,7 @@ namespace cocos2d
             int count = m_pTargets.Keys.Count;
             while (m_pTmpKeysArray.Length < count)
             {
-                m_pTmpKeysArray = new object[m_pTmpKeysArray.Length * 2];
+                m_pTmpKeysArray = new CCNode[m_pTmpKeysArray.Length * 2];
             }
 
             m_pTargets.Keys.CopyTo(m_pTmpKeysArray, 0);
@@ -205,7 +205,7 @@ namespace cocos2d
             int count = m_pTargets.Keys.Count;
             if (m_pTmpKeysArray.Length < count)
             {
-                m_pTmpKeysArray = new object[m_pTmpKeysArray.Length * 2];
+                m_pTmpKeysArray = new CCNode[m_pTmpKeysArray.Length * 2];
             }
 
             m_pTargets.Keys.CopyTo(m_pTmpKeysArray, 0);
@@ -216,7 +216,7 @@ namespace cocos2d
             }
         }
 
-        public void RemoveAllActionsFromTarget(object target)
+        public void RemoveAllActionsFromTarget(CCNode target)
         {
             if (target == null)
             {
@@ -272,7 +272,7 @@ namespace cocos2d
             }
         }
 
-        public void RemoveActionByTag(int tag, object target)
+        public void RemoveActionByTag(int tag, CCNode target)
         {
             Debug.Assert((tag != (int) ActionTag.kCCActionTagInvalid));
             Debug.Assert(target != null);
@@ -299,7 +299,7 @@ namespace cocos2d
             }
         }
 
-        public CCAction GetActionByTag(int tag, object target)
+        public CCAction GetActionByTag(int tag, CCNode target)
         {
             Debug.Assert(tag != (int) ActionTag.kCCActionTagInvalid);
 
@@ -328,7 +328,7 @@ namespace cocos2d
             return null;
         }
 
-        public int NumberOfRunningActionsInTarget(object target)
+        public int NumberOfRunningActionsInTarget(CCNode target)
         {
             HashElement element;
             if (m_pTargets.TryGetValue(target, out element))
