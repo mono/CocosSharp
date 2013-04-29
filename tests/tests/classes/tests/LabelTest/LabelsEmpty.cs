@@ -23,7 +23,7 @@ namespace tests
             label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
             // CCLabelAtlas
-            CCLabelAtlas label3 = CCLabelAtlas.Create("", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
+            CCLabelAtlas label3 = new CCLabelAtlas("", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);
             label3.Position = new CCPoint(s.Width / 2, 0 + 100);
 

@@ -26,17 +26,14 @@ namespace cocos2d
 {
     public class CCTransitionMoveInB : CCTransitionMoveInL
     {
+        public CCTransitionMoveInB (float t, CCScene scene) : base (t, scene)
+        { }
+
         public override void InitScenes()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
             m_pInScene.Position = new CCPoint(0, -s.Height);
         }
 
-        public new static CCTransitionMoveInB Create(float t, CCScene scene)
-        {
-            var pScene = new CCTransitionMoveInB();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
-        }
     }
 }

@@ -28,6 +28,10 @@ namespace cocos2d
 {
     public class CCTransitionFlipX : CCTransitionSceneOriented
     {
+
+        public CCTransitionFlipX(float t, CCScene s, tOrientation o) : base (t, s, o)
+        { }
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -70,16 +74,6 @@ namespace cocos2d
             m_pOutScene.RunAction(outA);
         }
 
-        public CCTransitionFlipX(float t, CCScene s, tOrientation o)
-        {
-            InitWithDuration(t, s, o);
-        }
 
-        [Obsolete("Use the parameter ctor instead")]
-        public new static CCTransitionFlipX Create(float t, CCScene s, tOrientation o)
-        {
-            var pScene = new CCTransitionFlipX(t, s, o);
-            return pScene;
-        }
     }
 }

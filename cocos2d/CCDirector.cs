@@ -1051,7 +1051,6 @@ namespace cocos2d
 
                         GC.Collect();
                     }
-                    m_pRunningScene.Visible = false;
                 }
             }
 
@@ -1062,10 +1061,6 @@ namespace cocos2d
             {
                 m_pRunningScene.OnEnter();
                 m_pRunningScene.OnEnterTransitionDidFinish();
-                if (!m_pRunningScene.Visible)
-                {
-                    m_pRunningScene.Visible = true;
-                }
             }
         }
 

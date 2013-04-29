@@ -117,25 +117,25 @@ namespace tests
 
             switch (nIndex)
             {
-                case 0: return CCTransitionJumpZoom.Create(t, s);
+                case 0: return new CCTransitionJumpZoom(t, s);
 
-                case 1: return CCTransitionProgressRadialCCW.Create(t, s);
-                case 2: return CCTransitionProgressRadialCW.Create(t, s);
-                case 3: return CCTransitionProgressHorizontal.Create(t, s);
-                case 4: return CCTransitionProgressVertical.Create(t, s);
-                case 5: return CCTransitionProgressInOut.Create(t, s);
-                case 6: return CCTransitionProgressOutIn.Create(t, s);
+                case 1: return new CCTransitionProgressRadialCCW(t, s);
+                case 2: return new CCTransitionProgressRadialCW(t, s);
+                case 3: return new CCTransitionProgressHorizontal(t, s);
+                case 4: return new CCTransitionProgressVertical(t, s);
+                case 5: return new CCTransitionProgressInOut(t, s);
+                case 6: return new CCTransitionProgressOutIn(t, s);
 
-                case 7: return CCTransitionCrossFade.Create(t, s);
+                case 7: return new CCTransitionCrossFade(t, s);
 
-                case 8: return PageTransitionForward.Create(t, s);
-                case 9: return PageTransitionBackward.Create(t, s);
+                case 8: return new PageTransitionForward(t, s);
+                case 9: return new PageTransitionBackward(t, s);
                 case 10: return new CCTransitionFadeTR(t, s);
                 case 11: return new CCTransitionFadeBL(t, s);
                 case 12: return new CCTransitionFadeUp(t, s);
                 case 13: return new CCTransitionFadeDown(t, s);
 
-                case 14: return CCTransitionTurnOffTiles.Create(t, s);
+                case 14: return new CCTransitionTurnOffTiles(t, s);
 
                 case 15: return new CCTransitionSplitRows(t, s);
                 case 16: return new CCTransitionSplitCols(t, s);
@@ -143,32 +143,32 @@ namespace tests
                 case 17: return new CCTransitionFade(t, s);
                 case 18: return new FadeWhiteTransition(t, s);
 
-                case 19: return FlipXLeftOver.Create(t, s);
+                case 19: return new FlipXLeftOver(t, s);
                 case 20: return new FlipXRightOver(t, s);
                 case 21: return new FlipYUpOver(t, s);
-                case 22: return FlipYDownOver.Create(t, s);
-                case 23: return FlipAngularLeftOver.Create(t, s);
-                case 24: return FlipAngularRightOver.Create(t, s);
+                case 22: return new FlipYDownOver(t, s);
+                case 23: return new FlipAngularLeftOver(t, s);
+                case 24: return new FlipAngularRightOver(t, s);
 
-                case 25: return ZoomFlipXLeftOver.Create(t, s);
-                case 26: return ZoomFlipXRightOver.Create(t, s);
-                case 27: return ZoomFlipYUpOver.Create(t, s);
-                case 28: return ZoomFlipYDownOver.Create(t, s);
-                case 29: return ZoomFlipAngularLeftOver.Create(t, s);
-                case 30: return ZoomFlipAngularRightOver.Create(t, s);
+                case 25: return new ZoomFlipXLeftOver(t, s);
+                case 26: return new ZoomFlipXRightOver(t, s);
+                case 27: return new ZoomFlipYUpOver(t, s);
+                case 28: return new ZoomFlipYDownOver(t, s);
+                case 29: return new ZoomFlipAngularLeftOver(t, s);
+                case 30: return new ZoomFlipAngularRightOver(t, s);
 
-                case 31: return CCTransitionShrinkGrow.Create(t, s);
-                case 32: return CCTransitionRotoZoom.Create(t, s);
+                case 31: return new CCTransitionShrinkGrow(t, s);
+                case 32: return new CCTransitionRotoZoom(t, s);
 
-                case 33: return CCTransitionMoveInL.Create(t, s);
-                case 34: return CCTransitionMoveInR.Create(t, s);
-                case 35: return CCTransitionMoveInT.Create(t, s);
-                case 36: return CCTransitionMoveInB.Create(t, s);
+                case 33: return new CCTransitionMoveInL(t, s);
+                case 34: return new CCTransitionMoveInR(t, s);
+                case 35: return new CCTransitionMoveInT(t, s);
+                case 36: return new CCTransitionMoveInB(t, s);
 
-                case 37: return CCTransitionSlideInL.Create(t, s);
-                case 38: return CCTransitionSlideInR.Create(t, s);
-                case 39: return CCTransitionSlideInT.Create(t, s);
-                case 40: return CCTransitionSlideInB.Create(t, s);
+                case 37: return new CCTransitionSlideInL(t, s);
+                case 38: return new CCTransitionSlideInR(t, s);
+                case 39: return new CCTransitionSlideInT(t, s);
+                case 40: return new CCTransitionSlideInB(t, s);
 
                 default: break;
             }

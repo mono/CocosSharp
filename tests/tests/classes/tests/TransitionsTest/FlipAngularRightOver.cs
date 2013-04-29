@@ -12,10 +12,5 @@ namespace tests
             : base(t, s, tOrientation.kOrientationRightOver)
         {
         }
-        public static CCTransitionScene Create(float t, CCScene s)
-        {
-            return (new FlipAngularRightOver(t, s));
-//            return CCTransitionFlipAngular.Create(t, s, tOrientation.kOrientationRightOver);
-        }
     }
 }

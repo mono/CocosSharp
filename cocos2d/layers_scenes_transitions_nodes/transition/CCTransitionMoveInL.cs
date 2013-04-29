@@ -26,6 +26,10 @@ namespace cocos2d
 {
     public class CCTransitionMoveInL : CCTransitionScene, ICCTransitionEaseScene
     {
+
+        public CCTransitionMoveInL (float t, CCScene scene) : base (t, scene)
+        { }
+
         #region ICCTransitionEaseScene Members
 
         public CCFiniteTimeAction EaseAction(CCActionInterval action)
@@ -70,11 +74,5 @@ namespace cocos2d
                 );
         }
 
-        public new static CCTransitionMoveInL Create(float t, CCScene scene)
-        {
-            var pScene = new CCTransitionMoveInL();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
-        }
     }
 }

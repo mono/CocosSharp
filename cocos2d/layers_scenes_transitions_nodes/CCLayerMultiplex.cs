@@ -20,11 +20,9 @@ namespace cocos2d
         /// <param name="layer"></param>
         /// <param name="?"></param>
         /// <returns></returns>
-        public static CCLayerMultiplex Create(params CCLayer[] layer)
+        public CCLayerMultiplex (params CCLayer[] layer)
         {
-            var pMultiplexLayer = new CCLayerMultiplex();
-            pMultiplexLayer.InitWithLayers(layer);
-            return pMultiplexLayer;
+            InitWithLayers(layer);
         }
 
         /// <summary>
@@ -33,12 +31,9 @@ namespace cocos2d
         /// </summary>
         /// <param name="layer"></param>
         /// <returns></returns>
-        public static CCLayerMultiplex LayerWithLayer(CCLayer layer)
+        public CCLayerMultiplex (CCLayer layer)
         {
-            var pMultiplexLayer = new CCLayerMultiplex();
-            pMultiplexLayer.InitWithLayer(layer);
-            //pMultiplexLayer->autorelease();
-            return pMultiplexLayer;
+            InitWithLayer(layer);
         }
 
         public void AddLayer(CCLayer layer)

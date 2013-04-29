@@ -42,12 +42,10 @@ namespace cocos2d
         /// If back is true then the effect is reversed to appear as if the incoming 
         /// scene is being turned from left over the outgoing scene.
         /// </summary>
-        public static CCTransitionPageTurn Create(float t, CCScene scene, bool backwards)
+        public CCTransitionPageTurn (float t, CCScene scene, bool backwards)
         {
-            var pTransition = new CCTransitionPageTurn();
-            pTransition.InitWithDuration(t, scene, backwards);
-
-            return pTransition;
+            // We can not call base here because m_bBack needs to be set first
+            InitWithDuration(t, scene, backwards);
         }
 
         /// <summary>

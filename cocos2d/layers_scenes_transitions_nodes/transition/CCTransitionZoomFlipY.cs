@@ -26,6 +26,10 @@ namespace cocos2d
 {
     public class CCTransitionZoomFlipY : CCTransitionSceneOriented
     {
+        
+        public CCTransitionZoomFlipY (float t, CCScene s, tOrientation o) : base (t, s, o)
+        { }
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -77,13 +81,6 @@ namespace cocos2d
             m_pInScene.Scale = 0.5f;
             m_pInScene.RunAction(inA);
             m_pOutScene.RunAction(outA);
-        }
-
-        public new static CCTransitionZoomFlipY Create(float t, CCScene s, tOrientation o)
-        {
-            var pScene = new CCTransitionZoomFlipY();
-            pScene.InitWithDuration(t, s, o);
-            return pScene;
         }
     }
 }

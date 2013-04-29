@@ -13,7 +13,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // CCLabelBMFont
-            CCLabelAtlas label1 = CCLabelAtlas.Create("TESTING RETINA DISPLAY", "fonts/larabie-16", 10, 20, 'A');
+            CCLabelAtlas label1 = new CCLabelAtlas("TESTING RETINA DISPLAY", "fonts/larabie-16", 10, 20, 'A');
             label1.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             AddChild(label1);

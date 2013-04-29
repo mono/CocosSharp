@@ -26,6 +26,10 @@ namespace cocos2d
 {
     public class CCTransitionSlideInL : CCTransitionScene, ICCTransitionEaseScene
     {
+
+        public CCTransitionSlideInL (float t, CCScene scene) : base (t, scene)
+        { }
+        
         #region ICCTransitionEaseScene Members
 
         public virtual CCFiniteTimeAction EaseAction(CCActionInterval action)
@@ -70,13 +74,6 @@ namespace cocos2d
                 );
             m_pInScene.RunAction(inAction);
             m_pOutScene.RunAction(outAction);
-        }
-
-        public new static CCTransitionSlideInL Create(float t, CCScene scene)
-        {
-            var pScene = new CCTransitionSlideInL();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
         }
 
         protected override void SceneOrder()

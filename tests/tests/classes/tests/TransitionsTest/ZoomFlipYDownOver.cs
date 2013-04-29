@@ -8,9 +8,9 @@ namespace tests
 {
     public class ZoomFlipYDownOver : CCTransitionZoomFlipY
     {
-        public new static CCTransitionScene Create(float t, CCScene s)
-        {
-            return CCTransitionZoomFlipY.Create(t, s, tOrientation.kOrientationDownOver);
-        }
+
+        public ZoomFlipYDownOver (float t, CCScene s) : base(t, s, tOrientation.kOrientationDownOver)
+        { }
+
     }
 }

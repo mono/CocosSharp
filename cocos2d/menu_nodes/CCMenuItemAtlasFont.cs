@@ -33,8 +33,7 @@ namespace cocos2d.menu_nodes
                                    SEL_MenuHandler selector)
         {
             // CCAssert( value != NULL && strlen(value) != 0, "value length must be greater than 0");
-            var label = new CCLabelAtlas();
-            label.InitWithString(value, charMapFile, itemWidth, itemHeight, startCharMap);
+            var label = new CCLabelAtlas(value, charMapFile, itemWidth, itemHeight, startCharMap);
             base.InitWithLabel(label, selector);
             return true;
         }

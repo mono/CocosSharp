@@ -216,11 +216,11 @@ namespace tests
             CCLabelAtlas labelAtlas;
             try
             {
-                labelAtlas = CCLabelAtlas.Create("0000", "Images/fps_Images", 16, 24, '.');
+                labelAtlas = new CCLabelAtlas("0000", "Images/fps_Images", 16, 24, '.');
             }
             catch (Exception)
             {
-                labelAtlas = CCLabelAtlas.Create("0000", "Images/fps_Images", 16, 24, '.');
+                labelAtlas = new CCLabelAtlas("0000", "Images/fps_Images", 16, 24, '.');
             }
             AddChild(labelAtlas, 100, ParticleTestScene.kTagLabelAtlas);
             labelAtlas.Position = new CCPoint(s.Width - 66, 50);

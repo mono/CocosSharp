@@ -81,7 +81,7 @@ namespace tests
             CCLayer pLayer = new SceneTestLayer1();
             scene.AddChild(pLayer, 0);
 
-            CCDirector.SharedDirector.PopScene(1f, CCTransitionSlideInB.Create(1f, scene));
+            CCDirector.SharedDirector.PopScene(1f, new CCTransitionSlideInB(1f, scene));
         }
 
         //CREATE_NODE(SceneTestLayer2);

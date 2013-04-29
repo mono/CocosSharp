@@ -63,7 +63,7 @@ namespace tests
             CCLayer pLayer = new SceneTestLayer2();
             scene.AddChild(pLayer, 0);
 
-            CCDirector.SharedDirector.PushScene(CCTransitionSlideInT.Create(1f, scene));
+            CCDirector.SharedDirector.PushScene(new CCTransitionSlideInT(1f, scene));
         }
 
         public void onPopSceneTran(object pSender)
@@ -72,7 +72,7 @@ namespace tests
             CCLayer pLayer = new SceneTestLayer2();
             scene.AddChild(pLayer, 0);
 
-            CCDirector.SharedDirector.PopScene(1f, CCTransitionSlideInB.Create(1f, scene));
+            CCDirector.SharedDirector.PopScene(1f, new CCTransitionSlideInB(1f, scene));
         }
 
         public void onQuit(object pSender) 

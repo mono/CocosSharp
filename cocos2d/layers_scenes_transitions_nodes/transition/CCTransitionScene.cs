@@ -52,8 +52,12 @@ namespace cocos2d
         public override void OnEnter()
         {
             base.OnEnter();
+
+            // outScene_ should not receive the onExit callback
+            // only the onExitTransitionDidStart
+            m_pOutScene.OnExitTransitionDidStart();
+
             m_pInScene.OnEnter();
-            // outScene should not receive the onEnter callback
         }
 
         public override void OnExit()
@@ -150,9 +154,9 @@ namespace cocos2d
             director.ReplaceScene(m_pInScene);
             // enable events while transitions
             director.TouchDispatcher.IsDispatchEvents = true;
+
             // issue #267
-            // THis is not necessary here. We don't want to show the out scene because the in scene is fully drawn now
-            // m_pOutScene.Visible = true;
+            m_pOutScene.Visible = true;
         }
     }
 }

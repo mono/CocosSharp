@@ -26,6 +26,10 @@ namespace cocos2d
 {
     public class CCTransitionSlideInT : CCTransitionSlideInL
     {
+
+        public CCTransitionSlideInT (float t, CCScene scene) : base (t, scene)
+        { }
+
         /// <summary>
         /// initializes the scenes
         /// </summary>
@@ -43,13 +47,6 @@ namespace cocos2d
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
             return new CCMoveBy (m_fDuration, new CCPoint(0, -(s.Height - 0.5f)));
-        }
-
-        public new static CCTransitionSlideInT Create(float t, CCScene scene)
-        {
-            var pScene = new CCTransitionSlideInT();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
         }
 
         protected override void SceneOrder()

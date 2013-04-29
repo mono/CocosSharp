@@ -26,6 +26,10 @@ namespace cocos2d
 {
     public class CCTransitionSlideInB : CCTransitionSlideInL
     {
+
+        public CCTransitionSlideInB (float t, CCScene scene) : base (t, scene)
+        { }
+
         /// <summary>
         ///  initializes the scenes 
         /// </summary>
@@ -50,11 +54,5 @@ namespace cocos2d
             m_bIsInSceneOnTop = true;
         }
 
-        public new static CCTransitionSlideInB Create(float t, CCScene scene)
-        {
-            var pScene = new CCTransitionSlideInB();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
-        }
     }
 }
