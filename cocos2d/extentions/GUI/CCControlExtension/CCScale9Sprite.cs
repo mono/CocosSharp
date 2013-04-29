@@ -467,18 +467,18 @@ namespace cocos2d
             float leftWidth = bottomLeft.ContentSize.Width;
             float bottomHeight = bottomLeft.ContentSize.Height;
 
-            bottomLeft.AnchorPoint = new CCPoint(0, 0);
-            bottomRight.AnchorPoint = new CCPoint(0, 0);
-            topLeft.AnchorPoint = new CCPoint(0, 0);
-            topRight.AnchorPoint = new CCPoint(0, 0);
-            left.AnchorPoint = new CCPoint(0, 0);
-            right.AnchorPoint = new CCPoint(0, 0);
-            top.AnchorPoint = new CCPoint(0, 0);
-            bottom.AnchorPoint = new CCPoint(0, 0);
-            centre.AnchorPoint = new CCPoint(0, 0);
+            bottomLeft.AnchorPoint = CCPoint.Zero;
+            bottomRight.AnchorPoint = CCPoint.Zero;
+            topLeft.AnchorPoint = CCPoint.Zero;
+            topRight.AnchorPoint = CCPoint.Zero;
+            left.AnchorPoint = CCPoint.Zero;
+            right.AnchorPoint = CCPoint.Zero;
+            top.AnchorPoint = CCPoint.Zero;
+            bottom.AnchorPoint = CCPoint.Zero;
+            centre.AnchorPoint = CCPoint.Zero;
 
             // Position corners
-            bottomLeft.Position = new CCPoint(0, 0);
+            bottomLeft.Position = CCPoint.Zero;
             bottomRight.Position = new CCPoint(leftWidth + rescaledWidth, 0);
             topLeft.Position = new CCPoint(0, bottomHeight + rescaledHeight);
             topRight.Position = new CCPoint(leftWidth + rescaledWidth, bottomHeight + rescaledHeight);
@@ -569,6 +569,7 @@ namespace cocos2d
 
         public CCScale9Sprite()
         {
+            Init();
         }
 
         protected void UpdateCapInset()
