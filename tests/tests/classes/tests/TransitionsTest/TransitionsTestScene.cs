@@ -160,10 +160,10 @@ namespace tests
                 case 31: return CCTransitionShrinkGrow.Create(t, s);
                 case 32: return CCTransitionRotoZoom.Create(t, s);
 
-                case 33: return CCTransitionMoveInL.Create(t, s);
-                case 34: return CCTransitionMoveInR.Create(t, s);
-                case 35: return CCTransitionMoveInT.Create(t, s);
-                case 36: return CCTransitionMoveInB.Create(t, s);
+                case 33: return new CCTransitionMoveInL(t, s);
+                case 34: return new CCTransitionMoveInR(t, s);
+                case 35: return new CCTransitionMoveInT(t, s);
+                case 36: return new CCTransitionMoveInB(t, s);
 
                 case 37: return CCTransitionSlideInL.Create(t, s);
                 case 38: return CCTransitionSlideInR.Create(t, s);
