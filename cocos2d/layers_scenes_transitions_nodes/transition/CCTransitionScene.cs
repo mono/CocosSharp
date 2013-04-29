@@ -52,8 +52,12 @@ namespace cocos2d
         public override void OnEnter()
         {
             base.OnEnter();
+
+            // outScene_ should not receive the onExit callback
+            // only the onExitTransitionDidStart
+            m_pOutScene.OnExitTransitionDidStart();
+
             m_pInScene.OnEnter();
-            // outScene should not receive the onEnter callback
         }
 
         public override void OnExit()
