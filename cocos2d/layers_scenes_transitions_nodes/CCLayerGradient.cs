@@ -65,6 +65,29 @@ namespace cocos2d
 
         private CCColor3B m_endColor;
 
+
+        public CCLayerGradient ()
+        {
+            //Init();
+        }
+        
+        
+        /// <summary>
+        /// Creates a full-screen CCLayer with a gradient between start and end.
+        /// </summary>
+        public CCLayerGradient (CCColor4B start, CCColor4B end)
+        {
+            InitWithColor(start, end);
+        }
+        
+        /// <summary>
+        /// Creates a full-screen CCLayer with a gradient between start and end in the direction of v. 
+        /// </summary>
+        public CCLayerGradient (CCColor4B start, CCColor4B end, CCPoint v)
+        {
+            InitWithColor(start, end, v);
+        }
+
         public CCColor3B StartColor
         {
             get { return m_tColor; }
@@ -123,34 +146,6 @@ namespace cocos2d
         }
 
         /// <summary>
-        /// Creates a full-screen CCLayer with a gradient between start and end.
-        /// </summary>
-        public static CCLayerGradient Create(CCColor4B start, CCColor4B end)
-        {
-            var pLayer = new CCLayerGradient();
-            if (pLayer.InitWithColor(start, end))
-            {
-                return pLayer;
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Creates a full-screen CCLayer with a gradient between start and end in the direction of v. 
-        /// </summary>
-        public static CCLayerGradient Create(CCColor4B start, CCColor4B end, CCPoint v)
-        {
-            var pLayer = new CCLayerGradient();
-            if (pLayer.InitWithColor(start, end, v))
-            {
-                return pLayer;
-            }
-
-            return null;
-        }
-
-        /// <summary>
         /// Initializes the CCLayer with a gradient between start and end.
         /// </summary>
         public virtual bool InitWithColor(CCColor4B start, CCColor4B end)
@@ -177,13 +172,6 @@ namespace cocos2d
             return base.InitWithColor(new CCColor4B(start.R, start.G, start.B, 255));
         }
 
-
-        public new static CCLayerGradient Create()
-        {
-            var ret = new CCLayerGradient();
-            ret.Init();
-            return ret;
-        }
 
         protected override void UpdateColor()
         {

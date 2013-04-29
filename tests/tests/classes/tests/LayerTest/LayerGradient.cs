@@ -12,7 +12,8 @@ namespace tests
         int kTagLayer = 1;
         public LayerGradient()
         {
-            CCLayerGradient layer1 = CCLayerGradient.Create(new CCColor4B(255, 0, 0, 255), new CCColor4B(0, 255, 0, 255), new CCPoint(0.9f, 0.9f));
+            CCLayerGradient layer1 = new CCLayerGradient(new CCColor4B(255, 0, 0, 255), new CCColor4B(0, 255, 0, 255), new CCPoint(0.9f, 0.9f));
+
             AddChild(layer1, 0, kTagLayer);
 
             this.TouchEnabled = true;
