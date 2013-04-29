@@ -212,11 +212,11 @@ namespace cocos2d
 
             for (int i = 0; i < count; i++)
             {
-                RemoveAllActionsFromTarget(m_pTmpKeysArray[i]);
+                RemoveAllActionsFromTarget((CCNode)m_pTmpKeysArray[i]);
             }
         }
 
-        public void RemoveAllActionsFromTarget(object target)
+        public void RemoveAllActionsFromTarget(CCNode target)
         {
             if (target == null)
             {
@@ -272,7 +272,7 @@ namespace cocos2d
             }
         }
 
-        public void RemoveActionByTag(int tag, object target)
+        public void RemoveActionByTag(int tag, CCNode target)
         {
             Debug.Assert((tag != (int) ActionTag.kCCActionTagInvalid));
             Debug.Assert(target != null);
@@ -299,7 +299,7 @@ namespace cocos2d
             }
         }
 
-        public CCAction GetActionByTag(int tag, object target)
+        public CCAction GetActionByTag(int tag, CCNode target)
         {
             Debug.Assert(tag != (int) ActionTag.kCCActionTagInvalid);
 
@@ -328,7 +328,7 @@ namespace cocos2d
             return null;
         }
 
-        public int NumberOfRunningActionsInTarget(object target)
+        public int NumberOfRunningActionsInTarget(CCNode target)
         {
             HashElement element;
             if (m_pTargets.TryGetValue(target, out element))
