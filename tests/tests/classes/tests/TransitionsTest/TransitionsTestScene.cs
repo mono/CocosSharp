@@ -143,12 +143,12 @@ namespace tests
                 case 17: return new CCTransitionFade(t, s);
                 case 18: return new FadeWhiteTransition(t, s);
 
-                case 19: return FlipXLeftOver.Create(t, s);
+                case 19: return new FlipXLeftOver(t, s);
                 case 20: return new FlipXRightOver(t, s);
                 case 21: return new FlipYUpOver(t, s);
-                case 22: return FlipYDownOver.Create(t, s);
-                case 23: return FlipAngularLeftOver.Create(t, s);
-                case 24: return FlipAngularRightOver.Create(t, s);
+                case 22: return new FlipYDownOver(t, s);
+                case 23: return new FlipAngularLeftOver(t, s);
+                case 24: return new FlipAngularRightOver(t, s);
 
                 case 25: return ZoomFlipXLeftOver.Create(t, s);
                 case 26: return ZoomFlipXRightOver.Create(t, s);
@@ -158,7 +158,7 @@ namespace tests
                 case 30: return ZoomFlipAngularRightOver.Create(t, s);
 
                 case 31: return new CCTransitionShrinkGrow(t, s);
-                case 32: return CCTransitionRotoZoom.Create(t, s);
+                case 32: return new CCTransitionRotoZoom(t, s);
 
                 case 33: return new CCTransitionMoveInL(t, s);
                 case 34: return new CCTransitionMoveInR(t, s);

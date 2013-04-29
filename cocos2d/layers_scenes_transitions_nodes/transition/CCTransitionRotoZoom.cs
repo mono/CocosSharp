@@ -26,6 +26,9 @@ namespace cocos2d
 {
     public class CCTransitionRotoZoom : CCTransitionScene
     {
+        public CCTransitionRotoZoom (float t, CCScene scene) : base (t, scene)
+        { }
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -57,11 +60,5 @@ namespace cocos2d
                 );
         }
 
-        public new static CCTransitionRotoZoom Create(float t, CCScene scene)
-        {
-            var pScene = new CCTransitionRotoZoom();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
-        }
     }
 }

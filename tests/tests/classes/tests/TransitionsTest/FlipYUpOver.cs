@@ -12,11 +12,5 @@ namespace tests
         {
         }
 
-        [Obsolete("Use the parameter ctor instead.")]
-        public new static CCTransitionScene Create(float t, CCScene s)
-        {
-            return (new FlipYUpOver(t, s));
-//            return CCTransitionFlipY.Create(t, s, tOrientation.kOrientationUpOver);
-        }
     }
 }
