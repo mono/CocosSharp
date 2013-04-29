@@ -135,7 +135,7 @@ namespace tests
                 case 12: return new CCTransitionFadeUp(t, s);
                 case 13: return new CCTransitionFadeDown(t, s);
 
-                case 14: return CCTransitionTurnOffTiles.Create(t, s);
+                case 14: return new CCTransitionTurnOffTiles(t, s);
 
                 case 15: return new CCTransitionSplitRows(t, s);
                 case 16: return new CCTransitionSplitCols(t, s);

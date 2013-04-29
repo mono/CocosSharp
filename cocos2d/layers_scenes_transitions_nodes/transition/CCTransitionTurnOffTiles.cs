@@ -31,6 +31,11 @@ namespace cocos2d
     /// </summary>
     public class CCTransitionTurnOffTiles : CCTransitionScene, ICCTransitionEaseScene
     {
+
+        public CCTransitionTurnOffTiles (float t, CCScene scene) : base (t, scene)
+        { }
+        
+
         #region ICCTransitionEaseScene Members
 
         public virtual CCFiniteTimeAction EaseAction(CCActionInterval action)
@@ -59,17 +64,6 @@ namespace cocos2d
                             new CCStopGrid()
                         )
                 );
-        }
-
-        public new static CCTransitionTurnOffTiles Create(float t, CCScene scene)
-        {
-            var pScene = new CCTransitionTurnOffTiles();
-            if (pScene.InitWithDuration(t, scene))
-            {
-                return pScene;
-            }
-
-            return null;
         }
 
         protected override void SceneOrder()
