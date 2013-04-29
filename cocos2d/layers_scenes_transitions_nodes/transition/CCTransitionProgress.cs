@@ -7,6 +7,9 @@ namespace cocos2d
         protected float m_fTo;
         protected CCScene m_pSceneToBeModified;
 
+        public CCTransitionProgress (float t, CCScene scene) : base (t, scene)
+        { }
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -81,6 +84,10 @@ namespace cocos2d
 
     public class CCTransitionProgressRadialCCW : CCTransitionProgress
     {
+
+        public CCTransitionProgressRadialCCW (float t, CCScene scene) : base (t, scene)
+        { }
+
         //OLD_TRANSITION_CREATE_FUNC(CCTransitionProgressRadialCCW)
         //TRANSITION_CREATE_FUNC(CCTransitionProgressRadialCCW)
 
@@ -103,12 +110,6 @@ namespace cocos2d
             return node;
         }
 
-        public new static CCTransitionProgressRadialCCW Create(float t, CCScene scene)
-        {
-            var ret = new CCTransitionProgressRadialCCW();
-            ret.InitWithDuration(t, scene);
-            return ret;
-        }
     }
 
 
@@ -118,6 +119,9 @@ namespace cocos2d
 
     public class CCTransitionProgressRadialCW : CCTransitionProgress
     {
+        public CCTransitionProgressRadialCW (float t, CCScene scene) : base (t, scene)
+        { }
+
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
@@ -137,12 +141,6 @@ namespace cocos2d
             return node;
         }
 
-        public new static CCTransitionProgressRadialCW Create(float t, CCScene scene)
-        {
-            var ret = new CCTransitionProgressRadialCW();
-            ret.InitWithDuration(t, scene);
-            return ret;
-        }
     }
 
     /** CCTransitionProgressHorizontal transition.
@@ -151,6 +149,10 @@ namespace cocos2d
 
     public class CCTransitionProgressHorizontal : CCTransitionProgress
     {
+
+        public CCTransitionProgressHorizontal (float t, CCScene scene) : base (t, scene)
+        { }
+
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
@@ -171,18 +173,15 @@ namespace cocos2d
             return node;
         }
 
-        public new static CCTransitionProgressHorizontal Create(float t, CCScene scene)
-        {
-            var ret = new CCTransitionProgressHorizontal();
-            ret.InitWithDuration(t, scene);
-            return ret;
-        }
     }
 
     public class CCTransitionProgressVertical : CCTransitionProgress
     {
         //OLD_TRANSITION_CREATE_FUNC(CCTransitionProgressVertical)
         //TRANSITION_CREATE_FUNC(CCTransitionProgressVertical)
+        public CCTransitionProgressVertical (float t, CCScene scene) : base (t, scene)
+        { }
+
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
@@ -203,16 +202,14 @@ namespace cocos2d
             return node;
         }
 
-        public new static CCTransitionProgressVertical Create(float t, CCScene scene)
-        {
-            var ret = new CCTransitionProgressVertical();
-            ret.InitWithDuration(t, scene);
-            return ret;
-        }
     }
 
     public class CCTransitionProgressInOut : CCTransitionProgress
     {
+
+        public CCTransitionProgressInOut (float t, CCScene scene) : base (t, scene)
+        { }
+
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
@@ -245,16 +242,13 @@ namespace cocos2d
             m_fTo = 100;
         }
 
-        public new static CCTransitionProgressInOut Create(float t, CCScene scene)
-        {
-            var ret = new CCTransitionProgressInOut();
-            ret.InitWithDuration(t, scene);
-            return ret;
-        }
     }
 
     public class CCTransitionProgressOutIn : CCTransitionProgress
     {
+        public CCTransitionProgressOutIn (float t, CCScene scene) : base (t, scene)
+        { }
+
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
@@ -275,11 +269,5 @@ namespace cocos2d
             return node;
         }
 
-        public new static CCTransitionProgressOutIn Create(float t, CCScene scene)
-        {
-            var ret = new CCTransitionProgressOutIn();
-            ret.InitWithDuration(t, scene);
-            return ret;
-        }
     }
 }

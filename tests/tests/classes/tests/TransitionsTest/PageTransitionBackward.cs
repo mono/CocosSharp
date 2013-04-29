@@ -8,10 +8,9 @@ namespace tests
 {
     public class PageTransitionBackward : CCTransitionPageTurn
     {
-        public new static CCTransitionScene Create(float t, CCScene s)
+        public PageTransitionBackward (float t, CCScene s) : base (t, s, true)
         {
             CCDirector.SharedDirector.SetDepthTest(true);
-            return CCTransitionPageTurn.Create(t, s, true);
         }
     }
 }

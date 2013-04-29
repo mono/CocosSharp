@@ -55,7 +55,7 @@ namespace tests
 
         public void callBack(object pSender)
         {
-            CCDirector.SharedDirector.ReplaceScene(CCTransitionPageTurn.Create(1.0f, Bug1159Layer.scene(), false));
+            CCDirector.SharedDirector.ReplaceScene(new CCTransitionPageTurn(1.0f, Bug1159Layer.scene(), false));
         }
 
         //LAYER_NODE_FUNC(Bug1159Layer);

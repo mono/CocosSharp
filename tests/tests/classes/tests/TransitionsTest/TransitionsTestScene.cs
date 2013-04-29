@@ -119,17 +119,17 @@ namespace tests
             {
                 case 0: return new CCTransitionJumpZoom(t, s);
 
-                case 1: return CCTransitionProgressRadialCCW.Create(t, s);
-                case 2: return CCTransitionProgressRadialCW.Create(t, s);
-                case 3: return CCTransitionProgressHorizontal.Create(t, s);
-                case 4: return CCTransitionProgressVertical.Create(t, s);
-                case 5: return CCTransitionProgressInOut.Create(t, s);
-                case 6: return CCTransitionProgressOutIn.Create(t, s);
+                case 1: return new CCTransitionProgressRadialCCW(t, s);
+                case 2: return new CCTransitionProgressRadialCW(t, s);
+                case 3: return new CCTransitionProgressHorizontal(t, s);
+                case 4: return new CCTransitionProgressVertical(t, s);
+                case 5: return new CCTransitionProgressInOut(t, s);
+                case 6: return new CCTransitionProgressOutIn(t, s);
 
                 case 7: return new CCTransitionCrossFade(t, s);
 
-                case 8: return PageTransitionForward.Create(t, s);
-                case 9: return PageTransitionBackward.Create(t, s);
+                case 8: return new PageTransitionForward(t, s);
+                case 9: return new PageTransitionBackward(t, s);
                 case 10: return new CCTransitionFadeTR(t, s);
                 case 11: return new CCTransitionFadeBL(t, s);
                 case 12: return new CCTransitionFadeUp(t, s);
