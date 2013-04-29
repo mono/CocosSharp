@@ -6,7 +6,7 @@ namespace cocos2d
 {
     public class CCActionManager : SelectorProtocol
     {
-        private static object[] m_pTmpKeysArray = new object[128];
+        private static CCNode[] m_pTmpKeysArray = new CCNode[128];
         private bool m_bCurrentTargetSalvaged;
         private HashElement m_pCurrentTarget;
         private readonly Dictionary<object, HashElement> m_pTargets = new Dictionary<object, HashElement>();
@@ -18,7 +18,7 @@ namespace cocos2d
             int count = m_pTargets.Keys.Count;
             while (m_pTmpKeysArray.Length < count)
             {
-                m_pTmpKeysArray = new object[m_pTmpKeysArray.Length * 2];
+                m_pTmpKeysArray = new CCNode[m_pTmpKeysArray.Length * 2];
             }
 
             m_pTargets.Keys.CopyTo(m_pTmpKeysArray, 0);
@@ -205,14 +205,14 @@ namespace cocos2d
             int count = m_pTargets.Keys.Count;
             if (m_pTmpKeysArray.Length < count)
             {
-                m_pTmpKeysArray = new object[m_pTmpKeysArray.Length * 2];
+                m_pTmpKeysArray = new CCNode[m_pTmpKeysArray.Length * 2];
             }
 
             m_pTargets.Keys.CopyTo(m_pTmpKeysArray, 0);
 
             for (int i = 0; i < count; i++)
             {
-                RemoveAllActionsFromTarget((CCNode)m_pTmpKeysArray[i]);
+                RemoveAllActionsFromTarget(m_pTmpKeysArray[i]);
             }
         }
 
