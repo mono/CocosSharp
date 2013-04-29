@@ -29,6 +29,9 @@ namespace cocos2d
     {
         private const int kSceneFade = int.MaxValue;
 
+        public CCTransitionCrossFade (float t, CCScene scene) : base (t, scene)
+        {  }
+
         public override void Draw()
         {
             // override draw since both scenes (textures) are rendered in 1 scene
@@ -112,11 +115,5 @@ namespace cocos2d
             base.OnExit();
         }
 
-        public new static CCTransitionCrossFade Create(float t, CCScene scene)
-        {
-            var pScene = new CCTransitionCrossFade();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
-        }
     }
 }
