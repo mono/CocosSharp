@@ -110,11 +110,11 @@ namespace cocos2d
 
         #endregion
 
-        public static CCAtlasNode Create(string tile, int tileWidth, int tileHeight, int itemsToRender)
+        internal CCAtlasNode () {}
+
+        public CCAtlasNode (string tile, int tileWidth, int tileHeight, int itemsToRender)
         {
-            var pRet = new CCAtlasNode();
-            pRet.InitWithTileFile(tile, tileWidth, tileHeight, itemsToRender);
-            return pRet;
+            InitWithTileFile(tile, tileWidth, tileHeight, itemsToRender);
         }
 
         public bool InitWithTileFile(string tile, int tileWidth, int tileHeight, int itemsToRender)

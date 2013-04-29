@@ -46,18 +46,14 @@ namespace cocos2d
 
         #endregion
 
-        public static CCLabelAtlas Create(string label, string fntFile)
+        public CCLabelAtlas (string label, string fntFile)
         {
-            var pRet = new CCLabelAtlas();
-            pRet.InitWithString(label, fntFile);
-            return pRet;
+            InitWithString(label, fntFile);
         }
 
-        public static CCLabelAtlas Create(string label, string charMapFile, int itemWidth, int itemHeight, char startCharMap)
+        public CCLabelAtlas (string label, string charMapFile, int itemWidth, int itemHeight, char startCharMap)
         {
-            var pRet = new CCLabelAtlas();
-            pRet.InitWithString(label, charMapFile, itemWidth, itemHeight, startCharMap);
-            return pRet;
+            InitWithString(label, charMapFile, itemWidth, itemHeight, startCharMap);
         }
 
         public bool InitWithString(string theString, string fntFile)

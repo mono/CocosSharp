@@ -19,12 +19,12 @@ namespace tests
 
         public LabelAtlasColorTest()
         {
-            CCLabelAtlas label1 = CCLabelAtlas.Create("123 Test", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
+            CCLabelAtlas label1 = new CCLabelAtlas("123 Test", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
             AddChild(label1, 0, (int)TagSprite.kTagSprite1);
             label1.Position = new CCPoint(10, 100);
             label1.Opacity = 200;
 
-            CCLabelAtlas label2 = CCLabelAtlas.Create("0123456789", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
+            CCLabelAtlas label2 = new CCLabelAtlas("0123456789", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
             AddChild(label2, 0, (int)TagSprite.kTagSprite2);
             label2.Position = new CCPoint(10, 200);
             label2.Color = ccRED;

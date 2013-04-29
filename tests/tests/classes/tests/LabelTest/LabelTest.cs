@@ -196,12 +196,12 @@ namespace cocos2d
 
         public LabelAtlasColorTest()
         {
-            CCLabelAtlas label1 = CCLabelAtlas.Create("123 Test", "fonts/tuffy_bold_italic-charmap.png", 48, 64, ' ');
+            CCLabelAtlas label1 = new CCLabelAtlas("123 Test", "fonts/tuffy_bold_italic-charmap.png", 48, 64, ' ');
             AddChild(label1, 0, (int)TagSprite.kTagSprite1);
             label1.Position = new CCPoint(10, 100);
             label1.Opacity = 200;
 
-            CCLabelAtlas label2 = CCLabelAtlas.Create("0123456789", "fonts/tuffy_bold_italic-charmap.png", 48, 64, ' ');
+            CCLabelAtlas label2 = new CCLabelAtlas("0123456789", "fonts/tuffy_bold_italic-charmap.png", 48, 64, ' ');
             AddChild(label2, 0, (int)TagSprite.kTagSprite2);
             label2.Position = new CCPoint(10, 200);
             //label2.setColor( ccRED );
@@ -563,7 +563,7 @@ namespace cocos2d
             label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
             // CCLabelAtlas
-            CCLabelAtlas label3 = CCLabelAtlas.Create("", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
+            CCLabelAtlas label3 = new CCLabelAtlas("", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);
             label3.Position = new CCPoint(s.Width / 2, 0 + 100);
 
@@ -642,7 +642,7 @@ namespace cocos2d
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // CCLabelBMFont
-            CCLabelAtlas label1 = CCLabelAtlas.Create("TESTING RETINA DISPLAY", "fonts/larabie-16", 10, 20, 'A');
+            CCLabelAtlas label1 = new CCLabelAtlas("TESTING RETINA DISPLAY", "fonts/larabie-16", 10, 20, 'A');
             label1.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             AddChild(label1);
