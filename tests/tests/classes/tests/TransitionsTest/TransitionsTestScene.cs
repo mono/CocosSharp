@@ -165,10 +165,10 @@ namespace tests
                 case 35: return new CCTransitionMoveInT(t, s);
                 case 36: return new CCTransitionMoveInB(t, s);
 
-                case 37: return CCTransitionSlideInL.Create(t, s);
-                case 38: return CCTransitionSlideInR.Create(t, s);
-                case 39: return CCTransitionSlideInT.Create(t, s);
-                case 40: return CCTransitionSlideInB.Create(t, s);
+                case 37: return new CCTransitionSlideInL(t, s);
+                case 38: return new CCTransitionSlideInR(t, s);
+                case 39: return new CCTransitionSlideInT(t, s);
+                case 40: return new CCTransitionSlideInB(t, s);
 
                 default: break;
             }
