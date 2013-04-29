@@ -157,7 +157,7 @@ namespace tests
                 case 29: return ZoomFlipAngularLeftOver.Create(t, s);
                 case 30: return ZoomFlipAngularRightOver.Create(t, s);
 
-                case 31: return CCTransitionShrinkGrow.Create(t, s);
+                case 31: return new CCTransitionShrinkGrow(t, s);
                 case 32: return CCTransitionRotoZoom.Create(t, s);
 
                 case 33: return new CCTransitionMoveInL(t, s);

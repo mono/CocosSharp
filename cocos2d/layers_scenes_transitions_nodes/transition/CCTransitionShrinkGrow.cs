@@ -28,6 +28,10 @@ namespace cocos2d
 {
     public class CCTransitionShrinkGrow : CCTransitionScene, ICCTransitionEaseScene
     {
+
+        public CCTransitionShrinkGrow (float t, CCScene scene) : base (t, scene)
+        { }
+
         #region ICCTransitionEaseScene Members
 
         public CCFiniteTimeAction EaseAction(CCActionInterval action)
@@ -61,11 +65,5 @@ namespace cocos2d
                 );
         }
 
-        public new static CCTransitionShrinkGrow Create(float t, CCScene scene)
-        {
-            var pScene = new CCTransitionShrinkGrow();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
-        }
     }
 }
