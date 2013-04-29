@@ -3,6 +3,9 @@ namespace cocos2d
 {
     public class CCTransitionJumpZoom : CCTransitionScene
     {
+        public CCTransitionJumpZoom (float t, CCScene scene) : base (t, scene)
+        { }
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -34,11 +37,5 @@ namespace cocos2d
                 );
         }
 
-        public new static CCTransitionJumpZoom Create(float t, CCScene scene)
-        {
-            var pScene = new CCTransitionJumpZoom();
-            pScene.InitWithDuration(t, scene);
-            return pScene;
-        }
     }
 }

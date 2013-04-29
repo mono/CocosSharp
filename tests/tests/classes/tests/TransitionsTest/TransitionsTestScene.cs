@@ -117,7 +117,7 @@ namespace tests
 
             switch (nIndex)
             {
-                case 0: return CCTransitionJumpZoom.Create(t, s);
+                case 0: return new CCTransitionJumpZoom(t, s);
 
                 case 1: return CCTransitionProgressRadialCCW.Create(t, s);
                 case 2: return CCTransitionProgressRadialCW.Create(t, s);
@@ -126,7 +126,7 @@ namespace tests
                 case 5: return CCTransitionProgressInOut.Create(t, s);
                 case 6: return CCTransitionProgressOutIn.Create(t, s);
 
-                case 7: return CCTransitionCrossFade.Create(t, s);
+                case 7: return new CCTransitionCrossFade(t, s);
 
                 case 8: return PageTransitionForward.Create(t, s);
                 case 9: return PageTransitionBackward.Create(t, s);
