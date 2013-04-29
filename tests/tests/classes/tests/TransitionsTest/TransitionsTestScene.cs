@@ -150,12 +150,12 @@ namespace tests
                 case 23: return new FlipAngularLeftOver(t, s);
                 case 24: return new FlipAngularRightOver(t, s);
 
-                case 25: return ZoomFlipXLeftOver.Create(t, s);
-                case 26: return ZoomFlipXRightOver.Create(t, s);
-                case 27: return ZoomFlipYUpOver.Create(t, s);
-                case 28: return ZoomFlipYDownOver.Create(t, s);
-                case 29: return ZoomFlipAngularLeftOver.Create(t, s);
-                case 30: return ZoomFlipAngularRightOver.Create(t, s);
+                case 25: return new ZoomFlipXLeftOver(t, s);
+                case 26: return new ZoomFlipXRightOver(t, s);
+                case 27: return new ZoomFlipYUpOver(t, s);
+                case 28: return new ZoomFlipYDownOver(t, s);
+                case 29: return new ZoomFlipAngularLeftOver(t, s);
+                case 30: return new ZoomFlipAngularRightOver(t, s);
 
                 case 31: return new CCTransitionShrinkGrow(t, s);
                 case 32: return new CCTransitionRotoZoom(t, s);

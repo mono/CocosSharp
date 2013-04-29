@@ -47,11 +47,9 @@ namespace cocos2d
         /// <summary>
         /// creates a base transition with duration and incoming scene
         /// </summary>
-        public static CCTransitionSceneOriented Create(float t, CCScene scene, tOrientation orientation)
+        public CCTransitionSceneOriented (float t, CCScene scene, tOrientation orientation) : base (t, scene)
         {
-            var pScene = new CCTransitionSceneOriented();
-            pScene.InitWithDuration(t, scene, orientation);
-            return pScene;
+            m_eOrientation = orientation;
         }
 
         /// <summary>
