@@ -36,6 +36,19 @@ namespace tests
             // draw a green circle with 50 segments with line to center
             CCDrawingPrimitives.DrawCircle(new CCPoint(s.Width / 2, s.Height / 2), 50, CCMacros.CCDegreesToRadians(90), 50, true, new CCColor4B(0, 255, 255, 255));
 
+
+            // draw an arc within rectangular region
+            CCDrawingPrimitives.DrawArc(new CCRect(200,200, 100, 200), 0, 180,  new CCColor4B(Microsoft.Xna.Framework.Color.AliceBlue));
+
+            // draw an ellipse within rectangular region
+            CCDrawingPrimitives.DrawEllipse(new CCRect(500,200, 100, 200), new CCColor4B(255, 0, 0, 255));
+
+            // draw an arc within rectangular region
+            CCDrawingPrimitives.DrawPie(new CCRect(350,0, 100, 100), 20, 100,  new CCColor4B(Microsoft.Xna.Framework.Color.AliceBlue));
+
+            // draw an arc within rectangular region
+            CCDrawingPrimitives.DrawPie(new CCRect(347,-5, 100, 100), 120, 260,  new CCColor4B(Microsoft.Xna.Framework.Color.Aquamarine));
+
             // open yellow poly
             CCPoint[] vertices = { new CCPoint(0, 0), new CCPoint(50, 50), new CCPoint(100, 50), new CCPoint(100, 100), new CCPoint(50, 100) };
             CCDrawingPrimitives.DrawPoly(vertices, 5, false, new CCColor4B(255, 255, 0, 255));

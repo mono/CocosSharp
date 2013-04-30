@@ -162,6 +162,7 @@ te<?xml version="1.0" encoding="utf-8"?>
     <Compile Include="CCDirector.cs" />
     <Compile Include="CCDisplayLinkDirector.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
+    <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
     <Compile Include="CCScheduler.cs" />
     <Compile Include="cocoa\CCAffineTransform.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />

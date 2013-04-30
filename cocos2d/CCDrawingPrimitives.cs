@@ -7,7 +7,7 @@ using Box2D.Common;
 
 namespace cocos2d
 {
-    public class CCDrawingPrimitives
+    public partial class CCDrawingPrimitives
     {
         private static PrimitiveBatch m_Batch;
         private static float m_PointSize = 3f;
@@ -315,6 +315,39 @@ namespace cocos2d
             }
         }
 
+        public static void DrawArc (CCRect rect, int startAngle, int sweepAngle, CCColor4B color)
+        {
+            DrawEllipticalArc(rect, startAngle, sweepAngle, false, color);
+        }
+
+        public static void DrawArc (int x, int y, int width, int height, int startAngle, int sweepAngle, CCColor4B color)
+        {
+            DrawEllipticalArc(x,y,width,height,startAngle,sweepAngle,false, color);
+
+        }
+
+        public static void DrawEllipse (CCRect rect, CCColor4B color)
+        {
+            DrawEllipticalArc(rect, 0, 360, false, color);
+        }
+        
+        public static void DrawEllips (int x, int y, int width, int height, CCColor4B color)
+        {
+            DrawEllipticalArc(x,y,width,height,0,360,false, color);
+            
+        }
+
+        public static void DrawPie (CCRect rect, int startAngle, int sweepAngle, CCColor4B color)
+        {
+            DrawEllipticalArc(rect, startAngle, sweepAngle, true, color);
+        }
+        
+        public static void DrawPie (int x, int y, int width, int height, int startAngle, int sweepAngle, CCColor4B color)
+        {
+            DrawEllipticalArc(x,y,width,height,startAngle,sweepAngle,true, color);
+            
+        }
+
         public static void DrawQuadBezier(CCPoint origin, CCPoint control, CCPoint destination, int segments, CCColor4B color)
         {
             var vertices = new VertexPositionColor[segments + 1];
@@ -442,5 +475,7 @@ namespace cocos2d
                 basicEffect.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, vertices, 0, segments);
             }
         }
+
     }
+
 }
