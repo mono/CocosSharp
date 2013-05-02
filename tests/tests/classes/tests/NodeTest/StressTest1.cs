@@ -23,7 +23,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // if the node has timers, it crashes
-            CCParticleSun explosion = CCParticleSun.Create();
+            CCParticleSun explosion = new CCParticleSun();
             explosion.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
 
             // if it doesn't, it works Ok.

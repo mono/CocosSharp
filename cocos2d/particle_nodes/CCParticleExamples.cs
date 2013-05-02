@@ -6,12 +6,8 @@ namespace cocos2d
     //
     public class CCParticleFire : CCParticleSystemQuad
     {
-        public new static CCParticleFire Create()
-        {
-            var ret = new CCParticleFire();
-            ret.InitWithTotalParticles(250);
-            return ret;
-        }
+        public CCParticleFire () : base (250)
+        { }
 
         public override bool InitWithTotalParticles(int numberOfParticles)
         {
@@ -87,12 +83,8 @@ namespace cocos2d
     //
     public class CCParticleFireworks : CCParticleSystemQuad
     {
-        public new static CCParticleFireworks Create()
-        {
-            var ret = new CCParticleFireworks();
-            ret.InitWithTotalParticles(1500);
-            return ret;
-        }
+        public CCParticleFireworks () : base(1500)
+        { }
 
         public override bool InitWithTotalParticles(int numberOfParticles)
         {
@@ -166,19 +158,11 @@ namespace cocos2d
     //
     public class CCParticleSun : CCParticleSystemQuad
     {
-        public new static CCParticleSun Create(int num)
-        {
-            var ret = new CCParticleSun();
-            ret.InitWithTotalParticles(num);
-            return ret;
-        }
+        public CCParticleSun (int num) : base(num)
+        { }
 
-        public new static CCParticleSun Create()
-        {
-            var ret = new CCParticleSun();
-            ret.InitWithTotalParticles(350);
-            return ret;
-        }
+        public CCParticleSun () : base (350)
+        { }
 
         public override bool InitWithTotalParticles(int numberOfParticles)
         {
@@ -255,12 +239,8 @@ namespace cocos2d
     //
     public class CCParticleGalaxy : CCParticleSystemQuad
     {
-        public new static CCParticleGalaxy Create()
-        {
-            var ret = new CCParticleGalaxy();
-            ret.InitWithTotalParticles(200);
-            return ret;
-        }
+        public CCParticleGalaxy ()  :base (200)
+        {}
 
         public override bool InitWithTotalParticles(int numberOfParticles)
         {
@@ -336,12 +316,8 @@ namespace cocos2d
 
     public class CCParticleFlower : CCParticleSystemQuad
     {
-        public new static CCParticleFlower Create()
-        {
-            var ret = new CCParticleFlower();
-            ret.InitWithTotalParticles(250);
-            return ret;
-        }
+        public CCParticleFlower () : base (250)
+        { }
 
         public override bool InitWithTotalParticles(int numberOfParticles)
         {
@@ -417,12 +393,8 @@ namespace cocos2d
 
     public class CCParticleMeteor : CCParticleSystemQuad
     {
-        public new static CCParticleMeteor Create()
-        {
-            var ret = new CCParticleMeteor();
-            ret.InitWithTotalParticles(150);
-            return ret;
-        }
+        public CCParticleMeteor () : base(150)
+        { }
 
         public override bool InitWithTotalParticles(int numberOfParticles)
         {
@@ -498,12 +470,8 @@ namespace cocos2d
 
     public class CCParticleSpiral : CCParticleSystemQuad
     {
-        public new static CCParticleSpiral Create()
-        {
-            var ret = new CCParticleSpiral();
-            ret.InitWithTotalParticles(500);
-            return ret;
-        }
+        public CCParticleSpiral () : base(500)
+        { }
 
         public override bool InitWithTotalParticles(int numberOfParticles)
         {
@@ -579,12 +547,8 @@ namespace cocos2d
 
     public class CCParticleExplosion : CCParticleSystemQuad
     {
-        public new static CCParticleExplosion Create()
-        {
-            var ret = new CCParticleExplosion();
-            ret.InitWithTotalParticles(700);
-            return ret;
-        }
+        public CCParticleExplosion () : base(700)
+        {   }
 
         public override bool InitWithTotalParticles(int numberOfParticles)
         {
@@ -659,12 +623,8 @@ namespace cocos2d
 
     public class CCParticleSmoke : CCParticleSystemQuad
     {
-        public new static CCParticleSmoke Create()
-        {
-            var ret = new CCParticleSmoke();
-            ret.InitWithTotalParticles(200);
-            return ret;
-        }
+        public CCParticleSmoke () : base(200)
+        { }
 
         public override bool InitWithTotalParticles(int numberOfParticles)
         {
@@ -736,12 +696,8 @@ namespace cocos2d
 
     public class CCParticleSnow : CCParticleSystemQuad
     {
-        public new static CCParticleSnow Create()
-        {
-            var ret = new CCParticleSnow();
-            ret.InitWithTotalParticles(700);
-            return ret;
-        }
+        public CCParticleSnow () : base(700)
+        { }
 
         public override bool InitWithTotalParticles(int numberOfParticles)
         {
@@ -817,12 +773,8 @@ namespace cocos2d
 
     public class CCParticleRain : CCParticleSystemQuad
     {
-        public new static CCParticleRain Create()
-        {
-            var ret = new CCParticleRain();
-            ret.InitWithTotalParticles(1000);
-            return ret;
-        }
+        public CCParticleRain () : base(1000)
+        { }
 
         public override bool InitWithTotalParticles(int numberOfParticles)
         {

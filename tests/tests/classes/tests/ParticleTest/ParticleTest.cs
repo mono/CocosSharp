@@ -384,7 +384,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleFireworks.Create();
+            m_emitter = new CCParticleFireworks();
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_stars1);
@@ -409,7 +409,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleFire.Create();
+            m_emitter = new CCParticleFire();
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_fire); //.pvr"];
@@ -436,7 +436,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleSun.Create();
+            m_emitter = new CCParticleSun();
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_fire);
@@ -461,7 +461,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleGalaxy.Create();
+            m_emitter = new CCParticleGalaxy();
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_fire);
@@ -486,7 +486,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleFlower.Create();
+            m_emitter = new CCParticleFlower();
             m_background.AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_stars1);
 
@@ -680,7 +680,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleMeteor.Create();
+            m_emitter = new CCParticleMeteor();
 
             m_background.AddChild(m_emitter, 10);
 
@@ -701,7 +701,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleSpiral.Create();
+            m_emitter = new CCParticleSpiral();
 
             m_background.AddChild(m_emitter, 10);
 
@@ -722,7 +722,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleExplosion.Create();
+            m_emitter = new CCParticleExplosion();
 
             m_background.AddChild(m_emitter, 10);
 
@@ -745,7 +745,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleSmoke.Create();
+            m_emitter = new CCParticleSmoke();
 
             m_background.AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_fire);
@@ -768,7 +768,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleSnow.Create();
+            m_emitter = new CCParticleSnow();
 
             m_background.AddChild(m_emitter, 10);
 
@@ -813,7 +813,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleRain.Create();
+            m_emitter = new CCParticleRain();
 
             m_background.AddChild(m_emitter, 10);
 
@@ -921,7 +921,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = CCParticleFlower.Create();
+            m_emitter = new CCParticleFlower();
 
 
             m_background.AddChild(m_emitter, 10);
@@ -960,14 +960,14 @@ namespace tests
             p.AddChild(p1, 1, new CCPoint(0.5f, 1), new CCPoint(0, 250));
             p.AddChild(p2, 2, new CCPoint(1.5f, 1), new CCPoint(0, 50));
 
-            m_emitter = CCParticleFlower.Create();
+            m_emitter = new CCParticleFlower();
 
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_fire);
 
             p1.AddChild(m_emitter, 10);
             m_emitter.Position = new CCPoint(250, 200);
 
-            CCParticleSun par = CCParticleSun.Create();
+            CCParticleSun par = new CCParticleSun();
             p2.AddChild(par, 10);
             par.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_fire);
 
@@ -1337,7 +1337,7 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            CCParticleSystemQuad ignore = CCParticleSystemQuad.Create("Particles/SmallSun");
+            CCParticleSystemQuad ignore = new CCParticleSystemQuad("Particles/SmallSun");
             //ignore.TotalParticles = 200;
             CCNode parent1 = new CCNode ();
             CCParticleBatchNode parent2 = new CCParticleBatchNode(ignore.Texture);
@@ -1347,15 +1347,15 @@ namespace tests
             {
                 CCNode parent = (i == 0 ? parent1 : parent2);
 
-                CCParticleSystemQuad emitter1 = CCParticleSystemQuad.Create("Particles/SmallSun");
+                CCParticleSystemQuad emitter1 = new CCParticleSystemQuad("Particles/SmallSun");
                 //emitter1.TotalParticles = 200;
                 emitter1.StartColor = (new CCColor4F(1, 0, 0, 1));
                 emitter1.BlendAdditive = (false);
-                CCParticleSystemQuad emitter2 = CCParticleSystemQuad.Create("Particles/SmallSun");
+                CCParticleSystemQuad emitter2 = new CCParticleSystemQuad("Particles/SmallSun");
                 //emitter2.TotalParticles = 200;
                 emitter2.StartColor = (new CCColor4F(0, 1, 0, 1));
                 emitter2.BlendAdditive = (false);
-                CCParticleSystemQuad emitter3 = CCParticleSystemQuad.Create("Particles/SmallSun");
+                CCParticleSystemQuad emitter3 = new CCParticleSystemQuad("Particles/SmallSun");
                 //emitter3.TotalParticles = 200;
                 emitter3.StartColor = (new CCColor4F(0, 0, 1, 1));
                 emitter3.BlendAdditive = (false);
@@ -1436,7 +1436,7 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            m_emitter = CCParticleSystemQuad.Create("Particles/LavaFlow");
+            m_emitter = new CCParticleSystemQuad("Particles/LavaFlow");
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
             CCParticleBatchNode batch = new CCParticleBatchNode(m_emitter.Texture);
 
@@ -1485,11 +1485,11 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            CCParticleSystemQuad emitter1 = CCParticleSystemQuad.Create("Particles/LavaFlow");
+            CCParticleSystemQuad emitter1 = new CCParticleSystemQuad("Particles/LavaFlow");
             emitter1.StartColor = (new CCColor4F(1, 0, 0, 1));
-            CCParticleSystemQuad emitter2 = CCParticleSystemQuad.Create("Particles/LavaFlow");
+            CCParticleSystemQuad emitter2 = new CCParticleSystemQuad("Particles/LavaFlow");
             emitter2.StartColor = (new CCColor4F(0, 1, 0, 1));
-            CCParticleSystemQuad emitter3 = CCParticleSystemQuad.Create("Particles/LavaFlow");
+            CCParticleSystemQuad emitter3 = new CCParticleSystemQuad("Particles/LavaFlow");
             emitter3.StartColor = (new CCColor4F(0, 0, 1, 1));
 
             CCSize s = CCDirector.SharedDirector.WinSize;
@@ -1648,7 +1648,7 @@ namespace tests
 
             for (int i = 0; i < 5; i++)
             {
-                CCParticleSystemQuad particleSystem = CCParticleSystemQuad.Create("Particles/SpinningPeas");
+                CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/SpinningPeas");
 
                 particleSystem.Position = (new CCPoint(i * 50, i * 50));
 
@@ -1686,7 +1686,7 @@ namespace tests
 
             for (int i = 0; i < 5; i++)
             {
-                CCParticleSystemQuad particleSystem = CCParticleSystemQuad.Create("Particles/SpinningPeas");
+                CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/SpinningPeas");
 
                 particleSystem.PositionType = CCPositionType.kCCPositionTypeGrouped;
                 particleSystem.Position = (new CCPoint(i * 50, i * 50));
@@ -1730,7 +1730,7 @@ namespace tests
 
             for (int i = 0; i < 6; i++)
             {
-                CCParticleSystemQuad particleSystem = CCParticleSystemQuad.Create("Particles/Spiral");
+                CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/Spiral");
                 particleSystem.Texture = m_pBatchNode.Texture;
 
                 particleSystem.PositionType = CCPositionType.kCCPositionTypeGrouped;
@@ -1755,7 +1755,7 @@ namespace tests
                 int uRand = Random.Next(nChildrenCount - 1);
                 m_pBatchNode.RemoveChild(m_pBatchNode.Children[uRand], true);
 
-                CCParticleSystemQuad particleSystem = CCParticleSystemQuad.Create("Particles/Spiral");
+                CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/Spiral");
                 //add new
 
                 particleSystem.PositionType = CCPositionType.kCCPositionTypeGrouped;
@@ -1904,7 +1904,7 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            m_emitter = CCParticleSystemQuad.Create("Particles/BoilingFoam");
+            m_emitter = new CCParticleSystemQuad("Particles/BoilingFoam");
 
             // Particle Designer "normal" blend func causes black halo on premul textures (ignores multiplication)
             //this->emitter.blendFunc = (ccBlendFunc){ GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA };
@@ -1948,7 +1948,7 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            m_emitter = CCParticleSystemQuad.Create("Particles/TestPremultipliedAlpha");
+            m_emitter = new CCParticleSystemQuad("Particles/TestPremultipliedAlpha");
             AddChild(m_emitter, 10);
         }
 

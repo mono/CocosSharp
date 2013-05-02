@@ -37,18 +37,12 @@ namespace cocos2d
             return true;
         }
 
-        public new static CCParticleSystemQuad Create(string plistFile)
-        {
-            var pRet = new CCParticleSystemQuad();
-            pRet.InitWithFile(plistFile);
-            return pRet;
-        }
+        public CCParticleSystemQuad (string plistFile) : base(plistFile)
+        { }
 
-        public static CCParticleSystemQuad Create(int numberOfParticles) 
+        public CCParticleSystemQuad (int numberOfParticles) 
         {
-            var pRet = new CCParticleSystemQuad();
-            pRet.InitWithTotalParticles(numberOfParticles);
-            return pRet;
+            InitWithTotalParticles(numberOfParticles);
         }
 
         // pointRect should be in Texture coordinates, not pixel coordinates
@@ -532,12 +526,8 @@ void setupVBOandVAO()
             }
         }
 
-        public new static CCParticleSystemQuad Create()
-        {
-            var p = new CCParticleSystemQuad();
-            p.Init();
-            return p;
-        }
+        public CCParticleSystemQuad () : base()
+        {  }
 
         public CCParticleSystemQuad Clone()
         {
