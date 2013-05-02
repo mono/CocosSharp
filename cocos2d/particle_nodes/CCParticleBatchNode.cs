@@ -40,27 +40,21 @@ namespace cocos2d
          * creation with CCTexture2D
          */
 
-        public static CCParticleBatchNode Create(CCTexture2D tex)
-        {
-            return Create(tex, kCCParticleDefaultCapacity);
-        }
+        public CCParticleBatchNode (CCTexture2D tex) : this(tex, kCCParticleDefaultCapacity)
+        { }
 
-        public static CCParticleBatchNode Create(CCTexture2D tex, int capacity /* = kCCParticleDefaultCapacity*/)
+        public CCParticleBatchNode (CCTexture2D tex, int capacity /* = kCCParticleDefaultCapacity*/)
         {
-            var p = new CCParticleBatchNode();
-            p.InitWithTexture(tex, capacity);
-            return p;
+            InitWithTexture(tex, capacity);
         }
 
         /*
          * creation with File Image
          */
 
-        public static CCParticleBatchNode Create(string imageFile, int capacity /* = kCCParticleDefaultCapacity*/)
+        public CCParticleBatchNode (string imageFile, int capacity /* = kCCParticleDefaultCapacity*/)
         {
-            var p = new CCParticleBatchNode();
-            p.InitWithFile(imageFile, capacity);
-            return p;
+            InitWithFile(imageFile, capacity);
         }
 
         /*

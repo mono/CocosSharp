@@ -1340,7 +1340,7 @@ namespace tests
             CCParticleSystemQuad ignore = CCParticleSystemQuad.Create("Particles/SmallSun");
             //ignore.TotalParticles = 200;
             CCNode parent1 = new CCNode ();
-            CCParticleBatchNode parent2 = CCParticleBatchNode.Create(ignore.Texture);
+            CCParticleBatchNode parent2 = new CCParticleBatchNode(ignore.Texture);
             ignore.UnscheduleUpdate();
 
             for (int i = 0; i < 2; i++)
@@ -1438,7 +1438,7 @@ namespace tests
 
             m_emitter = CCParticleSystemQuad.Create("Particles/LavaFlow");
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
-            CCParticleBatchNode batch = CCParticleBatchNode.Create(m_emitter.Texture);
+            CCParticleBatchNode batch = new CCParticleBatchNode(m_emitter.Texture);
 
             batch.AddChild(m_emitter);
 
@@ -1502,7 +1502,7 @@ namespace tests
             emitter2.Texture = emitter1.Texture;
             emitter3.Texture = emitter1.Texture;
 
-            CCParticleBatchNode batch = CCParticleBatchNode.Create(emitter1.Texture);
+            CCParticleBatchNode batch = new CCParticleBatchNode(emitter1.Texture);
 
             batch.AddChild(emitter1, 0);
             batch.AddChild(emitter2, 0);
@@ -1680,7 +1680,7 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            CCParticleBatchNode batchNode = CCParticleBatchNode.Create("Images/fire", 3000);
+            CCParticleBatchNode batchNode = new CCParticleBatchNode("Images/fire", 3000);
 
             AddChild(batchNode, 1, 2);
 
@@ -1724,7 +1724,7 @@ namespace tests
             m_background = null;
 
             //adds the texture inside the plist to the texture cache
-            m_pBatchNode = CCParticleBatchNode.Create("Images/fire", 16000);
+            m_pBatchNode = new CCParticleBatchNode("Images/fire", 16000);
 
             AddChild(m_pBatchNode, 1, 2);
 
@@ -1793,7 +1793,7 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            m_pBatchNode = CCParticleBatchNode.Create("Images/stars-grayscale", 3000);
+            m_pBatchNode = new CCParticleBatchNode("Images/stars-grayscale", 3000);
 
             AddChild(m_pBatchNode, 1, 2);
 
