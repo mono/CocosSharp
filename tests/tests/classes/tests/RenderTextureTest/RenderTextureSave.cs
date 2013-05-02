@@ -18,6 +18,12 @@ namespace tests
 
             // create a render texture, this is what we are going to draw into
             m_pTarget = CCRenderTexture.Create((int) s.Width, (int) s.Height, SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.PreserveContents);
+
+			// Let's clear the rendertarget here so that we start off fresh.
+			// Some platforms do not seem to be initializing the rendertarget color so this will make sure the background shows up colored instead of 
+			// what looks like non initialized.  Mostly MacOSX for now.
+			m_pTarget.Clear(0,0,0,255);
+
             m_pTarget.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
             // It's possible to modify the RenderTexture blending function by
