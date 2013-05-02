@@ -19,11 +19,12 @@ namespace tests
         {
             InitWithColor(new CCColor4B(0, 0, 255, 255));
 
-            CCMenuItemFont item1 = CCMenuItemFont.Create("(3) Touch to pushScene (self)", item0Clicked);
-            CCMenuItemFont item2 = CCMenuItemFont.Create("(3) Touch to popScene", item1Clicked);
-            CCMenuItemFont item3 = CCMenuItemFont.Create("(3) Touch to popToRootScene", item2Clicked);
+            var item0 = CCMenuItemFont.Create("(3) Touch to pushScene (self)", item0Clicked);
+            var item1 = CCMenuItemFont.Create("(3) Touch to popScene", item1Clicked);
+            var item2 = CCMenuItemFont.Create("(3) Touch to popToRootScene", item2Clicked);
+            var item3 = CCMenuItemFont.Create("(3) Touch to popToSceneStackLevel(2)", item3Clicked);
 
-            CCMenu menu = new CCMenu(item1, item2, item3);
+            CCMenu menu = new CCMenu(item0, item1, item2, item3);
             menu.AlignItemsVertically();
 
             AddChild(menu);
@@ -64,5 +65,9 @@ namespace tests
             CCDirector.SharedDirector.PopToRootScene();
         }
 
+        public void item3Clicked(object pSender)
+        {
+            CCDirector.SharedDirector.PopToSceneStackLevel(2);
+        }
     }
 }

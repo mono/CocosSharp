@@ -368,14 +368,14 @@ namespace cocos2d
 
         #endregion
 
-        public static CCParticleSystem Create(string plistFile)
+        protected CCParticleSystem ()
         {
-            var pRet = new CCParticleSystem();
-            if (pRet.InitWithFile(plistFile))
-            {
-                return pRet;
-            }
-            return null;
+            Init();
+        }
+
+        public CCParticleSystem (string plistFile)
+        {
+            InitWithFile(plistFile);
         }
 
         public bool Init()

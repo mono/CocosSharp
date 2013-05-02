@@ -27,7 +27,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCParticleSystemQuad.Create();
+            return new CCParticleSystemQuad();
         }
 
         protected override void OnHandlePropTypeIntegerLabeled(CCNode node, CCNode parent, string propertyName, int pIntegerLabeled,

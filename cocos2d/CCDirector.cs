@@ -918,6 +918,14 @@ namespace cocos2d
             m_pNextScene = pScene;
         }
 
+        /** Give the number of scenes present in the scene stack.
+         *  Note: this count also includes the root scene node.
+         */
+        public int SceneCount
+        {
+            get { return m_pobScenesStack.Count; }
+        }
+
         /// <summary>
         /// Push the given scene to the top of the scene stack.
         /// </summary>
@@ -1001,35 +1009,54 @@ namespace cocos2d
         }
          */
 
+        /** Pops out all scenes from the queue until the root scene in the queue.
+        * This scene will replace the running one.
+        * Internally it will call `PopToSceneStackLevel(1)`
+        */
         public void PopToRootScene()
+        {
+            PopToSceneStackLevel(1);
+        }
+
+        /** Pops out all scenes from the queue until it reaches `level`.
+         *   If level is 0, it will end the director.
+         *   If level is 1, it will pop all scenes until it reaches to root scene.
+         *   If level is <= than the current stack level, it won't do anything.
+         */
+        public void PopToSceneStackLevel(int level)
         {
             Debug.Assert(m_pRunningScene != null, "A running Scene is needed");
             int c = m_pobScenesStack.Count;
 
-            if (c == 1)
+            // level 0? -> end
+            if (level == 0)
             {
-                m_pobScenesStack.RemoveAt(0);
                 End();
+                return;
             }
-            else
+            
+            // current level or lower -> nothing
+            if (level >= c)
+                return;
+            
+            // pop stack until reaching desired level
+            while (c > level)
             {
-                while (c > 1)
+                var current = m_pobScenesStack[m_pobScenesStack.Count - 1];
+                
+                if (current.IsRunning)
                 {
-                    CCScene current = m_pobScenesStack[m_pobScenesStack.Count - 1];
-                    if (current.IsRunning)
-                    {
-                        current.OnExit();
-                    }
-                    current.Cleanup();
-
-                    m_pobScenesStack.RemoveAt(m_pobScenesStack.Count - 1);
-                    c--;
+                    current.OnExitTransitionDidStart();
+                    current.OnExit();
                 }
-                m_pNextScene = m_pobScenesStack[m_pobScenesStack.Count - 1];
-                m_bSendCleanupToScene = false;
-
-                GC.Collect();
+                
+                current.Cleanup();
+                m_pobScenesStack.RemoveAt(m_pobScenesStack.Count - 1);
+                c--;
             }
+            
+            m_pNextScene = m_pobScenesStack[m_pobScenesStack.Count - 1];
+            m_bSendCleanupToScene = false;
         }
 
         protected void SetNextScene()

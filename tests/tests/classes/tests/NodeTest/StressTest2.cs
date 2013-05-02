@@ -20,7 +20,7 @@ namespace tests
             sp1.RunAction(new CCRepeatForever ((CCActionInterval) seq3));
             sublayer.AddChild(sp1, 1);
 
-            CCParticleFire fire = CCParticleFire.Create();
+            CCParticleFire fire = new CCParticleFire();
             fire.Texture = (CCTextureCache.SharedTextureCache.AddImage("Images/fire"));
             fire.Position = (new CCPoint(80, s.Height / 2 - 50));
 

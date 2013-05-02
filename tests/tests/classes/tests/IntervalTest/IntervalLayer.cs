@@ -21,7 +21,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // sun
-            CCParticleSystem sun = CCParticleSun.Create();
+            CCParticleSystem sun = new CCParticleSun();
             sun.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
             sun.Position = (new CCPoint(s.Width - 32, s.Height - 32));
 
