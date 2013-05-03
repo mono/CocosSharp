@@ -583,11 +583,9 @@ namespace cocos2d
         /// <summary>
         /// creates a TMX Format with a tmx file
         /// </summary>
-        public static CCTMXMapInfo Create(string tmxFile)
+        public CCTMXMapInfo (string tmxFile)
         {
-            var pRet = new CCTMXMapInfo();
-            pRet.InitWithTmxFile(tmxFile);
-            return pRet;
+            InitWithTmxFile(tmxFile);
         }
 
         private void InternalInit(string tmxFileName, string resourcePath)

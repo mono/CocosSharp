@@ -80,11 +80,9 @@ namespace cocos2d
 
         /** creates a CCTMXLayer with an tileset info, a layer info and a map info */
 
-        public static CCTMXLayer Create(CCTMXTilesetInfo tilesetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
+        public CCTMXLayer (CCTMXTilesetInfo tilesetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
         {
-            var pRet = new CCTMXLayer();
-            pRet.InitWithTilesetInfo(tilesetInfo, layerInfo, mapInfo);
-            return pRet;
+            InitWithTilesetInfo(tilesetInfo, layerInfo, mapInfo);
         }
 
         /** initializes a CCTMXLayer with a tileset info, a layer info and a map info */

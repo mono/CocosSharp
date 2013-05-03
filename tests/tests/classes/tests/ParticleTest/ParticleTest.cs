@@ -951,7 +951,7 @@ namespace tests
             m_background.Parent.RemoveChild(m_background, true);
             m_background = null;
 
-            CCParallaxNode p = CCParallaxNode.Create();
+            CCParallaxNode p = new CCParallaxNode();
             AddChild(p, 5);
 
             CCSprite p1 = new CCSprite(TestResource.s_back3);

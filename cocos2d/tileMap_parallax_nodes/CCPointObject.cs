@@ -8,11 +8,9 @@ namespace cocos2d
         public CCPoint Offset;
         public CCPoint Ratio;
 
-        public static CCPointObject Create(CCPoint ratio, CCPoint offset)
+        public CCPointObject (CCPoint ratio, CCPoint offset)
         {
-            var pRet = new CCPointObject();
-            pRet.InitWithCcPoint(ratio, offset);
-            return pRet;
+            InitWithCcPoint(ratio, offset);
         }
 
         public bool InitWithCcPoint(CCPoint ratio, CCPoint offset)
