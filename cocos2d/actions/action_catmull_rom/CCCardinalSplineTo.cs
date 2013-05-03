@@ -151,14 +151,14 @@ namespace cocos2d
             p = copyConfig[copyConfig.Count - 1];
             copyConfig.RemoveAt(copyConfig.Count - 1);
 
-            p = CCPointExtension.Negative(p);
+            p = -p;
             copyConfig.Insert(0, p);
 
             for (int i = 1; i < copyConfig.Count; ++i)
             {
                 CCPoint current = copyConfig[i];
-                current = CCPointExtension.Negative(current);
-                CCPoint abs = CCPointExtension.Add(current, p);
+                current = -current;
+                CCPoint abs = current + p;
                 copyConfig[i] = abs;
 
                 p = abs;
@@ -169,7 +169,7 @@ namespace cocos2d
 
         public override void UpdatePosition(CCPoint newPos)
         {
-            m_pTarget.Position = CCPointExtension.Add(newPos, m_startPosition);
+            m_pTarget.Position = newPos + m_startPosition;
         }
     }
 

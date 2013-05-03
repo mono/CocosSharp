@@ -69,7 +69,8 @@ namespace cocos2d
 
                 float x = Bezierat(xa, xb, xc, xd, time);
                 float y = Bezierat(ya, yb, yc, yd, time);
-                m_pTarget.Position = CCPointExtension.Add(m_startPosition, new CCPoint(x, y));
+                m_pTarget.PositionX = m_startPosition.X + x;
+                m_pTarget.PositionY = m_startPosition.Y + y;
             }
         }
 
@@ -77,9 +78,9 @@ namespace cocos2d
         {
             ccBezierConfig r;
 
-            r.EndPosition = CCPointExtension.Negative(m_sConfig.EndPosition);
-            r.ControlPoint1 = CCPointExtension.Add(m_sConfig.ControlPoint2, CCPointExtension.Negative(m_sConfig.EndPosition));
-            r.ControlPoint2 = CCPointExtension.Add(m_sConfig.ControlPoint1, CCPointExtension.Negative(m_sConfig.EndPosition));
+            r.EndPosition = -m_sConfig.EndPosition;
+            r.ControlPoint1 = m_sConfig.ControlPoint2 + -m_sConfig.EndPosition;
+            r.ControlPoint2 = m_sConfig.ControlPoint1 + -m_sConfig.EndPosition;
 
             var action = new CCBezierBy(m_fDuration, r);
             return action;
