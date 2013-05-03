@@ -153,7 +153,7 @@ namespace cocos2d
 
         #endregion
 
-        public bool InitWithSprite(CCSprite sp)
+        protected virtual bool InitWithSprite(CCSprite sp)
         {
             Percentage = 0.0f;
             m_pVertexData = null;
@@ -258,18 +258,16 @@ namespace cocos2d
         }
 
 
-        public static CCProgressTimer Create(string fileName)
+        public CCProgressTimer(string fileName)
         {
-            return Create(new CCSprite(fileName));
+            InitWithSprite(new CCSprite(fileName));
         }
 
         /** Creates a progress timer with the sprite as the shape the timer goes through */
 
-        public static CCProgressTimer Create(CCSprite sp)
+        public CCProgressTimer(CCSprite sp)
         {
-            var pProgressTimer = new CCProgressTimer();
-            pProgressTimer.InitWithSprite(sp);
-            return pProgressTimer;
+            InitWithSprite(sp);
         }
 
         protected CCTex2F TextureCoordFromAlphaPoint(CCPoint alpha)

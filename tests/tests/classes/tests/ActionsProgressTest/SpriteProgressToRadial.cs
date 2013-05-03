@@ -16,13 +16,13 @@ namespace tests
             CCProgressTo to1 = new CCProgressTo(2, 100);
             CCProgressTo to2 = new CCProgressTo(2, 100);
 
-            CCProgressTimer left = CCProgressTimer.Create(s_pPathSister1);
+            CCProgressTimer left = new CCProgressTimer(s_pPathSister1);
             left.Type = CCProgressTimerType.Radial;
             AddChild(left);
             left.Position = new CCPoint(100, s.Height / 2);
             left.RunAction(new CCRepeatForever (to1));
 
-            CCProgressTimer right = CCProgressTimer.Create(s_pPathBlock);
+            CCProgressTimer right = new CCProgressTimer(s_pPathBlock);
             right.Type = CCProgressTimerType.Radial;
             right.ReverseProgress = true;
             AddChild(right);

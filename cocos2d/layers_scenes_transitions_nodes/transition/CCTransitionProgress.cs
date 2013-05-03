@@ -95,7 +95,7 @@ namespace cocos2d
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTimer node = CCProgressTimer.Create(texture.Sprite);
+            CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
             // but it is flipped upside down so we flip the sprite
             //node.Sprite.IsFlipY = true;
@@ -126,7 +126,7 @@ namespace cocos2d
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTimer node = CCProgressTimer.Create(texture.Sprite);
+            CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
             // but it is flipped upside down so we flip the sprite
             //node.Sprite.IsFlipY = true;
@@ -157,7 +157,7 @@ namespace cocos2d
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTimer node = CCProgressTimer.Create(texture.Sprite);
+            CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
             // but it is flipped upside down so we flip the sprite
             //node.Sprite.IsFlipY = true;
@@ -186,7 +186,7 @@ namespace cocos2d
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTimer node = CCProgressTimer.Create(texture.Sprite);
+            CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
             // but it is flipped upside down so we flip the sprite
             //node.Sprite.IsFlipY = true;
@@ -214,7 +214,7 @@ namespace cocos2d
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTimer node = CCProgressTimer.Create(texture.Sprite);
+            CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
             // but it is flipped upside down so we flip the sprite
             //node.Sprite.IsFlipY = true;
@@ -253,7 +253,7 @@ namespace cocos2d
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTimer node = CCProgressTimer.Create(texture.Sprite);
+            CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
             // but it is flipped upside down so we flip the sprite
             //node.Sprite.IsFlipY = true;

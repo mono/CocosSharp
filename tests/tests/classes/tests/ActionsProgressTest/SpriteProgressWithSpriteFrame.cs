@@ -14,7 +14,7 @@ namespace tests
 
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("zwoptex/grossini.plist");
 
-            CCProgressTimer left = CCProgressTimer.Create(new CCSprite("grossini_dance_01.png"));
+            CCProgressTimer left = new CCProgressTimer(new CCSprite("grossini_dance_01.png"));
             left.Type = CCProgressTimerType.Bar;
             //    Setup for a bar starting from the bottom since the midpoint is 0 for the y
             left.Midpoint = new CCPoint(0.5f, 0.5f);
@@ -24,7 +24,7 @@ namespace tests
             left.Position = new CCPoint(100, s.Height / 2);
             left.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
 
-            CCProgressTimer middle = CCProgressTimer.Create(new CCSprite("grossini_dance_02.png"));
+            CCProgressTimer middle = new CCProgressTimer(new CCSprite("grossini_dance_02.png"));
             middle.Type = CCProgressTimerType.Bar;
             //    Setup for a bar starting from the bottom since the midpoint is 0 for the y
             middle.Midpoint = new CCPoint(0.5f, 0.5f);
@@ -34,7 +34,7 @@ namespace tests
             middle.Position = new CCPoint(s.Width / 2, s.Height / 2);
             middle.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
 
-            CCProgressTimer right = CCProgressTimer.Create(new CCSprite("grossini_dance_03.png"));
+            CCProgressTimer right = new CCProgressTimer(new CCSprite("grossini_dance_03.png"));
             right.Type = CCProgressTimerType.Radial;
             //    Setup for a bar starting from the bottom since the midpoint is 0 for the y
             right.Midpoint = new CCPoint(0.5f, 0.5f);

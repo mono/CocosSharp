@@ -16,7 +16,7 @@ namespace tests
             CCProgressTo to1 = new CCProgressTo(2, 100);
             CCProgressTo to2 = new CCProgressTo(2, 100);
 
-            CCProgressTimer left = CCProgressTimer.Create(s_pPathSister1);
+            CCProgressTimer left = new CCProgressTimer(s_pPathSister1);
             left.Type = CCProgressTimerType.Bar;
             //    Setup for a bar starting from the left since the midpoint is 0 for the y
             left.Midpoint = new CCPoint(0, 0);
@@ -26,7 +26,7 @@ namespace tests
             left.Position = new CCPoint(100, s.Height / 2);
             left.RunAction(new CCRepeatForever (to1));
 
-            CCProgressTimer right = CCProgressTimer.Create(s_pPathSister2);
+            CCProgressTimer right = new CCProgressTimer(s_pPathSister2);
             right.Type = CCProgressTimerType.Bar;
             //    Setup for a bar starting from the left since the midpoint is 0 for the y
             right.Midpoint = new CCPoint(0, 1);

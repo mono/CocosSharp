@@ -20,7 +20,7 @@ namespace tests
             CCAction fade = CCSequence.FromActions(new CCFadeTo (1.0f, 0),
                                               new CCFadeTo (1.0f, 255));
 
-            CCProgressTimer left = CCProgressTimer.Create(new CCSprite(s_pPathSister1));
+            CCProgressTimer left = new CCProgressTimer(new CCSprite(s_pPathSister1));
             left.Type = CCProgressTimerType.Bar;
 
             //    Setup for a bar starting from the bottom since the midpoint is 0 for the y
@@ -34,7 +34,7 @@ namespace tests
 
             left.AddChild(new CCLabelTTF("Tint", "arial", 20.0f));
 
-            CCProgressTimer middle = CCProgressTimer.Create(new CCSprite(s_pPathSister2));
+            CCProgressTimer middle = new CCProgressTimer(new CCSprite(s_pPathSister2));
             middle.Type = CCProgressTimerType.Bar;
             //    Setup for a bar starting from the bottom since the midpoint is 0 for the y
             middle.Midpoint = new CCPoint(0.5f, 0.5f);
@@ -47,7 +47,7 @@ namespace tests
 
             middle.AddChild(new CCLabelTTF("Fade", "arial", 20.0f));
 
-            CCProgressTimer right = CCProgressTimer.Create(new CCSprite(s_pPathSister2));
+            CCProgressTimer right = new CCProgressTimer(new CCSprite(s_pPathSister2));
             right.Type = CCProgressTimerType.Bar;
             //    Setup for a bar starting from the bottom since the midpoint is 0 for the y
             right.Midpoint = new CCPoint(0.5f, 0.5f);

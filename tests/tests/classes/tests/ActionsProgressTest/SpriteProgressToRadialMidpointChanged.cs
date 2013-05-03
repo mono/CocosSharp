@@ -17,7 +17,7 @@ namespace tests
             /**
            *  Our image on the left should be a radial progress indicator, clockwise
            */
-            CCProgressTimer left = CCProgressTimer.Create(new CCSprite(s_pPathBlock));
+            CCProgressTimer left = new CCProgressTimer(new CCSprite(s_pPathBlock));
             left.Type = CCProgressTimerType.Radial;
             AddChild(left);
             left.Midpoint = new CCPoint(0.25f, 0.75f);
@@ -27,7 +27,7 @@ namespace tests
             /**
            *  Our image on the left should be a radial progress indicator, counter clockwise
            */
-            CCProgressTimer right = CCProgressTimer.Create(new CCSprite(s_pPathBlock));
+            CCProgressTimer right = new CCProgressTimer(new CCSprite(s_pPathBlock));
             right.Type = CCProgressTimerType.Radial;
             right.Midpoint = new CCPoint(0.75f, 0.25f);
 
