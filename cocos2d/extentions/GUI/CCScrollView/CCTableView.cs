@@ -192,10 +192,8 @@ namespace cocos2d
          * @return table view
          */
 
-        public static CCTableView Create(CCTableViewDataSource dataSource, CCSize size)
-        {
-            return Create(dataSource, size, null);
-        }
+        public CCTableView (CCTableViewDataSource dataSource, CCSize size) : this(dataSource, size, null)
+        {}
 
         /**
          * An initialized table view object
@@ -206,13 +204,11 @@ namespace cocos2d
          * @return table view
          */
 
-        public static CCTableView Create(CCTableViewDataSource dataSource, CCSize size, CCNode container)
+        public CCTableView (CCTableViewDataSource dataSource, CCSize size, CCNode container)
         {
-            var table = new CCTableView();
-            table.InitWithViewSize(size, container);
-            table.DataSource = dataSource;
-            table._updateContentSize();
-            return table;
+            InitWithViewSize(size, container);
+            DataSource = dataSource;
+            _updateContentSize();
         }
 
         /**
