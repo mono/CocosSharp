@@ -21,7 +21,7 @@ namespace tests
             //
             // parents
 
-            aParent = CCSpriteBatchNode.Create("animations/grossini", 50);
+            aParent = new CCSpriteBatchNode("animations/grossini", 50);
             AddChild(aParent, 0);
 
             // anchor (0,0)

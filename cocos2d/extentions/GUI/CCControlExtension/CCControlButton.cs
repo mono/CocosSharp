@@ -691,7 +691,7 @@ namespace cocos2d
             {
                 title = String.Empty;
             }
-            SetTitleLabelForState(CCLabelBMFont.Create(title, fntFile), state);
+            SetTitleLabelForState(new CCLabelBMFont(title, fntFile), state);
         }
 
         public virtual string GetTitleBmFontForState(CCControlState state)

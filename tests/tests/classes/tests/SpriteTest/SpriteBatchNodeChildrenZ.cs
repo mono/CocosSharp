@@ -20,7 +20,7 @@ namespace tests
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("animations/grossini.plist");
 
             // test 1
-            batch = CCSpriteBatchNode.Create("animations/grossini", 50);
+            batch = new CCSpriteBatchNode("animations/grossini", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
             sprite1 = new CCSprite("grossini_dance_01.png");
@@ -37,7 +37,7 @@ namespace tests
             sprite1.AddChild(sprite3, -2);
 
             // test 2
-            batch = CCSpriteBatchNode.Create("animations/grossini", 50);
+            batch = new CCSpriteBatchNode("animations/grossini", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
             sprite1 = new CCSprite("grossini_dance_01.png");
@@ -54,7 +54,7 @@ namespace tests
             sprite1.AddChild(sprite3, 2);
 
             // test 3
-            batch = CCSpriteBatchNode.Create("animations/grossini", 50);
+            batch = new CCSpriteBatchNode("animations/grossini", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
             sprite1 = new CCSprite("grossini_dance_01.png");
@@ -71,7 +71,7 @@ namespace tests
             batch.AddChild(sprite3, -5);
 
             // test 4
-            batch = CCSpriteBatchNode.Create("animations/grossini", 50);
+            batch = new CCSpriteBatchNode("animations/grossini", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
             sprite1 = new CCSprite("grossini_dance_01.png");

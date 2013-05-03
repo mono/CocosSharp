@@ -20,7 +20,7 @@ namespace tests
             // SpriteBatchNode
             //
             // parents
-            aParent = CCSpriteBatchNode.Create("animations/grossini", 50);
+            aParent = new CCSpriteBatchNode("animations/grossini", 50);
             aParent.Position = (new CCPoint(s.Width / 3, s.Height / 2));
             AddChild(aParent, 0);
 

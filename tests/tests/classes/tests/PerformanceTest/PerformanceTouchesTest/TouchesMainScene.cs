@@ -50,7 +50,7 @@ namespace tests
             CCNode ccnode = new CCNode();
             ccnode.ScheduleUpdate();
 
-            m_plabel = CCLabelBMFont.Create("00.0", "fonts/arial16.fnt");
+            m_plabel = new CCLabelBMFont("00.0", "fonts/arial16.fnt");
             m_plabel.Position = new CCPoint(s.Width / 2, s.Height / 2);
             AddChild(m_plabel);
 

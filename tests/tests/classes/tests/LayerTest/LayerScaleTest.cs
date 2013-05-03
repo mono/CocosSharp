@@ -26,10 +26,10 @@ namespace tests
             //
             // Add two labels using BM label class
             // CCLabelBMFont
-            CCLabelBMFont label1 = CCLabelBMFont.Create("LABEL1", "fonts/konqa32.fnt");
+            CCLabelBMFont label1 = new CCLabelBMFont("LABEL1", "fonts/konqa32.fnt");
             layer.AddChild(label1);
             label1.Position = new CCPoint(layer.ContentSize.Width / 2, layer.ContentSize.Height * 0.75f);
-            CCLabelBMFont label2 = CCLabelBMFont.Create("LABEL2", "fonts/konqa32.fnt");
+            CCLabelBMFont label2 = new CCLabelBMFont("LABEL2", "fonts/konqa32.fnt");
             layer.AddChild(label2);
             label2.Position = new CCPoint(layer.ContentSize.Width / 2, layer.ContentSize.Height * 0.25f);
             //

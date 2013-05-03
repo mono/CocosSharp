@@ -16,7 +16,7 @@ namespace tests
             AddChild(layer, -10);
 
             // CCLabelBMFont
-            CCLabelBMFont label1 = CCLabelBMFont.Create("Testing Glyph Designer", "fonts/futura-48.fnt");
+            CCLabelBMFont label1 = new CCLabelBMFont("Testing Glyph Designer", "fonts/futura-48.fnt");
             AddChild(label1);
             label1.Position = new CCPoint(s.Width / 2, s.Height / 2);
         }

@@ -13,7 +13,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // CCLabelBMFont
-            CCLabelBMFont label1 = CCLabelBMFont.Create("TESTING RETINA DISPLAY", "fonts/konqa32.fnt");
+            CCLabelBMFont label1 = new CCLabelBMFont("TESTING RETINA DISPLAY", "fonts/konqa32.fnt");
             AddChild(label1);
             label1.Position = new CCPoint(s.Width / 2, s.Height / 2);
         }

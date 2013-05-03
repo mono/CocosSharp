@@ -502,7 +502,7 @@ namespace cocos2d
         {
             Debug.Assert(!string.IsNullOrEmpty(file), "Invalid file for sprite");
 
-            CCSpriteBatchNode batchnode = CCSpriteBatchNode.Create(file, 9);
+            CCSpriteBatchNode batchnode = new CCSpriteBatchNode(file, 9);
             bool pReturn = InitWithBatchNode(batchnode, rect, capInsets);
             return pReturn;
         }
@@ -533,7 +533,7 @@ namespace cocos2d
         {
             Debug.Assert(spriteFrame != null, "Sprite frame must be not nil");
 
-            CCSpriteBatchNode batchnode = CCSpriteBatchNode.Create(spriteFrame.Texture, 9);
+            CCSpriteBatchNode batchnode = new CCSpriteBatchNode(spriteFrame.Texture, 9);
             bool pReturn = InitWithBatchNode(batchnode, spriteFrame.Rect, spriteFrame.IsRotated, capInsets);
             return pReturn;
         }
@@ -602,7 +602,7 @@ namespace cocos2d
 
         public void SetSpriteFrame(CCSpriteFrame spriteFrame)
         {
-            CCSpriteBatchNode batchnode = CCSpriteBatchNode.Create(spriteFrame.Texture, 9);
+            CCSpriteBatchNode batchnode = new CCSpriteBatchNode(spriteFrame.Texture, 9);
             UpdateWithBatchNode(batchnode, spriteFrame.Rect, spriteFrame.IsRotated, CCRect.Zero);
 
             // Reset insets

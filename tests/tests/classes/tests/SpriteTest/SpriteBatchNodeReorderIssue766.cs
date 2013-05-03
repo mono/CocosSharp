@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteBatchNodeReorderIssue766()
         {
-            batchNode = CCSpriteBatchNode.Create("Images/piece", 15);
+            batchNode = new CCSpriteBatchNode("Images/piece", 15);
             AddChild(batchNode, 1, 0);
 
             sprite1 = makeSpriteZ(2);

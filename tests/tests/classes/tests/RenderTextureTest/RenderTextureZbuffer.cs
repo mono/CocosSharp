@@ -40,7 +40,7 @@ namespace tests
 
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("Images/bugs/circle.plist");
 
-            mgr = CCSpriteBatchNode.Create("Images/bugs/circle", 9);
+            mgr = new CCSpriteBatchNode("Images/bugs/circle", 9);
             AddChild(mgr);
 
             sp1 = new CCSprite("Images/bugs/circle");

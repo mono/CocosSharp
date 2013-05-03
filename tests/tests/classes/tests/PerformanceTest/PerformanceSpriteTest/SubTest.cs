@@ -154,37 +154,37 @@ namespace tests
 
                 case 2:
                     CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888;
-                    batchNode = CCSpriteBatchNode.Create("Images/grossinis_sister1", 100);
+                    batchNode = new CCSpriteBatchNode("Images/grossinis_sister1", 100);
                     p.AddChild(batchNode, 0);
                     break;
                 
                 case 3:
                     CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA4444;
-                    batchNode = CCSpriteBatchNode.Create("Images/grossinis_sister1", 100);
+                    batchNode = new CCSpriteBatchNode("Images/grossinis_sister1", 100);
                     p.AddChild(batchNode, 0);
                     break;
 
                 case 5:
                     CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888;
-                    batchNode = CCSpriteBatchNode.Create("Images/grossini_dance_atlas", 100);
+                    batchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 100);
                     p.AddChild(batchNode, 0);
                     break;
 
                 case 6:
                     CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA4444;
-                    batchNode = CCSpriteBatchNode.Create("Images/grossini_dance_atlas", 100);
+                    batchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 100);
                     p.AddChild(batchNode, 0);
                     break;
 
                     ///
                 case 8:
                     CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888;
-                    batchNode = CCSpriteBatchNode.Create("Images/spritesheet1", 100);
+                    batchNode = new CCSpriteBatchNode("Images/spritesheet1", 100);
                     p.AddChild(batchNode, 0);
                     break;
                 case 9:
                     CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA4444;
-                    batchNode = CCSpriteBatchNode.Create("Images/spritesheet1", 100);
+                    batchNode = new CCSpriteBatchNode("Images/spritesheet1", 100);
                     p.AddChild(batchNode, 0);
                     break;
 

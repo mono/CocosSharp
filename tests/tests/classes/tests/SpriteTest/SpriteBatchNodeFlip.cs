@@ -11,7 +11,7 @@ namespace tests
     {
         public SpriteBatchNodeFlip()
         {
-            CCSpriteBatchNode batch = CCSpriteBatchNode.Create("Images/grossini_dance_atlas", 10);
+            CCSpriteBatchNode batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 10);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
             CCSize s = CCDirector.SharedDirector.WinSize;

@@ -9,7 +9,6 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             var bmFont = new CCLabelBMFont();
-            bmFont.Init();
             bmFont.FntFile = "fonts/font-issue1343.fnt";
             bmFont.Label = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz.,'");
             AddChild(bmFont);

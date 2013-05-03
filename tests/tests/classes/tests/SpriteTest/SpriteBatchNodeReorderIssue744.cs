@@ -14,7 +14,7 @@ namespace tests
 
             // Testing issue #744
             // http://code.google.com/p/cocos2d-iphone/issues/detail?id=744
-            CCSpriteBatchNode batch = CCSpriteBatchNode.Create("Images/grossini_dance_atlas", 15);
+            CCSpriteBatchNode batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 15);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
             CCSprite sprite = new CCSprite(batch.Texture, new CCRect(0, 0, 85, 121));

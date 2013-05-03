@@ -17,7 +17,7 @@ namespace tests
 
             // parents
             CCNode parent1 = new CCNode ();
-            CCSpriteBatchNode parent2 = CCSpriteBatchNode.Create("animations/grossini", 50);
+            CCSpriteBatchNode parent2 = new CCSpriteBatchNode("animations/grossini", 50);
 
             AddChild(parent1, 0, (int)kTags.kTagNode);
             AddChild(parent2, 0, (int)kTags.kTagSpriteBatchNode);

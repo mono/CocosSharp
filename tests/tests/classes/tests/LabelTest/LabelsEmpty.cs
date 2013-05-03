@@ -13,7 +13,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // CCLabelBMFont
-            CCLabelBMFont label1 = CCLabelBMFont.Create("", "fonts/bitmapFontTest3.fnt");
+            CCLabelBMFont label1 = new CCLabelBMFont("", "fonts/bitmapFontTest3.fnt");
             AddChild(label1, 0, (int)TagSprite.kTagBitmapAtlas1);
             label1.Position = new CCPoint(s.Width / 2, s.Height - 100);
 

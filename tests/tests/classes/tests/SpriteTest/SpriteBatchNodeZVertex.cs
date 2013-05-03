@@ -45,7 +45,7 @@ namespace tests
 
             // small capacity. Testing resizing.
             // Don't use capacity=1 in your real game. It is expensive to resize the capacity
-            CCSpriteBatchNode batch = CCSpriteBatchNode.Create("Images/grossini_dance_atlas", 1);
+            CCSpriteBatchNode batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 1);
             // camera uses the center of the image as the pivoting point
             batch.ContentSize = new CCSize(s.Width, s.Height);
             batch.AnchorPoint = (new CCPoint(0.5f, 0.5f));

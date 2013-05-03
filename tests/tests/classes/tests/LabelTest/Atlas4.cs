@@ -16,7 +16,7 @@ namespace tests
             m_time = 0;
 
             // Upper Label
-            CCLabelBMFont label = CCLabelBMFont.Create("Bitmap Font Atlas", "fonts/bitmapFontTest.fnt");
+            CCLabelBMFont label = new CCLabelBMFont("Bitmap Font Atlas", "fonts/bitmapFontTest.fnt");
             AddChild(label);
 
             CCSize s = CCDirector.SharedDirector.WinSize;
@@ -53,7 +53,7 @@ namespace tests
 
 
             // Bottom Label
-            CCLabelBMFont label2 = CCLabelBMFont.Create("00.0", "fonts/bitmapFontTest.fnt");
+            CCLabelBMFont label2 = new CCLabelBMFont("00.0", "fonts/bitmapFontTest.fnt");
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
             label2.Position = new CCPoint(s.Width / 2.0f, 80);
 

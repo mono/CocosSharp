@@ -16,15 +16,15 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLabelBMFont label1 = CCLabelBMFont.Create(spanish, "fonts/arial-unicode-26.fnt", 200, CCTextAlignment.CCTextAlignmentLeft);
+            CCLabelBMFont label1 = new CCLabelBMFont(spanish, "fonts/arial-unicode-26.fnt", 200, CCTextAlignment.CCTextAlignmentLeft);
             AddChild(label1);
             label1.Position = new CCPoint(s.Width / 2, s.Height / 4 * 3);
 
-            CCLabelBMFont label2 = CCLabelBMFont.Create(chinese, "fonts/arial-unicode-26.fnt");
+            CCLabelBMFont label2 = new CCLabelBMFont(chinese, "fonts/arial-unicode-26.fnt");
             AddChild(label2);
             label2.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
 
-            CCLabelBMFont label3 = CCLabelBMFont.Create(japanese, "fonts/arial-unicode-26.fnt");
+            CCLabelBMFont label3 = new CCLabelBMFont(japanese, "fonts/arial-unicode-26.fnt");
             AddChild(label3);
             label3.Position = new CCPoint(s.Width / 2, s.Height / 4 * 1);
         }

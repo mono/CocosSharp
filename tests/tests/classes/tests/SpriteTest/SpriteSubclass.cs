@@ -50,7 +50,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("animations/ghosts.plist");
-            CCSpriteBatchNode aParent = CCSpriteBatchNode.Create("animations/ghosts");
+            CCSpriteBatchNode aParent = new CCSpriteBatchNode("animations/ghosts");
 
             // MySprite1
             MySprite1 sprite = MySprite1.Create("father.gif");

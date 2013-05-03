@@ -191,41 +191,36 @@ namespace cocos2d
             FNTConfigRemoveCache();
         }
 
-        public new static CCLabelBMFont Create()
+        public CCLabelBMFont()
         {
-            var pRet = new CCLabelBMFont();
-            pRet.Init();
-            return pRet;
+            Init();
         }
 
-        public static CCLabelBMFont Create(string str, string fntFile, float width)
+        public CCLabelBMFont(string str, string fntFile, float width) : this(str, fntFile, width, CCTextAlignment.CCTextAlignmentLeft, CCPoint.Zero)
         {
-            return Create(str, fntFile, width, CCTextAlignment.CCTextAlignmentLeft, CCPoint.Zero);
         }
 
-        public static CCLabelBMFont Create(string str, string fntFile)
+        public CCLabelBMFont(string str, string fntFile)
+            : this(str, fntFile, kCCLabelAutomaticWidth, CCTextAlignment.CCTextAlignmentLeft, CCPoint.Zero)
         {
-            return Create(str, fntFile, kCCLabelAutomaticWidth, CCTextAlignment.CCTextAlignmentLeft, CCPoint.Zero);
         }
 
-        public static CCLabelBMFont Create(string str, string fntFile, float width, CCTextAlignment alignment)
+        public CCLabelBMFont(string str, string fntFile, float width, CCTextAlignment alignment)
+            : this(str, fntFile, width, alignment, CCPoint.Zero)
         {
-            return Create(str, fntFile, width, alignment, CCPoint.Zero);
         }
 
-        public static CCLabelBMFont Create(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset)
+        public CCLabelBMFont(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset)
         {
-            var pRet = new CCLabelBMFont();
-            pRet.InitWithString(str, fntFile, width, alignment, imageOffset);
-            return pRet;
+            InitWithString(str, fntFile, width, alignment, imageOffset);
         }
 
-        public new bool Init()
+        protected override bool Init()
         {
             return InitWithString(null, null, kCCLabelAutomaticWidth, CCTextAlignment.CCTextAlignmentLeft, CCPoint.Zero);
         }
 
-        public bool InitWithString(string theString, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset)
+        protected virtual bool InitWithString(string theString, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset)
         {
             Debug.Assert(m_pConfiguration == null, "re-init is no longer supported");
             Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null), "Invalid params for CCLabelBMFont");

@@ -26,7 +26,7 @@ namespace tests
             // SpriteBatchNode: 3 levels of children
             //
 
-            aParent = CCSpriteBatchNode.Create("animations/ghosts");
+            aParent = new CCSpriteBatchNode("animations/ghosts");
             aParent.Texture.GenerateMipmap();
             AddChild(aParent);
 

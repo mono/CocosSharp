@@ -45,42 +45,37 @@ namespace cocos2d
 
         #endregion
 
-        public static CCSpriteBatchNode Create(CCTexture2D tex)
+        public CCSpriteBatchNode()
         {
-            var batchNode = new CCSpriteBatchNode();
-            batchNode.InitWithTexture(tex, kDefaultSpriteBatchCapacity);
-            return batchNode;
         }
 
-        public static CCSpriteBatchNode Create(CCTexture2D tex, int capacity)
+        public CCSpriteBatchNode(CCTexture2D tex)
         {
-            var batchNode = new CCSpriteBatchNode();
-            batchNode.InitWithTexture(tex, capacity);
-            return batchNode;
+            InitWithTexture(tex, kDefaultSpriteBatchCapacity);
         }
 
-        public static CCSpriteBatchNode Create(string fileImage)
+        public CCSpriteBatchNode(CCTexture2D tex, int capacity)
         {
-            var batchNode = new CCSpriteBatchNode();
-            batchNode.InitWithFile(fileImage, kDefaultSpriteBatchCapacity);
-
-            return batchNode;
+            InitWithTexture(tex, capacity);
         }
 
-        public static CCSpriteBatchNode Create(string fileImage, int capacity)
+        public CCSpriteBatchNode(string fileImage)
         {
-            var batchNode = new CCSpriteBatchNode();
-            batchNode.InitWithFile(fileImage, capacity);
-            return batchNode;
+            InitWithFile(fileImage, kDefaultSpriteBatchCapacity);
         }
 
-        public bool InitWithFile(string fileImage, int capacity)
+        public CCSpriteBatchNode(string fileImage, int capacity)
+        {
+            InitWithFile(fileImage, capacity);
+        }
+
+        protected virtual bool InitWithFile(string fileImage, int capacity)
         {
             CCTexture2D pTexture2D = CCTextureCache.SharedTextureCache.AddImage(fileImage);
             return InitWithTexture(pTexture2D, capacity);
         }
 
-        public bool InitWithTexture(CCTexture2D tex, int capacity)
+        protected virtual bool InitWithTexture(CCTexture2D tex, int capacity)
         {
             m_blendFunc.Source = CCMacros.CCDefaultSourceBlending;
             m_blendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
@@ -105,7 +100,7 @@ namespace cocos2d
             return true;
         }
 
-        public bool Init()
+        protected virtual bool Init()
         {
             var texture = new CCTexture2D();
             return InitWithTexture(texture, 0);

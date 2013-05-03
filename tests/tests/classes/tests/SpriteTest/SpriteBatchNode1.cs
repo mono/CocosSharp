@@ -13,7 +13,7 @@ namespace tests
         {
             TouchEnabled = true;
 
-            CCSpriteBatchNode BatchNode = CCSpriteBatchNode.Create("Images/grossini_dance_atlas", 50);
+            CCSpriteBatchNode BatchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 50);
             AddChild(BatchNode, 0, (int)kTags.kTagSpriteBatchNode);
 
             CCSize s = CCDirector.SharedDirector.WinSize;

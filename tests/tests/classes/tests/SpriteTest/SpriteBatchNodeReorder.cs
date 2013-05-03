@@ -12,7 +12,7 @@ namespace tests
         public SpriteBatchNodeReorder()
         {
             List<Object> a = new List<Object>(10);
-            CCSpriteBatchNode asmtest = CCSpriteBatchNode.Create("animations/ghosts");
+            CCSpriteBatchNode asmtest = new CCSpriteBatchNode("animations/ghosts");
 
             for (int i = 0; i < 10; i++)
             {

@@ -30,11 +30,11 @@ namespace tests
             AddChild(sun);
 
             // timers
-            m_label0 = CCLabelBMFont.Create("0", "fonts/bitmapFontTest4.fnt");
-            m_label1 = CCLabelBMFont.Create("0", "fonts/bitmapFontTest4.fnt");
-            m_label2 = CCLabelBMFont.Create("0", "fonts/bitmapFontTest4.fnt");
-            m_label3 = CCLabelBMFont.Create("0", "fonts/bitmapFontTest4.fnt");
-            m_label4 = CCLabelBMFont.Create("0", "fonts/bitmapFontTest4.fnt");
+            m_label0 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
+            m_label1 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
+            m_label2 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
+            m_label3 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
+            m_label4 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
 
             ScheduleUpdate();
 

@@ -32,7 +32,7 @@ namespace tests
         public LabelBMFontChinese()
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
-            var pLable = CCLabelBMFont.Create("中国", "fonts/bitmapFontChinese.fnt");
+            var pLable = new CCLabelBMFont("中国", "fonts/bitmapFontChinese.fnt");
             pLable.Position = new CCPoint(size.Width / 2, size.Height / 2);
             AddChild(pLable);
         }

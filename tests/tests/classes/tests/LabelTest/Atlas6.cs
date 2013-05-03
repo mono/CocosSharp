@@ -12,17 +12,17 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCLabelBMFont label = null;
-            label = CCLabelBMFont.Create("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
+            label = new CCLabelBMFont("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height / 2 + 50);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            label = CCLabelBMFont.Create("fafefifofu", "fonts/bitmapFontTest5.fnt");
+            label = new CCLabelBMFont("fafefifofu", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height / 2);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            label = CCLabelBMFont.Create("aeiou", "fonts/bitmapFontTest5.fnt");
+            label = new CCLabelBMFont("aeiou", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height / 2 - 50);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);

@@ -19,7 +19,7 @@ namespace tests
             //
             // SpriteBatchNode: 3 levels of children
             //
-            aParent = CCSpriteBatchNode.Create("animations/ghosts");
+            aParent = new CCSpriteBatchNode("animations/ghosts");
             AddChild(aParent, 0, (int) kTagSprite.kTagSprite1);
 
             // parent

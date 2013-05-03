@@ -39,7 +39,7 @@ namespace tests
 
         public override void initWithQuantityOfNodes(int nNodes)
         {
-            batchNode = CCSpriteBatchNode.Create("Images/spritesheet1");
+            batchNode = new CCSpriteBatchNode("Images/spritesheet1");
             AddChild(batchNode);
 
             base.initWithQuantityOfNodes(nNodes);

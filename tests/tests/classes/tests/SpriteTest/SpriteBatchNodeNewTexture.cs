@@ -16,7 +16,7 @@ namespace tests
         {
             TouchEnabled = true;
 
-            CCSpriteBatchNode batch = CCSpriteBatchNode.Create("Images/grossini_dance_atlas", 50);
+            CCSpriteBatchNode batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
             m_texture1 = batch.Texture;

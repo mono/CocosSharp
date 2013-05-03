@@ -12,7 +12,7 @@ namespace tests
         {
             // small capacity. Testing resizing.
             // Don't use capacity=1 in your real game. It is expensive to resize the capacity
-            CCSpriteBatchNode batch = CCSpriteBatchNode.Create("Images/grossini_dance_atlas", 1);
+            CCSpriteBatchNode batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 1);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
             CCSprite sprite1 = new CCSprite(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));

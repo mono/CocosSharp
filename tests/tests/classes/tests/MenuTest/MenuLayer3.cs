@@ -41,7 +41,7 @@ namespace tests
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 28;
 
-            CCLabelBMFont label = CCLabelBMFont.Create("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");
+            CCLabelBMFont label = new CCLabelBMFont("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");
             CCMenuItemLabel item1 = CCMenuItemLabel.Create(label, this.menuCallback2);
             CCMenuItemFont item2 = CCMenuItemFont.Create("--- Go Back ---", this.menuCallback);
 

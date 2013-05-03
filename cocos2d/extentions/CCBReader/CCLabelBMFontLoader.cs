@@ -10,7 +10,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCLabelBMFont.Create();
+            return new CCLabelBMFont();
         }
 
         protected override void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, CCColor3B color, CCBReader reader)

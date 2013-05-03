@@ -93,7 +93,7 @@ namespace tests
 
             //Set up sprite
             // Use batch node. Faster
-            _batch = CCSpriteBatchNode.Create("Images/blocks", 100);
+            _batch = new CCSpriteBatchNode("Images/blocks", 100);
             m_pSpriteTexture = _batch.Texture;
             AddChild(_batch, 0, kTagParentNode);
 

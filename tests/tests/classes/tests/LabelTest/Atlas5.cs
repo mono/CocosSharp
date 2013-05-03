@@ -10,7 +10,7 @@ namespace tests
     {
         public Atlas5()
         {
-            CCLabelBMFont label = CCLabelBMFont.Create("abcdefg", "fonts/bitmapFontTest4.fnt");
+            CCLabelBMFont label = new CCLabelBMFont("abcdefg", "fonts/bitmapFontTest4.fnt");
             AddChild(label);
 
             CCSize s = CCDirector.SharedDirector.WinSize;

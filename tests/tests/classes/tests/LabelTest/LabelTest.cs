@@ -258,7 +258,7 @@ namespace cocos2d
             m_time = 0;
 
             // Upper Label
-            CCLabelBMFont label = CCLabelBMFont.Create("Bitmap Font Atlas", "fonts/bitmapFontTest.fnt");
+            CCLabelBMFont label = new CCLabelBMFont("Bitmap Font Atlas", "fonts/bitmapFontTest.fnt");
             AddChild(label);
 
             CCSize s = CCDirector.SharedDirector.WinSize;
@@ -296,7 +296,7 @@ namespace cocos2d
 
 
             // Bottom Label
-            CCLabelBMFont label2 = CCLabelBMFont.Create("00.0", "fonts/bitmapFontTest.fnt");
+            CCLabelBMFont label2 = new CCLabelBMFont("00.0", "fonts/bitmapFontTest.fnt");
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
             label2.Position = new CCPoint(s.Width / 2.0f, 80);
 
@@ -344,7 +344,7 @@ namespace cocos2d
 
         public Atlas5()
         {
-            CCLabelBMFont label = CCLabelBMFont.Create("abcdefg", "fonts/bitmapFontTest4.fnt");
+            CCLabelBMFont label = new CCLabelBMFont("abcdefg", "fonts/bitmapFontTest4.fnt");
             AddChild(label);
 
             CCSize s = CCDirector.SharedDirector.WinSize;
@@ -372,17 +372,17 @@ namespace cocos2d
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCLabelBMFont label = null;
-            label = CCLabelBMFont.Create("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
+            label = new CCLabelBMFont("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height / 2 + 50);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            label = CCLabelBMFont.Create("fafefifofu", "fonts/bitmapFontTest5.fnt");
+            label = new CCLabelBMFont("fafefifofu", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height / 2);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            label = CCLabelBMFont.Create("aeiou", "fonts/bitmapFontTest5.fnt");
+            label = new CCLabelBMFont("aeiou", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height / 2 - 50);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -427,19 +427,19 @@ namespace cocos2d
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCLabelBMFont label = null;
-            label = CCLabelBMFont.Create("Blue", "fonts/bitmapFontTest5.fnt");
+            label = new CCLabelBMFont("Blue", "fonts/bitmapFontTest5.fnt");
             label.Color = ccBLUE;
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            label = CCLabelBMFont.Create("Red", "fonts/bitmapFontTest5.fnt");
+            label = new CCLabelBMFont("Red", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, 2 * s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
             label.Color = ccRED;
 
-            label = CCLabelBMFont.Create("G", "fonts/bitmapFontTest5.fnt");
+            label = new CCLabelBMFont("G", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, 3 * s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -471,7 +471,7 @@ namespace cocos2d
                 string str;
                 //sprintf(str, "-%d-", i);
                 str = string.Format("-{0,d}-", i);
-                CCLabelBMFont label = CCLabelBMFont.Create(str, "fonts/bitmapFontTest.fnt");
+                CCLabelBMFont label = new CCLabelBMFont(str, "fonts/bitmapFontTest.fnt");
                 AddChild(label);
 
                 CCSize s = CCDirector.SharedDirector.WinSize;
@@ -501,7 +501,7 @@ namespace cocos2d
             CCSize s;
 
             // Left
-            CCLabelBMFont label1 = CCLabelBMFont.Create("Multi line\nLeft", "fonts/bitmapFontTest3.fnt");
+            CCLabelBMFont label1 = new CCLabelBMFont("Multi line\nLeft", "fonts/bitmapFontTest3.fnt");
             label1.AnchorPoint = new CCPoint(0, 0);
             AddChild(label1, 0, (int)TagSprite.kTagBitmapAtlas1);
 
@@ -512,7 +512,7 @@ namespace cocos2d
 
 
             // Center
-            CCLabelBMFont label2 = CCLabelBMFont.Create("Multi line\nCenter", "fonts/bitmapFontTest3.fnt");
+            CCLabelBMFont label2 = new CCLabelBMFont("Multi line\nCenter", "fonts/bitmapFontTest3.fnt");
             label2.AnchorPoint = new CCPoint(0.5f, 0.5f);
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
 
@@ -521,7 +521,7 @@ namespace cocos2d
             CCLog.Log("content size: {0,0:2f}x{1,0:2f}", s.Width, s.Height);
 
             // right
-            CCLabelBMFont label3 = CCLabelBMFont.Create("Multi line\nRight\nThree lines Three", "fonts/bitmapFontTest3.fnt");
+            CCLabelBMFont label3 = new CCLabelBMFont("Multi line\nRight\nThree lines Three", "fonts/bitmapFontTest3.fnt");
             label3.AnchorPoint = new CCPoint(1, 1);
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);
 
@@ -553,7 +553,7 @@ namespace cocos2d
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // CCLabelBMFont
-            CCLabelBMFont label1 = CCLabelBMFont.Create("", "fonts/bitmapFontTest3.fnt");
+            CCLabelBMFont label1 = new CCLabelBMFont("", "fonts/bitmapFontTest3.fnt");
             AddChild(label1, 0, (int)TagSprite.kTagBitmapAtlas1);
             label1.Position = new CCPoint(s.Width / 2, s.Height - 100);
 
@@ -618,7 +618,7 @@ namespace cocos2d
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // CCLabelBMFont
-            CCLabelBMFont label1 = CCLabelBMFont.Create("TESTING RETINA DISPLAY", "fonts/konqa32.fnt");
+            CCLabelBMFont label1 = new CCLabelBMFont("TESTING RETINA DISPLAY", "fonts/konqa32.fnt");
             AddChild(label1);
             label1.Position = new CCPoint(s.Width / 2, s.Height / 2);
         }

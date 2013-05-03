@@ -44,7 +44,7 @@ namespace tests
             // Test 2
             //
 
-            aParent = CCSpriteBatchNode.Create("animations/grossini_family");
+            aParent = new CCSpriteBatchNode("animations/grossini_family");
             sprite1 = new CCSprite("grossinis_sister1.png");
             sprite1.Position = new CCPoint(3 * s.Width / 4, s.Height / 4);
             sprite1.ScaleX = -0.5f;
@@ -83,7 +83,7 @@ namespace tests
             // Test 4
             //
 
-            aParent = CCSpriteBatchNode.Create("animations/grossini_family");
+            aParent = new CCSpriteBatchNode("animations/grossini_family");
             sprite1 = new CCSprite("grossinis_sister1.png");
             sprite1.Position = (new CCPoint(3 * s.Width / 4, 2 * s.Height / 3));
             sprite1.ScaleX = 1.5f;

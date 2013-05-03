@@ -24,7 +24,7 @@ namespace tests
             CCLayerColor col = new CCLayerColor(new CCColor4B(128, 128, 128, 255));
             AddChild(col, -10);
 
-            CCLabelBMFont label1 = CCLabelBMFont.Create("Test", "fonts/bitmapFontTest2.fnt");
+            CCLabelBMFont label1 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
 
             // testing anchors
             label1.AnchorPoint = new CCPoint(0, 0);
@@ -40,14 +40,14 @@ namespace tests
             // color and opacity work OK because bitmapFontAltas2 loads a BMP image (not a PNG image)
             // If you want to use both opacity and color, it is recommended to use NON premultiplied images like BMP images
             // Of course, you can also tell XCode not to compress PNG images, but I think it doesn't work as expected
-            CCLabelBMFont label2 = CCLabelBMFont.Create("Test", "fonts/bitmapFontTest2.fnt");
+            CCLabelBMFont label2 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
             // testing anchors
             label2.AnchorPoint = new CCPoint(0.5f, 0.5f);
             label2.Color = ccRED;
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
             label2.RunAction((CCAction)(repeat.Copy()));
 
-            CCLabelBMFont label3 = CCLabelBMFont.Create("Test", "fonts/bitmapFontTest2.fnt");
+            CCLabelBMFont label3 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
             // testing anchors
             label3.AnchorPoint = new CCPoint(1, 1);
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);

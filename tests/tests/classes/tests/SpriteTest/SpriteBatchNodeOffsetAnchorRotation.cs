@@ -44,7 +44,7 @@ namespace tests
 
                 point.Position = sprite.Position;
 
-                CCSpriteBatchNode spritebatch = CCSpriteBatchNode.Create("animations/grossini");
+                CCSpriteBatchNode spritebatch = new CCSpriteBatchNode("animations/grossini");
                 AddChild(spritebatch);
 
                 var animFrames = new List<CCSpriteFrame>(14);

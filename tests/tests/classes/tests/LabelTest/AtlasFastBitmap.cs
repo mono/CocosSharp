@@ -17,7 +17,7 @@ namespace tests
                 string str;
                 //sprintf(str, "-%d-", i);
                 str = string.Format("-{0}-", i);
-                CCLabelBMFont label = CCLabelBMFont.Create(str, "fonts/bitmapFontTest.fnt");
+                CCLabelBMFont label = new CCLabelBMFont(str, "fonts/bitmapFontTest.fnt");
                 AddChild(label);
 
                 CCSize s = CCDirector.SharedDirector.WinSize;
