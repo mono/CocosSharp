@@ -101,7 +101,7 @@ namespace tests
 
             AddChild(menu, 1);
 
-            var itemMode = CCMenuItemToggle.Create(modeCallback,
+            var itemMode = new CCMenuItemToggle(modeCallback,
                                                    CCMenuItemFont.Create("Use High Quality Mode"),
                                                    CCMenuItemFont.Create("Use Fast Mode")
                 );

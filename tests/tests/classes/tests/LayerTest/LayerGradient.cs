@@ -22,7 +22,7 @@ namespace tests
             CCLabelTTF label2 = new CCLabelTTF("Compressed Interpolation: Disabled", "arial", 26);
             CCMenuItemLabel item1 = new CCMenuItemLabel(label1);
             CCMenuItemLabel item2 = new CCMenuItemLabel(label2);
-            CCMenuItemToggle item = CCMenuItemToggle.Create((toggleItem), item1, item2);
+            CCMenuItemToggle item = new CCMenuItemToggle((toggleItem), item1, item2);
 
             CCMenu menu = new CCMenu(item);
             AddChild(menu);
