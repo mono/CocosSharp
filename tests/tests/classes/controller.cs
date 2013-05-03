@@ -52,7 +52,7 @@ namespace tests
             for (int i = 0; i < (int)(TestCases.TESTS_COUNT); ++i)
             {
                 var label = new CCLabelTTF(Tests.g_aTestNames[i], "arial", 24);
-                var pMenuItem = CCMenuItemLabel.Create(label, menuCallback);
+                var pMenuItem = new CCMenuItemLabel(label, menuCallback);
 
                 pMenuItem.UserData = i;
                 m_pItemMenu.AddChild(pMenuItem, 10000);

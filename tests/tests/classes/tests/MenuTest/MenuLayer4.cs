@@ -85,7 +85,7 @@ namespace tests
             CCMenuItemFont.FontSize = 34;
 
             CCLabelBMFont label = new CCLabelBMFont("go back", "fonts/bitmapFontTest3.fnt");
-            CCMenuItemLabel back = CCMenuItemLabel.Create(label, this.backCallback);
+            CCMenuItemLabel back = new CCMenuItemLabel(label, this.backCallback);
 
             CCMenu menu = new CCMenu(
                           title1, title2,

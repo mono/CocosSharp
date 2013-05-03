@@ -31,7 +31,7 @@ namespace tests
 
             //add the menu item for back to main menu
             CCLabelTTF label = new CCLabelTTF("MainMenu", "arial", 20);
-            CCMenuItemLabel pMenuItem = CCMenuItemLabel.Create(label, MainMenuCallback);
+            CCMenuItemLabel pMenuItem = new CCMenuItemLabel(label, MainMenuCallback);
 
             CCMenu pMenu = new CCMenu(pMenuItem);
             CCSize s = CCDirector.SharedDirector.WinSize;

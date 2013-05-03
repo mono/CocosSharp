@@ -51,7 +51,7 @@ namespace tests
 	        for (int i = 0; i < m_nTestCount; ++i)
 	        {
                 CCLabelTTF label = new CCLabelTTF(testItems[i], "arial", 24);
-                CCMenuItemLabel pMenuItem = CCMenuItemLabel.Create(label, new SEL_MenuHandler(menuCallback));
+                CCMenuItemLabel pMenuItem = new CCMenuItemLabel(label, new SEL_MenuHandler(menuCallback));
 		
 		        m_pItmeMenu.AddChild(pMenuItem, i + 10000);
 		        pMenuItem.Position = new CCPoint( s.Width / 2, (s.Height - (i + 1) * LINE_SPACE) );
