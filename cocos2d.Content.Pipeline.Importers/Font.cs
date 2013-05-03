@@ -20,14 +20,12 @@ namespace cocos2d.Content.Pipeline.Importers
         {
             //System.Diagnostics.Debugger.Launch(); 
 
-            var result = new CCBMFontConfiguration();
-
             var data = File.ReadAllText(fileName);
 
             var relativePath = context.OutputFilename.Substring(context.OutputDirectory.Length);
             relativePath = Path.GetDirectoryName(relativePath);
 
-            result.InitWithString(data, Path.Combine(relativePath, Path.GetFileName(fileName)));
+            var result = new CCBMFontConfiguration(data, Path.Combine(relativePath, Path.GetFileName(fileName)));
 
             return result;
         }

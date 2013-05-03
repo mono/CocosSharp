@@ -32,29 +32,46 @@ namespace cocos2d
             set { m_sAtlasName = value; }
         }
 
-        public CCBMFontConfiguration() {
+        public CCBMFontConfiguration() 
+        {
         }
 
+        public CCBMFontConfiguration(string data, string fntFile)
+        {
+            InitWithString(data, fntFile);
+        }
+
+        /// <summary>
+        /// This create method is left in the project because this class is loaded
+        /// by the ContentManager. This create factory is a legitimate use of the
+        /// self factory pattern.
+        /// </summary>
+        /// <param name="fntFile"></param>
+        /// <returns></returns>
         public static CCBMFontConfiguration Create(string fntFile)
         {
-            return CCApplication.SharedApplication.Content.Load<CCBMFontConfiguration>(fntFile);
-            /*
-            var pRet = new CCBMFontConfiguration();
-            if (pRet.initWithFNTfile(FNTfile))
+            try
             {
-                return pRet;
+                return CCApplication.SharedApplication.Content.Load<CCBMFontConfiguration>(fntFile);
+            }
+            catch (ContentLoadException)
+            {
+                var pRet = new CCBMFontConfiguration();
+                if (pRet.InitWithFNTFile(fntFile))
+                {
+                    return pRet;
+                }
             }
             return null;
-            */
         }
 
-        public bool InitWithFnTfile(string fntFile)
+        protected virtual bool InitWithFNTFile(string fntFile)
         {
             var data = CCApplication.SharedApplication.Content.Load<CCContent>(fntFile);
             return InitWithString(data.Content, fntFile);
         }
 
-        public bool InitWithString(string data, string fntFile)
+        protected virtual bool InitWithString(string data, string fntFile)
         {
             m_pKerningDictionary.Clear();
             m_pFontDefDictionary.Clear();
