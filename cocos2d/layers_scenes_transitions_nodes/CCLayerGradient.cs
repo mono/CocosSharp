@@ -186,7 +186,7 @@ namespace cocos2d
             if (m_bCompressedInterpolation)
             {
                 float h2 = 1 / (Math.Abs(u.X) + Math.Abs(u.Y));
-                u = CCPointExtension.Multiply(u, h2 * (float) c);
+                u = u * (h2 * (float) c);
             }
 
             float opacityf = m_cOpacity / 255.0f;

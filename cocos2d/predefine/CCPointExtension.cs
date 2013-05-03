@@ -73,6 +73,7 @@ namespace cocos2d
             @return CCPoint
             @since v0.7.2
         */
+        [Obsolete("use CCPoint() and the multiply operator")]
         public static CCPoint Multiply(CCPoint v, float s)
         {
             return CreatePoint(v.X * s, v.Y * s);

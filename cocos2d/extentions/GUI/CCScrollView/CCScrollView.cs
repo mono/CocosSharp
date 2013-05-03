@@ -780,8 +780,8 @@ namespace cocos2d
             float newY = Math.Min(m_pContainer.Position.Y, maxInset.Y);
             newY = Math.Max(newY, minInset.Y);
 
-            m_tScrollDistance = CCPointExtension.Subtract(m_tScrollDistance, new CCPoint(newX - m_pContainer.Position.X, newY - m_pContainer.Position.Y));
-            m_tScrollDistance = CCPointExtension.Multiply(m_tScrollDistance, SCROLL_DEACCEL_RATE);
+            m_tScrollDistance = m_tScrollDistance - new CCPoint(newX - m_pContainer.Position.X, newY - m_pContainer.Position.Y);
+            m_tScrollDistance = m_tScrollDistance * SCROLL_DEACCEL_RATE;
             SetContentOffset(new CCPoint(newX, newY), false);
 
             if ((Math.Abs(m_tScrollDistance.X) <= SCROLL_DEACCEL_DIST &&

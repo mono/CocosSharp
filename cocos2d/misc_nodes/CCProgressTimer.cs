@@ -337,11 +337,10 @@ namespace cocos2d
 
             float alpha = m_fPercentage / 100.0f;
             CCPoint alphaOffset =
-                CCPointExtension.Multiply(
                     new CCPoint(1.0f * (1.0f - m_tBarChangeRate.X) + alpha * m_tBarChangeRate.X,
-                                1.0f * (1.0f - m_tBarChangeRate.Y) + alpha * m_tBarChangeRate.Y), 0.5f);
-            CCPoint min = CCPointExtension.Subtract(m_tMidpoint, alphaOffset);
-            CCPoint max = CCPointExtension.Add(m_tMidpoint, alphaOffset);
+                                1.0f * (1.0f - m_tBarChangeRate.Y) + alpha * m_tBarChangeRate.Y) * 0.5f;
+            CCPoint min = m_tMidpoint - alphaOffset;
+            CCPoint max = m_tMidpoint + alphaOffset;
 
             if (min.X < 0f)
             {
@@ -533,7 +532,7 @@ namespace cocos2d
                 }
 
                 //    Now that we have the minimum magnitude we can use that to find our intersection
-                hit = CCPointExtension.Add(m_tMidpoint, CCPointExtension.Multiply(CCPointExtension.Subtract(percentagePt, m_tMidpoint), min_t));
+                hit = m_tMidpoint + ((percentagePt - m_tMidpoint) * min_t);
             }
 
 

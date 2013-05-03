@@ -147,13 +147,13 @@ namespace tests
             //	the hit point is		p3 + t * (p4 - p3);
             //	the hit point also is	p1 + s * (p2 - p1);
 
-            CCPoint p4_p3 = CCPointExtension.Subtract(p4, p3);
-            CCPoint p4_p3_t = CCPointExtension.Multiply(p4_p3, t);
-            CCPoint hitPoint1 = CCPointExtension.Add(p3, p4_p3_t);
+            CCPoint p4_p3 = p4 - p3;
+            CCPoint p4_p3_t = p4_p3 * t;
+            CCPoint hitPoint1 = p3 + p4_p3_t;
 
-            CCPoint p2_p1 = CCPointExtension.Subtract(p2, p1);
-            CCPoint p2_p1_s = CCPointExtension.Multiply(p2_p1, s);
-            CCPoint hitPoint2 = CCPointExtension.Add(p1, p2_p1_s);
+            CCPoint p2_p1 = p2 - p1;
+            CCPoint p2_p1_s = p2_p1 * s;
+            CCPoint hitPoint2 = p1 + p2_p1_s;
 
             // Since float has rounding errors, only check if diff is < 0.05
             if ((Math.Abs(hitPoint1.X - hitPoint2.X) > 0.1f) || (Math.Abs(hitPoint1.Y - hitPoint2.Y) > 0.1f))
