@@ -14,7 +14,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCScrollView.Create();
+            return new CCScrollView();
         }
 
         protected override void OnHandlePropTypeSize(CCNode node, CCNode parent, string propertyName, CCSize pSize, CCBReader reader)

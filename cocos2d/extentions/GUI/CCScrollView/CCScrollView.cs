@@ -54,6 +54,7 @@ namespace cocos2d
         public CCScrollView()
         {
             m_eDirection = CCScrollViewDirection.Both;
+            Init();
         }
 
         public int PagesCount
@@ -117,12 +118,12 @@ namespace cocos2d
                     m_pContainer.Scale = Math.Max(m_fMinScale, Math.Min(m_fMaxScale, value));
                     CCPoint newCenter = m_pContainer.ConvertToWorldSpace(oldCenter);
 
-                    CCPoint offset = CCPointExtension.Subtract(center, newCenter);
+                    CCPoint offset = center - newCenter;
                     if (m_pDelegate != null)
                     {
                         m_pDelegate.ScrollViewDidZoom(this);
                     }
-                    SetContentOffset(CCPointExtension.Add(m_pContainer.Position, offset), false);
+                    SetContentOffset(m_pContainer.Position + offset, false);
                 }
             }
         }
@@ -218,26 +219,9 @@ namespace cocos2d
      * @return autoreleased scroll view object
      */
 
-        public static CCScrollView Create(CCSize size, CCNode container)
+        public CCScrollView(CCSize size, CCNode container)
         {
-            var pRet = new CCScrollView();
-            pRet.InitWithViewSize(size, container);
-            return pRet;
-        }
-
-        /**
-     * Returns an autoreleased scroll view object.
-     *
-     * @param size view size
-     * @param container parent object
-     * @return autoreleased scroll view object
-     */
-
-        public new static CCScrollView Create()
-        {
-            var pRet = new CCScrollView();
-            pRet.Init();
-            return pRet;
+            InitWithViewSize(size, container);
         }
 
         /**
@@ -248,7 +232,7 @@ namespace cocos2d
      * @return scroll view object
      */
 
-        public bool InitWithViewSize(CCSize size, CCNode container)
+        protected virtual bool InitWithViewSize(CCSize size, CCNode container)
         {
             m_pContainer = container ?? new CCLayer();
 
