@@ -60,7 +60,7 @@ namespace cocos2d
         {
             string data = CCFileUtils.GetFileData(fntFile);
 
-            PlistDocument doc = PlistDocument.Create(data);
+            PlistDocument doc = new PlistDocument(data);
             var dict = doc.Root as PlistDictionary;
 
             Debug.Assert(dict["version"].AsInt == 1, "Unsupported version. Upgrade cocos2d version");

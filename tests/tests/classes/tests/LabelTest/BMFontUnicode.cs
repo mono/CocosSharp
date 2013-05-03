@@ -7,7 +7,7 @@ namespace tests
         public BMFontUnicode()
         {
             var data = CCFileUtils.GetFileData("fonts/strings.plist");
-            PlistDocument doc = PlistDocument.Create(data);
+            PlistDocument doc = new PlistDocument(data);
             var strings = doc.Root as PlistDictionary;
 
             string chinese = strings["chinese1"].AsString;

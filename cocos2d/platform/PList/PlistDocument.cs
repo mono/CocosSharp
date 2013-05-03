@@ -42,11 +42,9 @@ namespace cocos2d
 
         private PlistObjectBase root;
 
-        public static PlistDocument Create(string data)
+        public PlistDocument(string data)
         {
-            var document = new PlistDocument();
-            document.LoadFromXml(data);
-            return document;
+            LoadFromXml(data);
         }
 
         public PlistDocument()
