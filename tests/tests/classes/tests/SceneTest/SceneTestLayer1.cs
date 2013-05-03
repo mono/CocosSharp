@@ -16,10 +16,10 @@ namespace tests
 
         public SceneTestLayer1()
         {
-            CCMenuItemFont item1 = CCMenuItemFont.Create("(1) Test pushScene", onPushScene);
-            CCMenuItemFont item2 = CCMenuItemFont.Create("(1) Test pushScene w/transition", onPushSceneTran);
-            CCMenuItemFont item3 = CCMenuItemFont.Create("(1) Quit", onQuit);
-            _PopMenuItem = CCMenuItemFont.Create("(1) Test popScene w/transition", onPopSceneTran);
+            CCMenuItemFont item1 = new CCMenuItemFont("(1) Test pushScene", onPushScene);
+            CCMenuItemFont item2 = new CCMenuItemFont("(1) Test pushScene w/transition", onPushSceneTran);
+            CCMenuItemFont item3 = new CCMenuItemFont("(1) Quit", onQuit);
+            _PopMenuItem = new CCMenuItemFont("(1) Test popScene w/transition", onPopSceneTran);
 
             _TheMenu = new CCMenu(item1, item2, item3, _PopMenuItem);
             _TheMenu.AlignItemsVertically();

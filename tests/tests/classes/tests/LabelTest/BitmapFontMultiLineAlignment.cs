@@ -48,9 +48,9 @@ namespace tests
             m_pArrowsShouldRetain = new CCSprite("Images/arrows");
 
             CCMenuItemFont.FontSize = 20;
-            CCMenuItemFont longSentences = CCMenuItemFont.Create("Long Flowing Sentences", stringChanged);
-            CCMenuItemFont lineBreaks = CCMenuItemFont.Create("Short Sentences With Intentional Line Breaks", stringChanged);
-            CCMenuItemFont mixed = CCMenuItemFont.Create("Long Sentences Mixed With Intentional Line Breaks", stringChanged);
+            CCMenuItemFont longSentences = new CCMenuItemFont("Long Flowing Sentences", stringChanged);
+            CCMenuItemFont lineBreaks = new CCMenuItemFont("Short Sentences With Intentional Line Breaks", stringChanged);
+            CCMenuItemFont mixed = new CCMenuItemFont("Long Sentences Mixed With Intentional Line Breaks", stringChanged);
             CCMenu stringMenu = new CCMenu(longSentences, lineBreaks, mixed);
             stringMenu.AlignItemsVertically();
 
@@ -62,9 +62,9 @@ namespace tests
 
             CCMenuItemFont.FontSize = 30;
 
-            CCMenuItemFont left = CCMenuItemFont.Create("Left", alignmentChanged);
-            CCMenuItemFont center = CCMenuItemFont.Create("Center", alignmentChanged);
-            CCMenuItemFont right = CCMenuItemFont.Create("Right", alignmentChanged);
+            CCMenuItemFont left = new CCMenuItemFont("Left", alignmentChanged);
+            CCMenuItemFont center = new CCMenuItemFont("Center", alignmentChanged);
+            CCMenuItemFont right = new CCMenuItemFont("Right", alignmentChanged);
             CCMenu alignmentMenu = new CCMenu(left, center, right);
             alignmentMenu.AlignItemsHorizontallyWithPadding(alignmentItemPadding);
 

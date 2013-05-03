@@ -12,7 +12,7 @@ namespace tests.Extensions
 				// Get the sceensize
 				CCSize screensize = CCDirector.SharedDirector.WinSize;
 
-				var pBackItem = CCMenuItemFont.Create("Back", toExtensionsMainLayer);
+				var pBackItem = new CCMenuItemFont("Back", toExtensionsMainLayer);
 				pBackItem.Position = new CCPoint(screensize.Width - 50, 25);
 				var pBackMenu = new CCMenu(pBackItem);
 				pBackMenu.Position =  CCPoint.Zero;

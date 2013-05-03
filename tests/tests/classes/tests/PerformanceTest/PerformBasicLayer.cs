@@ -23,7 +23,7 @@ namespace tests
 
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 24;
-            var pMainItem = CCMenuItemFont.Create("Back", toMainLayer);
+            var pMainItem = new CCMenuItemFont("Back", toMainLayer);
             pMainItem.Position = new CCPoint(s.Width - 50, 25);
             var pMenu = new CCMenu(pMainItem);
             pMenu.Position = new CCPoint(0, 0);

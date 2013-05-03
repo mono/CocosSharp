@@ -198,9 +198,9 @@ namespace tests
             CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
 
             CCMenuItemToggle item4 = new CCMenuItemToggle(toggleCallback,
-                                                                     CCMenuItemFont.Create("Free Movement"),
-                                                                     CCMenuItemFont.Create("Relative Movement"),
-                                                                     CCMenuItemFont.Create("Grouped Movement"));
+                                                                     new CCMenuItemFont("Free Movement"),
+                                                                     new CCMenuItemFont("Relative Movement"),
+                                                                     new CCMenuItemFont("Grouped Movement"));
 
             CCMenu menu = new CCMenu(item1, item2, item3, item4);
 

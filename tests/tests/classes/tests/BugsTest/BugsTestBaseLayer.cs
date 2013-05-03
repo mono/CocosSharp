@@ -16,7 +16,7 @@ namespace tests
 
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 24;
-            CCMenuItemFont pMainItem = CCMenuItemFont.Create("Back",
+            CCMenuItemFont pMainItem = new CCMenuItemFont("Back",
                 backCallback);
             pMainItem.Position = new CCPoint(s.Width - 50, 25);
             CCMenu pMenu = new CCMenu(pMainItem, null);

@@ -133,7 +133,7 @@ namespace tests
                 CCSize s = CCDirector.SharedDirector.WinSize;
 
 
-                CCMenuItem item = CCMenuItemFont.Create("Rotate Device", new SEL_MenuHandler(RotateDevice));
+                CCMenuItem item = new CCMenuItemFont("Rotate Device", new SEL_MenuHandler(RotateDevice));
                 CCMenu menu = new CCMenu(item);
                 menu.Position = new CCPoint(s.Width / 2, s.Height / 2);
                 AddChild(menu);

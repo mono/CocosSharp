@@ -20,7 +20,7 @@ namespace tests
             CCMenuItemFont.FontSize = 24;
             for (int i = 0; i < PerformanceTestScene.MAX_COUNT; ++i)
             {
-                CCMenuItemFont pItem = CCMenuItemFont.Create(PerformanceTestScene.testsName[i], menuCallback);
+                CCMenuItemFont pItem = new CCMenuItemFont(PerformanceTestScene.testsName[i], menuCallback);
                 pItem.Position = new CCPoint(s.Width / 2, s.Height - (i + 1) * PerformanceTestScene.LINE_SPACE);
                 pMenu.AddChild(pItem, PerformanceTestScene.kItemTagBasic + i);
             }

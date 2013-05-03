@@ -44,8 +44,8 @@ namespace tests
 
 
             // Menu 1
-            CCMenuItemFont item1 = CCMenuItemFont.Create("Return to Main Menu", menuCallback);
-            CCMenuItemFont item2 = CCMenuItemFont.Create("Disable menu for 5 seconds", disableMenuCallback);
+            CCMenuItemFont item1 = new CCMenuItemFont("Return to Main Menu", menuCallback);
+            CCMenuItemFont item2 = new CCMenuItemFont("Disable menu for 5 seconds", disableMenuCallback);
 
 
             m_pMenu1.AddChild(item1);
@@ -58,7 +58,7 @@ namespace tests
             // Menu 2
             m_bPriority = true;
             //CCMenuItemFont.setFontSize(48);
-            item1 = CCMenuItemFont.Create("Toggle priority", togglePriorityCallback);
+            item1 = new CCMenuItemFont("Toggle priority", togglePriorityCallback);
             item1.Scale = 1.5f;
             item1.Color = new CCColor3B(0, 0, 255);
             m_pMenu2.AddChild(item1);

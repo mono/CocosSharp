@@ -37,7 +37,7 @@ namespace tests.Extensions
 			tableView.ReloadData();
 
 			// Back Menu
-			var itemBack = CCMenuItemFont.Create("Back", toExtensionsMainLayer);
+			var itemBack = new CCMenuItemFont("Back", toExtensionsMainLayer);
 			itemBack.Position = new CCPoint(winSize.Width - 50, 25);
 			var menuBack = new CCMenu(itemBack);
 			menuBack.Position = CCPoint.Zero;

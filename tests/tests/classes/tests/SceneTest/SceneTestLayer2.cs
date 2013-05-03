@@ -18,10 +18,10 @@ namespace tests
         {
             m_timeCounter = 0;
 
-            CCMenuItemFont item1 = CCMenuItemFont.Create("(2) replaceScene", onReplaceScene);
-            CCMenuItemFont item2 = CCMenuItemFont.Create("(2) replaceScene w/transition", onReplaceSceneTran);
-            CCMenuItemFont item3 = CCMenuItemFont.Create("(2) Go Back", onGoBack);
-            _PopMenuItem = CCMenuItemFont.Create("(2) Test popScene w/transition", onPopSceneTran);
+            CCMenuItemFont item1 = new CCMenuItemFont("(2) replaceScene", onReplaceScene);
+            CCMenuItemFont item2 = new CCMenuItemFont("(2) replaceScene w/transition", onReplaceSceneTran);
+            CCMenuItemFont item3 = new CCMenuItemFont("(2) Go Back", onGoBack);
+            _PopMenuItem = new CCMenuItemFont("(2) Test popScene w/transition", onPopSceneTran);
 
             _TheMenu = new CCMenu(item1, item2, item3, _PopMenuItem);
             _TheMenu.AlignItemsVertically();

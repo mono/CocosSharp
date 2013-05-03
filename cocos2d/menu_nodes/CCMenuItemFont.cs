@@ -5,6 +5,14 @@ namespace cocos2d
         protected string m_strFontName;
         protected uint m_uFontSize;
 
+        public CCMenuItemFont (string value) : this(value, null)
+        { }
+        
+        public CCMenuItemFont (string value, SEL_MenuHandler selector)
+        {
+            InitWithString(value, selector);
+        }
+        
         public static uint FontSize
         {
             get { return _fontSize; }
@@ -35,20 +43,6 @@ namespace cocos2d
                 RecreateLabel();
             }
             get { return m_strFontName; }
-        }
-
-        public static CCMenuItemFont Create(string value)
-        {
-            var pRet = new CCMenuItemFont();
-            pRet.InitWithString(value, null);
-            return pRet;
-        }
-
-        public static CCMenuItemFont Create(string value, SEL_MenuHandler selector)
-        {
-            var pRet = new CCMenuItemFont();
-            pRet.InitWithString(value, selector);
-            return pRet;
         }
 
         public bool InitWithString(string value, SEL_MenuHandler selector)
