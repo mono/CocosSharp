@@ -60,12 +60,6 @@ namespace cocos2d
             {
             }
 
-        [Obsolete("Use the default ctor")]
-        public new static CCLayer Create()
-        {
-            return(new CCLayer());
-        }
-
         private bool m_bDidInit = false;
 
         public virtual bool Init()

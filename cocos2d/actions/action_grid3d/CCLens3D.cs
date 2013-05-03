@@ -111,7 +111,7 @@ namespace cocos2d
                             {
                                 vect = CCPointExtension.Normalize(vect);
 
-                                CCPoint new_vect = CCPointExtension.Multiply(vect, new_r);
+                                CCPoint new_vect = vect * new_r;
                                 v.Z += CCPointExtension.Length(new_vect) * m_fLensEffect;
                             }
                         }

@@ -135,7 +135,7 @@ object->propertyNamed(name_of_the_property);
 
             ContentSize = CCSize.Zero;
 
-            CCTMXMapInfo mapInfo = CCTMXMapInfo.Create(tmxFile);
+            CCTMXMapInfo mapInfo = new CCTMXMapInfo(tmxFile);
 
             if (mapInfo == null)
             {
@@ -243,7 +243,7 @@ object->propertyNamed(name_of_the_property);
         private CCTMXLayer ParseLayer(CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
         {
             CCTMXTilesetInfo tileset = tilesetForLayer(layerInfo, mapInfo);
-            CCTMXLayer layer = CCTMXLayer.Create(tileset, layerInfo, mapInfo);
+            CCTMXLayer layer = new CCTMXLayer(tileset, layerInfo, mapInfo);
 
             // tell the layerinfo to release the ownership of the tiles map.
             layerInfo.OwnTiles = false;

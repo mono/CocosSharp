@@ -233,8 +233,7 @@ namespace cocos2d
                 }
 
                 float delayPerUnit = animationDict["delayPerUnit"].AsFloat;
-                var animation = new CCAnimation();
-                animation.InitWithAnimationFrames(array, delayPerUnit, (uint) loops);
+                var animation = new CCAnimation(array, delayPerUnit, (uint) loops);
 
                 animation.RestoreOriginalFrame = restoreOriginalFrame;
 

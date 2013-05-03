@@ -38,7 +38,7 @@ namespace tests
 
 
             // create a void node, a parent node
-            CCParallaxNode voidNode = CCParallaxNode.Create();
+            CCParallaxNode voidNode = new CCParallaxNode();
 
             // NOW add the 3 layers to the 'void' node
 

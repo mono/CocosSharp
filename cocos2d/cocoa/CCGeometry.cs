@@ -187,11 +187,20 @@ namespace cocos2d
         {
             return (!p1.Equals(p2));
         }
+
         public static CCPoint operator -(CCPoint p1, CCPoint p2)
         {
             CCPoint pt = CCPoint.Zero;
             pt.X = p1.X - p2.X;
             pt.Y = p1.Y - p2.Y;
+            return pt;
+        }
+
+        public static CCPoint operator -(CCPoint p1)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = -p1.X;
+            pt.Y = -p1.Y;
             return pt;
         }
 
@@ -203,6 +212,14 @@ namespace cocos2d
             return pt;
         }
 
+        public static CCPoint operator +(CCPoint p1)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = +p1.X;
+            pt.Y = +p1.Y;
+            return pt;
+        }
+        
         public static CCPoint operator *(CCPoint p, float value)
         {
             CCPoint pt = CCPoint.Zero;

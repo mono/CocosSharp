@@ -19,10 +19,10 @@ namespace tests
         {
             InitWithColor(new CCColor4B(0, 0, 255, 255));
 
-            var item0 = CCMenuItemFont.Create("(3) Touch to pushScene (self)", item0Clicked);
-            var item1 = CCMenuItemFont.Create("(3) Touch to popScene", item1Clicked);
-            var item2 = CCMenuItemFont.Create("(3) Touch to popToRootScene", item2Clicked);
-            var item3 = CCMenuItemFont.Create("(3) Touch to popToSceneStackLevel(2)", item3Clicked);
+            var item0 = new CCMenuItemFont("(3) Touch to pushScene (self)", item0Clicked);
+            var item1 = new CCMenuItemFont("(3) Touch to popScene", item1Clicked);
+            var item2 = new CCMenuItemFont("(3) Touch to popToRootScene", item2Clicked);
+            var item3 = new CCMenuItemFont("(3) Touch to popToSceneStackLevel(2)", item3Clicked);
 
             CCMenu menu = new CCMenu(item0, item1, item2, item3);
             menu.AlignItemsVertically();

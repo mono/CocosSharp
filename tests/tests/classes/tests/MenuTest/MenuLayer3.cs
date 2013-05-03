@@ -42,8 +42,8 @@ namespace tests
             CCMenuItemFont.FontSize = 28;
 
             CCLabelBMFont label = new CCLabelBMFont("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");
-            CCMenuItemLabel item1 = CCMenuItemLabel.Create(label, this.menuCallback2);
-            CCMenuItemFont item2 = CCMenuItemFont.Create("--- Go Back ---", this.menuCallback);
+            CCMenuItemLabel item1 = new CCMenuItemLabel(label, this.menuCallback2);
+            CCMenuItemFont item2 = new CCMenuItemFont("--- Go Back ---", this.menuCallback);
 
             CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
             CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));

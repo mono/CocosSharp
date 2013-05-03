@@ -37,46 +37,46 @@ namespace tests
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 18;
 
-            CCMenuItemFont title1 = CCMenuItemFont.Create("Sound");
+            CCMenuItemFont title1 = new CCMenuItemFont("Sound");
             title1.Enabled = false;
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 34;
-            CCMenuItemToggle item1 = CCMenuItemToggle.Create(this.menuCallback,
-                                                                        CCMenuItemFont.Create("On"),
-                                                                        CCMenuItemFont.Create("Off"));
+            CCMenuItemToggle item1 = new CCMenuItemToggle(this.menuCallback,
+                                                                        new CCMenuItemFont("On"),
+                                                                        new CCMenuItemFont("Off"));
 
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 18;
-            CCMenuItemFont title2 = CCMenuItemFont.Create("Music");
+            CCMenuItemFont title2 = new CCMenuItemFont("Music");
             title2.Enabled = false;
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 34;
-            CCMenuItemToggle item2 = CCMenuItemToggle.Create(this.menuCallback,
-                                                                        CCMenuItemFont.Create("On"),
-                                                                        CCMenuItemFont.Create("Off"));
+            CCMenuItemToggle item2 = new CCMenuItemToggle(this.menuCallback,
+                                                                        new CCMenuItemFont("On"),
+                                                                        new CCMenuItemFont("Off"));
 
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 18;
-            CCMenuItemFont title3 = CCMenuItemFont.Create("Quality");
+            CCMenuItemFont title3 = new CCMenuItemFont("Quality");
             title3.Enabled = false;
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 34;
-            CCMenuItemToggle item3 = CCMenuItemToggle.Create(this.menuCallback,
-                                                                        CCMenuItemFont.Create("High"),
-                                                                        CCMenuItemFont.Create("Low"));
+            CCMenuItemToggle item3 = new CCMenuItemToggle(this.menuCallback,
+                                                                        new CCMenuItemFont("High"),
+                                                                        new CCMenuItemFont("Low"));
 
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 18;
-            CCMenuItemFont title4 = CCMenuItemFont.Create("Orientation");
+            CCMenuItemFont title4 = new CCMenuItemFont("Orientation");
             title4.Enabled = false;
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 34;
-            CCMenuItemToggle item4 = CCMenuItemToggle.Create(this.menuCallback,
-                                                                     CCMenuItemFont.Create("Off"));
+            CCMenuItemToggle item4 = new CCMenuItemToggle(this.menuCallback,
+                                                                     new CCMenuItemFont("Off"));
 
-            item4.SubItems.Add(CCMenuItemFont.Create("33%"));
-            item4.SubItems.Add(CCMenuItemFont.Create("66%"));
-            item4.SubItems.Add(CCMenuItemFont.Create("100%"));
+            item4.SubItems.Add(new CCMenuItemFont("33%"));
+            item4.SubItems.Add(new CCMenuItemFont("66%"));
+            item4.SubItems.Add(new CCMenuItemFont("100%"));
 
             // you can change the one of the items by doing this
             item4.SelectedIndex = 2;
@@ -85,7 +85,7 @@ namespace tests
             CCMenuItemFont.FontSize = 34;
 
             CCLabelBMFont label = new CCLabelBMFont("go back", "fonts/bitmapFontTest3.fnt");
-            CCMenuItemLabel back = CCMenuItemLabel.Create(label, this.backCallback);
+            CCMenuItemLabel back = new CCMenuItemLabel(label, this.backCallback);
 
             CCMenu menu = new CCMenu(
                           title1, title2,

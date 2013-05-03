@@ -9,6 +9,16 @@ namespace cocos2d
         protected CCColor3B m_tColorBackup;
         protected CCColor3B m_tDisabledColor;
 
+        protected CCMenuItemLabel() {}
+
+        public CCMenuItemLabel (CCNode label, SEL_MenuHandler selector)
+        {
+            InitWithLabel(label, selector);
+        }
+
+        public CCMenuItemLabel (CCNode label) : this(label, null)
+        { }
+
         public CCColor3B DisabledColor
         {
             get { return m_tDisabledColor; }
@@ -55,20 +65,6 @@ namespace cocos2d
                 }
                 base.Enabled = value;
             }
-        }
-
-        public static CCMenuItemLabel Create(CCNode label, SEL_MenuHandler selector)
-        {
-            var pRet = new CCMenuItemLabel();
-            pRet.InitWithLabel(label, selector);
-            return pRet;
-        }
-
-        public static CCMenuItemLabel Create(CCNode label)
-        {
-            var pRet = new CCMenuItemLabel();
-            pRet.InitWithLabel(label, null);
-            return pRet;
         }
 
         protected bool InitWithLabel(CCNode label, SEL_MenuHandler selector)

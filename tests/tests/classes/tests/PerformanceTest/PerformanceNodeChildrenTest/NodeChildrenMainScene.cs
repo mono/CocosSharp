@@ -33,9 +33,9 @@ namespace tests
             quantityOfNodes = nNodes;
 
             CCMenuItemFont.FontSize = 64;
-            CCMenuItemFont decrease = CCMenuItemFont.Create(" - ", onDecrease);
+            CCMenuItemFont decrease = new CCMenuItemFont(" - ", onDecrease);
             decrease.Color = new CCColor3B(0, 200, 20);
-            CCMenuItemFont increase = CCMenuItemFont.Create(" + ", onIncrease);
+            CCMenuItemFont increase = new CCMenuItemFont(" + ", onIncrease);
             increase.Color = new CCColor3B(0, 200, 20);
 
             CCMenu menu = new CCMenu(decrease, increase);

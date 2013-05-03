@@ -37,9 +37,9 @@ namespace tests
             RemoveChild(node, false);
             //	[self removeChildByTag:localtag-1 cleanup:NO];
 
-            CCMenuItem item1 = CCMenuItemFont.Create("One", menuCallback);
+            CCMenuItem item1 = new CCMenuItemFont("One", menuCallback);
             CCLog.Log("MenuItemFont: %p", item1);
-            CCMenuItem item2 = CCMenuItemFont.Create("Two", menuCallback);
+            CCMenuItem item2 = new CCMenuItemFont("Two", menuCallback);
             CCMenu menu = new CCMenu(item1, item2);
             menu.AlignItemsVertically();
 

@@ -20,12 +20,6 @@ namespace cocos2d
             set { m_pParallaxArray = value; }
         }
 
-        public new static CCParallaxNode Create()
-        {
-            var pRet = new CCParallaxNode();
-            return pRet;
-        }
-
         // super methods
         public override void AddChild(CCNode child, int zOrder, int tag)
         {
@@ -35,7 +29,7 @@ namespace cocos2d
         public virtual void AddChild(CCNode child, int z, CCPoint ratio, CCPoint offset)
         {
             Debug.Assert(child != null, "Argument must be non-nil");
-            CCPointObject obj = CCPointObject.Create(ratio, offset);
+            CCPointObject obj = new CCPointObject(ratio, offset);
             obj.Child = child;
 
             m_pParallaxArray.Add(obj);

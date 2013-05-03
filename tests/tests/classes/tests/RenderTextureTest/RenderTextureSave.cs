@@ -46,8 +46,8 @@ namespace tests
 
             // Save Image menu
             CCMenuItemFont.FontSize = 16;
-            CCMenuItem item1 = CCMenuItemFont.Create("Save Image", saveImage);
-            CCMenuItem item2 = CCMenuItemFont.Create("Clear", clearImage);
+            CCMenuItem item1 = new CCMenuItemFont("Save Image", saveImage);
+            CCMenuItem item2 = new CCMenuItemFont("Clear", clearImage);
             var menu = new CCMenu(item1, item2);
             AddChild(menu);
             menu.AlignItemsVertically();

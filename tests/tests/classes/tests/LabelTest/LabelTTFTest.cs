@@ -22,18 +22,18 @@ namespace tests
 
             CCMenuItemFont.FontSize = 30;
             CCMenu menu = new CCMenu(
-                CCMenuItemFont.Create("Left", setAlignmentLeft),
-                CCMenuItemFont.Create("Center", setAlignmentCenter),
-                CCMenuItemFont.Create("Right", setAlignmentRight)
+                new CCMenuItemFont("Left", setAlignmentLeft),
+                new CCMenuItemFont("Center", setAlignmentCenter),
+                new CCMenuItemFont("Right", setAlignmentRight)
                 );
             menu.AlignItemsVerticallyWithPadding(4);
             menu.Position = new CCPoint(50, s.Height / 2 - 20);
             AddChild(menu);
 
             menu = new CCMenu(
-                CCMenuItemFont.Create("Top", setAlignmentTop),
-                CCMenuItemFont.Create("Middle", setAlignmentMiddle),
-                CCMenuItemFont.Create("Bottom", setAlignmentBottom)
+                new CCMenuItemFont("Top", setAlignmentTop),
+                new CCMenuItemFont("Middle", setAlignmentMiddle),
+                new CCMenuItemFont("Bottom", setAlignmentBottom)
                 );
             menu.AlignItemsVerticallyWithPadding(4);
             menu.Position = new CCPoint(s.Width - 50, s.Height / 2 - 20);

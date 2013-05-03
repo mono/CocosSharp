@@ -20,9 +20,9 @@ namespace tests
             quantityParticles = particles;
 
             CCMenuItemFont.FontSize = 64;
-            CCMenuItemFont decrease = CCMenuItemFont.Create(" - ", onDecrease);
+            CCMenuItemFont decrease = new CCMenuItemFont(" - ", onDecrease);
             decrease.Color = new CCColor3B(0, 200, 20);
-            CCMenuItemFont increase = CCMenuItemFont.Create(" + ", onIncrease);
+            CCMenuItemFont increase = new CCMenuItemFont(" + ", onIncrease);
             increase.Color = new CCColor3B(0, 200, 20);
 
             CCMenu menu = new CCMenu(decrease, increase);
@@ -53,7 +53,7 @@ namespace tests
                 string str;
                 //sprintf(str, "%d ", i);
                 str = string.Format("{0:G}", i);
-                CCMenuItemFont itemFont = CCMenuItemFont.Create(str, testNCallback);
+                CCMenuItemFont itemFont = new CCMenuItemFont(str, testNCallback);
                 itemFont.Tag = i;
                 pSubMenu.AddChild(itemFont, 10);
 

@@ -57,19 +57,19 @@ namespace tests
 
             // Label Item (LabelAtlas)
             CCLabelAtlas labelAtlas = new CCLabelAtlas("0123456789", "Images/fps_Images", 16, 24, '.');
-            CCMenuItemLabel item3 = CCMenuItemLabel.Create(labelAtlas, this.menuCallbackDisabled);
+            CCMenuItemLabel item3 = new CCMenuItemLabel(labelAtlas, this.menuCallbackDisabled);
             item3.DisabledColor = new CCColor3B(32, 32, 64);
             item3.Color = new CCColor3B(200, 200, 255);
 
             // Font Item
-            CCMenuItemFont item4 = CCMenuItemFont.Create("I toggle enable items", this.menuCallbackEnable);
+            CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", this.menuCallbackEnable);
 
             item4.FontSizeObj = 20;
             item4.FontNameObj = "arial";
 
             // Label Item (CCLabelBMFont)
             CCLabelBMFont label = new CCLabelBMFont("configuration", "fonts/bitmapFontTest3.fnt");
-            CCMenuItemLabel item5 = CCMenuItemLabel.Create(label, this.menuCallbackConfig);
+            CCMenuItemLabel item5 = new CCMenuItemLabel(label, this.menuCallbackConfig);
             
 
             // Testing issue #500
@@ -77,10 +77,10 @@ namespace tests
 
             // Events
             CCMenuItemFont.FontName = "arial";
-            CCMenuItemFont item6 = CCMenuItemFont.Create("Priority Test", menuCallbackPriorityTest);
+            CCMenuItemFont item6 = new CCMenuItemFont("Priority Test", menuCallbackPriorityTest);
 
             // Font Item
-            CCMenuItemFont item7 = CCMenuItemFont.Create("Quit", this.onQuit);
+            CCMenuItemFont item7 = new CCMenuItemFont("Quit", this.onQuit);
 
             CCActionInterval color_action = new CCTintBy (0.5f, 0, -255, -255);
             CCActionInterval color_back = (CCActionInterval)color_action.Reverse();

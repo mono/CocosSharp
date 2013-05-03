@@ -10,6 +10,16 @@ namespace cocos2d
         private CCColor3B m_tColor;
         private int m_uSelectedIndex;
 
+        public CCMenuItemToggle ()
+        {
+            InitWithTarget(null);
+        }
+        
+        public CCMenuItemToggle (SEL_MenuHandler selector, params CCMenuItem[] items)
+        {
+            InitWithTarget(selector, items);
+        }
+
         public int SelectedIndex
         {
             get { return m_uSelectedIndex; }
@@ -101,20 +111,6 @@ namespace cocos2d
         }
 
         #endregion
-
-        public new static CCMenuItemToggle Create()
-        {
-            var pRet = new CCMenuItemToggle();
-            pRet.InitWithTarget(null);
-            return pRet;
-        }
-
-        public static CCMenuItemToggle Create(SEL_MenuHandler selector, params CCMenuItem[] items)
-        {
-            var pRet = new CCMenuItemToggle();
-            pRet.InitWithTarget(selector, items);
-            return pRet;
-        }
 
         public bool InitWithTarget(SEL_MenuHandler selector, CCMenuItem[] items)
         {

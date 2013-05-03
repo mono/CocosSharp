@@ -41,8 +41,8 @@ namespace tests
         //virtual void setTexture(CCTexture2D* newTexture);
         public void move(float delta)
         {
-            this.Position = 
-            CCPointExtension.Add(Position, CCPointExtension.Multiply(m_velocity, delta));
+            this.Position = Position + (m_velocity * delta);
+
             if (Position.X > 320 - radius())
             {
                 Position = new CCPoint(320 - radius(), Position.Y);

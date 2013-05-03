@@ -21,14 +21,14 @@ namespace tests.Extensions
 
 			var winSize = CCDirector.SharedDirector.WinSize;
 
-			var tableView = CCTableView.Create(this, new CCSize(250, 60));
+			var tableView = new CCTableView(this, new CCSize(250, 60));
 			tableView.Direction = CCScrollViewDirection.Horizontal;
 			tableView.Position = new CCPoint(20,winSize.Height/2-30);
 			tableView.Delegate = this;
 			this.AddChild(tableView);
 			tableView.ReloadData();
 
-			tableView = CCTableView.Create(this, new CCSize(60, 280));
+			tableView = new CCTableView(this, new CCSize(60, 280));
 			tableView.Direction = CCScrollViewDirection.Vertical;
 			tableView.Position = new CCPoint(winSize.Width - 150, winSize.Height/2 - 120);
 			tableView.Delegate = this;
@@ -37,7 +37,7 @@ namespace tests.Extensions
 			tableView.ReloadData();
 
 			// Back Menu
-			var itemBack = CCMenuItemFont.Create("Back", toExtensionsMainLayer);
+			var itemBack = new CCMenuItemFont("Back", toExtensionsMainLayer);
 			itemBack.Position = new CCPoint(winSize.Width - 50, 25);
 			var menuBack = new CCMenu(itemBack);
 			menuBack.Position = CCPoint.Zero;

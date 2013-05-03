@@ -792,7 +792,7 @@ namespace cocos2d
                 float s = modeA.speed + modeA.speedVar * Random.Float_Minus1_1();
 
                 // direction
-                particle.modeA.dir = CCPointExtension.Multiply(v, s);
+                particle.modeA.dir = v * s;
 
                 // radial accel
                 particle.modeA.radialAccel = modeA.radialAccel + modeA.radialAccelVar * Random.Float_Minus1_1();

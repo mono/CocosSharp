@@ -197,10 +197,10 @@ namespace tests
             CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
             CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
 
-            CCMenuItemToggle item4 = CCMenuItemToggle.Create(toggleCallback,
-                                                                     CCMenuItemFont.Create("Free Movement"),
-                                                                     CCMenuItemFont.Create("Relative Movement"),
-                                                                     CCMenuItemFont.Create("Grouped Movement"));
+            CCMenuItemToggle item4 = new CCMenuItemToggle(toggleCallback,
+                                                                     new CCMenuItemFont("Free Movement"),
+                                                                     new CCMenuItemFont("Relative Movement"),
+                                                                     new CCMenuItemFont("Grouped Movement"));
 
             CCMenu menu = new CCMenu(item1, item2, item3, item4);
 
@@ -951,7 +951,7 @@ namespace tests
             m_background.Parent.RemoveChild(m_background, true);
             m_background = null;
 
-            CCParallaxNode p = CCParallaxNode.Create();
+            CCParallaxNode p = new CCParallaxNode();
             AddChild(p, 5);
 
             CCSprite p1 = new CCSprite(TestResource.s_back3);
