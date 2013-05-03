@@ -154,7 +154,7 @@ namespace tests
                 var sprite = CCSpriteFrame.Create(texture, new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height));
                 frameList.Add(sprite);
             }
-            var animation = CCAnimation.Create(frameList, 0.1f);
+            var animation = new CCAnimation(frameList, 0.1f);
             var animate = new CCAnimate (animation);
 
             return animate;

@@ -176,7 +176,7 @@ namespace cocos2d
                         pElement.Key);
                 }
 
-                CCAnimation animation = CCAnimation.Create(frames, delay, 1);
+                CCAnimation animation = new CCAnimation(frames, delay, 1);
 
                 SharedAnimationCache.AddAnimation(animation, pElement.Key);
             }
