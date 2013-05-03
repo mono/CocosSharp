@@ -69,7 +69,7 @@ namespace cocos2d
 
                 float x = Bezierat(xa, xb, xc, xd, time);
                 float y = Bezierat(ya, yb, yc, yd, time);
-                m_pTarget.Position = CCPointExtension.Add(m_startPosition, CCPointExtension.CreatePoint(x, y));
+                m_pTarget.Position = CCPointExtension.Add(m_startPosition, new CCPoint(x, y));
             }
         }
 

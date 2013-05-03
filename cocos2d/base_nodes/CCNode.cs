@@ -444,7 +444,7 @@ namespace cocos2d
                 if (!value.Equals(m_tAnchorPoint))
                 {
                     m_tAnchorPoint = value;
-                    m_tAnchorPointInPoints = CCPointExtension.CreatePoint(m_tContentSize.Width * m_tAnchorPoint.X,
+                    m_tAnchorPointInPoints = new CCPoint(m_tContentSize.Width * m_tAnchorPoint.X,
                                                                   m_tContentSize.Height * m_tAnchorPoint.Y);
                     m_bIsTransformDirty = m_bIsInverseDirty = true;
                 }
@@ -470,7 +470,7 @@ namespace cocos2d
                 if (!CCSize.CCSizeEqualToSize(value, m_tContentSize))
                 {
                     m_tContentSize = value;
-                    m_tAnchorPointInPoints = CCPointExtension.CreatePoint(m_tContentSize.Width * m_tAnchorPoint.X,
+                    m_tAnchorPointInPoints = new CCPoint(m_tContentSize.Width * m_tAnchorPoint.X,
                                                                   m_tContentSize.Height * m_tAnchorPoint.Y);
                     m_bIsTransformDirty = m_bIsInverseDirty = true;
                 }

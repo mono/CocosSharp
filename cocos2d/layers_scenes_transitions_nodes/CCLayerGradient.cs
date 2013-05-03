@@ -148,7 +148,7 @@ namespace cocos2d
         /// <summary>
         /// Initializes the CCLayer with a gradient between start and end.
         /// </summary>
-        public virtual bool InitWithColor(CCColor4B start, CCColor4B end)
+        protected virtual bool InitWithColor(CCColor4B start, CCColor4B end)
         {
             return InitWithColor(start, end, new CCPoint(0, -1));
         }
@@ -156,7 +156,7 @@ namespace cocos2d
         /// <summary>
         /// Initializes the CCLayer with a gradient between start and end in the direction of v.
         /// </summary>
-        public virtual bool InitWithColor(CCColor4B start, CCColor4B end, CCPoint v)
+        protected virtual bool InitWithColor(CCColor4B start, CCColor4B end, CCPoint v)
         {
             m_endColor = new CCColor3B();
             m_endColor.R = end.R;
