@@ -360,8 +360,7 @@ namespace cocos2d
                 fontChar = (CCSprite) (GetChildByTag(i));
                 if (fontChar == null)
                 {
-                    fontChar = new CCSprite();
-                    fontChar.InitWithTexture(m_pobTextureAtlas.Texture, rect);
+                    fontChar = new CCSprite(m_pobTextureAtlas.Texture, rect);
                     AddChild(fontChar, 0, i);
                 }
                 else

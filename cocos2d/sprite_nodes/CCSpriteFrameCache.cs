@@ -104,8 +104,7 @@ namespace cocos2d
                     ow = Math.Abs(ow);
                     oh = Math.Abs(oh);
                     // create frame
-                    spriteFrame = new CCSpriteFrame();
-                    spriteFrame.InitWithTexture(pobTexture,
+                    spriteFrame = new CCSpriteFrame(pobTexture,
                                                 new CCRect(x, y, w, h),
                                                 false,
                                                 new CCPoint(ox, oy),
@@ -130,8 +129,7 @@ namespace cocos2d
 					CCSize sourceSize = CCSize.Parse (frameDict["sourceSize"].AsString);
 
                     // create frame
-                    spriteFrame = new CCSpriteFrame();
-                    spriteFrame.InitWithTexture(pobTexture,
+                    spriteFrame = new CCSpriteFrame(pobTexture,
                                                 frame,
                                                 rotated,
                                                 offset,
@@ -172,8 +170,7 @@ namespace cocos2d
                     }
 
                     // create frame
-                    spriteFrame = new CCSpriteFrame();
-                    spriteFrame.InitWithTexture(pobTexture,
+                    spriteFrame = new CCSpriteFrame(pobTexture,
                                                 new CCRect(textureRect.Origin.X, textureRect.Origin.Y, spriteSize.Width, spriteSize.Height),
                                                 textureRotated,
                                                 spriteOffset,

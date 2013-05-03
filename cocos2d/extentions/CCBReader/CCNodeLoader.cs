@@ -555,7 +555,7 @@ namespace cocos2d
                 {
                     CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
                     var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
-                    spriteFrame = CCSpriteFrame.Create(texture, bounds);
+                    spriteFrame = new CCSpriteFrame(texture, bounds);
                 }
                 else
                 {
@@ -637,7 +637,7 @@ namespace cocos2d
             var color = new CCColor3B(red, green, blue);
             if (reader.AnimatedProperties.Contains(propertyName))
             {
-                ccColor3BWapper value = ccColor3BWapper.Create(color);
+                ccColor3BWapper value = new ccColor3BWapper(color);
                 reader.AnimationManager.SetBaseValue(value, node, propertyName);
             }
             return color;
@@ -711,7 +711,7 @@ namespace cocos2d
         {
             string fontTTF = reader.ReadCachedString();
 
-            // CCString * ttfEnding = CCString.Create(".ttf");
+            // CCString * ttfEnding = ".ttf";
 
             // TODO Fix me if it is wrong
             /* If the fontTTF comes with the ".ttf" extension, prepend the absolute path. 

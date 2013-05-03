@@ -4,7 +4,7 @@ using System;
 
 namespace cocos2d
 {
-    public class CCSpriteFrame : ICopyable
+    public partial class CCSpriteFrame : ICopyable
     {
         #region properties
 
@@ -91,6 +91,8 @@ namespace cocos2d
 
         #endregion
 
+        public CCSpriteFrame() { }
+
 		public CCSpriteFrame Copy()
 		{
 			return (CCSpriteFrame)Copy(null);
@@ -103,29 +105,24 @@ namespace cocos2d
             return pCopy;
         }
 
-        public static CCSpriteFrame Create(CCTexture2D pobTexture, CCRect rect)
+        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect)
         {
-            var pSpriteFrame = new CCSpriteFrame();
-            pSpriteFrame.InitWithTexture(pobTexture, rect);
-            return pSpriteFrame;
+            InitWithTexture(pobTexture, rect);
         }
 
-        public static CCSpriteFrame Create(CCTexture2D pobTexture, CCRect rect, bool rotated, CCPoint offset,
+        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect, bool rotated, CCPoint offset,
                                            CCSize originalSize)
         {
-            var pSpriteFrame = new CCSpriteFrame();
-            pSpriteFrame.InitWithTexture(pobTexture, rect, rotated, offset, originalSize);
-
-            return pSpriteFrame;
+            InitWithTexture(pobTexture, rect, rotated, offset, originalSize);
         }
 
-        public bool InitWithTexture(CCTexture2D pobTexture, CCRect rect)
+        protected virtual bool InitWithTexture(CCTexture2D pobTexture, CCRect rect)
         {
             CCRect rectInPixels = CCMacros.CCRectanglePointsToPixels(rect);
             return InitWithTexture(pobTexture, rectInPixels, false, new CCPoint(0, 0), rectInPixels.Size);
         }
 
-        public bool InitWithTexture(CCTexture2D pobTexture, CCRect rect, bool rotated, CCPoint offset,
+        protected virtual bool InitWithTexture(CCTexture2D pobTexture, CCRect rect, bool rotated, CCPoint offset,
                                     CCSize originalSize)
         {
             m_pobTexture = pobTexture;
@@ -141,12 +138,12 @@ namespace cocos2d
             return true;
         }
 
-        public bool InitWithTextureFilename(String filename, CCRect rect)
+        protected virtual bool InitWithTextureFilename(String filename, CCRect rect)
         {
             return InitWithTextureFilename(filename, rect, false, CCPoint.Zero, rect.Size);
         }
 
-        public bool InitWithTextureFilename(String filename, CCRect rect, bool rotated, CCPoint offset,
+        protected virtual bool InitWithTextureFilename(String filename, CCRect rect, bool rotated, CCPoint offset,
                                             CCSize originalSize)
         {
             m_pobTexture = null;

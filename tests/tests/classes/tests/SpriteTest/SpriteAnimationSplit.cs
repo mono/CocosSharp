@@ -15,12 +15,12 @@ namespace tests
             CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage("animations/dragon_animation");
 
             // manually add frames to the frame cache
-            CCSpriteFrame frame0 = CCSpriteFrame.Create(texture, new CCRect(132 * 0, 132 * 0, 132, 132));
-            CCSpriteFrame frame1 = CCSpriteFrame.Create(texture, new CCRect(132 * 1, 132 * 0, 132, 132));
-            CCSpriteFrame frame2 = CCSpriteFrame.Create(texture, new CCRect(132 * 2, 132 * 0, 132, 132));
-            CCSpriteFrame frame3 = CCSpriteFrame.Create(texture, new CCRect(132 * 3, 132 * 0, 132, 132));
-            CCSpriteFrame frame4 = CCSpriteFrame.Create(texture, new CCRect(132 * 0, 132 * 1, 132, 132));
-            CCSpriteFrame frame5 = CCSpriteFrame.Create(texture, new CCRect(132 * 1, 132 * 1, 132, 132));
+            CCSpriteFrame frame0 = new CCSpriteFrame(texture, new CCRect(132 * 0, 132 * 0, 132, 132));
+            CCSpriteFrame frame1 = new CCSpriteFrame(texture, new CCRect(132 * 1, 132 * 0, 132, 132));
+            CCSpriteFrame frame2 = new CCSpriteFrame(texture, new CCRect(132 * 2, 132 * 0, 132, 132));
+            CCSpriteFrame frame3 = new CCSpriteFrame(texture, new CCRect(132 * 3, 132 * 0, 132, 132));
+            CCSpriteFrame frame4 = new CCSpriteFrame(texture, new CCRect(132 * 0, 132 * 1, 132, 132));
+            CCSpriteFrame frame5 = new CCSpriteFrame(texture, new CCRect(132 * 1, 132 * 1, 132, 132));
 
             //
             // Animation using Sprite BatchNode

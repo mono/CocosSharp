@@ -178,12 +178,11 @@ namespace cocos2d
                     CCRect rect = m_pTileSet.RectForGID(gid);
                     rect = CCMacros.CCRectanglePixelsToPoints(rect);
 
-                    tile = new CCSprite();
+                    tile = new CCSprite(Texture, rect);
                     //
                     // do the init AFTER the batch node is set so that the tile is set to 
                     // draw in batch mode instead of self draw mode.
                     //
-                    tile.InitWithTexture(Texture, rect);
                     tile.BatchNode = this;
                     tile.Position = PositionAt(pos);
                     tile.VertexZ = VertexZForPos(pos);

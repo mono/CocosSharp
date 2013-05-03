@@ -14,6 +14,11 @@ namespace tests
     {
         private b2Body m_pBody; // strong ref
 
+        public CCPhysicsSprite(CCTexture2D f, CCRect r)
+            : base(f, r)
+        {
+        }
+
         public override bool Dirty
         {
             get { return true; }
@@ -221,8 +226,7 @@ namespace tests
             //just randomly picking one of the images
             int idx = (Random.Float_0_1() > .5 ? 0 : 1);
             int idy = (Random.Float_0_1() > .5 ? 0 : 1);
-            var sprite = new CCPhysicsSprite();
-            sprite.InitWithTexture(m_pSpriteTexture, new CCRect(32 * idx, 32 * idy, 32, 32));
+            var sprite = new CCPhysicsSprite(m_pSpriteTexture, new CCRect(32 * idx, 32 * idy, 32, 32));
 
             _batch.AddChild(sprite, 0, kTagForPhysicsSprite);
 

@@ -115,7 +115,7 @@ namespace cocos2d
 
         public void AddSprite(CCSprite sprite)
         {
-            CCSpriteFrame f = CCSpriteFrame.Create(sprite.Texture, new CCRect(0, 0, sprite.ContentSize.Width, sprite.ContentSize.Height));
+            CCSpriteFrame f = new CCSpriteFrame(sprite.Texture, new CCRect(0, 0, sprite.ContentSize.Width, sprite.ContentSize.Height));
             AddSpriteFrame(f);
         }
 
@@ -134,13 +134,13 @@ namespace cocos2d
             CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(pszFileName);
             CCRect rect = CCRect.Zero;
             rect.Size = pTexture.ContentSize;
-            CCSpriteFrame pFrame = CCSpriteFrame.Create(pTexture, rect);
+            CCSpriteFrame pFrame = new CCSpriteFrame(pTexture, rect);
             AddSpriteFrame(pFrame);
         }
 
         public void AddSpriteFrameWithTexture(CCTexture2D pobTexture, CCRect rect)
         {
-            CCSpriteFrame pFrame = CCSpriteFrame.Create(pobTexture, rect);
+            CCSpriteFrame pFrame = new CCSpriteFrame(pobTexture, rect);
             AddSpriteFrame(pFrame);
         }
 

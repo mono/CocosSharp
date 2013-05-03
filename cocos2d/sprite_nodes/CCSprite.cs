@@ -259,7 +259,7 @@ namespace cocos2d
         {
             get
             {
-                return CCSpriteFrame.Create(
+                return new CCSpriteFrame(
                     m_pobTexture,
                     CCMacros.CCRectanglePointsToPixels(m_obRect),
                     m_bRectRotated,
@@ -476,7 +476,7 @@ namespace cocos2d
             m_bFlipX = m_bFlipY = false;
 
             // default transform anchor: center
-            AnchorPoint = CCPointExtension.CreatePoint(0.5f, 0.5f);
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             // zwoptex default values
             m_obOffsetPosition = CCPoint.Zero;
@@ -504,12 +504,12 @@ namespace cocos2d
             return true;
         }
 
-        public bool InitWithTexture(CCTexture2D texture, CCRect rect)
+        protected virtual bool InitWithTexture(CCTexture2D texture, CCRect rect)
         {
             return InitWithTexture(texture, rect, false);
         }
 
-        public bool InitWithTexture(CCTexture2D texture)
+        protected virtual bool InitWithTexture(CCTexture2D texture)
         {
             Debug.Assert(texture != null, "Invalid texture for sprite");
 
@@ -519,7 +519,7 @@ namespace cocos2d
             return InitWithTexture(texture, rect);
         }
 
-        public bool InitWithFile(string fileName)
+        protected virtual bool InitWithFile(string fileName)
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
 
@@ -542,7 +542,7 @@ namespace cocos2d
             return false;
         }
 
-        public bool InitWithFile(string fileName, CCRect rect)
+        protected virtual bool InitWithFile(string fileName, CCRect rect)
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
 
@@ -556,7 +556,7 @@ namespace cocos2d
             return false;
         }
 
-        public bool InitWithSpriteFrame(CCSpriteFrame pSpriteFrame)
+        protected virtual bool InitWithSpriteFrame(CCSpriteFrame pSpriteFrame)
         {
             Debug.Assert(pSpriteFrame != null);
 

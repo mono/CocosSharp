@@ -6,7 +6,7 @@ namespace cocos2d
 
         public override CCNode CreateCCNode()
         {
-            return CCBFile.Create();
+            return new CCBFile();
         }
 
         protected override void OnHandlePropTypeCCBFile(CCNode node, CCNode parent, string propertyName, CCNode fileNode, CCBReader reader)

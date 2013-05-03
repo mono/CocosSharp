@@ -210,7 +210,7 @@ namespace cocos2d
                 case "rotation":
                     {
                         var value = (CCBValue) pKeyframe1.Value;
-                        return CCBRotateTo.Create(duration, value.GetFloatValue());
+                        return new CCBRotateTo(duration, value.GetFloatValue());
                     }
                 case "opacity":
                     {
@@ -234,7 +234,7 @@ namespace cocos2d
                         return new CCSequence (new CCDelayTime (duration), new CCHide());
                     }
                 case "displayFrame":
-                    return new CCSequence (new CCDelayTime (duration), CCBSetSpriteFrame.Create((CCSpriteFrame) pKeyframe1.Value));
+                    return new CCSequence (new CCDelayTime (duration), new CCBSetSpriteFrame((CCSpriteFrame) pKeyframe1.Value));
                 case "position":
                     {
                         // Get position type
@@ -481,14 +481,15 @@ namespace cocos2d
 
         /** creates a Place action with a position */
 
-        public static CCBSetSpriteFrame Create(CCSpriteFrame pSpriteFrame)
+        public CCBSetSpriteFrame()
         {
-            var ret = new CCBSetSpriteFrame();
-            ret.InitWithSpriteFrame(pSpriteFrame);
-            return ret;
+        }
+        public CCBSetSpriteFrame(CCSpriteFrame pSpriteFrame)
+        {
+            InitWithSpriteFrame(pSpriteFrame);
         }
 
-        public bool InitWithSpriteFrame(CCSpriteFrame pSpriteFrame)
+        protected virtual bool InitWithSpriteFrame(CCSpriteFrame pSpriteFrame)
         {
             mSpriteFrame = pSpriteFrame;
             return true;
@@ -525,14 +526,16 @@ namespace cocos2d
         private float mDstAngle;
         private float mStartAngle;
 
-        public static CCBRotateTo Create(float fDuration, float fAngle)
+        public CCBRotateTo()
         {
-            var ret = new CCBRotateTo();
-            ret.InitWithDuration(fDuration, fAngle);
-            return ret;
         }
 
-        public bool InitWithDuration(float fDuration, float fAngle)
+        public CCBRotateTo(float fDuration, float fAngle) : base(fDuration)
+        {
+            InitWithDuration(fDuration, fAngle);
+        }
+
+        protected virtual bool InitWithDuration(float fDuration, float fAngle)
         {
             if (base.InitWithDuration(fDuration))
             {

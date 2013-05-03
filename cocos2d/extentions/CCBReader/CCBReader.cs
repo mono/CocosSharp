@@ -116,11 +116,7 @@ namespace cocos2d
     internal class CCBFile : CCNode
     {
         public CCNode FileNode { get; set; }
-
-        public new static CCBFile Create()
-        {
-            return new CCBFile();
-        }
+        public CCBFile() { }
     }
 
 
@@ -601,7 +597,7 @@ namespace cocos2d
                 byte b = ReadByte();
 
                 var c = new CCColor3B(r, g, b);
-                value = ccColor3BWapper.Create(c);
+                value = new ccColor3BWapper(c);
             }
             else if (type == kCCBPropType.kCCBPropTypeDegrees)
             {
@@ -629,7 +625,7 @@ namespace cocos2d
                 {
                     CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
                     var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
-                    spriteFrame = CCSpriteFrame.Create(texture, bounds);
+                    spriteFrame = new CCSpriteFrame(texture, bounds);
                 }
                 else
                 {
