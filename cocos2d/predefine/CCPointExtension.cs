@@ -31,6 +31,7 @@ namespace cocos2d
         /// since v0.7.2
         /// </summary>
         /// <returns>CCPoint</returns>
+        [Obsolete("use CCPoint()")]
         public static CCPoint CreatePoint(float x, float y)
         {
             return new CCPoint(x, y);
@@ -41,6 +42,7 @@ namespace cocos2d
         /// since v0.7.2
         /// </summary>
         /// <returns>CCPoint</returns>
+        [Obsolete("use CCPoint.Negative() or the unary operator")]
         public static CCPoint Negative(CCPoint v)
         {
             return CreatePoint(-v.X, -v.Y);
@@ -50,6 +52,7 @@ namespace cocos2d
         /// Calculates sum of two points.
         ///@since v0.7.2
         /// <returns>CCPoint</returns>
+        [Obsolete("use CCPoint.Add() or the plus operator")]
         public static CCPoint Add(CCPoint v1, CCPoint v2)
         {
             return CreatePoint(v1.X + v2.X, v1.Y + v2.Y);
@@ -59,6 +62,7 @@ namespace cocos2d
             @return CCPoint
             @since v0.7.2
         */
+        [Obsolete("use CCPoint() and the minus operator")]
         public static CCPoint Subtract(CCPoint v1, CCPoint v2)
         {
             return CreatePoint(v1.X - v2.X, v1.Y - v2.Y);

@@ -72,7 +72,10 @@ namespace cocos2d
 
         public CCPoint Offset(float dx, float dy)
         {
-            return (new CCPoint(X + dx, Y + dy));
+            CCPoint pt = CCPoint.Zero;
+            pt.X = X + dx;
+            pt.Y = Y + dy;
+            return pt;
         }
         public CCPoint Reverse
         {
@@ -107,7 +110,10 @@ namespace cocos2d
 
         public CCPoint Sub(ref CCPoint v2)
         {
-            return new CCPoint(X - v2.X, Y - v2.Y);
+            CCPoint pt = CCPoint.Zero;
+            pt.X = X - v2.X;
+            pt.Y = Y - v2.Y;
+            return pt;
         }
 
         public float LengthSQ
@@ -127,13 +133,19 @@ namespace cocos2d
         {
             get
             {
-                return (new CCPoint(X, -Y));
+                CCPoint pt = CCPoint.Zero;
+                pt.X = X;
+                pt.Y = -Y;
+                return pt;
             }
         }
 
         public static CCPoint Perp(CCPoint p)
         {
-            return new CCPoint(-p.Y, p.X);
+            CCPoint pt = CCPoint.Zero;
+            pt.X = -p.Y;
+            pt.Y = p.X;
+            return pt;
         }
 
         public static float Dot(CCPoint p1, CCPoint p2)
@@ -153,12 +165,18 @@ namespace cocos2d
             var x = p.X;
             var y = p.Y;
             var l = 1f / (float)Math.Sqrt(x * x + y * y);
-            return new CCPoint(x * l, y * l);
+            CCPoint pt = CCPoint.Zero;
+            pt.X = x*l;
+            pt.Y = y*l;
+            return pt;
         }
 
         public static CCPoint Midpoint(CCPoint p1, CCPoint p2)
         {
-            return (p1 + p2) * 0.5f;
+            CCPoint pt = CCPoint.Zero;
+            pt.X = (p1.X + p2.X)/2f;
+            pt.Y = (p1.Y + p2.Y)/2f;
+            return pt;
         }
 
         public static bool operator ==(CCPoint p1, CCPoint p2)
@@ -171,17 +189,26 @@ namespace cocos2d
         }
         public static CCPoint operator -(CCPoint p1, CCPoint p2)
         {
-            return new CCPoint(p1.X - p2.X, p1.Y - p2.Y);
+            CCPoint pt = CCPoint.Zero;
+            pt.X = p1.X - p2.X;
+            pt.Y = p1.Y - p2.Y;
+            return pt;
         }
 
         public static CCPoint operator +(CCPoint p1, CCPoint p2)
         {
-            return new CCPoint(p1.X + p2.X, p1.Y + p2.Y);
+            CCPoint pt = CCPoint.Zero;
+            pt.X = p1.X + p2.X;
+            pt.Y = p1.Y + p2.Y;
+            return pt;
         }
 
         public static CCPoint operator *(CCPoint p, float value)
         {
-            return new CCPoint(p.X * value, p.Y * value);
+            CCPoint pt = CCPoint.Zero;
+            pt.X = p.X * value;
+            pt.Y = p.Y * value;
+            return pt;
         }
 
 		public static CCPoint Parse(string s)
