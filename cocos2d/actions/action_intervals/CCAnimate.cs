@@ -171,7 +171,7 @@ namespace cocos2d
                 }
             }
 
-            var newAnim = CCAnimation.Create(pNewArray, m_pAnimation.DelayPerUnit, m_pAnimation.Loops);
+            var newAnim = new CCAnimation(pNewArray, m_pAnimation.DelayPerUnit, m_pAnimation.Loops);
             newAnim.RestoreOriginalFrame = m_pAnimation.RestoreOriginalFrame;
             return new CCAnimate (newAnim);
         }

@@ -52,7 +52,7 @@ namespace tests
                     animFrames.Add(frame);
                 }
 
-                CCAnimation animation = CCAnimation.Create(animFrames, 0.3f);
+                CCAnimation animation = new CCAnimation(animFrames, 0.3f);
                 sprite.RunAction(new CCRepeatForever (new CCAnimate (animation)));
                 sprite.RunAction(new CCRepeatForever (new CCRotateBy (10, 360)));
 

@@ -709,7 +709,7 @@ namespace tests
             //
             // Manual animation
             //
-            var animation = CCAnimation.Create();
+            var animation = new CCAnimation();
             for (var i = 1; i < 15; i++)
             {
                 var szName = String.Format("Images/grossini_dance_{0:00}", i);

@@ -27,7 +27,7 @@ namespace tests
                 animFrames.Add(frame);
             }
 
-            CCAnimation animation = CCAnimation.Create(animFrames, 0.2f);
+            CCAnimation animation = new CCAnimation(animFrames, 0.2f);
 
             // Add an animation to the Cache
             CCAnimationCache.SharedAnimationCache.AddAnimation(animation, "dance");
@@ -44,7 +44,7 @@ namespace tests
                 animFrames.Add(frame);
             }
 
-            animation = CCAnimation.Create(animFrames, 0.2f);
+            animation = new CCAnimation(animFrames, 0.2f);
 
             // Add an animation to the Cache
             CCAnimationCache.SharedAnimationCache.AddAnimation(animation, "dance_gray");
@@ -61,7 +61,7 @@ namespace tests
                 animFrames.Add(frame);
             }
 
-            animation = CCAnimation.Create(animFrames, 0.2f);
+            animation = new CCAnimation(animFrames, 0.2f);
 
             // Add an animation to the Cache
             CCAnimationCache.SharedAnimationCache.AddAnimation(animation, "dance_blue");

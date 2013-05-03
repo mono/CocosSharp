@@ -11,9 +11,17 @@ namespace cocos2d
         protected List<CCAnimationFrame> m_pFrames;
         protected uint m_uLoops;
 
-        public CCAnimation()
+        public CCAnimation() : this (new List<CCSpriteFrame>(), 0)
+        { }
+
+        public CCAnimation (List<CCSpriteFrame> frames, float delay)
         {
-            m_pFrames = new List<CCAnimationFrame>();
+            InitWithSpriteFrames(frames, delay);
+        }
+        
+        public CCAnimation (List<CCAnimationFrame> arrayOfAnimationFrameNames, float delayPerUnit, uint loops)
+        {
+            InitWithAnimationFrames(arrayOfAnimationFrameNames, delayPerUnit, loops);
         }
 
         public float Duration
@@ -47,34 +55,6 @@ namespace cocos2d
         public float TotalDelayUnits
         {
             get { return m_fTotalDelayUnits; }
-        }
-
-        public static CCAnimation Create()
-        {
-            var pAnimation = new CCAnimation();
-            pAnimation.Init();
-
-            return pAnimation;
-        }
-
-        public static CCAnimation Create(List<CCSpriteFrame> frames, float delay)
-        {
-            var pAnimation = new CCAnimation();
-            pAnimation.InitWithSpriteFrames(frames, delay);
-
-            return pAnimation;
-        }
-
-        public static CCAnimation Create(List<CCAnimationFrame> arrayOfAnimationFrameNames, float delayPerUnit, uint loops)
-        {
-            var pAnimation = new CCAnimation();
-            pAnimation.InitWithAnimationFrames(arrayOfAnimationFrameNames, delayPerUnit, loops);
-            return pAnimation;
-        }
-
-        public bool Init()
-        {
-            return InitWithSpriteFrames(new List<CCSpriteFrame>(), 0);
         }
 
         public bool InitWithSpriteFrames(List<CCSpriteFrame> pFrames, float delay)
