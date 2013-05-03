@@ -10,7 +10,7 @@ namespace cocos2d
         PNG = 1
     }
 
-    public class CCRenderTexture : CCNode
+    public partial class CCRenderTexture : CCNode
     {
         private bool m_bFirstUsage = true;
         protected SurfaceFormat m_ePixelFormat;
@@ -29,28 +29,22 @@ namespace cocos2d
             set { m_pSprite = value; }
         }
 
-        public static CCRenderTexture Create(int w, int h)
+        public CCRenderTexture(int w, int h)
         {
-            var pRet = new CCRenderTexture();
-            pRet.InitWithWidthAndHeight(w, h, SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents);
-            return pRet;
+            InitWithWidthAndHeight(w, h, SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents);
         }
 
-        public static CCRenderTexture Create(int w, int h, SurfaceFormat format)
+        public CCRenderTexture(int w, int h, SurfaceFormat format)
         {
-            var pRet = new CCRenderTexture();
-            pRet.InitWithWidthAndHeight(w, h, format, DepthFormat.None, RenderTargetUsage.DiscardContents);
-            return pRet;
+            InitWithWidthAndHeight(w, h, format, DepthFormat.None, RenderTargetUsage.DiscardContents);
         }
 
-        public static CCRenderTexture Create(int w, int h, SurfaceFormat format, DepthFormat depthFormat, RenderTargetUsage usage)
+        public CCRenderTexture(int w, int h, SurfaceFormat format, DepthFormat depthFormat, RenderTargetUsage usage)
         {
-            var pRet = new CCRenderTexture();
-            pRet.InitWithWidthAndHeight(w, h, format, depthFormat, usage);
-            return pRet;
+            InitWithWidthAndHeight(w, h, format, depthFormat, usage);
         }
 
-        public bool InitWithWidthAndHeight(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
+        protected virtual bool InitWithWidthAndHeight(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
         {
             w = (w * CCMacros.CCContentScaleFactor());
             h = (h * CCMacros.CCContentScaleFactor());
@@ -72,7 +66,7 @@ namespace cocos2d
             return true;
         }
 
-        public void Begin()
+        public virtual void Begin()
         {
             // Save the current matrix
             DrawManager.PushMatrix();
@@ -136,7 +130,7 @@ namespace cocos2d
             End();
         }
 
-        public void End()
+        public virtual void End()
         {
             DrawManager.PopMatrix();
 

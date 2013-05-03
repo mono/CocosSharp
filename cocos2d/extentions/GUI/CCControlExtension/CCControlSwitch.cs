@@ -455,7 +455,7 @@ namespace cocos2d
                                                    m_pOffSprite.ContentSize.Height / 2);
             }
 
-            CCRenderTexture rt = CCRenderTexture.Create((int) m_pMaskTexture.ContentSize.Width, (int) m_pMaskTexture.ContentSize.Height,
+            CCRenderTexture rt = new CCRenderTexture((int) m_pMaskTexture.ContentSize.Width, (int) m_pMaskTexture.ContentSize.Height,
                                                         SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents);
 
             rt.BeginWithClear(0, 0, 0, 0);

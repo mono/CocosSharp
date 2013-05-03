@@ -29,7 +29,7 @@ namespace tests
 
 
             /* A2 & B2 setup */
-            CCRenderTexture rend = CCRenderTexture.Create(32, 64);
+            CCRenderTexture rend = new CCRenderTexture(32, 64);
 
             // It's possible to modify the RenderTexture blending function by
             //CCBlendFunc bf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);

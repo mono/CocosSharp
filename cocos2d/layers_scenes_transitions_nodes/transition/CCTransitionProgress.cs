@@ -21,7 +21,7 @@ namespace cocos2d
             CCSize size = CCDirector.SharedDirector.WinSize;
 
             // create the second render texture for outScene
-            CCRenderTexture texture = CCRenderTexture.Create((int) size.Width, (int) size.Height);
+            CCRenderTexture texture = new CCRenderTexture((int) size.Width, (int) size.Height);
             texture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
             texture.Position = new CCPoint(size.Width / 2, size.Height / 2);
             texture.AnchorPoint = new CCPoint(0.5f, 0.5f);

@@ -131,8 +131,8 @@ namespace tests
         public void renderScreenShot()
         {
             var size = CCDirector.SharedDirector.WinSize;
-            var texture = CCRenderTexture.Create((int)size.Width, (int)size.Height);
-            //var texture = CCRenderTexture.Create(512, 512);
+            var texture = new CCRenderTexture((int)size.Width, (int)size.Height);
+            //var texture = new CCRenderTexture(512, 512);
 
             texture.AnchorPoint = new CCPoint(0, 0);
             texture.Begin();

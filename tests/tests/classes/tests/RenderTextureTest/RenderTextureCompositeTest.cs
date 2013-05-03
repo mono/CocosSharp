@@ -97,7 +97,7 @@ namespace tests
             const int height = 278;
 
             var centerPoint = new CCPoint(width / 2, height / 2);
-            var characterTexture = CCRenderTexture.Create(width, height);
+            var characterTexture = new CCRenderTexture(width, height);
 
             characterTexture.BeginWithClear(100, 0, 0, 0);
 
