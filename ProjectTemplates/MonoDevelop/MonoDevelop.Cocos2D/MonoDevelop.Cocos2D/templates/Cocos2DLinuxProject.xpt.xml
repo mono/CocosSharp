@@ -24,12 +24,14 @@
 				<Reference type="Gac" refto="System.Xml" />
 				<Reference type="Gac" refto="System.Core" />
 				<Reference type="Gac" refto="OpenTK" />
-				<Reference type="Gac" refto="Cocos2D.Framework.Linux" />
+				<Reference type="Gac" refto="MonoGame.Framework.Linux" />
 				<Reference type="Gac" refto="Lidgren.Network" />
 				<Reference type="Gac" refto="Tao.Sdl.dll" />
+				<Reference type="Gac" refto="cocos2d.Linux"/>
 			</References>
 			<Files>
 				<File name="Game1.cs" src="Cocos2DApplication/Game1.cs" />
+		        <File name="AppDelegate.cs" src="Cocos2DApplication/AppDelegate.cs"/>
 				<File name="Program.cs" src="Cocos2DApplication/Program.cs" />
 				<RawFile name="Icon.png" src="Cocos2DApplication/Icon-md.png" />
 				<Directory name="Properties">

@@ -26,11 +26,13 @@
 				<Reference type="Gac" refto="System.Xml.Linq" />
 				<Reference type="Gac" refto="System.Drawing" />
 				<Reference type="Gac" refto="MonoMac" SpecificVersion="false" />
-				<Reference type="Gac" refto="Cocos2D.Framework.MacOS" />
+				<Reference type="Gac" refto="MonoGame.Framework.MacOS" />
 				<Reference type="Gac" refto="Lidgren.Network.MacOS" />
+				<Reference type="Gac" refto="cocos2d.MacOS"/>
 			</References>
 			<Files>
 				<FileTemplateReference TemplateID="FSharpAssemblyInfo" name="AssemblyInfo.fs" />
+		        <File name="AppDelegate.fs" AddStandardHeader="True" src="Cocos2DApplication/AppDelegate.fs"/>
 				<File name="Game1.fs" AddStandardHeader="True" src="Cocos2DApplication/MacGame.fs" />
 				<File name="Main.fs" AddStandardHeader="True" src="Cocos2DApplication/MacMain.fs" />
 				<File name="Info.plist" AddStandardHeader="False" src="Cocos2DApplication/MacInfo.plist" />

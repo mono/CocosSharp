@@ -14,8 +14,9 @@
 	
 	<TemplateFiles>
 		<File name="${Name}.${LanguageExtension}" >
-		<AssemblyReference>Cocos2D.Framework.Mac</AssemblyReference>
+		<AssemblyReference>MonoGame.Framework.Mac</AssemblyReference>
 		<AssemblyReference>Lidgren.Network.Mac</AssemblyReference>
+		<AssemblyReference>cocos2d.Mac</AssemblyReference>
 <![CDATA[
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
+using cocos2d;
 
 namespace ${Namespace}
 {

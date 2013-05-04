@@ -27,12 +27,14 @@
 				<Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />				
 				<Reference type="Gac" refto="Mono.Android" />
 				<Reference type="Gac" refto="OpenTK" />
-				<Reference type="Gac" refto="Cocos2D.Framework.Android" />
+				<Reference type="Gac" refto="cocos2d.Android"/>
+				<Reference type="Gac" refto="MonoGame.Framework.Android" />
 				<Reference type="Gac" refto="Lidgren.Network.Android" />
 			</References>
 			<Files>
 				<File name="Activity1.cs" src="Cocos2DApplication/Activity1.cs" />
 				<File name="Game1.cs" src="Cocos2DApplication/Game1.cs" />
+		        <File name="AppDelegate.cs" src="Cocos2DApplication/AppDelegate.cs"/>
 				<Directory name="Resources">
 					<File name="Resource.designer.cs" src="Cocos2DApplication/Resource.cs" />
 					<RawFile name="AboutResources.txt" src="Cocos2DApplication/AboutResources.txt" />					
