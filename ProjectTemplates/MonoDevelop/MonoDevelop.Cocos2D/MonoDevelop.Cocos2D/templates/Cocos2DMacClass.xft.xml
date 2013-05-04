@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Template>
+	<TemplateConfiguration>
+		<_Name>Cocos2D Class</_Name>
+		<Icon>Cocos2D</Icon>
+		<_Category>Cocos2D</_Category>
+		<LanguageName>C#</LanguageName>
+		<ProjectType>Mac</ProjectType>
+		<_Description>Creates an empty Mac Cocos2D class definition.</_Description>
+	</TemplateConfiguration>
+	
+	<Conditions>
+	</Conditions>
+	
+	<TemplateFiles>
+		<File name="${Name}.${LanguageExtension}" >
+		<AssemblyReference>Cocos2D.Framework.Mac</AssemblyReference>
+		<AssemblyReference>Lidgren.Network.Mac</AssemblyReference>
+<![CDATA[
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
+using Microsoft.Xna.Framework.Storage;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
+
+namespace ${Namespace}
+{
+	class ${Name}
+	{
+	}
+}
+]]></File>
+	</TemplateFiles>
+</Template>
