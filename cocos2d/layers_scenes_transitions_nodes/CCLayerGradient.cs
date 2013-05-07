@@ -175,7 +175,7 @@ namespace cocos2d
 
         protected override void UpdateColor()
         {
-            float h = CCPointExtension.Length(m_AlongVector);
+            float h = m_AlongVector.Length;
             if (h == 0)
                 return;
 

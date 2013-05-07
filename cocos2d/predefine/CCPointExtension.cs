@@ -83,6 +83,7 @@ namespace cocos2d
             @return CCPoint
             @since v0.7.2
         */
+        [Obsolete("use CCPoint.Midpoint")]
         public static CCPoint Midpoint(CCPoint v1, CCPoint v2)
         {
             return Multiply(Add(v1, v2), 0.5f);
@@ -92,6 +93,7 @@ namespace cocos2d
             @return CGFloat
             @since v0.7.2
         */
+        [Obsolete("use CCPoint.DotProduct")]
         public static float DotProduct(CCPoint v1, CCPoint v2)
         {
             return v1.X * v2.X + v1.Y * v2.Y;
@@ -101,6 +103,7 @@ namespace cocos2d
             @return CGFloat
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint.CrossProduct")]
         public static float CrossProduct(CCPoint v1, CCPoint v2)
         {
             return v1.X * v2.Y - v1.Y * v2.X;
@@ -110,6 +113,7 @@ namespace cocos2d
             @return CCPoint
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint.PerpendicularCounterClockwise")]
         public static CCPoint PerpendicularCounterClockwise(CCPoint v)
         {
             return CreatePoint(-v.Y, v.X);
@@ -119,6 +123,7 @@ namespace cocos2d
             @return CCPoint
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint.PerpendicularClockwise")]
         public static CCPoint PerpendicularClockwise(CCPoint v)
         {
             return CreatePoint(v.Y, -v.X);
@@ -128,6 +133,7 @@ namespace cocos2d
             @return CCPoint
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint.Project")]
         public static CCPoint Project(CCPoint v1, CCPoint v2)
         {
             return Multiply(v2, DotProduct(v1, v2) / DotProduct(v2, v2));
@@ -137,6 +143,7 @@ namespace cocos2d
             @return CCPoint
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint.Rotate")]
         public static CCPoint Rotate(CCPoint v1, CCPoint v2)
         {
             return CreatePoint(v1.X * v2.X - v1.Y * v2.Y, v1.X * v2.Y + v1.Y * v2.X);
@@ -146,6 +153,7 @@ namespace cocos2d
             @return CCPoint
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint.Unrotate")]
         public static CCPoint Unrotate(CCPoint v1, CCPoint v2)
         {
             return CreatePoint(v1.X * v2.X + v1.Y * v2.Y, v1.Y * v2.X - v1.X * v2.Y);
@@ -155,6 +163,7 @@ namespace cocos2d
             @return CGFloat
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint")]
         public static float LengthSquare(CCPoint v)
         {
             return DotProduct(v, v);
@@ -164,6 +173,7 @@ namespace cocos2d
             @return CGFloat
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint")]
         public static float Length(CCPoint v)
         {
             return (float)Math.Sqrt(LengthSquare(v));
@@ -173,6 +183,7 @@ namespace cocos2d
             @return CGFloat
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint")]
         public static float Distance(CCPoint v1, CCPoint v2)
         {
             return Length(Subtract(v1, v2));
@@ -182,6 +193,7 @@ namespace cocos2d
             @return CCPoint
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint")]
         public static CCPoint Normalize(CCPoint v)
         {
             return Multiply(v, 1.0f / Length(v));
@@ -191,6 +203,7 @@ namespace cocos2d
             @return CCPoint
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint")]
         public static CCPoint ForAngle(float a)
         {
             return CreatePoint((float)Math.Cos(a), (float)Math.Sin(a));
@@ -200,6 +213,7 @@ namespace cocos2d
             @return CGFloat
             @since v0.7.2
         */
+        [Obsolete("Use CCPoint")]
         public static float ToAngle(CCPoint v)
         {
             return (float)Math.Atan2(v.Y, v.X);
@@ -209,6 +223,7 @@ namespace cocos2d
         /** Clamp a value between from and to.
             @since v0.99.1
         */
+        [Obsolete("Use CCPoint")]
         public static float Clamp(float value, float min_inclusive, float max_inclusive)
         {
             if (min_inclusive > max_inclusive)
@@ -225,6 +240,7 @@ namespace cocos2d
         /** Clamp a point between from and to.
             @since v0.99.1
         */
+        [Obsolete("Use CCPoint")]
         public static CCPoint Clamp(CCPoint p, CCPoint from, CCPoint to)
         {
             return CreatePoint(Clamp(p.X, from.X, to.X), Clamp(p.Y, from.Y, to.Y));
@@ -233,6 +249,7 @@ namespace cocos2d
         /** Quickly convert CCSize to a CCPoint
             @since v0.99.1
         */
+        [Obsolete("Use CCPoint")]
         public static CCPoint FromSize(CCSize s)
         {
             return CreatePoint(s.Width, s.Height);
@@ -245,7 +262,9 @@ namespace cocos2d
          * ccpCompOp(p,floorf);
          @since v0.99.1
          */
+        [Obsolete("Use CCPoint")]
         public delegate float ComputationOperationDelegate(float a);
+        [Obsolete("Use CCPoint")]
         public static CCPoint ComputationOperation(CCPoint p, ComputationOperationDelegate del)
         {
             return CreatePoint(del(p.X), del(p.Y));
@@ -258,6 +277,7 @@ namespace cocos2d
               otherwise a value between a..b
             @since v0.99.1
        */
+        [Obsolete("Use CCPoint.Lerp")]
         public static CCPoint Lerp(CCPoint a, CCPoint b, float alpha)
         {
             return Add(Multiply(a, 1.0f - alpha), Multiply(b, alpha));
@@ -267,6 +287,7 @@ namespace cocos2d
         /** @returns if points have fuzzy equality which means equal with some degree of variance.
             @since v0.99.1
         */
+        [Obsolete("Use CCPoint.FuzzyEqual")]
         public static bool FuzzyEqual(CCPoint a, CCPoint b, float variance)
         {
             if (a.X - variance <= b.X && b.X <= a.X + variance)
@@ -281,6 +302,7 @@ namespace cocos2d
             @returns a component-wise multiplication
             @since v0.99.1
         */
+        [Obsolete("Use CCPoint.MultiplyComponents")]
         public static CCPoint MultiplyComponents(CCPoint a, CCPoint b)
         {
             return CreatePoint(a.X * b.X, a.Y * b.Y);
@@ -289,6 +311,7 @@ namespace cocos2d
         /** @returns the signed angle in radians between two vector directions
             @since v0.99.1
         */
+        [Obsolete("Use CCPoint.AngleSigned")]
         public static float AngleSigned(CCPoint a, CCPoint b)
         {
             CCPoint a2 = Normalize(a);
@@ -306,6 +329,7 @@ namespace cocos2d
         /** @returns the angle in radians between two vector directions
             @since v0.99.1
         */
+        [Obsolete("Use CCPoint.Angle")]
         public static float Angle(CCPoint a, CCPoint b)
         {
             float angle = (float)Math.Acos(DotProduct(Normalize(a), Normalize(b)));
@@ -325,6 +349,7 @@ namespace cocos2d
             @returns the rotated point
             @since v0.99.1
         */
+        [Obsolete("Use CCPoint.RotateByAngle")]
         public static CCPoint RotateByAngle(CCPoint v, CCPoint pivot, float angle)
         {
             CCPoint r = Subtract(v, pivot);
@@ -358,6 +383,7 @@ namespace cocos2d
             the hit point also is	p1 + s * (p2 - p1);
          @since v0.99.1
          */
+        [Obsolete("Use CCPoint.LineIntersect")]
         public static bool LineIntersect(CCPoint A, CCPoint B, CCPoint C, CCPoint D, ref float S, ref float T)
         {
             // FAIL: Line undefined
@@ -404,6 +430,7 @@ namespace cocos2d
         ccpSegmentIntersect returns YES if Segment A-B intersects with segment C-D
         @since v1.0.0
         */
+        [Obsolete("Use CCPoint.SegmentIntersect")]
         public static bool SegmentIntersect(CCPoint A, CCPoint B, CCPoint C, CCPoint D)
         {
             float S = 0, T = 0;
@@ -421,6 +448,7 @@ namespace cocos2d
         ccpIntersectPoint returns the intersection point of line A-B, C-D
         @since v1.0.0
         */
+        [Obsolete("Use CCPoint.IntersectPoint")]
         public static CCPoint IntersectPoint(CCPoint A, CCPoint B, CCPoint C, CCPoint D)
         {
             float S = 0, T = 0;

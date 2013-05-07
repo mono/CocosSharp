@@ -137,7 +137,7 @@ namespace cocos2d
             for (int i = 1; i < copyConfig.Count; ++i)
             {
                 CCPoint current = copyConfig[i];
-                CCPoint diff = CCPointExtension.Subtract(current, p);
+                CCPoint diff = (current - p);
                 copyConfig[i] = diff;
 
                 p = current;

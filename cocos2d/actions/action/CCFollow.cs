@@ -111,7 +111,7 @@ namespace cocos2d
                     return;
                 }
 
-                CCPoint tempPos = CCPointExtension.Subtract(m_obHalfScreenSize, m_pobFollowedNode.Position);
+                CCPoint tempPos = m_obHalfScreenSize - m_pobFollowedNode.Position;
 
                 m_pTarget.Position = new CCPoint(
                     MathHelper.Clamp(tempPos.X, m_fLeftBoundary, m_fRightBoundary),
@@ -120,7 +120,7 @@ namespace cocos2d
             }
             else
             {
-                m_pTarget.Position = CCPointExtension.Subtract(m_obHalfScreenSize, m_pobFollowedNode.Position);
+                m_pTarget.Position = m_obHalfScreenSize - m_pobFollowedNode.Position;
             }
         }
 

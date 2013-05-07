@@ -456,7 +456,7 @@ namespace cocos2d
             //    We know the first vector is the one @ 12 o'clock (top,mid) so we rotate
             //    from that by the progress angle around the m_tMidpoint pivot
             var topMid = new CCPoint(m_tMidpoint.X, 1f);
-            CCPoint percentagePt = CCPointExtension.RotateByAngle(topMid, m_tMidpoint, angle);
+            CCPoint percentagePt = CCPoint.RotateByAngle(topMid, m_tMidpoint, angle);
 
 
             int index = 0;
@@ -495,16 +495,16 @@ namespace cocos2d
                     //    Let's deal with that here by finding the correct endpoints
                     if (i == 0)
                     {
-                        edgePtB = CCPointExtension.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.X);
+                        edgePtB = CCPoint.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.X);
                     }
                     else if (i == 4)
                     {
-                        edgePtA = CCPointExtension.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.X);
+                        edgePtA = CCPoint.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.X);
                     }
 
                     //    s and t are returned by ccpLineIntersect
                     float s = 0, t = 0;
-                    if (CCPointExtension.LineIntersect(edgePtA, edgePtB, m_tMidpoint, percentagePt, ref s, ref t))
+                    if (CCPoint.LineIntersect(edgePtA, edgePtB, m_tMidpoint, percentagePt, ref s, ref t))
                     {
                         //    Since our hit test is on rays we have to deal with the top edge
                         //    being in split in half so we have to test as a segment

@@ -872,7 +872,7 @@ namespace cocos2d
                     tangential_x = radial_x;
                     tangential_y = radial_y;
 
-                    //radial = CCPointExtension.ccpMult(radial, p.modeA.radialAccel);
+                    //radial = CCPoint.ccpMult(radial, p.modeA.radialAccel);
                     radial_x *= p.modeA.radialAccel;
                     radial_y *= p.modeA.radialAccel;
 
@@ -881,16 +881,16 @@ namespace cocos2d
                     float newy = tangential_x;
                     tangential_x = -tangential_y;
                     tangential_y = newy;
-                    //tangential = CCPointExtension.ccpMult(tangential, p.modeA.tangentialAccel);
+                    //tangential = CCPoint.ccpMult(tangential, p.modeA.tangentialAccel);
                     tangential_x *= p.modeA.tangentialAccel;
                     tangential_y *= p.modeA.tangentialAccel;
 
                     // (gravity + radial + tangential) * dt
-                    //tmp = CCPointExtension.ccpAdd(CCPointExtension.ccpAdd(radial, tangential), modeA.gravity);
-                    //tmp = CCPointExtension.ccpMult(tmp, dt);
-                    //p.modeA.dir = CCPointExtension.ccpAdd(p.modeA.dir, tmp);
-                    //tmp = CCPointExtension.ccpMult(p.modeA.dir, dt);
-                    //p.pos = CCPointExtension.ccpAdd(p.pos, tmp);
+                    //tmp = CCPoint.ccpAdd(CCPoint.ccpAdd(radial, tangential), modeA.gravity);
+                    //tmp = CCPoint.ccpMult(tmp, dt);
+                    //p.modeA.dir = CCPoint.ccpAdd(p.modeA.dir, tmp);
+                    //tmp = CCPoint.ccpMult(p.modeA.dir, dt);
+                    //p.pos = CCPoint.ccpAdd(p.pos, tmp);
 
                     tmp_x = (radial_x + tangential_x + modeA.gravity.X) * dt;
                     tmp_y = (radial_y + tangential_y + modeA.gravity.Y) * dt;
