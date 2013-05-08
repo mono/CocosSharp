@@ -57,7 +57,7 @@ namespace tests
                     B = new CCPoint(bx, by);
                     C = new CCPoint(cx, cy);
                     D = new CCPoint(dx, dy);
-                    //if (CCPointExtension.ccpLineIntersect(A, D, B, C, ref s, ref t))
+                    //if (CCPoint.ccpLineIntersect(A, D, B, C, ref s, ref t))
                     //{
                     //    if (check_for_error(A, D, B, C, s, t) != 0)
                     //        err++;
@@ -78,7 +78,7 @@ namespace tests
                 p4 = new CCPoint(186, 416);
                 s = 0.0f;
                 t = 0.0f;
-                if (CCPointExtension.LineIntersect(p1, p2, p3, p4, ref s, ref t))
+                if (CCPoint.LineIntersect(p1, p2, p3, p4, ref s, ref t))
                     check_for_error(p1, p2, p3, p4, s, t);
 
                 CCLog.Log("Test2 - End");
@@ -126,7 +126,7 @@ namespace tests
 
                     s = 0.0f;
                     t = 0.0f;
-                    if (CCPointExtension.LineIntersect(p1, p2, p3, p4, ref s, ref t))
+                    if (CCPoint.LineIntersect(p1, p2, p3, p4, ref s, ref t))
                     {
                         if (check_for_error(p1, p2, p3, p4, s, t) != 0)
                             err++;

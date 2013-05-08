@@ -1203,12 +1203,12 @@ namespace cocos2d
         public CCPoint ConvertToNodeSpaceAr(CCPoint worldPoint)
         {
             CCPoint nodePoint = ConvertToNodeSpace(worldPoint);
-            return CCPointExtension.Subtract(nodePoint, m_tAnchorPointInPoints);
+            return nodePoint - m_tAnchorPointInPoints;
         }
 
         public CCPoint ConvertToWorldSpaceAr(CCPoint nodePoint)
         {
-            CCPoint pt = CCPointExtension.Add(nodePoint, m_tAnchorPointInPoints);
+            CCPoint pt = nodePoint + m_tAnchorPointInPoints;
             return ConvertToWorldSpace(pt);
         }
 

@@ -49,7 +49,7 @@ namespace cocos2d
         {
             base.StartWithTarget(target);
             m_startPosition = target.Position;
-            m_delta = CCPointExtension.Subtract(m_endPosition, m_startPosition);
+            m_delta = (m_endPosition - m_startPosition);
         }
 
         public override void Update(float time)

@@ -16,9 +16,9 @@ namespace cocos2d
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
-            m_sConfig.ControlPoint1 = CCPointExtension.Subtract(m_sConfig.ControlPoint1, m_startPosition);
-            m_sConfig.ControlPoint2 = CCPointExtension.Subtract(m_sConfig.ControlPoint2, m_startPosition);
-            m_sConfig.EndPosition = CCPointExtension.Subtract(m_sConfig.EndPosition, m_startPosition);
+            m_sConfig.ControlPoint1 = (m_sConfig.ControlPoint1 - m_startPosition);
+            m_sConfig.ControlPoint2 = (m_sConfig.ControlPoint2 - m_startPosition);
+            m_sConfig.EndPosition = (m_sConfig.EndPosition - m_startPosition);
         }
 
         public override object Copy(ICopyable zone)

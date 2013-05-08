@@ -73,11 +73,11 @@ namespace tests
             touchLocation = CCDirector.SharedDirector.ConvertToGl(touchLocation);
             prevLocation = CCDirector.SharedDirector.ConvertToGl(prevLocation);
 
-            CCPoint diff = CCPointExtension.Subtract(touchLocation, prevLocation);
+            CCPoint diff = touchLocation - prevLocation;
 
             CCNode node = GetChildByTag(kTagTileMap); // (int) KTag.kTagNode);
             CCPoint currentPos = node.Position;
-            node.Position = CCPointExtension.Add(currentPos, diff);
+            node.Position = currentPos + diff;
         }
 
         public override string title()

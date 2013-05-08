@@ -121,6 +121,11 @@ namespace cocos2d
             get { return X * X + Y * Y; }
         }
 
+        public float LengthSquare
+        {
+            get { return LengthSQ; }
+        }
+
         public float Length
         {
             get { return (float)Math.Sqrt(X * X + Y * Y); }
@@ -140,6 +145,266 @@ namespace cocos2d
             }
         }
 
+        public void Normalize()
+        {
+            var l = 1f / (float)Math.Sqrt(X * X + Y * Y);
+            X *= l;
+            Y *= l;
+        }
+
+        #region Static Methods
+
+        /** Run a math operation function on each point component
+         * absf, fllorf, ceilf, roundf
+         * any function that has the signature: float func(float);
+         * For example: let's try to take the floor of x,y
+         * ccpCompOp(p,floorf);
+         @since v0.99.1
+         */
+        public delegate float ComputationOperationDelegate(float a);
+        public static CCPoint ComputationOperation(CCPoint p, ComputationOperationDelegate del)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = del(p.X);
+            pt.Y = del(p.Y);
+            return (pt);
+        }
+
+        /** Linear Interpolation between two points a and b
+            @returns
+              alpha == 0 ? a
+              alpha == 1 ? b
+              otherwise a value between a..b
+            @since v0.99.1
+       */
+        public static CCPoint Lerp(CCPoint a, CCPoint b, float alpha)
+        {
+            return (a * (1f - alpha) + b * alpha);
+        }
+
+
+        /** @returns if points have fuzzy equality which means equal with some degree of variance.
+            @since v0.99.1
+        */
+        public static bool FuzzyEqual(CCPoint a, CCPoint b, float variance)
+        {
+            if (a.X - variance <= b.X && b.X <= a.X + variance)
+                if (a.Y - variance <= b.Y && b.Y <= a.Y + variance)
+                    return true;
+
+            return false;
+        }
+
+
+        /** Multiplies a nd b components, a.x*b.x, a.y*b.y
+            @returns a component-wise multiplication
+            @since v0.99.1
+        */
+        public static CCPoint MultiplyComponents(CCPoint a, CCPoint b)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = a.X * b.X;
+            pt.Y = a.Y * b.Y;
+            return pt;
+        }
+
+        /** @returns the signed angle in radians between two vector directions
+            @since v0.99.1
+        */
+        public static float AngleSigned(CCPoint a, CCPoint b)
+        {
+            CCPoint a2 = CCPoint.Normalize(a);
+            CCPoint b2 = CCPoint.Normalize(b);
+            float angle = (float)Math.Atan2(a2.X * b2.Y - a2.Y * b2.X, DotProduct(a2, b2));
+
+            if (Math.Abs(angle) < float.Epsilon)
+            {
+                return 0.0f;
+            }
+
+            return angle;
+        }
+
+        /** Rotates a point counter clockwise by the angle around a pivot
+            @param v is the point to rotate
+            @param pivot is the pivot, naturally
+            @param angle is the angle of rotation cw in radians
+            @returns the rotated point
+            @since v0.99.1
+        */
+        public static CCPoint RotateByAngle(CCPoint v, CCPoint pivot, float angle)
+        {
+            CCPoint r = v - pivot;
+            float cosa = (float)Math.Cos(angle), sina = (float)Math.Sin(angle);
+            float t = r.X;
+
+            r.X = t * cosa - r.Y * sina + pivot.X;
+            r.Y = t * sina + r.Y * cosa + pivot.Y;
+
+            return r;
+        }
+
+        /** A general line-line intersection test
+         @param p1 
+            is the startpoint for the first line P1 = (p1 - p2)
+         @param p2 
+            is the endpoint for the first line P1 = (p1 - p2)
+         @param p3 
+            is the startpoint for the second line P2 = (p3 - p4)
+         @param p4 
+            is the endpoint for the second line P2 = (p3 - p4)
+         @param s 
+            is the range for a hitpoint in P1 (pa = p1 + s*(p2 - p1))
+         @param t
+            is the range for a hitpoint in P3 (pa = p2 + t*(p4 - p3))
+         @return bool 
+            indicating successful intersection of a line
+            note that to truly test intersection for segments we have to make 
+            sure that s & t lie within [0..1] and for rays, make sure s & t > 0
+            the hit point is		p3 + t * (p4 - p3);
+            the hit point also is	p1 + s * (p2 - p1);
+         @since v0.99.1
+         */
+        public static bool LineIntersect(CCPoint A, CCPoint B, CCPoint C, CCPoint D, ref float S, ref float T)
+        {
+            // FAIL: Line undefined
+            if ((A.X == B.X && A.Y == B.Y) || (C.X == D.X && C.Y == D.Y))
+            {
+                return false;
+            }
+
+            float BAx = B.X - A.X;
+            float BAy = B.Y - A.Y;
+            float DCx = D.X - C.X;
+            float DCy = D.Y - C.Y;
+            float ACx = A.X - C.X;
+            float ACy = A.Y - C.Y;
+
+            float denom = DCy * BAx - DCx * BAy;
+
+            S = DCx * ACy - DCy * ACx;
+            T = BAx * ACy - BAy * ACx;
+
+            if (denom == 0)
+            {
+                if (S == 0 || T == 0)
+                {
+                    // Lines incident
+                    return true;
+                }
+                // Lines parallel and not incident
+                return false;
+            }
+
+            S = S / denom;
+            T = T / denom;
+
+            // Point of intersection
+            // CGPoint P;
+            // P.x = A.x + *S * (B.x - A.x);
+            // P.y = A.y + *S * (B.y - A.y);
+
+            return true;
+        }
+
+        /*
+        ccpSegmentIntersect returns YES if Segment A-B intersects with segment C-D
+        @since v1.0.0
+        */
+        public static bool SegmentIntersect(CCPoint A, CCPoint B, CCPoint C, CCPoint D)
+        {
+            float S = 0, T = 0;
+
+            if (LineIntersect(A, B, C, D, ref S, ref T)
+                && (S >= 0.0f && S <= 1.0f && T >= 0.0f && T <= 1.0f))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /*
+        ccpIntersectPoint returns the intersection point of line A-B, C-D
+        @since v1.0.0
+        */
+        public static CCPoint IntersectPoint(CCPoint A, CCPoint B, CCPoint C, CCPoint D)
+        {
+            float S = 0, T = 0;
+
+            if (LineIntersect(A, B, C, D, ref S, ref T))
+            {
+                // Point of intersection
+                CCPoint P = CCPoint.Zero;
+                P.X = A.X + S * (B.X - A.X);
+                P.Y = A.Y + S * (B.Y - A.Y);
+                return P;
+            }
+
+            return new CCPoint();
+        }
+        /** Converts radians to a normalized vector.
+            @return CCPoint
+            @since v0.7.2
+        */
+        public static CCPoint ForAngle(float a)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = (float)Math.Cos(a);
+            pt.Y = (float)Math.Sin(a);
+            return (pt);
+//            return CreatePoint((float)Math.Cos(a), (float)Math.Sin(a));
+        }
+
+        /** Converts a vector to radians.
+            @return CGFloat
+            @since v0.7.2
+        */
+        public static float ToAngle(CCPoint v)
+        {
+            return (float)Math.Atan2(v.Y, v.X);
+        }
+
+
+        /** Clamp a value between from and to.
+            @since v0.99.1
+        */
+        public static float Clamp(float value, float min_inclusive, float max_inclusive)
+        {
+            if (min_inclusive > max_inclusive)
+            {
+                float ftmp;
+                ftmp = min_inclusive;
+                min_inclusive = max_inclusive;
+                max_inclusive = min_inclusive;
+            }
+
+            return value < min_inclusive ? min_inclusive : value < max_inclusive ? value : max_inclusive;
+        }
+
+        /** Clamp a point between from and to.
+            @since v0.99.1
+        */
+        public static CCPoint Clamp(CCPoint p, CCPoint from, CCPoint to)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = Clamp(p.X, from.X, to.X);
+            pt.Y = Clamp(p.Y, from.Y, to.Y);
+            return pt;
+//            return CreatePoint(Clamp(p.X, from.X, to.X), Clamp(p.Y, from.Y, to.Y));
+        }
+
+        /** Quickly convert CCSize to a CCPoint
+            @since v0.99.1
+        */
+        public static CCPoint FromSize(CCSize s)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = s.Width;
+            pt.Y = s.Height;
+            return pt;
+        }
+
         public static CCPoint Perp(CCPoint p)
         {
             CCPoint pt = CCPoint.Zero;
@@ -153,13 +418,10 @@ namespace cocos2d
             return p1.X * p2.X + p1.Y * p2.Y;
         }
 
-        public void Normalize()
+        public static float Distance(CCPoint v1, CCPoint v2)
         {
-            var l = 1f / (float)Math.Sqrt(X * X + Y * Y);
-            X *= l;
-            Y *= l;
+            return (v1 - v2).Length;
         }
-
         public static CCPoint Normalize(CCPoint p)
         {
             var x = p.X;
@@ -178,6 +440,87 @@ namespace cocos2d
             pt.Y = (p1.Y + p2.Y)/2f;
             return pt;
         }
+        public static float DotProduct(CCPoint v1, CCPoint v2)
+        {
+            return v1.X * v2.X + v1.Y * v2.Y;
+        }
+
+        /** Calculates cross product of two points.
+            @return CGFloat
+            @since v0.7.2
+        */
+        public static float CrossProduct(CCPoint v1, CCPoint v2)
+        {
+            return v1.X * v2.Y - v1.Y * v2.X;
+        }
+
+        /** Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, perp(v)) >= 0
+            @return CCPoint
+            @since v0.7.2
+        */
+        public static CCPoint PerpendicularCounterClockwise(CCPoint v)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = -v.Y;
+            pt.Y = v.X;
+            return (pt);
+        }
+
+        /** Calculates perpendicular of v, rotated 90 degrees clockwise -- cross(v, rperp(v)) <= 0
+            @return CCPoint
+            @since v0.7.2
+        */
+        public static CCPoint PerpendicularClockwise(CCPoint v)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = v.Y;
+            pt.Y = -v.X;
+            return (pt);
+        }
+
+        /** Calculates the projection of v1 over v2.
+            @return CCPoint
+            @since v0.7.2
+        */
+        public static CCPoint Project(CCPoint v1, CCPoint v2)
+        {
+            float dp1 = v1.X * v2.X + v1.Y * v2.Y;
+            float dp2 = v2.LengthSQ;
+            float f = dp1 / dp2;
+            CCPoint pt = CCPoint.Zero;
+            pt.X = v2.X * f;
+            pt.Y = v2.Y * f;
+            return (pt);
+            // return Multiply(v2, DotProduct(v1, v2) / DotProduct(v2, v2));
+        }
+
+        /** Rotates two points.
+            @return CCPoint
+            @since v0.7.2
+        */
+        public static CCPoint Rotate(CCPoint v1, CCPoint v2)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = v1.X * v2.X - v1.Y * v2.Y;
+            pt.Y = v1.X * v2.Y + v1.Y * v2.X;
+            return(pt);
+        }
+
+        /** Unrotates two points.
+            @return CCPoint
+            @since v0.7.2
+        */
+        public static CCPoint Unrotate(CCPoint v1, CCPoint v2)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = v1.X * v2.X + v1.Y * v2.Y;
+            pt.Y = v1.Y * v2.X - v1.X * v2.Y;
+            return(pt);
+        }
+
+        #endregion
+
+        #region Operator Overloads
 
         public static bool operator ==(CCPoint p1, CCPoint p2)
         {
@@ -227,8 +570,9 @@ namespace cocos2d
             pt.Y = p.Y * value;
             return pt;
         }
+        #endregion
 
-		public static CCPoint Parse(string s)
+        public static CCPoint Parse(string s)
         {
 #if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
 			return (CCPoint)TypeDescriptor.GetConverter(typeof(CCPoint)).ConvertFromString (s);

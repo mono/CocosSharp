@@ -318,12 +318,12 @@ namespace tests
             var pos = new CCPoint(0, 0);
             if (m_background != null)
             {
-                pos = m_background.ConvertToWorldSpace(new CCPoint(0, 0));
+                pos = m_background.ConvertToWorldSpace(CCPoint.Zero);
             }
 
             if (m_emitter != null)
             {
-                m_emitter.Position = CCPointExtension.Subtract(convertedLocation, pos);
+                m_emitter.Position = convertedLocation - pos;
             }
         }
 

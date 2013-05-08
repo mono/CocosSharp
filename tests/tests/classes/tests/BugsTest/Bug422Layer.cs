@@ -45,7 +45,7 @@ namespace tests
 
             float x = Random.Next() * 50;
             float y = Random.Next() * 50;
-            menu.Position = CCPointExtension.Add(menu.Position, new CCPoint(x, y));
+            menu.Position = menu.Position + new CCPoint(x, y);
             AddChild(menu, 0, localtag);
 
             //[self check:self];
