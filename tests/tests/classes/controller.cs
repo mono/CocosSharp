@@ -35,7 +35,7 @@ namespace tests
 			GamePadEnabled = true;
 #endif
 
-            pMenu.Position = new CCPoint(0.0f, 0.0f);
+            pMenu.Position = CCPoint.Zero;
             pCloseItem.Position = new CCPoint(s.Width - 30, s.Height - 30);
 #if !PSM && !WINDOWS_PHONE
 #if NETFX_CORE

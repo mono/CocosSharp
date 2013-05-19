@@ -405,6 +405,17 @@ namespace cocos2d
             return pt;
         }
 
+        /**
+         * Allow Cast CCSize to CCPoint
+         */
+        public static explicit operator CCPoint(CCSize size)
+        {
+            CCPoint pt = CCPoint.Zero;
+            pt.X = size.Width;
+            pt.Y = size.Height;
+            return pt;
+        }
+
         public static CCPoint Perp(CCPoint p)
         {
             CCPoint pt = CCPoint.Zero;
@@ -671,6 +682,17 @@ namespace cocos2d
             return (CCSizeConverter.CCSizeFromString(s));
 #endif
 		}
+
+        /**
+         * Allow Cast CCPoint to CCSize
+         */
+        public static explicit operator CCSize(CCPoint point)
+        {
+            CCSize size = CCSize.Zero;
+            size.Width = point.X;
+            size.Height = point.Y;
+            return size;
+        }
     }
 
 #if !WINDOWS_PHONE && !XBOX && !NETFX_CORE

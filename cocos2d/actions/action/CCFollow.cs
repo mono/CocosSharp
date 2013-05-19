@@ -52,7 +52,7 @@ namespace cocos2d
             m_bBoundaryFullyCovered = false;
 
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            m_obFullScreenSize = new CCPoint(winSize.Width, winSize.Height);
+            m_obFullScreenSize = (CCPoint)winSize;
             m_obHalfScreenSize = m_obFullScreenSize * 0.5f;
 
             if (m_bBoundarySet)
