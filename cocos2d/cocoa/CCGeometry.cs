@@ -397,6 +397,7 @@ namespace cocos2d
         /** Quickly convert CCSize to a CCPoint
             @since v0.99.1
         */
+        [Obsolete("Use explicit cast (CCPoint)size.")]
         public static CCPoint FromSize(CCSize s)
         {
             CCPoint pt = CCPoint.Zero;
