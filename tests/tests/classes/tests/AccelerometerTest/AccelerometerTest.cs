@@ -56,7 +56,7 @@ namespace tests
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             m_pBall = new CCSprite("Images/ball");
-            m_pBall.Position = new CCPoint(s.Width / 2, s.Height / 2);
+            m_pBall.Position = s.Center;
             AddChild(m_pBall);
         }
     }
