@@ -37,7 +37,7 @@ namespace tests
             // create a brush image to draw into the texture with
             m_pBrush = new CCSprite("Images/fire");
             // It's possible to modify the Brushes blending function by
-            CCBlendFunc bbf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            CCBlendFunc bbf = new CCBlendFunc (CCOGLES.GL_ONE, CCOGLES.GL_ONE_MINUS_SRC_ALPHA);
             m_pBrush.BlendFunc = bbf;
 
             m_pBrush.Color = new CCColor3B (Color.Red);

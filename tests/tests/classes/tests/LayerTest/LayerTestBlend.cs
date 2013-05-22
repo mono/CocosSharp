@@ -36,15 +36,15 @@ namespace tests
             int src;
             int dst;
 
-            if (layer.BlendFunc.Destination == OGLES.GL_ZERO)
+            if (layer.BlendFunc.Destination == CCOGLES.GL_ZERO)
             {
-                src = OGLES.GL_SRC_ALPHA;
-                dst = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                src = CCOGLES.GL_SRC_ALPHA;
+                dst = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
             }
             else
             {
-                src = OGLES.GL_ONE_MINUS_DST_COLOR;
-                dst = OGLES.GL_ZERO;
+                src = CCOGLES.GL_ONE_MINUS_DST_COLOR;
+                dst = CCOGLES.GL_ZERO;
             }
 
             layer.BlendFunc = new CCBlendFunc(src, dst);

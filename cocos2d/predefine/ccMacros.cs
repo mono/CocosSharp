@@ -189,8 +189,8 @@ namespace Cocos2D
         public static readonly int CCDefaultDestinationBlending = OGLES.GL_ONE_MINUS_SRC_ALPHA;
 #else
         // Not PMA - like iOS, textures do not have alpha blended in the pixels
-         public static readonly int CCDefaultSourceBlending= OGLES.GL_SRC_ALPHA;
-         public static readonly int CCDefaultDestinationBlending=  OGLES.GL_ONE_MINUS_SRC_ALPHA;
+         public static readonly int CCDefaultSourceBlending= CCOGLES.GL_SRC_ALPHA;
+         public static readonly int CCDefaultDestinationBlending=  CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
 #endif
 
         // The following macros are defined for opengl es, they are not needed.

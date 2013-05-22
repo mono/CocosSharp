@@ -867,7 +867,7 @@
     <Compile Include=".\platform\InputState.cs">
       <LogicalName>platform\InputState</LogicalName>
     </Compile>
-    <Compile Include=".\platform\OGLES.cs">
+    <Compile Include=".\platform\CCOGLES.cs">
       <LogicalName>platform\OGLES</LogicalName>
     </Compile>
     <Compile Include=".\platform\PList\PlistArray.cs">

@@ -318,7 +318,7 @@
     <Compile Include="platform\CCDrawManager.cs" />
     <Compile Include="platform\ICCSAXDelegator.cs" />
     <Compile Include="platform\InputState.cs" />
-    <Compile Include="platform\OGLES.cs" />
+    <Compile Include="platform\CCOGLES.cs" />
     <Compile Include="platform\PList\PlistArray.cs" />
     <Compile Include="platform\PList\PlistBoolean.cs" />
     <Compile Include="platform\PList\PlistData.cs" />

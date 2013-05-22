@@ -51,7 +51,7 @@ namespace tests
             };
             // GL_SRC_ALPHA
 
-            CCDrawManager.BlendFunc(new CCBlendFunc(OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA));
+            CCDrawManager.BlendFunc(new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE_MINUS_SRC_ALPHA));
 
             //! move sprite half width and height, and draw only where not marked
             sprite.Position = sprite.Position + new CCPoint(sprite.ContentSize.Width * sprite.Scale, sprite.ContentSize.Height * sprite.Scale) * 0.5f;

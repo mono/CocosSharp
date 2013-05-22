@@ -1082,8 +1082,8 @@ namespace Cocos2D
                     }
                     else
                     {
-                        m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
-                        m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                        m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+                        m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
                     }
                 }
             }
@@ -1095,20 +1095,20 @@ namespace Cocos2D
 
         public bool BlendAdditive
         {
-            get { return (m_tBlendFunc.Source == OGLES.GL_SRC_ALPHA && m_tBlendFunc.Destination == OGLES.GL_ONE); }
+            get { return (m_tBlendFunc.Source == CCOGLES.GL_SRC_ALPHA && m_tBlendFunc.Destination == CCOGLES.GL_ONE); }
             set
             {
                 if (value)
                 {
-                    m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
-                    m_tBlendFunc.Destination = OGLES.GL_ONE;
+                    m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+                    m_tBlendFunc.Destination = CCOGLES.GL_ONE;
                 }
                 else
                 {
                     if (m_pTexture != null && !m_pTexture.HasPremultipliedAlpha)
                     {
-                        m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
-                        m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                        m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+                        m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
                     }
                     else
                     {

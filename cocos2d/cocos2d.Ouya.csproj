@@ -291,7 +291,7 @@
     <Compile Include="Platform\CCDrawManager.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
     <Compile Include="Platform\InputState.cs" />
-    <Compile Include="Platform\OGLES.cs">
+    <Compile Include="Platform\CCOGLES.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Platform\PList\PlistArray.cs" />

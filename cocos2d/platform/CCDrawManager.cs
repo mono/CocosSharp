@@ -511,19 +511,19 @@ namespace Cocos2D
             //if (m_currBlend.Destination != blendFunc.Destination || m_currBlend.Source != blendFunc.Source)
             //{
                 BlendState bs = null;
-                if (blendFunc.Source == OGLES.GL_ONE && blendFunc.Destination == OGLES.GL_ONE_MINUS_SRC_ALPHA)
+                if (blendFunc.Source == CCOGLES.GL_ONE && blendFunc.Destination == CCOGLES.GL_ONE_MINUS_SRC_ALPHA)
                 {
                     bs = BlendState.AlphaBlend;
                 }
-                else if (blendFunc.Source == OGLES.GL_SRC_ALPHA && blendFunc.Destination == OGLES.GL_ONE)
+                else if (blendFunc.Source == CCOGLES.GL_SRC_ALPHA && blendFunc.Destination == CCOGLES.GL_ONE)
                 {
                     bs = BlendState.Additive;
                 }
-                else if (blendFunc.Source == OGLES.GL_SRC_ALPHA && blendFunc.Destination == OGLES.GL_ONE_MINUS_SRC_ALPHA)
+                else if (blendFunc.Source == CCOGLES.GL_SRC_ALPHA && blendFunc.Destination == CCOGLES.GL_ONE_MINUS_SRC_ALPHA)
                 {
                     bs = BlendState.NonPremultiplied;
                 }
-                else if (blendFunc.Source == OGLES.GL_ONE && blendFunc.Destination == OGLES.GL_ZERO)
+                else if (blendFunc.Source == CCOGLES.GL_ONE && blendFunc.Destination == CCOGLES.GL_ZERO)
                 {
                     bs = BlendState.Opaque;
                 }
@@ -533,10 +533,10 @@ namespace Cocos2D
                     {
                         bs = new BlendState();
 
-                        bs.ColorSourceBlend = OGLES.GetXNABlend(blendFunc.Source);
-                        bs.AlphaSourceBlend = OGLES.GetXNABlend(blendFunc.Source);
-                        bs.ColorDestinationBlend = OGLES.GetXNABlend(blendFunc.Destination);
-                        bs.AlphaDestinationBlend = OGLES.GetXNABlend(blendFunc.Destination);
+                        bs.ColorSourceBlend = CCOGLES.GetXNABlend(blendFunc.Source);
+                        bs.AlphaSourceBlend = CCOGLES.GetXNABlend(blendFunc.Source);
+                        bs.ColorDestinationBlend = CCOGLES.GetXNABlend(blendFunc.Destination);
+                        bs.AlphaDestinationBlend = CCOGLES.GetXNABlend(blendFunc.Destination);
 
                         m_blendStates.Add(blendFunc, bs);
                     }

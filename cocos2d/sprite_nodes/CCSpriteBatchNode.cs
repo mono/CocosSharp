@@ -634,8 +634,8 @@ namespace Cocos2D
         {
             if (!m_pobTextureAtlas.Texture.HasPremultipliedAlpha)
             {
-                m_blendFunc.Source = OGLES.GL_SRC_ALPHA;
-                m_blendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                m_blendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+                m_blendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
             }
         }
 
