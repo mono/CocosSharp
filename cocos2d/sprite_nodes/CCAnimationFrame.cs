@@ -1,4 +1,4 @@
-using Cocos2D.PropertyList;
+using cocos2d;
 
 namespace Cocos2D
 {

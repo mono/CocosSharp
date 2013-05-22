@@ -28,7 +28,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Cocos2D.PropertyList
+namespace cocos2d
 {
 	public class PlistArray : PlistObject<List<PlistObjectBase>>, IEnumerable<PlistObjectBase>
 	{

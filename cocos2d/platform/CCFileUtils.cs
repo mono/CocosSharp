@@ -66,10 +66,7 @@ namespace Cocos2D
         /// <returns></returns>
         public static string GetFileData(string pszFileName)
         {
-            ContentManager content = CCApplication.SharedApplication.Content;
-            CCContent data = content.Load<CCContent>(pszFileName);
-
-            return data.Content;
+            return(CCContent.LoadContentFile(pszFileName));
         }
 
         public static byte[] GetFileBytes(string pszFileName)

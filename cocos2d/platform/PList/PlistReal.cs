@@ -26,7 +26,7 @@
 
 using System;
 
-namespace Cocos2D.PropertyList
+namespace cocos2d
 {
 	public class PlistReal : PlistObject<float>
 	{
