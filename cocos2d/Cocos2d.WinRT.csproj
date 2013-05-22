@@ -400,7 +400,7 @@
     <Compile Include=".\actions\action_tiled_grid\CCWavesTiles3D.cs">
       <LogicalName>actions\action_tiled_grid\CCWavesTiles3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\Tile.cs">
+    <Compile Include=".\actions\action_tiled_grid\CCTile.cs">
       <LogicalName>actions\action_tiled_grid\Tile</LogicalName>
     </Compile>
     <Compile Include=".\actions\CCActionManager.cs">

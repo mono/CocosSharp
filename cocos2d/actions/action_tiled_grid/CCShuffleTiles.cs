@@ -33,7 +33,7 @@ namespace Cocos2D
     {
         protected int m_nSeed;
         protected int m_nTilesCount;
-        protected Tile[] m_pTiles;
+        protected CCTile[] m_pTiles;
         protected int[] m_pTilesOrder;
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Cocos2D
             return new CCGridSize((int) (pos2.X - pos.X), (int) (pos2.Y - pos.Y));
         }
 
-        public void PlaceTile(CCGridSize pos, Tile t)
+        public void PlaceTile(CCGridSize pos, CCTile t)
         {
             CCQuad3 coords = OriginalTile(pos);
 
@@ -122,14 +122,14 @@ namespace Cocos2D
 
             Shuffle(ref m_pTilesOrder, m_nTilesCount);
 
-            m_pTiles = new Tile[m_nTilesCount];
+            m_pTiles = new CCTile[m_nTilesCount];
 
             int f = 0;
             for (i = 0; i < m_sGridSize.X; ++i)
             {
                 for (j = 0; j < m_sGridSize.Y; ++j)
                 {
-                    m_pTiles[f] = new Tile
+                    m_pTiles[f] = new CCTile
                         {
                             Position = new CCPoint(i, j), 
                             StartPosition = new CCPoint(i, j), 
@@ -150,7 +150,7 @@ namespace Cocos2D
             {
                 for (j = 0; j < m_sGridSize.Y; ++j)
                 {
-                    Tile item = m_pTiles[f];
+                    CCTile item = m_pTiles[f];
                     item.Position = new CCPoint((item.Delta.X * time), (item.Delta.Y * time));
                     PlaceTile(new CCGridSize(i, j), item);
 

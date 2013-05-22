@@ -152,7 +152,7 @@
     <Compile Include="Actions\action_tiled_grid\CCSplitRows.cs" />
     <Compile Include="Actions\action_tiled_grid\CCTurnOffTiles.cs" />
     <Compile Include="Actions\action_tiled_grid\CCWavesTiles3D.cs" />
-    <Compile Include="Actions\action_tiled_grid\Tile.cs" />
+    <Compile Include="Actions\action_tiled_grid\CCTile.cs" />
     <Compile Include="Actions\CCActionManager.cs" />
     <Compile Include="base_nodes\CCAtlasNode.cs" />
     <Compile Include="base_nodes\CCNode.cs" />

@@ -167,7 +167,7 @@
     <Compile Include="actions\action_tiled_grid\CCSplitRows.cs" />
     <Compile Include="actions\action_tiled_grid\CCTurnOffTiles.cs" />
     <Compile Include="actions\action_tiled_grid\CCWavesTiles3D.cs" />
-    <Compile Include="actions\action_tiled_grid\Tile.cs" />
+    <Compile Include="actions\action_tiled_grid\CCTile.cs" />
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
