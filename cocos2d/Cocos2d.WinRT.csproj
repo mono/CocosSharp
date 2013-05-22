@@ -726,7 +726,7 @@
     <Compile Include=".\Math\CCEase.cs">
       <LogicalName>Math\Ease</LogicalName>
     </Compile>
-    <Compile Include=".\Math\FastRandom.cs">
+    <Compile Include=".\Math\CCFastRandom.cs">
       <LogicalName>Math\FastRandom</LogicalName>
     </Compile>
     <Compile Include=".\Math\CCMathHelper.cs">

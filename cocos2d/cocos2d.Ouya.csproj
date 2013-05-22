@@ -258,7 +258,7 @@
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipY.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\ICCTransitionEaseScene.cs" />
     <Compile Include="Math\CCEase.cs" />
-    <Compile Include="Math\FastRandom.cs" />
+    <Compile Include="Math\CCFastRandom.cs" />
     <Compile Include="Math\CCMathHelper.cs" />
     <Compile Include="Math\Random.cs" />
     <Compile Include="Math\Spline.cs" />
