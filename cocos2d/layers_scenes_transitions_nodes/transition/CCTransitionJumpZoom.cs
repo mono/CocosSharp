@@ -3,6 +3,7 @@ namespace cocos2d
 {
     public class CCTransitionJumpZoom : CCTransitionScene
     {
+        public CCTransitionJumpZoom() { }
         public CCTransitionJumpZoom (float t, CCScene scene) : base (t, scene)
         { }
 

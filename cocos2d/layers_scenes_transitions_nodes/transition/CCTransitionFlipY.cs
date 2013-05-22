@@ -27,6 +27,7 @@ namespace cocos2d
 {
     public class CCTransitionFlipY : CCTransitionSceneOriented
     {
+        public CCTransitionFlipY() { }
 
         public CCTransitionFlipY(float t, CCScene s, tOrientation o) : base (t, s, o)
         { }

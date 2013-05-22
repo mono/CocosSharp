@@ -27,6 +27,10 @@ namespace cocos2d
     public class CCTransitionMoveInT : CCTransitionMoveInL
     {
 
+        public CCTransitionMoveInT()
+        {
+        }
+
         public CCTransitionMoveInT (float t, CCScene scene) : base (t, scene)
         { }
 

@@ -67,6 +67,7 @@ namespace cocos2d
                 );
         }
 
+        public CCTransitionFadeTR() { }
         public CCTransitionFadeTR(float t, CCScene scene) : base(t, scene)
         {
             InitWithDuration(t, scene);

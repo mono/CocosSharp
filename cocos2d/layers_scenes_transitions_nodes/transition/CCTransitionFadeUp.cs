@@ -35,6 +35,7 @@ namespace cocos2d
         {
             return new CCFadeOutUpTiles(size, m_fDuration);
         }
+        public CCTransitionFadeUp() { }
 
         public CCTransitionFadeUp(float t, CCScene scene) : base(t, scene)
         {

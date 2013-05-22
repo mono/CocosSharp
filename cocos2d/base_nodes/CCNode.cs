@@ -601,6 +601,7 @@ namespace cocos2d
         {
             Debug.Assert(child != null, "Argument must be non-null");
             Debug.Assert(child.m_pParent == null, "child already added. It can't be added again");
+            Debug.Assert(child != this, "Can not add myself to myself.");
 
             if (m_pChildren == null)
             {

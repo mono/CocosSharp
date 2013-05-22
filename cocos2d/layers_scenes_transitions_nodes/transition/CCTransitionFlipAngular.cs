@@ -27,6 +27,8 @@ namespace cocos2d
     public class CCTransitionFlipAngular : CCTransitionSceneOriented
     {
 
+        public CCTransitionFlipAngular() { }
+
         public CCTransitionFlipAngular(float t, CCScene s, tOrientation o) : base(t, s, o)
         { }
         

@@ -32,6 +32,7 @@ namespace cocos2d
             return new CCFadeOutDownTiles(size, m_fDuration);
         }
 
+        public CCTransitionFadeDown() { }
         public CCTransitionFadeDown(float t, CCScene scene) : base(t, scene)
         {
             InitWithDuration(t, scene);

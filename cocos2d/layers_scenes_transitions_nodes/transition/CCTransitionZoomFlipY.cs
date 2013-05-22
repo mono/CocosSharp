@@ -26,7 +26,8 @@ namespace cocos2d
 {
     public class CCTransitionZoomFlipY : CCTransitionSceneOriented
     {
-        
+        public CCTransitionZoomFlipY() { }
+
         public CCTransitionZoomFlipY (float t, CCScene s, tOrientation o) : base (t, s, o)
         { }
 

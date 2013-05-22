@@ -36,6 +36,7 @@ namespace cocos2d
             return new CCFadeOutBLTiles(size, m_fDuration);
         }
 
+        public CCTransitionFadeBL() { }
         public CCTransitionFadeBL(float t, CCScene scene) : base(t, scene)
         {
             InitWithDuration(t, scene);

@@ -26,6 +26,7 @@ namespace cocos2d
 {
     public class CCTransitionZoomFlipX : CCTransitionSceneOriented
     {
+        public CCTransitionZoomFlipX() { }
 
         public CCTransitionZoomFlipX (float t, CCScene s, tOrientation o) : base(t, s, o)
         { }

@@ -35,6 +35,8 @@ namespace cocos2d
         {
             return new CCSplitRows(3, m_fDuration / 2.0f);
         }
+        
+        public CCTransitionSplitRows() { }
 
         public CCTransitionSplitRows(float t, CCScene scene) : base(t, scene)
         {

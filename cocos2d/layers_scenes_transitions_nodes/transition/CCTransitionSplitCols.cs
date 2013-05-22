@@ -64,6 +64,8 @@ namespace cocos2d
                 new CCStopGrid()));
         }
 
+        public CCTransitionSplitCols() { }
+
         public CCTransitionSplitCols(float t, CCScene scene) : base(t, scene)
         {
             InitWithDuration(t, scene);

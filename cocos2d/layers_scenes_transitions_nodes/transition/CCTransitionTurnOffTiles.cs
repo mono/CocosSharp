@@ -31,6 +31,7 @@ namespace cocos2d
     /// </summary>
     public class CCTransitionTurnOffTiles : CCTransitionScene, ICCTransitionEaseScene
     {
+        public CCTransitionTurnOffTiles() { }
 
         public CCTransitionTurnOffTiles (float t, CCScene scene) : base (t, scene)
         { }

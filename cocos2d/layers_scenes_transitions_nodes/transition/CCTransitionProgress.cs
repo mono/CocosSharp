@@ -7,6 +7,8 @@ namespace cocos2d
         protected float m_fTo;
         protected CCScene m_pSceneToBeModified;
 
+        public CCTransitionProgress() { }
+
         public CCTransitionProgress (float t, CCScene scene) : base (t, scene)
         { }
 

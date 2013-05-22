@@ -26,6 +26,8 @@ namespace cocos2d
 {
     public class CCTransitionRotoZoom : CCTransitionScene
     {
+        public CCTransitionRotoZoom() { }
+
         public CCTransitionRotoZoom (float t, CCScene scene) : base (t, scene)
         { }
 

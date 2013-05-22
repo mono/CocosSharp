@@ -44,6 +44,8 @@ namespace cocos2d
     {
         protected tOrientation m_eOrientation;
 
+        public CCTransitionSceneOriented() { }
+
         /// <summary>
         /// creates a base transition with duration and incoming scene
         /// </summary>

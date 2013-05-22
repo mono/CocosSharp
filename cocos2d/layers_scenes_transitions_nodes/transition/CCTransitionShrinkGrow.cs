@@ -29,6 +29,8 @@ namespace cocos2d
     public class CCTransitionShrinkGrow : CCTransitionScene, ICCTransitionEaseScene
     {
 
+        public CCTransitionShrinkGrow() { }
+
         public CCTransitionShrinkGrow (float t, CCScene scene) : base (t, scene)
         { }
 
