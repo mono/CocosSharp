@@ -461,7 +461,7 @@ namespace cocos2d
                     pos = TransformPoint(_lastMouseState.X, _lastMouseState.Y);
                     pos = DrawManager.ScreenToWorld(pos.x, pos.y);
 #else
-                    pos = DrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
+                    pos = CCDrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
 #endif
                     _lastMouseId++;
                     m_pTouches.AddLast(new CCTouch(_lastMouseId, pos.X, pos.Y));
@@ -480,7 +480,7 @@ namespace cocos2d
                             pos = TransformPoint(_lastMouseState.X, _lastMouseState.Y);
                             pos = DrawManager.ScreenToWorld(pos.x, pos.y);
 #else
-                            pos = DrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
+                            pos = CCDrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
 #endif
                             movedTouches.Add(m_pTouchMap[_lastMouseId].Value);
                             m_pTouchMap[_lastMouseId].Value.SetTouchInfo(_lastMouseId, pos.X, pos.Y);
