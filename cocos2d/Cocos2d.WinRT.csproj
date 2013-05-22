@@ -1092,7 +1092,7 @@
     <Compile Include=".\text_input_node\CCIMEKeyboardNotificationInfo.cs">
       <LogicalName>text_input_node\CCIMEKeyboardNotificationInfo</LogicalName>
     </Compile>
-    <Compile Include=".\text_input_node\CCTextFieldTTF .cs">
+    <Compile Include=".\text_input_node\CCTextFieldTTF.cs">
       <LogicalName>text_input_node\CCTextFieldTTF </LogicalName>
     </Compile>
     <Compile Include=".\text_input_node\ICCIMEDelegate.cs">
