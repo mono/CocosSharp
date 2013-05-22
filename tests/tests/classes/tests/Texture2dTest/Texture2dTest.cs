@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
-using cocos2d;
+using Cocos2D;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

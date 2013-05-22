@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using cocos2d.Compression.Zlib;
+using Cocos2D.Compression.Zlib;
 #if WINDOWS_PHONE
 using WP7Contrib.Communications.Compression;
 #elif !XBOX

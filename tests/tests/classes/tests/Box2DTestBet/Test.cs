@@ -32,7 +32,7 @@ using FarseerPhysics.Dynamics.Contacts;
 using FarseerPhysics.Dynamics.Joints;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using cocos2d;
+using Cocos2D;
 using Random = System.Random;
 
 namespace FarseerPhysics.TestBed.Framework

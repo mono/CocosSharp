@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using FarseerPhysics.Collision;
 using Microsoft.Xna.Framework;
-using cocos2d;
+using Cocos2D;
 
 namespace FarseerPhysics.Common
 {

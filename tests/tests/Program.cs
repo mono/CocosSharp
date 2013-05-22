@@ -20,7 +20,7 @@ using MonoMac;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 #endif
-using cocos2d;
+using Cocos2D;
 using Microsoft.Xna.Framework.Content;
 
 namespace tests

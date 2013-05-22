@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Content;
-using cocos2d.Framework;
+using Cocos2D.Framework;
 
 namespace Cocos2D
 {

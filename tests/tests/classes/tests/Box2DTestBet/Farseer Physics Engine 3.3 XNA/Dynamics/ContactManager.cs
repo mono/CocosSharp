@@ -26,7 +26,7 @@
 using System.Collections.Generic;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Dynamics.Contacts;
-using cocos2d;
+using Cocos2D;
 
 namespace FarseerPhysics.Dynamics
 {

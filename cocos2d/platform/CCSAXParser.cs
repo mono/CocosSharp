@@ -25,7 +25,7 @@ THE SOFTWARE.
 using System.IO;
 using System.Text;
 using System.Xml;
-using cocos2d.Framework;
+using Cocos2D.Framework;
 
 //using System.Xml.Linq;
 
