@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace cocos2d
 {
-    public class CCCArray
+    public class CCArray
     {
         public int num, max;
         public int[] arr; //equals object** arr;
@@ -14,25 +14,22 @@ namespace cocos2d
         /// <summary>
         /// Allocates and initializes a new C array with specified capacity
         /// </summary>
-        public static CCCArray CCCArrayNew(int capacity)
+        public CCArray (int capacity)
         {
             if (capacity == 0)
             {
                 capacity = 1;
             }
 
-            CCCArray arr = new CCCArray();
-            arr.num = 0;
-            arr.arr = new int[capacity];
-            arr.max = capacity;
-
-            return arr;
+            num = 0;
+            arr = new int[capacity];
+            max = capacity;
         }
 
         /// <summary>
         /// Inserts a value at a certain position. The valid index is [0, num] 
         /// </summary>
-        public static void CCCArrayInsertValueAtIndex(CCCArray arr, int value, int index)
+        public static void InsertValueAtIndex(CCArray arr, int value, int index)
         {
             Debug.Assert(index < arr.max, "ccCArrayInsertValueAtIndex: invalid index");
             int remaining = arr.num - index;
@@ -40,7 +37,7 @@ namespace cocos2d
             // make sure it has enough capacity
             if (arr.num + 1 == arr.max)
             {
-                CCCArrayDoubleCapacity(arr);
+                DoubleCapacity(arr);
             }
 
             //int[] temp = new int[arr.arr.Length];
@@ -67,7 +64,7 @@ namespace cocos2d
         /// <summary>
         /// Doubles C array capacity
         /// </summary>
-        public static void CCCArrayDoubleCapacity(CCCArray arr)
+        public static void DoubleCapacity(CCArray arr)
         {
             arr.max *= 2;
             int[] newArr = new int[arr.max];
@@ -82,7 +79,7 @@ namespace cocos2d
         /// Removes value at specified index and pushes back all subsequent values.
         /// Behaviour undefined if index outside [0, num-1].
         /// </summary>
-        public static void CCCArrayRemoveValueAtIndex(CCCArray arr, int index)
+        public static void RemoveValueAtIndex(CCArray arr, int index)
         {
             for (int last = --arr.num; index < last; index++)
             {

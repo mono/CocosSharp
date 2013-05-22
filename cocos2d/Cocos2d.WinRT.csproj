@@ -1062,7 +1062,7 @@
     <Compile Include=".\support\Converters\CCSizeConverter.cs">
       <LogicalName>support\Converters\CCSizeConverter</LogicalName>
     </Compile>
-    <Compile Include=".\support\data_support\ccCArray.cs">
+    <Compile Include=".\support\data_support\CCArray.cs">
       <LogicalName>support\data_support\ccCArray</LogicalName>
     </Compile>
     <Compile Include=".\support\image_support\TGAlib.cs">
