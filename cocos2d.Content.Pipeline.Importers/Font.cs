@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.Xna.Framework.Content.Pipeline;
 
-namespace cocos2d.Content.Pipeline.Importers
+namespace Cocos2D.Content.Pipeline.Importers
 {
     [ContentImporter(".fnt", DisplayName = "Cocos2D - Font", DefaultProcessor = "CocosFontProcessor")]
     public class CocosFontImporter : ContentImporter<String>

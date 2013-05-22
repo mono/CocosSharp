@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
 
-namespace cocos2d.Content.Pipeline.Importers
+namespace Cocos2D.Content.Pipeline.Importers
 {
     [ContentImporter(".plist", DisplayName = "Cocos2D - Plist", DefaultProcessor = "CocosPListProcessor")]
     public class CocosPListImporter : ContentImporter<String>
