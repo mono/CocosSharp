@@ -270,7 +270,7 @@
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeTR.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionCrossFade.cs" />
-    <Compile Include="Math\Ease.cs" />
+    <Compile Include="Math\CCEase.cs" />
     <Compile Include="Math\FastRandom.cs" />
     <Compile Include="Math\CCMathHelper.cs" />
     <Compile Include="Math\Random.cs" />
