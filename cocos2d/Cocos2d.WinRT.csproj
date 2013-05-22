@@ -906,7 +906,7 @@
     <Compile Include=".\platform\PList\PlistString.cs">
       <LogicalName>platform\PList\PlistString</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PrimitiveBatch.cs">
+    <Compile Include=".\platform\CCPrimitiveBatch.cs">
       <LogicalName>platform\PrimitiveBatch</LogicalName>
     </Compile>
     <Compile Include=".\platform\RawList.cs">

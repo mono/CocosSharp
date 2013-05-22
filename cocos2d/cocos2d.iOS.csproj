@@ -336,7 +336,6 @@
     <Compile Include="Platform\PList\PlistObjectBase.cs" />
     <Compile Include="Platform\PList\PlistReal.cs" />
     <Compile Include="Platform\PList\PlistString.cs" />
-    <Compile Include="Platform\PrimitiveBatch.cs" />
     <Compile Include="Platform\RawList.cs" />
     <Compile Include="Platform\ReusedObject.cs" />
     <Compile Include="Platform\Zlib\Adler32.cs" />
@@ -443,6 +442,7 @@
     <Compile Include="Math\CCFastRandom.cs" />
     <Compile Include="Math\CCRandom.cs" />
     <Compile Include="Math\CCSpline.cs" />
+    <Compile Include="Platform\CCPrimitiveBatch.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />

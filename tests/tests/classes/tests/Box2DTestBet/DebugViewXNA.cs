@@ -24,9 +24,9 @@ namespace FarseerPhysics.DebugViews
     public class DebugViewXNA : DebugView, IDisposable
     {
         //Drawing
-        private PrimitiveBatch _customPrimitiveBatch;
-        private PrimitiveBatch _basicPrimitiveBatch;
-        private PrimitiveBatch _primitiveBatch;
+        private CCPrimitiveBatch _customPrimitiveBatch;
+        private CCPrimitiveBatch _basicPrimitiveBatch;
+        private CCPrimitiveBatch _primitiveBatch;
         private SpriteBatch _batch;
         private SpriteFont _font;
         private GraphicsDevice _device;
@@ -832,8 +832,8 @@ namespace FarseerPhysics.DebugViews
             // Create a new SpriteBatch, which can be used to draw textures.
             _device = device;
             _batch = new SpriteBatch(_device);
-            _customPrimitiveBatch = new PrimitiveBatch(_device, 5000);
-            _basicPrimitiveBatch = new PrimitiveBatch(_device, 5000);
+            _customPrimitiveBatch = new CCPrimitiveBatch(_device, 5000);
+            _basicPrimitiveBatch = new CCPrimitiveBatch(_device, 5000);
             _font = content.Load<SpriteFont>("fonts/debugfont");
             _stringData = new List<StringData>();
 

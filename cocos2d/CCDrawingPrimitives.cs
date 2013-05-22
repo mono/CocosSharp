@@ -9,13 +9,13 @@ namespace Cocos2D
 {
     public partial class CCDrawingPrimitives
     {
-        private static PrimitiveBatch m_Batch;
+        private static CCPrimitiveBatch m_Batch;
         private static float m_PointSize = 3f;
         private static CCColor4B m_Color;
 
         public static void Init(GraphicsDevice graphics)
         {
-            m_Batch = new PrimitiveBatch(graphics);
+            m_Batch = new CCPrimitiveBatch(graphics);
         }
 
         public static void Begin()
