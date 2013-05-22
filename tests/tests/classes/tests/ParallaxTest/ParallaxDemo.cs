@@ -1,5 +1,5 @@
 using System;
-using cocos2d;
+using Cocos2D;
 using Microsoft.Xna.Framework;
 
 namespace tests

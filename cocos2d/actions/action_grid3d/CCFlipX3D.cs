@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCFlipX3D : CCGrid3DAction
     {

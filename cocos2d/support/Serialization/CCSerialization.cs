@@ -25,7 +25,7 @@ using System.Diagnostics;
 using System.IO;
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
 	public static class CCSerialization
 	{

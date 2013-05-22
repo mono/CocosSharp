@@ -1,6 +1,6 @@
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
 	/**
 	 * Abstract class for SWTableView cell node

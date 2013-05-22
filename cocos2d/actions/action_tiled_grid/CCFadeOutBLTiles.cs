@@ -25,7 +25,7 @@ THE SOFTWARE.
 
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCFadeOutBLTiles : CCFadeOutTRTiles
     {

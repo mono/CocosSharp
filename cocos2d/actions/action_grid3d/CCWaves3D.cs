@@ -1,6 +1,6 @@
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCWaves3D : CCGrid3DAction
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCLens3D : CCGrid3DAction
     {

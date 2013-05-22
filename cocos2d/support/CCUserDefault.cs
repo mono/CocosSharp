@@ -24,7 +24,7 @@ THE SOFTWARE.
 // root name of xml
 
 using System;
-using cocos2d;
+using Cocos2D;
 using System.IO;
 #if !WINDOWS && !MACOS && !LINUX && !NETFX_CORE
 using System.IO.IsolatedStorage;

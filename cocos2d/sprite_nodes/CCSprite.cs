@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCSprite : CCNode, ICCTextureProtocol, ICCRGBAProtocol
     {

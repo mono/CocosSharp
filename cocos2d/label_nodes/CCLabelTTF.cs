@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCLabelTTF : CCSprite, ICCLabelProtocol
     {

@@ -31,7 +31,7 @@ using System.IO;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Content;
 
-namespace cocos2d
+namespace Cocos2D
 {
 #if IOS
     [MonoTouch.Foundation.Preserve (AllMembers = true)]

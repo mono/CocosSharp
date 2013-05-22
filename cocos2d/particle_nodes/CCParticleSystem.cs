@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
 
-namespace cocos2d
+namespace Cocos2D
 {
     // ideas taken from:
     //     . The ocean spray in your face [Jeff Lander]

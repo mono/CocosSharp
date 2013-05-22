@@ -27,7 +27,7 @@
 using System;
 using System.Collections;
 
-namespace cocos2d
+namespace Cocos2D
 {
 	public abstract class PlistObjectBase
 	{

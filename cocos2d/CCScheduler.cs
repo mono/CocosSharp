@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
-using cocos2d;
+using Cocos2D;
 
-namespace cocos2d
+namespace Cocos2D
 {
     //
     // CCTimer

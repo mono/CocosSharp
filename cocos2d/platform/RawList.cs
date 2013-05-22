@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace cocos2d
+namespace Cocos2D
 {
     ///<summary>
     /// No-frills list that wraps an accessible array.

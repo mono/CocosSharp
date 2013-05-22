@@ -43,7 +43,7 @@ using TextureMinFilter = OpenTK.Graphics.ES20.All;
 #endif
 #endif
 
-namespace cocos2d
+namespace Cocos2D
 {
     /// <summary>
     /// Possible texture pixel formats

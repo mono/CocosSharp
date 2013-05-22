@@ -29,7 +29,7 @@ using FarseerPhysics.Common.PolygonManipulation;
 using FarseerPhysics.TestBed.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using cocos2d;
+using Cocos2D;
 
 namespace FarseerPhysics.TestBed.Tests
 {

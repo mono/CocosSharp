@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-namespace cocos2d
+namespace Cocos2D
 {
 
     public class CCGrid3DAction : CCGridAction

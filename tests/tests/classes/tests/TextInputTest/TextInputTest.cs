@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using cocos2d;
+using Cocos2D;
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     //@brief	TextInputTest for retain prev, reset, next, main menu buttons.
     public class TextInputTest : CCLayer

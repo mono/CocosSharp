@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using FarseerPhysics.TestBed.Tests;
 using Microsoft.Xna.Framework;
-using cocos2d;
+using Cocos2D;
 using tests.classes.tests.Box2DTestBet;
 
 

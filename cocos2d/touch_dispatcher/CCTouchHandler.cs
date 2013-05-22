@@ -1,5 +1,5 @@
 
-namespace cocos2d
+namespace Cocos2D
 {
     /// <summary>
     ///  Object than contains the delegate and priority of the event handler.

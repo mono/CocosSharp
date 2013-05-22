@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public delegate void CCGamePadConnectionDelegate(PlayerIndex player, bool IsConnected);
 }

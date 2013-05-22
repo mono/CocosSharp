@@ -23,7 +23,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using cocos2d;
+using Cocos2D;
 using Microsoft.Xna.Framework;
 
 namespace Jumpy

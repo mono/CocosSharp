@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using cocos2d;
+using Cocos2D;
 
 namespace tests
 {
