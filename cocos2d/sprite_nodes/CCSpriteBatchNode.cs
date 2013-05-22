@@ -121,7 +121,7 @@ namespace cocos2d
             }
 
             //kmGLPushMatrix();
-            DrawManager.PushMatrix();
+            CCDrawManager.PushMatrix();
 
             if (m_pGrid != null && m_pGrid.Active)
             {
@@ -140,7 +140,7 @@ namespace cocos2d
             }
 
             //kmGLPopMatrix();
-            DrawManager.PopMatrix();
+            CCDrawManager.PopMatrix();
 
             m_nOrderOfArrival = 0;
         }
@@ -375,7 +375,7 @@ namespace cocos2d
                 }
             }
 
-            DrawManager.BlendFunc(m_blendFunc);
+            CCDrawManager.BlendFunc(m_blendFunc);
 
             m_pobTextureAtlas.DrawQuads();
         }

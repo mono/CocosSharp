@@ -116,7 +116,7 @@ namespace tests
 
                 stream.Position = 0;
 
-                Texture2D xnatex = Texture2D.FromStream(DrawManager.graphicsDevice, stream);
+                Texture2D xnatex = Texture2D.FromStream(CCDrawManager.graphicsDevice, stream);
                 var tex = new CCTexture2D();
                 tex.InitWithTexture(xnatex);
                 CCSprite sprite = new CCSprite(tex);

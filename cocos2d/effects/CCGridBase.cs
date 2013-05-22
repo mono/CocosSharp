@@ -163,12 +163,12 @@ namespace cocos2d
             {
                 CCPoint offset = target.AnchorPointInPoints;
 
-                DrawManager.Translate(offset.X, offset.Y, 0);
+                CCDrawManager.Translate(offset.X, offset.Y, 0);
                 target.Camera.Locate();
-                DrawManager.Translate(-offset.X, -offset.Y, 0);
+                CCDrawManager.Translate(-offset.X, -offset.Y, 0);
             }
 
-            DrawManager.BindTexture(m_pTexture);
+            CCDrawManager.BindTexture(m_pTexture);
 
             //Blit();
 
@@ -187,7 +187,7 @@ namespace cocos2d
         {
             CCSize size = m_pTexture.ContentSizeInPixels;
 
-            DrawManager.SetViewPort(0, 0,
+            CCDrawManager.SetViewPort(0, 0,
                                     (int) (size.Width * CCMacros.CCContentScaleFactor()),
                                     (int) (size.Height * CCMacros.CCContentScaleFactor())
                 );
@@ -204,12 +204,12 @@ namespace cocos2d
             DrawManager.MultMatrix(ref orthoMatrix);
             */
             
-            DrawManager.ViewMatrix = Matrix.Identity;
-            DrawManager.ProjectionMatrix = Matrix.Identity;
+            CCDrawManager.ViewMatrix = Matrix.Identity;
+            CCDrawManager.ProjectionMatrix = Matrix.Identity;
             
             Matrix projection = Matrix.CreateOrthographicOffCenter(0, size.Width, 0, size.Height, -1024.0f, 1024.0f);
             Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
-            DrawManager.WorldMatrix = (halfPixelOffset * projection);
+            CCDrawManager.WorldMatrix = (halfPixelOffset * projection);
             
 
             /*

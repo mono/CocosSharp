@@ -9,19 +9,19 @@ namespace cocos2d
 
         public void Grab(CCTexture2D pTexture)
         {
-            DrawManager.CreateRenderTarget(pTexture, RenderTargetUsage.DiscardContents);
+            CCDrawManager.CreateRenderTarget(pTexture, RenderTargetUsage.DiscardContents);
         }
 
         public void BeforeRender(CCTexture2D pTexture)
         {
-            m_pOldRenderTarget = DrawManager.GetRenderTarget();
-            DrawManager.SetRenderTarget(pTexture);
-            DrawManager.Clear(Color.Transparent);
+            m_pOldRenderTarget = CCDrawManager.GetRenderTarget();
+            CCDrawManager.SetRenderTarget(pTexture);
+            CCDrawManager.Clear(Color.Transparent);
         }
 
         public void AfterRender(CCTexture2D pTexture)
         {
-            DrawManager.SetRenderTarget(m_pOldRenderTarget);
+            CCDrawManager.SetRenderTarget(m_pOldRenderTarget);
         }
     }
 }

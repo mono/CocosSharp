@@ -54,7 +54,7 @@ namespace cocos2d
             if (m_graphicsService.GraphicsDevice != null)
             {
                 Game.Services.AddService(typeof(IGraphicsDeviceService), m_graphicsService);
-                DrawManager.Init(m_graphicsService.GraphicsDevice);
+                CCDrawManager.Init(m_graphicsService.GraphicsDevice);
             }
             else
             {
@@ -154,7 +154,7 @@ namespace cocos2d
 
         protected virtual void ServiceDeviceCreated(object sender, EventArgs e)
         {
-            DrawManager.Init(m_graphicsService.GraphicsDevice);
+            CCDrawManager.Init(m_graphicsService.GraphicsDevice);
         }
 
         protected virtual void GraphicsPreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
@@ -261,13 +261,13 @@ namespace cocos2d
             // Begin measuring our Draw method
             //DebugSystem.Instance.TimeRuler.BeginMark("Draw", Color.Red);
 
-            DrawManager.BeginDraw();
+            CCDrawManager.BeginDraw();
 
             CCDirector.SharedDirector.MainLoop(gameTime);
 
             base.Draw(gameTime);
 
-            DrawManager.EndDraw();
+            CCDrawManager.EndDraw();
 
             // End measuring our Draw method
             //DebugSystem.Instance.TimeRuler.EndMark("Draw");
@@ -446,7 +446,7 @@ namespace cocos2d
                 movedTouches.Clear();
                 endedTouches.Clear();
 
-                CCRect viewPort = DrawManager.ViewPortRect;
+                CCRect viewPort = CCDrawManager.ViewPortRect;
                 CCPoint pos;
 
                 // TODO: allow configuration to treat the game pad as a touch device.
@@ -518,7 +518,7 @@ namespace cocos2d
 
                             if (viewPort.ContainsPoint(touch.Position.X, touch.Position.Y))
                             {
-                                pos = DrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
+                                pos = CCDrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
 
                                 m_pTouches.AddLast(new CCTouch(touch.Id, pos.X, pos.Y));
                                 m_pTouchMap.Add(touch.Id, m_pTouches.Last);
@@ -530,7 +530,7 @@ namespace cocos2d
                             LinkedListNode<CCTouch> existingTouch;
                             if (m_pTouchMap.TryGetValue(touch.Id, out existingTouch))
                             {
-                                pos = DrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
+                                pos = CCDrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
                                 var delta = existingTouch.Value.LocationInView - pos;
                                 if (delta.LengthSQ > 1.0f)
                                 {

@@ -178,7 +178,7 @@
     <Compile Include="platform\CCFocusManager.cs" />
     <Compile Include="platform\CCIFocusable.cs" />
     <Compile Include="platform\CCSpriteFontCache.cs" />
-    <Compile Include="platform\DrawManager.cs" />
+    <Compile Include="platform\CCDrawManager.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
     <Compile Include="effects\CCTiledGrid3D.cs" />
     <Compile Include="effects\CCGrabber.cs" />

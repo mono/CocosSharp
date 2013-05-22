@@ -1271,17 +1271,17 @@ namespace tests
             base.Draw();
 
             // move to 50,50 since the "by" path will start at 50,50
-            DrawManager.PushMatrix();
-            DrawManager.Translate(50, 50, 0);
+            CCDrawManager.PushMatrix();
+            CCDrawManager.Translate(50, 50, 0);
             CCDrawingPrimitives.DrawCardinalSpline(m_pArray, 0, 100);
-            DrawManager.PopMatrix();
+            CCDrawManager.PopMatrix();
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            DrawManager.PushMatrix();
-            DrawManager.Translate(s.Width / 2, 50, 0);
+            CCDrawManager.PushMatrix();
+            CCDrawManager.Translate(s.Width / 2, 50, 0);
             CCDrawingPrimitives.DrawCardinalSpline(m_pArray, 1, 100);
-            DrawManager.PopMatrix();
+            CCDrawManager.PopMatrix();
         }
 
         public override string title()
@@ -1362,10 +1362,10 @@ namespace tests
             base.Draw();
 
             // move to 50,50 since the "by" path will start at 50,50
-            DrawManager.PushMatrix();
-            DrawManager.Translate(50, 50, 0);
+            CCDrawManager.PushMatrix();
+            CCDrawManager.Translate(50, 50, 0);
             CCDrawingPrimitives.DrawCatmullRom(m_pArray, 50);
-            DrawManager.PopMatrix();
+            CCDrawManager.PopMatrix();
 
             CCDrawingPrimitives.DrawCatmullRom(m_pArray2, 50);
         }

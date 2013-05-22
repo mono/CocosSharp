@@ -812,9 +812,9 @@ namespace cocos2d
         {
             Debug.Assert(m_pobBatchNode == null);
 
-            DrawManager.BlendFunc(m_sBlendFunc);
-            DrawManager.BindTexture(Texture);
-            DrawManager.DrawQuad(ref m_sQuad);
+            CCDrawManager.BlendFunc(m_sBlendFunc);
+            CCDrawManager.BindTexture(Texture);
+            CCDrawManager.DrawQuad(ref m_sQuad);
 
             /*
             var sb = DrawManager.spriteBatch;

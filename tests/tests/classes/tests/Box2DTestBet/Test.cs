@@ -129,7 +129,7 @@ namespace FarseerPhysics.TestBed.Framework
         {
             Settings.EnableDiagnostics = true;
             DebugView = new DebugViewXNA(World);
-            DebugView.LoadContent(DrawManager.graphicsDevice, CCApplication.SharedApplication.Content);
+            DebugView.LoadContent(CCDrawManager.graphicsDevice, CCApplication.SharedApplication.Content);
         }
 
         protected virtual void JointRemoved(Joint joint)
@@ -185,7 +185,7 @@ namespace FarseerPhysics.TestBed.Framework
 
         public virtual void Mouse(MouseState state, MouseState oldState)
         {
-            var p = DrawManager.ScreenToWorld(state.X, state.Y);
+            var p = CCDrawManager.ScreenToWorld(state.X, state.Y);
             Vector2 position = new Vector2(p.X, p.Y);
 
             if (state.LeftButton == ButtonState.Released && oldState.LeftButton == ButtonState.Pressed)

@@ -213,7 +213,7 @@ namespace cocos2d
         {
             if (m_pVertexBuffer == null)
             {
-                m_pVertexBuffer = new VertexBuffer(DrawManager.graphicsDevice, typeof(VertexPositionColor), 4, BufferUsage.WriteOnly);
+                m_pVertexBuffer = new VertexBuffer(CCDrawManager.graphicsDevice, typeof(VertexPositionColor), 4, BufferUsage.WriteOnly);
             }
 
             if (m_bChanged)
@@ -222,9 +222,9 @@ namespace cocos2d
                 m_bChanged = false;
             }
 
-            DrawManager.BindTexture((CCTexture2D)null);
-            DrawManager.BlendFunc(m_tBlendFunc);
-            DrawManager.DrawQuadsBuffer(m_pVertexBuffer, 0, 1);
+            CCDrawManager.BindTexture((CCTexture2D)null);
+            CCDrawManager.BlendFunc(m_tBlendFunc);
+            CCDrawManager.DrawQuadsBuffer(m_pVertexBuffer, 0, 1);
         }
 
         protected virtual void UpdateColor()

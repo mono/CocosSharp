@@ -318,9 +318,9 @@ namespace cocos2d
 
             //updateQuadsWithParticles();
 
-            DrawManager.BindTexture(m_pTexture);
-            DrawManager.BlendFunc(m_tBlendFunc);
-            DrawManager.DrawQuads(m_pQuads, 0, m_uParticleCount);
+            CCDrawManager.BindTexture(m_pTexture);
+            CCDrawManager.BlendFunc(m_tBlendFunc);
+            CCDrawManager.DrawQuads(m_pQuads, 0, m_uParticleCount);
 
             /*
             CC_NODE_DRAW_SETUP();

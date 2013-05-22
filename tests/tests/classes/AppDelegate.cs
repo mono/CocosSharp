@@ -13,7 +13,7 @@ namespace tests
             : base(game, graphics)
         {
             s_pSharedApplication = this;
-            DrawManager.InitializeDisplay(game, graphics, DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
+            CCDrawManager.InitializeDisplay(game, graphics, DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
 
 
             graphics.PreferMultiSampling = false;
@@ -45,7 +45,7 @@ namespace tests
 #if WINDOWS
             DrawManager.SetDesignResolutionSize(1024, 768, ResolutionPolicy.ExactFit);
 #else
-            DrawManager.SetDesignResolutionSize(800, 480, ResolutionPolicy.ShowAll);
+            CCDrawManager.SetDesignResolutionSize(800, 480, ResolutionPolicy.ShowAll);
             //DrawManager.SetDesignResolutionSize(480, 320, ResolutionPolicy.ShowAll);
 #endif
             // turn on display FPS

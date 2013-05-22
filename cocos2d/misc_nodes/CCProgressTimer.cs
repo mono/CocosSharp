@@ -178,8 +178,8 @@ namespace cocos2d
             if (m_pVertexData == null || m_pSprite == null)
                 return;
 
-            DrawManager.BindTexture(Sprite.Texture);
-            DrawManager.BlendFunc(m_pSprite.BlendFunc);
+            CCDrawManager.BindTexture(Sprite.Texture);
+            CCDrawManager.BlendFunc(m_pSprite.BlendFunc);
 
             var count = (m_nVertexDataCount - 2);
 
@@ -199,7 +199,7 @@ namespace cocos2d
                     s_pIndexes[i3 + 2] = (short)(i + 2);
                 }
 
-                DrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount, s_pIndexes, 0, count);
+                CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount, s_pIndexes, 0, count);
             }
             else if (m_eType == CCProgressTimerType.Bar)
             {
@@ -214,11 +214,11 @@ namespace cocos2d
 
                 if (!m_bReverseDirection)
                 {
-                    DrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount, s_pIndexes, 0, count);
+                    CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount, s_pIndexes, 0, count);
                 }
                 else
                 {
-                    DrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount, s_pIndexes, 0, count);
+                    CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount, s_pIndexes, 0, count);
                 }
             }
 

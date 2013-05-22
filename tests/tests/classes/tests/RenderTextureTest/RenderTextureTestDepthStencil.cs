@@ -23,9 +23,9 @@ namespace tests
 
             rend.BeginWithClear(0, 0, 0, 0, 0);
 
-            var save = DrawManager.DepthStencilState;
+            var save = CCDrawManager.DepthStencilState;
 
-            DrawManager.DepthStencilState = new DepthStencilState()
+            CCDrawManager.DepthStencilState = new DepthStencilState()
                 {
                     ReferenceStencil = 1,
 
@@ -41,7 +41,7 @@ namespace tests
 
             sprite.Visit();
 
-            DrawManager.DepthStencilState = new DepthStencilState()
+            CCDrawManager.DepthStencilState = new DepthStencilState()
             {
                 DepthBufferEnable = false,
                 StencilEnable = true,
@@ -51,14 +51,14 @@ namespace tests
             };
             // GL_SRC_ALPHA
 
-            DrawManager.BlendFunc(new CCBlendFunc(OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA));
+            CCDrawManager.BlendFunc(new CCBlendFunc(OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA));
 
             //! move sprite half width and height, and draw only where not marked
             sprite.Position = sprite.Position + new CCPoint(sprite.ContentSize.Width * sprite.Scale, sprite.ContentSize.Height * sprite.Scale) * 0.5f;
 
             sprite.Visit();
 
-            DrawManager.DepthStencilState = save;
+            CCDrawManager.DepthStencilState = save;
 
             rend.End();
 

@@ -158,7 +158,7 @@ namespace tests
                     s_currentOrientation = DisplayOrientation.LandscapeLeft;
                     break;
             }
-            DrawManager.SetOrientation(s_currentOrientation);
+            CCDrawManager.SetOrientation(s_currentOrientation);
         }
 
         public void RotateDevice(object pSender)
@@ -218,7 +218,7 @@ namespace tests
 
         public override void MainMenuCallback(object pSender)
         {
-            DrawManager.graphicsDevice.PresentationParameters.DisplayOrientation = DisplayOrientation.LandscapeLeft;
+            CCDrawManager.graphicsDevice.PresentationParameters.DisplayOrientation = DisplayOrientation.LandscapeLeft;
             base.MainMenuCallback(pSender);
         }
 

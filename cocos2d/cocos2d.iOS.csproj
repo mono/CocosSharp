@@ -324,7 +324,6 @@
     <Compile Include="Platform\CCLog.cs" />
     <Compile Include="Platform\CCSpriteFontCache.cs" />
     <Compile Include="Platform\CCSAXParser.cs" />
-    <Compile Include="Platform\DrawManager.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
     <Compile Include="Platform\InputState.cs" />
     <Compile Include="Platform\OGLES.cs">
@@ -443,6 +442,7 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
+    <Compile Include="Platform\CCDrawManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />

@@ -51,7 +51,7 @@ namespace FarseerPhysics.TestBed.Tests
 
         public override void Mouse(MouseState state, MouseState oldState)
         {
-            var pos = DrawManager.ScreenToWorld(state.X, state.Y);
+            var pos = CCDrawManager.ScreenToWorld(state.X, state.Y);
             _mousePos = new Vector2(pos.X, pos.Y);
 
             if (state.LeftButton == ButtonState.Pressed)

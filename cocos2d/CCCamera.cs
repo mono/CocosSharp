@@ -114,7 +114,7 @@ namespace cocos2d
                 m_bDirty = false;
             }
 
-            DrawManager.MultMatrix(ref m_lookupMatrix);
+            CCDrawManager.MultMatrix(ref m_lookupMatrix);
         }
 
         /// <summary>

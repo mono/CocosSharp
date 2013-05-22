@@ -105,7 +105,7 @@ namespace cocos2d
             }
 
             //kmGLPushMatrix();
-            DrawManager.PushMatrix();
+            CCDrawManager.PushMatrix();
 
             if (m_pGrid != null && m_pGrid.Active)
             {
@@ -123,7 +123,7 @@ namespace cocos2d
             }
 
             //kmGLPopMatrix();
-            DrawManager.PopMatrix();
+            CCDrawManager.PopMatrix();
         }
 
         // override addChild:
@@ -381,7 +381,7 @@ namespace cocos2d
             //CC_NODE_DRAW_SETUP();
 
             //ccGLBlendFunc( m_tBlendFunc.src, m_tBlendFunc.dst );
-            DrawManager.BlendFunc(m_tBlendFunc);
+            CCDrawManager.BlendFunc(m_tBlendFunc);
 
             TextureAtlas.DrawQuads();
 

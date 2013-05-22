@@ -339,26 +339,26 @@ namespace cocos2d
             {
                 CCSize size = m_obWinSizeInPoints;
 
-                DrawManager.SetViewPortInPoints(0, 0, (int)size.Width, (int)size.Height);
+                CCDrawManager.SetViewPortInPoints(0, 0, (int)size.Width, (int)size.Height);
 
                 switch (value)
                 {
                     case ccDirectorProjection.kCCDirectorProjection2D:
 
                         
-                        DrawManager.ProjectionMatrix = Matrix.CreateOrthographicOffCenter(
+                        CCDrawManager.ProjectionMatrix = Matrix.CreateOrthographicOffCenter(
                             0, size.Width,
                             0, size.Height,
                             -1024.0f, 1024.0f
                             );
 
-                        DrawManager.ViewMatrix = Matrix.Identity;
+                        CCDrawManager.ViewMatrix = Matrix.Identity;
 #if XBOX
                         // From Gena and empoc on CodePlex. Tilemaps have a weird misalignment when drawing
                         // so this might help with that problem.
                         DrawManager.WorldMatrix = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
 #else
-                        DrawManager.WorldMatrix = Matrix.Identity;
+                        CCDrawManager.WorldMatrix = Matrix.Identity;
 #endif
                         
                         /*
@@ -371,19 +371,19 @@ namespace cocos2d
 
                     case ccDirectorProjection.kCCDirectorProjection3D:
 
-                        DrawManager.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(
+                        CCDrawManager.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(
                             MathHelper.Pi / 3.0f,
                             size.Width / size.Height,
                             0.1f, ZEye * 2f
                             );
 
-                        DrawManager.ViewMatrix = Matrix.CreateLookAt(
+                        CCDrawManager.ViewMatrix = Matrix.CreateLookAt(
                             new Vector3(size.Width / 2.0f, size.Height / 2.0f, ZEye),
                             new Vector3(size.Width / 2.0f, size.Height / 2.0f, 0f),
                             Vector3.Up
                             );
 
-                        DrawManager.WorldMatrix = Matrix.Identity;
+                        CCDrawManager.WorldMatrix = Matrix.Identity;
 
                         /*
                         DrawManager.ProjectionMatrix = Matrix.Identity;
@@ -426,12 +426,12 @@ namespace cocos2d
 
         public CCSize VisibleSize
         {
-            get { return DrawManager.VisibleSize; }
+            get { return CCDrawManager.VisibleSize; }
         }
 
         public CCPoint VisibleOrigin
         {
-            get { return DrawManager.VisibleOrigin; }
+            get { return CCDrawManager.VisibleOrigin; }
         }
 
         public CCScheduler Scheduler
@@ -638,7 +638,7 @@ namespace cocos2d
         /// </summary>
         protected void DrawScene(GameTime gameTime)
         {
-            DrawManager.PushMatrix();
+            CCDrawManager.PushMatrix();
 
             // draw the scene
             if (m_pRunningScene != null)
@@ -657,7 +657,7 @@ namespace cocos2d
                 ShowStats();
             }
 
-            DrawManager.PopMatrix();
+            CCDrawManager.PopMatrix();
 
             m_uTotalFrames++;
 
@@ -673,7 +673,7 @@ namespace cocos2d
         public void SetOpenGlView()
         {
             // set size
-            m_obWinSizeInPoints = DrawManager.Size;
+            m_obWinSizeInPoints = CCDrawManager.Size;
             m_obWinSizeInPixels = new CCSize(m_obWinSizeInPoints.Width * m_fContentScaleFactor,
                                              m_obWinSizeInPoints.Height * m_fContentScaleFactor);
 
@@ -721,7 +721,7 @@ namespace cocos2d
         /// <param name="bOn"></param>
         public void SetDepthTest(bool bOn)
         {
-            DrawManager.DepthTest = bOn;
+            CCDrawManager.DepthTest = bOn;
         }
 
         public CCPoint ConvertToGl(CCPoint uiPoint)
@@ -741,7 +741,7 @@ namespace cocos2d
 
         public void ReshapeProjection(CCSize newWindowSize)
         {
-            m_obWinSizeInPoints = DrawManager.Size;
+            m_obWinSizeInPoints = CCDrawManager.Size;
             m_obWinSizeInPixels = new CCSize(m_obWinSizeInPoints.Width * m_fContentScaleFactor,
                                              m_obWinSizeInPoints.Height * m_fContentScaleFactor);
 
@@ -1162,7 +1162,7 @@ namespace cocos2d
                 
                         m_pFPSLabel.Label = (String.Format("{0:00.0}", m_fFrameRate));
                  
-                        m_pDrawsLabel.Label = (String.Format("{0:000}", DrawManager.DrawCount));
+                        m_pDrawsLabel.Label = (String.Format("{0:000}", CCDrawManager.DrawCount));
                     }
             
                     m_pDrawsLabel.Visit();

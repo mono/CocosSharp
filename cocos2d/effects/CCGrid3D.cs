@@ -80,12 +80,12 @@ namespace cocos2d
         {
             if (m_pVertexBuffer == null || m_pVertexBuffer.VertexCount < m_pVertices.Length)
             {
-                m_pVertexBuffer = new VertexBuffer(DrawManager.graphicsDevice, typeof(ccV3F_T2F), m_pVertices.Length, BufferUsage.WriteOnly);
+                m_pVertexBuffer = new VertexBuffer(CCDrawManager.graphicsDevice, typeof(ccV3F_T2F), m_pVertices.Length, BufferUsage.WriteOnly);
             }
 
             if (m_pIndexBuffer == null || m_pIndexBuffer.IndexCount < m_pIndices.Length)
             {
-                m_pIndexBuffer = new IndexBuffer(DrawManager.graphicsDevice, typeof(ushort), m_pIndices.Length, BufferUsage.WriteOnly);
+                m_pIndexBuffer = new IndexBuffer(CCDrawManager.graphicsDevice, typeof(ushort), m_pIndices.Length, BufferUsage.WriteOnly);
                 m_pIndexBuffer.SetData(m_pIndices, 0, m_pIndices.Length);
             }
 
@@ -94,11 +94,11 @@ namespace cocos2d
                 m_pVertexBuffer.SetData(m_pVertices, 0, m_pVertices.Length);
             }
 
-            bool save = DrawManager.VertexColorEnabled;
+            bool save = CCDrawManager.VertexColorEnabled;
 
-            DrawManager.VertexColorEnabled = false;
-            DrawManager.DrawBuffer(m_pVertexBuffer, m_pIndexBuffer, 0, m_pIndices.Length / 3);
-            DrawManager.VertexColorEnabled = save;
+            CCDrawManager.VertexColorEnabled = false;
+            CCDrawManager.DrawBuffer(m_pVertexBuffer, m_pIndexBuffer, 0, m_pIndices.Length / 3);
+            CCDrawManager.VertexColorEnabled = save;
         }
 
         public override void Reuse()

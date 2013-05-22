@@ -105,9 +105,9 @@ namespace cocos2d
 
         public void UpdateMatrix()
         {
-            _basicEffect.Projection = DrawManager.ProjectionMatrix; ;
-            _basicEffect.View = DrawManager.ViewMatrix;
-            _basicEffect.World = DrawManager.WorldMatrix;
+            _basicEffect.Projection = CCDrawManager.ProjectionMatrix; ;
+            _basicEffect.View = CCDrawManager.ViewMatrix;
+            _basicEffect.World = CCDrawManager.WorldMatrix;
             _basicEffect.CurrentTechnique.Passes[0].Apply();
         }
 
@@ -195,7 +195,7 @@ namespace cocos2d
                 _device.DrawUserPrimitives(PrimitiveType.TriangleList, _triangleVertices, 0, primitiveCount);
                 _triangleVertsCount -= primitiveCount * 3;
 
-                DrawManager.DrawCount++;
+                CCDrawManager.DrawCount++;
             }
         }
 
@@ -218,7 +218,7 @@ namespace cocos2d
                 _device.DrawUserPrimitives(PrimitiveType.LineList, _lineVertices, 0, primitiveCount);
                 _lineVertsCount -= primitiveCount * 2;
 
-                DrawManager.DrawCount++;
+                CCDrawManager.DrawCount++;
             }
         }
     }

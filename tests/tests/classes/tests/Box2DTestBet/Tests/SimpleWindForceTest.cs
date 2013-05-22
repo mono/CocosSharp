@@ -121,7 +121,7 @@ namespace FarseerPhysics.TestBed.Tests
         public override void Mouse(MouseState state, MouseState oldState)
         {
             //base.Mouse(state, oldState);
-            var pos = DrawManager.ScreenToWorld(state.X, state.Y);
+            var pos = CCDrawManager.ScreenToWorld(state.X, state.Y);
             Vector2 MouseWorld = new Vector2(pos.X, pos.Y);
 
             //SimpleWind.Position = MouseWorld;

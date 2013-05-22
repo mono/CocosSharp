@@ -304,7 +304,7 @@
     <Compile Include="Platform\CCLog.cs" />
     <Compile Include="Platform\CCSpriteFontCache.cs" />
     <Compile Include="Platform\CCSAXParser.cs" />
-    <Compile Include="Platform\DrawManager.cs" />
+    <Compile Include="Platform\CCDrawManager.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
     <Compile Include="Platform\InputState.cs" />
     <Compile Include="Platform\OGLES.cs">

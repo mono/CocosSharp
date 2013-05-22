@@ -858,8 +858,8 @@
     <Compile Include=".\platform\ContentReaders\KerningHashElementReader.cs">
       <LogicalName>platform\ContentReaders\KerningHashElementReader</LogicalName>
     </Compile>
-    <Compile Include=".\platform\DrawManager.cs">
-      <LogicalName>platform\DrawManager</LogicalName>
+    <Compile Include=".\platform\CCDrawManager.cs">
+      <LogicalName>platform\CCDrawManager</LogicalName>
     </Compile>
     <Compile Include=".\platform\ICCSAXDelegator.cs">
       <LogicalName>platform\ICCSAXDelegator</LogicalName>

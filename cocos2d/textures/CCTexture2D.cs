@@ -599,8 +599,8 @@ namespace cocos2d
                     font = CCSpriteFontCache.SharedInstance.GetFont(fontName, fontSize);
                     if (font == null)
                     {
-                        CCLog.Log("Can't find {0}, use system default ({1})", fontName, DrawManager.DefaultFont);
-                        font = CCSpriteFontCache.SharedInstance.GetFont(DrawManager.DefaultFont, fontSize);
+                        CCLog.Log("Can't find {0}, use system default ({1})", fontName, CCDrawManager.DefaultFont);
+                        font = CCSpriteFontCache.SharedInstance.GetFont(CCDrawManager.DefaultFont, fontSize);
                         if (font == null)
                         {
                             CCLog.Log("Failed to load default font. No font supported.");
@@ -685,13 +685,13 @@ namespace cocos2d
                 }
 
                 //*  for render to texture
-                RenderTarget2D renderTarget = DrawManager.CreateRenderTarget((int)dimensions.Width, (int)dimensions.Height,
+                RenderTarget2D renderTarget = CCDrawManager.CreateRenderTarget((int)dimensions.Width, (int)dimensions.Height,
                                                                               RenderTargetUsage.PreserveContents);
-                DrawManager.SetRenderTarget(renderTarget);
+                CCDrawManager.SetRenderTarget(renderTarget);
 
-                DrawManager.Clear(Color.Transparent);
+                CCDrawManager.Clear(Color.Transparent);
 
-                SpriteBatch spriteBatch = DrawManager.spriteBatch;
+                SpriteBatch spriteBatch = CCDrawManager.spriteBatch;
 
                 spriteBatch.Begin();
 
@@ -735,10 +735,10 @@ namespace cocos2d
                 }
                 spriteBatch.End();
 
-                DrawManager.graphicsDevice.RasterizerState = RasterizerState.CullNone;
-                DrawManager.graphicsDevice.DepthStencilState = DepthStencilState.Default;
+                CCDrawManager.graphicsDevice.RasterizerState = RasterizerState.CullNone;
+                CCDrawManager.graphicsDevice.DepthStencilState = DepthStencilState.Default;
 
-                DrawManager.SetRenderTarget((RenderTarget2D)null);
+                CCDrawManager.SetRenderTarget((RenderTarget2D)null);
 
                 // to copy the rendered target data to a plain texture(to the memory)
                 //            texture2D = DrawManager.CreateTexture2D(renderTarget.Width, renderTarget.Height);
