@@ -28,7 +28,6 @@ using System.Linq;
 using System.Text;
 using cocos2d;
 using System.Diagnostics;
-using cocos2d.menu_nodes;
 
 namespace tests
 {

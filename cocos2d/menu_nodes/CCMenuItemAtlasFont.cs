@@ -1,5 +1,5 @@
 
-namespace cocos2d.menu_nodes
+namespace cocos2d
 {
     ///<summary>
     /// A CCMenuItemAtlasFont

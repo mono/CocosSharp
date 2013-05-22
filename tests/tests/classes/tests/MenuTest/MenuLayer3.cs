@@ -27,7 +27,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using cocos2d;
-using cocos2d.menu_nodes;
 
 namespace tests
 {
