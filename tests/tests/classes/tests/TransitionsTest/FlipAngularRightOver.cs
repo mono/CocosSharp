@@ -9,7 +9,7 @@ namespace tests
     public class FlipAngularRightOver : CCTransitionFlipAngular
     {
         public FlipAngularRightOver(float t, CCScene s)
-            : base(t, s, CCOrientation.RightOver)
+            : base(t, s, CCTransitionOrientation.RightOver)
         {
         }
     }

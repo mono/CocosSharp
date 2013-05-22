@@ -29,7 +29,7 @@ namespace cocos2d
     public class CCTransitionFlipX : CCTransitionSceneOriented
     {
 
-        public CCTransitionFlipX(float t, CCScene s, CCOrientation o) : base (t, s, o)
+        public CCTransitionFlipX(float t, CCScene s, CCTransitionOrientation o) : base (t, s, o)
         { }
 
         public override void OnEnter()
@@ -42,7 +42,7 @@ namespace cocos2d
             float inDeltaZ, inAngleZ;
             float outDeltaZ, outAngleZ;
 
-            if (m_eOrientation == CCOrientation.RightOver)
+            if (m_eOrientation == CCTransitionOrientation.RightOver)
             {
                 inDeltaZ = 90;
                 inAngleZ = 270;

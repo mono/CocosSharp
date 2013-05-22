@@ -8,7 +8,7 @@ namespace tests
 {
     public class ZoomFlipAngularLeftOver : CCTransitionZoomFlipAngular
     {
-        public ZoomFlipAngularLeftOver (float t, CCScene s) : base (t, s, CCOrientation.LeftOver)
+        public ZoomFlipAngularLeftOver (float t, CCScene s) : base (t, s, CCTransitionOrientation.LeftOver)
         { }
     }
 }

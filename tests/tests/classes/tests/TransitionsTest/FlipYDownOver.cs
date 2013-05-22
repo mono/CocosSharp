@@ -9,7 +9,7 @@ namespace tests
     public class FlipYDownOver : CCTransitionFlipY
     {
         public FlipYDownOver(float t, CCScene s)
-            : base(t, s, CCOrientation.DownOver)
+            : base(t, s, CCTransitionOrientation.DownOver)
         {
         }
     }
