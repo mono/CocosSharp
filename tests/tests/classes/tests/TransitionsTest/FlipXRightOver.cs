@@ -8,7 +8,7 @@ namespace tests
 {
     public class FlipXRightOver : CCTransitionFlipX
     {
-        public FlipXRightOver(float t, CCScene s) : base(t, s, tOrientation.kOrientationRightOver)
+        public FlipXRightOver(float t, CCScene s) : base(t, s, CCOrientation.RightOver)
         {
 
         }

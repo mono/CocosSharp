@@ -27,7 +27,7 @@ namespace cocos2d
     public class CCTransitionZoomFlipY : CCTransitionSceneOriented
     {
         
-        public CCTransitionZoomFlipY (float t, CCScene s, tOrientation o) : base (t, s, o)
+        public CCTransitionZoomFlipY (float t, CCScene s, CCOrientation o) : base (t, s, o)
         { }
 
         public override void OnEnter()
@@ -40,7 +40,7 @@ namespace cocos2d
             float inDeltaZ, inAngleZ;
             float outDeltaZ, outAngleZ;
 
-            if (m_eOrientation == tOrientation.kOrientationUpOver)
+            if (m_eOrientation == CCOrientation.UpOver)
             {
                 inDeltaZ = 90;
                 inAngleZ = 270;

@@ -9,7 +9,7 @@ namespace tests
     public class FlipXLeftOver : CCTransitionFlipX
     {
         public FlipXLeftOver(float t, CCScene s)
-            : base(t, s, tOrientation.kOrientationLeftOver)
+            : base(t, s, CCOrientation.LeftOver)
         {
         }
     }

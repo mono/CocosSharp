@@ -8,7 +8,7 @@ namespace tests
 {
     public class FlipAngularLeftOver : CCTransitionFlipAngular
     {
-        public FlipAngularLeftOver(float t, CCScene s) : base(t, s, tOrientation.kOrientationLeftOver)
+        public FlipAngularLeftOver(float t, CCScene s) : base(t, s, CCOrientation.LeftOver)
         {
         }
     }

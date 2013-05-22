@@ -9,7 +9,7 @@ namespace tests
     public class ZoomFlipYDownOver : CCTransitionZoomFlipY
     {
 
-        public ZoomFlipYDownOver (float t, CCScene s) : base(t, s, tOrientation.kOrientationDownOver)
+        public ZoomFlipYDownOver (float t, CCScene s) : base(t, s, CCOrientation.DownOver)
         { }
 
     }

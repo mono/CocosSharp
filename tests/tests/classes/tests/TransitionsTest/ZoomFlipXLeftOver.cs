@@ -8,7 +8,7 @@ namespace tests
 {
     public class ZoomFlipXLeftOver : CCTransitionZoomFlipX
     {
-        public ZoomFlipXLeftOver (float t, CCScene s) : base(t, s, tOrientation.kOrientationLeftOver)
+        public ZoomFlipXLeftOver (float t, CCScene s) : base(t, s, CCOrientation.LeftOver)
         { }
 
     }

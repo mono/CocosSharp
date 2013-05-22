@@ -8,7 +8,7 @@ namespace tests
 {
     public class FlipYUpOver : CCTransitionFlipY
     {
-        public FlipYUpOver(float t, CCScene s) : base(t, s, tOrientation.kOrientationUpOver)
+        public FlipYUpOver(float t, CCScene s) : base(t, s, CCOrientation.UpOver)
         {
         }
 

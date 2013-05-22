@@ -25,29 +25,29 @@ THE SOFTWARE.
 
 namespace cocos2d
 {
-    public enum tOrientation
+    public enum CCOrientation
     {
         /// An horizontal orientation where the Left is nearer
-        kOrientationLeftOver = 0,
+        LeftOver = 0,
 
         /// An horizontal orientation where the Right is nearer
-        kOrientationRightOver = 1,
+        RightOver = 1,
 
         /// A vertical orientation where the Up is nearer
-        kOrientationUpOver = 0,
+        UpOver = 0,
 
         /// A vertical orientation where the Bottom is nearer
-        kOrientationDownOver = 1,
+        DownOver = 1,
     }
 
     public class CCTransitionSceneOriented : CCTransitionScene
     {
-        protected tOrientation m_eOrientation;
+        protected CCOrientation m_eOrientation;
 
         /// <summary>
         /// creates a base transition with duration and incoming scene
         /// </summary>
-        public CCTransitionSceneOriented (float t, CCScene scene, tOrientation orientation) : base (t, scene)
+        public CCTransitionSceneOriented (float t, CCScene scene, CCOrientation orientation) : base (t, scene)
         {
             m_eOrientation = orientation;
         }
@@ -55,7 +55,7 @@ namespace cocos2d
         /// <summary>
         /// initializes a transition with duration and incoming scene
         /// </summary>
-        public virtual bool InitWithDuration(float t, CCScene scene, tOrientation orientation)
+        public virtual bool InitWithDuration(float t, CCScene scene, CCOrientation orientation)
         {
             if (base.InitWithDuration(t, scene))
             {

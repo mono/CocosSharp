@@ -72,7 +72,7 @@ namespace tests
             CCScene pScene = new SceneTestScene();
             CCLayer pLayer = new SceneTestLayer3();
             pScene.AddChild(pLayer, 0);
-            CCDirector.SharedDirector.ReplaceScene(new CCTransitionFlipX(2, pScene, tOrientation.kOrientationUpOver));
+            CCDirector.SharedDirector.ReplaceScene(new CCTransitionFlipX(2, pScene, CCOrientation.UpOver));
         }
 
         public void onPopSceneTran(object pSender)
