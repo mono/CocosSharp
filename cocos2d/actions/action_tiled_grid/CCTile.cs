@@ -24,7 +24,7 @@ THE SOFTWARE.
 
 namespace Cocos2D
 {
-    public class Tile
+    public class CCTile
     {
         public CCGridSize Delta;
         public CCPoint Position;

@@ -184,7 +184,7 @@
     <Compile Include="actions\action_tiled_grid\CCTile.cs" />
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
-    <Compile Include="denshion\EffectPlayer.cs" />
+    <Compile Include="denshion\CCEffectPlayer.cs" />
     <Compile Include="denshion\MusicPlayer.cs" />
     <Compile Include="denshion\SimpleAudioEngine.cs" />
     <Compile Include="effects\CCGrid3D.cs" />

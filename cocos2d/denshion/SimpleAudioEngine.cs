@@ -14,7 +14,7 @@ namespace CocosDenshion
         /// <summary>
         /// The shared sound effect list. The key is the hashcode of the file path.
         /// </summary>
-        public static Dictionary<int, EffectPlayer> SharedList
+        public static Dictionary<int, CCEffectPlayer> SharedList
         {
             get
             {
@@ -53,8 +53,8 @@ namespace CocosDenshion
 
         public float EffectsVolume
         {
-            get { return EffectPlayer.Volume; }
-            set { EffectPlayer.Volume = value; }
+            get { return CCEffectPlayer.Volume; }
+            set { CCEffectPlayer.Volume = value; }
         }
 
         public static string FullPath(string szPath)
@@ -323,7 +323,7 @@ namespace CocosDenshion
                     return;
                 }
             }
-            EffectPlayer eff = new EffectPlayer();
+            CCEffectPlayer eff = new CCEffectPlayer();
             eff.Open(FullPath(pszFilePath), nId);
             SharedList[nId] = eff;
         }
@@ -351,7 +351,7 @@ namespace CocosDenshion
             }
         }
 
-        private static Dictionary<int, EffectPlayer> s_List = new Dictionary<int,EffectPlayer>();
+        private static Dictionary<int, CCEffectPlayer> s_List = new Dictionary<int,CCEffectPlayer>();
         private static MusicPlayer s_Music = new MusicPlayer();
         private static SimpleAudioEngine _Instance = new SimpleAudioEngine();
     }

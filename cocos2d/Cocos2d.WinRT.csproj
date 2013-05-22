@@ -444,7 +444,7 @@
     <Compile Include=".\cocoa\ICopyable.cs">
       <LogicalName>cocoa\ICopyable</LogicalName>
     </Compile>
-    <Compile Include=".\denshion\EffectPlayer.cs">
+    <Compile Include=".\denshion\CCEffectPlayer.cs">
       <LogicalName>denshion\EffectPlayer</LogicalName>
     </Compile>
     <Compile Include=".\denshion\MusicPlayer.cs">

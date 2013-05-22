@@ -190,7 +190,7 @@
     <Compile Include="CCScheduler.cs" />
     <Compile Include="cocoa\CCAffineTransform.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
-    <Compile Include="denshion\EffectPlayer.cs" />
+    <Compile Include="denshion\CCEffectPlayer.cs" />
     <Compile Include="denshion\MusicPlayer.cs" />
     <Compile Include="denshion\SimpleAudioEngine.cs" />
     <Compile Include="effects\CCGrabber.cs" />
