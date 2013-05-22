@@ -239,7 +239,7 @@ namespace cocos2d
                     {
                         // Get position type
                         var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                        var type = (kCCBPositionType) array[2].GetIntValue();
+                        var type = (CCBPositionType) array[2].GetIntValue();
 
                         // Get relative position
                         var value = (List<CCBValue>) pKeyframe1.Value;
@@ -256,14 +256,14 @@ namespace cocos2d
                     {
                         // Get position type
                         var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                        var type = (kCCBScaleType) array[2].GetIntValue();
+                        var type = (CCBScaleType) array[2].GetIntValue();
 
                         // Get relative scale
                         var value = (List<CCBValue>) pKeyframe1.Value;
                         float x = value[0].GetFloatValue();
                         float y = value[1].GetFloatValue();
 
-                        if (type == kCCBScaleType.kCCBScaleTypeMultiplyResolution)
+                        if (type == CCBScaleType.MultiplyResolution)
                         {
                             float resolutionScale = CCBReader.ResolutionScale;
                             x *= resolutionScale;
@@ -288,7 +288,7 @@ namespace cocos2d
                 var kf1 = new CCBKeyframe();
                 kf1.Value = pValue;
                 kf1.Time = fTweenDuraion;
-                kf1.EasingType = kCCBKeyframeEasing.kCCBKeyframeEasingLinear;
+                kf1.EasingType = CCBKeyframeEasing.Linear;
 
                 // Animate
                 CCActionInterval tweenAction = GetAction(null, kf1, pPropName, node);
@@ -302,7 +302,7 @@ namespace cocos2d
                 {
                     // Get position type
                     var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                    var type = (kCCBPositionType) array[2].GetIntValue();
+                    var type = (CCBPositionType) array[2].GetIntValue();
 
                     // Get relative position
                     var value = (List<CCBValue>) pValue;
@@ -315,7 +315,7 @@ namespace cocos2d
                 {
                     // Get scale type
                     var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                    var type = (kCCBScaleType) array[2].GetIntValue();
+                    var type = (CCBScaleType) array[2].GetIntValue();
 
                     // Get relative scale
                     var value = (List<CCBValue>) pValue;
@@ -376,36 +376,36 @@ namespace cocos2d
             }
         }
 
-        private CCActionInterval GetEaseAction(CCActionInterval pAction, kCCBKeyframeEasing nEasingType, float fEasingOpt)
+        private CCActionInterval GetEaseAction(CCActionInterval pAction, CCBKeyframeEasing nEasingType, float fEasingOpt)
         {
             switch (nEasingType)
             {
-                case kCCBKeyframeEasing.kCCBKeyframeEasingInstant:
-                case kCCBKeyframeEasing.kCCBKeyframeEasingLinear:
+                case CCBKeyframeEasing.Instant:
+                case CCBKeyframeEasing.Linear:
                     return pAction;
-                case kCCBKeyframeEasing.kCCBKeyframeEasingCubicIn:
+                case CCBKeyframeEasing.CubicIn:
                     return new CCEaseIn(pAction, fEasingOpt);
-                case kCCBKeyframeEasing.kCCBKeyframeEasingCubicOut:
+                case CCBKeyframeEasing.CubicOut:
                     return new CCEaseOut(pAction, fEasingOpt);
-                case kCCBKeyframeEasing.kCCBKeyframeEasingCubicInOut:
+                case CCBKeyframeEasing.CubicInOut:
                     return new CCEaseInOut(pAction, fEasingOpt);
-                case kCCBKeyframeEasing.kCCBKeyframeEasingBackIn:
+                case CCBKeyframeEasing.BackIn:
                     return new CCEaseBackIn(pAction);
-                case kCCBKeyframeEasing.kCCBKeyframeEasingBackOut:
+                case CCBKeyframeEasing.BackOut:
                     return new CCEaseBackOut(pAction);
-                case kCCBKeyframeEasing.kCCBKeyframeEasingBackInOut:
+                case CCBKeyframeEasing.BackInOut:
                     return new CCEaseBackInOut(pAction);
-                case kCCBKeyframeEasing.kCCBKeyframeEasingBounceIn:
+                case CCBKeyframeEasing.BounceIn:
                     return new CCEaseBounceIn(pAction);
-                case kCCBKeyframeEasing.kCCBKeyframeEasingBounceOut:
+                case CCBKeyframeEasing.BounceOut:
                     return new CCEaseBounceOut(pAction);
-                case kCCBKeyframeEasing.kCCBKeyframeEasingBounceInOut:
+                case CCBKeyframeEasing.BounceInOut:
                     return new CCEaseBounceInOut(pAction);
-                case kCCBKeyframeEasing.kCCBKeyframeEasingElasticIn:
+                case CCBKeyframeEasing.ElasticIn:
                     return new CCEaseElasticIn(pAction, fEasingOpt);
-                case kCCBKeyframeEasing.kCCBKeyframeEasingElasticOut:
+                case CCBKeyframeEasing.ElasticOut:
                     return new CCEaseElasticOut(pAction, fEasingOpt);
-                case kCCBKeyframeEasing.kCCBKeyframeEasingElasticInOut:
+                case CCBKeyframeEasing.ElasticInOut:
                     return new CCEaseElasticInOut(pAction, fEasingOpt);
                 default:
                     CCLog.Log("CCBReader: Unkown easing type {0}", nEasingType);

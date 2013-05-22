@@ -4,7 +4,7 @@ namespace cocos2d
     {
         public object Value;
         public float Time;
-        public kCCBKeyframeEasing EasingType;
+        public CCBKeyframeEasing EasingType;
         public float EasingOpt;
     }
 }

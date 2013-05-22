@@ -55,8 +55,8 @@ namespace cocos2d
                 // Check if the property can be set for this platform
                 bool setProp = false;
 
-                var platform = (kCCBPlatform) reader.ReadByte();
-                if (platform == kCCBPlatform.kCCBPlatformAll)
+                var platform = (CCBPlatform) reader.ReadByte();
+                if (platform == CCBPlatform.All)
                 {
                     setProp = true;
                 }
@@ -97,9 +97,9 @@ namespace cocos2d
                     extraPropsNames.Add(propertyName);
                 }
 
-                switch ((kCCBPropType) type)
+                switch ((CCBPropType) type)
                 {
-                    case kCCBPropType.kCCBPropTypePosition:
+                    case CCBPropType.Position:
                         {
                             CCPoint position = ParsePropTypePosition(node, parent, reader, propertyName);
                             if (setProp)
@@ -108,7 +108,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypePoint:
+                    case CCBPropType.Point:
                         {
                             CCPoint point = ParsePropTypePoint(node, parent, reader);
                             if (setProp)
@@ -117,7 +117,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypePointLock:
+                    case CCBPropType.PointLock:
                         {
                             CCPoint pointLock = ParsePropTypePointLock(node, parent, reader);
                             if (setProp)
@@ -126,7 +126,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeSize:
+                    case CCBPropType.Size:
                         {
                             CCSize size = ParsePropTypeSize(node, parent, reader);
                             if (setProp)
@@ -135,7 +135,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeScaleLock:
+                    case CCBPropType.ScaleLock:
                         {
                             float[] scaleLock = ParsePropTypeScaleLock(node, parent, reader, propertyName);
                             if (setProp)
@@ -144,7 +144,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeFloat:
+                    case CCBPropType.Float:
                         {
                             float f = ParsePropTypeFloat(node, parent, reader);
                             if (setProp)
@@ -153,7 +153,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeDegrees:
+                    case CCBPropType.Degrees:
                         {
                             float degrees = ParsePropTypeDegrees(node, parent, reader, propertyName);
                             if (setProp)
@@ -162,7 +162,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeFloatScale:
+                    case CCBPropType.FloatScale:
                         {
                             float floatScale = ParsePropTypeFloatScale(node, parent, reader);
                             if (setProp)
@@ -171,7 +171,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeInteger:
+                    case CCBPropType.Integer:
                         {
                             int integer = ParsePropTypeInteger(node, parent, reader);
                             if (setProp)
@@ -180,7 +180,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeIntegerLabeled:
+                    case CCBPropType.IntegerLabeled:
                         {
                             int integerLabeled = ParsePropTypeIntegerLabeled(node, parent, reader);
                             if (setProp)
@@ -189,7 +189,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeFloatVar:
+                    case CCBPropType.FloatVar:
                         {
                             float[] floatVar = ParsePropTypeFloatVar(node, parent, reader);
                             if (setProp)
@@ -198,7 +198,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeCheck:
+                    case CCBPropType.Check:
                         {
                             bool check = ParsePropTypeCheck(node, parent, reader, propertyName);
                             if (setProp)
@@ -207,7 +207,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeSpriteFrame:
+                    case CCBPropType.SpriteFrame:
                         {
                             CCSpriteFrame ccSpriteFrame = ParsePropTypeSpriteFrame(node, parent, reader, propertyName);
                             if (setProp)
@@ -216,7 +216,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeAnimation:
+                    case CCBPropType.Animation:
                         {
                             CCAnimation ccAnimation = ParsePropTypeAnimation(node, parent, reader);
                             if (setProp)
@@ -225,7 +225,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeTexture:
+                    case CCBPropType.Texture:
                         {
                             CCTexture2D ccTexture2D = ParsePropTypeTexture(node, parent, reader);
                             if (setProp)
@@ -234,7 +234,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeByte:
+                    case CCBPropType.Byte:
                         {
                             byte b = ParsePropTypeByte(node, parent, reader, propertyName);
                             if (setProp)
@@ -243,7 +243,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeColor3:
+                    case CCBPropType.Color3:
                         {
                             CCColor3B color3B = ParsePropTypeColor3(node, parent, reader, propertyName);
                             if (setProp)
@@ -252,7 +252,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeColor4FVar:
+                    case CCBPropType.Color4FVar:
                         {
                             CCColor4F[] color4FVar = ParsePropTypeColor4FVar(node, parent, reader);
                             if (setProp)
@@ -261,7 +261,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeFlip:
+                    case CCBPropType.Flip:
                         {
                             bool[] flip = ParsePropTypeFlip(node, parent, reader);
                             if (setProp)
@@ -270,7 +270,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeBlendmode:
+                    case CCBPropType.Blendmode:
                         {
                             CCBlendFunc blendFunc = ParsePropTypeBlendFunc(node, parent, reader);
                             if (setProp)
@@ -279,7 +279,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeFntFile:
+                    case CCBPropType.FntFile:
                         {
                             string fntFile = ParsePropTypeFntFile(node, parent, reader);
                             if (setProp)
@@ -288,7 +288,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeFontTTF:
+                    case CCBPropType.FontTTF:
                         {
                             string fontTTF = ParsePropTypeFontTTF(node, parent, reader);
                             if (setProp)
@@ -297,7 +297,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeString:
+                    case CCBPropType.String:
                         {
                             string s = ParsePropTypeString(node, parent, reader);
                             if (setProp)
@@ -306,7 +306,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeText:
+                    case CCBPropType.Text:
                         {
                             string text = ParsePropTypeText(node, parent, reader);
                             if (setProp)
@@ -315,7 +315,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeBlock:
+                    case CCBPropType.Block:
                         {
                             BlockData blockData = ParsePropTypeBlock(node, parent, reader);
                             if (setProp)
@@ -324,7 +324,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeBlockCCControl:
+                    case CCBPropType.BlockCCControl:
                         {
                             BlockCCControlData blockCCControlData = ParsePropTypeBlockCcControl(node, parent, reader);
                             if (setProp && blockCCControlData != null)
@@ -333,7 +333,7 @@ namespace cocos2d
                             }
                             break;
                         }
-                    case kCCBPropType.kCCBPropTypeCCBFile:
+                    case CCBPropType.CCBFile:
                         {
                             CCNode ccbFileNode = ParsePropTypeCcbFile(node, parent, reader);
                             if (setProp)
@@ -354,7 +354,7 @@ namespace cocos2d
             float x = reader.ReadFloat();
             float y = reader.ReadFloat();
 
-            var type = (kCCBPositionType) reader.ReadInt(false);
+            var type = (CCBPositionType) reader.ReadInt(false);
 
             CCSize containerSize = reader.AnimationManager.GetContainerSize(parent);
 
@@ -400,36 +400,36 @@ namespace cocos2d
 
             CCSize containerSize = reader.AnimationManager.GetContainerSize(parent);
 
-            switch ((kCCBSizeType) type)
+            switch ((CCBSizeType) type)
             {
-                case kCCBSizeType.kCCBSizeTypeAbsolute:
+                case CCBSizeType.Absolute:
                     {
                         /* Nothing. */
                         break;
                     }
-                case kCCBSizeType.kCCBSizeTypeRelativeContainer:
+                case CCBSizeType.RelativeContainer:
                     {
                         width = containerSize.Width - width;
                         height = containerSize.Height - height;
                         break;
                     }
-                case kCCBSizeType.kCCBSizeTypePercent:
+                case CCBSizeType.Percent:
                     {
                         width = (int) (containerSize.Width * width / 100.0f);
                         height = (int) (containerSize.Height * height / 100.0f);
                         break;
                     }
-                case kCCBSizeType.kCCBSizeTypeHorizontalPercent:
+                case CCBSizeType.HorizontalPercent:
                     {
                         width = (int) (containerSize.Width * width / 100.0f);
                         break;
                     }
-                case kCCBSizeType.kCCBSizeTypeVerticalPercent:
+                case CCBSizeType.VerticalPercent:
                     {
                         height = (int) (containerSize.Height * height / 100.0f);
                         break;
                     }
-                case kCCBSizeType.kCCBSizeTypeMultiplyResolution:
+                case CCBSizeType.MultiplyResolution:
                     {
                         float resolutionScale = CCBReader.ResolutionScale;
 
@@ -449,7 +449,7 @@ namespace cocos2d
             float x = reader.ReadFloat();
             float y = reader.ReadFloat();
 
-            var type = (kCCBScaleType) reader.ReadInt(false);
+            var type = (CCBScaleType) reader.ReadInt(false);
 
             CCBHelper.SetRelativeScale(node, x, y, type, propertyName);
 
@@ -464,7 +464,7 @@ namespace cocos2d
                 reader.AnimationManager.SetBaseValue(baseValue, node, propertyName);
             }
 
-            if (type == kCCBScaleType.kCCBScaleTypeMultiplyResolution)
+            if (type == CCBScaleType.MultiplyResolution)
             {
                 x *= CCBReader.ResolutionScale;
                 y *= CCBReader.ResolutionScale;
@@ -500,7 +500,7 @@ namespace cocos2d
 
             int type = reader.ReadInt(false);
 
-            if ((kCCBScaleType) type == kCCBScaleType.kCCBScaleTypeMultiplyResolution)
+            if ((CCBScaleType) type == CCBScaleType.MultiplyResolution)
             {
                 f *= CCBReader.ResolutionScale;
             }
@@ -728,16 +728,16 @@ namespace cocos2d
         protected virtual BlockData ParsePropTypeBlock(CCNode node, CCNode parent, CCBReader reader)
         {
             string selectorName = reader.ReadCachedString();
-            var selectorTarget = (kCCBTargetType) reader.ReadInt(false);
+            var selectorTarget = (CCBTargetType) reader.ReadInt(false);
 
-            if (selectorTarget != kCCBTargetType.kCCBTargetTypeNone)
+            if (selectorTarget != CCBTargetType.None)
             {
                 object target = null;
-                if (selectorTarget == kCCBTargetType.kCCBTargetTypeDocumentRoot)
+                if (selectorTarget == CCBTargetType.DocumentRoot)
                 {
                     target = reader.AnimationManager.RootNode;
                 }
-                else if (selectorTarget == kCCBTargetType.kCCBTargetTypeOwner)
+                else if (selectorTarget == CCBTargetType.Owner)
                 {
                     target = reader.Owner;
 
@@ -807,17 +807,17 @@ namespace cocos2d
         protected virtual BlockCCControlData ParsePropTypeBlockCcControl(CCNode node, CCNode parent, CCBReader reader)
         {
             string selectorName = reader.ReadCachedString();
-            var selectorTarget = (kCCBTargetType) reader.ReadInt(false);
+            var selectorTarget = (CCBTargetType) reader.ReadInt(false);
             var controlEvents = (CCControlEvent) reader.ReadInt(false);
 
-            if (selectorTarget != kCCBTargetType.kCCBTargetTypeNone)
+            if (selectorTarget != CCBTargetType.None)
             {
                 object target = null;
-                if (selectorTarget == kCCBTargetType.kCCBTargetTypeDocumentRoot)
+                if (selectorTarget == CCBTargetType.DocumentRoot)
                 {
                     target = reader.AnimationManager.RootNode;
                 }
-                else if (selectorTarget == kCCBTargetType.kCCBTargetTypeOwner)
+                else if (selectorTarget == CCBTargetType.Owner)
                 {
                     target = reader.Owner;
                 }
