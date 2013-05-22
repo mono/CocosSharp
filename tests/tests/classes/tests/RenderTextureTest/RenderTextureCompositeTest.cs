@@ -84,9 +84,9 @@ namespace tests
             var sprite = new CCSprite(@"Images\grossini_dance_01");
             sprite.Color = new CCColor3B
             {
-                B = (byte)cocos2d.Random.Next(0, 255),
-                G = (byte)cocos2d.Random.Next(0, 255),
-                R = (byte)cocos2d.Random.Next(0, 255)
+                B = (byte)Cocos2D.Random.Next(0, 255),
+                G = (byte)Cocos2D.Random.Next(0, 255),
+                R = (byte)Cocos2D.Random.Next(0, 255)
             };
             return sprite;
         }
