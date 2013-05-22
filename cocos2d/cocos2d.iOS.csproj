@@ -407,7 +407,6 @@
     <Compile Include="tileMap_parallax_nodes\CCTMXMapInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXObjectGroup.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXTiledMap.cs" />
-    <Compile Include="tileMap_parallax_nodes\ccTMXTileFlags_.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXTilesetInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXXMLParser.cs" />
     <Compile Include="touch_dispatcher\CCStandardTouchHandler.cs" />
@@ -443,6 +442,7 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
     <Compile Include="Platform\CCDrawManager.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTMXTileFlags.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />

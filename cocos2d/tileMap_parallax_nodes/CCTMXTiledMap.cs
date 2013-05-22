@@ -282,7 +282,7 @@ object->propertyNamed(name_of_the_property);
                                 {
                                     // Optimization: quick return
                                     // if the layer is invalid (more than 1 tileset per layer) an CCAssert will be thrown later
-                                    if ((gid & ccTMXTileFlags.kCCFlippedMask) >= tileset.m_uFirstGid)
+                                    if ((gid & CCTMXTileFlags.FlippedMask) >= tileset.m_uFirstGid)
                                     {
                                         return tileset;
                                     }

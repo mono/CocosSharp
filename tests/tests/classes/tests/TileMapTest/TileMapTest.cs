@@ -1239,30 +1239,30 @@ namespace tests
             uint flags;
             uint GID = layer.TileGIDAt(tileCoord, out flags);
             // Vertical
-            if ((flags & ccTMXTileFlags.kCCTMXTileVerticalFlag) != 0)
-                flags &= ~ccTMXTileFlags.kCCTMXTileVerticalFlag;
+            if ((flags & CCTMXTileFlags.CCTMXTileVertical) != 0)
+                flags &= ~CCTMXTileFlags.CCTMXTileVertical;
             else
-                flags |= ccTMXTileFlags.kCCTMXTileVerticalFlag;
+                flags |= CCTMXTileFlags.CCTMXTileVertical;
             layer.SetTileGID(GID, tileCoord, flags);
 
 
             tileCoord = new CCPoint(1, 8);
             GID = layer.TileGIDAt(tileCoord, out flags);
             // Vertical
-            if ((flags & ccTMXTileFlags.kCCTMXTileVerticalFlag) != 0)
-                flags &= ~ccTMXTileFlags.kCCTMXTileVerticalFlag;
+            if ((flags & CCTMXTileFlags.CCTMXTileVertical) != 0)
+                flags &= ~CCTMXTileFlags.CCTMXTileVertical;
             else
-                flags |= ccTMXTileFlags.kCCTMXTileVerticalFlag;
+                flags |= CCTMXTileFlags.CCTMXTileVertical;
             layer.SetTileGID(GID, tileCoord, flags);
 
 
             tileCoord = new CCPoint(2, 8);
             GID = layer.TileGIDAt(tileCoord, out flags);
             // Horizontal
-            if ((flags & ccTMXTileFlags.kCCTMXTileHorizontalFlag) != 0)
-                flags &= ~ccTMXTileFlags.kCCTMXTileHorizontalFlag;
+            if ((flags & CCTMXTileFlags.CCTMXTileHorizontal) != 0)
+                flags &= ~CCTMXTileFlags.CCTMXTileHorizontal;
             else
-                flags |= ccTMXTileFlags.kCCTMXTileHorizontalFlag;
+                flags |= CCTMXTileFlags.CCTMXTileHorizontal;
             layer.SetTileGID(GID, tileCoord, flags);
         }
     }

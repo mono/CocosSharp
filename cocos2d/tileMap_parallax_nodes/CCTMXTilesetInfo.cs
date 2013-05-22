@@ -33,7 +33,7 @@ namespace cocos2d
         {
             CCRect rect = new CCRect();
             rect.Size = m_tTileSize;
-            gid &= ccTMXTileFlags.kCCFlippedMask;
+            gid &= CCTMXTileFlags.FlippedMask;
             gid = gid - m_uFirstGid;
             var max_x = (int) ((m_tImageSize.Width - m_uMargin * 2 + m_uSpacing) / (m_tTileSize.Width + m_uSpacing));
             //	int max_y = (imageSize.height - margin*2 + spacing) / (tileSize.height + spacing);
