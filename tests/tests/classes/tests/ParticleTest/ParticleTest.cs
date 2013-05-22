@@ -1,6 +1,6 @@
 using System;
 using Cocos2D;
-using Random = Cocos2D.Random;
+using Random = Cocos2D.CCRandom;
 
 namespace tests
 {
@@ -1738,7 +1738,7 @@ namespace tests
 
                 particleSystem.Position = (new CCPoint(i * 15 + 100, i * 15 + 100));
 
-                int randZ = Random.Next(100);
+                int randZ = CCRandom.Next(100);
                 m_pBatchNode.AddChild(particleSystem, randZ, -1);
             }
 
@@ -1752,7 +1752,7 @@ namespace tests
             if (nChildrenCount > 0)
             {
                 CCLog.Log("remove random system");
-                int uRand = Random.Next(nChildrenCount - 1);
+                int uRand = CCRandom.Next(nChildrenCount - 1);
                 m_pBatchNode.RemoveChild(m_pBatchNode.Children[uRand], true);
 
                 CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/Spiral");
@@ -1761,10 +1761,10 @@ namespace tests
                 particleSystem.PositionType = CCPositionType.kCCPositionTypeGrouped;
                 particleSystem.TotalParticles = (200);
 
-                particleSystem.Position = (new CCPoint(Random.Next(300), Random.Next(400)));
+                particleSystem.Position = (new CCPoint(CCRandom.Next(300), CCRandom.Next(400)));
 
                 CCLog.Log("add a new system");
-                int randZ = Random.Next(100);
+                int randZ = CCRandom.Next(100);
                 particleSystem.Texture = m_pBatchNode.Texture;
                 m_pBatchNode.AddChild(particleSystem, randZ, -1);
             }

@@ -407,10 +407,10 @@ namespace Cocos2D
             beginPos.X += (textfieldSize.Width - labelSize.Width) / 2.0f;
 
             int RAND_MAX = 32767;
-            Random rand = new Random();
+            CCRandom rand = new CCRandom();
 
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            CCPoint endPos = new CCPoint(-winSize.Width / 4.0f, winSize.Height * (0.5f + (float)Random.Next() / (2.0f * RAND_MAX)));
+            CCPoint endPos = new CCPoint(-winSize.Width / 4.0f, winSize.Height * (0.5f + (float)CCRandom.Next() / (2.0f * RAND_MAX)));
             float duration = 1;
             float rotateDuration = 0.2f;
             int repeatTime = 5;
@@ -420,7 +420,7 @@ namespace Cocos2D
                 CCSpawn.FromActions(
                     new CCMoveTo (duration, endPos),
                     new CCRepeat (
-                        new CCRotateBy (rotateDuration, (Random.Next() % 2 > 0) ? 360 : -360),
+                        new CCRotateBy (rotateDuration, (CCRandom.Next() % 2 > 0) ? 360 : -360),
                         (uint)repeatTime),
                     new CCFadeOut  (duration)),
                 new CCCallFuncN(callbackRemoveNodeWhenDidAction));

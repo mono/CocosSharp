@@ -85,12 +85,12 @@ namespace tests
                     float dify = end.Y - start.Y;
                     float delta = i / distance;
                     m_pBrush.Position = new CCPoint(start.X + (difx * delta), start.Y + (dify * delta));
-                    m_pBrush.Rotation = Random.Next() % 360;
-                    float r = (Random.Next() % 50 / 50f) + 0.25f;
+                    m_pBrush.Rotation = CCRandom.Next() % 360;
+                    float r = (CCRandom.Next() % 50 / 50f) + 0.25f;
                     m_pBrush.Scale = r;
 
                     // Comment out the following line to show just the initial red color set
-                    m_pBrush.Color = new CCColor3B((byte) (Random.Next() % 127 + 128), 255, 255);
+                    m_pBrush.Color = new CCColor3B((byte) (CCRandom.Next() % 127 + 128), 255, 255);
 
                     // Call visit to draw the brush, don't call draw..
                     m_pBrush.Visit();

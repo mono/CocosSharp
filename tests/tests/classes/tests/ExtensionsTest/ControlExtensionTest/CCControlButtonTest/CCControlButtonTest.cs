@@ -1,6 +1,6 @@
 using System;
 using Cocos2D;
-using Random = Cocos2D.Random;
+using Random = Cocos2D.CCRandom;
 
 namespace tests.Extensions
 {
@@ -315,7 +315,7 @@ namespace tests.Extensions
 						
 						
 						// Add the buttons
-						var button = standardButtonWithTitle(Random.Next(30).ToString());
+						var button = standardButtonWithTitle(CCRandom.Next(30).ToString());
 						button.SetAdjustBackgroundImage(false);  // Tells the button that the background image must not be adjust
 															// It'll use the prefered size of the background image
                         button.Position = new CCPoint(button.ContentSize.Width / 2 + (button.ContentSize.Width + space) * i,

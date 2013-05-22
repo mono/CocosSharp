@@ -1,6 +1,6 @@
 using System;
 using Cocos2D;
-using Random = Cocos2D.Random;
+using Random = Cocos2D.CCRandom;
 
 namespace tests
 {
@@ -546,9 +546,9 @@ namespace tests
             var action2 = (CCSpeed) (m_tamara.GetActionByTag(EaseTest.kTagAction1));
             var action3 = (CCSpeed) (m_kathia.GetActionByTag(EaseTest.kTagAction1));
 
-            action1.Speed = Random.Float_0_1() * 2;
-            action2.Speed = Random.Float_0_1() * 2;
-            action3.Speed = Random.Float_0_1() * 2;
+            action1.Speed = CCRandom.Float_0_1() * 2;
+            action2.Speed = CCRandom.Float_0_1() * 2;
+            action3.Speed = CCRandom.Float_0_1() * 2;
         }
 
         public override String title()

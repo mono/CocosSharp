@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Cocos2D;
-using Random = Cocos2D.Random;
+using Random = Cocos2D.CCRandom;
 
 namespace tests
 {
@@ -22,9 +22,9 @@ namespace tests
         private void performanceRotationScale(CCSprite pSprite)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
-            pSprite.Position = new CCPoint((Random.Next() % (int)size.Width), (Random.Next() % (int)size.Height));
-            pSprite.Rotation = Random.Float_0_1() * 360;
-            pSprite.Scale = Random.Float_0_1() * 2;
+            pSprite.Position = new CCPoint((CCRandom.Next() % (int)size.Width), (CCRandom.Next() % (int)size.Height));
+            pSprite.Rotation = CCRandom.Float_0_1() * 360;
+            pSprite.Scale = CCRandom.Float_0_1() * 2;
         }
     }
 }

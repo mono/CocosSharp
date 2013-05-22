@@ -281,7 +281,7 @@
     <Compile Include="Math\CCFastRandom.cs" />
     <Compile Include="Math\CCMathHelper.cs" />
     <Compile Include="Math\Random.cs" />
-    <Compile Include="Math\Spline.cs" />
+    <Compile Include="Math\CCSpline.cs" />
     <Compile Include="menu_nodes\CCMenu.cs" />
     <Compile Include="menu_nodes\CCMenuItem.cs" />
     <Compile Include="menu_nodes\CCMenuItemAtlasFont.cs" />

@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Cocos2D;
-using Random = Cocos2D.Random;
+using Random = Cocos2D.CCRandom;
 
 namespace tests
 {

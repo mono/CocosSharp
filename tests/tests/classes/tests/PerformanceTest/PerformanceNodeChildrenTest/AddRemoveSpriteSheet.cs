@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Cocos2D;
-using Random = Cocos2D.Random;
+using Random = Cocos2D.CCRandom;
 
 namespace tests
 {
@@ -20,7 +20,7 @@ namespace tests
                 {
                     CCSprite sprite = new CCSprite(batchNode.Texture, new CCRect(0, 0, 32, 32));
                     batchNode.AddChild(sprite);
-                    sprite.Position = new CCPoint(Random.Next() * s.Width, Random.Next() * s.Height);
+                    sprite.Position = new CCPoint(CCRandom.Next() * s.Width, CCRandom.Next() * s.Height);
                     sprite.Visible = false;
                 }
             }

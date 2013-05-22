@@ -57,7 +57,7 @@ namespace Cocos2D
             int i;
             for (i = nLen - 1; i >= 0; i--)
             {
-                int j = Random.Next() % (i + 1);
+                int j = CCRandom.Next() % (i + 1);
                 int v = pArray[i];
                 pArray[i] = pArray[j];
                 pArray[j] = v;
@@ -103,7 +103,7 @@ namespace Cocos2D
 
             if (m_nSeed != -1)
             {
-                Random.Next(m_nSeed);
+                CCRandom.Next(m_nSeed);
             }
 
             m_nTilesCount = m_sGridSize.X * m_sGridSize.Y;
