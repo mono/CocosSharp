@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.ComponentModel;
 using System.Linq;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCSpriteFrameCache
     {

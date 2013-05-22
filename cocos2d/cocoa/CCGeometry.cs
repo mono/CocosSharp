@@ -28,7 +28,7 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
 
-namespace cocos2d
+namespace Cocos2D
 {
 
 #if !WINDOWS_PHONE && !XBOX && !NETFX_CORE

@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace cocos2d
+namespace Cocos2D
 {
     internal enum NodeTag
     {

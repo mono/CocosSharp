@@ -1,7 +1,7 @@
 
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
     /// <summary>
     /// CCOrbitCamera action

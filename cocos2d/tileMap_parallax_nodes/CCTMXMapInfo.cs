@@ -12,7 +12,7 @@ using System.IO.Compression;
 using ICSharpCode.SharpZipLib.GZip;
 #endif
 
-namespace cocos2d
+namespace Cocos2D
 {
     /// <summary>
     /// CCTMXMapInfo contains the information about the map like:

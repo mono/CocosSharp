@@ -7,7 +7,7 @@ using System.IO.IsolatedStorage;
 #endif
 using Microsoft.Xna.Framework;
 
-namespace cocos2d
+namespace Cocos2D
 {
     internal interface CCDirectorDelegate
     {

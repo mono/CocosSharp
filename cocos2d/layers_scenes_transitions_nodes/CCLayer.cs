@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCLayer : CCNode, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate, CCKeypadDelegate
     {

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework.Content;
 using cocos2d.Framework;
 
-namespace cocos2d
+namespace Cocos2D
 {
 #if IOS
     [MonoTouch.Foundation.Preserve (AllMembers = true)]

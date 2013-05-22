@@ -44,7 +44,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 
-namespace cocos2d.Compression.Zlib
+namespace Cocos2D.Compression.Zlib
 {
     public sealed class Deflate
     {

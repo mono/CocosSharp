@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     //TODO: AsyncLoad
     public class CCTextureCache : IDisposable

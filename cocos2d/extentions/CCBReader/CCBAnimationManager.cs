@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public delegate void CCBAnimationManagerDelegate(string name);
 

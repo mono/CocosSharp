@@ -31,7 +31,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using cocos2d.Framework;
 
-namespace cocos2d
+namespace Cocos2D
 {
     /// <summary>
     /// Helper class to handle file operations

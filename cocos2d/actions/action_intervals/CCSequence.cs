@@ -1,7 +1,7 @@
 
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCSequence : CCActionInterval
     {

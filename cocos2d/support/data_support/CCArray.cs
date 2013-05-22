@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCArray
     {

@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCLabelAtlas : CCAtlasNode, ICCLabelProtocol
     {

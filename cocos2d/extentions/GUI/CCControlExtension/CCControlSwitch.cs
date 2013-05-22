@@ -28,7 +28,7 @@
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     /** @class CCControlSwitch Switch control for Cocos2D. */
 

@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCSpriteBatchNode : CCNode, ICCTextureProtocol
     {

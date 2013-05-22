@@ -25,7 +25,7 @@
 using Box2D.Common;
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
 	public class CCDraw : b2Draw
 	{

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public enum CCBPropType
     {

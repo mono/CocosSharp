@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 
-namespace cocos2d
+namespace Cocos2D
 {
 #if !NETFX_CORE
 	public class CCPointConverter : TypeConverter

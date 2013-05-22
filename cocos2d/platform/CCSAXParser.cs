@@ -29,7 +29,7 @@ using cocos2d.Framework;
 
 //using System.Xml.Linq;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCSAXParser
     {
