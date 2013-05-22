@@ -2,21 +2,21 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace cocos2d
 {
-    public struct ccV3F_T2F : IVertexType
+    internal struct CCV3F_T2F : IVertexType
     {
-        public static readonly VertexDeclaration VertexDeclaration;
+        internal static readonly VertexDeclaration VertexDeclaration;
 
         /// <summary>
         /// vertices (3F)
         /// </summary>
-        public CCVertex3F vertices; // 12 bytes
+        internal CCVertex3F vertices; // 12 bytes
 
         /// <summary>
         /// tex coords (2F)
         /// </summary>
-        public CCTex2F texCoords; // 8 byts
+        internal CCTex2F texCoords; // 8 byts
 
-        static ccV3F_T2F()
+        static CCV3F_T2F()
         {
             var elements = new[]
                 {
@@ -46,7 +46,7 @@ namespace cocos2d
         protected ushort[] m_pIndices;
         protected CCVertex3F[] m_pOriginalVertices;
         private VertexBuffer m_pVertexBuffer;
-        protected ccV3F_T2F[] m_pVertices;
+        internal CCV3F_T2F[] m_pVertices;
 
         //protected CCPoint[] m_pTexCoordinates;
         //protected ccVertex3F[] m_pVertices;
@@ -80,7 +80,7 @@ namespace cocos2d
         {
             if (m_pVertexBuffer == null || m_pVertexBuffer.VertexCount < m_pVertices.Length)
             {
-                m_pVertexBuffer = new VertexBuffer(CCDrawManager.graphicsDevice, typeof(ccV3F_T2F), m_pVertices.Length, BufferUsage.WriteOnly);
+                m_pVertexBuffer = new VertexBuffer(CCDrawManager.graphicsDevice, typeof(CCV3F_T2F), m_pVertices.Length, BufferUsage.WriteOnly);
             }
 
             if (m_pIndexBuffer == null || m_pIndexBuffer.IndexCount < m_pIndices.Length)
@@ -121,12 +121,12 @@ namespace cocos2d
 
             int numOfPoints = (m_sGridSize.X + 1) * (m_sGridSize.Y + 1);
 
-            m_pVertices = new ccV3F_T2F[numOfPoints];
+            m_pVertices = new CCV3F_T2F[numOfPoints];
             m_pOriginalVertices = new CCVertex3F[numOfPoints];
             //m_pTexCoordinates = new CCPoint[numOfPoints];
             m_pIndices = new ushort[m_sGridSize.X * m_sGridSize.Y * 6];
 
-            ccV3F_T2F[] vertArray = m_pVertices;
+            CCV3F_T2F[] vertArray = m_pVertices;
             //var texArray = m_pTexCoordinates;
             ushort[] idxArray = m_pIndices;
 
