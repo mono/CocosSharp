@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Cocos2D
 {
-    public static class MHelper
+    public static class CCMathHelper
     {
         private static float _lastSinAngle = 0f;
         private static float _lastSinValue = (float) Math.Sin(0);

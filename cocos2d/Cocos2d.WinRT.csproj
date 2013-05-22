@@ -729,7 +729,7 @@
     <Compile Include=".\Math\FastRandom.cs">
       <LogicalName>Math\FastRandom</LogicalName>
     </Compile>
-    <Compile Include=".\Math\MathHelper.cs">
+    <Compile Include=".\Math\CCMathHelper.cs">
       <LogicalName>Math\MathHelper</LogicalName>
     </Compile>
     <Compile Include=".\Math\Random.cs">

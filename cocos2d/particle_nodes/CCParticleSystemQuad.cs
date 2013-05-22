@@ -206,9 +206,9 @@ namespace Cocos2D
                 float x = newPosition.X;
                 float y = newPosition.Y;
 
-                float r = -MHelper.ToRadians(particle.rotation);
-                float cr = MHelper.Cos(r);
-                float sr = MHelper.Sin(r);
+                float r = -CCMathHelper.ToRadians(particle.rotation);
+                float cr = CCMathHelper.Cos(r);
+                float sr = CCMathHelper.Sin(r);
                 float ax = x1 * cr - y1 * sr + x;
                 float ay = x1 * sr + y1 * cr + y;
                 float bx = x2 * cr - y1 * sr + x;

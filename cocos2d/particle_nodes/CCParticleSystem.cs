@@ -788,7 +788,7 @@ namespace Cocos2D
             // Mode Gravity: A
             if (m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity)
             {
-                var v = new CCPoint(MHelper.Cos(a), MHelper.Sin(a));
+                var v = new CCPoint(CCMathHelper.Cos(a), CCMathHelper.Sin(a));
 
                 float s = modeA.speed + modeA.speedVar * Random.Float_Minus1_1();
 
@@ -910,8 +910,8 @@ namespace Cocos2D
                     p.modeB.angle += p.modeB.degreesPerSecond * dt;
                     p.modeB.radius += p.modeB.deltaRadius * dt;
 
-                    p.pos.X = -MHelper.Cos(p.modeB.angle) * p.modeB.radius;
-                    p.pos.Y = -MHelper.Sin(p.modeB.angle) * p.modeB.radius;
+                    p.pos.X = -CCMathHelper.Cos(p.modeB.angle) * p.modeB.radius;
+                    p.pos.Y = -CCMathHelper.Sin(p.modeB.angle) * p.modeB.radius;
                 }
 
                 // color
