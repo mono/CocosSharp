@@ -7,7 +7,7 @@ namespace Cocos2D
 {
     public class CCParticleSystemQuad : CCParticleSystem
     {
-        private RawList<CCV3F_C4B_T2F_Quad> m_pQuads; // quads to be rendered
+        private CCRawList<CCV3F_C4B_T2F_Quad> m_pQuads; // quads to be rendered
 
         //implementation CCParticleSystemQuad
         // overriding the init method
@@ -483,7 +483,7 @@ void setupVBOandVAO()
         {
             Debug.Assert(m_pBatchNode == null, "Memory should not be alloced when not using batchNode");
             Debug.Assert((m_pQuads == null), "Memory already alloced");
-            m_pQuads = new RawList<CCV3F_C4B_T2F_Quad>(m_uTotalParticles);
+            m_pQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(m_uTotalParticles);
             return true;
         }
 

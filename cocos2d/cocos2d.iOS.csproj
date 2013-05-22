@@ -333,7 +333,6 @@
     <Compile Include="Platform\PList\PlistObjectBase.cs" />
     <Compile Include="Platform\PList\PlistReal.cs" />
     <Compile Include="Platform\PList\PlistString.cs" />
-    <Compile Include="Platform\RawList.cs" />
     <Compile Include="Platform\ReusedObject.cs" />
     <Compile Include="Platform\Zlib\Adler32.cs" />
     <Compile Include="Platform\Zlib\Deflate.cs" />
@@ -443,6 +442,7 @@
     <Compile Include="Platform\CCOGLES.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Platform\CCRawList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />

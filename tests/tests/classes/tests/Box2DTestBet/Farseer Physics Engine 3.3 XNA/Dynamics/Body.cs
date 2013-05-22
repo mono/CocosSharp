@@ -96,7 +96,7 @@ namespace FarseerPhysics.Dynamics
 
         internal Body()
         {
-            FixtureList = new RawList<Fixture>(32);
+            FixtureList = new CCRawList<Fixture>(32);
         }
 
         public Body(World world)
@@ -106,7 +106,7 @@ namespace FarseerPhysics.Dynamics
 
         public Body(World world, object userData)
         {
-            FixtureList = new RawList<Fixture>(32);
+            FixtureList = new CCRawList<Fixture>(32);
             BodyId = _bodyIdCounter++;
 
             World = world;
@@ -406,7 +406,7 @@ namespace FarseerPhysics.Dynamics
         /// Gets all the fixtures attached to this body.
         /// </summary>
         /// <value>The fixture list.</value>
-        public RawList<Fixture> FixtureList { get; internal set; }
+        public CCRawList<Fixture> FixtureList { get; internal set; }
 
         /// <summary>
         /// Get the list of all joints attached to this body.

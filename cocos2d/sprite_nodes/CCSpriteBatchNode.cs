@@ -7,7 +7,7 @@ namespace Cocos2D
         private const int kDefaultSpriteBatchCapacity = 29;
 
         protected CCBlendFunc m_blendFunc;
-        protected RawList<CCSprite> m_pobDescendants;
+        protected CCRawList<CCSprite> m_pobDescendants;
         protected CCTextureAtlas m_pobTextureAtlas;
 
         public CCTextureAtlas TextureAtlas
@@ -16,7 +16,7 @@ namespace Cocos2D
             set { m_pobTextureAtlas = value; }
         }
 
-        public RawList<CCSprite> Descendants
+        public CCRawList<CCSprite> Descendants
         {
             get { return m_pobDescendants; }
         }
@@ -93,9 +93,9 @@ namespace Cocos2D
             UpdateBlendFunc();
 
             // no lazy alloc in this node
-            m_pChildren = new RawList<CCNode>(capacity);
+            m_pChildren = new CCRawList<CCNode>(capacity);
 
-            m_pobDescendants = new RawList<CCSprite>(capacity);
+            m_pobDescendants = new CCRawList<CCSprite>(capacity);
 
             return true;
         }
@@ -261,7 +261,7 @@ namespace Cocos2D
         private void UpdateAtlasIndex(CCSprite sprite, ref int curIndex)
         {
             int count = 0;
-            RawList<CCNode> pArray = sprite.Children;
+            CCRawList<CCNode> pArray = sprite.Children;
 
             if (pArray != null)
             {
@@ -337,7 +337,7 @@ namespace Cocos2D
         private void Swap(int oldIndex, int newIndex)
         {
             CCSprite[] sprites = m_pobDescendants.Elements;
-            RawList<CCV3F_C4B_T2F_Quad> quads = m_pobTextureAtlas.m_pQuads;
+            CCRawList<CCV3F_C4B_T2F_Quad> quads = m_pobTextureAtlas.m_pQuads;
 
             m_pobTextureAtlas.Dirty = true;
 
@@ -401,7 +401,7 @@ namespace Cocos2D
 
         public int RebuildIndexInOrder(CCSprite pobParent, int uIndex)
         {
-            RawList<CCNode> pChildren = pobParent.Children;
+            CCRawList<CCNode> pChildren = pobParent.Children;
 
             if (pChildren != null && pChildren.count > 0)
             {
@@ -439,7 +439,7 @@ namespace Cocos2D
 
         public int HighestAtlasIndexInChild(CCSprite pSprite)
         {
-            RawList<CCNode> pChildren = pSprite.Children;
+            CCRawList<CCNode> pChildren = pSprite.Children;
 
             if (pChildren == null || pChildren.count == 0)
             {
@@ -453,7 +453,7 @@ namespace Cocos2D
 
         public int LowestAtlasIndexInChild(CCSprite pSprite)
         {
-            RawList<CCNode> pChildren = pSprite.Children;
+            CCRawList<CCNode> pChildren = pSprite.Children;
 
             if (pChildren == null || pChildren.count == 0)
             {
@@ -467,7 +467,7 @@ namespace Cocos2D
 
         public int AtlasIndexForChild(CCSprite pobSprite, int nZ)
         {
-            RawList<CCNode> pBrothers = pobSprite.Parent.Children;
+            CCRawList<CCNode> pBrothers = pobSprite.Parent.Children;
 
             int uChildIndex = pBrothers.IndexOf(pobSprite);
 
@@ -546,7 +546,7 @@ namespace Cocos2D
             }
 
             // add children recursively
-            RawList<CCNode> pChildren = pobSprite.Children;
+            CCRawList<CCNode> pChildren = pobSprite.Children;
 
             if (pChildren != null && pChildren.count > 0)
             {
@@ -581,7 +581,7 @@ namespace Cocos2D
             m_pobTextureAtlas.InsertQuad(ref sprite.m_sQuad, index);
 
             // add children recursively
-            RawList<CCNode> children = sprite.Children;
+            CCRawList<CCNode> children = sprite.Children;
             if (children != null && children.count > 0)
             {
                 CCNode[] elements = children.Elements;
@@ -618,7 +618,7 @@ namespace Cocos2D
             }
 
             // remove children recursively
-            RawList<CCNode> pChildren = pobSprite.Children;
+            CCRawList<CCNode> pChildren = pobSprite.Children;
 
             if (pChildren != null && pChildren.count > 0)
             {

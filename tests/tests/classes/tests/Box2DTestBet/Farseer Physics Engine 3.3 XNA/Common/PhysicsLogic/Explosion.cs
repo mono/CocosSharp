@@ -364,7 +364,7 @@ namespace FarseerPhysics.Common.PhysicsLogic
                     Vector2 hitpoint = Vector2.Zero;
                     float minlambda = float.MaxValue;
 
-                    RawList<Fixture> fl = _data[i].Body.FixtureList;
+                    CCRawList<Fixture> fl = _data[i].Body.FixtureList;
                     for (int x = 0; x < fl.Count; x++)
                     {
                         Fixture f = fl[x];

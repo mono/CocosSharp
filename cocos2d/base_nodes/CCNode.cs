@@ -91,7 +91,7 @@ namespace Cocos2D
         internal int m_nZOrder;
         protected CCActionManager m_pActionManager;
         protected CCCamera m_pCamera;
-        protected RawList<CCNode> m_pChildren;
+        protected CCRawList<CCNode> m_pChildren;
         protected CCGridBase m_pGrid;
         protected CCNode m_pParent;
         protected CCScheduler m_pScheduler;
@@ -397,7 +397,7 @@ namespace Cocos2D
             set { SetPosition(m_tPosition.X, value); }
         }
 
-        public RawList<CCNode> Children
+        public CCRawList<CCNode> Children
         {
             get { return m_pChildren; }
         }
@@ -605,7 +605,7 @@ namespace Cocos2D
 
             if (m_pChildren == null)
             {
-                m_pChildren = new RawList<CCNode>();
+                m_pChildren = new CCRawList<CCNode>();
             }
 
             InsertChild(child, zOrder);

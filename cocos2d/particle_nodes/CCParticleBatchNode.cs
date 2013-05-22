@@ -66,7 +66,7 @@ namespace Cocos2D
             TextureAtlas.InitWithTexture(tex, capacity);
 
             // no lazy alloc in this node
-            m_pChildren = new RawList<CCNode>(capacity);
+            m_pChildren = new CCRawList<CCNode>(capacity);
 
             m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
             m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
@@ -176,7 +176,7 @@ namespace Cocos2D
 
             if (m_pChildren == null)
             {
-                m_pChildren = new RawList<CCNode>(4);
+                m_pChildren = new CCRawList<CCNode>(4);
             }
 
             //don't use a lazy insert

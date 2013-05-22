@@ -307,7 +307,7 @@
     <Compile Include="Platform\PList\PlistReal.cs" />
     <Compile Include="Platform\PList\PlistString.cs" />
     <Compile Include="Platform\CCPrimitiveBatch.cs" />
-    <Compile Include="Platform\RawList.cs" />
+    <Compile Include="Platform\CCRawList.cs" />
     <Compile Include="Platform\ReusedObject.cs" />
     <Compile Include="Platform\Zlib\Adler32.cs" />
     <Compile Include="Platform\Zlib\Deflate.cs" />

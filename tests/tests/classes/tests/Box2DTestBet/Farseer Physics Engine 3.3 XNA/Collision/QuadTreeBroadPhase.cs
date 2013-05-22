@@ -11,7 +11,7 @@ public class QuadTreeBroadPhase : IBroadPhase
     private const int TreeUpdateThresh = 10000;
     private int _currID;
     private Dictionary<int, Element<FixtureProxy>> _idRegister;
-    private RawList<Element<FixtureProxy>> _moveBuffer;
+    private CCRawList<Element<FixtureProxy>> _moveBuffer;
     private List<Pair> _pairBuffer;
     private QuadTree<FixtureProxy> _quadTree;
     private int _treeMoveNum;
@@ -24,7 +24,7 @@ public class QuadTreeBroadPhase : IBroadPhase
     {
         _quadTree = new QuadTree<FixtureProxy>(span, 5, 10);
         _idRegister = new Dictionary<int, Element<FixtureProxy>>();
-        _moveBuffer = new RawList<Element<FixtureProxy>>();
+        _moveBuffer = new CCRawList<Element<FixtureProxy>>();
         _pairBuffer = new List<Pair>();
     }
 

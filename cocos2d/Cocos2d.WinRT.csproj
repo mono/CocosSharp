@@ -909,7 +909,7 @@
     <Compile Include=".\platform\CCPrimitiveBatch.cs">
       <LogicalName>platform\PrimitiveBatch</LogicalName>
     </Compile>
-    <Compile Include=".\platform\RawList.cs">
+    <Compile Include=".\platform\CCRawList.cs">
       <LogicalName>platform\RawList</LogicalName>
     </Compile>
     <Compile Include=".\platform\ReusedObject.cs">

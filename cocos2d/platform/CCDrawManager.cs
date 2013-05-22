@@ -726,7 +726,7 @@ namespace Cocos2D
             DrawIndexedPrimitives(PrimitiveType.TriangleList, vertices, 0, 4, m_quadIndices, 0, 2);
         }
 
-        public static void DrawQuads(RawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
+        public static void DrawQuads(CCRawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
         {
             if (n == 0)
             {
@@ -805,7 +805,7 @@ namespace Cocos2D
             DrawCount++;
         }
 
-        public static void SetQuadsToBuffer(VertexBuffer vertexBuffer, RawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
+        public static void SetQuadsToBuffer(VertexBuffer vertexBuffer, CCRawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
         {
             if (m_vertices == null || m_vertices.Length < quads.Capacity * 4)
             {

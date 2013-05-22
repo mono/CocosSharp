@@ -44,7 +44,7 @@ namespace FarseerPhysics.Dynamics
         /// </summary>
         public CollisionFilterDelegate ContactFilter;
 
-        public RawList<Contact> ContactList = new RawList<Contact>(128);
+        public CCRawList<Contact> ContactList = new CCRawList<Contact>(128);
 
         /// <summary>
         /// Fires when a contact is deleted

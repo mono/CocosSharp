@@ -409,7 +409,7 @@ namespace Cocos2D
         {
             m_pContainer.PauseSchedulerAndActions();
 
-            RawList<CCNode> pChildren = m_pContainer.Children;
+            CCRawList<CCNode> pChildren = m_pContainer.Children;
 
             if (pChildren != null && pChildren.count > 0)
             {
@@ -426,7 +426,7 @@ namespace Cocos2D
 
         public void Resume(object sender)
         {
-            RawList<CCNode> pChildren = m_pContainer.Children;
+            CCRawList<CCNode> pChildren = m_pContainer.Children;
 
             if (pChildren != null && pChildren.count > 0)
             {
