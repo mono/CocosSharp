@@ -289,7 +289,7 @@
     <Compile Include="Platform\CCLog.cs" />
     <Compile Include="Platform\CCSAXParser.cs" />
     <Compile Include="Platform\CCSpriteFontCache.cs" />
-    <Compile Include="Platform\DrawManager.cs" />
+    <Compile Include="Platform\CCDrawManager.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
     <Compile Include="Platform\InputState.cs" />
     <Compile Include="Platform\OGLES.cs">
@@ -356,7 +356,7 @@
     <Compile Include="support\Compression\ZlibCodec.cs" />
     <Compile Include="support\Compression\ZlibException.cs" />
     <Compile Include="support\Compression\ZlibStreamFlavor.cs" />
-    <Compile Include="support\data_support\ccCArray.cs" />
+    <Compile Include="support\data_support\CCArray.cs" />
     <Compile Include="support\image_support\TGAlib.cs" />
     <Compile Include="support\TransformUtils.cs" />
     <Compile Include="support\zip_support\CCZHeader.cs" />
@@ -365,7 +365,7 @@
     <Compile Include="textures\CCTextureAtlas.cs" />
     <Compile Include="textures\CCTextureCache.cs" />
     <Compile Include="text_input_node\CCIMEKeyboardNotificationInfo.cs" />
-    <Compile Include="text_input_node\CCTextFieldTTF .cs" />
+    <Compile Include="text_input_node\CCTextFieldTTF.cs" />
     <Compile Include="text_input_node\ICCIMEDelegate.cs" />
     <Compile Include="text_input_node\ICCTextFieldDelegate.cs" />
     <Compile Include="tileMap_parallax_nodes\CCParallaxNode.cs" />
@@ -376,7 +376,7 @@
     <Compile Include="tileMap_parallax_nodes\CCTMXMapInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXObjectGroup.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXTiledMap.cs" />
-    <Compile Include="tileMap_parallax_nodes\ccTMXTileFlags_.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTMXTileFlags.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXTilesetInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXXMLParser.cs" />
     <Compile Include="touch_dispatcher\CCStandardTouchHandler.cs" />

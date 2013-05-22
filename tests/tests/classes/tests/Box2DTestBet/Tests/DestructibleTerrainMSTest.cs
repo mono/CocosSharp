@@ -6,7 +6,7 @@ using FarseerPhysics.TestBed.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using cocos2d;
+using Cocos2D;
 
 namespace FarseerPhysics.TestBed.Tests
 {
@@ -47,7 +47,7 @@ namespace FarseerPhysics.TestBed.Tests
 
         public override void Mouse(MouseState state, MouseState oldState)
         {
-            var pos = DrawManager.ScreenToWorld(state.X, state.Y);
+            var pos = CCDrawManager.ScreenToWorld(state.X, state.Y);
             Vector2 position = new Vector2(pos.X, pos.Y);
 
             if (state.RightButton == ButtonState.Pressed)

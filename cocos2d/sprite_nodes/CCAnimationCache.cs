@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using Cocos2D.PropertyList;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCAnimationCache 
     {

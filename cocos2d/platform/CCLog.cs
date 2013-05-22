@@ -23,7 +23,7 @@ THE SOFTWARE.
 using System;
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCLog
     { 

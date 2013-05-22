@@ -1,10 +1,10 @@
 using Microsoft.Xna.Framework;
 
-namespace cocos2d
+namespace Cocos2D
 {
-    public class TransformUtils
+    internal class TransformUtils
     {
-        public static Matrix CGAffineToMatrix(float[] m)
+        internal static Matrix CGAffineToMatrix(float[] m)
         {
             return new Matrix()
             {
@@ -15,14 +15,14 @@ namespace cocos2d
             };
         }
 
-        public static Matrix CGAffineToMatrix(CCAffineTransform t)
+        internal static Matrix CGAffineToMatrix(CCAffineTransform t)
         {
             var m = new float[16];
             CGAffineToGL(t, ref m);
             return CGAffineToMatrix(m);
         }
 
-        public static void CGAffineToGL(CCAffineTransform t, ref float[] m)
+        internal static void CGAffineToGL(CCAffineTransform t, ref float[] m)
         {
             // | m[0] m[4] m[8]  m[12] |     | m11 m21 m31 m41 |     | a c 0 tx |
             // | m[1] m[5] m[9]  m[13] |     | m12 m22 m32 m42 |     | b d 0 ty |
@@ -35,7 +35,7 @@ namespace cocos2d
             m[1] = t.b; m[5] = t.d; m[13] = t.ty;
         }
 
-        public static void GLToCGAffine(float[] m, CCAffineTransform t)
+        internal static void GLToCGAffine(float[] m, CCAffineTransform t)
         {
             t.a = m[0]; t.c = m[4]; t.tx = m[12];
             t.b = m[1]; t.d = m[5]; t.ty = m[13];

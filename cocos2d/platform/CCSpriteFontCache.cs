@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCSpriteFontCache
     {

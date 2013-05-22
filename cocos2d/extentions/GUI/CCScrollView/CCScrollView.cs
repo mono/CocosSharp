@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public enum CCScrollViewDirection
     {
@@ -626,7 +626,7 @@ namespace cocos2d
                 return;
             }
 
-            DrawManager.PushMatrix();
+            CCDrawManager.PushMatrix();
             //kmGLPushMatrix();
 
             if (m_pGrid != null && m_pGrid.Active)
@@ -680,7 +680,7 @@ namespace cocos2d
                 m_pGrid.AfterDraw(this);
             }
 
-            DrawManager.PopMatrix();
+            CCDrawManager.PopMatrix();
             //kmGLPopMatrix();
 /*
 			// draw bounding box
@@ -837,8 +837,8 @@ namespace cocos2d
 
                 CCSize winSize = CCDirector.SharedDirector.WinSize;
 
-                DrawManager.ScissorRectEnabled = true;
-                DrawManager.SetScissorInPoints(screenPos.X, winSize.Height - (screenPos.Y + m_tViewSize.Height * s), m_tViewSize.Width * s,
+                CCDrawManager.ScissorRectEnabled = true;
+                CCDrawManager.SetScissorInPoints(screenPos.X, winSize.Height - (screenPos.Y + m_tViewSize.Height * s), m_tViewSize.Width * s,
                                                m_tViewSize.Height * s);
             }
         }
@@ -852,7 +852,7 @@ namespace cocos2d
         {
             if (m_bClippingToBounds)
             {
-                DrawManager.ScissorRectEnabled = false;
+                CCDrawManager.ScissorRectEnabled = false;
             }
         }
 

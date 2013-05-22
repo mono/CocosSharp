@@ -22,7 +22,7 @@ THE SOFTWARE.
 ****************************************************************************/
 
 using System;
-namespace cocos2d
+namespace Cocos2D
 {
     [Obsolete("use CCPoint and CCPoint operator overloads - Will be deleted Aug 1, 2013")]
     public class CCPointExtension

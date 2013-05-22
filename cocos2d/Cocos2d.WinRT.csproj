@@ -858,8 +858,8 @@
     <Compile Include=".\platform\ContentReaders\KerningHashElementReader.cs">
       <LogicalName>platform\ContentReaders\KerningHashElementReader</LogicalName>
     </Compile>
-    <Compile Include=".\platform\DrawManager.cs">
-      <LogicalName>platform\DrawManager</LogicalName>
+    <Compile Include=".\platform\CCDrawManager.cs">
+      <LogicalName>platform\CCDrawManager</LogicalName>
     </Compile>
     <Compile Include=".\platform\ICCSAXDelegator.cs">
       <LogicalName>platform\ICCSAXDelegator</LogicalName>
@@ -1062,7 +1062,7 @@
     <Compile Include=".\support\Converters\CCSizeConverter.cs">
       <LogicalName>support\Converters\CCSizeConverter</LogicalName>
     </Compile>
-    <Compile Include=".\support\data_support\ccCArray.cs">
+    <Compile Include=".\support\data_support\CCArray.cs">
       <LogicalName>support\data_support\ccCArray</LogicalName>
     </Compile>
     <Compile Include=".\support\image_support\TGAlib.cs">
@@ -1092,7 +1092,7 @@
     <Compile Include=".\text_input_node\CCIMEKeyboardNotificationInfo.cs">
       <LogicalName>text_input_node\CCIMEKeyboardNotificationInfo</LogicalName>
     </Compile>
-    <Compile Include=".\text_input_node\CCTextFieldTTF .cs">
+    <Compile Include=".\text_input_node\CCTextFieldTTF.cs">
       <LogicalName>text_input_node\CCTextFieldTTF </LogicalName>
     </Compile>
     <Compile Include=".\text_input_node\ICCIMEDelegate.cs">
@@ -1125,7 +1125,7 @@
     <Compile Include=".\tileMap_parallax_nodes\CCTMXTiledMap.cs">
       <LogicalName>tileMap_parallax_nodes\CCTMXTiledMap</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\ccTMXTileFlags_.cs">
+    <Compile Include=".\tileMap_parallax_nodes\CCTMXTileFlags.cs">
       <LogicalName>tileMap_parallax_nodes\ccTMXTileFlags_</LogicalName>
     </Compile>
     <Compile Include=".\tileMap_parallax_nodes\CCTMXTilesetInfo.cs">

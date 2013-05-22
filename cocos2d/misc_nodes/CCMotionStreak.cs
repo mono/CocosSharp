@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCMotionStreak : CCNode, ICCTextureProtocol, ICCRGBAProtocol
     {
@@ -410,10 +410,10 @@ namespace cocos2d
 
         public override void Draw()
         {
-            DrawManager.BlendFunc(m_tBlendFunc);
-            DrawManager.BindTexture(m_pTexture);
+            CCDrawManager.BlendFunc(m_tBlendFunc);
+            CCDrawManager.BindTexture(m_pTexture);
 
-            DrawManager.DrawPrimitives(PrimitiveType.TriangleStrip, m_pVertices, 0, m_uNuPoints * 2 - 2);
+            CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip, m_pVertices, 0, m_uNuPoints * 2 - 2);
         }
     }
 }

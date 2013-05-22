@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
-using cocos2d;
+using Cocos2D;
 
 namespace FarseerPhysics.Common
 {

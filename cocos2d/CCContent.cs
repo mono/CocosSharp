@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Media;
 
-namespace cocos2d.Framework
+namespace Cocos2D.Framework
 {
     public class CCContent
     {

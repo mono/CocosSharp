@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
     /// <summary>
     /// A fast random number generator for .NET

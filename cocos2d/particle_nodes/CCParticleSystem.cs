@@ -2,8 +2,9 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
+using Cocos2D.PropertyList;
 
-namespace cocos2d
+namespace Cocos2D
 {
     // ideas taken from:
     //     . The ocean spray in your face [Jeff Lander]

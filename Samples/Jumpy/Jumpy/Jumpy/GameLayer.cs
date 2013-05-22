@@ -21,7 +21,7 @@
 //		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 using System;
-using cocos2d;
+using Cocos2D;
 using Microsoft.Xna.Framework;
 
 namespace Jumpy

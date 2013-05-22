@@ -24,7 +24,7 @@ THE SOFTWARE.
 
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCTransitionShrinkGrow : CCTransitionScene, ICCTransitionEaseScene
     {

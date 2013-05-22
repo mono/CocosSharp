@@ -2,7 +2,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public enum ImageFormat
     {
@@ -52,7 +52,7 @@ namespace cocos2d
             m_pTexture = new CCTexture2D();
             m_pTexture.SetAliasTexParameters();
 
-            m_pRenderTarget2D = DrawManager.CreateRenderTarget(w, h, colorFormat, depthFormat, usage);
+            m_pRenderTarget2D = CCDrawManager.CreateRenderTarget(w, h, colorFormat, depthFormat, usage);
             m_pTexture.InitWithTexture(m_pRenderTarget2D);
 
             m_bFirstUsage = true;
@@ -69,7 +69,7 @@ namespace cocos2d
         public virtual void Begin()
         {
             // Save the current matrix
-            DrawManager.PushMatrix();
+            CCDrawManager.PushMatrix();
 
             CCSize texSize = m_pTexture.ContentSizeInPixels;
 
@@ -79,9 +79,9 @@ namespace cocos2d
             float widthRatio = size.Width / texSize.Width;
             float heightRatio = size.Height / texSize.Height;
 
-            DrawManager.SetRenderTarget(m_pTexture);
+            CCDrawManager.SetRenderTarget(m_pTexture);
 
-            DrawManager.SetViewPort(0, 0, (int) texSize.Width, (int) texSize.Height);
+            CCDrawManager.SetViewPort(0, 0, (int) texSize.Width, (int) texSize.Height);
 
             Matrix projection = Matrix.CreateOrthographicOffCenter(
                 -1.0f / widthRatio, 1.0f / widthRatio,
@@ -89,11 +89,11 @@ namespace cocos2d
                 -1, 1
                 );
 
-            DrawManager.MultMatrix(ref projection);
+            CCDrawManager.MultMatrix(ref projection);
 
             if (m_bFirstUsage)
             {
-                DrawManager.Clear(Color.Transparent);
+                CCDrawManager.Clear(Color.Transparent);
                 m_bFirstUsage = false;
             }
         }
@@ -101,42 +101,42 @@ namespace cocos2d
         public void BeginWithClear(float r, float g, float b, float a)
         {
             Begin();
-            DrawManager.Clear(new Color(r, g, b, a));
+            CCDrawManager.Clear(new Color(r, g, b, a));
         }
 
         public void BeginWithClear(float r, float g, float b, float a, float depthValue)
         {
             Begin();
-            DrawManager.Clear(new Color(r, g, b, a), depthValue);
+            CCDrawManager.Clear(new Color(r, g, b, a), depthValue);
         }
 
         public void BeginWithClear(float r, float g, float b, float a, float depthValue, int stencilValue)
         {
             Begin();
-            DrawManager.Clear(new Color(r, g, b, a), depthValue, stencilValue);
+            CCDrawManager.Clear(new Color(r, g, b, a), depthValue, stencilValue);
         }
 
         public void ClearDepth(float depthValue)
         {
             Begin();
-            DrawManager.Clear(ClearOptions.DepthBuffer, Color.White, depthValue, 0);
+            CCDrawManager.Clear(ClearOptions.DepthBuffer, Color.White, depthValue, 0);
             End();
         }
 
         public void ClearStencil(int stencilValue)
         {
             Begin();
-            DrawManager.Clear(ClearOptions.Stencil, Color.White, 0, stencilValue);
+            CCDrawManager.Clear(ClearOptions.Stencil, Color.White, 0, stencilValue);
             End();
         }
 
         public virtual void End()
         {
-            DrawManager.PopMatrix();
+            CCDrawManager.PopMatrix();
 
             CCDirector director = CCDirector.SharedDirector;
 
-            DrawManager.SetRenderTarget((CCTexture2D) null);
+            CCDrawManager.SetRenderTarget((CCTexture2D) null);
 
             director.Projection = director.Projection;
         }

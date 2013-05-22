@@ -2304,13 +2304,13 @@
       <Project>{AE483C29-042E-4226-BA52-D247CE7676DA}</Project>
       <Name>Lidgren.Network.MacOS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\cocos2d.MacOS.csproj">
-      <Project>{A83510D8-7AED-411E-9616-DCFEA180969E}</Project>
-      <Name>cocos2d.MacOS</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\box2d\box2d.MacOS.csproj">
       <Project>{A84510D8-7AED-411E-9616-DCFEA180969E}</Project>
       <Name>box2d.MacOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cocos2d\cocos2d.MacOS.csproj">
+      <Project>{A83510D8-7AED-411E-9616-DCFEA180969E}</Project>
+      <Name>cocos2d.MacOS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

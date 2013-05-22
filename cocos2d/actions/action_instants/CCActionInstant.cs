@@ -1,5 +1,5 @@
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCActionInstant : CCFiniteTimeAction
     {

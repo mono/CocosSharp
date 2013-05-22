@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using cocos2d;
+using Cocos2D;
 
 namespace tests
 {

@@ -1,9 +1,9 @@
 using Microsoft.Xna.Framework.Content.Pipeline;
 
 using TInput = System.String;
-using TOutput = cocos2d.Framework.CCContent;
+using TOutput = Cocos2D.Framework.CCContent;
 
-namespace cocos2d.Content.Pipeline.Importers
+namespace Cocos2D.Content.Pipeline.Importers
 {
     [ContentProcessor(DisplayName = "TextProcessor")]
     public class TextProcessor : ContentProcessor<TInput, TOutput>

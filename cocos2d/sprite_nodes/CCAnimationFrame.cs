@@ -1,5 +1,6 @@
+using Cocos2D.PropertyList;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCAnimationFrame : ICopyable
     {

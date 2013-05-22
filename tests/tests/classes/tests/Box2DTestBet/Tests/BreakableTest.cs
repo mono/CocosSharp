@@ -33,7 +33,7 @@ using FarseerPhysics.Factories;
 using FarseerPhysics.TestBed.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using cocos2d;
+using Cocos2D;
 
 namespace FarseerPhysics.TestBed.Tests
 {

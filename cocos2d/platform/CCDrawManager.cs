@@ -4,9 +4,9 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cocos2d
+namespace Cocos2D
 {
-    public static class DrawManager
+    public static class CCDrawManager
     {
         private const int DefaultQuadBufferSize = 1024 * 4;
         public static string DefaultFont = "arial";
@@ -229,7 +229,7 @@ namespace cocos2d
 
         public static void Init(GraphicsDevice graphicsDevice)
         {
-            DrawManager.graphicsDevice = graphicsDevice;
+            CCDrawManager.graphicsDevice = graphicsDevice;
             
             spriteBatch = new SpriteBatch(graphicsDevice);
             
@@ -968,7 +968,7 @@ namespace cocos2d
             if (bSwapDims)
             {
                 CCSize newSize = m_obDesignResolutionSize.Inverted;
-                DrawManager.SetDesignResolutionSize(newSize.Width, newSize.Height, m_eResolutionPolicy);
+                CCDrawManager.SetDesignResolutionSize(newSize.Width, newSize.Height, m_eResolutionPolicy);
                 /*
                 m_obViewPortRect = m_obViewPortRect.InvertedSize;
                 m_obDesignResolutionSize = m_obDesignResolutionSize.Inverted;

@@ -3,7 +3,7 @@
  * Helper class to store targets and selectors (and eventually, params?) in the same CCMutableArray. Basically a very crude form of a NSInvocation
  */
 
-namespace cocos2d
+namespace Cocos2D
 {
     public delegate void SEL_CCControlHandler(object obj, CCControlEvent ce);
 

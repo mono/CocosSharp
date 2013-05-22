@@ -26,7 +26,7 @@ THE SOFTWARE.
 
 using System.Collections.Generic;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCScriptEngineProtocol
     {

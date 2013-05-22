@@ -1,4 +1,5 @@
-using cocos2d;
+using Cocos2D;
+using Cocos2D.PropertyList;
 
 namespace tests
 {

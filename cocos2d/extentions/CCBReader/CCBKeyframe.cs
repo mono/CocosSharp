@@ -1,10 +1,10 @@
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCBKeyframe 
     {
         public object Value;
         public float Time;
-        public kCCBKeyframeEasing EasingType;
+        public CCBKeyframeEasing EasingType;
         public float EasingOpt;
     }
 }

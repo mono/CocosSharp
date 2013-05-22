@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCAccelerometer
     {

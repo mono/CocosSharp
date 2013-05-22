@@ -1,7 +1,7 @@
 
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCAtlasNode : CCNode, ICCRGBAProtocol, ICCTextureProtocol
     {
@@ -160,7 +160,7 @@ namespace cocos2d
 
         public override void Draw()
         {
-            DrawManager.BlendFunc(m_tBlendFunc);
+            CCDrawManager.BlendFunc(m_tBlendFunc);
 
             m_pTextureAtlas.DrawNumberOfQuads(m_uQuadsToDraw, 0);
         }

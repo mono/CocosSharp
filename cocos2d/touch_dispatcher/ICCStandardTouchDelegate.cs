@@ -1,7 +1,7 @@
 
 using System.Collections.Generic;
 
-namespace cocos2d
+namespace Cocos2D
 {
 
     public interface ICCStandardTouchDelegate : ICCTouchDelegate

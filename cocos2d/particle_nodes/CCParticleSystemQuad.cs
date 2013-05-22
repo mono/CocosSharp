@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCParticleSystemQuad : CCParticleSystem
     {
@@ -206,7 +206,7 @@ namespace cocos2d
                 float x = newPosition.X;
                 float y = newPosition.Y;
 
-                float r = -MathHelper.ToRadians(particle.rotation);
+                float r = -MHelper.ToRadians(particle.rotation);
                 float cr = MHelper.Cos(r);
                 float sr = MHelper.Sin(r);
                 float ax = x1 * cr - y1 * sr + x;
@@ -318,9 +318,9 @@ namespace cocos2d
 
             //updateQuadsWithParticles();
 
-            DrawManager.BindTexture(m_pTexture);
-            DrawManager.BlendFunc(m_tBlendFunc);
-            DrawManager.DrawQuads(m_pQuads, 0, m_uParticleCount);
+            CCDrawManager.BindTexture(m_pTexture);
+            CCDrawManager.BlendFunc(m_tBlendFunc);
+            CCDrawManager.DrawQuads(m_pQuads, 0, m_uParticleCount);
 
             /*
             CC_NODE_DRAW_SETUP();

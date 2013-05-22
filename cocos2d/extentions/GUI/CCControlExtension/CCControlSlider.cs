@@ -28,7 +28,7 @@
 using System;
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCControlSlider : CCControl
     {

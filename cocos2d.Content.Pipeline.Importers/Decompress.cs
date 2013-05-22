@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.IO.Compression;
 
-namespace cocos2d.Content.Pipeline.Importers
+namespace Cocos2D.Content.Pipeline.Importers
 {
     public class Decompress
     {

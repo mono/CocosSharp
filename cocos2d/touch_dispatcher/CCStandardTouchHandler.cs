@@ -1,5 +1,5 @@
 
-namespace cocos2d
+namespace Cocos2D
 {
     /// <summary>
     /// It forwardes each event to the delegate.
