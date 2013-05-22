@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+CCTMXTileFlags.cs<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -388,7 +388,7 @@
     <Compile Include="tileMap_parallax_nodes\CCTMXMapInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXObjectGroup.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXTiledMap.cs" />
-    <Compile Include="tileMap_parallax_nodes\ccTMXTileFlags_.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTMXTileFlags.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXTilesetInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXXMLParser.cs" />
     <Compile Include="touch_dispatcher\CCStandardTouchHandler.cs" />

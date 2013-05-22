@@ -1125,7 +1125,7 @@
     <Compile Include=".\tileMap_parallax_nodes\CCTMXTiledMap.cs">
       <LogicalName>tileMap_parallax_nodes\CCTMXTiledMap</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\ccTMXTileFlags_.cs">
+    <Compile Include=".\tileMap_parallax_nodes\CCTMXTileFlags.cs">
       <LogicalName>tileMap_parallax_nodes\ccTMXTileFlags_</LogicalName>
     </Compile>
     <Compile Include=".\tileMap_parallax_nodes\CCTMXTilesetInfo.cs">
