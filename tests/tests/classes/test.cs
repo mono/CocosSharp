@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public enum TestCases
     {
