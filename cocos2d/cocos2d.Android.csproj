@@ -261,7 +261,7 @@
     <Compile Include="Math\CCEase.cs" />
     <Compile Include="Math\CCFastRandom.cs" />
     <Compile Include="Math\CCMathHelper.cs" />
-    <Compile Include="Math\Random.cs" />
+    <Compile Include="Math\CCRandom.cs" />
     <Compile Include="Math\CCSpline.cs" />
     <Compile Include="menu_nodes\CCMenu.cs" />
     <Compile Include="menu_nodes\CCMenuItem.cs" />
@@ -309,7 +309,7 @@
     <Compile Include="Platform\PList\PlistString.cs" />
     <Compile Include="Platform\CCPrimitiveBatch.cs" />
     <Compile Include="Platform\CCRawList.cs" />
-    <Compile Include="Platform\ReusedObject.cs" />
+    <Compile Include="Platform\CCReusedObject.cs" />
     <Compile Include="Platform\Zlib\Adler32.cs" />
     <Compile Include="Platform\Zlib\Deflate.cs" />
     <Compile Include="Platform\Zlib\InfBlocks.cs" />

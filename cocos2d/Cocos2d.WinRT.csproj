@@ -732,7 +732,7 @@
     <Compile Include=".\Math\CCMathHelper.cs">
       <LogicalName>Math\MathHelper</LogicalName>
     </Compile>
-    <Compile Include=".\Math\Random.cs">
+    <Compile Include=".\Math\CCRandom.cs">
       <LogicalName>Math\Random</LogicalName>
     </Compile>
     <Compile Include=".\Math\CCSpline.cs">
@@ -912,7 +912,7 @@
     <Compile Include=".\platform\CCRawList.cs">
       <LogicalName>platform\RawList</LogicalName>
     </Compile>
-    <Compile Include=".\platform\ReusedObject.cs">
+    <Compile Include=".\platform\CCReusedObject.cs">
       <LogicalName>platform\ReusedObject</LogicalName>
     </Compile>
     <Compile Include=".\platform\Zlib\Adler32.cs">
