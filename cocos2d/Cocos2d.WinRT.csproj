@@ -960,7 +960,7 @@
     <Compile Include=".\predefine\ccConfig.cs">
       <LogicalName>predefine\ccConfig</LogicalName>
     </Compile>
-    <Compile Include=".\predefine\ccMacros.cs">
+    <Compile Include=".\predefine\CCMacros.cs">
       <LogicalName>predefine\ccMacros</LogicalName>
     </Compile>
     <Compile Include=".\predefine\CCPointExtension.cs">
