@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
+using Cocos2D.PropertyList;
 
 namespace Cocos2D
 {

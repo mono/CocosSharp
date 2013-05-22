@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Linq;
+using Cocos2D.PropertyList;
 
 namespace Cocos2D
 {

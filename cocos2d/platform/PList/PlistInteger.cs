@@ -26,7 +26,7 @@
 
 using System;
 
-namespace Cocos2D
+namespace Cocos2D.PropertyList
 {
 	public class PlistInteger : PlistObject<int>
 	{
