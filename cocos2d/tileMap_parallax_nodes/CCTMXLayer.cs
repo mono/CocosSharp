@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCTMXLayer : CCSpriteBatchNode
     {
@@ -223,9 +223,9 @@ namespace cocos2d
             uint tile = m_pTiles[idx];
 
             // issue1264, flipped tiles can be changed dynamically
-            flags = (tile & ccTMXTileFlags.kCCFlipedAll);
+            flags = (tile & CCTMXTileFlags.FlippedAll);
 
-            return (tile & ccTMXTileFlags.kCCFlippedMask);
+            return (tile & CCTMXTileFlags.FlippedMask);
         }
 
         /** sets the tile gid (gid = tile global id) at a given tile coordinate.
@@ -637,7 +637,7 @@ namespace cocos2d
             sprite.AnchorPoint = CCPoint.Zero;
 
             // Rotation in tiled is achieved using 3 flipped states, flipping across the horizontal, vertical, and diagonal axes of the tiles.
-            if ((gid & ccTMXTileFlags.kCCTMXTileDiagonalFlag) != 0)
+            if ((gid & CCTMXTileFlags.TileDiagonal) != 0)
             {
                 // put the anchor in the middle for ease of rotation.
                 sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -645,18 +645,18 @@ namespace cocos2d
                 sprite.Position = new CCPoint(pointAtPos.X + sprite.ContentSize.Height / 2,
                                               pointAtPos.Y + sprite.ContentSize.Width / 2);
 
-                uint flag = gid & (ccTMXTileFlags.kCCTMXTileHorizontalFlag | ccTMXTileFlags.kCCTMXTileVerticalFlag);
+                uint flag = gid & (CCTMXTileFlags.Horizontal | CCTMXTileFlags.Vertical);
 
                 // handle the 4 diagonally flipped states.
-                if (flag == ccTMXTileFlags.kCCTMXTileHorizontalFlag)
+                if (flag == CCTMXTileFlags.Horizontal)
                 {
                     sprite.Rotation = 90.0f;
                 }
-                else if (flag == ccTMXTileFlags.kCCTMXTileVerticalFlag)
+                else if (flag == CCTMXTileFlags.Vertical)
                 {
                     sprite.Rotation = 270.0f;
                 }
-                else if (flag == (ccTMXTileFlags.kCCTMXTileVerticalFlag | ccTMXTileFlags.kCCTMXTileHorizontalFlag))
+                else if (flag == (CCTMXTileFlags.Vertical | CCTMXTileFlags.Horizontal))
                 {
                     sprite.Rotation = 90.0f;
                     sprite.FlipX = true;
@@ -669,12 +669,12 @@ namespace cocos2d
             }
             else
             {
-                if ((gid & ccTMXTileFlags.kCCTMXTileHorizontalFlag) != 0)
+                if ((gid & CCTMXTileFlags.Horizontal) != 0)
                 {
                     sprite.FlipX = true;
                 }
 
-                if ((gid & ccTMXTileFlags.kCCTMXTileVerticalFlag) != 0)
+                if ((gid & CCTMXTileFlags.Vertical) != 0)
                 {
                     sprite.FlipY = true;
                 }

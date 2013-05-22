@@ -22,13 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCTransitionZoomFlipAngular : CCTransitionSceneOriented
     {
         public CCTransitionZoomFlipAngular() { }
 
-        public CCTransitionZoomFlipAngular (float t, CCScene s, tOrientation o) : base (t,s,o)
+        public CCTransitionZoomFlipAngular (float t, CCScene s, CCTransitionOrientation o) : base (t,s,o)
         { }
 
         public override void OnEnter()
@@ -41,7 +41,7 @@ namespace cocos2d
             float inDeltaZ, inAngleZ;
             float outDeltaZ, outAngleZ;
 
-            if (m_eOrientation == tOrientation.kOrientationRightOver)
+            if (m_eOrientation == CCTransitionOrientation.RightOver)
             {
                 inDeltaZ = 90;
                 inAngleZ = 270;

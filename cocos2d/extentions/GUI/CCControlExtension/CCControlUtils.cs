@@ -31,7 +31,7 @@
 
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
 	public struct RGBA
 	{

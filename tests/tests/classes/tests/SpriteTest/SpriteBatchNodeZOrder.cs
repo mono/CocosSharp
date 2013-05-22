@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using cocos2d;
+using Cocos2D;
 using Microsoft.Xna.Framework;
 
 namespace tests

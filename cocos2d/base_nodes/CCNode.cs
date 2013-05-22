@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace cocos2d
+namespace Cocos2D
 {
     internal enum NodeTag
     {
@@ -783,7 +783,7 @@ namespace cocos2d
                 return;
             }
 
-            DrawManager.PushMatrix();
+            CCDrawManager.PushMatrix();
 
             if (m_pGrid != null && m_pGrid.Active)
             {
@@ -845,7 +845,7 @@ namespace cocos2d
             }
 
             //kmGLPopMatrix();
-            DrawManager.PopMatrix();
+            CCDrawManager.PopMatrix();
         }
 
         public void TransformAncestors()
@@ -859,7 +859,7 @@ namespace cocos2d
 
         public void Transform()
         {
-            DrawManager.MultMatrix(NodeToParentTransform(), m_fVertexZ);
+            CCDrawManager.MultMatrix(NodeToParentTransform(), m_fVertexZ);
 
             // XXX: Expensive calls. Camera should be integrated into the cached affine matrix
             if (m_pCamera != null && !(m_pGrid != null && m_pGrid.Active))
@@ -868,14 +868,14 @@ namespace cocos2d
 
                 if (translate)
                 {
-                    DrawManager.Translate(m_tAnchorPointInPoints.X, m_tAnchorPointInPoints.Y, 0);
+                    CCDrawManager.Translate(m_tAnchorPointInPoints.X, m_tAnchorPointInPoints.Y, 0);
                 }
 
                 m_pCamera.Locate();
 
                 if (translate)
                 {
-                    DrawManager.Translate(-m_tAnchorPointInPoints.X, -m_tAnchorPointInPoints.Y, 0);
+                    CCDrawManager.Translate(-m_tAnchorPointInPoints.X, -m_tAnchorPointInPoints.Y, 0);
                 }
             }
         }

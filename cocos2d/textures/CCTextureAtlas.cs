@@ -27,7 +27,7 @@ using System;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     /// <summary>
     /// A class that implements a Texture Atlas.
@@ -118,16 +118,16 @@ namespace cocos2d
                 return;
             }
 
-            DrawManager.BindTexture(Texture);
+            CCDrawManager.BindTexture(Texture);
             //DrawManager.BlendFunc(new ccBlendFunc(ccMacros.CCDefaultSourceBlending, ccMacros.CCDefaultDestinationBlending));
 
             if (Dirty)
             {
-                DrawManager.SetQuadsToBuffer(m_pVertexBuffer, m_pQuads, 0, m_pQuads.count);
+                CCDrawManager.SetQuadsToBuffer(m_pVertexBuffer, m_pQuads, 0, m_pQuads.count);
                 Dirty = false;
             }
 
-            DrawManager.DrawQuadsBuffer(m_pVertexBuffer, start, n);
+            CCDrawManager.DrawQuadsBuffer(m_pVertexBuffer, start, n);
         }
 
         /// <summary>

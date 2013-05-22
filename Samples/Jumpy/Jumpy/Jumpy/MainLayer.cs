@@ -22,7 +22,7 @@
 
 using System;
 using Microsoft.Xna.Framework;
-using cocos2d;
+using Cocos2D;
 
 namespace Jumpy
 {

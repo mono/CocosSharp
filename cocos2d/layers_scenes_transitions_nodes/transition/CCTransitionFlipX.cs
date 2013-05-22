@@ -24,14 +24,14 @@ THE SOFTWARE.
 ****************************************************************************/
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCTransitionFlipX : CCTransitionSceneOriented
     {
 
         public CCTransitionFlipX() { } 
 
-        public CCTransitionFlipX(float t, CCScene s, tOrientation o) : base (t, s, o)
+        public CCTransitionFlipX(float t, CCScene s, CCTransitionOrientation o) : base (t, s, o)
         { }
 
         public override void OnEnter()
@@ -44,7 +44,7 @@ namespace cocos2d
             float inDeltaZ, inAngleZ;
             float outDeltaZ, outAngleZ;
 
-            if (m_eOrientation == tOrientation.kOrientationRightOver)
+            if (m_eOrientation == CCTransitionOrientation.RightOver)
             {
                 inDeltaZ = 90;
                 inAngleZ = 270;

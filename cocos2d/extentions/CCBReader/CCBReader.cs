@@ -2,110 +2,110 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace cocos2d
+namespace Cocos2D
 {
-    public enum kCCBPropType
+    public enum CCBPropType
     {
-        kCCBPropTypePosition = 0,
-        kCCBPropTypeSize,
-        kCCBPropTypePoint,
-        kCCBPropTypePointLock,
-        kCCBPropTypeScaleLock,
-        kCCBPropTypeDegrees,
-        kCCBPropTypeInteger,
-        kCCBPropTypeFloat,
-        kCCBPropTypeFloatVar,
-        kCCBPropTypeCheck,
-        kCCBPropTypeSpriteFrame,
-        kCCBPropTypeTexture,
-        kCCBPropTypeByte,
-        kCCBPropTypeColor3,
-        kCCBPropTypeColor4FVar,
-        kCCBPropTypeFlip,
-        kCCBPropTypeBlendmode,
-        kCCBPropTypeFntFile,
-        kCCBPropTypeText,
-        kCCBPropTypeFontTTF,
-        kCCBPropTypeIntegerLabeled,
-        kCCBPropTypeBlock,
-        kCCBPropTypeAnimation,
-        kCCBPropTypeCCBFile,
-        kCCBPropTypeString,
-        kCCBPropTypeBlockCCControl,
-        kCCBPropTypeFloatScale
+        Position = 0,
+        Size,
+        Point,
+        PointLock,
+        ScaleLock,
+        Degrees,
+        Integer,
+        Float,
+        FloatVar,
+        Check,
+        SpriteFrame,
+        Texture,
+        Byte,
+        Color3,
+        Color4FVar,
+        Flip,
+        Blendmode,
+        FntFile,
+        Text,
+        FontTTF,
+        IntegerLabeled,
+        Block,
+        Animation,
+        CCBFile,
+        String,
+        BlockCCControl,
+        FloatScale
     }
 
-    internal enum kCCBFloat
+    internal enum CCBFloat
     {
-        kCCBFloat0 = 0,
-        kCCBFloat1,
-        kCCBFloatMinus1,
-        kCCBFloat05,
-        kCCBFloatInteger,
-        kCCBFloatFull
+        Float0 = 0,
+        Float1,
+        Minus1,
+        Float05,
+        Integer,
+        Full
     }
 
-    internal enum kCCBPlatform
+    internal enum CCBPlatform
     {
-        kCCBPlatformAll = 0,
-        kCCBPlatformIOS,
-        kCCBPlatformMac
+        All = 0,
+        IOS,
+        Mac
     }
 
-    public enum kCCBTargetType
+    public enum CCBTargetType
     {
-        kCCBTargetTypeNone = 0,
-        kCCBTargetTypeDocumentRoot = 1,
-        kCCBTargetTypeOwner = 2,
+        None = 0,
+        DocumentRoot = 1,
+        Owner = 2,
     }
 
-    public enum kCCBKeyframeEasing
+    public enum CCBKeyframeEasing
     {
-        kCCBKeyframeEasingInstant,
+        Instant,
 
-        kCCBKeyframeEasingLinear,
+        Linear,
 
-        kCCBKeyframeEasingCubicIn,
-        kCCBKeyframeEasingCubicOut,
-        kCCBKeyframeEasingCubicInOut,
+        CubicIn,
+        CubicOut,
+        CubicInOut,
 
-        kCCBKeyframeEasingElasticIn,
-        kCCBKeyframeEasingElasticOut,
-        kCCBKeyframeEasingElasticInOut,
+        ElasticIn,
+        ElasticOut,
+        ElasticInOut,
 
-        kCCBKeyframeEasingBounceIn,
-        kCCBKeyframeEasingBounceOut,
-        kCCBKeyframeEasingBounceInOut,
+        BounceIn,
+        BounceOut,
+        BounceInOut,
 
-        kCCBKeyframeEasingBackIn,
-        kCCBKeyframeEasingBackOut,
-        kCCBKeyframeEasingBackInOut,
+        BackIn,
+        BackOut,
+        BackInOut,
     }
 
-    public enum kCCBPositionType
+    public enum CCBPositionType
     {
-        kCCBPositionTypeRelativeBottomLeft,
-        kCCBPositionTypeRelativeTopLeft,
-        kCCBPositionTypeRelativeTopRight,
-        kCCBPositionTypeRelativeBottomRight,
-        kCCBPositionTypePercent,
-        kCCBPositionTypeMultiplyResolution,
+        RelativeBottomLeft,
+        RelativeTopLeft,
+        RelativeTopRight,
+        RelativeBottomRight,
+        Percent,
+        MultiplyResolution,
     }
 
-    internal enum kCCBSizeType
+    internal enum CCBSizeType
     {
-        kCCBSizeTypeAbsolute,
-        kCCBSizeTypePercent,
-        kCCBSizeTypeRelativeContainer,
-        kCCBSizeTypeHorizontalPercent,
-        kCCBSizeTypeVerticalPercent,
-        kCCBSizeTypeMultiplyResolution,
+        Absolute,
+        Percent,
+        RelativeContainer,
+        HorizontalPercent,
+        VerticalPercent,
+        MultiplyResolution,
     }
 
-    public enum kCCBScaleType
+    public enum CCBScaleType
     {
-        kCCBScaleTypeAbsolute,
-        kCCBScaleTypeMultiplyResolution
+        Absolute,
+        MultiplyResolution
     }
 
     /**
@@ -463,19 +463,19 @@ namespace cocos2d
 
         public float ReadFloat()
         {
-            var type = (kCCBFloat) ReadByte();
+            var type = (CCBFloat) ReadByte();
 
             switch (type)
             {
-                case kCCBFloat.kCCBFloat0:
+                case CCBFloat.Float0:
                     return 0;
-                case kCCBFloat.kCCBFloat1:
+                case CCBFloat.Float1:
                     return 1;
-                case kCCBFloat.kCCBFloatMinus1:
+                case CCBFloat.Minus1:
                     return -1;
-                case kCCBFloat.kCCBFloat05:
+                case CCBFloat.Float05:
                     return 0.5f;
-                case kCCBFloat.kCCBFloatInteger:
+                case CCBFloat.Integer:
                     return ReadInt(true);
                 default:
                     var byteArray = new byte[4];
@@ -560,37 +560,37 @@ namespace cocos2d
         }
 
 
-        private CCBKeyframe ReadKeyframe(kCCBPropType type)
+        private CCBKeyframe ReadKeyframe(CCBPropType type)
         {
             var keyframe = new CCBKeyframe();
 
             keyframe.Time = ReadFloat();
 
-            var easingType = (kCCBKeyframeEasing) ReadInt(false);
+            var easingType = (CCBKeyframeEasing) ReadInt(false);
             float easingOpt = 0;
             object value = null;
 
-            if (easingType == kCCBKeyframeEasing.kCCBKeyframeEasingCubicIn
-                || easingType == kCCBKeyframeEasing.kCCBKeyframeEasingCubicOut
-                || easingType == kCCBKeyframeEasing.kCCBKeyframeEasingCubicInOut
-                || easingType == kCCBKeyframeEasing.kCCBKeyframeEasingElasticIn
-                || easingType == kCCBKeyframeEasing.kCCBKeyframeEasingElasticOut
-                || easingType == kCCBKeyframeEasing.kCCBKeyframeEasingElasticInOut)
+            if (easingType == CCBKeyframeEasing.CubicIn
+                || easingType == CCBKeyframeEasing.CubicOut
+                || easingType == CCBKeyframeEasing.CubicInOut
+                || easingType == CCBKeyframeEasing.ElasticIn
+                || easingType == CCBKeyframeEasing.ElasticOut
+                || easingType == CCBKeyframeEasing.ElasticInOut)
             {
                 easingOpt = ReadFloat();
             }
             keyframe.EasingType = easingType;
             keyframe.EasingOpt = easingOpt;
 
-            if (type == kCCBPropType.kCCBPropTypeCheck)
+            if (type == CCBPropType.Check)
             {
                 value = new CCBValue(ReadBool());
             }
-            else if (type == kCCBPropType.kCCBPropTypeByte)
+            else if (type == CCBPropType.Byte)
             {
                 value = new CCBValue(ReadByte());
             }
-            else if (type == kCCBPropType.kCCBPropTypeColor3)
+            else if (type == CCBPropType.Color3)
             {
                 byte r = ReadByte();
                 byte g = ReadByte();
@@ -599,11 +599,11 @@ namespace cocos2d
                 var c = new CCColor3B(r, g, b);
                 value = new ccColor3BWapper(c);
             }
-            else if (type == kCCBPropType.kCCBPropTypeDegrees)
+            else if (type == CCBPropType.Degrees)
             {
                 value = new CCBValue(ReadFloat());
             }
-            else if (type == kCCBPropType.kCCBPropTypeScaleLock || type == kCCBPropType.kCCBPropTypePosition)
+            else if (type == CCBPropType.ScaleLock || type == CCBPropType.Position)
             {
                 float a = ReadFloat();
                 float b = ReadFloat();
@@ -614,7 +614,7 @@ namespace cocos2d
                         new CCBValue(b)
                     };
             }
-            else if (type == kCCBPropType.kCCBPropTypeSpriteFrame)
+            else if (type == CCBPropType.SpriteFrame)
             {
                 string spriteSheet = ReadCachedString();
                 string spriteFile = ReadCachedString();
@@ -714,10 +714,10 @@ namespace cocos2d
             string className = ReadCachedString();
 
             // Read assignment type and name
-            var memberVarAssignmentType = (kCCBTargetType) ReadInt(false);
+            var memberVarAssignmentType = (CCBTargetType) ReadInt(false);
 
             string memberVarAssignmentName = String.Empty;
-            if (memberVarAssignmentType != kCCBTargetType.kCCBTargetTypeNone)
+            if (memberVarAssignmentType != CCBTargetType.None)
             {
                 memberVarAssignmentName = ReadCachedString();
             }
@@ -754,7 +754,7 @@ namespace cocos2d
                     var seqProp = new CCBSequenceProperty();
 
                     seqProp.Name = ReadCachedString();
-                    seqProp.Type = (kCCBPropType) ReadInt(false);
+                    seqProp.Type = (CCBPropType) ReadInt(false);
                     mAnimatedProps.Add(seqProp.Name);
 
                     int numKeyframes = ReadInt(false);
@@ -805,14 +805,14 @@ namespace cocos2d
      [[JSCocoa sharedController] setObject:node withName:memberVarAssignmentName];
      }*/
 #else
-            if (memberVarAssignmentType != kCCBTargetType.kCCBTargetTypeNone)
+            if (memberVarAssignmentType != CCBTargetType.None)
             {
                 object target = null;
-                if (memberVarAssignmentType == kCCBTargetType.kCCBTargetTypeDocumentRoot)
+                if (memberVarAssignmentType == CCBTargetType.DocumentRoot)
                 {
                     target = mActionManager.RootNode;
                 }
-                else if (memberVarAssignmentType == kCCBTargetType.kCCBTargetTypeOwner)
+                else if (memberVarAssignmentType == CCBTargetType.Owner)
                 {
                     target = mOwner;
                 }

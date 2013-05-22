@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Box2D;
 using Box2D.Common;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public partial class CCDrawingPrimitives
     {
@@ -369,10 +369,10 @@ namespace cocos2d
                     Color = new Color(color.R, color.G, color.B, color.A),
                 };
 
-            BasicEffect basicEffect = DrawManager.PrimitiveEffect;
-            basicEffect.Projection = DrawManager.ProjectionMatrix;
-            basicEffect.View = DrawManager.ViewMatrix;
-            basicEffect.World = DrawManager.WorldMatrix;
+            BasicEffect basicEffect = CCDrawManager.PrimitiveEffect;
+            basicEffect.Projection = CCDrawManager.ProjectionMatrix;
+            basicEffect.View = CCDrawManager.ViewMatrix;
+            basicEffect.World = CCDrawManager.WorldMatrix;
 
             foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
             {
@@ -408,10 +408,10 @@ namespace cocos2d
                     Position = new Vector3(destination.X * factor, destination.Y * factor, 0)
                 };
 
-            BasicEffect basicEffect = DrawManager.PrimitiveEffect;
-            basicEffect.Projection = DrawManager.ProjectionMatrix;
-            basicEffect.View = DrawManager.ViewMatrix;
-            basicEffect.World = DrawManager.WorldMatrix;
+            BasicEffect basicEffect = CCDrawManager.PrimitiveEffect;
+            basicEffect.Projection = CCDrawManager.ProjectionMatrix;
+            basicEffect.View = CCDrawManager.ViewMatrix;
+            basicEffect.World = CCDrawManager.WorldMatrix;
 
             foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
             {
@@ -465,10 +465,10 @@ namespace cocos2d
                 vertices[i].Color = Color.White;
             }
 
-            BasicEffect basicEffect = DrawManager.PrimitiveEffect;
-            basicEffect.Projection = DrawManager.ProjectionMatrix;
-            basicEffect.View = DrawManager.ViewMatrix;
-            basicEffect.World = DrawManager.WorldMatrix;
+            BasicEffect basicEffect = CCDrawManager.PrimitiveEffect;
+            basicEffect.Projection = CCDrawManager.ProjectionMatrix;
+            basicEffect.View = CCDrawManager.ViewMatrix;
+            basicEffect.World = CCDrawManager.WorldMatrix;
             foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
             {
                 pass.Apply();

@@ -5,8 +5,8 @@ using Box2D.Common;
 using Box2D.Collision.Shapes;
 using Box2D.Dynamics;
 using Microsoft.Xna.Framework;
-using cocos2d;
-using Random = cocos2d.Random;
+using Cocos2D;
+using Random = Cocos2D.Random;
 
 namespace tests
 {

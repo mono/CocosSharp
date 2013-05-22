@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework.Content;
 
-namespace cocos2d
+namespace Cocos2D
 {
     internal class CCBMFontPaddingtReader : ContentTypeReader<CCBMFontConfiguration.ccBMFontPadding>
     {

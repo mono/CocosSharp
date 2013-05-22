@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using FarseerPhysics.Common;
 using Microsoft.Xna.Framework;
-using cocos2d;
+using Cocos2D;
 
 namespace FarseerPhysics.Collision
 {

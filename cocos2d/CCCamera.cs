@@ -25,7 +25,7 @@ THE SOFTWARE.
 using System;
 using Microsoft.Xna.Framework;
 
-namespace cocos2d
+namespace Cocos2D
 {
     /// <summary>
     /// A CCCamera is used in every CCNode.
@@ -114,7 +114,7 @@ namespace cocos2d
                 m_bDirty = false;
             }
 
-            DrawManager.MultMatrix(ref m_lookupMatrix);
+            CCDrawManager.MultMatrix(ref m_lookupMatrix);
         }
 
         /// <summary>

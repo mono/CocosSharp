@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public abstract class ReusedObject<T> where T : ReusedObject<T>, new()
     {

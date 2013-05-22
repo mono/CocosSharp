@@ -28,7 +28,7 @@
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     /** @class CCControlSwitch Switch control for Cocos2D. */
 
@@ -395,9 +395,9 @@ namespace cocos2d
 
         public override void Draw()
         {
-            DrawManager.BindTexture(Texture);
-            DrawManager.BlendFunc(new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending)); // OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA));
-            DrawManager.DrawQuad(ref m_sQuad);
+            CCDrawManager.BindTexture(Texture);
+            CCDrawManager.BlendFunc(new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending)); // OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA));
+            CCDrawManager.DrawQuad(ref m_sQuad);
 
             //    /*
             //    CC_NODE_DRAW_SETUP();

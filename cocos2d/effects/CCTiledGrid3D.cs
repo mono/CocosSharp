@@ -25,7 +25,7 @@ THE SOFTWARE.
 
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCTiledGrid3D : CCGridBase
     {
@@ -34,7 +34,7 @@ namespace cocos2d
         protected short[] m_pIndices;
         protected CCQuad3[] m_pOriginalVertices;
         private VertexBuffer m_pVertexBuffer;
-        protected ccV3F_T2F[] m_pVertices;
+        internal CCV3F_T2F[] m_pVertices;
 
         /// <summary>
         ///  returns the tile at the given position
@@ -43,7 +43,7 @@ namespace cocos2d
         {
             int idx = (m_sGridSize.Y * pos.X + pos.Y) * 4;
 
-            ccV3F_T2F[] vertArray = m_pVertices;
+            CCV3F_T2F[] vertArray = m_pVertices;
 
             return new CCQuad3
                 {
@@ -70,7 +70,7 @@ namespace cocos2d
         {
             int idx = (m_sGridSize.Y * pos.X + pos.Y) * 4;
 
-            ccV3F_T2F[] vertArray = m_pVertices;
+            CCV3F_T2F[] vertArray = m_pVertices;
 
             vertArray[idx + 0].vertices = coords.BottomLeft;
             vertArray[idx + 1].vertices = coords.BottomRight;
@@ -84,12 +84,12 @@ namespace cocos2d
         {
             if (m_pVertexBuffer == null || m_pVertexBuffer.VertexCount < m_pVertices.Length)
             {
-                m_pVertexBuffer = new VertexBuffer(DrawManager.graphicsDevice, typeof(ccV3F_T2F), m_pVertices.Length, BufferUsage.WriteOnly);
+                m_pVertexBuffer = new VertexBuffer(CCDrawManager.graphicsDevice, typeof(CCV3F_T2F), m_pVertices.Length, BufferUsage.WriteOnly);
             }
 
             if (m_pIndexBuffer == null || m_pIndexBuffer.IndexCount < m_pIndices.Length)
             {
-                m_pIndexBuffer = new IndexBuffer(DrawManager.graphicsDevice, typeof(ushort), m_pIndices.Length, BufferUsage.WriteOnly);
+                m_pIndexBuffer = new IndexBuffer(CCDrawManager.graphicsDevice, typeof(ushort), m_pIndices.Length, BufferUsage.WriteOnly);
                 m_pIndexBuffer.SetData(m_pIndices, 0, m_pIndices.Length);
             }
 
@@ -98,10 +98,10 @@ namespace cocos2d
                 m_pVertexBuffer.SetData(m_pVertices, 0, m_pVertices.Length);
             }
 
-            bool save = DrawManager.VertexColorEnabled;
-            DrawManager.VertexColorEnabled = false;
-            DrawManager.DrawBuffer(m_pVertexBuffer, m_pIndexBuffer, 0, m_pIndices.Length / 3);
-            DrawManager.VertexColorEnabled = save;
+            bool save = CCDrawManager.VertexColorEnabled;
+            CCDrawManager.VertexColorEnabled = false;
+            CCDrawManager.DrawBuffer(m_pVertexBuffer, m_pIndexBuffer, 0, m_pIndices.Length / 3);
+            CCDrawManager.VertexColorEnabled = save;
         }
 
         public override void Reuse()
@@ -111,7 +111,7 @@ namespace cocos2d
                 int numQuads = m_sGridSize.X * m_sGridSize.Y;
 
                 CCQuad3[] orig = m_pOriginalVertices;
-                ccV3F_T2F[] verts = m_pVertices;
+                CCV3F_T2F[] verts = m_pVertices;
 
                 for (int i = 0; i < numQuads; i++)
                 {
@@ -134,11 +134,11 @@ namespace cocos2d
 
             int numQuads = m_sGridSize.X * m_sGridSize.Y;
 
-            m_pVertices = new ccV3F_T2F[numQuads * 4];
+            m_pVertices = new CCV3F_T2F[numQuads * 4];
             m_pOriginalVertices = new CCQuad3[numQuads];
             m_pIndices = new short[numQuads * 6];
 
-            ccV3F_T2F[] vertArray = m_pVertices;
+            CCV3F_T2F[] vertArray = m_pVertices;
             short[] idxArray = m_pIndices;
 
 

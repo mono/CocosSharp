@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Linq;
+using Cocos2D.PropertyList;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public class CCSpriteFrameCache
     {

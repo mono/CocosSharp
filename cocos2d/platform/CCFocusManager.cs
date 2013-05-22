@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace cocos2d
+namespace Cocos2D
 {
     public delegate void FocusChangeDelegate(CCIFocusable prev, CCIFocusable current);
 
