@@ -37,7 +37,7 @@ namespace Jumpy
             : base(game, graphics)
         {
             s_pSharedApplication = this;
-            DrawManager.InitializeDisplay(game, graphics, DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
+            CCDrawManager.InitializeDisplay(game, graphics, DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
 
 
             graphics.PreferMultiSampling = false;
@@ -56,10 +56,10 @@ namespace Jumpy
             CCDirector pDirector = CCDirector.SharedDirector;
             pDirector.SetOpenGlView();
 #if WINDOWS
-            DrawManager.SetDesignResolutionSize(320, 480, ResolutionPolicy.ExactFit);
+            CCDrawManager.SetDesignResolutionSize(320, 480, ResolutionPolicy.ExactFit);
 #else
-            DrawManager.SetDesignResolutionSize(800, 480, ResolutionPolicy.ShowAll);
-            //DrawManager.SetDesignResolutionSize(480, 320, ResolutionPolicy.ShowAll);
+            CCDrawManager.SetDesignResolutionSize(800, 480, ResolutionPolicy.ShowAll);
+            //CCDrawManager.SetDesignResolutionSize(480, 320, ResolutionPolicy.ShowAll);
 #endif
             // turn on display FPS
             pDirector.DisplayStats = true;

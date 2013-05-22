@@ -46,11 +46,11 @@ namespace tests.classes.tests.Box2DTestBet
         {
             base.Draw();
 
-            //DrawManager.PushMatrix();
+            //CCDrawManager.PushMatrix();
 
             m_test.DebugView.RenderDebugData();
 
-            //DrawManager.PopMatrix();
+            //CCDrawManager.PopMatrix();
         }
 
         public override void RegisterWithTouchDispatcher()

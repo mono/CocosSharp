@@ -193,7 +193,7 @@ namespace Cocos2D
                 );
 
             /*
-            DrawManager.ProjectionMatrix = Matrix.Identity;
+            CCDrawManager.ProjectionMatrix = Matrix.Identity;
             
             Matrix orthoMatrix = Matrix.CreateOrthographicOffCenter(
                 0, size.width * ccMacros.CC_CONTENT_SCALE_FACTOR(),
@@ -201,7 +201,7 @@ namespace Cocos2D
                 -1, 1
                 );
 
-            DrawManager.MultMatrix(ref orthoMatrix);
+            CCDrawManager.MultMatrix(ref orthoMatrix);
             */
             
             CCDrawManager.ViewMatrix = Matrix.Identity;

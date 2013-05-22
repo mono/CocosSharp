@@ -817,8 +817,8 @@ namespace Cocos2D
             CCDrawManager.DrawQuad(ref m_sQuad);
 
             /*
-            var sb = DrawManager.spriteBatch;
-            sb.Begin(SpriteSortMode.Deferred, null, null, null, null, null, DrawManager.basicEffect.World);
+            var sb = CCDrawManager.spriteBatch;
+            sb.Begin(SpriteSortMode.Deferred, null, null, null, null, null, CCDrawManager.basicEffect.World);
             sb.Draw(Texture.getTexture2D(), new Vector2(0, 0), new Color(this.Color.r, this.Color.g, this.Color.b, Opacity));
             sb.End();
             */

@@ -119,7 +119,7 @@ namespace Cocos2D
             }
 
             CCDrawManager.BindTexture(Texture);
-            //DrawManager.BlendFunc(new ccBlendFunc(ccMacros.CCDefaultSourceBlending, ccMacros.CCDefaultDestinationBlending));
+            //CCDrawManager.BlendFunc(new ccBlendFunc(ccMacros.CCDefaultSourceBlending, ccMacros.CCDefaultDestinationBlending));
 
             if (Dirty)
             {

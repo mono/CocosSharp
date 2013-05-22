@@ -357,16 +357,16 @@ namespace Cocos2D
 #if XBOX
                         // From Gena and empoc on CodePlex. Tilemaps have a weird misalignment when drawing
                         // so this might help with that problem.
-                        DrawManager.WorldMatrix = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
+                        CCDrawManager.WorldMatrix = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
 #else
                         CCDrawManager.WorldMatrix = Matrix.Identity;
 #endif
                         
                         /*
-                        DrawManager.ProjectionMatrix = Matrix.Identity;
+                        CCDrawManager.ProjectionMatrix = Matrix.Identity;
                         Matrix projection = Matrix.CreateOrthographicOffCenter(0, size.width, 0, size.height, -1024.0f, 1024.0f);
 				        Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
-                        DrawManager.WorldMatrix = (halfPixelOffset * projection);
+                        CCDrawManager.WorldMatrix = (halfPixelOffset * projection);
                         */
                         break;
 
@@ -387,14 +387,14 @@ namespace Cocos2D
                         CCDrawManager.WorldMatrix = Matrix.Identity;
 
                         /*
-                        DrawManager.ProjectionMatrix = Matrix.Identity;
-                        DrawManager.ViewMatrix = Matrix.Identity;
-                        DrawManager.WorldMatrix = Matrix.Identity;
+                        CCDrawManager.ProjectionMatrix = Matrix.Identity;
+                        CCDrawManager.ViewMatrix = Matrix.Identity;
+                        CCDrawManager.WorldMatrix = Matrix.Identity;
 
 
                         Matrix projection1 = Matrix.CreateOrthographicOffCenter(0, size.width, 0, size.height, -1024.0f, 1024.0f);
 				        Matrix halfPixelOffset1 = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
-                        DrawManager.WorldMatrix = (halfPixelOffset1 * projection1);
+                        CCDrawManager.WorldMatrix = (halfPixelOffset1 * projection1);
                         */
 
                         break;
@@ -708,7 +708,7 @@ namespace Cocos2D
             {
                 //glEnable(GL_BLEND);
                 //glBlendFunc(CCDefaultSourceBlending, CCDefaultDestinationBlending);
-                //DrawManager.BlendFunc(new ccBlendFunc(ccMacros.CCDefaultSourceBlending, ccMacros.CCDefaultDestinationBlending));
+                //CCDrawManager.BlendFunc(new ccBlendFunc(ccMacros.CCDefaultSourceBlending, ccMacros.CCDefaultDestinationBlending));
             }
             else
             {

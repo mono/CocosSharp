@@ -25,8 +25,7 @@ namespace Cocos2D.Content.Pipeline.Importers
             var relativePath = context.OutputFilename.Substring(context.OutputDirectory.Length);
             relativePath = Path.GetDirectoryName(relativePath);
 
-            var result = new CCBMFontConfiguration();
-            result.InitWithString(data, Path.Combine(relativePath, Path.GetFileName(fileName)));
+            var result = new CCBMFontConfiguration(data, Path.Combine(relativePath, Path.GetFileName(fileName)));
             return result;
         }
     }

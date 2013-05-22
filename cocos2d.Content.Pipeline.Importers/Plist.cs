@@ -2,6 +2,8 @@
 using System.IO;
 using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
+using Cocos2D;
+using Cocos2D.PropertyList;
 
 namespace Cocos2D.Content.Pipeline.Importers
 {

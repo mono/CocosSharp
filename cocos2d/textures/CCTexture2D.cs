@@ -741,7 +741,7 @@ namespace Cocos2D
                 CCDrawManager.SetRenderTarget((RenderTarget2D)null);
 
                 // to copy the rendered target data to a plain texture(to the memory)
-                //            texture2D = DrawManager.CreateTexture2D(renderTarget.Width, renderTarget.Height);
+                //            texture2D = CCDrawManager.CreateTexture2D(renderTarget.Width, renderTarget.Height);
                 // This is the old 3.1 way of doing things. 4.0 does not need this and it causes compatibility problems.
 
                 //            var colors1D = new Color[renderTarget.Width * renderTarget.Height];

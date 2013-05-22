@@ -43,10 +43,10 @@ namespace tests
             CCDirector pDirector = CCDirector.SharedDirector;
             pDirector.SetOpenGlView();
 #if WINDOWS
-            DrawManager.SetDesignResolutionSize(1024, 768, ResolutionPolicy.ExactFit);
+            CCDrawManager.SetDesignResolutionSize(1024, 768, ResolutionPolicy.ExactFit);
 #else
             CCDrawManager.SetDesignResolutionSize(800, 480, ResolutionPolicy.ShowAll);
-            //DrawManager.SetDesignResolutionSize(480, 320, ResolutionPolicy.ShowAll);
+            //CCDrawManager.SetDesignResolutionSize(480, 320, ResolutionPolicy.ShowAll);
 #endif
             // turn on display FPS
             pDirector.DisplayStats = true;
