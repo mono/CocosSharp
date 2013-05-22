@@ -4,12 +4,12 @@ using System.Diagnostics;
 
 namespace Cocos2D
 {
-    public abstract class ReusedObject<T> where T : ReusedObject<T>, new()
+    public abstract class CCReusedObject<T> where T : CCReusedObject<T>, new()
     {
         private bool used;
-        private static readonly List<ReusedObject<T>> _unused = new List<ReusedObject<T>>();  
+        private static readonly List<CCReusedObject<T>> _unused = new List<CCReusedObject<T>>();  
         
-        protected ReusedObject()
+        protected CCReusedObject()
         {
             used = true;
         }
