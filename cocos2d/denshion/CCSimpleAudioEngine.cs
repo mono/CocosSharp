@@ -4,7 +4,7 @@ using Cocos2D;
 
 namespace CocosDenshion
 {
-    public class SimpleAudioEngine
+    public class CCSimpleAudioEngine
     {
         /// <summary>
         /// The list of sounds that are configured for looping. These need to be stopped when the game pauses.
@@ -25,7 +25,7 @@ namespace CocosDenshion
         /// <summary>
         /// The shared music player.
         /// </summary>
-        private static MusicPlayer SharedMusic
+        private static CCMusicPlayer SharedMusic
         {
             get 
             { 
@@ -36,7 +36,7 @@ namespace CocosDenshion
         /// <summary>
         /// The singleton instance of this class.
         /// </summary>
-        public static SimpleAudioEngine SharedEngine
+        public static CCSimpleAudioEngine SharedEngine
         {
             get { return _Instance; }
         }
@@ -352,7 +352,7 @@ namespace CocosDenshion
         }
 
         private static Dictionary<int, CCEffectPlayer> s_List = new Dictionary<int,CCEffectPlayer>();
-        private static MusicPlayer s_Music = new MusicPlayer();
-        private static SimpleAudioEngine _Instance = new SimpleAudioEngine();
+        private static CCMusicPlayer s_Music = new CCMusicPlayer();
+        private static CCSimpleAudioEngine _Instance = new CCSimpleAudioEngine();
     }
 }

@@ -185,8 +185,8 @@
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
-    <Compile Include="denshion\MusicPlayer.cs" />
-    <Compile Include="denshion\SimpleAudioEngine.cs" />
+    <Compile Include="denshion\CCMusicPlayer.cs" />
+    <Compile Include="denshion\CCSimpleAudioEngine.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
     <Compile Include="effects\CCTiledGrid3D.cs" />
     <Compile Include="effects\CCGrabber.cs" />

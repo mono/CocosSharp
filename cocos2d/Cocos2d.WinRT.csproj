@@ -447,10 +447,10 @@
     <Compile Include=".\denshion\CCEffectPlayer.cs">
       <LogicalName>denshion\EffectPlayer</LogicalName>
     </Compile>
-    <Compile Include=".\denshion\MusicPlayer.cs">
+    <Compile Include=".\denshion\CCMusicPlayer.cs">
       <LogicalName>denshion\MusicPlayer</LogicalName>
     </Compile>
-    <Compile Include=".\denshion\SimpleAudioEngine.cs">
+    <Compile Include=".\denshion\CCSimpleAudioEngine.cs">
       <LogicalName>denshion\SimpleAudioEngine</LogicalName>
     </Compile>
     <Compile Include=".\effects\CCGrabber.cs">

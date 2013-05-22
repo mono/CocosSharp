@@ -168,8 +168,8 @@
     <Compile Include="cocoa\CCGeometry.cs" />
     <Compile Include="cocoa\ICopyable.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
-    <Compile Include="denshion\MusicPlayer.cs" />
-    <Compile Include="denshion\SimpleAudioEngine.cs" />
+    <Compile Include="denshion\CCMusicPlayer.cs" />
+    <Compile Include="denshion\CCSimpleAudioEngine.cs" />
     <Compile Include="effects\CCGrabber.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
     <Compile Include="effects\CCGridBase.cs" />

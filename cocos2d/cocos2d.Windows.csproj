@@ -165,8 +165,8 @@
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
-    <Compile Include="denshion\MusicPlayer.cs" />
-    <Compile Include="denshion\SimpleAudioEngine.cs" />
+    <Compile Include="denshion\CCMusicPlayer.cs" />
+    <Compile Include="denshion\CCSimpleAudioEngine.cs" />
     <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />

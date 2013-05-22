@@ -64,12 +64,12 @@ namespace tests
 	        this.TouchEnabled = true;
 
 	        // preload background music and effect
-	        SimpleAudioEngine.SharedEngine.PreloadBackgroundMusic(CCFileUtils.FullPathFromRelativePath(MUSIC_FILE));
-	        SimpleAudioEngine.SharedEngine.PreloadEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
+	        CCSimpleAudioEngine.SharedEngine.PreloadBackgroundMusic(CCFileUtils.FullPathFromRelativePath(MUSIC_FILE));
+	        CCSimpleAudioEngine.SharedEngine.PreloadEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
     
             // set default volume
-            SimpleAudioEngine.SharedEngine.EffectsVolume = 0.5f;
-            SimpleAudioEngine.SharedEngine.BackgroundMusicVolume = 0.5f;
+            CCSimpleAudioEngine.SharedEngine.EffectsVolume = 0.5f;
+            CCSimpleAudioEngine.SharedEngine.BackgroundMusicVolume = 0.5f;
         }
 
         ~CocosDenshionTest()
@@ -80,7 +80,7 @@ namespace tests
         {
 	        base.OnExit();
 
-	        SimpleAudioEngine.SharedEngine.End();
+	        CCSimpleAudioEngine.SharedEngine.End();
         }
 
         public void menuCallback(object pSender)
@@ -94,27 +94,27 @@ namespace tests
 	        // play background music
 	        case 0:
 
-		        SimpleAudioEngine.SharedEngine.PlayBackgroundMusic(CCFileUtils.FullPathFromRelativePath(MUSIC_FILE), true);
+		        CCSimpleAudioEngine.SharedEngine.PlayBackgroundMusic(CCFileUtils.FullPathFromRelativePath(MUSIC_FILE), true);
 		        break;
 	        // stop background music
 	        case 1:
-		        SimpleAudioEngine.SharedEngine.StopBackgroundMusic();
+		        CCSimpleAudioEngine.SharedEngine.StopBackgroundMusic();
 		        break;
 	        // pause background music
 	        case 2:
-		        SimpleAudioEngine.SharedEngine.PauseBackgroundMusic();
+		        CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic();
 		        break;
 	        // resume background music
 	        case 3:
-		        SimpleAudioEngine.SharedEngine.ResumeBackgroundMusic();
+		        CCSimpleAudioEngine.SharedEngine.ResumeBackgroundMusic();
 		        break;
 	        // rewind background music
 	        case 4:
-		        SimpleAudioEngine.SharedEngine.RewindBackgroundMusic();
+		        CCSimpleAudioEngine.SharedEngine.RewindBackgroundMusic();
 		        break;
 	        // is background music playing
 	        case 5:
-		        if (SimpleAudioEngine.SharedEngine.IsBackgroundMusicPlaying())
+		        if (CCSimpleAudioEngine.SharedEngine.IsBackgroundMusicPlaying())
 		        {
 			        CCLog.Log("background music is playing");
 		        }
@@ -125,35 +125,35 @@ namespace tests
 		        break;
 	        // play effect
 	        case 6:
-		        m_nSoundId = SimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
+		        m_nSoundId = CCSimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
 		        break;
             // play effect
             case 7:
-                m_nSoundId = SimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE), true);
+                m_nSoundId = CCSimpleAudioEngine.SharedEngine.PlayEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE), true);
                 break;
             // stop effect
 	        case 8:
-		        SimpleAudioEngine.SharedEngine.StopEffect(m_nSoundId);
+		        CCSimpleAudioEngine.SharedEngine.StopEffect(m_nSoundId);
 		        break;
 	        // unload effect
 	        case 9:
-		        SimpleAudioEngine.SharedEngine.UnloadEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
+		        CCSimpleAudioEngine.SharedEngine.UnloadEffect(CCFileUtils.FullPathFromRelativePath(EFFECT_FILE));
 		        break;
 		        // add bakcground music volume
 	        case 10:
-		        SimpleAudioEngine.SharedEngine.BackgroundMusicVolume = SimpleAudioEngine.SharedEngine.BackgroundMusicVolume + 0.1f;
+		        CCSimpleAudioEngine.SharedEngine.BackgroundMusicVolume = CCSimpleAudioEngine.SharedEngine.BackgroundMusicVolume + 0.1f;
 		        break;
 		        // sub backgroud music volume
 	        case 11:
-		        SimpleAudioEngine.SharedEngine.BackgroundMusicVolume = SimpleAudioEngine.SharedEngine.BackgroundMusicVolume - 0.1f;
+		        CCSimpleAudioEngine.SharedEngine.BackgroundMusicVolume = CCSimpleAudioEngine.SharedEngine.BackgroundMusicVolume - 0.1f;
 		        break;
 		        // add effects volume
 	        case 12:
-		        SimpleAudioEngine.SharedEngine.EffectsVolume = SimpleAudioEngine.SharedEngine.EffectsVolume + 0.1f;
+		        CCSimpleAudioEngine.SharedEngine.EffectsVolume = CCSimpleAudioEngine.SharedEngine.EffectsVolume + 0.1f;
 		        break;
 		        // sub effects volume
 	        case 13:
-		        SimpleAudioEngine.SharedEngine.EffectsVolume = SimpleAudioEngine.SharedEngine.EffectsVolume - 0.1f;
+		        CCSimpleAudioEngine.SharedEngine.EffectsVolume = CCSimpleAudioEngine.SharedEngine.EffectsVolume - 0.1f;
 		        break;
 	        }
 	
