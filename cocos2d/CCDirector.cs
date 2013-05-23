@@ -653,10 +653,7 @@ namespace Cocos2D
                 NotificationNode.Visit();
             }
 
-            if (m_bDisplayStats)
-            {
-                ShowStats();
-            }
+            ShowStats();
 
             CCDrawManager.PopMatrix();
 
@@ -1096,11 +1093,10 @@ namespace Cocos2D
 
         private void CalculateMPF()
         {
-//            var now = DateTime.Now.To;
-//            struct cc_timeval now;
-//            CCTime::gettimeofdayCocos2d(&now, NULL);
-//    
-//            m_fSecondsPerFrame = now.;
+            if (m_uTotalFrames > 0)
+            {
+                m_fSecondsPerFrame = m_fDeltaTime / (float)m_uTotalFrames;
+            }
         }
 
         private bool m_FailedToCreateStatsLabels = false;

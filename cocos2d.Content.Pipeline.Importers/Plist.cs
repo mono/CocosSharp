@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
 using Cocos2D;
-using Cocos2D.PropertyList;
+using cocos2d;
 
 namespace Cocos2D.Content.Pipeline.Importers
 {
