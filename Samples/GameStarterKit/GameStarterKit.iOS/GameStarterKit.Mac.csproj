@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{103F90D5-8BA2-4910-906A-1508101720EE}</ProjectGuid>
+    <ProjectTypeGuids>{948B3504-5B70-4649-8FE4-BDE1FB46EC69};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>GameStarterKit</RootNamespace>
+    <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
+    <AssemblyName>GameStarterKit.Mac</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;MONOMAC</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IncludeMonoRuntime>false</IncludeMonoRuntime>
+    <UseSGen>false</UseSGen>
+    <PlatformTarget>x86</PlatformTarget>
+    <EnableCodeSigning>false</EnableCodeSigning>
+    <ConsolePause>false</ConsolePause>
+    <EnablePackageSigning>false</EnablePackageSigning>
+    <CreatePackage>false</CreatePackage>
+    <CodeSigningKey>Mac Developer</CodeSigningKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseSGen>false</UseSGen>
+    <IncludeMonoRuntime>true</IncludeMonoRuntime>
+    <PlatformTarget>x86</PlatformTarget>
+    <LinkMode>Full</LinkMode>
+    <EnableCodeSigning>true</EnableCodeSigning>
+    <ConsolePause>false</ConsolePause>
+    <EnablePackageSigning>false</EnablePackageSigning>
+    <CreatePackage>true</CreatePackage>
+    <CodeSigningKey>Developer ID Application</CodeSigningKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseSGen>false</UseSGen>
+    <IncludeMonoRuntime>true</IncludeMonoRuntime>
+    <PlatformTarget>x86</PlatformTarget>
+    <LinkMode>Full</LinkMode>
+    <PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
+    <EnableCodeSigning>true</EnableCodeSigning>
+    <ConsolePause>false</ConsolePause>
+    <EnablePackageSigning>true</EnablePackageSigning>
+    <CreatePackage>true</CreatePackage>
+    <CodeSigningKey>3rd Party Mac Developer Application</CodeSigningKey>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="MonoMac" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="GameStartKit\" />
+    <Folder Include="Content\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Mono\MonoMac\v0.0\Mono.MonoMac.targets" />
+  <ItemGroup>
+    <None Include="Info.Mac.plist">
+      <Link>Info.plist</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GameStartKit\AppDelegate.cs" />
+    <Compile Include="GameStartKit\Game1.cs" />
+    <Compile Include="GameStartKit\GameData.cs" />
+    <Compile Include="GameStartKit\GameLevel.cs" />
+    <Compile Include="GameStartKit\GameMenu.cs" />
+    <Compile Include="GameStartKit\IntroLayer.cs" />
+    <Compile Include="GameStartKit\Program.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\box2d\box2d.MacOS.csproj">
+      <Project>{A84510D8-7AED-411E-9616-DCFEA180969E}</Project>
+      <Name>box2d.MacOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\cocos2d\cocos2d.MacOS.csproj">
+      <Project>{A83510D8-7AED-411E-9616-DCFEA180969E}</Project>
+      <Name>cocos2d.MacOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj">
+      <Project>{AE483C29-042E-4226-BA52-D247CE7676DA}</Project>
+      <Name>Lidgren.Network.MacOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">
+      <Project>{36C538E6-C32A-4A8D-A39C-566173D7118E}</Project>
+      <Name>MonoGame.Framework.MacOS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Content\fonts\Arial.xnb">
+      <Link>Content\fonts\Arial.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\MarkerFelt-16.xnb">
+      <Link>Content\fonts\MarkerFelt-16.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\MarkerFelt-18.xnb">
+      <Link>Content\fonts\MarkerFelt-18.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\MarkerFelt-22.xnb">
+      <Link>Content\fonts\MarkerFelt-22.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-12.xnb">
+      <Link>Content\fonts\arial-12.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-16.xnb">
+      <Link>Content\fonts\arial-16.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-18.xnb">
+      <Link>Content\fonts\arial-18.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-20.xnb">
+      <Link>Content\fonts\arial-20.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-22.xnb">
+      <Link>Content\fonts\arial-22.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-24.xnb">
+      <Link>Content\fonts\arial-24.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-26.xnb">
+      <Link>Content\fonts\arial-26.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-28.xnb">
+      <Link>Content\fonts\arial-28.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-30.xnb">
+      <Link>Content\fonts\arial-30.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-32.xnb">
+      <Link>Content\fonts\arial-32.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-34.xnb">
+      <Link>Content\fonts\arial-34.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-38.xnb">
+      <Link>Content\fonts\arial-38.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-50.xnb">
+      <Link>Content\fonts\arial-50.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-64.xnb">
+      <Link>Content\fonts\arial-64.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-unicode-26.fnt.xnb">
+      <Link>Content\fonts\arial-unicode-26.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial-unicode-26.xnb">
+      <Link>Content\fonts\arial-unicode-26.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial16.fnt.xnb">
+      <Link>Content\fonts\arial16.fnt.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\arial16.xnb">
+      <Link>Content\fonts\arial16.xnb</Link>
+    </Content>
+  </ItemGroup>
+</Project>
