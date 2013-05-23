@@ -1,0 +1,107 @@
+<Addin id="Cocos2D" namespace="MonoDevelop" name="Cocos2D Project Templates" author="Dean Ellis" copyright="GPL" url="http://Cocos2D.codeplex.com/" description="C# Project and File templates for Cocos2D" category="Mono Game" version="3.0.0">
+	<Runtime>
+		<Import file="icons/Cocos2D-32.png" />
+		<Import file="icons/Cocos2D-project-16.png" />
+		<Import file="icons/Cocos2D-project-32.png" />
+		<Import file="icons/Cocos2D-project-android-32.png" />
+		<Import file="icons/Cocos2D-project-ios-32.png" />
+		<Import file="templates/Cocos2DAndroidProject.xpt.xml" />
+		<Import file="templates/Cocos2DiOSProject.xpt.xml" />
+		<Import file="templates/Cocos2DWindowsProject.xpt.xml" />
+		<Import file="templates/Cocos2DLinuxProject.xpt.xml" />
+		<Import file="templates/Cocos2DMacProject.xpt.xml" />
+        <Import file="templates/Cocos2DMacFsharpProject.xpt.xml" />
+		<Import file="templates/Cocos2DAndroidClass.xft.xml" />
+		<Import file="templates/Cocos2DiOSClass.xft.xml" />
+		<Import file="templates/Cocos2DMacClass.xft.xml" />		
+		<Import file="templates/Cocos2DApplication/AboutAssets.txt" />
+		<Import file="templates/Cocos2DApplication/AboutContent.txt" />
+		<Import file="templates/Cocos2DApplication/AboutResources.txt" />
+		<Import file="templates/Cocos2DApplication/Activity1.cs" />
+		<Import file="templates/Cocos2DApplication/AndroidAssemblyInfo.cs" />
+		<Import file="templates/Cocos2DApplication/AssemblyInfo.cs" />
+		<Import file="templates/Cocos2DApplication/Game1.cs" />
+		<Import file="templates/Cocos2DApplication/AppDelegate.cs" />
+		<Import file="templates/Cocos2DApplication/Icon-hd.png" />
+		<Import file="templates/Cocos2DApplication/Icon-ld.png" />
+		<Import file="templates/Cocos2DApplication/Icon-md.png" />
+		<Import file="templates/Cocos2DApplication/iOSAssemblyInfo.cs" />
+		<Import file="templates/Cocos2DApplication/iOSDefault.png" />
+		<Import file="templates/Cocos2DApplication/iOSGame.cs" />
+		<Import file="templates/Cocos2DApplication/iOSGameThumbnail.png" />
+		<Import file="templates/Cocos2DApplication/iOSInfo.plist" />
+		<Import file="templates/Cocos2DApplication/iOSMain.cs" />
+		<Import file="templates/Cocos2DApplication/MacGame.cs" />
+        <Import file="templates/Cocos2DApplication/MacGame.fs" />
+		<Import file="templates/Cocos2DApplication/MacInfo.plist" />
+		<Import file="templates/Cocos2DApplication/MacMain.cs" />
+        <Import file="templates/Cocos2DApplication/MacMain.fs" />
+		<Import file="templates/Cocos2DApplication/Program.cs" />
+		<Import file="templates/Cocos2DApplication/Resource.cs" />
+		<Import file="templates/Cocos2DApplication/Splash.png" />
+		<Import file="templates/Cocos2DApplication/Styles.xml" />
+    <!-- Runtime assemblies -->
+    <Import file="assemblies/WindowsGL/MonoGame.Framework.dll"/>    
+	<Import file="assemblies/WindowsGl/cocos2d.dll"/>
+    <Import file="assemblies/WindowsGL/Lidgren.Network.dll"/>
+	</Runtime>
+	<Dependencies>
+		<Addin id="Core" version="3.0" />
+		<Addin id="Ide" version="3.0" />
+		<Addin id="SourceEditor2" version="3.0" />
+		<Addin id="Refactoring" version="3.0" />
+		<Addin id="Autotools" version="3.0" />
+	</Dependencies>
+	<Extension path="/MonoDevelop/Core/StockIcons">
+		<StockIcon stockid="Cocos2D-project" file="icons/Cocos2D-project-32.png" />
+		<StockIcon stockid="Cocos2D-project-android" file="icons/Cocos2D-project-android-32.png" />
+		<StockIcon stockid="Cocos2D-project-ios" file="icons/Cocos2D-project-iso-32.png" />
+	</Extension>
+	<Extension path="/MonoDevelop/ProjectModel/MSBuildItemTypes">
+		<DotNetProjectSubtype id="Cocos2D" guid="{9b831fef-f496-498f-9fe8-180da5cb4258}" type="MonoDevelop.Cocos2D.Cocos2DProject">
+		</DotNetProjectSubtype>
+	</Extension>
+	<Extension path="/MonoDevelop/ProjectModel/ProjectBindings">
+		<ProjectBinding id="Cocos2D" class="MonoDevelop.Cocos2D.Cocos2DProjectBinding" />
+	</Extension>
+	<Extension path="/MonoDevelop/Ide/ProjectTemplates">
+		<ProjectTemplate id="Cocos2DForAndroidProject" file="templates/Cocos2DAndroidProject.xpt.xml" />
+		<ProjectTemplate id="Cocos2DForiOSProject" file="templates/Cocos2DiOSProject.xpt.xml" />
+		<ProjectTemplate id="Cocos2DForWindowsProject" file="templates/Cocos2DWindowsProject.xpt.xml" />
+		<ProjectTemplate id="Cocos2DForLinuxProject" file="templates/Cocos2DLinuxProject.xpt.xml" />
+		<ProjectTemplate id="Cocos2DForMacProject" file="templates/Cocos2DMacProject.xpt.xml" />
+        <ProjectTemplate id="Cocos2DForMacFSharpProject" file="templates/Cocos2DMacFsharpProject.xpt.xml" />
+	</Extension>
+	<Extension path="/MonoDevelop/Ide/FileTemplates">
+		<FileTemplate id="Cocos2DAndroidClass" resource="Cocos2DAndroidClass.xft.xml" />
+		<FileTemplate id="Cocos2DiOSClass" resource="Cocos2DiOSClass.xft.xml" />
+		<FileTemplate id="Cocos2DMacClass" resource="Cocos2DMacClass.xft.xml" />
+	</Extension>
+  <!-- Add the Cocos2D package if it is not installed already -->
+  <Extension path="/MonoDevelop/Core/SupportPackages">
+    <Condition id="PackageNotInstalled" name="Cocos2D" version="3.0">
+      <Package name="Cocos2D" version="3.0" clrVersion="Default">
+        <Assembly file="assemblies/MacOS/MonoGame.Framework.dll" />
+        <Assembly file="assemblies/WindowsGL/Monogame.Framework.dll" />
+        <Assembly file="assemblies/Linux/MonoGame.Framework.dll" />
+        <Assembly file="assemblies/iOS/MonoGame.Framework.dll" />
+        <Assembly file="assemblies/Android/MonoGame.Framework.dll" />
+
+        <Assembly file="assemblies/MacOS/cocos2d.dll" />
+        <Assembly file="assemblies/WindowsGL/cocos2d.dll" />
+        <Assembly file="assemblies/Linux/cocos2d.dll" />
+        <Assembly file="assemblies/iOS/cocos2d.dll" />
+        <Assembly file="assemblies/Android/cocos2d.dll" />
+
+        <Assembly file="assemblies/WindowsGL/Lidgren.Network.dll" />
+        <Assembly file="assemblies/Android/Lidgren.Network.dll" />
+        <Assembly file="assemblies/MacOS/Lidgren.Network.dll" />
+        <Assembly file="assemblies/iOS/Lidgren.Network.dll" />
+        <Assembly file="assemblies/OpenTK.dll" />
+        <Assembly file="assemblies/Tao.Sdl.dll" />
+        <Assembly file="assemblies/sdl.dll" />
+      </Package>
+    </Condition>
+  </Extension>
+
+</Addin>

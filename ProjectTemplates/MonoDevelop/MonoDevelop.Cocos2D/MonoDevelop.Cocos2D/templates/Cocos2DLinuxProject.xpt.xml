@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Template>
+	<TemplateConfiguration>
+		<_Name>Cocos2D Linux Application</_Name>
+		<_Category>C#/Cocos2D</_Category>
+		<Icon>Cocos2D-project</Icon>
+		<LanguageName>C#</LanguageName>
+		<_Description>Creates a new C# Cocos2D Linux Application.</_Description>
+	</TemplateConfiguration>
+	
+	<Actions>
+		<Open filename = "Game1.cs"/>
+	</Actions>
+	
+	<Combine name = "${ProjectName}" directory = ".">
+		<Options>
+			<StartupProject>${ProjectName}</StartupProject>
+		</Options>
+		
+		<Project name = "${ProjectName}" directory = "." type="Cocos2D">
+			<Options TargetFrameworkVersion="4.0"/>
+			<References>
+				<Reference type="Gac" refto="System" />
+				<Reference type="Gac" refto="System.Xml" />
+				<Reference type="Gac" refto="System.Core" />
+				<Reference type="Gac" refto="OpenTK" />
+				<Reference type="Gac" refto="MonoGame.Framework.Linux" />
+				<Reference type="Gac" refto="Lidgren.Network" />
+				<Reference type="Gac" refto="Tao.Sdl.dll" />
+				<Reference type="Gac" refto="cocos2d.Linux"/>
+			</References>
+			<Files>
+				<File name="Game1.cs" src="Cocos2DApplication/Game1.cs" />
+		        <File name="AppDelegate.cs" src="Cocos2DApplication/AppDelegate.cs"/>
+				<File name="Program.cs" src="Cocos2DApplication/Program.cs" />
+				<RawFile name="Icon.png" src="Cocos2DApplication/Icon-md.png" />
+				<Directory name="Properties">
+					<File name="AssemblyInfo.cs" src="Cocos2DApplication/AssemblyInfo.cs" />
+				</Directory>
+				<Directory name="Content">
+				</Directory>
+			</Files>
+		</Project>
+	</Combine>
+</Template>
