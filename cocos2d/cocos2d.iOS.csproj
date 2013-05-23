@@ -196,7 +196,6 @@
     <Compile Include="Actions\action_tiled_grid\CCSplitRows.cs" />
     <Compile Include="Actions\action_tiled_grid\CCTurnOffTiles.cs" />
     <Compile Include="Actions\action_tiled_grid\CCWavesTiles3D.cs" />
-    <Compile Include="Actions\action_tiled_grid\Tile.cs" />
     <Compile Include="Actions\CCActionManager.cs" />
     <Compile Include="base_nodes\CCAtlasNode.cs" />
     <Compile Include="base_nodes\CCNode.cs" />
@@ -210,9 +209,6 @@
     <Compile Include="cocoa\CCAffineTransform.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
     <Compile Include="cocoa\ICopyable.cs" />
-    <Compile Include="denshion\EffectPlayer.cs" />
-    <Compile Include="denshion\MusicPlayer.cs" />
-    <Compile Include="denshion\SimpleAudioEngine.cs" />
     <Compile Include="effects\CCGrabber.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
     <Compile Include="effects\CCGridBase.cs" />
@@ -295,11 +291,6 @@
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipX.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipY.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\ICCTransitionEaseScene.cs" />
-    <Compile Include="Math\Ease.cs" />
-    <Compile Include="Math\FastRandom.cs" />
-    <Compile Include="Math\MathHelper.cs" />
-    <Compile Include="Math\Random.cs" />
-    <Compile Include="Math\Spline.cs" />
     <Compile Include="menu_nodes\CCMenu.cs" />
     <Compile Include="menu_nodes\CCMenuItem.cs" />
     <Compile Include="menu_nodes\CCMenuItemAtlasFont.cs" />
@@ -326,9 +317,6 @@
     <Compile Include="Platform\CCSAXParser.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
     <Compile Include="Platform\InputState.cs" />
-    <Compile Include="Platform\OGLES.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Platform\PList\PlistArray.cs" />
     <Compile Include="Platform\PList\PlistBoolean.cs" />
     <Compile Include="Platform\PList\PlistData.cs" />
@@ -341,9 +329,6 @@
     <Compile Include="Platform\PList\PlistObjectBase.cs" />
     <Compile Include="Platform\PList\PlistReal.cs" />
     <Compile Include="Platform\PList\PlistString.cs" />
-    <Compile Include="Platform\PrimitiveBatch.cs" />
-    <Compile Include="Platform\RawList.cs" />
-    <Compile Include="Platform\ReusedObject.cs" />
     <Compile Include="Platform\Zlib\Adler32.cs" />
     <Compile Include="Platform\Zlib\Deflate.cs" />
     <Compile Include="Platform\Zlib\InfBlocks.cs" />
@@ -359,7 +344,6 @@
     <Compile Include="Platform\Zlib\ZStream.cs" />
     <Compile Include="Platform\Zlib\ZStreamException.cs" />
     <Compile Include="predefine\ccConfig.cs" />
-    <Compile Include="predefine\ccMacros.cs" />
     <Compile Include="predefine\CCPointExtension.cs" />
     <Compile Include="predefine\CCProtocols.cs" />
     <Compile Include="predefine\CCTouch.cs" />
@@ -443,6 +427,22 @@
     <Compile Include="Platform\CCDrawManager.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXTileFlags.cs" />
     <Compile Include="support\data_support\CCArray.cs" />
+    <Compile Include="Math\CCMathHelper.cs" />
+    <Compile Include="Math\CCFastRandom.cs" />
+    <Compile Include="Math\CCRandom.cs" />
+    <Compile Include="Platform\CCPrimitiveBatch.cs" />
+    <Compile Include="Platform\CCOGLES.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Platform\CCRawList.cs" />
+    <Compile Include="Actions\action_tiled_grid\CCTile.cs" />
+    <Compile Include="denshion\CCEffectPlayer.cs" />
+    <Compile Include="denshion\CCMusicPlayer.cs" />
+    <Compile Include="denshion\CCSimpleAudioEngine.cs" />
+    <Compile Include="Platform\CCReusedObject.cs" />
+    <Compile Include="predefine\CCMacros.cs" />
+    <Compile Include="Math\CCEaseMath.cs" />
+    <Compile Include="Math\CCSplineMath.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />

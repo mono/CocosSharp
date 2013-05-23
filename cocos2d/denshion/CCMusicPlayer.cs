@@ -9,7 +9,7 @@ namespace CocosDenshion
     /// that play music, e.g. Zune and phone, you must not intefere with the background music
     /// unless the user has allowed it.
     /// </summary>
-    public class MusicPlayer
+    public class CCMusicPlayer
     {
         public static ulong s_mciError;
 
@@ -29,7 +29,7 @@ namespace CocosDenshion
         private Song m_music;
         private int m_nSoundId;
 
-        public MusicPlayer()
+        public CCMusicPlayer()
         {
             m_nSoundId = 0;
             if (MediaPlayer.State == MediaState.Playing)
@@ -85,7 +85,7 @@ namespace CocosDenshion
         }
         }
 
-        ~MusicPlayer()
+        ~CCMusicPlayer()
         {
             Close();
             try

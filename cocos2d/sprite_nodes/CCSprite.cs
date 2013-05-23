@@ -1041,8 +1041,8 @@ namespace Cocos2D
             //if (m_pobTexture == null || !m_pobTexture.HasPremultipliedAlpha)
             if (m_pobTexture == null)  // || !m_pobTexture.HasPremultipliedAlpha)
             {
-                m_sBlendFunc.Source = OGLES.GL_SRC_ALPHA;
-                m_sBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                m_sBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+                m_sBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
                 IsOpacityModifyRGB = false;
             }
             else

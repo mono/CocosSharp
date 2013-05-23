@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Cocos2D;
 using System.Diagnostics;
-using Random = Cocos2D.Random;
+using Random = Cocos2D.CCRandom;
 
 namespace tests
 {
@@ -32,26 +32,26 @@ namespace tests
                     // A | b
                     // -----
                     // c | d
-                    float ax = Random.Next() * -5000;
-                    float ay = Random.Next() * 5000;
+                    float ax = CCRandom.Next() * -5000;
+                    float ay = CCRandom.Next() * 5000;
 
                     // a | b
                     // -----
                     // c | D
-                    float dx = Random.Next() * 5000;
-                    float dy = Random.Next() * -5000;
+                    float dx = CCRandom.Next() * 5000;
+                    float dy = CCRandom.Next() * -5000;
 
                     // a | B
                     // -----
                     // c | d
-                    float bx = Random.Next() * 5000;
-                    float by = Random.Next() * 5000;
+                    float bx = CCRandom.Next() * 5000;
+                    float by = CCRandom.Next() * 5000;
 
                     // a | b
                     // -----
                     // C | d
-                    float cx = Random.Next() * -5000;
-                    float cy = Random.Next() * -5000;
+                    float cx = CCRandom.Next() * -5000;
+                    float cy = CCRandom.Next() * -5000;
 
                     A = new CCPoint(ax, ay);
                     B = new CCPoint(bx, by);
@@ -96,15 +96,15 @@ namespace tests
                     // A | b
                     // -----
                     // c | d
-                    float ax = Random.Next() * -500;
-                    float ay = Random.Next() * 500;
+                    float ax = CCRandom.Next() * -500;
+                    float ay = CCRandom.Next() * 500;
                     p1 = new CCPoint(ax, ay);
 
                     // a | b
                     // -----
                     // c | D
-                    float dx = Random.Next() * 500;
-                    float dy = Random.Next() * -500;
+                    float dx = CCRandom.Next() * 500;
+                    float dy = CCRandom.Next() * -500;
                     p2 = new CCPoint(dx, dy);
 
 
@@ -115,13 +115,13 @@ namespace tests
                     // a | b
                     // -----
                     // C | d
-                    float cx = Random.Next() * -500;
+                    float cx = CCRandom.Next() * -500;
                     p3 = new CCPoint(cx, y);
 
                     // a | B
                     // -----
                     // c | d
-                    float bx = Random.Next() * 500;
+                    float bx = CCRandom.Next() * 500;
                     p4 = new CCPoint(bx, y);
 
                     s = 0.0f;

@@ -29,7 +29,7 @@ namespace Cocos2D
 
         public CCMotionStreak()
         {
-            m_tBlendFunc = new CCBlendFunc(OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            m_tBlendFunc = new CCBlendFunc(CCOGLES.GL_SRC_ALPHA, CCOGLES.GL_ONE_MINUS_SRC_ALPHA);
         }
 
         public override CCPoint Position
@@ -136,8 +136,8 @@ namespace Cocos2D
             m_pVertices = new CCV3F_C4B_T2F[(m_uMaxPoints + 1) * 2];
 
             // Set blend mode
-            m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
-            m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+            m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+            m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
 
             // shader program
             // setShaderProgram(CCShaderCache.sharedShaderCache().programForKey(kCCShader_PositionTextureColor));

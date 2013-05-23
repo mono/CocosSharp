@@ -47,11 +47,11 @@ namespace Cocos2D
                 for (j = 0; j < (m_sGridSize.Y + 1); ++j)
                 {
                     CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
-                    v.X += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                    v.Y += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                    v.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                    v.Y += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     if (m_bShakeZ)
                     {
-                        v.Z += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                        v.Z += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     }
 
                     SetVertex(new CCGridSize(i, j), ref v);

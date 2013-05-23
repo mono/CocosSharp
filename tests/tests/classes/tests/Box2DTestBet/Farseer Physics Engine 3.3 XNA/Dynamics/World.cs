@@ -232,10 +232,10 @@ namespace FarseerPhysics.Dynamics
         {
             Flags = WorldFlags.ClearForces;
 
-            ControllerList = new RawList<Controller>();
-            BreakableBodyList = new RawList<BreakableBody>();
-            BodyList = new RawList<Body>(32);
-            JointList = new RawList<Joint>(32);
+            ControllerList = new CCRawList<Controller>();
+            BreakableBodyList = new CCRawList<BreakableBody>();
+            BodyList = new CCRawList<Body>(32);
+            JointList = new CCRawList<Joint>(32);
         }
 
         public World(Vector2 gravity, AABB span)
@@ -256,9 +256,9 @@ namespace FarseerPhysics.Dynamics
             Gravity = gravity;
         }
 
-        public RawList<Controller> ControllerList { get; private set; }
+        public CCRawList<Controller> ControllerList { get; private set; }
 
-        public RawList<BreakableBody> BreakableBodyList { get; private set; }
+        public CCRawList<BreakableBody> BreakableBodyList { get; private set; }
 
         public float UpdateTime { get; private set; }
 
@@ -317,20 +317,20 @@ namespace FarseerPhysics.Dynamics
         /// Get the world body list.
         /// </summary>
         /// <value>Thehead of the world body list.</value>
-        public RawList<Body> BodyList { get; private set; }
+        public CCRawList<Body> BodyList { get; private set; }
 
         /// <summary>
         /// Get the world joint list. 
         /// </summary>
         /// <value>The joint list.</value>
-        public RawList<Joint> JointList { get; private set; }
+        public CCRawList<Joint> JointList { get; private set; }
 
         /// <summary>
         /// Get the world contact list. With the returned contact, use Contact.GetNext to get
         /// the next contact in the world list. A null contact indicates the end of the list.
         /// </summary>
         /// <value>The head of the world contact list.</value>
-        public RawList<Contact> ContactList
+        public CCRawList<Contact> ContactList
         {
             get { return ContactManager.ContactList; }
         }

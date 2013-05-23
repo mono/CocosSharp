@@ -275,7 +275,7 @@ output = new Vector2();
 
         public float GetLength()
         {
-            RawList<Vector2> verts = GetVertices(ControlPoints.Count * 25);
+            CCRawList<Vector2> verts = GetVertices(ControlPoints.Count * 25);
             float length = 0;
 
             for (int i = 1; i < verts.count; i++)

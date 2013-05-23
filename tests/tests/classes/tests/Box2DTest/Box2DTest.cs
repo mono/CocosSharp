@@ -6,7 +6,7 @@ using Box2D.Collision.Shapes;
 using Box2D.Dynamics;
 using Microsoft.Xna.Framework;
 using Cocos2D;
-using Random = Cocos2D.Random;
+using Random = Cocos2D.CCRandom;
 
 namespace tests
 {
@@ -224,8 +224,8 @@ namespace tests
 
             //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
             //just randomly picking one of the images
-            int idx = (Random.Float_0_1() > .5 ? 0 : 1);
-            int idy = (Random.Float_0_1() > .5 ? 0 : 1);
+            int idx = (CCRandom.Float_0_1() > .5 ? 0 : 1);
+            int idy = (CCRandom.Float_0_1() > .5 ? 0 : 1);
             var sprite = new CCPhysicsSprite(m_pSpriteTexture, new CCRect(32 * idx, 32 * idy, 32, 32));
 
             _batch.AddChild(sprite, 0, kTagForPhysicsSprite);

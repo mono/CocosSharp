@@ -400,7 +400,7 @@
     <Compile Include=".\actions\action_tiled_grid\CCWavesTiles3D.cs">
       <LogicalName>actions\action_tiled_grid\CCWavesTiles3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\Tile.cs">
+    <Compile Include=".\actions\action_tiled_grid\CCTile.cs">
       <LogicalName>actions\action_tiled_grid\Tile</LogicalName>
     </Compile>
     <Compile Include=".\actions\CCActionManager.cs">
@@ -445,13 +445,13 @@
     <Compile Include=".\cocoa\ICopyable.cs">
       <LogicalName>cocoa\ICopyable</LogicalName>
     </Compile>
-    <Compile Include=".\denshion\EffectPlayer.cs">
+    <Compile Include=".\denshion\CCEffectPlayer.cs">
       <LogicalName>denshion\EffectPlayer</LogicalName>
     </Compile>
-    <Compile Include=".\denshion\MusicPlayer.cs">
+    <Compile Include=".\denshion\CCMusicPlayer.cs">
       <LogicalName>denshion\MusicPlayer</LogicalName>
     </Compile>
-    <Compile Include=".\denshion\SimpleAudioEngine.cs">
+    <Compile Include=".\denshion\CCSimpleAudioEngine.cs">
       <LogicalName>denshion\SimpleAudioEngine</LogicalName>
     </Compile>
     <Compile Include=".\effects\CCGrabber.cs">
@@ -724,19 +724,19 @@
     <Compile Include=".\layers_scenes_transitions_nodes\transition\ICCTransitionEaseScene.cs">
       <LogicalName>layers_scenes_transitions_nodes\transition\ICCTransitionEaseScene</LogicalName>
     </Compile>
-    <Compile Include=".\Math\Ease.cs">
+    <Compile Include=".\Math\CCEaseMath.cs">
       <LogicalName>Math\Ease</LogicalName>
     </Compile>
-    <Compile Include=".\Math\FastRandom.cs">
+    <Compile Include=".\Math\CCFastRandom.cs">
       <LogicalName>Math\FastRandom</LogicalName>
     </Compile>
-    <Compile Include=".\Math\MathHelper.cs">
+    <Compile Include=".\Math\CCMathHelper.cs">
       <LogicalName>Math\MathHelper</LogicalName>
     </Compile>
-    <Compile Include=".\Math\Random.cs">
+    <Compile Include=".\Math\CCRandom.cs">
       <LogicalName>Math\Random</LogicalName>
     </Compile>
-    <Compile Include=".\Math\Spline.cs">
+    <Compile Include=".\Math\CCSplineMath.cs">
       <LogicalName>Math\Spline</LogicalName>
     </Compile>
     <Compile Include=".\menu_nodes\CCMenu.cs">
@@ -868,7 +868,7 @@
     <Compile Include=".\platform\InputState.cs">
       <LogicalName>platform\InputState</LogicalName>
     </Compile>
-    <Compile Include=".\platform\OGLES.cs">
+    <Compile Include=".\platform\CCOGLES.cs">
       <LogicalName>platform\OGLES</LogicalName>
     </Compile>
     <Compile Include=".\platform\PList\PlistArray.cs">
@@ -907,13 +907,13 @@
     <Compile Include=".\platform\PList\PlistString.cs">
       <LogicalName>platform\PList\PlistString</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PrimitiveBatch.cs">
+    <Compile Include=".\platform\CCPrimitiveBatch.cs">
       <LogicalName>platform\PrimitiveBatch</LogicalName>
     </Compile>
-    <Compile Include=".\platform\RawList.cs">
+    <Compile Include=".\platform\CCRawList.cs">
       <LogicalName>platform\RawList</LogicalName>
     </Compile>
-    <Compile Include=".\platform\ReusedObject.cs">
+    <Compile Include=".\platform\CCReusedObject.cs">
       <LogicalName>platform\ReusedObject</LogicalName>
     </Compile>
     <Compile Include=".\platform\Zlib\Adler32.cs">
@@ -961,7 +961,7 @@
     <Compile Include=".\predefine\ccConfig.cs">
       <LogicalName>predefine\ccConfig</LogicalName>
     </Compile>
-    <Compile Include=".\predefine\ccMacros.cs">
+    <Compile Include=".\predefine\CCMacros.cs">
       <LogicalName>predefine\ccMacros</LogicalName>
     </Compile>
     <Compile Include=".\predefine\CCPointExtension.cs">

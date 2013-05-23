@@ -17,18 +17,18 @@ namespace tests
         private void performanceActions20(CCSprite pSprite)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
-            if (Random.Float_0_1() < 0.2f)
-                pSprite.Position = new CCPoint((Random.Next() % (int) size.Width), (Random.Next() % (int) size.Height));
+            if (CCRandom.Float_0_1() < 0.2f)
+                pSprite.Position = new CCPoint((CCRandom.Next() % (int) size.Width), (CCRandom.Next() % (int) size.Height));
             else
                 pSprite.Position = new CCPoint(-1000, -1000);
 
-            float period = 0.5f + (Random.Next() % 1000) / 500.0f;
-            CCRotateBy rot = new CCRotateBy (period, 360.0f * Random.Float_0_1());
+            float period = 0.5f + (CCRandom.Next() % 1000) / 500.0f;
+            CCRotateBy rot = new CCRotateBy (period, 360.0f * CCRandom.Float_0_1());
             var rot_back = (CCActionInterval) rot.Reverse();
             CCAction permanentRotation = new CCRepeatForever (CCSequence.FromActions(rot, rot_back));
             pSprite.RunAction(permanentRotation);
 
-            float growDuration = 0.5f + (Random.Next() % 1000) / 500.0f;
+            float growDuration = 0.5f + (CCRandom.Next() % 1000) / 500.0f;
             CCActionInterval grow = new CCScaleBy(growDuration, 0.5f, 0.5f);
             CCAction permanentScaleLoop = new CCRepeatForever (new CCSequence (grow, grow.Reverse()));
             pSprite.RunAction(permanentScaleLoop);

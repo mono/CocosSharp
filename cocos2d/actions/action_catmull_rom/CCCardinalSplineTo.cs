@@ -91,7 +91,7 @@ namespace Cocos2D
             CCPoint pp2 = m_pPoints[Math.Min(c, Math.Max(p + 1, 0))];
             CCPoint pp3 = m_pPoints[Math.Min(c, Math.Max(p + 2, 0))];
 
-            CCPoint newPos = Spline.CCCardinalSplineAt(pp0, pp1, pp2, pp3, m_fTension, lt);
+            CCPoint newPos = CCSplineMath.CCCardinalSplineAt(pp0, pp1, pp2, pp3, m_fTension, lt);
 
             UpdatePosition(newPos);
         }

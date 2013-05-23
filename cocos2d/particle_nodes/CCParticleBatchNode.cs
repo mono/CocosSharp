@@ -22,8 +22,8 @@ namespace Cocos2D
                 if (value != null && ! value.HasPremultipliedAlpha &&
                     (m_tBlendFunc.Source == CCMacros.CCDefaultSourceBlending && m_tBlendFunc.Destination == CCMacros.CCDefaultDestinationBlending))
                 {
-                    m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
-                    m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                    m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+                    m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
                 }
             }
         }
@@ -66,7 +66,7 @@ namespace Cocos2D
             TextureAtlas.InitWithTexture(tex, capacity);
 
             // no lazy alloc in this node
-            m_pChildren = new RawList<CCNode>(capacity);
+            m_pChildren = new CCRawList<CCNode>(capacity);
 
             m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
             m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
@@ -176,7 +176,7 @@ namespace Cocos2D
 
             if (m_pChildren == null)
             {
-                m_pChildren = new RawList<CCNode>(4);
+                m_pChildren = new CCRawList<CCNode>(4);
             }
 
             //don't use a lazy insert
@@ -462,8 +462,8 @@ namespace Cocos2D
         {
             if (!TextureAtlas.Texture.HasPremultipliedAlpha)
             {
-                m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
-                m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+                m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
             }
         }
     }

@@ -4,14 +4,14 @@ using Cocos2D;
 
 namespace CocosDenshion
 {
-    public class EffectPlayer
+    public class CCEffectPlayer
     {
         public static ulong s_mciError;
         private SoundEffect m_effect;
         private SoundEffectInstance _sfxInstance;
         private int m_nSoundId;
 
-        public EffectPlayer()
+        public CCEffectPlayer()
         {
             m_nSoundId = 0;
         }
@@ -28,7 +28,7 @@ namespace CocosDenshion
             }
         }
 
-        ~EffectPlayer()
+        ~CCEffectPlayer()
         {
             Close();
         }

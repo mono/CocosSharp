@@ -10,7 +10,7 @@ namespace Cocos2D
     /// No-frills list that wraps an accessible array.
     ///</summary>
     ///<typeparam name="T">Type of elements contained by the list.</typeparam>
-    public class RawList<T> : IList<T>
+    public class CCRawList<T> : IList<T>
     {
         ///<summary>
         /// Direct access to the elements owned by the raw list.
@@ -24,7 +24,7 @@ namespace Cocos2D
         ///<summary>
         /// Constructs an empty list.
         ///</summary>
-        public RawList()
+        public CCRawList()
         {
             Elements = new T[4];
         }
@@ -34,7 +34,7 @@ namespace Cocos2D
         ///</summary>
         ///<param name="initialCapacity">Initial capacity to allocate for the list.</param>
         ///<exception cref="ArgumentException">Thrown when the initial capacity is zero or negative.</exception>
-        public RawList(int initialCapacity)
+        public CCRawList(int initialCapacity)
         {
             if (initialCapacity <= 0)
                 throw new ArgumentException("Initial capacity must be positive.");
@@ -45,7 +45,7 @@ namespace Cocos2D
         /// Constructs a raw list from another list.
         ///</summary>
         ///<param name="elements">List to copy.</param>
-        public RawList(IList<T> elements)
+        public CCRawList(IList<T> elements)
             : this(Math.Max(elements.Count, 4))
         {
             elements.CopyTo(Elements, 0);
@@ -269,7 +269,7 @@ namespace Cocos2D
         /// Adds a range of elements to the list from another list.
         ///</summary>
         ///<param name="items">Elements to add.</param>
-        public void AddRange(RawList<T> items)
+        public void AddRange(CCRawList<T> items)
         {
             int neededLength = count + items.count;
             if (neededLength > Elements.Length)
@@ -399,14 +399,14 @@ namespace Cocos2D
         ///</summary>
         public struct Enumerator : IEnumerator<T>
         {
-            private readonly RawList<T> _list;
+            private readonly CCRawList<T> _list;
             private int _index;
 
             ///<summary>
             /// Constructs a new enumerator.
             ///</summary>
             ///<param name="list"></param>
-            public Enumerator(RawList<T> list)
+            public Enumerator(CCRawList<T> list)
             {
                 _index = -1;
                 _list = list;
@@ -441,7 +441,7 @@ namespace Cocos2D
             #endregion
         }
 
-        public void InsertRange(int index, RawList<T> c)
+        public void InsertRange(int index, CCRawList<T> c)
         {
             if (c == null)
             {

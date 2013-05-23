@@ -134,7 +134,7 @@ namespace Cocos2D
 #endif
             ApplicationDidEnterBackground();
 #if !IOS
-            CocosDenshion.SimpleAudioEngine.SharedEngine.RestoreMediaState();
+            CocosDenshion.CCSimpleAudioEngine.SharedEngine.RestoreMediaState();
 #endif
         }
 
@@ -146,7 +146,7 @@ namespace Cocos2D
             CCSpriteFontCache.SharedInstance.Clear();
 #endif
 #if !IOS
-            CocosDenshion.SimpleAudioEngine.SharedEngine.SaveMediaState();
+            CocosDenshion.CCSimpleAudioEngine.SharedEngine.SaveMediaState();
 #endif
             ApplicationWillEnterForeground();
         }

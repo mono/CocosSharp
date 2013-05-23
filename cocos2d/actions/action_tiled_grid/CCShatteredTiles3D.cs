@@ -85,23 +85,23 @@ namespace Cocos2D
                         CCQuad3 coords = OriginalTile(new CCGridSize(i, j));
 
                         // X
-                        coords.BottomLeft.X += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.BottomRight.X += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.TopLeft.X += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.TopRight.X += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                        coords.BottomLeft.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                        coords.BottomRight.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                        coords.TopLeft.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                        coords.TopRight.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
 
                         // Y
-                        coords.BottomLeft.Y += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.BottomRight.Y += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.TopLeft.Y += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.TopRight.Y += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                        coords.BottomLeft.Y += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                        coords.BottomRight.Y += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                        coords.TopLeft.Y += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                        coords.TopRight.Y += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
 
                         if (m_bShatterZ)
                         {
-                            coords.BottomLeft.Z += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                            coords.BottomRight.Z += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                            coords.TopLeft.Z += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                            coords.TopRight.Z += (Random.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                            coords.BottomLeft.Z += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                            coords.BottomRight.Z += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                            coords.TopLeft.Z += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                            coords.TopRight.Z += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
                         }
 
                         SetTile(new CCGridSize(i, j), ref coords);

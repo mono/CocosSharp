@@ -47,7 +47,7 @@ namespace Cocos2D
     public class CCTextureAtlas 
     {
         internal bool Dirty = true; //indicates whether or not the array buffer of the VBO needs to be updated
-        public RawList<CCV3F_C4B_T2F_Quad> m_pQuads;
+        public CCRawList<CCV3F_C4B_T2F_Quad> m_pQuads;
         protected CCTexture2D m_pTexture;
 
         private VertexBuffer m_pVertexBuffer;
@@ -281,7 +281,7 @@ namespace Cocos2D
                 capacity = 4;
             }
 
-            m_pQuads = new RawList<CCV3F_C4B_T2F_Quad>(capacity);
+            m_pQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(capacity);
 
             Dirty = true;
 

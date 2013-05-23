@@ -77,7 +77,7 @@ namespace Cocos2D
 
             // create blend functions
 
-            var blend1 = new CCBlendFunc(OGLES.GL_ONE, OGLES.GL_ONE); // inScene will lay on background and will not be used with alpha
+            var blend1 = new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE); // inScene will lay on background and will not be used with alpha
             var blend2 = new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending); // OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA); // we are going to blend outScene via alpha 
 
             // set blendfunctions

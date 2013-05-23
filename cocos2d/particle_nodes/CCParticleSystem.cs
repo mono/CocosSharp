@@ -739,24 +739,24 @@ namespace Cocos2D
         {
             // timeToLive
             // no negative life. prevent division by 0
-            particle.timeToLive = Math.Max(0, m_fLife + m_fLifeVar * Random.Float_Minus1_1());
+            particle.timeToLive = Math.Max(0, m_fLife + m_fLifeVar * CCRandom.Float_Minus1_1());
 
             // position
-            particle.pos.X = m_tSourcePosition.X + m_tPosVar.X * Random.Float_Minus1_1();
-            particle.pos.Y = m_tSourcePosition.Y + m_tPosVar.Y * Random.Float_Minus1_1();
+            particle.pos.X = m_tSourcePosition.X + m_tPosVar.X * CCRandom.Float_Minus1_1();
+            particle.pos.Y = m_tSourcePosition.Y + m_tPosVar.Y * CCRandom.Float_Minus1_1();
 
             // Color
             CCColor4F start;
-            start.R = MathHelper.Clamp(m_tStartColor.R + m_tStartColorVar.R * Random.Float_Minus1_1(), 0, 1);
-            start.G = MathHelper.Clamp(m_tStartColor.G + m_tStartColorVar.G * Random.Float_Minus1_1(), 0, 1);
-            start.B = MathHelper.Clamp(m_tStartColor.B + m_tStartColorVar.B * Random.Float_Minus1_1(), 0, 1);
-            start.A = MathHelper.Clamp(m_tStartColor.A + m_tStartColorVar.A * Random.Float_Minus1_1(), 0, 1);
+            start.R = MathHelper.Clamp(m_tStartColor.R + m_tStartColorVar.R * CCRandom.Float_Minus1_1(), 0, 1);
+            start.G = MathHelper.Clamp(m_tStartColor.G + m_tStartColorVar.G * CCRandom.Float_Minus1_1(), 0, 1);
+            start.B = MathHelper.Clamp(m_tStartColor.B + m_tStartColorVar.B * CCRandom.Float_Minus1_1(), 0, 1);
+            start.A = MathHelper.Clamp(m_tStartColor.A + m_tStartColorVar.A * CCRandom.Float_Minus1_1(), 0, 1);
 
             CCColor4F end;
-            end.R = MathHelper.Clamp(m_tEndColor.R + m_tEndColorVar.R * Random.Float_Minus1_1(), 0, 1);
-            end.G = MathHelper.Clamp(m_tEndColor.G + m_tEndColorVar.G * Random.Float_Minus1_1(), 0, 1);
-            end.B = MathHelper.Clamp(m_tEndColor.B + m_tEndColorVar.B * Random.Float_Minus1_1(), 0, 1);
-            end.A = MathHelper.Clamp(m_tEndColor.A + m_tEndColorVar.A * Random.Float_Minus1_1(), 0, 1);
+            end.R = MathHelper.Clamp(m_tEndColor.R + m_tEndColorVar.R * CCRandom.Float_Minus1_1(), 0, 1);
+            end.G = MathHelper.Clamp(m_tEndColor.G + m_tEndColorVar.G * CCRandom.Float_Minus1_1(), 0, 1);
+            end.B = MathHelper.Clamp(m_tEndColor.B + m_tEndColorVar.B * CCRandom.Float_Minus1_1(), 0, 1);
+            end.A = MathHelper.Clamp(m_tEndColor.A + m_tEndColorVar.A * CCRandom.Float_Minus1_1(), 0, 1);
 
             particle.color = start;
             particle.deltaColor.R = (end.R - start.R) / particle.timeToLive;
@@ -765,7 +765,7 @@ namespace Cocos2D
             particle.deltaColor.A = (end.A - start.A) / particle.timeToLive;
 
             // size
-            float startS = m_fStartSize + m_fStartSizeVar * Random.Float_Minus1_1();
+            float startS = m_fStartSize + m_fStartSizeVar * CCRandom.Float_Minus1_1();
             startS = Math.Max(0, startS); // No negative value
 
             particle.size = startS;
@@ -776,14 +776,14 @@ namespace Cocos2D
             }
             else
             {
-                float endS = m_fEndSize + m_fEndSizeVar * Random.Float_Minus1_1();
+                float endS = m_fEndSize + m_fEndSizeVar * CCRandom.Float_Minus1_1();
                 endS = Math.Max(0, endS); // No negative values
                 particle.deltaSize = (endS - startS) / particle.timeToLive;
             }
 
             // rotation
-            float startA = m_fStartSpin + m_fStartSpinVar * Random.Float_Minus1_1();
-            float endA = m_fEndSpin + m_fEndSpinVar * Random.Float_Minus1_1();
+            float startA = m_fStartSpin + m_fStartSpinVar * CCRandom.Float_Minus1_1();
+            float endA = m_fEndSpin + m_fEndSpinVar * CCRandom.Float_Minus1_1();
             particle.rotation = startA;
             particle.deltaRotation = (endA - startA) / particle.timeToLive;
 
@@ -798,32 +798,32 @@ namespace Cocos2D
             }
 
             // direction
-            float a = MathHelper.ToRadians(m_fAngle + m_fAngleVar * Random.Float_Minus1_1());
+            float a = MathHelper.ToRadians(m_fAngle + m_fAngleVar * CCRandom.Float_Minus1_1());
 
             // Mode Gravity: A
             if (m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity)
             {
-                var v = new CCPoint(MHelper.Cos(a), MHelper.Sin(a));
+                var v = new CCPoint(CCMathHelper.Cos(a), CCMathHelper.Sin(a));
 
-                float s = modeA.speed + modeA.speedVar * Random.Float_Minus1_1();
+                float s = modeA.speed + modeA.speedVar * CCRandom.Float_Minus1_1();
 
                 // direction
                 particle.modeA.dir = v * s;
 
                 // radial accel
-                particle.modeA.radialAccel = modeA.radialAccel + modeA.radialAccelVar * Random.Float_Minus1_1();
+                particle.modeA.radialAccel = modeA.radialAccel + modeA.radialAccelVar * CCRandom.Float_Minus1_1();
 
 
                 // tangential accel
-                particle.modeA.tangentialAccel = modeA.tangentialAccel + modeA.tangentialAccelVar * Random.Float_Minus1_1();
+                particle.modeA.tangentialAccel = modeA.tangentialAccel + modeA.tangentialAccelVar * CCRandom.Float_Minus1_1();
             }
 
                 // Mode Radius: B
             else
             {
                 // Set the default diameter of the particle from the source position
-                float startRadius = modeB.startRadius + modeB.startRadiusVar * Random.Float_Minus1_1();
-                float endRadius = modeB.endRadius + modeB.endRadiusVar * Random.Float_Minus1_1();
+                float startRadius = modeB.startRadius + modeB.startRadiusVar * CCRandom.Float_Minus1_1();
+                float endRadius = modeB.endRadius + modeB.endRadiusVar * CCRandom.Float_Minus1_1();
 
                 particle.modeB.radius = startRadius;
 
@@ -838,7 +838,7 @@ namespace Cocos2D
 
                 particle.modeB.angle = a;
                 particle.modeB.degreesPerSecond =
-                    MathHelper.ToRadians(modeB.rotatePerSecond + modeB.rotatePerSecondVar * Random.Float_Minus1_1());
+                    MathHelper.ToRadians(modeB.rotatePerSecond + modeB.rotatePerSecondVar * CCRandom.Float_Minus1_1());
             }
         }
 
@@ -925,8 +925,8 @@ namespace Cocos2D
                     p.modeB.angle += p.modeB.degreesPerSecond * dt;
                     p.modeB.radius += p.modeB.deltaRadius * dt;
 
-                    p.pos.X = -MHelper.Cos(p.modeB.angle) * p.modeB.radius;
-                    p.pos.Y = -MHelper.Sin(p.modeB.angle) * p.modeB.radius;
+                    p.pos.X = -CCMathHelper.Cos(p.modeB.angle) * p.modeB.radius;
+                    p.pos.Y = -CCMathHelper.Sin(p.modeB.angle) * p.modeB.radius;
                 }
 
                 // color
@@ -1097,8 +1097,8 @@ namespace Cocos2D
                     }
                     else
                     {
-                        m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
-                        m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                        m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+                        m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
                     }
                 }
             }
@@ -1110,20 +1110,20 @@ namespace Cocos2D
 
         public bool BlendAdditive
         {
-            get { return (m_tBlendFunc.Source == OGLES.GL_SRC_ALPHA && m_tBlendFunc.Destination == OGLES.GL_ONE); }
+            get { return (m_tBlendFunc.Source == CCOGLES.GL_SRC_ALPHA && m_tBlendFunc.Destination == CCOGLES.GL_ONE); }
             set
             {
                 if (value)
                 {
-                    m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
-                    m_tBlendFunc.Destination = OGLES.GL_ONE;
+                    m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+                    m_tBlendFunc.Destination = CCOGLES.GL_ONE;
                 }
                 else
                 {
                     if (m_pTexture != null && !m_pTexture.HasPremultipliedAlpha)
                     {
-                        m_tBlendFunc.Source = OGLES.GL_SRC_ALPHA;
-                        m_tBlendFunc.Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+                        m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+                        m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
                     }
                     else
                     {

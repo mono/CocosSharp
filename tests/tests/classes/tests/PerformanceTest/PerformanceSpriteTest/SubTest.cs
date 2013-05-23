@@ -54,7 +54,7 @@ namespace tests
                     }
                 case 4:
                     {
-                        var idx = Random.Next(1, 14);
+                        var idx = CCRandom.Next(1, 14);
                         string str = string.Format("Images/grossini_dance_{0:00}", idx);
                         sprite = new CCSprite(str);
                         parent.AddChild(sprite, 0, tag + 100);
@@ -64,7 +64,7 @@ namespace tests
                 case 6:
                     {
                         int y, x;
-                        var r = (int) (Random.Float_0_1() * 1400 / 100);
+                        var r = (int) (CCRandom.Float_0_1() * 1400 / 100);
 
                         y = r / 5;
                         x = r % 5;
@@ -79,7 +79,7 @@ namespace tests
                 case 7:
                     {
                         int y, x;
-                        var r = (int) (Random.Float_0_1() * 1400 / 100);
+                        var r = (int) (CCRandom.Float_0_1() * 1400 / 100);
 
                         y = r / 8;
                         x = r % 8;
@@ -94,7 +94,7 @@ namespace tests
                 case 9:
                     {
                         int y, x;
-                        var r = (int) (Random.Float_0_1() * 6400 / 100);
+                        var r = (int) (CCRandom.Float_0_1() * 6400 / 100);
 
                         y = r / 8;
                         x = r % 8;

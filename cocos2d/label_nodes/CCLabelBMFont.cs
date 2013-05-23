@@ -447,7 +447,7 @@ namespace Cocos2D
                 float startOfLine = -1, startOfWord = -1;
                 int skip = 0;
 
-                RawList<CCNode> children = m_pChildren;
+                CCRawList<CCNode> children = m_pChildren;
                 for (int j = 0; j < children.count; j++)
                 {
                     CCSprite characterSprite;
@@ -629,7 +629,7 @@ namespace Cocos2D
 
                 int lineNumber = 0;
                 int str_len = m_sString.Length;
-                var last_line = new RawList<char>();
+                var last_line = new CCRawList<char>();
                 for (int ctr = 0; ctr <= str_len; ++ctr)
                 {
                     if (ctr == str_len || m_sString[ctr] == '\n')

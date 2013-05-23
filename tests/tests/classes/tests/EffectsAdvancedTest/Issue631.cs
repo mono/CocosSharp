@@ -25,7 +25,7 @@ namespace tests
             CCLayerColor layer2 = new CCLayerColor(new CCColor4B(0, 255, 0, 255));
             CCSprite fog = new CCSprite("Images/Fog");
 
-            var bf = new CCBlendFunc {Source = OGLES.GL_SRC_ALPHA, Destination = OGLES.GL_ONE_MINUS_SRC_ALPHA};
+            var bf = new CCBlendFunc {Source = CCOGLES.GL_SRC_ALPHA, Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA};
             fog.BlendFunc = bf;
             layer2.AddChild(fog, 1);
             AddChild(layer2, 1);

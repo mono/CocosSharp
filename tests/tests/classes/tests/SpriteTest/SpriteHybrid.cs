@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Cocos2D;
-using Random = Cocos2D.Random;
+using Random = Cocos2D.CCRandom;
 
 namespace tests
 {
@@ -33,7 +33,7 @@ namespace tests
             // only show 80% of them
             for (int i = 0; i < 250; i++)
             {
-                int spriteIdx = (int)(Random.NextDouble() * 14);
+                int spriteIdx = (int)(CCRandom.NextDouble() * 14);
                 string str = "";
                 string temp = "";
                 if (spriteIdx+1<10)
@@ -51,10 +51,10 @@ namespace tests
 
                 float x = -1000;
                 float y = -1000;
-                if (Random.NextDouble() < 0.2f)
+                if (CCRandom.NextDouble() < 0.2f)
                 {
-                    x = (float)(Random.NextDouble() * s.Width);
-                    y = (float)(Random.NextDouble() * s.Height);
+                    x = (float)(CCRandom.NextDouble() * s.Width);
+                    y = (float)(CCRandom.NextDouble() * s.Height);
                 }
                 sprite.Position = (new CCPoint(x, y));
 

@@ -218,7 +218,7 @@ namespace tests
 
         public override void MainMenuCallback(object pSender)
         {
-            CCDrawManager.graphicsDevice.PresentationParameters.DisplayOrientation = DisplayOrientation.LandscapeLeft;
+            CCDrawManager.GraphicsDevice.PresentationParameters.DisplayOrientation = DisplayOrientation.LandscapeLeft;
             base.MainMenuCallback(pSender);
         }
 

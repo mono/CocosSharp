@@ -96,7 +96,7 @@ namespace Cocos2D
 
         /** Changes the priority of the button. The lower the number, the higher the priority. */
         private int m_nDefaultTouchPriority;
-        protected Dictionary<CCControlEvent, RawList<CCInvocation>> m_pDispatchTable;
+        protected Dictionary<CCControlEvent, CCRawList<CCInvocation>> m_pDispatchTable;
 
         public int DefaultTouchPriority
         {
@@ -181,7 +181,7 @@ namespace Cocos2D
                 // Set the touch dispatcher priority by default to 1
                 DefaultTouchPriority = 1;
                 // Initialise the tables
-                m_pDispatchTable = new Dictionary<CCControlEvent, RawList<CCInvocation>>();
+                m_pDispatchTable = new Dictionary<CCControlEvent, CCRawList<CCInvocation>>();
                 return true;
             }
             return false;
@@ -210,7 +210,7 @@ namespace Cocos2D
                     // Call invocations
                     // <CCInvocation*>
 
-                    RawList<CCInvocation> invocationList = DispatchListforControlEvent((CCControlEvent) (1 << i));
+                    CCRawList<CCInvocation> invocationList = DispatchListforControlEvent((CCControlEvent) (1 << i));
                     foreach (CCInvocation invocation in invocationList)
                     {
                         invocation.Invoke(this);
@@ -331,12 +331,12 @@ namespace Cocos2D
         * @return the CCInvocation list for the given control event.
         */
         //<CCInvocation*>
-        protected RawList<CCInvocation> DispatchListforControlEvent(CCControlEvent controlEvent)
+        protected CCRawList<CCInvocation> DispatchListforControlEvent(CCControlEvent controlEvent)
         {
-            RawList<CCInvocation> invocationList;
+            CCRawList<CCInvocation> invocationList;
             if (!m_pDispatchTable.TryGetValue(controlEvent, out invocationList))
             {
-                invocationList = new RawList<CCInvocation>(1);
+                invocationList = new CCRawList<CCInvocation>(1);
 
                 m_pDispatchTable.Add(controlEvent, invocationList);
             }
@@ -350,7 +350,7 @@ namespace Cocos2D
             var invocation = new CCInvocation(target, action, controlEvent);
 
             // Add the invocation into the dispatch list for the given control event
-            RawList<CCInvocation> eventInvocationList = DispatchListforControlEvent(controlEvent);
+            CCRawList<CCInvocation> eventInvocationList = DispatchListforControlEvent(controlEvent);
             eventInvocationList.Add(invocation);
         }
 
@@ -358,7 +358,7 @@ namespace Cocos2D
         {
             // Retrieve all invocations for the given control event
             //<CCInvocation*>
-            RawList<CCInvocation> eventInvocationList = DispatchListforControlEvent(controlEvent);
+            CCRawList<CCInvocation> eventInvocationList = DispatchListforControlEvent(controlEvent);
 
             //remove all invocations if the target and action are null
             if (target == null && action == null)

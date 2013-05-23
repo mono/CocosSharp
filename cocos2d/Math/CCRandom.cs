@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cocos2D
 {
-    public class Random
+    public class CCRandom
     {
         // random seed 
 		private static readonly System.Random _random = new System.Random((int)DateTime.Now.Ticks);

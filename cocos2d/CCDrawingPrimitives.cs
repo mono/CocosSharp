@@ -9,13 +9,13 @@ namespace Cocos2D
 {
     public partial class CCDrawingPrimitives
     {
-        private static PrimitiveBatch m_Batch;
+        private static CCPrimitiveBatch m_Batch;
         private static float m_PointSize = 3f;
         private static CCColor4B m_Color;
 
         public static void Init(GraphicsDevice graphics)
         {
-            m_Batch = new PrimitiveBatch(graphics);
+            m_Batch = new CCPrimitiveBatch(graphics);
         }
 
         public static void Begin()
@@ -458,7 +458,7 @@ namespace Cocos2D
                 CCPoint pp2 = config[Math.Min(c, Math.Max(p + 1, 0))];
                 CCPoint pp3 = config[Math.Min(c, Math.Max(p + 2, 0))];
 
-                CCPoint newPos = Spline.CCCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
+                CCPoint newPos = CCSplineMath.CCCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
 
                 vertices[i].Position.X = newPos.X;
                 vertices[i].Position.Y = newPos.Y;

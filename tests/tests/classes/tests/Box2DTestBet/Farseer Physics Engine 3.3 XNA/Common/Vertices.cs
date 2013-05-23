@@ -11,7 +11,7 @@ namespace FarseerPhysics.Common
 #if !(XBOX360)
     [DebuggerDisplay("Count = {Count} Vertices = {ToString()}")]
 #endif
-    public class Vertices : RawList<Vector2>
+    public class Vertices : CCRawList<Vector2>
     {
         public Vertices()
         {

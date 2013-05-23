@@ -37,7 +37,7 @@ namespace Cocos2D
     ///  FastRandom are in use or if being used in a multi-threaded environment.
     /// 
     /// </summary>
-    public class FastRandom
+    public class CCFastRandom
     {
         // The +1 ensures NextDouble doesn't generate 1.0
         const double REAL_UNIT_INT = 1.0 / ((double)int.MaxValue + 1.0);
@@ -51,7 +51,7 @@ namespace Cocos2D
         /// <summary>
         /// Initialises a new instance using time dependent seed.
         /// </summary>
-        public FastRandom()
+        public CCFastRandom()
         {
             // Initialise using the system tick count.
             Reinitialise((int)Environment.TickCount);
@@ -62,7 +62,7 @@ namespace Cocos2D
         /// This constructor signature is provided to maintain compatibility with
         /// System.Random
         /// </summary>
-        public FastRandom(int seed)
+        public CCFastRandom(int seed)
         {
             Reinitialise(seed);
         }

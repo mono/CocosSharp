@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
-    public class PrimitiveBatch : IDisposable
+    public class CCPrimitiveBatch : IDisposable
     {
         private const int DefaultBufferSize = 500;
 
@@ -35,12 +35,12 @@ namespace Cocos2D
         /// that PrimitiveBatch will need.
         /// </summary>
         /// <param name="graphicsDevice">The graphics device.</param>
-        public PrimitiveBatch(GraphicsDevice graphicsDevice)
+        public CCPrimitiveBatch(GraphicsDevice graphicsDevice)
             : this(graphicsDevice, DefaultBufferSize)
         {
         }
 
-        public PrimitiveBatch(GraphicsDevice graphicsDevice, int bufferSize)
+        public CCPrimitiveBatch(GraphicsDevice graphicsDevice, int bufferSize)
         {
             if (graphicsDevice == null)
             {

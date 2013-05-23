@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Cocos2D;
 using System.Diagnostics;
-using Random = Cocos2D.Random;
+using Random = Cocos2D.CCRandom;
 
 namespace tests
 {
@@ -43,8 +43,8 @@ namespace tests
             CCMenu menu = new CCMenu(item1, item2);
             menu.AlignItemsVertically();
 
-            float x = Random.Next() * 50;
-            float y = Random.Next() * 50;
+            float x = CCRandom.Next() * 50;
+            float y = CCRandom.Next() * 50;
             menu.Position = menu.Position + new CCPoint(x, y);
             AddChild(menu, 0, localtag);
 

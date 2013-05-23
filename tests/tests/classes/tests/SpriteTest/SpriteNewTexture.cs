@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Cocos2D;
-using Random = Cocos2D.Random;
+using Random = Cocos2D.CCRandom;
 
 namespace tests
 {
@@ -33,9 +33,9 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCPoint p = new CCPoint((float)(Random.NextDouble() * s.Width), (float)(Random.NextDouble() * s.Height));
+            CCPoint p = new CCPoint((float)(CCRandom.NextDouble() * s.Width), (float)(CCRandom.NextDouble() * s.Height));
 
-            int idx = (int)(Random.NextDouble() * 1400 / 100);
+            int idx = (int)(CCRandom.NextDouble() * 1400 / 100);
             int x = (idx % 5) * 85;
             int y = (idx / 5) * 121;
 
@@ -47,7 +47,7 @@ namespace tests
             sprite.Position = (new CCPoint(p.X, p.Y));
 
             CCActionInterval action;
-            float random = (float)Random.NextDouble();
+            float random = (float)CCRandom.NextDouble();
 
             if (random < 0.20)
                 action = new CCScaleBy(3, 2);

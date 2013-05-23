@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
-    public class OGLES
+    public class CCOGLES
     {
         /* AlphaFunction */
         public const int GL_NEVER = 0x0200;
