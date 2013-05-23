@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace Cocos2D
 {
-    public static class CCEase
+    public static class CCEaseMath
     {
         public static float BounceOut(float time)
         {

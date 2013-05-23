@@ -428,7 +428,6 @@
     <Compile Include="tileMap_parallax_nodes\CCTMXTileFlags.cs" />
     <Compile Include="support\data_support\CCArray.cs" />
     <Compile Include="Math\CCMathHelper.cs" />
-    <Compile Include="Math\CCEase.cs" />
     <Compile Include="Math\CCFastRandom.cs" />
     <Compile Include="Math\CCRandom.cs" />
     <Compile Include="Math\CCSpline.cs" />
@@ -443,6 +442,7 @@
     <Compile Include="denshion\CCSimpleAudioEngine.cs" />
     <Compile Include="Platform\CCReusedObject.cs" />
     <Compile Include="predefine\CCMacros.cs" />
+    <Compile Include="Math\CCEaseMath.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />
