@@ -18,7 +18,7 @@ namespace Cocos2D
         private static readonly Stack<Effect> m_effectStack = new Stack<Effect>();
 
         public static SpriteBatch spriteBatch;
-        public static GraphicsDevice graphicsDevice;
+        internal static GraphicsDevice graphicsDevice;
 
         internal static Matrix m_worldMatrix;
         internal static Matrix m_viewMatrix;
@@ -91,6 +91,11 @@ namespace Cocos2D
         {
             get { return graphicsDevice.DepthStencilState; }
             set { graphicsDevice.DepthStencilState = value; }
+        }
+
+        public static GraphicsDevice GraphicsDevice
+        {
+            get { return graphicsDevice; }
         }
 
         public static BlendState BlendState

@@ -129,7 +129,7 @@ namespace FarseerPhysics.TestBed.Framework
         {
             Settings.EnableDiagnostics = true;
             DebugView = new DebugViewXNA(World);
-            DebugView.LoadContent(CCDrawManager.graphicsDevice, CCApplication.SharedApplication.Content);
+            DebugView.LoadContent(CCDrawManager.GraphicsDevice, CCApplication.SharedApplication.Content);
         }
 
         protected virtual void JointRemoved(Joint joint)
