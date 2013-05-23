@@ -430,7 +430,6 @@
     <Compile Include="Math\CCMathHelper.cs" />
     <Compile Include="Math\CCFastRandom.cs" />
     <Compile Include="Math\CCRandom.cs" />
-    <Compile Include="Math\CCSpline.cs" />
     <Compile Include="Platform\CCPrimitiveBatch.cs" />
     <Compile Include="Platform\CCOGLES.cs">
       <SubType>Code</SubType>
@@ -443,6 +442,7 @@
     <Compile Include="Platform\CCReusedObject.cs" />
     <Compile Include="predefine\CCMacros.cs" />
     <Compile Include="Math\CCEaseMath.cs" />
+    <Compile Include="Math\CCSplineMath.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />

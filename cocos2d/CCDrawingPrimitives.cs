@@ -458,7 +458,7 @@ namespace Cocos2D
                 CCPoint pp2 = config[Math.Min(c, Math.Max(p + 1, 0))];
                 CCPoint pp3 = config[Math.Min(c, Math.Max(p + 2, 0))];
 
-                CCPoint newPos = CCSpline.CCCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
+                CCPoint newPos = CCSplineMath.CCCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
 
                 vertices[i].Position.X = newPos.X;
                 vertices[i].Position.Y = newPos.Y;
