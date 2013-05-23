@@ -429,6 +429,7 @@
     </Compile>
     <Compile Include=".\CCDrawingPrimitives.cs">
       <LogicalName>CCDrawingPrimitives</LogicalName>
+	  </Compile>
     <Compile Include=".\CCDrawingPrimitives-DrawEllipticleArc.cs">
       <LogicalName>CCDrawingPrimitives-DrawEllipticleArc</LogicalName>
     </Compile>
