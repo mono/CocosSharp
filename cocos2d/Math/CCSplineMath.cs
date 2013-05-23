@@ -3,7 +3,7 @@ namespace Cocos2D
     public static class CCSplineMath
     {
         // CatmullRom Spline formula:
-        public static CCPoint CCCardinalSplineAt(CCPoint p0, CCPoint p1, CCPoint p2, CCPoint p3, float tension, float t)
+        internal static CCPoint CCCardinalSplineAt(CCPoint p0, CCPoint p1, CCPoint p2, CCPoint p3, float tension, float t)
         {
             float t2 = t * t;
             float t3 = t2 * t;
