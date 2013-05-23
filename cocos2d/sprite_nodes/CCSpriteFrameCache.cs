@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Linq;
-using Cocos2D.PropertyList;
+using cocos2d;
 
 namespace Cocos2D
 {
@@ -220,10 +220,27 @@ namespace Cocos2D
         /// <returns>The scope parameter derived from the pszPlist parameter.</returns>
         public string AddSpriteFramesWithFile(string pszPlist)
         {
-            string pszPath = CCFileUtils.FullPathFromRelativePath(pszPlist);
+            string path = CCFileUtils.FullPathFromRelativePath(pszPlist);
             //Dictionary<string, Object> dict = CCFileUtils.dictionaryWithContentsOfFile(pszPath);
-            PlistDictionary dict = CCApplication.SharedApplication.Content.Load<PlistDocument>(pszPlist).Root.AsDictionary;
+            PlistDocument document = null;
+            try
+            {
+                document = CCApplication.SharedApplication.Content.Load<PlistDocument>(path);
+            }
+            catch (System.Exception)
+            {
+                string xml = Cocos2D.Framework.CCContent.LoadContentFile(path);
+                if (xml != null)
+                {
+                    document = new PlistDocument(xml);
+                }
+            }
+            if (document == null)
+            {
+                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + path));
+            }
 
+            PlistDictionary dict = document.Root.AsDictionary;
             string texturePath = "";
             PlistDictionary metadataDict = dict.ContainsKey("metadata") ? dict["metadata"].AsDictionary : null;
 
@@ -241,12 +258,12 @@ namespace Cocos2D
             if (!string.IsNullOrEmpty(texturePath))
             {
                 // build texture path relative to plist file
-                texturePath = CCFileUtils.FullPathFromRelativeFile(texturePath, pszPath);
+                texturePath = CCFileUtils.FullPathFromRelativeFile(texturePath, path);
             }
             else
             {
                 // build texture path by replacing file extension
-                texturePath = pszPath;
+                texturePath = path;
 
                 // remove .xxx
                 texturePath = CCFileUtils.RemoveExtension(texturePath);
@@ -325,7 +342,25 @@ namespace Cocos2D
         {
             //string pszPath = CCFileUtils.fullPathFromRelativePath(pszPlist);
             //Dictionary<string, Object> dict = CCFileUtils.dictionaryWithContentsOfFile(pszPath);
-            PlistDictionary dict = CCApplication.SharedApplication.Content.Load<PlistDocument>(pszPlist).Root.AsDictionary;
+            PlistDocument document = null;
+            try
+            {
+                document = CCApplication.SharedApplication.Content.Load<PlistDocument>(pszPlist);
+            }
+            catch (System.Exception)
+            {
+                string xml = Cocos2D.Framework.CCContent.LoadContentFile(pszPlist);
+                if (xml != null)
+                {
+                    document = new PlistDocument(xml);
+                }
+            }
+            if (document == null)
+            {
+                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + pszPlist));
+            }
+
+            PlistDictionary dict = document.Root.AsDictionary;
 
             AddSpriteFramesWithDictionary(dict, pobTexture, framePrefix);
             return (framePrefix);
@@ -397,7 +432,25 @@ namespace Cocos2D
         {
             //string path = CCFileUtils.fullPathFromRelativePath(plist);
             //Dictionary<string, object> dict = CCFileUtils.dictionaryWithContentsOfFile(path);
-            PlistDictionary dict = CCApplication.SharedApplication.Content.Load<PlistDocument>(plist).Root.AsDictionary;
+            PlistDocument document = null;
+            try
+            {
+                document = CCApplication.SharedApplication.Content.Load<PlistDocument>(plist);
+            }
+            catch (System.Exception)
+            {
+                string xml = Cocos2D.Framework.CCContent.LoadContentFile(plist);
+                if (xml != null)
+                {
+                    document = new PlistDocument(xml);
+                }
+            }
+            if (document == null)
+            {
+                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + plist));
+            }
+
+            PlistDictionary dict = document.Root.AsDictionary;
 
             RemoveSpriteFramesFromDictionary(dict);
         }

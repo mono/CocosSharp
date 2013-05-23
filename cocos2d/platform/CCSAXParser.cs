@@ -21,11 +21,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-
+using System;
 using System.IO;
 using System.Text;
 using System.Xml;
 using Cocos2D.Framework;
+using Microsoft.Xna.Framework.Content;
 
 //using System.Xml.Linq;
 
@@ -150,10 +151,12 @@ namespace Cocos2D
             return true;
         }
 
+
+
         public bool Parse(string pszFile)
         {
-            var data = CCApplication.SharedApplication.Content.Load<CCContent>(pszFile);
-            return Parse(data.Content, data.Content.Length);
+            string content = CCContent.LoadContentFile(pszFile);
+            return Parse(content, content.Length);
         }
 
         public void SetDelegator(ICCSAXDelegator pDelegator)

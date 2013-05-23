@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
-using Cocos2D.PropertyList;
+using cocos2d;
 
 namespace Cocos2D
 {
@@ -392,12 +392,27 @@ namespace Cocos2D
             //var content = CCApplication.SharedApplication.content.Load<CCContent>(m_sPlistFile);
             //PlistDocument dict = PlistDocument.Create(content.Content);
 
-            var dict = CCApplication.SharedApplication.Content.Load<PlistDocument>(m_sPlistFile);
+            PlistDocument doc = null;
+            try
+            {
+                doc = CCApplication.SharedApplication.Content.Load<PlistDocument>(m_sPlistFile);
+            }
+            catch (Exception)
+            {
+                string xml = Cocos2D.Framework.CCContent.LoadContentFile(m_sPlistFile);
+                if (xml != null)
+                {
+                    doc = new PlistDocument(xml);
+                }
+            }
+            if (doc == null)
+            {
+                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + m_sPlistFile));
+            }
+            Debug.Assert(doc != null, "Particles: file not found");
+            Debug.Assert(doc.Root != null, "Particles: file not found");
 
-            Debug.Assert(dict != null, "Particles: file not found");
-            Debug.Assert(dict.Root != null, "Particles: file not found");
-
-            bRet = InitWithDictionary(dict.Root.AsDictionary);
+            bRet = InitWithDictionary(doc.Root.AsDictionary);
 
             return bRet;
         }

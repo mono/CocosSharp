@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
-using Cocos2D.PropertyList;
+using cocos2d;
 
 namespace Cocos2D
 {
@@ -109,7 +109,24 @@ namespace Cocos2D
 
             string path = CCFileUtils.FullPathFromRelativePath(plist);
 
-            var document = CCApplication.SharedApplication.Content.Load<PlistDocument>(path);
+            PlistDocument document = null;
+            try
+            {
+                document = CCApplication.SharedApplication.Content.Load<PlistDocument>(path);
+            }
+            catch (System.Exception)
+            {
+                string xml = Cocos2D.Framework.CCContent.LoadContentFile(path);
+                if (xml != null)
+                {
+                    document = new PlistDocument(xml);
+                }
+            }
+            if (document == null)
+            {
+                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + path));
+            }
+
             PlistDictionary dict = document.Root.AsDictionary;
 
             Debug.Assert(dict != null, "CCAnimationCache: File could not be found");

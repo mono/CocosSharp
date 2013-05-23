@@ -525,6 +525,7 @@ namespace Cocos2D
 
         public virtual void Update(float dt)
         {
+            CCLog.Log("{0}: Update at {1}", this.GetType(), dt);
         }
 
         #endregion
