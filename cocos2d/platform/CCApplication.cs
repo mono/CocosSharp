@@ -459,7 +459,7 @@ namespace Cocos2D
                 {
 #if NETFX_CORE
                     pos = TransformPoint(_lastMouseState.X, _lastMouseState.Y);
-                    pos = CCDrawManager.ScreenToWorld(pos.x, pos.y);
+                    pos = CCDrawManager.ScreenToWorld(pos.X, pos.Y);
 #else
                     pos = CCDrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
 #endif
@@ -478,7 +478,7 @@ namespace Cocos2D
                         {
 #if NETFX_CORE
                             pos = TransformPoint(_lastMouseState.X, _lastMouseState.Y);
-                            pos = CCDrawManager.ScreenToWorld(pos.x, pos.y);
+                            pos = CCDrawManager.ScreenToWorld(pos.X, pos.Y);
 #else
                             pos = CCDrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
 #endif

@@ -30,7 +30,9 @@ using System.Xml;
 using System.IO;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Content;
-
+#if NETFX_CORE
+using Win8StoreIOUtility = Cocos2D.Win8StoreIOUtility;
+#endif
 
 namespace cocos2d
 {

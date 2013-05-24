@@ -123,15 +123,7 @@ public class CCUserDefault
 	 */
 	private CCUserDefault()
 	{
-#if WINDOWS || MACOS || LINUX
-		// only create xml file once if it doesnt exist
-		if ((!isXMLFileExist())) {
-			createXMLFile();
-		}
-		using (FileStream fileStream = new FileInfo(XML_FILE_NAME).OpenRead()){
-			parseXMLFile(fileStream);
-		}
-#elif NETFX_CORE
+#if NETFX_CORE
         if(myIsolatedStorage == null) {
             CheckStorageDevice();
         }
@@ -147,6 +139,15 @@ public class CCUserDefault
                 parseXMLFile(s);
             }
         }
+#elif WINDOWS || MACOS || LINUX
+		// only create xml file once if it doesnt exist
+		if ((!isXMLFileExist())) {
+			createXMLFile();
+		}
+		using (FileStream fileStream = new FileInfo(XML_FILE_NAME).OpenRead()){
+			parseXMLFile(fileStream);
+		}
+
 #else
         myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication();
 
@@ -302,17 +303,17 @@ public class CCUserDefault
 	private bool isXMLFileExist()
 	{
 		bool bRet = false;
-#if WINDOWS || LINUX || MACOS
-		if (new FileInfo(XML_FILE_NAME).Exists) 
-		{
-			bRet = true;
-		}
-#elif NETFX_CORE
+#if NETFX_CORE
         // use the StorageContainer to determine if the file exists.
         if (myIsolatedStorage.FileExists(XML_FILE_NAME))
         {
             bRet = true;
         }
+#elif WINDOWS || LINUX || MACOS
+		if (new FileInfo(XML_FILE_NAME).Exists) 
+		{
+			bRet = true;
+		}
 #else
         if (myIsolatedStorage.FileExists(XML_FILE_NAME)) 
 		{
@@ -327,10 +328,10 @@ public class CCUserDefault
 	{
 		bool bRet = false;
 
-#if WINDOWS || LINUX || MACOS
-		using (StreamWriter writeFile = new StreamWriter(XML_FILE_NAME)) 
-#elif NETFX_CORE
+#if NETFX_CORE
         using (StreamWriter writeFile = new StreamWriter(myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate)))
+#elif WINDOWS || LINUX || MACOS
+		using (StreamWriter writeFile = new StreamWriter(XML_FILE_NAME)) 
 #else
         using (StreamWriter writeFile = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage)))
 #endif
@@ -345,10 +346,10 @@ public class CCUserDefault
 
 	public void Flush()
 	{
-#if WINDOWS || LINUX || MACOS
-		using (StreamWriter stream = new StreamWriter(XML_FILE_NAME)) 
-#elif NETFX_CORE
+#if NETFX_CORE
         using (Stream stream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate))
+#elif WINDOWS || LINUX || MACOS
+		using (StreamWriter stream = new StreamWriter(XML_FILE_NAME)) 
 #else
 		using (StreamWriter stream = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage))) 
 #endif
