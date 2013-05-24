@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="AppDelegaet.cs" />
     <Compile Include="Program.cs" />
 	<Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
