@@ -132,13 +132,25 @@
   </ItemGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Reference Include="Cocos2D.Framework" Condition=" '$(Platform)' == 'ARM' ">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\WindowsPhone\ARM\Cocos2D.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework" Condition=" '$(Platform)' == 'ARM' ">
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\WindowsPhone\ARM\MonoGame.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Cocos2D.Framework" Condition=" '$(Platform)' == 'x86' ">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\WindowsPhone\x86\Cocos2D.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework" Condition=" '$(Platform)' == 'x86' ">
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\WindowsPhone\x86\MonoGame.Framework.dll</HintPath>
     </Reference>
-  </ItemGroup>
+    <Reference Include="cocos2d" Condition=" '$(Platform)' == 'x86' ">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\WindowsPhone\x86\cocos2d.dll</HintPath>
+    </Reference>
+    <Reference Include="box2d" Condition=" '$(Platform)' == 'x86' ">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\WindowsPhone\x86\box2d.dll</HintPath>
+    </Reference>
+      <Reference Include="cocos2d" Condition=" '$(Platform)' == 'ARM' ">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\WindowsPhone\ARM\cocos2d.dll</HintPath>
+    </Reference>
+    <Reference Include="box2d" Condition=" '$(Platform)' == 'ARM' ">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\WindowsPhone\ARM\box2d.dll</HintPath>
+    </Reference>
+</ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
 

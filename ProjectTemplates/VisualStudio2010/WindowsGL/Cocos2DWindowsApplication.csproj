@@ -41,22 +41,28 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\WindowsGL\OpenTK.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\WindowsGL\OpenTK.dll</HintPath>
     </Reference>
-    <Reference Include="Cocos2D.Framework">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\WindowsGL\Cocos2D.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework">
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\WindowsGL\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Lidgren.Network">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\WindowsGL\Lidgren.Network.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\WindowsGL\Lidgren.Network.dll</HintPath>
     </Reference>
     <Reference Include="Tao.Sdl">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\WindowsGL\Tao.Sdl.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\WindowsGL\Tao.Sdl.dll</HintPath>
+    </Reference>
+    <Reference Include="cocos2d">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\WindowsGL\cocos2d.dll</HintPath>
+    </Reference>
+    <Reference Include="box2d">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\WindowsGL\box2d.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-     <Content Include="$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\WindowsGL\SDL.dll">
+     <Content Include="$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\WindowsGL\SDL.dll">
       <Link>SDL.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
