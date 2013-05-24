@@ -185,8 +185,8 @@ namespace Cocos2D
 
 
 #if CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA
-        public static readonly int CCDefaultSourceBlending = OGLES.GL_ONE;
-        public static readonly int CCDefaultDestinationBlending = OGLES.GL_ONE_MINUS_SRC_ALPHA;
+        public static readonly int CCDefaultSourceBlending = CCOGLES.GL_ONE;
+        public static readonly int CCDefaultDestinationBlending = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
 #else
         // Not PMA - like iOS, textures do not have alpha blended in the pixels
          public static readonly int CCDefaultSourceBlending= CCOGLES.GL_SRC_ALPHA;
