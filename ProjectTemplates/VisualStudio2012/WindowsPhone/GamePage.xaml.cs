@@ -8,7 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Xna.Framework;
-using Cocos2D.Framework.WindowsPhone;
+using MonoGame.Framework.WindowsPhone;
 using $safeprojectname$.Resources;
 
 namespace $safeprojectname$

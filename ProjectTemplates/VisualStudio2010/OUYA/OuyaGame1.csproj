@@ -49,11 +49,17 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Cocos2D.Framework">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\OUYA\Cocos2D.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework">
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\OUYA\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Ouya.Console.Api">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\OUYA\Ouya.Console.Api.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\OUYA\Ouya.Console.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="cocos2d">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\OUYA\cocos2d.dll</HintPath>
+    </Reference>
+    <Reference Include="box2d">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\OUYA\box2d.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

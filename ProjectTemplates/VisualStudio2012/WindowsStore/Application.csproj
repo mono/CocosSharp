@@ -103,29 +103,35 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Reference Include="Cocos2D.Framework">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Windows8\Cocos2D.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework">
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Windows8\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Windows8\SharpDX.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.XInput">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Windows8\SharpDX.XInput.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.XInput.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct2D1">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Windows8\SharpDX.Direct2D1.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.Direct2D1.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct3D11">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Windows8\SharpDX.Direct3D11.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.Direct3D11.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.DXGI">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Windows8\SharpDX.DXGI.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.DXGI.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.MediaFoundation">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Windows8\SharpDX.MediaFoundation.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.MediaFoundation.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.XAudio2">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Windows8\SharpDX.XAudio2.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.XAudio2.dll</HintPath>
+    </Reference>
+    <Reference Include="cocos2d">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\Windows8\cocos2d.dll</HintPath>
+    </Reference>
+    <Reference Include="box2d">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\Windows8\box2d.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
