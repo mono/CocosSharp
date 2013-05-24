@@ -12,7 +12,7 @@ namespace $safeprojectname$
         /// </summary>
         static void Main()
         {
-            var factory = new Cocos2D.Framework.GameFrameworkViewSource<Game1>();
+            var factory = new MonoGame.Framework.GameFrameworkViewSource<Game1>();
             Windows.ApplicationModel.Core.CoreApplication.Run(factory);
         }
     }

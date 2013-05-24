@@ -23,6 +23,12 @@ namespace $safeprojectname$
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+			//
+			// This is the main Cocos2D connection. The CCApplication is the manager of the
+			// nodes that define your game.
+			//
+            CCApplication application = new AppDelegate(this, graphics);
+            this.Components.Add(application);
         }
 
         /// <summary>
@@ -66,8 +72,16 @@ namespace $safeprojectname$
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+			// If the director is no longer showing a scene, then let's exit
+            if (CCDirector.SharedDirector.RunningScene == null)
+            {
+                ExitGame();
+            }
+            // For Mobile devices, this logic will close the Game when the Back button is pressed
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+			{
+				ExitGame();
+			}
 
             // TODO: Add your update logic here
 
@@ -82,9 +96,20 @@ namespace $safeprojectname$
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            spriteBatch.Begin();
+            spriteBatch.DrawString(font, "Hello from Cocos2D!", new Vector2(16, 16), Color.White);
+            spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }
+
+		private void ExitGame() 
+		{
+			// TODO: add your exit code here to restore the device to its per-game environment.
+            CCSimpleAudioEngine.SharedEngine.RestoreMediaState();
+			Exit();
+		}
+
     }
 }

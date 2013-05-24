@@ -37,30 +37,37 @@
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="AppDelegaet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Linux\OpenTK.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Linux\OpenTK.dll</HintPath>
     </Reference>
-    <Reference Include="Cocos2D.Framework">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Linux\Cocos2D.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework">
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Linux\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Lidgren.Network">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Linux\Lidgren.Network.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Linux\Lidgren.Network.dll</HintPath>
     </Reference>
     <Reference Include="Tao.Sdl">
-       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Linux\Tao.Sdl.dll</HintPath>
+       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Linux\Tao.Sdl.dll</HintPath>
+    </Reference>
+    <Reference Include="cocos2d">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\Linux\cocos2d.dll</HintPath>
+    </Reference>
+    <Reference Include="box2d">
+       <HintPath>$(MSBuildExtensionsPath)\..\Cocos2D\v1.0\Assemblies\Linux\box2d.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Linux\SDL.dll">
+    <Content Include="$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Linux\SDL.dll">
       <Link>SDL.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="$(MSBuildExtensionsPath)\..\Cocos2D\v3.0\Assemblies\Linux\SDL_Mixer.dll">
+    <Content Include="$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Linux\SDL_Mixer.dll">
       <Link>SDL_Mixer.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

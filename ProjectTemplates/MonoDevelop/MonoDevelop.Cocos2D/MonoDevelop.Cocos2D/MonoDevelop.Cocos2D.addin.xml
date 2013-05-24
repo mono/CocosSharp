@@ -37,6 +37,7 @@
 		<Import file="templates/Cocos2DApplication/MacMain.cs" />
         <Import file="templates/Cocos2DApplication/MacMain.fs" />
 		<Import file="templates/Cocos2DApplication/Program.cs" />
+		<Import file="templates/Cocos2DApplication/AppDelegate.cs" />
 		<Import file="templates/Cocos2DApplication/Resource.cs" />
 		<Import file="templates/Cocos2DApplication/Splash.png" />
 		<Import file="templates/Cocos2DApplication/Styles.xml" />
