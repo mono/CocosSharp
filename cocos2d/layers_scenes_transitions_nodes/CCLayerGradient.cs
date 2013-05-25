@@ -70,7 +70,12 @@ namespace Cocos2D
         {
             //Init();
         }
-        
+
+        public CCLayerGradient(byte startOpacity, byte endOpacity)
+        {
+            m_cStartOpacity = startOpacity;
+            m_cEndOpacity = endOpacity;
+        }
         
         /// <summary>
         /// Creates a full-screen CCLayer with a gradient between start and end.
