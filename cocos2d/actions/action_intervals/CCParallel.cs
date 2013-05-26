@@ -22,6 +22,15 @@ namespace Cocos2D
             m_pActions = actions;
         }
 
+        public override void StartWithTarget(CCNode target)
+        {
+            base.StartWithTarget(target);
+            foreach (CCTargetedAction action in m_pActions)
+            {
+                action.StartWithTarget(target);
+            }
+        }
+
         public CCParallel(CCParallel copy) : base(copy)
         {
             CCFiniteTimeAction[] cp = new CCFiniteTimeAction[copy.m_pActions.Length];
