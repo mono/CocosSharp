@@ -239,6 +239,7 @@
     <Compile Include="layers_scenes_transitions_nodes\CCLayerGradient.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerMultiplex.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCScene.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeDown.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeUp.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFlipAngular.cs" />

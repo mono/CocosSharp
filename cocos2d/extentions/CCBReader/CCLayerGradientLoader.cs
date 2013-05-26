@@ -11,7 +11,7 @@ namespace Cocos2D
 
         public override CCNode CreateCCNode()
         {
-            return new CCLayerGradient();
+            return new CCLayerGradient((byte)255,(byte)255);
         }
 
         protected override void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, CCColor3B color, CCBReader reader)
