@@ -64,14 +64,15 @@ namespace Cocos2D
 
         public virtual bool Init()
         {
-            if(m_bDidInit) {
+            if (m_bDidInit)
+            {
                 return (true);
             }
             bool bRet = false;
-                CCDirector director = CCDirector.SharedDirector;
+            CCDirector director = CCDirector.SharedDirector;
             if (director != null)
-                {
-//                ContentSize = director.WinSize;
+            {
+                //                ContentSize = director.WinSize;
                 m_bIsMultiTouchEnabled = false;
                 m_bIsSingleTouchEnabled = false;
                 m_bIsAccelerometerEnabled = false;
