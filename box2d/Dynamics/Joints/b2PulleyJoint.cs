@@ -121,8 +121,8 @@ namespace Box2D.Dynamics.Joints
             m_uA = cA + m_rA - m_groundAnchorA;
             m_uB = cB + m_rB - m_groundAnchorB;
 
-            float lengthA = m_uA.Length();
-            float lengthB = m_uB.Length();
+            float lengthA = m_uA.Length;
+            float lengthB = m_uB.Length;
 
             if (lengthA > 10.0f * b2Settings.b2_linearSlop)
             {
@@ -188,8 +188,8 @@ namespace Box2D.Dynamics.Joints
             b2Vec2 vB = data.velocities[m_indexB].v;
             float wB = data.velocities[m_indexB].w;
 
-            b2Vec2 vpA = vA + b2Math.b2Cross(wA, m_rA);
-            b2Vec2 vpB = vB + b2Math.b2Cross(wB, m_rB);
+            b2Vec2 vpA = vA + b2Math.b2Cross(wA, ref m_rA);
+            b2Vec2 vpB = vB + b2Math.b2Cross(wB, ref m_rB);
 
             float Cdot = -b2Math.b2Dot(m_uA, vpA) - m_ratio * b2Math.b2Dot(m_uB, vpB);
             float impulse = -m_mass * Cdot;
@@ -225,8 +225,8 @@ namespace Box2D.Dynamics.Joints
             b2Vec2 uA = cA + rA - m_groundAnchorA;
             b2Vec2 uB = cB + rB - m_groundAnchorB;
 
-            float lengthA = uA.Length();
-            float lengthB = uB.Length();
+            float lengthA = uA.Length;
+            float lengthB = uB.Length;
 
             if (lengthA > 10.0f * b2Settings.b2_linearSlop)
             {
@@ -317,7 +317,7 @@ namespace Box2D.Dynamics.Joints
             b2Vec2 p = m_bodyA.GetWorldPoint(m_localAnchorA);
             b2Vec2 s = m_groundAnchorA;
             b2Vec2 d = p - s;
-            return d.Length();
+            return d.Length;
         }
 
         public virtual float GetLengthB()
@@ -325,7 +325,7 @@ namespace Box2D.Dynamics.Joints
             b2Vec2 p = m_bodyB.GetWorldPoint(m_localAnchorB);
             b2Vec2 s = m_groundAnchorB;
             b2Vec2 d = p - s;
-            return d.Length();
+            return d.Length;
         }
 
         public virtual float GetRatio()

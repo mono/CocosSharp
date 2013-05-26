@@ -168,8 +168,8 @@ namespace Box2D.Collision.Shapes
                 int i1 = i;
                 int i2 = i + 1 < m_vertexCount ? i + 1 : 0;
                 b2Vec2 edge = m_vertices[i2] - m_vertices[i1];
-                 Debug.Assert(edge.LengthSquared() > b2Settings.b2_epsilon * b2Settings.b2_epsilon);
-                m_normals[i] = b2Math.b2Cross(edge, 1.0f);
+                 Debug.Assert(edge.LengthSquared > b2Settings.b2_epsilon * b2Settings.b2_epsilon);
+                 m_normals[i] = edge.UnitCross(); // b2Math.b2Cross(edge, 1.0f);
                 m_normals[i].Normalize();
             }
 
@@ -306,10 +306,9 @@ namespace Box2D.Collision.Shapes
                 upper = b2Math.b2Max(upper, v);
             }
 
-            b2Vec2 r = new b2Vec2(m_radius, m_radius);
-            b2AABB aabb = new b2AABB();
-            aabb.m_lowerBound = lower - r;
-            aabb.m_upperBound = upper + r;
+            b2AABB aabb = b2AABB.Default;
+            aabb.Set(lower, upper);
+            aabb.Fatten(m_radius);
             return(aabb);
         }
 

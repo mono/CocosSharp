@@ -49,15 +49,19 @@ namespace Box2D.Common
         /// than computing the inverse in one-shot cases.
         public b2Vec3 Solve33(b2Vec3 b)
         {
-            float det = b2Math.b2Dot(ex, b2Math.b2Cross(ey, ez));
+            b2Vec3 cx = b2Math.b2Cross(ref ey, ref ez);
+            float det = b2Math.b2Dot(ref ex, ref cx);
             if (det != 0.0f)
             {
                 det = 1.0f / det;
             }
             b2Vec3 x = new b2Vec3();
-            x.x = det * b2Math.b2Dot(b, b2Math.b2Cross(ey, ez));
-            x.y = det * b2Math.b2Dot(ex, b2Math.b2Cross(b, ez));
-            x.z = det * b2Math.b2Dot(ex, b2Math.b2Cross(ey, b));
+            cx = b2Math.b2Cross(ref ey, ref ez);
+            x.x = det * b2Math.b2Dot(ref b, ref cx);
+            cx = b2Math.b2Cross(ref b, ref ez);
+            x.y = det * b2Math.b2Dot(ref ex, ref cx);
+            cx = b2Math.b2Cross(ref ey, ref b);
+            x.z = det * b2Math.b2Dot(ref ex, ref cx);
             return x;
         }
 
@@ -99,7 +103,8 @@ namespace Box2D.Common
         /// Returns the zero matrix if singular.
         public b2Mat33 GetSymInverse33(b2Mat33 M)
         {
-            float det = b2Math.b2Dot(ex, b2Math.b2Cross(ey, ez));
+            b2Vec3 cross = b2Math.b2Cross(ey, ez);
+            float det = b2Math.b2Dot(ex, cross);
             if (det != 0.0f)
             {
                 det = 1.0f / det;

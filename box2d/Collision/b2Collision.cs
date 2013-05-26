@@ -302,21 +302,21 @@ namespace Box2D.Collision
             b2Vec2 localTangent = v12 - v11;
             localTangent.Normalize();
 
-            b2Vec2 localNormal = b2Math.b2Cross(localTangent, 1.0f);
+            b2Vec2 localNormal = localTangent.UnitCross(); // b2Math.b2Cross(localTangent, 1.0f);
             b2Vec2 planePoint = 0.5f * (v11 + v12);
 
             b2Vec2 tangent = b2Math.b2Mul(xf1.q, localTangent);
-            b2Vec2 normal = b2Math.b2Cross(tangent, 1.0f);
+            b2Vec2 normal = tangent.UnitCross(); //  b2Math.b2Cross(tangent, 1.0f);
 
             v11 = b2Math.b2Mul(xf1, v11);
             v12 = b2Math.b2Mul(xf1, v12);
 
             // Face offset.
-            float frontOffset = b2Math.b2Dot(normal, v11);
+            float frontOffset = b2Math.b2Dot(ref normal, ref v11);
 
             // Side offsets, extended by polytope skin thickness.
-            float sideOffset1 = -b2Math.b2Dot(tangent, v11) + totalRadius;
-            float sideOffset2 = b2Math.b2Dot(tangent, v12) + totalRadius;
+            float sideOffset1 = -b2Math.b2Dot(ref tangent, ref v11) + totalRadius;
+            float sideOffset2 = b2Math.b2Dot(ref tangent, ref v12) + totalRadius;
 
             // Clip incident edge against extruded edge1 side edges.
             b2ClipVertex[] clipPoints1 = new b2ClipVertex[2];
@@ -344,7 +344,7 @@ namespace Box2D.Collision
             int pointCount = 0;
             for (int i = 0; i < b2Settings.b2_maxManifoldPoints; ++i)
             {
-                float separation = b2Math.b2Dot(normal, clipPoints2[i].v) - frontOffset;
+                float separation = b2Math.b2Dot(ref normal, ref clipPoints2[i].v) - frontOffset;
 
                 if (separation <= totalRadius)
                 {
@@ -387,7 +387,7 @@ namespace Box2D.Collision
 
             for (int i = 0; i < count2; ++i)
             {
-                float dot = b2Math.b2Dot(vertices2[i], normal1);
+                float dot = b2Math.b2Dot(ref vertices2[i], ref normal1);
                 if (dot < minDot)
                 {
                     minDot = dot;
@@ -413,10 +413,13 @@ namespace Box2D.Collision
 
             b2Vec2 A = edgeA.Vertex1, B = edgeA.Vertex2;
             b2Vec2 e = B - A;
+            b2Vec2 diff;
 
             // Barycentric coordinates
-            float u = b2Math.b2Dot(e, B - Q);
-            float v = b2Math.b2Dot(e, Q - A);
+            diff = B - Q;
+            float u = b2Math.b2Dot(ref e, ref diff); // B - Q);
+            diff = Q - A;
+            float v = b2Math.b2Dot(ref e, ref diff); // Q - A);
 
             float radius = edgeA.Radius + circleB.Radius;
 
@@ -429,7 +432,7 @@ namespace Box2D.Collision
             {
                 b2Vec2 P = A;
                 b2Vec2 d = Q - P;
-                float dd = b2Math.b2Dot(d, d);
+                float dd = d.LengthSquared; //  b2Math.b2Dot(d, d);
                 if (dd > radius * radius)
                 {
                     return;
@@ -441,7 +444,8 @@ namespace Box2D.Collision
                     b2Vec2 A1 = edgeA.Vertex0;
                     b2Vec2 B1 = A;
                     b2Vec2 e1 = B1 - A1;
-                    float u1 = b2Math.b2Dot(e1, B1 - Q);
+                    diff = B1 - Q;
+                    float u1 = b2Math.b2Dot(ref e1, ref diff);
 
                     // Is the circle in Region AB of the previous edge?
                     if (u1 > 0.0f)
@@ -467,7 +471,7 @@ namespace Box2D.Collision
             {
                 b2Vec2 P = B;
                 b2Vec2 d = Q - P;
-                float dd = b2Math.b2Dot(d, d);
+                float dd = d.LengthSquared; //  b2Math.b2Dot(d, d);
                 if (dd > radius * radius)
                 {
                     return;
@@ -479,7 +483,8 @@ namespace Box2D.Collision
                     b2Vec2 B2 = edgeA.Vertex3;
                     b2Vec2 A2 = B;
                     b2Vec2 e2 = B2 - A2;
-                    float v2 = b2Math.b2Dot(e2, Q - A2);
+                    diff = Q - A2;
+                    float v2 = b2Math.b2Dot(ref e2, ref diff);
 
                     // Is the circle in Region AB of the next edge?
                     if (v2 > 0.0f)
@@ -501,20 +506,24 @@ namespace Box2D.Collision
             }
 
             // Region AB
-            float den = b2Math.b2Dot(e, e);
+            float den = e.Length; // b2Math.b2Dot(e, e);
             System.Diagnostics.Debug.Assert(den > 0.0f);
             b2Vec2 xP = (1.0f / den) * (u * A + v * B);
             b2Vec2 xd = Q - xP;
-            float xdd = b2Math.b2Dot(xd, xd);
+            float xdd = xd.LengthSquared; //  b2Math.b2Dot(xd, xd);
             if (xdd > radius * radius)
             {
                 return;
             }
 
-            b2Vec2 n = new b2Vec2(-e.y, e.x);
-            if (b2Math.b2Dot(n, Q - A) < 0.0f)
+            b2Vec2 n = b2Vec2.Zero; // new b2Vec2(-e.y, e.x); 
+            n.m_x = -e.y;
+            n.m_y = e.x;
+            diff = Q - A;
+            if (b2Math.b2Dot(ref n, ref diff) < 0.0f)
             {
-                n.Set(-n.x, -n.y);
+                // n.Set(-n.x, -n.y);
+                n.Set(-n.m_x, -n.m_y);
             }
             n.Normalize();
 
@@ -546,8 +555,8 @@ namespace Box2D.Collision
             int numOut = 0;
 
             // Calculate the distance of end points to the line
-            float distance0 = b2Math.b2Dot(normal, vIn[0].v) - offset;
-            float distance1 = b2Math.b2Dot(normal, vIn[1].v) - offset;
+            float distance0 = b2Math.b2Dot(ref normal, ref vIn[0].v) - offset;
+            float distance1 = b2Math.b2Dot(ref normal, ref vIn[1].v) - offset;
 
             // If the points are behind the plane
             if (distance0 <= 0.0f) vOut[numOut++] = vIn[0];
@@ -574,13 +583,21 @@ namespace Box2D.Collision
         public static bool b2TestOverlap(ref b2AABB a, ref b2AABB b)
         {
             b2Vec2 d1, d2;
-            d1 = b.m_lowerBound - a.m_upperBound;
-            d2 = a.m_lowerBound - b.m_upperBound;
+            // No operator overloading here - do direct computation to reduce time complexity
+            
+            d1.m_x = b.LowerBoundX - a.UpperBoundX;
+            d1.m_y = b.LowerBoundY - a.UpperBoundY;
 
-            if (d1.x > 0.0f || d1.y > 0.0f)
+            d2.m_x = a.LowerBoundX - b.UpperBoundX;
+            d2.m_y = a.LowerBoundY - b.UpperBoundY;
+            
+            // d1 = b.LowerBound - a.UpperBound;
+            // d2 = a.LowerBound - b.UpperBound;
+
+            if (d1.m_x > 0.0f || d1.m_y > 0.0f)
                 return false;
 
-            if (d2.x > 0.0f || d2.y > 0.0f)
+            if (d2.m_x > 0.0f || d2.m_y > 0.0f)
                 return false;
 
             return true;

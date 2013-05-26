@@ -63,7 +63,7 @@ namespace Box2D.Collision.Shapes
         {
             b2Vec2 center = transform.p + b2Math.b2Mul(transform.q, m_p);
             b2Vec2 d = p - center;
-            return b2Math.b2Dot(d, d) <= m_radius * m_radius;
+            return d.LengthSquared <= m_radius * m_radius;
         }
 
         // Collision Detection in Interactive 3D Environments by Gino van den Bergen
@@ -77,12 +77,12 @@ namespace Box2D.Collision.Shapes
 
             b2Vec2 position = transform.p + b2Math.b2Mul(transform.q, m_p);
             b2Vec2 s = input.p1 - position;
-            float b = b2Math.b2Dot(s, s) - m_radius * m_radius;
+            float b = s.LengthSquared - m_radius * m_radius;
 
             // Solve quadratic equation.
             b2Vec2 r = input.p2 - input.p1;
-            float c = b2Math.b2Dot(s, r);
-            float rr = b2Math.b2Dot(r, r);
+            float c = b2Math.b2Dot(ref s, ref r);
+            float rr = r.LengthSquared; //  b2Math.b2Dot(r, r);
             float sigma = c * c - rr * b;
 
             // Check for negative discriminant and short segment.
@@ -110,9 +110,10 @@ namespace Box2D.Collision.Shapes
         public override b2AABB ComputeAABB(b2Transform transform, int childIndex)
         {
             b2Vec2 p = transform.p + b2Math.b2Mul(transform.q, m_p);
-            b2AABB aabb = new b2AABB();
-            aabb.m_lowerBound.Set(p.x - m_radius, p.y - m_radius);
-            aabb.m_upperBound.Set(p.x + m_radius, p.y + m_radius);
+            b2AABB aabb = b2AABB.Default;
+            aabb.SetLowerBound(p.x - m_radius, p.y - m_radius);
+            aabb.SetUpperBound(p.x + m_radius, p.y + m_radius);
+            aabb.UpdateAttributes();
             return (aabb);
         }
 

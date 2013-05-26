@@ -88,7 +88,8 @@ namespace Box2D.Dynamics.Joints
             m_localAnchorA = def.localAnchorA;
             m_localAnchorB = def.localAnchorB;
             m_localXAxisA = def.localAxisA;
-            m_localYAxisA = b2Math.b2Cross(1.0f, m_localXAxisA);
+            m_localYAxisA = m_localXAxisA.NegUnitCross();
+//            m_localYAxisA = b2Math.b2Cross(1.0f, m_localXAxisA);
 
             m_mass = 0.0f;
             m_impulse = 0.0f;

@@ -105,7 +105,7 @@ namespace Box2D.Dynamics.Joints
             m_u = cB + m_rB - cA - m_rA;
 
             // Handle singularity.
-            float length = m_u.Length();
+            float length = m_u.Length;
             if (length > b2Settings.b2_linearSlop)
             {
                 m_u *= 1.0f / length;
@@ -180,8 +180,8 @@ namespace Box2D.Dynamics.Joints
             float wB = data.velocities[m_indexB].w;
 
             // Cdot = dot(u, v + cross(w, r))
-            b2Vec2 vpA = vA + b2Math.b2Cross(wA, m_rA);
-            b2Vec2 vpB = vB + b2Math.b2Cross(wB, m_rB);
+            b2Vec2 vpA = vA + b2Math.b2Cross(wA, ref m_rA);
+            b2Vec2 vpB = vB + b2Math.b2Cross(wB, ref m_rB);
             float Cdot = b2Math.b2Dot(m_u, vpB - vpA);
 
             float impulse = -m_mass * (Cdot + m_bias + m_gamma * m_impulse);

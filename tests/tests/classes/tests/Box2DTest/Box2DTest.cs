@@ -273,6 +273,7 @@ namespace tests
             if (InputState.Instance.IsKeyPress(Microsoft.Xna.Framework.Input.Keys.D, PlayerIndex.One, out p))
             {
                 _world.Dump();
+#if PROFILING
                 b2Profile profile = _world.Profile;
                 CCLog.Log("]-----------[{0:F4}]-----------------------[", profile.step);
                 CCLog.Log("Solve Time = {0:F4}", profile.solve);
@@ -291,6 +292,7 @@ namespace tests
                 CCLog.Log("Solve Velocity Time = {0:F4}", profile.solveVelocity);
                 CCLog.Log("Solve Position Time = {0:F4}", profile.solvePosition);
                 CCLog.Log("Step Time = {0:F4}", profile.step);
+#endif
             }
         }
 

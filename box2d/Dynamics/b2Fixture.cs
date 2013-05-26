@@ -222,7 +222,7 @@ namespace Box2D.Dynamics
                 aabb1 = m_shape.ComputeAABB(transform1, proxy.childIndex);
                 aabb2 = m_shape.ComputeAABB(transform2, proxy.childIndex);
 
-                proxy.aabb.Combine(aabb1, aabb2);
+                proxy.aabb.Combine(ref aabb1, ref aabb2);
 
                 b2Vec2 displacement = transform2.p - transform1.p;
 
