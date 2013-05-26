@@ -6,7 +6,7 @@ namespace GameStarterKit
 {
 	public class IntroLayer : CCLayerColor
 	{
-		public IntroLayer ()
+		public IntroLayer () 
 		{
 
 			// create and initialize a Label
@@ -21,9 +21,6 @@ namespace GameStarterKit
 			// setup our color for the background
 			Color = new CCColor3B (Microsoft.Xna.Framework.Color.Blue);
 			Opacity = 255;
-
-			// set the size of our content area
-			ContentSize = CCDirector.SharedDirector.WinSize;
 
 			// Wait a little and then transition to the new scene
 			ScheduleOnce (TransitionOut, 2);
