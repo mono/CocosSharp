@@ -111,14 +111,17 @@ namespace Box2D.Collision.Shapes
             b2Vec2 v1 = m_vertex1;
             b2Vec2 v2 = m_vertex2;
             b2Vec2 e = v2 - v1;
-            b2Vec2 normal = new b2Vec2(e.y, -e.x);
+            b2Vec2 normal = b2Vec2.Zero; // new b2Vec2(e.y, -e.x);
+            normal.m_x = e.m_y;
+            normal.m_y = -e.m_x;
             normal.Normalize();
 
             // q = p1 + t * d
             // dot(normal, q - v1) = 0
             // dot(normal, p1 - v1) + t * dot(normal, d) = 0
-            float numerator = b2Math.b2Dot(normal, v1 - p1);
-            float denominator = b2Math.b2Dot(normal, d);
+            b2Vec2 diff = v1 - p1;
+            float numerator = b2Math.b2Dot(ref normal, ref diff);
+            float denominator = b2Math.b2Dot(ref normal, ref d);
 
             if (denominator == 0.0f)
             {
@@ -136,13 +139,14 @@ namespace Box2D.Collision.Shapes
             // q = v1 + s * r
             // s = dot(q - v1, r) / dot(r, r)
             b2Vec2 r = v2 - v1;
-            float rr = b2Math.b2Dot(r, r);
+            float rr = r.LengthSquared; // b2Math.b2Dot(r, r);
             if (rr == 0.0f)
             {
                 return false;
             }
 
-            float s = b2Math.b2Dot(q - v1, r) / rr;
+            diff = q - v1;
+            float s = b2Math.b2Dot(ref diff, ref r) / rr;
             if (s < 0.0f || 1.0f < s)
             {
                 return false;
@@ -165,19 +169,24 @@ namespace Box2D.Collision.Shapes
             b2Vec2 v1 = b2Math.b2Mul(xf, m_vertex1);
             b2Vec2 v2 = b2Math.b2Mul(xf, m_vertex2);
 
-            b2Vec2 lower = b2Math.b2Min(v1, v2);
-            b2Vec2 upper = b2Math.b2Max(v1, v2);
+            b2Vec2 lower = b2Vec2.Zero;
+            lower.m_x = v1.m_x < v2.m_x ? v1.m_x : v2.m_x;
+            lower.m_y = v1.m_y < v2.m_y ? v1.m_y : v2.m_y;
+            //b2Math.b2Min(v1, v2);
+            b2Vec2 upper = b2Vec2.Zero;
+            upper.m_x = v1.m_x > v2.m_x ? v1.m_x : v2.m_x;
+            upper.m_y = v1.m_y > v2.m_y ? v1.m_y : v2.m_y; 
+            // = b2Math.b2Max(v1, v2);
 
-            b2Vec2 r = new b2Vec2(m_radius, m_radius);
-            b2AABB aabb = new b2AABB(); // TODO: Convert to b2AABB.Zero
-            aabb.m_lowerBound = lower - r;
-            aabb.m_upperBound = upper + r;
+            b2AABB aabb = b2AABB.Default;
+            aabb.Set(lower, upper);
+            aabb.Fatten(m_radius);
             return(aabb);
         }
 
         public override b2MassData ComputeMass(float density)
         {
-            b2MassData massData = new b2MassData();
+            b2MassData massData = b2MassData.Default;
             massData.mass = 0.0f;
             massData.center = 0.5f * (m_vertex1 + m_vertex2);
             massData.I = 0.0f;

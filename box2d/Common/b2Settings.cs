@@ -106,10 +106,12 @@ namespace Box2D.Common
 
         /// Current version.
         public static b2Version b2_version = new b2Version(2, 2, 1);
+
+        // Heavily used vector object
+        public static b2Vec2 b2_aabbExtensionVec = new b2Vec2(b2Settings.b2_aabbExtension, b2Settings.b2_aabbExtension);
     }
 
     /// Version numbering scheme.
-    /// See http://en.wikipedia.org/wiki/Software_versioning
     public struct b2Version
     {
         public int major;        ///< significant changes

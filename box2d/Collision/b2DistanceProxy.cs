@@ -72,10 +72,10 @@ namespace Box2D.Collision
         public int GetSupport(b2Vec2 d)
         {
             int bestIndex = 0;
-            float bestValue = b2Math.b2Dot(m_vertices[0], d);
+            float bestValue = b2Math.b2Dot(ref m_vertices[0], ref d);
             for (int i = 1; i < m_count; ++i)
             {
-                float value = b2Math.b2Dot(m_vertices[i], d);
+                float value = b2Math.b2Dot(ref m_vertices[i], ref d);
                 if (value > bestValue)
                 {
                     bestIndex = i;
@@ -89,10 +89,10 @@ namespace Box2D.Collision
         public b2Vec2 GetSupportVertex(b2Vec2 d)
         {
             int bestIndex = 0;
-            float bestValue = b2Math.b2Dot(m_vertices[0], d);
+            float bestValue = b2Math.b2Dot(ref m_vertices[0], ref d);
             for (int i = 1; i < m_count; ++i)
             {
-                float value = b2Math.b2Dot(m_vertices[i], d);
+                float value = b2Math.b2Dot(ref m_vertices[i], ref d);
                 if (value > bestValue)
                 {
                     bestIndex = i;

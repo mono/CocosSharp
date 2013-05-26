@@ -206,7 +206,7 @@ namespace Box2D.Dynamics.Joints
                 wA -= iA * impulse2;
                 wB += iB * impulse2;
 
-                b2Vec2 Cdot1 = vB + b2Math.b2Cross(wB, m_rB) - vA - b2Math.b2Cross(wA, m_rA);
+                b2Vec2 Cdot1 = vB + b2Math.b2Cross(wB, ref m_rB) - vA - b2Math.b2Cross(wA, ref m_rA);
 
                 b2Vec2 impulse1 = -b2Math.b2Mul22(m_mass, Cdot1);
                 m_impulse.x += impulse1.x;
@@ -215,27 +215,28 @@ namespace Box2D.Dynamics.Joints
                 b2Vec2 P = impulse1;
 
                 vA -= mA * P;
-                wA -= iA * b2Math.b2Cross(m_rA, P);
+                wA -= iA * b2Math.b2Cross(ref m_rA, ref P);
 
                 vB += mB * P;
-                wB += iB * b2Math.b2Cross(m_rB, P);
+                wB += iB * b2Math.b2Cross(ref m_rB, ref P);
             }
             else
             {
-                b2Vec2 Cdot1 = vB + b2Math.b2Cross(wB, m_rB) - vA - b2Math.b2Cross(wA, m_rA);
+                b2Vec2 Cdot1 = vB + b2Math.b2Cross(wB, ref m_rB) - vA - b2Math.b2Cross(wA, ref m_rA);
                 float Cdot2 = wB - wA;
                 b2Vec3 Cdot = new b2Vec3(Cdot1.x, Cdot1.y, Cdot2);
 
                 b2Vec3 impulse = -b2Math.b2Mul(m_mass, Cdot);
                 m_impulse += impulse;
 
-                b2Vec2 P = new b2Vec2(impulse.x, impulse.y);
+                b2Vec2 P = b2Vec2.Zero;
+                P.Set(impulse.x, impulse.y);
 
                 vA -= mA * P;
-                wA -= iA * (b2Math.b2Cross(m_rA, P) + impulse.z);
+                wA -= iA * (b2Math.b2Cross(ref m_rA, ref P) + impulse.z);
 
                 vB += mB * P;
-                wB += iB * (b2Math.b2Cross(m_rB, P) + impulse.z);
+                wB += iB * (b2Math.b2Cross(ref m_rB, ref P) + impulse.z);
             }
 
             data.velocities[m_indexA].v = vA;
@@ -280,7 +281,7 @@ namespace Box2D.Dynamics.Joints
             {
                 b2Vec2 C1 = cB + rB - cA - rA;
 
-                positionError = C1.Length();
+                positionError = C1.Length;
                 angularError = 0.0f;
 
                 b2Vec2 P = -K.Solve22(C1);
@@ -296,7 +297,7 @@ namespace Box2D.Dynamics.Joints
                 b2Vec2 C1 = cB + rB - cA - rA;
                 float C2 = aB - aA - m_referenceAngle;
 
-                positionError = C1.Length();
+                positionError = C1.Length;
                 angularError = b2Math.b2Abs(C2);
 
                 b2Vec3 C = new b2Vec3(C1.x, C1.y, C2);

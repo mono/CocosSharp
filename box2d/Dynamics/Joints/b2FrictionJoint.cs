@@ -174,7 +174,7 @@ namespace Box2D.Dynamics.Joints
 
             // Solve linear friction
             {
-                b2Vec2 Cdot = vB + b2Math.b2Cross(wB, m_rB) - vA - b2Math.b2Cross(wA, m_rA);
+                b2Vec2 Cdot = vB + b2Math.b2Cross(wB, ref m_rB) - vA - b2Math.b2Cross(wA, ref m_rA);
 
                 b2Vec2 impulse = -b2Math.b2Mul(m_linearMass, Cdot);
                 b2Vec2 oldImpulse = m_linearImpulse;
@@ -182,7 +182,7 @@ namespace Box2D.Dynamics.Joints
 
                 float maxImpulse = h * m_maxForce;
 
-                if (m_linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
+                if (m_linearImpulse.LengthSquared > maxImpulse * maxImpulse)
                 {
                     m_linearImpulse.Normalize();
                     m_linearImpulse *= maxImpulse;

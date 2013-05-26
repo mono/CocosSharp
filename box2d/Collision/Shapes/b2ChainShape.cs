@@ -185,15 +185,14 @@ namespace Box2D.Collision.Shapes
             b2Vec2 v1 = b2Math.b2Mul(xf, m_vertices[i1]);
             b2Vec2 v2 = b2Math.b2Mul(xf, m_vertices[i2]);
 
-            b2AABB aabb = new b2AABB();
-            aabb.m_lowerBound = b2Math.b2Min(v1, v2);
-            aabb.m_upperBound = b2Math.b2Max(v1, v2);
+            b2AABB aabb = b2AABB.Default;
+            aabb.Set(b2Math.b2Min(v1, v2),b2Math.b2Max(v1, v2));
             return (aabb);
         }
 
         public override b2MassData ComputeMass(float density)
         {
-            b2MassData massData = new b2MassData();
+            b2MassData massData = b2MassData.Default;
             massData.mass = 0.0f;
             massData.center.SetZero();
             massData.I = 0.0f;

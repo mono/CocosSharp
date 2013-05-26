@@ -129,7 +129,7 @@ namespace Box2D.Dynamics.Joints
             m_localAnchorB = def.localAnchorB;
             m_localXAxisA = def.localAxisA;
             m_localXAxisA.Normalize();
-            m_localYAxisA = b2Math.b2Cross(1.0f, m_localXAxisA);
+            m_localYAxisA = m_localXAxisA.NegUnitCross(); //  b2Math.b2Cross(1.0f, m_localXAxisA);
             m_referenceAngle = def.referenceAngle;
 
             m_impulse.SetZero();
@@ -582,7 +582,7 @@ namespace Box2D.Dynamics.Joints
             float wA = bA.AngularVelocity;
             float wB = bB.AngularVelocity;
 
-            float speed = b2Math.b2Dot(d, b2Math.b2Cross(wA, axis)) + b2Math.b2Dot(axis, vB + b2Math.b2Cross(wB, rB) - vA - b2Math.b2Cross(wA, rA));
+            float speed = b2Math.b2Dot(d, b2Math.b2Cross(wA, ref axis)) + b2Math.b2Dot(axis, vB + b2Math.b2Cross(wB, ref rB) - vA - b2Math.b2Cross(wA, ref rA));
             return speed;
         }
 

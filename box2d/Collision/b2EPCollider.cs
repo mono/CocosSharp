@@ -83,7 +83,8 @@ namespace Box2D.Collision
             b2Vec2 edge1 = m_v2 - m_v1;
             edge1.Normalize();
             m_normal1.Set(edge1.y, -edge1.x);
-            float offset1 = b2Math.b2Dot(m_normal1, m_centroidB - m_v1);
+            b2Vec2 cenMinusV1 = m_centroidB - m_v1;
+            float offset1 = b2Math.b2Dot(ref m_normal1, ref cenMinusV1);
             float offset0 = 0.0f, offset2 = 0.0f;
             bool convex1 = false, convex2 = false;
 
@@ -93,8 +94,9 @@ namespace Box2D.Collision
                 b2Vec2 edge0 = m_v1 - m_v0;
                 edge0.Normalize();
                 m_normal0.Set(edge0.y, -edge0.x);
-                convex1 = b2Math.b2Cross(edge0, edge1) >= 0.0f;
-                offset0 = b2Math.b2Dot(m_normal0, m_centroidB - m_v0);
+                convex1 = b2Math.b2Cross(ref edge0, ref edge1) >= 0.0f;
+                b2Vec2 cenMinusV0 = m_centroidB - m_v0;
+                offset0 = b2Math.b2Dot(ref m_normal0, ref cenMinusV0);
             }
 
             // Is there a following edge?

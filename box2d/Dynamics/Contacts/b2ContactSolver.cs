@@ -26,7 +26,8 @@ namespace Box2D.Dynamics.Contacts
 
     public struct b2VelocityConstraintPoint
     {
-        
+        public static b2VelocityConstraintPoint Zero = b2VelocityConstraintPoint.Create();
+  
         public void Defaults() 
         {
             rA = b2Vec2.Zero;
@@ -51,11 +52,10 @@ namespace Box2D.Dynamics.Contacts
 
     public struct b2ContactVelocityConstraint
     {
-        
-
+       
 		public void Defaults() 
         {
-            points = new b2VelocityConstraintPoint[2] {b2VelocityConstraintPoint.Create(), b2VelocityConstraintPoint.Create()};
+            points = new b2VelocityConstraintPoint[2] {b2VelocityConstraintPoint.Zero, b2VelocityConstraintPoint.Zero};
             normal = b2Vec2.Zero;
 
         }
@@ -280,17 +280,17 @@ namespace Box2D.Dynamics.Contacts
                     vcp.rA = worldManifold.points[j] - cA;
                     vcp.rB = worldManifold.points[j] - cB;
 
-                    float rnA = b2Math.b2Cross(vcp.rA, vc.normal);
-                    float rnB = b2Math.b2Cross(vcp.rB, vc.normal);
+                    float rnA = b2Math.b2Cross(ref vcp.rA, ref vc.normal);
+                    float rnB = b2Math.b2Cross(ref vcp.rB, ref vc.normal);
 
                     float kNormal = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
 
                     vcp.normalMass = kNormal > 0.0f ? 1.0f / kNormal : 0.0f;
 
-                    b2Vec2 tangent = b2Math.b2Cross(vc.normal, 1.0f);
+                    b2Vec2 tangent = vc.normal.UnitCross(); //  b2Math.b2Cross(vc.normal, 1.0f);
 
-                    float rtA = b2Math.b2Cross(vcp.rA, tangent);
-                    float rtB = b2Math.b2Cross(vcp.rB, tangent);
+                    float rtA = b2Math.b2Cross(ref vcp.rA, ref tangent);
+                    float rtB = b2Math.b2Cross(ref vcp.rB, ref tangent);
 
                     float kTangent = mA + mB + iA * rtA * rtA + iB * rtB * rtB;
 
@@ -298,7 +298,7 @@ namespace Box2D.Dynamics.Contacts
 
                     // Setup a velocity bias for restitution.
                     vcp.velocityBias = 0.0f;
-                    float vRel = b2Math.b2Dot(vc.normal, vB + b2Math.b2Cross(wB, vcp.rB) - vA - b2Math.b2Cross(wA, vcp.rA));
+                    float vRel = b2Math.b2Dot(vc.normal, vB + b2Math.b2Cross(wB, ref vcp.rB) - vA - b2Math.b2Cross(wA, ref vcp.rA));
                     if (vRel < -b2Settings.b2_velocityThreshold)
                     {
                         vcp.velocityBias = -vc.restitution * vRel;
@@ -312,10 +312,10 @@ namespace Box2D.Dynamics.Contacts
                     b2VelocityConstraintPoint vcp1 = vc.points[0];
                     b2VelocityConstraintPoint vcp2 = vc.points[1];
 
-                    float rn1A = b2Math.b2Cross(vcp1.rA, vc.normal);
-                    float rn1B = b2Math.b2Cross(vcp1.rB, vc.normal);
-                    float rn2A = b2Math.b2Cross(vcp2.rA, vc.normal);
-                    float rn2B = b2Math.b2Cross(vcp2.rB, vc.normal);
+                    float rn1A = b2Math.b2Cross(ref vcp1.rA, ref vc.normal);
+                    float rn1B = b2Math.b2Cross(ref vcp1.rB, ref vc.normal);
+                    float rn2A = b2Math.b2Cross(ref vcp2.rA, ref vc.normal);
+                    float rn2B = b2Math.b2Cross(ref vcp2.rB, ref vc.normal);
 
                     float k11 = mA + mB + iA * rn1A * rn1A + iB * rn1B * rn1B;
                     float k22 = mA + mB + iA * rn2A * rn2A + iB * rn2B * rn2B;
@@ -363,15 +363,15 @@ namespace Box2D.Dynamics.Contacts
                 float wB = m_velocities[indexB].w;
 
                 b2Vec2 normal = vc.normal;
-                b2Vec2 tangent = b2Math.b2Cross(normal, 1.0f);
+                b2Vec2 tangent = normal.UnitCross(); //  b2Math.b2Cross(normal, 1.0f);
 
                 for (int j = 0; j < pointCount; ++j)
                 {
                     b2VelocityConstraintPoint vcp = vc.points[j];
                     b2Vec2 P = vcp.normalImpulse * normal + vcp.tangentImpulse * tangent;
-                    wA -= iA * b2Math.b2Cross(vcp.rA, P);
+                    wA -= iA * b2Math.b2Cross(ref vcp.rA, ref P);
                     vA -= mA * P;
-                    wB += iB * b2Math.b2Cross(vcp.rB, P);
+                    wB += iB * b2Math.b2Cross(ref vcp.rB, ref P);
                     vB += mB * P;
                 }
 
@@ -402,7 +402,7 @@ namespace Box2D.Dynamics.Contacts
                 float wB = m_velocities[indexB].w;
 
                 b2Vec2 normal = vc.normal;
-                b2Vec2 tangent = b2Math.b2Cross(normal, 1.0f);
+                b2Vec2 tangent = normal.UnitCross(); // b2Math.b2Cross(normal, 1.0f);
                 float friction = vc.friction;
 
                 Debug.Assert(pointCount == 1 || pointCount == 2);
@@ -414,7 +414,7 @@ namespace Box2D.Dynamics.Contacts
                     b2VelocityConstraintPoint vcp = vc.points[j];
 
                     // Relative velocity at contact
-                    b2Vec2 dv = vB + b2Math.b2Cross(wB, vcp.rB) - vA - b2Math.b2Cross(wA, vcp.rA);
+                    b2Vec2 dv = vB + b2Math.b2Cross(wB, ref vcp.rB) - vA - b2Math.b2Cross(wA, ref vcp.rA);
 
                     // Compute tangent force
                     float vt = b2Math.b2Dot(dv, tangent);
@@ -443,7 +443,7 @@ namespace Box2D.Dynamics.Contacts
                     b2VelocityConstraintPoint vcp = vc.points[0];
 
                     // Relative velocity at contact
-                    b2Vec2 dv = vB + b2Math.b2Cross(wB, vcp.rB) - vA - b2Math.b2Cross(wA, vcp.rA);
+                    b2Vec2 dv = vB + b2Math.b2Cross(wB, ref vcp.rB) - vA - b2Math.b2Cross(wA, ref vcp.rA);
 
                     // Compute normal impulse
                     float vn = b2Math.b2Dot(dv, normal);
@@ -505,12 +505,12 @@ namespace Box2D.Dynamics.Contacts
                     Debug.Assert(a.x >= 0.0f && a.y >= 0.0f);
 
                     // Relative velocity at contact
-                    b2Vec2 dv1 = vB + b2Math.b2Cross(wB, cp1.rB) - vA - b2Math.b2Cross(wA, cp1.rA);
-                    b2Vec2 dv2 = vB + b2Math.b2Cross(wB, cp2.rB) - vA - b2Math.b2Cross(wA, cp2.rA);
+                    b2Vec2 dv1 = vB + b2Math.b2Cross(wB, ref cp1.rB) - vA - b2Math.b2Cross(wA, ref cp1.rA);
+                    b2Vec2 dv2 = vB + b2Math.b2Cross(wB, ref cp2.rB) - vA - b2Math.b2Cross(wA, ref cp2.rA);
 
                     // Compute normal velocity
-                    float vn1 = b2Math.b2Dot(dv1, normal);
-                    float vn2 = b2Math.b2Dot(dv2, normal);
+                    float vn1 = b2Math.b2Dot(ref dv1, ref normal);
+                    float vn2 = b2Math.b2Dot(ref dv2, ref normal);
 
                     b2Vec2 b = b2Vec2.Zero;
                     b.x = vn1 - cp1.velocityBias;
@@ -739,7 +739,8 @@ namespace Box2D.Dynamics.Contacts
                             b2Vec2 planePoint = b2Math.b2Mul(xfA, pc.localPoint);
 
                             b2Vec2 clipPoint = b2Math.b2Mul(xfB, pc.localPoints[index]);
-                            separation = b2Math.b2Dot(clipPoint - planePoint, normal) - pc.radiusA - pc.radiusB;
+                            b2Vec2 rCP = clipPoint - planePoint;
+                            separation = b2Math.b2Dot(ref rCP, ref normal) - pc.radiusA - pc.radiusB;
                             point = clipPoint;
                         }
                         break;
@@ -750,7 +751,8 @@ namespace Box2D.Dynamics.Contacts
                             b2Vec2 planePoint = b2Math.b2Mul(xfB, pc.localPoint);
 
                             b2Vec2 clipPoint = b2Math.b2Mul(xfA, pc.localPoints[index]);
-                            separation = b2Math.b2Dot(clipPoint - planePoint, normal) - pc.radiusA - pc.radiusB;
+                            b2Vec2 rCP = clipPoint - planePoint;
+                            separation = b2Math.b2Dot(ref rCP, ref normal) - pc.radiusA - pc.radiusB;
                             point = clipPoint;
 
                             // Ensure normal points from A to B
@@ -793,7 +795,7 @@ namespace Box2D.Dynamics.Contacts
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    b2Transform xfA = b2Transform.Create(), xfB = b2Transform.Create();
+                    b2Transform xfA = b2Transform.Zero, xfB = b2Transform.Zero;
                     xfA.q.Set(aA);
                     xfB.q.Set(aB);
                     xfA.p = cA - b2Math.b2Mul(xfA.q, localCenterA);
@@ -815,8 +817,8 @@ namespace Box2D.Dynamics.Contacts
                     float C = b2Math.b2Clamp(b2Settings.b2_baumgarte * (separation + b2Settings.b2_linearSlop), -b2Settings.b2_maxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
-                    float rnA = b2Math.b2Cross(rA, normal);
-                    float rnB = b2Math.b2Cross(rB, normal);
+                    float rnA = b2Math.b2Cross(ref rA, ref normal);
+                    float rnB = b2Math.b2Cross(ref rB, ref normal);
                     float K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
 
                     // Compute normal impulse
@@ -825,10 +827,10 @@ namespace Box2D.Dynamics.Contacts
                     b2Vec2 P = impulse * normal;
 
                     cA -= mA * P;
-                    aA -= iA * b2Math.b2Cross(rA, P);
+                    aA -= iA * b2Math.b2Cross(ref rA, ref P);
 
                     cB += mB * P;
-                    aB += iB * b2Math.b2Cross(rB, P);
+                    aB += iB * b2Math.b2Cross(ref rB, ref P);
                 }
 
                 m_positions[indexA].c = cA;
@@ -907,8 +909,8 @@ namespace Box2D.Dynamics.Contacts
                     float C = b2Math.b2Clamp(b2Settings.b2_toiBaugarte * (separation + b2Settings.b2_linearSlop), -b2Settings.b2_maxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
-                    float rnA = b2Math.b2Cross(rA, normal);
-                    float rnB = b2Math.b2Cross(rB, normal);
+                    float rnA = b2Math.b2Cross(ref rA, ref normal);
+                    float rnB = b2Math.b2Cross(ref rB, ref normal);
                     float K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
 
                     // Compute normal impulse

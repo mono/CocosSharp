@@ -97,7 +97,8 @@ namespace Box2D.Collision
                 for (int i = 0; i < manifold.pointCount; ++i)
                 {
                     b2Vec2 clipPoint = b2Math.b2Mul(xfB, manifold.points[i].localPoint);
-                    b2Vec2 cA = clipPoint + (radiusA - b2Math.b2Dot(clipPoint - planePoint, normal)) * normal;
+                    b2Vec2 clipMinusPlane = clipPoint - planePoint;
+                    b2Vec2 cA = clipPoint + (radiusA - b2Math.b2Dot(ref clipMinusPlane, ref normal)) * normal;
                     b2Vec2 cB = clipPoint - radiusB * normal;
                     points[i] = 0.5f * (cA + cB);
                 }
@@ -112,7 +113,11 @@ namespace Box2D.Collision
                 for (int i = 0; i < manifold.pointCount; ++i)
                 {
                     b2Vec2 clipPoint = b2Math.b2Mul(xfA, manifold.points[i].localPoint);
-                    b2Vec2 cB = clipPoint + (radiusB - b2Math.b2Dot(clipPoint - planePoint, normal)) * normal;
+                    b2Vec2 tmp = b2Vec2.Zero;
+                    tmp.m_x = clipPoint.m_x - planePoint.m_x;
+                    tmp.m_y = clipPoint.m_y - planePoint.m_y;
+                    // b2Vec2 cB = clipPoint + (radiusB - b2Math.b2Dot(clipPoint - planePoint, normal)) * normal; 
+                    b2Vec2 cB = clipPoint + (radiusB - b2Math.b2Dot(ref tmp, ref normal)) * normal;
                     b2Vec2 cA = clipPoint - radiusA * normal;
                     points[i] = 0.5f * (cA + cB);
                 }
