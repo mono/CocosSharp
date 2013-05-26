@@ -7,7 +7,7 @@
     <ProjectGuid>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cocos2d</RootNamespace>
+    <RootNamespace>Cocos2D</RootNamespace>
     <AssemblyName>cocos2d</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -129,6 +129,7 @@
     <Compile Include="actions\action_intervals\CCTargetedAction.cs" />
     <Compile Include="actions\action_intervals\CCTintBy.cs" />
     <Compile Include="actions\action_intervals\CCTintTo.cs" />
+    <Compile Include="Actions\action_intervals\CCParallel.cs" />
     <Compile Include="actions\action_progress_timer\CCProgressFromTo.cs" />
     <Compile Include="actions\action_progress_timer\CCProgressTo.cs" />
     <Compile Include="actions\action_tiled_grid\CCFadeOutBLTiles.cs" />

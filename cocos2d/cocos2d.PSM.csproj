@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{69878862-DA7D-4DC6-B0A1-50D8FAB4242F};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cocos2d</RootNamespace>
+    <RootNamespace>Cocos2D</RootNamespace>
     <AssemblyName>cocos2d-xna</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -137,6 +137,7 @@
     <Compile Include="Actions\action_intervals\CCSpawn.cs" />
     <Compile Include="Actions\action_intervals\CCTargetedAction.cs" />
     <Compile Include="Actions\action_intervals\CCTintBy.cs" />
+    <Compile Include="Actions\action_intervals\CCParallel.cs" />
     <Compile Include="Actions\action_intervals\CCTintTo.cs" />
     <Compile Include="Actions\action_progress_timer\CCProgressFromTo.cs" />
     <Compile Include="Actions\action_progress_timer\CCProgressTo.cs" />

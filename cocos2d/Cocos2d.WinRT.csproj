@@ -358,6 +358,9 @@
     <Compile Include=".\actions\action_intervals\CCTintTo.cs">
       <LogicalName>actions\action_intervals\CCTintTo</LogicalName>
     </Compile>
+    <Compile Include=".\actions\action_intervals\CCParallel.cs">
+      <LogicalName>actions\action_intervals\CCParallel</LogicalName>
+	</Compile>
     <Compile Include=".\actions\action_progress_timer\CCProgressFromTo.cs">
       <LogicalName>actions\action_progress_timer\CCProgressFromTo</LogicalName>
     </Compile>
