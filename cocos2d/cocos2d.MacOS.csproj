@@ -244,6 +244,7 @@
     <Compile Include="layers_scenes_transitions_nodes\CCLayerGradient.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerMultiplex.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCScene.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionCrossFade.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFade.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeBL.cs" />

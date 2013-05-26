@@ -631,6 +631,9 @@
     <Compile Include=".\layers_scenes_transitions_nodes\CCScene.cs">
       <LogicalName>layers_scenes_transitions_nodes\CCScene</LogicalName>
     </Compile>
+    <Compile Include=".\layers_scenes_transitions_nodes\CCInputScene.cs">
+      <LogicalName>layers_scenes_transitions_nodes\CCInputScene</LogicalName>
+    </Compile>
     <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionCrossFade.cs">
       <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionCrossFade</LogicalName>
     </Compile>
