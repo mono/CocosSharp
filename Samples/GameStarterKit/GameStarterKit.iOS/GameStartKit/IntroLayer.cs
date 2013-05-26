@@ -6,7 +6,7 @@ namespace GameStarterKit
 {
 	public class IntroLayer : CCLayerColor
 	{
-		public IntroLayer ()
+		public IntroLayer () 
 		{
 
 			// create and initialize a Label
@@ -21,9 +21,6 @@ namespace GameStarterKit
 			// setup our color for the background
 			Color = new CCColor3B (Microsoft.Xna.Framework.Color.Blue);
 			Opacity = 255;
-
-			// set the size of our content area
-			ContentSize = CCDirector.SharedDirector.WinSize;
 
 			// Wait a little and then transition to the new scene
 			ScheduleOnce (TransitionOut, 2);
@@ -45,25 +42,31 @@ namespace GameStarterKit
 			CCTransitionScene transition;
 
 		    switch (diceRoll) {
-		        case 0:
-					transition = Transition0;
-		            break;
-		        case 1:
-					transition = Transition1;
-		            break;
-		        case 2:
-					transition = Transition2;
-		            break;
-		        case 3:
-					transition = Transition3;
-		            break;
-		        case 4:
-					transition = Transition4;
-		            break;
-		            
-		        default:
-					transition = Transition0;
-		            break;
+	        case 0:
+				transition = Transition0;
+	            break;
+	        case 1:
+				transition = Transition1;
+	            break;
+	        case 2:
+				transition = Transition2;
+	            break;
+	        case 3:
+				transition = Transition3;
+	            break;
+	        case 4:
+				transition = Transition4;
+	            break;
+			case 5:
+				transition = Transition5;
+				break;
+			case 6:
+				transition = Transition6;
+				break;
+	            
+	        default:
+				transition = Transition0;
+	            break;
 		    }
      
 			CCDirector.SharedDirector.ReplaceScene(transition);
