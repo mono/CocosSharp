@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cocos2d</RootNamespace>
+    <RootNamespace>Cocos2D</RootNamespace>
     <AssemblyName>cocos2d-xna</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -132,6 +132,7 @@
     <Compile Include="actions\action_intervals\CCJumpTo.cs" />
     <Compile Include="actions\action_intervals\CCMoveBy.cs" />
     <Compile Include="actions\action_intervals\CCMoveTo.cs" />
+    <Compile Include="actions\action_intervals\CCParallel.cs" />
     <Compile Include="actions\action_intervals\CCRepeat.cs" />
     <Compile Include="actions\action_intervals\CCRepeatForever.cs" />
     <Compile Include="actions\action_intervals\CCReverseTime.cs" />
