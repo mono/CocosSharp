@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStarterKit.Windows", "GameStarterKit.iOS\GameStarterKit.Windows.csproj", "{2B586203-F63C-4769-A600-F4C72B4A1483}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStarterKit.Windows", "GameStarterKit\GameStarterKit.Windows.csproj", "{2B586203-F63C-4769-A600-F4C72B4A1483}"
 EndProject
 Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "GameStarterKit.WindowsContent", "GameStarterKit.WindowsContent\GameStarterKit.WindowsContent.contentproj", "{B357405C-9734-46AE-AF7E-557C48419734}"
 EndProject
