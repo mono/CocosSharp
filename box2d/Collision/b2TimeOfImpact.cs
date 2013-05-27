@@ -70,8 +70,13 @@ namespace Box2D.Collision
 				m_type = SeparationType.e_faceB;
 				b2Vec2 localPointB1 = proxyB.GetVertex((int)cache.indexB[0]);
 				b2Vec2 localPointB2 = proxyB.GetVertex((int)cache.indexB[1]);
-				
-				m_axis = b2Math.b2Cross(localPointB2 - localPointB1, 1.0f);
+
+                float b21x = localPointB2.m_x - localPointB1.m_x;
+                float b21y = localPointB2.m_y - localPointB1.m_y;
+                m_axis.x = -b21y;
+                m_axis.y = b21x;
+
+                // m_axis = b2Math.b2Cross(localPointB2 - localPointB1, 1.0f);
 				m_axis.Normalize();
 				b2Vec2 normal = b2Math.b2Mul(xfB.q, m_axis);
 				
@@ -81,7 +86,8 @@ namespace Box2D.Collision
 				b2Vec2 localPointA = proxyA.GetVertex((int)cache.indexA[0]);
 				b2Vec2 pointA = b2Math.b2Mul(xfA, localPointA);
 				
-				float s = b2Math.b2Dot(pointA - pointB, normal);
+                b2Vec2 aminusb = pointA - pointB;
+				float s = b2Math.b2Dot(ref aminusb, ref normal);
 				if (s < 0.0f)
 				{
 					m_axis = -m_axis;
@@ -95,8 +101,8 @@ namespace Box2D.Collision
 				m_type = SeparationType.e_faceA;
 				b2Vec2 localPointA1 = m_proxyA.GetVertex(cache.indexA[0]);
 				b2Vec2 localPointA2 = m_proxyA.GetVertex(cache.indexA[1]);
-				
-				m_axis = b2Math.b2Cross(localPointA2 - localPointA1, 1.0f);
+                b2Vec2 a2minusa1 = localPointA2 - localPointA1;
+                m_axis = a2minusa1.UnitCross();// b2Math.b2Cross(localPointA2 - localPointA1, 1.0f);
 				m_axis.Normalize();
 				b2Vec2 normal = b2Math.b2Mul(xfA.q, m_axis);
 				
@@ -105,8 +111,8 @@ namespace Box2D.Collision
 				
 				b2Vec2 localPointB = m_proxyB.GetVertex(cache.indexB[0]);
 				b2Vec2 pointB = b2Math.b2Mul(xfB, localPointB);
-				
-				float s = b2Math.b2Dot(pointB - pointA, normal);
+                b2Vec2 bminusa = pointB - pointA;
+				float s = b2Math.b2Dot(ref bminusa, ref normal);
 				if (s < 0.0f)
 				{
 					m_axis = -m_axis;

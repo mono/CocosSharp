@@ -20,6 +20,8 @@ namespace Box2D.Collision.Shapes
     /// </summary>
     public struct b2MassData
     {
+        public static b2MassData Default = new b2MassData();
+
         /// The mass of the shape, usually in kilograms.
         public float mass;
 

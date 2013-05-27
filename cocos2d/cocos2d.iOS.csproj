@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <Description>cocos2d for MonoTouch</Description>
-    <RootNamespace>cocos2d</RootNamespace>
+    <RootNamespace>Cocos2D</RootNamespace>
     <SynchReleaseVersion>False</SynchReleaseVersion>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
@@ -182,6 +182,7 @@
     <Compile Include="Actions\action_intervals\CCTargetedAction.cs" />
     <Compile Include="Actions\action_intervals\CCTintBy.cs" />
     <Compile Include="Actions\action_intervals\CCTintTo.cs" />
+    <Compile Include="Actions\action_intervals\CCParallel.cs" />
     <Compile Include="Actions\action_progress_timer\CCProgressFromTo.cs" />
     <Compile Include="Actions\action_progress_timer\CCProgressTo.cs" />
     <Compile Include="Actions\action_tiled_grid\CCFadeOutBLTiles.cs" />
@@ -260,6 +261,7 @@
     <Compile Include="layers_scenes_transitions_nodes\CCLayerGradient.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerMultiplex.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCScene.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionCrossFade.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFade.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeBL.cs" />

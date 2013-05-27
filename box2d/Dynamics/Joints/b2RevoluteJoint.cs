@@ -262,7 +262,7 @@ namespace Box2D.Dynamics.Joints
             // Solve limit constraint.
             if (m_enableLimit && m_limitState != b2LimitState.e_inactiveLimit && fixedRotation == false)
             {
-                b2Vec2 Cdot1 = vB + b2Math.b2Cross(wB, m_rB) - vA - b2Math.b2Cross(wA, m_rA);
+                b2Vec2 Cdot1 = vB + b2Math.b2Cross(wB, ref m_rB) - vA - b2Math.b2Cross(wA, ref m_rA);
                 float Cdot2 = wB - wA;
                 b2Vec3 Cdot = new b2Vec3(Cdot1.x, Cdot1.y, Cdot2);
 
@@ -322,17 +322,17 @@ namespace Box2D.Dynamics.Joints
             else
             {
                 // Solve point-to-point constraint
-                b2Vec2 Cdot = vB + b2Math.b2Cross(wB, m_rB) - vA - b2Math.b2Cross(wA, m_rA);
+                b2Vec2 Cdot = vB + b2Math.b2Cross(wB, ref m_rB) - vA - b2Math.b2Cross(wA, ref m_rA);
                 b2Vec2 impulse = m_mass.Solve22(-Cdot);
 
                 m_impulse.x += impulse.x;
                 m_impulse.y += impulse.y;
 
                 vA -= mA * impulse;
-                wA -= iA * b2Math.b2Cross(m_rA, impulse);
+                wA -= iA * b2Math.b2Cross(ref m_rA, ref impulse);
 
                 vB += mB * impulse;
-                wB += iB * b2Math.b2Cross(m_rB, impulse);
+                wB += iB * b2Math.b2Cross(ref m_rB, ref impulse);
             }
 
             data.velocities[m_indexA].v = vA;
@@ -400,7 +400,7 @@ namespace Box2D.Dynamics.Joints
                 b2Vec2 rB = b2Math.b2Mul(qB, m_localAnchorB - m_localCenterB);
 
                 b2Vec2 C = cB + rB - cA - rA;
-                positionError = C.Length();
+                positionError = C.Length;
 
                 float mA = m_invMassA, mB = m_invMassB;
                 float iA = m_invIA, iB = m_invIB;

@@ -9,6 +9,7 @@ namespace Box2D.Common
     /// the position and orientation of rigid frames.
     public struct b2Transform
     {
+        public static b2Transform Zero = b2Transform.Create();
 
         public static b2Transform Create()
         {

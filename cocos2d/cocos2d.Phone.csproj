@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{47EE6CE6-493D-4967-944A-5E55B71AA9FD}</ProjectGuid>
@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">Windows Phone</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cocos2d</RootNamespace>
+    <RootNamespace>Cocos2D</RootNamespace>
     <AssemblyName>cocos2d-xna</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -139,6 +139,7 @@
     <Compile Include="actions\action_intervals\CCJumpTo.cs" />
     <Compile Include="actions\action_intervals\CCMoveBy.cs" />
     <Compile Include="actions\action_intervals\CCMoveTo.cs" />
+    <Compile Include="actions\action_intervals\CCParallel.cs" />
     <Compile Include="actions\action_intervals\CCRepeat.cs" />
     <Compile Include="actions\action_intervals\CCRepeatForever.cs" />
     <Compile Include="actions\action_intervals\CCReverseTime.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
     <Compile Include="label_nodes\CCLabelBMFont.cs" />
     <Compile Include="label_nodes\CCLabelTTF.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayer.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerColor.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerGradient.cs" />

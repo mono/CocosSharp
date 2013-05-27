@@ -358,6 +358,9 @@
     <Compile Include=".\actions\action_intervals\CCTintTo.cs">
       <LogicalName>actions\action_intervals\CCTintTo</LogicalName>
     </Compile>
+    <Compile Include=".\actions\action_intervals\CCParallel.cs">
+      <LogicalName>actions\action_intervals\CCParallel</LogicalName>
+	</Compile>
     <Compile Include=".\actions\action_progress_timer\CCProgressFromTo.cs">
       <LogicalName>actions\action_progress_timer\CCProgressFromTo</LogicalName>
     </Compile>
@@ -630,6 +633,9 @@
     </Compile>
     <Compile Include=".\layers_scenes_transitions_nodes\CCScene.cs">
       <LogicalName>layers_scenes_transitions_nodes\CCScene</LogicalName>
+    </Compile>
+    <Compile Include=".\layers_scenes_transitions_nodes\CCInputScene.cs">
+      <LogicalName>layers_scenes_transitions_nodes\CCInputScene</LogicalName>
     </Compile>
     <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionCrossFade.cs">
       <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionCrossFade</LogicalName>

@@ -113,7 +113,7 @@ namespace Box2D.Dynamics.Joints
             m_rB = b2Math.b2Mul(qB, m_localAnchorB - m_localCenterB);
             m_u = cB + m_rB - cA - m_rA;
 
-            m_length = m_u.Length();
+            m_length = m_u.Length;
 
             float C = m_length - m_maxLength;
             if (C > 0.0f)
@@ -174,8 +174,8 @@ namespace Box2D.Dynamics.Joints
             float wB = data.velocities[m_indexB].w;
 
             // Cdot = dot(u, v + cross(w, r))
-            b2Vec2 vpA = vA + b2Math.b2Cross(wA, m_rA);
-            b2Vec2 vpB = vB + b2Math.b2Cross(wB, m_rB);
+            b2Vec2 vpA = vA + b2Math.b2Cross(wA, ref m_rA);
+            b2Vec2 vpB = vB + b2Math.b2Cross(wB, ref m_rB);
             float C = m_length - m_maxLength;
             float Cdot = b2Math.b2Dot(m_u, vpB - vpA);
 

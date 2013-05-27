@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cocos2d</RootNamespace>
+    <RootNamespace>Cocos2D</RootNamespace>
     <AssemblyName>cocos2d-xna</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -136,6 +136,7 @@
     <Compile Include="Actions\action_intervals\CCTargetedAction.cs" />
     <Compile Include="Actions\action_intervals\CCTintBy.cs" />
     <Compile Include="Actions\action_intervals\CCTintTo.cs" />
+    <Compile Include="Actions\action_intervals\CCParallel.cs" />
     <Compile Include="Actions\action_progress_timer\CCProgressFromTo.cs" />
     <Compile Include="Actions\action_progress_timer\CCProgressTo.cs" />
     <Compile Include="Actions\action_tiled_grid\CCFadeOutBLTiles.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="layers_scenes_transitions_nodes\CCLayerGradient.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerMultiplex.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCScene.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionCrossFade.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFade.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeBL.cs" />

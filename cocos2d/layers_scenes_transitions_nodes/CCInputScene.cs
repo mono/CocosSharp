@@ -1,65 +1,29 @@
-/****************************************************************************
-Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2008-2010 Ricardo Quesada
-Copyright (c) 2011      Zynga Inc.
-Copyright (c) 2011-2012 openxlive.com
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-****************************************************************************/
-
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.IO;
 
 namespace Cocos2D
 {
-    public class CCLayer : CCNode, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate, CCKeypadDelegate
+    /// <summary>
+    /// This is the input sensitive version of the scene. This class reacts to touches
+    /// and gamepad input.
+    /// </summary>
+    public class CCInputScene : CCScene, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate, CCKeypadDelegate
     {
         private bool m_bIsAccelerometerEnabled;
         private bool m_bKeypadEnabled;
         private bool m_bGamePadEnabled;
         private bool m_bIsMultiTouchEnabled;
         private bool m_bIsSingleTouchEnabled;
-        //private bool m_bMouseEnabled;
-        //private bool m_bGamePadEnabled;
 
-        public CCLayer()
+        public CCInputScene()
         {
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
-            m_bIgnoreAnchorPointForPosition = true;
-            CCDirector director = CCDirector.SharedDirector;
-            if (director != null)
-            {
-                ContentSize = director.WinSize;
-            }
             m_OnGamePadButtonUpdateDelegate = new CCGamePadButtonDelegate(OnGamePadButtonUpdate);
             m_OnGamePadConnectionUpdateDelegate = new CCGamePadConnectionDelegate(OnGamePadConnectionUpdate);
             m_OnGamePadDPadUpdateDelegate = new CCGamePadDPadDelegate(OnGamePadDPadUpdate);
             m_OnGamePadStickUpdateDelegate = new CCGamePadStickUpdateDelegate(OnGamePadStickUpdate);
             m_OnGamePadTriggerUpdateDelegate = new CCGamePadTriggerDelegate(OnGamePadTriggerUpdate);
-            Init();
         }
-
-        private void _ctorInit()
-            {
-            }
-
         private bool m_bDidInit = false;
 
         public virtual bool Init()
@@ -86,7 +50,8 @@ namespace Cocos2D
 
         public override void OnEnter()
         {
-            if(!m_bDidInit) {
+            if (!m_bDidInit)
+            {
                 Init();
             }
             // register 'parent' nodes first
@@ -108,7 +73,7 @@ namespace Cocos2D
 #if !PSM &&!NETFX_CORE
                 director.Accelerometer.SetDelegate(this);
 #endif
-			}
+            }
             // add this layer to concern the kaypad msg
             if (m_bKeypadEnabled)
             {
@@ -159,16 +124,6 @@ namespace Cocos2D
             base.OnExit();
         }
 
-        public override void OnEnterTransitionDidFinish()
-        {
-            if (m_bIsAccelerometerEnabled)
-            {
-                //CCDirector.sharedDirector().Accelerometer.setDelegate(this);
-            }
-
-            base.OnEnterTransitionDidFinish();
-        }
-
         public virtual void RegisterWithTouchDispatcher()
         {
             CCTouchDispatcher pDispatcher = CCDirector.SharedDirector.TouchDispatcher;
@@ -197,7 +152,7 @@ namespace Cocos2D
             }
             if (m_bIsMultiTouchEnabled)
             {
-            pDispatcher.AddStandardDelegate(this, 0);
+                pDispatcher.AddStandardDelegate(this, 0);
             }
         }
 
@@ -250,14 +205,16 @@ namespace Cocos2D
 
         public bool AccelerometerEnabled
         {
-            get { 
+            get
+            {
 #if !PSM
-				return m_bIsAccelerometerEnabled; 
+                return m_bIsAccelerometerEnabled;
 #else
 				return(false);
 #endif
-			}
-            set {
+            }
+            set
+            {
 #if !PSM &&!NETFX_CORE
                 if (value != m_bIsAccelerometerEnabled)
                 {
@@ -272,7 +229,7 @@ namespace Cocos2D
 #else
                 m_bIsAccelerometerEnabled = false;
 #endif
-			}
+            }
         }
 
         public bool KeypadEnabled
@@ -283,7 +240,7 @@ namespace Cocos2D
                 if (value != m_bKeypadEnabled)
                 {
                     m_bKeypadEnabled = value;
-                    
+
                     if (m_bIsRunning)
                     {
                         /*
@@ -404,6 +361,5 @@ namespace Cocos2D
         {
         }
         #endregion
-
     }
 }

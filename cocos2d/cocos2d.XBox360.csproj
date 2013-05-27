@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cocos2d</RootNamespace>
+    <RootNamespace>Cocos2D</RootNamespace>
     <AssemblyName>cocos2d-xna</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -142,6 +142,7 @@
     <Compile Include="actions\action_intervals\CCTargetedAction.cs" />
     <Compile Include="actions\action_intervals\CCTintBy.cs" />
     <Compile Include="actions\action_intervals\CCTintTo.cs" />
+    <Compile Include="Actions\action_intervals\CCParallel.cs" />
     <Compile Include="actions\action_progress_timer\CCProgressFromTo.cs" />
     <Compile Include="actions\action_progress_timer\CCProgressTo.cs" />
     <Compile Include="actions\action_tiled_grid\CCFadeOutBLTiles.cs" />
@@ -239,6 +240,7 @@
     <Compile Include="layers_scenes_transitions_nodes\CCLayerGradient.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerMultiplex.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCScene.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeDown.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeUp.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFlipAngular.cs" />

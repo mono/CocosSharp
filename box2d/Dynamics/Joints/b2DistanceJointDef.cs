@@ -42,7 +42,7 @@ namespace Box2D.Dynamics.Joints
             localAnchorA = BodyA.GetLocalPoint(anchor1);
             localAnchorB = BodyB.GetLocalPoint(anchor2);
             b2Vec2 d = anchor2 - anchor1;
-            length = d.Length();
+            length = d.Length;
         }
     }
 }

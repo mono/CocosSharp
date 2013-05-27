@@ -37,9 +37,9 @@ public void Initialize(b2Body bA, b2Body bB,
     localAnchorA = BodyA.GetLocalPoint(anchorA);
     localAnchorB = BodyB.GetLocalPoint(anchorB);
     b2Vec2 dA = anchorA - groundA;
-    lengthA = dA.Length();
+    lengthA = dA.Length;
     b2Vec2 dB = anchorB - groundB;
-    lengthB = dB.Length();
+    lengthB = dB.Length;
     ratio = r;
     System.Diagnostics.Debug.Assert(ratio > b2Settings.b2_epsilon);
 }

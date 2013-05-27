@@ -233,10 +233,15 @@ namespace Box2D.Dynamics
         }
 
 
+#if PROFILING
         public void Solve(ref b2Profile profile, b2TimeStep step, b2Vec2 gravity, bool allowSleep)
+#else
+        public void Solve(b2TimeStep step, b2Vec2 gravity, bool allowSleep)
+#endif
         {
+#if PROFILING
             b2Timer timer = new b2Timer();
-
+#endif
             float h = step.dt;
 
             // Integrate velocities and apply damping. Initialize the body state.
@@ -276,8 +281,9 @@ namespace Box2D.Dynamics
                 m_velocities[i].w = w;
             }
 
+#if PROFILING
             timer.Reset();
-
+#endif
             // Solver data
             b2SolverData solverData = new b2SolverData();
             solverData.step = step;
@@ -304,11 +310,13 @@ namespace Box2D.Dynamics
             {
                 m_joints[i].InitVelocityConstraints(solverData);
             }
-
+#if PROFILING
             profile.solveInit = timer.GetMilliseconds();
-
+#endif
             // Solve velocity constraints
+#if PROFILING
             timer.Reset();
+#endif
             for (int i = 0; i < step.velocityIterations; ++i)
             {
                 for (int j = 0; j < m_jointCount; ++j)
@@ -321,8 +329,9 @@ namespace Box2D.Dynamics
 
             // Store impulses for warm starting
             contactSolver.StoreImpulses();
+#if PROFILING
             profile.solveVelocity = timer.GetMilliseconds();
-
+#endif
             // Integrate positions
             for (int i = 0; i < m_bodyCount; ++i)
             {
@@ -333,9 +342,9 @@ namespace Box2D.Dynamics
 
                 // Check for large velocities
                 b2Vec2 translation = h * v;
-                if (b2Math.b2Dot(translation, translation) > b2Settings.b2_maxTranslationSquared)
+                if (translation.LengthSquared /* b2Math.b2Dot(translation, translation)*/ > b2Settings.b2_maxTranslationSquared)
                 {
-                    float ratio = b2Settings.b2_maxTranslation / translation.Length();
+                    float ratio = b2Settings.b2_maxTranslation / translation.Length;
                     v *= ratio;
                 }
 
@@ -357,7 +366,9 @@ namespace Box2D.Dynamics
             }
 
             // Solve position constraints
+#if PROFILING
             timer.Reset();
+#endif
             bool positionSolved = false;
             for (int i = 0; i < step.positionIterations; ++i)
             {
@@ -388,9 +399,9 @@ namespace Box2D.Dynamics
                 body.AngularVelocity = m_velocities[i].w;
                 body.SynchronizeTransform();
             }
-
+#if PROFILING
             profile.solvePosition = timer.GetMilliseconds();
-
+#endif
             Report(contactSolver.m_velocityConstraints);
 
             if (allowSleep)
@@ -532,7 +543,7 @@ namespace Box2D.Dynamics
                 b2Vec2 translation = h * v;
                 if (b2Math.b2Dot(translation, translation) > b2Settings.b2_maxTranslationSquared)
                 {
-                    float ratio = b2Settings.b2_maxTranslation / translation.Length();
+                    float ratio = b2Settings.b2_maxTranslation / translation.Length;
                     v *= ratio;
                 }
 

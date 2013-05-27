@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</ProjectGuid>
@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cocos2d</RootNamespace>
+    <RootNamespace>Cocos2D</RootNamespace>
     <AssemblyName>cocos2d-xna</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -132,6 +132,7 @@
     <Compile Include="actions\action_intervals\CCJumpTo.cs" />
     <Compile Include="actions\action_intervals\CCMoveBy.cs" />
     <Compile Include="actions\action_intervals\CCMoveTo.cs" />
+    <Compile Include="actions\action_intervals\CCParallel.cs" />
     <Compile Include="actions\action_intervals\CCRepeat.cs" />
     <Compile Include="actions\action_intervals\CCRepeatForever.cs" />
     <Compile Include="actions\action_intervals\CCReverseTime.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
     <Compile Include="platform\CCIFocusable.cs" />
     <Compile Include="platform\CCSpriteFontCache.cs" />

@@ -6,6 +6,7 @@ using Box2D.Common;
 
 namespace Box2D.Dynamics
 {
+#if PROFILING
     /// Profiling data. Times are in milliseconds.
     public struct b2Profile
     {
@@ -25,6 +26,7 @@ namespace Box2D.Dynamics
         public int contactCount;
         public int toiSolverIterations;
     }
+#endif
 
     /// This is an internal structure.
     public struct b2TimeStep
