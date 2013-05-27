@@ -36,6 +36,11 @@
       <Importer>CocosPListImporter</Importer>
       <Processor>CocosPListProcessor</Processor>
     </Compile>
+    <Compile Include="fonts\MarkerFelt-22.spritefont">
+      <Name>MarkerFelt-22</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <Compile Include="Images\atlastest.png">
       <Name>atlastest</Name>
       <Importer>TextureImporter</Importer>
@@ -1246,8 +1251,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
-    <Compile Include="fonts\MarkerFelt-22.spritefont">
-      <Name>MarkerFelt-22</Name>
+    <Compile Include="fonts\MarkerFelt-64.spritefont">
+      <Name>MarkerFelt-64</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
