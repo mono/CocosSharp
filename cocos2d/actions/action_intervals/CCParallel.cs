@@ -25,7 +25,7 @@ namespace Cocos2D
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
-            foreach (CCTargetedAction action in m_pActions)
+            foreach (CCFiniteTimeAction action in m_pActions)
             {
                 action.StartWithTarget(target);
             }
