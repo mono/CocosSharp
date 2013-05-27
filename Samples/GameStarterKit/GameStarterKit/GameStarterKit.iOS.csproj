@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7027EB5E-D1E7-4552-B7DD-C667BEC38DB6}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>GameStarterKit.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>GameStarterKitiOS</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;IPHONE;IOS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;IPHONE;IOS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <BuildIpa>true</BuildIpa>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <ConsolePause>false</ConsolePause>
+    <CodesignProvision>Automatic:AdHoc</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="GameStartKit\" />
+    <Folder Include="Content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <Link Include="" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="GameStartKit\AppDelegate.cs" />
+    <Compile Include="GameStartKit\Game1.cs" />
+    <Compile Include="GameStartKit\GameData.cs" />
+    <Compile Include="GameStartKit\GameLevel.cs" />
+    <Compile Include="GameStartKit\GameMenu.cs" />
+    <Compile Include="GameStartKit\IntroLayer.cs" />
+    <Compile Include="GameStartKit\Program.cs">
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Content\fonts\Arial.xnb" />
+    <BundleResource Include="Content\fonts\MarkerFelt-16.xnb" />
+    <BundleResource Include="Content\fonts\MarkerFelt-18.xnb" />
+    <BundleResource Include="Content\fonts\MarkerFelt-22.xnb" />
+    <BundleResource Include="Content\fonts\arial-12.xnb" />
+    <BundleResource Include="Content\fonts\arial-16.xnb" />
+    <BundleResource Include="Content\fonts\arial-18.xnb" />
+    <BundleResource Include="Content\fonts\arial-20.xnb" />
+    <BundleResource Include="Content\fonts\arial-22.xnb" />
+    <BundleResource Include="Content\fonts\arial-24.xnb" />
+    <BundleResource Include="Content\fonts\arial-26.xnb" />
+    <BundleResource Include="Content\fonts\arial-28.xnb" />
+    <BundleResource Include="Content\fonts\arial-30.xnb" />
+    <BundleResource Include="Content\fonts\arial-32.xnb" />
+    <BundleResource Include="Content\fonts\arial-34.xnb" />
+    <BundleResource Include="Content\fonts\arial-38.xnb" />
+    <BundleResource Include="Content\fonts\arial-50.xnb" />
+    <BundleResource Include="Content\fonts\arial-64.xnb" />
+    <BundleResource Include="Content\fonts\arial-unicode-26.fnt.xnb" />
+    <BundleResource Include="Content\fonts\arial-unicode-26.xnb" />
+    <BundleResource Include="Content\fonts\arial16.fnt.xnb" />
+    <BundleResource Include="Content\fonts\arial16.xnb" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\box2d\box2d.iOS.csproj">
+      <Project>{7877D4F9-F781-465A-9C1F-D113F246A994}</Project>
+      <Name>box2d.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\cocos2d\cocos2d.iOS.csproj">
+      <Project>{A83510D8-7AED-411E-9616-DCFEA180969E}</Project>
+      <Name>cocos2d.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj">
+      <Project>{734EAA48-F1CA-481A-B391-0285BC0E8B40}</Project>
+      <Name>Lidgren.Network.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.iOS.csproj">
+      <Project>{DB8508BB-9849-4CC2-BC0F-8EB5DACB3C47}</Project>
+      <Name>MonoGame.Framework.iOS</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

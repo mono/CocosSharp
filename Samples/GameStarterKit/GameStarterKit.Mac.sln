@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStarterKit.Mac", "GameStarterKit.iOS\GameStarterKit.Mac.csproj", "{103F90D5-8BA2-4910-906A-1508101720EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStarterKit.Mac", "GameStarterKit\GameStarterKit.Mac.csproj", "{103F90D5-8BA2-4910-906A-1508101720EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.MacOS", "..\..\box2d\box2d.MacOS.csproj", "{A84510D8-7AED-411E-9616-DCFEA180969E}"
 EndProject
@@ -61,6 +61,6 @@ Global
 		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = GameStarterKit.iOS\GameStarterKit.Mac.csproj
+		StartupItem = GameStarterKit\GameStarterKit.Mac.csproj
 	EndGlobalSection
 EndGlobal
