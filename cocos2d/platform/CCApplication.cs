@@ -8,19 +8,19 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Cocos2D
 {
-    public enum Orientation
+    public enum CCOrientation
     {
         /// Device oriented vertically, home button on the bottom
-        kOrientationPortrait = 0,
+        Portrait = 0,
 
         /// Device oriented vertically, home button on the top
-        kOrientationPortraitUpsideDown = 1,
+        PortraitUpsideDown = 1,
 
         /// Device oriented horizontally, home button on the right
-        kOrientationLandscapeLeft = 2,
+        LandscapeLeft = 2,
 
         /// Device oriented horizontally, home button on the left
-        kOrientationLandscapeRight = 3,
+        LandscapeRight = 3,
     };
 
     public abstract class CCApplication : DrawableGameComponent
