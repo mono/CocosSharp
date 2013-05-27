@@ -1,7 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStarterKit.iOS", "GameStarterKit.iOS\GameStarterKit.iOS.csproj", "{7027EB5E-D1E7-4552-B7DD-C667BEC38DB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStarterKit.iOS", "GameStarterKit\GameStarterKit.iOS.csproj", "{7027EB5E-D1E7-4552-B7DD-C667BEC38DB6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.iOS", "..\..\cocos2d\cocos2d.iOS.csproj", "{A83510D8-7AED-411E-9616-DCFEA180969E}"
 EndProject
@@ -83,6 +83,6 @@ Global
 		{DB8508BB-9849-4CC2-BC0F-8EB5DACB3C47}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = GameStarterKit.iOS\GameStarterKit.iOS.csproj
+		StartupItem = GameStarterKit\GameStarterKit.iOS.csproj
 	EndGlobalSection
 EndGlobal
