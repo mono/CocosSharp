@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cocos2D
 {
-    public class CCParallel : CCFiniteTimeAction
+    public class CCParallel : CCActionInterval
     {
         protected CCFiniteTimeAction[] m_pActions;
 
@@ -20,6 +20,15 @@ namespace Cocos2D
         public CCParallel(params CCFiniteTimeAction[] actions)
         {
             m_pActions = actions;
+            float duration = 0f;
+            foreach (CCFiniteTimeAction action in m_pActions)
+            {
+                if (duration < action.Duration)
+                {
+                    duration = action.Duration;
+                }
+            }
+            base.InitWithDuration(duration);
         }
 
         public override void StartWithTarget(CCNode target)
@@ -92,13 +101,21 @@ namespace Cocos2D
                         return (false);
                     }
                 }
-                return (true);
+                return (base.IsDone);
             }
+        }
+
+        public override void Stop()
+        {
+            foreach (CCFiniteTimeAction action in m_pActions)
+            {
+                action.Stop();
+            }
+            base.Stop();
         }
 
         public override void Update(float time)
         {
-            base.Update(time);
             foreach (CCFiniteTimeAction action in m_pActions)
             {
                 if (!action.IsDone)
