@@ -117,7 +117,9 @@ namespace GameStarterKit
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
+#if OUYA
+			Ouya.Console.Api.OuyaFacade.Instance.Init(this, "xxxxxxxxxxxxxxx"); // Our UUID dev ID
+#endif
             Game1.Activity = this;
             var game = new Game1();
 
