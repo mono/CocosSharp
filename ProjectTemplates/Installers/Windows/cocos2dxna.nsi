@@ -177,8 +177,7 @@ Section "Visual Studio 2010 Templates" VS2010
     SetOutPath "$DOCUMENTS\Visual Studio 2010\Templates\ProjectTemplates\Visual C#\Cocos2D-XNA"
 
     ; install the Templates for MonoDevelop
-    ;File /r '..\..\ProjectTemplates\VisualStudio2010\*.zip'
-    File /r '..\..\..\ProjectTemplates\GameStarterKit\VisualStudio2010\*.vsix'
+    File /r '..\..\..\ProjectTemplates\GameStarterKit\VisualStudio2010\*.zip'
     GOTO EndTemplates
   CannotInstallTemplates:
   
@@ -197,7 +196,7 @@ Section "Visual Studio 2012 Templates" VS2012
     ; install the Templates for MonoDevelop
     ;File /r '..\..\..\ProjectTemplates\VisualStudio2012\*.zip'
     ; Install the VS 2010 templates as well 
-    File /r '..\..\..\ProjectTemplates\GameStarterKit\VisualStudio2010\*.vsix'
+    File /r '..\..\..\ProjectTemplates\GameStarterKit\VisualStudio2010\*.zip'
     GOTO EndTemplates
   CannotInstallTemplates:
 
