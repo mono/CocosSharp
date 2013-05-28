@@ -1,6 +1,6 @@
 SetCompressor /SOLID /FINAL lzma
 
-!define FrameworkPath "C:\Xamarin\cocos2d-xna"
+!define FrameworkPath "C:\Users\Jacob Anderson\Documents\GitHub\cocos2d-xna"
 !define VERSION "3.0"
 !define REVISION "0.0"
 !define INSTALLERFILENAME "Cocos2dXNA"
@@ -33,10 +33,10 @@ RequestExecutionLevel admin
 ;Interface Configuration
 
 !define MUI_HEADERIMAGE
-!define MUI_HEADERIMAGE_BITMAP "${FrameworkPath}\ProjectTemplates\Installers\cocos2dxna.bmp"
+!define MUI_HEADERIMAGE_BITMAP "${FrameworkPath}\ProjectTemplates\Installers\cocos2dxna_8bit.bmp"
 !define MUI_ABORTWARNING
 
-!define MUI_WELCOMEFINISHPAGE_BITMAP "${FrameworkPath}\ProjectTemplates\Installers\panel.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "${FrameworkPath}\ProjectTemplates\Installers\panel_8bit.bmp"
 ;Languages
 
 !insertmacro MUI_PAGE_WELCOME
@@ -50,11 +50,11 @@ RequestExecutionLevel admin
 
 ;  Function XamarinPageEnter
 ;      ReserveFile "xamarin.ini"
-;      ReserveFile "mono.bmp"
-;      ReserveFile "xamarin.bmp"
+;      ReserveFile "mono_8bit.bmp"
+;      ReserveFile "xamarin_8bit.bmp"
 ;      !insertmacro INSTALLOPTIONS_EXTRACT "xamarin.ini"
-;      !insertmacro INSTALLOPTIONS_WRITE "xamarin.ini" "Field 1" "Text" "mono.bmp"
-;      !insertmacro INSTALLOPTIONS_WRITE "xamarin.ini" "Field 2" "Text" "xamarin.bmp"
+;      !insertmacro INSTALLOPTIONS_WRITE "xamarin.ini" "Field 1" "Text" "mono_8bit.bmp"
+;      !insertmacro INSTALLOPTIONS_WRITE "xamarin.ini" "Field 2" "Text" "xamarin_8bit.bmp"
 ;      !insertmacro INSTALLOPTIONS_DISPLAY "xamarin.ini"
 ;  FunctionEnd
   
