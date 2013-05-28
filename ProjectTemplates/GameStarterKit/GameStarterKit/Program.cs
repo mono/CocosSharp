@@ -100,7 +100,7 @@ namespace $safeprojectname$
 
 #if ANDROID
     [Activity(
-        Label = "AngryNinjas",
+        Label = "$safeprojectname$",
                AlwaysRetainTaskState = true,
                Icon = "@drawable/ic_launcher",
                Theme = "@style/Theme.NoTitleBar",
