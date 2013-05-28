@@ -1,6 +1,6 @@
 SetCompressor /SOLID /FINAL lzma
 
-!define FrameworkPath "C:\Users\jacob anderson\Documents\GitHub\cocos2d-xna\"
+!define FrameworkPath "C:\Xamarin\cocos2d-xna"
 !define VERSION "3.0"
 !define REVISION "0.0"
 !define INSTALLERFILENAME "Cocos2dXNA"
@@ -68,7 +68,7 @@ RequestExecutionLevel admin
 ;--------------------------------
 ;Languages
 
-!insertmacro MUI_LANGUAGE "English"
+;!insertmacro MUI_LANGUAGE "English"
 
 ;--------------------------------
 
@@ -80,8 +80,8 @@ FunctionEnd
 ; The stuff to install
 Section "Cocos2D XNA Core Components" CoreComponents ;No components page, name is not important
   SectionIn RO
-  SetOutPath $PROGRAMFILES32\MSBuild\${APPNAME}\v${VERSION}
-  File '..\..\docs\cocos2dxna.ico'
+  SetOutPath '$PROGRAMFILES32\MSBuild\${APPNAME}\v${VERSION}'
+  File '..\..\..\docs\cocos2dxna.ico'
   
   SetOutPath '$PROGRAMFILES\${APPNAME}\v${VERSION}\Assemblies\Android'
   File /nonfatal '..\..\cocos2d\bin\Android\Release\*.dll'
@@ -97,30 +97,30 @@ Section "Cocos2D XNA Core Components" CoreComponents ;No components page, name i
   File /nonfatal ' ..\..\cocos2d\bin\WindowsGL\Release\*.xml'
   
   SetOutPath '$PROGRAMFILES\${APPNAME}\v${VERSION}\Assemblies\Windows'
-  File /nonfatal '..\..\cocos2d\bin\Windows\Release\*.dll'
-  File /nonfatal ' ..\..\cocos2d\bin\Windows\Release\*.xml'
+  File /nonfatal '..\..\..\cocos2d\bin\Windows\Release\*.dll'
+  File /nonfatal '..\..\..\cocos2d\bin\Windows\Release\*.xml'
 
   SetOutPath '$PROGRAMFILES\${APPNAME}\v${VERSION}\Assemblies\Linux'
   File /nonfatal '..\..\cocos2d\bin\Linux\Release\*.dll'
   File /nonfatal ' ..\..\cocos2d\bin\Linux\Release\*.xml'
     
-  SetOutPath '$PROGRAMFILES\${APPNAME}\v${VERSION}\Assemblies\Windows8'
-  File '..\..\cocos2d\bin\Windows8\Release\cocos2d.dll'
-  File /nonfatal '..\..\cocos2d\bin\Windows8\Release\cocos2d.xml'
+;  SetOutPath '$PROGRAMFILES\${APPNAME}\v${VERSION}\Assemblies\Windows8'
+;  File '..\..\cocos2d\bin\Windows8\Release\cocos2d.dll'
+;  File /nonfatal '..\..\cocos2d\bin\Windows8\Release\cocos2d.xml'
 
   ; Install Windows Phone ARM Assemblies
-  SetOutPath '$PROGRAMFILES\${APPNAME}\v${VERSION}\Assemblies\WindowsPhone\ARM'
-  File '..\..\cocos2d\bin\WindowsPhone\ARM\Release\cocos2d.dll'
-  File /nonfatal '..\..\cocos2d\bin\WindowsPhone\ARM\Release\cocos2d.xml'
+;  SetOutPath '$PROGRAMFILES\${APPNAME}\v${VERSION}\Assemblies\WindowsPhone\ARM'
+;  File '..\..\cocos2d\bin\WindowsPhone\ARM\Release\cocos2d.dll'
+;  File /nonfatal '..\..\cocos2d\bin\WindowsPhone\ARM\Release\cocos2d.xml'
 
   ; Install Windows Phone x86 Assemblies
-  SetOutPath '$PROGRAMFILES\${APPNAME}\v${VERSION}\Assemblies\WindowsPhone\x86'
-  File '..\..\cocos2d\bin\WindowsPhone\x86\Release\cocos2d.dll'
-  File /nonfatal '..\..\cocos2d\bin\WindowsPhone\86\Release\cocos2d.xml'
+;  SetOutPath '$PROGRAMFILES\${APPNAME}\v${VERSION}\Assemblies\WindowsPhone\x86'
+;  File '..\..\cocos2d\bin\WindowsPhone\x86\Release\cocos2d.dll'
+;  File /nonfatal '..\..\cocos2d\bin\WindowsPhone\86\Release\cocos2d.xml'
 
   SetOutPath '$PROGRAMFILES\${APPNAME}\v${VERSION}\Assemblies\WindowsPhone'
-  File /r '..\..\ThirdParty\Libs\SharpDX\Windows Phone\*.dll'
-  File /r '..\..\ThirdParty\Libs\SharpDX\Windows Phone\*.xml'  
+;  File /r '..\..\ThirdParty\Libs\SharpDX\Windows Phone\*.dll'
+;  File /r '..\..\ThirdParty\Libs\SharpDX\Windows Phone\*.xml'  
 
   WriteRegStr HKLM 'SOFTWARE\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\${APPNAME} for Windows GL' '' '$INSTDIR\Assemblies\WindowsGL'
   WriteRegStr HKLM 'SOFTWARE\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\${APPNAME} for Windows' '' '$INSTDIR\Assemblies\Windows'
@@ -155,28 +155,29 @@ Section "Cocos2D XNA Core Components" CoreComponents ;No components page, name i
 
 
   SetOutPath '$PROGRAMFILES\${APPNAME}\v${VERSION}'
-  File '..\..\docs\cocos2dxna.ico'
+  File '${FrameworkPath}\docs\cocos2dxna.ico'
   ; Uninstaller
   WriteUninstaller "uninstall.exe"
 
 
 SectionEnd
 
-Section "OpenAL" OpenAL
+; We do not have anything to install for OpenAL
+;Section "OpenAL" OpenAL
   ; SetOutPath $INSTDIR
-  File '..\..\ThirdParty\Libs\oalinst.exe'
-  ExecWait '"$INSTDIR\oalinst.exe /S"'
-SectionEnd
+  ;File '${FrameworkPath}\ThirdParty\Libs\oalinst.exe'
+  ;ExecWait '"$INSTDIR\oalinst.exe /S"'
+;SectionEnd
 
 Section "Visual Studio 2010 Templates" VS2010
 
-  IfFileExists `$DOCUMENTS\Visual Studio 2010\Templates\ProjectTemplates\Visual C#\*.*` InstallTemplates CannotInstallTemplates
+  IfFileExists `$DOCUMENTS\Visual Studio 2010\Templates\ProjectTemplates\Visual C#` InstallTemplates CannotInstallTemplates
   InstallTemplates:
     ; Set output path to the installation directory.
     SetOutPath "$DOCUMENTS\Visual Studio 2010\Templates\ProjectTemplates\Visual C#\Cocos2D-XNA"
 
     ; install the Templates for MonoDevelop
-    File /r '..\..\ProjectTemplates\VisualStudio2010\*.zip'
+    File /r '..\..\..\ProjectTemplates\GameStarterKit\VisualStudio2010\*.zip'
     GOTO EndTemplates
   CannotInstallTemplates:
   
@@ -193,9 +194,9 @@ Section "Visual Studio 2012 Templates" VS2012
     SetOutPath "$DOCUMENTS\Visual Studio 2012\Templates\ProjectTemplates\Visual C#\Cocos2D-XNA"
 
     ; install the Templates for MonoDevelop
-    File /r '..\..\ProjectTemplates\VisualStudio2012\*.zip'
+    ;File /r '..\..\..\ProjectTemplates\VisualStudio2012\*.zip'
     ; Install the VS 2010 templates as well 
-    File /r '..\..\ProjectTemplates\VisualStudio2010\*.zip'
+    File /r '..\..\..\ProjectTemplates\GameStarterKit\VisualStudio2010\*.zip'
     GOTO EndTemplates
   CannotInstallTemplates:
 
@@ -206,9 +207,10 @@ SectionEnd
 
 ; Optional section (can be disabled by the user)
 Section "Start Menu Shortcuts" Menu
-	CreateDirectory $SMPROGRAMS\Cocos2D XNA
+	CreateDirectory "$SMPROGRAMS\Cocos2D XNA"
 	CreateShortCut "$SMPROGRAMS\Cocos2D XNA\Uninstall.lnk" "$PROGRAMFILES\${APPNAME}\v${VERSION}\uninstall.exe" "" "$PROGRAMFILES\${APPNAME}\v${VERSION}\uninstall.exe" 0
 	;CreateShortCut "$SMPROGRAMS\Cocos2D XNA\GettingStarted.lnk" "$PROGRAMFILES\${APPNAME}\v${VERSION}\GettingStarted.pdf" "" "$PROGRAMFILES\${APPNAME}\v${VERSION}\GettingStarted.pdf" 0
+	CreateShortCut "$SMPROGRAMS\Cocos2D XNA\Templates.lnk" "$DOCUMENTS\Visual Studio 2010\Templates\ProjectTemplates\Visual C#\Cocos2D-XNA" "" "$DOCUMENTS\Visual Studio 2010\Templates\ProjectTemplates\Visual C#\Cocos2D-XNA" 0
 	WriteINIStr "$SMPROGRAMS\Cocos2D XNA\Project Web Site.url" "InternetShortcut" "URL" "http://cocos2dxna.codeplex.com"
 	WriteINIStr "$SMPROGRAMS\Cocos2D XNA\Project Web Site.url" "InternetShortcut" "IconFile" "$PROGRAMFILES\${APPNAME}\v${VERSION}\Icon.ico"
 	WriteINIStr "$SMPROGRAMS\Cocos2D XNA\Project Web Site.url" "InternetShortcut" "IconIndex" "0"
@@ -216,7 +218,7 @@ Section "Start Menu Shortcuts" Menu
 SectionEnd
 
 LangString CoreComponentsDesc ${LANG_ENGLISH} "Install the Runtimes and the MSBuild extensions for Cocos2D-XNA"
-LangString OpenALDesc ${LANG_ENGLISH} "Install the OpenAL drivers"
+;LangString OpenALDesc ${LANG_ENGLISH} "Install the OpenAL drivers"
 LangString MonoDevelopDesc ${LANG_ENGLISH} "Install the project templates for MonoDevelop"
 LangString VS2010Desc ${LANG_ENGLISH} "Install the project templates for Visual Studio 2010"
 LangString VS2012Desc ${LANG_ENGLISH} "Install the project templates for Visual Studio 2012"
