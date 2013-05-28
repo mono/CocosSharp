@@ -118,9 +118,8 @@ namespace GameStarterKit
         {
             base.OnCreate(bundle);
 #if OUYA
-            Ouya.Console.Api.OuyaFacade.Instance.Init(this, "f3366755-190b-4b95-af21-ca4a01a99478"); // Our UUID dev ID
+			Ouya.Console.Api.OuyaFacade.Instance.Init(this, "xxxxxxxxxxxxxxx"); // Our UUID dev ID
 #endif
-
             Game1.Activity = this;
             var game = new Game1();
 
