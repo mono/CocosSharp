@@ -60,15 +60,10 @@ namespace $safeprojectname$
 			// 2D projection
 			pDirector.Projection = ccDirectorProjection.kCCDirectorProjection2D;
 
-			// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
-			//if( ! [director_ enableRetinaDisplay:YES] )
-            //	CCLOG(@"Retina Display Not supported");
-
-
 #if WINDOWS || MACOS || MONOMAC || LINUX || OUYA || XBOX
-			var resPolicy = ResolutionPolicy.ExactFit;
+			var resPolicy = ResolutionPolicy.ExactFit; // This will stretch out your game
 #else
-			var resPolicy = ResolutionPolicy.ShowAll;
+			var resPolicy = ResolutionPolicy.ShowAll; // This will letterbox your game
 #endif
 
 			CCDrawManager.SetDesignResolutionSize(preferredWidth, 
@@ -88,13 +83,14 @@ namespace $safeprojectname$
 		}
 		
 		/// <summary>
-		/// The function be called when the application enter background
+		/// The function be called when the application enters the background
 		/// </summary>
 		public override void ApplicationDidEnterBackground()
 		{
+            // stop all of the animation actions that are running.
 			CCDirector.SharedDirector.Pause();
 			
-			// if you use SimpleAudioEngine, it must be pause
+			// if you use SimpleAudioEngine, your music must be paused
 			//CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic = true;
 		}
 		
@@ -105,7 +101,7 @@ namespace $safeprojectname$
 		{
             CCDirector.SharedDirector.Resume();
 			
-			// if you use SimpleAudioEngine, it must resume here
+			// if you use SimpleAudioEngine, your background music track must resume here. 
 			//CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic = false;
 
 		}
