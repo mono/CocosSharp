@@ -11,6 +11,8 @@
     <AssemblyName>cocos2d</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -389,17 +391,17 @@
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\box2d\box2d.WindowsGL.csproj">
-      <Project>{b81b6701-7a78-4846-bf6f-04e0591f0f38}</Project>
-      <Name>box2d.WindowsGL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsGL.csproj">
-      <Project>{7de47032-a904-4c29-bd22-2d235e8d91ba}</Project>
+      <Project>{7DE47032-A904-4C29-BD22-2D235E8D91BA}</Project>
       <Name>MonoGame.Framework.WindowsGL</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Windows.csproj">
-      <Project>{ae483c29-042e-4226-ba52-d247ce7676da}</Project>
+      <Project>{AE483C29-042E-4226-BA52-D247CE7676DA}</Project>
       <Name>Lidgren.Network.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\box2d\box2d.WindowsGL.csproj">
+      <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
+      <Name>box2d.WindowsGL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
