@@ -278,7 +278,7 @@ namespace Box2D.Collision
 
                     if (t1 > t2)
                     {
-                        b2Math.b2Swap(t1, t2);
+                        b2Math.b2Swap(ref t1, ref t2);
                         s = 1.0f;
                     }
 

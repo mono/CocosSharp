@@ -488,7 +488,7 @@ namespace Box2D.Common
 #if AGGRESSIVE_INLINING
         [MethodImpl(MethodImplOptions.AggressiveInlining)] 
 #endif
-        public static void b2Swap<T>(T a, T b)
+        public static void b2Swap<T>(ref T a, ref T b)
         {
             T tmp = a;
             a = b;
