@@ -172,10 +172,36 @@ namespace Cocos2D
 
             CCSize winSize = CCDirector.SharedDirector.WinSize;
 
-            CCDrawManager.ScissorRectEnabled = true;
             CCRect m_tViewSize = BoundingBox; // We always clip to the bounding box
-            CCDrawManager.SetScissorInPoints(screenPos.X, winSize.Height - (screenPos.Y + m_tViewSize.Size.Height * s), m_tViewSize.Size.Width * s,
-                                           m_tViewSize.Size.Height * s);
+            float x = screenPos.X;
+            float y = winSize.Height - (screenPos.Y + m_tViewSize.Size.Height * s);
+            float scissorW = m_tViewSize.Size.Width * s;
+            float scissorH = m_tViewSize.Size.Height * s;
+            if (x < 0)
+            {
+                x = 0f;
+            }
+            if (y < 0)
+            {
+                y = 0f;
+            }
+            if (x + scissorW > winSize.Width)
+            {
+                scissorW = winSize.Width - x;
+            }
+            if (y + scissorH > winSize.Height)
+            {
+                scissorH = winSize.Height - y;
+            }
+            if (scissorW < 0f || scissorH < 0f)
+            {
+                return;
+            }
+            if (x < 0 || y < 0 || (x + scissorW) > winSize.Width || (y + scissorH) > winSize.Height)
+            {
+            }
+            CCDrawManager.ScissorRectEnabled = true;
+            CCDrawManager.SetScissorInPoints(x, y, scissorW, scissorH);
         }
 
         /**
