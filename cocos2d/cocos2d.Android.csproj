@@ -283,6 +283,7 @@
     <Compile Include="Platform\CCAccelerometer.cs" />
     <Compile Include="Platform\CCAccelerometerDelegate.cs" />
     <Compile Include="Platform\CCApplication.cs" />
+    <Compile Include="Platform\CCDevice.cs" />
     <Compile Include="Platform\CCDictMaker.cs" />
     <Compile Include="Platform\CCFileData.cs" />
     <Compile Include="Platform\CCFileUtils.cs" />

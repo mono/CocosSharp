@@ -799,6 +799,9 @@
     <Compile Include=".\platform\CCApplication.cs">
       <LogicalName>platform\CCApplication</LogicalName>
     </Compile>
+    <Compile Include=".\platform\CCDevice.cs">
+      <LogicalName>platform\CCDevice</LogicalName>
+    </Compile>
     <Compile Include=".\platform\CCDictMaker.cs">
       <LogicalName>platform\CCDictMaker</LogicalName>
     </Compile>
