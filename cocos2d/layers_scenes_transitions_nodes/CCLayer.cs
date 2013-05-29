@@ -41,11 +41,11 @@ namespace Cocos2D
         /// <summary>
         /// Set to true if the child drawing should be isolated in their own render target
         /// </summary>
-        protected bool m_IsolateChildren = false;
+        protected bool m_ClipChildren = false;
 
-        public CCLayer(bool isolateChildren)
+        public CCLayer(bool clipChildren)
         {
-            m_IsolateChildren = isolateChildren;
+            m_ClipChildren = clipChildren;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_bIgnoreAnchorPointForPosition = true;
             CCDirector director = CCDirector.SharedDirector;
@@ -78,7 +78,7 @@ namespace Cocos2D
             {
                 return;
             }
-            if (!m_IsolateChildren)
+            if (!m_ClipChildren)
             {
                 base.Visit();
                 return;
