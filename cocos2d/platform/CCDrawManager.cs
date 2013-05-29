@@ -6,6 +6,22 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
+    public enum CCClipMode
+    {
+        /// <summary>
+        /// No clipping of children
+        /// </summary>
+        ClipNone,
+        /// <summary>
+        /// Clipping with a ScissorRect
+        /// </summary>
+        ClipBounds,
+        /// <summary>
+        /// Clipping with the ScissorRect and in a RenderTarget
+        /// </summary>
+        ClipBoundsWithRenderTarget
+    }
+
     public static class CCDrawManager
     {
         private const int DefaultQuadBufferSize = 1024 * 4;

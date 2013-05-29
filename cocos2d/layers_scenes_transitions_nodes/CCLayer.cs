@@ -41,11 +41,11 @@ namespace Cocos2D
         /// <summary>
         /// Set to true if the child drawing should be isolated in their own render target
         /// </summary>
-        protected bool m_ClipChildren = false;
+        protected CCClipMode m_childClippingMode = CCClipMode.ClipNone;
 
-        public CCLayer(bool clipChildren)
+        public CCLayer(CCClipMode clipMode)
         {
-            m_ClipChildren = clipChildren;
+            m_childClippingMode = clipMode;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_bIgnoreAnchorPointForPosition = true;
             CCDirector director = CCDirector.SharedDirector;
@@ -61,13 +61,13 @@ namespace Cocos2D
             Init();
         }
 
-        public CCLayer() : this(false)
+        /// <summary>
+        /// Default layer constructor that does not use clipping.
+        /// </summary>
+        public CCLayer() : this(CCClipMode.ClipNone)
         {
         }
 
-        private void _ctorInit()
-            {
-            }
 
         private bool m_bDidInit = false;
 
@@ -78,7 +78,7 @@ namespace Cocos2D
             {
                 return;
             }
-            if (!m_ClipChildren)
+            if (m_childClippingMode == CCClipMode.ClipNone)
             {
                 base.Visit();
                 return;
@@ -159,13 +159,11 @@ namespace Cocos2D
         private void BeforeDraw()
         {
             CCDirector director = CCDirector.SharedDirector;
+            // TODO: Add the RenderTarget support here
             CCPoint screenPos = Parent.ConvertToWorldSpace(Position);
-            if (screenPos.X < 0f || screenPos.X > director.WinSize.Width)
+            if (screenPos.X < 0f || screenPos.X > director.WinSize.Width || screenPos.Y < 0f || screenPos.Y > director.WinSize.Height)
             {
-                return;
-            }
-            if (screenPos.Y < 0f || screenPos.Y > director.WinSize.Height)
-            {
+                // ScissorRect can not be applied outside of the viewport.
                 return;
             }
             float s = Scale;

@@ -640,6 +640,8 @@ namespace Cocos2D
 
             if (m_pChildren != null)
             {
+                SortAllChildren();
+
                 CCNode[] arrayData = m_pChildren.Elements;
                 int count = m_pChildren.count;
                 int i = 0;
