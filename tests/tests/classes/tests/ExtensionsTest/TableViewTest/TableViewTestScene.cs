@@ -67,12 +67,24 @@ namespace tests.Extensions
             CCLog.Log("cell touched at index: {0}", cell.Index);
 		}
 
-		public virtual CCSize CellSizeForTable(CCTableView table)
-		{
-			return new CCSize(60, 60);
-		}
+	    public void TableCellHighlight(CCTableView table, CCTableViewCell cell)
+	    {
+	    }
 
-		public virtual CCTableViewCell TableCellAtIndex(CCTableView table, int idx)
+	    public void TableCellUnhighlight(CCTableView table, CCTableViewCell cell)
+	    {
+	    }
+
+	    public void TableCellWillRecycle(CCTableView table, CCTableViewCell cell)
+	    {
+	    }
+
+	    public CCSize TableCellSizeForIndex(CCTableView table, int idx)
+	    {
+            return new CCSize(60, 60);
+        }
+
+	    public virtual CCTableViewCell TableCellAtIndex(CCTableView table, int idx)
 		{
 			string str = idx.ToString();
 			var cell = table.DequeueCell();

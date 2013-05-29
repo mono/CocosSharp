@@ -28,6 +28,8 @@ namespace Cocos2D
         private const float SCROLL_DEACCEL_DIST = 1.0f;
         private const float BOUNCE_DURATION = 0.15f;
         private const float INSET_RATIO = 0.2f;
+        private const float MOVE_INCH = 7.0f / 160.0f;
+
         protected bool m_bBounceable;
 
         protected bool m_bClippingToBounds;
@@ -51,10 +53,28 @@ namespace Cocos2D
 
         protected int m_uPagesCount;
 
+        /**
+         * scissor rect for parent, just for restoring GL_SCISSOR_BOX
+         */
+        CCRect m_tParentScissorRect;
+        bool m_bScissorRestored;
+
         public CCScrollView()
         {
             m_eDirection = CCScrollViewDirection.Both;
             Init();
+        }
+
+        /**
+        * Returns an autoreleased scroll view object.
+        *
+        * @param size view size
+        * @param container parent object
+        * @return autoreleased scroll view object
+        */
+        public CCScrollView(CCSize size, CCNode container)
+        {
+            InitWithViewSize(size, container);
         }
 
         public int PagesCount
@@ -68,15 +88,11 @@ namespace Cocos2D
             get { return m_pContainer.ContentSize; }
             set
             {
-                if (m_pContainer == null)
+                if (Container != null)
                 {
-                    InitWithViewSize(value, null);
+                    Container.ContentSize = value;
+                    UpdateInset();
                 }
-                else
-                {
-                    m_pContainer.ContentSize = value;
-                }
-                UpdateInset();
             }
         }
 
@@ -146,13 +162,7 @@ namespace Cocos2D
             set
             {
                 m_tViewSize = value;
-
-                m_fMaxInset = MaxContainerOffset;
-                m_fMaxInset = new CCPoint(m_fMaxInset.X + m_tViewSize.Width * INSET_RATIO,
-                                          m_fMaxInset.Y + m_tViewSize.Height * INSET_RATIO);
-                m_fMinInset = MinContainerOffset;
-                m_fMinInset = new CCPoint(m_fMinInset.X - m_tViewSize.Width * INSET_RATIO,
-                                          m_fMinInset.Y - m_tViewSize.Height * INSET_RATIO);
+                base.ContentSize = value;
             }
         }
 
@@ -160,17 +170,16 @@ namespace Cocos2D
         {
             set
             {
-                RemoveAllChildrenWithCleanup(true);
-
                 if (value == null)
                 {
                     return;
                 }
 
+                RemoveAllChildrenWithCleanup(true);
                 m_pContainer = value;
 
                 m_pContainer.IgnoreAnchorPointForPosition = false;
-                m_pContainer.AnchorPoint = new CCPoint(0.0f, 0.0f);
+                m_pContainer.AnchorPoint = CCPoint.Zero;
 
                 AddChild(m_pContainer);
 
@@ -208,20 +217,8 @@ namespace Cocos2D
 
         public override void RegisterWithTouchDispatcher()
         {
+            //TODO: use CCLayer::getTouchPriority()
             CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, false);
-        }
-
-        /**
-     * Returns an autoreleased scroll view object.
-     *
-     * @param size view size
-     * @param container parent object
-     * @return autoreleased scroll view object
-     */
-
-        public CCScrollView(CCSize size, CCNode container)
-        {
-            InitWithViewSize(size, container);
         }
 
         /**
@@ -234,10 +231,17 @@ namespace Cocos2D
 
         protected virtual bool InitWithViewSize(CCSize size, CCNode container)
         {
-            m_pContainer = container ?? new CCLayer();
-
             if (base.Init())
             {
+                m_pContainer = container;
+
+                if (m_pContainer == null)
+                {
+                    m_pContainer = new CCLayer();
+                    m_pContainer.IgnoreAnchorPointForPosition = false;
+                    m_pContainer.AnchorPoint = CCPoint.Zero;
+                }
+
                 ViewSize = size;
 
                 TouchEnabled = true;
@@ -257,7 +261,6 @@ namespace Cocos2D
             }
             return false;
         }
-
 
         /**
      * Sets a new content offset. It ignores max/min offset. It just sets what's given. (just like UIKit's UIScrollView)
@@ -409,7 +412,7 @@ namespace Cocos2D
         {
             m_pContainer.PauseSchedulerAndActions();
 
-            CCRawList<CCNode> pChildren = m_pContainer.Children;
+            var pChildren = m_pContainer.Children;
 
             if (pChildren != null && pChildren.count > 0)
             {
@@ -426,7 +429,7 @@ namespace Cocos2D
 
         public void Resume(object sender)
         {
-            CCRawList<CCNode> pChildren = m_pContainer.Children;
+            var pChildren = m_pContainer.Children;
 
             if (pChildren != null && pChildren.count > 0)
             {
@@ -459,8 +462,7 @@ namespace Cocos2D
                 return false;
             }
 
-            CCPoint frameOriginal = Parent.ConvertToWorldSpace(Position);
-            var frame = new CCRect(frameOriginal.X, frameOriginal.Y, m_tViewSize.Width, m_tViewSize.Height);
+            CCRect frame = GetViewRect();
 
             //dispatcher does not know about clipping. reject touches outside visible bounds.
             if (m_pTouches.Count > 2 ||
@@ -481,7 +483,7 @@ namespace Cocos2D
                 m_tTouchPoint = ConvertTouchToNodeSpace(pTouch);
                 m_bTouchMoved = false;
                 m_bDragging = true; //dragging started
-                m_tScrollDistance = new CCPoint(0.0f, 0.0f);
+                m_tScrollDistance = CCPoint.Zero;
                 m_fTouchLength = 0.0f;
             }
             else if (m_pTouches.Count == 2)
@@ -505,15 +507,43 @@ namespace Cocos2D
             if (m_pTouches.Contains(touch))
             {
                 if (m_pTouches.Count == 1 && m_bDragging)
-                {
-                    // scrolling
+                {// scrolling
+                    CCPoint moveDistance, newPoint; //, maxInset, minInset;
+                    CCRect frame;
+                    float newX, newY;
 
-                    m_bTouchMoved = true;
-                    CCPoint frameOriginal = Parent.ConvertToWorldSpace(Position);
-                    var frame = new CCRect(frameOriginal.X, frameOriginal.Y, m_tViewSize.Width, m_tViewSize.Height);
-                    CCPoint newPoint = ConvertTouchToNodeSpace(m_pTouches[0]);
-                    CCPoint moveDistance = newPoint - m_tTouchPoint;
+                    frame = GetViewRect();
+
+                    newPoint = ConvertTouchToNodeSpace(m_pTouches[0]);
+                    moveDistance = newPoint - m_tTouchPoint;
+
+                    float dis = 0.0f;
+                    if (m_eDirection == CCScrollViewDirection.Vertical)
+                    {
+                        dis = moveDistance.Y;
+                    }
+                    else if (m_eDirection == CCScrollViewDirection.Horizontal)
+                    {
+                        dis = moveDistance.X;
+                    }
+                    else
+                    {
+                        dis = (float)Math.Sqrt(moveDistance.X * moveDistance.X + moveDistance.Y * moveDistance.Y);
+                    }
+
+                    if (!m_bTouchMoved && Math.Abs(ConvertDistanceFromPointToInch(dis)) < MOVE_INCH)
+                    {
+                        //CCLOG("Invalid movement, distance = [%f, %f], disInch = %f", moveDistance.x, moveDistance.y);
+                        return;
+                    }
+
+                    if (!m_bTouchMoved)
+                    {
+                        moveDistance = CCPoint.Zero;
+                    }
+
                     m_tTouchPoint = newPoint;
+                    m_bTouchMoved = true;
 
                     if (frame.ContainsPoint(ConvertToWorldSpace(newPoint)))
                     {
@@ -525,22 +555,18 @@ namespace Cocos2D
                             case CCScrollViewDirection.Horizontal:
                                 moveDistance = new CCPoint(moveDistance.X, 0.0f);
                                 break;
+                            default:
+                                break;
                         }
 
-                        m_pContainer.Position = m_pContainer.Position + moveDistance;
+                        //maxInset = m_fMaxInset;
+                        //minInset = m_fMinInset;
 
-                        CCPoint maxInset = m_fMaxInset;
-                        CCPoint minInset = m_fMinInset;
+                        newX = m_pContainer.Position.X + moveDistance.X;
+                        newY = m_pContainer.Position.Y + moveDistance.Y;
 
-
-                        //check to see if offset lies within the inset bounds
-                        float newX = Math.Min(m_pContainer.Position.X, maxInset.X);
-                        newX = Math.Max(newX, minInset.X);
-                        float newY = Math.Min(m_pContainer.Position.Y, maxInset.Y);
-                        newY = Math.Max(newY, minInset.Y);
-
-                        m_tScrollDistance = moveDistance - new CCPoint(newX - m_pContainer.Position.X, newY - m_pContainer.Position.Y);
-                        SetContentOffset(new CCPoint(newX, newY), false);
+                        m_tScrollDistance = moveDistance;
+                        SetContentOffset(new CCPoint(newX, newY));
                     }
                 }
                 else if (m_pTouches.Count == 2 && !m_bDragging)
@@ -563,32 +589,7 @@ namespace Cocos2D
             {
                 if (m_pTouches.Count == 1 && m_bTouchMoved)
                 {
-                    if (m_uPagesCount > 0)
-                    {
-                        if (Direction == CCScrollViewDirection.Horizontal)
-                        {
-                            var curPage = (int) Math.Round(-Container.Position.X / m_tViewSize.Width);
-                            curPage += (m_tScrollDistance.X > 10) ? -1 : 0 + ((m_tScrollDistance.X < -10) ? 1 : 0);
-                            curPage = (curPage < 0) ? 0 : curPage;
-                            curPage = (curPage > m_uPagesCount - 1) ? m_uPagesCount - 1 : curPage;
-
-                            SetContentOffset(new CCPoint(-curPage * m_tViewSize.Width, 0), true);
-                        }
-
-                        else if (Direction == CCScrollViewDirection.Vertical)
-                        {
-                            var curPage = (int) Math.Round(-Container.Position.Y / m_tViewSize.Height);
-                            curPage += (m_tScrollDistance.Y > 10) ? -1 : 0 + ((m_tScrollDistance.Y < -10) ? 1 : 0);
-                            curPage = (curPage < 0) ? 0 : curPage;
-                            curPage = (curPage > m_uPagesCount - 1) ? m_uPagesCount - 1 : curPage;
-
-                            SetContentOffset(new CCPoint(0, -curPage * m_tViewSize.Height), true);
-                        }
-                    }
-                    else
-                    {
-                        Schedule(DeaccelerateScrolling);
-                    }
+                    Schedule(DeaccelerateScrolling);
                 }
                 m_pTouches.Remove(touch);
             }
@@ -627,7 +628,6 @@ namespace Cocos2D
             }
 
             CCDrawManager.PushMatrix();
-            //kmGLPushMatrix();
 
             if (m_pGrid != null && m_pGrid.Active)
             {
@@ -636,7 +636,6 @@ namespace Cocos2D
             }
 
             Transform();
-
             BeforeDraw();
 
             if (m_pChildren != null)
@@ -674,32 +673,18 @@ namespace Cocos2D
             }
 
             AfterDraw();
-
             if (m_pGrid != null && m_pGrid.Active)
             {
                 m_pGrid.AfterDraw(this);
             }
 
             CCDrawManager.PopMatrix();
-            //kmGLPopMatrix();
-/*
-			// draw bounding box
-			CCRect box = m_pContainer.boundingBox;
-			var v = new[]
-                {
-                    new CCPoint(box.origin.x, box.origin.y),
-                    new CCPoint(box.origin.x + box.size.width, box.origin.y),
-                    new CCPoint(box.origin.x + box.size.width, box.origin.y + box.size.height),
-                    new CCPoint(box.origin.x, box.origin.y + box.size.height),
-                };
-			CCDrawingPrimitives.ccDrawPoly(v, 4, true, new ccColor4F(255, 0, 0, 255));
-*/
         }
 
         public override void AddChild(CCNode child, int zOrder, int tag)
         {
-            //child.ignoreAnchorPointForPosition = false;
-            //child.anchorPoint = new CCPoint(0.0f, 0.0f);
+            child.IgnoreAnchorPointForPosition = false;
+            child.AnchorPoint = CCPoint.Zero;
             if (m_pContainer != child)
             {
                 m_pContainer.AddChild(child, zOrder, tag);
@@ -779,12 +764,17 @@ namespace Cocos2D
             float newY = Math.Min(m_pContainer.Position.Y, maxInset.Y);
             newY = Math.Max(newY, minInset.Y);
 
+            newX = m_pContainer.Position.X;
+            newY = m_pContainer.Position.Y;
+
             m_tScrollDistance = m_tScrollDistance - new CCPoint(newX - m_pContainer.Position.X, newY - m_pContainer.Position.Y);
             m_tScrollDistance = m_tScrollDistance * SCROLL_DEACCEL_RATE;
             SetContentOffset(new CCPoint(newX, newY), false);
 
             if ((Math.Abs(m_tScrollDistance.X) <= SCROLL_DEACCEL_DIST &&
                  Math.Abs(m_tScrollDistance.Y) <= SCROLL_DEACCEL_DIST) ||
+                newY > maxInset.Y || newY < minInset.Y ||
+                newX > maxInset.X || newX < minInset.X ||
                 newX == maxInset.X || newX == minInset.X ||
                 newY == maxInset.Y || newY == minInset.Y)
             {
@@ -818,6 +808,11 @@ namespace Cocos2D
         private void StoppedAnimatedScroll(CCNode node)
         {
             Unschedule(PerformedAnimatedScroll);
+            // After the animation stopped, "scrollViewDidScroll" should be invoked, this could fix the bug of lack of tableview cells.
+            if (m_pDelegate != null)
+            {
+                m_pDelegate.ScrollViewDidScroll(this);
+            }
         }
 
         /**
@@ -828,18 +823,27 @@ namespace Cocos2D
         {
             if (m_bClippingToBounds)
             {
-                CCPoint screenPos = Parent.ConvertToWorldSpace(Position);
-
-                float s = Scale;
-
-                CCDirector director = CCDirector.SharedDirector;
-                s *= director.ContentScaleFactor;
-
-                CCSize winSize = CCDirector.SharedDirector.WinSize;
-
-                CCDrawManager.ScissorRectEnabled = true;
-                CCDrawManager.SetScissorInPoints(screenPos.X, winSize.Height - (screenPos.Y + m_tViewSize.Height * s), m_tViewSize.Width * s,
-                                               m_tViewSize.Height * s);
+                m_bScissorRestored = false;
+                CCRect frame = GetViewRect();
+                if (CCDrawManager.ScissorRectEnabled)
+                {
+                    m_bScissorRestored = true;
+                    m_tParentScissorRect = CCDrawManager.ScissorRect;
+                    //set the intersection of m_tParentScissorRect and frame as the new scissor rect
+                    if (frame.IntersectsRect(m_tParentScissorRect))
+                    {
+                        float x = Math.Max(frame.Origin.X, m_tParentScissorRect.Origin.X);
+                        float y = Math.Max(frame.Origin.Y, m_tParentScissorRect.Origin.Y);
+                        float xx = Math.Min(frame.Origin.X + frame.Size.Width, m_tParentScissorRect.Origin.X + m_tParentScissorRect.Size.Width);
+                        float yy = Math.Min(frame.Origin.Y + frame.Size.Height, m_tParentScissorRect.Origin.Y + m_tParentScissorRect.Size.Height);
+                        CCDrawManager.SetScissorInPoints(x, y, xx - x, yy - y);
+                    }
+                }
+                else
+                {
+                    CCDrawManager.ScissorRectEnabled = true;
+                    CCDrawManager.SetScissorInPoints(frame.Origin.X, frame.Origin.Y, frame.Size.Width, frame.Size.Height);
+                }
             }
         }
 
@@ -852,13 +856,20 @@ namespace Cocos2D
         {
             if (m_bClippingToBounds)
             {
-                CCDrawManager.ScissorRectEnabled = false;
+                if (m_bScissorRestored)
+                {
+                    CCDrawManager.SetScissorInPoints(m_tParentScissorRect.Origin.X, m_tParentScissorRect.Origin.Y, m_tParentScissorRect.Size.Width, m_tParentScissorRect.Size.Height);
+                }
+                else
+                {
+                    CCDrawManager.ScissorRectEnabled = false;
+                }
             }
         }
 
         public void UpdateInset()
         {
-            if (m_pContainer != null)
+            if (Container != null)
             {
                 m_fMaxInset = MaxContainerOffset;
                 m_fMaxInset = new CCPoint(m_fMaxInset.X + m_tViewSize.Width * INSET_RATIO,
@@ -867,6 +878,42 @@ namespace Cocos2D
                 m_fMinInset = new CCPoint(m_fMinInset.X - m_tViewSize.Width * INSET_RATIO,
                                           m_fMinInset.Y - m_tViewSize.Height * INSET_RATIO);
             }
+        }
+
+        private CCRect GetViewRect()
+        {
+            CCPoint screenPos = ConvertToWorldSpace(CCPoint.Zero);
+
+            float scaleX = ScaleX;
+            float scaleY = ScaleY;
+
+            for (CCNode p = m_pParent; p != null; p = p.Parent)
+            {
+                scaleX *= p.ScaleX;
+                scaleY *= p.ScaleY;
+            }
+
+            // Support negative scaling. Not doing so causes intersectsRect calls
+            // (eg: to check if the touch was within the bounds) to return false.
+            // Note, CCNode::getScale will assert if X and Y scales are different.
+            if (scaleX < 0f)
+            {
+                screenPos.X += m_tViewSize.Width * scaleX;
+                scaleX = -scaleX;
+            }
+            if (scaleY < 0f)
+            {
+                screenPos.Y += m_tViewSize.Height * scaleY;
+                scaleY = -scaleY;
+            }
+
+            return new CCRect(screenPos.X, screenPos.Y, m_tViewSize.Width * scaleX, m_tViewSize.Height * scaleY);
+        }
+
+        private static float ConvertDistanceFromPointToInch(float pointDis)
+        {
+            float factor = (CCDrawManager.ScaleX + CCDrawManager.ScaleY) / 2;
+            return pointDis * factor / CCDevice.GetDPI();
         }
     }
 }
