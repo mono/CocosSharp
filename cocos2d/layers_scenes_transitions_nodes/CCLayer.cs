@@ -38,9 +38,14 @@ namespace Cocos2D
         private bool m_bIsSingleTouchEnabled;
         //private bool m_bMouseEnabled;
         //private bool m_bGamePadEnabled;
+        /// <summary>
+        /// Set to true if the child drawing should be isolated in their own render target
+        /// </summary>
+        protected bool m_IsolateChildren = false;
 
-        public CCLayer()
+        public CCLayer(bool isolateChildren)
         {
+            m_IsolateChildren = isolateChildren;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_bIgnoreAnchorPointForPosition = true;
             CCDirector director = CCDirector.SharedDirector;
@@ -56,11 +61,132 @@ namespace Cocos2D
             Init();
         }
 
+        public CCLayer() : this(false)
+        {
+        }
+
         private void _ctorInit()
             {
             }
 
         private bool m_bDidInit = false;
+
+        public override void Visit()
+        {
+            // quick return if not visible
+            if (!Visible)
+            {
+                return;
+            }
+            if (!m_IsolateChildren)
+            {
+                base.Visit();
+                return;
+            }
+
+            CCDrawManager.PushMatrix();
+            //kmGLPushMatrix();
+
+            if (m_pGrid != null && m_pGrid.Active)
+            {
+                m_pGrid.BeforeDraw();
+                TransformAncestors();
+            }
+
+            Transform();
+
+            BeforeDraw();
+
+            if (m_pChildren != null)
+            {
+                CCNode[] arrayData = m_pChildren.Elements;
+                int count = m_pChildren.count;
+                int i = 0;
+
+                // draw children zOrder < 0
+                for (; i < count; i++)
+                {
+                    CCNode child = arrayData[i];
+                    if (child.m_nZOrder < 0)
+                    {
+                        child.Visit();
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                // this draw
+                Draw();
+
+                // draw children zOrder >= 0
+                for (; i < count; i++)
+                {
+                    arrayData[i].Visit();
+                }
+            }
+            else
+            {
+                Draw();
+            }
+
+            AfterDraw();
+
+            if (m_pGrid != null && m_pGrid.Active)
+            {
+                m_pGrid.AfterDraw(this);
+            }
+
+            CCDrawManager.PopMatrix();
+            //kmGLPopMatrix();
+            /*
+                        // draw bounding box
+                        CCRect box = m_pContainer.boundingBox;
+                        var v = new[]
+                            {
+                                new CCPoint(box.origin.x, box.origin.y),
+                                new CCPoint(box.origin.x + box.size.width, box.origin.y),
+                                new CCPoint(box.origin.x + box.size.width, box.origin.y + box.size.height),
+                                new CCPoint(box.origin.x, box.origin.y + box.size.height),
+                            };
+                        CCDrawingPrimitives.ccDrawPoly(v, 4, true, new ccColor4F(255, 0, 0, 255));
+            */
+        }
+
+        private void BeforeDraw()
+        {
+            CCDirector director = CCDirector.SharedDirector;
+            CCPoint screenPos = Parent.ConvertToWorldSpace(Position);
+            if (screenPos.X < 0f || screenPos.X > director.WinSize.Width)
+            {
+                return;
+            }
+            if (screenPos.Y < 0f || screenPos.Y > director.WinSize.Height)
+            {
+                return;
+            }
+            float s = Scale;
+
+            s *= director.ContentScaleFactor;
+
+            CCSize winSize = CCDirector.SharedDirector.WinSize;
+
+            CCDrawManager.ScissorRectEnabled = true;
+            CCRect m_tViewSize = BoundingBox; // We always clip to the bounding box
+            CCDrawManager.SetScissorInPoints(screenPos.X, winSize.Height - (screenPos.Y + m_tViewSize.Size.Height * s), m_tViewSize.Size.Width * s,
+                                           m_tViewSize.Size.Height * s);
+        }
+
+        /**
+     * retract what's done in beforeDraw so that there's no side effect to
+     * other nodes.
+     */
+
+        private void AfterDraw()
+        {
+                CCDrawManager.ScissorRectEnabled = false;
+        }
 
         public virtual bool Init()
         {
