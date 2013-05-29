@@ -929,16 +929,20 @@ namespace Cocos2D
                 );
         }
 
-        public static CCRect GetScissorRect()
+        public static CCRect ScissorRect
         {
-            var sr = graphicsDevice.ScissorRectangle;
+            get
+            {
+                var sr = graphicsDevice.ScissorRectangle;
 
-            float x = (sr.X - m_obViewPortRect.Origin.X) / m_fScaleX;
-            float y = (sr.Y - m_obViewPortRect.Origin.Y) / m_fScaleY;
-            float w = sr.Width / m_fScaleX;
-            float h = sr.Height / m_fScaleY;
-            return new CCRect(x, y, w, h);
+                float x = (sr.X - m_obViewPortRect.Origin.X) / m_fScaleX;
+                float y = (sr.Y - m_obViewPortRect.Origin.Y) / m_fScaleY;
+                float w = sr.Width / m_fScaleX;
+                float h = sr.Height / m_fScaleY;
+                return new CCRect(x, y, w, h);
+            }
         }
+
         private static GraphicsDeviceManager m_GraphicsDeviceMgr;
 
         public static void SetOrientation(DisplayOrientation supportedOrientations)
