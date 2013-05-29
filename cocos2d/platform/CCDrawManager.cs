@@ -68,8 +68,6 @@ namespace Cocos2D
         private static CCSize m_obDesignResolutionSize;
         private static ResolutionPolicy m_eResolutionPolicy = ResolutionPolicy.UnKnown;
         private static float m_fFrameZoomFactor = 1.0f;
-        private static RasterizerState m_savedRasterizerState;
-        private static RasterizerState m_scissorRasterizerState;
         private static DepthFormat m_PlatformDepthFormat = DepthFormat.Depth24;
         // ref: http://www.khronos.org/registry/gles/extensions/NV/GL_NV_texture_npot_2D_mipmap.txt
         private static bool m_AllowNonPower2Textures = true;
@@ -198,21 +196,18 @@ namespace Cocos2D
             get { return graphicsDevice.RasterizerState.ScissorTestEnable; }
             set
             {
-                if (m_scissorRasterizerState == null)
+                var currentState = graphicsDevice.RasterizerState;
+                if (currentState.ScissorTestEnable != value)
                 {
-                    m_scissorRasterizerState = new RasterizerState
+                    graphicsDevice.RasterizerState = new RasterizerState
                         {
-                            ScissorTestEnable = true
+                            ScissorTestEnable = value,
+                            CullMode = currentState.CullMode,
+                            DepthBias = currentState.DepthBias,
+                            FillMode = currentState.FillMode,
+                            MultiSampleAntiAlias = currentState.MultiSampleAntiAlias,
+                            SlopeScaleDepthBias = currentState.SlopeScaleDepthBias
                         };
-                }
-                if (value)
-                {
-                    m_savedRasterizerState = graphicsDevice.RasterizerState;
-                    graphicsDevice.RasterizerState = m_scissorRasterizerState;
-                }
-                else if (m_savedRasterizerState != null)
-                {
-                    graphicsDevice.RasterizerState = m_savedRasterizerState;
                 }
             }
         }
