@@ -26,6 +26,8 @@ THE SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
@@ -36,6 +38,12 @@ namespace Cocos2D
         private bool m_bGamePadEnabled;
         private bool m_bIsMultiTouchEnabled;
         private bool m_bIsSingleTouchEnabled;
+
+        private CCRenderTexture m_pRenderTexture;
+        private bool m_bRestoreScissor;
+        private CCRect m_tSaveScissorRect;
+        private bool m_bNoDrawChildren;
+
         //private bool m_bMouseEnabled;
         //private bool m_bGamePadEnabled;
         /// <summary>
@@ -69,6 +77,29 @@ namespace Cocos2D
         }
 
 
+        public CCClipMode ChildClippingMode
+        {
+            get { return m_childClippingMode; }
+            set
+            {
+                if (m_childClippingMode != value)
+                {
+                    m_childClippingMode = value;
+                    InitClipping();
+                }
+            }
+        }
+
+        public override CCSize ContentSize
+        {
+            get { return base.ContentSize; }
+            set
+            {
+                base.ContentSize = value;
+                InitClipping();
+            }
+        }
+
         private bool m_bDidInit = false;
 
         public override void Visit()
@@ -85,7 +116,6 @@ namespace Cocos2D
             }
 
             CCDrawManager.PushMatrix();
-            //kmGLPushMatrix();
 
             if (m_pGrid != null && m_pGrid.Active)
             {
@@ -97,7 +127,7 @@ namespace Cocos2D
 
             BeforeDraw();
 
-            if (m_pChildren != null)
+            if (!m_bNoDrawChildren && m_pChildren != null)
             {
                 SortAllChildren();
 
@@ -141,77 +171,120 @@ namespace Cocos2D
             }
 
             CCDrawManager.PopMatrix();
-            //kmGLPopMatrix();
-            /*
-                        // draw bounding box
-                        CCRect box = m_pContainer.boundingBox;
-                        var v = new[]
-                            {
-                                new CCPoint(box.origin.x, box.origin.y),
-                                new CCPoint(box.origin.x + box.size.width, box.origin.y),
-                                new CCPoint(box.origin.x + box.size.width, box.origin.y + box.size.height),
-                                new CCPoint(box.origin.x, box.origin.y + box.size.height),
-                            };
-                        CCDrawingPrimitives.ccDrawPoly(v, 4, true, new ccColor4F(255, 0, 0, 255));
-            */
+        }
+
+        private void InitClipping()
+        {
+            if (m_childClippingMode == CCClipMode.ClipBoundsWithRenderTarget)
+            {
+                if (m_pRenderTexture == null || m_pRenderTexture.ContentSize.Width < ContentSize.Width || m_pRenderTexture.ContentSize.Height < ContentSize.Height)
+                {
+                    m_pRenderTexture = new CCRenderTexture((int)ContentSize.Width, (int)ContentSize.Height);
+                    m_pRenderTexture.Sprite.AnchorPoint = new CCPoint(0, 0);
+                }
+                m_pRenderTexture.Sprite.TextureRect = new CCRect(0, 0, ContentSize.Width, ContentSize.Height);
+            }
+            else
+            {
+                m_pRenderTexture = null;
+            }
         }
 
         private void BeforeDraw()
         {
-            CCDirector director = CCDirector.SharedDirector;
-            // TODO: Add the RenderTarget support here
-            CCPoint screenPos = Parent.ConvertToWorldSpace(Position);
-            if (screenPos.X < 0f || screenPos.X > director.WinSize.Width || screenPos.Y < 0f || screenPos.Y > director.WinSize.Height)
-            {
-                // ScissorRect can not be applied outside of the viewport.
-                return;
-            }
-            float s = Scale;
+            m_bNoDrawChildren = false;
 
-            s *= director.ContentScaleFactor;
+            if (m_childClippingMode == CCClipMode.ClipBounds)
+            {
+                // We always clip to the bounding box
+                var rect = new CCRect(0, 0, m_tContentSize.Width, m_tContentSize.Height);
+                var bounds = CCAffineTransform.CCRectApplyAffineTransform(rect, NodeToWorldTransform());
 
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+                var winSize = CCDirector.SharedDirector.WinSize;
+                
+                CCRect prevScissorRect;
+                if (CCDrawManager.ScissorRectEnabled)
+                {
+                    prevScissorRect = CCDrawManager.ScissorRect;
+                }
+                else
+                {
+                    prevScissorRect = new CCRect(0, 0, winSize.Width, winSize.Height);
+                }
 
-            CCRect m_tViewSize = BoundingBox; // We always clip to the bounding box
-            float x = screenPos.X;
-            float y = winSize.Height - (screenPos.Y + m_tViewSize.Size.Height * s);
-            float scissorW = m_tViewSize.Size.Width * s;
-            float scissorH = m_tViewSize.Size.Height * s;
-            if (x < 0)
-            {
-                x = 0f;
+                var minX = Math.Max(bounds.MinX, prevScissorRect.MinX);
+                var maxX = Math.Min(bounds.MaxX, prevScissorRect.MaxX);
+                var minY = Math.Max(bounds.MinY, prevScissorRect.MinY);
+                var maxY = Math.Min(bounds.MaxY, prevScissorRect.MaxY);
+
+                if (maxX < 0f || minX > winSize.Width || maxY < 0f || minY > winSize.Height || maxX <= minX || maxY <= minY)
+                {
+                    // ScissorRect can not be applied outside of the viewport.
+                    m_bNoDrawChildren = true;
+                    return;
+                }
+                                
+                if (CCDrawManager.ScissorRectEnabled)
+                {
+                    m_bRestoreScissor = true;
+                }
+                else
+                {
+                    CCDrawManager.ScissorRectEnabled = true;
+                }
+
+                m_tSaveScissorRect = prevScissorRect;
+                CCDrawManager.SetScissorInPoints(minX, minY, maxX - minX, maxY - minY);
             }
-            if (y < 0)
+            else if (m_childClippingMode == CCClipMode.ClipBoundsWithRenderTarget)
             {
-                y = 0f;
+                m_tSaveScissorRect = CCDrawManager.ScissorRect;
+                m_bRestoreScissor = CCDrawManager.ScissorRectEnabled;
+
+                CCDrawManager.ScissorRectEnabled = false;
+
+                CCDrawManager.PushMatrix();
+                CCDrawManager.SetIdentityMatrix();
+
+                m_pRenderTexture.BeginWithClear(0, 0, 0, 0);
             }
-            if (x + scissorW > winSize.Width)
-            {
-                scissorW = winSize.Width - x;
-            }
-            if (y + scissorH > winSize.Height)
-            {
-                scissorH = winSize.Height - y;
-            }
-            if (scissorW < 0f || scissorH < 0f)
-            {
-                return;
-            }
-            if (x < 0 || y < 0 || (x + scissorW) > winSize.Width || (y + scissorH) > winSize.Height)
-            {
-            }
-            CCDrawManager.ScissorRectEnabled = true;
-            CCDrawManager.SetScissorInPoints(x, y, scissorW, scissorH);
         }
 
         /**
      * retract what's done in beforeDraw so that there's no side effect to
      * other nodes.
      */
-
         private void AfterDraw()
         {
-                CCDrawManager.ScissorRectEnabled = false;
+            if (m_childClippingMode != CCClipMode.ClipNone)
+            {
+                if (m_childClippingMode == CCClipMode.ClipBoundsWithRenderTarget)
+                {
+                    m_pRenderTexture.End();
+
+                    CCDrawManager.PopMatrix();
+                }
+
+                if (m_bRestoreScissor)
+                {
+                    CCDrawManager.SetScissorInPoints(
+                        m_tSaveScissorRect.Origin.X, m_tSaveScissorRect.Origin.Y,
+                        m_tSaveScissorRect.Size.Width, m_tSaveScissorRect.Size.Height);
+
+                    CCDrawManager.ScissorRectEnabled = true;
+
+                    m_bRestoreScissor = false;
+                }
+                else
+                {
+                    CCDrawManager.ScissorRectEnabled = false;
+                }
+
+                if (m_childClippingMode == CCClipMode.ClipBoundsWithRenderTarget)
+                {
+                    m_pRenderTexture.Sprite.Visit();
+                }
+            }
         }
 
         public virtual bool Init()

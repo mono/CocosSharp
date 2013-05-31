@@ -59,4 +59,79 @@ namespace tests
         }
 
     }
+
+    public class LayerClipScissor : LayerTest
+    {
+        protected CCLayer m_pInnerLayer;
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            this.TouchEnabled = true;
+
+            CCSize s = CCDirector.SharedDirector.WinSize;
+
+            CCLayerColor layer1 = new CCLayerColor(new CCColor4B(0xFF, 0xFF, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
+            layer1.IgnoreAnchorPointForPosition = false;
+            layer1.Position = (new CCPoint(s.Width / 2, s.Height / 2));
+            layer1.ChildClippingMode = CCClipMode.ClipBounds;
+            AddChild(layer1, 1);
+
+            s = layer1.ContentSize;
+
+            m_pInnerLayer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), s.Width * 0.5f, s.Height * 0.5f);
+            m_pInnerLayer.IgnoreAnchorPointForPosition = false;
+            m_pInnerLayer.Position = (new CCPoint(s.Width / 2, s.Height / 2));
+            m_pInnerLayer.ChildClippingMode = CCClipMode.ClipBounds;
+            
+            layer1.AddChild(m_pInnerLayer, 1);
+            
+            //
+            // Add two labels using BM label class
+            // CCLabelBMFont
+            CCLabelBMFont label1 = new CCLabelBMFont("LABEL1", "fonts/konqa32.fnt");
+            label1.Position = new CCPoint(m_pInnerLayer.ContentSize.Width, m_pInnerLayer.ContentSize.Height * 0.75f);
+            m_pInnerLayer.AddChild(label1);
+            
+            CCLabelBMFont label2 = new CCLabelBMFont("LABEL2", "fonts/konqa32.fnt");
+            label2.Position = new CCPoint(0, m_pInnerLayer.ContentSize.Height * 0.25f);
+            m_pInnerLayer.AddChild(label2);
+
+            float runTime = 12f;
+
+            CCScaleTo scaleTo2 = new CCScaleTo(runTime * 0.25f, 3.0f);
+            CCScaleTo scaleTo3 = new CCScaleTo(runTime * 0.25f, 1.0f);
+
+            CCFiniteTimeAction seq = new CCRepeatForever(
+                CCSequence.FromActions(scaleTo2, scaleTo3)
+                );
+
+            m_pInnerLayer.RunAction(seq);
+        }
+
+        public override string title()
+        {
+            return "Layer Clipping With Scissor";
+        }
+    }
+
+    public class LayerClippingTexture : LayerClipScissor
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            m_pInnerLayer.ChildClippingMode = CCClipMode.ClipBoundsWithRenderTarget;
+
+            var rotateBy = new CCRotateBy(3, 90);
+
+            m_pInnerLayer.RunAction(new CCRepeatForever(rotateBy));
+        }
+
+        public override string title()
+        {
+            return "Layer Clipping With Texture";
+        }
+    }
 }
