@@ -24,13 +24,15 @@
 */
 
 using System;
-using System.Collections.Generic;
+// using System.Collections.Generic;
 using System.Diagnostics;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Common;
 using FarseerPhysics.Controllers;
 using FarseerPhysics.Dynamics.Contacts;
 using FarseerPhysics.Dynamics.Joints;
+// using HashSet = FarseerPhysics.Common.HashSet;
+// using HashSet<FarseerPhysics.Dynamics.Body> = FarseerPhysics.Common.HashSet<FarseerPhysics.Dynamics.Body>;
 using Microsoft.Xna.Framework;
 using Cocos2D;
 
@@ -178,7 +180,7 @@ namespace FarseerPhysics.Dynamics
         /// </summary>
         public BodyDelegate BodyRemoved;
 
-        internal Queue<Contact> ContactPool = new Queue<Contact>(256);
+        internal System.Collections.Generic.Queue<Contact> ContactPool = new System.Collections.Generic.Queue<Contact>(256);
 
         /// <summary>
         /// Fires whenever a fixture has been added
@@ -1416,12 +1418,12 @@ namespace FarseerPhysics.Dynamics
         /// </summary>
         /// <param name="point">The point.</param>
         /// <returns></returns>
-        public List<Fixture> TestPointAll(Vector2 point)
+        public System.Collections.Generic.List<Fixture> TestPointAll(Vector2 point)
         {
             Vector2 d = new Vector2(Settings.Epsilon, Settings.Epsilon);
             AABB aabb = new AABB(point - d, point + d);
 
-            List<Fixture> fixtures = new List<Fixture>();
+            System.Collections.Generic.List<Fixture> fixtures = new System.Collections.Generic.List<Fixture>();
 
             // Query the world for overlapping shapes.
             QueryAABB(

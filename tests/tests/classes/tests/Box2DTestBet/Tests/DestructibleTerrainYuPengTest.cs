@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
@@ -103,7 +103,7 @@ namespace FarseerPhysics.TestBed.Tests
 
             AABB affected = new AABB(ref min, ref max);
 
-            List<Fixture> affectedFixtures = new List<Fixture>();
+            System.Collections.Generic.List<Fixture> affectedFixtures = new System.Collections.Generic.List<Fixture>();
 
             World.QueryAABB(fixture =>
                                 {
@@ -161,12 +161,12 @@ namespace FarseerPhysics.TestBed.Tests
         private void CreateFixtures()
         {
             //Partition shape into convex pieces
-            List<Vertices> verts;
+            System.Collections.Generic.List<Vertices> verts;
             if (!Vertices.IsConvex())
                 verts = BayazitDecomposer.ConvexPartition(Vertices);
             else
             {
-                verts = new List<Vertices>();
+                verts = new System.Collections.Generic.List<Vertices>();
                 verts.Add(Vertices);
             }
 
@@ -216,7 +216,7 @@ namespace FarseerPhysics.TestBed.Tests
             }
 
             PolyClipError error;
-            List<Vertices> result = YuPengClipper.Difference(Vertices, transformedshape, out error);
+            System.Collections.Generic.List<Vertices> result = YuPengClipper.Difference(Vertices, transformedshape, out error);
 
             //Need to check if the entire shape was cut, 
             //so we can destroy/erase it

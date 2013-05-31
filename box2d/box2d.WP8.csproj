@@ -10,7 +10,7 @@
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-	<RootNamespace>Box2D</RootNamespace>
+    <RootNamespace>Box2D</RootNamespace>
     <AssemblyName>box2d</AssemblyName>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
@@ -25,7 +25,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Windows8\Debug\</OutputPath>
-    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS_PHONE8</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -34,7 +34,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Windows8\Release\</OutputPath>
-    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS_PHONE8</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -45,11 +45,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Windows8\x86\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE8</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoStdLib>true</NoStdLib>
     <DebugType>full</DebugType>
-    <PlatformTarget>ARM</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
@@ -57,38 +57,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\Windows8\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS_PHONE8</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
     <NoStdLib>true</NoStdLib>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Windows8\ARM\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <NoStdLib>true</NoStdLib>
-    <DebugType>full</DebugType>
-    <PlatformTarget>ARM</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
-    <OutputPath>bin\Windows8\ARM\Release\</OutputPath>
-    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>true</Optimize>
-    <NoStdLib>true</NoStdLib>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
@@ -189,6 +163,32 @@
   <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE8</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS_PHONE8</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

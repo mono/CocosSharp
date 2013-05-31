@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -184,7 +184,9 @@
     <Compile Include="actions\action_tiled_grid\CCWavesTiles3D.cs" />
     <Compile Include="actions\action_tiled_grid\CCTile.cs" />
     <Compile Include="CCContent.cs" />
+    <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
+    <Compile Include="cocoa\ICopyable.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
     <Compile Include="denshion\CCMusicPlayer.cs" />
     <Compile Include="denshion\CCSimpleAudioEngine.cs" />
@@ -204,6 +206,7 @@
     <Compile Include="CCDisplayLinkDirector.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
     <Compile Include="effects\CCGridBase.cs" />
+    <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="extentions\CCBReader\CCBAnimationManager.cs" />
     <Compile Include="extentions\CCBReader\CCBFileLoader.cs" />
     <Compile Include="extentions\CCBReader\CCBKeyframe.cs" />
@@ -236,6 +239,8 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCControlUtils.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCInvocation.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9Sprite.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCScrollView.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCSorting.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableView.cs" />
@@ -315,10 +320,17 @@
     <Compile Include="platform\CCDictMaker.cs" />
     <Compile Include="platform\CCFileData.cs" />
     <Compile Include="platform\CCFileUtils.cs" />
+    <Compile Include="platform\CCFocusManager.cs" />
+    <Compile Include="platform\CCIFocusable.cs" />
     <Compile Include="platform\CCLog.cs" />
     <Compile Include="platform\CCSAXParser.cs" />
     <Compile Include="platform\CCSpriteFontCache.cs" />
     <Compile Include="platform\CCDrawManager.cs" />
+    <Compile Include="platform\ContentReaders\CCBMFontPaddingReader.cs" />
+    <Compile Include="platform\ContentReaders\CCPointReader.cs" />
+    <Compile Include="platform\ContentReaders\CCRectReader.cs" />
+    <Compile Include="platform\ContentReaders\CCSizeReader.cs" />
+    <Compile Include="platform\ContentReaders\KerningHashElementReader.cs" />
     <Compile Include="platform\ICCSAXDelegator.cs" />
     <Compile Include="platform\InputState.cs" />
     <Compile Include="platform\CCOGLES.cs" />
@@ -368,6 +380,7 @@
     <Compile Include="sprite_nodes\CCSpriteBatchNode.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrame.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrameCache.cs" />
+    <Compile Include="support\CCUserDefault.cs" />
     <Compile Include="support\ccUtils.cs" />
     <Compile Include="support\Compression\Adler.cs" />
     <Compile Include="support\Compression\Crc32.cs" />
@@ -382,8 +395,12 @@
     <Compile Include="support\Compression\ZlibCodec.cs" />
     <Compile Include="support\Compression\ZlibException.cs" />
     <Compile Include="support\Compression\ZlibStreamFlavor.cs" />
+    <Compile Include="support\Converters\CCPointConverter.cs" />
+    <Compile Include="support\Converters\CCRectConverter.cs" />
+    <Compile Include="support\Converters\CCSizeConverter.cs" />
     <Compile Include="support\data_support\CCArray.cs" />
     <Compile Include="support\image_support\TGAlib.cs" />
+    <Compile Include="support\Serialization\CCSerialization.cs" />
     <Compile Include="support\TransformUtils.cs" />
     <Compile Include="support\zip_support\CCZHeader.cs" />
     <Compile Include="support\zip_support\ZipUtils.cs" />
@@ -424,9 +441,23 @@
       <Project>{BAA9A6E4-7690-4DE0-9531-DE0EAEEC9739}</Project>
       <Name>MonoGame.Framework.WindowsPhone</Name>
     </ProjectReference>
+    <ProjectReference Include="external lib\ICSharpCodeSource\src\ICSharpCode.SharpZLib.WP8.csproj">
+      <Project>{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}</Project>
+      <Name>ICSharpCode.SharpZLib.WP8</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <Target Name="MonoGame_RemoveXnaAssemblies" AfterTargets="ImplicitlyExpandTargetFramework">
+    <Message Text="MonoGame - Removing XNA Assembly references!" Importance="normal" />
+    <ItemGroup>
+      <ReferencePath Remove="@(ReferencePath)" Condition="'%(Filename)%(Extension)'=='Microsoft.Xna.Framework.dll'" />
+      <ReferencePath Remove="@(ReferencePath)" Condition="'%(Filename)%(Extension)'=='Microsoft.Xna.Framework.GamerServices.dll'" />
+      <ReferencePath Remove="@(ReferencePath)" Condition="'%(Filename)%(Extension)'=='Microsoft.Xna.Framework.GamerServicesExtensions.dll'" />
+      <ReferencePath Remove="@(ReferencePath)" Condition="'%(Filename)%(Extension)'=='Microsoft.Xna.Framework.Input.Touch.dll'" />
+      <ReferencePath Remove="@(ReferencePath)" Condition="'%(Filename)%(Extension)'=='Microsoft.Xna.Framework.MediaLibraryExtensions.dll'" />
+    </ItemGroup>
+  </Target>
   <ProjectExtensions />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
