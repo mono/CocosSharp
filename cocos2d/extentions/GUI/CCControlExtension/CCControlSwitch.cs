@@ -30,6 +30,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
+    public delegate void SwitchValueChangedDelegate(object sender, bool bState);
+
     /** @class CCControlSwitch Switch control for Cocos2D. */
 
     public class CCControlSwitch : CCControl
@@ -41,6 +43,8 @@ namespace Cocos2D
         protected bool m_bOn;
         protected float m_fInitialTouchXPosition;
         protected CCControlSwitchSprite m_pSwitchSprite;
+
+        public event SwitchValueChangedDelegate OnValueChanged;
 
         public override bool Enabled
         {
@@ -120,7 +124,12 @@ namespace Cocos2D
 
         public void SetOn(bool isOn, bool animated)
         {
-            m_bOn = isOn;
+            bool bNotify = false;
+            if (m_bOn != isOn)
+            {
+                m_bOn = isOn;
+                bNotify = true;
+            }
 
             m_pSwitchSprite.RunAction(
                 new CCActionTween (
@@ -131,7 +140,14 @@ namespace Cocos2D
                     )
                 );
 
-            SendActionsForControlEvents(CCControlEvent.ValueChanged);
+            if (bNotify)
+            {
+                SendActionsForControlEvents(CCControlEvent.ValueChanged);
+                if (OnValueChanged != null)
+                {
+                    OnValueChanged(this, m_bOn);
+                }
+            }
         }
 
         public bool IsOn()

@@ -4,6 +4,8 @@ using System.Diagnostics;
 
 namespace Cocos2D
 {
+    public delegate void ButtonTapDelegate(object sender);
+
     public class CCControlButton : CCControl
     {
         /* Define the button margin for Left/Right edge */
@@ -32,6 +34,7 @@ namespace Cocos2D
         protected Dictionary<CCControlState, CCNode> m_titleLabelDispatchTable;
         protected bool m_zoomOnTouchDown;
 
+        public event ButtonTapDelegate OnButtonTap;
 
         public CCScale9Sprite BackgroundSprite
         {
@@ -458,6 +461,10 @@ namespace Cocos2D
 
             if (IsTouchInside(pTouch))
             {
+                if (OnButtonTap != null)
+                {
+                    OnButtonTap(this);
+                }
                 SendActionsForControlEvents(CCControlEvent.TouchUpInside);
             }
             else
