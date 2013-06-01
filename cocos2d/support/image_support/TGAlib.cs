@@ -140,46 +140,41 @@ namespace Cocos2D
         /// <summary>
         /// loads the image pixels. You shouldn't call this function directly
         /// </summary>
-        /// <param name="?"></param>
+        /// <param name="Buffer">red,green,blue pixel values</param>
         /// <returns></returns>
-        public static bool LoadImageData(byte[] Buffer, UInt64 bufSize, ImageTGA psInfo)
+        public static bool LoadImageData(byte[] Buffer, int bufSize, ImageTGA psInfo)
         {
-            bool bRet = false;
+            int mode;
+            int headerSkip = (1 + 2) * 6; // sizeof(char) + sizeof(short) = size of the header
 
-            //do
-            //{
-            //    int mode, total, i;
-            //    char aux;
-            //    UInt64 step = (sizeof(char) + sizeof(short)) * 6;
+            // mode equal the number of components for each pixel
+            mode = psInfo.pixelDepth / 8;
 
-            //    // mode equal the number of components for each pixel
-            //    mode = psInfo.pixelDepth / 8;
-            //    // total is the number of unsigned chars we'll have to read
-            //    total = psInfo.height * psInfo.width * mode;
-
-            //    size_t dataSize = sizeof(char) * total;
-            //    if ((step + dataSize) > bufSize)
-            //    {
-            //        break;
-            //    }
-            //    memcpy(psInfo.imageData, Buffer + step, dataSize);
-
-            //    // mode=3 or 4 implies that the image is RGB(A). However TGA
-            //    // stores it as BGR(A) so we'll have to swap R and B.
-            //    if (mode >= 3)
-            //    {
-            //        for (i = 0; i < total; i += mode)
-            //        {
-            //            aux = psInfo.imageData[i];
-            //            psInfo.imageData[i] = psInfo.imageData[i + 2];
-            //            psInfo.imageData[i + 2] = aux;
-            //        }
-            //    }
-
-            //    bRet = true;
-            //} while (0);
-
-            return bRet;
+            // mode=3 or 4 implies that the image is RGB(A). However TGA
+            // stores it as BGR(A) so we'll have to swap R and B.
+            if (mode >= 3)
+            {
+                int cx = 0;
+                for (int i = headerSkip; i < Buffer.Length; i += mode)
+                {
+                    psInfo.imageData[cx].R = Buffer[i + 2];
+                    psInfo.imageData[cx].G = Buffer[i + 1];
+                    psInfo.imageData[cx].B = Buffer[i];
+                    if (mode == 4)
+                    {
+                        psInfo.imageData[cx].A = Buffer[i + 3];
+                    }
+                    else
+                    {
+                        psInfo.imageData[cx].A = 255;
+                    }
+                }
+            }
+            else
+            {
+                return (false);
+            }
+            return(true);
           
         }
 

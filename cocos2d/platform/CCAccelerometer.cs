@@ -6,7 +6,7 @@ namespace Cocos2D
 {
     public class CCAccelerometer
     {
-#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT
+#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT && !WINDOWSGL
         // the accelerometer sensor on the device
         private static Microsoft.Devices.Sensors.Accelerometer accelerometer = null;
 #endif
@@ -20,7 +20,7 @@ namespace Cocos2D
 
         static CCAccelerometer()
         {
-#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT
+#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT && !WINDOWSGL
             try
             {
                 accelerometer = new Microsoft.Devices.Sensors.Accelerometer();
@@ -46,7 +46,7 @@ namespace Cocos2D
 
             if (pDelegate != null && !m_bActive)
             {
-#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT && !WINDOWSGL
                     try
                 {
                     if (Microsoft.Devices.Sensors.Accelerometer.IsSupported)
@@ -79,7 +79,7 @@ namespace Cocos2D
             {
                 if (m_bActive && !m_bEmulation)
                 {
-#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT && !WINDOWSGL
                     if (accelerometer != null)
                     {
                     accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
@@ -96,7 +96,7 @@ namespace Cocos2D
         }
 
 
-#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT && !WINDOWSGL
         private void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
             // store the accelerometer value in our variable to be used on the next Update

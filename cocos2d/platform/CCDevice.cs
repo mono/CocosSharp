@@ -3,7 +3,7 @@ using Android.App;
 using Android.Util;
 #endif
 
-#if WINDOWS
+#if WINDOWS || WINDOWSGL
 
 #endif
 

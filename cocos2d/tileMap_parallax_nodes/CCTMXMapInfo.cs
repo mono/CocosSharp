@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Cocos2D.Compression.Zlib;
-#if WINDOWS_PHONE
+#if WINDOWS || WINDOWSGL_PHONE
 using WP7Contrib.Communications.Compression;
 #elif !XBOX
 using System.IO.Compression;
@@ -491,7 +491,7 @@ namespace Cocos2D
                     {
                         try
                         {
-#if WINDOWS_PHONE 
+#if WINDOWS || WINDOWSGL_PHONE 
                         GZipStream inGZipStream = new GZipStream(new MemoryStream(pTMXMapInfo.CurrentString));
 #elif !XBOX
                             var inGZipStream = new GZipStream(new MemoryStream(pTMXMapInfo.CurrentString), CompressionMode.Decompress);

@@ -974,7 +974,7 @@ namespace Cocos2D
 
             bool onlyLandscape = (ll || lr) && !p;
             bool onlyPortrait = !(ll || lr) && p;
-#if WINDOWS_PHONE
+#if WINDOWS || WINDOWSGL_PHONE
             bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & supportedOrientations) ==  DisplayOrientation.Default);
 #else
             bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & supportedOrientations) == 0);
@@ -982,7 +982,7 @@ namespace Cocos2D
             if (bSwapDims && (ll || lr))
             {
                 // Check for landscape changes that do not need a swap
-#if WINDOWS_PHONE
+#if WINDOWS || WINDOWSGL_PHONE
                 if (((m_GraphicsDeviceMgr.SupportedOrientations & DisplayOrientation.LandscapeLeft) != DisplayOrientation.Default) ||
                     ((m_GraphicsDeviceMgr.SupportedOrientations & DisplayOrientation.LandscapeRight) != DisplayOrientation.Default))
 #else
@@ -1020,7 +1020,7 @@ namespace Cocos2D
             }
             m_GraphicsDeviceMgr.SupportedOrientations = supportedOrientations;
 #endif
-#if WINDOWS_PHONE
+#if WINDOWS || WINDOWSGL_PHONE
             if (bSwapDims)
             {
                 m_GraphicsDeviceMgr.PreferredBackBufferWidth = preferredBackBufferHeight;
@@ -1053,7 +1053,7 @@ namespace Cocos2D
             }
             m_GraphicsDeviceMgr.SupportedOrientations = supportedOrientations;
 #endif
-#if WINDOWS
+#if WINDOWS || WINDOWSGL
             if (bSwapDims)
             {
                 m_GraphicsDeviceMgr.PreferredBackBufferWidth = preferredBackBufferHeight;
@@ -1087,11 +1087,11 @@ namespace Cocos2D
             graphics.IsFullScreen = true;
 #endif
 
-#if WINDOWS_PHONE
+#if WINDOWS || WINDOWSGL_PHONE
             graphics.IsFullScreen = true;
 #endif
 
-#if WINDOWS || MONOMAC
+#if WINDOWS || WINDOWSGL || MONOMAC
             game.IsMouseVisible = true;
             graphics.IsFullScreen = false;
 #endif

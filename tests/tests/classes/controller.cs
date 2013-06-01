@@ -31,7 +31,7 @@ namespace tests
             GamePadEnabled = true;
 			KeypadEnabled = true;
 #endif
-#if WINDOWS || MONOMAC
+#if WINDOWS || WINDOWSGL || MONOMAC
 			GamePadEnabled = true;
 #endif
 

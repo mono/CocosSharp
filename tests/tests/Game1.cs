@@ -15,6 +15,7 @@ namespace tests
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            // graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             
             graphics.IsFullScreen = false;
@@ -23,6 +24,8 @@ namespace tests
             // Divide by 2 to make it 60 fps
             TargetElapsedTime = TimeSpan.FromTicks(333333 / 2);
             IsFixedTimeStep = true;
+
+            IsMouseVisible = true;
 
             // Extend battery life under lock.
             //InactiveSleepTime = TimeSpan.FromSeconds(1);

@@ -26,6 +26,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WP7Contrib.Communications.Compression;
+using System.IO;
 
 namespace Cocos2D
 {
@@ -56,9 +58,18 @@ namespace Cocos2D
         /// <returns></returns>
         public static int InflateMemory(byte[] parameterin, uint inLength, byte[] parameterout)
         {
-            // 256k for hint
-            //return ccInflateMemoryWithHint(parameterin, inLength, out, 256 * 1024);
-            throw new NotImplementedException();
+            MemoryStream ms = new MemoryStream(parameterout, true);
+            try
+            {
+                GZipStream gs = new GZipStream(new MemoryStream(parameterin, false)); // , CompressionMode.Decompress, false);
+                gs.CopyTo(ms);
+                return ((int)ms.Length);
+            }
+            catch (Exception)
+            {
+                // Nog a gzip stream, could be zlib stream
+            }
+            return (0);
         }
 
         /** 
@@ -71,9 +82,9 @@ namespace Cocos2D
         *
         @since v1.0.0
         */
-        public static int InflateMemoryWithHint(byte[] parameterin, int inLength, byte[] parameterout, int outLenghtHint)
+        public static int InflateMemoryWithHint(byte[] parameterin, uint inLength, byte[] parameterout, int outLenghtHint)
         {
-            throw new NotImplementedException();
+            return (InflateMemory(parameterin, inLength, parameterout));
         }
 
         /** inflates a GZip file into memory

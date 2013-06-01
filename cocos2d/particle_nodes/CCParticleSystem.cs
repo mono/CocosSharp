@@ -2,6 +2,14 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
+#if !HAS_NATIVE_ZIPFILE_SUPPORT
+//using ICSharpCode.SharpZipLib.Zip;
+using GZipInputStream=WP7Contrib.Communications.Compression.GZipStream; // Found in Support/Compression/GZipStream
+using ICSharpCode.SharpZipLib.Zip;
+#else
+using System.IO.Compression.ZipFile;
+using System.IO.Compression.GZip;
+#endif
 using cocos2d;
 
 namespace Cocos2D
@@ -606,7 +614,7 @@ namespace Cocos2D
 
             byte[] outputBytes = null;
             var zipInputStream = 
-                new ICSharpCode.SharpZipLib.Zip.ZipInputStream(new MemoryStream(dataBytes));
+                new ZipInputStream(new MemoryStream(dataBytes));
 
             if (zipInputStream.CanDecompressEntry) {
 
@@ -632,7 +640,7 @@ namespace Cocos2D
 
                 try {
                 var gzipInputStream = 
-                    new ICSharpCode.SharpZipLib.GZip.GZipInputStream(new MemoryStream(dataBytes));
+                    new GZipInputStream(new MemoryStream(dataBytes));
 
 
                 MemoryStream zipoutStream = new MemoryStream();
