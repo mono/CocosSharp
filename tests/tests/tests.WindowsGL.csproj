@@ -50,23 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\**\*.*">
+    <Content Include="Assets\Content\**\*.*">
+      <Link>Content\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Game.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\animations\" />
-    <Folder Include="Content\box2d\" />
-    <Folder Include="Content\ccb\ccb\" />
-    <Folder Include="Content\extensions\" />
-    <Folder Include="Content\fonts\" />
-    <Folder Include="Content\Images\bugs\" />
-    <Folder Include="Content\Images\sprites_test\" />
-    <Folder Include="Content\Particles\" />
-    <Folder Include="Content\Sounds\" />
-    <Folder Include="Content\TileMaps\" />
-    <Folder Include="Content\zwoptex\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\box2d\box2d.WindowsGL.csproj">
