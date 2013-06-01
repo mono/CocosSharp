@@ -15,9 +15,15 @@ namespace tests
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            // graphics.ApplyChanges();
+            graphics.DeviceCreated += new EventHandler<EventArgs>(graphics_DeviceCreated);
+            graphics.ApplyChanges();
             Content.RootDirectory = "Content";
-            
+
+            if (graphics.GraphicsDevice == null)
+            {
+                CCLog.Log("FOO");
+            }
+
             graphics.IsFullScreen = false;
 
             // Frame rate is 30 fps by default for Windows Phone.
@@ -32,6 +38,11 @@ namespace tests
 
             CCApplication application = new AppDelegate(this, graphics);
             Components.Add(application);
+        }
+
+        void graphics_DeviceCreated(object sender, EventArgs e)
+        {
+            CCLog.Log("Graphics device was created!");
         }
 
 #if OUYA
