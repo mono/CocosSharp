@@ -488,7 +488,7 @@ namespace Cocos2D
                         {
 #if WINDOWS || WINDOWSGL
                         GZipStream inGZipStream = new GZipStream(new MemoryStream(pTMXMapInfo.CurrentString));
-#elif !NETFX_CORE
+#elif !NETFX_CORE && !WINDOWS_PHONE
                             var inGZipStream = new GZipStream(new MemoryStream(pTMXMapInfo.CurrentString), CompressionMode.Decompress);
 #else
                         var inGZipStream = new GZipStream(new MemoryStream(pTMXMapInfo.CurrentString));
