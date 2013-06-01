@@ -51,9 +51,10 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\WindowsPhone\ARM\Debug</OutputPath>
+    <OutputPath>bin\ARM\WP8\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
+    <PlatformTarget>ARM</PlatformTarget>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -61,10 +62,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\WindowsPhone\ARM\Release</OutputPath>
+    <OutputPath>bin\ARM\WP8\Release\</OutputPath>
     <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
+    <PlatformTarget>ARM</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -144,6 +146,10 @@
     <ProjectReference Include="..\cocos2d\cocos2d.WP8.csproj">
       <Project>{7BF6F2D8-9E09-4A0A-84C1-1A5FF795D56A}</Project>
       <Name>cocos2d.WP8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cocos2d\external lib\ICSharpCodeSource\src\ICSharpCode.SharpZLib.WP8.csproj">
+      <Project>{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}</Project>
+      <Name>ICSharpCode.SharpZLib.WP8</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsPhone.csproj">
       <Project>{BAA9A6E4-7690-4DE0-9531-DE0EAEEC9739}</Project>

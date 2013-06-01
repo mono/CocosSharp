@@ -30,7 +30,7 @@ using System.Xml;
 using System.IO;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Content;
-#if NETFX_CORE
+#if NETFX_CORE && !WINDOWS_PHONE
 using Win8StoreIOUtility = Cocos2D.Win8StoreIOUtility;
 #endif
 
@@ -260,7 +260,7 @@ namespace cocos2d
 
         public void WriteToFile(string filename)
         {
-#if NETFX_CORE
+#if NETFX_CORE && !WINDOWS_PHONE
             Stream writeStreamFromFileName = Win8StoreIOUtility.GetWriteStreamFromFileName(filename);
             using (StreamWriter streamWriter = new StreamWriter(writeStreamFromFileName, System.Text.Encoding.UTF8))
 #else
