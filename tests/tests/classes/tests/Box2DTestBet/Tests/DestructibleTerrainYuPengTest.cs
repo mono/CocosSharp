@@ -1,6 +1,4 @@
-#if !WINDOWS
 using System.Collections.Generic;
-#endif
 using FarseerPhysics.Collision;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;

@@ -24,9 +24,7 @@
 */
 
 using System;
-#if !WINDOWS
 using System.Collections.Generic;
-#endif
 using System.Diagnostics;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Common;
