@@ -16,13 +16,13 @@ namespace tests
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.DeviceCreated += new EventHandler<EventArgs>(graphics_DeviceCreated);
-            graphics.ApplyChanges();
+            // graphics.ApplyChanges();
             Content.RootDirectory = "Content";
 
-            if (graphics.GraphicsDevice == null)
-            {
-                CCLog.Log("FOO");
-            }
+//            if (graphics.GraphicsDevice == null)
+//            {
+//                CCLog.Log("FOO");
+//            }
 
             graphics.IsFullScreen = false;
 

@@ -53,7 +53,14 @@ namespace Cocos2D
 
             if (m_graphicsService.GraphicsDevice != null)
             {
-                Game.Services.AddService(typeof(IGraphicsDeviceService), m_graphicsService);
+                try
+                {
+                    Game.Services.AddService(typeof(IGraphicsDeviceService), m_graphicsService);
+                }
+                catch (ArgumentException)
+                {
+                    // Already contains the graphics device service.
+                }
                 CCDrawManager.Init(m_graphicsService.GraphicsDevice);
             }
             else

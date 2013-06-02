@@ -42,6 +42,7 @@ namespace tests
         ACTION_ISSUE1288_LAYER,
         ACTION_ISSUE1288_2_LAYER,
         ACTION_ISSUE1327_LAYER,
+        ACTION_PARALLEL,
         ACTION_LAYER_COUNT,
     };
 
@@ -166,6 +167,9 @@ namespace tests
                     break;
                 case (int) ActionTest.PAUSERESUMEACTIONS_LAYER:
                     pLayer = new PauseResumeActions();
+                    break;
+                case (int)ActionTest.ACTION_PARALLEL:
+                    pLayer = new ActionParallel();
                     break;
                 default:
                     break;
@@ -371,6 +375,34 @@ namespace tests
             }
         }
     };
+
+    public class ActionParallel : ActionsDemo
+    {
+        public override string title()
+        {
+            return ("CCParallel Test");
+        }
+        public override string subtitle()
+        {
+            return ("Tamara - parallel move to and fade in.");
+        }
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            centerSprites(3);
+
+            var s = CCDirector.SharedDirector.WinSize;
+
+            var actionTo = new CCMoveTo(2, new CCPoint(s.Width - 40, s.Height - 40));
+            var actionBy = new CCMoveBy(2, new CCPoint(80, 80));
+            var actionByBack = actionBy.Reverse();
+
+            m_tamara.RunAction(CCSequence.FromActions(new CCParallel(actionTo, new CCFadeIn(2)), actionBy, actionByBack));
+            m_grossini.RunAction(CCSequence.FromActions(actionBy, new CCParallel(actionByBack, new CCScaleTo(2, 0.25f))));
+            m_kathia.RunAction(new CCMoveTo(1, new CCPoint(40, 40)));
+        }
+    }
 
     public class ActionManual : ActionsDemo
     {
