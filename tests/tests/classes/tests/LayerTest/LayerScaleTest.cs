@@ -134,4 +134,196 @@ namespace tests
             return "Layer Clipping With Texture";
         }
     }
+
+    //=============================== MarqueeLayer ================================
+
+    public class MarqueeLayerTest : LayerTest
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            var layer = new MarqueeLayer();
+            layer.IgnoreAnchorPointForPosition = false;
+            
+            AddChild(layer);
+
+            var size = CCDirector.SharedDirector.WinSize;
+
+            layer.Position = new CCPoint(0, size.Height / 2);
+
+            var move1 = new CCMoveTo(2, new CCPoint(size.Width / 2, size.Height));
+            var move2 = new CCMoveTo(2, new CCPoint(size.Width, size.Height / 2));
+            var move3 = new CCMoveTo(2, new CCPoint(size.Width / 2, 0));
+            var move4 = new CCMoveTo(2, new CCPoint(0, size.Height / 2));
+
+            layer.RunAction(new CCRepeatForever(CCSequence.FromActions(move1, move2, move3, move4)));
+        }
+
+        public override string title()
+        {
+            return "issues - 173 Marquee Layer";
+        }
+    }
+
+    public partial class MarqueeLayer : CCLayerColor
+    {
+        private bool m_didOnEnter = false;
+        private bool m_didOnExit = false;
+        protected const int kTopBorder = 1;
+        private CCSprite TopBorder;
+        protected const int kBottomBorder = 2;
+        private CCSprite BottomBorder;
+        public MarqueeLayer()
+            : base(new CCColor4B(0x00, 0x00, 0x00, 0xFF), 320f, 422f)
+        {
+            ChildClippingMode = CCClipMode.ClipBounds;
+            Layer_Constructed();
+            TopBorder = new CCSprite("Images/blocks");
+            TopBorder.Position = new CCPoint(320 / 2, 422 - 32 / 2);
+            TopBorder.ContentSize = new CCSize(320, 32);
+            TopBorder.Visible = true;
+            TopBorder.Scale = 1;
+            this.AddChild(TopBorder, 5, kTopBorder);
+            BottomBorder = new CCSprite("Images/blocks");
+            BottomBorder.Position = new CCPoint(320 / 2, 32 / 2);
+            BottomBorder.ContentSize = new CCSize(320, 32);
+            BottomBorder.Visible = true;
+            BottomBorder.Scale = 1;
+            BottomBorder.FlipY = true;
+            this.AddChild(BottomBorder, 5, kBottomBorder);
+        }
+        public override void OnEnter()
+        {
+            if (!m_didOnEnter)
+            {
+                m_didOnEnter = true;
+            }
+            base.OnEnter();
+            Layer_OnEnter();
+        }
+        public override void OnExit()
+        {
+            if (!m_didOnExit)
+            {
+                m_didOnExit = true;
+            }
+            base.OnExit();
+            Layer_OnExit();
+        }
+        partial void Layer_Constructed();
+        partial void Layer_OnEnter();
+        partial void Layer_OnExit();
+    }
+
+    public partial class MarqueeLayer : CCLayerColor
+    {
+        protected SEL_SCHEDULE MarqueeUpdater;
+        private float _MarqueeRate = 15f; // 15 pixels per second
+        private List<CCNode> _Labels = new List<CCNode>();
+        private string[] _LabelsToShow = new string[] { 
+        "Game Art: Chelsea Crist",
+        "Game Art: Emily So",
+        "Backgrounds: Jonny Klein",
+        "Programming: Jacob Aderson",
+        "Design: Jacob Anderson",
+        "Writing: Jacob Anderson",
+        "MonoGame - Cross Platform",
+        "Cocos2D XNA - Platform"
+    };
+        private int _LastNode = 0;
+
+        partial void Layer_Constructed()
+        {
+            MarqueeUpdater = new SEL_SCHEDULE(MarqueeUpdate);
+            Schedule(MarqueeUpdater, 1f / 30f);
+            for (int i = 0; i < 2; i++)
+            {
+                foreach (string s in _LabelsToShow)
+                {
+                    CCLabelTTF label = new CCLabelTTF(s, "Eccentric", 18);
+                    label.Color = new CCColor3B(255, 253, 119);
+                    label.HorizontalAlignment = CCTextAlignment.CCTextAlignmentCenter;
+                    AddChild(label);
+                    _Labels.Add(label);
+                    //       label.AnchorPoint = new CCPoint(0.5f, 0f);
+                }
+            }
+            _bPositionsAreDirty = true;
+        }
+
+        partial void Layer_OnEnter()
+        {
+            LayoutNodes();
+        }
+
+        private bool _bPositionsAreDirty = true;
+
+        public override CCSize ContentSize
+        {
+            get
+            {
+                return base.ContentSize;
+            }
+            set
+            {
+                base.ContentSize = value;
+                _bPositionsAreDirty = true;
+            }
+        }
+
+        public override void Update(float dt)
+        {
+            base.Update(dt);
+            if (_bPositionsAreDirty)
+            {
+                // Reset the positions
+                LayoutNodes();
+            }
+        }
+
+        private float m_MarqueeBorder = 0f; // 32f;
+        private float m_Padding = 7f;
+
+        private void LayoutNodes()
+        {
+            _bPositionsAreDirty = false;
+            float ymax = ContentSize.Height - m_MarqueeBorder;
+            float xmid = ContentSize.Width / 2f;
+            foreach (CCNode node in _Labels)
+            {
+                node.PositionY = ymax - node.ContentSize.Height;
+                node.PositionX = xmid;
+                ymax -= node.ContentSize.Height + m_Padding;
+            }
+            _LastNode = _Labels.Count - 1;
+        }
+
+        private void MarqueeUpdate(float dt)
+        {
+            if (_bPositionsAreDirty)
+            {
+                LayoutNodes();
+                return;
+            }
+            float ymax = ContentSize.Height - m_MarqueeBorder;
+            foreach (CCNode node in _Labels)
+            {
+                node.PositionY += _MarqueeRate * dt;
+                // If any nodes are not visible, then move them to the bottom or top
+                if (node.BoundingBox.MinY > ymax)
+                {
+                    // Place this at the bottom of the list
+                    float y = _Labels[_LastNode].PositionY;
+                    y -= node.ContentSize.Height + m_Padding;
+                    node.PositionY = y;
+                    _LastNode = (_LastNode + 1) % _Labels.Count;
+                }
+            }
+
+        }
+    }
+
+    //=============================== MarqueeLayer ================================
+
 }
