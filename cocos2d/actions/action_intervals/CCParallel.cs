@@ -21,22 +21,33 @@ namespace Cocos2D
         {
             m_pActions = actions;
             float duration = 0f;
-            foreach (CCFiniteTimeAction action in m_pActions)
+            for (int i = 0; i < m_pActions.Length; i++)
             {
-                if (duration < action.Duration)
+                var actionDuration = m_pActions[i].Duration;
+                if (duration < actionDuration)
                 {
-                    duration = action.Duration;
+                    duration = actionDuration;
                 }
             }
+
+            for (int i = 0; i < m_pActions.Length; i++)
+            {
+                var actionDuration = m_pActions[i].Duration;
+                if (actionDuration < duration)
+                {
+                    m_pActions[i] = new CCSequence(m_pActions[i], new CCDelayTime(duration - actionDuration));
+                }
+            }
+
             base.InitWithDuration(duration);
         }
 
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
-            foreach (CCFiniteTimeAction action in m_pActions)
+            for (int i = 0; i < m_pActions.Length; i++)
             {
-                action.StartWithTarget(target);
+                m_pActions[i].StartWithTarget(target);
             }
         }
 
@@ -57,8 +68,12 @@ namespace Cocos2D
         public override CCFiniteTimeAction Reverse()
         {
             CCFiniteTimeAction[] rev = new CCFiniteTimeAction[m_pActions.Length];
-            m_pActions.CopyTo(rev, 0);
-            return (new CCParallel(rev));
+            for (int i = 0; i < m_pActions.Length; i++)
+            {
+                rev[i] = m_pActions[i].Reverse();
+            }
+
+            return new CCParallel(rev);
         }
 
         /// <summary>
@@ -94,9 +109,9 @@ namespace Cocos2D
         {
             get
             {
-                foreach (CCFiniteTimeAction action in m_pActions)
+                for (int i = 0; i < m_pActions.Length; i++)
                 {
-                    if (!action.IsDone)
+                    if (!m_pActions[i].IsDone)
                     {
                         return (false);
                     }
@@ -107,17 +122,18 @@ namespace Cocos2D
 
         public override void Stop()
         {
-            foreach (CCFiniteTimeAction action in m_pActions)
+            for (int i = 0; i < m_pActions.Length; i++)
             {
-                action.Stop();
+                m_pActions[i].Stop();
             }
             base.Stop();
         }
 
         public override void Update(float time)
         {
-            foreach (CCFiniteTimeAction action in m_pActions)
+            for (int i = 0; i < m_pActions.Length; i++)
             {
+                var action = m_pActions[i];
                 if (!action.IsDone)
                 {
                     action.Update(time);
