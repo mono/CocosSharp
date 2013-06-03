@@ -55,7 +55,7 @@
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
     <MtouchDebug>True</MtouchDebug>
     <MtouchUseArmv7>false</MtouchUseArmv7>
-    <CodesignKey>iPhone Developer: Kenneth James Pouncey (83ASFFXWXR)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <IpaPackageName />
     <MtouchI18n />
     <MtouchArch>ARMv7</MtouchArch>

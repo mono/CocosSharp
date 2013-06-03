@@ -1,7 +1,7 @@
 #region File Description
 
 //-----------------------------------------------------------------------------
-// InputState.cs
+// CCInputState.cs
 //
 // Microsoft XNA Community Game Platform
 // Copyright (C) Microsoft Corporation. All rights reserved.
@@ -61,9 +61,9 @@ namespace Cocos2D
     /// query methods for high level input actions such as "move up through the menu"
     /// or "pause the game".
     /// </summary>
-    public class InputState
+    public class CCInputState
     {
-        public static readonly InputState Instance = new InputState();
+        public static readonly CCInputState Instance = new CCInputState();
 
         /// <summary>
         /// The value of an analog control that reads as a "pressed button".
@@ -90,7 +90,7 @@ namespace Cocos2D
         /// <summary>
         /// Initialization
         /// </summary>
-        private InputState()
+        private CCInputState()
         {
             TouchPanel.EnabledGestures = GestureType.None;
         }
