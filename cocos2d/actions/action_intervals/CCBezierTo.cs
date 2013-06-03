@@ -3,7 +3,7 @@ namespace Cocos2D
 {
     public class CCBezierTo : CCBezierBy
     {
-        public CCBezierTo (float t, ccBezierConfig c) : base (t, c)
+        public CCBezierTo (float t, CCBezierConfig c) : base (t, c)
         {
             InitWithDuration(t, c);
         }

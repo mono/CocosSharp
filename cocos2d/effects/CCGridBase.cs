@@ -9,7 +9,7 @@ namespace Cocos2D
     {
         protected bool m_bActive;
         protected bool m_bIsTextureFlipped;
-        protected ccDirectorProjection m_directorProjection;
+        protected CCDirectorProjection m_directorProjection;
 
         protected int m_nReuseGrid;
         protected CCPoint m_obStep;

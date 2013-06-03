@@ -47,7 +47,7 @@ namespace Cocos2D
         private bool m_bSendCleanupToScene;
         protected double m_dAnimationInterval;
         protected double m_dOldAnimationInterval;
-        private ccDirectorProjection m_eProjection;
+        private CCDirectorProjection m_eProjection;
         private float m_fContentScaleFactor = 1.0f;
         private float m_fDeltaTime;
         private bool m_NeedsInit = true;
@@ -333,7 +333,7 @@ namespace Cocos2D
         }
 #endif
 
-        public ccDirectorProjection Projection
+        public CCDirectorProjection Projection
         {
             get { return m_eProjection; }
             set
@@ -344,7 +344,7 @@ namespace Cocos2D
 
                 switch (value)
                 {
-                    case ccDirectorProjection.kCCDirectorProjection2D:
+                    case CCDirectorProjection.Projection2D:
 
                         
                         CCDrawManager.ProjectionMatrix = Matrix.CreateOrthographicOffCenter(
@@ -370,7 +370,7 @@ namespace Cocos2D
                         */
                         break;
 
-                    case ccDirectorProjection.kCCDirectorProjection3D:
+                    case CCDirectorProjection.Projection3D:
 
                         CCDrawManager.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(
                             MathHelper.Pi / 3.0f,
@@ -399,7 +399,7 @@ namespace Cocos2D
 
                         break;
 
-                    case ccDirectorProjection.kCCDirectorProjectionCustom:
+                    case CCDirectorProjection.Custom:
                         if (m_pProjectionDelegate != null)
                         {
                             m_pProjectionDelegate.UpdateProjection();
@@ -529,7 +529,7 @@ namespace Cocos2D
             m_dOldAnimationInterval = m_dAnimationInterval = 1.0 / kDefaultFPS;
 
             // Set default projection (3D)
-            m_eProjection = ccDirectorProjection.kCCDirectorProjectionDefault;
+            m_eProjection = CCDirectorProjection.Default;
 
             // projection delegate if "Custom" projection is used
             m_pProjectionDelegate = null;
@@ -1173,18 +1173,18 @@ namespace Cocos2D
     /// <summary>
     ///  Possible OpenGL projections used by director
     /// </summary>
-    public enum ccDirectorProjection
+    public enum CCDirectorProjection
     {
         /// sets a 2D projection (orthogonal projection)
-        kCCDirectorProjection2D,
+        Projection2D,
 
         /// sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
-        kCCDirectorProjection3D,
+        Projection3D,
 
         /// it calls "updateProjection" on the projection delegate.
-        kCCDirectorProjectionCustom,
+        Custom,
 
         /// Default projection is 3D projection
-        kCCDirectorProjectionDefault = kCCDirectorProjection3D
+        Default = Projection3D
     }
 }
