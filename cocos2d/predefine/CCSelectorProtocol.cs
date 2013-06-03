@@ -33,7 +33,7 @@ namespace Cocos2D
     //public delegate void SEL_CallFuncND(CCNode sender, object data);
     //public delegate void SEL_CallFuncO(object sender);
     public delegate void SEL_MenuHandler(object sender);
-    public delegate void SEL_EventHandler(CCEvent event_);
+    //public delegate void SEL_EventHandler(CCEvent event_);
 
     public interface CCSelectorProtocol
     {

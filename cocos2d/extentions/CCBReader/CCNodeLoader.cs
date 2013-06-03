@@ -6,7 +6,7 @@ namespace Cocos2D
 {
     public class BlockData
     {
-        public SEL_MenuHandler mSELMenuHandler;
+		public Action<object> mSELMenuHandler;
         public object mTarget;
     }
 
@@ -759,7 +759,7 @@ namespace Cocos2D
                 {
                     if (selectorName.Length > 0)
                     {
-                        SEL_MenuHandler selMenuHandler = null;
+						Action<object> selMenuHandler = null;
 
                         var targetAsCCBSelectorResolver = target as CCBSelectorResolver;
 
