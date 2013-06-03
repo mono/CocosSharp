@@ -39,7 +39,6 @@ namespace Cocos2D
         protected VertexPositionColor[] m_pVertices = new VertexPositionColor[4];
         private VertexBuffer m_pVertexBuffer;
         protected bool m_bChanged;
-        //protected bool m_opacityChanged;
 
         public CCLayerColor()
         {
@@ -229,8 +228,11 @@ namespace Cocos2D
 
         protected virtual void UpdateColor()
         {
-
+#if CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA
+            var color = new Color(m_tColor.R, m_tColor.G, m_tColor.B) * (m_cOpacity / 255.0f);
+#else
             var color = new Color(m_tColor.R / 255.0f, m_tColor.G / 255.0f, m_tColor.B / 255.0f, m_cOpacity / 255.0f);
+#endif
 
             m_pVertices[0].Color = m_pVertices[1].Color = m_pVertices[2].Color = m_pVertices[3].Color = color;
 
