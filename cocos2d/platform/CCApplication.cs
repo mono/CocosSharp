@@ -39,7 +39,7 @@ namespace Cocos2D
         private CCBMFontConfiguration.ccBMFontDef hangOnToMe;
 
         protected bool m_bCaptured;
-        protected IEGLTouchDelegate m_pDelegate;
+        protected ICCEGLTouchDelegate m_pDelegate;
 
         private IGraphicsDeviceService m_graphicsService;
 
@@ -181,7 +181,7 @@ namespace Cocos2D
             set { Game.TargetElapsedTime = TimeSpan.FromTicks((int) (value * 10000000)); }
         }
 
-        public IEGLTouchDelegate TouchDelegate
+        public ICCEGLTouchDelegate TouchDelegate
         {
             set { m_pDelegate = value; }
         }

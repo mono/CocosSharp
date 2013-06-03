@@ -1,3 +1,4 @@
+using System;
 
 namespace Cocos2D
 {
@@ -12,12 +13,12 @@ namespace Cocos2D
         {
         }
 
-        public CCMenuItemImage(string normalImage, string selectedImage, SEL_MenuHandler selector)
+		public CCMenuItemImage(string normalImage, string selectedImage, Action<object> selector)
             :this(normalImage, selectedImage, null, selector)
         {
         }
 
-        public CCMenuItemImage(string normalImage, string selectedImage, string disabledImage, SEL_MenuHandler selector)
+		public CCMenuItemImage(string normalImage, string selectedImage, string disabledImage, Action<object> selector)
             : base(selector)
         {
 

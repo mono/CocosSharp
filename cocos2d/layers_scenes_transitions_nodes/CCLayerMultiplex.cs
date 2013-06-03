@@ -108,7 +108,11 @@ namespace Cocos2D
             CCLayer outLayer = m_pLayers[(int)m_nEnabledLayer];
             if (m_OutAction != null)
             {
-                outLayer.RunAction(CCSequence.FromActions((CCFiniteTimeAction)m_OutAction.Copy(), new CCCallFuncO(new SEL_CallFuncO(RemoveLayerDuringAction), outLayer)));
+                outLayer.RunAction(
+					CCSequence.FromActions(
+						(CCFiniteTimeAction)m_OutAction.Copy(), 
+						new CCCallFuncO(RemoveLayerDuringAction, outLayer))
+					);
             }
             m_nEnabledLayer = n;
             AddChild(m_pLayers[(int)n]);

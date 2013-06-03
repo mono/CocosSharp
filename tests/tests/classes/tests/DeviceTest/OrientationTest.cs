@@ -72,9 +72,9 @@ namespace tests
                     l.Position = new CCPoint(s.Width / 2, s.Height - 80);
                 }
 
-                CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2,  new SEL_MenuHandler(BackCallback));
-                CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2,  new SEL_MenuHandler(RestartCallback));
-                CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2,  new SEL_MenuHandler(NextCallback));
+                CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2,  BackCallback);
+                CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2,  RestartCallback);
+                CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2,  NextCallback);
 
                 CCMenu menu = new CCMenu(item1, item2, item3);
                 menu.Position = new CCPoint();
@@ -133,7 +133,7 @@ namespace tests
                 CCSize s = CCDirector.SharedDirector.WinSize;
 
 
-                CCMenuItem item = new CCMenuItemFont("Rotate Device", new SEL_MenuHandler(RotateDevice));
+                CCMenuItem item = new CCMenuItemFont("Rotate Device", RotateDevice);
                 CCMenu menu = new CCMenu(item);
                 menu.Position = new CCPoint(s.Width / 2, s.Height / 2);
                 AddChild(menu);

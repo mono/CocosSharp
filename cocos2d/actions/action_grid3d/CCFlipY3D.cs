@@ -81,7 +81,7 @@ namespace Cocos2D
             SetVertex(d, ref v);
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
             if (pZone != null)
             {

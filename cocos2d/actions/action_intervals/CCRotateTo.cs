@@ -29,7 +29,7 @@ namespace Cocos2D
             return false;
         }
 
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
 
             if (zone != null)

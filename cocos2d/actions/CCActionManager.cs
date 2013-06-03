@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Cocos2D
 {
-    public class CCActionManager : SelectorProtocol
+    public class CCActionManager : CCSelectorProtocol
     {
         private static CCNode[] m_pTmpKeysArray = new CCNode[128];
         private bool m_bCurrentTargetSalvaged;
@@ -274,7 +274,7 @@ namespace Cocos2D
 
         public void RemoveActionByTag(int tag, CCNode target)
         {
-            Debug.Assert((tag != (int) ActionTag.kCCActionTagInvalid));
+            Debug.Assert((tag != (int) CCActionTag.Invalid));
             Debug.Assert(target != null);
 
             HashElement element;
@@ -301,7 +301,7 @@ namespace Cocos2D
 
         public CCAction GetActionByTag(int tag, CCNode target)
         {
-            Debug.Assert(tag != (int) ActionTag.kCCActionTagInvalid);
+            Debug.Assert(tag != (int) CCActionTag.Invalid);
 
             HashElement element;
             if (m_pTargets.TryGetValue(target, out element))

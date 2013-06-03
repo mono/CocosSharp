@@ -1,13 +1,13 @@
 
 namespace Cocos2D
 {
-    public enum ActionTag
+    public enum CCActionTag
     {
         //! Default tag
-        kCCActionTagInvalid = -1,
+        Invalid = -1,
     }
 
-    public class CCAction : ICopyable
+    public class CCAction : ICCCopyable
     {
         protected int m_nTag;
         protected CCNode m_pOriginalTarget;
@@ -15,7 +15,7 @@ namespace Cocos2D
 
         public CCAction()
         {
-            m_nTag = (int) ActionTag.kCCActionTagInvalid;
+            m_nTag = (int) CCActionTag.Invalid;
         }
 
         protected CCAction(CCAction action)
@@ -51,7 +51,7 @@ namespace Cocos2D
 			return (CCAction)Copy(null);
 		}
 
-        public virtual object Copy(ICopyable zone)
+        public virtual object Copy(ICCCopyable zone)
         {
 
             if (zone != null)

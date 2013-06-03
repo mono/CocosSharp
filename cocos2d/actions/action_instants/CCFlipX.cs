@@ -29,7 +29,7 @@
             return new CCFlipX(!m_bFlipX);
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
             CCFlipX pRet;
 

@@ -2,7 +2,7 @@ using cocos2d;
 
 namespace Cocos2D
 {
-    public class CCAnimationFrame : ICopyable
+    public class CCAnimationFrame : ICCCopyable
     {
         private float m_fDelayUnits;
         private CCSpriteFrame m_pSpriteFrame;
@@ -28,7 +28,7 @@ namespace Cocos2D
 			return (CCAnimationFrame)Copy(null);
 		}
 
-        public object Copy(ICopyable pZone)
+        public object Copy(ICCCopyable pZone)
         {
             CCAnimationFrame pCopy;
             if (pZone != null)

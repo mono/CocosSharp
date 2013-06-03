@@ -38,7 +38,7 @@ namespace Cocos2D
             return new CCEaseElasticIn((CCActionInterval) m_pOther.Reverse(), m_fPeriod);
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
             if (pZone != null)
             {

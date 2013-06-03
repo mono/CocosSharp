@@ -1,12 +1,13 @@
-﻿
+﻿using System;
+
 namespace Cocos2D
 {
     public class CCCallFuncND : CCCallFuncN
     {
-        protected SEL_CallFuncND m_pCallFuncND;
+        protected Action<CCNode,object> m_pCallFuncND;
         protected object m_pData;
 
-        public CCCallFuncND (SEL_CallFuncND selector, object d) : base()
+		public CCCallFuncND (Action<CCNode,object> selector, object d) : base()
         {
             InitWithTarget(selector, d);
         }
@@ -16,14 +17,14 @@ namespace Cocos2D
 			InitWithTarget(callFuncND.m_pCallFuncND, callFuncND.m_pData);
 		}
 
-        public bool InitWithTarget(SEL_CallFuncND selector, object d)
+		public bool InitWithTarget(Action<CCNode,object> selector, object d)
         {
             m_pData = d;
             m_pCallFuncND = selector;
             return true;
         }
 
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
 
             if (zone != null)

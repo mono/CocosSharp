@@ -1,3 +1,5 @@
+using System;
+
 namespace Cocos2D
 {
     public class CCMenuItemFont : CCMenuItemLabel
@@ -8,7 +10,7 @@ namespace Cocos2D
         public CCMenuItemFont (string value) : this(value, null)
         { }
         
-        public CCMenuItemFont (string value, SEL_MenuHandler selector)
+		public CCMenuItemFont (string value, Action<object> selector)
         {
             InitWithString(value, selector);
         }
@@ -45,7 +47,7 @@ namespace Cocos2D
             get { return m_strFontName; }
         }
 
-        public bool InitWithString(string value, SEL_MenuHandler selector)
+		public bool InitWithString(string value, Action<object> selector)
         {
             //CCAssert( value != NULL && strlen(value) != 0, "Value length must be greater than 0");
 

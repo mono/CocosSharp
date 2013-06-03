@@ -81,11 +81,14 @@ namespace Cocos2D
         /// </summary>
         /// <param name="zone"></param>
         /// <returns></returns>
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
+            ICCCopyable tmpZone = zone;
+            CCParallel ret;
+
+            if (tmpZone != null && tmpZone != null)
             {
-                var ret = zone as CCParallel;
+                ret = zone as CCParallel;
                 base.Copy(zone);
 
                 CCFiniteTimeAction[] cp = new CCFiniteTimeAction[m_pActions.Length];

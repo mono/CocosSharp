@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cocos2D
 {
-    public enum KeypadMSGType
+    public enum CCKeypadMSGType
     {
         // the back key clicked msg
         BackClicked = 1,
@@ -96,7 +96,7 @@ namespace Cocos2D
         @brief dispatch the key pad msg
         */
 
-        public bool DispatchKeypadMsg(KeypadMSGType nMsgType)
+        public bool DispatchKeypadMsg(CCKeypadMSGType nMsgType)
         {
             m_bLocked = true;
 
@@ -109,11 +109,11 @@ namespace Cocos2D
 
                     switch (nMsgType)
                     {
-                        case KeypadMSGType.BackClicked:
+                        case CCKeypadMSGType.BackClicked:
                             pDelegate.KeyBackClicked();
                             break;
 
-                        case KeypadMSGType.MenuClicked:
+                        case CCKeypadMSGType.MenuClicked:
                             pDelegate.KeyMenuClicked();
                             break;
                     }

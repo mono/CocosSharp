@@ -54,7 +54,7 @@ namespace Cocos2D
             return false;
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
             CCRipple3D pCopy;
             if (pZone != null)

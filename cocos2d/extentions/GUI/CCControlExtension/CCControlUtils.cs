@@ -33,7 +33,7 @@ using System;
 
 namespace Cocos2D
 {
-	public struct RGBA
+	internal struct RGBA
 	{
 		public double r;       // percent
 		public double g;       // percent
@@ -41,14 +41,14 @@ namespace Cocos2D
 		public double a;       // percent
 	}
 
-	public struct HSV
+	internal struct HSV
 	{
 		public double h;       // angle in degrees
 		public double s;       // percent
 		public double v;       // percent
 	}
 
-	public class CCControlUtils
+	internal class CCControlUtils
 	{
 	
 		public static CCSprite AddSpriteToTargetWithPosAndAnchor(string spriteName, CCNode target, CCPoint pos, CCPoint anchor)

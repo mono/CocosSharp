@@ -10,7 +10,7 @@
         protected CCFadeOut (CCFadeOut fadeOut) : base (fadeOut)
         {}
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
             if (pZone != null)
             {

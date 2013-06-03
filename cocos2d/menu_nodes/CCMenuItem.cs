@@ -19,7 +19,7 @@ namespace Cocos2D
         protected bool m_bIsSelected;
 
         protected string m_functionName;
-        protected SEL_MenuHandler m_pfnSelector;
+        protected Action<object> m_pfnSelector;
 
         public CCMenuItem()
         {
@@ -33,7 +33,7 @@ namespace Cocos2D
         /// </summary>
         /// <param name="selector"></param>
         /// <returns></returns>
-        public CCMenuItem(SEL_MenuHandler selector)
+        public CCMenuItem(Action<object> selector)
         {
             InitWithTarget(selector);
         }
@@ -54,7 +54,7 @@ namespace Cocos2D
         /// </summary>
         /// <param name="selector"></param>
         /// <returns></returns>
-        public bool InitWithTarget(SEL_MenuHandler selector)
+        public bool InitWithTarget(Action<object> selector)
         {
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_pfnSelector = selector;
@@ -67,12 +67,14 @@ namespace Cocos2D
         /// Returns the outside box
         /// </summary>
         /// <returns></returns>
-        public CCRect Rect()
+        public CCRect Rectangle
         {
-            return new CCRect(m_tPosition.X - m_tContentSize.Width * m_tAnchorPoint.X,
-                              m_tPosition.Y - m_tContentSize.Height * m_tAnchorPoint.Y,
-                              m_tContentSize.Width,
-                              m_tContentSize.Height);
+			get {
+				return new CCRect (m_tPosition.X - m_tContentSize.Width * m_tAnchorPoint.X,
+				                          m_tPosition.Y - m_tContentSize.Height * m_tAnchorPoint.Y,
+				                          m_tContentSize.Width,
+				                          m_tContentSize.Height);
+			}
         }
 
         /// <summary>
@@ -124,7 +126,7 @@ namespace Cocos2D
         /// set the target/selector of the menu item
         /// </summary>
         /// <param name="selector"></param>
-        public virtual void SetTarget(SEL_MenuHandler selector)
+        public virtual void SetTarget(Action<object> selector)
         {
             m_pfnSelector = selector;
         }

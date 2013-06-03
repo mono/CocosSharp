@@ -17,7 +17,7 @@
             return (new CCShow());
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
             CCHide pRet;
 

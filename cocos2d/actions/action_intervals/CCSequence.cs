@@ -39,9 +39,9 @@ namespace Cocos2D
             return true;
         }
 
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
-            ICopyable tmpZone = zone;
+            ICCCopyable tmpZone = zone;
             CCSequence ret;
 
             if (tmpZone != null && tmpZone != null)
