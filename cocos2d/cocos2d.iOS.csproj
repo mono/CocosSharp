@@ -445,7 +445,7 @@
     <Compile Include="predefine\CCMacros.cs" />
     <Compile Include="Math\CCEaseMath.cs" />
     <Compile Include="Math\CCSplineMath.cs" />
-    <Compile Include="platform\CCInputState.cs" />
+    <Compile Include="Platform\CCInputState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />
