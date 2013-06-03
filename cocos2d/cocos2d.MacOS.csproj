@@ -400,7 +400,6 @@
     <Compile Include="touch_dispatcher\ICCStandardTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTargetedTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
-    <Compile Include="touch_dispatcher\IEGLTouchDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadConnectionDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
@@ -421,6 +420,7 @@
     <Compile Include="support\image_support\CCTGAlib.cs" />
     <Compile Include="predefine\CCSelectorProtocol.cs" />
     <Compile Include="cocoa\ICCCopyable.cs" />
+    <Compile Include="touch_dispatcher\ICCEGLTouchDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">

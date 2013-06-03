@@ -1141,7 +1141,7 @@
     <Compile Include=".\touch_dispatcher\ICCTouchDelegate.cs">
       <LogicalName>touch_dispatcher\ICCTouchDelegate</LogicalName>
     </Compile>
-    <Compile Include=".\touch_dispatcher\IEGLTouchDelegate.cs">
+    <Compile Include=".\touch_dispatcher\ICCEGLTouchDelegate.cs">
       <LogicalName>touch_dispatcher\IEGLTouchDelegate</LogicalName>
     </Compile>
     <Compile Include=".\Win8IOExtensions.cs">

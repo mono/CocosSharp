@@ -401,7 +401,7 @@
     <Compile Include="touch_dispatcher\CCTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\CCTouchDispatcher.cs" />
     <Compile Include="touch_dispatcher\CCTouchHandler.cs" />
-    <Compile Include="touch_dispatcher\IEGLTouchDelegate.cs" />
+    <Compile Include="touch_dispatcher\ICCEGLTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCStandardTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTargetedTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />

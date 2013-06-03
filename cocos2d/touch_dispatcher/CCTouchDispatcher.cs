@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Cocos2D
 {
-    public class CCTouchDispatcher : IEGLTouchDelegate
+    public class CCTouchDispatcher : ICCEGLTouchDelegate
     {
         private static List<CCTouch> pMutableTouches;
         private bool m_bDispatchEvents;
