@@ -16,7 +16,7 @@ namespace tests
         }
 
         static int sceneIdx = -1;
-        static int MAX_LAYER = 8;
+        static int MAX_LAYER = 7;
 
         public static CCLayer createTestLayer(int nIndex)
         {
@@ -29,7 +29,6 @@ namespace tests
                 case 4: return new LayerScaleTest();
                 case 5: return new LayerClipScissor();
                 case 6: return new LayerClippingTexture();
-                case 7: return new MarqueeLayerTest();
             }
             return null;
         }
