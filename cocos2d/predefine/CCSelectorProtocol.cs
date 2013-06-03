@@ -35,7 +35,7 @@ namespace Cocos2D
     public delegate void SEL_MenuHandler(object sender);
     public delegate void SEL_EventHandler(CCEvent event_);
 
-    public interface SelectorProtocol
+    public interface CCSelectorProtocol
     {
         void Update(float dt);
     }

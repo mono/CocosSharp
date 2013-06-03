@@ -64,7 +64,7 @@ namespace Cocos2D
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-    public class CCNode : SelectorProtocol, CCIFocusable
+    public class CCNode : CCSelectorProtocol, CCIFocusable
     {
         private static int kCCNodeTagInvalid = -1;
         private static int s_globalOrderOfArrival = 1;
