@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Cocos2D
 {
-    public class CCActionManager : SelectorProtocol
+    public class CCActionManager : CCSelectorProtocol
     {
         private static CCNode[] m_pTmpKeysArray = new CCNode[128];
         private bool m_bCurrentTargetSalvaged;
