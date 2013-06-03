@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
-    public enum ImageFormat
+    public enum CCImageFormat
     {
         JPG = 0,
         PNG = 1
@@ -147,9 +147,9 @@ namespace Cocos2D
             End();
         }
 
-        public bool SaveToStream(Stream stream, ImageFormat format)
+        public bool SaveToStream(Stream stream, CCImageFormat format)
         {
-            if (format == ImageFormat.PNG)
+            if (format == CCImageFormat.PNG)
             {
                 m_pTexture.SaveAsPng(stream, m_pTexture.PixelsWide, m_pTexture.PixelsHigh);
             }
