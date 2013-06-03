@@ -34,21 +34,14 @@ namespace Cocos2D
     /// - opacity
     /// - RGB colors
     /// </summary>
-    public class CCLayerColor : CCLayer, ICCRGBAProtocol, ICCBlendProtocol
+    public class CCLayerColor : CCLayerRGBA, ICCBlendProtocol
     {
-        protected VertexPositionColor[] m_pVertices = new VertexPositionColor[4];
-        private VertexBuffer m_pVertexBuffer;
-        protected bool m_bChanged;
+        protected VertexPositionColor[] m_pSquareVertices = new VertexPositionColor[4];
+        protected CCBlendFunc m_tBlendFunc;
 
         public CCLayerColor()
         {
-            m_cOpacity = 0;
-            m_tColor = new CCColor3B(0, 0, 0);
-
-            // default blend function
-            m_tBlendFunc = new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending);
-            Init ();
-
+            Init();
         }
 
         /// <summary>
@@ -56,7 +49,7 @@ namespace Cocos2D
         /// </summary>
         public CCLayerColor (CCColor4B color, float width, float height) : this()
         {
-            InitWithColorWidthHeight(color, width, height);
+            InitWithColor(color, width, height);
         }
         
         /// <summary>
@@ -75,48 +68,63 @@ namespace Cocos2D
             get { return base.ContentSize; }
             set
             {
-                m_pVertices[0].Position = new Vector3(0, value.Height, 0);
-                m_pVertices[1].Position = new Vector3(value.Width, value.Height, 0);
-                m_pVertices[2].Position = new Vector3(0, 0, 0);
-                m_pVertices[3].Position = new Vector3(value.Width, 0, 0);
+                //1, 2, 3, 3
+                m_pSquareVertices[1].Position.X = value.Width;
+                m_pSquareVertices[2].Position.Y = value.Height;
+                m_pSquareVertices[3].Position.X = value.Width;
+                m_pSquareVertices[3].Position.Y = value.Height;
+
+                //m_pSquareVertices[1].Position.X = value.Height;
+                //m_pSquareVertices[2].Position.Y = value.Width;
+                //m_pSquareVertices[3].Position.X = value.Width;
+                //m_pSquareVertices[3].Position.Y = value.Height;
 
                 base.ContentSize = value;
-
-                m_bChanged = true;
             }
         }
 
         #region InitWithXXX
 
-
-        /// <summary>
-        ///  initializes a CCLayer with color, width and height in Points
-        /// </summary>
-        public virtual bool InitWithColorWidthHeight(CCColor4B color, float width, float height)
+        public override bool Init()
         {
-            // default blend function
-            m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
-            m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
-
-            m_tColor.R = color.R;
-            m_tColor.G = color.G;
-            m_tColor.B = color.B;
-            m_cOpacity = color.A;
-
-            UpdateColor();
-            
-            ContentSize = new CCSize(width, height);
-
-            return true;
+            CCSize s = CCDirector.SharedDirector.WinSize;
+            return InitWithColor(new CCColor4B(0, 0, 0, 0), s.Width, s.Height);
         }
 
         /// <summary>
-        /// initializes a CCLayer with color. Width and height are the window size.
+        /// initializes a CCLayer with color
         /// </summary>
         public virtual bool InitWithColor(CCColor4B color)
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            InitWithColorWidthHeight(color, s.Width, s.Height);
+            return InitWithColor(color, s.Width, s.Height);
+        }
+
+        /// <summary>
+        /// initializes a CCLayer with color, width and height in Points
+        /// </summary>
+        public virtual bool InitWithColor(CCColor4B color, float width, float height)
+        {
+            base.Init();
+
+            // default blend function
+            m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+            m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
+
+            _displayedColor.R = _realColor.R = color.R;
+            _displayedColor.G = _realColor.G = color.G;
+            _displayedColor.B = _realColor.B = color.B;
+            _displayedOpacity = _realOpacity = color.A;
+
+            for (int i = 0; i < m_pSquareVertices.Length; i++)
+            {
+                m_pSquareVertices[i].Position.X = 0.0f;
+                m_pSquareVertices[i].Position.Y = 0.0f;
+            }
+
+            UpdateColor();
+            ContentSize = new CCSize(width, height);
+            
             return true;
         }
 
@@ -155,12 +163,6 @@ namespace Cocos2D
 
         #endregion
 
-        #region ICCRGBAProtocol
-
-        protected byte m_cOpacity;
-        protected CCBlendFunc m_tBlendFunc;
-        protected CCColor3B m_tColor;
-
         #region ICCBlendProtocol Members
 
         /// <summary>
@@ -174,69 +176,45 @@ namespace Cocos2D
 
         #endregion
 
-        #region ICCRGBAProtocol Members
+        #region RGBA Protocol
 
-        public virtual byte Opacity
+        public override CCColor3B Color
         {
-            get { return m_cOpacity; }
+            get { return base.Color; }
             set
             {
-                m_cOpacity = value;
+                base.Color = value;
                 UpdateColor();
             }
         }
 
-        public virtual CCColor3B Color
+        public override byte Opacity
         {
-            get { return m_tColor; }
+            get { return base.Opacity; }
             set
             {
-                m_tColor = value;
+                base.Opacity = value;
                 UpdateColor();
             }
         }
-
-        public bool IsOpacityModifyRGB
-        {
-            get { 
-                return false; 
-            }
-            set { }
-        }
-
-        #endregion
 
         #endregion
 
         public override void Draw()
         {
-            if (m_pVertexBuffer == null)
-            {
-                m_pVertexBuffer = new VertexBuffer(CCDrawManager.graphicsDevice, typeof(VertexPositionColor), 4, BufferUsage.WriteOnly);
-            }
-
-            if (m_bChanged)
-            {
-                m_pVertexBuffer.SetData(m_pVertices);
-                m_bChanged = false;
-            }
-
             CCDrawManager.BindTexture((CCTexture2D)null);
             CCDrawManager.BlendFunc(m_tBlendFunc);
-            CCDrawManager.DrawQuadsBuffer(m_pVertexBuffer, 0, 1);
+            CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  m_pSquareVertices, 0, 2);
         }
 
         protected virtual void UpdateColor()
         {
-#if CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA
-            var color = new Color(m_tColor.R, m_tColor.G, m_tColor.B) * (m_cOpacity / 255.0f);
-#else
-            var color = new Color(m_tColor.R / 255.0f, m_tColor.G / 255.0f, m_tColor.B / 255.0f, m_cOpacity / 255.0f);
-#endif
+            var color = new Color(_displayedColor.R / 255.0f, _displayedColor.G / 255.0f, _displayedColor.B / 255.0f, _displayedOpacity / 255.0f);
 
-            m_pVertices[0].Color = m_pVertices[1].Color = m_pVertices[2].Color = m_pVertices[3].Color = color;
-
-            m_bChanged = true;
+            m_pSquareVertices[0].Color = color;
+            m_pSquareVertices[1].Color = color;
+            m_pSquareVertices[2].Color = color;
+            m_pSquareVertices[3].Color = color;
         }
     }
 

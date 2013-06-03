@@ -3,11 +3,9 @@ using System.Collections.Generic;
 
 namespace Cocos2D
 {
-    public class CCMenuItemToggle : CCMenuItem, ICCRGBAProtocol
+    public class CCMenuItemToggle : CCMenuItem
     {
-        private byte m_cOpacity;
         public List<CCMenuItem> m_pSubItems;
-        private CCColor3B m_tColor;
         private int m_uSelectedIndex;
 
         public CCMenuItemToggle ()
@@ -62,56 +60,6 @@ namespace Cocos2D
             }
         }
 
-        #region ICCRGBAProtocol Members
-
-        public byte Opacity
-        {
-            get { return m_cOpacity; }
-            set
-            {
-                m_cOpacity = value;
-                if (m_pSubItems != null && m_pSubItems.Count > 0)
-                {
-                    for (int i = 0; i < m_pSubItems.Count; i++)
-                    {
-                        var rgba = m_pSubItems[i] as ICCRGBAProtocol;
-                        if (rgba != null)
-                        {
-                            rgba.Opacity = value;
-                        }
-                    }
-                }
-            }
-        }
-
-        public CCColor3B Color
-        {
-            get { return m_tColor; }
-            set
-            {
-                m_tColor = value;
-                if (m_pSubItems != null && m_pSubItems.Count > 0)
-                {
-                    for (int i = 0; i < m_pSubItems.Count; i++)
-                    {
-                        var rgba = m_pSubItems[i] as ICCRGBAProtocol;
-                        if (rgba != null)
-                        {
-                            rgba.Color = value;
-                        }
-                    }
-                }
-            }
-        }
-
-        public bool IsOpacityModifyRGB
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
-
-        #endregion
-
         public bool InitWithTarget(SEL_MenuHandler selector, CCMenuItem[] items)
         {
             base.InitWithTarget(selector);
@@ -139,6 +87,10 @@ namespace Cocos2D
             m_pSubItems.Add(item);
             m_uSelectedIndex = int.MaxValue;
             SelectedIndex = 0;
+
+            CascadeColorEnabled = true;
+            CascadeOpacityEnabled = true; 
+            
             return true;
         }
 

@@ -143,7 +143,9 @@ namespace Cocos2D
                 quad.TopRight.Vertices.Y = m_uItemHeight;
                 quad.TopRight.Vertices.Z = 0.0f;
 
-                quad.TopLeft.Colors = quad.TopRight.Colors = quad.BottomLeft.Colors = quad.BottomRight.Colors = new CCColor4B(m_tColor.R, m_tColor.G, m_tColor.B, m_cOpacity);
+
+                quad.TopLeft.Colors = quad.TopRight.Colors = quad.BottomLeft.Colors = quad.BottomRight.Colors =
+                    new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, _displayedOpacity);
 
                 m_pTextureAtlas.UpdateQuad(ref quad, i);
             }

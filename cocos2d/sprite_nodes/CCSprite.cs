@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace Cocos2D
 {
-    public class CCSprite : CCNode, ICCTextureProtocol, ICCRGBAProtocol
+    public class CCSprite : CCNodeRGBA, ICCTextureProtocol
     {
         protected bool m_bDirty; // Sprite needs to be updated
         protected bool m_bFlipX;
@@ -16,7 +16,6 @@ namespace Cocos2D
         protected bool m_bRectRotated;
         protected bool m_bRecursiveDirty; // Subchildren needs to be updated
         protected bool m_bShouldBeHidden; // should not be drawn because one of the ancestors is not visible
-        protected byte m_nOpacity;
 
         // Offset Position (used by Zwoptex)
         protected CCPoint m_obOffsetPosition;
@@ -27,14 +26,9 @@ namespace Cocos2D
         protected CCTexture2D m_pobTexture; // Texture used to render the sprite
         protected CCTextureAtlas m_pobTextureAtlas; // Sprite Sheet texture atlas (weak reference)
         protected CCBlendFunc m_sBlendFunc; // Needed for the texture protocol
-        protected CCColor3B m_sColor;
 
         private string m_TextureFile;
 
-        // vertex coords, texture coords and color info
-
-        // opacity and RGB protocol
-        protected CCColor3B m_sColorUnmodified;
         internal CCV3F_C4B_T2F_Quad m_sQuad;
         protected CCAffineTransform m_transformToBatch; //
         protected int m_uAtlasIndex; // Absolute (real) Index on the SpriteSheet
@@ -317,60 +311,86 @@ namespace Cocos2D
             }
         }
 
-        #region ICCRGBAProtocol Members
+        #region RGBA protocol
 
-        public byte Opacity
+        private void UpdateColor()
         {
-            get { return m_nOpacity; }
+            var color4 = new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, _displayedOpacity);
+
+            if (m_bOpacityModifyRGB)
+            {
+                color4.R = (byte)(color4.R * _displayedOpacity / 255.0f);
+                color4.G = (byte)(color4.G * _displayedOpacity / 255.0f);
+                color4.B = (byte)(color4.B * _displayedOpacity / 255.0f);
+            }
+
+            m_sQuad.BottomLeft.Colors = color4;
+            m_sQuad.BottomRight.Colors = color4;
+            m_sQuad.TopLeft.Colors = color4;
+            m_sQuad.TopRight.Colors = color4;
+
+            // renders using Sprite Manager
+            if (m_pobBatchNode != null)
+            {
+                if (m_uAtlasIndex != CCMacros.CCSpriteIndexNotInitialized)
+                {
+                    m_pobTextureAtlas.UpdateQuad(ref m_sQuad, m_uAtlasIndex);
+                }
+                else
+                {
+                    // no need to set it recursively
+                    // update dirty_, don't update recursiveDirty_
+                    m_bDirty = true;
+                }
+            }
+
+            // self render
+            // do nothing
+        }
+
+        public override byte Opacity
+        {
+            get { return base.Opacity; }
             set
             {
-                m_nOpacity = value;
-
-                // special opacity for premultiplied textures
-                if (m_bOpacityModifyRGB)
-                {
-                    Color = m_sColorUnmodified;
-                }
-
+                base.Opacity = value;
                 UpdateColor();
             }
         }
 
-        public CCColor3B Color
+        public override CCColor3B Color
         {
-            get
-            {
-                if (m_bOpacityModifyRGB)
-                {
-                    return m_sColorUnmodified;
-                }
-                return m_sColor;
-            }
+            get { return base.Color; }
             set
             {
-                m_sColor = new CCColor3B(value.R, value.G, value.B);
-                m_sColorUnmodified = new CCColor3B(value.R, value.G, value.B);
-
-                if (m_bOpacityModifyRGB)
-                {
-                    m_sColor.R = (byte)(value.R * m_nOpacity / 255f);
-                    m_sColor.G = (byte)(value.G * m_nOpacity / 255f);
-                    m_sColor.B = (byte)(value.B * m_nOpacity / 255f);
-                }
-
+                base.Color = value;
                 UpdateColor();
             }
         }
 
-        public virtual bool IsOpacityModifyRGB
+        public override bool IsOpacityModifyRGB
         {
             get { return m_bOpacityModifyRGB; }
             set
             {
-                CCColor3B oldColor = m_sColor;
-                m_bOpacityModifyRGB = value;
-                m_sColor = oldColor;
+                if (m_bOpacityModifyRGB != value)
+                {
+                    m_bOpacityModifyRGB = value;
+                    UpdateColor();
+                }
             }
+        }
+
+        public override void UpdateDisplayedColor(CCColor3B parentColor)
+        {
+            base.UpdateDisplayedColor(parentColor);
+            UpdateColor();
+        }
+
+        public override void UpdateDisplayedOpacity(byte parentOpacity)
+        {
+            base.UpdateDisplayedOpacity(parentOpacity);
+            UpdateColor();
         }
 
         #endregion
@@ -451,13 +471,15 @@ namespace Cocos2D
 			}
         }
 
-        public virtual bool Init()
+        public override bool Init()
         {
             return InitWithTexture(null, new CCRect());
         }
 
         public bool InitWithTexture(CCTexture2D pTexture, CCRect rect, bool rotated)
         {
+            base.Init();
+
             m_pobBatchNode = null;
 
             // shader program
@@ -467,8 +489,6 @@ namespace Cocos2D
             Dirty = false;
 
             m_bOpacityModifyRGB = true;
-            m_nOpacity = 255;
-            m_sColor = m_sColorUnmodified = CCTypes.CCWhite;
 
             m_sBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
             m_sBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
@@ -504,12 +524,12 @@ namespace Cocos2D
             return true;
         }
 
-        protected virtual bool InitWithTexture(CCTexture2D texture, CCRect rect)
+        public virtual bool InitWithTexture(CCTexture2D texture, CCRect rect)
         {
             return InitWithTexture(texture, rect, false);
         }
 
-        protected virtual bool InitWithTexture(CCTexture2D texture)
+        public virtual bool InitWithTexture(CCTexture2D texture)
         {
             Debug.Assert(texture != null, "Invalid texture for sprite");
 
@@ -975,34 +995,6 @@ namespace Cocos2D
                 }
             }
 		}
-
-        private void UpdateColor()
-        {
-
-
-            m_sQuad.BottomLeft.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-            m_sQuad.BottomRight.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-            m_sQuad.TopLeft.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-            m_sQuad.TopRight.Colors = new CCColor4B(m_sColor.R, m_sColor.G, m_sColor.B, m_nOpacity);
-
-            // renders using Sprite Manager
-            if (m_pobBatchNode != null)
-            {
-                if (m_uAtlasIndex != CCMacros.CCSpriteIndexNotInitialized)
-                {
-                    m_pobTextureAtlas.UpdateQuad(ref m_sQuad, m_uAtlasIndex);
-                }
-                else
-                {
-                    // no need to set it recursively
-                    // update dirty_, don't update recursiveDirty_
-                    m_bDirty = true;
-                }
-            }
-
-            // self render
-            // do nothing
-        }
 
         public void SetDisplayFrameWithAnimationName(string animationName, int frameIndex)
         {

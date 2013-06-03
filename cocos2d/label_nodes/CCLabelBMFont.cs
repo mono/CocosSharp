@@ -10,16 +10,13 @@ namespace Cocos2D
     {
         public const int kCCLabelAutomaticWidth = -1;
         public static Dictionary<string, CCBMFontConfiguration> s_pConfigurations;
-        private bool m_bIsOpacityModifyRGB;
         private bool m_bLineBreakWithoutSpaces;
-        private byte m_cOpacity;
         private float m_fWidth;
         private CCTextAlignment m_pAlignment;
         protected CCBMFontConfiguration m_pConfiguration;
         private string m_sFntFile;
         private string m_sInitialString;
         protected string m_sString = "";
-        private CCColor3B m_tColor;
         private CCPoint m_tImageOffset;
 
         public override CCPoint AnchorPoint
@@ -113,65 +110,121 @@ namespace Cocos2D
 
         #region ICCRGBAProtocol Members
 
-        public CCColor3B Color
+        protected byte m_cDisplayedOpacity = 255;
+        protected byte m_cRealOpacity = 255;
+        protected CCColor3B m_tDisplayedColor = CCTypes.CCWhite;
+        protected CCColor3B m_tRealColor = CCTypes.CCWhite;
+        protected bool m_bCascadeColorEnabled;
+        protected bool m_bCascadeOpacityEnabled;
+        protected bool m_bIsOpacityModifyRGB;
+
+        public virtual CCColor3B Color
         {
-            get { return m_tColor; }
+            get { return m_tRealColor; }
             set
             {
-                m_tColor = value;
-                if (m_pChildren != null && m_pChildren.count != 0)
+                m_tDisplayedColor = m_tRealColor = value;
+
+                if (m_bCascadeColorEnabled)
                 {
-                    CCNode[] elements = m_pChildren.Elements;
-                    for (int i = 0, count = m_pChildren.count; i < count; i++)
+                    var parentColor = CCTypes.CCWhite;
+                    var parent = m_pParent as ICCRGBAProtocol;
+                    if (parent != null && parent.CascadeColorEnabled)
                     {
-                        var protocol = elements[i] as ICCRGBAProtocol;
-                        if (protocol != null)
-                        {
-                            protocol.Color = value;
-                        }
+                        parentColor = parent.DisplayedColor;
                     }
+
+                    UpdateDisplayedColor(parentColor);
                 }
             }
         }
 
-        public byte Opacity
+        public virtual CCColor3B DisplayedColor
         {
-            get { return m_cOpacity; }
+            get { return m_tDisplayedColor; }
+        }
+
+        public virtual byte Opacity
+        {
+            get { return m_cRealOpacity; }
             set
             {
-                m_cOpacity = value;
-                if (m_pChildren != null && m_pChildren.count != 0)
+                m_cDisplayedOpacity = m_cRealOpacity = value;
+
+                if (m_bCascadeOpacityEnabled)
                 {
-                    CCNode[] elements = m_pChildren.Elements;
-                    for (int i = 0, count = m_pChildren.count; i < count; i++)
+                    byte parentOpacity = 255;
+                    var pParent = m_pParent as ICCRGBAProtocol;
+                    if (pParent != null && pParent.CascadeOpacityEnabled)
                     {
-                        var protocol = elements[i] as ICCRGBAProtocol;
-                        if (protocol != null)
-                        {
-                            protocol.Opacity = value;
-                        }
+                        parentOpacity = pParent.DisplayedOpacity;
                     }
+                    UpdateDisplayedOpacity(parentOpacity);
                 }
             }
         }
 
-        public bool IsOpacityModifyRGB
+        public virtual byte DisplayedOpacity
+        {
+            get { return m_cDisplayedOpacity; }
+        }
+
+        public virtual bool IsOpacityModifyRGB
         {
             get { return m_bIsOpacityModifyRGB; }
             set
             {
                 m_bIsOpacityModifyRGB = value;
-                if (m_pChildren != null && m_pChildren.count != 0)
+                if (m_pChildren != null && m_pChildren.count > 0)
                 {
-                    CCNode[] elements = m_pChildren.Elements;
                     for (int i = 0, count = m_pChildren.count; i < count; i++)
                     {
-                        var protocol = elements[i] as ICCRGBAProtocol;
-                        if (protocol != null)
+                        var item = m_pChildren.Elements[i] as ICCRGBAProtocol;
+                        if (item != null)
                         {
-                            protocol.IsOpacityModifyRGB = value;
+                            item.IsOpacityModifyRGB = value;
                         }
                     }
+                }
+            }
+        }
+                            
+        public virtual bool CascadeColorEnabled
+        {
+            get { return false; }
+            set { m_bCascadeColorEnabled = value; }
+        }
+
+        public virtual bool CascadeOpacityEnabled
+        {
+            get { return false; }
+            set { m_bCascadeOpacityEnabled = value; }
+        }
+
+        public virtual void UpdateDisplayedColor(CCColor3B parentColor)
+        {
+            m_tDisplayedColor.R = (byte) (m_tRealColor.R * parentColor.R / 255.0f);
+            m_tDisplayedColor.G = (byte) (m_tRealColor.G * parentColor.G / 255.0f);
+            m_tDisplayedColor.B = (byte) (m_tRealColor.B * parentColor.B / 255.0f);
+
+            if (m_pChildren != null)
+            {
+                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                {
+                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedColor(m_tDisplayedColor);
+                }
+            }
+        }
+
+        public virtual void UpdateDisplayedOpacity(byte parentOpacity)
+        {
+            m_cDisplayedOpacity = (byte) (m_cRealOpacity * parentOpacity / 255.0f);
+
+            if (m_pChildren != null)
+            {
+                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                {
+                    ((CCSprite)m_pChildren.Elements[i]).UpdateDisplayedOpacity(m_cDisplayedOpacity);
                 }
             }
         }
@@ -269,15 +322,23 @@ namespace Cocos2D
 
             if (base.InitWithTexture(texture, theString.Length))
             {
-                m_pAlignment = alignment;
-                m_tImageOffset = imageOffset;
                 m_fWidth = width;
-                m_cOpacity = 255;
-                m_tColor = CCTypes.CCWhite;
+                m_pAlignment = alignment;
+                
+                m_cDisplayedOpacity = m_cRealOpacity = 255;
+                m_tDisplayedColor = m_tRealColor = CCTypes.CCWhite;
+                m_bCascadeOpacityEnabled = true;
+                m_bCascadeColorEnabled = true;
+
                 m_tContentSize = CCSize.Zero;
+
                 m_bIsOpacityModifyRGB = m_pobTextureAtlas.Texture.HasPremultipliedAlpha;
-                Label = (theString);
                 AnchorPoint = new CCPoint(0.5f, 0.5f);
+
+                m_tImageOffset = imageOffset;
+
+                Label = (theString);
+
                 return true;
             }
             return false;
@@ -313,11 +374,12 @@ namespace Cocos2D
 
             int quantityOfLines = 1;
 
-            int stringLen = m_sString.Length;
-            if (stringLen == 0)
+            if (String.IsNullOrEmpty(m_sString))
             {
                 return;
             }
+
+            int stringLen = m_sString.Length;
 
             for (int i = 0; i < stringLen - 1; ++i)
             {
@@ -380,16 +442,11 @@ namespace Cocos2D
 
                 // Apply label properties
                 fontChar.IsOpacityModifyRGB = m_bIsOpacityModifyRGB;
+
                 // Color MUST be set before opacity, since opacity might change color if OpacityModifyRGB is on
-                fontChar.Color = m_tColor;
-
-                // only apply opacity if it is different than 255 )
-                // to prevent modifying the color too (issue #610)
-                if (m_cOpacity != 255)
-                {
-                    fontChar.Opacity = m_cOpacity;
-                }
-
+                fontChar.UpdateDisplayedColor(m_tDisplayedColor);
+                fontChar.UpdateDisplayedOpacity(m_cDisplayedOpacity);
+                
                 if (longestLine < nextFontPositionX)
                 {
                     longestLine = nextFontPositionX;

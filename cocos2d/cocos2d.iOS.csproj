@@ -200,6 +200,7 @@
     <Compile Include="Actions\CCActionManager.cs" />
     <Compile Include="base_nodes\CCAtlasNode.cs" />
     <Compile Include="base_nodes\CCNode.cs" />
+    <Compile Include="base_nodes\CCNodeRGBA.cs" />
     <Compile Include="CCCamera.cs" />
     <Compile Include="CCConfiguration.cs" />
     <Compile Include="CCContent.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="layers_scenes_transitions_nodes\CCLayerMultiplex.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCLayerRGBA.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionCrossFade.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFade.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeBL.cs" />

@@ -2,7 +2,7 @@ using System;
 
 namespace Cocos2D
 {
-    public class CCMenuItemLabel : CCMenuItem, ICCRGBAProtocol
+    public class CCMenuItemLabel : CCMenuItem
     {
         protected float m_fOriginalScale;
         protected CCNode m_pLabel;
@@ -74,6 +74,10 @@ namespace Cocos2D
             m_tColorBackup = CCTypes.CCWhite;
             DisabledColor = new CCColor3B(126, 126, 126);
             Label = label;
+
+            CascadeColorEnabled = true;
+            CascadeOpacityEnabled = true;
+
             return true;
         }
 
@@ -128,27 +132,5 @@ namespace Cocos2D
                 RunAction(zoomAction);
             }
         }
-
-        #region CCRGBAProtocol interface
-
-        public CCColor3B Color
-        {
-            get { return (m_pLabel as ICCRGBAProtocol).Color; }
-            set { (m_pLabel as ICCRGBAProtocol).Color = value; }
-        }
-
-        public byte Opacity
-        {
-            get { return (m_pLabel as ICCRGBAProtocol).Opacity; }
-            set { (m_pLabel as ICCRGBAProtocol).Opacity = value; }
-        }
-
-        public bool IsOpacityModifyRGB
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
-
-        #endregion
     }
 }

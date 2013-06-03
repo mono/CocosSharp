@@ -162,7 +162,6 @@
     <Compile Include="actions\action_tiled_grid\CCTurnOffTiles.cs" />
     <Compile Include="actions\action_tiled_grid\CCWavesTiles3D.cs" />
     <Compile Include="actions\action_tiled_grid\CCTile.cs" />
-    <Compile Include="base_nodes\CCNodeRGBA.cs" />
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
@@ -192,6 +191,7 @@
     <Compile Include="actions\CCActionManager.cs" />
     <Compile Include="base_nodes\CCAtlasNode.cs" />
     <Compile Include="base_nodes\CCNode.cs" />
+    <Compile Include="base_nodes\CCNodeRGBA.cs" />
     <Compile Include="CCCamera.cs" />
     <Compile Include="CCConfiguration.cs" />
     <Compile Include="CCDirector.cs" />

@@ -17,7 +17,7 @@ namespace Cocos2D
     ///  You can add MenuItem objects in runtime using addChild:
     ///  But the only accecpted children are MenuItem objects
     /// </summary>
-    public class CCMenu : CCLayer, ICCRGBAProtocol, ICCTouchDelegate
+    public class CCMenu : CCLayerRGBA, ICCTouchDelegate
     {
         public const float kDefaultPadding = 5;
         public const int kCCMenuHandlerPriority = -128;
@@ -26,11 +26,7 @@ namespace Cocos2D
         protected CCMenuState m_eState;
         protected CCMenuItem m_pSelectedItem;
 
-        private byte m_cOpacity;
-        private CCColor3B m_tColor;
-
         private LinkedList<CCMenuItem> _Items = new LinkedList<CCMenuItem>();
-
 
         /// <summary>
         /// Default ctor that sets the content size of the menu to match the window size.
@@ -193,6 +189,11 @@ namespace Cocos2D
                 //    [self alignItemsVertically];
                 m_pSelectedItem = null;
                 m_eState = CCMenuState.Waiting;
+
+                // enable cascade color and opacity on menus
+                CascadeColorEnabled = true;
+                CascadeOpacityEnabled = true;
+
                 return true;
             }
             return false;
@@ -596,54 +597,6 @@ namespace Cocos2D
                 }
             }
         }
-
-        #endregion
-
-        #region Opacity Protocol
-
-        public CCColor3B Color
-        {
-            get { return m_tColor; }
-            set
-            {
-                m_tColor = value;
-
-                if (m_pChildren != null && m_pChildren.count > 0)
-                {
-                    for (int i = 0, count = m_pChildren.count; i < count; i++)
-                    {
-                        var pRGBAProtocol = m_pChildren.Elements[i] as ICCRGBAProtocol;
-                        if (pRGBAProtocol != null)
-                        {
-                            pRGBAProtocol.Color = m_tColor;
-                        }
-                    }
-                }
-            }
-        }
-
-        public byte Opacity
-        {
-            get { return m_cOpacity; }
-            set
-            {
-                m_cOpacity = value;
-
-                if (m_pChildren != null && m_pChildren.count > 0)
-                {
-                    for (int i = 0, count = m_pChildren.count; i < count; i++)
-                    {
-                        var pRGBAProtocol = m_pChildren.Elements[i] as ICCRGBAProtocol;
-                        if (pRGBAProtocol != null)
-                        {
-                            pRGBAProtocol.Opacity = m_cOpacity;
-                        }
-                    }
-                }
-            }
-        }
-
-        public bool IsOpacityModifyRGB { get; set; }
 
         #endregion
 

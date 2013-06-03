@@ -33,12 +33,16 @@ namespace Cocos2D
         /// </summary>
         CCColor3B Color { get; set; }
 
+        CCColor3B DisplayedColor { get; }
+
         /// <summary>
         /// Gets or sets the Opacity
         /// @warning If the the texture has premultiplied alpha then, the R, G and B channels will be modifed.
         /// Values goes from 0 to 255, where 255 means fully opaque.
         /// </summary>
         byte Opacity { get; set; }
+
+        byte DisplayedOpacity { get; }
 
         /** sets the premultipliedAlphaOpacity property.
 	     If set to NO then opacity will be applied as: glColor(R,G,B,opacity);
@@ -52,6 +56,26 @@ namespace Cocos2D
         /** returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity);
 	     @since v0.8
 	     */
+
+        /**
+         *  whether or not color should be propagated to its children.
+         */
+        bool CascadeColorEnabled { get; set; }
+
+        /** 
+        *  recursive method that updates display color 
+        */
+        void UpdateDisplayedColor(CCColor3B color);
+
+        /** 
+         *  whether or not opacity should be propagated to its children.
+         */
+        bool CascadeOpacityEnabled { get; set; }
+
+        /**
+         *  recursive method that updates the displayed opacity.
+         */
+        void UpdateDisplayedOpacity(byte opacity);
     }
 
     /// <summary>

@@ -7,7 +7,7 @@ namespace Cocos2D
     /// @brief CCMenuItem base class
     /// Subclass CCMenuItem (or any subclass) to create your custom CCMenuItem objects.
     /// </summary>
-    public class CCMenuItem : CCNode
+    public class CCMenuItem : CCNodeRGBA
     {
         public const int kCurrentItem = 32767;
         public const uint kZoomActionTag = 0xc0c05002;
