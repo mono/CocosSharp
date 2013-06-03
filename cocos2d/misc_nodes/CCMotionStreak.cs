@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
-    public class CCMotionStreak : CCNode, ICCTextureProtocol, ICCRGBAProtocol
+    public class CCMotionStreak : CCNodeRGBA, ICCTextureProtocol
     {
         protected bool m_bFastMode;
         protected bool m_bStartingPositionInitialized;
@@ -18,7 +18,6 @@ namespace Cocos2D
         private CCTexture2D m_pTexture;
         private CCV3F_C4B_T2F[] m_pVertices;
         private CCBlendFunc m_tBlendFunc;
-        private CCColor3B m_tColor;
         private CCPoint m_tPositionR;
 
         private int m_uMaxPoints;
@@ -42,12 +41,6 @@ namespace Cocos2D
         }
 
         #region ICCRGBAProtocol Members
-
-        public CCColor3B Color
-        {
-            set { m_tColor = value; }
-            get { return m_tColor; }
-        }
 
         public byte Opacity
         {
@@ -237,7 +230,7 @@ namespace Cocos2D
 
                 // Color asignation
                 int offset = m_uNuPoints * 2;
-                m_pVertices[offset].Colors = m_pVertices[offset + 1].Colors = new CCColor4B(m_tColor.R, m_tColor.G, m_tColor.B, 255);
+                m_pVertices[offset].Colors = m_pVertices[offset + 1].Colors = new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, 255);
 
                 // Generate polygon
                 if (m_uNuPoints > 0 && m_bFastMode)

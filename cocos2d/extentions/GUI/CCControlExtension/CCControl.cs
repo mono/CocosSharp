@@ -81,7 +81,7 @@ namespace Cocos2D
      * To use the CCControl you have to subclass it.
      */
 
-    public class CCControl : CCLayer, ICCRGBAProtocol
+    public class CCControl : CCLayerRGBA
     {
         /** Number of kinds of control event. */
         private const int kControlEventTotalNumber = 9;
@@ -91,8 +91,7 @@ namespace Cocos2D
         protected CCControlState m_eState;
         protected bool m_hasVisibleParents;
 
-
-        //CCRGBAProtocol
+        private bool m_bIsOpacityModifyRGB;
 
         /** Changes the priority of the button. The lower the number, the higher the priority. */
         private int m_nDefaultTouchPriority;
@@ -111,13 +110,28 @@ namespace Cocos2D
             get { return m_eState; }
         }
 
-        #region ICCRGBAProtocol Members
+        #region RGBA Protocol
 
-        public virtual byte Opacity { get; set; }
-
-        public CCColor3B Color { get; set; }
-
-        public bool IsOpacityModifyRGB { get; set; }
+        public override bool IsOpacityModifyRGB
+        {
+            get { return m_bIsOpacityModifyRGB; }
+            set
+            {
+                m_bIsOpacityModifyRGB = value;
+                
+                if (m_pChildren != null && m_pChildren.count > 0)
+                {
+                    for (int i = 0, count = m_pChildren.count; i < count; i++)
+                    {
+                        var item = m_pChildren.Elements[i] as ICCRGBAProtocol;
+                        if (item != null)
+                        {
+                            item.IsOpacityModifyRGB = value;
+                        }
+                    }
+                }
+            }
+        }
 
         #endregion
 

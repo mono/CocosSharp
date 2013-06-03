@@ -520,6 +520,11 @@ namespace Cocos2D
     /// </summary>
     public struct CCBlendFunc
     {
+        public static readonly CCBlendFunc AlphaBlend = new CCBlendFunc() { Source = CCOGLES.GL_ONE, Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA };
+        public static readonly CCBlendFunc Additive = new CCBlendFunc() { Source = CCOGLES.GL_SRC_ALPHA, Destination = CCOGLES.GL_ONE };
+        public static readonly CCBlendFunc NonPremultiplied = new CCBlendFunc() { Source = CCOGLES.GL_SRC_ALPHA, Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA };
+        public static readonly CCBlendFunc Opaque = new CCBlendFunc() { Source = CCOGLES.GL_ONE, Destination = CCOGLES.GL_ZERO };
+
         public CCBlendFunc(int src, int dst)
         {
             this.Source = src;

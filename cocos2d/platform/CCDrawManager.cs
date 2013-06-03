@@ -894,6 +894,35 @@ namespace Cocos2D
                 );
         }
 
+        public static void SetScissorInPoints(float x, float y, float w, float h)
+        {
+            y = CCDirector.SharedDirector.WinSize.Height - y - h;
+
+            graphicsDevice.ScissorRectangle = new Rectangle(
+                (int)(x * m_fScaleX + m_obViewPortRect.Origin.X),
+                (int)(y * m_fScaleY + m_obViewPortRect.Origin.Y),
+                (int)(w * m_fScaleX),
+                (int)(h * m_fScaleY)
+                );
+        }
+
+        public static CCRect ScissorRect
+        {
+            get
+            {
+                var sr = graphicsDevice.ScissorRectangle;
+
+                float x = (sr.X - m_obViewPortRect.Origin.X) / m_fScaleX;
+                float y = (sr.Y - m_obViewPortRect.Origin.Y) / m_fScaleY;
+                float w = sr.Width / m_fScaleX;
+                float h = sr.Height / m_fScaleY;
+
+                y = CCDirector.SharedDirector.WinSize.Height - y - h;
+
+                return new CCRect(x, y, w, h);
+            }
+        }
+
         public static void SetDesignResolutionSize(float width, float height, CCResolutionPolicy resolutionPolicy)
         {
             Debug.Assert(resolutionPolicy != CCResolutionPolicy.UnKnown, "should set resolutionPolicy");
@@ -933,30 +962,6 @@ namespace Cocos2D
                                                                        m_obDesignResolutionSize.Height * CCMacros.CCContentScaleFactor());
             CCDirector.SharedDirector.CreateStatsLabel();
             CCDirector.SharedDirector.SetGlDefaultValues();
-        }
-
-        public static void SetScissorInPoints(float x, float y, float w, float h)
-        {
-            graphicsDevice.ScissorRectangle = new Rectangle(
-                (int) (x * m_fScaleX + m_obViewPortRect.Origin.X),
-                (int) (y * m_fScaleY + m_obViewPortRect.Origin.Y),
-                (int) (w * m_fScaleX),
-                (int) (h * m_fScaleY)
-                );
-        }
-
-        public static CCRect ScissorRect
-        {
-            get
-            {
-                var sr = graphicsDevice.ScissorRectangle;
-
-                float x = (sr.X - m_obViewPortRect.Origin.X) / m_fScaleX;
-                float y = (sr.Y - m_obViewPortRect.Origin.Y) / m_fScaleY;
-                float w = sr.Width / m_fScaleX;
-                float h = sr.Height / m_fScaleY;
-                return new CCRect(x, y, w, h);
-            }
         }
 
         private static GraphicsDeviceManager m_GraphicsDeviceMgr;

@@ -24,7 +24,7 @@
 */
 
 using System;
-#if !WINDOWS
+#if NETFX_CORE
 using System.Collections.Generic;
 #endif
 using System.Diagnostics;

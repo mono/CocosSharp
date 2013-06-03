@@ -50,25 +50,26 @@ namespace Cocos2D
 
         public override byte Opacity
         {
-            get { return base.Opacity; }
+            get { return _realOpacity; }
             set
             {
                 base.Opacity = value;
-                if (m_pChildren != null)
-                {
-                    for (int i = 0; i < m_pChildren.count; i++)
-                    {
-                        var node = m_pChildren.Elements[i] as ICCRGBAProtocol;
-                        if (node != null)
-                        {
-                            node.Opacity = value;
-                        }
-                    }
-                }
-
                 foreach (CCScale9Sprite item in m_backgroundSpriteDispatchTable.Values)
                 {
                     item.Opacity = value;
+                }
+            }
+        }
+
+        public override CCColor3B Color
+        {
+            get { return base._realColor; }
+            set
+            {
+                base.Color = value;
+                foreach (CCScale9Sprite item in m_backgroundSpriteDispatchTable.Values)
+                {
+                    item.Color = value;
                 }
             }
         }

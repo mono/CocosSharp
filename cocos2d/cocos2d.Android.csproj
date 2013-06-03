@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;ANDROID,OPENGL,GLES,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX,CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;ANDROID,OPENGL,GLES,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Android\Release\</OutputPath>
-    <DefineConstants>TRACE;ANDROID,OPENGL,GLES,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX,CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA</DefineConstants>
+    <DefineConstants>TRACE;ANDROID,OPENGL,GLES,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -158,6 +158,7 @@
     <Compile Include="Actions\CCActionManager.cs" />
     <Compile Include="base_nodes\CCAtlasNode.cs" />
     <Compile Include="base_nodes\CCNode.cs" />
+    <Compile Include="base_nodes\CCNodeRGBA.cs" />
     <Compile Include="CCCamera.cs" />
     <Compile Include="CCConfiguration.cs" />
     <Compile Include="CCContent.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="layers_scenes_transitions_nodes\CCLayerMultiplex.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCLayerRGBA.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionCrossFade.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFade.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeBL.cs" />

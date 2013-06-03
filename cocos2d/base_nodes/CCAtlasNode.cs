@@ -3,23 +3,27 @@ using System.Diagnostics;
 
 namespace Cocos2D
 {
-    public class CCAtlasNode : CCNode, ICCRGBAProtocol, ICCTextureProtocol
+    public class CCAtlasNode : CCNodeRGBA, ICCTextureProtocol
     {
         protected bool m_bIsOpacityModifyRGB;
 
-        protected byte m_cOpacity;
         protected CCTextureAtlas m_pTextureAtlas;
         protected CCBlendFunc m_tBlendFunc;
 
-        protected CCColor3B m_tColor;
         protected CCColor3B m_tColorUnmodified;
         protected int m_uItemHeight;
         protected int m_uItemWidth;
         protected int m_uItemsPerColumn;
         protected int m_uItemsPerRow;
 
+        // color uniform
+        protected int m_nUniformColor;
+
         // quads to draw
         protected int m_uQuadsToDraw;
+
+        // This varible is only used for CCLabelAtlas FPS display. So plz don't modify its value.
+        private bool m_bIgnoreContentScaleFactor;
 
         public CCTextureAtlas TextureAtlas
         {
@@ -40,18 +44,18 @@ namespace Cocos2D
             get { return m_bIsOpacityModifyRGB; }
             set
             {
-                CCColor3B oldColor = m_tColor;
+                CCColor3B oldColor = Color;
                 m_bIsOpacityModifyRGB = value;
-                m_tColor = oldColor;
+                Color = oldColor;
             }
         }
 
-        public byte Opacity
+        public override byte Opacity
         {
-            get { return m_cOpacity; }
+            get { return base.Opacity; }
             set
             {
-                m_cOpacity = value;
+                base.Opacity = value;
 
                 // special opacity for premultiplied textures
                 if (m_bIsOpacityModifyRGB)
@@ -61,7 +65,7 @@ namespace Cocos2D
             }
         }
 
-        public CCColor3B Color
+        public override CCColor3B Color
         {
             get
             {
@@ -69,22 +73,26 @@ namespace Cocos2D
                 {
                     return m_tColorUnmodified;
                 }
-                return m_tColor;
+                return base.Color;
             }
             set
             {
-                m_tColor = new CCColor3B(value.R, value.G, value.B);
-                m_tColorUnmodified = m_tColor;
+                var tmp = value;
+                m_tColorUnmodified = value;
 
                 if (m_bIsOpacityModifyRGB)
                 {
-                    m_tColor.R = (byte) (value.R * m_cOpacity / 255);
-                    m_tColor.G = (byte) (value.G * m_cOpacity / 255);
-                    m_tColor.B = (byte) (value.B * m_cOpacity / 255);
+                    tmp.R = (byte) (value.R * _displayedOpacity / 255);
+                    tmp.G = (byte) (value.G * _displayedOpacity / 255);
+                    tmp.B = (byte) (value.B * _displayedOpacity / 255);
                 }
-
-                UpdateAtlasValues();
+                base.Color = tmp;
             }
+        }
+
+        private void UpdateOpacityModifyRgb()
+        {
+            m_bIsOpacityModifyRGB = m_pTextureAtlas.Texture.HasPremultipliedAlpha;
         }
 
         #endregion
@@ -108,33 +116,51 @@ namespace Cocos2D
             }
         }
 
+        private void UpdateBlendFunc()
+        {
+            if (!m_pTextureAtlas.Texture.HasPremultipliedAlpha)
+            {
+                m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
+                m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
+            }
+        }
+
         #endregion
 
-        internal CCAtlasNode () {}
+        internal CCAtlasNode()
+        {
+        }
 
-        public CCAtlasNode (string tile, int tileWidth, int tileHeight, int itemsToRender)
+        public CCAtlasNode(string tile, int tileWidth, int tileHeight, int itemsToRender)
         {
             InitWithTileFile(tile, tileWidth, tileHeight, itemsToRender);
+        }
+
+        public CCAtlasNode(CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender)
+        {
+            InitWithTexture(texture, tileWidth, tileHeight, itemsToRender);
         }
 
         public bool InitWithTileFile(string tile, int tileWidth, int tileHeight, int itemsToRender)
         {
             Debug.Assert(tile != null, "title should not be null");
+            var texture = CCTextureCache.SharedTextureCache.AddImage(tile);
+            return InitWithTexture(texture, tileWidth, tileHeight, itemsToRender);
+        }
 
+        public bool InitWithTexture(CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender)
+        {
             m_uItemWidth = tileWidth;
             m_uItemHeight = tileHeight;
 
-            m_cOpacity = 255;
-            m_tColor = m_tColorUnmodified = CCTypes.CCWhite;
+            m_tColorUnmodified = CCTypes.CCWhite;
             m_bIsOpacityModifyRGB = true;
 
             m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
             m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
 
-            var pNewAtlas = new CCTextureAtlas();
-            pNewAtlas.InitWithFile(tile, itemsToRender);
-
-            TextureAtlas = pNewAtlas;
+            m_pTextureAtlas = new CCTextureAtlas();
+            m_pTextureAtlas.InitWithTexture(texture, itemsToRender);
 
             UpdateBlendFunc();
             UpdateOpacityModifyRgb();
@@ -149,6 +175,12 @@ namespace Cocos2D
         private void CalculateMaxItems()
         {
             CCSize s = m_pTextureAtlas.Texture.ContentSize;
+
+            if (m_bIgnoreContentScaleFactor)
+            {
+                s = m_pTextureAtlas.Texture.ContentSizeInPixels;
+            }
+
             m_uItemsPerColumn = (int) (s.Height / m_uItemHeight);
             m_uItemsPerRow = (int) (s.Width / m_uItemWidth);
         }
@@ -165,18 +197,9 @@ namespace Cocos2D
             m_pTextureAtlas.DrawNumberOfQuads(m_uQuadsToDraw, 0);
         }
 
-        private void UpdateBlendFunc()
+        public void SetIgnoreContentScaleFactor(bool bIgnoreContentScaleFactor)
         {
-            if (!m_pTextureAtlas.Texture.HasPremultipliedAlpha)
-            {
-                m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
-                m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
-            }
-        }
-
-        private void UpdateOpacityModifyRgb()
-        {
-            m_bIsOpacityModifyRGB = m_pTextureAtlas.Texture.HasPremultipliedAlpha;
+            m_bIgnoreContentScaleFactor = bIgnoreContentScaleFactor;
         }
     }
 }

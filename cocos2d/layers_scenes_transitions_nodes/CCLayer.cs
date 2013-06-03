@@ -201,7 +201,7 @@ namespace Cocos2D
                 var bounds = CCAffineTransform.CCRectApplyAffineTransform(rect, NodeToWorldTransform());
 
                 var winSize = CCDirector.SharedDirector.WinSize;
-                
+
                 CCRect prevScissorRect;
                 if (CCDrawManager.ScissorRectEnabled)
                 {
@@ -212,18 +212,17 @@ namespace Cocos2D
                     prevScissorRect = new CCRect(0, 0, winSize.Width, winSize.Height);
                 }
 
-                var minX = Math.Max(bounds.MinX, prevScissorRect.MinX);
-                var maxX = Math.Min(bounds.MaxX, prevScissorRect.MaxX);
-                var minY = Math.Max(bounds.MinY, prevScissorRect.MinY);
-                var maxY = Math.Min(bounds.MaxY, prevScissorRect.MaxY);
-
-                if (maxX < 0f || minX > winSize.Width || maxY < 0f || minY > winSize.Height || maxX <= minX || maxY <= minY)
+                if (!bounds.IntersectsRect(prevScissorRect))
                 {
-                    // ScissorRect can not be applied outside of the viewport.
                     m_bNoDrawChildren = true;
                     return;
                 }
-                                
+
+                float minX = Math.Max(bounds.MinX, prevScissorRect.MinX);
+                float minY = Math.Max(bounds.MinY, prevScissorRect.MinY);
+                float maxX = Math.Min(bounds.MaxX, prevScissorRect.MaxX);
+                float maxY = Math.Min(bounds.MaxY, prevScissorRect.MaxY);
+              
                 if (CCDrawManager.ScissorRectEnabled)
                 {
                     m_bRestoreScissor = true;
@@ -234,6 +233,7 @@ namespace Cocos2D
                 }
 
                 m_tSaveScissorRect = prevScissorRect;
+
                 CCDrawManager.SetScissorInPoints(minX, minY, maxX - minX, maxY - minY);
             }
             else if (m_childClippingMode == CCClipMode.ClipBoundsWithRenderTarget)
@@ -629,6 +629,5 @@ namespace Cocos2D
         {
         }
         #endregion
-
     }
 }

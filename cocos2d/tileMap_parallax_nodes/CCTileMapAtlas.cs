@@ -32,7 +32,6 @@ namespace Cocos2D
 
             if (base.InitWithTileFile(tile, tileWidth, tileHeight, m_nItemsToRender))
             {
-                m_tColor = CCTypes.CCWhite;
                 m_pPosToAtlasIndex = new Dictionary<CCGridSize, int>();
                 UpdateAtlasValues();
                 ContentSize = new CCSize(m_pTGAInfo.width * m_uItemWidth, m_pTGAInfo.height * m_uItemHeight);
@@ -152,7 +151,7 @@ namespace Cocos2D
             quad.TopRight.Vertices.Y = (y * m_uItemHeight + m_uItemHeight);
             quad.TopRight.Vertices.Z = 0.0f;
 
-            var color = new CCColor4B(m_tColor.R, m_tColor.G, m_tColor.B, m_cOpacity);
+            var color = new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, _displayedOpacity);
             quad.TopRight.Colors = color;
             quad.TopLeft.Colors = color;
             quad.BottomRight.Colors = color;

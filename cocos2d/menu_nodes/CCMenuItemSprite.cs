@@ -2,7 +2,7 @@ using System;
 
 namespace Cocos2D
 {
-    public class CCMenuItemSprite : CCMenuItem, ICCRGBAProtocol
+    public class CCMenuItemSprite : CCMenuItem
     {
         private CCNode m_pDisabledImage;
         private CCNode m_pNormalImage;
@@ -83,54 +83,6 @@ namespace Cocos2D
             }
         }
 
-        #region ICCRGBAProtocol Members
-
-        public CCColor3B Color
-        {
-            get { return (m_pNormalImage as ICCRGBAProtocol).Color; }
-            set
-            {
-                (m_pNormalImage as ICCRGBAProtocol).Color = value;
-
-                if (m_pSelectedImage != null)
-                {
-                    (m_pSelectedImage as ICCRGBAProtocol).Color = value;
-                }
-
-                if (m_pDisabledImage != null)
-                {
-                    (m_pDisabledImage as ICCRGBAProtocol).Color = value;
-                }
-            }
-        }
-
-        public byte Opacity
-        {
-            get { return (m_pNormalImage as ICCRGBAProtocol).Opacity; }
-            set
-            {
-                (m_pNormalImage as ICCRGBAProtocol).Opacity = value;
-
-                if (m_pSelectedImage != null)
-                {
-                    (m_pSelectedImage as ICCRGBAProtocol).Opacity = value;
-                }
-
-                if (m_pDisabledImage != null)
-                {
-                    (m_pDisabledImage as ICCRGBAProtocol).Opacity = value;
-                }
-            }
-        }
-
-        public bool IsOpacityModifyRGB
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
-
-        #endregion
-
         public CCMenuItemSprite()
             : this(null, null, null, null)
         {
@@ -168,6 +120,9 @@ namespace Cocos2D
             {
                 ContentSize = m_pNormalImage.ContentSize;
             }
+
+            CascadeColorEnabled = true;
+            CascadeOpacityEnabled = true;
         }
 
         public override void Selected()

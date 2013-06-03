@@ -18,7 +18,7 @@ namespace Cocos2D
  @since v0.99.1
  */
 
-    public class CCProgressTimer : CCNode, ICCRGBAProtocol
+    public class CCProgressTimer : CCNodeRGBA
     {
         private const int kProgressTextureCoordsCount = 4;
         //kProgressTextureCoords holds points {0,1} {0,0} {1,0} {1,1} we can represent it as bits
@@ -131,21 +131,9 @@ namespace Cocos2D
         }
 
 
-        #region ICCRGBAProtocol Members
+        #region RGBA Protocol
 
-        public byte Opacity
-        {
-            get { return m_pSprite.Opacity; }
-            set { m_pSprite.Opacity = value; }
-        }
-
-        public CCColor3B Color
-        {
-            get { return m_pSprite.Color; }
-            set { m_pSprite.Color = value; }
-        }
-
-        public bool IsOpacityModifyRGB
+        public override bool IsOpacityModifyRGB
         {
             get { return false; }
             set { }

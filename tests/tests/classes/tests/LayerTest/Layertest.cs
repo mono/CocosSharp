@@ -8,12 +8,12 @@ namespace tests
 {
     public class LayerTest : CCLayer
     {
-        string s_pPathB1 = "Images/b1";
-        string s_pPathB2 = "Images/b2";
-        string s_pPathR1 = "Images/r1";
-        string s_pPathR2 = "Images/r2";
-        string s_pPathF1 = "Images/f1";
-        string s_pPathF2 = "Images/f2";
+        private string s_pPathB1 = "Images/b1";
+        private string s_pPathB2 = "Images/b2";
+        private string s_pPathR1 = "Images/r1";
+        private string s_pPathR2 = "Images/r2";
+        private string s_pPathF1 = "Images/f1";
+        private string s_pPathF2 = "Images/f2";
 
         protected string m_strTitle;
 
@@ -84,5 +84,25 @@ namespace tests
             s.AddChild(LayerTestScene.backTestAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
+
+        protected static void SetEnableRecursiveCascading(CCNode node, bool enable)
+        {
+            var rgba = node as ICCRGBAProtocol;
+            
+            if (rgba != null)
+            {
+                rgba.CascadeColorEnabled = true;
+                rgba.CascadeOpacityEnabled = enable;
+            }
+
+            if (node.ChildrenCount > 0)
+            {
+                foreach (var children in node.Children)
+                {
+                    SetEnableRecursiveCascading(children, enable);
+                }
+            }
+        }
     }
 }
+

@@ -88,8 +88,8 @@ namespace Cocos2D
 
             if (tmpZone != null && tmpZone != null)
             {
-                ret = tmpZone as CCParallel;
-                base.Copy(tmpZone);
+                ret = zone as CCParallel;
+                base.Copy(zone);
 
                 CCFiniteTimeAction[] cp = new CCFiniteTimeAction[m_pActions.Length];
                 for (int i = 0; i < m_pActions.Length; i++)
@@ -102,21 +102,6 @@ namespace Cocos2D
             else
             {
                 return new CCParallel(this);
-            }
-        }
-
-        public override bool IsDone
-        {
-            get
-            {
-                for (int i = 0; i < m_pActions.Length; i++)
-                {
-                    if (!m_pActions[i].IsDone)
-                    {
-                        return (false);
-                    }
-                }
-                return (base.IsDone);
             }
         }
 
@@ -133,11 +118,7 @@ namespace Cocos2D
         {
             for (int i = 0; i < m_pActions.Length; i++)
             {
-                var action = m_pActions[i];
-                if (!action.IsDone)
-                {
-                    action.Update(time);
-                }
+                m_pActions[i].Update(time);
             }
         }
     }
