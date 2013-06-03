@@ -31,7 +31,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
-    public enum TGAEnum
+    internal enum CCTGAEnum
     {
         TGA_OK,
         TGA_ERROR_FILE_OPEN,
@@ -41,7 +41,7 @@ namespace Cocos2D
         TGA_ERROR_COMPRESSED_FILE,
     }
 
-    public class ImageTGA
+    public class CCImageTGA
     {
         public int status;
         public char type, pixelDepth;
@@ -62,38 +62,35 @@ namespace Cocos2D
         public Color[] imageData;
         public int flipped;
 
-        public static ImageTGA Load(string filename)
-        {
-            var tex = CCApplication.SharedApplication.Content.Load<Texture2D>(filename);
+		public CCImageTGA (string fileName)
+		{
+			var tex = CCApplication.SharedApplication.Content.Load<Texture2D>(fileName);
 
-            var image = new ImageTGA();
+			width = (short) tex.Width;
+			height = (short) tex.Height;
 
-            image.width = (short) tex.Width;
-            image.height = (short) tex.Height;
+			imageData = new Color[tex.Width * tex.Height];
+			tex.GetData(imageData);
 
-            image.imageData = new Color[tex.Width * tex.Height];
-            tex.GetData(image.imageData);
+			var tmp = new Color[tex.Width];
+			for (int i = 0; i < tex.Height / 2; i++)
+			{
+				Array.Copy(imageData, i * tex.Width, tmp, 0, tex.Width);
+				Array.Copy(imageData, (tex.Height - i - 1) * tex.Width, imageData, i * tex.Width, tex.Width);
+				Array.Copy(tmp, 0, imageData, (tex.Height - i - 1) * tex.Width, tex.Width);
+			}
 
-            var tmp = new Color[tex.Width];
-            for (int i = 0; i < tex.Height / 2; i++)
-            {
-                Array.Copy(image.imageData, i * tex.Width, tmp, 0, tex.Width);
-                Array.Copy(image.imageData, (tex.Height - i - 1) * tex.Width, image.imageData, i * tex.Width, tex.Width);
-                Array.Copy(tmp, 0, image.imageData, (tex.Height - i - 1) * tex.Width, tex.Width);
-            }
-            
-            return image;
-        }
+		}
     }
 
-    public class TGAlib
+    internal class TGAlib
     {
         /// <summary>
         /// load the image header fields. We only keep those that matter!
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        public static bool LoadHeader(byte[] Buffer, UInt64 bufSize, ImageTGA psInfo)
+        public static bool LoadHeader(byte[] Buffer, UInt64 bufSize, CCImageTGA psInfo)
         {
             bool bRet = false;
 
@@ -142,7 +139,7 @@ namespace Cocos2D
         /// </summary>
         /// <param name="Buffer">red,green,blue pixel values</param>
         /// <returns></returns>
-        public static bool LoadImageData(byte[] Buffer, int bufSize, ImageTGA psInfo)
+        public static bool LoadImageData(byte[] Buffer, int bufSize, CCImageTGA psInfo)
         {
             int mode;
             int headerSkip = (1 + 2) * 6; // sizeof(char) + sizeof(short) = size of the header
@@ -183,10 +180,10 @@ namespace Cocos2D
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        public static ImageTGA Load(string pszFilename)
+        public static CCImageTGA Load(string pszFilename)
         {
             //int mode, total;
-            ImageTGA info = null;
+            CCImageTGA info = null;
             //CCFileData data = new CCFileData(pszFilename, "rb");
             //UInt64 nSize = data.Size;
             //byte[] pBuffer = data.Buffer;
@@ -270,7 +267,7 @@ namespace Cocos2D
         /// converts RGB to greyscale
         /// </summary>
         /// <param name="psInfo"></param>
-        public static void RGBToGreyscale(ImageTGA psInfo) 
+        public static void RGBToGreyscale(CCImageTGA psInfo) 
         {
             throw new NotImplementedException();
         }
@@ -279,7 +276,7 @@ namespace Cocos2D
         /// releases the memory used for the image
         /// </summary>
         /// <param name="psInfo"></param>
-        public static void Destroy(ImageTGA psInfo)
+        public static void Destroy(CCImageTGA psInfo)
         {
             if (psInfo != null)
             {
@@ -293,7 +290,7 @@ namespace Cocos2D
             }
         }
 
-        bool LoadRLEImageData(byte[] Buffer, UInt64 bufSize, ImageTGA psInfo) 
+        bool LoadRLEImageData(byte[] Buffer, UInt64 bufSize, CCImageTGA psInfo) 
         {
             throw new NotImplementedException();
         }
