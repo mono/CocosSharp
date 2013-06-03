@@ -77,7 +77,7 @@ namespace tests
 
                 AddChild(paddle);
             }
-            Schedule(new SEL_SCHEDULE(this.doStep));
+            Schedule(this.doStep);
         }
 
 

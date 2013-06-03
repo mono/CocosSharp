@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Cocos2D;
@@ -20,7 +21,7 @@ namespace Cocos2D
         private float Elapsed;
         public float OriginalInterval;
         public float Interval;
-        public SEL_SCHEDULE Selector;
+        public Action<float> Selector;
         private bool m_bUseDelay;
 
         //private int m_nScriptHandler;
@@ -33,7 +34,7 @@ namespace Cocos2D
         /** Initializes a timer with a target and a selector. 
          */
 
-        public CCTimer(CCScheduler scheduler, CCSelectorProtocol target, SEL_SCHEDULE selector)
+        public CCTimer(CCScheduler scheduler, CCSelectorProtocol target, Action<float> selector)
             : this(scheduler, target, selector, 0, 0, 0)
         {
         }
@@ -42,12 +43,12 @@ namespace Cocos2D
          *  Target is not needed in c#, it is just for compatibility.
          */
 
-        public CCTimer(CCScheduler scheduler, CCSelectorProtocol target, SEL_SCHEDULE selector, float seconds)
+        public CCTimer(CCScheduler scheduler, CCSelectorProtocol target, Action<float> selector, float seconds)
             : this(scheduler, target, selector, seconds, 0, 0)
         {
         }
 
-        public CCTimer(CCScheduler scheduler, CCSelectorProtocol target, SEL_SCHEDULE selector, float seconds, uint repeat, float delay)
+        public CCTimer(CCScheduler scheduler, CCSelectorProtocol target, Action<float> selector, float seconds, uint repeat, float delay)
         {
             _scheduler = scheduler;
             Target = target;
@@ -355,7 +356,7 @@ public class CCScheduler
 
      @since v0.99.3, repeat and delay added in v1.1
      */
-    public void ScheduleSelector(SEL_SCHEDULE selector, CCSelectorProtocol target, float interval, bool paused,
+    public void ScheduleSelector(Action<float> selector, CCSelectorProtocol target, float interval, bool paused,
                                         uint repeat,
                                         float delay)
     {
@@ -438,7 +439,7 @@ public class CCScheduler
 	     @since v0.99.3
 	     */
 
-    public void UnscheduleSelector(SEL_SCHEDULE selector, CCSelectorProtocol target)
+    public void UnscheduleSelector(Action<float> selector, CCSelectorProtocol target)
     {
         // explicity handle nil arguments when removing an object
         if (selector == null || target == null)

@@ -1,9 +1,10 @@
-﻿
+﻿using System;
+
 namespace Cocos2D
 {
     public class CCCallFuncN : CCCallFunc
     {
-        private SEL_CallFuncN m_pCallFuncN;
+        private Action<CCNode> m_pCallFuncN;
 
         public CCCallFuncN() : base()
         {
@@ -11,7 +12,7 @@ namespace Cocos2D
         }
 
 
-        public CCCallFuncN (SEL_CallFuncN selector)
+        public CCCallFuncN (Action<CCNode> selector)
         {
             InitWithTarget(selector);
         }
@@ -21,7 +22,7 @@ namespace Cocos2D
 			InitWithTarget(callFuncN.m_pCallFuncN);
 		}
 
-		public bool InitWithTarget(SEL_CallFuncN selector)
+		public bool InitWithTarget(Action<CCNode> selector)
         {
             m_pCallFuncN = selector;
             return false;

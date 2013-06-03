@@ -27,7 +27,7 @@ namespace tests
             RunAction(new CCRepeatForever (
                 CCSequence.FromActions(
                 new CCDelayTime (1f),
-                new CCCallFunc(new SEL_CallFunc(UpdateLabel)))
+                new CCCallFunc(UpdateLabel))
                 ));
         }
 

@@ -218,7 +218,7 @@ namespace tests
 
     public partial class MarqueeLayer : CCLayerColor
     {
-        protected SEL_SCHEDULE MarqueeUpdater;
+        protected Action<float> MarqueeUpdater;
         private float _MarqueeRate = 15f; // 15 pixels per second
         private List<CCNode> _Labels = new List<CCNode>();
         private string[] _LabelsToShow = new string[] { 
@@ -235,7 +235,7 @@ namespace tests
 
         partial void Layer_Constructed()
         {
-            MarqueeUpdater = new SEL_SCHEDULE(MarqueeUpdate);
+            MarqueeUpdater = MarqueeUpdate;
             Schedule(MarqueeUpdater, 1f / 30f);
             for (int i = 0; i < 2; i++)
             {
