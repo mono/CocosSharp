@@ -33,6 +33,27 @@ namespace Cocos2D
             m_OutAction = outAction;
         }
 
+        public CCLayerMultiplex()
+        {
+        }
+
+        public CCLayerMultiplex(CCAction inAction, CCAction outAction)
+        {
+            m_InAction = inAction;
+            m_OutAction = outAction;
+        }
+
+        public CCAction InAction
+        {
+            get { return (m_InAction); }
+            set { m_InAction = value; }
+        }
+
+        public CCAction OutAction
+        {
+            get { return (m_OutAction); }
+            set { m_OutAction = value; }
+        }
         /// <summary>
         ///  * lua script can not init with undetermined number of variables
         /// * so add these functinons to be used with lua.

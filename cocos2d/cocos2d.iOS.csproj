@@ -319,7 +319,6 @@
     <Compile Include="Platform\CCSpriteFontCache.cs" />
     <Compile Include="Platform\CCSAXParser.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
-    <Compile Include="Platform\InputState.cs" />
     <Compile Include="Platform\PList\PlistArray.cs" />
     <Compile Include="Platform\PList\PlistBoolean.cs" />
     <Compile Include="Platform\PList\PlistData.cs" />
@@ -446,6 +445,7 @@
     <Compile Include="predefine\CCMacros.cs" />
     <Compile Include="Math\CCEaseMath.cs" />
     <Compile Include="Math\CCSplineMath.cs" />
+    <Compile Include="Platform\CCCCInputState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\ContentReaders\" />

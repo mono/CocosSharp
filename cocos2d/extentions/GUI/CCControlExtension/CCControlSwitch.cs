@@ -30,7 +30,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
-    public delegate void SwitchValueChangedDelegate(object sender, bool bState);
+    public delegate void CCSwitchValueChangedDelegate(object sender, bool bState);
 
     /** @class CCControlSwitch Switch control for Cocos2D. */
 
@@ -44,7 +44,7 @@ namespace Cocos2D
         protected float m_fInitialTouchXPosition;
         protected CCControlSwitchSprite m_pSwitchSprite;
 
-        public event SwitchValueChangedDelegate OnValueChanged;
+        public event CCSwitchValueChangedDelegate OnValueChanged;
 
         public override bool Enabled
         {

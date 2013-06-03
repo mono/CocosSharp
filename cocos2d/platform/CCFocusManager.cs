@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Cocos2D
 {
-    public delegate void FocusChangeDelegate(CCIFocusable prev, CCIFocusable current);
+    public delegate void CCFocusChangeDelegate(CCIFocusable prev, CCIFocusable current);
 
     public class CCFocusManager
     {
-        public event FocusChangeDelegate OnFocusChanged;
+        public event CCFocusChangeDelegate OnFocusChanged;
 
         /// <summary>
         /// The list of nodes that can receive focus

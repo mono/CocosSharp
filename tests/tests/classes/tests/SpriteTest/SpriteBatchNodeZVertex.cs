@@ -18,13 +18,13 @@ namespace tests
             //glEnable(GL_ALPHA_TEST);
             //glAlphaFunc(GL_GREATER, 0.0f);
 
-            CCDirector.SharedDirector.Projection = ccDirectorProjection.kCCDirectorProjection3D;
+            CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection3D;
         }
 
         public override void OnExit()
         {
             //glDisable(GL_ALPHA_TEST);
-            CCDirector.SharedDirector.Projection = (ccDirectorProjection.kCCDirectorProjection2D);
+            CCDirector.SharedDirector.Projection = (CCDirectorProjection.Projection2D);
             base.OnExit();
         }
 

@@ -154,12 +154,12 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCDirector.SharedDirector.Projection = ccDirectorProjection.kCCDirectorProjection3D;
+            CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection3D;
         }
 
         public override void OnExit()
         {
-            CCDirector.SharedDirector.Projection = ccDirectorProjection.kCCDirectorProjection2D;
+            CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
             base.OnExit();
         }
 
@@ -994,7 +994,7 @@ namespace tests
             base.OnEnter();
 
             // TIP: 2d projection should be used
-            CCDirector.SharedDirector.Projection = ccDirectorProjection.kCCDirectorProjection2D;
+            CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
         }
 
         public override void OnExit()
@@ -1060,7 +1060,7 @@ namespace tests
             base.OnEnter();
 
             // TIP: 2d projection should be used
-            CCDirector.SharedDirector.Projection = ccDirectorProjection.kCCDirectorProjection2D;
+            CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
         }
 
         public override void OnExit()

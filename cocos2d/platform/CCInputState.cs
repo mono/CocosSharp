@@ -16,7 +16,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Cocos2D
 {
-    public enum GestureDirection
+    public enum CCGestureDirection
     {
         Up,
         Down,
@@ -25,19 +25,19 @@ namespace Cocos2D
         None
     }
 
-    public static class ExtensionMethods
+    public static class CCExtensionMethods
     {
-        public static GestureDirection GetDirection(this GestureSample gesture)
+        public static CCGestureDirection GetDirection(this GestureSample gesture)
         {
-            GestureDirection direction = GestureDirection.None;
+            CCGestureDirection direction = CCGestureDirection.None;
 
             if (gesture.Delta.Y != 0)
             {
-                direction = gesture.Delta.Y > 0 ? GestureDirection.Down : GestureDirection.Up;
+                direction = gesture.Delta.Y > 0 ? CCGestureDirection.Down : CCGestureDirection.Up;
             }
             else if (gesture.Delta.X != 0)
             {
-                direction = gesture.Delta.X > 0 ? GestureDirection.Right : GestureDirection.Left;
+                direction = gesture.Delta.X > 0 ? CCGestureDirection.Right : CCGestureDirection.Left;
             }
             return direction;
         }
@@ -46,7 +46,7 @@ namespace Cocos2D
     /// <summary>
     ///   an enum of all available mouse buttons.
     /// </summary>
-    public enum MouseButtons
+    public enum CCMouseButtons
     {
         LeftButton,
         MiddleButton,
@@ -61,9 +61,9 @@ namespace Cocos2D
     /// query methods for high level input actions such as "move up through the menu"
     /// or "pause the game".
     /// </summary>
-    public class InputState
+    public class CCInputState
     {
-        public static readonly InputState Instance = new InputState();
+        public static readonly CCInputState Instance = new CCInputState();
 
         /// <summary>
         /// The value of an analog control that reads as a "pressed button".
@@ -90,7 +90,7 @@ namespace Cocos2D
         /// <summary>
         /// Initialization
         /// </summary>
-        private InputState()
+        private CCInputState()
         {
             TouchPanel.EnabledGestures = GestureType.None;
         }
@@ -300,27 +300,27 @@ namespace Cocos2D
         ///   A bool indicating whether the selected mouse button is being
         ///   pressed in the current state but not in the last state.
         /// </returns>
-        public bool IsMouseButtonPress(MouseButtons button)
+        public bool IsMouseButtonPress(CCMouseButtons button)
         {
             switch (button)
             {
-                case MouseButtons.LeftButton:
+                case CCMouseButtons.LeftButton:
                     return (
                                LastMouseState.LeftButton == ButtonState.Released &&
                                CurrentMouseState.LeftButton == ButtonState.Pressed);
-                case MouseButtons.MiddleButton:
+                case CCMouseButtons.MiddleButton:
                     return (
                                LastMouseState.MiddleButton == ButtonState.Released &&
                                CurrentMouseState.MiddleButton == ButtonState.Pressed);
-                case MouseButtons.RightButton:
+                case CCMouseButtons.RightButton:
                     return (
                                LastMouseState.RightButton == ButtonState.Released &&
                                CurrentMouseState.RightButton == ButtonState.Pressed);
-                case MouseButtons.ExtraButton1:
+                case CCMouseButtons.ExtraButton1:
                     return (
                                LastMouseState.XButton1 == ButtonState.Released &&
                                CurrentMouseState.XButton1 == ButtonState.Pressed);
-                case MouseButtons.ExtraButton2:
+                case CCMouseButtons.ExtraButton2:
                     return (
                                LastMouseState.XButton2 == ButtonState.Released &&
                                CurrentMouseState.XButton2 == ButtonState.Pressed);
@@ -339,27 +339,27 @@ namespace Cocos2D
         /// A bool indicating whether the selected mouse button is not being 
         /// pressed in the current state and is being pressed in the old state.
         /// </returns>
-        public bool IsMouseButtonRelease(MouseButtons button)
+        public bool IsMouseButtonRelease(CCMouseButtons button)
         {
             switch (button)
             {
-                case MouseButtons.LeftButton:
+                case CCMouseButtons.LeftButton:
                     return (
                                LastMouseState.LeftButton == ButtonState.Pressed &&
                                CurrentMouseState.LeftButton == ButtonState.Released);
-                case MouseButtons.MiddleButton:
+                case CCMouseButtons.MiddleButton:
                     return (
                                LastMouseState.MiddleButton == ButtonState.Pressed &&
                                CurrentMouseState.MiddleButton == ButtonState.Released);
-                case MouseButtons.RightButton:
+                case CCMouseButtons.RightButton:
                     return (
                                LastMouseState.RightButton == ButtonState.Pressed &&
                                CurrentMouseState.RightButton == ButtonState.Released);
-                case MouseButtons.ExtraButton1:
+                case CCMouseButtons.ExtraButton1:
                     return (
                                LastMouseState.XButton1 == ButtonState.Pressed &&
                                CurrentMouseState.XButton1 == ButtonState.Released);
-                case MouseButtons.ExtraButton2:
+                case CCMouseButtons.ExtraButton2:
                     return (
                                LastMouseState.XButton2 == ButtonState.Pressed &&
                                CurrentMouseState.XButton2 == ButtonState.Released);
@@ -368,38 +368,38 @@ namespace Cocos2D
             }
         }
 
-        public bool IsMouseButtonDown(MouseButtons button)
+        public bool IsMouseButtonDown(CCMouseButtons button)
         {
             switch (button)
             {
-                case MouseButtons.LeftButton:
+                case CCMouseButtons.LeftButton:
                     return CurrentMouseState.LeftButton == ButtonState.Pressed;
-                case MouseButtons.RightButton:
+                case CCMouseButtons.RightButton:
                     return CurrentMouseState.RightButton == ButtonState.Pressed;
-                case MouseButtons.MiddleButton:
+                case CCMouseButtons.MiddleButton:
                     return CurrentMouseState.MiddleButton == ButtonState.Pressed;
-                case MouseButtons.ExtraButton1:
+                case CCMouseButtons.ExtraButton1:
                     return CurrentMouseState.XButton1 == ButtonState.Pressed;
-                case MouseButtons.ExtraButton2:
+                case CCMouseButtons.ExtraButton2:
                     return CurrentMouseState.XButton2 == ButtonState.Pressed;
                 default:
                     return false;
             }
         }
 
-        public bool IsMouseButtonUp(MouseButtons button)
+        public bool IsMouseButtonUp(CCMouseButtons button)
         {
             switch (button)
             {
-                case MouseButtons.LeftButton:
+                case CCMouseButtons.LeftButton:
                     return CurrentMouseState.LeftButton == ButtonState.Released;
-                case MouseButtons.RightButton:
+                case CCMouseButtons.RightButton:
                     return CurrentMouseState.RightButton == ButtonState.Released;
-                case MouseButtons.MiddleButton:
+                case CCMouseButtons.MiddleButton:
                     return CurrentMouseState.MiddleButton == ButtonState.Released;
-                case MouseButtons.ExtraButton1:
+                case CCMouseButtons.ExtraButton1:
                     return CurrentMouseState.XButton1 == ButtonState.Released;
-                case MouseButtons.ExtraButton2:
+                case CCMouseButtons.ExtraButton2:
                     return CurrentMouseState.XButton2 == ButtonState.Released;
                 default:
                     return false;

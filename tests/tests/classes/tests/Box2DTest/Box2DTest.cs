@@ -268,9 +268,9 @@ namespace tests
                 }
             }
 
-            InputState.Instance.Update(dt);
+            CCInputState.Instance.Update(dt);
             PlayerIndex p;
-            if (InputState.Instance.IsKeyPress(Microsoft.Xna.Framework.Input.Keys.D, PlayerIndex.One, out p))
+            if (CCInputState.Instance.IsKeyPress(Microsoft.Xna.Framework.Input.Keys.D, PlayerIndex.One, out p))
             {
                 _world.Dump();
 #if PROFILING
