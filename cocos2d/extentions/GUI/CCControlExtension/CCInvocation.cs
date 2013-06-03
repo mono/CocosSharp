@@ -6,9 +6,6 @@ using System;
 
 namespace Cocos2D
 {
-    //public delegate void SEL_CCControlHandler(object obj, CCControlEvent ce);
-
-    //#define cccontrol_selector(_SELECTOR) (SEL_CCControlHandler)(&_SELECTOR)
 
     public class CCInvocation 
     {

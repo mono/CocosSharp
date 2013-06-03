@@ -31,7 +31,7 @@ namespace Cocos2D
         }
 
         // super methods
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
 
             if (zone != null)

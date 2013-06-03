@@ -7,7 +7,7 @@ namespace Cocos2D
         Invalid = -1,
     }
 
-    public class CCAction : ICopyable
+    public class CCAction : ICCCopyable
     {
         protected int m_nTag;
         protected CCNode m_pOriginalTarget;
@@ -51,7 +51,7 @@ namespace Cocos2D
 			return (CCAction)Copy(null);
 		}
 
-        public virtual object Copy(ICopyable zone)
+        public virtual object Copy(ICCCopyable zone)
         {
 
             if (zone != null)

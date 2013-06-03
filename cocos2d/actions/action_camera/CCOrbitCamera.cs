@@ -88,7 +88,7 @@ namespace Cocos2D
             newRadius = r / CCCamera.GetZEye();
         }
 
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
             if (zone != null)
             {

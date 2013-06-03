@@ -19,7 +19,7 @@ namespace Cocos2D
             m_delta = new CCPoint(m_delta.X - m_startPosition.X, m_delta.Y - m_startPosition.Y);
         }
 
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
             if (zone != null)
             {

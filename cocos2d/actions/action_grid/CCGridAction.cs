@@ -33,7 +33,7 @@ namespace Cocos2D
         public CCGridAction (CCGridAction gridAction) : this (gridAction.m_sGridSize, gridAction.m_fDuration)
         { }
 
-		public override object Copy(ICopyable pZone)
+		public override object Copy(ICCCopyable pZone)
 		{
 		
 			if (pZone != null)

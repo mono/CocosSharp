@@ -33,7 +33,7 @@ namespace Cocos2D
             return 7.5625f * time * time + 0.984375f;
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
 
             if (pZone != null)

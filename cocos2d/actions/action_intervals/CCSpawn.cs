@@ -65,7 +65,7 @@ namespace Cocos2D
             return bRet;
         }
 
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
             if (zone != null)
             {

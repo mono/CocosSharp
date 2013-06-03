@@ -414,13 +414,13 @@
     <Compile Include="support\Converters\CCPointConverter.cs" />
     <Compile Include="support\Converters\CCSizeConverter.cs" />
     <Compile Include="support\Serialization\CCSerialization.cs" />
-    <Compile Include="cocoa\ICopyable.cs" />
     <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="support\CCUserDefault.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
     <Compile Include="support\image_support\CCTGAlib.cs" />
     <Compile Include="predefine\CCSelectorProtocol.cs" />
+    <Compile Include="cocoa\ICCCopyable.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">

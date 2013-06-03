@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Cocos2D
 {
-    public class CCAnimation : ICopyable
+    public class CCAnimation : ICCCopyable
     {
         protected bool m_bRestoreOriginalFrame;
         protected float m_fDelayPerUnit;
@@ -149,7 +149,7 @@ namespace Cocos2D
 			return (CCAnimation)Copy(null);
 		}
 
-        public object Copy(ICopyable pZone)
+        public object Copy(ICCCopyable pZone)
         {
             CCAnimation pCopy = null;
             if (pZone != null)

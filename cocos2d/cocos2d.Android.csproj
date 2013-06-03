@@ -402,7 +402,7 @@
     <Compile Include="support\Converters\CCRectConverter.cs" />
     <Compile Include="support\Converters\CCSizeConverter.cs" />
     <Compile Include="support\Serialization\CCSerialization.cs" />
-    <Compile Include="cocoa\ICopyable.cs" />
+    <Compile Include="cocoa\ICCCopyable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

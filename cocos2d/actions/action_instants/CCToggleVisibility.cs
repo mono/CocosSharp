@@ -6,9 +6,9 @@
         {
         }
 
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
-            ICopyable tmpZone = zone;
+            ICCCopyable tmpZone = zone;
             CCActionInstant ret;
 
             if (tmpZone != null && tmpZone != null)

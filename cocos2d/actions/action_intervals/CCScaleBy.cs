@@ -30,7 +30,7 @@ namespace Cocos2D
             return new CCScaleBy(m_fDuration, 1 / m_fEndScaleX, 1 / m_fEndScaleY);
         }
 
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
             if (zone != null)
             {
