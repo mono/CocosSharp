@@ -42,7 +42,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <DefineConstants>TRACE;WINDOWS,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX,CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>true</XnaCompressContent>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -56,7 +56,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <DefineConstants>TRACE;DEBUG;WINDOWS,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX,CC_OPTIMIZE_BLEND_FUNC_FOR_PREMULTIPLIED_ALPHA</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>false</XnaCompressContent>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -162,6 +162,7 @@
     <Compile Include="actions\action_tiled_grid\CCTurnOffTiles.cs" />
     <Compile Include="actions\action_tiled_grid\CCWavesTiles3D.cs" />
     <Compile Include="actions\action_tiled_grid\CCTile.cs" />
+    <Compile Include="base_nodes\CCNodeRGBA.cs" />
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
@@ -177,8 +178,10 @@
     <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
+    <Compile Include="layers_scenes_transitions_nodes\CCLayerRGBA.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
     <Compile Include="platform\CCIFocusable.cs" />
+    <Compile Include="platform\CCInputState.cs" />
     <Compile Include="platform\CCSpriteFontCache.cs" />
     <Compile Include="platform\CCDrawManager.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
@@ -306,7 +309,6 @@
     <Compile Include="platform\CCLog.cs" />
     <Compile Include="platform\CCSAXParser.cs" />
     <Compile Include="platform\ICCSAXDelegator.cs" />
-    <Compile Include="platform\CCInputState.cs" />
     <Compile Include="platform\CCOGLES.cs" />
     <Compile Include="platform\PList\PlistArray.cs" />
     <Compile Include="platform\PList\PlistBoolean.cs" />
