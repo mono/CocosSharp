@@ -1,10 +1,10 @@
 
 namespace Cocos2D
 {
-    public enum ActionTag
+    public enum CCActionTag
     {
         //! Default tag
-        kCCActionTagInvalid = -1,
+        Invalid = -1,
     }
 
     public class CCAction : ICopyable
@@ -15,7 +15,7 @@ namespace Cocos2D
 
         public CCAction()
         {
-            m_nTag = (int) ActionTag.kCCActionTagInvalid;
+            m_nTag = (int) CCActionTag.Invalid;
         }
 
         protected CCAction(CCAction action)
