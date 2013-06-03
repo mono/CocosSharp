@@ -13,7 +13,7 @@ namespace Cocos2D
     public class BlockCCControlData
     {
         public CCControlEvent mControlEvents;
-        public SEL_CCControlHandler mSELCCControlHandler;
+		public Action<object, CCControlEvent> mSELCCControlHandler;
         public object mTarget;
     }
 
@@ -826,7 +826,7 @@ namespace Cocos2D
                 {
                     if (selectorName.Length > 0)
                     {
-                        SEL_CCControlHandler selCCControlHandler = null;
+						Action<object, CCControlEvent> selCCControlHandler = null;
 
                         var targetAsCCBSelectorResolver = target as CCBSelectorResolver;
                         if (targetAsCCBSelectorResolver != null)
