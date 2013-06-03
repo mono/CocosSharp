@@ -490,12 +490,15 @@ namespace Cocos2D
         protected void UpdateLabel()
         {
             SetString(m_sInitialString, true);
-
+            if (m_sString == null)
+            {
+                return;
+            }
             if (m_fWidth > 0)
             {
                 // Step 1: Make multiline
                 string str_whole = m_sString;
-                int stringLength = m_sString.Length;
+                int stringLength = str_whole.Length;
                 var multiline_string = new StringBuilder(stringLength);
                 var last_word = new StringBuilder(stringLength);
 
