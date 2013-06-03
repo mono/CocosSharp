@@ -227,7 +227,7 @@ namespace Cocos2D
                 pTMXMapInfo.TileSize = sTileSize;
 
                 // The parent element is now "map"
-                pTMXMapInfo.ParentElement = (int) TMXProperty.TMXPropertyMap;
+                pTMXMapInfo.ParentElement = (int) CCTMXProperty.Map;
             }
             else if (elementName == "tileset")
             {
@@ -268,7 +268,7 @@ namespace Cocos2D
                 pTMXMapInfo.ParentGID = (info.m_uFirstGid + uint.Parse(attributeDict["id"]));
                 pTMXMapInfo.TileProperties.Add(pTMXMapInfo.ParentGID, dict);
 
-                pTMXMapInfo.ParentElement = (int) TMXProperty.TMXPropertyTile;
+                pTMXMapInfo.ParentElement = (int) CCTMXProperty.Tile;
             }
             else if (elementName == "layer")
             {
@@ -309,7 +309,7 @@ namespace Cocos2D
                 pTMXMapInfo.Layers.Add(layer);
 
                 // The parent element is now "layer"
-                pTMXMapInfo.ParentElement = (int) TMXProperty.TMXPropertyLayer;
+                pTMXMapInfo.ParentElement = (int) CCTMXProperty.Layer;
             }
             else if (elementName == "objectgroup")
             {
@@ -326,7 +326,7 @@ namespace Cocos2D
                 pTMXMapInfo.ObjectGroups.Add(objectGroup);
 
                 // The parent element is now "objectgroup"
-                pTMXMapInfo.ParentElement = (int) TMXProperty.TMXPropertyObjectGroup;
+                pTMXMapInfo.ParentElement = (int) CCTMXProperty.ObjectGroup;
             }
             else if (elementName == "image")
             {
@@ -344,22 +344,22 @@ namespace Cocos2D
                 if (encoding == "base64")
                 {
                     int layerAttribs = pTMXMapInfo.LayerAttribs;
-                    pTMXMapInfo.LayerAttribs = layerAttribs | (int) TMXLayerAttrib.TMXLayerAttribBase64;
+                    pTMXMapInfo.LayerAttribs = layerAttribs | (int) CCTMXLayerAttrib.Base64;
                     pTMXMapInfo.StoringCharacters = true;
 
                     if (compression == "gzip")
                     {
                         layerAttribs = pTMXMapInfo.LayerAttribs;
-                        pTMXMapInfo.LayerAttribs = layerAttribs | (int) TMXLayerAttrib.TMXLayerAttribGzip;
+                        pTMXMapInfo.LayerAttribs = layerAttribs | (int) CCTMXLayerAttrib.Gzip;
                     }
                     else if (compression == "zlib")
                     {
                         layerAttribs = pTMXMapInfo.LayerAttribs;
-                        pTMXMapInfo.LayerAttribs = layerAttribs | (int) TMXLayerAttrib.TMXLayerAttribZlib;
+                        pTMXMapInfo.LayerAttribs = layerAttribs | (int) CCTMXLayerAttrib.Zlib;
                     }
                     Debug.Assert(compression == "" || compression == "gzip" || compression == "zlib", "TMX: unsupported compression method");
                 }
-                Debug.Assert(pTMXMapInfo.LayerAttribs != (int) TMXLayerAttrib.TMXLayerAttribNone,
+                Debug.Assert(pTMXMapInfo.LayerAttribs != (int) CCTMXLayerAttrib.None,
                              "TMX tile map: Only base64 and/or gzip/zlib maps are supported");
             }
             else if (elementName == "object")
@@ -397,23 +397,23 @@ namespace Cocos2D
                 objectGroup.Objects.Add(dict);
 
                 // The parent element is now "object"
-                pTMXMapInfo.ParentElement = (int) TMXProperty.TMXPropertyObject;
+                pTMXMapInfo.ParentElement = (int) CCTMXProperty.Object;
             }
             else if (elementName == "property")
             {
-                if (pTMXMapInfo.ParentElement == (int) TMXProperty.TMXPropertyNone)
+                if (pTMXMapInfo.ParentElement == (int) CCTMXProperty.None)
                 {
                     CCLog.Log("TMX tile map: Parent element is unsupported. Cannot add property named '{0}' with value '{1}'",
                               attributeDict["name"], attributeDict["value"]);
                 }
-                else if (pTMXMapInfo.ParentElement == (int) TMXProperty.TMXPropertyMap)
+                else if (pTMXMapInfo.ParentElement == (int) CCTMXProperty.Map)
                 {
                     // The parent element is the map
                     string value = attributeDict["value"];
                     string key = attributeDict["name"];
                     pTMXMapInfo.Properties.Add(key, value);
                 }
-                else if (pTMXMapInfo.ParentElement == (int) TMXProperty.TMXPropertyLayer)
+                else if (pTMXMapInfo.ParentElement == (int) CCTMXProperty.Layer)
                 {
                     // The parent element is the last layer
                     CCTMXLayerInfo layer = pTMXMapInfo.Layers.LastOrDefault();
@@ -422,7 +422,7 @@ namespace Cocos2D
                     // Add the property to the layer
                     layer.Properties.Add(key, value);
                 }
-                else if (pTMXMapInfo.ParentElement == (int) TMXProperty.TMXPropertyObjectGroup)
+                else if (pTMXMapInfo.ParentElement == (int) CCTMXProperty.ObjectGroup)
                 {
                     // The parent element is the last object group
                     CCTMXObjectGroup objectGroup = pTMXMapInfo.ObjectGroups.LastOrDefault();
@@ -430,7 +430,7 @@ namespace Cocos2D
                     string key = attributeDict["name"];
                     objectGroup.Properties.Add(key, value);
                 }
-                else if (pTMXMapInfo.ParentElement == (int) TMXProperty.TMXPropertyObject)
+                else if (pTMXMapInfo.ParentElement == (int) CCTMXProperty.Object)
                 {
                     // The parent element is the last object
                     CCTMXObjectGroup objectGroup = pTMXMapInfo.ObjectGroups.LastOrDefault();
@@ -440,7 +440,7 @@ namespace Cocos2D
                     string propertyValue = attributeDict["value"];
                     dict.Add(propertyName, propertyValue);
                 }
-                else if (pTMXMapInfo.ParentElement == (int) TMXProperty.TMXPropertyTile)
+                else if (pTMXMapInfo.ParentElement == (int) CCTMXProperty.Tile)
                 {
                     Dictionary<string, string> dict = pTMXMapInfo.TileProperties[pTMXMapInfo.ParentGID];
 
@@ -475,14 +475,14 @@ namespace Cocos2D
             CCTMXMapInfo pTMXMapInfo = this;
             byte[] encoded = null;
 
-            if (elementName == "data" && (pTMXMapInfo.LayerAttribs & (int) TMXLayerAttrib.TMXLayerAttribBase64) != 0)
+            if (elementName == "data" && (pTMXMapInfo.LayerAttribs & (int) CCTMXLayerAttrib.Base64) != 0)
             {
                 pTMXMapInfo.StoringCharacters = false;
                 CCTMXLayerInfo layer = pTMXMapInfo.Layers.LastOrDefault();
-                if ((pTMXMapInfo.LayerAttribs & ((int) (TMXLayerAttrib.TMXLayerAttribGzip) | (int) TMXLayerAttrib.TMXLayerAttribZlib)) != 0)
+                if ((pTMXMapInfo.LayerAttribs & ((int) (CCTMXLayerAttrib.Gzip) | (int) CCTMXLayerAttrib.Zlib)) != 0)
                 {
                     //gzip compress
-                    if ((pTMXMapInfo.LayerAttribs & (int) TMXLayerAttrib.TMXLayerAttribGzip) != 0)
+                    if ((pTMXMapInfo.LayerAttribs & (int) CCTMXLayerAttrib.Gzip) != 0)
                     {
                         try
                         {
@@ -514,7 +514,7 @@ namespace Cocos2D
                     }
 
                     //zlib
-                    if ((pTMXMapInfo.LayerAttribs & (int) TMXLayerAttrib.TMXLayerAttribZlib) != 0)
+                    if ((pTMXMapInfo.LayerAttribs & (int) CCTMXLayerAttrib.Zlib) != 0)
                     {
                         var inZInputStream = new ZInputStream(new MemoryStream(pTMXMapInfo.CurrentString));
 
@@ -554,22 +554,22 @@ namespace Cocos2D
             else if (elementName == "map")
             {
                 // The map element has ended
-                pTMXMapInfo.ParentElement = (int) TMXProperty.TMXPropertyNone;
+                pTMXMapInfo.ParentElement = (int) CCTMXProperty.None;
             }
             else if (elementName == "layer")
             {
                 // The layer element has ended
-                pTMXMapInfo.ParentElement = (int) TMXProperty.TMXPropertyNone;
+                pTMXMapInfo.ParentElement = (int) CCTMXProperty.None;
             }
             else if (elementName == "objectgroup")
             {
                 // The objectgroup element has ended
-                pTMXMapInfo.ParentElement = (int) TMXProperty.TMXPropertyNone;
+                pTMXMapInfo.ParentElement = (int) CCTMXProperty.None;
             }
             else if (elementName == "object")
             {
                 // The object element has ended
-                pTMXMapInfo.ParentElement = (int) TMXProperty.TMXPropertyNone;
+                pTMXMapInfo.ParentElement = (int) CCTMXProperty.None;
             }
         }
 
@@ -616,8 +616,8 @@ namespace Cocos2D
             // tmp vars
             m_sCurrentString = null;
             m_bStoringCharacters = false;
-            m_nLayerAttribs = (int) TMXLayerAttrib.TMXLayerAttribNone;
-            m_nParentElement = (int) TMXProperty.TMXPropertyNone;
+            m_nLayerAttribs = (int) CCTMXLayerAttrib.None;
+            m_nParentElement = (int) CCTMXProperty.None;
         }
 
         /// <summary>

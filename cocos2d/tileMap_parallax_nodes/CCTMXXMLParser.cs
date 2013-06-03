@@ -19,21 +19,21 @@ namespace Cocos2D
         CCTMXOrientationIso = 2,
     };
 
-    public enum TMXLayerAttrib
+    public enum CCTMXLayerAttrib
     {
-        TMXLayerAttribNone = 1 << 0,
-        TMXLayerAttribBase64 = 1 << 1,
-        TMXLayerAttribGzip = 1 << 2,
-        TMXLayerAttribZlib = 1 << 3,
+        None = 1 << 0,
+        Base64 = 1 << 1,
+        Gzip = 1 << 2,
+        Zlib = 1 << 3,
     };
 
-    public enum TMXProperty
+    public enum CCTMXProperty
     {
-        TMXPropertyNone,
-        TMXPropertyMap,
-        TMXPropertyLayer,
-        TMXPropertyObjectGroup,
-        TMXPropertyObject,
-        TMXPropertyTile
+        None,
+        Map,
+        Layer,
+        ObjectGroup,
+        Object,
+        Tile
     };
 }
