@@ -628,7 +628,7 @@ namespace tests
             centerSprites(3);
 
             // sprite 1
-            ccBezierConfig bezier;
+            CCBezierConfig bezier;
             bezier.ControlPoint1 = new CCPoint(0, s.Height / 2);
             bezier.ControlPoint2 = new CCPoint(300, -s.Height / 2);
             bezier.EndPosition = new CCPoint(300, 100);
@@ -640,7 +640,7 @@ namespace tests
 
             // sprite 2
             m_tamara.Position = new CCPoint(80, 160);
-            ccBezierConfig bezier2;
+            CCBezierConfig bezier2;
             bezier2.ControlPoint1 = new CCPoint(100, s.Height / 2);
             bezier2.ControlPoint2 = new CCPoint(200, -s.Height / 2);
             bezier2.EndPosition = new CCPoint(240, 160);

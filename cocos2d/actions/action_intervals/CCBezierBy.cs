@@ -4,10 +4,10 @@ namespace Cocos2D
 {
     public class CCBezierBy : CCActionInterval
     {
-        protected ccBezierConfig m_sConfig;
+        protected CCBezierConfig m_sConfig;
         protected CCPoint m_startPosition;
 
-        public CCBezierBy (float t, ccBezierConfig c)
+        public CCBezierBy (float t, CCBezierConfig c)
         {
             InitWithDuration(t, c);
         }
@@ -18,7 +18,7 @@ namespace Cocos2D
 
         }
 
-        protected bool InitWithDuration(float t, ccBezierConfig c)
+        protected bool InitWithDuration(float t, CCBezierConfig c)
         {
             if (base.InitWithDuration(t))
             {
@@ -76,7 +76,7 @@ namespace Cocos2D
 
         public override CCFiniteTimeAction Reverse()
         {
-            ccBezierConfig r;
+            CCBezierConfig r;
 
             r.EndPosition = -m_sConfig.EndPosition;
             r.ControlPoint1 = m_sConfig.ControlPoint2 + -m_sConfig.EndPosition;
@@ -99,7 +99,7 @@ namespace Cocos2D
         }
     }
 
-    public struct ccBezierConfig
+    public struct CCBezierConfig
     {
         public CCPoint ControlPoint1;
         public CCPoint ControlPoint2;
