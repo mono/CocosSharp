@@ -64,7 +64,7 @@ namespace Cocos2D
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-    public class CCNode : SelectorProtocol, CCIFocusable
+    public class CCNode : CCSelectorProtocol, CCIFocusable
     {
         private static int kCCNodeTagInvalid = -1;
         private static int s_globalOrderOfArrival = 1;
@@ -1032,17 +1032,17 @@ namespace Cocos2D
             m_pScheduler.UnscheduleUpdateForTarget(this);
         }
 
-        public void Schedule(SEL_SCHEDULE selector)
+        public void Schedule(Action<float> selector)
         {
             Schedule(selector, 0.0f, CCScheduler.kCCRepeatForever, 0.0f);
         }
 
-        public void Schedule(SEL_SCHEDULE selector, float interval)
+        public void Schedule(Action<float> selector, float interval)
         {
             Schedule(selector, interval, CCScheduler.kCCRepeatForever, 0.0f);
         }
 
-        public void Schedule(SEL_SCHEDULE selector, float interval, uint repeat, float delay)
+        public void Schedule(Action<float> selector, float interval, uint repeat, float delay)
         {
             Debug.Assert(selector != null, "Argument must be non-nil");
             Debug.Assert(interval >= 0, "Argument must be positive");
@@ -1050,12 +1050,12 @@ namespace Cocos2D
             m_pScheduler.ScheduleSelector(selector, this, interval, !m_bIsRunning, repeat, delay);
         }
 
-        public void ScheduleOnce(SEL_SCHEDULE selector, float delay)
+        public void ScheduleOnce(Action<float> selector, float delay)
         {
             Schedule(selector, 0.0f, 0, delay);
         }
 
-        public void Unschedule(SEL_SCHEDULE selector)
+        public void Unschedule(Action<float> selector)
         {
             // explicit nil handling
             if (selector == null)

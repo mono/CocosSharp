@@ -1,9 +1,10 @@
-﻿
+﻿using System;
+
 namespace Cocos2D
 {
     public class CCCallFuncO : CCCallFunc
     {
-        private SEL_CallFuncO m_pCallFuncO;
+        private Action<object> m_pCallFuncO;
         private object m_pObject;
 
         public CCCallFuncO()
@@ -12,7 +13,7 @@ namespace Cocos2D
             m_pCallFuncO = null;
         }
 
-		public CCCallFuncO (SEL_CallFuncO selector, object pObject) : this()
+		public CCCallFuncO (Action<object> selector, object pObject) : this()
         {
             InitWithTarget(selector, pObject);
         }
@@ -22,7 +23,7 @@ namespace Cocos2D
 			InitWithTarget(callFuncO.m_pCallFuncO, callFuncO.m_pObject);
 		}
 
-		public bool InitWithTarget(SEL_CallFuncO selector, object pObject)
+		public bool InitWithTarget(Action<object> selector, object pObject)
         {
             m_pObject = pObject;
             m_pCallFuncO = selector;
@@ -30,7 +31,7 @@ namespace Cocos2D
         }
 
         // super methods
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
 
             if (zone != null)

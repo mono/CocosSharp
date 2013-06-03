@@ -111,7 +111,7 @@ namespace tests
             using (var stream = new MemoryStream())
             {
 
-                m_pTarget.SaveToStream(stream, ImageFormat.PNG);
+                m_pTarget.SaveToStream(stream, CCImageFormat.PNG);
                 //m_pTarget.saveToFile(jpg, ImageFormat.JPG);
 
                 stream.Position = 0;

@@ -500,7 +500,7 @@ namespace Cocos2D
             ((CCSprite) m_pTarget).DisplayFrame = mSpriteFrame;
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
             CCBSetSpriteFrame pRet;
 
@@ -551,7 +551,7 @@ namespace Cocos2D
             m_pTarget.Rotation = mStartAngle + (mDiffAngle * time);
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
             CCBRotateTo pRet;
 

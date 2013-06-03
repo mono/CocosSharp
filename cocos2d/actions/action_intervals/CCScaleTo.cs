@@ -30,7 +30,7 @@ namespace Cocos2D
             m_fEndScaleY = sy;
         }
 
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
             if (zone != null)
             {

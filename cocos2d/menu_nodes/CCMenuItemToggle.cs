@@ -15,7 +15,7 @@ namespace Cocos2D
             InitWithTarget(null);
         }
         
-        public CCMenuItemToggle (SEL_MenuHandler selector, params CCMenuItem[] items)
+		public CCMenuItemToggle (Action<object> selector, params CCMenuItem[] items)
         {
             InitWithTarget(selector, items);
         }
@@ -112,7 +112,7 @@ namespace Cocos2D
 
         #endregion
 
-        public bool InitWithTarget(SEL_MenuHandler selector, CCMenuItem[] items)
+		public bool InitWithTarget(Action<object> selector, CCMenuItem[] items)
         {
             base.InitWithTarget(selector);
             m_pSubItems = new List<CCMenuItem>();

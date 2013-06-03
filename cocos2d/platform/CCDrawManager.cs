@@ -82,7 +82,7 @@ namespace Cocos2D
         private static CCRect m_obViewPortRect;
         private static CCSize m_obScreenSize;
         private static CCSize m_obDesignResolutionSize;
-        private static ResolutionPolicy m_eResolutionPolicy = ResolutionPolicy.UnKnown;
+        private static CCResolutionPolicy m_eResolutionPolicy = CCResolutionPolicy.UnKnown;
         private static float m_fFrameZoomFactor = 1.0f;
         private static DepthFormat m_PlatformDepthFormat = DepthFormat.Depth24;
         // ref: http://www.khronos.org/registry/gles/extensions/NV/GL_NV_texture_npot_2D_mipmap.txt
@@ -180,7 +180,7 @@ namespace Cocos2D
         {
             get
             {
-                if (m_eResolutionPolicy == ResolutionPolicy.NoBorder)
+                if (m_eResolutionPolicy == CCResolutionPolicy.NoBorder)
                 {
                     return new CCSize(m_obScreenSize.Width / m_fScaleX, m_obScreenSize.Height / m_fScaleY);
                 }
@@ -195,7 +195,7 @@ namespace Cocos2D
         {
             get
             {
-                if (m_eResolutionPolicy == ResolutionPolicy.NoBorder)
+                if (m_eResolutionPolicy == CCResolutionPolicy.NoBorder)
                 {
                     return new CCPoint((m_obDesignResolutionSize.Width - m_obScreenSize.Width / m_fScaleX) / 2,
                                        (m_obDesignResolutionSize.Height - m_obScreenSize.Height / m_fScaleY) / 2);
@@ -295,7 +295,7 @@ namespace Cocos2D
 
             m_fScaleY = 1.0f;
             m_fScaleX = 1.0f;
-            m_eResolutionPolicy = ResolutionPolicy.UnKnown;
+            m_eResolutionPolicy = CCResolutionPolicy.UnKnown;
 
             m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
             m_obScreenSize = m_obDesignResolutionSize = m_obViewPortRect.Size;
@@ -345,7 +345,7 @@ namespace Cocos2D
                 m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
                 m_obScreenSize = m_obViewPortRect.Size;
 
-                if (m_eResolutionPolicy != ResolutionPolicy.UnKnown)
+                if (m_eResolutionPolicy != CCResolutionPolicy.UnKnown)
                 {
                     SetDesignResolutionSize(m_obDesignResolutionSize.Width, m_obDesignResolutionSize.Height, m_eResolutionPolicy);
                 }
@@ -923,9 +923,9 @@ namespace Cocos2D
             }
         }
 
-        public static void SetDesignResolutionSize(float width, float height, ResolutionPolicy resolutionPolicy)
+        public static void SetDesignResolutionSize(float width, float height, CCResolutionPolicy resolutionPolicy)
         {
-            Debug.Assert(resolutionPolicy != ResolutionPolicy.UnKnown, "should set resolutionPolicy");
+            Debug.Assert(resolutionPolicy != CCResolutionPolicy.UnKnown, "should set resolutionPolicy");
 
             if (width == 0.0f || height == 0.0f)
             {
@@ -938,12 +938,12 @@ namespace Cocos2D
             m_fScaleX = m_obScreenSize.Width / m_obDesignResolutionSize.Width;
             m_fScaleY = m_obScreenSize.Height / m_obDesignResolutionSize.Height;
 
-            if (resolutionPolicy == ResolutionPolicy.NoBorder)
+            if (resolutionPolicy == CCResolutionPolicy.NoBorder)
             {
                 m_fScaleX = m_fScaleY = Math.Max(m_fScaleX, m_fScaleY);
             }
 
-            if (resolutionPolicy == ResolutionPolicy.ShowAll)
+            if (resolutionPolicy == CCResolutionPolicy.ShowAll)
             {
                 m_fScaleX = m_fScaleY = Math.Min(m_fScaleX, m_fScaleY);
             }
@@ -1174,7 +1174,7 @@ namespace Cocos2D
         #endregion
     }
 
-    public enum ResolutionPolicy
+    public enum CCResolutionPolicy
     {
         // The entire application is visible in the specified area without trying to preserve the original aspect ratio. 
         // Distortion can occur, and the application may appear stretched or compressed.

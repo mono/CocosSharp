@@ -25,7 +25,7 @@ namespace Cocos2D
             }
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
 
             if (pZone != null)

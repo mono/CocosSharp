@@ -445,7 +445,7 @@
     <Compile Include=".\cocoa\CCGeometry.cs">
       <LogicalName>cocoa\CCGeometry</LogicalName>
     </Compile>
-    <Compile Include=".\cocoa\ICopyable.cs">
+    <Compile Include=".\cocoa\ICCCopyable.cs">
       <LogicalName>cocoa\ICopyable</LogicalName>
     </Compile>
     <Compile Include=".\denshion\CCEffectPlayer.cs">
@@ -958,7 +958,7 @@
     <Compile Include=".\predefine\ccTypes.cs">
       <LogicalName>predefine\ccTypes</LogicalName>
     </Compile>
-    <Compile Include=".\predefine\selector_protocol.cs">
+    <Compile Include=".\predefine\CCSelectorProtocol">
       <LogicalName>predefine\selector_protocol</LogicalName>
     </Compile>
     <Compile Include=".\Properties\AssemblyInfo.cs">
@@ -1048,7 +1048,7 @@
     <Compile Include=".\support\data_support\CCArray.cs">
       <LogicalName>support\data_support\ccCArray</LogicalName>
     </Compile>
-    <Compile Include=".\support\image_support\TGAlib.cs">
+    <Compile Include=".\support\image_support\CCTGALib.cs">
       <LogicalName>support\image_support\TGAlib</LogicalName>
     </Compile>
     <Compile Include=".\support\Serialization\CCSerialization.cs">
@@ -1141,7 +1141,7 @@
     <Compile Include=".\touch_dispatcher\ICCTouchDelegate.cs">
       <LogicalName>touch_dispatcher\ICCTouchDelegate</LogicalName>
     </Compile>
-    <Compile Include=".\touch_dispatcher\IEGLTouchDelegate.cs">
+    <Compile Include=".\touch_dispatcher\ICCEGLTouchDelegate.cs">
       <LogicalName>touch_dispatcher\IEGLTouchDelegate</LogicalName>
     </Compile>
     <Compile Include=".\Win8IOExtensions.cs">

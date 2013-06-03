@@ -27,7 +27,7 @@ namespace Cocos2D
             m_pOther.Update(newT);
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
 
             if (pZone != null)

@@ -1,9 +1,10 @@
-﻿
+﻿using System;
+
 namespace Cocos2D
 {
     public class CCCallFunc : CCActionInstant
     {
-        private SEL_CallFunc m_pCallFunc;
+        private Action m_pCallFunc;
         protected string m_scriptFuncName;
 
         public CCCallFunc()
@@ -12,7 +13,7 @@ namespace Cocos2D
             m_pCallFunc = null;
         }
 
-        public CCCallFunc (SEL_CallFunc selector) : base ()
+        public CCCallFunc (Action selector) : base ()
         {
             m_pCallFunc = selector;
         }
@@ -40,7 +41,7 @@ namespace Cocos2D
             Execute();
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
 
             if (pZone != null)

@@ -233,7 +233,7 @@ namespace Cocos2D
         * action message is sent. See "CCControlEvent" for bitmask constants.
         */
 
-        public virtual void AddTargetWithActionForControlEvents(object target, SEL_CCControlHandler action, CCControlEvent controlEvents)
+		public virtual void AddTargetWithActionForControlEvents(object target, Action<object, CCControlEvent> action, CCControlEvent controlEvents)
         {
             // For each control events
             for (int i = 0; i < kControlEventTotalNumber; i++)
@@ -259,7 +259,7 @@ namespace Cocos2D
         * target and action. See "CCControlEvent" for bitmask constants.
         */
 
-        public virtual void RemoveTargetWithActionForControlEvents(object target, SEL_CCControlHandler action, CCControlEvent controlEvents)
+		public virtual void RemoveTargetWithActionForControlEvents(object target, Action<object, CCControlEvent> action, CCControlEvent controlEvents)
         {
             // For each control events
             for (int i = 0; i < kControlEventTotalNumber; i++)
@@ -344,7 +344,7 @@ namespace Cocos2D
         }
 
 
-        public void AddTargetWithActionForControlEvent(object target, SEL_CCControlHandler action, CCControlEvent controlEvent)
+		public void AddTargetWithActionForControlEvent(object target, Action<object, CCControlEvent> action, CCControlEvent controlEvent)
         {
             // Create the invocation object
             var invocation = new CCInvocation(target, action, controlEvent);
@@ -354,7 +354,7 @@ namespace Cocos2D
             eventInvocationList.Add(invocation);
         }
 
-        public void RemoveTargetWithActionForControlEvent(object target, SEL_CCControlHandler action, CCControlEvent controlEvent)
+		public void RemoveTargetWithActionForControlEvent(object target, Action<object, CCControlEvent> action, CCControlEvent controlEvent)
         {
             // Retrieve all invocations for the given control event
             //<CCInvocation*>

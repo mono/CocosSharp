@@ -41,7 +41,7 @@ namespace tests.Extensions
 
         #region CCBSelectorResolver Members
 
-        public SEL_MenuHandler OnResolveCCBCCMenuItemSelector(object target, string pSelectorName)
+		public Action<object> OnResolveCCBCCMenuItemSelector(object target, string pSelectorName)
         {
             MethodInfo methodInfo = GetType().GetMethod(pSelectorName);
             if (methodInfo == null)
@@ -51,9 +51,9 @@ namespace tests.Extensions
             if (methodInfo != null)
             {
 #if NETFX_CORE
-                return (SEL_MenuHandler)methodInfo.CreateDelegate(typeof(SEL_MenuHandler), target);
+				return (Action<object>)methodInfo.CreateDelegate(Action<object>, target);
 #else
-                return (SEL_MenuHandler) Delegate.CreateDelegate(typeof(SEL_MenuHandler), this, methodInfo);
+				return (Action<object>)Delegate.CreateDelegate(typeof(Action<object>), this, methodInfo);
 #endif
             }
             else
@@ -63,7 +63,7 @@ namespace tests.Extensions
             return null;
         }
 
-        public SEL_CCControlHandler OnResolveCCBCCControlSelector(object target, string pSelectorName)
+		public Action<object, CCControlEvent> OnResolveCCBCCControlSelector(object target, string pSelectorName)
         {
             MethodInfo methodInfo = GetType().GetMethod(pSelectorName);
             if (methodInfo == null)
@@ -73,9 +73,9 @@ namespace tests.Extensions
             if (methodInfo != null)
             {
 #if NETFX_CORE
-                return (SEL_CCControlHandler) methodInfo.CreateDelegate(typeof(SEL_CCControlHandler), target);
+				return (Action<object, CCControlEvent>) methodInfo.CreateDelegate(typeof(Action<object, CCControlEvent>), target);
 #else
-                return (SEL_CCControlHandler)Delegate.CreateDelegate(typeof(SEL_CCControlHandler), this, methodInfo);
+				return (Action<object, CCControlEvent>)Delegate.CreateDelegate(typeof(Action<object, CCControlEvent>), this, methodInfo);
 #endif
             }
             else

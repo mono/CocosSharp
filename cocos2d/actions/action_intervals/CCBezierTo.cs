@@ -21,7 +21,7 @@ namespace Cocos2D
             m_sConfig.EndPosition = (m_sConfig.EndPosition - m_startPosition);
         }
 
-        public override object Copy(ICopyable zone)
+        public override object Copy(ICCCopyable zone)
         {
 
             if (zone != null && zone != null)

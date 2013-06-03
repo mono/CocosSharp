@@ -17,7 +17,7 @@ namespace Cocos2D
 			m_pOther = copy.m_pOther;
 		}
 		
-		public override object Copy(ICopyable zone)
+		public override object Copy(ICCCopyable zone)
 		{
 			if (zone != null)
 			{

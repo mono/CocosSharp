@@ -17,7 +17,7 @@ namespace Cocos2D
             m_pOther.Update((float) (Math.Pow(time, 1 / m_fRate)));
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
 
             if (pZone != null)

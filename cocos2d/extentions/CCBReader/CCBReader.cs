@@ -132,8 +132,8 @@ namespace Cocos2D
 
     public interface CCBSelectorResolver
     {
-        SEL_MenuHandler OnResolveCCBCCMenuItemSelector(object target, string pSelectorName);
-        SEL_CCControlHandler OnResolveCCBCCControlSelector(object target, string pSelectorName);
+		Action<object> OnResolveCCBCCMenuItemSelector(object target, string pSelectorName);
+		Action<object, CCControlEvent> OnResolveCCBCCControlSelector(object target, string pSelectorName);
     }
 
     public interface CCBScriptOwnerProtocol

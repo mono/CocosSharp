@@ -22,7 +22,7 @@ namespace Cocos2D
             return new CCEaseExponentialOut((CCActionInterval) m_pOther.Reverse());
         }
 
-        public override object Copy(ICopyable pZone)
+        public override object Copy(ICCCopyable pZone)
         {
 
             if (pZone != null)
