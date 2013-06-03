@@ -1053,6 +1053,11 @@ namespace Cocos2D
             get { return LengthSQ; }
         }
 
+        /// <summary>
+        /// Computes the length of this point as if it were a vector with XY components relative to the
+        /// origin. This is computed each time this property is accessed, so cache the value that is
+        /// returned.
+        /// </summary>
         public float Length
         {
             get { return (float)Math.Sqrt(X * X + Y * Y); }
@@ -1072,11 +1077,22 @@ namespace Cocos2D
             }
         }
 
-        public void Normalize()
+        /// <summary>
+        /// Normalizes the components of this point (convert to mag 1), and returns the orignial 
+        /// magnitude of the vector defined by the XY components of this point.
+        /// </summary>
+        /// <returns></returns>
+        public float Normalize()
         {
-            var l = 1f / (float)Math.Sqrt(X * X + Y * Y);
+            float mag = (float)Math.Sqrt(X * X + Y * Y);
+            if (mag < float.Epsilon)
+            {
+                return (0f);
+            }
+            var l = 1f / mag;
             X *= l;
             Y *= l;
+            return (mag);
         }
 
         #region Static Methods
