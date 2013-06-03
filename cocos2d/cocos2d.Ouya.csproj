@@ -293,7 +293,7 @@
     <Compile Include="Platform\CCSpriteFontCache.cs" />
     <Compile Include="Platform\CCDrawManager.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
-    <Compile Include="Platform\InputState.cs" />
+    <Compile Include="Platform\CCInputState.cs" />
     <Compile Include="Platform\CCOGLES.cs">
       <SubType>Code</SubType>
     </Compile>
