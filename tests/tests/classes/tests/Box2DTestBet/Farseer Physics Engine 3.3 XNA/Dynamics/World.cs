@@ -24,7 +24,9 @@
 */
 
 using System;
+#if NETFX_CORE
 using System.Collections.Generic;
+#endif
 using System.Diagnostics;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Common;
