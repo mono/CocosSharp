@@ -45,7 +45,7 @@ namespace tests
 #if WINDOWS || WINDOWSGL
             CCDrawManager.SetDesignResolutionSize(1024, 768, ResolutionPolicy.ExactFit);
 #else
-            CCDrawManager.SetDesignResolutionSize(800, 480, ResolutionPolicy.ShowAll);
+            CCDrawManager.SetDesignResolutionSize(800, 480, CCResolutionPolicy.ShowAll);
             //CCDrawManager.SetDesignResolutionSize(480, 320, ResolutionPolicy.ShowAll);
 #endif
             // turn on display FPS
