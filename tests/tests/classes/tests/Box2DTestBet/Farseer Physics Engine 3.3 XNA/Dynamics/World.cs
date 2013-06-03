@@ -24,7 +24,7 @@
 */
 
 using System;
-#if NETFX_CORE
+#if NETFX_CORE || IOS || MONOMAC
 using System.Collections.Generic;
 #endif
 using System.Diagnostics;
