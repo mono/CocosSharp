@@ -1048,7 +1048,7 @@
     <Compile Include=".\support\data_support\CCArray.cs">
       <LogicalName>support\data_support\ccCArray</LogicalName>
     </Compile>
-    <Compile Include=".\support\image_support\TGAlib.cs">
+    <Compile Include=".\support\image_support\CCTGALib.cs">
       <LogicalName>support\image_support\TGAlib</LogicalName>
     </Compile>
     <Compile Include=".\support\Serialization\CCSerialization.cs">

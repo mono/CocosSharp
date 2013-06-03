@@ -372,7 +372,6 @@
     <Compile Include="support\Compression\ZlibException.cs" />
     <Compile Include="support\Compression\ZlibStreamFlavor.cs" />
     <Compile Include="support\data_support\CCArray.cs" />
-    <Compile Include="support\image_support\TGAlib.cs" />
     <Compile Include="support\TransformUtils.cs" />
     <Compile Include="support\zip_support\CCZHeader.cs" />
     <Compile Include="support\zip_support\ZipUtils.cs" />
@@ -421,6 +420,7 @@
     <Compile Include="support\CCUserDefault.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
+    <Compile Include="support\image_support\CCTGAlib.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">

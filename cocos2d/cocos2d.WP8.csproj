@@ -401,7 +401,7 @@
     <Compile Include="support\Converters\CCRectConverter.cs" />
     <Compile Include="support\Converters\CCSizeConverter.cs" />
     <Compile Include="support\data_support\CCArray.cs" />
-    <Compile Include="support\image_support\TGAlib.cs" />
+    <Compile Include="support\image_support\CCTGALib.cs" />
     <Compile Include="support\Serialization\CCSerialization.cs" />
     <Compile Include="support\TransformUtils.cs" />
     <Compile Include="support\zip_support\CCZHeader.cs" />

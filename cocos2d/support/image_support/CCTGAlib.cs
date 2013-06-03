@@ -83,7 +83,7 @@ namespace Cocos2D
 		}
     }
 
-    internal class TGAlib
+    internal class CCTGAlib
     {
         /// <summary>
         /// load the image header fields. We only keep those that matter!

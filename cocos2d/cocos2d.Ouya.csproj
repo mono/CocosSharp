@@ -363,7 +363,7 @@
     <Compile Include="support\Compression\ZlibException.cs" />
     <Compile Include="support\Compression\ZlibStreamFlavor.cs" />
     <Compile Include="support\data_support\CCArray.cs" />
-    <Compile Include="support\image_support\TGAlib.cs" />
+    <Compile Include="support\image_support\CCTGALib.cs" />
     <Compile Include="support\TransformUtils.cs" />
     <Compile Include="support\zip_support\CCZHeader.cs" />
     <Compile Include="support\zip_support\ZipUtils.cs" />
