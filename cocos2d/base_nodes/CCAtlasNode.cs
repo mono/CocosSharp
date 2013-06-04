@@ -62,6 +62,10 @@ namespace Cocos2D
                 {
                     Color = m_tColorUnmodified;
                 }
+                else
+                {
+                    UpdateAtlasValues();
+                }
             }
         }
 
@@ -121,8 +125,7 @@ namespace Cocos2D
         {
             if (!m_pTextureAtlas.Texture.HasPremultipliedAlpha)
             {
-                m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
-                m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
+                m_tBlendFunc = CCBlendFunc.NonPremultiplied;
             }
         }
 
@@ -157,8 +160,7 @@ namespace Cocos2D
             m_tColorUnmodified = CCTypes.CCWhite;
             m_bIsOpacityModifyRGB = true;
 
-            m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
-            m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
+            m_tBlendFunc = CCBlendFunc.AlphaBlend; 
 
             m_pTextureAtlas = new CCTextureAtlas();
             m_pTextureAtlas.InitWithTexture(texture, itemsToRender);

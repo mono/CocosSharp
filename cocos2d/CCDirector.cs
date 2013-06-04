@@ -705,7 +705,6 @@ namespace Cocos2D
             {
                 //glEnable(GL_BLEND);
                 //glBlendFunc(CCDefaultSourceBlending, CCDefaultDestinationBlending);
-                //CCDrawManager.BlendFunc(new ccBlendFunc(ccMacros.CCDefaultSourceBlending, ccMacros.CCDefaultDestinationBlending));
             }
             else
             {

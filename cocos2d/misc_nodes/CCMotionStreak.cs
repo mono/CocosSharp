@@ -28,7 +28,7 @@ namespace Cocos2D
 
         public CCMotionStreak()
         {
-            m_tBlendFunc = new CCBlendFunc(CCOGLES.GL_SRC_ALPHA, CCOGLES.GL_ONE_MINUS_SRC_ALPHA);
+            m_tBlendFunc = CCBlendFunc.NonPremultiplied;
         }
 
         public override CCPoint Position
@@ -40,15 +40,15 @@ namespace Cocos2D
             }
         }
 
-        #region ICCRGBAProtocol Members
+        #region RGBA Protocol
 
-        public byte Opacity
+        public override byte Opacity
         {
             get { return 0; }
             set { }
         }
 
-        public bool IsOpacityModifyRGB
+        public override bool IsOpacityModifyRGB
         {
             get { return false; }
             set { }
@@ -129,11 +129,7 @@ namespace Cocos2D
             m_pVertices = new CCV3F_C4B_T2F[(m_uMaxPoints + 1) * 2];
 
             // Set blend mode
-            m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
-            m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
-
-            // shader program
-            // setShaderProgram(CCShaderCache.sharedShaderCache().programForKey(kCCShader_PositionTextureColor));
+            m_tBlendFunc = CCBlendFunc.NonPremultiplied;
 
             Texture = texture;
             Color = color;
@@ -405,7 +401,7 @@ namespace Cocos2D
         {
             CCDrawManager.BlendFunc(m_tBlendFunc);
             CCDrawManager.BindTexture(m_pTexture);
-
+            CCDrawManager.VertexColorEnabled = true;
             CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip, m_pVertices, 0, m_uNuPoints * 2 - 2);
         }
     }

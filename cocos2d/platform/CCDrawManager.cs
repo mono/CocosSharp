@@ -66,7 +66,7 @@ namespace Cocos2D
         private static int m_lastWidth;
         private static int m_lastHeight;
         private static bool m_depthTest = true;
-        private static CCBlendFunc m_currBlend = new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending);
+        private static CCBlendFunc m_currBlend = CCBlendFunc.AlphaBlend;
         private static RenderTarget2D m_currRenderTarget;
         private static Viewport m_savedViewport;
         private static DynamicVertexBuffer m_quadsBuffer;
@@ -527,19 +527,19 @@ namespace Cocos2D
             //if (m_currBlend.Destination != blendFunc.Destination || m_currBlend.Source != blendFunc.Source)
             //{
                 BlendState bs = null;
-                if (blendFunc.Source == CCOGLES.GL_ONE && blendFunc.Destination == CCOGLES.GL_ONE_MINUS_SRC_ALPHA)
+                if (blendFunc == CCBlendFunc.AlphaBlend)
                 {
                     bs = BlendState.AlphaBlend;
                 }
-                else if (blendFunc.Source == CCOGLES.GL_SRC_ALPHA && blendFunc.Destination == CCOGLES.GL_ONE)
+                else if (blendFunc == CCBlendFunc.Additive)
                 {
                     bs = BlendState.Additive;
                 }
-                else if (blendFunc.Source == CCOGLES.GL_SRC_ALPHA && blendFunc.Destination == CCOGLES.GL_ONE_MINUS_SRC_ALPHA)
+                else if (blendFunc == CCBlendFunc.NonPremultiplied)
                 {
                     bs = BlendState.NonPremultiplied;
                 }
-                else if (blendFunc.Source == CCOGLES.GL_ONE && blendFunc.Destination == CCOGLES.GL_ZERO)
+                else if (blendFunc == CCBlendFunc.Opaque)
                 {
                     bs = BlendState.Opaque;
                 }

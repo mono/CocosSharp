@@ -411,8 +411,8 @@ namespace Cocos2D
 
         public override void Draw()
         {
+            CCDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
             CCDrawManager.BindTexture(Texture);
-            CCDrawManager.BlendFunc(new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending)); // OGLES.GL_SRC_ALPHA, OGLES.GL_ONE_MINUS_SRC_ALPHA));
             CCDrawManager.DrawQuad(ref m_sQuad);
 
             //    /*

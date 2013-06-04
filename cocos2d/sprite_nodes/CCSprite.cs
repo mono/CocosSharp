@@ -489,9 +489,7 @@ namespace Cocos2D
             Dirty = false;
 
             m_bOpacityModifyRGB = true;
-
-            m_sBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
-            m_sBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
+            m_sBlendFunc = CCBlendFunc.AlphaBlend;
 
             m_bFlipX = m_bFlipY = false;
 
@@ -1025,22 +1023,18 @@ namespace Cocos2D
 
         protected void UpdateBlendFunc()
         {
-            // CCSprite: updateBlendFunc doesn't work when the sprite is rendered using a CCSpriteSheet
             Debug.Assert(m_pobBatchNode == null,
                          "CCSprite: updateBlendFunc doesn't work when the sprite is rendered using a CCSpriteSheet");
 
             // it's possible to have an untextured sprite
-            //if (m_pobTexture == null || !m_pobTexture.HasPremultipliedAlpha)
-            if (m_pobTexture == null)  // || !m_pobTexture.HasPremultipliedAlpha)
+            if (m_pobTexture == null || !m_pobTexture.HasPremultipliedAlpha)
             {
-                m_sBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
-                m_sBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
+                m_sBlendFunc = CCBlendFunc.NonPremultiplied;
                 IsOpacityModifyRGB = false;
             }
             else
             {
-                m_sBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
-                m_sBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
+                m_sBlendFunc = CCBlendFunc.AlphaBlend;
                 IsOpacityModifyRGB = true;
             }
         }

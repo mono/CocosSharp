@@ -182,13 +182,6 @@ namespace Cocos2D
          */
         public static readonly int CCSpriteIndexNotInitialized = 320000000; // 0xffffffff; // CCSprite invalid index on the CCSpriteBatchode
 
-
-        public static readonly int CCDefaultSourceBlending = CCOGLES.GL_ONE;
-        public static readonly int CCDefaultDestinationBlending = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
-
-        // The following macros are defined for opengl es, they are not needed.
-        // #define CCDefaultDestinationBlending GL_ONE_MINUS_SRC_ALPHA
-
         // #define CC_ENABLE_DEFAULT_GL_STATES() {				\
         // glEnableClientState(GL_VERTEX_ARRAY);			\
         // glEnableClientState(GL_COLOR_ARRAY);			\

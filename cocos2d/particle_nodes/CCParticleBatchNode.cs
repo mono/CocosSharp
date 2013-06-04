@@ -19,11 +19,9 @@ namespace Cocos2D
                 TextureAtlas.Texture = value;
 
                 // If the new texture has No premultiplied alpha, AND the blendFunc hasn't been changed, then update it
-                if (value != null && ! value.HasPremultipliedAlpha &&
-                    (m_tBlendFunc.Source == CCMacros.CCDefaultSourceBlending && m_tBlendFunc.Destination == CCMacros.CCDefaultDestinationBlending))
+                if (value != null && !value.HasPremultipliedAlpha && m_tBlendFunc == CCBlendFunc.AlphaBlend)
                 {
-                    m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
-                    m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
+                    m_tBlendFunc = CCBlendFunc.NonPremultiplied;
                 }
             }
         }
@@ -68,10 +66,7 @@ namespace Cocos2D
             // no lazy alloc in this node
             m_pChildren = new CCRawList<CCNode>(capacity);
 
-            m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
-            m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
-
-            //setShaderProgram(CCShaderCache::sharedShaderCache().programForKey(kCCShader_PositionTextureColor));
+            m_tBlendFunc = CCBlendFunc.AlphaBlend;
 
             return true;
         }
@@ -365,27 +360,14 @@ namespace Cocos2D
 
         public override void Draw()
         {
-            //CC_PROFILER_STOP("CCParticleBatchNode - draw");
-
             if (TextureAtlas.TotalQuads == 0)
             {
                 return;
             }
 
-            for (int i = 0; i < m_pChildren.count; i++)
-            {
-                //((CCParticleSystem) m_pChildren.Elements[i]).updateQuadsWithParticles();
-            }
-
-
-            //CC_NODE_DRAW_SETUP();
-
-            //ccGLBlendFunc( m_tBlendFunc.src, m_tBlendFunc.dst );
             CCDrawManager.BlendFunc(m_tBlendFunc);
 
             TextureAtlas.DrawQuads();
-
-            //CC_PROFILER_STOP("CCParticleBatchNode - draw");
         }
 
 
@@ -462,8 +444,7 @@ namespace Cocos2D
         {
             if (!TextureAtlas.Texture.HasPremultipliedAlpha)
             {
-                m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
-                m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
+                m_tBlendFunc = CCBlendFunc.NonPremultiplied;
             }
         }
     }

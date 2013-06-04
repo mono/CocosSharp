@@ -691,9 +691,8 @@ namespace Cocos2D
             m_bIsActive = true;
 
             // default blend function
-            m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
-            m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
-
+            m_tBlendFunc = CCBlendFunc.AlphaBlend;
+                
             // default movement type;
             m_ePositionType = CCPositionType.kCCPositionTypeFree;
 
@@ -1097,7 +1096,7 @@ namespace Cocos2D
 
                 m_bOpacityModifyRGB = false;
 
-                if (m_tBlendFunc.Source == CCMacros.CCDefaultSourceBlending && m_tBlendFunc.Destination == CCMacros.CCDefaultDestinationBlending)
+                if (m_tBlendFunc == CCBlendFunc.AlphaBlend)
                 {
                     if (premultiplied)
                     {
@@ -1105,8 +1104,7 @@ namespace Cocos2D
                     }
                     else
                     {
-                        m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
-                        m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
+                        m_tBlendFunc = CCBlendFunc.NonPremultiplied;
                     }
                 }
             }
@@ -1118,25 +1116,22 @@ namespace Cocos2D
 
         public bool BlendAdditive
         {
-            get { return (m_tBlendFunc.Source == CCOGLES.GL_SRC_ALPHA && m_tBlendFunc.Destination == CCOGLES.GL_ONE); }
+            get { return m_tBlendFunc == CCBlendFunc.Additive; }
             set
             {
                 if (value)
                 {
-                    m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
-                    m_tBlendFunc.Destination = CCOGLES.GL_ONE;
+                    m_tBlendFunc = CCBlendFunc.Additive;
                 }
                 else
                 {
                     if (m_pTexture != null && !m_pTexture.HasPremultipliedAlpha)
                     {
-                        m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
-                        m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
+                        m_tBlendFunc = CCBlendFunc.NonPremultiplied;
                     }
                     else
                     {
-                        m_tBlendFunc.Source = CCMacros.CCDefaultSourceBlending;
-                        m_tBlendFunc.Destination = CCMacros.CCDefaultDestinationBlending;
+                        m_tBlendFunc = CCBlendFunc.AlphaBlend;
                     }
                 }
             }

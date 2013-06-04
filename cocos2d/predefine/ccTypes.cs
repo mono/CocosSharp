@@ -520,10 +520,10 @@ namespace Cocos2D
     /// </summary>
     public struct CCBlendFunc
     {
-        public static readonly CCBlendFunc AlphaBlend = new CCBlendFunc() { Source = CCOGLES.GL_ONE, Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA };
-        public static readonly CCBlendFunc Additive = new CCBlendFunc() { Source = CCOGLES.GL_SRC_ALPHA, Destination = CCOGLES.GL_ONE };
-        public static readonly CCBlendFunc NonPremultiplied = new CCBlendFunc() { Source = CCOGLES.GL_SRC_ALPHA, Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA };
-        public static readonly CCBlendFunc Opaque = new CCBlendFunc() { Source = CCOGLES.GL_ONE, Destination = CCOGLES.GL_ZERO };
+        public static readonly CCBlendFunc AlphaBlend = new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE_MINUS_SRC_ALPHA);
+        public static readonly CCBlendFunc Additive = new CCBlendFunc(CCOGLES.GL_SRC_ALPHA, CCOGLES.GL_ONE);
+        public static readonly CCBlendFunc NonPremultiplied = new CCBlendFunc(CCOGLES.GL_SRC_ALPHA, CCOGLES.GL_ONE_MINUS_SRC_ALPHA);
+        public static readonly CCBlendFunc Opaque = new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ZERO);
 
         public CCBlendFunc(int src, int dst)
         {
@@ -540,6 +540,16 @@ namespace Cocos2D
         /// destination blend function
         /// </summary>
         public int Destination;
+
+        public static bool operator ==(CCBlendFunc b1, CCBlendFunc b2)
+        {
+            return b1.Source == b2.Source && b1.Destination == b2.Destination;
+        }
+
+        public static bool operator !=(CCBlendFunc b1, CCBlendFunc b2)
+        {
+            return b1.Source != b2.Source || b1.Destination != b2.Destination;
+        }
     }
 
     public enum CCTextAlignment

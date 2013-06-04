@@ -108,8 +108,7 @@ namespace Cocos2D
             base.Init();
 
             // default blend function
-            m_tBlendFunc.Source = CCOGLES.GL_SRC_ALPHA;
-            m_tBlendFunc.Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA;
+            m_tBlendFunc = CCBlendFunc.NonPremultiplied;
 
             _displayedColor.R = _realColor.R = color.R;
             _displayedColor.G = _realColor.G = color.G;

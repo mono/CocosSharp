@@ -59,7 +59,7 @@ namespace Cocos2D
 
             m_pSprite = new CCSprite(m_pTexture);
             //m_pSprite.scaleY = -1;
-            m_pSprite.BlendFunc = new CCBlendFunc(CCMacros.CCDefaultSourceBlending, CCMacros.CCDefaultDestinationBlending); // OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            m_pSprite.BlendFunc = CCBlendFunc.AlphaBlend;
 
             AddChild(m_pSprite);
 
