@@ -1,5 +1,5 @@
 
-#if WINDOWS || WINDOWSGL_PHONE || XBOX
+#if !NETFX_CORE
 
 //TODO: FIX
 
