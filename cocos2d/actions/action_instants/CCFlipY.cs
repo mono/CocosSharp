@@ -18,6 +18,11 @@
             return true;
         }
 
+		protected CCFlipY(CCFlipX flipY) : base (flipY)
+		{
+			InitWithFlipY(m_bFlipY);
+		}
+
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
@@ -31,21 +36,19 @@
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCFlipY pRet;
 
             if (pZone != null)
             {
-                pRet = (CCFlipY) (pZone);
+                var pRet = (CCFlipY) (pZone);
+				base.Copy(pZone);
+				pRet.InitWithFlipY(m_bFlipY);
+				return pRet;
             }
             else
             {
-                pRet = new CCFlipY();
-                pZone =  (pRet);
+                return new CCFlipY(this);
             }
 
-            base.Copy(pZone);
-            pRet.InitWithFlipY(m_bFlipY);
-            return pRet;
         }
     }
 }

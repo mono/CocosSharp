@@ -6,6 +6,8 @@
         {
         }
 
+		protected CCHide(CCHide hide) : base (hide) {}
+
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
@@ -19,20 +21,17 @@
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCHide pRet;
-
             if (pZone != null)
             {
-                pRet = (CCHide) (pZone);
+                var pRet = (CCHide) (pZone);
+				base.Copy(pZone);
+				return pRet;
             }
             else
             {
-                pRet = new CCHide();
-                pZone =  (pRet);
+                return new CCHide(this);
             }
 
-            base.Copy(pZone);
-            return pRet;
         }
     }
 }

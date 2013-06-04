@@ -6,23 +6,23 @@
         {
         }
 
+		protected CCToggleVisibility (CCToggleVisibility toggleVisibility) : base(toggleVisibility)
+		{ }
+
         public override object Copy(ICCCopyable zone)
         {
-            ICCCopyable tmpZone = zone;
-            CCActionInstant ret;
 
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null)
             {
-                ret = (CCToggleVisibility) tmpZone;
+                var ret = (CCToggleVisibility) zone;
+				base.Copy(zone);
+				return ret;
             }
             else
             {
-                ret = new CCToggleVisibility();
-                tmpZone =  (ret);
+                return new CCToggleVisibility(this);
             }
 
-            base.Copy(tmpZone);
-            return ret;
         }
 
         public override void StartWithTarget(CCNode target)
