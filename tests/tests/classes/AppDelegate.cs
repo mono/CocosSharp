@@ -43,7 +43,7 @@ namespace tests
             CCDirector pDirector = CCDirector.SharedDirector;
             pDirector.SetOpenGlView();
 #if WINDOWS || WINDOWSGL
-            CCDrawManager.SetDesignResolutionSize(1024, 768, CCResolutionPolicy.ExactFit);
+            CCDrawManager.SetDesignResolutionSize(1280, 768, CCResolutionPolicy.ExactFit);
 #else
             CCDrawManager.SetDesignResolutionSize(800, 480, CCResolutionPolicy.ShowAll);
             //CCDrawManager.SetDesignResolutionSize(480, 320, CCResolutionPolicy.ShowAll);
