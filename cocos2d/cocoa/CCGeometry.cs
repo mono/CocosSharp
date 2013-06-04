@@ -1712,6 +1712,17 @@ namespace Cocos2D
             get { return Origin.Y; }
         }
 
+        public CCPoint Center
+        {
+            get
+            {
+                CCPoint pt = CCPoint.Zero;
+                pt.X = MidX;
+                pt.Y = MidY;
+                return (pt);
+            }
+        }
+
         public CCRect Intersection(CCRect rect)
         {
             if (!IntersectsRect(rect))
