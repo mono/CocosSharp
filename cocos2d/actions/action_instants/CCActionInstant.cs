@@ -11,21 +11,17 @@ namespace Cocos2D
 
         public override object Copy(ICCCopyable zone)
         {
-            ICCCopyable tmpZone = zone;
-            CCActionInstant ret;
-
-            if (tmpZone != null && tmpZone != null)
+            if (zone != null)
             {
-                ret = (CCActionInstant) tmpZone;
+                var ret = (CCActionInstant) zone;
+				base.Copy(zone);
+				return ret;
             }
             else
             {
-                ret = new CCActionInstant();
-                tmpZone =  (ret);
+                return new CCActionInstant(this);
             }
 
-            base.Copy(tmpZone);
-            return ret;
         }
 
         public override bool IsDone

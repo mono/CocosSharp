@@ -12,6 +12,11 @@
             InitWithFlipX(x);
         }
 
+		protected CCFlipX(CCFlipX flipX) : base (flipX)
+		{
+			InitWithFlipX(m_bFlipX);
+		}
+
         protected virtual bool InitWithFlipX(bool x)
         {
             m_bFlipX = x;
@@ -31,21 +36,18 @@
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCFlipX pRet;
-
             if (pZone != null)
             {
-                pRet = (CCFlipX) (pZone);
+                var pRet = (CCFlipX) (pZone);
+				base.Copy(pZone);
+				pRet.InitWithFlipX(m_bFlipX);
+				return pRet;
             }
             else
             {
-                pRet = new CCFlipX();
-                pZone =  (pRet);
+                return new CCFlipX(this);
             }
 
-            base.Copy(pZone);
-            pRet.InitWithFlipX(m_bFlipX);
-            return pRet;
         }
     }
 }
