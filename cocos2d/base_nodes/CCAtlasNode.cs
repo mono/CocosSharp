@@ -39,7 +39,7 @@ namespace Cocos2D
 
         #region ICCRGBAProtocol Members
 
-        public bool IsOpacityModifyRGB
+        public override bool IsOpacityModifyRGB
         {
             get { return m_bIsOpacityModifyRGB; }
             set
@@ -87,6 +87,7 @@ namespace Cocos2D
                     tmp.B = (byte) (value.B * _displayedOpacity / 255);
                 }
                 base.Color = tmp;
+                UpdateAtlasValues();
             }
         }
 

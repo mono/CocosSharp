@@ -22,21 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Cocos2D;
-using System.Diagnostics;
 
 namespace tests
 {
     public class MenuLayer1 : CCLayer
     {
         protected CCMenuItemLabel m_disabledItem;
-        string s_SendScore = "Images/SendScoreButton";
-        string s_MenuItem = "Images/menuitemsprite";
-        string s_PressSendScore = "Images/SendScoreButtonPressed";
+        private string s_SendScore = "Images/SendScoreButton";
+        private string s_MenuItem = "Images/menuitemsprite";
+        private string s_PressSendScore = "Images/SendScoreButtonPressed";
 
         public MenuLayer1()
         {
@@ -49,7 +44,8 @@ namespace tests
             CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
             CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
 
-            CCMenuItemSprite item1 = new CCMenuItemSprite(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
+            CCMenuItemSprite item1 = new CCMenuItemSprite(spriteNormal, spriteSelected, spriteDisabled,
+                                                          this.menuCallback);
 
             // Image Item
             CCMenuItem item2 = new CCMenuItemImage(s_SendScore, s_PressSendScore, this.menuCallback2);
@@ -69,7 +65,7 @@ namespace tests
             // Label Item (CCLabelBMFont)
             CCLabelBMFont label = new CCLabelBMFont("configuration", "fonts/bitmapFontTest3.fnt");
             CCMenuItemLabel item5 = new CCMenuItemLabel(label, this.menuCallbackConfig);
-            
+
 
             // Testing issue #500
             item5.Scale = 0.8f;
@@ -81,10 +77,10 @@ namespace tests
             // Font Item
             CCMenuItemFont item7 = new CCMenuItemFont("Quit", this.onQuit);
 
-            CCActionInterval color_action = new CCTintBy (0.5f, 0, -255, -255);
-            CCActionInterval color_back = (CCActionInterval)color_action.Reverse();
+            CCActionInterval color_action = new CCTintBy(0.5f, 0, -255, -255);
+            CCActionInterval color_back = (CCActionInterval) color_action.Reverse();
             CCFiniteTimeAction seq = CCSequence.FromActions(color_action, color_back);
-            item7.RunAction(new CCRepeatForever ((CCActionInterval)seq));
+            item7.RunAction(new CCRepeatForever((CCActionInterval) seq));
 
             CCMenu menu = new CCMenu(item1, item2, item3, item4, item5, item6, item7);
             menu.AlignItemsVertically();
@@ -103,14 +99,14 @@ namespace tests
                     if (pObject == null)
 
                         break;
-                    child = (CCNode)pObject;
+                    child = (CCNode) pObject;
                     CCPoint dstPoint = child.Position;
-                    int offset = (int)(s.Width / 2 + 50);
+                    int offset = (int) (s.Width / 2 + 50);
                     if (i % 2 == 0)
                         offset = -offset;
 
                     child.Position = new CCPoint(dstPoint.X + offset, dstPoint.Y);
-                    child.RunAction(new CCEaseElasticOut(new CCMoveBy (2, new CCPoint(dstPoint.X - offset, 0)), 0.35f));
+                    child.RunAction(new CCEaseElasticOut(new CCMoveBy(2, new CCPoint(dstPoint.X - offset, 0)), 0.35f));
                     i++;
 
                 }
@@ -122,15 +118,16 @@ namespace tests
         }
 
 
-        void menuCallbackPriorityTest(object pSender)
+        private void menuCallbackPriorityTest(object pSender)
         {
-            ((CCLayerMultiplex)m_pParent).SwitchTo(4);
+            ((CCLayerMultiplex) m_pParent).SwitchTo(4);
         }
 
         public override void RegisterWithTouchDispatcher()
         {
             CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, -128 + 1, true);
         }
+
         public override bool TouchBegan(CCTouch touch, CCEvent pEvent)
         {
             return true;
@@ -154,14 +151,17 @@ namespace tests
             base.UnscheduleAllSelectors();
             CCLog.Log("TOUCHES ALLOWED AGAIN");
         }
+
         public void menuCallback(object pSender)
         {
-            ((CCLayerMultiplex)m_pParent).SwitchTo(1);
+            ((CCLayerMultiplex) m_pParent).SwitchTo(1);
         }
+
         public void menuCallbackConfig(object pSender)
         {
-            ((CCLayerMultiplex)m_pParent).SwitchTo(3);
+            ((CCLayerMultiplex) m_pParent).SwitchTo(3);
         }
+
         public void menuCallbackDisabled(object pSender)
         {
             // hijack all touch events for 5 seconds
@@ -169,14 +169,17 @@ namespace tests
             base.Schedule(this.allowTouches, 5.0f);
             CCLog.Log("TOUCHES DISABLED FOR 5 SECONDS");
         }
+
         public void menuCallbackEnable(object pSender)
         {
             m_disabledItem.Enabled = !m_disabledItem.Enabled;
         }
+
         public void menuCallback2(object pSender)
         {
             (m_pParent as CCLayerMultiplex).SwitchTo(2);
         }
+
         public void onQuit(object pSender)
         {
             //[[Director sharedDirector] end];

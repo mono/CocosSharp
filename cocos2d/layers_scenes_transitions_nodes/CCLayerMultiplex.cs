@@ -89,7 +89,7 @@ namespace Cocos2D
             m_pLayers = new List<CCLayer>();
             m_pLayers.AddRange(layer);
             m_nEnabledLayer = 0;
-            AddChild(m_pLayers[(int) m_nEnabledLayer]);
+            AddChild(m_pLayers[m_nEnabledLayer]);
             return true;
         }
 
@@ -105,43 +105,43 @@ namespace Cocos2D
         public void SwitchTo(int n)
         {
             Debug.Assert(n < m_pLayers.Count, "Invalid index in MultiplexLayer switchTo message");
-            CCLayer outLayer = m_pLayers[(int)m_nEnabledLayer];
+            
+            CCLayer outLayer = m_pLayers[m_nEnabledLayer];
+            
             if (m_OutAction != null)
             {
                 outLayer.RunAction(
-					CCSequence.FromActions(
-						(CCFiniteTimeAction)m_OutAction.Copy(), 
-						new CCCallFuncO(RemoveLayerDuringAction, outLayer))
-					);
+                    CCSequence.FromActions(
+                        (CCFiniteTimeAction) m_OutAction.Copy(),
+                        new CCCallFunc(() => RemoveChild(outLayer, true))
+                        )
+                    );
             }
+            else
+            {
+                RemoveChild(outLayer, true);
+            }
+
             m_nEnabledLayer = n;
-            AddChild(m_pLayers[(int)n]);
+
+            AddChild(m_pLayers[n]);
+            
             if (m_InAction != null)
             {
                 m_pLayers[n].RunAction(m_InAction.Copy());
             }
         }
 
-        private void RemoveLayerDuringAction(object l)
-        {
-            RemoveChild((CCNode)l, true);
-        }
-
         /** release the current layer and switches to another layer indexed by n.
         The current (old) layer will be removed from it's parent with 'cleanup:YES'.
         */
-
-        private void SwitchToAndReleaseMe(int n)
+        public void SwitchToAndReleaseMe(int n)
         {
             Debug.Assert(n < m_pLayers.Count, "Invalid index in MultiplexLayer switchTo message");
 
-            RemoveChild(m_pLayers[(int) m_nEnabledLayer], true);
-
-            m_pLayers[(int) m_nEnabledLayer] = null;
-
-            m_nEnabledLayer = n;
-
-            AddChild(m_pLayers[(int) n]);
+            var prevLayer = m_nEnabledLayer;
+            SwitchTo(n);
+            m_pLayers[prevLayer] = null;
         }
     }
 }
