@@ -7,7 +7,13 @@
         protected CCPlace()
         {
         }
-        public CCPlace(CCPoint pos)
+
+		protected CCPlace (CCPlace place) : base(place)
+		{
+			InitWithPosition(m_tPosition);
+		}
+
+		public CCPlace(CCPoint pos)
         {
             InitWithPosition(pos);
         }
@@ -20,21 +26,18 @@
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCPlace pRet;
-
             if (pZone != null)
             {
-                pRet = (CCPlace) (pZone);
+                var pRet = (CCPlace) (pZone);
+				base.Copy(pZone);
+				pRet.InitWithPosition(m_tPosition);
+				return pRet;
             }
             else
             {
-                pRet = new CCPlace();
-                pZone =  (pRet);
+                return new CCPlace(this);
             }
 
-            base.Copy(pZone);
-            pRet.InitWithPosition(m_tPosition);
-            return pRet;
         }
 
         public override void StartWithTarget(CCNode target)

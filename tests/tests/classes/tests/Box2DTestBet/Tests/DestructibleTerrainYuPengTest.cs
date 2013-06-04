@@ -1,4 +1,4 @@
-#if NETFX_CORE || IOS || MONOMAC
+#if NETFX_CORE
 using System.Collections.Generic;
 #endif
 using FarseerPhysics.Collision;

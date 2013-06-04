@@ -18,7 +18,7 @@
             return true;
         }
 
-		protected CCFlipY(CCFlipX flipY) : base (flipY)
+		protected CCFlipY(CCFlipY flipY) : base (flipY)
 		{
 			InitWithFlipY(m_bFlipY);
 		}

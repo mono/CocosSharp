@@ -6,6 +6,9 @@
         {
         }
 
+		protected CCShow (CCShow show) : base(show)
+		{ }
+
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
@@ -19,19 +22,17 @@
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCShow pRet;
             if (pZone != null)
             {
-                pRet = (CCShow) (pZone);
+                var pRet = (CCShow) (pZone);
+				base.Copy(pZone);
+				return pRet;
             }
             else
             {
-                pRet = new CCShow();
-                pZone =  (pRet);
+                return new CCShow(this);
             }
 
-            base.Copy(pZone);
-            return pRet;
         }
     }
 }
