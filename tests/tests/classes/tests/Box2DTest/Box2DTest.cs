@@ -268,6 +268,7 @@ namespace tests
                 }
             }
 
+#if WINDOWS || WINDOWSGL || LINUX || MACOS
             CCInputState.Instance.Update(dt);
             PlayerIndex p;
             if (CCInputState.Instance.IsKeyPress(Microsoft.Xna.Framework.Input.Keys.D, PlayerIndex.One, out p))
@@ -294,6 +295,7 @@ namespace tests
                 CCLog.Log("Step Time = {0:F4}", profile.step);
 #endif
             }
+#endif
         }
 
         public override void TouchesEnded(List<CCTouch> touches)
