@@ -27,7 +27,7 @@ namespace Cocos2D
 {
     public struct CCAffineTransform
     {
-        public static readonly CCAffineTransform Identity = CCAffineTransformMake(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f);
+        public static readonly CCAffineTransform Identity = new CCAffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f);
 
         public float a, b, c, d;
         public float tx, ty;
@@ -42,25 +42,7 @@ namespace Cocos2D
             this.ty = ty;
         }
 
-        public static CCAffineTransform CCAffineTransformMakeIdentity()
-        {
-            return CCAffineTransformMake(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f);
-        }
-
-        public static CCAffineTransform CCAffineTransformMake(float a, float b, float c, float d, float tx, float ty)
-        {
-            return new CCAffineTransform
-                {
-                    a = a,
-                    b = b,
-                    c = c,
-                    d = d,
-                    tx = tx,
-                    ty = ty
-                };
-        }
-
-        public static CCPoint CCPointApplyAffineTransform(CCPoint point, CCAffineTransform t)
+        public static CCPoint Transform(CCPoint point, CCAffineTransform t)
         {
             return new CCPoint(
                 t.a * point.X + t.c * point.Y + t.tx,
@@ -68,7 +50,7 @@ namespace Cocos2D
                 );
         }
 
-        public static CCSize CCSizeApplyAffineTransform(CCSize size, CCAffineTransform t)
+        public static CCSize Transform(CCSize size, CCAffineTransform t)
         {
             var s = new CCSize();
             s.Width = (float) ((double) t.a * size.Width + (double) t.c * size.Height);
@@ -76,17 +58,17 @@ namespace Cocos2D
             return s;
         }
 
-        public static CCRect CCRectApplyAffineTransform(CCRect rect, CCAffineTransform anAffineTransform)
+        public static CCRect Transform(CCRect rect, CCAffineTransform anAffineTransform)
         {
             float top = CCRect.CCRectGetMinY(rect);
             float left = CCRect.CCRectGetMinX(rect);
             float right = CCRect.CCRectGetMaxX(rect);
             float bottom = CCRect.CCRectGetMaxY(rect);
 
-            CCPoint topLeft = CCPointApplyAffineTransform(new CCPoint(left, top), anAffineTransform);
-            CCPoint topRight = CCPointApplyAffineTransform(new CCPoint(right, top), anAffineTransform);
-            CCPoint bottomLeft = CCPointApplyAffineTransform(new CCPoint(left, bottom), anAffineTransform);
-            CCPoint bottomRight = CCPointApplyAffineTransform(new CCPoint(right, bottom), anAffineTransform);
+            CCPoint topLeft = Transform(new CCPoint(left, top), anAffineTransform);
+            CCPoint topRight = Transform(new CCPoint(right, top), anAffineTransform);
+            CCPoint bottomLeft = Transform(new CCPoint(left, bottom), anAffineTransform);
+            CCPoint bottomRight = Transform(new CCPoint(right, bottom), anAffineTransform);
 
             float minX = Math.Min(Math.Min(topLeft.X, topRight.X), Math.Min(bottomLeft.X, bottomRight.X));
             float maxX = Math.Max(Math.Max(topLeft.X, topRight.X), Math.Max(bottomLeft.X, bottomRight.X));
@@ -96,12 +78,12 @@ namespace Cocos2D
             return new CCRect(minX, minY, (maxX - minX), (maxY - minY));
         }
 
-        public static CCAffineTransform CCAffineTransformTranslate(CCAffineTransform t, float tx, float ty)
+        public static CCAffineTransform Translate(CCAffineTransform t, float tx, float ty)
         {
             return new CCAffineTransform(t.a, t.b, t.c, t.d, t.tx + t.a * tx + t.c * ty, t.ty + t.b * tx + t.d * ty);
         }
 
-        public static CCAffineTransform CCAffineTransformRotate(CCAffineTransform t, float anAngle)
+        public static CCAffineTransform Rotate(CCAffineTransform t, float anAngle)
         {
             var fSin = (float) Math.Sin(anAngle);
             var fCos = (float) Math.Cos(anAngle);
@@ -114,7 +96,7 @@ namespace Cocos2D
                                          t.ty);
         }
 
-        public static CCAffineTransform CCAffineTransformScale(CCAffineTransform t, float sx, float sy)
+        public static CCAffineTransform Scale(CCAffineTransform t, float sx, float sy)
         {
             return new CCAffineTransform(t.a * sx, t.b * sx, t.c * sy, t.d * sy, t.tx, t.ty);
         }
@@ -126,7 +108,7 @@ namespace Cocos2D
         /// <param name="t1"></param>
         /// <param name="t2"></param>
         /// <returns></returns>
-        public static CCAffineTransform CCAffineTransformConcat(CCAffineTransform t1, CCAffineTransform t2)
+        public static CCAffineTransform Concat(CCAffineTransform t1, CCAffineTransform t2)
         {
             return new CCAffineTransform(t1.a * t2.a + t1.b * t2.c, t1.a * t2.b + t1.b * t2.d, //a,b
                                          t1.c * t2.a + t1.d * t2.c, t1.c * t2.b + t1.d * t2.d, //c,d
@@ -165,12 +147,12 @@ namespace Cocos2D
         /// <summary>
         ///  Return true if `t1' and `t2' are equal, false otherwise. 
         /// </summary>
-        public static bool CCAffineTransformEqualToTransform(CCAffineTransform t1, CCAffineTransform t2)
+        public static bool Equal(CCAffineTransform t1, CCAffineTransform t2)
         {
             return (t1.a == t2.a && t1.b == t2.b && t1.c == t2.c && t1.d == t2.d && t1.tx == t2.tx && t1.ty == t2.ty);
         }
 
-        public static CCAffineTransform CCAffineTransformInvert(CCAffineTransform t)
+        public static CCAffineTransform Invert(CCAffineTransform t)
         {
             float determinant = 1 / (t.a * t.d - t.b * t.c);
 

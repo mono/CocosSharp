@@ -198,7 +198,7 @@ namespace Cocos2D
             {
                 // We always clip to the bounding box
                 var rect = new CCRect(0, 0, m_tContentSize.Width, m_tContentSize.Height);
-                var bounds = CCAffineTransform.CCRectApplyAffineTransform(rect, NodeToWorldTransform());
+                var bounds = CCAffineTransform.Transform(rect, NodeToWorldTransform());
 
                 var winSize = CCDirector.SharedDirector.WinSize;
 

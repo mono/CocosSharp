@@ -312,17 +312,17 @@ namespace Cocos2D
                 // CCLog("!rotated");
 
                 CCAffineTransform t = CCAffineTransform.Identity;
-                t = CCAffineTransform.CCAffineTransformTranslate(t, rect.Origin.X, rect.Origin.Y);
+                t = CCAffineTransform.Translate(t, rect.Origin.X, rect.Origin.Y);
 
-                centerbounds = CCAffineTransform.CCRectApplyAffineTransform(centerbounds, t);
-                rightbottombounds = CCAffineTransform.CCRectApplyAffineTransform(rightbottombounds, t);
-                leftbottombounds = CCAffineTransform.CCRectApplyAffineTransform(leftbottombounds, t);
-                righttopbounds = CCAffineTransform.CCRectApplyAffineTransform(righttopbounds, t);
-                lefttopbounds = CCAffineTransform.CCRectApplyAffineTransform(lefttopbounds, t);
-                rightcenterbounds = CCAffineTransform.CCRectApplyAffineTransform(rightcenterbounds, t);
-                leftcenterbounds = CCAffineTransform.CCRectApplyAffineTransform(leftcenterbounds, t);
-                centerbottombounds = CCAffineTransform.CCRectApplyAffineTransform(centerbottombounds, t);
-                centertopbounds = CCAffineTransform.CCRectApplyAffineTransform(centertopbounds, t);
+                centerbounds = CCAffineTransform.Transform(centerbounds, t);
+                rightbottombounds = CCAffineTransform.Transform(rightbottombounds, t);
+                leftbottombounds = CCAffineTransform.Transform(leftbottombounds, t);
+                righttopbounds = CCAffineTransform.Transform(righttopbounds, t);
+                lefttopbounds = CCAffineTransform.Transform(lefttopbounds, t);
+                rightcenterbounds = CCAffineTransform.Transform(rightcenterbounds, t);
+                leftcenterbounds = CCAffineTransform.Transform(leftcenterbounds, t);
+                centerbottombounds = CCAffineTransform.Transform(centerbottombounds, t);
+                centertopbounds = CCAffineTransform.Transform(centertopbounds, t);
 
                 // Centre
                 _centre = new CCSprite();
@@ -388,18 +388,18 @@ namespace Cocos2D
                 CCRect rotatedcenterbottombounds = centerbottombounds;
                 CCRect rotatedcentertopbounds = centertopbounds;
 
-                t = CCAffineTransform.CCAffineTransformTranslate(t, rect.Size.Height + rect.Origin.X, rect.Origin.Y);
-                t = CCAffineTransform.CCAffineTransformRotate(t, 1.57079633f);
+                t = CCAffineTransform.Translate(t, rect.Size.Height + rect.Origin.X, rect.Origin.Y);
+                t = CCAffineTransform.Rotate(t, 1.57079633f);
 
-                centerbounds = CCAffineTransform.CCRectApplyAffineTransform(centerbounds, t);
-                rightbottombounds = CCAffineTransform.CCRectApplyAffineTransform(rightbottombounds, t);
-                leftbottombounds = CCAffineTransform.CCRectApplyAffineTransform(leftbottombounds, t);
-                righttopbounds = CCAffineTransform.CCRectApplyAffineTransform(righttopbounds, t);
-                lefttopbounds = CCAffineTransform.CCRectApplyAffineTransform(lefttopbounds, t);
-                rightcenterbounds = CCAffineTransform.CCRectApplyAffineTransform(rightcenterbounds, t);
-                leftcenterbounds = CCAffineTransform.CCRectApplyAffineTransform(leftcenterbounds, t);
-                centerbottombounds = CCAffineTransform.CCRectApplyAffineTransform(centerbottombounds, t);
-                centertopbounds = CCAffineTransform.CCRectApplyAffineTransform(centertopbounds, t);
+                centerbounds = CCAffineTransform.Transform(centerbounds, t);
+                rightbottombounds = CCAffineTransform.Transform(rightbottombounds, t);
+                leftbottombounds = CCAffineTransform.Transform(leftbottombounds, t);
+                righttopbounds = CCAffineTransform.Transform(righttopbounds, t);
+                lefttopbounds = CCAffineTransform.Transform(lefttopbounds, t);
+                rightcenterbounds = CCAffineTransform.Transform(rightcenterbounds, t);
+                leftcenterbounds = CCAffineTransform.Transform(leftcenterbounds, t);
+                centerbottombounds = CCAffineTransform.Transform(centerbottombounds, t);
+                centertopbounds = CCAffineTransform.Transform(centertopbounds, t);
 
                 rotatedcenterbounds.Origin = centerbounds.Origin;
                 rotatedrightbottombounds.Origin = rightbottombounds.Origin;

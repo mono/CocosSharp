@@ -512,7 +512,7 @@ namespace Cocos2D
             get
             {
                 var rect = new CCRect(0, 0, m_tContentSize.Width, m_tContentSize.Height);
-                return CCAffineTransform.CCRectApplyAffineTransform(rect, NodeToParentTransform());
+                return CCAffineTransform.Transform(rect, NodeToParentTransform());
             }
         }
 
@@ -521,7 +521,7 @@ namespace Cocos2D
             get
             {
                 var rect = new CCRect(0, 0, ContentSizeInPixels.Width, ContentSizeInPixels.Height);
-                return CCAffineTransform.CCRectApplyAffineTransform(rect, NodeToParentTransform());
+                return CCAffineTransform.Transform(rect, NodeToParentTransform());
             }
         }
 
@@ -1147,12 +1147,12 @@ namespace Cocos2D
                         (float) Math.Tan(CCMacros.CCDegreesToRadians(m_fSkewX)), 1.0f,
                         0.0f, 0.0f);
 
-                    m_tTransform = CCAffineTransform.CCAffineTransformConcat(skewMatrix, m_tTransform);
+                    m_tTransform = CCAffineTransform.Concat(skewMatrix, m_tTransform);
 
                     // adjust anchor point
                     if (!m_tAnchorPointInPoints.Equals(CCPoint.Zero))
                     {
-                        m_tTransform = CCAffineTransform.CCAffineTransformTranslate(m_tTransform,
+                        m_tTransform = CCAffineTransform.Translate(m_tTransform,
                                                                                     -m_tAnchorPointInPoints.X,
                                                                                     -m_tAnchorPointInPoints.Y);
                     }
@@ -1168,7 +1168,7 @@ namespace Cocos2D
         {
             if (m_bIsInverseDirty)
             {
-                m_tInverse = CCAffineTransform.CCAffineTransformInvert(NodeToParentTransform());
+                m_tInverse = CCAffineTransform.Invert(NodeToParentTransform());
                 m_bIsInverseDirty = false;
             }
             return m_tInverse;
@@ -1190,7 +1190,7 @@ namespace Cocos2D
 
         public CCAffineTransform WorldToNodeTransform()
         {
-            return CCAffineTransform.CCAffineTransformInvert(NodeToWorldTransform());
+            return CCAffineTransform.Invert(NodeToWorldTransform());
         }
 
         #endregion
@@ -1199,12 +1199,12 @@ namespace Cocos2D
 
         public CCPoint ConvertToNodeSpace(CCPoint worldPoint)
         {
-            return CCAffineTransform.CCPointApplyAffineTransform(worldPoint, WorldToNodeTransform());
+            return CCAffineTransform.Transform(worldPoint, WorldToNodeTransform());
         }
 
         public CCPoint ConvertToWorldSpace(CCPoint nodePoint)
         {
-            return CCAffineTransform.CCPointApplyAffineTransform(nodePoint, NodeToWorldTransform());
+            return CCAffineTransform.Transform(nodePoint, NodeToWorldTransform());
         }
 
         public CCPoint ConvertToNodeSpaceAr(CCPoint worldPoint)

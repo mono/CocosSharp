@@ -305,7 +305,7 @@ namespace Cocos2D
                 else
                 {
                     // using batch
-                    m_transformToBatch = CCAffineTransform.CCAffineTransformMakeIdentity();
+                    m_transformToBatch = CCAffineTransform.Identity;
                     m_pobTextureAtlas = m_pobBatchNode.TextureAtlas; // weak ref
                 }
             }
@@ -755,7 +755,7 @@ namespace Cocos2D
                     {
                         Debug.Assert((m_pParent as CCSprite) != null,
                                      "Logic error in CCSprite. Parent must be a CCSprite");
-                        m_transformToBatch = CCAffineTransform.CCAffineTransformConcat(NodeToParentTransform(),
+                        m_transformToBatch = CCAffineTransform.Concat(NodeToParentTransform(),
                                                                                        ((CCSprite)m_pParent).
                                                                                            m_transformToBatch);
                     }
