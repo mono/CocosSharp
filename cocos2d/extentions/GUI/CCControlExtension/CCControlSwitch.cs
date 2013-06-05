@@ -170,7 +170,7 @@ namespace Cocos2D
         }
 
         //events
-        public override bool TouchBegan(CCTouch pTouch, CCEvent pEvent)
+        public override bool TouchBegan(CCTouch pTouch)
         {
             if (!IsTouchInside(pTouch) || !Enabled)
             {
@@ -189,7 +189,7 @@ namespace Cocos2D
             return true;
         }
 
-        public override void TouchMoved(CCTouch pTouch, CCEvent pEvent)
+        public override void TouchMoved(CCTouch pTouch)
         {
             CCPoint location = LocationFromTouch(pTouch);
             location = new CCPoint(location.X - m_fInitialTouchXPosition, 0);
@@ -199,7 +199,7 @@ namespace Cocos2D
             m_pSwitchSprite.SliderXPosition = location.X;
         }
 
-        public override void TouchEnded(CCTouch pTouch, CCEvent pEvent)
+        public override void TouchEnded(CCTouch pTouch)
         {
             CCPoint location = LocationFromTouch(pTouch);
 
@@ -215,7 +215,7 @@ namespace Cocos2D
             }
         }
 
-        public override void TouchCancelled(CCTouch pTouch, CCEvent pEvent)
+        public override void TouchCancelled(CCTouch pTouch)
         {
             CCPoint location = LocationFromTouch(pTouch);
 

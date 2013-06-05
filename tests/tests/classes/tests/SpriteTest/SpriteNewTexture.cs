@@ -66,9 +66,9 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (seq));
         }
 
-        public override void TouchesEnded(List<CCTouch> touches, CCEvent event_)
+        public override void TouchesEnded(List<CCTouch> touches)
         {
-            base.TouchesEnded(touches, event_);
+            base.TouchesEnded(touches);
             CCNode node = GetChildByTag((int)kTags.kTagSpriteBatchNode);
 
             var children = node.Children;

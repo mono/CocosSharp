@@ -29,7 +29,7 @@ namespace tests
             menu.Position = (new CCPoint(s.Width / 2, 100));
         }
 
-        public override void TouchesMoved(List<Cocos2D.CCTouch> touches, Cocos2D.CCEvent event_)
+        public override void TouchesMoved(List<CCTouch> touches)
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 

@@ -279,7 +279,7 @@ namespace Cocos2D
             return rect.ContainsPoint(touchLocation);
         }
 
-        public override bool TouchBegan(CCTouch touch, CCEvent pEvent)
+        public override bool TouchBegan(CCTouch touch)
         {
             if (!IsTouchInside(touch) || !Enabled)
                 return false;
@@ -289,13 +289,13 @@ namespace Cocos2D
             return true;
         }
 
-        public override void TouchMoved(CCTouch pTouch, CCEvent pEvent)
+        public override void TouchMoved(CCTouch pTouch)
         {
             CCPoint location = LocationFromTouch(pTouch);
             SliderMoved(location);
         }
 
-        public override void TouchEnded(CCTouch pTouch, CCEvent pEvent)
+        public override void TouchEnded(CCTouch pTouch)
         {
             CCPoint location = LocationFromTouch(pTouch);
             SliderEnded(location);

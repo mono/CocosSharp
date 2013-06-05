@@ -53,7 +53,7 @@ namespace tests
                                                                 ));
         }
 
-        public override void TouchesEnded(List<CCTouch> touches, CCEvent event_)
+        public override void TouchesEnded(List<CCTouch> touches)
         {
             //base.ccTouchesEnded(touches, event_);
             object it = touches.First();

@@ -77,7 +77,7 @@ namespace tests
             sp9.Color = CCTypes.CCYellow;
         }
 
-        public override void TouchesBegan(List<CCTouch> touches, CCEvent events)
+        public override void TouchesBegan(List<CCTouch> touches)
         {
             foreach (CCTouch touch in touches)
             {
@@ -95,7 +95,7 @@ namespace tests
             }
         }
 
-        public override void TouchesMoved(List<CCTouch> touches, CCEvent events)
+        public override void TouchesMoved(List<CCTouch> touches)
         {
             foreach (CCTouch touch in touches)
             {
@@ -113,7 +113,7 @@ namespace tests
             }
         }
 
-        public override void TouchesEnded(List<CCTouch> touches, CCEvent events)
+        public override void TouchesEnded(List<CCTouch> touches)
         {
             renderScreenShot();
         }

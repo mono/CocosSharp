@@ -545,19 +545,19 @@ namespace Cocos2D
 
         #region ICCStandardTouchDelegate Members
 
-        public virtual void TouchesBegan(List<CCTouch> touches, CCEvent event_)
+        public virtual void TouchesBegan(List<CCTouch> touches)
         {
         }
 
-        public virtual void TouchesMoved(List<CCTouch> touches, CCEvent event_)
+        public virtual void TouchesMoved(List<CCTouch> touches)
         {
         }
 
-        public virtual void TouchesEnded(List<CCTouch> touches, CCEvent event_)
+        public virtual void TouchesEnded(List<CCTouch> touches)
         {
         }
 
-        public virtual void TouchesCancelled(List<CCTouch> touches, CCEvent event_)
+        public virtual void TouchesCancelled(List<CCTouch> touches)
         {
         }
 
@@ -565,20 +565,20 @@ namespace Cocos2D
 
         #region ICCTargetedTouchDelegate Members
 
-        public virtual bool TouchBegan(CCTouch touch, CCEvent event_)
+        public virtual bool TouchBegan(CCTouch touch)
         {
             return true;
         }
 
-        public virtual void TouchMoved(CCTouch touch, CCEvent event_)
+        public virtual void TouchMoved(CCTouch touch)
         {
         }
 
-        public virtual void TouchEnded(CCTouch touch, CCEvent event_)
+        public virtual void TouchEnded(CCTouch touch)
         {
         }
 
-        public virtual void TouchCancelled(CCTouch touch, CCEvent event_)
+        public virtual void TouchCancelled(CCTouch touch)
         {
         }
 

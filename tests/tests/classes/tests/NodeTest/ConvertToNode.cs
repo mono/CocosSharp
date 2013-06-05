@@ -48,9 +48,9 @@ namespace tests
             return "Convert To Node Space";
         }
 
-        public override void TouchesEnded(List<CCTouch> touches, CCEvent event_)
+        public override void TouchesEnded(List<CCTouch> touches)
         {
-            base.TouchesEnded(touches, event_);
+            base.TouchesEnded(touches);
         }
 
         public override string subtitle()

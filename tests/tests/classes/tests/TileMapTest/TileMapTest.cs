@@ -1564,20 +1564,20 @@ namespace tests
             pDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
         }
 
-        public override bool TouchBegan(CCTouch touch, CCEvent e)
+        public override bool TouchBegan(CCTouch touch)
         {
             return true;
         }
 
-        public override void TouchEnded(CCTouch touch, CCEvent e)
+        public override void TouchEnded(CCTouch touch)
         {
         }
 
-        public override void TouchCancelled(CCTouch touch, CCEvent e)
+        public override void TouchCancelled(CCTouch touch)
         {
         }
 
-        public override void TouchMoved(CCTouch touch, CCEvent e)
+        public override void TouchMoved(CCTouch touch)
         {
             CCPoint diff = touch.Delta;
             CCNode node = GetChildByTag(kTagTileMap);

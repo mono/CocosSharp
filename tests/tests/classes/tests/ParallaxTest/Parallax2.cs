@@ -60,12 +60,12 @@ namespace tests
             CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
         }
 
-        public override bool TouchBegan(CCTouch touch, CCEvent event_)
+        public override bool TouchBegan(CCTouch touch)
         {
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch, CCEvent event_)
+        public override void TouchMoved(CCTouch touch)
         {
             CCPoint touchLocation = touch.LocationInView;
             CCPoint prevLocation = touch.PreviousLocationInView;

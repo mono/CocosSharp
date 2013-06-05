@@ -128,20 +128,20 @@ namespace tests
             CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, -128 + 1, true);
         }
 
-        public override bool TouchBegan(CCTouch touch, CCEvent pEvent)
+        public override bool TouchBegan(CCTouch touch)
         {
             return true;
         }
 
-        public override void TouchEnded(CCTouch touch, CCEvent pEvent)
+        public override void TouchEnded(CCTouch touch)
         {
         }
 
-        public override void TouchCancelled(CCTouch touch, CCEvent pEvent)
+        public override void TouchCancelled(CCTouch touch)
         {
         }
 
-        public override void TouchMoved(CCTouch touch, CCEvent pEvent)
+        public override void TouchMoved(CCTouch touch)
         {
         }
 

@@ -54,7 +54,7 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (seq));
         }
 
-        public override void TouchesEnded(List<CCTouch> touches, CCEvent event_)
+        public override void TouchesEnded(List<CCTouch> touches)
         {
             foreach (CCTouch item in touches)
             {
@@ -68,7 +68,7 @@ namespace tests
 
                 addNewSpriteWithCoords(location);
             }
-            base.TouchesEnded(touches, event_);
+            base.TouchesEnded(touches);
         }
 
         public override string title()

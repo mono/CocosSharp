@@ -69,8 +69,4 @@ namespace Cocos2D
             m_point.Y = y;
         }
     }
-
-    public class CCEvent 
-    {
-    }
 }

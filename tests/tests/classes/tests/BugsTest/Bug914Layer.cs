@@ -63,14 +63,14 @@ namespace tests
             return false;
         }
 
-        public void ccTouchesMoved(List<CCTouch> touches, CCEvent eventn)
+        public void ccTouchesMoved(List<CCTouch> touches)
         {
             CCLog.Log("Number of touches: %d", touches.Count);
         }
 
-        public void ccTouchesBegan(List<CCTouch> touches, CCEvent eventn)
+        public void ccTouchesBegan(List<CCTouch> touches)
         {
-            ccTouchesMoved(touches, eventn);
+            ccTouchesMoved(touches);
         }
 
         public void restart(object sender)

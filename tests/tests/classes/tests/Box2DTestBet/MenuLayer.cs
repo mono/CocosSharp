@@ -88,12 +88,12 @@ namespace tests.classes.tests.Box2DTestBet
             pDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
         }
 
-        public override bool TouchBegan(CCTouch touch, CCEvent e)
+        public override bool TouchBegan(CCTouch touch)
         {
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch, CCEvent e)
+        public override void TouchMoved(CCTouch touch)
         {
             CCPoint diff = touch.Delta;
             CCNode node = GetChildByTag(kTagBox2DNode);

@@ -72,7 +72,7 @@ namespace tests
             return CCRect.CCRectContainsPoint(rect(), ConvertTouchToNodeSpaceAr(touch));
         }
 
-        public virtual bool TouchBegan(CCTouch touch, CCEvent eventer)
+        public virtual bool TouchBegan(CCTouch touch)
         {
             if (m_state != PaddleState.kPaddleStateUngrabbed) return false;
             if (!containsTouchLocation(touch)) return false;
@@ -81,7 +81,7 @@ namespace tests
             return true;
         }
 
-        public virtual void TouchMoved(CCTouch touch, CCEvent eventer)
+        public virtual void TouchMoved(CCTouch touch)
         {
             // If it weren't for the TouchDispatcher, you would need to keep a reference
             // to the touch from touchBegan and check that the current touch is the same
@@ -98,7 +98,7 @@ namespace tests
             base.Position = new CCPoint(touchPoint.X, base.Position.Y);
         }
 
-        public virtual void TouchEnded(CCTouch touch, CCEvent eventer)
+        public virtual void TouchEnded(CCTouch touch)
         {
             Debug.Assert(m_state == PaddleState.kPaddleStateGrabbed, "Paddle - Unexpected state!");
             m_state = PaddleState.kPaddleStateUngrabbed;
@@ -113,7 +113,7 @@ namespace tests
             return pPaddle;
         }
 
-        public void TouchCancelled(CCTouch pTouch, CCEvent pEvent)
+        public void TouchCancelled(CCTouch pTouch)
         {
             throw new NotImplementedException();
         }

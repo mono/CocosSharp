@@ -147,7 +147,7 @@ namespace tests
             snapArrowsToEdge();
         }
 
-        public override void TouchesBegan(List<CCTouch> pTouches, CCEvent pEvent)
+        public override void TouchesBegan(List<CCTouch> pTouches)
         {
             CCTouch touch = pTouches[0];
             CCPoint location = touch.LocationInView;
@@ -159,7 +159,7 @@ namespace tests
             }
         }
 
-        public override void TouchesEnded(List<CCTouch> pTouches, CCEvent pEvent)
+        public override void TouchesEnded(List<CCTouch> pTouches)
         {
             m_drag = false;
             snapArrowsToEdge();
@@ -167,7 +167,7 @@ namespace tests
             m_pArrowsBarShouldRetain.Visible = false;
         }
 
-        public override void TouchesMoved(List<CCTouch> pTouches, CCEvent pEvent)
+        public override void TouchesMoved(List<CCTouch> pTouches)
         {
             if (!m_drag)
             {

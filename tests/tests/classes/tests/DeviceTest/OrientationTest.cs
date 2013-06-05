@@ -168,7 +168,7 @@ namespace tests
         }
 
 
-        public override void TouchesEnded(List<CCTouch> touches, CCEvent eventarg)
+        public override void TouchesEnded(List<CCTouch> touches)
         {
 
             foreach (CCTouch touch in touches)

@@ -63,7 +63,7 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (seq));
         }
 
-        public override void TouchesEnded(List<CCTouch> touches, CCEvent event_)
+        public override void TouchesEnded(List<CCTouch> touches)
         {
             CCSpriteBatchNode batch = (CCSpriteBatchNode)GetChildByTag((int)kTags. kTagSpriteBatchNode);
 

@@ -64,7 +64,7 @@ namespace tests
             return "Press 'Save Image' to create an snapshot of the render texture";
         }
 
-        public override void TouchesMoved(List<CCTouch> touches, CCEvent events)
+        public override void TouchesMoved(List<CCTouch> touches)
         {
             CCTouch touch = touches[0];
             CCPoint start = touch.Location;

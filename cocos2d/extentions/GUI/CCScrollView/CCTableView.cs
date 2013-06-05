@@ -633,7 +633,7 @@ namespace Cocos2D
         #endregion
 
 
-        public override void TouchEnded(CCTouch pTouch, CCEvent pEvent)
+        public override void TouchEnded(CCTouch pTouch)
         {
             if (!Visible)
             {
@@ -654,17 +654,17 @@ namespace Cocos2D
                 m_pTouchedCell = null;
             }
 
-            base.TouchEnded(pTouch, pEvent);
+            base.TouchEnded(pTouch);
         }
 
-        public override bool TouchBegan(CCTouch pTouch, CCEvent pEvent)
+        public override bool TouchBegan(CCTouch pTouch)
         {
             if (!Visible)
             {
                 return false;
             }
             
-            bool touchResult = base.TouchBegan(pTouch, pEvent);
+            bool touchResult = base.TouchBegan(pTouch);
 
             if (m_pTouches.Count == 1)
             {
@@ -697,9 +697,9 @@ namespace Cocos2D
             return touchResult;
         }
 
-        public override void TouchMoved(CCTouch touch, CCEvent pEvent)
+        public override void TouchMoved(CCTouch touch)
         {
-            base.TouchMoved(touch, pEvent);
+            base.TouchMoved(touch);
 
             if (m_pTouchedCell != null && IsTouchMoved)
             {
@@ -712,9 +712,9 @@ namespace Cocos2D
             }
         }
 
-        public override void TouchCancelled(CCTouch touch, CCEvent pEvent)
+        public override void TouchCancelled(CCTouch touch)
         {
-            base.TouchCancelled(touch, pEvent);
+            base.TouchCancelled(touch);
 
             if (m_pTouchedCell != null)
             {

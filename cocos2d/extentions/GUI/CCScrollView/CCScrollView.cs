@@ -455,7 +455,7 @@ namespace Cocos2D
 
         /** override functions */
         // optional
-        public override bool TouchBegan(CCTouch pTouch, CCEvent pEvent)
+        public override bool TouchBegan(CCTouch pTouch)
         {
             if (!Visible)
             {
@@ -497,7 +497,7 @@ namespace Cocos2D
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch, CCEvent pEvent)
+        public override void TouchMoved(CCTouch touch)
         {
             if (!Visible)
             {
@@ -578,7 +578,7 @@ namespace Cocos2D
             }
         }
 
-        public override void TouchEnded(CCTouch touch, CCEvent pEvent)
+        public override void TouchEnded(CCTouch touch)
         {
             if (!Visible)
             {
@@ -601,7 +601,7 @@ namespace Cocos2D
             }
         }
 
-        public override void TouchCancelled(CCTouch touch, CCEvent pEvent)
+        public override void TouchCancelled(CCTouch touch)
         {
             if (!Visible)
             {

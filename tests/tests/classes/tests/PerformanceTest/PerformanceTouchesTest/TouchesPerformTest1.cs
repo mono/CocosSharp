@@ -30,23 +30,23 @@ namespace tests
             CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
         }
 
-        public override bool TouchBegan(CCTouch touch, CCEvent events)
+        public override bool TouchBegan(CCTouch touch)
         {
             numberOfTouchesB++;
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch, CCEvent events)
+        public override void TouchMoved(CCTouch touch)
         {
             numberOfTouchesM++;
         }
 
-        public override void TouchEnded(CCTouch touch, CCEvent events)
+        public override void TouchEnded(CCTouch touch)
         {
             numberOfTouchesE++;
         }
 
-        public override void TouchCancelled(CCTouch touch, CCEvent events)
+        public override void TouchCancelled(CCTouch touch)
         {
             numberOfTouchesC++;
         }

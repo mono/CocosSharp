@@ -563,17 +563,17 @@ namespace Cocos2D
 
                 if (newTouches.Count > 0)
                 {
-                    m_pDelegate.TouchesBegan(newTouches, null);
+                    m_pDelegate.TouchesBegan(newTouches);
                 }
 
                 if (movedTouches.Count > 0)
                 {
-                    m_pDelegate.TouchesMoved(movedTouches, null);
+                    m_pDelegate.TouchesMoved(movedTouches);
                 }
 
                 if (endedTouches.Count > 0)
                 {
-                    m_pDelegate.TouchesEnded(endedTouches, null);
+                    m_pDelegate.TouchesEnded(endedTouches);
                 }
             }
         }

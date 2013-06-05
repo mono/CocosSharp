@@ -152,7 +152,7 @@ namespace Cocos2D
         }
 
         // CCLayer
-        public override bool TouchBegan(CCTouch pTouch, CCEvent pEvent)
+        public override bool TouchBegan(CCTouch pTouch)
         {
             CCLog.Log("++++++++++++++++++++++++++++++++++++++++++++");
             m_beginPos = pTouch.LocationInView;
@@ -160,7 +160,7 @@ namespace Cocos2D
             return true;
         }
 
-        public override void TouchEnded(CCTouch pTouch, CCEvent pEvent)
+        public override void TouchEnded(CCTouch pTouch)
         {
             if (m_pTrackNode != null)
             {

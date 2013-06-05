@@ -255,7 +255,7 @@ namespace Cocos2D
             pDirector.TouchDispatcher.AddTargetedDelegate(this, kCCMenuHandlerPriority, true);
         }
 
-        public override bool TouchBegan(CCTouch touch, CCEvent e)
+        public override bool TouchBegan(CCTouch touch)
         {
             if (m_eState != CCMenuState.Waiting || !m_bIsVisible || !m_bEnabled)
             {
@@ -280,7 +280,7 @@ namespace Cocos2D
             return false;
         }
 
-        public override void TouchEnded(CCTouch touch, CCEvent e)
+        public override void TouchEnded(CCTouch touch)
         {
             Debug.Assert(m_eState == CCMenuState.TrackingTouch, "[Menu TouchEnded] -- invalid state");
             if (m_pSelectedItem != null)
@@ -291,7 +291,7 @@ namespace Cocos2D
             m_eState = CCMenuState.Waiting;
         }
 
-        public override void TouchCancelled(CCTouch touch, CCEvent e)
+        public override void TouchCancelled(CCTouch touch)
         {
             Debug.Assert(m_eState == CCMenuState.TrackingTouch, "[Menu ccTouchCancelled] -- invalid state");
             if (m_pSelectedItem != null)
@@ -301,7 +301,7 @@ namespace Cocos2D
             m_eState = CCMenuState.Waiting;
         }
 
-        public override void TouchMoved(CCTouch touch, CCEvent e)
+        public override void TouchMoved(CCTouch touch)
         {
             Debug.Assert(m_eState == CCMenuState.TrackingTouch, "[Menu TouchMoved] -- invalid state");
             CCMenuItem currentItem = ItemForTouch(touch);

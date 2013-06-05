@@ -296,7 +296,7 @@ namespace tests
             }
         }
 
-        public override void TouchesEnded(List<CCTouch> touches, CCEvent e)
+        public override void TouchesEnded(List<CCTouch> touches)
         {
             //Add a new body/atlas sprite at the touched location
             foreach (CCTouch touch in touches)

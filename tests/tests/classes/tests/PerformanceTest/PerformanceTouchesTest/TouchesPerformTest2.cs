@@ -29,22 +29,22 @@ namespace tests
             CCDirector.SharedDirector.TouchDispatcher.AddStandardDelegate(this, 0);
         }
 
-        public override void TouchesBegan(List<CCTouch> touches, CCEvent events)
+        public override void TouchesBegan(List<CCTouch> touches)
         {
             numberOfTouchesB += touches.Count;
         }
 
-        public override void TouchesMoved(List<CCTouch> touches, CCEvent events)
+        public override void TouchesMoved(List<CCTouch> touches)
         {
             numberOfTouchesM += touches.Count;
         }
 
-        public override void TouchesEnded(List<CCTouch> touches, CCEvent events)
+        public override void TouchesEnded(List<CCTouch> touches)
         {
             numberOfTouchesE += touches.Count;
         }
 
-        public override void TouchesCancelled(List<CCTouch> touches, CCEvent events)
+        public override void TouchesCancelled(List<CCTouch> touches)
         {
             numberOfTouchesC += touches.Count;
         }

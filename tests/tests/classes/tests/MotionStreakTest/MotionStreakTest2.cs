@@ -26,7 +26,7 @@ namespace tests
             streak.Position = (new CCPoint(s.Width / 2, s.Height / 2));
         }
 
-        public override void TouchesMoved(List<CCTouch> touches, CCEvent event_)
+        public override void TouchesMoved(List<CCTouch> touches)
         {
             streak.Position = touches[0].Location;
         }

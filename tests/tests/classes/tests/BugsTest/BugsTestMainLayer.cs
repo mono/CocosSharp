@@ -82,7 +82,7 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(pScene);
         }
 
-        public override void TouchesBegan(List<CCTouch> pTouches, CCEvent pEvent)
+        public override void TouchesBegan(List<CCTouch> pTouches)
         {
             foreach (var it in pTouches)
             {
@@ -93,7 +93,7 @@ namespace tests
 
         }
 
-        public override void TouchesMoved(List<CCTouch> pTouches, CCEvent pEvent)
+        public override void TouchesMoved(List<CCTouch> pTouches)
         {
             foreach (var it in pTouches)
             {

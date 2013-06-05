@@ -411,7 +411,7 @@ namespace Cocos2D
         }
 
         //events
-        public override bool TouchBegan(CCTouch pTouch, CCEvent pEvent)
+        public override bool TouchBegan(CCTouch pTouch)
         {
             if (!IsTouchInside(pTouch) || !Enabled)
             {
@@ -425,7 +425,7 @@ namespace Cocos2D
             return true;
         }
 
-        public override void TouchMoved(CCTouch pTouch, CCEvent pEvent)
+        public override void TouchMoved(CCTouch pTouch)
         {
             if (!Enabled || !IsPushed || Selected)
             {
@@ -460,7 +460,7 @@ namespace Cocos2D
             }
         }
 
-        public override void TouchEnded(CCTouch pTouch, CCEvent pEvent)
+        public override void TouchEnded(CCTouch pTouch)
         {
             m_eState = CCControlState.Normal;
             m_isPushed = false;
@@ -481,7 +481,7 @@ namespace Cocos2D
             }
         }
 
-        public override void TouchCancelled(CCTouch pTouch, CCEvent pEvent)
+        public override void TouchCancelled(CCTouch pTouch)
         {
             m_eState = CCControlState.Normal;
             m_isPushed = false;

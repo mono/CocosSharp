@@ -43,18 +43,18 @@ namespace tests
             l.ContentSize = newSize;
         }
 
-        public override bool TouchBegan(CCTouch touche, CCEvent events)
+        public override bool TouchBegan(CCTouch touche)
         {
             updateSize(touche.Location);
             return true;
         }
 
-        public override void TouchMoved(CCTouch touche, CCEvent events)
+        public override void TouchMoved(CCTouch touche)
         {
             updateSize(touche.Location);
         }
 
-        public override void TouchEnded(CCTouch touche, CCEvent events)
+        public override void TouchEnded(CCTouch touche)
         {
             updateSize(touche.Location);
         }

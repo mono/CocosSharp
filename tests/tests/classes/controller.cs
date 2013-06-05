@@ -218,7 +218,7 @@ namespace tests
             CCApplication.SharedApplication.Game.Exit();
         }
 
-        public override void TouchesBegan(List<CCTouch> pTouches, CCEvent pEvent)
+        public override void TouchesBegan(List<CCTouch> pTouches)
         {
             CCTouch touch = pTouches.FirstOrDefault();
 
@@ -226,7 +226,7 @@ namespace tests
             m_tBeginPos = CCDirector.SharedDirector.ConvertToGl(m_tBeginPos);
         }
 
-        public override void TouchesMoved(List<CCTouch> pTouches, CCEvent pEvent)
+        public override void TouchesMoved(List<CCTouch> pTouches)
         {
             CCTouch touch = pTouches.FirstOrDefault();
 

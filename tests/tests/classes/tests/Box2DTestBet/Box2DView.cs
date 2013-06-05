@@ -59,7 +59,7 @@ namespace tests.classes.tests.Box2DTestBet
             pDirector.TouchDispatcher.AddTargetedDelegate(this, -10, true);
         }
 
-        public override bool TouchBegan(CCTouch touch, CCEvent e)
+        public override bool TouchBegan(CCTouch touch)
         {
             CCPoint touchLocation = touch.Location;
 
@@ -71,7 +71,7 @@ namespace tests.classes.tests.Box2DTestBet
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch, CCEvent e)
+        public override void TouchMoved(CCTouch touch)
         {
             CCPoint touchLocation = touch.Location;
             CCPoint nodePosition = ConvertToNodeSpace(touchLocation);
@@ -79,7 +79,7 @@ namespace tests.classes.tests.Box2DTestBet
             m_test.MouseMove(new Vector2(nodePosition.X, nodePosition.Y));
         }
 
-        public override void TouchEnded(CCTouch touch, CCEvent e)
+        public override void TouchEnded(CCTouch touch)
         {
             CCPoint touchLocation = touch.Location;
             CCPoint nodePosition = ConvertToNodeSpace(touchLocation);

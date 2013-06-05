@@ -28,35 +28,35 @@ namespace Cocos2D
 
         #region IEGLTouchDelegate Members
 
-        public virtual void TouchesBegan(List<CCTouch> touches, CCEvent pEvent)
+        public virtual void TouchesBegan(List<CCTouch> touches)
         {
             if (m_bDispatchEvents)
             {
-                Touches(touches, pEvent, (int) CCTouchType.CCTOUCHBEGAN);
+                Touches(touches, (int) CCTouchType.CCTOUCHBEGAN);
             }
         }
 
-        public virtual void TouchesMoved(List<CCTouch> touches, CCEvent pEvent)
+        public virtual void TouchesMoved(List<CCTouch> touches)
         {
             if (m_bDispatchEvents)
             {
-                Touches(touches, pEvent, (int) CCTouchType.CCTOUCHMOVED);
+                Touches(touches, (int) CCTouchType.CCTOUCHMOVED);
             }
         }
 
-        public virtual void TouchesEnded(List<CCTouch> touches, CCEvent pEvent)
+        public virtual void TouchesEnded(List<CCTouch> touches)
         {
             if (m_bDispatchEvents)
             {
-                Touches(touches, pEvent, (int) CCTouchType.CCTOUCHENDED);
+                Touches(touches, (int) CCTouchType.CCTOUCHENDED);
             }
         }
 
-        public virtual void TouchesCancelled(List<CCTouch> touches, CCEvent pEvent)
+        public virtual void TouchesCancelled(List<CCTouch> touches)
         {
             if (m_bDispatchEvents)
             {
-                Touches(touches, pEvent, (int) CCTouchType.CCTOUCHCANCELLED);
+                Touches(touches, (int) CCTouchType.CCTOUCHCANCELLED);
             }
         }
 
@@ -167,7 +167,7 @@ namespace Cocos2D
             RearrangeHandlers(m_pStandardHandlers);
         }
 
-        public void Touches(List<CCTouch> pTouches, CCEvent pEvent, int uIndex)
+        public void Touches(List<CCTouch> pTouches, int uIndex)
         {
             m_bLocked = true;
 
@@ -202,7 +202,7 @@ namespace Cocos2D
                         bool bClaimed = false;
                         if (sHelper == CCTouchType.CCTOUCHBEGAN)
                         {
-                            bClaimed = pDelegate.TouchBegan(pTouch, pEvent);
+                            bClaimed = pDelegate.TouchBegan(pTouch);
 
                             if (bClaimed)
                             {
@@ -219,14 +219,14 @@ namespace Cocos2D
                                 switch (sHelper)
                                 {
                                     case CCTouchType.CCTOUCHMOVED:
-                                        pDelegate.TouchMoved(pTouch, pEvent);
+                                        pDelegate.TouchMoved(pTouch);
                                         break;
                                     case CCTouchType.CCTOUCHENDED:
-                                        pDelegate.TouchEnded(pTouch, pEvent);
+                                        pDelegate.TouchEnded(pTouch);
                                         pHandler.ClaimedTouches.Remove(pTouch);
                                         break;
                                     case CCTouchType.CCTOUCHCANCELLED:
-                                        pDelegate.TouchCancelled(pTouch, pEvent);
+                                        pDelegate.TouchCancelled(pTouch);
                                         pHandler.ClaimedTouches.Remove(pTouch);
                                         break;
                                 }
@@ -259,16 +259,16 @@ namespace Cocos2D
                     switch (sHelper)
                     {
                         case CCTouchType.CCTOUCHBEGAN:
-                            pDelegate.TouchesBegan(pMutableTouches, pEvent);
+                            pDelegate.TouchesBegan(pMutableTouches);
                             break;
                         case CCTouchType.CCTOUCHMOVED:
-                            pDelegate.TouchesMoved(pMutableTouches, pEvent);
+                            pDelegate.TouchesMoved(pMutableTouches);
                             break;
                         case CCTouchType.CCTOUCHENDED:
-                            pDelegate.TouchesEnded(pMutableTouches, pEvent);
+                            pDelegate.TouchesEnded(pMutableTouches);
                             break;
                         case CCTouchType.CCTOUCHCANCELLED:
-                            pDelegate.TouchesCancelled(pMutableTouches, pEvent);
+                            pDelegate.TouchesCancelled(pMutableTouches);
                             break;
                     }
                 }

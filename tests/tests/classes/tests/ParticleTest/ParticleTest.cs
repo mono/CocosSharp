@@ -300,17 +300,17 @@ namespace tests
             CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, false);
         }
 
-        public override bool TouchBegan(CCTouch touch, CCEvent eve)
+        public override bool TouchBegan(CCTouch touch)
         {
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch, CCEvent eve)
+        public override void TouchMoved(CCTouch touch)
         {
-            TouchEnded(touch, eve);
+            TouchEnded(touch);
         }
 
-        public override void TouchEnded(CCTouch touch, CCEvent eve)
+        public override void TouchEnded(CCTouch touch)
         {
             CCPoint location = touch.LocationInView;
             CCPoint convertedLocation = CCDirector.SharedDirector.ConvertToGl(location);
