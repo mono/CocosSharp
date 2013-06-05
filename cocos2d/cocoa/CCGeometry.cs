@@ -774,7 +774,7 @@ namespace cocos2d
             {
                 return (CCRect.Zero);
             }
-            CCRect r;
+
             /*       +-------------+
              *       |             |
              *       |         +---+-----+
@@ -1729,7 +1729,7 @@ namespace Cocos2D
             {
                 return (CCRect.Zero);
             }
-            CCRect r;
+
             /*       +-------------+
              *       |             |
              *       |         +---+-----+

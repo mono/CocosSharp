@@ -550,6 +550,20 @@ namespace Cocos2D
         {
             return b1.Source != b2.Source || b1.Destination != b2.Destination;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is CCBlendFunc)
+            {
+                return this == (CCBlendFunc) obj;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 
     public enum CCTextAlignment

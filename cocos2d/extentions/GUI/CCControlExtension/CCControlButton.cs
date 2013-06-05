@@ -36,6 +36,13 @@ namespace Cocos2D
 
         public event CCButtonTapDelegate OnButtonTap;
 
+        /// <summary>
+        /// Default ctor. Does nothing.
+        /// </summary>
+        public CCControlButton()
+        {
+        }
+
         public CCScale9Sprite BackgroundSprite
         {
             get { return m_backgroundSprite; }
@@ -788,20 +795,6 @@ namespace Cocos2D
         {
             CCScale9Sprite sprite = new CCScale9SpriteFrame(spriteFrame);
             SetBackgroundSpriteForState(sprite, state);
-        }
-
-        /// <summary>
-        /// Default ctor. Does nothing.
-        /// </summary>
-        public CCControlButton()
-        {
-        }
-
-        [Obsolete("Use the default ctor")]
-        public new static CCControlButton Create()
-        {
-            var pControlButton = new CCControlButton();
-            return pControlButton;
         }
     }
 }

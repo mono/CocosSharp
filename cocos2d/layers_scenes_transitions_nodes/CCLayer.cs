@@ -287,7 +287,7 @@ namespace Cocos2D
             }
         }
 
-        public virtual bool Init()
+        public override bool Init()
         {
             if (m_bDidInit)
             {

@@ -169,11 +169,11 @@ namespace Cocos2D
                     {
                         CCTextureCache.SharedTextureCache.ReloadMyTexture(this);
                     }
-                    else if (m_spriteFont != null && m_CallParams != null)
-                    {
-                        // THis is a label, so restore it using hte call parameters.
-                        InitWithString((string)m_CallParams[0], (CCSize)m_CallParams[1], (CCTextAlignment)m_CallParams[2], (CCVerticalTextAlignment)m_CallParams[3], (string)m_CallParams[4], (float)m_CallParams[5]);
-                    }
+                    //else if (m_spriteFont != null && m_CallParams != null)
+                    //{
+                    //    // THis is a label, so restore it using hte call parameters.
+                    //    InitWithString((string)m_CallParams[0], (CCSize)m_CallParams[1], (CCTextAlignment)m_CallParams[2], (CCVerticalTextAlignment)m_CallParams[3], (string)m_CallParams[4], (float)m_CallParams[5]);
+                    //}
                 }
                 else if(m_texture2D == null)
                 {
@@ -184,20 +184,16 @@ namespace Cocos2D
                         CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(m_ContentFile);
                         m_texture2D = texture.m_texture2D;
                     }
-                    else if (m_spriteFont != null && m_CallParams != null)
-                    {
-                        CCLog.Log("CCTexture2D: creating the sprite font label from call parameters.");
-                        // THis is a label, so restore it using hte call parameters.
-                        InitWithString((string)m_CallParams[0], (CCSize)m_CallParams[1], (CCTextAlignment)m_CallParams[2], (CCVerticalTextAlignment)m_CallParams[3], (string)m_CallParams[4], (float)m_CallParams[5]);
-                    }
-                    else if (m_spriteFont != null)
-                    {
-                        CCLog.Log("Oops - need to recreate the texture for the spritefont!");
-                    }
-                    else
-                    {
-                        // CCLog.Log("CCTexture2D: null Texture2D object, refresh the content manager!");
-                    }
+                    //else if (m_spriteFont != null && m_CallParams != null)
+                    //{
+                    //    CCLog.Log("CCTexture2D: creating the sprite font label from call parameters.");
+                    //    // THis is a label, so restore it using hte call parameters.
+                    //    InitWithString((string)m_CallParams[0], (CCSize)m_CallParams[1], (CCTextAlignment)m_CallParams[2], (CCVerticalTextAlignment)m_CallParams[3], (string)m_CallParams[4], (float)m_CallParams[5]);
+                    //}
+                    //else if (m_spriteFont != null)
+                    //{
+                    //    CCLog.Log("Oops - need to recreate the texture for the spritefont!");
+                    //}
                 }
                 return (m_texture2D);
             }
@@ -572,13 +568,13 @@ namespace Cocos2D
                                   fontName, fontSize);
         }
 
-        private SpriteFont m_spriteFont;
-        public bool InitWithString(string text, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, string fontName,
+        public bool InitWithString(string text, CCSize dimensions, CCTextAlignment hAlignment,
+                                   CCVerticalTextAlignment vAlignment, string fontName,
                                    float fontSize)
         {
             try
             {
-                m_CallParams = new object[] { text, dimensions, hAlignment, vAlignment, fontName, fontSize };
+                m_CallParams = new object[] {text, dimensions, hAlignment, vAlignment, fontName, fontSize};
 
                 // CCLog.Log("InitWithString: text={0}", text);
 
@@ -589,23 +585,18 @@ namespace Cocos2D
                     return false;
                 }
 
-                SpriteFont font = m_spriteFont;
-
+                var font = CCSpriteFontCache.SharedInstance.GetFont(fontName, fontSize);
                 if (font == null)
                 {
-                    font = CCSpriteFontCache.SharedInstance.GetFont(fontName, fontSize);
+                    CCLog.Log("Can't find {0}, use system default ({1})", fontName, CCDrawManager.DefaultFont);
+                    font = CCSpriteFontCache.SharedInstance.GetFont(CCDrawManager.DefaultFont, fontSize);
                     if (font == null)
                     {
-                        CCLog.Log("Can't find {0}, use system default ({1})", fontName, CCDrawManager.DefaultFont);
-                        font = CCSpriteFontCache.SharedInstance.GetFont(CCDrawManager.DefaultFont, fontSize);
-                        if (font == null)
-                        {
-                            CCLog.Log("Failed to load default font. No font supported.");
-                        }
+                        CCLog.Log("Failed to load default font. No font supported.");
                     }
-                    // m_spriteFont = font;
                 }
-                
+                // m_spriteFont = font;
+
                 if (font == null)
                     return (false);
 
@@ -647,7 +638,7 @@ namespace Cocos2D
 #if XBOX || XBOX360
                                 nextText.Length = 0;
 #else
-                        nextText.Clear();
+                                nextText.Clear();
 #endif
                             }
                             else
@@ -672,7 +663,7 @@ namespace Cocos2D
 #if XBOX || XBOX360
                     nextText.Length = 0;
 #else
-                        nextText.Clear();
+                    nextText.Clear();
 #endif
                 }
 
@@ -682,8 +673,9 @@ namespace Cocos2D
                 }
 
                 //*  for render to texture
-                RenderTarget2D renderTarget = CCDrawManager.CreateRenderTarget((int)dimensions.Width, (int)dimensions.Height,
-                                                                              RenderTargetUsage.PreserveContents);
+                RenderTarget2D renderTarget = CCDrawManager.CreateRenderTarget((int) dimensions.Width,
+                                                                               (int) dimensions.Height,
+                                                                               RenderTargetUsage.PreserveContents);
                 CCDrawManager.SetRenderTarget(renderTarget);
 
                 CCDrawManager.Clear(Color.Transparent);
@@ -708,7 +700,7 @@ namespace Cocos2D
                 {
                     string line = textList[j];
 
-					var position = new Microsoft.Xna.Framework.Vector2(0, nextY);
+                    var position = new Microsoft.Xna.Framework.Vector2(0, nextY);
 
                     if (hAlignment == CCTextAlignment.CCTextAlignmentRight)
                     {
@@ -727,7 +719,7 @@ namespace Cocos2D
                 CCDrawManager.graphicsDevice.RasterizerState = RasterizerState.CullNone;
                 CCDrawManager.graphicsDevice.DepthStencilState = DepthStencilState.Default;
 
-                CCDrawManager.SetRenderTarget((RenderTarget2D)null);
+                CCDrawManager.SetRenderTarget((RenderTarget2D) null);
 
                 // to copy the rendered target data to a plain texture(to the memory)
                 //            texture2D = CCDrawManager.CreateTexture2D(renderTarget.Width, renderTarget.Height);

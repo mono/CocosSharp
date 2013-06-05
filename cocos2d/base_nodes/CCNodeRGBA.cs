@@ -102,7 +102,7 @@ namespace Cocos2D
             _cascadeOpacityEnabled = false;
         }
 
-        public virtual bool Init()
+        public override bool Init()
         {
             //base.Init();
 

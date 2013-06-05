@@ -99,7 +99,7 @@ namespace Cocos2D
             return true;
         }
 
-        protected virtual bool Init()
+        public override bool Init()
         {
             var texture = new CCTexture2D();
             return InitWithTexture(texture, 0);

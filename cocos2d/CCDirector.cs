@@ -1104,32 +1104,35 @@ namespace Cocos2D
         {
             if (!m_FailedToCreateStatsLabels)
             {
-            try
-            {
-                int fontSize = (int)(m_obWinSizeInPoints.Height / 320.0f * 24);
-            m_pFPSLabel = new CCLabelTTF("00.0", "Arial", 24);
-            m_pFPSLabel.Scale = m_obWinSizeInPoints.Height / 320.0f; // Use 320 here b/c we are optimizing at that scale.
-            m_pSPFLabel = new CCLabelTTF("0.000", "Arial", 24);
-            m_pSPFLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
-            m_pDrawsLabel = new CCLabelTTF("000", "Arial", 24);
-            m_pDrawsLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
+                try
+                {
+                    int fontSize = (int) (m_obWinSizeInPoints.Height / 320.0f * 24);
+                    m_pFPSLabel = new CCLabelTTF("00.0", "Arial", 24);
+                    m_pFPSLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
+                        // Use 320 here b/c we are optimizing at that scale.
+                    m_pSPFLabel = new CCLabelTTF("0.000", "Arial", 24);
+                    m_pSPFLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
+                    m_pDrawsLabel = new CCLabelTTF("000", "Arial", 24);
+                    m_pDrawsLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
 
-            //CCTexture2D::setDefaultAlphaPixelFormat(currentFormat);
+                    //CCTexture2D::setDefaultAlphaPixelFormat(currentFormat);
 
-            var pos = CCDirector.SharedDirector.VisibleOrigin;
+                    var pos = CCDirector.SharedDirector.VisibleOrigin;
 
-            CCSize contentSize = m_pDrawsLabel.ContentSize;
-            m_pDrawsLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height * 5 / 2) + pos;
-            contentSize = m_pSPFLabel.ContentSize;
-            m_pSPFLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height * 3 / 2) + pos;
-            contentSize = m_pFPSLabel.ContentSize;
-            m_pFPSLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height / 2) + pos;
-        }
-            catch (Exception ex)
-            {
-                CCLog.Log("Failed to create the stats labels.");
+                    CCSize contentSize = m_pDrawsLabel.ContentSize;
+                    m_pDrawsLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height * 5 / 2) + pos;
+                    contentSize = m_pSPFLabel.ContentSize;
+                    m_pSPFLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height * 3 / 2) + pos;
+                    contentSize = m_pFPSLabel.ContentSize;
+                    m_pFPSLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height / 2) + pos;
+                }
+                catch (Exception)
+                {
+                    CCLog.Log("Failed to create the stats labels.");
 #if DEBUG
-                CCLog.Log(ex.ToString());
+                catch (Exception ex)
+                {
+                    CCLog.Log(ex.ToString());
 #endif
                     m_FailedToCreateStatsLabels = true;
                     m_bDisplayStats = false;

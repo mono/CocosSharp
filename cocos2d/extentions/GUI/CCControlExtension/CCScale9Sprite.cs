@@ -136,7 +136,7 @@ namespace Cocos2D
             }
         }
 
-        public byte Opacity
+        public override byte Opacity
         {
             get { return _opacity; }
             set

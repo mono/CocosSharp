@@ -36,7 +36,7 @@ namespace Cocos2D
         private MouseState _lastMouseState;
         private MouseState _prevMouseState;
 #endif
-        private CCBMFontConfiguration.ccBMFontDef hangOnToMe;
+        //private CCBMFontConfiguration.ccBMFontDef hangOnToMe;
 
         protected bool m_bCaptured;
         protected ICCEGLTouchDelegate m_pDelegate;

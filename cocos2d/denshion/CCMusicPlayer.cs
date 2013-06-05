@@ -16,7 +16,7 @@ namespace CocosDenshion
         private bool m_IsRepeatingAfterClose;
         private bool m_IsShuffleAfterClose;
         private TimeSpan m_PlayPositionAfterClose = TimeSpan.Zero;
-        private MediaQueue m_QueueAfterClose;
+        //private MediaQueue m_QueueAfterClose;
         private Song m_SongToPlayAfterClose;
         private float m_VolumeAfterClose = 1f;
 

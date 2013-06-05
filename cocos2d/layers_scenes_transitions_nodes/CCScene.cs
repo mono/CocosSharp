@@ -36,10 +36,9 @@ namespace Cocos2D
         /// Initialize this scene
         /// </summary>
         /// <returns></returns>
-        public virtual bool Init()
+        public override bool Init()
         {
             return (true);
         }
-
     }
 }

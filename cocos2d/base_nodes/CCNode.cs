@@ -120,6 +120,11 @@ namespace Cocos2D
             m_pScheduler = director.Scheduler;
         }
 
+        public virtual bool Init()
+        {
+          return true;
+        }
+
 #if ANDROID
         /// <summary>
         /// Sets all of the sprite font labels as dirty so they redraw. This is necessary

@@ -387,7 +387,7 @@ namespace Cocos2D
             InitWithFile(plistFile);
         }
 
-        public bool Init()
+        public override bool Init()
         {
             return InitWithTotalParticles(150);
         }

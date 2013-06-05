@@ -268,7 +268,7 @@ namespace Cocos2D
             InitWithString(str, fntFile, width, alignment, imageOffset);
         }
 
-        protected override bool Init()
+        public override bool Init()
         {
             return InitWithString(null, null, kCCLabelAutomaticWidth, CCTextAlignment.CCTextAlignmentLeft, CCPoint.Zero);
         }

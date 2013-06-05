@@ -332,7 +332,7 @@ namespace cocos2d
                 element.key = (first << 16) | (second & 0xffff);
                 m_pKerningDictionary.Add(element.key, element);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Cocos2D.CCLog.Log("Failed to parse font line: {0}", line);
             }
@@ -783,7 +783,7 @@ namespace Cocos2D
             element.key = (first << 16) | (second & 0xffff);
             m_pKerningDictionary.Add(element.key, element);
         }
-            catch (Exception ex)
+            catch (Exception)
             {
                 CCLog.Log("Failed to parse font line: {0}", line);
             }
