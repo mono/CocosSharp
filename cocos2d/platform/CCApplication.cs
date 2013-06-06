@@ -91,41 +91,41 @@ namespace Cocos2D
 
             // .FNT Reader
             ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[cocos2d.CCBMFontConfiguration+ccBMFontDef, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
-                ( ) => new DictionaryReader<Int32, CCBMFontConfiguration.ccBMFontDef> ()
+                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Cocos2D.CCBMFontConfiguration+CCBMFontDef, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                ( ) => new DictionaryReader<Int32, CCBMFontConfiguration.CCBMFontDef> ()
 
                 );
 
             ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[cocos2d.CCBMFontConfiguration+tKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
-                ( ) => new DictionaryReader<Int32, CCBMFontConfiguration.tKerningHashElement> ()
+                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Cocos2D.CCBMFontConfiguration+CCKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                ( ) => new DictionaryReader<Int32, CCBMFontConfiguration.CCKerningHashElement> ()
                 
                 );
             ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[cocos2d.CCRect, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCRect, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 ( ) => new CCRectReader ()
 
                 );
 
             ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[cocos2d.CCPoint, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCPoint, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 ( ) => new CCPointReader ()
                 
                 );
             ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[cocos2d.CCSize, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCSize, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 ( ) => new CCSizeReader ()
                 
                 );
 
             ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[cocos2d.CCBMFontConfiguration+tKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCBMFontConfiguration+CCKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 ( ) => new KerningHashElementReader ()
                 
                 );
 
             ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[cocos2d.CCBMFontConfiguration+ccBMFontPadding, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCBMFontConfiguration+CCBMFontPadding, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 ( ) => new CCBMFontPaddingtReader ()
                 
                 );
