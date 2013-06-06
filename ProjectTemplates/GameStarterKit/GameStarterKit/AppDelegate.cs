@@ -61,9 +61,9 @@ namespace $safeprojectname$
 			pDirector.Projection = ccDirectorProjection.kCCDirectorProjection2D;
 
 #if WINDOWS || MACOS || MONOMAC || LINUX || OUYA || XBOX
-			var resPolicy = ResolutionPolicy.ExactFit; // This will stretch out your game
+			var resPolicy = CCResolutionPolicy.ExactFit; // This will stretch out your game
 #else
-			var resPolicy = ResolutionPolicy.ShowAll; // This will letterbox your game
+			var resPolicy = CCResolutionPolicy.ShowAll; // This will letterbox your game
 #endif
 
 			CCDrawManager.SetDesignResolutionSize(preferredWidth, 
