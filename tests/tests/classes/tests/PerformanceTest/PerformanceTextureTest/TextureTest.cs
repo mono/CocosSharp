@@ -237,7 +237,7 @@ namespace tests
             CCTextureCache cache = CCTextureCache.SharedTextureCache;
 
             CCLog.Log("RGBA 8888");
-            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888;
+            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGBA8888;
             //gettimeofday(now);
             texture = cache.AddImage(filename);
             //if (texture != null)
@@ -247,7 +247,7 @@ namespace tests
             cache.RemoveTexture(texture);
 
             CCLog.Log("RGBA 4444");
-            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA4444;
+            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGBA4444;
 
             //gettimeofday(now);
             texture = cache.AddImage(filename);
@@ -258,7 +258,7 @@ namespace tests
             cache.RemoveTexture(texture);
 
             CCLog.Log("RGBA 5551");
-            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGB5A1;
+            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGB5A1;
             //gettimeofday(now);
             texture = cache.AddImage(filename);
             //if (texture != null)
@@ -268,7 +268,7 @@ namespace tests
             cache.RemoveTexture(texture);
 
             CCLog.Log("RGB 565");
-            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGB565;
+            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGB565;
             //gettimeofday(now);
             texture = cache.AddImage(filename);
             //if (texture != null)

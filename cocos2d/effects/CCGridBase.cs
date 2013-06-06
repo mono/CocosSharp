@@ -123,7 +123,7 @@ namespace Cocos2D
             ulong potHigh = (uint) size.Height;
 
             // we only use rgba8888
-            var format = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888;
+            var format = CCTexture2DPixelFormat.RGBA8888;
 
             var pTexture = new CCTexture2D();
             pTexture.InitWithData(null, format, (uint) potWide, (uint) potHigh, size);

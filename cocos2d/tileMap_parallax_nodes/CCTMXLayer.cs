@@ -350,13 +350,13 @@ namespace Cocos2D
             CCPoint ret = CCPoint.Zero;
             switch (m_uLayerOrientation)
             {
-                case CCTMXOrientation.CCTMXOrientationOrtho:
+                case CCTMXOrientation.Ortho:
                     ret = PositionForOrthoAt(pos);
                     break;
-                case CCTMXOrientation.CCTMXOrientationIso:
+                case CCTMXOrientation.Iso:
                     ret = PositionForIsoAt(pos);
                     break;
-                case CCTMXOrientation.CCTMXOrientationHex:
+                case CCTMXOrientation.Hex:
                     ret = PositionForHexAt(pos);
                     break;
             }
@@ -486,14 +486,14 @@ namespace Cocos2D
             CCPoint ret = CCPoint.Zero;
             switch (m_uLayerOrientation)
             {
-                case CCTMXOrientation.CCTMXOrientationOrtho:
+                case CCTMXOrientation.Ortho:
                     ret = new CCPoint(pos.X * m_tMapTileSize.Width, -pos.Y * m_tMapTileSize.Height);
                     break;
-                case CCTMXOrientation.CCTMXOrientationIso:
+                case CCTMXOrientation.Iso:
                     ret = new CCPoint((m_tMapTileSize.Width / 2) * (pos.X - pos.Y),
                                       (m_tMapTileSize.Height / 2) * (-pos.X - pos.Y));
                     break;
-                case CCTMXOrientation.CCTMXOrientationHex:
+                case CCTMXOrientation.Hex:
                     Debug.Assert(pos.Equals(CCPoint.Zero), "offset for hexagonal map not implemented yet");
                     break;
             }
@@ -710,14 +710,14 @@ namespace Cocos2D
             {
                 switch (m_uLayerOrientation)
                 {
-                    case CCTMXOrientation.CCTMXOrientationIso:
+                    case CCTMXOrientation.Iso:
                         var maxVal = (int) (m_tLayerSize.Width + m_tLayerSize.Height);
                         ret = (int) (-(maxVal - (pos.X + pos.Y)));
                         break;
-                    case CCTMXOrientation.CCTMXOrientationOrtho:
+                    case CCTMXOrientation.Ortho:
                         ret = (int) (-(m_tLayerSize.Height - pos.Y));
                         break;
-                    case CCTMXOrientation.CCTMXOrientationHex:
+                    case CCTMXOrientation.Hex:
                         Debug.Assert(false, "TMX Hexa zOrder not supported");
                         break;
                     default:

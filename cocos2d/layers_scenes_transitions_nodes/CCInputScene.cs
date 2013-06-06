@@ -8,7 +8,7 @@ namespace Cocos2D
     /// This is the input sensitive version of the scene. This class reacts to touches
     /// and gamepad input.
     /// </summary>
-    public class CCInputScene : CCScene, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate, CCKeypadDelegate
+    public class CCInputScene : CCScene, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate, ICCKeypadDelegate
     {
         private bool m_bIsAccelerometerEnabled;
         private bool m_bKeypadEnabled;

@@ -34,10 +34,10 @@ namespace Cocos2D
 
     public enum CCZ_COMPRESSION
     {
-        CCZ_COMPRESSION_ZLIB,				// zlib format.
-        CCZ_COMPRESSION_BZIP2,				// bzip2 format (not supported yet)
-        CCZ_COMPRESSION_GZIP,				// gzip format (not supported yet)
-        CCZ_COMPRESSION_NONE,				// plain (not supported yet)
+        Zlib,				// zlib format.
+        Bzip2,				// bzip2 format (not supported yet)
+        Gzip,				// gzip format (not supported yet)
+        None,				// plain (not supported yet)
     };
 
     public class ZipUtils

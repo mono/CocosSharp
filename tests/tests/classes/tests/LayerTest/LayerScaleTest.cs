@@ -75,7 +75,7 @@ namespace tests
             CCLayerColor layer1 = new CCLayerColor(new CCColor4B(0xFF, 0xFF, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
             layer1.IgnoreAnchorPointForPosition = false;
             layer1.Position = (new CCPoint(s.Width / 2, s.Height / 2));
-            layer1.ChildClippingMode = CCClipMode.ClipBounds;
+            layer1.ChildClippingMode = CCClipMode.Bounds;
             AddChild(layer1, 1);
 
             s = layer1.ContentSize;
@@ -83,7 +83,7 @@ namespace tests
             m_pInnerLayer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), s.Width * 0.5f, s.Height * 0.5f);
             m_pInnerLayer.IgnoreAnchorPointForPosition = false;
             m_pInnerLayer.Position = (new CCPoint(s.Width / 2, s.Height / 2));
-            m_pInnerLayer.ChildClippingMode = CCClipMode.ClipBounds;
+            m_pInnerLayer.ChildClippingMode = CCClipMode.Bounds;
             
             layer1.AddChild(m_pInnerLayer, 1);
             
@@ -132,7 +132,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_pInnerLayer.ChildClippingMode = CCClipMode.ClipBoundsWithRenderTarget;
+            m_pInnerLayer.ChildClippingMode = CCClipMode.BoundsWithRenderTarget;
 
             var rotateBy = new CCRotateBy(3, 90);
 

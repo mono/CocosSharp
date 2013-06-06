@@ -12,7 +12,7 @@ namespace Cocos2D
     ///**
     // * Sole purpose of this delegate is to single touch event in this version.
     // */
-    public interface CCTableViewDelegate : CCScrollViewDelegate
+    public interface ICCTableViewDelegate : ICCScrollViewDelegate
     {
         /**
          * Delegate to respond touch event
@@ -54,7 +54,7 @@ namespace Cocos2D
      * Data source that governs table backend data.
      */
 
-    public interface CCTableViewDataSource
+    public interface ICCTableViewDataSource
     {
         /**
          * cell height for a given table.
@@ -85,7 +85,7 @@ namespace Cocos2D
      * this is a very basic, minimal implementation to bring UITableView-like component into cocos2d world.
      * 
      */
-    public class CCTableView : CCScrollView, CCScrollViewDelegate
+    public class CCTableView : CCScrollView, ICCScrollViewDelegate
     {
         protected CCTableViewCell m_pTouchedCell;
         protected CCTableViewVerticalFillOrder m_eVordering;
@@ -93,14 +93,14 @@ namespace Cocos2D
         protected List<float> m_vCellsPositions;
         protected CCArrayForObjectSorting m_pCellsUsed;
         protected CCArrayForObjectSorting m_pCellsFreed;
-        protected CCTableViewDataSource m_pDataSource;
-        protected CCTableViewDelegate m_pTableViewDelegate;
+        protected ICCTableViewDataSource m_pDataSource;
+        protected ICCTableViewDelegate m_pTableViewDelegate;
         protected CCScrollViewDirection m_eOldDirection;
 
         /**
          * data source
          */
-        public CCTableViewDataSource DataSource
+        public ICCTableViewDataSource DataSource
         {
             get { return m_pDataSource; }
             set { m_pDataSource = value; }
@@ -109,7 +109,7 @@ namespace Cocos2D
         /**
          * delegate
          */
-        public new CCTableViewDelegate Delegate
+        public new ICCTableViewDelegate Delegate
         {
             get { return m_pTableViewDelegate; }
             set { m_pTableViewDelegate = value; }
@@ -127,7 +127,7 @@ namespace Cocos2D
          * @param size view size
          * @return table view
          */
-        public CCTableView(CCTableViewDataSource dataSource, CCSize size)
+        public CCTableView(ICCTableViewDataSource dataSource, CCSize size)
             : this(dataSource, size, null)
         { }
 
@@ -139,7 +139,7 @@ namespace Cocos2D
          * @param container parent object for cells
          * @return table view
          */
-        public CCTableView(CCTableViewDataSource dataSource, CCSize size, CCNode container)
+        public CCTableView(ICCTableViewDataSource dataSource, CCSize size, CCNode container)
         {
             InitWithViewSize(size, container);
             DataSource = dataSource;

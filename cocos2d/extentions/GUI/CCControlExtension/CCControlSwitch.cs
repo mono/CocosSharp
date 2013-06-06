@@ -234,7 +234,7 @@ namespace Cocos2D
         /** Sprite which represents the view. */
     }
 
-    public class CCControlSwitchSprite : CCSprite, CCActionTweenDelegate
+    public class CCControlSwitchSprite : CCSprite, ICCActionTweenDelegate
     {
         private CCSprite m_ThumbSprite;
         private float m_fOffPosition;

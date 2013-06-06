@@ -604,7 +604,7 @@
     <Compile Include=".\gamepad_dispatcher\CCGamePadTriggerDelegate.cs">
       <LogicalName>gamepad_dispatcher\CCGamePadTriggerDelegate</LogicalName>
     </Compile>
-    <Compile Include=".\keypad_dispatcher\CCKeypadDelegate.cs">
+    <Compile Include=".\keypad_dispatcher\ICCKeypadDelegate.cs">
       <LogicalName>keypad_dispatcher\CCKeypadDelegate</LogicalName>
     </Compile>
     <Compile Include=".\keypad_dispatcher\CCKeypadDispatcher.cs">
@@ -820,8 +820,8 @@
     <Compile Include=".\platform\CCFocusManager.cs">
       <LogicalName>platform\CCFocusManager</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCIFocusable.cs">
-      <LogicalName>platform\CCIFocusable</LogicalName>
+    <Compile Include=".\platform\ICCFocusable.cs">
+      <LogicalName>platform\ICCFocusable</LogicalName>
     </Compile>
     <Compile Include=".\platform\CCLog.cs">
       <LogicalName>platform\CCLog</LogicalName>
@@ -964,7 +964,7 @@
     <Compile Include=".\predefine\ccTypes.cs">
       <LogicalName>predefine\ccTypes</LogicalName>
     </Compile>
-    <Compile Include=".\predefine\CCSelectorProtocol">
+    <Compile Include=".\predefine\ICCSelectorProtocol">
       <LogicalName>predefine\selector_protocol</LogicalName>
     </Compile>
     <Compile Include=".\Properties\AssemblyInfo.cs">

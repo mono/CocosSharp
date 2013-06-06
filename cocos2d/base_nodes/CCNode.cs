@@ -4,9 +4,9 @@ using System.IO;
 
 namespace Cocos2D
 {
-    internal enum NodeTag
+    internal enum CCNodeTag
     {
-        kCCNodeTagInvalid = -1,
+        Invalid = -1,
     };
 
     /** @brief CCNode is the main element. Anything thats gets drawn or contains things that get drawn is a CCNode.
@@ -64,7 +64,7 @@ namespace Cocos2D
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-    public class CCNode : CCSelectorProtocol, CCIFocusable
+    public class CCNode : ICCSelectorProtocol, ICCFocusable
     {
         private static int kCCNodeTagInvalid = -1;
         private static int s_globalOrderOfArrival = 1;
@@ -574,7 +574,7 @@ namespace Cocos2D
 
         public CCNode GetChildByTag(int tag)
         {
-            Debug.Assert(tag != (int) NodeTag.kCCNodeTagInvalid, "Invalid tag");
+            Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
 
             if (m_pChildren != null && m_pChildren.count > 0)
             {
@@ -651,7 +651,7 @@ namespace Cocos2D
 
         public void RemoveChildByTag(int tag, bool cleanup)
         {
-            Debug.Assert(tag != (int) NodeTag.kCCNodeTagInvalid, "Invalid tag");
+            Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
 
             CCNode child = GetChildByTag(tag);
 
@@ -990,13 +990,13 @@ namespace Cocos2D
 
         public void StopActionByTag(int tag)
         {
-            Debug.Assert(tag != (int) NodeTag.kCCNodeTagInvalid, "Invalid tag");
+            Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
             m_pActionManager.RemoveActionByTag(tag, this);
         }
 
         public CCAction GetActionByTag(int tag)
         {
-            Debug.Assert(tag != (int) NodeTag.kCCNodeTagInvalid, "Invalid tag");
+            Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
             return m_pActionManager.GetActionByTag(tag, this);
         }
 

@@ -24,9 +24,9 @@ namespace tests.FontTest
 
         public static CCVerticalTextAlignment[] verticalAlignment =
             {
-                CCVerticalTextAlignment.CCVerticalTextAlignmentTop,
-                CCVerticalTextAlignment.CCVerticalTextAlignmentCenter,
-                CCVerticalTextAlignment.CCVerticalTextAlignmentBottom
+                CCVerticalTextAlignment.Top,
+                CCVerticalTextAlignment.Center,
+                CCVerticalTextAlignment.Bottom
             };
 
         public override void runThisTest()
@@ -119,13 +119,13 @@ namespace tests.FontTest
 
             CCLabelTTF top = new CCLabelTTF(pFont, pFont, 24);
             CCLabelTTF left = new CCLabelTTF("alignment left", pFont, fontSize,
-                                                blockSize, CCTextAlignment.CCTextAlignmentLeft,
+                                                blockSize, CCTextAlignment.Left,
                                                 FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
             CCLabelTTF center = new CCLabelTTF("alignment center", pFont, fontSize,
-                                                  blockSize, CCTextAlignment.CCTextAlignmentCenter,
+                                                  blockSize, CCTextAlignment.Center,
                                                   FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
             CCLabelTTF right = new CCLabelTTF("alignment right", pFont, fontSize,
-                                                 blockSize, CCTextAlignment.CCTextAlignmentRight,
+                                                 blockSize, CCTextAlignment.Right,
                                                  FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
 
             CCLayerColor leftColor = new CCLayerColor(new CCColor4B(100, 100, 100, 255), blockSize.Width, blockSize.Height);

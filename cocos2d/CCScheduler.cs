@@ -10,10 +10,10 @@ namespace Cocos2D
     //
     /** @brief Light weight timer */
 
-    public class CCTimer : CCSelectorProtocol
+    public class CCTimer : ICCSelectorProtocol
     {
         private CCScheduler _scheduler;
-        private readonly CCSelectorProtocol Target;
+        private readonly ICCSelectorProtocol Target;
 
         private readonly bool m_bRunForever;
         private readonly float m_fDelay;
@@ -34,7 +34,7 @@ namespace Cocos2D
         /** Initializes a timer with a target and a selector. 
          */
 
-        public CCTimer(CCScheduler scheduler, CCSelectorProtocol target, Action<float> selector)
+        public CCTimer(CCScheduler scheduler, ICCSelectorProtocol target, Action<float> selector)
             : this(scheduler, target, selector, 0, 0, 0)
         {
         }
@@ -43,12 +43,12 @@ namespace Cocos2D
          *  Target is not needed in c#, it is just for compatibility.
          */
 
-        public CCTimer(CCScheduler scheduler, CCSelectorProtocol target, Action<float> selector, float seconds)
+        public CCTimer(CCScheduler scheduler, ICCSelectorProtocol target, Action<float> selector, float seconds)
             : this(scheduler, target, selector, seconds, 0, 0)
         {
         }
 
-        public CCTimer(CCScheduler scheduler, CCSelectorProtocol target, Action<float> selector, float seconds, uint repeat, float delay)
+        public CCTimer(CCScheduler scheduler, ICCSelectorProtocol target, Action<float> selector, float seconds, uint repeat, float delay)
         {
             _scheduler = scheduler;
             Target = target;
@@ -180,11 +180,11 @@ public class CCScheduler
     public const int kCCPrioritySystem = int.MinValue;
     public const int kCCPriorityNonSystemMin = kCCPrioritySystem + 1;
 
-    private readonly Dictionary<CCSelectorProtocol, HashSelectorEntry> m_pHashForSelectors =
-        new Dictionary<CCSelectorProtocol, HashSelectorEntry>();
+    private readonly Dictionary<ICCSelectorProtocol, HashSelectorEntry> m_pHashForSelectors =
+        new Dictionary<ICCSelectorProtocol, HashSelectorEntry>();
 
-    private readonly Dictionary<CCSelectorProtocol, HashUpdateEntry> m_pHashForUpdates =
-        new Dictionary<CCSelectorProtocol, HashUpdateEntry>();
+    private readonly Dictionary<ICCSelectorProtocol, HashUpdateEntry> m_pHashForUpdates =
+        new Dictionary<ICCSelectorProtocol, HashUpdateEntry>();
 
     // hash used to fetch quickly the list entries for pause,delete,etc
     private readonly LinkedList<ListEntry> m_pUpdates0List = new LinkedList<ListEntry>(); // list priority == 0
@@ -198,7 +198,7 @@ public class CCScheduler
     public float TimeScale = 1.0f;
 
     private static HashSelectorEntry[] s_pTmpHashSelectorArray = new HashSelectorEntry[128];
-    private static CCSelectorProtocol[] s_pTmpSelectorArray = new CCSelectorProtocol[128];
+    private static ICCSelectorProtocol[] s_pTmpSelectorArray = new ICCSelectorProtocol[128];
 
     internal void update(float dt)
     {
@@ -249,13 +249,13 @@ public class CCScheduler
         var count = m_pHashForSelectors.Keys.Count;
         if (s_pTmpSelectorArray.Length < count)
         {
-            s_pTmpSelectorArray = new CCSelectorProtocol[s_pTmpSelectorArray.Length * 2];
+            s_pTmpSelectorArray = new ICCSelectorProtocol[s_pTmpSelectorArray.Length * 2];
         }
             m_pHashForSelectors.Keys.CopyTo(s_pTmpSelectorArray, 0);
 
             for (int i = 0; i < count; i++)
             {
-                CCSelectorProtocol key = s_pTmpSelectorArray[i];
+                ICCSelectorProtocol key = s_pTmpSelectorArray[i];
                 if (!m_pHashForSelectors.ContainsKey(key))
                 {
                     continue;
@@ -356,7 +356,7 @@ public class CCScheduler
 
      @since v0.99.3, repeat and delay added in v1.1
      */
-    public void ScheduleSelector(Action<float> selector, CCSelectorProtocol target, float interval, bool paused,
+    public void ScheduleSelector(Action<float> selector, ICCSelectorProtocol target, float interval, bool paused,
                                         uint repeat,
                                         float delay)
     {
@@ -404,7 +404,7 @@ public class CCScheduler
 	     @since v0.99.3
 	     */
 
-    public void ScheduleUpdateForTarget(CCSelectorProtocol targt, int priority, bool paused)
+    public void ScheduleUpdateForTarget(ICCSelectorProtocol targt, int priority, bool paused)
     {
         HashUpdateEntry element;
 
@@ -439,7 +439,7 @@ public class CCScheduler
 	     @since v0.99.3
 	     */
 
-    public void UnscheduleSelector(Action<float> selector, CCSelectorProtocol target)
+    public void UnscheduleSelector(Action<float> selector, ICCSelectorProtocol target)
     {
         // explicity handle nil arguments when removing an object
         if (selector == null || target == null)
@@ -492,7 +492,7 @@ public class CCScheduler
 	     @since v0.99.3
 	     */
 
-    public void UnscheduleAllSelectorsForTarget(CCSelectorProtocol target)
+    public void UnscheduleAllSelectorsForTarget(ICCSelectorProtocol target)
     {
         // explicit NULL handling
         if (target == null)
@@ -552,7 +552,7 @@ public class CCScheduler
     }
     */
 
-    public void UnscheduleUpdateForTarget(CCSelectorProtocol target)
+    public void UnscheduleUpdateForTarget(ICCSelectorProtocol target)
     {
         if (target == null)
         {
@@ -637,14 +637,14 @@ public class CCScheduler
     }
 
 
-    public List<CCSelectorProtocol> PauseAllTargets()
+    public List<ICCSelectorProtocol> PauseAllTargets()
     {
         return PauseAllTargetsWithMinPriority(int.MinValue);
     }
 
-    public List<CCSelectorProtocol> PauseAllTargetsWithMinPriority(int minPriority)
+    public List<ICCSelectorProtocol> PauseAllTargetsWithMinPriority(int minPriority)
     {
-        var idsWithSelectors = new List<CCSelectorProtocol>();
+        var idsWithSelectors = new List<ICCSelectorProtocol>();
 
         // Custom Selectors
         foreach (HashSelectorEntry element in m_pHashForSelectors.Values)
@@ -690,15 +690,15 @@ public class CCScheduler
         return idsWithSelectors;
     }
 
-    public void ResumeTargets(List<CCSelectorProtocol> targetsToResume)
+    public void ResumeTargets(List<ICCSelectorProtocol> targetsToResume)
     {
-        foreach (CCSelectorProtocol target in targetsToResume)
+        foreach (ICCSelectorProtocol target in targetsToResume)
         {
             ResumeTarget(target);
         }
     }
 
-    public void PauseTarget(CCSelectorProtocol target)
+    public void PauseTarget(ICCSelectorProtocol target)
     {
         Debug.Assert(target != null);
 
@@ -717,7 +717,7 @@ public class CCScheduler
         }
     }
 
-    public void ResumeTarget(CCSelectorProtocol target)
+    public void ResumeTarget(ICCSelectorProtocol target)
     {
         Debug.Assert(target != null);
 
@@ -736,7 +736,7 @@ public class CCScheduler
         }
     }
 
-    public bool IsTargetPaused(CCSelectorProtocol target)
+    public bool IsTargetPaused(ICCSelectorProtocol target)
     {
         Debug.Assert(target != null, "target must be non nil");
 
@@ -774,7 +774,7 @@ public class CCScheduler
         }
     }
 
-    private void PriorityIn(LinkedList<ListEntry> list, CCSelectorProtocol target, int priority, bool paused)
+    private void PriorityIn(LinkedList<ListEntry> list, ICCSelectorProtocol target, int priority, bool paused)
     {
         var listElement = new ListEntry
         {
@@ -818,7 +818,7 @@ public class CCScheduler
         m_pHashForUpdates.Add(target, hashElement);
     }
 
-    private void AppendIn(LinkedList<ListEntry> list, CCSelectorProtocol target, bool paused)
+    private void AppendIn(LinkedList<ListEntry> list, ICCSelectorProtocol target, bool paused)
     {
         var listElement = new ListEntry
         {
@@ -847,7 +847,7 @@ public class CCScheduler
         public CCTimer CurrentTimer;
         public bool CurrentTimerSalvaged;
         public bool Paused;
-        public CCSelectorProtocol Target;
+        public ICCSelectorProtocol Target;
         public int TimerIndex;
         public List<CCTimer> Timers;
     }
@@ -860,7 +860,7 @@ public class CCScheduler
     {
         public ListEntry Entry; // entry in the list
         public LinkedList<ListEntry> List; // Which list does it belong to ?
-        public CCSelectorProtocol Target; // hash key
+        public ICCSelectorProtocol Target; // hash key
     }
 
     #endregion
@@ -872,7 +872,7 @@ public class CCScheduler
         public bool MarkedForDeletion;
         public bool Paused;
         public int Priority;
-        public CCSelectorProtocol Target;
+        public ICCSelectorProtocol Target;
     }
 
     #endregion

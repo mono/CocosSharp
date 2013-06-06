@@ -44,7 +44,7 @@ namespace tests
             CCLabelTTF versionLabel = new CCLabelTTF("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
 #endif
             versionLabel.Position = new CCPoint(versionLabel.ContentSizeInPixels.Width/2f, s.Height - 18f);
-            versionLabel.HorizontalAlignment = CCTextAlignment.CCTextAlignmentLeft;
+            versionLabel.HorizontalAlignment = CCTextAlignment.Left;
             AddChild(versionLabel, 20000);
 #endif
             // add menu items for tests

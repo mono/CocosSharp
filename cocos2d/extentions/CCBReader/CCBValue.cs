@@ -2,11 +2,11 @@ using System.Diagnostics;
 
 namespace Cocos2D
 {
-    internal class ccColor3BWapper 
+    internal class CCColor3BWapper 
     {
         private CCColor3B color;
 
-        internal ccColor3BWapper(CCColor3B xcolor)
+        internal CCColor3BWapper(CCColor3B xcolor)
         {
             color = xcolor;
         }
@@ -19,11 +19,11 @@ namespace Cocos2D
 
     internal enum ValueType
     {
-        kIntValue,
-        kFloatValue,
-        kPointerValue,
-        kBoolValue,
-        kUnsignedCharValue,
+        Int,
+        Float,
+        Pointer,
+        Bool,
+        UnsignedChar,
     }
 
     internal class CCBValue 
@@ -36,60 +36,60 @@ namespace Cocos2D
         internal CCBValue (int xnValue)
         {
             nValue = xnValue;
-            mType = ValueType.kIntValue;
+            mType = ValueType.Int;
         }
 
         internal CCBValue(bool bValue)
         {
             nValue = bValue ? 1 : 0;
-            mType = ValueType.kBoolValue;
+            mType = ValueType.Bool;
         }
 
         internal CCBValue(float xfValue)
         {
             fValue = xfValue;
-            mType = ValueType.kFloatValue;
+            mType = ValueType.Float;
         }
 
         internal CCBValue(byte bValue)
         {
             nValue = bValue;
-            mType = ValueType.kUnsignedCharValue;
+            mType = ValueType.UnsignedChar;
         }
 
         internal CCBValue(byte[] xpointer)
         {
             pointer = xpointer;
-            mType = ValueType.kPointerValue;
+            mType = ValueType.Pointer;
         }
 
         internal int GetIntValue()
         {
-            Debug.Assert(mType == ValueType.kIntValue);
+            Debug.Assert(mType == ValueType.Int);
             return nValue;
         }
 
         internal float GetFloatValue()
         {
-            Debug.Assert(mType == ValueType.kFloatValue);
+            Debug.Assert(mType == ValueType.Float);
             return fValue;
         }
 
         internal bool GetBoolValue()
         {
-            Debug.Assert(mType == ValueType.kBoolValue);
+            Debug.Assert(mType == ValueType.Bool);
             return nValue == 1;
         }
 
         internal byte GetByteValue()
         {
-            Debug.Assert(mType == ValueType.kUnsignedCharValue);
+            Debug.Assert(mType == ValueType.UnsignedChar);
             return (byte) nValue;
         }
 
         internal byte[] getPointer()
         {
-            Debug.Assert(mType == ValueType.kPointerValue);
+            Debug.Assert(mType == ValueType.Pointer);
             return pointer;
         }
     }

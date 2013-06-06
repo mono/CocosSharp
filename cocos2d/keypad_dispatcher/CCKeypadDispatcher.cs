@@ -19,14 +19,14 @@ namespace Cocos2D
         protected bool m_bToAdd;
         protected bool m_bToRemove;
 
-        protected List<CCKeypadDelegate> m_pHandlersToAdd = new List<CCKeypadDelegate>();
-        protected List<CCKeypadDelegate> m_pHandlersToRemove = new List<CCKeypadDelegate>();
+        protected List<ICCKeypadDelegate> m_pHandlersToAdd = new List<ICCKeypadDelegate>();
+        protected List<ICCKeypadDelegate> m_pHandlersToRemove = new List<ICCKeypadDelegate>();
 
         /**
         @brief add delegate to concern keypad msg
         */
 
-        public void AddDelegate(CCKeypadDelegate pDelegate)
+        public void AddDelegate(ICCKeypadDelegate pDelegate)
         {
             if (pDelegate == null)
             {
@@ -48,7 +48,7 @@ namespace Cocos2D
         @brief remove the delegate from the delegates who concern keypad msg
         */
 
-        public void RemoveDelegate(CCKeypadDelegate pDelegate)
+        public void RemoveDelegate(ICCKeypadDelegate pDelegate)
         {
             if (pDelegate == null)
             {
@@ -70,7 +70,7 @@ namespace Cocos2D
         @brief force add the delegate
         */
 
-        public void ForceAddDelegate(CCKeypadDelegate pDelegate)
+        public void ForceAddDelegate(ICCKeypadDelegate pDelegate)
         {
             CCKeypadHandler pHandler = CCKeypadHandler.HandlerWithDelegate(pDelegate);
             m_pDelegates.Add(pHandler);
@@ -80,7 +80,7 @@ namespace Cocos2D
         @brief force remove the delegate
         */
 
-        public void ForceRemoveDelegate(CCKeypadDelegate pDelegate)
+        public void ForceRemoveDelegate(ICCKeypadDelegate pDelegate)
         {
             for (int i = 0; i < m_pDelegates.Count; i++)
             {
@@ -105,7 +105,7 @@ namespace Cocos2D
                 for (int i = 0; i < m_pDelegates.Count; i++)
                 {
                     CCKeypadHandler pHandler = m_pDelegates[i];
-                    CCKeypadDelegate pDelegate = pHandler.Delegate;
+                    ICCKeypadDelegate pDelegate = pHandler.Delegate;
 
                     switch (nMsgType)
                     {

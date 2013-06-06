@@ -8,7 +8,7 @@ namespace Cocos2D
     /// <summary>
     /// Interface for nodes that can be focused. 
     /// </summary>
-    public interface CCIFocusable
+    public interface ICCFocusable
     {
         bool CanReceiveFocus
         {

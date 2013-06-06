@@ -286,12 +286,12 @@ namespace tests
         {
             if (m_emitter != null)
             {
-                if (m_emitter.PositionType == CCPositionType.kCCPositionTypeGrouped)
-                    m_emitter.PositionType = CCPositionType.kCCPositionTypeFree;
-                else if (m_emitter.PositionType == CCPositionType.kCCPositionTypeFree)
-                    m_emitter.PositionType = CCPositionType.kCCPositionTypeRelative;
-                else if (m_emitter.PositionType == CCPositionType.kCCPositionTypeRelative)
-                    m_emitter.PositionType = CCPositionType.kCCPositionTypeGrouped;
+                if (m_emitter.PositionType == CCPositionType.Grouped)
+                    m_emitter.PositionType = CCPositionType.Free;
+                else if (m_emitter.PositionType == CCPositionType.Free)
+                    m_emitter.PositionType = CCPositionType.Relative;
+                else if (m_emitter.PositionType == CCPositionType.Relative)
+                    m_emitter.PositionType = CCPositionType.Grouped;
             }
         }
 
@@ -1047,7 +1047,7 @@ namespace tests
             m_emitter.Duration = CCParticleSystem.kCCParticleDurationInfinity;
 
             // radius mode
-            m_emitter.EmitterMode = CCEmitterMode.kCCParticleModeRadius;
+            m_emitter.EmitterMode = CCEmitterMode.Radius;
 
             // radius mode: start and end radius in pixels
             m_emitter.StartRadius = (0);
@@ -1129,7 +1129,7 @@ namespace tests
             m_emitter.Duration = CCParticleSystem.kCCParticleDurationInfinity;
 
             // radius mode
-            m_emitter.EmitterMode = CCEmitterMode.kCCParticleModeRadius;
+            m_emitter.EmitterMode = CCEmitterMode.Radius;
 
             // radius mode: start and end radius in pixels
             m_emitter.StartRadius = (100);
@@ -1211,7 +1211,7 @@ namespace tests
             m_emitter.Duration = CCParticleSystem.kCCParticleDurationInfinity;
 
             // radius mode
-            m_emitter.EmitterMode = CCEmitterMode.kCCParticleModeRadius;
+            m_emitter.EmitterMode = CCEmitterMode.Radius;
 
             // radius mode: start and end radius in pixels
             m_emitter.StartRadius = (50);
@@ -1540,7 +1540,7 @@ namespace tests
                 Duration = (kCCParticleDurationInfinity);
 
                 // Gravity Mode
-                EmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                EmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 Gravity = (new CCPoint(0, 0));
@@ -1652,7 +1652,7 @@ namespace tests
 
                 particleSystem.Position = (new CCPoint(i * 50, i * 50));
 
-                particleSystem.PositionType = CCPositionType.kCCPositionTypeGrouped;
+                particleSystem.PositionType = CCPositionType.Grouped;
                 AddChild(particleSystem);
             }
 
@@ -1688,7 +1688,7 @@ namespace tests
             {
                 CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/SpinningPeas");
 
-                particleSystem.PositionType = CCPositionType.kCCPositionTypeGrouped;
+                particleSystem.PositionType = CCPositionType.Grouped;
                 particleSystem.Position = (new CCPoint(i * 50, i * 50));
 
                 particleSystem.Texture = batchNode.Texture;
@@ -1733,7 +1733,7 @@ namespace tests
                 CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/Spiral");
                 particleSystem.Texture = m_pBatchNode.Texture;
 
-                particleSystem.PositionType = CCPositionType.kCCPositionTypeGrouped;
+                particleSystem.PositionType = CCPositionType.Grouped;
                 particleSystem.TotalParticles = (200);
 
                 particleSystem.Position = (new CCPoint(i * 15 + 100, i * 15 + 100));
@@ -1758,7 +1758,7 @@ namespace tests
                 CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/Spiral");
                 //add new
 
-                particleSystem.PositionType = CCPositionType.kCCPositionTypeGrouped;
+                particleSystem.PositionType = CCPositionType.Grouped;
                 particleSystem.TotalParticles = (200);
 
                 particleSystem.Position = (new CCPoint(CCRandom.Next(300), CCRandom.Next(400)));
@@ -1808,7 +1808,7 @@ namespace tests
                 particleSystem.Duration = CCParticleSystem.kCCParticleDurationInfinity;
 
                 // radius mode
-                particleSystem.EmitterMode = CCEmitterMode.kCCParticleModeRadius;
+                particleSystem.EmitterMode = CCEmitterMode.Radius;
 
                 // radius mode: 100 pixels from center
                 particleSystem.StartRadius = (100);
@@ -1868,7 +1868,7 @@ namespace tests
 
 
                 m_pBatchNode.AddChild(particleSystem);
-                particleSystem.PositionType = CCPositionType.kCCPositionTypeFree;
+                particleSystem.PositionType = CCPositionType.Free;
 
                 //[pBNode addChild:particleSystem z:10 tag:0);
             }

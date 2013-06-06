@@ -11,15 +11,15 @@ namespace Cocos2D
         /// <summary>
         /// No clipping of children
         /// </summary>
-        ClipNone,
+        None,
         /// <summary>
         /// Clipping with a ScissorRect
         /// </summary>
-        ClipBounds,
+        Bounds,
         /// <summary>
         /// Clipping with the ScissorRect and in a RenderTarget
         /// </summary>
-        ClipBoundsWithRenderTarget
+        BoundsWithRenderTarget
     }
 
     public static class CCDrawManager

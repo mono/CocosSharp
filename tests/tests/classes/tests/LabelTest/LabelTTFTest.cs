@@ -40,8 +40,8 @@ namespace tests
             AddChild(menu);
 
             m_plabel = null;
-            m_eHorizAlign = CCTextAlignment.CCTextAlignmentLeft;
-            m_eVertAlign = CCVerticalTextAlignment.CCVerticalTextAlignmentTop;
+            m_eHorizAlign = CCTextAlignment.Left;
+            m_eVertAlign = CCVerticalTextAlignment.Top;
 
             updateAlignment();
         }
@@ -67,37 +67,37 @@ namespace tests
 
         private void setAlignmentLeft(object pSender)
         {
-            m_eHorizAlign = CCTextAlignment.CCTextAlignmentLeft;
+            m_eHorizAlign = CCTextAlignment.Left;
             updateAlignment();
         }
 
         private void setAlignmentCenter(object pSender)
         {
-            m_eHorizAlign = CCTextAlignment.CCTextAlignmentCenter;
+            m_eHorizAlign = CCTextAlignment.Center;
             updateAlignment();
         }
 
         private void setAlignmentRight(object pSender)
         {
-            m_eHorizAlign = CCTextAlignment.CCTextAlignmentRight;
+            m_eHorizAlign = CCTextAlignment.Right;
             updateAlignment();
         }
 
         private void setAlignmentTop(object pSender)
         {
-            m_eVertAlign = CCVerticalTextAlignment.CCVerticalTextAlignmentTop;
+            m_eVertAlign = CCVerticalTextAlignment.Top;
             updateAlignment();
         }
 
         private void setAlignmentMiddle(object pSender)
         {
-            m_eVertAlign = CCVerticalTextAlignment.CCVerticalTextAlignmentCenter;
+            m_eVertAlign = CCVerticalTextAlignment.Center;
             updateAlignment();
         }
 
         private void setAlignmentBottom(object pSender)
         {
-            m_eVertAlign = CCVerticalTextAlignment.CCVerticalTextAlignmentBottom;
+            m_eVertAlign = CCVerticalTextAlignment.Bottom;
             updateAlignment();
         }
 
@@ -107,25 +107,25 @@ namespace tests
             string horizontal = "";
             switch (m_eVertAlign)
             {
-                case CCVerticalTextAlignment.CCVerticalTextAlignmentTop:
+                case CCVerticalTextAlignment.Top:
                     vertical = "Top";
                     break;
-                case CCVerticalTextAlignment.CCVerticalTextAlignmentCenter:
+                case CCVerticalTextAlignment.Center:
                     vertical = "Middle";
                     break;
-                case CCVerticalTextAlignment.CCVerticalTextAlignmentBottom:
+                case CCVerticalTextAlignment.Bottom:
                     vertical = "Bottom";
                     break;
             }
             switch (m_eHorizAlign)
             {
-                case CCTextAlignment.CCTextAlignmentLeft:
+                case CCTextAlignment.Left:
                     horizontal = "Left";
                     break;
-                case CCTextAlignment.CCTextAlignmentCenter:
+                case CCTextAlignment.Center:
                     horizontal = "Center";
                     break;
-                case CCTextAlignment.CCTextAlignmentRight:
+                case CCTextAlignment.Right:
                     horizontal = "Right";
                     break;
             }

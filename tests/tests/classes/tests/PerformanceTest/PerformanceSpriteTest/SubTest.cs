@@ -34,7 +34,7 @@ namespace tests
         public CCSprite createSpriteWithTag(int tag)
         {
             // create 
-            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888;
+            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGBA8888;
 
             CCSprite sprite = null;
             switch (subtestNumber)
@@ -110,7 +110,7 @@ namespace tests
                     break;
             }
 
-            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_Default;
+            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.Default;
 
             return sprite;
         }
@@ -153,37 +153,37 @@ namespace tests
                     break;
 
                 case 2:
-                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888;
+                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGBA8888;
                     batchNode = new CCSpriteBatchNode("Images/grossinis_sister1", 100);
                     p.AddChild(batchNode, 0);
                     break;
                 
                 case 3:
-                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA4444;
+                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGBA4444;
                     batchNode = new CCSpriteBatchNode("Images/grossinis_sister1", 100);
                     p.AddChild(batchNode, 0);
                     break;
 
                 case 5:
-                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888;
+                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGBA8888;
                     batchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 100);
                     p.AddChild(batchNode, 0);
                     break;
 
                 case 6:
-                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA4444;
+                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGBA4444;
                     batchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 100);
                     p.AddChild(batchNode, 0);
                     break;
 
                     ///
                 case 8:
-                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888;
+                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGBA8888;
                     batchNode = new CCSpriteBatchNode("Images/spritesheet1", 100);
                     p.AddChild(batchNode, 0);
                     break;
                 case 9:
-                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA4444;
+                    CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGBA4444;
                     batchNode = new CCSpriteBatchNode("Images/spritesheet1", 100);
                     p.AddChild(batchNode, 0);
                     break;
@@ -197,7 +197,7 @@ namespace tests
             //    batchNode.retain();
             //}
 
-            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_Default;
+            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.Default;
         }
     }
 }

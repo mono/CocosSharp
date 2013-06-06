@@ -1,6 +1,6 @@
 ﻿namespace Cocos2D
 {
-    public interface CCKeypadDelegate
+    public interface ICCKeypadDelegate
     {
         // The back key clicked
         void KeyBackClicked();
@@ -11,9 +11,9 @@
 
     public class CCKeypadHandler 
     {
-        protected CCKeypadDelegate m_pDelegate;
+        protected ICCKeypadDelegate m_pDelegate;
 
-        public CCKeypadDelegate Delegate
+        public ICCKeypadDelegate Delegate
         {
             get { return m_pDelegate; }
             set { m_pDelegate = value; }
@@ -21,7 +21,7 @@
 
         /** initializes a CCKeypadHandler with a delegate */
 
-        public virtual bool InitWithDelegate(CCKeypadDelegate pDelegate)
+        public virtual bool InitWithDelegate(ICCKeypadDelegate pDelegate)
         {
             m_pDelegate = pDelegate;
             return true;
@@ -29,7 +29,7 @@
 
         /** allocates a CCKeypadHandler with a delegate */
 
-        public static CCKeypadHandler HandlerWithDelegate(CCKeypadDelegate pDelegate)
+        public static CCKeypadHandler HandlerWithDelegate(ICCKeypadDelegate pDelegate)
         {
             var pHandler = new CCKeypadHandler();
             pHandler.InitWithDelegate(pDelegate);

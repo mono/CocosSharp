@@ -42,7 +42,7 @@ namespace tests
 
             // create and initialize a Label
             m_pLabelShouldRetain = new CCLabelBMFont(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 1.5f,
-                                                        CCTextAlignment.CCTextAlignmentCenter);
+                                                        CCTextAlignment.Center);
 
             m_pArrowsBarShouldRetain = new CCSprite("Images/arrowsBar");
             m_pArrowsShouldRetain = new CCSprite("Images/arrows");
@@ -131,13 +131,13 @@ namespace tests
             switch (item.Tag)
             {
                 case LeftAlign:
-                    m_pLabelShouldRetain.SetAlignment(CCTextAlignment.CCTextAlignmentLeft);
+                    m_pLabelShouldRetain.SetAlignment(CCTextAlignment.Left);
                     break;
                 case CenterAlign:
-                    m_pLabelShouldRetain.SetAlignment(CCTextAlignment.CCTextAlignmentCenter);
+                    m_pLabelShouldRetain.SetAlignment(CCTextAlignment.Center);
                     break;
                 case RightAlign:
-                    m_pLabelShouldRetain.SetAlignment(CCTextAlignment.CCTextAlignmentRight);
+                    m_pLabelShouldRetain.SetAlignment(CCTextAlignment.Right);
                     break;
 
                 default:

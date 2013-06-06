@@ -14,7 +14,7 @@ namespace tests.Extensions
         }
     }
 
-    public class BaseLayer : CCLayer, CCBMemberVariableAssigner, CCBSelectorResolver, CCNodeLoaderListener
+    public class BaseLayer : CCLayer, ICCBMemberVariableAssigner, ICCBSelectorResolver, ICCNodeLoaderListener
     {
         #region CCBMemberVariableAssigner Members
 

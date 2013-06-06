@@ -154,7 +154,7 @@ namespace Cocos2D
         {
             CCPoint newPosition;
 
-            if (m_ePositionType == CCPositionType.kCCPositionTypeFree || m_ePositionType == CCPositionType.kCCPositionTypeRelative)
+            if (m_ePositionType == CCPositionType.Free || m_ePositionType == CCPositionType.Relative)
             {
                 newPosition.X = particle.pos.X - (s_currentPosition.X - particle.startPos.X);
                 newPosition.Y = particle.pos.Y - (s_currentPosition.Y - particle.startPos.Y);
@@ -264,11 +264,11 @@ namespace Cocos2D
 
             s_currentPosition = CCPoint.Zero;
             
-            if (m_ePositionType == CCPositionType.kCCPositionTypeFree)
+            if (m_ePositionType == CCPositionType.Free)
             {
                 s_currentPosition = ConvertToWorldSpace(CCPoint.Zero);
             }
-            else if (m_ePositionType == CCPositionType.kCCPositionTypeRelative)
+            else if (m_ePositionType == CCPositionType.Relative)
             {
                 s_currentPosition = m_tPosition;
             }

@@ -637,7 +637,7 @@ namespace Cocos2D
             var color = new CCColor3B(red, green, blue);
             if (reader.AnimatedProperties.Contains(propertyName))
             {
-                ccColor3BWapper value = new ccColor3BWapper(color);
+                CCColor3BWapper value = new CCColor3BWapper(color);
                 reader.AnimationManager.SetBaseValue(value, node, propertyName);
             }
             return color;
@@ -747,7 +747,7 @@ namespace Cocos2D
                      */
                     if (reader.hasScriptingOwner)
                     {
-                        var proxy = (CCBScriptOwnerProtocol) reader.Owner;
+                        var proxy = (ICCBScriptOwnerProtocol) reader.Owner;
                         if (proxy != null)
                         {
                             target = proxy.CreateNew() as object;
@@ -761,7 +761,7 @@ namespace Cocos2D
                     {
 						Action<object> selMenuHandler = null;
 
-                        var targetAsCCBSelectorResolver = target as CCBSelectorResolver;
+                        var targetAsCCBSelectorResolver = target as ICCBSelectorResolver;
 
                         if (targetAsCCBSelectorResolver != null)
                         {
@@ -769,7 +769,7 @@ namespace Cocos2D
                         }
                         if (selMenuHandler == null)
                         {
-                            CCBSelectorResolver ccbSelectorResolver = reader.SelectorResolver;
+                            ICCBSelectorResolver ccbSelectorResolver = reader.SelectorResolver;
                             if (ccbSelectorResolver != null)
                             {
                                 selMenuHandler = ccbSelectorResolver.OnResolveCCBCCMenuItemSelector(target, selectorName);
@@ -828,14 +828,14 @@ namespace Cocos2D
                     {
 						Action<object, CCControlEvent> selCCControlHandler = null;
 
-                        var targetAsCCBSelectorResolver = target as CCBSelectorResolver;
+                        var targetAsCCBSelectorResolver = target as ICCBSelectorResolver;
                         if (targetAsCCBSelectorResolver != null)
                         {
                             selCCControlHandler = targetAsCCBSelectorResolver.OnResolveCCBCCControlSelector(target, selectorName);
                         }
                         if (selCCControlHandler == null)
                         {
-                            CCBSelectorResolver ccbSelectorResolver = reader.SelectorResolver;
+                            ICCBSelectorResolver ccbSelectorResolver = reader.SelectorResolver;
                             if (ccbSelectorResolver != null)
                             {
                                 selCCControlHandler = ccbSelectorResolver.OnResolveCCBCCControlSelector(target, selectorName);

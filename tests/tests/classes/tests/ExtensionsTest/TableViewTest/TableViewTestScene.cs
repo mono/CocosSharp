@@ -3,7 +3,7 @@ using Cocos2D;
 
 namespace tests.Extensions
 {
-    public class TableViewTestLayer : CCLayer, CCTableViewDataSource, CCTableViewDelegate
+    public class TableViewTestLayer : CCLayer, ICCTableViewDataSource, ICCTableViewDelegate
     {
         public static void runTableViewTest()
         {

@@ -14,8 +14,8 @@ namespace Cocos2D
 
         public CCLabelTTF ()
         {
-            m_hAlignment = CCTextAlignment.CCTextAlignmentCenter;
-            m_vAlignment = CCVerticalTextAlignment.CCVerticalTextAlignmentTop;
+            m_hAlignment = CCTextAlignment.Center;
+            m_vAlignment = CCVerticalTextAlignment.Top;
             m_pFontName = string.Empty;
             m_fFontSize = 0.0f;
             m_pString = string.Empty;
@@ -24,12 +24,12 @@ namespace Cocos2D
         }
         
         public CCLabelTTF (string text, string fontName, float fontSize) : 
-            this (text, fontName, fontSize, CCSize.Zero, CCTextAlignment.CCTextAlignmentCenter,
-                  CCVerticalTextAlignment.CCVerticalTextAlignmentTop)
+            this (text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Center,
+                  CCVerticalTextAlignment.Top)
         { }
         
         public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) :
-            this (text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.CCVerticalTextAlignmentTop)
+            this (text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
         { }
         
         public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment,
@@ -191,13 +191,13 @@ namespace Cocos2D
 
         public bool InitWithString(string label, string fontName, float fontSize, CCSize dimensions, CCTextAlignment alignment)
         {
-            return InitWithString(label, fontName, fontSize, dimensions, alignment, CCVerticalTextAlignment.CCVerticalTextAlignmentTop);
+            return InitWithString(label, fontName, fontSize, dimensions, alignment, CCVerticalTextAlignment.Top);
         }
 
         public bool InitWithString(string label, string fontName, float fontSize)
         {
-            return InitWithString(label, fontName, fontSize, CCSize.Zero, CCTextAlignment.CCTextAlignmentLeft,
-                                  CCVerticalTextAlignment.CCVerticalTextAlignmentTop);
+            return InitWithString(label, fontName, fontSize, CCSize.Zero, CCTextAlignment.Left,
+                                  CCVerticalTextAlignment.Top);
         }
 
 

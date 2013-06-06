@@ -31,7 +31,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
-    public class CCLayer : CCNode, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate, CCKeypadDelegate
+    public class CCLayer : CCNode, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate, ICCKeypadDelegate
     {
         private bool m_bIsAccelerometerEnabled;
         private bool m_bKeypadEnabled;
@@ -49,7 +49,7 @@ namespace Cocos2D
         /// <summary>
         /// Set to true if the child drawing should be isolated in their own render target
         /// </summary>
-        protected CCClipMode m_childClippingMode = CCClipMode.ClipNone;
+        protected CCClipMode m_childClippingMode = CCClipMode.None;
 
         public CCLayer(CCClipMode clipMode)
         {
@@ -72,7 +72,7 @@ namespace Cocos2D
         /// <summary>
         /// Default layer constructor that does not use clipping.
         /// </summary>
-        public CCLayer() : this(CCClipMode.ClipNone)
+        public CCLayer() : this(CCClipMode.None)
         {
         }
 
@@ -109,7 +109,7 @@ namespace Cocos2D
             {
                 return;
             }
-            if (m_childClippingMode == CCClipMode.ClipNone)
+            if (m_childClippingMode == CCClipMode.None)
             {
                 base.Visit();
                 return;
@@ -175,7 +175,7 @@ namespace Cocos2D
 
         private void InitClipping()
         {
-            if (m_childClippingMode == CCClipMode.ClipBoundsWithRenderTarget)
+            if (m_childClippingMode == CCClipMode.BoundsWithRenderTarget)
             {
                 if (m_pRenderTexture == null || m_pRenderTexture.ContentSize.Width < ContentSize.Width || m_pRenderTexture.ContentSize.Height < ContentSize.Height)
                 {
@@ -194,7 +194,7 @@ namespace Cocos2D
         {
             m_bNoDrawChildren = false;
 
-            if (m_childClippingMode == CCClipMode.ClipBounds)
+            if (m_childClippingMode == CCClipMode.Bounds)
             {
                 // We always clip to the bounding box
                 var rect = new CCRect(0, 0, m_tContentSize.Width, m_tContentSize.Height);
@@ -236,7 +236,7 @@ namespace Cocos2D
 
                 CCDrawManager.SetScissorInPoints(minX, minY, maxX - minX, maxY - minY);
             }
-            else if (m_childClippingMode == CCClipMode.ClipBoundsWithRenderTarget)
+            else if (m_childClippingMode == CCClipMode.BoundsWithRenderTarget)
             {
                 m_tSaveScissorRect = CCDrawManager.ScissorRect;
                 m_bRestoreScissor = CCDrawManager.ScissorRectEnabled;
@@ -256,9 +256,9 @@ namespace Cocos2D
      */
         private void AfterDraw()
         {
-            if (m_childClippingMode != CCClipMode.ClipNone)
+            if (m_childClippingMode != CCClipMode.None)
             {
-                if (m_childClippingMode == CCClipMode.ClipBoundsWithRenderTarget)
+                if (m_childClippingMode == CCClipMode.BoundsWithRenderTarget)
                 {
                     m_pRenderTexture.End();
 
@@ -280,7 +280,7 @@ namespace Cocos2D
                     CCDrawManager.ScissorRectEnabled = false;
                 }
 
-                if (m_childClippingMode == CCClipMode.ClipBoundsWithRenderTarget)
+                if (m_childClippingMode == CCClipMode.BoundsWithRenderTarget)
                 {
                     m_pRenderTexture.Sprite.Visit();
                 }

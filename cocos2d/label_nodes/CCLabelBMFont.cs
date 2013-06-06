@@ -249,12 +249,12 @@ namespace Cocos2D
             Init();
         }
 
-        public CCLabelBMFont(string str, string fntFile, float width) : this(str, fntFile, width, CCTextAlignment.CCTextAlignmentLeft, CCPoint.Zero)
+        public CCLabelBMFont(string str, string fntFile, float width) : this(str, fntFile, width, CCTextAlignment.Left, CCPoint.Zero)
         {
         }
 
         public CCLabelBMFont(string str, string fntFile)
-            : this(str, fntFile, kCCLabelAutomaticWidth, CCTextAlignment.CCTextAlignmentLeft, CCPoint.Zero)
+            : this(str, fntFile, kCCLabelAutomaticWidth, CCTextAlignment.Left, CCPoint.Zero)
         {
         }
 
@@ -270,7 +270,7 @@ namespace Cocos2D
 
         public override bool Init()
         {
-            return InitWithString(null, null, kCCLabelAutomaticWidth, CCTextAlignment.CCTextAlignmentLeft, CCPoint.Zero);
+            return InitWithString(null, null, kCCLabelAutomaticWidth, CCTextAlignment.Left, CCPoint.Zero);
         }
 
         protected virtual bool InitWithString(string theString, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset)
@@ -351,7 +351,7 @@ namespace Cocos2D
 
             if (m_pConfiguration.m_pKerningDictionary != null)
             {
-                CCBMFontConfiguration.tKerningHashElement element;
+                CCBMFontConfiguration.CCKerningHashElement element;
                 if (m_pConfiguration.m_pKerningDictionary.TryGetValue(key, out element))
                 {
                     ret = element.amount;
@@ -404,7 +404,7 @@ namespace Cocos2D
                 }
 
                 // unichar is a short, and an int is needed on HASH_FIND_INT
-                CCBMFontConfiguration.ccBMFontDef fontDef = m_pConfiguration.m_pFontDefDictionary[c];
+                CCBMFontConfiguration.CCBMFontDef fontDef = m_pConfiguration.m_pFontDefDictionary[c];
 
                 CCRect rect = fontDef.rect;
                 rect = CCMacros.CCRectanglePixelsToPoints(rect);
@@ -683,7 +683,7 @@ namespace Cocos2D
             }
 
             // Step 2: Make alignment
-            if (m_pAlignment != CCTextAlignment.CCTextAlignmentLeft)
+            if (m_pAlignment != CCTextAlignment.Left)
             {
                 int i = 0;
 
@@ -714,10 +714,10 @@ namespace Cocos2D
                         float shift = 0;
                         switch (m_pAlignment)
                         {
-                            case CCTextAlignment.CCTextAlignmentCenter:
+                            case CCTextAlignment.Center:
                                 shift = ContentSize.Width / 2.0f - lineWidth / 2.0f;
                                 break;
-                            case CCTextAlignment.CCTextAlignmentRight:
+                            case CCTextAlignment.Right:
                                 shift = ContentSize.Width - lineWidth;
                                 break;
                             default:

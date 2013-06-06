@@ -5,7 +5,7 @@ namespace Cocos2D
 	/**
 	 * Abstract class for SWTableView cell node
 	 */
-	public class CCTableViewCell: CCNode, CCSortableObject
+	public class CCTableViewCell: CCNode, ICCSortableObject
 	{
 		public CCTableViewCell() {}
 		/**

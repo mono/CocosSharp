@@ -166,7 +166,7 @@
     <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
-    <Compile Include="platform\CCIFocusable.cs" />
+    <Compile Include="platform\ICCFocusable.cs" />
     <Compile Include="platform\CCSpriteFontCache.cs" />
     <Compile Include="platform\CCDrawManager.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
@@ -223,7 +223,7 @@
     <Compile Include="extentions\GUI\CCScrollView\CCSorting.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableView.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableViewCell.cs" />
-    <Compile Include="keypad_dispatcher\CCKeypadDelegate.cs" />
+    <Compile Include="keypad_dispatcher\ICCKeypadDelegate.cs" />
     <Compile Include="keypad_dispatcher\CCKeypadDispatcher.cs" />
     <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
@@ -339,7 +339,7 @@
     <Compile Include="predefine\CCProtocols.cs" />
     <Compile Include="predefine\CCTouch.cs" />
     <Compile Include="predefine\ccTypes.cs" />
-    <Compile Include="predefine\CCSelectorProtocol.cs" />
+    <Compile Include="predefine\ICCSelectorProtocol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="script_support\CCScriptEngineManager.cs" />
     <Compile Include="script_support\CCScriptEngineProtocol.cs" />

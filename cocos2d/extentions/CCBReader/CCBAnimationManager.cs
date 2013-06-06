@@ -219,7 +219,7 @@ namespace Cocos2D
                     }
                 case "color":
                     {
-                        var color = (ccColor3BWapper) pKeyframe1.Value;
+                        var color = (CCColor3BWapper) pKeyframe1.Value;
                         CCColor3B c = color.getColor();
 
                         return new CCTintTo (duration, c.R, c.G, c.B);
@@ -345,7 +345,7 @@ namespace Cocos2D
                     }
                     else if (pPropName == "color")
                     {
-                        var color = (ccColor3BWapper) pValue;
+                        var color = (CCColor3BWapper) pValue;
                         ((CCSprite) node).Color = color.getColor();
                     }
                     else

@@ -120,25 +120,20 @@ namespace Cocos2D
     }
 
 
-    public interface CCNodeLoaderListener
+    public interface ICCNodeLoaderListener
     {
         void OnNodeLoaded(CCNode node, CCNodeLoader nodeLoader);
     }
 
-    public interface CCBMemberVariableAssigner
-    {
-        bool OnAssignCCBMemberVariable(object target, string memberVariableName, CCNode node);
-    }
-
-    public interface CCBSelectorResolver
+    public interface ICCBSelectorResolver
     {
 		Action<object> OnResolveCCBCCMenuItemSelector(object target, string pSelectorName);
 		Action<object, CCControlEvent> OnResolveCCBCCControlSelector(object target, string pSelectorName);
     }
 
-    public interface CCBScriptOwnerProtocol
+    public interface ICCBScriptOwnerProtocol
     {
-        CCBSelectorResolver CreateNew();
+        ICCBSelectorResolver CreateNew();
     }
 
     /**
@@ -151,10 +146,10 @@ namespace Cocos2D
 
         private readonly List<string> mAnimatedProps = new List<string>();
 
-        private readonly CCBMemberVariableAssigner mCCBMemberVariableAssigner;
-        private readonly CCBSelectorResolver mCCBSelectorResolver;
+        private readonly ICCBMemberVariableAssigner mCCBMemberVariableAssigner;
+        private readonly ICCBSelectorResolver mCCBSelectorResolver;
         private readonly CCNodeLoaderLibrary mCCNodeLoaderLibrary;
-        private readonly CCNodeLoaderListener mCCNodeLoaderListener;
+        private readonly ICCNodeLoaderListener mCCNodeLoaderListener;
         private readonly List<string> mLoadedSpriteSheets;
         private readonly List<string> mStringCache = new List<string>();
 
@@ -170,19 +165,19 @@ namespace Cocos2D
         {
         }
 
-        public CCBReader(CCNodeLoaderLibrary nodeLoaderLibrary, CCBMemberVariableAssigner memberVariableAssigner)
+        public CCBReader(CCNodeLoaderLibrary nodeLoaderLibrary, ICCBMemberVariableAssigner memberVariableAssigner)
             : this(nodeLoaderLibrary, memberVariableAssigner, null, null)
         {
         }
 
-        public CCBReader(CCNodeLoaderLibrary nodeLoaderLibrary, CCBMemberVariableAssigner memberVariableAssigner,
-                         CCBSelectorResolver selectorResolver)
+        public CCBReader(CCNodeLoaderLibrary nodeLoaderLibrary, ICCBMemberVariableAssigner memberVariableAssigner,
+                         ICCBSelectorResolver selectorResolver)
             : this(nodeLoaderLibrary, memberVariableAssigner, selectorResolver, null)
         {
         }
 
-        public CCBReader(CCNodeLoaderLibrary nodeLoaderLibrary, CCBMemberVariableAssigner memberVariableAssigner,
-                         CCBSelectorResolver selectorResolver, CCNodeLoaderListener nodeLoaderListener)
+        public CCBReader(CCNodeLoaderLibrary nodeLoaderLibrary, ICCBMemberVariableAssigner memberVariableAssigner,
+                         ICCBSelectorResolver selectorResolver, ICCNodeLoaderListener nodeLoaderListener)
         {
             mCurrentByte = -1;
             mCurrentBit = -1;
@@ -214,12 +209,12 @@ namespace Cocos2D
             mCurrentBit = -1;
         }
 
-        public CCBMemberVariableAssigner MemberVariableAssigner
+        public ICCBMemberVariableAssigner MemberVariableAssigner
         {
             get { return mCCBMemberVariableAssigner; }
         }
 
-        public CCBSelectorResolver SelectorResolver
+        public ICCBSelectorResolver SelectorResolver
         {
             get { return mCCBSelectorResolver; }
         }
@@ -597,7 +592,7 @@ namespace Cocos2D
                 byte b = ReadByte();
 
                 var c = new CCColor3B(r, g, b);
-                value = new ccColor3BWapper(c);
+                value = new CCColor3BWapper(c);
             }
             else if (type == CCBPropType.Degrees)
             {
@@ -821,7 +816,7 @@ namespace Cocos2D
                 {
                     bool assigned = false;
 
-                    var targetAsCCBMemberVariableAssigner = (CCBMemberVariableAssigner) target;
+                    var targetAsCCBMemberVariableAssigner = (ICCBMemberVariableAssigner) target;
 
                     if (targetAsCCBMemberVariableAssigner != null)
                     {
@@ -848,7 +843,7 @@ namespace Cocos2D
             }
 
             // Call onNodeLoaded
-            var nodeAsCCNodeLoaderListener = node as CCNodeLoaderListener;
+            var nodeAsCCNodeLoaderListener = node as ICCNodeLoaderListener;
             if (nodeAsCCNodeLoaderListener != null)
             {
                 nodeAsCCNodeLoaderListener.OnNodeLoaded(node, ccNodeLoader);

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework;
 
 namespace Cocos2D
 {
-    internal interface CCDirectorDelegate
+    internal interface ICCDirectorDelegate
     {
         void UpdateProjection();
     }
@@ -62,7 +62,7 @@ namespace Cocos2D
         private CCScene m_pNextScene;
         private CCNode m_pNotificationNode;
 
-        private CCDirectorDelegate m_pProjectionDelegate;
+        private ICCDirectorDelegate m_pProjectionDelegate;
         private CCScene m_pRunningScene;
         private CCScheduler m_pScheduler;
         private CCTouchDispatcher m_pTouchDispatcher;

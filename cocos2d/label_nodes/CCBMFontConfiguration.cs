@@ -15,16 +15,16 @@ namespace Cocos2D
         internal int m_nCommonHeight;
 
         [ContentSerializer]
-        internal Dictionary<int, ccBMFontDef> m_pFontDefDictionary = new Dictionary<int, ccBMFontDef>();
+        internal Dictionary<int, CCBMFontDef> m_pFontDefDictionary = new Dictionary<int, CCBMFontDef>();
 
         [ContentSerializer]
-        internal Dictionary<int, tKerningHashElement> m_pKerningDictionary = new Dictionary<int, tKerningHashElement>();
+        internal Dictionary<int, CCKerningHashElement> m_pKerningDictionary = new Dictionary<int, CCKerningHashElement>();
 
         [ContentSerializer]
         internal string m_sAtlasName;
 
         [ContentSerializer]
-        internal ccBMFontPadding m_tPadding;
+        internal CCBMFontPadding m_tPadding;
 
         public string AtlasName
         {
@@ -136,7 +136,7 @@ namespace Cocos2D
                 else if (line.StartsWith("char"))
                 {
                     // Parse the current line and create a new CharDef
-                    var characterDefinition = new ccBMFontDef();
+                    var characterDefinition = new CCBMFontDef();
                     parseCharacterDefinition(line, characterDefinition);
 
                     m_pFontDefDictionary.Add(characterDefinition.charID, characterDefinition);
@@ -154,7 +154,7 @@ namespace Cocos2D
             return true;
         }
 
-        private void parseCharacterDefinition(string line, ccBMFontDef characterDefinition)
+        private void parseCharacterDefinition(string line, CCBMFontDef characterDefinition)
         {
             //////////////////////////////////////////////////////////////////////////
             // line to parse:
@@ -327,7 +327,7 @@ namespace Cocos2D
 
             try
             {
-                var element = new tKerningHashElement();
+                var element = new CCKerningHashElement();
                 element.amount = amount;
                 element.key = (first << 16) | (second & 0xffff);
                 m_pKerningDictionary.Add(element.key, element);
@@ -348,7 +348,7 @@ namespace Cocos2D
         /// <summary>
         /// BMFont definition
         /// </summary>
-        public class ccBMFontDef
+        public class CCBMFontDef
         {
             /// <summary>
             /// ID of the character
@@ -380,7 +380,7 @@ namespace Cocos2D
 
         #region Nested type: ccBMFontPadding
 
-        internal struct ccBMFontPadding
+        internal struct CCBMFontPadding
         {
             // padding left
             public int bottom;
@@ -399,7 +399,7 @@ namespace Cocos2D
 
         #region Nested type: tKerningHashElement
 
-        public struct tKerningHashElement
+        public struct CCKerningHashElement
         {
             public int amount;
 

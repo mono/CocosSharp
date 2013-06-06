@@ -235,7 +235,7 @@
     <Compile Include="extentions\GUI\CCScrollView\CCSorting.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableView.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableViewCell.cs" />
-    <Compile Include="keypad_dispatcher\CCKeypadDelegate.cs" />
+    <Compile Include="keypad_dispatcher\ICCKeypadDelegate.cs" />
     <Compile Include="keypad_dispatcher\CCKeypadDispatcher.cs" />
     <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
@@ -408,7 +408,7 @@
     <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="Platform\CCFocusManager.cs" />
-    <Compile Include="Platform\CCIFocusable.cs" />
+    <Compile Include="Platform\ICCFocusable.cs" />
     <Compile Include="predefine\CCTypes.cs" />
     <Compile Include="support\CCUtils.cs" />
     <Compile Include="support\Converters\CCRectConverter.cs" />
@@ -420,7 +420,7 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
     <Compile Include="support\image_support\CCTGAlib.cs" />
-    <Compile Include="predefine\CCSelectorProtocol.cs" />
+    <Compile Include="predefine\ICCSelectorProtocol.cs" />
     <Compile Include="cocoa\ICCCopyable.cs" />
     <Compile Include="touch_dispatcher\ICCEGLTouchDelegate.cs" />
   </ItemGroup>

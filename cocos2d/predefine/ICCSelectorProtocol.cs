@@ -23,19 +23,7 @@ THE SOFTWARE.
 
 namespace Cocos2D
 {
-    /*
-     * Use delegate to implement the correspongding selector
-     */
-
-    //public delegate void SEL_SCHEDULE(float dt);
-    //public delegate void SEL_CallFunc();
-    //public delegate void SEL_CallFuncN(CCNode sender);
-    //public delegate void SEL_CallFuncND(CCNode sender, object data);
-    //public delegate void SEL_CallFuncO(object sender);
-    public delegate void SEL_MenuHandler(object sender);
-    //public delegate void SEL_EventHandler(CCEvent event_);
-
-    public interface CCSelectorProtocol
+    public interface ICCSelectorProtocol
     {
         void Update(float dt);
     }

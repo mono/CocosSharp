@@ -17,7 +17,7 @@ namespace Cocos2D
                 m_fDuration = kCCParticleDurationInfinity;
 
                 // Gravity Mode
-                m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                m_nEmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 modeA.gravity = new CCPoint(0, 0);
@@ -94,7 +94,7 @@ namespace Cocos2D
                 m_fDuration = kCCParticleDurationInfinity;
 
                 // Gravity Mode
-                m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                m_nEmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 modeA.gravity = new CCPoint(0, -90);
@@ -175,7 +175,7 @@ namespace Cocos2D
                 m_fDuration = kCCParticleDurationInfinity;
 
                 // Gravity Mode
-                m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                m_nEmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 modeA.gravity = new CCPoint(0, 0);
@@ -250,7 +250,7 @@ namespace Cocos2D
                 m_fDuration = kCCParticleDurationInfinity;
 
                 // Gravity Mode
-                m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                m_nEmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 modeA.gravity = new CCPoint(0, 0);
@@ -327,7 +327,7 @@ namespace Cocos2D
                 m_fDuration = kCCParticleDurationInfinity;
 
                 // Gravity Mode
-                m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                m_nEmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 modeA.gravity = new CCPoint(0, 0);
@@ -404,7 +404,7 @@ namespace Cocos2D
                 m_fDuration = kCCParticleDurationInfinity;
 
                 // Gravity Mode
-                m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                m_nEmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 modeA.gravity = new CCPoint(-200, 200);
@@ -481,7 +481,7 @@ namespace Cocos2D
                 m_fDuration = kCCParticleDurationInfinity;
 
                 // Gravity Mode
-                m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                m_nEmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 modeA.gravity = new CCPoint(0, 0);
@@ -557,7 +557,7 @@ namespace Cocos2D
                 // duration
                 m_fDuration = 0.1f;
 
-                m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                m_nEmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 modeA.gravity = new CCPoint(0, 0);
@@ -634,7 +634,7 @@ namespace Cocos2D
                 m_fDuration = kCCParticleDurationInfinity;
 
                 // Emitter mode: Gravity Mode
-                m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                m_nEmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 modeA.gravity = new CCPoint(0, 0);
@@ -707,7 +707,7 @@ namespace Cocos2D
                 m_fDuration = kCCParticleDurationInfinity;
 
                 // set gravity mode.
-                m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                m_nEmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 modeA.gravity = new CCPoint(0, -1);
@@ -783,7 +783,7 @@ namespace Cocos2D
                 // duration
                 m_fDuration = kCCParticleDurationInfinity;
 
-                m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+                m_nEmitterMode = CCEmitterMode.Gravity;
 
                 // Gravity Mode: gravity
                 modeA.gravity = new CCPoint(10, -10);

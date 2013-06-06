@@ -6,17 +6,17 @@ namespace Cocos2D
         /// <summary>
         /// Orthogonal orientation
         /// </summary>
-        CCTMXOrientationOrtho = 0,
+        Ortho = 0,
 
         /// <summary>
         /// Hexagonal orientation
         /// </summary>
-        CCTMXOrientationHex = 1,
+        Hex = 1,
 
         /// <summary>
         ///  Isometric orientation
         /// </summary>
-        CCTMXOrientationIso = 2,
+        Iso = 2,
     };
 
     public enum CCTMXLayerAttrib

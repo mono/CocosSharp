@@ -32,7 +32,7 @@ namespace Cocos2D
         {
             if (m_bDispatchEvents)
             {
-                Touches(touches, (int) CCTouchType.CCTOUCHBEGAN);
+                Touches(touches, (int) CCTouchType.Began);
             }
         }
 
@@ -40,7 +40,7 @@ namespace Cocos2D
         {
             if (m_bDispatchEvents)
             {
-                Touches(touches, (int) CCTouchType.CCTOUCHMOVED);
+                Touches(touches, (int) CCTouchType.Moved);
             }
         }
 
@@ -48,7 +48,7 @@ namespace Cocos2D
         {
             if (m_bDispatchEvents)
             {
-                Touches(touches, (int) CCTouchType.CCTOUCHENDED);
+                Touches(touches, (int) CCTouchType.Ended);
             }
         }
 
@@ -56,7 +56,7 @@ namespace Cocos2D
         {
             if (m_bDispatchEvents)
             {
-                Touches(touches, (int) CCTouchType.CCTOUCHCANCELLED);
+                Touches(touches, (int) CCTouchType.Cancelled);
             }
         }
 
@@ -200,7 +200,7 @@ namespace Cocos2D
                         var pDelegate = (ICCTargetedTouchDelegate) (pHandler.Delegate);
 
                         bool bClaimed = false;
-                        if (sHelper == CCTouchType.CCTOUCHBEGAN)
+                        if (sHelper == CCTouchType.Began)
                         {
                             bClaimed = pDelegate.TouchBegan(pTouch);
 
@@ -218,14 +218,14 @@ namespace Cocos2D
 
                                 switch (sHelper)
                                 {
-                                    case CCTouchType.CCTOUCHMOVED:
+                                    case CCTouchType.Moved:
                                         pDelegate.TouchMoved(pTouch);
                                         break;
-                                    case CCTouchType.CCTOUCHENDED:
+                                    case CCTouchType.Ended:
                                         pDelegate.TouchEnded(pTouch);
                                         pHandler.ClaimedTouches.Remove(pTouch);
                                         break;
-                                    case CCTouchType.CCTOUCHCANCELLED:
+                                    case CCTouchType.Cancelled:
                                         pDelegate.TouchCancelled(pTouch);
                                         pHandler.ClaimedTouches.Remove(pTouch);
                                         break;
@@ -258,16 +258,16 @@ namespace Cocos2D
                     var pDelegate = (ICCStandardTouchDelegate) pHandler.Delegate;
                     switch (sHelper)
                     {
-                        case CCTouchType.CCTOUCHBEGAN:
+                        case CCTouchType.Began:
                             pDelegate.TouchesBegan(pMutableTouches);
                             break;
-                        case CCTouchType.CCTOUCHMOVED:
+                        case CCTouchType.Moved:
                             pDelegate.TouchesMoved(pMutableTouches);
                             break;
-                        case CCTouchType.CCTOUCHENDED:
+                        case CCTouchType.Ended:
                             pDelegate.TouchesEnded(pMutableTouches);
                             break;
-                        case CCTouchType.CCTOUCHCANCELLED:
+                        case CCTouchType.Cancelled:
                             pDelegate.TouchesCancelled(pMutableTouches);
                             break;
                     }
@@ -415,10 +415,10 @@ namespace Cocos2D
 
     public enum CCTouchType
     {
-        CCTOUCHBEGAN = 0,
-        CCTOUCHMOVED = 1,
-        CCTOUCHENDED = 2,
-        CCTOUCHCANCELLED = 3,
-        ccTouchMax = 4
+        Began = 0,
+        Moved = 1,
+        Ended = 2,
+        Cancelled = 3,
+        TouchMax = 4
     }
 }

@@ -16,7 +16,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLabelBMFont label1 = new CCLabelBMFont(spanish, "fonts/arial-unicode-26.fnt", 200, CCTextAlignment.CCTextAlignmentLeft);
+            CCLabelBMFont label1 = new CCLabelBMFont(spanish, "fonts/arial-unicode-26.fnt", 200, CCTextAlignment.Left);
             AddChild(label1);
             label1.Position = new CCPoint(s.Width / 2, s.Height / 4 * 3);
 

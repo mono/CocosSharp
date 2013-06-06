@@ -1,7 +1,7 @@
 namespace Cocos2D
 {
-    internal interface ICCBMemberVariableAssigner
+    public interface ICCBMemberVariableAssigner
     {
-        bool OnAssignCcbMemberVariable(object target, string memberVariableName, CCNode node);
+        bool OnAssignCCBMemberVariable(object target, string memberVariableName, CCNode node);
     }
 }

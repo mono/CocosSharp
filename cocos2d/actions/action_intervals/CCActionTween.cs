@@ -2,7 +2,7 @@ using System.Diagnostics;
 
 namespace Cocos2D
 {
-    public interface CCActionTweenDelegate
+    public interface ICCActionTweenDelegate
     {
         void UpdateTweenAction(float value, string key);
     }
@@ -33,14 +33,14 @@ namespace Cocos2D
 
         public override void StartWithTarget(CCNode target)
         {
-            Debug.Assert(target is CCActionTweenDelegate, "target must implement CCActionTweenDelegate");
+            Debug.Assert(target is ICCActionTweenDelegate, "target must implement CCActionTweenDelegate");
             base.StartWithTarget(target);
             m_fDelta = m_fTo - m_fFrom;
         }
 
         public override void Update(float dt)
         {
-            ((CCActionTweenDelegate) m_pTarget).UpdateTweenAction(m_fTo - m_fDelta * (1 - dt), m_strKey);
+            ((ICCActionTweenDelegate) m_pTarget).UpdateTweenAction(m_fTo - m_fDelta * (1 - dt), m_strKey);
         }
 
         public override CCFiniteTimeAction Reverse()

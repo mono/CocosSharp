@@ -3,12 +3,12 @@ using System.Diagnostics;
 
 namespace Cocos2D
 {
-    public interface CCSortableObject
+    public interface ICCSortableObject
     {
         int ObjectID { set; get; }
     }
 
-    internal class CCSortedObject : CCSortableObject
+    internal class CCSortedObject : ICCSortableObject
     {
         private int objectID;
 
@@ -44,7 +44,7 @@ namespace Cocos2D
 		 * @param object to insert
 		 */
 
-        public void InsertSortedObject(CCSortableObject obj)
+        public void InsertSortedObject(ICCSortableObject obj)
         {
             int idx;
             var pObj = (object) obj;
@@ -63,19 +63,19 @@ namespace Cocos2D
 		 * @param value to remove
 		 */
 
-        public void RemoveSortedObject(CCSortableObject obj)
+        public void RemoveSortedObject(ICCSortableObject obj)
         {
             if (Count == 0)
             {
                 return;
             }
             int idx;
-            CCSortableObject foundObj;
+            ICCSortableObject foundObj;
             idx = IndexOfSortedObject(obj);
 
             if (idx < Count && idx != CC_INVALID_INDEX)
             {
-                foundObj = (CCSortableObject) this[idx];
+                foundObj = (ICCSortableObject) this[idx];
 
                 if (foundObj.ObjectID == obj.ObjectID)
                 {
@@ -95,15 +95,15 @@ namespace Cocos2D
 		 * @param object the object which has the value
 		 */
 
-        public void SetObjectID_ofSortedObject(int tag, CCSortableObject obj)
+        public void SetObjectID_ofSortedObject(int tag, ICCSortableObject obj)
         {
-            CCSortableObject foundObj;
+            ICCSortableObject foundObj;
             int idx;
 
             idx = IndexOfSortedObject(obj);
             if (idx < Count && idx != CC_INVALID_INDEX)
             {
-                foundObj = (CCSortableObject) (this[idx]);
+                foundObj = (ICCSortableObject) (this[idx]);
                 var pObj = (object) foundObj;
 
                 if (foundObj.ObjectID == obj.ObjectID)
@@ -118,14 +118,14 @@ namespace Cocos2D
             }
         }
 
-        public CCSortableObject ObjectWithObjectID(int tag)
+        public ICCSortableObject ObjectWithObjectID(int tag)
         {
             if (Count == 0)
             {
                 return null;
             }
 
-            CCSortableObject foundObj;
+            ICCSortableObject foundObj;
 
             foundObj = new CCSortedObject();
             foundObj.ObjectID = tag;
@@ -136,7 +136,7 @@ namespace Cocos2D
 
             if (idx < Count && idx != CC_INVALID_INDEX)
             {
-                foundObj = (CCSortableObject) (this[idx]);
+                foundObj = (ICCSortableObject) (this[idx]);
                 if (foundObj.ObjectID != tag)
                 {
                     foundObj = null;
@@ -171,7 +171,7 @@ namespace Cocos2D
 		 * @return index of an object found
 		 */
 
-        public int IndexOfSortedObject(CCSortableObject obj)
+        public int IndexOfSortedObject(ICCSortableObject obj)
         {
             int idx = 0;
             if (obj != null)
@@ -183,7 +183,7 @@ namespace Cocos2D
 
                 foreach (object pObj in this)
                 {
-                    var pSortableObj = (CCSortableObject) pObj;
+                    var pSortableObj = (ICCSortableObject) pObj;
 
                     int uCurObjectID = pSortableObj.ObjectID;
                     if ((uOfSortObjectID == uCurObjectID)

@@ -11,7 +11,7 @@ namespace Cocos2D
         Both
     }
 
-    public interface CCScrollViewDelegate
+    public interface ICCScrollViewDelegate
     {
         void ScrollViewDidScroll(CCScrollView view);
         void ScrollViewDidZoom(CCScrollView view);
@@ -42,7 +42,7 @@ namespace Cocos2D
         protected float m_fMinScale;
         protected float m_fTouchLength;
         protected CCNode m_pContainer;
-        protected CCScrollViewDelegate m_pDelegate;
+        protected ICCScrollViewDelegate m_pDelegate;
         protected List<CCTouch> m_pTouches;
         protected CCPoint m_tContentOffset;
         protected CCPoint m_tScrollDistance;
@@ -198,7 +198,7 @@ namespace Cocos2D
             set { m_eDirection = value; }
         }
 
-        public CCScrollViewDelegate Delegate
+        public ICCScrollViewDelegate Delegate
         {
             get { return m_pDelegate; }
             set { m_pDelegate = value; }

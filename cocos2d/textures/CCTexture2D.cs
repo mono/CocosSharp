@@ -50,40 +50,30 @@ namespace Cocos2D
     /// </summary>
     public enum CCTexture2DPixelFormat
     {
-        kCCTexture2DPixelFormat_Automatic = 0,
+        Automatic = 0,
         //! 32-bit texture: RGBA8888
-        kCCTexture2DPixelFormat_RGBA8888,
+        RGBA8888,
         //! 24-bit texture: RGBA888
-        kCCTexture2DPixelFormat_RGB888,
+        RGB888,
         //! 16-bit texture without Alpha channel
-        kCCTexture2DPixelFormat_RGB565,
+        RGB565,
         //! 8-bit textures used as masks
-        kCCTexture2DPixelFormat_A8,
+        A8,
         //! 8-bit intensity texture
-        kCCTexture2DPixelFormat_I8,
+        I8,
         //! 16-bit textures used as masks
-        kCCTexture2DPixelFormat_AI88,
+        AI88,
         //! 16-bit textures: RGBA4444
-        kCCTexture2DPixelFormat_RGBA4444,
+        RGBA4444,
         //! 16-bit textures: RGB5A1
-        kCCTexture2DPixelFormat_RGB5A1,
+        RGB5A1,
         //! 4-bit PVRTC-compressed texture: PVRTC4
-        kCCTexture2DPixelFormat_PVRTC4,
+        PVRTC4,
         //! 2-bit PVRTC-compressed texture: PVRTC2
-        kCCTexture2DPixelFormat_PVRTC2,
+        PVRTC2,
 
         //! Default texture format: RGBA8888
-        kCCTexture2DPixelFormat_Default = kCCTexture2DPixelFormat_RGBA8888,
-
-        // backward compatibility stuff
-        kTexture2DPixelFormat_Automatic = kCCTexture2DPixelFormat_Automatic,
-        kTexture2DPixelFormat_RGBA8888 = kCCTexture2DPixelFormat_RGBA8888,
-        kTexture2DPixelFormat_RGB888 = kCCTexture2DPixelFormat_RGB888,
-        kTexture2DPixelFormat_RGB565 = kCCTexture2DPixelFormat_RGB565,
-        kTexture2DPixelFormat_A8 = kCCTexture2DPixelFormat_A8,
-        kTexture2DPixelFormat_RGBA4444 = kCCTexture2DPixelFormat_RGBA4444,
-        kTexture2DPixelFormat_RGB5A1 = kCCTexture2DPixelFormat_RGB5A1,
-        kTexture2DPixelFormat_Default = kCCTexture2DPixelFormat_Default
+        Default = RGBA8888,
     };
 
     /// <summary>
@@ -107,7 +97,7 @@ namespace Cocos2D
     {
         // If the image has alpha, you can create RGBA8 (32-bit) or RGBA4 (16-bit) or RGB5A1 (16-bit)
         // Default is: RGBA8888 (32-bit textures)
-        public static CCTexture2DPixelFormat g_defaultAlphaPixelFormat = CCTexture2DPixelFormat.kCCTexture2DPixelFormat_Default;
+        public static CCTexture2DPixelFormat g_defaultAlphaPixelFormat = CCTexture2DPixelFormat.Default;
         private bool m_bPVRHaveAlphaPremultiplied;
 
         #region Property
@@ -516,7 +506,7 @@ namespace Cocos2D
         public static CCTexture2DPixelFormat DefaultAlphaPixelFormat
         {
             set { }
-            get { return CCTexture2DPixelFormat.kCCTexture2DPixelFormat_RGBA8888; }
+            get { return CCTexture2DPixelFormat.RGBA8888; }
         }
 
         #region raw data
@@ -564,7 +554,7 @@ namespace Cocos2D
 
         public bool InitWithString(string text, string fontName, float fontSize)
         {
-            return InitWithString(text, CCSize.Zero, CCTextAlignment.CCTextAlignmentCenter, CCVerticalTextAlignment.CCVerticalTextAlignmentTop,
+            return InitWithString(text, CCSize.Zero, CCTextAlignment.Center, CCVerticalTextAlignment.Top,
                                   fontName, fontSize);
         }
 
@@ -687,11 +677,11 @@ namespace Cocos2D
                 int textHeight = textList.Count * font.LineSpacing;
                 float nextY = 0;
 
-                if (vAlignment == CCVerticalTextAlignment.CCVerticalTextAlignmentBottom)
+                if (vAlignment == CCVerticalTextAlignment.Bottom)
                 {
                     nextY = dimensions.Height - textHeight;
                 }
-                else if (vAlignment == CCVerticalTextAlignment.CCVerticalTextAlignmentCenter)
+                else if (vAlignment == CCVerticalTextAlignment.Center)
                 {
                     nextY = (dimensions.Height - textHeight) / 2.0f;
                 }
@@ -702,11 +692,11 @@ namespace Cocos2D
 
                     var position = new Microsoft.Xna.Framework.Vector2(0, nextY);
 
-                    if (hAlignment == CCTextAlignment.CCTextAlignmentRight)
+                    if (hAlignment == CCTextAlignment.Right)
                     {
                         position.X = dimensions.Width - font.MeasureString(line).X;
                     }
-                    else if (hAlignment == CCTextAlignment.CCTextAlignmentCenter)
+                    else if (hAlignment == CCTextAlignment.Center)
                     {
                         position.X = (dimensions.Width - font.MeasureString(line).X) / 2.0f;
                     }

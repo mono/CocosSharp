@@ -37,24 +37,24 @@ namespace Cocos2D
     public enum CCEmitterMode
     {
         /** Gravity mode (A mode) */
-        kCCParticleModeGravity,
+        Gravity,
 
         /** Radius mode (B mode) */
-        kCCParticleModeRadius,
+        Radius,
     }
 
     public enum CCPositionType
     {
         /** Living particles are attached to the world and are unaffected by emitter repositioning. */
-        kCCPositionTypeFree,
+        Free,
 
         /** Living particles are attached to the world but will follow the emitter repositioning.
             Use case: Attach an emitter to an sprite, and you want that the emitter follows the sprite.
         */
-        kCCPositionTypeRelative,
+        Relative,
 
         /** Living particles are attached to the emitter and are translated along with it. */
-        kCCPositionTypeGrouped,
+        Grouped,
     }
 
 
@@ -488,7 +488,7 @@ namespace Cocos2D
                     m_nEmitterMode = (CCEmitterMode) dictionary["emitterType"].AsInt;
 
                     // Mode A: Gravity + tangential accel + radial accel
-                    if (m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity)
+                    if (m_nEmitterMode == CCEmitterMode.Gravity)
                     {
                         // gravity
                         modeA.gravity.X = dictionary["gravityx"].AsFloat;
@@ -508,7 +508,7 @@ namespace Cocos2D
                     }
 
                         // or Mode B: radius movement
-                    else if (m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius)
+                    else if (m_nEmitterMode == CCEmitterMode.Radius)
                     {
                         modeB.startRadius = dictionary["maxRadius"].AsFloat;
                         modeB.startRadiusVar = dictionary["maxRadiusVariance"].AsFloat;
@@ -693,10 +693,10 @@ namespace Cocos2D
             m_tBlendFunc = CCBlendFunc.AlphaBlend;
                 
             // default movement type;
-            m_ePositionType = CCPositionType.kCCPositionTypeFree;
+            m_ePositionType = CCPositionType.Free;
 
             // by default be in mode A:
-            m_nEmitterMode = CCEmitterMode.kCCParticleModeGravity;
+            m_nEmitterMode = CCEmitterMode.Gravity;
 
             // default: modulate
             // XXX: not used
@@ -794,11 +794,11 @@ namespace Cocos2D
             particle.deltaRotation = (endA - startA) / particle.timeToLive;
 
             // position
-            if (m_ePositionType == CCPositionType.kCCPositionTypeFree)
+            if (m_ePositionType == CCPositionType.Free)
             {
                 particle.startPos = ConvertToWorldSpace(CCPoint.Zero);
             }
-            else if (m_ePositionType == CCPositionType.kCCPositionTypeRelative)
+            else if (m_ePositionType == CCPositionType.Relative)
             {
                 particle.startPos = m_tPosition;
             }
@@ -807,7 +807,7 @@ namespace Cocos2D
             float a = MathHelper.ToRadians(m_fAngle + m_fAngleVar * CCRandom.Float_Minus1_1());
 
             // Mode Gravity: A
-            if (m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity)
+            if (m_nEmitterMode == CCEmitterMode.Gravity)
             {
                 var v = new CCPoint(CCMathHelper.Cos(a), CCMathHelper.Sin(a));
 
@@ -873,7 +873,7 @@ namespace Cocos2D
             if (p.timeToLive > 0)
             {
                 // Mode A: gravity, direction, tangential accel & radial accel
-                if (m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity)
+                if (m_nEmitterMode == CCEmitterMode.Gravity)
                 {
                     float radial_x = 0;
                     float radial_y = 0;
@@ -1144,12 +1144,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 return modeA.tangentialAccel;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 modeA.tangentialAccel = value;
             }
         }
@@ -1158,12 +1158,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 return modeA.tangentialAccelVar;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 modeA.tangentialAccelVar = value;
             }
         }
@@ -1172,12 +1172,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 return modeA.radialAccel;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 modeA.radialAccel = value;
             }
         }
@@ -1186,12 +1186,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 return modeA.radialAccelVar;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 modeA.radialAccelVar = value;
             }
         }
@@ -1200,12 +1200,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 return modeA.gravity;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 modeA.gravity = value;
             }
         }
@@ -1214,12 +1214,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 return modeA.speed;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 modeA.speed = value;
             }
         }
@@ -1228,12 +1228,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 return modeA.speedVar;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeGravity, "Particle Mode should be Gravity");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 modeA.speedVar = value;
             }
         }
@@ -1246,12 +1246,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 return modeB.startRadius;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 modeB.startRadius = value;
             }
         }
@@ -1260,12 +1260,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 return modeB.startRadiusVar;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 modeB.startRadiusVar = value;
             }
         }
@@ -1274,12 +1274,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 return modeB.endRadius;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 modeB.endRadius = value;
             }
         }
@@ -1288,12 +1288,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 return modeB.endRadiusVar;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 modeB.endRadiusVar = value;
             }
         }
@@ -1302,12 +1302,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 return modeB.rotatePerSecond;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 modeB.rotatePerSecond = value;
             }
         }
@@ -1316,12 +1316,12 @@ namespace Cocos2D
         {
             get
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 return modeB.rotatePerSecondVar;
             }
             set
             {
-                Debug.Assert(m_nEmitterMode == CCEmitterMode.kCCParticleModeRadius, "Particle Mode should be Radius");
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
                 modeB.rotatePerSecondVar = value;
             }
         }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cocos2D
 {
-    public delegate void CCFocusChangeDelegate(CCIFocusable prev, CCIFocusable current);
+    public delegate void CCFocusChangeDelegate(ICCFocusable prev, ICCFocusable current);
 
     public class CCFocusManager
     {
@@ -14,17 +14,17 @@ namespace Cocos2D
         /// <summary>
         /// The list of nodes that can receive focus
         /// </summary>
-        private LinkedList<CCIFocusable> _FocusList = new LinkedList<CCIFocusable>();
+        private LinkedList<ICCFocusable> _FocusList = new LinkedList<ICCFocusable>();
         /// <summary>
         /// The current node with focus
         /// </summary>
-        private LinkedListNode<CCIFocusable> _Current = null;
+        private LinkedListNode<ICCFocusable> _Current = null;
 
         /// <summary>
         /// Removes the given focusable node
         /// </summary>
         /// <param name="f"></param>
-        public void Remove(CCIFocusable f)
+        public void Remove(ICCFocusable f)
         {
             _FocusList.Remove(f);
         }
@@ -35,9 +35,9 @@ namespace Cocos2D
         /// given node has focus, the focus is disabled.
         /// </summary>
         /// <param name="f"></param>
-        public void Add(CCIFocusable f)
+        public void Add(ICCFocusable f)
         {
-            LinkedListNode<CCIFocusable> i = _FocusList.AddLast(f);
+            LinkedListNode<ICCFocusable> i = _FocusList.AddLast(f);
             if (f.HasFocus)
             {
                 if (_Current == null)
@@ -76,10 +76,10 @@ namespace Cocos2D
             }
             else if (_Current != null)
             {
-                CCIFocusable lostItem = _Current.Value;
+                ICCFocusable lostItem = _Current.Value;
                 // Search for the next node.
-                LinkedListNode<CCIFocusable> nextItem = null;
-                for (LinkedListNode<CCIFocusable> p = _Current.Next; p != null; p = p.Next)
+                LinkedListNode<ICCFocusable> nextItem = null;
+                for (LinkedListNode<ICCFocusable> p = _Current.Next; p != null; p = p.Next)
                 {
                     if (p.Value.CanReceiveFocus)
                     {
@@ -123,9 +123,9 @@ namespace Cocos2D
             }
             else if (_Current != null)
             {
-                CCIFocusable lostItem = _Current.Value;
-                LinkedListNode<CCIFocusable> nextItem = null;
-                for (LinkedListNode<CCIFocusable> p = _Current.Previous; p != null; p = p.Previous)
+                ICCFocusable lostItem = _Current.Value;
+                LinkedListNode<ICCFocusable> nextItem = null;
+                for (LinkedListNode<ICCFocusable> p = _Current.Previous; p != null; p = p.Previous)
                 {
                     if (p.Value.CanReceiveFocus)
                     {
@@ -157,7 +157,7 @@ namespace Cocos2D
         /// Returns the item with the current focus. This test will create a copy 
         /// of the master item list.
         /// </summary>
-        public CCIFocusable ItemWithFocus
+        public ICCFocusable ItemWithFocus
         {
             get
             {

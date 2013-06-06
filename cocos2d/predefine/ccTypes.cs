@@ -568,16 +568,16 @@ namespace Cocos2D
 
     public enum CCTextAlignment
     {
-        CCTextAlignmentLeft,
-        CCTextAlignmentCenter,
-        CCTextAlignmentRight,
+        Left,
+        Center,
+        Right,
     }
 
     public enum CCVerticalTextAlignment
     {
-        CCVerticalTextAlignmentTop,
-        CCVerticalTextAlignmentCenter,
-        CCVerticalTextAlignmentBottom
+        Top,
+        Center,
+        Bottom
     }
 
     public class CCTypes

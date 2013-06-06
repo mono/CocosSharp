@@ -32,13 +32,13 @@ namespace Cocos2D
 {
     public enum CCSAXState
     {
-        SAX_NONE = 0,
-        SAX_KEY,
-        SAX_DICT,
-        SAX_INT,
-        SAX_REAL,
-        SAX_STRING,
-        SAX_ARRAY
+        None = 0,
+        Key,
+        Dict,
+        Int,
+        Real,
+        String,
+        Array
     };
     public class CCDictMaker : ICCSAXDelegator
     {
@@ -54,7 +54,7 @@ namespace Cocos2D
 
         public CCDictMaker()
         {
-            m_tState = CCSAXState.SAX_NONE;
+            m_tState = CCSAXState.None;
         }
 
         public Dictionary<string, Object> DictionaryWithContentsOfFile(string pFileName)
@@ -106,20 +106,20 @@ namespace Cocos2D
                 {
                     m_pRootDict = m_pCurDict;
                 }
-                m_tState = CCSAXState.SAX_DICT;
+                m_tState = CCSAXState.Dict;
 
-                CCSAXState preState = CCSAXState.SAX_NONE;
+                CCSAXState preState = CCSAXState.None;
                 if (m_tStateStack.Count != 0)
                 {
                     preState = m_tStateStack.FirstOrDefault();
                 }
 
-                if (CCSAXState.SAX_ARRAY == preState)
+                if (CCSAXState.Array == preState)
                 {
                     // add the dictionary into the array
                     m_pArray.Add(m_pCurDict);
                 }
-                else if (CCSAXState.SAX_DICT == preState)
+                else if (CCSAXState.Dict == preState)
                 {
 
                     // add the dictionary into the pre dictionary
@@ -135,31 +135,31 @@ namespace Cocos2D
             }
             else if (sName == "key")
             {
-                m_tState = CCSAXState.SAX_KEY;
+                m_tState = CCSAXState.Key;
             }
             else if (sName == "integer")
             {
-                m_tState = CCSAXState.SAX_INT;
+                m_tState = CCSAXState.Int;
             }
             else if (sName == "real")
             {
-                m_tState = CCSAXState.SAX_REAL;
+                m_tState = CCSAXState.Real;
             }
             else if (sName == "string")
             {
-                m_tState = CCSAXState.SAX_STRING;
+                m_tState = CCSAXState.String;
             }
             else if (sName == "array")
             {
-                m_tState = CCSAXState.SAX_ARRAY;
+                m_tState = CCSAXState.Array;
                 m_pArray = new List<Object>();
 
-                CCSAXState preState = m_tStateStack.Count == 0 ? CCSAXState.SAX_DICT : m_tStateStack.FirstOrDefault();
-                if (preState == CCSAXState.SAX_DICT)
+                CCSAXState preState = m_tStateStack.Count == 0 ? CCSAXState.Dict : m_tStateStack.FirstOrDefault();
+                if (preState == CCSAXState.Dict)
                 {
                     m_pCurDict.Add(m_sCurKey, m_pArray);
                 }
-                else if (preState == CCSAXState.SAX_ARRAY)
+                else if (preState == CCSAXState.Array)
                 {
                     Debug.Assert(m_tArrayStack.Count > 0, "The state is worng!");
                     List<Object> pPreArray = m_tArrayStack.FirstOrDefault();
@@ -172,13 +172,13 @@ namespace Cocos2D
             }
             else
             {
-                m_tState = CCSAXState.SAX_NONE;
+                m_tState = CCSAXState.None;
             }
         }
 
         public void EndElement(object ctx, string name)
         {
-            CCSAXState curState = m_tStateStack.Count > 0 ? CCSAXState.SAX_DICT : m_tStateStack.FirstOrDefault();
+            CCSAXState curState = m_tStateStack.Count > 0 ? CCSAXState.Dict : m_tStateStack.FirstOrDefault();
             string sName = name;
             if (sName == "dict")
             {
@@ -201,11 +201,11 @@ namespace Cocos2D
             else if (sName == "true")
             {
                 string str = "1";
-                if (CCSAXState.SAX_ARRAY == curState)
+                if (CCSAXState.Array == curState)
                 {
                     m_pArray.Add(str);
                 }
-                else if (CCSAXState.SAX_DICT == curState)
+                else if (CCSAXState.Dict == curState)
                 {
                     m_pCurDict.Add(m_sCurKey, str);
                 }
@@ -214,45 +214,45 @@ namespace Cocos2D
             else if (sName == "false")
             {
                 string str = "0";
-                if (CCSAXState.SAX_ARRAY == curState)
+                if (CCSAXState.Array == curState)
                 {
                     m_pArray.Add(str);
                 }
-                else if (CCSAXState.SAX_DICT == curState)
+                else if (CCSAXState.Dict == curState)
                 {
                     m_pCurDict.Add(m_sCurKey, str);
                 }
                 //str->release();
             }
-            m_tState = CCSAXState.SAX_NONE;
+            m_tState = CCSAXState.None;
         }
 
         public void TextHandler(object ctx, byte[] s, int len)
         {
-            if (m_tState == CCSAXState.SAX_NONE)
+            if (m_tState == CCSAXState.None)
             {
                 return;
             }
 
-            CCSAXState curState = m_tStateStack.Count == 0 ? CCSAXState.SAX_DICT : m_tStateStack.FirstOrDefault();
+            CCSAXState curState = m_tStateStack.Count == 0 ? CCSAXState.Dict : m_tStateStack.FirstOrDefault();
             string m_sString = string.Empty;
             m_sString = System.Text.UTF8Encoding.UTF8.GetString(s, 0, len);
 
             switch (m_tState)
             {
-                case CCSAXState.SAX_KEY:
+                case CCSAXState.Key:
                     m_sCurKey = m_sString;
                     break;
-                case CCSAXState.SAX_INT:
-                case CCSAXState.SAX_REAL:
-                case CCSAXState.SAX_STRING:
+                case CCSAXState.Int:
+                case CCSAXState.Real:
+                case CCSAXState.String:
                     Debug.Assert(m_sCurKey.Length > 0, "not found key : <integet/real>");
 
-                    if (CCSAXState.SAX_ARRAY == curState)
+                    if (CCSAXState.Array == curState)
                     {
                         m_pArray.Add(m_sString);
                     }
-                    else if (CCSAXState.SAX_DICT == curState)
+                    else if (CCSAXState.Dict == curState)
                     {
                         m_pCurDict.Add(m_sCurKey, m_sString);
                     }
