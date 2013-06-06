@@ -472,7 +472,7 @@ namespace Cocos2D
             get { return m_tContentSize; }
             set
             {
-                if (!CCSize.CCSizeEqualToSize(value, m_tContentSize))
+                if (!CCSize.Equal(ref value, ref m_tContentSize))
                 {
                     m_tContentSize = value;
                     m_tAnchorPointInPoints = new CCPoint(m_tContentSize.Width * m_tAnchorPoint.X,

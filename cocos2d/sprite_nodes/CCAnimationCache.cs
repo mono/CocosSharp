@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Diagnostics;
-using cocos2d;
 
 namespace Cocos2D
 {

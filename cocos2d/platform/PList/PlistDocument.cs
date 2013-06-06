@@ -34,7 +34,7 @@ using Microsoft.Xna.Framework.Content;
 using Win8StoreIOUtility = Cocos2D.Win8StoreIOUtility;
 #endif
 
-namespace cocos2d
+namespace Cocos2D
 {
 #if IOS
     [MonoTouch.Foundation.Preserve (AllMembers = true)]
@@ -290,13 +290,19 @@ namespace cocos2d
 
         public class PlistDocumentReader : ContentTypeReader<PlistDocument>
         {
+            private string[] _stringPool;
+
             protected override PlistDocument Read(ContentReader input, PlistDocument existingInstance)
             {
                 if (existingInstance == null)
                 {
                     existingInstance = new PlistDocument();
                 }
+
+                _stringPool = input.ReadObject<string[]>();
+
                 existingInstance.root = ReadValue(input);
+                
                 return existingInstance;
             }
 
@@ -330,7 +336,7 @@ namespace cocos2d
                         var dict = new PlistDictionary();
                         for (int i = 0; i < count; i++)
                         {
-                            string key = input.ReadString();
+                            string key = _stringPool[input.ReadInt32()];
                             dict.Add(key, ReadValue(input));
                         }
                         return dict;
@@ -345,7 +351,7 @@ namespace cocos2d
                         return new PlistReal(input.ReadSingle());
 
                     case ValueType.String:
-                        return new PlistString(input.ReadString());
+                        return new PlistString(_stringPool[input.ReadInt32()]);
 
                     default:
                         throw new InvalidOperationException();

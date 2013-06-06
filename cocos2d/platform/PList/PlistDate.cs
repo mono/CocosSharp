@@ -26,7 +26,7 @@
 
 using System;
 
-namespace cocos2d
+namespace Cocos2D
 {
 	public class PlistDate : PlistObject<DateTime>
 	{

@@ -10,7 +10,6 @@ using ICSharpCode.SharpZipLib.Zip;
 using System.IO.Compression.ZipFile;
 using System.IO.Compression.GZip;
 #endif
-using cocos2d;
 
 namespace Cocos2D
 {

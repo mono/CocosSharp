@@ -1,6 +1,4 @@
 using Cocos2D;
-using PlistDocument = cocos2d.PlistDocument;
-using PlistDictionary = cocos2d.PlistDictionary;
 
 namespace tests
 {

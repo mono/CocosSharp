@@ -1,12 +1,5 @@
 using System.Collections.Generic;
 
-namespace cocos2d
-{
-    public class CCTMXLayerInfo : Cocos2D.CCTMXLayerInfo
-    {
-    }
-}
-
 namespace Cocos2D
 {
     public class CCTMXLayerInfo 

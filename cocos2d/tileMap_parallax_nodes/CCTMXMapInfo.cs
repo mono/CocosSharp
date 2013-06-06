@@ -12,16 +12,6 @@ using WP7Contrib.Communications.Compression;
 //using ICSharpCode.SharpZipLib.GZip;
 //#endif
 
-namespace cocos2d
-{
-    public class CCTMXMapInfo : Cocos2D.CCTMXMapInfo
-    {
-        public CCTMXMapInfo(string tmxFile)
-            : base(tmxFile)
-        {
-        }
-    }
-}
 namespace Cocos2D
 {
     /// <summary>

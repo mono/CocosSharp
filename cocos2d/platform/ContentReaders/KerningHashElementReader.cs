@@ -1,12 +1,6 @@
 using System;
 using Microsoft.Xna.Framework.Content;
 
-namespace cocos2d
-{
-    public class KerningHashElementReader : Cocos2D.KerningHashElementReader
-    {
-    }
-}
 namespace Cocos2D
 {
     public class KerningHashElementReader : ContentTypeReader<CCBMFontConfiguration.tKerningHashElement>

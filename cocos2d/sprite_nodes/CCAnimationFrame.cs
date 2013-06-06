@@ -1,4 +1,4 @@
-using cocos2d;
+
 
 namespace Cocos2D
 {
