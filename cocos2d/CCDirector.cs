@@ -1126,11 +1126,10 @@ namespace Cocos2D
                     contentSize = m_pFPSLabel.ContentSize;
                     m_pFPSLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height / 2) + pos;
                 }
-#if DEBUG
                 catch (Exception ex)
                 {
-                    CCLog.Log(ex.ToString());
-#endif
+                    CCLog.Log("Failed to create the stats labels.");
+
                     m_FailedToCreateStatsLabels = true;
                     m_bDisplayStats = false;
                 }
