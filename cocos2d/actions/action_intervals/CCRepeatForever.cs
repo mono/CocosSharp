@@ -24,10 +24,12 @@ namespace Cocos2D
 			InitWithAction(param);
 
 		}
+
         protected bool InitWithAction(CCActionInterval action)
         {
             Debug.Assert(action != null);
             m_pInnerAction = action;
+            // Duration = action.Duration;
             return true;
         }
 

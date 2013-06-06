@@ -8,7 +8,7 @@ namespace Cocos2D
         protected int m_last;
         protected CCFiniteTimeAction[] m_pActions = new CCFiniteTimeAction[2];
         protected float m_split;
-
+        private bool _HasInfiniteAction = false;
 
 		public CCSequence (CCFiniteTimeAction action1, CCFiniteTimeAction action2)
 		{
@@ -25,18 +25,32 @@ namespace Cocos2D
 			
 		}
 
-        protected bool InitOneTwo(CCFiniteTimeAction actionOne, CCFiniteTimeAction aciontTwo)
+        protected bool InitOneTwo(CCFiniteTimeAction actionOne, CCFiniteTimeAction actionTwo)
         {
             Debug.Assert(actionOne != null);
-            Debug.Assert(aciontTwo != null);
+            Debug.Assert(actionTwo != null);
 
-            float d = actionOne.Duration + aciontTwo.Duration;
+            float d = actionOne.Duration + actionTwo.Duration;
             base.InitWithDuration(d);
 
             m_pActions[0] = actionOne;
-            m_pActions[1] = aciontTwo;
+            m_pActions[1] = actionTwo;
+
+            _HasInfiniteAction = (actionOne is CCRepeatForever) || (actionTwo is CCRepeatForever);
 
             return true;
+        }
+
+        public override bool IsDone
+        {
+            get
+            {
+                if (_HasInfiniteAction && m_pActions[m_last] is CCRepeatForever)
+                {
+                    return (false);
+                }
+                return base.IsDone;
+            }
         }
 
         public override object Copy(ICCCopyable zone)
@@ -91,8 +105,22 @@ namespace Cocos2D
             base.Stop();
         }
 
+        public override void Step(float dt)
+        {
+            if (m_last > -1 && (m_pActions[m_last] is CCRepeat || m_pActions[m_last] is CCRepeatForever))
+            {
+                // Repeats are step based, not update
+                m_pActions[m_last].Step(dt);
+            }
+            else
+            {
+                base.Step(dt);
+            }
+        }
+
         public override void Update(float t)
         {
+            bool bRestart = false;
             int found;
             float new_t;
 
@@ -139,7 +167,7 @@ namespace Cocos2D
             }
 
             // New action. Start it.
-            if (found != m_last)
+            if (found != m_last || bRestart)
             {
                 m_pActions[found].StartWithTarget(m_pTarget);
             }
