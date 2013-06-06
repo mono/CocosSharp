@@ -61,12 +61,12 @@ namespace tests
             paddleRect.Origin.X += paddle.Position.X;
             paddleRect.Origin.Y += paddle.Position.Y;
 
-            float lowY = CCRect.CCRectGetMinY(paddleRect);
-            float midY = CCRect.CCRectGetMidY(paddleRect);
-            float highY = CCRect.CCRectGetMaxY(paddleRect);
+            float lowY = paddleRect.MinY;
+            float midY = paddleRect.MidY;
+            float highY = paddleRect.MaxY;
 
-            float leftX = CCRect.CCRectGetMinX(paddleRect);
-            float rightX = CCRect.CCRectGetMaxX(paddleRect);
+            float leftX = paddleRect.MinX;
+            float rightX = paddleRect.MaxX;
 
             if (Position.X > leftX && Position.X < rightX)
             {

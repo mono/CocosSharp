@@ -40,6 +40,7 @@ namespace tests
     public class Paddle : CCSprite, ICCTargetedTouchDelegate
     {
         PaddleState m_state;
+        
         public CCRect rect()
         {
             CCSize s = Texture.ContentSize;
@@ -69,7 +70,7 @@ namespace tests
 
         public bool containsTouchLocation(CCTouch touch)
         {
-            return CCRect.CCRectContainsPoint(rect(), ConvertTouchToNodeSpaceAr(touch));
+            return rect().ContainsPoint(ConvertTouchToNodeSpaceAr(touch));
         }
 
         public virtual bool TouchBegan(CCTouch touch)

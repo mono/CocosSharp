@@ -126,13 +126,13 @@ namespace Cocos2D
                 rectTracked.Origin.X, rectTracked.Origin.Y, rectTracked.Size.Width, rectTracked.Size.Height);
 
             // if the keyboard area doesn't intersect with the tracking node area, nothing need to do.
-            if (!CCRect.CCRectIntersetsRect(rectTracked, info.end))
+            if (!CCRect.IntersetsRect(ref rectTracked, ref info.end))
             {
                 return;
             }
 
             // assume keyboard at the bottom of screen, calculate the vertical adjustment.
-            float adjustVert = CCRect.CCRectGetMaxY(info.end) - CCRect.CCRectGetMinY(rectTracked);
+            float adjustVert = info.end.MaxY - rectTracked.MinY;
             CCLog.Log("TextInputTest:needAdjustVerticalPosition({0:F3})", adjustVert);
 
             // move all the children node of KeyboardNotificationLayer
@@ -188,7 +188,7 @@ namespace Cocos2D
             CCLog.Log("KeyboardNotificationLayer:TrackNode at(origin:%f,%f, size:%f,%f)",
                 rect.Origin.X, rect.Origin.Y, rect.Size.Width, rect.Size.Height);
 
-            this.onClickTrackNode(CCRect.CCRectContainsPoint(rect, point));
+            this.onClickTrackNode(CCRect.ContainsPoint(ref rect, ref point));
             CCLog.Log("----------------------------------");
         }
 

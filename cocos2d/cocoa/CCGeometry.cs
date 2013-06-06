@@ -959,7 +959,7 @@ namespace Cocos2D
 {
 
 #if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCPointConverter))]
+    [Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof (CCPointConverter))]
 #endif
     public struct CCPoint
     {
@@ -1004,22 +1004,22 @@ namespace Cocos2D
             pt.Y = Y + dy;
             return pt;
         }
+
         public CCPoint Reverse
         {
-            get
-            {
-                return (new CCPoint(-X, -Y));
-            }
+            get { return (new CCPoint(-X, -Y)); }
         }
 
-		public override int GetHashCode ()
-		{
-			return this.X.GetHashCode() + this.Y.GetHashCode();
-		}
+        public override int GetHashCode()
+        {
+            return this.X.GetHashCode() + this.Y.GetHashCode();
+        }
+
         public override bool Equals(object obj)
         {
-            return (Equals((CCPoint)obj));
+            return (Equals((CCPoint) obj));
         }
+
         public bool Equals(CCPoint p)
         {
             return X == p.X && Y == p.Y;
@@ -1060,7 +1060,7 @@ namespace Cocos2D
         /// </summary>
         public float Length
         {
-            get { return (float)Math.Sqrt(X * X + Y * Y); }
+            get { return (float) Math.Sqrt(X * X + Y * Y); }
         }
 
         /// <summary>
@@ -1084,7 +1084,7 @@ namespace Cocos2D
         /// <returns></returns>
         public float Normalize()
         {
-            float mag = (float)Math.Sqrt(X * X + Y * Y);
+            float mag = (float) Math.Sqrt(X * X + Y * Y);
             if (mag < float.Epsilon)
             {
                 return (0f);
@@ -1104,7 +1104,9 @@ namespace Cocos2D
          * ccpCompOp(p,floorf);
          @since v0.99.1
          */
+
         public delegate float ComputationOperationDelegate(float a);
+
         public static CCPoint ComputationOperation(CCPoint p, ComputationOperationDelegate del)
         {
             CCPoint pt = CCPoint.Zero;
@@ -1120,6 +1122,7 @@ namespace Cocos2D
               otherwise a value between a..b
             @since v0.99.1
        */
+
         public static CCPoint Lerp(CCPoint a, CCPoint b, float alpha)
         {
             return (a * (1f - alpha) + b * alpha);
@@ -1129,6 +1132,7 @@ namespace Cocos2D
         /** @returns if points have fuzzy equality which means equal with some degree of variance.
             @since v0.99.1
         */
+
         public static bool FuzzyEqual(CCPoint a, CCPoint b, float variance)
         {
             if (a.X - variance <= b.X && b.X <= a.X + variance)
@@ -1143,6 +1147,7 @@ namespace Cocos2D
             @returns a component-wise multiplication
             @since v0.99.1
         */
+
         public static CCPoint MultiplyComponents(CCPoint a, CCPoint b)
         {
             CCPoint pt = CCPoint.Zero;
@@ -1154,11 +1159,12 @@ namespace Cocos2D
         /** @returns the signed angle in radians between two vector directions
             @since v0.99.1
         */
+
         public static float AngleSigned(CCPoint a, CCPoint b)
         {
             CCPoint a2 = CCPoint.Normalize(a);
             CCPoint b2 = CCPoint.Normalize(b);
-            float angle = (float)Math.Atan2(a2.X * b2.Y - a2.Y * b2.X, DotProduct(a2, b2));
+            float angle = (float) Math.Atan2(a2.X * b2.Y - a2.Y * b2.X, DotProduct(a2, b2));
 
             if (Math.Abs(angle) < float.Epsilon)
             {
@@ -1175,10 +1181,11 @@ namespace Cocos2D
             @returns the rotated point
             @since v0.99.1
         */
+
         public static CCPoint RotateByAngle(CCPoint v, CCPoint pivot, float angle)
         {
             CCPoint r = v - pivot;
-            float cosa = (float)Math.Cos(angle), sina = (float)Math.Sin(angle);
+            float cosa = (float) Math.Cos(angle), sina = (float) Math.Sin(angle);
             float t = r.X;
 
             r.X = t * cosa - r.Y * sina + pivot.X;
@@ -1208,6 +1215,7 @@ namespace Cocos2D
             the hit point also is	p1 + s * (p2 - p1);
          @since v0.99.1
          */
+
         public static bool LineIntersect(CCPoint A, CCPoint B, CCPoint C, CCPoint D, ref float S, ref float T)
         {
             // FAIL: Line undefined
@@ -1254,6 +1262,7 @@ namespace Cocos2D
         ccpSegmentIntersect returns YES if Segment A-B intersects with segment C-D
         @since v1.0.0
         */
+
         public static bool SegmentIntersect(CCPoint A, CCPoint B, CCPoint C, CCPoint D)
         {
             float S = 0, T = 0;
@@ -1271,6 +1280,7 @@ namespace Cocos2D
         ccpIntersectPoint returns the intersection point of line A-B, C-D
         @since v1.0.0
         */
+
         public static CCPoint IntersectPoint(CCPoint A, CCPoint B, CCPoint C, CCPoint D)
         {
             float S = 0, T = 0;
@@ -1286,32 +1296,36 @@ namespace Cocos2D
 
             return new CCPoint();
         }
+
         /** Converts radians to a normalized vector.
             @return CCPoint
             @since v0.7.2
         */
+
         public static CCPoint ForAngle(float a)
         {
             CCPoint pt = CCPoint.Zero;
-            pt.X = (float)Math.Cos(a);
-            pt.Y = (float)Math.Sin(a);
+            pt.X = (float) Math.Cos(a);
+            pt.Y = (float) Math.Sin(a);
             return (pt);
-//            return CreatePoint((float)Math.Cos(a), (float)Math.Sin(a));
+            //            return CreatePoint((float)Math.Cos(a), (float)Math.Sin(a));
         }
 
         /** Converts a vector to radians.
             @return CGFloat
             @since v0.7.2
         */
+
         public static float ToAngle(CCPoint v)
         {
-            return (float)Math.Atan2(v.Y, v.X);
+            return (float) Math.Atan2(v.Y, v.X);
         }
 
 
         /** Clamp a value between from and to.
             @since v0.99.1
         */
+
         public static float Clamp(float value, float min_inclusive, float max_inclusive)
         {
             if (min_inclusive > max_inclusive)
@@ -1328,18 +1342,20 @@ namespace Cocos2D
         /** Clamp a point between from and to.
             @since v0.99.1
         */
+
         public static CCPoint Clamp(CCPoint p, CCPoint from, CCPoint to)
         {
             CCPoint pt = CCPoint.Zero;
             pt.X = Clamp(p.X, from.X, to.X);
             pt.Y = Clamp(p.Y, from.Y, to.Y);
             return pt;
-//            return CreatePoint(Clamp(p.X, from.X, to.X), Clamp(p.Y, from.Y, to.Y));
+            //            return CreatePoint(Clamp(p.X, from.X, to.X), Clamp(p.Y, from.Y, to.Y));
         }
 
         /** Quickly convert CCSize to a CCPoint
             @since v0.99.1
         */
+
         [Obsolete("Use explicit cast (CCPoint)size.")]
         public static CCPoint FromSize(CCSize s)
         {
@@ -1352,6 +1368,7 @@ namespace Cocos2D
         /**
          * Allow Cast CCSize to CCPoint
          */
+
         public static explicit operator CCPoint(CCSize size)
         {
             CCPoint pt = CCPoint.Zero;
@@ -1377,24 +1394,26 @@ namespace Cocos2D
         {
             return (v1 - v2).Length;
         }
+
         public static CCPoint Normalize(CCPoint p)
         {
             var x = p.X;
             var y = p.Y;
-            var l = 1f / (float)Math.Sqrt(x * x + y * y);
+            var l = 1f / (float) Math.Sqrt(x * x + y * y);
             CCPoint pt = CCPoint.Zero;
-            pt.X = x*l;
-            pt.Y = y*l;
+            pt.X = x * l;
+            pt.Y = y * l;
             return pt;
         }
 
         public static CCPoint Midpoint(CCPoint p1, CCPoint p2)
         {
             CCPoint pt = CCPoint.Zero;
-            pt.X = (p1.X + p2.X)/2f;
-            pt.Y = (p1.Y + p2.Y)/2f;
+            pt.X = (p1.X + p2.X) / 2f;
+            pt.Y = (p1.Y + p2.Y) / 2f;
             return pt;
         }
+
         public static float DotProduct(CCPoint v1, CCPoint v2)
         {
             return v1.X * v2.X + v1.Y * v2.Y;
@@ -1404,6 +1423,7 @@ namespace Cocos2D
             @return CGFloat
             @since v0.7.2
         */
+
         public static float CrossProduct(CCPoint v1, CCPoint v2)
         {
             return v1.X * v2.Y - v1.Y * v2.X;
@@ -1413,6 +1433,7 @@ namespace Cocos2D
             @return CCPoint
             @since v0.7.2
         */
+
         public static CCPoint PerpendicularCounterClockwise(CCPoint v)
         {
             CCPoint pt = CCPoint.Zero;
@@ -1425,6 +1446,7 @@ namespace Cocos2D
             @return CCPoint
             @since v0.7.2
         */
+
         public static CCPoint PerpendicularClockwise(CCPoint v)
         {
             CCPoint pt = CCPoint.Zero;
@@ -1437,6 +1459,7 @@ namespace Cocos2D
             @return CCPoint
             @since v0.7.2
         */
+
         public static CCPoint Project(CCPoint v1, CCPoint v2)
         {
             float dp1 = v1.X * v2.X + v1.Y * v2.Y;
@@ -1453,24 +1476,26 @@ namespace Cocos2D
             @return CCPoint
             @since v0.7.2
         */
+
         public static CCPoint Rotate(CCPoint v1, CCPoint v2)
         {
             CCPoint pt = CCPoint.Zero;
             pt.X = v1.X * v2.X - v1.Y * v2.Y;
             pt.Y = v1.X * v2.Y + v1.Y * v2.X;
-            return(pt);
+            return (pt);
         }
 
         /** Unrotates two points.
             @return CCPoint
             @since v0.7.2
         */
+
         public static CCPoint Unrotate(CCPoint v1, CCPoint v2)
         {
             CCPoint pt = CCPoint.Zero;
             pt.X = v1.X * v2.X + v1.Y * v2.Y;
             pt.Y = v1.Y * v2.X - v1.X * v2.Y;
-            return(pt);
+            return (pt);
         }
 
         #endregion
@@ -1481,6 +1506,7 @@ namespace Cocos2D
         {
             return (p1.Equals(p2));
         }
+
         public static bool operator !=(CCPoint p1, CCPoint p2)
         {
             return (!p1.Equals(p2));
@@ -1517,7 +1543,7 @@ namespace Cocos2D
             pt.Y = +p1.Y;
             return pt;
         }
-        
+
         public static CCPoint operator *(CCPoint p, float value)
         {
             CCPoint pt = CCPoint.Zero;
@@ -1525,25 +1551,26 @@ namespace Cocos2D
             pt.Y = p.Y * value;
             return pt;
         }
+
         #endregion
 
         public static CCPoint Parse(string s)
         {
 #if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-			return (CCPoint)TypeDescriptor.GetConverter(typeof(CCPoint)).ConvertFromString (s);
+            return (CCPoint) TypeDescriptor.GetConverter(typeof (CCPoint)).ConvertFromString(s);
 #else
             return (CCPointConverter.CCPointFromString(s));
 #endif
-		}
+        }
     }
 
 #if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCSizeConverter))]
+    [Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof (CCSizeConverter))]
 #endif
     public struct CCSize
     {
         public static readonly CCSize Zero = new CCSize(0, 0);
- 
+
         public float Width;
         public float Height;
 
@@ -1558,21 +1585,18 @@ namespace Cocos2D
         /// </summary>
         public CCSize Inverted
         {
-            get
-            {
-                CCSize c = new CCSize(Height, Width);
-                return (c);
-            }
+            get { return new CCSize(Height, Width); }
         }
+
         public static bool CCSizeEqualToSize(CCSize size1, CCSize size2)
         {
             return ((size1.Width == size2.Width) && (size1.Height == size2.Height));
         }
 
-		public override int GetHashCode()
-		{
-			return (this.Width.GetHashCode() + this.Height.GetHashCode());
-		}
+        public override int GetHashCode()
+        {
+            return (this.Width.GetHashCode() + this.Height.GetHashCode());
+        }
 
         public bool Equals(CCSize s)
         {
@@ -1581,7 +1605,7 @@ namespace Cocos2D
 
         public override bool Equals(object obj)
         {
-            return (Equals((CCSize)obj));
+            return (Equals((CCSize) obj));
         }
 
         public CCPoint Center
@@ -1593,43 +1617,50 @@ namespace Cocos2D
         {
             return String.Format("{0} x {1}", Width, Height);
         }
+
         public static bool operator ==(CCSize p1, CCSize p2)
         {
             return (p1.Equals(p2));
         }
+
         public static bool operator !=(CCSize p1, CCSize p2)
         {
             return (!p1.Equals(p2));
         }
+
         public static CCSize operator *(CCSize p, float f)
         {
-            return(new CCSize(p.Width*f, p.Height*f));
+            return (new CCSize(p.Width * f, p.Height * f));
         }
+
         public static CCSize operator /(CCSize p, float f)
         {
             return (new CCSize(p.Width / f, p.Height / f));
         }
+
         public static CCSize operator +(CCSize p, float f)
         {
             return (new CCSize(p.Width + f, p.Height + f));
         }
+
         public static CCSize operator -(CCSize p, float f)
         {
             return (new CCSize(p.Width - f, p.Height - f));
         }
 
-		public static CCSize Parse(string s)
+        public static CCSize Parse(string s)
         {
 #if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-			return (CCSize)TypeDescriptor.GetConverter(typeof(CCSize)).ConvertFromString (s);
+            return (CCSize) TypeDescriptor.GetConverter(typeof (CCSize)).ConvertFromString(s);
 #else
             return (CCSizeConverter.CCSizeFromString(s));
 #endif
-		}
+        }
 
         /**
          * Allow Cast CCPoint to CCSize
          */
+
         public static explicit operator CCSize(CCPoint point)
         {
             CCSize size = CCSize.Zero;
@@ -1640,7 +1671,7 @@ namespace Cocos2D
     }
 
 #if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-	[Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof(CCRectConverter))]
+    [Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof (CCRectConverter))]
 #endif
     public struct CCRect
     {
@@ -1658,9 +1689,6 @@ namespace Cocos2D
         /// <param name="height">height of the rectangle</param>
         public CCRect(float x, float y, float width, float height)
         {
-            Origin = new CCPoint();
-            Size = new CCSize();
-
             // Only support that, the width and height > 0
             Debug.Assert(width >= 0 && height >= 0);
 
@@ -1676,37 +1704,40 @@ namespace Cocos2D
         /// </summary>
         public CCRect InvertedSize
         {
-            get
-            {
-                CCRect c = new CCRect(Origin.X, Origin.Y, Size.Height, Size.Width);
-                return (c);
-            }
+            get { return new CCRect(Origin.X, Origin.Y, Size.Height, Size.Width); }
         }
+
+        // return the rightmost x-value of 'rect'
         public float MaxX
         {
-            get { return (float) (Origin.X + Size.Width); }
+            get { return Origin.X + Size.Width; }
         }
 
+        // return the midpoint x-value of 'rect'
         public float MidX
         {
-            get { return (float) (Origin.X + Size.Width / 2.0); }
+            get { return Origin.X + Size.Width / 2.0f; }
         }
 
+        // return the leftmost x-value of 'rect'
         public float MinX
         {
             get { return Origin.X; }
         }
 
+        // Return the topmost y-value of 'rect'
         public float MaxY
         {
             get { return Origin.Y + Size.Height; }
         }
 
+        // Return the midpoint y-value of 'rect'
         public float MidY
         {
-            get { return (float) (Origin.Y + Size.Height / 2.0); }
+            get { return Origin.Y + Size.Height / 2.0f; }
         }
 
+        // Return the bottommost y-value of 'rect'
         public float MinY
         {
             get { return Origin.Y; }
@@ -1716,10 +1747,10 @@ namespace Cocos2D
         {
             get
             {
-                CCPoint pt = CCPoint.Zero;
+                CCPoint pt;
                 pt.X = MidX;
                 pt.Y = MidY;
-                return (pt);
+                return pt;
             }
         }
 
@@ -1742,7 +1773,7 @@ namespace Cocos2D
              *       |             |
              *       +-------------+
              */
-            float minx=0, miny=0, maxx=0, maxy=0;
+            float minx = 0, miny = 0, maxx = 0, maxy = 0;
             // X
             if (rect.MinX < MinX)
             {
@@ -1777,8 +1808,9 @@ namespace Cocos2D
             {
                 maxy = MaxY;
             }
-            return (new CCRect(minx, miny, maxx - minx, maxy - miny));
+            return new CCRect(minx, miny, maxx - minx, maxy - miny);
         }
+
         public bool IntersectsRect(CCRect rect)
         {
             return !(MaxX < rect.MinX || rect.MaxX < MinX || MaxY < rect.MinY || rect.MaxY < MinY);
@@ -1799,48 +1831,12 @@ namespace Cocos2D
             return x >= MinX && x <= MaxX && y >= MinY && y <= MaxY;
         }
 
-        // return the leftmost x-value of 'rect'
-        public static float CCRectGetMinX(CCRect rect)
+        public static bool Equal(ref CCRect rect1, ref CCRect rect2)
         {
-            return rect.Origin.X;
+            return rect1.Origin.Equals(rect2.Origin) && rect1.Size.Equals(rect2.Size);
         }
 
-        // return the rightmost x-value of 'rect'
-        public static float CCRectGetMaxX(CCRect rect)
-        {
-            return rect.Origin.X + rect.Size.Width;
-        }
-
-        // return the midpoint x-value of 'rect'
-        public static float CCRectGetMidX(CCRect rect)
-        {
-            return (rect.Origin.X + rect.Size.Width / 2.0f);
-        }
-
-        // Return the bottommost y-value of 'rect'
-        public static float CCRectGetMinY(CCRect rect)
-        {
-            return rect.Origin.Y;
-        }
-
-        // Return the topmost y-value of 'rect'
-        public static float CCRectGetMaxY(CCRect rect)
-        {
-            return rect.Origin.Y + rect.Size.Height;
-        }
-
-        // Return the midpoint y-value of 'rect'
-        public static float CCRectGetMidY(CCRect rect)
-        {
-            return (rect.Origin.Y + rect.Size.Height / 2.0f);
-        }
-
-        public static bool CCRectEqualToRect(CCRect rect1, CCRect rect2)
-        {
-            return (rect1.Origin.Equals(rect2.Origin)) && (rect1.Size.Equals(rect2.Size));
-        }
-
-        public static bool CCRectContainsPoint(CCRect rect, CCPoint point)
+        public static bool ContainsPoint(ref CCRect rect, ref CCPoint point)
         {
             bool bRet = false;
 
@@ -1854,7 +1850,8 @@ namespace Cocos2D
                 point.Y = 0;
             }
 
-            if (point.X >= CCRectGetMinX(rect) && point.X <= CCRectGetMaxX(rect) && point.Y >= CCRectGetMinY(rect) && point.Y <= CCRectGetMaxY(rect))
+            if (point.X >= rect.MinX && point.X <= rect.MaxX && point.Y >= rect.MinY &&
+                point.Y <= rect.MaxY)
             {
                 bRet = true;
             }
@@ -1862,47 +1859,46 @@ namespace Cocos2D
             return bRet;
         }
 
-        public static bool CCRectIntersetsRect(CCRect rectA, CCRect rectB)
+        public static bool IntersetsRect(ref CCRect rectA, ref CCRect rectB)
         {
-            return !(CCRectGetMaxX(rectA) < CCRectGetMinX(rectB)
-                     || CCRectGetMaxX(rectB) < CCRectGetMinX(rectA)
-                     || CCRectGetMaxY(rectA) < CCRectGetMinY(rectB)
-                     || CCRectGetMaxY(rectB) < CCRectGetMinY(rectA));
+            return !(rectA.MaxX < rectB.MinX || rectB.MaxX < rectA.MinX || rectA.MaxY < rectB.MinY || rectB.MaxY < rectA.MinY);
         }
+
         public static bool operator ==(CCRect p1, CCRect p2)
         {
             return (p1.Equals(p2));
         }
+
         public static bool operator !=(CCRect p1, CCRect p2)
         {
             return (!p1.Equals(p2));
         }
 
-		public override int GetHashCode()
-		{
-			//return (this.Origin.X.GetHashCode() + this.Origin.Y.GetHashCode() + this.Size.Width.GetHashCode() + this.Size.Height.GetHashCode());
-			return this.Origin.GetHashCode() + this.Size.GetHashCode();
-		}
+        public override int GetHashCode()
+        {
+            return Origin.GetHashCode() + Size.GetHashCode();
+        }
 
         public override bool Equals(object obj)
         {
-            return (Equals((CCRect)obj));
+            return (Equals((CCRect) obj));
         }
 
         public bool Equals(CCRect rect)
         {
-            return (Origin.Equals(rect.Origin)) && (Size.Equals(rect.Size));
+            return Origin.Equals(rect.Origin) && Size.Equals(rect.Size);
         }
 
         public override string ToString()
         {
-            return String.Format("CCRect : (x={0}, y={1}, width={2}, height={3})", Origin.X, Origin.Y, Size.Width, Size.Height);
+            return String.Format("CCRect : (x={0}, y={1}, width={2}, height={3})", Origin.X, Origin.Y, Size.Width,
+                                 Size.Height);
         }
 
-		public static CCRect Parse(string s)
+        public static CCRect Parse(string s)
         {
 #if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-			return (CCRect)TypeDescriptor.GetConverter(typeof(CCRect)).ConvertFromString (s);
+            return (CCRect) TypeDescriptor.GetConverter(typeof (CCRect)).ConvertFromString(s);
 #else
             return (CCRectConverter.CCRectFromString(s));
 #endif

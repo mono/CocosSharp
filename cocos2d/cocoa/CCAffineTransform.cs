@@ -60,10 +60,10 @@ namespace Cocos2D
 
         public static CCRect Transform(CCRect rect, CCAffineTransform anAffineTransform)
         {
-            float top = CCRect.CCRectGetMinY(rect);
-            float left = CCRect.CCRectGetMinX(rect);
-            float right = CCRect.CCRectGetMaxX(rect);
-            float bottom = CCRect.CCRectGetMaxY(rect);
+            float top = rect.MinY;
+            float left = rect.MinX;
+            float right = rect.MaxX;
+            float bottom = rect.MaxY;
 
             CCPoint topLeft = Transform(new CCPoint(left, top), anAffineTransform);
             CCPoint topRight = Transform(new CCPoint(right, top), anAffineTransform);

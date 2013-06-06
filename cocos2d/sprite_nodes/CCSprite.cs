@@ -1015,7 +1015,7 @@ namespace Cocos2D
             CCRect r = pFrame.Rect;
 
             return (
-                       CCRect.CCRectEqualToRect(r, m_obRect) &&
+                       CCRect.Equal(ref r, ref m_obRect) &&
                        pFrame.Texture.Name == m_pobTexture.Name &&
                        pFrame.Offset.Equals(m_obUnflippedOffsetPositionFromCenter)
                    );
