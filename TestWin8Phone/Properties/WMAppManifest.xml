@@ -2,7 +2,7 @@
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
   <App xmlns="" ProductID="{f13744ce-a3b0-426b-8a4a-cf6f482b80cd}" Title="Cocos2D-XNA" RuntimeType="Silverlight" Version="2.0.3.0" Genre="apps.normal" Author="Cocos2D-XNA" Description="These are the tests for Cocos2D-XNA" Publisher="Cocos2D-XNA Developers" PublisherID="{0df4bf76-7146-42eb-ba7c-83daa7249a23}">
-    <IconPath IsRelative="true" IsResource="false">powered.png</IconPath>
+    <IconPath IsRelative="true" IsResource="false">Icon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
