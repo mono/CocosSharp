@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Cocos2D;
+using tests.Clipping;
 using tests.FontTest;
 using tests.Extensions;
 using tests.classes.tests.Box2DTestBet;
@@ -357,6 +358,9 @@ namespace tests
                 //        pScene = new CurrentLanguageTestScene(); break;
                 //        break;
                 //#endif
+                case (int)TestCases.TEST_CLIPPINGNODE:
+                        pScene = new ClippingNodeTestScene();
+                        break;
 
                 case (int)TestCases.TEST_EXTENSIONS:
                         pScene = new ExtensionsTestScene();
