@@ -606,7 +606,7 @@ namespace Cocos2D
 
             if (m_pChildren != null && m_pChildren.count > 0)
             {
-                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                for (int i = m_pChildren.count-1; i >= 0; i--)
                 {
                     var pChild = m_pChildren.Elements[i] as CCMenuItem;
                     if (pChild != null && pChild.Visible && pChild.Enabled)
