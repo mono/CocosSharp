@@ -108,6 +108,8 @@
       <Link>Content\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icon.png" />
+    <Content Include="powered.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
@@ -138,12 +140,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.WP8.csproj">
-      <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
+      <Project>{1F6DEC85-9C75-45CF-BECA-BD3187A398B1}</Project>
       <Name>box2d.WP8</Name>
     </ProjectReference>
     <ProjectReference Include="..\cocos2d\cocos2d.WP8.csproj">
       <Project>{7BF6F2D8-9E09-4A0A-84C1-1A5FF795D56A}</Project>
       <Name>cocos2d.WP8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cocos2d\external lib\ICSharpCodeSource\src\ICSharpCode.SharpZLib.WP8.csproj">
+      <Project>{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}</Project>
+      <Name>ICSharpCode.SharpZLib.WP8</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsPhone.csproj">
       <Project>{BAA9A6E4-7690-4DE0-9531-DE0EAEEC9739}</Project>
