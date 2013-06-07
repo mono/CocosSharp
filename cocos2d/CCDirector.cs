@@ -68,7 +68,6 @@ namespace Cocos2D
         private CCTouchDispatcher m_pTouchDispatcher;
 
         private bool m_bDisplayStats;
-        //private uint m_uFrames;
         
         private uint m_uTotalFrames;
         private float m_fAccumDt;
@@ -77,9 +76,6 @@ namespace Cocos2D
         private uint m_uDrawCount;
         private float m_fAccumUpdate;
         
-        //private float m_fFrameRate;
-        //private float m_fSecondsPerFrame;
-
         private CCLabelAtlas m_pFPSLabel;
         private CCLabelAtlas m_pUpdateTimeLabel;
         private CCLabelAtlas m_pDrawTimeLabel;
@@ -554,13 +550,12 @@ namespace Cocos2D
 
             // FPS
             m_fAccumDt = 0.0f;
-            //m_fFrameRate = 0.0f;
             m_pFPSLabel = null;
             m_pUpdateTimeLabel = null;
             m_pDrawTimeLabel = null;
             m_pDrawsLabel = null;
             m_bDisplayStats = false;
-            m_uTotalFrames = 0; //m_uFrames = 0;
+            m_uTotalFrames = 0;
 
             m_pStopwatch = new Stopwatch();
 
@@ -878,13 +873,6 @@ namespace Cocos2D
         {
             return m_bSendCleanupToScene;
         }
-
-        /*
-        public uint Frames
-        {
-            get { return m_uFrames; }
-        }
-        */
 
         public abstract void StopAnimation();
 
