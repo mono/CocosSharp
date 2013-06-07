@@ -158,6 +158,7 @@
     <Compile Include="base_nodes\CCNodeRGBA.cs" />
     <Compile Include="CCCamera.cs" />
     <Compile Include="CCConfiguration.cs" />
+    <Compile Include="CCFPSImage.cs" />
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDirector.cs" />
     <Compile Include="CCDisplayLinkDirector.cs" />

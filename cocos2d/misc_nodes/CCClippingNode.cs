@@ -5,7 +5,6 @@ namespace Cocos2D
     public class CCClippingNode : CCNode
     {
         private static AlphaTestEffect _alphaTest;
-        private static CCDrawNode _clearNode;
         
         private static int _layer = -1;
 

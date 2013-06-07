@@ -68,16 +68,26 @@ namespace Cocos2D
         private CCTouchDispatcher m_pTouchDispatcher;
 
         private bool m_bDisplayStats;
-        private uint m_uFrames;
+        //private uint m_uFrames;
+        
         private uint m_uTotalFrames;
         private float m_fAccumDt;
-        private float m_fFrameRate;
-        private float m_fSecondsPerFrame;
+        private uint m_uUpdateCount;
+        private float m_fAccumDraw;
+        private uint m_uDrawCount;
+        private float m_fAccumUpdate;
+        
+        //private float m_fFrameRate;
+        //private float m_fSecondsPerFrame;
 
-        private CCLabelTTF m_pFPSLabel;
-        private CCLabelTTF m_pSPFLabel;
-        private CCLabelTTF m_pDrawsLabel;
+        private CCLabelAtlas m_pFPSLabel;
+        private CCLabelAtlas m_pUpdateTimeLabel;
+        private CCLabelAtlas m_pDrawTimeLabel;
+        private CCLabelAtlas m_pDrawsLabel;
 
+        // Stopwatch for measure the time.
+        Stopwatch m_pStopwatch;
+        
         #region State Management
 		
 #if !PSM &&!NETFX_CORE
@@ -480,7 +490,15 @@ namespace Cocos2D
         public bool DisplayStats
         {
             get { return m_bDisplayStats; }
-            set { m_bDisplayStats = value; }
+            set
+            {
+                m_bDisplayStats = value;
+                if (value)
+                {
+                    m_pStopwatch.Reset();
+                    m_pStopwatch.Start();
+                }
+            }
         }
 
         public bool IsPaused
@@ -536,12 +554,15 @@ namespace Cocos2D
 
             // FPS
             m_fAccumDt = 0.0f;
-            m_fFrameRate = 0.0f;
+            //m_fFrameRate = 0.0f;
             m_pFPSLabel = null;
-            m_pSPFLabel = null;
+            m_pUpdateTimeLabel = null;
+            m_pDrawTimeLabel = null;
             m_pDrawsLabel = null;
             m_bDisplayStats = false;
-            m_uTotalFrames = m_uFrames = 0;
+            m_uTotalFrames = 0; //m_uFrames = 0;
+
+            m_pStopwatch = new Stopwatch();
 
             // paused ?
             m_bPaused = false;
@@ -603,6 +624,12 @@ namespace Cocos2D
 
         public void Update(GameTime gameTime)
         {
+            float startTime = 0;
+            if (m_bDisplayStats)
+            {
+                startTime = (float)m_pStopwatch.Elapsed.TotalMilliseconds;
+            }
+
             if (!m_bPaused)
             {
                 if (m_bNextDeltaTimeZero)
@@ -615,12 +642,6 @@ namespace Cocos2D
                     m_fDeltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
                 }
 
-#if DEBUG
-                if (m_fDeltaTime > 0.2f)
-                {
-                    m_fDeltaTime = 1 / 60.0f;
-                }
-#endif
                 // In Seconds
                 m_pScheduler.update(m_fDeltaTime);
             }
@@ -631,6 +652,14 @@ namespace Cocos2D
             {
                 SetNextScene();
             }
+
+            m_fAccumDt += m_fDeltaTime;
+
+            if (m_bDisplayStats)
+            {
+                m_uUpdateCount++;
+                m_fAccumUpdate += (float)m_pStopwatch.Elapsed.TotalMilliseconds - startTime;
+            }
         }
 
         /// <summary>
@@ -639,6 +668,12 @@ namespace Cocos2D
         /// </summary>
         protected void DrawScene(GameTime gameTime)
         {
+            float startTime = 0;
+            if (m_bDisplayStats)
+            {
+                startTime = (float)m_pStopwatch.Elapsed.TotalMilliseconds;
+            }
+
             CCDrawManager.PushMatrix();
 
             // draw the scene
@@ -661,7 +696,8 @@ namespace Cocos2D
 
             if (m_bDisplayStats)
             {
-                CalculateMPF();
+                m_uDrawCount++;
+                m_fAccumDraw += (float)m_pStopwatch.Elapsed.TotalMilliseconds - startTime;
             }
         }
 
@@ -843,11 +879,12 @@ namespace Cocos2D
             return m_bSendCleanupToScene;
         }
 
-
+        /*
         public uint Frames
         {
             get { return m_uFrames; }
         }
+        */
 
         public abstract void StopAnimation();
 
@@ -1090,79 +1127,71 @@ namespace Cocos2D
 
 		#endregion
 
-        private void CalculateMPF()
-        {
-            if (m_uTotalFrames > 0)
-            {
-                m_fSecondsPerFrame = m_fDeltaTime / (float)m_uTotalFrames;
-            }
-        }
-
-        private bool m_FailedToCreateStatsLabels = false;
-
         public void CreateStatsLabel()
         {
-            if (!m_FailedToCreateStatsLabels)
+            CCTexture2D texture;
+            CCTextureCache textureCache = CCTextureCache.SharedTextureCache;
+
+            textureCache.RemoveTextureForKey("cc_fps_images");
+
+            using (var stream = new MemoryStream(CCFPSImage.PngData, false))
             {
-                try
-                {
-                    int fontSize = (int) (m_obWinSizeInPoints.Height / 320.0f * 24);
-                    m_pFPSLabel = new CCLabelTTF("00.0", "Arial", 24);
-                    m_pFPSLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
-                        // Use 320 here b/c we are optimizing at that scale.
-                    m_pSPFLabel = new CCLabelTTF("0.000", "Arial", 24);
-                    m_pSPFLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
-                    m_pDrawsLabel = new CCLabelTTF("000", "Arial", 24);
-                    m_pDrawsLabel.Scale = m_obWinSizeInPoints.Height / 320.0f;
-
-                    //CCTexture2D::setDefaultAlphaPixelFormat(currentFormat);
-
-                    var pos = CCDirector.SharedDirector.VisibleOrigin;
-
-                    CCSize contentSize = m_pDrawsLabel.ContentSize;
-                    m_pDrawsLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height * 5 / 2) + pos;
-                    contentSize = m_pSPFLabel.ContentSize;
-                    m_pSPFLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height * 3 / 2) + pos;
-                    contentSize = m_pFPSLabel.ContentSize;
-                    m_pFPSLabel.Position = new CCPoint(contentSize.Width / 2, contentSize.Height / 2) + pos;
-                }
-                catch (Exception)
-                {
-                    CCLog.Log("Failed to create the stats labels.");
-
-                    m_FailedToCreateStatsLabels = true;
-                    m_bDisplayStats = false;
-                }
+                texture = textureCache.AddImage(stream, "cc_fps_images");
             }
+
+            float factor = m_obWinSizeInPoints.Height / 320.0f;
+            var pos = CCDirector.SharedDirector.VisibleOrigin;
+
+            m_pFPSLabel = new CCLabelAtlas();
+            m_pFPSLabel.SetIgnoreContentScaleFactor(true);
+            m_pFPSLabel.InitWithString("00.0", texture, 12, 32 , '.');
+            m_pFPSLabel.Scale = factor;
+
+            m_pUpdateTimeLabel = new CCLabelAtlas();
+            m_pUpdateTimeLabel.SetIgnoreContentScaleFactor(true);
+            m_pUpdateTimeLabel.InitWithString("0.000", texture, 12, 32, '.');
+            m_pUpdateTimeLabel.Scale = factor;
+
+            m_pDrawTimeLabel = new CCLabelAtlas();
+            m_pDrawTimeLabel.SetIgnoreContentScaleFactor(true);
+            m_pDrawTimeLabel.InitWithString("0.000", texture, 12, 32, '.');
+            m_pDrawTimeLabel.Scale = factor;
+
+            m_pDrawsLabel = new CCLabelAtlas();
+            m_pDrawsLabel.SetIgnoreContentScaleFactor(true);
+            m_pDrawsLabel.InitWithString("000", texture, 12, 32, '.');
+            m_pDrawsLabel.Scale = factor;
+
+            m_pDrawsLabel.Position = new CCPoint(0, 51 * factor) + pos;
+            m_pUpdateTimeLabel.Position = new CCPoint(0, 34 * factor) + pos;
+            m_pDrawTimeLabel.Position = new CCPoint(0, 17 * factor) + pos;
+            m_pFPSLabel.Position = pos;
         }
 
         // display the FPS using a LabelAtlas
         // updates the FPS every frame
         private void ShowStats()
         {
-            m_uFrames++;
-            m_fAccumDt += m_fDeltaTime;
-    
             if (m_bDisplayStats)
             {
-                if (m_pFPSLabel != null && m_pSPFLabel != null && m_pDrawsLabel != null)
+                if (m_pFPSLabel != null && m_pUpdateTimeLabel != null && m_pDrawsLabel != null)
                 {
                     if (m_fAccumDt > CCMacros.CCDirectorStatsUpdateIntervalInSeconds)
                     {
-                        m_pSPFLabel.Label = (String.Format("{0:0.000}", m_fSecondsPerFrame));
-                
-                        m_fFrameRate = m_uFrames / m_fAccumDt;
-                        m_uFrames = 0;
-                        m_fAccumDt = 0;
-                
-                        m_pFPSLabel.Label = (String.Format("{0:00.0}", m_fFrameRate));
-                 
+                        m_pFPSLabel.Label = (String.Format("{0:00.0}", m_uDrawCount / m_fAccumDt));
+
+                        m_pUpdateTimeLabel.Label = (String.Format("{0:0.000}", m_fAccumUpdate / m_uUpdateCount));
+                        m_pDrawTimeLabel.Label = (String.Format("{0:0.000}", m_fAccumDraw / m_uDrawCount));
                         m_pDrawsLabel.Label = (String.Format("{0:000}", CCDrawManager.DrawCount));
+
+                        m_fAccumDt = m_fAccumDraw = m_fAccumUpdate = 0;
+                        m_uDrawCount = m_uUpdateCount = 0;
                     }
             
                     m_pDrawsLabel.Visit();
                     m_pFPSLabel.Visit();
-                    m_pSPFLabel.Visit();
+                    m_pUpdateTimeLabel.Visit();
+                    m_pDrawTimeLabel.Visit();
                 }
             }    
         }

@@ -46,6 +46,10 @@ namespace Cocos2D
 
         #endregion
 
+        internal CCLabelAtlas()
+        {
+        }
+
         public CCLabelAtlas (string label, string fntFile)
         {
             InitWithString(label, fntFile);
@@ -78,6 +82,18 @@ namespace Cocos2D
         {
             Debug.Assert(label != null);
             if (base.InitWithTileFile(charMapFile, itemWidth, itemHeight, label.Length))
+            {
+                m_cMapStartChar = startCharMap;
+                Label = (label);
+                return true;
+            }
+            return false;
+        }
+
+        public bool InitWithString(string label, CCTexture2D texture, int itemWidth, int itemHeight, char startCharMap)
+        {
+            Debug.Assert(label != null);
+            if (base.InitWithTexture(texture, itemWidth, itemHeight, label.Length))
             {
                 m_cMapStartChar = startCharMap;
                 Label = (label);

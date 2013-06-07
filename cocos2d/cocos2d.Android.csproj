@@ -162,6 +162,7 @@
     <Compile Include="CCCamera.cs" />
     <Compile Include="CCConfiguration.cs" />
     <Compile Include="CCContent.cs" />
+    <Compile Include="CCFPSImage.cs" />
     <Compile Include="CCDirector.cs" />
     <Compile Include="CCDisplayLinkDirector.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />

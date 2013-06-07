@@ -427,6 +427,9 @@
     <Compile Include=".\CCContent.cs">
       <LogicalName>CCContent</LogicalName>
     </Compile>
+    <Compile Include=".\CCFPSImage.cs">
+      <LogicalName>CCFPSImage</LogicalName>
+    </Compile>
     <Compile Include=".\CCDirector.cs">
       <LogicalName>CCDirector</LogicalName>
     </Compile>
