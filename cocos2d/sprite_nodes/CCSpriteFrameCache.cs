@@ -228,7 +228,7 @@ namespace Cocos2D
             }
             catch (System.Exception)
             {
-                string xml = Cocos2D.Framework.CCContent.LoadContentFile(path);
+                string xml = CCContent.LoadContentFile(path);
                 if (xml != null)
                 {
                     document = new PlistDocument(xml);
@@ -348,7 +348,7 @@ namespace Cocos2D
             }
             catch (System.Exception)
             {
-                string xml = Cocos2D.Framework.CCContent.LoadContentFile(pszPlist);
+                string xml = CCContent.LoadContentFile(pszPlist);
                 if (xml != null)
                 {
                     document = new PlistDocument(xml);
@@ -438,7 +438,7 @@ namespace Cocos2D
             }
             catch (System.Exception)
             {
-                string xml = Cocos2D.Framework.CCContent.LoadContentFile(plist);
+                string xml = CCContent.LoadContentFile(plist);
                 if (xml != null)
                 {
                     document = new PlistDocument(xml);
