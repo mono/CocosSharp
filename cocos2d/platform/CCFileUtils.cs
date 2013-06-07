@@ -29,7 +29,6 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Cocos2D.Framework;
 
 namespace Cocos2D
 {

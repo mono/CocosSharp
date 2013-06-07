@@ -25,7 +25,6 @@ using System;
 using System.IO;
 using System.Text;
 using System.Xml;
-using Cocos2D.Framework;
 using Microsoft.Xna.Framework.Content;
 
 //using System.Xml.Linq;

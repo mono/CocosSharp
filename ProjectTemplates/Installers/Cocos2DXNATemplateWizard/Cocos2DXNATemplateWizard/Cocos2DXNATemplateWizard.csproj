@@ -58,7 +58,7 @@
     <Compile Include="RootWizard.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ReadMe.txt" />
+    <None Include="ReadMe.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cocos2DXNATemplate.pfx" />

@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework.Content;
 
-namespace Cocos2D.Framework
+namespace Cocos2D
 {
     public class CCContent
     {

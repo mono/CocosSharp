@@ -5,11 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.iOS", "cocos2d\coco
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.iOS", "tests\tests\tests.iOS.csproj", "{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.iOS", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.iOS.csproj", "{DB8508BB-9849-4CC2-BC0F-8EB5DACB3C47}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.iOS", "..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj", "{734EAA48-F1CA-481A-B391-0285BC0E8B40}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.iOS", "box2d\box2d.iOS.csproj", "{7877D4F9-F781-465A-9C1F-D113F246A994}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.iOS", "MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj", "{734EAA48-F1CA-481A-B391-0285BC0E8B40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.iOS", "MonoGame\MonoGame.Framework\MonoGame.Framework.iOS.csproj", "{DB8508BB-9849-4CC2-BC0F-8EB5DACB3C47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

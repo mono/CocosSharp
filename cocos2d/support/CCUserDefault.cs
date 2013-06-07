@@ -36,343 +36,345 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 
-public class CCUserDefault 
+namespace Cocos2D
 {
-
-	private static CCUserDefault m_spUserDefault = null;
-	private static string USERDEFAULT_ROOT_NAME = "userDefaultRoot";
-	private static string XML_FILE_NAME = "UserDefault.xml";
-
-#if !WINDOWS && !MACOS && !LINUX && !NETFX_CORE
-	private IsolatedStorageFile myIsolatedStorage;
-#elif NETFX_CORE
-    private StorageContainer myIsolatedStorage;
-    private StorageDevice myDevice;
-#endif
-    private Dictionary<string, string> values = new Dictionary<string, string>();
-
-    private bool parseXMLFile(Stream xmlFile)
-	{
-		values.Clear();
-
-		string key = "";
-
-		// Create an XmlReader
-		using (XmlReader reader = XmlReader.Create(xmlFile)) {
-				// Parse the file and display each of the nodes.
-				while (reader.Read()) {
-					switch (reader.NodeType) {
-						case XmlNodeType.Element:
-							key = reader.Name;
-							break;
-						case XmlNodeType.Text:
-							values.Add(key, reader.Value);
-							break;
-						case XmlNodeType.XmlDeclaration:
-						case XmlNodeType.ProcessingInstruction:
-							break;
-						case XmlNodeType.Comment:
-							break;
-						case XmlNodeType.EndElement:
-							break;
-					}
-				}
-		}
-		return true;
-	}
-
-	private string getValueForKey(string key)
-	{
-		string value = null;
-		if (! values.TryGetValue(key, out value)) {
-			value = null;
-		}
-
-		return value;
-	}
-
-	private void setValueForKey(string key, string value)
-	{
-		values[key] = value;
-	}
-
-#if NETFX_CORE
-    private StorageDevice CheckStorageDevice() {
-        if(myDevice != null) {
-            return(myDevice);
-        }
-        IAsyncResult result = StorageDevice.BeginShowSelector(null, null);
-        // Wait for the WaitHandle to become signaled.
-        result.AsyncWaitHandle.WaitOne();
-        myDevice = StorageDevice.EndShowSelector(result);
-        if(myDevice != null) {
-            result =
-                myDevice.BeginOpenContainer("Save Your Game...", null, null);
-            // Wait for the WaitHandle to become signaled.
-            result.AsyncWaitHandle.WaitOne();
-            myIsolatedStorage = myDevice.EndOpenContainer(result);
-            // Close the wait handle.
-            result.AsyncWaitHandle.Dispose();
-        }
-        return(myDevice);
-    }
-#endif
-
-	/**
-	 * implements of CCUserDefault
-	 */
-	private CCUserDefault()
-	{
-#if NETFX_CORE
-        if(myIsolatedStorage == null) {
-            CheckStorageDevice();
-        }
-        if(myIsolatedStorage != null) 
-        {
-            // only create xml file once if it doesnt exist
-            if ((!isXMLFileExist()))
-            {
-                createXMLFile();
-            }
-            using (Stream s = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate))
-            {
-                parseXMLFile(s);
-            }
-        }
-#elif WINDOWS || MACOS || LINUX
-		// only create xml file once if it doesnt exist
-		if ((!isXMLFileExist())) {
-			createXMLFile();
-		}
-		using (FileStream fileStream = new FileInfo(XML_FILE_NAME).OpenRead()){
-			parseXMLFile(fileStream);
-		}
-
-#else
-        myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication();
-
-		// only create xml file once if it doesnt exist
-		if ((!isXMLFileExist())) {
-			createXMLFile();
-		}
-
-		using (IsolatedStorageFileStream fileStream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.Open, FileAccess.Read)) {
-			parseXMLFile(fileStream);
-		}
-#endif
-    }
-
-	public void PurgeSharedUserDefault()
-	{
-		m_spUserDefault = null;
-	}
-
-    public bool GetBoolForKey(string pKey)
+    public class CCUserDefault 
     {
-        return GetBoolForKey(pKey, false);
-    }
 
-	public bool GetBoolForKey(string pKey, bool defaultValue)
-	{
-		string value = getValueForKey(pKey);
-		bool ret = defaultValue;
+    	private static CCUserDefault m_spUserDefault = null;
+    	private static string USERDEFAULT_ROOT_NAME = "userDefaultRoot";
+    	private static string XML_FILE_NAME = "UserDefault.xml";
 
-		if (value != null)
-		{
-			ret = bool.Parse(value);
-		}
+    #if !WINDOWS && !MACOS && !LINUX && !NETFX_CORE
+    	private IsolatedStorageFile myIsolatedStorage;
+    #elif NETFX_CORE
+        private StorageContainer myIsolatedStorage;
+        private StorageDevice myDevice;
+    #endif
+        private Dictionary<string, string> values = new Dictionary<string, string>();
 
-		return ret;
-	}
+        private bool parseXMLFile(Stream xmlFile)
+    	{
+    		values.Clear();
 
-    public int GetIntegerForKey(string pKey)
-    {
-        return GetIntegerForKey(pKey, 0);
-    }
+    		string key = "";
 
-	public int GetIntegerForKey(string pKey, int defaultValue)
-	{
-		string value = getValueForKey(pKey);
-		int ret = defaultValue;
+    		// Create an XmlReader
+    		using (XmlReader reader = XmlReader.Create(xmlFile)) {
+    				// Parse the file and display each of the nodes.
+    				while (reader.Read()) {
+    					switch (reader.NodeType) {
+    						case XmlNodeType.Element:
+    							key = reader.Name;
+    							break;
+    						case XmlNodeType.Text:
+    							values.Add(key, reader.Value);
+    							break;
+    						case XmlNodeType.XmlDeclaration:
+    						case XmlNodeType.ProcessingInstruction:
+    							break;
+    						case XmlNodeType.Comment:
+    							break;
+    						case XmlNodeType.EndElement:
+    							break;
+    					}
+    				}
+    		}
+    		return true;
+    	}
 
-		if (value != null)
-		{
-			ret = CCUtils.CCParseInt(value);
-		}
-
-		return ret;
-	}
-
-	public float GetFloatForKey(string pKey, float defaultValue)
-	{
-		float ret = (float)GetDoubleForKey(pKey, (double)defaultValue);
- 
-		return ret;
-	}
-
-	public double GetDoubleForKey(string pKey, double defaultValue)
-	{
-		string value = getValueForKey(pKey);
-		double ret = defaultValue;
-
-		if (value != null)
-		{
-			ret = double.Parse(value);
-		}
-
-		return ret;
-	}
-
-	public string GetStringForKey(string pKey, string defaultValue)
-	{
-		string value = getValueForKey(pKey);
-		string ret = defaultValue;
-
-		if (value != null)
-		{
-			ret = value;
-		}
-
-		return ret;
-	}
-
-	public void SetBoolForKey(string pKey, bool value)
-	{
-		// check key
-		if (pKey == null) {
-			return;
-		}
-
-		// save bool value as string
-		SetStringForKey(pKey, value.ToString());
-	}
-
-	public void SetIntegerForKey(string pKey, int value)
-	{
-		// check key
-		if (pKey == null)
-		{
-			return;
-		}
-
-		// convert to string
-		setValueForKey(pKey, value.ToString());
-	}
-
-	public void SetFloatForKey(string pKey, float value)
-	{
-		SetDoubleForKey(pKey, value);
-	}
-
-	public void SetDoubleForKey(string pKey, double value)
-	{
-		// check key
-		if (pKey == null)
-		{
-			return;
-		}
-
-		// convert to string
-		setValueForKey(pKey, value.ToString());
-	}
-
-	public void SetStringForKey(string pKey, string value)
-	{
-		// check key
-		if (pKey == null)
-		{
-			return;
-		}
-
-		// convert to string
-		setValueForKey(pKey, value.ToString());
-	}
-
-	public static CCUserDefault SharedUserDefault
-	{
-        get {
-    		if (m_spUserDefault == null)
-    		{
-    			m_spUserDefault = new CCUserDefault();
+    	private string getValueForKey(string key)
+    	{
+    		string value = null;
+    		if (! values.TryGetValue(key, out value)) {
+    			value = null;
     		}
 
-    		return m_spUserDefault;
-        }
-	}
+    		return value;
+    	}
 
-	private bool isXMLFileExist()
-	{
-		bool bRet = false;
-#if NETFX_CORE
-        // use the StorageContainer to determine if the file exists.
-        if (myIsolatedStorage.FileExists(XML_FILE_NAME))
+    	private void setValueForKey(string key, string value)
+    	{
+    		values[key] = value;
+    	}
+
+    #if NETFX_CORE
+        private StorageDevice CheckStorageDevice() {
+            if(myDevice != null) {
+                return(myDevice);
+            }
+            IAsyncResult result = StorageDevice.BeginShowSelector(null, null);
+            // Wait for the WaitHandle to become signaled.
+            result.AsyncWaitHandle.WaitOne();
+            myDevice = StorageDevice.EndShowSelector(result);
+            if(myDevice != null) {
+                result =
+                    myDevice.BeginOpenContainer("Save Your Game...", null, null);
+                // Wait for the WaitHandle to become signaled.
+                result.AsyncWaitHandle.WaitOne();
+                myIsolatedStorage = myDevice.EndOpenContainer(result);
+                // Close the wait handle.
+                result.AsyncWaitHandle.Dispose();
+            }
+            return(myDevice);
+        }
+    #endif
+
+    	/**
+    	 * implements of CCUserDefault
+    	 */
+    	private CCUserDefault()
+    	{
+    #if NETFX_CORE
+            if(myIsolatedStorage == null) {
+                CheckStorageDevice();
+            }
+            if(myIsolatedStorage != null) 
+            {
+                // only create xml file once if it doesnt exist
+                if ((!isXMLFileExist()))
+                {
+                    createXMLFile();
+                }
+                using (Stream s = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate))
+                {
+                    parseXMLFile(s);
+                }
+            }
+    #elif WINDOWS || MACOS || LINUX
+    		// only create xml file once if it doesnt exist
+    		if ((!isXMLFileExist())) {
+    			createXMLFile();
+    		}
+    		using (FileStream fileStream = new FileInfo(XML_FILE_NAME).OpenRead()){
+    			parseXMLFile(fileStream);
+    		}
+
+    #else
+            myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication();
+
+    		// only create xml file once if it doesnt exist
+    		if ((!isXMLFileExist())) {
+    			createXMLFile();
+    		}
+
+    		using (IsolatedStorageFileStream fileStream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.Open, FileAccess.Read)) {
+    			parseXMLFile(fileStream);
+    		}
+    #endif
+        }
+
+    	public void PurgeSharedUserDefault()
+    	{
+    		m_spUserDefault = null;
+    	}
+
+        public bool GetBoolForKey(string pKey)
         {
-            bRet = true;
+            return GetBoolForKey(pKey, false);
         }
-#elif WINDOWS || LINUX || MACOS
-		if (new FileInfo(XML_FILE_NAME).Exists) 
-		{
-			bRet = true;
-		}
-#else
-        if (myIsolatedStorage.FileExists(XML_FILE_NAME)) 
-		{
-			bRet = true;
-		}
-#endif
-		return bRet;
-	}
 
-	// create new xml file
-	private bool createXMLFile()
-	{
-		bool bRet = false;
+    	public bool GetBoolForKey(string pKey, bool defaultValue)
+    	{
+    		string value = getValueForKey(pKey);
+    		bool ret = defaultValue;
 
-#if NETFX_CORE
-        using (StreamWriter writeFile = new StreamWriter(myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate)))
-#elif WINDOWS || LINUX || MACOS
-		using (StreamWriter writeFile = new StreamWriter(XML_FILE_NAME)) 
-#else
-        using (StreamWriter writeFile = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage)))
-#endif
+    		if (value != null)
+    		{
+    			ret = bool.Parse(value);
+    		}
+
+    		return ret;
+    	}
+
+        public int GetIntegerForKey(string pKey)
         {
-            string someTextData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><userDefaultRoot>";
-            writeFile.WriteLine(someTextData);
-            // Do not write anything here. This just creates the temporary xml save file.
-            writeFile.WriteLine("</userDefaultRoot>");
+            return GetIntegerForKey(pKey, 0);
         }
-		return bRet;
-	}
 
-	public void Flush()
-	{
-#if NETFX_CORE
-        using (Stream stream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate))
-#elif WINDOWS || LINUX || MACOS
-		using (StreamWriter stream = new StreamWriter(XML_FILE_NAME)) 
-#else
-		using (StreamWriter stream = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage))) 
-#endif
-		{
-			//create xml doc
-			XmlWriterSettings ws = new XmlWriterSettings();
-			ws.Encoding = Encoding.UTF8;
-			ws.Indent = true;
-			using (XmlWriter writer = XmlWriter.Create(stream, ws)) 
-			{
-				writer.WriteStartDocument();
-				writer.WriteStartElement(USERDEFAULT_ROOT_NAME);
-				foreach (KeyValuePair<string, string> pair in values) 
-				{
-					writer.WriteStartElement(pair.Key);
-					writer.WriteString(pair.Value);
-					writer.WriteEndElement();
-				}
-				writer.WriteEndElement();
-				writer.WriteEndDocument();
-			}
-		}
-	}
+    	public int GetIntegerForKey(string pKey, int defaultValue)
+    	{
+    		string value = getValueForKey(pKey);
+    		int ret = defaultValue;
 
+    		if (value != null)
+    		{
+    			ret = CCUtils.CCParseInt(value);
+    		}
+
+    		return ret;
+    	}
+
+    	public float GetFloatForKey(string pKey, float defaultValue)
+    	{
+    		float ret = (float)GetDoubleForKey(pKey, (double)defaultValue);
+     
+    		return ret;
+    	}
+
+    	public double GetDoubleForKey(string pKey, double defaultValue)
+    	{
+    		string value = getValueForKey(pKey);
+    		double ret = defaultValue;
+
+    		if (value != null)
+    		{
+    			ret = double.Parse(value);
+    		}
+
+    		return ret;
+    	}
+
+    	public string GetStringForKey(string pKey, string defaultValue)
+    	{
+    		string value = getValueForKey(pKey);
+    		string ret = defaultValue;
+
+    		if (value != null)
+    		{
+    			ret = value;
+    		}
+
+    		return ret;
+    	}
+
+    	public void SetBoolForKey(string pKey, bool value)
+    	{
+    		// check key
+    		if (pKey == null) {
+    			return;
+    		}
+
+    		// save bool value as string
+    		SetStringForKey(pKey, value.ToString());
+    	}
+
+    	public void SetIntegerForKey(string pKey, int value)
+    	{
+    		// check key
+    		if (pKey == null)
+    		{
+    			return;
+    		}
+
+    		// convert to string
+    		setValueForKey(pKey, value.ToString());
+    	}
+
+    	public void SetFloatForKey(string pKey, float value)
+    	{
+    		SetDoubleForKey(pKey, value);
+    	}
+
+    	public void SetDoubleForKey(string pKey, double value)
+    	{
+    		// check key
+    		if (pKey == null)
+    		{
+    			return;
+    		}
+
+    		// convert to string
+    		setValueForKey(pKey, value.ToString());
+    	}
+
+    	public void SetStringForKey(string pKey, string value)
+    	{
+    		// check key
+    		if (pKey == null)
+    		{
+    			return;
+    		}
+
+    		// convert to string
+    		setValueForKey(pKey, value.ToString());
+    	}
+
+    	public static CCUserDefault SharedUserDefault
+    	{
+            get {
+        		if (m_spUserDefault == null)
+        		{
+        			m_spUserDefault = new CCUserDefault();
+        		}
+
+        		return m_spUserDefault;
+            }
+    	}
+
+    	private bool isXMLFileExist()
+    	{
+    		bool bRet = false;
+    #if NETFX_CORE
+            // use the StorageContainer to determine if the file exists.
+            if (myIsolatedStorage.FileExists(XML_FILE_NAME))
+            {
+                bRet = true;
+            }
+    #elif WINDOWS || LINUX || MACOS
+    		if (new FileInfo(XML_FILE_NAME).Exists) 
+    		{
+    			bRet = true;
+    		}
+    #else
+            if (myIsolatedStorage.FileExists(XML_FILE_NAME)) 
+    		{
+    			bRet = true;
+    		}
+    #endif
+    		return bRet;
+    	}
+
+    	// create new xml file
+    	private bool createXMLFile()
+    	{
+    		bool bRet = false;
+
+    #if NETFX_CORE
+            using (StreamWriter writeFile = new StreamWriter(myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate)))
+    #elif WINDOWS || LINUX || MACOS
+    		using (StreamWriter writeFile = new StreamWriter(XML_FILE_NAME)) 
+    #else
+            using (StreamWriter writeFile = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage)))
+    #endif
+            {
+                string someTextData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><userDefaultRoot>";
+                writeFile.WriteLine(someTextData);
+                // Do not write anything here. This just creates the temporary xml save file.
+                writeFile.WriteLine("</userDefaultRoot>");
+            }
+    		return bRet;
+    	}
+
+    	public void Flush()
+    	{
+    #if NETFX_CORE
+            using (Stream stream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate))
+    #elif WINDOWS || LINUX || MACOS
+    		using (StreamWriter stream = new StreamWriter(XML_FILE_NAME)) 
+    #else
+    		using (StreamWriter stream = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage))) 
+    #endif
+    		{
+    			//create xml doc
+    			XmlWriterSettings ws = new XmlWriterSettings();
+    			ws.Encoding = Encoding.UTF8;
+    			ws.Indent = true;
+    			using (XmlWriter writer = XmlWriter.Create(stream, ws)) 
+    			{
+    				writer.WriteStartDocument();
+    				writer.WriteStartElement(USERDEFAULT_ROOT_NAME);
+    				foreach (KeyValuePair<string, string> pair in values) 
+    				{
+    					writer.WriteStartElement(pair.Key);
+    					writer.WriteString(pair.Value);
+    					writer.WriteEndElement();
+    				}
+    				writer.WriteEndElement();
+    				writer.WriteEndDocument();
+    			}
+    		}
+    	}
+
+    }
 }
-

@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework.Content.Pipeline;
 
 using TInput = System.String;
-using TOutput = Cocos2D.Framework.CCContent;
+using TOutput = Cocos2D.CCContent;
 
 namespace Cocos2D.Content.Pipeline.Importers
 {

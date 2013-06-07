@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\WindowsGL\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;WINDOWSGL;OPENGL,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,8 +26,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;WINDOWS,OPENGL;CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX</DefineConstants>
+    <OutputPath>bin\WindowsGL\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWSGL;OPENGL,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>

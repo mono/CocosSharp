@@ -406,7 +406,7 @@ namespace Cocos2D
             }
             catch (Exception)
             {
-                string xml = Cocos2D.Framework.CCContent.LoadContentFile(m_sPlistFile);
+                string xml = CCContent.LoadContentFile(m_sPlistFile);
                 if (xml != null)
                 {
                     doc = new PlistDocument(xml);
