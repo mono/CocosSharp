@@ -784,6 +784,12 @@
     <Compile Include=".\misc_nodes\CCRenderTexture.cs">
       <LogicalName>misc_nodes\CCRenderTexture</LogicalName>
     </Compile>
+    <Compile Include=".\misc_nodes\CCClippingNode.cs">
+      <LogicalName>misc_nodes\CCClippingNode</LogicalName>
+    </Compile>
+    <Compile Include=".\misc_nodes\CCDrawNode.cs">
+      <LogicalName>misc_nodes\CCDrawNode</LogicalName>
+    </Compile>
     <Compile Include=".\particle_nodes\CCParticleBatchNode.cs">
       <LogicalName>particle_nodes\CCParticleBatchNode</LogicalName>
     </Compile>

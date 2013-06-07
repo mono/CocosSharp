@@ -295,6 +295,8 @@
     <Compile Include="misc_nodes\CCMotionStreak.cs" />
     <Compile Include="misc_nodes\CCProgressTimer.cs" />
     <Compile Include="misc_nodes\CCRenderTexture.cs" />
+    <Compile Include="misc_nodes\CCClippingNode.cs" />
+    <Compile Include="misc_nodes\CCDrawNode.cs" />
     <Compile Include="particle_nodes\CCParticleBatchNode.cs" />
     <Compile Include="particle_nodes\CCParticleExamples.cs" />
     <Compile Include="particle_nodes\CCParticleSystem.cs" />

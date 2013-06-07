@@ -66,6 +66,11 @@ namespace Cocos2D
         public byte R;
         public byte G;
         public byte B;
+
+        public static implicit operator Color(CCColor3B point)
+        {
+            return new Color(point.R, point.G, point.B);
+        }
     }
 
     /// <summary>
@@ -126,6 +131,11 @@ namespace Cocos2D
             string[] f = s.Split(',');
             return (new CCColor4B(byte.Parse(f[0]), byte.Parse(f[1]), byte.Parse(f[2]), byte.Parse(f[3])));
         }
+
+        public static implicit operator Color(CCColor4B point)
+        {
+            return new Color(point.R, point.G, point.B, point.A);
+        }
     }
 
     /// <summary>
@@ -156,6 +166,11 @@ namespace Cocos2D
         {
             string[] f = s.Split(',');
             return (new CCColor4F(float.Parse(f[0]), float.Parse(f[1]), float.Parse(f[2]), float.Parse(f[3])));
+        }
+
+        public static implicit operator Color(CCColor4F point)
+        {
+            return new Color(point.R, point.G, point.B, point.A);
         }
     }
 

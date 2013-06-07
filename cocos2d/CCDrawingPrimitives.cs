@@ -247,6 +247,19 @@ namespace Cocos2D
             }
         }
 
+        public static void DrawSolidRect(CCPoint origin, CCPoint destination, CCColor4B color)
+        {
+            CCPoint[] vertices =
+                {
+                    origin,
+                    new CCPoint(destination.X, origin.Y),
+                    destination,
+                    new CCPoint(origin.X, destination.Y),
+                };
+
+            DrawSolidPoly(vertices, 4, color);
+        }
+
         public static void DrawCircle(b2Vec2 center, float radius, b2Color color)
         {
             DrawCircle(center, radius, MathHelper.Pi * 2f, 10, false, color);

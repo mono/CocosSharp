@@ -294,6 +294,8 @@
     <Compile Include="menu_nodes\CCMenuItemLabel.cs" />
     <Compile Include="menu_nodes\CCMenuItemSprite.cs" />
     <Compile Include="menu_nodes\CCMenuItemToggle.cs" />
+    <Compile Include="misc_nodes\CCClippingNode.cs" />
+    <Compile Include="misc_nodes\CCDrawNode.cs" />
     <Compile Include="misc_nodes\CCMotionStreak.cs" />
     <Compile Include="misc_nodes\CCProgressTimer.cs" />
     <Compile Include="misc_nodes\CCRenderTexture.cs" />
