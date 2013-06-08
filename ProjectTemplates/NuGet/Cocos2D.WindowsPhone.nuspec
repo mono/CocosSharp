@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Cocos2D-XNA.Windows</id>
+    <id>Cocos2D-XNA.Phone</id>
     <version>2.0.3.0</version>
     <title>Cocos2D-XNA</title>
     <authors>Cocos2D-XNA, Totally Evil Entertainment, LLC, and Xamarin, Inc.</authors>
@@ -17,10 +17,10 @@
   </metadata>
 
   <files>
-    <file src="..\..\cocos2d\bin\Windows\Release\box2d.dll" target="lib\" />
-    <file src="..\..\cocos2d\bin\Windows\Release\cocos2d-xna.dll" target="lib\" />
-    <file src="..\..\cocos2d\bin\Windows\Release\ICSharpCode.SharpZipLib.dll" target="lib\" />
-    <file src="..\..\cocos2d\bin\Windows\Release\zlib.net.dll" target="lib\" />
+    <file src="..\..\cocos2d\bin\Windows Phone\Release\box2d.dll" target="lib\" />
+    <file src="..\..\cocos2d\bin\Windows Phone\Release\cocos2d-xna.dll" target="lib\" />
+    <file src="..\..\cocos2d\bin\Windows Phone\Release\ICSharpCode.SharpZipLib.dll" target="lib\" />
+    <file src="..\..\cocos2d\bin\Windows Phone\Release\zlib.net.dll" target="lib\" />
   </files>
 
 </package>
