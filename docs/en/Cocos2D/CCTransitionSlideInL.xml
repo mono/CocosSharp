@@ -1,0 +1,138 @@
+<Type Name="CCTransitionSlideInL" FullName="Cocos2D.CCTransitionSlideInL">
+  <TypeSignature Language="C#" Value="public class CCTransitionSlideInL : Cocos2D.CCTransitionScene, Cocos2D.ICCTransitionEaseScene" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionSlideInL extends Cocos2D.CCTransitionScene implements class Cocos2D.ICCTransitionEaseScene" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCTransitionScene</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Cocos2D.ICCTransitionEaseScene</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTransitionSlideInL ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTransitionSlideInL (float t, Cocos2D.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class Cocos2D.CCScene scene) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="scene" Type="Cocos2D.CCScene" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="scene">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Action">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCActionInterval Action ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.CCActionInterval Action() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCActionInterval</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EaseAction">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCFiniteTimeAction EaseAction (Cocos2D.CCActionInterval action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.CCFiniteTimeAction EaseAction(class Cocos2D.CCActionInterval action) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="action" Type="Cocos2D.CCActionInterval" />
+      </Parameters>
+      <Docs>
+        <param name="action">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitScenes">
+      <MemberSignature Language="C#" Value="public virtual void InitScenes ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void InitScenes() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnEnter">
+      <MemberSignature Language="C#" Value="public override void OnEnter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnEnter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SceneOrder">
+      <MemberSignature Language="C#" Value="protected override void SceneOrder ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void SceneOrder() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

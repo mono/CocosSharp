@@ -1,0 +1,368 @@
+<Type Name="CCTypes" FullName="Cocos2D.CCTypes">
+  <TypeSignature Language="C#" Value="public class CCTypes" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTypes extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTypes ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCBlack">
+      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCColor3B CCBlack;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCColor3B CCBlack" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCBlue">
+      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCColor3B CCBlue;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCColor3B CCBlue" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCGray">
+      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCColor3B CCGray;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCColor3B CCGray" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCGreen">
+      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCColor3B CCGreen;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCColor3B CCGreen" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCMagenta">
+      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCColor3B CCMagenta;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCColor3B CCMagenta" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCOrange">
+      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCColor3B CCOrange;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCColor3B CCOrange" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCRed">
+      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCColor3B CCRed;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCColor3B CCRed" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCWhite">
+      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCColor3B CCWhite;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCColor3B CCWhite" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCYellow">
+      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCColor3B CCYellow;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCColor3B CCYellow" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColorsAreEqual">
+      <MemberSignature Language="C#" Value="public static bool ColorsAreEqual (Cocos2D.CCColor4F a, Cocos2D.CCColor4F b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool ColorsAreEqual(valuetype Cocos2D.CCColor4F a, valuetype Cocos2D.CCColor4F b) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="Cocos2D.CCColor4F" />
+        <Parameter Name="b" Type="Cocos2D.CCColor4F" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateColor">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCColor4F CreateColor (Cocos2D.CCColor3B c);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCColor4F CreateColor(valuetype Cocos2D.CCColor3B c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="c" Type="Cocos2D.CCColor3B" />
+      </Parameters>
+      <Docs>
+        <param name="c">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateColor">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCColor4F CreateColor (Cocos2D.CCColor4B c);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCColor4F CreateColor(valuetype Cocos2D.CCColor4B c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="c" Type="Cocos2D.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="c">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateColor">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCColor3B CreateColor (byte r, byte g, byte b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCColor3B CreateColor(unsigned int8 r, unsigned int8 g, unsigned int8 b) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.Byte" />
+        <Parameter Name="g" Type="System.Byte" />
+        <Parameter Name="b" Type="System.Byte" />
+      </Parameters>
+      <Docs>
+        <param name="r">To be added.</param>
+        <param name="g">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateColor">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCColor4B CreateColor (byte r, byte g, byte b, byte o);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCColor4B CreateColor(unsigned int8 r, unsigned int8 g, unsigned int8 b, unsigned int8 o) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor4B</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.Byte" />
+        <Parameter Name="g" Type="System.Byte" />
+        <Parameter Name="b" Type="System.Byte" />
+        <Parameter Name="o" Type="System.Byte" />
+      </Parameters>
+      <Docs>
+        <param name="r">To be added.</param>
+        <param name="g">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="o">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GridSize">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCGridSize GridSize (int x, int y);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCGridSize GridSize(int32 x, int32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCGridSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Tex2">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCTex2F Tex2 (float u, float v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCTex2F Tex2(float32 u, float32 v) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTex2F</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="u" Type="System.Single" />
+        <Parameter Name="v" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="u">To be added.</param>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Vertex2">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCVertex2F Vertex2 (float x, float y);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCVertex2F Vertex2(float32 x, float32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCVertex2F</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Single" />
+        <Parameter Name="y" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Vertex3">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCVertex3F Vertex3 (float x, float y, float z);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCVertex3F Vertex3(float32 x, float32 y, float32 z) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCVertex3F</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Single" />
+        <Parameter Name="y" Type="System.Single" />
+        <Parameter Name="z" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <param name="z">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

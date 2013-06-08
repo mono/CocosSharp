@@ -1,0 +1,204 @@
+<Type Name="CCDraw" FullName="Cocos2D.CCDraw">
+  <TypeSignature Language="C#" Value="public class CCDraw : Box2D.Common.b2Draw" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDraw extends Box2D.Common.b2Draw" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Box2D.Common.b2Draw</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCDraw (Box2D.Common.b2Vec2 drawCenter);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Box2D.Common.b2Vec2 drawCenter) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="drawCenter" Type="Box2D.Common.b2Vec2" />
+      </Parameters>
+      <Docs>
+        <param name="drawCenter">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCDraw (int ptm);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 ptm) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="ptm" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="ptm">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCDraw (Box2D.Common.b2Vec2 drawCenter, int ptm);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Box2D.Common.b2Vec2 drawCenter, int32 ptm) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="drawCenter" Type="Box2D.Common.b2Vec2" />
+        <Parameter Name="ptm" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="drawCenter">To be added.</param>
+        <param name="ptm">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawCircle">
+      <MemberSignature Language="C#" Value="public override void DrawCircle (Box2D.Common.b2Vec2 center, float radius, Box2D.Common.b2Color color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawCircle(valuetype Box2D.Common.b2Vec2 center, float32 radius, valuetype Box2D.Common.b2Color color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="center" Type="Box2D.Common.b2Vec2" />
+        <Parameter Name="radius" Type="System.Single" />
+        <Parameter Name="color" Type="Box2D.Common.b2Color" />
+      </Parameters>
+      <Docs>
+        <param name="center">To be added.</param>
+        <param name="radius">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawPolygon">
+      <MemberSignature Language="C#" Value="public override void DrawPolygon (Box2D.Common.b2Vec2[] vertices, int vertexCount, Box2D.Common.b2Color color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawPolygon(valuetype Box2D.Common.b2Vec2[] vertices, int32 vertexCount, valuetype Box2D.Common.b2Color color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vertices" Type="Box2D.Common.b2Vec2[]" />
+        <Parameter Name="vertexCount" Type="System.Int32" />
+        <Parameter Name="color" Type="Box2D.Common.b2Color" />
+      </Parameters>
+      <Docs>
+        <param name="vertices">To be added.</param>
+        <param name="vertexCount">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawSegment">
+      <MemberSignature Language="C#" Value="public override void DrawSegment (Box2D.Common.b2Vec2 p1, Box2D.Common.b2Vec2 p2, Box2D.Common.b2Color color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawSegment(valuetype Box2D.Common.b2Vec2 p1, valuetype Box2D.Common.b2Vec2 p2, valuetype Box2D.Common.b2Color color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="Box2D.Common.b2Vec2" />
+        <Parameter Name="p2" Type="Box2D.Common.b2Vec2" />
+        <Parameter Name="color" Type="Box2D.Common.b2Color" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawSolidCircle">
+      <MemberSignature Language="C#" Value="public override void DrawSolidCircle (Box2D.Common.b2Vec2 center, float radius, Box2D.Common.b2Vec2 axis, Box2D.Common.b2Color color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawSolidCircle(valuetype Box2D.Common.b2Vec2 center, float32 radius, valuetype Box2D.Common.b2Vec2 axis, valuetype Box2D.Common.b2Color color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="center" Type="Box2D.Common.b2Vec2" />
+        <Parameter Name="radius" Type="System.Single" />
+        <Parameter Name="axis" Type="Box2D.Common.b2Vec2" />
+        <Parameter Name="color" Type="Box2D.Common.b2Color" />
+      </Parameters>
+      <Docs>
+        <param name="center">To be added.</param>
+        <param name="radius">To be added.</param>
+        <param name="axis">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawSolidPolygon">
+      <MemberSignature Language="C#" Value="public override void DrawSolidPolygon (Box2D.Common.b2Vec2[] vertices, int vertexCount, Box2D.Common.b2Color color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawSolidPolygon(valuetype Box2D.Common.b2Vec2[] vertices, int32 vertexCount, valuetype Box2D.Common.b2Color color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vertices" Type="Box2D.Common.b2Vec2[]" />
+        <Parameter Name="vertexCount" Type="System.Int32" />
+        <Parameter Name="color" Type="Box2D.Common.b2Color" />
+      </Parameters>
+      <Docs>
+        <param name="vertices">To be added.</param>
+        <param name="vertexCount">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawTransform">
+      <MemberSignature Language="C#" Value="public override void DrawTransform (Box2D.Common.b2Transform xf);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawTransform(valuetype Box2D.Common.b2Transform xf) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="xf" Type="Box2D.Common.b2Transform" />
+      </Parameters>
+      <Docs>
+        <param name="xf">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,217 @@
+<Type Name="CCKeypadDispatcher" FullName="Cocos2D.CCKeypadDispatcher">
+  <TypeSignature Language="C#" Value="public class CCKeypadDispatcher" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCKeypadDispatcher extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCKeypadDispatcher ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddDelegate">
+      <MemberSignature Language="C#" Value="public void AddDelegate (Cocos2D.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDelegate(class Cocos2D.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pDelegate" Type="Cocos2D.ICCKeypadDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="pDelegate">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DispatchKeypadMsg">
+      <MemberSignature Language="C#" Value="public bool DispatchKeypadMsg (Cocos2D.CCKeypadMSGType nMsgType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool DispatchKeypadMsg(valuetype Cocos2D.CCKeypadMSGType nMsgType) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nMsgType" Type="Cocos2D.CCKeypadMSGType" />
+      </Parameters>
+      <Docs>
+        <param name="nMsgType">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForceAddDelegate">
+      <MemberSignature Language="C#" Value="public void ForceAddDelegate (Cocos2D.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ForceAddDelegate(class Cocos2D.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pDelegate" Type="Cocos2D.ICCKeypadDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="pDelegate">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForceRemoveDelegate">
+      <MemberSignature Language="C#" Value="public void ForceRemoveDelegate (Cocos2D.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ForceRemoveDelegate(class Cocos2D.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pDelegate" Type="Cocos2D.ICCKeypadDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="pDelegate">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bLocked">
+      <MemberSignature Language="C#" Value="protected bool m_bLocked;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bLocked" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bToAdd">
+      <MemberSignature Language="C#" Value="protected bool m_bToAdd;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bToAdd" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bToRemove">
+      <MemberSignature Language="C#" Value="protected bool m_bToRemove;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bToRemove" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pDelegates">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCKeypadHandler&gt; m_pDelegates;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.CCKeypadHandler&gt; m_pDelegates" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCKeypadHandler&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pHandlersToAdd">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.ICCKeypadDelegate&gt; m_pHandlersToAdd;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.ICCKeypadDelegate&gt; m_pHandlersToAdd" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.ICCKeypadDelegate&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pHandlersToRemove">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.ICCKeypadDelegate&gt; m_pHandlersToRemove;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.ICCKeypadDelegate&gt; m_pHandlersToRemove" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.ICCKeypadDelegate&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveDelegate">
+      <MemberSignature Language="C#" Value="public void RemoveDelegate (Cocos2D.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveDelegate(class Cocos2D.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pDelegate" Type="Cocos2D.ICCKeypadDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="pDelegate">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,433 @@
+<Type Name="ZStream" FullName="Cocos2D.Compression.Zlib.ZStream">
+  <TypeSignature Language="C#" Value="public sealed class ZStream" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ZStream extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ZStream ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="adler">
+      <MemberSignature Language="C#" Value="public long adler;" />
+      <MemberSignature Language="ILAsm" Value=".field public int64 adler" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="avail_in">
+      <MemberSignature Language="C#" Value="public int avail_in;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 avail_in" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="avail_out">
+      <MemberSignature Language="C#" Value="public int avail_out;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 avail_out" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Deflate">
+      <MemberSignature Language="C#" Value="public int Deflate (int flush);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 Deflate(int32 flush) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="flush" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="flush">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DeflateEnd">
+      <MemberSignature Language="C#" Value="public int DeflateEnd ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 DeflateEnd() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DeflateInit">
+      <MemberSignature Language="C#" Value="public int DeflateInit (int level);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 DeflateInit(int32 level) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="level" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="level">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DeflateInit">
+      <MemberSignature Language="C#" Value="public int DeflateInit (int level, int bits);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 DeflateInit(int32 level, int32 bits) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="level" Type="System.Int32" />
+        <Parameter Name="bits" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="level">To be added.</param>
+        <param name="bits">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DeflateParams">
+      <MemberSignature Language="C#" Value="public int DeflateParams (int level, int strategy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 DeflateParams(int32 level, int32 strategy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="level" Type="System.Int32" />
+        <Parameter Name="strategy" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="level">To be added.</param>
+        <param name="strategy">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DeflateSetDictionary">
+      <MemberSignature Language="C#" Value="public int DeflateSetDictionary (byte[] dictionary, int dictLength);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 DeflateSetDictionary(unsigned int8[] dictionary, int32 dictLength) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dictionary" Type="System.Byte[]" />
+        <Parameter Name="dictLength" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="dictionary">To be added.</param>
+        <param name="dictLength">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Free">
+      <MemberSignature Language="C#" Value="public void Free ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Free() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Inflate">
+      <MemberSignature Language="C#" Value="public int Inflate (int f);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 Inflate(int32 f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="f" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="f">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InflateEnd">
+      <MemberSignature Language="C#" Value="public int InflateEnd ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 InflateEnd() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InflateInit">
+      <MemberSignature Language="C#" Value="public int InflateInit ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 InflateInit() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InflateInit">
+      <MemberSignature Language="C#" Value="public int InflateInit (int w);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 InflateInit(int32 w) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="w" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="w">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InflateSetDictionary">
+      <MemberSignature Language="C#" Value="public int InflateSetDictionary (byte[] dictionary, int dictLength);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 InflateSetDictionary(unsigned int8[] dictionary, int32 dictLength) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dictionary" Type="System.Byte[]" />
+        <Parameter Name="dictLength" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="dictionary">To be added.</param>
+        <param name="dictLength">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InflateSync">
+      <MemberSignature Language="C#" Value="public int InflateSync ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 InflateSync() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="msg">
+      <MemberSignature Language="C#" Value="public string msg;" />
+      <MemberSignature Language="ILAsm" Value=".field public string msg" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="next_in">
+      <MemberSignature Language="C#" Value="public byte[] next_in;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int8[] next_in" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="next_in_index">
+      <MemberSignature Language="C#" Value="public int next_in_index;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 next_in_index" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="next_out">
+      <MemberSignature Language="C#" Value="public byte[] next_out;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int8[] next_out" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="next_out_index">
+      <MemberSignature Language="C#" Value="public int next_out_index;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 next_out_index" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="total_in">
+      <MemberSignature Language="C#" Value="public long total_in;" />
+      <MemberSignature Language="ILAsm" Value=".field public int64 total_in" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="total_out">
+      <MemberSignature Language="C#" Value="public long total_out;" />
+      <MemberSignature Language="ILAsm" Value=".field public int64 total_out" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

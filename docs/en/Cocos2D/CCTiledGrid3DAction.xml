@@ -1,0 +1,124 @@
+<Type Name="CCTiledGrid3DAction" FullName="Cocos2D.CCTiledGrid3DAction">
+  <TypeSignature Language="C#" Value="public class CCTiledGrid3DAction : Cocos2D.CCGridAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTiledGrid3DAction extends Cocos2D.CCGridAction" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCGridAction</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTiledGrid3DAction ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTiledGrid3DAction (float duration);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="duration">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Grid">
+      <MemberSignature Language="C#" Value="public override Cocos2D.CCGridBase Grid { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCGridBase Grid" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCGridBase</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OriginalTile">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCQuad3 OriginalTile (Cocos2D.CCGridSize pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCQuad3 OriginalTile(valuetype Cocos2D.CCGridSize pos) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCQuad3</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+      </Parameters>
+      <Docs>
+        <param name="pos">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTile">
+      <MemberSignature Language="C#" Value="public void SetTile (Cocos2D.CCGridSize pos, ref Cocos2D.CCQuad3 coords);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTile(valuetype Cocos2D.CCGridSize pos, valuetype Cocos2D.CCQuad3 coords) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="coords" Type="Cocos2D.CCQuad3&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="pos">To be added.</param>
+        <param name="coords">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Tile">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCQuad3 Tile (Cocos2D.CCGridSize pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCQuad3 Tile(valuetype Cocos2D.CCGridSize pos) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCQuad3</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+      </Parameters>
+      <Docs>
+        <param name="pos">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

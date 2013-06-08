@@ -1,0 +1,262 @@
+<Type Name="CCMenuItemLabel" FullName="Cocos2D.CCMenuItemLabel">
+  <TypeSignature Language="C#" Value="public class CCMenuItemLabel : Cocos2D.CCMenuItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemLabel extends Cocos2D.CCMenuItem" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCMenuItem</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CCMenuItemLabel ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemLabel (Cocos2D.CCNode label);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNode label) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="label" Type="Cocos2D.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemLabel (Cocos2D.CCNode label, Action&lt;object&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNode label, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="label" Type="Cocos2D.CCNode" />
+        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Activate">
+      <MemberSignature Language="C#" Value="public override void Activate ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Activate() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisabledColor">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCColor3B DisabledColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B DisabledColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Enabled">
+      <MemberSignature Language="C#" Value="public override bool Enabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithLabel">
+      <MemberSignature Language="C#" Value="protected bool InitWithLabel (Cocos2D.CCNode label, Action&lt;object&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitWithLabel(class Cocos2D.CCNode label, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="Cocos2D.CCNode" />
+        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Label">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCNode Label { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCNode Label" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fOriginalScale">
+      <MemberSignature Language="C#" Value="protected float m_fOriginalScale;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fOriginalScale" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pLabel">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCNode m_pLabel;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCNode m_pLabel" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tColorBackup">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor3B m_tColorBackup;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor3B m_tColorBackup" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tDisabledColor">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor3B m_tDisabledColor;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor3B m_tDisabledColor" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Selected">
+      <MemberSignature Language="C#" Value="public override void Selected ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Selected() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetString">
+      <MemberSignature Language="C#" Value="public void SetString (string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetString(string label) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unselected">
+      <MemberSignature Language="C#" Value="public override void Unselected ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Unselected() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

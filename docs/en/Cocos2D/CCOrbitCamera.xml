@@ -1,0 +1,306 @@
+<Type Name="CCOrbitCamera" FullName="Cocos2D.CCOrbitCamera">
+  <TypeSignature Language="C#" Value="public class CCOrbitCamera : Cocos2D.CCActionCamera" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCOrbitCamera extends Cocos2D.CCActionCamera" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCActionCamera</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCOrbitCamera ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CCOrbitCamera (Cocos2D.CCOrbitCamera copy);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCOrbitCamera copy) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="copy" Type="Cocos2D.CCOrbitCamera" />
+      </Parameters>
+      <Docs>
+        <param name="copy">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCOrbitCamera (float t, float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX, float deltaAngleX);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, float32 radius, float32 deltaRadius, float32 angleZ, float32 deltaAngleZ, float32 angleX, float32 deltaAngleX) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="radius" Type="System.Single" />
+        <Parameter Name="deltaRadius" Type="System.Single" />
+        <Parameter Name="angleZ" Type="System.Single" />
+        <Parameter Name="deltaAngleZ" Type="System.Single" />
+        <Parameter Name="angleX" Type="System.Single" />
+        <Parameter Name="deltaAngleX" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="radius">To be added.</param>
+        <param name="deltaRadius">To be added.</param>
+        <param name="angleZ">To be added.</param>
+        <param name="deltaAngleZ">To be added.</param>
+        <param name="angleX">To be added.</param>
+        <param name="deltaAngleX">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Copy">
+      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable zone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable zone) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="zone" Type="Cocos2D.ICCCopyable" />
+      </Parameters>
+      <Docs>
+        <param name="zone">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fAngleX">
+      <MemberSignature Language="C#" Value="protected float m_fAngleX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fAngleX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fAngleZ">
+      <MemberSignature Language="C#" Value="protected float m_fAngleZ;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fAngleZ" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fDeltaAngleX">
+      <MemberSignature Language="C#" Value="protected float m_fDeltaAngleX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fDeltaAngleX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fDeltaAngleZ">
+      <MemberSignature Language="C#" Value="protected float m_fDeltaAngleZ;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fDeltaAngleZ" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fDeltaRadius">
+      <MemberSignature Language="C#" Value="protected float m_fDeltaRadius;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fDeltaRadius" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fRadDeltaX">
+      <MemberSignature Language="C#" Value="protected float m_fRadDeltaX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fRadDeltaX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fRadDeltaZ">
+      <MemberSignature Language="C#" Value="protected float m_fRadDeltaZ;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fRadDeltaZ" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fRadius">
+      <MemberSignature Language="C#" Value="protected float m_fRadius;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fRadius" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fRadX">
+      <MemberSignature Language="C#" Value="protected float m_fRadX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fRadX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fRadZ">
+      <MemberSignature Language="C#" Value="protected float m_fRadZ;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fRadZ" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SphericalRadius">
+      <MemberSignature Language="C#" Value="public void SphericalRadius (out float newRadius, out float zenith, out float azimuth);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SphericalRadius(float32 newRadius, float32 zenith, float32 azimuth) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="newRadius" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="zenith" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="azimuth" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="newRadius">To be added.</param>
+        <param name="zenith">To be added.</param>
+        <param name="azimuth">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartWithTarget">
+      <MemberSignature Language="C#" Value="public override void StartWithTarget (Cocos2D.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="Cocos2D.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Update">
+      <MemberSignature Language="C#" Value="public override void Update (float time);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Update(float32 time) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="time">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

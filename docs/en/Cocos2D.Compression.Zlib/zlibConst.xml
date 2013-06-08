@@ -1,0 +1,383 @@
+<Type Name="zlibConst" FullName="Cocos2D.Compression.Zlib.zlibConst">
+  <TypeSignature Language="C#" Value="public sealed class zlibConst" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit zlibConst extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public zlibConst ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Version">
+      <MemberSignature Language="C#" Value="public static string Version { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Version" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_BEST_COMPRESSION">
+      <MemberSignature Language="C#" Value="public const int Z_BEST_COMPRESSION = 9;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_BEST_COMPRESSION = (9)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>9</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_BEST_SPEED">
+      <MemberSignature Language="C#" Value="public const int Z_BEST_SPEED = 1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_BEST_SPEED = (1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>1</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_BUF_ERROR">
+      <MemberSignature Language="C#" Value="public const int Z_BUF_ERROR = -5;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_BUF_ERROR = (-5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-5</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_DATA_ERROR">
+      <MemberSignature Language="C#" Value="public const int Z_DATA_ERROR = -3;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_DATA_ERROR = (-3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-3</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_DEFAULT_COMPRESSION">
+      <MemberSignature Language="C#" Value="public const int Z_DEFAULT_COMPRESSION = -1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_DEFAULT_COMPRESSION = (-1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-1</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_DEFAULT_STRATEGY">
+      <MemberSignature Language="C#" Value="public const int Z_DEFAULT_STRATEGY = 0;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_DEFAULT_STRATEGY = (0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>0</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_ERRNO">
+      <MemberSignature Language="C#" Value="public const int Z_ERRNO = -1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_ERRNO = (-1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-1</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_FILTERED">
+      <MemberSignature Language="C#" Value="public const int Z_FILTERED = 1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_FILTERED = (1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>1</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_FINISH">
+      <MemberSignature Language="C#" Value="public const int Z_FINISH = 4;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_FINISH = (4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>4</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_FULL_FLUSH">
+      <MemberSignature Language="C#" Value="public const int Z_FULL_FLUSH = 3;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_FULL_FLUSH = (3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>3</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_HUFFMAN_ONLY">
+      <MemberSignature Language="C#" Value="public const int Z_HUFFMAN_ONLY = 2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_HUFFMAN_ONLY = (2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>2</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_MEM_ERROR">
+      <MemberSignature Language="C#" Value="public const int Z_MEM_ERROR = -4;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_MEM_ERROR = (-4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-4</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_NEED_DICT">
+      <MemberSignature Language="C#" Value="public const int Z_NEED_DICT = 2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_NEED_DICT = (2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>2</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_NO_COMPRESSION">
+      <MemberSignature Language="C#" Value="public const int Z_NO_COMPRESSION = 0;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_NO_COMPRESSION = (0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>0</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_NO_FLUSH">
+      <MemberSignature Language="C#" Value="public const int Z_NO_FLUSH = 0;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_NO_FLUSH = (0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>0</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_OK">
+      <MemberSignature Language="C#" Value="public const int Z_OK = 0;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_OK = (0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>0</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_PARTIAL_FLUSH">
+      <MemberSignature Language="C#" Value="public const int Z_PARTIAL_FLUSH = 1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_PARTIAL_FLUSH = (1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>1</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_STREAM_END">
+      <MemberSignature Language="C#" Value="public const int Z_STREAM_END = 1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_STREAM_END = (1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>1</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_STREAM_ERROR">
+      <MemberSignature Language="C#" Value="public const int Z_STREAM_ERROR = -2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_STREAM_ERROR = (-2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-2</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_SYNC_FLUSH">
+      <MemberSignature Language="C#" Value="public const int Z_SYNC_FLUSH = 2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_SYNC_FLUSH = (2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>2</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z_VERSION_ERROR">
+      <MemberSignature Language="C#" Value="public const int Z_VERSION_ERROR = -6;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Z_VERSION_ERROR = (-6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-6</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

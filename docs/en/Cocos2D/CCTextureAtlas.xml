@@ -1,0 +1,493 @@
+<Type Name="CCTextureAtlas" FullName="Cocos2D.CCTextureAtlas">
+  <TypeSignature Language="C#" Value="public class CCTextureAtlas" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTextureAtlas extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTextureAtlas ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Capacity">
+      <MemberSignature Language="C#" Value="public int Capacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Capacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCTextureAtlas Create (Cocos2D.CCTexture2D texture, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCTextureAtlas Create(class Cocos2D.CCTexture2D texture, int32 capacity) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTextureAtlas</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="capacity" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="texture">To be added.</param>
+        <param name="capacity">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCTextureAtlas Create (string file, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCTextureAtlas Create(string file, int32 capacity) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTextureAtlas</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="file" Type="System.String" />
+        <Parameter Name="capacity" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="file">To be added.</param>
+        <param name="capacity">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawNumberOfQuads">
+      <MemberSignature Language="C#" Value="public void DrawNumberOfQuads (int n);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawNumberOfQuads(int32 n) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="n" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="n">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawNumberOfQuads">
+      <MemberSignature Language="C#" Value="public void DrawNumberOfQuads (int n, int start);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawNumberOfQuads(int32 n, int32 start) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="n" Type="System.Int32" />
+        <Parameter Name="start" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="n">To be added.</param>
+        <param name="start">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawQuads">
+      <MemberSignature Language="C#" Value="public void DrawQuads ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawQuads() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillWithEmptyQuadsFromIndex">
+      <MemberSignature Language="C#" Value="public void FillWithEmptyQuadsFromIndex (int index, int amount);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FillWithEmptyQuadsFromIndex(int32 index, int32 amount) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+        <Parameter Name="amount" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <param name="amount">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IncreaseTotalQuadsWith">
+      <MemberSignature Language="C#" Value="public void IncreaseTotalQuadsWith (int amount);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void IncreaseTotalQuadsWith(int32 amount) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="amount" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="amount">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithFile">
+      <MemberSignature Language="C#" Value="public bool InitWithFile (string file, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithFile(string file, int32 capacity) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="file" Type="System.String" />
+        <Parameter Name="capacity" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="file">To be added.</param>
+        <param name="capacity">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithTexture">
+      <MemberSignature Language="C#" Value="public bool InitWithTexture (Cocos2D.CCTexture2D texture, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTexture(class Cocos2D.CCTexture2D texture, int32 capacity) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="capacity" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="texture">To be added.</param>
+        <param name="capacity">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InsertQuad">
+      <MemberSignature Language="C#" Value="public void InsertQuad (ref Cocos2D.CCV3F_C4B_T2F_Quad quad, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InsertQuad(valuetype Cocos2D.CCV3F_C4B_T2F_Quad quad, int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="quad" Type="Cocos2D.CCV3F_C4B_T2F_Quad&amp;" RefType="ref" />
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="quad">To be added.</param>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InsertQuadFromIndex">
+      <MemberSignature Language="C#" Value="public void InsertQuadFromIndex (int oldIndex, int newIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InsertQuadFromIndex(int32 oldIndex, int32 newIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="oldIndex" Type="System.Int32" />
+        <Parameter Name="newIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="oldIndex">To be added.</param>
+        <param name="newIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pQuads">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCRawList&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt; m_pQuads;" />
+      <MemberSignature Language="ILAsm" Value=".field public class Cocos2D.CCRawList`1&lt;valuetype Cocos2D.CCV3F_C4B_T2F_Quad&gt; m_pQuads" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCRawList&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pTexture">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCTexture2D m_pTexture;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCTexture2D m_pTexture" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MoveQuadsFromIndex">
+      <MemberSignature Language="C#" Value="public void MoveQuadsFromIndex (int index, int newIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MoveQuadsFromIndex(int32 index, int32 newIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+        <Parameter Name="newIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <param name="newIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MoveQuadsFromIndex">
+      <MemberSignature Language="C#" Value="public void MoveQuadsFromIndex (int oldIndex, int amount, int newIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MoveQuadsFromIndex(int32 oldIndex, int32 amount, int32 newIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="oldIndex" Type="System.Int32" />
+        <Parameter Name="amount" Type="System.Int32" />
+        <Parameter Name="newIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="oldIndex">To be added.</param>
+        <param name="amount">To be added.</param>
+        <param name="newIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveAllQuads">
+      <MemberSignature Language="C#" Value="public void RemoveAllQuads ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAllQuads() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveQuadAtIndex">
+      <MemberSignature Language="C#" Value="public void RemoveQuadAtIndex (int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveQuadAtIndex(int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveQuadsAtIndex">
+      <MemberSignature Language="C#" Value="public void RemoveQuadsAtIndex (int index, int amount);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveQuadsAtIndex(int32 index, int32 amount) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+        <Parameter Name="amount" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <param name="amount">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResizeCapacity">
+      <MemberSignature Language="C#" Value="public bool ResizeCapacity (int newCapacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool ResizeCapacity(int32 newCapacity) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="newCapacity" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="newCapacity">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Texture">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCTexture2D Texture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTexture2D Texture" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TotalQuads">
+      <MemberSignature Language="C#" Value="public int TotalQuads { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 TotalQuads" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateQuad">
+      <MemberSignature Language="C#" Value="public void UpdateQuad (ref Cocos2D.CCV3F_C4B_T2F_Quad quad, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateQuad(valuetype Cocos2D.CCV3F_C4B_T2F_Quad quad, int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="quad" Type="Cocos2D.CCV3F_C4B_T2F_Quad&amp;" RefType="ref" />
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="quad">To be added.</param>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

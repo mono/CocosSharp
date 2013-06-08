@@ -1,0 +1,168 @@
+<Type Name="CCMenuItemImage" FullName="Cocos2D.CCMenuItemImage">
+  <TypeSignature Language="C#" Value="public class CCMenuItemImage : Cocos2D.CCMenuItemSprite" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemImage extends Cocos2D.CCMenuItemSprite" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCMenuItemSprite</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemImage ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemImage (string normalImage, string selectedImage);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string normalImage, string selectedImage) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="normalImage" Type="System.String" />
+        <Parameter Name="selectedImage" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="normalImage">To be added.</param>
+        <param name="selectedImage">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemImage (string normalImage, string selectedImage, Action&lt;object&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string normalImage, string selectedImage, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="normalImage" Type="System.String" />
+        <Parameter Name="selectedImage" Type="System.String" />
+        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="normalImage">To be added.</param>
+        <param name="selectedImage">To be added.</param>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemImage (string normalImage, string selectedImage, string disabledImage);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string normalImage, string selectedImage, string disabledImage) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="normalImage" Type="System.String" />
+        <Parameter Name="selectedImage" Type="System.String" />
+        <Parameter Name="disabledImage" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="normalImage">To be added.</param>
+        <param name="selectedImage">To be added.</param>
+        <param name="disabledImage">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemImage (string normalImage, string selectedImage, string disabledImage, Action&lt;object&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string normalImage, string selectedImage, string disabledImage, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="normalImage" Type="System.String" />
+        <Parameter Name="selectedImage" Type="System.String" />
+        <Parameter Name="disabledImage" Type="System.String" />
+        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="normalImage">To be added.</param>
+        <param name="selectedImage">To be added.</param>
+        <param name="disabledImage">To be added.</param>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetDisabledSpriteFrame">
+      <MemberSignature Language="C#" Value="public void SetDisabledSpriteFrame (Cocos2D.CCSpriteFrame frame);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDisabledSpriteFrame(class Cocos2D.CCSpriteFrame frame) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="frame" Type="Cocos2D.CCSpriteFrame" />
+      </Parameters>
+      <Docs>
+        <param name="frame">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetNormalSpriteFrame">
+      <MemberSignature Language="C#" Value="public void SetNormalSpriteFrame (Cocos2D.CCSpriteFrame frame);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetNormalSpriteFrame(class Cocos2D.CCSpriteFrame frame) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="frame" Type="Cocos2D.CCSpriteFrame" />
+      </Parameters>
+      <Docs>
+        <param name="frame">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetSelectedSpriteFrame">
+      <MemberSignature Language="C#" Value="public void SetSelectedSpriteFrame (Cocos2D.CCSpriteFrame frame);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetSelectedSpriteFrame(class Cocos2D.CCSpriteFrame frame) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="frame" Type="Cocos2D.CCSpriteFrame" />
+      </Parameters>
+      <Docs>
+        <param name="frame">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

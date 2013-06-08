@@ -1,0 +1,211 @@
+<Type Name="CCLiquid" FullName="Cocos2D.CCLiquid">
+  <TypeSignature Language="C#" Value="public class CCLiquid : Cocos2D.CCGrid3DAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLiquid extends Cocos2D.CCGrid3DAction" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCGrid3DAction</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLiquid ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLiquid (Cocos2D.CCLiquid liquid);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCLiquid liquid) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="liquid" Type="Cocos2D.CCLiquid" />
+      </Parameters>
+      <Docs>
+        <param name="liquid">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLiquid (int wav, float amp, Cocos2D.CCGridSize gridSize, float duration);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 wav, float32 amp, valuetype Cocos2D.CCGridSize gridSize, float32 duration) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="wav" Type="System.Int32" />
+        <Parameter Name="amp" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="duration" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="wav">To be added.</param>
+        <param name="amp">To be added.</param>
+        <param name="gridSize">To be added.</param>
+        <param name="duration">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Amplitude">
+      <MemberSignature Language="C#" Value="public float Amplitude { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Amplitude" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AmplitudeRate">
+      <MemberSignature Language="C#" Value="public override float AmplitudeRate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 AmplitudeRate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Copy">
+      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+      </Parameters>
+      <Docs>
+        <param name="pZone">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithWaves">
+      <MemberSignature Language="C#" Value="public bool InitWithWaves (int wav, float amp, Cocos2D.CCGridSize gridSize, float duration);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithWaves(int32 wav, float32 amp, valuetype Cocos2D.CCGridSize gridSize, float32 duration) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="wav" Type="System.Int32" />
+        <Parameter Name="amp" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="duration" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="wav">To be added.</param>
+        <param name="amp">To be added.</param>
+        <param name="gridSize">To be added.</param>
+        <param name="duration">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fAmplitude">
+      <MemberSignature Language="C#" Value="protected float m_fAmplitude;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fAmplitude" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fAmplitudeRate">
+      <MemberSignature Language="C#" Value="protected float m_fAmplitudeRate;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fAmplitudeRate" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_nWaves">
+      <MemberSignature Language="C#" Value="protected int m_nWaves;" />
+      <MemberSignature Language="ILAsm" Value=".field family int32 m_nWaves" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Update">
+      <MemberSignature Language="C#" Value="public override void Update (float time);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Update(float32 time) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="time">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

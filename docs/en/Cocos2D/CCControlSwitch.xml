@@ -1,0 +1,384 @@
+<Type Name="CCControlSwitch" FullName="Cocos2D.CCControlSwitch">
+  <TypeSignature Language="C#" Value="public class CCControlSwitch : Cocos2D.CCControl" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControlSwitch extends Cocos2D.CCControl" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCControl</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCControlSwitch (Cocos2D.CCSprite maskSprite, Cocos2D.CCSprite onSprite, Cocos2D.CCSprite offSprite, Cocos2D.CCSprite thumbSprite);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCSprite maskSprite, class Cocos2D.CCSprite onSprite, class Cocos2D.CCSprite offSprite, class Cocos2D.CCSprite thumbSprite) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="maskSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="onSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="offSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="thumbSprite" Type="Cocos2D.CCSprite" />
+      </Parameters>
+      <Docs>
+        <param name="maskSprite">To be added.</param>
+        <param name="onSprite">To be added.</param>
+        <param name="offSprite">To be added.</param>
+        <param name="thumbSprite">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCControlSwitch (Cocos2D.CCSprite maskSprite, Cocos2D.CCSprite onSprite, Cocos2D.CCSprite offSprite, Cocos2D.CCSprite thumbSprite, Cocos2D.CCLabelTTF onLabel, Cocos2D.CCLabelTTF offLabel);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCSprite maskSprite, class Cocos2D.CCSprite onSprite, class Cocos2D.CCSprite offSprite, class Cocos2D.CCSprite thumbSprite, class Cocos2D.CCLabelTTF onLabel, class Cocos2D.CCLabelTTF offLabel) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="maskSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="onSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="offSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="thumbSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="onLabel" Type="Cocos2D.CCLabelTTF" />
+        <Parameter Name="offLabel" Type="Cocos2D.CCLabelTTF" />
+      </Parameters>
+      <Docs>
+        <param name="maskSprite">To be added.</param>
+        <param name="onSprite">To be added.</param>
+        <param name="offSprite">To be added.</param>
+        <param name="thumbSprite">To be added.</param>
+        <param name="onLabel">To be added.</param>
+        <param name="offLabel">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Enabled">
+      <MemberSignature Language="C#" Value="public override bool Enabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasMoved">
+      <MemberSignature Language="C#" Value="public bool HasMoved ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool HasMoved() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithMaskSprite">
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithMaskSprite (Cocos2D.CCSprite maskSprite, Cocos2D.CCSprite onSprite, Cocos2D.CCSprite offSprite, Cocos2D.CCSprite thumbSprite);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithMaskSprite(class Cocos2D.CCSprite maskSprite, class Cocos2D.CCSprite onSprite, class Cocos2D.CCSprite offSprite, class Cocos2D.CCSprite thumbSprite) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="maskSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="onSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="offSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="thumbSprite" Type="Cocos2D.CCSprite" />
+      </Parameters>
+      <Docs>
+        <param name="maskSprite">To be added.</param>
+        <param name="onSprite">To be added.</param>
+        <param name="offSprite">To be added.</param>
+        <param name="thumbSprite">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithMaskSprite">
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithMaskSprite (Cocos2D.CCSprite maskSprite, Cocos2D.CCSprite onSprite, Cocos2D.CCSprite offSprite, Cocos2D.CCSprite thumbSprite, Cocos2D.CCLabelTTF onLabel, Cocos2D.CCLabelTTF offLabel);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithMaskSprite(class Cocos2D.CCSprite maskSprite, class Cocos2D.CCSprite onSprite, class Cocos2D.CCSprite offSprite, class Cocos2D.CCSprite thumbSprite, class Cocos2D.CCLabelTTF onLabel, class Cocos2D.CCLabelTTF offLabel) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="maskSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="onSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="offSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="thumbSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="onLabel" Type="Cocos2D.CCLabelTTF" />
+        <Parameter Name="offLabel" Type="Cocos2D.CCLabelTTF" />
+      </Parameters>
+      <Docs>
+        <param name="maskSprite">To be added.</param>
+        <param name="onSprite">To be added.</param>
+        <param name="offSprite">To be added.</param>
+        <param name="thumbSprite">To be added.</param>
+        <param name="onLabel">To be added.</param>
+        <param name="offLabel">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsOn">
+      <MemberSignature Language="C#" Value="public bool IsOn ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsOn() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocationFromTouch">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint LocationFromTouch (Cocos2D.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint LocationFromTouch(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bMoved">
+      <MemberSignature Language="C#" Value="protected bool m_bMoved;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bMoved" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bOn">
+      <MemberSignature Language="C#" Value="protected bool m_bOn;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bOn" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fInitialTouchXPosition">
+      <MemberSignature Language="C#" Value="protected float m_fInitialTouchXPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fInitialTouchXPosition" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pSwitchSprite">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCControlSwitchSprite m_pSwitchSprite;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCControlSwitchSprite m_pSwitchSprite" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCControlSwitchSprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnValueChanged">
+      <MemberSignature Language="C#" Value="public event Cocos2D.CCSwitchValueChangedDelegate OnValueChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class Cocos2D.CCSwitchValueChangedDelegate OnValueChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSwitchValueChangedDelegate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetOn">
+      <MemberSignature Language="C#" Value="public void SetOn (bool isOn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetOn(bool isOn) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="isOn" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="isOn">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetOn">
+      <MemberSignature Language="C#" Value="public void SetOn (bool isOn, bool animated);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetOn(bool isOn, bool animated) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="isOn" Type="System.Boolean" />
+        <Parameter Name="animated" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="isOn">To be added.</param>
+        <param name="animated">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchBegan">
+      <MemberSignature Language="C#" Value="public override bool TouchBegan (Cocos2D.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TouchBegan(class Cocos2D.CCTouch pTouch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTouch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="pTouch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchCancelled">
+      <MemberSignature Language="C#" Value="public override void TouchCancelled (Cocos2D.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchCancelled(class Cocos2D.CCTouch pTouch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTouch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="pTouch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchEnded">
+      <MemberSignature Language="C#" Value="public override void TouchEnded (Cocos2D.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchEnded(class Cocos2D.CCTouch pTouch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTouch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="pTouch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchMoved">
+      <MemberSignature Language="C#" Value="public override void TouchMoved (Cocos2D.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchMoved(class Cocos2D.CCTouch pTouch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTouch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="pTouch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

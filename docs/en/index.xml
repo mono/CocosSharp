@@ -1,0 +1,484 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="cocos2d-xna" Version="2.0.3.0">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCompany("Open Source Software Provided As-Is")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCopyright("Copyright © Various Contributors")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyProduct("cocos2d-xna")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("cocos2d-xna")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTrademark("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Resources.NeutralResourcesLanguage("en-US")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.Guid("b9c87433-71ae-45dc-963f-6d3166d5c4d7")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>To be added.</Remarks>
+  <Copyright>To be added.</Copyright>
+  <Types>
+    <Namespace Name="Cocos2D">
+      <Type Name="BlockCCControlData" Kind="Class" />
+      <Type Name="BlockData" Kind="Class" />
+      <Type Name="CCAccelAmplitude" Kind="Class" />
+      <Type Name="CCAccelDeccelAmplitude" Kind="Class" />
+      <Type Name="CCAcceleration" Kind="Class" />
+      <Type Name="CCAccelerometer" Kind="Class" />
+      <Type Name="CCAction" Kind="Class" />
+      <Type Name="CCActionCamera" Kind="Class" />
+      <Type Name="CCActionEase" Kind="Class" />
+      <Type Name="CCActionInstant" Kind="Class" />
+      <Type Name="CCActionInterval" Kind="Class" />
+      <Type Name="CCActionManager" Kind="Class" />
+      <Type Name="CCActionTag" Kind="Enumeration" />
+      <Type Name="CCActionTween" Kind="Class" />
+      <Type Name="CCAffineTransform" Kind="Structure" />
+      <Type Name="CCAnimate" Kind="Class" />
+      <Type Name="CCAnimation" Kind="Class" />
+      <Type Name="CCAnimationCache" Kind="Class" />
+      <Type Name="CCAnimationFrame" Kind="Class" />
+      <Type Name="CCApplication" Kind="Class" />
+      <Type Name="CCArray" Kind="Class" />
+      <Type Name="CCArrayForObjectSorting" Kind="Class" />
+      <Type Name="CCAtlasNode" Kind="Class" />
+      <Type Name="CCBAnimationManager" Kind="Class" />
+      <Type Name="CCBAnimationManagerDelegate" Kind="Delegate" />
+      <Type Name="CCBezierBy" Kind="Class" />
+      <Type Name="CCBezierConfig" Kind="Structure" />
+      <Type Name="CCBezierTo" Kind="Class" />
+      <Type Name="CCBHelper" Kind="Class" />
+      <Type Name="CCBKeyframe" Kind="Class" />
+      <Type Name="CCBKeyframeEasing" Kind="Enumeration" />
+      <Type Name="CCBlendFunc" Kind="Structure" />
+      <Type Name="CCBlink" Kind="Class" />
+      <Type Name="CCBMFontConfiguration" Kind="Class" />
+      <Type Name="CCBMFontConfiguration+CCBMFontDef" Kind="Class" />
+      <Type Name="CCBMFontConfiguration+CCKerningHashElement" Kind="Structure" />
+      <Type Name="CCBPositionType" Kind="Enumeration" />
+      <Type Name="CCBPropType" Kind="Enumeration" />
+      <Type Name="CCBReader" Kind="Class" />
+      <Type Name="CCBScaleType" Kind="Enumeration" />
+      <Type Name="CCBSequence" Kind="Class" />
+      <Type Name="CCBSequenceProperty" Kind="Class" />
+      <Type Name="CCBTargetType" Kind="Enumeration" />
+      <Type Name="CCButtonTapDelegate" Kind="Delegate" />
+      <Type Name="CCCallFunc" Kind="Class" />
+      <Type Name="CCCallFuncN" Kind="Class" />
+      <Type Name="CCCallFuncND" Kind="Class" />
+      <Type Name="CCCallFuncO" Kind="Class" />
+      <Type Name="CCCamera" Kind="Class" />
+      <Type Name="CCCardinalSplineBy" Kind="Class" />
+      <Type Name="CCCardinalSplineTo" Kind="Class" />
+      <Type Name="CCCatmullRomBy" Kind="Class" />
+      <Type Name="CCCatmullRomTo" Kind="Class" />
+      <Type Name="CCClipMode" Kind="Enumeration" />
+      <Type Name="CCColor3B" Kind="Structure" />
+      <Type Name="CCColor4B" Kind="Structure" />
+      <Type Name="CCColor4F" Kind="Structure" />
+      <Type Name="CCConfiguration" Kind="Class" />
+      <Type Name="CCContent" Kind="Class" />
+      <Type Name="CCControl" Kind="Class" />
+      <Type Name="CCControlButton" Kind="Class" />
+      <Type Name="CCControlEvent" Kind="Enumeration" />
+      <Type Name="CCControlSlider" Kind="Class" />
+      <Type Name="CCControlState" Kind="Enumeration" />
+      <Type Name="CCControlSwitch" Kind="Class" />
+      <Type Name="CCControlSwitchSprite" Kind="Class" />
+      <Type Name="CCDeccelAmplitude" Kind="Class" />
+      <Type Name="CCDelayTime" Kind="Class" />
+      <Type Name="CCDevice" Kind="Class" />
+      <Type Name="CCDictMaker" Kind="Class" />
+      <Type Name="CCDirector" Kind="Class" />
+      <Type Name="CCDirectorProjection" Kind="Enumeration" />
+      <Type Name="CCDisplayLinkDirector" Kind="Class" />
+      <Type Name="CCDraw" Kind="Class" />
+      <Type Name="CCDrawingPrimitives" Kind="Class" />
+      <Type Name="CCDrawManager" Kind="Class" />
+      <Type Name="CCEaseBackIn" Kind="Class" />
+      <Type Name="CCEaseBackInOut" Kind="Class" />
+      <Type Name="CCEaseBackOut" Kind="Class" />
+      <Type Name="CCEaseBounce" Kind="Class" />
+      <Type Name="CCEaseBounceIn" Kind="Class" />
+      <Type Name="CCEaseBounceInOut" Kind="Class" />
+      <Type Name="CCEaseBounceOut" Kind="Class" />
+      <Type Name="CCEaseElastic" Kind="Class" />
+      <Type Name="CCEaseElasticIn" Kind="Class" />
+      <Type Name="CCEaseElasticInOut" Kind="Class" />
+      <Type Name="CCEaseElasticOut" Kind="Class" />
+      <Type Name="CCEaseExponentialIn" Kind="Class" />
+      <Type Name="CCEaseExponentialInOut" Kind="Class" />
+      <Type Name="CCEaseExponentialOut" Kind="Class" />
+      <Type Name="CCEaseIn" Kind="Class" />
+      <Type Name="CCEaseInOut" Kind="Class" />
+      <Type Name="CCEaseOut" Kind="Class" />
+      <Type Name="CCEaseRateAction" Kind="Class" />
+      <Type Name="CCEaseSineIn" Kind="Class" />
+      <Type Name="CCEaseSineInOut" Kind="Class" />
+      <Type Name="CCEaseSineOut" Kind="Class" />
+      <Type Name="CCEmitterMode" Kind="Enumeration" />
+      <Type Name="CCExtensionMethods" Kind="Class" />
+      <Type Name="CCFadeIn" Kind="Class" />
+      <Type Name="CCFadeOut" Kind="Class" />
+      <Type Name="CCFadeOutBLTiles" Kind="Class" />
+      <Type Name="CCFadeOutDownTiles" Kind="Class" />
+      <Type Name="CCFadeOutTRTiles" Kind="Class" />
+      <Type Name="CCFadeOutUpTiles" Kind="Class" />
+      <Type Name="CCFadeTo" Kind="Class" />
+      <Type Name="CCFastRandom" Kind="Class" />
+      <Type Name="CCFileData" Kind="Class" />
+      <Type Name="CCFileUtils" Kind="Class" />
+      <Type Name="CCFiniteTimeAction" Kind="Class" />
+      <Type Name="CCFlipX" Kind="Class" />
+      <Type Name="CCFlipX3D" Kind="Class" />
+      <Type Name="CCFlipY" Kind="Class" />
+      <Type Name="CCFlipY3D" Kind="Class" />
+      <Type Name="CCFocusChangeDelegate" Kind="Delegate" />
+      <Type Name="CCFocusManager" Kind="Class" />
+      <Type Name="CCFollow" Kind="Class" />
+      <Type Name="CCGamePadButtonDelegate" Kind="Delegate" />
+      <Type Name="CCGamePadButtonStatus" Kind="Enumeration" />
+      <Type Name="CCGamePadConnectionDelegate" Kind="Delegate" />
+      <Type Name="CCGamePadDPadDelegate" Kind="Delegate" />
+      <Type Name="CCGamePadStickUpdateDelegate" Kind="Delegate" />
+      <Type Name="CCGamePadTriggerDelegate" Kind="Delegate" />
+      <Type Name="CCGameStickStatus" Kind="Structure" />
+      <Type Name="CCGestureDirection" Kind="Enumeration" />
+      <Type Name="CCGlesVersion" Kind="Enumeration" />
+      <Type Name="CCGrabber" Kind="Class" />
+      <Type Name="CCGrid3D" Kind="Class" />
+      <Type Name="CCGrid3DAction" Kind="Class" />
+      <Type Name="CCGridAction" Kind="Class" />
+      <Type Name="CCGridBase" Kind="Class" />
+      <Type Name="CCGridSize" Kind="Structure" />
+      <Type Name="CCHide" Kind="Class" />
+      <Type Name="CCImageFormat" Kind="Enumeration" />
+      <Type Name="CCImageTGA" Kind="Class" />
+      <Type Name="CCIMEKeyboardNotificationInfo" Kind="Class" />
+      <Type Name="CCInputScene" Kind="Class" />
+      <Type Name="CCInputState" Kind="Class" />
+      <Type Name="CCInvocation" Kind="Class" />
+      <Type Name="CCJumpBy" Kind="Class" />
+      <Type Name="CCJumpTiles3D" Kind="Class" />
+      <Type Name="CCJumpTo" Kind="Class" />
+      <Type Name="CCKeypadDispatcher" Kind="Class" />
+      <Type Name="CCKeypadHandler" Kind="Class" />
+      <Type Name="CCKeypadMSGType" Kind="Enumeration" />
+      <Type Name="CCLabelAtlas" Kind="Class" />
+      <Type Name="CCLabelBMFont" Kind="Class" />
+      <Type Name="CCLabelTTF" Kind="Class" />
+      <Type Name="CCLayer" Kind="Class" />
+      <Type Name="CCLayerColor" Kind="Class" />
+      <Type Name="CCLayerGradient" Kind="Class" />
+      <Type Name="CCLayerLoader" Kind="Class" />
+      <Type Name="CCLayerMultiplex" Kind="Class" />
+      <Type Name="CCLayerRGBA" Kind="Class" />
+      <Type Name="CCLens3D" Kind="Class" />
+      <Type Name="CCLiquid" Kind="Class" />
+      <Type Name="CCLog" Kind="Class" />
+      <Type Name="CCMacros" Kind="Class" />
+      <Type Name="CCMathHelper" Kind="Class" />
+      <Type Name="CCMenu" Kind="Class" />
+      <Type Name="CCMenuItem" Kind="Class" />
+      <Type Name="CCMenuItemAtlasFont" Kind="Class" />
+      <Type Name="CCMenuItemFont" Kind="Class" />
+      <Type Name="CCMenuItemImage" Kind="Class" />
+      <Type Name="CCMenuItemImageLoader" Kind="Class" />
+      <Type Name="CCMenuItemLabel" Kind="Class" />
+      <Type Name="CCMenuItemLoader" Kind="Class" />
+      <Type Name="CCMenuItemSprite" Kind="Class" />
+      <Type Name="CCMenuItemToggle" Kind="Class" />
+      <Type Name="CCMenuLoader" Kind="Class" />
+      <Type Name="CCMenuState" Kind="Enumeration" />
+      <Type Name="CCMotionStreak" Kind="Class" />
+      <Type Name="CCMouseButtons" Kind="Enumeration" />
+      <Type Name="CCMoveBy" Kind="Class" />
+      <Type Name="CCMoveTo" Kind="Class" />
+      <Type Name="CCNode" Kind="Class" />
+      <Type Name="CCNodeLoader" Kind="Class" />
+      <Type Name="CCNodeLoaderLibrary" Kind="Class" />
+      <Type Name="CCNodeRGBA" Kind="Class" />
+      <Type Name="CCOGLES" Kind="Class" />
+      <Type Name="CCOrbitCamera" Kind="Class" />
+      <Type Name="CCOrientation" Kind="Enumeration" />
+      <Type Name="CCPageTurn3D" Kind="Class" />
+      <Type Name="CCParallaxNode" Kind="Class" />
+      <Type Name="CCParallel" Kind="Class" />
+      <Type Name="CCParticleBatchNode" Kind="Class" />
+      <Type Name="CCParticleExplosion" Kind="Class" />
+      <Type Name="CCParticleFire" Kind="Class" />
+      <Type Name="CCParticleFireworks" Kind="Class" />
+      <Type Name="CCParticleFlower" Kind="Class" />
+      <Type Name="CCParticleGalaxy" Kind="Class" />
+      <Type Name="CCParticleMeteor" Kind="Class" />
+      <Type Name="CCParticleRain" Kind="Class" />
+      <Type Name="CCParticleSmoke" Kind="Class" />
+      <Type Name="CCParticleSnow" Kind="Class" />
+      <Type Name="CCParticleSpiral" Kind="Class" />
+      <Type Name="CCParticleSun" Kind="Class" />
+      <Type Name="CCParticleSystem" Kind="Class" />
+      <Type Name="CCParticleSystemQuad" Kind="Class" />
+      <Type Name="CCPlace" Kind="Class" />
+      <Type Name="CCPoint" Kind="Structure" />
+      <Type Name="CCPoint+ComputationOperationDelegate" Kind="Delegate" />
+      <Type Name="CCPointConverter" Kind="Class" />
+      <Type Name="CCPointExtension" Kind="Class" />
+      <Type Name="CCPointExtension+ComputationOperationDelegate" Kind="Delegate" />
+      <Type Name="CCPointObject" Kind="Class" />
+      <Type Name="CCPointSprite" Kind="Class" />
+      <Type Name="CCPositionType" Kind="Enumeration" />
+      <Type Name="CCPrimitiveBatch" Kind="Class" />
+      <Type Name="CCProgressFromTo" Kind="Class" />
+      <Type Name="CCProgressTimer" Kind="Class" />
+      <Type Name="CCProgressTimerType" Kind="Enumeration" />
+      <Type Name="CCProgressTo" Kind="Class" />
+      <Type Name="CCQuad2" Kind="Class" />
+      <Type Name="CCQuad3" Kind="Structure" />
+      <Type Name="CCRandom" Kind="Class" />
+      <Type Name="CCRawList`1" DisplayName="CCRawList&lt;T&gt;" Kind="Class" />
+      <Type Name="CCRawList`1+Enumerator" DisplayName="CCRawList&lt;T&gt;+Enumerator" Kind="Structure" />
+      <Type Name="CCRect" Kind="Structure" />
+      <Type Name="CCRectConverter" Kind="Class" />
+      <Type Name="CCRenderTexture" Kind="Class" />
+      <Type Name="CCRepeat" Kind="Class" />
+      <Type Name="CCRepeatForever" Kind="Class" />
+      <Type Name="CCResolutionPolicy" Kind="Enumeration" />
+      <Type Name="CCReusedObject`1" DisplayName="CCReusedObject&lt;T&gt;" Kind="Class" />
+      <Type Name="CCReuseGrid" Kind="Class" />
+      <Type Name="CCReverseTime" Kind="Class" />
+      <Type Name="CCRipple3D" Kind="Class" />
+      <Type Name="CCRotateBy" Kind="Class" />
+      <Type Name="CCRotateTo" Kind="Class" />
+      <Type Name="CCSAXParser" Kind="Class" />
+      <Type Name="CCSAXState" Kind="Enumeration" />
+      <Type Name="CCScale9Sprite" Kind="Class" />
+      <Type Name="CCScale9SpriteFile" Kind="Class" />
+      <Type Name="CCScale9SpriteFrame" Kind="Class" />
+      <Type Name="CCScaleBy" Kind="Class" />
+      <Type Name="CCScaleTo" Kind="Class" />
+      <Type Name="CCScene" Kind="Class" />
+      <Type Name="CCScheduler" Kind="Class" />
+      <Type Name="CCScriptEngineManager" Kind="Class" />
+      <Type Name="CCScriptEngineProtocol" Kind="Class" />
+      <Type Name="CCScrollView" Kind="Class" />
+      <Type Name="CCScrollViewDirection" Kind="Enumeration" />
+      <Type Name="CCScrollViewLoader" Kind="Class" />
+      <Type Name="CCSequence" Kind="Class" />
+      <Type Name="CCSerialization" Kind="Class" />
+      <Type Name="CCShaky3D" Kind="Class" />
+      <Type Name="CCShakyTiles3D" Kind="Class" />
+      <Type Name="CCShatteredTiles3D" Kind="Class" />
+      <Type Name="CCShow" Kind="Class" />
+      <Type Name="CCShuffleTiles" Kind="Class" />
+      <Type Name="CCSize" Kind="Structure" />
+      <Type Name="CCSizeConverter" Kind="Class" />
+      <Type Name="CCSkewBy" Kind="Class" />
+      <Type Name="CCSkewTo" Kind="Class" />
+      <Type Name="CCSpawn" Kind="Class" />
+      <Type Name="CCSpeed" Kind="Class" />
+      <Type Name="CCSplineMath" Kind="Class" />
+      <Type Name="CCSplitCols" Kind="Class" />
+      <Type Name="CCSplitRows" Kind="Class" />
+      <Type Name="CCSprite" Kind="Class" />
+      <Type Name="CCSpriteBatchNode" Kind="Class" />
+      <Type Name="CCSpriteFontCache" Kind="Class" />
+      <Type Name="CCSpriteFrame" Kind="Class" />
+      <Type Name="CCSpriteFrameCache" Kind="Class" />
+      <Type Name="CCStandardTouchHandler" Kind="Class" />
+      <Type Name="CCStopGrid" Kind="Class" />
+      <Type Name="CCSwitchValueChangedDelegate" Kind="Delegate" />
+      <Type Name="CCTableView" Kind="Class" />
+      <Type Name="CCTableViewCell" Kind="Class" />
+      <Type Name="CCTableViewVerticalFillOrder" Kind="Enumeration" />
+      <Type Name="CCTargetedAction" Kind="Class" />
+      <Type Name="CCTargetedTouchHandler" Kind="Class" />
+      <Type Name="CCTex2F" Kind="Structure" />
+      <Type Name="CCTexParams" Kind="Structure" />
+      <Type Name="CCTextAlignment" Kind="Enumeration" />
+      <Type Name="CCTextFieldTTF" Kind="Class" />
+      <Type Name="CCTexture2D" Kind="Class" />
+      <Type Name="CCTexture2DPixelFormat" Kind="Enumeration" />
+      <Type Name="CCTextureAtlas" Kind="Class" />
+      <Type Name="CCTextureCache" Kind="Class" />
+      <Type Name="CCTile" Kind="Class" />
+      <Type Name="CCTiledGrid3D" Kind="Class" />
+      <Type Name="CCTiledGrid3DAction" Kind="Class" />
+      <Type Name="CCTileMapAtlas" Kind="Class" />
+      <Type Name="CCTimer" Kind="Class" />
+      <Type Name="CCTintBy" Kind="Class" />
+      <Type Name="CCTintTo" Kind="Class" />
+      <Type Name="CCTMXLayer" Kind="Class" />
+      <Type Name="CCTMXLayerAttrib" Kind="Enumeration" />
+      <Type Name="CCTMXLayerInfo" Kind="Class" />
+      <Type Name="CCTMXMapInfo" Kind="Class" />
+      <Type Name="CCTMXObjectGroup" Kind="Class" />
+      <Type Name="CCTMXOrientation" Kind="Enumeration" />
+      <Type Name="CCTMXProperty" Kind="Enumeration" />
+      <Type Name="CCTMXTiledMap" Kind="Class" />
+      <Type Name="CCTMXTileFlags" Kind="Class" />
+      <Type Name="CCTMXTilesetInfo" Kind="Class" />
+      <Type Name="CCToggleVisibility" Kind="Class" />
+      <Type Name="CCTouch" Kind="Class" />
+      <Type Name="CCTouchDelegate" Kind="Class" />
+      <Type Name="CCTouchDispatcher" Kind="Class" />
+      <Type Name="CCTouchHandler" Kind="Class" />
+      <Type Name="CCTouchType" Kind="Enumeration" />
+      <Type Name="CCTransitionCrossFade" Kind="Class" />
+      <Type Name="CCTransitionFade" Kind="Class" />
+      <Type Name="CCTransitionFadeBL" Kind="Class" />
+      <Type Name="CCTransitionFadeDown" Kind="Class" />
+      <Type Name="CCTransitionFadeTR" Kind="Class" />
+      <Type Name="CCTransitionFadeUp" Kind="Class" />
+      <Type Name="CCTransitionFlipAngular" Kind="Class" />
+      <Type Name="CCTransitionFlipX" Kind="Class" />
+      <Type Name="CCTransitionFlipY" Kind="Class" />
+      <Type Name="CCTransitionJumpZoom" Kind="Class" />
+      <Type Name="CCTransitionMoveInB" Kind="Class" />
+      <Type Name="CCTransitionMoveInL" Kind="Class" />
+      <Type Name="CCTransitionMoveInR" Kind="Class" />
+      <Type Name="CCTransitionMoveInT" Kind="Class" />
+      <Type Name="CCTransitionOrientation" Kind="Enumeration" />
+      <Type Name="CCTransitionPageTurn" Kind="Class" />
+      <Type Name="CCTransitionProgress" Kind="Class" />
+      <Type Name="CCTransitionProgressHorizontal" Kind="Class" />
+      <Type Name="CCTransitionProgressInOut" Kind="Class" />
+      <Type Name="CCTransitionProgressOutIn" Kind="Class" />
+      <Type Name="CCTransitionProgressRadialCCW" Kind="Class" />
+      <Type Name="CCTransitionProgressRadialCW" Kind="Class" />
+      <Type Name="CCTransitionProgressVertical" Kind="Class" />
+      <Type Name="CCTransitionRotoZoom" Kind="Class" />
+      <Type Name="CCTransitionScene" Kind="Class" />
+      <Type Name="CCTransitionSceneOriented" Kind="Class" />
+      <Type Name="CCTransitionShrinkGrow" Kind="Class" />
+      <Type Name="CCTransitionSlideInB" Kind="Class" />
+      <Type Name="CCTransitionSlideInL" Kind="Class" />
+      <Type Name="CCTransitionSlideInR" Kind="Class" />
+      <Type Name="CCTransitionSlideInT" Kind="Class" />
+      <Type Name="CCTransitionSplitCols" Kind="Class" />
+      <Type Name="CCTransitionSplitRows" Kind="Class" />
+      <Type Name="CCTransitionTurnOffTiles" Kind="Class" />
+      <Type Name="CCTransitionZoomFlipAngular" Kind="Class" />
+      <Type Name="CCTransitionZoomFlipX" Kind="Class" />
+      <Type Name="CCTransitionZoomFlipY" Kind="Class" />
+      <Type Name="CCTurnOffTiles" Kind="Class" />
+      <Type Name="CCTwirl" Kind="Class" />
+      <Type Name="CCTypes" Kind="Class" />
+      <Type Name="CCUserDefault" Kind="Class" />
+      <Type Name="CCUtils" Kind="Class" />
+      <Type Name="CCV2F_C4B_T2F" Kind="Class" />
+      <Type Name="CCV2F_C4B_T2F_Quad" Kind="Class" />
+      <Type Name="CCV2F_C4F_T2F" Kind="Class" />
+      <Type Name="CCV2F_C4F_T2F_Quad" Kind="Class" />
+      <Type Name="CCV3F_C4B_T2F" Kind="Structure" />
+      <Type Name="CCV3F_C4B_T2F_Quad" Kind="Structure" />
+      <Type Name="CCVertex2F" Kind="Structure" />
+      <Type Name="CCVertex3F" Kind="Structure" />
+      <Type Name="CCVerticalTextAlignment" Kind="Enumeration" />
+      <Type Name="CCWaves" Kind="Class" />
+      <Type Name="CCWaves3D" Kind="Class" />
+      <Type Name="CCWavesTiles3D" Kind="Class" />
+      <Type Name="CCZ_COMPRESSION" Kind="Enumeration" />
+      <Type Name="CCZHeader" Kind="Class" />
+      <Type Name="ICCAccelerometerDelegate" Kind="Interface" />
+      <Type Name="ICCActionTweenDelegate" Kind="Interface" />
+      <Type Name="ICCBlendProtocol" Kind="Interface" />
+      <Type Name="ICCBMemberVariableAssigner" Kind="Interface" />
+      <Type Name="ICCBScriptOwnerProtocol" Kind="Interface" />
+      <Type Name="ICCBSelectorResolver" Kind="Interface" />
+      <Type Name="ICCCopyable" Kind="Interface" />
+      <Type Name="ICCEGLTouchDelegate" Kind="Interface" />
+      <Type Name="ICCFocusable" Kind="Interface" />
+      <Type Name="ICCIMEDelegate" Kind="Interface" />
+      <Type Name="ICCKeypadDelegate" Kind="Interface" />
+      <Type Name="ICCLabelProtocol" Kind="Interface" />
+      <Type Name="ICCNodeLoaderListener" Kind="Interface" />
+      <Type Name="ICCProjectionProtocol" Kind="Interface" />
+      <Type Name="ICCRGBAProtocol" Kind="Interface" />
+      <Type Name="ICCSAXDelegator" Kind="Interface" />
+      <Type Name="ICCScrollViewDelegate" Kind="Interface" />
+      <Type Name="ICCSelectorProtocol" Kind="Interface" />
+      <Type Name="ICCSortableObject" Kind="Interface" />
+      <Type Name="ICCStandardTouchDelegate" Kind="Interface" />
+      <Type Name="ICCTableViewDataSource" Kind="Interface" />
+      <Type Name="ICCTableViewDelegate" Kind="Interface" />
+      <Type Name="ICCTargetedTouchDelegate" Kind="Interface" />
+      <Type Name="ICCTextFieldDelegate" Kind="Interface" />
+      <Type Name="ICCTextureProtocol" Kind="Interface" />
+      <Type Name="ICCTouchDelegate" Kind="Interface" />
+      <Type Name="ICCTransitionEaseScene" Kind="Interface" />
+      <Type Name="PlistArray" Kind="Class" />
+      <Type Name="PlistBoolean" Kind="Class" />
+      <Type Name="PlistData" Kind="Class" />
+      <Type Name="PlistDate" Kind="Class" />
+      <Type Name="PlistDictionary" Kind="Class" />
+      <Type Name="PlistDocument" Kind="Class" />
+      <Type Name="PlistDocument+PlistDocumentReader" Kind="Class" />
+      <Type Name="PlistDocument+ValueType" Kind="Enumeration" />
+      <Type Name="PlistInteger" Kind="Class" />
+      <Type Name="PlistNull" Kind="Class" />
+      <Type Name="PlistObject`1" DisplayName="PlistObject&lt;T&gt;" Kind="Class" />
+      <Type Name="PlistObjectBase" Kind="Class" />
+      <Type Name="PlistReal" Kind="Class" />
+      <Type Name="PlistString" Kind="Class" />
+      <Type Name="ZipUtils" Kind="Class" />
+    </Namespace>
+    <Namespace Name="Cocos2D.Compression.Zlib">
+      <Type Name="Deflate" Kind="Class" />
+      <Type Name="SupportClass" Kind="Class" />
+      <Type Name="ZInputStream" Kind="Class" />
+      <Type Name="zlibConst" Kind="Class" />
+      <Type Name="ZOutputStream" Kind="Class" />
+      <Type Name="ZStream" Kind="Class" />
+      <Type Name="ZStreamException" Kind="Class" />
+    </Namespace>
+    <Namespace Name="CocosDenshion">
+      <Type Name="CCEffectPlayer" Kind="Class" />
+      <Type Name="CCMusicPlayer" Kind="Class" />
+      <Type Name="CCSimpleAudioEngine" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>cocos2d-xna</Title>
+  <ExtensionMethods>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:Microsoft.Xna.Framework.Input.Touch.GestureSample" />
+      </Targets>
+      <Member MemberName="GetDirection">
+        <MemberSignature Language="C#" Value="public static Cocos2D.CCGestureDirection GetDirection (this Microsoft.Xna.Framework.Input.Touch.GestureSample gesture);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCGestureDirection GetDirection(valuetype Microsoft.Xna.Framework.Input.Touch.GestureSample gesture) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>Cocos2D.CCGestureDirection</ReturnType>
+        </ReturnValue>
+        <Parameters>
+          <Parameter Name="gesture" Type="Microsoft.Xna.Framework.Input.Touch.GestureSample" RefType="this" />
+        </Parameters>
+        <Docs>
+          <param name="gesture">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="Cocos2D.CCExtensionMethods" Member="M:Cocos2D.CCExtensionMethods.GetDirection(Microsoft.Xna.Framework.Input.Touch.GestureSample)" />
+      </Member>
+    </ExtensionMethod>
+  </ExtensionMethods>
+</Overview>

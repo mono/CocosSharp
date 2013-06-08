@@ -1,0 +1,1168 @@
+<Type Name="CCPoint" FullName="Cocos2D.CCPoint">
+  <TypeSignature Language="C#" Value="public struct CCPoint" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi serializable sealed beforefieldinit CCPoint extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.ComponentModel.TypeConverter(typeof(Cocos2D.CCPointConverter))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCPoint (Cocos2D.CCPoint pt);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCPoint pt) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="pt" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="pt">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCPoint (Microsoft.Xna.Framework.Point pt);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Microsoft.Xna.Framework.Point pt) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="pt" Type="Microsoft.Xna.Framework.Point" />
+      </Parameters>
+      <Docs>
+        <param name="pt">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCPoint (Microsoft.Xna.Framework.Vector2 v);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Microsoft.Xna.Framework.Vector2 v) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="v" Type="Microsoft.Xna.Framework.Vector2" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCPoint (float x, float y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 x, float32 y) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="x" Type="System.Single" />
+        <Parameter Name="y" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AngleSigned">
+      <MemberSignature Language="C#" Value="public static float AngleSigned (Cocos2D.CCPoint a, Cocos2D.CCPoint b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 AngleSigned(valuetype Cocos2D.CCPoint a, valuetype Cocos2D.CCPoint b) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="Cocos2D.CCPoint" />
+        <Parameter Name="b" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clamp">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint Clamp (Cocos2D.CCPoint p, Cocos2D.CCPoint from, Cocos2D.CCPoint to);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint Clamp(valuetype Cocos2D.CCPoint p, valuetype Cocos2D.CCPoint from, valuetype Cocos2D.CCPoint to) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="Cocos2D.CCPoint" />
+        <Parameter Name="from" Type="Cocos2D.CCPoint" />
+        <Parameter Name="to" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <param name="from">To be added.</param>
+        <param name="to">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clamp">
+      <MemberSignature Language="C#" Value="public static float Clamp (float value, float min_inclusive, float max_inclusive);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Clamp(float32 value, float32 min_inclusive, float32 max_inclusive) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="System.Single" />
+        <Parameter Name="min_inclusive" Type="System.Single" />
+        <Parameter Name="max_inclusive" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <param name="min_inclusive">To be added.</param>
+        <param name="max_inclusive">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ComputationOperation">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint ComputationOperation (Cocos2D.CCPoint p, Cocos2D.CCPoint.ComputationOperationDelegate del);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint ComputationOperation(valuetype Cocos2D.CCPoint p, class Cocos2D.CCPoint/ComputationOperationDelegate del) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="Cocos2D.CCPoint" />
+        <Parameter Name="del" Type="Cocos2D.CCPoint+ComputationOperationDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <param name="del">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CrossProduct">
+      <MemberSignature Language="C#" Value="public static float CrossProduct (Cocos2D.CCPoint v1, Cocos2D.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 CrossProduct(valuetype Cocos2D.CCPoint v1, valuetype Cocos2D.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="v2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Distance">
+      <MemberSignature Language="C#" Value="public static float Distance (Cocos2D.CCPoint v1, Cocos2D.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Distance(valuetype Cocos2D.CCPoint v1, valuetype Cocos2D.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="v2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DistanceSQ">
+      <MemberSignature Language="C#" Value="public float DistanceSQ (ref Cocos2D.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 DistanceSQ(valuetype Cocos2D.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v2" Type="Cocos2D.CCPoint&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dot">
+      <MemberSignature Language="C#" Value="public static float Dot (Cocos2D.CCPoint p1, Cocos2D.CCPoint p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Dot(valuetype Cocos2D.CCPoint p1, valuetype Cocos2D.CCPoint p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="p2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DotProduct">
+      <MemberSignature Language="C#" Value="public static float DotProduct (Cocos2D.CCPoint v1, Cocos2D.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 DotProduct(valuetype Cocos2D.CCPoint v1, valuetype Cocos2D.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="v2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equal">
+      <MemberSignature Language="C#" Value="public static bool Equal (ref Cocos2D.CCPoint point1, ref Cocos2D.CCPoint point2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Equal(valuetype Cocos2D.CCPoint point1, valuetype Cocos2D.CCPoint point2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="point1" Type="Cocos2D.CCPoint&amp;" RefType="ref" />
+        <Parameter Name="point2" Type="Cocos2D.CCPoint&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="point1">To be added.</param>
+        <param name="point2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public bool Equals (Cocos2D.CCPoint p);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype Cocos2D.CCPoint p) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public override bool Equals (object obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="obj" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="obj">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForAngle">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint ForAngle (float a);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint ForAngle(float32 a) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromSize">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint FromSize (Cocos2D.CCSize s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint FromSize(valuetype Cocos2D.CCSize s) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use explicit cast (CCPoint)size.")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="Cocos2D.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FuzzyEqual">
+      <MemberSignature Language="C#" Value="public static bool FuzzyEqual (Cocos2D.CCPoint a, Cocos2D.CCPoint b, float variance);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool FuzzyEqual(valuetype Cocos2D.CCPoint a, valuetype Cocos2D.CCPoint b, float32 variance) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="Cocos2D.CCPoint" />
+        <Parameter Name="b" Type="Cocos2D.CCPoint" />
+        <Parameter Name="variance" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="variance">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetHashCode">
+      <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IntersectPoint">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint IntersectPoint (Cocos2D.CCPoint A, Cocos2D.CCPoint B, Cocos2D.CCPoint C, Cocos2D.CCPoint D);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint IntersectPoint(valuetype Cocos2D.CCPoint A, valuetype Cocos2D.CCPoint B, valuetype Cocos2D.CCPoint C, valuetype Cocos2D.CCPoint D) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="A" Type="Cocos2D.CCPoint" />
+        <Parameter Name="B" Type="Cocos2D.CCPoint" />
+        <Parameter Name="C" Type="Cocos2D.CCPoint" />
+        <Parameter Name="D" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="A">To be added.</param>
+        <param name="B">To be added.</param>
+        <param name="C">To be added.</param>
+        <param name="D">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InvertY">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint InvertY { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint InvertY" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Length">
+      <MemberSignature Language="C#" Value="public float Length { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Length" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LengthSQ">
+      <MemberSignature Language="C#" Value="public float LengthSQ { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LengthSQ" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LengthSquare">
+      <MemberSignature Language="C#" Value="public float LengthSquare { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LengthSquare" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lerp">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint Lerp (Cocos2D.CCPoint a, Cocos2D.CCPoint b, float alpha);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint Lerp(valuetype Cocos2D.CCPoint a, valuetype Cocos2D.CCPoint b, float32 alpha) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="Cocos2D.CCPoint" />
+        <Parameter Name="b" Type="Cocos2D.CCPoint" />
+        <Parameter Name="alpha" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="alpha">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LineIntersect">
+      <MemberSignature Language="C#" Value="public static bool LineIntersect (Cocos2D.CCPoint A, Cocos2D.CCPoint B, Cocos2D.CCPoint C, Cocos2D.CCPoint D, ref float S, ref float T);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool LineIntersect(valuetype Cocos2D.CCPoint A, valuetype Cocos2D.CCPoint B, valuetype Cocos2D.CCPoint C, valuetype Cocos2D.CCPoint D, float32 S, float32 T) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="A" Type="Cocos2D.CCPoint" />
+        <Parameter Name="B" Type="Cocos2D.CCPoint" />
+        <Parameter Name="C" Type="Cocos2D.CCPoint" />
+        <Parameter Name="D" Type="Cocos2D.CCPoint" />
+        <Parameter Name="S" Type="System.Single&amp;" RefType="ref" />
+        <Parameter Name="T" Type="System.Single&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="A">To be added.</param>
+        <param name="B">To be added.</param>
+        <param name="C">To be added.</param>
+        <param name="D">To be added.</param>
+        <param name="S">To be added.</param>
+        <param name="T">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Midpoint">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint Midpoint (Cocos2D.CCPoint p1, Cocos2D.CCPoint p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint Midpoint(valuetype Cocos2D.CCPoint p1, valuetype Cocos2D.CCPoint p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="p2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MultiplyComponents">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint MultiplyComponents (Cocos2D.CCPoint a, Cocos2D.CCPoint b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint MultiplyComponents(valuetype Cocos2D.CCPoint a, valuetype Cocos2D.CCPoint b) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="Cocos2D.CCPoint" />
+        <Parameter Name="b" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Normalize">
+      <MemberSignature Language="C#" Value="public float Normalize ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 Normalize() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Normalize">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint Normalize (Cocos2D.CCPoint p);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint Normalize(valuetype Cocos2D.CCPoint p) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Offset">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Offset (float dx, float dy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint Offset(float32 dx, float32 dy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dx" Type="System.Single" />
+        <Parameter Name="dy" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="dx">To be added.</param>
+        <param name="dy">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Addition">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint op_Addition (Cocos2D.CCPoint p1, Cocos2D.CCPoint p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCPoint op_Addition(valuetype Cocos2D.CCPoint p1, valuetype Cocos2D.CCPoint p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="p2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Equality">
+      <MemberSignature Language="C#" Value="public static bool op_Equality (Cocos2D.CCPoint p1, Cocos2D.CCPoint p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype Cocos2D.CCPoint p1, valuetype Cocos2D.CCPoint p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="p2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Explicit">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint op_Explicit (Cocos2D.CCSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCPoint op_Explicit(valuetype Cocos2D.CCSize size) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="size" Type="Cocos2D.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Inequality">
+      <MemberSignature Language="C#" Value="public static bool op_Inequality (Cocos2D.CCPoint p1, Cocos2D.CCPoint p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype Cocos2D.CCPoint p1, valuetype Cocos2D.CCPoint p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="p2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Multiply">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint op_Multiply (Cocos2D.CCPoint p, float value);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCPoint op_Multiply(valuetype Cocos2D.CCPoint p, float32 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="Cocos2D.CCPoint" />
+        <Parameter Name="value" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Subtraction">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint op_Subtraction (Cocos2D.CCPoint p1, Cocos2D.CCPoint p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCPoint op_Subtraction(valuetype Cocos2D.CCPoint p1, valuetype Cocos2D.CCPoint p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="p2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_UnaryNegation">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint op_UnaryNegation (Cocos2D.CCPoint p1);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCPoint op_UnaryNegation(valuetype Cocos2D.CCPoint p1) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_UnaryPlus">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint op_UnaryPlus (Cocos2D.CCPoint p1);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCPoint op_UnaryPlus(valuetype Cocos2D.CCPoint p1) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Parse">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint Parse (string s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint Parse(string s) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Perp">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint Perp (Cocos2D.CCPoint p);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint Perp(valuetype Cocos2D.CCPoint p) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PerpendicularClockwise">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint PerpendicularClockwise (Cocos2D.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint PerpendicularClockwise(valuetype Cocos2D.CCPoint v) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PerpendicularCounterClockwise">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint PerpendicularCounterClockwise (Cocos2D.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint PerpendicularCounterClockwise(valuetype Cocos2D.CCPoint v) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Project">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint Project (Cocos2D.CCPoint v1, Cocos2D.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint Project(valuetype Cocos2D.CCPoint v1, valuetype Cocos2D.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="v2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reverse">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Reverse { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Reverse" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Rotate">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint Rotate (Cocos2D.CCPoint v1, Cocos2D.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint Rotate(valuetype Cocos2D.CCPoint v1, valuetype Cocos2D.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="v2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RotateByAngle">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint RotateByAngle (Cocos2D.CCPoint v, Cocos2D.CCPoint pivot, float angle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint RotateByAngle(valuetype Cocos2D.CCPoint v, valuetype Cocos2D.CCPoint pivot, float32 angle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="Cocos2D.CCPoint" />
+        <Parameter Name="pivot" Type="Cocos2D.CCPoint" />
+        <Parameter Name="angle" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <param name="pivot">To be added.</param>
+        <param name="angle">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SegmentIntersect">
+      <MemberSignature Language="C#" Value="public static bool SegmentIntersect (Cocos2D.CCPoint A, Cocos2D.CCPoint B, Cocos2D.CCPoint C, Cocos2D.CCPoint D);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool SegmentIntersect(valuetype Cocos2D.CCPoint A, valuetype Cocos2D.CCPoint B, valuetype Cocos2D.CCPoint C, valuetype Cocos2D.CCPoint D) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="A" Type="Cocos2D.CCPoint" />
+        <Parameter Name="B" Type="Cocos2D.CCPoint" />
+        <Parameter Name="C" Type="Cocos2D.CCPoint" />
+        <Parameter Name="D" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="A">To be added.</param>
+        <param name="B">To be added.</param>
+        <param name="C">To be added.</param>
+        <param name="D">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sub">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Sub (ref Cocos2D.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint Sub(valuetype Cocos2D.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v2" Type="Cocos2D.CCPoint&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToAngle">
+      <MemberSignature Language="C#" Value="public static float ToAngle (Cocos2D.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 ToAngle(valuetype Cocos2D.CCPoint v) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unrotate">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint Unrotate (Cocos2D.CCPoint v1, Cocos2D.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint Unrotate(valuetype Cocos2D.CCPoint v1, valuetype Cocos2D.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="v2" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="X">
+      <MemberSignature Language="C#" Value="public float X;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 X" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Y">
+      <MemberSignature Language="C#" Value="public float Y;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 Y" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCPoint Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCPoint Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

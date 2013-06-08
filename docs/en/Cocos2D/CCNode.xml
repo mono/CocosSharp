@@ -1,0 +1,1955 @@
+<Type Name="CCNode" FullName="Cocos2D.CCNode">
+  <TypeSignature Language="C#" Value="public class CCNode : Cocos2D.ICCFocusable, Cocos2D.ICCSelectorProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNode extends System.Object implements class Cocos2D.ICCFocusable, class Cocos2D.ICCSelectorProtocol" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Cocos2D.ICCFocusable</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Cocos2D.ICCSelectorProtocol</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCNode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ActionManager">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCActionManager ActionManager { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCActionManager ActionManager" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCActionManager</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddChild">
+      <MemberSignature Language="C#" Value="public void AddChild (Cocos2D.CCNode child);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddChild(class Cocos2D.CCNode child) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Cocos2D.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddChild">
+      <MemberSignature Language="C#" Value="public void AddChild (Cocos2D.CCNode child, int zOrder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddChild(class Cocos2D.CCNode child, int32 zOrder) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="zOrder" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <param name="zOrder">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddChild">
+      <MemberSignature Language="C#" Value="public virtual void AddChild (Cocos2D.CCNode child, int zOrder, int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddChild(class Cocos2D.CCNode child, int32 zOrder, int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="zOrder" Type="System.Int32" />
+        <Parameter Name="tag" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <param name="zOrder">To be added.</param>
+        <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnchorPoint">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCPoint AnchorPoint { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint AnchorPoint" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnchorPointInPoints">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCPoint AnchorPointInPoints { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint AnchorPointInPoints" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BoundingBox">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCRect BoundingBox { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCRect BoundingBox" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCRect</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BoundingBoxInPixels">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCRect BoundingBoxInPixels { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCRect BoundingBoxInPixels" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCRect</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Camera">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCCamera Camera { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCCamera Camera" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCCamera</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CanReceiveFocus">
+      <MemberSignature Language="C#" Value="public virtual bool CanReceiveFocus { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CanReceiveFocus" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Children">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCRawList&lt;Cocos2D.CCNode&gt; Children { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCRawList`1&lt;class Cocos2D.CCNode&gt; Children" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCRawList&lt;Cocos2D.CCNode&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ChildrenCount">
+      <MemberSignature Language="C#" Value="public int ChildrenCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ChildrenCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Cleanup">
+      <MemberSignature Language="C#" Value="public virtual void Cleanup ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Cleanup() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContentSize">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCSize ContentSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize ContentSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContentSizeInPixels">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCSize ContentSizeInPixels { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize ContentSizeInPixels" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertToNodeSpace">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertToNodeSpace (Cocos2D.CCPoint worldPoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertToNodeSpace(valuetype Cocos2D.CCPoint worldPoint) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="worldPoint" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="worldPoint">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertToNodeSpaceAr">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertToNodeSpaceAr (Cocos2D.CCPoint worldPoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertToNodeSpaceAr(valuetype Cocos2D.CCPoint worldPoint) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="worldPoint" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="worldPoint">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertTouchToNodeSpace">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertTouchToNodeSpace (Cocos2D.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertTouchToNodeSpace(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertTouchToNodeSpaceAr">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertTouchToNodeSpaceAr (Cocos2D.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertTouchToNodeSpaceAr(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertToWindowSpace">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertToWindowSpace (Cocos2D.CCPoint nodePoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertToWindowSpace(valuetype Cocos2D.CCPoint nodePoint) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nodePoint" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="nodePoint">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertToWorldSpace">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertToWorldSpace (Cocos2D.CCPoint nodePoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertToWorldSpace(valuetype Cocos2D.CCPoint nodePoint) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nodePoint" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="nodePoint">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertToWorldSpaceAr">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertToWorldSpaceAr (Cocos2D.CCPoint nodePoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertToWorldSpaceAr(valuetype Cocos2D.CCPoint nodePoint) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nodePoint" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="nodePoint">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Deserialize">
+      <MemberSignature Language="C#" Value="public virtual void Deserialize (System.IO.Stream stream);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Deserialize(class System.IO.Stream stream) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stream" Type="System.IO.Stream" />
+      </Parameters>
+      <Docs>
+        <param name="stream">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="public virtual void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Draw() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Finalize">
+      <MemberSignature Language="C#" Value="~CCNode ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetActionByTag">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCAction GetActionByTag (int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCAction GetActionByTag(int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCAction</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetChildByTag">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCNode GetChildByTag (int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCNode GetChildByTag(int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCNode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPosition">
+      <MemberSignature Language="C#" Value="public void GetPosition (out float x, out float y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetPosition(float32 x, float32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="y" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Grid">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCGridBase Grid { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCGridBase Grid" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCGridBase</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasFocus">
+      <MemberSignature Language="C#" Value="public virtual bool HasFocus { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool HasFocus" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IgnoreAnchorPointForPosition">
+      <MemberSignature Language="C#" Value="public virtual bool IgnoreAnchorPointForPosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IgnoreAnchorPointForPosition" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public virtual bool Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsRunning">
+      <MemberSignature Language="C#" Value="public bool IsRunning { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsRunning" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsSerializable">
+      <MemberSignature Language="C#" Value="public virtual bool IsSerializable { get; protected set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsSerializable" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bIgnoreAnchorPointForPosition">
+      <MemberSignature Language="C#" Value="protected bool m_bIgnoreAnchorPointForPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bIgnoreAnchorPointForPosition" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bIsInverseDirty">
+      <MemberSignature Language="C#" Value="protected bool m_bIsInverseDirty;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bIsInverseDirty" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bIsRunning">
+      <MemberSignature Language="C#" Value="protected bool m_bIsRunning;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bIsRunning" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bIsTransformDirty">
+      <MemberSignature Language="C#" Value="public bool m_bIsTransformDirty;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool m_bIsTransformDirty" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bIsVisible">
+      <MemberSignature Language="C#" Value="protected bool m_bIsVisible;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bIsVisible" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bReorderChildDirty">
+      <MemberSignature Language="C#" Value="protected bool m_bReorderChildDirty;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bReorderChildDirty" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fRotation">
+      <MemberSignature Language="C#" Value="protected float m_fRotation;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fRotation" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fScaleX">
+      <MemberSignature Language="C#" Value="protected float m_fScaleX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fScaleX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fScaleY">
+      <MemberSignature Language="C#" Value="protected float m_fScaleY;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fScaleY" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fSkewX">
+      <MemberSignature Language="C#" Value="protected float m_fSkewX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fSkewX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fSkewY">
+      <MemberSignature Language="C#" Value="protected float m_fSkewY;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fSkewY" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fVertexZ">
+      <MemberSignature Language="C#" Value="protected float m_fVertexZ;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fVertexZ" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_nOrderOfArrival">
+      <MemberSignature Language="C#" Value="protected int m_nOrderOfArrival;" />
+      <MemberSignature Language="ILAsm" Value=".field familyorassembly int32 m_nOrderOfArrival" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_nTag">
+      <MemberSignature Language="C#" Value="protected int m_nTag;" />
+      <MemberSignature Language="ILAsm" Value=".field family int32 m_nTag" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pActionManager">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCActionManager m_pActionManager;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCActionManager m_pActionManager" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCActionManager</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pCamera">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCCamera m_pCamera;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCCamera m_pCamera" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCCamera</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pChildren">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCRawList&lt;Cocos2D.CCNode&gt; m_pChildren;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCRawList`1&lt;class Cocos2D.CCNode&gt; m_pChildren" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCRawList&lt;Cocos2D.CCNode&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pGrid">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCGridBase m_pGrid;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCGridBase m_pGrid" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCGridBase</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pParent">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCNode m_pParent;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCNode m_pParent" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pScheduler">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCScheduler m_pScheduler;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCScheduler m_pScheduler" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCScheduler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pUserData">
+      <MemberSignature Language="C#" Value="protected object m_pUserData;" />
+      <MemberSignature Language="ILAsm" Value=".field family object m_pUserData" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tAnchorPoint">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_tAnchorPoint;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_tAnchorPoint" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tAnchorPointInPoints">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_tAnchorPointInPoints;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_tAnchorPointInPoints" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tContentSize">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCSize m_tContentSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCSize m_tContentSize" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tPosition">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_tPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_tPosition" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tTransform">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCAffineTransform m_tTransform;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCAffineTransform m_tTransform" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NodeToParentTransform">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCAffineTransform NodeToParentTransform ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype Cocos2D.CCAffineTransform NodeToParentTransform() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NodeToWorldTransform">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCAffineTransform NodeToWorldTransform ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCAffineTransform NodeToWorldTransform() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberOfRunningActions">
+      <MemberSignature Language="C#" Value="public int NumberOfRunningActions ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 NumberOfRunningActions() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnEnter">
+      <MemberSignature Language="C#" Value="public virtual void OnEnter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OnEnter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnEnterTransitionDidFinish">
+      <MemberSignature Language="C#" Value="public virtual void OnEnterTransitionDidFinish ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OnEnterTransitionDidFinish() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnExit">
+      <MemberSignature Language="C#" Value="public virtual void OnExit ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OnExit() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnExitTransitionDidStart">
+      <MemberSignature Language="C#" Value="public virtual void OnExitTransitionDidStart ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OnExitTransitionDidStart() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Parent">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCNode Parent { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCNode Parent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParentToNodeTransform">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCAffineTransform ParentToNodeTransform ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCAffineTransform ParentToNodeTransform() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PauseSchedulerAndActions">
+      <MemberSignature Language="C#" Value="public void PauseSchedulerAndActions ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PauseSchedulerAndActions() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Position">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCPoint Position { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Position" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PositionX">
+      <MemberSignature Language="C#" Value="public float PositionX { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 PositionX" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PositionY">
+      <MemberSignature Language="C#" Value="public float PositionY { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 PositionY" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveAllChildrenWithCleanup">
+      <MemberSignature Language="C#" Value="public virtual void RemoveAllChildrenWithCleanup (bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveAllChildrenWithCleanup(bool cleanup) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="cleanup" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="cleanup">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveChild">
+      <MemberSignature Language="C#" Value="public virtual void RemoveChild (Cocos2D.CCNode child, bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveChild(class Cocos2D.CCNode child, bool cleanup) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="cleanup" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <param name="cleanup">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveChildByTag">
+      <MemberSignature Language="C#" Value="public void RemoveChildByTag (int tag, bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveChildByTag(int32 tag, bool cleanup) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+        <Parameter Name="cleanup" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="tag">To be added.</param>
+        <param name="cleanup">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveFromParentAndCleanup">
+      <MemberSignature Language="C#" Value="public void RemoveFromParentAndCleanup (bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveFromParentAndCleanup(bool cleanup) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="cleanup" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="cleanup">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReorderChild">
+      <MemberSignature Language="C#" Value="public virtual void ReorderChild (Cocos2D.CCNode child, int zOrder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ReorderChild(class Cocos2D.CCNode child, int32 zOrder) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="zOrder" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <param name="zOrder">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResumeSchedulerAndActions">
+      <MemberSignature Language="C#" Value="public void ResumeSchedulerAndActions ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResumeSchedulerAndActions() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Rotation">
+      <MemberSignature Language="C#" Value="public virtual float Rotation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Rotation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunAction">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCAction RunAction (Cocos2D.CCAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCAction RunAction(class Cocos2D.CCAction action) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCAction</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="action" Type="Cocos2D.CCAction" />
+      </Parameters>
+      <Docs>
+        <param name="action">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Scale">
+      <MemberSignature Language="C#" Value="public virtual float Scale { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Scale" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScaleX">
+      <MemberSignature Language="C#" Value="public virtual float ScaleX { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ScaleX" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScaleY">
+      <MemberSignature Language="C#" Value="public virtual float ScaleY { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ScaleY" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schedule">
+      <MemberSignature Language="C#" Value="public void Schedule (Action&lt;float&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Schedule(class System.Action`1&lt;float32&gt; selector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schedule">
+      <MemberSignature Language="C#" Value="public void Schedule (Action&lt;float&gt; selector, float interval);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Schedule(class System.Action`1&lt;float32&gt; selector, float32 interval) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
+        <Parameter Name="interval" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <param name="interval">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schedule">
+      <MemberSignature Language="C#" Value="public void Schedule (Action&lt;float&gt; selector, float interval, uint repeat, float delay);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Schedule(class System.Action`1&lt;float32&gt; selector, float32 interval, unsigned int32 repeat, float32 delay) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
+        <Parameter Name="interval" Type="System.Single" />
+        <Parameter Name="repeat" Type="System.UInt32" />
+        <Parameter Name="delay" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <param name="interval">To be added.</param>
+        <param name="repeat">To be added.</param>
+        <param name="delay">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScheduleOnce">
+      <MemberSignature Language="C#" Value="public void ScheduleOnce (Action&lt;float&gt; selector, float delay);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ScheduleOnce(class System.Action`1&lt;float32&gt; selector, float32 delay) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
+        <Parameter Name="delay" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <param name="delay">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Scheduler">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCScheduler Scheduler { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCScheduler Scheduler" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCScheduler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScheduleUpdate">
+      <MemberSignature Language="C#" Value="public void ScheduleUpdate ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ScheduleUpdate() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScheduleUpdateWithPriority">
+      <MemberSignature Language="C#" Value="public void ScheduleUpdateWithPriority (int priority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ScheduleUpdateWithPriority(int32 priority) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="priority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="priority">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Serialize">
+      <MemberSignature Language="C#" Value="public virtual void Serialize (System.IO.Stream stream);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Serialize(class System.IO.Stream stream) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stream" Type="System.IO.Stream" />
+      </Parameters>
+      <Docs>
+        <param name="stream">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetPosition">
+      <MemberSignature Language="C#" Value="public void SetPosition (float x, float y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetPosition(float32 x, float32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Single" />
+        <Parameter Name="y" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SkewX">
+      <MemberSignature Language="C#" Value="public virtual float SkewX { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 SkewX" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SkewY">
+      <MemberSignature Language="C#" Value="public virtual float SkewY { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 SkewY" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SortAllChildren">
+      <MemberSignature Language="C#" Value="public virtual void SortAllChildren ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SortAllChildren() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StopAction">
+      <MemberSignature Language="C#" Value="public void StopAction (Cocos2D.CCAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopAction(class Cocos2D.CCAction action) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="action" Type="Cocos2D.CCAction" />
+      </Parameters>
+      <Docs>
+        <param name="action">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StopActionByTag">
+      <MemberSignature Language="C#" Value="public void StopActionByTag (int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopActionByTag(int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StopAllActions">
+      <MemberSignature Language="C#" Value="public void StopAllActions ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopAllActions() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Tag">
+      <MemberSignature Language="C#" Value="public int Tag { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Tag" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public void Transform ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TransformAncestors">
+      <MemberSignature Language="C#" Value="public void TransformAncestors ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TransformAncestors() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unschedule">
+      <MemberSignature Language="C#" Value="public void Unschedule (Action&lt;float&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Unschedule(class System.Action`1&lt;float32&gt; selector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleAllSelectors">
+      <MemberSignature Language="C#" Value="public void UnscheduleAllSelectors ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAllSelectors() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleUpdate">
+      <MemberSignature Language="C#" Value="public void UnscheduleUpdate ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleUpdate() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Update">
+      <MemberSignature Language="C#" Value="public virtual void Update (float dt);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Update(float32 dt) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dt" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="dt">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UserData">
+      <MemberSignature Language="C#" Value="public object UserData { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance object UserData" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UserObject">
+      <MemberSignature Language="C#" Value="public object UserObject { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance object UserObject" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VertexZ">
+      <MemberSignature Language="C#" Value="public virtual float VertexZ { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 VertexZ" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Visible">
+      <MemberSignature Language="C#" Value="public virtual bool Visible { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Visible" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Visit">
+      <MemberSignature Language="C#" Value="public virtual void Visit ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Visit() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WorldToNodeTransform">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCAffineTransform WorldToNodeTransform ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCAffineTransform WorldToNodeTransform() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ZOrder">
+      <MemberSignature Language="C#" Value="public int ZOrder { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ZOrder" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

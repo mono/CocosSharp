@@ -1,0 +1,165 @@
+<Type Name="ICCRGBAProtocol" FullName="Cocos2D.ICCRGBAProtocol">
+  <TypeSignature Language="C#" Value="public interface ICCRGBAProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCRGBAProtocol" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="CascadeColorEnabled">
+      <MemberSignature Language="C#" Value="public bool CascadeColorEnabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CascadeColorEnabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CascadeOpacityEnabled">
+      <MemberSignature Language="C#" Value="public bool CascadeOpacityEnabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CascadeOpacityEnabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Color">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCColor3B Color { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B Color" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisplayedColor">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCColor3B DisplayedColor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B DisplayedColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisplayedOpacity">
+      <MemberSignature Language="C#" Value="public byte DisplayedOpacity { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 DisplayedOpacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsOpacityModifyRGB">
+      <MemberSignature Language="C#" Value="public bool IsOpacityModifyRGB { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsOpacityModifyRGB" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Opacity">
+      <MemberSignature Language="C#" Value="public byte Opacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Opacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateDisplayedColor">
+      <MemberSignature Language="C#" Value="public void UpdateDisplayedColor (Cocos2D.CCColor3B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateDisplayedColor(valuetype Cocos2D.CCColor3B color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="color" Type="Cocos2D.CCColor3B" />
+      </Parameters>
+      <Docs>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateDisplayedOpacity">
+      <MemberSignature Language="C#" Value="public void UpdateDisplayedOpacity (byte opacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateDisplayedOpacity(unsigned int8 opacity) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="opacity" Type="System.Byte" />
+      </Parameters>
+      <Docs>
+        <param name="opacity">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

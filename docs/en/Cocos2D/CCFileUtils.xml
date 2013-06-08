@@ -1,0 +1,305 @@
+<Type Name="CCFileUtils" FullName="Cocos2D.CCFileUtils">
+  <TypeSignature Language="C#" Value="public class CCFileUtils" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFileUtils extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCFileUtils ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCLoadFileIntoMemory">
+      <MemberSignature Language="C#" Value="public static int CCLoadFileIntoMemory (string filename, out char[] file);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 CCLoadFileIntoMemory(string filename, char[] file) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="filename" Type="System.String" />
+        <Parameter Name="file" Type="System.Char[]&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="filename">To be added.</param>
+        <param name="file">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCRemoveHDSuffixFromFile">
+      <MemberSignature Language="C#" Value="public static string CCRemoveHDSuffixFromFile (string path);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string CCRemoveHDSuffixFromFile(string path) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="path">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DictionaryWithContentsOfFile">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.Dictionary&lt;string,object&gt; DictionaryWithContentsOfFile (string pFileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.Dictionary`2&lt;string, object&gt; DictionaryWithContentsOfFile(string pFileName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.Object&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pFileName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pFileName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FullPathFromRelativeFile">
+      <MemberSignature Language="C#" Value="public static string FullPathFromRelativeFile (string pszFilename, string pszRelativeFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string FullPathFromRelativeFile(string pszFilename, string pszRelativeFile) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszFilename" Type="System.String" />
+        <Parameter Name="pszRelativeFile" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszFilename">To be added.</param>
+        <param name="pszRelativeFile">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FullPathFromRelativePath">
+      <MemberSignature Language="C#" Value="public static string FullPathFromRelativePath (string pszRelativePath);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string FullPathFromRelativePath(string pszRelativePath) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszRelativePath" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszRelativePath">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFileBytes">
+      <MemberSignature Language="C#" Value="public static byte[] GetFileBytes (string pszFileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int8[] GetFileBytes(string pszFileName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszFileName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszFileName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFileData">
+      <MemberSignature Language="C#" Value="public static string GetFileData (string pszFileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetFileData(string pszFileName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszFileName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszFileName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFileDataFromZip">
+      <MemberSignature Language="C#" Value="public static char[] GetFileDataFromZip (string pszZipFilePath, string pszFileName, ulong pSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig char[] GetFileDataFromZip(string pszZipFilePath, string pszFileName, unsigned int64 pSize) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Char[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszZipFilePath" Type="System.String" />
+        <Parameter Name="pszFileName" Type="System.String" />
+        <Parameter Name="pSize" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="pszZipFilePath">To be added.</param>
+        <param name="pszFileName">To be added.</param>
+        <param name="pSize">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetWriteablePath">
+      <MemberSignature Language="C#" Value="public static string GetWriteablePath ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetWriteablePath() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsPopupNotify">
+      <MemberSignature Language="C#" Value="public static bool IsPopupNotify { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool IsPopupNotify" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveExtension">
+      <MemberSignature Language="C#" Value="public static string RemoveExtension (string fileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string RemoveExtension(string fileName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fileName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="fileName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="s_bPopupNotify">
+      <MemberSignature Language="C#" Value="protected static bool s_bPopupNotify;" />
+      <MemberSignature Language="ILAsm" Value=".field family static bool s_bPopupNotify" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetResource">
+      <MemberSignature Language="C#" Value="public static void SetResource (string pszZipFileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetResource(string pszZipFileName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszZipFileName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszZipFileName">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetResourcePath">
+      <MemberSignature Language="C#" Value="public static void SetResourcePath (string pszResourcePath);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetResourcePath(string pszResourcePath) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszResourcePath" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszResourcePath">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

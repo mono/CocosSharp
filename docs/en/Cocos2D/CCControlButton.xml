@@ -1,0 +1,1105 @@
+<Type Name="CCControlButton" FullName="Cocos2D.CCControlButton">
+  <TypeSignature Language="C#" Value="public class CCControlButton : Cocos2D.CCControl" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControlButton extends Cocos2D.CCControl" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCControl</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCControlButton ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCControlButton (Cocos2D.CCScale9Sprite sprite);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCScale9Sprite sprite) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="sprite" Type="Cocos2D.CCScale9Sprite" />
+      </Parameters>
+      <Docs>
+        <param name="sprite">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCControlButton (Cocos2D.CCNode label, Cocos2D.CCScale9Sprite backgroundSprite);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNode label, class Cocos2D.CCScale9Sprite backgroundSprite) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="label" Type="Cocos2D.CCNode" />
+        <Parameter Name="backgroundSprite" Type="Cocos2D.CCScale9Sprite" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="backgroundSprite">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCControlButton (string title, string fontName, float fontSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string title, string fontName, float32 fontSize) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="title" Type="System.String" />
+        <Parameter Name="fontName" Type="System.String" />
+        <Parameter Name="fontSize" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="title">To be added.</param>
+        <param name="fontName">To be added.</param>
+        <param name="fontSize">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BackgroundSprite">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCScale9Sprite BackgroundSprite { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCScale9Sprite BackgroundSprite" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCScale9Sprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCControlButtonMarginLR">
+      <MemberSignature Language="C#" Value="public const int CCControlButtonMarginLR = 8;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 CCControlButtonMarginLR = (8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>8</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CCControlButtonMarginTB">
+      <MemberSignature Language="C#" Value="public const int CCControlButtonMarginTB = 2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 CCControlButtonMarginTB = (2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>2</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Color">
+      <MemberSignature Language="C#" Value="public override Cocos2D.CCColor3B Color { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B Color" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoesAdjustBackgroundImage">
+      <MemberSignature Language="C#" Value="public bool DoesAdjustBackgroundImage ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool DoesAdjustBackgroundImage() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Enabled">
+      <MemberSignature Language="C#" Value="public override bool Enabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBackgroundSpriteForState">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCScale9Sprite GetBackgroundSpriteForState (Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.CCScale9Sprite GetBackgroundSpriteForState(valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCScale9Sprite</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTitleBmFontForState">
+      <MemberSignature Language="C#" Value="public virtual string GetTitleBmFontForState (Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetTitleBmFontForState(valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTitleColorForState">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCColor3B GetTitleColorForState (Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype Cocos2D.CCColor3B GetTitleColorForState(valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTitleForState">
+      <MemberSignature Language="C#" Value="public virtual string GetTitleForState (Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetTitleForState(valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTitleLabelForState">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCNode GetTitleLabelForState (Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.CCNode GetTitleLabelForState(valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCNode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTitleTtfForState">
+      <MemberSignature Language="C#" Value="public virtual string GetTitleTtfForState (Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetTitleTtfForState(valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTitleTtfSizeForState">
+      <MemberSignature Language="C#" Value="public virtual float GetTitleTtfSizeForState (Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance float32 GetTitleTtfSizeForState(valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Highlighted">
+      <MemberSignature Language="C#" Value="public override bool Highlighted { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Highlighted" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public override bool Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithBackgroundSprite">
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithBackgroundSprite (Cocos2D.CCScale9Sprite sprite);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithBackgroundSprite(class Cocos2D.CCScale9Sprite sprite) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sprite" Type="Cocos2D.CCScale9Sprite" />
+      </Parameters>
+      <Docs>
+        <param name="sprite">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithLabelAndBackgroundSprite">
+      <MemberSignature Language="C#" Value="public virtual bool InitWithLabelAndBackgroundSprite (Cocos2D.CCNode node, Cocos2D.CCScale9Sprite backgroundSprite);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithLabelAndBackgroundSprite(class Cocos2D.CCNode node, class Cocos2D.CCScale9Sprite backgroundSprite) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="backgroundSprite" Type="Cocos2D.CCScale9Sprite" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="backgroundSprite">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithTitleAndFontNameAndFontSize">
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithTitleAndFontNameAndFontSize (string title, string fontName, float fontSize);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithTitleAndFontNameAndFontSize(string title, string fontName, float32 fontSize) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="title" Type="System.String" />
+        <Parameter Name="fontName" Type="System.String" />
+        <Parameter Name="fontSize" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="title">To be added.</param>
+        <param name="fontName">To be added.</param>
+        <param name="fontSize">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsPushed">
+      <MemberSignature Language="C#" Value="public bool IsPushed { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsPushed" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="kZoomActionTag">
+      <MemberSignature Language="C#" Value="public const int kZoomActionTag = 2093678593;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 kZoomActionTag = (2093678593)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>2093678593</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LabelAnchorPoint">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint LabelAnchorPoint { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint LabelAnchorPoint" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_backgroundSprite">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCScale9Sprite m_backgroundSprite;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCScale9Sprite m_backgroundSprite" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCScale9Sprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_backgroundSpriteDispatchTable">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;Cocos2D.CCControlState,Cocos2D.CCScale9Sprite&gt; m_backgroundSpriteDispatchTable;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype Cocos2D.CCControlState, class Cocos2D.CCScale9Sprite&gt; m_backgroundSpriteDispatchTable" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;Cocos2D.CCControlState,Cocos2D.CCScale9Sprite&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bParentInited">
+      <MemberSignature Language="C#" Value="protected bool m_bParentInited;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bParentInited" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_currentTitle">
+      <MemberSignature Language="C#" Value="protected string m_currentTitle;" />
+      <MemberSignature Language="ILAsm" Value=".field family string m_currentTitle" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_currentTitleColor">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor3B m_currentTitleColor;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor3B m_currentTitleColor" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_doesAdjustBackgroundImage">
+      <MemberSignature Language="C#" Value="protected bool m_doesAdjustBackgroundImage;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_doesAdjustBackgroundImage" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_isPushed">
+      <MemberSignature Language="C#" Value="protected bool m_isPushed;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_isPushed" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_labelAnchorPoint">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_labelAnchorPoint;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_labelAnchorPoint" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_marginH">
+      <MemberSignature Language="C#" Value="protected int m_marginH;" />
+      <MemberSignature Language="ILAsm" Value=".field family int32 m_marginH" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_marginV">
+      <MemberSignature Language="C#" Value="protected int m_marginV;" />
+      <MemberSignature Language="ILAsm" Value=".field family int32 m_marginV" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_preferredSize">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCSize m_preferredSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCSize m_preferredSize" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_titleColorDispatchTable">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;Cocos2D.CCControlState,Cocos2D.CCColor3B&gt; m_titleColorDispatchTable;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype Cocos2D.CCControlState, valuetype Cocos2D.CCColor3B&gt; m_titleColorDispatchTable" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;Cocos2D.CCControlState,Cocos2D.CCColor3B&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_titleDispatchTable">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;Cocos2D.CCControlState,string&gt; m_titleDispatchTable;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype Cocos2D.CCControlState, string&gt; m_titleDispatchTable" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;Cocos2D.CCControlState,System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_titleLabel">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCNode m_titleLabel;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCNode m_titleLabel" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_titleLabelDispatchTable">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;Cocos2D.CCControlState,Cocos2D.CCNode&gt; m_titleLabelDispatchTable;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype Cocos2D.CCControlState, class Cocos2D.CCNode&gt; m_titleLabelDispatchTable" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;Cocos2D.CCControlState,Cocos2D.CCNode&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_zoomOnTouchDown">
+      <MemberSignature Language="C#" Value="protected bool m_zoomOnTouchDown;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_zoomOnTouchDown" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NeedsLayout">
+      <MemberSignature Language="C#" Value="public override void NeedsLayout ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void NeedsLayout() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnButtonTap">
+      <MemberSignature Language="C#" Value="public event Cocos2D.CCButtonTapDelegate OnButtonTap;" />
+      <MemberSignature Language="ILAsm" Value=".event class Cocos2D.CCButtonTapDelegate OnButtonTap" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCButtonTapDelegate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Opacity">
+      <MemberSignature Language="C#" Value="public override byte Opacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Opacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreferredSize">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCSize PreferredSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize PreferredSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Selected">
+      <MemberSignature Language="C#" Value="public override bool Selected { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Selected" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetAdjustBackgroundImage">
+      <MemberSignature Language="C#" Value="public void SetAdjustBackgroundImage (bool adjustBackgroundImage);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetAdjustBackgroundImage(bool adjustBackgroundImage) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="adjustBackgroundImage" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="adjustBackgroundImage">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetBackgroundSpriteForState">
+      <MemberSignature Language="C#" Value="public virtual void SetBackgroundSpriteForState (Cocos2D.CCScale9Sprite sprite, Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetBackgroundSpriteForState(class Cocos2D.CCScale9Sprite sprite, valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sprite" Type="Cocos2D.CCScale9Sprite" />
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="sprite">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetBackgroundSpriteFrameForState">
+      <MemberSignature Language="C#" Value="public virtual void SetBackgroundSpriteFrameForState (Cocos2D.CCSpriteFrame spriteFrame, Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetBackgroundSpriteFrameForState(class Cocos2D.CCSpriteFrame spriteFrame, valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="spriteFrame" Type="Cocos2D.CCSpriteFrame" />
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="spriteFrame">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetMargins">
+      <MemberSignature Language="C#" Value="protected virtual void SetMargins (int marginH, int marginV);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void SetMargins(int32 marginH, int32 marginV) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="marginH" Type="System.Int32" />
+        <Parameter Name="marginV" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="marginH">To be added.</param>
+        <param name="marginV">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTitleBmFontForState">
+      <MemberSignature Language="C#" Value="public virtual void SetTitleBmFontForState (string fntFile, Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleBmFontForState(string fntFile, valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="fntFile">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTitleColorForState">
+      <MemberSignature Language="C#" Value="public virtual void SetTitleColorForState (Cocos2D.CCColor3B color, Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleColorForState(valuetype Cocos2D.CCColor3B color, valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="color" Type="Cocos2D.CCColor3B" />
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="color">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTitleForState">
+      <MemberSignature Language="C#" Value="public virtual void SetTitleForState (string title, Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleForState(string title, valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="title" Type="System.String" />
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="title">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTitleLabelForState">
+      <MemberSignature Language="C#" Value="public virtual void SetTitleLabelForState (Cocos2D.CCNode titleLabel, Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleLabelForState(class Cocos2D.CCNode titleLabel, valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="titleLabel" Type="Cocos2D.CCNode" />
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="titleLabel">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTitleTtfForState">
+      <MemberSignature Language="C#" Value="public virtual void SetTitleTtfForState (string fntFile, Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleTtfForState(string fntFile, valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="fntFile">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTitleTtfSizeForState">
+      <MemberSignature Language="C#" Value="public virtual void SetTitleTtfSizeForState (float size, Cocos2D.CCControlState state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleTtfSizeForState(float32 size, valuetype Cocos2D.CCControlState state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="size" Type="System.Single" />
+        <Parameter Name="state" Type="Cocos2D.CCControlState" />
+      </Parameters>
+      <Docs>
+        <param name="size">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TitleLabel">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCNode TitleLabel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCNode TitleLabel" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchBegan">
+      <MemberSignature Language="C#" Value="public override bool TouchBegan (Cocos2D.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TouchBegan(class Cocos2D.CCTouch pTouch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTouch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="pTouch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchCancelled">
+      <MemberSignature Language="C#" Value="public override void TouchCancelled (Cocos2D.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchCancelled(class Cocos2D.CCTouch pTouch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTouch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="pTouch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchEnded">
+      <MemberSignature Language="C#" Value="public override void TouchEnded (Cocos2D.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchEnded(class Cocos2D.CCTouch pTouch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTouch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="pTouch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchMoved">
+      <MemberSignature Language="C#" Value="public override void TouchMoved (Cocos2D.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchMoved(class Cocos2D.CCTouch pTouch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTouch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="pTouch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ZoomOnTouchDown">
+      <MemberSignature Language="C#" Value="public bool ZoomOnTouchDown { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ZoomOnTouchDown" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

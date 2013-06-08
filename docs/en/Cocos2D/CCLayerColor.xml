@@ -1,0 +1,317 @@
+<Type Name="CCLayerColor" FullName="Cocos2D.CCLayerColor">
+  <TypeSignature Language="C#" Value="public class CCLayerColor : Cocos2D.CCLayerRGBA, Cocos2D.ICCBlendProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerColor extends Cocos2D.CCLayerRGBA implements class Cocos2D.ICCBlendProtocol" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCLayerRGBA</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Cocos2D.ICCBlendProtocol</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLayerColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLayerColor (Cocos2D.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCColor4B color) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="color" Type="Cocos2D.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLayerColor (Cocos2D.CCColor4B color, float width, float height);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCColor4B color, float32 width, float32 height) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="color" Type="Cocos2D.CCColor4B" />
+        <Parameter Name="width" Type="System.Single" />
+        <Parameter Name="height" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="color">To be added.</param>
+        <param name="width">To be added.</param>
+        <param name="height">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BlendFunc">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCBlendFunc BlendFunc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCBlendFunc BlendFunc" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ChangeHeight">
+      <MemberSignature Language="C#" Value="public void ChangeHeight (float h);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ChangeHeight(float32 h) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="h" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="h">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ChangeWidth">
+      <MemberSignature Language="C#" Value="public void ChangeWidth (float w);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ChangeWidth(float32 w) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="w" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="w">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ChangeWidthAndHeight">
+      <MemberSignature Language="C#" Value="public void ChangeWidthAndHeight (float w, float h);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ChangeWidthAndHeight(float32 w, float32 h) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="w" Type="System.Single" />
+        <Parameter Name="h" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="w">To be added.</param>
+        <param name="h">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Color">
+      <MemberSignature Language="C#" Value="public override Cocos2D.CCColor3B Color { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B Color" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContentSize">
+      <MemberSignature Language="C#" Value="public override Cocos2D.CCSize ContentSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize ContentSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="public override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public override bool Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithColor">
+      <MemberSignature Language="C#" Value="public virtual bool InitWithColor (Cocos2D.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithColor(valuetype Cocos2D.CCColor4B color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="color" Type="Cocos2D.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithColor">
+      <MemberSignature Language="C#" Value="public virtual bool InitWithColor (Cocos2D.CCColor4B color, float width, float height);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithColor(valuetype Cocos2D.CCColor4B color, float32 width, float32 height) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="color" Type="Cocos2D.CCColor4B" />
+        <Parameter Name="width" Type="System.Single" />
+        <Parameter Name="height" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="color">To be added.</param>
+        <param name="width">To be added.</param>
+        <param name="height">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pSquareVertices">
+      <MemberSignature Language="C#" Value="protected Microsoft.Xna.Framework.Graphics.VertexPositionColor[] m_pSquareVertices;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Microsoft.Xna.Framework.Graphics.VertexPositionColor[] m_pSquareVertices" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Xna.Framework.Graphics.VertexPositionColor[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tBlendFunc">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCBlendFunc m_tBlendFunc;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCBlendFunc m_tBlendFunc" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Opacity">
+      <MemberSignature Language="C#" Value="public override byte Opacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Opacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateColor">
+      <MemberSignature Language="C#" Value="protected virtual void UpdateColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void UpdateColor() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

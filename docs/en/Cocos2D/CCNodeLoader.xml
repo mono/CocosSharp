@@ -1,0 +1,1604 @@
+<Type Name="CCNodeLoader" FullName="Cocos2D.CCNodeLoader">
+  <TypeSignature Language="C#" Value="public class CCNodeLoader" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNodeLoader extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCNodeLoader ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateCCNode">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCNode CreateCCNode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.CCNode CreateCCNode() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCNode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadCCNode">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCNode LoadCCNode (Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.CCNode LoadCCNode(class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCNode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeAnimation">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeAnimation (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCAnimation animation, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeAnimation(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.CCAnimation animation, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="animation" Type="Cocos2D.CCAnimation" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="animation">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeBlendFunc">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlendFunc (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCBlendFunc blendFunc, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlendFunc(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCBlendFunc blendFunc, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="blendFunc" Type="Cocos2D.CCBlendFunc" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="blendFunc">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeBlock">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlock (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.BlockData pBlockData, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.BlockData pBlockData, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pBlockData" Type="Cocos2D.BlockData" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pBlockData">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeBlockCcControl">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlockCcControl (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.BlockCCControlData blockControlData, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlockCcControl(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.BlockCCControlData blockControlData, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="blockControlData" Type="Cocos2D.BlockCCControlData" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="blockControlData">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeByte">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeByte (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, byte pByte, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeByte(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, unsigned int8 pByte, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pByte" Type="System.Byte" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pByte">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeCCBFile">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeCCBFile (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCNode fileNode, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeCCBFile(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.CCNode fileNode, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="fileNode" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="fileNode">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeCheck">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeCheck (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, bool pCheck, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeCheck(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, bool pCheck, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pCheck" Type="System.Boolean" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pCheck">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeColor3">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeColor3 (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCColor3B color, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeColor3(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCColor3B color, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="color" Type="Cocos2D.CCColor3B" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="color">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeColor4FVar">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeColor4FVar (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCColor4F[] colorVar, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeColor4FVar(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCColor4F[] colorVar, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="colorVar" Type="Cocos2D.CCColor4F[]" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="colorVar">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeDegrees">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeDegrees (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, float pDegrees, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeDegrees(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, float32 pDegrees, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pDegrees" Type="System.Single" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pDegrees">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeFlip">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFlip (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, bool[] pFlip, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFlip(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, bool[] pFlip, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pFlip" Type="System.Boolean[]" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pFlip">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeFloat">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloat (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, float pFloat, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloat(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, float32 pFloat, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pFloat" Type="System.Single" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pFloat">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeFloatScale">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloatScale (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, float floatScale, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloatScale(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, float32 floatScale, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="floatScale" Type="System.Single" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="floatScale">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeFloatVar">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloatVar (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, float[] pFoatVar, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloatVar(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, float32[] pFoatVar, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pFoatVar" Type="System.Single[]" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pFoatVar">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeFntFile">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFntFile (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, string pFntFile, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFntFile(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, string pFntFile, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pFntFile" Type="System.String" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pFntFile">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeFontTTF">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFontTTF (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, string fontTTF, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFontTTF(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, string fontTTF, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="fontTTF" Type="System.String" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="fontTTF">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeInteger">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeInteger (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, int pInteger, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeInteger(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, int32 pInteger, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pInteger" Type="System.Int32" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pInteger">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeIntegerLabeled">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeIntegerLabeled (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, int pIntegerLabeled, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeIntegerLabeled(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, int32 pIntegerLabeled, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pIntegerLabeled" Type="System.Int32" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pIntegerLabeled">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypePoint">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePoint (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCPoint point, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePoint(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCPoint point, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="point" Type="Cocos2D.CCPoint" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="point">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypePointLock">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePointLock (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCPoint pPointLock, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePointLock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCPoint pPointLock, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pPointLock" Type="Cocos2D.CCPoint" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pPointLock">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypePosition">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePosition (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCPoint pPosition, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePosition(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCPoint pPosition, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pPosition" Type="Cocos2D.CCPoint" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pPosition">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeScaleLock">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeScaleLock (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, float[] pScaleLock, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeScaleLock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, float32[] pScaleLock, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pScaleLock" Type="System.Single[]" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pScaleLock">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeSize">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeSize (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCSize pSize, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeSize(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCSize pSize, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pSize" Type="Cocos2D.CCSize" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pSize">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeSpriteFrame">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeSpriteFrame (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCSpriteFrame spriteFrame, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeSpriteFrame(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.CCSpriteFrame spriteFrame, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="spriteFrame" Type="Cocos2D.CCSpriteFrame" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="spriteFrame">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeString">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeString (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, string pString, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeString(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, string pString, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pString" Type="System.String" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pString">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeText">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeText (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, string pText, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeText(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, string pText, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="pText" Type="System.String" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="pText">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnHandlePropTypeTexture">
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeTexture (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCTexture2D texture, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeTexture(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.CCTexture2D texture, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="propertyName" Type="System.String" />
+        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <param name="texture">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParseProperties">
+      <MemberSignature Language="C#" Value="public virtual void ParseProperties (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ParseProperties(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeAnimation">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCAnimation ParsePropTypeAnimation (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.CCAnimation ParsePropTypeAnimation(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCAnimation</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeBlendFunc">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCBlendFunc ParsePropTypeBlendFunc (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCBlendFunc ParsePropTypeBlendFunc(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeBlock">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.BlockData ParsePropTypeBlock (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.BlockData ParsePropTypeBlock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.BlockData</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeBlockCcControl">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.BlockCCControlData ParsePropTypeBlockCcControl (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.BlockCCControlData ParsePropTypeBlockCcControl(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.BlockCCControlData</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeByte">
+      <MemberSignature Language="C#" Value="protected virtual byte ParsePropTypeByte (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance unsigned int8 ParsePropTypeByte(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="propertyName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeCcbFile">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCNode ParsePropTypeCcbFile (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.CCNode ParsePropTypeCcbFile(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCNode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeCheck">
+      <MemberSignature Language="C#" Value="protected virtual bool ParsePropTypeCheck (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool ParsePropTypeCheck(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="propertyName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeColor3">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCColor3B ParsePropTypeColor3 (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCColor3B ParsePropTypeColor3(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="propertyName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeColor4FVar">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCColor4F[] ParsePropTypeColor4FVar (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCColor4F[] ParsePropTypeColor4FVar(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor4F[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeDegrees">
+      <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeDegrees (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeDegrees(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="propertyName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeFlip">
+      <MemberSignature Language="C#" Value="protected virtual bool[] ParsePropTypeFlip (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool[] ParsePropTypeFlip(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeFloat">
+      <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeFloat (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeFloat(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeFloatScale">
+      <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeFloatScale (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeFloatScale(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeFloatVar">
+      <MemberSignature Language="C#" Value="protected virtual float[] ParsePropTypeFloatVar (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32[] ParsePropTypeFloatVar(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeFntFile">
+      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeFntFile (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeFntFile(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeFontTTF">
+      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeFontTTF (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeFontTTF(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeInteger">
+      <MemberSignature Language="C#" Value="protected virtual int ParsePropTypeInteger (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 ParsePropTypeInteger(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeIntegerLabeled">
+      <MemberSignature Language="C#" Value="protected virtual int ParsePropTypeIntegerLabeled (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 ParsePropTypeIntegerLabeled(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypePoint">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCPoint ParsePropTypePoint (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCPoint ParsePropTypePoint(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypePointLock">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCPoint ParsePropTypePointLock (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCPoint ParsePropTypePointLock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypePosition">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCPoint ParsePropTypePosition (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCPoint ParsePropTypePosition(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="propertyName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeScaleLock">
+      <MemberSignature Language="C#" Value="protected virtual float[] ParsePropTypeScaleLock (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32[] ParsePropTypeScaleLock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="propertyName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeSize">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCSize ParsePropTypeSize (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCSize ParsePropTypeSize(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeSpriteFrame">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCSpriteFrame ParsePropTypeSpriteFrame (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.CCSpriteFrame ParsePropTypeSpriteFrame(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSpriteFrame</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="propertyName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeString">
+      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeString (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeString(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeText">
+      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeText (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeText(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParsePropTypeTexture">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCTexture2D ParsePropTypeTexture (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.CCTexture2D ParsePropTypeTexture(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+      </Parameters>
+      <Docs>
+        <param name="node">To be added.</param>
+        <param name="parent">To be added.</param>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PROPERTY_ANCHORPOINT">
+      <MemberSignature Language="C#" Value="protected const string PROPERTY_ANCHORPOINT;" />
+      <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_ANCHORPOINT" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PROPERTY_CONTENTSIZE">
+      <MemberSignature Language="C#" Value="protected const string PROPERTY_CONTENTSIZE;" />
+      <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_CONTENTSIZE" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PROPERTY_IGNOREANCHORPOINTFORPOSITION">
+      <MemberSignature Language="C#" Value="protected const string PROPERTY_IGNOREANCHORPOINTFORPOSITION;" />
+      <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_IGNOREANCHORPOINTFORPOSITION" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PROPERTY_POSITION">
+      <MemberSignature Language="C#" Value="protected const string PROPERTY_POSITION;" />
+      <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_POSITION" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PROPERTY_ROTATION">
+      <MemberSignature Language="C#" Value="protected const string PROPERTY_ROTATION;" />
+      <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_ROTATION" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PROPERTY_SCALE">
+      <MemberSignature Language="C#" Value="protected const string PROPERTY_SCALE;" />
+      <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_SCALE" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PROPERTY_TAG">
+      <MemberSignature Language="C#" Value="protected const string PROPERTY_TAG;" />
+      <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_TAG" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PROPERTY_VISIBLE">
+      <MemberSignature Language="C#" Value="protected const string PROPERTY_VISIBLE;" />
+      <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_VISIBLE" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

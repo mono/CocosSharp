@@ -1,0 +1,417 @@
+<Type Name="CCCamera" FullName="Cocos2D.CCCamera">
+  <TypeSignature Language="C#" Value="public class CCCamera" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCamera extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCCamera ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dirty">
+      <MemberSignature Language="C#" Value="public bool Dirty { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Dirty" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetCenterXyz">
+      <MemberSignature Language="C#" Value="public void GetCenterXyz (out float pCenterX, out float pCenterY, out float pCenterZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetCenterXyz(float32 pCenterX, float32 pCenterY, float32 pCenterZ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pCenterX" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="pCenterY" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="pCenterZ" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="pCenterX">To be added.</param>
+        <param name="pCenterY">To be added.</param>
+        <param name="pCenterZ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetEyeXyz">
+      <MemberSignature Language="C#" Value="public void GetEyeXyz (out float pEyeX, out float pEyeY, out float pEyeZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetEyeXyz(float32 pEyeX, float32 pEyeY, float32 pEyeZ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pEyeX" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="pEyeY" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="pEyeZ" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="pEyeX">To be added.</param>
+        <param name="pEyeY">To be added.</param>
+        <param name="pEyeZ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetUpXyz">
+      <MemberSignature Language="C#" Value="public void GetUpXyz (out float pUpX, out float pUpY, out float pUpZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetUpXyz(float32 pUpX, float32 pUpY, float32 pUpZ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pUpX" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="pUpY" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="pUpZ" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="pUpX">To be added.</param>
+        <param name="pUpY">To be added.</param>
+        <param name="pUpZ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetZEye">
+      <MemberSignature Language="C#" Value="public static float GetZEye ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 GetZEye() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public void Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Locate">
+      <MemberSignature Language="C#" Value="public void Locate ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Locate() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bDirty">
+      <MemberSignature Language="C#" Value="protected bool m_bDirty;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bDirty" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fCenterX">
+      <MemberSignature Language="C#" Value="protected float m_fCenterX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fCenterX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fCenterY">
+      <MemberSignature Language="C#" Value="protected float m_fCenterY;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fCenterY" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fCenterZ">
+      <MemberSignature Language="C#" Value="protected float m_fCenterZ;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fCenterZ" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fEyeX">
+      <MemberSignature Language="C#" Value="protected float m_fEyeX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fEyeX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fEyeY">
+      <MemberSignature Language="C#" Value="protected float m_fEyeY;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fEyeY" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fEyeZ">
+      <MemberSignature Language="C#" Value="protected float m_fEyeZ;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fEyeZ" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fUpX">
+      <MemberSignature Language="C#" Value="protected float m_fUpX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fUpX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fUpY">
+      <MemberSignature Language="C#" Value="protected float m_fUpY;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fUpY" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fUpZ">
+      <MemberSignature Language="C#" Value="protected float m_fUpZ;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fUpZ" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Restore">
+      <MemberSignature Language="C#" Value="public void Restore ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Restore() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetCenterXyz">
+      <MemberSignature Language="C#" Value="public void SetCenterXyz (float fCenterX, float fCenterY, float fCenterZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetCenterXyz(float32 fCenterX, float32 fCenterY, float32 fCenterZ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fCenterX" Type="System.Single" />
+        <Parameter Name="fCenterY" Type="System.Single" />
+        <Parameter Name="fCenterZ" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="fCenterX">To be added.</param>
+        <param name="fCenterY">To be added.</param>
+        <param name="fCenterZ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetEyeXyz">
+      <MemberSignature Language="C#" Value="public void SetEyeXyz (float fEyeX, float fEyeY, float fEyeZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetEyeXyz(float32 fEyeX, float32 fEyeY, float32 fEyeZ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fEyeX" Type="System.Single" />
+        <Parameter Name="fEyeY" Type="System.Single" />
+        <Parameter Name="fEyeZ" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="fEyeX">To be added.</param>
+        <param name="fEyeY">To be added.</param>
+        <param name="fEyeZ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetUpXyz">
+      <MemberSignature Language="C#" Value="public void SetUpXyz (float fUpX, float fUpY, float fUpZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetUpXyz(float32 fUpX, float32 fUpY, float32 fUpZ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fUpX" Type="System.Single" />
+        <Parameter Name="fUpY" Type="System.Single" />
+        <Parameter Name="fUpZ" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="fUpX">To be added.</param>
+        <param name="fUpY">To be added.</param>
+        <param name="fUpZ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

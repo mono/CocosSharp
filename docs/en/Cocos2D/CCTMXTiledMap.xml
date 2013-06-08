@@ -1,0 +1,321 @@
+<Type Name="CCTMXTiledMap" FullName="Cocos2D.CCTMXTiledMap">
+  <TypeSignature Language="C#" Value="public class CCTMXTiledMap : Cocos2D.CCNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXTiledMap extends Cocos2D.CCNode" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCNode</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTMXTiledMap ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCTMXTiledMap Create (string tmxFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCTMXTiledMap Create(string tmxFile) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTMXTiledMap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tmxFile" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="tmxFile">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithTmxFile">
+      <MemberSignature Language="C#" Value="public bool InitWithTmxFile (string tmxFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTmxFile(string tmxFile) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tmxFile" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="tmxFile">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LayerNamed">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCTMXLayer LayerNamed (string layerName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCTMXLayer LayerNamed(string layerName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTMXLayer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="layerName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="layerName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_nMapOrientation">
+      <MemberSignature Language="C#" Value="protected int m_nMapOrientation;" />
+      <MemberSignature Language="ILAsm" Value=".field family int32 m_nMapOrientation" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pObjectGroups">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCTMXObjectGroup&gt; m_pObjectGroups;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.CCTMXObjectGroup&gt; m_pObjectGroups" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXObjectGroup&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pProperties">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;string,string&gt; m_pProperties;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;string, string&gt; m_pProperties" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pTileProperties">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;uint,System.Collections.Generic.Dictionary&lt;string,string&gt;&gt; m_pTileProperties;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;unsigned int32, class System.Collections.Generic.Dictionary`2&lt;string, string&gt;&gt; m_pTileProperties" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.UInt32,System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tMapSize">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCSize m_tMapSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCSize m_tMapSize" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tTileSize">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCSize m_tTileSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCSize m_tTileSize" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapOrientation">
+      <MemberSignature Language="C#" Value="public int MapOrientation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MapOrientation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapSize">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCSize MapSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize MapSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObjectGroupNamed">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCTMXObjectGroup ObjectGroupNamed (string groupName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCTMXObjectGroup ObjectGroupNamed(string groupName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTMXObjectGroup</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="groupName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="groupName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObjectGroups">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Cocos2D.CCTMXObjectGroup&gt; ObjectGroups { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class Cocos2D.CCTMXObjectGroup&gt; ObjectGroups" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXObjectGroup&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Properties">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.Dictionary&lt;string,string&gt; Properties { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.Dictionary`2&lt;string, string&gt; Properties" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PropertiesForGID">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.Dictionary&lt;string,string&gt; PropertiesForGID (uint GID);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.Dictionary`2&lt;string, string&gt; PropertiesForGID(unsigned int32 GID) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="GID" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="GID">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PropertyNamed">
+      <MemberSignature Language="C#" Value="public string PropertyNamed (string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string PropertyNamed(string propertyName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="propertyName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TileSize">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCSize TileSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize TileSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

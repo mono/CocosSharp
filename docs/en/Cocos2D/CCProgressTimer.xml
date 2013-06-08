@@ -1,0 +1,458 @@
+<Type Name="CCProgressTimer" FullName="Cocos2D.CCProgressTimer">
+  <TypeSignature Language="C#" Value="public class CCProgressTimer : Cocos2D.CCNodeRGBA" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCProgressTimer extends Cocos2D.CCNodeRGBA" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCNodeRGBA</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCProgressTimer (Cocos2D.CCSprite sp);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCSprite sp) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="sp" Type="Cocos2D.CCSprite" />
+      </Parameters>
+      <Docs>
+        <param name="sp">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCProgressTimer (string fileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fileName) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="fileName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="fileName">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BarChangeRate">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint BarChangeRate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint BarChangeRate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BoundaryTexCoord">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint BoundaryTexCoord (int index);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance valuetype Cocos2D.CCPoint BoundaryTexCoord(int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="public override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithSprite">
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithSprite (Cocos2D.CCSprite sp);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithSprite(class Cocos2D.CCSprite sp) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sp" Type="Cocos2D.CCSprite" />
+      </Parameters>
+      <Docs>
+        <param name="sp">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsOpacityModifyRGB">
+      <MemberSignature Language="C#" Value="public override bool IsOpacityModifyRGB { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsOpacityModifyRGB" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bReverseDirection">
+      <MemberSignature Language="C#" Value="protected bool m_bReverseDirection;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bReverseDirection" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_eType">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCProgressTimerType m_eType;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCProgressTimerType m_eType" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCProgressTimerType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fPercentage">
+      <MemberSignature Language="C#" Value="protected float m_fPercentage;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fPercentage" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_nVertexDataCount">
+      <MemberSignature Language="C#" Value="protected int m_nVertexDataCount;" />
+      <MemberSignature Language="ILAsm" Value=".field family int32 m_nVertexDataCount" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pSprite">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCSprite m_pSprite;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCSprite m_pSprite" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pVertexData">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCV3F_C4B_T2F[] m_pVertexData;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCV3F_C4B_T2F[] m_pVertexData" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCV3F_C4B_T2F[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tBarChangeRate">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_tBarChangeRate;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_tBarChangeRate" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tMidpoint">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_tMidpoint;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_tMidpoint" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Midpoint">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Midpoint { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Midpoint" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Percentage">
+      <MemberSignature Language="C#" Value="public float Percentage { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Percentage" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReverseDirection">
+      <MemberSignature Language="C#" Value="public bool ReverseDirection { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ReverseDirection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReverseProgress">
+      <MemberSignature Language="C#" Value="public bool ReverseProgress { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ReverseProgress" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sprite">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCSprite Sprite { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCSprite Sprite" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TextureCoordFromAlphaPoint">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCTex2F TextureCoordFromAlphaPoint (Cocos2D.CCPoint alpha);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance valuetype Cocos2D.CCTex2F TextureCoordFromAlphaPoint(valuetype Cocos2D.CCPoint alpha) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTex2F</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="alpha" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="alpha">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Type">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCProgressTimerType Type { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCProgressTimerType Type" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCProgressTimerType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateBar">
+      <MemberSignature Language="C#" Value="protected void UpdateBar ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateBar() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateColor">
+      <MemberSignature Language="C#" Value="protected void UpdateColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateColor() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateProgress">
+      <MemberSignature Language="C#" Value="protected void UpdateProgress ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateProgress() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateRadial">
+      <MemberSignature Language="C#" Value="protected void UpdateRadial ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateRadial() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VertexFromAlphaPoint">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCVertex3F VertexFromAlphaPoint (Cocos2D.CCPoint alpha);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance valuetype Cocos2D.CCVertex3F VertexFromAlphaPoint(valuetype Cocos2D.CCPoint alpha) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCVertex3F</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="alpha" Type="Cocos2D.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="alpha">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

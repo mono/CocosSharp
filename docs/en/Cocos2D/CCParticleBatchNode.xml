@@ -1,0 +1,337 @@
+<Type Name="CCParticleBatchNode" FullName="Cocos2D.CCParticleBatchNode">
+  <TypeSignature Language="C#" Value="public class CCParticleBatchNode : Cocos2D.CCNode, Cocos2D.ICCTextureProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleBatchNode extends Cocos2D.CCNode implements class Cocos2D.ICCBlendProtocol, class Cocos2D.ICCTextureProtocol" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCNode</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Cocos2D.ICCTextureProtocol</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCParticleBatchNode (Cocos2D.CCTexture2D tex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCTexture2D tex) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="tex" Type="Cocos2D.CCTexture2D" />
+      </Parameters>
+      <Docs>
+        <param name="tex">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCParticleBatchNode (Cocos2D.CCTexture2D tex, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCTexture2D tex, int32 capacity) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="tex" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="capacity" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tex">To be added.</param>
+        <param name="capacity">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCParticleBatchNode (string imageFile, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string imageFile, int32 capacity) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="imageFile" Type="System.String" />
+        <Parameter Name="capacity" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="imageFile">To be added.</param>
+        <param name="capacity">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddChild">
+      <MemberSignature Language="C#" Value="public override void AddChild (Cocos2D.CCNode child, int zOrder, int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class Cocos2D.CCNode child, int32 zOrder, int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="zOrder" Type="System.Int32" />
+        <Parameter Name="tag" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <param name="zOrder">To be added.</param>
+        <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BlendFunc">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCBlendFunc BlendFunc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCBlendFunc BlendFunc" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisableParticle">
+      <MemberSignature Language="C#" Value="public void DisableParticle (int particleIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DisableParticle(int32 particleIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="particleIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="particleIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="public override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithFile">
+      <MemberSignature Language="C#" Value="public bool InitWithFile (string fileImage, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithFile(string fileImage, int32 capacity) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fileImage" Type="System.String" />
+        <Parameter Name="capacity" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="fileImage">To be added.</param>
+        <param name="capacity">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithTexture">
+      <MemberSignature Language="C#" Value="public bool InitWithTexture (Cocos2D.CCTexture2D tex, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTexture(class Cocos2D.CCTexture2D tex, int32 capacity) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tex" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="capacity" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tex">To be added.</param>
+        <param name="capacity">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="kCCParticleDefaultCapacity">
+      <MemberSignature Language="C#" Value="public const int kCCParticleDefaultCapacity = 500;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 kCCParticleDefaultCapacity = (500)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>500</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveAllChildrenWithCleanup">
+      <MemberSignature Language="C#" Value="public override void RemoveAllChildrenWithCleanup (bool doCleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveAllChildrenWithCleanup(bool doCleanup) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="doCleanup" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="doCleanup">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveChild">
+      <MemberSignature Language="C#" Value="public override void RemoveChild (Cocos2D.CCNode child, bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveChild(class Cocos2D.CCNode child, bool cleanup) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="cleanup" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <param name="cleanup">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveChildAtIndex">
+      <MemberSignature Language="C#" Value="public void RemoveChildAtIndex (int index, bool doCleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveChildAtIndex(int32 index, bool doCleanup) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+        <Parameter Name="doCleanup" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <param name="doCleanup">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReorderChild">
+      <MemberSignature Language="C#" Value="public override void ReorderChild (Cocos2D.CCNode child, int zOrder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void ReorderChild(class Cocos2D.CCNode child, int32 zOrder) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="zOrder" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <param name="zOrder">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Texture">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCTexture2D Texture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTexture2D Texture" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TextureAtlas">
+      <MemberSignature Language="C#" Value="public readonly Cocos2D.CCTextureAtlas TextureAtlas;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Cocos2D.CCTextureAtlas TextureAtlas" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTextureAtlas</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Visit">
+      <MemberSignature Language="C#" Value="public override void Visit ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Visit() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

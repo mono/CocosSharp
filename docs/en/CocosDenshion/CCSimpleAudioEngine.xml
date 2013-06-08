@@ -1,0 +1,478 @@
+<Type Name="CCSimpleAudioEngine" FullName="CocosDenshion.CCSimpleAudioEngine">
+  <TypeSignature Language="C#" Value="public class CCSimpleAudioEngine" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSimpleAudioEngine extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCSimpleAudioEngine ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BackgroundMusicVolume">
+      <MemberSignature Language="C#" Value="public float BackgroundMusicVolume { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 BackgroundMusicVolume" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EffectsVolume">
+      <MemberSignature Language="C#" Value="public float EffectsVolume { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 EffectsVolume" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="End">
+      <MemberSignature Language="C#" Value="public void End ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void End() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FullPath">
+      <MemberSignature Language="C#" Value="public static string FullPath (string szPath);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string FullPath(string szPath) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="szPath" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="szPath">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsBackgroundMusicPlaying">
+      <MemberSignature Language="C#" Value="public bool IsBackgroundMusicPlaying ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsBackgroundMusicPlaying() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PauseBackgroundMusic">
+      <MemberSignature Language="C#" Value="public void PauseBackgroundMusic ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PauseBackgroundMusic() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PlayBackgroundMusic">
+      <MemberSignature Language="C#" Value="public void PlayBackgroundMusic (string pszFilePath);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PlayBackgroundMusic(string pszFilePath) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszFilePath" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszFilePath">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PlayBackgroundMusic">
+      <MemberSignature Language="C#" Value="public void PlayBackgroundMusic (string pszFilePath, bool bLoop);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PlayBackgroundMusic(string pszFilePath, bool bLoop) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszFilePath" Type="System.String" />
+        <Parameter Name="bLoop" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="pszFilePath">To be added.</param>
+        <param name="bLoop">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PlayEffect">
+      <MemberSignature Language="C#" Value="public int PlayEffect (string pszFilePath);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 PlayEffect(string pszFilePath) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszFilePath" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszFilePath">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PlayEffect">
+      <MemberSignature Language="C#" Value="public int PlayEffect (string pszFilePath, bool bLoop);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 PlayEffect(string pszFilePath, bool bLoop) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszFilePath" Type="System.String" />
+        <Parameter Name="bLoop" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="pszFilePath">To be added.</param>
+        <param name="bLoop">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreloadBackgroundMusic">
+      <MemberSignature Language="C#" Value="public void PreloadBackgroundMusic (string pszFilePath);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PreloadBackgroundMusic(string pszFilePath) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszFilePath" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszFilePath">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreloadEffect">
+      <MemberSignature Language="C#" Value="public void PreloadEffect (string pszFilePath);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PreloadEffect(string pszFilePath) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszFilePath" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszFilePath">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RestoreMediaState">
+      <MemberSignature Language="C#" Value="public void RestoreMediaState ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RestoreMediaState() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResumeBackgroundMusic">
+      <MemberSignature Language="C#" Value="public void ResumeBackgroundMusic ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResumeBackgroundMusic() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RewindBackgroundMusic">
+      <MemberSignature Language="C#" Value="public void RewindBackgroundMusic ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RewindBackgroundMusic() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SaveMediaState">
+      <MemberSignature Language="C#" Value="public void SaveMediaState ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SaveMediaState() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetResource">
+      <MemberSignature Language="C#" Value="public static void SetResource (string pszZipFileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetResource(string pszZipFileName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("This is not used in this version of the library")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszZipFileName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszZipFileName">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SharedEngine">
+      <MemberSignature Language="C#" Value="public static CocosDenshion.CCSimpleAudioEngine SharedEngine { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosDenshion.CCSimpleAudioEngine SharedEngine" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosDenshion.CCSimpleAudioEngine</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SharedList">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.Dictionary&lt;int,CocosDenshion.CCEffectPlayer&gt; SharedList { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class System.Collections.Generic.Dictionary`2&lt;int32, class CocosDenshion.CCEffectPlayer&gt; SharedList" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.Int32,CocosDenshion.CCEffectPlayer&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StopAllLoopingEffects">
+      <MemberSignature Language="C#" Value="public void StopAllLoopingEffects ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopAllLoopingEffects() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StopBackgroundMusic">
+      <MemberSignature Language="C#" Value="public void StopBackgroundMusic ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopBackgroundMusic() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StopBackgroundMusic">
+      <MemberSignature Language="C#" Value="public void StopBackgroundMusic (bool bReleaseData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopBackgroundMusic(bool bReleaseData) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bReleaseData" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="bReleaseData">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StopEffect">
+      <MemberSignature Language="C#" Value="public void StopEffect (int nSoundId);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopEffect(int32 nSoundId) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nSoundId" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="nSoundId">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnloadEffect">
+      <MemberSignature Language="C#" Value="public void UnloadEffect (string pszFilePath);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnloadEffect(string pszFilePath) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pszFilePath" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pszFilePath">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillPlayBackgroundMusic">
+      <MemberSignature Language="C#" Value="public bool WillPlayBackgroundMusic ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool WillPlayBackgroundMusic() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

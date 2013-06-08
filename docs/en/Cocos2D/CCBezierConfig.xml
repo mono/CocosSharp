@@ -1,0 +1,63 @@
+<Type Name="CCBezierConfig" FullName="Cocos2D.CCBezierConfig">
+  <TypeSignature Language="C#" Value="public struct CCBezierConfig" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCBezierConfig extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ControlPoint1">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ControlPoint1;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint ControlPoint1" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ControlPoint2">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ControlPoint2;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint ControlPoint2" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EndPosition">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint EndPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint EndPosition" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
