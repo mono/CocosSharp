@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -35,7 +35,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <OutputPath>bin\WindowsStore\ARM\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
@@ -79,7 +79,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
+    <OutputPath>bin\WindowsStore\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
@@ -360,7 +360,7 @@
     </Compile>
     <Compile Include=".\actions\action_intervals\CCParallel.cs">
       <LogicalName>actions\action_intervals\CCParallel</LogicalName>
-	</Compile>
+    </Compile>
     <Compile Include=".\actions\action_progress_timer\CCProgressFromTo.cs">
       <LogicalName>actions\action_progress_timer\CCProgressFromTo</LogicalName>
     </Compile>
@@ -438,7 +438,7 @@
     </Compile>
     <Compile Include=".\CCDrawingPrimitives.cs">
       <LogicalName>CCDrawingPrimitives</LogicalName>
-	  </Compile>
+    </Compile>
     <Compile Include=".\CCDrawingPrimitives-DrawEllipticleArc.cs">
       <LogicalName>CCDrawingPrimitives-DrawEllipticleArc</LogicalName>
     </Compile>
@@ -1177,9 +1177,7 @@
       <Name>MonoGame.Framework.Windows8</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="support\Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>external lib\ICSharpCode.SharpZipLib.dll</HintPath>

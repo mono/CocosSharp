@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Cocos2D-XNA.MacOS</id>
+    <version>2.0.3.0</version>
+    <title>Cocos2D-XNA</title>
+    <authors>Cocos2D-XNA, Totally Evil Entertainment, LLC, and Xamarin, Inc.</authors>
+    <owners>Cocos2D-XNA</owners>
+    <licenseUrl>https://cocos2dxna.codeplex.com/license</licenseUrl>
+    <projectUrl>http://cocos2dxna.codeplex.com</projectUrl>
+    <iconUrl>http://cocos2dxna.codeplex.com</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Cocos2D-XNA is a simple game engine typically used for 2D games, educational software and 2D visualizations.   This code allows games to be built with a write-once, run-anywhere approach.</description>
+    <copyright>Copyright 2013 Cocos2D-XNA</copyright>
+    <tags>cocos2d cocos2d-xna xna monogame 2D games visualization engine xamarin</tags>
+
+  </metadata>
+
+  <files>
+    <file src="..\..\cocos2d\bin\MacOS\Release\box2d.dll" target="lib\" />
+    <file src="..\..\cocos2d\bin\MacOS\Release\cocos2d-xna.dll" target="lib\" />
+    <file src="..\..\cocos2d\bin\MacOS\Release\ICSharpCode.SharpZipLib.dll" target="lib\" />
+    <file src="..\..\cocos2d\bin\MacOS\Release\zlib.net.dll" target="lib\" />
+  </files>
+
+</package>
