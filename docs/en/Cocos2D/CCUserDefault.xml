@@ -1,0 +1,321 @@
+<Type Name="CCUserDefault" FullName="Cocos2D.CCUserDefault">
+  <TypeSignature Language="C#" Value="public class CCUserDefault" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCUserDefault extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Flush">
+      <MemberSignature Language="C#" Value="public void Flush ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Flush() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBoolForKey">
+      <MemberSignature Language="C#" Value="public bool GetBoolForKey (string pKey);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetBoolForKey(string pKey) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBoolForKey">
+      <MemberSignature Language="C#" Value="public bool GetBoolForKey (string pKey, bool defaultValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetBoolForKey(string pKey, bool defaultValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+        <Parameter Name="defaultValue" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <param name="defaultValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDoubleForKey">
+      <MemberSignature Language="C#" Value="public double GetDoubleForKey (string pKey, double defaultValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetDoubleForKey(string pKey, float64 defaultValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+        <Parameter Name="defaultValue" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <param name="defaultValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFloatForKey">
+      <MemberSignature Language="C#" Value="public float GetFloatForKey (string pKey, float defaultValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 GetFloatForKey(string pKey, float32 defaultValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+        <Parameter Name="defaultValue" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <param name="defaultValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetIntegerForKey">
+      <MemberSignature Language="C#" Value="public int GetIntegerForKey (string pKey);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 GetIntegerForKey(string pKey) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetIntegerForKey">
+      <MemberSignature Language="C#" Value="public int GetIntegerForKey (string pKey, int defaultValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 GetIntegerForKey(string pKey, int32 defaultValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+        <Parameter Name="defaultValue" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <param name="defaultValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetStringForKey">
+      <MemberSignature Language="C#" Value="public string GetStringForKey (string pKey, string defaultValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string GetStringForKey(string pKey, string defaultValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+        <Parameter Name="defaultValue" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <param name="defaultValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PurgeSharedUserDefault">
+      <MemberSignature Language="C#" Value="public void PurgeSharedUserDefault ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PurgeSharedUserDefault() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetBoolForKey">
+      <MemberSignature Language="C#" Value="public void SetBoolForKey (string pKey, bool value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetBoolForKey(string pKey, bool value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+        <Parameter Name="value" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetDoubleForKey">
+      <MemberSignature Language="C#" Value="public void SetDoubleForKey (string pKey, double value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDoubleForKey(string pKey, float64 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+        <Parameter Name="value" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetFloatForKey">
+      <MemberSignature Language="C#" Value="public void SetFloatForKey (string pKey, float value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFloatForKey(string pKey, float32 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+        <Parameter Name="value" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetIntegerForKey">
+      <MemberSignature Language="C#" Value="public void SetIntegerForKey (string pKey, int value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetIntegerForKey(string pKey, int32 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+        <Parameter Name="value" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetStringForKey">
+      <MemberSignature Language="C#" Value="public void SetStringForKey (string pKey, string value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetStringForKey(string pKey, string value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SharedUserDefault">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCUserDefault SharedUserDefault { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class Cocos2D.CCUserDefault SharedUserDefault" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCUserDefault</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

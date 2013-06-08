@@ -1,0 +1,573 @@
+<Type Name="CCMenu" FullName="Cocos2D.CCMenu">
+  <TypeSignature Language="C#" Value="public class CCMenu : Cocos2D.CCLayerRGBA" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenu extends Cocos2D.CCLayerRGBA implements class Cocos2D.ICCTouchDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCLayerRGBA</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenu (Cocos2D.CCMenuItem[] items);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCMenuItem[] items) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="items" Type="Cocos2D.CCMenuItem[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="items">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddChild">
+      <MemberSignature Language="C#" Value="public override void AddChild (Cocos2D.CCNode child, int zOrder, int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class Cocos2D.CCNode child, int32 zOrder, int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="zOrder" Type="System.Int32" />
+        <Parameter Name="tag" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <param name="zOrder">To be added.</param>
+        <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AlignItemsHorizontally">
+      <MemberSignature Language="C#" Value="public void AlignItemsHorizontally ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AlignItemsHorizontally() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AlignItemsHorizontallyWithPadding">
+      <MemberSignature Language="C#" Value="public void AlignItemsHorizontallyWithPadding (float padding);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AlignItemsHorizontallyWithPadding(float32 padding) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="padding" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="padding">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AlignItemsInColumns">
+      <MemberSignature Language="C#" Value="public void AlignItemsInColumns (int[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AlignItemsInColumns(int32[] columns) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="columns" Type="System.Int32[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="columns">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AlignItemsInRows">
+      <MemberSignature Language="C#" Value="public void AlignItemsInRows (int[] rows);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AlignItemsInRows(int32[] rows) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rows" Type="System.Int32[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="rows">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AlignItemsVertically">
+      <MemberSignature Language="C#" Value="public void AlignItemsVertically ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AlignItemsVertically() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AlignItemsVerticallyWithPadding">
+      <MemberSignature Language="C#" Value="public void AlignItemsVerticallyWithPadding (float padding);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AlignItemsVerticallyWithPadding(float32 padding) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="padding" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="padding">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Enabled">
+      <MemberSignature Language="C#" Value="public bool Enabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasFocus">
+      <MemberSignature Language="C#" Value="public override bool HasFocus { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool HasFocus" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public override bool Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithItems">
+      <MemberSignature Language="C#" Value="public bool InitWithItems (Cocos2D.CCMenuItem[] items);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithItems(class Cocos2D.CCMenuItem[] items) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="items" Type="Cocos2D.CCMenuItem[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="items">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemForTouch">
+      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCMenuItem ItemForTouch (Cocos2D.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.CCMenuItem ItemForTouch(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCMenuItem</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemWithFocus">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCMenuItem ItemWithFocus { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCMenuItem ItemWithFocus" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCMenuItem</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="kCCMenuHandlerPriority">
+      <MemberSignature Language="C#" Value="public const int kCCMenuHandlerPriority = -128;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 kCCMenuHandlerPriority = (-128)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-128</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="kDefaultPadding">
+      <MemberSignature Language="C#" Value="public const float kDefaultPadding = 5;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal float32 kDefaultPadding = (5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <MemberValue>5</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bEnabled">
+      <MemberSignature Language="C#" Value="protected bool m_bEnabled;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bEnabled" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_eState">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCMenuState m_eState;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCMenuState m_eState" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCMenuState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pSelectedItem">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCMenuItem m_pSelectedItem;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCMenuItem m_pSelectedItem" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCMenuItem</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnEnter">
+      <MemberSignature Language="C#" Value="public override void OnEnter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnEnter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnExit">
+      <MemberSignature Language="C#" Value="public override void OnExit ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnExit() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnGamePadButtonUpdate">
+      <MemberSignature Language="C#" Value="protected override void OnGamePadButtonUpdate (Cocos2D.CCGamePadButtonStatus backButton, Cocos2D.CCGamePadButtonStatus startButton, Cocos2D.CCGamePadButtonStatus systemButton, Cocos2D.CCGamePadButtonStatus aButton, Cocos2D.CCGamePadButtonStatus bButton, Cocos2D.CCGamePadButtonStatus xButton, Cocos2D.CCGamePadButtonStatus yButton, Cocos2D.CCGamePadButtonStatus leftShoulder, Cocos2D.CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnGamePadButtonUpdate(valuetype Cocos2D.CCGamePadButtonStatus backButton, valuetype Cocos2D.CCGamePadButtonStatus startButton, valuetype Cocos2D.CCGamePadButtonStatus systemButton, valuetype Cocos2D.CCGamePadButtonStatus aButton, valuetype Cocos2D.CCGamePadButtonStatus bButton, valuetype Cocos2D.CCGamePadButtonStatus xButton, valuetype Cocos2D.CCGamePadButtonStatus yButton, valuetype Cocos2D.CCGamePadButtonStatus leftShoulder, valuetype Cocos2D.CCGamePadButtonStatus rightShoulder, valuetype Microsoft.Xna.Framework.PlayerIndex player) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="backButton" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="startButton" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="systemButton" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="aButton" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="bButton" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="xButton" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="yButton" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="leftShoulder" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="rightShoulder" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="player" Type="Microsoft.Xna.Framework.PlayerIndex" />
+      </Parameters>
+      <Docs>
+        <param name="backButton">To be added.</param>
+        <param name="startButton">To be added.</param>
+        <param name="systemButton">To be added.</param>
+        <param name="aButton">To be added.</param>
+        <param name="bButton">To be added.</param>
+        <param name="xButton">To be added.</param>
+        <param name="yButton">To be added.</param>
+        <param name="leftShoulder">To be added.</param>
+        <param name="rightShoulder">To be added.</param>
+        <param name="player">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegisterWithTouchDispatcher">
+      <MemberSignature Language="C#" Value="public override void RegisterWithTouchDispatcher ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RegisterWithTouchDispatcher() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveChild">
+      <MemberSignature Language="C#" Value="public override void RemoveChild (Cocos2D.CCNode child, bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveChild(class Cocos2D.CCNode child, bool cleanup) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="cleanup" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <param name="cleanup">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetHandlerPriority">
+      <MemberSignature Language="C#" Value="public void SetHandlerPriority (int newPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetHandlerPriority(int32 newPriority) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="newPriority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="newPriority">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchBegan">
+      <MemberSignature Language="C#" Value="public override bool TouchBegan (Cocos2D.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TouchBegan(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchCancelled">
+      <MemberSignature Language="C#" Value="public override void TouchCancelled (Cocos2D.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchCancelled(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchEnded">
+      <MemberSignature Language="C#" Value="public override void TouchEnded (Cocos2D.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchEnded(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchMoved">
+      <MemberSignature Language="C#" Value="public override void TouchMoved (Cocos2D.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchMoved(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

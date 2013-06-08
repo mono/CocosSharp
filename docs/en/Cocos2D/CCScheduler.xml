@@ -1,0 +1,354 @@
+<Type Name="CCScheduler" FullName="Cocos2D.CCScheduler">
+  <TypeSignature Language="C#" Value="public class CCScheduler" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScheduler extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCScheduler ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsTargetPaused">
+      <MemberSignature Language="C#" Value="public bool IsTargetPaused (Cocos2D.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsTargetPaused(class Cocos2D.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="Cocos2D.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="kCCPriorityNonSystemMin">
+      <MemberSignature Language="C#" Value="public const int kCCPriorityNonSystemMin = -2147483647;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 kCCPriorityNonSystemMin = (-2147483647)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-2147483647</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="kCCPrioritySystem">
+      <MemberSignature Language="C#" Value="public const int kCCPrioritySystem = -2147483648;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 kCCPrioritySystem = (-2147483648)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-2147483648</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="kCCRepeatForever">
+      <MemberSignature Language="C#" Value="public const uint kCCRepeatForever = 4294967294;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int32 kCCRepeatForever = (4294967294)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <MemberValue>4294967294</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PauseAllTargets">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Cocos2D.ICCSelectorProtocol&gt; PauseAllTargets ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Cocos2D.ICCSelectorProtocol&gt; PauseAllTargets() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.ICCSelectorProtocol&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PauseAllTargetsWithMinPriority">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Cocos2D.ICCSelectorProtocol&gt; PauseAllTargetsWithMinPriority (int minPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Cocos2D.ICCSelectorProtocol&gt; PauseAllTargetsWithMinPriority(int32 minPriority) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.ICCSelectorProtocol&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="minPriority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="minPriority">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PauseTarget">
+      <MemberSignature Language="C#" Value="public void PauseTarget (Cocos2D.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PauseTarget(class Cocos2D.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="Cocos2D.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResumeTarget">
+      <MemberSignature Language="C#" Value="public void ResumeTarget (Cocos2D.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResumeTarget(class Cocos2D.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="Cocos2D.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResumeTargets">
+      <MemberSignature Language="C#" Value="public void ResumeTargets (System.Collections.Generic.List&lt;Cocos2D.ICCSelectorProtocol&gt; targetsToResume);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResumeTargets(class System.Collections.Generic.List`1&lt;class Cocos2D.ICCSelectorProtocol&gt; targetsToResume) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targetsToResume" Type="System.Collections.Generic.List&lt;Cocos2D.ICCSelectorProtocol&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="targetsToResume">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScheduleSelector">
+      <MemberSignature Language="C#" Value="public void ScheduleSelector (Action&lt;float&gt; selector, Cocos2D.ICCSelectorProtocol target, float interval, bool paused, uint repeat, float delay);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ScheduleSelector(class System.Action`1&lt;float32&gt; selector, class Cocos2D.ICCSelectorProtocol target, float32 interval, bool paused, unsigned int32 repeat, float32 delay) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
+        <Parameter Name="target" Type="Cocos2D.ICCSelectorProtocol" />
+        <Parameter Name="interval" Type="System.Single" />
+        <Parameter Name="paused" Type="System.Boolean" />
+        <Parameter Name="repeat" Type="System.UInt32" />
+        <Parameter Name="delay" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <param name="target">To be added.</param>
+        <param name="interval">To be added.</param>
+        <param name="paused">To be added.</param>
+        <param name="repeat">To be added.</param>
+        <param name="delay">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScheduleUpdateForTarget">
+      <MemberSignature Language="C#" Value="public void ScheduleUpdateForTarget (Cocos2D.ICCSelectorProtocol targt, int priority, bool paused);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ScheduleUpdateForTarget(class Cocos2D.ICCSelectorProtocol targt, int32 priority, bool paused) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targt" Type="Cocos2D.ICCSelectorProtocol" />
+        <Parameter Name="priority" Type="System.Int32" />
+        <Parameter Name="paused" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="targt">To be added.</param>
+        <param name="priority">To be added.</param>
+        <param name="paused">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TimeScale">
+      <MemberSignature Language="C#" Value="public float TimeScale;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 TimeScale" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleAllSelectors">
+      <MemberSignature Language="C#" Value="public void UnscheduleAllSelectors ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAllSelectors() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleAllSelectorsForTarget">
+      <MemberSignature Language="C#" Value="public void UnscheduleAllSelectorsForTarget (Cocos2D.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAllSelectorsForTarget(class Cocos2D.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="Cocos2D.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleAllSelectorsWithMinPriority">
+      <MemberSignature Language="C#" Value="public void UnscheduleAllSelectorsWithMinPriority (int minPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAllSelectorsWithMinPriority(int32 minPriority) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="minPriority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="minPriority">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleSelector">
+      <MemberSignature Language="C#" Value="public void UnscheduleSelector (Action&lt;float&gt; selector, Cocos2D.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleSelector(class System.Action`1&lt;float32&gt; selector, class Cocos2D.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
+        <Parameter Name="target" Type="Cocos2D.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleUpdateForTarget">
+      <MemberSignature Language="C#" Value="public void UnscheduleUpdateForTarget (Cocos2D.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleUpdateForTarget(class Cocos2D.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="Cocos2D.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

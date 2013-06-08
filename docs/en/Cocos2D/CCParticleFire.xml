@@ -1,0 +1,51 @@
+<Type Name="CCParticleFire" FullName="Cocos2D.CCParticleFire">
+  <TypeSignature Language="C#" Value="public class CCParticleFire : Cocos2D.CCParticleSystemQuad" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleFire extends Cocos2D.CCParticleSystemQuad" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCParticleSystemQuad</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCParticleFire ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithTotalParticles">
+      <MemberSignature Language="C#" Value="public override bool InitWithTotalParticles (int numberOfParticles);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool InitWithTotalParticles(int32 numberOfParticles) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="numberOfParticles" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="numberOfParticles">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

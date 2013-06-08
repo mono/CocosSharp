@@ -151,9 +151,10 @@ namespace Cocos2D
     		}
 
     #else
+
             myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication();
 
-    		// only create xml file once if it doesnt exist
+            // only create xml file once if it doesnt exist
     		if ((!isXMLFileExist())) {
     			createXMLFile();
     		}
