@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Cocos2D-XNA.Windows</id>
-    <version>2.0.3.0</version>
+    <version>2.0.3.3</version>
     <title>Cocos2D-XNA</title>
     <authors>Cocos2D-XNA, Totally Evil Entertainment, LLC, and Xamarin, Inc.</authors>
     <owners>Cocos2D-XNA</owners>
@@ -17,11 +17,7 @@
   </metadata>
 
   <files>
-    <file src="..\..\box2d\bin\Windows\Release\box2d.dll" target="lib\" />
-    <file src="..\..\cocos2d\bin\Windows\Release\cocos2d-xna.dll" target="lib\" />
-    <file src="..\..\cocos2d\bin\Windows\Release\ICSharpCode.SharpZipLib.dll" target="lib\" />
-    <file src="..\..\cocos2d\bin\Windows\Release\zlib.net.dll" target="lib\" />
-    <file src="..\..\cocos2d\bin\Windows\Release\cocos2d.Content.Pipeline.Importers.dll" target="lib\" />
+    <file src="..\..\cocos2d\bin\Windows\Release\*.dll" target="lib\NET40" />
   </files>
 
 </package>
