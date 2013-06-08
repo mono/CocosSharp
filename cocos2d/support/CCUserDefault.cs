@@ -151,8 +151,13 @@ namespace Cocos2D
     		}
 
     #else
+#if !WINDOWSGL
             myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication();
-
+#else
+            myIsolatedStorage = IsolatedStorageFile.GetStore(IsolatedStorageScope.User |
+                                IsolatedStorageScope.Domain |
+                                IsolatedStorageScope.Assembly, null, null);
+#endif
     		// only create xml file once if it doesnt exist
     		if ((!isXMLFileExist())) {
     			createXMLFile();
