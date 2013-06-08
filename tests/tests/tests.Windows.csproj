@@ -286,6 +286,7 @@
     <Compile Include="classes\tests\BugsTest\BugsTestMainLayer.cs" />
     <Compile Include="classes\tests\BugsTest\BugsTestScene.cs" />
     <Compile Include="classes\tests\ClickAndMoveTest\ClickAndMoveTest.cs" />
+    <Compile Include="classes\tests\ClippingNodeTest\ClippingNodeTestScene.cs" />
     <Compile Include="classes\tests\CocosDenshionTest\CocosDenshionTest.cs" />
     <Compile Include="classes\tests\ActionManagerTest\CrashTest.cs" />
     <Compile Include="classes\tests\DeviceTest\OrientationTest.cs" />

@@ -162,6 +162,7 @@
     <Compile Include="actions\action_tiled_grid\CCTurnOffTiles.cs" />
     <Compile Include="actions\action_tiled_grid\CCWavesTiles3D.cs" />
     <Compile Include="actions\action_tiled_grid\CCTile.cs" />
+    <Compile Include="CCFPSImage.cs" />
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
@@ -178,6 +179,8 @@
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerRGBA.cs" />
+    <Compile Include="misc_nodes\CCClippingNode.cs" />
+    <Compile Include="misc_nodes\CCDrawNode.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
     <Compile Include="platform\ICCFocusable.cs" />
     <Compile Include="platform\CCInputState.cs" />
