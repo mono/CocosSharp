@@ -201,7 +201,7 @@ namespace Cocos2D
 
         public override void Draw()
         {
-            CCDrawManager.BindTexture((CCTexture2D)null);
+            CCDrawManager.TextureEnabled = false;
             CCDrawManager.BlendFunc(m_tBlendFunc);
             CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  m_pSquareVertices, 0, 2);
         }

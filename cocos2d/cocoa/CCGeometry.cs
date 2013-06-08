@@ -78,7 +78,7 @@ namespace Cocos2D
 
         public CCPoint Reverse
         {
-            get { return (new CCPoint(-X, -Y)); }
+            get { return new CCPoint(-X, -Y); }
         }
 
         public override int GetHashCode()
@@ -631,6 +631,16 @@ namespace Cocos2D
 #else
             return (CCPointConverter.CCPointFromString(s));
 #endif
+        }
+
+        public static implicit operator Vector2(CCPoint point)
+        {
+            return new Vector2(point.X, point.Y);
+        }
+
+        public static implicit operator Vector3(CCPoint point)
+        {
+            return new Vector3(point.X, point.Y, 0);
         }
     }
 

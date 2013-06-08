@@ -1888,6 +1888,7 @@
     <Compile Include="classes\tests\ClickAndMoveTest\ClickAndMoveTest.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\ClippingNodeTest\ClippingNodeTestScene.cs" />
     <Compile Include="classes\tests\CocosDenshionTest\CocosDenshionTest.cs">
       <SubType>Code</SubType>
     </Compile>

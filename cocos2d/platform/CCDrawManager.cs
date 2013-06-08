@@ -49,6 +49,7 @@ namespace Cocos2D
         private static readonly RenderTarget2D m_renderTarget = null;
 
         private static Texture2D m_currentTexture;
+        private static bool m_textureEnabled;
         private static bool m_vertexColorEnabled;
 
         private static readonly Dictionary<CCBlendFunc, BlendState> m_blendStates = new Dictionary<CCBlendFunc, BlendState>();
@@ -96,6 +97,19 @@ namespace Cocos2D
                 if (m_vertexColorEnabled != value)
                 {
                     m_vertexColorEnabled = value;
+                    m_textureChanged = true;
+                }
+            }
+        }
+
+        public static bool TextureEnabled
+        {
+            get { return m_textureEnabled; }
+            set
+            {
+                if (m_textureEnabled != value)
+                {
+                    m_textureEnabled = value;
                     m_textureChanged = true;
                 }
             }
@@ -402,17 +416,9 @@ namespace Cocos2D
             {
                 var effect = (BasicEffect) m_currentEffect;
 
-                if (m_currentTexture != null)
-                {
-                    effect.TextureEnabled = true;
-                    effect.VertexColorEnabled = m_vertexColorEnabled;
-                    effect.Texture = m_currentTexture;
-                }
-                else
-                {
-                    effect.TextureEnabled = false;
-                    effect.VertexColorEnabled = m_vertexColorEnabled;
-                }
+                effect.TextureEnabled = m_textureEnabled;
+                effect.VertexColorEnabled = m_vertexColorEnabled;
+                effect.Texture = m_currentTexture;
             }
             else if (m_currentEffect is AlphaTestEffect)
             {
@@ -566,6 +572,7 @@ namespace Cocos2D
             //}
         }
 
+        /*
         public static void BindTexture(Texture2D texture)
         {
             if (m_currentTexture != texture)
@@ -574,6 +581,7 @@ namespace Cocos2D
                 m_textureChanged = true;
             }
         }
+        */
 
         public static void BindTexture(CCTexture2D texture)
         {
@@ -584,11 +592,14 @@ namespace Cocos2D
                 if (tex == null)
                 {
                     graphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
+                    TextureEnabled = false;
                 }
                 else
                 {
                     graphicsDevice.SamplerStates[0] = texture.m_samplerState;
+                    TextureEnabled = true;
                 }
+
                 if (m_currentTexture != tex)
                 {
                     m_currentTexture = tex;

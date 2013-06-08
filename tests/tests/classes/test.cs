@@ -50,6 +50,7 @@ namespace Cocos2D
         TEST_EXTENSIONS,
         //TEST_SHADER,
         //TEST_MUTITOUCH,
+        TEST_CLIPPINGNODE,
         TEST_ORIENTATION,
         TESTS_COUNT,
     };
@@ -102,6 +103,7 @@ namespace Cocos2D
             "ExtensionsTest",
             //"ShaderTest",
             //"MutiTouchTest"
+            "ClippingNodeTest",
             "OrientationTest"
         };
     }
