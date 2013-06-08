@@ -17,7 +17,7 @@
   </metadata>
 
   <files>
-    <file src="..\..\cocos2d\bin\Windows\Release\box2d.dll" target="lib\" />
+    <file src="..\..\box2d\bin\Windows\Release\box2d.dll" target="lib\" />
     <file src="..\..\cocos2d\bin\Windows\Release\cocos2d-xna.dll" target="lib\" />
     <file src="..\..\cocos2d\bin\Windows\Release\ICSharpCode.SharpZipLib.dll" target="lib\" />
     <file src="..\..\cocos2d\bin\Windows\Release\zlib.net.dll" target="lib\" />
