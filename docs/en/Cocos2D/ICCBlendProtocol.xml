@@ -1,0 +1,31 @@
+<Type Name="ICCBlendProtocol" FullName="Cocos2D.ICCBlendProtocol">
+  <TypeSignature Language="C#" Value="public interface ICCBlendProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCBlendProtocol" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="BlendFunc">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCBlendFunc BlendFunc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCBlendFunc BlendFunc" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

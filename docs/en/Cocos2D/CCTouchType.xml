@@ -1,0 +1,87 @@
+<Type Name="CCTouchType" FullName="Cocos2D.CCTouchType">
+  <TypeSignature Language="C#" Value="public enum CCTouchType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCTouchType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Began">
+      <MemberSignature Language="C#" Value="Began" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTouchType Began = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTouchType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Cancelled">
+      <MemberSignature Language="C#" Value="Cancelled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTouchType Cancelled = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTouchType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Ended">
+      <MemberSignature Language="C#" Value="Ended" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTouchType Ended = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTouchType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Moved">
+      <MemberSignature Language="C#" Value="Moved" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTouchType Moved = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTouchType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchMax">
+      <MemberSignature Language="C#" Value="TouchMax" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTouchType TouchMax = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTouchType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

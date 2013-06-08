@@ -1,0 +1,32 @@
+<Type Name="ICCBScriptOwnerProtocol" FullName="Cocos2D.ICCBScriptOwnerProtocol">
+  <TypeSignature Language="C#" Value="public interface ICCBScriptOwnerProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCBScriptOwnerProtocol" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="CreateNew">
+      <MemberSignature Language="C#" Value="public Cocos2D.ICCBSelectorResolver CreateNew ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.ICCBSelectorResolver CreateNew() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.ICCBSelectorResolver</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

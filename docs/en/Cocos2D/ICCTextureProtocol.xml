@@ -1,0 +1,35 @@
+<Type Name="ICCTextureProtocol" FullName="Cocos2D.ICCTextureProtocol">
+  <TypeSignature Language="C#" Value="public interface ICCTextureProtocol : Cocos2D.ICCBlendProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCTextureProtocol implements class Cocos2D.ICCBlendProtocol" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Cocos2D.ICCBlendProtocol</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Texture">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCTexture2D Texture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTexture2D Texture" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

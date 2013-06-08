@@ -1,0 +1,23 @@
+<Type Name="CCPoint+ComputationOperationDelegate" FullName="Cocos2D.CCPoint+ComputationOperationDelegate">
+  <TypeSignature Language="C#" Value="public delegate float CCPoint.ComputationOperationDelegate(float a);" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed CCPoint/ComputationOperationDelegate extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="a" Type="System.Single" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Single</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="a">To be added.</param>
+    <summary>To be added.</summary>
+    <returns>To be added.</returns>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

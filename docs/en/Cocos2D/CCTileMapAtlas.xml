@@ -1,0 +1,202 @@
+<Type Name="CCTileMapAtlas" FullName="Cocos2D.CCTileMapAtlas">
+  <TypeSignature Language="C#" Value="public class CCTileMapAtlas : Cocos2D.CCAtlasNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTileMapAtlas extends Cocos2D.CCAtlasNode" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCAtlasNode</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTileMapAtlas ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCTileMapAtlas Create (string tile, string mapFile, int tileWidth, int tileHeight);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCTileMapAtlas Create(string tile, string mapFile, int32 tileWidth, int32 tileHeight) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTileMapAtlas</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tile" Type="System.String" />
+        <Parameter Name="mapFile" Type="System.String" />
+        <Parameter Name="tileWidth" Type="System.Int32" />
+        <Parameter Name="tileHeight" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tile">To be added.</param>
+        <param name="mapFile">To be added.</param>
+        <param name="tileWidth">To be added.</param>
+        <param name="tileHeight">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithTileFile">
+      <MemberSignature Language="C#" Value="public bool InitWithTileFile (string tile, string mapFile, int tileWidth, int tileHeight);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTileFile(string tile, string mapFile, int32 tileWidth, int32 tileHeight) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tile" Type="System.String" />
+        <Parameter Name="mapFile" Type="System.String" />
+        <Parameter Name="tileWidth" Type="System.Int32" />
+        <Parameter Name="tileHeight" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tile">To be added.</param>
+        <param name="mapFile">To be added.</param>
+        <param name="tileWidth">To be added.</param>
+        <param name="tileHeight">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_nItemsToRender">
+      <MemberSignature Language="C#" Value="protected int m_nItemsToRender;" />
+      <MemberSignature Language="ILAsm" Value=".field family int32 m_nItemsToRender" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pPosToAtlasIndex">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;Cocos2D.CCGridSize,int&gt; m_pPosToAtlasIndex;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype Cocos2D.CCGridSize, int32&gt; m_pPosToAtlasIndex" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;Cocos2D.CCGridSize,System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReleaseMap">
+      <MemberSignature Language="C#" Value="public void ReleaseMap ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ReleaseMap() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTile">
+      <MemberSignature Language="C#" Value="public void SetTile (Microsoft.Xna.Framework.Color tile, Cocos2D.CCGridSize position);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTile(valuetype Microsoft.Xna.Framework.Color tile, valuetype Cocos2D.CCGridSize position) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tile" Type="Microsoft.Xna.Framework.Color" />
+        <Parameter Name="position" Type="Cocos2D.CCGridSize" />
+      </Parameters>
+      <Docs>
+        <param name="tile">To be added.</param>
+        <param name="position">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TGAInfo">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCImageTGA TGAInfo { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCImageTGA TGAInfo" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCImageTGA</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TileAt">
+      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Color TileAt (Cocos2D.CCGridSize position);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Microsoft.Xna.Framework.Color TileAt(valuetype Cocos2D.CCGridSize position) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Xna.Framework.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="position" Type="Cocos2D.CCGridSize" />
+      </Parameters>
+      <Docs>
+        <param name="position">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateAtlasValues">
+      <MemberSignature Language="C#" Value="public override void UpdateAtlasValues ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateAtlasValues() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

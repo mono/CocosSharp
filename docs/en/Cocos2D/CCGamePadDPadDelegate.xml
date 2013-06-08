@@ -1,0 +1,30 @@
+<Type Name="CCGamePadDPadDelegate" FullName="Cocos2D.CCGamePadDPadDelegate">
+  <TypeSignature Language="C#" Value="public delegate void CCGamePadDPadDelegate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, PlayerIndex player);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCGamePadDPadDelegate extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="leftButton" Type="Cocos2D.CCGamePadButtonStatus" />
+    <Parameter Name="upButton" Type="Cocos2D.CCGamePadButtonStatus" />
+    <Parameter Name="rightButton" Type="Cocos2D.CCGamePadButtonStatus" />
+    <Parameter Name="downButton" Type="Cocos2D.CCGamePadButtonStatus" />
+    <Parameter Name="player" Type="Microsoft.Xna.Framework.PlayerIndex" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="leftButton">To be added.</param>
+    <param name="upButton">To be added.</param>
+    <param name="rightButton">To be added.</param>
+    <param name="downButton">To be added.</param>
+    <param name="player">To be added.</param>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

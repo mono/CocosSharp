@@ -1,0 +1,69 @@
+<Type Name="CCTransitionFadeUp" FullName="Cocos2D.CCTransitionFadeUp">
+  <TypeSignature Language="C#" Value="public class CCTransitionFadeUp : Cocos2D.CCTransitionFadeTR" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionFadeUp extends Cocos2D.CCTransitionFadeTR" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCTransitionFadeTR</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTransitionFadeUp ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTransitionFadeUp (float t, Cocos2D.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class Cocos2D.CCScene scene) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="scene" Type="Cocos2D.CCScene" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="scene">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateAction">
+      <MemberSignature Language="C#" Value="public override Cocos2D.CCActionInterval CreateAction (Cocos2D.CCGridSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCActionInterval CreateAction(valuetype Cocos2D.CCGridSize size) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCActionInterval</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="size" Type="Cocos2D.CCGridSize" />
+      </Parameters>
+      <Docs>
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
