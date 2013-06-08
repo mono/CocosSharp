@@ -21,6 +21,7 @@
     <file src="..\..\cocos2d\bin\Windows\Release\cocos2d-xna.dll" target="lib\" />
     <file src="..\..\cocos2d\bin\Windows\Release\ICSharpCode.SharpZipLib.dll" target="lib\" />
     <file src="..\..\cocos2d\bin\Windows\Release\zlib.net.dll" target="lib\" />
+    <file src="..\..\cocos2d\bin\Windows\Release\cocos2d.Content.Pipeline.Importers.dll" target="lib\" />
   </files>
 
 </package>
