@@ -1,5 +1,8 @@
 using System;
 using Microsoft.Xna.Framework.Media;
+#if WINDOWS_PHONE8
+using Microsoft.Phone.Shell;
+#endif
 using Cocos2D;
 
 namespace CocosDenshion
@@ -40,7 +43,9 @@ namespace CocosDenshion
 
         public float Volume
         {
-            get { return MediaPlayer.Volume; }
+            get { 
+                return MediaPlayer.Volume; 
+            }
 
             set
             {

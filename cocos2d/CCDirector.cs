@@ -1124,7 +1124,15 @@ namespace Cocos2D
 
             using (var stream = new MemoryStream(CCFPSImage.PngData, false))
             {
-                texture = textureCache.AddImage(stream, "cc_fps_images");
+                try
+                {
+                    texture = textureCache.AddImage(stream, "cc_fps_images");
+                }
+                catch (Exception)
+                {
+                    m_bDisplayStats = false;
+                    return;
+                }
             }
 
             float factor = m_obWinSizeInPoints.Height / 320.0f;
