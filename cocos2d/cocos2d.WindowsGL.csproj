@@ -63,7 +63,6 @@
     <Compile Include="actions\action_ease\CCEaseBackIn.cs" />
     <Compile Include="actions\action_ease\CCEaseBackInOut.cs" />
     <Compile Include="actions\action_ease\CCEaseBackOut.cs" />
-    <Compile Include="actions\action_ease\CCEaseBounce.cs" />
     <Compile Include="actions\action_ease\CCEaseBounceIn.cs" />
     <Compile Include="actions\action_ease\CCEaseBounceInOut.cs" />
     <Compile Include="actions\action_ease\CCEaseBounceOut.cs" />

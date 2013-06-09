@@ -133,9 +133,6 @@
     <Compile Include=".\actions\action_ease\CCEaseBackOut.cs">
       <LogicalName>actions\action_ease\CCEaseBackOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseBounce.cs">
-      <LogicalName>actions\action_ease\CCEaseBounce</LogicalName>
-    </Compile>
     <Compile Include=".\actions\action_ease\CCEaseBounceIn.cs">
       <LogicalName>actions\action_ease\CCEaseBounceIn</LogicalName>
     </Compile>
