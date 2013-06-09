@@ -2,8 +2,8 @@
 <package >
   <metadata>
     <id>Cocos2D-XNA.WindowsRT</id>
-    <version>2.0.3.0</version>
-    <title>Cocos2D-XNA</title>
+    <version>2.0.3.3</version>
+    <title>Cocos2D-XNA WindowsRT</title>
     <authors>Cocos2D-XNA, Totally Evil Entertainment, LLC, and Xamarin, Inc.</authors>
     <owners>Cocos2D-XNA</owners>
     <licenseUrl>https://cocos2dxna.codeplex.com/license</licenseUrl>
@@ -17,10 +17,7 @@
   </metadata>
 
   <files>
-    <file src="..\..\cocos2d\bin\ARM\Release\box2d.dll" target="lib\" />
-    <file src="..\..\cocos2d\bin\ARM\Release\cocos2d-xna.dll" target="lib\" />
-    <file src="..\..\cocos2d\bin\ARM\Release\ICSharpCode.SharpZipLib.dll" target="lib\" />
-    <file src="..\..\cocos2d\bin\ARM\Release\zlib.net.dll" target="lib\" />
+    <file src="..\..\cocos2d\bin\ARM\Release\*.dll" target="lib\net40" />
   </files>
 
 </package>
