@@ -45,7 +45,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
-    <OutputPath>bin\ARM\Release\</OutputPath>
+    <OutputPath>bin\WindowsStore\ARM\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
@@ -973,9 +973,6 @@
     <Compile Include=".\predefine\ccTypes.cs">
       <LogicalName>predefine\ccTypes</LogicalName>
     </Compile>
-    <Compile Include=".\predefine\ICCSelectorProtocol">
-      <LogicalName>predefine\selector_protocol</LogicalName>
-    </Compile>
     <Compile Include=".\Properties\AssemblyInfo.cs">
       <LogicalName>Properties\AssemblyInfo</LogicalName>
     </Compile>
@@ -1165,6 +1162,7 @@
     <Compile Include=".\Win8StoreIOUtility.cs">
       <LogicalName>Win8StoreIOUtility</LogicalName>
     </Compile>
+    <Compile Include="predefine\ICCSelectorProtocol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

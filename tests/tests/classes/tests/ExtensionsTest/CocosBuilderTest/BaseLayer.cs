@@ -51,7 +51,7 @@ namespace tests.Extensions
             if (methodInfo != null)
             {
 #if NETFX_CORE
-				return (Action<object>)methodInfo.CreateDelegate(Action<object>, target);
+				return (Action<object>)methodInfo.CreateDelegate(typeof(Action<object>), target);
 #else
 				return (Action<object>)Delegate.CreateDelegate(typeof(Action<object>), this, methodInfo);
 #endif

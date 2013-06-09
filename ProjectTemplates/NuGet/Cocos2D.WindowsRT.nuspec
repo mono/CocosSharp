@@ -17,7 +17,7 @@
   </metadata>
 
   <files>
-    <file src="..\..\cocos2d\bin\ARM\Release\*.dll" target="lib\net40" />
+    <file src="..\..\cocos2d\bin\WindowsStore\ARM\Release\*.dll" target="lib\net40" />
   </files>
 
 </package>
