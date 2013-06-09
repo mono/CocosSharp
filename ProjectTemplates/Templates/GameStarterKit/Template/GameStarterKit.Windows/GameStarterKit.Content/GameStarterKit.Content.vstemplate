@@ -14,12 +14,7 @@
     <LocationField>Enabled</LocationField>
   </TemplateData>
   <TemplateContent>
-    <Project File="GameStarterKit.Content.contentproj" TargetFileName="GameStarterKit.Content.contentproj" ReplaceParameters="true">
-      <ProjectItem TargetFileName="markerfelt-16.spritefont" ReplaceParameters="false">fonts\markerfelt-16.spritefont</ProjectItem>
-      <ProjectItem TargetFileName="markerfelt-18.spritefont" ReplaceParameters="false">fonts\markerfelt-18.spritefont</ProjectItem>
-      <ProjectItem TargetFileName="markerfelt-22.spritefont" ReplaceParameters="false">fonts\markerfelt-22.spritefont</ProjectItem>
-      <ProjectItem TargetFileName="markerfelt-64.spritefont" ReplaceParameters="false">fonts\markerfelt-64.spritefont</ProjectItem>
-    </Project>
+    <Project File="GameStarterKit.Content.contentproj" TargetFileName="GameStarterKit.Content.contentproj" ReplaceParameters="true" />
     <CustomParameters />
   </TemplateContent>
 </VSTemplate>

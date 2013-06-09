@@ -17,6 +17,7 @@
     <ProjectCollection>
       <ProjectTemplateLink ProjectName="$safeprojectname$">GameStarterKit.Windows\GameStarterKit.Windows.vstemplate</ProjectTemplateLink>
       <ProjectTemplateLink ProjectName="$safeprojectname$.Content">GameStarterKit.Content\GameStarterKit.Content.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$safeprojectname$.ContentContent">GameStarterKit.ContentContent\GameStarterKit.ContentContent.vstemplate</ProjectTemplateLink>
     </ProjectCollection>
     <CustomParameters />
   </TemplateContent>
