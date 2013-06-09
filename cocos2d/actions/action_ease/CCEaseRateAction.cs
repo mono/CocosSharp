@@ -1,18 +1,17 @@
-
 namespace Cocos2D
 {
     public class CCEaseRateAction : CCActionEase
     {
         protected float m_fRate;
 
-        public CCEaseRateAction (CCActionInterval pAction, float fRate) : base (pAction)
+        public CCEaseRateAction(CCActionInterval pAction, float fRate) : base(pAction)
         {
             m_fRate = fRate;
         }
 
-        public CCEaseRateAction (CCEaseRateAction easeRateAction) : base (easeRateAction)
+        public CCEaseRateAction(CCEaseRateAction easeRateAction) : base(easeRateAction)
         {
-            InitWithAction((CCActionInterval) (easeRateAction.m_pOther.Copy()), easeRateAction.m_fRate);
+            InitWithAction((CCActionInterval) (easeRateAction.m_pInner.Copy()), easeRateAction.m_fRate);
         }
 
         public float Rate
@@ -34,27 +33,20 @@ namespace Cocos2D
 
         public override object Copy(ICCCopyable pZone)
         {
-
             if (pZone != null)
             {
                 //in case of being called at sub class
                 var pCopy = (CCEaseRateAction) (pZone);
-                pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()), m_fRate);
-                
+                pCopy.InitWithAction((CCActionInterval) (m_pInner.Copy()), m_fRate);
+
                 return pCopy;
             }
-            else
-            {
-                return new CCEaseRateAction(this);
-            }
-
+            return new CCEaseRateAction(this);
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCEaseRateAction((CCActionInterval) m_pOther.Reverse(), 1 / m_fRate);
+            return new CCEaseRateAction((CCActionInterval) m_pInner.Reverse(), 1 / m_fRate);
         }
-
-
     }
 }

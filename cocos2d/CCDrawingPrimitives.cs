@@ -369,8 +369,9 @@ namespace Cocos2D
             float t = 0.0f;
             for (int i = 0; i < segments; i++)
             {
-                float x = (float) Math.Pow(1 - t, 2) * origin.X + 2.0f * (1 - t) * t * control.X + t * t * destination.X;
-                float y = (float) Math.Pow(1 - t, 2) * origin.Y + 2.0f * (1 - t) * t * control.Y + t * t * destination.Y;
+                float x = CCSplineMath.QuadBezier(origin.X, control.X, destination.X, t);
+                float y = CCSplineMath.QuadBezier(origin.Y, control.Y, destination.Y, t);
+
                 vertices[i] = new VertexPositionColor();
                 vertices[i].Position = new Vector3(x * factor, y * factor, 0);
                 vertices[i].Color = new Color(color.R, color.G, color.B, color.A);
@@ -406,10 +407,9 @@ namespace Cocos2D
             float t = 0;
             for (int i = 0; i < segments; ++i)
             {
-                float x = (float) Math.Pow(1 - t, 3) * origin.X + 3.0f * (float) Math.Pow(1 - t, 2) * t * control1.X +
-                          3.0f * (1 - t) * t * t * control2.X + t * t * t * destination.X;
-                float y = (float) Math.Pow(1 - t, 3) * origin.Y + 3.0f * (float) Math.Pow(1 - t, 2) * t * control1.Y +
-                          3.0f * (1 - t) * t * t * control2.Y + t * t * t * destination.Y;
+                float x = CCSplineMath.CubicBezier(origin.X, control1.X, control2.X, destination.X, t);
+                float y = CCSplineMath.CubicBezier(origin.Y, control1.Y, control2.Y, destination.Y, t);
+
                 vertices[i] = new VertexPositionColor();
                 vertices[i].Position = new Vector3(x * factor, y * factor, 0);
                 vertices[i].Color = new Color(color.R, color.G, color.B, color.A);
