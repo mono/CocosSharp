@@ -1,4 +1,4 @@
-icrosoft Visual Studio Solution File, Format Version 12.00
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cocos2d.WinRT", "cocos2d\Cocos2d.WinRT.csproj", "{DC731E59-0193-4F7C-BC61-B53BA0BF1F3C}"
 EndProject
