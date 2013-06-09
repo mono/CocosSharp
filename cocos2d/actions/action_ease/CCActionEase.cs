@@ -1,29 +1,33 @@
-
 namespace Cocos2D
 {
     public class CCActionEase : CCActionInterval
     {
-        protected CCActionInterval m_pOther;
+        protected CCActionInterval m_pInner;
 
-		// This can be taken out once all the classes that extend it have had their constructors created.
-//		protected CCActionEase ()
-//		{}
+        // This can be taken out once all the classes that extend it have had their constructors created.
+		protected CCActionEase ()
+		{}
 
-        public CCActionEase (CCActionInterval pAction)
+        public CCActionInterval InnerAction
         {
-			InitWithAction(pAction);
+            get { return m_pInner; }
         }
 
-        protected CCActionEase (CCActionEase actionEase) : base (actionEase)
+        public CCActionEase(CCActionInterval pAction)
         {
-            InitWithAction((CCActionInterval) (actionEase.m_pOther.Copy()));
+            InitWithAction(pAction);
+        }
+
+        protected CCActionEase(CCActionEase actionEase) : base(actionEase)
+        {
+            InitWithAction((CCActionInterval) (actionEase.m_pInner.Copy()));
         }
 
         protected bool InitWithAction(CCActionInterval pAction)
         {
             if (base.InitWithDuration(pAction.Duration))
             {
-                m_pOther = pAction;
+                m_pInner = pAction;
                 return true;
             }
             return false;
@@ -36,39 +40,34 @@ namespace Cocos2D
                 //in case of being called at sub class
                 var pCopy = pZone as CCActionEase;
                 base.Copy(pZone);
-                
-                pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
-                
+
+                pCopy.InitWithAction((CCActionInterval) (m_pInner.Copy()));
+
                 return pCopy;
             }
-            else
-            {
-                return new CCActionEase(this);
-            }
-
+            return new CCActionEase(this);
         }
 
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
-            m_pOther.StartWithTarget(m_pTarget);
+            m_pInner.StartWithTarget(m_pTarget);
         }
 
         public override void Stop()
         {
-            m_pOther.Stop();
+            m_pInner.Stop();
             base.Stop();
         }
 
         public override void Update(float time)
         {
-            m_pOther.Update(time);
+            m_pInner.Update(time);
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCActionEase((CCActionInterval) m_pOther.Reverse());
+            return new CCActionEase((CCActionInterval) m_pInner.Reverse());
         }
-
     }
 }

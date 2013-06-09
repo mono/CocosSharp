@@ -1,44 +1,36 @@
-
 namespace Cocos2D
 {
-    public class CCEaseBounceIn : CCEaseBounce
+    public class CCEaseBounceIn : CCActionEase
     {
+        public CCEaseBounceIn(CCActionInterval pAction) : base(pAction)
+        {
+        }
 
-        public CCEaseBounceIn (CCActionInterval pAction) : base (pAction)
-        {  }
-
-        public CCEaseBounceIn (CCEaseBounceIn easeBounceIn) : base (easeBounceIn)
-        {  }
+        public CCEaseBounceIn(CCEaseBounceIn easeBounceIn) : base(easeBounceIn)
+        {
+        }
 
         public override void Update(float time)
         {
-            float newT = 1 - BounceTime(1 - time);
-            m_pOther.Update(newT);
+            m_pInner.Update(CCEaseMath.BounceIn(time));
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCEaseBounceOut((CCActionInterval) m_pOther.Reverse());
+            return new CCEaseBounceOut((CCActionInterval) m_pInner.Reverse());
         }
 
         public override object Copy(ICCCopyable pZone)
         {
-
             if (pZone != null)
             {
                 //in case of being called at sub class
                 var pCopy = pZone as CCEaseBounceIn;
-                pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()));
-                
+                pCopy.InitWithAction((CCActionInterval) (m_pInner.Copy()));
+
                 return pCopy;
             }
-            else
-            {
-                return new CCEaseBounceIn(this);
-            }
-
+            return new CCEaseBounceIn(this);
         }
-
-
     }
 }

@@ -32,12 +32,6 @@ namespace Cocos2D
         public CCNode OriginalTarget
         {
             get { return m_pOriginalTarget; }
-            /*
-            set
-            {
-                m_pOriginalTarget = value;
-            }
-            */
         }
 
         public int Tag

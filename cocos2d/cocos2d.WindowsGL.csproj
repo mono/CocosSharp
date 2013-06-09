@@ -67,6 +67,7 @@
     <Compile Include="actions\action_ease\CCEaseBounceIn.cs" />
     <Compile Include="actions\action_ease\CCEaseBounceInOut.cs" />
     <Compile Include="actions\action_ease\CCEaseBounceOut.cs" />
+    <Compile Include="actions\action_ease\CCEaseCustom.cs" />
     <Compile Include="actions\action_ease\CCEaseElastic.cs" />
     <Compile Include="actions\action_ease\CCEaseElasticIn.cs" />
     <Compile Include="actions\action_ease\CCEaseElasticInOut.cs" />
