@@ -1,4 +1,3 @@
-
 using System;
 using Microsoft.Xna.Framework;
 
@@ -6,56 +5,39 @@ namespace Cocos2D
 {
     public class CCEaseElasticIn : CCEaseElastic
     {
-
-		public CCEaseElasticIn (CCActionInterval pAction) : base(pAction)
-		{ }
-		
-		public CCEaseElasticIn (CCActionInterval pAction, float fPeriod) : base (pAction, fPeriod)
-		{ }
-
-		protected CCEaseElasticIn (CCEaseElasticIn easeElasticIn) : base (easeElasticIn)
-		{ }
-
-		public override void Update(float time)
+        public CCEaseElasticIn(CCActionInterval pAction) : base(pAction, 0.3f)
         {
-            float newT;
+        }
 
-            if (time == 0 || time == 1)
-            {
-                newT = time;
-            }
-            else
-            {
-                float s = m_fPeriod / 4;
-                time = time - 1;
-                newT = -(float) (Math.Pow(2, 10 * time) * Math.Sin((time - s) * MathHelper.Pi * 2.0f / m_fPeriod));
-            }
+        public CCEaseElasticIn(CCActionInterval pAction, float fPeriod) : base(pAction, fPeriod)
+        {
+        }
 
-            m_pOther.Update(newT);
+        protected CCEaseElasticIn(CCEaseElasticIn easeElasticIn) : base(easeElasticIn)
+        {
+        }
+
+        public override void Update(float time)
+        {
+            m_pInner.Update(CCEaseMath.ElasticIn(time, m_fPeriod));
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCEaseElasticOut((CCActionInterval) m_pOther.Reverse(), m_fPeriod);
+            return new CCEaseElasticOut((CCActionInterval) m_pInner.Reverse(), m_fPeriod);
         }
 
         public override object Copy(ICCCopyable pZone)
         {
-
             if (pZone != null)
             {
                 //in case of being called at sub class
                 var pCopy = pZone as CCEaseElasticIn;
-				pCopy.InitWithAction((CCActionInterval) (m_pOther.Copy()), m_fPeriod);
-				
-				return pCopy;
-			}
-            else
-            {
-                return new CCEaseElasticIn(this);
+                pCopy.InitWithAction((CCActionInterval) (m_pInner.Copy()), m_fPeriod);
+
+                return pCopy;
             }
-
+            return new CCEaseElasticIn(this);
         }
-
     }
 }

@@ -7,6 +7,7 @@ namespace Cocos2D
     {
         /// Radial Counter-Clockwise
         Radial,
+
         /// Bar
         Bar,
     }
@@ -130,8 +131,27 @@ namespace Cocos2D
             set { m_bReverseDirection = value; }
         }
 
-
         #region RGBA Protocol
+
+        public override CCColor3B Color
+        {
+            get { return m_pSprite.Color; }
+            set
+            {
+                m_pSprite.Color = value;
+                UpdateColor();
+            }
+        }
+
+        public override byte Opacity
+        {
+            get { return m_pSprite.Opacity; }
+            set
+            {
+                m_pSprite.Opacity = value;
+                UpdateColor();
+            }
+        }
 
         public override bool IsOpacityModifyRGB
         {
@@ -183,11 +203,12 @@ namespace Cocos2D
                 {
                     var i3 = i * 3;
                     s_pIndexes[i3 + 0] = 0;
-                    s_pIndexes[i3 + 1] = (short)(i + 1);
-                    s_pIndexes[i3 + 2] = (short)(i + 2);
+                    s_pIndexes[i3 + 1] = (short) (i + 1);
+                    s_pIndexes[i3 + 2] = (short) (i + 2);
                 }
 
-                CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount, s_pIndexes, 0, count);
+                CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount,
+                                                    s_pIndexes, 0, count);
             }
             else if (m_eType == CCProgressTimerType.Bar)
             {
@@ -195,54 +216,22 @@ namespace Cocos2D
                 for (int i = 0; i < count; i++)
                 {
                     var i3 = i * 3;
-                    s_pIndexes[i3 + 0] = (short)(i + 0);
-                    s_pIndexes[i3 + 1] = (short)(i + 1);
-                    s_pIndexes[i3 + 2] = (short)(i + 2);
+                    s_pIndexes[i3 + 0] = (short) (i + 0);
+                    s_pIndexes[i3 + 1] = (short) (i + 1);
+                    s_pIndexes[i3 + 2] = (short) (i + 2);
                 }
 
                 if (!m_bReverseDirection)
                 {
-                    CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount, s_pIndexes, 0, count);
+                    CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount,
+                                                        s_pIndexes, 0, count);
                 }
                 else
                 {
-                    CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount, s_pIndexes, 0, count);
+                    CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount,
+                                                        s_pIndexes, 0, count);
                 }
             }
-
-            /*
-            CC_NODE_DRAW_SETUP();
-
-            ccGLBlendFunc( m_pSprite->getBlendFunc().src, m_pSprite->getBlendFunc().dst );
-
-            ccGLEnableVertexAttribs(kCCVertexAttribFlag_PosColorTex );
-
-            ccGLBindTexture2D( m_pSprite->getTexture()->getName() );
-
-            glVertexAttribPointer( kCCVertexAttrib_Position, 2, GL_FLOAT, GL_FALSE, sizeof(m_pVertexData[0]) , &m_pVertexData[0].vertices);
-            glVertexAttribPointer( kCCVertexAttrib_TexCoords, 2, GL_FLOAT, GL_FALSE, sizeof(m_pVertexData[0]), &m_pVertexData[0].texCoords);
-            glVertexAttribPointer( kCCVertexAttrib_Color, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(m_pVertexData[0]), &m_pVertexData[0].colors);
-
-            if(m_eType == kCCProgressTimerTypeRadial)
-            {
-                glDrawArrays(GL_TRIANGLE_FAN, 0, m_nVertexDataCount);
-            } 
-            else if (m_eType == kCCProgressTimerTypeBar)
-            {
-                if (!m_bReverseDirection) 
-                {
-                    glDrawArrays(GL_TRIANGLE_STRIP, 0, m_nVertexDataCount);
-                } 
-                else 
-                {
-                    glDrawArrays(GL_TRIANGLE_STRIP, 0, m_nVertexDataCount/2);
-                    glDrawArrays(GL_TRIANGLE_STRIP, 4, m_nVertexDataCount/2);
-                    // 2 draw calls
-                    CC_INCREMENT_GL_DRAWS(1);
-                }
-            }
-            CC_INCREMENT_GL_DRAWS(1);
-            */
         }
 
 
@@ -325,8 +314,8 @@ namespace Cocos2D
 
             float alpha = m_fPercentage / 100.0f;
             CCPoint alphaOffset =
-                    new CCPoint(1.0f * (1.0f - m_tBarChangeRate.X) + alpha * m_tBarChangeRate.X,
-                                1.0f * (1.0f - m_tBarChangeRate.Y) + alpha * m_tBarChangeRate.Y) * 0.5f;
+                new CCPoint(1.0f * (1.0f - m_tBarChangeRate.X) + alpha * m_tBarChangeRate.X,
+                            1.0f * (1.0f - m_tBarChangeRate.Y) + alpha * m_tBarChangeRate.Y) * 0.5f;
             CCPoint min = m_tMidpoint - alphaOffset;
             CCPoint max = m_tMidpoint + alphaOffset;
 
@@ -592,7 +581,8 @@ namespace Cocos2D
                     return new CCPoint((kCCProgressTextureCoords >> (7 - (index << 1))) & 1,
                                        (kCCProgressTextureCoords >> (7 - ((index << 1) + 1))) & 1);
                 }
-                return new CCPoint((kCCProgressTextureCoords >> ((index << 1) + 1)) & 1, (kCCProgressTextureCoords >> (index << 1)) & 1);
+                return new CCPoint((kCCProgressTextureCoords >> ((index << 1) + 1)) & 1,
+                                   (kCCProgressTextureCoords >> (index << 1)) & 1);
             }
             return CCPoint.Zero;
         }

@@ -145,6 +145,9 @@
     <Compile Include=".\actions\action_ease\CCEaseBounceOut.cs">
       <LogicalName>actions\action_ease\CCEaseBounceOut</LogicalName>
     </Compile>
+    <Compile Include=".\actions\action_ease\CCEaseCustom.cs">
+      <LogicalName>actions\action_ease\CCEaseCustom</LogicalName>
+    </Compile>
     <Compile Include=".\actions\action_ease\CCEaseElastic.cs">
       <LogicalName>actions\action_ease\CCEaseElastic</LogicalName>
     </Compile>

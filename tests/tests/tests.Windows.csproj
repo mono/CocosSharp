@@ -21,7 +21,8 @@
     <XapFilename>$(AssemblyName).xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
     <XnaWindowsPhoneManifestTemplate>Properties\WMAppManifest.xml</XnaWindowsPhoneManifestTemplate>
-    <TileImage>Background.png</TileImage>
+    <TileImage>
+    </TileImage>
     <TileTitle>tests</TileTitle>
     <SupportedCultures>
     </SupportedCultures>
@@ -54,6 +55,7 @@
     <DefineConstants>TRACE;WINDOWS</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>true</XnaCompressContent>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\x86\Debug</OutputPath>
