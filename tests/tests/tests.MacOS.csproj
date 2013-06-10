@@ -341,7 +341,7 @@
     <Compile Include="classes\tests\ClickAndMoveTest\ClickAndMoveTest.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="classes\tests\ClickAndMoveTest\ClippingNodeTestScene.cs">
+    <Compile Include="classes\tests\ClippingNodeTest\ClippingNodeTestScene.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\tests\CocosDenshionTest\CocosDenshionTest.cs">
@@ -2287,6 +2287,8 @@
     <Content Include="Assets\Content\Images\aButton.xnb">
       <Link>Content\Images\aButton.xnb</Link>
     </Content>
+    <Content Include="Content\Images\hole_effect.xnb" />
+    <Content Include="Content\Images\hole_stencil.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />

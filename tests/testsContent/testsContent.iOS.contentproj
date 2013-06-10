@@ -1287,6 +1287,11 @@
       <Importer>CocosFontImporter</Importer>
       <Processor>CocosFontProcessor</Processor>
     </Compile>
+    <Compile Include="Images\bitmapFontTest3.fnt">
+      <Name>bitmapFontTest3.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="animations\ghosts.plist">
@@ -2118,6 +2123,18 @@
       <Name>bButton</Name>
       <Importer>TextureImporter</Importer>
       <Processor>MGTextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\hole_effect.png">
+      <Name>hole_effect</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\hole_stencil.png">
+      <Name>hole_stencil</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="..\iOSContent\ContentBuilder\Dependencies\MonoGame.ContentPipeline.targets" />
