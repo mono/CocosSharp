@@ -14,9 +14,9 @@ namespace tests
 
             //CCDirector::sharedDirector()->setProjection(CCDirectorProjection2D);
 
-            CCActionInterval effect = new CCLiquid (1, 20, new CCGridSize(32, 24), 2);
+            CCActionInterval effect = new CCLiquid (2, new CCGridSize(32, 24), 1, 20);
 
-            CCActionInterval stopEffect = (CCActionInterval)(CCSequence.FromActions(
+            CCActionInterval stopEffect = (CCActionInterval)(new CCSequence(
                                                  effect,
                                                  new CCDelayTime (2),
                                                  new CCStopGrid()

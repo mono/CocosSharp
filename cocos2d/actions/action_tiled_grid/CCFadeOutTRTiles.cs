@@ -66,7 +66,7 @@ namespace Cocos2D
             float dx = (step.X / 2) * (1.0f - distance);
             float dy = (step.Y / 2) * (1.0f - distance);
 
-            coords.BottomLeft.X += dx; 
+            coords.BottomLeft.X += dx;
             coords.BottomLeft.Y += dy;
 
             coords.BottomRight.X -= dx;
@@ -76,7 +76,7 @@ namespace Cocos2D
             coords.TopLeft.Y -= dy;
 
             coords.TopRight.X -= dx;
-            coords.TopRight.Y -= dy; 
+            coords.TopRight.Y -= dy;
 
             SetTile(pos, ref coords);
         }
@@ -120,9 +120,9 @@ namespace Cocos2D
         /// <summary>
         /// creates the action with the grid size and the duration
         /// </summary>
-        public CCFadeOutTRTiles(CCGridSize gridSize, float time) : base(time)
+        public CCFadeOutTRTiles(float duration, CCGridSize gridSize) : base(duration)
         {
-            InitWithSize(gridSize, time);
+            InitWithDuration(duration, gridSize);
         }
     }
 }

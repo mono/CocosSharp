@@ -38,7 +38,7 @@ namespace Cocos2D
                 UpdateBlendFunc();
                 if (value != null)
                 {
-                    m_tContentSize = value.ContentSize;
+                    m_obContentSize = value.ContentSize;
             }
         }
         }
@@ -114,7 +114,7 @@ namespace Cocos2D
             // The alternative is to have a void CCSprite#visit, but
             // although this is less mantainable, is faster
             //
-            if (!m_bIsVisible)
+            if (!m_bVisible)
             {
                 return;
             }
@@ -141,7 +141,7 @@ namespace Cocos2D
             //kmGLPopMatrix();
             CCDrawManager.PopMatrix();
 
-            m_nOrderOfArrival = 0;
+            m_uOrderOfArrival = 0;
         }
 
         public override void AddChild(CCNode child, int zOrder, int tag)
@@ -225,7 +225,7 @@ namespace Cocos2D
                     //continue moving element downwards while zOrder is smaller or when zOrder is the same but orderOfArrival is smaller
                     while (j >= 0 &&
                            (tempItem.m_nZOrder < elements[j].m_nZOrder ||
-                            (tempItem.m_nZOrder == elements[j].m_nZOrder && tempItem.m_nOrderOfArrival < elements[j].m_nOrderOfArrival)))
+                            (tempItem.m_nZOrder == elements[j].m_nZOrder && tempItem.m_uOrderOfArrival < elements[j].m_uOrderOfArrival)))
                     {
                         elements[j + 1] = elements[j];
                         j--;
@@ -273,7 +273,7 @@ namespace Cocos2D
             {
                 oldIndex = sprite.AtlasIndex;
                 sprite.AtlasIndex = curIndex;
-                sprite.m_nOrderOfArrival = 0;
+                sprite.m_uOrderOfArrival = 0;
                 if (oldIndex != curIndex)
                 {
                     Swap(oldIndex, curIndex);
@@ -289,7 +289,7 @@ namespace Cocos2D
                     //all children are in front of the parent
                     oldIndex = sprite.AtlasIndex;
                     sprite.AtlasIndex = curIndex;
-                    sprite.m_nOrderOfArrival = 0;
+                    sprite.m_uOrderOfArrival = 0;
                     if (oldIndex != curIndex)
                     {
                         Swap(oldIndex, curIndex);
@@ -306,7 +306,7 @@ namespace Cocos2D
                     {
                         oldIndex = sprite.AtlasIndex;
                         sprite.AtlasIndex = curIndex;
-                        sprite.m_nOrderOfArrival = 0;
+                        sprite.m_uOrderOfArrival = 0;
                         if (oldIndex != curIndex)
                         {
                             Swap(oldIndex, curIndex);
@@ -323,7 +323,7 @@ namespace Cocos2D
                     //all children have a zOrder < 0)
                     oldIndex = sprite.AtlasIndex;
                     sprite.AtlasIndex = curIndex;
-                    sprite.m_nOrderOfArrival = 0;
+                    sprite.m_uOrderOfArrival = 0;
                     if (oldIndex != curIndex)
                     {
                         Swap(oldIndex, curIndex);
@@ -639,7 +639,7 @@ namespace Cocos2D
 
         //CCSpriteSheet Extension
         //implementation CCSpriteSheet (TMXTiledMapExtension)
-        protected void AddQuadFromSprite(CCSprite sprite, int index)
+        protected void InsertQuadFromSprite(CCSprite sprite, int index)
         {
             Debug.Assert(sprite != null, "Argument must be non-NULL");
 
@@ -658,6 +658,26 @@ namespace Cocos2D
             // XXX: updateTransform will update the textureAtlas too using updateQuad.
             // XXX: so, it should be AFTER the insertQuad
             sprite.Dirty = true;
+            sprite.UpdateTransform();
+        }
+
+        protected void UpdateQuadFromSprite(CCSprite sprite, int index)
+        {
+            Debug.Assert(sprite != null, "Argument must be non-NULL");
+
+            while (index >= m_pobTextureAtlas.Capacity || m_pobTextureAtlas.Capacity == m_pobTextureAtlas.TotalQuads)
+            {
+                IncreaseAtlasCapacity();
+            }
+            //
+            // update the quad directly. Don't add the sprite to the scene graph
+            //
+            sprite.BatchNode = this;
+            sprite.AtlasIndex = index;
+
+            sprite.Dirty = true;
+
+            // UpdateTransform updates the textureAtlas quad
             sprite.UpdateTransform();
         }
 

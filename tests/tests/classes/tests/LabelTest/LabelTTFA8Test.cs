@@ -19,7 +19,7 @@ namespace tests
 
             CCFadeOut fadeOut = new CCFadeOut  (2);
             CCFadeIn fadeIn = new CCFadeIn  (2);
-            CCFiniteTimeAction seq = CCSequence.FromActions(fadeOut, fadeIn);
+            CCFiniteTimeAction seq = new CCSequence(fadeOut, fadeIn);
             CCRepeatForever forever = new CCRepeatForever ((CCActionInterval) seq);
             label1.RunAction(forever);
         }

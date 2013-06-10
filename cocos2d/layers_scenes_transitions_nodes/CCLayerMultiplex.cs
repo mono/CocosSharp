@@ -111,7 +111,7 @@ namespace Cocos2D
             if (m_OutAction != null)
             {
                 outLayer.RunAction(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         (CCFiniteTimeAction) m_OutAction.Copy(),
                         new CCCallFunc(() => RemoveChild(outLayer, true))
                         )

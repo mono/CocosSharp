@@ -10,11 +10,11 @@ namespace tests
     {
         public new static CCActionInterval actionWithDuration(float t)
         {
-            CCTurnOffTiles fadeout = new CCTurnOffTiles(25, new CCGridSize(48, 32), t);
+            CCTurnOffTiles fadeout = new CCTurnOffTiles(t, new CCGridSize(48, 32), 25);
             CCFiniteTimeAction back = fadeout.Reverse();
             CCDelayTime delay = new CCDelayTime (0.5f);
 
-            return (CCActionInterval)(CCSequence.FromActions(fadeout, delay, back));
+            return (CCActionInterval)(new CCSequence(fadeout, delay, back));
         }
     }
 }

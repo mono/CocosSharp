@@ -319,7 +319,7 @@ namespace Cocos2D
         {
             CCMoveTo scroll = new CCMoveTo (dt, offset);
             CCCallFuncN expire = new CCCallFuncN(StoppedAnimatedScroll);
-            m_pContainer.RunAction(CCSequence.FromActions(scroll, expire));
+            m_pContainer.RunAction(new CCSequence(scroll, expire));
             Schedule(PerformedAnimatedScroll);
         }
 

@@ -12,17 +12,17 @@ namespace Cocos2D
         }
 
 
-        public CCCallFuncN (Action<CCNode> selector)
+        public CCCallFuncN(Action<CCNode> selector)
         {
             InitWithTarget(selector);
         }
 
-		public CCCallFuncN (CCCallFuncN callFuncN) : base (callFuncN)
-		{
-			InitWithTarget(callFuncN.m_pCallFuncN);
-		}
+        public CCCallFuncN(CCCallFuncN callFuncN) : base(callFuncN)
+        {
+            InitWithTarget(callFuncN.m_pCallFuncN);
+        }
 
-		public bool InitWithTarget(Action<CCNode> selector)
+        public bool InitWithTarget(Action<CCNode> selector)
         {
             m_pCallFuncN = selector;
             return false;
@@ -34,17 +34,16 @@ namespace Cocos2D
             {
                 //in case of being called at sub class
                 var pRet = (CCCallFuncN) (zone);
-				base.Copy(zone);
-				
-				pRet.InitWithTarget(m_pCallFuncN);
-				
-				return pRet;
-			}
+                base.Copy(zone);
+
+                pRet.InitWithTarget(m_pCallFuncN);
+
+                return pRet;
+            }
             else
             {
                 return new CCCallFuncN(this);
-			}
-
+            }
         }
 
         public override void Execute()

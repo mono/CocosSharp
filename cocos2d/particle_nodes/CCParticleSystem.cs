@@ -505,6 +505,9 @@ namespace Cocos2D
                         // tangential acceleration
                         modeA.tangentialAccel = dictionary["tangentialAcceleration"].AsFloat;
                         modeA.tangentialAccelVar = dictionary["tangentialAccelVariance"].AsFloat;
+
+                        // rotation is dir
+                        modeA.rotationIsDir = dictionary["rotationIsDir"].AsBool;
                     }
 
                         // or Mode B: radius movement
@@ -800,7 +803,7 @@ namespace Cocos2D
             }
             else if (m_ePositionType == CCPositionType.Relative)
             {
-                particle.startPos = m_tPosition;
+                particle.startPos = m_obPosition;
             }
 
             // direction
@@ -822,6 +825,12 @@ namespace Cocos2D
 
                 // tangential accel
                 particle.modeA.tangentialAccel = modeA.tangentialAccel + modeA.tangentialAccelVar * CCRandom.Float_Minus1_1();
+
+                // rotation is dir
+                if (modeA.rotationIsDir)
+                {
+                    particle.rotation = -MathHelper.ToDegrees(CCPoint.ToAngle(particle.modeA.dir));
+                }
             }
 
                 // Mode Radius: B
@@ -1004,7 +1013,7 @@ namespace Cocos2D
                 */
 
 
-                if (m_bIsVisible)
+                if (m_bVisible)
                 {
                     while (index < m_uParticleCount)
                     {
@@ -1193,6 +1202,20 @@ namespace Cocos2D
             {
                 Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
                 modeA.radialAccelVar = value;
+            }
+        }
+
+        public bool RotationIsDir
+        {
+            get
+            {
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
+                return modeA.rotationIsDir;
+            }
+            set
+            {
+                Debug.Assert(m_nEmitterMode == CCEmitterMode.Gravity, "Particle Mode should be Gravity");
+                modeA.rotationIsDir = value;
             }
         }
 
@@ -1386,6 +1409,7 @@ namespace Cocos2D
         {
             /** Gravity value. Only available in 'Gravity' mode. */
             public CCPoint gravity;
+            /** radial acceleration of each particle. Only available in 'Gravity' mode. */
             public float radialAccel;
             /** radial acceleration variance of each particle. Only available in 'Gravity' mode. */
             public float radialAccelVar;
@@ -1397,7 +1421,8 @@ namespace Cocos2D
             public float tangentialAccel;
             /** tangential acceleration variance of each particle. Only available in 'Gravity' mode. */
             public float tangentialAccelVar;
-            /** radial acceleration of each particle. Only available in 'Gravity' mode. */
+
+            public bool rotationIsDir;
         }
 
         #endregion

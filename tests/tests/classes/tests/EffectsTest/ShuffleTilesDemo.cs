@@ -10,11 +10,11 @@ namespace tests
     {
         public new static CCActionInterval actionWithDuration(float t)
         {
-            CCShuffleTiles shuffle = new CCShuffleTiles(25, new CCGridSize(16, 12), t);
+            CCShuffleTiles shuffle = new CCShuffleTiles(new CCGridSize(16, 12), t, 25);
             CCFiniteTimeAction shuffle_back = shuffle.Reverse();
             CCDelayTime delay = new CCDelayTime (2);
 
-            return (CCActionInterval)(CCSequence.FromActions(shuffle, delay, shuffle_back));
+            return (CCActionInterval)(new CCSequence(shuffle, delay, shuffle_back));
         }
     }
 }

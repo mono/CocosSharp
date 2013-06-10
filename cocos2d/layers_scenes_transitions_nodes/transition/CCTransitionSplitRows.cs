@@ -33,7 +33,7 @@ namespace Cocos2D
     {
         public override CCActionInterval Action()
         {
-            return new CCSplitRows(3, m_fDuration / 2.0f);
+            return new CCSplitRows(m_fDuration / 2.0f, 3);
         }
         
         public CCTransitionSplitRows() { }

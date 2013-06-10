@@ -63,7 +63,7 @@ namespace tests
             item3.Position = new CCPoint(s.Width / 2, s.Height / 2 - 100);
             CCJumpBy jump = new CCJumpBy (3, new CCPoint(400, 0), 50, 4);
             item2.RunAction(new CCRepeatForever (
-                                        (CCActionInterval)(CCSequence.FromActions(jump, jump.Reverse()))
+                                        (CCActionInterval)(new CCSequence(jump, jump.Reverse()))
                                         )
                             );
             CCActionInterval spin1 = new CCRotateBy (3, 360);

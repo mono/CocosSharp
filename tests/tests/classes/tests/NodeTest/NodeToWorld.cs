@@ -28,7 +28,7 @@ namespace tests
 
             CCActionInterval move = new CCMoveBy (3, new CCPoint(200, 0));
             var move_back = (CCActionInterval) move.Reverse();
-            CCFiniteTimeAction seq = CCSequence.FromActions(move, move_back);
+            CCFiniteTimeAction seq = new CCSequence(move, move_back);
             CCAction fe2 = new CCRepeatForever ((CCActionInterval) seq);
             back.RunAction(fe2);
         }

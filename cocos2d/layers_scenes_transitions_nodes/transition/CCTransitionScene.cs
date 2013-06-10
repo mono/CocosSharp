@@ -53,19 +53,26 @@ namespace Cocos2D
         {
             base.OnEnter();
 
-            // outScene_ should not receive the onExit callback
+            // disable events while transitions
+            CCDirector.SharedDirector.TouchDispatcher.IsDispatchEvents = false;
+    
+            // outScene should not receive the onEnter callback
             // only the onExitTransitionDidStart
             m_pOutScene.OnExitTransitionDidStart();
-
+    
             m_pInScene.OnEnter();
         }
 
         public override void OnExit()
         {
             base.OnExit();
+
+            // enable events while transitions
+            CCDirector.SharedDirector.TouchDispatcher.IsDispatchEvents = true;
+
             m_pOutScene.OnExit();
 
-            // inScene should not receive the onExit callback
+            // m_pInScene should not receive the onEnter callback
             // only the onEnterTransitionDidFinish
             m_pInScene.OnEnterTransitionDidFinish();
         }
@@ -103,9 +110,6 @@ namespace Cocos2D
 
                 Debug.Assert(m_pInScene != m_pOutScene, "Incoming scene must be different from the outgoing scene");
 
-                // disable events while transitions
-                CCDirector pDirector = CCDirector.SharedDirector;
-                pDirector.TouchDispatcher.IsDispatchEvents = false;
                 SceneOrder();
 
                 return true;
@@ -144,16 +148,12 @@ namespace Cocos2D
 
         private void SetNewScene(float dt)
         {
-            // [self unschedule:_cmd]; 
-            // "_cmd" is a local variable automatically defined in a method 
-            // that contains the selector for the method
             Unschedule(SetNewScene);
-            CCDirector director = CCDirector.SharedDirector;
+
             // Before replacing, save the "send cleanup to scene"
+            CCDirector director = CCDirector.SharedDirector;
             m_bIsSendCleanupToScene = director.IsSendCleanupToScene();
             director.ReplaceScene(m_pInScene);
-            // enable events while transitions
-            director.TouchDispatcher.IsDispatchEvents = true;
 
             // issue #267
             m_pOutScene.Visible = true;

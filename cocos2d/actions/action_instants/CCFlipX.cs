@@ -7,15 +7,16 @@
         protected CCFlipX()
         {
         }
+
         public CCFlipX(bool x)
         {
             InitWithFlipX(x);
         }
 
-		protected CCFlipX(CCFlipX flipX) : base (flipX)
-		{
-			InitWithFlipX(m_bFlipX);
-		}
+        protected CCFlipX(CCFlipX flipX) : base(flipX)
+        {
+            InitWithFlipX(m_bFlipX);
+        }
 
         protected virtual bool InitWithFlipX(bool x)
         {
@@ -39,15 +40,11 @@
             if (pZone != null)
             {
                 var pRet = (CCFlipX) (pZone);
-				base.Copy(pZone);
-				pRet.InitWithFlipX(m_bFlipX);
-				return pRet;
+                base.Copy(pZone);
+                pRet.InitWithFlipX(m_bFlipX);
+                return pRet;
             }
-            else
-            {
-                return new CCFlipX(this);
-            }
-
+            return new CCFlipX(this);
         }
     }
 }

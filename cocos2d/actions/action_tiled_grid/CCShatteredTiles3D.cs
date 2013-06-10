@@ -37,9 +37,9 @@ namespace Cocos2D
         /// <summary>
         /// initializes the action with a range, whether or not to shatter Z vertices, a grid size and duration
         /// </summary>
-        protected virtual bool InitWithRange(int nRange, bool bShatterZ, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int nRange, bool bShatterZ)
         {
-            if (base.InitWithSize(gridSize, duration))
+            if (base.InitWithDuration(duration, gridSize))
             {
                 m_bOnce = false;
                 m_nRandrange = nRange;
@@ -61,13 +61,13 @@ namespace Cocos2D
             else
             {
                 pCopy = new CCShatteredTiles3D();
-                pZone =  (pCopy);
+                pZone = (pCopy);
             }
 
             //copy super class's member
             base.Copy(pZone);
 
-            pCopy.InitWithRange(m_nRandrange, m_bShatterZ, m_sGridSize, m_fDuration);
+            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nRandrange, m_bShatterZ);
 
             return pCopy;
         }
@@ -119,9 +119,9 @@ namespace Cocos2D
         /// <summary>
         /// creates the action with a range, whether of not to shatter Z vertices, a grid size and duration
         /// </summary>
-        public CCShatteredTiles3D(int nRange, bool bShatterZ, CCGridSize gridSize, float duration) : base(duration)
+        public CCShatteredTiles3D(float duration, CCGridSize gridSize, int nRange, bool bShatterZ) : base(duration)
         {
-            InitWithRange(nRange, bShatterZ, gridSize, duration);
+            InitWithDuration(duration, gridSize, nRange, bShatterZ);
         }
     }
 }

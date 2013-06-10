@@ -1,4 +1,3 @@
-
 using System.Diagnostics;
 
 namespace Cocos2D
@@ -8,15 +7,15 @@ namespace Cocos2D
         protected float m_fSpeed;
         protected CCActionInterval m_pInnerAction;
 
-        public CCSpeed (CCActionInterval action, float fRate)
+        public CCSpeed(CCActionInterval action, float fRate)
         {
             InitWithAction(action, fRate);
         }
 
-		protected CCSpeed (CCSpeed speed) : base (speed)
-		{
-			InitWithAction((CCActionInterval) speed.m_pInnerAction.Copy(), speed.m_fSpeed);
-		}
+        protected CCSpeed(CCSpeed speed) : base(speed)
+        {
+            InitWithAction((CCActionInterval) speed.m_pInnerAction.Copy(), speed.m_fSpeed);
+        }
 
         protected bool InitWithAction(CCActionInterval action, float fRate)
         {
@@ -33,26 +32,24 @@ namespace Cocos2D
             if (zone != null)
             {
                 var ret = (CCSpeed) zone;
-				base.Copy(zone);
-				
-				ret.InitWithAction((CCActionInterval) m_pInnerAction.Copy(), m_fSpeed);
-				
-				return ret;
+                base.Copy(zone);
+
+                ret.InitWithAction((CCActionInterval) m_pInnerAction.Copy(), m_fSpeed);
+
+                return ret;
             }
             else
             {
                 return new CCSpeed(this);
             }
-
-
         }
 
-		public float Speed
-		{
-			get { return m_fSpeed; }
-			set { m_fSpeed = value; }
-		}
-		
+        public float Speed
+        {
+            get { return m_fSpeed; }
+            set { m_fSpeed = value; }
+        }
+
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
@@ -77,7 +74,7 @@ namespace Cocos2D
 
         public virtual CCActionInterval Reverse()
         {
-            return (CCActionInterval) (CCAction) new CCSpeed ((CCActionInterval) m_pInnerAction.Reverse(), m_fSpeed);
+            return (CCActionInterval) (CCAction) new CCSpeed((CCActionInterval) m_pInnerAction.Reverse(), m_fSpeed);
         }
     }
 }

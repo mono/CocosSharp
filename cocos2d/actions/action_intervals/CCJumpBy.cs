@@ -6,14 +6,15 @@ namespace Cocos2D
         protected float m_height;
         protected uint m_nJumps;
         protected CCPoint m_startPosition;
+        protected CCPoint m_previousPos;
 
-        
-        public CCJumpBy (float duration, CCPoint position, float height, uint jumps)
+
+        public CCJumpBy(float duration, CCPoint position, float height, uint jumps)
         {
             InitWithDuration(duration, position, height, jumps);
         }
 
-        protected CCJumpBy (CCJumpBy jumpBy) : base (jumpBy)
+        protected CCJumpBy(CCJumpBy jumpBy) : base(jumpBy)
         {
             InitWithDuration(jumpBy.m_fDuration, jumpBy.m_delta, jumpBy.m_height, jumpBy.m_nJumps);
         }
@@ -42,21 +43,18 @@ namespace Cocos2D
                     return null;
                 }
                 base.Copy(zone);
-                
+
                 ret.InitWithDuration(m_fDuration, m_delta, m_height, m_nJumps);
-                
+
                 return ret;
             }
-            else
-            {
-                return new CCJumpBy(this);
-            }
+            return new CCJumpBy(this);
         }
 
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
-            m_startPosition = target.Position;
+            m_previousPos = m_startPosition = target.Position;
         }
 
         public override void Update(float time)
@@ -68,14 +66,26 @@ namespace Cocos2D
                 float y = m_height * 4f * frac * (1f - frac);
                 y += m_delta.Y * time;
                 float x = m_delta.X * time;
-                m_pTarget.Position = new CCPoint(m_startPosition.X + x, m_startPosition.Y + y);
+#if CC_ENABLE_STACKABLE_ACTIONS
+                CCPoint currentPos = m_pTarget.Position;
+
+                CCPoint diff = currentPos - m_previousPos;
+                m_startPosition = diff + m_startPosition;
+
+                CCPoint newPos = m_startPosition + new CCPoint(x,y);
+                m_pTarget.Position = newPos;
+
+                m_previousPos = newPos;
+#else
+                m_pTarget.Position = m_startPosition + new CCPoint(x, y);
+#endif
+                // !CC_ENABLE_STACKABLE_ACTIONS
             }
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCJumpBy (m_fDuration, new CCPoint(-m_delta.X, -m_delta.Y), m_height, m_nJumps);
+            return new CCJumpBy(m_fDuration, new CCPoint(-m_delta.X, -m_delta.Y), m_height, m_nJumps);
         }
-
     }
 }

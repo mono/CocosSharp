@@ -9,24 +9,32 @@ namespace Cocos2D
         protected float m_fRadius;
         protected CCPoint m_position;
         protected CCPoint m_positionInPixels;
+        protected bool m_bConcave;
 
-        public CCLens3D ()
-        { }
-
-        public CCLens3D (CCPoint pos, float r, CCGridSize gridSize, float duration) : base()
+        public CCLens3D()
         {
-            InitWithPosition(pos, r, gridSize, duration);
         }
 
-        public CCLens3D (CCLens3D lens3D)
+        public CCLens3D(float duration, CCGridSize gridSize, CCPoint position, float radius) : base()
         {
-            InitWithPosition(lens3D.m_position, lens3D.m_fRadius, lens3D.m_sGridSize, lens3D.m_fDuration);
+            InitWithDuration(duration, gridSize, position, radius);
+        }
+
+        public CCLens3D(CCLens3D lens3D)
+        {
+            InitWithDuration(lens3D.m_fDuration, lens3D.m_sGridSize, lens3D.m_position, lens3D.m_fRadius);
         }
 
         public float LensEffect
         {
             get { return m_fLensEffect; }
             set { m_fLensEffect = value; }
+        }
+
+        public bool Concave
+        {
+            get { return m_bConcave; }
+            set { m_bConcave = value; }
         }
 
         public CCPoint Position
@@ -44,16 +52,17 @@ namespace Cocos2D
             }
         }
 
-        public bool InitWithPosition(CCPoint pos, float r, CCGridSize gridSize, float duration)
+        public bool InitWithDuration(float duration, CCGridSize gridSize, CCPoint position, float radius)
         {
-            if (base.InitWithSize(gridSize, duration))
+            if (base.InitWithDuration(duration, gridSize))
             {
                 m_position = new CCPoint(-1, -1);
                 m_positionInPixels = new CCPoint();
 
-                Position = pos;
-                m_fRadius = r;
+                Position = position;
+                m_fRadius = radius;
                 m_fLensEffect = 0.7f;
+                m_bConcave = false;
                 m_bDirty = true;
 
                 return true;
@@ -69,16 +78,15 @@ namespace Cocos2D
                 // in case of being called at sub class
                 var pCopy = (CCLens3D) (pZone);
                 base.Copy(pZone);
-                
-                pCopy.InitWithPosition(m_position, m_fRadius, m_sGridSize, m_fDuration);
-                
+
+                pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_position, m_fRadius);
+
                 return pCopy;
             }
             else
             {
                 return new CCLens3D(this);
             }
-
         }
 
         public override void Update(float time)
@@ -112,7 +120,7 @@ namespace Cocos2D
                                 vect = CCPoint.Normalize(vect);
 
                                 CCPoint new_vect = vect * new_r;
-                                v.Z += new_vect.Length * m_fLensEffect;
+                                v.Z += (m_bConcave ? -1.0f : 1.0f) * new_vect.Length * m_fLensEffect;
                             }
                         }
 
@@ -123,6 +131,5 @@ namespace Cocos2D
                 m_bDirty = false;
             }
         }
-
     }
 }

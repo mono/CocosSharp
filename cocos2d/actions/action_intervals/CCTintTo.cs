@@ -5,15 +5,15 @@ namespace Cocos2D
         protected CCColor3B m_from;
         protected CCColor3B m_to;
 
-		public CCTintTo (float duration, byte red, byte green, byte blue)
-		{
-			InitWithDuration(duration, red, green, blue);
-		}
+        public CCTintTo(float duration, byte red, byte green, byte blue)
+        {
+            InitWithDuration(duration, red, green, blue);
+        }
 
-		protected CCTintTo (CCTintTo tintTo) : base (tintTo)
-		{
-			InitWithDuration(tintTo.m_fDuration, tintTo.m_to.R, tintTo.m_to.G, tintTo.m_to.B);
-		}
+        protected CCTintTo(CCTintTo tintTo) : base(tintTo)
+        {
+            InitWithDuration(tintTo.m_fDuration, tintTo.m_to.R, tintTo.m_to.G, tintTo.m_to.B);
+        }
 
         public bool InitWithDuration(float duration, byte red, byte green, byte blue)
         {
@@ -35,13 +35,13 @@ namespace Cocos2D
                 {
                     return null;
                 }
-				
-				base.Copy(zone);
-				
-				ret.InitWithDuration(m_fDuration, m_to.R, m_to.G, m_to.B);
-				
-				return ret;
-			}
+
+                base.Copy(zone);
+
+                ret.InitWithDuration(m_fDuration, m_to.R, m_to.G, m_to.B);
+
+                return ret;
+            }
             else
             {
                 return new CCTintTo(this);
@@ -68,6 +68,5 @@ namespace Cocos2D
                                                (byte) (m_from.B + (m_to.B - m_from.B) * time));
             }
         }
-
     }
 }

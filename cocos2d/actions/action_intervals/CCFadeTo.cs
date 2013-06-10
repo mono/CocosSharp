@@ -5,12 +5,12 @@
         protected byte m_fromOpacity;
         protected byte m_toOpacity;
 
-        public CCFadeTo (float duration, byte opacity)
+        public CCFadeTo(float duration, byte opacity)
         {
             InitWithDuration(duration, opacity);
         }
 
-        protected CCFadeTo (CCFadeTo fadeTo) : base (fadeTo)
+        protected CCFadeTo(CCFadeTo fadeTo) : base(fadeTo)
         {
             InitWithDuration(fadeTo.m_fDuration, fadeTo.m_toOpacity);
         }
@@ -33,17 +33,15 @@
                 //in case of being called at sub class
                 var pCopy = (CCFadeTo) (pZone);
                 base.Copy(pZone);
-                
+
                 pCopy.InitWithDuration(m_fDuration, m_toOpacity);
-                
+
                 return pCopy;
             }
             else
             {
                 return new CCFadeTo(this);
             }
-
-
         }
 
         public override void StartWithTarget(CCNode target)
@@ -65,6 +63,5 @@
                 pRGBAProtocol.Opacity = (byte) (m_fromOpacity + (m_toOpacity - m_fromOpacity) * time);
             }
         }
-
     }
 }

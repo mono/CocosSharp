@@ -47,7 +47,7 @@ namespace Cocos2D
             {
                 base.HasFocus = value;
                 // Set the first menu item to have the focus
-                if (ItemWithFocus == null)
+                if (FocusedItem == null)
                 {
                     _Items.First.Value.HasFocus = true;
                 }
@@ -78,7 +78,7 @@ namespace Cocos2D
                 xButton == CCGamePadButtonStatus.Pressed || yButton == CCGamePadButtonStatus.Pressed || leftShoulder == CCGamePadButtonStatus.Pressed ||
                 rightShoulder == CCGamePadButtonStatus.Pressed)
             {
-                CCMenuItem item = ItemWithFocus;
+                CCMenuItem item = FocusedItem;
                 item.Selected();
                 m_pSelectedItem = item;
                 m_eState = CCMenuState.TrackingTouch;
@@ -90,7 +90,7 @@ namespace Cocos2D
                 if (m_eState == CCMenuState.TrackingTouch)
                 {
                     // Now we are selecting the menu item
-                    CCMenuItem item = ItemWithFocus;
+                    CCMenuItem item = FocusedItem;
                     if (item != null && m_pSelectedItem == item)
                     {
                         // Activate this item
@@ -107,7 +107,7 @@ namespace Cocos2D
         /// Returns the menu item with the focus. Note that this only has a value if the GamePad or Keyboard is enabled. Touch
         /// devices do not have a "focus" concept.
         /// </summary>
-        public CCMenuItem ItemWithFocus
+        public CCMenuItem FocusedItem
         {
             get
             {
@@ -139,14 +139,6 @@ namespace Cocos2D
             return InitWithArray(items);
         }
 
-        public override void RemoveChild(CCNode child, bool cleanup)
-        {
-            base.RemoveChild(child, cleanup);
-            if (_Items.Contains(child as CCMenuItem))
-            {
-                _Items.Remove(child as CCMenuItem);
-            }
-        }
         /// <summary>
         /// The position of the menu is set to the center of the main screen
         /// </summary>
@@ -164,6 +156,8 @@ namespace Cocos2D
             }
             if (base.Init())
             {
+                TouchPriority = kCCMenuHandlerPriority;
+                TouchMode = CCTouchMode.OneByOne;
                 TouchEnabled = true;
 
                 m_bEnabled = true;
@@ -217,27 +211,50 @@ namespace Cocos2D
             }
         }
 
+        public override void RemoveChild(CCNode child, bool cleanup)
+        {
+            Debug.Assert(child is CCMenuItem, "Menu only supports MenuItem objects as children");
+
+            if (m_pSelectedItem == child)
+            {
+                m_pSelectedItem = null;
+            }
+
+            base.RemoveChild(child, cleanup);
+
+            if (_Items.Contains(child as CCMenuItem))
+            {
+                _Items.Remove(child as CCMenuItem);
+            }
+        }
+
         public override void OnEnter()
         {
             base.OnEnter();
+            
             foreach (CCMenuItem item in _Items)
             {
                 CCFocusManager.Instance.Add(item);
-        }
+            }
         }
 
         public override void OnExit()
         {
             if (m_eState == CCMenuState.TrackingTouch)
             {
-                m_pSelectedItem.Unselected();
+                if (m_pSelectedItem != null)
+                {
+                    m_pSelectedItem.Unselected();
+                    m_pSelectedItem = null;
+                }
                 m_eState = CCMenuState.Waiting;
-                m_pSelectedItem = null;
             }
+            
             foreach (CCMenuItem item in _Items)
             {
                 CCFocusManager.Instance.Remove(item);
             }
+            
             base.OnExit();
         }
 
@@ -257,7 +274,7 @@ namespace Cocos2D
 
         public override bool TouchBegan(CCTouch touch)
         {
-            if (m_eState != CCMenuState.Waiting || !m_bIsVisible || !m_bEnabled)
+            if (m_eState != CCMenuState.Waiting || !m_bVisible || !m_bEnabled)
             {
                 return false;
             }

@@ -7,6 +7,7 @@
         public CCFlipY()
         {
         }
+
         public CCFlipY(bool y)
         {
             InitWithFlipY(y);
@@ -18,10 +19,10 @@
             return true;
         }
 
-		protected CCFlipY(CCFlipY flipY) : base (flipY)
-		{
-			InitWithFlipY(m_bFlipY);
-		}
+        protected CCFlipY(CCFlipY flipY) : base(flipY)
+        {
+            InitWithFlipY(m_bFlipY);
+        }
 
         public override void StartWithTarget(CCNode target)
         {
@@ -36,19 +37,14 @@
 
         public override object Copy(ICCCopyable pZone)
         {
-
             if (pZone != null)
             {
                 var pRet = (CCFlipY) (pZone);
-				base.Copy(pZone);
-				pRet.InitWithFlipY(m_bFlipY);
-				return pRet;
+                base.Copy(pZone);
+                pRet.InitWithFlipY(m_bFlipY);
+                return pRet;
             }
-            else
-            {
-                return new CCFlipY(this);
-            }
-
+            return new CCFlipY(this);
         }
     }
 }

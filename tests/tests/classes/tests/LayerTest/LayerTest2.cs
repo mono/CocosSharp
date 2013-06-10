@@ -25,12 +25,12 @@ namespace tests
 
             var actionTint = new CCTintBy (2, -255, -127, 0);
             var actionTintBack = actionTint.Reverse();
-            var seq1 = CCSequence.FromActions(actionTint, actionTintBack);
+            var seq1 = new CCSequence(actionTint, actionTintBack);
             layer1.RunAction(seq1);
 
             var actionFade = new CCFadeOut(2.0f);
             var actionFadeBack = actionFade.Reverse();
-            var seq2 = CCSequence.FromActions(actionFade, actionFadeBack);
+            var seq2 = new CCSequence(actionFade, actionFadeBack);
             layer2.RunAction(seq2);
         }
 

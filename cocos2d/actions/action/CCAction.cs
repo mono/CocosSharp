@@ -1,4 +1,3 @@
-
 namespace Cocos2D
 {
     public enum CCActionTag
@@ -40,14 +39,13 @@ namespace Cocos2D
             set { m_nTag = value; }
         }
 
-		public virtual CCAction Copy()
-		{
-			return (CCAction)Copy(null);
-		}
+        public virtual CCAction Copy()
+        {
+            return (CCAction) Copy(null);
+        }
 
         public virtual object Copy(ICCCopyable zone)
         {
-
             if (zone != null)
             {
                 ((CCAction) zone).m_nTag = m_nTag;
@@ -83,6 +81,5 @@ namespace Cocos2D
         {
             CCLog.Log("[Action update]. override me");
         }
-
     }
 }

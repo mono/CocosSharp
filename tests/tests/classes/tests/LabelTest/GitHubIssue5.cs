@@ -25,7 +25,7 @@ namespace tests
             _Index++;
             // Start the ticker
             RunAction(new CCRepeatForever (
-                CCSequence.FromActions(
+                new CCSequence(
                 new CCDelayTime (1f),
                 new CCCallFunc(UpdateLabel))
                 ));

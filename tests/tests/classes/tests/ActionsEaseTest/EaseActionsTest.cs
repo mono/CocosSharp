@@ -100,9 +100,9 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
-            var seq3 = CCSequence.FromActions(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
+            var seq1 = new CCSequence(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
+            var seq3 = new CCSequence(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
                                                 (CCFiniteTimeAction) delay.Copy());
 
             var a2 = m_grossini.RunAction(new CCRepeatForever ((CCActionInterval)seq1));
@@ -152,10 +152,10 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move_ease_inout1, delay, move_ease_inout_back1, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease_inout2, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back2,
+            var seq1 = new CCSequence(move_ease_inout1, delay, move_ease_inout_back1, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease_inout2, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back2,
                                                 (CCFiniteTimeAction) delay.Copy());
-            var seq3 = CCSequence.FromActions(move_ease_inout3, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back3,
+            var seq3 = new CCSequence(move_ease_inout3, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back3,
                                                 (CCFiniteTimeAction) delay.Copy());
 
             m_tamara.RunAction(new CCRepeatForever ((CCActionInterval)seq1));
@@ -188,9 +188,9 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
-            var seq3 = CCSequence.FromActions(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
+            var seq1 = new CCSequence(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
+            var seq3 = new CCSequence(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
                                                 (CCFiniteTimeAction) delay.Copy());
 
 
@@ -221,8 +221,8 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());
+            var seq1 = new CCSequence(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());
 
             positionForTwo();
 
@@ -255,9 +255,9 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
-            var seq3 = CCSequence.FromActions(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
+            var seq1 = new CCSequence(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
+            var seq3 = new CCSequence(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
                                                 (CCFiniteTimeAction) delay.Copy());
 
             m_grossini.RunAction(new CCRepeatForever (seq1));
@@ -287,8 +287,8 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());
+            var seq1 = new CCSequence(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());
 
             positionForTwo();
 
@@ -321,9 +321,9 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
-            var seq3 = CCSequence.FromActions(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
+            var seq1 = new CCSequence(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
+            var seq3 = new CCSequence(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
                                                 (CCFiniteTimeAction) delay.Copy());
 
             m_grossini.RunAction(new CCRepeatForever (seq1));
@@ -358,10 +358,10 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move_ease_inout1, delay, move_ease_inout_back1, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease_inout2, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back2,
+            var seq1 = new CCSequence(move_ease_inout1, delay, move_ease_inout_back1, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease_inout2, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back2,
                                                 (CCFiniteTimeAction) delay.Copy());
-            var seq3 = CCSequence.FromActions(move_ease_inout3, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back3,
+            var seq3 = new CCSequence(move_ease_inout3, (CCFiniteTimeAction) delay.Copy(), move_ease_inout_back3,
                                                 (CCFiniteTimeAction) delay.Copy());
 
             m_tamara.RunAction(new CCRepeatForever (seq1));
@@ -394,9 +394,9 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
-            var seq3 = CCSequence.FromActions(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
+            var seq1 = new CCSequence(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
+            var seq3 = new CCSequence(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
                                                 (CCFiniteTimeAction) delay.Copy());
 
             m_grossini.RunAction(new CCRepeatForever (seq1));
@@ -426,8 +426,8 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());
+            var seq1 = new CCSequence(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());
 
             positionForTwo();
 
@@ -460,9 +460,9 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
-            var seq3 = CCSequence.FromActions(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
+            var seq1 = new CCSequence(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease_in, (CCFiniteTimeAction) delay.Copy(), move_ease_in_back, (CCFiniteTimeAction) delay.Copy());
+            var seq3 = new CCSequence(move_ease_out, (CCFiniteTimeAction) delay.Copy(), move_ease_out_back,
                                                 (CCFiniteTimeAction) delay.Copy());
 
             m_grossini.RunAction(new CCRepeatForever (seq1));
@@ -492,8 +492,8 @@ namespace tests
 
             var delay = new CCDelayTime (0.25f);
 
-            var seq1 = CCSequence.FromActions(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
-            var seq2 = CCSequence.FromActions(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());
+            var seq1 = new CCSequence(move, delay, move_back, (CCFiniteTimeAction) delay.Copy());
+            var seq2 = new CCSequence(move_ease, (CCFiniteTimeAction) delay.Copy(), move_ease_back, (CCFiniteTimeAction) delay.Copy());
 
             positionForTwo();
 
@@ -521,9 +521,9 @@ namespace tests
             var rot1 = new CCRotateBy (4, 360 * 2);
             var rot2 = rot1.Reverse();
 
-            var seq3_1 = CCSequence.FromActions(jump2, jump1);
-            var seq3_2 = CCSequence.FromActions(rot1, rot2);
-            var spawn = CCSpawn.FromActions(seq3_1, seq3_2);
+            var seq3_1 = new CCSequence(jump2, jump1);
+            var seq3_2 = new CCSequence(rot1, rot2);
+            var spawn = new CCSpawn(seq3_1, seq3_2);
             var action = new CCSpeed (new CCRepeatForever (spawn), 1.0f);
             action.Tag = EaseTest.kTagAction1;
 

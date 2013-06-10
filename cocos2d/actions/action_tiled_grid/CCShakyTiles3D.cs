@@ -33,10 +33,9 @@ namespace Cocos2D
         /// <summary>
         ///  initializes the action with a range, whether or not to shake Z vertices, a grid size, and duration
         /// </summary>
-        protected virtual bool InitWithRange(int nRange, bool bShakeZ, CCGridSize gridSize,
-                                  float duration)
+        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int nRange, bool bShakeZ)
         {
-            if (base.InitWithSize(gridSize, duration))
+            if (base.InitWithDuration(duration, gridSize))
             {
                 m_nRandrange = nRange;
                 m_bShakeZ = bShakeZ;
@@ -58,12 +57,12 @@ namespace Cocos2D
             else
             {
                 pCopy = new CCShakyTiles3D();
-                pZone =  (pCopy);
+                pZone = (pCopy);
             }
 
             base.Copy(pZone);
 
-            pCopy.InitWithRange(m_nRandrange, m_bShakeZ, m_sGridSize, m_fDuration);
+            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nRandrange, m_bShakeZ);
 
             return pCopy;
         }
@@ -109,9 +108,9 @@ namespace Cocos2D
         /// <summary>
         /// creates the action with a range, whether or not to shake Z vertices, a grid size, and duration
         /// </summary>
-        public CCShakyTiles3D(int nRange, bool bShakeZ, CCGridSize gridSize, float duration) : base(duration)
+        public CCShakyTiles3D(float duration, CCGridSize gridSize, int nRange, bool bShakeZ) : base(duration)
         {
-            InitWithRange(nRange, bShakeZ, gridSize, duration);
+            InitWithDuration(duration, gridSize, nRange, bShakeZ);
         }
     }
 }

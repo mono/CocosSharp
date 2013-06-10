@@ -1,27 +1,24 @@
-
 namespace Cocos2D
 {
     public class CCActionInstant : CCFiniteTimeAction
     {
+        protected CCActionInstant()
+        {
+        }
 
-		protected CCActionInstant () {}
-
-		protected CCActionInstant (CCActionInstant actionInstant) : base (actionInstant)
-		{ }
+        protected CCActionInstant(CCActionInstant actionInstant) : base(actionInstant)
+        {
+        }
 
         public override object Copy(ICCCopyable zone)
         {
             if (zone != null)
             {
                 var ret = (CCActionInstant) zone;
-				base.Copy(zone);
-				return ret;
+                base.Copy(zone);
+                return ret;
             }
-            else
-            {
-                return new CCActionInstant(this);
-            }
-
+            return new CCActionInstant(this);
         }
 
         public override bool IsDone

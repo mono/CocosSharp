@@ -51,9 +51,9 @@ namespace Cocos2D
         /// <summary>
         ///  creates the action with the grid size and the duration 
         /// </summary>
-        public CCFadeOutDownTiles(CCGridSize gridSize, float time) : base(gridSize, time)
+        public CCFadeOutDownTiles(float duration, CCGridSize gridSize) : base(duration, gridSize)
         {
-            InitWithSize(gridSize, time);
+            InitWithDuration(duration, gridSize);
         }
     }
 }

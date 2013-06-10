@@ -31,18 +31,26 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
+    public enum CCTouchMode
+    {
+        AllAtOnce,
+        OneByOne
+    }
+
     public class CCLayer : CCNode, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCAccelerometerDelegate, ICCKeypadDelegate
     {
         private bool m_bIsAccelerometerEnabled;
         private bool m_bKeypadEnabled;
         private bool m_bGamePadEnabled;
-        private bool m_bIsMultiTouchEnabled;
-        private bool m_bIsSingleTouchEnabled;
+        private bool m_bTouchEnabled;
+        private CCTouchMode m_eTouchMode;
 
         private CCRenderTexture m_pRenderTexture;
         private bool m_bRestoreScissor;
         private CCRect m_tSaveScissorRect;
         private bool m_bNoDrawChildren;
+
+        private int m_nTouchPriority;
 
         //private bool m_bMouseEnabled;
         //private bool m_bGamePadEnabled;
@@ -197,7 +205,7 @@ namespace Cocos2D
             if (m_childClippingMode == CCClipMode.Bounds)
             {
                 // We always clip to the bounding box
-                var rect = new CCRect(0, 0, m_tContentSize.Width, m_tContentSize.Height);
+                var rect = new CCRect(0, 0, m_obContentSize.Width, m_obContentSize.Height);
                 var bounds = CCAffineTransform.Transform(rect, NodeToWorldTransform());
 
                 var winSize = CCDirector.SharedDirector.WinSize;
@@ -298,8 +306,7 @@ namespace Cocos2D
             if (director != null)
             {
                 //                ContentSize = director.WinSize;
-                m_bIsMultiTouchEnabled = false;
-                m_bIsSingleTouchEnabled = false;
+                m_bTouchEnabled = false;
                 m_bIsAccelerometerEnabled = false;
                 m_bKeypadEnabled = false;
                 m_bGamePadEnabled = false;
@@ -316,7 +323,7 @@ namespace Cocos2D
             }
             // register 'parent' nodes first
             // since events are propagated in reverse order
-            if (m_bIsMultiTouchEnabled || m_bIsSingleTouchEnabled)
+            if (m_bTouchEnabled)
             {
                 RegisterWithTouchDispatcher();
             }
@@ -355,7 +362,7 @@ namespace Cocos2D
             CCDirector director = CCDirector.SharedDirector;
             CCApplication application = CCApplication.SharedApplication;
 
-            if (m_bIsMultiTouchEnabled || m_bIsSingleTouchEnabled)
+            if (m_bTouchEnabled)
             {
                 director.TouchDispatcher.RemoveDelegate(this);
                 //unregisterScriptTouchHandler();
@@ -416,26 +423,44 @@ namespace Cocos2D
                 return;
             }
             */
-            if (m_bIsSingleTouchEnabled)
+            if (m_eTouchMode == CCTouchMode.AllAtOnce)
             {
-                pDispatcher.AddTargetedDelegate(this, 0, true);
+                pDispatcher.AddStandardDelegate(this, 0);
             }
-            if (m_bIsMultiTouchEnabled)
+            else
             {
-            pDispatcher.AddStandardDelegate(this, 0);
+                pDispatcher.AddTargetedDelegate(this, m_nTouchPriority, true);
             }
         }
 
-        public virtual bool SingleTouchEnabled
+        public CCTouchMode TouchMode
         {
-            get { return m_bIsSingleTouchEnabled; }
+            get { return m_eTouchMode; }
             set
             {
-                if (m_bIsSingleTouchEnabled != value)
+                if (m_eTouchMode != value)
                 {
-                    m_bIsSingleTouchEnabled = value;
+                    m_eTouchMode = value;
 
-                    if (m_bIsRunning)
+                    if (m_bTouchEnabled)
+                    {
+                        TouchEnabled = false;
+                        TouchEnabled = true;
+                    }
+                }
+            }
+        }
+        
+        public virtual bool TouchEnabled
+        {
+            get { return m_bTouchEnabled; }
+            set
+            {
+                if (m_bTouchEnabled != value)
+                {
+                    m_bTouchEnabled = value;
+
+                    if (m_bRunning)
                     {
                         if (value)
                         {
@@ -449,25 +474,20 @@ namespace Cocos2D
                 }
             }
         }
-        public virtual bool TouchEnabled
+
+        public int TouchPriority
         {
-            get { return m_bIsMultiTouchEnabled; }
+            get { return m_nTouchPriority; }
             set
             {
-                if (m_bIsMultiTouchEnabled != value)
+                if (m_nTouchPriority != value)
                 {
-                    m_bIsMultiTouchEnabled = value;
+                    m_nTouchPriority = value;
 
-                    if (m_bIsRunning)
+                    if (m_bRunning)
                     {
-                        if (value)
-                        {
-                            RegisterWithTouchDispatcher();
-                        }
-                        else
-                        {
-                            CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
-                        }
+                        TouchEnabled = false;
+                        TouchEnabled = true;
                     }
                 }
             }
@@ -488,7 +508,7 @@ namespace Cocos2D
                 {
                     m_bIsAccelerometerEnabled = value;
 
-                    if (m_bIsRunning)
+                    if (m_bRunning)
                     {
                         CCDirector pDirector = CCDirector.SharedDirector;
                         pDirector.Accelerometer.SetDelegate(value ? this : null);
@@ -509,7 +529,7 @@ namespace Cocos2D
                 {
                     m_bKeypadEnabled = value;
                     
-                    if (m_bIsRunning)
+                    if (m_bRunning)
                     {
                         /*
                         if (value)

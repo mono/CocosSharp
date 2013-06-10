@@ -24,6 +24,7 @@ THE SOFTWARE.
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
@@ -41,28 +42,45 @@ namespace Cocos2D
         TGA_ERROR_COMPRESSED_FILE,
     }
 
+    internal struct TGAHeader
+    {
+        public byte idlength;
+        public byte colourmaptype;
+        public byte datatypecode;
+        public short colourmaporigin;
+        public short colourmaplength;
+        public byte colourmapdepth;
+        public short x_origin;
+        public short y_origin;
+        public short width;
+        public short height;
+        public byte bitsperpixel;
+        public byte imagedescriptor;
+    };
+
     public class CCImageTGA
     {
-        public int status;
-        public char type, pixelDepth;
+        private TGAHeader header;
 
-        /// <summary>
-        /// map width
-        /// </summary>
+        public int status;
+        public byte type, pixelDepth;
+
         public short width;
 
-        /// <summary>
-        /// map height
-        /// </summary>
         public short height;
 
         /// <summary>
         /// raw data
         /// </summary>
         public Color[] imageData;
+
         public int flipped;
 
-		public CCImageTGA (string fileName)
+		public CCImageTGA()
+		{
+		}
+
+        public CCImageTGA (string fileName)
 		{
 			var tex = CCApplication.SharedApplication.Content.Load<Texture2D>(fileName);
 
@@ -85,61 +103,104 @@ namespace Cocos2D
 
     internal class CCTGAlib
     {
+
+        private static byte ReadByte(byte[] buffer, int position)
+        {
+            return buffer[position];
+        }
+
+        private static short ReadShort(byte[] buffer, int position)
+        {
+            return (short)(buffer[position] | buffer[position + 1] << 8);
+        }
+
         /// <summary>
         /// load the image header fields. We only keep those that matter!
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        public static bool LoadHeader(byte[] Buffer, UInt64 bufSize, CCImageTGA psInfo)
+        public static bool LoadHeader(byte[] buffer, int bufSize, CCImageTGA psInfo)
         {
+            TGAHeader header;
+            int pos = 0;
+
+            header.idlength = ReadByte(buffer, pos);
+            pos++;
+            header.colourmaptype = ReadByte(buffer, pos);
+            pos++;
+            header.datatypecode = ReadByte(buffer, pos);
+            pos++;
+            header.colourmaporigin = ReadShort(buffer, pos);
+            pos += 2;
+            header.colourmaplength = ReadShort(buffer, pos);
+            pos += 2;
+            header.colourmapdepth = ReadByte(buffer, pos);
+            pos++;
+            header.x_origin = ReadShort(buffer, pos);
+            pos += 2;
+            header.y_origin = ReadShort(buffer, pos);
+            pos += 2;
+            header.width = ReadShort(buffer, pos);
+            pos += 2;
+            header.height = ReadShort(buffer, pos);
+            pos += 2;
+            header.bitsperpixel = ReadByte(buffer, pos);
+            pos++;
+            header.imagedescriptor = ReadByte(buffer, pos);
+            pos++;
+
+            /*
+
             bool bRet = false;
 
-            //do
-            //{
-            //    UInt64 step = sizeof(char) * 2;
-            //    if ((step + sizeof(char)) > bufSize)
-            //    {
-            //        break;
-            //    }
+            do
+            {
+                int step = sizeof (byte) * 2;
+                if ((step + sizeof (byte)) > bufSize)
+                {
+                    break;
+                }
 
-            //    memcpy(psInfo.type, Buffer + step, sizeof(char));
+                psInfo.type = ReadByte(buffer, step);
 
-            //    step += sizeof(char) * 2;
-            //    step += sizeof(short) * 4;
-            //    if ((step + sizeof(short) * 2 + sizeof(char)) > bufSize)
-            //    {
-            //        break;
-            //    }
-            //    memcpy(psInfo.width, Buffer + step, sizeof(short));
-            //    memcpy(psInfo.height, Buffer + step + sizeof(short), sizeof(short));
-            //    memcpy(psInfo.pixelDepth, Buffer + step + sizeof(short) * 2, sizeof(char));
+                step += sizeof (byte) * 2;
+                step += sizeof (short) * 4;
+                if ((step + sizeof (short) * 2 + sizeof (char)) > bufSize)
+                {
+                    break;
+                }
 
-            //    step += sizeof(char);
-            //    step += sizeof(short) * 2;
-            //    if ((step + sizeof(char)) > bufSize)
-            //    {
-            //        break;
-            //    }
-            //    char cGarbage;
-            //    memcpy(cGarbage, Buffer + step, sizeof(char));
+                psInfo.width = ReadShort(buffer, step);
+                psInfo.height = ReadShort(buffer, step + sizeof (short));
+                psInfo.pixelDepth = ReadByte(buffer, step + sizeof (short) * 2);
 
-            //    psInfo.flipped = 0;
-            //    if (cGarbage & 0x20)
-            //    {
-            //        psInfo.flipped = 1;
-            //    }
-            //    bRet = true;
-            //} while (0);
+                step += sizeof (char);
+                step += sizeof (short) * 2;
+                if ((step + sizeof (byte)) > bufSize)
+                {
+                    break;
+                }
 
-            return bRet;
+                byte cGarbage = ReadByte(buffer, step);
+
+                psInfo.flipped = 0;
+                if ((cGarbage & 0x20) != 0)
+                {
+                    psInfo.flipped = 1;
+                }
+                bRet = true;
+            } while (true);
+            */
+
+            return true;
         }
 
         /// <summary>
         /// loads the image pixels. You shouldn't call this function directly
         /// </summary>
-        /// <param name="Buffer">red,green,blue pixel values</param>
+        /// <param name="buffer">red,green,blue pixel values</param>
         /// <returns></returns>
-        public static bool LoadImageData(byte[] Buffer, int bufSize, CCImageTGA psInfo)
+        public static bool LoadImageData(byte[] buffer, int bufSize, CCImageTGA psInfo)
         {
             int mode;
             int headerSkip = (1 + 2) * 6; // sizeof(char) + sizeof(short) = size of the header
@@ -152,14 +213,14 @@ namespace Cocos2D
             if (mode >= 3)
             {
                 int cx = 0;
-                for (int i = headerSkip; i < Buffer.Length; i += mode)
+                for (int i = headerSkip; i < buffer.Length; i += mode)
                 {
-                    psInfo.imageData[cx].R = Buffer[i + 2];
-                    psInfo.imageData[cx].G = Buffer[i + 1];
-                    psInfo.imageData[cx].B = Buffer[i];
+                    psInfo.imageData[cx].R = buffer[i + 2];
+                    psInfo.imageData[cx].G = buffer[i + 1];
+                    psInfo.imageData[cx].B = buffer[i];
                     if (mode == 4)
                     {
-                        psInfo.imageData[cx].A = Buffer[i + 3];
+                        psInfo.imageData[cx].A = buffer[i + 3];
                     }
                     else
                     {
@@ -171,11 +232,20 @@ namespace Cocos2D
             {
                 return (false);
             }
-            return(true);
-          
+            return true;
+
         }
 
-        /// <summary>
+        public static CCImageTGA Load(byte[] buffer)
+        {
+            var info = new CCImageTGA();
+
+            LoadHeader(buffer, buffer.Length, info);
+
+            return info;
+        }
+
+    /// <summary>
         /// this is the function to call when we want to load an image
         /// </summary>
         /// <param name="?"></param>
@@ -270,24 +340,6 @@ namespace Cocos2D
         public static void RGBToGreyscale(CCImageTGA psInfo) 
         {
             throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// releases the memory used for the image
-        /// </summary>
-        /// <param name="psInfo"></param>
-        public static void Destroy(CCImageTGA psInfo)
-        {
-            if (psInfo != null)
-            {
-                if (psInfo.imageData != null)
-                {
-                    psInfo.imageData = null;
-                    //free();
-                }
-
-                psInfo = null;
-            }
         }
 
         bool LoadRLEImageData(byte[] Buffer, UInt64 bufSize, CCImageTGA psInfo) 

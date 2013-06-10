@@ -22,15 +22,16 @@ namespace Cocos2D
             set { m_fAmplitudeRate = value; }
         }
 
-        protected virtual bool InitWithWaves(int wav, float amp, bool h, bool v, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int waves, float amplitude,
+                                                bool horizontal, bool vertical)
         {
-            if (base.InitWithSize(gridSize, duration))
+            if (base.InitWithDuration(duration, gridSize))
             {
-                m_nWaves = wav;
-                m_fAmplitude = amp;
+                m_nWaves = waves;
+                m_fAmplitude = amplitude;
                 m_fAmplitudeRate = 1.0f;
-                m_bHorizontal = h;
-                m_bVertical = v;
+                m_bHorizontal = horizontal;
+                m_bVertical = vertical;
 
                 return true;
             }
@@ -49,12 +50,12 @@ namespace Cocos2D
             else
             {
                 pCopy = new CCWaves();
-                pZone =  (pCopy);
+                pZone = (pCopy);
             }
 
             base.Copy(pZone);
 
-            pCopy.InitWithWaves(m_nWaves, m_fAmplitude, m_bHorizontal, m_bVertical, m_sGridSize, m_fDuration);
+            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nWaves, m_fAmplitude, m_bHorizontal, m_bVertical);
 
             return pCopy;
         }
@@ -71,12 +72,16 @@ namespace Cocos2D
 
                     if (m_bVertical)
                     {
-                        v.X = (v.X + ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.Y * .01f) * m_fAmplitude * m_fAmplitudeRate));
+                        v.X = (v.X +
+                               ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.Y * .01f) * m_fAmplitude *
+                                m_fAmplitudeRate));
                     }
 
                     if (m_bHorizontal)
                     {
-                        v.Y = (v.Y + ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.X * .01f) * m_fAmplitude * m_fAmplitudeRate));
+                        v.Y = (v.Y +
+                               ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.X * .01f) * m_fAmplitude *
+                                m_fAmplitudeRate));
                     }
 
                     SetVertex(new CCGridSize(i, j), ref v);
@@ -87,9 +92,11 @@ namespace Cocos2D
         protected CCWaves()
         {
         }
-        public CCWaves(int wav, float amp, bool h, bool v, CCGridSize gridSize, float duration) : base(duration)
+
+        public CCWaves(float duration, CCGridSize gridSize, int waves, float amplitude, bool horizontal, bool vertical)
+            : base(duration)
         {
-            InitWithWaves(wav, amp, h, v, gridSize, duration);
+            InitWithDuration(duration, gridSize, waves, amplitude, horizontal, vertical);
         }
     }
 }

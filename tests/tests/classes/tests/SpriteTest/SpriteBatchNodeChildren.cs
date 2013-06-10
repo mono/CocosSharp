@@ -65,8 +65,8 @@ namespace tests
             sprite2.RunAction(new CCRepeatForever (seq2));
 
             sprite1.RunAction((CCAction)(new CCRepeatForever (action_rot)));
-            sprite1.RunAction((CCAction)(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(action, action_back)))));
-            sprite1.RunAction((CCAction)(new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(action_s, action_s_back)))));
+            sprite1.RunAction((CCAction)(new CCRepeatForever ((CCActionInterval)(new CCSequence(action, action_back)))));
+            sprite1.RunAction((CCAction)(new CCRepeatForever ((CCActionInterval)(new CCSequence(action_s, action_s_back)))));
 
         }
 

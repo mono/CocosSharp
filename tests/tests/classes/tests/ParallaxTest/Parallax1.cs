@@ -59,7 +59,7 @@ namespace tests
             CCFiniteTimeAction goDown = goUp.Reverse();
             CCMoveBy go = new CCMoveBy (8, new CCPoint(-1000, 0));
             CCFiniteTimeAction goBack = go.Reverse();
-            CCFiniteTimeAction seq = CCSequence.FromActions(goUp, go, goDown, goBack);
+            CCFiniteTimeAction seq = new CCSequence(goUp, go, goDown, goBack);
 
             voidNode.RunAction(new CCRepeatForever ((CCActionInterval) seq));
 

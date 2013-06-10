@@ -39,11 +39,11 @@ namespace Cocos2D
         /// <summary>
         /// initializes the action with a random seed, the grid size and the duration
         /// </summary>
-        protected virtual bool InitWithSeed(int s, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int seed)
         {
-            if (base.InitWithSize(gridSize, duration))
+            if (base.InitWithDuration(duration, gridSize))
             {
-                m_nSeed = s;
+                m_nSeed = seed;
                 m_pTilesOrder = null;
                 m_pTiles = null;
 
@@ -131,8 +131,8 @@ namespace Cocos2D
                 {
                     m_pTiles[f] = new CCTile
                         {
-                            Position = new CCPoint(i, j), 
-                            StartPosition = new CCPoint(i, j), 
+                            Position = new CCPoint(i, j),
+                            StartPosition = new CCPoint(i, j),
                             Delta = GetDelta(new CCGridSize(i, j))
                         };
 
@@ -169,12 +169,12 @@ namespace Cocos2D
             else
             {
                 pCopy = new CCShuffleTiles();
-                pZone =  (pCopy);
+                pZone = (pCopy);
             }
 
             base.Copy(pZone);
 
-            pCopy.InitWithSeed(m_nSeed, m_sGridSize, m_fDuration);
+            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nSeed);
 
             return pCopy;
         }
@@ -186,9 +186,9 @@ namespace Cocos2D
         /// <summary>
         /// creates the action with a random seed, the grid size and the duration 
         /// </summary>
-        public CCShuffleTiles(int s, CCGridSize gridSize, float duration) : base(duration)
+        public CCShuffleTiles(CCGridSize gridSize, float duration, int seed) : base(duration)
         {
-            InitWithSeed(s, gridSize, duration);
+            InitWithDuration(duration, gridSize, seed);
         }
     }
 }

@@ -51,7 +51,7 @@ namespace tests
         }
         public void unscheduleAll(float dt)
         {
-             CCDirector.SharedDirector.Scheduler.UnscheduleAllSelectors();
+             CCDirector.SharedDirector.Scheduler.UnscheduleAll();
         }
     }
 }

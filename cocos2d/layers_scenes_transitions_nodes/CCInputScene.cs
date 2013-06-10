@@ -165,7 +165,7 @@ namespace Cocos2D
                 {
                     m_bIsSingleTouchEnabled = value;
 
-                    if (m_bIsRunning)
+                    if (m_bRunning)
                     {
                         if (value)
                         {
@@ -188,7 +188,7 @@ namespace Cocos2D
                 {
                     m_bIsMultiTouchEnabled = value;
 
-                    if (m_bIsRunning)
+                    if (m_bRunning)
                     {
                         if (value)
                         {
@@ -220,7 +220,7 @@ namespace Cocos2D
                 {
                     m_bIsAccelerometerEnabled = value;
 
-                    if (m_bIsRunning)
+                    if (m_bRunning)
                     {
                         CCDirector pDirector = CCDirector.SharedDirector;
                         pDirector.Accelerometer.SetDelegate(value ? this : null);
@@ -241,7 +241,7 @@ namespace Cocos2D
                 {
                     m_bKeypadEnabled = value;
 
-                    if (m_bIsRunning)
+                    if (m_bRunning)
                     {
                         /*
                         if (value)

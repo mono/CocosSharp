@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework;
 
 namespace Cocos2D
 {
-    internal interface ICCDirectorDelegate
+    public interface ICCDirectorDelegate
     {
         void UpdateProjection();
     }
@@ -51,7 +51,6 @@ namespace Cocos2D
         private float m_fContentScaleFactor = 1.0f;
         private float m_fDeltaTime;
         private bool m_NeedsInit = true;
-        internal CCSize m_obWinSizeInPixels;
         internal CCSize m_obWinSizeInPoints;
 		
 #if !PSM &&!NETFX_CORE
@@ -339,14 +338,25 @@ namespace Cocos2D
         }
 #endif
 
+        public ICCDirectorDelegate Delegate
+        {
+            get { return m_pProjectionDelegate; }
+            set { m_pProjectionDelegate = value; }
+        }
+
+        public void SetViewport()
+        {
+            CCDrawManager.SetViewPortInPoints(0, 0, (int)m_obWinSizeInPoints.Width, (int)m_obWinSizeInPoints.Height);
+        }
+
         public CCDirectorProjection Projection
         {
             get { return m_eProjection; }
             set
             {
-                CCSize size = m_obWinSizeInPoints;
+                SetViewport();
 
-                CCDrawManager.SetViewPortInPoints(0, 0, (int)size.Width, (int)size.Height);
+                CCSize size = m_obWinSizeInPoints;
 
                 switch (value)
                 {
@@ -354,8 +364,8 @@ namespace Cocos2D
 
                         
                         CCDrawManager.ProjectionMatrix = Matrix.CreateOrthographicOffCenter(
-                            0, size.Width,
-                            0, size.Height,
+                            0, size.Width / CCMacros.CCContentScaleFactor(),
+                            0, size.Height / CCMacros.CCContentScaleFactor(),
                             -1024.0f, 1024.0f
                             );
 
@@ -424,11 +434,6 @@ namespace Cocos2D
         public float ZEye
         {
             get { return (m_obWinSizeInPoints.Height / 1.1566f); }
-        }
-
-        public CCSize WinSizeInPixels
-        {
-            get { return m_obWinSizeInPixels; }
         }
 
         public CCSize VisibleSize
@@ -534,6 +539,8 @@ namespace Cocos2D
 
         public virtual bool Init()
         {
+            SetDefaultValues();
+
             // scenes
             m_pRunningScene = null;
             m_pNextScene = null;
@@ -565,7 +572,7 @@ namespace Cocos2D
             // purge ?
             m_bPurgeDirecotorInNextLoop = false;
 
-            m_obWinSizeInPixels = m_obWinSizeInPoints = CCSize.Zero;
+            m_obWinSizeInPoints = CCSize.Zero;
 
             //m_pobOpenGLView = null;
 
@@ -615,6 +622,10 @@ namespace Cocos2D
 
             // set other opengl default values
             //ClearColor = new Color(0, 0, 0, 255);
+        }
+
+        protected void SetDefaultValues()
+        {
         }
 
         public void Update(GameTime gameTime)
@@ -702,11 +713,9 @@ namespace Cocos2D
         public void SetOpenGlView()
         {
             // set size
-            m_obWinSizeInPoints = CCDrawManager.Size;
-            m_obWinSizeInPixels = new CCSize(m_obWinSizeInPoints.Width * m_fContentScaleFactor,
-                                             m_obWinSizeInPoints.Height * m_fContentScaleFactor);
+            m_obWinSizeInPoints = CCDrawManager.DesignResolutionSize;
 
-            //createStatsLabel();
+            CreateStatsLabel();
 
             SetGlDefaultValues();
 
@@ -734,12 +743,11 @@ namespace Cocos2D
         {
             if (bOn)
             {
-                //glEnable(GL_BLEND);
-                //glBlendFunc(CCDefaultSourceBlending, CCDefaultDestinationBlending);
+                CCDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
             }
             else
             {
-                //glDisable(GL_BLEND);
+                CCDrawManager.BlendFunc(new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ZERO));
             }
         }
 
@@ -767,13 +775,9 @@ namespace Cocos2D
             get { return m_obWinSizeInPoints; }
         }
 
-        public void ReshapeProjection(CCSize newWindowSize)
+        public CCSize WinSizeInPixels
         {
-            m_obWinSizeInPoints = CCDrawManager.Size;
-            m_obWinSizeInPixels = new CCSize(m_obWinSizeInPoints.Width * m_fContentScaleFactor,
-                                             m_obWinSizeInPoints.Height * m_fContentScaleFactor);
-
-            Projection = m_eProjection;
+            get { return m_obWinSizeInPoints * m_fContentScaleFactor; }
         }
 
         public void End()
@@ -784,7 +788,7 @@ namespace Cocos2D
         protected void PurgeDirector()
         {
             // cleanup scheduler
-            Scheduler.UnscheduleAllSelectors();
+            Scheduler.UnscheduleAll();
 
             // don't release the event handlers
             // They are needed in case the director is run again
@@ -792,6 +796,7 @@ namespace Cocos2D
 
             if (m_pRunningScene != null)
             {
+                m_pRunningScene.OnExitTransitionDidStart();
                 m_pRunningScene.OnExit();
                 m_pRunningScene.Cleanup();
             }
@@ -907,12 +912,8 @@ namespace Cocos2D
 
         public void RunWithScene(CCScene pScene)
         {
-            Debug.Assert(pScene != null, "pScene cannot be null");
-            if (m_pRunningScene != null)
-            {
-                CCLog.Log("Current running scene is " + m_pRunningScene.GetType().FullName);
-                throw (new Exception("The current scene stack is not null (" + m_pobScenesStack.Count + " scenes). Use ReplaceScene() to run with a new scene."));
-            }
+            Debug.Assert(m_pRunningScene != null, "Use runWithScene: instead to start the director");
+            Debug.Assert(pScene != null, "the scene should not be null");
 
             PushScene(pScene);
             StartAnimation();
@@ -1090,6 +1091,7 @@ namespace Cocos2D
             {
                 if (m_pRunningScene != null)
                 {
+                    m_pRunningScene.OnExitTransitionDidStart(); 
                     m_pRunningScene.OnExit();
 
                     // issue #709. the root node (scene) should receive the cleanup message too

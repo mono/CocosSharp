@@ -448,7 +448,7 @@ namespace Cocos2D
 
                 if (actions.Count > 1)
                 {
-                    CCFiniteTimeAction seq = CCSequence.FromActions(actions.ToArray());
+                    CCFiniteTimeAction seq = new CCSequence(actions.ToArray());
                     node.RunAction(seq);
                 }
                 else

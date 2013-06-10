@@ -23,6 +23,7 @@
         public CCReuseGrid()
         {
         }
+
         public CCReuseGrid(int times)
         {
             InitWithTimes(times);

@@ -23,7 +23,7 @@ namespace tests
             AddChild(grossini, 0, 2);
             grossini.Position = (new CCPoint(200, 200));
 
-            grossini.RunAction(CCSequence.FromActions(
+            grossini.RunAction(new CCSequence(
                                                         new CCMoveBy (1, new CCPoint(150, 0)),
                                                         new CCCallFuncN(bugMe))
                                 );

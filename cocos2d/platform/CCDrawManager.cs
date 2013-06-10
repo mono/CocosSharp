@@ -167,7 +167,7 @@ namespace Cocos2D
             }
         }
 
-        public static CCSize Size
+        public static CCSize DesignResolutionSize
         {
             get { return m_obDesignResolutionSize; }
         }
@@ -968,9 +968,8 @@ namespace Cocos2D
             m_eResolutionPolicy = resolutionPolicy;
 
             // reset director's member variables to fit visible rect
-            CCDirector.SharedDirector.m_obWinSizeInPoints = Size;
-            CCDirector.SharedDirector.m_obWinSizeInPixels = new CCSize(m_obDesignResolutionSize.Width * CCMacros.CCContentScaleFactor(),
-                                                                       m_obDesignResolutionSize.Height * CCMacros.CCContentScaleFactor());
+            CCDirector.SharedDirector.m_obWinSizeInPoints = DesignResolutionSize;
+
             CCDirector.SharedDirector.CreateStatsLabel();
             CCDirector.SharedDirector.SetGlDefaultValues();
         }

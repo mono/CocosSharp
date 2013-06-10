@@ -94,7 +94,7 @@ namespace Cocos2D
             // The alternative is to have a void CCSprite#visit, but
             // although this is less mantainable, is faster
             //
-            if (!m_bIsVisible)
+            if (!m_bVisible)
             {
                 return;
             }
@@ -184,7 +184,7 @@ namespace Cocos2D
 
             child.Parent = this;
 
-            if (m_bIsRunning)
+            if (m_bRunning)
             {
                 child.OnEnter();
                 child.OnEnterTransitionDidFinish();

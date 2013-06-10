@@ -73,10 +73,6 @@ namespace Cocos2D
             {
                 m_bDirty = value;
                 SetDirtyRecursively(value);
-                /*
-                if(m_bDirty) 
-                    SET_DIRTY_RECURSIVELY();
-                 */
             }
         }
 
@@ -131,6 +127,27 @@ namespace Cocos2D
                 SET_DIRTY_RECURSIVELY();
             }
         }
+
+        public override float RotationX
+        {
+            get { return base.RotationX; }
+            set
+            {
+                base.RotationX = value;
+                SET_DIRTY_RECURSIVELY();
+            }
+        }
+
+        public override float RotationY
+        {
+            get { return base.RotationY; }
+            set
+            {
+                base.RotationY = value;
+                SET_DIRTY_RECURSIVELY();
+            }
+        }
+
 
         public override float SkewX
         {
@@ -231,7 +248,7 @@ namespace Cocos2D
                 if (m_bFlipX != value)
                 {
                     m_bFlipX = value;
-                    SetTextureRect(m_obRect, m_bRectRotated, m_tContentSize);
+                    SetTextureRect(m_obRect, m_bRectRotated, m_obContentSize);
                 }
             }
         }
@@ -244,7 +261,7 @@ namespace Cocos2D
                 if (m_bFlipY != value)
                 {
                     m_bFlipY = value;
-                    SetTextureRect(m_obRect, m_bRectRotated, m_tContentSize);
+                    SetTextureRect(m_obRect, m_bRectRotated, m_obContentSize);
                 }
             }
         }
@@ -258,7 +275,7 @@ namespace Cocos2D
                     CCMacros.CCRectanglePointsToPixels(m_obRect),
                     m_bRectRotated,
                     CCMacros.CCPointPointsToPixels(m_obUnflippedOffsetPositionFromCenter),
-                    CCMacros.CCSizePointsToPixels(m_tContentSize)
+                    CCMacros.CCSizePointsToPixels(m_obContentSize)
                     );
             }
             set
@@ -609,8 +626,8 @@ namespace Cocos2D
                 relativeOffset.Y = -relativeOffset.Y;
             }
 
-            m_obOffsetPosition.X = relativeOffset.X + (m_tContentSize.Width - m_obRect.Size.Width) / 2;
-            m_obOffsetPosition.Y = relativeOffset.Y + (m_tContentSize.Height - m_obRect.Size.Height) / 2;
+            m_obOffsetPosition.X = relativeOffset.X + (m_obContentSize.Width - m_obRect.Size.Width) / 2;
+            m_obOffsetPosition.Y = relativeOffset.Y + (m_obContentSize.Height - m_obRect.Size.Height) / 2;
 
             // rendering using batch node
             if (m_pobBatchNode != null)
@@ -736,7 +753,7 @@ namespace Cocos2D
             if (Dirty)
             {
                 // If it is not visible, or one of its ancestors is not visible, then do nothing:
-                if (!m_bIsVisible ||
+                if (!m_bVisible ||
                     (m_pParent != null && m_pParent != m_pobBatchNode && ((CCSprite)m_pParent).m_bShouldBeHidden))
                 {
                     m_sQuad.BottomRight.Vertices =
@@ -928,7 +945,7 @@ namespace Cocos2D
                     //continue moving element downwards while zOrder is smaller or when zOrder is the same but orderOfArrival is smaller
                     while (j >= 0 &&
                            (tempItem.m_nZOrder < x[j].m_nZOrder ||
-                            (tempItem.m_nZOrder == x[j].m_nZOrder && tempItem.m_nOrderOfArrival < x[j].m_nOrderOfArrival)))
+                            (tempItem.m_nZOrder == x[j].m_nZOrder && tempItem.m_uOrderOfArrival < x[j].m_uOrderOfArrival)))
                     {
                         x[j + 1] = x[j];
                         j = j - 1;

@@ -5,18 +5,18 @@ namespace Cocos2D
 {
     public class CCFlipX3D : CCGrid3DAction
     {
-
-        public CCFlipX3D ()
-        { }
-
-        public CCFlipX3D (float duration)
+        public CCFlipX3D()
         {
-            InitWithSize(new CCGridSize(1, 1), duration);
         }
 
-        public CCFlipX3D (CCFlipX3D flipX3D) 
+        public CCFlipX3D(float duration)
         {
-            InitWithSize(flipX3D.m_sGridSize, flipX3D.m_fDuration);
+            InitWithDuration(duration, new CCGridSize(1, 1));
+        }
+
+        public CCFlipX3D(CCFlipX3D flipX3D)
+        {
+            InitWithDuration(flipX3D.m_fDuration, flipX3D.m_sGridSize);
         }
 
         /// <summary>
@@ -24,10 +24,10 @@ namespace Cocos2D
         /// </summary>
         public new bool InitWithDuration(float duration)
         {
-            return InitWithSize(new CCGridSize(1, 1), duration);
+            return InitWithDuration(duration, new CCGridSize(1, 1));
         }
 
-        protected override bool InitWithSize(CCGridSize gridSize, float duration)
+        protected override bool InitWithDuration(float duration, CCGridSize gridSize)
         {
             if (gridSize.X != 1 || gridSize.Y != 1)
             {
@@ -36,7 +36,7 @@ namespace Cocos2D
                 return false;
             }
 
-            return base.InitWithSize(gridSize, duration);
+            return base.InitWithDuration(duration, gridSize);
         }
 
         public override object Copy(ICCCopyable pZone)
@@ -46,16 +46,15 @@ namespace Cocos2D
                 //in case of being called at sub class
                 var pCopy = (CCFlipX3D) (pZone);
                 base.Copy(pZone);
-                
-                pCopy.InitWithSize(m_sGridSize, m_fDuration);
-                
+
+                pCopy.InitWithDuration(m_fDuration, m_sGridSize);
+
                 return pCopy;
             }
             else
             {
                 return new CCFlipX3D(this);
             }
-
         }
 
         public override void Update(float time)
@@ -122,7 +121,5 @@ namespace Cocos2D
             v.Z -= diff.Z;
             SetVertex(d, ref v);
         }
-
-
     }
 }

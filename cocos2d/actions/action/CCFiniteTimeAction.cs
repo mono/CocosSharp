@@ -1,14 +1,17 @@
-
 namespace Cocos2D
 {
     public class CCFiniteTimeAction : CCAction
     {
         protected float m_fDuration;
 
-        protected CCFiniteTimeAction () {}
-        protected CCFiniteTimeAction (CCFiniteTimeAction finiteTimeAction) : base(finiteTimeAction) 
-        {}
-      
+        protected CCFiniteTimeAction()
+        {
+        }
+
+        protected CCFiniteTimeAction(CCFiniteTimeAction finiteTimeAction) : base(finiteTimeAction)
+        {
+        }
+
         public float Duration
         {
             get { return m_fDuration; }

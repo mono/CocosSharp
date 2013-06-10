@@ -32,7 +32,7 @@ namespace tests
             CCScaleBy scale = new CCScaleBy(4, 0.8f);
             CCFiniteTimeAction scaleBack = scale.Reverse();
 
-            var seq = CCSequence.FromActions(scale, scaleBack);
+            var seq = new CCSequence(scale, scaleBack);
 
             map.RunAction(new CCRepeatForever ((CCActionInterval)seq));
         }
@@ -346,7 +346,7 @@ namespace tests
             CCFadeIn fadein = new CCFadeIn  (2);
             CCScaleTo scaleback = new CCScaleTo(1, 1);
             CCCallFuncN finish = new CCCallFuncN(removeSprite);
-            CCSequence seq0 = CCSequence.FromActions(move, rotate, scale, opacity, fadein, scaleback, finish);
+            CCSequence seq0 = new CCSequence(move, rotate, scale, opacity, fadein, scaleback, finish);
             var seq1 = (CCActionInterval) (seq0.Copy());
             var seq2 = (CCActionInterval) (seq0.Copy());
             var seq3 = (CCActionInterval) (seq0.Copy());
@@ -845,7 +845,7 @@ namespace tests
 
             CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250));
             CCFiniteTimeAction back = move.Reverse();
-            CCSequence seq = CCSequence.FromActions(move, back);
+            CCSequence seq = new CCSequence(move, back);
             m_tamara.RunAction(new CCRepeatForever (seq));
 
             Schedule(repositionSprite);
@@ -911,7 +911,7 @@ namespace tests
 
             CCMoveBy move = new CCMoveBy (10, new CCPoint(400, 450));
             CCFiniteTimeAction back = move.Reverse();
-            CCSequence seq = CCSequence.FromActions(move, back);
+            CCSequence seq = new CCSequence(move, back);
             m_tamara.RunAction(new CCRepeatForever (seq));
 
             Schedule(repositionSprite);
@@ -971,7 +971,7 @@ namespace tests
 
             CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250) * (1f / CCMacros.CCContentScaleFactor()));
             CCFiniteTimeAction back = move.Reverse();
-            CCSequence seq = CCSequence.FromActions(move, back);
+            CCSequence seq = new CCSequence(move, back);
             m_tamara.RunAction(new CCRepeatForever (seq));
 
             m_tamara.Position = new CCPoint(m_tamara.Position.X + 100, m_tamara.Position.Y + 100);
@@ -1040,7 +1040,7 @@ namespace tests
 
             CCMoveBy move = new CCMoveBy (10, new CCPoint(400, 450) * (1f / CCMacros.CCContentScaleFactor()));
             CCFiniteTimeAction back = move.Reverse();
-            CCSequence seq = CCSequence.FromActions(move, back);
+            CCSequence seq = new CCSequence(move, back);
             m_tamara.RunAction(new CCRepeatForever (seq));
 
             Schedule(repositionSprite);

@@ -56,13 +56,13 @@ namespace tests
 
         private void AnimationLoop()
         {
-            var seq = CCSequence.FromActions(_swingAnimate, _thrustAnimate, _dodgeAnimate, _collapseAnimate, new CCCallFunc(AnimationLoop));
+            var seq = new CCSequence(_swingAnimate, _thrustAnimate, _dodgeAnimate, _collapseAnimate, new CCCallFunc(AnimationLoop));
             _testSprite.RunAction(seq);
         }
 
         private void AnimationLoop2()
         {
-            var seq = CCSequence.FromActions(_swingAnimate2, _thrustAnimate2, _dodgeAnimate2, _collapseAnimate2, new CCCallFunc(AnimationLoop2));
+            var seq = new CCSequence(_swingAnimate2, _thrustAnimate2, _dodgeAnimate2, _collapseAnimate2, new CCCallFunc(AnimationLoop2));
             _testSprite2.RunAction(seq);
         }
 

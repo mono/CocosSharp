@@ -33,7 +33,7 @@ namespace Cocos2D
     {
         public override CCActionInterval CreateAction(CCGridSize size)
         {
-            return new CCFadeOutUpTiles(size, m_fDuration);
+            return new CCFadeOutUpTiles(m_fDuration, size);
         }
         public CCTransitionFadeUp() { }
 

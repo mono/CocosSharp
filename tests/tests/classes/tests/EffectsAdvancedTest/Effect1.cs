@@ -16,8 +16,8 @@ namespace tests
             //     Waves3D is Grid3D and it's size is (15,10)
 
             CCSize size = CCDirector.SharedDirector.WinSize;
-            CCActionInterval lens = new CCLens3D(new CCPoint(size.Width / 2, size.Height / 2), 240, new CCGridSize(15, 10), 0.0f);
-            CCActionInterval waves = new CCWaves3D(18, 15, new CCGridSize(15, 10), 10);
+            CCActionInterval lens = new CCLens3D(0.0f, new CCGridSize(15, 10), new CCPoint(size.Width / 2, size.Height / 2), 240);
+            CCActionInterval waves = new CCWaves3D(10, new CCGridSize(15, 10), 18, 15);
 
 
             CCFiniteTimeAction reuse = new CCReuseGrid(1);
@@ -26,8 +26,8 @@ namespace tests
             CCActionInterval orbit = new CCOrbitCamera(5, 1, 2, 0, 180, 0, -90);
             CCFiniteTimeAction orbit_back = orbit.Reverse();
 
-            target.RunAction(new CCRepeatForever ((CCSequence.FromActions(orbit, orbit_back))));
-            target.RunAction(CCSequence.FromActions(lens, delay, reuse, waves));
+            target.RunAction(new CCRepeatForever ((new CCSequence(orbit, orbit_back))));
+            target.RunAction(new CCSequence(lens, delay, reuse, waves));
         }
 
         public override string title()

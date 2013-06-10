@@ -68,7 +68,7 @@ namespace Cocos2D
             get { return m_capInsets; }
             set
             {
-                CCSize contentSize = m_tContentSize;
+                CCSize contentSize = m_obContentSize;
                 UpdateWithBatchNode(_scale9Image, m_spriteRect, m_bSpriteFrameRotated, value);
                 ContentSize = contentSize;
             }
@@ -484,7 +484,7 @@ namespace Cocos2D
                 return;
             }
             
-            CCSize size = m_tContentSize;
+            CCSize size = m_obContentSize;
 
             float sizableWidth = size.Width - _topLeft.ContentSize.Width - _topRight.ContentSize.Width;
             float sizableHeight = size.Height - _topLeft.ContentSize.Height - _bottomRight.ContentSize.Height;

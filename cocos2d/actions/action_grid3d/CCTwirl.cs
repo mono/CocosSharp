@@ -33,15 +33,15 @@ namespace Cocos2D
             set { m_fAmplitudeRate = value; }
         }
 
-        protected virtual bool InitWithPosition(CCPoint pos, int t, float amp, CCGridSize gridSize,
-                                     float duration)
+        protected virtual bool initWithDuration(float duration, CCGridSize gridSize, CCPoint position, int twirls,
+                                                float amplitude)
         {
-            if (base.InitWithSize(gridSize, duration))
+            if (base.InitWithDuration(duration, gridSize))
             {
                 m_positionInPixels = new CCPoint();
-                Position = pos;
-                m_nTwirls = t;
-                m_fAmplitude = amp;
+                Position = position;
+                m_nTwirls = twirls;
+                m_fAmplitude = amplitude;
                 m_fAmplitudeRate = 1.0f;
 
                 return true;
@@ -61,12 +61,12 @@ namespace Cocos2D
             else
             {
                 pCopy = new CCTwirl();
-                pZone =  (pCopy);
+                pZone = (pCopy);
             }
 
             base.Copy(pZone);
 
-            pCopy.InitWithPosition(m_position, m_nTwirls, m_fAmplitude, m_sGridSize, m_fDuration);
+            pCopy.initWithDuration(m_fDuration, m_sGridSize, m_position, m_nTwirls, m_fAmplitude);
             return pCopy;
         }
 
@@ -85,7 +85,8 @@ namespace Cocos2D
                     var r = (float) Math.Sqrt((avg.X * avg.X + avg.Y * avg.Y));
 
                     float amp = 0.1f * m_fAmplitude * m_fAmplitudeRate;
-                    float a = r * (float) Math.Cos((float) Math.PI / 2.0f + time * (float) Math.PI * m_nTwirls * 2) * amp;
+                    float a = r * (float) Math.Cos((float) Math.PI / 2.0f + time * (float) Math.PI * m_nTwirls * 2) *
+                              amp;
 
                     float dx = (float) Math.Sin(a) * (v.Y - c.Y) + (float) Math.Cos(a) * (v.X - c.X);
                     float dy = (float) Math.Cos(a) * (v.Y - c.Y) - (float) Math.Sin(a) * (v.X - c.X);
@@ -101,9 +102,11 @@ namespace Cocos2D
         protected CCTwirl()
         {
         }
-        public CCTwirl(CCPoint pos, int t, float amp, CCGridSize gridSize, float duration) : base(duration)
+
+        public CCTwirl(float duration, CCGridSize gridSize, CCPoint position, int twirls, float amplitude)
+            : base(duration)
         {
-            InitWithPosition(pos, t, amp, gridSize, duration);
+            initWithDuration(duration, gridSize, position, twirls, amplitude);
         }
     }
 }

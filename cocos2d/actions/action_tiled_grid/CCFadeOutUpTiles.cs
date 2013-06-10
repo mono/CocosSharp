@@ -36,8 +36,9 @@ namespace Cocos2D
         public override float TestFunc(CCGridSize pos, float time)
         {
             float fy = m_sGridSize.Y * time;
-            if(fy == 0f) {
-                return(1f);
+            if (fy == 0f)
+            {
+                return (1f);
             }
             return (float) Math.Pow(pos.Y / fy, 6);
         }
@@ -64,9 +65,9 @@ namespace Cocos2D
         /// <summary>
         /// creates the action with the grid size and the duration 
         /// </summary>
-        public CCFadeOutUpTiles(CCGridSize gridSize, float duration) : base(duration)
+        public CCFadeOutUpTiles(float duration, CCGridSize gridSize) : base(duration)
         {
-            InitWithSize(gridSize, duration);
+            InitWithDuration(duration, gridSize);
         }
     }
 }

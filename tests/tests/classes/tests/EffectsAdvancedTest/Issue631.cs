@@ -8,7 +8,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCActionInterval effect = (CCSequence.FromActions(new CCDelayTime (2.0f), new CCShaky3D(16, false, new CCGridSize(5, 5), 5.0f)));
+            CCActionInterval effect = (new CCSequence(new CCDelayTime (2.0f), new CCShaky3D(5.0f, new CCGridSize(5, 5), 16, false)));
 
             // cleanup
             CCNode bg = GetChildByTag(EffectAdvanceScene.kTagBackground);

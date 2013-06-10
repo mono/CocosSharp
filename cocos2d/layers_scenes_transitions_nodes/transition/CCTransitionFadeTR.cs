@@ -42,7 +42,7 @@ namespace Cocos2D
 
         public virtual CCActionInterval CreateAction(CCGridSize size)
         {
-            return new CCFadeOutTRTiles(size, m_fDuration);
+            return new CCFadeOutTRTiles(m_fDuration, size);
         }
 
         public override void OnEnter()
@@ -58,7 +58,7 @@ namespace Cocos2D
 
             m_pOutScene.RunAction
                 (
-                    CCSequence.FromActions
+                    new CCSequence
                         (
                             EaseAction(action),
                             new CCCallFunc(Finish),

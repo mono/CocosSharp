@@ -70,7 +70,7 @@ namespace tests
 
                 CCActionInterval scale = new CCScaleBy(2, 2);
                 CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
-                CCActionInterval seq_scale = (CCActionInterval)(CCSequence.FromActions(scale, scale_back));
+                CCActionInterval seq_scale = (CCActionInterval)(new CCSequence(scale, scale_back));
                 sprite.RunAction(new CCRepeatForever (seq_scale));
 
                 spritesheet.AddChild(sprite, i);

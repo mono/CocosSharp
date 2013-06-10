@@ -26,10 +26,13 @@ namespace Cocos2D
 {
     public class CCTransitionRotoZoom : CCTransitionScene
     {
-        public CCTransitionRotoZoom() { }
+        public CCTransitionRotoZoom()
+        {
+        }
 
-        public CCTransitionRotoZoom (float t, CCScene scene) : base (t, scene)
-        { }
+        public CCTransitionRotoZoom(float t, CCScene scene) : base(t, scene)
+        {
+        }
 
         public override void OnEnter()
         {
@@ -41,26 +44,21 @@ namespace Cocos2D
             m_pInScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_pOutScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            CCActionInterval rotozoom = CCSequence.FromActions
-                (
-                    CCSpawn.FromActions
-                        (
-                            new CCScaleBy(m_fDuration / 2, 0.001f),
-                            new CCRotateBy (m_fDuration / 2, 360 * 2)
-                        ),
-                    new CCDelayTime (m_fDuration / 2)
+            CCActionInterval rotozoom = new CCSequence(
+                new CCSpawn(
+                    new CCScaleBy(m_fDuration / 2, 0.001f),
+                    new CCRotateBy(m_fDuration / 2, 360 * 2)
+                    ),
+                new CCDelayTime(m_fDuration / 2)
                 );
 
             m_pOutScene.RunAction(rotozoom);
-            m_pInScene.RunAction
-                (
-                    CCSequence.FromActions
-                        (
-                            rotozoom.Reverse(),
-                            new CCCallFunc((Finish))
-                        )
+            m_pInScene.RunAction(
+                new CCSequence(
+                    rotozoom.Reverse(),
+                    new CCCallFunc((Finish))
+                    )
                 );
         }
-
     }
 }

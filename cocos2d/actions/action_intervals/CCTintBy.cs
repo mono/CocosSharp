@@ -9,17 +9,17 @@ namespace Cocos2D
         protected short m_fromG;
         protected short m_fromR;
 
-		public CCTintBy (float duration, short deltaRed, short deltaGreen, short deltaBlue)
-		{
-			InitWithDuration(duration, deltaRed, deltaGreen, deltaBlue);
-		}
+        public CCTintBy(float duration, short deltaRed, short deltaGreen, short deltaBlue)
+        {
+            InitWithDuration(duration, deltaRed, deltaGreen, deltaBlue);
+        }
 
-		protected CCTintBy (CCTintBy tintBy) : base (tintBy)
-		{
-			InitWithDuration(tintBy.m_fDuration, tintBy.m_deltaR, tintBy.m_deltaG, tintBy.m_deltaB);
-		}
+        protected CCTintBy(CCTintBy tintBy) : base(tintBy)
+        {
+            InitWithDuration(tintBy.m_fDuration, tintBy.m_deltaR, tintBy.m_deltaG, tintBy.m_deltaB);
+        }
 
-		public bool InitWithDuration(float duration, short deltaRed, short deltaGreen, short deltaBlue)
+        public bool InitWithDuration(float duration, short deltaRed, short deltaGreen, short deltaBlue)
         {
             if (base.InitWithDuration(duration))
             {
@@ -42,17 +42,16 @@ namespace Cocos2D
                 {
                     return null;
                 }
-				base.Copy(zone);
-				
-				ret.InitWithDuration(m_fDuration, m_deltaR, m_deltaG, m_deltaB);
-				
-				return ret;
-			}
+                base.Copy(zone);
+
+                ret.InitWithDuration(m_fDuration, m_deltaR, m_deltaG, m_deltaB);
+
+                return ret;
+            }
             else
             {
                 return new CCTintBy(this);
             }
-
         }
 
         public override void StartWithTarget(CCNode target)
@@ -82,8 +81,7 @@ namespace Cocos2D
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCTintBy (m_fDuration, (short) -m_deltaR, (short) -m_deltaG, (short) -m_deltaB);
+            return new CCTintBy(m_fDuration, (short) -m_deltaR, (short) -m_deltaG, (short) -m_deltaB);
         }
-
     }
 }

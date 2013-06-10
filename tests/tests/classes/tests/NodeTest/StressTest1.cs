@@ -31,7 +31,7 @@ namespace tests
 
             explosion.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
-            RunAction(CCSequence.FromActions(
+            RunAction(new CCSequence(
                 new CCRotateBy (2, 360),
                 new CCCallFuncN((removeMe))
                           ));

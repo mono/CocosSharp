@@ -193,7 +193,7 @@ namespace tests.Clipping
         protected virtual CCAction ActionScale()
         {
             var scale = new CCScaleBy(1.33f, 1.5f);
-            return new CCRepeatForever(CCSequence.FromActions(scale, scale.Reverse()));
+            return new CCRepeatForever(new CCSequence(scale, scale.Reverse()));
         }
 
         protected virtual CCDrawNode Shape()
@@ -415,7 +415,7 @@ namespace tests.Clipping
                 stencil.AnchorPoint = new CCPoint(0.5f, 0.5f);
                 stencil.Position = new CCPoint(clipper.ContentSize.Width / 2, clipper.ContentSize.Height / 2);
                 stencil.Visible = false;
-                stencil.RunAction(CCSequence.FromActions(new CCDelayTime(i), new CCShow()));
+                stencil.RunAction(new CCSequence(new CCDelayTime(i), new CCShow()));
                 clipper.Stencil = stencil;
 
                 clipper.AddChild(stencil);
@@ -498,7 +498,7 @@ namespace tests.Clipping
 
             m_pHolesStencil.AddChild(holeStencil);
 
-            m_pOuterClipper.RunAction(CCSequence.FromActions(new CCScaleBy(0.05f, 0.95f), new CCScaleTo(0.125f, 1)));
+            m_pOuterClipper.RunAction(new CCSequence(new CCScaleBy(0.05f, 0.95f), new CCScaleTo(0.125f, 1)));
         }
 
         public override void TouchesBegan(List<CCTouch> touches)

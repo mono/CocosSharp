@@ -2,13 +2,14 @@
 {
     public class CCFadeIn : CCActionInterval
     {
-        public CCFadeIn (float d)
+        public CCFadeIn(float d)
         {
             InitWithDuration(d);
         }
 
-        protected CCFadeIn (CCFadeIn fadeIn) : base (fadeIn) 
-        { }
+        protected CCFadeIn(CCFadeIn fadeIn) : base(fadeIn)
+        {
+        }
 
         public override object Copy(ICCCopyable pZone)
         {
@@ -23,7 +24,6 @@
             {
                 return new CCFadeIn(this);
             }
-
         }
 
         public override void Update(float time)
@@ -37,7 +37,7 @@
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCFadeOut (m_fDuration);
+            return new CCFadeOut(m_fDuration);
         }
     }
 }

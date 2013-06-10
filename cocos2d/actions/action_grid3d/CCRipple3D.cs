@@ -35,17 +35,17 @@ namespace Cocos2D
             get { return m_fAmplitudeRate; }
         }
 
-        protected virtual bool InitWithPosition(CCPoint pos, float r, int wav, float amp,
-                                     CCGridSize gridSize, float duration)
+        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, CCPoint position, float radius,
+                                                int waves, float amplitude)
         {
-            if (base.InitWithSize(gridSize, duration))
+            if (base.InitWithDuration(duration, gridSize))
             {
                 m_positionInPixels = new CCPoint();
 
-                Position = pos;
-                m_fRadius = r;
-                m_nWaves = wav;
-                m_fAmplitude = amp;
+                Position = position;
+                m_fRadius = radius;
+                m_nWaves = waves;
+                m_fAmplitude = amplitude;
                 m_fAmplitudeRate = 1.0f;
 
                 return true;
@@ -65,11 +65,11 @@ namespace Cocos2D
             else
             {
                 pCopy = new CCRipple3D();
-                pZone =  (pCopy);
+                pZone = (pCopy);
             }
 
             base.Copy(pZone);
-            pCopy.InitWithPosition(m_position, m_fRadius, m_nWaves, m_fAmplitude, m_sGridSize, m_fDuration);
+            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_position, m_fRadius, m_nWaves, m_fAmplitude);
 
             return pCopy;
         }
@@ -99,7 +99,8 @@ namespace Cocos2D
                         r = m_fRadius - r;
                         float r1 = r / m_fRadius;
                         float rate = r1 * r1;
-                        v.Z += ((float) Math.Sin(time * MathHelper.Pi * m_nWaves * 2 + r * 0.1f) * m_fAmplitude * m_fAmplitudeRate * rate);
+                        v.Z += ((float) Math.Sin(time * MathHelper.Pi * m_nWaves * 2 + r * 0.1f) * m_fAmplitude *
+                                m_fAmplitudeRate * rate);
                     }
 
                     SetVertex(gs, ref v);
@@ -116,9 +117,10 @@ namespace Cocos2D
         {
         }
 
-        public CCRipple3D(CCPoint pos, float r, int wav, float amp, CCGridSize gridSize, float duration) : base(duration)
+        public CCRipple3D(float duration, CCGridSize gridSize, CCPoint position, float radius, int waves,
+                          float amplitude) : base(duration)
         {
-            InitWithPosition(pos, r, wav, amp, gridSize, duration);
+            InitWithDuration(duration, gridSize, position, radius, waves, amplitude);
         }
     }
 }

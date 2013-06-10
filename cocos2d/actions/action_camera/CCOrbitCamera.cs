@@ -1,4 +1,3 @@
-
 using System;
 
 namespace Cocos2D
@@ -36,26 +35,28 @@ namespace Cocos2D
 
         protected CCOrbitCamera(CCOrbitCamera copy) : base(copy)
         {
-            Init(copy.m_fRadius, copy.m_fDeltaRadius, copy.m_fAngleZ, copy.m_fDeltaAngleZ, copy.m_fAngleX, copy.m_fDeltaAngleX);
+            Init(copy.m_fRadius, copy.m_fDeltaRadius, copy.m_fAngleZ, copy.m_fDeltaAngleZ, copy.m_fAngleX,
+                 copy.m_fDeltaAngleX);
         }
 
         public CCOrbitCamera(float t, float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX,
-                                                       float deltaAngleX) : base(t)
+                             float deltaAngleX) : base(t)
         {
             Init(radius, deltaRadius, angleZ, deltaAngleZ, angleX, deltaAngleX);
         }
 
-        private void Init(float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX, float deltaAngleX)
+        private void Init(float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX,
+                          float deltaAngleX)
         {
-                m_fRadius = radius;
-                m_fDeltaRadius = deltaRadius;
-                m_fAngleZ = angleZ;
-                m_fDeltaAngleZ = deltaAngleZ;
-                m_fAngleX = angleX;
-                m_fDeltaAngleX = deltaAngleX;
+            m_fRadius = radius;
+            m_fDeltaRadius = deltaRadius;
+            m_fAngleZ = angleZ;
+            m_fDeltaAngleZ = deltaAngleZ;
+            m_fAngleX = angleX;
+            m_fDeltaAngleX = deltaAngleX;
 
-                m_fRadDeltaZ = CCMacros.CCDegreesToRadians(deltaAngleZ);
-                m_fRadDeltaX = CCMacros.CCDegreesToRadians(deltaAngleX);
+            m_fRadDeltaZ = CCMacros.CCDegreesToRadians(deltaAngleZ);
+            m_fRadDeltaX = CCMacros.CCDegreesToRadians(deltaAngleX);
         }
 
         public void SphericalRadius(out float newRadius, out float zenith, out float azimuth)
@@ -72,8 +73,8 @@ namespace Cocos2D
             y = ey - cy;
             z = ez - cz;
 
-            r = (float) Math.Sqrt(x*x + y*y + z*z);
-            s = (float) Math.Sqrt(x*x + y*y);
+            r = (float) Math.Sqrt(x * x + y * y + z * z);
+            s = (float) Math.Sqrt(x * x + y * y);
             if (s == 0.0f)
                 s = float.Epsilon;
             if (r == 0.0f)
@@ -94,7 +95,8 @@ namespace Cocos2D
             {
                 var ret = zone as CCOrbitCamera;
                 base.Copy(zone);
-                Init(ret.m_fRadius, ret.m_fDeltaRadius, ret.m_fAngleZ, ret.m_fDeltaAngleZ, ret.m_fAngleX, ret.m_fDeltaAngleX);
+                Init(ret.m_fRadius, ret.m_fDeltaRadius, ret.m_fAngleZ, ret.m_fDeltaAngleZ, ret.m_fAngleX,
+                     ret.m_fDeltaAngleX);
                 return ret;
             }
             else
@@ -115,7 +117,7 @@ namespace Cocos2D
 
             if (float.IsNaN(m_fAngleZ))
                 m_fAngleZ = CCMacros.CCRadiansToDegrees(zenith);
-            
+
             if (float.IsNaN(m_fAngleX))
                 m_fAngleX = CCMacros.CCRadiansToDegrees(azimuth);
 

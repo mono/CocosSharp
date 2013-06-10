@@ -1,4 +1,3 @@
-
 using System;
 using System.Diagnostics;
 
@@ -9,31 +8,37 @@ namespace Cocos2D
         protected CCFiniteTimeAction m_pOne;
         protected CCFiniteTimeAction m_pTwo;
 
-        public static CCSpawn FromActions(params CCFiniteTimeAction[] actions)
-        {
-            CCFiniteTimeAction prev = actions[0];
-
-            for (int i = 1; i < actions.Length; i++)
-            {
-                prev = new CCSpawn (prev, actions[i]);
-            }
-
-            return (CCSpawn) prev;
-        }
-
-        protected CCSpawn (CCFiniteTimeAction action1, CCFiniteTimeAction action2)
+        protected CCSpawn(CCFiniteTimeAction action1, CCFiniteTimeAction action2)
         {
             InitOneTwo(action1, action2);
         }
 
-		protected CCSpawn (CCSpawn spawn) : base (spawn)
-		{
-			var param1 = spawn.m_pOne.Copy() as CCFiniteTimeAction;
-			var param2 = spawn.m_pTwo.Copy() as CCFiniteTimeAction;
+        public CCSpawn(params CCFiniteTimeAction[] actions)
+        {
+            CCFiniteTimeAction prev = actions[0];
 
-			InitOneTwo(param1, param2);
+            if (actions.Length == 1)
+            {
+                InitOneTwo(prev, new CCExtraAction());
+            }
+            else
+            {
+                for (int i = 1; i < actions.Length - 1; i++)
+                {
+                    prev = new CCSequence(prev, actions[i]);
+                }
 
-		}
+                InitOneTwo(prev, actions[actions.Length - 1]);
+            }
+        }
+
+        protected CCSpawn(CCSpawn spawn) : base(spawn)
+        {
+            var param1 = spawn.m_pOne.Copy() as CCFiniteTimeAction;
+            var param2 = spawn.m_pTwo.Copy() as CCFiniteTimeAction;
+
+            InitOneTwo(param1, param2);
+        }
 
         protected bool InitOneTwo(CCFiniteTimeAction action1, CCFiniteTimeAction action2)
         {
@@ -52,11 +57,11 @@ namespace Cocos2D
 
                 if (d1 > d2)
                 {
-                    m_pTwo = new CCSequence (action2, new CCDelayTime (d1 - d2));
+                    m_pTwo = new CCSequence(action2, new CCDelayTime(d1 - d2));
                 }
                 else if (d1 < d2)
                 {
-                    m_pOne = new CCSequence (action1, new CCDelayTime (d2 - d1));
+                    m_pOne = new CCSequence(action1, new CCDelayTime(d2 - d1));
                 }
 
                 bRet = true;
@@ -74,24 +79,23 @@ namespace Cocos2D
                 {
                     return null;
                 }
-				base.Copy(zone);
-				
-				var param1 = m_pOne.Copy() as CCFiniteTimeAction;
-				var param2 = m_pTwo.Copy() as CCFiniteTimeAction;
-				if (param1 == null || param2 == null)
-				{
-					return null;
-				}
-				
-				ret.InitOneTwo(param1, param2);
-				
-				return ret;
-			}
+                base.Copy(zone);
+
+                var param1 = m_pOne.Copy() as CCFiniteTimeAction;
+                var param2 = m_pTwo.Copy() as CCFiniteTimeAction;
+                if (param1 == null || param2 == null)
+                {
+                    return null;
+                }
+
+                ret.InitOneTwo(param1, param2);
+
+                return ret;
+            }
             else
             {
                 return new CCSpawn(this);
             }
-
         }
 
         public override void StartWithTarget(CCNode target)
@@ -123,7 +127,7 @@ namespace Cocos2D
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCSpawn (m_pOne.Reverse(), m_pTwo.Reverse());
+            return new CCSpawn(m_pOne.Reverse(), m_pTwo.Reverse());
         }
     }
 }

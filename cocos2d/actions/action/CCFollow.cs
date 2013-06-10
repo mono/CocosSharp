@@ -16,12 +16,12 @@ namespace Cocos2D
         protected CCPoint m_obHalfScreenSize;
         protected CCNode m_pobFollowedNode;
 
-        public CCFollow (CCNode followedNode, CCRect rect)
+        public CCFollow(CCNode followedNode, CCRect rect)
         {
             InitWithTarget(followedNode, rect);
         }
 
-        protected CCFollow (CCFollow follow) : base (follow)
+        protected CCFollow(CCFollow follow) : base(follow)
         {
             m_nTag = follow.m_nTag;
         }
@@ -52,7 +52,7 @@ namespace Cocos2D
             m_bBoundaryFullyCovered = false;
 
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            m_obFullScreenSize = (CCPoint)winSize;
+            m_obFullScreenSize = (CCPoint) winSize;
             m_obHalfScreenSize = m_obFullScreenSize * 0.5f;
 
             if (m_bBoundarySet)
@@ -86,7 +86,6 @@ namespace Cocos2D
 
         public override object Copy(ICCCopyable zone)
         {
- 
             if (zone != null)
             {
                 var ret = (CCFollow) zone;
@@ -98,7 +97,6 @@ namespace Cocos2D
             {
                 return new CCFollow(this);
             }
-
         }
 
         public override void Step(float dt)
@@ -134,7 +132,5 @@ namespace Cocos2D
             m_pTarget = null;
             base.Stop();
         }
-
- 
     }
 }

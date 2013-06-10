@@ -22,7 +22,7 @@ namespace tests
 
             CCActionInterval scale = new CCScaleBy(2, 5);
             CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
-            CCActionInterval seq = (CCActionInterval)(CCSequence.FromActions(scale, scale_back));
+            CCActionInterval seq = (CCActionInterval)(new CCSequence(scale, scale_back));
             CCAction repeat = new CCRepeatForever (seq);
 
             CCAction repeat2 = (CCAction)(repeat.Copy());

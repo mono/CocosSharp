@@ -232,7 +232,7 @@ namespace tests
 
             CCActionInterval move = new CCMoveBy (4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
-            CCFiniteTimeAction seq = CCSequence.FromActions(move, move_back);
+            CCFiniteTimeAction seq = new CCSequence(move, move_back);
             m_background.RunAction(new CCRepeatForever ((CCActionInterval) seq));
 
             Schedule(step);
@@ -973,7 +973,7 @@ namespace tests
 
             CCActionInterval move = new CCMoveBy (4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
-            CCFiniteTimeAction seq = CCSequence.FromActions(move, move_back);
+            CCFiniteTimeAction seq = new CCSequence(move, move_back);
             p.RunAction(new CCRepeatForever ((CCActionInterval) seq));
         }
 

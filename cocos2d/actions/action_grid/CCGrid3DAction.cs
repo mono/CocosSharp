@@ -1,10 +1,8 @@
-
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
 namespace Cocos2D
 {
-
     public class CCGrid3DAction : CCGridAction
     {
         private CCGrid3D m_pGrid;
@@ -13,9 +11,11 @@ namespace Cocos2D
             : base(duration)
         {
         }
+
         protected CCGrid3DAction()
         {
         }
+
         public override CCGridBase Grid
         {
             get

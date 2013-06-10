@@ -48,6 +48,7 @@ namespace Cocos2D
 
         protected CCSize m_tTileSize;
         protected uint m_uParentGID;
+        protected uint m_uCurrentFirstGID;
 
         /// <summary>
         ///  map orientation
@@ -233,6 +234,9 @@ namespace Cocos2D
                     string externalTilesetFilename = attributeDict["source"];
 
                     externalTilesetFilename = CCFileUtils.FullPathFromRelativeFile(externalTilesetFilename, pTMXMapInfo.TMXFileName);
+
+                    m_uCurrentFirstGID = uint.Parse(attributeDict["firstgid"]);
+                    
                     pTMXMapInfo.ParseXmlFile(externalTilesetFilename);
                 }
                 else
@@ -240,7 +244,16 @@ namespace Cocos2D
                     var tileset = new CCTMXTilesetInfo();
 
                     tileset.m_sName = attributeDict["name"];
-                    tileset.m_uFirstGid = uint.Parse(attributeDict["firstgid"]);
+                    
+                    if (m_uCurrentFirstGID == 0)
+                    {
+                        tileset.m_uFirstGid = uint.Parse(attributeDict["firstgid"]);
+                    }
+                    else
+                    {
+                        tileset.m_uFirstGid = m_uCurrentFirstGID;
+                        m_uCurrentFirstGID = 0;
+                    }
 
                     if (attributeDict.Keys.Contains("spacing"))
                         tileset.m_uSpacing = int.Parse(attributeDict["spacing"]);
@@ -447,9 +460,28 @@ namespace Cocos2D
             else if (elementName == "polygon")
             {
                 // find parent object's dict and add polygon-points to it
-                // CCTMXObjectGroup* objectGroup = (CCTMXObjectGroup*)m_pObjectGroups->lastObject();
-                // CCDictionary* dict = (CCDictionary*)objectGroup->getObjects()->lastObject();
-                // TODO: dict->setObject(attributeDict objectForKey:@"points"] forKey:@"polygonPoints"];
+                CCTMXObjectGroup objectGroup = m_pObjectGroups.LastOrDefault();
+                var dict = objectGroup.Objects.LastOrDefault();
+
+                // get points value string
+                var value = attributeDict["points"];
+                if (!String.IsNullOrEmpty(value))
+                {
+                    var pPointsArray = new List<CCPoint>();
+                    var pointPairs = value.Split(' ');
+
+                    foreach (var pontPair in pointPairs)
+                    {
+                        //TODO: Parse points
+                        //CCPoint point;
+                        //point.X = x + objectGroup.PositionOffset.X;
+                        //point.Y = y + objectGroup.PositionOffset.Y;
+
+                        //pPointsArray.Add(point);
+                    }
+
+                    //dict.Add("points", pPointsArray);
+                }
             }
             else if (elementName == "polyline")
             {
@@ -457,11 +489,6 @@ namespace Cocos2D
                 // CCTMXObjectGroup* objectGroup = (CCTMXObjectGroup*)m_pObjectGroups->lastObject();
                 // CCDictionary* dict = (CCDictionary*)objectGroup->getObjects()->lastObject();
                 // TODO: dict->setObject:[attributeDict objectForKey:@"points"] forKey:@"polylinePoints"];
-            }
-
-            if (attributeDict != null)
-            {
-                attributeDict = null;
             }
         }
 
@@ -613,6 +640,7 @@ namespace Cocos2D
             m_bStoringCharacters = false;
             m_nLayerAttribs = (int) CCTMXLayerAttrib.None;
             m_nParentElement = (int) CCTMXProperty.None;
+            m_uCurrentFirstGID = 0;
         }
 
         /// <summary>

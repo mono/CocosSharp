@@ -8,10 +8,10 @@ namespace tests
         {
             base.OnEnter();
 
-            CCLens3D lens = new CCLens3D(new CCPoint(100, 180), 150, new CCGridSize(32, 24), 10);
+            CCLens3D lens = new CCLens3D(10, new CCGridSize(32, 24), new CCPoint(100, 180), 150);
             CCJumpBy move = new CCJumpBy (5, new CCPoint(380, 0), 100, 4);
             var move_back = (CCActionInterval) move.Reverse();
-            CCSequence seq = CCSequence.FromActions(move, move_back);
+            CCSequence seq = new CCSequence(move, move_back);
 
             /* In cocos2d-iphone, the type of action's target is 'id', so it supports using the instance of 'CCLens3D' as its target.
                 While in cocos2d-x, the target of action only supports CCNode or its subclass,

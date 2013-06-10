@@ -168,8 +168,8 @@ namespace Cocos2D
             // don't update the particle with the new position information, it will interfere with the radius and tangential calculations
             if (m_pBatchNode != null)
             {
-                newPosition.X += m_tPosition.X;
-                newPosition.Y += m_tPosition.Y;
+                newPosition.X += m_obPosition.X;
+                newPosition.Y += m_obPosition.Y;
             }
 
             CCColor4B color;
@@ -257,7 +257,7 @@ namespace Cocos2D
 
         public override void UpdateQuadsWithParticles()
         {
-            if (!m_bIsVisible)
+            if (!m_bVisible)
             {
                 return;
             }
@@ -270,7 +270,7 @@ namespace Cocos2D
             }
             else if (m_ePositionType == CCPositionType.Relative)
             {
-                s_currentPosition = m_tPosition;
+                s_currentPosition = m_obPosition;
             }
 
             CCV3F_C4B_T2F_Quad[] quads;

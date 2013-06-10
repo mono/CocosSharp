@@ -5,9 +5,9 @@ namespace Cocos2D
         protected bool m_bShakeZ;
         protected int m_nRandrange;
 
-        protected virtual bool InitWithRange(int range, bool shakeZ, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int range, bool shakeZ)
         {
-            if (base.InitWithSize(gridSize, duration))
+            if (base.InitWithDuration(duration, gridSize))
             {
                 m_nRandrange = range;
                 m_bShakeZ = shakeZ;
@@ -34,7 +34,7 @@ namespace Cocos2D
 
             base.Copy(pZone);
 
-            pCopy.InitWithRange(m_nRandrange, m_bShakeZ, m_sGridSize, m_fDuration);
+            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nRandrange, m_bShakeZ);
             return pCopy;
         }
 
@@ -62,9 +62,10 @@ namespace Cocos2D
         protected CCShaky3D()
         {
         }
-        public CCShaky3D(int range, bool shakeZ, CCGridSize gridSize, float duration) : base(duration)
+
+        public CCShaky3D(float duration, CCGridSize gridSize, int range, bool shakeZ) : base(duration)
         {
-            InitWithRange(range, shakeZ, gridSize, duration);
+            InitWithDuration(duration, gridSize, range, shakeZ);
         }
     }
 }

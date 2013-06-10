@@ -70,10 +70,10 @@ namespace Cocos2D
         public CCRect Rectangle
         {
 			get {
-				return new CCRect (m_tPosition.X - m_tContentSize.Width * m_tAnchorPoint.X,
-				                          m_tPosition.Y - m_tContentSize.Height * m_tAnchorPoint.Y,
-				                          m_tContentSize.Width,
-				                          m_tContentSize.Height);
+				return new CCRect (m_obPosition.X - m_obContentSize.Width * m_obAnchorPoint.X,
+				                          m_obPosition.Y - m_obContentSize.Height * m_obAnchorPoint.Y,
+				                          m_obContentSize.Width,
+				                          m_obContentSize.Height);
 			}
         }
 

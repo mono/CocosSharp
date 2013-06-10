@@ -33,10 +33,10 @@ namespace Cocos2D
         /// <summary>
         ///  initializes the action with the number of columns to split and the duration 
         /// </summary>
-        protected virtual bool InitWithCols(int nCols, float duration)
+        protected virtual bool InitWithDuration(float duration, int nCols)
         {
             m_nCols = nCols;
-            return base.InitWithSize(new CCGridSize(nCols, 1), duration);
+            return base.InitWithDuration(duration, new CCGridSize(nCols, 1));
         }
 
         public override object Copy(ICCCopyable pZone)
@@ -49,11 +49,11 @@ namespace Cocos2D
             else
             {
                 pCopy = new CCSplitCols();
-                pZone =  (pCopy);
+                pZone = (pCopy);
             }
 
             base.Copy(pZone);
-            pCopy.InitWithCols(m_nCols, m_fDuration);
+            pCopy.InitWithDuration(m_fDuration, m_nCols);
 
             return pCopy;
         }
@@ -94,9 +94,9 @@ namespace Cocos2D
         /// <summary>
         /// creates the action with the number of columns to split and the duration
         /// </summary>
-        public CCSplitCols(int nCols, float duration) : base(duration)
+        public CCSplitCols(float duration, int nCols) : base(duration)
         {
-            InitWithCols(nCols, duration);
+            InitWithDuration(duration, nCols);
         }
     }
 }

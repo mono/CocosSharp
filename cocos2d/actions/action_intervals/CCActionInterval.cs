@@ -1,25 +1,47 @@
-
 using System;
 using System.Diagnostics;
 
 namespace Cocos2D
 {
+    // Extra action for making a CCSequence or CCSpawn when only adding one action to it.
+    internal class CCExtraAction : CCFiniteTimeAction
+    {
+        public override CCAction Copy()
+        {
+            return new CCExtraAction();
+        }
+
+        public override CCFiniteTimeAction Reverse()
+        {
+            return new CCExtraAction();
+        }
+
+        public override void Step(float dt)
+        {
+        }
+
+        public override void Update(float time)
+        {
+        }
+    }
+
     public class CCActionInterval : CCFiniteTimeAction
     {
         protected bool m_bFirstTick;
         protected float m_elapsed;
 
-        protected CCActionInterval () {}
+        protected CCActionInterval()
+        {
+        }
 
-        public CCActionInterval (float d)
+        public CCActionInterval(float d)
         {
             InitWithDuration(d);
         }
 
-        protected CCActionInterval (CCActionInterval actionInterval) : base (actionInterval)
+        protected CCActionInterval(CCActionInterval actionInterval) : base(actionInterval)
         {
             InitWithDuration(actionInterval.m_fDuration);
-
         }
 
         public float Elapsed
@@ -52,21 +74,18 @@ namespace Cocos2D
 
         public override object Copy(ICCCopyable zone)
         {
-
             if (zone != null)
             {
-                var ret = (CCActionInterval)(zone);
+                var ret = (CCActionInterval) (zone);
                 base.Copy(zone);
-                
+
                 ret.InitWithDuration(m_fDuration);
                 return ret;
-
             }
             else
             {
                 return new CCActionInterval(this);
             }
-
         }
 
         public override void Step(float dt)
@@ -95,7 +114,7 @@ namespace Cocos2D
             m_elapsed = 0.0f;
             m_bFirstTick = true;
         }
-        
+
         public override CCFiniteTimeAction Reverse()
         {
             throw new NotImplementedException();
@@ -110,7 +129,5 @@ namespace Cocos2D
             }
             set { Debug.Assert(false); }
         }
-
-
     }
 }

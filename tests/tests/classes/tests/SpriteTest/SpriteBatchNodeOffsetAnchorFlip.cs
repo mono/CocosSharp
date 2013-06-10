@@ -73,7 +73,7 @@ namespace tests
                 CCFlipY flip = new CCFlipY(true);
                 CCFlipY flip_back = new CCFlipY(false);
                 CCDelayTime delay = new CCDelayTime (1);
-                CCFiniteTimeAction seq = CCSequence.FromActions((CCFiniteTimeAction)delay, (CCFiniteTimeAction)flip, (CCFiniteTimeAction)delay.Copy(null), (CCFiniteTimeAction)flip_back);
+                CCFiniteTimeAction seq = new CCSequence((CCFiniteTimeAction)delay, (CCFiniteTimeAction)flip, (CCFiniteTimeAction)delay.Copy(null), (CCFiniteTimeAction)flip_back);
                 sprite.RunAction(new CCRepeatForever ((CCActionInterval)seq));
 
                 spritebatch.AddChild(sprite, i);

@@ -519,7 +519,7 @@ namespace Cocos2D
             int indexForZ = m_pAtlasIndexArray.Count;
 
             // don't add it using the "standard" way.
-            AddQuadFromSprite(tile, indexForZ);
+            InsertQuadFromSprite(tile, indexForZ);
 
             // append should be after addQuadFromSprite since it modifies the quantity values
             m_pAtlasIndexArray.Insert(indexForZ, z);
@@ -542,7 +542,7 @@ namespace Cocos2D
             int indexForZ = AtlasIndexForNewZ(z);
 
             // Optimization: add the quad without adding a child
-            AddQuadFromSprite(tile, indexForZ);
+            InsertQuadFromSprite(tile, indexForZ);
 
             // insert it into the local atlasindex array
             m_pAtlasIndexArray.Insert(indexForZ, z);
@@ -632,7 +632,7 @@ namespace Cocos2D
 
             //issue 1264, flip can be undone as well
             sprite.FlipX = false;
-            sprite.FlipX = false;
+            sprite.FlipY = false;
             sprite.Rotation = 0.0f;
             sprite.AnchorPoint = CCPoint.Zero;
 
@@ -691,12 +691,14 @@ namespace Cocos2D
             }
             else
             {
-                // XXX: should not be re-init. Potential memeory leak. Not following best practices
-                // XXX: it shall call directory  [setRect:rect]
-                m_pReusedTile.InitWithTexture(m_pobTextureAtlas.Texture, rect, false);
+                // XXX HACK: Needed because if "batch node" is nil,
+                // then the Sprite'squad will be reset
+                m_pReusedTile.BatchNode = null;
 
-                // Since initWithTexture resets the batchNode, we need to re add it.
-                // but should be removed once initWithTexture is not called again
+                // Re-init the sprite
+                m_pReusedTile.SetTextureRect(rect, false, rect.Size);
+
+                // restore the batch node
                 m_pReusedTile.BatchNode = this;
             }
 

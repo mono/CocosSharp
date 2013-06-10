@@ -2,33 +2,50 @@ namespace Cocos2D
 {
     public class CCRotateBy : CCActionInterval
     {
-        protected float m_fAngle;
-        protected float m_fStartAngle;
+        protected float m_fAngleX;
+        protected float m_fAngleY;
+        protected float m_fStartAngleX;
+        protected float m_fStartAngleY;
 
-        public CCRotateBy (float duration, float fDeltaAngle)
+        public CCRotateBy(float duration, float fDeltaAngle)
         {
             InitWithDuration(duration, fDeltaAngle);
         }
 
-        protected CCRotateBy (CCRotateBy rotateTo) : base(rotateTo)
+        public CCRotateBy(float duration, float fDeltaAngleX, float fDeltaAngleY)
         {
-            InitWithDuration(rotateTo.m_fDuration, rotateTo.m_fAngle);
+            InitWithDuration(duration, fDeltaAngleX, fDeltaAngleY);
+        }
+
+        protected CCRotateBy(CCRotateBy rotateTo)
+            : base(rotateTo)
+        {
+            InitWithDuration(rotateTo.m_fDuration, rotateTo.m_fAngleX, rotateTo.m_fAngleY);
         }
 
         private bool InitWithDuration(float duration, float fDeltaAngle)
         {
             if (base.InitWithDuration(duration))
             {
-                m_fAngle = fDeltaAngle;
+                m_fAngleX = m_fAngleY = fDeltaAngle;
                 return true;
             }
+            return false;
+        }
 
+        private bool InitWithDuration(float duration, float fDeltaAngleX, float fDeltaAngleY)
+        {
+            if (base.InitWithDuration(duration))
+            {
+                m_fAngleX = fDeltaAngleX;
+                m_fAngleY = fDeltaAngleY;
+                return true;
+            }
             return false;
         }
 
         public override object Copy(ICCCopyable zone)
         {
-
             if (zone != null)
             {
                 var ret = zone as CCRotateBy;
@@ -37,22 +54,19 @@ namespace Cocos2D
                     return null;
                 }
                 base.Copy(ret);
-                
-                ret.InitWithDuration(m_fDuration, m_fAngle);
+
+                ret.InitWithDuration(m_fDuration, m_fAngleX, m_fAngleY);
 
                 return ret;
             }
-            else
-            {
-                return new CCRotateBy(this);
-            }
-
+            return new CCRotateBy(this);
         }
 
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
-            m_fStartAngle = target.Rotation;
+            m_fStartAngleX = target.RotationX;
+            m_fStartAngleY = target.RotationY;
         }
 
         public override void Update(float time)
@@ -60,15 +74,14 @@ namespace Cocos2D
             // XXX: shall I add % 360
             if (m_pTarget != null)
             {
-                m_pTarget.Rotation = m_fStartAngle + m_fAngle * time;
+                m_pTarget.RotationX = m_fStartAngleX + m_fAngleX * time;
+                m_pTarget.RotationY = m_fStartAngleY + m_fAngleY * time;
             }
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCRotateBy (m_fDuration, -m_fAngle);
+            return new CCRotateBy(m_fDuration, -m_fAngleX, -m_fAngleY);
         }
-
-
     }
 }

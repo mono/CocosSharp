@@ -7,10 +7,13 @@ namespace Cocos2D
         protected float m_fTo;
         protected CCScene m_pSceneToBeModified;
 
-        public CCTransitionProgress() { }
+        public CCTransitionProgress()
+        {
+        }
 
-        public CCTransitionProgress (float t, CCScene scene) : base (t, scene)
-        { }
+        public CCTransitionProgress(float t, CCScene scene) : base(t, scene)
+        {
+        }
 
         public override void OnEnter()
         {
@@ -44,7 +47,7 @@ namespace Cocos2D
             CCProgressTimer node = ProgressTimerNodeWithRenderTexture(texture);
 
             // create the blend action
-            CCSequence layerAction = CCSequence.FromActions(
+            CCSequence layerAction = new CCSequence(
                 new CCProgressFromTo(m_fDuration, m_fFrom, m_fTo),
                 new CCCallFunc(Finish)
                 );
@@ -60,7 +63,7 @@ namespace Cocos2D
         public override void OnExit()
         {
             // remove our layer and release all containing objects
-            RemoveChildByTag(kCCSceneRadial, false);
+            RemoveChildByTag(kCCSceneRadial, true);
             base.OnExit();
         }
 
@@ -86,9 +89,9 @@ namespace Cocos2D
 
     public class CCTransitionProgressRadialCCW : CCTransitionProgress
     {
-
-        public CCTransitionProgressRadialCCW (float t, CCScene scene) : base (t, scene)
-        { }
+        public CCTransitionProgressRadialCCW(float t, CCScene scene) : base(t, scene)
+        {
+        }
 
         //OLD_TRANSITION_CREATE_FUNC(CCTransitionProgressRadialCCW)
         //TRANSITION_CREATE_FUNC(CCTransitionProgressRadialCCW)
@@ -111,7 +114,6 @@ namespace Cocos2D
 
             return node;
         }
-
     }
 
 
@@ -121,8 +123,9 @@ namespace Cocos2D
 
     public class CCTransitionProgressRadialCW : CCTransitionProgress
     {
-        public CCTransitionProgressRadialCW (float t, CCScene scene) : base (t, scene)
-        { }
+        public CCTransitionProgressRadialCW(float t, CCScene scene) : base(t, scene)
+        {
+        }
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
@@ -142,7 +145,6 @@ namespace Cocos2D
 
             return node;
         }
-
     }
 
     /** CCTransitionProgressHorizontal transition.
@@ -151,9 +153,9 @@ namespace Cocos2D
 
     public class CCTransitionProgressHorizontal : CCTransitionProgress
     {
-
-        public CCTransitionProgressHorizontal (float t, CCScene scene) : base (t, scene)
-        { }
+        public CCTransitionProgressHorizontal(float t, CCScene scene) : base(t, scene)
+        {
+        }
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
@@ -174,15 +176,15 @@ namespace Cocos2D
 
             return node;
         }
-
     }
 
     public class CCTransitionProgressVertical : CCTransitionProgress
     {
         //OLD_TRANSITION_CREATE_FUNC(CCTransitionProgressVertical)
         //TRANSITION_CREATE_FUNC(CCTransitionProgressVertical)
-        public CCTransitionProgressVertical (float t, CCScene scene) : base (t, scene)
-        { }
+        public CCTransitionProgressVertical(float t, CCScene scene) : base(t, scene)
+        {
+        }
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
@@ -203,14 +205,13 @@ namespace Cocos2D
 
             return node;
         }
-
     }
 
     public class CCTransitionProgressInOut : CCTransitionProgress
     {
-
-        public CCTransitionProgressInOut (float t, CCScene scene) : base (t, scene)
-        { }
+        public CCTransitionProgressInOut(float t, CCScene scene) : base(t, scene)
+        {
+        }
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
@@ -243,13 +244,13 @@ namespace Cocos2D
             m_fFrom = 0;
             m_fTo = 100;
         }
-
     }
 
     public class CCTransitionProgressOutIn : CCTransitionProgress
     {
-        public CCTransitionProgressOutIn (float t, CCScene scene) : base (t, scene)
-        { }
+        public CCTransitionProgressOutIn(float t, CCScene scene) : base(t, scene)
+        {
+        }
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
@@ -270,6 +271,5 @@ namespace Cocos2D
 
             return node;
         }
-
     }
 }

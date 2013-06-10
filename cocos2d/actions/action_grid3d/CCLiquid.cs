@@ -8,17 +8,18 @@ namespace Cocos2D
         protected float m_fAmplitudeRate;
         protected int m_nWaves;
 
-        public CCLiquid ()
-        { }
-
-        public CCLiquid (int wav, float amp, CCGridSize gridSize, float duration)
+        public CCLiquid()
         {
-            InitWithWaves(wav, amp, gridSize, duration);
         }
 
-        public CCLiquid (CCLiquid liquid) 
+        public CCLiquid(float duration, CCGridSize gridSize, int waves, float amplitude)
         {
-            InitWithWaves(liquid.m_nWaves, liquid.m_fAmplitude, liquid.m_sGridSize, liquid.m_fDuration);
+            InitWithDuratuon(duration, gridSize, waves, amplitude);
+        }
+
+        public CCLiquid(CCLiquid liquid)
+        {
+            InitWithDuratuon(liquid.m_fDuration, liquid.m_sGridSize, liquid.m_nWaves, liquid.m_fAmplitude);
         }
 
         public float Amplitude
@@ -29,17 +30,17 @@ namespace Cocos2D
 
         public override float AmplitudeRate
         {
-            get { return m_fAmplitudeRate; } 
+            get { return m_fAmplitudeRate; }
             set { m_fAmplitudeRate = value; }
         }
 
 
-        public bool InitWithWaves(int wav, float amp, CCGridSize gridSize, float duration)
+        public bool InitWithDuratuon(float duration, CCGridSize gridSize, int waves, float amplitude)
         {
-            if (InitWithSize(gridSize, duration))
+            if (InitWithDuration(duration, gridSize))
             {
-                m_nWaves = wav;
-                m_fAmplitude = amp;
+                m_nWaves = waves;
+                m_fAmplitude = amplitude;
                 m_fAmplitudeRate = 1.0f;
 
                 return true;
@@ -54,16 +55,15 @@ namespace Cocos2D
                 //in case of being called at sub class
                 var pCopy = (CCLiquid) (pZone);
                 base.Copy(pZone);
-                
-                pCopy.InitWithWaves(m_nWaves, m_fAmplitude, m_sGridSize, m_fDuration);
-                
+
+                pCopy.InitWithDuratuon(m_fDuration, m_sGridSize, m_nWaves, m_fAmplitude);
+
                 return pCopy;
             }
             else
             {
                 return new CCLiquid(this);
             }
-
         }
 
         public override void Update(float time)
@@ -75,12 +75,15 @@ namespace Cocos2D
                 for (j = 1; j < m_sGridSize.Y; ++j)
                 {
                     CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
-                    v.X = (v.X + ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.X * .01f) * m_fAmplitude * m_fAmplitudeRate));
-                    v.Y = (v.Y + ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.Y * .01f) * m_fAmplitude * m_fAmplitudeRate));
+                    v.X = (v.X +
+                           ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.X * .01f) * m_fAmplitude *
+                            m_fAmplitudeRate));
+                    v.Y = (v.Y +
+                           ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.Y * .01f) * m_fAmplitude *
+                            m_fAmplitudeRate));
                     SetVertex(new CCGridSize(i, j), ref v);
                 }
             }
         }
-
     }
 }

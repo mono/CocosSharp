@@ -68,7 +68,7 @@ namespace Cocos2D
 
             m_pInScene.RunAction
                 (
-                    CCSequence.FromActions
+                    new CCSequence
                         (
                             EaseAction(a),
                             new CCCallFunc(Finish)

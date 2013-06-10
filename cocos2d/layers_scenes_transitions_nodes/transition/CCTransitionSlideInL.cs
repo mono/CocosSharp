@@ -69,7 +69,7 @@ namespace Cocos2D
             CCActionInterval outcAction = Action();
 
             CCFiniteTimeAction inAction = EaseAction(incAction);
-            CCActionInterval outAction = CCSequence.FromActions
+            CCActionInterval outAction = new CCSequence
                 (
                     EaseAction(outcAction),
                     new CCCallFunc((Finish))

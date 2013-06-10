@@ -75,13 +75,13 @@ namespace Cocos2D
                 // Get hold of the PageTurn3DAction
                 return new CCReverseTime
                     (
-                        new CCPageTurn3D (vector, m_fDuration)
+                        new CCPageTurn3D (m_fDuration, vector)
                     );
             }
             else
             {
                 // Get hold of the PageTurn3DAction
-                return new CCPageTurn3D (vector, m_fDuration);
+                return new CCPageTurn3D (m_fDuration, vector);
             }
         }
 
@@ -106,7 +106,7 @@ namespace Cocos2D
 
             if (!m_bBack)
             {
-                m_pOutScene.RunAction(CCSequence.FromActions
+                m_pOutScene.RunAction(new CCSequence
                                           (
                                               action,
                                               new CCCallFunc(Finish),
@@ -116,7 +116,7 @@ namespace Cocos2D
             {
                 // to prevent initial flicker
                 m_pInScene.Visible = false;
-                m_pInScene.RunAction(CCSequence.FromActions
+                m_pInScene.RunAction(new CCSequence
                                          (
                                              new CCShow(),
                                              action,

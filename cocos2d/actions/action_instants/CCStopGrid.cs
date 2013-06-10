@@ -2,6 +2,10 @@
 {
     public class CCStopGrid : CCActionInstant
     {
+        public CCStopGrid()
+        {
+        }
+
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
@@ -11,10 +15,6 @@
             {
                 pGrid.Active = false;
             }
-        }
-
-        public CCStopGrid()
-        {
         }
     }
 }

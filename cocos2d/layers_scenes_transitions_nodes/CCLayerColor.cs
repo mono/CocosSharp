@@ -137,7 +137,7 @@ namespace Cocos2D
         /// <param name="w"></param>
         public void ChangeWidth(float w)
         {
-            ContentSize = new CCSize(w, m_tContentSize.Height);
+            ContentSize = new CCSize(w, m_obContentSize.Height);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Cocos2D
         /// <param name="h"></param>
         public void ChangeHeight(float h)
         {
-            ContentSize = new CCSize(m_tContentSize.Width, h);
+            ContentSize = new CCSize(m_obContentSize.Width, h);
         }
 
         /// <summary>

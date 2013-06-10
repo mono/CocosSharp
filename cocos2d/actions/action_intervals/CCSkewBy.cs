@@ -2,16 +2,15 @@ namespace Cocos2D
 {
     public class CCSkewBy : CCSkewTo
     {
+        public CCSkewBy(float t, float deltaSkewX, float deltaSkewY) : base(t, deltaSkewX, deltaSkewY)
+        {
+            InitWithDuration(t, deltaSkewX, deltaSkewY);
+        }
 
-		public CCSkewBy (float t, float deltaSkewX, float deltaSkewY) : base(t, deltaSkewX, deltaSkewY)
-		{
-			InitWithDuration(t, deltaSkewX, deltaSkewY);
-		}
-
-		protected CCSkewBy (CCSkewBy skewBy) : base (skewBy)
-		{
-			InitWithDuration(skewBy.m_fDuration, skewBy.m_fSkewX, skewBy.m_fSkewY);
-		}
+        protected CCSkewBy(CCSkewBy skewBy) : base(skewBy)
+        {
+            InitWithDuration(skewBy.m_fDuration, skewBy.m_fSkewX, skewBy.m_fSkewY);
+        }
 
         protected override bool InitWithDuration(float t, float sx, float sy)
         {
@@ -39,9 +38,7 @@ namespace Cocos2D
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCSkewBy (m_fDuration, -m_fSkewX, -m_fSkewY);
+            return new CCSkewBy(m_fDuration, -m_fSkewX, -m_fSkewY);
         }
-
-
     }
 }

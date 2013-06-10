@@ -46,7 +46,7 @@ namespace tests
             CCScaleTo scaleTo4 = new CCScaleTo(runTime * 0.25f, 1.1f);
             CCScaleTo scaleTo5 = new CCScaleTo(runTime * 0.25f, 1.0f);
 
-            CCFiniteTimeAction seq = CCSequence.FromActions(hide, scaleTo1, show, delay, scaleTo2, scaleTo3, scaleTo4, scaleTo5);
+            CCFiniteTimeAction seq = new CCSequence(hide, scaleTo1, show, delay, scaleTo2, scaleTo3, scaleTo4, scaleTo5);
 
             layer.RunAction(seq);
 
@@ -104,7 +104,7 @@ namespace tests
             CCScaleTo scaleTo3 = new CCScaleTo(runTime * 0.25f, 1.0f);
 
             CCFiniteTimeAction seq = new CCRepeatForever(
-                CCSequence.FromActions(scaleTo2, scaleTo3)
+                new CCSequence(scaleTo2, scaleTo3)
                 );
 
             m_pInnerLayer.RunAction(seq);
@@ -116,7 +116,7 @@ namespace tests
             var move3 = new CCMoveTo(2, new CCPoint(size.Width / 2, 0));
             var move4 = new CCMoveTo(2, new CCPoint(0, size.Height / 2));
 
-            layer1.RunAction(new CCRepeatForever(CCSequence.FromActions(move1, move2, move3, move4)));
+            layer1.RunAction(new CCRepeatForever(new CCSequence(move1, move2, move3, move4)));
 
         }
 

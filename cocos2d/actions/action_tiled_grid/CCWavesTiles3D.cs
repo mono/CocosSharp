@@ -56,12 +56,12 @@ namespace Cocos2D
         /// <summary>
         ///  initializes the action with a number of waves, the waves amplitude, the grid size and the duration 
         /// </summary>
-        protected virtual bool InitWithWaves(int wav, float amp, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int waves, float amplitude)
         {
-            if (base.InitWithSize(gridSize, duration))
+            if (base.InitWithDuration(duration, gridSize))
             {
-                m_nWaves = wav;
-                m_fAmplitude = amp;
+                m_nWaves = waves;
+                m_fAmplitude = amplitude;
                 m_fAmplitudeRate = 1.0f;
 
                 return true;
@@ -80,12 +80,12 @@ namespace Cocos2D
             else
             {
                 pCopy = new CCWavesTiles3D();
-                pZone =  (pCopy);
+                pZone = (pCopy);
             }
 
             base.Copy(pZone);
 
-            pCopy.InitWithWaves(m_nWaves, m_fAmplitude, m_sGridSize, m_fDuration);
+            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nWaves, m_fAmplitude);
 
             return pCopy;
         }
@@ -101,7 +101,8 @@ namespace Cocos2D
                     CCQuad3 coords = OriginalTile(new CCGridSize(i, j));
 
                     coords.BottomLeft.Z = ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 +
-                                                    (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) * m_fAmplitude * m_fAmplitudeRate);
+                                                            (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) *
+                                           m_fAmplitude * m_fAmplitudeRate);
                     coords.BottomRight.Z = coords.BottomLeft.Z;
                     coords.TopLeft.Z = coords.BottomLeft.Z;
                     coords.TopRight.Z = coords.BottomLeft.Z;
@@ -111,16 +112,16 @@ namespace Cocos2D
             }
         }
 
-        public CCWavesTiles3D() 
+        public CCWavesTiles3D()
         {
         }
 
         /// <summary>
         /// creates the action with a number of waves, the waves amplitude, the grid size and the duration
         /// </summary>
-        public CCWavesTiles3D(int wav, float amp, CCGridSize gridSize, float duration)  :base(duration)
+        public CCWavesTiles3D(float duration, CCGridSize gridSize, int waves, float amplitude) : base(duration)
         {
-            InitWithWaves(wav, amp, gridSize, duration);
+            InitWithDuration(duration, gridSize, waves, amplitude);
         }
     }
 }

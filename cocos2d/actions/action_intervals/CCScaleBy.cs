@@ -43,6 +43,5 @@ namespace Cocos2D
                 return new CCScaleBy(this);
             }
         }
-
     }
 }

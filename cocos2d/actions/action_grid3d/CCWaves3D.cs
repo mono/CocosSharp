@@ -20,12 +20,12 @@ namespace Cocos2D
             set { m_fAmplitudeRate = value; }
         }
 
-        public bool InitWithWaves(int wav, float amp, CCGridSize gridSize, float duration)
+        public bool InitWithWaves(float duration, CCGridSize gridSize, int waves, float amplitude)
         {
-            if (InitWithSize(gridSize, duration))
+            if (InitWithDuration(duration, gridSize))
             {
-                m_nWaves = wav;
-                m_fAmplitude = amp;
+                m_nWaves = waves;
+                m_fAmplitude = amplitude;
                 m_fAmplitudeRate = 1.0f;
                 return true;
             }
@@ -43,12 +43,12 @@ namespace Cocos2D
             else
             {
                 pCopy = new CCWaves3D();
-                pZone =  (pCopy);
+                pZone = (pCopy);
             }
 
             base.Copy(pZone);
 
-            pCopy.InitWithWaves(m_nWaves, m_fAmplitude, m_sGridSize, m_fDuration);
+            pCopy.InitWithWaves(m_fDuration, m_sGridSize, m_nWaves, m_fAmplitude);
 
             return pCopy;
         }
@@ -61,7 +61,8 @@ namespace Cocos2D
                 for (j = 0; j < m_sGridSize.Y + 1; ++j)
                 {
                     CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
-                    v.Z += ((float) Math.Sin((float) Math.PI * time * m_nWaves * 2 + (v.Y + v.X) * .01f) * m_fAmplitude * m_fAmplitudeRate);
+                    v.Z += ((float) Math.Sin((float) Math.PI * time * m_nWaves * 2 + (v.Y + v.X) * .01f) * m_fAmplitude *
+                            m_fAmplitudeRate);
                     SetVertex(new CCGridSize(i, j), ref v);
                 }
             }
@@ -70,9 +71,10 @@ namespace Cocos2D
         protected CCWaves3D()
         {
         }
-        public CCWaves3D(int wav, float amp, CCGridSize gridSize, float duration) : base(duration)
+
+        public CCWaves3D(float duration, CCGridSize gridSize, int waves, float amplitude) : base(duration)
         {
-            InitWithWaves(wav, amp, gridSize, duration);
+            InitWithWaves(duration, gridSize, waves, amplitude);
         }
     }
 }

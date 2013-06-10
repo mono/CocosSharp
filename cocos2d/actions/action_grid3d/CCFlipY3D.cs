@@ -4,17 +4,19 @@ namespace Cocos2D
 {
     public class CCFlipY3D : CCFlipX3D
     {
-
         /** creates the action with duration */
 
-        public CCFlipY3D ()
-        { }
+        public CCFlipY3D()
+        {
+        }
 
-        public CCFlipY3D (float duration) : base (duration)
-        { }
+        public CCFlipY3D(float duration) : base(duration)
+        {
+        }
 
-        public CCFlipY3D (CCFlipY3D flipY3D) : base (flipY3D)
-        { }
+        public CCFlipY3D(CCFlipY3D flipY3D) : base(flipY3D)
+        {
+        }
 
         public override void Update(float time)
         {
@@ -88,19 +90,15 @@ namespace Cocos2D
                 //in case of being called at sub class
                 var pCopy = (CCFlipY3D) (pZone);
                 base.Copy(pZone);
-                
-                pCopy.InitWithSize(m_sGridSize, m_fDuration);
-                
+
+                pCopy.InitWithDuration(m_fDuration, m_sGridSize);
+
                 return pCopy;
             }
             else
             {
                 return new CCFlipY3D(this);
             }
-
-
         }
-
-
     }
 }

@@ -151,7 +151,7 @@ namespace tests
             sprite.Color = CCTypes.CCGreen;
 
             sprite.RunAction(
-                CCSequence.FromActions(
+                new CCSequence(
                     new CCFadeTo (2, 0),
                     new CCHide()
                     )

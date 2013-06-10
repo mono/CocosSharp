@@ -11,20 +11,21 @@ namespace Cocos2D
         public const int kCCLabelAutomaticWidth = -1;
         public static Dictionary<string, CCBMFontConfiguration> s_pConfigurations;
         private bool m_bLineBreakWithoutSpaces;
-        private float m_fWidth;
-        private CCTextAlignment m_pAlignment;
+        private float m_fWidth = -1.0f;
+        private CCTextAlignment m_pAlignment = CCTextAlignment.Center;
         protected CCBMFontConfiguration m_pConfiguration;
         private string m_sFntFile;
         private string m_sInitialString;
         protected string m_sString = "";
         private CCPoint m_tImageOffset;
+        private CCSprite m_pReusedChar;
 
         public override CCPoint AnchorPoint
         {
             get { return base.AnchorPoint; }
             set
             {
-                if (!m_tAnchorPoint.Equals(value))
+                if (!m_obAnchorPoint.Equals(value))
                 {
                     base.AnchorPoint = value;
                     UpdateLabel();
@@ -114,9 +115,9 @@ namespace Cocos2D
         protected byte m_cRealOpacity = 255;
         protected CCColor3B m_tDisplayedColor = CCTypes.CCWhite;
         protected CCColor3B m_tRealColor = CCTypes.CCWhite;
-        protected bool m_bCascadeColorEnabled;
-        protected bool m_bCascadeOpacityEnabled;
-        protected bool m_bIsOpacityModifyRGB;
+        protected bool m_bCascadeColorEnabled = true;
+        protected bool m_bCascadeOpacityEnabled = true;
+        protected bool m_bIsOpacityModifyRGB = false;
 
         public virtual CCColor3B Color
         {
@@ -283,7 +284,11 @@ namespace Cocos2D
             if (!String.IsNullOrEmpty(fntFile))
             {
                 CCBMFontConfiguration newConf = FNTConfigLoadFile(fntFile);
-                Debug.Assert(newConf != null, "CCLabelBMFont: Impossible to create font. Please check file");
+                if (newConf == null)
+                {
+                    CCLog.Log("CCLabelBMFont: Impossible to create font. Please check file: '%s'", fntFile);
+                    return false;
+                }
 
                 m_pConfiguration = newConf;
 
@@ -330,14 +335,18 @@ namespace Cocos2D
                 m_bCascadeOpacityEnabled = true;
                 m_bCascadeColorEnabled = true;
 
-                m_tContentSize = CCSize.Zero;
+                m_obContentSize = CCSize.Zero;
 
                 m_bIsOpacityModifyRGB = m_pobTextureAtlas.Texture.HasPremultipliedAlpha;
                 AnchorPoint = new CCPoint(0.5f, 0.5f);
 
                 m_tImageOffset = imageOffset;
 
-                Label = (theString);
+                m_pReusedChar = new CCSprite();
+                m_pReusedChar.InitWithTexture(m_pobTextureAtlas.Texture, CCRect.Zero, false);
+                m_pReusedChar.BatchNode = this;
+
+                SetString(theString, true);
 
                 return true;
             }
@@ -364,7 +373,7 @@ namespace Cocos2D
         {
             int nextFontPositionX = 0;
             int nextFontPositionY = 0;
-            //unsigned short prev = -1;
+            char prev = (char)255;
             int kerningAmount = 0;
 
             CCSize tmpSize = CCSize.Zero;
@@ -381,6 +390,8 @@ namespace Cocos2D
 
             int stringLen = m_sString.Length;
 
+            var charSet = m_pConfiguration.CharacterSet;
+
             for (int i = 0; i < stringLen - 1; ++i)
             {
                 if (m_sString[i] == '\n')
@@ -391,6 +402,9 @@ namespace Cocos2D
 
             totalHeight = m_pConfiguration.m_nCommonHeight * quantityOfLines;
             nextFontPositionY = 0 - (m_pConfiguration.m_nCommonHeight - m_pConfiguration.m_nCommonHeight * quantityOfLines);
+
+            CCBMFontConfiguration.CCBMFontDef fontDef = null;
+            CCRect rect;
 
             for (int i = 0; i < stringLen; i++)
             {
@@ -403,10 +417,22 @@ namespace Cocos2D
                     continue;
                 }
 
-                // unichar is a short, and an int is needed on HASH_FIND_INT
-                CCBMFontConfiguration.CCBMFontDef fontDef = m_pConfiguration.m_pFontDefDictionary[c];
+                if (charSet.IndexOf(c) == -1)
+                {
+                    CCLog.Log("Cocos2D.CCLabelBMFont: Attempted to use character not defined in this bitmap: %d", (int)c);
+                    continue;
+                }
 
-                CCRect rect = fontDef.rect;
+                kerningAmount = this.KerningAmountForFirst(prev, c);
+
+                // unichar is a short, and an int is needed on HASH_FIND_INT
+                if (!m_pConfiguration.m_pFontDefDictionary.TryGetValue(c, out fontDef))
+                {
+                    CCLog.Log("cocos2d::CCLabelBMFont: characer not found %d", (int)c);
+                    continue;
+                }
+
+                rect = fontDef.rect;
                 rect = CCMacros.CCRectanglePixelsToPoints(rect);
 
                 rect.Origin.X += m_tImageOffset.X;
@@ -414,21 +440,43 @@ namespace Cocos2D
 
                 CCSprite fontChar;
 
+                //bool hasSprite = true;
                 fontChar = (CCSprite) (GetChildByTag(i));
-                if (fontChar == null)
+                if (fontChar != null)
                 {
-                    fontChar = new CCSprite(m_pobTextureAtlas.Texture, rect);
-                    AddChild(fontChar, 0, i);
+                    // Reusing previous Sprite
+		        	fontChar.Visible = true;
                 }
                 else
                 {
-                    // reusing fonts
-                    fontChar.SetTextureRect(rect, false, rect.Size);
-
-                    // restore to default in case they were modified
-                    fontChar.Visible = true;
-                    fontChar.Opacity = 255;
+                    // New Sprite ? Set correct color, opacity, etc...
+                    //if( false )
+                    //{
+				    //    /* WIP: Doesn't support many features yet.
+				    //     But this code is super fast. It doesn't create any sprite.
+				    //     Ideal for big labels.
+				    //     */
+				    //    fontChar = m_pReusedChar;
+				    //    fontChar.BatchNode = null;
+				    //    hasSprite = false;
+			        //}
+                    //else
+                    {
+                        fontChar = new CCSprite();
+                        fontChar.InitWithTexture(m_pobTextureAtlas.Texture, rect);
+                        AddChild(fontChar, i, i);
+			        }
+            
+                    // Apply label properties
+			        fontChar.IsOpacityModifyRGB = m_bIsOpacityModifyRGB;
+            
+			        // Color MUST be set before opacity, since opacity might change color if OpacityModifyRGB is on
+			        fontChar.UpdateDisplayedColor(m_tDisplayedColor);
+			        fontChar.UpdateDisplayedOpacity(m_cDisplayedOpacity);
                 }
+
+                // updating previous sprite
+                fontChar.SetTextureRect(rect, false, rect.Size);
 
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
                 int yOffset = m_pConfiguration.m_nCommonHeight - fontDef.yOffset;
@@ -438,37 +486,51 @@ namespace Cocos2D
 
                 // update kerning
                 nextFontPositionX += fontDef.xAdvance + kerningAmount;
-                //prev = c;
+                prev = c;
 
-                // Apply label properties
-                fontChar.IsOpacityModifyRGB = m_bIsOpacityModifyRGB;
-
-                // Color MUST be set before opacity, since opacity might change color if OpacityModifyRGB is on
-                fontChar.UpdateDisplayedColor(m_tDisplayedColor);
-                fontChar.UpdateDisplayedOpacity(m_cDisplayedOpacity);
-                
                 if (longestLine < nextFontPositionX)
                 {
                     longestLine = nextFontPositionX;
                 }
+        
+                //if (! hasSprite)
+                //{
+                //  UpdateQuadFromSprite(fontChar, i);
+                //}
             }
 
-            tmpSize.Width = longestLine;
+            // If the last character processed has an xAdvance which is less that the width of the characters image, then we need
+            // to adjust the width of the string to take this into account, or the character will overlap the end of the bounding
+            // box
+            if (fontDef.xAdvance < fontDef.rect.Size.Width)
+            {
+                tmpSize.Width = longestLine + fontDef.rect.Size.Width - fontDef.xAdvance;
+            }
+            else
+            {
+                tmpSize.Width = longestLine;
+            }
             tmpSize.Height = totalHeight;
 
             ContentSize = CCMacros.CCSizePixelsToPoints(tmpSize);
         }
 
 
-        public virtual void SetString(string newString, bool fromUpdate)
+        public virtual void SetString(string newString, bool needUpdateLabel)
         {
-            m_sString = newString;
-            m_sInitialString = newString;
+            if (!needUpdateLabel)
+            {
+                m_sString = newString;
+            }
+            else
+            {
+                m_sInitialString = newString;
+            }
 
-            UpdateString(fromUpdate);
+            UpdateString(needUpdateLabel);
         }
 
-        private void UpdateString(bool fromUpdate)
+        private void UpdateString(bool needUpdateLabel)
         {
             if (m_pChildren != null && m_pChildren.count != 0)
             {
@@ -481,7 +543,7 @@ namespace Cocos2D
 
             CreateFontChars();
 
-            if (!fromUpdate)
+            if (needUpdateLabel)
             {
                 UpdateLabel();
             }
@@ -489,7 +551,8 @@ namespace Cocos2D
 
         protected void UpdateLabel()
         {
-            SetString(m_sInitialString, true);
+            SetString(m_sInitialString, false);
+
             if (m_sString == null)
             {
                 return;
@@ -511,11 +574,14 @@ namespace Cocos2D
                 for (int j = 0; j < children.count; j++)
                 {
                     CCSprite characterSprite;
+                    int justSkipped = 0;
 
-                    while ((characterSprite = (CCSprite) GetChildByTag(j + skip)) == null)
+                    while ((characterSprite = (CCSprite)GetChildByTag(j + skip + justSkipped)) == null)
                     {
-                        skip++;
+                        justSkipped++;
                     }
+
+                    skip += justSkipped;
 
                     if (!characterSprite.Visible)
                     {
@@ -563,7 +629,7 @@ namespace Cocos2D
                         start_line = false;
                         startOfWord = -1;
                         startOfLine = -1;
-                        i++;
+                        i += justSkipped; 
                         line++;
 
                         if (i >= stringLength)
@@ -677,9 +743,7 @@ namespace Cocos2D
 
                 multiline_string.Append(last_word);
 
-                m_sString = multiline_string.ToString();
-
-                UpdateString(true);
+                SetString(multiline_string.ToString(), false);
             }
 
             // Step 2: Make alignment

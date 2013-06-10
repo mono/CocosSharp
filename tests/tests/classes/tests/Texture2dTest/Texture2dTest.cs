@@ -1016,7 +1016,7 @@ namespace tests
             // scale them to show
             CCScaleBy sc = new CCScaleBy(3, 8.0f);
             CCScaleBy sc_back = (CCScaleBy) (sc.Reverse());
-            CCRepeatForever scaleforever = new CCRepeatForever ((CCActionInterval) (CCSequence.FromActions(sc, sc_back)));
+            CCRepeatForever scaleforever = new CCRepeatForever ((CCActionInterval) (new CCSequence(sc, sc_back)));
             CCRepeatForever scaleToo = (CCRepeatForever) (scaleforever.Copy());
 
             sprite2.RunAction(scaleforever);

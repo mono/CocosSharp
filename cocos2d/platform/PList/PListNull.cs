@@ -43,7 +43,7 @@ namespace Cocos2D
 
         public override bool AsBool
         {
-            get { throw new NotImplementedException(); }
+            get {return false; }
         }
 
         public override PlistArray AsArray

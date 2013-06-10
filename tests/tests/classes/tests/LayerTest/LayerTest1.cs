@@ -87,7 +87,7 @@ namespace tests
 
             layer1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCFadeTo(4, 0),
                         new CCFadeTo(4, 255),
                         new CCDelayTime(1))
@@ -96,7 +96,7 @@ namespace tests
 
             sister1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCFadeTo(2, 0),
                         new CCFadeTo(2, 255),
                         new CCFadeTo(2, 0),
@@ -145,7 +145,7 @@ namespace tests
 
             layer1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCFadeTo(4, 0),
                         new CCFadeTo(4, 255),
                         new CCDelayTime(1))
@@ -154,7 +154,7 @@ namespace tests
 
             sister1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCFadeTo(2, 0),
                         new CCFadeTo(2, 255),
                         new CCFadeTo(2, 0),
@@ -203,7 +203,7 @@ namespace tests
 
             layer1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCFadeTo(4, 0),
                         new CCFadeTo(4, 255),
                         new CCDelayTime(1))
@@ -212,7 +212,7 @@ namespace tests
 
             sister1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCFadeTo(2, 0),
                         new CCFadeTo(2, 255),
                         new CCFadeTo(2, 0),
@@ -254,7 +254,7 @@ namespace tests
 
             layer1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCTintTo(6, 255, 0, 255),
                         new CCTintTo(6, 255, 255, 255),
                         new CCDelayTime(1))
@@ -263,7 +263,7 @@ namespace tests
 
             sister1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCTintTo(2, 255, 255, 0),
                         new CCTintTo(2, 255, 255, 255),
                         new CCTintTo(2, 0, 255, 255),
@@ -313,7 +313,7 @@ namespace tests
 
             layer1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCTintTo(6, 255, 0, 255),
                         new CCTintTo(6, 255, 255, 255),
                         new CCDelayTime(1))
@@ -322,7 +322,7 @@ namespace tests
 
             sister1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCTintTo(2, 255, 255, 0),
                         new CCTintTo(2, 255, 255, 255),
                         new CCTintTo(2, 0, 255, 255),
@@ -372,7 +372,7 @@ namespace tests
 
             layer1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCTintTo(6, 255, 0, 255),
                         new CCTintTo(6, 255, 255, 255),
                         new CCDelayTime(1))
@@ -381,7 +381,7 @@ namespace tests
 
             sister1.RunAction(
                 new CCRepeatForever(
-                    CCSequence.FromActions(
+                    new CCSequence(
                         new CCTintTo(2, 255, 255, 0),
                         new CCTintTo(2, 255, 255, 255),
                         new CCTintTo(2, 0, 255, 255),

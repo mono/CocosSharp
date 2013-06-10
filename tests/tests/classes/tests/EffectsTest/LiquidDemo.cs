@@ -10,7 +10,7 @@ namespace tests
     {
         public static CCActionInterval actionWithDuration(float t)
         {
-            return new CCLiquid (4, 20, new CCGridSize(16, 12), t);
+            return new CCLiquid (t, new CCGridSize(16, 12), 4, 20);
         }
     }
 }

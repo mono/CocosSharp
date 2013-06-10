@@ -63,6 +63,5 @@ namespace Cocos2D
                 m_pTarget.ScaleY = m_fStartScaleY + m_fDeltaY * time;
             }
         }
-
     }
 }

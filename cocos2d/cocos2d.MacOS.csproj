@@ -130,6 +130,7 @@
     <Compile Include="Actions\action_instants\CCFlipY.cs" />
     <Compile Include="Actions\action_instants\CCHide.cs" />
     <Compile Include="Actions\action_instants\CCPlace.cs" />
+    <Compile Include="actions\action_instants\CCRemoveSelf.cs" />
     <Compile Include="Actions\action_instants\CCReuseGrid.cs" />
     <Compile Include="Actions\action_instants\CCShow.cs" />
     <Compile Include="Actions\action_instants\CCStopGrid.cs" />

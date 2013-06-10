@@ -1,4 +1,3 @@
-
 namespace Cocos2D
 {
     public class CCRepeat : CCActionInterval
@@ -10,12 +9,12 @@ namespace Cocos2D
         protected uint m_uTotal;
 
 
-        public CCRepeat (CCFiniteTimeAction action, uint times)
+        public CCRepeat(CCFiniteTimeAction action, uint times)
         {
             InitWithAction(action, times);
         }
 
-        protected CCRepeat (CCRepeat repeat) : base (repeat)
+        protected CCRepeat(CCRepeat repeat) : base(repeat)
         {
             var param = repeat.m_pInnerAction.Copy() as CCFiniteTimeAction;
             InitWithAction(param, repeat.m_uTimes);
@@ -52,7 +51,6 @@ namespace Cocos2D
 
         public override object Copy(ICCCopyable zone)
         {
-
             if (zone != null)
             {
                 var ret = zone as CCRepeat;
@@ -61,21 +59,20 @@ namespace Cocos2D
                     return null;
                 }
                 base.Copy(zone);
-                
+
                 var param = m_pInnerAction.Copy() as CCFiniteTimeAction;
                 if (param == null)
                 {
                     return null;
                 }
                 ret.InitWithAction(param, m_uTimes);
-                
+
                 return ret;
             }
             else
             {
                 return new CCRepeat(this);
             }
-
         }
 
         public override void StartWithTarget(CCNode target)
@@ -142,8 +139,7 @@ namespace Cocos2D
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCRepeat (m_pInnerAction.Reverse(), m_uTimes);
+            return new CCRepeat(m_pInnerAction.Reverse(), m_uTimes);
         }
-
     }
 }

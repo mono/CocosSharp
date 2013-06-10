@@ -210,7 +210,7 @@ namespace Cocos2D
             CCActionInterval fade = new CCFadeOut  (1.0f);
             //CCActionInterval fade_in = fade.reverse();
             CCActionInterval fade_in = null;
-            CCFiniteTimeAction seq = CCSequence.FromActions(fade, fade_in, null);
+            CCFiniteTimeAction seq = new CCSequence(fade, fade_in, null);
             CCAction repeat = new CCRepeatForever ((CCActionInterval)seq);
             label2.RunAction(repeat);
 
@@ -278,7 +278,7 @@ namespace Cocos2D
             CCActionInterval scale = new CCScaleBy(2, 1.5f);
             //CCActionInterval scale_back = scale.reverse();
             CCActionInterval scale_back = null;
-            CCFiniteTimeAction scale_seq = CCSequence.FromActions(scale, scale_back, null);
+            CCFiniteTimeAction scale_seq = new CCSequence(scale, scale_back, null);
             CCAction scale_4ever = new CCRepeatForever ((CCActionInterval)scale_seq);
 
             CCActionInterval jump = new CCJumpBy (0.5f, new CCPoint(), 60, 1);
@@ -286,7 +286,7 @@ namespace Cocos2D
 
             CCActionInterval fade_out = new CCFadeOut  (1);
             CCActionInterval fade_in = new CCFadeIn  (1);
-            CCFiniteTimeAction seq = CCSequence.FromActions(fade_out, fade_in, null);
+            CCFiniteTimeAction seq = new CCSequence(fade_out, fade_in, null);
             CCAction fade_4ever = new CCRepeatForever ((CCActionInterval)seq);
 
             BChar.RunAction(rot_4ever);

@@ -11,15 +11,15 @@ namespace Cocos2D
         protected float m_fStartSkewX;
         protected float m_fStartSkewY;
 
-		public CCSkewTo (float t, float sx, float sy)
-		{
-			InitWithDuration(t, sx, sy);
-		}
+        public CCSkewTo(float t, float sx, float sy)
+        {
+            InitWithDuration(t, sx, sy);
+        }
 
-		protected CCSkewTo (CCSkewTo skewTo) : base (skewTo)
-		{
-			InitWithDuration (skewTo.m_fDuration, skewTo.m_fEndSkewX, skewTo.m_fStartSkewY);
-		}
+        protected CCSkewTo(CCSkewTo skewTo) : base(skewTo)
+        {
+            InitWithDuration(skewTo.m_fDuration, skewTo.m_fEndSkewX, skewTo.m_fStartSkewY);
+        }
 
         protected virtual bool InitWithDuration(float t, float sx, float sy)
         {
@@ -38,22 +38,17 @@ namespace Cocos2D
 
         public override object Copy(ICCCopyable pZone)
         {
-
             if (pZone != null)
             {
                 //in case of being called at sub class
                 var pCopy = (CCSkewTo) (pZone);
-				base.Copy(pZone);
-				
-				pCopy.InitWithDuration(m_fDuration, m_fEndSkewX, m_fEndSkewY);
-				
-				return pCopy;
-			}
-            else
-            {
-                return new CCSkewTo(this);
-            }
+                base.Copy(pZone);
 
+                pCopy.InitWithDuration(m_fDuration, m_fEndSkewX, m_fEndSkewY);
+
+                return pCopy;
+            }
+            return new CCSkewTo(this);
         }
 
         public override void StartWithTarget(CCNode target)
@@ -110,6 +105,5 @@ namespace Cocos2D
             m_pTarget.SkewX = m_fStartSkewX + m_fDeltaX * time;
             m_pTarget.SkewY = m_fStartSkewY + m_fDeltaY * time;
         }
-
     }
 }

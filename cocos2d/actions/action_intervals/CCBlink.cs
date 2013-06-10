@@ -3,13 +3,14 @@
     public class CCBlink : CCActionInterval
     {
         protected uint m_nTimes;
+        protected bool m_bOriginalState;
 
-        public CCBlink (float duration, uint uBlinks)
+        public CCBlink(float duration, uint uBlinks)
         {
             InitWithDuration(duration, uBlinks);
         }
 
-        protected CCBlink (CCBlink blink) : base (blink)
+        protected CCBlink(CCBlink blink) : base(blink)
         {
             InitWithDuration(m_fDuration, m_nTimes);
         }
@@ -27,13 +28,12 @@
 
         public override object Copy(ICCCopyable pZone)
         {
-
             if (pZone != null)
             {
                 //in case of being called at sub class
                 var pCopy = (CCBlink) (pZone);
                 base.Copy(pZone);
-                
+
                 pCopy.InitWithDuration(m_fDuration, m_nTimes);
                 return pCopy;
             }
@@ -41,7 +41,18 @@
             {
                 return new CCBlink(this);
             }
+        }
 
+        public override void Stop()
+        {
+            m_pTarget.Visible = m_bOriginalState;
+            base.Stop();
+        }
+
+        public override void StartWithTarget(CCNode target)
+        {
+            base.StartWithTarget(target);
+            m_bOriginalState = target.Visible;
         }
 
         public override void Update(float time)

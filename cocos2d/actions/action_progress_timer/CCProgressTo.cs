@@ -1,4 +1,3 @@
-
 namespace Cocos2D
 {
     public class CCProgressTo : CCActionInterval
@@ -32,7 +31,7 @@ namespace Cocos2D
             else
             {
                 pCopy = new CCProgressTo();
-                pZone =  (pCopy);
+                pZone = (pCopy);
             }
 
             base.Copy(pZone);

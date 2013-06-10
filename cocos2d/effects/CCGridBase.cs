@@ -192,45 +192,12 @@ namespace Cocos2D
                                     (int) (size.Height * CCMacros.CCContentScaleFactor())
                 );
 
-            /*
-            CCDrawManager.ProjectionMatrix = Matrix.Identity;
-            
-            Matrix orthoMatrix = Matrix.CreateOrthographicOffCenter(
-                0, size.width * ccMacros.CC_CONTENT_SCALE_FACTOR(),
-                0, size.height * ccMacros.CC_CONTENT_SCALE_FACTOR(),
-                -1, 1
-                );
-
-            CCDrawManager.MultMatrix(ref orthoMatrix);
-            */
-            
             CCDrawManager.ViewMatrix = Matrix.Identity;
             CCDrawManager.ProjectionMatrix = Matrix.Identity;
             
             Matrix projection = Matrix.CreateOrthographicOffCenter(0, size.Width, 0, size.Height, -1024.0f, 1024.0f);
             Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
             CCDrawManager.WorldMatrix = (halfPixelOffset * projection);
-            
-
-            /*
-            CCDirector *director = CCDirector::sharedDirector();
-
-            CCSize    size = director->getWinSizeInPixels();
-
-            glViewport(0, 0, (GLsizei)(size.width * CC_CONTENT_SCALE_FACTOR()), (GLsizei)(size.height * CC_CONTENT_SCALE_FACTOR()) );
-            kmGLMatrixMode(KM_GL_PROJECTION);
-            kmGLLoadIdentity();
-
-            kmMat4 orthoMatrix;
-            kmMat4OrthographicProjection(&orthoMatrix, 0, size.width * CC_CONTENT_SCALE_FACTOR(), 0, size.height * CC_CONTENT_SCALE_FACTOR(), -1, 1);
-            kmGLMultMatrix( &orthoMatrix );
-
-            kmGLMatrixMode(KM_GL_MODELVIEW);
-            kmGLLoadIdentity();
-
-
-            ccSetProjectionMatrixDirty();
-            */
         }
     }
 }

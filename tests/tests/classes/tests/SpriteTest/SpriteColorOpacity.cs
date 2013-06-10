@@ -32,19 +32,19 @@ namespace tests
 
             CCActionInterval action = new CCFadeIn  (2);
             CCActionInterval action_back = (CCActionInterval)action.Reverse();
-            CCAction fade = new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(action, action_back)));
+            CCAction fade = new CCRepeatForever ((CCActionInterval)(new CCSequence(action, action_back)));
 
             CCActionInterval tintred = new CCTintBy (2, 0, -255, -255);
             CCActionInterval tintred_back = (CCActionInterval)tintred.Reverse();
-            CCAction red = new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(tintred, tintred_back)));
+            CCAction red = new CCRepeatForever ((CCActionInterval)(new CCSequence(tintred, tintred_back)));
 
             CCActionInterval tintgreen = new CCTintBy (2, -255, 0, -255);
             CCActionInterval tintgreen_back = (CCActionInterval)tintgreen.Reverse();
-            CCAction green = new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(tintgreen, tintgreen_back)));
+            CCAction green = new CCRepeatForever ((CCActionInterval)(new CCSequence(tintgreen, tintgreen_back)));
 
             CCActionInterval tintblue = new CCTintBy (2, -255, -255, 0);
             CCActionInterval tintblue_back = (CCActionInterval)tintblue.Reverse();
-            CCAction blue = new CCRepeatForever ((CCActionInterval)(CCSequence.FromActions(tintblue, tintblue_back)));
+            CCAction blue = new CCRepeatForever ((CCActionInterval)(new CCSequence(tintblue, tintblue_back)));
 
             sprite5.RunAction(red);
             sprite6.RunAction(green);

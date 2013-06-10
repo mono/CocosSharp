@@ -10,7 +10,7 @@ namespace tests
     {
         public new static CCActionInterval actionWithDuration(float t)
         {
-            return new CCSplitRows(9, t);
+            return new CCSplitRows(t, 9);
         }
     }
 }

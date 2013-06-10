@@ -8,12 +8,12 @@
         {
         }
 
-		protected CCPlace (CCPlace place) : base(place)
-		{
-			InitWithPosition(m_tPosition);
-		}
+        protected CCPlace(CCPlace place) : base(place)
+        {
+            InitWithPosition(m_tPosition);
+        }
 
-		public CCPlace(CCPoint pos)
+        public CCPlace(CCPoint pos)
         {
             InitWithPosition(pos);
         }
@@ -29,15 +29,11 @@
             if (pZone != null)
             {
                 var pRet = (CCPlace) (pZone);
-				base.Copy(pZone);
-				pRet.InitWithPosition(m_tPosition);
-				return pRet;
+                base.Copy(pZone);
+                pRet.InitWithPosition(m_tPosition);
+                return pRet;
             }
-            else
-            {
-                return new CCPlace(this);
-            }
-
+            return new CCPlace(this);
         }
 
         public override void StartWithTarget(CCNode target)

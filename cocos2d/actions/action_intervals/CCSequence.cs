@@ -1,4 +1,3 @@
-
 using System.Diagnostics;
 
 namespace Cocos2D
@@ -10,20 +9,37 @@ namespace Cocos2D
         protected float m_split;
         private bool _HasInfiniteAction = false;
 
-		public CCSequence (CCFiniteTimeAction action1, CCFiniteTimeAction action2)
-		{
-			InitOneTwo(action1, action2);
-		}
+        public CCSequence(CCFiniteTimeAction action1, CCFiniteTimeAction action2)
+        {
+            InitOneTwo(action1, action2);
+        }
 
-		protected CCSequence (CCSequence sequence) : base (sequence)
-		{
+        public CCSequence(params CCFiniteTimeAction[] actions)
+        {
+            CCFiniteTimeAction prev = actions[0];
 
-			var param1 = sequence.m_pActions[0].Copy() as CCFiniteTimeAction;
-			var param2 = sequence.m_pActions[1].Copy() as CCFiniteTimeAction;
+            if (actions.Length == 1)
+            {
+                InitOneTwo(prev, new CCExtraAction());
+            }
+            else
+            {
+                for (int i = 1; i < actions.Length - 1; i++)
+                {
+                    prev = new CCSequence(prev, actions[i]);
+                }
 
-			InitOneTwo(param1, param2);
-			
-		}
+                InitOneTwo(prev, actions[actions.Length - 1]);
+            }
+        }
+
+        protected CCSequence(CCSequence sequence) : base(sequence)
+        {
+            var param1 = sequence.m_pActions[0].Copy() as CCFiniteTimeAction;
+            var param2 = sequence.m_pActions[1].Copy() as CCFiniteTimeAction;
+
+            InitOneTwo(param1, param2);
+        }
 
         protected bool InitOneTwo(CCFiniteTimeAction actionOne, CCFiniteTimeAction actionTwo)
         {
@@ -65,26 +81,24 @@ namespace Cocos2D
                 {
                     return null;
                 }
-				base.Copy(tmpZone);
-				
-				var param1 = m_pActions[0].Copy() as CCFiniteTimeAction;
-				var param2 = m_pActions[1].Copy() as CCFiniteTimeAction;
-				
-				if (param1 == null || param2 == null)
-				{
-					return null;
-				}
-				
-				ret.InitOneTwo(param1, param2);
-				
-				return ret;
+                base.Copy(tmpZone);
+
+                var param1 = m_pActions[0].Copy() as CCFiniteTimeAction;
+                var param2 = m_pActions[1].Copy() as CCFiniteTimeAction;
+
+                if (param1 == null || param2 == null)
+                {
+                    return null;
+                }
+
+                ret.InitOneTwo(param1, param2);
+
+                return ret;
             }
             else
             {
                 return new CCSequence(this);
             }
-
-
         }
 
         public override void StartWithTarget(CCNode target)
@@ -159,14 +173,22 @@ namespace Cocos2D
                     m_pActions[0].Stop();
                 }
             }
-
+            else if (found == 0 && m_last == 1)
+            {
+                // Reverse mode ?
+                // XXX: Bug. this case doesn't contemplate when _last==-1, found=0 and in "reverse mode"
+                // since it will require a hack to know if an action is on reverse mode or not.
+                // "step" should be overriden, and the "reverseMode" value propagated to inner Sequences.
+                m_pActions[1].Update(0);
+                m_pActions[1].Stop();
+            }
             // Last action found and it is done.
             if (found == m_last && m_pActions[found].IsDone)
             {
                 return;
             }
 
-            // New action. Start it.
+            // Last action found and it is done
             if (found != m_last || bRestart)
             {
                 m_pActions[found].StartWithTarget(m_pTarget);
@@ -178,21 +200,7 @@ namespace Cocos2D
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCSequence (m_pActions[1].Reverse(), m_pActions[0].Reverse());
+            return new CCSequence(m_pActions[1].Reverse(), m_pActions[0].Reverse());
         }
-
-		public static CCSequence FromActions(params CCFiniteTimeAction[] actions)
-		{
-			CCFiniteTimeAction prev = actions[0];
-			
-			for (int i = 1; i < actions.Length; i++)
-			{
-				prev = new CCSequence (prev, actions[i]);
-			}
-			
-			return (CCSequence) prev;
-		}
-		
-
     }
 }

@@ -1,4 +1,3 @@
-
 using System.Diagnostics;
 
 namespace Cocos2D
@@ -13,6 +12,11 @@ namespace Cocos2D
 
         public CCTiledGrid3DAction(float duration)
             : base(duration)
+        {
+        }
+
+        public CCTiledGrid3DAction(float duration, CCGridSize gridSize)
+            : base(duration, gridSize)
         {
         }
 

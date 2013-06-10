@@ -25,10 +25,17 @@ namespace Cocos2D
         [ContentSerializer]
         internal CCBMFontPadding m_tPadding;
 
+        private List<int> m_pCharacterSet = new List<int>();
+
         public string AtlasName
         {
             get { return m_sAtlasName; }
             set { m_sAtlasName = value; }
+        }
+
+        public List<int> CharacterSet
+        {
+            get { return m_pCharacterSet; }
         }
 
         public CCBMFontConfiguration()
@@ -75,10 +82,16 @@ namespace Cocos2D
             m_pKerningDictionary.Clear();
             m_pFontDefDictionary.Clear();
 
-            return ParseConfigFile(data, fntFile);
+            m_pCharacterSet = ParseConfigFile(data, fntFile);
+
+            if (m_pCharacterSet == null)
+            {
+                return false;
+            }
+            return true;
         }
 
-        private bool ParseConfigFile(string pBuffer, string fntFile)
+        private List<int> ParseConfigFile(string pBuffer, string fntFile)
         {
             long nBufSize = pBuffer.Length;
 
@@ -86,8 +99,10 @@ namespace Cocos2D
 
             if (string.IsNullOrEmpty(pBuffer))
             {
-                return false;
+                return null;
             }
+
+            var validCharsString = new List<int>();
 
             // parse spacing / padding
             string line;
@@ -139,6 +154,8 @@ namespace Cocos2D
                     parseCharacterDefinition(line, characterDefinition);
 
                     m_pFontDefDictionary.Add(characterDefinition.charID, characterDefinition);
+
+                    validCharsString.Add(characterDefinition.charID);
                 }
                 //else if (line.StartsWith("kernings count"))
                 //{
@@ -150,7 +167,7 @@ namespace Cocos2D
                 }
             }
 
-            return true;
+            return validCharsString;
         }
 
         private void parseCharacterDefinition(string line, CCBMFontDef characterDefinition)

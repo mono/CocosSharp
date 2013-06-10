@@ -1,4 +1,3 @@
-
 using System.Diagnostics;
 
 namespace Cocos2D
@@ -13,17 +12,16 @@ namespace Cocos2D
             set { m_pInnerAction = value; }
         }
 
-        public CCRepeatForever (CCActionInterval action)
+        public CCRepeatForever(CCActionInterval action)
         {
             InitWithAction(action);
         }
 
-		protected CCRepeatForever (CCRepeatForever repeatForever) : base (repeatForever)
-		{
-			var param = repeatForever.m_pInnerAction.Copy() as CCActionInterval;
-			InitWithAction(param);
-
-		}
+        protected CCRepeatForever(CCRepeatForever repeatForever) : base(repeatForever)
+        {
+            var param = repeatForever.m_pInnerAction.Copy() as CCActionInterval;
+            InitWithAction(param);
+        }
 
         protected bool InitWithAction(CCActionInterval action)
         {
@@ -35,7 +33,6 @@ namespace Cocos2D
 
         public override object Copy(ICCCopyable zone)
         {
-
             if (zone != null)
             {
                 var ret = zone as CCRepeatForever;
@@ -43,22 +40,21 @@ namespace Cocos2D
                 {
                     return null;
                 }
-				base.Copy(zone);
-				
-				var param = m_pInnerAction.Copy() as CCActionInterval;
-				if (param == null)
-				{
-					return null;
-				}
-				ret.InitWithAction(param);
-				
-				return ret;
-			}
+                base.Copy(zone);
+
+                var param = m_pInnerAction.Copy() as CCActionInterval;
+                if (param == null)
+                {
+                    return null;
+                }
+                ret.InitWithAction(param);
+
+                return ret;
+            }
             else
             {
                 return new CCRepeatForever(this);
             }
-
         }
 
         public override void StartWithTarget(CCNode target)
@@ -70,7 +66,7 @@ namespace Cocos2D
         public override void Step(float dt)
         {
             m_pInnerAction.Step(dt);
-            
+
             if (m_pInnerAction.IsDone)
             {
                 float diff = m_pInnerAction.Elapsed - m_pInnerAction.Duration;
@@ -87,8 +83,7 @@ namespace Cocos2D
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCRepeatForever (m_pInnerAction.Reverse() as CCActionInterval);
+            return new CCRepeatForever(m_pInnerAction.Reverse() as CCActionInterval);
         }
-
     }
 }

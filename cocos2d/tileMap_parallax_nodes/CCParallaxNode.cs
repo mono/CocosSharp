@@ -34,7 +34,7 @@ namespace Cocos2D
 
             m_pParallaxArray.Add(obj);
 
-            CCPoint pos = m_tPosition;
+            CCPoint pos = m_obPosition;
             pos.X = pos.X * ratio.X + offset.X;
             pos.Y = pos.Y * ratio.Y + offset.Y;
             child.Position = pos;
@@ -63,7 +63,7 @@ namespace Cocos2D
 
         private CCPoint AbsolutePosition()
         {
-            CCPoint ret = m_tPosition;
+            CCPoint ret = m_obPosition;
             CCNode cn = this;
             while (cn.Parent != null)
             {

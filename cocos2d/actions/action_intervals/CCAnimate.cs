@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -12,12 +11,12 @@ namespace Cocos2D
         protected CCSpriteFrame m_pOrigFrame;
         private uint m_uExecutedLoops;
 
-        public CCAnimate (CCAnimation pAnimation)
+        public CCAnimate(CCAnimation pAnimation)
         {
             InitWithAnimation(pAnimation);
         }
 
-        protected CCAnimate (CCAnimate animate) : base (animate)
+        protected CCAnimate(CCAnimate animate) : base(animate)
         {
             InitWithAnimation((CCAnimation) animate.m_pAnimation.Copy());
         }
@@ -58,23 +57,17 @@ namespace Cocos2D
 
         public override object Copy(ICCCopyable pZone)
         {
-      
             if (pZone != null)
             {
                 //in case of being called at sub class
                 var pCopy = (CCAnimate) (pZone);
                 base.Copy(pZone);
-                
+
                 pCopy.InitWithAnimation((CCAnimation) m_pAnimation.Copy());
-                
+
                 return pCopy;
             }
-            else
-            {
-                return new CCAnimate(this);
-            }
-
-
+            return new CCAnimate(this);
         }
 
         public override void StartWithTarget(CCNode target)
@@ -135,7 +128,7 @@ namespace Cocos2D
                     var frameToDisplay = frame.SpriteFrame;
                     if (frameToDisplay != null)
                     {
-                        ((CCSprite)m_pTarget).DisplayFrame = frameToDisplay;
+                        ((CCSprite) m_pTarget).DisplayFrame = frameToDisplay;
                     }
 
                     var dict = frame.UserInfo;
@@ -144,7 +137,10 @@ namespace Cocos2D
                         //TODO: [[NSNotificationCenter defaultCenter] postNotificationName:CCAnimationFrameDisplayedNotification object:target_ userInfo:dict];
                     }
                     m_nNextFrame = i + 1;
-
+                }
+                    // Issue 1438. Could be more than one frame per tick, due to low frame rate or frame delta < 1/FPS
+                else
+                {
                     break;
                 }
             }
@@ -161,7 +157,7 @@ namespace Cocos2D
             {
                 for (int i = pOldArray.Count - 1; i >= 0; i--)
                 {
-                    var pElement = (CCAnimationFrame)pOldArray[i];
+                    var pElement = (CCAnimationFrame) pOldArray[i];
                     if (pElement == null)
                     {
                         break;
@@ -173,7 +169,7 @@ namespace Cocos2D
 
             var newAnim = new CCAnimation(pNewArray, m_pAnimation.DelayPerUnit, m_pAnimation.Loops);
             newAnim.RestoreOriginalFrame = m_pAnimation.RestoreOriginalFrame;
-            return new CCAnimate (newAnim);
+            return new CCAnimate(newAnim);
         }
     }
 }

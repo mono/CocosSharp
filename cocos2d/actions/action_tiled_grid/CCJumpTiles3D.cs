@@ -54,12 +54,12 @@ namespace Cocos2D
         /// <summary>
         /// initializes the action with the number of jumps, the sin amplitude, the grid size and the duration 
         /// </summary>
-        protected virtual bool InitWithJumps(int j, float amp, CCGridSize gridSize, float duration)
+        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int numberOfJumps, float amplitude)
         {
-            if (base.InitWithSize(gridSize, duration))
+            if (base.InitWithDuration(duration, gridSize))
             {
-                m_nJumps = j;
-                m_fAmplitude = amp;
+                m_nJumps = numberOfJumps;
+                m_fAmplitude = amplitude;
                 m_fAmplitudeRate = 1.0f;
 
                 return true;
@@ -78,12 +78,12 @@ namespace Cocos2D
             else
             {
                 pCopy = new CCJumpTiles3D();
-                pZone =  (pCopy);
+                pZone = (pCopy);
             }
 
             base.Copy(pZone);
 
-            pCopy.InitWithJumps(m_nJumps, m_fAmplitude, m_sGridSize, m_fDuration);
+            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nJumps, m_fAmplitude);
 
             return pCopy;
         }
@@ -93,7 +93,8 @@ namespace Cocos2D
             int i, j;
 
             float sinz = ((float) Math.Sin((float) Math.PI * time * m_nJumps * 2) * m_fAmplitude * m_fAmplitudeRate);
-            var sinz2 = (float) (Math.Sin((float) Math.PI * (time * m_nJumps * 2 + 1)) * m_fAmplitude * m_fAmplitudeRate);
+            var sinz2 =
+                (float) (Math.Sin((float) Math.PI * (time * m_nJumps * 2 + 1)) * m_fAmplitude * m_fAmplitudeRate);
 
             for (i = 0; i < m_sGridSize.X; i++)
             {
@@ -125,9 +126,9 @@ namespace Cocos2D
         {
         }
 
-        public CCJumpTiles3D(int j, float amp, CCGridSize gridSize, float duration) : base(duration)
+        public CCJumpTiles3D(float duration, CCGridSize gridSize, int numberOfJumps, float amplitude) : base(duration)
         {
-            InitWithJumps(j, amp, gridSize, duration);
+            InitWithDuration(duration, gridSize, numberOfJumps, amplitude);
         }
     }
 }

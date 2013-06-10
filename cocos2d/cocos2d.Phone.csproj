@@ -122,6 +122,7 @@
     <Compile Include="actions\action_instants\CCFlipY.cs" />
     <Compile Include="actions\action_instants\CCHide.cs" />
     <Compile Include="actions\action_instants\CCPlace.cs" />
+    <Compile Include="actions\action_instants\CCRemoveSelf.cs" />
     <Compile Include="actions\action_instants\CCReuseGrid.cs" />
     <Compile Include="actions\action_instants\CCShow.cs" />
     <Compile Include="actions\action_instants\CCStopGrid.cs" />
@@ -371,6 +372,8 @@
     <Compile Include="support\Converters\CCRectConverter.cs" />
     <Compile Include="support\Converters\CCPointConverter.cs" />
     <Compile Include="support\Converters\CCSizeConverter.cs" />
+    <Compile Include="support\image_support\TargaImage.cs" />
+    <Compile Include="support\image_support\TGALoader.cs" />
     <Compile Include="support\Serialization\CCSerialization.cs" />
     <Compile Include="support\Compression\Adler.cs" />
     <Compile Include="support\Compression\Crc32.cs" />

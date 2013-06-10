@@ -5,13 +5,13 @@ namespace Cocos2D
 {
     public class CCPageTurn3D : CCGrid3DAction
     {
-
-        public CCPageTurn3D () 
-        { }
-
-        public CCPageTurn3D (CCGridSize gridSize, float time)
+        public CCPageTurn3D()
         {
-            InitWithSize(gridSize, time);
+        }
+
+        public CCPageTurn3D(float duration, CCGridSize gridSize)
+        {
+            InitWithDuration(duration, gridSize);
         }
 
         public override void Update(float time)
@@ -71,6 +71,5 @@ namespace Cocos2D
                 }
             }
         }
-
     }
 }

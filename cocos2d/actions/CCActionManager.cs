@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -25,7 +24,7 @@ namespace Cocos2D
 
             for (int i = 0; i < count; i++)
             {
-				HashElement elt;
+                HashElement elt;
                 if (!m_pTargets.TryGetValue(m_pTmpKeysArray[i], out elt))
                 {
                     continue;
@@ -232,7 +231,7 @@ namespace Cocos2D
                 }
 
                 element.Actions.Clear();
-                
+
                 if (m_pCurrentTarget == element)
                 {
                     m_bCurrentTargetSalvaged = true;
@@ -348,5 +347,4 @@ namespace Cocos2D
             public object Target;
         }
     }
-
 }

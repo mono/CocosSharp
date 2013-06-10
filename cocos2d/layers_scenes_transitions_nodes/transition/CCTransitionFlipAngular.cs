@@ -58,14 +58,14 @@ namespace Cocos2D
                 outAngleZ = 0;
             }
 
-            inA = CCSequence.FromActions
+            inA = new CCSequence
                 (
                     new CCDelayTime (m_fDuration / 2),
                     new CCShow(),
                     new CCOrbitCamera(m_fDuration / 2, 1, 0, inAngleZ, inDeltaZ, -45, 0),
                     new CCCallFunc(Finish)
                 );
-            outA = CCSequence.FromActions
+            outA = new CCSequence
                 (
                     new CCOrbitCamera(m_fDuration / 2, 1, 0, outAngleZ, outDeltaZ, 45, 0),
                     new CCHide(),

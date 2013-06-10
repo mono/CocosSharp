@@ -1164,6 +1164,7 @@
     </Compile>
     <Compile Include="predefine\ICCSelectorProtocol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="actions\action_instants\CCRemoveSelf.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.Windows8.csproj">

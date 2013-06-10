@@ -8,12 +8,12 @@ namespace Cocos2D
         public List<CCMenuItem> m_pSubItems;
         private int m_uSelectedIndex;
 
-        public CCMenuItemToggle ()
+        public CCMenuItemToggle()
         {
             InitWithTarget(null);
         }
-        
-		public CCMenuItemToggle (Action<object> selector, params CCMenuItem[] items)
+
+        public CCMenuItemToggle(Action<object> selector, params CCMenuItem[] items)
         {
             InitWithTarget(selector, items);
         }
@@ -60,9 +60,7 @@ namespace Cocos2D
             }
         }
 
-
-
-		public bool InitWithTarget(Action<object> selector, CCMenuItem[] items)
+        public bool InitWithTarget(Action<object> selector, CCMenuItem[] items)
         {
             base.InitWithTarget(selector);
             m_pSubItems = new List<CCMenuItem>();
@@ -91,8 +89,8 @@ namespace Cocos2D
             SelectedIndex = 0;
 
             CascadeColorEnabled = true;
-            CascadeOpacityEnabled = true; 
-            
+            CascadeOpacityEnabled = true;
+
             return true;
         }
 

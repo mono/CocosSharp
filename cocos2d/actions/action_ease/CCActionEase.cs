@@ -5,8 +5,9 @@ namespace Cocos2D
         protected CCActionInterval m_pInner;
 
         // This can be taken out once all the classes that extend it have had their constructors created.
-		protected CCActionEase ()
-		{}
+        protected CCActionEase()
+        {
+        }
 
         public CCActionInterval InnerAction
         {

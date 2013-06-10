@@ -67,17 +67,18 @@ namespace Cocos2D
     public class CCNode : ICCSelectorProtocol, ICCFocusable
     {
         private static int kCCNodeTagInvalid = -1;
-        private static int s_globalOrderOfArrival = 1;
+        private static uint s_globalOrderOfArrival = 1;
         protected bool m_bIgnoreAnchorPointForPosition;
 
         // transform
-        public CCAffineTransform m_tTransform;
-        protected bool m_bIsInverseDirty;
-        protected bool m_bIsRunning;
-        public bool m_bIsTransformDirty;
-        protected bool m_bIsVisible;
+        public CCAffineTransform m_sTransform;
+        protected bool m_bInverseDirty;
+        protected bool m_bRunning;
+        public bool m_bTransformDirty;
+        protected bool m_bVisible;
         protected bool m_bReorderChildDirty;
-        protected float m_fRotation;
+        protected float m_fRotationX;
+        protected float m_fRotationY;
         protected float m_fScaleX;
         protected float m_fScaleY;
 
@@ -86,7 +87,7 @@ namespace Cocos2D
         protected float m_fSkewX;
         protected float m_fSkewY;
         protected float m_fVertexZ;
-        internal protected int m_nOrderOfArrival;
+        internal protected uint m_uOrderOfArrival;
         protected int m_nTag;
         internal int m_nZOrder;
         protected CCActionManager m_pActionManager;
@@ -97,22 +98,25 @@ namespace Cocos2D
         protected CCScheduler m_pScheduler;
 
         protected object m_pUserData;
-        protected CCPoint m_tAnchorPoint;
-        protected CCPoint m_tAnchorPointInPoints;
-        protected CCSize m_tContentSize;
-        private CCAffineTransform m_tInverse;
-        protected CCPoint m_tPosition;
+        protected CCPoint m_obAnchorPoint;
+        protected CCPoint m_obAnchorPointInPoints;
+        protected CCSize m_obContentSize;
+        private CCAffineTransform m_sInverse;
+        protected CCPoint m_obPosition;
         private bool m_bHasFocus = false;
+
+        private bool m_bAdditionalTransformDirty;
+        private CCAffineTransform m_sAdditionalTransform;
 
         public CCNode()
         {
             m_fScaleX = 1.0f;
             m_fScaleY = 1.0f;
-            m_bIsVisible = true;
+            m_bVisible = true;
             m_nTag = kCCNodeTagInvalid;
 
-            m_tTransform = CCAffineTransform.Identity;
-            m_bIsInverseDirty = true;
+            m_sTransform = CCAffineTransform.Identity;
+            m_bInverseDirty = true;
 
             // set default scheduler and actionManager
             CCDirector director = CCDirector.SharedDirector;
@@ -173,23 +177,24 @@ namespace Cocos2D
         public virtual void Serialize(Stream stream) 
         {
             StreamWriter sw = new StreamWriter(stream);
-            CCSerialization.SerializeData(m_bIsVisible, sw);
-            CCSerialization.SerializeData(m_fRotation, sw);
+            CCSerialization.SerializeData(m_bVisible, sw);
+            CCSerialization.SerializeData(m_fRotationX, sw);
+            CCSerialization.SerializeData(m_fRotationY, sw);
             CCSerialization.SerializeData(m_fScaleX, sw);
             CCSerialization.SerializeData(m_fScaleY, sw);
             CCSerialization.SerializeData(m_fSkewX, sw);
             CCSerialization.SerializeData(m_fSkewY, sw);
             CCSerialization.SerializeData(m_fVertexZ, sw);
             CCSerialization.SerializeData(m_bIgnoreAnchorPointForPosition, sw);
-            CCSerialization.SerializeData(m_bIsInverseDirty, sw);
-            CCSerialization.SerializeData(m_bIsRunning, sw);
-            CCSerialization.SerializeData(m_bIsTransformDirty, sw);
+            CCSerialization.SerializeData(m_bInverseDirty, sw);
+            CCSerialization.SerializeData(m_bRunning, sw);
+            CCSerialization.SerializeData(m_bTransformDirty, sw);
             CCSerialization.SerializeData(m_bReorderChildDirty, sw);
-            CCSerialization.SerializeData(m_nOrderOfArrival, sw);
+            CCSerialization.SerializeData(m_uOrderOfArrival, sw);
             CCSerialization.SerializeData(m_nTag, sw);
             CCSerialization.SerializeData(m_nZOrder, sw);
-            CCSerialization.SerializeData(m_tAnchorPoint, sw);
-            CCSerialization.SerializeData(m_tContentSize, sw);
+            CCSerialization.SerializeData(m_obAnchorPoint, sw);
+            CCSerialization.SerializeData(m_obContentSize, sw);
             CCSerialization.SerializeData(Position, sw);
             if (m_pChildren != null)
             {
@@ -215,19 +220,20 @@ namespace Cocos2D
         public virtual void Deserialize(Stream stream) 
         {
             StreamReader sr = new StreamReader(stream);
-            m_bIsVisible = CCSerialization.DeSerializeBool(sr); 
-            m_fRotation = CCSerialization.DeSerializeFloat(sr);
+            m_bVisible = CCSerialization.DeSerializeBool(sr); 
+            m_fRotationX = CCSerialization.DeSerializeFloat(sr);
+            m_fRotationY = CCSerialization.DeSerializeFloat(sr);
             m_fScaleX = CCSerialization.DeSerializeFloat(sr);
             m_fScaleY = CCSerialization.DeSerializeFloat(sr);
             m_fSkewX = CCSerialization.DeSerializeFloat(sr);
             m_fSkewY = CCSerialization.DeSerializeFloat(sr);
             m_fVertexZ = CCSerialization.DeSerializeFloat(sr);
             m_bIgnoreAnchorPointForPosition = CCSerialization.DeSerializeBool(sr);
-            m_bIsInverseDirty = CCSerialization.DeSerializeBool(sr);
-            m_bIsRunning = CCSerialization.DeSerializeBool(sr);
-            m_bIsTransformDirty = CCSerialization.DeSerializeBool(sr);
+            m_bInverseDirty = CCSerialization.DeSerializeBool(sr);
+            m_bRunning = CCSerialization.DeSerializeBool(sr);
+            m_bTransformDirty = CCSerialization.DeSerializeBool(sr);
             m_bReorderChildDirty = CCSerialization.DeSerializeBool(sr);
-            m_nOrderOfArrival = CCSerialization.DeSerializeInt(sr);
+            m_uOrderOfArrival = (uint)CCSerialization.DeSerializeInt(sr);
             m_nTag = CCSerialization.DeSerializeInt(sr);
             m_nZOrder = CCSerialization.DeSerializeInt(sr);
             AnchorPoint = CCSerialization.DeSerializePoint(sr);
@@ -287,7 +293,7 @@ namespace Cocos2D
             set
             {
                 m_fSkewX = value;
-                m_bIsTransformDirty = m_bIsInverseDirty = true;
+                m_bTransformDirty = m_bInverseDirty = true;
             }
         }
 
@@ -297,7 +303,7 @@ namespace Cocos2D
             set
             {
                 m_fSkewY = value;
-                m_bIsTransformDirty = m_bIsInverseDirty = true;
+                m_bTransformDirty = m_bInverseDirty = true;
             }
         }
 
@@ -325,11 +331,35 @@ namespace Cocos2D
         /// </summary>
         public virtual float Rotation
         {
-            get { return m_fRotation; }
+            get
+            {
+                Debug.Assert(m_fRotationX == m_fRotationY, "CCNode#rotation. RotationX != RotationY. Don't know which one to return");
+                return m_fRotationX;
+            }
             set
             {
-                m_fRotation = value;
-                m_bIsTransformDirty = m_bIsInverseDirty = true;
+                m_fRotationX = m_fRotationY = value;
+                m_bTransformDirty = m_bInverseDirty = true;
+            }
+        }
+
+        public virtual float RotationX
+        {
+            get { return m_fRotationX; }
+            set
+            {
+                m_fRotationX = value;
+                m_bTransformDirty = m_bInverseDirty = true;
+            }
+        }
+
+        public virtual float RotationY
+        {
+            get { return m_fRotationY; }
+            set
+            {
+                m_fRotationY = value;
+                m_bTransformDirty = m_bInverseDirty = true;
             }
         }
 
@@ -346,7 +376,7 @@ namespace Cocos2D
             set
             {
                 m_fScaleX = m_fScaleY = value;
-                m_bIsTransformDirty = m_bIsInverseDirty = true;
+                m_bTransformDirty = m_bInverseDirty = true;
             }
         }
 
@@ -359,7 +389,7 @@ namespace Cocos2D
             set
             {
                 m_fScaleX = value;
-                m_bIsTransformDirty = m_bIsInverseDirty = true;
+                m_bTransformDirty = m_bInverseDirty = true;
             }
         }
 
@@ -372,7 +402,7 @@ namespace Cocos2D
             set
             {
                 m_fScaleY = value;
-                m_bIsTransformDirty = m_bIsInverseDirty = true;
+                m_bTransformDirty = m_bInverseDirty = true;
             }
         }
 
@@ -382,24 +412,24 @@ namespace Cocos2D
         /// </summary>
         public virtual CCPoint Position
         {
-            get { return m_tPosition; }
+            get { return m_obPosition; }
             set
             {
-                m_tPosition = value;
-                m_bIsTransformDirty = m_bIsInverseDirty = true;
+                m_obPosition = value;
+                m_bTransformDirty = m_bInverseDirty = true;
             }
         }
 
         public float PositionX
         {
-            get { return m_tPosition.X; }
-            set { SetPosition(value, m_tPosition.Y); }
+            get { return m_obPosition.X; }
+            set { SetPosition(value, m_obPosition.Y); }
         }
 
         public float PositionY
         {
-            get { return m_tPosition.Y; }
-            set { SetPosition(m_tPosition.X, value); }
+            get { return m_obPosition.Y; }
+            set { SetPosition(m_obPosition.X, value); }
         }
 
         public CCRawList<CCNode> Children
@@ -425,8 +455,8 @@ namespace Cocos2D
 
         public virtual bool Visible
         {
-            get { return m_bIsVisible; }
-            set { m_bIsVisible = value; }
+            get { return m_bVisible; }
+            set { m_bVisible = value; }
         }
 
         /// <summary>
@@ -435,7 +465,7 @@ namespace Cocos2D
         /// </summary>
         public virtual CCPoint AnchorPointInPoints
         {
-            get { return m_tAnchorPointInPoints; }
+            get { return m_obAnchorPointInPoints; }
         }
 
         /// <summary>
@@ -443,15 +473,15 @@ namespace Cocos2D
         /// </summary>
         public virtual CCPoint AnchorPoint
         {
-            get { return m_tAnchorPoint; }
+            get { return m_obAnchorPoint; }
             set
             {
-                if (!value.Equals(m_tAnchorPoint))
+                if (!value.Equals(m_obAnchorPoint))
                 {
-                    m_tAnchorPoint = value;
-                    m_tAnchorPointInPoints = new CCPoint(m_tContentSize.Width * m_tAnchorPoint.X,
-                                                                  m_tContentSize.Height * m_tAnchorPoint.Y);
-                    m_bIsTransformDirty = m_bIsInverseDirty = true;
+                    m_obAnchorPoint = value;
+                    m_obAnchorPointInPoints = new CCPoint(m_obContentSize.Width * m_obAnchorPoint.X,
+                                                                  m_obContentSize.Height * m_obAnchorPoint.Y);
+                    m_bTransformDirty = m_bInverseDirty = true;
                 }
             }
         }
@@ -469,15 +499,15 @@ namespace Cocos2D
 
         public virtual CCSize ContentSize
         {
-            get { return m_tContentSize; }
+            get { return m_obContentSize; }
             set
             {
-                if (!CCSize.Equal(ref value, ref m_tContentSize))
+                if (!CCSize.Equal(ref value, ref m_obContentSize))
                 {
-                    m_tContentSize = value;
-                    m_tAnchorPointInPoints = new CCPoint(m_tContentSize.Width * m_tAnchorPoint.X,
-                                                                  m_tContentSize.Height * m_tAnchorPoint.Y);
-                    m_bIsTransformDirty = m_bIsInverseDirty = true;
+                    m_obContentSize = value;
+                    m_obAnchorPointInPoints = new CCPoint(m_obContentSize.Width * m_obAnchorPoint.X,
+                                                                  m_obContentSize.Height * m_obAnchorPoint.Y);
+                    m_bTransformDirty = m_bInverseDirty = true;
                 }
             }
         }
@@ -485,7 +515,7 @@ namespace Cocos2D
         public bool IsRunning
         {
             // read only
-            get { return m_bIsRunning; }
+            get { return m_bRunning; }
         }
 
         public CCNode Parent
@@ -502,7 +532,7 @@ namespace Cocos2D
                 if (value != m_bIgnoreAnchorPointForPosition)
                 {
                     m_bIgnoreAnchorPointForPosition = value;
-                    m_bIsTransformDirty = m_bIsInverseDirty = true;
+                    m_bTransformDirty = m_bInverseDirty = true;
                 }
             }
         }
@@ -511,7 +541,7 @@ namespace Cocos2D
         {
             get
             {
-                var rect = new CCRect(0, 0, m_tContentSize.Width, m_tContentSize.Height);
+                var rect = new CCRect(0, 0, m_obContentSize.Width, m_obContentSize.Height);
                 return CCAffineTransform.Transform(rect, NodeToParentTransform());
             }
         }
@@ -526,11 +556,38 @@ namespace Cocos2D
         }
 
 
+        public uint OrderOfArrival
+        {
+            get { return m_uOrderOfArrival; }
+            set { m_uOrderOfArrival = value; }
+        }
+
+        public CCAffineTransform AdditionalTransform
+        {
+            get { return m_sAdditionalTransform; }
+            set
+            {
+                m_sAdditionalTransform = value;
+                m_bTransformDirty = true;
+                m_bAdditionalTransformDirty = true;
+            }
+        }
+
         #region SelectorProtocol Members
 
         public virtual void Update(float dt)
         {
-            CCLog.Log("{0}: Update at {1}", this.GetType(), dt);
+            /*
+            if (m_nUpdateScriptHandler)
+            {
+                CCScriptEngineManager::sharedManager()->getScriptEngine()->executeSchedule(m_nUpdateScriptHandler, fDelta, this);
+            }
+    
+            if (m_pComponentContainer && !m_pComponentContainer->isEmpty())
+            {
+                m_pComponentContainer->visit(fDelta);
+            }
+            */
         }
 
         #endregion
@@ -543,15 +600,15 @@ namespace Cocos2D
 
         public void GetPosition(out float x, out float y)
         {
-            x = m_tPosition.X;
-            y = m_tPosition.Y;
+            x = m_obPosition.X;
+            y = m_obPosition.Y;
         }
 
         public void SetPosition(float x, float y)
         {
-            m_tPosition.X = x;
-            m_tPosition.Y = y;
-            m_bIsTransformDirty = m_bIsInverseDirty = true;
+            m_obPosition.X = x;
+            m_obPosition.Y = y;
+            m_bTransformDirty = m_bInverseDirty = true;
         }
 
         public virtual void Cleanup()
@@ -618,13 +675,18 @@ namespace Cocos2D
 
             child.m_nTag = tag;
             child.Parent = this;
-            child.m_nOrderOfArrival = s_globalOrderOfArrival++;
+            child.m_uOrderOfArrival = s_globalOrderOfArrival++;
 
-            if (m_bIsRunning)
+            if (m_bRunning)
             {
                 child.OnEnter();
                 child.OnEnterTransitionDidFinish();
             }
+        }
+
+        public void RemoveFromParent()
+        {
+            RemoveFromParentAndCleanup(true);
         }
 
         public void RemoveFromParentAndCleanup(bool cleanup)
@@ -633,6 +695,11 @@ namespace Cocos2D
             {
                 m_pParent.RemoveChild(this, cleanup);
             }
+        }
+
+        public void RemoveChild(CCNode child)
+        {
+            RemoveChild(child, true);
         }
 
         public virtual void RemoveChild(CCNode child, bool cleanup)
@@ -647,6 +714,11 @@ namespace Cocos2D
             {
                 DetachChild(child, cleanup);
             }
+        }
+
+        public void RemoveChildByTag(int tag)
+        {
+            RemoveChildByTag(tag, true);
         }
 
         public void RemoveChildByTag(int tag, bool cleanup)
@@ -665,6 +737,11 @@ namespace Cocos2D
             }
         }
 
+        public virtual void RemoveAllChildren()
+        {
+            RemoveAllChildrenWithCleanup(true);
+        }
+
         public virtual void RemoveAllChildrenWithCleanup(bool cleanup)
         {
             // not using detachChild improves speed here
@@ -678,7 +755,7 @@ namespace Cocos2D
                     // IMPORTANT:
                     //  -1st do onExit
                     //  -2nd cleanup
-                    if (m_bIsRunning)
+                    if (m_bRunning)
                     {
                         node.OnExitTransitionDidStart();
                         node.OnExit();
@@ -702,7 +779,7 @@ namespace Cocos2D
             // IMPORTANT:
             //  -1st do onExit
             //  -2nd cleanup
-            if (m_bIsRunning)
+            if (m_bRunning)
             {
                 child.OnExitTransitionDidStart();
                 child.OnExit();
@@ -734,7 +811,7 @@ namespace Cocos2D
             Debug.Assert(child != null, "Child must be non-null");
 
             m_bReorderChildDirty = true;
-            child.m_nOrderOfArrival = s_globalOrderOfArrival++;
+            child.m_uOrderOfArrival = s_globalOrderOfArrival++;
             child.m_nZOrder = zOrder;
         }
 
@@ -755,7 +832,7 @@ namespace Cocos2D
                     //continue moving element downwards while zOrder is smaller or when zOrder is the same but mutatedIndex is smaller
                     while (j >= 0 &&
                            (tempItem.m_nZOrder < x[j].m_nZOrder ||
-                            (tempItem.m_nZOrder == x[j].m_nZOrder && tempItem.m_nOrderOfArrival < x[j].m_nOrderOfArrival)))
+                            (tempItem.m_nZOrder == x[j].m_nZOrder && tempItem.m_uOrderOfArrival < x[j].m_uOrderOfArrival)))
                     {
                         x[j + 1] = x[j];
                         j = j - 1;
@@ -784,7 +861,7 @@ namespace Cocos2D
         public virtual void Visit()
         {
             // quick return if not visible. children won't be drawn.
-            if (!m_bIsVisible)
+            if (!m_bVisible)
             {
                 return;
             }
@@ -841,7 +918,7 @@ namespace Cocos2D
                 Draw();
             }
 
-            m_nOrderOfArrival = 0;
+            m_uOrderOfArrival = 0;
 
             if (m_pGrid != null && m_pGrid.Active)
             {
@@ -870,18 +947,18 @@ namespace Cocos2D
             // XXX: Expensive calls. Camera should be integrated into the cached affine matrix
             if (m_pCamera != null && !(m_pGrid != null && m_pGrid.Active))
             {
-                bool translate = (m_tAnchorPointInPoints.X != 0.0f || m_tAnchorPointInPoints.Y != 0.0f);
+                bool translate = (m_obAnchorPointInPoints.X != 0.0f || m_obAnchorPointInPoints.Y != 0.0f);
 
                 if (translate)
                 {
-                    CCDrawManager.Translate(m_tAnchorPointInPoints.X, m_tAnchorPointInPoints.Y, 0);
+                    CCDrawManager.Translate(m_obAnchorPointInPoints.X, m_obAnchorPointInPoints.Y, 0);
                 }
 
                 m_pCamera.Locate();
 
                 if (translate)
                 {
-                    CCDrawManager.Translate(-m_tAnchorPointInPoints.X, -m_tAnchorPointInPoints.Y, 0);
+                    CCDrawManager.Translate(-m_obAnchorPointInPoints.X, -m_obAnchorPointInPoints.Y, 0);
                 }
             }
         }
@@ -899,7 +976,7 @@ namespace Cocos2D
 
             ResumeSchedulerAndActions();
 
-            m_bIsRunning = true;
+            m_bRunning = true;
 
             /*
             if (m_nScriptHandler)
@@ -937,7 +1014,7 @@ namespace Cocos2D
         {
             PauseSchedulerAndActions();
 
-            m_bIsRunning = false;
+            m_bRunning = false;
 
             /*
             if (m_nScriptHandler)
@@ -974,7 +1051,7 @@ namespace Cocos2D
         public CCAction RunAction(CCAction action)
         {
             Debug.Assert(action != null, "Argument must be non-nil");
-            m_pActionManager.AddAction(action, this, !m_bIsRunning);
+            m_pActionManager.AddAction(action, this, !m_bRunning);
             return action;
         }
 
@@ -1029,7 +1106,7 @@ namespace Cocos2D
 
         public void ScheduleUpdateWithPriority(int priority)
         {
-            m_pScheduler.ScheduleUpdateForTarget(this, priority, !m_bIsRunning);
+            m_pScheduler.ScheduleUpdateForTarget(this, priority, !m_bRunning);
         }
 
         public void UnscheduleUpdate()
@@ -1052,7 +1129,7 @@ namespace Cocos2D
             Debug.Assert(selector != null, "Argument must be non-nil");
             Debug.Assert(interval >= 0, "Argument must be positive");
 
-            m_pScheduler.ScheduleSelector(selector, this, interval, !m_bIsRunning, repeat, delay);
+            m_pScheduler.ScheduleSelector(selector, this, interval, repeat, delay, !m_bRunning);
         }
 
         public void ScheduleOnce(Action<float> selector, float delay)
@@ -1071,7 +1148,7 @@ namespace Cocos2D
 
         public void UnscheduleAllSelectors()
         {
-            m_pScheduler.UnscheduleAllSelectorsForTarget(this);
+            m_pScheduler.UnscheduleAllForTarget(this);
         }
 
         public void ResumeSchedulerAndActions()
@@ -1086,57 +1163,57 @@ namespace Cocos2D
             m_pActionManager.PauseTarget(this);
         }
 
+
         #endregion
 
         #region Transformations
 
         public virtual CCAffineTransform NodeToParentTransform()
         {
-            if (m_bIsTransformDirty)
+            if (m_bTransformDirty)
             {
                 // Translate values
-                float x = m_tPosition.X;
-                float y = m_tPosition.Y;
+                float x = m_obPosition.X;
+                float y = m_obPosition.Y;
 
                 if (m_bIgnoreAnchorPointForPosition)
                 {
-                    x += m_tAnchorPointInPoints.X;
-                    y += m_tAnchorPointInPoints.Y;
+                    x += m_obAnchorPointInPoints.X;
+                    y += m_obAnchorPointInPoints.Y;
                 }
 
                 // Rotation values
-                float c = 1, s = 0;
-                if (m_fRotation != 0.0f)
+                // Change rotation code to handle X and Y
+                // If we skew with the exact same value for both x and y then we're simply just rotating
+                float cx = 1, sx = 0, cy = 1, sy = 0;
+                if (m_fRotationX != 0 || m_fRotationY != 0)
                 {
-                    float radians = -CCMacros.CCDegreesToRadians(m_fRotation);
-                    c = (float) Math.Cos(radians);
-                    s = (float) Math.Sin(radians);
+                    float radiansX = -CCMacros.CCDegreesToRadians(m_fRotationX);
+                    float radiansY = -CCMacros.CCDegreesToRadians(m_fRotationY);
+                    cx = (float)Math.Cos(radiansX);
+                    sx = (float)Math.Sin(radiansX);
+                    cy = (float)Math.Cos(radiansY);
+                    sy = (float)Math.Sin(radiansY);
                 }
 
                 bool needsSkewMatrix = (m_fSkewX != 0f || m_fSkewY != 0f);
 
-
                 // optimization:
                 // inline anchor point calculation if skew is not needed
-                if (!needsSkewMatrix && !m_tAnchorPointInPoints.Equals(CCPoint.Zero))
+                if (!needsSkewMatrix && !m_obAnchorPointInPoints.Equals(CCPoint.Zero))
                 {
-                    x += c * -m_tAnchorPointInPoints.X * m_fScaleX + -s * -m_tAnchorPointInPoints.Y * m_fScaleY;
-                    y += s * -m_tAnchorPointInPoints.X * m_fScaleX + c * -m_tAnchorPointInPoints.Y * m_fScaleY;
+                    x += cy * -m_obAnchorPointInPoints.X * m_fScaleX + -sx * -m_obAnchorPointInPoints.Y * m_fScaleY;
+                    y += sy * -m_obAnchorPointInPoints.X * m_fScaleX + cx * -m_obAnchorPointInPoints.Y * m_fScaleY;
                 }
 
                 // Build Transform Matrix
-                //m_tTransform = new CCAffineTransform(
-                //    c * m_fScaleX, s * m_fScaleX,
-                //    -s * m_fScaleY, c * m_fScaleY,
-                //    x, y);
-
-                // Build Transform Matrix
-                m_tTransform.a = c * m_fScaleX;
-                m_tTransform.b = s * m_fScaleX;
-                m_tTransform.c = -s * m_fScaleY;
-                m_tTransform.d = c * m_fScaleY;
-                m_tTransform.tx = x;
-                m_tTransform.ty = y;
+                // Adjusted transform calculation for rotational skew
+                m_sTransform.a = cy * m_fScaleX;
+                m_sTransform.b = sy * m_fScaleX;
+                m_sTransform.c = -sx * m_fScaleY;
+                m_sTransform.d = cx * m_fScaleY;
+                m_sTransform.tx = x;
+                m_sTransform.ty = y;
 
                 // XXX: Try to inline skew
                 // If skew is needed, apply skew and then anchor point
@@ -1147,31 +1224,50 @@ namespace Cocos2D
                         (float) Math.Tan(CCMacros.CCDegreesToRadians(m_fSkewX)), 1.0f,
                         0.0f, 0.0f);
 
-                    m_tTransform = CCAffineTransform.Concat(skewMatrix, m_tTransform);
+                    m_sTransform = CCAffineTransform.Concat(skewMatrix, m_sTransform);
 
                     // adjust anchor point
-                    if (!m_tAnchorPointInPoints.Equals(CCPoint.Zero))
+                    if (!m_obAnchorPointInPoints.Equals(CCPoint.Zero))
                     {
-                        m_tTransform = CCAffineTransform.Translate(m_tTransform,
-                                                                                    -m_tAnchorPointInPoints.X,
-                                                                                    -m_tAnchorPointInPoints.Y);
+                        m_sTransform = CCAffineTransform.Translate(m_sTransform,
+                                                                                    -m_obAnchorPointInPoints.X,
+                                                                                    -m_obAnchorPointInPoints.Y);
                     }
                 }
 
-                m_bIsTransformDirty = false;
+                if (m_bAdditionalTransformDirty)
+                {
+                    m_sTransform.Concat(ref m_sAdditionalTransform);
+                    m_bAdditionalTransformDirty = false;
+                }
+
+                m_bTransformDirty = false;
             }
 
-            return m_tTransform;
+            return m_sTransform;
+        }
+
+        public virtual void UpdateTransform()
+        {
+            // Recursively iterate over children
+            if (m_pChildren != null && m_pChildren.count > 0)
+            {
+                CCNode[] elements = m_pChildren.Elements;
+                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                {
+                    elements[i].UpdateTransform();
+                }
+            }
         }
 
         public CCAffineTransform ParentToNodeTransform()
         {
-            if (m_bIsInverseDirty)
+            if (m_bInverseDirty)
             {
-                m_tInverse = CCAffineTransform.Invert(NodeToParentTransform());
-                m_bIsInverseDirty = false;
+                m_sInverse = CCAffineTransform.Invert(NodeToParentTransform());
+                m_bInverseDirty = false;
             }
-            return m_tInverse;
+            return m_sInverse;
         }
 
         public CCAffineTransform NodeToWorldTransform()
@@ -1210,12 +1306,12 @@ namespace Cocos2D
         public CCPoint ConvertToNodeSpaceAr(CCPoint worldPoint)
         {
             CCPoint nodePoint = ConvertToNodeSpace(worldPoint);
-            return nodePoint - m_tAnchorPointInPoints;
+            return nodePoint - m_obAnchorPointInPoints;
         }
 
         public CCPoint ConvertToWorldSpaceAr(CCPoint nodePoint)
         {
-            CCPoint pt = nodePoint + m_tAnchorPointInPoints;
+            CCPoint pt = nodePoint + m_obAnchorPointInPoints;
             return ConvertToWorldSpace(pt);
         }
 

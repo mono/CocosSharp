@@ -2,36 +2,56 @@ namespace Cocos2D
 {
     public class CCRotateTo : CCActionInterval
     {
-        protected float m_fDiffAngle;
-        protected float m_fDstAngle;
-        protected float m_fStartAngle;
+        protected float m_fDiffAngleY;
+        protected float m_fDiffAngleX;
+        protected float m_fDstAngleX;
+        protected float m_fDstAngleY;
+        protected float m_fStartAngleX;
+        protected float m_fStartAngleY;
 
-        private CCRotateTo () {}
+        private CCRotateTo()
+        {
+        }
 
-        public CCRotateTo (float duration, float fDeltaAngle)
+        public CCRotateTo(float duration, float fDeltaAngle)
         {
             InitWithDuration(duration, fDeltaAngle);
         }
 
-        protected CCRotateTo (CCRotateTo rotateTo) : base (rotateTo)
+        public CCRotateTo(float duration, float fDeltaAngleX, float fDeltaAngleY)
         {
-            InitWithDuration(rotateTo.m_fDuration, rotateTo.m_fDstAngle);
+            InitWithDuration(duration, fDeltaAngleX, fDeltaAngleY);
+        }
+
+        protected CCRotateTo(CCRotateTo rotateTo)
+            : base(rotateTo)
+        {
+            InitWithDuration(rotateTo.m_fDuration, rotateTo.m_fDstAngleX, rotateTo.m_fDstAngleY);
         }
 
         private bool InitWithDuration(float duration, float fDeltaAngle)
         {
             if (base.InitWithDuration(duration))
             {
-                m_fDstAngle = fDeltaAngle;
+                m_fDstAngleX = m_fDstAngleY = fDeltaAngle;
                 return true;
             }
+            return false;
+        }
 
+        private bool InitWithDuration(float duration, float fDeltaAngleX, float fDeltaAngleY)
+        {
+            if (base.InitWithDuration(duration))
+            {
+                m_fDstAngleX = fDeltaAngleX;
+                m_fDstAngleY = fDeltaAngleY;
+                return true;
+            }
             return false;
         }
 
         public override object Copy(ICCCopyable zone)
         {
-
             if (zone != null)
             {
                 var ret = zone as CCRotateTo;
@@ -40,41 +60,59 @@ namespace Cocos2D
                     return null;
                 }
                 base.Copy(ret);
-                
-                ret.InitWithDuration(m_fDuration, m_fDstAngle);
+
+                ret.InitWithDuration(m_fDuration, m_fDstAngleX, m_fDstAngleY);
                 return ret;
             }
-            else
-            {
-                return new CCRotateTo(this);
-            }
-
+            return new CCRotateTo(this);
         }
 
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
 
-            m_fStartAngle = target.Rotation;
-
-            if (m_fStartAngle > 0)
+            // Calculate X
+            m_fStartAngleX = m_pTarget.RotationX;
+            if (m_fStartAngleX > 0)
             {
-                m_fStartAngle = m_fStartAngle % 350.0f;
+                m_fStartAngleX = m_fStartAngleX % 360.0f;
             }
             else
             {
-                m_fStartAngle = m_fStartAngle % -360.0f;
+                m_fStartAngleX = m_fStartAngleX % -360.0f;
             }
 
-            m_fDiffAngle = m_fDstAngle - m_fStartAngle;
-            if (m_fDiffAngle > 180)
+            m_fDiffAngleX = m_fDstAngleX - m_fStartAngleX;
+            if (m_fDiffAngleX > 180)
             {
-                m_fDiffAngle -= 360;
+                m_fDiffAngleX -= 360;
+            }
+            if (m_fDiffAngleX < -180)
+            {
+                m_fDiffAngleX += 360;
             }
 
-            if (m_fDiffAngle < -180)
+            //Calculate Y: It's duplicated from calculating X since the rotation wrap should be the same
+            m_fStartAngleY = m_pTarget.RotationY;
+
+            if (m_fStartAngleY > 0)
             {
-                m_fDiffAngle += 360;
+                m_fStartAngleY = m_fStartAngleY % 360.0f;
+            }
+            else
+            {
+                m_fStartAngleY = m_fStartAngleY % -360.0f;
+            }
+
+            m_fDiffAngleY = m_fDstAngleY - m_fStartAngleY;
+            if (m_fDiffAngleY > 180)
+            {
+                m_fDiffAngleY -= 360;
+            }
+
+            if (m_fDiffAngleY < -180)
+            {
+                m_fDiffAngleY += 360;
             }
         }
 
@@ -82,9 +120,9 @@ namespace Cocos2D
         {
             if (m_pTarget != null)
             {
-                m_pTarget.Rotation = m_fStartAngle + m_fDiffAngle * time;
+                m_pTarget.RotationX = m_fStartAngleX + m_fDiffAngleX * time;
+                m_pTarget.RotationY = m_fStartAngleY + m_fDiffAngleY * time;
             }
         }
-
     }
 }

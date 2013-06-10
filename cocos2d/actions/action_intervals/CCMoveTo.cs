@@ -6,15 +6,14 @@ namespace Cocos2D
         protected CCPoint m_endPosition;
         protected CCPoint m_startPosition;
 
-        public CCMoveTo (float duration, CCPoint position)
+        public CCMoveTo(float duration, CCPoint position)
         {
             InitWithDuration(duration, position);
         }
 
-        protected CCMoveTo (CCMoveTo moveTo) : base (moveTo)
+        protected CCMoveTo(CCMoveTo moveTo) : base(moveTo)
         {
             InitWithDuration(moveTo.m_fDuration, moveTo.m_endPosition);
-
         }
 
         protected bool InitWithDuration(float duration, CCPoint position)
@@ -35,14 +34,13 @@ namespace Cocos2D
                 var ret = (CCMoveTo) zone;
                 base.Copy(zone);
                 ret.InitWithDuration(m_fDuration, m_endPosition);
-                
+
                 return ret;
             }
             else
             {
                 return new CCMoveTo(this);
             }
-
         }
 
         public override void StartWithTarget(CCNode target)
@@ -57,9 +55,8 @@ namespace Cocos2D
             if (m_pTarget != null)
             {
                 m_pTarget.Position = new CCPoint(m_startPosition.X + m_delta.X * time,
-                                                          m_startPosition.Y + m_delta.Y * time);
+                                                 m_startPosition.Y + m_delta.Y * time);
             }
         }
-
     }
 }

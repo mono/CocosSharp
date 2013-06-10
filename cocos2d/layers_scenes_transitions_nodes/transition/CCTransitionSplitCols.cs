@@ -42,7 +42,7 @@ namespace Cocos2D
 
         public virtual CCActionInterval Action()
         {
-            return new CCSplitCols(3, m_fDuration / 2.0f);
+            return new CCSplitCols(m_fDuration / 2.0f, 3);
         }
 
         public override void OnEnter()
@@ -51,17 +51,19 @@ namespace Cocos2D
             m_pInScene.Visible = false;
 
             CCActionInterval split = Action();
-            CCActionInterval seq = CCSequence.FromActions
-                (
-                    split,
-                    new CCCallFunc((HideOutShowIn)),
-                    split.Reverse()
+            CCActionInterval seq = new CCSequence(
+                split,
+                new CCCallFunc((HideOutShowIn)),
+                split.Reverse()
                 );
 
-            RunAction(CCSequence.FromActions(
-                EaseAction(seq),
-                new CCCallFunc(Finish),
-                new CCStopGrid()));
+            RunAction(
+                new CCSequence(
+                    EaseAction(seq),
+                    new CCCallFunc(Finish),
+                    new CCStopGrid()
+                    )
+                );
         }
 
         public CCTransitionSplitCols() { }
