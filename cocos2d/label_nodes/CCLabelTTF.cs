@@ -149,7 +149,7 @@ namespace Cocos2D
             base.Draw();
         }
 */
-        public string Label
+        public string Text
         {
             get { return m_pString; }
             set
@@ -168,13 +168,13 @@ namespace Cocos2D
         [Obsolete("Use Label Property")]
         public void SetString(string label)
         {
-            Label = label;
+            Text = label;
         }
         
         [Obsolete("Use Label Property")]
         public string GetString() 
         {
-            return Label;
+            return Text;
         }
 
         #endregion
@@ -216,7 +216,7 @@ namespace Cocos2D
                 m_pFontName = fontName;
                 m_fFontSize = fontSize;
 
-                Label = (text);
+                Text = (text);
 
                 return true;
             }

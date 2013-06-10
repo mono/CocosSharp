@@ -50,7 +50,7 @@ namespace tests
             label.Position = new CCPoint(s.Width / 2, 3 * s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
             label.Color = ccGREEN;
-            label.Label = ("Green");
+            label.Text = ("Green");
         }
 
         public override string title()

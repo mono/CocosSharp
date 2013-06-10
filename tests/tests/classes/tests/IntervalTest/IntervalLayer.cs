@@ -87,7 +87,7 @@ namespace tests
             m_time1 += dt;
 
             string str = string.Format("{0,3:f1}", m_time1);
-            m_label1.Label = (str);
+            m_label1.Text = (str);
         }
 
         public void step2(float dt)
@@ -95,21 +95,21 @@ namespace tests
             m_time2 += dt;
 
             string str = string.Format("{0,3:f1}", m_time2);
-            m_label2.Label = (str);
+            m_label2.Text = (str);
         }
 
         public void step3(float dt)
         {
             m_time3 += dt;
             string str = string.Format("{0,3:f1}", m_time3);
-            m_label3.Label = (str);
+            m_label3.Text = (str);
         }
 
         public void step4(float dt)
         {
             m_time4 += dt;
             string str = string.Format("{0,3:f1}", m_time4);
-            m_label4.Label = (str);
+            m_label4.Text = (str);
         }
 
         public override void Update(float dt)
@@ -117,7 +117,7 @@ namespace tests
             m_time0 += dt;
 
             string str = string.Format("{0,3:f1}", m_time0);
-            m_label0.Label = (str);
+            m_label0.Text = (str);
         }
     }
 }

@@ -252,7 +252,7 @@ namespace tests
             base.OnEnter();
 
             var pLabel = (CCLabelTTF) (GetChildByTag(1000));
-            pLabel.Label = (title());
+            pLabel.Text = (title());
         }
 
         public virtual string title()
@@ -334,7 +334,7 @@ namespace tests
             if (m_emitter != null)
             {
                 string str = string.Format("{0:0000}", m_emitter.ParticleCount);
-                atlas.Label = (str);
+                atlas.Text = (str);
             }
             else
             {
@@ -358,7 +358,7 @@ namespace tests
                     }
                 }
                 string str = string.Format("{0:0000}", count);
-                atlas.Label = (str);
+                atlas.Text = (str);
             }
         }
 

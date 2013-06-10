@@ -78,7 +78,7 @@ namespace tests.Extensions
 			var pScene = new CCScene();
 			var controlLayer = new CCControlButtonTest_HelloVariableSize();
 		    controlLayer.Init();
-    		controlLayer.getSceneTitleLabel().Label = (title);
+    		controlLayer.getSceneTitleLabel().Text = (title);
 			pScene.AddChild(controlLayer);
 			return pScene;
 		}
@@ -175,7 +175,7 @@ namespace tests.Extensions
             var pScene = new CCScene();
             var controlLayer = new CCControlButtonTest_Inset();
             controlLayer.Init();
-            controlLayer.getSceneTitleLabel().Label = (title);
+            controlLayer.getSceneTitleLabel().Text = (title);
             pScene.AddChild(controlLayer);
             return pScene;
         }
@@ -234,41 +234,41 @@ namespace tests.Extensions
 	
 		public void touchDownAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Label = ("Touch Down");
+			m_pDisplayValueLabel.Text = ("Touch Down");
 		}
 		public void touchDragInsideAction(object sender, CCControlEvent controlEvent)
 		{
-			    m_pDisplayValueLabel.Label = ("Drag Inside");
+			    m_pDisplayValueLabel.Text = ("Drag Inside");
 		}
 
 		public void touchDragOutsideAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Label = ("Drag Outside");
+			m_pDisplayValueLabel.Text = ("Drag Outside");
 		}
 
 		public void touchDragEnterAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Label = ("Drag Enter");
+			m_pDisplayValueLabel.Text = ("Drag Enter");
 		}
 
 		public void touchDragExitAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Label = ("Drag Exit");
+			m_pDisplayValueLabel.Text = ("Drag Exit");
 		}
 		
 		public void touchUpInsideAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Label = ("Touch Up Inside.");
+			m_pDisplayValueLabel.Text = ("Touch Up Inside.");
 		}
 		
 		public void touchUpOutsideAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Label = ("Touch Up Outside.");
+			m_pDisplayValueLabel.Text = ("Touch Up Outside.");
 		}
 
 		public void touchCancelAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Label = ("Touch Cancel");
+			m_pDisplayValueLabel.Text = ("Touch Cancel");
 		}
 	
 		private CCLabelTTF m_pDisplayValueLabel; 
@@ -287,7 +287,7 @@ namespace tests.Extensions
 			var controlLayer = new CCControlButtonTest_Event();
 			if (controlLayer != null && controlLayer.Init())
 			{
-				controlLayer.getSceneTitleLabel().Label = (title);
+				controlLayer.getSceneTitleLabel().Text = (title);
 				pScene.AddChild(controlLayer);
 			}
 			return pScene;
@@ -369,7 +369,7 @@ namespace tests.Extensions
 			var controlLayer = new CCControlButtonTest_Styling();
 			if (controlLayer != null && controlLayer.Init())
 			{
-				controlLayer.getSceneTitleLabel().Label = (title);
+				controlLayer.getSceneTitleLabel().Text = (title);
 				pScene.AddChild(controlLayer);
 			}
 			return pScene;

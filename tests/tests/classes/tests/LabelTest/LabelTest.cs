@@ -228,12 +228,12 @@ namespace Cocos2D
             stepstring = string.Format("{0,2:f2} Test", m_time);
             //std::string string = std::string::stringWithFormat("%2.2f Test", m_time);
             CCLabelAtlas label1 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite1);
-            label1.Label = (stepstring);
+            label1.Text = (stepstring);
 
             CCLabelAtlas label2 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite2);
             //sprintf(string, "%d", (int)m_time);
             stepstring = m_time.ToString();
-            label2.Label = (stepstring);
+            label2.Text = (stepstring);
         }
 
         public override string title()
@@ -318,7 +318,7 @@ namespace Cocos2D
             // 	string.format("%04.1f", m_time);
 
             CCLabelBMFont label1 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
-            label1.Label = (Stepstring);
+            label1.Text = (Stepstring);
         }
 
         public override void Draw()
@@ -444,7 +444,7 @@ namespace Cocos2D
             label.Position = new CCPoint(s.Width / 2, 3 * s.Height / 4);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
             label.Color = ccGREEN;
-            label.Label = ("Green");
+            label.Text = ("Green");
         }
 
         public override string title()
@@ -580,17 +580,17 @@ namespace Cocos2D
 
             if (!setEmpty)
             {
-                label1.Label = ("not empty");
-                label2.Label = ("not empty");
-                label3.Label = ("hi");
+                label1.Text = ("not empty");
+                label2.Text = ("not empty");
+                label3.Text = ("hi");
 
                 setEmpty = true;
             }
             else
             {
-                label1.Label = ("");
-                label2.Label = ("");
-                label3.Label = ("");
+                label1.Text = ("");
+                label2.Text = ("");
+                label3.Text = ("");
 
                 setEmpty = false;
             }

@@ -66,7 +66,7 @@ namespace Cocos2D
         {
             if (propertyName == PROPERTY_STRING)
             {
-                ((CCLabelBMFont) node).Label = (pText);
+                ((CCLabelBMFont) node).Text = (pText);
             }
             else
             {

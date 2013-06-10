@@ -1176,11 +1176,11 @@ namespace Cocos2D
                 {
                     if (m_fAccumDt > CCMacros.CCDirectorStatsUpdateIntervalInSeconds)
                     {
-                        m_pFPSLabel.Label = (String.Format("{0:00.0}", m_uDrawCount / m_fAccumDt));
+                        m_pFPSLabel.Text = (String.Format("{0:00.0}", m_uDrawCount / m_fAccumDt));
 
-                        m_pUpdateTimeLabel.Label = (String.Format("{0:0.000}", m_fAccumUpdate / m_uUpdateCount));
-                        m_pDrawTimeLabel.Label = (String.Format("{0:0.000}", m_fAccumDraw / m_uDrawCount));
-                        m_pDrawsLabel.Label = (String.Format("{0:000}", CCDrawManager.DrawCount));
+                        m_pUpdateTimeLabel.Text = (String.Format("{0:0.000}", m_fAccumUpdate / m_uUpdateCount));
+                        m_pDrawTimeLabel.Text = (String.Format("{0:0.000}", m_fAccumDraw / m_uDrawCount));
+                        m_pDrawsLabel.Text = (String.Format("{0:000}", CCDrawManager.DrawCount));
 
                         m_fAccumDt = m_fAccumDraw = m_fAccumUpdate = 0;
                         m_uDrawCount = m_uUpdateCount = 0;

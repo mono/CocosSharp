@@ -35,7 +35,7 @@ namespace tests.Extensions
             // from each of the test scenes.
             CCNode node = ccbReader.ReadNodeGraphFromFile(pCCBFileName, this);
 
-            mTestTitleLabelTTF.Label = (pCCBFileName);
+            mTestTitleLabelTTF.Text = (pCCBFileName);
 
             CCScene scene = new CCScene();
             scene.AddChild(node);
@@ -87,7 +87,7 @@ namespace tests.Extensions
             CCNode animationsTest = ccbReader.ReadNodeGraphFromFile("ccb/ccb/TestAnimations.ccbi", this, ref actionManager);
             ((AnimationsTestLayer) animationsTest).setAnimationManager(actionManager);
 
-            mTestTitleLabelTTF.Label = ("TestAnimations.ccbi");
+            mTestTitleLabelTTF.Text = ("TestAnimations.ccbi");
 
             CCScene scene = new CCScene();
             scene.AddChild(animationsTest);

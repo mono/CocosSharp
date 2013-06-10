@@ -10,7 +10,7 @@ namespace tests
 
             var bmFont = new CCLabelBMFont();
             bmFont.FntFile = "fonts/font-issue1343.fnt";
-            bmFont.Label = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz.,'");
+            bmFont.Text = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz.,'");
             AddChild(bmFont);
             bmFont.Scale = 0.3f;
 

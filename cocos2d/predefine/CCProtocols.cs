@@ -114,8 +114,7 @@ namespace Cocos2D
     /// </summary>
     public interface ICCLabelProtocol
     {
- 
-        string Label { get; set; }
+        string Text { get; set; }
 
         // sets a new label using an string
         [Obsolete("Use Label Property")]

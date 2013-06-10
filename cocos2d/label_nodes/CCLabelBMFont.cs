@@ -86,7 +86,7 @@ namespace Cocos2D
 
         #region ICCLabelProtocol Members
 
-        public virtual string Label
+        public virtual string Text
         {
             get { return m_sInitialString; }
             set 
@@ -98,13 +98,13 @@ namespace Cocos2D
         [Obsolete("Use Label Property")]
         public void SetString(string label)
         {
-            Label = label;
+            Text = label;
         }
         
         [Obsolete("Use Label Property")]
         public string GetString() 
         {
-            return Label;
+            return Text;
         }
 
         #endregion

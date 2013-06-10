@@ -50,12 +50,12 @@ namespace tests
             stepstring = string.Format("{0,2:f2} Test", m_time);
             //std::string string = std::string::stringWithFormat("%2.2f Test", m_time);
             CCLabelAtlas label1 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite1);
-            label1.Label = (stepstring);
+            label1.Text = (stepstring);
 
             CCLabelAtlas label2 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite2);
             //sprintf(string, "%d", (int)m_time);
             stepstring = string.Format("{0:D1}", (int)m_time);
-            label2.Label = (stepstring);
+            label2.Text = (stepstring);
         }
 
         public override string title()

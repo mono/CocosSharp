@@ -9,7 +9,7 @@ namespace Cocos2D
         protected string m_sString = "";
 
         #region ICCLabelProtocol Members
-        public string Label
+        public string Text
         {
             get { return m_sString; }
             set 
@@ -35,13 +35,13 @@ namespace Cocos2D
         [Obsolete("Use Label Property")]
         public void SetString(string label)
         {
-            Label = label;
+            Text = label;
         }
 
         [Obsolete("Use Label Property")]
         public string GetString() 
         {
-            return Label;
+            return Text;
         }
 
         #endregion
@@ -84,7 +84,7 @@ namespace Cocos2D
             if (base.InitWithTileFile(charMapFile, itemWidth, itemHeight, label.Length))
             {
                 m_cMapStartChar = startCharMap;
-                Label = (label);
+                Text = (label);
                 return true;
             }
             return false;
@@ -96,7 +96,7 @@ namespace Cocos2D
             if (base.InitWithTexture(texture, itemWidth, itemHeight, label.Length))
             {
                 m_cMapStartChar = startCharMap;
-                Label = (label);
+                Text = (label);
                 return true;
             }
             return false;

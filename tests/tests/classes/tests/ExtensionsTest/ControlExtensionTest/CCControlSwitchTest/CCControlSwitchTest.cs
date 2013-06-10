@@ -64,11 +64,11 @@ namespace tests.Extensions
             var pSwitch = (CCControlSwitch) sender;
             if (pSwitch.IsOn())
             {
-                m_pDisplayValueLabel.Label = ("On");
+                m_pDisplayValueLabel.Text = ("On");
             }
             else
             {
-                m_pDisplayValueLabel.Label = ("Off");
+                m_pDisplayValueLabel.Text = ("Off");
             }
         }
 
@@ -79,7 +79,7 @@ namespace tests.Extensions
             var controlLayer = new CCControlSwitchTest();
             if (controlLayer != null && controlLayer.Init())
             {
-                controlLayer.getSceneTitleLabel().Label = (title);
+                controlLayer.getSceneTitleLabel().Text = (title);
                 pScene.AddChild(controlLayer);
             }
             return pScene;

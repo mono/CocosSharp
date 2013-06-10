@@ -12,31 +12,31 @@ namespace tests.Extensions
             switch (pCCControlEvent)
             {
                 case CCControlEvent.TouchDown:
-                    mCCControlEventLabel.Label = ("Touch Down.");
+                    mCCControlEventLabel.Text = ("Touch Down.");
                     break;
                 case CCControlEvent.TouchDragInside:
-                    mCCControlEventLabel.Label = ("Touch Drag Inside.");
+                    mCCControlEventLabel.Text = ("Touch Drag Inside.");
                     break;
                 case CCControlEvent.TouchDragOutside:
-                    mCCControlEventLabel.Label = ("Touch Drag Outside.");
+                    mCCControlEventLabel.Text = ("Touch Drag Outside.");
                     break;
                 case CCControlEvent.TouchDragEnter:
-                    mCCControlEventLabel.Label = ("Touch Drag Enter.");
+                    mCCControlEventLabel.Text = ("Touch Drag Enter.");
                     break;
                 case CCControlEvent.TouchDragExit:
-                    mCCControlEventLabel.Label = ("Touch Drag Exit.");
+                    mCCControlEventLabel.Text = ("Touch Drag Exit.");
                     break;
                 case CCControlEvent.TouchUpInside:
-                    mCCControlEventLabel.Label = ("Touch Up Inside.");
+                    mCCControlEventLabel.Text = ("Touch Up Inside.");
                     break;
                 case CCControlEvent.TouchUpOutside:
-                    mCCControlEventLabel.Label = ("Touch Up Outside.");
+                    mCCControlEventLabel.Text = ("Touch Up Outside.");
                     break;
                 case CCControlEvent.TouchCancel:
-                    mCCControlEventLabel.Label = ("Touch Cancel.");
+                    mCCControlEventLabel.Text = ("Touch Cancel.");
                     break;
                 case CCControlEvent.ValueChanged:
-                    mCCControlEventLabel.Label = ("Value Changed.");
+                    mCCControlEventLabel.Text = ("Value Changed.");
                     break;
                 default:
                     Debug.Assert(false); // OH SHIT!

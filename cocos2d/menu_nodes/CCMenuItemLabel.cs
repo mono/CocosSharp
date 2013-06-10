@@ -83,7 +83,7 @@ namespace Cocos2D
 
         public void SetString(string label)
         {
-            (m_pLabel as ICCLabelProtocol).Label = (label);
+            (m_pLabel as ICCLabelProtocol).Text = (label);
             ContentSize = m_pLabel.ContentSize;
         }
 

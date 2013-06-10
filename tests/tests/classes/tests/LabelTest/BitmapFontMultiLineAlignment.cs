@@ -105,13 +105,13 @@ namespace tests
             switch (item.Tag)
             {
                 case LongSentences:
-                    m_pLabelShouldRetain.Label = (LongSentencesExample);
+                    m_pLabelShouldRetain.Text = (LongSentencesExample);
                     break;
                 case LineBreaks:
-                    m_pLabelShouldRetain.Label = (LineBreaksExample);
+                    m_pLabelShouldRetain.Text = (LineBreaksExample);
                     break;
                 case Mixed:
-                    m_pLabelShouldRetain.Label = (MixedExample);
+                    m_pLabelShouldRetain.Text = (MixedExample);
                     break;
 
                 default:
