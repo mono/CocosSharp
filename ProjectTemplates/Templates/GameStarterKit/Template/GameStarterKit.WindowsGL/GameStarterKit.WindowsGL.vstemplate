@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<VSTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Type="ProjectGroup" Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Cocos2D-XNA GameStarterKit</Name>
+    <Description>Creates a simple Cocos2D-XNA skeleton game solution and project to get developers up and running fast.  This particular template is only used for Windows XNA games that will be targeting Cocos2D-XNA WindowsGL.</Description>
+    <Icon>__Template_small.png</Icon>
+    <PreviewImage>__Template_large.png</PreviewImage>
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>GameStarterKit</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <LocationField>Enabled</LocationField>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectCollection>
+      <ProjectTemplateLink ProjectName="$safeprojectname$">GameStarterKit.WindowsGL\GameStarterKit.WindowsGL.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$safeprojectname$.Content">GameStarterKit.Content\GameStarterKit.Content.vstemplate</ProjectTemplateLink>
+      <ProjectTemplateLink ProjectName="$safeprojectname$.ContentContent">GameStarterKit.ContentContent\GameStarterKit.ContentContent.vstemplate</ProjectTemplateLink>
+    </ProjectCollection>
+    <CustomParameters />
+  </TemplateContent>
+</VSTemplate>
