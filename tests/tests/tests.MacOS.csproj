@@ -2287,6 +2287,8 @@
     <Content Include="Assets\Content\Images\aButton.xnb">
       <Link>Content\Images\aButton.xnb</Link>
     </Content>
+    <Content Include="Content\Images\hole_effect.xnb" />
+    <Content Include="Content\Images\hole_stencil.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
