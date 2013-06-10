@@ -39,6 +39,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\..\..\NuGet\bin\Cocos2D-XNA.WindowsGL.2.0.3.3.nupkg">
+      <Link>packages\Cocos2D-XNA.WindowsGL.2.0.3.3.nupkg</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\Template\GameStarterKit.WindowsGL\bin\GameStarterKit.WindowsGL.zip">
+      <Link>ProjectTemplates\Cocos2D-XNA\Windows GL\GameStarterKit.WindowsGL.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="..\..\..\Template\GameStarterKit.Windows\GameStarterKit.Windows\GameStarterKit.Windows.vstemplate">
       <Link>GameStarterKit.Windows.vstemplate</Link>
     </None>

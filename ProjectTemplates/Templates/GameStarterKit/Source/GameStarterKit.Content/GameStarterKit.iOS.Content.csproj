@@ -1,21 +1,22 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.ContentPipeline.targets" />
   <PropertyGroup>
-    <ProjectGuid>$guid1$</ProjectGuid>
+    <ProjectGuid>{F4340669-833D-4DA7-AAB2-6AC582A94E66}</ProjectGuid>
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Windows</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>$safeprojectname$</RootNamespace>
-    <AssemblyName>$safeprojectname$</AssemblyName>
+    <RootNamespace>ContentBuilder</RootNamespace>
+    <AssemblyName>IgnoreMe</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <OutputPath>bin\$(Configuration)</OutputPath>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaProfile>HiDef</XnaProfile>
-    <XnaCrossPlatformGroupID>34d2f891-cd10-4a11-b719-7631ad9e201a</XnaCrossPlatformGroupID>
+    <XnaCrossPlatformGroupID>cea7f500-6cc0-4419-893d-63d4759a0736</XnaCrossPlatformGroupID>
     <XnaOutputType>Library</XnaOutputType>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -45,9 +46,9 @@
     <Reference Include="mscorlib" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\$safeprojectname$Content\$safeprojectname$Content.contentproj">
-      <Project>{F4A00F10-A235-4D21-990A-5000B0989C62}</Project>
-      <Name>$safeprojectname$Content %28Content%29</Name>
+    <ProjectReference Include="..\GameStarterKit.ContentContent\GameStarterKit.iOSContentContent.contentproj">
+      <Project>{22CCE7A6-F16F-4653-B5DE-64613308B333}</Project>
+      <Name>GameStarterKit.iOSContentContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>

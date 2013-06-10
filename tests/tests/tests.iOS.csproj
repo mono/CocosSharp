@@ -1500,6 +1500,8 @@
     <Content Include="PhoneGameThumb_iPad.png" />
     <Content Include="PhoneGameThumb_iPhone.png" />
     <Content Include="PhoneGameThumb.png" />
+    <Content Include="Content\Images\hole_effect.xnb" />
+    <Content Include="Content\Images\hole_stencil.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
