@@ -1,0 +1,26 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>GameStarterKit.iOSContentContent</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>GameStarterKit.iOSContentContent</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="GameStarterKit.ContentContent.contentproj" File="GameStarterKit.ContentContent.contentproj" ReplaceParameters="true">
+      <Folder Name="fonts" TargetFolderName="fonts">
+        <ProjectItem ReplaceParameters="false" TargetFileName="MarkerFelt-16.spritefont">MarkerFelt-16.spritefont</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="MarkerFelt-18.spritefont">MarkerFelt-18.spritefont</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="MarkerFelt-22.spritefont">MarkerFelt-22.spritefont</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="MarkerFelt-64.spritefont">MarkerFelt-64.spritefont</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
