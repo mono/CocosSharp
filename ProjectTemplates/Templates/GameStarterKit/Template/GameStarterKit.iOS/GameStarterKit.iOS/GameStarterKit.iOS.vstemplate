@@ -1,0 +1,52 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>GameStarterKit.iOS</Name>
+    <Description>ios starter template</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1003</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>GameStarterKit.iOS</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="GameStarterKit.iOS.csproj" File="GameStarterKit.iOS.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="AppDelegate.cs">AppDelegate.cs</ProjectItem>
+      <Folder Name="Content" TargetFolderName="Content">
+        <Folder Name="fonts" TargetFolderName="fonts">
+          <ProjectItem ReplaceParameters="false" TargetFileName="MarkerFelt-16.xnb">MarkerFelt-16.xnb</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="MarkerFelt-18.xnb">MarkerFelt-18.xnb</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="MarkerFelt-22.xnb">MarkerFelt-22.xnb</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="MarkerFelt-64.xnb">MarkerFelt-64.xnb</ProjectItem>
+        </Folder>
+      </Folder>
+      <ProjectItem ReplaceParameters="false" TargetFileName="Game.ico">Game.ico</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Game1.cs">Game1.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="GameData.cs">GameData.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="GameLevel.cs">GameLevel.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="GameMenu.cs">GameMenu.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="GameThumbnail.png">GameThumbnail.png</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="Info.plist">Info.plist</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="IntroLayer.cs">IntroLayer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+  </WizardExtension>
+  <WizardData>
+    <packages repository="extension"
+          repositoryId="GameStarterKitInstaller.852d8d2b-8ddc-4fd2-8312-53657ec6dfa3">
+      <package id="Cocos2D-XNA.iOS" version="2.0.3.3" />
+    </packages>
+  </WizardData>
+
+</VSTemplate>
