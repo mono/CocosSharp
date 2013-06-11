@@ -912,8 +912,8 @@ namespace Cocos2D
 
         public void RunWithScene(CCScene pScene)
         {
-            Debug.Assert(m_pRunningScene != null, "Use runWithScene: instead to start the director");
             Debug.Assert(pScene != null, "the scene should not be null");
+            Debug.Assert(m_pRunningScene == null, "Use runWithScene: instead to start the director");
 
             PushScene(pScene);
             StartAnimation();
@@ -925,7 +925,8 @@ namespace Cocos2D
         /// <param name="pScene"></param>
         public void ReplaceScene(CCScene pScene)
         {
-            Debug.Assert(pScene != null, "pScene cannot be null");
+            Debug.Assert(m_pRunningScene != null, "Use runWithScene: instead to start the director");
+            Debug.Assert(pScene != null, "the scene should not be null");
 
             int index = m_pobScenesStack.Count;
 
@@ -955,7 +956,7 @@ namespace Cocos2D
         /// <param name="pScene"></param>
         public void PushScene(CCScene pScene)
         {
-            Debug.Assert(pScene != null, "pScene cannot be null");
+            Debug.Assert(pScene != null, "the scene should not null");
 
             m_bSendCleanupToScene = false;
 
