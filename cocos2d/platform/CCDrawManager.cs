@@ -959,6 +959,19 @@ namespace Cocos2D
                 m_fScaleX = m_fScaleY = Math.Min(m_fScaleX, m_fScaleY);
             }
 
+
+            if (resolutionPolicy == CCResolutionPolicy.FixedHeight)
+            {
+                m_fScaleX = m_fScaleY;
+                m_obDesignResolutionSize.Width = (float)Math.Ceiling(m_obScreenSize.Width / m_fScaleX);
+            }
+
+            if (resolutionPolicy == CCResolutionPolicy.FixedWidth)
+            {
+                m_fScaleY = m_fScaleX;
+                m_obDesignResolutionSize.Height = (float)Math.Ceiling(m_obScreenSize.Height / m_fScaleY);
+            }
+
             // calculate the rect of viewport    
             float viewPortW = m_obDesignResolutionSize.Width * m_fScaleX;
             float viewPortH = m_obDesignResolutionSize.Height * m_fScaleY;
@@ -1195,6 +1208,16 @@ namespace Cocos2D
         // The entire application is visible in the specified area without distortion while maintaining the original 
         // aspect ratio of the application. Borders can appear on two sides of the application.
         ShowAll,
+        // The application takes the height of the design resolution size and modifies the width of the internal
+        // canvas so that it fits the aspect ratio of the device
+        // no distortion will occur however you must make sure your application works on different
+        // aspect ratios
+        FixedHeight,
+        // The application takes the width of the design resolution size and modifies the height of the internal
+        // canvas so that it fits the aspect ratio of the device
+        // no distortion will occur however you must make sure your application works on different
+        // aspect ratios
+        FixedWidth,
 
         UnKnown,
     }
