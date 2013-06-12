@@ -77,7 +77,7 @@ namespace Cocos2D
 
             TouchPanel.EnabledGestures = GestureType.Tap;
 
-            game.Activated += CameActivated;
+            game.Activated += GameActivated;
             game.Deactivated += GameDeactivated;
 
 #if IOS
@@ -147,7 +147,7 @@ namespace Cocos2D
 #endif
         }
 
-        private void CameActivated(object sender, EventArgs e)
+        private void GameActivated(object sender, EventArgs e)
         {
             // Clear out the prior gamepad state because we don't want it anymore.
             m_PriorGamePadState.Clear();
