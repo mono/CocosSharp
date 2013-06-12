@@ -154,7 +154,7 @@ namespace Cocos2D
                 if (frameNames == null)
                 {
                     CCLog.Log(
-                        "cocos2d: CCAnimationCache: Animation '%s' found in dictionary without any frames - cannot add to animation cache.",
+                        "cocos2d: CCAnimationCache: Animation '{0}' found in dictionary without any frames - cannot add to animation cache.",
                         pElement.Key);
                     continue;
                 }
@@ -169,7 +169,7 @@ namespace Cocos2D
                     if (spriteFrame == null)
                     {
                         CCLog.Log(
-                            "cocos2d: CCAnimationCache: Animation '%s' refers to frame '%s' which is not currently in the CCSpriteFrameCache. This frame will not be added to the animation.",
+                            "cocos2d: CCAnimationCache: Animation '{0}' refers to frame '%s' which is not currently in the CCSpriteFrameCache. This frame will not be added to the animation.",
                             pElement.Key, frameName);
                         continue;
                     }
@@ -182,14 +182,14 @@ namespace Cocos2D
                 if (frames.Count == 0)
                 {
                     CCLog.Log(
-                        "cocos2d: CCAnimationCache: None of the frames for animation '%s' were found in the CCSpriteFrameCache. Animation is not being added to the Animation Cache.",
+                        "cocos2d: CCAnimationCache: None of the frames for animation '{0}' were found in the CCSpriteFrameCache. Animation is not being added to the Animation Cache.",
                         pElement.Key);
                     continue;
                 }
                 else if (frames.Count != frameNames.Count)
                 {
                     CCLog.Log(
-                        "cocos2d: CCAnimationCache: An animation in your dictionary refers to a frame which is not in the CCSpriteFrameCache. Some or all of the frames for the animation '%s' may be missing.",
+                        "cocos2d: CCAnimationCache: An animation in your dictionary refers to a frame which is not in the CCSpriteFrameCache. Some or all of the frames for the animation '{0}' may be missing.",
                         pElement.Key);
                 }
 
@@ -216,7 +216,7 @@ namespace Cocos2D
                 if (frameArray == null)
                 {
                     CCLog.Log(
-                        "cocos2d: CCAnimationCache: Animation '%s' found in dictionary without any frames - cannot add to animation cache.",
+                        "cocos2d: CCAnimationCache: Animation '{0}' found in dictionary without any frames - cannot add to animation cache.",
                         name);
                     continue;
                 }
@@ -234,7 +234,7 @@ namespace Cocos2D
                     if (spriteFrame == null)
                     {
                         CCLog.Log(
-                            "cocos2d: CCAnimationCache: Animation '%s' refers to frame '%s' which is not currently in the CCSpriteFrameCache. This frame will not be added to the animation.",
+                            "cocos2d: CCAnimationCache: Animation '{0}' refers to frame '{1}' which is not currently in the CCSpriteFrameCache. This frame will not be added to the animation.",
                             name, spriteFrameName);
 
                         continue;

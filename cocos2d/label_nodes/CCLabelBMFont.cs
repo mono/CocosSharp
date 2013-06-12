@@ -286,7 +286,7 @@ namespace Cocos2D
                 CCBMFontConfiguration newConf = FNTConfigLoadFile(fntFile);
                 if (newConf == null)
                 {
-                    CCLog.Log("CCLabelBMFont: Impossible to create font. Please check file: '%s'", fntFile);
+                    CCLog.Log("CCLabelBMFont: Impossible to create font. Please check file: '{0}'", fntFile);
                     return false;
                 }
 
