@@ -17,8 +17,8 @@ namespace tests
 
         public static int TEST_COUNT = 4;
 
-        public static int kMaxParticles = 14000;
-        public static int kNodesIncrease = 100;
+        public static int kMaxParticles = 20000;
+        public static int kNodesIncrease = 500;
 
         public static int s_nParCurIdx = 0;
 

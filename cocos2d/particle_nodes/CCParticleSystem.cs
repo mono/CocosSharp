@@ -4,6 +4,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 #if !HAS_NATIVE_ZIPFILE_SUPPORT
 //using ICSharpCode.SharpZipLib.Zip;
+using Microsoft.Xna.Framework.Graphics;
 using GZipInputStream=WP7Contrib.Communications.Compression.GZipStream; // Found in Support/Compression/GZipStream
 using ICSharpCode.SharpZipLib.Zip;
 #else
@@ -378,7 +379,6 @@ namespace Cocos2D
 
         protected CCParticleSystem ()
         {
-            Init();
         }
 
         public CCParticleSystem (string plistFile)
@@ -395,9 +395,6 @@ namespace Cocos2D
         {
             bool bRet;
             m_sPlistFile = CCFileUtils.FullPathFromRelativePath(plistFile);
-
-            //var content = CCApplication.SharedApplication.content.Load<CCContent>(m_sPlistFile);
-            //PlistDocument dict = PlistDocument.Create(content.Content);
 
             PlistDocument doc = null;
             try
@@ -583,17 +580,14 @@ namespace Cocos2D
                                 var imageBytes = Inflate(dataBytes);
                                 Debug.Assert(imageBytes != null, string.Format("CCParticleSystem: error init image with Data for texture : {0}",textureName));
 
-                                using (var imageStream = new MemoryStream(imageBytes))
+                                try
                                 {
-                                    try
-                                    {
-                                        Texture = CCTextureCache.SharedTextureCache.AddImage(imageStream, textureName);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        CCLog.Log(ex.ToString());
-                                        throw (new NotSupportedException("Embedded textureImageData is a format that this platform does not understand. Use PNG, GIF, or JPEG for your particle systems."));
-                                    }
+                                    Texture = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, SurfaceFormat.Color);
+                                }
+                                catch (Exception ex)
+                                {
+                                    CCLog.Log(ex.ToString());
+                                    throw (new NotSupportedException("Embedded textureImageData is a format that this platform does not understand. Use PNG, GIF, or JPEG for your particle systems."));
                                 }
                             }
                         }

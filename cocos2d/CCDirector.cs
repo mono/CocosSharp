@@ -6,6 +6,7 @@ using System.IO;
 using System.IO.IsolatedStorage;
 #endif
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace Cocos2D
@@ -843,6 +844,7 @@ namespace Cocos2D
         public void ResumeFromBackground()
         {
             Resume();
+            
             if (m_pRunningScene != null)
             {
                 bool runningIsTransition = m_pRunningScene is CCTransitionScene;
@@ -1010,28 +1012,6 @@ namespace Cocos2D
         {
             PopScene(0, null);
         }
-        /*
-         * old popscene
-            Debug.Assert(m_pRunningScene != null, "m_pRunningScene cannot be null");
-
-            if (m_pobScenesStack.Count > 0)
-            {
-                // CCScene s = m_pobScenesStack[m_pobScenesStack.Count - 1];
-                m_pobScenesStack.RemoveAt(m_pobScenesStack.Count - 1);
-            }
-            int c = m_pobScenesStack.Count;
-
-            if (c == 0)
-            {
-                End(); // This should not happen here b/c we need to capture the current state and just deactivate the game (for Android).
-            }
-            else
-            {
-                m_bSendCleanupToScene = true;
-                m_pNextScene = m_pobScenesStack[c - 1];
-            }
-        }
-         */
 
         /** Pops out all scenes from the queue until the root scene in the queue.
         * This scene will replace the running one.
@@ -1123,19 +1103,13 @@ namespace Cocos2D
             CCTexture2D texture;
             CCTextureCache textureCache = CCTextureCache.SharedTextureCache;
 
-            textureCache.RemoveTextureForKey("cc_fps_images");
-
-            using (var stream = new MemoryStream(CCFPSImage.PngData, false))
+            if (!textureCache.Contains("cc_fps_images"))
             {
-                try
-                {
-                    texture = textureCache.AddImage(stream, "cc_fps_images");
-                }
-                catch (Exception)
-                {
-                    m_bDisplayStats = false;
-                    return;
-                }
+                texture = textureCache.AddImage(CCFPSImage.PngData, "cc_fps_images", SurfaceFormat.Bgra4444);
+            }
+            else
+            {
+                texture = textureCache.TextureForKey("cc_fps_images");
             }
 
             float factor = m_obWinSizeInPoints.Height / 320.0f;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Cocos2D;
 using System.Diagnostics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace tests
 {
@@ -237,7 +238,7 @@ namespace tests
             CCTextureCache cache = CCTextureCache.SharedTextureCache;
 
             CCLog.Log("RGBA 8888");
-            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGBA8888;
+            CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Color;
             //gettimeofday(now);
             texture = cache.AddImage(filename);
             //if (texture != null)
@@ -247,7 +248,7 @@ namespace tests
             cache.RemoveTexture(texture);
 
             CCLog.Log("RGBA 4444");
-            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGBA4444;
+            CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Bgra4444;
 
             //gettimeofday(now);
             texture = cache.AddImage(filename);
@@ -258,7 +259,7 @@ namespace tests
             cache.RemoveTexture(texture);
 
             CCLog.Log("RGBA 5551");
-            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGB5A1;
+            CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Bgra5551;
             //gettimeofday(now);
             texture = cache.AddImage(filename);
             //if (texture != null)
@@ -268,7 +269,7 @@ namespace tests
             cache.RemoveTexture(texture);
 
             CCLog.Log("RGB 565");
-            CCTexture2D.DefaultAlphaPixelFormat = CCTexture2DPixelFormat.RGB565;
+            CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Bgr565;
             //gettimeofday(now);
             texture = cache.AddImage(filename);
             //if (texture != null)
@@ -276,6 +277,8 @@ namespace tests
             //else
             //    CCLog.Log(" ERROR\n");
             cache.RemoveTexture(texture);
+
+            CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Color;
         }
 
         public static CCScene scene()

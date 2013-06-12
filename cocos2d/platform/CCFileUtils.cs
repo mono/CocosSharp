@@ -53,6 +53,12 @@ namespace Cocos2D
             }
         }
 
+        public static Stream GetFileStream(string fileName)
+        {
+            fileName = Path.Combine(CCApplication.SharedApplication.Content.RootDirectory, fileName);
+            return TitleContainer.OpenStream(fileName);
+        }
+
         /// <summary>
         /// @brief Get resource file data
         /// @param[in]  pszFileName The resource file name which contain the path

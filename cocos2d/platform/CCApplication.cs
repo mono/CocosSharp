@@ -77,8 +77,8 @@ namespace Cocos2D
 
             TouchPanel.EnabledGestures = GestureType.Tap;
 
-            game.Activated += new EventHandler<EventArgs>(game_Activated);
-            game.Deactivated += new EventHandler<EventArgs>(game_Deactivated);
+            game.Activated += CameActivated;
+            game.Deactivated += GameDeactivated;
 
 #if IOS
             // Please read the following discussions for the reasons of this.
@@ -134,24 +134,29 @@ namespace Cocos2D
 
         }
 
-        private void game_Deactivated(object sender, EventArgs e)
+        private void GameDeactivated(object sender, EventArgs e)
         {
-#if ANDROID
-            CCTextureCache.PurgeSharedTextureCache();
-#endif
             ApplicationDidEnterBackground();
+
+#if ANDROID
+            CCTexture2D.DisposeAllTextures();
+#endif
+
 #if !IOS
             CocosDenshion.CCSimpleAudioEngine.SharedEngine.RestoreMediaState();
 #endif
         }
 
-        private void game_Activated(object sender, EventArgs e)
+        private void CameActivated(object sender, EventArgs e)
         {
             // Clear out the prior gamepad state because we don't want it anymore.
             m_PriorGamePadState.Clear();
+
 #if ANDROID
             CCSpriteFontCache.SharedInstance.Clear();
+            CCTexture2D.ReinitAllTextures();
 #endif
+
 #if !IOS
             CocosDenshion.CCSimpleAudioEngine.SharedEngine.SaveMediaState();
 #endif

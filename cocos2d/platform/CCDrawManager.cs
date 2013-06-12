@@ -315,7 +315,45 @@ namespace Cocos2D
             m_obScreenSize = m_obDesignResolutionSize = m_obViewPortRect.Size;
 
             CCDrawingPrimitives.Init(graphicsDevice);
+
+            //graphicsDevice.Disposing += graphicsDevice_Disposing;
+            //graphicsDevice.DeviceLost += graphicsDevice_DeviceLost;
+            //graphicsDevice.DeviceReset += graphicsDevice_DeviceReset;
+            //graphicsDevice.DeviceResetting += graphicsDevice_DeviceResetting;
+            //graphicsDevice.ResourceCreated += graphicsDevice_ResourceCreated;
+            //graphicsDevice.ResourceDestroyed += graphicsDevice_ResourceDestroyed;
         }
+        /*
+        static void graphicsDevice_ResourceDestroyed(object sender, ResourceDestroyedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        static void graphicsDevice_ResourceCreated(object sender, ResourceCreatedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        static void graphicsDevice_DeviceResetting(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        static void graphicsDevice_DeviceReset(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        static void graphicsDevice_DeviceLost(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        static void graphicsDevice_Disposing(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        */
 
         private static void ResetDevice()
         {
@@ -585,7 +623,7 @@ namespace Cocos2D
 
         public static void BindTexture(CCTexture2D texture)
         {
-            Texture2D tex = texture == null ? null : texture.Texture2D;
+            Texture2D tex = texture == null ? null : texture.XNATexture;
 
             if (!graphicsDevice.IsDisposed && graphicsDevice.GraphicsDeviceStatus == GraphicsDeviceStatus.Normal)
             {
@@ -596,7 +634,7 @@ namespace Cocos2D
                 }
                 else
                 {
-                    graphicsDevice.SamplerStates[0] = texture.m_samplerState;
+                    graphicsDevice.SamplerStates[0] = texture.SamplerState;
                     TextureEnabled = true;
                 }
 
@@ -611,12 +649,14 @@ namespace Cocos2D
         public static void CreateRenderTarget(CCTexture2D pTexture, RenderTargetUsage usage)
         {
             CCSize size = pTexture.ContentSizeInPixels;
-            pTexture.Texture = CreateRenderTarget((int) size.Width, (int) size.Height, SurfaceFormat.Color, m_PlatformDepthFormat, usage);
+            var texture = CreateRenderTarget((int) size.Width, (int) size.Height, CCTexture2D.DefaultAlphaPixelFormat,
+                                             m_PlatformDepthFormat, usage);
+            pTexture.InitWithTexture(texture, CCTexture2D.DefaultAlphaPixelFormat, true);
         }
 
         public static RenderTarget2D CreateRenderTarget(int width, int height, RenderTargetUsage usage)
         {
-            return CreateRenderTarget(width, height, SurfaceFormat.Color, DepthFormat.None, usage);
+            return CreateRenderTarget(width, height, CCTexture2D.DefaultAlphaPixelFormat, DepthFormat.None, usage);
         }
 
         public static RenderTarget2D CreateRenderTarget(int width, int height, SurfaceFormat colorFormat, RenderTargetUsage usage)
@@ -654,8 +694,8 @@ namespace Cocos2D
             }
             else
             {
-                Debug.Assert(pTexture.Texture is RenderTarget2D);
-                SetRenderTarget((RenderTarget2D) pTexture.Texture);
+                Debug.Assert(pTexture.XNATexture is RenderTarget2D);
+                SetRenderTarget((RenderTarget2D)pTexture.XNATexture);
             }
         }
 

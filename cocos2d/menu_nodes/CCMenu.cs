@@ -17,7 +17,7 @@ namespace Cocos2D
     ///  You can add MenuItem objects in runtime using addChild:
     ///  But the only accecpted children are MenuItem objects
     /// </summary>
-    public class CCMenu : CCLayerRGBA, ICCTouchDelegate
+    public class CCMenu : CCLayerRGBA
     {
         public const float kDefaultPadding = 5;
         public const int kCCMenuHandlerPriority = -128;

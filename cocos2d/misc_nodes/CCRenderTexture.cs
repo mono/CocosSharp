@@ -53,7 +53,7 @@ namespace Cocos2D
             m_pTexture.SetAliasTexParameters();
 
             m_pRenderTarget2D = CCDrawManager.CreateRenderTarget(w, h, colorFormat, depthFormat, usage);
-            m_pTexture.InitWithTexture(m_pRenderTarget2D);
+            m_pTexture.InitWithTexture(m_pRenderTarget2D, colorFormat, true);
 
             m_bFirstUsage = true;
 

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
@@ -117,16 +118,9 @@ namespace Cocos2D
 
         protected virtual bool InitWithSize(CCGridSize gridSize, CCSize size)
         {
-            //ulong POTWide = ccNextPOT((uint) size.width);
-            //ulong POTHigh = ccNextPOT((uint) size.width);
-            ulong potWide = (uint) size.Width;
-            ulong potHigh = (uint) size.Height;
-
-            // we only use rgba8888
-            var format = CCTexture2DPixelFormat.RGBA8888;
-
             var pTexture = new CCTexture2D();
-            pTexture.InitWithData(null, format, (uint) potWide, (uint) potHigh, size);
+            // we only use rgba8888
+            pTexture.Init((int)size.Width, (int)size.Height, SurfaceFormat.Color, true);
 
             InitWithSize(gridSize, pTexture, false);
 

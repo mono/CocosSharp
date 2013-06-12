@@ -1,5 +1,6 @@
 
 using System.IO;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
@@ -64,10 +65,7 @@ namespace Cocos2D
             {
                 if (_defaultTexture == null)
                 {
-                    using (var stream = new MemoryStream(_firePngData, false))
-                    {
-                        _defaultTexture = CCTextureCache.SharedTextureCache.AddImage(stream, "__firePngData");
-                    }
+                    _defaultTexture = CCTextureCache.SharedTextureCache.AddImage(_firePngData, "__firePngData", SurfaceFormat.Color);
                 }
 
                 return _defaultTexture;

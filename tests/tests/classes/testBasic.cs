@@ -125,4 +125,114 @@ namespace tests
 
         public abstract void runThisTest();
     }
+
+
+    public class CCVisibleRect
+    {
+        private static CCRect s_visibleRect = CCRect.Zero;
+
+        private static void LazyInit()
+        {
+            if (s_visibleRect.Size.Width == 0.0f && s_visibleRect.Size.Height == 0.0f)
+            {
+                s_visibleRect.Origin = CCDrawManager.VisibleOrigin;
+                s_visibleRect.Size = CCDrawManager.VisibleSize;
+            }
+        }
+
+        public static CCRect VisibleRect
+        {
+            get
+            {
+                LazyInit();
+                return new CCRect(s_visibleRect.Origin.X, s_visibleRect.Origin.Y, s_visibleRect.Size.Width,
+                                  s_visibleRect.Size.Height);
+            }
+        }
+
+        public static CCPoint Left
+        {
+            get
+            {
+                LazyInit();
+                return new CCPoint(s_visibleRect.Origin.X, s_visibleRect.Origin.Y + s_visibleRect.Size.Height / 2);
+            }
+        }
+
+        public static CCPoint Right
+        {
+            get
+            {
+                LazyInit();
+                return new CCPoint(s_visibleRect.Origin.X + s_visibleRect.Size.Width,
+                                   s_visibleRect.Origin.Y + s_visibleRect.Size.Height / 2);
+            }
+        }
+
+        public static CCPoint Top
+        {
+            get
+            {
+                LazyInit();
+                return new CCPoint(s_visibleRect.Origin.X + s_visibleRect.Size.Width / 2,
+                                   s_visibleRect.Origin.Y + s_visibleRect.Size.Height);
+            }
+        }
+
+        public static CCPoint Bottom
+        {
+            get
+            {
+                LazyInit();
+                return new CCPoint(s_visibleRect.Origin.X + s_visibleRect.Size.Width / 2, s_visibleRect.Origin.Y);
+            }
+        }
+
+        public static CCPoint Center
+        {
+            get
+            {
+                LazyInit();
+                return new CCPoint(s_visibleRect.Origin.X + s_visibleRect.Size.Width / 2,
+                                   s_visibleRect.Origin.Y + s_visibleRect.Size.Height / 2);
+            }
+        }
+
+        public static CCPoint LeftTop
+        {
+            get
+            {
+                LazyInit();
+                return new CCPoint(s_visibleRect.Origin.X, s_visibleRect.Origin.Y + s_visibleRect.Size.Height);
+            }
+        }
+
+        public static CCPoint RightTop
+        {
+            get
+            {
+                LazyInit();
+                return new CCPoint(s_visibleRect.Origin.X + s_visibleRect.Size.Width,
+                                   s_visibleRect.Origin.Y + s_visibleRect.Size.Height);
+            }
+        }
+
+        public static CCPoint LeftBottom
+        {
+            get
+            {
+                LazyInit();
+                return s_visibleRect.Origin;
+            }
+        }
+
+        public static CCPoint RightBottom
+        {
+            get
+            {
+                LazyInit();
+                return new CCPoint(s_visibleRect.Origin.X + s_visibleRect.Size.Width, s_visibleRect.Origin.Y);
+            }
+        }
+    }
 }

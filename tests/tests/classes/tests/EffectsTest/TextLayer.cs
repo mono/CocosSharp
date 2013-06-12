@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Cocos2D;
 
 namespace tests
@@ -9,60 +5,56 @@ namespace tests
     public class TextLayer : CCLayerColor
     {
         //UxString	m_strTitle;
-        static int MAX_LAYER = 22;
+        private static int MAX_LAYER = 22;
 
         public TextLayer()
         {
             InitWithColor(CCTypes.CreateColor(32, 32, 32, 255));
 
-            float x, y;
-
-            CCSize size = CCDirector.SharedDirector.WinSize;
-            x = size.Width;
-            y = size.Height;
-
-
-            CCNode node = new CCNode ();
+            var node = new CCNode();
             CCActionInterval effect = getAction();
             node.RunAction(effect);
             AddChild(node, 0, EffectTestScene.kTagBackground);
 
-            CCSprite bg = new CCSprite(TestResource.s_back3);
+            var bg = new CCSprite(TestResource.s_back3);
             node.AddChild(bg, 0);
             bg.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            bg.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            bg.Position = CCVisibleRect.Center;
 
-            CCSprite grossini = new CCSprite(TestResource.s_pPathSister2);
+            var grossini = new CCSprite(TestResource.s_pPathSister2);
             node.AddChild(grossini, 1);
-            grossini.Position = new CCPoint(x / 3, y / 2);
+            grossini.Position = new CCPoint(CCVisibleRect.Left.X + CCVisibleRect.VisibleRect.Size.Width / 3,
+                                            CCVisibleRect.Center.Y);
             CCActionInterval sc = new CCScaleBy(2, 5);
             CCFiniteTimeAction sc_back = sc.Reverse();
-            grossini.RunAction(new CCRepeatForever ((CCActionInterval)(new CCSequence(sc, sc_back))));
-            //grossini.runAction(effect);
+            grossini.RunAction(new CCRepeatForever((new CCSequence(sc, sc_back))));
 
-            CCSprite tamara = new CCSprite(TestResource.s_pPathSister1);
+            var tamara = new CCSprite(TestResource.s_pPathSister1);
             node.AddChild(tamara, 1);
-            tamara.Position = new CCPoint(2 * x / 3, y / 2);
+            tamara.Position = new CCPoint(CCVisibleRect.Left.X + 2 * CCVisibleRect.VisibleRect.Size.Width / 3,
+                                          CCVisibleRect.Center.Y);
             CCActionInterval sc2 = new CCScaleBy(2, 5);
             CCFiniteTimeAction sc2_back = sc2.Reverse();
-            tamara.RunAction(new CCRepeatForever ((CCActionInterval)(new CCSequence(sc2, sc2_back))));
+            tamara.RunAction(new CCRepeatForever((new CCSequence(sc2, sc2_back))));
 
-            CCLabelTTF label = new CCLabelTTF(EffectTestScene.effectsList[EffectTestScene.actionIdx], "arial", 32);
+            var label = new CCLabelTTF(EffectTestScene.effectsList[EffectTestScene.actionIdx], "arial", 32);
 
-            label.Position = new CCPoint(x / 2, y - 80);
+            label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 80);
             AddChild(label);
             label.Tag = EffectTestScene.kTagLabel;
 
-            CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
-            CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
-            CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
+            var item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
+            var item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
+            var item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
 
-            CCMenu menu = new CCMenu(item1, item2, item3);
+            var menu = new CCMenu(item1, item2, item3);
 
-            menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(size.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(size.Width / 2, 30);
-            item3.Position = new CCPoint(size.Width / 2 + 100, 30);
+            menu.Position = CCPoint.Zero;
+            item1.Position = new CCPoint(CCVisibleRect.Center.X - item2.ContentSize.Width * 2,
+                                         CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
+            item2.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
+            item3.Position = new CCPoint(CCVisibleRect.Center.X + item2.ContentSize.Width * 2,
+                                         CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
 
             AddChild(menu, 1);
 
@@ -71,36 +63,57 @@ namespace tests
 
         public CCActionInterval createEffect(int nIndex, float t)
         {
-
-			// This fixes issue https://github.com/totallyevil/cocos2d-xna/issues/148
-			// TransitionTests and TileTests may have set the DepthTest to true so we need
-			// to make sure we reset it.
+            // This fixes issue https://github.com/totallyevil/cocos2d-xna/issues/148
+            // TransitionTests and TileTests may have set the DepthTest to true so we need
+            // to make sure we reset it.
             CCDirector.SharedDirector.SetDepthTest(false);
 
             switch (nIndex)
             {
-                case 0: return Shaky3DDemo.actionWithDuration(t);
-                case 1: return Waves3DDemo.actionWithDuration(t);
-                case 2: return FlipX3DDemo.actionWithDuration(t);
-                case 3: return FlipY3DDemo.actionWithDuration(t);
-                case 4: return Lens3DDemo.actionWithDuration(t);
-                case 5: return Ripple3DDemo.actionWithDuration(t);
-                case 6: return LiquidDemo.actionWithDuration(t);
-                case 7: return WavesDemo.actionWithDuration(t);
-                case 8: return TwirlDemo.actionWithDuration(t);
-                case 9: return ShakyTiles3DDemo.actionWithDuration(t);
-                case 10: return ShatteredTiles3DDemo.actionWithDuration(t);
-                case 11: return ShuffleTilesDemo.actionWithDuration(t);
-                case 12: return FadeOutTRTilesDemo.actionWithDuration(t);
-                case 13: return FadeOutBLTilesDemo.actionWithDuration(t);
-                case 14: return FadeOutUpTilesDemo.actionWithDuration(t);
-                case 15: return FadeOutDownTilesDemo.actionWithDuration(t);
-                case 16: return TurnOffTilesDemo.actionWithDuration(t);
-                case 17: return WavesTiles3DDemo.actionWithDuration(t);
-                case 18: return JumpTiles3DDemo.actionWithDuration(t);
-                case 19: return SplitRowsDemo.actionWithDuration(t);
-                case 20: return SplitColsDemo.actionWithDuration(t);
-                case 21: return PageTurn3DDemo.actionWithDuration(t);
+                case 0:
+                    return Shaky3DDemo.actionWithDuration(t);
+                case 1:
+                    return Waves3DDemo.actionWithDuration(t);
+                case 2:
+                    return FlipX3DDemo.actionWithDuration(t);
+                case 3:
+                    return FlipY3DDemo.actionWithDuration(t);
+                case 4:
+                    return Lens3DDemo.actionWithDuration(t);
+                case 5:
+                    return Ripple3DDemo.actionWithDuration(t);
+                case 6:
+                    return LiquidDemo.actionWithDuration(t);
+                case 7:
+                    return WavesDemo.actionWithDuration(t);
+                case 8:
+                    return TwirlDemo.actionWithDuration(t);
+                case 9:
+                    return ShakyTiles3DDemo.actionWithDuration(t);
+                case 10:
+                    return ShatteredTiles3DDemo.actionWithDuration(t);
+                case 11:
+                    return ShuffleTilesDemo.actionWithDuration(t);
+                case 12:
+                    return FadeOutTRTilesDemo.actionWithDuration(t);
+                case 13:
+                    return FadeOutBLTilesDemo.actionWithDuration(t);
+                case 14:
+                    return FadeOutUpTilesDemo.actionWithDuration(t);
+                case 15:
+                    return FadeOutDownTilesDemo.actionWithDuration(t);
+                case 16:
+                    return TurnOffTilesDemo.actionWithDuration(t);
+                case 17:
+                    return WavesTiles3DDemo.actionWithDuration(t);
+                case 18:
+                    return JumpTiles3DDemo.actionWithDuration(t);
+                case 19:
+                    return SplitRowsDemo.actionWithDuration(t);
+                case 20:
+                    return SplitColsDemo.actionWithDuration(t);
+                case 21:
+                    return PageTurn3DDemo.actionWithDuration(t);
             }
 
             return null;
@@ -117,7 +130,8 @@ namespace tests
         {
             CCNode s2 = GetChildByTag(EffectTestScene.kTagBackground);
             if (s2.NumberOfRunningActions() == 0 && s2.Grid != null)
-                s2.Grid = null; ;
+                s2.Grid = null;
+            ;
         }
 
         public override void OnEnter()
@@ -156,14 +170,14 @@ namespace tests
         public void newScene()
         {
             CCScene s = new EffectTestScene();
-            CCNode child = TextLayer.node();
+            CCNode child = node();
             s.AddChild(child);
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public new static TextLayer node()
+        public static TextLayer node()
         {
-            TextLayer pLayer = new TextLayer();
+            var pLayer = new TextLayer();
 
             return pLayer;
         }

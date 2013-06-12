@@ -3,34 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.IO;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
+
     //TODO: AsyncLoad
     public class CCTextureCache : IDisposable
     {
-        private readonly object m_pDictLock;
-
-        protected Dictionary<string, CCTexture2D> m_pTextures = new Dictionary<string,CCTexture2D>();
-        private static Dictionary<CCTexture2D, string> m_pTextureRefNames = new Dictionary<CCTexture2D, string>();
-
-        #region Singleton
-
         private static CCTextureCache s_sharedTextureCache;
+
+        private readonly object m_pDictLock = new object();
+        protected Dictionary<string, CCTexture2D> m_pTextures = new Dictionary<string, CCTexture2D>();
 
         ~CCTextureCache() 
         {
             Dispose();
-        }
-
-        private CCTextureCache()
-        {
-            Debug.Assert(s_sharedTextureCache == null, "Attempted to allocate a second instance of a singleton.");
-
-            m_pTextures = new Dictionary<string, CCTexture2D>();
-
-            m_pDictLock = new object();
         }
 
         public static CCTextureCache SharedTextureCache
@@ -41,171 +30,93 @@ namespace Cocos2D
                 {
                     s_sharedTextureCache = new CCTextureCache();
                 }
-                else
-                {
-                    s_sharedTextureCache.Restore();
-                }
                 return (s_sharedTextureCache);
             }
         }
 
-        #endregion
-
         public static void PurgeSharedTextureCache()
         {
-//            s_sharedTextureCache = null;
             if (s_sharedTextureCache != null)
             {
                 s_sharedTextureCache.Dispose();
+                s_sharedTextureCache = null;
             }
         }
 
         public void UnloadContent()
         {
             m_pTextures.Clear();
-            m_pTextureRefNames.Clear();
         }
 
-        /// <summary>
-        /// Restores all of the textures in the cache - used when the game is resurrected on Android.
-        /// </summary>
-        public void Restore()
+        public bool Contains(string assetFile)
         {
-            if (m_pTextureRefNames.Count > 0)
-            {
-//                CCLog.Log("Restoring the texture cache!");
-                List<string> l = new List<string>(m_pTextureRefNames.Values);
-                m_pTextureRefNames.Clear();
-                foreach (string name in l)
-                {
-//                    CCLog.Log("Restoring: " + name);
-                    AddImage(name);
-                }
-            }
-        }
-
-        public void ReloadMyTexture(CCTexture2D t)
-        {
-            if (m_pTextureRefNames.ContainsKey(t))
-            {
-                string file = m_pTextureRefNames[t];
-                AddImage(file);
-            }
+            return m_pTextures.ContainsKey(assetFile);
         }
 
         public CCTexture2D AddImage(string fileimage)
         {
             Debug.Assert(!String.IsNullOrEmpty(fileimage), "TextureCache: fileimage MUST not be NULL");
 
-            CCTexture2D texture;
-
             lock (m_pDictLock)
             {
-                //remove possible -HD suffix to prevent caching the same image twice (issue #1040)
-                string pathKey = fileimage;
-                //CCFileUtils.ccRemoveHDSuffixFromFile(pathKey);
+                CCTexture2D texture;
 
-                bool bHasTexture = m_pTextures.TryGetValue(pathKey, out texture);
-                if(!bHasTexture || texture == null) 
+                if (!m_pTextures.TryGetValue(fileimage, out texture))
                 {
-                    // Create a new one only if the current one does not exist
                     texture = new CCTexture2D();
+                    
+                    texture.InitWithFile(fileimage);
+                    
+                    m_pTextures.Add(fileimage, texture);
                 }
-                if(!texture.IsTextureDefined)
-                {
-                    // Either we are creating a new one or else we need to refresh the current one.
-                    // CCLog.Log("Loading texture {0}", fileimage);
-                    Texture2D textureXna = null;
-                    try
-                    {
-                        textureXna = CCApplication.SharedApplication.Content.Load<Texture2D>(fileimage);
-                    }
-                    catch (Exception)
-                    {
-                    }
-                    if(textureXna == null) 
-                    {
-                        string srcfile = fileimage;
-                        if (srcfile.IndexOf('.') > -1)
-                        {
-                            // Remove the extension
-                            srcfile = srcfile.Substring(0, srcfile.LastIndexOf('.'));
-                        }
-                        try {
-                            textureXna = CCApplication.SharedApplication.Content.Load<Texture2D>(srcfile);
-                        }
-                        catch(Exception) {
-                            if(!srcfile.EndsWith ("-hd")) {
-                                srcfile = srcfile + "-hd";
-                            try 
-                            {
-                                textureXna = CCApplication.SharedApplication.Content.Load<Texture2D>(srcfile);
-                            }
-                            catch(Exception) {
-                            }
-                            }
-                        }
-                    }
-                    if(textureXna == null) {
-                        throw(new ArgumentException("Texture " + fileimage + " was not found."));
-                    }
-                    bool isInited = texture.InitWithTexture(textureXna);
-
-                    if (isInited)
-                    {
-                        texture.IsManaged = true;
-                        texture.ContentFile = fileimage;
-                        m_pTextures[pathKey] = texture;
-                        m_pTextureRefNames[texture] = fileimage;
-                    }
-                    else
-                    {
-                        Debug.Assert(false, "cocos2d: Couldn't add image:" + fileimage + " in CCTextureCache");
-                        return null;
-                    }
-                }
+                return texture;
             }
-            return texture;
         }
 
-        public CCTexture2D AddImage(Stream imageStream, string assetName)
+        public CCTexture2D AddImage(byte[] data, string assetName, SurfaceFormat format)
         {
-            Debug.Assert(imageStream != null, "TextureCache: imageStream MUST not be NULL");
-            
+            lock (m_pDictLock)
+            {
+                CCTexture2D texture;
+
+                if (!m_pTextures.TryGetValue(assetName, out texture))
+                {
+                    texture = new CCTexture2D();
+                    
+                    texture.InitWithData(data, format);
+                    
+                    m_pTextures.Add(assetName, texture);
+                }
+                return texture;
+            }
+        }
+
+        public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, SurfaceFormat format,
+                                          bool premultiplied) where T : struct
+        {
+            return AddRawImage(data, width, height, assetName, format, premultiplied, false, new CCSize(width, height));
+        }
+
+        public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, SurfaceFormat format,
+                                          bool premultiplied, bool mipMap) where T : struct
+        {
+            return AddRawImage(data, width, height, assetName, format, premultiplied, mipMap, new CCSize(width, height));
+        }
+
+         public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, SurfaceFormat format,
+                                          bool premultiplied, bool mipMap, CCSize contentSize) where T : struct
+        {
             CCTexture2D texture;
 
             lock (m_pDictLock)
             {
-                string pathKey = assetName;
-
-                bool bHasTexture = m_pTextures.TryGetValue(pathKey, out texture);
-                if(!bHasTexture || texture == null) 
+                if (!m_pTextures.TryGetValue(assetName, out texture))
                 {
-                    // Create a new one only if the current one does not exist
                     texture = new CCTexture2D();
-                }
-                if(!texture.IsTextureDefined)
-                {
-                    // Either we are creating a new one or else we need to refresh the current one.
-                    // CCLog.Log("Loading texture {0}", fileimage);
                     
-                    Texture2D textureXna = Texture2D.FromStream(CCApplication.SharedApplication.GraphicsDevice, imageStream);
+                    texture.InitWithRawData(data, format, width, height, premultiplied, mipMap, contentSize);
 
-                    bool isInited = texture.InitWithTexture(textureXna);
-                    
-                    if (isInited)
-                    {
-						// Can only be true if the content manager loads the texture.
-                        texture.IsManaged = false;
-                        texture.ContentFile = assetName;
-                        m_pTextures[pathKey] = texture;
-                        m_pTextureRefNames[texture] = assetName;
-                    }
-                    else
-                    {
-                        Debug.Assert(false, "cocos2d: Couldn't add image:" + assetName + " in CCTextureCache");
-                        return null;
-                    }
+                    m_pTextures.Add(assetName, texture);
                 }
             }
             return texture;
@@ -214,7 +125,6 @@ namespace Cocos2D
         public CCTexture2D TextureForKey(string key)
         {
             CCTexture2D texture = null;
-
             try
             {
                 m_pTextures.TryGetValue(key, out texture);
@@ -295,28 +205,20 @@ namespace Cocos2D
             int count = 0;
             int total = 0;
 
-			var copy = m_pTextures.ToList();
+            var copy = m_pTextures.ToList();
 
-			foreach (var pair in copy)
+            foreach (var pair in copy)
             {
-                var texture = pair.Value.Texture2D;
+                var texture = pair.Value.XNATexture;
                 var bytes = texture.Width * texture.Height * 4;
 
-                    count++;
-                    total += bytes;
+                count++;
+                total += bytes;
 
-                    CCLog.Log("{0} {1} x {2} => {3} KB.",
-                    pair.Key,
-                    pair.Value.Texture2D.Width,
-                    pair.Value.Texture2D.Height,
-                        bytes / 1024
-                        );
-                }
-
-                CCLog.Log("{0} textures, for {1} KB ({2:00.00} MB)", count, total / 1024, total / (1024f * 1024f));
+                CCLog.Log("{0} {1} x {2} => {3} KB.", pair.Key, texture.Width, texture.Height, bytes / 1024);
+            }
+            CCLog.Log("{0} textures, for {1} KB ({2:00.00} MB)", count, total / 1024, total / (1024f * 1024f));
         }
-
-        #region IDisposable Members
 
         public void Dispose()
         {
@@ -324,20 +226,9 @@ namespace Cocos2D
             {
                 foreach (CCTexture2D t in m_pTextures.Values)
                 {
-                    if (!t.IsManaged && (t is IDisposable))
-                    {
-                        // Only dispose objects that are not managed by the content manager.
-                        ((IDisposable)t).Dispose();
-        }
-                    // Try to force GC collection of the texture because the ref name
-                    // collection also holds on to this texture reference and prevents the texture2d from
-                    // being collected.
-                    t.Texture = null;
+                    t.Dispose();
                 }
-                // m_pTextures.Clear();
             }
         }
-
-        #endregion
     }
 }
