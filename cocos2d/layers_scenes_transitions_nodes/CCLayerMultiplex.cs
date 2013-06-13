@@ -9,7 +9,7 @@ namespace Cocos2D
     /// - It supports one or more children
     /// - Only one children will be active a time
     /// </summary>
-    public class CCLayerMultiplex : CCLayer
+    public class CCLayerMultiplex : CCLayerRGBA
     {
         protected int m_nEnabledLayer=-1;
         protected List<CCLayer> m_pLayers;
@@ -120,7 +120,6 @@ namespace Cocos2D
                 // no-op
                 return;
             }
-            CCLog.Log("Switching to index {0}", n);
 
             Debug.Assert(n < m_pLayers.Count, "Invalid index in MultiplexLayer SwitchTo");
 
