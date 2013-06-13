@@ -48,6 +48,8 @@ namespace Cocos2D
         private int m_uPixelsHigh;
         private int m_uPixelsWide;
 
+        private bool m_bManaged;
+
         public CCTexture2D()
         {
             m_samplerState = SamplerState.LinearClamp;
@@ -191,14 +193,13 @@ namespace Cocos2D
 
         public override void Dispose()
         {
-            if (!IsDisposed)
+            base.Dispose();
+
+            if (m_Texture2D != null && !m_Texture2D.IsDisposed && !m_bManaged)
             {
-                if (m_Texture2D != null && !m_Texture2D.IsDisposed)
-                {
-                    m_Texture2D.Dispose();
-                    m_Texture2D = null;
-                }
+                m_Texture2D.Dispose();
             }
+            m_Texture2D = null;
         }
 
         public override string ToString()
@@ -269,7 +270,7 @@ namespace Cocos2D
             {
                 var texture = new Texture2D(CCDrawManager.GraphicsDevice, pixelsWide, pixelsHigh, mipMap, pixelFormat);
 
-                if (InitWithTexture(texture, pixelFormat, premultipliedAlpha))
+                if (InitWithTexture(texture, pixelFormat, premultipliedAlpha, false))
                 {
                     m_CacheInfo.CacheType = CCTextureCacheType.None;
                     m_CacheInfo.Data = null;
@@ -320,7 +321,7 @@ namespace Cocos2D
             try
             {
                 texture = Texture2D.FromStream(CCDrawManager.GraphicsDevice, stream);
-                InitWithTexture(texture, pixelFormat, false);
+                InitWithTexture(texture, pixelFormat, false, false);
 
                 return true;
             }
@@ -355,7 +356,7 @@ namespace Cocos2D
 
                 texture.SetData(data);
 
-                if (InitWithTexture(texture, pixelFormat, premultipliedAlpha))
+                if (InitWithTexture(texture, pixelFormat, premultipliedAlpha, false))
                 {
                     m_tContentSize = contentSize;
 
@@ -531,7 +532,7 @@ namespace Cocos2D
 
                 CCDrawManager.SetRenderTarget((RenderTarget2D) null);
 
-                if (InitWithTexture(renderTarget, renderTarget.Format, true))
+                if (InitWithTexture(renderTarget, renderTarget.Format, true, false))
                 {
                     m_CacheInfo.CacheType = CCTextureCacheType.String;
                     m_CacheInfo.Data = new CCStringCache()
@@ -554,8 +555,10 @@ namespace Cocos2D
             return false;
         }
 
-        internal bool InitWithTexture(Texture2D texture, SurfaceFormat format, bool premultipliedAlpha)
+        internal bool InitWithTexture(Texture2D texture, SurfaceFormat format, bool premultipliedAlpha, bool managed)
         {
+            m_bManaged = managed;
+
             if (null == texture)
             {
                 return false;
@@ -563,17 +566,31 @@ namespace Cocos2D
 
             if (OptimizeForPremultipliedAlpha && !premultipliedAlpha)
             {
-                texture = ConvertToPremultiplied(texture, format);
+                m_Texture2D = ConvertToPremultiplied(texture, format);
+
+                if (!m_bManaged)
+                {
+                    texture.Dispose();
+                    m_bManaged = false;
+                }
             }
             else
             {
                 if (texture.Format != format)
                 {
-                    texture = ConvertSurfaceFormat(texture, format);
+                    m_Texture2D = ConvertSurfaceFormat(texture, format);
+
+                    if (!m_bManaged)
+                    {
+                        texture.Dispose();
+                        m_bManaged = false;
+                    }
+                }
+                else
+                {
+                    m_Texture2D = texture;
                 }
             }
-
-            m_Texture2D = texture;
 
             m_ePixelFormat = texture.Format;
             m_uPixelsWide = texture.Width;
@@ -588,6 +605,8 @@ namespace Cocos2D
 
         public bool InitWithFile(string file)
         {
+            m_bManaged = false;
+
             Texture2D texture = null;
 
             m_CacheInfo.CacheType = CCTextureCacheType.AssetFile;
@@ -597,7 +616,7 @@ namespace Cocos2D
             {
                 texture = CCApplication.SharedApplication.Content.Load<Texture2D>(file);
                 //????????????????????????????
-                return InitWithTexture(texture, DefaultAlphaPixelFormat, true);
+                return InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
             }
             catch (Exception)
             {
@@ -617,7 +636,7 @@ namespace Cocos2D
                 {
                     texture = CCApplication.SharedApplication.Content.Load<Texture2D>(srcfile);
                     //????????????????????????????
-                    return InitWithTexture(texture, DefaultAlphaPixelFormat, true);
+                    return InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
                 }
                 catch (Exception)
                 {
@@ -627,8 +646,9 @@ namespace Cocos2D
                         try
                         {
                             texture = CCApplication.SharedApplication.Content.Load<Texture2D>(srcfile);
+                            m_bManaged = true;
                             //????????????????????????????
-                            return InitWithTexture(texture, DefaultAlphaPixelFormat, true);
+                            return InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
                         }
                         catch (Exception)
                         {
@@ -664,7 +684,13 @@ namespace Cocos2D
                 sb.Draw(m_Texture2D, Vector2.Zero, Color.White);
                 sb.End();
 
-                m_Texture2D.Dispose();
+                if (!m_bManaged)
+                {
+                    m_Texture2D.Dispose();
+                }
+
+                m_bManaged = false;
+                m_Texture2D = target;
 
                 m_bHasMipmaps = true;
             }
@@ -687,8 +713,6 @@ namespace Cocos2D
             CCDrawManager.spriteBatch.Begin();
             CCDrawManager.spriteBatch.Draw(m_Texture2D, new Vector2(0, 0), Color.White);
             CCDrawManager.SetRenderTarget((CCTexture2D) null);
-
-            texture.Dispose();
 
             return renderTarget;
         }
@@ -752,11 +776,13 @@ namespace Cocos2D
 
         public override void Reinit()
         {
-            if (m_Texture2D != null && !m_Texture2D.IsDisposed)
+            if (m_Texture2D != null && !m_Texture2D.IsDisposed && !m_bManaged)
             {
                 m_Texture2D.Dispose();
-                m_Texture2D = null;
             }
+
+            m_bManaged = false;
+            m_Texture2D = null;
 
             switch (m_CacheInfo.CacheType)
             {

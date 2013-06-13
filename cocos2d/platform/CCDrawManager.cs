@@ -658,7 +658,7 @@ namespace Cocos2D
             CCSize size = pTexture.ContentSizeInPixels;
             var texture = CreateRenderTarget((int)size.Width, (int)size.Height, CCTexture2D.DefaultAlphaPixelFormat,
                                              m_PlatformDepthFormat, usage);
-            pTexture.InitWithTexture(texture, CCTexture2D.DefaultAlphaPixelFormat, true);
+            pTexture.InitWithTexture(texture, CCTexture2D.DefaultAlphaPixelFormat, true, false);
         }
 
         public static RenderTarget2D CreateRenderTarget(int width, int height, RenderTargetUsage usage)
@@ -1446,12 +1446,23 @@ namespace Cocos2D
 
             UpdateBuffer();
         }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            
+            if (_vertexBuffer != null && !_vertexBuffer.IsDisposed)
+            {
+                _vertexBuffer.Dispose();
+            }
+            
+            _vertexBuffer = null;
+        }
     }
 
     public class CCIndexBuffer<T> : CCGraphicsResource where T : struct
     {
         private IndexBuffer _indexBuffer;
-        private int _indexCount;
         private BufferUsage _usage;
         private CCRawList<T> _data;
 
@@ -1490,26 +1501,19 @@ namespace Cocos2D
 
         public CCIndexBuffer(int indexCount, BufferUsage usage)
         {
-            _indexCount = indexCount;
+            _data = new CCRawList<T>(indexCount);
             _usage = usage;
             Reinit();
         }
 
         public override void Reinit()
         {
-            if (_data == null)
-            {
-                _data = new CCRawList<T>(_indexCount);
-            }
-
-            _data.Capacity = _indexCount;
-
             if (_indexBuffer != null && !_indexBuffer.IsDisposed)
             {
                 _indexBuffer.Dispose();
             }
 
-            _indexBuffer = new IndexBuffer(CCDrawManager.GraphicsDevice, typeof(T), _indexCount, _usage);
+            _indexBuffer = new IndexBuffer(CCDrawManager.GraphicsDevice, typeof(T), _data.Count, _usage);
 
             UpdateBuffer();
         }
@@ -1527,10 +1531,16 @@ namespace Cocos2D
             }
         }
 
-        public void Resize(int indexCount)
+        public override void Dispose()
         {
-            _indexCount = indexCount;
-            Reinit();
+            base.Dispose();
+
+            if (_indexBuffer != null && !_indexBuffer.IsDisposed)
+            {
+                _indexBuffer.Dispose();
+            }
+
+            _indexBuffer = null;
         }
     }
 }
