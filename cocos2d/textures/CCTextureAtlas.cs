@@ -47,10 +47,10 @@ namespace Cocos2D
     public class CCTextureAtlas 
     {
         internal bool Dirty = true; //indicates whether or not the array buffer of the VBO needs to be updated
+
+        private CCQuadVertexBuffer m_pVertexBuffer;
         public CCRawList<CCV3F_C4B_T2F_Quad> m_pQuads;
         protected CCTexture2D m_pTexture;
-
-        private VertexBuffer m_pVertexBuffer;
 
         #region properties
 
@@ -122,7 +122,7 @@ namespace Cocos2D
 
             if (Dirty)
             {
-                CCDrawManager.SetQuadsToBuffer(m_pVertexBuffer, m_pQuads, 0, m_pQuads.count);
+                m_pVertexBuffer.UpdateBuffer();
                 Dirty = false;
             }
 
@@ -142,9 +142,9 @@ namespace Cocos2D
                 return true;
             }
 
-            m_pQuads.Capacity = newCapacity;
+            m_pVertexBuffer.Capacity = newCapacity;
 
-            MapBuffers();
+            m_pQuads = m_pVertexBuffer.Data;
 
             Dirty = true;
 
@@ -153,7 +153,7 @@ namespace Cocos2D
 
         public void IncreaseTotalQuadsWith(int amount)
         {
-            m_pQuads.count += amount;
+            m_pVertexBuffer.Count += amount;
         }
 
         public void MoveQuadsFromIndex(int oldIndex, int amount, int newIndex)
@@ -173,15 +173,12 @@ namespace Cocos2D
             {
                 // move quads from newIndex to newIndex + amount to make room for buffer
                 Array.Copy(m_pQuads.Elements, newIndex + amount, m_pQuads.Elements, newIndex, oldIndex - newIndex);
-                //memmove(&m_pQuads[newIndex], &m_pQuads[newIndex + amount], (oldIndex - newIndex) * quadSize);
             }
             else
             {
                 // move quads above back
                 Array.Copy(m_pQuads.Elements, oldIndex + amount, m_pQuads.Elements, oldIndex, newIndex - oldIndex);
-                //memmove(&m_pQuads[oldIndex], &m_pQuads[oldIndex + amount], (newIndex - oldIndex) * quadSize);
             }
-            //memcpy(&m_pQuads[newIndex], tempQuads, amount * quadSize);
             Array.Copy(tmp, 0, m_pQuads.Elements, newIndex, amount);
 
             Dirty = true;
@@ -191,7 +188,6 @@ namespace Cocos2D
         {
             Debug.Assert(newIndex + (m_pQuads.count - index) <= m_pQuads.Capacity, "moveQuadsFromIndex move is out of bounds");
 
-            //memmove(m_pQuads + newIndex,m_pQuads + index, (m_uTotalQuads - index) * sizeof(m_pQuads[0]));
             Array.Copy(m_pQuads.Elements, index, m_pQuads.Elements, newIndex, m_pQuads.count - index);
             Dirty = true;
         }
@@ -275,33 +271,17 @@ namespace Cocos2D
             // Re-initialization is not allowed
             Debug.Assert(m_pQuads == null);
 
-            if (capacity == 0)
+            if (capacity < 4)
             {
                 capacity = 4;
             }
 
-            m_pQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(capacity);
+            m_pVertexBuffer = new CCQuadVertexBuffer(capacity, BufferUsage.WriteOnly);
+            m_pQuads = m_pVertexBuffer.Data;
 
             Dirty = true;
 
-            MapBuffers();
-
             return true;
-        }
-
-        private void MapBuffers()
-        {
-            int vertCount = m_pQuads.Capacity * 4;
-
-            if (m_pVertexBuffer == null || m_pVertexBuffer.VertexCount < vertCount)
-            {
-                if (m_pVertexBuffer != null)
-                {
-                    m_pVertexBuffer.Dispose();
-                }
-                m_pVertexBuffer = new VertexBuffer(CCApplication.SharedApplication.GraphicsDevice, typeof(CCV3F_C4B_T2F), m_pQuads.Capacity * 4,
-                                                BufferUsage.WriteOnly);
-            }
         }
 
         #endregion

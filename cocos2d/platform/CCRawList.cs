@@ -60,9 +60,12 @@ namespace Cocos2D
             get { return Elements.Length; }
             set
             {
-                var newArray = new T[value];
-                Array.Copy(Elements, newArray, count);
-                Elements = newArray;
+                if (Elements.Length != value)
+                {
+                    var newArray = new T[value];
+                    Array.Copy(Elements, newArray, count);
+                    Elements = newArray;
+                }
             }
         }
 
@@ -77,6 +80,17 @@ namespace Cocos2D
         public int Count
         {
             get { return count; }
+            set
+            {
+                if (count != value)
+                {
+                    if (value > Capacity)
+                    {
+                        Capacity = value;
+                    }
+                    count = value;
+                }
+            }
         }
 
         /// <summary>

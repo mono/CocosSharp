@@ -732,7 +732,7 @@ namespace Cocos2D
         public void PurgeCachedData()
         {
             CCLabelBMFont.PurgeCachedData();
-            CCTextureCache.SharedTextureCache.RemoveUnusedTextures();
+            CCTextureCache.SharedTextureCache.RemoveAllTextures();
             //CCFileUtils::sharedFileUtils()->purgeCachedEntries();
         }
 

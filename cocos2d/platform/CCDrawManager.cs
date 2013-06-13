@@ -70,11 +70,8 @@ namespace Cocos2D
         private static CCBlendFunc m_currBlend = CCBlendFunc.AlphaBlend;
         private static RenderTarget2D m_currRenderTarget;
         private static Viewport m_savedViewport;
-        private static DynamicVertexBuffer m_quadsBuffer;
-        private static IndexBuffer m_quadsIndexBuffer;
-
-        private static CCV3F_C4B_T2F[] m_vertices;
-        private static short[] m_quadIndices;
+        private static CCQuadVertexBuffer m_quadsBuffer;
+        private static CCIndexBuffer<short> m_quadsIndexBuffer;
 
         public static int DrawCount;
         private static CCV3F_C4B_T2F[] m_quadVertices;
@@ -88,6 +85,10 @@ namespace Cocos2D
         private static DepthFormat m_PlatformDepthFormat = DepthFormat.Depth24;
         // ref: http://www.khronos.org/registry/gles/extensions/NV/GL_NV_texture_npot_2D_mipmap.txt
         private static bool m_AllowNonPower2Textures = true;
+
+        internal static CCRawList<CCV3F_C4B_T2F> _tmpVertices = new CCRawList<CCV3F_C4B_T2F>();
+
+        private static bool m_bNeedReinitResources;
 
         public static bool VertexColorEnabled
         {
@@ -230,14 +231,14 @@ namespace Cocos2D
                 if (currentState.ScissorTestEnable != value)
                 {
                     graphicsDevice.RasterizerState = new RasterizerState
-                        {
-                            ScissorTestEnable = value,
-                            CullMode = currentState.CullMode,
-                            DepthBias = currentState.DepthBias,
-                            FillMode = currentState.FillMode,
-                            MultiSampleAntiAlias = currentState.MultiSampleAntiAlias,
-                            SlopeScaleDepthBias = currentState.SlopeScaleDepthBias
-                        };
+                    {
+                        ScissorTestEnable = value,
+                        CullMode = currentState.CullMode,
+                        DepthBias = currentState.DepthBias,
+                        FillMode = currentState.FillMode,
+                        MultiSampleAntiAlias = currentState.MultiSampleAntiAlias,
+                        SlopeScaleDepthBias = currentState.SlopeScaleDepthBias
+                    };
                 }
             }
         }
@@ -260,28 +261,28 @@ namespace Cocos2D
         public static void Init(GraphicsDevice graphicsDevice)
         {
             CCDrawManager.graphicsDevice = graphicsDevice;
-            
+
             spriteBatch = new SpriteBatch(graphicsDevice);
-            
+
             m_defaultEffect = new BasicEffect(graphicsDevice);
 
             PrimitiveEffect = new BasicEffect(graphicsDevice)
-                {
-                    TextureEnabled = false,
-                    VertexColorEnabled = true
-                };
+            {
+                TextureEnabled = false,
+                VertexColorEnabled = true
+            };
 
             m_DepthEnableStencilState = new DepthStencilState
-                {
-                    DepthBufferEnable = true,
-                    DepthBufferWriteEnable = true,
-                    TwoSidedStencilMode = true
-                };
+            {
+                DepthBufferEnable = true,
+                DepthBufferWriteEnable = true,
+                TwoSidedStencilMode = true
+            };
 
             m_DepthDisableStencilState = new DepthStencilState
-                {
-                    DepthBufferEnable = false
-                };
+            {
+                DepthBufferEnable = false
+            };
 #if !WINDOWS_PHONE && !XBOX && !WINDOWS &&!NETFX_CORE && !PSM
             List<string> extensions = CCUtils.GetGLExtensions();
             foreach(string s in extensions) 
@@ -316,44 +317,44 @@ namespace Cocos2D
 
             CCDrawingPrimitives.Init(graphicsDevice);
 
-            //graphicsDevice.Disposing += graphicsDevice_Disposing;
-            //graphicsDevice.DeviceLost += graphicsDevice_DeviceLost;
-            //graphicsDevice.DeviceReset += graphicsDevice_DeviceReset;
-            //graphicsDevice.DeviceResetting += graphicsDevice_DeviceResetting;
-            //graphicsDevice.ResourceCreated += graphicsDevice_ResourceCreated;
-            //graphicsDevice.ResourceDestroyed += graphicsDevice_ResourceDestroyed;
+            graphicsDevice.Disposing += GraphicsDeviceDisposing;
+            graphicsDevice.DeviceLost += GraphicsDeviceDeviceLost;
+            graphicsDevice.DeviceReset += GraphicsDeviceDeviceReset;
+            graphicsDevice.DeviceResetting += GraphicsDeviceDeviceResetting;
+            graphicsDevice.ResourceCreated += GraphicsDeviceResourceCreated;
+            graphicsDevice.ResourceDestroyed += GraphicsDeviceResourceDestroyed;
         }
-        /*
-        static void graphicsDevice_ResourceDestroyed(object sender, ResourceDestroyedEventArgs e)
+        
+        static void GraphicsDeviceResourceDestroyed(object sender, ResourceDestroyedEventArgs e)
         {
-            throw new NotImplementedException();
         }
 
-        static void graphicsDevice_ResourceCreated(object sender, ResourceCreatedEventArgs e)
+        static void GraphicsDeviceResourceCreated(object sender, ResourceCreatedEventArgs e)
         {
-            throw new NotImplementedException();
         }
 
-        static void graphicsDevice_DeviceResetting(object sender, EventArgs e)
+        static void GraphicsDeviceDeviceResetting(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+#if ANDROID
+            CCGraphicsResource.DisposeAllResources();
+            CCSpriteFontCache.SharedInstance.Clear();
+#endif
         }
 
-        static void graphicsDevice_DeviceReset(object sender, EventArgs e)
+        static void GraphicsDeviceDeviceReset(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+#if ANDROID
+            m_bNeedReinitResources = true;
+#endif
         }
 
-        static void graphicsDevice_DeviceLost(object sender, EventArgs e)
+        static void GraphicsDeviceDeviceLost(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
         }
 
-        static void graphicsDevice_Disposing(object sender, EventArgs e)
+        static void GraphicsDeviceDisposing(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
         }
-        */
 
         private static void ResetDevice()
         {
@@ -414,6 +415,12 @@ namespace Cocos2D
 
         public static void BeginDraw()
         {
+            if (m_bNeedReinitResources)
+            {
+                CCGraphicsResource.ReinitAllResources();
+                m_bNeedReinitResources = false;
+            }
+
             ResetDevice();
             graphicsDevice.Clear(Color.Black);
             DrawCount = 0;
@@ -452,7 +459,7 @@ namespace Cocos2D
         {
             if (m_currentEffect is BasicEffect)
             {
-                var effect = (BasicEffect) m_currentEffect;
+                var effect = (BasicEffect)m_currentEffect;
 
                 effect.TextureEnabled = m_textureEnabled;
                 effect.VertexColorEnabled = m_vertexColorEnabled;
@@ -460,7 +467,7 @@ namespace Cocos2D
             }
             else if (m_currentEffect is AlphaTestEffect)
             {
-                var effect = (AlphaTestEffect) m_currentEffect;
+                var effect = (AlphaTestEffect)m_currentEffect;
                 effect.VertexColorEnabled = m_vertexColorEnabled;
                 effect.Texture = m_currentTexture;
             }
@@ -570,42 +577,42 @@ namespace Cocos2D
             // blend state seems the correct modification for now.
             //if (m_currBlend.Destination != blendFunc.Destination || m_currBlend.Source != blendFunc.Source)
             //{
-                BlendState bs = null;
-                if (blendFunc == CCBlendFunc.AlphaBlend)
+            BlendState bs = null;
+            if (blendFunc == CCBlendFunc.AlphaBlend)
+            {
+                bs = BlendState.AlphaBlend;
+            }
+            else if (blendFunc == CCBlendFunc.Additive)
+            {
+                bs = BlendState.Additive;
+            }
+            else if (blendFunc == CCBlendFunc.NonPremultiplied)
+            {
+                bs = BlendState.NonPremultiplied;
+            }
+            else if (blendFunc == CCBlendFunc.Opaque)
+            {
+                bs = BlendState.Opaque;
+            }
+            else
+            {
+                if (!m_blendStates.TryGetValue(blendFunc, out bs))
                 {
-                    bs = BlendState.AlphaBlend;
-                }
-                else if (blendFunc == CCBlendFunc.Additive)
-                {
-                    bs = BlendState.Additive;
-                }
-                else if (blendFunc == CCBlendFunc.NonPremultiplied)
-                {
-                    bs = BlendState.NonPremultiplied;
-                }
-                else if (blendFunc == CCBlendFunc.Opaque)
-                {
-                    bs = BlendState.Opaque;
-                }
-                else
-                {
-                    if (!m_blendStates.TryGetValue(blendFunc, out bs))
-                    {
-                        bs = new BlendState();
+                    bs = new BlendState();
 
-                        bs.ColorSourceBlend = CCOGLES.GetXNABlend(blendFunc.Source);
-                        bs.AlphaSourceBlend = CCOGLES.GetXNABlend(blendFunc.Source);
-                        bs.ColorDestinationBlend = CCOGLES.GetXNABlend(blendFunc.Destination);
-                        bs.AlphaDestinationBlend = CCOGLES.GetXNABlend(blendFunc.Destination);
+                    bs.ColorSourceBlend = CCOGLES.GetXNABlend(blendFunc.Source);
+                    bs.AlphaSourceBlend = CCOGLES.GetXNABlend(blendFunc.Source);
+                    bs.ColorDestinationBlend = CCOGLES.GetXNABlend(blendFunc.Destination);
+                    bs.AlphaDestinationBlend = CCOGLES.GetXNABlend(blendFunc.Destination);
 
-                        m_blendStates.Add(blendFunc, bs);
-                    }
+                    m_blendStates.Add(blendFunc, bs);
                 }
+            }
 
-                graphicsDevice.BlendState = bs;
+            graphicsDevice.BlendState = bs;
 
-                m_currBlend.Source = blendFunc.Source;
-                m_currBlend.Destination = blendFunc.Destination;
+            m_currBlend.Source = blendFunc.Source;
+            m_currBlend.Destination = blendFunc.Destination;
 
             //}
         }
@@ -649,7 +656,7 @@ namespace Cocos2D
         public static void CreateRenderTarget(CCTexture2D pTexture, RenderTargetUsage usage)
         {
             CCSize size = pTexture.ContentSizeInPixels;
-            var texture = CreateRenderTarget((int) size.Width, (int) size.Height, CCTexture2D.DefaultAlphaPixelFormat,
+            var texture = CreateRenderTarget((int)size.Width, (int)size.Height, CCTexture2D.DefaultAlphaPixelFormat,
                                              m_PlatformDepthFormat, usage);
             pTexture.InitWithTexture(texture, CCTexture2D.DefaultAlphaPixelFormat, true);
         }
@@ -690,7 +697,7 @@ namespace Cocos2D
         {
             if (pTexture == null)
             {
-                SetRenderTarget((RenderTarget2D) null);
+                SetRenderTarget((RenderTarget2D)null);
             }
             else
             {
@@ -703,16 +710,16 @@ namespace Cocos2D
         {
             if (graphicsDevice.GraphicsDeviceStatus == GraphicsDeviceStatus.Normal)
             {
-            if (renderTarget == null)
-            {
-                graphicsDevice.SetRenderTarget(m_renderTarget);
-                graphicsDevice.Viewport = m_savedViewport;
-            }
-            else
-            {
-                m_savedViewport = graphicsDevice.Viewport;
-                graphicsDevice.SetRenderTarget(renderTarget);
-            }
+                if (renderTarget == null)
+                {
+                    graphicsDevice.SetRenderTarget(m_renderTarget);
+                    graphicsDevice.Viewport = m_savedViewport;
+                }
+                else
+                {
+                    m_savedViewport = graphicsDevice.Viewport;
+                    graphicsDevice.SetRenderTarget(renderTarget);
+                }
             }
             m_currRenderTarget = renderTarget;
         }
@@ -724,53 +731,58 @@ namespace Cocos2D
 
         private static void CheckQuadsIndexBuffer(int capacity)
         {
-            if (m_quadsIndexBuffer == null || m_quadsIndexBuffer.IndexCount < capacity * 6)
+            if (m_quadsIndexBuffer == null || m_quadsIndexBuffer.Capacity < capacity * 6)
             {
                 capacity = Math.Max(capacity, DefaultQuadBufferSize);
 
-                m_quadsIndexBuffer = new IndexBuffer(CCApplication.SharedApplication.GraphicsDevice, typeof(short), capacity * 6,
-                                                     BufferUsage.WriteOnly);
+                if (m_quadsIndexBuffer == null)
+                {
+                    m_quadsIndexBuffer = new CCIndexBuffer<short>(capacity * 6, BufferUsage.WriteOnly);
+                    m_quadsIndexBuffer.Count = m_quadsIndexBuffer.Capacity;
+                }
 
-                m_quadIndices = new short[capacity * 6];
+                if (m_quadsIndexBuffer.Capacity < capacity * 6)
+                {
+                    m_quadsIndexBuffer.Capacity = capacity * 6;
+                    m_quadsIndexBuffer.Count = m_quadsIndexBuffer.Capacity;
+                }
+
+                var indices = m_quadsIndexBuffer.Data.Elements;
 
                 int i6 = 0;
                 int i4 = 0;
-                short[] indices = m_quadIndices;
 
                 for (int i = 0; i < capacity; ++i)
                 {
-                    indices[i6 + 0] = (short) (i4 + 0);
-                    indices[i6 + 1] = (short) (i4 + 2);
-                    indices[i6 + 2] = (short) (i4 + 1);
+                    indices[i6 + 0] = (short)(i4 + 0);
+                    indices[i6 + 1] = (short)(i4 + 2);
+                    indices[i6 + 2] = (short)(i4 + 1);
 
-                    indices[i6 + 3] = (short) (i4 + 1);
-                    indices[i6 + 4] = (short) (i4 + 2);
-                    indices[i6 + 5] = (short) (i4 + 3);
+                    indices[i6 + 3] = (short)(i4 + 1);
+                    indices[i6 + 4] = (short)(i4 + 2);
+                    indices[i6 + 5] = (short)(i4 + 3);
 
                     i6 += 6;
                     i4 += 4;
                 }
 
-                m_quadsIndexBuffer.SetData(indices);
+                m_quadsIndexBuffer.UpdateBuffer();
             }
         }
 
         private static void CheckQuadsVertexBuffer(int capacity)
         {
-            if (m_quadsBuffer == null || m_quadsBuffer.IsContentLost || m_quadsBuffer.VertexCount < capacity * 4)
+            if (m_quadsBuffer == null || m_quadsBuffer.Capacity < capacity)
             {
                 capacity = Math.Max(capacity, DefaultQuadBufferSize);
 
-                if (m_quadsBuffer != null)
+                if (m_quadsBuffer == null)
                 {
-                    m_quadsBuffer.Dispose();
+                    m_quadsBuffer = new CCQuadVertexBuffer(capacity, BufferUsage.WriteOnly);
                 }
-				
-                m_quadsBuffer = new DynamicVertexBuffer(graphicsDevice, typeof(CCV3F_C4B_T2F), capacity * 4, BufferUsage.WriteOnly);
-
-                if (m_vertices == null || m_vertices.Length < capacity * 4)
+                else
                 {
-                    m_vertices = new CCV3F_C4B_T2F[capacity * 4];
+                    m_quadsBuffer.Capacity = capacity;
                 }
             }
         }
@@ -790,7 +802,7 @@ namespace Cocos2D
             vertices[2] = quad.TopRight;
             vertices[3] = quad.BottomRight;
 
-            DrawIndexedPrimitives(PrimitiveType.TriangleList, vertices, 0, 4, m_quadIndices, 0, 2);
+            DrawIndexedPrimitives(PrimitiveType.TriangleList, vertices, 0, 4, m_quadsIndexBuffer.Data.Elements, 0, 2);
         }
 
         public static void DrawQuads(CCRawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
@@ -803,12 +815,10 @@ namespace Cocos2D
             CheckQuadsIndexBuffer(start + n);
             CheckQuadsVertexBuffer(start + n);
 
-            SetQuadsToBuffer(m_quadsBuffer, quads, start, n);
+            m_quadsBuffer.UpdateBuffer(quads, start, n);
 
-            //DrawIndexedPrimitives(PrimitiveType.TriangleList, _vertices, 4 * start, 4 * n, _quadIndices, start * 6, 2 * n);
-
-            graphicsDevice.SetVertexBuffer(m_quadsBuffer);
-            graphicsDevice.Indices = m_quadsIndexBuffer;
+            graphicsDevice.SetVertexBuffer(m_quadsBuffer.VertexBuffer);
+            graphicsDevice.Indices = m_quadsIndexBuffer.IndexBuffer;
 
             ApplyEffectParams();
 
@@ -816,7 +826,7 @@ namespace Cocos2D
             for (int i = 0; i < passes.Count; i++)
             {
                 passes[i].Apply();
-                graphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, m_vertices.Length, start * 6, n * 2);
+                graphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, n * 4, start * 6, n * 2);
             }
 
             graphicsDevice.SetVertexBuffer(null);
@@ -825,10 +835,12 @@ namespace Cocos2D
             DrawCount++;
         }
 
-        public static void DrawBuffer(VertexBuffer vertexBuffer, IndexBuffer indexBuffer, int start, int count)
+        public static void DrawBuffer<T, T2>(CCVertexBuffer<T> vertexBuffer, CCIndexBuffer<T2> indexBuffer, int start, int count)
+            where T : struct, IVertexType
+            where T2 : struct
         {
-            graphicsDevice.Indices = indexBuffer;
-            graphicsDevice.SetVertexBuffer(vertexBuffer);
+            graphicsDevice.Indices = indexBuffer.IndexBuffer;
+            graphicsDevice.SetVertexBuffer(vertexBuffer.VertexBuffer);
 
             ApplyEffectParams();
 
@@ -836,7 +848,7 @@ namespace Cocos2D
             for (int i = 0; i < passes.Count; i++)
             {
                 passes[i].Apply();
-                graphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, vertexBuffer.VertexCount, start, count);
+                graphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, vertexBuffer.VertexBuffer.VertexCount, start, count);
             }
 
             graphicsDevice.SetVertexBuffer(null);
@@ -845,7 +857,7 @@ namespace Cocos2D
             DrawCount++;
         }
 
-        public static void DrawQuadsBuffer(VertexBuffer vertexBuffer, int start, int n)
+        public static void DrawQuadsBuffer<T>(CCVertexBuffer<T> vertexBuffer, int start, int n) where T : struct, IVertexType
         {
             if (n == 0)
             {
@@ -854,8 +866,8 @@ namespace Cocos2D
 
             CheckQuadsIndexBuffer(start + n);
 
-            graphicsDevice.Indices = m_quadsIndexBuffer;
-            graphicsDevice.SetVertexBuffer(vertexBuffer);
+            graphicsDevice.Indices = m_quadsIndexBuffer.IndexBuffer;
+            graphicsDevice.SetVertexBuffer(vertexBuffer.VertexBuffer);
 
             ApplyEffectParams();
 
@@ -863,42 +875,13 @@ namespace Cocos2D
             for (int i = 0; i < passes.Count; i++)
             {
                 passes[i].Apply();
-                graphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, vertexBuffer.VertexCount, start * 6, n * 2);
+                graphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, vertexBuffer.VertexBuffer.VertexCount, start * 6, n * 2);
             }
 
             graphicsDevice.SetVertexBuffer(null);
             graphicsDevice.Indices = null;
 
             DrawCount++;
-        }
-
-        public static void SetQuadsToBuffer(VertexBuffer vertexBuffer, CCRawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
-        {
-            if (m_vertices == null || m_vertices.Length < quads.Capacity * 4)
-            {
-                int capacity = Math.Max(quads.Capacity, DefaultQuadBufferSize);
-                m_vertices = new CCV3F_C4B_T2F[capacity * 4];
-            }
-
-            CCV3F_C4B_T2F_Quad[] elements = quads.Elements;
-
-#if ANDROID
-            vertexBuffer.SetData(elements, start, n);
-#else
-            CCV3F_C4B_T2F[] vertices = m_vertices;
-            int i4 = 0;
-            for (int i = start; i < start + n; i++)
-            {
-                vertices[i4 + 0] = elements[i].TopLeft;
-                vertices[i4 + 1] = elements[i].BottomLeft;
-                vertices[i4 + 2] = elements[i].TopRight;
-                vertices[i4 + 3] = elements[i].BottomRight;
-
-                i4 += 4;
-            }
-
-            vertexBuffer.SetData(vertices, start * 4, n * 4);
-#endif
         }
 
         public static void Clear(ClearOptions options, Color color, float depth, int stencil)
@@ -938,10 +921,10 @@ namespace Cocos2D
         public static void SetViewPortInPoints(int x, int y, int width, int height)
         {
             graphicsDevice.Viewport = new Viewport(
-                (int) (x * m_fScaleX * m_fFrameZoomFactor + m_obViewPortRect.Origin.X * m_fFrameZoomFactor),
-                (int) (y * m_fScaleY * m_fFrameZoomFactor + m_obViewPortRect.Origin.Y * m_fFrameZoomFactor),
-                (int) (width * m_fScaleX * m_fFrameZoomFactor),
-                (int) (height * m_fScaleY * m_fFrameZoomFactor)
+                (int)(x * m_fScaleX * m_fFrameZoomFactor + m_obViewPortRect.Origin.X * m_fFrameZoomFactor),
+                (int)(y * m_fScaleY * m_fFrameZoomFactor + m_obViewPortRect.Origin.Y * m_fFrameZoomFactor),
+                (int)(width * m_fScaleX * m_fFrameZoomFactor),
+                (int)(height * m_fScaleY * m_fFrameZoomFactor)
                 );
         }
 
@@ -1043,7 +1026,7 @@ namespace Cocos2D
             bool onlyLandscape = (ll || lr) && !p;
             bool onlyPortrait = !(ll || lr) && p;
 #if WINDOWS || WINDOWSGL || WINDOWS_PHONE
-            bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & supportedOrientations) ==  DisplayOrientation.Default);
+            bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & supportedOrientations) == DisplayOrientation.Default);
 #else
             bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & supportedOrientations) == 0);
 #endif
@@ -1094,7 +1077,8 @@ namespace Cocos2D
                 m_GraphicsDeviceMgr.PreferredBackBufferWidth = preferredBackBufferHeight;
                 m_GraphicsDeviceMgr.PreferredBackBufferHeight = preferredBackBufferWidth;
             }
-            else {
+            else
+            {
                 if (onlyLandscape)
                 {
                     m_GraphicsDeviceMgr.PreferredBackBufferWidth = 840;
@@ -1127,7 +1111,8 @@ namespace Cocos2D
                 m_GraphicsDeviceMgr.PreferredBackBufferWidth = preferredBackBufferHeight;
                 m_GraphicsDeviceMgr.PreferredBackBufferHeight = preferredBackBufferWidth;
             }
-            else {
+            else
+            {
                 if (onlyPortrait)
                 {
                     m_GraphicsDeviceMgr.PreferredBackBufferWidth = 480;
@@ -1260,5 +1245,292 @@ namespace Cocos2D
         FixedWidth,
 
         UnKnown,
+    }
+
+
+    public class CCGraphicsResource : IDisposable
+    {
+        private static CCRawList<WeakReference> _createdResources = new CCRawList<WeakReference>();
+
+        private bool _isDisposed;
+
+        public bool IsDisposed
+        {
+            get { return _isDisposed; }
+        }
+
+        public CCGraphicsResource()
+        {
+            _createdResources.Add(new WeakReference(this));
+        }
+
+        ~CCGraphicsResource()
+        {
+            var resources = _createdResources.Elements;
+            for (int i = 0, count = _createdResources.Count; i < count; i++)
+            {
+                if (resources[i].Target == this)
+                {
+                    _createdResources.RemoveAt(i);
+                    return;
+                }
+            }
+
+            if (!IsDisposed)
+            {
+                Dispose();
+            }
+        }
+
+        public virtual void Dispose()
+        {
+            _isDisposed = true;
+        }
+
+        public virtual void Reinit()
+        {
+        }
+
+        internal static void ReinitAllResources()
+        {
+            var resources = _createdResources.Elements;
+            for (int i = 0, count = _createdResources.Count; i < count; i++)
+            {
+                if (resources[i].IsAlive)
+                {
+                    ((CCGraphicsResource) resources[i].Target).Reinit();
+                }
+            }
+        }
+
+        internal static void DisposeAllResources()
+        {
+            var resources = _createdResources.Elements;
+            for (int i = 0, count = _createdResources.Count; i < count; i++)
+            {
+                if (resources[i].IsAlive)
+                {
+                    ((CCGraphicsResource) resources[i].Target).Dispose();
+                }
+            }
+        }
+    }
+
+
+    public class CCVertexBuffer<T> : CCGraphicsResource where T : struct, IVertexType
+    {
+        protected VertexBuffer _vertexBuffer;
+        protected BufferUsage _usage;
+        protected CCRawList<T> _data;
+
+        internal VertexBuffer VertexBuffer
+        {
+            get { return _vertexBuffer; }
+        }
+
+        public CCRawList<T> Data
+        {
+            get { return _data; }
+        }
+
+        public int Count
+        {
+            get { return _data.Count; }
+            set
+            {
+                Debug.Assert(value <= _data.Capacity);
+                _data.count = value;
+            }
+        }
+
+        public int Capacity
+        {
+            get { return _data.Capacity; }
+            set
+            {
+                if (_data.Capacity != value)
+                {
+                    _data.Capacity = value;
+                    Reinit();
+                }
+            }
+        }
+
+        public CCVertexBuffer(int vertexCount, BufferUsage usage)
+        {
+            _data = new CCRawList<T>(vertexCount);
+            _usage = usage;
+            Reinit();
+        }
+        
+        public void UpdateBuffer()
+        {
+            UpdateBuffer(0, _data.Count);
+        }
+
+        public virtual void UpdateBuffer(int startIndex, int elementCount)
+        {
+            if (elementCount > 0)
+            {
+                _vertexBuffer.SetData(_data.Elements, startIndex, elementCount);
+            }
+        }
+
+        public override void Reinit()
+        {
+            if (_vertexBuffer != null && !_vertexBuffer.IsDisposed)
+            {
+                _vertexBuffer.Dispose();
+            }
+            _vertexBuffer = new VertexBuffer(CCDrawManager.GraphicsDevice, typeof(T), _data.Capacity, _usage);
+        }
+    }
+
+    public class CCQuadVertexBuffer : CCVertexBuffer<CCV3F_C4B_T2F_Quad>
+    {
+        public CCQuadVertexBuffer(int vertexCount, BufferUsage usage) : base(vertexCount, usage)
+        {
+        }
+
+        public void UpdateBuffer(CCRawList<CCV3F_C4B_T2F_Quad> data, int startIndex, int elementCount)
+        {
+            //TODO: 
+            var tmp = _data;
+            _data = data;
+            
+            UpdateBuffer(startIndex, elementCount);
+
+            _data = tmp;
+        }
+
+        public override void UpdateBuffer(int startIndex, int elementCount)
+        {
+            if (elementCount == 0)
+            {
+                return;
+            }
+
+            var quads = _data.Elements;
+
+            var tmp = CCDrawManager._tmpVertices;
+
+            while (tmp.Capacity < elementCount)
+            {
+                tmp.Capacity = tmp.Capacity * 2;
+            }
+            tmp.Count = elementCount * 4;
+
+            var vertices = tmp.Elements;
+
+            int i4 = 0;
+            for (int i = startIndex; i < startIndex + elementCount; i++)
+            {
+                vertices[i4 + 0] = quads[i].TopLeft;
+                vertices[i4 + 1] = quads[i].BottomLeft;
+                vertices[i4 + 2] = quads[i].TopRight;
+                vertices[i4 + 3] = quads[i].BottomRight;
+
+                i4 += 4;
+            }
+
+            _vertexBuffer.SetData(vertices, startIndex * 4, elementCount * 4);
+        }
+
+        public override void Reinit()
+        {
+            if (_vertexBuffer != null && !_vertexBuffer.IsDisposed)
+            {
+                _vertexBuffer.Dispose();
+            }
+            _vertexBuffer = new VertexBuffer(CCDrawManager.GraphicsDevice, typeof(CCV3F_C4B_T2F), _data.Capacity * 4, _usage);
+
+            UpdateBuffer();
+        }
+    }
+
+    public class CCIndexBuffer<T> : CCGraphicsResource where T : struct
+    {
+        private IndexBuffer _indexBuffer;
+        private int _indexCount;
+        private BufferUsage _usage;
+        private CCRawList<T> _data;
+
+        internal IndexBuffer IndexBuffer
+        {
+            get { return _indexBuffer; }
+        }
+
+        public CCRawList<T> Data
+        {
+            get { return _data; }
+        }
+
+        public int Count
+        {
+            get { return _data.Count; }
+            set
+            {
+                Debug.Assert(value <= _data.Capacity);
+                _data.count = value;
+            }
+        }
+
+        public int Capacity
+        {
+            get { return _data.Capacity; }
+            set
+            {
+                if (_data.Capacity != value)
+                {
+                    _data.Capacity = value;
+                    Reinit();
+                }
+            }
+        }
+
+        public CCIndexBuffer(int indexCount, BufferUsage usage)
+        {
+            _indexCount = indexCount;
+            _usage = usage;
+            Reinit();
+        }
+
+        public override void Reinit()
+        {
+            if (_data == null)
+            {
+                _data = new CCRawList<T>(_indexCount);
+            }
+
+            _data.Capacity = _indexCount;
+
+            if (_indexBuffer != null && !_indexBuffer.IsDisposed)
+            {
+                _indexBuffer.Dispose();
+            }
+
+            _indexBuffer = new IndexBuffer(CCDrawManager.GraphicsDevice, typeof(T), _indexCount, _usage);
+
+            UpdateBuffer();
+        }
+
+        public void UpdateBuffer()
+        {
+            UpdateBuffer(0, _data.Count);
+        }
+
+        public void UpdateBuffer(int startIndex, int elementCount)
+        {
+            if (elementCount > 0)
+            {
+                _indexBuffer.SetData(_data.Elements, startIndex, elementCount);
+            }
+        }
+
+        public void Resize(int indexCount)
+        {
+            _indexCount = indexCount;
+            Reinit();
+        }
     }
 }

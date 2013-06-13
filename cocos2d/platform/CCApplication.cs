@@ -137,11 +137,6 @@ namespace Cocos2D
         private void GameDeactivated(object sender, EventArgs e)
         {
             ApplicationDidEnterBackground();
-
-#if ANDROID
-            CCTexture2D.DisposeAllTextures();
-#endif
-
 #if !IOS
             CocosDenshion.CCSimpleAudioEngine.SharedEngine.RestoreMediaState();
 #endif
@@ -151,12 +146,6 @@ namespace Cocos2D
         {
             // Clear out the prior gamepad state because we don't want it anymore.
             m_PriorGamePadState.Clear();
-
-#if ANDROID
-            CCSpriteFontCache.SharedInstance.Clear();
-            CCTexture2D.ReinitAllTextures();
-#endif
-
 #if !IOS
             CocosDenshion.CCSimpleAudioEngine.SharedEngine.SaveMediaState();
 #endif

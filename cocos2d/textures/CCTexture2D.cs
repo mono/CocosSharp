@@ -33,12 +33,10 @@ namespace Cocos2D
         public Object Data;
     }
 
-    public class CCTexture2D : IDisposable
+    public class CCTexture2D : CCGraphicsResource
     {
         public static SurfaceFormat DefaultAlphaPixelFormat = SurfaceFormat.Color;
         public static bool OptimizeForPremultipliedAlpha = true;
-
-        private static List<WeakReference> _createdTextures = new List<WeakReference>();
 
         private CCTextureCacheInfo m_CacheInfo;
         private Texture2D m_Texture2D;
@@ -53,20 +51,6 @@ namespace Cocos2D
         public CCTexture2D()
         {
             m_samplerState = SamplerState.LinearClamp;
-
-            _createdTextures.Add(new WeakReference(this));
-        }
-
-        ~CCTexture2D()
-        {
-            for (int i = 0; i < _createdTextures.Count; i++)
-            {
-                if (_createdTextures[i].Target == this)
-                {
-                    _createdTextures.RemoveAt(i);
-                    return;
-                }
-            }
         }
 
         public bool IsTextureDefined
@@ -205,12 +189,15 @@ namespace Cocos2D
             }
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
-            if (m_Texture2D != null && !m_Texture2D.IsDisposed)
+            if (!IsDisposed)
             {
-                m_Texture2D.Dispose();
-                m_Texture2D = null;
+                if (m_Texture2D != null && !m_Texture2D.IsDisposed)
+                {
+                    m_Texture2D.Dispose();
+                    m_Texture2D = null;
+                }
             }
         }
 
@@ -603,6 +590,9 @@ namespace Cocos2D
         {
             Texture2D texture = null;
 
+            m_CacheInfo.CacheType = CCTextureCacheType.AssetFile;
+            m_CacheInfo.Data = file;
+
             try
             {
                 texture = CCApplication.SharedApplication.Content.Load<Texture2D>(file);
@@ -760,16 +750,12 @@ namespace Cocos2D
             return result;
         }
 
-        private void Reinit()
+        public override void Reinit()
         {
             if (m_Texture2D != null && !m_Texture2D.IsDisposed)
             {
-                return;
-            }
-
-            if (m_Texture2D != null && !m_Texture2D.IsDisposed)
-            {
                 m_Texture2D.Dispose();
+                m_Texture2D = null;
             }
 
             switch (m_CacheInfo.CacheType)
@@ -802,28 +788,6 @@ namespace Cocos2D
 
                 default:
                     throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        internal static void ReinitAllTextures()
-        {
-            for (int i = 0; i < _createdTextures.Count; i++)
-            {
-                if (_createdTextures[i].IsAlive)
-                {
-                    ((CCTexture2D) _createdTextures[i].Target).Reinit();
-                }
-            }
-        }
-
-        internal static void DisposeAllTextures()
-        {
-            for (int i = 0; i < _createdTextures.Count; i++)
-            {
-                if (_createdTextures[i].IsAlive)
-                {
-                    ((CCTexture2D) _createdTextures[i].Target).Dispose();
-                }
             }
         }
     }

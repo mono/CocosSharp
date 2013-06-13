@@ -30,10 +30,10 @@ namespace Cocos2D
     public class CCTiledGrid3D : CCGridBase
     {
         private bool m_bDirty;
-        private IndexBuffer m_pIndexBuffer;
+        private CCIndexBuffer<short> m_pIndexBuffer;
         protected short[] m_pIndices;
         protected CCQuad3[] m_pOriginalVertices;
-        private VertexBuffer m_pVertexBuffer;
+        private CCVertexBuffer<CCV3F_T2F> m_pVertexBuffer;
         internal CCV3F_T2F[] m_pVertices;
 
         /// <summary>
@@ -82,20 +82,9 @@ namespace Cocos2D
 
         public override void Blit()
         {
-            if (m_pVertexBuffer == null || m_pVertexBuffer.VertexCount < m_pVertices.Length)
-            {
-                m_pVertexBuffer = new VertexBuffer(CCDrawManager.graphicsDevice, typeof(CCV3F_T2F), m_pVertices.Length, BufferUsage.WriteOnly);
-            }
-
-            if (m_pIndexBuffer == null || m_pIndexBuffer.IndexCount < m_pIndices.Length)
-            {
-                m_pIndexBuffer = new IndexBuffer(CCDrawManager.graphicsDevice, typeof(ushort), m_pIndices.Length, BufferUsage.WriteOnly);
-                m_pIndexBuffer.SetData(m_pIndices, 0, m_pIndices.Length);
-            }
-
             if (m_bDirty)
             {
-                m_pVertexBuffer.SetData(m_pVertices, 0, m_pVertices.Length);
+                m_pVertexBuffer.UpdateBuffer();
             }
 
             bool save = CCDrawManager.VertexColorEnabled;
@@ -134,9 +123,15 @@ namespace Cocos2D
 
             int numQuads = m_sGridSize.X * m_sGridSize.Y;
 
-            m_pVertices = new CCV3F_T2F[numQuads * 4];
+            m_pVertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numQuads * 4, BufferUsage.WriteOnly);
+            m_pVertexBuffer.Count = numQuads * 4;
+            m_pIndexBuffer = new CCIndexBuffer<short>(numQuads * 6, BufferUsage.WriteOnly);
+            m_pIndexBuffer.Count = numQuads * 6;
+
+            m_pVertices = m_pVertexBuffer.Data.Elements;
+            m_pIndices = m_pIndexBuffer.Data.Elements;
+
             m_pOriginalVertices = new CCQuad3[numQuads];
-            m_pIndices = new short[numQuads * 6];
 
             CCV3F_T2F[] vertArray = m_pVertices;
             short[] idxArray = m_pIndices;
@@ -188,6 +183,8 @@ namespace Cocos2D
                 idxArray[i6 + 4] = (short) (i4 + 2);
                 idxArray[i6 + 5] = (short) (i4 + 3);
             }
+
+            m_pIndexBuffer.UpdateBuffer();
 
             for (int i = 0; i < numQuads; i++)
             {
