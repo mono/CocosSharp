@@ -720,7 +720,7 @@ namespace Cocos2D
             CCNodeLoader ccNodeLoader = mCCNodeLoaderLibrary.GetCCNodeLoader(className);
             if (ccNodeLoader == null)
             {
-                CCLog.Log("no corresponding node loader for %s", className);
+                CCLog.Log("no corresponding node loader for {0}", className);
                 return null;
             }
 

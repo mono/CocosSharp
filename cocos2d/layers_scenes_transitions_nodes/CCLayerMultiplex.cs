@@ -69,8 +69,14 @@ namespace Cocos2D
 
         public void AddLayer(CCLayer layer)
         {
-            Debug.Assert(m_pLayers != null);
-            m_pLayers.Add(layer);
+            if (m_pLayers == null)
+            {
+                InitWithLayer(layer);
+            }
+            else
+            {
+                m_pLayers.Add(layer);
+            }
         }
 
         private bool InitWithLayer(CCLayer layer)

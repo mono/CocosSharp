@@ -25,12 +25,12 @@ namespace Cocos2D
             else if (propertyName == PROPERTY_MOUSE_ENABLED)
             {
                 // TODO XXX
-                CCLog.Log("The property '%s' is not supported!", PROPERTY_MOUSE_ENABLED);
+                CCLog.Log("The property '{0}' is not supported!", PROPERTY_MOUSE_ENABLED);
             }
             else if (propertyName == PROPERTY_KEYBOARD_ENABLED)
             {
                 // TODO XXX
-                CCLog.Log("The property '%s' is not supported!", PROPERTY_KEYBOARD_ENABLED);
+                CCLog.Log("The property '{0}' is not supported!", PROPERTY_KEYBOARD_ENABLED);
                 // This comes closest: ((CCLayer *)node).setKeypadEnabled(pCheck);
             }
             else

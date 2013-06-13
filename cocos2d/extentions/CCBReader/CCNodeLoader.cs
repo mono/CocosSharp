@@ -778,7 +778,7 @@ namespace Cocos2D
 
                         if (selMenuHandler == null)
                         {
-                            CCLog.Log("Skipping selector '%s' since no CCBSelectorResolver is present.", selectorName);
+                            CCLog.Log("Skipping selector '{0}' since no CCBSelectorResolver is present.", selectorName);
                         }
                         else
                         {

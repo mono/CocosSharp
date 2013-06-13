@@ -645,7 +645,7 @@ namespace Cocos2D
                 }
             }
 
-            CCLog.Log("Texture %s was not found.", file);
+            CCLog.Log("Texture {0} was not found.", file);
             return false;
         }
 
