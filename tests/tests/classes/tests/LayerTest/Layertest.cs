@@ -104,5 +104,55 @@ namespace tests
             }
         }
     }
+
+    public class LayerMultiplexTest : LayerTest
+    {
+        CCLayerMultiplex child = new CCLayerMultiplex();
+        public LayerMultiplexTest()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                CCLayer l = new CCLayer();
+                CCSprite img = null;
+                switch (i)
+                {
+                    case 0:
+                        img = new CCSprite("Images/grossini");
+                        break;
+                    case 1:
+                        img = new CCSprite("Images/grossinis_sister1");
+                        break;
+                    case 2:
+                        img = new CCSprite("Images/grossinis_sister2");
+                        break;
+                }
+                img.AnchorPoint = CCPoint.Zero;
+                img.Position = CCPoint.Zero;
+                l.AddChild(img);
+                l.AnchorPoint = new CCPoint(0.5f, 0.5f);
+                l.Position = new CCPoint(1024/2f, 768/2f);
+                child.AddLayer(l);
+            }
+            child.InAction = new CCFadeIn(1);
+            AddChild(child);
+            Schedule(new Action<float>(AutoMultiplex), 3f);
+        }
+
+        public override string title()
+        {
+            return "Layer Multiplex Test";
+        }
+
+        public override string subtitle()
+        {
+            return "Three layers switch every 3 seconds";
+        }
+
+        private Random rand = new Random();
+        private void AutoMultiplex(float dt)
+        {
+            child.SwitchTo(rand.Next(3));
+        }
+    }
 }
 
