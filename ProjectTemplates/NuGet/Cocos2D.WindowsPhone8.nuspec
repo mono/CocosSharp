@@ -17,7 +17,8 @@
   </metadata>
 
   <files>
-    <file src="..\..\cocos2d\bin\WindowsPhone\ARM\Release\*.dll" target="lib\net40" />
+    <file src="..\..\cocos2d\bin\WindowsPhone\ARM\Release\*.dll" target="lib\WindowsPhone8" />
+    <file src="tools\**" target="tools" />
   </files>
 
 </package>
