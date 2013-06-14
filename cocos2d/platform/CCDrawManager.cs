@@ -46,7 +46,7 @@ namespace Cocos2D
         internal static Matrix m_Matrix;
         private static Matrix m_TmpMatrix;
 
-        private static readonly RenderTarget2D m_renderTarget = null;
+        private static RenderTarget2D m_renderTarget = null;
 
         private static Texture2D m_currentTexture;
         private static bool m_textureEnabled;
@@ -323,6 +323,35 @@ namespace Cocos2D
             graphicsDevice.DeviceResetting += GraphicsDeviceDeviceResetting;
             graphicsDevice.ResourceCreated += GraphicsDeviceResourceCreated;
             graphicsDevice.ResourceDestroyed += GraphicsDeviceResourceDestroyed;
+        }
+
+        public static void PurgeDrawManager()
+        {
+            graphicsDevice = null;
+
+            PrimitiveEffect = null;
+
+            m_defaultEffect = null;
+            m_currentEffect = null;
+            m_effectStack.Clear();
+
+            spriteBatch = null;
+
+            m_renderTarget = null;
+
+            m_currentTexture = null;
+
+            m_blendStates.Clear();
+
+            m_DepthEnableStencilState = null;
+            m_DepthDisableStencilState = null;
+
+            m_currRenderTarget = null;
+            m_quadsBuffer = null;
+            m_quadsIndexBuffer = null;
+
+            m_quadVertices = null;
+            _tmpVertices.Clear();
         }
         
         static void GraphicsDeviceResourceDestroyed(object sender, ResourceDestroyedEventArgs e)
@@ -616,17 +645,6 @@ namespace Cocos2D
 
             //}
         }
-
-        /*
-        public static void BindTexture(Texture2D texture)
-        {
-            if (m_currentTexture != texture)
-            {
-                m_currentTexture = texture;
-                m_textureChanged = true;
-            }
-        }
-        */
 
         public static void BindTexture(CCTexture2D texture)
         {

@@ -79,6 +79,7 @@ namespace Cocos2D
 
             game.Activated += GameActivated;
             game.Deactivated += GameDeactivated;
+            game.Exiting += GameExiting;
 
 #if IOS || WINDOWS_PHONE8
             // Please read the following discussions for the reasons of this.
@@ -134,14 +135,6 @@ namespace Cocos2D
 
         }
 
-        private void GameDeactivated(object sender, EventArgs e)
-        {
-            ApplicationDidEnterBackground();
-#if !IOS
-            CocosDenshion.CCSimpleAudioEngine.SharedEngine.RestoreMediaState();
-#endif
-        }
-
         private void GameActivated(object sender, EventArgs e)
         {
             // Clear out the prior gamepad state because we don't want it anymore.
@@ -152,6 +145,18 @@ namespace Cocos2D
             ApplicationWillEnterForeground();
         }
 
+        private void GameDeactivated(object sender, EventArgs e)
+        {
+            ApplicationDidEnterBackground();
+#if !IOS
+            CocosDenshion.CCSimpleAudioEngine.SharedEngine.RestoreMediaState();
+#endif
+        }
+
+        void GameExiting(object sender, EventArgs e)
+        {
+            CCDirector.SharedDirector.End();
+        }
 
         protected virtual void ServiceDeviceCreated(object sender, EventArgs e)
         {

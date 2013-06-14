@@ -534,7 +534,7 @@ namespace Cocos2D
 
         public virtual bool NeedsInit
         {
-            get { return(m_NeedsInit); }
+            get { return m_NeedsInit; }
             set { m_NeedsInit = value; }
         }
 
@@ -632,6 +632,7 @@ namespace Cocos2D
         public void Update(GameTime gameTime)
         {
             float startTime = 0;
+            
             if (m_bDisplayStats)
             {
                 startTime = (float)m_pStopwatch.Elapsed.TotalMilliseconds;
@@ -675,7 +676,13 @@ namespace Cocos2D
         /// </summary>
         protected void DrawScene(GameTime gameTime)
         {
+            if (m_NeedsInit)
+            {
+                return;
+            }
+
             float startTime = 0;
+            
             if (m_bDisplayStats)
             {
                 startTime = (float)m_pStopwatch.Elapsed.TotalMilliseconds;
@@ -824,6 +831,9 @@ namespace Cocos2D
             // cocos2d-x specific data structures
             //CCUserDefault.purgeSharedUserDefault();
             //CCNotificationCenter.purgeNotificationCenter();
+
+            CCDrawManager.PurgeDrawManager();
+
             m_NeedsInit = true;
         }
 
