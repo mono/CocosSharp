@@ -39,18 +39,18 @@ namespace Cocos2D
             set
             {
                 //CC_SAFE_DELETE(m_pPlaceHolder);
-                //m_pPlaceHolder = value ? value : "";
-                if (m_pInputText.Length > 0)
+                m_pPlaceHolder = value ?? string.Empty;
+                if (!string.IsNullOrEmpty(value))
                 {
                     var cclablettf = new CCLabelTTF();
-                    cclablettf.Text = (m_pPlaceHolder);
+                    cclablettf.Text = value;
                 }
             }
         }
 
         public string InputTextString
         {
-            get { return m_pInputText; }
+            get { return m_pInputText ?? PlaceHolder; }
             set
             {
                 if (value != null)
@@ -181,11 +181,11 @@ namespace Cocos2D
             //    ++nDeleteLen;
             //}
 
-            //if (m_pDelegate && m_pDelegate.onTextFieldDeleteBackward(this, m_pInputText + nStrLen - nDeleteLen, nDeleteLen))
-            //{
-            //    // delegate don't wan't delete backward
-            //    return;
-            //}
+            if (m_pDelegate != null && m_pDelegate.onTextFieldDeleteBackward(this, m_pInputText.Substring(nStrLen - nDeleteLen), nDeleteLen))
+            {
+                // delegate don't wan't delete backward
+                return;
+            }
 
             // if delete all text, show space holder string
             if (nStrLen <= nDeleteLen)
@@ -274,7 +274,7 @@ namespace Cocos2D
             {
                 return;
             }
-            if (m_pInputText.Length > 0)
+            if (!string.IsNullOrEmpty(InputTextString))
             {
                 cclabelttf.Draw();
                 return;

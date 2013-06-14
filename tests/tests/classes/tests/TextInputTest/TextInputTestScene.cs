@@ -9,9 +9,10 @@ namespace Cocos2D
 {
     public class TextInputTestScene : TestScene
     {
+
         int kTextFieldTTFDefaultTest = 0;
-        int kTextFieldTTFActionTest;
-        int kTextInputTestsCount;
+        int kTextFieldTTFActionTest = 1;
+        int kTextInputTestsCount = 2;
 
         public static string FONT_NAME = "Thonburi";
         public static int FONT_SIZE = 36;

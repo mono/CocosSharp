@@ -252,6 +252,8 @@ namespace Cocos2D
                 ProcessGamePad();
             }
 
+            ProcessKeyboard();
+
             CCDirector.SharedDirector.Update(gameTime);
 
             base.Update(gameTime);
@@ -435,6 +437,22 @@ namespace Cocos2D
             ProcessGamePad(gps2, PlayerIndex.Two);
             ProcessGamePad(gps3, PlayerIndex.Three);
             ProcessGamePad(gps4, PlayerIndex.Four);
+        }
+
+        private KeyboardState m_PriorKeyboardState;
+
+        private void ProcessKeyboard()
+        {
+            KeyboardState k = Keyboard.GetState();
+            if(k.IsKeyUp(Keys.Back) && m_PriorKeyboardState.IsKeyDown(Keys.Back)) 
+            {
+                CCDirector.SharedDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.BackClicked);
+            }
+            else if(k.IsKeyUp(Keys.Home) && m_PriorKeyboardState.IsKeyDown(Keys.Home)) 
+            {
+                CCDirector.SharedDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.MenuClicked);
+            }
+            m_PriorKeyboardState = k;
         }
 
         private CCPoint TransformPoint(float x, float y) {

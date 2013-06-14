@@ -313,10 +313,8 @@ namespace tests
                 //#endif
                 case (int)TestCases.TEST_LABEL:
                     pScene = new AtlasTestScene(); break;
-                //#if (CC_TARGET_PLATFORM != CC_PLATFORM_AIRPLAY)
-                //    case TEST_TEXT_INPUT:
-                //        pScene = new TextInputTestScene(); break;
-                //#endif
+                    case (int)TestCases.TEST_TEXT_INPUT:
+                        pScene = new TextInputTestScene(); break;
                 case (int)TestCases.TEST_SPRITE:
                     pScene = new SpriteTestScene(); break;
                 case (int)TestCases.TEST_SCHEDULER:

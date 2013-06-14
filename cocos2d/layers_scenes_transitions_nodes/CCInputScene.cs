@@ -243,16 +243,14 @@ namespace Cocos2D
 
                     if (m_bRunning)
                     {
-                        /*
                         if (value)
                         {
-                            throw new NotImplementedException();
+                            CCDirector.SharedDirector.KeypadDispatcher.AddDelegate(this);
                         }
                         else
                         {
-                            throw new NotImplementedException();
+                            CCDirector.SharedDirector.KeypadDispatcher.RemoveDelegate(this);
                         }
-                         */
                     }
                 }
             }

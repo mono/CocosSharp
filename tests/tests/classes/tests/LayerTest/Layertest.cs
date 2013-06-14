@@ -104,7 +104,6 @@ namespace tests
             }
         }
     }
-
     public class LayerMultiplexTest : LayerTest
     {
         CCLayerMultiplex child = new CCLayerMultiplex();
@@ -112,7 +111,7 @@ namespace tests
         {
             for (int i = 0; i < 3; i++)
             {
-                CCLayer l = new CCLayer();
+                CCLayer l = new CCLayerColor();
                 CCSprite img = null;
                 switch (i)
                 {
