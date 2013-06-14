@@ -1513,7 +1513,7 @@ namespace Cocos2D
                 _indexBuffer.Dispose();
             }
 
-            _indexBuffer = new IndexBuffer(CCDrawManager.GraphicsDevice, typeof(T), _data.Count, _usage);
+            _indexBuffer = new IndexBuffer(CCDrawManager.GraphicsDevice, typeof(T), _data.Capacity, _usage);
 
             UpdateBuffer();
         }
