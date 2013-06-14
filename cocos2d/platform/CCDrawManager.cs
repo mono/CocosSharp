@@ -387,6 +387,11 @@ namespace Cocos2D
 
         private static void ResetDevice()
         {
+            if (graphicsDevice == null || graphicsDevice.IsDisposed)
+            {
+                // We are existing the game
+                return;
+            }
             m_defaultEffect.View = m_viewMatrix;
             m_defaultEffect.World = m_worldMatrix;
             m_defaultEffect.Projection = m_projectionMatrix;
