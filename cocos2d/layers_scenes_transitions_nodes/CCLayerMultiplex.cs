@@ -9,9 +9,9 @@ namespace Cocos2D
     /// - It supports one or more children
     /// - Only one children will be active a time
     /// </summary>
-    public class CCLayerMultiplex : CCLayer
+    public class CCLayerMultiplex : CCLayerRGBA
     {
-        protected int m_nEnabledLayer;
+        protected int m_nEnabledLayer=-1;
         protected List<CCLayer> m_pLayers;
         private CCAction m_InAction, m_OutAction;
 
@@ -81,10 +81,8 @@ namespace Cocos2D
 
         private bool InitWithLayer(CCLayer layer)
         {
-            m_pLayers = new List<CCLayer>(1);
+            m_pLayers = new List<CCLayer>();
             m_pLayers.Add(layer);
-            m_nEnabledLayer = 0;
-            AddChild(layer);
             return true;
         }
 
@@ -94,14 +92,21 @@ namespace Cocos2D
         {
             m_pLayers = new List<CCLayer>();
             m_pLayers.AddRange(layer);
-            m_nEnabledLayer = 0;
-            AddChild(m_pLayers[m_nEnabledLayer]);
             return true;
         }
 
         /** switches to a certain layer indexed by n. 
         The current (old) layer will be removed from it's parent with 'cleanup:YES'.
         */
+
+        public override void OnEnter()
+        {
+            if (m_nEnabledLayer == -1 && m_pLayers.Count > 0)
+            {
+                SwitchTo(0);
+            }
+            base.OnEnter();
+        }
 
         /// <summary>
         /// Swtich to the given index layer and use the given action after the layer is
@@ -110,22 +115,31 @@ namespace Cocos2D
         /// <param name="n"></param>
         public void SwitchTo(int n)
         {
-            Debug.Assert(n < m_pLayers.Count, "Invalid index in MultiplexLayer switchTo message");
-            
-            CCLayer outLayer = m_pLayers[m_nEnabledLayer];
-            
-            if (m_OutAction != null)
+            if (m_nEnabledLayer == n)
             {
-                outLayer.RunAction(
-                    new CCSequence(
-                        (CCFiniteTimeAction) m_OutAction.Copy(),
-                        new CCCallFunc(() => RemoveChild(outLayer, true))
-                        )
-                    );
+                // no-op
+                return;
             }
-            else
+
+            Debug.Assert(n < m_pLayers.Count, "Invalid index in MultiplexLayer SwitchTo");
+
+            if (m_nEnabledLayer != -1)
             {
-                RemoveChild(outLayer, true);
+                CCLayer outLayer = m_pLayers[m_nEnabledLayer];
+
+                if (m_OutAction != null)
+                {
+                    outLayer.RunAction(
+                        new CCSequence(
+                            (CCFiniteTimeAction)m_OutAction.Copy(),
+                            new CCCallFunc(() => RemoveChild(outLayer, true))
+                            )
+                        );
+                }
+                else
+                {
+                    RemoveChild(outLayer, true);
+                }
             }
 
             m_nEnabledLayer = n;
@@ -143,7 +157,7 @@ namespace Cocos2D
         */
         public void SwitchToAndReleaseMe(int n)
         {
-            Debug.Assert(n < m_pLayers.Count, "Invalid index in MultiplexLayer switchTo message");
+            Debug.Assert(n < m_pLayers.Count, "Invalid index in MultiplexLayer SwitchToAndReleaseMe");
 
             var prevLayer = m_nEnabledLayer;
             SwitchTo(n);

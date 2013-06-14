@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<VSTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Type="Project" Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Cocos2D-XNA GameStarterKit</Name>
+    <Description>Creates a simple Cocos2D-XNA skeleton game solution and project to get developers up and running fast.  This particular template is only used for Windows XNA games that will be targeting Cocos2D-XNA Android.</Description>
+    <Icon>__Template_small.png</Icon>
+    <PreviewImage>__Template_large.png</PreviewImage>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType />
+    <SortOrder>1000</SortOrder>
+    <DefaultName>Cocos2DXNAGameStarterKit</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <LocationField>Enabled</LocationField>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="GameStarterKit.Android.csproj" TargetFileName="GameStarterKit.Android.csproj" ReplaceParameters="true">
+      <ProjectItem TargetFileName="appdelegate.cs" ReplaceParameters="true">appdelegate.cs</ProjectItem>
+      <ProjectItem TargetFileName="game1.cs" ReplaceParameters="true">game1.cs</ProjectItem>
+      <ProjectItem TargetFileName="gamedata.cs" ReplaceParameters="true">gamedata.cs</ProjectItem>
+      <ProjectItem TargetFileName="gamelevel.cs" ReplaceParameters="true">gamelevel.cs</ProjectItem>
+      <ProjectItem TargetFileName="gamemenu.cs" ReplaceParameters="true">gamemenu.cs</ProjectItem>
+      <ProjectItem TargetFileName="introlayer.cs" ReplaceParameters="true">introlayer.cs</ProjectItem>
+      <ProjectItem TargetFileName="program.cs" ReplaceParameters="true">program.cs</ProjectItem>
+      <ProjectItem TargetFileName="assemblyinfo.cs" ReplaceParameters="true">properties\assemblyinfo.cs</ProjectItem>
+      <ProjectItem TargetFileName="Resource.Designer.cs" ReplaceParameters="true">Resources\Resource.Designer.cs</ProjectItem>
+      <ProjectItem TargetFileName="Strings.xml" ReplaceParameters="true">Resources\Values\Strings.xml</ProjectItem>
+      <ProjectItem TargetFileName="Styles.xml" ReplaceParameters="true">Resources\Values\Styles.xml</ProjectItem>
+      <ProjectItem TargetFileName="Main.axml" ReplaceParameters="false">Resources\Layout\Main.axml</ProjectItem>
+      <ProjectItem TargetFileName="Icon.png" ReplaceParameters="false">Resources\Drawable-xhdpi\Icon.png</ProjectItem>
+      <ProjectItem TargetFileName="Icon.png" ReplaceParameters="false">Resources\Drawable\Icon.png</ProjectItem>
+      <ProjectItem TargetFileName="AndroidManifest.xml" ReplaceParameters="true">properties\AndroidManifest.xml</ProjectItem>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+  </WizardExtension>
+  <WizardData>
+    <packages repository="extension"
+          repositoryId="GameStarterKitInstaller.852d8d2b-8ddc-4fd2-8312-53657ec6dfa3">
+      <package id="Cocos2D-XNA.Android" version="2.0.3.3" />
+    </packages>
+  </WizardData>
+</VSTemplate>
