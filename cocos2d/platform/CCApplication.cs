@@ -80,7 +80,7 @@ namespace Cocos2D
             game.Activated += GameActivated;
             game.Deactivated += GameDeactivated;
 
-#if IOS
+#if IOS || WINDOWS_PHONE8
             // Please read the following discussions for the reasons of this.
             // http://monogame.codeplex.com/discussions/393775
             // http://monogame.codeplex.com/discussions/396792

@@ -1112,6 +1112,11 @@ namespace Cocos2D
                 texture = textureCache.TextureForKey("cc_fps_images");
             }
 
+            if (texture == null || (texture.ContentSize.Width == 0 && texture.ContentSize.Height == 0))
+            {
+                m_bDisplayStats = false;
+                return;
+            }
             float factor = m_obWinSizeInPoints.Height / 320.0f;
             var pos = CCDirector.SharedDirector.VisibleOrigin;
 

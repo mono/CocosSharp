@@ -391,6 +391,10 @@ namespace Cocos2D
             int stringLen = m_sString.Length;
 
             var charSet = m_pConfiguration.CharacterSet;
+            if (charSet.Count == 0)
+            {
+                throw (new InvalidOperationException("Can not compute the size of the font because the character set is empty."));
+            }
 
             for (int i = 0; i < stringLen - 1; ++i)
             {
@@ -419,7 +423,7 @@ namespace Cocos2D
 
                 if (charSet.IndexOf(c) == -1)
                 {
-                    CCLog.Log("Cocos2D.CCLabelBMFont: Attempted to use character not defined in this bitmap: %d", (int)c);
+                    CCLog.Log("Cocos2D.CCLabelBMFont: Attempted to use character not defined in this bitmap: {0}", (int)c);
                     continue;
                 }
 
@@ -428,7 +432,7 @@ namespace Cocos2D
                 // unichar is a short, and an int is needed on HASH_FIND_INT
                 if (!m_pConfiguration.m_pFontDefDictionary.TryGetValue(c, out fontDef))
                 {
-                    CCLog.Log("cocos2d::CCLabelBMFont: characer not found %d", (int)c);
+                    CCLog.Log("cocos2d::CCLabelBMFont: characer not found {0}", (int)c);
                     continue;
                 }
 
