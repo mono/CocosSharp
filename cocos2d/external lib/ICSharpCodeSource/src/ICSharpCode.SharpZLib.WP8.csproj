@@ -66,7 +66,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Bin\ARM\Debug</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NETCF_2_0WINDOWS_PHONE8;WINDOW_PHONE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETCF_2_0;WINDOWS_PHONE8;WINDOW_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
