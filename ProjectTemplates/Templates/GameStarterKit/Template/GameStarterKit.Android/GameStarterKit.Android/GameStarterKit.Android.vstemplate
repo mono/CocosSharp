@@ -26,9 +26,10 @@
       <ProjectItem TargetFileName="Resource.Designer.cs" ReplaceParameters="true">Resources\Resource.Designer.cs</ProjectItem>
       <ProjectItem TargetFileName="Strings.xml" ReplaceParameters="true">Resources\Values\Strings.xml</ProjectItem>
       <ProjectItem TargetFileName="Styles.xml" ReplaceParameters="true">Resources\Values\Styles.xml</ProjectItem>
-      <ProjectItem TargetFileName="Main.xml" ReplaceParameters="false">Resources\Layout\Main.xml</ProjectItem>
+      <ProjectItem TargetFileName="Main.axml" ReplaceParameters="false">Resources\Layout\Main.axml</ProjectItem>
       <ProjectItem TargetFileName="Icon.png" ReplaceParameters="false">Resources\Drawable-xhdpi\Icon.png</ProjectItem>
       <ProjectItem TargetFileName="Icon.png" ReplaceParameters="false">Resources\Drawable\Icon.png</ProjectItem>
+      <ProjectItem TargetFileName="AndroidManifest.xml" ReplaceParameters="true">properties\AndroidManifest.xml</ProjectItem>
     </Project>
   </TemplateContent>
   <WizardExtension>

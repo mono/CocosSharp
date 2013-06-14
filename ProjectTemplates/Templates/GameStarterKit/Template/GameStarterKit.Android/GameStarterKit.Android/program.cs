@@ -17,7 +17,7 @@ namespace GameStarterKit
     [Activity(
         Label = "$safeprojectname$",
                AlwaysRetainTaskState = true,
-               Icon = "@drawable/ic_launcher",
+               Icon = "@drawable/Icon",
                Theme = "@style/Theme.NoTitleBar",
 		// This is where you set the orientations supported by your game.
                ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape,
