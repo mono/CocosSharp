@@ -76,7 +76,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>Bin\ARM\Release</OutputPath>
-    <DefineConstants>TRACE;NETCF_2_0WINDOWS_PHONE8;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;NETCF_2_0;WINDOWS_PHONE8;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
