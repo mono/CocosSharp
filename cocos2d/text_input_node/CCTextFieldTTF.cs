@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Xna.Framework.GamerServices;
 
 namespace Cocos2D
 {
@@ -75,34 +76,19 @@ namespace Cocos2D
             }
         }
 
+        private IAsyncResult _GuideShowHandle;
+
         public bool AttachWithIME()
         {
-            bool bRet = AttachWithIME();
-            if (bRet)
-            {
-                // open keyboard
-                //CCEGLView pGlView = CCDirector.SharedDirector.setOpenGLView;
-                //if (pGlView)
-                //{
-                //    pGlView.setIMEKeyboardState(true);
-                //}
-            }
-            return bRet;
+            _GuideShowHandle = Guide.BeginShowKeyboardInput(Microsoft.Xna.Framework.PlayerIndex.One, "Input", "Please provide input", m_pPlaceHolder, null, null);
+            return true;
         }
 
         public bool DetachWithIME()
         {
-            bool bRet = DetachWithIME();
-            if (bRet)
-            {
-                // close keyboard
-                //CCEGLView pGlView = CCDirector.SharedDirector.setOpenGLView;
-                //if (pGlView)
-                //{
-                //    pGlView->setIMEKeyboardState(false);
-                //}
-            }
-            return bRet;
+            Guide.EndShowKeyboardInput(_GuideShowHandle);
+            _GuideShowHandle = null;
+            return (true);
         }
 
         public bool CanAttachWithIME()
@@ -110,9 +96,9 @@ namespace Cocos2D
             return (m_pDelegate != null) ? (!m_pDelegate.onTextFieldAttachWithIME(this)) : true;
         }
 
-        public void DidAttachWithIME()
+        public bool DidAttachWithIME()
         {
-            throw new NotImplementedException();
+            return (_GuideShowHandle != null && _GuideShowHandle.IsCompleted);
         }
 
         public bool CanDetachWithIME()
@@ -120,9 +106,9 @@ namespace Cocos2D
             return (m_pDelegate != null) ? (!m_pDelegate.onTextFieldDetachWithIME(this)) : true;
         }
 
-        public void DidDetachWithIME()
+        public bool DidDetachWithIME()
         {
-            throw new NotImplementedException();
+            return (_GuideShowHandle == null);
         }
 
         public void InsertText(string text, int len)

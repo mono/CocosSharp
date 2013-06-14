@@ -22,7 +22,7 @@ namespace Cocos2D
         /**
         @brief	When the delegate detach with IME, this method call by CCIMEDispatcher.
         */
-        void DidAttachWithIME();
+        bool DidAttachWithIME();
 
         /**
         @brief	Decide the delegate instance can stop receive ime message or not.
@@ -32,7 +32,7 @@ namespace Cocos2D
         /**
         @brief	When the delegate detach with IME, this method call by CCIMEDispatcher.
         */
-        void DidDetachWithIME();
+        bool DidDetachWithIME();
 
         /**
         @brief	Called by CCIMEDispatcher when some text input from IME.
