@@ -22,7 +22,8 @@
   </metadata>
 
   <files>
-    <file src="..\..\cocos2d\bin\WindowsPhone\ARM\Release\*.dll" target="lib\WindowsPhone8" />
+    <file src="..\..\cocos2d\bin\WindowsPhone\x86\Release\*.dll" target="lib\WindowsPhone8\x86" />
+    <file src="..\..\cocos2d\bin\WindowsPhone\ARM\Release\*.dll" target="lib\WindowsPhone8\ARM" />
     <file src="tools\**" target="tools" />
   </files>
 
