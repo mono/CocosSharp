@@ -98,6 +98,23 @@ namespace Cocos2D
             m_Batch.AddVertex(new Vector2(destination.X * factor, destination.Y * factor), c, PrimitiveType.LineList);
         }
 
+        public static void DrawRect(CCRect rect, CCColor4B color)
+        {
+            float factor = CCDirector.SharedDirector.ContentScaleFactor;
+
+            var c = new Color(color.R, color.G, color.B, color.A);
+
+            float x1 = rect.MinX * factor;
+            float y1 = rect.MinY * factor;
+            float x2 = rect.MaxX * factor;
+            float y2 = rect.MaxY * factor;
+            m_Batch.AddVertex(new Vector2(x1, y1), c, PrimitiveType.LineList);
+            m_Batch.AddVertex(new Vector2(x2, y1), c, PrimitiveType.LineList);
+            m_Batch.AddVertex(new Vector2(x2, y2), c, PrimitiveType.LineList);
+            m_Batch.AddVertex(new Vector2(x1, y2), c, PrimitiveType.LineList);
+        }
+
+
         public static void DrawLine(b2Vec2 origin, b2Vec2 destination, b2Color color)
         {
             float factor = CCDirector.SharedDirector.ContentScaleFactor;
