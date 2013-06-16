@@ -1234,16 +1234,15 @@ namespace tests
             var sprite = new CCSprite("Images/pattern1.png", new CCRect(0, 0, 512, 256));
             AddChild(sprite, -1, (int)enumTag.kTagSprite1);
             sprite.Position = new CCPoint(size.Width/2,size.Height/2);
-            
-#if OPENGL
-            sprite.Texture.TexParameters = new CCTexParams() {  MagFilter = (uint)All.Linear,
-                MinFilter = (uint)All.Linear,
-                WrapS = (uint)All.ClampToEdge,
-                WrapT = (uint)All.ClampToEdge
-            };
-#else
+   
+            // Cocos2D-XNA no longer uses TexParameters.  Please use the XNA SamplerState
+//            sprite.Texture.TexParameters = new CCTexParams() {  MagFilter = (uint)All.Linear,
+//                MinFilter = (uint)All.Linear,
+//                WrapS = (uint)All.ClampToEdge,
+//                WrapT = (uint)All.ClampToEdge
+//            };
 			sprite.Texture.SamplerState = SamplerState.LinearClamp;
-#endif
+
             var rotate = new CCRotateBy(4, 360);
             sprite.RunAction(rotate);
             var scale = new CCScaleBy(2, 0.04f);
@@ -1282,19 +1281,19 @@ namespace tests
 			AddChild(sprite, -1, (int)enumTag.kTagSprite1);
 			sprite.Position = new CCPoint(size.Width/2,size.Height/2);
 			
-#if OPENGL
-			sprite.Texture.TexParameters = new CCTexParams() {  MagFilter = (uint)All.Linear,
-				MinFilter = (uint)All.Linear,
-				WrapS = (uint)All.MirroredRepeat,
-				WrapT = (uint)All.Repeat
-			};
-#else
-			var state = new SamplerState();
+            // Cocos2D-XNA no longer uses TexParameters.  Please use the XNA SamplerState
+//			sprite.Texture.TexParameters = new CCTexParams() {  MagFilter = (uint)All.Linear,
+//				MinFilter = (uint)All.Linear,
+//				WrapS = (uint)All.MirroredRepeat,
+//				WrapT = (uint)All.Repeat
+//			};
+
+            var state = new SamplerState();
 			state.AddressU = TextureAddressMode.Mirror;
 			state.AddressV = TextureAddressMode.Wrap;
 			sprite.Texture.SamplerState = state;
-#endif
-			var rotate = new CCRotateBy(4, 360);
+
+            var rotate = new CCRotateBy(4, 360);
 			sprite.RunAction(rotate);
 			var scale = new CCScaleBy(2, 0.04f);
 			var scaleBack = (CCScaleBy)scale.Reverse();
@@ -1332,15 +1331,15 @@ namespace tests
             AddChild(sprite, -1, (int)enumTag.kTagSprite1);
             sprite.Position = new CCPoint(size.Width/2,size.Height/2);
 
-#if OPENGL
-            sprite.Texture.TexParameters = new CCTexParams() {  MagFilter = (uint)All.Linear,
-                                                                MinFilter = (uint)All.Linear,
-                                                                WrapS = (uint)All.Repeat,
-                                                                WrapT = (uint)All.Repeat
-                                                              };
-#else
+            // Cocos2D-XNA no longer uses TexParameters.  Please use the XNA SamplerState
+//            sprite.Texture.TexParameters = new CCTexParams() {  MagFilter = (uint)All.Linear,
+//                                                                MinFilter = (uint)All.Linear,
+//                                                                WrapS = (uint)All.Repeat,
+//                                                                WrapT = (uint)All.Repeat
+//                                                              };
+
             sprite.Texture.SamplerState = SamplerState.LinearWrap;
-#endif
+
             var rotate = new CCRotateBy(4, 360);
             sprite.RunAction(rotate);
             var scale = new CCScaleBy(2, 0.04f);
