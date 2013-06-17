@@ -45,5 +45,10 @@ namespace Cocos2D
             // Factor = pi / 180
             return (float)(degrees * 0.017453292519943295769236907684886);
         }
+
+        public static int Lerp(int value1, int value2, float amount)
+        {
+            return (int) (value1 + ((value2 - value1) * amount));
+        }
     }
 }
