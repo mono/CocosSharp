@@ -443,6 +443,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Platform\CCRawList.cs" />
+    <Compile Include="Platform\CCArrayPool.cs" />
     <Compile Include="Actions\action_tiled_grid\CCTile.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
     <Compile Include="denshion\CCMusicPlayer.cs" />

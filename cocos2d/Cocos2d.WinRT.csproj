@@ -910,6 +910,9 @@
     <Compile Include=".\platform\CCRawList.cs">
       <LogicalName>platform\RawList</LogicalName>
     </Compile>
+    <Compile Include=".\platform\CCArrayPool.cs">
+      <LogicalName>platform\CCArrayPool</LogicalName>
+    </Compile>
     <Compile Include=".\platform\CCReusedObject.cs">
       <LogicalName>platform\ReusedObject</LogicalName>
     </Compile>
