@@ -25,7 +25,14 @@ namespace Cocos2D
         ///<summary>
         /// Constructs an empty list.
         ///</summary>
+#if WINDOWS_PHONE
+        public CCRawList() : this(false)
+        {
+        }
+        public CCRawList(bool useArrayPool)
+#else
         public CCRawList(bool useArrayPool = false)
+#endif
         {
             UseArrayPool = useArrayPool;
             
@@ -46,7 +53,15 @@ namespace Cocos2D
         ///</summary>
         ///<param name="initialCapacity">Initial capacity to allocate for the list.</param>
         ///<exception cref="ArgumentException">Thrown when the initial capacity is zero or negative.</exception>
+#if WINDOWS_PHONE
+        public CCRawList(int initialCapacity)
+            : this(initialCapacity, false)
+        {
+        }
+        public CCRawList(int initialCapacity, bool useArrayPool)
+#else
         public CCRawList(int initialCapacity, bool useArrayPool = false)
+#endif
         {
             UseArrayPool = useArrayPool;
 
@@ -60,7 +75,14 @@ namespace Cocos2D
         /// Constructs a raw list from another list.
         ///</summary>
         ///<param name="elements">List to copy.</param>
+#if WINDOWS_PHONE
+        public CCRawList(IList<T> elements) : this(elements, false)
+        {
+        }
+        public CCRawList(IList<T> elements, bool useArrayPool)
+#else
         public CCRawList(IList<T> elements, bool useArrayPool = false)
+#endif
             : this(Math.Max(elements.Count, 4), useArrayPool)
         {
             elements.CopyTo(Elements, 0);
