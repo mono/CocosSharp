@@ -22,6 +22,7 @@ THE SOFTWARE.
 ****************************************************************************/
 
 using System;
+using Microsoft.Xna.Framework;
 
 namespace Cocos2D
 {
@@ -56,26 +57,6 @@ namespace Cocos2D
             s.Width = (float) ((double) t.a * size.Width + (double) t.c * size.Height);
             s.Height = (float) ((double) t.b * size.Width + (double) t.d * size.Height);
             return s;
-        }
-
-        public static CCRect Transform(CCRect rect, CCAffineTransform anAffineTransform)
-        {
-            float top = rect.MinY;
-            float left = rect.MinX;
-            float right = rect.MaxX;
-            float bottom = rect.MaxY;
-
-            CCPoint topLeft = Transform(new CCPoint(left, top), anAffineTransform);
-            CCPoint topRight = Transform(new CCPoint(right, top), anAffineTransform);
-            CCPoint bottomLeft = Transform(new CCPoint(left, bottom), anAffineTransform);
-            CCPoint bottomRight = Transform(new CCPoint(right, bottom), anAffineTransform);
-
-            float minX = Math.Min(Math.Min(topLeft.X, topRight.X), Math.Min(bottomLeft.X, bottomRight.X));
-            float maxX = Math.Max(Math.Max(topLeft.X, topRight.X), Math.Max(bottomLeft.X, bottomRight.X));
-            float minY = Math.Min(Math.Min(topLeft.Y, topRight.Y), Math.Min(bottomLeft.Y, bottomRight.Y));
-            float maxY = Math.Max(Math.Max(topLeft.Y, topRight.Y), Math.Max(bottomLeft.Y, bottomRight.Y));
-
-            return new CCRect(minX, minY, (maxX - minX), (maxY - minY));
         }
 
         public static CCAffineTransform Translate(CCAffineTransform t, float tx, float ty)
@@ -158,6 +139,232 @@ namespace Cocos2D
 
             return new CCAffineTransform(determinant * t.d, -determinant * t.b, -determinant * t.c, determinant * t.a,
                                          determinant * (t.c * t.ty - t.d * t.tx), determinant * (t.b * t.tx - t.a * t.ty));
+        }
+
+        public float TranslationX
+        {
+            get { return tx; }
+            set { tx = value; }
+        }
+
+        public float TranslationY
+        {
+            get { return ty; }
+            set { ty = value; }
+        }
+
+        public void SetTranslation(float x, float y)
+        {
+            tx = x;
+            ty = y;
+        }
+
+        public void ConcatTranslation(float x, float y)
+        {
+            tx += x;
+            tx += y;
+        }
+
+        public void SetScale(float scaleX, float scaleY)
+        {
+            SetScaleRotation(scaleX, scaleY, GetRotation());
+        }
+
+        public float GetScaleX()
+        {
+            float a2 = (float)Math.Pow(a, 2);
+            float b2 = (float)Math.Pow(b, 2);
+            return (float)Math.Sqrt(a2 + b2);
+        }
+
+        public void SetScaleX(float scaleX)
+        {
+            float rotX = GetRotationX();
+            a = scaleX * (float)Math.Cos(rotX);
+            b = scaleX * (float)Math.Sin(rotX);
+        }
+
+        public float GetScaleY()
+        {
+            float d2 = (float)Math.Pow(d, 2);
+            float c2 = (float)Math.Pow(c, 2);
+            return (float)Math.Sqrt(d2 + c2);
+        }
+
+        public void SetScaleY(float scaleY)
+        {
+            double rotY = GetRotationY();
+
+            c = -scaleY * (float)Math.Sin(rotY);
+            d = scaleY * (float)Math.Cos(rotY);
+        }
+
+        public void ConcatScale(float xscale, float yscale)
+        {
+            a *= xscale;
+            c *= yscale;
+            b *= xscale;
+            d *= yscale;
+        }
+
+        public float GetRotation()
+        {
+            return GetRotationX();
+        }
+
+        public float GetRotationX()
+        {
+            return (float)Math.Atan2(b, a);
+        }
+
+        public float GetRotationY()
+        {
+            return (float)Math.Atan2(-c, d);
+        }
+
+        /// Set rotation in radians, scales component are unchanged.
+        public void SetRotation(float rotation)
+        {
+            float rotX = GetRotationX();
+            float rotY = GetRotationY();
+
+            float scaleX = GetScaleX();
+            float scaleY = GetScaleY();
+
+            a = scaleX * (float)Math.Cos(rotation);
+            b = scaleX * (float)Math.Sin(rotation);
+            c = -scaleY * (float)Math.Sin(rotY - rotX + rotation);
+            d = scaleY * (float)Math.Cos(rotY - rotX + rotation);
+        }
+
+        /// Set the scale & rotation part of the CCAffineTransform. angle in radians.
+        public void SetScaleRotation(float scaleX, float scaleY, float angle)
+        {
+            var cosa = (float)Math.Cos(angle);
+            var sina = (float)Math.Sin(angle);
+
+            a = scaleX * cosa;
+            c = scaleY * -sina;
+            b = scaleX * sina;
+            d = scaleY * cosa;
+        }
+
+        public void SetLerp(CCAffineTransform m1, CCAffineTransform m2, float t)
+        {
+            a = MathHelper.Lerp(m1.a, m2.a, t);
+            b = MathHelper.Lerp(m1.b, m2.b, t);
+            c = MathHelper.Lerp(m1.c, m2.c, t);
+            d = MathHelper.Lerp(m1.d, m2.d, t);
+            tx = MathHelper.Lerp(m1.tx, m2.tx, t);
+            ty = MathHelper.Lerp(m1.ty, m2.ty, t);
+        }
+
+        public static void Lerp(ref CCAffineTransform m1, ref CCAffineTransform m2, float t, out CCAffineTransform res)
+        {
+            res.a = MathHelper.Lerp(m1.a, m2.a, t);
+            res.b = MathHelper.Lerp(m1.b, m2.b, t);
+            res.c = MathHelper.Lerp(m1.c, m2.c, t);
+            res.d = MathHelper.Lerp(m1.d, m2.d, t);
+            res.tx = MathHelper.Lerp(m1.tx, m2.tx, t);
+            res.ty = MathHelper.Lerp(m1.ty, m2.ty, t);
+        }
+
+        public void Transform(ref float x, ref float y)
+        {
+            var tmpX = a * x + c * y + tx;
+            y = b * x + d * y + ty;
+            x = tmpX;
+        }
+
+        public void Transform(ref int x, ref int y)
+        {
+            var tmpX = a * x + c * y + tx;
+            y = (int)(b * x + d * y + ty);
+            x = (int)tmpX;
+        }
+
+        public void Transform(float x, float y, out float xresult, out float yresult)
+        {
+            xresult = a * x + c * y + tx;
+            yresult = b * x + d * y + ty;
+        }
+
+        public CCPoint Transform(CCPoint point)
+        {
+            return new CCPoint(
+                a * point.X + c * point.Y + tx,
+                b * point.X + d * point.Y + ty
+                );
+        }
+
+        public void Transform(ref CCPoint point)
+        {
+            var tmpX = a * point.X + c * point.Y + tx;
+            point.Y = b * point.X + d * point.Y + ty;
+            point.X = tmpX;
+        }
+
+        public CCRect Transform(CCRect rect)
+        {
+            float top = rect.MinY;
+            float left = rect.MinX;
+            float right = rect.MaxX;
+            float bottom = rect.MaxY;
+
+            CCPoint topLeft = new CCPoint(left, top);  
+            CCPoint topRight = new CCPoint(right, top);
+            CCPoint bottomLeft = new CCPoint(left, bottom);
+            CCPoint bottomRight = new CCPoint(right, bottom);
+
+            Transform(ref topLeft);
+            Transform(ref topRight);
+            Transform(ref bottomLeft);
+            Transform(ref bottomRight);
+
+            float minX = Math.Min(Math.Min(topLeft.X, topRight.X), Math.Min(bottomLeft.X, bottomRight.X));
+            float maxX = Math.Max(Math.Max(topLeft.X, topRight.X), Math.Max(bottomLeft.X, bottomRight.X));
+            float minY = Math.Min(Math.Min(topLeft.Y, topRight.Y), Math.Min(bottomLeft.Y, bottomRight.Y));
+            float maxY = Math.Max(Math.Max(topLeft.Y, topRight.Y), Math.Max(bottomLeft.Y, bottomRight.Y));
+
+            return new CCRect(minX, minY, (maxX - minX), (maxY - minY));
+        }
+
+        public void Transform(ref CCRect rect)
+        {
+            float top = rect.MinY;
+            float left = rect.MinX;
+            float right = rect.MaxX;
+            float bottom = rect.MaxY;
+
+            CCPoint topLeft = new CCPoint(left, top);
+            CCPoint topRight = new CCPoint(right, top);
+            CCPoint bottomLeft = new CCPoint(left, bottom);
+            CCPoint bottomRight = new CCPoint(right, bottom);
+
+            Transform(ref topLeft);
+            Transform(ref topRight);
+            Transform(ref bottomLeft);
+            Transform(ref bottomRight);
+
+            float minX = Math.Min(Math.Min(topLeft.X, topRight.X), Math.Min(bottomLeft.X, bottomRight.X));
+            float maxX = Math.Max(Math.Max(topLeft.X, topRight.X), Math.Max(bottomLeft.X, bottomRight.X));
+            float minY = Math.Min(Math.Min(topLeft.Y, topRight.Y), Math.Min(bottomLeft.Y, bottomRight.Y));
+            float maxY = Math.Max(Math.Max(topLeft.Y, topRight.Y), Math.Max(bottomLeft.Y, bottomRight.Y));
+
+            rect.Origin.X = minX;
+            rect.Origin.Y = minY;
+            rect.Size.Width = maxX - minX;
+            rect.Size.Height = maxY - minY;
+        }
+
+        public static CCRect Transform(CCRect rect, CCAffineTransform anAffineTransform)
+        {
+            return anAffineTransform.Transform(rect);
+        }
+
+        public bool Equals(ref CCAffineTransform t)
+        {
+            return a == t.a && b == t.b && c == t.c && d == t.d && tx == t.tx && ty == t.ty;
         }
     }
 }

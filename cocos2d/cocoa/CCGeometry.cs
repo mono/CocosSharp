@@ -214,7 +214,7 @@ namespace Cocos2D
         }
 
 
-        /** Multiplies a nd b components, a.x*b.x, a.y*b.y
+        /** Multiplies a nd b components, a.X*b.X, a.y*b.y
             @returns a component-wise multiplication
             @since v0.99.1
         */
@@ -323,7 +323,7 @@ namespace Cocos2D
 
             // Point of intersection
             // CGPoint P;
-            // P.x = A.x + *S * (B.x - A.x);
+            // P.X = A.X + *S * (B.X - A.X);
             // P.y = A.y + *S * (B.y - A.y);
 
             return true;

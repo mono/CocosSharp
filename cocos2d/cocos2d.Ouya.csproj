@@ -318,6 +318,7 @@
     <Compile Include="Platform\CCPrimitiveBatch.cs" />
     <Compile Include="Platform\CCRawList.cs" />
     <Compile Include="Platform\CCReusedObject.cs" />
+    <Compile Include="Platform\CCArrayPool.cs" />
     <Compile Include="Platform\Zlib\Adler32.cs" />
     <Compile Include="Platform\Zlib\Deflate.cs" />
     <Compile Include="Platform\Zlib\InfBlocks.cs" />

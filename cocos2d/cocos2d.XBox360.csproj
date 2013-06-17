@@ -324,6 +324,7 @@
     <Compile Include="platform\PList\PlistString.cs" />
     <Compile Include="platform\CCPrimitiveBatch.cs" />
     <Compile Include="platform\CCRawList.cs" />
+    <Compile Include="platform\CCArrayPool.cs" />
     <Compile Include="platform\CCReusedObject.cs" />
     <Compile Include="platform\Zlib\Adler32.cs" />
     <Compile Include="platform\Zlib\Deflate.cs" />
