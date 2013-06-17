@@ -59,10 +59,6 @@
       <Link>packages\Cocos2D-XNA.iOS.2.0.3.3.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-	<Content Include="..\..\..\..\..\NuGet\bin\Cocos2D-XNA.WindowsPhone8.2.0.3.3.nupkg">
-		<Link>packages\Cocos2D-XNA.WindowsPhone8.2.0.3.3.nupkg</Link>
-		<IncludeInVSIX>true</IncludeInVSIX>
-	</Content>	  
     <Content Include="..\..\..\Template\GameStarterKit.iOS\bin\GameStarterKit.iOS.zip">
       <Link>ProjectTemplates\Cocos2D-XNA\iOS\GameStarterKit.iOS.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -88,6 +84,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+	<Content Include="..\..\..\..\..\NuGet\bin\Cocos2D-XNA.WindowsPhone8.2.0.3.3.nupkg">
+		<Link>packages\Cocos2D-XNA.WindowsPhone8.2.0.3.3.nupkg</Link>
+		<IncludeInVSIX>true</IncludeInVSIX>
+	</Content>
+	<Content Include="..\..\..\Template\GameStarterKit.WP8\bin\GameStarterKit.WP8.zip">
+		<Link>ProjectTemplates\Cocos2D-XNA\Windows Phone\GameStarterKit.WP8.zip</Link>
+		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		<IncludeInVSIX>true</IncludeInVSIX>
+	</Content>
     <None Include="ReadMe.md" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
