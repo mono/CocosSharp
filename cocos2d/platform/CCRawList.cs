@@ -1,8 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 
 namespace Cocos2D
 {
@@ -21,12 +20,32 @@ namespace Cocos2D
 
         public int count;
 
+        public bool UseArrayPool;
+
         ///<summary>
         /// Constructs an empty list.
         ///</summary>
-        public CCRawList()
+#if WINDOWS_PHONE
+        public CCRawList() : this(false)
         {
-            Elements = new T[4];
+        }
+        public CCRawList(bool useArrayPool)
+#else
+        public CCRawList(bool useArrayPool = false)
+#endif
+        {
+            UseArrayPool = useArrayPool;
+            
+            if (useArrayPool)
+            {
+                Elements = ArrayPool<T>.Create(4);
+            }
+            else
+            {
+                Elements = new T[4];
+            }
+
+            Debug.Assert(Elements != null);
         }
 
         ///<summary>
@@ -34,19 +53,37 @@ namespace Cocos2D
         ///</summary>
         ///<param name="initialCapacity">Initial capacity to allocate for the list.</param>
         ///<exception cref="ArgumentException">Thrown when the initial capacity is zero or negative.</exception>
+#if WINDOWS_PHONE
         public CCRawList(int initialCapacity)
+            : this(initialCapacity, false)
         {
+        }
+        public CCRawList(int initialCapacity, bool useArrayPool)
+#else
+        public CCRawList(int initialCapacity, bool useArrayPool = false)
+#endif
+        {
+            UseArrayPool = useArrayPool;
+
             if (initialCapacity <= 0)
                 throw new ArgumentException("Initial capacity must be positive.");
-            Elements = new T[initialCapacity];
+
+            Capacity = initialCapacity;
         }
 
         ///<summary>
         /// Constructs a raw list from another list.
         ///</summary>
         ///<param name="elements">List to copy.</param>
-        public CCRawList(IList<T> elements)
-            : this(Math.Max(elements.Count, 4))
+#if WINDOWS_PHONE
+        public CCRawList(IList<T> elements) : this(elements, false)
+        {
+        }
+        public CCRawList(IList<T> elements, bool useArrayPool)
+#else
+        public CCRawList(IList<T> elements, bool useArrayPool = false)
+#endif
+            : this(Math.Max(elements.Count, 4), useArrayPool)
         {
             elements.CopyTo(Elements, 0);
             count = elements.Count;
@@ -60,12 +97,35 @@ namespace Cocos2D
             get { return Elements.Length; }
             set
             {
-                if (Elements.Length != value)
+                T[] newArray;
+                
+                if (UseArrayPool)
                 {
-                    var newArray = new T[value];
-                    Array.Copy(Elements, newArray, count);
-                    Elements = newArray;
+                    var capacity = 4;
+                    while (capacity < value)
+                    {
+                        capacity *= 2;
+                    }
+                    newArray = ArrayPool<T>.Create(capacity);
                 }
+                else
+                {
+                    newArray = new T[value];
+                }
+
+                if (Elements != null && count > 0)
+                {
+                    Array.Copy(Elements, newArray, count);
+                }
+
+                if (UseArrayPool && Elements != null)
+                {
+                    ArrayPool<T>.Free(Elements);
+                }
+
+                Elements = newArray;
+
+                Debug.Assert(Elements != null);
             }
         }
 
@@ -82,14 +142,11 @@ namespace Cocos2D
             get { return count; }
             set
             {
-                if (count != value)
+                if (Elements.Length < value)
                 {
-                    if (value > Capacity)
-                    {
-                        Capacity = value;
-                    }
-                    count = value;
+                    Capacity = value;
                 }
+                count = value;
             }
         }
 
@@ -105,7 +162,9 @@ namespace Cocos2D
             }
             count--;
             if (index < count)
+            {
                 Array.Copy(Elements, index + 1, Elements, index, count - index);
+            }
 
             Elements[count] = default(T);
         }
@@ -118,7 +177,9 @@ namespace Cocos2D
             }
             count -= amount;
             if (index < count)
+            {
                 Array.Copy(Elements, index + amount, Elements, index, count - index);
+            }
 
             amount--;
             while (amount >= 0)
@@ -141,6 +202,15 @@ namespace Cocos2D
             Elements[count++] = item;
         }
 
+        public void Add(ref T item)
+        {
+            if (count == Elements.Length)
+            {
+                Capacity = Elements.Length * 2;
+            }
+            Elements[count++] = item;
+        }
+
         /// <summary>
         /// Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </summary>
@@ -149,6 +219,15 @@ namespace Cocos2D
         {
             //Array.Clear(Elements, 0, count);
             count = 0;
+        }
+
+        public void Free()
+        {
+            if (Elements != null && UseArrayPool)
+            {
+                ArrayPool<T>.Free(Elements);
+                Elements = null;
+            }
         }
 
         /// <summary>
@@ -243,7 +322,6 @@ namespace Cocos2D
             Array.Copy(Elements, 0, array, arrayIndex, count);
         }
 
-
         bool ICollection<T>.IsReadOnly
         {
             get { return false; }
@@ -294,6 +372,20 @@ namespace Cocos2D
                 Capacity = newLength;
             }
             Array.Copy(items.Elements, 0, Elements, count, items.count);
+            count = neededLength;
+        }
+
+        public void AddRange(CCRawList<T> items, int offset, int c)
+        {
+            int neededLength = count + c;
+            if (neededLength > Elements.Length)
+            {
+                int newLength = Elements.Length * 2;
+                if (newLength < neededLength)
+                    newLength = neededLength;
+                Capacity = newLength;
+            }
+            Array.Copy(items.Elements, offset, Elements, count, c);
             count = neededLength;
         }
 
@@ -406,6 +498,35 @@ namespace Cocos2D
             Array.Reverse(Elements, 0, count);
         }
 
+        public T First()
+        {
+            return Elements[0];
+        }
+
+        public T Last()
+        {
+            return Elements[count - 1];
+        }
+
+        public T Pop()
+        {
+            return Elements[--count];
+        }
+
+        public T Peek()
+        {
+            return Elements[count - 1];
+        }
+
+        public void Push(T item)
+        {
+            if (count == Elements.Length)
+            {
+                Capacity = Elements.Length * 2;
+            }
+            Elements[count++] = item;
+        }
+        
         #region Nested type: Enumerator
 
         ///<summary>
@@ -511,5 +632,29 @@ namespace Cocos2D
         }
 
         #endregion
+
+        public void PackToCount()
+        {
+            if (Elements != null && count < Elements.Length)
+            {
+                var newArray = new T[count];
+                Array.Copy(Elements, newArray, count);
+                if (UseArrayPool)
+                {
+                    ArrayPool<T>.Free(Elements);
+                }
+                Elements = newArray;
+            }
+        }
+
+        public void IncreaseCount(int size)
+        {
+            var newCount = count + size;
+            if (Elements.Length < newCount)
+            {
+                Capacity = newCount;
+            }
+            count = newCount;
+        }
     }
 }
