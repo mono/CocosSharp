@@ -387,11 +387,6 @@ namespace Cocos2D
 
         private static void ResetDevice()
         {
-            if (graphicsDevice == null || graphicsDevice.IsDisposed)
-            {
-                // We are existing the game
-                return;
-            }
             m_defaultEffect.View = m_viewMatrix;
             m_defaultEffect.World = m_worldMatrix;
             m_defaultEffect.Projection = m_projectionMatrix;
@@ -449,6 +444,12 @@ namespace Cocos2D
 
         public static void BeginDraw()
         {
+            if (graphicsDevice == null || graphicsDevice.IsDisposed)
+            {
+                // We are existing the game
+                return;
+            }
+
             if (m_bNeedReinitResources)
             {
                 CCGraphicsResource.ReinitAllResources();
@@ -462,6 +463,12 @@ namespace Cocos2D
 
         public static void EndDraw()
         {
+            if (graphicsDevice == null || graphicsDevice.IsDisposed)
+            {
+                // We are existing the game
+                return;
+            }
+
             Debug.Assert(m_stackIndex == 0);
 
             if (m_renderTarget != null)
