@@ -47,6 +47,7 @@ namespace Cocos2D
         public override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
+            m_pForcedTarget = target;
             m_pAction.StartWithTarget(m_pForcedTarget);
         }
 
