@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Cocos2D-XNA.WindowsGL</id>
-    <version>2.0.3.3</version>
+    <version>0.9.0.0</version>
     <title>Cocos2D-XNA for Windows using OpenGL</title>
     <authors>Cocos2D-XNA, Totally Evil Entertainment, LLC, and Xamarin, Inc.</authors>
     <owners>Cocos2D-XNA</owners>
