@@ -54,7 +54,7 @@ namespace Cocos2D
             }
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
 

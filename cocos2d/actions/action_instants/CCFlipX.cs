@@ -24,7 +24,7 @@
             return true;
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
             ((CCSprite) (target)).FlipX = m_bFlipX;

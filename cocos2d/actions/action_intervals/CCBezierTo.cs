@@ -12,7 +12,7 @@ namespace Cocos2D
             InitWithDuration(bezierTo.m_fDuration, bezierTo.m_sConfig);
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
             m_sConfig.ControlPoint1 = (m_sConfig.ControlPoint1 - m_startPosition);

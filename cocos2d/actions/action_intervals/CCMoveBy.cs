@@ -45,7 +45,7 @@ namespace Cocos2D
             }
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             CCPoint dTmp = m_delta;
             base.StartWithTarget(target);

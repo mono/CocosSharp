@@ -62,7 +62,7 @@ namespace Cocos2D
             get { return true; }
         }
 
-        public virtual void StartWithTarget(CCNode target)
+        protected internal virtual void StartWithTarget(CCNode target)
         {
             m_pOriginalTarget = m_pTarget = target;
         }

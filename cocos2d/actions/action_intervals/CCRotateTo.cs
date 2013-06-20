@@ -67,7 +67,7 @@ namespace Cocos2D
             return new CCRotateTo(this);
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
 

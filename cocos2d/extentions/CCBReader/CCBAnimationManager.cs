@@ -570,7 +570,7 @@ namespace Cocos2D
             return pRet;
         }
 
-        public override void StartWithTarget(CCNode node)
+        protected internal override void StartWithTarget(CCNode node)
         {
             base.StartWithTarget(node);
             mStartAngle = m_pTarget.Rotation;

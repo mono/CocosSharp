@@ -42,7 +42,7 @@ namespace Cocos2D
             base.InitWithDuration(duration);
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
             for (int i = 0; i < m_pActions.Length; i++)

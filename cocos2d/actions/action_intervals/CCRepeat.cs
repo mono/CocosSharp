@@ -75,7 +75,7 @@ namespace Cocos2D
             }
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             m_uTotal = 0;
             m_fNextDt = m_pInnerAction.Duration / m_fDuration;

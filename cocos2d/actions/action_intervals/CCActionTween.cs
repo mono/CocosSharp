@@ -31,7 +31,7 @@ namespace Cocos2D
             return false;
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             Debug.Assert(target is ICCActionTweenDelegate, "target must implement CCActionTweenDelegate");
             base.StartWithTarget(target);

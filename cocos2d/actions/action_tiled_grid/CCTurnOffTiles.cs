@@ -95,7 +95,7 @@ namespace Cocos2D
             return pCopy;
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             int i;
 

@@ -18,7 +18,7 @@ namespace Cocos2D
         {
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
             m_fDeltaX = m_fStartScaleX * m_fEndScaleX - m_fStartScaleX;

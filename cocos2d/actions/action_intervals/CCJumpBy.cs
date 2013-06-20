@@ -51,7 +51,7 @@ namespace Cocos2D
             return new CCJumpBy(this);
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
             m_previousPos = m_startPosition = target.Position;

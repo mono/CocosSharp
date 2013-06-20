@@ -46,7 +46,7 @@ namespace Cocos2D
             return new CCProgressFromTo(m_fDuration, m_fTo, m_fFrom);
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
             ((CCProgressTimer) (m_pTarget)).Percentage = m_fFrom;
