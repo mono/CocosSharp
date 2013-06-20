@@ -74,12 +74,16 @@ namespace Cocos2D
 
         public virtual void Step(float dt)
         {
+#if DEBUG
             CCLog.Log("[Action step]. override me");
+#endif
         }
 
         public virtual void Update(float time)
         {
+#if DEBUG
             CCLog.Log("[Action update]. override me");
+#endif
         }
     }
 }

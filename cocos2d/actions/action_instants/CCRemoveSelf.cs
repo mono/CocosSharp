@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cocos2D
 {
-    internal class CCRemoveSelf : CCActionInstant
+    public class CCRemoveSelf : CCActionInstant
     {
         protected bool m_bIsNeedCleanUp;
 
