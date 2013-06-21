@@ -109,10 +109,8 @@
   <target name="buildouya" description="Build Android" depends="clean">
     <if test="${os == 'Win32NT'}">
       <if test="${file::exists('C:\Program Files (x86)\MSBuild\Xamarin\Android\Xamarin.Android.CSharp.targets')}">
-        <if test="${directory::exists('MonoGame.Framework\bin\OUYA')}">
           <exec program="msbuild " commandline="cocos2d-xna.ouya.sln /t:Clean /p:Configuration=Release" />
           <exec program="msbuild " commandline="cocos2d-xna.ouya.sln /t:Build /p:Configuration=Release" />
-        </if>
       </if>
     </if>
     <if test="${os == 'MacOS'}">

@@ -404,13 +404,13 @@
     <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
-      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
-      <Name>MonoGame.Framework.Ouya</Name>
-    </ProjectReference>
     <ProjectReference Include="..\box2d\box2d.Android.csproj">
       <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
       <Name>box2d.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
+      <Project>{8bea875d-66d2-4a5f-b137-83d262a3851d}</Project>
+      <Name>MonoGame.Framework.Ouya</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
