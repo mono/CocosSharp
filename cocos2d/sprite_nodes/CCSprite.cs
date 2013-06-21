@@ -554,7 +554,7 @@ namespace Cocos2D
             return InitWithTexture(texture, rect);
         }
 
-        protected virtual bool InitWithFile(string fileName)
+        public virtual bool InitWithFile(string fileName)
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
 

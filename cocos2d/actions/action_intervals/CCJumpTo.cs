@@ -13,7 +13,7 @@ namespace Cocos2D
             InitWithDuration(jumpTo.m_fDuration, jumpTo.m_delta, jumpTo.m_height, jumpTo.m_nJumps);
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
             m_delta = new CCPoint(m_delta.X - m_startPosition.X, m_delta.Y - m_startPosition.Y);

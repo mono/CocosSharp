@@ -27,7 +27,7 @@ namespace Cocos2D
             return bRet;
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
             m_fDeltaX = m_fSkewX;

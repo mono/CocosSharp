@@ -14,10 +14,12 @@ namespace Cocos2D
         // This can be taken out once all the transitions have been modified with constructors.
         protected CCTransitionScene() {}
 
+        /*
         public CCTransitionScene(float t)
         {
             m_fDuration = t;
         }
+        */
 
         public CCTransitionScene (float t, CCScene scene)
         {

@@ -49,7 +49,7 @@ namespace Cocos2D
             m_fUpZOrig = 0;
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
 

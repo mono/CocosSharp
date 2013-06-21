@@ -44,7 +44,7 @@ namespace Cocos2D
             return new CCTargetedAction(this);
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
             m_pAction.StartWithTarget(m_pForcedTarget);

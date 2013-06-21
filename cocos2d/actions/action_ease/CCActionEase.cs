@@ -49,7 +49,7 @@ namespace Cocos2D
             return new CCActionEase(this);
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
             m_pInner.StartWithTarget(m_pTarget);

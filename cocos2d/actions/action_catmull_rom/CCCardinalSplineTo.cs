@@ -58,7 +58,7 @@ namespace Cocos2D
             return new CCCardinalSplineTo(this);
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
 
@@ -135,7 +135,7 @@ namespace Cocos2D
             InitWithDuration(duration, points, tension);
         }
 
-        public override void StartWithTarget(CCNode target)
+        protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
             m_startPosition = target.Position;
