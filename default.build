@@ -28,6 +28,7 @@
     <call target="buildwindows"/>
     <call target="buildwindowsphone"/>
     <call target="buildwindows8"/>
+    <call target="buildios"/>
 
     <call target="buildnugets"/>
 
@@ -73,6 +74,21 @@
     </if>
   </target>
 
+  <target name="buildios" description="Build iOS" depends="clean">
+    <if test="${os == 'Win32NT'}">
+      <if test="${file::exists('C:\Program Files (x86)\MSBuild\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets')}">
+        <exec program="msbuild " commandline="cocos2d-xna.iOS.sln /t:Clean /p:Configuration=Release" />
+        <exec program="msbuild " commandline="cocos2d-xna.iOS.sln /t:Build /p:Configuration=Release" />
+      </if>
+    </if>
+    <if test="${os == 'MacOS'}">
+      <if test="${file::exists('/Developer/MonoTouch/MSBuild/Xamarin.ObjcBinding.CSharp.targets')}">
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release  cocos2d-xna.iOS.sln" />
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release  cocos2d-xna.iOS.sln" />
+      </if>
+    </if>
+  </target>
+
   <target name="buildnugets" description="Build Windows 8">
     <if test="${os == 'Win32NT'}">
       <property name="nuget.cmd.dir.path" value="nuget.bat" overwrite="true" /> 	
@@ -91,7 +107,8 @@
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Windows.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsGL.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Windows8.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsPhone.nuspec -OutputDirectory ${packages.dir.path}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsPhone8.nuspec -OutputDirectory ${packages.dir.path}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.iOS.nuspec -OutputDirectory ${packages.dir.path}" />
     </if>
   </target>
 
