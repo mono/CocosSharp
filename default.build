@@ -27,6 +27,7 @@
 
     <call target="buildwindows"/>
     <call target="buildwindowsphone"/>
+    <call target="buildwindows8"/>
 
   </target>
 
@@ -60,6 +61,13 @@
         <exec program="msbuild " commandline='cocos2d-xna.WindowsPhone.sln /t:Clean /p:Configuration=Release /p:Platform="x86"' />
         <exec program="msbuild " commandline='cocos2d-xna.WindowsPhone.sln /t:Build /p:Configuration=Release /p:Platform="x86"' />
       </if>
+    </if>
+  </target>
+
+  <target name="buildwindows8" description="Build Windows 8" depends="clean">
+    <if test="${os == 'Win32NT'}">
+      <exec program="msbuild " commandline="cocos2d-xna.Windows8.sln /t:Clean /p:Configuration=Release" />
+      <exec program="msbuild " commandline="cocos2d-xna.Windows8.sln /t:Build /p:Configuration=Release" />
     </if>
   </target>
 
