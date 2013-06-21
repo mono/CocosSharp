@@ -8,7 +8,7 @@ namespace Cocos2D
 {
     public static class ArrayPool<T>
     {
-        private static readonly Dictionary<int, CCRawList<T[]>> _unused = new Dictionary<int, CCRawList<T[]>>();
+        private static readonly Dictionary<int, List<object>> _unused = new Dictionary<int, List<object>>();
 
 #if WINDOWS_PHONE
         public static T[] Create(int length)
@@ -20,7 +20,7 @@ namespace Cocos2D
         public static T[] Create(int length, bool pow = true)
 #endif
         {
-            CCRawList<T[]> list;
+            List<object> list;
 
             if (pow)
             {
@@ -36,9 +36,9 @@ namespace Cocos2D
             {
                 if (list.Count > 0)
                 {
-                    var result = list.Elements[--list.count];
-                    list.Elements[list.count] = null;
-                    return result;
+                    var result = list[list.Count - 1];
+                    list.RemoveAt(list.Count - 1);
+                    return (T[])result;
                 }
             }
 
@@ -61,11 +61,11 @@ namespace Cocos2D
 
         public static void Free(T[] array)
         {
-            CCRawList<T[]> list;
+            List<object> list;
 
             if (!_unused.TryGetValue(array.Length, out list))
             {
-                list = new CCRawList<T[]>(false);
+                list = new List<object>();
                 _unused.Add(array.Length, list);
             }
 
