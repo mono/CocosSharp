@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -407,10 +407,6 @@
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
       <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
       <Name>MonoGame.Framework.Ouya</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
-      <Project>{565129E0-4EE5-4F6F-B403-C3484C9740BE}</Project>
-      <Name>Lidgren.Network.Android</Name>
     </ProjectReference>
     <ProjectReference Include="..\box2d\box2d.Android.csproj">
       <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
