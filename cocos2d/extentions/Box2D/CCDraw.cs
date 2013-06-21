@@ -24,6 +24,7 @@
 // implementation of CCDrawNode
 using Box2D.Common;
 using System;
+using System.Runtime;
 
 namespace Cocos2D
 {
