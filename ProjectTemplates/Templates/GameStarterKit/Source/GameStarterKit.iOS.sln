@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStarterKit.iOS", "GameStarterKit\GameStarterKit.iOS.csproj", "{8216229C-FF49-4ECC-A4D9-6ADAA3B3DEE6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStarterKit.iOS.Content", "GameStarterKit.Content\GameStarterKit.iOS.Content.csproj", "{F4340669-833D-4DA7-AAB2-6AC582A94E66}"
@@ -165,8 +165,8 @@ Global
 		{F4340669-833D-4DA7-AAB2-6AC582A94E66}.Debug|Any CPU.Build.0 = PSM|Any CPU
 		{F4340669-833D-4DA7-AAB2-6AC582A94E66}.Debug|iPhone.ActiveCfg = PSM|Any CPU
 		{F4340669-833D-4DA7-AAB2-6AC582A94E66}.Debug|iPhoneSimulator.ActiveCfg = iOS|Any CPU
-		{F4340669-833D-4DA7-AAB2-6AC582A94E66}.Debug|Mixed Platforms.ActiveCfg = PSM|Any CPU
-		{F4340669-833D-4DA7-AAB2-6AC582A94E66}.Debug|Mixed Platforms.Build.0 = PSM|Any CPU
+		{F4340669-833D-4DA7-AAB2-6AC582A94E66}.Debug|Mixed Platforms.ActiveCfg = iOS|Any CPU
+		{F4340669-833D-4DA7-AAB2-6AC582A94E66}.Debug|Mixed Platforms.Build.0 = iOS|Any CPU
 		{F4340669-833D-4DA7-AAB2-6AC582A94E66}.iOS|Any CPU.ActiveCfg = iOS|Any CPU
 		{F4340669-833D-4DA7-AAB2-6AC582A94E66}.iOS|Any CPU.Build.0 = iOS|Any CPU
 		{F4340669-833D-4DA7-AAB2-6AC582A94E66}.iOS|iPhone.ActiveCfg = iOS|Any CPU
