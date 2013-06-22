@@ -9,6 +9,11 @@ namespace Cocos2D
     {
         protected bool m_bIsNeedCleanUp;
 
+        public CCRemoveSelf()
+        {
+            Init(true);
+        }
+
         public CCRemoveSelf(bool isNeedCleanUp)
         {
             Init(isNeedCleanUp);

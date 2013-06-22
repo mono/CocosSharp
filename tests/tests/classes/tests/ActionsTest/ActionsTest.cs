@@ -35,6 +35,7 @@ namespace tests
         ACTION_CALLFUNCND_LAYER,
         ACTION_REVERSESEQUENCE_LAYER,
         ACTION_REVERSESEQUENCE2_LAYER,
+        ACTION_RemoveSelfActions,
         ACTION_ORBIT_LAYER,
         ACTION_FLLOW_LAYER,
         ACTION_TARGETED_LAYER,
@@ -44,6 +45,7 @@ namespace tests
         ACTION_ISSUE1288_LAYER,
         ACTION_ISSUE1288_2_LAYER,
         ACTION_ISSUE1327_LAYER,
+        ACTION_ISSUE1389_LAYER,
         ACTION_ActionMoveStacked,
         ACTION_ActionMoveJumpStacked,
         ACTION_ActionMoveBezierStacked,
@@ -148,6 +150,9 @@ namespace tests
                 case (int) ActionTest.ACTION_REVERSESEQUENCE2_LAYER:
                     pLayer = new ActionReverseSequence2();
                     break;
+                case (int)ActionTest.ACTION_RemoveSelfActions:
+                    pLayer = new RemoveSelfActions();
+                    break;
                 case (int) ActionTest.ACTION_ORBIT_LAYER:
                     pLayer = new ActionOrbit();
                     break;
@@ -171,6 +176,9 @@ namespace tests
                     break;
                 case (int) ActionTest.ACTION_ISSUE1327_LAYER:
                     pLayer = new Issue1327();
+                    break;
+                case (int)ActionTest.ACTION_ISSUE1389_LAYER:
+                    pLayer = new Issue1389();
                     break;
                 case (int) ActionTest.ACTION_CARDINALSPLINE_LAYER:
                     pLayer = new ActionCardinalSpline();
@@ -2107,6 +2115,51 @@ namespace tests
         }
     }
 
+    public class Issue1389 : ActionsDemo
+    {
+        private int m_nTestInteger;
+
+        private void incrementInteger()
+        {
+            m_nTestInteger++;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            centerSprites(0);
+
+            m_nTestInteger = 0;
+            CCLog.Log("testInt = {0}", m_nTestInteger);
+
+            this.RunAction(
+                new CCSequence(
+                    new CCCallFuncND(incrementIntegerCallback, "1"),
+                    new CCCallFuncND(incrementIntegerCallback, "2"),
+                    new CCCallFuncND(incrementIntegerCallback, "3"),
+                    new CCCallFuncND(incrementIntegerCallback, "4"),
+                    new CCCallFuncND(incrementIntegerCallback, "5"),
+                    new CCCallFuncND(incrementIntegerCallback, "6"),
+                    new CCCallFuncND(incrementIntegerCallback, "7"),
+                    new CCCallFuncND(incrementIntegerCallback, "8")
+                    )
+                );
+        }
+
+        private void incrementIntegerCallback(CCNode pSender, object data)
+        {
+            incrementInteger();
+            CCLog.Log("{0}", data);
+        }
+
+        public override string subtitle()
+        {
+            return "See console: You should see an 8";
+        }
+    }
+
+
     public class PauseResumeActions : ActionsDemo
     {
         private List<object> m_pPausedTargets;
@@ -2150,4 +2203,29 @@ namespace tests
             director.ActionManager.ResumeTargets(m_pPausedTargets);
         }
     }
+
+    public class RemoveSelfActions : ActionsDemo
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            alignSpritesLeft(1);
+
+            CCFiniteTimeAction action = new CCSequence(
+                new CCMoveBy(2, new CCPoint(240, 0)),
+                new CCRotateBy(2, 540),
+                new CCScaleTo(1, 0.1f),
+                new CCRemoveSelf()
+                );
+
+            m_grossini.RunAction(action);
+        }
+
+        public override string subtitle()
+        {
+            return "Sequence: Move + Rotate + Scale + RemoveSelf";
+        }
+    }
+
 }
