@@ -97,16 +97,14 @@ namespace Cocos2D
 
             CCPoint newPos = CCSplineMath.CCCardinalSplineAt(pp0, pp1, pp2, pp3, m_fTension, lt);
 
-#if CC_ENABLE_STACKABLE_ACTIONS
-    // Support for stacked actions
+            // Support for stacked actions
             CCNode node = m_pTarget;
-            CCPoint diff = nodePosition - m_previousPosition;
+            CCPoint diff = node.Position - m_previousPosition;
             if (diff.X != 0 || diff.Y != 0)
             {
                 m_accumulatedDiff = m_accumulatedDiff + diff;
                 newPos = newPos + m_accumulatedDiff;
             }
-#endif
 
             UpdatePosition(newPos);
         }

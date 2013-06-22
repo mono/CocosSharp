@@ -66,7 +66,7 @@ namespace Cocos2D
                 float y = m_height * 4f * frac * (1f - frac);
                 y += m_delta.Y * time;
                 float x = m_delta.X * time;
-#if CC_ENABLE_STACKABLE_ACTIONS
+
                 CCPoint currentPos = m_pTarget.Position;
 
                 CCPoint diff = currentPos - m_previousPos;
@@ -76,10 +76,6 @@ namespace Cocos2D
                 m_pTarget.Position = newPos;
 
                 m_previousPos = newPos;
-#else
-                m_pTarget.Position = m_startPosition + new CCPoint(x, y);
-#endif
-                // !CC_ENABLE_STACKABLE_ACTIONS
             }
         }
 

@@ -65,7 +65,6 @@ namespace Cocos2D
                 float x = CCSplineMath.CubicBezier(xa, xb, xc, xd, time);
                 float y = CCSplineMath.CubicBezier(ya, yb, yc, yd, time);
 
-#if CC_ENABLE_STACKABLE_ACTIONS
                 CCPoint currentPos = m_pTarget.Position;
                 CCPoint diff = currentPos - m_previousPosition;
                 m_startPosition = m_startPosition + diff;
@@ -74,11 +73,6 @@ namespace Cocos2D
                 m_pTarget.Position = newPos;
 
                 m_previousPosition = newPos;
-#else
-                m_pTarget.PositionX = m_startPosition.X + x;
-                m_pTarget.PositionY = m_startPosition.Y + y;
-#endif
-                // !CC_ENABLE_STACKABLE_ACTIONS
             }
         }
 

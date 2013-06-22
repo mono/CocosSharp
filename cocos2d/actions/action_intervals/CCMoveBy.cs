@@ -1,22 +1,27 @@
 namespace Cocos2D
 {
-    public class CCMoveBy : CCMoveTo
+    public class CCMoveBy : CCActionInterval
     {
-        public CCMoveBy(float duration, CCPoint position) : base(duration, position)
+        protected CCPoint m_positionDelta;
+        protected CCPoint m_endPosition;
+        protected CCPoint m_startPosition;
+        protected CCPoint m_previousPosition;
+
+        public CCMoveBy(float duration, CCPoint position) 
         {
             InitWithDuration(duration, position);
         }
 
         protected CCMoveBy(CCMoveBy moveBy) : base(moveBy)
         {
-            InitWithDuration(moveBy.m_fDuration, moveBy.m_delta);
+            InitWithDuration(moveBy.m_fDuration, moveBy.m_positionDelta);
         }
 
-        protected new bool InitWithDuration(float duration, CCPoint position)
+        protected virtual bool InitWithDuration(float duration, CCPoint position)
         {
             if (base.InitWithDuration(duration))
             {
-                m_delta = position;
+                m_positionDelta = position;
                 return true;
             }
             return false;
@@ -35,7 +40,7 @@ namespace Cocos2D
 
                 base.Copy(zone);
 
-                ret.InitWithDuration(m_fDuration, m_delta);
+                ret.InitWithDuration(m_fDuration, m_positionDelta);
 
                 return ret;
             }
@@ -47,14 +52,26 @@ namespace Cocos2D
 
         protected internal override void StartWithTarget(CCNode target)
         {
-            CCPoint dTmp = m_delta;
             base.StartWithTarget(target);
-            m_delta = dTmp;
+            m_previousPosition = m_startPosition = target.Position;
+        }
+
+        public override void Update(float time)
+        {
+            if (m_pTarget != null)
+            {
+                CCPoint currentPos = m_pTarget.Position;
+                CCPoint diff = currentPos - m_previousPosition;
+                m_startPosition = m_startPosition + diff;
+                CCPoint newPos = m_startPosition + m_positionDelta * time;
+                m_pTarget.Position = newPos;
+                m_previousPosition = newPos;
+            }
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCMoveBy(m_fDuration, new CCPoint(-m_delta.X, -m_delta.Y));
+            return new CCMoveBy(m_fDuration, new CCPoint(-m_positionDelta.X, -m_positionDelta.Y));
         }
     }
 }

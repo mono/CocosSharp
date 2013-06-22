@@ -11,6 +11,8 @@ namespace tests
         ACTION_SCALE_LAYER,
         ACTION_ROTATE_LAYER,
         ACTION_SKEW_LAYER,
+        ACTION_ROTATIONAL_SKEW_LAYER,
+        ACTION_COMPARISON_SKEW_LAYER,
         ACTION_SKEWROTATE_LAYER,
         ACTION_JUMP_LAYER,
         ACTION_CARDINALSPLINE_LAYER,
@@ -42,8 +44,13 @@ namespace tests
         ACTION_ISSUE1288_LAYER,
         ACTION_ISSUE1288_2_LAYER,
         ACTION_ISSUE1327_LAYER,
+        ACTION_ActionMoveStacked,
+        ACTION_ActionMoveJumpStacked,
+        ACTION_ActionMoveBezierStacked,
+        ACTION_ActionCatmullRomStacked,
+        ACTION_ActionCardinalSplineStacked,
         ACTION_PARALLEL,
-        ACTION_LAYER_COUNT,
+        ACTION_LAYER_COUNT
     };
 
 
@@ -74,6 +81,12 @@ namespace tests
                     break;
                 case (int) ActionTest.ACTION_SKEW_LAYER:
                     pLayer = new ActionSkew();
+                    break;
+                case (int) ActionTest.ACTION_ROTATIONAL_SKEW_LAYER:
+                    pLayer = new ActionRotationalSkew();
+                    break;
+                case (int) ActionTest.ACTION_COMPARISON_SKEW_LAYER:
+                    pLayer = new ActionRotationalSkewVSStandardSkew();
                     break;
                 case (int) ActionTest.ACTION_SKEWROTATE_LAYER:
                     pLayer = new ActionSkewRotateScale();
@@ -167,6 +180,21 @@ namespace tests
                     break;
                 case (int) ActionTest.PAUSERESUMEACTIONS_LAYER:
                     pLayer = new PauseResumeActions();
+                    break;
+                case (int)ActionTest.ACTION_ActionMoveStacked:
+                    pLayer = new ActionMoveStacked();
+                    break;
+                case (int)ActionTest.ACTION_ActionMoveJumpStacked:
+                    pLayer = new ActionMoveJumpStacked();
+                    break;
+                case (int)ActionTest.ACTION_ActionMoveBezierStacked:
+                    pLayer = new ActionMoveBezierStacked();
+                    break;
+                case (int)ActionTest.ACTION_ActionCatmullRomStacked:
+                    pLayer = new ActionCatmullRomStacked();
+                    break;
+                case (int)ActionTest.ACTION_ActionCardinalSplineStacked:
+                    pLayer = new ActionCardinalSplineStacked();
                     break;
                 case (int)ActionTest.ACTION_PARALLEL:
                     pLayer = new ActionParallel();
@@ -503,6 +531,85 @@ namespace tests
         public override string subtitle()
         {
             return "SkewTo / SkewBy";
+        }
+    };
+
+    public class ActionRotationalSkew : ActionsDemo
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            centerSprites(3);
+
+            var actionTo = new CCRotateTo(2, 37.2f, -37.2f);
+            var actionToBack = new CCRotateTo(2, 0, 0);
+            var actionBy = new CCRotateBy(2, 0.0f, -90.0f);
+            var actionBy2 = new CCRotateBy(2, 45.0f, 45.0f);
+            var actionByBack = (CCRotateBy) actionBy.Reverse();
+
+            m_tamara.RunAction(new CCSequence(actionTo, actionToBack));
+            m_grossini.RunAction(new CCSequence(actionBy, actionByBack));
+
+            m_kathia.RunAction(new CCSequence(actionBy2, actionBy2.Reverse()));
+
+            m_tamara.RunAction(new CCSequence(actionTo, actionToBack));
+            m_grossini.RunAction(new CCSequence(actionBy, actionByBack));
+
+            m_kathia.RunAction(new CCSequence(actionBy2, actionBy2.Reverse()));
+        }
+
+        public override string subtitle()
+        {
+            return "RotationalSkewTo / RotationalSkewBy";
+        }
+    };
+
+    public class ActionRotationalSkewVSStandardSkew : ActionsDemo
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            m_tamara.RemoveFromParentAndCleanup(true);
+            m_grossini.RemoveFromParentAndCleanup(true);
+            m_kathia.RemoveFromParentAndCleanup(true);
+
+            var s = CCDirector.SharedDirector.WinSize;
+
+            CCSize boxSize = new CCSize(100.0f, 100.0f);
+
+            CCLayerColor box = new CCLayerColor(new CCColor4B(255, 255, 0, 255));
+            box.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            box.ContentSize = boxSize;
+            box.IgnoreAnchorPointForPosition = false;
+            box.Position = new CCPoint(s.Width / 2, s.Height - 100 - box.ContentSize.Height / 2);
+            this.AddChild(box);
+            CCLabelTTF label = new CCLabelTTF("Standard cocos2d Skew", "Marker Felt", 16);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 100 + label.ContentSize.Height);
+            this.AddChild(label);
+            CCSkewBy actionTo = new CCSkewBy(2, 360, 0);
+            CCSkewBy actionToBack = new CCSkewBy(2, -360, 0);
+
+            box.RunAction(new CCSequence(actionTo, actionToBack));
+
+            box = new CCLayerColor(new CCColor4B(255, 255, 0, 255));
+            box.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            box.ContentSize = boxSize;
+            box.IgnoreAnchorPointForPosition = false;
+            box.Position = new CCPoint(s.Width / 2, s.Height - 250 - box.ContentSize.Height / 2);
+            this.AddChild(box);
+            label = new CCLabelTTF("Rotational Skew", "Marker Felt", 16);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 250 + label.ContentSize.Height / 2);
+            this.AddChild(label);
+            CCRotateBy actionTo2 = new CCRotateBy(2, 360, 0);
+            CCRotateBy actionToBack2 = new CCRotateBy(2, -360, 0);
+            box.RunAction(new CCSequence(actionTo2, actionToBack2));
+        }
+
+        public override string subtitle()
+        {
+            return "Skew Comparison";
         }
     };
 
@@ -1447,6 +1554,355 @@ namespace tests
         }
     }
 
+    #region ActionStacked
+
+    public class ActionStacked : ActionsDemo
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            centerSprites(0);
+    
+            TouchEnabled = true;
+    
+            CCSize s = CCDirector.SharedDirector.WinSize;
+            AddNewSpriteWithCoords(new CCPoint(s.Width/2, s.Height/2));
+        }
+
+        private void AddNewSpriteWithCoords(CCPoint p)
+        {
+            int idx = (int) (CCRandom.Float_0_1() * 1400 / 100);
+            int x = (idx % 5) * 85;
+            int y = (idx / 5) * 121;
+
+
+            CCSprite sprite = new CCSprite("Images/grossini_dance_atlas.png", new CCRect(x, y, 85, 121));
+
+            sprite.Position = p;
+            this.AddChild(sprite);
+
+            this.RunActionsInSprite(sprite);
+        }
+
+        public virtual void RunActionsInSprite(CCSprite sprite)
+        {
+            // override me
+        }
+
+        public override void TouchesEnded(List<CCTouch> touches)
+        {
+            foreach (var touch in touches)
+            {
+                if (touch == null)
+                    break;
+
+                CCPoint location = touch.Location;
+
+                AddNewSpriteWithCoords(location);
+            }
+        }
+
+        public override string title()
+        {
+            return "Override me";
+        }
+
+        public override string subtitle()
+        {
+            return "Tap screen";
+        }
+    }
+
+    public class ActionMoveStacked : ActionStacked
+    {
+        public override void RunActionsInSprite(CCSprite sprite)
+        {
+            sprite.RunAction(
+                new CCRepeatForever(
+                    new CCSequence(
+                        new CCMoveBy(0.05f, new CCPoint(10, 10)),
+                        new CCMoveBy(0.05f, new CCPoint(-10, -10)))
+                    )
+                );
+
+            CCMoveBy action = new CCMoveBy(2.0f, new CCPoint(400, 0));
+            CCMoveBy action_back = (CCMoveBy) action.Reverse();
+
+            sprite.RunAction(
+                new CCRepeatForever(
+                    new CCSequence(action, action_back)
+                    ));
+        }
+
+        public override string title()
+        {
+            return "Stacked CCMoveBy/To actions";
+        }
+    }
+
+    public class ActionMoveJumpStacked : ActionStacked
+    {
+        public override void RunActionsInSprite(CCSprite sprite)
+        {
+            sprite.RunAction(
+                new CCRepeatForever(
+                    new CCSequence(
+                        new CCMoveBy(0.05f, new CCPoint(10, 2)),
+                        new CCMoveBy(0.05f, new CCPoint(-10, -2)))));
+
+            CCJumpBy jump = new CCJumpBy(2.0f, new CCPoint(400, 0), 100, 5);
+            CCJumpBy jump_back = (CCJumpBy) jump.Reverse();
+
+            sprite.RunAction(
+                new CCRepeatForever(
+                    new CCSequence(jump, jump_back)
+                    ));
+        }
+
+        public override string title()
+        {
+            return "tacked Move + Jump actions";
+        }
+    }
+
+    public class ActionMoveBezierStacked : ActionStacked
+    {
+        public override void RunActionsInSprite(CCSprite sprite)
+        {
+            CCSize s = CCDirector.SharedDirector.WinSize;
+
+            // sprite 1
+            CCBezierConfig bezier;
+            bezier.ControlPoint1 = new CCPoint(0, s.Height / 2);
+            bezier.ControlPoint2 = new CCPoint(300, -s.Height / 2);
+            bezier.EndPosition = new CCPoint(300, 100);
+
+            CCBezierBy bezierForward = new CCBezierBy(3, bezier);
+            CCBezierBy bezierBack = (CCBezierBy) bezierForward.Reverse();
+            CCSequence seq = new CCSequence(bezierForward, bezierBack);
+            CCRepeatForever rep = new CCRepeatForever(seq);
+            sprite.RunAction(rep);
+
+            sprite.RunAction(
+                new CCRepeatForever(
+                    new CCSequence(
+                        new CCMoveBy(0.05f, new CCPoint(10, 0)),
+                        new CCMoveBy(0.05f, new CCPoint(-10, 0))
+                        )
+                    )
+                );
+        }
+
+        public override string title()
+        {
+            return "Stacked Move + Bezier actions";
+        }
+    }
+
+    public class ActionCatmullRomStacked : ActionsDemo
+    {
+        private List<CCPoint> _array;
+        private List<CCPoint> _array2;
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            centerSprites(2);
+
+            CCSize s = CCDirector.SharedDirector.WinSize;
+
+            //
+            // sprite 1 (By)
+            //
+            // startPosition can be any coordinate, but since the movement
+            // is relative to the Catmull Rom curve, it is better to start with (0,0).
+            //
+
+            m_tamara.Position = new CCPoint(50, 50);
+
+            _array = new List<CCPoint>();
+
+            _array.Add(new CCPoint(0, 0));
+            _array.Add(new CCPoint(80, 80));
+            _array.Add(new CCPoint(s.Width - 80, 80));
+            _array.Add(new CCPoint(s.Width - 80, s.Height - 80));
+            _array.Add(new CCPoint(80, s.Height - 80));
+            _array.Add(new CCPoint(80, 80));
+            _array.Add(new CCPoint(s.Width / 2, s.Height / 2));
+
+            var action = new CCCatmullRomBy(3, _array);
+            var reverse = action.Reverse();
+
+            var seq = new CCSequence(action, reverse);
+
+            m_tamara.RunAction(seq);
+
+            m_tamara.RunAction(
+                new CCRepeatForever(
+                    new CCSequence(
+                        new CCMoveBy(0.05f, new CCPoint(10, 0)),
+                        new CCMoveBy(0.05f, new CCPoint(-10, 0))
+                        )
+                    )
+                );
+
+
+            //
+            // sprite 2 (To)
+            //
+            // The startPosition is not important here, because it uses a "To" action.
+            // The initial position will be the 1st point of the Catmull Rom path
+            //
+
+            _array2 = new List<CCPoint>();
+
+            _array2.Add(new CCPoint(s.Width / 2, 30));
+            _array2.Add(new CCPoint(s.Width - 80, 30));
+            _array2.Add(new CCPoint(s.Width - 80, s.Height - 80));
+            _array2.Add(new CCPoint(s.Width / 2, s.Height - 80));
+            _array2.Add(new CCPoint(s.Width / 2, 30));
+
+
+            var action2 = new CCCatmullRomTo(3, _array2);
+            var reverse2 = action2.Reverse();
+
+            var seq2 = new CCSequence(action2, reverse2);
+
+            m_kathia.RunAction(seq2);
+
+            m_kathia.RunAction(
+                new CCRepeatForever(
+                    new CCSequence(
+                        new CCMoveBy(0.05f, new CCPoint(10, 0)),
+                        new CCMoveBy(0.05f, new CCPoint(-10, 0))
+                        )
+                    )
+                );
+
+        }
+
+        public override void Draw()
+        {
+            base.Draw();
+
+            // move to 50,50 since the "by" path will start at 50,50
+            CCDrawManager.PushMatrix();
+            CCDrawManager.Translate(50, 50, 0);
+            CCDrawingPrimitives.DrawCatmullRom(_array, 50);
+            CCDrawManager.PopMatrix();
+
+            CCDrawingPrimitives.DrawCatmullRom(_array2, 50);
+        }
+        
+        public override string title()
+        {
+            return "Stacked MoveBy + CatmullRom actions";
+        }
+
+        public override string subtitle()
+        {
+            return "MoveBy + CatmullRom at the same time in the same sprite";
+        }
+    }
+
+
+    public class ActionCardinalSplineStacked : ActionsDemo
+    {
+        private List<CCPoint> m_pArray = new List<CCPoint>();
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            centerSprites(2);
+
+            var s = CCDirector.SharedDirector.WinSize;
+
+            m_pArray.Add(new CCPoint(0, 0));
+            m_pArray.Add(new CCPoint(s.Width / 2 - 30, 0));
+            m_pArray.Add(new CCPoint(s.Width / 2 - 30, s.Height - 80));
+            m_pArray.Add(new CCPoint(0, s.Height - 80));
+            m_pArray.Add(new CCPoint(0, 0));
+
+            //
+            // sprite 1 (By)
+            //
+            // Spline with no tension (tension==0)
+            //
+
+            var action = new CCCardinalSplineBy(3, m_pArray, 0);
+            var reverse = action.Reverse();
+
+            var seq = new CCSequence(action, reverse);
+
+            m_tamara.Position = new CCPoint(50, 50);
+            m_tamara.RunAction(seq);
+
+            m_tamara.RunAction(
+                new CCRepeatForever(
+                    new CCSequence(
+                        new CCMoveBy(0.05f, new CCPoint(10, 0)),
+                        new CCMoveBy(0.05f, new CCPoint(-10, 0))
+                        )
+                    )
+                );
+            //
+            // sprite 2 (By)
+            //
+            // Spline with high tension (tension==1)
+            //
+
+            var action2 = new CCCardinalSplineBy(3, m_pArray, 1);
+            var reverse2 = action2.Reverse();
+
+            var seq2 = new CCSequence(action2, reverse2);
+
+            m_kathia.SetPosition(s.Width / 2, 50);
+            m_kathia.RunAction(seq2);
+
+            m_kathia.RunAction(
+                new CCRepeatForever(
+                    new CCSequence(
+                        new CCMoveBy(0.05f, new CCPoint(10, 0)),
+                        new CCMoveBy(0.05f, new CCPoint(-10, 0))
+                        )
+                    )
+                );
+
+        }
+
+        public override void Draw()
+        {
+            base.Draw();
+
+            // move to 50,50 since the "by" path will start at 50,50
+            CCDrawManager.PushMatrix();
+            CCDrawManager.Translate(50, 50, 0);
+            CCDrawingPrimitives.DrawCardinalSpline(m_pArray, 0, 100);
+            CCDrawManager.PopMatrix();
+
+            var s = CCDirector.SharedDirector.WinSize;
+
+            CCDrawManager.PushMatrix();
+            CCDrawManager.Translate(s.Width / 2, 50, 0);
+            CCDrawingPrimitives.DrawCardinalSpline(m_pArray, 1, 100);
+            CCDrawManager.PopMatrix();
+        }
+
+        public override string title()
+        {
+            return "Stacked MoveBy + CardinalSpline actions";
+        }
+
+        public override string subtitle()
+        {
+            return "CCMoveBy + CCCardinalSplineBy/To at the same time";
+        }
+    }
+
+    #endregion
 
     public class Issue1305 : ActionsDemo
     {
