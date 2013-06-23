@@ -744,7 +744,7 @@ namespace Cocos2D
             }
         }
 
-        public void UpdateTransform()
+        public override void UpdateTransform()
         {
             Debug.Assert(m_pobBatchNode != null,
                          "updateTransform is only valid when CCSprite is being rendered using an CCSpriteBatchNode");
