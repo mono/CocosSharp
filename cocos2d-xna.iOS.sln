@@ -33,8 +33,8 @@ Global
 		{A83510D8-7AED-411E-9616-DCFEA180969E}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{A83510D8-7AED-411E-9616-DCFEA180969E}.Release|iPhone.ActiveCfg = Release|iPhone
 		{A83510D8-7AED-411E-9616-DCFEA180969E}.Release|iPhone.Build.0 = Release|iPhone
-		{A83510D8-7AED-411E-9616-DCFEA180969E}.Release|iPhoneSimulator.ActiveCfg = Release|iPhone
-		{A83510D8-7AED-411E-9616-DCFEA180969E}.Release|iPhoneSimulator.Build.0 = Release|iPhone
+		{A83510D8-7AED-411E-9616-DCFEA180969E}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{A83510D8-7AED-411E-9616-DCFEA180969E}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{7877D4F9-F781-465A-9C1F-D113F246A994}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
 		{7877D4F9-F781-465A-9C1F-D113F246A994}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
 		{7877D4F9-F781-465A-9C1F-D113F246A994}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Ad-Hoc|iPhone
