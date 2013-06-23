@@ -31,6 +31,7 @@
     <call target="buildios"/>
     <call target="buildandroid"/>
     <call target="buildouya"/>
+    <call target="buildmac"/>
 
     <call target="buildnugets"/>
 
@@ -118,6 +119,13 @@
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release cocos2d-xna.ouya.sln" />
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release cocos2d-xna.ouya.sln" />
       </if>
+    </if>
+  </target>
+
+  <target name="buildmac" description="Build Mac OSX" depends="checkos">
+    <if test="${os == 'MacOS'}">
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release cocos2d-xna.macos.sln" />
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release cocos2d-xna.macos.sln" />
     </if>
   </target>
 
