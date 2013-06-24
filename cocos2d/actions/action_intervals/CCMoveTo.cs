@@ -37,6 +37,19 @@ namespace Cocos2D
             }
         }
 
+        public override void Update(float time)
+        {
+            if (m_pTarget != null)
+            {
+                CCPoint currentPos = m_pTarget.Position;
+                CCPoint diff = currentPos - m_previousPosition;
+                //                m_startPosition = m_startPosition + diff;
+                CCPoint newPos = m_startPosition + m_positionDelta * time;
+                m_pTarget.Position = newPos;
+                m_previousPosition = newPos;
+            }
+        }
+
         protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);

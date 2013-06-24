@@ -105,6 +105,12 @@ namespace Cocos2D
             {
                 SwitchTo(0);
             }
+            else if(m_nEnabledLayer != -1)
+            {
+                if(m_InAction != null) {
+                    m_pLayers[m_nEnabledLayer].RunAction(m_InAction);
+                }
+            }
             base.OnEnter();
         }
 
@@ -113,12 +119,16 @@ namespace Cocos2D
         /// added to the scene.
         /// </summary>
         /// <param name="n"></param>
-        public void SwitchTo(int n)
+        public CCLayer SwitchTo(int n)
         {
             if (m_nEnabledLayer == n)
             {
                 // no-op
-                return;
+                if (m_nEnabledLayer == -1)
+                {
+                    return (null);
+                }
+                return (m_pLayers[m_nEnabledLayer]);
             }
 
             Debug.Assert(n < m_pLayers.Count, "Invalid index in MultiplexLayer SwitchTo");
@@ -150,18 +160,20 @@ namespace Cocos2D
             {
                 m_pLayers[n].RunAction(m_InAction.Copy());
             }
+            return (m_pLayers[m_nEnabledLayer]);
         }
 
         /** release the current layer and switches to another layer indexed by n.
         The current (old) layer will be removed from it's parent with 'cleanup:YES'.
         */
-        public void SwitchToAndReleaseMe(int n)
+        public CCLayer SwitchToAndReleaseMe(int n)
         {
             Debug.Assert(n < m_pLayers.Count, "Invalid index in MultiplexLayer SwitchToAndReleaseMe");
 
             var prevLayer = m_nEnabledLayer;
-            SwitchTo(n);
+            CCLayer l = SwitchTo(n);
             m_pLayers[prevLayer] = null;
+            return (l);
         }
     }
 }
