@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("tests.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("EmptyProject.Resource", IsApplication=true)]
 
-namespace tests
+namespace EmptyProject
 {
 	
 	
@@ -45,10 +45,10 @@ namespace tests
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int icon = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int ouya_icon = 2130837505;
+			public const int Splash = 2130837505;
 			
 			static Drawable()
 			{
@@ -60,30 +60,14 @@ namespace tests
 			}
 		}
 		
-		public partial class Layout
-		{
-			
-			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
-			
-			static Layout()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Layout()
-			{
-			}
-		}
-		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f030001
+			public const int ApplicationName = 2130903041;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f030000
+			public const int Hello = 2130903040;
 			
 			static String()
 			{
@@ -98,8 +82,8 @@ namespace tests
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int Theme_NoTitleBar = 2131034112;
+			// aapt resource value: 0x7f040000
+			public const int Theme_Splash = 2130968576;
 			
 			static Style()
 			{
