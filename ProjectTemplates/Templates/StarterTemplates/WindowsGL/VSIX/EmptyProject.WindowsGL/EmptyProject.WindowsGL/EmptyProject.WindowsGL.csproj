@@ -45,10 +45,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\..\..\..\NuGet\bin\Cocos2D-XNA.WindowsGL.0.9.0.0.nupkg">
+      <Link>Packages\Cocos2D-XNA.WindowsGL.0.9.0.0.nupkg</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\Template\EmptyProject.WindowsGL.vstemplate">
+      <Link>EmptyProject.WindowsGL.vstemplate</Link>
+    </Content>
+    <Content Include="..\..\..\Template\bin\EmptyProject.WindowsGL.zip">
+      <Link>ProjectTemplates\Cocos2D-XNA\Windows\EmptyProject.WindowsGL.zip</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
