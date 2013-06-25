@@ -51,11 +51,20 @@
     </Content>
     <Content Include="..\..\..\Template\EmptyProject.WindowsGL.vstemplate">
       <Link>EmptyProject.WindowsGL.vstemplate</Link>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\..\..\Template\bin\EmptyProject.WindowsGL.zip">
       <Link>ProjectTemplates\Cocos2D-XNA\Windows\EmptyProject.WindowsGL.zip</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="powered.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="powered.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
