@@ -61,6 +61,7 @@
   <ItemGroup>
     <Content Include="..\..\..\Template\EmptyProject.Android.vstemplate">
       <Link>EmptyProject.Android.vstemplate</Link>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup />

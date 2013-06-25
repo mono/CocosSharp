@@ -51,6 +51,7 @@
     </Content>
     <Content Include="..\..\..\Template\EmptyProject.Windows8XAML.vstemplate">
       <Link>EmptyProject.Windows8XAML.vstemplate</Link>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\..\..\Template\bin\EmptyProject.Windows8XAML.zip">
       <Link>ProjectTemplates\Cocos2D-XNA\Windows\EmptyProject.Windows8XAML.zip</Link>
