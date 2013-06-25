@@ -54,6 +54,14 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="powered.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="powered.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
@@ -61,6 +69,7 @@
   <ItemGroup>
     <Content Include="..\..\..\Template\EmptyProject.Android.vstemplate">
       <Link>EmptyProject.Android.vstemplate</Link>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup />
