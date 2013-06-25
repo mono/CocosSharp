@@ -1259,35 +1259,35 @@ namespace Cocos2D
             public float AlphaTreshold;
         }
 
-        private static int _layer = -1;
-        private static bool _onceMaskLog = false;
-        private static DepthStencilState[] _savedStencilStates = new DepthStencilState[8];
-        private static AlphaTestEffect _alphaTest;
+        private static int _maskLayer = -1;
+        private static bool _maskOnceLog = false;
+        private static DepthStencilState[] _maskSavedStencilStates = new DepthStencilState[8];
+        private static AlphaTestEffect _maskAlphaTest;
         private static MaskState[] _maskStates = new MaskState[8];
 
         public static bool BeginDrawMask(bool inverted, float alphaTreshold)
         {
-            if (_layer + 1 == 8) //DepthFormat.Depth24Stencil8
+            if (_maskLayer + 1 == 8) //DepthFormat.Depth24Stencil8
             {
-                if (_onceMaskLog)
+                if (_maskOnceLog)
                 {
                     CCLog.Log(
                         @"Nesting more than 8 stencils is not supported. 
                         Everything will be drawn without stencil for this node and its childs."
                         );
-                    _onceMaskLog = false;
+                    _maskOnceLog = false;
                 }
                 return false;
             }
 
             var maskState = new MaskState() { Inverted = inverted, AlphaTreshold = alphaTreshold };
 
-            _layer++;
+            _maskLayer++;
 
-            _maskStates[_layer] = maskState;
-            _savedStencilStates[_layer] = DepthStencilState;
+            _maskStates[_maskLayer] = maskState;
+            _maskSavedStencilStates[_maskLayer] = DepthStencilState;
 
-            int maskLayer = 1 << _layer;
+            int maskLayer = 1 << _maskLayer;
 
             ///////////////////////////////////
             // CLEAR STENCIL BUFFER
@@ -1343,15 +1343,15 @@ namespace Cocos2D
 
             if (maskState.AlphaTreshold < 1)
             {
-                if (_alphaTest == null)
+                if (_maskAlphaTest == null)
                 {
-                    _alphaTest = new AlphaTestEffect(GraphicsDevice);
-                    _alphaTest.AlphaFunction = CompareFunction.Greater;
+                    _maskAlphaTest = new AlphaTestEffect(GraphicsDevice);
+                    _maskAlphaTest.AlphaFunction = CompareFunction.Greater;
                 }
 
-                _alphaTest.ReferenceAlpha = (byte)(255 * maskState.AlphaTreshold);
+                _maskAlphaTest.ReferenceAlpha = (byte)(255 * maskState.AlphaTreshold);
 
-                PushEffect(_alphaTest);
+                PushEffect(_maskAlphaTest);
             }
 
             return true;
@@ -1359,7 +1359,7 @@ namespace Cocos2D
 
         public static void EndDrawMask()
         {
-            var maskState = _maskStates[_layer];
+            var maskState = _maskStates[_maskLayer];
 
             ///////////////////////////////////
             // PREPARE TO DRAW MASKED CONTENT
@@ -1369,13 +1369,13 @@ namespace Cocos2D
                 PopEffect();
             }
 
-            int maskLayer = 1 << _layer;
+            int maskLayer = 1 << _maskLayer;
             int maskLayerL = maskLayer - 1;
             int maskLayerLe = maskLayer | maskLayerL; 
 
             var stencilState = new DepthStencilState()
             {
-                DepthBufferEnable = _savedStencilStates[_layer].DepthBufferEnable,
+                DepthBufferEnable = _maskSavedStencilStates[_maskLayer].DepthBufferEnable,
 
                 StencilEnable = true,
 
@@ -1394,9 +1394,9 @@ namespace Cocos2D
 
         public static void EndMask()
         {
-            DepthStencilState = _savedStencilStates[_layer];
+            DepthStencilState = _maskSavedStencilStates[_maskLayer];
 
-            _layer--;
+            _maskLayer--;
         }
         
         #endregion
