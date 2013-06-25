@@ -49,7 +49,7 @@
       <Link>ProjectTemplates\Cocos2D-XNA\iOS\EmptyProject.iOS.zip</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\..\..\..\cocos2d-xna\ProjectTemplates\NuGet\bin\Cocos2D-XNA.iOS.0.9.0.0.nupkg">
+    <Content Include="..\..\..\..\..\..\NuGet\bin\Cocos2D-XNA.iOS.0.9.0.0.nupkg">
       <Link>Packages\Cocos2D-XNA.iOS.0.9.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -60,6 +60,7 @@
   <ItemGroup>
     <Content Include="..\..\..\Template\EmptyProject.iOS.vstemplate">
       <Link>EmptyProject.iOS.vstemplate</Link>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="powered.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
