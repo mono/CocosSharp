@@ -313,7 +313,7 @@ namespace Cocos2D
 
         public bool InitWithData(byte[] data, SurfaceFormat pixelFormat, bool mipMap)
         {
-            var texture = LoadTexture(new MemoryStream(data, false), pixelFormat);
+            var texture = LoadTexture(new MemoryStream(data, false));
 
             if (texture != null)
             {
@@ -344,7 +344,7 @@ namespace Cocos2D
             Texture2D texture;
             try
             {
-                texture = LoadTexture(stream, pixelFormat);
+                texture = LoadTexture(stream);
                 
                 InitWithTexture(texture, pixelFormat, false, false);
 
@@ -737,7 +737,7 @@ namespace Cocos2D
 
         #endregion
 
-        #region Convertation
+        #region Conversion
 
         public void GenerateMipmap()
         {
@@ -848,14 +848,9 @@ namespace Cocos2D
 
         #region Loading Texture
 
-        private Texture2D LoadTexture(Stream stream, SurfaceFormat pixelFormat)
+        private Texture2D LoadTexture(Stream stream)
         {
-            return LoadTexture(stream, CCImageFormat.UnKnown, pixelFormat, 0, 0);
-        }
-
-        private Texture2D LoadTexture(Stream stream, CCImageFormat imageFormat)
-        {
-            return LoadTexture(stream, imageFormat, CCTexture2D.DefaultAlphaPixelFormat, 0, 0);
+            return LoadTexture(stream, CCImageFormat.UnKnown);
         }
 
         private Texture2D LoadRawData<T>(T[] data, int width, int height, SurfaceFormat pixelFormat, bool mipMap) where T : struct
@@ -865,7 +860,7 @@ namespace Cocos2D
             return result;
         }
 
-        private Texture2D LoadTexture(Stream stream, CCImageFormat imageFormat, SurfaceFormat pixelFormat, int width, int height)
+        private Texture2D LoadTexture(Stream stream, CCImageFormat imageFormat)
         {
             Texture2D result = null;
 
@@ -895,7 +890,7 @@ namespace Cocos2D
             var dataLen = stream.Read(data, 0, 8);
             stream.Position = pos;
 
-            if (dataLen > 8)
+            if (dataLen >= 8)
             {
                 if (data[0] == 0x89 && data[1] == 0x50 && data[2] == 0x4E && data[3] == 0x47
                     && data[4] == 0x0D && data[5] == 0x0A && data[6] == 0x1A && data[7] == 0x0A)
@@ -904,7 +899,7 @@ namespace Cocos2D
                 }
             }
 
-            if (dataLen > 3)
+            if (dataLen >= 3)
             {
                 if (data[0] == 0x47 && data[1] == 0x49 && data[1] == 0x46)
                 {
@@ -912,7 +907,7 @@ namespace Cocos2D
                 }
             }
 
-            if (dataLen > 2)
+            if (dataLen >= 2)
             {
                 if ((data[0] == 0x49 && data[1] == 0x49) || (data[0] == 0x4d && data[1] == 0x4d))
                 {
@@ -920,7 +915,7 @@ namespace Cocos2D
                 }
             }
 
-            if (dataLen > 2)
+            if (dataLen >= 2)
             {
                 if (data[0] == 0xff && data[1] == 0xd8)
                 {
