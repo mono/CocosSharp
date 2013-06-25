@@ -524,12 +524,6 @@ namespace Cocos2D
 
                 TouchCollection touchCollection = TouchPanel.GetState();
 
-                /*while (TouchPanel.IsGestureAvailable)
-                {
-                    HandleGesture(TouchPanel.ReadGesture());
-                }*/
-
-
                 foreach (TouchLocation touch in touchCollection)
                 {
                     switch (touch.State)

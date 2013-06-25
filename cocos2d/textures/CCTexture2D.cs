@@ -6,8 +6,23 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+#if WINDOWS
+using BitMiracle.LibTiff.Classic;
+#endif
+
 namespace Cocos2D
 {
+    public enum CCImageFormat
+    {
+        Jpg = 0,
+        Png,
+        Tiff,
+        Webp,
+        Gif,
+        RawData,
+        UnKnown
+    }
+
     internal enum CCTextureCacheType
     {
         None,
@@ -249,6 +264,8 @@ namespace Cocos2D
                 };
         }
 
+        #region Initialization
+
         public bool Init(int pixelsWide, int pixelsHigh)
         {
             return Init(pixelsWide, pixelsHigh, DefaultAlphaPixelFormat, true, false);
@@ -296,18 +313,25 @@ namespace Cocos2D
 
         public bool InitWithData(byte[] data, SurfaceFormat pixelFormat, bool mipMap)
         {
-            using (var stream = new MemoryStream(data, false))
-            {
-                if (InitWithStream(stream, pixelFormat))
-                {
+            var texture = LoadTexture(new MemoryStream(data, false), pixelFormat);
 
+            if (texture != null)
+            {
+                if (InitWithTexture(texture, pixelFormat, true, false))
+                {
                     m_CacheInfo.CacheType = CCTextureCacheType.Data;
                     m_CacheInfo.Data = data;
 
+                    if (mipMap)
+                    {
+                        GenerateMipmap();
+                    }
+
                     return true;
                 }
-                return false;
             }
+
+            return false;
         }
 
         public bool InitWithStream(Stream stream)
@@ -320,7 +344,8 @@ namespace Cocos2D
             Texture2D texture;
             try
             {
-                texture = Texture2D.FromStream(CCDrawManager.GraphicsDevice, stream);
+                texture = LoadTexture(stream, pixelFormat);
+                
                 InitWithTexture(texture, pixelFormat, false, false);
 
                 return true;
@@ -352,9 +377,7 @@ namespace Cocos2D
         {
             try
             {
-                var texture = new Texture2D(CCDrawManager.GraphicsDevice, pixelsWide, pixelsHigh, mipMap, pixelFormat);
-
-                texture.SetData(data);
+                var texture = LoadRawData(data, pixelsWide, pixelsHigh, pixelFormat, mipMap);
 
                 if (InitWithTexture(texture, pixelFormat, premultipliedAlpha, false))
                 {
@@ -669,6 +692,53 @@ namespace Cocos2D
             return false;
         }
 
+        public override void Reinit()
+        {
+            if (m_Texture2D != null && !m_Texture2D.IsDisposed && !m_bManaged)
+            {
+                m_Texture2D.Dispose();
+            }
+
+            m_bManaged = false;
+            m_Texture2D = null;
+
+            switch (m_CacheInfo.CacheType)
+            {
+                case CCTextureCacheType.None:
+                    return;
+
+                case CCTextureCacheType.AssetFile:
+                    InitWithFile((string)m_CacheInfo.Data);
+                    break;
+
+                case CCTextureCacheType.Data:
+                    InitWithData((byte[])m_CacheInfo.Data, m_ePixelFormat, m_bHasMipmaps);
+                    break;
+
+                case CCTextureCacheType.RawData:
+                    InitWithRawData((byte[])m_CacheInfo.Data, m_ePixelFormat, m_uPixelsWide, m_uPixelsHigh,
+                                    m_bHasPremultipliedAlpha, m_bHasMipmaps, m_tContentSize);
+                    break;
+
+                case CCTextureCacheType.String:
+                    var si = (CCStringCache)m_CacheInfo.Data;
+                    InitWithString(si.Text, si.Dimensions, si.HAlignment, si.VAlignment, si.FontName, si.FontSize);
+                    if (m_bHasMipmaps)
+                    {
+                        m_bHasMipmaps = false;
+                        GenerateMipmap();
+                    }
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        #endregion
+
+        #region Convertation
+
         public void GenerateMipmap()
         {
             if (!m_bHasMipmaps)
@@ -774,47 +844,115 @@ namespace Cocos2D
             return result;
         }
 
-        public override void Reinit()
+        #endregion
+
+        #region Loading Texture
+
+        private Texture2D LoadTexture(Stream stream, SurfaceFormat pixelFormat)
         {
-            if (m_Texture2D != null && !m_Texture2D.IsDisposed && !m_bManaged)
-            {
-                m_Texture2D.Dispose();
-            }
-
-            m_bManaged = false;
-            m_Texture2D = null;
-
-            switch (m_CacheInfo.CacheType)
-            {
-                case CCTextureCacheType.None:
-                    return;
-
-                case CCTextureCacheType.AssetFile:
-                    InitWithFile((string) m_CacheInfo.Data);
-                    break;
-
-                case CCTextureCacheType.Data:
-                    InitWithData((byte[]) m_CacheInfo.Data, m_ePixelFormat, m_bHasMipmaps);
-                    break;
-
-                case CCTextureCacheType.RawData:
-                    InitWithRawData((byte[]) m_CacheInfo.Data, m_ePixelFormat, m_uPixelsWide, m_uPixelsHigh,
-                                    m_bHasPremultipliedAlpha, m_bHasMipmaps, m_tContentSize);
-                    break;
-
-                case CCTextureCacheType.String:
-                    var si = (CCStringCache) m_CacheInfo.Data;
-                    InitWithString(si.Text, si.Dimensions, si.HAlignment, si.VAlignment, si.FontName, si.FontSize);
-                    if (m_bHasMipmaps)
-                    {
-                        m_bHasMipmaps = false;
-                        GenerateMipmap();
-                    }
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            return LoadTexture(stream, CCImageFormat.UnKnown, pixelFormat, 0, 0);
         }
+
+        private Texture2D LoadTexture(Stream stream, CCImageFormat imageFormat)
+        {
+            return LoadTexture(stream, imageFormat, CCTexture2D.DefaultAlphaPixelFormat, 0, 0);
+        }
+
+        private Texture2D LoadRawData<T>(T[] data, int width, int height, SurfaceFormat pixelFormat, bool mipMap) where T : struct
+        {
+            var result = new Texture2D(CCDrawManager.GraphicsDevice, width, height, mipMap, pixelFormat);
+            result.SetData(data);
+            return result;
+        }
+
+        private Texture2D LoadTexture(Stream stream, CCImageFormat imageFormat, SurfaceFormat pixelFormat, int width, int height)
+        {
+            Texture2D result = null;
+
+            if (imageFormat == CCImageFormat.UnKnown)
+            {
+                imageFormat = DetectImageFormat(stream);
+            }
+
+            if (imageFormat == CCImageFormat.Tiff)
+            {
+                result = LoadTextureFtomTiff(stream);
+            }
+
+            if (imageFormat == CCImageFormat.Jpg || imageFormat == CCImageFormat.Png || imageFormat == CCImageFormat.Gif)
+            {
+                result = Texture2D.FromStream(CCDrawManager.GraphicsDevice, stream);
+            }
+
+            return result;
+        }
+
+        public static CCImageFormat DetectImageFormat(Stream stream)
+        {
+            var data = new byte[8];
+
+            var pos = stream.Position;
+            var dataLen = stream.Read(data, 0, 8);
+            stream.Position = pos;
+
+            if (dataLen > 8)
+            {
+                if (data[0] == 0x89 && data[1] == 0x50 && data[2] == 0x4E && data[3] == 0x47
+                    && data[4] == 0x0D && data[5] == 0x0A && data[6] == 0x1A && data[7] == 0x0A)
+                {
+                    return CCImageFormat.Png;
+                }
+            }
+
+            if (dataLen > 3)
+            {
+                if (data[0] == 0x47 && data[1] == 0x49 && data[1] == 0x46)
+                {
+                    return CCImageFormat.Gif;
+                }
+            }
+
+            if (dataLen > 2)
+            {
+                if ((data[0] == 0x49 && data[1] == 0x49) || (data[0] == 0x4d && data[1] == 0x4d))
+                {
+                    return CCImageFormat.Tiff;
+                }
+            }
+
+            if (dataLen > 2)
+            {
+                if (data[0] == 0xff && data[1] == 0xd8)
+                {
+                    return CCImageFormat.Jpg;
+                }
+            }
+
+            return CCImageFormat.UnKnown;
+        }
+
+        private Texture2D LoadTextureFtomTiff(Stream stream)
+        {
+#if WINDOWS
+            var tiff = Tiff.ClientOpen("file.tif", "r", stream, new TiffStream());
+
+            var w = tiff.GetField(TiffTag.IMAGEWIDTH)[0].ToInt();
+            var h = tiff.GetField(TiffTag.IMAGELENGTH)[0].ToInt();
+
+            var raster = new int[w * h];
+
+            if (tiff.ReadRGBAImageOriented(w, h, raster, Orientation.LEFTTOP))
+            {
+                var result = new Texture2D(CCDrawManager.GraphicsDevice, w, h, false, SurfaceFormat.Color);
+                result.SetData(raster);
+                return result;
+            }
+#endif
+            return null;
+        }
+
+        
+        #endregion
     }
 }
+
