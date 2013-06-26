@@ -25,15 +25,15 @@ namespace Cocos2D
         ///<summary>
         /// Constructs an empty list.
         ///</summary>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || XBOX
         public CCRawList() : this(false)
         {
         }
         public CCRawList(bool useArrayPool)
-#else
+#elif !XBOX
         public CCRawList(bool useArrayPool = false)
 #endif
-        {
+    {
             UseArrayPool = useArrayPool;
             
             if (useArrayPool)
@@ -53,7 +53,7 @@ namespace Cocos2D
         ///</summary>
         ///<param name="initialCapacity">Initial capacity to allocate for the list.</param>
         ///<exception cref="ArgumentException">Thrown when the initial capacity is zero or negative.</exception>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || XBOX
         public CCRawList(int initialCapacity)
             : this(initialCapacity, false)
         {
@@ -75,7 +75,7 @@ namespace Cocos2D
         /// Constructs a raw list from another list.
         ///</summary>
         ///<param name="elements">List to copy.</param>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || XBOX
         public CCRawList(IList<T> elements) : this(elements, false)
         {
         }

@@ -62,7 +62,20 @@ namespace Cocos2D
             try
             {
                 GZipStream gs = new GZipStream(new MemoryStream(parameterin, false)); // , CompressionMode.Decompress, false);
+#if XBOX
+                byte[] b = new byte[8096];
+                while (gs.CanRead)
+                {
+                    int amt = gs.Read(b, 0, b.Length);
+                    if (amt <= 0)
+                    {
+                        break;
+                    }
+                    ms.Write(b, 0, amt);
+                }
+#else
                 gs.CopyTo(ms);
+#endif
                 return ((int)ms.Length);
             }
             catch (Exception)
