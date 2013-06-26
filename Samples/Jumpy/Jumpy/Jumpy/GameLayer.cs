@@ -68,18 +68,18 @@ namespace Jumpy
 
 			InitPlatforms ();
 
-			var bird = CCSprite.Create(batchnode.Texture, new CCRect(608,16,44,32));
+			var bird = new CCSprite(batchnode.Texture, new CCRect(608,16,44,32));
 			batchnode.AddChild (bird,4,(int)Tags.Bird);
 
 			CCSprite bonus;
 			
 			for(int i=0; i<(int)Bonus.NumBonuses; i++) {
-				bonus = CCSprite.Create(batchnode.Texture, new CCRect(608+i*32,256,25,25));
+				bonus = new CCSprite(batchnode.Texture, new CCRect(608+i*32,256,25,25));
 				batchnode.AddChild(bonus,4,(int)Tags.BomusStart+i);
 				bonus.Visible = false;
 			}
 
-			var scoreLabel = CCLabelBMFont.Create("0", "Fonts/bitmapFont.fnt");
+			var scoreLabel = new CCLabelBMFont("0", "Fonts/bitmapFont.fnt");
             scoreLabel.Position = new CCPoint(160,430);
 			AddChild(scoreLabel, 5, (int)Tags.ScoreLabel);
 
@@ -93,7 +93,8 @@ namespace Jumpy
 
 #if WINDOWS || MONOMAC
             AccelerometerEnabled = false;
-            SingleTouchEnabled = true;
+            TouchEnabled = true;
+            TouchMode = CCTouchMode.OneByOne;
 #else	
             AccelerometerEnabled = true;
             SingleTouchEnabled = false;
@@ -117,10 +118,12 @@ namespace Jumpy
 			ResetPlatforms ();
 		}
 
+        private Random ran = new Random();
+
 		void InitPlatform ()
 		{
 			CCRect rect;
-			switch(cocos2d.Random.Next()%2) {
+			switch(ran.Next()%2) {
 			case 0: 
 				rect = new CCRect(608,64,102,36); 
 				break;
@@ -130,7 +133,7 @@ namespace Jumpy
 			}
 
 			var batchnode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
-			var platform = CCSprite.Create(batchnode.Texture, rect);
+			var platform = new CCSprite(batchnode.Texture, rect);
 			batchnode.AddChild(platform,3,currentPlatformTag);
 		}
 
@@ -161,7 +164,7 @@ namespace Jumpy
 			if(currentPlatformY < 0) {
 				currentPlatformY = 30.0f;
 			} else {
-				currentPlatformY += cocos2d.Random.Next() % (int)(currentMaxPlatformStep - minPlatformStep) + minPlatformStep;
+				currentPlatformY += ran.Next() % (int)(currentMaxPlatformStep - minPlatformStep) + minPlatformStep;
 				if(currentMaxPlatformStep < maxPlatformStep) {
 					currentMaxPlatformStep += 0.5f;
 				}
@@ -170,14 +173,14 @@ namespace Jumpy
 			var batchnode = GetChildByTag ((int)Tags.SpriteManager) as CCSpriteBatchNode;
 			var platform = batchnode.GetChildByTag(currentPlatformTag) as CCSprite;
 
-            if (cocos2d.Random.Next() % 2 == 1) platform.ScaleX = -1.0f;
+            if (ran.Next() % 2 == 1) platform.ScaleX = -1.0f;
 			
 			float x;
 			var size = platform.ContentSize;
 			if(currentPlatformY == 30.0f) {
 				x = 160.0f;
 			} else {
-                x = cocos2d.Random.Next() % (320 - (int)size.Width) + size.Width / 2;
+                x = ran.Next() % (320 - (int)size.Width) + size.Width / 2;
 			}
 			
 			platform.Position = new CCPoint(x,currentPlatformY);
@@ -227,15 +230,15 @@ namespace Jumpy
 			var batchnode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
 			var bonus = batchnode.GetChildByTag((int)Tags.BomusStart+currentBonusType) as CCSprite;
 			bonus.Visible = false;
-            currentBonusPlatformIndex += cocos2d.Random.Next() % (maxBonusStep - minBonusStep) + minBonusStep;
+            currentBonusPlatformIndex += ran.Next() % (maxBonusStep - minBonusStep) + minBonusStep;
 			if(score < 10000) {
 				currentBonusType = 0;
 			} else if(score < 50000) {
-                currentBonusType = cocos2d.Random.Next() % 2;
+                currentBonusType = ran.Next() % 2;
 			} else if(score < 100000) {
-                currentBonusType = cocos2d.Random.Next() % 3;
+                currentBonusType = ran.Next() % 3;
 			} else {
-                currentBonusType = cocos2d.Random.Next() % 2 + 2;
+                currentBonusType = ran.Next() % 2 + 2;
 			}
 		}
 
@@ -284,11 +287,11 @@ namespace Jumpy
 					case (int)Bonus.Bonus100: score += 100000; break;
 					}
 					var scorelabel = GetChildByTag((int)Tags.ScoreLabel) as CCLabelBMFont;
-					scorelabel.SetString(score.ToString());
+					scorelabel.Text = score.ToString();
 
 					var a1 = new CCScaleTo(.2f,1.5f,.08f);
 					var a2 = new CCScaleTo(.2f,1f,1f);
-					var a3 = CCSequence.Create(a1,a2,a1,a2,a1,a2);
+					var a3 = new CCSequence(a1,a2,a1,a2,a1,a2);
 					scorelabel.RunAction(a3);
 					ResetBonus ();
 				}
@@ -388,18 +391,18 @@ namespace Jumpy
 			if (old_part!=null)
 				RemoveChild(old_part,true);
 
-			var particle = CCParticleFireworks.Create();
+			var particle = new CCParticleFireworks();
 			particle.Position = bird_pos;
 			particle.Gravity = new CCPoint(0,-5000);
 			particle.Duration = .3f;
 			AddChild(particle,-1,(int)Tags.Particles);
 		}
 
-        public override bool TouchBegan(CCTouch touch, CCEvent event_)
+        public override bool TouchBegan(CCTouch touch)
         {
             return (true);
         }
-        public override void TouchEnded(CCTouch touch, CCEvent event_)
+        public override void TouchEnded(CCTouch touch)
         {
             float accel_filter = 0.1f;
             float ax = ConvertTouchToNodeSpace(touch).X - ConvertToNodeSpace(touch.PreviousLocationInView).X;
@@ -412,13 +415,13 @@ namespace Jumpy
 			if(gameSuspended) 
 				return;
 			float accel_filter = 0.1f;
-			bird_vel.X = bird_vel.X * accel_filter + (float)acceleration.x * (1.0f - accel_filter) * 500.0f;
+			bird_vel.X = bird_vel.X * accel_filter + (float)acceleration.X * (1.0f - accel_filter) * 500.0f;
 		}
 
 		void ShowHighScores ()
 		{
 			gameSuspended = true;
-			CCDirector.SharedDirector.ReplaceScene(CCTransitionFade.Create(1, HighScoreLayer.Scene(score),new CCColor3B(255,255,255)));
+			CCDirector.SharedDirector.ReplaceScene(new CCTransitionFade(1, HighScoreLayer.Scene(score),new CCColor3B(255,255,255)));
 		}
 	}
 

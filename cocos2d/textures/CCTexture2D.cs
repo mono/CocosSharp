@@ -871,7 +871,7 @@ namespace Cocos2D
 
             if (imageFormat == CCImageFormat.Tiff)
             {
-                result = LoadTextureFtomTiff(stream);
+                result = LoadTextureFromTiff(stream);
             }
 
             if (imageFormat == CCImageFormat.Jpg || imageFormat == CCImageFormat.Png || imageFormat == CCImageFormat.Gif)
@@ -926,7 +926,7 @@ namespace Cocos2D
             return CCImageFormat.UnKnown;
         }
 
-        private Texture2D LoadTextureFtomTiff(Stream stream)
+        private Texture2D LoadTextureFromTiff(Stream stream)
         {
 #if WINDOWS
             var tiff = Tiff.ClientOpen("file.tif", "r", stream, new TiffStream());

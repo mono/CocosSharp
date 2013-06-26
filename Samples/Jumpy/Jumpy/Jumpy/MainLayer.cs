@@ -43,10 +43,10 @@ namespace Jumpy
 
 		public MainLayer ()
 		{
-			var batchnode = CCSpriteBatchNode.Create("Images/sprites",10);
+			var batchnode = new CCSpriteBatchNode("Images/sprites",10);
 			AddChild (batchnode, -1, (int)Tags.SpriteManager);
 
-			var background = CCSprite.Create(batchnode.Texture, new CCRect(0,0,320,480));
+			var background = new CCSprite(batchnode.Texture, new CCRect(0,0,320,480));
             background.Position = new CCPoint (160,240);
 			batchnode.AddChild (background);
 		}
@@ -71,12 +71,13 @@ namespace Jumpy
 
 			ResetClouds ();
 		}
-			
+
+        private Random ran = new Random();
 
 		 void InitCloud () {
 			
 			CCRect rect;
-			switch(cocos2d.Random.Next()%3) {
+			switch(ran.Next()%3) {
 			case 0:
                     rect = new CCRect(336, 16, 256, 108); 
 				break;
@@ -89,7 +90,7 @@ namespace Jumpy
 			}	
 
 			var batchNode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
-			var cloud = CCSprite.Create(batchNode.Texture, rect);
+			var cloud = new CCSprite(batchNode.Texture, rect);
 			batchNode.AddChild(cloud,3,currentCloudTag);
 
 			cloud.Opacity = 128;
@@ -116,17 +117,17 @@ namespace Jumpy
 			var batchNode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
 			var cloud = batchNode.GetChildByTag(currentCloudTag) as CCSprite;
 
-			float distance = cocos2d.Random.Next()%20 + 5;
+			float distance = ran.Next()%20 + 5;
 			
 			float scale = 5.0f / distance;
 			cloud.Scale = scale;
-            if (cocos2d.Random.Next() % 2 == 1) 
+            if (ran.Next() % 2 == 1) 
                 cloud.ScaleX = -cloud.ScaleX;
 			
 			var size = cloud.ContentSize;
 			float scaled_width = size.Width * scale;
-            float x = cocos2d.Random.Next() % (320 + (int)scaled_width) - scaled_width / 2;
-            float y = cocos2d.Random.Next() % (480 - (int)scaled_width) + scaled_width / 2 + 480;
+            float x = ran.Next() % (320 + (int)scaled_width) - scaled_width / 2;
+            float y = ran.Next() % (480 - (int)scaled_width) + scaled_width / 2 + 480;
 			
 			cloud.Position = new CCPoint(x,y);
 		}
