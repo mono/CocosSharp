@@ -1,8 +1,8 @@
 ﻿<SwapChainBackgroundPanel
-    x:Class="EmptyProject.Windows8XAML.GamePage"
+    x:Class="EmptyProject.Win8XAML.GamePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:EmptyProject.Windows8XAML"
+    xmlns:local="using:EmptyProject.Win8XAML"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
