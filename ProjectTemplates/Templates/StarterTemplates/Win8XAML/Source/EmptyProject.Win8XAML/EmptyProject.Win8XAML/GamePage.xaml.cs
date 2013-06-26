@@ -5,7 +5,7 @@ using MonoGame.Framework;
 using Windows.ApplicationModel.Activation;
 
 
-namespace EmptyProject.Windows8XAML
+namespace EmptyProject.Win8XAML
 {
     /// <summary>
     /// The root page used to display the game.

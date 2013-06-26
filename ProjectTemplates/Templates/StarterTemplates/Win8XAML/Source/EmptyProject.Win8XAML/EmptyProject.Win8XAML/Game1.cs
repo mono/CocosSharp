@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Cocos2D;
 
-namespace EmptyProject.Windows8XAML
+namespace EmptyProject.Win8XAML
 {
     /// <summary>
     /// This is the main type for your game

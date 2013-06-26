@@ -2,7 +2,7 @@ using System;
 using Cocos2D;
 using Microsoft.Xna.Framework;
 
-namespace EmptyProject.Windows8XAML
+namespace EmptyProject.Win8XAML
 {
 	public class IntroLayer : CCLayerColor
 	{

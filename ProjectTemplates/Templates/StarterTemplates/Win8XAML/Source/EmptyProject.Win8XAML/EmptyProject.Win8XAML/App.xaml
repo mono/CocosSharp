@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="EmptyProject.Windows8XAML.App"
+    x:Class="EmptyProject.Win8XAML.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:EmptyProject.Windows8XAML">
+    xmlns:local="using:EmptyProject.Win8XAML">
 
     <Application.Resources>
         <ResourceDictionary>

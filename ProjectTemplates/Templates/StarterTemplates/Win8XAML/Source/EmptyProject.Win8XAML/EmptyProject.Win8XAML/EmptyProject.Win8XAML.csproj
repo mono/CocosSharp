@@ -7,8 +7,8 @@
     <ProjectGuid>{67F1C8FF-40F6-48CF-901E-DA3D595566E3}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EmptyProject.Windows8XAML</RootNamespace>
-    <AssemblyName>EmptyProject.Windows8XAML</AssemblyName>
+    <RootNamespace>EmptyProject.Win8XAML</RootNamespace>
+    <AssemblyName>EmptyProject.Win8XAML</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -116,7 +116,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="Content\fonts\MarkerFelt-22.xnb" />
-    <None Include="EmptyProject.Windows8XAML_TemporaryKey.pfx" />
+    <None Include="EmptyProject.Win8XAML_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.png" />
