@@ -43,7 +43,7 @@ namespace Cocos2D
             {
                 CCPoint currentPos = m_pTarget.Position;
                 CCPoint diff = currentPos - m_previousPosition;
-                //                m_startPosition = m_startPosition + diff;
+                //m_startPosition = m_startPosition + diff;
                 CCPoint newPos = m_startPosition + m_positionDelta * time;
                 m_pTarget.Position = newPos;
                 m_previousPosition = newPos;

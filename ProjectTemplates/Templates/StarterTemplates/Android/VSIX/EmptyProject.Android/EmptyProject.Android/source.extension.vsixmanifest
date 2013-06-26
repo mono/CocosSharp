@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
 	<Identifier Id="EmptyProject.4bae5412-bb98-40f1-b0ba-5b4e479b8fc1">
-		<Name>Cocos2D-XNA Empty Project</Name>
+		<Name>Cocos2D-XNA Empty Game Android</Name>
 		<Author>Cocos2D-XNA</Author>
 		<Version>1.0</Version>
-		<Description xml:space="preserve">Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast.</Description>
+		<Description xml:space="preserve">Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Android.</Description>
 		<Locale>1033</Locale>
 		<Icon>powered.ico</Icon>
 		<PreviewImage>powered.png</PreviewImage>

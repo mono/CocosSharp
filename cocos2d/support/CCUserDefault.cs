@@ -36,6 +36,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 
+// Note: Something to use here http://msdn.microsoft.com/en-us/library/hh582102.aspx
+
 namespace Cocos2D
 {
     public class CCUserDefault 

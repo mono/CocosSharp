@@ -64,11 +64,17 @@ namespace Cocos2D
                 if (!m_pTextures.TryGetValue(fileimage, out texture))
                 {
                     texture = new CCTexture2D();
-                    
-                    texture.InitWithFile(fileimage);
-                    
-                    m_pTextures.Add(fileimage, texture);
+
+                    if (texture.InitWithFile(fileimage))
+                    {
+                        m_pTextures.Add(fileimage, texture);
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
+                
                 return texture;
             }
         }
@@ -83,9 +89,14 @@ namespace Cocos2D
                 {
                     texture = new CCTexture2D();
                     
-                    texture.InitWithData(data, format);
-                    
-                    m_pTextures.Add(assetName, texture);
+                    if (texture.InitWithData(data, format))
+                    {
+                        m_pTextures.Add(assetName, texture);
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 return texture;
             }
@@ -114,9 +125,14 @@ namespace Cocos2D
                 {
                     texture = new CCTexture2D();
                     
-                    texture.InitWithRawData(data, format, width, height, premultiplied, mipMap, contentSize);
-
-                    m_pTextures.Add(assetName, texture);
+                    if (texture.InitWithRawData(data, format, width, height, premultiplied, mipMap, contentSize))
+                    {
+                        m_pTextures.Add(assetName, texture);
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             return texture;

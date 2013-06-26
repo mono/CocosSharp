@@ -441,6 +441,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="BitMiracle.LibTiff.NET">
+      <HintPath>external lib\BitMiracle.LibTiff.NET.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>external lib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
