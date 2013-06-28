@@ -28,7 +28,7 @@ namespace Cocos2D
 		static CCTextAlignment horizontal;
 		static CCVerticalTextAlignment vertical;
 
-		internal static CCTexture2D CreateNativeLabel (string text, CCSize dimensions, CCTextAlignment hAlignment,
+		private static CCTexture2D CreateNativeLabel (string text, CCSize dimensions, CCTextAlignment hAlignment,
 		                                   CCVerticalTextAlignment vAlignment, string fontName,
 		                                   float fontSize, CCColor4B textColor)
 		{

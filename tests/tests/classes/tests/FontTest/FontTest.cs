@@ -8,9 +8,10 @@ namespace tests.FontTest
 
         private static readonly string[] fontList =
             {
-#if IOS
+#if IOS || MONOMAC
                 "American Typewriter",
                 "Marker Felt",
+				"Chalkboard",
 #endif
                 "A Damn Mess",
                 "Abberancy",
