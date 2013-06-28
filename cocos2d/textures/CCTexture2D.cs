@@ -420,11 +420,17 @@ namespace Cocos2D
                 if (font == null)
                 {
                     CCLog.Log("Can't find {0}, use system default ({1})", fontName, CCDrawManager.DefaultFont);
+#if MONOMAC || IPHONE || IOS
+					// for MAC and IOS devices we will return false and let the native label take over
+					// for this platform
+					return false;
+#else
                     font = CCSpriteFontCache.SharedInstance.GetFont(CCDrawManager.DefaultFont, fontSize);
                     if (font == null)
                     {
                         CCLog.Log("Failed to load default font. No font supported.");
                     }
+#endif
                 }
 
                 if (font == null)

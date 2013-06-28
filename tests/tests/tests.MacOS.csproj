@@ -1091,6 +1091,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
+    <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
