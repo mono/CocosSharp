@@ -99,7 +99,9 @@ namespace Cocos2D
             "DirectorTest",
             //"BugsTest",
             "FontTest",
+#if IOS || MONOMAC
 			"SystemFontTest",
+#endif
             //"CurrentLanguageTest"
             //"TextureCacheTest",
             "ExtensionsTest",
