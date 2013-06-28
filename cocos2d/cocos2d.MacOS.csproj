@@ -428,6 +428,9 @@
     <Compile Include="predefine\ICCSelectorProtocol.cs" />
     <Compile Include="cocoa\ICCCopyable.cs" />
     <Compile Include="touch_dispatcher\ICCEGLTouchDelegate.cs" />
+    <Compile Include="label_nodes\CCLabelUtilities.cs" />
+    <Compile Include="label_nodes\CCLabel.cs" />
+    <Compile Include="label_nodes\CCLabelUtilities-CoreGraphics.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">

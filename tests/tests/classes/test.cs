@@ -45,6 +45,7 @@ namespace Cocos2D
         TEST_DIRECTOR,
         //TEST_BUGS,
         TEST_FONTS,
+		TEST_SYSTEM_FONTS,
         //TEST_CURRENT_LANGUAGE,
         //TEST_TEXTURECACHE,
         TEST_EXTENSIONS,
@@ -98,6 +99,7 @@ namespace Cocos2D
             "DirectorTest",
             //"BugsTest",
             "FontTest",
+			"SystemFontTest",
             //"CurrentLanguageTest"
             //"TextureCacheTest",
             "ExtensionsTest",

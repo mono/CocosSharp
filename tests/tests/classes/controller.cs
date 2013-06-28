@@ -351,7 +351,10 @@ namespace tests
                 
                 case (int)TestCases.TEST_FONTS:
                         pScene = new FontTestScene(); break;
-                
+
+				case (int)TestCases.TEST_SYSTEM_FONTS:
+					pScene = new SystemFontTestScene(); break;                
+
                 //    case TEST_CURRENT_LANGUAGE:
                 //        pScene = new CurrentLanguageTestScene(); break;
                 //        break;

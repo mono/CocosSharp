@@ -93,9 +93,6 @@
     <AssemblyName>cocos2d.tests</AssemblyName>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyName>cocos2dTests</AssemblyName>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -1111,6 +1108,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
+    <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">
