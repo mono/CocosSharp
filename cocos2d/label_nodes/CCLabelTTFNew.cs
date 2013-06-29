@@ -142,11 +142,8 @@ namespace Cocos2D
 
         public bool InitWithString(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment alignment, CCPoint imageOffset)
         {
-            if (m_pData == null || !s_pConfigurations.ContainsKey(GetFontKey(fontName, fontSize)))
-            {
-                InitializeTTFAtlas(1024, 1024);
-                InitializeFont(fontName, (int)fontSize, @" !""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
-            }
+            InitializeFont(fontName, (int)fontSize, text);
+
             if (m_bTextureDirty)
             {
                 m_pTexture.InitWithRawData(m_pData, SurfaceFormat.Color, m_nWidth, m_nHeight, true);
@@ -214,13 +211,39 @@ namespace Cocos2D
         }
 
 
-        public static void InitializeFont(string fontName, int fontSize, string charset)
+        public static void InitializeFont(string fontName, float fontSize, string charset)
         {
-            //float maxWidth = 0;
-            //float maxHeight = 0;
+            if (m_pData == null)
+            {
+                InitializeTTFAtlas(512, 512);
+            }
 
-            var fontConfig = new CCBMFontConfiguration();
-             
+            var chars = new CCRawList<char>();
+
+            var fontKey = GetFontKey(fontName, fontSize);
+
+            CCBMFontConfiguration fontConfig;
+            
+            if (!s_pConfigurations.TryGetValue(fontKey, out fontConfig))
+            {
+                fontConfig = new CCBMFontConfiguration();
+                s_pConfigurations.Add(fontKey, fontConfig);
+            }
+
+            for (int i = 0; i < charset.Length; i++)
+            {
+                var ch = charset[i];
+                if (!fontConfig.m_pFontDefDictionary.ContainsKey(ch) && chars.IndexOf(ch) == -1)
+                {
+                    chars.Add(ch);
+                }
+            }
+
+            if (chars.Count == 0)
+            {
+                return;
+            }
+
             var font = new Font(fontName, fontSize);
 
             fontConfig.m_nCommonHeight = (int)Math.Ceiling(font.GetHeight());
@@ -241,19 +264,19 @@ namespace Cocos2D
             var hFont = font.ToHfont();
             SelectObject(hDC, hFont);
             ABCFloat[] value = new ABCFloat[1];
-            ABCFloat[] values = new ABCFloat[charset.Length];
-            for (int i = 0; i < charset.Length; i++)
+            ABCFloat[] values = new ABCFloat[chars.Count];
+            for (int i = 0; i < chars.Count; i++)
             {
-                var ch = charset[i];
-                GetCharABCWidthsFloat(hDC, (uint)ch, (uint)ch, value);
+                var ch = chars[i];
+                GetCharABCWidthsFloat(hDC, ch, ch, value);
                 values[i] = value[0];
             }
             DeleteObject(hFont);
             ReleaseDC(IntPtr.Zero, hDC);
 
-            for (int i = 0; i < charset.Length; i++)
+            for (int i = 0; i < chars.Count; i++)
             {
-                var s = charset[i].ToString();
+                var s = chars[i].ToString();
 
                 var charSize = graphics.MeasureString(s, font);
 
@@ -316,15 +339,15 @@ namespace Cocos2D
 
                         var fontDef = new CCBMFontConfiguration.CCBMFontDef()
                             {
-                                charID = charset[i],
+                                charID = chars[i],
                                 rect = new CCRect(region.x, region.y, region.width, region.height),
                                 xOffset = minX, // + (int)Math.Ceiling(values[i].abcfA),
                                 yOffset = minY,
                                 xAdvance = (int)Math.Ceiling(values[i].abcfA + values[i].abcfB + values[i].abcfC)
                             };
 
-                        fontConfig.CharacterSet.Add(charset[i]);
-                        fontConfig.m_pFontDefDictionary.Add(charset[i], fontDef);
+                        fontConfig.CharacterSet.Add(chars[i]);
+                        fontConfig.m_pFontDefDictionary.Add(chars[i], fontDef);
                     }
                     else
                     {
@@ -333,8 +356,6 @@ namespace Cocos2D
                 }
                 bitmap.UnlockBits(bitmapData);
             }
-
-            s_pConfigurations.Add(GetFontKey(fontName, fontSize), fontConfig);
 
             m_bTextureDirty = true;
         }
