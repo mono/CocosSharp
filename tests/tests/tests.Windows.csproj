@@ -338,6 +338,7 @@
     <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\TestHeader.cs" />
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSwitchTest\CCControlSwitchTest.cs" />
     <Compile Include="classes\tests\FontTest\FontTest.cs" />
+    <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
     <Compile Include="classes\tests\IntervalTest\IntervalLayer.cs" />
     <Compile Include="classes\tests\IntervalTest\IntervalTestScene.cs" />
     <Compile Include="classes\tests\LabelTest\Atlas1.cs" />

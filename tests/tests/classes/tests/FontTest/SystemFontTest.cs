@@ -8,6 +8,7 @@ namespace tests.FontTest
 
 		private static readonly string[] fontList =
 		{
+#if IOS || IPHONE || MONOMAC
 			"Chalkboard SE",
 			"Chalkduster",
 			"Noteworthy",
@@ -15,6 +16,17 @@ namespace tests.FontTest
 			"Papyrus",
 			"American Typewriter",
 			"Arial",
+#endif
+#if WINDOWS || WINDOWSGL
+			"Comic Sans MS",
+			"Felt",
+			"MoolBoran",
+			"Courier New",
+			"Georgia",
+			"Symbol",
+            "Wingdings",
+			"Arial",
+#endif
 		};
 
 		public static int vAlignIdx = 0;
