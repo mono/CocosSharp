@@ -9,16 +9,19 @@ namespace Cocos2D
     public class CCLabelBMFont : CCSpriteBatchNode, ICCLabelProtocol, ICCRGBAProtocol
     {
         public const int kCCLabelAutomaticWidth = -1;
-        public static Dictionary<string, CCBMFontConfiguration> s_pConfigurations;
-        private bool m_bLineBreakWithoutSpaces;
-        private float m_fWidth = -1.0f;
-        private CCTextAlignment m_pAlignment = CCTextAlignment.Center;
+
+        public static Dictionary<string, CCBMFontConfiguration> s_pConfigurations = new Dictionary<string, CCBMFontConfiguration>();
+
+        protected bool m_bLineBreakWithoutSpaces;
+        protected float m_fWidth = -1.0f;
+        protected CCTextAlignment m_pHAlignment = CCTextAlignment.Center;
+        protected CCVerticalTextAlignment m_pVAlignment;
         protected CCBMFontConfiguration m_pConfiguration;
-        private string m_sFntFile;
-        private string m_sInitialString;
+        protected string m_sFntFile;
+        protected string m_sInitialString;
         protected string m_sString = "";
-        private CCPoint m_tImageOffset;
-        private CCSprite m_pReusedChar;
+        protected CCPoint m_tImageOffset;
+        protected CCSprite m_pReusedChar;
 
         public override CCPoint AnchorPoint
         {
@@ -89,10 +92,7 @@ namespace Cocos2D
         public virtual string Text
         {
             get { return m_sInitialString; }
-            set 
-            {
-                SetString(value, false);
-            }
+            set { SetString(value, false); }
         }
 
         [Obsolete("Use Label Property")]
@@ -100,9 +100,9 @@ namespace Cocos2D
         {
             Text = label;
         }
-        
+
         [Obsolete("Use Label Property")]
-        public string GetString() 
+        public string GetString()
         {
             return Text;
         }
@@ -189,7 +189,7 @@ namespace Cocos2D
                 }
             }
         }
-                            
+
         public virtual bool CascadeColorEnabled
         {
             get { return false; }
@@ -225,7 +225,7 @@ namespace Cocos2D
             {
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
-                    ((CCSprite)m_pChildren.Elements[i]).UpdateDisplayedOpacity(m_cDisplayedOpacity);
+                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedOpacity(m_cDisplayedOpacity);
                 }
             }
         }
@@ -250,7 +250,8 @@ namespace Cocos2D
             Init();
         }
 
-        public CCLabelBMFont(string str, string fntFile, float width) : this(str, fntFile, width, CCTextAlignment.Left, CCPoint.Zero)
+        public CCLabelBMFont(string str, string fntFile, float width)
+            : this(str, fntFile, width, CCTextAlignment.Left, CCPoint.Zero)
         {
         }
 
@@ -274,10 +275,12 @@ namespace Cocos2D
             return InitWithString(null, null, kCCLabelAutomaticWidth, CCTextAlignment.Left, CCPoint.Zero);
         }
 
-        protected virtual bool InitWithString(string theString, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset)
+        protected virtual bool InitWithString(string theString, string fntFile, float width, CCTextAlignment alignment,
+                                              CCPoint imageOffset)
         {
             Debug.Assert(m_pConfiguration == null, "re-init is no longer supported");
-            Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null), "Invalid params for CCLabelBMFont");
+            Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null),
+                         "Invalid params for CCLabelBMFont");
 
             CCTexture2D texture;
 
@@ -296,14 +299,16 @@ namespace Cocos2D
 
                 try
                 {
-                texture = CCTextureCache.SharedTextureCache.AddImage(m_pConfiguration.AtlasName);
-            }
+                    texture = CCTextureCache.SharedTextureCache.AddImage(m_pConfiguration.AtlasName);
+                }
                 catch (Exception)
                 {
                     // Try the 'images' ref location just in case.
                     try
                     {
-                        texture = CCTextureCache.SharedTextureCache.AddImage(System.IO.Path.Combine("images", m_pConfiguration.AtlasName));
+                        texture =
+                            CCTextureCache.SharedTextureCache.AddImage(System.IO.Path.Combine("images",
+                                                                                              m_pConfiguration.AtlasName));
                     }
                     catch (Exception)
                     {
@@ -328,8 +333,8 @@ namespace Cocos2D
             if (base.InitWithTexture(texture, theString.Length))
             {
                 m_fWidth = width;
-                m_pAlignment = alignment;
-                
+                m_pHAlignment = alignment;
+
                 m_cDisplayedOpacity = m_cRealOpacity = 255;
                 m_tDisplayedColor = m_tRealColor = CCTypes.CCWhite;
                 m_bCascadeOpacityEnabled = true;
@@ -373,7 +378,7 @@ namespace Cocos2D
         {
             int nextFontPositionX = 0;
             int nextFontPositionY = 0;
-            char prev = (char)255;
+            char prev = (char) 255;
             int kerningAmount = 0;
 
             CCSize tmpSize = CCSize.Zero;
@@ -393,7 +398,8 @@ namespace Cocos2D
             var charSet = m_pConfiguration.CharacterSet;
             if (charSet.Count == 0)
             {
-                throw (new InvalidOperationException("Can not compute the size of the font because the character set is empty."));
+                throw (new InvalidOperationException(
+                    "Can not compute the size of the font because the character set is empty."));
             }
 
             for (int i = 0; i < stringLen - 1; ++i)
@@ -405,7 +411,8 @@ namespace Cocos2D
             }
 
             totalHeight = m_pConfiguration.m_nCommonHeight * quantityOfLines;
-            nextFontPositionY = 0 - (m_pConfiguration.m_nCommonHeight - m_pConfiguration.m_nCommonHeight * quantityOfLines);
+            nextFontPositionY = 0 -
+                                (m_pConfiguration.m_nCommonHeight - m_pConfiguration.m_nCommonHeight * quantityOfLines);
 
             CCBMFontConfiguration.CCBMFontDef fontDef = null;
             CCRect rect;
@@ -423,7 +430,8 @@ namespace Cocos2D
 
                 if (charSet.IndexOf(c) == -1)
                 {
-                    CCLog.Log("Cocos2D.CCLabelBMFont: Attempted to use character not defined in this bitmap: {0}", (int)c);
+                    CCLog.Log("Cocos2D.CCLabelBMFont: Attempted to use character not defined in this bitmap: {0}",
+                              (int) c);
                     continue;
                 }
 
@@ -432,7 +440,7 @@ namespace Cocos2D
                 // unichar is a short, and an int is needed on HASH_FIND_INT
                 if (!m_pConfiguration.m_pFontDefDictionary.TryGetValue(c, out fontDef))
                 {
-                    CCLog.Log("cocos2d::CCLabelBMFont: characer not found {0}", (int)c);
+                    CCLog.Log("cocos2d::CCLabelBMFont: characer not found {0}", (int) c);
                     continue;
                 }
 
@@ -449,34 +457,34 @@ namespace Cocos2D
                 if (fontChar != null)
                 {
                     // Reusing previous Sprite
-		        	fontChar.Visible = true;
+                    fontChar.Visible = true;
                 }
                 else
                 {
                     // New Sprite ? Set correct color, opacity, etc...
                     //if( false )
                     //{
-				    //    /* WIP: Doesn't support many features yet.
-				    //     But this code is super fast. It doesn't create any sprite.
-				    //     Ideal for big labels.
-				    //     */
-				    //    fontChar = m_pReusedChar;
-				    //    fontChar.BatchNode = null;
-				    //    hasSprite = false;
-			        //}
+                    //    /* WIP: Doesn't support many features yet.
+                    //     But this code is super fast. It doesn't create any sprite.
+                    //     Ideal for big labels.
+                    //     */
+                    //    fontChar = m_pReusedChar;
+                    //    fontChar.BatchNode = null;
+                    //    hasSprite = false;
+                    //}
                     //else
                     {
                         fontChar = new CCSprite();
                         fontChar.InitWithTexture(m_pobTextureAtlas.Texture, rect);
                         AddChild(fontChar, i, i);
-			        }
-            
+                    }
+
                     // Apply label properties
-			        fontChar.IsOpacityModifyRGB = m_bIsOpacityModifyRGB;
-            
-			        // Color MUST be set before opacity, since opacity might change color if OpacityModifyRGB is on
-			        fontChar.UpdateDisplayedColor(m_tDisplayedColor);
-			        fontChar.UpdateDisplayedOpacity(m_cDisplayedOpacity);
+                    fontChar.IsOpacityModifyRGB = m_bIsOpacityModifyRGB;
+
+                    // Color MUST be set before opacity, since opacity might change color if OpacityModifyRGB is on
+                    fontChar.UpdateDisplayedColor(m_tDisplayedColor);
+                    fontChar.UpdateDisplayedOpacity(m_cDisplayedOpacity);
                 }
 
                 // updating previous sprite
@@ -484,8 +492,10 @@ namespace Cocos2D
 
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
                 int yOffset = m_pConfiguration.m_nCommonHeight - fontDef.yOffset;
-                var fontPos = new CCPoint((float) nextFontPositionX + fontDef.xOffset + fontDef.rect.Size.Width * 0.5f + kerningAmount,
-                                          (float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
+                var fontPos =
+                    new CCPoint(
+                        (float) nextFontPositionX + fontDef.xOffset + fontDef.rect.Size.Width * 0.5f + kerningAmount,
+                        (float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
                 fontChar.Position = CCMacros.CCPointPixelsToPoints(fontPos);
 
                 // update kerning
@@ -496,7 +506,7 @@ namespace Cocos2D
                 {
                     longestLine = nextFontPositionX;
                 }
-        
+
                 //if (! hasSprite)
                 //{
                 //  UpdateQuadFromSprite(fontChar, i);
@@ -580,7 +590,7 @@ namespace Cocos2D
                     CCSprite characterSprite;
                     int justSkipped = 0;
 
-                    while ((characterSprite = (CCSprite)GetChildByTag(j + skip + justSkipped)) == null)
+                    while ((characterSprite = (CCSprite) GetChildByTag(j + skip + justSkipped)) == null)
                     {
                         justSkipped++;
                     }
@@ -633,7 +643,7 @@ namespace Cocos2D
                         start_line = false;
                         startOfWord = -1;
                         startOfLine = -1;
-                        i += justSkipped; 
+                        i += justSkipped;
                         line++;
 
                         if (i >= stringLength)
@@ -708,7 +718,7 @@ namespace Cocos2D
 #if XBOX || XBOX360
                             last_word.Length = 0;
 #else
-                        last_word.Clear();
+                            last_word.Clear();
 #endif
 
                             start_word = false;
@@ -751,7 +761,7 @@ namespace Cocos2D
             }
 
             // Step 2: Make alignment
-            if (m_pAlignment != CCTextAlignment.Left)
+            if (m_pHAlignment != CCTextAlignment.Left)
             {
                 int i = 0;
 
@@ -780,7 +790,7 @@ namespace Cocos2D
                         lineWidth = lastChar.Position.X + lastChar.ContentSize.Width / 2.0f;
 
                         float shift = 0;
-                        switch (m_pAlignment)
+                        switch (m_pHAlignment)
                         {
                             case CCTextAlignment.Center:
                                 shift = ContentSize.Width / 2.0f - lineWidth / 2.0f;
@@ -818,7 +828,7 @@ namespace Cocos2D
 
         public void SetAlignment(CCTextAlignment alignment)
         {
-            m_pAlignment = alignment;
+            m_pHAlignment = alignment;
             UpdateLabel();
         }
 
@@ -848,21 +858,12 @@ namespace Cocos2D
 
         private static CCBMFontConfiguration FNTConfigLoadFile(string file)
         {
-            CCBMFontConfiguration pRet = null;
+            CCBMFontConfiguration pRet;
 
-            if (s_pConfigurations == null)
-            {
-                s_pConfigurations = new Dictionary<string, CCBMFontConfiguration>();
-            }
-
-            if (!s_pConfigurations.Keys.Contains(file))
+            if (!s_pConfigurations.TryGetValue(file, out pRet))
             {
                 pRet = CCBMFontConfiguration.Create(file);
                 s_pConfigurations.Add(file, pRet);
-            }
-            else
-            {
-                pRet = s_pConfigurations[file];
             }
 
             return pRet;
