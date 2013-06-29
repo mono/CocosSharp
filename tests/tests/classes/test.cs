@@ -101,7 +101,7 @@ namespace Cocos2D
             "DirectorTest",
             //"BugsTest",
             "FontTest",
-#if IOS || MONOMAC || WINDOWSGL
+#if IOS || MONOMAC || WINDOWSGL || WINDOWS
 			"SystemFontTest",
 #endif
             //"CurrentLanguageTest"

@@ -23,43 +23,14 @@ namespace Cocos2D
 	internal static partial class CCLabelUtilities
 	{
 
-		static CGImage NativeCGImage;
-		static CGBitmapContext bitmapContext;
-		static CCTextAlignment horizontal;
 		static CCVerticalTextAlignment vertical;
+		static CCTextAlignment horizontal;
 
-		private static CCTexture2D CreateNativeLabel (string text, CCSize dimensions, CCTextAlignment hAlignment,
-		                                   CCVerticalTextAlignment vAlignment, string fontName,
-		                                   float fontSize, CCColor4B textColor)
+		// Used for debuggin purposes
+		internal static void SaveToFile (string fileName, CGBitmapContext bitmap)
 		{
 
-			if (string.IsNullOrEmpty (text))
-				return new CCTexture2D ();
-
-			CreateFont (fontName, fontSize);
-
-			if (dimensions.Equals(CCSize.Zero))
-			{
-				dimensions = MeasureString(text, nativeFont);
-			}
-
-			horizontal = hAlignment;
-			vertical = vAlignment;
-
-			CreateBitmap ((int)dimensions.Width, (int)dimensions.Height);
-
-			NativeDrawString (text, nativeFont, textColor, new RectangleF (0, 0, dimensions.Width, dimensions.Height));
-
-			var texture = new CCTexture2D();
-			texture.InitWithStream (SaveToStream());
-
-			return texture;
-		}
-
-		static System.IO.Stream SaveToStream ()
-		{
-
-			if (NativeCGImage == null)
+			if (bitmap == null)
 				throw new ObjectDisposedException ("cgimage");
 
 			// With MonoTouch we can use UTType from CoreMobileServices but since
@@ -71,13 +42,14 @@ namespace Cocos2D
 			var typeIdentifier = "public.png";
 
 			// * NOTE * we only support one image for right now.
-			NSMutableData imgData = new NSMutableData();
+			//NSMutableData imgData = new NSMutableData();
+			NSUrl url = NSUrl.FromFilename (fileName);
 
 			// Create an image destination that saves into the imgData 
-			CGImageDestination dest = CGImageDestination.FromData (imgData, typeIdentifier, 1);
+			CGImageDestination dest = CGImageDestination.FromUrl (url, typeIdentifier, 1);
 
 			// Add an image to the destination
-			dest.AddImage(NativeCGImage, null);
+			dest.AddImage(bitmap.GetImage(), null);
 
 			// Finish the export
 			bool success = dest.Close ();
@@ -88,13 +60,12 @@ namespace Cocos2D
 
 			dest.Dispose();
 			dest = null;
-			return imgData.AsStream ();
-		}
 
+		}
 		internal static IntPtr bitmapBlock;
 		internal static CCSize imageSize = CCSize.Zero;
 
-		private static void CreateBitmap (int width, int height)  //, PixelFormat format)
+		internal static CGBitmapContext CreateBitmap (int width, int height)  //, PixelFormat format)
 		{
 			int bitsPerComponent, bytesPerRow;
 			CGColorSpace colorSpace;
@@ -115,7 +86,7 @@ namespace Cocos2D
 			int size = bytesPerRow * height;
 
 			bitmapBlock = Marshal.AllocHGlobal (size);
-			bitmapContext = new CGBitmapContext (bitmapBlock, 
+			var bitmapContext = new CGBitmapContext (bitmapBlock, 
 			                                     width, height, 
 			                                     bitsPerComponent, 
 			                                     bytesPerRow,
@@ -124,24 +95,29 @@ namespace Cocos2D
 
 			// This works for now but we need to look into initializing the memory area itself
 			bitmapContext.ClearRect (new RectangleF (0,0,width,height));
-
-			var provider = new CGDataProvider (bitmapBlock, size, true);
-
-			NativeCGImage = new CGImage (width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpace, bitmapInfo, provider, null, false, CGColorRenderingIntent.Default);
+			return bitmapContext;
 
 		}
 
-		static void NativeDrawString (string s, CTFont font, CCColor4B brush, PointF point)
+		internal static CGImage GetImage (this CGBitmapContext bitmapContext)
 		{
-			NativeDrawString(s, font, brush, new RectangleF(point.X, point.Y, 0, 0));
+			var provider = new CGDataProvider (bitmapContext.Data, bitmapContext.BytesPerRow * bitmapContext.Height, true);
+
+			var NativeCGImage = new CGImage (bitmapContext.Width, 
+			                                 bitmapContext.Height, 
+			                                 bitmapContext.BitsPerComponent, 
+			                                 bitmapContext.BitsPerPixel, 
+			                                 bitmapContext.BytesPerRow, 
+			                                 bitmapContext.ColorSpace, 
+			                                 CGBitmapFlags.PremultipliedFirst, 
+			                                 provider, 
+			                                 null, 
+			                                 false, 
+			                                 CGColorRenderingIntent.Default);
+			return NativeCGImage;
 		}
 
-		static void NativeDrawString (string s, CTFont font, CCColor4B brush, float x, float y)
-		{
-			NativeDrawString (s, font, brush, new RectangleF(x, y, 0, 0));
-		}
-
-		static void NativeDrawString (string s, CTFont font, CCColor4B brush, RectangleF layoutRectangle)
+		internal static void NativeDrawString (CGBitmapContext bitmapContext, string s, CTFont font, CCColor4B brush, RectangleF layoutRectangle)
 		{
 			if (font == null)
 				throw new ArgumentNullException ("font");
@@ -242,7 +218,38 @@ namespace Cocos2D
 
 		}	
 
-		static CCSize MeasureString (string textg, CTFont font, CCRect rect)
+		[StructLayout(LayoutKind.Sequential)]
+		internal struct ABCFloat
+		{
+			/// <summary>Specifies the A spacing of the character. The A spacing is the distance to add to the current
+			/// position before drawing the character glyph.</summary>
+			public float abcfA;
+			/// <summary>Specifies the B spacing of the character. The B spacing is the width of the drawn portion of
+			/// the character glyph.</summary>
+			public float abcfB;
+			/// <summary>Specifies the C spacing of the character. The C spacing is the distance to add to the current
+			/// position to provide white space to the right of the character glyph.</summary>
+			public float abcfC;
+		}
+
+		// This only handles one character for right now
+		internal static void GetCharABCWidthsFloat (char characters, CTFont font, out ABCFloat[] abc)
+		{
+
+			var atts = buildAttributedString(characters.ToString(), font);
+
+			// for now just a line not sure if this is going to work
+			CTLine line = new CTLine(atts);
+
+			float ascent;
+			float descent;
+			float leading;
+			abc = new ABCFloat[1];
+			abc[0].abcfB = (float)line.GetTypographicBounds(out ascent, out descent, out leading);
+
+		}
+
+		internal static CCSize MeasureString (string textg, CTFont font, CCRect rect)
 		{
 
 			var atts = buildAttributedString(textg, font);
@@ -261,12 +268,12 @@ namespace Cocos2D
 			return measure;
 		}
 
-		static CCSize MeasureString (string textg, CTFont font, CCSize layoutArea)
+		internal static CCSize MeasureString (string textg, CTFont font, CCSize layoutArea)
 		{
 			return MeasureString (textg, font, new CCRect (0, 0, layoutArea.Width, layoutArea.Height));
 		}
 
-		static CCSize MeasureString (string textg, CTFont font)
+		internal static CCSize MeasureString (string textg, CTFont font)
 		{
 			return MeasureString (textg, font, CCSize.Zero);
 		}
@@ -370,34 +377,35 @@ namespace Cocos2D
 		}
 
 		const byte DefaultCharSet = 1;
-		static CTFont nativeFont;
+		//static CTFont nativeFont;
 		static bool underLine = false;
 		static bool strikeThrough = false;
 
 		static float dpiScale = 96f / 72f;
 
 
-		static void CreateFont (string familyName, float emSize)
+		static internal CTFont CreateFont (string familyName, float emSize)
 		{
-			CreateFont (familyName, emSize, FontStyle.Regular, DefaultCharSet, false);
+			return CreateFont (familyName, emSize, FontStyle.Regular, DefaultCharSet, false);
 		}
 
-		static void CreateFont (string familyName, float emSize, FontStyle style)
+		static internal CTFont CreateFont (string familyName, float emSize, FontStyle style)
 		{
-			CreateFont (familyName, emSize, style, DefaultCharSet, false);
+			return CreateFont (familyName, emSize, style, DefaultCharSet, false);
 		}
 
-		static void CreateFont (string familyName, float emSize, FontStyle style, byte gdiCharSet)
+		static internal CTFont CreateFont (string familyName, float emSize, FontStyle style, byte gdiCharSet)
 		{
-			CreateFont (familyName, emSize, style, gdiCharSet, false);
+			return CreateFont (familyName, emSize, style, gdiCharSet, false);
 		}
 
-		static void CreateFont (string familyName, float emSize, FontStyle style,
+		static internal CTFont CreateFont (string familyName, float emSize, FontStyle style,
 		                        byte gdiCharSet, bool  gdiVerticalFont )
 		{
 			if (emSize <= 0)
 				throw new ArgumentException("emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.","emSize");
 
+			CTFont nativeFont;
 
 			// convert to 96 Dpi to be consistent with Windows
 			var dpiSize = emSize * dpiScale;
@@ -424,8 +432,27 @@ namespace Cocos2D
 			if (nativeFont2 != null)
 				nativeFont = nativeFont2;
 
+			return nativeFont;
 		}
 
+		internal static float GetHeight(this CTFont font)
+		{
+			float lineHeight = 0;
+
+			if (font == null)
+				return 0;
+
+			// Get the ascent from the font, already scaled for the font's size
+			lineHeight += font.AscentMetric;
+
+			// Get the descent from the font, already scaled for the font's size
+			lineHeight += font.DescentMetric;
+
+			// Get the leading from the font, already scaled for the font's size
+			lineHeight += font.LeadingMetric;
+
+			return lineHeight;
+		}
 	}
 
 

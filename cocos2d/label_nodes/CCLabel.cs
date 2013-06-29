@@ -1,262 +1,310 @@
-using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
-	public class CCLabel : CCSprite, ICCLabelProtocol
-	{
-		private float m_fFontSize;
-		private CCTextAlignment m_hAlignment;
-		private string m_pFontName;
-		protected string m_pString;
-		private CCSize m_tDimensions;
-		private CCVerticalTextAlignment m_vAlignment;
+    public partial class CCLabel : CCLabelBMFont
+    {
+        public static CCTexture2D m_pTexture;
+        protected static bool m_bTextureDirty = true;
 
-		public CCLabel ()
-		{
-			m_hAlignment = CCTextAlignment.Center;
-			m_vAlignment = CCVerticalTextAlignment.Top;
-			m_pFontName = string.Empty;
-			m_fFontSize = 0.0f;
-			m_pString = string.Empty;
+        protected string m_FontName;
+        protected float m_FontSize;
+        protected bool m_bFontDirty;
 
-			Init();
-		}
-
-		public CCLabel (string text, string fontName, float fontSize) : 
-			this (text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Center,
-			      CCVerticalTextAlignment.Top)
-		{ }
-
-		public CCLabel (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) :
-			this (text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
-		{ }
-
-		public CCLabel (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment,
-		                   CCVerticalTextAlignment vAlignment)
-		{
-			InitWithString(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
-		}
-
-		public string FontName
-		{
-			get { return m_pFontName; }
-			set
-			{
-				if (m_pFontName != value)
-				{
-					m_pFontName = value;
-					if (m_pString.Length > 0)
-					{
-						Refresh();
-					}
-				}
-			}
-		}
-
-		public float FontSize
-		{
-			get { return m_fFontSize; }
-			set
-			{
-				if (m_fFontSize != value)
-				{
-					m_fFontSize = value;
-					if (m_pString.Length > 0)
-					{
-						Refresh();
-					}
-				}
-			}
-		}
-
-		public CCSize Dimensions
-		{
-			get { return m_tDimensions; }
-			set
-			{
-				if (!m_tDimensions.Equals(value))
-				{
-					m_tDimensions = value;
-					if (m_pString.Length > 0)
-					{
-						Refresh();
-					}
-				}
-			}
-		}
-
-		public CCVerticalTextAlignment VerticalAlignment
-		{
-			get { return m_vAlignment; }
-			set
-			{
-				if (m_vAlignment != value)
-				{
-					m_vAlignment = value;
-					if (m_pString.Length > 0)
-					{
-						Refresh();
-					}
-				}
-			}
-		}
-
-		public CCTextAlignment HorizontalAlignment
-		{
-			get { return m_hAlignment; }
-			set
-			{
-				if (m_hAlignment != value)
-				{
-					m_hAlignment = value;
-					if (m_pString.Length > 0)
-					{
-						Refresh();
-					}
-				}
-			}
-		}
-
-		internal void Refresh()
-		{
-			//
-			// This can only happen when the frame buffer is ready...
-			//
-			try
-			{
-				updateTexture();
-				Dirty = false;
-			}
-			catch (Exception)
-			{
-			}
-		}
-
-		#region ICCLabelProtocol Members
-
-		/*
- * This is where the texture should be created, but it messes with the drawing 
- * of the object tree
- * 
-        public override void Draw()
+        public string FontName
         {
-            if (Dirty)
-            {
-                updateTexture();
-                Dirty = false;
-            }
-            base.Draw();
-        }
-*/
-        public string Text
-        {
-            get { return m_pString; }
+            get { return m_FontName; }
             set
             {
-                // This is called in the update() call, so it should not do any drawing ...
-                if (m_pString != value)
+                if (m_FontName != value)
                 {
-                    m_pString = value;
-                    updateTexture();
-                    Dirty = false;
+                    m_FontName = value;
+                    m_bFontDirty = true;
                 }
-                //            Dirty = true;
             }
         }
 
-        [Obsolete("Use Label Property")]
-        public void SetString(string label)
+        public float FontSize
         {
-            Text = label;
+            get { return m_FontSize; }
+            set
+            {
+                if (m_FontSize != value)
+                {
+                    m_FontSize = value;
+                    m_bFontDirty = true;
+                }
+            }
         }
-        
-        [Obsolete("Use Label Property")]
-        public string GetString() 
+
+        public static void InitializeTTFAtlas(int width, int height)
         {
-            return Text;
+            m_nWidth = width;
+            m_nHeight = height;
+            m_nDepth = 4;
+
+            m_pTexture = new CCTexture2D();
+            m_pData = new int[width * height];
+
+            m_pNodes.Clear();
+            m_pNodes.Add(new ivec3() { x = 1, y = 1, z = m_nWidth - 2 });
+        }
+
+        public CCLabel()
+        {
+        }
+
+        public CCLabel(string text, string fontName, float fontSize) :
+            this(text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Left, CCVerticalTextAlignment.Top)
+        { }
+
+        public CCLabel(string text, string fontName, float fontSize, CCTextAlignment hAlignment) :
+            this(text, fontName, fontSize, CCSize.Zero, hAlignment, CCVerticalTextAlignment.Top)
+        { }
+
+        public CCLabel(string text, string fontName, float fontSize, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment) :
+            this(text, fontName, fontSize, CCSize.Zero, hAlignment, vAlignment)
+        { }
+
+        public CCLabel(string text, string fontName, float fontSize, CCSize dimensions) :
+            this(text, fontName, fontSize, dimensions, CCTextAlignment.Left, CCVerticalTextAlignment.Top)
+        {
+        }
+
+        public CCLabel(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) :
+            this(text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
+        {
+        }
+
+        public CCLabel(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
+        {
+            InitWithString(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
+        }
+
+        public bool InitWithString(string text, string fontName, float fontSize)
+        {
+            return InitWithString(text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Left, CCVerticalTextAlignment.Top);
+        }
+
+        public bool InitWithString(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment)
+        {
+            return InitWithString(text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top);
+        }
+
+        public bool InitWithString(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
+        {
+            InitializeFont(fontName, fontSize, text);
+
+            return base.InitWithString(text, GetFontKey(fontName, fontSize), dimensions, hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
+        }
+
+        public override void Draw()
+        {
+            if (m_bFontDirty)
+            {
+                m_pConfiguration = InitializeFont(m_FontName, m_FontSize, Text);
+                m_bFontDirty = false;
+            }
+
+            if (m_bTextureDirty)
+            {
+                m_pTexture.InitWithRawData(m_pData, SurfaceFormat.Color, m_nWidth, m_nHeight, true);
+                m_bTextureDirty = false;
+            }
+
+            base.Draw();
+        }
+
+        private static string GetFontKey(string fontName, float fontSize)
+        {
+            return String.Format("ttf-{0}-{1}", fontName, fontSize);
+        }
+
+        #region Skyline Bottom Left
+
+        private struct ivec3
+        {
+            public int x;
+            public int y;
+            public int z;
+        }
+
+        public struct ivec4
+        {
+            public int x;
+            public int y;
+            public int width;
+            public int height;
+        }
+
+        private static CCRawList<ivec3> m_pNodes = new CCRawList<ivec3>();
+        private static int m_nUsed;
+        private static int m_nWidth;
+        private static int m_nHeight;
+        private static int m_nDepth;
+        private static int[] m_pData;
+
+        private static int Fit(int index, int width, int height)
+        {
+            var node = m_pNodes[index];
+
+            var x = node.x;
+            var y = node.y;
+            var widthLeft = width;
+            var i = index;
+
+            if ((x + width) > (m_nWidth - 1))
+            {
+                return -1;
+            }
+
+            while (widthLeft > 0)
+            {
+                node = m_pNodes[i];
+
+                if (node.y > y)
+                {
+                    y = node.y;
+                }
+
+                if ((y + height) > (m_nHeight - 1))
+                {
+                    return -1;
+                }
+
+                widthLeft -= node.z;
+
+                ++i;
+            }
+            return y;
+        }
+
+        private static void Merge()
+        {
+            var nodes = m_pNodes.Elements;
+            for (int i = 0, count = m_pNodes.Count; i < count - 1; ++i)
+            {
+                if (nodes[i].y == nodes[i + 1].y)
+                {
+                    nodes[i].z += nodes[i + 1].z;
+                    m_pNodes.RemoveAt(i + 1);
+                    --count;
+                    --i;
+                }
+            }
+        }
+
+        public static ivec4 AllocateRegion(int width, int height)
+        {
+            ivec3 node, prev;
+            ivec4 region = new ivec4() { x = 0, y = 0, width = width, height = height };
+            int i;
+
+            int bestHeight = int.MaxValue;
+            int bestIndex = -1;
+            int bestWidth = int.MaxValue;
+
+            for (i = 0; i < m_pNodes.Count; ++i)
+            {
+                int y = Fit(i, width, height);
+
+                if (y >= 0)
+                {
+                    node = m_pNodes[i];
+                    if (((y + height) < bestHeight) || (((y + height) == bestHeight) && (node.z < bestWidth)))
+                    {
+                        bestHeight = y + height;
+                        bestIndex = i;
+                        bestWidth = node.z;
+                        region.x = node.x;
+                        region.y = y;
+                    }
+                }
+            }
+
+            if (bestIndex == -1)
+            {
+                region.x = -1;
+                region.y = -1;
+                region.width = 0;
+                region.height = 0;
+                return region;
+            }
+
+            //New node
+            node.x = region.x;
+            node.y = region.y + height;
+            node.z = width;
+            m_pNodes.Insert(bestIndex, node);
+
+            for (i = bestIndex + 1; i < m_pNodes.Count; ++i)
+            {
+                node = m_pNodes[i];
+                prev = m_pNodes[i - 1];
+
+                if (node.x < (prev.x + prev.z))
+                {
+                    int shrink = prev.x + prev.z - node.x;
+                    node.x += shrink;
+                    node.z -= shrink;
+                    if (node.z <= 0)
+                    {
+                        m_pNodes.RemoveAt(i);
+                        --i;
+                    }
+                    else
+                    {
+                        m_pNodes[i] = node;
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            Merge();
+
+            m_nUsed += width * height;
+
+            return region;
+        }
+
+        public static void SetRegionData(ivec4 region, int[] data, int stride)
+        {
+            var x = region.x;
+            var y = region.y;
+            var width = region.width;
+            var height = region.height;
+
+            Debug.Assert(x > 0);
+            Debug.Assert(y > 0);
+            Debug.Assert(x < (m_nWidth - 1));
+            Debug.Assert((x + width) <= (m_nWidth - 1));
+            Debug.Assert(y < (m_nHeight - 1));
+            Debug.Assert((y + height) <= (m_nHeight - 1));
+
+            var depth = m_nDepth;
+            for (int i = 0; i < height; ++i)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    var b = (byte)((data[i * stride + j] & 0xFF0000) >> 16);
+                    m_pData[((y + i) * m_nWidth + x) + j] = b << 24 | b << 16 | b << 8 | b;
+                }
+                //    Array.Copy(data, (i * stride), m_pData, ((y + i) * m_nWidth + x), width);
+                //                Buffer.BlockCopy(data, (i * stride), m_pData, ((y + i) * m_nWidth + x) * depth, width * depth);
+            }
         }
 
         #endregion
-
-        public override string ToString()
-        {
-            return string.Format("FontName:{0}, FontSize:{1}", m_pFontName, m_fFontSize);
-        }
-
-        public override bool Init()
-        {
-            return InitWithString("", "Helvetica", 12);
-        }
-
-        public bool InitWithString(string label, string fontName, float fontSize, CCSize dimensions, CCTextAlignment alignment)
-        {
-            return InitWithString(label, fontName, fontSize, dimensions, alignment, CCVerticalTextAlignment.Top);
-        }
-
-        public bool InitWithString(string label, string fontName, float fontSize)
-        {
-            return InitWithString(label, fontName, fontSize, CCSize.Zero, CCTextAlignment.Left,
-                                  CCVerticalTextAlignment.Top);
-        }
-
-
-        public bool InitWithString(string text, string fontName, float fontSize,
-                                   CCSize dimensions, CCTextAlignment hAlignment,
-                                   CCVerticalTextAlignment vAlignment)
-        {
-            if (base.Init())
-            {
-                // shader program
-                //this->setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(SHADER_PROGRAM));
-
-                m_tDimensions = new CCSize(dimensions.Width, dimensions.Height);
-                m_hAlignment = hAlignment;
-                m_vAlignment = vAlignment;
-                m_pFontName = fontName;
-                m_fFontSize = fontSize;
-
-                Text = (text);
-
-                return true;
-            }
-
-            return false;
-        }
-
-        private void updateTexture()
-        {
- 
-            // Dump the old one
-            if (Texture != null)
-            {
-                Texture.Dispose();
-            }
-
-            // let system compute label's width or height when its value is 0
-            // refer to cocos2d-x issue #1430
-            //tex = new CCTexture2D();
-
-//            tex.InitWithString(m_pString,
-//                               CCMacros.CCSizePointsToPixels(m_tDimensions),
-//                               m_hAlignment,
-//                               m_vAlignment,
-//                               m_pFontName,
-//                               m_fFontSize * CCMacros.CCContentScaleFactor());
-
-			var textr = CCLabelUtilities.CreateLabelTexture (m_pString,
-			                                   CCMacros.CCSizePointsToPixels (m_tDimensions),
-			                                   m_hAlignment,
-			                                   m_vAlignment,
-			                                   m_pFontName,
-			                                   m_fFontSize * CCMacros.CCContentScaleFactor (),
-			                                   new CCColor4B(Microsoft.Xna.Framework.Color.White) );
-
-            Texture = textr;
-
-            CCRect rect = CCRect.Zero;
-            rect.Size = m_pobTexture.ContentSize;
-            SetTextureRect(rect);
-        }
     }
+
 }
