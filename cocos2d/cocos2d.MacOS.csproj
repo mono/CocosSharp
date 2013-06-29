@@ -431,6 +431,7 @@
     <Compile Include="label_nodes\CCLabelUtilities.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="label_nodes\CCLabelUtilities-CoreGraphics.cs" />
+    <Compile Include="label_nodes\CCLabel-CoreGraphics.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">
