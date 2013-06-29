@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+	<Identifier Id="EmptyProject.0ab22475-63ab-43e9-8713-cb2e3af7c2b8">
+		<Name>Cocos2D-XNA Empty Game Windows Phone 7</Name>
+		<Author>Cocos2D-XNA</Author>
+		<Version>1.0</Version>
+		<Description xml:space="preserve">Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast.  This particular template is for targeting Windows Phone 7.</Description>
+		<Locale>1033</Locale>
+		<Icon>powered.ico</Icon>
+		<PreviewImage>powered.png</PreviewImage>
+		<SupportedProducts>
+			<VisualStudio Version="10.0">
+				<Edition>Ultimate</Edition>
+				<Edition>Premium</Edition>
+				<Edition>Pro</Edition>
+				<Edition>VCSExpress</Edition>
+			</VisualStudio>
+			<VisualStudio Version="11.0">
+				<Edition>Ultimate</Edition>
+				<Edition>Premium</Edition>
+				<Edition>Pro</Edition>
+				<Edition>VCSExpress</Edition>
+			</VisualStudio>
+		</SupportedProducts>
+		<SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
+	</Identifier>
+	<References>
+		<Reference Id="NuPackToolsVsix.Microsoft.67e54e40-0ae3-42c5-a949-fddf5739e7a5" MinVersion="2.5.40416.9020">
+			<Name>NuGet Package Manager</Name>
+			<MoreInfoUrl>http://docs.nuget.org/</MoreInfoUrl>
+		</Reference>
+	</References>
+	<Content>
+		<ProjectTemplate>ProjectTemplates</ProjectTemplate>
+	</Content>
+</Vsix>
+<!-->PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="EmptyProject.WP7..0ab22475-63ab-43e9-8713-cb2e3af7c2b8" Version="1.0" Language="en-US" Publisher="" />
+    <DisplayName>EmptyProject.WP7</DisplayName>
+    <Description>Empty VSIX Project.</Description>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="11.0" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="10.0" />
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="4.5" />
+  </Dependencies>
+</PackageManifest-->
