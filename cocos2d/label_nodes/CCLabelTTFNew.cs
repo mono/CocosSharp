@@ -7,7 +7,7 @@ using System.Text;
 
 using Microsoft.Xna.Framework.Graphics;
 
-#if WINDOWS
+#if WINDOWS || WINDOWSGL
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -142,6 +142,11 @@ namespace Cocos2D
 
         public bool InitWithString(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment alignment, CCPoint imageOffset)
         {
+            if (m_pData == null || !s_pConfigurations.ContainsKey(GetFontKey(fontName, fontSize)))
+            {
+                InitializeTTFAtlas(1024, 1024);
+                InitializeFont(fontName, (int)fontSize, @" !""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+            }
             if (m_bTextureDirty)
             {
                 m_pTexture.InitWithRawData(m_pData, SurfaceFormat.Color, m_nWidth, m_nHeight, true);
@@ -178,7 +183,7 @@ namespace Cocos2D
             return false;
         }
 
-#if WINDOWS
+#if WINDOWS || WINDOWSGL
         [DllImport("gdi32.dll", SetLastError = true)]
         static extern IntPtr CreateCompatibleDC(IntPtr hdc);
 
