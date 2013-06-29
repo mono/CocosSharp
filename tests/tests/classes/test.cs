@@ -45,7 +45,9 @@ namespace Cocos2D
         TEST_DIRECTOR,
         //TEST_BUGS,
         TEST_FONTS,
+#if IOS || MONOMAC || WINDOWSGL
 		TEST_SYSTEM_FONTS,
+#endif
         //TEST_CURRENT_LANGUAGE,
         //TEST_TEXTURECACHE,
         TEST_EXTENSIONS,
