@@ -351,7 +351,7 @@ namespace tests
                 
                 case (int)TestCases.TEST_FONTS:
                         pScene = new FontTestScene(); break;
-#if IPHONE || IOS || MONOMAC
+#if IPHONE || IOS || MONOMAC || WINDOWSGL
 				case (int)TestCases.TEST_SYSTEM_FONTS:
 					pScene = new SystemFontTestScene(); break;                
 #endif
