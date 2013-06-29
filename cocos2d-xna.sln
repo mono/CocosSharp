@@ -103,6 +103,7 @@ Global
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Any CPU.ActiveCfg = Release|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Mixed Platforms.ActiveCfg = Release|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Windows Phone.ActiveCfg = Release|x86
+		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Windows Phone.Build.0 = Release|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|x86.ActiveCfg = Release|x86
 		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|x86.Build.0 = Release|x86
 		{8165599E-6F37-41B7-91CD-C7C66232B5F2}.Debug|Any CPU.ActiveCfg = Debug|Windows Phone

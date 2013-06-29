@@ -170,8 +170,6 @@ namespace Cocos2D
                 return (m_pLayers[m_nEnabledLayer]);
             }
 
-            Debug.Assert(n < m_pLayers.Count, "Invalid index in MultiplexLayer SwitchTo");
-
             if (m_nEnabledLayer != -1)
             {
                 CCLayer outLayer = null;
@@ -228,8 +226,6 @@ namespace Cocos2D
         /// <returns></returns>
         public CCLayer SwitchToAndReleaseMe(int n)
         {
-            Debug.Assert(n < m_pLayers.Count, "Invalid index in MultiplexLayer SwitchToAndReleaseMe");
-
             var prevLayer = m_nEnabledLayer;
             CCLayer l = SwitchTo(n);
             m_pLayers[prevLayer] = null;
