@@ -23,7 +23,7 @@ namespace Cocos2D
 
         protected string m_FontName;
         protected float m_FontSize;
-        private CCSize m_tDimensions;
+        protected bool m_bFontDirty;
 
         public string FontName
         {
@@ -33,7 +33,7 @@ namespace Cocos2D
                 if (m_FontName != value)
                 {
                     m_FontName = value;
-                    UpdateLabel();
+                    m_bFontDirty = true;
                 }
             }
         }
@@ -46,46 +46,7 @@ namespace Cocos2D
                 if (m_FontSize != value)
                 {
                     m_FontSize = value;
-                    UpdateLabel();
-                }
-            }
-        }
-
-        public CCTextAlignment HorizontalAlignment
-        {
-            get { return m_pHAlignment; }
-            set
-            {
-                if (m_pHAlignment != value)
-                {
-                    m_pHAlignment = value;
-                    UpdateLabel();
-                }
-            }
-        }
-
-        public CCVerticalTextAlignment VerticalAlignment
-        {
-            get { return m_pVAlignment; }
-            set
-            {
-                if (m_pVAlignment != value)
-                {
-                    m_pVAlignment = value;
-                    UpdateLabel();
-                }
-            }
-        }
-
-        public CCSize Dimensions
-        {
-            get { return m_tDimensions; }
-            set
-            {
-                if (m_tDimensions != value)
-                {
-                    m_tDimensions = value;
-                    UpdateLabel();
+                    m_bFontDirty = true;
                 }
             }
         }
@@ -108,41 +69,56 @@ namespace Cocos2D
         }
 
         public CCLabelTTF (string text, string fontName, float fontSize) :
-            this(text, fontName, fontSize, CCTextAlignment.Center, CCVerticalTextAlignment.Top)
+            this(text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Left, CCVerticalTextAlignment.Top)
         { }
 
         public CCLabelTTF(string text, string fontName, float fontSize, CCTextAlignment hAlignment) :
-            this (text, fontName, fontSize, hAlignment, CCVerticalTextAlignment.Top)
+            this(text, fontName, fontSize, CCSize.Zero, hAlignment, CCVerticalTextAlignment.Top)
         { }
 
-        public CCLabelTTF(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment)
+        public CCLabelTTF(string text, string fontName, float fontSize, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment) :
+            this(text, fontName, fontSize, CCSize.Zero, hAlignment, vAlignment)
+        { }
+
+        public CCLabelTTF(string text, string fontName, float fontSize, CCSize dimensions) :
+            this(text, fontName, fontSize, dimensions, CCTextAlignment.Left, CCVerticalTextAlignment.Top)
         {
-            InitWithString(text, fontName, fontSize, dimensions, hAlignment, CCPoint.Zero);
+        }
+
+        public CCLabelTTF(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) :
+            this(text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
+        {
         }
 
         public CCLabelTTF(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
         {
-            InitWithString(text, fontName, fontSize, dimensions, hAlignment, CCPoint.Zero);
-        }
-
-        public CCLabelTTF(string text, string fontName, float fontSize, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
-        {
-            InitWithString(text, fontName, fontSize, CCSize.Zero, hAlignment, CCPoint.Zero);
+            InitWithString(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
         }
 
         public bool InitWithString(string text, string fontName, float fontSize)
         {
-            return InitWithString(text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Left, CCPoint.Zero);
+            return InitWithString(text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Left, CCVerticalTextAlignment.Top);
         }
 
-        public bool InitWithString(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment alignment)
+        public bool InitWithString(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment)
         {
-            return InitWithString(text, fontName, fontSize, dimensions, alignment, CCPoint.Zero);
+            return InitWithString(text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top);
         }
 
-        public bool InitWithString(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment alignment, CCPoint imageOffset)
+        public bool InitWithString(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
         {
-            InitializeFont(fontName, (int)fontSize, text);
+            InitializeFont(fontName, fontSize, text);
+
+            return base.InitWithString(text, GetFontKey(fontName, fontSize), dimensions, hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
+        }
+
+        public override void Draw()
+        {
+            if (m_bFontDirty)
+            {
+                m_pConfiguration = InitializeFont(m_FontName, m_FontSize, Text);
+                m_bFontDirty = false;
+            }
 
             if (m_bTextureDirty)
             {
@@ -150,34 +126,7 @@ namespace Cocos2D
                 m_bTextureDirty = false;
             }
 
-            m_pConfiguration = s_pConfigurations[GetFontKey(fontName, fontSize)];
-
-            if (base.InitWithTexture(m_pTexture, text.Length))
-            {
-                m_fWidth = -1;
-                m_pHAlignment = alignment;
-
-                m_cDisplayedOpacity = m_cRealOpacity = 255;
-                m_tDisplayedColor = m_tRealColor = CCTypes.CCWhite;
-                m_bCascadeOpacityEnabled = true;
-                m_bCascadeColorEnabled = true;
-
-                m_obContentSize = CCSize.Zero;
-
-                m_bIsOpacityModifyRGB = m_pobTextureAtlas.Texture.HasPremultipliedAlpha;
-                AnchorPoint = new CCPoint(0.5f, 0.5f);
-
-                m_tImageOffset = imageOffset;
-
-                m_pReusedChar = new CCSprite();
-                m_pReusedChar.InitWithTexture(m_pobTextureAtlas.Texture, CCRect.Zero, false);
-                m_pReusedChar.BatchNode = this;
-
-                SetString(text, true);
-
-                return true;
-            }
-            return false;
+            base.Draw();
         }
 
 #if WINDOWS || WINDOWSGL
@@ -211,11 +160,16 @@ namespace Cocos2D
         }
 
 
-        public static void InitializeFont(string fontName, float fontSize, string charset)
+        public static CCBMFontConfiguration InitializeFont(string fontName, float fontSize, string charset)
         {
             if (m_pData == null)
             {
-                InitializeTTFAtlas(512, 512);
+                InitializeTTFAtlas(1024, 1024);
+            }
+
+            if (String.IsNullOrEmpty(charset))
+            {
+                charset = " ";
             }
 
             var chars = new CCRawList<char>();
@@ -241,7 +195,7 @@ namespace Cocos2D
 
             if (chars.Count == 0)
             {
-                return;
+                return fontConfig;
             }
 
             var font = new Font(fontName, fontSize);
@@ -332,7 +286,7 @@ namespace Cocos2D
                     }
 
                     var region = AllocateRegion(w, h);
-
+                    
                     if (region.x >= 0)
                     {
                         SetRegionData(region, data, w);
@@ -358,6 +312,8 @@ namespace Cocos2D
             }
 
             m_bTextureDirty = true;
+
+            return fontConfig;
         }
 #endif
 

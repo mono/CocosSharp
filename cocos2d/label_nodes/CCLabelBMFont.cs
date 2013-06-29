@@ -13,15 +13,16 @@ namespace Cocos2D
         public static Dictionary<string, CCBMFontConfiguration> s_pConfigurations = new Dictionary<string, CCBMFontConfiguration>();
 
         protected bool m_bLineBreakWithoutSpaces;
-        protected float m_fWidth = -1.0f;
         protected CCTextAlignment m_pHAlignment = CCTextAlignment.Center;
-        protected CCVerticalTextAlignment m_pVAlignment;
+        protected CCVerticalTextAlignment m_pVAlignment = CCVerticalTextAlignment.Top;
         protected CCBMFontConfiguration m_pConfiguration;
         protected string m_sFntFile;
         protected string m_sInitialString;
         protected string m_sString = "";
         protected CCPoint m_tImageOffset;
+        protected CCSize m_tDimensions;
         protected CCSprite m_pReusedChar;
+        protected bool m_bLabelDirty;
 
         public override CCPoint AnchorPoint
         {
@@ -31,7 +32,7 @@ namespace Cocos2D
                 if (!m_obAnchorPoint.Equals(value))
                 {
                     base.AnchorPoint = value;
-                    UpdateLabel();
+                    m_bLabelDirty = true;
                 }
             }
         }
@@ -42,7 +43,7 @@ namespace Cocos2D
             set
             {
                 base.Scale = value;
-                UpdateLabel();
+                m_bLabelDirty = true;
             }
         }
 
@@ -62,7 +63,56 @@ namespace Cocos2D
             set
             {
                 base.ScaleY = value;
-                UpdateLabel();
+                m_bLabelDirty = true;
+            }
+        }
+
+        public CCTextAlignment HorizontalAlignment
+        {
+            get { return m_pHAlignment; }
+            set
+            {
+                if (m_pHAlignment != value)
+                {
+                    m_pHAlignment = value;
+                    m_bLabelDirty = true;
+                }
+            }
+        }
+
+        public CCVerticalTextAlignment VerticalAlignment
+        {
+            get { return m_pVAlignment; }
+            set
+            {
+                if (m_pVAlignment != value)
+                {
+                    m_pVAlignment = value;
+                    m_bLabelDirty = true;
+                }
+            }
+        }
+
+        public CCSize Dimensions
+        {
+            get { return m_tDimensions; }
+            set
+            {
+                if (m_tDimensions != value)
+                {
+                    m_tDimensions = value;
+                    m_bLabelDirty = true;
+                }
+            }
+        }
+
+        public bool LineBreakWithoutSpace
+        {
+            get { return m_bLineBreakWithoutSpaces; }
+            set
+            {
+                m_bLineBreakWithoutSpaces = value;
+                m_bLabelDirty = true;
             }
         }
 
@@ -82,7 +132,8 @@ namespace Cocos2D
                     m_pConfiguration = newConf;
 
                     Texture = CCTextureCache.SharedTextureCache.AddImage(m_pConfiguration.AtlasName);
-                    CreateFontChars();
+
+                    m_bLabelDirty = true;
                 }
             }
         }
@@ -92,7 +143,14 @@ namespace Cocos2D
         public virtual string Text
         {
             get { return m_sInitialString; }
-            set { SetString(value, false); }
+            set
+            {
+                if (m_sInitialString != value)
+                {
+                    m_sInitialString = value;
+                    m_bLabelDirty = true;
+                }
+            }
         }
 
         [Obsolete("Use Label Property")]
@@ -267,22 +325,20 @@ namespace Cocos2D
 
         public CCLabelBMFont(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset)
         {
-            InitWithString(str, fntFile, width, alignment, imageOffset);
+            InitWithString(str, fntFile, new CCSize(width, 0), alignment, CCVerticalTextAlignment.Top, imageOffset, null);
         }
 
         public override bool Init()
         {
-            return InitWithString(null, null, kCCLabelAutomaticWidth, CCTextAlignment.Left, CCPoint.Zero);
+            return InitWithString(null, null, new CCSize(kCCLabelAutomaticWidth, 0), CCTextAlignment.Left, CCVerticalTextAlignment.Top, CCPoint.Zero, null);
         }
 
-        protected virtual bool InitWithString(string theString, string fntFile, float width, CCTextAlignment alignment,
-                                              CCPoint imageOffset)
+        protected virtual bool InitWithString(string theString, string fntFile, CCSize dimentions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment,
+                                              CCPoint imageOffset, CCTexture2D texture)
         {
             Debug.Assert(m_pConfiguration == null, "re-init is no longer supported");
             Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null),
                          "Invalid params for CCLabelBMFont");
-
-            CCTexture2D texture;
 
             if (!String.IsNullOrEmpty(fntFile))
             {
@@ -297,26 +353,30 @@ namespace Cocos2D
 
                 m_sFntFile = fntFile;
 
-                try
+                if (texture == null)
                 {
-                    texture = CCTextureCache.SharedTextureCache.AddImage(m_pConfiguration.AtlasName);
-                }
-                catch (Exception)
-                {
-                    // Try the 'images' ref location just in case.
                     try
                     {
-                        texture =
-                            CCTextureCache.SharedTextureCache.AddImage(System.IO.Path.Combine("images",
-                                                                                              m_pConfiguration.AtlasName));
+                        texture = CCTextureCache.SharedTextureCache.AddImage(m_pConfiguration.AtlasName);
                     }
                     catch (Exception)
                     {
-                        // Lastly, try <font_path>/images/<font_name>
-                        string dir = System.IO.Path.GetDirectoryName(m_pConfiguration.AtlasName);
-                        string fname = System.IO.Path.GetFileName(m_pConfiguration.AtlasName);
-                        string newName = System.IO.Path.Combine(System.IO.Path.Combine(dir, "images"), fname);
-                        texture = CCTextureCache.SharedTextureCache.AddImage(newName);
+                        // Try the 'images' ref location just in case.
+                        try
+                        {
+                            texture =
+                                CCTextureCache.SharedTextureCache.AddImage(System.IO.Path.Combine("images",
+                                                                                                  m_pConfiguration
+                                                                                                      .AtlasName));
+                        }
+                        catch (Exception)
+                        {
+                            // Lastly, try <font_path>/images/<font_name>
+                            string dir = System.IO.Path.GetDirectoryName(m_pConfiguration.AtlasName);
+                            string fname = System.IO.Path.GetFileName(m_pConfiguration.AtlasName);
+                            string newName = System.IO.Path.Combine(System.IO.Path.Combine(dir, "images"), fname);
+                            texture = CCTextureCache.SharedTextureCache.AddImage(newName);
+                        }
                     }
                 }
             }
@@ -332,8 +392,10 @@ namespace Cocos2D
 
             if (base.InitWithTexture(texture, theString.Length))
             {
-                m_fWidth = width;
-                m_pHAlignment = alignment;
+                m_tDimensions = dimentions;
+
+                m_pHAlignment = hAlignment;
+                m_pVAlignment = vAlignment;
 
                 m_cDisplayedOpacity = m_cRealOpacity = 255;
                 m_tDisplayedColor = m_tRealColor = CCTypes.CCWhite;
@@ -526,9 +588,13 @@ namespace Cocos2D
             }
             tmpSize.Height = totalHeight;
 
+            tmpSize = new CCSize(
+                m_tDimensions.Width > 0 ? m_tDimensions.Width : tmpSize.Width,
+                m_tDimensions.Height > 0 ? m_tDimensions.Height : tmpSize.Height
+                );
+
             ContentSize = CCMacros.CCSizePixelsToPoints(tmpSize);
         }
-
 
         public virtual void SetString(string newString, bool needUpdateLabel)
         {
@@ -571,7 +637,7 @@ namespace Cocos2D
             {
                 return;
             }
-            if (m_fWidth > 0)
+            if (m_tDimensions.Width > 0)
             {
                 // Step 1: Make multiline
                 string str_whole = m_sString;
@@ -680,7 +746,7 @@ namespace Cocos2D
                     }
 
                     // Out of bounds.
-                    if (GetLetterPosXRight(characterSprite) - startOfLine > m_fWidth)
+                    if (GetLetterPosXRight(characterSprite) - startOfLine > m_tDimensions.Width)
                     {
                         if (!m_bLineBreakWithoutSpaces)
                         {
@@ -824,26 +890,37 @@ namespace Cocos2D
                     last_line.Add(m_sString[ctr]);
                 }
             }
-        }
 
-        public void SetAlignment(CCTextAlignment alignment)
-        {
-            m_pHAlignment = alignment;
-            UpdateLabel();
-        }
+            if (m_pVAlignment != CCVerticalTextAlignment.Bottom && m_tDimensions.Height > 0)
+            {
+                int lineNumber = 1;
+                int str_len = m_sString.Length;
+                for (int ctr = 0; ctr < str_len; ++ctr)
+                {
+                    if (m_sString[ctr] == '\n')
+                    {
+                        lineNumber++;
+                    }
+                }
 
-        public void SetWidth(float width)
-        {
-            m_fWidth = width;
-            UpdateLabel();
-        }
+                float yOffset = 0;
 
-        public void SetLineBreakWithoutSpace(bool breakWithoutSpace)
-        {
-            m_bLineBreakWithoutSpaces = breakWithoutSpace;
-            UpdateLabel();
-        }
+                if (m_pVAlignment == CCVerticalTextAlignment.Center)
+                {
+                    yOffset = m_tDimensions.Height / 2f - (m_pConfiguration.m_nCommonHeight * lineNumber) / 2f;
+                }
+                else
+                {
+                    yOffset = m_tDimensions.Height - m_pConfiguration.m_nCommonHeight * lineNumber;
+                }
 
+                for (int i = 0; i < str_len; i++)
+                {
+                    var characterSprite = GetChildByTag(i);
+                    characterSprite.PositionY += yOffset;
+                }
+            }
+        }
 
         private float GetLetterPosXLeft(CCSprite sp)
         {
@@ -867,6 +944,17 @@ namespace Cocos2D
             }
 
             return pRet;
+        }
+
+        public override void Draw()
+        {
+            if (m_bLabelDirty)
+            {
+                UpdateLabel();
+                m_bLabelDirty = false;
+            }
+
+            base.Draw();
         }
     }
 }
