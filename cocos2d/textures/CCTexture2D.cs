@@ -6,7 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-#if WINDOWS
+#if WINDOWS && !WINRT
 using BitMiracle.LibTiff.Classic;
 #endif
 
@@ -934,7 +934,7 @@ namespace Cocos2D
 
         private Texture2D LoadTextureFromTiff(Stream stream)
         {
-#if WINDOWS
+#if WINDOWS && !WINRT
             var tiff = Tiff.ClientOpen("file.tif", "r", stream, new TiffStream());
 
             var w = tiff.GetField(TiffTag.IMAGEWIDTH)[0].ToInt();

@@ -26,6 +26,26 @@ namespace tests.FontTest
 			"Symbol",
             "Wingdings",
 			"Arial",
+            //TODO: ttf files
+#endif
+#if ANDROID
+			"Comic Sans MS",
+			"Georgia",
+			"Arial",
+
+            "fonts/A Damn Mess.ttf",
+            "fonts/Abberancy.ttf",
+            "fonts/Abduction.ttf",
+            "fonts/American Typewriter.ttf",
+            "fonts/arial.ttf",
+            "fonts/Courier New.ttf",
+            "fonts/Marker Felt.ttf",
+            "fonts/Paint Boy.ttf",
+            "fonts/Schwarzwald Regular.ttf",
+            "fonts/Scissor Cuts.ttf",
+            "fonts/tahoma.ttf",
+            "fonts/Thonburi.ttf",
+            "fonts/ThonburiBold.ttf"
 #endif
 		};
 
@@ -111,6 +131,32 @@ namespace tests.FontTest
 			item3.Position = new CCPoint(s.Width / 2 + item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
 			AddChild(menu, 1);
 
+            var blockSize = new CCSize(s.Width / 3, 200);
+
+            CCLayerColor leftColor = new CCLayerColor(new CCColor4B(100, 100, 100, 255), blockSize.Width,
+                                                      blockSize.Height);
+            CCLayerColor centerColor = new CCLayerColor(new CCColor4B(200, 100, 100, 255), blockSize.Width,
+                                                        blockSize.Height);
+            CCLayerColor rightColor = new CCLayerColor(new CCColor4B(100, 100, 200, 255), blockSize.Width,
+                                                       blockSize.Height);
+
+            leftColor.IgnoreAnchorPointForPosition = false;
+            centerColor.IgnoreAnchorPointForPosition = false;
+            rightColor.IgnoreAnchorPointForPosition = false;
+
+            leftColor.AnchorPoint = new CCPoint(0, 0.5f);
+            centerColor.AnchorPoint = new CCPoint(0, 0.5f);
+            rightColor.AnchorPoint = new CCPoint(0, 0.5f);
+
+            leftColor.Position = new CCPoint(0, s.Height / 2);
+            ;
+            centerColor.Position = new CCPoint(blockSize.Width, s.Height / 2);
+            rightColor.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
+
+            AddChild(leftColor, -1);
+            AddChild(rightColor, -1);
+            AddChild(centerColor, -1);
+
 			showFont(SystemFontTestScene.restartAction());
 		}
 
@@ -150,36 +196,18 @@ namespace tests.FontTest
 			                                  blockSize, CCTextAlignment.Right,
 			                                  SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
 
-			CCLayerColor leftColor = new CCLayerColor(new CCColor4B(100, 100, 100, 255), blockSize.Width, blockSize.Height);
-			CCLayerColor centerColor = new CCLayerColor(new CCColor4B(200, 100, 100, 255), blockSize.Width, blockSize.Height);
-			CCLayerColor rightColor = new CCLayerColor(new CCColor4B(100, 100, 200, 255), blockSize.Width, blockSize.Height);
-
-			leftColor.IgnoreAnchorPointForPosition = false;
-			centerColor.IgnoreAnchorPointForPosition = false;
-			rightColor.IgnoreAnchorPointForPosition = false;
-
-
 			top.AnchorPoint = new CCPoint(0.5f, 1);
 			left.AnchorPoint = new CCPoint(0, 0.5f);
-			leftColor.AnchorPoint = new CCPoint(0, 0.5f);
 			center.AnchorPoint = new CCPoint(0, 0.5f);
-			centerColor.AnchorPoint = new CCPoint(0, 0.5f);
 			right.AnchorPoint = new CCPoint(0, 0.5f);
-			rightColor.AnchorPoint = new CCPoint(0, 0.5f);
 
 			top.Position = new CCPoint(s.Width / 2, s.Height - 20);
 			left.Position = new CCPoint(0, s.Height / 2);
-			leftColor.Position = left.Position;
 			center.Position = new CCPoint(blockSize.Width, s.Height / 2);
-			centerColor.Position = center.Position;
 			right.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
-			rightColor.Position = right.Position;
 
-			AddChild(leftColor, -1);
 			AddChild(left, 0, kTagLabel1);
-			AddChild(rightColor, -1);
 			AddChild(right, 0, kTagLabel2);
-			AddChild(centerColor, -1);
 			AddChild(center, 0, kTagLabel3);
 			AddChild(top, 0, kTagLabel4);
 		}

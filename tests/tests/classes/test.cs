@@ -45,7 +45,7 @@ namespace Cocos2D
         TEST_DIRECTOR,
         //TEST_BUGS,
         TEST_FONTS,
-#if IOS || MONOMAC || WINDOWSGL
+#if IOS || MONOMAC || WINDOWSGL || WINDOWS || ANDROID
 		TEST_SYSTEM_FONTS,
 #endif
         //TEST_CURRENT_LANGUAGE,
@@ -101,7 +101,7 @@ namespace Cocos2D
             "DirectorTest",
             //"BugsTest",
             "FontTest",
-#if IOS || MONOMAC || WINDOWSGL || WINDOWS
+#if IOS || MONOMAC || WINDOWSGL || WINDOWS || ANDROID
 			"SystemFontTest",
 #endif
             //"CurrentLanguageTest"

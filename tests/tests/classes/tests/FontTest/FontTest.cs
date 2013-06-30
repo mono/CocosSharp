@@ -42,14 +42,17 @@ namespace tests.FontTest
         {
             nextAction();
         }
+
         protected override void PreviousTestCase()
         {
             backAction();
         }
+
         protected override void RestTestCase()
         {
             restartAction();
         }
+
         public static string nextAction()
         {
             fontIdx++;
@@ -103,6 +106,32 @@ namespace tests.FontTest
             item3.Position = new CCPoint(s.Width / 2 + item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
             AddChild(menu, 1);
 
+            var blockSize = new CCSize(s.Width / 3, 200);
+
+            CCLayerColor leftColor = new CCLayerColor(new CCColor4B(100, 100, 100, 255), blockSize.Width,
+                                                      blockSize.Height);
+            CCLayerColor centerColor = new CCLayerColor(new CCColor4B(200, 100, 100, 255), blockSize.Width,
+                                                        blockSize.Height);
+            CCLayerColor rightColor = new CCLayerColor(new CCColor4B(100, 100, 200, 255), blockSize.Width,
+                                                       blockSize.Height);
+
+            leftColor.IgnoreAnchorPointForPosition = false;
+            centerColor.IgnoreAnchorPointForPosition = false;
+            rightColor.IgnoreAnchorPointForPosition = false;
+
+            leftColor.AnchorPoint = new CCPoint(0, 0.5f);
+            centerColor.AnchorPoint = new CCPoint(0, 0.5f);
+            rightColor.AnchorPoint = new CCPoint(0, 0.5f);
+
+            leftColor.Position = new CCPoint(0, s.Height / 2);
+            ;
+            centerColor.Position = new CCPoint(blockSize.Width, s.Height / 2);
+            rightColor.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
+
+            AddChild(leftColor, -1);
+            AddChild(rightColor, -1);
+            AddChild(centerColor, -1);
+
             showFont(FontTestScene.restartAction());
         }
 
@@ -120,45 +149,27 @@ namespace tests.FontTest
 
             CCLabelTTF top = new CCLabelTTF(pFont, pFont, 24);
             CCLabelTTF left = new CCLabelTTF("alignment left", pFont, fontSize,
-                                                blockSize, CCTextAlignment.Left,
-                                                FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
+                                             blockSize, CCTextAlignment.Left,
+                                             FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
             CCLabelTTF center = new CCLabelTTF("alignment center", pFont, fontSize,
-                                                  blockSize, CCTextAlignment.Center,
-                                                  FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
+                                               blockSize, CCTextAlignment.Center,
+                                               FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
             CCLabelTTF right = new CCLabelTTF("alignment right", pFont, fontSize,
-                                                 blockSize, CCTextAlignment.Right,
-                                                 FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
-
-            CCLayerColor leftColor = new CCLayerColor(new CCColor4B(100, 100, 100, 255), blockSize.Width, blockSize.Height);
-            CCLayerColor centerColor = new CCLayerColor(new CCColor4B(200, 100, 100, 255), blockSize.Width, blockSize.Height);
-            CCLayerColor rightColor = new CCLayerColor(new CCColor4B(100, 100, 200, 255), blockSize.Width, blockSize.Height);
-
-            leftColor.IgnoreAnchorPointForPosition = false;
-            centerColor.IgnoreAnchorPointForPosition = false;
-            rightColor.IgnoreAnchorPointForPosition = false;
-
+                                              blockSize, CCTextAlignment.Right,
+                                              FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
 
             top.AnchorPoint = new CCPoint(0.5f, 1);
             left.AnchorPoint = new CCPoint(0, 0.5f);
-            leftColor.AnchorPoint = new CCPoint(0, 0.5f);
             center.AnchorPoint = new CCPoint(0, 0.5f);
-            centerColor.AnchorPoint = new CCPoint(0, 0.5f);
             right.AnchorPoint = new CCPoint(0, 0.5f);
-            rightColor.AnchorPoint = new CCPoint(0, 0.5f);
 
             top.Position = new CCPoint(s.Width / 2, s.Height - 20);
             left.Position = new CCPoint(0, s.Height / 2);
-            leftColor.Position = left.Position;
             center.Position = new CCPoint(blockSize.Width, s.Height / 2);
-            centerColor.Position = center.Position;
             right.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
-            rightColor.Position = right.Position;
 
-            AddChild(leftColor, -1);
             AddChild(left, 0, kTagLabel1);
-            AddChild(rightColor, -1);
             AddChild(right, 0, kTagLabel2);
-            AddChild(centerColor, -1);
             AddChild(center, 0, kTagLabel3);
             AddChild(top, 0, kTagLabel4);
         }
