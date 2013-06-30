@@ -1180,6 +1180,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="BitMiracle.LibTiff.NET">
+      <HintPath>external lib\BitMiracle.LibTiff.NET.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>external lib\XBox360\ICSharpCode.SharpZipLib.dll</HintPath>
