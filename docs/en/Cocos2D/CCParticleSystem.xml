@@ -1380,6 +1380,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="RotationIsDir">
+      <MemberSignature Language="C#" Value="public bool RotationIsDir { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool RotationIsDir" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Scale">
       <MemberSignature Language="C#" Value="public override float Scale { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Scale" />

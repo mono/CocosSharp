@@ -1,12 +1,12 @@
 <Type Name="CCLayerMultiplex" FullName="Cocos2D.CCLayerMultiplex">
-  <TypeSignature Language="C#" Value="public class CCLayerMultiplex : Cocos2D.CCLayer" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerMultiplex extends Cocos2D.CCLayer" />
+  <TypeSignature Language="C#" Value="public class CCLayerMultiplex : Cocos2D.CCLayerRGBA" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerMultiplex extends Cocos2D.CCLayerRGBA" />
   <AssemblyInfo>
     <AssemblyName>cocos2d-xna</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCLayer</BaseTypeName>
+    <BaseTypeName>Cocos2D.CCLayerRGBA</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -113,6 +113,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ActiveLayer">
+      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCLayer ActiveLayer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCLayer ActiveLayer" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCLayer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddLayer">
       <MemberSignature Language="C#" Value="public void AddLayer (Cocos2D.CCLayer layer);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddLayer(class Cocos2D.CCLayer layer) cil managed" />
@@ -164,15 +180,31 @@
       </Docs>
     </Member>
     <Member MemberName="m_pLayers">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCLayer&gt; m_pLayers;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.CCLayer&gt; m_pLayers" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;int,Cocos2D.CCLayer&gt; m_pLayers;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;int32, class Cocos2D.CCLayer&gt; m_pLayers" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCLayer&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.Int32,Cocos2D.CCLayer&gt;</ReturnType>
       </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnEnter">
+      <MemberSignature Language="C#" Value="public override void OnEnter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnEnter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -195,14 +227,14 @@
       </Docs>
     </Member>
     <Member MemberName="SwitchTo">
-      <MemberSignature Language="C#" Value="public void SwitchTo (int n);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SwitchTo(int32 n) cil managed" />
+      <MemberSignature Language="C#" Value="public Cocos2D.CCLayer SwitchTo (int n);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCLayer SwitchTo(int32 n) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>Cocos2D.CCLayer</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="n" Type="System.Int32" />
@@ -210,18 +242,19 @@
       <Docs>
         <param name="n">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SwitchToAndReleaseMe">
-      <MemberSignature Language="C#" Value="public void SwitchToAndReleaseMe (int n);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SwitchToAndReleaseMe(int32 n) cil managed" />
+      <MemberSignature Language="C#" Value="public Cocos2D.CCLayer SwitchToAndReleaseMe (int n);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCLayer SwitchToAndReleaseMe(int32 n) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>Cocos2D.CCLayer</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="n" Type="System.Int32" />
@@ -229,6 +262,7 @@
       <Docs>
         <param name="n">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

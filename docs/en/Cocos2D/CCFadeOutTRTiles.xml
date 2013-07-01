@@ -44,19 +44,19 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCFadeOutTRTiles (Cocos2D.CCGridSize gridSize, float time);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCGridSize gridSize, float32 time) cil managed" />
+      <MemberSignature Language="C#" Value="public CCFadeOutTRTiles (float duration, Cocos2D.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="time" Type="System.Single" />
       </Parameters>
       <Docs>
+        <param name="duration">To be added.</param>
         <param name="gridSize">To be added.</param>
-        <param name="time">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
