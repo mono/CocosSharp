@@ -6,6 +6,13 @@ using Cocos2D;
 
 namespace tests
 {
+    public class SpriteMaskTest : SpriteTestDemo
+    {
+        public SpriteMaskTest()
+        {
+        }
+    }
+
     public class Sprite1 : SpriteTestDemo
     {
         public Sprite1()
