@@ -1,12 +1,12 @@
 <Type Name="CCEaseBounceIn" FullName="Cocos2D.CCEaseBounceIn">
-  <TypeSignature Language="C#" Value="public class CCEaseBounceIn : Cocos2D.CCEaseBounce" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEaseBounceIn extends Cocos2D.CCEaseBounce" />
+  <TypeSignature Language="C#" Value="public class CCEaseBounceIn : Cocos2D.CCActionEase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEaseBounceIn extends Cocos2D.CCActionEase" />
   <AssemblyInfo>
     <AssemblyName>cocos2d-xna</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCEaseBounce</BaseTypeName>
+    <BaseTypeName>Cocos2D.CCActionEase</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

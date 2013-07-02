@@ -122,27 +122,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddQuadFromSprite">
-      <MemberSignature Language="C#" Value="protected void AddQuadFromSprite (Cocos2D.CCSprite sprite, int index);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void AddQuadFromSprite(class Cocos2D.CCSprite sprite, int32 index) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="sprite" Type="Cocos2D.CCSprite" />
-        <Parameter Name="index" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="sprite">To be added.</param>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddSpriteWithoutQuad">
       <MemberSignature Language="C#" Value="protected Cocos2D.CCSpriteBatchNode AddSpriteWithoutQuad (Cocos2D.CCSprite child, int z, int aTag);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class Cocos2D.CCSpriteBatchNode AddSpriteWithoutQuad(class Cocos2D.CCSprite child, int32 z, int32 aTag) cil managed" />
@@ -370,6 +349,27 @@
       <Docs>
         <param name="pobSprite">To be added.</param>
         <param name="uIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InsertQuadFromSprite">
+      <MemberSignature Language="C#" Value="protected void InsertQuadFromSprite (Cocos2D.CCSprite sprite, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void InsertQuadFromSprite(class Cocos2D.CCSprite sprite, int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="sprite">To be added.</param>
+        <param name="index">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -626,6 +626,27 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateQuadFromSprite">
+      <MemberSignature Language="C#" Value="protected void UpdateQuadFromSprite (Cocos2D.CCSprite sprite, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateQuadFromSprite(class Cocos2D.CCSprite sprite, int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="sprite">To be added.</param>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

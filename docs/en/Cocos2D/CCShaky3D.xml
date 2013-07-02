@@ -28,23 +28,23 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCShaky3D (int range, bool shakeZ, Cocos2D.CCGridSize gridSize, float duration);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 range, bool shakeZ, valuetype Cocos2D.CCGridSize gridSize, float32 duration) cil managed" />
+      <MemberSignature Language="C#" Value="public CCShaky3D (float duration, Cocos2D.CCGridSize gridSize, int range, bool shakeZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize, int32 range, bool shakeZ) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
         <Parameter Name="range" Type="System.Int32" />
         <Parameter Name="shakeZ" Type="System.Boolean" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="duration" Type="System.Single" />
       </Parameters>
       <Docs>
+        <param name="duration">To be added.</param>
+        <param name="gridSize">To be added.</param>
         <param name="range">To be added.</param>
         <param name="shakeZ">To be added.</param>
-        <param name="gridSize">To be added.</param>
-        <param name="duration">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -69,9 +69,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitWithRange">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithRange (int range, bool shakeZ, Cocos2D.CCGridSize gridSize, float duration);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithRange(int32 range, bool shakeZ, valuetype Cocos2D.CCGridSize gridSize, float32 duration) cil managed" />
+    <Member MemberName="InitWithDuration">
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithDuration (float duration, Cocos2D.CCGridSize gridSize, int range, bool shakeZ);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithDuration(float32 duration, valuetype Cocos2D.CCGridSize gridSize, int32 range, bool shakeZ) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -80,16 +80,16 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
         <Parameter Name="range" Type="System.Int32" />
         <Parameter Name="shakeZ" Type="System.Boolean" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="duration" Type="System.Single" />
       </Parameters>
       <Docs>
+        <param name="duration">To be added.</param>
+        <param name="gridSize">To be added.</param>
         <param name="range">To be added.</param>
         <param name="shakeZ">To be added.</param>
-        <param name="gridSize">To be added.</param>
-        <param name="duration">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

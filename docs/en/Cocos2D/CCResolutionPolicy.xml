@@ -27,6 +27,34 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="FixedHeight">
+      <MemberSignature Language="C#" Value="FixedHeight" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCResolutionPolicy FixedHeight = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FixedWidth">
+      <MemberSignature Language="C#" Value="FixedWidth" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCResolutionPolicy FixedWidth = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="NoBorder">
       <MemberSignature Language="C#" Value="NoBorder" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCResolutionPolicy NoBorder = int32(1)" />
@@ -57,7 +85,7 @@
     </Member>
     <Member MemberName="UnKnown">
       <MemberSignature Language="C#" Value="UnKnown" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCResolutionPolicy UnKnown = int32(3)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCResolutionPolicy UnKnown = int32(5)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>

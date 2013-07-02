@@ -340,6 +340,21 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="m_uCurrentFirstGID">
+      <MemberSignature Language="C#" Value="protected uint m_uCurrentFirstGID;" />
+      <MemberSignature Language="ILAsm" Value=".field family unsigned int32 m_uCurrentFirstGID" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="m_uParentGID">
       <MemberSignature Language="C#" Value="protected uint m_uParentGID;" />
       <MemberSignature Language="ILAsm" Value=".field family unsigned int32 m_uParentGID" />

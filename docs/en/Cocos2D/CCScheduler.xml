@@ -190,8 +190,8 @@
       </Docs>
     </Member>
     <Member MemberName="ScheduleSelector">
-      <MemberSignature Language="C#" Value="public void ScheduleSelector (Action&lt;float&gt; selector, Cocos2D.ICCSelectorProtocol target, float interval, bool paused, uint repeat, float delay);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ScheduleSelector(class System.Action`1&lt;float32&gt; selector, class Cocos2D.ICCSelectorProtocol target, float32 interval, bool paused, unsigned int32 repeat, float32 delay) cil managed" />
+      <MemberSignature Language="C#" Value="public void ScheduleSelector (Action&lt;float&gt; selector, Cocos2D.ICCSelectorProtocol target, float interval, uint repeat, float delay, bool paused);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ScheduleSelector(class System.Action`1&lt;float32&gt; selector, class Cocos2D.ICCSelectorProtocol target, float32 interval, unsigned int32 repeat, float32 delay, bool paused) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -203,17 +203,17 @@
         <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
         <Parameter Name="target" Type="Cocos2D.ICCSelectorProtocol" />
         <Parameter Name="interval" Type="System.Single" />
-        <Parameter Name="paused" Type="System.Boolean" />
         <Parameter Name="repeat" Type="System.UInt32" />
         <Parameter Name="delay" Type="System.Single" />
+        <Parameter Name="paused" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="selector">To be added.</param>
         <param name="target">To be added.</param>
         <param name="interval">To be added.</param>
-        <param name="paused">To be added.</param>
         <param name="repeat">To be added.</param>
         <param name="delay">To be added.</param>
+        <param name="paused">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -256,9 +256,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="UnscheduleAllSelectors">
-      <MemberSignature Language="C#" Value="public void UnscheduleAllSelectors ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAllSelectors() cil managed" />
+    <Member MemberName="UnscheduleAll">
+      <MemberSignature Language="C#" Value="public void UnscheduleAll ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAll() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -272,9 +272,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="UnscheduleAllSelectorsForTarget">
-      <MemberSignature Language="C#" Value="public void UnscheduleAllSelectorsForTarget (Cocos2D.ICCSelectorProtocol target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAllSelectorsForTarget(class Cocos2D.ICCSelectorProtocol target) cil managed" />
+    <Member MemberName="UnscheduleAllForTarget">
+      <MemberSignature Language="C#" Value="public void UnscheduleAllForTarget (Cocos2D.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAllForTarget(class Cocos2D.ICCSelectorProtocol target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -291,9 +291,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="UnscheduleAllSelectorsWithMinPriority">
-      <MemberSignature Language="C#" Value="public void UnscheduleAllSelectorsWithMinPriority (int minPriority);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAllSelectorsWithMinPriority(int32 minPriority) cil managed" />
+    <Member MemberName="UnscheduleAllWithMinPriority">
+      <MemberSignature Language="C#" Value="public void UnscheduleAllWithMinPriority (int minPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAllWithMinPriority(int32 minPriority) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>

@@ -414,22 +414,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SingleTouchEnabled">
-      <MemberSignature Language="C#" Value="public virtual bool SingleTouchEnabled { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool SingleTouchEnabled" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="TouchBegan">
       <MemberSignature Language="C#" Value="public virtual bool TouchBegan (Cocos2D.CCTouch touch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool TouchBegan(class Cocos2D.CCTouch touch) cil managed" />
@@ -580,6 +564,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TouchMode">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCTouchMode TouchMode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCTouchMode TouchMode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTouchMode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TouchMoved">
       <MemberSignature Language="C#" Value="public virtual void TouchMoved (Cocos2D.CCTouch touch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchMoved(class Cocos2D.CCTouch touch) cil managed" />
@@ -596,6 +596,22 @@
       <Docs>
         <param name="touch">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchPriority">
+      <MemberSignature Language="C#" Value="public int TouchPriority { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 TouchPriority" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
