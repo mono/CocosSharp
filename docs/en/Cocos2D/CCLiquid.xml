@@ -44,23 +44,23 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLiquid (int wav, float amp, Cocos2D.CCGridSize gridSize, float duration);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 wav, float32 amp, valuetype Cocos2D.CCGridSize gridSize, float32 duration) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLiquid (float duration, Cocos2D.CCGridSize gridSize, int waves, float amplitude);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize, int32 waves, float32 amplitude) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="wav" Type="System.Int32" />
-        <Parameter Name="amp" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
         <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="waves" Type="System.Int32" />
+        <Parameter Name="amplitude" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="wav">To be added.</param>
-        <param name="amp">To be added.</param>
-        <param name="gridSize">To be added.</param>
         <param name="duration">To be added.</param>
+        <param name="gridSize">To be added.</param>
+        <param name="waves">To be added.</param>
+        <param name="amplitude">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -117,9 +117,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitWithWaves">
-      <MemberSignature Language="C#" Value="public bool InitWithWaves (int wav, float amp, Cocos2D.CCGridSize gridSize, float duration);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithWaves(int32 wav, float32 amp, valuetype Cocos2D.CCGridSize gridSize, float32 duration) cil managed" />
+    <Member MemberName="InitWithDuratuon">
+      <MemberSignature Language="C#" Value="public bool InitWithDuratuon (float duration, Cocos2D.CCGridSize gridSize, int waves, float amplitude);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDuratuon(float32 duration, valuetype Cocos2D.CCGridSize gridSize, int32 waves, float32 amplitude) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -128,16 +128,16 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="wav" Type="System.Int32" />
-        <Parameter Name="amp" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
         <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="waves" Type="System.Int32" />
+        <Parameter Name="amplitude" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="wav">To be added.</param>
-        <param name="amp">To be added.</param>
-        <param name="gridSize">To be added.</param>
         <param name="duration">To be added.</param>
+        <param name="gridSize">To be added.</param>
+        <param name="waves">To be added.</param>
+        <param name="amplitude">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
