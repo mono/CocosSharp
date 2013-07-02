@@ -27,8 +27,13 @@
 
     <call target="buildwindows"/>
     <call target="buildwindowsphone7"/>
+    <call target="buildwindowsphone8"/>
+    <call target="buildwindows8"/>
     <call target="buildandroid"/>
     <call target="buildouya"/>
+    <call target="buildxbox360"/>
+    <call target="buildios"/>
+    <call target="buildmac"/>
 
     <call target="buildnugets"/>
 
@@ -67,7 +72,7 @@
     </if>
   </target>
 
-  <target name="buildwindowsphone7" description="Build XBox 360" depends="clean">
+  <target name="buildxbox360" description="Build XBox 360" depends="clean">
     <if test="${os == 'Win32NT'}">
       <if test="${file::exists('c:\Program Files (x86)\MSBuild\Microsoft\XNA Game Studio\v4.0\Microsoft.Xna.GameStudio.Windows Phone.targets')}">
         <exec program="msbuild " commandline='cocos2d-xna.XBox360.sln /t:Clean /p:Configuration=Release /p:Platform="XBox 360"' />
