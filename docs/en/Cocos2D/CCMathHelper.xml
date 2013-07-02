@@ -34,6 +34,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Lerp">
+      <MemberSignature Language="C#" Value="public static int Lerp (int value1, int value2, float amount);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 Lerp(int32 value1, int32 value2, float32 amount) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value1" Type="System.Int32" />
+        <Parameter Name="value2" Type="System.Int32" />
+        <Parameter Name="amount" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="value1">To be added.</param>
+        <param name="value2">To be added.</param>
+        <param name="amount">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Sin">
       <MemberSignature Language="C#" Value="public static float Sin (float radian);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Sin(float32 radian) cil managed" />

@@ -26,29 +26,16 @@ namespace Cocos2D
             public float abcfC;
         }
 
-        private class FontEntry
-        {
-            public Font Font;
-            public Dictionary<char, KerningInfo> AbcValues;
-            
-            public FontEntry(Font font)
-            {
-                Font = font;
-                AbcValues = new Dictionary<char, KerningInfo>();
-            }
-        }
-
         private static Font _defaultFont;
+        private static Font _currentFont;
 
         private static Graphics _graphics;
         private static Bitmap _bitmap;
         private static BitmapData _bitmapData;
         private static Brush _brush;
-
-        private static FontEntry _currentFont;
-
-        private static Dictionary<string, FontEntry> _fontNameCache = new Dictionary<string, FontEntry>();
-        private static Dictionary<string, FontEntry> _realFontNameCache = new Dictionary<string, FontEntry>(); 
+        private static Dictionary<char, KerningInfo> _abcValues = new Dictionary<char, KerningInfo>();
+        private static Dictionary<string, FontFamily> _fontFamilyCache = new Dictionary<string, FontFamily>();
+        private static PrivateFontCollection _loadedFonts = new PrivateFontCollection();
 
         [DllImport("gdi32.dll", SetLastError = true)]
         static extern IntPtr CreateCompatibleDC(IntPtr hdc);
@@ -65,28 +52,20 @@ namespace Cocos2D
         [DllImport("gdi32.dll")]
         static extern bool DeleteObject(IntPtr hObject);
 
-        [DllImport("gdi32.dll")]
-        static extern int AddFontResource(string lpszFilename);
-
-        [DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
-
-        const int WM_FONTCHANGE = 0x001D;
-
-        private string __GetFontkey(string fontName, float fontSize)
-        {
-            return String.Format("{0}-{1}", fontName, fontSize);
-        }
-
         private string CreateFont(string fontName, float fontSize, CCRawList<char> charset)
         {
-            var fontKey = __GetFontkey(fontName, fontSize);
+            if (_defaultFont == null)
+            {
+                _defaultFont = new Font(FontFamily.GenericSansSerif, 12);
+            }
 
-            if (!_fontNameCache.TryGetValue(fontKey, out _currentFont))
+            FontFamily fontFamily;
+
+            if (!_fontFamilyCache.TryGetValue(fontName, out fontFamily))
             {
                 var ext = Path.GetExtension(fontName);
 
-                Font font = _defaultFont;
+                _currentFont = _defaultFont;
 
                 if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
                 {
@@ -96,62 +75,46 @@ namespace Cocos2D
 
                     if (File.Exists(fontPath))
                     {
-                        var fontNumber = AddFontResource(fontPath);
-                        
-                        //TODO: how to find font by font number?
-
-                        if (fontNumber != null)
+                        try
                         {
-                            var wHandle = CCApplication.SharedApplication.Game.Window.Handle;
-                            SendMessage(wHandle, WM_FONTCHANGE, IntPtr.Zero, IntPtr.Zero);
+                            _loadedFonts.AddFontFile(fontPath);
 
-                            font = new Font(Path.GetFileNameWithoutExtension(fontName), fontSize);
+                            fontFamily = _loadedFonts.Families[_loadedFonts.Families.Length - 1];
+
+                            _currentFont = new Font(fontFamily, fontSize);
+                        }
+                        catch
+                        {
+                            _currentFont = _defaultFont;
                         }
                     }
                 }
                 else
                 {
-                    font = new Font(fontName, fontSize);
+                    _currentFont = new Font(fontName, fontSize);
                 }
 
-                if (!_realFontNameCache.TryGetValue(__GetFontkey(font.Name, font.Size), out _currentFont))
-                {
-                    _currentFont = new FontEntry(font);
-                    _realFontNameCache.Add(__GetFontkey(font.Name, font.Size), _currentFont);
-                }
-
-                _fontNameCache.Add(fontKey, _currentFont);
+                _fontFamilyCache.Add(fontName, _currentFont.FontFamily);
+            }
+            else
+            {
+                _currentFont = new Font(fontFamily, fontSize);
             }
 
             GetKerningInfo(charset);
 
             CreateBitmap(1, 1);
 
-            return _currentFont.Font.Name;
+            return _currentFont.Name;
         }
 
         private static void GetKerningInfo(CCRawList<char> charset)
         {
-            bool needProcess = false;
-
-            for (int i = 0; i < charset.Count; i++)
-            {
-                var ch = charset[i];
-                if (!_currentFont.AbcValues.ContainsKey(ch))
-                {
-                    needProcess = true;
-                    break;
-                }
-            }
-
-            if (!needProcess)
-            {
-                return;
-            }
+            _abcValues.Clear();
 
             var hDC = CreateCompatibleDC(IntPtr.Zero);
 
-            var hFont = _currentFont.Font.ToHfont();
+            var hFont = _currentFont.ToHfont();
             SelectObject(hDC, hFont);
 
             var value = new ABCFloat[1];
@@ -159,16 +122,17 @@ namespace Cocos2D
             for (int i = 0; i < charset.Count; i++)
             {
                 var ch = charset[i];
-                if (!_currentFont.AbcValues.ContainsKey(ch))
+                if (!_abcValues.ContainsKey(ch))
                 {
                     GetCharABCWidthsFloat(hDC, ch, ch, value);
-                    _currentFont.AbcValues.Add(ch,
-                                               new KerningInfo()
-                                               {
-                                                   A = value[0].abcfA,
-                                                   B = value[0].abcfB,
-                                                   C = value[0].abcfC
-                                               });
+                    _abcValues.Add(
+                        ch,
+                        new KerningInfo()
+                            {
+                                A = value[0].abcfA,
+                                B = value[0].abcfB,
+                                C = value[0].abcfC
+                            });
                 }
             }
 
@@ -178,12 +142,12 @@ namespace Cocos2D
 
         private float GetFontHeight()
         {
-            return _currentFont.Font.GetHeight();
+            return _currentFont.GetHeight();
         }
 
         private CCSize GetMeasureString(string text)
         {
-            var size = _graphics.MeasureString(text, _currentFont.Font);
+            var size = _graphics.MeasureString(text, _currentFont);
             return new CCSize(size.Width, size.Height);
         }
 
@@ -218,7 +182,7 @@ namespace Cocos2D
 
         private KerningInfo GetKerningInfo(char ch)
         {
-            return _currentFont.AbcValues[ch];
+            return _abcValues[ch];
         }
 
         private unsafe byte* GetBitmapData(string s, out int stride)
@@ -233,7 +197,7 @@ namespace Cocos2D
             CreateBitmap(w, h);
 
             _graphics.Clear(System.Drawing.Color.Black);
-            _graphics.DrawString(s, _currentFont.Font, _brush, 0, 0);
+            _graphics.DrawString(s, _currentFont, _brush, 0, 0);
             _graphics.Flush();
 
             _bitmapData = _bitmap.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);

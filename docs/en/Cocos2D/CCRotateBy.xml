@@ -48,6 +48,26 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCRotateBy (float duration, float fDeltaAngleX, float fDeltaAngleY);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 fDeltaAngleX, float32 fDeltaAngleY) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="fDeltaAngleX" Type="System.Single" />
+        <Parameter Name="fDeltaAngleY" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="duration">To be added.</param>
+        <param name="fDeltaAngleX">To be added.</param>
+        <param name="fDeltaAngleY">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Copy">
       <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable zone);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable zone) cil managed" />
@@ -68,9 +88,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_fAngle">
-      <MemberSignature Language="C#" Value="protected float m_fAngle;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fAngle" />
+    <Member MemberName="m_fAngleX">
+      <MemberSignature Language="C#" Value="protected float m_fAngleX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fAngleX" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -83,9 +103,39 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_fStartAngle">
-      <MemberSignature Language="C#" Value="protected float m_fStartAngle;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fStartAngle" />
+    <Member MemberName="m_fAngleY">
+      <MemberSignature Language="C#" Value="protected float m_fAngleY;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fAngleY" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fStartAngleX">
+      <MemberSignature Language="C#" Value="protected float m_fStartAngleX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fStartAngleX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_fStartAngleY">
+      <MemberSignature Language="C#" Value="protected float m_fStartAngleY;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 m_fStartAngleY" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -116,8 +166,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="public override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>

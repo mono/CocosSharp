@@ -13,5 +13,90 @@
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
   </Docs>
-  <Members />
+  <Members>
+    <Member MemberName="CCCardinalSplineAt">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint CCCardinalSplineAt (Cocos2D.CCPoint p0, Cocos2D.CCPoint p1, Cocos2D.CCPoint p2, Cocos2D.CCPoint p3, float tension, float t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint CCCardinalSplineAt(valuetype Cocos2D.CCPoint p0, valuetype Cocos2D.CCPoint p1, valuetype Cocos2D.CCPoint p2, valuetype Cocos2D.CCPoint p3, float32 tension, float32 t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p0" Type="Cocos2D.CCPoint" />
+        <Parameter Name="p1" Type="Cocos2D.CCPoint" />
+        <Parameter Name="p2" Type="Cocos2D.CCPoint" />
+        <Parameter Name="p3" Type="Cocos2D.CCPoint" />
+        <Parameter Name="tension" Type="System.Single" />
+        <Parameter Name="t" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="p0">To be added.</param>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <param name="p3">To be added.</param>
+        <param name="tension">To be added.</param>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CubicBezier">
+      <MemberSignature Language="C#" Value="public static float CubicBezier (float a, float b, float c, float d, float t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 CubicBezier(float32 a, float32 b, float32 c, float32 d, float32 t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Single" />
+        <Parameter Name="b" Type="System.Single" />
+        <Parameter Name="c" Type="System.Single" />
+        <Parameter Name="d" Type="System.Single" />
+        <Parameter Name="t" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="c">To be added.</param>
+        <param name="d">To be added.</param>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="QuadBezier">
+      <MemberSignature Language="C#" Value="public static float QuadBezier (float a, float b, float c, float t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 QuadBezier(float32 a, float32 b, float32 c, float32 t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Single" />
+        <Parameter Name="b" Type="System.Single" />
+        <Parameter Name="c" Type="System.Single" />
+        <Parameter Name="t" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="c">To be added.</param>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
 </Type>

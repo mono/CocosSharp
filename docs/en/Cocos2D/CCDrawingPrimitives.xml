@@ -317,6 +317,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="drawEllipticalArcToContext">
+      <MemberSignature Language="C#" Value="public static void drawEllipticalArcToContext (int degree, double threshold, Cocos2D.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void drawEllipticalArcToContext(int32 degree, float64 threshold, valuetype Cocos2D.CCColor4B color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="degree" Type="System.Int32" />
+        <Parameter Name="threshold" Type="System.Double" />
+        <Parameter Name="color" Type="Cocos2D.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="degree">To be added.</param>
+        <param name="threshold">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DrawLine">
       <MemberSignature Language="C#" Value="public static void DrawLine (Box2D.Common.b2Vec2 origin, Box2D.Common.b2Vec2 destination, Box2D.Common.b2Color color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawLine(valuetype Box2D.Common.b2Vec2 origin, valuetype Box2D.Common.b2Vec2 destination, valuetype Box2D.Common.b2Color color) cil managed" />
@@ -709,6 +732,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DrawRect">
+      <MemberSignature Language="C#" Value="public static void DrawRect (Cocos2D.CCRect rect, Cocos2D.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawRect(valuetype Cocos2D.CCRect rect, valuetype Cocos2D.CCColor4B color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="Cocos2D.CCRect" />
+        <Parameter Name="color" Type="Cocos2D.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="rect">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DrawSolidPoly">
       <MemberSignature Language="C#" Value="public static void DrawSolidPoly (Box2D.Common.b2Vec2[] vertices, int count, Box2D.Common.b2Color color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawSolidPoly(valuetype Box2D.Common.b2Vec2[] vertices, int32 count, valuetype Box2D.Common.b2Color color) cil managed" />
@@ -805,6 +849,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DrawSolidRect">
+      <MemberSignature Language="C#" Value="public static void DrawSolidRect (Cocos2D.CCPoint origin, Cocos2D.CCPoint destination, Cocos2D.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawSolidRect(valuetype Cocos2D.CCPoint origin, valuetype Cocos2D.CCPoint destination, valuetype Cocos2D.CCColor4B color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="origin" Type="Cocos2D.CCPoint" />
+        <Parameter Name="destination" Type="Cocos2D.CCPoint" />
+        <Parameter Name="color" Type="Cocos2D.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="origin">To be added.</param>
+        <param name="destination">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="End">
       <MemberSignature Language="C#" Value="public static void End ();" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void End() cil managed" />
@@ -816,6 +883,36 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="eta1">
+      <MemberSignature Language="C#" Value="protected static double eta1;" />
+      <MemberSignature Language="ILAsm" Value=".field family static float64 eta1" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="eta2">
+      <MemberSignature Language="C#" Value="protected static double eta2;" />
+      <MemberSignature Language="ILAsm" Value=".field family static float64 eta2" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -836,6 +933,81 @@
       </Parameters>
       <Docs>
         <param name="graphics">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="isPieSlice">
+      <MemberSignature Language="C#" Value="protected static bool isPieSlice;" />
+      <MemberSignature Language="ILAsm" Value=".field family static bool isPieSlice" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="xF1">
+      <MemberSignature Language="C#" Value="protected static double xF1;" />
+      <MemberSignature Language="ILAsm" Value=".field family static float64 xF1" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="xF2">
+      <MemberSignature Language="C#" Value="protected static double xF2;" />
+      <MemberSignature Language="ILAsm" Value=".field family static float64 xF2" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="yF1">
+      <MemberSignature Language="C#" Value="protected static double yF1;" />
+      <MemberSignature Language="ILAsm" Value=".field family static float64 yF1" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="yF2">
+      <MemberSignature Language="C#" Value="protected static double yF2;" />
+      <MemberSignature Language="ILAsm" Value=".field family static float64 yF2" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

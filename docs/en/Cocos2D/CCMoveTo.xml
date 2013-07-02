@@ -1,12 +1,12 @@
 <Type Name="CCMoveTo" FullName="Cocos2D.CCMoveTo">
-  <TypeSignature Language="C#" Value="public class CCMoveTo : Cocos2D.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMoveTo extends Cocos2D.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCMoveTo : Cocos2D.CCMoveBy" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMoveTo extends Cocos2D.CCMoveBy" />
   <AssemblyInfo>
     <AssemblyName>cocos2d-xna</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInterval</BaseTypeName>
+    <BaseTypeName>Cocos2D.CCMoveBy</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -69,8 +69,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="protected bool InitWithDuration (float duration, Cocos2D.CCPoint position);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitWithDuration(float32 duration, valuetype Cocos2D.CCPoint position) cil managed" />
+      <MemberSignature Language="C#" Value="protected override bool InitWithDuration (float duration, Cocos2D.CCPoint position);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance bool InitWithDuration(float32 duration, valuetype Cocos2D.CCPoint position) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -90,54 +90,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_delta">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_delta;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_delta" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_endPosition">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_endPosition;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_endPosition" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_startPosition">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_startPosition;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_startPosition" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="public override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
