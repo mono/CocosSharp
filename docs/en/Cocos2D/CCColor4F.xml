@@ -81,6 +81,26 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static Microsoft.Xna.Framework.Color op_Implicit (Cocos2D.CCColor4F point);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Microsoft.Xna.Framework.Color op_Implicit(valuetype Cocos2D.CCColor4F point) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Xna.Framework.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="point" Type="Cocos2D.CCColor4F" />
+      </Parameters>
+      <Docs>
+        <param name="point">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Parse">
       <MemberSignature Language="C#" Value="public static Cocos2D.CCColor4F Parse (string s);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCColor4F Parse(string s) cil managed" />

@@ -163,6 +163,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Delegate">
+      <MemberSignature Language="C#" Value="public Cocos2D.ICCDirectorDelegate Delegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.ICCDirectorDelegate Delegate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.ICCDirectorDelegate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DeserializeState">
       <MemberSignature Language="C#" Value="public bool DeserializeState ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool DeserializeState() cil managed" />
@@ -228,22 +244,6 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Frames">
-      <MemberSignature Language="C#" Value="public uint Frames { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Frames" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -615,25 +615,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ReshapeProjection">
-      <MemberSignature Language="C#" Value="public void ReshapeProjection (Cocos2D.CCSize newWindowSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ReshapeProjection(valuetype Cocos2D.CCSize newWindowSize) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="newWindowSize" Type="Cocos2D.CCSize" />
-      </Parameters>
-      <Docs>
-        <param name="newWindowSize">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Resume">
       <MemberSignature Language="C#" Value="public void Resume ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Resume() cil managed" />
@@ -768,6 +749,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="SetDefaultValues">
+      <MemberSignature Language="C#" Value="protected void SetDefaultValues ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void SetDefaultValues() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SetDepthTest">
       <MemberSignature Language="C#" Value="public void SetDepthTest (bool bOn);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDepthTest(bool bOn) cil managed" />
@@ -825,6 +822,22 @@
     <Member MemberName="SetOpenGlView">
       <MemberSignature Language="C#" Value="public void SetOpenGlView ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetOpenGlView() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetViewport">
+      <MemberSignature Language="C#" Value="public void SetViewport ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetViewport() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>

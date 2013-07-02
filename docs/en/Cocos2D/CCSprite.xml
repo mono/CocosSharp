@@ -202,84 +202,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Bounds">
-      <MemberSignature Language="C#" Value="public virtual Microsoft.Xna.Framework.Rectangle Bounds { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.Xna.Framework.Rectangle Bounds" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Xna.Framework.Rectangle</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CollidesWith">
-      <MemberSignature Language="C#" Value="public virtual bool CollidesWith (Cocos2D.CCSprite other, out Cocos2D.CCPoint hitPoint);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CollidesWith(class Cocos2D.CCSprite other, valuetype Cocos2D.CCPoint hitPoint) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="other" Type="Cocos2D.CCSprite" />
-        <Parameter Name="hitPoint" Type="Cocos2D.CCPoint&amp;" RefType="out" />
-      </Parameters>
-      <Docs>
-        <param name="other">To be added.</param>
-        <param name="hitPoint">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CollidesWith">
-      <MemberSignature Language="C#" Value="public virtual bool CollidesWith (Cocos2D.CCSprite other, out Cocos2D.CCPoint hitPoint, bool calcPerPixel);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CollidesWith(class Cocos2D.CCSprite other, valuetype Cocos2D.CCPoint hitPoint, bool calcPerPixel) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="other" Type="Cocos2D.CCSprite" />
-        <Parameter Name="hitPoint" Type="Cocos2D.CCPoint&amp;" RefType="out" />
-        <Parameter Name="calcPerPixel" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="other">To be added.</param>
-        <param name="hitPoint">To be added.</param>
-        <param name="calcPerPixel">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CollisionMask">
-      <MemberSignature Language="C#" Value="public virtual byte[] CollisionMask { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8[] CollisionMask" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Byte[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Color">
       <MemberSignature Language="C#" Value="public override Cocos2D.CCColor3B Color { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B Color" />
@@ -293,21 +215,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DebugCollision">
-      <MemberSignature Language="C#" Value="public bool DebugCollision;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool DebugCollision" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -444,8 +351,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithFile">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithFile (string fileName);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithFile(string fileName) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool InitWithFile (string fileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithFile(string fileName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1019,6 +926,38 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="RotationX">
+      <MemberSignature Language="C#" Value="public override float RotationX { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 RotationX" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RotationY">
+      <MemberSignature Language="C#" Value="public override float RotationY { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 RotationY" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Scale">
       <MemberSignature Language="C#" Value="public override float Scale { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Scale" />
@@ -1338,8 +1277,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateTransform">
-      <MemberSignature Language="C#" Value="public void UpdateTransform ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateTransform() cil managed" />
+      <MemberSignature Language="C#" Value="public override void UpdateTransform ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateTransform() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>

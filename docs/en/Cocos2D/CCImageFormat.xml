@@ -13,9 +13,9 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="JPG">
-      <MemberSignature Language="C#" Value="JPG" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCImageFormat JPG = int32(0)" />
+    <Member MemberName="Gif">
+      <MemberSignature Language="C#" Value="Gif" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCImageFormat Gif = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -27,9 +27,79 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
-    <Member MemberName="PNG">
-      <MemberSignature Language="C#" Value="PNG" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCImageFormat PNG = int32(1)" />
+    <Member MemberName="Jpg">
+      <MemberSignature Language="C#" Value="Jpg" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCImageFormat Jpg = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCImageFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Png">
+      <MemberSignature Language="C#" Value="Png" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCImageFormat Png = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCImageFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="RawData">
+      <MemberSignature Language="C#" Value="RawData" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCImageFormat RawData = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCImageFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Tiff">
+      <MemberSignature Language="C#" Value="Tiff" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCImageFormat Tiff = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCImageFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="UnKnown">
+      <MemberSignature Language="C#" Value="UnKnown" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCImageFormat UnKnown = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCImageFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Webp">
+      <MemberSignature Language="C#" Value="Webp" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCImageFormat Webp = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>

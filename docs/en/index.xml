@@ -39,6 +39,7 @@
   <Copyright>To be added.</Copyright>
   <Types>
     <Namespace Name="Cocos2D">
+      <Type Name="ArrayPool`1" DisplayName="ArrayPool&lt;T&gt;" Kind="Class" />
       <Type Name="BlockCCControlData" Kind="Class" />
       <Type Name="BlockData" Kind="Class" />
       <Type Name="CCAccelAmplitude" Kind="Class" />
@@ -51,6 +52,7 @@
       <Type Name="CCActionInstant" Kind="Class" />
       <Type Name="CCActionInterval" Kind="Class" />
       <Type Name="CCActionManager" Kind="Class" />
+      <Type Name="CCActionManager+HashElement" Kind="Class" />
       <Type Name="CCActionTag" Kind="Enumeration" />
       <Type Name="CCActionTween" Kind="Class" />
       <Type Name="CCAffineTransform" Kind="Structure" />
@@ -75,6 +77,7 @@
       <Type Name="CCBMFontConfiguration" Kind="Class" />
       <Type Name="CCBMFontConfiguration+CCBMFontDef" Kind="Class" />
       <Type Name="CCBMFontConfiguration+CCKerningHashElement" Kind="Structure" />
+      <Type Name="CCBoundingBoxI" Kind="Structure" />
       <Type Name="CCBPositionType" Kind="Enumeration" />
       <Type Name="CCBPropType" Kind="Enumeration" />
       <Type Name="CCBReader" Kind="Class" />
@@ -93,6 +96,7 @@
       <Type Name="CCCatmullRomBy" Kind="Class" />
       <Type Name="CCCatmullRomTo" Kind="Class" />
       <Type Name="CCClipMode" Kind="Enumeration" />
+      <Type Name="CCClippingNode" Kind="Class" />
       <Type Name="CCColor3B" Kind="Structure" />
       <Type Name="CCColor4B" Kind="Structure" />
       <Type Name="CCColor4F" Kind="Structure" />
@@ -115,13 +119,14 @@
       <Type Name="CCDraw" Kind="Class" />
       <Type Name="CCDrawingPrimitives" Kind="Class" />
       <Type Name="CCDrawManager" Kind="Class" />
+      <Type Name="CCDrawNode" Kind="Class" />
       <Type Name="CCEaseBackIn" Kind="Class" />
       <Type Name="CCEaseBackInOut" Kind="Class" />
       <Type Name="CCEaseBackOut" Kind="Class" />
-      <Type Name="CCEaseBounce" Kind="Class" />
       <Type Name="CCEaseBounceIn" Kind="Class" />
       <Type Name="CCEaseBounceInOut" Kind="Class" />
       <Type Name="CCEaseBounceOut" Kind="Class" />
+      <Type Name="CCEaseCustom" Kind="Class" />
       <Type Name="CCEaseElastic" Kind="Class" />
       <Type Name="CCEaseElasticIn" Kind="Class" />
       <Type Name="CCEaseElasticInOut" Kind="Class" />
@@ -131,6 +136,7 @@
       <Type Name="CCEaseExponentialOut" Kind="Class" />
       <Type Name="CCEaseIn" Kind="Class" />
       <Type Name="CCEaseInOut" Kind="Class" />
+      <Type Name="CCEaseMath" Kind="Class" />
       <Type Name="CCEaseOut" Kind="Class" />
       <Type Name="CCEaseRateAction" Kind="Class" />
       <Type Name="CCEaseSineIn" Kind="Class" />
@@ -156,6 +162,7 @@
       <Type Name="CCFocusChangeDelegate" Kind="Delegate" />
       <Type Name="CCFocusManager" Kind="Class" />
       <Type Name="CCFollow" Kind="Class" />
+      <Type Name="CCFPSImage" Kind="Class" />
       <Type Name="CCGamePadButtonDelegate" Kind="Delegate" />
       <Type Name="CCGamePadButtonStatus" Kind="Enumeration" />
       <Type Name="CCGamePadConnectionDelegate" Kind="Delegate" />
@@ -166,6 +173,7 @@
       <Type Name="CCGestureDirection" Kind="Enumeration" />
       <Type Name="CCGlesVersion" Kind="Enumeration" />
       <Type Name="CCGrabber" Kind="Class" />
+      <Type Name="CCGraphicsResource" Kind="Class" />
       <Type Name="CCGrid3D" Kind="Class" />
       <Type Name="CCGrid3DAction" Kind="Class" />
       <Type Name="CCGridAction" Kind="Class" />
@@ -175,6 +183,7 @@
       <Type Name="CCImageFormat" Kind="Enumeration" />
       <Type Name="CCImageTGA" Kind="Class" />
       <Type Name="CCIMEKeyboardNotificationInfo" Kind="Class" />
+      <Type Name="CCIndexBuffer`1" DisplayName="CCIndexBuffer&lt;T&gt;" Kind="Class" />
       <Type Name="CCInputScene" Kind="Class" />
       <Type Name="CCInputState" Kind="Class" />
       <Type Name="CCInvocation" Kind="Class" />
@@ -184,6 +193,8 @@
       <Type Name="CCKeypadDispatcher" Kind="Class" />
       <Type Name="CCKeypadHandler" Kind="Class" />
       <Type Name="CCKeypadMSGType" Kind="Enumeration" />
+      <Type Name="CCLabel" Kind="Class" />
+      <Type Name="CCLabel+ivec4" Kind="Structure" />
       <Type Name="CCLabelAtlas" Kind="Class" />
       <Type Name="CCLabelBMFont" Kind="Class" />
       <Type Name="CCLabelTTF" Kind="Class" />
@@ -237,6 +248,11 @@
       <Type Name="CCParticleSpiral" Kind="Class" />
       <Type Name="CCParticleSun" Kind="Class" />
       <Type Name="CCParticleSystem" Kind="Class" />
+      <Type Name="CCParticleSystem+CCParticle" Kind="Structure" />
+      <Type Name="CCParticleSystem+CCParticle+ModeA" Kind="Structure" />
+      <Type Name="CCParticleSystem+CCParticle+ModeB" Kind="Structure" />
+      <Type Name="CCParticleSystem+ModeA" Kind="Structure" />
+      <Type Name="CCParticleSystem+ModeB" Kind="Structure" />
       <Type Name="CCParticleSystemQuad" Kind="Class" />
       <Type Name="CCPlace" Kind="Class" />
       <Type Name="CCPoint" Kind="Structure" />
@@ -244,7 +260,9 @@
       <Type Name="CCPointConverter" Kind="Class" />
       <Type Name="CCPointExtension" Kind="Class" />
       <Type Name="CCPointExtension+ComputationOperationDelegate" Kind="Delegate" />
+      <Type Name="CCPointI" Kind="Structure" />
       <Type Name="CCPointObject" Kind="Class" />
+      <Type Name="CCPointReader" Kind="Class" />
       <Type Name="CCPointSprite" Kind="Class" />
       <Type Name="CCPositionType" Kind="Enumeration" />
       <Type Name="CCPrimitiveBatch" Kind="Class" />
@@ -254,11 +272,14 @@
       <Type Name="CCProgressTo" Kind="Class" />
       <Type Name="CCQuad2" Kind="Class" />
       <Type Name="CCQuad3" Kind="Structure" />
+      <Type Name="CCQuadVertexBuffer" Kind="Class" />
       <Type Name="CCRandom" Kind="Class" />
       <Type Name="CCRawList`1" DisplayName="CCRawList&lt;T&gt;" Kind="Class" />
       <Type Name="CCRawList`1+Enumerator" DisplayName="CCRawList&lt;T&gt;+Enumerator" Kind="Structure" />
       <Type Name="CCRect" Kind="Structure" />
       <Type Name="CCRectConverter" Kind="Class" />
+      <Type Name="CCRectReader" Kind="Class" />
+      <Type Name="CCRemoveSelf" Kind="Class" />
       <Type Name="CCRenderTexture" Kind="Class" />
       <Type Name="CCRepeat" Kind="Class" />
       <Type Name="CCRepeatForever" Kind="Class" />
@@ -292,6 +313,8 @@
       <Type Name="CCShuffleTiles" Kind="Class" />
       <Type Name="CCSize" Kind="Structure" />
       <Type Name="CCSizeConverter" Kind="Class" />
+      <Type Name="CCSizeI" Kind="Structure" />
+      <Type Name="CCSizeReader" Kind="Class" />
       <Type Name="CCSkewBy" Kind="Class" />
       <Type Name="CCSkewTo" Kind="Class" />
       <Type Name="CCSpawn" Kind="Class" />
@@ -313,11 +336,9 @@
       <Type Name="CCTargetedAction" Kind="Class" />
       <Type Name="CCTargetedTouchHandler" Kind="Class" />
       <Type Name="CCTex2F" Kind="Structure" />
-      <Type Name="CCTexParams" Kind="Structure" />
       <Type Name="CCTextAlignment" Kind="Enumeration" />
       <Type Name="CCTextFieldTTF" Kind="Class" />
       <Type Name="CCTexture2D" Kind="Class" />
-      <Type Name="CCTexture2DPixelFormat" Kind="Enumeration" />
       <Type Name="CCTextureAtlas" Kind="Class" />
       <Type Name="CCTextureCache" Kind="Class" />
       <Type Name="CCTile" Kind="Class" />
@@ -342,6 +363,7 @@
       <Type Name="CCTouchDelegate" Kind="Class" />
       <Type Name="CCTouchDispatcher" Kind="Class" />
       <Type Name="CCTouchHandler" Kind="Class" />
+      <Type Name="CCTouchMode" Kind="Enumeration" />
       <Type Name="CCTouchType" Kind="Enumeration" />
       <Type Name="CCTransitionCrossFade" Kind="Class" />
       <Type Name="CCTransitionFade" Kind="Class" />
@@ -393,6 +415,7 @@
       <Type Name="CCV3F_C4B_T2F_Quad" Kind="Structure" />
       <Type Name="CCVertex2F" Kind="Structure" />
       <Type Name="CCVertex3F" Kind="Structure" />
+      <Type Name="CCVertexBuffer`1" DisplayName="CCVertexBuffer&lt;T&gt;" Kind="Class" />
       <Type Name="CCVerticalTextAlignment" Kind="Enumeration" />
       <Type Name="CCWaves" Kind="Class" />
       <Type Name="CCWaves3D" Kind="Class" />
@@ -406,6 +429,7 @@
       <Type Name="ICCBScriptOwnerProtocol" Kind="Interface" />
       <Type Name="ICCBSelectorResolver" Kind="Interface" />
       <Type Name="ICCCopyable" Kind="Interface" />
+      <Type Name="ICCDirectorDelegate" Kind="Interface" />
       <Type Name="ICCEGLTouchDelegate" Kind="Interface" />
       <Type Name="ICCFocusable" Kind="Interface" />
       <Type Name="ICCIMEDelegate" Kind="Interface" />
@@ -426,6 +450,7 @@
       <Type Name="ICCTextureProtocol" Kind="Interface" />
       <Type Name="ICCTouchDelegate" Kind="Interface" />
       <Type Name="ICCTransitionEaseScene" Kind="Interface" />
+      <Type Name="KerningHashElementReader" Kind="Class" />
       <Type Name="PlistArray" Kind="Class" />
       <Type Name="PlistBoolean" Kind="Class" />
       <Type Name="PlistData" Kind="Class" />

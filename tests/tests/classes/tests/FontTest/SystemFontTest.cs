@@ -26,12 +26,25 @@ namespace tests.FontTest
 			"Symbol",
             "Wingdings",
 			"Arial",
-            //TODO: ttf files
+
+            "fonts/A Damn Mess.ttf",
+            "fonts/Abberancy.ttf",
+            "fonts/Abduction.ttf",
+            "fonts/American Typewriter.ttf",
+            "fonts/arial.ttf",
+            "fonts/Courier New.ttf",
+            "fonts/Marker Felt.ttf",
+            "fonts/Paint Boy.ttf",
+            "fonts/Schwarzwald Regular.ttf",
+            "fonts/Scissor Cuts.ttf",
+            "fonts/tahoma.ttf",
+            "fonts/Thonburi.ttf",
+            "fonts/ThonburiBold.ttf"
 #endif
 #if ANDROID
-			"Comic Sans MS",
-			"Georgia",
 			"Arial",
+			"Courier New",
+			"Georgia",
 
             "fonts/A Damn Mess.ttf",
             "fonts/Abberancy.ttf",
