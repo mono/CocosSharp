@@ -156,6 +156,7 @@
       <mkdir dir="${packages.dir.path}" />
 
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Windows.nuspec -OutputDirectory ${packages.dir.path}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsPhone7.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsGL.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Windows8.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsPhone8.nuspec -OutputDirectory ${packages.dir.path}" />
