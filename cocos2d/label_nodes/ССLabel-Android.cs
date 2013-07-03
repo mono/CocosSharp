@@ -61,17 +61,17 @@ namespace Cocos2D
 
         private void CreateBitmap(int width, int height)
         {
-            if (_bitmap == null || _bitmap.Width < width || _bitmap.Height < height)
-            {
+            //if (_bitmap == null || _bitmap.Width < width || _bitmap.Height < height)
+            //{
                 _bitmap = Bitmap.CreateBitmap(width, height, Bitmap.Config.Argb8888);
                 _canvas = new Canvas(_bitmap);
                 _data = new int[width * height];
-            }
+            //}
         }
 
         private float GetFontHeight()
         {
-            return (_fontMetrix.Bottom - _fontMetrix.Top); // / _fontScaleFactor + 1f;
+            return (_fontMetrix.Bottom - _fontMetrix.Top) + _paint.Descent(); // / _fontScaleFactor + 1f;
         }
 
         private CCSize GetMeasureString(string text)
