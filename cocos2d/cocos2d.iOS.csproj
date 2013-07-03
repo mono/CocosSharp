@@ -96,6 +96,7 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
+    <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include="Actions\action\CCAction.cs" />
     <Compile Include="Actions\action\CCFiniteTimeAction.cs" />
     <Compile Include="Actions\action\CCFollow.cs" />
