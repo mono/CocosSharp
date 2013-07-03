@@ -359,6 +359,7 @@
     <Compile Include="sprite_nodes\CCAnimation.cs" />
     <Compile Include="sprite_nodes\CCAnimationCache.cs" />
     <Compile Include="sprite_nodes\CCAnimationFrame.cs" />
+    <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include="sprite_nodes\CCSprite.cs" />
     <Compile Include="sprite_nodes\CCSpriteBatchNode.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrame.cs" />

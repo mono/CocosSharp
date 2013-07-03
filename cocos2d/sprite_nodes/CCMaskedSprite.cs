@@ -16,26 +16,31 @@ namespace Cocos2D
 
         public CCMaskedSprite (CCTexture2D texture, byte[] mask) : base(texture)
         {
+            _MyMask = mask;
         }
 
         public CCMaskedSprite(CCTexture2D texture, CCRect rect, byte[] mask)
             : base(texture, rect)
         {
+            _MyMask = mask;
         }
 
         public CCMaskedSprite(string fileName, byte[] mask)
             : base(fileName)
         {
+            _MyMask = mask;
         }
 
         public CCMaskedSprite(string fileName, CCRect rect, byte[] mask)
             : base(fileName, rect)
         {
+            _MyMask = mask;
         }
 
         public CCMaskedSprite(CCSpriteFrame pSpriteFrame, byte[] mask)
             : base(pSpriteFrame)
         {
+            _MyMask = mask;
         }
 
         public CCMaskedSprite()
@@ -69,7 +74,7 @@ namespace Cocos2D
             int widthMe = Texture.XNATexture.Width;
             int heightMe = Texture.XNATexture.Height;
 
-            return Bounds.Intersects(other.Bounds) // If simple intersection fails, don't even bother with per-pixel
+            return BoundingBox.IntersectsRect(other.BoundingBox) // If simple intersection fails, don't even bother with per-pixel
                 && MaskCollision(this, other, out hitPoint);
         }
 
@@ -110,11 +115,13 @@ namespace Cocos2D
             int aHeight = (int)a.Texture.ContentSize.Height;
             int bHeight = (int)b.Texture.ContentSize.Height;
             // Calculate the intersecting rectangle
-            int x1 = Math.Max(a.Bounds.X, b.Bounds.X);
-            int x2 = Math.Min(a.Bounds.X + a.Bounds.Width, b.Bounds.X + b.Bounds.Width);
+            Rectangle aBounds = a.CollisionBounds;
+            Rectangle bBounds = b.CollisionBounds;
+            int x1 = Math.Max(aBounds.X, bBounds.X);
+            int x2 = Math.Min(aBounds.X + aBounds.Width, bBounds.X + bBounds.Width);
 
-            int y1 = Math.Max(a.Bounds.Y, b.Bounds.Y);
-            int y2 = Math.Min(a.Bounds.Y + a.Bounds.Height, b.Bounds.Y + b.Bounds.Height);
+            int y1 = Math.Max(aBounds.Y, bBounds.Y);
+            int y2 = Math.Min(aBounds.Y + aBounds.Height, bBounds.Y + bBounds.Height);
             // Next extract the bitfields for the intersection rectangles
             for (int y = y1; y < y2; ++y)
             {
@@ -122,8 +129,8 @@ namespace Cocos2D
                 {
                     // Coordinates in the respective sprites
                     // Invert the Y because screen coords are opposite of mask coordinates!
-                    int xA = x - a.Bounds.X;
-                    int yA = aHeight - (y - a.Bounds.Y);
+                    int xA = x - aBounds.X;
+                    int yA = aHeight - (y - aBounds.Y);
                     if (yA < 0)
                     {
                         yA = 0;
@@ -132,8 +139,8 @@ namespace Cocos2D
                     {
                         yA = aHeight - 1;
                     }
-                    int xB = x - b.Bounds.X;
-                    int yB = bHeight - (y - b.Bounds.Y);
+                    int xB = x - bBounds.X;
+                    int yB = bHeight - (y - bBounds.Y);
                     if (yB < 0)
                     {
                         yB = 0;
@@ -161,7 +168,7 @@ namespace Cocos2D
                     if (ca > 0 && cb > 0) // If both colors are not transparent (the alpha channel is not 0), then there is a collision
                     {
                         // Find the hit point, where on the sprite in real space the collision occurs.
-                        hitPoint = new CCPoint(a.Position.X - a.AnchorPoint.X * a.ContentSizeInPixels.Width + x, a.Position.Y - a.AnchorPoint.Y * a.ContentSizeInPixels.Height + y);
+                        hitPoint = new CCPoint(x,y);
                         return (true);
                     }
                 }
@@ -169,8 +176,7 @@ namespace Cocos2D
             hitPoint = new CCPoint(0, 0);
             return (false);
         }
-        private Rectangle bounds = Rectangle.Empty;
-        public virtual Rectangle Bounds
+        protected virtual Rectangle CollisionBounds
         {
             get
             {
