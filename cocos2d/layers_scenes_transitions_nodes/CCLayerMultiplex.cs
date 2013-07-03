@@ -14,7 +14,7 @@ namespace Cocos2D
         private const int kTagOffsetForUniqueness = 5000;
         protected int m_nEnabledLayer=-1;
 //        protected List<CCLayer> m_pLayers;
-        protected Dictionary<int, CCLayer> m_pLayers;
+        protected Dictionary<int, CCLayer> m_pLayers = new Dictionary<int,CCLayer>();
         private CCAction m_InAction, m_OutAction;
 
         /// <summary>
@@ -153,23 +153,53 @@ namespace Cocos2D
             base.OnEnter();
         }
 
+        public void SwitchToNone() 
+        {
+            if (m_nEnabledLayer != -1)
+            {
+                CCLayer outLayer = null;
+                if (m_pLayers.ContainsKey(m_nEnabledLayer))
+                {
+                    outLayer = m_pLayers[m_nEnabledLayer];
+                    if (m_OutAction != null)
+                    {
+                        outLayer.RunAction(
+                            new CCSequence(
+                                (CCFiniteTimeAction)m_OutAction.Copy(),
+                                new CCCallFunc(() => RemoveChild(outLayer, true))
+                                )
+                            );
+                    }
+                    else
+                    {
+                        RemoveChild(outLayer, true);
+                    }
+                }
+            }
+            // We have no enabled layer at this point
+            m_nEnabledLayer = -1;
+        }
+
         /// <summary>
         /// Swtich to the given index layer and use the given action after the layer is
         /// added to the parent. The parameter can be the index or it can be the tag of the layer.
         /// </summary>
-        /// <param name="n"></param>
+        /// <param name="n">Send in -1 to hide all multiplexed layers. Otherwise, send in a tag or the logical index of the 
+        /// layer to show.</param>
         public CCLayer SwitchTo(int n)
         {
-            if (m_nEnabledLayer == n)
+            if (n != -1)
             {
-                // no-op
-                if (m_nEnabledLayer == -1)
+                if (m_nEnabledLayer == n)
                 {
-                    return (null);
+                    // no-op
+                    if (m_nEnabledLayer == -1)
+                    {
+                        return (null);
+                    }
+                    return (m_pLayers[m_nEnabledLayer]);
                 }
-                return (m_pLayers[m_nEnabledLayer]);
             }
-
             if (m_nEnabledLayer != -1)
             {
                 CCLayer outLayer = null;
@@ -193,7 +223,11 @@ namespace Cocos2D
                 // We have no enabled layer at this point
                 m_nEnabledLayer = -1;
             }
-
+            // When -1, the multiplexer shows nothing.
+            if (n == -1)
+            {
+                return (null);
+            }
             if (!m_pLayers.ContainsKey(n))
             {
                 int f = n + kTagOffsetForUniqueness;
