@@ -64,19 +64,25 @@ namespace Cocos2D
         {
             var newText = Guide.EndShowKeyboardInput(result);
 
+            _GuideShowHandle = null;
+
             if (newText != null && Text != newText)
             {
                 bool canceled = false;
 
-                DoTextChanged(ref newText, ref canceled);
+                ScheduleOnce(
+                    time =>
+                    {
+                        DoTextChanged(ref newText, ref canceled);
 
-                if (!canceled)
-                {
-                    Text = newText;
-                }
+                        if (!canceled)
+                        {
+                            Text = newText;
+                        }
+                    },
+                    0
+                    );
             }
-
-            _GuideShowHandle = null;
         }
 
         protected virtual void DoTextChanged(ref string newText, ref bool canceled)
