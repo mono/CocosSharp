@@ -210,18 +210,18 @@ namespace Cocos2D
 
         public override void onClickTrackNode(bool bClicked)
         {
-            CCTextFieldTTF pTextField = (CCTextFieldTTF)m_pTrackNode;
+            CCTextFieldTTF pTextField = (CCTextFieldTTF) m_pTrackNode;
             if (bClicked)
             {
                 // TextFieldTTFTest be clicked
                 CCLog.Log("TextFieldTTFDefaultTest:CCTextFieldTTF attachWithIME");
-                pTextField.AttachWithIME();
+                pTextField.Edit();
             }
             else
             {
                 // TextFieldTTFTest not be clicked
                 CCLog.Log("TextFieldTTFDefaultTest:CCTextFieldTTF detachWithIME");
-                pTextField.DetachWithIME();
+                pTextField.EndEdit();
             }
         }
 
@@ -233,8 +233,8 @@ namespace Cocos2D
             // add CCTextFieldTTF
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCTextFieldTTF pTextField = CCTextFieldTTF.TextFieldWithPlaceHolder("<click here for input>",
-                TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
+            CCTextFieldTTF pTextField = new CCTextFieldTTF("<click here for input>", TextInputTestScene.FONT_NAME,
+                                                           TextInputTestScene.FONT_SIZE);
             AddChild(pTextField);
 
             //#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)	
@@ -278,13 +278,13 @@ namespace Cocos2D
             {
                 // TextFieldTTFTest be clicked
                 CCLog.Log("TextFieldTTFActionTest:CCTextFieldTTF attachWithIME");
-                pTextField.AttachWithIME();
+                pTextField.Edit();
             }
             else
             {
                 // TextFieldTTFTest not be clicked
                 CCLog.Log("TextFieldTTFActionTest:CCTextFieldTTF detachWithIME");
-                pTextField.DetachWithIME();
+                pTextField.EndEdit();
             }
         }
 
@@ -305,7 +305,7 @@ namespace Cocos2D
             // add CCTextFieldTTF
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            m_pTextField = CCTextFieldTTF.TextFieldWithPlaceHolder("<click here for input>",
+            m_pTextField = new CCTextFieldTTF("<click here for input>",
             TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
             AddChild(m_pTextField);
 
@@ -360,7 +360,7 @@ namespace Cocos2D
             }
 
             // if the textfield's char count more than m_nCharLimit, doesn't insert text anymore.
-            if (pSender.CharCount >= m_nCharLimit)
+            if (pSender.Text.Length >= m_nCharLimit)
             {
                 return true;
             }
@@ -373,7 +373,7 @@ namespace Cocos2D
 
             // move the sprite from top to position
             CCPoint endPos = pSender.Position;
-            if (pSender.CharCount > 0)
+            if (pSender.Text.Length > 0)
             {
                 endPos.X += pSender.ContentSize.Width / 2;
             }

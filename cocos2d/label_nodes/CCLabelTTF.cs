@@ -8,7 +8,7 @@ namespace Cocos2D
         private float m_fFontSize;
         private CCTextAlignment m_hAlignment;
         private string m_pFontName;
-        protected string m_pString;
+        protected string m_pString = String.Empty;
         private CCSize m_tDimensions;
         private CCVerticalTextAlignment m_vAlignment;
 
@@ -18,7 +18,6 @@ namespace Cocos2D
             m_vAlignment = CCVerticalTextAlignment.Top;
             m_pFontName = string.Empty;
             m_fFontSize = 0.0f;
-            m_pString = string.Empty;
 
             Init();
         }
