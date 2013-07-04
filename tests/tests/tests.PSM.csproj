@@ -45,6 +45,8 @@
     <Folder Include="Content\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ball-hd.mask" />
+    <EmbeddedResource Include="grossini.mask" />
     <Content Include="Assets\Content\animations\animations-2.plist.xnb">
       <Link>Content\animations\animations-2.plist.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

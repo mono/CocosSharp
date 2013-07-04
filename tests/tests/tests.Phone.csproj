@@ -1074,6 +1074,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="app.config" />
+    <EmbeddedResource Include="ball-hd.mask" />
+    <EmbeddedResource Include="grossini.mask" />
     <None Include="Properties\AppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>

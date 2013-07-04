@@ -60,6 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ball-hd.mask" />
+    <EmbeddedResource Include="grossini.mask" />
     <Compile Include="Classes\AppDelegate.cs" />
     <Compile Include="Classes\controller.cs" />
     <Compile Include="Classes\test.cs" />

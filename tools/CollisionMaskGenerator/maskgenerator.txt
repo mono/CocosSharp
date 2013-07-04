@@ -1,0 +1,4 @@
+..\..\tests\testsContent\Images\ball-hd.png
+..\..\tests\tests\ball-hd.mask
+..\..\tests\testsContent\Images\grossini.png
+..\..\tests\tests\grossini.mask
