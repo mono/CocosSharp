@@ -86,7 +86,7 @@
       </_ContentToBuild>
       <MGCBPath Include="$(PackagesDirectory)\Cocos2D-XNA.MGCB.*\tools\MGCB\MGCB.exe" />
     </ItemGroup>
-    <Exec Command="MGCB /build:%(_ContentToBuild.FullPath) /platform:$(Platform) /incremental" Condition=" '@(MGCBPath)' == '' and '@(_ContentToBuild)' != '' And'%(_ContentToBuild.Extension)' != '.xnb'" />
-    <Exec Command="@(MGCBPath) /build:%(_ContentToBuild.FullPath) /platform:$(Platform) /incremental" Condition=" '@(MGCBPath)' != '' and '@(_ContentToBuild)' != '' And'%(_ContentToBuild.Extension)' != '.xnb'" />
+    <Exec Command="MGCB /build:&quot;%(_ContentToBuild.FullPath)&quot; /platform:$(Platform) /incremental" Condition=" '@(MGCBPath)' == '' and '@(_ContentToBuild)' != '' And'%(_ContentToBuild.Extension)' != '.xnb'" />
+    <Exec Command="@(MGCBPath) /build:&quot;%(_ContentToBuild.FullPath)&quot; /platform:$(Platform) /incremental" Condition=" '@(MGCBPath)' != '' and '@(_ContentToBuild)' != '' And'%(_ContentToBuild.Extension)' != '.xnb'" />
   </Target>
 </Project>
