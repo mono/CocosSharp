@@ -190,7 +190,7 @@ namespace Cocos2D
         {
             if (n != -1)
             {
-                if (m_nEnabledLayer == n)
+                if (m_nEnabledLayer == n || m_nEnabledLayer == (n + kTagOffsetForUniqueness))
                 {
                     // no-op
                     if (m_nEnabledLayer == -1)
@@ -242,8 +242,8 @@ namespace Cocos2D
                 }
             }
             // Set the active layer
-            m_nEnabledLayer = n;
             AddChild(m_pLayers[n]);
+            m_nEnabledLayer = n;
             // Run the in-action on the new layer
             if (m_InAction != null)
             {
