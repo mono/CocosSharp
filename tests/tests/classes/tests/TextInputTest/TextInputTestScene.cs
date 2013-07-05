@@ -91,11 +91,13 @@ namespace Cocos2D
 
         public static CCRect getRect(CCNode node)
         {
-            CCRect rc = new CCRect();
+            var rc = new CCRect();
+
             rc.Origin = node.Position;
             rc.Size = node.ContentSize;
-            rc.Origin.X -= rc.Size.Width / 2;
-            rc.Origin.Y -= rc.Size.Height / 2;
+            rc.Origin.X -= rc.Size.Width * node.AnchorPoint.X;
+            rc.Origin.Y -= rc.Size.Height * node.AnchorPoint.Y;
+            
             return rc;
         }
     }
