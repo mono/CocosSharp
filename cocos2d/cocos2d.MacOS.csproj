@@ -453,4 +453,7 @@
     <Folder Include="support\Serialization\" />
     <Folder Include="extentions\Box2D\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="label_nodes\ССLabel-Android.cs" />
+  </ItemGroup>
 </Project>

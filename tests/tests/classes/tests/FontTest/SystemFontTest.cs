@@ -16,6 +16,19 @@ namespace tests.FontTest
 			"Papyrus",
 			"American Typewriter",
 			"Arial",
+			"fonts/A Damn Mess.ttf",
+			"fonts/Abberancy.ttf",
+			"fonts/Abduction.ttf",
+			"fonts/American Typewriter.ttf",
+			"fonts/Courier New.ttf",
+			"fonts/Marker Felt.ttf",
+			"fonts/Paint Boy.ttf",
+			"fonts/Schwarzwald Regular.ttf",
+			"fonts/Scissor Cuts.ttf",
+			"fonts/tahoma.ttf",
+			"fonts/Thonburi.ttf",
+			"fonts/ThonburiBold.ttf"
+
 #endif
 #if WINDOWS || WINDOWSGL
 			"Comic Sans MS",
@@ -185,19 +198,8 @@ namespace tests.FontTest
 			RemoveChildByTag(kTagLabel3, true);
 			RemoveChildByTag(kTagLabel4, true);
 
-//			CCLabelTTF top = new CCLabelTTF(pFont, pFont, 24);
-//
-//			CCLabelTTF left = new CCLabelTTF("alignment left", pFont, fontSize,
-//			                                 blockSize, CCTextAlignment.Left,
-//			                                 SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
-//			CCLabelTTF center = new CCLabelTTF("alignment center", pFont, fontSize,
-//			                                   blockSize, CCTextAlignment.Center,
-//			                                   SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
-//			CCLabelTTF right = new CCLabelTTF("alignment right", pFont, fontSize,
-//			                                  blockSize, CCTextAlignment.Right,
-//			                                  SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
 
-			var top = new CCLabel(pFont, pFont, 24);
+			var top = new CCLabel(pFont,"Arial", 24);
 
 			var left = new CCLabel("alignment left", pFont, fontSize,
 			                                 blockSize, CCTextAlignment.Left,
