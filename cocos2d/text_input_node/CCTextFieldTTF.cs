@@ -3,26 +3,55 @@ using Microsoft.Xna.Framework.GamerServices;
 
 namespace Cocos2D
 {
-    public delegate void CCTextFieldTTFChangeTextDelegate(ref string text, ref bool canceled);
+    public delegate void CCTextFieldTTFDelegate(ref string text, ref bool canceled);
 
-    public class CCTextFieldTTF : CCLabelTTF
+    public class CCTextFieldTTF : CCLabelTTF, ICCTargetedTouchDelegate
     {
-        private bool _readOnly = false;
-        private IAsyncResult _GuideShowHandle;
+        private IAsyncResult m_pGuideShowHandle;
+        private string m_sEditTitle = "Input";
+        private string m_sEditDescription = "Please provide input";
+        private bool m_bReadOnly = false;
+        private bool m_bAutoEdit;
+        private bool m_bTouchHandled;
 
-        public event CCTextFieldTTFChangeTextDelegate TextChanged;
+        public event CCTextFieldTTFDelegate BeginEditing;
+        public event CCTextFieldTTFDelegate EndEditing;
 
         public bool ReadOnly
         {
-            get { return _readOnly; }
+            get { return m_bReadOnly; }
             set
             {
-                _readOnly = value;
+                m_bReadOnly = value;
                 
                 if (!value)
                 {
                     EndEdit();
                 }
+                
+                CheckTouchState();
+            }
+        }
+
+        public string EditTitle
+        {
+            get { return m_sEditTitle; }
+            set { m_sEditTitle = value; }
+        }
+
+        public string EditDescription
+        {
+            get { return m_sEditDescription; }
+            set { m_sEditDescription = value; }
+        }
+
+        public bool AutoEdit
+        {
+            get { return m_bAutoEdit; }
+            set
+            {
+                m_bAutoEdit = value;
+                CheckTouchState();
             }
         }
 
@@ -47,16 +76,24 @@ namespace Cocos2D
 
         public void Edit()
         {
-            Edit("Input", "Please provide input");
+            Edit(m_sEditTitle, m_sEditDescription);
         }
 
         public void Edit(string title, string defaultText)
         {
-            if (!_readOnly && !Guide.IsVisible)
+            if (!m_bReadOnly && !Guide.IsVisible)
             {
-                _GuideShowHandle = Guide.BeginShowKeyboardInput(
-                    Microsoft.Xna.Framework.PlayerIndex.One, title, defaultText, Text, InputHandler, null
-                    );
+                var canceled = false;
+                var text = Text;
+
+                DoBeginEditing(ref text, ref canceled);
+
+                if (!canceled)
+                {
+                    m_pGuideShowHandle = Guide.BeginShowKeyboardInput(
+                        Microsoft.Xna.Framework.PlayerIndex.One, title, defaultText, Text, InputHandler, null
+                        );
+                }
             }
         }
 
@@ -64,7 +101,7 @@ namespace Cocos2D
         {
             var newText = Guide.EndShowKeyboardInput(result);
 
-            _GuideShowHandle = null;
+            m_pGuideShowHandle = null;
 
             if (newText != null && Text != newText)
             {
@@ -73,7 +110,7 @@ namespace Cocos2D
                 ScheduleOnce(
                     time =>
                     {
-                        DoTextChanged(ref newText, ref canceled);
+                        DoEndEditing(ref newText, ref canceled);
 
                         if (!canceled)
                         {
@@ -85,21 +122,95 @@ namespace Cocos2D
             }
         }
 
-        protected virtual void DoTextChanged(ref string newText, ref bool canceled)
+        protected virtual void DoBeginEditing(ref string newText, ref bool canceled)
         {
-            if (TextChanged != null)
+            if (BeginEditing != null)
             {
-                TextChanged(ref newText, ref canceled);
+                BeginEditing(ref newText, ref canceled);
+            }
+        }
+
+        protected virtual void DoEndEditing(ref string newText, ref bool canceled)
+        {
+            if (EndEditing != null)
+            {
+                EndEditing(ref newText, ref canceled);
             }
         }
 
         public void EndEdit()
         {
-            if (_GuideShowHandle != null)
+            if (m_pGuideShowHandle != null)
             {
-                Guide.EndShowKeyboardInput(_GuideShowHandle);
-                _GuideShowHandle = null;
+                Guide.EndShowKeyboardInput(m_pGuideShowHandle);
+                m_pGuideShowHandle = null;
             }
+        }
+
+        private void CheckTouchState()
+        {
+            if (m_bRunning)
+            {
+                if (!m_bTouchHandled && !m_bReadOnly && m_bAutoEdit)
+                {
+                    CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
+                    m_bTouchHandled = true;
+                }
+                else if (m_bTouchHandled && (m_bReadOnly || !m_bAutoEdit))
+                {
+                    CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
+                    m_bTouchHandled = true;
+                }
+            }
+            else
+            {
+                if (!m_bRunning && m_bTouchHandled)
+                {
+                    CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
+                    m_bTouchHandled = false;
+                }
+            }
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            CheckTouchState();
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            CheckTouchState();
+        }
+
+        public bool TouchBegan(CCTouch pTouch)
+        {
+            var pos = ConvertTouchToNodeSpace(pTouch);
+            if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void TouchMoved(CCTouch pTouch)
+        {
+            //nothing
+        }
+
+        public void TouchEnded(CCTouch pTouch)
+        {
+            var pos = ConvertTouchToNodeSpace(pTouch);
+            if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
+            {
+                Edit();
+            }
+        }
+
+        public void TouchCancelled(CCTouch pTouch)
+        {
+            //nothing
         }
     }
 }

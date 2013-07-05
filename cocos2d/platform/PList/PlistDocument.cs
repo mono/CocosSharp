@@ -267,9 +267,13 @@ namespace Cocos2D
             using (var streamWriter = new StreamWriter(filename, false, System.Text.Encoding.UTF8))
 #endif
             {
-                using (var writer = XmlWriter.Create(streamWriter))
+                var settings = new XmlWriterSettings()
+                    {
+                        Indent = true
+                    };
+
+                using (var writer = XmlWriter.Create(streamWriter, settings))
                 {
-                    // writer.Formatting = Formatting.Indented;
                     Write(writer);
                 }
             }
