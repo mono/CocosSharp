@@ -2,6 +2,7 @@ using System;
 using System.Runtime.Serialization;
 using System.Runtime.InteropServices;
 using System.Drawing;
+using System.IO;
 
 #if MONOMAC
 using MonoMac.CoreGraphics;
@@ -246,7 +247,7 @@ namespace Cocos2D
 			float leading;
 			abc = new ABCFloat[1];
 			abc[0].abcfB = (float)line.GetTypographicBounds(out ascent, out descent, out leading);
-
+			abc [0].abcfB += leading;
 		}
 
 		internal static CCSize MeasureString (string textg, CTFont font, CCRect rect)
@@ -263,7 +264,7 @@ namespace Cocos2D
 			float leading;
 			double lineWidth = line.GetTypographicBounds(out ascent, out descent, out leading);
 
-			var measure = new CCSize((float)lineWidth, ascent + descent);
+			var measure = new CCSize((float)lineWidth + leading, ascent + descent);
 
 			return measure;
 		}
@@ -406,17 +407,52 @@ namespace Cocos2D
 				throw new ArgumentException("emSize is less than or equal to 0, evaluates to infinity, or is not a valid number.","emSize");
 
 			CTFont nativeFont;
-
 			// convert to 96 Dpi to be consistent with Windows
 			var dpiSize = emSize * dpiScale;
 
-			try {
-				nativeFont = new CTFont(familyName,dpiSize);
-			}
-			catch
+			var ext = System.IO.Path.GetExtension(familyName);
+			if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
 			{
-				nativeFont = new CTFont("Helvetica",dpiSize);
+				var fontName = familyName.Substring (0, familyName.Length - ext.Length);
+				var path = CCApplication.SharedApplication.Game.Content.RootDirectory + Path.DirectorySeparatorChar + fontName;
+				var pathForResource = NSBundle.MainBundle.PathForResource (path, ext.Substring(1));
+
+				try {
+					var dataProvider = new CGDataProvider (pathForResource);
+					var cgFont = CGFont.CreateFromProvider (dataProvider);
+
+					try {
+						nativeFont = new CTFont(cgFont, dpiSize, null);
+					}
+					catch
+					{
+						nativeFont = new CTFont("Helvetica",dpiSize);
+					}
+				}
+				catch (Exception)
+				{
+					try {
+						nativeFont = new CTFont(Path.GetFileNameWithoutExtension(familyName),dpiSize);
+					}
+					catch
+					{
+						nativeFont = new CTFont("Helvetica",dpiSize);
+					}	
+					CCLog.Log (string.Format ("Could not load font: {0} so will use default {1}.", familyName, nativeFont.DisplayName));
+
+				}
 			}
+			else
+			{
+				try {
+					nativeFont = new CTFont(familyName,dpiSize);
+				}
+				catch
+				{
+					nativeFont = new CTFont("Helvetica",dpiSize);
+				}
+			}
+
 
 			CTFontSymbolicTraits tMask = CTFontSymbolicTraits.None;
 
@@ -449,7 +485,7 @@ namespace Cocos2D
 			lineHeight += font.DescentMetric;
 
 			// Get the leading from the font, already scaled for the font's size
-			lineHeight += font.LeadingMetric;
+			//lineHeight += font.LeadingMetric;
 
 			return lineHeight;
 		}

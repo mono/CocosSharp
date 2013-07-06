@@ -8,11 +8,11 @@ namespace tests.FontTest
 
         private static readonly string[] fontList =
             {
-#if IOS || MONOMAC
-                "American Typewriter",
-                "Marker Felt",
-				"Chalkboard",
-#endif
+//#if IOS || MONOMAC
+//                "American Typewriter",
+//                "Marker Felt",
+//				"Chalkboard",
+//#endif
                 "A Damn Mess",
                 "Abberancy",
                 "Abduction",
@@ -147,7 +147,7 @@ namespace tests.FontTest
             RemoveChildByTag(kTagLabel3, true);
             RemoveChildByTag(kTagLabel4, true);
 
-            CCLabelTTF top = new CCLabelTTF(pFont, pFont, 24);
+            CCLabelTTF top = new CCLabelTTF(pFont, "Arial", 24);
             CCLabelTTF left = new CCLabelTTF("alignment left", pFont, fontSize,
                                              blockSize, CCTextAlignment.Left,
                                              FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);

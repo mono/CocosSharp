@@ -2292,6 +2292,30 @@
     </Content>
     <Content Include="Content\Images\hole_effect.xnb" />
     <Content Include="Content\Images\hole_stencil.xnb" />
+    <Content Include="Assets\Content\fonts\Abberancy.ttf">
+      <Link>Content\fonts\Abberancy.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\A Damn Mess.ttf">
+      <Link>Content\fonts\A Damn Mess.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Abduction.ttf">
+      <Link>Content\fonts\Abduction.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Paint Boy.ttf">
+      <Link>Content\fonts\Paint Boy.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Schwarzwald Regular.ttf">
+      <Link>Content\fonts\Schwarzwald Regular.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Scissor Cuts.ttf">
+      <Link>Content\fonts\Scissor Cuts.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Thonburi.ttf">
+      <Link>Content\fonts\Thonburi.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\ThonburiBold.ttf">
+      <Link>Content\fonts\ThonburiBold.ttf</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
@@ -2331,6 +2355,9 @@
   <ItemGroup>
     <None Include="Info.Mac.plist">
       <Link>Info.plist</Link>
+    </None>
+    <None Include="Assets\Content\fonts\tahoma.ttf">
+      <Link>Content\fonts\tahoma.ttf</Link>
     </None>
   </ItemGroup>
   <ItemGroup>
