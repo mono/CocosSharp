@@ -1,6 +1,7 @@
 using System;
+#if !WINDOWS_PHONE && !XBOX && !WINDOWS
 using Microsoft.Xna.Framework.GamerServices;
-
+#endif
 namespace Cocos2D
 {
     public delegate void CCTextFieldTTFDelegate(ref string text, ref bool canceled);
@@ -81,6 +82,7 @@ namespace Cocos2D
 
         public void Edit(string title, string defaultText)
         {
+#if !WINDOWS_PHONE && !XBOX && !WINDOWS
             if (!m_bReadOnly && !Guide.IsVisible)
             {
                 var canceled = false;
@@ -95,10 +97,12 @@ namespace Cocos2D
                         );
                 }
             }
+#endif
         }
 
         private void InputHandler(IAsyncResult result)
         {
+#if !WINDOWS_PHONE && !XBOX && !WINDOWS
             var newText = Guide.EndShowKeyboardInput(result);
 
             m_pGuideShowHandle = null;
@@ -120,6 +124,7 @@ namespace Cocos2D
                     0
                     );
             }
+#endif
         }
 
         protected virtual void DoBeginEditing(ref string newText, ref bool canceled)
@@ -142,7 +147,9 @@ namespace Cocos2D
         {
             if (m_pGuideShowHandle != null)
             {
+#if !WINDOWS_PHONE && !XBOX && !WINDOWS
                 Guide.EndShowKeyboardInput(m_pGuideShowHandle);
+#endif
                 m_pGuideShowHandle = null;
             }
         }

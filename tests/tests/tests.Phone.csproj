@@ -27,7 +27,8 @@
     </SupportedCultures>
     <ApplicationIcon>Game.ico</ApplicationIcon>
     <Thumbnail>PhoneGameThumb.png</Thumbnail>
-    <GameStartupType>tests.Game1</GameStartupType>
+    <GameStartupType>
+    </GameStartupType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Windows Phone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1073,7 +1074,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="app.config" />
     <EmbeddedResource Include="ball-hd.mask" />
     <EmbeddedResource Include="grossini.mask" />
     <None Include="Properties\AppManifest.xml">
