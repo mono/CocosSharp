@@ -1113,17 +1113,27 @@ namespace Cocos2D
             CCTexture2D texture;
             CCTextureCache textureCache = CCTextureCache.SharedTextureCache;
 
-            if (!textureCache.Contains("cc_fps_images"))
+            try
             {
-                texture = textureCache.AddImage(CCFPSImage.PngData, "cc_fps_images", SurfaceFormat.Bgra4444);
-            }
-            else
-            {
-                texture = textureCache.TextureForKey("cc_fps_images");
-            }
+                if (!textureCache.Contains("cc_fps_images"))
+                {
+                    texture = textureCache.AddImage(CCFPSImage.PngData, "cc_fps_images", SurfaceFormat.Bgra4444);
+                }
+                else
+                {
+                    texture = textureCache.TextureForKey("cc_fps_images");
+                }
 
-            if (texture == null || (texture.ContentSize.Width == 0 && texture.ContentSize.Height == 0))
+                if (texture == null || (texture.ContentSize.Width == 0 && texture.ContentSize.Height == 0))
+                {
+                    m_bDisplayStats = false;
+                    return;
+                }
+            }
+            catch (Exception)
             {
+                // MonoGame may not allow texture.fromstream, so catch this exception here
+                // and disable the stats
                 m_bDisplayStats = false;
                 return;
             }
