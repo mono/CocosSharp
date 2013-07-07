@@ -948,8 +948,12 @@ namespace Cocos2D
                 result.SetData(raster);
                 return result;
             }
+#elif MONOMAC || IOS
+
+			return Texture2D.FromStream(CCDrawManager.GraphicsDevice, stream);
+#else
+			return null;
 #endif
-            return null;
         }
 
         
