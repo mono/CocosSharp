@@ -396,10 +396,7 @@
     <Compile Include="textures\CCTextureAtlas.cs" />
     <Compile Include="textures\CCTextureCache.cs" />
     <Compile Include="textures\CCTexture2D.cs" />
-    <Compile Include="text_input_node\ICCIMEDelegate.cs" />
-    <Compile Include="text_input_node\CCIMEKeyboardNotificationInfo.cs" />
     <Compile Include="text_input_node\CCTextFieldTTF.cs" />
-    <Compile Include="text_input_node\ICCTextFieldDelegate.cs" />
     <Compile Include="tileMap_parallax_nodes\CCParallaxNode.cs" />
     <Compile Include="tileMap_parallax_nodes\CCPointObject.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileMapAtlas.cs" />

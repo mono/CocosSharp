@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}</ProjectGuid>
+    <ProjectGuid>{4EF34363-1190-4444-9F4B-7A262B397EE8}</ProjectGuid>
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">Windows Phone</Platform>
@@ -27,7 +27,8 @@
     </SupportedCultures>
     <ApplicationIcon>Game.ico</ApplicationIcon>
     <Thumbnail>PhoneGameThumb.png</Thumbnail>
-    <GameStartupType>tests.Game1</GameStartupType>
+    <GameStartupType>
+    </GameStartupType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Windows Phone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1073,7 +1074,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="app.config" />
     <EmbeddedResource Include="ball-hd.mask" />
     <EmbeddedResource Include="grossini.mask" />
     <None Include="Properties\AppManifest.xml">
@@ -1081,6 +1081,7 @@
     </None>
     <None Include="Properties\WMAppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
+      <SubType>Designer</SubType>
     </None>
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

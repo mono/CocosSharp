@@ -40,8 +40,10 @@ namespace tests
             CCApplication application = new AppDelegate(this, graphics);
             Components.Add(application);
 
+#if !WINDOWS_PHONE && !XBOX && !WINDOWS
             GamerServicesComponent component = new GamerServicesComponent(this);
             this.Components.Add(component);
+#endif
         }
 
         void graphics_DeviceCreated(object sender, EventArgs e)
