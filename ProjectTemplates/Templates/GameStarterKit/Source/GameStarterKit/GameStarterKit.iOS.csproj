@@ -102,27 +102,33 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Reference Include="box2diOS">
-      <HintPath>..\..\..\..\..\cocos2d\bin\iPhone\Release\box2diOS.dll</HintPath>
+    <Reference Include="box2diOS, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\iPhone\Release\box2diOS.dll</HintPath>
     </Reference>
-    <Reference Include="cocos2d-xna.iOS">
-      <HintPath>..\..\..\..\..\cocos2d\bin\iPhone\Release\cocos2d-xna.iOS.dll</HintPath>
+    <Reference Include="cocos2d-xna.iOS, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\iPhone\Release\cocos2d-xna.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\cocos2d\bin\iPhone\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\iPhone\Release\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="Lidgren.Network">
-      <HintPath>..\..\..\..\..\cocos2d\bin\iPhone\Release\Lidgren.Network.dll</HintPath>
+    <Reference Include="Lidgren.Network, Version=2011.3.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\iPhone\Release\Lidgren.Network.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\..\..\cocos2d\bin\iPhone\Release\MonoGame.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\iPhone\Release\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-    <Reference Include="zlib.net">
-      <HintPath>..\..\..\..\..\cocos2d\bin\iPhone\Release\zlib.net.dll</HintPath>
+    <Reference Include="zlib.net, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\iPhone\Release\zlib.net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
