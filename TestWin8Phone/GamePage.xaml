@@ -13,9 +13,9 @@
     SupportedOrientations="Landscape"
     shell:SystemTray.IsVisible="False">
 
-    <DrawingSurfaceBackgroundGrid x:Name="XnaSurface" Background="Transparent">
-        <MediaElement x:Name="XnaMediaElement" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-    </DrawingSurfaceBackgroundGrid>
-
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <DrawingSurface x:Name="XnaSurface"/>
+        <MediaElement></MediaElement>
+    </Grid>
 
 </phone:PhoneApplicationPage>
