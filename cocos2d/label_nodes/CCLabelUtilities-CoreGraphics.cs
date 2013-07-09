@@ -81,7 +81,7 @@ namespace Cocos2D
 			colorSpace = CGColorSpace.CreateDeviceRGB ();
 			bitsPerComponent = 8;
 			bitsPerPixel = 32;
-			bitmapInfo = CGBitmapFlags.PremultipliedFirst;
+			bitmapInfo = CGBitmapFlags.PremultipliedLast;
 
 			bytesPerRow = width * bitsPerPixel/bitsPerComponent;
 			int size = bytesPerRow * height;
@@ -92,10 +92,11 @@ namespace Cocos2D
 			                                     bitsPerComponent, 
 			                                     bytesPerRow,
 			                                     colorSpace,
-			                                     CGImageAlphaInfo.PremultipliedLast);
+			                                     bitmapInfo);
 
 			// This works for now but we need to look into initializing the memory area itself
 			bitmapContext.ClearRect (new RectangleF (0,0,width,height));
+
 			return bitmapContext;
 
 		}
@@ -109,8 +110,8 @@ namespace Cocos2D
 			                                 bitmapContext.BitsPerComponent, 
 			                                 bitmapContext.BitsPerPixel, 
 			                                 bitmapContext.BytesPerRow, 
-			                                 bitmapContext.ColorSpace, 
-			                                 CGBitmapFlags.PremultipliedFirst, 
+			                                 bitmapContext.ColorSpace,  
+			                                 (CGBitmapFlags)bitmapContext.BitmapInfo,
 			                                 provider, 
 			                                 null, 
 			                                 false, 
@@ -128,10 +129,11 @@ namespace Cocos2D
 
 			bitmapContext.ConcatCTM (bitmapContext.GetCTM().Invert());
 
-			bitmapContext.SetFillColor(brush.R/255f, brush.G/255f, brush.B/255f, brush.A/255f);
+            // This is not needed here since the color is set in the attributed string.
+			//bitmapContext.SetFillColor(brush.R/255f, brush.G/255f, brush.B/255f, brush.A/255f);
 
-			// I think we only Fill the text with no Stroke surrounding
-			//bitmap.SetTextDrawingMode(CGTextDrawingMode.Fill);
+            // I think we only Fill the text with no Stroke surrounding
+			//bitmapContext.SetTextDrawingMode(CGTextDrawingMode.Fill);
 
 			var attributedString = buildAttributedString(s, font, brush);
 
@@ -279,49 +281,28 @@ namespace Cocos2D
 			return MeasureString (textg, font, CCSize.Zero);
 		}
 
-		static NSString FontAttributedName = (NSString)"NSFont";
-		static NSString ForegroundColorAttributedName = (NSString)"NSColor";
-		static NSString UnderlineStyleAttributeName = (NSString)"NSUnderline";
-		static NSString ParagraphStyleAttributeName = (NSString)"NSParagraphStyle";
-		//NSAttributedString.ParagraphStyleAttributeName
-		static NSString StrikethroughStyleAttributeName = (NSString)"NSStrikethrough";
-
 		private static NSMutableAttributedString buildAttributedString(string text, CTFont font, 
 		                                                               CCColor4B? fontColor=null) 
 		{
 
-
-			// Create a new attributed string from text
-			NSMutableAttributedString atts = 
-				new NSMutableAttributedString(text);
-
-			var attRange = new NSRange(0, atts.Length);
-			var attsDic = new NSMutableDictionary();
+			// Create a new attributed string definition
+			var ctAttributes = new CTStringAttributes ();
 
 			// Font attribute
-			NSObject fontObject = new NSObject(font.Handle);
-			attsDic.Add(FontAttributedName, fontObject);
+			ctAttributes.Font = font;
 			// -- end font 
 
 			if (fontColor.HasValue) {
 
 				// Font color
 				var fc = fontColor.Value;
-				#if MONOMAC
-				NSColor color = NSColor.FromDeviceRgba(fc.R / 255f, 
-				                                       fc.G / 255f,
-				                                       fc.B / 255f,
-				                                       fc.A / 255f);
-				NSObject colorObject = new NSObject(color.Handle);
-				attsDic.Add(ForegroundColorAttributedName, colorObject);
-				#else
-				UIColor color = UIColor.FromRGBA(fc.R / 255f, 
-				                                 fc.G / 255f,
-				                                 fc.B / 255f,
-				                                 fc.A / 255f);
-				NSObject colorObject = new NSObject(color.Handle);
-				attsDic.Add(ForegroundColorAttributedName, colorObject);
-				#endif
+                var cgColor = new CGColor(fc.R / 255f, 
+                                             fc.G / 255f,
+                                             fc.B / 255f,
+                                             fc.A / 255f);
+
+				ctAttributes.ForegroundColor = cgColor;
+				ctAttributes.ForegroundColorFromContext = false;
 				// -- end font Color
 			}
 
@@ -331,12 +312,10 @@ namespace Cocos2D
 				int single = (int)MonoMac.AppKit.NSUnderlineStyle.Single;
 				int solid = (int)MonoMac.AppKit.NSUnderlinePattern.Solid;
 				var attss = single | solid;
-				var underlineObject = NSNumber.FromInt32(attss);
-				//var under = NSAttributedString.UnderlineStyleAttributeName.ToString();
+				ctAttributes.UnderlineStyleValue = attss;
 				#else
-				var underlineObject = NSNumber.FromInt32 (1);
+				ctAttributes.UnderlineStyleValue = 1;
 				#endif
-				attsDic.Add(UnderlineStyleAttributeName, underlineObject);
 				// --- end underline
 			}
 
@@ -346,16 +325,16 @@ namespace Cocos2D
 				//				NSColor bcolor = NSColor.Blue;
 				//				NSObject bcolorObject = new NSObject(bcolor.Handle);
 				//				attsDic.Add(NSAttributedString.StrikethroughColorAttributeName, bcolorObject);
-				#if MONOMAC
-				int stsingle = (int)MonoMac.AppKit.NSUnderlineStyle.Single;
-				int stsolid = (int)MonoMac.AppKit.NSUnderlinePattern.Solid;
-				var stattss = stsingle | stsolid;
-				var stunderlineObject = NSNumber.FromInt32(stattss);
-				#else
-				var stunderlineObject = NSNumber.FromInt32 (1);
-				#endif
-
-				attsDic.Add(StrikethroughStyleAttributeName, stunderlineObject);
+//				#if MONOMAC
+//				int stsingle = (int)MonoMac.AppKit.NSUnderlineStyle.Single;
+//				int stsolid = (int)MonoMac.AppKit.NSUnderlinePattern.Solid;
+//				var stattss = stsingle | stsolid;
+//				var stunderlineObject = NSNumber.FromInt32(stattss);
+//				#else
+//				var stunderlineObject = NSNumber.FromInt32 (1);
+//				#endif
+//
+//				attsDic.Add(StrikethroughStyleAttributeName, stunderlineObject);
 				// --- end underline
 			}
 
@@ -365,13 +344,12 @@ namespace Cocos2D
 			var alignmentSettings = new CTParagraphStyleSettings();
 			alignmentSettings.Alignment = alignment;
 			var paragraphStyle = new CTParagraphStyle(alignmentSettings);
-			NSObject psObject = new NSObject(paragraphStyle.Handle);
 
+			ctAttributes.ParagraphStyle = paragraphStyle;
 			// end text alignment
 
-			attsDic.Add(ParagraphStyleAttributeName, psObject);
-
-			atts.SetAttributes(attsDic, attRange);
+            NSMutableAttributedString atts = 
+                new NSMutableAttributedString(text,ctAttributes.Dictionary);
 
 			return atts;
 
