@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Cocos2D;
 
-namespace EmptyProject.WindowsGL
+namespace EmptyProject.WindowsDX
 {
     /// <summary>
     /// This is the main type for your game

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Cocos2D;
 using CocosDenshion;
 
-namespace EmptyProject.WindowsGL
+namespace EmptyProject.WindowsDX
 {
 	public class AppDelegate : CCApplication
 	{

@@ -2,7 +2,7 @@ using System;
 using Cocos2D;
 using Microsoft.Xna.Framework;
 
-namespace EmptyProject.WindowsGL
+namespace EmptyProject.WindowsDX
 {
 	public class IntroLayer : CCLayerColor
 	{

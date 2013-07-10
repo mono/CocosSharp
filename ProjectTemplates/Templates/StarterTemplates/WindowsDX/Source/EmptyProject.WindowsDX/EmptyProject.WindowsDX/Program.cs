@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-namespace EmptyProject.WindowsGL
+namespace EmptyProject.WindowsDX
 {
 
     static class Program
