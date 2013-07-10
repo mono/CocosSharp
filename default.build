@@ -54,6 +54,8 @@
       <exec program="msbuild " commandline="cocos2d-xna.Windows.sln /t:Build /p:Configuration=Release" />
       <exec program="msbuild " commandline="cocos2d-xna.WindowsGL.sln /t:Clean /p:Configuration=Release" />
       <exec program="msbuild " commandline="cocos2d-xna.WindowsGL.sln /t:Build /p:Configuration=Release" />
+      <exec program="msbuild " commandline="cocos2d-xna.WindowsDX.sln /t:Clean /p:Configuration=Release" />
+      <exec program="msbuild " commandline="cocos2d-xna.WindowsDX.sln /t:Build /p:Configuration=Release" />
     </if>
     <if test="${os == 'Unix'}">
       <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release cocos2d-xna.Windows.sln" />
