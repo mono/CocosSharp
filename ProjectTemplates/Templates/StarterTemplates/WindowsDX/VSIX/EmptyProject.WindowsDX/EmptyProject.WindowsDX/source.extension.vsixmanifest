@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
-	<Identifier Id="EmptyProject.e61812b3-4ed7-44ae-85ac-418735783f2f">
-		<Name>Cocos2D-XNA Empty Game Windows GL</Name>
+	<Identifier Id="EmptyProject.4E108384-823E-4C73-AAB9-BD322AD09E70">
+		<Name>Cocos2D-XNA Empty Game Windows DirectX</Name>
 		<Author>Cocos2D-XNA</Author>
 		<Version>1.0</Version>
-		<Description xml:space="preserve">Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Windows GL.</Description>
+		<Description xml:space="preserve">Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Windows DirectX.</Description>
 		<Locale>1033</Locale>
 		<Icon>powered.ico</Icon>
 		<PreviewImage>powered.png</PreviewImage>
@@ -36,8 +36,8 @@
 </Vsix>
 <!-->PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="EmptyProject.WindowsGL..e61812b3-4ed7-44ae-85ac-418735783f2f" Version="1.0" Language="en-US" Publisher="" />
-    <DisplayName>EmptyProject.WindowsGL</DisplayName>
+    <Identity Id="EmptyProject.WindowsDX.4E108384-823E-4C73-AAB9-BD322AD09E70" Version="1.0" Language="en-US" Publisher="" />
+    <DisplayName>EmptyProject.WindowsDX</DisplayName>
     <Description>Empty VSIX Project.</Description>
   </Metadata>
   <Installation>
