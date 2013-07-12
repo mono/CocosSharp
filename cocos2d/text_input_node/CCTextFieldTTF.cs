@@ -1,5 +1,5 @@
 using System;
-#if !WINDOWS_PHONE && !XBOX //&& !WINDOWS
+#if !WINDOWS_PHONE && !XBOX
 using Microsoft.Xna.Framework.GamerServices;
 #endif
 namespace Cocos2D
@@ -82,7 +82,7 @@ namespace Cocos2D
 
         public void Edit(string title, string defaultText)
         {
-#if !WINDOWS_PHONE && !XBOX //&& !WINDOWS
+#if !WINDOWS_PHONE && !XBOX
             if (!m_bReadOnly && !Guide.IsVisible)
             {
                 var canceled = false;
@@ -102,7 +102,7 @@ namespace Cocos2D
 
         private void InputHandler(IAsyncResult result)
         {
-#if !WINDOWS_PHONE && !XBOX //&& !WINDOWS
+#if !WINDOWS_PHONE && !XBOX
             var newText = Guide.EndShowKeyboardInput(result);
 
             m_pGuideShowHandle = null;
@@ -147,7 +147,7 @@ namespace Cocos2D
         {
             if (m_pGuideShowHandle != null)
 			{
-#if !WINDOWS_PHONE && !XBOX //&& !WINDOWS
+#if !WINDOWS_PHONE && !XBOX
 				Guide.EndShowKeyboardInput(m_pGuideShowHandle);
 #endif
                 m_pGuideShowHandle = null;
