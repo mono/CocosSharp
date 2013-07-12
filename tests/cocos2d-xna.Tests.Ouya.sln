@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.Android", "MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj", "{565129E0-4EE5-4F6F-B403-C3484C9740BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.Android", "..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj", "{565129E0-4EE5-4F6F-B403-C3484C9740BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.Ouya", "cocos2d\cocos2d.Ouya.csproj", "{58B144AA-9409-439B-AEB0-144A1EA483E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.Ouya", "..\cocos2d\cocos2d.Ouya.csproj", "{58B144AA-9409-439B-AEB0-144A1EA483E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.Ouya", "tests\tests\tests.Ouya.csproj", "{4ef34363-1190-4444-9f4b-7a262b397ee8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.Ouya", "tests\tests.Ouya.csproj", "{4ef34363-1190-4444-9f4b-7a262b397ee8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Ouya", "MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj", "{8BEA875D-66D2-4A5F-B137-83D262A3851D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Ouya", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj", "{8BEA875D-66D2-4A5F-B137-83D262A3851D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ouya.Console.Api", "..\MonoGame-Slygamer\ouya-csharp-master\Ouya.Console.Api\Ouya.Console.Api.csproj", "{493A4B6F-98CE-4000-8A0C-4A4726299061}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ouya.Console.Api", "..\tools\ouya\Ouya.Console.Api\Ouya.Console.Api.csproj", "{493A4B6F-98CE-4000-8A0C-4A4726299061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
