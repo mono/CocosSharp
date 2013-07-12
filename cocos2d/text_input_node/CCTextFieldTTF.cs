@@ -1,10 +1,10 @@
 using System;
-#if !WINDOWS_PHONE && !XBOX && !WINDOWS
+#if !WINDOWS_PHONE && !XBOX //&& !WINDOWS
 using Microsoft.Xna.Framework.GamerServices;
 #endif
 namespace Cocos2D
 {
-    public delegate void CCTextFieldTTFDelegate(ref string text, ref bool canceled);
+	public delegate void CCTextFieldTTFDelegate(object sender, ref string text, ref bool canceled);
 
     public class CCTextFieldTTF : CCLabelTTF, ICCTargetedTouchDelegate
     {
@@ -82,7 +82,7 @@ namespace Cocos2D
 
         public void Edit(string title, string defaultText)
         {
-#if !WINDOWS_PHONE && !XBOX && !WINDOWS
+#if !WINDOWS_PHONE && !XBOX //&& !WINDOWS
             if (!m_bReadOnly && !Guide.IsVisible)
             {
                 var canceled = false;
@@ -102,7 +102,7 @@ namespace Cocos2D
 
         private void InputHandler(IAsyncResult result)
         {
-#if !WINDOWS_PHONE && !XBOX && !WINDOWS
+#if !WINDOWS_PHONE && !XBOX //&& !WINDOWS
             var newText = Guide.EndShowKeyboardInput(result);
 
             m_pGuideShowHandle = null;
@@ -131,7 +131,7 @@ namespace Cocos2D
         {
             if (BeginEditing != null)
             {
-                BeginEditing(ref newText, ref canceled);
+                BeginEditing(this, ref newText, ref canceled);
             }
         }
 
@@ -139,16 +139,16 @@ namespace Cocos2D
         {
             if (EndEditing != null)
             {
-                EndEditing(ref newText, ref canceled);
+                EndEditing(this, ref newText, ref canceled);
             }
         }
 
         public void EndEdit()
         {
             if (m_pGuideShowHandle != null)
-            {
-#if !WINDOWS_PHONE && !XBOX && !WINDOWS
-                Guide.EndShowKeyboardInput(m_pGuideShowHandle);
+			{
+#if !WINDOWS_PHONE && !XBOX //&& !WINDOWS
+				Guide.EndShowKeyboardInput(m_pGuideShowHandle);
 #endif
                 m_pGuideShowHandle = null;
             }
