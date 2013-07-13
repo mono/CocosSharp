@@ -177,6 +177,7 @@
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Android.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Ouya.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.MGCB.nuspec -OutputDirectory ${packages.dir.path}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsDX.nuspec -OutputDirectory ${packages.dir.path}" />
     </if>
   </target>
 
