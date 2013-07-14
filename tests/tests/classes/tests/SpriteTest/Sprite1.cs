@@ -56,6 +56,7 @@ namespace tests
 
         private Stream GetEmbeddedResource(string name)
         {
+#if !WINRT
             System.Reflection.Assembly assem = System.Reflection.Assembly.GetExecutingAssembly();
             Stream stream = assem.GetManifestResourceStream(name);
             if (stream == null)
@@ -63,6 +64,9 @@ namespace tests
                 stream = assem.GetManifestResourceStream("tests." + name);
             }
             return (stream);
+#else
+            return null;
+#endif
         }
 
         private byte[] ReadCollisionMask(Stream stream)
