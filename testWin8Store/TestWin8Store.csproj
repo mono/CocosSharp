@@ -1567,6 +1567,7 @@
     <Compile Include="..\tests\tests\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
+    <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
     <Compile Include="NotFiniteNumberException.cs" />
   </ItemGroup>
   <ItemGroup>
