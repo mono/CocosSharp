@@ -130,12 +130,12 @@ namespace Cocos2D
 
                 if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
                 {
-                    var appPath = AppDomain.CurrentDomain.BaseDirectory;
-                    var contentPath = Path.Combine(appPath, CCApplication.SharedApplication.Content.RootDirectory);
-                    var fontPath = Path.Combine(contentPath, fontName);
+                    //var appPath = AppDomain.CurrentDomain.BaseDirectory;
+                    //var contentPath = Path.Combine(appPath, CCApplication.SharedApplication.Content.RootDirectory);
+                    //var fontPath = Path.Combine(contentPath, fontName);
 
-                    if (File.Exists(fontPath))
-                    {
+                    //if (File.Exists(fontPath))
+                    //{
                        // try
                         //{
                             //var fontFileReference = new FontCollection(
@@ -149,13 +149,13 @@ namespace Cocos2D
                     //    {
                     //        _currentFont = _defaultFont;
                     //    }
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
                         _currentFont = _defaultFont;
                         _currentFontSizeEm = fontSize;
                         _currentDIP = ConvertPointSizeToDIP(fontSize);
-                    }
+                    //}
                 }
                 else
                 {
