@@ -351,9 +351,9 @@ namespace tests
                 
                 case (int)TestCases.TEST_FONTS:
                         pScene = new FontTestScene(); break;
-#if IPHONE || IOS || MONOMAC || WINDOWSGL || WINDOWS || (ANDROID && !OUYA)
-				case (int)TestCases.TEST_SYSTEM_FONTS:
-					pScene = new SystemFontTestScene(); break;                
+#if IPHONE || IOS || MONOMAC || WINDOWSGL || WINDOWS || (ANDROID && !OUYA) || NETFX_CORE
+                case (int)TestCases.TEST_SYSTEM_FONTS:
+                    pScene = new SystemFontTestScene(); break;
 #endif
                 //    case TEST_CURRENT_LANGUAGE:
                 //        pScene = new CurrentLanguageTestScene(); break;
