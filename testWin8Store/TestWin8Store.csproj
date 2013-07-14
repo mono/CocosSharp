@@ -925,6 +925,9 @@
     <Compile Include="..\tests\tests\classes\tests\FontTest\FontTest.cs">
       <Link>classes\tests\FontTest\FontTest</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\FontTest\SystemFontTest.cs">
+      <Link>classes\tests\FontTest\SystemFontTest</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\IntervalTest\IntervalLayer.cs">
       <Link>classes\tests\IntervalTest\IntervalLayer</Link>
     </Compile>
@@ -1567,7 +1570,6 @@
     <Compile Include="..\tests\tests\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
-    <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
     <Compile Include="NotFiniteNumberException.cs" />
   </ItemGroup>
   <ItemGroup>
