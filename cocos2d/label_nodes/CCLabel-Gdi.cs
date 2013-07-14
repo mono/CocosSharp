@@ -118,7 +118,7 @@ namespace Cocos2D
             SelectObject(hDC, hFont);
 
             var value = new ABCFloat[1];
-
+            
             for (int i = 0; i < charset.Count; i++)
             {
                 var ch = charset[i];

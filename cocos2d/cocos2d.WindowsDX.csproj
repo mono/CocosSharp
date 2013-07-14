@@ -62,6 +62,14 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>external lib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="SharpDX, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MonoGame\ThirdParty\Libs\SharpDX\Windows\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MonoGame\ThirdParty\Libs\SharpDX\Windows\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -75,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="label_nodes\CCLabel-Windows.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include="actions\action\CCAction.cs" />
     <Compile Include="actions\action\CCFiniteTimeAction.cs" />
@@ -192,10 +201,9 @@
     <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
-    <Compile Include="label_nodes\CCLabel-Gdi.cs" />
+    <None Include="label_nodes\CCLabel-Gdi.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="label_nodes\CCLabelTTF.cs" />
-    <Compile Include="label_nodes\CCLabelUtilities-Gdi.cs" />
     <Compile Include="label_nodes\CCLabelUtilities.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
     <Compile Include="platform\ICCFocusable.cs" />
