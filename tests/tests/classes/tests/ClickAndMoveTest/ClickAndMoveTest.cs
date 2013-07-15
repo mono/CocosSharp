@@ -59,8 +59,7 @@ namespace tests
             object it = touches.First();
             CCTouch touch = (CCTouch)(it);
 
-            CCPoint location = touch.LocationInView;
-            CCPoint convertedLocation = CCDirector.SharedDirector.ConvertToGl(location);
+            var convertedLocation = touch.Location;
 
             CCNode s = GetChildByTag(ClickAndMoveTest.kTagSprite);
             s.StopAllActions();

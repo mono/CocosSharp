@@ -163,8 +163,7 @@ namespace tests
         {
             CCTouch touch = pTouches.FirstOrDefault();
 
-            m_tBeginPos = touch.LocationInView;
-            m_tBeginPos = CCDirector.SharedDirector.ConvertToGl(m_tBeginPos);
+            var m_tBeginPos = touch.Location;
         }
 
         public override void TouchesMoved(List<CCTouch> pTouches)

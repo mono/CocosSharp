@@ -67,11 +67,8 @@ namespace tests
 
         public override void TouchMoved(CCTouch touch)
         {
-            CCPoint touchLocation = touch.LocationInView;
-            CCPoint prevLocation = touch.PreviousLocationInView;
-
-            touchLocation = CCDirector.SharedDirector.ConvertToGl(touchLocation);
-            prevLocation = CCDirector.SharedDirector.ConvertToGl(prevLocation);
+            var touchLocation = touch.Location;
+            var prevLocation = touch.PreviousLocation;
 
             CCPoint diff = touchLocation - prevLocation;
 

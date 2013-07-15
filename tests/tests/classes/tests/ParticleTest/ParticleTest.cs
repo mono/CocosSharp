@@ -312,8 +312,8 @@ namespace tests
 
         public override void TouchEnded(CCTouch touch)
         {
-            CCPoint location = touch.LocationInView;
-            CCPoint convertedLocation = CCDirector.SharedDirector.ConvertToGl(location);
+
+            var convertedLocation = touch.Location;
 
             var pos = new CCPoint(0, 0);
             if (m_background != null)
