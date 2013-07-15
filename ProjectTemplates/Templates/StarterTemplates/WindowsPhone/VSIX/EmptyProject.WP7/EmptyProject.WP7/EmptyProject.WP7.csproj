@@ -54,10 +54,6 @@
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\Template\EmptyProject.WindowsPhone.vstemplate">
-      <Link>EmptyProject.WindowsPhone.vstemplate</Link>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="powered.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
