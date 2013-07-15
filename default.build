@@ -155,7 +155,7 @@
 
   <target name="buildnugets" description="Build NuGet Packages">
     <if test="${os == 'Win32NT'}">
-      <property name="nuget.cmd.dir.path" value="nuget.bat" overwrite="true" /> 	
+      <property name="nuget.cmd.dir.path" value="nuget" overwrite="true" /> 	
       <property name="nuspec.file.dir.path" value="${project::get-base-directory()}\ProjectTemplates\NuGet\" overwrite="true" />
       <property name="packages.dir.path" value="${nuspec.file.dir.path}bin" overwrite="true" />
       
