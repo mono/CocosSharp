@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmptyProject.Windows8", "EmptyProject.Windows8\EmptyProject.Windows8.csproj", "{F9F13602-93BF-4FC1-AC6B-F0A3FEDEA5F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmptyProject.WP7", "EmptyProject.WP7\EmptyProject.WP7.csproj", "{F9F13602-93BF-4FC1-AC6B-F0A3FEDEA5F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
