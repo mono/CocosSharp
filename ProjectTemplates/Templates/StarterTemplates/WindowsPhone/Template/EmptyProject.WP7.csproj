@@ -32,7 +32,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Windows Phone\Debug</OutputPath>
+    <OutputPath>bin\WindowsPhone7\Debug</OutputPath>
     <DefineConstants>DEBUG;TRACE;WINDOWS_PHONE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,7 +45,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Windows Phone' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Windows Phone\Release</OutputPath>
+    <OutputPath>bin\WindowsPhone7\Release</OutputPath>
     <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -92,13 +92,13 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="box2d">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows Phone\Release\box2d.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsPhone7\Release\box2d.dll</HintPath>
     </Reference>
     <Reference Include="cocos2d-xna">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows Phone\Release\cocos2d-xna.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsPhone7\Release\cocos2d-xna.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows Phone\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsPhone7\Release\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
