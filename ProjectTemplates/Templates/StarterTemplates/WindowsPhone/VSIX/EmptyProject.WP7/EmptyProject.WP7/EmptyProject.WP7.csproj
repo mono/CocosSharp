@@ -14,8 +14,8 @@
     <ProjectGuid>{F9F13602-93BF-4FC1-AC6B-F0A3FEDEA5F4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EmptyProject.Windows8</RootNamespace>
-    <AssemblyName>EmptyProject.Windows8</AssemblyName>
+    <RootNamespace>EmptyProject.WindowsPhone</RootNamespace>
+    <AssemblyName>EmptyProject.WindowsPhone</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
@@ -45,17 +45,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\..\..\..\NuGet\bin\Cocos2D-XNA.Windows8.0.9.0.0.nupkg">
-      <Link>Packages\Cocos2D-XNA.Windows8.0.9.0.0.nupkg</Link>
+    <Content Include="..\..\..\..\..\..\NuGet\bin\Cocos2D-XNA.WindowsPhone7.0.9.0.0.nupkg">
+      <Link>Packages\Cocos2D-XNA.WindowsPhone.0.9.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\Template\bin\EmptyProject.Windows8.zip">
-      <Link>ProjectTemplates\Cocos2D-XNA\Windows\EmptyProject.Windows8.zip</Link>
+    <Content Include="..\..\..\Template\bin\EmptyProject.WindowsPhone7.zip">
+      <Link>ProjectTemplates\Cocos2D-XNA\Windows\EmptyProject.WindowsPhone.zip</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\Template\EmptyProject.Windows8.vstemplate">
-      <Link>EmptyProject.Windows8.vstemplate</Link>
+    <Content Include="..\..\..\Template\EmptyProject.WindowsPhone.vstemplate">
+      <Link>EmptyProject.WindowsPhone.vstemplate</Link>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="powered.ico">
