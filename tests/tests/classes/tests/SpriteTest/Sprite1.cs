@@ -180,8 +180,7 @@ namespace tests
         {
             foreach (CCTouch touch in touches)
             {
-                CCPoint location = touch.LocationInView;
-                location = CCDirector.SharedDirector.ConvertToGl(location);
+                var location = touch.Location;
                 addNewSpriteWithCoords(location);
             }
         }

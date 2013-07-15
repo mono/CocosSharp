@@ -62,9 +62,8 @@ namespace tests
                 {
                     break;
                 }
-                CCPoint location = item.LocationInView;
 
-                location = CCDirector.SharedDirector.ConvertToGl(location);
+                var location = item.Location;
 
                 addNewSpriteWithCoords(location);
             }

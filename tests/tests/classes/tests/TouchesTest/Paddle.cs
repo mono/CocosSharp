@@ -93,8 +93,7 @@ namespace tests
 
             Debug.Assert(m_state == PaddleState.kPaddleStateGrabbed, "Paddle - Unexpected state!");
 
-            CCPoint touchPoint = touch.LocationInView;
-            touchPoint = CCDirector.SharedDirector.ConvertToGl(touchPoint);
+            var touchPoint = touch.Location;
 
             base.Position = new CCPoint(touchPoint.X, base.Position.Y);
         }

@@ -1327,15 +1327,13 @@ namespace Cocos2D
 
         public CCPoint ConvertTouchToNodeSpace(CCTouch touch)
         {
-            CCPoint point = touch.LocationInView;
-            point = CCDirector.SharedDirector.ConvertToGl(point);
+            var point = touch.Location;
             return ConvertToNodeSpace(point);
         }
 
         public CCPoint ConvertTouchToNodeSpaceAr(CCTouch touch)
         {
-            CCPoint point = touch.LocationInView;
-            point = CCDirector.SharedDirector.ConvertToGl(point);
+            var point = touch.Location;
             return ConvertToNodeSpaceAr(point);
         }
 
