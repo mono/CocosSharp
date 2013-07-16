@@ -97,6 +97,35 @@ namespace Cocos2D
                                          t1.tx * t2.b + t1.ty * t2.d + t2.ty); //ty
         }
 
+        /// <summary>
+        /// Get/set the XNA matrix of this transform. This matrix will assume z=0.
+        /// </summary>
+        public Matrix XnaMatrix
+        {
+            get
+            {
+                Matrix m = Matrix.Identity;
+                m.M11 = a;
+                m.M21 = c;
+                m.M12 = b;
+                m.M22 = d;
+                m.M41 = tx;
+                m.M42 = ty;
+                m.M43 = 0; // Always at Z=0
+                return (m);
+            }
+            set
+            {
+                a = value.M11;
+                c = value.M21;
+                b = value.M12;
+                d = value.M22;
+                tx = value.M41;
+                ty = value.M42;
+                // Ignore z
+            }
+        }
+
         public void Concat(CCAffineTransform m)
         {
             Concat(ref m);
