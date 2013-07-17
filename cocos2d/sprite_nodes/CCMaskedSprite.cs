@@ -49,33 +49,63 @@ namespace Cocos2D
 
         #endregion
 
-            #region Sprite Collission
+        #region Sprite Collission
 
-        public virtual bool CollidesWith(CCMaskedSprite other, out CCPoint hitPoint)
+        public virtual bool CollidesWith(CCMaskedSprite target, out CCPoint pt)
         {
-            // Default behavior uses per-pixel collision detection
-            return CollidesWith(other, out hitPoint, true);
-        }
-
-        public virtual bool CollidesWith(CCMaskedSprite other, out CCPoint hitPoint, bool calcPerPixel)
-        {
-            hitPoint = CCPoint.Zero;
-            if (other.Texture == null || other.Texture.XNATexture == null)
+            pt = CCPoint.Zero;
+            if (!BoundingBox.IntersectsRect(target.BoundingBox))
             {
                 return (false);
             }
-            if (Texture == null || Texture.XNATexture == null)
+            // Based upon http://www.riemers.net/eng/Tutorials/XNA/Csharp/Series2D/Putting_CD_into_practice.php
+            CCAffineTransform m1 = NodeToWorldTransform();
+            CCAffineTransform m2 = target.NodeToWorldTransform();
+            Matrix mat1 = m1.XnaMatrix;
+            Matrix mat2 = m2.XnaMatrix;
+            Matrix mat1to2 = mat1 * Matrix.Invert(mat2);
+            int width2 = target.Texture.XNATexture.Width;
+            int height2 = target.Texture.XNATexture.Height;
+            int width1 = Texture.XNATexture.Width;
+            int height1 = Texture.XNATexture.Height;
+            byte[] maskA = CollisionMask;
+            byte[] maskB = target.CollisionMask;
+            for (int x1 = 0; x1 < width1; x1++)
             {
-                return (false);
-            }
-            // Get dimensions of texture
-            int widthOther = other.Texture.XNATexture.Width;
-            int heightOther = other.Texture.XNATexture.Height;
-            int widthMe = Texture.XNATexture.Width;
-            int heightMe = Texture.XNATexture.Height;
+                for (int y1 = 0; y1 < height1; y1++)
+                {
+                    Vector2 pos1 = new Vector2(x1, y1);
+                    Vector2 pos2 = Vector2.Transform(pos1, mat1to2);
 
-            return BoundingBox.IntersectsRect(other.BoundingBox) // If simple intersection fails, don't even bother with per-pixel
-                && MaskCollision(this, other, out hitPoint);
+                    int x2 = (int)pos2.X;
+                    int y2 = (int)pos2.Y;
+                    if ((x2 >= 0) && (x2 < width2))
+                    {
+                        if ((y2 >= 0) && (y2 < height2))
+                        {
+                            int iA = x1 + y1 * width1;
+                            int iB = x2 + y2 * width2;
+                            if (iA >= maskA.Length || iB >= maskB.Length)
+                            {
+                                continue;
+                            }
+                            byte ca = maskA[iA];
+                            byte cb = maskB[iB];
+
+                            if (maskA[iA] > 0)
+                            {
+                                if (maskB[iB] > 0)
+                                {
+                                    Vector2 screenPos = Vector2.Transform(pos1, mat1);
+                                    pt = new CCPoint(screenPos);
+                                    return (true);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return (false);
         }
 
         /// <summary>
@@ -94,99 +124,6 @@ namespace Cocos2D
                 _MyMask = value;
                 // Check the size?
             }
-        }
-#if DEBUG
-        public bool DebugCollision = false;
-#endif
-        /// <summary>
-        /// Tests the collision mask for the two sprites and returns true if there is a collision. The hit point of the
-        /// collision is returned.
-        /// </summary>
-        /// <param name="a">Sprite A</param>
-        /// <param name="b">Sprite B</param>
-        /// <param name="hitPoint">The place, in real space, where they collide</param>
-        /// <returns>True upon collision and false if not.</returns>
-        static bool MaskCollision(CCMaskedSprite a, CCMaskedSprite b, out CCPoint hitPoint)
-        {
-            byte[] maskA = a.CollisionMask; // bitfield mask of sprite A
-            byte[] maskB = b.CollisionMask; // bitfield mask of sprite B
-            int aWidth = (int)a.Texture.ContentSize.Width; // bitwise stride
-            int bWidth = (int)b.Texture.ContentSize.Width; // bitwise stride
-            int aHeight = (int)a.Texture.ContentSize.Height;
-            int bHeight = (int)b.Texture.ContentSize.Height;
-            // Calculate the intersecting rectangle
-            Rectangle aBounds = a.CollisionBounds;
-            Rectangle bBounds = b.CollisionBounds;
-            int x1 = Math.Max(aBounds.X, bBounds.X);
-            int x2 = Math.Min(aBounds.X + aBounds.Width, bBounds.X + bBounds.Width);
-
-            int y1 = Math.Max(aBounds.Y, bBounds.Y);
-            int y2 = Math.Min(aBounds.Y + aBounds.Height, bBounds.Y + bBounds.Height);
-            // Next extract the bitfields for the intersection rectangles
-            for (int y = y1; y < y2; ++y)
-            {
-                for (int x = x1; x < x2; x++)
-                {
-                    // Coordinates in the respective sprites
-                    // Invert the Y because screen coords are opposite of mask coordinates!
-                    int xA = x - aBounds.X;
-                    int yA = aHeight - (y - aBounds.Y);
-                    if (yA < 0)
-                    {
-                        yA = 0;
-                    }
-                    else if (yA >= aHeight)
-                    {
-                        yA = aHeight - 1;
-                    }
-                    int xB = x - bBounds.X;
-                    int yB = bHeight - (y - bBounds.Y);
-                    if (yB < 0)
-                    {
-                        yB = 0;
-                    }
-                    else if (yB >= bHeight)
-                    {
-                        yB = bHeight - 1;
-                    }
-                    // Get the color from each texture
-                    int iA = xA + yA * aWidth;
-                    int iB = xB + yB * bWidth;
-                    if (iA >= maskA.Length || iB >= maskB.Length)
-                    {
-                        continue;
-                    }
-                    byte ca = maskA[iA];
-                    byte cb = maskB[iB];
-#if DEBUG
-                    if (a.DebugCollision && b.DebugCollision)
-                    {
-                        CCLog.Log("Collision test[{0},{1}] = A{2} == B{3} {4}", x, y, ca, cb, (ca == cb && ca > 0) ? "BOOM" : "");
-                    }
-#endif
-
-                    if (ca > 0 && cb > 0) // If both colors are not transparent (the alpha channel is not 0), then there is a collision
-                    {
-                        // Find the hit point, where on the sprite in real space the collision occurs.
-                        hitPoint = new CCPoint(x,y);
-                        return (true);
-                    }
-                }
-            }
-            hitPoint = new CCPoint(0, 0);
-            return (false);
-        }
-        protected virtual Rectangle CollisionBounds
-        {
-            get
-            {
-                return new Rectangle(
-                    (int)(Position.X - Texture.ContentSize.Width / 2f),
-                    (int)(Position.Y - Texture.ContentSize.Height / 2f),
-                    (int)Texture.ContentSize.Width,
-                    (int)Texture.ContentSize.Height);
-            }
-
         }
         #endregion
     }
