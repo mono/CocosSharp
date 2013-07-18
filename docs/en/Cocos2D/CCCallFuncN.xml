@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCCallFuncN" FullName="Cocos2D.CCCallFuncN">
   <TypeSignature Language="C#" Value="public class CCCallFuncN : Cocos2D.CCCallFunc" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCallFuncN extends Cocos2D.CCCallFunc" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;Calls a 'callback' with the node as the first argument N means &lt;see cref="T:Cocos2D.CCNode" /&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +24,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with the handler script function </summary>
+        <remarks>creates the action with the handler script function </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -74,9 +75,9 @@
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="Execute">
@@ -91,8 +92,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>executes the callback </summary>
+        <remarks>executes the callback </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTarget">
@@ -110,9 +111,14 @@
       </Parameters>
       <Docs>
         <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the action with the callback 
+</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;initializes the action with the callback 
+&lt;/verbatim&gt;
+&lt;/para&gt;&lt;verbatim&gt;initializes the action with the callback 
+&lt;/verbatim&gt;&lt;para&gt;typedef void (Object::&lt;emphasis&gt;SEL_CallFuncN)(&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;/emphasis&gt;);  &lt;/para&gt;&lt;emphasis&gt;SEL_CallFuncN)(&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;/emphasis&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</remarks>
       </Docs>
     </Member>
   </Members>

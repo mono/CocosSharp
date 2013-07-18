@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBlendFunc" FullName="Cocos2D.CCBlendFunc">
   <TypeSignature Language="C#" Value="public struct CCBlendFunc" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCBlendFunc extends System.ValueType" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Blend Function used for textures. </summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

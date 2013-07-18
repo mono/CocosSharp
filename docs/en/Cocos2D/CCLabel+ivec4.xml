@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLabel+ivec4" FullName="Cocos2D.CCLabel+ivec4">
   <TypeSignature Language="C#" Value="public struct CCLabel.ivec4" />
   <TypeSignature Language="ILAsm" Value=".class nested public sequential ansi sealed beforefieldinit CCLabel/ivec4 extends System.ValueType" />

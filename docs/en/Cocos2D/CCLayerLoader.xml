@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLayerLoader" FullName="Cocos2D.CCLayerLoader">
   <TypeSignature Language="C#" Value="public class CCLayerLoader : Cocos2D.CCNodeLoader" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerLoader extends Cocos2D.CCNodeLoader" />

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCActionCamera" FullName="Cocos2D.CCActionCamera">
   <TypeSignature Language="C#" Value="public class CCActionCamera : Cocos2D.CCActionInterval" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionCamera extends Cocos2D.CCActionInterval" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;Base class for &lt;see cref="T:Cocos2D.CCCamera" /&gt; actions. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCCamera" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -206,9 +207,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new reversed action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a new reversed action </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -226,8 +227,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called before the action start. It will also set the target. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

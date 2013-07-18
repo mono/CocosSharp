@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCParticleBatchNode" FullName="Cocos2D.CCParticleBatchNode">
   <TypeSignature Language="C#" Value="public class CCParticleBatchNode : Cocos2D.CCNode, Cocos2D.ICCTextureProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleBatchNode extends Cocos2D.CCNode implements class Cocos2D.ICCBlendProtocol, class Cocos2D.ICCTextureProtocol" />
@@ -14,8 +15,23 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> is like a batch node: if it contains children, it will draw them in 1 single OpenGL call (often known as "batch draw").</summary>
+    <remarks>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt; is like a batch node: if it contains children, it will draw them in 1 single OpenGL call (often known as "batch draw").&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt; can reference one and only one texture (one image file, one texture atlas). Only the ParticleSystems that are contained in that texture can be added to the &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;. All ParticleSystems added to a &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt; are drawn in one OpenGL ES draw call. If the ParticleSystems are not added to a &lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt; then an OpenGL ES draw call will be needed for each one, which is less efficient.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt;&lt;para&gt;Limitations:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;At the moment only ParticleSystemQuad is supported&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;All systems need to be drawn with the same parameters, blend function, aliasing, texture&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;At the moment only ParticleSystemQuad is supported&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;All systems need to be drawn with the same parameters, blend function, aliasing, texture&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;At the moment only &lt;see cref="T:Cocos2D.CCParticleSystemQuad" /&gt; is supported&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleSystemQuad" /&gt;&lt;para&gt;All systems need to be drawn with the same parameters, blend function, aliasing, texture&lt;/para&gt;&lt;para&gt;Most efficient usage&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;Initialize the ParticleBatchNode with the texture and enough capacity for all the particle systems&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Initialize all particle systems and add them as child to the batch node v1.1 &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;Initialize the ParticleBatchNode with the texture and enough capacity for all the particle systems&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Initialize all particle systems and add them as child to the batch node v1.1 &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;Initialize the &lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt; with the texture and enough capacity for all the particle systems&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt;&lt;para&gt;Initialize all particle systems and add them as child to the batch node &lt;para&gt;v1.1 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v1.1 &lt;/para&gt;&lt;para&gt;v1.1 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,8 +46,8 @@
       </Parameters>
       <Docs>
         <param name="tex">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>initializes the particle system with the name of a file on disk (for a list of supported formats look at the  class), a capacity of particles </summary>
+        <remarks>&lt;para&gt;initializes the particle system with the name of a file on disk (for a list of supported formats look at the &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; class), a capacity of particles &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -86,11 +102,69 @@
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="zOrder">To be added.</param>
-        <param name="tag">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">A child node </param>
+        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)setZOrder(int)</param>
+        <param name="tag">A interger to identify the node easily. Please refer to setTag(int)setTag(int)</param>
+        <summary>Adds a child to the container with z order and tag</summary>
+        <remarks>&lt;para&gt;Adds a child to the container with z order and tag&lt;/para&gt;&lt;para&gt;If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A child node &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;zOrder&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;tag&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A child node &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A child node &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A child node &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;zOrder&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;zOrder&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;zOrder&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;tag&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;tag&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;tag&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
@@ -104,9 +178,11 @@
         <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the blending function that is currently being used.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the blending function that is currently being used.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCBlendFunc" /&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="DisableParticle">
@@ -124,8 +200,8 @@
       </Parameters>
       <Docs>
         <param name="particleIndex">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>disables a particle by inserting a 0'd quad into the texture atlas </summary>
+        <remarks>disables a particle by inserting a 0'd quad into the texture atlas </remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -140,8 +216,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
+        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithFile">
@@ -161,9 +250,9 @@
       <Docs>
         <param name="fileImage">To be added.</param>
         <param name="capacity">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the particle system with the name of a file on disk (for a list of supported formats look at the  class), a capacity of particles </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;initializes the particle system with the name of a file on disk (for a list of supported formats look at the &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; class), a capacity of particles &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
@@ -183,9 +272,9 @@
       <Docs>
         <param name="tex">To be added.</param>
         <param name="capacity">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the particle system with , a capacity of particles </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;initializes the particle system with &lt;see cref="T:Cocos2D.CCTexture2D" /&gt;, a capacity of particles &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="kCCParticleDefaultCapacity">
@@ -218,9 +307,29 @@
         <Parameter Name="doCleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="doCleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="doCleanup">true if all running actions on all children nodes should be cleanup, false oterwise. </param>
+        <summary>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</summary>
+        <remarks>&lt;para&gt;Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;cleanup&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;cleanup&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;cleanup&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
@@ -240,8 +349,8 @@
       <Docs>
         <param name="child">To be added.</param>
         <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>remove child from the </summary>
+        <remarks>&lt;para&gt;remove child from the &lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChildAtIndex">
@@ -262,7 +371,7 @@
         <param name="index">To be added.</param>
         <param name="doCleanup">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ReorderChild">
@@ -280,10 +389,49 @@
         <Parameter Name="zOrder" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="zOrder">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">An already added child node. It MUST be already added. </param>
+        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)setZOrder(int)</param>
+        <summary>Reorders a child according to a new z value.</summary>
+        <remarks>&lt;para&gt;Reorders a child according to a new z value.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;zOrder&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;zOrder&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;zOrder&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;zOrder&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -297,9 +445,29 @@
         <ReturnType>Cocos2D.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets a new texuture. It will be retained.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets a new texuture. It will be retained.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;texture&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;texture&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;texture&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;texture&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="TextureAtlas">
@@ -329,8 +497,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Visits this node's children and draw them recursively. </summary>
+        <remarks>Visits this node's children and draw them recursively. </remarks>
       </Docs>
     </Member>
   </Members>

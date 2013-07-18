@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCGridAction" FullName="Cocos2D.CCGridAction">
   <TypeSignature Language="C#" Value="public class CCGridAction : Cocos2D.CCActionInterval" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGridAction extends Cocos2D.CCActionInterval" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Base class for Grid actions. </summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -92,9 +93,9 @@
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a new clone of the action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a new clone of the action </remarks>
       </Docs>
     </Member>
     <Member MemberName="Grid">
@@ -108,9 +109,9 @@
         <ReturnType>Cocos2D.CCGridBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the grid </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>returns the grid </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -130,9 +131,9 @@
       <Docs>
         <param name="duration">To be added.</param>
         <param name="gridSize">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the action with size and duration </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>initializes the action with size and duration </remarks>
       </Docs>
     </Member>
     <Member MemberName="m_sGridSize">
@@ -162,9 +163,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new reversed action. The reversed action is created with the  action. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;returns a new reversed action. The reversed action is created with the &lt;see cref="T:Cocos2D.CCReverseTime" /&gt; action. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCReverseTime" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -182,8 +183,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called before the action start. It will also set the target. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

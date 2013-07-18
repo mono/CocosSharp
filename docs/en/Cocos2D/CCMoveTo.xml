@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMoveTo" FullName="Cocos2D.CCMoveTo">
   <TypeSignature Language="C#" Value="public class CCMoveTo : Cocos2D.CCMoveBy" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMoveTo extends Cocos2D.CCMoveBy" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Moves a  object to the position x,y. x and y are absolute coordinates by modifying it's position attribute. Several  actions can be concurrently called, and the resulting movement will be the sum of individual movements. v2.1beta2-custom </summary>
+    <remarks>&lt;para&gt;Moves a &lt;see cref="T:Cocos2D.CCNode" /&gt; object to the position x,y. x and y are absolute coordinates by modifying it's position attribute. Several &lt;see cref="T:Cocos2D.CCMoveTo" /&gt; actions can be concurrently called, and the resulting movement will be the sum of individual movements. &lt;para&gt;v2.1beta2-custom &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCMoveTo" /&gt;&lt;para&gt;v2.1beta2-custom &lt;/para&gt;&lt;para&gt;v2.1beta2-custom &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,8 +27,8 @@
       </Parameters>
       <Docs>
         <param name="moveTo">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action </summary>
+        <remarks>creates the action </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -63,9 +64,9 @@
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -85,9 +86,9 @@
       <Docs>
         <param name="duration">To be added.</param>
         <param name="position">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>initializes the action </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -105,8 +106,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called before the action start. It will also set the target. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCPointI" FullName="Cocos2D.CCPointI">
   <TypeSignature Language="C#" Value="public struct CCPointI" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCPointI extends System.ValueType" />

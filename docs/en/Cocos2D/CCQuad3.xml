@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCQuad3" FullName="Cocos2D.CCQuad3">
   <TypeSignature Language="C#" Value="public struct CCQuad3" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCQuad3 extends System.ValueType" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>A 3D Quad. 4 * 3 floats. </summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName="BottomLeft">

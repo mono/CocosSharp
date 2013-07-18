@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBSequence" FullName="Cocos2D.CCBSequence">
   <TypeSignature Language="C#" Value="public class CCBSequence" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBSequence extends System.Object" />

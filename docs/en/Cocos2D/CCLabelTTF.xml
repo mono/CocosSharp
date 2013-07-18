@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLabelTTF" FullName="Cocos2D.CCLabelTTF">
   <TypeSignature Language="C#" Value="public class CCLabelTTF : Cocos2D.CCSprite, Cocos2D.ICCLabelProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelTTF extends Cocos2D.CCSprite implements class Cocos2D.ICCLabelProtocol" />
@@ -14,8 +15,293 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLabelTTF" /&gt; is a subclass of TextureNode that knows how to render text labels. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;</summary>
+    <remarks>&lt;para&gt;All features from TextureNode are valid in &lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLabelTTF" /&gt; objects are slow. Consider using &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt; or &lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt; instead.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;&lt;para&gt;Custom ttf file can be put in assets/ or external storage that the Application can access. &lt;programlisting&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;LabelTTF&lt;sp /&gt;*label1&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member"&gt;LabelTTF::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"alignment&lt;sp /&gt;left"&lt;/highlight&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"A&lt;sp /&gt;Damn&lt;sp /&gt;Mess"&lt;/highlight&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;fontSize,&lt;sp /&gt;blockSize,&lt;sp /&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;kTextAlignmentLeft,&lt;sp /&gt;kVerticalTextAlignmentCenter);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;LabelTTF&lt;sp /&gt;*label2&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member"&gt;LabelTTF::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"alignment&lt;sp /&gt;right"&lt;/highlight&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"/mnt/sdcard/Scissor&lt;sp /&gt;Cuts.ttf"&lt;/highlight&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;fontSize,&lt;sp /&gt;blockSize,&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;kTextAlignmentLeft,&lt;sp /&gt;kVerticalTextAlignmentCenter);&lt;/highlight&gt;&lt;/codeline&gt;&lt;/programlisting&gt;&lt;/para&gt;&lt;programlisting&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;LabelTTF&lt;sp /&gt;*label1&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member"&gt;LabelTTF::create&lt;/ref&gt;(&lt;/highlight&gt;
+    &lt;highlight class="stringliteral"&gt;"alignment&lt;sp /&gt;left"&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;,&lt;sp /&gt;&lt;/highlight&gt;
+    &lt;highlight class="stringliteral"&gt;"A&lt;sp /&gt;Damn&lt;sp /&gt;Mess"&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;,&lt;sp /&gt;fontSize,&lt;sp /&gt;blockSize,&lt;sp /&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;kTextAlignmentLeft,&lt;sp /&gt;kVerticalTextAlignmentCenter);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;LabelTTF&lt;sp /&gt;*label2&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member"&gt;LabelTTF::create&lt;/ref&gt;(&lt;/highlight&gt;
+    &lt;highlight class="stringliteral"&gt;"alignment&lt;sp /&gt;right"&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;,&lt;sp /&gt;&lt;/highlight&gt;
+    &lt;highlight class="stringliteral"&gt;"/mnt/sdcard/Scissor&lt;sp /&gt;Cuts.ttf"&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;,&lt;sp /&gt;fontSize,&lt;sp /&gt;blockSize,&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;kTextAlignmentLeft,&lt;sp /&gt;kVerticalTextAlignmentCenter);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+&lt;/programlisting&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;LabelTTF&lt;sp /&gt;*label1&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member"&gt;LabelTTF::create&lt;/ref&gt;(&lt;/highlight&gt;
+  &lt;highlight class="stringliteral"&gt;"alignment&lt;sp /&gt;left"&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;,&lt;sp /&gt;&lt;/highlight&gt;
+  &lt;highlight class="stringliteral"&gt;"A&lt;sp /&gt;Damn&lt;sp /&gt;Mess"&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;,&lt;sp /&gt;fontSize,&lt;sp /&gt;blockSize,&lt;sp /&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;LabelTTF&lt;sp /&gt;*label1&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member"&gt;LabelTTF::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member"&gt;LabelTTF::create&lt;/ref&gt;&lt;highlight class="stringliteral"&gt;"alignment&lt;sp /&gt;left"&lt;/highlight&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;&lt;/highlight&gt;&lt;sp /&gt;&lt;highlight class="stringliteral"&gt;"A&lt;sp /&gt;Damn&lt;sp /&gt;Mess"&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;fontSize,&lt;sp /&gt;blockSize,&lt;sp /&gt;&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;kTextAlignmentLeft,&lt;sp /&gt;kVerticalTextAlignmentCenter);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;kTextAlignmentLeft,&lt;sp /&gt;kVerticalTextAlignmentCenter);&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;LabelTTF&lt;sp /&gt;*label2&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member"&gt;LabelTTF::create&lt;/ref&gt;(&lt;/highlight&gt;
+  &lt;highlight class="stringliteral"&gt;"alignment&lt;sp /&gt;right"&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;,&lt;sp /&gt;&lt;/highlight&gt;
+  &lt;highlight class="stringliteral"&gt;"/mnt/sdcard/Scissor&lt;sp /&gt;Cuts.ttf"&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;,&lt;sp /&gt;fontSize,&lt;sp /&gt;blockSize,&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;LabelTTF&lt;sp /&gt;*label2&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member"&gt;LabelTTF::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member"&gt;LabelTTF::create&lt;/ref&gt;&lt;highlight class="stringliteral"&gt;"alignment&lt;sp /&gt;right"&lt;/highlight&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;&lt;/highlight&gt;&lt;sp /&gt;&lt;highlight class="stringliteral"&gt;"/mnt/sdcard/Scissor&lt;sp /&gt;Cuts.ttf"&lt;/highlight&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;fontSize,&lt;sp /&gt;blockSize,&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;kTextAlignmentLeft,&lt;sp /&gt;kVerticalTextAlignmentCenter);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;kTextAlignmentLeft,&lt;sp /&gt;kVerticalTextAlignmentCenter);&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,8 +313,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates an label. </summary>
+        <remarks>Creates an label. </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -114,7 +400,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="FontName">
@@ -130,7 +416,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="FontSize">
@@ -146,7 +432,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="GetString">
@@ -166,9 +452,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the string that is currently being used in this label</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the string that is currently being used in this label&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;The string that is currently being used in this label &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;The string that is currently being used in this label &lt;/para&gt;&lt;para&gt;The string that is currently being used in this label &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="HorizontalAlignment">
@@ -184,7 +472,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -199,9 +487,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>initializes the </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;initializes the &lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -223,9 +511,9 @@
         <param name="label">To be added.</param>
         <param name="fontName">To be added.</param>
         <param name="fontSize">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the  with a font name, alignment, dimension and font size </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;initializes the &lt;see cref="T:Cocos2D.CCLabelTTF" /&gt; with a font name, alignment, dimension and font size &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -321,8 +609,8 @@
       </Parameters>
       <Docs>
         <param name="label">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>changes the string to render Changing the string is as expensive as creating a new . To obtain better performance use </summary>
+        <remarks>&lt;para&gt;changes the string to render &lt;para&gt;Changing the string is as expensive as creating a new &lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;. To obtain better performance use &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;/para&gt;&lt;/para&gt;&lt;para&gt;Changing the string is as expensive as creating a new &lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;. To obtain better performance use &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;para&gt;Changing the string is as expensive as creating a new &lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;. To obtain better performance use &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Text">
@@ -371,7 +659,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

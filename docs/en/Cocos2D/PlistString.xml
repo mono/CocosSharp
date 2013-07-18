@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="PlistString" FullName="Cocos2D.PlistString">
   <TypeSignature Language="C#" Value="public class PlistString : Cocos2D.PlistObject&lt;string&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistString extends Cocos2D.PlistObject`1&lt;string&gt;" />

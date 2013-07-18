@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSizeI" FullName="Cocos2D.CCSizeI">
   <TypeSignature Language="C#" Value="public struct CCSizeI" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCSizeI extends System.ValueType" />

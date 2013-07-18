@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCPointSprite" FullName="Cocos2D.CCPointSprite">
   <TypeSignature Language="C#" Value="public class CCPointSprite" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPointSprite extends System.Object" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;Point &lt;see cref="T:Cocos2D.CCSprite" /&gt; component. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBAnimationManager" FullName="Cocos2D.CCBAnimationManager">
   <TypeSignature Language="C#" Value="public class CCBAnimationManager" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBAnimationManager extends System.Object" />

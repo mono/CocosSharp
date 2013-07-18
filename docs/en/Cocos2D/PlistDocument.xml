@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="PlistDocument" FullName="Cocos2D.PlistDocument">
   <TypeSignature Language="C#" Value="public class PlistDocument : Cocos2D.PlistObjectBase" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistDocument extends Cocos2D.PlistObjectBase" />

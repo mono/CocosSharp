@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCCatmullRomBy" FullName="Cocos2D.CCCatmullRomBy">
   <TypeSignature Language="C#" Value="public class CCCatmullRomBy : Cocos2D.CCCardinalSplineBy" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCatmullRomBy extends Cocos2D.CCCardinalSplineBy" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>An action that moves the target with a CatmullRom curve by a certain distance. A Catmull Rom is a Cardinal Spline with a tension of 0.5. http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline</summary>
+    <remarks>&lt;para&gt;An action that moves the target with a CatmullRom curve by a certain distance. A Catmull Rom is a Cardinal Spline with a tension of 0.5. &lt;ulink url="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline"&gt;http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline&lt;/ulink&gt;&lt;/para&gt;&lt;ulink url="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline"&gt;http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline&lt;/ulink&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,8 +29,8 @@
       <Docs>
         <param name="dt">To be added.</param>
         <param name="points">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates an action with a Cardinal Spline array of points and tension </summary>
+        <remarks>creates an action with a Cardinal Spline array of points and tension </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -49,9 +50,9 @@
       <Docs>
         <param name="dt">To be added.</param>
         <param name="points">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the action with a duration and an array of points </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>initializes the action with a duration and an array of points </remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCParallel" FullName="Cocos2D.CCParallel">
   <TypeSignature Language="C#" Value="public class CCParallel : Cocos2D.CCActionInterval" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParallel extends Cocos2D.CCActionInterval" />

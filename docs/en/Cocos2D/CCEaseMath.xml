@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCEaseMath" FullName="Cocos2D.CCEaseMath">
   <TypeSignature Language="C#" Value="public static class CCEaseMath" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCEaseMath extends System.Object" />

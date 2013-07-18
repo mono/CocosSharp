@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCVertexBuffer&lt;T&gt;" FullName="Cocos2D.CCVertexBuffer&lt;T&gt;">
   <TypeSignature Language="C#" Value="public class CCVertexBuffer&lt;T&gt; : Cocos2D.CCGraphicsResource where T : struct" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCVertexBuffer`1&lt;struct .ctor (class System.ValueType, class Microsoft.Xna.Framework.Graphics.IVertexType) T&gt; extends Cocos2D.CCGraphicsResource" />

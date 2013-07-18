@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCParticleSystem+ModeA" FullName="Cocos2D.CCParticleSystem+ModeA">
   <TypeSignature Language="C#" Value="protected struct CCParticleSystem.ModeA" />
   <TypeSignature Language="ILAsm" Value=".class nested protected sequential ansi sealed beforefieldinit CCParticleSystem/ModeA extends System.ValueType" />

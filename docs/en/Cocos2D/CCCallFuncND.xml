@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCCallFuncND" FullName="Cocos2D.CCCallFuncND">
   <TypeSignature Language="C#" Value="public class CCCallFuncND : Cocos2D.CCCallFuncN" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCallFuncND extends Cocos2D.CCCallFuncN" />

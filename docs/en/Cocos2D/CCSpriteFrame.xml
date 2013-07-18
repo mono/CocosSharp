@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSpriteFrame" FullName="Cocos2D.CCSpriteFrame">
   <TypeSignature Language="C#" Value="public class CCSpriteFrame : Cocos2D.ICCCopyable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteFrame extends System.Object implements class Cocos2D.ICCCopyable" />
@@ -14,8 +15,25 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;A &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt; has: &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt;</summary>
+    <remarks>&lt;para&gt;
+  &lt;list type="bullet"&gt;
+    &lt;item&gt;
+      &lt;description&gt;texture: A Texture2D that will be used by the Sprite&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;description&gt;rectangle: A rectangle of the texture&lt;/description&gt;
+    &lt;/item&gt;
+  &lt;/list&gt;
+&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;texture: A Texture2D that will be used by the Sprite&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;rectangle: A rectangle of the texture&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;texture: A &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; that will be used by the &lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;para&gt;rectangle: A rectangle of the texture&lt;/para&gt;&lt;para&gt;You can modify the frame of a &lt;see cref="T:Cocos2D.CCSprite" /&gt; by doing:&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt; *frame = SpriteFrame::frameWithTexture(texture, rect, offset); sprite-&amp;gt;setDisplayFrame(frame); &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,8 +45,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Create a  with a texture filename, rect, rotated, offset and originalSize in pixels. The originalSize is the size in pixels of the frame before being trimmed. </summary>
+        <remarks>&lt;para&gt;Create a &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt; with a texture filename, rect, rotated, offset and originalSize in pixels. The originalSize is the size in pixels of the frame before being trimmed. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -85,9 +103,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a clone of the </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;returns a clone of the &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -127,9 +145,13 @@
       <Docs>
         <param name="pobTexture">To be added.</param>
         <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes a SpriteFrame with a texture, rect, rotated, offset and originalSize in pixels.
+ The originalSize is the size in points of the frame before being trimmed. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;Initializes a SpriteFrame with a texture, rect, rotated, offset and originalSize in pixels.
+&lt;/verbatim&gt; The originalSize is the size in points of the frame before being trimmed. &lt;/para&gt;&lt;verbatim&gt;Initializes a SpriteFrame with a texture, rect, rotated, offset and originalSize in pixels.
+&lt;/verbatim&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
@@ -177,9 +199,11 @@
       <Docs>
         <param name="filename">To be added.</param>
         <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes a  with a texture, rect, rotated, offset and originalSize in pixels. The originalSize is the size in pixels of the frame before being trimmed.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Initializes a &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt; with a texture, rect, rotated, offset and originalSize in pixels. The originalSize is the size in pixels of the frame before being trimmed.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt;&lt;para&gt;
+  &lt;para&gt;v1.1 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;v1.1 &lt;/para&gt;&lt;para&gt;v1.1 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTextureFilename">
@@ -223,7 +247,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bRotated">
@@ -374,7 +398,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="OffsetInPixels">
@@ -388,9 +412,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set offset of the frame </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>set offset of the frame </remarks>
       </Docs>
     </Member>
     <Member MemberName="OriginalSize">
@@ -404,9 +428,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set original size of the trimmed image </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>set original size of the trimmed image </remarks>
       </Docs>
     </Member>
     <Member MemberName="OriginalSizeInPixels">
@@ -420,9 +444,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set original size of the trimmed image </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>set original size of the trimmed image </remarks>
       </Docs>
     </Member>
     <Member MemberName="Rect">
@@ -436,9 +460,9 @@
         <ReturnType>Cocos2D.CCRect</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set rect of the frame </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>set rect of the frame </remarks>
       </Docs>
     </Member>
     <Member MemberName="RectInPixels">
@@ -454,7 +478,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -468,9 +492,9 @@
         <ReturnType>Cocos2D.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set texture of the frame, the texture is retained </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>set texture of the frame, the texture is retained </remarks>
       </Docs>
     </Member>
   </Members>

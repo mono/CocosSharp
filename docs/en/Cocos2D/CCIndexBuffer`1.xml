@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCIndexBuffer&lt;T&gt;" FullName="Cocos2D.CCIndexBuffer&lt;T&gt;">
   <TypeSignature Language="C#" Value="public class CCIndexBuffer&lt;T&gt; : Cocos2D.CCGraphicsResource where T : struct" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCIndexBuffer`1&lt;struct .ctor (class System.ValueType) T&gt; extends Cocos2D.CCGraphicsResource" />

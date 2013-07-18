@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCEaseCustom" FullName="Cocos2D.CCEaseCustom">
   <TypeSignature Language="C#" Value="public class CCEaseCustom : Cocos2D.CCActionEase" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEaseCustom extends Cocos2D.CCActionEase" />

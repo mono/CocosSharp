@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCAnimationFrame" FullName="Cocos2D.CCAnimationFrame">
   <TypeSignature Language="C#" Value="public class CCAnimationFrame : Cocos2D.ICCCopyable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimationFrame extends System.Object implements class Cocos2D.ICCCopyable" />
@@ -14,8 +15,21 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> A frame of the animation. It contains information like:sprite frame name# of delay units.offset</summary>
+    <remarks>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCAnimationFrame" /&gt; A frame of the animation. It contains information like:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;sprite frame name&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;# of delay units.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;offset&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCAnimationFrame" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;sprite frame name&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;# of delay units.&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;offset&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;sprite frame name&lt;/para&gt;&lt;para&gt;# of delay units.&lt;/para&gt;&lt;para&gt;offset&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;v2.0 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;v2.0 &lt;/para&gt;&lt;para&gt;v2.0 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -43,9 +57,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a copy of the </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;returns a copy of the &lt;see cref="T:Cocos2D.CCAnimationFrame" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCAnimationFrame" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -103,9 +117,9 @@
         <param name="spriteFrame">To be added.</param>
         <param name="delayUnits">To be added.</param>
         <param name="userInfo">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the animation frame with a spriteframe, number of delay units and a notification user info </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>initializes the animation frame with a spriteframe, number of delay units and a notification user info </remarks>
       </Docs>
     </Member>
     <Member MemberName="SpriteFrame">
@@ -119,9 +133,9 @@
         <ReturnType>Cocos2D.CCSpriteFrame</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setSpriteFrame </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setSpriteFrame </remarks>
       </Docs>
     </Member>
     <Member MemberName="UserInfo">
@@ -135,9 +149,9 @@
         <ReturnType>Cocos2D.PlistDictionary</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setUserInfo </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setUserInfo </remarks>
       </Docs>
     </Member>
   </Members>

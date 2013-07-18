@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCFastRandom" FullName="Cocos2D.CCFastRandom">
   <TypeSignature Language="C#" Value="public class CCFastRandom" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFastRandom extends System.Object" />

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTMXLayer" FullName="Cocos2D.CCTMXLayer">
   <TypeSignature Language="C#" Value="public class CCTMXLayer : Cocos2D.CCSpriteBatchNode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXLayer extends Cocos2D.CCSpriteBatchNode" />
@@ -10,8 +11,19 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCTMXLayer" /&gt; represents the TMX layer. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;</summary>
+    <remarks>&lt;para&gt;It is a subclass of &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;. By default the tiles are rendered using a &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;. If you modify a tile on runtime, then, that tile will become a &lt;see cref="T:Cocos2D.CCSprite" /&gt;, otherwise no &lt;see cref="T:Cocos2D.CCSprite" /&gt; objects are created. The benefits of using &lt;see cref="T:Cocos2D.CCSprite" /&gt; objects as tiles are:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;tiles (Sprite) can be rotated/scaled/moved with a nice API&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;tiles (Sprite) can be rotated/scaled/moved with a nice API&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;tiles (&lt;see cref="T:Cocos2D.CCSprite" /&gt;) can be rotated/scaled/moved with a nice API&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;para&gt;If the layer contains a property named "cc_vertexz" with an integer (in can be positive or negative), then all the tiles belonging to the layer will use that value as their OpenGL vertex Z for depth.&lt;/para&gt;&lt;para&gt;On the other hand, if the "cc_vertexz" property has the "automatic" value, then the tiles will use an automatic vertex Z value. Also before drawing the tiles, GL_ALPHA_TEST will be enabled, and disabled after drawing them. The used alpha func will be:&lt;/para&gt;&lt;para&gt;glAlphaFunc( GL_GREATER, value )&lt;/para&gt;&lt;para&gt;"value" by default is 0, but you can change it from Tiled by adding the "cc_alpha_func" property to the layer. The value 0 should work for most cases, but if you have tiles that are semi-transparent, then you might want to use a different value, like 0.5.&lt;/para&gt;&lt;para&gt;For further information, please see the programming guide:&lt;/para&gt;&lt;para&gt;
+  &lt;ulink url="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:tiled_maps"&gt;http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:tiled_maps&lt;/ulink&gt;
+&lt;/para&gt;&lt;ulink url="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:tiled_maps"&gt;http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:tiled_maps&lt;/ulink&gt;&lt;para&gt;
+  &lt;para&gt;v0.8.1 Tiles can have tile flags for additional properties. At the moment only flip horizontal and flip vertical are used. These bit flags are defined in TMXXMLParser.h.&lt;/para&gt;
+  &lt;simplesectsep /&gt;
+  &lt;para&gt;1.1 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;v0.8.1 Tiles can have tile flags for additional properties. At the moment only flip horizontal and flip vertical are used. These bit flags are defined in TMXXMLParser.h.&lt;/para&gt;&lt;simplesectsep /&gt;&lt;para&gt;1.1 &lt;/para&gt;&lt;para&gt;v0.8.1 Tiles can have tile flags for additional properties. At the moment only flip horizontal and flip vertical are used. These bit flags are defined in TMXXMLParser.h.&lt;/para&gt;&lt;simplesectsep /&gt;&lt;para&gt;1.1 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,8 +42,8 @@
         <param name="tilesetInfo">To be added.</param>
         <param name="layerInfo">To be added.</param>
         <param name="mapInfo">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a  with an tileset info, a layer info and a map info </summary>
+        <remarks>&lt;para&gt;creates a &lt;see cref="T:Cocos2D.CCTMXLayer" /&gt; with an tileset info, a layer info and a map info &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddChild">
@@ -53,8 +65,9 @@
         <param name="child">To be added.</param>
         <param name="zOrder">To be added.</param>
         <param name="tag">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary> doesn't support adding a  manually. addchild(z, tag); is not supported on . Instead of setTileGID. </summary>
+        <remarks>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCTMXLayer" /&gt; doesn't support adding a &lt;see cref="T:Cocos2D.CCSprite" /&gt; manually. &lt;para&gt;addchild(z, tag); is not supported on &lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;. Instead of setTileGID. &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;para&gt;addchild(z, tag); is not supported on &lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;. Instead of setTileGID. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;&lt;para&gt;addchild(z, tag); is not supported on &lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;. Instead of setTileGID. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTilesetInfo">
@@ -76,9 +89,9 @@
         <param name="tilesetInfo">To be added.</param>
         <param name="layerInfo">To be added.</param>
         <param name="mapInfo">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a  with a tileset info, a layer info and a map info </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCTMXLayer" /&gt; with a tileset info, a layer info and a map info &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="LayerName">
@@ -94,7 +107,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="LayerOrientation">
@@ -124,9 +137,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set# LayerSize </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>set# LayerSize </remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bUseAutomaticVertexZ">
@@ -290,9 +303,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set# MapTileSize </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>set# MapTileSize </remarks>
       </Docs>
     </Member>
     <Member MemberName="PositionAt">
@@ -310,9 +323,9 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns the position in points of a given tile coordinate </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns the position in points of a given tile coordinate </remarks>
       </Docs>
     </Member>
     <Member MemberName="Properties">
@@ -326,9 +339,9 @@
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setProperties </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setProperties </remarks>
       </Docs>
     </Member>
     <Member MemberName="PropertyNamed">
@@ -346,9 +359,9 @@
       </Parameters>
       <Docs>
         <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>return the value for the specific property name </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>return the value for the specific property name </remarks>
       </Docs>
     </Member>
     <Member MemberName="ReleaseMap">
@@ -363,8 +376,12 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>dealloc the map that contains the tile position from memory.
+ Unless you want to know at runtime the tiles positions, you can safely call this method. If you are going to call layer-&gt;tileGIDAt() then, don't release the map </summary>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;dealloc the map that contains the tile position from memory.
+&lt;/verbatim&gt; Unless you want to know at runtime the tiles positions, you can safely call this method. If you are going to call layer-&amp;gt;&lt;ref refid="classcocos2d_1_1_t_m_x_layer_1aae99c774768f4161490800b45f71cf07" kindref="member"&gt;tileGIDAt()&lt;/ref&gt; then, don't release the map &lt;/para&gt;&lt;verbatim&gt;dealloc the map that contains the tile position from memory.
+&lt;/verbatim&gt;&lt;ref refid="classcocos2d_1_1_t_m_x_layer_1aae99c774768f4161490800b45f71cf07" kindref="member"&gt;tileGIDAt()&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
@@ -382,10 +399,49 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="node">To be added.</param>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="node">The child node which will be removed. </param>
+        <param name="cleanup">true if all running actions and callbacks on the child node will be cleanup, false otherwise. </param>
+        <summary>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</summary>
+        <remarks>&lt;para&gt;Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;cleanup&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The child node which will be removed. &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;cleanup&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;cleanup&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveTileAt">
@@ -403,8 +459,8 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>removes a tile at given tile coordinate </summary>
+        <remarks>removes a tile at given tile coordinate </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetTileGID">
@@ -424,8 +480,8 @@
       <Docs>
         <param name="gid">To be added.</param>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets the tile gid (gid = tile global id) at a given tile coordinate. The Tile GID can be obtained by using the method "tileGIDAt" or by using the TMX editor -&gt; Tileset Mgr +1. If a tile is already placed at that position, then it will be removed.</summary>
+        <remarks>&lt;para&gt;sets the tile gid (gid = tile global id) at a given tile coordinate. The Tile GID can be obtained by using the method "tileGIDAt" or by using the TMX editor -&amp;gt; Tileset Mgr +1. If a tile is already placed at that position, then it will be removed.&lt;/para&gt;&lt;para&gt;Use withFlags if the tile flags need to be changed as well &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetTileGID">
@@ -463,8 +519,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates the tiles </summary>
+        <remarks>Creates the tiles </remarks>
       </Docs>
     </Member>
     <Member MemberName="TileAt">
@@ -482,9 +538,20 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns the tile (Sprite) at a given a tile coordinate.
+ The returned  will be already added to the . Don't add it again. The  can be treated like any other : rotated, scaled, translated, opacity, color, etc. You can remove either by calling:layer-&gt;removeChild(sprite, cleanup);or layer-&gt;removeTileAt(Point(x,y)); </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;returns the tile (Sprite) at a given a tile coordinate.
+&lt;/verbatim&gt; The returned &lt;see cref="T:Cocos2D.CCSprite" /&gt; will be already added to the &lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;. Don't add it again. The &lt;see cref="T:Cocos2D.CCSprite" /&gt; can be treated like any other &lt;see cref="T:Cocos2D.CCSprite" /&gt;: rotated, scaled, translated, opacity, color, etc. You can remove either by calling:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;layer-&amp;gt;removeChild(sprite, cleanup);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;or layer-&amp;gt;removeTileAt(Point(x,y)); &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;verbatim&gt;returns the tile (Sprite) at a given a tile coordinate.
+&lt;/verbatim&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;layer-&amp;gt;removeChild(sprite, cleanup);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;or layer-&amp;gt;removeTileAt(Point(x,y)); &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;layer-&amp;gt;removeChild(sprite, cleanup);&lt;/para&gt;&lt;para&gt;or layer-&amp;gt;removeTileAt(Point(x,y)); &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="TileGIDAt">
@@ -502,9 +569,9 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns the tile gid at a given tile coordinate. It also returns the tile flags. This method requires the the tile map has not been previously released (eg. don't call [layer releaseMap]) </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns the tile gid at a given tile coordinate. It also returns the tile flags. This method requires the the tile map has not been previously released (eg. don't call [layer releaseMap]) </remarks>
       </Docs>
     </Member>
     <Member MemberName="TileGIDAt">
@@ -556,9 +623,9 @@
         <ReturnType>Cocos2D.CCTMXTilesetInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setTileSet </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setTileSet </remarks>
       </Docs>
     </Member>
   </Members>

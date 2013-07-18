@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTouch" FullName="Cocos2D.CCTouch">
   <TypeSignature Language="C#" Value="public class CCTouch" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTouch extends System.Object" />
@@ -11,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -58,9 +59,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the delta of 2 current touches locations in screen coordinates </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>returns the delta of 2 current touches locations in screen coordinates </remarks>
       </Docs>
     </Member>
     <Member MemberName="Id">
@@ -90,9 +91,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the current touch location in OpenGL coordinates </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>returns the current touch location in OpenGL coordinates </remarks>
       </Docs>
     </Member>
     <Member MemberName="LocationInView">
@@ -106,9 +107,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the current touch location in screen coordinates </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>returns the current touch location in screen coordinates </remarks>
       </Docs>
     </Member>
     <Member MemberName="PreviousLocation">
@@ -122,9 +123,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the previous touch location in OpenGL coordinates </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>returns the previous touch location in OpenGL coordinates </remarks>
       </Docs>
     </Member>
     <Member MemberName="PreviousLocationInView">
@@ -138,9 +139,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the previous touch location in screen coordinates </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>returns the previous touch location in screen coordinates </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetTouchInfo">
@@ -163,7 +164,7 @@
         <param name="x">To be added.</param>
         <param name="y">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="StartLocation">
@@ -177,9 +178,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the start touch location in OpenGL coordinates </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>returns the start touch location in OpenGL coordinates </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartLocationInView">
@@ -193,9 +194,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the start touch location in screen coordinates </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>returns the start touch location in screen coordinates </remarks>
       </Docs>
     </Member>
   </Members>

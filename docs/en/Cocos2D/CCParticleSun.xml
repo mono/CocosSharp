@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCParticleSun" FullName="Cocos2D.CCParticleSun">
   <TypeSignature Language="C#" Value="public class CCParticleSun : Cocos2D.CCParticleSystemQuad" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleSun extends Cocos2D.CCParticleSystemQuad" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>A sun particle system. </summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -24,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -58,9 +59,9 @@
       </Parameters>
       <Docs>
         <param name="numberOfParticles">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes a system with a fixed number of particles. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLabelBMFont" FullName="Cocos2D.CCLabelBMFont">
   <TypeSignature Language="C#" Value="public class CCLabelBMFont : Cocos2D.CCSpriteBatchNode, Cocos2D.ICCLabelProtocol, Cocos2D.ICCRGBAProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelBMFont extends Cocos2D.CCSpriteBatchNode implements class Cocos2D.ICCLabelProtocol, class Cocos2D.ICCRGBAProtocol" />
@@ -17,8 +18,44 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt; is a subclass of &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;</summary>
+    <remarks>&lt;para&gt;Features:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;Treats each character like a Sprite. This means that each individual character can be:&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;rotated&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;scaled&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;translated&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;tinted&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;change the opacity&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;It can be used as part of a menu item.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;anchorPoint can be used to align the "label"&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Supports AngelCode text format&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;Treats each character like a Sprite. This means that each individual character can be:&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;rotated&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;scaled&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;translated&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;tinted&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;change the opacity&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;It can be used as part of a menu item.&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;anchorPoint can be used to align the "label"&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Supports AngelCode text format&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;Treats each character like a &lt;see cref="T:Cocos2D.CCSprite" /&gt;. This means that each individual character can be:&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;para&gt;rotated&lt;/para&gt;&lt;para&gt;scaled&lt;/para&gt;&lt;para&gt;translated&lt;/para&gt;&lt;para&gt;tinted&lt;/para&gt;&lt;para&gt;change the opacity&lt;/para&gt;&lt;para&gt;It can be used as part of a menu item.&lt;/para&gt;&lt;para&gt;anchorPoint can be used to align the "label"&lt;/para&gt;&lt;para&gt;Supports AngelCode text format&lt;/para&gt;&lt;para&gt;Limitations:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;All inner characters are using an anchorPoint of (0.5f, 0.5f) and it is not recommend to change it because it might affect the rendering&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;All inner characters are using an anchorPoint of (0.5f, 0.5f) and it is not recommend to change it because it might affect the rendering&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;All inner characters are using an anchorPoint of (0.5f, 0.5f) and it is not recommend to change it because it might affect the rendering&lt;/para&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt; implements the protocol &lt;ref refid="classcocos2d_1_1_label_protocol" kindref="compound"&gt;LabelProtocol&lt;/ref&gt;, like Label and &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;. &lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt; has the flexibility of Label, the speed of &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt; and all the features of &lt;see cref="T:Cocos2D.CCSprite" /&gt;. If in doubt, use &lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt; instead of &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt; / Label.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;&lt;ref refid="classcocos2d_1_1_label_protocol" kindref="compound"&gt;LabelProtocol&lt;/ref&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;para&gt;Supported editors: &lt;ulink url="http://glyphdesigner.71squared.com/"&gt;http://glyphdesigner.71squared.com/&lt;/ulink&gt; (Commercial, Mac OS X) &lt;ulink url="http://www.n4te.com/hiero/hiero.jnlp"&gt;http://www.n4te.com/hiero/hiero.jnlp&lt;/ulink&gt; (Free, Java) &lt;ulink url="http://slick.cokeandcode.com/demos/hiero.jnlp"&gt;http://slick.cokeandcode.com/demos/hiero.jnlp&lt;/ulink&gt; (Free, Java) &lt;ulink url="http://www.angelcode.com/products/bmfont/"&gt;http://www.angelcode.com/products/bmfont/&lt;/ulink&gt; (Free, Windows only)&lt;/para&gt;&lt;ulink url="http://glyphdesigner.71squared.com/"&gt;http://glyphdesigner.71squared.com/&lt;/ulink&gt;&lt;ulink url="http://www.n4te.com/hiero/hiero.jnlp"&gt;http://www.n4te.com/hiero/hiero.jnlp&lt;/ulink&gt;&lt;ulink url="http://slick.cokeandcode.com/demos/hiero.jnlp"&gt;http://slick.cokeandcode.com/demos/hiero.jnlp&lt;/ulink&gt;&lt;ulink url="http://www.angelcode.com/products/bmfont/"&gt;http://www.angelcode.com/products/bmfont/&lt;/ulink&gt;&lt;para&gt;
+  &lt;para&gt;v0.8 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,8 +67,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates an label. </summary>
+        <remarks>Creates an label. </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -129,9 +166,29 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the anchor point in percent.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets the anchor point in percent.&lt;/para&gt;&lt;para&gt;anchorPoint is the point around which all transformations and positioning manipulations take place. It's like a pin in the node where it is "attached" to its parent. The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner. But you can use values higher than (1,1) and lower than (0,0) too. The default anchorPoint is (0.5,0.5), so it starts in the center of the node.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;anchorPoint&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The anchor point of node. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;anchorPoint&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The anchor point of node. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;anchorPoint&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;anchorPoint&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The anchor point of node. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The anchor point of node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="CascadeColorEnabled">
@@ -147,7 +204,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="CascadeOpacityEnabled">
@@ -163,7 +220,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Color">
@@ -177,9 +234,29 @@
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the color with R,G,B bytes</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the color with R,G,B bytes&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;color&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;color&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;color&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;color&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="CreateFontChars">
@@ -194,8 +271,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>updates the font chars based on the string to render </summary>
+        <remarks>updates the font chars based on the string to render </remarks>
       </Docs>
     </Member>
     <Member MemberName="Dimensions">
@@ -225,9 +302,11 @@
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the displayed color.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the displayed color.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;The &lt;see cref="T:Cocos2D.CCColor3B" /&gt; contains R,G,B bytes. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;The &lt;see cref="T:Cocos2D.CCColor3B" /&gt; contains R,G,B bytes. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCColor3B" /&gt;&lt;para&gt;The &lt;see cref="T:Cocos2D.CCColor3B" /&gt; contains R,G,B bytes. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="DisplayedOpacity">
@@ -241,9 +320,11 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the displayed opacity.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the displayed opacity.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;The opacity of sprite, from 0 ~ 255 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;The opacity of sprite, from 0 ~ 255 &lt;/para&gt;&lt;para&gt;The opacity of sprite, from 0 ~ 255 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -291,7 +372,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="GetString">
@@ -311,9 +392,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the string that is currently being used in this label</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the string that is currently being used in this label&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;The string that is currently being used in this label &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;The string that is currently being used in this label &lt;/para&gt;&lt;para&gt;The string that is currently being used in this label &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="HorizontalAlignment">
@@ -344,9 +427,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes the instance of Whether the initialization was successful. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Initializes the instance of &lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -376,9 +459,9 @@
         <param name="vAlignment">To be added.</param>
         <param name="imageOffset">To be added.</param>
         <param name="texture">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>init a bitmap font atlas with an initial string and the FNT file </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>init a bitmap font atlas with an initial string and the FNT file </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsOpacityModifyRGB">
@@ -392,9 +475,11 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;Returns opacity modify flag. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;Returns opacity modify flag. &lt;/para&gt;&lt;para&gt;Returns opacity modify flag. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="kCCLabelAutomaticWidth">
@@ -426,7 +511,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bCascadeColorEnabled">
@@ -710,9 +795,29 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the opacity.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the opacity.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;value&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;value&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;value&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;value&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="PurgeCachedData">
@@ -727,8 +832,12 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Purges the cached data.
+ Removes from memory the cached configurations and the atlas name dictionary. v0.99.3 </summary>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;Purges the cached data.
+&lt;/verbatim&gt; Removes from memory the cached configurations and the atlas name dictionary. &lt;para&gt;v0.99.3 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;Purges the cached data.
+&lt;/verbatim&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="s_pConfigurations">
@@ -757,9 +866,29 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes both X and Y scale factor of the node.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes both X and Y scale factor of the node.&lt;/para&gt;&lt;para&gt;1.0 is the default scale factor. It modifies the X and Y scale at the same time.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;scale&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;scale&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;scale&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;scale&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ScaleX">
@@ -773,9 +902,29 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the scale factor on X axis of this node</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the scale factor on X axis of this node&lt;/para&gt;&lt;para&gt;The deafult value is 1.0 if you haven't changed it before&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;fScaleX&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The scale factor on X axis. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;fScaleX&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The scale factor on X axis. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;fScaleX&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;fScaleX&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The scale factor on X axis. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The scale factor on X axis. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ScaleY">
@@ -789,9 +938,29 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the scale factor on Y axis of this node</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the scale factor on Y axis of this node&lt;/para&gt;&lt;para&gt;The Default value is 1.0 if you haven't changed it before.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;fScaleY&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The scale factor on Y axis. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;fScaleY&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The scale factor on Y axis. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;fScaleY&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;fScaleY&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The scale factor on Y axis. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The scale factor on Y axis. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetString">
@@ -813,9 +982,9 @@
         <Parameter Name="label" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="label">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="label">null terminated string </param>
+        <summary>Sets a new label using an string</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SetString">
@@ -870,8 +1039,8 @@
       </Parameters>
       <Docs>
         <param name="parentColor">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>recursive method that updates display color </summary>
+        <remarks>recursive method that updates display color </remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedOpacity">
@@ -889,8 +1058,8 @@
       </Parameters>
       <Docs>
         <param name="parentOpacity">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>recursive method that updates the displayed opacity. </summary>
+        <remarks>recursive method that updates the displayed opacity. </remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateLabel">
@@ -906,7 +1075,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="VerticalAlignment">

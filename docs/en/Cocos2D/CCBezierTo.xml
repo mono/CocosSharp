@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBezierTo" FullName="Cocos2D.CCBezierTo">
   <TypeSignature Language="C#" Value="public class CCBezierTo : Cocos2D.CCBezierBy" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBezierTo extends Cocos2D.CCBezierBy" />
@@ -10,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>An action that moves the target with a cubic Bezier curve to a destination point. </summary>
+    <remarks>&lt;para&gt;
+  &lt;para&gt;v0.8.2 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;v0.8.2 &lt;/para&gt;&lt;para&gt;v0.8.2 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,8 +29,8 @@
       </Parameters>
       <Docs>
         <param name="bezierTo">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with a duration and a bezier configuration </summary>
+        <remarks>creates the action with a duration and a bezier configuration </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -63,9 +66,9 @@
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -83,8 +86,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called before the action start. It will also set the target. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

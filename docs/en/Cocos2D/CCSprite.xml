@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSprite" FullName="Cocos2D.CCSprite">
   <TypeSignature Language="C#" Value="public class CCSprite : Cocos2D.CCNodeRGBA, Cocos2D.ICCTextureProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSprite extends Cocos2D.CCNodeRGBA implements class Cocos2D.ICCBlendProtocol, class Cocos2D.ICCTextureProtocol" />
@@ -14,8 +15,49 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> is a 2d image ( http://en.wikipedia.org/wiki/Sprite_(computer_graphics) )</summary>
+    <remarks>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCSprite" /&gt; is a 2d image ( &lt;ulink url="http://en.wikipedia.org/wiki/Sprite_(computer_graphics)"&gt;http://en.wikipedia.org/wiki/Sprite_(computer_graphics)&lt;/ulink&gt; )&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;ulink url="http://en.wikipedia.org/wiki/Sprite_(computer_graphics)"&gt;http://en.wikipedia.org/wiki/Sprite_(computer_graphics)&lt;/ulink&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCSprite" /&gt; can be created with an image, or with a sub-rectangle of an image.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;para&gt;If the parent or any of its ancestors is a &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt; then the following features/limitations are valid&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;Features when the parent is a BatchNode:MUCH faster rendering, specially if the SpriteBatchNode has many children. All the children will be drawn in a single batch.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;LimitationsCamera is not supported yet (eg: OrbitCamera action doesn't work)GridBase actions are not supported (eg: Lens, Ripple, Twirl)The Alias/Antialias property belongs to SpriteBatchNode, so you can't individually set the aliased property.The Blending function property belongs to SpriteBatchNode, so you can't individually set the blending function property.Parallax scroller is not supported, but can be simulated with a "proxy" sprite.&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;Features when the parent is a BatchNode:MUCH faster rendering, specially if the SpriteBatchNode has many children. All the children will be drawn in a single batch.&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;LimitationsCamera is not supported yet (eg: OrbitCamera action doesn't work)GridBase actions are not supported (eg: Lens, Ripple, Twirl)The Alias/Antialias property belongs to SpriteBatchNode, so you can't individually set the aliased property.The Blending function property belongs to SpriteBatchNode, so you can't individually set the blending function property.Parallax scroller is not supported, but can be simulated with a "proxy" sprite.&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;Features when the parent is a BatchNode:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;MUCH faster rendering, specially if the SpriteBatchNode has many children. All the children will be drawn in a single batch.&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;MUCH faster rendering, specially if the SpriteBatchNode has many children. All the children will be drawn in a single batch.&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;MUCH faster rendering, specially if the &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt; has many children. All the children will be drawn in a single batch.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;para&gt;Limitations&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;Camera is not supported yet (eg: OrbitCamera action doesn't work)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;GridBase actions are not supported (eg: Lens, Ripple, Twirl)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The Alias/Antialias property belongs to SpriteBatchNode, so you can't individually set the aliased property.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The Blending function property belongs to SpriteBatchNode, so you can't individually set the blending function property.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Parallax scroller is not supported, but can be simulated with a "proxy" sprite.&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;Camera is not supported yet (eg: OrbitCamera action doesn't work)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;GridBase actions are not supported (eg: Lens, Ripple, Twirl)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The Alias/Antialias property belongs to SpriteBatchNode, so you can't individually set the aliased property.&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The Blending function property belongs to SpriteBatchNode, so you can't individually set the blending function property.&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Parallax scroller is not supported, but can be simulated with a "proxy" sprite.&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCCamera" /&gt; is not supported yet (eg: &lt;see cref="T:Cocos2D.CCOrbitCamera" /&gt; action doesn't work)&lt;/para&gt;&lt;see cref="T:Cocos2D.CCCamera" /&gt;&lt;see cref="T:Cocos2D.CCOrbitCamera" /&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCGridBase" /&gt; actions are not supported (eg: Lens, Ripple, &lt;see cref="T:Cocos2D.CCTwirl" /&gt;)&lt;/para&gt;&lt;see cref="T:Cocos2D.CCGridBase" /&gt;&lt;see cref="T:Cocos2D.CCTwirl" /&gt;&lt;para&gt;The Alias/Antialias property belongs to &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;, so you can't individually set the aliased property.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;para&gt;The Blending function property belongs to &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;, so you can't individually set the blending function property.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;para&gt;Parallax scroller is not supported, but can be simulated with a "proxy" sprite.&lt;/para&gt;&lt;para&gt;If the parent is an standard &lt;see cref="T:Cocos2D.CCNode" /&gt;, then &lt;see cref="T:Cocos2D.CCSprite" /&gt; behaves like any other &lt;see cref="T:Cocos2D.CCNode" /&gt;:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;It supports blending functions&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;It supports aliasing / antialiasing&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;But the rendering will be slower: 1 draw per children.&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;It supports blending functions&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;It supports aliasing / antialiasing&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;But the rendering will be slower: 1 draw per children.&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;It supports blending functions&lt;/para&gt;&lt;para&gt;It supports aliasing / antialiasing&lt;/para&gt;&lt;para&gt;But the rendering will be slower: 1 draw per children.&lt;/para&gt;&lt;para&gt;The default anchorPoint in &lt;see cref="T:Cocos2D.CCSprite" /&gt; is (0.5, 0.5). &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,8 +69,49 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates a sprite with an image filename and a rect.</summary>
+        <remarks>&lt;para&gt;Creates a sprite with an image filename and a rect.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;A valid sprite object that is marked as autoreleased. &lt;/para&gt;
+&lt;/para&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;pszFileName&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The string wich indicates a path to image file, e.g., "scene1/monster.png" &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;rect&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Only the contents inside rect of pszFileName's texture will be applied for this sprite. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;pszFileName&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The string wich indicates a path to image file, e.g., "scene1/monster.png" &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;pszFileName&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;pszFileName&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The string wich indicates a path to image file, e.g., "scene1/monster.png" &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The string wich indicates a path to image file, e.g., "scene1/monster.png" &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;rect&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Only the contents inside rect of pszFileName's texture will be applied for this sprite. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;rect&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;rect&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Only the contents inside rect of pszFileName's texture will be applied for this sprite. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Only the contents inside rect of pszFileName's texture will be applied for this sprite. &lt;/para&gt;&lt;para&gt;A valid sprite object that is marked as autoreleased. &lt;/para&gt;&lt;para&gt;A valid sprite object that is marked as autoreleased. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -131,11 +214,69 @@
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="zOrder">To be added.</param>
-        <param name="tag">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">A child node </param>
+        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)setZOrder(int)</param>
+        <param name="tag">A interger to identify the node easily. Please refer to setTag(int)setTag(int)</param>
+        <summary>Adds a child to the container with z order and tag</summary>
+        <remarks>&lt;para&gt;Adds a child to the container with z order and tag&lt;/para&gt;&lt;para&gt;If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A child node &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;zOrder&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;tag&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A child node &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A child node &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A child node &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;zOrder&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;zOrder&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;zOrder&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;tag&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;tag&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;tag&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorPoint">
@@ -149,9 +290,29 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the anchor point in percent.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets the anchor point in percent.&lt;/para&gt;&lt;para&gt;anchorPoint is the point around which all transformations and positioning manipulations take place. It's like a pin in the node where it is "attached" to its parent. The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner. But you can use values higher than (1,1) and lower than (0,0) too. The default anchorPoint is (0.5,0.5), so it starts in the center of the node.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;anchorPoint&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The anchor point of node. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;anchorPoint&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The anchor point of node. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;anchorPoint&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;anchorPoint&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The anchor point of node. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The anchor point of node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="AtlasIndex">
@@ -165,9 +326,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the index used on the . Don't modify this value unless you know what you are doing </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets the index used on the &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;. &lt;para&gt;Don't modify this value unless you know what you are doing &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;&lt;para&gt;Don't modify this value unless you know what you are doing &lt;/para&gt;&lt;para&gt;Don't modify this value unless you know what you are doing &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="BatchNode">
@@ -181,9 +342,40 @@
         <ReturnType>Cocos2D.CCSpriteBatchNode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the batch node to sprite This method is not recommended for game developers. Sample code for using batch node SpriteBatchNode*batch=SpriteBatchNode::create("Images/grossini_dance_atlas.png",15);Sprite*sprite=Sprite::createWithTexture(batch-&gt;getTexture(),Rect(0,0,57,57));batch-&gt;addChild(sprite);layer-&gt;addChild(batch);</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets the batch node to sprite &lt;para&gt;This method is not recommended for game developers. Sample code for using batch node &lt;programlisting&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;SpriteBatchNode&lt;sp /&gt;*batch&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"Images/grossini_dance_atlas.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;15);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;ref refid="group__sprite__nodes_1ga362d1c2e2424fda68b18c63c73496943" kindref="member"&gt;Sprite&lt;/ref&gt;&lt;sp /&gt;*sprite&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture(),&lt;sp /&gt;Rect(0,&lt;sp /&gt;0,&lt;sp /&gt;57,&lt;sp /&gt;57));&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;batch-&amp;gt;&lt;ref refid="group__sprite__nodes_1ga5c67b2e188a06581c15a0d5eb405391e" kindref="member"&gt;addChild&lt;/ref&gt;(sprite);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;layer-&amp;gt;addChild(batch);&lt;/highlight&gt;&lt;/codeline&gt;&lt;/programlisting&gt;&lt;/para&gt;&lt;/para&gt;&lt;para&gt;This method is not recommended for game developers. Sample code for using batch node &lt;programlisting&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;SpriteBatchNode&lt;sp /&gt;*batch&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"Images/grossini_dance_atlas.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;15);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;ref refid="group__sprite__nodes_1ga362d1c2e2424fda68b18c63c73496943" kindref="member"&gt;Sprite&lt;/ref&gt;&lt;sp /&gt;*sprite&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture(),&lt;sp /&gt;Rect(0,&lt;sp /&gt;0,&lt;sp /&gt;57,&lt;sp /&gt;57));&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;batch-&amp;gt;&lt;ref refid="group__sprite__nodes_1ga5c67b2e188a06581c15a0d5eb405391e" kindref="member"&gt;addChild&lt;/ref&gt;(sprite);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;layer-&amp;gt;addChild(batch);&lt;/highlight&gt;&lt;/codeline&gt;&lt;/programlisting&gt;&lt;/para&gt;&lt;programlisting&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;SpriteBatchNode&lt;sp /&gt;*batch&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;
+    &lt;highlight class="stringliteral"&gt;"Images/grossini_dance_atlas.png"&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;,&lt;sp /&gt;15);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;
+      &lt;ref refid="group__sprite__nodes_1ga362d1c2e2424fda68b18c63c73496943" kindref="member"&gt;Sprite&lt;/ref&gt;
+      &lt;sp /&gt;*sprite&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture(),&lt;sp /&gt;Rect(0,&lt;sp /&gt;0,&lt;sp /&gt;57,&lt;sp /&gt;57));&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;batch-&amp;gt;&lt;ref refid="group__sprite__nodes_1ga5c67b2e188a06581c15a0d5eb405391e" kindref="member"&gt;addChild&lt;/ref&gt;(sprite);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;layer-&amp;gt;addChild(batch);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+&lt;/programlisting&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;SpriteBatchNode&lt;sp /&gt;*batch&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;
+  &lt;highlight class="stringliteral"&gt;"Images/grossini_dance_atlas.png"&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;,&lt;sp /&gt;15);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;SpriteBatchNode&lt;sp /&gt;*batch&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;&lt;highlight class="stringliteral"&gt;"Images/grossini_dance_atlas.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;15);&lt;/highlight&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;
+    &lt;ref refid="group__sprite__nodes_1ga362d1c2e2424fda68b18c63c73496943" kindref="member"&gt;Sprite&lt;/ref&gt;
+    &lt;sp /&gt;*sprite&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture(),&lt;sp /&gt;Rect(0,&lt;sp /&gt;0,&lt;sp /&gt;57,&lt;sp /&gt;57));&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;
+  &lt;ref refid="group__sprite__nodes_1ga362d1c2e2424fda68b18c63c73496943" kindref="member"&gt;Sprite&lt;/ref&gt;
+  &lt;sp /&gt;*sprite&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture(),&lt;sp /&gt;Rect(0,&lt;sp /&gt;0,&lt;sp /&gt;57,&lt;sp /&gt;57));&lt;/highlight&gt;&lt;ref refid="group__sprite__nodes_1ga362d1c2e2424fda68b18c63c73496943" kindref="member"&gt;Sprite&lt;/ref&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;batch-&amp;gt;&lt;ref refid="group__sprite__nodes_1ga5c67b2e188a06581c15a0d5eb405391e" kindref="member"&gt;addChild&lt;/ref&gt;(sprite);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;batch-&amp;gt;&lt;ref refid="group__sprite__nodes_1ga5c67b2e188a06581c15a0d5eb405391e" kindref="member"&gt;addChild&lt;/ref&gt;(sprite);&lt;/highlight&gt;&lt;ref refid="group__sprite__nodes_1ga5c67b2e188a06581c15a0d5eb405391e" kindref="member"&gt;addChild&lt;/ref&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;layer-&amp;gt;addChild(batch);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;layer-&amp;gt;addChild(batch);&lt;/highlight&gt;&lt;para&gt;This method is not recommended for game developers. Sample code for using batch node &lt;programlisting&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;SpriteBatchNode&lt;sp /&gt;*batch&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"Images/grossini_dance_atlas.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;,&lt;sp /&gt;15);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;ref refid="group__sprite__nodes_1ga362d1c2e2424fda68b18c63c73496943" kindref="member"&gt;Sprite&lt;/ref&gt;&lt;sp /&gt;*sprite&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture(),&lt;sp /&gt;Rect(0,&lt;sp /&gt;0,&lt;sp /&gt;57,&lt;sp /&gt;57));&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;batch-&amp;gt;&lt;ref refid="group__sprite__nodes_1ga5c67b2e188a06581c15a0d5eb405391e" kindref="member"&gt;addChild&lt;/ref&gt;(sprite);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;layer-&amp;gt;addChild(batch);&lt;/highlight&gt;&lt;/codeline&gt;&lt;/programlisting&gt;&lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
@@ -197,9 +389,11 @@
         <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the blending function that is currently being used.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the blending function that is currently being used.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCBlendFunc" /&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Color">
@@ -213,9 +407,29 @@
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the color with R,G,B bytes</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the color with R,G,B bytes&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;color&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;color&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;color&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;color&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Deserialize">
@@ -248,9 +462,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Makes the  to be updated in the Atlas. </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Makes the &lt;see cref="T:Cocos2D.CCSprite" /&gt; to be updated in the Atlas. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="DisplayFrame">
@@ -264,9 +478,9 @@
         <ReturnType>Cocos2D.CCSpriteFrame</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the current displayed frame. </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>Returns the current displayed frame. </remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -281,8 +495,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
+        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="FlipX">
@@ -296,9 +523,29 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets whether the sprite should be flipped horizontally or not.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets whether the sprite should be flipped horizontally or not.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;bFlipX&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if the sprite should be flipped horizaontally, false otherwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;bFlipX&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if the sprite should be flipped horizaontally, false otherwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;bFlipX&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;bFlipX&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if the sprite should be flipped horizaontally, false otherwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if the sprite should be flipped horizaontally, false otherwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="FlipY">
@@ -312,9 +559,29 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets whether the sprite should be flipped vertically or not.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets whether the sprite should be flipped vertically or not.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;bFlipY&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if the sprite should be flipped vertically, flase otherwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;bFlipY&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if the sprite should be flipped vertically, flase otherwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;bFlipY&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;bFlipY&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if the sprite should be flipped vertically, flase otherwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if the sprite should be flipped vertically, flase otherwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="IgnoreAnchorPointForPosition">
@@ -328,9 +595,29 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets whether the anchor point will be (0,0) when you position this node.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets whether the anchor point will be (0,0) when you position this node.&lt;/para&gt;&lt;para&gt;This is an internal method, only used by &lt;see cref="T:Cocos2D.CCLayer" /&gt; and &lt;see cref="T:Cocos2D.CCScene" /&gt;. Don't call it outside framework. The default value is false, while in &lt;see cref="T:Cocos2D.CCLayer" /&gt; and &lt;see cref="T:Cocos2D.CCScene" /&gt; are true&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;see cref="T:Cocos2D.CCScene" /&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;see cref="T:Cocos2D.CCScene" /&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;ignore&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if anchor point will be (0,0) when you position this node &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;ignore&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if anchor point will be (0,0) when you position this node &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;ignore&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;ignore&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if anchor point will be (0,0) when you position this node &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if anchor point will be (0,0) when you position this node &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -345,9 +632,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes an empty sprite with nothing init. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>Initializes an empty sprite with nothing init. </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithFile">
@@ -364,10 +651,51 @@
         <Parameter Name="fileName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="fileName">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="fileName">The path to an image file in local file system. </param>
+        <summary>Initializes a sprite with an image filename, and a rect.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Initializes a sprite with an image filename, and a rect.&lt;/para&gt;&lt;para&gt;This method will find pszFilename from local file system, load its content to &lt;see cref="T:Cocos2D.CCTexture2D" /&gt;, then use &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; to create a sprite. After initialization, the offset will be (0,0).&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;&lt;para&gt;
+  &lt;para&gt;true if the sprite is initialized properly, false otherwise. &lt;/para&gt;
+&lt;/para&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;pszFilename&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The path to an image file in local file system. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;rect&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The rectangle assigned the content area from texture. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;pszFilename&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The path to an image file in local file system. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;pszFilename&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;pszFilename&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The path to an image file in local file system. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The path to an image file in local file system. &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;rect&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The rectangle assigned the content area from texture. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;rect&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;rect&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The rectangle assigned the content area from texture. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The rectangle assigned the content area from texture. &lt;/para&gt;&lt;para&gt;true if the sprite is initialized properly, false otherwise. &lt;/para&gt;&lt;para&gt;true if the sprite is initialized properly, false otherwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithFile">
@@ -406,10 +734,32 @@
         <Parameter Name="pSpriteFrame" Type="Cocos2D.CCSpriteFrame" />
       </Parameters>
       <Docs>
-        <param name="pSpriteFrame">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="pSpriteFrame">A  object. It should includes a valid texture and a rect </param>
+        <summary>Initializes a sprite with an . The texture and rect in  will be applied on this sprite</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Initializes a sprite with an &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt;. The texture and rect in &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt; will be applied on this sprite&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt;&lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt;&lt;para&gt;
+  &lt;para&gt;true if the sprite is initialized properly, false otherwise. &lt;/para&gt;
+&lt;/para&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;pSpriteFrame&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt; object. It should includes a valid texture and a rect &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;pSpriteFrame&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt; object. It should includes a valid texture and a rect &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;pSpriteFrame&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;pSpriteFrame&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt; object. It should includes a valid texture and a rect &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt; object. It should includes a valid texture and a rect &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt;&lt;para&gt;true if the sprite is initialized properly, false otherwise. &lt;/para&gt;&lt;para&gt;true if the sprite is initialized properly, false otherwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
@@ -426,10 +776,68 @@
         <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
       </Parameters>
       <Docs>
-        <param name="texture">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="texture">A  object whose texture will be applied to this sprite. </param>
+        <summary>Initializes a sprite with a texture and a rect in points, optionally rotated.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Initializes a sprite with a texture and a rect in points, optionally rotated.&lt;/para&gt;&lt;para&gt;After initialization, the offset will be (0,0). &lt;para&gt;This is the designated initializer.&lt;/para&gt;&lt;para&gt;true if the sprite is initialized properly, false otherwise. &lt;/para&gt;&lt;/para&gt;&lt;para&gt;This is the designated initializer.&lt;/para&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;pTexture&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object whose texture will be applied to this sprite. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;rect&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A rectangle assigned the contents of texture. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;rotated&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Whether or not the texture rectangle is rotated. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;pTexture&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object whose texture will be applied to this sprite. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;pTexture&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;pTexture&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object whose texture will be applied to this sprite. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object whose texture will be applied to this sprite. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;rect&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A rectangle assigned the contents of texture. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;rect&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;rect&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A rectangle assigned the contents of texture. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A rectangle assigned the contents of texture. &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;rotated&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Whether or not the texture rectangle is rotated. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;rotated&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;rotated&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Whether or not the texture rectangle is rotated. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Whether or not the texture rectangle is rotated. &lt;/para&gt;&lt;para&gt;true if the sprite is initialized properly, false otherwise. &lt;/para&gt;&lt;para&gt;This is the designated initializer.&lt;/para&gt;&lt;para&gt;true if the sprite is initialized properly, false otherwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
@@ -493,9 +901,9 @@
       </Parameters>
       <Docs>
         <param name="pFrame">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Returns whether or not a  is being displayed </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns whether or not a &lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt; is being displayed &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteFrame" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsOpacityModifyRGB">
@@ -509,9 +917,11 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;Returns opacity modify flag. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;Returns opacity modify flag. &lt;/para&gt;&lt;para&gt;Returns opacity modify flag. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsTextureRectRotated">
@@ -525,9 +935,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns whether or not the texture rectangle is rotated. </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>Returns whether or not the texture rectangle is rotated. </remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bDirty">
@@ -796,9 +1206,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the offset position of the sprite. Calculated automatically by editors like Zwoptex. </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>Gets the offset position of the sprite. Calculated automatically by editors like Zwoptex. </remarks>
       </Docs>
     </Member>
     <Member MemberName="Opacity">
@@ -812,9 +1222,29 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the opacity.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the opacity.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;value&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;value&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;value&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;value&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Position">
@@ -828,9 +1258,40 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the position (x,y) of the node in OpenGL coordinates</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the position (x,y) of the node in OpenGL coordinates&lt;/para&gt;&lt;para&gt;Usually we use Point(x,y) to compose Point object. The original point (0,0) is at the left-bottom corner of screen. For example, this codesnip sets the node in the center of screen. &lt;programlisting&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;Size&lt;sp /&gt;size&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member"&gt;Director::getInstance&lt;/ref&gt;()-&amp;gt;&lt;ref refid="classcocos2d_1_1_director_1a760fff09a5469c8e8be57257df312695" kindref="member"&gt;getWinSize&lt;/ref&gt;();&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;node-&amp;gt;setPosition(&lt;sp /&gt;Point(size.width/2,&lt;sp /&gt;size.height/2)&lt;sp /&gt;)&lt;/highlight&gt;&lt;/codeline&gt;&lt;/programlisting&gt;&lt;/para&gt;&lt;programlisting&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;Size&lt;sp /&gt;size&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member"&gt;Director::getInstance&lt;/ref&gt;()-&amp;gt;&lt;ref refid="classcocos2d_1_1_director_1a760fff09a5469c8e8be57257df312695" kindref="member"&gt;getWinSize&lt;/ref&gt;();&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;node-&amp;gt;setPosition(&lt;sp /&gt;Point(size.width/2,&lt;sp /&gt;size.height/2)&lt;sp /&gt;)&lt;/highlight&gt;
+  &lt;/codeline&gt;
+&lt;/programlisting&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;Size&lt;sp /&gt;size&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member"&gt;Director::getInstance&lt;/ref&gt;()-&amp;gt;&lt;ref refid="classcocos2d_1_1_director_1a760fff09a5469c8e8be57257df312695" kindref="member"&gt;getWinSize&lt;/ref&gt;();&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;Size&lt;sp /&gt;size&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member"&gt;Director::getInstance&lt;/ref&gt;()-&amp;gt;&lt;ref refid="classcocos2d_1_1_director_1a760fff09a5469c8e8be57257df312695" kindref="member"&gt;getWinSize&lt;/ref&gt;();&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member"&gt;Director::getInstance&lt;/ref&gt;&lt;ref refid="classcocos2d_1_1_director_1a760fff09a5469c8e8be57257df312695" kindref="member"&gt;getWinSize&lt;/ref&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;node-&amp;gt;setPosition(&lt;sp /&gt;Point(size.width/2,&lt;sp /&gt;size.height/2)&lt;sp /&gt;)&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;node-&amp;gt;setPosition(&lt;sp /&gt;Point(size.width/2,&lt;sp /&gt;size.height/2)&lt;sp /&gt;)&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;position&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The position (x,y) of the node in OpenGL coordinates &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;position&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The position (x,y) of the node in OpenGL coordinates &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;position&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;position&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The position (x,y) of the node in OpenGL coordinates &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The position (x,y) of the node in OpenGL coordinates &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Quad">
@@ -844,9 +1305,9 @@
         <ReturnType>Cocos2D.CCV3F_C4B_T2F_Quad</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the quad (tex coords, vertex coords and color) information. </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>Returns the quad (tex coords, vertex coords and color) information. </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveAllChildrenWithCleanup">
@@ -863,9 +1324,29 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="cleanup">true if all running actions on all children nodes should be cleanup, false oterwise. </param>
+        <summary>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</summary>
+        <remarks>&lt;para&gt;Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;cleanup&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;cleanup&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;cleanup&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
@@ -883,10 +1364,49 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">The child node which will be removed. </param>
+        <param name="cleanup">true if all running actions and callbacks on the child node will be cleanup, false otherwise. </param>
+        <summary>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</summary>
+        <remarks>&lt;para&gt;Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;cleanup&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The child node which will be removed. &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;cleanup&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;cleanup&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ReorderChild">
@@ -904,10 +1424,49 @@
         <Parameter Name="zOrder" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="zOrder">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">An already added child node. It MUST be already added. </param>
+        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)setZOrder(int)</param>
+        <summary>Reorders a child according to a new z value.</summary>
+        <remarks>&lt;para&gt;Reorders a child according to a new z value.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;zOrder&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;zOrder&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;zOrder&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;zOrder&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Rotation">
@@ -921,9 +1480,29 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the rotation (angle) of the node in degrees.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets the rotation (angle) of the node in degrees.&lt;/para&gt;&lt;para&gt;0 is the default rotation angle. Positive values rotate node clockwise, and negative values for anti-clockwise.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;rotation&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The rotation of the node in degrees. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;rotation&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The rotation of the node in degrees. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;rotation&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;rotation&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The rotation of the node in degrees. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The rotation of the node in degrees. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RotationX">
@@ -937,9 +1516,29 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the X rotation (angle) of the node in degrees which performs a horizontal rotational skew.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets the X rotation (angle) of the node in degrees which performs a horizontal rotational skew.&lt;/para&gt;&lt;para&gt;0 is the default rotation angle. Positive values rotate node clockwise, and negative values for anti-clockwise.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;fRotationX&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The X rotation in degrees which performs a horizontal rotational skew. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;fRotationX&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The X rotation in degrees which performs a horizontal rotational skew. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;fRotationX&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;fRotationX&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The X rotation in degrees which performs a horizontal rotational skew. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The X rotation in degrees which performs a horizontal rotational skew. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RotationY">
@@ -953,9 +1552,29 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the Y rotation (angle) of the node in degrees which performs a vertical rotational skew.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets the Y rotation (angle) of the node in degrees which performs a vertical rotational skew.&lt;/para&gt;&lt;para&gt;0 is the default rotation angle. Positive values rotate node clockwise, and negative values for anti-clockwise.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;fRotationY&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The Y rotation in degrees. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;fRotationY&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The Y rotation in degrees. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;fRotationY&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;fRotationY&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The Y rotation in degrees. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The Y rotation in degrees. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Scale">
@@ -969,9 +1588,29 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes both X and Y scale factor of the node.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes both X and Y scale factor of the node.&lt;/para&gt;&lt;para&gt;1.0 is the default scale factor. It modifies the X and Y scale at the same time.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;scale&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;scale&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;scale&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;scale&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ScaleX">
@@ -985,9 +1624,29 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the scale factor on X axis of this node</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the scale factor on X axis of this node&lt;/para&gt;&lt;para&gt;The deafult value is 1.0 if you haven't changed it before&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;fScaleX&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The scale factor on X axis. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;fScaleX&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The scale factor on X axis. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;fScaleX&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;fScaleX&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The scale factor on X axis. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The scale factor on X axis. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ScaleY">
@@ -1001,9 +1660,29 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the scale factor on Y axis of this node</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the scale factor on Y axis of this node&lt;/para&gt;&lt;para&gt;The Default value is 1.0 if you haven't changed it before.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;fScaleY&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The scale factor on Y axis. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;fScaleY&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The scale factor on Y axis. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;fScaleY&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;fScaleY&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The scale factor on Y axis. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The scale factor on Y axis. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Serialize">
@@ -1041,7 +1720,7 @@
       <Docs>
         <param name="bValue">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SetDisplayFrameWithAnimationName">
@@ -1061,8 +1740,8 @@
       <Docs>
         <param name="animationName">To be added.</param>
         <param name="frameIndex">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Changes the display frame with animation name and index. The animation name will be get from the </summary>
+        <remarks>&lt;para&gt;Changes the display frame with animation name and index. The animation name will be get from the &lt;see cref="T:Cocos2D.CCAnimationCache" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCAnimationCache" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetReorderChildDirtyRecursively">
@@ -1078,7 +1757,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SetTextureRect">
@@ -1096,8 +1775,8 @@
       </Parameters>
       <Docs>
         <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Sets the texture rect, rectRotated and untrimmed size of the  in points. It will update the texture coordinates and the vertex rectangle. </summary>
+        <remarks>&lt;para&gt;Sets the texture rect, rectRotated and untrimmed size of the &lt;see cref="T:Cocos2D.CCSprite" /&gt; in points. It will update the texture coordinates and the vertex rectangle. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetTextureRect">
@@ -1138,8 +1817,8 @@
       </Parameters>
       <Docs>
         <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Sets the vertex rect. It will be called internally by setTextureRect. Useful if you want to create 2x images from SD images in Retina Display. Do not call it manually. Use setTextureRect instead. </summary>
+        <remarks>Sets the vertex rect. It will be called internally by setTextureRect. Useful if you want to create 2x images from SD images in Retina Display. Do not call it manually. Use setTextureRect instead. </remarks>
       </Docs>
     </Member>
     <Member MemberName="SkewX">
@@ -1153,9 +1832,29 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the X skew angle of the node in degrees.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the X skew angle of the node in degrees.&lt;/para&gt;&lt;para&gt;This angle describes the shear distortion in the X direction. Thus, it is the angle between the Y axis and the left edge of the shape The default skewX angle is 0. Positive values distort the node in a CW direction.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;fSkewX&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The X skew angle of the node in degrees. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;fSkewX&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The X skew angle of the node in degrees. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;fSkewX&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;fSkewX&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The X skew angle of the node in degrees. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The X skew angle of the node in degrees. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="SkewY">
@@ -1169,9 +1868,29 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the Y skew angle of the node in degrees.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the Y skew angle of the node in degrees.&lt;/para&gt;&lt;para&gt;This angle describes the shear distortion in the Y direction. Thus, it is the angle between the X axis and the bottom edge of the shape The default skewY angle is 0. Positive values distort the node in a CCW direction.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;fSkewY&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The Y skew angle of the node in degrees. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;fSkewY&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The Y skew angle of the node in degrees. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;fSkewY&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;fSkewY&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The Y skew angle of the node in degrees. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The Y skew angle of the node in degrees. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="SortAllChildren">
@@ -1186,8 +1905,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Sorts the children array once before drawing, instead of every time when a child is added or reordered. This appraoch can improves the performance massively. Don't call this manually unless a child added needs to be removed in the same frame </summary>
+        <remarks>&lt;para&gt;Sorts the children array once before drawing, instead of every time when a child is added or reordered. This appraoch can improves the performance massively. &lt;para&gt;Don't call this manually unless a child added needs to be removed in the same frame &lt;/para&gt;&lt;/para&gt;&lt;para&gt;Don't call this manually unless a child added needs to be removed in the same frame &lt;/para&gt;&lt;para&gt;Don't call this manually unless a child added needs to be removed in the same frame &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -1201,9 +1920,11 @@
         <ReturnType>Cocos2D.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the currently used texture</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the currently used texture&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;The texture that is currenlty being used. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;The texture that is currenlty being used. &lt;/para&gt;&lt;para&gt;The texture that is currenlty being used. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="TextureRect">
@@ -1217,9 +1938,9 @@
         <ReturnType>Cocos2D.CCRect</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the rect of the  in points </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the rect of the &lt;see cref="T:Cocos2D.CCSprite" /&gt; in points &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateBlendFunc">
@@ -1235,7 +1956,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedColor">
@@ -1253,8 +1974,8 @@
       </Parameters>
       <Docs>
         <param name="parentColor">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>recursive method that updates display color </summary>
+        <remarks>recursive method that updates display color </remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedOpacity">
@@ -1272,8 +1993,8 @@
       </Parameters>
       <Docs>
         <param name="parentOpacity">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>recursive method that updates the displayed opacity. </summary>
+        <remarks>recursive method that updates the displayed opacity. </remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateTransform">
@@ -1288,8 +2009,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Updates the quad according the rotation, position, scale values. </summary>
+        <remarks>Updates the quad according the rotation, position, scale values. </remarks>
       </Docs>
     </Member>
     <Member MemberName="VertexZ">
@@ -1303,9 +2024,42 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the real OpenGL Z vertex.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets the real OpenGL Z vertex.&lt;/para&gt;&lt;para&gt;Differences between openGL Z vertex and &lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt; Z order:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;OpenGL Z modifies the Z vertex, and not the Z order in the relation between parent-children&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;OpenGL Z might require to set 2D projection&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;cocos2d Z order works OK if all the nodes uses the same openGL Z vertex. eg: vertexZ = 0&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;OpenGL Z modifies the Z vertex, and not the Z order in the relation between parent-children&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;OpenGL Z might require to set 2D projection&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;cocos2d Z order works OK if all the nodes uses the same openGL Z vertex. eg: vertexZ = 0&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;OpenGL Z modifies the Z vertex, and not the Z order in the relation between parent-children&lt;/para&gt;&lt;para&gt;OpenGL Z might require to set 2D projection&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt; Z order works OK if all the nodes uses the same openGL Z vertex. eg: vertexZ = 0&lt;/para&gt;&lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt;&lt;para&gt;
+  &lt;para&gt;Use it at your own risk since it might break the &lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt; parent-children z order&lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;Use it at your own risk since it might break the &lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt; parent-children z order&lt;/para&gt;&lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;fVertexZ&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;OpenGL Z vertex of this node. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;fVertexZ&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;OpenGL Z vertex of this node. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;fVertexZ&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;fVertexZ&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;OpenGL Z vertex of this node. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;OpenGL Z vertex of this node. &lt;/para&gt;&lt;para&gt;Use it at your own risk since it might break the &lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt; parent-children z order&lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Visible">
@@ -1319,9 +2073,29 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets whether the node is visible</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets whether the node is visible&lt;/para&gt;&lt;para&gt;The default value is true, a node is default to visible&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;visible&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if the node is visible, false if the node is hidden. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;visible&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if the node is visible, false if the node is hidden. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;visible&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;visible&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if the node is visible, false if the node is hidden. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if the node is visible, false if the node is hidden. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
   </Members>

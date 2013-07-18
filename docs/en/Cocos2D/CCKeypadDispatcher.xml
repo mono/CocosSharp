@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCKeypadDispatcher" FullName="Cocos2D.CCKeypadDispatcher">
   <TypeSignature Language="C#" Value="public class CCKeypadDispatcher" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCKeypadDispatcher extends System.Object" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Dispatch the keypad message from the phone. </summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -42,8 +43,8 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>add delegate to concern keypad msg </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DispatchKeypadMsg">
@@ -81,8 +82,8 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>force add the delegate </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ForceRemoveDelegate">
@@ -100,8 +101,8 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>force remove the delegate </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bLocked">
@@ -209,8 +210,8 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>remove the delegate from the delegates who concern keypad msg </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

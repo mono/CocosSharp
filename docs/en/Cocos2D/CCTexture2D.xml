@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTexture2D" FullName="Cocos2D.CCTexture2D">
   <TypeSignature Language="C#" Value="public class CCTexture2D : Cocos2D.CCGraphicsResource" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTexture2D extends Cocos2D.CCGraphicsResource" />
@@ -8,11 +9,11 @@
   <Base>
     <BaseTypeName>Cocos2D.CCGraphicsResource</BaseTypeName>
   </Base>
-  <Interfaces>
-  </Interfaces>
+  <Interfaces></Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; class. This class allows to easily create OpenGL 2D textures from images, text or raw data. The created &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object will always have power-of-two dimensions. Depending on how you create the &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, the actual image area of the texture might be smaller than the texture dimensions i.e. "contentSize" != (pixelsWide, pixelsHigh) and (maxS, maxT) != (1.0, 1.0). Be aware that the content of the generated textures will be upside-down! &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -39,9 +40,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Helper functions that returns bits per pixels for a given format. v2.0 </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Helper functions that returns bits per pixels for a given format. &lt;para&gt;v2.0 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v2.0 &lt;/para&gt;&lt;para&gt;v2.0 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
@@ -55,9 +56,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getContentSize </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>getContentSize </remarks>
       </Docs>
     </Member>
     <Member MemberName="ContentSizeInPixels">
@@ -71,9 +72,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>content size </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>content size </remarks>
       </Docs>
     </Member>
     <Member MemberName="DefaultAlphaPixelFormat">
@@ -87,8 +88,8 @@
         <ReturnType>Microsoft.Xna.Framework.Graphics.SurfaceFormat</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>returns the alpha pixel format v0.8 </summary>
+        <remarks>&lt;para&gt;returns the alpha pixel format &lt;para&gt;v0.8 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="DetectImageFormat">
@@ -139,8 +140,12 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Generates mipmap images for the texture.
+ It only works if the texture size is POT (power of 2). v0.99.0 </summary>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;Generates mipmap images for the texture.
+&lt;/verbatim&gt; It only works if the texture size is POT (power of 2). &lt;para&gt;v0.99.0 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;Generates mipmap images for the texture.
+&lt;/verbatim&gt;&lt;para&gt;v0.99.0 &lt;/para&gt;&lt;para&gt;v0.99.0 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="HasPremultipliedAlpha">
@@ -156,7 +161,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -274,9 +279,9 @@
       </Parameters>
       <Docs>
         <param name="data">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes with a texture2d with data </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>Initializes with a texture2d with data </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithData">
@@ -526,9 +531,9 @@
         <param name="text">To be added.</param>
         <param name="fontName">To be added.</param>
         <param name="fontSize">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes a texture from a string using a text definition </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>Initializes a texture from a string using a text definition </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -588,9 +593,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getName </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>getName </remarks>
       </Docs>
     </Member>
     <Member MemberName="OptimizeForPremultipliedAlpha">
@@ -619,9 +624,9 @@
         <ReturnType>Microsoft.Xna.Framework.Graphics.SurfaceFormat</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getPixelFormat </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>getPixelFormat </remarks>
       </Docs>
     </Member>
     <Member MemberName="PixelsHigh">
@@ -635,9 +640,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getPixelsHigh </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>getPixelsHigh </remarks>
       </Docs>
     </Member>
     <Member MemberName="PixelsWide">
@@ -651,9 +656,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getPixelsWide </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>getPixelsWide </remarks>
       </Docs>
     </Member>
     <Member MemberName="Reinit">
@@ -746,8 +751,31 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets alias texture parameters:
+GL_TEXTURE_MIN_FILTER = GL_NEARESTGL_TEXTURE_MAG_FILTER = GL_NEAREST</summary>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;sets alias texture parameters:
+&lt;/verbatim&gt;
+  &lt;list type="bullet"&gt;
+    &lt;item&gt;
+      &lt;description&gt;GL_TEXTURE_MIN_FILTER = GL_NEAREST&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;description&gt;GL_TEXTURE_MAG_FILTER = GL_NEAREST&lt;/description&gt;
+    &lt;/item&gt;
+  &lt;/list&gt;
+&lt;/para&gt;&lt;verbatim&gt;sets alias texture parameters:
+&lt;/verbatim&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;GL_TEXTURE_MIN_FILTER = GL_NEAREST&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;GL_TEXTURE_MAG_FILTER = GL_NEAREST&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;GL_TEXTURE_MIN_FILTER = GL_NEAREST&lt;/para&gt;&lt;para&gt;GL_TEXTURE_MAG_FILTER = GL_NEAREST&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;
+  &lt;para&gt;v0.8 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetAntiAliasTexParameters">
@@ -762,8 +790,31 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets antialias texture parameters:
+GL_TEXTURE_MIN_FILTER = GL_LINEARGL_TEXTURE_MAG_FILTER = GL_LINEAR</summary>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;sets antialias texture parameters:
+&lt;/verbatim&gt;
+  &lt;list type="bullet"&gt;
+    &lt;item&gt;
+      &lt;description&gt;GL_TEXTURE_MIN_FILTER = GL_LINEAR&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;description&gt;GL_TEXTURE_MAG_FILTER = GL_LINEAR&lt;/description&gt;
+    &lt;/item&gt;
+  &lt;/list&gt;
+&lt;/para&gt;&lt;verbatim&gt;sets antialias texture parameters:
+&lt;/verbatim&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;GL_TEXTURE_MIN_FILTER = GL_LINEAR&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;GL_TEXTURE_MAG_FILTER = GL_LINEAR&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;GL_TEXTURE_MIN_FILTER = GL_LINEAR&lt;/para&gt;&lt;para&gt;GL_TEXTURE_MAG_FILTER = GL_LINEAR&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;
+  &lt;para&gt;v0.8 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">

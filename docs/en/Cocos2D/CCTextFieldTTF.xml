@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTextFieldTTF" FullName="Cocos2D.CCTextFieldTTF">
   <TypeSignature Language="C#" Value="public class CCTextFieldTTF : Cocos2D.CCLabelTTF, Cocos2D.ICCIMEDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTextFieldTTF extends Cocos2D.CCLabelTTF implements class Cocos2D.ICCIMEDelegate" />
@@ -14,8 +15,8 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>A simple text input field with TTF font. </summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -43,9 +44,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Open keyboard and receive input text. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="CalcCharCount">
@@ -80,9 +81,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Decide if the delegate instance is ready to receive an IME message. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Called by &lt;ref refid="classcocos2d_1_1_i_m_e_dispatcher" kindref="compound"&gt;IMEDispatcher&lt;/ref&gt;. &lt;/para&gt;&lt;ref refid="classcocos2d_1_1_i_m_e_dispatcher" kindref="compound"&gt;IMEDispatcher&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="CanDetachWithIME">
@@ -97,9 +98,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Decide if the delegate instance can stop receiving IME messages. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="CharCount">
@@ -113,9 +114,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getCharCount </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>getCharCount </remarks>
       </Docs>
     </Member>
     <Member MemberName="ColorSpaceHolder">
@@ -131,7 +132,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Delegate">
@@ -162,8 +163,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>&lt;para&gt;Called by &lt;ref refid="classcocos2d_1_1_i_m_e_dispatcher" kindref="compound"&gt;IMEDispatcher&lt;/ref&gt; after the user clicks the backward key. &lt;/para&gt;&lt;ref refid="classcocos2d_1_1_i_m_e_dispatcher" kindref="compound"&gt;IMEDispatcher&lt;/ref&gt;</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DetachWithIME">
@@ -178,9 +179,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>End text input and close keyboard. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DidAttachWithIME">
@@ -229,8 +230,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
+        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetContentText">
@@ -245,9 +259,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>&lt;para&gt;Called by &lt;ref refid="classcocos2d_1_1_i_m_e_dispatcher" kindref="compound"&gt;IMEDispatcher&lt;/ref&gt; for text stored in delegate. &lt;/para&gt;&lt;ref refid="classcocos2d_1_1_i_m_e_dispatcher" kindref="compound"&gt;IMEDispatcher&lt;/ref&gt;</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithPlaceHolder">
@@ -269,9 +283,9 @@
         <param name="placeholder">To be added.</param>
         <param name="fontName">To be added.</param>
         <param name="fontSize">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the  with a font name and font size </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;initializes the &lt;see cref="T:Cocos2D.CCTextFieldTTF" /&gt; with a font name and font size &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTextFieldTTF" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithPlaceHolder">
@@ -335,8 +349,8 @@
       <Docs>
         <param name="text">To be added.</param>
         <param name="len">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>&lt;para&gt;Called by &lt;ref refid="classcocos2d_1_1_i_m_e_dispatcher" kindref="compound"&gt;IMEDispatcher&lt;/ref&gt; when text input received from the IME. &lt;/para&gt;&lt;ref refid="classcocos2d_1_1_i_m_e_dispatcher" kindref="compound"&gt;IMEDispatcher&lt;/ref&gt;</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="KeyboardDidHide">
@@ -458,7 +472,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="TextFieldWithPlaceHolder">
@@ -480,9 +494,9 @@
         <param name="placeholder">To be added.</param>
         <param name="fontName">To be added.</param>
         <param name="fontSize">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>creates a  from a fontname and font size </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;creates a &lt;see cref="T:Cocos2D.CCLabelTTF" /&gt; from a fontname and font size &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="TextFieldWithPlaceHolder">

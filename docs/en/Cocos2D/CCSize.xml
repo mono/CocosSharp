@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSize" FullName="Cocos2D.CCSize">
   <TypeSignature Language="C#" Value="public struct CCSize" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi serializable sealed beforefieldinit CCSize extends System.ValueType" />
@@ -16,7 +17,7 @@
   </Attributes>
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -92,7 +93,7 @@
         <param name="s">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Equals">

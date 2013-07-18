@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCPlace" FullName="Cocos2D.CCPlace">
   <TypeSignature Language="C#" Value="public class CCPlace : Cocos2D.CCActionInstant" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPlace extends Cocos2D.CCActionInstant" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Places the node in a certain position. </summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +24,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a  action with a position </summary>
+        <remarks>&lt;para&gt;creates a &lt;see cref="T:Cocos2D.CCPlace" /&gt; action with a position &lt;/para&gt;&lt;see cref="T:Cocos2D.CCPlace" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -74,9 +75,9 @@
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithPosition">
@@ -94,9 +95,9 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes a  action with a position </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Initializes a &lt;see cref="T:Cocos2D.CCPlace" /&gt; action with a position &lt;/para&gt;&lt;see cref="T:Cocos2D.CCPlace" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">

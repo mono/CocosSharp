@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTMXTiledMap" FullName="Cocos2D.CCTMXTiledMap">
   <TypeSignature Language="C#" Value="public class CCTMXTiledMap : Cocos2D.CCNode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXTiledMap extends Cocos2D.CCNode" />
@@ -10,8 +11,78 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCTMXTiledMap" /&gt; knows how to parse and render a TMX map. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXTiledMap" /&gt;</summary>
+    <remarks>&lt;para&gt;It adds support for the TMX tiled map format used by &lt;ulink url="http://www.mapeditor.org"&gt;http://www.mapeditor.org&lt;/ulink&gt; It supports isometric, hexagonal and orthogonal tiles. It also supports object groups, objects, and properties.&lt;/para&gt;&lt;ulink url="http://www.mapeditor.org"&gt;http://www.mapeditor.org&lt;/ulink&gt;&lt;para&gt;Features:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;Each tile will be treated as an Sprite&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The sprites are created on demand. They will be created only when you call "layer-&amp;gt;tileAt(position)"&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Each tile can be rotated / moved / scaled / tinted / "opaqued", since each tile is a Sprite&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Tiles can be added/removed in runtime&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The z-order of the tiles can be modified in runtime&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Each tile has an anchorPoint of (0,0)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The anchorPoint of the TMXTileMap is (0,0)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The TMX layers will be added as a child&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The TMX layers will be aliased by default&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The tileset image will be loaded using the TextureCache&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Each tile will have a unique tag&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Each tile will have a unique z value. top-left: z=1, bottom-right: z=max z&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Each object group will be treated as an MutableArray&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Object class which will contain all the properties in a dictionary&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Properties can be assigned to the Map, Layer, Object Group, and Object&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;Each tile will be treated as an Sprite&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The sprites are created on demand. They will be created only when you call "layer-&amp;gt;tileAt(position)"&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Each tile can be rotated / moved / scaled / tinted / "opaqued", since each tile is a Sprite&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Tiles can be added/removed in runtime&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The z-order of the tiles can be modified in runtime&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Each tile has an anchorPoint of (0,0)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The anchorPoint of the TMXTileMap is (0,0)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The TMX layers will be added as a child&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The TMX layers will be aliased by default&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The tileset image will be loaded using the TextureCache&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Each tile will have a unique tag&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Each tile will have a unique z value. top-left: z=1, bottom-right: z=max z&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Each object group will be treated as an MutableArray&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Object class which will contain all the properties in a dictionary&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Properties can be assigned to the Map, Layer, Object Group, and Object&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;Each tile will be treated as an &lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;para&gt;The sprites are created on demand. They will be created only when you call "layer-&amp;gt;tileAt(position)"&lt;/para&gt;&lt;para&gt;Each tile can be rotated / moved / scaled / tinted / "opaqued", since each tile is a &lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;para&gt;Tiles can be added/removed in runtime&lt;/para&gt;&lt;para&gt;The z-order of the tiles can be modified in runtime&lt;/para&gt;&lt;para&gt;Each tile has an anchorPoint of (0,0)&lt;/para&gt;&lt;para&gt;The anchorPoint of the TMXTileMap is (0,0)&lt;/para&gt;&lt;para&gt;The TMX layers will be added as a child&lt;/para&gt;&lt;para&gt;The TMX layers will be aliased by default&lt;/para&gt;&lt;para&gt;The tileset image will be loaded using the &lt;see cref="T:Cocos2D.CCTextureCache" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTextureCache" /&gt;&lt;para&gt;Each tile will have a unique tag&lt;/para&gt;&lt;para&gt;Each tile will have a unique z value. top-left: z=1, bottom-right: z=max z&lt;/para&gt;&lt;para&gt;Each object group will be treated as an MutableArray&lt;/para&gt;&lt;para&gt;Object class which will contain all the properties in a dictionary&lt;/para&gt;&lt;para&gt;Properties can be assigned to the Map, &lt;see cref="T:Cocos2D.CCLayer" /&gt;, Object Group, and Object&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;para&gt;Limitations:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;It only supports one tileset per layer.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Embedded images are not supported&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;It only supports the XML format (the JSON format is not supported)&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;It only supports one tileset per layer.&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Embedded images are not supported&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;It only supports the XML format (the JSON format is not supported)&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;It only supports one tileset per layer.&lt;/para&gt;&lt;para&gt;Embedded images are not supported&lt;/para&gt;&lt;para&gt;It only supports the XML format (the JSON format is not supported)&lt;/para&gt;&lt;para&gt;Technical description: Each layer is created using an &lt;see cref="T:Cocos2D.CCTMXLayer" /&gt; (subclass of &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;). If you have 5 layers, then 5 &lt;see cref="T:Cocos2D.CCTMXLayer" /&gt; will be created, unless the layer visibility is off. In that case, the layer won't be created at all. You can obtain the layers (&lt;see cref="T:Cocos2D.CCTMXLayer" /&gt; objects) at runtime by:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;map-&amp;gt;getChildByTag(tag_number); // 0=1st layer, 1=2nd layer, 2=3rd layer, etc...&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;map-&amp;gt;layerNamed(name_of_the_layer);&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;&lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;map-&amp;gt;getChildByTag(tag_number); // 0=1st layer, 1=2nd layer, 2=3rd layer, etc...&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;map-&amp;gt;layerNamed(name_of_the_layer);&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;map-&amp;gt;getChildByTag(tag_number); // 0=1st layer, 1=2nd layer, 2=3rd layer, etc...&lt;/para&gt;&lt;para&gt;map-&amp;gt;layerNamed(name_of_the_layer);&lt;/para&gt;&lt;para&gt;Each object group is created using a &lt;see cref="T:Cocos2D.CCTMXObjectGroup" /&gt; which is a subclass of MutableArray. You can obtain the object groups at runtime by:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;map-&amp;gt;objectGroupNamed(name_of_the_object_group);&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXObjectGroup" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;map-&amp;gt;objectGroupNamed(name_of_the_object_group);&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;map-&amp;gt;objectGroupNamed(name_of_the_object_group);&lt;/para&gt;&lt;para&gt;Each object is a TMXObject.&lt;/para&gt;&lt;para&gt;Each property is stored as a key-value pair in an MutableDictionary. You can obtain the properties at runtime by:&lt;/para&gt;&lt;para&gt;map-&amp;gt;propertyNamed(name_of_the_property); layer-&amp;gt;propertyNamed(name_of_the_property); objectGroup-&amp;gt;propertyNamed(name_of_the_property); object-&amp;gt;propertyNamed(name_of_the_property);&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;v0.8.1 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;v0.8.1 &lt;/para&gt;&lt;para&gt;v0.8.1 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +94,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a TMX Tiled Map with a TMX file. </summary>
+        <remarks>creates a TMX Tiled Map with a TMX file. </remarks>
       </Docs>
     </Member>
     <Member MemberName="Create">
@@ -82,9 +153,9 @@
       </Parameters>
       <Docs>
         <param name="layerName">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>return the  for the specific layer </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;return the &lt;see cref="T:Cocos2D.CCTMXLayer" /&gt; for the specific layer &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXLayer" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="m_nMapOrientation">
@@ -204,9 +275,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set# MapSize </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>set# MapSize </remarks>
       </Docs>
     </Member>
     <Member MemberName="ObjectGroupNamed">
@@ -224,9 +295,9 @@
       </Parameters>
       <Docs>
         <param name="groupName">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>return the  for the specific group </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;return the &lt;see cref="T:Cocos2D.CCTMXObjectGroup" /&gt; for the specific group &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXObjectGroup" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ObjectGroups">
@@ -240,9 +311,9 @@
         <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXObjectGroup&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setObjectGroups </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setObjectGroups </remarks>
       </Docs>
     </Member>
     <Member MemberName="Properties">
@@ -256,9 +327,9 @@
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setProperties </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setProperties </remarks>
       </Docs>
     </Member>
     <Member MemberName="PropertiesForGID">
@@ -276,9 +347,9 @@
       </Parameters>
       <Docs>
         <param name="GID">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>return properties dictionary for tile GID </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>return properties dictionary for tile GID </remarks>
       </Docs>
     </Member>
     <Member MemberName="PropertyNamed">
@@ -296,9 +367,9 @@
       </Parameters>
       <Docs>
         <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>return the value for the specific property name </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>return the value for the specific property name </remarks>
       </Docs>
     </Member>
     <Member MemberName="TileSize">
@@ -312,9 +383,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set# TileSize </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>set# TileSize </remarks>
       </Docs>
     </Member>
   </Members>

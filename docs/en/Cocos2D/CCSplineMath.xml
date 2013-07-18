@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSplineMath" FullName="Cocos2D.CCSplineMath">
   <TypeSignature Language="C#" Value="public static class CCSplineMath" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCSplineMath extends System.Object" />

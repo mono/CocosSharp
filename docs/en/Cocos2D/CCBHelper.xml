@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBHelper" FullName="Cocos2D.CCBHelper">
   <TypeSignature Language="C#" Value="public static class CCBHelper" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCBHelper extends System.Object" />

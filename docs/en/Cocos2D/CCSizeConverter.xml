@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSizeConverter" FullName="Cocos2D.CCSizeConverter">
   <TypeSignature Language="C#" Value="public class CCSizeConverter : System.ComponentModel.TypeConverter" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSizeConverter extends System.ComponentModel.TypeConverter" />

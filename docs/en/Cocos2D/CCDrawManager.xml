@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCDrawManager" FullName="Cocos2D.CCDrawManager">
   <TypeSignature Language="C#" Value="public static class CCDrawManager" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCDrawManager extends System.Object" />

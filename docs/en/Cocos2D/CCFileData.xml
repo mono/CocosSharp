@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCFileData" FullName="Cocos2D.CCFileData">
   <TypeSignature Language="C#" Value="public class CCFileData" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFileData extends System.Object" />

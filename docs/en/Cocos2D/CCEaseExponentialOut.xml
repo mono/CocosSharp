@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCEaseExponentialOut" FullName="Cocos2D.CCEaseExponentialOut">
   <TypeSignature Language="C#" Value="public class CCEaseExponentialOut : Cocos2D.CCActionEase" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEaseExponentialOut extends Cocos2D.CCActionEase" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Ease Exponential Out. </summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,8 +27,8 @@
       </Parameters>
       <Docs>
         <param name="pAction">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action </summary>
+        <remarks>creates the action </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -61,9 +62,9 @@
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="Reverse">
@@ -78,9 +79,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a new action that performs the exactly the reverse action </remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -98,8 +99,18 @@
       </Parameters>
       <Docs>
         <param name="time">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called once per frame. time a value between 0 and 1</summary>
+        <remarks>&lt;para&gt;called once per frame. time a value between 0 and 1&lt;/para&gt;&lt;para&gt;For example:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;0 means that the action just started&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;1 means that the action is over &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;0 means that the action just started&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;1 means that the action is over &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;0 means that the action just started&lt;/para&gt;&lt;para&gt;0.5 means that the action is in the middle&lt;/para&gt;&lt;para&gt;1 means that the action is over &lt;/para&gt;</remarks>
       </Docs>
     </Member>
   </Members>

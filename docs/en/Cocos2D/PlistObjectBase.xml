@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="PlistObjectBase" FullName="Cocos2D.PlistObjectBase">
   <TypeSignature Language="C#" Value="public abstract class PlistObjectBase" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit PlistObjectBase extends System.Object" />

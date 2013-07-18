@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCQuadVertexBuffer" FullName="Cocos2D.CCQuadVertexBuffer">
   <TypeSignature Language="C#" Value="public class CCQuadVertexBuffer : Cocos2D.CCVertexBuffer&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCQuadVertexBuffer extends Cocos2D.CCVertexBuffer`1&lt;valuetype Cocos2D.CCV3F_C4B_T2F_Quad&gt;" />

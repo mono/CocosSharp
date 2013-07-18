@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCScene" FullName="Cocos2D.CCScene">
   <TypeSignature Language="C#" Value="public class CCScene : Cocos2D.CCNode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScene extends Cocos2D.CCNode" />
@@ -11,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

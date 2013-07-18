@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSpeed" FullName="Cocos2D.CCSpeed">
   <TypeSignature Language="C#" Value="public class CCSpeed : Cocos2D.CCAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpeed extends Cocos2D.CCAction" />
@@ -10,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Changes the speed of an action, making it take longer (speed&gt;1) or less (speed&lt;1) time. Useful to simulate 'slow motion' or 'fast forward' effect. </summary>
+    <remarks>&lt;para&gt;
+  &lt;para&gt;This action can't be Sequenceable because it is not an IntervalAction &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;This action can't be Sequenceable because it is not an IntervalAction &lt;/para&gt;&lt;para&gt;This action can't be Sequenceable because it is not an IntervalAction &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,8 +29,8 @@
       </Parameters>
       <Docs>
         <param name="speed">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>create the action </summary>
+        <remarks>create the action </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -63,9 +66,9 @@
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithAction">
@@ -85,9 +88,9 @@
       <Docs>
         <param name="action">To be added.</param>
         <param name="fRate">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>initializes the action </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsDone">
@@ -101,9 +104,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>return true if the action has finished </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="m_fSpeed">
@@ -148,9 +151,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a new action that performs the exactly the reverse action </remarks>
       </Docs>
     </Member>
     <Member MemberName="Speed">
@@ -164,9 +167,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>alter the speed of the inner function in runtime </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>alter the speed of the inner function in runtime </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -184,8 +187,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called before the action start. It will also set the target. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Step">
@@ -203,8 +206,8 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called every frame with it's delta time. DON'T override unless you know what you are doing. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Stop">
@@ -219,8 +222,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </summary>
+        <remarks>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </remarks>
       </Docs>
     </Member>
   </Members>

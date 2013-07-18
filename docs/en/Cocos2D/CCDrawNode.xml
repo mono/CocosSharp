@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCDrawNode" FullName="Cocos2D.CCDrawNode">
   <TypeSignature Language="C#" Value="public class CCDrawNode : Cocos2D.CCNode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDrawNode extends Cocos2D.CCNode" />
@@ -10,8 +11,12 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> that draws dots, segments and polygons. Faster than the "drawing primitives" since they it draws everything in one single batch.</summary>
+    <remarks>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCDrawNode" /&gt;
+  &lt;see cref="T:Cocos2D.CCNode" /&gt; that draws dots, segments and polygons. Faster than the "drawing primitives" since they it draws everything in one single batch.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCDrawNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;
+  &lt;para&gt;v2.1 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;v2.1 &lt;/para&gt;&lt;para&gt;v2.1 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -24,7 +29,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
@@ -40,7 +45,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Clear">
@@ -55,8 +60,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Clear the geometry in the node's buffer. </summary>
+        <remarks>Clear the geometry in the node's buffer. </remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -71,8 +76,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
+        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="DrawDot">
@@ -94,8 +112,8 @@
         <param name="pos">To be added.</param>
         <param name="radius">To be added.</param>
         <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>draw a dot at a position, with a given radius and color </summary>
+        <remarks>draw a dot at a position, with a given radius and color </remarks>
       </Docs>
     </Member>
     <Member MemberName="DrawPolygon">
@@ -121,8 +139,8 @@
         <param name="fillColor">To be added.</param>
         <param name="borderWidth">To be added.</param>
         <param name="borderColor">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>draw a polygon with a fill color and line color </summary>
+        <remarks>draw a polygon with a fill color and line color </remarks>
       </Docs>
     </Member>
     <Member MemberName="DrawSegment">
@@ -146,8 +164,8 @@
         <param name="to">To be added.</param>
         <param name="radius">To be added.</param>
         <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>draw a segment with a radius and color </summary>
+        <remarks>draw a segment with a radius and color </remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -162,9 +180,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes the instance of Whether the initialization was successful. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Initializes the instance of &lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
   </Members>

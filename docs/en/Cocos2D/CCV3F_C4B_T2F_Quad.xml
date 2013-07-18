@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCV3F_C4B_T2F_Quad" FullName="Cocos2D.CCV3F_C4B_T2F_Quad">
   <TypeSignature Language="C#" Value="public struct CCV3F_C4B_T2F_Quad : Microsoft.Xna.Framework.Graphics.IVertexType" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed CCV3F_C4B_T2F_Quad extends System.ValueType implements class Microsoft.Xna.Framework.Graphics.IVertexType" />
@@ -14,8 +15,8 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>4 Vertex3FTex2FColor4B </summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName="BottomLeft">

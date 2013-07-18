@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCFiniteTimeAction" FullName="Cocos2D.CCFiniteTimeAction">
   <TypeSignature Language="C#" Value="public class CCFiniteTimeAction : Cocos2D.CCAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFiniteTimeAction extends Cocos2D.CCAction" />
@@ -10,8 +11,24 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Base class actions that do have a finite time duration. Possible actions: </summary>
+    <remarks>&lt;para&gt;
+  &lt;list type="bullet"&gt;
+    &lt;item&gt;
+      &lt;description&gt;An action with a duration of 0 seconds&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;description&gt;An action with a duration of 35.5 seconds&lt;/description&gt;
+    &lt;/item&gt;
+  &lt;/list&gt;
+&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;An action with a duration of 0 seconds&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;An action with a duration of 35.5 seconds&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;An action with a duration of 0 seconds&lt;/para&gt;&lt;para&gt;An action with a duration of 35.5 seconds&lt;/para&gt;&lt;para&gt;Infinite time actions are valid &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -54,9 +71,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set duration in seconds of the action </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="m_fDuration">
@@ -86,9 +103,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a new action that performs the exactly the reverse action </remarks>
       </Docs>
     </Member>
   </Members>

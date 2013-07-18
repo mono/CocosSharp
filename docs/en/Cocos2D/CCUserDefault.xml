@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCUserDefault" FullName="Cocos2D.CCUserDefault">
   <TypeSignature Language="C#" Value="public class CCUserDefault" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCUserDefault extends System.Object" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> acts as a tiny database. You can save and get base type values by it. For example, setBoolForKey("played", true) will add a bool value true into the database. Its key is "played". You can get the value of the key by getBoolForKey("played").</summary>
+    <remarks>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCUserDefault" /&gt; acts as a tiny database. You can save and get base type values by it. For example, setBoolForKey("played", true) will add a bool value true into the database. Its key is "played". You can get the value of the key by getBoolForKey("played").&lt;/para&gt;&lt;see cref="T:Cocos2D.CCUserDefault" /&gt;&lt;para&gt;It supports the following base types: bool, int, float, double, string &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName="Flush">
@@ -26,8 +28,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Save content to xml file. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="GetBoolForKey">
@@ -45,9 +47,9 @@
       </Parameters>
       <Docs>
         <param name="pKey">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Get bool value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is false. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="GetBoolForKey">
@@ -89,9 +91,9 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="defaultValue">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Get double value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0.0. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="GetFloatForKey">
@@ -111,9 +113,9 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="defaultValue">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Get float value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0.0f. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="GetIntegerForKey">
@@ -131,9 +133,9 @@
       </Parameters>
       <Docs>
         <param name="pKey">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Get integer value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="GetIntegerForKey">
@@ -175,9 +177,9 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="defaultValue">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Get string value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is "". </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="PurgeSharedUserDefault">
@@ -193,7 +195,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SetBoolForKey">
@@ -213,8 +215,8 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Set bool value by key. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SetDoubleForKey">
@@ -234,8 +236,8 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Set double value by key. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SetFloatForKey">
@@ -255,8 +257,8 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Set float value by key. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SetIntegerForKey">
@@ -276,8 +278,8 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Set integer value by key. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SetStringForKey">
@@ -297,8 +299,8 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Set string value by key. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SharedUserDefault">
@@ -312,9 +314,9 @@
         <ReturnType>Cocos2D.CCUserDefault</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>deprecated. Use getInstace() instead </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>deprecated. Use getInstace() instead </remarks>
       </Docs>
     </Member>
   </Members>
