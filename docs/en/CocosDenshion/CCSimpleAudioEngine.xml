@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSimpleAudioEngine" FullName="CocosDenshion.CCSimpleAudioEngine">
   <TypeSignature Language="C#" Value="public class CCSimpleAudioEngine" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSimpleAudioEngine extends System.Object" />

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCPointObject" FullName="Cocos2D.CCPointObject">
   <TypeSignature Language="C#" Value="public class CCPointObject" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPointObject extends System.Object" />

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCOGLES" FullName="Cocos2D.CCOGLES">
   <TypeSignature Language="C#" Value="public class CCOGLES" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCOGLES extends System.Object" />

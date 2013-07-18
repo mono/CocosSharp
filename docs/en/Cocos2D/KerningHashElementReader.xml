@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="KerningHashElementReader" FullName="Cocos2D.KerningHashElementReader">
   <TypeSignature Language="C#" Value="public class KerningHashElementReader : Microsoft.Xna.Framework.Content.ContentTypeReader&lt;Cocos2D.CCBMFontConfiguration.CCKerningHashElement&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit KerningHashElementReader extends Microsoft.Xna.Framework.Content.ContentTypeReader`1&lt;valuetype Cocos2D.CCBMFontConfiguration/CCKerningHashElement&gt;" />

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCHide" FullName="Cocos2D.CCHide">
   <TypeSignature Language="C#" Value="public class CCHide : Cocos2D.CCActionInstant" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCHide extends Cocos2D.CCActionInstant" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCHide" /&gt; the node. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCHide" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +25,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Allocates and initializes the action </summary>
+        <remarks>Allocates and initializes the action </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -58,9 +60,9 @@
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="Reverse">
@@ -75,9 +77,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a new action that performs the exactly the reverse action </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">

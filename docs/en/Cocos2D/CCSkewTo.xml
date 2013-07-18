@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSkewTo" FullName="Cocos2D.CCSkewTo">
   <TypeSignature Language="C#" Value="public class CCSkewTo : Cocos2D.CCActionInterval" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSkewTo extends Cocos2D.CCActionInterval" />
@@ -10,8 +11,14 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Skews a Node object to given angles by modifying it's skewX and skewY attributes
+v1.0 </summary>
+    <remarks>&lt;para&gt;
+  &lt;verbatim&gt;Skews a Node object to given angles by modifying it's skewX and skewY attributes
+&lt;/verbatim&gt;
+  &lt;para&gt;v1.0 &lt;/para&gt;
+&lt;/para&gt;&lt;verbatim&gt;Skews a Node object to given angles by modifying it's skewX and skewY attributes
+&lt;/verbatim&gt;&lt;para&gt;v1.0 &lt;/para&gt;&lt;para&gt;v1.0 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,8 +33,8 @@
       </Parameters>
       <Docs>
         <param name="skewTo">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action </summary>
+        <remarks>creates the action </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -65,9 +72,9 @@
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -91,7 +98,7 @@
         <param name="sy">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="m_fDeltaX">
@@ -229,8 +236,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called before the action start. It will also set the target. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -248,8 +255,18 @@
       </Parameters>
       <Docs>
         <param name="time">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called once per frame. time a value between 0 and 1</summary>
+        <remarks>&lt;para&gt;called once per frame. time a value between 0 and 1&lt;/para&gt;&lt;para&gt;For example:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;0 means that the action just started&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;1 means that the action is over &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;0 means that the action just started&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;1 means that the action is over &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;0 means that the action just started&lt;/para&gt;&lt;para&gt;0.5 means that the action is in the middle&lt;/para&gt;&lt;para&gt;1 means that the action is over &lt;/para&gt;</remarks>
       </Docs>
     </Member>
   </Members>

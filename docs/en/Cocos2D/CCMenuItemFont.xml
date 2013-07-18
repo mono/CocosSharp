@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMenuItemFont" FullName="Cocos2D.CCMenuItemFont">
   <TypeSignature Language="C#" Value="public class CCMenuItemFont : Cocos2D.CCMenuItemLabel" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemFont extends Cocos2D.CCMenuItemLabel" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;A &lt;see cref="T:Cocos2D.CCMenuItemFont" /&gt; Helper class that creates a &lt;see cref="T:Cocos2D.CCMenuItemLabel" /&gt; class with a Label. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItemFont" /&gt;&lt;see cref="T:Cocos2D.CCMenuItemLabel" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,8 +27,8 @@
       </Parameters>
       <Docs>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a menu item from a string with a target/selector </summary>
+        <remarks>creates a menu item from a string with a target/selector </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -59,9 +60,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>get the default font name </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>get the default font name </remarks>
       </Docs>
     </Member>
     <Member MemberName="FontNameObj">
@@ -75,9 +76,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set the font name c++ can not overload static and non-static member functions with the same parameter types so change the name to setFontNameObj </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="FontSize">
@@ -91,9 +92,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>get default font size </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>get default font size </remarks>
       </Docs>
     </Member>
     <Member MemberName="FontSizeObj">
@@ -107,9 +108,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>get font size </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>get font size </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -129,9 +130,9 @@
       <Docs>
         <param name="value">To be added.</param>
         <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a menu item from a string with a target/selector </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>initializes a menu item from a string with a target/selector </remarks>
       </Docs>
     </Member>
     <Member MemberName="m_strFontName">
@@ -177,7 +178,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

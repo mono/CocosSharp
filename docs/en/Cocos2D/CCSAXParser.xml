@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSAXParser" FullName="Cocos2D.CCSAXParser">
   <TypeSignature Language="C#" Value="public class CCSAXParser" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSAXParser extends System.Object" />
@@ -11,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -45,7 +46,7 @@
         <param name="ctx">To be added.</param>
         <param name="name">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -65,7 +66,7 @@
         <param name="pszEncoding">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Parse">
@@ -85,7 +86,7 @@
         <param name="pszFile">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Parse">
@@ -126,7 +127,7 @@
       <Docs>
         <param name="pDelegator">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="StartElement">
@@ -149,7 +150,7 @@
         <param name="name">To be added.</param>
         <param name="atts">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="TextHandler">
@@ -172,7 +173,7 @@
         <param name="ch">To be added.</param>
         <param name="len">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

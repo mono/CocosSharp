@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCAffineTransform" FullName="Cocos2D.CCAffineTransform">
   <TypeSignature Language="C#" Value="public struct CCAffineTransform" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCAffineTransform extends System.ValueType" />
@@ -11,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

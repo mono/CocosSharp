@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCDraw" FullName="Cocos2D.CCDraw">
   <TypeSignature Language="C#" Value="public class CCDraw : Box2D.Common.b2Draw" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDraw extends Box2D.Common.b2Draw" />

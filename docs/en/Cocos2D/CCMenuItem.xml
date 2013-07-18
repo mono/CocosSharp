@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMenuItem" FullName="Cocos2D.CCMenuItem">
   <TypeSignature Language="C#" Value="public class CCMenuItem : Cocos2D.CCNodeRGBA" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItem extends Cocos2D.CCNodeRGBA" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCMenuItem" /&gt; base class. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItem" /&gt;</summary>
+    <remarks>&lt;para&gt;Subclass &lt;see cref="T:Cocos2D.CCMenuItem" /&gt; (or any subclass) to create your custom &lt;see cref="T:Cocos2D.CCMenuItem" /&gt; objects. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItem" /&gt;&lt;see cref="T:Cocos2D.CCMenuItem" /&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +25,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates a  with a target/selector </summary>
+        <remarks>&lt;para&gt;Creates a &lt;see cref="T:Cocos2D.CCMenuItem" /&gt; with a target/selector &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItem" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -100,8 +102,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Activate the item </summary>
+        <remarks>Activate the item </remarks>
       </Docs>
     </Member>
     <Member MemberName="Enabled">
@@ -117,7 +119,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTarget">
@@ -135,9 +137,9 @@
       </Parameters>
       <Docs>
         <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes a  with a target/selector </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Initializes a &lt;see cref="T:Cocos2D.CCMenuItem" /&gt; with a target/selector &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItem" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsSelected">
@@ -153,7 +155,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="kCurrentItem">
@@ -295,8 +297,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The item was selected (not activated), similar to "mouse-over" </summary>
+        <remarks>The item was selected (not activated), similar to "mouse-over" </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetTarget">
@@ -314,8 +316,8 @@
       </Parameters>
       <Docs>
         <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>set the target/selector of the menu item </summary>
+        <remarks>set the target/selector of the menu item </remarks>
       </Docs>
     </Member>
     <Member MemberName="Unselected">
@@ -330,8 +332,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The item was unselected </summary>
+        <remarks>The item was unselected </remarks>
       </Docs>
     </Member>
   </Members>

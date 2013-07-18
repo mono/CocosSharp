@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTiledGrid3D" FullName="Cocos2D.CCTiledGrid3D">
   <TypeSignature Language="C#" Value="public class CCTiledGrid3D : Cocos2D.CCGridBase" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTiledGrid3D extends Cocos2D.CCGridBase" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> is a 3D grid implementation. It differs from  in that the tiles can be separated from the grid. </summary>
+    <remarks>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCTiledGrid3D" /&gt; is a 3D grid implementation. It differs from &lt;see cref="T:Cocos2D.CCGrid3D" /&gt; in that the tiles can be separated from the grid. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTiledGrid3D" /&gt;&lt;see cref="T:Cocos2D.CCGrid3D" /&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,8 +28,8 @@
       </Parameters>
       <Docs>
         <param name="gridSize">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>create one Grid </summary>
+        <remarks>create one Grid </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -63,7 +65,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="CalculateVertexPoints">
@@ -79,7 +81,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="m_pIndices">
@@ -127,9 +129,9 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns the original tile (untransformed) at the given position </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns the original tile (untransformed) at the given position </remarks>
       </Docs>
     </Member>
     <Member MemberName="Reuse">
@@ -145,7 +147,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SetTile">
@@ -165,8 +167,8 @@
       <Docs>
         <param name="pos">To be added.</param>
         <param name="coords">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets a new tile </summary>
+        <remarks>sets a new tile </remarks>
       </Docs>
     </Member>
     <Member MemberName="Tile">
@@ -184,9 +186,9 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns the tile at the given position </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns the tile at the given position </remarks>
       </Docs>
     </Member>
   </Members>

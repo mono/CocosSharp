@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCAccelerometer" FullName="Cocos2D.CCAccelerometer">
   <TypeSignature Language="C#" Value="public class CCAccelerometer" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi CCAccelerometer extends System.Object" />
@@ -11,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -43,7 +44,7 @@
       <Docs>
         <param name="pDelegate">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">

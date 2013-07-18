@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCActionInterval" FullName="Cocos2D.CCActionInterval">
   <TypeSignature Language="C#" Value="public class CCActionInterval : Cocos2D.CCFiniteTimeAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionInterval extends Cocos2D.CCFiniteTimeAction" />
@@ -10,8 +11,19 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>An interval action is an action that takes place within a certain period of time. It has an start time, and a finish time. The finish time is the parameter duration plus the start time. </summary>
+    <remarks>&lt;para&gt;These &lt;see cref="T:Cocos2D.CCActionInterval" /&gt; actions have some interesting properties, like:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;They can run normally (default)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;They can run reversed with the reverse method&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;They can run with the time altered with the Accelerate, AccelDeccel and Speed actions.&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCActionInterval" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;They can run normally (default)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;They can run reversed with the reverse method&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;They can run with the time altered with the Accelerate, AccelDeccel and Speed actions.&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;They can run normally (default)&lt;/para&gt;&lt;para&gt;They can run reversed with the reverse method&lt;/para&gt;&lt;para&gt;They can run with the time altered with the Accelerate, AccelDeccel and &lt;see cref="T:Cocos2D.CCSpeed" /&gt; actions.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpeed" /&gt;&lt;para&gt;For example, you can simulate a Ping Pong effect running the action normally and then running it again in Reverse mode.&lt;/para&gt;&lt;para&gt;Example:&lt;/para&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCAction" /&gt; *pingPongAction = Sequence::actions(action, action-&amp;gt;&lt;ref refid="classcocos2d_1_1_action_1a614cac4a6cc61d97173539e3b43b61b3" kindref="member"&gt;reverse()&lt;/ref&gt;, NULL); &lt;/para&gt;&lt;see cref="T:Cocos2D.CCAction" /&gt;&lt;ref refid="classcocos2d_1_1_action_1a614cac4a6cc61d97173539e3b43b61b3" kindref="member"&gt;reverse()&lt;/ref&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -72,7 +84,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -90,9 +102,9 @@
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="Elapsed">
@@ -106,9 +118,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>how many seconds had elapsed since the actions started to run. </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>how many seconds had elapsed since the actions started to run. </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -126,9 +138,9 @@
       </Parameters>
       <Docs>
         <param name="d">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>initializes the action </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsDone">
@@ -142,9 +154,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>return true if the action has finished </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bFirstTick">
@@ -189,9 +201,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a new action that performs the exactly the reverse action </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -209,8 +221,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called before the action start. It will also set the target. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Step">
@@ -228,8 +240,8 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called every frame with it's delta time. DON'T override unless you know what you are doing. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

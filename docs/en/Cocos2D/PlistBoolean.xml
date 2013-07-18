@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="PlistBoolean" FullName="Cocos2D.PlistBoolean">
   <TypeSignature Language="C#" Value="public class PlistBoolean : Cocos2D.PlistObject&lt;bool&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistBoolean extends Cocos2D.PlistObject`1&lt;bool&gt;" />

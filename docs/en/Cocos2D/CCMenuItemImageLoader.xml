@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMenuItemImageLoader" FullName="Cocos2D.CCMenuItemImageLoader">
   <TypeSignature Language="C#" Value="public class CCMenuItemImageLoader : Cocos2D.CCMenuItemLoader" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemImageLoader extends Cocos2D.CCMenuItemLoader" />

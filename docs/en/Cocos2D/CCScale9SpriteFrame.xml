@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCScale9SpriteFrame" FullName="Cocos2D.CCScale9SpriteFrame">
   <TypeSignature Language="C#" Value="public class CCScale9SpriteFrame : Cocos2D.CCScale9Sprite" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScale9SpriteFrame extends Cocos2D.CCScale9Sprite" />

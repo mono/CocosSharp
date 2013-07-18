@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="ZInputStream" FullName="Cocos2D.Compression.Zlib.ZInputStream">
   <TypeSignature Language="C#" Value="public class ZInputStream : System.IO.BinaryReader" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ZInputStream extends System.IO.BinaryReader" />

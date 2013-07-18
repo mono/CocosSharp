@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLabelAtlas" FullName="Cocos2D.CCLabelAtlas">
   <TypeSignature Language="C#" Value="public class CCLabelAtlas : Cocos2D.CCAtlasNode, Cocos2D.ICCLabelProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelAtlas extends Cocos2D.CCAtlasNode implements class Cocos2D.ICCLabelProtocol" />
@@ -14,8 +15,23 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt; is a subclass of &lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;</summary>
+    <remarks>&lt;para&gt;It can be as a replacement of Label since it is MUCH faster.&lt;/para&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt; versus Label:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;LabelAtlas is MUCH faster than Label&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;LabelAtlas "characters" have a fixed height and width&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;LabelAtlas "characters" can be anything you want since they are taken from an image file&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;LabelAtlas is MUCH faster than Label&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;LabelAtlas "characters" have a fixed height and width&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;LabelAtlas "characters" can be anything you want since they are taken from an image file&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt; is MUCH faster than Label&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt; "characters" have a fixed height and width&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt; "characters" can be anything you want since they are taken from an image file&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;para&gt;A more flexible class is &lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;. It supports variable width characters and it also has a nice editor. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -32,8 +48,8 @@
       <Docs>
         <param name="label">To be added.</param>
         <param name="fntFile">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the  with a string and a configuration file v2.0 </summary>
+        <remarks>&lt;para&gt;creates the &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt; with a string and a configuration file &lt;para&gt;v2.0 &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;para&gt;v2.0 &lt;/para&gt;&lt;para&gt;v2.0 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -77,9 +93,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the string that is currently being used in this label</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the string that is currently being used in this label&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;The string that is currently being used in this label &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;The string that is currently being used in this label &lt;/para&gt;&lt;para&gt;The string that is currently being used in this label &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -99,9 +117,9 @@
       <Docs>
         <param name="theString">To be added.</param>
         <param name="fntFile">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the  with a string, a texture, the width and height in points of each element and the starting char of the atlas </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;initializes the &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt; with a string, a texture, the width and height in points of each element and the starting char of the atlas &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -209,9 +227,29 @@
         <Parameter Name="label" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="label">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="label">null terminated string </param>
+        <summary>Sets a new label using an string</summary>
+        <remarks>&lt;para&gt;Sets a new label using an string&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;A&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;null terminated string &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;A&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;null terminated string &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;A&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;A&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;null terminated string &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;null terminated string &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Text">
@@ -242,8 +280,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>updates the Atlas (indexed vertex array). Shall be overridden in subclasses </summary>
+        <remarks>updates the Atlas (indexed vertex array). Shall be overridden in subclasses </remarks>
       </Docs>
     </Member>
   </Members>

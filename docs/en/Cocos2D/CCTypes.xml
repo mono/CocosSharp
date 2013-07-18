@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTypes" FullName="Cocos2D.CCTypes">
   <TypeSignature Language="C#" Value="public class CCTypes" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTypes extends System.Object" />

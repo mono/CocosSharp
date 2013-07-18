@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionFadeDown" FullName="Cocos2D.CCTransitionFadeDown">
   <TypeSignature Language="C#" Value="public class CCTransitionFadeDown : Cocos2D.CCTransitionFadeTR" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionFadeDown extends Cocos2D.CCTransitionFadeTR" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCTransitionFadeDown" /&gt;: Fade the tiles of the outgoing scene from the top to the bottom. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTransitionFadeDown" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -24,7 +26,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

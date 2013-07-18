@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionProgressHorizontal" FullName="Cocos2D.CCTransitionProgressHorizontal">
   <TypeSignature Language="C#" Value="public class CCTransitionProgressHorizontal : Cocos2D.CCTransitionProgress" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionProgressHorizontal extends Cocos2D.CCTransitionProgress" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> transition. A clock-wise radial transition to the next scene </summary>
+    <remarks>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCTransitionProgressHorizontal" /&gt; transition. A clock-wise radial transition to the next scene &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTransitionProgressHorizontal" /&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -29,7 +31,7 @@
         <param name="t">To be added.</param>
         <param name="scene">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ProgressTimerNodeWithRenderTexture">
@@ -49,7 +51,7 @@
         <param name="texture">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

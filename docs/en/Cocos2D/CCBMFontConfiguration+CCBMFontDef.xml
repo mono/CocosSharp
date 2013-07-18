@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBMFontConfiguration+CCBMFontDef" FullName="Cocos2D.CCBMFontConfiguration+CCBMFontDef">
   <TypeSignature Language="C#" Value="public class CCBMFontConfiguration.CCBMFontDef" />
   <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit CCBMFontConfiguration/CCBMFontDef extends System.Object" />

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSpriteFontCache" FullName="Cocos2D.CCSpriteFontCache">
   <TypeSignature Language="C#" Value="public class CCSpriteFontCache" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi CCSpriteFontCache extends System.Object" />

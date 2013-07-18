@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTiledGrid3DAction" FullName="Cocos2D.CCTiledGrid3DAction">
   <TypeSignature Language="C#" Value="public class CCTiledGrid3DAction : Cocos2D.CCGridAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTiledGrid3DAction extends Cocos2D.CCGridAction" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;Base class for &lt;see cref="T:Cocos2D.CCTiledGrid3D" /&gt; actions. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTiledGrid3D" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +24,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with size and duration </summary>
+        <remarks>creates the action with size and duration </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -72,9 +73,9 @@
         <ReturnType>Cocos2D.CCGridBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the grid </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>returns the grid </remarks>
       </Docs>
     </Member>
     <Member MemberName="OriginalTile">
@@ -92,9 +93,9 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns the non-transformed tile that belongs to a certain position of the grid </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns the non-transformed tile that belongs to a certain position of the grid </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetTile">
@@ -114,8 +115,8 @@
       <Docs>
         <param name="pos">To be added.</param>
         <param name="coords">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets a new tile to a certain position of the grid </summary>
+        <remarks>sets a new tile to a certain position of the grid </remarks>
       </Docs>
     </Member>
     <Member MemberName="Tile">
@@ -133,9 +134,9 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns the tile that belongs to a certain position of the grid </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns the tile that belongs to a certain position of the grid </remarks>
       </Docs>
     </Member>
   </Members>

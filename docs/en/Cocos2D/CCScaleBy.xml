@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCScaleBy" FullName="Cocos2D.CCScaleBy">
   <TypeSignature Language="C#" Value="public class CCScaleBy : Cocos2D.CCScaleTo" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScaleBy extends Cocos2D.CCScaleTo" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;Scales a &lt;see cref="T:Cocos2D.CCNode" /&gt; object a zoom factor by modifying it's scale attribute. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,8 +27,8 @@
       </Parameters>
       <Docs>
         <param name="copy">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with and X factor and a Y factor </summary>
+        <remarks>creates the action with and X factor and a Y factor </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -83,9 +84,9 @@
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="Reverse">
@@ -100,9 +101,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a new action that performs the exactly the reverse action </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -120,8 +121,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called before the action start. It will also set the target. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

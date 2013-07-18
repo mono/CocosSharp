@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCPointConverter" FullName="Cocos2D.CCPointConverter">
   <TypeSignature Language="C#" Value="public class CCPointConverter : System.ComponentModel.TypeConverter" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPointConverter extends System.ComponentModel.TypeConverter" />

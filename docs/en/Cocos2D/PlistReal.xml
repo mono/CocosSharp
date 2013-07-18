@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="PlistReal" FullName="Cocos2D.PlistReal">
   <TypeSignature Language="C#" Value="public class PlistReal : Cocos2D.PlistObject&lt;float&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistReal extends Cocos2D.PlistObject`1&lt;float32&gt;" />

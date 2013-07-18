@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionSceneOriented" FullName="Cocos2D.CCTransitionSceneOriented">
   <TypeSignature Language="C#" Value="public class CCTransitionSceneOriented : Cocos2D.CCTransitionScene" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionSceneOriented extends Cocos2D.CCTransitionScene" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>A Transition that supports orientation like. Possible orientation: LeftOver, RightOver, UpOver, DownOver. </summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +24,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a base transition with duration and incoming scene </summary>
+        <remarks>creates a base transition with duration and incoming scene </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -66,9 +67,9 @@
         <param name="t">To be added.</param>
         <param name="scene">To be added.</param>
         <param name="orientation">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a transition with duration and incoming scene </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>initializes a transition with duration and incoming scene </remarks>
       </Docs>
     </Member>
     <Member MemberName="m_eOrientation">

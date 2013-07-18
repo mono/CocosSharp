@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCActionManager+HashElement" FullName="Cocos2D.CCActionManager+HashElement">
   <TypeSignature Language="C#" Value="protected class CCActionManager.HashElement" />
   <TypeSignature Language="ILAsm" Value=".class nested protected auto ansi beforefieldinit CCActionManager/HashElement extends System.Object" />

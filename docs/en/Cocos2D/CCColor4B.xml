@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCColor4B" FullName="Cocos2D.CCColor4B">
   <TypeSignature Language="C#" Value="public struct CCColor4B" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCColor4B extends System.ValueType" />
@@ -10,8 +11,14 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>RGBA color composed of 4 bytes
+v3.0 </summary>
+    <remarks>&lt;para&gt;
+  &lt;verbatim&gt;RGBA color composed of 4 bytes
+&lt;/verbatim&gt;
+  &lt;para&gt;v3.0 &lt;/para&gt;
+&lt;/para&gt;&lt;verbatim&gt;RGBA color composed of 4 bytes
+&lt;/verbatim&gt;&lt;para&gt;v3.0 &lt;/para&gt;&lt;para&gt;v3.0 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

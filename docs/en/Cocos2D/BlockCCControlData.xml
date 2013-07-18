@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="BlockCCControlData" FullName="Cocos2D.BlockCCControlData">
   <TypeSignature Language="C#" Value="public class BlockCCControlData" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit BlockCCControlData extends System.Object" />

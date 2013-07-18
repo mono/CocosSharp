@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTMXObjectGroup" FullName="Cocos2D.CCTMXObjectGroup">
   <TypeSignature Language="C#" Value="public class CCTMXObjectGroup" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXObjectGroup extends System.Object" />
@@ -10,8 +11,11 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCTMXObjectGroup" /&gt; represents the TMX object group. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXObjectGroup" /&gt;</summary>
+    <remarks>&lt;para&gt;
+  &lt;para&gt;v0.99.0 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;v0.99.0 &lt;/para&gt;&lt;para&gt;v0.99.0 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -40,7 +44,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="m_pObjects">
@@ -118,9 +122,13 @@
       </Parameters>
       <Docs>
         <param name="objectName">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>return the dictionary for the specific object name.
+ It will return the 1st object found on the array for the given name. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;return the dictionary for the specific object name.
+&lt;/verbatim&gt; It will return the 1st object found on the array for the given name. &lt;/para&gt;&lt;verbatim&gt;return the dictionary for the specific object name.
+&lt;/verbatim&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Objects">
@@ -134,9 +142,9 @@
         <ReturnType>System.Collections.Generic.List&lt;System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setObjects </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setObjects </remarks>
       </Docs>
     </Member>
     <Member MemberName="PositionOffset">
@@ -150,9 +158,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set# PositionOffset </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>set# PositionOffset </remarks>
       </Docs>
     </Member>
     <Member MemberName="Properties">
@@ -166,9 +174,9 @@
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setProperties </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setProperties </remarks>
       </Docs>
     </Member>
     <Member MemberName="PropertyNamed">
@@ -186,9 +194,9 @@
       </Parameters>
       <Docs>
         <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>return the value for the specific property name </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>return the value for the specific property name </remarks>
       </Docs>
     </Member>
   </Members>

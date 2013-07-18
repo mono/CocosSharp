@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCStandardTouchHandler" FullName="Cocos2D.CCStandardTouchHandler">
   <TypeSignature Language="C#" Value="public class CCStandardTouchHandler : Cocos2D.CCTouchHandler" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCStandardTouchHandler extends Cocos2D.CCTouchHandler" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> It forwards each event to the delegate. </summary>
+    <remarks>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCStandardTouchHandler" /&gt; It forwards each event to the delegate. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCStandardTouchHandler" /&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -44,9 +46,9 @@
       <Docs>
         <param name="pDelegate">To be added.</param>
         <param name="nPriority">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>allocates a  with a delegate and a priority </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;allocates a &lt;see cref="T:Cocos2D.CCTouchHandler" /&gt; with a delegate and a priority &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTouchHandler" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithDelegate">
@@ -66,9 +68,9 @@
       <Docs>
         <param name="pDelegate">To be added.</param>
         <param name="nPriority">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a  with a delegate and a priority </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCTouchHandler" /&gt; with a delegate and a priority &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTouchHandler" /&gt;</remarks>
       </Docs>
     </Member>
   </Members>

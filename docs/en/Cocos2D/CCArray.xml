@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCArray" FullName="Cocos2D.CCArray">
   <TypeSignature Language="C#" Value="public class CCArray" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCArray extends System.Object" />
@@ -11,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,8 +27,8 @@
       </Parameters>
       <Docs>
         <param name="capacity">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Create an array with some objects </summary>
+        <remarks>Create an array with some objects </remarks>
       </Docs>
     </Member>
     <Member MemberName="arr">

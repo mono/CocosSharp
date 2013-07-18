@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCAction" FullName="Cocos2D.CCAction">
   <TypeSignature Language="C#" Value="public class CCAction : Cocos2D.ICCCopyable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAction extends System.Object implements class Cocos2D.ICCCopyable" />
@@ -14,8 +15,8 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;Base class for &lt;see cref="T:Cocos2D.CCAction" /&gt; objects. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCAction" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -59,9 +60,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -95,9 +96,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>return true if the action has finished </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="m_nTag">
@@ -156,9 +157,13 @@
         <ReturnType>Cocos2D.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Set the original target, since target can be nil.
+ Is the target that were used to run the action. Unless you are doing something complex, like , you should NOT call this method. The target is 'assigned', it is not 'retained'. v0.8.2 </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;Set the original target, since target can be nil.
+&lt;/verbatim&gt; Is the target that were used to run the action. Unless you are doing something complex, like &lt;see cref="T:Cocos2D.CCActionManager" /&gt;, you should NOT call this method. The target is 'assigned', it is not 'retained'. &lt;para&gt;v0.8.2 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;Set the original target, since target can be nil.
+&lt;/verbatim&gt;&lt;see cref="T:Cocos2D.CCActionManager" /&gt;&lt;para&gt;v0.8.2 &lt;/para&gt;&lt;para&gt;v0.8.2 &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -176,8 +181,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called before the action start. It will also set the target. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Step">
@@ -195,8 +200,8 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called every frame with it's delta time. DON'T override unless you know what you are doing. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Stop">
@@ -211,8 +216,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </summary>
+        <remarks>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </remarks>
       </Docs>
     </Member>
     <Member MemberName="Tag">
@@ -228,7 +233,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Target">
@@ -242,9 +247,9 @@
         <ReturnType>Cocos2D.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The action will modify the target properties. </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>The action will modify the target properties. </remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -262,8 +267,18 @@
       </Parameters>
       <Docs>
         <param name="time">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called once per frame. time a value between 0 and 1</summary>
+        <remarks>&lt;para&gt;called once per frame. time a value between 0 and 1&lt;/para&gt;&lt;para&gt;For example:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;0 means that the action just started&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;1 means that the action is over &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;0 means that the action just started&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;1 means that the action is over &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;0 means that the action just started&lt;/para&gt;&lt;para&gt;0.5 means that the action is in the middle&lt;/para&gt;&lt;para&gt;1 means that the action is over &lt;/para&gt;</remarks>
       </Docs>
     </Member>
   </Members>

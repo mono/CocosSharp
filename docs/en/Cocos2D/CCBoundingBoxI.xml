@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBoundingBoxI" FullName="Cocos2D.CCBoundingBoxI">
   <TypeSignature Language="C#" Value="public struct CCBoundingBoxI" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCBoundingBoxI extends System.ValueType" />

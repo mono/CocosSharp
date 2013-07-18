@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCScrollView" FullName="Cocos2D.CCScrollView">
   <TypeSignature Language="C#" Value="public class CCScrollView : Cocos2D.CCLayer" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScrollView extends Cocos2D.CCLayer" />

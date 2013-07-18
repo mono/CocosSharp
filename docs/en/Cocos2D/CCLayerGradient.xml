@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLayerGradient" FullName="Cocos2D.CCLayerGradient">
   <TypeSignature Language="C#" Value="public class CCLayerGradient : Cocos2D.CCLayerColor" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerGradient extends Cocos2D.CCLayerColor" />
@@ -10,8 +11,21 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLayerGradient" /&gt; is a subclass of &lt;see cref="T:Cocos2D.CCLayerColor" /&gt; that draws gradients across the background. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayerGradient" /&gt;&lt;see cref="T:Cocos2D.CCLayerColor" /&gt;</summary>
+    <remarks>&lt;para&gt;All features from &lt;see cref="T:Cocos2D.CCLayerColor" /&gt; are valid, plus the following new features:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;direction&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;final color&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;interpolation mode&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayerColor" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;direction&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;final color&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;interpolation mode&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;direction&lt;/para&gt;&lt;para&gt;final color&lt;/para&gt;&lt;para&gt;interpolation mode&lt;/para&gt;&lt;para&gt;Color is interpolated between the startColor and endColor along the given vector (starting at the origin, ending at the terminus). If no vector is supplied, it defaults to (0, -1) &lt;ndash /&gt; a fade from top to bottom.&lt;/para&gt;&lt;ndash /&gt;&lt;para&gt;If 'compressedInterpolation' is disabled, you will not see either the start or end color for non-cardinal vectors; a smooth gradient implying both end points will be still be drawn, however.&lt;/para&gt;&lt;para&gt;If ' compressedInterpolation' is enabled (default mode) you will see both the start and end colors of the gradient.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;v0.99.5 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;v0.99.5 &lt;/para&gt;&lt;para&gt;v0.99.5 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +37,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates a full-screen  with a gradient between start and end in the direction of v. </summary>
+        <remarks>&lt;para&gt;Creates a full-screen &lt;see cref="T:Cocos2D.CCLayer" /&gt; with a gradient between start and end in the direction of v. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -94,9 +108,9 @@
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setEndColor </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setEndColor </remarks>
       </Docs>
     </Member>
     <Member MemberName="EndOpacity">
@@ -110,9 +124,9 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setEndOpacity </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setEndOpacity </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithColor">
@@ -132,9 +146,9 @@
       <Docs>
         <param name="start">To be added.</param>
         <param name="end">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes the  with a gradient between start and end in the direction of v. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Initializes the &lt;see cref="T:Cocos2D.CCLayer" /&gt; with a gradient between start and end in the direction of v. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithColor">
@@ -174,7 +188,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="StartColor">
@@ -188,9 +202,9 @@
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setStartColor </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setStartColor </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartOpacity">
@@ -204,9 +218,9 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setStartOpacity </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setStartOpacity </remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateColor">
@@ -222,7 +236,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Vector">
@@ -236,9 +250,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setVector </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>setVector </remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCToggleVisibility" FullName="Cocos2D.CCToggleVisibility">
   <TypeSignature Language="C#" Value="public class CCToggleVisibility : Cocos2D.CCActionInstant" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCToggleVisibility extends Cocos2D.CCActionInstant" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Toggles the visibility of a node. </summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +24,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Allocates and initializes the action </summary>
+        <remarks>Allocates and initializes the action </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -58,9 +59,9 @@
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a clone of action </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">

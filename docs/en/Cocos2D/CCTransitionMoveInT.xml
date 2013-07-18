@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionMoveInT" FullName="Cocos2D.CCTransitionMoveInT">
   <TypeSignature Language="C#" Value="public class CCTransitionMoveInT : Cocos2D.CCTransitionMoveInL" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionMoveInT extends Cocos2D.CCTransitionMoveInL" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCTransitionMoveInT" /&gt;: Move in from to the top the incoming scene. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTransitionMoveInT" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -24,7 +26,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -57,8 +59,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>initializes the scenes </summary>
+        <remarks>initializes the scenes </remarks>
       </Docs>
     </Member>
   </Members>

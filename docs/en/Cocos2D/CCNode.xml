@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCNode" FullName="Cocos2D.CCNode">
   <TypeSignature Language="C#" Value="public class CCNode : Cocos2D.ICCFocusable, Cocos2D.ICCSelectorProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNode extends System.Object implements class Cocos2D.ICCFocusable, class Cocos2D.ICCSelectorProtocol" />
@@ -17,8 +18,119 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCNode" /&gt; is the main element. Anything that gets drawn or contains things that get drawn is a &lt;see cref="T:Cocos2D.CCNode" /&gt;. The most popular Nodes are: &lt;see cref="T:Cocos2D.CCScene" /&gt;, &lt;see cref="T:Cocos2D.CCLayer" /&gt;, &lt;see cref="T:Cocos2D.CCSprite" /&gt;, &lt;see cref="T:Cocos2D.CCMenu" /&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCScene" /&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCMenu" /&gt;</summary>
+    <remarks>&lt;para&gt;The main features of a &lt;see cref="T:Cocos2D.CCNode" /&gt; are:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;They can contain other Node nodes (addChild, getChildByTag, removeChild, etc)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;They can schedule periodic callback (schedule, unschedule, etc)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;They can execute actions (runAction, stopAction, etc)&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;They can contain other Node nodes (addChild, getChildByTag, removeChild, etc)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;They can schedule periodic callback (schedule, unschedule, etc)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;They can execute actions (runAction, stopAction, etc)&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;They can contain other &lt;see cref="T:Cocos2D.CCNode" /&gt; nodes (addChild, getChildByTag, removeChild, etc)&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;They can schedule periodic callback (schedule, unschedule, etc)&lt;/para&gt;&lt;para&gt;They can execute actions (runAction, stopAction, etc)&lt;/para&gt;&lt;para&gt;Some &lt;see cref="T:Cocos2D.CCNode" /&gt; nodes provide extra functionality for them or their children.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Subclassing a &lt;see cref="T:Cocos2D.CCNode" /&gt; usually means (one/all) of:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;overriding init to initialize resources and schedule callbacks&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;create callbacks to handle the advancement of time&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;overriding draw to render the node&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;overriding init to initialize resources and schedule callbacks&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;create callbacks to handle the advancement of time&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;overriding draw to render the node&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;overriding init to initialize resources and schedule callbacks&lt;/para&gt;&lt;para&gt;create callbacks to handle the advancement of time&lt;/para&gt;&lt;para&gt;overriding draw to render the node&lt;/para&gt;&lt;para&gt;Features of &lt;see cref="T:Cocos2D.CCNode" /&gt;:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;position&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;scale (x, y)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;rotation (in degrees, clockwise)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Camera (an interface to gluLookAt )&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;GridBase (to do mesh transformations)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;anchor point&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;size&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;visible&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;z-order&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;openGL z position&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;position&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;scale (x, y)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;rotation (in degrees, clockwise)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Camera (an interface to gluLookAt )&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;GridBase (to do mesh transformations)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;anchor point&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;size&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;visible&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;z-order&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;openGL z position&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;position&lt;/para&gt;&lt;para&gt;scale (x, y)&lt;/para&gt;&lt;para&gt;rotation (in degrees, clockwise)&lt;/para&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCCamera" /&gt; (an interface to gluLookAt )&lt;/para&gt;&lt;see cref="T:Cocos2D.CCCamera" /&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCGridBase" /&gt; (to do mesh transformations)&lt;/para&gt;&lt;see cref="T:Cocos2D.CCGridBase" /&gt;&lt;para&gt;anchor point&lt;/para&gt;&lt;para&gt;size&lt;/para&gt;&lt;para&gt;visible&lt;/para&gt;&lt;para&gt;z-order&lt;/para&gt;&lt;para&gt;openGL z position&lt;/para&gt;&lt;para&gt;Default values:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;rotation: 0&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;position: (x=0,y=0)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;scale: (x=1,y=1)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;contentSize: (x=0,y=0)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;anchorPoint: (x=0,y=0)&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;rotation: 0&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;position: (x=0,y=0)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;scale: (x=1,y=1)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;contentSize: (x=0,y=0)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;anchorPoint: (x=0,y=0)&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;rotation: 0&lt;/para&gt;&lt;para&gt;position: (x=0,y=0)&lt;/para&gt;&lt;para&gt;scale: (x=1,y=1)&lt;/para&gt;&lt;para&gt;contentSize: (x=0,y=0)&lt;/para&gt;&lt;para&gt;anchorPoint: (x=0,y=0)&lt;/para&gt;&lt;para&gt;Limitations:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;A Node is a "void" object. It doesn't have a texture&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;A Node is a "void" object. It doesn't have a texture&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCNode" /&gt; is a "void" object. It doesn't have a texture&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Order in transformations with grid disabled&lt;list type="number"&gt;&lt;item&gt;&lt;description&gt;The node will be translated (position)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The node will be rotated (rotation)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The node will be scaled (scale)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The node will be moved according to the camera values (camera)&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="number"&gt;
+  &lt;item&gt;
+    &lt;description&gt;The node will be translated (position)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The node will be rotated (rotation)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The node will be scaled (scale)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The node will be moved according to the camera values (camera)&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;The node will be translated (position)&lt;/para&gt;&lt;para&gt;The node will be rotated (rotation)&lt;/para&gt;&lt;para&gt;The node will be scaled (scale)&lt;/para&gt;&lt;para&gt;The node will be moved according to the camera values (camera)&lt;/para&gt;&lt;para&gt;Order in transformations with grid enabled&lt;list type="number"&gt;&lt;item&gt;&lt;description&gt;The node will be translated (position)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The node will be rotated (rotation)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The node will be scaled (scale)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The grid will capture the screen&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The node will be moved according to the camera values (camera)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The grid will render the captured screen&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="number"&gt;
+  &lt;item&gt;
+    &lt;description&gt;The node will be translated (position)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The node will be rotated (rotation)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The node will be scaled (scale)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The grid will capture the screen&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The node will be moved according to the camera values (camera)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;The grid will render the captured screen&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;The node will be translated (position)&lt;/para&gt;&lt;para&gt;The node will be rotated (rotation)&lt;/para&gt;&lt;para&gt;The node will be scaled (scale)&lt;/para&gt;&lt;para&gt;The grid will capture the screen&lt;/para&gt;&lt;para&gt;The node will be moved according to the camera values (camera)&lt;/para&gt;&lt;para&gt;The grid will render the captured screen&lt;/para&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCCamera" /&gt;:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;Each node has a camera. By default it points to the center of the Node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCCamera" /&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;Each node has a camera. By default it points to the center of the Node. &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;Each node has a camera. By default it points to the center of the &lt;see cref="T:Cocos2D.CCNode" /&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,8 +142,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Allocates and initializes a node. A initialized node which is marked as "autorelease". </summary>
+        <remarks>&lt;para&gt;Allocates and initializes a node. &lt;para&gt;A initialized node which is marked as "autorelease". &lt;/para&gt;&lt;/para&gt;&lt;para&gt;A initialized node which is marked as "autorelease". &lt;/para&gt;&lt;para&gt;A initialized node which is marked as "autorelease". &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ActionManager">
@@ -45,9 +157,13 @@
         <ReturnType>Cocos2D.CCActionManager</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the  object that is used by all actions. setActionManager(ActionManager*)A  object. </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Gets the &lt;see cref="T:Cocos2D.CCActionManager" /&gt; object that is used by all actions. &lt;para&gt;&lt;ref refid="classcocos2d_1_1_node_1ad48f897b668f3e6fb4229cef3cf071bd" kindref="member"&gt;setActionManager(ActionManager*)&lt;/ref&gt;&lt;/para&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCActionManager" /&gt; object. &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCActionManager" /&gt;&lt;para&gt;
+  &lt;ref refid="classcocos2d_1_1_node_1ad48f897b668f3e6fb4229cef3cf071bd" kindref="member"&gt;setActionManager(ActionManager*)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="classcocos2d_1_1_node_1ad48f897b668f3e6fb4229cef3cf071bd" kindref="member"&gt;setActionManager(ActionManager*)&lt;/ref&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCActionManager" /&gt; object. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCActionManager" /&gt;&lt;para&gt;
+  &lt;ref refid="classcocos2d_1_1_node_1ad48f897b668f3e6fb4229cef3cf071bd" kindref="member"&gt;setActionManager(ActionManager*)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCActionManager" /&gt; object. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddChild">
@@ -64,9 +180,67 @@
         <Parameter Name="child" Type="Cocos2D.CCNode" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">A child node </param>
+        <summary>Adds a child to the container with z order and tag</summary>
+        <remarks>&lt;para&gt;Adds a child to the container with z order and tag&lt;/para&gt;&lt;para&gt;If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A child node &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;zOrder&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;tag&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A child node &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A child node &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A child node &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;zOrder&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;zOrder&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;zOrder&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;tag&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;tag&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;tag&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddChild">
@@ -124,9 +298,270 @@
         <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the additional transform.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets the additional transform.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;The additional transform will be concatenated at the end of nodeToParentTransform. It could be used to simulate &lt;computeroutput&gt;parent-child&lt;/computeroutput&gt; relationship between two nodes (e.g. one is in BatchNode, another isn't). &lt;programlisting&gt;&lt;codeline&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;a&lt;sp /&gt;batchNode&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;SpriteBatchNode*&lt;sp /&gt;batch=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"Icon-114.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(batch);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;two&lt;sp /&gt;sprites,&lt;sp /&gt;spriteA&lt;sp /&gt;will&lt;sp /&gt;be&lt;sp /&gt;added&lt;sp /&gt;to&lt;sp /&gt;batchNode,&lt;sp /&gt;they&lt;sp /&gt;are&lt;sp /&gt;using&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteA&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture());&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteB&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gac4d0417d451a44a07e5b41bb6c4b072c" kindref="member"&gt;Sprite::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"Icon-72.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;batch-&amp;gt;addChild(spriteA);&lt;sp /&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;We&lt;sp /&gt;can't&lt;sp /&gt;make&lt;sp /&gt;spriteB&lt;sp /&gt;as&lt;sp /&gt;spriteA's&lt;sp /&gt;child&lt;sp /&gt;since&lt;sp /&gt;they&lt;sp /&gt;use&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;sp /&gt;So&lt;sp /&gt;just&lt;sp /&gt;add&lt;sp /&gt;it&lt;sp /&gt;to&lt;sp /&gt;layer.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;But&lt;sp /&gt;we&lt;sp /&gt;want&lt;sp /&gt;to&lt;sp /&gt;simulate&lt;sp /&gt;`parent-child`&lt;sp /&gt;relationship&lt;sp /&gt;for&lt;sp /&gt;these&lt;sp /&gt;two&lt;sp /&gt;node.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(spriteB);&lt;sp /&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//position&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setPosition(Point(200,&lt;sp /&gt;200));&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;AffineTransform&lt;sp /&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;postion&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//scale&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setScale(2);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;scale&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//rotation&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setRotation(20);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;rotation&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;/codeline&gt;&lt;/programlisting&gt;&lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;The additional transform will be concatenated at the end of nodeToParentTransform. It could be used to simulate &lt;computeroutput&gt;parent-child&lt;/computeroutput&gt; relationship between two nodes (e.g. one is in BatchNode, another isn't). &lt;programlisting&gt;&lt;codeline&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;a&lt;sp /&gt;batchNode&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;SpriteBatchNode*&lt;sp /&gt;batch=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"Icon-114.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(batch);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;two&lt;sp /&gt;sprites,&lt;sp /&gt;spriteA&lt;sp /&gt;will&lt;sp /&gt;be&lt;sp /&gt;added&lt;sp /&gt;to&lt;sp /&gt;batchNode,&lt;sp /&gt;they&lt;sp /&gt;are&lt;sp /&gt;using&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteA&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture());&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteB&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gac4d0417d451a44a07e5b41bb6c4b072c" kindref="member"&gt;Sprite::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"Icon-72.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;batch-&amp;gt;addChild(spriteA);&lt;sp /&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;We&lt;sp /&gt;can't&lt;sp /&gt;make&lt;sp /&gt;spriteB&lt;sp /&gt;as&lt;sp /&gt;spriteA's&lt;sp /&gt;child&lt;sp /&gt;since&lt;sp /&gt;they&lt;sp /&gt;use&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;sp /&gt;So&lt;sp /&gt;just&lt;sp /&gt;add&lt;sp /&gt;it&lt;sp /&gt;to&lt;sp /&gt;layer.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;But&lt;sp /&gt;we&lt;sp /&gt;want&lt;sp /&gt;to&lt;sp /&gt;simulate&lt;sp /&gt;`parent-child`&lt;sp /&gt;relationship&lt;sp /&gt;for&lt;sp /&gt;these&lt;sp /&gt;two&lt;sp /&gt;node.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(spriteB);&lt;sp /&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//position&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setPosition(Point(200,&lt;sp /&gt;200));&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;AffineTransform&lt;sp /&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;postion&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//scale&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setScale(2);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;scale&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//rotation&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setRotation(20);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;rotation&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;/codeline&gt;&lt;/programlisting&gt;&lt;/para&gt;&lt;computeroutput&gt;parent-child&lt;/computeroutput&gt;&lt;programlisting&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;a&lt;sp /&gt;batchNode&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;SpriteBatchNode*&lt;sp /&gt;batch=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;
+    &lt;highlight class="stringliteral"&gt;"Icon-114.png"&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(batch);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;two&lt;sp /&gt;sprites,&lt;sp /&gt;spriteA&lt;sp /&gt;will&lt;sp /&gt;be&lt;sp /&gt;added&lt;sp /&gt;to&lt;sp /&gt;batchNode,&lt;sp /&gt;they&lt;sp /&gt;are&lt;sp /&gt;using&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteA&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture());&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteB&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gac4d0417d451a44a07e5b41bb6c4b072c" kindref="member"&gt;Sprite::create&lt;/ref&gt;(&lt;/highlight&gt;
+    &lt;highlight class="stringliteral"&gt;"Icon-72.png"&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;batch-&amp;gt;addChild(spriteA);&lt;sp /&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//&lt;sp /&gt;We&lt;sp /&gt;can't&lt;sp /&gt;make&lt;sp /&gt;spriteB&lt;sp /&gt;as&lt;sp /&gt;spriteA's&lt;sp /&gt;child&lt;sp /&gt;since&lt;sp /&gt;they&lt;sp /&gt;use&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;sp /&gt;So&lt;sp /&gt;just&lt;sp /&gt;add&lt;sp /&gt;it&lt;sp /&gt;to&lt;sp /&gt;layer.&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//&lt;sp /&gt;But&lt;sp /&gt;we&lt;sp /&gt;want&lt;sp /&gt;to&lt;sp /&gt;simulate&lt;sp /&gt;`parent-child`&lt;sp /&gt;relationship&lt;sp /&gt;for&lt;sp /&gt;these&lt;sp /&gt;two&lt;sp /&gt;node.&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(spriteB);&lt;sp /&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//position&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;spriteA-&amp;gt;setPosition(Point(200,&lt;sp /&gt;200));&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;AffineTransform&lt;sp /&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;postion&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//scale&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;spriteA-&amp;gt;setScale(2);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;scale&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//rotation&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;spriteA-&amp;gt;setRotation(20);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;rotation&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+&lt;/programlisting&gt;&lt;codeline&gt;
+  &lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;a&lt;sp /&gt;batchNode&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;a&lt;sp /&gt;batchNode&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;SpriteBatchNode*&lt;sp /&gt;batch=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;
+  &lt;highlight class="stringliteral"&gt;"Icon-114.png"&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;SpriteBatchNode*&lt;sp /&gt;batch=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;&lt;highlight class="stringliteral"&gt;"Icon-114.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(batch);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(batch);&lt;/highlight&gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;two&lt;sp /&gt;sprites,&lt;sp /&gt;spriteA&lt;sp /&gt;will&lt;sp /&gt;be&lt;sp /&gt;added&lt;sp /&gt;to&lt;sp /&gt;batchNode,&lt;sp /&gt;they&lt;sp /&gt;are&lt;sp /&gt;using&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;two&lt;sp /&gt;sprites,&lt;sp /&gt;spriteA&lt;sp /&gt;will&lt;sp /&gt;be&lt;sp /&gt;added&lt;sp /&gt;to&lt;sp /&gt;batchNode,&lt;sp /&gt;they&lt;sp /&gt;are&lt;sp /&gt;using&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteA&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture());&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteA&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture());&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteB&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gac4d0417d451a44a07e5b41bb6c4b072c" kindref="member"&gt;Sprite::create&lt;/ref&gt;(&lt;/highlight&gt;
+  &lt;highlight class="stringliteral"&gt;"Icon-72.png"&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteB&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gac4d0417d451a44a07e5b41bb6c4b072c" kindref="member"&gt;Sprite::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gac4d0417d451a44a07e5b41bb6c4b072c" kindref="member"&gt;Sprite::create&lt;/ref&gt;&lt;highlight class="stringliteral"&gt;"Icon-72.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;batch-&amp;gt;addChild(spriteA);&lt;sp /&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;batch-&amp;gt;addChild(spriteA);&lt;sp /&gt;&lt;/highlight&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//&lt;sp /&gt;We&lt;sp /&gt;can't&lt;sp /&gt;make&lt;sp /&gt;spriteB&lt;sp /&gt;as&lt;sp /&gt;spriteA's&lt;sp /&gt;child&lt;sp /&gt;since&lt;sp /&gt;they&lt;sp /&gt;use&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;sp /&gt;So&lt;sp /&gt;just&lt;sp /&gt;add&lt;sp /&gt;it&lt;sp /&gt;to&lt;sp /&gt;layer.&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;We&lt;sp /&gt;can't&lt;sp /&gt;make&lt;sp /&gt;spriteB&lt;sp /&gt;as&lt;sp /&gt;spriteA's&lt;sp /&gt;child&lt;sp /&gt;since&lt;sp /&gt;they&lt;sp /&gt;use&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;sp /&gt;So&lt;sp /&gt;just&lt;sp /&gt;add&lt;sp /&gt;it&lt;sp /&gt;to&lt;sp /&gt;layer.&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//&lt;sp /&gt;But&lt;sp /&gt;we&lt;sp /&gt;want&lt;sp /&gt;to&lt;sp /&gt;simulate&lt;sp /&gt;`parent-child`&lt;sp /&gt;relationship&lt;sp /&gt;for&lt;sp /&gt;these&lt;sp /&gt;two&lt;sp /&gt;node.&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;But&lt;sp /&gt;we&lt;sp /&gt;want&lt;sp /&gt;to&lt;sp /&gt;simulate&lt;sp /&gt;`parent-child`&lt;sp /&gt;relationship&lt;sp /&gt;for&lt;sp /&gt;these&lt;sp /&gt;two&lt;sp /&gt;node.&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(spriteB);&lt;sp /&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(spriteB);&lt;sp /&gt;&lt;/highlight&gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//position&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//position&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;spriteA-&amp;gt;setPosition(Point(200,&lt;sp /&gt;200));&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setPosition(Point(200,&lt;sp /&gt;200));&lt;/highlight&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;AffineTransform&lt;sp /&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;AffineTransform&lt;sp /&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;postion&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;postion&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//scale&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//scale&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;spriteA-&amp;gt;setScale(2);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setScale(2);&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;scale&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;scale&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//rotation&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//rotation&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;spriteA-&amp;gt;setRotation(20);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setRotation(20);&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;rotation&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;rotation&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;para&gt;The additional transform will be concatenated at the end of nodeToParentTransform. It could be used to simulate &lt;computeroutput&gt;parent-child&lt;/computeroutput&gt; relationship between two nodes (e.g. one is in BatchNode, another isn't). &lt;programlisting&gt;&lt;codeline&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;a&lt;sp /&gt;batchNode&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;SpriteBatchNode*&lt;sp /&gt;batch=&lt;sp /&gt;&lt;ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member"&gt;SpriteBatchNode::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"Icon-114.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(batch);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;create&lt;sp /&gt;two&lt;sp /&gt;sprites,&lt;sp /&gt;spriteA&lt;sp /&gt;will&lt;sp /&gt;be&lt;sp /&gt;added&lt;sp /&gt;to&lt;sp /&gt;batchNode,&lt;sp /&gt;they&lt;sp /&gt;are&lt;sp /&gt;using&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteA&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member"&gt;Sprite::createWithTexture&lt;/ref&gt;(batch-&amp;gt;getTexture());&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;Sprite*&lt;sp /&gt;spriteB&lt;sp /&gt;=&lt;sp /&gt;&lt;ref refid="group__sprite__nodes_1gac4d0417d451a44a07e5b41bb6c4b072c" kindref="member"&gt;Sprite::create&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"Icon-72.png"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;batch-&amp;gt;addChild(spriteA);&lt;sp /&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;We&lt;sp /&gt;can't&lt;sp /&gt;make&lt;sp /&gt;spriteB&lt;sp /&gt;as&lt;sp /&gt;spriteA's&lt;sp /&gt;child&lt;sp /&gt;since&lt;sp /&gt;they&lt;sp /&gt;use&lt;sp /&gt;different&lt;sp /&gt;textures.&lt;sp /&gt;So&lt;sp /&gt;just&lt;sp /&gt;add&lt;sp /&gt;it&lt;sp /&gt;to&lt;sp /&gt;layer.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;But&lt;sp /&gt;we&lt;sp /&gt;want&lt;sp /&gt;to&lt;sp /&gt;simulate&lt;sp /&gt;`parent-child`&lt;sp /&gt;relationship&lt;sp /&gt;for&lt;sp /&gt;these&lt;sp /&gt;two&lt;sp /&gt;node.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;this-&amp;gt;&lt;ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member"&gt;addChild&lt;/ref&gt;(spriteB);&lt;sp /&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//position&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setPosition(Point(200,&lt;sp /&gt;200));&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;AffineTransform&lt;sp /&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;postion&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//scale&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setScale(2);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;scale&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//rotation&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteA-&amp;gt;setRotation(20);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Gets&lt;sp /&gt;the&lt;sp /&gt;spriteA's&lt;sp /&gt;transform.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;t&lt;sp /&gt;=&lt;sp /&gt;spriteA-&amp;gt;nodeToParentTransform();&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Sets&lt;sp /&gt;the&lt;sp /&gt;additional&lt;sp /&gt;transform&lt;sp /&gt;to&lt;sp /&gt;spriteB,&lt;sp /&gt;spriteB's&lt;sp /&gt;rotation&lt;sp /&gt;will&lt;sp /&gt;based&lt;sp /&gt;on&lt;sp /&gt;its&lt;sp /&gt;pseudo&lt;sp /&gt;parent&lt;sp /&gt;i.e.&lt;sp /&gt;spriteA.&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;spriteB-&amp;gt;setAdditionalTransform(t);&lt;/highlight&gt;&lt;/codeline&gt;&lt;/programlisting&gt;&lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorPoint">
@@ -140,9 +575,18 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the anchor point in percent.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the anchor point in percent.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1gad48a1317c06899426910afb04c3f6d50" kindref="member"&gt;setAnchorPoint(const Point&amp;amp;)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The anchor point of node. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gad48a1317c06899426910afb04c3f6d50" kindref="member"&gt;setAnchorPoint(const Point&amp;amp;)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1gad48a1317c06899426910afb04c3f6d50" kindref="member"&gt;setAnchorPoint(const Point&amp;amp;)&lt;/ref&gt;&lt;para&gt;The anchor point of node. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gad48a1317c06899426910afb04c3f6d50" kindref="member"&gt;setAnchorPoint(const Point&amp;amp;)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The anchor point of node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorPointInPoints">
@@ -156,9 +600,19 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the anchorPoint in absolute pixels.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the anchorPoint in absolute pixels.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;You can only read it. If you wish to modify it, use anchorPoint instead. &lt;/para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga81546fd5e552e183d0b6527b249cf440" kindref="member"&gt;getAnchorPoint()&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The anchor point in absolute pixels. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;You can only read it. If you wish to modify it, use anchorPoint instead. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga81546fd5e552e183d0b6527b249cf440" kindref="member"&gt;getAnchorPoint()&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga81546fd5e552e183d0b6527b249cf440" kindref="member"&gt;getAnchorPoint()&lt;/ref&gt;&lt;para&gt;The anchor point in absolute pixels. &lt;/para&gt;&lt;para&gt;You can only read it. If you wish to modify it, use anchorPoint instead. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga81546fd5e552e183d0b6527b249cf440" kindref="member"&gt;getAnchorPoint()&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The anchor point in absolute pixels. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="BoundingBox">
@@ -172,9 +626,13 @@
         <ReturnType>Cocos2D.CCRect</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns a "local" axis aligned bounding box of the node. The returned box is relative only to its parent.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns a "local" axis aligned bounding box of the node. The returned box is relative only to its parent.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;This method returns a temporaty variable, so it can't returns const Rect&amp;amp; &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;This method returns a temporaty variable, so it can't returns const Rect&amp;amp; &lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;A "local" axis aligned boudning box of the node. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;A "local" axis aligned boudning box of the node. &lt;/para&gt;&lt;para&gt;This method returns a temporaty variable, so it can't returns const Rect&amp;amp; &lt;/para&gt;&lt;para&gt;A "local" axis aligned boudning box of the node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="BoundingBoxInPixels">
@@ -204,9 +662,39 @@
         <ReturnType>Cocos2D.CCCamera</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns a camera object that lets you move the node using a gluLookAt</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns a camera object that lets you move the node using a gluLookAt&lt;/para&gt;&lt;para&gt;
+  &lt;programlisting&gt;
+    &lt;codeline&gt;
+      &lt;highlight class="normal"&gt;Camera*&lt;sp /&gt;camera&lt;sp /&gt;=&lt;sp /&gt;node-&amp;gt;getCamera();&lt;/highlight&gt;
+    &lt;/codeline&gt;
+    &lt;codeline&gt;
+      &lt;highlight class="normal"&gt;camera-&amp;gt;setEyeXYZ(0,&lt;sp /&gt;0,&lt;sp /&gt;415/2);&lt;/highlight&gt;
+    &lt;/codeline&gt;
+    &lt;codeline&gt;
+      &lt;highlight class="normal"&gt;camera-&amp;gt;setCenterXYZ(0,&lt;sp /&gt;0,&lt;sp /&gt;0);&lt;/highlight&gt;
+    &lt;/codeline&gt;
+  &lt;/programlisting&gt;
+&lt;/para&gt;&lt;programlisting&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;Camera*&lt;sp /&gt;camera&lt;sp /&gt;=&lt;sp /&gt;node-&amp;gt;getCamera();&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;camera-&amp;gt;setEyeXYZ(0,&lt;sp /&gt;0,&lt;sp /&gt;415/2);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;camera-&amp;gt;setCenterXYZ(0,&lt;sp /&gt;0,&lt;sp /&gt;0);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+&lt;/programlisting&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;Camera*&lt;sp /&gt;camera&lt;sp /&gt;=&lt;sp /&gt;node-&amp;gt;getCamera();&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;Camera*&lt;sp /&gt;camera&lt;sp /&gt;=&lt;sp /&gt;node-&amp;gt;getCamera();&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;camera-&amp;gt;setEyeXYZ(0,&lt;sp /&gt;0,&lt;sp /&gt;415/2);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;camera-&amp;gt;setEyeXYZ(0,&lt;sp /&gt;0,&lt;sp /&gt;415/2);&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;camera-&amp;gt;setCenterXYZ(0,&lt;sp /&gt;0,&lt;sp /&gt;0);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;camera-&amp;gt;setCenterXYZ(0,&lt;sp /&gt;0,&lt;sp /&gt;0);&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;para&gt;
+  &lt;para&gt;A &lt;see cref="T:Cocos2D.CCCamera" /&gt; object that lets you move the node using a gluLookAt &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCCamera" /&gt; object that lets you move the node using a gluLookAt &lt;/para&gt;&lt;see cref="T:Cocos2D.CCCamera" /&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCCamera" /&gt; object that lets you move the node using a gluLookAt &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="CanReceiveFocus">
@@ -236,9 +724,55 @@
         <ReturnType>Cocos2D.CCRawList&lt;Cocos2D.CCNode&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Return an array of children</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Return an array of children&lt;/para&gt;&lt;para&gt;Composing a "tree" structure is a very important feature of &lt;see cref="T:Cocos2D.CCNode" /&gt; Here's a sample code of traversing children array: &lt;programlisting&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;ref refid="group__base__nodes_1ga2830ddc6af8b2ec5f958b677141c1a25" kindref="member"&gt;Node&lt;/ref&gt;*&lt;sp /&gt;node&lt;sp /&gt;=&lt;sp /&gt;NULL;&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;ref refid="group__data__structures_1ga19748065059dd10de7bf990534c98a40" kindref="member"&gt;CCARRAY_FOREACH&lt;/ref&gt;(parent-&amp;gt;getChildren(),&lt;sp /&gt;node)&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;{&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;node-&amp;gt;setPosition(0,0);&lt;/highlight&gt;&lt;/codeline&gt;&lt;codeline&gt;&lt;highlight class="normal"&gt;}&lt;/highlight&gt;&lt;/codeline&gt;&lt;/programlisting&gt; This sample code traverses all children nodes, and set theie position to (0,0)&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;programlisting&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;
+      &lt;ref refid="group__base__nodes_1ga2830ddc6af8b2ec5f958b677141c1a25" kindref="member"&gt;Node&lt;/ref&gt;*&lt;sp /&gt;node&lt;sp /&gt;=&lt;sp /&gt;NULL;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;
+      &lt;ref refid="group__data__structures_1ga19748065059dd10de7bf990534c98a40" kindref="member"&gt;CCARRAY_FOREACH&lt;/ref&gt;(parent-&amp;gt;getChildren(),&lt;sp /&gt;node)&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;{&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;
+      &lt;sp /&gt;node-&amp;gt;setPosition(0,0);&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;}&lt;/highlight&gt;
+  &lt;/codeline&gt;
+&lt;/programlisting&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;
+    &lt;ref refid="group__base__nodes_1ga2830ddc6af8b2ec5f958b677141c1a25" kindref="member"&gt;Node&lt;/ref&gt;*&lt;sp /&gt;node&lt;sp /&gt;=&lt;sp /&gt;NULL;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;
+  &lt;ref refid="group__base__nodes_1ga2830ddc6af8b2ec5f958b677141c1a25" kindref="member"&gt;Node&lt;/ref&gt;*&lt;sp /&gt;node&lt;sp /&gt;=&lt;sp /&gt;NULL;&lt;/highlight&gt;&lt;ref refid="group__base__nodes_1ga2830ddc6af8b2ec5f958b677141c1a25" kindref="member"&gt;Node&lt;/ref&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;
+    &lt;ref refid="group__data__structures_1ga19748065059dd10de7bf990534c98a40" kindref="member"&gt;CCARRAY_FOREACH&lt;/ref&gt;(parent-&amp;gt;getChildren(),&lt;sp /&gt;node)&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;
+  &lt;ref refid="group__data__structures_1ga19748065059dd10de7bf990534c98a40" kindref="member"&gt;CCARRAY_FOREACH&lt;/ref&gt;(parent-&amp;gt;getChildren(),&lt;sp /&gt;node)&lt;/highlight&gt;&lt;ref refid="group__data__structures_1ga19748065059dd10de7bf990534c98a40" kindref="member"&gt;CCARRAY_FOREACH&lt;/ref&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;{&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;{&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;
+    &lt;sp /&gt;node-&amp;gt;setPosition(0,0);&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;
+  &lt;sp /&gt;node-&amp;gt;setPosition(0,0);&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;}&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;}&lt;/highlight&gt;&lt;para&gt;
+  &lt;para&gt;An array of children &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;An array of children &lt;/para&gt;&lt;para&gt;An array of children &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ChildrenCount">
@@ -252,9 +786,11 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Get the amount of children.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Get the amount of children.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;The amount of children. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;The amount of children. &lt;/para&gt;&lt;para&gt;The amount of children. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Cleanup">
@@ -269,8 +805,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Stops all running actions and schedulers </summary>
+        <remarks>Stops all running actions and schedulers </remarks>
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
@@ -284,9 +820,18 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the untransformed size of the node.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the untransformed size of the node.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga44b15e4e53de9cb8bb0d1fee8cb95233" kindref="member"&gt;setContentSize(const Size&amp;amp;)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The untransformed size of the node. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga44b15e4e53de9cb8bb0d1fee8cb95233" kindref="member"&gt;setContentSize(const Size&amp;amp;)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga44b15e4e53de9cb8bb0d1fee8cb95233" kindref="member"&gt;setContentSize(const Size&amp;amp;)&lt;/ref&gt;&lt;para&gt;The untransformed size of the node. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga44b15e4e53de9cb8bb0d1fee8cb95233" kindref="member"&gt;setContentSize(const Size&amp;amp;)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The untransformed size of the node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ContentSizeInPixels">
@@ -320,9 +865,9 @@
       </Parameters>
       <Docs>
         <param name="worldPoint">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Converts a Point to node (local) space coordinates. The result is in Points. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>Converts a Point to node (local) space coordinates. The result is in Points. </remarks>
       </Docs>
     </Member>
     <Member MemberName="ConvertToNodeSpaceAr">
@@ -360,9 +905,9 @@
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>convenience methods which take a Touch instead of Point </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>convenience methods which take a Touch instead of Point </remarks>
       </Docs>
     </Member>
     <Member MemberName="ConvertTouchToNodeSpaceAr">
@@ -400,9 +945,9 @@
       </Parameters>
       <Docs>
         <param name="nodePoint">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>&lt;para&gt;Convert &lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt; coordinates to UI windows coordinate. &lt;/para&gt;&lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt;</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ConvertToWorldSpace">
@@ -420,9 +965,9 @@
       </Parameters>
       <Docs>
         <param name="nodePoint">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Converts a Point to world space coordinates. The result is in Points. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>Converts a Point to world space coordinates. The result is in Points. </remarks>
       </Docs>
     </Member>
     <Member MemberName="ConvertToWorldSpaceAr">
@@ -476,8 +1021,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
+        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -511,9 +1069,15 @@
       </Parameters>
       <Docs>
         <param name="tag">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Gets an action from the running action list by its tag.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Gets an action from the running action list by its tag.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;, &lt;ref refid="group__base__nodes_1ga79da575d4c240206a788d996300ec967" kindref="member"&gt;getTag()&lt;/ref&gt;.&lt;/para&gt;
+  &lt;para&gt;The action object with the given tag. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;, &lt;ref refid="group__base__nodes_1ga79da575d4c240206a788d996300ec967" kindref="member"&gt;getTag()&lt;/ref&gt;.&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;ref refid="group__base__nodes_1ga79da575d4c240206a788d996300ec967" kindref="member"&gt;getTag()&lt;/ref&gt;&lt;para&gt;The action object with the given tag. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;, &lt;ref refid="group__base__nodes_1ga79da575d4c240206a788d996300ec967" kindref="member"&gt;getTag()&lt;/ref&gt;.&lt;/para&gt;&lt;para&gt;The action object with the given tag. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetChildByTag">
@@ -530,10 +1094,32 @@
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="tag">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="tag">An identifier to find the child node.</param>
+        <summary>Gets a child from the container with its tag</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Gets a child from the container with its tag&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;a &lt;see cref="T:Cocos2D.CCNode" /&gt; object whose tag equals to the input parameter &lt;/para&gt;
+&lt;/para&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;tag&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;An identifier to find the child node.&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;tag&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;An identifier to find the child node.&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;tag&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;tag&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;An identifier to find the child node.&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;An identifier to find the child node.&lt;/para&gt;&lt;para&gt;a &lt;see cref="T:Cocos2D.CCNode" /&gt; object whose tag equals to the input parameter &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;a &lt;see cref="T:Cocos2D.CCNode" /&gt; object whose tag equals to the input parameter &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetPosition">
@@ -553,8 +1139,16 @@
       <Docs>
         <param name="x">To be added.</param>
         <param name="y">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Gets position in a more efficient way, returns two number instead of a Point object</summary>
+        <remarks>&lt;para&gt;Gets position in a more efficient way, returns two number instead of a Point object&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1gaecff4d4aeacdce557bf4b722befe9fd2" kindref="member"&gt;setPosition(float, float)&lt;/ref&gt;
+  &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gaecff4d4aeacdce557bf4b722befe9fd2" kindref="member"&gt;setPosition(float, float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1gaecff4d4aeacdce557bf4b722befe9fd2" kindref="member"&gt;setPosition(float, float)&lt;/ref&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gaecff4d4aeacdce557bf4b722befe9fd2" kindref="member"&gt;setPosition(float, float)&lt;/ref&gt;
+&lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Grid">
@@ -568,9 +1162,29 @@
         <ReturnType>Cocos2D.CCGridBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes a grid object that is used when applying effects</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes a grid object that is used when applying effects&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;A&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Grid object that is used when applying effects &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;A&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Grid object that is used when applying effects &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;A&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;A&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Grid object that is used when applying effects &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Grid object that is used when applying effects &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="HasFocus">
@@ -600,9 +1214,29 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets whether the anchor point will be (0,0) when you position this node.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets whether the anchor point will be (0,0) when you position this node.&lt;/para&gt;&lt;para&gt;This is an internal method, only used by &lt;see cref="T:Cocos2D.CCLayer" /&gt; and &lt;see cref="T:Cocos2D.CCScene" /&gt;. Don't call it outside framework. The default value is false, while in &lt;see cref="T:Cocos2D.CCLayer" /&gt; and &lt;see cref="T:Cocos2D.CCScene" /&gt; are true&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;see cref="T:Cocos2D.CCScene" /&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;see cref="T:Cocos2D.CCScene" /&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;ignore&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if anchor point will be (0,0) when you position this node &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;ignore&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if anchor point will be (0,0) when you position this node &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;ignore&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;ignore&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if anchor point will be (0,0) when you position this node &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if anchor point will be (0,0) when you position this node &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -617,9 +1251,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes the instance of Whether the initialization was successful. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Initializes the instance of &lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsRunning">
@@ -633,9 +1267,11 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns whether or not the node accepts event callbacks.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns whether or not the node accepts event callbacks.&lt;/para&gt;&lt;para&gt;Running means the node accept event callbacks like &lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;onEnter()&lt;/ref&gt;, &lt;ref refid="classcocos2d_1_1_node_1a3a43c10832c787f6e2ca437c3ecc8dd3" kindref="member"&gt;onExit()&lt;/ref&gt;, update()&lt;/para&gt;&lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;onEnter()&lt;/ref&gt;&lt;ref refid="classcocos2d_1_1_node_1a3a43c10832c787f6e2ca437c3ecc8dd3" kindref="member"&gt;onExit()&lt;/ref&gt;&lt;para&gt;
+  &lt;para&gt;Whether or not the node is running. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;Whether or not the node is running. &lt;/para&gt;&lt;para&gt;Whether or not the node is running. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsSerializable">
@@ -1087,9 +1723,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates. The matrix is in Pixels. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates. The matrix is in Pixels. </remarks>
       </Docs>
     </Member>
     <Member MemberName="NodeToWorldTransform">
@@ -1104,9 +1740,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the world affine transform matrix. The matrix is in Pixels. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>Returns the world affine transform matrix. The matrix is in Pixels. </remarks>
       </Docs>
     </Member>
     <Member MemberName="NumberOfRunningActions">
@@ -1121,9 +1757,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the numbers of actions that are running plus the ones that are schedule to run (actions in actionsToAdd and actions arrays).</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the numbers of actions that are running plus the ones that are schedule to run (actions in actionsToAdd and actions arrays).&lt;/para&gt;&lt;para&gt;Composable actions are counted as 1 action. Example: If you are running 1 &lt;see cref="T:Cocos2D.CCSequence" /&gt; of 7 actions, it will return 1. If you are running 7 Sequences of 2 actions, it will return 7. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSequence" /&gt;&lt;para&gt;
+  &lt;para&gt;The number of actions that are running plus the ones that are schedule to run &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;The number of actions that are running plus the ones that are schedule to run &lt;/para&gt;&lt;para&gt;The number of actions that are running plus the ones that are schedule to run &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnEnter">
@@ -1138,8 +1776,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
+        <remarks>&lt;para&gt;Event callback that is invoked every time when &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., &lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;Node::onEnter()&lt;/ref&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;Node::onEnter()&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnEnterTransitionDidFinish">
@@ -1154,8 +1792,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event callback that is invoked when the  enters in the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition finishes. If you override onEnterTransitionDidFinish, you shall call its parent's one, e.g. Node::onEnterTransitionDidFinish()</summary>
+        <remarks>&lt;para&gt;Event callback that is invoked when the &lt;see cref="T:Cocos2D.CCNode" /&gt; enters in the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage' with a transition, this event is called when the transition finishes. If you override onEnterTransitionDidFinish, you shall call its parent's one, e.g. &lt;ref refid="classcocos2d_1_1_node_1a7f705fa89d29ed4efda768865d1728d3" kindref="member"&gt;Node::onEnterTransitionDidFinish()&lt;/ref&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_node_1a7f705fa89d29ed4efda768865d1728d3" kindref="member"&gt;Node::onEnterTransitionDidFinish()&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnExit">
@@ -1170,8 +1808,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event callback that is invoked every time the  leaves the 'stage'. If the  leaves the 'stage' with a transition, this event is called when the transition finishes. During onExit you can't access a sibling node. If you override onExit, you shall call its parent's one, e.g., Node::onExit(). </summary>
+        <remarks>&lt;para&gt;Event callback that is invoked every time the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage' with a transition, this event is called when the transition finishes. During onExit you can't access a sibling node. If you override onExit, you shall call its parent's one, e.g., &lt;ref refid="classcocos2d_1_1_node_1a3a43c10832c787f6e2ca437c3ecc8dd3" kindref="member"&gt;Node::onExit()&lt;/ref&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_node_1a3a43c10832c787f6e2ca437c3ecc8dd3" kindref="member"&gt;Node::onExit()&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnExitTransitionDidStart">
@@ -1186,8 +1824,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event callback that is called every time the  leaves the 'stage'. If the  leaves the 'stage' with a transition, this callback is called when the transition starts. </summary>
+        <remarks>&lt;para&gt;Event callback that is called every time the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage' with a transition, this callback is called when the transition starts. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="OrderOfArrival">
@@ -1201,9 +1839,18 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the arrival order, indecates which children is added previously.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the arrival order, indecates which children is added previously.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga1d187df548d25d92730ea855aa25967c" kindref="member"&gt;setOrderOfArrival(unsigned int)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The arrival order. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga1d187df548d25d92730ea855aa25967c" kindref="member"&gt;setOrderOfArrival(unsigned int)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga1d187df548d25d92730ea855aa25967c" kindref="member"&gt;setOrderOfArrival(unsigned int)&lt;/ref&gt;&lt;para&gt;The arrival order. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga1d187df548d25d92730ea855aa25967c" kindref="member"&gt;setOrderOfArrival(unsigned int)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The arrival order. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Parent">
@@ -1217,9 +1864,18 @@
         <ReturnType>Cocos2D.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns a pointer to the parent node</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns a pointer to the parent node&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1gadceeec8b63df3f380be809bd12111890" kindref="member"&gt;setParent(Node*)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;A pointer to the parnet node &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gadceeec8b63df3f380be809bd12111890" kindref="member"&gt;setParent(Node*)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1gadceeec8b63df3f380be809bd12111890" kindref="member"&gt;setParent(Node*)&lt;/ref&gt;&lt;para&gt;A pointer to the parnet node &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gadceeec8b63df3f380be809bd12111890" kindref="member"&gt;setParent(Node*)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;A pointer to the parnet node &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ParentToNodeTransform">
@@ -1234,9 +1890,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the matrix that transform parent's space coordinates to the node's (local) space coordinates. The matrix is in Pixels. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>Returns the matrix that transform parent's space coordinates to the node's (local) space coordinates. The matrix is in Pixels. </remarks>
       </Docs>
     </Member>
     <Member MemberName="PauseSchedulerAndActions">
@@ -1251,8 +1907,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Pauses all scheduled selectors and actions. This method is called internally by onExit </summary>
+        <remarks>Pauses all scheduled selectors and actions. This method is called internally by onExit </remarks>
       </Docs>
     </Member>
     <Member MemberName="Position">
@@ -1282,9 +1938,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets/Sets x or y coordinate individually for position. These methods are used in Lua and Javascript Bindings </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="PositionY">
@@ -1300,7 +1956,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveAllChildren">
@@ -1315,8 +1971,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Removes all children from the container with a cleanup.</summary>
+        <remarks>&lt;para&gt;Removes all children from the container with a cleanup.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1gaf79a48257a5d884d426ac561a1347897" kindref="member"&gt;removeAllChildrenWithCleanup(bool)&lt;/ref&gt;
+  &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gaf79a48257a5d884d426ac561a1347897" kindref="member"&gt;removeAllChildrenWithCleanup(bool)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1gaf79a48257a5d884d426ac561a1347897" kindref="member"&gt;removeAllChildrenWithCleanup(bool)&lt;/ref&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gaf79a48257a5d884d426ac561a1347897" kindref="member"&gt;removeAllChildrenWithCleanup(bool)&lt;/ref&gt;
+&lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveAllChildrenWithCleanup">
@@ -1333,9 +1997,29 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="cleanup">true if all running actions on all children nodes should be cleanup, false oterwise. </param>
+        <summary>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</summary>
+        <remarks>&lt;para&gt;Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;cleanup&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;cleanup&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;cleanup&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
@@ -1352,9 +2036,48 @@
         <Parameter Name="child" Type="Cocos2D.CCNode" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">The child node which will be removed. </param>
+        <summary>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</summary>
+        <remarks>&lt;para&gt;Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;cleanup&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The child node which will be removed. &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;cleanup&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;cleanup&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
@@ -1392,9 +2115,48 @@
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="tag">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="tag">An interger number that identifies a child node </param>
+        <summary>Removes a child from the container by tag value. It will also cleanup all running actions depending on the cleanup parameter</summary>
+        <remarks>&lt;para&gt;Removes a child from the container by tag value. It will also cleanup all running actions depending on the cleanup parameter&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;tag&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;An interger number that identifies a child node &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;cleanup&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;tag&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;An interger number that identifies a child node &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;tag&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;tag&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;An interger number that identifies a child node &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;An interger number that identifies a child node &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;cleanup&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;cleanup&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChildByTag">
@@ -1430,8 +2192,12 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Removes this node itself from its parent node with a cleanup. If the node orphan, then nothing happens. removeFromParentAndCleanup(bool)</summary>
+        <remarks>&lt;para&gt;Removes this node itself from its parent node with a cleanup. If the node orphan, then nothing happens. &lt;para&gt;&lt;ref refid="group__base__nodes_1ga1e62b269bb704c9f72d4e4b83b213124" kindref="member"&gt;removeFromParentAndCleanup(bool)&lt;/ref&gt;&lt;/para&gt;&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga1e62b269bb704c9f72d4e4b83b213124" kindref="member"&gt;removeFromParentAndCleanup(bool)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga1e62b269bb704c9f72d4e4b83b213124" kindref="member"&gt;removeFromParentAndCleanup(bool)&lt;/ref&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga1e62b269bb704c9f72d4e4b83b213124" kindref="member"&gt;removeFromParentAndCleanup(bool)&lt;/ref&gt;
+&lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveFromParentAndCleanup">
@@ -1448,9 +2214,29 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="cleanup">true if all actions and callbacks on this node should be removed, false otherwise. </param>
+        <summary>Removes this node itself from its parent node. If the node orphan, then nothing happens. </summary>
+        <remarks>&lt;para&gt;Removes this node itself from its parent node. If the node orphan, then nothing happens. &lt;/para&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;cleanup&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if all actions and callbacks on this node should be removed, false otherwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;cleanup&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if all actions and callbacks on this node should be removed, false otherwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;cleanup&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if all actions and callbacks on this node should be removed, false otherwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if all actions and callbacks on this node should be removed, false otherwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ReorderChild">
@@ -1468,10 +2254,49 @@
         <Parameter Name="zOrder" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="zOrder">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">An already added child node. It MUST be already added. </param>
+        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)setZOrder(int)</param>
+        <summary>Reorders a child according to a new z value.</summary>
+        <remarks>&lt;para&gt;Reorders a child according to a new z value.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;zOrder&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;zOrder&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;zOrder&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;zOrder&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ResumeSchedulerAndActions">
@@ -1486,8 +2311,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Resumes all scheduled selectors and actions. This method is called internally by onEnter </summary>
+        <remarks>Resumes all scheduled selectors and actions. This method is called internally by onEnter </remarks>
       </Docs>
     </Member>
     <Member MemberName="Rotation">
@@ -1501,9 +2326,18 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the rotation of the node in degrees.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the rotation of the node in degrees.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga75d7d9854be663bfcdad47dadf9f093b" kindref="member"&gt;setRotation(float)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The rotation of the node in degrees. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga75d7d9854be663bfcdad47dadf9f093b" kindref="member"&gt;setRotation(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga75d7d9854be663bfcdad47dadf9f093b" kindref="member"&gt;setRotation(float)&lt;/ref&gt;&lt;para&gt;The rotation of the node in degrees. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga75d7d9854be663bfcdad47dadf9f093b" kindref="member"&gt;setRotation(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The rotation of the node in degrees. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RotationX">
@@ -1517,9 +2351,18 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the X rotation (angle) of the node in degrees which performs a horizontal rotation skew.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Gets the X rotation (angle) of the node in degrees which performs a horizontal rotation skew.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga2dcac312f2d4bf25a2df8a6ec4fc9d1a" kindref="member"&gt;setRotationX(float)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The X rotation in degrees. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga2dcac312f2d4bf25a2df8a6ec4fc9d1a" kindref="member"&gt;setRotationX(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga2dcac312f2d4bf25a2df8a6ec4fc9d1a" kindref="member"&gt;setRotationX(float)&lt;/ref&gt;&lt;para&gt;The X rotation in degrees. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga2dcac312f2d4bf25a2df8a6ec4fc9d1a" kindref="member"&gt;setRotationX(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The X rotation in degrees. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RotationY">
@@ -1533,9 +2376,18 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the Y rotation (angle) of the node in degrees which performs a vertical rotational skew.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Gets the Y rotation (angle) of the node in degrees which performs a vertical rotational skew.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga31a53afee009bf7f3a987b4f2134c96b" kindref="member"&gt;setRotationY(float)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The Y rotation in degrees. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga31a53afee009bf7f3a987b4f2134c96b" kindref="member"&gt;setRotationY(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga31a53afee009bf7f3a987b4f2134c96b" kindref="member"&gt;setRotationY(float)&lt;/ref&gt;&lt;para&gt;The Y rotation in degrees. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga31a53afee009bf7f3a987b4f2134c96b" kindref="member"&gt;setRotationY(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The Y rotation in degrees. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RunAction">
@@ -1553,9 +2405,9 @@
       </Parameters>
       <Docs>
         <param name="action">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Executes an action, and returns the action that is executed.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Executes an action, and returns the action that is executed.&lt;/para&gt;&lt;para&gt;This node becomes the action's target. Refer to Action::getTarget() &lt;para&gt;Actions don't retain their target.&lt;/para&gt;&lt;para&gt;An &lt;see cref="T:Cocos2D.CCAction" /&gt; pointer &lt;/para&gt;&lt;/para&gt;&lt;para&gt;Actions don't retain their target.&lt;/para&gt;&lt;para&gt;An &lt;see cref="T:Cocos2D.CCAction" /&gt; pointer &lt;/para&gt;&lt;see cref="T:Cocos2D.CCAction" /&gt;&lt;para&gt;Actions don't retain their target.&lt;/para&gt;&lt;para&gt;An &lt;see cref="T:Cocos2D.CCAction" /&gt; pointer &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Scale">
@@ -1569,9 +2421,19 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the scale factor of the node, when X and Y have the same scale factor.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Gets the scale factor of the node, when X and Y have the same scale factor.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;Assert when _scaleX != _scaleY. &lt;/para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1gabd615be9ab54d95aa86af15db18a1004" kindref="member"&gt;setScale(float)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The scale factor of the node. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;Assert when _scaleX != _scaleY. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gabd615be9ab54d95aa86af15db18a1004" kindref="member"&gt;setScale(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1gabd615be9ab54d95aa86af15db18a1004" kindref="member"&gt;setScale(float)&lt;/ref&gt;&lt;para&gt;The scale factor of the node. &lt;/para&gt;&lt;para&gt;Assert when _scaleX != _scaleY. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gabd615be9ab54d95aa86af15db18a1004" kindref="member"&gt;setScale(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The scale factor of the node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ScaleX">
@@ -1585,9 +2447,18 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the scale factor on X axis of this node</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the scale factor on X axis of this node&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga299d23df4398fe70565a6114bfacedc4" kindref="member"&gt;setScaleX(float)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The scale factor on X axis. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga299d23df4398fe70565a6114bfacedc4" kindref="member"&gt;setScaleX(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga299d23df4398fe70565a6114bfacedc4" kindref="member"&gt;setScaleX(float)&lt;/ref&gt;&lt;para&gt;The scale factor on X axis. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga299d23df4398fe70565a6114bfacedc4" kindref="member"&gt;setScaleX(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The scale factor on X axis. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ScaleY">
@@ -1601,9 +2472,18 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the scale factor on Y axis of this node</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the scale factor on Y axis of this node&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga0aba6f7e11dc4a4571e5f95130c7adc3" kindref="member"&gt;setScaleY(float)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The scale factor on Y axis. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga0aba6f7e11dc4a4571e5f95130c7adc3" kindref="member"&gt;setScaleY(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga0aba6f7e11dc4a4571e5f95130c7adc3" kindref="member"&gt;setScaleY(float)&lt;/ref&gt;&lt;para&gt;The scale factor on Y axis. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga0aba6f7e11dc4a4571e5f95130c7adc3" kindref="member"&gt;setScaleY(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The scale factor on Y axis. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Schedule">
@@ -1620,9 +2500,33 @@
         <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
       </Parameters>
       <Docs>
-        <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="selector">A function wrapped as a selector </param>
+        <summary>Schedules a custom selector, the scheduled selector will be ticked every frame schedule(SEL_SCHEDULE, float, unsigned int, float)</summary>
+        <remarks>&lt;para&gt;Schedules a custom selector, the scheduled selector will be ticked every frame &lt;para&gt;&lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;&lt;/para&gt;&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;selector&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A function wrapped as a selector &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;selector&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A function wrapped as a selector &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;selector&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;selector&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A function wrapped as a selector &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A function wrapped as a selector &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;
+&lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Schedule">
@@ -1686,10 +2590,53 @@
         <Parameter Name="delay" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="selector">To be added.</param>
-        <param name="delay">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="selector">A function wrapped as a selector </param>
+        <param name="delay">The amount of time that the first tick will wait before execution. </param>
+        <summary>Schedules a selector that runs only once, with a delay of 0 or larger schedule(SEL_SCHEDULE, float, unsigned int, float)</summary>
+        <remarks>&lt;para&gt;Schedules a selector that runs only once, with a delay of 0 or larger &lt;para&gt;&lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;&lt;/para&gt;&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;selector&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A function wrapped as a selector &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;delay&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The amount of time that the first tick will wait before execution. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;selector&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A function wrapped as a selector &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;selector&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;selector&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A function wrapped as a selector &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A function wrapped as a selector &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;delay&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The amount of time that the first tick will wait before execution. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;delay&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;delay&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The amount of time that the first tick will wait before execution. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The amount of time that the first tick will wait before execution. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;
+&lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Scheduler">
@@ -1703,9 +2650,18 @@
         <ReturnType>Cocos2D.CCScheduler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets a Sheduler object.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Gets a Sheduler object.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="classcocos2d_1_1_node_1af298cb47edf3f8dcd53d1476e5f9ba8b" kindref="member"&gt;setScheduler(Scheduler*)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;A &lt;see cref="T:Cocos2D.CCScheduler" /&gt; object. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="classcocos2d_1_1_node_1af298cb47edf3f8dcd53d1476e5f9ba8b" kindref="member"&gt;setScheduler(Scheduler*)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="classcocos2d_1_1_node_1af298cb47edf3f8dcd53d1476e5f9ba8b" kindref="member"&gt;setScheduler(Scheduler*)&lt;/ref&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCScheduler" /&gt; object. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCScheduler" /&gt;&lt;para&gt;
+  &lt;ref refid="classcocos2d_1_1_node_1af298cb47edf3f8dcd53d1476e5f9ba8b" kindref="member"&gt;setScheduler(Scheduler*)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCScheduler" /&gt; object. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ScheduleUpdate">
@@ -1720,8 +2676,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Schedules the "update" method.</summary>
+        <remarks>&lt;para&gt;Schedules the "update" method.&lt;/para&gt;&lt;para&gt;It will use the order number 0. This method will be called every frame. Scheduled methods with a lower order value will be called before the ones that have a higher order value. Only one "update" method could be scheduled per node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="ScheduleUpdateWithPriority">
@@ -1739,8 +2695,8 @@
       </Parameters>
       <Docs>
         <param name="priority">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Schedules the "update" method with a custom priority.</summary>
+        <remarks>&lt;para&gt;Schedules the "update" method with a custom priority.&lt;/para&gt;&lt;para&gt;This selector will be called every frame. Scheduled methods with a lower priority will be called before the ones that have a higher value. Only one "update" selector could be scheduled per node (You can't have 2 'update' selectors). &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Serialize">
@@ -1777,10 +2733,90 @@
         <Parameter Name="y" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="x">X coordinate for position </param>
+        <param name="y">Y coordinate for position </param>
+        <summary>Sets position in a more efficient way.</summary>
+        <remarks>&lt;para&gt;Sets position in a more efficient way.&lt;/para&gt;&lt;para&gt;Passing two numbers (x,y) is much efficient than passing Point object. This method is binded to lua and javascript. Passing a number is 10 times faster than passing a object from lua to c++&lt;/para&gt;&lt;para&gt;
+  &lt;programlisting&gt;
+    &lt;codeline&gt;
+      &lt;highlight class="comment"&gt;//&lt;sp /&gt;sample&lt;sp /&gt;code&lt;sp /&gt;in&lt;sp /&gt;lua&lt;/highlight&gt;
+      &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+    &lt;/codeline&gt;
+    &lt;codeline&gt;
+      &lt;highlight class="normal"&gt;local&lt;sp /&gt;pos&lt;sp /&gt;&lt;sp /&gt;=&lt;sp /&gt;node::getPosition()&lt;sp /&gt;&lt;sp /&gt;--&lt;sp /&gt;returns&lt;sp /&gt;Point&lt;sp /&gt;&lt;/highlight&gt;
+      &lt;highlight class="keywordtype"&gt;object&lt;/highlight&gt;
+      &lt;highlight class="normal"&gt;
+        &lt;sp /&gt;from&lt;sp /&gt;C++&lt;/highlight&gt;
+    &lt;/codeline&gt;
+    &lt;codeline&gt;
+      &lt;highlight class="normal"&gt;node:&lt;ref refid="group__base__nodes_1ga17a8d67637ccd77b900ceb0b72331fb0" kindref="member"&gt;setPosition&lt;/ref&gt;(x,&lt;sp /&gt;y)&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;--&lt;sp /&gt;pass&lt;sp /&gt;x,&lt;sp /&gt;y&lt;sp /&gt;coordinate&lt;sp /&gt;to&lt;sp /&gt;C++&lt;/highlight&gt;
+    &lt;/codeline&gt;
+  &lt;/programlisting&gt;
+&lt;/para&gt;&lt;programlisting&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="comment"&gt;//&lt;sp /&gt;sample&lt;sp /&gt;code&lt;sp /&gt;in&lt;sp /&gt;lua&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;local&lt;sp /&gt;pos&lt;sp /&gt;&lt;sp /&gt;=&lt;sp /&gt;node::getPosition()&lt;sp /&gt;&lt;sp /&gt;--&lt;sp /&gt;returns&lt;sp /&gt;Point&lt;sp /&gt;&lt;/highlight&gt;
+    &lt;highlight class="keywordtype"&gt;object&lt;/highlight&gt;
+    &lt;highlight class="normal"&gt;
+      &lt;sp /&gt;from&lt;sp /&gt;C++&lt;/highlight&gt;
+  &lt;/codeline&gt;
+  &lt;codeline&gt;
+    &lt;highlight class="normal"&gt;node:&lt;ref refid="group__base__nodes_1ga17a8d67637ccd77b900ceb0b72331fb0" kindref="member"&gt;setPosition&lt;/ref&gt;(x,&lt;sp /&gt;y)&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;--&lt;sp /&gt;pass&lt;sp /&gt;x,&lt;sp /&gt;y&lt;sp /&gt;coordinate&lt;sp /&gt;to&lt;sp /&gt;C++&lt;/highlight&gt;
+  &lt;/codeline&gt;
+&lt;/programlisting&gt;&lt;codeline&gt;
+  &lt;highlight class="comment"&gt;//&lt;sp /&gt;sample&lt;sp /&gt;code&lt;sp /&gt;in&lt;sp /&gt;lua&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;sample&lt;sp /&gt;code&lt;sp /&gt;in&lt;sp /&gt;lua&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="normal"&gt;&lt;/highlight&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;local&lt;sp /&gt;pos&lt;sp /&gt;&lt;sp /&gt;=&lt;sp /&gt;node::getPosition()&lt;sp /&gt;&lt;sp /&gt;--&lt;sp /&gt;returns&lt;sp /&gt;Point&lt;sp /&gt;&lt;/highlight&gt;
+  &lt;highlight class="keywordtype"&gt;object&lt;/highlight&gt;
+  &lt;highlight class="normal"&gt;
+    &lt;sp /&gt;from&lt;sp /&gt;C++&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;local&lt;sp /&gt;pos&lt;sp /&gt;&lt;sp /&gt;=&lt;sp /&gt;node::getPosition()&lt;sp /&gt;&lt;sp /&gt;--&lt;sp /&gt;returns&lt;sp /&gt;Point&lt;sp /&gt;&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;highlight class="keywordtype"&gt;object&lt;/highlight&gt;&lt;highlight class="normal"&gt;
+  &lt;sp /&gt;from&lt;sp /&gt;C++&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
+  &lt;highlight class="normal"&gt;node:&lt;ref refid="group__base__nodes_1ga17a8d67637ccd77b900ceb0b72331fb0" kindref="member"&gt;setPosition&lt;/ref&gt;(x,&lt;sp /&gt;y)&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;--&lt;sp /&gt;pass&lt;sp /&gt;x,&lt;sp /&gt;y&lt;sp /&gt;coordinate&lt;sp /&gt;to&lt;sp /&gt;C++&lt;/highlight&gt;
+&lt;/codeline&gt;&lt;highlight class="normal"&gt;node:&lt;ref refid="group__base__nodes_1ga17a8d67637ccd77b900ceb0b72331fb0" kindref="member"&gt;setPosition&lt;/ref&gt;(x,&lt;sp /&gt;y)&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;--&lt;sp /&gt;pass&lt;sp /&gt;x,&lt;sp /&gt;y&lt;sp /&gt;coordinate&lt;sp /&gt;to&lt;sp /&gt;C++&lt;/highlight&gt;&lt;ref refid="group__base__nodes_1ga17a8d67637ccd77b900ceb0b72331fb0" kindref="member"&gt;setPosition&lt;/ref&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;x&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;X coordinate for position &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;y&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Y coordinate for position &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;x&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;X coordinate for position &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;x&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;x&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;X coordinate for position &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;X coordinate for position &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;y&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Y coordinate for position &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;y&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;y&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Y coordinate for position &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Y coordinate for position &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="SkewX">
@@ -1794,9 +2830,18 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the X skew angle of the node in degrees.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the X skew angle of the node in degrees.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga039df593f18d11eac2a1cfd0540e1637" kindref="member"&gt;setSkewX(float)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The X skew angle of the node in degrees. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga039df593f18d11eac2a1cfd0540e1637" kindref="member"&gt;setSkewX(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga039df593f18d11eac2a1cfd0540e1637" kindref="member"&gt;setSkewX(float)&lt;/ref&gt;&lt;para&gt;The X skew angle of the node in degrees. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga039df593f18d11eac2a1cfd0540e1637" kindref="member"&gt;setSkewX(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The X skew angle of the node in degrees. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="SkewY">
@@ -1810,9 +2855,18 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the Y skew angle of the node in degrees.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the Y skew angle of the node in degrees.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga71af993e7f85a92fb624c00a379e38e0" kindref="member"&gt;setSkewY(float)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The Y skew angle of the node in degrees. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga71af993e7f85a92fb624c00a379e38e0" kindref="member"&gt;setSkewY(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga71af993e7f85a92fb624c00a379e38e0" kindref="member"&gt;setSkewY(float)&lt;/ref&gt;&lt;para&gt;The Y skew angle of the node in degrees. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga71af993e7f85a92fb624c00a379e38e0" kindref="member"&gt;setSkewY(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The Y skew angle of the node in degrees. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="SortAllChildren">
@@ -1827,8 +2881,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Sorts the children array once before drawing, instead of every time when a child is added or reordered. This appraoch can improves the performance massively. Don't call this manually unless a child added needs to be removed in the same frame </summary>
+        <remarks>&lt;para&gt;Sorts the children array once before drawing, instead of every time when a child is added or reordered. This appraoch can improves the performance massively. &lt;para&gt;Don't call this manually unless a child added needs to be removed in the same frame &lt;/para&gt;&lt;/para&gt;&lt;para&gt;Don't call this manually unless a child added needs to be removed in the same frame &lt;/para&gt;&lt;para&gt;Don't call this manually unless a child added needs to be removed in the same frame &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="StopAction">
@@ -1845,9 +2899,29 @@
         <Parameter Name="action" Type="Cocos2D.CCAction" />
       </Parameters>
       <Docs>
-        <param name="action">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="action">action object to be removed. </param>
+        <summary>Stops and removes an action from the running action list.</summary>
+        <remarks>&lt;para&gt;Stops and removes an action from the running action list.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;An&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;action object to be removed. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;An&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;action object to be removed. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;An&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;An&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;action object to be removed. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;action object to be removed. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="StopActionByTag">
@@ -1864,9 +2938,29 @@
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="tag">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="tag">tag that indicates the action to be removed. </param>
+        <summary>Removes an action from the running action list by its tag.</summary>
+        <remarks>&lt;para&gt;Removes an action from the running action list by its tag.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;A&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;tag that indicates the action to be removed. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;A&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;tag that indicates the action to be removed. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;A&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;A&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;tag that indicates the action to be removed. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;tag that indicates the action to be removed. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="StopAllActions">
@@ -1881,8 +2975,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Stops and removes all actions from the running action list . </summary>
+        <remarks>Stops and removes all actions from the running action list . </remarks>
       </Docs>
     </Member>
     <Member MemberName="Tag">
@@ -1896,9 +2990,29 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the tag that is used to identify the node easily.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Changes the tag that is used to identify the node easily.&lt;/para&gt;&lt;para&gt;Please refer to getTag for the sample code.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;A&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;interger that indentifies the node. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;A&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;interger that indentifies the node. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;A&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;A&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;interger that indentifies the node. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;interger that indentifies the node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Transform">
@@ -1913,8 +3027,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Performs OpenGL view-matrix transformation based on position, scale, rotation and other attributes. </summary>
+        <remarks>Performs OpenGL view-matrix transformation based on position, scale, rotation and other attributes. </remarks>
       </Docs>
     </Member>
     <Member MemberName="TransformAncestors">
@@ -1929,8 +3043,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Performs OpenGL view-matrix transformation of it's ancestors. Generally the ancestors are already transformed, but in certain cases (eg: attaching a FBO) It's necessary to transform the ancestors again. </summary>
+        <remarks>Performs OpenGL view-matrix transformation of it's ancestors. Generally the ancestors are already transformed, but in certain cases (eg: attaching a FBO) It's necessary to transform the ancestors again. </remarks>
       </Docs>
     </Member>
     <Member MemberName="Unschedule">
@@ -1947,9 +3061,33 @@
         <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
       </Parameters>
       <Docs>
-        <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="selector">A function wrapped as a selector </param>
+        <summary>Unschedules a custom selector. schedule(SEL_SCHEDULE, float, unsigned int, float)</summary>
+        <remarks>&lt;para&gt;Unschedules a custom selector. &lt;para&gt;&lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;&lt;/para&gt;&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;selector&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A function wrapped as a selector &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;selector&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A function wrapped as a selector &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;selector&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;selector&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A function wrapped as a selector &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A function wrapped as a selector &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="classcocos2d_1_1_node_1a253b1c9902244fc65e7779751d4b752e" kindref="member"&gt;schedule(SEL_SCHEDULE, float, unsigned int, float)&lt;/ref&gt;
+&lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="UnscheduleAllSelectors">
@@ -1964,8 +3102,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Unschedule all scheduled selectors: custom selectors, and the 'update' selector. Actions are not affected by this method. </summary>
+        <remarks>Unschedule all scheduled selectors: custom selectors, and the 'update' selector. Actions are not affected by this method. </remarks>
       </Docs>
     </Member>
     <Member MemberName="UnscheduleUpdate">
@@ -1981,7 +3119,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -2000,7 +3138,7 @@
       <Docs>
         <param name="dt">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateTransform">
@@ -2015,8 +3153,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Calls children's updateTransform() method recursively.</summary>
+        <remarks>&lt;para&gt;Calls children's &lt;ref refid="classcocos2d_1_1_node_1a36c8969b2ac4c489092729363ee496cd" kindref="member"&gt;updateTransform()&lt;/ref&gt; method recursively.&lt;/para&gt;&lt;ref refid="classcocos2d_1_1_node_1a36c8969b2ac4c489092729363ee496cd" kindref="member"&gt;updateTransform()&lt;/ref&gt;&lt;para&gt;This method is moved from &lt;see cref="T:Cocos2D.CCSprite" /&gt;, so it's no longer specific to &lt;see cref="T:Cocos2D.CCSprite" /&gt;. As the result, you apply &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;'s optimization on your customed &lt;see cref="T:Cocos2D.CCNode" /&gt;. e.g., batchNode-&amp;gt;addChild(myCustomNode), while you can only addChild(sprite) before. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="UserData">
@@ -2030,9 +3168,29 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets a custom user data pointer</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets a custom user data pointer&lt;/para&gt;&lt;para&gt;You can set everything in UserData pointer, a data block, a structure or an object, etc. &lt;para&gt;Don't forget to release the memroy manually, especially before you change this data pointer, and before this node is autoreleased.&lt;/para&gt;&lt;/para&gt;&lt;para&gt;Don't forget to release the memroy manually, especially before you change this data pointer, and before this node is autoreleased.&lt;/para&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;A&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;custom user data pointer &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;A&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;custom user data pointer &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;A&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;A&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;custom user data pointer &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;custom user data pointer &lt;/para&gt;&lt;para&gt;Don't forget to release the memroy manually, especially before you change this data pointer, and before this node is autoreleased.&lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="UserObject">
@@ -2046,9 +3204,29 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns a user assigned Object</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns a user assigned Object&lt;/para&gt;&lt;para&gt;Similar to UserData, but instead of holding a void* it holds an object. The UserObject will be retained once in this method, and the previous UserObject (if existed) will be relese. The UserObject will be released in &lt;see cref="T:Cocos2D.CCNode" /&gt;'s destructure.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;A&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;user assigned Object &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;A&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;user assigned Object &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;A&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;A&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;user assigned Object &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;user assigned Object &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="VertexZ">
@@ -2062,9 +3240,18 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets OpenGL Z vertex of this node.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Gets OpenGL Z vertex of this node.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1gaaabfa28f96e520e204c68900aa8e94fa" kindref="member"&gt;setVertexZ(float)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;OpenGL Z vertex of this node &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gaaabfa28f96e520e204c68900aa8e94fa" kindref="member"&gt;setVertexZ(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1gaaabfa28f96e520e204c68900aa8e94fa" kindref="member"&gt;setVertexZ(float)&lt;/ref&gt;&lt;para&gt;OpenGL Z vertex of this node &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1gaaabfa28f96e520e204c68900aa8e94fa" kindref="member"&gt;setVertexZ(float)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;OpenGL Z vertex of this node &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Visible">
@@ -2078,9 +3265,29 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets whether the node is visible</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets whether the node is visible&lt;/para&gt;&lt;para&gt;The default value is true, a node is default to visible&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;visible&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if the node is visible, false if the node is hidden. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;visible&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if the node is visible, false if the node is hidden. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;visible&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;visible&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if the node is visible, false if the node is hidden. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if the node is visible, false if the node is hidden. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Visit">
@@ -2095,8 +3302,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Visits this node's children and draw them recursively. </summary>
+        <remarks>Visits this node's children and draw them recursively. </remarks>
       </Docs>
     </Member>
     <Member MemberName="WorldToNodeTransform">
@@ -2111,9 +3318,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the inverse world affine transform matrix. The matrix is in Pixels. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>Returns the inverse world affine transform matrix. The matrix is in Pixels. </remarks>
       </Docs>
     </Member>
     <Member MemberName="ZOrder">
@@ -2127,9 +3334,18 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the Z order of this node.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Gets the Z order of this node.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;
+    &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;
+  &lt;/para&gt;
+  &lt;para&gt;The Z order. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;
+&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;para&gt;The Z order. &lt;/para&gt;&lt;para&gt;
+  &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;
+&lt;/para&gt;&lt;para&gt;The Z order. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
   </Members>

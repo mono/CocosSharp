@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBMFontConfiguration" FullName="Cocos2D.CCBMFontConfiguration">
   <TypeSignature Language="C#" Value="public class CCBMFontConfiguration" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBMFontConfiguration extends System.Object" />
@@ -15,8 +16,11 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCBMFontConfiguration" /&gt; has parsed configuration of the the .fnt file. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCBMFontConfiguration" /&gt;</summary>
+    <remarks>&lt;para&gt;
+  &lt;para&gt;v0.8 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,8 +32,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>allocates a  with a FNT file </summary>
+        <remarks>&lt;para&gt;allocates a &lt;see cref="T:Cocos2D.CCBMFontConfiguration" /&gt; with a FNT file &lt;/para&gt;&lt;see cref="T:Cocos2D.CCBMFontConfiguration" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -63,7 +67,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="CharacterSet">
@@ -79,7 +83,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Create">

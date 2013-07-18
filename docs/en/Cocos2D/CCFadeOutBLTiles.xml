@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCFadeOutBLTiles" FullName="Cocos2D.CCFadeOutBLTiles">
   <TypeSignature Language="C#" Value="public class CCFadeOutBLTiles : Cocos2D.CCFadeOutTRTiles" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFadeOutBLTiles extends Cocos2D.CCFadeOutTRTiles" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCFadeOutBLTiles" /&gt; action. Fades out the tiles in a Bottom-Left direction. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCFadeOutBLTiles" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +25,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with the grid size and the duration </summary>
+        <remarks>creates the action with the grid size and the duration </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -64,7 +66,7 @@
         <param name="time">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

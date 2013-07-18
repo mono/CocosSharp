@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCDeccelAmplitude" FullName="Cocos2D.CCDeccelAmplitude">
   <TypeSignature Language="C#" Value="public class CCDeccelAmplitude : Cocos2D.CCActionInterval" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDeccelAmplitude extends Cocos2D.CCActionInterval" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCDeccelAmplitude" /&gt; action. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCDeccelAmplitude" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,8 +30,8 @@
       <Docs>
         <param name="pAction">To be added.</param>
         <param name="duration">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with an inner action that has the amplitude property, and a duration time </summary>
+        <remarks>creates the action with an inner action that has the amplitude property, and a duration time </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithAction">
@@ -49,9 +51,9 @@
       <Docs>
         <param name="pAction">To be added.</param>
         <param name="duration">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the action with an inner action that has the amplitude property, and a duration time </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>initializes the action with an inner action that has the amplitude property, and a duration time </remarks>
       </Docs>
     </Member>
     <Member MemberName="m_fRate">
@@ -95,9 +97,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set amplitude rate </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>set amplitude rate </remarks>
       </Docs>
     </Member>
     <Member MemberName="Reverse">
@@ -112,9 +114,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new reversed action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns a new reversed action </remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -132,8 +134,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called before the action start. It will also set the target. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -151,8 +153,18 @@
       </Parameters>
       <Docs>
         <param name="time">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called once per frame. time a value between 0 and 1</summary>
+        <remarks>&lt;para&gt;called once per frame. time a value between 0 and 1&lt;/para&gt;&lt;para&gt;For example:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;0 means that the action just started&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;1 means that the action is over &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;0 means that the action just started&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;1 means that the action is over &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;0 means that the action just started&lt;/para&gt;&lt;para&gt;0.5 means that the action is in the middle&lt;/para&gt;&lt;para&gt;1 means that the action is over &lt;/para&gt;</remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCColor3B" FullName="Cocos2D.CCColor3B">
   <TypeSignature Language="C#" Value="public struct CCColor3B" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCColor3B extends System.ValueType" />
@@ -10,8 +11,14 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>RGB color composed of bytes 3 bytes
+v3.0 </summary>
+    <remarks>&lt;para&gt;
+  &lt;verbatim&gt;RGB color composed of bytes 3 bytes
+&lt;/verbatim&gt;
+  &lt;para&gt;v3.0 &lt;/para&gt;
+&lt;/para&gt;&lt;verbatim&gt;RGB color composed of bytes 3 bytes
+&lt;/verbatim&gt;&lt;para&gt;v3.0 &lt;/para&gt;&lt;para&gt;v3.0 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

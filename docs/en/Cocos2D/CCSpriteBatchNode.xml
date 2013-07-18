@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSpriteBatchNode" FullName="Cocos2D.CCSpriteBatchNode">
   <TypeSignature Language="C#" Value="public class CCSpriteBatchNode : Cocos2D.CCNode, Cocos2D.ICCTextureProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteBatchNode extends Cocos2D.CCNode implements class Cocos2D.ICCBlendProtocol, class Cocos2D.ICCTextureProtocol" />
@@ -14,8 +15,18 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> is like a batch node: if it contains children, it will draw them in 1 single OpenGL call (often known as "batch draw").</summary>
+    <remarks>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt; is like a batch node: if it contains children, it will draw them in 1 single OpenGL call (often known as "batch draw").&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt; can reference one and only one texture (one image file, one texture atlas). Only the Sprites that are contained in that texture can be added to the &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;. All Sprites added to a &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt; are drawn in one OpenGL ES draw call. If the Sprites are not added to a &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt; then an OpenGL ES draw call will be needed for each one, which is less efficient.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;para&gt;Limitations:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;The only object that is accepted as child (or grandchild, grand-grandchild, etc...) is Sprite or any subclass of Sprite. eg: particles, labels and layer can't be added to a SpriteBatchNode.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Either all its children are Aliased or Antialiased. It can't be a mix. This is because "alias" is a property of the texture, and all the sprites share the same texture.&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;The only object that is accepted as child (or grandchild, grand-grandchild, etc...) is Sprite or any subclass of Sprite. eg: particles, labels and layer can't be added to a SpriteBatchNode.&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Either all its children are Aliased or Antialiased. It can't be a mix. This is because "alias" is a property of the texture, and all the sprites share the same texture.&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;The only object that is accepted as child (or grandchild, grand-grandchild, etc...) is &lt;see cref="T:Cocos2D.CCSprite" /&gt; or any subclass of &lt;see cref="T:Cocos2D.CCSprite" /&gt;. eg: particles, labels and layer can't be added to a &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;para&gt;Either all its children are Aliased or Antialiased. It can't be a mix. This is because "alias" is a property of the texture, and all the sprites share the same texture.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;v0.7.1 &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;v0.7.1 &lt;/para&gt;&lt;para&gt;v0.7.1 &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,8 +38,9 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a SpriteBatchNode with a file image (.png, .jpeg, .pvr, etc) and capacity of children.
+ The capacity will be increased in 33% in runtime if it run out of space. The file will be loaded using the TextureMgr. </summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -115,11 +127,69 @@
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="zOrder">To be added.</param>
-        <param name="tag">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">A child node </param>
+        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)setZOrder(int)</param>
+        <param name="tag">A interger to identify the node easily. Please refer to setTag(int)setTag(int)</param>
+        <summary>Adds a child to the container with z order and tag</summary>
+        <remarks>&lt;para&gt;Adds a child to the container with z order and tag&lt;/para&gt;&lt;para&gt;If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A child node &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;zOrder&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;tag&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A child node &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A child node &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A child node &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;zOrder&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;zOrder&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;zOrder&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;tag&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;tag&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;tag&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddSpriteWithoutQuad">
@@ -143,7 +213,7 @@
         <param name="aTag">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AppendChild">
@@ -162,7 +232,7 @@
       <Docs>
         <param name="sprite">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AtlasIndexForChild">
@@ -184,7 +254,7 @@
         <param name="nZ">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
@@ -198,9 +268,11 @@
         <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the blending function that is currently being used.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Returns the blending function that is currently being used.&lt;/para&gt;&lt;para&gt;
+  &lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;
+&lt;/para&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCBlendFunc" /&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Descendants">
@@ -216,7 +288,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -231,8 +303,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
+        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="HighestAtlasIndexInChild">
@@ -252,7 +337,7 @@
         <param name="pSprite">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="IncreaseAtlasCapacity">
@@ -268,7 +353,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -283,9 +368,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes the instance of Whether the initialization was successful. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Initializes the instance of &lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithFile">
@@ -305,9 +390,13 @@
       <Docs>
         <param name="fileImage">To be added.</param>
         <param name="capacity">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a SpriteBatchNode with a file image (.png, .jpeg, .pvr, etc) and a capacity of children.
+ The capacity will be increased in 33% in runtime if it run out of space. The file will be loaded using the TextureMgr. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;initializes a SpriteBatchNode with a file image (.png, .jpeg, .pvr, etc) and a capacity of children.
+&lt;/verbatim&gt; The capacity will be increased in 33% in runtime if it run out of space. The file will be loaded using the TextureMgr. &lt;/para&gt;&lt;verbatim&gt;initializes a SpriteBatchNode with a file image (.png, .jpeg, .pvr, etc) and a capacity of children.
+&lt;/verbatim&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
@@ -327,9 +416,13 @@
       <Docs>
         <param name="tex">To be added.</param>
         <param name="capacity">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a SpriteBatchNode with a texture2d and capacity of children.
+ The capacity will be increased in 33% in runtime if it run out of space. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;initializes a SpriteBatchNode with a texture2d and capacity of children.
+&lt;/verbatim&gt; The capacity will be increased in 33% in runtime if it run out of space. &lt;/para&gt;&lt;verbatim&gt;initializes a SpriteBatchNode with a texture2d and capacity of children.
+&lt;/verbatim&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InsertChild">
@@ -350,7 +443,7 @@
         <param name="pobSprite">To be added.</param>
         <param name="uIndex">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="InsertQuadFromSprite">
@@ -370,8 +463,8 @@
       <Docs>
         <param name="sprite">To be added.</param>
         <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Inserts a quad at a certain index into the texture atlas. The  won't be added into the children array. This method should be called only when you are dealing with very big AtlasSrite and when most of the  won't be updated. For example: a tile map (TMXMap) or a label with lots of characters () </summary>
+        <remarks>&lt;para&gt;Inserts a quad at a certain index into the texture atlas. The &lt;see cref="T:Cocos2D.CCSprite" /&gt; won't be added into the children array. This method should be called only when you are dealing with very big AtlasSrite and when most of the &lt;see cref="T:Cocos2D.CCSprite" /&gt; won't be updated. For example: a tile map (TMXMap) or a label with lots of characters (&lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;) &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="LowestAtlasIndexInChild">
@@ -391,7 +484,7 @@
         <param name="pSprite">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="m_blendFunc">
@@ -458,7 +551,7 @@
         <param name="uIndex">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveAllChildrenWithCleanup">
@@ -475,9 +568,29 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="cleanup">true if all running actions on all children nodes should be cleanup, false oterwise. </param>
+        <summary>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</summary>
+        <remarks>&lt;para&gt;Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;cleanup&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;cleanup&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;cleanup&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
@@ -495,10 +608,49 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">The child node which will be removed. </param>
+        <param name="cleanup">true if all running actions and callbacks on the child node will be cleanup, false otherwise. </param>
+        <summary>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</summary>
+        <remarks>&lt;para&gt;Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;cleanup&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;The child node which will be removed. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;The child node which will be removed. &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;cleanup&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;cleanup&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChildAtIndex">
@@ -518,8 +670,14 @@
       <Docs>
         <param name="index">To be added.</param>
         <param name="doCleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>removes a child given a certain index. It will also cleanup the running actions depending on the cleanup parameter.
+Removing a child from a  is very slow </summary>
+        <remarks>&lt;para&gt;
+  &lt;verbatim&gt;removes a child given a certain index. It will also cleanup the running actions depending on the cleanup parameter.
+&lt;/verbatim&gt;
+  &lt;para&gt;Removing a child from a &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt; is very slow &lt;/para&gt;
+&lt;/para&gt;&lt;verbatim&gt;removes a child given a certain index. It will also cleanup the running actions depending on the cleanup parameter.
+&lt;/verbatim&gt;&lt;para&gt;Removing a child from a &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt; is very slow &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;para&gt;Removing a child from a &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt; is very slow &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveSpriteFromAtlas">
@@ -538,7 +696,7 @@
       <Docs>
         <param name="pobSprite">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ReorderBatch">
@@ -557,7 +715,7 @@
       <Docs>
         <param name="reorder">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ReorderChild">
@@ -575,10 +733,49 @@
         <Parameter Name="zOrder" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="zOrder">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">An already added child node. It MUST be already added. </param>
+        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)setZOrder(int)</param>
+        <summary>Reorders a child according to a new z value.</summary>
+        <remarks>&lt;para&gt;Reorders a child according to a new z value.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;child&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;zOrder&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;child&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;child&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;An already added child node. It MUST be already added. &lt;/para&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;zOrder&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;zOrder&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;zOrder&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="SortAllChildren">
@@ -593,8 +790,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Sorts the children array once before drawing, instead of every time when a child is added or reordered. This appraoch can improves the performance massively. Don't call this manually unless a child added needs to be removed in the same frame </summary>
+        <remarks>&lt;para&gt;Sorts the children array once before drawing, instead of every time when a child is added or reordered. This appraoch can improves the performance massively. &lt;para&gt;Don't call this manually unless a child added needs to be removed in the same frame &lt;/para&gt;&lt;/para&gt;&lt;para&gt;Don't call this manually unless a child added needs to be removed in the same frame &lt;/para&gt;&lt;para&gt;Don't call this manually unless a child added needs to be removed in the same frame &lt;/para&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -608,9 +805,29 @@
         <ReturnType>Cocos2D.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets a new texuture. It will be retained.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;Sets a new texuture. It will be retained.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
+  &lt;parameteritem&gt;
+    &lt;parameternamelist&gt;
+      &lt;parametername&gt;texture&lt;/parametername&gt;
+    &lt;/parameternamelist&gt;
+    &lt;parameterdescription&gt;
+      &lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;
+    &lt;/parameterdescription&gt;
+  &lt;/parameteritem&gt;
+&lt;/parameterlist&gt;&lt;parameteritem&gt;
+  &lt;parameternamelist&gt;
+    &lt;parametername&gt;texture&lt;/parametername&gt;
+  &lt;/parameternamelist&gt;
+  &lt;parameterdescription&gt;
+    &lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;
+  &lt;/parameterdescription&gt;
+&lt;/parameteritem&gt;&lt;parameternamelist&gt;
+  &lt;parametername&gt;texture&lt;/parametername&gt;
+&lt;/parameternamelist&gt;&lt;parametername&gt;texture&lt;/parametername&gt;&lt;parameterdescription&gt;
+  &lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;
+&lt;/parameterdescription&gt;&lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="TextureAtlas">
@@ -626,7 +843,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateQuadFromSprite">
@@ -646,8 +863,8 @@
       <Docs>
         <param name="sprite">To be added.</param>
         <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Updates a quad at a certain index into the texture atlas. The  won't be added into the children array. This method should be called only when you are dealing with very big AtlasSrite and when most of the  won't be updated. For example: a tile map (TMXMap) or a label with lots of characters () </summary>
+        <remarks>&lt;para&gt;Updates a quad at a certain index into the texture atlas. The &lt;see cref="T:Cocos2D.CCSprite" /&gt; won't be added into the children array. This method should be called only when you are dealing with very big AtlasSrite and when most of the &lt;see cref="T:Cocos2D.CCSprite" /&gt; won't be updated. For example: a tile map (TMXMap) or a label with lots of characters (&lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;) &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="Visit">
@@ -662,8 +879,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Visits this node's children and draw them recursively. </summary>
+        <remarks>Visits this node's children and draw them recursively. </remarks>
       </Docs>
     </Member>
   </Members>

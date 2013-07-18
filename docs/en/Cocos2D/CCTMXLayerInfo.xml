@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTMXLayerInfo" FullName="Cocos2D.CCTMXLayerInfo">
   <TypeSignature Language="C#" Value="public class CCTMXLayerInfo" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXLayerInfo extends System.Object" />
@@ -10,8 +11,40 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCTMXLayerInfo" /&gt; contains the information about the layers like: &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXLayerInfo" /&gt;</summary>
+    <remarks>&lt;para&gt;
+  &lt;list type="bullet"&gt;
+    &lt;item&gt;
+      &lt;description&gt;Layer name&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;description&gt;Layer size&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;description&gt;Layer opacity at creation time (it can be modified at runtime)&lt;/description&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;description&gt;Whether the layer is visible (if it's not visible, then the CocosNode won't be created)&lt;/description&gt;
+    &lt;/item&gt;
+  &lt;/list&gt;
+&lt;/para&gt;&lt;list type="bullet"&gt;
+  &lt;item&gt;
+    &lt;description&gt;Layer name&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Layer size&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Layer opacity at creation time (it can be modified at runtime)&lt;/description&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;description&gt;Whether the layer is visible (if it's not visible, then the CocosNode won't be created)&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/list&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLayer" /&gt; name&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLayer" /&gt; size&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCLayer" /&gt; opacity at creation time (it can be modified at runtime)&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;para&gt;Whether the layer is visible (if it's not visible, then the CocosNode won't be created)&lt;/para&gt;&lt;para&gt;This information is obtained from the TMX file. &lt;/para&gt;</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -150,8 +183,8 @@
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>setProperties </summary>
+        <remarks>setProperties </remarks>
       </Docs>
     </Member>
     <Member MemberName="Tiles">

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionSlideInR" FullName="Cocos2D.CCTransitionSlideInR">
   <TypeSignature Language="C#" Value="public class CCTransitionSlideInR : Cocos2D.CCTransitionSlideInL" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionSlideInR extends Cocos2D.CCTransitionSlideInL" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCTransitionSlideInR" /&gt;: Slide in the incoming scene from the right border. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTransitionSlideInR" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -24,7 +26,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -57,9 +59,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the action that will be performed by the incoming and outgoing scene </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>returns the action that will be performed by the incoming and outgoing scene </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitScenes">
@@ -74,8 +76,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>initializes the scenes </summary>
+        <remarks>initializes the scenes </remarks>
       </Docs>
     </Member>
     <Member MemberName="SceneOrder">
@@ -91,7 +93,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCKeypadHandler" FullName="Cocos2D.CCKeypadHandler">
   <TypeSignature Language="C#" Value="public class CCKeypadHandler" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCKeypadHandler extends System.Object" />
@@ -10,8 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>&lt;para&gt;
+  &lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt; Object than contains the KeypadDelegate. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt;</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -38,9 +40,9 @@
         <ReturnType>Cocos2D.ICCKeypadDelegate</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>delegate </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="HandlerWithDelegate">
@@ -58,9 +60,9 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>allocates a  with a delegate </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;allocates a &lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt; with a delegate &lt;/para&gt;&lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithDelegate">
@@ -78,9 +80,9 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a  with a delegate </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt; with a delegate &lt;/para&gt;&lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt;</remarks>
       </Docs>
     </Member>
     <Member MemberName="m_pDelegate">
