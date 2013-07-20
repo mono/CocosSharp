@@ -463,11 +463,10 @@ namespace Cocos2D
 
                     for (int i = 0; i < wordList.Length; ++i)
                     {
-                        lineWidth += font.MeasureString(wordList[i]).X;
-
-                        if (lineWidth > dimensions.Width)
+                        float wordWidth = font.MeasureString(wordList[i]).X;
+                        if ((lineWidth + wordWidth) > dimensions.Width)
                         {
-                            lineWidth = 0;
+                            lineWidth = wordWidth;
 
                             if (nextText.Length > 0)
                             {
@@ -481,12 +480,16 @@ namespace Cocos2D
                             }
                             else
                             {
+                                lineWidth += wordWidth;
                                 firstWord = false;
                                 textList.Add(wordList[i]);
                                 continue;
                             }
                         }
-
+                        else
+                        {
+                           lineWidth += wordWidth;
+                        }
                         if (!firstWord)
                         {
                             nextText.Append(' ');
