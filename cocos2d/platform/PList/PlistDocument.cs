@@ -50,6 +50,16 @@ namespace Cocos2D
             LoadFromXml(data);
         }
 
+        /// <summary>
+        /// Load the plist from a stream. On XNA platforms you shoul use Game.TitleContainer.OpenStream() to get
+        /// a handle on your resource as a stream as it exists in the isolated title container space.
+        /// </summary>
+        /// <param name="data"></param>
+        public PlistDocument(Stream data)
+        {
+            LoadFromXmlFile(data);
+        }
+
         public PlistDocument()
         {
         }
@@ -57,6 +67,23 @@ namespace Cocos2D
         public PlistDocument(PlistObjectBase root)
         {
             this.root = root;
+        }
+
+        public void LoadFromXmlFile(Stream data)
+        {
+            //allow DTD but not try to resolve it from web
+            var settings = new XmlReaderSettings()
+            {
+#if !PSM
+                DtdProcessing = DtdProcessing.Ignore,
+#endif
+                //ProhibitDtd = false,
+#if !NETFX_CORE
+                XmlResolver = null,
+#endif
+            };
+            using (var reader = XmlReader.Create(data, settings))
+                LoadFromXml(reader);
         }
 
         public void LoadFromXmlFile(string path)
