@@ -4,7 +4,6 @@ There are many differences between cocos2d-xna and cocos2d-x-for-xna. This repos
 reflects the cocos2d-xna source base which was written for .NET and C#. Attributes and
 other language/platform constructs specific to .NET have been used in lieu of the literal
 translation in the prior cocos2d-x-for-xna repository.
-==================================================================================================
 
 Most importantly, your AppDelegate will change:
 
@@ -74,7 +73,9 @@ or the parent repo https://github.com/totallyevil/cocos2d-xna.git.
 The two are identical so either one will do.
 
 > git clone https://github.com/mono/cocos2d-xna.git
-  or
+  
+	or
+
 > git clone https://github.com/totallyevil/cocos2d-xna.git
 
 Wait until the clone has finished.
