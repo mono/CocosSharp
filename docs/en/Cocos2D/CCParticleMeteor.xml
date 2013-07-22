@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>A meteor particle system. </summary>
-    <remarks></remarks>
+    <summary>
+      <para>A meteor particle system. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,7 +27,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTotalParticles">
@@ -43,9 +45,11 @@
       </Parameters>
       <Docs>
         <param name="numberOfParticles">To be added.</param>
-        <summary>Initializes a system with a fixed number of particles. </summary>
+        <summary>
+          <para>Initializes a system with a fixed number of particles. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

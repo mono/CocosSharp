@@ -15,8 +15,10 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>Light-weight timer. </summary>
-    <remarks></remarks>
+    <summary>
+      <para>Light-weight timer. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -112,7 +114,7 @@
       </ReturnValue>
       <Docs>
         <summary>set interval in seconds </summary>
-        <remarks>set interval in seconds </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OriginalInterval">
@@ -142,7 +144,7 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -161,7 +163,7 @@
       <Docs>
         <param name="dt">To be added.</param>
         <summary>triggers the timer </summary>
-        <remarks>triggers the timer </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;Scales a &lt;see cref="T:Cocos2D.CCNode" /&gt; object a zoom factor by modifying it's scale attribute. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</summary>
-    <remarks></remarks>
+    <summary>
+      <para>Scales a  object a zoom factor by modifying it's scale attribute. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +30,7 @@
       <Docs>
         <param name="copy">To be added.</param>
         <summary>creates the action with and X factor and a Y factor </summary>
-        <remarks>creates the action with and X factor and a Y factor </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -86,7 +88,7 @@
         <param name="zone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Reverse">
@@ -103,7 +105,7 @@
       <Docs>
         <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new action that performs the exactly the reverse action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -121,8 +123,10 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

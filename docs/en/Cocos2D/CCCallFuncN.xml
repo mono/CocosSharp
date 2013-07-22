@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;Calls a 'callback' with the node as the first argument N means &lt;see cref="T:Cocos2D.CCNode" /&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</summary>
-    <remarks></remarks>
+    <summary>
+      <para>Calls a 'callback' with the node as the first argument N means . </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,7 +27,7 @@
       <Parameters />
       <Docs>
         <summary>creates the action with the handler script function </summary>
-        <remarks>creates the action with the handler script function </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -77,7 +79,7 @@
         <param name="zone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Execute">
@@ -93,7 +95,7 @@
       <Parameters />
       <Docs>
         <summary>executes the callback </summary>
-        <remarks>executes the callback </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithTarget">
@@ -114,11 +116,17 @@
         <summary>initializes the action with the callback 
 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;initializes the action with the callback 
-&lt;/verbatim&gt;
-&lt;/para&gt;&lt;verbatim&gt;initializes the action with the callback 
-&lt;/verbatim&gt;&lt;para&gt;typedef void (Object::&lt;emphasis&gt;SEL_CallFuncN)(&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;/emphasis&gt;);  &lt;/para&gt;&lt;emphasis&gt;SEL_CallFuncN)(&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;/emphasis&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</remarks>
+        <remarks>
+          <para>
+            <verbatim>initializes the action with the callback 
+</verbatim>
+          </para>
+          <verbatim>initializes the action with the callback 
+</verbatim>
+          <para>typedef void (Object::<emphasis>SEL_CallFuncN)(<see cref="T:Cocos2D.CCNode" /></emphasis>);  </para>
+          <emphasis>SEL_CallFuncN)(<see cref="T:Cocos2D.CCNode" /></emphasis>
+          <see cref="T:Cocos2D.CCNode" />
+        </remarks>
       </Docs>
     </Member>
   </Members>

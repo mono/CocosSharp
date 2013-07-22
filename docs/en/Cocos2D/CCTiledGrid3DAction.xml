@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;Base class for &lt;see cref="T:Cocos2D.CCTiledGrid3D" /&gt; actions. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTiledGrid3D" /&gt;</summary>
-    <remarks></remarks>
+    <summary>
+      <para>Base class for  actions. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,7 +27,7 @@
       <Parameters />
       <Docs>
         <summary>creates the action with size and duration </summary>
-        <remarks>creates the action with size and duration </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -75,7 +77,7 @@
       <Docs>
         <summary>returns the grid </summary>
         <value>To be added.</value>
-        <remarks>returns the grid </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OriginalTile">
@@ -95,7 +97,7 @@
         <param name="pos">To be added.</param>
         <summary>returns the non-transformed tile that belongs to a certain position of the grid </summary>
         <returns>To be added.</returns>
-        <remarks>returns the non-transformed tile that belongs to a certain position of the grid </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetTile">
@@ -116,7 +118,7 @@
         <param name="pos">To be added.</param>
         <param name="coords">To be added.</param>
         <summary>sets a new tile to a certain position of the grid </summary>
-        <remarks>sets a new tile to a certain position of the grid </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Tile">
@@ -136,7 +138,7 @@
         <param name="pos">To be added.</param>
         <summary>returns the tile that belongs to a certain position of the grid </summary>
         <returns>To be added.</returns>
-        <remarks>returns the tile that belongs to a certain position of the grid </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

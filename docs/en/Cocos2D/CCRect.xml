@@ -17,7 +17,7 @@
   </Attributes>
   <Docs>
     <summary>To be added.</summary>
-    <remarks></remarks>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -75,7 +75,7 @@
         <param name="point">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ContainsPoint">
@@ -159,9 +159,11 @@
       </Parameters>
       <Docs>
         <param name="rect">To be added.</param>
-        <summary>return the topmost y-value of current rect </summary>
+        <summary>
+          <para>return the topmost y-value of current rect </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Equals">
@@ -238,7 +240,7 @@
         <param name="rect">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IntersectsRect">
@@ -310,9 +312,11 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>return the midpoint x-value of current rect </summary>
+        <summary>
+          <para>return the midpoint x-value of current rect </para>
+        </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MaxY">
@@ -326,9 +330,11 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>return the midpoint y-value of current rect </summary>
+        <summary>
+          <para>return the midpoint y-value of current rect </para>
+        </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MidX">
@@ -342,9 +348,11 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>return the leftmost x-value of current rect </summary>
+        <summary>
+          <para>return the leftmost x-value of current rect </para>
+        </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MidY">
@@ -358,9 +366,11 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>return the bottommost y-value of current rect </summary>
+        <summary>
+          <para>return the bottommost y-value of current rect </para>
+        </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MinX">
@@ -376,7 +386,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MinY">
@@ -390,9 +400,11 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>return the rightmost x-value of current rect </summary>
+        <summary>
+          <para>return the rightmost x-value of current rect </para>
+        </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Equality">

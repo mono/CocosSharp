@@ -11,11 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCConfiguration" /&gt; contains some openGL variables. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCConfiguration" /&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;para&gt;v0.99.0 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.99.0 &lt;/para&gt;&lt;para&gt;v0.99.0 &lt;/para&gt;</remarks>
+    <summary>
+      <para> contains some openGL variables. </para>
+    </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName="CheckForGLExtension">
@@ -35,7 +34,7 @@
         <param name="searchName">To be added.</param>
         <summary>returns whether or not an OpenGL is supported </summary>
         <returns>To be added.</returns>
-        <remarks>returns whether or not an OpenGL is supported </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="getGlesVersion">
@@ -69,7 +68,7 @@
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsSupportsBGRA8888">
@@ -299,7 +298,7 @@
       <Docs>
         <summary>OpenGL Max Modelview Stack Depth. </summary>
         <value>To be added.</value>
-        <remarks>OpenGL Max Modelview Stack Depth. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MaxTextureSize">
@@ -315,7 +314,7 @@
       <Docs>
         <summary>OpenGL Max texture size. </summary>
         <value>To be added.</value>
-        <remarks>OpenGL Max texture size. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OSVersion">
@@ -347,7 +346,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

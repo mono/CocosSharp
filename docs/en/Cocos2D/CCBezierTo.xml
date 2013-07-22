@@ -11,10 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>An action that moves the target with a cubic Bezier curve to a destination point. </summary>
-    <remarks>&lt;para&gt;
-  &lt;para&gt;v0.8.2 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.8.2 &lt;/para&gt;&lt;para&gt;v0.8.2 &lt;/para&gt;</remarks>
+    <summary>
+      <para>An action that moves the target with a cubic Bezier curve to a destination point. </para>
+    </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,7 +30,7 @@
       <Docs>
         <param name="bezierTo">To be added.</param>
         <summary>creates the action with a duration and a bezier configuration </summary>
-        <remarks>creates the action with a duration and a bezier configuration </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -68,7 +68,7 @@
         <param name="zone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -86,8 +86,10 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

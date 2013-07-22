@@ -15,13 +15,23 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCAtlasNode" /&gt; is a subclass of &lt;see cref="T:Cocos2D.CCNode" /&gt; that implements the &lt;ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound"&gt;RGBAProtocol&lt;/ref&gt; and &lt;ref refid="classcocos2d_1_1_texture_protocol" kindref="compound"&gt;TextureProtocol&lt;/ref&gt; protocol. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound"&gt;RGBAProtocol&lt;/ref&gt;&lt;ref refid="classcocos2d_1_1_texture_protocol" kindref="compound"&gt;TextureProtocol&lt;/ref&gt;</summary>
-    <remarks>&lt;para&gt;It knows how to render a &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; object. If you are going to render a &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; consider subclassing &lt;see cref="T:Cocos2D.CCAtlasNode" /&gt; (or a subclass of &lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;)&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;&lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;&lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;&lt;para&gt;All features from &lt;see cref="T:Cocos2D.CCNode" /&gt; are valid, plus the following features:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;opacity and RGB colors &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;opacity and RGB colors &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;opacity and RGB colors &lt;/para&gt;</remarks>
+    <summary>
+      <para> is a subclass of  that implements the RGBAProtocol and TextureProtocol protocol. </para>
+    </summary>
+    <remarks>
+      <para>It knows how to render a <see cref="T:Cocos2D.CCTextureAtlas" /> object. If you are going to render a <see cref="T:Cocos2D.CCTextureAtlas" /> consider subclassing <see cref="T:Cocos2D.CCAtlasNode" /> (or a subclass of <see cref="T:Cocos2D.CCAtlasNode" />)</para>
+      <see cref="T:Cocos2D.CCTextureAtlas" />
+      <see cref="T:Cocos2D.CCTextureAtlas" />
+      <see cref="T:Cocos2D.CCAtlasNode" />
+      <see cref="T:Cocos2D.CCAtlasNode" />
+      <para>All features from <see cref="T:Cocos2D.CCNode" /> are valid, plus the following features:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCNode" />
+      <list type="bullet" />
+      <item>
+        <description>opacity and RGB colors </description>
+      </item>
+      <description>opacity and RGB colors </description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -43,7 +53,7 @@
         <param name="tileHeight">To be added.</param>
         <param name="itemsToRender">To be added.</param>
         <summary>creates a  with an Atlas file the width and height of each item and the quantity of items to render </summary>
-        <remarks>&lt;para&gt;creates a &lt;see cref="T:Cocos2D.CCAtlasNode" /&gt; with an Atlas file the width and height of each item and the quantity of items to render &lt;/para&gt;&lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -81,7 +91,7 @@
       <Docs>
         <summary>setBlendFunc </summary>
         <value>To be added.</value>
-        <remarks>setBlendFunc </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Color">
@@ -97,27 +107,10 @@
       <Docs>
         <summary>Changes the color with R,G,B bytes</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Changes the color with R,G,B bytes&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;color&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;color&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;color&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;color&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Changes the color with R,G,B bytes</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -132,21 +125,27 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
-        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
@@ -172,7 +171,7 @@
         <param name="itemsToRender">To be added.</param>
         <summary>initializes an  with a texture the width and height of each item measured in points and the quantity of items to render </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes an &lt;see cref="T:Cocos2D.CCAtlasNode" /&gt; with a texture the width and height of each item measured in points and the quantity of items to render &lt;/para&gt;&lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithTileFile">
@@ -198,7 +197,7 @@
         <param name="itemsToRender">To be added.</param>
         <summary>initializes an  with an Atlas file the width and height of each item and the quantity of items to render </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes an &lt;see cref="T:Cocos2D.CCAtlasNode" /&gt; with an Atlas file the width and height of each item and the quantity of items to render &lt;/para&gt;&lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsOpacityModifyRGB">
@@ -214,9 +213,13 @@
       <Docs>
         <summary>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;Returns opacity modify flag. &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;Returns opacity modify flag. &lt;/para&gt;&lt;para&gt;Returns opacity modify flag. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</para>
+          <para>
+            <para>Returns opacity modify flag. </para>
+          </para>
+          <para>Returns opacity modify flag. </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bIsOpacityModifyRGB">
@@ -382,27 +385,10 @@
       <Docs>
         <summary>Changes the opacity.</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Changes the opacity.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;value&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;value&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;value&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;value&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Changes the opacity.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="QuadsToDraw">
@@ -418,7 +404,7 @@
       <Docs>
         <summary>setQuadsToDraw </summary>
         <value>To be added.</value>
-        <remarks>setQuadsToDraw </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetIgnoreContentScaleFactor">
@@ -437,7 +423,7 @@
       <Docs>
         <param name="bIgnoreContentScaleFactor">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -453,7 +439,7 @@
       <Docs>
         <summary>sets a new texture. it will be retained </summary>
         <value>To be added.</value>
-        <remarks>sets a new texture. it will be retained </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TextureAtlas">
@@ -469,7 +455,7 @@
       <Docs>
         <summary>setTextureAtlas </summary>
         <value>To be added.</value>
-        <remarks>setTextureAtlas </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateAtlasValues">
@@ -485,7 +471,7 @@
       <Parameters />
       <Docs>
         <summary>updates the Atlas (indexed vertex array). Shall be overridden in subclasses </summary>
-        <remarks>updates the Atlas (indexed vertex array). Shall be overridden in subclasses </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

@@ -11,9 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCHide" /&gt; the node. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCHide" /&gt;</summary>
-    <remarks></remarks>
+    <summary>
+      <para> the node. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,7 +27,7 @@
       <Parameters />
       <Docs>
         <summary>Allocates and initializes the action </summary>
-        <remarks>Allocates and initializes the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -62,7 +63,7 @@
         <param name="pZone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Reverse">
@@ -79,7 +80,7 @@
       <Docs>
         <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new action that performs the exactly the reverse action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">

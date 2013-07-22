@@ -11,11 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCProgressTimer" /&gt; is a subclass of &lt;see cref="T:Cocos2D.CCNode" /&gt;. It renders the inner sprite according to the percentage. The progress can be Radial, Horizontal or vertical. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCProgressTimer" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;para&gt;v0.99.1 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.99.1 &lt;/para&gt;&lt;para&gt;v0.99.1 &lt;/para&gt;</remarks>
+    <summary>
+      <para> is a subclass of . It renders the inner sprite according to the percentage. The progress can be Radial, Horizontal or vertical. </para>
+    </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -31,7 +30,7 @@
       <Docs>
         <param name="sp">To be added.</param>
         <summary>Creates a progress timer with the sprite as the shape the timer goes through </summary>
-        <remarks>Creates a progress timer with the sprite as the shape the timer goes through </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -83,7 +82,7 @@
         <param name="index">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Color">
@@ -99,9 +98,14 @@
       <Docs>
         <summary>Returns color that is currently used.</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Returns color that is currently used.&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;The &lt;see cref="T:Cocos2D.CCColor3B" /&gt; contains R,G,B bytes. &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;The &lt;see cref="T:Cocos2D.CCColor3B" /&gt; contains R,G,B bytes. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCColor3B" /&gt;&lt;para&gt;The &lt;see cref="T:Cocos2D.CCColor3B" /&gt; contains R,G,B bytes. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Returns color that is currently used.</para>
+          <para>
+            <para>The <see cref="T:Cocos2D.CCColor3B" /> contains R,G,B bytes. </para>
+          </para>
+          <para>The <see cref="T:Cocos2D.CCColor3B" /> contains R,G,B bytes. </para>
+          <see cref="T:Cocos2D.CCColor3B" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -116,21 +120,27 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
-        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithSprite">
@@ -150,7 +160,7 @@
         <param name="sp">To be added.</param>
         <summary>Initializes a progress timer with the sprite as the shape the timer goes through </summary>
         <returns>To be added.</returns>
-        <remarks>Initializes a progress timer with the sprite as the shape the timer goes through </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsOpacityModifyRGB">
@@ -302,7 +312,7 @@
       <Docs>
         <summary>setMidpoint </summary>
         <value>To be added.</value>
-        <remarks>setMidpoint </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Opacity">
@@ -318,27 +328,10 @@
       <Docs>
         <summary>Changes the opacity.</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Changes the opacity.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;value&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;value&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;value&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;value&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Changes the opacity.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Percentage">
@@ -354,7 +347,7 @@
       <Docs>
         <summary>Percentages are from 0 to 100 </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ReverseDirection">
@@ -370,7 +363,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ReverseProgress">
@@ -386,7 +379,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Sprite">
@@ -402,7 +395,7 @@
       <Docs>
         <summary>The image to show the progress percentage, retain </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TextureCoordFromAlphaPoint">
@@ -422,7 +415,7 @@
         <param name="alpha">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Type">
@@ -438,7 +431,7 @@
       <Docs>
         <summary>Change the percentage to change progress. </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateBar">
@@ -454,7 +447,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateColor">
@@ -470,7 +463,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateProgress">
@@ -486,7 +479,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateRadial">
@@ -502,7 +495,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="VertexFromAlphaPoint">
@@ -522,7 +515,7 @@
         <param name="alpha">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

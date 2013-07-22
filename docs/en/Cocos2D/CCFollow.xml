@@ -11,9 +11,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCFollow" /&gt; is an action that "follows" a node. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCFollow" /&gt;</summary>
-    <remarks>&lt;para&gt;Eg: layer-&amp;gt;runAction(Follow::actionWithTarget(hero));&lt;/para&gt;&lt;para&gt;Instead of using &lt;see cref="T:Cocos2D.CCCamera" /&gt; as a "follower", use this action instead. &lt;para&gt;v0.99.2 &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCCamera" /&gt;&lt;para&gt;v0.99.2 &lt;/para&gt;&lt;para&gt;v0.99.2 &lt;/para&gt;</remarks>
+    <summary>
+      <para> is an action that "follows" a node. </para>
+    </summary>
+    <remarks>
+      <para>Eg: layer-&gt;runAction(Follow::actionWithTarget(hero));</para>
+      <para>Instead of using <see cref="T:Cocos2D.CCCamera" /> as a "follower", use this action instead. <para>v0.99.2 </para></para>
+      <see cref="T:Cocos2D.CCCamera" />
+      <para>v0.99.2 </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -29,27 +35,7 @@
       <Docs>
         <param name="follow">is equal to Rect::ZERO. </param>
         <summary>creates the action with a set boundary, It will work with no boundary if</summary>
-        <remarks>&lt;para&gt;creates the action with a set boundary, It will work with no boundary if&lt;/para&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;rect&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;is equal to Rect::ZERO. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;rect&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;is equal to Rect::ZERO. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;rect&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;rect&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;is equal to Rect::ZERO. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;is equal to Rect::ZERO. &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -103,7 +89,7 @@
         <param name="zone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsDone">
@@ -117,9 +103,11 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>return true if the action has finished </summary>
+        <summary>
+          <para>return true if the action has finished </para>
+        </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bBoundaryFullyCovered">
@@ -272,8 +260,10 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
-        <summary>called every frame with it's delta time. DON'T override unless you know what you are doing. </summary>
-        <remarks></remarks>
+        <summary>
+          <para>called every frame with it's delta time. DON'T override unless you know what you are doing. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Stop">
@@ -289,7 +279,7 @@
       <Parameters />
       <Docs>
         <summary>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </summary>
-        <remarks>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

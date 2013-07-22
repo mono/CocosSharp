@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks></remarks>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -44,9 +44,11 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>&lt;para&gt;Callback by &lt;see cref="T:Cocos2D.CCDirector" /&gt; for limit FPS.  The time, expressed in seconds, between current frame and next. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCDirector" /&gt;</summary>
+        <summary>
+          <para>Callback by  for limit FPS.  The time, expressed in seconds, between current frame and next. </para>
+        </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ApplicationDidEnterBackground">
@@ -407,7 +409,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TouchDelegate">

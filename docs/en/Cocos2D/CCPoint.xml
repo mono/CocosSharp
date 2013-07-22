@@ -17,7 +17,7 @@
   </Attributes>
   <Docs>
     <summary>To be added.</summary>
-    <remarks></remarks>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -219,7 +219,7 @@
         <param name="v2">To be added.</param>
         <summary>Calculates the distance between two points float v2.1.4 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Calculates the distance between two points &lt;para&gt;float &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;float &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;para&gt;float &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DistanceSQ">
@@ -261,7 +261,7 @@
         <param name="p2">To be added.</param>
         <summary>Calculates dot product of two points. float v2.1.4 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Calculates dot product of two points. &lt;para&gt;float &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;float &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;para&gt;float &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DotProduct">
@@ -325,7 +325,7 @@
         <param name="p">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Equals">
@@ -365,7 +365,7 @@
         <param name="a">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FromSize">
@@ -457,7 +457,7 @@
         <param name="D">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InvertY">
@@ -489,7 +489,7 @@
       <Docs>
         <summary>Calculates distance between point an origin float v2.1.4 </summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Calculates distance between point an origin &lt;para&gt;float &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;float &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;para&gt;float &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="LengthSQ">
@@ -545,7 +545,7 @@
         <param name="alpha">To be added.</param>
         <summary>Linear Interpolation between two points a and b alpha == 0 ? a alpha == 1 ? b otherwise a value between a..b v2.1.4 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Linear Interpolation between two points a and b &lt;para&gt;alpha == 0 ? a alpha == 1 ? b otherwise a value between a..b &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;alpha == 0 ? a alpha == 1 ? b otherwise a value between a..b &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;para&gt;alpha == 0 ? a alpha == 1 ? b otherwise a value between a..b &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="LineIntersect">
@@ -597,7 +597,7 @@
         <param name="p2">To be added.</param>
         <summary>Calculates midpoint between two points. Point v3.0 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Calculates midpoint between two points. &lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v3.0 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v3.0 &lt;/para&gt;&lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v3.0 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MultiplyComponents">
@@ -636,7 +636,7 @@
       <Docs>
         <summary>Returns point multiplied to a length of 1. If the point is 0, it returns (1, 0) Point v2.1.4 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Returns point multiplied to a length of 1. If the point is 0, it returns (1, 0) &lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Normalize">
@@ -928,7 +928,7 @@
         <param name="p">To be added.</param>
         <summary>Calculates perpendicular of v, rotated 90 degrees counter-clockwise  cross(v, perp(v)) &gt;= 0 Point v2.1.4 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Calculates perpendicular of v, rotated 90 degrees counter-clockwise &lt;ndash /&gt; cross(v, perp(v)) &amp;gt;= 0 &lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;/para&gt;&lt;ndash /&gt;&lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PerpendicularClockwise">
@@ -990,7 +990,7 @@
         <param name="v2">To be added.</param>
         <summary>Calculates the projection of this over other. Point v2.1.4 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Calculates the projection of this over other. &lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;para&gt;Point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Reverse">
@@ -1028,7 +1028,7 @@
         <param name="v2">To be added.</param>
         <summary>Complex multiplication of two points ("rotates" two points). Point vector with an angle of this.getAngle() + other.getAngle(), and a length of this.getLength() * other.getLength(). v2.1.4 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Complex multiplication of two points ("rotates" two points). &lt;para&gt;Point vector with an angle of this.getAngle() + other.getAngle(), and a length of this.getLength() * other.getLength(). &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;Point vector with an angle of this.getAngle() + other.getAngle(), and a length of this.getLength() * other.getLength(). &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;para&gt;Point vector with an angle of this.getAngle() + other.getAngle(), and a length of this.getLength() * other.getLength(). &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RotateByAngle">
@@ -1052,46 +1052,7 @@
         <param name="angle">To be added.</param>
         <summary>Rotates a point counter clockwise by the angle around a pivot the rotated point v2.1.4 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Rotates a point counter clockwise by the angle around a pivot &lt;para&gt;the rotated point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;/para&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;pivot&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;is the pivot, naturally &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;angle&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;is the angle of rotation ccw in radians &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;pivot&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;is the pivot, naturally &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;pivot&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;pivot&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;is the pivot, naturally &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;is the pivot, naturally &lt;/para&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;angle&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;is the angle of rotation ccw in radians &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;angle&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;angle&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;is the angle of rotation ccw in radians &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;is the angle of rotation ccw in radians &lt;/para&gt;&lt;para&gt;the rotated point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;para&gt;the rotated point &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SegmentIntersect">
@@ -1196,7 +1157,7 @@
         <param name="v2">To be added.</param>
         <summary>Unrotates two points. Point vector with an angle of this.getAngle() - other.getAngle(), and a length of this.getLength() * other.getLength(). v2.1.4 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Unrotates two points. &lt;para&gt;Point vector with an angle of this.getAngle() - other.getAngle(), and a length of this.getLength() * other.getLength(). &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;Point vector with an angle of this.getAngle() - other.getAngle(), and a length of this.getLength() * other.getLength(). &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;&lt;para&gt;Point vector with an angle of this.getAngle() - other.getAngle(), and a length of this.getLength() * other.getLength(). &lt;/para&gt;&lt;para&gt;v2.1.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="X">

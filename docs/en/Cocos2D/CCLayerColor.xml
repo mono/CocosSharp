@@ -15,16 +15,22 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCLayerColor" /&gt; is a subclass of &lt;see cref="T:Cocos2D.CCLayer" /&gt; that implements the &lt;ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound"&gt;RGBAProtocol&lt;/ref&gt; protocol. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayerColor" /&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound"&gt;RGBAProtocol&lt;/ref&gt;</summary>
-    <remarks>&lt;para&gt;All features from &lt;see cref="T:Cocos2D.CCLayer" /&gt; are valid, plus the following new features:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;opacity&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;RGB colors &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;opacity&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;RGB colors &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;opacity&lt;/para&gt;&lt;para&gt;RGB colors &lt;/para&gt;</remarks>
+    <summary>
+      <para> is a subclass of  that implements the RGBAProtocol protocol. </para>
+    </summary>
+    <remarks>
+      <para>All features from <see cref="T:Cocos2D.CCLayer" /> are valid, plus the following new features:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCLayer" />
+      <list type="bullet" />
+      <item>
+        <description>opacity</description>
+      </item>
+      <description>opacity</description>
+      <item>
+        <description>RGB colors </description>
+      </item>
+      <description>RGB colors </description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -37,7 +43,7 @@
       <Parameters />
       <Docs>
         <summary>creates a  with color. Width and height are the window size. </summary>
-        <remarks>&lt;para&gt;creates a &lt;see cref="T:Cocos2D.CCLayer" /&gt; with color. Width and height are the window size. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -89,7 +95,7 @@
       <Docs>
         <summary>setBlendFunc </summary>
         <value>To be added.</value>
-        <remarks>setBlendFunc </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ChangeHeight">
@@ -108,7 +114,7 @@
       <Docs>
         <param name="h">To be added.</param>
         <summary>change height in Points </summary>
-        <remarks>change height in Points </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ChangeWidth">
@@ -127,7 +133,7 @@
       <Docs>
         <param name="w">To be added.</param>
         <summary>change width in Points </summary>
-        <remarks>change width in Points </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ChangeWidthAndHeight">
@@ -149,12 +155,7 @@
         <param name="h">To be added.</param>
         <summary>change width and height in Points
 v0.8 </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;change width and height in Points
-&lt;/verbatim&gt;
-  &lt;para&gt;v0.8 &lt;/para&gt;
-&lt;/para&gt;&lt;verbatim&gt;change width and height in Points
-&lt;/verbatim&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Color">
@@ -170,27 +171,10 @@ v0.8 </summary>
       <Docs>
         <summary>Changes the color with R,G,B bytes</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Changes the color with R,G,B bytes&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;color&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;color&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;color&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;color&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;Example: Color3B(255,100,0) means R=255, G=100, B=0 &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Changes the color with R,G,B bytes</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
@@ -206,27 +190,13 @@ v0.8 </summary>
       <Docs>
         <summary>Sets the untransformed size of the node.</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Sets the untransformed size of the node.&lt;/para&gt;&lt;para&gt;The contentSize remains the same no matter the node is scaled or rotated. All nodes has a size. &lt;see cref="T:Cocos2D.CCLayer" /&gt; and &lt;see cref="T:Cocos2D.CCScene" /&gt; has the same size of the screen.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;&lt;see cref="T:Cocos2D.CCScene" /&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;contentSize&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;The untransformed size of the node. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;contentSize&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;The untransformed size of the node. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;contentSize&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;contentSize&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;The untransformed size of the node. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;The untransformed size of the node. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Sets the untransformed size of the node.</para>
+          <para>The contentSize remains the same no matter the node is scaled or rotated. All nodes has a size. <see cref="T:Cocos2D.CCLayer" /> and <see cref="T:Cocos2D.CCScene" /> has the same size of the screen.</para>
+          <see cref="T:Cocos2D.CCLayer" />
+          <see cref="T:Cocos2D.CCScene" />
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -241,21 +211,27 @@ v0.8 </summary>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
-        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -272,7 +248,7 @@ v0.8 </summary>
       <Docs>
         <summary>Initializes the instance of Whether the initialization was successful. </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Initializes the instance of &lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;&lt;para&gt;Whether the initialization was successful. &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithColor">
@@ -292,7 +268,7 @@ v0.8 </summary>
         <param name="color">To be added.</param>
         <summary>initializes a  with color. Width and height are the window size. </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCLayer" /&gt; with color. Width and height are the window size. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithColor">
@@ -362,27 +338,10 @@ v0.8 </summary>
       <Docs>
         <summary>Changes the opacity.</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Changes the opacity.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;value&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;value&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;value&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;value&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Changes the opacity.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateColor">
@@ -398,7 +357,7 @@ v0.8 </summary>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

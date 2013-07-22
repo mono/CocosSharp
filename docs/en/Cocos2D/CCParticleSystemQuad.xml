@@ -11,25 +11,35 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCParticleSystemQuad" /&gt; is a subclass of &lt;see cref="T:Cocos2D.CCParticleSystem" /&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleSystemQuad" /&gt;&lt;see cref="T:Cocos2D.CCParticleSystem" /&gt;</summary>
-    <remarks>&lt;para&gt;It includes all the features of &lt;see cref="T:Cocos2D.CCParticleSystem" /&gt;.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleSystem" /&gt;&lt;para&gt;Special features and Limitations:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;Particle size can be any float number.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The system can be scaled&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;The particles can be rotated&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;It supports subrects&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;It supports batched rendering since 1.1 v0.8 &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;Particle size can be any float number.&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;The system can be scaled&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;The particles can be rotated&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;It supports subrects&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;It supports batched rendering since 1.1 v0.8 &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;Particle size can be any float number.&lt;/para&gt;&lt;para&gt;The system can be scaled&lt;/para&gt;&lt;para&gt;The particles can be rotated&lt;/para&gt;&lt;para&gt;It supports subrects&lt;/para&gt;&lt;para&gt;It supports batched rendering since 1.1 &lt;para&gt;v0.8 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
+    <summary>
+      <para> is a subclass of . </para>
+    </summary>
+    <remarks>
+      <para>It includes all the features of <see cref="T:Cocos2D.CCParticleSystem" />.</para>
+      <see cref="T:Cocos2D.CCParticleSystem" />
+      <para>Special features and Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
+      <item>
+        <description>Particle size can be any float number.</description>
+      </item>
+      <description>Particle size can be any float number.</description>
+      <item>
+        <description>The system can be scaled</description>
+      </item>
+      <description>The system can be scaled</description>
+      <item>
+        <description>The particles can be rotated</description>
+      </item>
+      <description>The particles can be rotated</description>
+      <item>
+        <description>It supports subrects</description>
+      </item>
+      <description>It supports subrects</description>
+      <item>
+        <description>It supports batched rendering since 1.1 v0.8 </description>
+      </item>
+      <description>It supports batched rendering since 1.1 v0.8 </description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -43,7 +53,7 @@
       <Docs>
         <summary>creates an initializes a ParticleSystemQuad from a plist file.
  This plist files can be created manually or with Particle Designer: </summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -91,7 +101,7 @@
       <Docs>
         <summary>setBatchNode </summary>
         <value>To be added.</value>
-        <remarks>setBatchNode </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Clone">
@@ -123,21 +133,27 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
-        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTotalParticles">
@@ -155,9 +171,11 @@
       </Parameters>
       <Docs>
         <param name="numberOfParticles">To be added.</param>
-        <summary>Initializes a system with a fixed number of particles. </summary>
+        <summary>
+          <para>Initializes a system with a fixed number of particles. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PostStep">
@@ -172,8 +190,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>should be overridden by subclasses </summary>
-        <remarks></remarks>
+        <summary>
+          <para>should be overridden by subclasses </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetDisplayFrame">
@@ -193,10 +213,7 @@
         <param name="spriteFrame">To be added.</param>
         <summary>Sets a new SpriteFrame as particle.
  WARNING: this method is experimental. Use setTexture:withRect instead. v0.99.4 </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Sets a new SpriteFrame as particle.
-&lt;/verbatim&gt; WARNING: this method is experimental. Use setTexture:withRect instead. &lt;para&gt;v0.99.4 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;Sets a new SpriteFrame as particle.
-&lt;/verbatim&gt;&lt;para&gt;v0.99.4 &lt;/para&gt;&lt;para&gt;v0.99.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetTextureWithRect">
@@ -218,12 +235,7 @@
         <param name="rect">To be added.</param>
         <summary>Sets a new texture with a rect. The rect is in Points.
 v0.99.4 </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Sets a new texture with a rect. The rect is in Points.
-&lt;/verbatim&gt;
-  &lt;para&gt;v0.99.4 &lt;/para&gt;
-&lt;/para&gt;&lt;verbatim&gt;Sets a new texture with a rect. The rect is in Points.
-&lt;/verbatim&gt;&lt;para&gt;v0.99.4 &lt;/para&gt;&lt;para&gt;v0.99.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -239,7 +251,7 @@ v0.99.4 </summary>
       <Docs>
         <summary>setTexture </summary>
         <value>To be added.</value>
-        <remarks>setTexture </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TotalParticles">
@@ -255,7 +267,7 @@ v0.99.4 </summary>
       <Docs>
         <summary>setTotalParticles </summary>
         <value>To be added.</value>
-        <remarks>setTotalParticles </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateQuadsWithParticles">

@@ -12,8 +12,7 @@
   <Interfaces />
   <Docs>
     <summary> Object than contains the claimed touches and if it swallows touches. Used internally by </summary>
-    <remarks>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCTargetedTouchHandler" /&gt; Object than contains the claimed touches and if it swallows touches. Used internally by &lt;see cref="T:Cocos2D.CCTouchDispatcher" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTargetedTouchHandler" /&gt;&lt;see cref="T:Cocos2D.CCTouchDispatcher" /&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -42,7 +41,7 @@
       <Docs>
         <summary>MutableSet that contains the claimed touches </summary>
         <value>To be added.</value>
-        <remarks>MutableSet that contains the claimed touches </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="HandlerWithDelegate">
@@ -66,7 +65,7 @@
         <param name="bSwallow">To be added.</param>
         <summary>allocates a  with a delegate, a priority and whether or not it swallows touches or not </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;allocates a &lt;see cref="T:Cocos2D.CCTargetedTouchHandler" /&gt; with a delegate, a priority and whether or not it swallows touches or not &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTargetedTouchHandler" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDelegate">
@@ -90,7 +89,7 @@
         <param name="bSwallow">To be added.</param>
         <summary>initializes a  with a delegate, a priority and whether or not it swallows touches or not </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCTargetedTouchHandler" /&gt; with a delegate, a priority and whether or not it swallows touches or not &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTargetedTouchHandler" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsSwallowsTouches">
@@ -106,7 +105,7 @@
       <Docs>
         <summary>whether or not the touches are swallowed </summary>
         <value>To be added.</value>
-        <remarks>whether or not the touches are swallowed </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_bSwallowsTouches">

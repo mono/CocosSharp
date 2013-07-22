@@ -11,9 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt; Object than contains the KeypadDelegate. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt;</summary>
-    <remarks></remarks>
+    <summary>
+      <para> Object than contains the KeypadDelegate. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -42,7 +43,7 @@
       <Docs>
         <summary>delegate </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="HandlerWithDelegate">
@@ -62,7 +63,7 @@
         <param name="pDelegate">To be added.</param>
         <summary>allocates a  with a delegate </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;allocates a &lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt; with a delegate &lt;/para&gt;&lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDelegate">
@@ -82,7 +83,7 @@
         <param name="pDelegate">To be added.</param>
         <summary>initializes a  with a delegate </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt; with a delegate &lt;/para&gt;&lt;see cref="T:Cocos2D.CCKeypadHandler" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_pDelegate">

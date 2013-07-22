@@ -12,8 +12,7 @@
   <Interfaces />
   <Docs>
     <summary> Object than contains the delegate and priority of the event handler. </summary>
-    <remarks>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCTouchHandler" /&gt; Object than contains the delegate and priority of the event handler. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTouchHandler" /&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -64,7 +63,7 @@
       <Docs>
         <summary>delegate </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EnabledSelectors">
@@ -80,7 +79,7 @@
       <Docs>
         <summary>enabled selectors </summary>
         <value>To be added.</value>
-        <remarks>enabled selectors </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDelegate">
@@ -102,7 +101,7 @@
         <param name="nPriority">To be added.</param>
         <summary>initializes a  with a delegate and a priority </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCTouchHandler" /&gt; with a delegate and a priority &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTouchHandler" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_nEnabledSelectors">
@@ -163,7 +162,7 @@
       <Docs>
         <summary>priority </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

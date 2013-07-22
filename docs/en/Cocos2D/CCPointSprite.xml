@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;Point &lt;see cref="T:Cocos2D.CCSprite" /&gt; component. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;</summary>
-    <remarks></remarks>
+    <summary>
+      <para>Point  component. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

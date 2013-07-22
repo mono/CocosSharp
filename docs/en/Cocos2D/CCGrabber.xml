@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>FBO class that grabs the the contents of the screen </summary>
-    <remarks>FBO class that grabs the the contents of the screen </remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -44,7 +44,7 @@
       <Docs>
         <param name="pTexture">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="BeforeRender">
@@ -63,7 +63,7 @@
       <Docs>
         <param name="pTexture">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Grab">
@@ -82,7 +82,7 @@
       <Docs>
         <param name="pTexture">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -12,8 +12,7 @@
   <Interfaces />
   <Docs>
     <summary> It forwards each event to the delegate. </summary>
-    <remarks>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCStandardTouchHandler" /&gt; It forwards each event to the delegate. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCStandardTouchHandler" /&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -48,7 +47,7 @@
         <param name="nPriority">To be added.</param>
         <summary>allocates a  with a delegate and a priority </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;allocates a &lt;see cref="T:Cocos2D.CCTouchHandler" /&gt; with a delegate and a priority &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTouchHandler" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDelegate">
@@ -70,7 +69,7 @@
         <param name="nPriority">To be added.</param>
         <summary>initializes a  with a delegate and a priority </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCTouchHandler" /&gt; with a delegate and a priority &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTouchHandler" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>
