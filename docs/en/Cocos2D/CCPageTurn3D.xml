@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>This action simulates a page turn from the bottom right hand corner of the screen. It's not much use by itself but is used by the PageTurnTransition. </para>
+    </summary>
     <remarks>
       <para>Based on an original paper by L Hong et al. <ulink url="http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html">http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html</ulink></para>
       <ulink url="http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html">http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html</ulink>

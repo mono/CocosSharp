@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> knows how to parse and render a TMX map. </para>
+    </summary>
     <remarks>
       <para>It adds support for the TMX tiled map format used by <ulink url="http://www.mapeditor.org">http://www.mapeditor.org</ulink> It supports isometric, hexagonal and orthogonal tiles. It also supports object groups, objects, and properties.</para>
       <ulink url="http://www.mapeditor.org">http://www.mapeditor.org</ulink>

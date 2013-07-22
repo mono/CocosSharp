@@ -15,7 +15,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary />
+    <summary>
+      <para> is a singleton that manages all the actions. Normally you won't need to use this singleton directly. 99% of the cases you will use the  interface, which uses this singleton. But there are some cases where you might need to use this singleton. Examples: </para>
+    </summary>
     <remarks>
       <para>
         <list type="bullet" />
@@ -65,7 +67,7 @@
       <Docs>
         <param name="element">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddAction">
@@ -107,7 +109,7 @@
       <Docs>
         <param name="element">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -252,7 +254,7 @@
         <param name="index">To be added.</param>
         <param name="element">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveActionByTag">
@@ -365,7 +367,7 @@
       <Docs>
         <param name="dt">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

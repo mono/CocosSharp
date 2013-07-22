@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para>The device accelerometer reports values for each axis in units of g-force. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

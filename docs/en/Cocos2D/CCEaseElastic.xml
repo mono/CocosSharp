@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>Ease Elastic abstract class. </para>
+    </summary>
     <remarks />
   </Docs>
   <Members>

@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> contains some openGL variables. </para>
+    </summary>
     <remarks />
   </Docs>
   <Members>
@@ -66,7 +68,7 @@
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsSupportsBGRA8888">
@@ -344,7 +346,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para> action Fades out the tiles in a Top-Right direction. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -81,7 +83,7 @@
         <param name="time">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TransformTile">
@@ -102,7 +104,7 @@
         <param name="pos">To be added.</param>
         <param name="distance">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TurnOffTile">
@@ -121,7 +123,7 @@
       <Docs>
         <param name="pos">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TurnOnTile">
@@ -140,7 +142,7 @@
       <Docs>
         <param name="pos">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">

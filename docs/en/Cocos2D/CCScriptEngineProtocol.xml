@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks />
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -193,9 +193,11 @@
       </Parameters>
       <Docs>
         <param name="pszFileName">String object holding the filename of the script file that is to be executed </param>
-        <summary />
+        <summary>
+          <para>Execute a script file. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ExecuteString">
@@ -213,7 +215,9 @@
       </Parameters>
       <Docs>
         <param name="pszCodes">holding the valid script code that should be executed. </param>
-        <summary />
+        <summary>
+          <para>Execute script code contained in the given string. </para>
+        </summary>
         <returns>To be added.</returns>
         <remarks />
       </Docs>

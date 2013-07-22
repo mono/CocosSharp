@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para>Moves a  object simulating a parabolic jump movement by modifying it's position attribute. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -206,8 +208,10 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">

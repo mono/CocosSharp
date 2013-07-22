@@ -15,7 +15,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary />
+    <summary>
+      <para> is a subclass of . </para>
+    </summary>
     <remarks>
       <para>It can be as a replacement of Label since it is MUCH faster.</para>
       <para>

@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>An interval action is an action that takes place within a certain period of time. It has an start time, and a finish time. The finish time is the parameter duration plus the start time. </para>
+    </summary>
     <remarks>
       <para>These <see cref="T:Cocos2D.CCActionInterval" /> actions have some interesting properties, like:<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCActionInterval" />
@@ -95,7 +97,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -165,9 +167,11 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary />
+        <summary>
+          <para>return true if the action has finished </para>
+        </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bFirstTick">
@@ -232,8 +236,10 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Step">
@@ -251,8 +257,10 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>called every frame with it's delta time. DON'T override unless you know what you are doing. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

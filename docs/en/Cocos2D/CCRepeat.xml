@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para>Repeats an action a number of times. To repeat an action forever use the  action. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -104,7 +106,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsDone">
@@ -118,9 +120,11 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary />
+        <summary>
+          <para>return true if the action has finished </para>
+        </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bActionInstant">
@@ -230,8 +234,10 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Stop">

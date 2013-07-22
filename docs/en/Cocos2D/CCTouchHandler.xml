@@ -63,7 +63,7 @@
       <Docs>
         <summary>delegate </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EnabledSelectors">
@@ -162,7 +162,7 @@
       <Docs>
         <summary>priority </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -1253,7 +1253,7 @@
       <Docs>
         <param name="bValue">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetDisplayFrameWithAnimationName">
@@ -1290,7 +1290,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetTextureRect">
@@ -1461,7 +1461,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedColor">

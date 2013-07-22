@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para>Base class for Transition scenes. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -308,7 +310,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

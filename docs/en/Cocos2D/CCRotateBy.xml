@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para>Rotates a  object clockwise a number of degrees by modifying it's rotation attribute. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +30,7 @@
       <Docs>
         <param name="rotateTo">To be added.</param>
         <summary>creates the action </summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -181,8 +183,10 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">

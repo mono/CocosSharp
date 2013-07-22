@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> accepts Node(RGBAProtocol) objects as items. The images has 3 different states: </para>
+    </summary>
     <remarks>
       <para>
         <list type="bullet" />
@@ -174,7 +176,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="NormalImage">

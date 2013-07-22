@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>MultipleLayer is a  with the ability to multiplex it's children. Features: </para>
+    </summary>
     <remarks>
       <para>
         <list type="bullet" />
@@ -159,7 +161,7 @@
       <Docs>
         <param name="layer">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InAction">
@@ -257,7 +259,7 @@
         <param name="n">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SwitchToAndReleaseMe">

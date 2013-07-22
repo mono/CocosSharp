@@ -57,7 +57,7 @@
       <Docs>
         <summary>The alpha threshold. The content is drawn only where the stencil have pixel with alpha greater than the alphaThreshold. Should be a float between 0 and 1. This default to 1 (so alpha test is disabled). </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -110,7 +110,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bInverted">
@@ -235,7 +235,7 @@
       <Docs>
         <summary>The  to use as a stencil to do the clipping. The stencil node will be retained. This default to nil. </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Visit">

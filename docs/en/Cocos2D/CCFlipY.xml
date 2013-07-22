@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>Flips the sprite vertically. </para>
+    </summary>
     <remarks />
   </Docs>
   <Members>

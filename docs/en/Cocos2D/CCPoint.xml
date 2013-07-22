@@ -17,7 +17,7 @@
   </Attributes>
   <Docs>
     <summary>To be added.</summary>
-    <remarks />
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -325,7 +325,7 @@
         <param name="p">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Equals">
@@ -365,7 +365,7 @@
         <param name="a">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FromSize">
@@ -457,7 +457,7 @@
         <param name="D">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InvertY">

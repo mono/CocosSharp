@@ -15,8 +15,10 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para>a Point with a vertex point, a tex coord point and a color 4B </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName="Colors">

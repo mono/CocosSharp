@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> is a subclass of . It renders the inner sprite according to the percentage. The progress can be Radial, Horizontal or vertical. </para>
+    </summary>
     <remarks />
   </Docs>
   <Members>
@@ -80,7 +82,7 @@
         <param name="index">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Color">
@@ -345,7 +347,7 @@
       <Docs>
         <summary>Percentages are from 0 to 100 </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ReverseDirection">
@@ -361,7 +363,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ReverseProgress">
@@ -377,7 +379,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Sprite">
@@ -393,7 +395,7 @@
       <Docs>
         <summary>The image to show the progress percentage, retain </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TextureCoordFromAlphaPoint">
@@ -413,7 +415,7 @@
         <param name="alpha">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Type">
@@ -429,7 +431,7 @@
       <Docs>
         <summary>Change the percentage to change progress. </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateBar">
@@ -445,7 +447,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateColor">
@@ -461,7 +463,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateProgress">
@@ -477,7 +479,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateRadial">
@@ -493,7 +495,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="VertexFromAlphaPoint">
@@ -513,7 +515,7 @@
         <param name="alpha">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

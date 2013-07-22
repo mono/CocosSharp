@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> is a subclass of  that draws gradients across the background. </para>
+    </summary>
     <remarks>
       <para>All features from <see cref="T:Cocos2D.CCLayerColor" /> are valid, plus the following new features:<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCLayerColor" />
@@ -199,7 +201,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="StartColor">
@@ -247,7 +249,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Vector">

@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>Flips the sprite horizontally. </para>
+    </summary>
     <remarks />
   </Docs>
   <Members>

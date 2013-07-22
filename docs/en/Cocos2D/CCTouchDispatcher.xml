@@ -15,7 +15,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary />
+    <summary>
+      <para>. Singleton that handles all the touch events. The dispatcher dispatches events to the registered TouchHandlers. There are 2 different type of touch handlers: </para>
+    </summary>
     <remarks>
       <para>
         <list type="bullet" />
@@ -112,7 +114,7 @@
         <param name="pDelegate">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ForceAddHandler">
@@ -133,7 +135,7 @@
         <param name="pHandler">To be added.</param>
         <param name="pArray">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ForceRemoveAllDelegates">
@@ -149,7 +151,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ForceRemoveDelegate">
@@ -168,7 +170,7 @@
       <Docs>
         <param name="pDelegate">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -185,7 +187,7 @@
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsDispatchEvents">
@@ -250,7 +252,7 @@
       <Docs>
         <param name="pArray">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveAllDelegates">
@@ -328,7 +330,7 @@
         <param name="pTouches">To be added.</param>
         <param name="uIndex">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TouchesBegan">
@@ -347,7 +349,7 @@
       <Docs>
         <param name="touches">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TouchesCancelled">
@@ -366,7 +368,7 @@
       <Docs>
         <param name="touches">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TouchesEnded">
@@ -385,7 +387,7 @@
       <Docs>
         <param name="touches">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TouchesMoved">
@@ -404,7 +406,7 @@
       <Docs>
         <param name="touches">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

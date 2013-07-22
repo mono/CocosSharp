@@ -44,7 +44,7 @@
       <Docs>
         <param name="pTexture">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="BeforeRender">
@@ -63,7 +63,7 @@
       <Docs>
         <param name="pTexture">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Grab">
@@ -82,7 +82,7 @@
       <Docs>
         <param name="pTexture">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

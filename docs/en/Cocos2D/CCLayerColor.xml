@@ -15,7 +15,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary />
+    <summary>
+      <para> is a subclass of  that implements the RGBAProtocol protocol. </para>
+    </summary>
     <remarks>
       <para>All features from <see cref="T:Cocos2D.CCLayer" /> are valid, plus the following new features:<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCLayer" />
@@ -355,7 +357,7 @@ v0.8 </summary>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

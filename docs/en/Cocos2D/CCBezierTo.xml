@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>An action that moves the target with a cubic Bezier curve to a destination point. </para>
+    </summary>
     <remarks />
   </Docs>
   <Members>
@@ -84,8 +86,10 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

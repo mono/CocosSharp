@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> is responsible for triggering the scheduled callbacks. You should not use NSTimer. Instead use this class. </para>
+    </summary>
     <remarks>
       <para>There are 2 different types of callbacks (selectors):<list type="bullet" /></para>
       <list type="bullet" />

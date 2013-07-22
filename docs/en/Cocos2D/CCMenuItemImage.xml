@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> accepts images as items. The images has 3 different states: </para>
+    </summary>
     <remarks>
       <para>
         <list type="bullet" />

@@ -32,8 +32,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary />
-        <remarks />
+        <summary>
+          <para>Save content to xml file. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetBoolForKey">
@@ -51,9 +53,11 @@
       </Parameters>
       <Docs>
         <param name="pKey">To be added.</param>
-        <summary />
+        <summary>
+          <para>Get bool value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is false. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetBoolForKey">
@@ -95,9 +99,11 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="defaultValue">To be added.</param>
-        <summary />
+        <summary>
+          <para>Get double value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0.0. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetFloatForKey">
@@ -117,9 +123,11 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="defaultValue">To be added.</param>
-        <summary />
+        <summary>
+          <para>Get float value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0.0f. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetIntegerForKey">
@@ -137,9 +145,11 @@
       </Parameters>
       <Docs>
         <param name="pKey">To be added.</param>
-        <summary />
+        <summary>
+          <para>Get integer value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetIntegerForKey">
@@ -181,9 +191,11 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="defaultValue">To be added.</param>
-        <summary />
+        <summary>
+          <para>Get string value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is "". </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PurgeSharedUserDefault">
@@ -199,7 +211,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetBoolForKey">
@@ -219,8 +231,10 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>Set bool value by key. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetDoubleForKey">
@@ -240,8 +254,10 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>Set double value by key. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetFloatForKey">
@@ -261,8 +277,10 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>Set float value by key. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetIntegerForKey">
@@ -282,8 +300,10 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>Set integer value by key. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetStringForKey">
@@ -303,8 +323,10 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>Set string value by key. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SharedUserDefault">

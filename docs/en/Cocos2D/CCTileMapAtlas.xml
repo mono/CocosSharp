@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> is a subclass of . </para>
+    </summary>
     <remarks>
       <para>It knows how to render a map based of tiles. The tiles must be in a .PNG format while the map must be a .TGA file.</para>
       <para>For more information regarding the format, please see this post: <ulink url="http://www.cocos2d-iphone.org/archives/27">http://www.cocos2d-iphone.org/archives/27</ulink></para>

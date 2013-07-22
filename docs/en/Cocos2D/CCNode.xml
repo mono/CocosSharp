@@ -18,7 +18,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary />
+    <summary>
+      <para> is the main element. Anything that gets drawn or contains things that get drawn is a . The most popular Nodes are: , , , . </para>
+    </summary>
     <remarks>
       <para>The main features of a <see cref="T:Cocos2D.CCNode" /> are:<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCNode" />
@@ -1246,9 +1248,11 @@
       </Parameters>
       <Docs>
         <param name="nodePoint">To be added.</param>
-        <summary />
+        <summary>
+          <para>Convert cocos2d coordinates to UI windows coordinate. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ConvertToWorldSpace">
@@ -2233,7 +2237,7 @@
       <Docs>
         <summary>Gets/Sets x or y coordinate individually for position. These methods are used in Lua and Javascript Bindings </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PositionY">
@@ -2249,7 +2253,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveAllChildren">
@@ -3186,7 +3190,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -3205,7 +3209,7 @@
       <Docs>
         <param name="dt">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateTransform">

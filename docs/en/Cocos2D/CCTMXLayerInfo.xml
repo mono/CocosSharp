@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> contains the information about the layers like: </para>
+    </summary>
     <remarks>
       <para>
         <list type="bullet" />

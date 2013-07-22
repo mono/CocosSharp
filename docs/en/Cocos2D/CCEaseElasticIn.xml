@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>Ease Elastic In action. </para>
+    </summary>
     <remarks />
   </Docs>
   <Members>
@@ -28,7 +30,7 @@
       <Docs>
         <param name="pAction">To be added.</param>
         <summary>Creates the action with the inner action and the period in radians (default is 0.3) </summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

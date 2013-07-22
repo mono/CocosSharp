@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>Base class actions that do have a finite time duration. Possible actions: </para>
+    </summary>
     <remarks>
       <para>
         <list type="bullet" />
@@ -69,9 +71,11 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary />
+        <summary>
+          <para>set duration in seconds of the action </para>
+        </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="m_fDuration">

@@ -15,8 +15,10 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para>4 Vertex3FTex2FColor4B </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName="BottomLeft">

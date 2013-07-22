@@ -15,8 +15,10 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para>Singleton that handles the loading of textures Once the texture is loaded, the next time it will return a reference of the previously loaded texture reducing GPU &amp; CPU memory. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -305,7 +307,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveAllTextures">
@@ -392,7 +394,7 @@ v0.99.4 </summary>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TextureForKey">

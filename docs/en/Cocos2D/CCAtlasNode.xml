@@ -15,7 +15,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary />
+    <summary>
+      <para> is a subclass of  that implements the RGBAProtocol and TextureProtocol protocol. </para>
+    </summary>
     <remarks>
       <para>It knows how to render a <see cref="T:Cocos2D.CCTextureAtlas" /> object. If you are going to render a <see cref="T:Cocos2D.CCTextureAtlas" /> consider subclassing <see cref="T:Cocos2D.CCAtlasNode" /> (or a subclass of <see cref="T:Cocos2D.CCAtlasNode" />)</para>
       <see cref="T:Cocos2D.CCTextureAtlas" />
@@ -421,7 +423,7 @@
       <Docs>
         <param name="bIgnoreContentScaleFactor">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Texture">

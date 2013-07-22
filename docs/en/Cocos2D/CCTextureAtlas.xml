@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para>A class that implements a Texture Atlas. Supported features: The atlas file can be a PVRTC, PNG or any other format supported by  Quads can be updated in runtime Quads can be added in runtime Quads can be removed in runtime Quads can be re-ordered in runtime The  capacity can be increased or decreased in runtime OpenGL component: V3F, C4B, T2F. The quads are rendered using an OpenGL ES VBO. To render the quads using an interleaved vertex array list, you should modify the ccConfig.h file. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

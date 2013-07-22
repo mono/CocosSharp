@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>: A node that simulates a parallax scroller. </para>
+    </summary>
     <remarks />
   </Docs>
   <Members>
@@ -25,7 +27,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddChild">

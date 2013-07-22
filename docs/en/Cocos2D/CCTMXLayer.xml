@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> represents the TMX layer. </para>
+    </summary>
     <remarks>
       <para>It is a subclass of <see cref="T:Cocos2D.CCSpriteBatchNode" />. By default the tiles are rendered using a <see cref="T:Cocos2D.CCTextureAtlas" />. If you modify a tile on runtime, then, that tile will become a <see cref="T:Cocos2D.CCSprite" />, otherwise no <see cref="T:Cocos2D.CCSprite" /> objects are created. The benefits of using <see cref="T:Cocos2D.CCSprite" /> objects as tiles are:<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCSpriteBatchNode" />
@@ -124,7 +126,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="LayerOrientation">

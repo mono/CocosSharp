@@ -15,8 +15,10 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para>A simple text input field with TTF font. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -44,9 +46,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary />
+        <summary>
+          <para>Open keyboard and receive input text. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CalcCharCount">
@@ -81,7 +85,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary />
+        <summary>
+          <para>Decide if the delegate instance is ready to receive an IME message. </para>
+        </summary>
         <returns>To be added.</returns>
         <remarks />
       </Docs>
@@ -98,9 +104,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary />
+        <summary>
+          <para>Decide if the delegate instance can stop receiving IME messages. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CharCount">
@@ -132,7 +140,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Delegate">
@@ -163,8 +171,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary />
-        <remarks />
+        <summary>
+          <para>Called by IMEDispatcher after the user clicks the backward key. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DetachWithIME">
@@ -179,9 +189,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary />
+        <summary>
+          <para>End text input and close keyboard. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DidAttachWithIME">
@@ -265,9 +277,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary />
+        <summary>
+          <para>Called by IMEDispatcher for text stored in delegate. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithPlaceHolder">
@@ -355,8 +369,10 @@
       <Docs>
         <param name="text">To be added.</param>
         <param name="len">To be added.</param>
-        <summary />
-        <remarks />
+        <summary>
+          <para>Called by IMEDispatcher when text input received from the IME. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="KeyboardDidHide">
@@ -478,7 +494,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TextFieldWithPlaceHolder">

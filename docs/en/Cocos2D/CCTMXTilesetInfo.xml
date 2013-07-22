@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> contains the information about the tilesets like: </para>
+    </summary>
     <remarks>
       <para>
         <list type="bullet" />
@@ -180,7 +182,7 @@
         <param name="gid">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

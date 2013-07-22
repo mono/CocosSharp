@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>Class that creates and handle the main Window and manages how and when to execute the Scenes. </para>
+    </summary>
     <remarks>
       <para>The <see cref="T:Cocos2D.CCDirector" /> is also responsible for:<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCDirector" />
@@ -152,7 +154,7 @@
         <summary>The size in pixels of the surface. It could be different than the screen size.
  High-res devices might have a higher surface size than the screen size. Only available when compiled using SDK &gt;= 4.0. v0.99.4 </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ConvertToGl">
@@ -208,7 +210,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Delegate">
@@ -224,7 +226,7 @@
       <Docs>
         <summary> delegate. It shall implemente the DirectorDelegate protocol v0.99.5 </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DeserializeState">
@@ -326,7 +328,7 @@
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsPaused">
@@ -439,7 +441,7 @@
       <Docs>
         <param name="gameTime">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="NeedsInit">
@@ -471,7 +473,7 @@
       <Docs>
         <summary>This object will be visited after the main scene is visited. This object MUST implement the "visit" selector. Useful to hook a notification object, like Notifications (http://github.com/manucorporat/CCNotifications) v0.99.5 </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Pause">
@@ -575,7 +577,7 @@
       <Docs>
         <summary>Sets an OpenGL projection v0.8.2 </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PurgeCachedData">
@@ -607,7 +609,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PushScene">
@@ -854,7 +856,7 @@
       <Docs>
         <param name="bNextDeltaTimeZero">To be added.</param>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetNextScene">
@@ -870,7 +872,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetOpenGlView">
@@ -918,7 +920,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="StartAnimation">
@@ -1063,9 +1065,11 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary />
+        <summary>
+          <para>XXX: missing description. </para>
+        </summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

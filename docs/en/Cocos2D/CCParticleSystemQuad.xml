@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> is a subclass of . </para>
+    </summary>
     <remarks>
       <para>It includes all the features of <see cref="T:Cocos2D.CCParticleSystem" />.</para>
       <see cref="T:Cocos2D.CCParticleSystem" />
@@ -51,7 +53,7 @@
       <Docs>
         <summary>creates an initializes a ParticleSystemQuad from a plist file.
  This plist files can be created manually or with Particle Designer: </summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -169,9 +171,11 @@
       </Parameters>
       <Docs>
         <param name="numberOfParticles">To be added.</param>
-        <summary />
+        <summary>
+          <para>Initializes a system with a fixed number of particles. </para>
+        </summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PostStep">
@@ -186,8 +190,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary />
-        <remarks />
+        <summary>
+          <para>should be overridden by subclasses </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetDisplayFrame">

@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
-    <remarks />
+    <summary>
+      <para>: Fade out the outgoing scene and then fade in the incoming scene.'''. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,7 +32,7 @@
         <param name="t">To be added.</param>
         <param name="scene">To be added.</param>
         <summary>creates the transition with a duration and with an RGB color Example: FadeTransition::create(2, scene, Color3B(255,0,0); // red color </summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

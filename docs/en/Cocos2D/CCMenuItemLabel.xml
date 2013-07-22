@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para>An abstract class for "label"  items Any  that supports the LabelProtocol protocol can be added. Supported nodes: </para>
+    </summary>
     <remarks>
       <para>
         <list type="bullet" />

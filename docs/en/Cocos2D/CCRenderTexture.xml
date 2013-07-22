@@ -11,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary />
+    <summary>
+      <para> is a generic rendering target. To render things into it, simply construct a render target, call begin on it, call visit on any cocos scenes or objects to render them, and call end. For convenience, render texture adds a sprite as it's display child with the results, so you can simply add the render texture to your scene and treat it like any other CocosNode. There are also functions for saving the render texture to disk in PNG or JPG format. </para>
+    </summary>
     <remarks />
   </Docs>
   <Members>
@@ -128,7 +130,7 @@
         <param name="b">To be added.</param>
         <param name="a">To be added.</param>
         <summary>starts rendering to the texture while clearing the texture first. This is more efficient then calling -clear first and then -begin </summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="BeginWithClear">
@@ -228,7 +230,7 @@
       <Docs>
         <param name="depthValue">To be added.</param>
         <summary>Value for clearDepth. Valid only when autoDraw is true. </summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ClearStencil">
@@ -247,7 +249,7 @@
       <Docs>
         <param name="stencilValue">To be added.</param>
         <summary>Value for clear Stencil. Valid only when autoDraw is true </summary>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="End">
