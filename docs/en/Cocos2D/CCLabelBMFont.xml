@@ -18,22 +18,22 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>Features:<list type="bullet" /></para>
       <list type="bullet" />
-      <para>Limitations:<itemizedlist /></para>
-      <itemizedlist />
+      <para>Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
       <para>
-        <ref refid="classcocos2d_1_1_label_b_m_font" kindref="compound">LabelBMFont</ref> implements the protocol <ref refid="classcocos2d_1_1_label_protocol" kindref="compound">LabelProtocol</ref>, like Label and <ref refid="classcocos2d_1_1_label_atlas" kindref="compound">LabelAtlas</ref>. <ref refid="classcocos2d_1_1_label_b_m_font" kindref="compound">LabelBMFont</ref> has the flexibility of Label, the speed of <ref refid="classcocos2d_1_1_label_atlas" kindref="compound">LabelAtlas</ref> and all the features of <ref refid="classcocos2d_1_1_sprite" kindref="compound">Sprite</ref>. If in doubt, use <ref refid="classcocos2d_1_1_label_b_m_font" kindref="compound">LabelBMFont</ref> instead of <ref refid="classcocos2d_1_1_label_atlas" kindref="compound">LabelAtlas</ref> / Label.</para>
-      <ref refid="classcocos2d_1_1_label_b_m_font" kindref="compound">LabelBMFont</ref>
+        <see cref="T:Cocos2D.CCLabelBMFont" /> implements the protocol <ref refid="classcocos2d_1_1_label_protocol" kindref="compound">LabelProtocol</ref>, like Label and <see cref="T:Cocos2D.CCLabelAtlas" />. <see cref="T:Cocos2D.CCLabelBMFont" /> has the flexibility of Label, the speed of <see cref="T:Cocos2D.CCLabelAtlas" /> and all the features of <see cref="T:Cocos2D.CCSprite" />. If in doubt, use <see cref="T:Cocos2D.CCLabelBMFont" /> instead of <see cref="T:Cocos2D.CCLabelAtlas" /> / Label.</para>
+      <see cref="T:Cocos2D.CCLabelBMFont" />
       <ref refid="classcocos2d_1_1_label_protocol" kindref="compound">LabelProtocol</ref>
-      <ref refid="classcocos2d_1_1_label_atlas" kindref="compound">LabelAtlas</ref>
-      <ref refid="classcocos2d_1_1_label_b_m_font" kindref="compound">LabelBMFont</ref>
-      <ref refid="classcocos2d_1_1_label_atlas" kindref="compound">LabelAtlas</ref>
-      <ref refid="classcocos2d_1_1_sprite" kindref="compound">Sprite</ref>
-      <ref refid="classcocos2d_1_1_label_b_m_font" kindref="compound">LabelBMFont</ref>
-      <ref refid="classcocos2d_1_1_label_atlas" kindref="compound">LabelAtlas</ref>
+      <see cref="T:Cocos2D.CCLabelAtlas" />
+      <see cref="T:Cocos2D.CCLabelBMFont" />
+      <see cref="T:Cocos2D.CCLabelAtlas" />
+      <see cref="T:Cocos2D.CCSprite" />
+      <see cref="T:Cocos2D.CCLabelBMFont" />
+      <see cref="T:Cocos2D.CCLabelAtlas" />
       <para>Supported editors: <ulink url="http://glyphdesigner.71squared.com/">http://glyphdesigner.71squared.com/</ulink> (Commercial, Mac OS X) <ulink url="http://www.n4te.com/hiero/hiero.jnlp">http://www.n4te.com/hiero/hiero.jnlp</ulink> (Free, Java) <ulink url="http://slick.cokeandcode.com/demos/hiero.jnlp">http://slick.cokeandcode.com/demos/hiero.jnlp</ulink> (Free, Java) <ulink url="http://www.angelcode.com/products/bmfont/">http://www.angelcode.com/products/bmfont/</ulink> (Free, Windows only)</para>
       <ulink url="http://glyphdesigner.71squared.com/">http://glyphdesigner.71squared.com/</ulink>
       <ulink url="http://www.n4te.com/hiero/hiero.jnlp">http://www.n4te.com/hiero/hiero.jnlp</ulink>
@@ -47,6 +47,42 @@
         <description>Treats each character like a Sprite. This means that each individual character can be:</description>
       </item>
       <description>Treats each character like a Sprite. This means that each individual character can be:</description>
+      <item>
+        <description>rotated</description>
+      </item>
+      <description>rotated</description>
+      <item>
+        <description>scaled</description>
+      </item>
+      <description>scaled</description>
+      <item>
+        <description>translated</description>
+      </item>
+      <description>translated</description>
+      <item>
+        <description>tinted</description>
+      </item>
+      <description>tinted</description>
+      <item>
+        <description>change the opacity</description>
+      </item>
+      <description>change the opacity</description>
+      <item>
+        <description>It can be used as part of a menu item.</description>
+      </item>
+      <description>It can be used as part of a menu item.</description>
+      <item>
+        <description>anchorPoint can be used to align the "label"</description>
+      </item>
+      <description>anchorPoint can be used to align the "label"</description>
+      <item>
+        <description>Supports AngelCode text format</description>
+      </item>
+      <description>Supports AngelCode text format</description>
+      <item>
+        <description>All inner characters are using an anchorPoint of (0.5f, 0.5f) and it is not recommend to change it because it might affect the rendering</description>
+      </item>
+      <description>All inner characters are using an anchorPoint of (0.5f, 0.5f) and it is not recommend to change it because it might affect the rendering</description>
     </remarks>
   </Docs>
   <Members>

@@ -15,7 +15,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>
         <list type="bullet" />
@@ -28,9 +28,9 @@
       <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>
       <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>
       <para>
-        <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref> supports all the variables used by Particle Designer plus a bit more:<itemizedlist /></para>
+        <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref> supports all the variables used by Particle Designer plus a bit more:<list type="bullet" /></para>
       <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>
-      <itemizedlist />
+      <list type="bullet" />
       <para>It is possible to customize any of the above mentioned properties in runtime. Example:</para>
       <para>
         <programlisting>
@@ -66,6 +66,106 @@
         <description>emission rate of the particles</description>
       </item>
       <description>emission rate of the particles</description>
+      <item>
+        <description>Gravity Mode (Mode A):</description>
+      </item>
+      <description>Gravity Mode (Mode A):</description>
+      <item>
+        <description>gravity</description>
+      </item>
+      <description>gravity</description>
+      <item>
+        <description>direction</description>
+      </item>
+      <description>direction</description>
+      <item>
+        <description>speed +- variance</description>
+      </item>
+      <description>speed +- variance</description>
+      <item>
+        <description>tangential acceleration +- variance</description>
+      </item>
+      <description>tangential acceleration +- variance</description>
+      <item>
+        <description>radial acceleration +- variance</description>
+      </item>
+      <description>radial acceleration +- variance</description>
+      <item>
+        <description>Radius Mode (Mode B):</description>
+      </item>
+      <description>Radius Mode (Mode B):</description>
+      <item>
+        <description>startRadius +- variance</description>
+      </item>
+      <description>startRadius +- variance</description>
+      <item>
+        <description>endRadius +- variance</description>
+      </item>
+      <description>endRadius +- variance</description>
+      <item>
+        <description>rotate +- variance</description>
+      </item>
+      <description>rotate +- variance</description>
+      <item>
+        <description>Properties common to all modes:</description>
+      </item>
+      <description>Properties common to all modes:</description>
+      <item>
+        <description>life +- life variance</description>
+      </item>
+      <description>life +- life variance</description>
+      <item>
+        <description>start spin +- variance</description>
+      </item>
+      <description>start spin +- variance</description>
+      <item>
+        <description>end spin +- variance</description>
+      </item>
+      <description>end spin +- variance</description>
+      <item>
+        <description>start size +- variance</description>
+      </item>
+      <description>start size +- variance</description>
+      <item>
+        <description>end size +- variance</description>
+      </item>
+      <description>end size +- variance</description>
+      <item>
+        <description>start color +- variance</description>
+      </item>
+      <description>start color +- variance</description>
+      <item>
+        <description>end color +- variance</description>
+      </item>
+      <description>end color +- variance</description>
+      <item>
+        <description>life +- variance</description>
+      </item>
+      <description>life +- variance</description>
+      <item>
+        <description>blending function</description>
+      </item>
+      <description>blending function</description>
+      <item>
+        <description>texture</description>
+      </item>
+      <description>texture</description>
+      <item>
+        <description>spinning particles (supported when using ParticleSystemQuad)</description>
+      </item>
+      <description>spinning particles (supported when using ParticleSystemQuad)</description>
+      <item>
+        <description>tangential acceleration (Gravity mode)</description>
+      </item>
+      <description>tangential acceleration (Gravity mode)</description>
+      <item>
+        <description>radial acceleration (Gravity mode)</description>
+      </item>
+      <description>radial acceleration (Gravity mode)</description>
+      <item>
+        <description>radius direction (Radius mode) (Particle Designer supports outwards to inwards direction only)</description>
+      </item>
+      <description>radius direction (Radius mode) (Particle Designer supports outwards to inwards direction only)</description>
     </remarks>
   </Docs>
   <Members>
@@ -476,7 +576,7 @@
       </Parameters>
       <Docs>
         <param name="numberOfParticles">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <returns>To be added.</returns>
         <remarks />
       </Docs>
@@ -1317,7 +1417,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <remarks />
       </Docs>
     </Member>
@@ -1381,7 +1481,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <remarks />
       </Docs>
     </Member>
@@ -1701,7 +1801,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <remarks />
       </Docs>
     </Member>

@@ -15,19 +15,39 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>
         <list type="bullet" />
       </para>
       <list type="bullet" />
-      <para>And it also contains:<itemizedlist /></para>
-      <itemizedlist />
+      <para>And it also contains:<list type="bullet" /></para>
+      <list type="bullet" />
       <para>This information is obtained from the TMX file. </para>
       <item>
         <description>Map orientation (hexagonal, isometric or orthogonal)</description>
       </item>
       <description>Map orientation (hexagonal, isometric or orthogonal)</description>
+      <item>
+        <description>Tile size</description>
+      </item>
+      <description>Tile size</description>
+      <item>
+        <description>Map size</description>
+      </item>
+      <description>Map size</description>
+      <item>
+        <description>Layers (an array of TMXLayerInfo objects)</description>
+      </item>
+      <description>Layers (an array of TMXLayerInfo objects)</description>
+      <item>
+        <description>Tilesets (an array of TMXTilesetInfo objects)</description>
+      </item>
+      <description>Tilesets (an array of TMXTilesetInfo objects)</description>
+      <item>
+        <description>ObjectGroups (an array of TMXObjectGroupInfo objects)</description>
+      </item>
+      <description>ObjectGroups (an array of TMXObjectGroupInfo objects)</description>
     </remarks>
   </Docs>
   <Members>

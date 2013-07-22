@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>It includes all the features of <see cref="T:Cocos2D.CCParticleSystem" />.</para>
       <see cref="T:Cocos2D.CCParticleSystem" />
@@ -21,6 +21,22 @@
         <description>Particle size can be any float number.</description>
       </item>
       <description>Particle size can be any float number.</description>
+      <item>
+        <description>The system can be scaled</description>
+      </item>
+      <description>The system can be scaled</description>
+      <item>
+        <description>The particles can be rotated</description>
+      </item>
+      <description>The particles can be rotated</description>
+      <item>
+        <description>It supports subrects</description>
+      </item>
+      <description>It supports subrects</description>
+      <item>
+        <description>It supports batched rendering since 1.1 v0.8 </description>
+      </item>
+      <description>It supports batched rendering since 1.1 v0.8 </description>
     </remarks>
   </Docs>
   <Members>
@@ -123,6 +139,18 @@
             <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
           </item>
           <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
         </remarks>
       </Docs>
     </Member>
@@ -141,7 +169,7 @@
       </Parameters>
       <Docs>
         <param name="numberOfParticles">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <returns>To be added.</returns>
         <remarks />
       </Docs>
@@ -158,7 +186,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <remarks />
       </Docs>
     </Member>

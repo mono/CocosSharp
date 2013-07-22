@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>Features and Limitations:<list type="bullet" /></para>
       <list type="bullet" />
@@ -23,6 +23,10 @@
         <description>Scheduled timers &amp; drawing are synchronizes with the refresh rate of the display</description>
       </item>
       <description>Scheduled timers &amp; drawing are synchronizes with the refresh rate of the display</description>
+      <item>
+        <description>Only supports animation intervals of 1/60 1/30 &amp; 1/15</description>
+      </item>
+      <description>Only supports animation intervals of 1/60 1/30 &amp; 1/15</description>
     </remarks>
   </Docs>
   <Members>

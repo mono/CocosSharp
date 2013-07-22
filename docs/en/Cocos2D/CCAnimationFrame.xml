@@ -29,6 +29,14 @@
         <description>sprite frame name</description>
       </item>
       <description>sprite frame name</description>
+      <item>
+        <description># of delay units.</description>
+      </item>
+      <description># of delay units.</description>
+      <item>
+        <description>offset</description>
+      </item>
+      <description>offset</description>
     </remarks>
   </Docs>
   <Members>

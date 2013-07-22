@@ -193,7 +193,7 @@
       </Parameters>
       <Docs>
         <param name="pszFileName">String object holding the filename of the script file that is to be executed </param>
-        <summary>To be added.</summary>
+        <summary />
         <returns>To be added.</returns>
         <remarks />
       </Docs>
@@ -213,7 +213,7 @@
       </Parameters>
       <Docs>
         <param name="pszCodes">holding the valid script code that should be executed. </param>
-        <summary>To be added.</summary>
+        <summary />
         <returns>To be added.</returns>
         <remarks />
       </Docs>

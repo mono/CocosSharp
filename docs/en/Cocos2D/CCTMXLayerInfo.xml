@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>
         <list type="bullet" />
@@ -22,6 +22,18 @@
         <description>Layer name</description>
       </item>
       <description>Layer name</description>
+      <item>
+        <description>Layer size</description>
+      </item>
+      <description>Layer size</description>
+      <item>
+        <description>Layer opacity at creation time (it can be modified at runtime)</description>
+      </item>
+      <description>Layer opacity at creation time (it can be modified at runtime)</description>
+      <item>
+        <description>Whether the layer is visible (if it's not visible, then the CocosNode won't be created)</description>
+      </item>
+      <description>Whether the layer is visible (if it's not visible, then the CocosNode won't be created)</description>
     </remarks>
   </Docs>
   <Members>

@@ -27,13 +27,13 @@
       <para>If the parent or any of its ancestors is a <see cref="T:Cocos2D.CCSpriteBatchNode" /> then the following features/limitations are valid<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCSpriteBatchNode" />
       <list type="bullet" />
-      <para>If the parent is an standard <ref refid="classcocos2d_1_1_node" kindref="compound">Node</ref>, then <ref refid="classcocos2d_1_1_sprite" kindref="compound">Sprite</ref> behaves like any other <ref refid="classcocos2d_1_1_node" kindref="compound">Node</ref>:<itemizedlist /></para>
-      <ref refid="classcocos2d_1_1_node" kindref="compound">Node</ref>
-      <ref refid="classcocos2d_1_1_sprite" kindref="compound">Sprite</ref>
-      <ref refid="classcocos2d_1_1_node" kindref="compound">Node</ref>
-      <itemizedlist />
-      <para>The default anchorPoint in <ref refid="classcocos2d_1_1_sprite" kindref="compound">Sprite</ref> is (0.5, 0.5). </para>
-      <ref refid="classcocos2d_1_1_sprite" kindref="compound">Sprite</ref>
+      <para>If the parent is an standard <see cref="T:Cocos2D.CCNode" />, then <see cref="T:Cocos2D.CCSprite" /> behaves like any other <see cref="T:Cocos2D.CCNode" />:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCNode" />
+      <see cref="T:Cocos2D.CCSprite" />
+      <see cref="T:Cocos2D.CCNode" />
+      <list type="bullet" />
+      <para>The default anchorPoint in <see cref="T:Cocos2D.CCSprite" /> is (0.5, 0.5). </para>
+      <see cref="T:Cocos2D.CCSprite" />
       <item>
         <description>Features when the parent is a BatchNode:MUCH faster rendering, specially if the SpriteBatchNode has many children. All the children will be drawn in a single batch.</description>
       </item>
@@ -42,6 +42,42 @@
         <description>MUCH faster rendering, specially if the SpriteBatchNode has many children. All the children will be drawn in a single batch.</description>
       </item>
       <description>MUCH faster rendering, specially if the SpriteBatchNode has many children. All the children will be drawn in a single batch.</description>
+      <item>
+        <description>LimitationsCamera is not supported yet (eg: OrbitCamera action doesn't work)GridBase actions are not supported (eg: Lens, Ripple, Twirl)The Alias/Antialias property belongs to SpriteBatchNode, so you can't individually set the aliased property.The Blending function property belongs to SpriteBatchNode, so you can't individually set the blending function property.Parallax scroller is not supported, but can be simulated with a "proxy" sprite.</description>
+      </item>
+      <description>LimitationsCamera is not supported yet (eg: OrbitCamera action doesn't work)GridBase actions are not supported (eg: Lens, Ripple, Twirl)The Alias/Antialias property belongs to SpriteBatchNode, so you can't individually set the aliased property.The Blending function property belongs to SpriteBatchNode, so you can't individually set the blending function property.Parallax scroller is not supported, but can be simulated with a "proxy" sprite.</description>
+      <item>
+        <description>Camera is not supported yet (eg: OrbitCamera action doesn't work)</description>
+      </item>
+      <description>Camera is not supported yet (eg: OrbitCamera action doesn't work)</description>
+      <item>
+        <description>GridBase actions are not supported (eg: Lens, Ripple, Twirl)</description>
+      </item>
+      <description>GridBase actions are not supported (eg: Lens, Ripple, Twirl)</description>
+      <item>
+        <description>The Alias/Antialias property belongs to SpriteBatchNode, so you can't individually set the aliased property.</description>
+      </item>
+      <description>The Alias/Antialias property belongs to SpriteBatchNode, so you can't individually set the aliased property.</description>
+      <item>
+        <description>The Blending function property belongs to SpriteBatchNode, so you can't individually set the blending function property.</description>
+      </item>
+      <description>The Blending function property belongs to SpriteBatchNode, so you can't individually set the blending function property.</description>
+      <item>
+        <description>Parallax scroller is not supported, but can be simulated with a "proxy" sprite.</description>
+      </item>
+      <description>Parallax scroller is not supported, but can be simulated with a "proxy" sprite.</description>
+      <item>
+        <description>It supports blending functions</description>
+      </item>
+      <description>It supports blending functions</description>
+      <item>
+        <description>It supports aliasing / antialiasing</description>
+      </item>
+      <description>It supports aliasing / antialiasing</description>
+      <item>
+        <description>But the rendering will be slower: 1 draw per children.</description>
+      </item>
+      <description>But the rendering will be slower: 1 draw per children.</description>
     </remarks>
   </Docs>
   <Members>
@@ -340,6 +376,18 @@
             <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
           </item>
           <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
         </remarks>
       </Docs>
     </Member>
@@ -1489,50 +1537,22 @@
           <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>
           <list type="bullet" />
           <para>
-            <parameterlist kind="param">
-              <parameteritem>
-                <parameternamelist>
-                  <parametername>fVertexZ</parametername>
-                </parameternamelist>
-                <parameterdescription>
-                  <para>OpenGL Z vertex of this node. </para>
-                </parameterdescription>
-              </parameteritem>
-            </parameterlist>
             <para>Use it at your own risk since it might break the <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref> parent-children z order</para>
           </para>
-          <parameterlist kind="param">
-            <parameteritem>
-              <parameternamelist>
-                <parametername>fVertexZ</parametername>
-              </parameternamelist>
-              <parameterdescription>
-                <para>OpenGL Z vertex of this node. </para>
-              </parameterdescription>
-            </parameteritem>
-          </parameterlist>
-          <parameteritem>
-            <parameternamelist>
-              <parametername>fVertexZ</parametername>
-            </parameternamelist>
-            <parameterdescription>
-              <para>OpenGL Z vertex of this node. </para>
-            </parameterdescription>
-          </parameteritem>
-          <parameternamelist>
-            <parametername>fVertexZ</parametername>
-          </parameternamelist>
-          <parametername>fVertexZ</parametername>
-          <parameterdescription>
-            <para>OpenGL Z vertex of this node. </para>
-          </parameterdescription>
-          <para>OpenGL Z vertex of this node. </para>
           <para>Use it at your own risk since it might break the <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref> parent-children z order</para>
           <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>
           <item>
             <description>OpenGL Z modifies the Z vertex, and not the Z order in the relation between parent-children</description>
           </item>
           <description>OpenGL Z modifies the Z vertex, and not the Z order in the relation between parent-children</description>
+          <item>
+            <description>OpenGL Z might require to set 2D projection</description>
+          </item>
+          <description>OpenGL Z might require to set 2D projection</description>
+          <item>
+            <description>cocos2d Z order works OK if all the nodes uses the same openGL Z vertex. eg: vertexZ = 0</description>
+          </item>
+          <description>cocos2d Z order works OK if all the nodes uses the same openGL Z vertex. eg: vertexZ = 0</description>
         </remarks>
       </Docs>
     </Member>

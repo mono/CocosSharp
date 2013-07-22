@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>This uses a 3DAction so it's strongly recommended that depth buffering is turned on in <see cref="T:Cocos2D.CCDirector" /> using:</para>
       <see cref="T:Cocos2D.CCDirector" />

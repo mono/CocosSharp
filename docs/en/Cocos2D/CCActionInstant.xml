@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks />
   </Docs>
   <Members>
@@ -75,7 +75,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <value>To be added.</value>
         <remarks />
       </Docs>
@@ -112,7 +112,7 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <remarks />
       </Docs>
     </Member>
@@ -140,6 +140,14 @@
             <description>0 means that the action just started</description>
           </item>
           <description>0 means that the action just started</description>
+          <item>
+            <description>0.5 means that the action is in the middle</description>
+          </item>
+          <description>0.5 means that the action is in the middle</description>
+          <item>
+            <description>1 means that the action is over </description>
+          </item>
+          <description>1 means that the action is over </description>
         </remarks>
       </Docs>
     </Member>

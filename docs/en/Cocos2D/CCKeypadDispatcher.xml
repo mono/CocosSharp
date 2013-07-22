@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks />
   </Docs>
   <Members>
@@ -43,7 +43,7 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <remarks />
       </Docs>
     </Member>
@@ -82,7 +82,7 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <remarks />
       </Docs>
     </Member>
@@ -101,7 +101,7 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <remarks />
       </Docs>
     </Member>
@@ -210,7 +210,7 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <remarks />
       </Docs>
     </Member>

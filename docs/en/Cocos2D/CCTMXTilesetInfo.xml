@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>
         <list type="bullet" />
@@ -22,6 +22,26 @@
         <description>Tileset name</description>
       </item>
       <description>Tileset name</description>
+      <item>
+        <description>Tileset spacing</description>
+      </item>
+      <description>Tileset spacing</description>
+      <item>
+        <description>Tileset margin</description>
+      </item>
+      <description>Tileset margin</description>
+      <item>
+        <description>size of the tiles</description>
+      </item>
+      <description>size of the tiles</description>
+      <item>
+        <description>Image used for the tiles</description>
+      </item>
+      <description>Image used for the tiles</description>
+      <item>
+        <description>Image size</description>
+      </item>
+      <description>Image size</description>
     </remarks>
   </Docs>
   <Members>

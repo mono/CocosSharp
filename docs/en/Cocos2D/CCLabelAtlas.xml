@@ -15,19 +15,27 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>It can be as a replacement of Label since it is MUCH faster.</para>
       <para>
         <see cref="T:Cocos2D.CCLabelAtlas" /> versus Label:<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCLabelAtlas" />
       <list type="bullet" />
-      <para>A more flexible class is <ref refid="classcocos2d_1_1_label_b_m_font" kindref="compound">LabelBMFont</ref>. It supports variable width characters and it also has a nice editor. </para>
-      <ref refid="classcocos2d_1_1_label_b_m_font" kindref="compound">LabelBMFont</ref>
+      <para>A more flexible class is <see cref="T:Cocos2D.CCLabelBMFont" />. It supports variable width characters and it also has a nice editor. </para>
+      <see cref="T:Cocos2D.CCLabelBMFont" />
       <item>
         <description>LabelAtlas is MUCH faster than Label</description>
       </item>
       <description>LabelAtlas is MUCH faster than Label</description>
+      <item>
+        <description>LabelAtlas "characters" have a fixed height and width</description>
+      </item>
+      <description>LabelAtlas "characters" have a fixed height and width</description>
+      <item>
+        <description>LabelAtlas "characters" can be anything you want since they are taken from an image file</description>
+      </item>
+      <description>LabelAtlas "characters" can be anything you want since they are taken from an image file</description>
     </remarks>
   </Docs>
   <Members>

@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>
         <list type="bullet" />
@@ -25,6 +25,14 @@
         <description>unselected image</description>
       </item>
       <description>unselected image</description>
+      <item>
+        <description>selected image</description>
+      </item>
+      <description>selected image</description>
+      <item>
+        <description>disabled image</description>
+      </item>
+      <description>disabled image</description>
     </remarks>
   </Docs>
   <Members>

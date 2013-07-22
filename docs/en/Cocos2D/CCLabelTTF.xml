@@ -15,7 +15,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>All features from TextureNode are valid in <see cref="T:Cocos2D.CCLabelTTF" /></para>
       <see cref="T:Cocos2D.CCLabelTTF" />

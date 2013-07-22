@@ -15,7 +15,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>
         <list type="bullet" />
@@ -31,6 +31,10 @@
         <description>Standard Touch Handlers</description>
       </item>
       <description>Standard Touch Handlers</description>
+      <item>
+        <description>Targeted Touch Handlers</description>
+      </item>
+      <description>Targeted Touch Handlers</description>
     </remarks>
   </Docs>
   <Members>

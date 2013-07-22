@@ -11,7 +11,7 @@
   </Base>
   <Interfaces></Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks />
   </Docs>
   <Members>
@@ -768,6 +768,10 @@
             <description>GL_TEXTURE_MIN_FILTER = GL_NEAREST</description>
           </item>
           <description>GL_TEXTURE_MIN_FILTER = GL_NEAREST</description>
+          <item>
+            <description>GL_TEXTURE_MAG_FILTER = GL_NEAREST</description>
+          </item>
+          <description>GL_TEXTURE_MAG_FILTER = GL_NEAREST</description>
         </remarks>
       </Docs>
     </Member>
@@ -804,6 +808,10 @@
             <description>GL_TEXTURE_MIN_FILTER = GL_LINEAR</description>
           </item>
           <description>GL_TEXTURE_MIN_FILTER = GL_LINEAR</description>
+          <item>
+            <description>GL_TEXTURE_MAG_FILTER = GL_LINEAR</description>
+          </item>
+          <description>GL_TEXTURE_MAG_FILTER = GL_LINEAR</description>
         </remarks>
       </Docs>
     </Member>

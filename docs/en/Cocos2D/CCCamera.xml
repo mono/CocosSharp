@@ -24,6 +24,14 @@
         <description>Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.</description>
       </item>
       <description>Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.</description>
+      <item>
+        <description>It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.</description>
+      </item>
+      <description>It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.</description>
+      <item>
+        <description>It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. </description>
+      </item>
+      <description>It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. </description>
     </remarks>
   </Docs>
   <Members>

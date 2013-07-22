@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>
         <list type="bullet" />
@@ -22,6 +22,10 @@
         <description>An action with a duration of 0 seconds</description>
       </item>
       <description>An action with a duration of 0 seconds</description>
+      <item>
+        <description>An action with a duration of 35.5 seconds</description>
+      </item>
+      <description>An action with a duration of 35.5 seconds</description>
     </remarks>
   </Docs>
   <Members>
@@ -65,7 +69,7 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <value>To be added.</value>
         <remarks />
       </Docs>

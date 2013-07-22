@@ -15,7 +15,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>It knows how to render a <see cref="T:Cocos2D.CCTextureAtlas" /> object. If you are going to render a <see cref="T:Cocos2D.CCTextureAtlas" /> consider subclassing <see cref="T:Cocos2D.CCAtlasNode" /> (or a subclass of <see cref="T:Cocos2D.CCAtlasNode" />)</para>
       <see cref="T:Cocos2D.CCTextureAtlas" />
@@ -131,6 +131,18 @@
             <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
           </item>
           <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
         </remarks>
       </Docs>
     </Member>

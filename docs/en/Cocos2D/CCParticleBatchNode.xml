@@ -27,12 +27,24 @@
       <see cref="T:Cocos2D.CCParticleBatchNode" />
       <para>Limitations:<list type="bullet" /></para>
       <list type="bullet" />
-      <para>Most efficient usage<itemizedlist /></para>
-      <itemizedlist />
+      <para>Most efficient usage<list type="bullet" /></para>
+      <list type="bullet" />
       <item>
         <description>At the moment only ParticleSystemQuad is supported</description>
       </item>
       <description>At the moment only ParticleSystemQuad is supported</description>
+      <item>
+        <description>All systems need to be drawn with the same parameters, blend function, aliasing, texture</description>
+      </item>
+      <description>All systems need to be drawn with the same parameters, blend function, aliasing, texture</description>
+      <item>
+        <description>Initialize the ParticleBatchNode with the texture and enough capacity for all the particle systems</description>
+      </item>
+      <description>Initialize the ParticleBatchNode with the texture and enough capacity for all the particle systems</description>
+      <item>
+        <description>Initialize all particle systems and add them as child to the batch node v1.1 </description>
+      </item>
+      <description>Initialize all particle systems and add them as child to the batch node v1.1 </description>
     </remarks>
   </Docs>
   <Members>
@@ -177,6 +189,18 @@
             <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
           </item>
           <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
         </remarks>
       </Docs>
     </Member>

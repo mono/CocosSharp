@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>
         <list type="bullet" />
@@ -21,6 +21,14 @@
         <description>BitmapFontAtlas</description>
       </item>
       <description>BitmapFontAtlas</description>
+      <item>
+        <description>LabelAtlas</description>
+      </item>
+      <description>LabelAtlas</description>
+      <item>
+        <description>LabelTTF</description>
+      </item>
+      <description>LabelTTF</description>
     </remarks>
   </Docs>
   <Members>

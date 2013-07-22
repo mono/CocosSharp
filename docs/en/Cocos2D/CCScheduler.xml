@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>There are 2 different types of callbacks (selectors):<list type="bullet" /></para>
       <list type="bullet" />
@@ -20,6 +20,10 @@
         <description>update selector: the 'update' selector will be called every frame. You can customize the priority.</description>
       </item>
       <description>update selector: the 'update' selector will be called every frame. You can customize the priority.</description>
+      <item>
+        <description>custom selector: A custom selector will be called every frame, or with a custom interval of time</description>
+      </item>
+      <description>custom selector: A custom selector will be called every frame, or with a custom interval of time</description>
     </remarks>
   </Docs>
   <Members>

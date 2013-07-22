@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>It is a subclass of <see cref="T:Cocos2D.CCSpriteBatchNode" />. By default the tiles are rendered using a <see cref="T:Cocos2D.CCTextureAtlas" />. If you modify a tile on runtime, then, that tile will become a <see cref="T:Cocos2D.CCSprite" />, otherwise no <see cref="T:Cocos2D.CCSprite" /> objects are created. The benefits of using <see cref="T:Cocos2D.CCSprite" /> objects as tiles are:<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCSpriteBatchNode" />
@@ -537,6 +537,10 @@
             <description>layer-&gt;removeChild(sprite, cleanup);</description>
           </item>
           <description>layer-&gt;removeChild(sprite, cleanup);</description>
+          <item>
+            <description>or layer-&gt;removeTileAt(Point(x,y)); </description>
+          </item>
+          <description>or layer-&gt;removeTileAt(Point(x,y)); </description>
         </remarks>
       </Docs>
     </Member>

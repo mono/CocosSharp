@@ -11,21 +11,53 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>The <see cref="T:Cocos2D.CCDirector" /> is also responsible for:<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCDirector" />
       <list type="bullet" />
-      <para>Since the <ref refid="classcocos2d_1_1_director" kindref="compound">Director</ref> is a singleton, the standard way to use it is by calling: _ <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>-&gt;methodName();</para>
-      <ref refid="classcocos2d_1_1_director" kindref="compound">Director</ref>
+      <para>Since the <see cref="T:Cocos2D.CCDirector" /> is a singleton, the standard way to use it is by calling: _ <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>-&gt;methodName();</para>
+      <see cref="T:Cocos2D.CCDirector" />
       <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>
-      <para>The <ref refid="classcocos2d_1_1_director" kindref="compound">Director</ref> also sets the default OpenGL context:<itemizedlist /></para>
-      <ref refid="classcocos2d_1_1_director" kindref="compound">Director</ref>
-      <itemizedlist />
+      <para>The <see cref="T:Cocos2D.CCDirector" /> also sets the default OpenGL context:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCDirector" />
+      <list type="bullet" />
       <item>
         <description>initializing the OpenGL context</description>
       </item>
       <description>initializing the OpenGL context</description>
+      <item>
+        <description>setting the OpenGL pixel format (default on is RGB565)</description>
+      </item>
+      <description>setting the OpenGL pixel format (default on is RGB565)</description>
+      <item>
+        <description>setting the OpenGL buffer depth (default one is 0-bit)</description>
+      </item>
+      <description>setting the OpenGL buffer depth (default one is 0-bit)</description>
+      <item>
+        <description>setting the projection (default one is 3D)</description>
+      </item>
+      <description>setting the projection (default one is 3D)</description>
+      <item>
+        <description>setting the orientation (default one is Portrait)</description>
+      </item>
+      <description>setting the orientation (default one is Portrait)</description>
+      <item>
+        <description>GL_TEXTURE_2D is enabled</description>
+      </item>
+      <description>GL_TEXTURE_2D is enabled</description>
+      <item>
+        <description>GL_VERTEX_ARRAY is enabled</description>
+      </item>
+      <description>GL_VERTEX_ARRAY is enabled</description>
+      <item>
+        <description>GL_COLOR_ARRAY is enabled</description>
+      </item>
+      <description>GL_COLOR_ARRAY is enabled</description>
+      <item>
+        <description>GL_TEXTURE_COORD_ARRAY is enabled </description>
+      </item>
+      <description>GL_TEXTURE_COORD_ARRAY is enabled </description>
     </remarks>
   </Docs>
   <Members>
@@ -1031,7 +1063,7 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <value>To be added.</value>
         <remarks />
       </Docs>

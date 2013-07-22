@@ -159,7 +159,7 @@
       </Parameters>
       <Docs>
         <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <returns>To be added.</returns>
         <remarks />
       </Docs>
@@ -310,7 +310,7 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <value>To be added.</value>
         <remarks />
       </Docs>
@@ -326,7 +326,7 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <value>To be added.</value>
         <remarks />
       </Docs>
@@ -342,7 +342,7 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <value>To be added.</value>
         <remarks />
       </Docs>
@@ -358,7 +358,7 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <value>To be added.</value>
         <remarks />
       </Docs>
@@ -390,7 +390,7 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <value>To be added.</value>
         <remarks />
       </Docs>

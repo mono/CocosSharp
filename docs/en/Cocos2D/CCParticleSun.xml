@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks />
   </Docs>
   <Members>
@@ -59,7 +59,7 @@
       </Parameters>
       <Docs>
         <param name="numberOfParticles">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <returns>To be added.</returns>
         <remarks />
       </Docs>

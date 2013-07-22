@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>Based on an original paper by L Hong et al. <ulink url="http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html">http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html</ulink></para>
       <ulink url="http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html">http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html</ulink>
@@ -77,6 +77,14 @@
             <description>0 means that the action just started</description>
           </item>
           <description>0 means that the action just started</description>
+          <item>
+            <description>0.5 means that the action is in the middle</description>
+          </item>
+          <description>0.5 means that the action is in the middle</description>
+          <item>
+            <description>1 means that the action is over </description>
+          </item>
+          <description>1 means that the action is over </description>
         </remarks>
       </Docs>
     </Member>

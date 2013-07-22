@@ -32,6 +32,10 @@
         <description>opacity</description>
       </item>
       <description>opacity</description>
+      <item>
+        <description>RGB colors</description>
+      </item>
+      <description>RGB colors</description>
     </remarks>
   </Docs>
   <Members>

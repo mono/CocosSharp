@@ -18,35 +18,163 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>The main features of a <see cref="T:Cocos2D.CCNode" /> are:<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCNode" />
       <list type="bullet" />
-      <para>Some <ref refid="classcocos2d_1_1_node" kindref="compound">Node</ref> nodes provide extra functionality for them or their children.</para>
-      <ref refid="classcocos2d_1_1_node" kindref="compound">Node</ref>
-      <para>Subclassing a <ref refid="classcocos2d_1_1_node" kindref="compound">Node</ref> usually means (one/all) of:<itemizedlist /></para>
-      <ref refid="classcocos2d_1_1_node" kindref="compound">Node</ref>
-      <itemizedlist />
-      <para>Features of <ref refid="classcocos2d_1_1_node" kindref="compound">Node</ref>:<itemizedlist /></para>
-      <ref refid="classcocos2d_1_1_node" kindref="compound">Node</ref>
-      <itemizedlist />
-      <para>Default values:<itemizedlist /></para>
-      <itemizedlist />
-      <para>Limitations:<itemizedlist /></para>
-      <itemizedlist />
-      <para>Order in transformations with grid disabled<orderedlist /></para>
-      <orderedlist />
-      <para>Order in transformations with grid enabled<orderedlist /></para>
-      <orderedlist />
+      <para>Some <see cref="T:Cocos2D.CCNode" /> nodes provide extra functionality for them or their children.</para>
+      <see cref="T:Cocos2D.CCNode" />
+      <para>Subclassing a <see cref="T:Cocos2D.CCNode" /> usually means (one/all) of:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCNode" />
+      <list type="bullet" />
+      <para>Features of <see cref="T:Cocos2D.CCNode" />:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCNode" />
+      <list type="bullet" />
+      <para>Default values:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>Order in transformations with grid disabled<list type="number" /></para>
+      <list type="number" />
+      <para>Order in transformations with grid enabled<list type="number" /></para>
+      <list type="number" />
       <para>
-        <ref refid="classcocos2d_1_1_camera" kindref="compound">Camera</ref>:<itemizedlist /></para>
-      <ref refid="classcocos2d_1_1_camera" kindref="compound">Camera</ref>
-      <itemizedlist />
+        <see cref="T:Cocos2D.CCCamera" />:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCCamera" />
+      <list type="bullet" />
       <item>
         <description>They can contain other Node nodes (addChild, getChildByTag, removeChild, etc)</description>
       </item>
       <description>They can contain other Node nodes (addChild, getChildByTag, removeChild, etc)</description>
+      <item>
+        <description>They can schedule periodic callback (schedule, unschedule, etc)</description>
+      </item>
+      <description>They can schedule periodic callback (schedule, unschedule, etc)</description>
+      <item>
+        <description>They can execute actions (runAction, stopAction, etc)</description>
+      </item>
+      <description>They can execute actions (runAction, stopAction, etc)</description>
+      <item>
+        <description>overriding init to initialize resources and schedule callbacks</description>
+      </item>
+      <description>overriding init to initialize resources and schedule callbacks</description>
+      <item>
+        <description>create callbacks to handle the advancement of time</description>
+      </item>
+      <description>create callbacks to handle the advancement of time</description>
+      <item>
+        <description>overriding draw to render the node</description>
+      </item>
+      <description>overriding draw to render the node</description>
+      <item>
+        <description>position</description>
+      </item>
+      <description>position</description>
+      <item>
+        <description>scale (x, y)</description>
+      </item>
+      <description>scale (x, y)</description>
+      <item>
+        <description>rotation (in degrees, clockwise)</description>
+      </item>
+      <description>rotation (in degrees, clockwise)</description>
+      <item>
+        <description>Camera (an interface to gluLookAt )</description>
+      </item>
+      <description>Camera (an interface to gluLookAt )</description>
+      <item>
+        <description>GridBase (to do mesh transformations)</description>
+      </item>
+      <description>GridBase (to do mesh transformations)</description>
+      <item>
+        <description>anchor point</description>
+      </item>
+      <description>anchor point</description>
+      <item>
+        <description>size</description>
+      </item>
+      <description>size</description>
+      <item>
+        <description>visible</description>
+      </item>
+      <description>visible</description>
+      <item>
+        <description>z-order</description>
+      </item>
+      <description>z-order</description>
+      <item>
+        <description>openGL z position</description>
+      </item>
+      <description>openGL z position</description>
+      <item>
+        <description>rotation: 0</description>
+      </item>
+      <description>rotation: 0</description>
+      <item>
+        <description>position: (x=0,y=0)</description>
+      </item>
+      <description>position: (x=0,y=0)</description>
+      <item>
+        <description>scale: (x=1,y=1)</description>
+      </item>
+      <description>scale: (x=1,y=1)</description>
+      <item>
+        <description>contentSize: (x=0,y=0)</description>
+      </item>
+      <description>contentSize: (x=0,y=0)</description>
+      <item>
+        <description>anchorPoint: (x=0,y=0)</description>
+      </item>
+      <description>anchorPoint: (x=0,y=0)</description>
+      <item>
+        <description>A Node is a "void" object. It doesn't have a texture</description>
+      </item>
+      <description>A Node is a "void" object. It doesn't have a texture</description>
+      <item>
+        <description>The node will be translated (position)</description>
+      </item>
+      <description>The node will be translated (position)</description>
+      <item>
+        <description>The node will be rotated (rotation)</description>
+      </item>
+      <description>The node will be rotated (rotation)</description>
+      <item>
+        <description>The node will be scaled (scale)</description>
+      </item>
+      <description>The node will be scaled (scale)</description>
+      <item>
+        <description>The node will be moved according to the camera values (camera)</description>
+      </item>
+      <description>The node will be moved according to the camera values (camera)</description>
+      <item>
+        <description>The node will be translated (position)</description>
+      </item>
+      <description>The node will be translated (position)</description>
+      <item>
+        <description>The node will be rotated (rotation)</description>
+      </item>
+      <description>The node will be rotated (rotation)</description>
+      <item>
+        <description>The node will be scaled (scale)</description>
+      </item>
+      <description>The node will be scaled (scale)</description>
+      <item>
+        <description>The grid will capture the screen</description>
+      </item>
+      <description>The grid will capture the screen</description>
+      <item>
+        <description>The node will be moved according to the camera values (camera)</description>
+      </item>
+      <description>The node will be moved according to the camera values (camera)</description>
+      <item>
+        <description>The grid will render the captured screen</description>
+      </item>
+      <description>The grid will render the captured screen</description>
+      <item>
+        <description>Each node has a camera. By default it points to the center of the Node. </description>
+      </item>
+      <description>Each node has a camera. By default it points to the center of the Node. </description>
     </remarks>
   </Docs>
   <Members>
@@ -1118,7 +1246,7 @@
       </Parameters>
       <Docs>
         <param name="nodePoint">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <returns>To be added.</returns>
         <remarks />
       </Docs>
@@ -1202,6 +1330,18 @@
             <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
           </item>
           <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
         </remarks>
       </Docs>
     </Member>

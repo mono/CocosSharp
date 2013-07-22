@@ -15,7 +15,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>
         <list type="bullet" />
@@ -29,6 +29,10 @@
         <description>When you want to run an action where the target is different from a Node.</description>
       </item>
       <description>When you want to run an action where the target is different from a Node.</description>
+      <item>
+        <description>When you want to pause / resume the actions</description>
+      </item>
+      <description>When you want to pause / resume the actions</description>
     </remarks>
   </Docs>
   <Members>
@@ -168,6 +172,10 @@
             <description>If you are running 1 Sequence of 7 actions, it will return 1.</description>
           </item>
           <description>If you are running 1 Sequence of 7 actions, it will return 1.</description>
+          <item>
+            <description>If you are running 7 Sequences of 2 actions, it will return 7. </description>
+          </item>
+          <description>If you are running 7 Sequences of 2 actions, it will return 7. </description>
         </remarks>
       </Docs>
     </Member>

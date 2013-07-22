@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>These <see cref="T:Cocos2D.CCActionInterval" /> actions have some interesting properties, like:<list type="bullet" /></para>
       <see cref="T:Cocos2D.CCActionInterval" />
@@ -19,13 +19,21 @@
       <para>For example, you can simulate a Ping Pong effect running the action normally and then running it again in Reverse mode.</para>
       <para>Example:</para>
       <para>
-        <ref refid="classcocos2d_1_1_action" kindref="compound">Action</ref> *pingPongAction = Sequence::actions(action, action-&gt;<ref refid="classcocos2d_1_1_action_1a614cac4a6cc61d97173539e3b43b61b3" kindref="member">reverse()</ref>, NULL); </para>
-      <ref refid="classcocos2d_1_1_action" kindref="compound">Action</ref>
+        <see cref="T:Cocos2D.CCAction" /> *pingPongAction = Sequence::actions(action, action-&gt;<ref refid="classcocos2d_1_1_action_1a614cac4a6cc61d97173539e3b43b61b3" kindref="member">reverse()</ref>, NULL); </para>
+      <see cref="T:Cocos2D.CCAction" />
       <ref refid="classcocos2d_1_1_action_1a614cac4a6cc61d97173539e3b43b61b3" kindref="member">reverse()</ref>
       <item>
         <description>They can run normally (default)</description>
       </item>
       <description>They can run normally (default)</description>
+      <item>
+        <description>They can run reversed with the reverse method</description>
+      </item>
+      <description>They can run reversed with the reverse method</description>
+      <item>
+        <description>They can run with the time altered with the Accelerate, AccelDeccel and Speed actions.</description>
+      </item>
+      <description>They can run with the time altered with the Accelerate, AccelDeccel and Speed actions.</description>
     </remarks>
   </Docs>
   <Members>
@@ -157,7 +165,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary />
         <value>To be added.</value>
         <remarks />
       </Docs>
@@ -224,7 +232,7 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <remarks />
       </Docs>
     </Member>
@@ -243,7 +251,7 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
-        <summary>To be added.</summary>
+        <summary />
         <remarks />
       </Docs>
     </Member>

@@ -15,21 +15,25 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>
         <list type="bullet" />
       </para>
       <list type="bullet" />
-      <para>You can modify the frame of a <ref refid="classcocos2d_1_1_sprite" kindref="compound">Sprite</ref> by doing:</para>
-      <ref refid="classcocos2d_1_1_sprite" kindref="compound">Sprite</ref>
+      <para>You can modify the frame of a <see cref="T:Cocos2D.CCSprite" /> by doing:</para>
+      <see cref="T:Cocos2D.CCSprite" />
       <para>
-        <ref refid="classcocos2d_1_1_sprite_frame" kindref="compound">SpriteFrame</ref> *frame = SpriteFrame::frameWithTexture(texture, rect, offset); sprite-&gt;setDisplayFrame(frame); </para>
-      <ref refid="classcocos2d_1_1_sprite_frame" kindref="compound">SpriteFrame</ref>
+        <see cref="T:Cocos2D.CCSpriteFrame" /> *frame = SpriteFrame::frameWithTexture(texture, rect, offset); sprite-&gt;setDisplayFrame(frame); </para>
+      <see cref="T:Cocos2D.CCSpriteFrame" />
       <item>
         <description>texture: A Texture2D that will be used by the Sprite</description>
       </item>
       <description>texture: A Texture2D that will be used by the Sprite</description>
+      <item>
+        <description>rectangle: A rectangle of the texture</description>
+      </item>
+      <description>rectangle: A rectangle of the texture</description>
     </remarks>
   </Docs>
   <Members>

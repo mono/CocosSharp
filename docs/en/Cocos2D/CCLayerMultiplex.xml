@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks>
       <para>
         <list type="bullet" />
@@ -21,6 +21,10 @@
         <description>It supports one or more children</description>
       </item>
       <description>It supports one or more children</description>
+      <item>
+        <description>Only one children will be active a time </description>
+      </item>
+      <description>Only one children will be active a time </description>
     </remarks>
   </Docs>
   <Members>

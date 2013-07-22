@@ -11,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary />
     <remarks />
   </Docs>
   <Members>
@@ -274,6 +274,14 @@
             <description>0 means that the action just started</description>
           </item>
           <description>0 means that the action just started</description>
+          <item>
+            <description>0.5 means that the action is in the middle</description>
+          </item>
+          <description>0.5 means that the action is in the middle</description>
+          <item>
+            <description>1 means that the action is over </description>
+          </item>
+          <description>1 means that the action is over </description>
         </remarks>
       </Docs>
     </Member>
