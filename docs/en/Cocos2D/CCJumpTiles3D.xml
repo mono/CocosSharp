@@ -11,9 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCJumpTiles3D" /&gt; action. A sin function is executed to move the tiles across the Z axis. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCJumpTiles3D" /&gt;</summary>
-    <remarks></remarks>
+    <summary>
+      <para> action. A sin function is executed to move the tiles across the Z axis. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,7 +27,7 @@
       <Parameters />
       <Docs>
         <summary>creates the action with the number of jumps, the sin amplitude, the grid size and the duration </summary>
-        <remarks>creates the action with the number of jumps, the sin amplitude, the grid size and the duration </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -64,7 +65,7 @@
       <Docs>
         <summary>amplitude of the sin </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AmplitudeRate">
@@ -80,7 +81,7 @@
       <Docs>
         <summary>amplitude rate </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -100,7 +101,7 @@
         <param name="pZone">To be added.</param>
         <summary>returns a new clone of the action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new clone of the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -126,7 +127,7 @@
         <param name="amplitude">To be added.</param>
         <summary>initializes the action with the number of jumps, the sin amplitude, the grid size and the duration </summary>
         <returns>To be added.</returns>
-        <remarks>initializes the action with the number of jumps, the sin amplitude, the grid size and the duration </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_fAmplitude">
@@ -190,17 +191,23 @@
       <Docs>
         <param name="time">To be added.</param>
         <summary>called once per frame. time a value between 0 and 1</summary>
-        <remarks>&lt;para&gt;called once per frame. time a value between 0 and 1&lt;/para&gt;&lt;para&gt;For example:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;0 means that the action just started&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;1 means that the action is over &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;0 means that the action just started&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;1 means that the action is over &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;0 means that the action just started&lt;/para&gt;&lt;para&gt;0.5 means that the action is in the middle&lt;/para&gt;&lt;para&gt;1 means that the action is over &lt;/para&gt;</remarks>
+        <remarks>
+          <para>called once per frame. time a value between 0 and 1</para>
+          <para>For example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>0 means that the action just started</description>
+          </item>
+          <description>0 means that the action just started</description>
+          <item>
+            <description>0.5 means that the action is in the middle</description>
+          </item>
+          <description>0.5 means that the action is in the middle</description>
+          <item>
+            <description>1 means that the action is over </description>
+          </item>
+          <description>1 means that the action is over </description>
+        </remarks>
       </Docs>
     </Member>
   </Members>

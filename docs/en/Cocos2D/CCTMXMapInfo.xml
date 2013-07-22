@@ -15,41 +15,42 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCTMXMapInfo" /&gt; contains the information about the map like: &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXMapInfo" /&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;list type="bullet"&gt;
-    &lt;item&gt;
-      &lt;description&gt;Map orientation (hexagonal, isometric or orthogonal)&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;Tile size&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;Map size&lt;/description&gt;
-    &lt;/item&gt;
-  &lt;/list&gt;
-&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;Map orientation (hexagonal, isometric or orthogonal)&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Tile size&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Map size&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;Map orientation (hexagonal, isometric or orthogonal)&lt;/para&gt;&lt;para&gt;Tile size&lt;/para&gt;&lt;para&gt;Map size&lt;/para&gt;&lt;para&gt;And it also contains:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;Layers (an array of TMXLayerInfo objects)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Tilesets (an array of TMXTilesetInfo objects)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;ObjectGroups (an array of TMXObjectGroupInfo objects)&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;Layers (an array of TMXLayerInfo objects)&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Tilesets (an array of TMXTilesetInfo objects)&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;ObjectGroups (an array of TMXObjectGroupInfo objects)&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;Layers (an array of &lt;see cref="T:Cocos2D.CCTMXLayerInfo" /&gt; objects)&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXLayerInfo" /&gt;&lt;para&gt;Tilesets (an array of &lt;see cref="T:Cocos2D.CCTMXTilesetInfo" /&gt; objects)&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXTilesetInfo" /&gt;&lt;para&gt;ObjectGroups (an array of TMXObjectGroupInfo objects)&lt;/para&gt;&lt;para&gt;This information is obtained from the TMX file. &lt;/para&gt;</remarks>
+    <summary>
+      <para> contains the information about the map like: </para>
+    </summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>And it also contains:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>This information is obtained from the TMX file. </para>
+      <item>
+        <description>Map orientation (hexagonal, isometric or orthogonal)</description>
+      </item>
+      <description>Map orientation (hexagonal, isometric or orthogonal)</description>
+      <item>
+        <description>Tile size</description>
+      </item>
+      <description>Tile size</description>
+      <item>
+        <description>Map size</description>
+      </item>
+      <description>Map size</description>
+      <item>
+        <description>Layers (an array of TMXLayerInfo objects)</description>
+      </item>
+      <description>Layers (an array of TMXLayerInfo objects)</description>
+      <item>
+        <description>Tilesets (an array of TMXTilesetInfo objects)</description>
+      </item>
+      <description>Tilesets (an array of TMXTilesetInfo objects)</description>
+      <item>
+        <description>ObjectGroups (an array of TMXObjectGroupInfo objects)</description>
+      </item>
+      <description>ObjectGroups (an array of TMXObjectGroupInfo objects)</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -81,7 +82,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EndElement">
@@ -102,7 +103,7 @@
         <param name="ctx">To be added.</param>
         <param name="elementName">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTmxFile">
@@ -176,7 +177,7 @@
       <Docs>
         <summary>setLayers </summary>
         <value>To be added.</value>
-        <remarks>setLayers </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_bStoringCharacters">
@@ -417,7 +418,7 @@
       <Docs>
         <summary>set# MapSize </summary>
         <value>To be added.</value>
-        <remarks>set# MapSize </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ObjectGroups">
@@ -433,7 +434,7 @@
       <Docs>
         <summary>setObjectGroups </summary>
         <value>To be added.</value>
-        <remarks>setObjectGroups </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Orientation">
@@ -537,7 +538,7 @@
       <Docs>
         <summary>setProperties </summary>
         <value>To be added.</value>
-        <remarks>setProperties </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartElement">
@@ -560,7 +561,7 @@
         <param name="name">To be added.</param>
         <param name="atts">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="StoringCharacters">
@@ -599,7 +600,7 @@
         <param name="ch">To be added.</param>
         <param name="len">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TileProperties">
@@ -615,7 +616,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Tilesets">
@@ -631,7 +632,7 @@
       <Docs>
         <summary>setTilesets </summary>
         <value>To be added.</value>
-        <remarks>setTilesets </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TileSize">
@@ -647,7 +648,7 @@
       <Docs>
         <summary>set# TileSize </summary>
         <value>To be added.</value>
-        <remarks>set# TileSize </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TMXFileName">
@@ -663,7 +664,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

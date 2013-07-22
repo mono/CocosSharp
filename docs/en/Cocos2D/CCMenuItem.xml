@@ -11,9 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCMenuItem" /&gt; base class. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItem" /&gt;</summary>
-    <remarks>&lt;para&gt;Subclass &lt;see cref="T:Cocos2D.CCMenuItem" /&gt; (or any subclass) to create your custom &lt;see cref="T:Cocos2D.CCMenuItem" /&gt; objects. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItem" /&gt;&lt;see cref="T:Cocos2D.CCMenuItem" /&gt;</remarks>
+    <summary>
+      <para> base class. </para>
+    </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,7 +27,7 @@
       <Parameters />
       <Docs>
         <summary>Creates a  with a target/selector </summary>
-        <remarks>&lt;para&gt;Creates a &lt;see cref="T:Cocos2D.CCMenuItem" /&gt; with a target/selector &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItem" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -103,7 +104,7 @@
       <Parameters />
       <Docs>
         <summary>Activate the item </summary>
-        <remarks>Activate the item </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Enabled">
@@ -119,7 +120,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTarget">
@@ -139,7 +140,7 @@
         <param name="selector">To be added.</param>
         <summary>Initializes a  with a target/selector </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Initializes a &lt;see cref="T:Cocos2D.CCMenuItem" /&gt; with a target/selector &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItem" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsSelected">
@@ -155,7 +156,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="kCurrentItem">
@@ -298,7 +299,7 @@
       <Parameters />
       <Docs>
         <summary>The item was selected (not activated), similar to "mouse-over" </summary>
-        <remarks>The item was selected (not activated), similar to "mouse-over" </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetTarget">
@@ -317,7 +318,7 @@
       <Docs>
         <param name="selector">To be added.</param>
         <summary>set the target/selector of the menu item </summary>
-        <remarks>set the target/selector of the menu item </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Unselected">
@@ -333,7 +334,7 @@
       <Parameters />
       <Docs>
         <summary>The item was unselected </summary>
-        <remarks>The item was unselected </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

@@ -11,10 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;Repeats an action for ever. To repeat the an action for a limited number of times use the &lt;see cref="T:Cocos2D.CCRepeat" /&gt; action. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCRepeat" /&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;para&gt;This action can't be Sequenceable because it is not an IntervalAction &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;This action can't be Sequenceable because it is not an IntervalAction &lt;/para&gt;&lt;para&gt;This action can't be Sequenceable because it is not an IntervalAction &lt;/para&gt;</remarks>
+    <summary>
+      <para>Repeats an action for ever. To repeat the an action for a limited number of times use the  action. </para>
+    </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,7 +30,7 @@
       <Docs>
         <param name="action">To be added.</param>
         <summary>creates the action </summary>
-        <remarks>creates the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -66,7 +66,7 @@
         <param name="zone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithAction">
@@ -86,7 +86,7 @@
         <param name="action">To be added.</param>
         <summary>initializes the action </summary>
         <returns>To be added.</returns>
-        <remarks>initializes the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InnerAction">
@@ -102,7 +102,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsDone">
@@ -116,9 +116,11 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>return true if the action has finished </summary>
+        <summary>
+          <para>return true if the action has finished </para>
+        </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="m_pInnerAction">
@@ -150,7 +152,7 @@
       <Docs>
         <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new action that performs the exactly the reverse action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -168,8 +170,10 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Step">
@@ -187,8 +191,10 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
-        <summary>called every frame with it's delta time. DON'T override unless you know what you are doing. </summary>
-        <remarks></remarks>
+        <summary>
+          <para>called every frame with it's delta time. DON'T override unless you know what you are doing. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

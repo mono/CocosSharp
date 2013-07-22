@@ -12,17 +12,27 @@
   <Interfaces />
   <Docs>
     <summary>A  is used in every . Useful to look at the object from different views. The OpenGL gluLookAt() function is used to locate the camera.</summary>
-    <remarks>&lt;para&gt;A &lt;see cref="T:Cocos2D.CCCamera" /&gt; is used in every &lt;see cref="T:Cocos2D.CCNode" /&gt;. Useful to look at the object from different views. The OpenGL gluLookAt() function is used to locate the camera.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCCamera" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;If the object is transformed by any of the scale, rotation or position attributes, then they will override the camera.&lt;/para&gt;&lt;para&gt;IMPORTANT: Either your use the camera or the rotation/scale/position properties. You can't use both. World coordinates won't work if you use the camera.&lt;/para&gt;&lt;para&gt;Limitations:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;Some nodes, like &lt;see cref="T:Cocos2D.CCParallaxNode" /&gt;, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParallaxNode" /&gt;&lt;para&gt;It doesn't work on batched nodes like &lt;see cref="T:Cocos2D.CCSprite" /&gt; objects when they are parented to a &lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt; object.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;see cref="T:Cocos2D.CCSpriteBatchNode" /&gt;&lt;para&gt;It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action &lt;see cref="T:Cocos2D.CCFollow" /&gt; or position/scale/rotate. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCFollow" /&gt;</remarks>
+    <remarks>
+      <para>A <see cref="T:Cocos2D.CCCamera" /> is used in every <see cref="T:Cocos2D.CCNode" />. Useful to look at the object from different views. The OpenGL gluLookAt() function is used to locate the camera.</para>
+      <see cref="T:Cocos2D.CCCamera" />
+      <see cref="T:Cocos2D.CCNode" />
+      <para>If the object is transformed by any of the scale, rotation or position attributes, then they will override the camera.</para>
+      <para>IMPORTANT: Either your use the camera or the rotation/scale/position properties. You can't use both. World coordinates won't work if you use the camera.</para>
+      <para>Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
+      <item>
+        <description>Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.</description>
+      </item>
+      <description>Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.</description>
+      <item>
+        <description>It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.</description>
+      </item>
+      <description>It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.</description>
+      <item>
+        <description>It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. </description>
+      </item>
+      <description>It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. </description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -51,7 +61,7 @@
       <Docs>
         <summary>sets the dirty value </summary>
         <value>To be added.</value>
-        <remarks>sets the dirty value </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="GetCenterXyz">
@@ -137,7 +147,7 @@
       <Docs>
         <summary>returns the Z eye </summary>
         <returns>To be added.</returns>
-        <remarks>returns the Z eye </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -153,7 +163,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Locate">
@@ -169,7 +179,7 @@
       <Parameters />
       <Docs>
         <summary>Sets the camera using gluLookAt using its eye, center and up_vector </summary>
-        <remarks>Sets the camera using gluLookAt using its eye, center and up_vector </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_bDirty">
@@ -335,7 +345,7 @@
       <Parameters />
       <Docs>
         <summary>sets the camera in the default position </summary>
-        <remarks>sets the camera in the default position </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetCenterXyz">

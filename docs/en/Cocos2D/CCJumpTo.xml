@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;Moves a &lt;see cref="T:Cocos2D.CCNode" /&gt; object to a parabolic position simulating a jump movement by modifying it's position attribute. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</summary>
-    <remarks></remarks>
+    <summary>
+      <para>Moves a  object to a parabolic position simulating a jump movement by modifying it's position attribute. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +30,7 @@
       <Docs>
         <param name="jumpTo">To be added.</param>
         <summary>creates the action </summary>
-        <remarks>creates the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -70,7 +72,7 @@
         <param name="zone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -88,8 +90,10 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -15,8 +15,10 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>Singleton that handles the loading of textures Once the texture is loaded, the next time it will return a reference of the previously loaded texture reducing GPU &amp; CPU memory. </summary>
-    <remarks></remarks>
+    <summary>
+      <para>Singleton that handles the loading of textures Once the texture is loaded, the next time it will return a reference of the previously loaded texture reducing GPU &amp; CPU memory. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -49,7 +51,7 @@
         <param name="fileimage">To be added.</param>
         <summary>Returns a  object given an file image If the file image was not previously loaded, it will create a new  object and it will return it. It will use the filename as a key. Otherwise it will return a reference of a previously loaded image. Supported image extensions: .png, .bmp, .tiff, .jpeg, .pvr, .gif </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Returns a &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object given an file image If the file image was not previously loaded, it will create a new &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object and it will return it. It will use the filename as a key. Otherwise it will return a reference of a previously loaded image. Supported image extensions: .png, .bmp, .tiff, .jpeg, .pvr, .gif &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AddImage">
@@ -251,9 +253,14 @@
       <Parameters />
       <Docs>
         <summary>Output to CCLOG the current contents of this  This will attempt to calculate the size of each texture, and the total texture memory in use</summary>
-        <remarks>&lt;para&gt;Output to CCLOG the current contents of this &lt;see cref="T:Cocos2D.CCTextureCache" /&gt; This will attempt to calculate the size of each texture, and the total texture memory in use&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTextureCache" /&gt;&lt;para&gt;
-  &lt;para&gt;v1.0 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v1.0 &lt;/para&gt;&lt;para&gt;v1.0 &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Output to CCLOG the current contents of this <see cref="T:Cocos2D.CCTextureCache" /> This will attempt to calculate the size of each texture, and the total texture memory in use</para>
+          <see cref="T:Cocos2D.CCTextureCache" />
+          <para>
+            <para>v1.0 </para>
+          </para>
+          <para>v1.0 </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -300,7 +307,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveAllTextures">
@@ -316,7 +323,7 @@
       <Parameters />
       <Docs>
         <summary>Purges the dictionary of loaded textures. Call this method if you receive the "Memory Warning" In the short term: it will free some resources preventing your app from being killed In the medium term: it will allocate more resources In the long term: it will be the same </summary>
-        <remarks>Purges the dictionary of loaded textures. Call this method if you receive the "Memory Warning" In the short term: it will free some resources preventing your app from being killed In the medium term: it will allocate more resources In the long term: it will be the same </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveTexture">
@@ -335,7 +342,7 @@
       <Docs>
         <param name="texture">To be added.</param>
         <summary>Deletes a texture from the cache given a texture </summary>
-        <remarks>Deletes a texture from the cache given a texture </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveTextureForKey">
@@ -355,12 +362,7 @@
         <param name="textureKeyName">To be added.</param>
         <summary>Deletes a texture from the cache given a its key name
 v0.99.4 </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Deletes a texture from the cache given a its key name
-&lt;/verbatim&gt;
-  &lt;para&gt;v0.99.4 &lt;/para&gt;
-&lt;/para&gt;&lt;verbatim&gt;Deletes a texture from the cache given a its key name
-&lt;/verbatim&gt;&lt;para&gt;v0.99.4 &lt;/para&gt;&lt;para&gt;v0.99.4 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveUnusedTextures">
@@ -376,7 +378,7 @@ v0.99.4 </summary>
       <Parameters />
       <Docs>
         <summary>Removes unused textures Textures that have a retain count of 1 will be deleted It is convenient to call this method after when starting a new v0.8 </summary>
-        <remarks>&lt;para&gt;Removes unused textures Textures that have a retain count of 1 will be deleted It is convenient to call this method after when starting a new &lt;see cref="T:Cocos2D.CCScene" /&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCScene" /&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SharedTextureCache">
@@ -392,7 +394,7 @@ v0.99.4 </summary>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TextureForKey">
@@ -413,12 +415,7 @@ v0.99.4 </summary>
         <summary>Returns an already created texture. Returns nil if the texture doesn't exist.
 v0.99.5 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Returns an already created texture. Returns nil if the texture doesn't exist.
-&lt;/verbatim&gt;
-  &lt;para&gt;v0.99.5 &lt;/para&gt;
-&lt;/para&gt;&lt;verbatim&gt;Returns an already created texture. Returns nil if the texture doesn't exist.
-&lt;/verbatim&gt;&lt;para&gt;v0.99.5 &lt;/para&gt;&lt;para&gt;v0.99.5 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UnloadContent">

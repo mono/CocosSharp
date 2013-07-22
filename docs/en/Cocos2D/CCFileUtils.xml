@@ -11,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Helper class to handle file operations. </summary>
-    <remarks></remarks>
+    <summary>
+      <para>Helper class to handle file operations. </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -109,46 +111,7 @@
         <param name="pszRelativeFile">The path of the relative file. </param>
         <summary>Gets full path from a file name and the path of the reletive file. The full path. e.g. pszFilename: hello.png, pszRelativeFile: /User/path1/path2/hello.plist Return: /User/path1/path2/hello.pvr (If there a a key(hello.png)-value(hello.pvr) in FilenameLookup dictionary. ) </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Gets full path from a file name and the path of the reletive file. &lt;para&gt;The full path. e.g. pszFilename: hello.png, pszRelativeFile: /User/path1/path2/hello.plist Return: /User/path1/path2/hello.pvr (If there a a key(hello.png)-value(hello.pvr) in FilenameLookup dictionary. ) &lt;/para&gt;&lt;/para&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;pszFilename&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;The file name. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;pszRelativeFile&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;The path of the relative file. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;pszFilename&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;The file name. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;pszFilename&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;pszFilename&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;The file name. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;The file name. &lt;/para&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;pszRelativeFile&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;The path of the relative file. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;pszRelativeFile&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;pszRelativeFile&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;The path of the relative file. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;The path of the relative file. &lt;/para&gt;&lt;para&gt;The full path. e.g. pszFilename: hello.png, pszRelativeFile: /User/path1/path2/hello.plist Return: /User/path1/path2/hello.pvr (If there a a key(hello.png)-value(hello.pvr) in FilenameLookup dictionary. ) &lt;/para&gt;&lt;para&gt;The full path. e.g. pszFilename: hello.png, pszRelativeFile: /User/path1/path2/hello.plist Return: /User/path1/path2/hello.pvr (If there a a key(hello.png)-value(hello.pvr) in FilenameLookup dictionary. ) &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="FullPathFromRelativePath">
@@ -208,68 +171,15 @@
         <param name="pszFileName">The resource file name which contains the path. </param>
         <summary>Gets resource file data</summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Gets resource file data&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;Upon success, a pointer to the data is returned, otherwise NULL. &lt;/para&gt;
-  &lt;para&gt;Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. &lt;/para&gt;
-&lt;/para&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername direction="in"&gt;pszFileName&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;The resource file name which contains the path. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername direction="in"&gt;pszMode&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;The read mode of the file. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername direction="out"&gt;pSize&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;If the file read operation succeeds, it will be the data size, otherwise 0. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername direction="in"&gt;pszFileName&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;The resource file name which contains the path. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername direction="in"&gt;pszFileName&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername direction="in"&gt;pszFileName&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;The resource file name which contains the path. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;The resource file name which contains the path. &lt;/para&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername direction="in"&gt;pszMode&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;The read mode of the file. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername direction="in"&gt;pszMode&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername direction="in"&gt;pszMode&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;The read mode of the file. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;The read mode of the file. &lt;/para&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername direction="out"&gt;pSize&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;If the file read operation succeeds, it will be the data size, otherwise 0. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername direction="out"&gt;pSize&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername direction="out"&gt;pSize&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;If the file read operation succeeds, it will be the data size, otherwise 0. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;If the file read operation succeeds, it will be the data size, otherwise 0. &lt;/para&gt;&lt;para&gt;Upon success, a pointer to the data is returned, otherwise NULL. &lt;/para&gt;&lt;para&gt;Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. &lt;/para&gt;&lt;para&gt;Upon success, a pointer to the data is returned, otherwise NULL. &lt;/para&gt;&lt;para&gt;Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Gets resource file data</para>
+          <para>
+            <para>Upon success, a pointer to the data is returned, otherwise NULL. </para>
+            <para>Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. </para>
+          </para>
+          <para>Upon success, a pointer to the data is returned, otherwise NULL. </para>
+          <para>Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetFileDataFromZip">
@@ -293,49 +203,15 @@
         <param name="pSize">To be added.</param>
         <summary>Gets resource file data from a zip file.</summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Gets resource file data from a zip file.&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;Upon success, a pointer to the data is returned, otherwise NULL. &lt;/para&gt;
-  &lt;para&gt;Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. &lt;/para&gt;
-&lt;/para&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername direction="in"&gt;pszFileName&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;The resource file name which contains the relative path of the zip file. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername direction="out"&gt;pSize&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;If the file read operation succeeds, it will be the data size, otherwise 0. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername direction="in"&gt;pszFileName&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;The resource file name which contains the relative path of the zip file. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername direction="in"&gt;pszFileName&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername direction="in"&gt;pszFileName&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;The resource file name which contains the relative path of the zip file. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;The resource file name which contains the relative path of the zip file. &lt;/para&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername direction="out"&gt;pSize&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;If the file read operation succeeds, it will be the data size, otherwise 0. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername direction="out"&gt;pSize&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername direction="out"&gt;pSize&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;If the file read operation succeeds, it will be the data size, otherwise 0. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;If the file read operation succeeds, it will be the data size, otherwise 0. &lt;/para&gt;&lt;para&gt;Upon success, a pointer to the data is returned, otherwise NULL. &lt;/para&gt;&lt;para&gt;Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. &lt;/para&gt;&lt;para&gt;Upon success, a pointer to the data is returned, otherwise NULL. &lt;/para&gt;&lt;para&gt;Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Gets resource file data from a zip file.</para>
+          <para>
+            <para>Upon success, a pointer to the data is returned, otherwise NULL. </para>
+            <para>Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. </para>
+          </para>
+          <para>Upon success, a pointer to the data is returned, otherwise NULL. </para>
+          <para>Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetFileStream">
@@ -388,7 +264,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveExtension">

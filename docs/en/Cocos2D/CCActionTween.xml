@@ -13,14 +13,28 @@
   <Docs>
     <summary>ActionTween
 </summary>
-    <remarks>&lt;para&gt;
-  &lt;verbatim&gt;ActionTween
-&lt;/verbatim&gt;
-&lt;/para&gt;&lt;verbatim&gt;ActionTween
-&lt;/verbatim&gt;&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCActionTween" /&gt; is an action that lets you update any property of an object. For example, if you want to modify the "width" property of a target from 200 to 300 in 2 seconds, then:&lt;/para&gt;&lt;see cref="T:Cocos2D.CCActionTween" /&gt;&lt;para&gt;id modifyWidth = [&lt;see cref="T:Cocos2D.CCActionTween" /&gt; actionWithDuration:2 key:"width" from:200 to:300]; [target runAction:modifyWidth];&lt;/para&gt;&lt;see cref="T:Cocos2D.CCActionTween" /&gt;&lt;para&gt;Another example: &lt;see cref="T:Cocos2D.CCScaleTo" /&gt; action could be rewritten using PropertyAction:&lt;/para&gt;&lt;see cref="T:Cocos2D.CCScaleTo" /&gt;&lt;para&gt;scaleA and scaleB are equivalents id scaleA = [&lt;see cref="T:Cocos2D.CCScaleTo" /&gt; actionWithDuration:2 scale:3]; id scaleB = [&lt;see cref="T:Cocos2D.CCActionTween" /&gt; actionWithDuration:2 key:"scale" from:1 to:3];&lt;/para&gt;&lt;see cref="T:Cocos2D.CCScaleTo" /&gt;&lt;see cref="T:Cocos2D.CCActionTween" /&gt;&lt;para&gt;
-  &lt;para&gt;v0.99.2 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.99.2 &lt;/para&gt;&lt;para&gt;v0.99.2 &lt;/para&gt;</remarks>
+    <remarks>
+      <para>
+        <verbatim>ActionTween
+</verbatim>
+      </para>
+      <verbatim>ActionTween
+</verbatim>
+      <para>
+        <see cref="T:Cocos2D.CCActionTween" /> is an action that lets you update any property of an object. For example, if you want to modify the "width" property of a target from 200 to 300 in 2 seconds, then:</para>
+      <see cref="T:Cocos2D.CCActionTween" />
+      <para>id modifyWidth = [<see cref="T:Cocos2D.CCActionTween" /> actionWithDuration:2 key:"width" from:200 to:300]; [target runAction:modifyWidth];</para>
+      <see cref="T:Cocos2D.CCActionTween" />
+      <para>Another example: <see cref="T:Cocos2D.CCScaleTo" /> action could be rewritten using PropertyAction:</para>
+      <see cref="T:Cocos2D.CCScaleTo" />
+      <para>scaleA and scaleB are equivalents id scaleA = [<see cref="T:Cocos2D.CCScaleTo" /> actionWithDuration:2 scale:3]; id scaleB = [<see cref="T:Cocos2D.CCActionTween" /> actionWithDuration:2 key:"scale" from:1 to:3];</para>
+      <see cref="T:Cocos2D.CCScaleTo" />
+      <see cref="T:Cocos2D.CCActionTween" />
+      <para>
+        <para>v0.99.2 </para>
+      </para>
+      <para>v0.99.2 </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -42,7 +56,7 @@
         <param name="from">To be added.</param>
         <param name="to">To be added.</param>
         <summary>creates an initializes the action with the property name (key), and the from and to parameters. </summary>
-        <remarks>creates an initializes the action with the property name (key), and the from and to parameters. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -68,7 +82,7 @@
         <param name="to">To be added.</param>
         <summary>initializes the action with the property name (key), and the from and to parameters. </summary>
         <returns>To be added.</returns>
-        <remarks>initializes the action with the property name (key), and the from and to parameters. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_fDelta">
@@ -145,7 +159,7 @@
       <Docs>
         <summary>returns a new reversed action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new reversed action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -163,8 +177,10 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -183,17 +199,23 @@
       <Docs>
         <param name="dt">To be added.</param>
         <summary>called once per frame. time a value between 0 and 1</summary>
-        <remarks>&lt;para&gt;called once per frame. time a value between 0 and 1&lt;/para&gt;&lt;para&gt;For example:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;0 means that the action just started&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;1 means that the action is over &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;0 means that the action just started&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;1 means that the action is over &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;0 means that the action just started&lt;/para&gt;&lt;para&gt;0.5 means that the action is in the middle&lt;/para&gt;&lt;para&gt;1 means that the action is over &lt;/para&gt;</remarks>
+        <remarks>
+          <para>called once per frame. time a value between 0 and 1</para>
+          <para>For example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>0 means that the action just started</description>
+          </item>
+          <description>0 means that the action just started</description>
+          <item>
+            <description>0.5 means that the action is in the middle</description>
+          </item>
+          <description>0.5 means that the action is in the middle</description>
+          <item>
+            <description>1 means that the action is over </description>
+          </item>
+          <description>1 means that the action is over </description>
+        </remarks>
       </Docs>
     </Member>
   </Members>

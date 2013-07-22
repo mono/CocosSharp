@@ -11,33 +11,31 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCMenuItemSprite" /&gt; accepts Node&amp;lt;RGBAProtocol&amp;gt; objects as items. The images has 3 different states: &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItemSprite" /&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;list type="bullet"&gt;
-    &lt;item&gt;
-      &lt;description&gt;unselected image&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;selected image&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;disabled image&lt;/description&gt;
-    &lt;/item&gt;
-  &lt;/list&gt;
-&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;unselected image&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;selected image&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;disabled image&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;unselected image&lt;/para&gt;&lt;para&gt;selected image&lt;/para&gt;&lt;para&gt;disabled image&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;v0.8.0 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.8.0 &lt;/para&gt;&lt;para&gt;v0.8.0 &lt;/para&gt;</remarks>
+    <summary>
+      <para> accepts Node(RGBAProtocol) objects as items. The images has 3 different states: </para>
+    </summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>
+        <para>v0.8.0 </para>
+      </para>
+      <para>v0.8.0 </para>
+      <item>
+        <description>unselected image</description>
+      </item>
+      <description>unselected image</description>
+      <item>
+        <description>selected image</description>
+      </item>
+      <description>selected image</description>
+      <item>
+        <description>disabled image</description>
+      </item>
+      <description>disabled image</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -50,7 +48,7 @@
       <Parameters />
       <Docs>
         <summary>creates a menu item with a normal,selected and disabled image with target/selector </summary>
-        <remarks>creates a menu item with a normal,selected and disabled image with target/selector </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -162,7 +160,7 @@
       <Docs>
         <summary>setDisabledImage </summary>
         <value>To be added.</value>
-        <remarks>setDisabledImage </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Enabled">
@@ -178,7 +176,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="NormalImage">
@@ -194,7 +192,7 @@
       <Docs>
         <summary>setNormalImage </summary>
         <value>To be added.</value>
-        <remarks>setNormalImage </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Selected">
@@ -210,9 +208,7 @@
       <Parameters />
       <Docs>
         <summary>v0.99.5 </summary>
-        <remarks>&lt;para&gt;
-  &lt;para&gt;v0.99.5 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.99.5 &lt;/para&gt;&lt;para&gt;v0.99.5 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SelectedImage">
@@ -228,7 +224,7 @@
       <Docs>
         <summary>setSelectedImage </summary>
         <value>To be added.</value>
-        <remarks>setSelectedImage </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Unselected">
@@ -244,7 +240,7 @@
       <Parameters />
       <Docs>
         <summary>The item was unselected </summary>
-        <remarks>The item was unselected </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

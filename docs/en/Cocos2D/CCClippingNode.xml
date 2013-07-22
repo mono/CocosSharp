@@ -12,8 +12,7 @@
   <Interfaces />
   <Docs>
     <summary> is a subclass of . It draws its content (childs) clipped using a stencil. The stencil is an other  that will not be drawn. The clipping is done using the alpha part of the stencil (adjusted with an alphaThreshold). </summary>
-    <remarks>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCClippingNode" /&gt; is a subclass of &lt;see cref="T:Cocos2D.CCNode" /&gt;. It draws its content (childs) clipped using a stencil. The stencil is an other &lt;see cref="T:Cocos2D.CCNode" /&gt; that will not be drawn. The clipping is done using the alpha part of the stencil (adjusted with an alphaThreshold). &lt;/para&gt;&lt;see cref="T:Cocos2D.CCClippingNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>Creates and initializes a clipping node with an other node as its stencil. The stencil node will be retained. </summary>
-        <remarks>Creates and initializes a clipping node with an other node as its stencil. The stencil node will be retained. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -58,7 +57,7 @@
       <Docs>
         <summary>The alpha threshold. The content is drawn only where the stencil have pixel with alpha greater than the alphaThreshold. Should be a float between 0 and 1. This default to 1 (so alpha test is disabled). </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -75,7 +74,7 @@
       <Docs>
         <summary>Initializes a clipping node with an other node as its stencil. The stencil node will be retained, and its parent will be set to this clipping node. </summary>
         <returns>To be added.</returns>
-        <remarks>Initializes a clipping node with an other node as its stencil. The stencil node will be retained, and its parent will be set to this clipping node. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -111,7 +110,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bInverted">
@@ -172,7 +171,7 @@
       <Parameters />
       <Docs>
         <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
-        <remarks>&lt;para&gt;Event callback that is invoked every time when &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., &lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;Node::onEnter()&lt;/ref&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;Node::onEnter()&lt;/ref&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OnEnterTransitionDidFinish">
@@ -188,7 +187,7 @@
       <Parameters />
       <Docs>
         <summary>Event callback that is invoked when the  enters in the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition finishes. If you override onEnterTransitionDidFinish, you shall call its parent's one, e.g. Node::onEnterTransitionDidFinish()</summary>
-        <remarks>&lt;para&gt;Event callback that is invoked when the &lt;see cref="T:Cocos2D.CCNode" /&gt; enters in the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage' with a transition, this event is called when the transition finishes. If you override onEnterTransitionDidFinish, you shall call its parent's one, e.g. &lt;ref refid="classcocos2d_1_1_node_1a7f705fa89d29ed4efda768865d1728d3" kindref="member"&gt;Node::onEnterTransitionDidFinish()&lt;/ref&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_node_1a7f705fa89d29ed4efda768865d1728d3" kindref="member"&gt;Node::onEnterTransitionDidFinish()&lt;/ref&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OnExit">
@@ -204,7 +203,7 @@
       <Parameters />
       <Docs>
         <summary>Event callback that is invoked every time the  leaves the 'stage'. If the  leaves the 'stage' with a transition, this event is called when the transition finishes. During onExit you can't access a sibling node. If you override onExit, you shall call its parent's one, e.g., Node::onExit(). </summary>
-        <remarks>&lt;para&gt;Event callback that is invoked every time the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage' with a transition, this event is called when the transition finishes. During onExit you can't access a sibling node. If you override onExit, you shall call its parent's one, e.g., &lt;ref refid="classcocos2d_1_1_node_1a3a43c10832c787f6e2ca437c3ecc8dd3" kindref="member"&gt;Node::onExit()&lt;/ref&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_node_1a3a43c10832c787f6e2ca437c3ecc8dd3" kindref="member"&gt;Node::onExit()&lt;/ref&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OnExitTransitionDidStart">
@@ -220,7 +219,7 @@
       <Parameters />
       <Docs>
         <summary>Event callback that is called every time the  leaves the 'stage'. If the  leaves the 'stage' with a transition, this callback is called when the transition starts. </summary>
-        <remarks>&lt;para&gt;Event callback that is called every time the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage' with a transition, this callback is called when the transition starts. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Stencil">
@@ -236,7 +235,7 @@
       <Docs>
         <summary>The  to use as a stencil to do the clipping. The stencil node will be retained. This default to nil. </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Visit">
@@ -252,7 +251,7 @@
       <Parameters />
       <Docs>
         <summary>Visits this node's children and draw them recursively. </summary>
-        <remarks>Visits this node's children and draw them recursively. </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

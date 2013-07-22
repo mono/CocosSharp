@@ -11,9 +11,10 @@
   </Base>
   <Interfaces></Interfaces>
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; class. This class allows to easily create OpenGL 2D textures from images, text or raw data. The created &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object will always have power-of-two dimensions. Depending on how you create the &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, the actual image area of the texture might be smaller than the texture dimensions i.e. "contentSize" != (pixelsWide, pixelsHigh) and (maxS, maxT) != (1.0, 1.0). Be aware that the content of the generated textures will be upside-down! &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;</summary>
-    <remarks></remarks>
+    <summary>
+      <para> class. This class allows to easily create OpenGL 2D textures from images, text or raw data. The created  object will always have power-of-two dimensions. Depending on how you create the  object, the actual image area of the texture might be smaller than the texture dimensions i.e. "contentSize" != (pixelsWide, pixelsHigh) and (maxS, maxT) != (1.0, 1.0). Be aware that the content of the generated textures will be upside-down! </para>
+    </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -42,7 +43,7 @@
       <Docs>
         <summary>Helper functions that returns bits per pixels for a given format. v2.0 </summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Helper functions that returns bits per pixels for a given format. &lt;para&gt;v2.0 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v2.0 &lt;/para&gt;&lt;para&gt;v2.0 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
@@ -58,7 +59,7 @@
       <Docs>
         <summary>getContentSize </summary>
         <value>To be added.</value>
-        <remarks>getContentSize </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ContentSizeInPixels">
@@ -74,7 +75,7 @@
       <Docs>
         <summary>content size </summary>
         <value>To be added.</value>
-        <remarks>content size </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DefaultAlphaPixelFormat">
@@ -89,7 +90,7 @@
       </ReturnValue>
       <Docs>
         <summary>returns the alpha pixel format v0.8 </summary>
-        <remarks>&lt;para&gt;returns the alpha pixel format &lt;para&gt;v0.8 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DetectImageFormat">
@@ -142,10 +143,7 @@
       <Docs>
         <summary>Generates mipmap images for the texture.
  It only works if the texture size is POT (power of 2). v0.99.0 </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Generates mipmap images for the texture.
-&lt;/verbatim&gt; It only works if the texture size is POT (power of 2). &lt;para&gt;v0.99.0 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;Generates mipmap images for the texture.
-&lt;/verbatim&gt;&lt;para&gt;v0.99.0 &lt;/para&gt;&lt;para&gt;v0.99.0 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="HasPremultipliedAlpha">
@@ -161,7 +159,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -281,7 +279,7 @@
         <param name="data">To be added.</param>
         <summary>Initializes with a texture2d with data </summary>
         <returns>To be added.</returns>
-        <remarks>Initializes with a texture2d with data </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithData">
@@ -533,7 +531,7 @@
         <param name="fontSize">To be added.</param>
         <summary>Initializes a texture from a string using a text definition </summary>
         <returns>To be added.</returns>
-        <remarks>Initializes a texture from a string using a text definition </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -595,7 +593,7 @@
       <Docs>
         <summary>getName </summary>
         <value>To be added.</value>
-        <remarks>getName </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OptimizeForPremultipliedAlpha">
@@ -626,7 +624,7 @@
       <Docs>
         <summary>getPixelFormat </summary>
         <value>To be added.</value>
-        <remarks>getPixelFormat </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PixelsHigh">
@@ -642,7 +640,7 @@
       <Docs>
         <summary>getPixelsHigh </summary>
         <value>To be added.</value>
-        <remarks>getPixelsHigh </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PixelsWide">
@@ -658,7 +656,7 @@
       <Docs>
         <summary>getPixelsWide </summary>
         <value>To be added.</value>
-        <remarks>getPixelsWide </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Reinit">
@@ -752,30 +750,31 @@
       <Parameters />
       <Docs>
         <summary>sets alias texture parameters:
-GL_TEXTURE_MIN_FILTER = GL_NEARESTGL_TEXTURE_MAG_FILTER = GL_NEAREST</summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;sets alias texture parameters:
-&lt;/verbatim&gt;
-  &lt;list type="bullet"&gt;
-    &lt;item&gt;
-      &lt;description&gt;GL_TEXTURE_MIN_FILTER = GL_NEAREST&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;GL_TEXTURE_MAG_FILTER = GL_NEAREST&lt;/description&gt;
-    &lt;/item&gt;
-  &lt;/list&gt;
-&lt;/para&gt;&lt;verbatim&gt;sets alias texture parameters:
-&lt;/verbatim&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;GL_TEXTURE_MIN_FILTER = GL_NEAREST&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;GL_TEXTURE_MAG_FILTER = GL_NEAREST&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;GL_TEXTURE_MIN_FILTER = GL_NEAREST&lt;/para&gt;&lt;para&gt;GL_TEXTURE_MAG_FILTER = GL_NEAREST&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;
-  &lt;para&gt;v0.8 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
+</summary>
+        <remarks>
+          <para>
+            <verbatim>sets alias texture parameters:
+</verbatim>
+            <list type="bullet" />
+          </para>
+          <verbatim>sets alias texture parameters:
+</verbatim>
+          <list type="bullet" />
+          <para>
+            <para>Calling this method could allocate additional texture memory.</para>
+            <para>v0.8 </para>
+          </para>
+          <para>Calling this method could allocate additional texture memory.</para>
+          <para>v0.8 </para>
+          <item>
+            <description>GL_TEXTURE_MIN_FILTER = GL_NEAREST</description>
+          </item>
+          <description>GL_TEXTURE_MIN_FILTER = GL_NEAREST</description>
+          <item>
+            <description>GL_TEXTURE_MAG_FILTER = GL_NEAREST</description>
+          </item>
+          <description>GL_TEXTURE_MAG_FILTER = GL_NEAREST</description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetAntiAliasTexParameters">
@@ -791,30 +790,31 @@ GL_TEXTURE_MIN_FILTER = GL_NEARESTGL_TEXTURE_MAG_FILTER = GL_NEAREST</summary>
       <Parameters />
       <Docs>
         <summary>sets antialias texture parameters:
-GL_TEXTURE_MIN_FILTER = GL_LINEARGL_TEXTURE_MAG_FILTER = GL_LINEAR</summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;sets antialias texture parameters:
-&lt;/verbatim&gt;
-  &lt;list type="bullet"&gt;
-    &lt;item&gt;
-      &lt;description&gt;GL_TEXTURE_MIN_FILTER = GL_LINEAR&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;GL_TEXTURE_MAG_FILTER = GL_LINEAR&lt;/description&gt;
-    &lt;/item&gt;
-  &lt;/list&gt;
-&lt;/para&gt;&lt;verbatim&gt;sets antialias texture parameters:
-&lt;/verbatim&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;GL_TEXTURE_MIN_FILTER = GL_LINEAR&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;GL_TEXTURE_MAG_FILTER = GL_LINEAR&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;GL_TEXTURE_MIN_FILTER = GL_LINEAR&lt;/para&gt;&lt;para&gt;GL_TEXTURE_MAG_FILTER = GL_LINEAR&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;
-  &lt;para&gt;v0.8 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;Calling this method could allocate additional texture memory.&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
+</summary>
+        <remarks>
+          <para>
+            <verbatim>sets antialias texture parameters:
+</verbatim>
+            <list type="bullet" />
+          </para>
+          <verbatim>sets antialias texture parameters:
+</verbatim>
+          <list type="bullet" />
+          <para>
+            <para>Calling this method could allocate additional texture memory.</para>
+            <para>v0.8 </para>
+          </para>
+          <para>Calling this method could allocate additional texture memory.</para>
+          <para>v0.8 </para>
+          <item>
+            <description>GL_TEXTURE_MIN_FILTER = GL_LINEAR</description>
+          </item>
+          <description>GL_TEXTURE_MIN_FILTER = GL_LINEAR</description>
+          <item>
+            <description>GL_TEXTURE_MAG_FILTER = GL_LINEAR</description>
+          </item>
+          <description>GL_TEXTURE_MAG_FILTER = GL_LINEAR</description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">

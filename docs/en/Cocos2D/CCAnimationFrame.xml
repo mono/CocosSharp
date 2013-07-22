@@ -15,21 +15,29 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary> A frame of the animation. It contains information like:sprite frame name# of delay units.offset</summary>
-    <remarks>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCAnimationFrame" /&gt; A frame of the animation. It contains information like:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;sprite frame name&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;# of delay units.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;offset&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCAnimationFrame" /&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;sprite frame name&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;# of delay units.&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;offset&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;sprite frame name&lt;/para&gt;&lt;para&gt;# of delay units.&lt;/para&gt;&lt;para&gt;offset&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;v2.0 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v2.0 &lt;/para&gt;&lt;para&gt;v2.0 &lt;/para&gt;</remarks>
+    <summary> A frame of the animation. It contains information like:</summary>
+    <remarks>
+      <para>
+        <see cref="T:Cocos2D.CCAnimationFrame" /> A frame of the animation. It contains information like:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCAnimationFrame" />
+      <list type="bullet" />
+      <para>
+        <para>v2.0 </para>
+      </para>
+      <para>v2.0 </para>
+      <item>
+        <description>sprite frame name</description>
+      </item>
+      <description>sprite frame name</description>
+      <item>
+        <description># of delay units.</description>
+      </item>
+      <description># of delay units.</description>
+      <item>
+        <description>offset</description>
+      </item>
+      <description>offset</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -59,7 +67,7 @@
       <Docs>
         <summary>returns a copy of the </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;returns a copy of the &lt;see cref="T:Cocos2D.CCAnimationFrame" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCAnimationFrame" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -119,7 +127,7 @@
         <param name="userInfo">To be added.</param>
         <summary>initializes the animation frame with a spriteframe, number of delay units and a notification user info </summary>
         <returns>To be added.</returns>
-        <remarks>initializes the animation frame with a spriteframe, number of delay units and a notification user info </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SpriteFrame">
@@ -135,7 +143,7 @@
       <Docs>
         <summary>setSpriteFrame </summary>
         <value>To be added.</value>
-        <remarks>setSpriteFrame </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UserInfo">
@@ -151,7 +159,7 @@
       <Docs>
         <summary>setUserInfo </summary>
         <value>To be added.</value>
-        <remarks>setUserInfo </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

@@ -11,16 +11,22 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCScheduler" /&gt; is responsible for triggering the scheduled callbacks. You should not use NSTimer. Instead use this class. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCScheduler" /&gt;</summary>
-    <remarks>&lt;para&gt;There are 2 different types of callbacks (selectors):&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;update selector: the 'update' selector will be called every frame. You can customize the priority.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;custom selector: A custom selector will be called every frame, or with a custom interval of time&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;update selector: the 'update' selector will be called every frame. You can customize the priority.&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;custom selector: A custom selector will be called every frame, or with a custom interval of time&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;update selector: the 'update' selector will be called every frame. You can customize the priority.&lt;/para&gt;&lt;para&gt;custom selector: A custom selector will be called every frame, or with a custom interval of time&lt;/para&gt;&lt;para&gt;The 'custom selectors' should be avoided when possible. It is faster, and consumes less memory to use the 'update selector'. &lt;/para&gt;</remarks>
+    <summary>
+      <para> is responsible for triggering the scheduled callbacks. You should not use NSTimer. Instead use this class. </para>
+    </summary>
+    <remarks>
+      <para>There are 2 different types of callbacks (selectors):<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>The 'custom selectors' should be avoided when possible. It is faster, and consumes less memory to use the 'update selector'. </para>
+      <item>
+        <description>update selector: the 'update' selector will be called every frame. You can customize the priority.</description>
+      </item>
+      <description>update selector: the 'update' selector will be called every frame. You can customize the priority.</description>
+      <item>
+        <description>custom selector: A custom selector will be called every frame, or with a custom interval of time</description>
+      </item>
+      <description>custom selector: A custom selector will be called every frame, or with a custom interval of time</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -54,12 +60,7 @@
         <summary>Returns whether or not the target is paused
 v1.0.0 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Returns whether or not the target is paused
-&lt;/verbatim&gt;
-  &lt;para&gt;v1.0.0 &lt;/para&gt;
-&lt;/para&gt;&lt;verbatim&gt;Returns whether or not the target is paused
-&lt;/verbatim&gt;&lt;para&gt;v1.0.0 &lt;/para&gt;&lt;para&gt;v1.0.0 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="kCCPriorityNonSystemMin">
@@ -124,7 +125,7 @@ v1.0.0 </summary>
       <Docs>
         <summary>Pause all selectors from all targets. You should NEVER call this method, unless you know what you are doing. v2.0.0 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Pause all selectors from all targets. You should NEVER call this method, unless you know what you are doing. &lt;para&gt;v2.0.0 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v2.0.0 &lt;/para&gt;&lt;para&gt;v2.0.0 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PauseAllTargetsWithMinPriority">
@@ -144,7 +145,7 @@ v1.0.0 </summary>
         <param name="minPriority">To be added.</param>
         <summary>Pause all selectors from all targets with a minimum priority. You should only call this with kPriorityNonSystemMin or higher. v2.0.0 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Pause all selectors from all targets with a minimum priority. You should only call this with kPriorityNonSystemMin or higher. &lt;para&gt;v2.0.0 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v2.0.0 &lt;/para&gt;&lt;para&gt;v2.0.0 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PauseTarget">
@@ -163,7 +164,7 @@ v1.0.0 </summary>
       <Docs>
         <param name="target">To be added.</param>
         <summary>Pauses the target. All scheduled selectors/update for a given target won't be 'ticked' until the target is resumed. If the target is not present, nothing happens. v0.99.3 </summary>
-        <remarks>&lt;para&gt;Pauses the target. All scheduled selectors/update for a given target won't be 'ticked' until the target is resumed. If the target is not present, nothing happens. &lt;para&gt;v0.99.3 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ResumeTarget">
@@ -182,7 +183,7 @@ v1.0.0 </summary>
       <Docs>
         <param name="target">To be added.</param>
         <summary>Resumes the target. The 'target' will be unpaused, so all schedule selectors/update will be 'ticked' again. If the target is not present, nothing happens. v0.99.3 </summary>
-        <remarks>&lt;para&gt;Resumes the target. The 'target' will be unpaused, so all schedule selectors/update will be 'ticked' again. If the target is not present, nothing happens. &lt;para&gt;v0.99.3 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ResumeTargets">
@@ -201,7 +202,7 @@ v1.0.0 </summary>
       <Docs>
         <param name="targetsToResume">To be added.</param>
         <summary>Resume selectors on a set of targets. This can be useful for undoing a call to pauseAllSelectors. v2.0.0 </summary>
-        <remarks>&lt;para&gt;Resume selectors on a set of targets. This can be useful for undoing a call to pauseAllSelectors. &lt;para&gt;v2.0.0 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v2.0.0 &lt;/para&gt;&lt;para&gt;v2.0.0 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ScheduleSelector">
@@ -230,7 +231,7 @@ v1.0.0 </summary>
         <param name="delay">To be added.</param>
         <param name="paused">To be added.</param>
         <summary>calls scheduleSelector with kRepeatForever and a 0 delay </summary>
-        <remarks>calls scheduleSelector with kRepeatForever and a 0 delay </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ScheduleUpdateForTarget">
@@ -253,7 +254,7 @@ v1.0.0 </summary>
         <param name="priority">To be added.</param>
         <param name="paused">To be added.</param>
         <summary>Schedules the 'update' selector for a given target with a given priority. The 'update' selector will be called every frame. The lower the priority, the earlier it is called. v0.99.3 </summary>
-        <remarks>&lt;para&gt;Schedules the 'update' selector for a given target with a given priority. The 'update' selector will be called every frame. The lower the priority, the earlier it is called. &lt;para&gt;v0.99.3 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TimeScale">
@@ -269,10 +270,7 @@ v1.0.0 </summary>
       <Docs>
         <summary>Modifies the time of all scheduled callbacks.
  You can use this property to create a 'slow motion' or 'fast forward' effect. Default is 1.0. To create a 'slow motion' effect, use values below 1.0. To create a 'fast forward' effect, use values higher than 1.0. v0.8 It will affect EVERY scheduled selector / action. </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Modifies the time of all scheduled callbacks.
-&lt;/verbatim&gt; You can use this property to create a 'slow motion' or 'fast forward' effect. Default is 1.0. To create a 'slow motion' effect, use values below 1.0. To create a 'fast forward' effect, use values higher than 1.0. &lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;It will affect EVERY scheduled selector / action. &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;Modifies the time of all scheduled callbacks.
-&lt;/verbatim&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;It will affect EVERY scheduled selector / action. &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;It will affect EVERY scheduled selector / action. &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UnscheduleAll">
@@ -288,9 +286,13 @@ v1.0.0 </summary>
       <Parameters />
       <Docs>
         <summary>Unschedules all selectors from all targets. You should NEVER call this method, unless you know what you are doing.</summary>
-        <remarks>&lt;para&gt;Unschedules all selectors from all targets. You should NEVER call this method, unless you know what you are doing.&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;v0.99.3 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Unschedules all selectors from all targets. You should NEVER call this method, unless you know what you are doing.</para>
+          <para>
+            <para>v0.99.3 </para>
+          </para>
+          <para>v0.99.3 </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UnscheduleAllForTarget">
@@ -309,7 +311,7 @@ v1.0.0 </summary>
       <Docs>
         <param name="target">To be added.</param>
         <summary>Unschedules all selectors for a given target. This also includes the "update" selector. v0.99.3 </summary>
-        <remarks>&lt;para&gt;Unschedules all selectors for a given target. This also includes the "update" selector. &lt;para&gt;v0.99.3 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UnscheduleAllWithMinPriority">
@@ -328,7 +330,7 @@ v1.0.0 </summary>
       <Docs>
         <param name="minPriority">To be added.</param>
         <summary>Unschedules all selectors from all targets with a minimum priority. You should only call this with kPriorityNonSystemMin or higher. v2.0.0 </summary>
-        <remarks>&lt;para&gt;Unschedules all selectors from all targets with a minimum priority. You should only call this with kPriorityNonSystemMin or higher. &lt;para&gt;v2.0.0 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v2.0.0 &lt;/para&gt;&lt;para&gt;v2.0.0 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UnscheduleSelector">
@@ -349,7 +351,7 @@ v1.0.0 </summary>
         <param name="selector">To be added.</param>
         <param name="target">To be added.</param>
         <summary>Unschedule a selector for a given target. If you want to unschedule the "update", use unscheudleUpdateForTarget. v0.99.3 </summary>
-        <remarks>&lt;para&gt;Unschedule a selector for a given target. If you want to unschedule the "update", use unscheudleUpdateForTarget. &lt;para&gt;v0.99.3 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UnscheduleUpdateForTarget">
@@ -368,7 +370,7 @@ v1.0.0 </summary>
       <Docs>
         <param name="target">To be added.</param>
         <summary>Unschedules the update selector for a given target v0.99.3 </summary>
-        <remarks>&lt;para&gt;Unschedules the update selector for a given target &lt;para&gt;v0.99.3 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

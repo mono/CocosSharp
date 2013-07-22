@@ -11,9 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCParallaxNode" /&gt;: A node that simulates a parallax scroller. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCParallaxNode" /&gt;</summary>
-    <remarks>The children will be moved faster / slower than the parent according the the parallax ratio. </remarks>
+    <summary>
+      <para>: A node that simulates a parallax scroller. </para>
+    </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,7 +27,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddChild">
@@ -46,68 +47,14 @@
       </Parameters>
       <Docs>
         <param name="child">A child node </param>
-        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)setZOrder(int)</param>
-        <param name="tag">A interger to identify the node easily. Please refer to setTag(int)setTag(int)</param>
+        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)</param>
+        <param name="tag">A interger to identify the node easily. Please refer to setTag(int)</param>
         <summary>Adds a child to the container with z order and tag</summary>
-        <remarks>&lt;para&gt;Adds a child to the container with z order and tag&lt;/para&gt;&lt;para&gt;If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;child&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;A child node &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;zOrder&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;tag&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;child&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;A child node &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;child&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;A child node &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;A child node &lt;/para&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;zOrder&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;zOrder&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;zOrder&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;Z order for drawing priority. Please refer to &lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member"&gt;setZOrder(int)&lt;/ref&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;tag&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;tag&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;tag&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;A interger to identify the node easily. Please refer to &lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;&lt;/para&gt;&lt;ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member"&gt;setTag(int)&lt;/ref&gt;</remarks>
+        <remarks>
+          <para>Adds a child to the container with z order and tag</para>
+          <para>If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddChild">
@@ -197,27 +144,10 @@
       <Docs>
         <param name="cleanup">true if all running actions on all children nodes should be cleanup, false oterwise. </param>
         <summary>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</summary>
-        <remarks>&lt;para&gt;Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;cleanup&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;cleanup&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;cleanup&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;true if all running actions on all children nodes should be cleanup, false oterwise. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
@@ -238,46 +168,10 @@
         <param name="child">The child node which will be removed. </param>
         <param name="cleanup">true if all running actions and callbacks on the child node will be cleanup, false otherwise. </param>
         <summary>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</summary>
-        <remarks>&lt;para&gt;Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;child&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;The child node which will be removed. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;cleanup&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;child&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;The child node which will be removed. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;child&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;child&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;The child node which will be removed. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;The child node which will be removed. &lt;/para&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;cleanup&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;cleanup&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;cleanup&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;true if all running actions and callbacks on the child node will be cleanup, false otherwise. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Visit">
@@ -293,7 +187,7 @@
       <Parameters />
       <Docs>
         <summary>Visits this node's children and draw them recursively. </summary>
-        <remarks>Visits this node's children and draw them recursively. </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>
