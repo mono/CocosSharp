@@ -131,16 +131,8 @@ namespace Box2D.Dynamics.Joints
             m_collideConnected = def.CollideConnected;
             m_islandFlag = false;
             m_userData = def.UserData;
-
-            m_edgeA.Joint = null;
-            m_edgeA.Other = null;
-            m_edgeA.Prev = null;
-            m_edgeA.Next = null;
-
-            m_edgeB.Joint = null;
-            m_edgeB.Other = null;
-            m_edgeB.Prev = null;
-            m_edgeB.Next = null;
+            m_edgeA = new b2JointEdge();
+            m_edgeB = new b2JointEdge();
         }
 
         public bool IsActive()
