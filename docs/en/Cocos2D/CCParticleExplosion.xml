@@ -11,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>An explosion particle system. </summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithTotalParticles">
@@ -43,9 +43,9 @@
       </Parameters>
       <Docs>
         <param name="numberOfParticles">To be added.</param>
-        <summary>Initializes a system with a fixed number of particles. </summary>
+        <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

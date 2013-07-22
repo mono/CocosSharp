@@ -12,8 +12,7 @@
   <Interfaces />
   <Docs>
     <summary> is a singleton which holds an object instance of ScriptEngineProtocl It helps cocos2d-x and the user code to find back LuaEngine object v0.99.5-x-0.8.5 </summary>
-    <remarks>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCScriptEngineManager" /&gt; is a singleton which holds an object instance of ScriptEngineProtocl It helps cocos2d-x and the user code to find back LuaEngine object &lt;para&gt;v0.99.5-x-0.8.5 &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCScriptEngineManager" /&gt;&lt;para&gt;v0.99.5-x-0.8.5 &lt;/para&gt;&lt;para&gt;v0.99.5-x-0.8.5 &lt;/para&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -42,7 +41,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ScriptEngine">
@@ -58,7 +57,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SharedScriptEngineManager">

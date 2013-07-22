@@ -11,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;Base class for &lt;see cref="T:Cocos2D.CCGrid3D" /&gt; actions. &lt;see cref="T:Cocos2D.CCGrid3D" /&gt; actions can modify a non-tiled grid. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCGrid3D" /&gt;&lt;see cref="T:Cocos2D.CCGrid3D" /&gt;</summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -57,7 +57,7 @@
       <Docs>
         <summary>returns the grid </summary>
         <value>To be added.</value>
-        <remarks>returns the grid </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OriginalVertex">
@@ -77,7 +77,7 @@
         <param name="pos">To be added.</param>
         <summary>returns the non-transformed vertex than belongs to certain position in the grid </summary>
         <returns>To be added.</returns>
-        <remarks>returns the non-transformed vertex than belongs to certain position in the grid </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetVertex">
@@ -98,7 +98,7 @@
         <param name="pos">To be added.</param>
         <param name="vertex">To be added.</param>
         <summary>sets a new vertex to a certain position of the grid </summary>
-        <remarks>sets a new vertex to a certain position of the grid </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Vertex">
@@ -118,7 +118,7 @@
         <param name="pos">To be added.</param>
         <summary>returns the vertex than belongs to certain position in the grid </summary>
         <returns>To be added.</returns>
-        <remarks>returns the vertex than belongs to certain position in the grid </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

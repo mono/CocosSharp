@@ -11,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Base class for Transition scenes. </summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>creates a base transition with duration and incoming scene </summary>
-        <remarks>creates a base transition with duration and incoming scene </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -59,7 +59,7 @@
       <Parameters />
       <Docs>
         <summary>Stops all running actions and schedulers </summary>
-        <remarks>Stops all running actions and schedulers </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -74,21 +74,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
-        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Finish">
@@ -104,7 +98,7 @@
       <Parameters />
       <Docs>
         <summary>called after the transition finishes </summary>
-        <remarks>called after the transition finishes </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="HideOutShowIn">
@@ -120,7 +114,7 @@
       <Parameters />
       <Docs>
         <summary>used by some transitions to hide the outer scene </summary>
-        <remarks>used by some transitions to hide the outer scene </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -142,7 +136,7 @@
         <param name="scene">To be added.</param>
         <summary>initializes a transition with duration and incoming scene </summary>
         <returns>To be added.</returns>
-        <remarks>initializes a transition with duration and incoming scene </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsTransition">
@@ -249,7 +243,7 @@
       <Parameters />
       <Docs>
         <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
-        <remarks>&lt;para&gt;Event callback that is invoked every time when &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., &lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;Node::onEnter()&lt;/ref&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;Node::onEnter()&lt;/ref&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OnExit">
@@ -265,7 +259,7 @@
       <Parameters />
       <Docs>
         <summary>Event callback that is invoked every time the  leaves the 'stage'. If the  leaves the 'stage' with a transition, this event is called when the transition finishes. During onExit you can't access a sibling node. If you override onExit, you shall call its parent's one, e.g., Node::onExit(). </summary>
-        <remarks>&lt;para&gt;Event callback that is invoked every time the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage' with a transition, this event is called when the transition finishes. During onExit you can't access a sibling node. If you override onExit, you shall call its parent's one, e.g., &lt;ref refid="classcocos2d_1_1_node_1a3a43c10832c787f6e2ca437c3ecc8dd3" kindref="member"&gt;Node::onExit()&lt;/ref&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_node_1a3a43c10832c787f6e2ca437c3ecc8dd3" kindref="member"&gt;Node::onExit()&lt;/ref&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Reset">
@@ -302,7 +296,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

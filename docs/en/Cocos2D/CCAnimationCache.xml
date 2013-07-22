@@ -13,12 +13,19 @@
   <Docs>
     <summary>Singleton that manages the Animations.
  It saves in a cache the animations. You should use this class if you want to save your animations in a cache.</summary>
-    <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Singleton that manages the Animations.
-&lt;/verbatim&gt; It saves in a cache the animations. You should use this class if you want to save your animations in a cache.&lt;/para&gt;&lt;verbatim&gt;Singleton that manages the Animations.
-&lt;/verbatim&gt;&lt;para&gt;Before v0.99.5, the recommend way was to save them on the &lt;see cref="T:Cocos2D.CCSprite" /&gt;. Since v0.99.5, you should use this class instead.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSprite" /&gt;&lt;para&gt;
-  &lt;para&gt;v0.99.5 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.99.5 &lt;/para&gt;&lt;para&gt;v0.99.5 &lt;/para&gt;</remarks>
+    <remarks>
+      <para>
+        <verbatim>Singleton that manages the Animations.
+</verbatim> It saves in a cache the animations. You should use this class if you want to save your animations in a cache.</para>
+      <verbatim>Singleton that manages the Animations.
+</verbatim>
+      <para>Before v0.99.5, the recommend way was to save them on the <see cref="T:Cocos2D.CCSprite" />. Since v0.99.5, you should use this class instead.</para>
+      <see cref="T:Cocos2D.CCSprite" />
+      <para>
+        <para>v0.99.5 </para>
+      </para>
+      <para>v0.99.5 </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -52,7 +59,7 @@
         <param name="animation">To be added.</param>
         <param name="name">To be added.</param>
         <summary>Adds a  with a name. </summary>
-        <remarks>&lt;para&gt;Adds a &lt;see cref="T:Cocos2D.CCAnimation" /&gt; with a name. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCAnimation" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AddAnimationsWithDictionary">
@@ -71,7 +78,7 @@
       <Docs>
         <param name="dictionary">To be added.</param>
         <summary>Adds an animation from an NSDictionary Make sure that the frames were previously loaded in the . v1.1 </summary>
-        <remarks>&lt;para&gt;Adds an animation from an NSDictionary Make sure that the frames were previously loaded in the &lt;see cref="T:Cocos2D.CCSpriteFrameCache" /&gt;. &lt;para&gt;v1.1 &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteFrameCache" /&gt;&lt;para&gt;v1.1 &lt;/para&gt;&lt;para&gt;v1.1 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AddAnimationsWithFile">
@@ -90,7 +97,7 @@
       <Docs>
         <param name="plist">To be added.</param>
         <summary>Adds an animation from a plist file. Make sure that the frames were previously loaded in the . v1.1 </summary>
-        <remarks>&lt;para&gt;Adds an animation from a plist file. Make sure that the frames were previously loaded in the &lt;see cref="T:Cocos2D.CCSpriteFrameCache" /&gt;. &lt;para&gt;v1.1 &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSpriteFrameCache" /&gt;&lt;para&gt;v1.1 &lt;/para&gt;&lt;para&gt;v1.1 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AnimationByName">
@@ -111,10 +118,7 @@
         <summary>Returns a Animation that was previously added.
  If the name is not found it will return nil. You should retain the returned copy if you are going to use it. </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Returns a Animation that was previously added.
-&lt;/verbatim&gt; If the name is not found it will return nil. You should retain the returned copy if you are going to use it. &lt;/para&gt;&lt;verbatim&gt;Returns a Animation that was previously added.
-&lt;/verbatim&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -131,7 +135,7 @@
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Item">
@@ -167,7 +171,7 @@
       <Parameters />
       <Docs>
         <summary>Use destroyInstance() instead </summary>
-        <remarks>&lt;para&gt;Use &lt;ref refid="classcocos2d_1_1_animation_cache_1a2201cbc9568d86ea65b74baa0db0aee8" kindref="member"&gt;destroyInstance()&lt;/ref&gt; instead &lt;/para&gt;&lt;ref refid="classcocos2d_1_1_animation_cache_1a2201cbc9568d86ea65b74baa0db0aee8" kindref="member"&gt;destroyInstance()&lt;/ref&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveAnimationByName">
@@ -186,7 +190,7 @@
       <Docs>
         <param name="name">To be added.</param>
         <summary>Deletes a  from the cache. </summary>
-        <remarks>&lt;para&gt;Deletes a &lt;see cref="T:Cocos2D.CCAnimation" /&gt; from the cache. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCAnimation" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SharedAnimationCache">
@@ -202,7 +206,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

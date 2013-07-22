@@ -13,12 +13,7 @@
   <Docs>
     <summary>Skews a Node object to given angles by modifying it's skewX and skewY attributes
 v1.0 </summary>
-    <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Skews a Node object to given angles by modifying it's skewX and skewY attributes
-&lt;/verbatim&gt;
-  &lt;para&gt;v1.0 &lt;/para&gt;
-&lt;/para&gt;&lt;verbatim&gt;Skews a Node object to given angles by modifying it's skewX and skewY attributes
-&lt;/verbatim&gt;&lt;para&gt;v1.0 &lt;/para&gt;&lt;para&gt;v1.0 &lt;/para&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -34,7 +29,7 @@ v1.0 </summary>
       <Docs>
         <param name="skewTo">To be added.</param>
         <summary>creates the action </summary>
-        <remarks>creates the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -74,7 +69,7 @@ v1.0 </summary>
         <param name="pZone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -98,7 +93,7 @@ v1.0 </summary>
         <param name="sy">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_fDeltaX">
@@ -236,8 +231,8 @@ v1.0 </summary>
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -256,17 +251,15 @@ v1.0 </summary>
       <Docs>
         <param name="time">To be added.</param>
         <summary>called once per frame. time a value between 0 and 1</summary>
-        <remarks>&lt;para&gt;called once per frame. time a value between 0 and 1&lt;/para&gt;&lt;para&gt;For example:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;0 means that the action just started&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;1 means that the action is over &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;0 means that the action just started&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;1 means that the action is over &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;0 means that the action just started&lt;/para&gt;&lt;para&gt;0.5 means that the action is in the middle&lt;/para&gt;&lt;para&gt;1 means that the action is over &lt;/para&gt;</remarks>
+        <remarks>
+          <para>called once per frame. time a value between 0 and 1</para>
+          <para>For example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>0 means that the action just started</description>
+          </item>
+          <description>0 means that the action just started</description>
+        </remarks>
       </Docs>
     </Member>
   </Members>

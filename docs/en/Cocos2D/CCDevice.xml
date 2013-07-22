@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks></remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName="GetDPI">
@@ -29,7 +29,7 @@
       <Docs>
         <summary>Gets the DPI of device The DPI of device. </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Gets the DPI of device &lt;para&gt;The DPI of device. &lt;/para&gt;&lt;/para&gt;&lt;para&gt;The DPI of device. &lt;/para&gt;&lt;para&gt;The DPI of device. &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

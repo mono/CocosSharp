@@ -11,34 +11,17 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;An abstract class for "label" &lt;see cref="T:Cocos2D.CCMenuItemLabel" /&gt; items Any &lt;see cref="T:Cocos2D.CCNode" /&gt; that supports the &lt;ref refid="classcocos2d_1_1_label_protocol" kindref="compound"&gt;LabelProtocol&lt;/ref&gt; protocol can be added. Supported nodes: &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItemLabel" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_label_protocol" kindref="compound"&gt;LabelProtocol&lt;/ref&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;list type="bullet"&gt;
-    &lt;item&gt;
-      &lt;description&gt;BitmapFontAtlas&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;LabelAtlas&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;LabelTTF&lt;/description&gt;
-    &lt;/item&gt;
-  &lt;/list&gt;
-&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;BitmapFontAtlas&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;LabelAtlas&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;LabelTTF&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;BitmapFontAtlas&lt;/para&gt;&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;
-&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelAtlas" /&gt;&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;
-&lt;/para&gt;&lt;see cref="T:Cocos2D.CCLabelTTF" /&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <item>
+        <description>BitmapFontAtlas</description>
+      </item>
+      <description>BitmapFontAtlas</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -51,7 +34,7 @@
       <Parameters />
       <Docs>
         <summary>creates a  with a Label. Target and selector will be nil </summary>
-        <remarks>&lt;para&gt;creates a &lt;see cref="T:Cocos2D.CCMenuItemLabel" /&gt; with a Label. Target and selector will be nil &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItemLabel" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -101,7 +84,7 @@
       <Parameters />
       <Docs>
         <summary>Activate the item </summary>
-        <remarks>Activate the item </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DisabledColor">
@@ -117,7 +100,7 @@
       <Docs>
         <summary>setDisabledColor </summary>
         <value>To be added.</value>
-        <remarks>setDisabledColor </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Enabled">
@@ -133,7 +116,7 @@
       <Docs>
         <summary>Enable or disabled the setEnabled changes the RGB color of the font </summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Enable or disabled the &lt;see cref="T:Cocos2D.CCMenuItemFont" /&gt;&lt;para&gt;setEnabled changes the RGB color of the font &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItemFont" /&gt;&lt;para&gt;setEnabled changes the RGB color of the font &lt;/para&gt;&lt;para&gt;setEnabled changes the RGB color of the font &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithLabel">
@@ -155,7 +138,7 @@
         <param name="selector">To be added.</param>
         <summary>initializes a  with a Label, target and selector </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCMenuItemLabel" /&gt; with a Label, target and selector &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItemLabel" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Label">
@@ -171,7 +154,7 @@
       <Docs>
         <summary>setLabel </summary>
         <value>To be added.</value>
-        <remarks>setLabel </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_fOriginalScale">
@@ -247,7 +230,7 @@
       <Parameters />
       <Docs>
         <summary>The item was selected (not activated), similar to "mouse-over" </summary>
-        <remarks>The item was selected (not activated), similar to "mouse-over" </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetString">
@@ -266,7 +249,7 @@
       <Docs>
         <param name="label">To be added.</param>
         <summary>sets a new string to the inner label </summary>
-        <remarks>sets a new string to the inner label </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Unselected">
@@ -282,7 +265,7 @@
       <Parameters />
       <Docs>
         <summary>The item was unselected </summary>
-        <remarks>The item was unselected </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

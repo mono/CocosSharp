@@ -11,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Base class for Easing actions with rate parameters. </summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -66,7 +66,7 @@
         <param name="pZone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithAction">
@@ -88,7 +88,7 @@
         <param name="fRate">To be added.</param>
         <summary>Initializes the action with the inner action and the rate parameter </summary>
         <returns>To be added.</returns>
-        <remarks>Initializes the action with the inner action and the rate parameter </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_fRate">
@@ -119,7 +119,7 @@
       <Docs>
         <summary>get rate value for the actions </summary>
         <value>To be added.</value>
-        <remarks>get rate value for the actions </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Reverse">
@@ -136,7 +136,7 @@
       <Docs>
         <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new action that performs the exactly the reverse action </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

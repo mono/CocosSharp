@@ -11,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Dispatch the keypad message from the phone. </summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -43,8 +43,8 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>add delegate to concern keypad msg </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DispatchKeypadMsg">
@@ -82,8 +82,8 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>force add the delegate </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ForceRemoveDelegate">
@@ -101,8 +101,8 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>force remove the delegate </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_bLocked">
@@ -210,8 +210,8 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>remove the delegate from the delegates who concern keypad msg </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

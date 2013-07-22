@@ -11,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;A class that implements a Texture Atlas. Supported features: The atlas file can be a PVRTC, PNG or any other format supported by &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; Quads can be updated in runtime Quads can be added in runtime Quads can be removed in runtime Quads can be re-ordered in runtime The &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; capacity can be increased or decreased in runtime OpenGL component: V3F, C4B, T2F. The quads are rendered using an OpenGL ES VBO. To render the quads using an interleaved vertex array list, you should modify the &lt;ref refid="cc_config_8h" kindref="compound"&gt;ccConfig.h&lt;/ref&gt; file. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;&lt;ref refid="cc_config_8h" kindref="compound"&gt;ccConfig.h&lt;/ref&gt;</summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>creates a  with an filename and with an initial capacity for Quads. The  capacity can be increased in runtime. </summary>
-        <remarks>&lt;para&gt;creates a &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; with an filename and with an initial capacity for Quads. The &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; capacity can be increased in runtime. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Capacity">
@@ -41,7 +41,7 @@
       <Docs>
         <summary>getCapacity </summary>
         <value>To be added.</value>
-        <remarks>getCapacity </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Create">
@@ -105,12 +105,17 @@
         <param name="n">To be added.</param>
         <summary>draws n quads from an index (offset).
  n + start can't be greater than the capacity of the atlas</summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;draws n quads from an index (offset).
-&lt;/verbatim&gt; n + start can't be greater than the capacity of the atlas&lt;/para&gt;&lt;verbatim&gt;draws n quads from an index (offset).
-&lt;/verbatim&gt;&lt;para&gt;
-  &lt;para&gt;v1.0 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v1.0 &lt;/para&gt;&lt;para&gt;v1.0 &lt;/para&gt;</remarks>
+        <remarks>
+          <para>
+            <verbatim>draws n quads from an index (offset).
+</verbatim> n + start can't be greater than the capacity of the atlas</para>
+          <verbatim>draws n quads from an index (offset).
+</verbatim>
+          <para>
+            <para>v1.0 </para>
+          </para>
+          <para>v1.0 </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DrawNumberOfQuads">
@@ -147,7 +152,7 @@
       <Parameters />
       <Docs>
         <summary>draws all the Atlas's Quads </summary>
-        <remarks>draws all the Atlas's Quads </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="FillWithEmptyQuadsFromIndex">
@@ -168,7 +173,7 @@
         <param name="index">To be added.</param>
         <param name="amount">To be added.</param>
         <summary>Ensures that after a realloc quads are still empty Used internally by 1.1 </summary>
-        <remarks>&lt;para&gt;Ensures that after a realloc quads are still empty Used internally by &lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt;&lt;para&gt;1.1 &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt;&lt;para&gt;1.1 &lt;/para&gt;&lt;para&gt;1.1 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IncreaseTotalQuadsWith">
@@ -187,7 +192,7 @@
       <Docs>
         <param name="amount">To be added.</param>
         <summary>Used internally by  don't use this unless you know what you're doing 1.1 </summary>
-        <remarks>&lt;para&gt;Used internally by &lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt; don't use this unless you know what you're doing &lt;para&gt;1.1 &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt;&lt;para&gt;1.1 &lt;/para&gt;&lt;para&gt;1.1 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithFile">
@@ -209,7 +214,13 @@
         <param name="capacity">To be added.</param>
         <summary>initializes a  with a filename and with a certain capacity for Quads. The  capacity can be increased in runtime.</summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; with a filename and with a certain capacity for Quads. The &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; capacity can be increased in runtime.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;&lt;para&gt;WARNING: Do not reinitialize the &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; because it will leak memory (issue #706) &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;</remarks>
+        <remarks>
+          <para>initializes a <see cref="T:Cocos2D.CCTextureAtlas" /> with a filename and with a certain capacity for Quads. The <see cref="T:Cocos2D.CCTextureAtlas" /> capacity can be increased in runtime.</para>
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+          <para>WARNING: Do not reinitialize the <see cref="T:Cocos2D.CCTextureAtlas" /> because it will leak memory (issue #706) </para>
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
@@ -231,7 +242,14 @@
         <param name="capacity">To be added.</param>
         <summary>initializes a  with a previously initialized  object, and with an initial capacity for Quads. The  capacity can be increased in runtime.</summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; with a previously initialized &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, and with an initial capacity for Quads. The &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; capacity can be increased in runtime.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;&lt;para&gt;WARNING: Do not reinitialize the &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; because it will leak memory (issue #706) &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;</remarks>
+        <remarks>
+          <para>initializes a <see cref="T:Cocos2D.CCTextureAtlas" /> with a previously initialized <see cref="T:Cocos2D.CCTexture2D" /> object, and with an initial capacity for Quads. The <see cref="T:Cocos2D.CCTextureAtlas" /> capacity can be increased in runtime.</para>
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+          <see cref="T:Cocos2D.CCTexture2D" />
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+          <para>WARNING: Do not reinitialize the <see cref="T:Cocos2D.CCTextureAtlas" /> because it will leak memory (issue #706) </para>
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InsertQuad">
@@ -253,10 +271,7 @@
         <param name="index">To be added.</param>
         <summary>Inserts a Quad (texture, vertex and color) at a certain index
  index must be between 0 and the atlas capacity - 1 v0.8 </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Inserts a Quad (texture, vertex and color) at a certain index
-&lt;/verbatim&gt; index must be between 0 and the atlas capacity - 1 &lt;para&gt;v0.8 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;Inserts a Quad (texture, vertex and color) at a certain index
-&lt;/verbatim&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InsertQuadFromIndex">
@@ -278,10 +293,7 @@
         <param name="newIndex">To be added.</param>
         <summary>Removes the quad that is located at a certain index and inserts it at a new index
  This operation is faster than removing and inserting in a quad in 2 different steps v0.7.2 </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Removes the quad that is located at a certain index and inserts it at a new index
-&lt;/verbatim&gt; This operation is faster than removing and inserting in a quad in 2 different steps &lt;para&gt;v0.7.2 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;Removes the quad that is located at a certain index and inserts it at a new index
-&lt;/verbatim&gt;&lt;para&gt;v0.7.2 &lt;/para&gt;&lt;para&gt;v0.7.2 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_pQuads">
@@ -332,7 +344,7 @@
         <param name="index">To be added.</param>
         <param name="newIndex">To be added.</param>
         <summary>Moves quads from index till totalQuads to the newIndex Used internally by  This method doesn't enlarge the array if newIndex + quads to be moved &gt; capacity 1.1 </summary>
-        <remarks>&lt;para&gt;Moves quads from index till totalQuads to the newIndex Used internally by &lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt; This method doesn't enlarge the array if newIndex + quads to be moved &amp;gt; capacity &lt;para&gt;1.1 &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleBatchNode" /&gt;&lt;para&gt;1.1 &lt;/para&gt;&lt;para&gt;1.1 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MoveQuadsFromIndex">
@@ -372,10 +384,7 @@
       <Docs>
         <summary>removes all Quads.
  The  capacity remains untouched. No memory is freed. The total number of quads to be drawn will be 0 v0.7.2 </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;removes all Quads.
-&lt;/verbatim&gt; The &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt; capacity remains untouched. No memory is freed. The total number of quads to be drawn will be 0 &lt;para&gt;v0.7.2 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;removes all Quads.
-&lt;/verbatim&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;&lt;para&gt;v0.7.2 &lt;/para&gt;&lt;para&gt;v0.7.2 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveQuadAtIndex">
@@ -395,10 +404,7 @@
         <param name="index">To be added.</param>
         <summary>removes a quad at a given index number.
  The capacity remains the same, but the total number of quads to be drawn is reduced in 1 v0.7.2 </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;removes a quad at a given index number.
-&lt;/verbatim&gt; The capacity remains the same, but the total number of quads to be drawn is reduced in 1 &lt;para&gt;v0.7.2 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;removes a quad at a given index number.
-&lt;/verbatim&gt;&lt;para&gt;v0.7.2 &lt;/para&gt;&lt;para&gt;v0.7.2 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveQuadsAtIndex">
@@ -419,7 +425,7 @@
         <param name="index">To be added.</param>
         <param name="amount">To be added.</param>
         <summary>removes a amount of quads starting from index 1.1 </summary>
-        <remarks>&lt;para&gt;removes a amount of quads starting from index &lt;para&gt;1.1 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;1.1 &lt;/para&gt;&lt;para&gt;1.1 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ResizeCapacity">
@@ -439,7 +445,7 @@
         <param name="newCapacity">To be added.</param>
         <summary>resize the capacity of the . The new capacity can be lower or higher than the current one It returns YES if the resize was successful. If it fails to resize the capacity it will return NO with a new capacity of 0. </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;resize the capacity of the &lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;. The new capacity can be lower or higher than the current one It returns YES if the resize was successful. If it fails to resize the capacity it will return NO with a new capacity of 0. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTextureAtlas" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -455,7 +461,7 @@
       <Docs>
         <summary>setTexture </summary>
         <value>To be added.</value>
-        <remarks>setTexture </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -488,7 +494,7 @@
       <Docs>
         <summary>getTotalQuads </summary>
         <value>To be added.</value>
-        <remarks>getTotalQuads </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateQuad">
@@ -510,10 +516,7 @@
         <param name="index">To be added.</param>
         <summary>updates a Quad (texture, vertex and color) at a certain index
  index must be between 0 and the atlas capacity - 1 v0.8 </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;updates a Quad (texture, vertex and color) at a certain index
-&lt;/verbatim&gt; index must be between 0 and the atlas capacity - 1 &lt;para&gt;v0.8 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;updates a Quad (texture, vertex and color) at a certain index
-&lt;/verbatim&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

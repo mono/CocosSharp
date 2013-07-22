@@ -11,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>A Transition that supports orientation like. Possible orientation: LeftOver, RightOver, UpOver, DownOver. </summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>creates a base transition with duration and incoming scene </summary>
-        <remarks>creates a base transition with duration and incoming scene </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -69,7 +69,7 @@
         <param name="orientation">To be added.</param>
         <summary>initializes a transition with duration and incoming scene </summary>
         <returns>To be added.</returns>
-        <remarks>initializes a transition with duration and incoming scene </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_eOrientation">

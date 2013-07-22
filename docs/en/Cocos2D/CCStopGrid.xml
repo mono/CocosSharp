@@ -11,11 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCStopGrid" /&gt; action. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCStopGrid" /&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;para&gt;Don't call this action if another grid action is active. Call if you want to remove the the grid effect. Example: Sequence::actions(Lens::action(...), StopGrid::action(...), NULL); &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;Don't call this action if another grid action is active. Call if you want to remove the the grid effect. Example: Sequence::actions(Lens::action(...), StopGrid::action(...), NULL); &lt;/para&gt;&lt;para&gt;Don't call this action if another grid action is active. Call if you want to remove the the grid effect. Example: Sequence::actions(Lens::action(...), StopGrid::action(...), NULL); &lt;/para&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>Allocates and initializes the action </summary>
-        <remarks>Allocates and initializes the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -46,8 +43,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

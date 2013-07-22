@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>Cardinal Spline path. http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline</summary>
-    <remarks>&lt;para&gt;Cardinal Spline path. &lt;ulink url="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline"&gt;http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline&lt;/ulink&gt;&lt;/para&gt;&lt;ulink url="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline"&gt;http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline&lt;/ulink&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -32,7 +32,7 @@
         <param name="points">To be added.</param>
         <param name="tension">To be added.</param>
         <summary>creates an action with a Cardinal Spline array of points and tension </summary>
-        <remarks>creates an action with a Cardinal Spline array of points and tension </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_startPosition">
@@ -64,7 +64,7 @@
       <Docs>
         <summary>returns a new reversed action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new reversed action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -82,8 +82,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdatePosition">
@@ -102,7 +102,7 @@
       <Docs>
         <param name="newPos">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

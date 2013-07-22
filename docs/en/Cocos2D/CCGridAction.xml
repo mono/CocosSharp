@@ -11,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Base class for Grid actions. </summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -95,7 +95,7 @@
         <param name="pZone">To be added.</param>
         <summary>returns a new clone of the action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new clone of the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Grid">
@@ -111,7 +111,7 @@
       <Docs>
         <summary>returns the grid </summary>
         <value>To be added.</value>
-        <remarks>returns the grid </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -133,7 +133,7 @@
         <param name="gridSize">To be added.</param>
         <summary>initializes the action with size and duration </summary>
         <returns>To be added.</returns>
-        <remarks>initializes the action with size and duration </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_sGridSize">
@@ -165,7 +165,7 @@
       <Docs>
         <summary>returns a new reversed action. The reversed action is created with the  action. </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;returns a new reversed action. The reversed action is created with the &lt;see cref="T:Cocos2D.CCReverseTime" /&gt; action. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCReverseTime" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -183,8 +183,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

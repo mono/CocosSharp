@@ -15,8 +15,8 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>Shrink the outgoing scene while grow the incoming scene. </summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -29,7 +29,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -83,7 +83,7 @@
       <Parameters />
       <Docs>
         <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
-        <remarks>&lt;para&gt;Event callback that is invoked every time when &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., &lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;Node::onEnter()&lt;/ref&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;Node::onEnter()&lt;/ref&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

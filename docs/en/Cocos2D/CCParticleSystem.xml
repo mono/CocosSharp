@@ -15,179 +15,58 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>Particle System base class. Attributes of a Particle System: </summary>
-    <remarks>&lt;para&gt;
-  &lt;list type="bullet"&gt;
-    &lt;item&gt;
-      &lt;description&gt;emission rate of the particles&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;Gravity Mode (Mode A):&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;gravity&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;direction&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;speed +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;tangential acceleration +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;radial acceleration +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;Radius Mode (Mode B):&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;startRadius +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;endRadius +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;rotate +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;Properties common to all modes:&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;life +- life variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;start spin +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;end spin +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;start size +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;end size +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;start color +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;end color +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;life +- variance&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;blending function&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;texture&lt;/description&gt;
-    &lt;/item&gt;
-  &lt;/list&gt;
-&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;emission rate of the particles&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Gravity Mode (Mode A):&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;gravity&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;direction&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;speed +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;tangential acceleration +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;radial acceleration +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Radius Mode (Mode B):&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;startRadius +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;endRadius +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;rotate +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Properties common to all modes:&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;life +- life variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;start spin +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;end spin +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;start size +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;end size +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;start color +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;end color +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;life +- variance&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;blending function&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;texture&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;emission rate of the particles&lt;/para&gt;&lt;para&gt;Gravity Mode (Mode A):&lt;/para&gt;&lt;para&gt;gravity&lt;/para&gt;&lt;para&gt;direction&lt;/para&gt;&lt;para&gt;speed +- variance&lt;/para&gt;&lt;para&gt;tangential acceleration +- variance&lt;/para&gt;&lt;para&gt;radial acceleration +- variance&lt;/para&gt;&lt;para&gt;Radius Mode (Mode B):&lt;/para&gt;&lt;para&gt;startRadius +- variance&lt;/para&gt;&lt;para&gt;endRadius +- variance&lt;/para&gt;&lt;para&gt;rotate +- variance&lt;/para&gt;&lt;para&gt;Properties common to all modes:&lt;/para&gt;&lt;para&gt;life +- life variance&lt;/para&gt;&lt;para&gt;start spin +- variance&lt;/para&gt;&lt;para&gt;end spin +- variance&lt;/para&gt;&lt;para&gt;start size +- variance&lt;/para&gt;&lt;para&gt;end size +- variance&lt;/para&gt;&lt;para&gt;start color +- variance&lt;/para&gt;&lt;para&gt;end color +- variance&lt;/para&gt;&lt;para&gt;life +- variance&lt;/para&gt;&lt;para&gt;blending function&lt;/para&gt;&lt;para&gt;texture&lt;/para&gt;&lt;para&gt;
-  &lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt; also supports particles generated by Particle Designer (&lt;ulink url="http://particledesigner.71squared.com/"&gt;http://particledesigner.71squared.com/&lt;/ulink&gt;). 'Radius Mode' in Particle Designer uses a fixed emit rate of 30 hz. Since that can't be guaranteed in &lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt;, &lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt; uses a another approach, but the results are almost identical.&lt;/para&gt;&lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt;&lt;ulink url="http://particledesigner.71squared.com/"&gt;http://particledesigner.71squared.com/&lt;/ulink&gt;&lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt;&lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt;&lt;para&gt;
-  &lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt; supports all the variables used by Particle Designer plus a bit more:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;spinning particles (supported when using ParticleSystemQuad)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;tangential acceleration (Gravity mode)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;radial acceleration (Gravity mode)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;radius direction (Radius mode) (Particle Designer supports outwards to inwards direction only)&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;spinning particles (supported when using ParticleSystemQuad)&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;tangential acceleration (Gravity mode)&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;radial acceleration (Gravity mode)&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;radius direction (Radius mode) (Particle Designer supports outwards to inwards direction only)&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;spinning particles (supported when using &lt;see cref="T:Cocos2D.CCParticleSystemQuad" /&gt;)&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleSystemQuad" /&gt;&lt;para&gt;tangential acceleration (Gravity mode)&lt;/para&gt;&lt;para&gt;radial acceleration (Gravity mode)&lt;/para&gt;&lt;para&gt;radius direction (Radius mode) (Particle Designer supports outwards to inwards direction only)&lt;/para&gt;&lt;para&gt;It is possible to customize any of the above mentioned properties in runtime. Example:&lt;/para&gt;&lt;para&gt;
-  &lt;programlisting&gt;
-    &lt;codeline&gt;
-      &lt;highlight class="normal"&gt;emitter.radialAccel&lt;sp /&gt;=&lt;sp /&gt;15;&lt;/highlight&gt;
-    &lt;/codeline&gt;
-    &lt;codeline&gt;
-      &lt;highlight class="normal"&gt;emitter.startSpin&lt;sp /&gt;=&lt;sp /&gt;0;&lt;/highlight&gt;
-    &lt;/codeline&gt;
-  &lt;/programlisting&gt;
-&lt;/para&gt;&lt;programlisting&gt;
-  &lt;codeline&gt;
-    &lt;highlight class="normal"&gt;emitter.radialAccel&lt;sp /&gt;=&lt;sp /&gt;15;&lt;/highlight&gt;
-  &lt;/codeline&gt;
-  &lt;codeline&gt;
-    &lt;highlight class="normal"&gt;emitter.startSpin&lt;sp /&gt;=&lt;sp /&gt;0;&lt;/highlight&gt;
-  &lt;/codeline&gt;
-&lt;/programlisting&gt;&lt;codeline&gt;
-  &lt;highlight class="normal"&gt;emitter.radialAccel&lt;sp /&gt;=&lt;sp /&gt;15;&lt;/highlight&gt;
-&lt;/codeline&gt;&lt;highlight class="normal"&gt;emitter.radialAccel&lt;sp /&gt;=&lt;sp /&gt;15;&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;codeline&gt;
-  &lt;highlight class="normal"&gt;emitter.startSpin&lt;sp /&gt;=&lt;sp /&gt;0;&lt;/highlight&gt;
-&lt;/codeline&gt;&lt;highlight class="normal"&gt;emitter.startSpin&lt;sp /&gt;=&lt;sp /&gt;0;&lt;/highlight&gt;&lt;sp /&gt;&lt;sp /&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>
+        <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref> also supports particles generated by Particle Designer (<ulink url="http://particledesigner.71squared.com/">http://particledesigner.71squared.com/</ulink>). 'Radius Mode' in Particle Designer uses a fixed emit rate of 30 hz. Since that can't be guaranteed in <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>, <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref> uses a another approach, but the results are almost identical.</para>
+      <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>
+      <ulink url="http://particledesigner.71squared.com/">http://particledesigner.71squared.com/</ulink>
+      <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>
+      <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>
+      <para>
+        <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref> supports all the variables used by Particle Designer plus a bit more:<itemizedlist /></para>
+      <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>
+      <itemizedlist />
+      <para>It is possible to customize any of the above mentioned properties in runtime. Example:</para>
+      <para>
+        <programlisting>
+          <codeline>
+            <highlight class="normal">emitter.radialAccel<sp />=<sp />15;</highlight>
+          </codeline>
+          <codeline>
+            <highlight class="normal">emitter.startSpin<sp />=<sp />0;</highlight>
+          </codeline>
+        </programlisting>
+      </para>
+      <programlisting>
+        <codeline>
+          <highlight class="normal">emitter.radialAccel<sp />=<sp />15;</highlight>
+        </codeline>
+        <codeline>
+          <highlight class="normal">emitter.startSpin<sp />=<sp />0;</highlight>
+        </codeline>
+      </programlisting>
+      <codeline>
+        <highlight class="normal">emitter.radialAccel<sp />=<sp />15;</highlight>
+      </codeline>
+      <highlight class="normal">emitter.radialAccel<sp />=<sp />15;</highlight>
+      <sp />
+      <sp />
+      <codeline>
+        <highlight class="normal">emitter.startSpin<sp />=<sp />0;</highlight>
+      </codeline>
+      <highlight class="normal">emitter.startSpin<sp />=<sp />0;</highlight>
+      <sp />
+      <sp />
+      <item>
+        <description>emission rate of the particles</description>
+      </item>
+      <description>emission rate of the particles</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -201,10 +80,7 @@
       <Docs>
         <summary>creates an initializes a ParticleSystem from a plist file.
  This plist files can be created manually or with Particle Designer: http://particledesigner.71squared.com/v2.0 </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;creates an initializes a ParticleSystem from a plist file.
-&lt;/verbatim&gt; This plist files can be created manually or with Particle Designer: &lt;ulink url="http://particledesigner.71squared.com/"&gt;http://particledesigner.71squared.com/&lt;/ulink&gt;&lt;para&gt;v2.0 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;creates an initializes a ParticleSystem from a plist file.
-&lt;/verbatim&gt;&lt;ulink url="http://particledesigner.71squared.com/"&gt;http://particledesigner.71squared.com/&lt;/ulink&gt;&lt;para&gt;v2.0 &lt;/para&gt;&lt;para&gt;v2.0 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -236,7 +112,7 @@
       <Docs>
         <summary>setAngle </summary>
         <value>To be added.</value>
-        <remarks>setAngle </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AngleVar">
@@ -252,7 +128,7 @@
       <Docs>
         <summary>setAngleVar </summary>
         <value>To be added.</value>
-        <remarks>setAngleVar </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AtlasIndex">
@@ -284,7 +160,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="BatchNode">
@@ -300,7 +176,7 @@
       <Docs>
         <summary>setBatchNode </summary>
         <value>To be added.</value>
-        <remarks>setBatchNode </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="BlendAdditive">
@@ -316,7 +192,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
@@ -332,7 +208,7 @@
       <Docs>
         <summary>setBlendFunc </summary>
         <value>To be added.</value>
-        <remarks>setBlendFunc </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Duration">
@@ -348,7 +224,7 @@
       <Docs>
         <summary>setDuration </summary>
         <value>To be added.</value>
-        <remarks>setDuration </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EmissionRate">
@@ -364,7 +240,7 @@
       <Docs>
         <summary>setEmissionRate </summary>
         <value>To be added.</value>
-        <remarks>setEmissionRate </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EmitterMode">
@@ -380,7 +256,7 @@
       <Docs>
         <summary>setEmitterMode </summary>
         <value>To be added.</value>
-        <remarks>setEmitterMode </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EndColor">
@@ -396,7 +272,7 @@
       <Docs>
         <summary>setEndColor </summary>
         <value>To be added.</value>
-        <remarks>setEndColor </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EndColorVar">
@@ -412,7 +288,7 @@
       <Docs>
         <summary>setEndColorVar </summary>
         <value>To be added.</value>
-        <remarks>setEndColorVar </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EndRadius">
@@ -428,7 +304,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EndRadiusVar">
@@ -444,7 +320,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EndSize">
@@ -460,7 +336,7 @@
       <Docs>
         <summary>setEndSize </summary>
         <value>To be added.</value>
-        <remarks>setEndSize </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EndSizeVar">
@@ -476,7 +352,7 @@
       <Docs>
         <summary>setEndSizeVar </summary>
         <value>To be added.</value>
-        <remarks>setEndSizeVar </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EndSpin">
@@ -492,7 +368,7 @@
       <Docs>
         <summary>setEndSpin </summary>
         <value>To be added.</value>
-        <remarks>setEndSpin </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EndSpinVar">
@@ -508,7 +384,7 @@
       <Docs>
         <summary>setEndSpinVar </summary>
         <value>To be added.</value>
-        <remarks>setEndSpinVar </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Gravity">
@@ -524,7 +400,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -541,7 +417,7 @@
       <Docs>
         <summary>initializes a </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCParticleSystem" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCParticleSystem" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDictionary">
@@ -561,7 +437,7 @@
         <param name="dictionary">To be added.</param>
         <summary>initializes a particle system from a NSDictionary and the path from where to load the png v2.1 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes a particle system from a NSDictionary and the path from where to load the png &lt;para&gt;v2.1 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v2.1 &lt;/para&gt;&lt;para&gt;v2.1 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithFile">
@@ -582,10 +458,7 @@
         <summary>initializes a ParticleSystem from a plist file.
  This plist files can be created manually or with Particle Designer: http://particledesigner.71squared.com/v0.99.3 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;initializes a ParticleSystem from a plist file.
-&lt;/verbatim&gt; This plist files can be created manually or with Particle Designer: &lt;ulink url="http://particledesigner.71squared.com/"&gt;http://particledesigner.71squared.com/&lt;/ulink&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;&lt;/para&gt;&lt;verbatim&gt;initializes a ParticleSystem from a plist file.
-&lt;/verbatim&gt;&lt;ulink url="http://particledesigner.71squared.com/"&gt;http://particledesigner.71squared.com/&lt;/ulink&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithTotalParticles">
@@ -603,9 +476,9 @@
       </Parameters>
       <Docs>
         <param name="numberOfParticles">To be added.</param>
-        <summary>Initializes a system with a fixed number of particles. </summary>
+        <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsActive">
@@ -621,7 +494,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="isFull">
@@ -733,7 +606,7 @@
       <Docs>
         <summary>setLife </summary>
         <value>To be added.</value>
-        <remarks>setLife </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="LifeVar">
@@ -749,7 +622,7 @@
       <Docs>
         <summary>setLifeVar </summary>
         <value>To be added.</value>
-        <remarks>setLifeVar </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_bIsActive">
@@ -1397,7 +1270,7 @@
       <Docs>
         <summary>setOpacityModifyRGB </summary>
         <value>To be added.</value>
-        <remarks>setOpacityModifyRGB </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ParticleCount">
@@ -1413,7 +1286,7 @@
       <Docs>
         <summary>getParticleCount </summary>
         <value>To be added.</value>
-        <remarks>getParticleCount </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PositionType">
@@ -1429,7 +1302,7 @@
       <Docs>
         <summary>setPositionType </summary>
         <value>To be added.</value>
-        <remarks>setPositionType </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PostStep">
@@ -1444,8 +1317,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>should be overridden by subclasses </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PosVar">
@@ -1461,7 +1334,7 @@
       <Docs>
         <summary>setPosVar </summary>
         <value>To be added.</value>
-        <remarks>setPosVar </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RadialAccel">
@@ -1477,7 +1350,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RadialAccelVar">
@@ -1493,7 +1366,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ResetSystem">
@@ -1508,8 +1381,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Kill all living particles. </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RotatePerSecond">
@@ -1525,7 +1398,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RotatePerSecondVar">
@@ -1541,7 +1414,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Rotation">
@@ -1557,27 +1430,11 @@
       <Docs>
         <summary>Sets the rotation (angle) of the node in degrees.</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Sets the rotation (angle) of the node in degrees.&lt;/para&gt;&lt;para&gt;0 is the default rotation angle. Positive values rotate node clockwise, and negative values for anti-clockwise.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;rotation&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;The rotation of the node in degrees. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;rotation&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;The rotation of the node in degrees. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;rotation&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;rotation&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;The rotation of the node in degrees. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;The rotation of the node in degrees. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Sets the rotation (angle) of the node in degrees.</para>
+          <para>0 is the default rotation angle. Positive values rotate node clockwise, and negative values for anti-clockwise.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RotationIsDir">
@@ -1593,7 +1450,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Scale">
@@ -1609,27 +1466,11 @@
       <Docs>
         <summary>Changes both X and Y scale factor of the node.</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Changes both X and Y scale factor of the node.&lt;/para&gt;&lt;para&gt;1.0 is the default scale factor. It modifies the X and Y scale at the same time.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;scale&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;scale&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;scale&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;scale&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;The scale factor for both X and Y axis. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Changes both X and Y scale factor of the node.</para>
+          <para>1.0 is the default scale factor. It modifies the X and Y scale at the same time.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ScaleX">
@@ -1645,27 +1486,11 @@
       <Docs>
         <summary>Changes the scale factor on X axis of this node</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Changes the scale factor on X axis of this node&lt;/para&gt;&lt;para&gt;The deafult value is 1.0 if you haven't changed it before&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;fScaleX&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;The scale factor on X axis. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;fScaleX&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;The scale factor on X axis. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;fScaleX&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;fScaleX&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;The scale factor on X axis. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;The scale factor on X axis. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Changes the scale factor on X axis of this node</para>
+          <para>The deafult value is 1.0 if you haven't changed it before</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ScaleY">
@@ -1681,27 +1506,11 @@
       <Docs>
         <summary>Changes the scale factor on Y axis of this node</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Changes the scale factor on Y axis of this node&lt;/para&gt;&lt;para&gt;The Default value is 1.0 if you haven't changed it before.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;fScaleY&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;The scale factor on Y axis. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;fScaleY&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;The scale factor on Y axis. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;fScaleY&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;fScaleY&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;The scale factor on Y axis. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;The scale factor on Y axis. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Changes the scale factor on Y axis of this node</para>
+          <para>The Default value is 1.0 if you haven't changed it before.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SourcePosition">
@@ -1717,7 +1526,7 @@
       <Docs>
         <summary>setSourcePosition </summary>
         <value>To be added.</value>
-        <remarks>setSourcePosition </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Speed">
@@ -1733,7 +1542,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SpeedVar">
@@ -1749,7 +1558,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartColor">
@@ -1765,7 +1574,7 @@
       <Docs>
         <summary>setStartColor </summary>
         <value>To be added.</value>
-        <remarks>setStartColor </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartColorVar">
@@ -1781,7 +1590,7 @@
       <Docs>
         <summary>setStartColorVar </summary>
         <value>To be added.</value>
-        <remarks>setStartColorVar </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartRadius">
@@ -1797,7 +1606,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartRadiusVar">
@@ -1813,7 +1622,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartSize">
@@ -1829,7 +1638,7 @@
       <Docs>
         <summary>setStartSize </summary>
         <value>To be added.</value>
-        <remarks>setStartSize </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartSizeVar">
@@ -1845,7 +1654,7 @@
       <Docs>
         <summary>setStartSizeVar </summary>
         <value>To be added.</value>
-        <remarks>setStartSizeVar </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartSpin">
@@ -1861,7 +1670,7 @@
       <Docs>
         <summary>setStartSpin </summary>
         <value>To be added.</value>
-        <remarks>setStartSpin </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartSpinVar">
@@ -1877,7 +1686,7 @@
       <Docs>
         <summary>setStartSpinVar </summary>
         <value>To be added.</value>
-        <remarks>setStartSpinVar </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StopSystem">
@@ -1892,8 +1701,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>stop emitting particles. Running particles will continue to run until they die </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TangentialAccel">
@@ -1909,7 +1718,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TangentialAccelVar">
@@ -1925,7 +1734,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -1941,7 +1750,7 @@
       <Docs>
         <summary>setTexture </summary>
         <value>To be added.</value>
-        <remarks>setTexture </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TotalParticles">
@@ -1957,7 +1766,7 @@
       <Docs>
         <summary>setTotalParticles </summary>
         <value>To be added.</value>
-        <remarks>setTotalParticles </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -1976,7 +1785,7 @@
       <Docs>
         <param name="dt">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateQuadsWithParticles">
@@ -2008,7 +1817,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

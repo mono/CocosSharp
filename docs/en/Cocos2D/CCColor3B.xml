@@ -13,12 +13,7 @@
   <Docs>
     <summary>RGB color composed of bytes 3 bytes
 v3.0 </summary>
-    <remarks>&lt;para&gt;
-  &lt;verbatim&gt;RGB color composed of bytes 3 bytes
-&lt;/verbatim&gt;
-  &lt;para&gt;v3.0 &lt;/para&gt;
-&lt;/para&gt;&lt;verbatim&gt;RGB color composed of bytes 3 bytes
-&lt;/verbatim&gt;&lt;para&gt;v3.0 &lt;/para&gt;&lt;para&gt;v3.0 &lt;/para&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">

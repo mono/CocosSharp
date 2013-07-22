@@ -11,24 +11,18 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Base class actions that do have a finite time duration. Possible actions: </summary>
-    <remarks>&lt;para&gt;
-  &lt;list type="bullet"&gt;
-    &lt;item&gt;
-      &lt;description&gt;An action with a duration of 0 seconds&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;An action with a duration of 35.5 seconds&lt;/description&gt;
-    &lt;/item&gt;
-  &lt;/list&gt;
-&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;An action with a duration of 0 seconds&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;An action with a duration of 35.5 seconds&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;An action with a duration of 0 seconds&lt;/para&gt;&lt;para&gt;An action with a duration of 35.5 seconds&lt;/para&gt;&lt;para&gt;Infinite time actions are valid &lt;/para&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>Infinite time actions are valid </para>
+      <item>
+        <description>An action with a duration of 0 seconds</description>
+      </item>
+      <description>An action with a duration of 0 seconds</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -71,9 +65,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>set duration in seconds of the action </summary>
+        <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_fDuration">
@@ -105,7 +99,7 @@
       <Docs>
         <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new action that performs the exactly the reverse action </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

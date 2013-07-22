@@ -11,10 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Ease Elastic abstract class. </summary>
-    <remarks>&lt;para&gt;
-  &lt;para&gt;v0.8.2 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.8.2 &lt;/para&gt;&lt;para&gt;v0.8.2 &lt;/para&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -84,7 +82,7 @@
         <param name="pZone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithAction">
@@ -104,7 +102,7 @@
         <param name="pAction">To be added.</param>
         <summary>Initializes the action with the inner action and the period in radians (default is 0.3) </summary>
         <returns>To be added.</returns>
-        <remarks>Initializes the action with the inner action and the period in radians (default is 0.3) </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithAction">
@@ -157,7 +155,7 @@
       <Docs>
         <summary>set period of the wave in radians. </summary>
         <value>To be added.</value>
-        <remarks>set period of the wave in radians. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Reverse">
@@ -174,7 +172,7 @@
       <Docs>
         <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new action that performs the exactly the reverse action </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

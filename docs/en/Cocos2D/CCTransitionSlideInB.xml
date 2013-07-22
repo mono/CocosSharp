@@ -11,9 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCTransitionSlideInB" /&gt;: Slide in the incoming scene from the bottom border. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTransitionSlideInB" /&gt;</summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -61,7 +60,7 @@
       <Docs>
         <summary>returns the action that will be performed by the incoming and outgoing scene </summary>
         <returns>To be added.</returns>
-        <remarks>returns the action that will be performed by the incoming and outgoing scene </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitScenes">
@@ -77,7 +76,7 @@
       <Parameters />
       <Docs>
         <summary>initializes the scenes </summary>
-        <remarks>initializes the scenes </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SceneOrder">
@@ -93,7 +92,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

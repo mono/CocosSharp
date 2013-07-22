@@ -11,9 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCFadeOutBLTiles" /&gt; action. Fades out the tiles in a Bottom-Left direction. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCFadeOutBLTiles" /&gt;</summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>creates the action with the grid size and the duration </summary>
-        <remarks>creates the action with the grid size and the duration </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -66,7 +65,7 @@
         <param name="time">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

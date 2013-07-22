@@ -12,8 +12,7 @@
   <Interfaces />
   <Docs>
     <summary> is a 3D grid implementation. Each vertex has 3 dimensions: x,y,z </summary>
-    <remarks>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCGrid3D" /&gt; is a 3D grid implementation. Each vertex has 3 dimensions: x,y,z &lt;/para&gt;&lt;see cref="T:Cocos2D.CCGrid3D" /&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -29,7 +28,7 @@
       <Docs>
         <param name="gridSize">To be added.</param>
         <summary>create one Grid </summary>
-        <remarks>create one Grid </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -83,7 +82,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CalculateVertexPoints">
@@ -99,7 +98,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_pIndices">
@@ -149,7 +148,7 @@
         <param name="pos">To be added.</param>
         <summary>returns the original (non-transformed) vertex at a given position </summary>
         <returns>To be added.</returns>
-        <remarks>returns the original (non-transformed) vertex at a given position </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Reuse">
@@ -165,7 +164,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetVertex">
@@ -186,7 +185,7 @@
         <param name="pos">To be added.</param>
         <param name="vertex">To be added.</param>
         <summary>sets a new vertex at a given position </summary>
-        <remarks>sets a new vertex at a given position </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Vertex">
@@ -206,7 +205,7 @@
         <param name="pos">To be added.</param>
         <summary>returns the vertex at a given position </summary>
         <returns>To be added.</returns>
-        <remarks>returns the vertex at a given position </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

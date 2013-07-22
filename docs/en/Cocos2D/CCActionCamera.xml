@@ -11,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;Base class for &lt;see cref="T:Cocos2D.CCCamera" /&gt; actions. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCCamera" /&gt;</summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -209,7 +209,7 @@
       <Docs>
         <summary>returns a new reversed action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new reversed action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -227,8 +227,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

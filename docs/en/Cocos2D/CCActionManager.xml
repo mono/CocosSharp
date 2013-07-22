@@ -15,27 +15,21 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCActionManager" /&gt; is a singleton that manages all the actions. Normally you won't need to use this singleton directly. 99% of the cases you will use the &lt;see cref="T:Cocos2D.CCNode" /&gt; interface, which uses this singleton. But there are some cases where you might need to use this singleton. Examples: &lt;/para&gt;&lt;see cref="T:Cocos2D.CCActionManager" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;list type="bullet"&gt;
-    &lt;item&gt;
-      &lt;description&gt;When you want to run an action where the target is different from a Node.&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;When you want to pause / resume the actions&lt;/description&gt;
-    &lt;/item&gt;
-  &lt;/list&gt;
-&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;When you want to run an action where the target is different from a Node.&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;When you want to pause / resume the actions&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;When you want to run an action where the target is different from a &lt;see cref="T:Cocos2D.CCNode" /&gt;.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;para&gt;When you want to pause / resume the actions&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;v0.8 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>
+        <para>v0.8 </para>
+      </para>
+      <para>v0.8 </para>
+      <item>
+        <description>When you want to run an action where the target is different from a Node.</description>
+      </item>
+      <description>When you want to run an action where the target is different from a Node.</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -67,7 +61,7 @@
       <Docs>
         <param name="element">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AddAction">
@@ -90,7 +84,7 @@
         <param name="target">To be added.</param>
         <param name="paused">To be added.</param>
         <summary>Adds an action with a target. If the target is already present, then the action will be added to the existing target. If the target is not present, a new instance of this target will be created either paused or not, and the action will be added to the newly created target. When the target is paused, the queued actions won't be 'ticked'. </summary>
-        <remarks>Adds an action with a target. If the target is already present, then the action will be added to the existing target. If the target is not present, a new instance of this target will be created either paused or not, and the action will be added to the newly created target. When the target is paused, the queued actions won't be 'ticked'. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DeleteHashElement">
@@ -109,7 +103,7 @@
       <Docs>
         <param name="element">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -147,7 +141,7 @@
         <param name="target">To be added.</param>
         <summary>Gets an action given its tag an a target the  the with the given tag </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Gets an action given its tag an a target &lt;para&gt;the &lt;see cref="T:Cocos2D.CCAction" /&gt; the with the given tag &lt;/para&gt;&lt;/para&gt;&lt;para&gt;the &lt;see cref="T:Cocos2D.CCAction" /&gt; the with the given tag &lt;/para&gt;&lt;see cref="T:Cocos2D.CCAction" /&gt;&lt;para&gt;the &lt;see cref="T:Cocos2D.CCAction" /&gt; the with the given tag &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="NumberOfRunningActionsInTarget">
@@ -165,16 +159,16 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>Returns the numbers of actions that are running in a certain target. Composable actions are counted as 1 action. Example:If you are running 1 Sequence of 7 actions, it will return 1.If you are running 7 Sequences of 2 actions, it will return 7. </summary>
+        <summary>Returns the numbers of actions that are running in a certain target. Composable actions are counted as 1 action. Example:</summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;Returns the numbers of actions that are running in a certain target. Composable actions are counted as 1 action. Example:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;If you are running 1 Sequence of 7 actions, it will return 1.&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;If you are running 7 Sequences of 2 actions, it will return 7. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;If you are running 1 Sequence of 7 actions, it will return 1.&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;If you are running 7 Sequences of 2 actions, it will return 7. &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;If you are running 1 &lt;see cref="T:Cocos2D.CCSequence" /&gt; of 7 actions, it will return 1.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCSequence" /&gt;&lt;para&gt;If you are running 7 Sequences of 2 actions, it will return 7. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Returns the numbers of actions that are running in a certain target. Composable actions are counted as 1 action. Example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>If you are running 1 Sequence of 7 actions, it will return 1.</description>
+          </item>
+          <description>If you are running 1 Sequence of 7 actions, it will return 1.</description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="PauseAllRunningActions">
@@ -191,7 +185,7 @@
       <Docs>
         <summary>Pauses all running actions, returning a list of targets whose actions were paused. </summary>
         <returns>To be added.</returns>
-        <remarks>Pauses all running actions, returning a list of targets whose actions were paused. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PauseTarget">
@@ -210,7 +204,7 @@
       <Docs>
         <param name="target">To be added.</param>
         <summary>Pauses the target: all running actions and newly added actions will be paused. </summary>
-        <remarks>Pauses the target: all running actions and newly added actions will be paused. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveAction">
@@ -229,7 +223,7 @@
       <Docs>
         <param name="action">To be added.</param>
         <summary>Removes an action given an action reference. </summary>
-        <remarks>Removes an action given an action reference. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveActionAtIndex">
@@ -250,7 +244,7 @@
         <param name="index">To be added.</param>
         <param name="element">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveActionByTag">
@@ -271,7 +265,7 @@
         <param name="tag">To be added.</param>
         <param name="target">To be added.</param>
         <summary>Removes an action given its tag and the target </summary>
-        <remarks>Removes an action given its tag and the target </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveAllActions">
@@ -287,7 +281,7 @@
       <Parameters />
       <Docs>
         <summary>Removes all actions from all the targets. </summary>
-        <remarks>Removes all actions from all the targets. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveAllActionsFromTarget">
@@ -306,7 +300,7 @@
       <Docs>
         <param name="target">To be added.</param>
         <summary>Removes all actions from a certain target. All the actions that belongs to the target will be removed. </summary>
-        <remarks>Removes all actions from a certain target. All the actions that belongs to the target will be removed. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ResumeTarget">
@@ -325,7 +319,7 @@
       <Docs>
         <param name="target">To be added.</param>
         <summary>Resumes the target. All queued actions will be resumed. </summary>
-        <remarks>Resumes the target. All queued actions will be resumed. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ResumeTargets">
@@ -344,7 +338,7 @@
       <Docs>
         <param name="targetsToResume">To be added.</param>
         <summary>Resume a set of targets (convenience function to reverse a pauseAllRunningActions call) </summary>
-        <remarks>Resume a set of targets (convenience function to reverse a pauseAllRunningActions call) </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -363,7 +357,7 @@
       <Docs>
         <param name="dt">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

@@ -11,37 +11,22 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Class that creates and handle the main Window and manages how and when to execute the Scenes. </summary>
-    <remarks>&lt;para&gt;The &lt;see cref="T:Cocos2D.CCDirector" /&gt; is also responsible for:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;initializing the OpenGL context&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;setting the OpenGL pixel format (default on is RGB565)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;setting the OpenGL buffer depth (default one is 0-bit)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;setting the projection (default one is 3D)&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;setting the orientation (default one is Portrait)&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCDirector" /&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;initializing the OpenGL context&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;setting the OpenGL pixel format (default on is RGB565)&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;setting the OpenGL buffer depth (default one is 0-bit)&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;setting the projection (default one is 3D)&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;setting the orientation (default one is Portrait)&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;initializing the OpenGL context&lt;/para&gt;&lt;para&gt;setting the OpenGL pixel format (default on is RGB565)&lt;/para&gt;&lt;para&gt;setting the OpenGL buffer depth (default one is 0-bit)&lt;/para&gt;&lt;para&gt;setting the projection (default one is 3D)&lt;/para&gt;&lt;para&gt;setting the orientation (default one is Portrait)&lt;/para&gt;&lt;para&gt;Since the &lt;see cref="T:Cocos2D.CCDirector" /&gt; is a singleton, the standard way to use it is by calling: _ &lt;ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member"&gt;Director::getInstance()&lt;/ref&gt;-&amp;gt;methodName();&lt;/para&gt;&lt;see cref="T:Cocos2D.CCDirector" /&gt;&lt;ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member"&gt;Director::getInstance()&lt;/ref&gt;&lt;para&gt;The &lt;see cref="T:Cocos2D.CCDirector" /&gt; also sets the default OpenGL context:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;GL_TEXTURE_2D is enabled&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;GL_VERTEX_ARRAY is enabled&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;GL_COLOR_ARRAY is enabled&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;GL_TEXTURE_COORD_ARRAY is enabled &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCDirector" /&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;GL_TEXTURE_2D is enabled&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;GL_VERTEX_ARRAY is enabled&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;GL_COLOR_ARRAY is enabled&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;GL_TEXTURE_COORD_ARRAY is enabled &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;GL_TEXTURE_2D is enabled&lt;/para&gt;&lt;para&gt;GL_VERTEX_ARRAY is enabled&lt;/para&gt;&lt;para&gt;GL_COLOR_ARRAY is enabled&lt;/para&gt;&lt;para&gt;GL_TEXTURE_COORD_ARRAY is enabled &lt;/para&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks>
+      <para>The <see cref="T:Cocos2D.CCDirector" /> is also responsible for:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCDirector" />
+      <list type="bullet" />
+      <para>Since the <ref refid="classcocos2d_1_1_director" kindref="compound">Director</ref> is a singleton, the standard way to use it is by calling: _ <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>-&gt;methodName();</para>
+      <ref refid="classcocos2d_1_1_director" kindref="compound">Director</ref>
+      <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>
+      <para>The <ref refid="classcocos2d_1_1_director" kindref="compound">Director</ref> also sets the default OpenGL context:<itemizedlist /></para>
+      <ref refid="classcocos2d_1_1_director" kindref="compound">Director</ref>
+      <itemizedlist />
+      <item>
+        <description>initializing the OpenGL context</description>
+      </item>
+      <description>initializing the OpenGL context</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -70,7 +55,7 @@
       <Docs>
         <summary>setAccelerometer </summary>
         <value>To be added.</value>
-        <remarks>setAccelerometer </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ActionManager">
@@ -86,7 +71,7 @@
       <Docs>
         <summary>setActionManager </summary>
         <value>To be added.</value>
-        <remarks>setActionManager </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AnimationInterval">
@@ -102,7 +87,7 @@
       <Docs>
         <summary>Set the FPS value. </summary>
         <value>To be added.</value>
-        <remarks>Set the FPS value. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CanPopScene">
@@ -135,7 +120,7 @@
         <summary>The size in pixels of the surface. It could be different than the screen size.
  High-res devices might have a higher surface size than the screen size. Only available when compiled using SDK &gt;= 4.0. v0.99.4 </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ConvertToGl">
@@ -191,7 +176,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Delegate">
@@ -207,7 +192,7 @@
       <Docs>
         <summary> delegate. It shall implemente the DirectorDelegate protocol v0.99.5 </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DeserializeState">
@@ -240,7 +225,7 @@
       <Docs>
         <summary>Display the FPS on the bottom-left corner </summary>
         <value>To be added.</value>
-        <remarks>Display the FPS on the bottom-left corner </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DrawScene">
@@ -260,10 +245,7 @@
         <param name="gameTime">To be added.</param>
         <summary>Draw the scene.
  This method is called every frame. Don't call it manually. </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;Draw the scene.
-&lt;/verbatim&gt; This method is called every frame. Don't call it manually. &lt;/para&gt;&lt;verbatim&gt;Draw the scene.
-&lt;/verbatim&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="End">
@@ -279,7 +261,7 @@
       <Parameters />
       <Docs>
         <summary>Ends the execution, releases the running scene. It doesn't remove the OpenGL view from its parent. You have to do it manually. </summary>
-        <remarks>Ends the execution, releases the running scene. It doesn't remove the OpenGL view from its parent. You have to do it manually. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="GamePadEnabled">
@@ -312,7 +294,7 @@
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsPaused">
@@ -328,7 +310,7 @@
       <Docs>
         <summary>Whether or not the  is paused </summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Whether or not the &lt;see cref="T:Cocos2D.CCDirector" /&gt; is paused &lt;/para&gt;&lt;see cref="T:Cocos2D.CCDirector" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsSendCleanupToScene">
@@ -345,7 +327,7 @@
       <Docs>
         <summary>How many frames were called since the director started Whether or not the replaced scene will receive the cleanup message. If the new scene is pushed, then the old scene won't receive the "cleanup" message. If the new scene replaces the old one, the it will receive the "cleanup" message. v0.99.0 </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;How many frames were called since the director started Whether or not the replaced scene will receive the cleanup message. If the new scene is pushed, then the old scene won't receive the "cleanup" message. If the new scene replaces the old one, the it will receive the "cleanup" message. &lt;para&gt;v0.99.0 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v0.99.0 &lt;/para&gt;&lt;para&gt;v0.99.0 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="KeypadDispatcher">
@@ -361,7 +343,7 @@
       <Docs>
         <summary>setKeypadDispatcher </summary>
         <value>To be added.</value>
-        <remarks>setKeypadDispatcher </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_bPurgeDirecotorInNextLoop">
@@ -425,7 +407,7 @@
       <Docs>
         <param name="gameTime">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="NeedsInit">
@@ -457,7 +439,7 @@
       <Docs>
         <summary>This object will be visited after the main scene is visited. This object MUST implement the "visit" selector. Useful to hook a notification object, like Notifications (http://github.com/manucorporat/CCNotifications) v0.99.5 </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Pause">
@@ -473,7 +455,7 @@
       <Parameters />
       <Docs>
         <summary>Pauses the running scene. The running scene will be drawed but all scheduled timers will be paused While paused, the draw rate will be 4 FPS to reduce CPU consumption </summary>
-        <remarks>&lt;para&gt;Pauses the running scene. The running scene will be &lt;emphasis&gt;drawed&lt;/emphasis&gt; but all scheduled timers will be paused While paused, the draw rate will be 4 FPS to reduce CPU consumption &lt;/para&gt;&lt;emphasis&gt;drawed&lt;/emphasis&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PopScene">
@@ -489,7 +471,7 @@
       <Parameters />
       <Docs>
         <summary>Pops out a scene from the queue. This scene will replace the running one. The running scene will be deleted. If there are no more scenes in the stack the execution is terminated. ONLY call it if there is a running scene. </summary>
-        <remarks>Pops out a scene from the queue. This scene will replace the running one. The running scene will be deleted. If there are no more scenes in the stack the execution is terminated. ONLY call it if there is a running scene. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PopScene">
@@ -526,7 +508,7 @@
       <Parameters />
       <Docs>
         <summary>Pops out all scenes from the queue until the root scene in the queue. This scene will replace the running one. Internally it will call popToSceneStackLevel(1)</summary>
-        <remarks>&lt;para&gt;Pops out all scenes from the queue until the root scene in the queue. This scene will replace the running one. Internally it will call &lt;computeroutput&gt;popToSceneStackLevel(1)&lt;/computeroutput&gt;&lt;/para&gt;&lt;computeroutput&gt;popToSceneStackLevel(1)&lt;/computeroutput&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PopToSceneStackLevel">
@@ -545,7 +527,7 @@
       <Docs>
         <param name="level">To be added.</param>
         <summary>Pops out all scenes from the queue until it reaches level. If level is 0, it will end the director. If level is 1, it will pop all scenes until it reaches to root scene. If level is &lt;= than the current stack level, it won't do anything. </summary>
-        <remarks>&lt;para&gt;Pops out all scenes from the queue until it reaches &lt;computeroutput&gt;level&lt;/computeroutput&gt;. If level is 0, it will end the director. If level is 1, it will pop all scenes until it reaches to root scene. If level is &amp;lt;= than the current stack level, it won't do anything. &lt;/para&gt;&lt;computeroutput&gt;level&lt;/computeroutput&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Projection">
@@ -561,7 +543,7 @@
       <Docs>
         <summary>Sets an OpenGL projection v0.8.2 </summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PurgeCachedData">
@@ -577,7 +559,7 @@
       <Parameters />
       <Docs>
         <summary>Removes cached all cocos2d cached data. It will purge the , ,  cache v0.99.3 </summary>
-        <remarks>&lt;para&gt;Removes cached all &lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt; cached data. It will purge the &lt;see cref="T:Cocos2D.CCTextureCache" /&gt;, &lt;see cref="T:Cocos2D.CCSpriteFrameCache" /&gt;, &lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt; cache &lt;para&gt;v0.99.3 &lt;/para&gt;&lt;/para&gt;&lt;ref refid="namespacecocos2d" kindref="compound"&gt;cocos2d&lt;/ref&gt;&lt;see cref="T:Cocos2D.CCTextureCache" /&gt;&lt;see cref="T:Cocos2D.CCSpriteFrameCache" /&gt;&lt;see cref="T:Cocos2D.CCLabelBMFont" /&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;&lt;para&gt;v0.99.3 &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PurgeDirector">
@@ -593,7 +575,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PushScene">
@@ -612,7 +594,7 @@
       <Docs>
         <param name="pScene">To be added.</param>
         <summary>Suspends the execution of the running scene, pushing it on the stack of suspended scenes. The new scene will be executed. Try to avoid big stacks of pushed scenes to reduce memory allocation. ONLY call it if there is a running scene. </summary>
-        <remarks>Suspends the execution of the running scene, pushing it on the stack of suspended scenes. The new scene will be executed. Try to avoid big stacks of pushed scenes to reduce memory allocation. ONLY call it if there is a running scene. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ReplaceScene">
@@ -631,7 +613,7 @@
       <Docs>
         <param name="pScene">To be added.</param>
         <summary>Replaces the running scene with a new one. The running scene is terminated. ONLY call it if there is a running scene. </summary>
-        <remarks>Replaces the running scene with a new one. The running scene is terminated. ONLY call it if there is a running scene. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ResetSceneStack">
@@ -663,7 +645,7 @@
       <Parameters />
       <Docs>
         <summary>Resumes the paused scene The scheduled timers will be activated again. The "delta time" will be 0 (as if the game wasn't paused) </summary>
-        <remarks>Resumes the paused scene The scheduled timers will be activated again. The "delta time" will be 0 (as if the game wasn't paused) </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ResumeFromBackground">
@@ -695,7 +677,7 @@
       <Docs>
         <summary>Get current running .  can only run one  at the time </summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Get current running &lt;see cref="T:Cocos2D.CCScene" /&gt;. &lt;see cref="T:Cocos2D.CCDirector" /&gt; can only run one &lt;see cref="T:Cocos2D.CCScene" /&gt; at the time &lt;/para&gt;&lt;see cref="T:Cocos2D.CCScene" /&gt;&lt;see cref="T:Cocos2D.CCDirector" /&gt;&lt;see cref="T:Cocos2D.CCScene" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RunWithScene">
@@ -714,7 +696,12 @@
       <Docs>
         <param name="pScene">To be added.</param>
         <summary>Enters the 's main loop with the given . Call it to run only your FIRST scene. Don't call it if there is already a running scene.</summary>
-        <remarks>&lt;para&gt;Enters the &lt;see cref="T:Cocos2D.CCDirector" /&gt;'s main loop with the given &lt;see cref="T:Cocos2D.CCScene" /&gt;. Call it to run only your FIRST scene. Don't call it if there is already a running scene.&lt;/para&gt;&lt;see cref="T:Cocos2D.CCDirector" /&gt;&lt;see cref="T:Cocos2D.CCScene" /&gt;&lt;para&gt;It will call pushScene: and then it will call startAnimation &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Enters the <see cref="T:Cocos2D.CCDirector" />'s main loop with the given <see cref="T:Cocos2D.CCScene" />. Call it to run only your FIRST scene. Don't call it if there is already a running scene.</para>
+          <see cref="T:Cocos2D.CCDirector" />
+          <see cref="T:Cocos2D.CCScene" />
+          <para>It will call pushScene: and then it will call startAnimation </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SceneCount">
@@ -746,7 +733,7 @@
       <Docs>
         <summary>setScheduler </summary>
         <value>To be added.</value>
-        <remarks>setScheduler </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SerializeState">
@@ -781,7 +768,7 @@
       <Docs>
         <param name="bOn">To be added.</param>
         <summary>enables/disables OpenGL alpha blending </summary>
-        <remarks>enables/disables OpenGL alpha blending </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetDefaultValues">
@@ -797,7 +784,7 @@
       <Parameters />
       <Docs>
         <summary>sets the default values based on the  info </summary>
-        <remarks>&lt;para&gt;sets the default values based on the &lt;see cref="T:Cocos2D.CCConfiguration" /&gt; info &lt;/para&gt;&lt;see cref="T:Cocos2D.CCConfiguration" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetDepthTest">
@@ -816,7 +803,7 @@
       <Docs>
         <param name="bOn">To be added.</param>
         <summary>enables/disables OpenGL depth test </summary>
-        <remarks>enables/disables OpenGL depth test </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetNextDeltaTimeZero">
@@ -835,7 +822,7 @@
       <Docs>
         <param name="bNextDeltaTimeZero">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetNextScene">
@@ -851,7 +838,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetOpenGlView">
@@ -883,7 +870,7 @@
       <Parameters />
       <Docs>
         <summary>Sets the glViewport </summary>
-        <remarks>Sets the glViewport </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SharedDirector">
@@ -899,7 +886,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartAnimation">
@@ -915,7 +902,7 @@
       <Parameters />
       <Docs>
         <summary>The main loop is triggered again. Call this function only if [stopAnimation] was called earlier Don't call this function to start the main loop. To run the main loop call runWithScene </summary>
-        <remarks>&lt;para&gt;The main loop is triggered again. Call this function only if [stopAnimation] was called earlier &lt;para&gt;Don't call this function to start the main loop. To run the main loop call runWithScene &lt;/para&gt;&lt;/para&gt;&lt;para&gt;Don't call this function to start the main loop. To run the main loop call runWithScene &lt;/para&gt;&lt;para&gt;Don't call this function to start the main loop. To run the main loop call runWithScene &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StopAnimation">
@@ -931,7 +918,7 @@
       <Parameters />
       <Docs>
         <summary>Stops the animation. Nothing will be drawn. The main loop won't be triggered anymore. If you don't want to pause your animation call [pause] instead. </summary>
-        <remarks>Stops the animation. Nothing will be drawn. The main loop won't be triggered anymore. If you don't want to pause your animation call [pause] instead. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TouchDispatcher">
@@ -947,7 +934,7 @@
       <Docs>
         <summary>setTouchDispatcher </summary>
         <value>To be added.</value>
-        <remarks>setTouchDispatcher </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -982,7 +969,7 @@
       <Docs>
         <summary>returns visible origin of the OpenGL view in points. </summary>
         <value>To be added.</value>
-        <remarks>returns visible origin of the OpenGL view in points. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="VisibleSize">
@@ -998,7 +985,7 @@
       <Docs>
         <summary>returns visible size of the OpenGL view in points. the value is equal to getWinSize if don't invoke EGLView::setDesignResolutionSize() </summary>
         <value>To be added.</value>
-        <remarks>returns visible size of the OpenGL view in points. the value is equal to getWinSize if don't invoke EGLView::setDesignResolutionSize() </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="WinSize">
@@ -1014,7 +1001,7 @@
       <Docs>
         <summary>returns the size of the OpenGL view in points. </summary>
         <value>To be added.</value>
-        <remarks>returns the size of the OpenGL view in points. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="WinSizeInPixels">
@@ -1030,7 +1017,7 @@
       <Docs>
         <summary>returns the size of the OpenGL view in pixels. </summary>
         <value>To be added.</value>
-        <remarks>returns the size of the OpenGL view in pixels. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ZEye">
@@ -1044,9 +1031,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>XXX: missing description. </summary>
+        <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

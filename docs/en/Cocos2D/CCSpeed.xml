@@ -11,10 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Changes the speed of an action, making it take longer (speed&gt;1) or less (speed&lt;1) time. Useful to simulate 'slow motion' or 'fast forward' effect. </summary>
-    <remarks>&lt;para&gt;
-  &lt;para&gt;This action can't be Sequenceable because it is not an IntervalAction &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;This action can't be Sequenceable because it is not an IntervalAction &lt;/para&gt;&lt;para&gt;This action can't be Sequenceable because it is not an IntervalAction &lt;/para&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,7 +28,7 @@
       <Docs>
         <param name="speed">To be added.</param>
         <summary>create the action </summary>
-        <remarks>create the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -68,7 +66,7 @@
         <param name="zone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithAction">
@@ -90,7 +88,7 @@
         <param name="fRate">To be added.</param>
         <summary>initializes the action </summary>
         <returns>To be added.</returns>
-        <remarks>initializes the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsDone">
@@ -104,9 +102,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>return true if the action has finished </summary>
+        <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_fSpeed">
@@ -153,7 +151,7 @@
       <Docs>
         <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new action that performs the exactly the reverse action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Speed">
@@ -169,7 +167,7 @@
       <Docs>
         <summary>alter the speed of the inner function in runtime </summary>
         <value>To be added.</value>
-        <remarks>alter the speed of the inner function in runtime </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -187,8 +185,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Step">
@@ -206,8 +204,8 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
-        <summary>called every frame with it's delta time. DON'T override unless you know what you are doing. </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Stop">
@@ -223,7 +221,7 @@
       <Parameters />
       <Docs>
         <summary>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </summary>
-        <remarks>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

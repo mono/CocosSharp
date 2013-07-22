@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks></remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -175,7 +175,7 @@
         <param name="t">To be added.</param>
         <summary>execute a schedule function </summary>
         <returns>To be added.</returns>
-        <remarks>execute a schedule function </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ExecuteScriptFile">
@@ -193,29 +193,9 @@
       </Parameters>
       <Docs>
         <param name="pszFileName">String object holding the filename of the script file that is to be executed </param>
-        <summary>Execute a script file. </summary>
+        <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;filename&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;String object holding the filename of the script file that is to be executed &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;filename&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;String object holding the filename of the script file that is to be executed &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;filename&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;filename&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;String object holding the filename of the script file that is to be executed &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;String object holding the filename of the script file that is to be executed &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ExecuteString">
@@ -233,33 +213,9 @@
       </Parameters>
       <Docs>
         <param name="pszCodes">holding the valid script code that should be executed. </param>
-        <summary>Execute script code contained in the given string. </summary>
+        <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;
-  &lt;para&gt;0 if the string is executed correctly. &lt;/para&gt;
-  &lt;simplesectsep /&gt;
-  &lt;para&gt;other if the string is executed wrongly. &lt;/para&gt;
-&lt;/para&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;codes&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;holding the valid script code that should be executed. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;codes&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;holding the valid script code that should be executed. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;codes&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;codes&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;holding the valid script code that should be executed. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;holding the valid script code that should be executed. &lt;/para&gt;&lt;para&gt;0 if the string is executed correctly. &lt;/para&gt;&lt;simplesectsep /&gt;&lt;para&gt;other if the string is executed wrongly. &lt;/para&gt;&lt;para&gt;0 if the string is executed correctly. &lt;/para&gt;&lt;simplesectsep /&gt;&lt;para&gt;other if the string is executed wrongly. &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ExecuteTouchesEvent">

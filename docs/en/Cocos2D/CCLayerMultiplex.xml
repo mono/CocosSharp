@@ -11,24 +11,17 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;MultipleLayer is a &lt;see cref="T:Cocos2D.CCLayer" /&gt; with the ability to multiplex it's children. Features: &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayer" /&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;list type="bullet"&gt;
-    &lt;item&gt;
-      &lt;description&gt;It supports one or more children&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;Only one children will be active a time &lt;/description&gt;
-    &lt;/item&gt;
-  &lt;/list&gt;
-&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;It supports one or more children&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Only one children will be active a time &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;It supports one or more children&lt;/para&gt;&lt;para&gt;Only one children will be active a time &lt;/para&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <item>
+        <description>It supports one or more children</description>
+      </item>
+      <description>It supports one or more children</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -41,7 +34,7 @@
       <Parameters />
       <Docs>
         <summary>creates a  with one or more layers using a variable argument list. </summary>
-        <remarks>&lt;para&gt;creates a &lt;see cref="T:Cocos2D.CCLayerMultiplex" /&gt; with one or more layers using a variable argument list. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCLayerMultiplex" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -162,7 +155,7 @@
       <Docs>
         <param name="layer">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InAction">
@@ -260,7 +253,7 @@
         <param name="n">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SwitchToAndReleaseMe">
@@ -281,10 +274,7 @@
         <summary>release the current layer and switches to another layer indexed by n.
  The current (old) layer will be removed from it's parent with 'cleanup:YES'. </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;release the current layer and switches to another layer indexed by n.
-&lt;/verbatim&gt; The current (old) layer will be removed from it's parent with 'cleanup:YES'. &lt;/para&gt;&lt;verbatim&gt;release the current layer and switches to another layer indexed by n.
-&lt;/verbatim&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

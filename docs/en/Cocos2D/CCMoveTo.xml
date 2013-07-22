@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>Moves a  object to the position x,y. x and y are absolute coordinates by modifying it's position attribute. Several  actions can be concurrently called, and the resulting movement will be the sum of individual movements. v2.1beta2-custom </summary>
-    <remarks>&lt;para&gt;Moves a &lt;see cref="T:Cocos2D.CCNode" /&gt; object to the position x,y. x and y are absolute coordinates by modifying it's position attribute. Several &lt;see cref="T:Cocos2D.CCMoveTo" /&gt; actions can be concurrently called, and the resulting movement will be the sum of individual movements. &lt;para&gt;v2.1beta2-custom &lt;/para&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCMoveTo" /&gt;&lt;para&gt;v2.1beta2-custom &lt;/para&gt;&lt;para&gt;v2.1beta2-custom &lt;/para&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +28,7 @@
       <Docs>
         <param name="moveTo">To be added.</param>
         <summary>creates the action </summary>
-        <remarks>creates the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -66,7 +66,7 @@
         <param name="zone">To be added.</param>
         <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a clone of action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -88,7 +88,7 @@
         <param name="position">To be added.</param>
         <summary>initializes the action </summary>
         <returns>To be added.</returns>
-        <remarks>initializes the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -106,8 +106,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Update">

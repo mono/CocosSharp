@@ -11,11 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCRenderTexture" /&gt; is a generic rendering target. To render things into it, simply construct a render target, call begin on it, call visit on any cocos scenes or objects to render them, and call end. For convenience, render texture adds a sprite as it's display child with the results, so you can simply add the render texture to your scene and treat it like any other CocosNode. There are also functions for saving the render texture to disk in PNG or JPG format. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCRenderTexture" /&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;para&gt;v0.8.1 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.8.1 &lt;/para&gt;&lt;para&gt;v0.8.1 &lt;/para&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>creates a  object with width and height in Points, pixel format is RGBA8888 </summary>
-        <remarks>&lt;para&gt;creates a &lt;see cref="T:Cocos2D.CCRenderTexture" /&gt; object with width and height in Points, pixel format is RGBA8888 &lt;/para&gt;&lt;see cref="T:Cocos2D.CCRenderTexture" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -106,7 +103,7 @@
       <Parameters />
       <Docs>
         <summary>starts grabbing </summary>
-        <remarks>starts grabbing </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="BeginWithClear">
@@ -131,7 +128,7 @@
         <param name="b">To be added.</param>
         <param name="a">To be added.</param>
         <summary>starts rendering to the texture while clearing the texture first. This is more efficient then calling -clear first and then -begin </summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="BeginWithClear">
@@ -212,7 +209,7 @@
         <param name="b">To be added.</param>
         <param name="a">To be added.</param>
         <summary>clears the texture with a color </summary>
-        <remarks>clears the texture with a color </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ClearDepth">
@@ -231,7 +228,7 @@
       <Docs>
         <param name="depthValue">To be added.</param>
         <summary>Value for clearDepth. Valid only when autoDraw is true. </summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ClearStencil">
@@ -250,7 +247,7 @@
       <Docs>
         <param name="stencilValue">To be added.</param>
         <summary>Value for clear Stencil. Valid only when autoDraw is true </summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="End">
@@ -266,7 +263,7 @@
       <Parameters />
       <Docs>
         <summary>ends grabbing </summary>
-        <remarks>ends grabbing </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithWidthAndHeight">
@@ -294,7 +291,7 @@
         <param name="usage">To be added.</param>
         <summary>initializes a  object with width and height in Points and a pixel format( only RGB and RGBA formats are valid ) and depthStencil format </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;initializes a &lt;see cref="T:Cocos2D.CCRenderTexture" /&gt; object with width and height in Points and a pixel format( only RGB and RGBA formats are valid ) and depthStencil format &lt;/para&gt;&lt;see cref="T:Cocos2D.CCRenderTexture" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_ePixelFormat">
@@ -377,7 +374,7 @@
       <Docs>
         <summary>setSprite </summary>
         <value>To be added.</value>
-        <remarks>setSprite </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

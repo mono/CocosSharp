@@ -16,11 +16,8 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCBMFontConfiguration" /&gt; has parsed configuration of the the .fnt file. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCBMFontConfiguration" /&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;para&gt;v0.8 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;&lt;para&gt;v0.8 &lt;/para&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,7 +30,7 @@
       <Parameters />
       <Docs>
         <summary>allocates a  with a FNT file </summary>
-        <remarks>&lt;para&gt;allocates a &lt;see cref="T:Cocos2D.CCBMFontConfiguration" /&gt; with a FNT file &lt;/para&gt;&lt;see cref="T:Cocos2D.CCBMFontConfiguration" /&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -67,7 +64,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CharacterSet">
@@ -83,7 +80,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Create">

@@ -11,9 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCShatteredTiles3D" /&gt; action. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCShatteredTiles3D" /&gt;</summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>creates the action with a range, whether of not to shatter Z vertices, a grid size and duration </summary>
-        <remarks>creates the action with a range, whether of not to shatter Z vertices, a grid size and duration </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -68,7 +67,7 @@
         <param name="pZone">To be added.</param>
         <summary>returns a new clone of the action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new clone of the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -94,7 +93,7 @@
         <param name="bShatterZ">To be added.</param>
         <summary>initializes the action with a range, whether or not to shatter Z vertices, a grid size and duration </summary>
         <returns>To be added.</returns>
-        <remarks>initializes the action with a range, whether or not to shatter Z vertices, a grid size and duration </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_bOnce">
@@ -158,17 +157,15 @@
       <Docs>
         <param name="time">To be added.</param>
         <summary>called once per frame. time a value between 0 and 1</summary>
-        <remarks>&lt;para&gt;called once per frame. time a value between 0 and 1&lt;/para&gt;&lt;para&gt;For example:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;0 means that the action just started&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;1 means that the action is over &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;0 means that the action just started&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;1 means that the action is over &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;0 means that the action just started&lt;/para&gt;&lt;para&gt;0.5 means that the action is in the middle&lt;/para&gt;&lt;para&gt;1 means that the action is over &lt;/para&gt;</remarks>
+        <remarks>
+          <para>called once per frame. time a value between 0 and 1</para>
+          <para>For example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>0 means that the action just started</description>
+          </item>
+          <description>0 means that the action just started</description>
+        </remarks>
       </Docs>
     </Member>
   </Members>

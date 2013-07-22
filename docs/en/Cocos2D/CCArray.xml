@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks></remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +28,7 @@
       <Docs>
         <param name="capacity">To be added.</param>
         <summary>Create an array with some objects </summary>
-        <remarks>Create an array with some objects </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="arr">

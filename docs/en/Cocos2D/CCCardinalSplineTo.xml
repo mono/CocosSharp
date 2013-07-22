@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>Cardinal Spline path. http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline</summary>
-    <remarks>&lt;para&gt;Cardinal Spline path. &lt;ulink url="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline"&gt;http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline&lt;/ulink&gt;&lt;/para&gt;&lt;ulink url="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline"&gt;http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Cardinal_spline&lt;/ulink&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,7 +28,7 @@
       <Docs>
         <param name="cardinalSplineTo">To be added.</param>
         <summary>creates an action with a Cardinal Spline array of points and tension </summary>
-        <remarks>creates an action with a Cardinal Spline array of points and tension </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -68,7 +68,7 @@
         <param name="pZone">To be added.</param>
         <summary>returns a new clone of the action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new clone of the action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -92,7 +92,7 @@
         <param name="tension">To be added.</param>
         <summary>initializes the action with a duration and an array of points </summary>
         <returns>To be added.</returns>
-        <remarks>initializes the action with a duration and an array of points </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_accumulatedDiff">
@@ -183,7 +183,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Reverse">
@@ -200,7 +200,7 @@
       <Docs>
         <summary>returns a new reversed action </summary>
         <returns>To be added.</returns>
-        <remarks>returns a new reversed action </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -218,8 +218,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -238,17 +238,15 @@
       <Docs>
         <param name="time">To be added.</param>
         <summary>called once per frame. time a value between 0 and 1</summary>
-        <remarks>&lt;para&gt;called once per frame. time a value between 0 and 1&lt;/para&gt;&lt;para&gt;For example:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;0 means that the action just started&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;1 means that the action is over &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;0 means that the action just started&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;0.5 means that the action is in the middle&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;1 means that the action is over &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;0 means that the action just started&lt;/para&gt;&lt;para&gt;0.5 means that the action is in the middle&lt;/para&gt;&lt;para&gt;1 means that the action is over &lt;/para&gt;</remarks>
+        <remarks>
+          <para>called once per frame. time a value between 0 and 1</para>
+          <para>For example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>0 means that the action just started</description>
+          </item>
+          <description>0 means that the action just started</description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdatePosition">
@@ -267,7 +265,7 @@
       <Docs>
         <param name="newPos">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

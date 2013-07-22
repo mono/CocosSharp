@@ -11,9 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCReuseGrid" /&gt; action. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCReuseGrid" /&gt;</summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>creates an action with the number of times that the current grid will be reused </summary>
-        <remarks>creates an action with the number of times that the current grid will be reused </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -62,7 +61,7 @@
         <param name="times">To be added.</param>
         <summary>initializes an action with the number of times that the current grid will be reused </summary>
         <returns>To be added.</returns>
-        <remarks>initializes an action with the number of times that the current grid will be reused </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_nTimes">
@@ -95,8 +94,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>called before the action start. It will also set the target. </summary>
-        <remarks></remarks>
+        <summary>To be added.</summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

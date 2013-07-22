@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>A texcoord composed of 2 floats: u, y v3.0 </summary>
-    <remarks>&lt;para&gt;A texcoord composed of 2 floats: u, y &lt;para&gt;v3.0 &lt;/para&gt;&lt;/para&gt;&lt;para&gt;v3.0 &lt;/para&gt;&lt;para&gt;v3.0 &lt;/para&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">

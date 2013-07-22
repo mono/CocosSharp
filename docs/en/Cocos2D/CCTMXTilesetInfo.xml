@@ -11,49 +11,18 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCTMXTilesetInfo" /&gt; contains the information about the tilesets like: &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXTilesetInfo" /&gt;</summary>
-    <remarks>&lt;para&gt;
-  &lt;list type="bullet"&gt;
-    &lt;item&gt;
-      &lt;description&gt;Tileset name&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;Tileset spacing&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;Tileset margin&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;size of the tiles&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;Image used for the tiles&lt;/description&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;description&gt;Image size&lt;/description&gt;
-    &lt;/item&gt;
-  &lt;/list&gt;
-&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;Tileset name&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Tileset spacing&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Tileset margin&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;size of the tiles&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Image used for the tiles&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Image size&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;Tileset name&lt;/para&gt;&lt;para&gt;Tileset spacing&lt;/para&gt;&lt;para&gt;Tileset margin&lt;/para&gt;&lt;para&gt;size of the tiles&lt;/para&gt;&lt;para&gt;Image used for the tiles&lt;/para&gt;&lt;para&gt;Image size&lt;/para&gt;&lt;para&gt;This information is obtained from the TMX file. &lt;/para&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>This information is obtained from the TMX file. </para>
+      <item>
+        <description>Tileset name</description>
+      </item>
+      <description>Tileset name</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -191,7 +160,7 @@
         <param name="gid">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

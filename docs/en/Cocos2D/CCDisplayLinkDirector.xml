@@ -11,18 +11,19 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCDisplayLinkDirector" /&gt; is a &lt;see cref="T:Cocos2D.CCDirector" /&gt; that synchronizes timers with the refresh rate of the display. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCDisplayLinkDirector" /&gt;&lt;see cref="T:Cocos2D.CCDirector" /&gt;</summary>
-    <remarks>&lt;para&gt;Features and Limitations:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;Scheduled timers &amp;amp; drawing are synchronizes with the refresh rate of the display&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;Only supports animation intervals of 1/60 1/30 &amp;amp; 1/15&lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;Scheduled timers &amp;amp; drawing are synchronizes with the refresh rate of the display&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;Only supports animation intervals of 1/60 1/30 &amp;amp; 1/15&lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;Scheduled timers &amp;amp; drawing are synchronizes with the refresh rate of the display&lt;/para&gt;&lt;para&gt;Only supports animation intervals of 1/60 1/30 &amp;amp; 1/15&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;v0.8.2 &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;v0.8.2 &lt;/para&gt;&lt;para&gt;v0.8.2 &lt;/para&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks>
+      <para>Features and Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>
+        <para>v0.8.2 </para>
+      </para>
+      <para>v0.8.2 </para>
+      <item>
+        <description>Scheduled timers &amp; drawing are synchronizes with the refresh rate of the display</description>
+      </item>
+      <description>Scheduled timers &amp; drawing are synchronizes with the refresh rate of the display</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -51,7 +52,7 @@
       <Docs>
         <summary>Set the FPS value. </summary>
         <value>To be added.</value>
-        <remarks>Set the FPS value. </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MainLoop">
@@ -70,7 +71,7 @@
       <Docs>
         <param name="gameTime">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartAnimation">
@@ -86,7 +87,7 @@
       <Parameters />
       <Docs>
         <summary>The main loop is triggered again. Call this function only if [stopAnimation] was called earlier Don't call this function to start the main loop. To run the main loop call runWithScene </summary>
-        <remarks>&lt;para&gt;The main loop is triggered again. Call this function only if [stopAnimation] was called earlier &lt;para&gt;Don't call this function to start the main loop. To run the main loop call runWithScene &lt;/para&gt;&lt;/para&gt;&lt;para&gt;Don't call this function to start the main loop. To run the main loop call runWithScene &lt;/para&gt;&lt;para&gt;Don't call this function to start the main loop. To run the main loop call runWithScene &lt;/para&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StopAnimation">
@@ -102,7 +103,7 @@
       <Parameters />
       <Docs>
         <summary>Stops the animation. Nothing will be drawn. The main loop won't be triggered anymore. If you don't want to pause your animation call [pause] instead. </summary>
-        <remarks>Stops the animation. Nothing will be drawn. The main loop won't be triggered anymore. If you don't want to pause your animation call [pause] instead. </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

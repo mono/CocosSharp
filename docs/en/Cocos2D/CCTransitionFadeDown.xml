@@ -11,9 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCTransitionFadeDown" /&gt;: Fade the tiles of the outgoing scene from the top to the bottom. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTransitionFadeDown" /&gt;</summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">

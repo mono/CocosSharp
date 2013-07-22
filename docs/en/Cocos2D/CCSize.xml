@@ -17,7 +17,7 @@
   </Attributes>
   <Docs>
     <summary>To be added.</summary>
-    <remarks></remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -93,7 +93,7 @@
         <param name="s">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Equals">

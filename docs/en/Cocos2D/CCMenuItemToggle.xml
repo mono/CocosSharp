@@ -11,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;A &lt;see cref="T:Cocos2D.CCMenuItemToggle" /&gt; A simple container class that "toggles" it's inner items The inner items can be any &lt;see cref="T:Cocos2D.CCMenuItem" /&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMenuItemToggle" /&gt;&lt;see cref="T:Cocos2D.CCMenuItem" /&gt;</summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,7 +25,7 @@
       <Parameters />
       <Docs>
         <summary>creates a menu item with a item </summary>
-        <remarks>creates a menu item with a item </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -65,7 +65,7 @@
       <Parameters />
       <Docs>
         <summary>Activate the item </summary>
-        <remarks>Activate the item </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AddSubItem">
@@ -84,7 +84,7 @@
       <Docs>
         <param name="item">To be added.</param>
         <summary>add more menu item </summary>
-        <remarks>add more menu item </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Create">
@@ -120,7 +120,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithItem">
@@ -140,7 +140,7 @@
         <param name="item">To be added.</param>
         <summary>initializes a menu item with a item </summary>
         <returns>To be added.</returns>
-        <remarks>initializes a menu item with a item </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithTarget">
@@ -162,7 +162,7 @@
         <param name="items">To be added.</param>
         <summary>initializes a menu item from a list of items with a target selector </summary>
         <returns>To be added.</returns>
-        <remarks>initializes a menu item from a list of items with a target selector </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_pSubItems">
@@ -193,7 +193,7 @@
       <Parameters />
       <Docs>
         <summary>The item was selected (not activated), similar to "mouse-over" </summary>
-        <remarks>The item was selected (not activated), similar to "mouse-over" </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SelectedIndex">
@@ -209,7 +209,7 @@
       <Docs>
         <summary>setSelectedIndex </summary>
         <value>To be added.</value>
-        <remarks>setSelectedIndex </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SelectedItem">
@@ -225,7 +225,7 @@
       <Docs>
         <summary>return the selected item </summary>
         <value>To be added.</value>
-        <remarks>return the selected item </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SubItems">
@@ -241,7 +241,7 @@
       <Docs>
         <summary>setSubItems </summary>
         <value>To be added.</value>
-        <remarks>setSubItems </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Unselected">
@@ -257,7 +257,7 @@
       <Parameters />
       <Docs>
         <summary>The item was unselected </summary>
-        <remarks>The item was unselected </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

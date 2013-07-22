@@ -11,9 +11,17 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCTileMapAtlas" /&gt; is a subclass of &lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTileMapAtlas" /&gt;&lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;</summary>
-    <remarks>&lt;para&gt;It knows how to render a map based of tiles. The tiles must be in a .PNG format while the map must be a .TGA file.&lt;/para&gt;&lt;para&gt;For more information regarding the format, please see this post: &lt;ulink url="http://www.cocos2d-iphone.org/archives/27"&gt;http://www.cocos2d-iphone.org/archives/27&lt;/ulink&gt;&lt;/para&gt;&lt;ulink url="http://www.cocos2d-iphone.org/archives/27"&gt;http://www.cocos2d-iphone.org/archives/27&lt;/ulink&gt;&lt;para&gt;All features from &lt;see cref="T:Cocos2D.CCAtlasNode" /&gt; are valid in &lt;see cref="T:Cocos2D.CCTileMapAtlas" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCAtlasNode" /&gt;&lt;see cref="T:Cocos2D.CCTileMapAtlas" /&gt;&lt;para&gt;IMPORTANT: This class is deprecated. It is maintained for compatibility reasons only. You SHOULD not use this class. Instead, use the newer TMX file format: &lt;see cref="T:Cocos2D.CCTMXTiledMap" /&gt;&lt;/para&gt;&lt;see cref="T:Cocos2D.CCTMXTiledMap" /&gt;</remarks>
+    <summary>To be added.</summary>
+    <remarks>
+      <para>It knows how to render a map based of tiles. The tiles must be in a .PNG format while the map must be a .TGA file.</para>
+      <para>For more information regarding the format, please see this post: <ulink url="http://www.cocos2d-iphone.org/archives/27">http://www.cocos2d-iphone.org/archives/27</ulink></para>
+      <ulink url="http://www.cocos2d-iphone.org/archives/27">http://www.cocos2d-iphone.org/archives/27</ulink>
+      <para>All features from <see cref="T:Cocos2D.CCAtlasNode" /> are valid in <see cref="T:Cocos2D.CCTileMapAtlas" /></para>
+      <see cref="T:Cocos2D.CCAtlasNode" />
+      <see cref="T:Cocos2D.CCTileMapAtlas" />
+      <para>IMPORTANT: This class is deprecated. It is maintained for compatibility reasons only. You SHOULD not use this class. Instead, use the newer TMX file format: <see cref="T:Cocos2D.CCTMXTiledMap" /></para>
+      <see cref="T:Cocos2D.CCTMXTiledMap" />
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,10 +35,7 @@
       <Docs>
         <summary>creates a TileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
  The tile file will be loaded using the TextureMgr. </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;creates a TileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
-&lt;/verbatim&gt; The tile file will be loaded using the TextureMgr. &lt;/para&gt;&lt;verbatim&gt;creates a TileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
-&lt;/verbatim&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Create">
@@ -83,10 +88,7 @@
         <summary>initializes a TileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
  The file will be loaded using the TextureMgr. </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;initializes a TileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
-&lt;/verbatim&gt; The file will be loaded using the TextureMgr. &lt;/para&gt;&lt;verbatim&gt;initializes a TileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
-&lt;/verbatim&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_nItemsToRender">
@@ -132,7 +134,7 @@
       <Parameters />
       <Docs>
         <summary>dealloc the map from memory </summary>
-        <remarks>dealloc the map from memory </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetTile">
@@ -154,10 +156,7 @@
         <param name="position">To be added.</param>
         <summary>sets a tile at position x,y.
  For the moment only channel R is used </summary>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;sets a tile at position x,y.
-&lt;/verbatim&gt; For the moment only channel R is used &lt;/para&gt;&lt;verbatim&gt;sets a tile at position x,y.
-&lt;/verbatim&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TGAInfo">
@@ -173,7 +172,7 @@
       <Docs>
         <summary>setTGAInfo </summary>
         <value>To be added.</value>
-        <remarks>setTGAInfo </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TileAt">
@@ -194,10 +193,7 @@
         <summary>returns a tile from position x,y.
  For the moment only channel R is used </summary>
         <returns>To be added.</returns>
-        <remarks>&lt;para&gt;
-  &lt;verbatim&gt;returns a tile from position x,y.
-&lt;/verbatim&gt; For the moment only channel R is used &lt;/para&gt;&lt;verbatim&gt;returns a tile from position x,y.
-&lt;/verbatim&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateAtlasValues">
@@ -213,7 +209,7 @@
       <Parameters />
       <Docs>
         <summary>updates the Atlas (indexed vertex array). Shall be overridden in subclasses </summary>
-        <remarks>updates the Atlas (indexed vertex array). Shall be overridden in subclasses </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

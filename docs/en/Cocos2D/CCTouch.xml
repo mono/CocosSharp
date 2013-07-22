@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks></remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -61,7 +61,7 @@
       <Docs>
         <summary>returns the delta of 2 current touches locations in screen coordinates </summary>
         <value>To be added.</value>
-        <remarks>returns the delta of 2 current touches locations in screen coordinates </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Id">
@@ -93,7 +93,7 @@
       <Docs>
         <summary>returns the current touch location in OpenGL coordinates </summary>
         <value>To be added.</value>
-        <remarks>returns the current touch location in OpenGL coordinates </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="LocationInView">
@@ -109,7 +109,7 @@
       <Docs>
         <summary>returns the current touch location in screen coordinates </summary>
         <value>To be added.</value>
-        <remarks>returns the current touch location in screen coordinates </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PreviousLocation">
@@ -125,7 +125,7 @@
       <Docs>
         <summary>returns the previous touch location in OpenGL coordinates </summary>
         <value>To be added.</value>
-        <remarks>returns the previous touch location in OpenGL coordinates </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PreviousLocationInView">
@@ -141,7 +141,7 @@
       <Docs>
         <summary>returns the previous touch location in screen coordinates </summary>
         <value>To be added.</value>
-        <remarks>returns the previous touch location in screen coordinates </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetTouchInfo">
@@ -164,7 +164,7 @@
         <param name="x">To be added.</param>
         <param name="y">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartLocation">
@@ -180,7 +180,7 @@
       <Docs>
         <summary>returns the start touch location in OpenGL coordinates </summary>
         <value>To be added.</value>
-        <remarks>returns the start touch location in OpenGL coordinates </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartLocationInView">
@@ -196,7 +196,7 @@
       <Docs>
         <summary>returns the start touch location in screen coordinates </summary>
         <value>To be added.</value>
-        <remarks>returns the start touch location in screen coordinates </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

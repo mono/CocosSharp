@@ -16,8 +16,7 @@
   </Interfaces>
   <Docs>
     <summary>. Creates a trailing path. </summary>
-    <remarks>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCMotionStreak" /&gt;. Creates a trailing path. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCMotionStreak" /&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,7 +29,7 @@
       <Parameters />
       <Docs>
         <summary>creates and initializes a motion streak with fade in seconds, minimum segments, stroke's width, color, texture </summary>
-        <remarks>creates and initializes a motion streak with fade in seconds, minimum segments, stroke's width, color, texture </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
@@ -46,9 +45,14 @@
       <Docs>
         <summary>Returns the blending function that is currently being used.</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Returns the blending function that is currently being used.&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCBlendFunc" /&gt;&lt;para&gt;A &lt;see cref="T:Cocos2D.CCBlendFunc" /&gt; structure with source and destination factor which specified pixel arithmetic. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Returns the blending function that is currently being used.</para>
+          <para>
+            <para>A <see cref="T:Cocos2D.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
+          </para>
+          <para>A <see cref="T:Cocos2D.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
+          <see cref="T:Cocos2D.CCBlendFunc" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Create">
@@ -119,21 +123,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:glEnableClientState(GL_VERTEX_ARRAY);glEnableClientState(GL_COLOR_ARRAY);glEnableClientState(GL_TEXTURE_COORD_ARRAY);glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </summary>
-        <remarks>&lt;para&gt;Override this method to draw your own node. The following GL states will be enabled by default:&lt;list type="bullet"&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;&lt;/item&gt;&lt;item&gt;&lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;&lt;/item&gt;&lt;/list&gt;&lt;/para&gt;&lt;list type="bullet"&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/description&gt;
-  &lt;/item&gt;
-  &lt;item&gt;
-    &lt;description&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/description&gt;
-  &lt;/item&gt;
-&lt;/list&gt;&lt;para&gt;glEnableClientState(GL_VERTEX_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_COLOR_ARRAY);&lt;/para&gt;&lt;para&gt;glEnableClientState(GL_TEXTURE_COORD_ARRAY);&lt;/para&gt;&lt;para&gt;glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. &lt;/para&gt;</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FastMode">
@@ -149,7 +147,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithFade">
@@ -177,7 +175,7 @@
         <param name="texture">To be added.</param>
         <summary>initializes a motion streak with fade in seconds, minimum segments, stroke's width, color and texture </summary>
         <returns>To be added.</returns>
-        <remarks>initializes a motion streak with fade in seconds, minimum segments, stroke's width, color and texture </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithFade">
@@ -221,9 +219,13 @@
       <Docs>
         <summary>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)&lt;/para&gt;&lt;para&gt;
-  &lt;para&gt;Returns opacity modify flag. &lt;/para&gt;
-&lt;/para&gt;&lt;para&gt;Returns opacity modify flag. &lt;/para&gt;&lt;para&gt;Returns opacity modify flag. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</para>
+          <para>
+            <para>Returns opacity modify flag. </para>
+          </para>
+          <para>Returns opacity modify flag. </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bFastMode">
@@ -269,27 +271,10 @@
       <Docs>
         <summary>Changes the opacity.</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Changes the opacity.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;value&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;value&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;value&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;value&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;Goes from 0 to 255, where 255 means fully opaque and 0 means fully transparent. &lt;/para&gt;</remarks>
+        <remarks>
+          <para>Changes the opacity.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Position">
@@ -305,7 +290,7 @@
       <Docs>
         <summary>Override super methods </summary>
         <value>To be added.</value>
-        <remarks>Override super methods </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartingPositionInitialized">
@@ -321,7 +306,7 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -337,27 +322,10 @@
       <Docs>
         <summary>Sets a new texuture. It will be retained.</summary>
         <value>To be added.</value>
-        <remarks>&lt;para&gt;Sets a new texuture. It will be retained.&lt;/para&gt;&lt;para /&gt;&lt;parameterlist kind="param"&gt;
-  &lt;parameteritem&gt;
-    &lt;parameternamelist&gt;
-      &lt;parametername&gt;texture&lt;/parametername&gt;
-    &lt;/parameternamelist&gt;
-    &lt;parameterdescription&gt;
-      &lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;
-    &lt;/parameterdescription&gt;
-  &lt;/parameteritem&gt;
-&lt;/parameterlist&gt;&lt;parameteritem&gt;
-  &lt;parameternamelist&gt;
-    &lt;parametername&gt;texture&lt;/parametername&gt;
-  &lt;/parameternamelist&gt;
-  &lt;parameterdescription&gt;
-    &lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;
-  &lt;/parameterdescription&gt;
-&lt;/parameteritem&gt;&lt;parameternamelist&gt;
-  &lt;parametername&gt;texture&lt;/parametername&gt;
-&lt;/parameternamelist&gt;&lt;parametername&gt;texture&lt;/parametername&gt;&lt;parameterdescription&gt;
-  &lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;
-&lt;/parameterdescription&gt;&lt;para&gt;A valid &lt;see cref="T:Cocos2D.CCTexture2D" /&gt; object, which will be applied to this sprite object. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTexture2D" /&gt;</remarks>
+        <remarks>
+          <para>Sets a new texuture. It will be retained.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="TintWithColor">
@@ -376,7 +344,7 @@
       <Docs>
         <param name="colors">To be added.</param>
         <summary>color used for the tint </summary>
-        <remarks>color used for the tint </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -395,7 +363,7 @@
       <Docs>
         <param name="delta">To be added.</param>
         <summary>To be added.</summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

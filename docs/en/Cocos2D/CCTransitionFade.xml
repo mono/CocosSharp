@@ -11,9 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>&lt;para&gt;
-  &lt;see cref="T:Cocos2D.CCTransitionFade" /&gt;: Fade out the outgoing scene and then fade in the incoming scene.'''. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCTransitionFade" /&gt;</summary>
-    <remarks></remarks>
+    <summary>To be added.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -31,7 +30,7 @@
         <param name="t">To be added.</param>
         <param name="scene">To be added.</param>
         <summary>creates the transition with a duration and with an RGB color Example: FadeTransition::create(2, scene, Color3B(255,0,0); // red color </summary>
-        <remarks></remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -73,7 +72,7 @@
         <param name="scene">To be added.</param>
         <summary>initializes a transition with duration and incoming scene </summary>
         <returns>To be added.</returns>
-        <remarks>initializes a transition with duration and incoming scene </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -128,7 +127,7 @@
       <Parameters />
       <Docs>
         <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
-        <remarks>&lt;para&gt;Event callback that is invoked every time when &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., &lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;Node::onEnter()&lt;/ref&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_node_1a35211ff3db90acb4bca5d92edd6f3dde" kindref="member"&gt;Node::onEnter()&lt;/ref&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OnExit">
@@ -144,7 +143,7 @@
       <Parameters />
       <Docs>
         <summary>Event callback that is invoked every time the  leaves the 'stage'. If the  leaves the 'stage' with a transition, this event is called when the transition finishes. During onExit you can't access a sibling node. If you override onExit, you shall call its parent's one, e.g., Node::onExit(). </summary>
-        <remarks>&lt;para&gt;Event callback that is invoked every time the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage'. If the &lt;see cref="T:Cocos2D.CCNode" /&gt; leaves the 'stage' with a transition, this event is called when the transition finishes. During onExit you can't access a sibling node. If you override onExit, you shall call its parent's one, e.g., &lt;ref refid="classcocos2d_1_1_node_1a3a43c10832c787f6e2ca437c3ecc8dd3" kindref="member"&gt;Node::onExit()&lt;/ref&gt;. &lt;/para&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;see cref="T:Cocos2D.CCNode" /&gt;&lt;ref refid="classcocos2d_1_1_node_1a3a43c10832c787f6e2ca437c3ecc8dd3" kindref="member"&gt;Node::onExit()&lt;/ref&gt;</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

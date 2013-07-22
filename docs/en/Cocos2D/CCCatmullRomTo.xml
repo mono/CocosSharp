@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>An action that moves the target with a CatmullRom curve to a destination point. A Catmull Rom is a Cardinal Spline with a tension of 0.5. http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline</summary>
-    <remarks>&lt;para&gt;An action that moves the target with a CatmullRom curve to a destination point. A Catmull Rom is a Cardinal Spline with a tension of 0.5. &lt;ulink url="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline"&gt;http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline&lt;/ulink&gt;&lt;/para&gt;&lt;ulink url="http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline"&gt;http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline&lt;/ulink&gt;</remarks>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,7 +30,7 @@
         <param name="dt">To be added.</param>
         <param name="points">To be added.</param>
         <summary>creates an action with a Cardinal Spline array of points and tension </summary>
-        <remarks>creates an action with a Cardinal Spline array of points and tension </remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -52,7 +52,7 @@
         <param name="points">To be added.</param>
         <summary>initializes the action with a duration and an array of points </summary>
         <returns>To be added.</returns>
-        <remarks>initializes the action with a duration and an array of points </remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>
