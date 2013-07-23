@@ -119,7 +119,7 @@ cocos2d-xna.Tests.iOS.sln
 
 ### Samples
 
-[Xamarin's](https://github.com/xamarin/AngryNinjas "Xamarin’s Angry Ninjas") sample application. We worked hard on converting that cocos2d-iphone game over to Cocos2D-XNA. Take a look at how it deploys raw assets and utilizes box2d. 
+[Xamarin’s Angry Ninjas](https://github.com/xamarin/AngryNinjas "Xamarin’s Angry Ninjas") sample application. We worked hard on converting that cocos2d-iphone game over to Cocos2D-XNA. Take a look at how it deploys raw assets and utilizes box2d. 
 
 Additional samples will be forthcoming as we find time to add more for you. 
 
