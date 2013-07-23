@@ -90,7 +90,7 @@ Templates for Visual Studio
 
 To make things as easy as possible we also provide templates for Visual Studio.
 
-There is tutorial on Finding and Installing the templates here: http://cocoa-mono.org/archives/494/cocos2d-xna-getting-started-part-1/
+There is tutorial on [Finding and Installing the templates](http://cocoa-mono.org/archives/494/cocos2d-xna-getting-started-part-1/ "Cocos2D-XNA Getting Started")
 
 Templates for Xamarin Studio
 ----------------------------
@@ -105,7 +105,7 @@ Getting Started
 
 We have created solutions for all the supported platforms that serves as our TestBed for each platform.
 
-You can find those in the tests directory https://github.com/mono/cocos2d-xna/tree/master/tests
+You can find those in the [tests directory](https://github.com/mono/cocos2d-xna/tree/master/tests "Test Bed")
 
 cocos2d-xna.Tests.Android.sln	
 cocos2d-xna.Tests.Ouya.sln	
