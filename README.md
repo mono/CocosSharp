@@ -92,8 +92,37 @@ To make things as easy as possible we also provide templates for Visual Studio.
 
 There is tutorial on Finding and Installing the templates here: http://cocoa-mono.org/archives/494/cocos2d-xna-getting-started-part-1/
 
+Templates for Xamarin Studio
+----------------------------
+
+We are working hard on getting these out.
+
 
 Getting Started
 ---------------
+
+### Test Bed
+
+We have created solutions for all the supported platforms that serves as our TestBed for each platform.
+
+You can find those in the tests directory https://github.com/mono/cocos2d-xna/tree/master/tests
+
+cocos2d-xna.Tests.Android.sln	
+cocos2d-xna.Tests.Ouya.sln	
+cocos2d-xna.Tests.Windows.sln	
+cocos2d-xna.Tests.Windows8.sln	
+cocos2d-xna.Tests.WindowsDX.sln	
+cocos2d-xna.Tests.WindowsGL.sln	
+cocos2d-xna.Tests.WindowsPhone.sln	
+cocos2d-xna.Tests.WindowsPhone7.sln	
+cocos2d-xna.Tests.iOS.sln	
+
+### Samples
+
+Xamarin’s Angry Ninjas sample application. We worked hard on converting that cocos2d-iphone game over to Cocos2D-XNA. Take a look at how it deploys raw assets and utilizes box2d. 
+
+Additional samples will be forthcoming as we find time to add more for you. 
+
+
 
 
