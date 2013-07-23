@@ -90,7 +90,7 @@ Templates for Visual Studio
 
 To make things as easy as possible we also provide templates for Visual Studio.
 
-There is tutorial on [Finding and Installing the templates](http://cocoa-mono.org/archives/494/cocos2d-xna-getting-started-part-1/ "Cocos2D-XNA Getting Started")
+There is a tutorial on [Finding and Installing the templates](http://cocoa-mono.org/archives/494/cocos2d-xna-getting-started-part-1/ "Cocos2D-XNA Getting Started")
 
 Templates for Xamarin Studio
 ----------------------------
@@ -107,15 +107,15 @@ We have created solutions for all the supported platforms that serves as our Tes
 
 You can find those in the [tests directory](https://github.com/mono/cocos2d-xna/tree/master/tests "Test Bed")
 
-cocos2d-xna.Tests.Android.sln	
-cocos2d-xna.Tests.Ouya.sln	
-cocos2d-xna.Tests.Windows.sln	
-cocos2d-xna.Tests.Windows8.sln	
-cocos2d-xna.Tests.WindowsDX.sln	
-cocos2d-xna.Tests.WindowsGL.sln	
-cocos2d-xna.Tests.WindowsPhone.sln	
-cocos2d-xna.Tests.WindowsPhone7.sln	
-cocos2d-xna.Tests.iOS.sln	
+	cocos2d-xna.Tests.Android.sln	
+	cocos2d-xna.Tests.Ouya.sln	
+	cocos2d-xna.Tests.Windows.sln	
+	cocos2d-xna.Tests.Windows8.sln	
+	cocos2d-xna.Tests.WindowsDX.sln	
+	cocos2d-xna.Tests.WindowsGL.sln	
+	cocos2d-xna.Tests.WindowsPhone.sln	
+	cocos2d-xna.Tests.WindowsPhone7.sln	
+	cocos2d-xna.Tests.iOS.sln	
 
 ### Samples
 
