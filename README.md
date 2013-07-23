@@ -76,10 +76,24 @@ Output from above command:
 MonoGame has it's own external dependencies so we will also need to obtain those as well.
 
 > $ cd MonoGame
+
 > $ git submodule init
+
 > $ git submodule update ThirdParty/Libs
 
 Notice above that we only need the ThirdParty/Libs to actually build Cocos2D-XNA.
 
 You now have everything you need to start start developing with Cocos2D-XNA
+
+Templates for Visual Studio
+---------------------------
+
+To make things as easy as possible we also provide templates for Visual Studio.
+
+There is tutorial on Finding and Installing the templates here: http://cocoa-mono.org/archives/494/cocos2d-xna-getting-started-part-1/
+
+
+Getting Started
+---------------
+
 
