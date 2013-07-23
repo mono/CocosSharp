@@ -1,64 +1,13 @@
-This is a divergent repository from the cocos2d/cocos2d-x-for-xna repository that was originally created for XNA but was later abandoned.
+# Cocos2D-XNA
 
-There are many differences between cocos2d-xna and cocos2d-x-for-xna. This repository
-reflects the cocos2d-xna source base which was written for .NET and C#. Attributes and
-other language/platform constructs specific to .NET have been used in lieu of the literal
-translation in the prior cocos2d-x-for-xna repository.
+is a 2D/3D game developer’s framework that is written specifically for XNA. XNA is the game API developed by Microsoft for independently published games on Xbox Live Arcade. To support other platforms than the now deprecated Microsoft XNA targets, Cocos2D-XNA supports the MonoGame runtime.
 
-Most importantly, your AppDelegate will change:
+This project is open source, freely available, and free of royalties or encumberance. The software is released under the highly permissive MIT License.
 
-        public AppDelegate(Game game, GraphicsDeviceManager graphics)
-            : base(game, graphics)
-        {
-            s_pSharedApplication = this;
-            DrawManager.InitializeDisplay(game, graphics, DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
-
-
-            graphics.PreferMultiSampling = false;
-
-        }
-
-
-
-        public override bool ApplicationDidFinishLaunching()
-        {
-            //initialize director
-            CCDirector pDirector = CCDirector.SharedDirector;
-            pDirector.SetOpenGlView();
-
-            DrawManager.SetDesignResolutionSize(480, 320, ResolutionPolicy.ShowAll);
-
-            // turn on display FPS
-            pDirector.DisplayStats = true;
-
-            // set FPS. the default value is 1.0/60 if you don't call this
-            pDirector.AnimationInterval = 1.0 / 60;
-
-            // create a scene. it's an autorelease object
-            CCScene pScene = CCScene.Create();
-            CCLayer pLayer = new TestController();
-            
-            pScene.AddChild(pLayer);
-            pDirector.RunWithScene(pScene);
-
-            return true;
-        }
-
-==================================================================================================
-
-Note the two new calls:
-
-            DrawManager.InitializeDisplay(game, graphics, DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
-
-This will setup your display orientation and preferred back buffer.
-
-            DrawManager.SetDesignResolutionSize(480, 320, ResolutionPolicy.ShowAll);
-
-This will set your game to scale itself into the window appropriately. The cocos2d-xna code is written from a professional game design perspective. You design your game UI for a target resolution and then use that resoluion in your SetDesignResolutionSize() call. In this way, your game fidelity does not change, and your display does not appear truncated on devices that are larger or smaller than your design resolution.
 
 Download and Run
 ----------------
-	https://raw.github.com/altercation/solarized/master/README.md	
+
 ### Code on GitHub
 
 To obtain the code you will need a git client.  Either command line or Graphical.
@@ -72,16 +21,65 @@ or the parent repo https://github.com/totallyevil/cocos2d-xna.git.
 
 The two are identical so either one will do.
 
-> git clone https://github.com/mono/cocos2d-xna.git
+> $ git clone https://github.com/mono/cocos2d-xna.git
   
-	or
+or
 
-> git clone https://github.com/totallyevil/cocos2d-xna.git
+> $ git clone https://github.com/totallyevil/cocos2d-xna.git
 
 Wait until the clone has finished.
 
+You should see something similar to the following:
 
-To support Android, iOS, and other platforms, you must have a version of MonoGame (develop) version 3.0 available. The MonoGame repository is a submodule of this project now, so make sure that you update and init the submodule if you do not have your own clone of MonoGame. Don't forget to use develop if you want the latest changes, or master if you want the most recent stable release.
+	Cloning into 'cocos2d-xna'...
+	remote: Counting objects: 20553, done.
+	remote: Compressing objects: 100% (7677/7677), done.
+	remote: Total 20553 (delta 14127), reused 18870 (delta 12446)
+	Receiving objects: 100% (20553/20553), 100.83 MiB | 634 KiB/s, done.
+	Resolving deltas: 100% (14127/14127), done.
+	Checking out files: 100% (4130/4130), done.
 
+To support Android, iOS, and other platforms, you must have a version of MonoGame (develop branch) version 3.0 available. The MonoGame repository is a submodule of the Cocos2D-XNA project that all the solutions reference.
 
+To initialise and update the required MonoGame submodules that we reference you will need to do the following:
+
+Change into the cocos2d-xna directory to issue the following submodule commands.
+
+> $ git submodule init
+
+Output from above command:
+
+	Submodule 'MonoGame' (git://github.com/mono/MonoGame.git) registered for path 'MonoGame'
+	Submodule 'tools/ouya' (https://github.com/slygamer/ouya-csharp.git) registered for path 'tools/ouya'
+
+You will then want to update the actual submodules:
+
+> $ git submodule update
+
+Output from above command:
+
+	Cloning into 'MonoGame'...
+	remote: Counting objects: 32905, done.
+	remote: Compressing objects: 100% (10011/10011), done.
+	remote: Total 32905 (delta 24991), reused 29779 (delta 22574)
+	Receiving objects: 100% (32905/32905), 33.33 MiB | 305 KiB/s, done.
+	Resolving deltas: 100% (24991/24991), done.
+	Submodule path 'MonoGame': checked out 'bd6518a33c91c43a46f14aa68bdc854c08e6bc2a'
+	Cloning into 'tools/ouya'...
+	remote: Counting objects: 249, done.
+	remote: Compressing objects: 100% (139/139), done.
+	remote: Total 249 (delta 100), reused 231 (delta 86)
+	Receiving objects: 100% (249/249), 2.88 MiB | 620 KiB/s, done.
+	Resolving deltas: 100% (100/100), done.
+	Submodule path 'tools/ouya': checked out '5f712a4b3845bad2974b30bc0c243eb503812ea9'
+
+MonoGame has it's own external dependencies so we will also need to obtain those as well.
+
+> $ cd MonoGame
+> $ git submodule init
+> $ git submodule update ThirdParty/Libs
+
+Notice above that we only need the ThirdParty/Libs to actually build Cocos2D-XNA.
+
+You now have everything you need to start start developing with Cocos2D-XNA
 
