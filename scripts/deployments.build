@@ -174,8 +174,8 @@
   <target name="buildtemplates" description="Build Cocos2dD-XNA templates" depends="checkos">
 
     <if test="${os == 'Win32NT'}">
-       <nant buildfile="ProjectTemplates/Templates/ContentBuilder/default.build" target="build" />
-       <nant buildfile="ProjectTemplates/Templates/StarterTemplates/default.build" target="build" />
+       <nant buildfile="${project::get-base-directory()}\ProjectTemplates/Templates/ContentBuilder/default.build" target="build" />
+       <nant buildfile="${project::get-base-directory()}\ProjectTemplates/Templates/StarterTemplates/default.build" target="build" />
     </if>
   </target>
 
