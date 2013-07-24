@@ -57,8 +57,8 @@
 					<!--property name="basefilename" value="${path::get-file-name-without-extension(filename)}" />
 					<echo message="Building solution file: ${basefilename}" /-->
 					<echo message="${filename}" /> 
-					<exec program="msbuild " commandline="${filename} /t:Clean /p:Configuration=Release" />
-					<exec program="msbuild " commandline="${filename} /t:Build /p:Configuration=Release" />
+					<exec program="msbuild " commandline='"${filename}" /t:Clean /p:Configuration=Release' />
+					<exec program="msbuild " commandline='"${filename}" /t:Build /p:Configuration=Release' />
 				</do>
 			</foreach>
 		</foreach>
