@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTiledGrid3DAction" FullName="Cocos2D.CCTiledGrid3DAction">
   <TypeSignature Language="C#" Value="public class CCTiledGrid3DAction : Cocos2D.CCGridAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTiledGrid3DAction extends Cocos2D.CCGridAction" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>Base class for  actions. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -23,8 +26,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with size and duration </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -43,6 +46,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTiledGrid3DAction (float duration, Cocos2D.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+      </Parameters>
+      <Docs>
+        <param name="duration">To be added.</param>
+        <param name="gridSize">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Grid">
       <MemberSignature Language="C#" Value="public override Cocos2D.CCGridBase Grid { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCGridBase Grid" />
@@ -54,9 +75,9 @@
         <ReturnType>Cocos2D.CCGridBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the grid </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OriginalTile">
@@ -74,9 +95,9 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns the non-transformed tile that belongs to a certain position of the grid </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetTile">
@@ -96,8 +117,8 @@
       <Docs>
         <param name="pos">To be added.</param>
         <param name="coords">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets a new tile to a certain position of the grid </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Tile">
@@ -115,9 +136,9 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns the tile that belongs to a certain position of the grid </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

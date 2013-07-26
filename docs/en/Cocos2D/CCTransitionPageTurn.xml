@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionPageTurn" FullName="Cocos2D.CCTransitionPageTurn">
   <TypeSignature Language="C#" Value="public class CCTransitionPageTurn : Cocos2D.CCTransitionScene" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionPageTurn extends Cocos2D.CCTransitionScene" />
@@ -10,8 +11,20 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para>A transition which peels back the bottom right hand corner of a scene to transition to the scene beneath it simulating a page turn. </para>
+    </summary>
+    <remarks>
+      <para>This uses a 3DAction so it's strongly recommended that depth buffering is turned on in <see cref="T:Cocos2D.CCDirector" /> using:</para>
+      <see cref="T:Cocos2D.CCDirector" />
+      <para>
+        <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>-&gt;setDepthBufferFormat(kDepthBuffer16);</para>
+      <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>
+      <para>
+        <para>v0.8.2 </para>
+      </para>
+      <para>v0.8.2 </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +36,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates a base transition with duration and incoming scene. If back is true then the effect is reversed to appear as if the incoming scene is being turned from left over the outgoing scene. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -86,9 +99,9 @@
         <param name="t">To be added.</param>
         <param name="scene">To be added.</param>
         <param name="backwards">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Creates a base transition with duration and incoming scene. If back is true then the effect is reversed to appear as if the incoming scene is being turned from left over the outgoing scene. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_bBack">
@@ -118,8 +131,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SceneOrder">

@@ -1,20 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTexture2D" FullName="Cocos2D.CCTexture2D">
-  <TypeSignature Language="C#" Value="public class CCTexture2D : IDisposable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTexture2D extends System.Object implements class System.IDisposable" />
+  <TypeSignature Language="C#" Value="public class CCTexture2D : Cocos2D.CCGraphicsResource" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTexture2D extends Cocos2D.CCGraphicsResource" />
   <AssemblyInfo>
     <AssemblyName>cocos2d-xna</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>Cocos2D.CCGraphicsResource</BaseTypeName>
   </Base>
-  <Interfaces>
-    <Interface>
-      <InterfaceName>System.IDisposable</InterfaceName>
-    </Interface>
-  </Interfaces>
+  <Interfaces></Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para> class. This class allows to easily create OpenGL 2D textures from images, text or raw data. The created  object will always have power-of-two dimensions. Depending on how you create the  object, the actual image area of the texture might be smaller than the texture dimensions i.e. "contentSize" != (pixelsWide, pixelsHigh) and (maxS, maxT) != (1.0, 1.0). Be aware that the content of the generated textures will be upside-down! </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -32,36 +31,19 @@
       </Docs>
     </Member>
     <Member MemberName="BitsPerPixelForFormat">
-      <MemberSignature Language="C#" Value="public uint BitsPerPixelForFormat ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int32 BitsPerPixelForFormat() cil managed" />
-      <MemberType>Method</MemberType>
+      <MemberSignature Language="C#" Value="public uint BitsPerPixelForFormat { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 BitsPerPixelForFormat" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
-      <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ContentFile">
-      <MemberSignature Language="C#" Value="public string ContentFile { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string ContentFile" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
+        <summary>Helper functions that returns bits per pixels for a given format. v2.0 </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
@@ -75,9 +57,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getContentSize </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ContentSizeInPixels">
@@ -91,30 +73,49 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>content size </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DefaultAlphaPixelFormat">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCTexture2DPixelFormat DefaultAlphaPixelFormat { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property valuetype Cocos2D.CCTexture2DPixelFormat DefaultAlphaPixelFormat" />
-      <MemberType>Property</MemberType>
+      <MemberSignature Language="C#" Value="public static Microsoft.Xna.Framework.Graphics.SurfaceFormat DefaultAlphaPixelFormat;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat DefaultAlphaPixelFormat" />
+      <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2DPixelFormat</ReturnType>
+        <ReturnType>Microsoft.Xna.Framework.Graphics.SurfaceFormat</ReturnType>
       </ReturnValue>
       <Docs>
+        <summary>returns the alpha pixel format v0.8 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="DetectImageFormat">
+      <MemberSignature Language="C#" Value="public static Cocos2D.CCImageFormat DetectImageFormat (System.IO.Stream stream);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCImageFormat DetectImageFormat(class System.IO.Stream stream) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCImageFormat</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stream" Type="System.IO.Stream" />
+      </Parameters>
+      <Docs>
+        <param name="stream">To be added.</param>
         <summary>To be added.</summary>
-        <value>To be added.</value>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
-      <MemberSignature Language="C#" Value="public void Dispose ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
+      <MemberSignature Language="C#" Value="public override void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Dispose() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -123,21 +124,6 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="g_defaultAlphaPixelFormat">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCTexture2DPixelFormat g_defaultAlphaPixelFormat;" />
-      <MemberSignature Language="ILAsm" Value=".field public static valuetype Cocos2D.CCTexture2DPixelFormat g_defaultAlphaPixelFormat" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2DPixelFormat</ReturnType>
-      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -155,8 +141,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Generates mipmap images for the texture.
+ It only works if the texture size is POT (power of 2). v0.99.0 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="HasPremultipliedAlpha">
@@ -175,9 +162,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitPremultipliedATextureWithImage">
-      <MemberSignature Language="C#" Value="public bool InitPremultipliedATextureWithImage (Microsoft.Xna.Framework.Graphics.Texture2D texture, int POTWide, int POTHigh);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitPremultipliedATextureWithImage(class Microsoft.Xna.Framework.Graphics.Texture2D texture, int32 POTWide, int32 POTHigh) cil managed" />
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public bool Init (int pixelsWide, int pixelsHigh);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Init(int32 pixelsWide, int32 pixelsHigh) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -186,22 +173,20 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="texture" Type="Microsoft.Xna.Framework.Graphics.Texture2D" />
-        <Parameter Name="POTWide" Type="System.Int32" />
-        <Parameter Name="POTHigh" Type="System.Int32" />
+        <Parameter Name="pixelsWide" Type="System.Int32" />
+        <Parameter Name="pixelsHigh" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="texture">To be added.</param>
-        <param name="POTWide">To be added.</param>
-        <param name="POTHigh">To be added.</param>
+        <param name="pixelsWide">To be added.</param>
+        <param name="pixelsHigh">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitTextureWithImage">
-      <MemberSignature Language="C#" Value="public bool InitTextureWithImage (Microsoft.Xna.Framework.Graphics.Texture2D texture, int POTWide, int POTHigh);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitTextureWithImage(class Microsoft.Xna.Framework.Graphics.Texture2D texture, int32 POTWide, int32 POTHigh) cil managed" />
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public bool Init (int pixelsWide, int pixelsHigh, Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Init(int32 pixelsWide, int32 pixelsHigh, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -210,22 +195,76 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="texture" Type="Microsoft.Xna.Framework.Graphics.Texture2D" />
-        <Parameter Name="POTWide" Type="System.Int32" />
-        <Parameter Name="POTHigh" Type="System.Int32" />
+        <Parameter Name="pixelsWide" Type="System.Int32" />
+        <Parameter Name="pixelsHigh" Type="System.Int32" />
+        <Parameter Name="pixelFormat" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
       </Parameters>
       <Docs>
-        <param name="texture">To be added.</param>
-        <param name="POTWide">To be added.</param>
-        <param name="POTHigh">To be added.</param>
+        <param name="pixelsWide">To be added.</param>
+        <param name="pixelsHigh">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public bool Init (int pixelsWide, int pixelsHigh, Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, bool premultipliedAlpha);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Init(int32 pixelsWide, int32 pixelsHigh, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, bool premultipliedAlpha) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pixelsWide" Type="System.Int32" />
+        <Parameter Name="pixelsHigh" Type="System.Int32" />
+        <Parameter Name="pixelFormat" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
+        <Parameter Name="premultipliedAlpha" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="pixelsWide">To be added.</param>
+        <param name="pixelsHigh">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
+        <param name="premultipliedAlpha">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public bool Init (int pixelsWide, int pixelsHigh, Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, bool premultipliedAlpha, bool mipMap);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Init(int32 pixelsWide, int32 pixelsHigh, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, bool premultipliedAlpha, bool mipMap) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pixelsWide" Type="System.Int32" />
+        <Parameter Name="pixelsHigh" Type="System.Int32" />
+        <Parameter Name="pixelFormat" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
+        <Parameter Name="premultipliedAlpha" Type="System.Boolean" />
+        <Parameter Name="mipMap" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="pixelsWide">To be added.</param>
+        <param name="pixelsHigh">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
+        <param name="premultipliedAlpha">To be added.</param>
+        <param name="mipMap">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithData">
-      <MemberSignature Language="C#" Value="public bool InitWithData (object data, Cocos2D.CCTexture2DPixelFormat pixelFormat, uint pixelsWide, uint pixelsHigh, Cocos2D.CCSize contentSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithData(object data, valuetype Cocos2D.CCTexture2DPixelFormat pixelFormat, unsigned int32 pixelsWide, unsigned int32 pixelsHigh, valuetype Cocos2D.CCSize contentSize) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithData (byte[] data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithData(unsigned int8[] data) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -234,18 +273,56 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="data" Type="System.Object" />
-        <Parameter Name="pixelFormat" Type="Cocos2D.CCTexture2DPixelFormat" />
-        <Parameter Name="pixelsWide" Type="System.UInt32" />
-        <Parameter Name="pixelsHigh" Type="System.UInt32" />
-        <Parameter Name="contentSize" Type="Cocos2D.CCSize" />
+        <Parameter Name="data" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <summary>Initializes with a texture2d with data </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithData">
+      <MemberSignature Language="C#" Value="public bool InitWithData (byte[] data, Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithData(unsigned int8[] data, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="System.Byte[]" />
+        <Parameter Name="pixelFormat" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
       </Parameters>
       <Docs>
         <param name="data">To be added.</param>
         <param name="pixelFormat">To be added.</param>
-        <param name="pixelsWide">To be added.</param>
-        <param name="pixelsHigh">To be added.</param>
-        <param name="contentSize">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithData">
+      <MemberSignature Language="C#" Value="public bool InitWithData (byte[] data, Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, bool mipMap);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithData(unsigned int8[] data, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, bool mipMap) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="System.Byte[]" />
+        <Parameter Name="pixelFormat" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
+        <Parameter Name="mipMap" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
+        <param name="mipMap">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -271,9 +348,129 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitWithPvrFile">
-      <MemberSignature Language="C#" Value="public bool InitWithPvrFile (string file);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithPvrFile(string file) cil managed" />
+    <Member MemberName="InitWithRawData&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public bool InitWithRawData&lt;T&gt; (T[] data, Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh, bool premultipliedAlpha) where T : struct;" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithRawData&lt;struct .ctor (class System.ValueType) T&gt;(!!T[] data, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, int32 pixelsWide, int32 pixelsHigh, bool premultipliedAlpha) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>NotNullableValueTypeConstraint</ParameterAttribute>
+            <BaseTypeName>System.ValueType</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="data" Type="T[]" />
+        <Parameter Name="pixelFormat" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
+        <Parameter Name="pixelsWide" Type="System.Int32" />
+        <Parameter Name="pixelsHigh" Type="System.Int32" />
+        <Parameter Name="premultipliedAlpha" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <param name="data">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
+        <param name="pixelsWide">To be added.</param>
+        <param name="pixelsHigh">To be added.</param>
+        <param name="premultipliedAlpha">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithRawData&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public bool InitWithRawData&lt;T&gt; (T[] data, Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh, bool premultipliedAlpha, bool mipMap) where T : struct;" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithRawData&lt;struct .ctor (class System.ValueType) T&gt;(!!T[] data, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, int32 pixelsWide, int32 pixelsHigh, bool premultipliedAlpha, bool mipMap) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>NotNullableValueTypeConstraint</ParameterAttribute>
+            <BaseTypeName>System.ValueType</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="data" Type="T[]" />
+        <Parameter Name="pixelFormat" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
+        <Parameter Name="pixelsWide" Type="System.Int32" />
+        <Parameter Name="pixelsHigh" Type="System.Int32" />
+        <Parameter Name="premultipliedAlpha" Type="System.Boolean" />
+        <Parameter Name="mipMap" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <param name="data">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
+        <param name="pixelsWide">To be added.</param>
+        <param name="pixelsHigh">To be added.</param>
+        <param name="premultipliedAlpha">To be added.</param>
+        <param name="mipMap">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithRawData&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public bool InitWithRawData&lt;T&gt; (T[] data, Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh, bool premultipliedAlpha, bool mipMap, Cocos2D.CCSize contentSize) where T : struct;" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithRawData&lt;struct .ctor (class System.ValueType) T&gt;(!!T[] data, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat, int32 pixelsWide, int32 pixelsHigh, bool premultipliedAlpha, bool mipMap, valuetype Cocos2D.CCSize contentSize) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>NotNullableValueTypeConstraint</ParameterAttribute>
+            <BaseTypeName>System.ValueType</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="data" Type="T[]" />
+        <Parameter Name="pixelFormat" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
+        <Parameter Name="pixelsWide" Type="System.Int32" />
+        <Parameter Name="pixelsHigh" Type="System.Int32" />
+        <Parameter Name="premultipliedAlpha" Type="System.Boolean" />
+        <Parameter Name="mipMap" Type="System.Boolean" />
+        <Parameter Name="contentSize" Type="Cocos2D.CCSize" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <param name="data">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
+        <param name="pixelsWide">To be added.</param>
+        <param name="pixelsHigh">To be added.</param>
+        <param name="premultipliedAlpha">To be added.</param>
+        <param name="mipMap">To be added.</param>
+        <param name="contentSize">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithStream">
+      <MemberSignature Language="C#" Value="public bool InitWithStream (System.IO.Stream stream);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithStream(class System.IO.Stream stream) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -282,10 +479,32 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="file" Type="System.String" />
+        <Parameter Name="stream" Type="System.IO.Stream" />
       </Parameters>
       <Docs>
-        <param name="file">To be added.</param>
+        <param name="stream">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithStream">
+      <MemberSignature Language="C#" Value="public bool InitWithStream (System.IO.Stream stream, Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithStream(class System.IO.Stream stream, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat pixelFormat) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stream" Type="System.IO.Stream" />
+        <Parameter Name="pixelFormat" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
+      </Parameters>
+      <Docs>
+        <param name="stream">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -310,9 +529,9 @@
         <param name="text">To be added.</param>
         <param name="fontName">To be added.</param>
         <param name="fontSize">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes a texture from a string using a text definition </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -345,42 +564,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitWithTexture">
-      <MemberSignature Language="C#" Value="public bool InitWithTexture (Microsoft.Xna.Framework.Graphics.Texture2D texture);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTexture(class Microsoft.Xna.Framework.Graphics.Texture2D texture) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="texture" Type="Microsoft.Xna.Framework.Graphics.Texture2D" />
-      </Parameters>
-      <Docs>
-        <param name="texture">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsManaged">
-      <MemberSignature Language="C#" Value="public bool IsManaged { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsManaged" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="IsTextureDefined">
       <MemberSignature Language="C#" Value="public bool IsTextureDefined { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsTextureDefined" />
@@ -390,60 +573,6 @@
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="KeepData">
-      <MemberSignature Language="C#" Value="public object KeepData (object data, uint length);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance object KeepData(object data, unsigned int32 length) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Object</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="data" Type="System.Object" />
-        <Parameter Name="length" Type="System.UInt32" />
-      </Parameters>
-      <Docs>
-        <param name="data">To be added.</param>
-        <param name="length">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="MaxS">
-      <MemberSignature Language="C#" Value="public float MaxS { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 MaxS" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="MaxT">
-      <MemberSignature Language="C#" Value="public float MaxT { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 MaxT" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -462,25 +591,40 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getName </summary>
         <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="OptimizeForPremultipliedAlpha">
+      <MemberSignature Language="C#" Value="public static bool OptimizeForPremultipliedAlpha;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool OptimizeForPremultipliedAlpha" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PixelFormat">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTexture2DPixelFormat PixelFormat { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCTexture2DPixelFormat PixelFormat" />
+      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Graphics.SurfaceFormat PixelFormat { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat PixelFormat" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2DPixelFormat</ReturnType>
+        <ReturnType>Microsoft.Xna.Framework.Graphics.SurfaceFormat</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getPixelFormat </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PixelsHigh">
@@ -494,9 +638,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getPixelsHigh </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PixelsWide">
@@ -510,14 +654,14 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getPixelsWide </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
-    <Member MemberName="ReleaseData">
-      <MemberSignature Language="C#" Value="public void ReleaseData (object data);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ReleaseData(object data) cil managed" />
+    <Member MemberName="Reinit">
+      <MemberSignature Language="C#" Value="public override void Reinit ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Reinit() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -525,17 +669,14 @@
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="data" Type="System.Object" />
-      </Parameters>
+      <Parameters />
       <Docs>
-        <param name="data">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SamplerState">
-      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Graphics.SamplerState SamplerState { set; }" />
+      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Graphics.SamplerState SamplerState { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Xna.Framework.Graphics.SamplerState SamplerState" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -608,8 +749,32 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets alias texture parameters:
+</summary>
+        <remarks>
+          <para>
+            <verbatim>sets alias texture parameters:
+</verbatim>
+            <list type="bullet" />
+          </para>
+          <verbatim>sets alias texture parameters:
+</verbatim>
+          <list type="bullet" />
+          <para>
+            <para>Calling this method could allocate additional texture memory.</para>
+            <para>v0.8 </para>
+          </para>
+          <para>Calling this method could allocate additional texture memory.</para>
+          <para>v0.8 </para>
+          <item>
+            <description>GL_TEXTURE_MIN_FILTER = GL_NEAREST</description>
+          </item>
+          <description>GL_TEXTURE_MIN_FILTER = GL_NEAREST</description>
+          <item>
+            <description>GL_TEXTURE_MAG_FILTER = GL_NEAREST</description>
+          </item>
+          <description>GL_TEXTURE_MAG_FILTER = GL_NEAREST</description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetAntiAliasTexParameters">
@@ -624,75 +789,32 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetPvrImagesHavePremultipliedAlpha">
-      <MemberSignature Language="C#" Value="public void SetPvrImagesHavePremultipliedAlpha (bool haveAlphaPremultiplied);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetPvrImagesHavePremultipliedAlpha(bool haveAlphaPremultiplied) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="haveAlphaPremultiplied" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="haveAlphaPremultiplied">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TexParameters">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTexParams TexParameters { set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCTexParams TexParameters" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Cocos2D.CCTexParams</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Texture2D">
-      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Graphics.Texture2D Texture2D { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Xna.Framework.Graphics.Texture2D Texture2D" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Xna.Framework.Graphics.Texture2D</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TextureData">
-      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Color[] TextureData { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.Xna.Framework.Color[] TextureData" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Xna.Framework.Color[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>sets antialias texture parameters:
+</summary>
+        <remarks>
+          <para>
+            <verbatim>sets antialias texture parameters:
+</verbatim>
+            <list type="bullet" />
+          </para>
+          <verbatim>sets antialias texture parameters:
+</verbatim>
+          <list type="bullet" />
+          <para>
+            <para>Calling this method could allocate additional texture memory.</para>
+            <para>v0.8 </para>
+          </para>
+          <para>Calling this method could allocate additional texture memory.</para>
+          <para>v0.8 </para>
+          <item>
+            <description>GL_TEXTURE_MIN_FILTER = GL_LINEAR</description>
+          </item>
+          <description>GL_TEXTURE_MIN_FILTER = GL_LINEAR</description>
+          <item>
+            <description>GL_TEXTURE_MAG_FILTER = GL_LINEAR</description>
+          </item>
+          <description>GL_TEXTURE_MAG_FILTER = GL_LINEAR</description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -709,6 +831,22 @@
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="XNATexture">
+      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Graphics.Texture2D XNATexture { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Xna.Framework.Graphics.Texture2D XNATexture" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Xna.Framework.Graphics.Texture2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

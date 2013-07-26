@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCFadeOutBLTiles" FullName="Cocos2D.CCFadeOutBLTiles">
   <TypeSignature Language="C#" Value="public class CCFadeOutBLTiles : Cocos2D.CCFadeOutTRTiles" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFadeOutBLTiles extends Cocos2D.CCFadeOutTRTiles" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para> action. Fades out the tiles in a Bottom-Left direction. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -23,24 +26,24 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with the grid size and the duration </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCFadeOutBLTiles (Cocos2D.CCGridSize gridSize, float time);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCGridSize gridSize, float32 time) cil managed" />
+      <MemberSignature Language="C#" Value="public CCFadeOutBLTiles (float duration, Cocos2D.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="time" Type="System.Single" />
       </Parameters>
       <Docs>
+        <param name="duration">To be added.</param>
         <param name="gridSize">To be added.</param>
-        <param name="time">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

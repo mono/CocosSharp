@@ -505,7 +505,7 @@ namespace tests.Clipping
         {
             CCTouch touch = touches[0];
             CCPoint point =
-                m_pOuterClipper.ConvertToNodeSpace(CCDirector.SharedDirector.ConvertToGl(touch.LocationInView));
+                m_pOuterClipper.ConvertToNodeSpace(touch.Location);
             CCRect rect = new CCRect(0, 0, m_pOuterClipper.ContentSize.Width,
                                      m_pOuterClipper.ContentSize.Height);
             if (!rect.ContainsPoint(point)) return;
@@ -568,7 +568,7 @@ namespace tests.Clipping
         {
             CCTouch touch = touches[0];
             CCNode clipper = this.GetChildByTag(kTagClipperNode);
-            CCPoint point = clipper.ConvertToNodeSpace(CCDirector.SharedDirector.ConvertToGl(touch.LocationInView));
+            CCPoint point = clipper.ConvertToNodeSpace(touch.Location);
             CCRect rect = new CCRect(0, 0, clipper.ContentSize.Width, clipper.ContentSize.Height);
             m_bScrolling = rect.ContainsPoint(point);
             m_lastPoint = point;
@@ -582,7 +582,7 @@ namespace tests.Clipping
             }
             CCTouch touch = touches[0];
             CCNode clipper = this.GetChildByTag(kTagClipperNode);
-            CCPoint point = clipper.ConvertToNodeSpace(CCDirector.SharedDirector.ConvertToGl(touch.LocationInView));
+            CCPoint point = clipper.ConvertToNodeSpace(touch.Location);
             CCPoint diff = point - m_lastPoint;
             CCNode content = clipper.GetChildByTag(kTagContentNode);
             content.Position = content.Position + diff;

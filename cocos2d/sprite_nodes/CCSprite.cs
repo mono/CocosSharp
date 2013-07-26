@@ -439,6 +439,8 @@ namespace Cocos2D
 
         #endregion
 
+        #region Constructors
+
         public CCSprite (CCTexture2D texture)
         {
             if (!InitWithTexture(texture))
@@ -487,6 +489,8 @@ namespace Cocos2D
 				CCLog.Log("CCSprite (): Problems initializing class"); 
 			}
         }
+
+        #endregion
 
         public override bool Init()
         {
@@ -744,7 +748,7 @@ namespace Cocos2D
             }
         }
 
-        public void UpdateTransform()
+        public override void UpdateTransform()
         {
             Debug.Assert(m_pobBatchNode != null,
                          "updateTransform is only valid when CCSprite is being rendered using an CCSpriteBatchNode");

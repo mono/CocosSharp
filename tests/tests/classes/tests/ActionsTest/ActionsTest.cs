@@ -481,9 +481,21 @@ namespace tests
             var actionBy = new CCMoveBy (2, new CCPoint(80, 80));
             var actionByBack = actionBy.Reverse();
 
-            m_tamara.RunAction(actionTo);
+            m_tamara.RunAction(new CCSequence(actionTo, new CCCallFunc(new Action(() =>
+            {
+                if ((m_tamara.Position.X != s.Width - 40) || (m_tamara.Position.Y != s.Height - 40))
+                {
+                    CCLog.Log("ERROR: MoveTo on tamara has failed. Position of tamara = {0}, expected = {1},{2}", m_tamara.Position, s.Width - 40, s.Height - 40);
+                }
+            }))));
             m_grossini.RunAction(new CCSequence(actionBy, actionByBack));
-            m_kathia.RunAction(new CCMoveTo (1, new CCPoint(40, 40)));
+            m_kathia.RunAction(new CCSequence(new CCMoveTo(1, new CCPoint(40, 40)), new CCCallFunc(new Action(() =>
+            {
+                if (m_kathia.Position.X != 40 || m_kathia.Position.Y != 40)
+                {
+                    CCLog.Log("ERROR: MoveTo on kathia failed. Expected 40,40 but ended at {0}", m_kathia.Position);
+                }
+            }))));
         }
 
         public override string subtitle()

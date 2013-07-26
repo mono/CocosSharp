@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCCamera" FullName="Cocos2D.CCCamera">
   <TypeSignature Language="C#" Value="public class CCCamera" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCamera extends System.Object" />
@@ -10,8 +11,28 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>A  is used in every . Useful to look at the object from different views. The OpenGL gluLookAt() function is used to locate the camera.</summary>
+    <remarks>
+      <para>A <see cref="T:Cocos2D.CCCamera" /> is used in every <see cref="T:Cocos2D.CCNode" />. Useful to look at the object from different views. The OpenGL gluLookAt() function is used to locate the camera.</para>
+      <see cref="T:Cocos2D.CCCamera" />
+      <see cref="T:Cocos2D.CCNode" />
+      <para>If the object is transformed by any of the scale, rotation or position attributes, then they will override the camera.</para>
+      <para>IMPORTANT: Either your use the camera or the rotation/scale/position properties. You can't use both. World coordinates won't work if you use the camera.</para>
+      <para>Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
+      <item>
+        <description>Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.</description>
+      </item>
+      <description>Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.</description>
+      <item>
+        <description>It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.</description>
+      </item>
+      <description>It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.</description>
+      <item>
+        <description>It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. </description>
+      </item>
+      <description>It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. </description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -38,9 +59,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>sets the dirty value </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="GetCenterXyz">
@@ -124,9 +145,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the Z eye </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -157,8 +178,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Sets the camera using gluLookAt using its eye, center and up_vector </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_bDirty">
@@ -323,8 +344,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets the camera in the default position </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetCenterXyz">

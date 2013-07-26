@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCActionTween" FullName="Cocos2D.CCActionTween">
   <TypeSignature Language="C#" Value="public class CCActionTween : Cocos2D.CCActionInterval" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionTween extends Cocos2D.CCActionInterval" />
@@ -10,8 +11,30 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>ActionTween
+</summary>
+    <remarks>
+      <para>
+        <verbatim>ActionTween
+</verbatim>
+      </para>
+      <verbatim>ActionTween
+</verbatim>
+      <para>
+        <see cref="T:Cocos2D.CCActionTween" /> is an action that lets you update any property of an object. For example, if you want to modify the "width" property of a target from 200 to 300 in 2 seconds, then:</para>
+      <see cref="T:Cocos2D.CCActionTween" />
+      <para>id modifyWidth = [<see cref="T:Cocos2D.CCActionTween" /> actionWithDuration:2 key:"width" from:200 to:300]; [target runAction:modifyWidth];</para>
+      <see cref="T:Cocos2D.CCActionTween" />
+      <para>Another example: <see cref="T:Cocos2D.CCScaleTo" /> action could be rewritten using PropertyAction:</para>
+      <see cref="T:Cocos2D.CCScaleTo" />
+      <para>scaleA and scaleB are equivalents id scaleA = [<see cref="T:Cocos2D.CCScaleTo" /> actionWithDuration:2 scale:3]; id scaleB = [<see cref="T:Cocos2D.CCActionTween" /> actionWithDuration:2 key:"scale" from:1 to:3];</para>
+      <see cref="T:Cocos2D.CCScaleTo" />
+      <see cref="T:Cocos2D.CCActionTween" />
+      <para>
+        <para>v0.99.2 </para>
+      </para>
+      <para>v0.99.2 </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -32,8 +55,8 @@
         <param name="key">To be added.</param>
         <param name="from">To be added.</param>
         <param name="to">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates an initializes the action with the property name (key), and the from and to parameters. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -57,9 +80,9 @@
         <param name="key">To be added.</param>
         <param name="from">To be added.</param>
         <param name="to">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the action with the property name (key), and the from and to parameters. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_fDelta">
@@ -134,14 +157,14 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new reversed action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="public override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -154,7 +177,9 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -173,8 +198,24 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called once per frame. time a value between 0 and 1</summary>
+        <remarks>
+          <para>called once per frame. time a value between 0 and 1</para>
+          <para>For example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>0 means that the action just started</description>
+          </item>
+          <description>0 means that the action just started</description>
+          <item>
+            <description>0.5 means that the action is in the middle</description>
+          </item>
+          <description>0.5 means that the action is in the middle</description>
+          <item>
+            <description>1 means that the action is over </description>
+          </item>
+          <description>1 means that the action is over </description>
+        </remarks>
       </Docs>
     </Member>
   </Members>

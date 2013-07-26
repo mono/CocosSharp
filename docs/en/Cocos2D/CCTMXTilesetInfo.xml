@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTMXTilesetInfo" FullName="Cocos2D.CCTMXTilesetInfo">
   <TypeSignature Language="C#" Value="public class CCTMXTilesetInfo" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXTilesetInfo extends System.Object" />
@@ -10,8 +11,40 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> contains the information about the tilesets like: </para>
+    </summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>This information is obtained from the TMX file. </para>
+      <item>
+        <description>Tileset name</description>
+      </item>
+      <description>Tileset name</description>
+      <item>
+        <description>Tileset spacing</description>
+      </item>
+      <description>Tileset spacing</description>
+      <item>
+        <description>Tileset margin</description>
+      </item>
+      <description>Tileset margin</description>
+      <item>
+        <description>size of the tiles</description>
+      </item>
+      <description>size of the tiles</description>
+      <item>
+        <description>Image used for the tiles</description>
+      </item>
+      <description>Image used for the tiles</description>
+      <item>
+        <description>Image size</description>
+      </item>
+      <description>Image size</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

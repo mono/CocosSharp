@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMenuItem" FullName="Cocos2D.CCMenuItem">
   <TypeSignature Language="C#" Value="public class CCMenuItem : Cocos2D.CCNodeRGBA" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItem extends Cocos2D.CCNodeRGBA" />
@@ -10,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> base class. </para>
+    </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +26,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates a  with a target/selector </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -100,8 +103,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Activate the item </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Enabled">
@@ -135,9 +138,9 @@
       </Parameters>
       <Docs>
         <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes a  with a target/selector </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsSelected">
@@ -295,8 +298,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The item was selected (not activated), similar to "mouse-over" </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetTarget">
@@ -314,8 +317,8 @@
       </Parameters>
       <Docs>
         <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>set the target/selector of the menu item </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Unselected">
@@ -330,8 +333,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The item was unselected </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

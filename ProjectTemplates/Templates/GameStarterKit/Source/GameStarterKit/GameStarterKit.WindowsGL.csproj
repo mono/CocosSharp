@@ -56,39 +56,35 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="box2d, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\cocos2d\bin\WindowsGL\Debug\box2d.dll</HintPath>
+    <Reference Include="box2d">
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsGL\Release\box2d.dll</HintPath>
     </Reference>
-    <Reference Include="cocos2d-xna, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\cocos2d\bin\WindowsGL\Debug\cocos2d-xna.dll</HintPath>
+    <Reference Include="cocos2d-xna">
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsGL\Release\cocos2d-xna.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\cocos2d\bin\WindowsGL\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsGL\Release\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Lidgren.Network, Version=2011.3.12.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\cocos2d\bin\WindowsGL\Debug\Lidgren.Network.dll</HintPath>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsGL\Release\Lidgren.Network.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MonoGame.Framework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\cocos2d\bin\WindowsGL\Debug\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsGL\Release\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\cocos2d\bin\WindowsGL\Debug\OpenTK.dll</HintPath>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsGL\Release\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="Tao.Sdl, Version=1.2.13.0, Culture=neutral, PublicKeyToken=9c7a200e36c0094e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\cocos2d\bin\WindowsGL\Debug\Tao.Sdl.dll</HintPath>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsGL\Release\Tao.Sdl.dll</HintPath>
     </Reference>
-    <Reference Include="zlib.net, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\cocos2d\bin\WindowsGL\Debug\zlib.net.dll</HintPath>
+    <Reference Include="zlib.net">
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsGL\Release\zlib.net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

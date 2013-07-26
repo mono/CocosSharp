@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCAtlasNode" FullName="Cocos2D.CCAtlasNode">
   <TypeSignature Language="C#" Value="public class CCAtlasNode : Cocos2D.CCNodeRGBA, Cocos2D.ICCTextureProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAtlasNode extends Cocos2D.CCNodeRGBA implements class Cocos2D.ICCBlendProtocol, class Cocos2D.ICCTextureProtocol" />
@@ -14,8 +15,23 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> is a subclass of  that implements the RGBAProtocol and TextureProtocol protocol. </para>
+    </summary>
+    <remarks>
+      <para>It knows how to render a <see cref="T:Cocos2D.CCTextureAtlas" /> object. If you are going to render a <see cref="T:Cocos2D.CCTextureAtlas" /> consider subclassing <see cref="T:Cocos2D.CCAtlasNode" /> (or a subclass of <see cref="T:Cocos2D.CCAtlasNode" />)</para>
+      <see cref="T:Cocos2D.CCTextureAtlas" />
+      <see cref="T:Cocos2D.CCTextureAtlas" />
+      <see cref="T:Cocos2D.CCAtlasNode" />
+      <see cref="T:Cocos2D.CCAtlasNode" />
+      <para>All features from <see cref="T:Cocos2D.CCNode" /> are valid, plus the following features:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCNode" />
+      <list type="bullet" />
+      <item>
+        <description>opacity and RGB colors </description>
+      </item>
+      <description>opacity and RGB colors </description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -36,8 +52,8 @@
         <param name="tileWidth">To be added.</param>
         <param name="tileHeight">To be added.</param>
         <param name="itemsToRender">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a  with an Atlas file the width and height of each item and the quantity of items to render </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -73,9 +89,9 @@
         <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setBlendFunc </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Color">
@@ -89,9 +105,12 @@
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the color with R,G,B bytes</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Changes the color with R,G,B bytes</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -106,8 +125,27 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
@@ -131,9 +169,9 @@
         <param name="tileWidth">To be added.</param>
         <param name="tileHeight">To be added.</param>
         <param name="itemsToRender">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes an  with a texture the width and height of each item measured in points and the quantity of items to render </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithTileFile">
@@ -157,9 +195,9 @@
         <param name="tileWidth">To be added.</param>
         <param name="tileHeight">To be added.</param>
         <param name="itemsToRender">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes an  with an Atlas file the width and height of each item and the quantity of items to render </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsOpacityModifyRGB">
@@ -173,9 +211,15 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</para>
+          <para>
+            <para>Returns opacity modify flag. </para>
+          </para>
+          <para>Returns opacity modify flag. </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bIsOpacityModifyRGB">
@@ -339,9 +383,12 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the opacity.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Changes the opacity.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="QuadsToDraw">
@@ -355,9 +402,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setQuadsToDraw </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetIgnoreContentScaleFactor">
@@ -390,9 +437,9 @@
         <ReturnType>Cocos2D.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>sets a new texture. it will be retained </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TextureAtlas">
@@ -406,9 +453,9 @@
         <ReturnType>Cocos2D.CCTextureAtlas</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setTextureAtlas </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateAtlasValues">
@@ -423,8 +470,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>updates the Atlas (indexed vertex array). Shall be overridden in subclasses </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

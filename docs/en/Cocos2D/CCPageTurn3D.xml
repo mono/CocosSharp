@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCPageTurn3D" FullName="Cocos2D.CCPageTurn3D">
   <TypeSignature Language="C#" Value="public class CCPageTurn3D : Cocos2D.CCGrid3DAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPageTurn3D extends Cocos2D.CCGrid3DAction" />
@@ -10,8 +11,17 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para>This action simulates a page turn from the bottom right hand corner of the screen. It's not much use by itself but is used by the PageTurnTransition. </para>
+    </summary>
+    <remarks>
+      <para>Based on an original paper by L Hong et al. <ulink url="http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html">http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html</ulink></para>
+      <ulink url="http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html">http://www.parc.com/publication/1638/turning-pages-of-3d-electronic-books.html</ulink>
+      <para>
+        <para>v0.8.2 </para>
+      </para>
+      <para>v0.8.2 </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,24 +33,24 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>create the action </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCPageTurn3D (Cocos2D.CCGridSize gridSize, float time);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCGridSize gridSize, float32 time) cil managed" />
+      <MemberSignature Language="C#" Value="public CCPageTurn3D (float duration, Cocos2D.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="time" Type="System.Single" />
       </Parameters>
       <Docs>
+        <param name="duration">To be added.</param>
         <param name="gridSize">To be added.</param>
-        <param name="time">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -60,8 +70,24 @@
       </Parameters>
       <Docs>
         <param name="time">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called once per frame. time a value between 0 and 1</summary>
+        <remarks>
+          <para>called once per frame. time a value between 0 and 1</para>
+          <para>For example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>0 means that the action just started</description>
+          </item>
+          <description>0 means that the action just started</description>
+          <item>
+            <description>0.5 means that the action is in the middle</description>
+          </item>
+          <description>0.5 means that the action is in the middle</description>
+          <item>
+            <description>1 means that the action is over </description>
+          </item>
+          <description>1 means that the action is over </description>
+        </remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBReader" FullName="Cocos2D.CCBReader">
   <TypeSignature Language="C#" Value="public class CCBReader" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBReader extends System.Object" />

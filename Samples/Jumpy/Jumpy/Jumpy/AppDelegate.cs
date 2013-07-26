@@ -56,7 +56,7 @@ namespace Jumpy
             CCDirector pDirector = CCDirector.SharedDirector;
             pDirector.SetOpenGlView();
 #if WINDOWS
-            CCDrawManager.SetDesignResolutionSize(320, 480, ResolutionPolicy.ExactFit);
+            CCDrawManager.SetDesignResolutionSize(320, 480, CCResolutionPolicy.ExactFit);
 #else
             CCDrawManager.SetDesignResolutionSize(800, 480, ResolutionPolicy.ShowAll);
             //CCDrawManager.SetDesignResolutionSize(480, 320, ResolutionPolicy.ShowAll);
@@ -68,7 +68,7 @@ namespace Jumpy
             pDirector.AnimationInterval = 1.0 / 60;
 
             // create a scene. it's an autorelease object
-            CCScene pScene = CCScene.Create();
+            CCScene pScene = new CCScene();
             CCLayer pLayer = new GameLayer();
 
             pScene.AddChild(pLayer);

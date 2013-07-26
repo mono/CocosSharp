@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBezierBy" FullName="Cocos2D.CCBezierBy">
   <TypeSignature Language="C#" Value="public class CCBezierBy : Cocos2D.CCActionInterval" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBezierBy extends Cocos2D.CCActionInterval" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>An action that moves the target with a cubic Bezier curve by a certain distance. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -26,8 +29,8 @@
       </Parameters>
       <Docs>
         <param name="bezierBy">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with a duration and a bezier configuration </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -48,34 +51,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Bezierat">
-      <MemberSignature Language="C#" Value="protected float Bezierat (float a, float b, float c, float d, float t);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance float32 Bezierat(float32 a, float32 b, float32 c, float32 d, float32 t) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="a" Type="System.Single" />
-        <Parameter Name="b" Type="System.Single" />
-        <Parameter Name="c" Type="System.Single" />
-        <Parameter Name="d" Type="System.Single" />
-        <Parameter Name="t" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <param name="c">To be added.</param>
-        <param name="d">To be added.</param>
-        <param name="t">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Copy">
       <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable zone);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable zone) cil managed" />
@@ -91,9 +66,9 @@
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -113,8 +88,23 @@
       <Docs>
         <param name="t">To be added.</param>
         <param name="c">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the action with a duration and a bezier configuration </summary>
         <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="m_previousPosition">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_previousPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_previousPosition" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -160,14 +150,14 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="public override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -180,7 +170,9 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -199,8 +191,24 @@
       </Parameters>
       <Docs>
         <param name="time">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called once per frame. time a value between 0 and 1</summary>
+        <remarks>
+          <para>called once per frame. time a value between 0 and 1</para>
+          <para>For example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>0 means that the action just started</description>
+          </item>
+          <description>0 means that the action just started</description>
+          <item>
+            <description>0.5 means that the action is in the middle</description>
+          </item>
+          <description>0.5 means that the action is in the middle</description>
+          <item>
+            <description>1 means that the action is over </description>
+          </item>
+          <description>1 means that the action is over </description>
+        </remarks>
       </Docs>
     </Member>
   </Members>

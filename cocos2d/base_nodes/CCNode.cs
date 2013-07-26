@@ -66,7 +66,11 @@ namespace Cocos2D
 
     public class CCNode : ICCSelectorProtocol, ICCFocusable
     {
-        private static int kCCNodeTagInvalid = -1;
+        /// <summary>
+        /// Use this to determine if a tag has been set on the node.
+        /// </summary>
+        public const int kCCNodeTagInvalid = -1;
+
         private static uint s_globalOrderOfArrival = 1;
         protected bool m_bIgnoreAnchorPointForPosition;
 
@@ -1323,15 +1327,13 @@ namespace Cocos2D
 
         public CCPoint ConvertTouchToNodeSpace(CCTouch touch)
         {
-            CCPoint point = touch.LocationInView;
-            point = CCDirector.SharedDirector.ConvertToGl(point);
+            var point = touch.Location;
             return ConvertToNodeSpace(point);
         }
 
         public CCPoint ConvertTouchToNodeSpaceAr(CCTouch touch)
         {
-            CCPoint point = touch.LocationInView;
-            point = CCDirector.SharedDirector.ConvertToGl(point);
+            var point = touch.Location;
             return ConvertToNodeSpaceAr(point);
         }
 

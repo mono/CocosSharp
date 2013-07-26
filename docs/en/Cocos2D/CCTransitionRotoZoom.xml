@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionRotoZoom" FullName="Cocos2D.CCTransitionRotoZoom">
   <TypeSignature Language="C#" Value="public class CCTransitionRotoZoom : Cocos2D.CCTransitionScene" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionRotoZoom extends Cocos2D.CCTransitionScene" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>: Rotate and zoom out the outgoing scene, and then rotate and zoom in the incoming. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -57,8 +60,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

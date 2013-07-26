@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCGrabber" FullName="Cocos2D.CCGrabber">
   <TypeSignature Language="C#" Value="public class CCGrabber" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGrabber extends System.Object" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>FBO class that grabs the the contents of the screen </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCConfiguration" FullName="Cocos2D.CCConfiguration">
   <TypeSignature Language="C#" Value="public class CCConfiguration" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCConfiguration extends System.Object" />
@@ -10,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> contains some openGL variables. </para>
+    </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName="CheckForGLExtension">
@@ -29,9 +32,9 @@
       </Parameters>
       <Docs>
         <param name="searchName">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns whether or not an OpenGL is supported </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="getGlesVersion">
@@ -293,9 +296,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>OpenGL Max Modelview Stack Depth. </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MaxTextureSize">
@@ -309,9 +312,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>OpenGL Max texture size. </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OSVersion">

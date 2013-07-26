@@ -69,7 +69,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\tests\tests\classes\**\*.*">
+    <Compile Include="..\tests\tests\classes\**\*.*" Exclude="..\tests\tests\classes\tests\FontTest\SystemFontTest.cs">
       <Link>classes\%(RecursiveDir)%(FileName)</Link>
     </Compile>
     <Compile Include="App.xaml.cs">

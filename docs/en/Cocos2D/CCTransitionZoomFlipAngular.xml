@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionZoomFlipAngular" FullName="Cocos2D.CCTransitionZoomFlipAngular">
   <TypeSignature Language="C#" Value="public class CCTransitionZoomFlipAngular : Cocos2D.CCTransitionSceneOriented" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionZoomFlipAngular extends Cocos2D.CCTransitionSceneOriented" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>: Flips the screen half horizontally and half vertically doing a little zooming out/in. The front face is the outgoing scene and the back face is the incoming scene. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -59,8 +62,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

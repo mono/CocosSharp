@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="ZOutputStream" FullName="Cocos2D.Compression.Zlib.ZOutputStream">
   <TypeSignature Language="C#" Value="public class ZOutputStream : System.IO.Stream" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ZOutputStream extends System.IO.Stream" />

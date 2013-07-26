@@ -223,16 +223,14 @@ namespace tests
         {
             CCTouch touch = pTouches.FirstOrDefault();
 
-            m_tBeginPos = touch.LocationInView;
-            m_tBeginPos = CCDirector.SharedDirector.ConvertToGl(m_tBeginPos);
+            m_tBeginPos = touch.Location;
         }
 
         public override void TouchesMoved(List<CCTouch> pTouches)
         {
             CCTouch touch = pTouches.FirstOrDefault();
 
-            CCPoint touchLocation = touch.LocationInView;
-            touchLocation = CCDirector.SharedDirector.ConvertToGl(touchLocation);
+            var touchLocation = touch.Location;
             float nMoveY = touchLocation.Y - m_tBeginPos.Y;
 
             CCPoint curPos = m_pItemMenu.Position;
@@ -351,7 +349,10 @@ namespace tests
                 
                 case (int)TestCases.TEST_FONTS:
                         pScene = new FontTestScene(); break;
-                
+#if IPHONE || IOS || MONOMAC || WINDOWSGL || WINDOWS || (ANDROID && !OUYA) || NETFX_CORE
+                case (int)TestCases.TEST_SYSTEM_FONTS:
+                    pScene = new SystemFontTestScene(); break;
+#endif
                 //    case TEST_CURRENT_LANGUAGE:
                 //        pScene = new CurrentLanguageTestScene(); break;
                 //        break;

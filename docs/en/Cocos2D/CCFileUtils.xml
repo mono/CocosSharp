@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCFileUtils" FullName="Cocos2D.CCFileUtils">
   <TypeSignature Language="C#" Value="public class CCFileUtils" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFileUtils extends System.Object" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>Helper class to handle file operations. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -104,11 +107,11 @@
         <Parameter Name="pszRelativeFile" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="pszFilename">To be added.</param>
-        <param name="pszRelativeFile">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="pszFilename">The file name. </param>
+        <param name="pszRelativeFile">The path of the relative file. </param>
+        <summary>Gets full path from a file name and the path of the reletive file. The full path. e.g. pszFilename: hello.png, pszRelativeFile: /User/path1/path2/hello.plist Return: /User/path1/path2/hello.pvr (If there a a key(hello.png)-value(hello.pvr) in FilenameLookup dictionary. ) </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="FullPathFromRelativePath">
@@ -165,10 +168,18 @@
         <Parameter Name="pszFileName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="pszFileName">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="pszFileName">The resource file name which contains the path. </param>
+        <summary>Gets resource file data</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Gets resource file data</para>
+          <para>
+            <para>Upon success, a pointer to the data is returned, otherwise NULL. </para>
+            <para>Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. </para>
+          </para>
+          <para>Upon success, a pointer to the data is returned, otherwise NULL. </para>
+          <para>Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetFileDataFromZip">
@@ -187,9 +198,37 @@
         <Parameter Name="pSize" Type="System.UInt64" />
       </Parameters>
       <Docs>
-        <param name="pszZipFilePath">To be added.</param>
-        <param name="pszFileName">To be added.</param>
+        <param name="pszZipFilePath">The resource file name which contains the relative path of the zip file. </param>
+        <param name="pszFileName">If the file read operation succeeds, it will be the data size, otherwise 0. </param>
         <param name="pSize">To be added.</param>
+        <summary>Gets resource file data from a zip file.</summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <para>Gets resource file data from a zip file.</para>
+          <para>
+            <para>Upon success, a pointer to the data is returned, otherwise NULL. </para>
+            <para>Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. </para>
+          </para>
+          <para>Upon success, a pointer to the data is returned, otherwise NULL. </para>
+          <para>Recall: you are responsible for calling delete[] on any Non-NULL pointer returned. </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFileStream">
+      <MemberSignature Language="C#" Value="public static System.IO.Stream GetFileStream (string fileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.Stream GetFileStream(string fileName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IO.Stream</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fileName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="fileName">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

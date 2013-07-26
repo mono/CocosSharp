@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTextureAtlas" FullName="Cocos2D.CCTextureAtlas">
   <TypeSignature Language="C#" Value="public class CCTextureAtlas" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTextureAtlas extends System.Object" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>A class that implements a Texture Atlas. Supported features: The atlas file can be a PVRTC, PNG or any other format supported by  Quads can be updated in runtime Quads can be added in runtime Quads can be removed in runtime Quads can be re-ordered in runtime The  capacity can be increased or decreased in runtime OpenGL component: V3F, C4B, T2F. The quads are rendered using an OpenGL ES VBO. To render the quads using an interleaved vertex array list, you should modify the ccConfig.h file. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -23,8 +26,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a  with an filename and with an initial capacity for Quads. The  capacity can be increased in runtime. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Capacity">
@@ -38,9 +41,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getCapacity </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Create">
@@ -102,8 +105,19 @@
       </Parameters>
       <Docs>
         <param name="n">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>draws n quads from an index (offset).
+ n + start can't be greater than the capacity of the atlas</summary>
+        <remarks>
+          <para>
+            <verbatim>draws n quads from an index (offset).
+</verbatim> n + start can't be greater than the capacity of the atlas</para>
+          <verbatim>draws n quads from an index (offset).
+</verbatim>
+          <para>
+            <para>v1.0 </para>
+          </para>
+          <para>v1.0 </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DrawNumberOfQuads">
@@ -139,8 +153,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>draws all the Atlas's Quads </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="FillWithEmptyQuadsFromIndex">
@@ -160,8 +174,8 @@
       <Docs>
         <param name="index">To be added.</param>
         <param name="amount">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Ensures that after a realloc quads are still empty Used internally by 1.1 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IncreaseTotalQuadsWith">
@@ -179,8 +193,8 @@
       </Parameters>
       <Docs>
         <param name="amount">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Used internally by  don't use this unless you know what you're doing 1.1 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithFile">
@@ -200,9 +214,15 @@
       <Docs>
         <param name="file">To be added.</param>
         <param name="capacity">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a  with a filename and with a certain capacity for Quads. The  capacity can be increased in runtime.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>initializes a <see cref="T:Cocos2D.CCTextureAtlas" /> with a filename and with a certain capacity for Quads. The <see cref="T:Cocos2D.CCTextureAtlas" /> capacity can be increased in runtime.</para>
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+          <para>WARNING: Do not reinitialize the <see cref="T:Cocos2D.CCTextureAtlas" /> because it will leak memory (issue #706) </para>
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
@@ -222,9 +242,16 @@
       <Docs>
         <param name="texture">To be added.</param>
         <param name="capacity">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a  with a previously initialized  object, and with an initial capacity for Quads. The  capacity can be increased in runtime.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>initializes a <see cref="T:Cocos2D.CCTextureAtlas" /> with a previously initialized <see cref="T:Cocos2D.CCTexture2D" /> object, and with an initial capacity for Quads. The <see cref="T:Cocos2D.CCTextureAtlas" /> capacity can be increased in runtime.</para>
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+          <see cref="T:Cocos2D.CCTexture2D" />
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+          <para>WARNING: Do not reinitialize the <see cref="T:Cocos2D.CCTextureAtlas" /> because it will leak memory (issue #706) </para>
+          <see cref="T:Cocos2D.CCTextureAtlas" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InsertQuad">
@@ -244,8 +271,9 @@
       <Docs>
         <param name="quad">To be added.</param>
         <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Inserts a Quad (texture, vertex and color) at a certain index
+ index must be between 0 and the atlas capacity - 1 v0.8 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InsertQuadFromIndex">
@@ -265,8 +293,9 @@
       <Docs>
         <param name="oldIndex">To be added.</param>
         <param name="newIndex">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Removes the quad that is located at a certain index and inserts it at a new index
+ This operation is faster than removing and inserting in a quad in 2 different steps v0.7.2 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_pQuads">
@@ -316,8 +345,8 @@
       <Docs>
         <param name="index">To be added.</param>
         <param name="newIndex">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Moves quads from index till totalQuads to the newIndex Used internally by  This method doesn't enlarge the array if newIndex + quads to be moved &gt; capacity 1.1 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MoveQuadsFromIndex">
@@ -355,8 +384,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>removes all Quads.
+ The  capacity remains untouched. No memory is freed. The total number of quads to be drawn will be 0 v0.7.2 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveQuadAtIndex">
@@ -374,8 +404,9 @@
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>removes a quad at a given index number.
+ The capacity remains the same, but the total number of quads to be drawn is reduced in 1 v0.7.2 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveQuadsAtIndex">
@@ -395,8 +426,8 @@
       <Docs>
         <param name="index">To be added.</param>
         <param name="amount">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>removes a amount of quads starting from index 1.1 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ResizeCapacity">
@@ -414,9 +445,9 @@
       </Parameters>
       <Docs>
         <param name="newCapacity">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>resize the capacity of the . The new capacity can be lower or higher than the current one It returns YES if the resize was successful. If it fails to resize the capacity it will return NO with a new capacity of 0. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -430,9 +461,9 @@
         <ReturnType>Cocos2D.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setTexture </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -463,9 +494,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getTotalQuads </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateQuad">
@@ -485,8 +516,9 @@
       <Docs>
         <param name="quad">To be added.</param>
         <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>updates a Quad (texture, vertex and color) at a certain index
+ index must be between 0 and the atlas capacity - 1 v0.8 </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

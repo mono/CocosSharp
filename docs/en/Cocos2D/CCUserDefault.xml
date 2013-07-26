@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCUserDefault" FullName="Cocos2D.CCUserDefault">
   <TypeSignature Language="C#" Value="public class CCUserDefault" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCUserDefault extends System.Object" />
@@ -10,8 +11,13 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> acts as a tiny database. You can save and get base type values by it. For example, setBoolForKey("played", true) will add a bool value true into the database. Its key is "played". You can get the value of the key by getBoolForKey("played").</summary>
+    <remarks>
+      <para>
+        <see cref="T:Cocos2D.CCUserDefault" /> acts as a tiny database. You can save and get base type values by it. For example, setBoolForKey("played", true) will add a bool value true into the database. Its key is "played". You can get the value of the key by getBoolForKey("played").</para>
+      <see cref="T:Cocos2D.CCUserDefault" />
+      <para>It supports the following base types: bool, int, float, double, string </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Flush">
@@ -26,7 +32,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Save content to xml file. </para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -45,7 +53,9 @@
       </Parameters>
       <Docs>
         <param name="pKey">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Get bool value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is false. </para>
+        </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -89,7 +99,9 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="defaultValue">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Get double value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0.0. </para>
+        </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -111,7 +123,9 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="defaultValue">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Get float value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0.0f. </para>
+        </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -131,7 +145,9 @@
       </Parameters>
       <Docs>
         <param name="pKey">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Get integer value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0. </para>
+        </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -175,7 +191,9 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="defaultValue">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Get string value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is "". </para>
+        </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -213,7 +231,9 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Set bool value by key. </para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -234,7 +254,9 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Set double value by key. </para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -255,7 +277,9 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Set float value by key. </para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -276,7 +300,9 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Set integer value by key. </para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -297,7 +323,9 @@
       <Docs>
         <param name="pKey">To be added.</param>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Set string value by key. </para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -312,9 +340,9 @@
         <ReturnType>Cocos2D.CCUserDefault</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>deprecated. Use getInstace() instead </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

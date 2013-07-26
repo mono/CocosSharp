@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTMXLayerInfo" FullName="Cocos2D.CCTMXLayerInfo">
   <TypeSignature Language="C#" Value="public class CCTMXLayerInfo" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXLayerInfo extends System.Object" />
@@ -10,8 +11,32 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> contains the information about the layers like: </para>
+    </summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>This information is obtained from the TMX file. </para>
+      <item>
+        <description>Layer name</description>
+      </item>
+      <description>Layer name</description>
+      <item>
+        <description>Layer size</description>
+      </item>
+      <description>Layer size</description>
+      <item>
+        <description>Layer opacity at creation time (it can be modified at runtime)</description>
+      </item>
+      <description>Layer opacity at creation time (it can be modified at runtime)</description>
+      <item>
+        <description>Whether the layer is visible (if it's not visible, then the CocosNode won't be created)</description>
+      </item>
+      <description>Whether the layer is visible (if it's not visible, then the CocosNode won't be created)</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -150,8 +175,8 @@
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>setProperties </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Tiles">

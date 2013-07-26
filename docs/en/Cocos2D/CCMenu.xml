@@ -1,6 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMenu" FullName="Cocos2D.CCMenu">
   <TypeSignature Language="C#" Value="public class CCMenu : Cocos2D.CCLayerRGBA" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenu extends Cocos2D.CCLayerRGBA implements class Cocos2D.ICCTouchDelegate" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenu extends Cocos2D.CCLayerRGBA" />
   <AssemblyInfo>
     <AssemblyName>cocos2d-xna</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -195,6 +196,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="FocusedItem">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCMenuItem FocusedItem { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCMenuItem FocusedItem" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCMenuItem</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="HasFocus">
       <MemberSignature Language="C#" Value="public override bool HasFocus { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool HasFocus" />
@@ -271,22 +288,6 @@
         <param name="touch">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ItemWithFocus">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCMenuItem ItemWithFocus { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCMenuItem ItemWithFocus" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Cocos2D.CCMenuItem</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

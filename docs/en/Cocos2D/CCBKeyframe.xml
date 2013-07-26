@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBKeyframe" FullName="Cocos2D.CCBKeyframe">
   <TypeSignature Language="C#" Value="public class CCBKeyframe" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBKeyframe extends System.Object" />

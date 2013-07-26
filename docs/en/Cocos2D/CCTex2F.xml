@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTex2F" FullName="Cocos2D.CCTex2F">
   <TypeSignature Language="C#" Value="public struct CCTex2F" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCTex2F extends System.ValueType" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>A texcoord composed of 2 floats: u, y v3.0 </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">

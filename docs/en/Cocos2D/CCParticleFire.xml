@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCParticleFire" FullName="Cocos2D.CCParticleFire">
   <TypeSignature Language="C#" Value="public class CCParticleFire : Cocos2D.CCParticleSystemQuad" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleFire extends Cocos2D.CCParticleSystemQuad" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>A fire particle system. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -42,7 +45,9 @@
       </Parameters>
       <Docs>
         <param name="numberOfParticles">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Initializes a system with a fixed number of particles. </para>
+        </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>

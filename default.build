@@ -26,19 +26,23 @@
   <target name="build" description="Build MonoGame Release" depends="monogame">
 
     <call target="buildwindows"/>
-    <call target="buildwindowsphone"/>
+    <call target="buildwindowsphone7"/>
+    <call target="buildwindowsphone8"/>
     <call target="buildwindows8"/>
-    <call target="buildios"/>
     <call target="buildandroid"/>
     <call target="buildouya"/>
+    <call target="buildxbox360"/>
+    <call target="buildios"/>
     <call target="buildmac"/>
 
     <call target="buildnugets"/>
 
+    <call target="buildtemplates"/>
   </target>
 
   <target name="monogame" description="Build MonoGame Release" depends="checkos">
 
+    <copy file="MonoGame.build" tofile="MonoGame/default.build" overwrite="true"/>
     <nant buildfile="MonoGame/default.build" target="build" />
 
   </target>
@@ -50,6 +54,8 @@
       <exec program="msbuild " commandline="cocos2d-xna.Windows.sln /t:Build /p:Configuration=Release" />
       <exec program="msbuild " commandline="cocos2d-xna.WindowsGL.sln /t:Clean /p:Configuration=Release" />
       <exec program="msbuild " commandline="cocos2d-xna.WindowsGL.sln /t:Build /p:Configuration=Release" />
+      <exec program="msbuild " commandline="cocos2d-xna.WindowsDX.sln /t:Clean /p:Configuration=Release" />
+      <exec program="msbuild " commandline="cocos2d-xna.WindowsDX.sln /t:Build /p:Configuration=Release" />
     </if>
     <if test="${os == 'Unix'}">
       <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release cocos2d-xna.Windows.sln" />
@@ -59,7 +65,25 @@
     </if>
   </target>
 
-  <target name="buildwindowsphone" description="Build Windows Phone" depends="clean">
+  <target name="buildwindowsphone7" description="Build Windows Phone 7" depends="clean">
+    <if test="${os == 'Win32NT'}">
+      <if test="${file::exists('c:\Program Files (x86)\MSBuild\Microsoft\XNA Game Studio\v4.0\Microsoft.Xna.GameStudio.Windows Phone.targets')}">
+        <exec program="msbuild " commandline='cocos2d-xna.sln /t:Clean /p:Configuration=Release /p:Platform="Windows Phone"' />
+        <exec program="msbuild " commandline='cocos2d-xna.sln /t:Build /p:Configuration=Release /p:Platform="Windows Phone"' />
+      </if>
+    </if>
+  </target>
+
+  <target name="buildxbox360" description="Build XBox 360" depends="clean">
+    <if test="${os == 'Win32NT'}">
+      <if test="${file::exists('c:\Program Files (x86)\MSBuild\Microsoft\XNA Game Studio\v4.0\Microsoft.Xna.GameStudio.Windows Phone.targets')}">
+        <exec program="msbuild " commandline='cocos2d-xna.XBox360.sln /t:Clean /p:Configuration=Release /p:Platform="XBox 360"' />
+        <exec program="msbuild " commandline='cocos2d-xna.XBox360.sln /t:Build /p:Configuration=Release /p:Platform="XBox 360"' />
+      </if>
+    </if>
+  </target>
+
+  <target name="buildwindowsphone8" description="Build Windows Phone 8" depends="clean">
     <if test="${os == 'Win32NT'}">
       <if test="${file::exists('c:\Program Files (x86)\MSBuild\Microsoft\WindowsPhone\v8.0\Microsoft.Cpp.WindowsPhone.8.0.targets')}">
         <exec program="msbuild " commandline='cocos2d-xna.WindowsPhone.sln /t:Clean /p:Configuration=Release /p:Platform="ARM"' />
@@ -110,8 +134,8 @@
   <target name="buildouya" description="Build Android" depends="clean">
     <if test="${os == 'Win32NT'}">
       <if test="${file::exists('C:\Program Files (x86)\MSBuild\Xamarin\Android\Xamarin.Android.CSharp.targets')}">
-          <exec program="msbuild " commandline="cocos2d-xna.ouya.sln /t:Clean /p:Configuration=Release" />
-          <exec program="msbuild " commandline="cocos2d-xna.ouya.sln /t:Build /p:Configuration=Release" />
+          <exec program="msbuild " commandline="cocos2d-xna.Ouya.sln /t:Clean /p:Configuration=Release" />
+          <exec program="msbuild " commandline="cocos2d-xna.Ouya.sln /t:Build /p:Configuration=Release" />
       </if>
     </if>
     <if test="${os == 'MacOS'}">
@@ -131,7 +155,7 @@
 
   <target name="buildnugets" description="Build NuGet Packages">
     <if test="${os == 'Win32NT'}">
-      <property name="nuget.cmd.dir.path" value="nuget.bat" overwrite="true" /> 	
+      <property name="nuget.cmd.dir.path" value="nuget" overwrite="true" /> 	
       <property name="nuspec.file.dir.path" value="${project::get-base-directory()}\ProjectTemplates\NuGet\" overwrite="true" />
       <property name="packages.dir.path" value="${nuspec.file.dir.path}bin" overwrite="true" />
       
@@ -145,12 +169,23 @@
       <mkdir dir="${packages.dir.path}" />
 
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Windows.nuspec -OutputDirectory ${packages.dir.path}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsPhone7.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsGL.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Windows8.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsPhone8.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.iOS.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Android.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Ouya.nuspec -OutputDirectory ${packages.dir.path}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.MGCB.nuspec -OutputDirectory ${packages.dir.path}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsDX.nuspec -OutputDirectory ${packages.dir.path}" />
+    </if>
+  </target>
+
+  <target name="buildtemplates" description="Build Cocos2dD-XNA templates" depends="checkos">
+
+    <if test="${os == 'Win32NT'}">
+       <nant buildfile="ProjectTemplates/Templates/ContentBuilder/default.build" target="build" />
+       <nant buildfile="ProjectTemplates/Templates/StarterTemplates/default.build" target="build" />
     </if>
   </target>
 

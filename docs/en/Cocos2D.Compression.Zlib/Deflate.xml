@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="Deflate" FullName="Cocos2D.Compression.Zlib.Deflate">
   <TypeSignature Language="C#" Value="public sealed class Deflate" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Deflate extends System.Object" />

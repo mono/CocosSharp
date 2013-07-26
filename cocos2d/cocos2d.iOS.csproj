@@ -68,9 +68,6 @@
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <AssemblyName>cocos2d-xna.iOS</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyName>cocos2d-xna</AssemblyName>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -99,6 +96,7 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
+    <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include="Actions\action\CCAction.cs" />
     <Compile Include="Actions\action\CCFiniteTimeAction.cs" />
     <Compile Include="Actions\action\CCFollow.cs" />
@@ -456,6 +454,10 @@
     <Compile Include="Math\CCEaseMath.cs" />
     <Compile Include="Math\CCSplineMath.cs" />
     <Compile Include="Platform\CCInputState.cs" />
+    <Compile Include="label_nodes\CCLabel.cs" />
+    <Compile Include="label_nodes\CCLabelUtilities-CoreGraphics.cs" />
+    <Compile Include="label_nodes\CCLabelUtilities.cs" />
+    <Compile Include="label_nodes\CCLabel-CoreGraphics.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

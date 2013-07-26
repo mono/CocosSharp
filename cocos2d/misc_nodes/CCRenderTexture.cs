@@ -4,12 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
-    public enum CCImageFormat
-    {
-        JPG = 0,
-        PNG = 1
-    }
-
     public partial class CCRenderTexture : CCNode
     {
         private bool m_bFirstUsage = true;
@@ -149,14 +143,19 @@ namespace Cocos2D
 
         public bool SaveToStream(Stream stream, CCImageFormat format)
         {
-            if (format == CCImageFormat.PNG)
+            if (format == CCImageFormat.Png)
             {
                 m_pTexture.SaveAsPng(stream, m_pTexture.PixelsWide, m_pTexture.PixelsHigh);
             }
-            else
+            else if (format == CCImageFormat.Jpg)
             {
                 m_pTexture.SaveAsJpeg(stream, m_pTexture.PixelsWide, m_pTexture.PixelsHigh);
             }
+            else
+            {
+                return false;
+            }
+            
             return true;
         }
     }

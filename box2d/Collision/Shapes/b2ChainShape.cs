@@ -22,14 +22,14 @@ namespace Box2D.Collision.Shapes
             get { return (m_count); }
             set { m_count = value; }
         }
-        protected b2Vec2 m_PrevVertex = new b2Vec2();
+        protected b2Vec2 m_PrevVertex = b2Vec2.Zero;
         public b2Vec2 PrevVertex
         {
             get { return (m_PrevVertex); }
             set { m_PrevVertex = value; }
         }
 
-        protected b2Vec2 m_NextVertex = new b2Vec2();
+        protected b2Vec2 m_NextVertex = b2Vec2.Zero;
         public b2Vec2 NextVertex
         {
             get { return (m_NextVertex); }

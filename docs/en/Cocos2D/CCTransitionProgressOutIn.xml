@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionProgressOutIn" FullName="Cocos2D.CCTransitionProgressOutIn">
   <TypeSignature Language="C#" Value="public class CCTransitionProgressOutIn : Cocos2D.CCTransitionProgress" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionProgressOutIn extends Cocos2D.CCTransitionProgress" />

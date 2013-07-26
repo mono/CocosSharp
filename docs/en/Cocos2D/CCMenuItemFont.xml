@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMenuItemFont" FullName="Cocos2D.CCMenuItemFont">
   <TypeSignature Language="C#" Value="public class CCMenuItemFont : Cocos2D.CCMenuItemLabel" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemFont extends Cocos2D.CCMenuItemLabel" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>A  Helper class that creates a  class with a Label. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -26,8 +29,8 @@
       </Parameters>
       <Docs>
         <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a menu item from a string with a target/selector </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -59,9 +62,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>get the default font name </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="FontNameObj">
@@ -75,7 +78,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set the font name c++ can not overload static and non-static member functions with the same parameter types so change the name to setFontNameObj </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -91,9 +94,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>get default font size </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="FontSizeObj">
@@ -107,9 +110,9 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>get font size </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -129,9 +132,9 @@
       <Docs>
         <param name="value">To be added.</param>
         <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a menu item from a string with a target/selector </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_strFontName">

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCGridBase" FullName="Cocos2D.CCGridBase">
   <TypeSignature Language="C#" Value="public abstract class CCGridBase" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCGridBase extends System.Object" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Base class for other </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +24,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>create one Grid </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Active">
@@ -121,7 +122,7 @@
         <ReturnType>Cocos2D.CCGridSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>size of the grid </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -359,7 +360,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>number of times that the grid will be reused </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -391,7 +392,7 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>pixels between the grids </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

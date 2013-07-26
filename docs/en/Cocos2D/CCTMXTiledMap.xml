@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTMXTiledMap" FullName="Cocos2D.CCTMXTiledMap">
   <TypeSignature Language="C#" Value="public class CCTMXTiledMap : Cocos2D.CCNode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXTiledMap extends Cocos2D.CCNode" />
@@ -10,8 +11,117 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> knows how to parse and render a TMX map. </para>
+    </summary>
+    <remarks>
+      <para>It adds support for the TMX tiled map format used by <ulink url="http://www.mapeditor.org">http://www.mapeditor.org</ulink> It supports isometric, hexagonal and orthogonal tiles. It also supports object groups, objects, and properties.</para>
+      <ulink url="http://www.mapeditor.org">http://www.mapeditor.org</ulink>
+      <para>Features:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>Technical description: Each layer is created using an <see cref="T:Cocos2D.CCTMXLayer" /> (subclass of <see cref="T:Cocos2D.CCSpriteBatchNode" />). If you have 5 layers, then 5 <see cref="T:Cocos2D.CCTMXLayer" /> will be created, unless the layer visibility is off. In that case, the layer won't be created at all. You can obtain the layers (<see cref="T:Cocos2D.CCTMXLayer" /> objects) at runtime by:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCTMXLayer" />
+      <see cref="T:Cocos2D.CCSpriteBatchNode" />
+      <see cref="T:Cocos2D.CCTMXLayer" />
+      <see cref="T:Cocos2D.CCTMXLayer" />
+      <list type="bullet" />
+      <para>Each object group is created using a <see cref="T:Cocos2D.CCTMXObjectGroup" /> which is a subclass of MutableArray. You can obtain the object groups at runtime by:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCTMXObjectGroup" />
+      <list type="bullet" />
+      <para>Each object is a TMXObject.</para>
+      <para>Each property is stored as a key-value pair in an MutableDictionary. You can obtain the properties at runtime by:</para>
+      <para>map-&gt;propertyNamed(name_of_the_property); layer-&gt;propertyNamed(name_of_the_property); objectGroup-&gt;propertyNamed(name_of_the_property); object-&gt;propertyNamed(name_of_the_property);</para>
+      <para>
+        <para>v0.8.1 </para>
+      </para>
+      <para>v0.8.1 </para>
+      <item>
+        <description>Each tile will be treated as an Sprite</description>
+      </item>
+      <description>Each tile will be treated as an Sprite</description>
+      <item>
+        <description>The sprites are created on demand. They will be created only when you call "layer-&gt;tileAt(position)"</description>
+      </item>
+      <description>The sprites are created on demand. They will be created only when you call "layer-&gt;tileAt(position)"</description>
+      <item>
+        <description>Each tile can be rotated / moved / scaled / tinted / "opaqued", since each tile is a Sprite</description>
+      </item>
+      <description>Each tile can be rotated / moved / scaled / tinted / "opaqued", since each tile is a Sprite</description>
+      <item>
+        <description>Tiles can be added/removed in runtime</description>
+      </item>
+      <description>Tiles can be added/removed in runtime</description>
+      <item>
+        <description>The z-order of the tiles can be modified in runtime</description>
+      </item>
+      <description>The z-order of the tiles can be modified in runtime</description>
+      <item>
+        <description>Each tile has an anchorPoint of (0,0)</description>
+      </item>
+      <description>Each tile has an anchorPoint of (0,0)</description>
+      <item>
+        <description>The anchorPoint of the TMXTileMap is (0,0)</description>
+      </item>
+      <description>The anchorPoint of the TMXTileMap is (0,0)</description>
+      <item>
+        <description>The TMX layers will be added as a child</description>
+      </item>
+      <description>The TMX layers will be added as a child</description>
+      <item>
+        <description>The TMX layers will be aliased by default</description>
+      </item>
+      <description>The TMX layers will be aliased by default</description>
+      <item>
+        <description>The tileset image will be loaded using the TextureCache</description>
+      </item>
+      <description>The tileset image will be loaded using the TextureCache</description>
+      <item>
+        <description>Each tile will have a unique tag</description>
+      </item>
+      <description>Each tile will have a unique tag</description>
+      <item>
+        <description>Each tile will have a unique z value. top-left: z=1, bottom-right: z=max z</description>
+      </item>
+      <description>Each tile will have a unique z value. top-left: z=1, bottom-right: z=max z</description>
+      <item>
+        <description>Each object group will be treated as an MutableArray</description>
+      </item>
+      <description>Each object group will be treated as an MutableArray</description>
+      <item>
+        <description>Object class which will contain all the properties in a dictionary</description>
+      </item>
+      <description>Object class which will contain all the properties in a dictionary</description>
+      <item>
+        <description>Properties can be assigned to the Map, Layer, Object Group, and Object</description>
+      </item>
+      <description>Properties can be assigned to the Map, Layer, Object Group, and Object</description>
+      <item>
+        <description>It only supports one tileset per layer.</description>
+      </item>
+      <description>It only supports one tileset per layer.</description>
+      <item>
+        <description>Embedded images are not supported</description>
+      </item>
+      <description>Embedded images are not supported</description>
+      <item>
+        <description>It only supports the XML format (the JSON format is not supported)</description>
+      </item>
+      <description>It only supports the XML format (the JSON format is not supported)</description>
+      <item>
+        <description>map-&gt;getChildByTag(tag_number); // 0=1st layer, 1=2nd layer, 2=3rd layer, etc...</description>
+      </item>
+      <description>map-&gt;getChildByTag(tag_number); // 0=1st layer, 1=2nd layer, 2=3rd layer, etc...</description>
+      <item>
+        <description>map-&gt;layerNamed(name_of_the_layer);</description>
+      </item>
+      <description>map-&gt;layerNamed(name_of_the_layer);</description>
+      <item>
+        <description>map-&gt;objectGroupNamed(name_of_the_object_group);</description>
+      </item>
+      <description>map-&gt;objectGroupNamed(name_of_the_object_group);</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +133,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a TMX Tiled Map with a TMX file. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Create">
@@ -82,9 +192,9 @@
       </Parameters>
       <Docs>
         <param name="layerName">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>return the  for the specific layer </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_nMapOrientation">
@@ -204,9 +314,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set# MapSize </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ObjectGroupNamed">
@@ -224,9 +334,9 @@
       </Parameters>
       <Docs>
         <param name="groupName">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>return the  for the specific group </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ObjectGroups">
@@ -240,9 +350,9 @@
         <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXObjectGroup&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setObjectGroups </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Properties">
@@ -256,9 +366,9 @@
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setProperties </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PropertiesForGID">
@@ -276,9 +386,9 @@
       </Parameters>
       <Docs>
         <param name="GID">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>return properties dictionary for tile GID </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PropertyNamed">
@@ -296,9 +406,9 @@
       </Parameters>
       <Docs>
         <param name="propertyName">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>return the value for the specific property name </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TileSize">
@@ -312,9 +422,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set# TileSize </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

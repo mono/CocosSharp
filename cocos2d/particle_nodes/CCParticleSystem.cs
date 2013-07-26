@@ -609,8 +609,7 @@ namespace Cocos2D
         {
 
             byte[] outputBytes = null;
-            var zipInputStream = 
-                new ZipInputStream(new MemoryStream(dataBytes));
+            var zipInputStream = new ZipInputStream(new MemoryStream(dataBytes));
 
             if (zipInputStream.CanDecompressEntry) {
 

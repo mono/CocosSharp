@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCScrollViewLoader" FullName="Cocos2D.CCScrollViewLoader">
   <TypeSignature Language="C#" Value="public class CCScrollViewLoader : Cocos2D.CCNodeLoader" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScrollViewLoader extends Cocos2D.CCNodeLoader" />

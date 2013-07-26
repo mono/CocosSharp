@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCCallFuncN" FullName="Cocos2D.CCCallFuncN">
   <TypeSignature Language="C#" Value="public class CCCallFuncN : Cocos2D.CCCallFunc" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCallFuncN extends Cocos2D.CCCallFunc" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>Calls a 'callback' with the node as the first argument N means . </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -23,8 +26,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with the handler script function </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -74,9 +77,9 @@
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Execute">
@@ -91,8 +94,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>executes the callback </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithTarget">
@@ -110,9 +113,20 @@
       </Parameters>
       <Docs>
         <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the action with the callback 
+</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>
+            <verbatim>initializes the action with the callback 
+</verbatim>
+          </para>
+          <verbatim>initializes the action with the callback 
+</verbatim>
+          <para>typedef void (Object::<emphasis>SEL_CallFuncN)(<see cref="T:Cocos2D.CCNode" /></emphasis>);  </para>
+          <emphasis>SEL_CallFuncN)(<see cref="T:Cocos2D.CCNode" /></emphasis>
+          <see cref="T:Cocos2D.CCNode" />
+        </remarks>
       </Docs>
     </Member>
   </Members>

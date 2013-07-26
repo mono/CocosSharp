@@ -87,8 +87,7 @@ namespace tests
             foreach (var it in pTouches)
             {
                 CCTouch touch = it;
-                m_tBeginPos = touch.LocationInView;
-                m_tBeginPos = CCDirector.SharedDirector.ConvertToGl(m_tBeginPos);
+                var m_tBeginPos = touch.Location;
             }
 
         }
@@ -99,8 +98,7 @@ namespace tests
             {
                 CCTouch touch = it;
 
-                CCPoint touchLocation = touch.LocationInView;
-                touchLocation = CCDirector.SharedDirector.ConvertToGl(touchLocation);
+                var touchLocation = touch.Location;
                 float nMoveY = touchLocation.Y - m_tBeginPos.Y;
 
                 CCPoint curPos = m_pItmeMenu.Position;

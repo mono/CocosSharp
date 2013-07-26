@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCAnimationFrame" FullName="Cocos2D.CCAnimationFrame">
   <TypeSignature Language="C#" Value="public class CCAnimationFrame : Cocos2D.ICCCopyable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimationFrame extends System.Object implements class Cocos2D.ICCCopyable" />
@@ -14,8 +15,29 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> A frame of the animation. It contains information like:</summary>
+    <remarks>
+      <para>
+        <see cref="T:Cocos2D.CCAnimationFrame" /> A frame of the animation. It contains information like:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCAnimationFrame" />
+      <list type="bullet" />
+      <para>
+        <para>v2.0 </para>
+      </para>
+      <para>v2.0 </para>
+      <item>
+        <description>sprite frame name</description>
+      </item>
+      <description>sprite frame name</description>
+      <item>
+        <description># of delay units.</description>
+      </item>
+      <description># of delay units.</description>
+      <item>
+        <description>offset</description>
+      </item>
+      <description>offset</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -43,9 +65,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a copy of the </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -103,9 +125,9 @@
         <param name="spriteFrame">To be added.</param>
         <param name="delayUnits">To be added.</param>
         <param name="userInfo">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the animation frame with a spriteframe, number of delay units and a notification user info </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SpriteFrame">
@@ -119,9 +141,9 @@
         <ReturnType>Cocos2D.CCSpriteFrame</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setSpriteFrame </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UserInfo">
@@ -135,9 +157,9 @@
         <ReturnType>Cocos2D.PlistDictionary</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setUserInfo </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

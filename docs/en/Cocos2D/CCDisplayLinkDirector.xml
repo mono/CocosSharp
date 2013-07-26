@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCDisplayLinkDirector" FullName="Cocos2D.CCDisplayLinkDirector">
   <TypeSignature Language="C#" Value="public class CCDisplayLinkDirector : Cocos2D.CCDirector" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDisplayLinkDirector extends Cocos2D.CCDirector" />
@@ -10,8 +11,25 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> is a  that synchronizes timers with the refresh rate of the display. </para>
+    </summary>
+    <remarks>
+      <para>Features and Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>
+        <para>v0.8.2 </para>
+      </para>
+      <para>v0.8.2 </para>
+      <item>
+        <description>Scheduled timers &amp; drawing are synchronizes with the refresh rate of the display</description>
+      </item>
+      <description>Scheduled timers &amp; drawing are synchronizes with the refresh rate of the display</description>
+      <item>
+        <description>Only supports animation intervals of 1/60 1/30 &amp; 1/15</description>
+      </item>
+      <description>Only supports animation intervals of 1/60 1/30 &amp; 1/15</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -38,9 +56,9 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Set the FPS value. </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MainLoop">
@@ -74,8 +92,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The main loop is triggered again. Call this function only if [stopAnimation] was called earlier Don't call this function to start the main loop. To run the main loop call runWithScene </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StopAnimation">
@@ -90,8 +108,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Stops the animation. Nothing will be drawn. The main loop won't be triggered anymore. If you don't want to pause your animation call [pause] instead. </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

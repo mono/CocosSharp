@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSpriteBatchNode" FullName="Cocos2D.CCSpriteBatchNode">
   <TypeSignature Language="C#" Value="public class CCSpriteBatchNode : Cocos2D.CCNode, Cocos2D.ICCTextureProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteBatchNode extends Cocos2D.CCNode implements class Cocos2D.ICCBlendProtocol, class Cocos2D.ICCTextureProtocol" />
@@ -14,8 +15,31 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> is like a batch node: if it contains children, it will draw them in 1 single OpenGL call (often known as "batch draw").</summary>
+    <remarks>
+      <para>
+        <see cref="T:Cocos2D.CCSpriteBatchNode" /> is like a batch node: if it contains children, it will draw them in 1 single OpenGL call (often known as "batch draw").</para>
+      <see cref="T:Cocos2D.CCSpriteBatchNode" />
+      <para>A <see cref="T:Cocos2D.CCSpriteBatchNode" /> can reference one and only one texture (one image file, one texture atlas). Only the Sprites that are contained in that texture can be added to the <see cref="T:Cocos2D.CCSpriteBatchNode" />. All Sprites added to a <see cref="T:Cocos2D.CCSpriteBatchNode" /> are drawn in one OpenGL ES draw call. If the Sprites are not added to a <see cref="T:Cocos2D.CCSpriteBatchNode" /> then an OpenGL ES draw call will be needed for each one, which is less efficient.</para>
+      <see cref="T:Cocos2D.CCSpriteBatchNode" />
+      <see cref="T:Cocos2D.CCSpriteBatchNode" />
+      <see cref="T:Cocos2D.CCSpriteBatchNode" />
+      <see cref="T:Cocos2D.CCSpriteBatchNode" />
+      <para>Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>
+        <para>v0.7.1 </para>
+      </para>
+      <para>v0.7.1 </para>
+      <item>
+        <description>The only object that is accepted as child (or grandchild, grand-grandchild, etc...) is Sprite or any subclass of Sprite. eg: particles, labels and layer can't be added to a SpriteBatchNode.</description>
+      </item>
+      <description>The only object that is accepted as child (or grandchild, grand-grandchild, etc...) is Sprite or any subclass of Sprite. eg: particles, labels and layer can't be added to a SpriteBatchNode.</description>
+      <item>
+        <description>Either all its children are Aliased or Antialiased. It can't be a mix. This is because "alias" is a property of the texture, and all the sprites share the same texture.</description>
+      </item>
+      <description>Either all its children are Aliased or Antialiased. It can't be a mix. This is because "alias" is a property of the texture, and all the sprites share the same texture.</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,7 +51,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>creates a SpriteBatchNode with a file image (.png, .jpeg, .pvr, etc) and capacity of children.
+ The capacity will be increased in 33% in runtime if it run out of space. The file will be loaded using the TextureMgr. </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -115,32 +140,15 @@
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="zOrder">To be added.</param>
-        <param name="tag">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddQuadFromSprite">
-      <MemberSignature Language="C#" Value="protected void AddQuadFromSprite (Cocos2D.CCSprite sprite, int index);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void AddQuadFromSprite(class Cocos2D.CCSprite sprite, int32 index) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="sprite" Type="Cocos2D.CCSprite" />
-        <Parameter Name="index" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="sprite">To be added.</param>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">A child node </param>
+        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)</param>
+        <param name="tag">A interger to identify the node easily. Please refer to setTag(int)</param>
+        <summary>Adds a child to the container with z order and tag</summary>
+        <remarks>
+          <para>Adds a child to the container with z order and tag</para>
+          <para>If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddSpriteWithoutQuad">
@@ -219,9 +227,16 @@
         <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the blending function that is currently being used.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Returns the blending function that is currently being used.</para>
+          <para>
+            <para>A <see cref="T:Cocos2D.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
+          </para>
+          <para>A <see cref="T:Cocos2D.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
+          <see cref="T:Cocos2D.CCBlendFunc" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Descendants">
@@ -252,8 +267,27 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="HighestAtlasIndexInChild">
@@ -304,9 +338,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes the instance of Whether the initialization was successful. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithFile">
@@ -326,9 +360,10 @@
       <Docs>
         <param name="fileImage">To be added.</param>
         <param name="capacity">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a SpriteBatchNode with a file image (.png, .jpeg, .pvr, etc) and a capacity of children.
+ The capacity will be increased in 33% in runtime if it run out of space. The file will be loaded using the TextureMgr. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
@@ -348,9 +383,10 @@
       <Docs>
         <param name="tex">To be added.</param>
         <param name="capacity">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a SpriteBatchNode with a texture2d and capacity of children.
+ The capacity will be increased in 33% in runtime if it run out of space. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InsertChild">
@@ -372,6 +408,27 @@
         <param name="uIndex">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InsertQuadFromSprite">
+      <MemberSignature Language="C#" Value="protected void InsertQuadFromSprite (Cocos2D.CCSprite sprite, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void InsertQuadFromSprite(class Cocos2D.CCSprite sprite, int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="sprite">To be added.</param>
+        <param name="index">To be added.</param>
+        <summary>Inserts a quad at a certain index into the texture atlas. The  won't be added into the children array. This method should be called only when you are dealing with very big AtlasSrite and when most of the  won't be updated. For example: a tile map (TMXMap) or a label with lots of characters () </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="LowestAtlasIndexInChild">
@@ -475,9 +532,12 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="cleanup">true if all running actions on all children nodes should be cleanup, false oterwise. </param>
+        <summary>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</summary>
+        <remarks>
+          <para>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
@@ -495,10 +555,13 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">The child node which will be removed. </param>
+        <param name="cleanup">true if all running actions and callbacks on the child node will be cleanup, false otherwise. </param>
+        <summary>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</summary>
+        <remarks>
+          <para>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChildAtIndex">
@@ -518,8 +581,9 @@
       <Docs>
         <param name="index">To be added.</param>
         <param name="doCleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>removes a child given a certain index. It will also cleanup the running actions depending on the cleanup parameter.
+Removing a child from a  is very slow </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveSpriteFromAtlas">
@@ -575,10 +639,13 @@
         <Parameter Name="zOrder" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="zOrder">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">An already added child node. It MUST be already added. </param>
+        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)</param>
+        <summary>Reorders a child according to a new z value.</summary>
+        <remarks>
+          <para>Reorders a child according to a new z value.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SortAllChildren">
@@ -593,8 +660,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Sorts the children array once before drawing, instead of every time when a child is added or reordered. This appraoch can improves the performance massively. Don't call this manually unless a child added needs to be removed in the same frame </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -608,9 +675,12 @@
         <ReturnType>Cocos2D.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets a new texuture. It will be retained.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Sets a new texuture. It will be retained.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="TextureAtlas">
@@ -629,6 +699,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="UpdateQuadFromSprite">
+      <MemberSignature Language="C#" Value="protected void UpdateQuadFromSprite (Cocos2D.CCSprite sprite, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateQuadFromSprite(class Cocos2D.CCSprite sprite, int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="sprite">To be added.</param>
+        <param name="index">To be added.</param>
+        <summary>Updates a quad at a certain index into the texture atlas. The  won't be added into the children array. This method should be called only when you are dealing with very big AtlasSrite and when most of the  won't be updated. For example: a tile map (TMXMap) or a label with lots of characters () </summary>
+        <remarks />
+      </Docs>
+    </Member>
     <Member MemberName="Visit">
       <MemberSignature Language="C#" Value="public override void Visit ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Visit() cil managed" />
@@ -641,8 +732,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Visits this node's children and draw them recursively. </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

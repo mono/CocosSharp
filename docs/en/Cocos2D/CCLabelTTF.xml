@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLabelTTF" FullName="Cocos2D.CCLabelTTF">
   <TypeSignature Language="C#" Value="public class CCLabelTTF : Cocos2D.CCSprite, Cocos2D.ICCLabelProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelTTF extends Cocos2D.CCSprite implements class Cocos2D.ICCLabelProtocol" />
@@ -14,8 +15,423 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> is a subclass of TextureNode that knows how to render text labels. </para>
+    </summary>
+    <remarks>
+      <para>All features from TextureNode are valid in <see cref="T:Cocos2D.CCLabelTTF" /></para>
+      <see cref="T:Cocos2D.CCLabelTTF" />
+      <para>
+        <see cref="T:Cocos2D.CCLabelTTF" /> objects are slow. Consider using <see cref="T:Cocos2D.CCLabelAtlas" /> or <see cref="T:Cocos2D.CCLabelBMFont" /> instead.</para>
+      <see cref="T:Cocos2D.CCLabelTTF" />
+      <see cref="T:Cocos2D.CCLabelAtlas" />
+      <see cref="T:Cocos2D.CCLabelBMFont" />
+      <para>Custom ttf file can be put in assets/ or external storage that the Application can access. <programlisting><codeline><highlight class="normal">LabelTTF<sp />*label1<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight><highlight class="stringliteral">"alignment<sp />left"</highlight><highlight class="normal">,<sp /></highlight><highlight class="stringliteral">"A<sp />Damn<sp />Mess"</highlight><highlight class="normal">,<sp />fontSize,<sp />blockSize,<sp /></highlight></codeline><codeline><highlight class="normal"><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight></codeline><codeline><highlight class="normal">LabelTTF<sp />*label2<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight><highlight class="stringliteral">"alignment<sp />right"</highlight><highlight class="normal">,<sp /></highlight><highlight class="stringliteral">"/mnt/sdcard/Scissor<sp />Cuts.ttf"</highlight><highlight class="normal">,<sp />fontSize,<sp />blockSize,</highlight></codeline><codeline><highlight class="normal"><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight></codeline></programlisting></para>
+      <programlisting>
+        <codeline>
+          <highlight class="normal">LabelTTF<sp />*label1<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+          <highlight class="stringliteral">"alignment<sp />left"</highlight>
+          <highlight class="normal">,<sp /></highlight>
+          <highlight class="stringliteral">"A<sp />Damn<sp />Mess"</highlight>
+          <highlight class="normal">,<sp />fontSize,<sp />blockSize,<sp /></highlight>
+        </codeline>
+        <codeline>
+          <highlight class="normal">
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+        </codeline>
+        <codeline>
+          <highlight class="normal">LabelTTF<sp />*label2<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+          <highlight class="stringliteral">"alignment<sp />right"</highlight>
+          <highlight class="normal">,<sp /></highlight>
+          <highlight class="stringliteral">"/mnt/sdcard/Scissor<sp />Cuts.ttf"</highlight>
+          <highlight class="normal">,<sp />fontSize,<sp />blockSize,</highlight>
+        </codeline>
+        <codeline>
+          <highlight class="normal">
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+        </codeline>
+      </programlisting>
+      <codeline>
+        <highlight class="normal">LabelTTF<sp />*label1<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+        <highlight class="stringliteral">"alignment<sp />left"</highlight>
+        <highlight class="normal">,<sp /></highlight>
+        <highlight class="stringliteral">"A<sp />Damn<sp />Mess"</highlight>
+        <highlight class="normal">,<sp />fontSize,<sp />blockSize,<sp /></highlight>
+      </codeline>
+      <highlight class="normal">LabelTTF<sp />*label1<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+      <sp />
+      <sp />
+      <sp />
+      <ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>
+      <highlight class="stringliteral">"alignment<sp />left"</highlight>
+      <sp />
+      <highlight class="normal">,<sp /></highlight>
+      <sp />
+      <highlight class="stringliteral">"A<sp />Damn<sp />Mess"</highlight>
+      <sp />
+      <sp />
+      <highlight class="normal">,<sp />fontSize,<sp />blockSize,<sp /></highlight>
+      <sp />
+      <sp />
+      <sp />
+      <codeline>
+        <highlight class="normal">
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+      </codeline>
+      <highlight class="normal">
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <codeline>
+        <highlight class="normal">LabelTTF<sp />*label2<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+        <highlight class="stringliteral">"alignment<sp />right"</highlight>
+        <highlight class="normal">,<sp /></highlight>
+        <highlight class="stringliteral">"/mnt/sdcard/Scissor<sp />Cuts.ttf"</highlight>
+        <highlight class="normal">,<sp />fontSize,<sp />blockSize,</highlight>
+      </codeline>
+      <highlight class="normal">LabelTTF<sp />*label2<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+      <sp />
+      <sp />
+      <sp />
+      <ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>
+      <highlight class="stringliteral">"alignment<sp />right"</highlight>
+      <sp />
+      <highlight class="normal">,<sp /></highlight>
+      <sp />
+      <highlight class="stringliteral">"/mnt/sdcard/Scissor<sp />Cuts.ttf"</highlight>
+      <sp />
+      <highlight class="normal">,<sp />fontSize,<sp />blockSize,</highlight>
+      <sp />
+      <sp />
+      <codeline>
+        <highlight class="normal">
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+      </codeline>
+      <highlight class="normal">
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,8 +443,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates an label. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -166,9 +582,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the string that is currently being used in this label</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Returns the string that is currently being used in this label</para>
+          <para>
+            <para>The string that is currently being used in this label </para>
+          </para>
+          <para>The string that is currently being used in this label </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="HorizontalAlignment">
@@ -199,9 +621,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>initializes the </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -223,9 +645,9 @@
         <param name="label">To be added.</param>
         <param name="fontName">To be added.</param>
         <param name="fontSize">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the  with a font name, alignment, dimension and font size </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -286,22 +708,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Label">
-      <MemberSignature Language="C#" Value="public string Label { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Label" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="m_pString">
       <MemberSignature Language="C#" Value="protected string m_pString;" />
       <MemberSignature Language="ILAsm" Value=".field family string m_pString" />
@@ -337,7 +743,23 @@
       </Parameters>
       <Docs>
         <param name="label">To be added.</param>
+        <summary>changes the string to render Changing the string is as expensive as creating a new . To obtain better performance use </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Text">
+      <MemberSignature Language="C#" Value="public string Text { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Text" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

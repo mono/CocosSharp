@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTwirl" FullName="Cocos2D.CCTwirl">
   <TypeSignature Language="C#" Value="public class CCTwirl : Cocos2D.CCGrid3DAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTwirl extends Cocos2D.CCGrid3DAction" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para> action. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -23,30 +26,30 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with center position, number of twirls, amplitude, a grid size and duration </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTwirl (Cocos2D.CCPoint pos, int t, float amp, Cocos2D.CCGridSize gridSize, float duration);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCPoint pos, int32 t, float32 amp, valuetype Cocos2D.CCGridSize gridSize, float32 duration) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTwirl (float duration, Cocos2D.CCGridSize gridSize, Cocos2D.CCPoint position, int twirls, float amplitude);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize, valuetype Cocos2D.CCPoint position, int32 twirls, float32 amplitude) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
-        <Parameter Name="t" Type="System.Int32" />
-        <Parameter Name="amp" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
         <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="position" Type="Cocos2D.CCPoint" />
+        <Parameter Name="twirls" Type="System.Int32" />
+        <Parameter Name="amplitude" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="pos">To be added.</param>
-        <param name="t">To be added.</param>
-        <param name="amp">To be added.</param>
-        <param name="gridSize">To be added.</param>
         <param name="duration">To be added.</param>
+        <param name="gridSize">To be added.</param>
+        <param name="position">To be added.</param>
+        <param name="twirls">To be added.</param>
+        <param name="amplitude">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -98,14 +101,14 @@
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a new clone of the action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
-    <Member MemberName="InitWithPosition">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithPosition (Cocos2D.CCPoint pos, int t, float amp, Cocos2D.CCGridSize gridSize, float duration);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithPosition(valuetype Cocos2D.CCPoint pos, int32 t, float32 amp, valuetype Cocos2D.CCGridSize gridSize, float32 duration) cil managed" />
+    <Member MemberName="initWithDuration">
+      <MemberSignature Language="C#" Value="protected virtual bool initWithDuration (float duration, Cocos2D.CCGridSize gridSize, Cocos2D.CCPoint position, int twirls, float amplitude);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool initWithDuration(float32 duration, valuetype Cocos2D.CCGridSize gridSize, valuetype Cocos2D.CCPoint position, int32 twirls, float32 amplitude) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -114,18 +117,18 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
-        <Parameter Name="t" Type="System.Int32" />
-        <Parameter Name="amp" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
         <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="position" Type="Cocos2D.CCPoint" />
+        <Parameter Name="twirls" Type="System.Int32" />
+        <Parameter Name="amplitude" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="pos">To be added.</param>
-        <param name="t">To be added.</param>
-        <param name="amp">To be added.</param>
-        <param name="gridSize">To be added.</param>
         <param name="duration">To be added.</param>
+        <param name="gridSize">To be added.</param>
+        <param name="position">To be added.</param>
+        <param name="twirls">To be added.</param>
+        <param name="amplitude">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -217,9 +220,9 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set twirl center </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -237,8 +240,24 @@
       </Parameters>
       <Docs>
         <param name="time">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called once per frame. time a value between 0 and 1</summary>
+        <remarks>
+          <para>called once per frame. time a value between 0 and 1</para>
+          <para>For example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>0 means that the action just started</description>
+          </item>
+          <description>0 means that the action just started</description>
+          <item>
+            <description>0.5 means that the action is in the middle</description>
+          </item>
+          <description>0.5 means that the action is in the middle</description>
+          <item>
+            <description>1 means that the action is over </description>
+          </item>
+          <description>1 means that the action is over </description>
+        </remarks>
       </Docs>
     </Member>
   </Members>

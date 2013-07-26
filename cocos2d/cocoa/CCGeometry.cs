@@ -834,6 +834,28 @@ namespace Cocos2D
             }
         }
 
+        public CCPoint UpperRight
+        {
+            get
+            {
+                CCPoint pt;
+                pt.X = MaxX;
+                pt.Y = MaxY;
+                return (pt);
+            }
+        }
+
+        public CCPoint LowerLeft
+        {
+            get
+            {
+                CCPoint pt;
+                pt.X = MinX;
+                pt.Y = MinY;
+                return (pt);
+            }
+        }
+
         public CCRect Intersection(CCRect rect)
         {
             if (!IntersectsRect(rect))

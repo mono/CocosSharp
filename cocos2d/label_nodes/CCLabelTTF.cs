@@ -8,7 +8,7 @@ namespace Cocos2D
         private float m_fFontSize;
         private CCTextAlignment m_hAlignment;
         private string m_pFontName;
-        protected string m_pString;
+        protected string m_pString = String.Empty;
         private CCSize m_tDimensions;
         private CCVerticalTextAlignment m_vAlignment;
 
@@ -18,7 +18,6 @@ namespace Cocos2D
             m_vAlignment = CCVerticalTextAlignment.Top;
             m_pFontName = string.Empty;
             m_fFontSize = 0.0f;
-            m_pString = string.Empty;
 
             Init();
         }
@@ -238,13 +237,28 @@ namespace Cocos2D
             // refer to cocos2d-x issue #1430
             tex = new CCTexture2D();
 
-            tex.InitWithString(m_pString,
+            var result = tex.InitWithString(m_pString,
                                CCMacros.CCSizePointsToPixels(m_tDimensions),
                                m_hAlignment,
                                m_vAlignment,
                                m_pFontName,
                                m_fFontSize * CCMacros.CCContentScaleFactor());
 
+//#if MONOMAC || IPHONE || IOS
+//			// There was a problem loading the text for some reason or another if result is not true
+//			// For MonoMac and IOS Applications we will try to create a Native Label automatically
+//			// If the font is not found then a default font will be selected by the device and used.
+//			if (!result && !string.IsNullOrEmpty(m_pString)) 
+//			{
+//				tex = CCLabelUtilities.CreateLabelTexture (m_pString,
+//				                                           CCMacros.CCSizePointsToPixels (m_tDimensions),
+//				                                           m_hAlignment,
+//				                                           m_vAlignment,
+//				                                           m_pFontName,
+//				                                           m_fFontSize * CCMacros.CCContentScaleFactor (),
+//				                                           new CCColor4B(Microsoft.Xna.Framework.Color.White) );
+//			}
+//#endif
             Texture = tex;
 
             CCRect rect = CCRect.Zero;

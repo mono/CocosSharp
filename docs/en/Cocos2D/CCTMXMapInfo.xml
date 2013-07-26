@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTMXMapInfo" FullName="Cocos2D.CCTMXMapInfo">
   <TypeSignature Language="C#" Value="public class CCTMXMapInfo : Cocos2D.ICCSAXDelegator" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXMapInfo extends System.Object implements class Cocos2D.ICCSAXDelegator" />
@@ -14,8 +15,42 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> contains the information about the map like: </para>
+    </summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>And it also contains:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>This information is obtained from the TMX file. </para>
+      <item>
+        <description>Map orientation (hexagonal, isometric or orthogonal)</description>
+      </item>
+      <description>Map orientation (hexagonal, isometric or orthogonal)</description>
+      <item>
+        <description>Tile size</description>
+      </item>
+      <description>Tile size</description>
+      <item>
+        <description>Map size</description>
+      </item>
+      <description>Map size</description>
+      <item>
+        <description>Layers (an array of TMXLayerInfo objects)</description>
+      </item>
+      <description>Layers (an array of TMXLayerInfo objects)</description>
+      <item>
+        <description>Tilesets (an array of TMXTilesetInfo objects)</description>
+      </item>
+      <description>Tilesets (an array of TMXTilesetInfo objects)</description>
+      <item>
+        <description>ObjectGroups (an array of TMXObjectGroupInfo objects)</description>
+      </item>
+      <description>ObjectGroups (an array of TMXObjectGroupInfo objects)</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -140,9 +175,9 @@
         <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXLayerInfo&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setLayers </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_bStoringCharacters">
@@ -340,6 +375,21 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="m_uCurrentFirstGID">
+      <MemberSignature Language="C#" Value="protected uint m_uCurrentFirstGID;" />
+      <MemberSignature Language="ILAsm" Value=".field family unsigned int32 m_uCurrentFirstGID" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="m_uParentGID">
       <MemberSignature Language="C#" Value="protected uint m_uParentGID;" />
       <MemberSignature Language="ILAsm" Value=".field family unsigned int32 m_uParentGID" />
@@ -366,9 +416,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set# MapSize </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ObjectGroups">
@@ -382,9 +432,9 @@
         <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXObjectGroup&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setObjectGroups </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Orientation">
@@ -486,9 +536,9 @@
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setProperties </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartElement">
@@ -580,9 +630,9 @@
         <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXTilesetInfo&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setTilesets </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TileSize">
@@ -596,9 +646,9 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>set# TileSize </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TMXFileName">

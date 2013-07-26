@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCAnimation" FullName="Cocos2D.CCAnimation">
   <TypeSignature Language="C#" Value="public class CCAnimation : Cocos2D.ICCCopyable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimation extends System.Object implements class Cocos2D.ICCCopyable" />
@@ -14,8 +15,23 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>A Animation object is used to perform animations on the Sprite objects.
+</summary>
+    <remarks>
+      <para>
+        <verbatim>A Animation object is used to perform animations on the Sprite objects.
+</verbatim>
+      </para>
+      <verbatim>A Animation object is used to perform animations on the Sprite objects.
+</verbatim>
+      <para>The <see cref="T:Cocos2D.CCAnimation" /> object contains <see cref="T:Cocos2D.CCAnimationFrame" /> objects, and a possible delay between the frames. You can animate a <see cref="T:Cocos2D.CCAnimation" /> object by using the <see cref="T:Cocos2D.CCAnimate" /> action. Example:</para>
+      <see cref="T:Cocos2D.CCAnimation" />
+      <see cref="T:Cocos2D.CCAnimationFrame" />
+      <see cref="T:Cocos2D.CCAnimation" />
+      <see cref="T:Cocos2D.CCAnimate" />
+      <para>[sprite runAction:[<see cref="T:Cocos2D.CCAnimate" /> actionWithAnimation:animation]]; </para>
+      <see cref="T:Cocos2D.CCAnimate" />
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,7 +43,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Creates an animation
+v0.99.5 </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -103,8 +120,8 @@
       </Parameters>
       <Docs>
         <param name="pFrame">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Adds a  to a . The frame will be added with one "delay unit". </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AddSpriteFrameWithFileName">
@@ -122,8 +139,8 @@
       </Parameters>
       <Docs>
         <param name="pszFileName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Adds a frame with an image filename. Internally it will create a  and it will add it. The frame will be added with one "delay unit". Added to facilitate the migration from v0.8 to v0.9. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AddSpriteFrameWithTexture">
@@ -143,8 +160,8 @@
       <Docs>
         <param name="pobTexture">To be added.</param>
         <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Adds a frame with a texture and a rect. Internally it will create a  and it will add it. The frame will be added with one "delay unit". Added to facilitate the migration from v0.8 to v0.9. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -159,9 +176,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a clone fo the animation </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -211,9 +228,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getDuration </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Frames">
@@ -227,9 +244,9 @@
         <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCAnimationFrame&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setFrames </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithAnimationFrames">
@@ -251,9 +268,10 @@
         <param name="arrayOfAnimationFrames">To be added.</param>
         <param name="delayPerUnit">To be added.</param>
         <param name="loops">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes a Animation with AnimationFrame
+v2.0 </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithSpriteFrames">
@@ -273,9 +291,10 @@
       <Docs>
         <param name="pFrames">To be added.</param>
         <param name="delay">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes a Animation with frames and a delay between frames
+v0.99.5 </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Loops">
@@ -396,9 +415,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>getTotalDelayUnits </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

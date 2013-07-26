@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionMoveInR" FullName="Cocos2D.CCTransitionMoveInR">
   <TypeSignature Language="C#" Value="public class CCTransitionMoveInR : Cocos2D.CCTransitionMoveInL" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionMoveInR extends Cocos2D.CCTransitionMoveInL" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>: Move in from to the right the incoming scene. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -57,8 +60,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>initializes the scenes </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

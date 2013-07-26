@@ -178,6 +178,8 @@
     <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
+    <Compile Include="label_nodes\CCLabel-Gdi.cs" />
+    <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerRGBA.cs" />
     <Compile Include="misc_nodes\CCClippingNode.cs" />
@@ -357,6 +359,7 @@
     <Compile Include="sprite_nodes\CCAnimation.cs" />
     <Compile Include="sprite_nodes\CCAnimationCache.cs" />
     <Compile Include="sprite_nodes\CCAnimationFrame.cs" />
+    <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include="sprite_nodes\CCSprite.cs" />
     <Compile Include="sprite_nodes\CCSpriteBatchNode.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrame.cs" />
@@ -441,6 +444,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="BitMiracle.LibTiff.NET">
+      <HintPath>external lib\BitMiracle.LibTiff.NET.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>external lib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -453,6 +459,7 @@
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />

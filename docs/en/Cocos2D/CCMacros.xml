@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMacros" FullName="Cocos2D.CCMacros">
   <TypeSignature Language="C#" Value="public class CCMacros" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMacros extends System.Object" />

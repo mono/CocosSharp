@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCGrid3DAction" FullName="Cocos2D.CCGrid3DAction">
   <TypeSignature Language="C#" Value="public class CCGrid3DAction : Cocos2D.CCGridAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGrid3DAction extends Cocos2D.CCGridAction" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>Base class for  actions.  actions can modify a non-tiled grid. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -54,9 +57,9 @@
         <ReturnType>Cocos2D.CCGridBase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the grid </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OriginalVertex">
@@ -74,9 +77,9 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns the non-transformed vertex than belongs to certain position in the grid </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetVertex">
@@ -96,8 +99,8 @@
       <Docs>
         <param name="pos">To be added.</param>
         <param name="vertex">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets a new vertex to a certain position of the grid </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Vertex">
@@ -115,9 +118,9 @@
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns the vertex than belongs to certain position in the grid </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

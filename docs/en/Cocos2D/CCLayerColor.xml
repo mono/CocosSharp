@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLayerColor" FullName="Cocos2D.CCLayerColor">
   <TypeSignature Language="C#" Value="public class CCLayerColor : Cocos2D.CCLayerRGBA, Cocos2D.ICCBlendProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerColor extends Cocos2D.CCLayerRGBA implements class Cocos2D.ICCBlendProtocol" />
@@ -14,8 +15,22 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> is a subclass of  that implements the RGBAProtocol protocol. </para>
+    </summary>
+    <remarks>
+      <para>All features from <see cref="T:Cocos2D.CCLayer" /> are valid, plus the following new features:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCLayer" />
+      <list type="bullet" />
+      <item>
+        <description>opacity</description>
+      </item>
+      <description>opacity</description>
+      <item>
+        <description>RGB colors </description>
+      </item>
+      <description>RGB colors </description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,8 +42,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a  with color. Width and height are the window size. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -78,9 +93,9 @@
         <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setBlendFunc </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ChangeHeight">
@@ -98,8 +113,8 @@
       </Parameters>
       <Docs>
         <param name="h">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>change height in Points </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ChangeWidth">
@@ -117,8 +132,8 @@
       </Parameters>
       <Docs>
         <param name="w">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>change width in Points </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ChangeWidthAndHeight">
@@ -138,8 +153,9 @@
       <Docs>
         <param name="w">To be added.</param>
         <param name="h">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>change width and height in Points
+v0.8 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Color">
@@ -153,9 +169,12 @@
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the color with R,G,B bytes</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Changes the color with R,G,B bytes</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
@@ -169,9 +188,15 @@
         <ReturnType>Cocos2D.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the untransformed size of the node.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Sets the untransformed size of the node.</para>
+          <para>The contentSize remains the same no matter the node is scaled or rotated. All nodes has a size. <see cref="T:Cocos2D.CCLayer" /> and <see cref="T:Cocos2D.CCScene" /> has the same size of the screen.</para>
+          <see cref="T:Cocos2D.CCLayer" />
+          <see cref="T:Cocos2D.CCScene" />
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -186,8 +211,27 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -202,9 +246,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes the instance of Whether the initialization was successful. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithColor">
@@ -222,9 +266,9 @@
       </Parameters>
       <Docs>
         <param name="color">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a  with color. Width and height are the window size. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithColor">
@@ -292,9 +336,12 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the opacity.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Changes the opacity.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateColor">

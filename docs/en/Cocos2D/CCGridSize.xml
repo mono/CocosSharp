@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCGridSize" FullName="Cocos2D.CCGridSize">
   <TypeSignature Language="C#" Value="public struct CCGridSize" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCGridSize extends System.ValueType" />

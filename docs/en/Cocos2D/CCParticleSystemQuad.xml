@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCParticleSystemQuad" FullName="Cocos2D.CCParticleSystemQuad">
   <TypeSignature Language="C#" Value="public class CCParticleSystemQuad : Cocos2D.CCParticleSystem" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleSystemQuad extends Cocos2D.CCParticleSystem" />
@@ -10,8 +11,35 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> is a subclass of . </para>
+    </summary>
+    <remarks>
+      <para>It includes all the features of <see cref="T:Cocos2D.CCParticleSystem" />.</para>
+      <see cref="T:Cocos2D.CCParticleSystem" />
+      <para>Special features and Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
+      <item>
+        <description>Particle size can be any float number.</description>
+      </item>
+      <description>Particle size can be any float number.</description>
+      <item>
+        <description>The system can be scaled</description>
+      </item>
+      <description>The system can be scaled</description>
+      <item>
+        <description>The particles can be rotated</description>
+      </item>
+      <description>The particles can be rotated</description>
+      <item>
+        <description>It supports subrects</description>
+      </item>
+      <description>It supports subrects</description>
+      <item>
+        <description>It supports batched rendering since 1.1 v0.8 </description>
+      </item>
+      <description>It supports batched rendering since 1.1 v0.8 </description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,7 +51,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>creates an initializes a ParticleSystemQuad from a plist file.
+ This plist files can be created manually or with Particle Designer: </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -70,9 +99,9 @@
         <ReturnType>Cocos2D.CCParticleBatchNode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setBatchNode </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Clone">
@@ -104,8 +133,27 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTotalParticles">
@@ -123,7 +171,9 @@
       </Parameters>
       <Docs>
         <param name="numberOfParticles">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Initializes a system with a fixed number of particles. </para>
+        </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -140,7 +190,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <para>should be overridden by subclasses </para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -159,8 +211,9 @@
       </Parameters>
       <Docs>
         <param name="spriteFrame">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Sets a new SpriteFrame as particle.
+ WARNING: this method is experimental. Use setTexture:withRect instead. v0.99.4 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetTextureWithRect">
@@ -180,8 +233,9 @@
       <Docs>
         <param name="texture">To be added.</param>
         <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Sets a new texture with a rect. The rect is in Points.
+v0.99.4 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Texture">
@@ -195,9 +249,9 @@
         <ReturnType>Cocos2D.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setTexture </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TotalParticles">
@@ -211,9 +265,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setTotalParticles </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateQuadsWithParticles">

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCProgressTimer" FullName="Cocos2D.CCProgressTimer">
   <TypeSignature Language="C#" Value="public class CCProgressTimer : Cocos2D.CCNodeRGBA" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCProgressTimer extends Cocos2D.CCNodeRGBA" />
@@ -10,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> is a subclass of . It renders the inner sprite according to the percentage. The progress can be Radial, Horizontal or vertical. </para>
+    </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,8 +29,8 @@
       </Parameters>
       <Docs>
         <param name="sp">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates a progress timer with the sprite as the shape the timer goes through </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -82,6 +85,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Color">
+      <MemberSignature Language="C#" Value="public override Cocos2D.CCColor3B Color { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B Color" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns color that is currently used.</summary>
+        <value>To be added.</value>
+        <remarks>
+          <para>Returns color that is currently used.</para>
+          <para>
+            <para>The <see cref="T:Cocos2D.CCColor3B" /> contains R,G,B bytes. </para>
+          </para>
+          <para>The <see cref="T:Cocos2D.CCColor3B" /> contains R,G,B bytes. </para>
+          <see cref="T:Cocos2D.CCColor3B" />
+        </remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Draw">
       <MemberSignature Language="C#" Value="public override void Draw ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
@@ -94,8 +120,27 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithSprite">
@@ -113,9 +158,9 @@
       </Parameters>
       <Docs>
         <param name="sp">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Initializes a progress timer with the sprite as the shape the timer goes through </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsOpacityModifyRGB">
@@ -265,9 +310,28 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setMidpoint </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Opacity">
+      <MemberSignature Language="C#" Value="public override byte Opacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Opacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Changes the opacity.</summary>
+        <value>To be added.</value>
+        <remarks>
+          <para>Changes the opacity.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Percentage">
@@ -281,7 +345,7 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Percentages are from 0 to 100 </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -329,7 +393,7 @@
         <ReturnType>Cocos2D.CCSprite</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The image to show the progress percentage, retain </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -365,7 +429,7 @@
         <ReturnType>Cocos2D.CCProgressTimerType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Change the percentage to change progress. </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

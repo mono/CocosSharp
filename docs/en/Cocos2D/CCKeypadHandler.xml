@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCKeypadHandler" FullName="Cocos2D.CCKeypadHandler">
   <TypeSignature Language="C#" Value="public class CCKeypadHandler" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCKeypadHandler extends System.Object" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para> Object than contains the KeypadDelegate. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -38,7 +41,7 @@
         <ReturnType>Cocos2D.ICCKeypadDelegate</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>delegate </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -58,9 +61,9 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>allocates a  with a delegate </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDelegate">
@@ -78,9 +81,9 @@
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a  with a delegate </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_pDelegate">

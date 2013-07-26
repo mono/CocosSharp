@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCActionManager" FullName="Cocos2D.CCActionManager">
   <TypeSignature Language="C#" Value="public class CCActionManager : Cocos2D.ICCSelectorProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionManager extends System.Object implements class Cocos2D.ICCSelectorProtocol" />
@@ -14,8 +15,27 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> is a singleton that manages all the actions. Normally you won't need to use this singleton directly. 99% of the cases you will use the  interface, which uses this singleton. But there are some cases where you might need to use this singleton. Examples: </para>
+    </summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>
+        <para>v0.8 </para>
+      </para>
+      <para>v0.8 </para>
+      <item>
+        <description>When you want to run an action where the target is different from a Node.</description>
+      </item>
+      <description>When you want to run an action where the target is different from a Node.</description>
+      <item>
+        <description>When you want to pause / resume the actions</description>
+      </item>
+      <description>When you want to pause / resume the actions</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -69,8 +89,8 @@
         <param name="action">To be added.</param>
         <param name="target">To be added.</param>
         <param name="paused">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Adds an action with a target. If the target is already present, then the action will be added to the existing target. If the target is not present, a new instance of this target will be created either paused or not, and the action will be added to the newly created target. When the target is paused, the queued actions won't be 'ticked'. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DeleteHashElement">
@@ -125,9 +145,9 @@
       <Docs>
         <param name="tag">To be added.</param>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Gets an action given its tag an a target the  the with the given tag </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="NumberOfRunningActionsInTarget">
@@ -145,9 +165,20 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Returns the numbers of actions that are running in a certain target. Composable actions are counted as 1 action. Example:</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Returns the numbers of actions that are running in a certain target. Composable actions are counted as 1 action. Example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>If you are running 1 Sequence of 7 actions, it will return 1.</description>
+          </item>
+          <description>If you are running 1 Sequence of 7 actions, it will return 1.</description>
+          <item>
+            <description>If you are running 7 Sequences of 2 actions, it will return 7. </description>
+          </item>
+          <description>If you are running 7 Sequences of 2 actions, it will return 7. </description>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="PauseAllRunningActions">
@@ -162,9 +193,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Pauses all running actions, returning a list of targets whose actions were paused. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PauseTarget">
@@ -182,8 +213,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Pauses the target: all running actions and newly added actions will be paused. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveAction">
@@ -201,8 +232,8 @@
       </Parameters>
       <Docs>
         <param name="action">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Removes an action given an action reference. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveActionAtIndex">
@@ -243,8 +274,8 @@
       <Docs>
         <param name="tag">To be added.</param>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Removes an action given its tag and the target </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveAllActions">
@@ -259,8 +290,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Removes all actions from all the targets. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveAllActionsFromTarget">
@@ -278,8 +309,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Removes all actions from a certain target. All the actions that belongs to the target will be removed. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ResumeTarget">
@@ -297,8 +328,8 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Resumes the target. All queued actions will be resumed. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ResumeTargets">
@@ -316,8 +347,8 @@
       </Parameters>
       <Docs>
         <param name="targetsToResume">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Resume a set of targets (convenience function to reverse a pauseAllRunningActions call) </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Update">

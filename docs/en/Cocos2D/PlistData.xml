@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="PlistData" FullName="Cocos2D.PlistData">
   <TypeSignature Language="C#" Value="public class PlistData : Cocos2D.PlistObject&lt;byte[]&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistData extends Cocos2D.PlistObject`1&lt;unsigned int8[]&gt;" />

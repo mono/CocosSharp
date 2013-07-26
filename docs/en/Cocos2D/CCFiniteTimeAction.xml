@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCFiniteTimeAction" FullName="Cocos2D.CCFiniteTimeAction">
   <TypeSignature Language="C#" Value="public class CCFiniteTimeAction : Cocos2D.CCAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFiniteTimeAction extends Cocos2D.CCAction" />
@@ -10,8 +11,24 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para>Base class actions that do have a finite time duration. Possible actions: </para>
+    </summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>Infinite time actions are valid </para>
+      <item>
+        <description>An action with a duration of 0 seconds</description>
+      </item>
+      <description>An action with a duration of 0 seconds</description>
+      <item>
+        <description>An action with a duration of 35.5 seconds</description>
+      </item>
+      <description>An action with a duration of 35.5 seconds</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -54,7 +71,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <para>set duration in seconds of the action </para>
+        </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -86,9 +105,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

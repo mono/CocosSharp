@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLabelBMFont" FullName="Cocos2D.CCLabelBMFont">
   <TypeSignature Language="C#" Value="public class CCLabelBMFont : Cocos2D.CCSpriteBatchNode, Cocos2D.ICCLabelProtocol, Cocos2D.ICCRGBAProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelBMFont extends Cocos2D.CCSpriteBatchNode implements class Cocos2D.ICCLabelProtocol, class Cocos2D.ICCRGBAProtocol" />
@@ -17,8 +18,74 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> is a subclass of . </para>
+    </summary>
+    <remarks>
+      <para>Features:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>
+        <see cref="T:Cocos2D.CCLabelBMFont" /> implements the protocol <ref refid="classcocos2d_1_1_label_protocol" kindref="compound">LabelProtocol</ref>, like Label and <see cref="T:Cocos2D.CCLabelAtlas" />. <see cref="T:Cocos2D.CCLabelBMFont" /> has the flexibility of Label, the speed of <see cref="T:Cocos2D.CCLabelAtlas" /> and all the features of <see cref="T:Cocos2D.CCSprite" />. If in doubt, use <see cref="T:Cocos2D.CCLabelBMFont" /> instead of <see cref="T:Cocos2D.CCLabelAtlas" /> / Label.</para>
+      <see cref="T:Cocos2D.CCLabelBMFont" />
+      <ref refid="classcocos2d_1_1_label_protocol" kindref="compound">LabelProtocol</ref>
+      <see cref="T:Cocos2D.CCLabelAtlas" />
+      <see cref="T:Cocos2D.CCLabelBMFont" />
+      <see cref="T:Cocos2D.CCLabelAtlas" />
+      <see cref="T:Cocos2D.CCSprite" />
+      <see cref="T:Cocos2D.CCLabelBMFont" />
+      <see cref="T:Cocos2D.CCLabelAtlas" />
+      <para>Supported editors: <ulink url="http://glyphdesigner.71squared.com/">http://glyphdesigner.71squared.com/</ulink> (Commercial, Mac OS X) <ulink url="http://www.n4te.com/hiero/hiero.jnlp">http://www.n4te.com/hiero/hiero.jnlp</ulink> (Free, Java) <ulink url="http://slick.cokeandcode.com/demos/hiero.jnlp">http://slick.cokeandcode.com/demos/hiero.jnlp</ulink> (Free, Java) <ulink url="http://www.angelcode.com/products/bmfont/">http://www.angelcode.com/products/bmfont/</ulink> (Free, Windows only)</para>
+      <ulink url="http://glyphdesigner.71squared.com/">http://glyphdesigner.71squared.com/</ulink>
+      <ulink url="http://www.n4te.com/hiero/hiero.jnlp">http://www.n4te.com/hiero/hiero.jnlp</ulink>
+      <ulink url="http://slick.cokeandcode.com/demos/hiero.jnlp">http://slick.cokeandcode.com/demos/hiero.jnlp</ulink>
+      <ulink url="http://www.angelcode.com/products/bmfont/">http://www.angelcode.com/products/bmfont/</ulink>
+      <para>
+        <para>v0.8 </para>
+      </para>
+      <para>v0.8 </para>
+      <item>
+        <description>Treats each character like a Sprite. This means that each individual character can be:</description>
+      </item>
+      <description>Treats each character like a Sprite. This means that each individual character can be:</description>
+      <item>
+        <description>rotated</description>
+      </item>
+      <description>rotated</description>
+      <item>
+        <description>scaled</description>
+      </item>
+      <description>scaled</description>
+      <item>
+        <description>translated</description>
+      </item>
+      <description>translated</description>
+      <item>
+        <description>tinted</description>
+      </item>
+      <description>tinted</description>
+      <item>
+        <description>change the opacity</description>
+      </item>
+      <description>change the opacity</description>
+      <item>
+        <description>It can be used as part of a menu item.</description>
+      </item>
+      <description>It can be used as part of a menu item.</description>
+      <item>
+        <description>anchorPoint can be used to align the "label"</description>
+      </item>
+      <description>anchorPoint can be used to align the "label"</description>
+      <item>
+        <description>Supports AngelCode text format</description>
+      </item>
+      <description>Supports AngelCode text format</description>
+      <item>
+        <description>All inner characters are using an anchorPoint of (0.5f, 0.5f) and it is not recommend to change it because it might affect the rendering</description>
+      </item>
+      <description>All inner characters are using an anchorPoint of (0.5f, 0.5f) and it is not recommend to change it because it might affect the rendering</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,8 +97,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates an label. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -129,9 +196,13 @@
         <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the anchor point in percent.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Sets the anchor point in percent.</para>
+          <para>anchorPoint is the point around which all transformations and positioning manipulations take place. It's like a pin in the node where it is "attached" to its parent. The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner. But you can use values higher than (1,1) and lower than (0,0) too. The default anchorPoint is (0.5,0.5), so it starts in the center of the node.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CascadeColorEnabled">
@@ -177,9 +248,12 @@
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the color with R,G,B bytes</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Changes the color with R,G,B bytes</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CreateFontChars">
@@ -194,7 +268,23 @@
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>updates the font chars based on the string to render </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Dimensions">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCSize Dimensions { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize Dimensions" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -209,9 +299,16 @@
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the displayed color.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Returns the displayed color.</para>
+          <para>
+            <para>The <see cref="T:Cocos2D.CCColor3B" /> contains R,G,B bytes. </para>
+          </para>
+          <para>The <see cref="T:Cocos2D.CCColor3B" /> contains R,G,B bytes. </para>
+          <see cref="T:Cocos2D.CCColor3B" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DisplayedOpacity">
@@ -225,8 +322,30 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the displayed opacity.</summary>
         <value>To be added.</value>
+        <remarks>
+          <para>Returns the displayed opacity.</para>
+          <para>
+            <para>The opacity of sprite, from 0 ~ 255 </para>
+          </para>
+          <para>The opacity of sprite, from 0 ~ 255 </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="public override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -279,8 +398,30 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the string that is currently being used in this label</summary>
         <returns>To be added.</returns>
+        <remarks>
+          <para>Returns the string that is currently being used in this label</para>
+          <para>
+            <para>The string that is currently being used in this label </para>
+          </para>
+          <para>The string that is currently being used in this label </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HorizontalAlignment">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCTextAlignment HorizontalAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCTextAlignment HorizontalAlignment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -296,14 +437,14 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes the instance of Whether the initialization was successful. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithString (string theString, string fntFile, float width, Cocos2D.CCTextAlignment alignment, Cocos2D.CCPoint imageOffset);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithString(string theString, string fntFile, float32 width, valuetype Cocos2D.CCTextAlignment alignment, valuetype Cocos2D.CCPoint imageOffset) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithString (string theString, string fntFile, Cocos2D.CCSize dimentions, Cocos2D.CCTextAlignment hAlignment, Cocos2D.CCVerticalTextAlignment vAlignment, Cocos2D.CCPoint imageOffset, Cocos2D.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithString(string theString, string fntFile, valuetype Cocos2D.CCSize dimentions, valuetype Cocos2D.CCTextAlignment hAlignment, valuetype Cocos2D.CCVerticalTextAlignment vAlignment, valuetype Cocos2D.CCPoint imageOffset, class Cocos2D.CCTexture2D texture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -314,19 +455,23 @@
       <Parameters>
         <Parameter Name="theString" Type="System.String" />
         <Parameter Name="fntFile" Type="System.String" />
-        <Parameter Name="width" Type="System.Single" />
-        <Parameter Name="alignment" Type="Cocos2D.CCTextAlignment" />
+        <Parameter Name="dimentions" Type="Cocos2D.CCSize" />
+        <Parameter Name="hAlignment" Type="Cocos2D.CCTextAlignment" />
+        <Parameter Name="vAlignment" Type="Cocos2D.CCVerticalTextAlignment" />
         <Parameter Name="imageOffset" Type="Cocos2D.CCPoint" />
+        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
       </Parameters>
       <Docs>
         <param name="theString">To be added.</param>
         <param name="fntFile">To be added.</param>
-        <param name="width">To be added.</param>
-        <param name="alignment">To be added.</param>
+        <param name="dimentions">To be added.</param>
+        <param name="hAlignment">To be added.</param>
+        <param name="vAlignment">To be added.</param>
         <param name="imageOffset">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="texture">To be added.</param>
+        <summary>init a bitmap font atlas with an initial string and the FNT file </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsOpacityModifyRGB">
@@ -340,9 +485,15 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</para>
+          <para>
+            <para>Returns opacity modify flag. </para>
+          </para>
+          <para>Returns opacity modify flag. </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="kCCLabelAutomaticWidth">
@@ -361,15 +512,15 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Label">
-      <MemberSignature Language="C#" Value="public virtual string Label { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Label" />
+    <Member MemberName="LineBreakWithoutSpace">
+      <MemberSignature Language="C#" Value="public bool LineBreakWithoutSpace { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool LineBreakWithoutSpace" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.String</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -410,6 +561,36 @@
     <Member MemberName="m_bIsOpacityModifyRGB">
       <MemberSignature Language="C#" Value="protected bool m_bIsOpacityModifyRGB;" />
       <MemberSignature Language="ILAsm" Value=".field family bool m_bIsOpacityModifyRGB" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bLabelDirty">
+      <MemberSignature Language="C#" Value="protected bool m_bLabelDirty;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bLabelDirty" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_bLineBreakWithoutSpaces">
+      <MemberSignature Language="C#" Value="protected bool m_bLineBreakWithoutSpaces;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bLineBreakWithoutSpaces" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -467,6 +648,81 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="m_pHAlignment">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCTextAlignment m_pHAlignment;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCTextAlignment m_pHAlignment" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pReusedChar">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCSprite m_pReusedChar;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCSprite m_pReusedChar" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pVAlignment">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCVerticalTextAlignment m_pVAlignment;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCVerticalTextAlignment m_pVAlignment" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCVerticalTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_sFntFile">
+      <MemberSignature Language="C#" Value="protected string m_sFntFile;" />
+      <MemberSignature Language="ILAsm" Value=".field family string m_sFntFile" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_sInitialString">
+      <MemberSignature Language="C#" Value="protected string m_sInitialString;" />
+      <MemberSignature Language="ILAsm" Value=".field family string m_sInitialString" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="m_sString">
       <MemberSignature Language="C#" Value="protected string m_sString;" />
       <MemberSignature Language="ILAsm" Value=".field family string m_sString" />
@@ -482,6 +738,21 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="m_tDimensions">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCSize m_tDimensions;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCSize m_tDimensions" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="m_tDisplayedColor">
       <MemberSignature Language="C#" Value="protected Cocos2D.CCColor3B m_tDisplayedColor;" />
       <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor3B m_tDisplayedColor" />
@@ -491,6 +762,21 @@
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tImageOffset">
+      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_tImageOffset;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_tImageOffset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -523,9 +809,12 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the opacity.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Changes the opacity.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="PurgeCachedData">
@@ -540,8 +829,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Purges the cached data.
+ Removes from memory the cached configurations and the atlas name dictionary. v0.99.3 </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="s_pConfigurations">
@@ -570,9 +860,13 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes both X and Y scale factor of the node.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Changes both X and Y scale factor of the node.</para>
+          <para>1.0 is the default scale factor. It modifies the X and Y scale at the same time.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ScaleX">
@@ -586,9 +880,13 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the scale factor on X axis of this node</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Changes the scale factor on X axis of this node</para>
+          <para>The deafult value is 1.0 if you haven't changed it before</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ScaleY">
@@ -602,47 +900,13 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the scale factor on Y axis of this node</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetAlignment">
-      <MemberSignature Language="C#" Value="public void SetAlignment (Cocos2D.CCTextAlignment alignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetAlignment(valuetype Cocos2D.CCTextAlignment alignment) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="alignment" Type="Cocos2D.CCTextAlignment" />
-      </Parameters>
-      <Docs>
-        <param name="alignment">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetLineBreakWithoutSpace">
-      <MemberSignature Language="C#" Value="public void SetLineBreakWithoutSpace (bool breakWithoutSpace);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetLineBreakWithoutSpace(bool breakWithoutSpace) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="breakWithoutSpace" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="breakWithoutSpace">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Changes the scale factor on Y axis of this node</para>
+          <para>The Default value is 1.0 if you haven't changed it before.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetString">
@@ -664,14 +928,14 @@
         <Parameter Name="label" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="label">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="label">null terminated string </param>
+        <summary>Sets a new label using an string</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetString">
-      <MemberSignature Language="C#" Value="public virtual void SetString (string newString, bool fromUpdate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetString(string newString, bool fromUpdate) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void SetString (string newString, bool needUpdateLabel);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetString(string newString, bool needUpdateLabel) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -681,31 +945,28 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="newString" Type="System.String" />
-        <Parameter Name="fromUpdate" Type="System.Boolean" />
+        <Parameter Name="needUpdateLabel" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="newString">To be added.</param>
-        <param name="fromUpdate">To be added.</param>
+        <param name="needUpdateLabel">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetWidth">
-      <MemberSignature Language="C#" Value="public void SetWidth (float width);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetWidth(float32 width) cil managed" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="Text">
+      <MemberSignature Language="C#" Value="public virtual string Text { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Text" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>System.String</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="width" Type="System.Single" />
-      </Parameters>
       <Docs>
-        <param name="width">To be added.</param>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -724,8 +985,8 @@
       </Parameters>
       <Docs>
         <param name="parentColor">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>recursive method that updates display color </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedOpacity">
@@ -743,8 +1004,8 @@
       </Parameters>
       <Docs>
         <param name="parentOpacity">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>recursive method that updates the displayed opacity. </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateLabel">
@@ -760,6 +1021,22 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VerticalAlignment">
+      <MemberSignature Language="C#" Value="public Cocos2D.CCVerticalTextAlignment VerticalAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCVerticalTextAlignment VerticalAlignment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Cocos2D.CCVerticalTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

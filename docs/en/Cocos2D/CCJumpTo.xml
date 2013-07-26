@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCJumpTo" FullName="Cocos2D.CCJumpTo">
   <TypeSignature Language="C#" Value="public class CCJumpTo : Cocos2D.CCJumpBy" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCJumpTo extends Cocos2D.CCJumpBy" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>Moves a  object to a parabolic position simulating a jump movement by modifying it's position attribute. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -26,8 +29,8 @@
       </Parameters>
       <Docs>
         <param name="jumpTo">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -67,14 +70,14 @@
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a clone of action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="public override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -87,7 +90,9 @@
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>called before the action start. It will also set the target. </para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

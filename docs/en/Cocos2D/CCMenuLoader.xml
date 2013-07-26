@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMenuLoader" FullName="Cocos2D.CCMenuLoader">
   <TypeSignature Language="C#" Value="public class CCMenuLoader : Cocos2D.CCLayerLoader" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuLoader extends Cocos2D.CCLayerLoader" />

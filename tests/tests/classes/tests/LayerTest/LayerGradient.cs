@@ -35,8 +35,7 @@ namespace tests
 
             var it = touches.FirstOrDefault();
             CCTouch touch = (CCTouch)(it);
-            CCPoint start = touch.LocationInView;
-            start = CCDirector.SharedDirector.ConvertToGl(start);
+            var start = touch.Location;
 
             CCPoint diff = new CCPoint(s.Width / 2 - start.X, s.Height / 2 - start.Y);
             diff = CCPoint.Normalize(diff);

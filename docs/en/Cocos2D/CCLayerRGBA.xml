@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLayerRGBA" FullName="Cocos2D.CCLayerRGBA">
   <TypeSignature Language="C#" Value="public class CCLayerRGBA : Cocos2D.CCLayer, Cocos2D.ICCRGBAProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerRGBA extends Cocos2D.CCLayer implements class Cocos2D.ICCRGBAProtocol" />
@@ -14,8 +15,26 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary> is a subclass of  that implements the RGBAProtocol protocol using a solid color as the background.</summary>
+    <remarks>
+      <para>
+        <see cref="T:Cocos2D.CCLayerRGBA" /> is a subclass of <see cref="T:Cocos2D.CCLayer" /> that implements the <ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound">RGBAProtocol</ref> protocol using a solid color as the background.</para>
+      <see cref="T:Cocos2D.CCLayerRGBA" />
+      <see cref="T:Cocos2D.CCLayer" />
+      <ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound">RGBAProtocol</ref>
+      <para>All features from <see cref="T:Cocos2D.CCLayer" /> are valid, plus the following new features that propagate into children that conform to the <ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound">RGBAProtocol</ref>:<list type="bullet" /></para>
+      <see cref="T:Cocos2D.CCLayer" />
+      <ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound">RGBAProtocol</ref>
+      <list type="bullet" />
+      <item>
+        <description>opacity</description>
+      </item>
+      <description>opacity</description>
+      <item>
+        <description>RGB colors 2.1 </description>
+      </item>
+      <description>RGB colors 2.1 </description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -164,9 +183,12 @@
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the color with R,G,B bytes</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Changes the color with R,G,B bytes</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DisplayedColor">
@@ -180,9 +202,16 @@
         <ReturnType>Cocos2D.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the displayed color.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Returns the displayed color.</para>
+          <para>
+            <para>The <see cref="T:Cocos2D.CCColor3B" /> contains R,G,B bytes. </para>
+          </para>
+          <para>The <see cref="T:Cocos2D.CCColor3B" /> contains R,G,B bytes. </para>
+          <see cref="T:Cocos2D.CCColor3B" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DisplayedOpacity">
@@ -196,9 +225,15 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the displayed opacity.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Returns the displayed opacity.</para>
+          <para>
+            <para>The opacity of sprite, from 0 ~ 255 </para>
+          </para>
+          <para>The opacity of sprite, from 0 ~ 255 </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Init">
@@ -213,9 +248,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes the instance of Whether the initialization was successful. </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsOpacityModifyRGB">
@@ -229,9 +264,15 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity)</para>
+          <para>
+            <para>Returns opacity modify flag. </para>
+          </para>
+          <para>Returns opacity modify flag. </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Opacity">
@@ -245,9 +286,12 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Changes the opacity.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>Changes the opacity.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedColor">
@@ -265,8 +309,8 @@
       </Parameters>
       <Docs>
         <param name="parentColor">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>recursive method that updates display color </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedOpacity">
@@ -284,8 +328,8 @@
       </Parameters>
       <Docs>
         <param name="parentOpacity">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>recursive method that updates the displayed opacity. </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionMoveInL" FullName="Cocos2D.CCTransitionMoveInL">
   <TypeSignature Language="C#" Value="public class CCTransitionMoveInL : Cocos2D.CCTransitionScene, Cocos2D.ICCTransitionEaseScene" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionMoveInL extends Cocos2D.CCTransitionScene implements class Cocos2D.ICCTransitionEaseScene" />
@@ -14,7 +15,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>: Move in from to the left the incoming scene. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -61,9 +64,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the action that will be performed </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EaseAction">
@@ -98,8 +101,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>initializes the scenes </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OnEnter">
@@ -114,8 +117,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

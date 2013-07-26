@@ -1250,6 +1250,156 @@ namespace Cocos2D
         }
 
         #endregion
+
+        #region Mask
+
+        private struct MaskState
+        {
+            public bool Inverted;
+            public float AlphaTreshold;
+        }
+
+        private static int _maskLayer = -1;
+        private static bool _maskOnceLog = false;
+        private static DepthStencilState[] _maskSavedStencilStates = new DepthStencilState[8];
+        private static AlphaTestEffect _maskAlphaTest;
+        private static MaskState[] _maskStates = new MaskState[8];
+
+        public static bool BeginDrawMask(bool inverted, float alphaTreshold)
+        {
+            if (_maskLayer + 1 == 8) //DepthFormat.Depth24Stencil8
+            {
+                if (_maskOnceLog)
+                {
+                    CCLog.Log(
+                        @"Nesting more than 8 stencils is not supported. 
+                        Everything will be drawn without stencil for this node and its childs."
+                        );
+                    _maskOnceLog = false;
+                }
+                return false;
+            }
+
+            var maskState = new MaskState() { Inverted = inverted, AlphaTreshold = alphaTreshold };
+
+            _maskLayer++;
+
+            _maskStates[_maskLayer] = maskState;
+            _maskSavedStencilStates[_maskLayer] = DepthStencilState;
+
+            int maskLayer = 1 << _maskLayer;
+
+            ///////////////////////////////////
+            // CLEAR STENCIL BUFFER
+
+            var stencilState = new DepthStencilState()
+            {
+                DepthBufferEnable = false,
+
+                StencilEnable = true,
+
+                StencilFunction = CompareFunction.Never,
+
+                StencilMask = maskLayer,
+                StencilWriteMask = maskLayer,
+                ReferenceStencil = maskLayer,
+
+                StencilFail = !maskState.Inverted ? StencilOperation.Zero : StencilOperation.Replace
+            };
+            
+            DepthStencilState = stencilState;
+
+            // draw a fullscreen solid rectangle to clear the stencil buffer
+            var size = CCDirector.SharedDirector.WinSize;
+
+            PushMatrix();
+            SetIdentityMatrix();
+
+            CCDrawingPrimitives.Begin();
+            CCDrawingPrimitives.DrawSolidRect(CCPoint.Zero, new CCPoint(size.Width, size.Height), new CCColor4B(255, 255, 255, 255));
+            CCDrawingPrimitives.End();
+
+            PopMatrix();
+
+            ///////////////////////////////////
+            // PREPARE TO DRAW MASK
+
+            stencilState = new DepthStencilState()
+            {
+                DepthBufferEnable = false,
+
+                StencilEnable = true,
+
+                StencilFunction = CompareFunction.Never,
+
+                StencilMask = maskLayer,
+                StencilWriteMask = maskLayer,
+                ReferenceStencil = maskLayer,
+
+                StencilFail = !maskState.Inverted ? StencilOperation.Replace : StencilOperation.Zero,
+            };
+            
+            DepthStencilState = stencilState;
+
+            if (maskState.AlphaTreshold < 1)
+            {
+                if (_maskAlphaTest == null)
+                {
+                    _maskAlphaTest = new AlphaTestEffect(GraphicsDevice);
+                    _maskAlphaTest.AlphaFunction = CompareFunction.Greater;
+                }
+
+                _maskAlphaTest.ReferenceAlpha = (byte)(255 * maskState.AlphaTreshold);
+
+                PushEffect(_maskAlphaTest);
+            }
+
+            return true;
+        }
+
+        public static void EndDrawMask()
+        {
+            var maskState = _maskStates[_maskLayer];
+
+            ///////////////////////////////////
+            // PREPARE TO DRAW MASKED CONTENT
+
+            if (maskState.AlphaTreshold < 1)
+            {
+                PopEffect();
+            }
+
+            int maskLayer = 1 << _maskLayer;
+            int maskLayerL = maskLayer - 1;
+            int maskLayerLe = maskLayer | maskLayerL; 
+
+            var stencilState = new DepthStencilState()
+            {
+                DepthBufferEnable = _maskSavedStencilStates[_maskLayer].DepthBufferEnable,
+
+                StencilEnable = true,
+
+                StencilMask = maskLayerLe,
+                StencilWriteMask = 0,
+                ReferenceStencil = maskLayerLe,
+
+                StencilFunction = CompareFunction.Equal,
+
+                StencilPass = StencilOperation.Keep,
+                StencilFail = StencilOperation.Keep,
+            };
+            
+            DepthStencilState = stencilState;
+        }
+
+        public static void EndMask()
+        {
+            DepthStencilState = _maskSavedStencilStates[_maskLayer];
+
+            _maskLayer--;
+        }
+        
+        #endregion
     }
 
     public enum CCResolutionPolicy

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCFlipX3D" FullName="Cocos2D.CCFlipX3D">
   <TypeSignature Language="C#" Value="public class CCFlipX3D : Cocos2D.CCGrid3DAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFlipX3D extends Cocos2D.CCGrid3DAction" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para> action. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -23,8 +26,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with duration </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -74,9 +77,9 @@
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a new clone of the action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -94,14 +97,14 @@
       </Parameters>
       <Docs>
         <param name="duration">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes the action with duration </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
-    <Member MemberName="InitWithSize">
-      <MemberSignature Language="C#" Value="protected override bool InitWithSize (Cocos2D.CCGridSize gridSize, float duration);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance bool InitWithSize(valuetype Cocos2D.CCGridSize gridSize, float32 duration) cil managed" />
+    <Member MemberName="InitWithDuration">
+      <MemberSignature Language="C#" Value="protected override bool InitWithDuration (float duration, Cocos2D.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance bool InitWithDuration(float32 duration, valuetype Cocos2D.CCGridSize gridSize) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -110,12 +113,12 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
         <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
       </Parameters>
       <Docs>
-        <param name="gridSize">To be added.</param>
         <param name="duration">To be added.</param>
+        <param name="gridSize">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -136,8 +139,24 @@
       </Parameters>
       <Docs>
         <param name="time">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called once per frame. time a value between 0 and 1</summary>
+        <remarks>
+          <para>called once per frame. time a value between 0 and 1</para>
+          <para>For example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>0 means that the action just started</description>
+          </item>
+          <description>0 means that the action just started</description>
+          <item>
+            <description>0.5 means that the action is in the middle</description>
+          </item>
+          <description>0.5 means that the action is in the middle</description>
+          <item>
+            <description>1 means that the action is over </description>
+          </item>
+          <description>1 means that the action is over </description>
+        </remarks>
       </Docs>
     </Member>
   </Members>

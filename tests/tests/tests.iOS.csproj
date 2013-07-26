@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}</ProjectGuid>
+    <ProjectGuid>{4ef34363-1190-4444-9f4b-7a262b397ee8}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -93,9 +93,6 @@
     <AssemblyName>cocos2d.tests</AssemblyName>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyName>cocos2dTests</AssemblyName>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -104,6 +101,8 @@
     <Reference Include="OpenTK" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ball-hd.mask" />
+    <EmbeddedResource Include="grossini.mask" />
     <Compile Include="classes\AppDelegate.cs" />
     <Compile Include="classes\controller.cs" />
     <Compile Include="classes\test.cs" />
@@ -1111,6 +1110,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
+    <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">
@@ -1520,6 +1520,31 @@
     <Content Include="PhoneGameThumb.png" />
     <Content Include="Content\Images\hole_effect.xnb" />
     <Content Include="Content\Images\hole_stencil.xnb" />
+    <Content Include="Assets\Content\fonts\A Damn Mess.ttf">
+      <Link>Content\fonts\A Damn Mess.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Abberancy.ttf">
+      <Link>Content\fonts\Abberancy.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Abduction.ttf">
+      <Link>Content\fonts\Abduction.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Paint Boy.ttf">
+      <Link>Content\fonts\Paint Boy.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Schwarzwald Regular.ttf">
+      <Link>Content\fonts\Schwarzwald Regular.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Scissor Cuts.ttf">
+      <Link>Content\fonts\Scissor Cuts.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\Thonburi.ttf">
+      <Link>Content\fonts\Thonburi.ttf</Link>
+      <DependentUpon>ThonburiBold.ttf</DependentUpon>
+    </Content>
+    <Content Include="Assets\Content\fonts\ThonburiBold.ttf">
+      <Link>Content\fonts\ThonburiBold.ttf</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />

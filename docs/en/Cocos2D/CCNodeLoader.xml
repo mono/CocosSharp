@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCNodeLoader" FullName="Cocos2D.CCNodeLoader">
   <TypeSignature Language="C#" Value="public class CCNodeLoader" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNodeLoader extends System.Object" />

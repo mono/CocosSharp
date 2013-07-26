@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCV2F_C4F_T2F_Quad" FullName="Cocos2D.CCV2F_C4F_T2F_Quad">
   <TypeSignature Language="C#" Value="public class CCV2F_C4F_T2F_Quad" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCV2F_C4F_T2F_Quad extends System.Object" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>4 Vertex2FTex2FColor4F Quad </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>

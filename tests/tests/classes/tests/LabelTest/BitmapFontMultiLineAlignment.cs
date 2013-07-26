@@ -131,13 +131,13 @@ namespace tests
             switch (item.Tag)
             {
                 case LeftAlign:
-                    m_pLabelShouldRetain.SetAlignment(CCTextAlignment.Left);
+                    m_pLabelShouldRetain.HorizontalAlignment = CCTextAlignment.Left;
                     break;
                 case CenterAlign:
-                    m_pLabelShouldRetain.SetAlignment(CCTextAlignment.Center);
+                    m_pLabelShouldRetain.HorizontalAlignment = CCTextAlignment.Center;
                     break;
                 case RightAlign:
-                    m_pLabelShouldRetain.SetAlignment(CCTextAlignment.Right);
+                    m_pLabelShouldRetain.HorizontalAlignment = CCTextAlignment.Right;
                     break;
 
                 default:
@@ -184,7 +184,7 @@ namespace tests
 
             float labelWidth = Math.Abs(m_pArrowsShouldRetain.Position.X - m_pLabelShouldRetain.Position.X) * 2;
 
-            m_pLabelShouldRetain.SetWidth(labelWidth);
+            m_pLabelShouldRetain.Dimensions = new CCSize(labelWidth, 0);
         }
 
         private void snapArrowsToEdge()

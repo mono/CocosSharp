@@ -245,7 +245,7 @@ namespace Cocos2D
 
         public void RemoveAction(CCAction action)
         {
-            if (action == null)
+            if (action == null || action.OriginalTarget == null)
             {
                 return;
             }

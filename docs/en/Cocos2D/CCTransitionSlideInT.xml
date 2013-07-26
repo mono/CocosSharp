@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionSlideInT" FullName="Cocos2D.CCTransitionSlideInT">
   <TypeSignature Language="C#" Value="public class CCTransitionSlideInT : Cocos2D.CCTransitionSlideInL" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionSlideInT extends Cocos2D.CCTransitionSlideInL" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>: Slide in the incoming scene from the top border. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -57,9 +60,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>returns the action that will be performed by the incoming and outgoing scene </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitScenes">
@@ -74,8 +77,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>initializes the scenes </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SceneOrder">

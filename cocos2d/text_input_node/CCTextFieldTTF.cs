@@ -1,283 +1,223 @@
 using System;
+#if !WINDOWS_PHONE && !XBOX
 using Microsoft.Xna.Framework.GamerServices;
-
+#endif
 namespace Cocos2D
 {
-    public class CCTextFieldTTF : CCLabelTTF, ICCIMEDelegate
+	public delegate void CCTextFieldTTFDelegate(object sender, ref string text, ref bool canceled);
+
+    public class CCTextFieldTTF : CCLabelTTF, ICCTargetedTouchDelegate
     {
-        private readonly CCLabelTTF cclabelttf = new CCLabelTTF();
-        private CCColor3B m_ColorSpaceHolder;
-        private int m_nCharCount;
-        private ICCTextFieldDelegate m_pDelegate;
-        protected string m_pInputText;
-        protected string m_pPlaceHolder;
+        private IAsyncResult m_pGuideShowHandle;
+        private string m_sEditTitle = "Input";
+        private string m_sEditDescription = "Please provide input";
+        private bool m_bReadOnly = false;
+        private bool m_bAutoEdit;
+        private bool m_bTouchHandled;
 
-        public CCTextFieldTTF()
-        {
-            m_ColorSpaceHolder.R = m_ColorSpaceHolder.G = m_ColorSpaceHolder.B = 127;
-        }
+        public event CCTextFieldTTFDelegate BeginEditing;
+        public event CCTextFieldTTFDelegate EndEditing;
 
-        public ICCTextFieldDelegate Delegate
+        public bool ReadOnly
         {
-            get { return m_pDelegate; }
-            set { m_pDelegate = value; }
-        }
-
-        public int CharCount
-        {
-            get { return m_nCharCount; }
-        }
-
-        public CCColor3B ColorSpaceHolder
-        {
-            get { return m_ColorSpaceHolder; }
-            set { m_ColorSpaceHolder = value; }
-        }
-
-        public string PlaceHolder
-        {
-            get { return m_pPlaceHolder; }
+            get { return m_bReadOnly; }
             set
             {
-                //CC_SAFE_DELETE(m_pPlaceHolder);
-                m_pPlaceHolder = value ?? string.Empty;
-                if (!string.IsNullOrEmpty(value))
+                m_bReadOnly = value;
+                
+                if (!value)
                 {
-                    var cclablettf = new CCLabelTTF();
-                    cclablettf.Text = value;
+                    EndEdit();
                 }
+                
+                CheckTouchState();
             }
         }
 
-        public string InputTextString
+        public string EditTitle
         {
-            get { return m_pInputText ?? PlaceHolder; }
+            get { return m_sEditTitle; }
+            set { m_sEditTitle = value; }
+        }
+
+        public string EditDescription
+        {
+            get { return m_sEditDescription; }
+            set { m_sEditDescription = value; }
+        }
+
+        public bool AutoEdit
+        {
+            get { return m_bAutoEdit; }
             set
             {
-                if (value != null)
+                m_bAutoEdit = value;
+                CheckTouchState();
+            }
+        }
+
+        public CCTextFieldTTF(string text, string fontName, float fontSize) :
+            this(text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Center,
+                 CCVerticalTextAlignment.Top)
+        {
+        }
+
+        public CCTextFieldTTF(string text, string fontName, float fontSize, CCSize dimensions,
+                              CCTextAlignment hAlignment) :
+                                  this(text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
+        {
+        }
+
+        public CCTextFieldTTF(string text, string fontName, float fontSize, CCSize dimensions,
+                              CCTextAlignment hAlignment,
+                              CCVerticalTextAlignment vAlignment)
+        {
+            InitWithString(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
+        }
+
+        public void Edit()
+        {
+            Edit(m_sEditTitle, m_sEditDescription);
+        }
+
+        public void Edit(string title, string defaultText)
+        {
+#if !WINDOWS_PHONE && !XBOX
+            if (!m_bReadOnly && !Guide.IsVisible)
+            {
+                var canceled = false;
+                var text = Text;
+
+                DoBeginEditing(ref text, ref canceled);
+
+                if (!canceled)
                 {
-                    m_pInputText = value;
+                    m_pGuideShowHandle = Guide.BeginShowKeyboardInput(
+                        Microsoft.Xna.Framework.PlayerIndex.One, title, defaultText, Text, InputHandler, null
+                        );
                 }
-                else
+            }
+#endif
+        }
+
+        private void InputHandler(IAsyncResult result)
+        {
+#if !WINDOWS_PHONE && !XBOX
+            var newText = Guide.EndShowKeyboardInput(result);
+
+            m_pGuideShowHandle = null;
+
+            if (newText != null && Text != newText)
+            {
+                bool canceled = false;
+
+                ScheduleOnce(
+                    time =>
+                    {
+                        DoEndEditing(ref newText, ref canceled);
+
+                        if (!canceled)
+                        {
+                            Text = newText;
+                        }
+                    },
+                    0
+                    );
+            }
+#endif
+        }
+
+        protected virtual void DoBeginEditing(ref string newText, ref bool canceled)
+        {
+            if (BeginEditing != null)
+            {
+                BeginEditing(this, ref newText, ref canceled);
+            }
+        }
+
+        protected virtual void DoEndEditing(ref string newText, ref bool canceled)
+        {
+            if (EndEditing != null)
+            {
+                EndEditing(this, ref newText, ref canceled);
+            }
+        }
+
+        public void EndEdit()
+        {
+            if (m_pGuideShowHandle != null)
+			{
+#if !WINDOWS_PHONE && !XBOX
+				Guide.EndShowKeyboardInput(m_pGuideShowHandle);
+#endif
+                m_pGuideShowHandle = null;
+            }
+        }
+
+        private void CheckTouchState()
+        {
+            if (m_bRunning)
+            {
+                if (!m_bTouchHandled && !m_bReadOnly && m_bAutoEdit)
                 {
-                    m_pInputText = "";
+                    CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
+                    m_bTouchHandled = true;
                 }
-
-                // if there is no input text, display placeholder instead
-                if (m_pInputText.Length > 0)
+                else if (m_bTouchHandled && (m_bReadOnly || !m_bAutoEdit))
                 {
-                    cclabelttf.Text = (m_pPlaceHolder);
+                    CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
+                    m_bTouchHandled = true;
                 }
-                else
+            }
+            else
+            {
+                if (!m_bRunning && m_bTouchHandled)
                 {
-                    cclabelttf.Text = (m_pInputText);
+                    CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
+                    m_bTouchHandled = false;
                 }
-                m_nCharCount = CalcCharCount(m_pInputText);
             }
         }
 
-        private IAsyncResult _GuideShowHandle;
-
-        public bool AttachWithIME()
+        public override void OnEnter()
         {
-            _GuideShowHandle = Guide.BeginShowKeyboardInput(Microsoft.Xna.Framework.PlayerIndex.One, "Input", "Please provide input", m_pPlaceHolder, null, null);
-            return true;
+            base.OnEnter();
+            CheckTouchState();
         }
 
-        public bool DetachWithIME()
+        public override void OnExit()
         {
-            Guide.EndShowKeyboardInput(_GuideShowHandle);
-            _GuideShowHandle = null;
-            return (true);
+            base.OnExit();
+            CheckTouchState();
         }
 
-        public bool CanAttachWithIME()
+        public bool TouchBegan(CCTouch pTouch)
         {
-            return (m_pDelegate != null) ? (!m_pDelegate.onTextFieldAttachWithIME(this)) : true;
-        }
-
-        public bool DidAttachWithIME()
-        {
-            return (_GuideShowHandle != null && _GuideShowHandle.IsCompleted);
-        }
-
-        public bool CanDetachWithIME()
-        {
-            return (m_pDelegate != null) ? (!m_pDelegate.onTextFieldDetachWithIME(this)) : true;
-        }
-
-        public bool DidDetachWithIME()
-        {
-            return (_GuideShowHandle == null);
-        }
-
-        public void InsertText(string text, int len)
-        {
-            // insert \n means input end
-            //int nPos = sInsert.find('\n');
-            //if ((int)sInsert.npos != nPos)
-            //{
-            //    len = nPos;
-            //    sInsert.erase(nPos);
-            //}
-
-            //if (len > 0)
-            //{
-            //    if (m_pDelegate != null && m_pDelegate.onTextFieldInsertText(this, text, len))
-            //    {
-            //        // delegate doesn't want insert text
-            //        return;
-            //    }
-
-            //    m_nCharCount += _calcCharCount(text);
-            //    string sText(m_pInputText);
-            //    sText += text;
-            //    setString(sText);
-            //}
-
-            //if ((int)sInsert.npos == nPos) {
-            //    return;
-            //}
-
-            //// '\n' has inserted,  let delegate process first
-            //if (m_pDelegate != null && m_pDelegate.onTextFieldInsertText(this, "\n", 1))
-            //{
-            //    return;
-            //}
-
-            // if delegate hasn't process, detach with ime as default
-            //detachWithIME();
-            throw new NotImplementedException();
-        }
-
-        public void DeleteBackward()
-        {
-            int nStrLen = m_pInputText.Length;
-            if (nStrLen > 0)
+            var pos = ConvertTouchToNodeSpace(pTouch);
+            if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
             {
-                // there is no string
-                return;
+                return true;
             }
+            return false;
+        }
 
-            // get the delete byte number
-            int nDeleteLen = 1; // default, erase 1 byte
+        public void TouchMoved(CCTouch pTouch)
+        {
+            //nothing
+        }
 
-            //while(0x80 == (0xC0 & m_pInputText.at(nStrLen - nDeleteLen)))
-            //{
-            //    ++nDeleteLen;
-            //}
-
-            if (m_pDelegate != null && m_pDelegate.onTextFieldDeleteBackward(this, m_pInputText.Substring(nStrLen - nDeleteLen), nDeleteLen))
+        public void TouchEnded(CCTouch pTouch)
+        {
+            var pos = ConvertTouchToNodeSpace(pTouch);
+            if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
             {
-                // delegate don't wan't delete backward
-                return;
+                Edit();
             }
-
-            // if delete all text, show space holder string
-            if (nStrLen <= nDeleteLen)
-            {
-                //CC_SAFE_DELETE(m_pInputText);
-                m_pInputText = "";
-                m_nCharCount = 0;
-                cclabelttf.Text = (m_pPlaceHolder);
-                return;
-            }
-
-            // set new input text
-            //string sText(m_pInputText, nStrLen - nDeleteLen);
-            //setString(sText);
         }
 
-        public string GetContentText()
+        public void TouchCancelled(CCTouch pTouch)
         {
-            return m_pInputText;
-        }
-
-        public void KeyboardWillShow(CCIMEKeyboardNotificationInfo info)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void KeyboardDidShow(CCIMEKeyboardNotificationInfo info)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void KeyboardWillHide(CCIMEKeyboardNotificationInfo info)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void KeyboardDidHide(CCIMEKeyboardNotificationInfo info)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static CCTextFieldTTF TextFieldWithPlaceHolder(string placeholder, CCSize dimensions, CCTextAlignment alignment, string fontName,
-                                                              float fontSize)
-        {
-            var pRet = new CCTextFieldTTF();
-            pRet.InitWithPlaceHolder("", dimensions, alignment, fontName, fontSize);
-            if (placeholder != null)
-            {
-                pRet.PlaceHolder = placeholder;
-            }
-            return pRet;
-        }
-
-        public static CCTextFieldTTF TextFieldWithPlaceHolder(string placeholder, string fontName, float fontSize)
-        {
-            var pRet = new CCTextFieldTTF();
-            pRet.InitWithString("", fontName, fontSize);
-            if (placeholder != null)
-            {
-                pRet.PlaceHolder = placeholder;
-            }
-            return pRet;
-        }
-
-        public bool InitWithPlaceHolder(string placeholder, CCSize dimensions, CCTextAlignment alignment, string fontName, float fontSize)
-        {
-            if (placeholder != null)
-            {
-                m_pPlaceHolder = placeholder;
-            }
-            return cclabelttf.InitWithString(m_pPlaceHolder, fontName, fontSize, dimensions, alignment);
-        }
-
-        public bool InitWithPlaceHolder(string placeholder, string fontName, float fontSize)
-        {
-            if (placeholder != null)
-            {
-                m_pPlaceHolder = placeholder;
-            }
-            return cclabelttf.InitWithString(m_pPlaceHolder, fontName, fontSize);
-        }
-
-        public override void Draw()
-        {
-            if (m_pDelegate != null && m_pDelegate.onDraw(this))
-            {
-                return;
-            }
-            if (!string.IsNullOrEmpty(InputTextString))
-            {
-                cclabelttf.Draw();
-                return;
-            }
-
-            // draw placeholder
-            var color = Color;
-            Color = m_ColorSpaceHolder;
-            
-            cclabelttf.Draw();
-            
-            Color = color;
-        }
-
-        public static int CalcCharCount(string pszText)
-        {
-            return pszText.Length;
+            //nothing
         }
     }
 }

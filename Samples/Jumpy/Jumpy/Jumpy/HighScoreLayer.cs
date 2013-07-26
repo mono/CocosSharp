@@ -50,17 +50,17 @@ namespace Jumpy
 
 
 			var batchnode = GetChildByTag ((int)Tags.SpriteManager) as CCSpriteBatchNode;
-			var title = CCSprite.Create(batchnode.Texture,new CCRect(608,192,225,57));
+			var title = new CCSprite(batchnode.Texture,new CCRect(608,192,225,57));
             title.Position=new CCPoint(160,240);
 			batchnode.AddChild (title);
 
 
 
-			var button1 = new CCMenuItemImage("Images/playAgainButton", "Images/playAgainButton", 
-                new SEL_MenuHandler((sender)=>{
-				CCDirector.SharedDirector.ReplaceScene(CCTransitionFade.Create(.5f, GameLayer.Scene, new CCColor3B(255,255,255)));
+			var button1 = new CCMenuItemImage("Images/playAgainButton", "Images/playAgainButton",
+                new Action<object>(delegate(object o) {
+				CCDirector.SharedDirector.ReplaceScene(new CCTransitionFade(.5f, GameLayer.Scene, new CCColor3B(255,255,255)));
                 }));
-			var button2 = new CCMenuItemImage("Images/changePlayerButton", "Images/changePlayerButton", new SEL_MenuHandler((sender)=>{
+			var button2 = new CCMenuItemImage("Images/changePlayerButton", "Images/changePlayerButton", new Action<object>(delegate (object sender) {
                 // do nothing
 			}));
 			var menu = new CCMenu(button1,button2);

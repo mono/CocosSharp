@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCV2F_C4B_T2F" FullName="Cocos2D.CCV2F_C4B_T2F">
   <TypeSignature Language="C#" Value="public class CCV2F_C4B_T2F" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCV2F_C4B_T2F extends System.Object" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>a Point with a vertex point, a tex coord point and a color 4B </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>

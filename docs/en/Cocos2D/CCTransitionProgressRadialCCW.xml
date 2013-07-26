@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionProgressRadialCCW" FullName="Cocos2D.CCTransitionProgressRadialCCW">
   <TypeSignature Language="C#" Value="public class CCTransitionProgressRadialCCW : Cocos2D.CCTransitionProgress" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionProgressRadialCCW extends Cocos2D.CCTransitionProgress" />
@@ -10,8 +11,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>TransitionRadialCCW transition. A counter clock-wise radial transition to the next scene </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">

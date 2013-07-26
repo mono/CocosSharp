@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionSplitCols" FullName="Cocos2D.CCTransitionSplitCols">
   <TypeSignature Language="C#" Value="public class CCTransitionSplitCols : Cocos2D.CCTransitionScene, Cocos2D.ICCTransitionEaseScene" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionSplitCols extends Cocos2D.CCTransitionScene implements class Cocos2D.ICCTransitionEaseScene" />
@@ -14,7 +15,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>: The odd columns goes upwards while the even columns goes downwards. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -98,8 +101,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

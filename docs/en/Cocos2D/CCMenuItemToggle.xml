@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMenuItemToggle" FullName="Cocos2D.CCMenuItemToggle">
   <TypeSignature Language="C#" Value="public class CCMenuItemToggle : Cocos2D.CCMenuItem" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemToggle extends Cocos2D.CCMenuItem" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>A  A simple container class that "toggles" it's inner items The inner items can be any . </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -23,8 +26,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates a menu item with a item </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -63,8 +66,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Activate the item </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AddSubItem">
@@ -82,8 +85,8 @@
       </Parameters>
       <Docs>
         <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>add more menu item </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Create">
@@ -137,9 +140,9 @@
       </Parameters>
       <Docs>
         <param name="item">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a menu item with a item </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InitWithTarget">
@@ -159,9 +162,9 @@
       <Docs>
         <param name="selector">To be added.</param>
         <param name="items">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>initializes a menu item from a list of items with a target selector </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="m_pSubItems">
@@ -191,8 +194,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The item was selected (not activated), similar to "mouse-over" </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SelectedIndex">
@@ -206,9 +209,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setSelectedIndex </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SelectedItem">
@@ -222,9 +225,9 @@
         <ReturnType>Cocos2D.CCMenuItem</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>return the selected item </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SubItems">
@@ -238,9 +241,9 @@
         <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCMenuItem&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>setSubItems </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Unselected">
@@ -255,8 +258,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The item was unselected </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

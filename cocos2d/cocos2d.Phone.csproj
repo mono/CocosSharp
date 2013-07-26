@@ -22,7 +22,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Windows Phone\Debug</OutputPath>
+    <OutputPath>bin\WindowsPhone7\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,7 +35,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Windows Phone' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Windows Phone\Release</OutputPath>
+    <OutputPath>bin\WindowsPhone7\Release\</OutputPath>
     <DefineConstants>TRACE;WINDOWS_PHONE,CC_FONT_LABEL_SUPPORT,CC_DIRECTOR_FAST_FPS,CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD,CC_COCOSNODE_RENDER_SUBPIXEL,CC_SPRITEBATCHNODE_RENDER_SUBPIXEL,CC_USES_VBO,CC_NODE_TRANSFORM_USING_AFFINE_MATRIX</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -364,6 +364,7 @@
     <Compile Include="sprite_nodes\CCAnimation.cs" />
     <Compile Include="sprite_nodes\CCAnimationCache.cs" />
     <Compile Include="sprite_nodes\CCAnimationFrame.cs" />
+    <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include="sprite_nodes\CCSprite.cs" />
     <Compile Include="sprite_nodes\CCSpriteBatchNode.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrame.cs" />
@@ -395,10 +396,7 @@
     <Compile Include="textures\CCTextureAtlas.cs" />
     <Compile Include="textures\CCTextureCache.cs" />
     <Compile Include="textures\CCTexture2D.cs" />
-    <Compile Include="text_input_node\ICCIMEDelegate.cs" />
-    <Compile Include="text_input_node\CCIMEKeyboardNotificationInfo.cs" />
     <Compile Include="text_input_node\CCTextFieldTTF.cs" />
-    <Compile Include="text_input_node\ICCTextFieldDelegate.cs" />
     <Compile Include="tileMap_parallax_nodes\CCParallaxNode.cs" />
     <Compile Include="tileMap_parallax_nodes\CCPointObject.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileMapAtlas.cs" />

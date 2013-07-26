@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTimer" FullName="Cocos2D.CCTimer">
   <TypeSignature Language="C#" Value="public class CCTimer : Cocos2D.ICCSelectorProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTimer extends System.Object implements class Cocos2D.ICCSelectorProtocol" />
@@ -14,7 +15,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para>Light-weight timer. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -110,8 +113,8 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>set interval in seconds </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="OriginalInterval">
@@ -159,8 +162,8 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>triggers the timer </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

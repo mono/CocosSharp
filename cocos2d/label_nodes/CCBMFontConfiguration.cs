@@ -25,7 +25,7 @@ namespace Cocos2D
         [ContentSerializer]
         internal CCBMFontPadding m_tPadding;
 
-        private List<int> m_pCharacterSet;
+        private List<int> m_pCharacterSet = new List<int>();
 
         public string AtlasName
         {

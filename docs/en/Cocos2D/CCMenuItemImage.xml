@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMenuItemImage" FullName="Cocos2D.CCMenuItemImage">
   <TypeSignature Language="C#" Value="public class CCMenuItemImage : Cocos2D.CCMenuItemSprite" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemImage extends Cocos2D.CCMenuItemSprite" />
@@ -10,8 +11,28 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para> accepts images as items. The images has 3 different states: </para>
+    </summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>For best results try that all images are of the same size </para>
+      <item>
+        <description>unselected image</description>
+      </item>
+      <description>unselected image</description>
+      <item>
+        <description>selected image</description>
+      </item>
+      <description>selected image</description>
+      <item>
+        <description>disabled image</description>
+      </item>
+      <description>disabled image</description>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +44,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates an . </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -122,8 +143,8 @@
       </Parameters>
       <Docs>
         <param name="frame">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets the sprite frame for the disabled image </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetNormalSpriteFrame">
@@ -141,8 +162,8 @@
       </Parameters>
       <Docs>
         <param name="frame">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets the sprite frame for the normal image </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetSelectedSpriteFrame">
@@ -160,8 +181,8 @@
       </Parameters>
       <Docs>
         <param name="frame">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>sets the sprite frame for the selected image </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTouchDelegate" FullName="Cocos2D.CCTouchDelegate">
   <TypeSignature Language="C#" Value="public class CCTouchDelegate : Cocos2D.ICCTouchDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTouchDelegate extends System.Object implements class Cocos2D.ICCTouchDelegate" />

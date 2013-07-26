@@ -1,13 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Cocos2D;
-using System.Diagnostics;
 
 namespace Cocos2D
 {
-    //@brief	TextInputTest for retain prev, reset, next, main menu buttons.
     public class TextInputTest : CCLayer
     {
         KeyboardNotificationLayer m_pNotificationLayer;
@@ -18,7 +12,6 @@ namespace Cocos2D
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.restartTextInputTest());
             CCDirector.SharedDirector.ReplaceScene(s);
-            //s->release();
         }
 
         public void nextCallback(object pSender)
@@ -26,7 +19,6 @@ namespace Cocos2D
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.nextTextInputTest());
             CCDirector.SharedDirector.ReplaceScene(s);
-            //s->release();
         }
 
         public void backCallback(object pSender)
@@ -34,7 +26,6 @@ namespace Cocos2D
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.backTextInputTest());
             CCDirector.SharedDirector.ReplaceScene(s);
-            //s->release();
         }
 
         public virtual string title()
@@ -85,10 +76,6 @@ namespace Cocos2D
         }
     }
 
-    //////////////////////////////////////////////////////////////////////////
-    // KeyboardNotificationLayer for test IME keyboard notification.
-    //////////////////////////////////////////////////////////////////////////
-
     public class KeyboardNotificationLayer : CCLayer
     {
         public KeyboardNotificationLayer()
@@ -111,141 +98,67 @@ namespace Cocos2D
             CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, false);
         }
 
-        public virtual void keyboardWillShow(CCIMEKeyboardNotificationInfo info)
-        {
-            CCLog.Log("TextInputTest:keyboardWillShowAt(origin:{0:F3},{1:F3}, size:{2:F3},{3:F3})",
-        info.end.Origin.X, info.end.Origin.Y, info.end.Size.Width, info.end.Size.Height);
-
-            if (m_pTrackNode != null)
-            {
-                return;
-            }
-
-            CCRect rectTracked = TextInputTestScene.getRect(m_pTrackNode);
-            CCLog.Log("TextInputTest:trackingNodeAt(origin:{0:F3},{1:F3}, size:{2:F3},{3:F3})",
-                rectTracked.Origin.X, rectTracked.Origin.Y, rectTracked.Size.Width, rectTracked.Size.Height);
-
-            // if the keyboard area doesn't intersect with the tracking node area, nothing need to do.
-            if (!CCRect.IntersetsRect(ref rectTracked, ref info.end))
-            {
-                return;
-            }
-
-            // assume keyboard at the bottom of screen, calculate the vertical adjustment.
-            float adjustVert = info.end.MaxY - rectTracked.MinY;
-            CCLog.Log("TextInputTest:needAdjustVerticalPosition({0:F3})", adjustVert);
-
-            // move all the children node of KeyboardNotificationLayer
-            CCNode ccnoed = new CCNode();
-
-            var children = ccnoed.Children;
-            CCNode node;
-            int count = children.Count;
-            CCPoint pos;
-            for (int i = 0; i < count; ++i)
-            {
-                node = (CCNode)children[i];
-                pos = node.Position;
-                pos.Y += adjustVert;
-                node.Position = pos;
-            }
-        }
-
-        // CCLayer
         public override bool TouchBegan(CCTouch pTouch)
         {
-            CCLog.Log("++++++++++++++++++++++++++++++++++++++++++++");
-            m_beginPos = pTouch.LocationInView;
-            m_beginPos = CCDirector.SharedDirector.ConvertToGl(m_beginPos);
+            m_beginPos = pTouch.Location;
             return true;
         }
 
         public override void TouchEnded(CCTouch pTouch)
         {
-            if (m_pTrackNode != null)
+            if (m_pTrackNode == null)
             {
                 return;
             }
 
-            CCPoint endPos = pTouch.LocationInView;
-            endPos = CCDirector.SharedDirector.ConvertToGl(endPos);
+            var endPos = pTouch.Location;
 
-            float delta = 5.0f;
-            if (Math.Abs(endPos.X - m_beginPos.X) > delta
-                || Math.Abs(endPos.Y - m_beginPos.Y) > delta)
+            if (m_pTrackNode.BoundingBox.ContainsPoint(m_beginPos) && m_pTrackNode.BoundingBox.ContainsPoint(endPos))
             {
-                // not click
-                m_beginPos.X = m_beginPos.Y = -1;
-                return;
-            }
-
-            // decide the trackNode is clicked.
-            CCRect rect;
-            CCPoint point = ConvertTouchToNodeSpaceAr(pTouch);
-            CCLog.Log("KeyboardNotificationLayer:clickedAt(%f,%f)", point.X, point.Y);
-
-            rect = TextInputTestScene.getRect(m_pTrackNode);
-            CCLog.Log("KeyboardNotificationLayer:TrackNode at(origin:%f,%f, size:%f,%f)",
-                rect.Origin.X, rect.Origin.Y, rect.Size.Width, rect.Size.Height);
-
-            this.onClickTrackNode(CCRect.ContainsPoint(ref rect, ref point));
-            CCLog.Log("----------------------------------");
-        }
-
-        protected CCNode m_pTrackNode;
-        protected CCPoint m_beginPos;
-    }
-
-    //////////////////////////////////////////////////////////////////////////
-    // TextFieldTTFDefaultTest for test TextFieldTTF default behavior.
-    //////////////////////////////////////////////////////////////////////////
-
-    public class TextFieldTTFDefaultTest : KeyboardNotificationLayer
-    {
-        // KeyboardNotificationLayer
-        public override string subtitle()
-        {
-            return "TextFieldTTF with default behavior test";
-        }
-
-        public override void onClickTrackNode(bool bClicked)
-        {
-            CCTextFieldTTF pTextField = (CCTextFieldTTF)m_pTrackNode;
-            if (bClicked)
-            {
-                // TextFieldTTFTest be clicked
-                CCLog.Log("TextFieldTTFDefaultTest:CCTextFieldTTF attachWithIME");
-                pTextField.AttachWithIME();
+                onClickTrackNode(true);
             }
             else
             {
-                // TextFieldTTFTest not be clicked
-                CCLog.Log("TextFieldTTFDefaultTest:CCTextFieldTTF detachWithIME");
-                pTextField.DetachWithIME();
+                onClickTrackNode(false);
             }
         }
 
-        // CCLayer
+        protected CCTextFieldTTF m_pTrackNode;
+        protected CCPoint m_beginPos;
+    }
+
+    public class TextFieldTTFDefaultTest : KeyboardNotificationLayer
+    {
+        public override void onClickTrackNode(bool bClicked)
+        {
+            if (bClicked && m_pTrackNode != null)
+            {
+                m_pTrackNode.Edit("CCTextFieldTTF test", "Enter text");
+            }
+        }
+
         public override void OnEnter()
         {
             base.OnEnter();
 
-            // add CCTextFieldTTF
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            var s = CCDirector.SharedDirector.WinSize;
 
-            CCTextFieldTTF pTextField = CCTextFieldTTF.TextFieldWithPlaceHolder("<click here for input>",
-                TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
+            var pTextField = new CCTextFieldTTF(
+                "<click here for input>", TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE
+                );
+
+            pTextField.Position = CCDirector.SharedDirector.WinSize.Center;
+
+            pTextField.AutoEdit = true;
+
             AddChild(pTextField);
 
-            //#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)	
-            //    // on android, CCTextFieldTTF cannot auto adjust its position when soft-keyboard pop up
-            //    // so we had to set a higher position to make it visable
-            //    pTextField->setPosition(ccp(s.width / 2, s.height/2 + 50));
-            //#else
-            //    pTextField->setPosition(ccp(s.width / 2, s.height / 2));
-            //#endif
+            //m_pTrackNode = pTextField;
+        }
 
-            m_pTrackNode = pTextField;
+        public override string subtitle()
+        {
+            return "TextFieldTTF with default behavior test";
         }
     }
 
@@ -273,18 +186,13 @@ namespace Cocos2D
 
         public override void onClickTrackNode(bool bClicked)
         {
-            CCTextFieldTTF pTextField = (CCTextFieldTTF)m_pTrackNode;
             if (bClicked)
             {
-                // TextFieldTTFTest be clicked
-                CCLog.Log("TextFieldTTFActionTest:CCTextFieldTTF attachWithIME");
-                pTextField.AttachWithIME();
+                m_pTrackNode.Edit();
             }
             else
             {
-                // TextFieldTTFTest not be clicked
-                CCLog.Log("TextFieldTTFActionTest:CCTextFieldTTF detachWithIME");
-                pTextField.DetachWithIME();
+                m_pTrackNode.EndEdit();
             }
         }
 
@@ -295,38 +203,21 @@ namespace Cocos2D
 
             m_nCharLimit = 12;
 
-            m_pTextFieldAction = new CCRepeatForever (
-                (CCActionInterval)new CCSequence(
-                    new CCFadeOut  (0.25f),
-                    new CCFadeIn  (0.25f)));
+            m_pTextFieldAction = new CCRepeatForever(
+                (CCActionInterval) new CCSequence(
+                                       new CCFadeOut(0.25f),
+                                       new CCFadeIn(0.25f)));
             //m_pTextFieldAction->retain();
             m_bAction = false;
 
             // add CCTextFieldTTF
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            m_pTextField = CCTextFieldTTF.TextFieldWithPlaceHolder("<click here for input>",
-            TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
+            m_pTextField = new CCTextFieldTTF("<click here for input>",
+                                              TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
             AddChild(m_pTextField);
 
-            //m_pTextField.setDelegate(this);
-
-
-            //#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)	
-            //    // on android, CCTextFieldTTF cannot auto adjust its position when soft-keyboard pop up
-            //    // so we had to set a higher position
-            //    m_pTextField->setPosition(new CCPoint(s.width / 2, s.height/2 + 50));
-            //#else
-            //    m_pTextField->setPosition(ccp(s.width / 2, s.height / 2));
-            //#endif
-
             m_pTrackNode = m_pTextField;
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-            //m_pTextFieldAction->release();
         }
 
         // CCTextFieldDelegate
@@ -360,7 +251,7 @@ namespace Cocos2D
             }
 
             // if the textfield's char count more than m_nCharLimit, doesn't insert text anymore.
-            if (pSender.CharCount >= m_nCharLimit)
+            if (pSender.Text.Length >= m_nCharLimit)
             {
                 return true;
             }
@@ -373,7 +264,7 @@ namespace Cocos2D
 
             // move the sprite from top to position
             CCPoint endPos = pSender.Position;
-            if (pSender.CharCount > 0)
+            if (pSender.Text.Length > 0)
             {
                 endPos.X += pSender.ContentSize.Width / 2;
             }

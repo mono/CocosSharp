@@ -145,20 +145,23 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="box2d">
-      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsPhone\x86\Debug\box2d.dll</HintPath>
+    <Reference Include="box2d, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsPhone\x86\Release\box2d.dll</HintPath>
     </Reference>
-    <Reference Include="cocos2d-xna">
-      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsPhone\x86\Debug\cocos2d-xna.dll</HintPath>
+    <Reference Include="cocos2d-xna, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsPhone\x86\Release\cocos2d-xna.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsPhone\x86\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsPhone\x86\Release\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsPhone\x86\Debug\MonoGame.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\WindowsPhone\x86\Release\MonoGame.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <Target Name="MonoGame_RemoveXnaAssemblies" AfterTargets="ImplicitlyExpandTargetFramework">

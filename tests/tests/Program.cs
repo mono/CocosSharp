@@ -95,18 +95,18 @@ namespace tests
 #if !NETFX_CORE
     static class Program
     {
-#if WINDOWS || WINDOWSGL_GL
+#if WINDOWS || WINDOWSGL
         private static Game1 game;
 #endif
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-#if WINDOWS || WINDOWSGL_GL
+#if WINDOWS || WINDOWSGL
         [STAThread]
 #endif
         static void Main(string[] args)
         {
-#if WINDOWS || WINDOWSGL_GL
+#if WINDOWS || WINDOWSGL
             game = new Game1();
             game.Run();
 #else

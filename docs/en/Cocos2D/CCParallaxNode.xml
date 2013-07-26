@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCParallaxNode" FullName="Cocos2D.CCParallaxNode">
   <TypeSignature Language="C#" Value="public class CCParallaxNode : Cocos2D.CCNode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParallaxNode extends Cocos2D.CCNode" />
@@ -10,8 +11,10 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <para>: A node that simulates a parallax scroller. </para>
+    </summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -43,11 +46,15 @@
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="zOrder">To be added.</param>
-        <param name="tag">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">A child node </param>
+        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)</param>
+        <param name="tag">A interger to identify the node easily. Please refer to setTag(int)</param>
+        <summary>Adds a child to the container with z order and tag</summary>
+        <remarks>
+          <para>Adds a child to the container with z order and tag</para>
+          <para>If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddChild">
@@ -135,9 +142,12 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="cleanup">true if all running actions on all children nodes should be cleanup, false oterwise. </param>
+        <summary>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</summary>
+        <remarks>
+          <para>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
@@ -155,10 +165,13 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="child">To be added.</param>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="child">The child node which will be removed. </param>
+        <param name="cleanup">true if all running actions and callbacks on the child node will be cleanup, false otherwise. </param>
+        <summary>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</summary>
+        <remarks>
+          <para>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</para>
+          <para />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Visit">
@@ -173,8 +186,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Visits this node's children and draw them recursively. </summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

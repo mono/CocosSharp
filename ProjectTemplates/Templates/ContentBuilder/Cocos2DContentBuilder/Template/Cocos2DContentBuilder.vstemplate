@@ -1,0 +1,38 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+	<TemplateData>
+		<Name>Cocos2D-XNA MonoGame Content Builder</Name>
+		<Description>The Cocos2D-XNA MonoGame Content Builder is a process applied to a game's art and data assets when the game is built.</Description>
+		<ProjectType>CSharp</ProjectType>
+		<ProjectSubType>
+		</ProjectSubType>
+		<SortOrder>1000</SortOrder>
+		<CreateNewFolder>true</CreateNewFolder>
+		<DefaultName>Cocos2DContent</DefaultName>
+		<ProvideDefaultName>true</ProvideDefaultName>
+		<LocationField>Enabled</LocationField>
+		<EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+		<Icon>__TemplateIcon.ico</Icon>
+		<PreviewImage>__PreviewImage.png</PreviewImage>
+	</TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Cocos2DContentBuilder.csproj" File="Cocos2DContentBuilder.csproj" ReplaceParameters="true">
+      <Folder Name="Content" TargetFolderName="Content">
+        <Folder Name="fonts" TargetFolderName="fonts" />
+      </Folder>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+	<WizardExtension>
+		<Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+		<FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+	</WizardExtension>
+	<WizardData>
+		<packages repository="extension"
+			  repositoryId="Cocos2D_XNAContentBuilder.1d4400b6-49ce-4cf1-9f64-ed68b2db9361">
+			<package id="Cocos2D-XNA.MGCB" version="0.9.0.0" />
+		</packages>
+	</WizardData>
+
+</VSTemplate>

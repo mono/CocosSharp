@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Type Name="CCQuadVertexBuffer" FullName="Cocos2D.CCQuadVertexBuffer">
+  <TypeSignature Language="C#" Value="public class CCQuadVertexBuffer : Cocos2D.CCVertexBuffer&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCQuadVertexBuffer extends Cocos2D.CCVertexBuffer`1&lt;valuetype Cocos2D.CCV3F_C4B_T2F_Quad&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Cocos2D.CCVertexBuffer&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="T">Cocos2D.CCV3F_C4B_T2F_Quad</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCQuadVertexBuffer (int vertexCount, Microsoft.Xna.Framework.Graphics.BufferUsage usage);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 vertexCount, valuetype Microsoft.Xna.Framework.Graphics.BufferUsage usage) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="vertexCount" Type="System.Int32" />
+        <Parameter Name="usage" Type="Microsoft.Xna.Framework.Graphics.BufferUsage" />
+      </Parameters>
+      <Docs>
+        <param name="vertexCount">To be added.</param>
+        <param name="usage">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public override void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Dispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reinit">
+      <MemberSignature Language="C#" Value="public override void Reinit ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Reinit() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateBuffer">
+      <MemberSignature Language="C#" Value="public override void UpdateBuffer (int startIndex, int elementCount);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateBuffer(int32 startIndex, int32 elementCount) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="startIndex" Type="System.Int32" />
+        <Parameter Name="elementCount" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="startIndex">To be added.</param>
+        <param name="elementCount">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateBuffer">
+      <MemberSignature Language="C#" Value="public void UpdateBuffer (Cocos2D.CCRawList&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt; data, int startIndex, int elementCount);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateBuffer(class Cocos2D.CCRawList`1&lt;valuetype Cocos2D.CCV3F_C4B_T2F_Quad&gt; data, int32 startIndex, int32 elementCount) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Cocos2D.CCRawList&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt;" />
+        <Parameter Name="startIndex" Type="System.Int32" />
+        <Parameter Name="elementCount" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <param name="startIndex">To be added.</param>
+        <param name="elementCount">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

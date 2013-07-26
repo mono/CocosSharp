@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLens3D" FullName="Cocos2D.CCLens3D">
   <TypeSignature Language="C#" Value="public class CCLens3D : Cocos2D.CCGrid3DAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLens3D extends Cocos2D.CCGrid3DAction" />
@@ -10,7 +11,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+      <para> action. </para>
+    </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -23,8 +26,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>creates the action with center position, radius, a grid size and duration </summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -44,25 +47,41 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLens3D (Cocos2D.CCPoint pos, float r, Cocos2D.CCGridSize gridSize, float duration);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCPoint pos, float32 r, valuetype Cocos2D.CCGridSize gridSize, float32 duration) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLens3D (float duration, Cocos2D.CCGridSize gridSize, Cocos2D.CCPoint position, float radius);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize, valuetype Cocos2D.CCPoint position, float32 radius) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
-        <Parameter Name="r" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
         <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="position" Type="Cocos2D.CCPoint" />
+        <Parameter Name="radius" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="pos">To be added.</param>
-        <param name="r">To be added.</param>
-        <param name="gridSize">To be added.</param>
         <param name="duration">To be added.</param>
+        <param name="gridSize">To be added.</param>
+        <param name="position">To be added.</param>
+        <param name="radius">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Concave">
+      <MemberSignature Language="C#" Value="public bool Concave { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Concave" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Set whether lens is concave </summary>
+        <value>To be added.</value>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -80,14 +99,14 @@
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>returns a new clone of the action </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
-    <Member MemberName="InitWithPosition">
-      <MemberSignature Language="C#" Value="public bool InitWithPosition (Cocos2D.CCPoint pos, float r, Cocos2D.CCGridSize gridSize, float duration);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithPosition(valuetype Cocos2D.CCPoint pos, float32 r, valuetype Cocos2D.CCGridSize gridSize, float32 duration) cil managed" />
+    <Member MemberName="InitWithDuration">
+      <MemberSignature Language="C#" Value="public bool InitWithDuration (float duration, Cocos2D.CCGridSize gridSize, Cocos2D.CCPoint position, float radius);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDuration(float32 duration, valuetype Cocos2D.CCGridSize gridSize, valuetype Cocos2D.CCPoint position, float32 radius) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -96,19 +115,19 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
-        <Parameter Name="r" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
         <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="position" Type="Cocos2D.CCPoint" />
+        <Parameter Name="radius" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="pos">To be added.</param>
-        <param name="r">To be added.</param>
-        <param name="gridSize">To be added.</param>
         <param name="duration">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="gridSize">To be added.</param>
+        <param name="position">To be added.</param>
+        <param name="radius">To be added.</param>
+        <summary>initializes the action with center position, radius, a grid size and duration </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="LensEffect">
@@ -122,8 +141,23 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Set lens center position </summary>
         <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="m_bConcave">
+      <MemberSignature Language="C#" Value="protected bool m_bConcave;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bConcave" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -233,8 +267,24 @@
       </Parameters>
       <Docs>
         <param name="time">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>called once per frame. time a value between 0 and 1</summary>
+        <remarks>
+          <para>called once per frame. time a value between 0 and 1</para>
+          <para>For example:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>0 means that the action just started</description>
+          </item>
+          <description>0 means that the action just started</description>
+          <item>
+            <description>0.5 means that the action is in the middle</description>
+          </item>
+          <description>0.5 means that the action is in the middle</description>
+          <item>
+            <description>1 means that the action is over </description>
+          </item>
+          <description>1 means that the action is over </description>
+        </remarks>
       </Docs>
     </Member>
   </Members>

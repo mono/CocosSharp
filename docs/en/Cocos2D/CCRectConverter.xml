@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCRectConverter" FullName="Cocos2D.CCRectConverter">
   <TypeSignature Language="C#" Value="public class CCRectConverter : System.ComponentModel.TypeConverter" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRectConverter extends System.ComponentModel.TypeConverter" />
