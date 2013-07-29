@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Linq;
+using System.IO;
 
 namespace Cocos2D
 {
@@ -330,6 +331,25 @@ namespace Cocos2D
             AddSpriteFramesWithFile(pszPlist, pobTexture, scope);
             return (scope);
         }
+
+        public string AddSpriteFramesWithFile(Stream plist, CCTexture2D pobTexture, string framePrefix)
+        {
+            PlistDocument document = new PlistDocument();
+            try
+            {
+                document.LoadFromXmlFile(plist);
+            }
+            catch (Exception)
+            {
+                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from stream"));
+            }
+
+            PlistDictionary dict = document.Root.AsDictionary;
+
+            AddSpriteFramesWithDictionary(dict, pobTexture, framePrefix);
+            return (framePrefix);
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -492,6 +512,41 @@ namespace Cocos2D
             }
         }
 
+        /// <summary>
+        /// Get the sprite frame for the given name using the given prefix.
+        /// </summary>
+        /// <param name="pszName"></param>
+        /// <param name="prefix"></param>
+        /// <returns></returns>
+        public CCSpriteFrame SpriteFrameByName(string pszName, string prefix)
+        {
+            CCSpriteFrame frame;
+
+            if (!m_pSpriteFrames.TryGetValue(prefix + pszName, out frame))
+            {
+                // try alias dictionary
+                string key;
+                if (m_pSpriteFramesAliases.TryGetValue(prefix + pszName, out key))
+                {
+                    if (!m_pSpriteFrames.TryGetValue(key, out frame))
+                    {
+                        CCLog.Log("cocos2d: CCSpriteFrameCahce: Frame '{0}' in '{1}' not found", pszName, prefix);
+                    }
+                }
+            }
+
+            if (frame != null)
+            {
+                CCLog.Log("cocos2d: {0} frame {1}", pszName, frame.Rect.ToString());
+            }
+            return frame;
+        }
+
+        /// <summary>
+        /// Get the sprite frame for the given frame name, or as an alias for the sprite frame name.
+        /// </summary>
+        /// <param name="pszName"></param>
+        /// <returns></returns>
         public CCSpriteFrame SpriteFrameByName(string pszName)
         {
             CCSpriteFrame frame;
