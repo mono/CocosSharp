@@ -83,6 +83,7 @@
     <EmbeddedResource Include="ball-hd.mask" />
     <EmbeddedResource Include="grossini.mask" />
     <Compile Include="classes\AppDelegate.cs" />
+    <Compile Include="classes\BaseTest.cs" />
     <Compile Include="classes\controller.cs" />
     <Compile Include="classes\test.cs" />
     <Compile Include="classes\testBasic.cs" />
@@ -338,7 +339,12 @@
     <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\ScrollViewTestLayer.cs" />
     <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\SpriteTestLayer.cs" />
     <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\TestHeader.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlColourPickerTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlPotentiometerTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlStepperTest.cs" />
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSwitchTest\CCControlSwitchTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteSceneManager.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteTest.cs" />
     <Compile Include="classes\tests\FontTest\FontTest.cs" />
     <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
     <Compile Include="classes\tests\IntervalTest\IntervalLayer.cs" />

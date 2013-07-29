@@ -35,7 +35,8 @@ namespace tests.Extensions
 		public const int TEST_CCCONTROLBUTTON = 0;
 		public const int TEST_COCOSBUILDER = 1;
 		public const int TEST_TABLEVIEW = 2;
-		public static int TEST_MAX_COUNT = 3;
+	    public const int TEST_Scale9Sprite = 3;
+		public static int TEST_MAX_COUNT = 4;
 		
 		public static int LINE_SPACE = 40;
 		public static int kItemTagBasic = 1000;
@@ -49,7 +50,8 @@ namespace tests.Extensions
 			//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 			//"EditBoxTest",
 			//#endif
-			"TableViewTest"
+			"TableViewTest",
+            "Scale9SpriteTest"
 		};
 
 	}

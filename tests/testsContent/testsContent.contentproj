@@ -529,18 +529,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sounds\background.mp3">
-      <Name>background</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="Sounds\effect1.wav">
-      <Name>effect1</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\cocos2d.Content.Pipeline.Importers\cocos2d.Content.Pipeline.Importers.csproj">
       <Project>{FBE4633D-00D1-4391-8184-63B91DA28D4B}</Project>
       <Name>cocos2d.Content.Pipeline.Importers</Name>
@@ -1137,6 +1125,11 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <Compile Include="extensions\CCControlColourPickerSpriteSheet.plist">
+      <Name>CCControlColourPickerSpriteSheet.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
     <None Include="fonts\arial-unicode-26.GlyphProject">
       <Name>arial-unicode-26</Name>
     </None>
@@ -1250,6 +1243,16 @@
       <Name>MarkerFelt-18</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\blocks9ss.plist">
+      <Name>blocks9ss.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\ui.plist">
+      <Name>ui.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -2092,6 +2095,69 @@
     </Compile>
     <Compile Include="Images\hole_stencil.png">
       <Name>hole_stencil</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sounds\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="extensions\potentiometerButton.png">
+      <Name>potentiometerButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\potentiometerProgress.png">
+      <Name>potentiometerProgress</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\potentiometerTrack.png">
+      <Name>potentiometerTrack</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="extensions\CCControlColourPickerSpriteSheet.png">
+      <Name>CCControlColourPickerSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="extensions\stepper-minus.png">
+      <Name>stepper-minus</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="extensions\stepper-plus.png">
+      <Name>stepper-plus</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\blocks9.png">
+      <Name>blocks9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\blocks9r.png">
+      <Name>blocks9r</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\blocks9ss.png">
+      <Name>blocks9ss</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\ui.png">
+      <Name>ui</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

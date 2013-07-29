@@ -60,17 +60,17 @@ namespace tests.Extensions
 			pScene.runThisTest();
 		}
 
-		public void previousCallback(object sender)
+		public virtual void previousCallback(object sender)
 		{
 			CCDirector.SharedDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().previousControlScene());
 		}
 
-		public void restartCallback(object sender)
+		public virtual void restartCallback(object sender)
 		{
 			CCDirector.SharedDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().currentControlScene());
 		}
 		
-		public void nextCallback(object sender)
+		public virtual void nextCallback(object sender)
 		{
 			CCDirector.SharedDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().nextControlScene());
 		}
