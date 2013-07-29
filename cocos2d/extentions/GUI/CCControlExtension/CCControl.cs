@@ -295,7 +295,7 @@ namespace Cocos2D
         public virtual CCPoint GetTouchLocation(CCTouch touch)
         {
             CCPoint touchLocation = touch.Location; // Get the touch position
-            touchLocation = Parent.ConvertToNodeSpace(touchLocation); // Convert to the node space of this class
+            touchLocation = ConvertToNodeSpace(touchLocation); // Convert to the node space of this class
 
             return touchLocation;
         }

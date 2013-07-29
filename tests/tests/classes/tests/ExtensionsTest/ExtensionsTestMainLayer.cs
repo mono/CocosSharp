@@ -55,6 +55,10 @@ namespace tests.Extensions
 				case ExtensionsTestScene.TEST_TABLEVIEW:
 					TableViewTestLayer.runTableViewTest();
 					break;
+                case ExtensionsTestScene.TEST_Scale9Sprite:
+                    var Manager = Scale9SpriteSceneManager.sharedSprite9SceneManager();
+				    CCDirector.SharedDirector.ReplaceScene(Manager.currentControlScene());
+			        break;
 				default:
 					break;
 			}
