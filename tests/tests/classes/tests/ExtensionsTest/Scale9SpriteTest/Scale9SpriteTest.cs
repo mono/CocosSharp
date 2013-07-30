@@ -9,6 +9,7 @@ namespace tests.Extensions
             base.OnEnter();
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("Images/blocks9ss.plist");
             getSceneTitleLabel().Text = Title();
+            getSceneSubtitleLabel().Text = Subtitle();
         }
 
         public virtual string Title()

@@ -80,7 +80,7 @@ namespace tests.Extensions
         {
             var pScene = new CCScene();
             var controlLayer = new CCControlStepperTest();
-            if (controlLayer != null && controlLayer.Init())
+            if (controlLayer != null)
             {
                 controlLayer.getSceneTitleLabel().Text = (title);
                 pScene.AddChild(controlLayer);

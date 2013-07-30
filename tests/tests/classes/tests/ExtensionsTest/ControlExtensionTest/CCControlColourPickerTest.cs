@@ -84,7 +84,7 @@ namespace tests.Extensions
         {
             var pScene = new CCScene();
             var controlLayer = new CCControlColourPickerTest();
-            if (controlLayer != null && controlLayer.Init())
+            if (controlLayer != null)
             {
                 controlLayer.getSceneTitleLabel().Text = (title);
                 pScene.AddChild(controlLayer);
