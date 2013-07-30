@@ -53,12 +53,6 @@ namespace Cocos2D
 
         protected int _pagesCount;
 
-        /**
-         * scissor rect for parent, just for restoring GL_SCISSOR_BOX
-         */
-        CCRect _parentScissorRect;
-        bool _scissorRestored;
-
         public CCScrollView()
         {
             _direction = CCScrollViewDirection.Both;
@@ -81,6 +75,26 @@ namespace Cocos2D
         {
             get { return _pagesCount; }
             set { _pagesCount = value; }
+        }
+
+        public float MinScale
+        {
+            get { return _minScale; }
+            set
+            {
+                _minScale = value;
+                ZoomScale = ZoomScale;
+            }
+        }
+
+        public float MaxScale
+        {
+            get { return _maxScale; }
+            set
+            {
+                _maxScale = value;
+                ZoomScale = ZoomScale;
+            }
         }
 
         public override CCSize ContentSize
@@ -168,6 +182,7 @@ namespace Cocos2D
 
         public CCNode Container
         {
+            get { return _container; }
             set
             {
                 if (value == null)
@@ -185,7 +200,6 @@ namespace Cocos2D
 
                 ViewSize = _viewSize;
             }
-            get { return _container; }
         }
 
         /**
@@ -207,7 +221,11 @@ namespace Cocos2D
         public bool ClippingToBounds
         {
             get { return _clippingToBounds; }
-            set { _clippingToBounds = value; }
+            set 
+			{ 
+				_clippingToBounds = value; 
+				ChildClippingMode =_clippingToBounds ? CCClipMode.Bounds : CCClipMode.None;
+			}
         }
 
         public override bool Init()
@@ -217,8 +235,7 @@ namespace Cocos2D
 
         public override void RegisterWithTouchDispatcher()
         {
-            //TODO: use CCLayer::getTouchPriority()
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, false);
+            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, TouchPriority, false);
         }
 
         /**
@@ -233,7 +250,9 @@ namespace Cocos2D
         {
             if (base.Init())
             {
-                _container = container;
+				IgnoreAnchorPointForPosition = false;
+                
+				_container = container;
 
                 if (_container == null)
                 {
@@ -249,7 +268,6 @@ namespace Cocos2D
                 _delegate = null;
                 _bounceable = true;
                 _clippingToBounds = true;
-                //m_pContainer->setContentSize(CCSizeZero);
                 _direction = CCScrollViewDirection.Both;
                 _container.Position = new CCPoint(0.0f, 0.0f);
                 _touchLength = 0.0f;
@@ -462,7 +480,7 @@ namespace Cocos2D
                 return false;
             }
 
-            CCRect frame = GetViewRect();
+            var frame = GetViewRect();
 
             //dispatcher does not know about clipping. reject touches outside visible bounds.
             if (_touches.Count > 2 ||
@@ -509,10 +527,9 @@ namespace Cocos2D
                 if (_touches.Count == 1 && _dragging)
                 {// scrolling
                     CCPoint moveDistance, newPoint; //, maxInset, minInset;
-                    CCRect frame;
                     float newX, newY;
 
-                    frame = GetViewRect();
+                    var frame = GetViewRect();
 
                     newPoint = ConvertTouchToNodeSpace(_touches[0]);
                     moveDistance = newPoint - _touchPoint;
@@ -615,74 +632,6 @@ namespace Cocos2D
             }
         }
 
-        /**
-     * Determines whether it clips its children or not.
-     */
-
-        public override void Visit()
-        {
-            // quick return if not visible
-            if (!Visible)
-            {
-                return;
-            }
-
-            CCDrawManager.PushMatrix();
-
-            if (m_pGrid != null && m_pGrid.Active)
-            {
-                m_pGrid.BeforeDraw();
-                TransformAncestors();
-            }
-
-            Transform();
-            BeforeDraw();
-
-            if (m_pChildren != null)
-            {
-                SortAllChildren();
-
-                CCNode[] arrayData = m_pChildren.Elements;
-                int count = m_pChildren.count;
-                int i = 0;
-
-                // draw children zOrder < 0
-                for (; i < count; i++)
-                {
-                    CCNode child = arrayData[i];
-                    if (child.m_nZOrder < 0)
-                    {
-                        child.Visit();
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                // this draw
-                Draw();
-
-                // draw children zOrder >= 0
-                for (; i < count; i++)
-                {
-                    arrayData[i].Visit();
-                }
-            }
-            else
-            {
-                Draw();
-            }
-
-            AfterDraw();
-            if (m_pGrid != null && m_pGrid.Active)
-            {
-                m_pGrid.AfterDraw(this);
-            }
-
-            CCDrawManager.PopMatrix();
-        }
-
         public override void AddChild(CCNode child, int zOrder, int tag)
         {
             child.IgnoreAnchorPointForPosition = false;
@@ -766,8 +715,8 @@ namespace Cocos2D
             float newY = Math.Min(_container.Position.Y, maxInset.Y);
             newY = Math.Max(newY, minInset.Y);
 
-            newX = _container.Position.X;
-            newY = _container.Position.Y;
+            //newX = _container.Position.X;
+            //newY = _container.Position.Y;
 
             _scrollDistance = _scrollDistance - new CCPoint(newX - _container.Position.X, newY - _container.Position.Y);
             _scrollDistance = _scrollDistance * SCROLL_DEACCEL_RATE;
@@ -817,58 +766,6 @@ namespace Cocos2D
             }
         }
 
-        /**
-     * clip this view so that outside of the visible bounds can be hidden.
-     */
-
-        private void BeforeDraw()
-        {
-            if (_clippingToBounds)
-            {
-                _scissorRestored = false;
-                CCRect frame = GetViewRect();
-                if (CCDrawManager.ScissorRectEnabled)
-                {
-                    _scissorRestored = true;
-                    _parentScissorRect = CCDrawManager.ScissorRect;
-                    //set the intersection of _parentScissorRect and frame as the new scissor rect
-                    if (frame.IntersectsRect(_parentScissorRect))
-                    {
-                        float x = Math.Max(frame.Origin.X, _parentScissorRect.Origin.X);
-                        float y = Math.Max(frame.Origin.Y, _parentScissorRect.Origin.Y);
-                        float xx = Math.Min(frame.Origin.X + frame.Size.Width, _parentScissorRect.Origin.X + _parentScissorRect.Size.Width);
-                        float yy = Math.Min(frame.Origin.Y + frame.Size.Height, _parentScissorRect.Origin.Y + _parentScissorRect.Size.Height);
-                        CCDrawManager.SetScissorInPoints(x, y, xx - x, yy - y);
-                    }
-                }
-                else
-                {
-                    CCDrawManager.ScissorRectEnabled = true;
-                    CCDrawManager.SetScissorInPoints(frame.Origin.X, frame.Origin.Y, frame.Size.Width, frame.Size.Height);
-                }
-            }
-        }
-
-        /**
-     * retract what's done in beforeDraw so that there's no side effect to
-     * other nodes.
-     */
-
-        private void AfterDraw()
-        {
-            if (_clippingToBounds)
-            {
-                if (_scissorRestored)
-                {
-                    CCDrawManager.SetScissorInPoints(_parentScissorRect.Origin.X, _parentScissorRect.Origin.Y, _parentScissorRect.Size.Width, _parentScissorRect.Size.Height);
-                }
-                else
-                {
-                    CCDrawManager.ScissorRectEnabled = false;
-                }
-            }
-        }
-
         public void UpdateInset()
         {
             if (Container != null)
@@ -884,32 +781,8 @@ namespace Cocos2D
 
         private CCRect GetViewRect()
         {
-            CCPoint screenPos = ConvertToWorldSpace(CCPoint.Zero);
-
-            float scaleX = ScaleX;
-            float scaleY = ScaleY;
-
-            for (CCNode p = m_pParent; p != null; p = p.Parent)
-            {
-                scaleX *= p.ScaleX;
-                scaleY *= p.ScaleY;
-            }
-
-            // Support negative scaling. Not doing so causes intersectsRect calls
-            // (eg: to check if the touch was within the bounds) to return false.
-            // Note, CCNode::getScale will assert if X and Y scales are different.
-            if (scaleX < 0f)
-            {
-                screenPos.X += _viewSize.Width * scaleX;
-                scaleX = -scaleX;
-            }
-            if (scaleY < 0f)
-            {
-                screenPos.Y += _viewSize.Height * scaleY;
-                scaleY = -scaleY;
-            }
-
-            return new CCRect(screenPos.X, screenPos.Y, _viewSize.Width * scaleX, _viewSize.Height * scaleY);
+            var rect = new CCRect(0, 0, _viewSize.Width, _viewSize.Height);
+            return CCAffineTransform.Transform(rect, NodeToWorldTransform());
         }
 
         private static float ConvertDistanceFromPointToInch(float pointDis)
