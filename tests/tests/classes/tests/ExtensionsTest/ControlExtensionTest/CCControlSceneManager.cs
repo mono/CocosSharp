@@ -26,9 +26,8 @@ namespace tests.Extensions
 
 
 		private static string[] s_testArray = {
-		    "CCControlSliderTest",
-		    "ControlColourPickerTest",
-		    "ControlSwitchTest",
+		    "ControlButtonTest_Slider",
+		    "ControlButtonTest_Switch",
 		    "ControlButtonTest_HelloVariableSize",
 		    "ControlButtonTest_Event",
 		    "ControlButtonTest_Styling",

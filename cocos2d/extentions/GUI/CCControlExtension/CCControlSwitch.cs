@@ -38,11 +38,11 @@ namespace Cocos2D
     {
         /** Initializes a switch with a mask sprite, on/off sprites for on/off states and a thumb sprite. */
 
-        protected bool m_bMoved;
+        protected bool _moved;
         /** A Boolean value that determines the off/on state of the switch. */
-        protected bool m_bOn;
-        protected float m_fInitialTouchXPosition;
-        protected CCControlSwitchSprite m_pSwitchSprite;
+        protected bool _on;
+        protected float _initialTouchXPosition;
+        protected CCControlSwitchSprite _switchSprite;
 
         public event CCSwitchValueChangedDelegate OnValueChanged;
 
@@ -51,10 +51,10 @@ namespace Cocos2D
             get { return base.Enabled; }
             set
             {
-                m_bEnabled = value;
-                if (m_pSwitchSprite != null)
+                _enabled = value;
+                if (_switchSprite != null)
                 {
-                    m_pSwitchSprite.Opacity = (byte) (value ? 255 : 128);
+                    _switchSprite.Opacity = (byte) (value ? 255 : 128);
                 }
             }
         }
@@ -84,17 +84,17 @@ namespace Cocos2D
                 Debug.Assert(thumbSprite != null, "thumbSprite must not be nil.");
 
                 TouchEnabled = true;
-                m_bOn = true;
+                _on = true;
 
-                m_pSwitchSprite = new CCControlSwitchSprite();
-                m_pSwitchSprite.InitWithMaskSprite(maskSprite, onSprite, offSprite, thumbSprite,
+                _switchSprite = new CCControlSwitchSprite();
+                _switchSprite.InitWithMaskSprite(maskSprite, onSprite, offSprite, thumbSprite,
                                                    onLabel, offLabel);
-                m_pSwitchSprite.Position = new CCPoint(m_pSwitchSprite.ContentSize.Width / 2, m_pSwitchSprite.ContentSize.Height / 2);
-                AddChild(m_pSwitchSprite);
+                _switchSprite.Position = new CCPoint(_switchSprite.ContentSize.Width / 2, _switchSprite.ContentSize.Height / 2);
+                AddChild(_switchSprite);
 
                 IgnoreAnchorPointForPosition = false;
                 AnchorPoint = new CCPoint(0.5f, 0.5f);
-                ContentSize = m_pSwitchSprite.ContentSize;
+                ContentSize = _switchSprite.ContentSize;
                 return true;
             }
             return false;
@@ -125,18 +125,18 @@ namespace Cocos2D
         public void SetOn(bool isOn, bool animated)
         {
             bool bNotify = false;
-            if (m_bOn != isOn)
+            if (_on != isOn)
             {
-                m_bOn = isOn;
+                _on = isOn;
                 bNotify = true;
             }
 
-            m_pSwitchSprite.RunAction(
+            _switchSprite.RunAction(
                 new CCActionTween (
                     0.2f,
                     "sliderXPosition",
-                    m_pSwitchSprite.SliderXPosition,
-                    (m_bOn) ? m_pSwitchSprite.OnPosition : m_pSwitchSprite.OffPosition
+                    _switchSprite.SliderXPosition,
+                    (_on) ? _switchSprite.OnPosition : _switchSprite.OffPosition
                     )
                 );
 
@@ -145,19 +145,19 @@ namespace Cocos2D
                 SendActionsForControlEvents(CCControlEvent.ValueChanged);
                 if (OnValueChanged != null)
                 {
-                    OnValueChanged(this, m_bOn);
+                    OnValueChanged(this, _on);
                 }
             }
         }
 
         public bool IsOn()
         {
-            return m_bOn;
+            return _on;
         }
 
         public bool HasMoved()
         {
-            return m_bMoved;
+            return _moved;
         }
 
 
@@ -177,14 +177,14 @@ namespace Cocos2D
                 return false;
             }
 
-            m_bMoved = false;
+            _moved = false;
 
             CCPoint location = LocationFromTouch(pTouch);
 
-            m_fInitialTouchXPosition = location.X - m_pSwitchSprite.SliderXPosition;
+            _initialTouchXPosition = location.X - _switchSprite.SliderXPosition;
 
-            m_pSwitchSprite.ThumbSprite.Color = new CCColor3B(166, 166, 166);
-            m_pSwitchSprite.NeedsLayout();
+            _switchSprite.ThumbSprite.Color = new CCColor3B(166, 166, 166);
+            _switchSprite.NeedsLayout();
 
             return true;
         }
@@ -192,26 +192,26 @@ namespace Cocos2D
         public override void TouchMoved(CCTouch pTouch)
         {
             CCPoint location = LocationFromTouch(pTouch);
-            location = new CCPoint(location.X - m_fInitialTouchXPosition, 0);
+            location = new CCPoint(location.X - _initialTouchXPosition, 0);
 
-            m_bMoved = true;
+            _moved = true;
 
-            m_pSwitchSprite.SliderXPosition = location.X;
+            _switchSprite.SliderXPosition = location.X;
         }
 
         public override void TouchEnded(CCTouch pTouch)
         {
             CCPoint location = LocationFromTouch(pTouch);
 
-            m_pSwitchSprite.ThumbSprite.Color = new CCColor3B(255, 255, 255);
+            _switchSprite.ThumbSprite.Color = new CCColor3B(255, 255, 255);
 
             if (HasMoved())
             {
-                SetOn(!(location.X < m_pSwitchSprite.ContentSize.Width / 2), true);
+                SetOn(!(location.X < _switchSprite.ContentSize.Width / 2), true);
             }
             else
             {
-                SetOn(!m_bOn, true);
+                SetOn(!_on, true);
             }
         }
 
@@ -219,15 +219,15 @@ namespace Cocos2D
         {
             CCPoint location = LocationFromTouch(pTouch);
 
-            m_pSwitchSprite.ThumbSprite.Color = new CCColor3B(255, 255, 255);
+            _switchSprite.ThumbSprite.Color = new CCColor3B(255, 255, 255);
 
             if (HasMoved())
             {
-                SetOn(!(location.X < m_pSwitchSprite.ContentSize.Width / 2), true);
+                SetOn(!(location.X < _switchSprite.ContentSize.Width / 2), true);
             }
             else
             {
-                SetOn(!m_bOn, true);
+                SetOn(!_on, true);
             }
         }
 
@@ -236,48 +236,48 @@ namespace Cocos2D
 
     public class CCControlSwitchSprite : CCSprite, ICCActionTweenDelegate
     {
-        private CCSprite m_ThumbSprite;
-        private float m_fOffPosition;
-        private float m_fOnPosition;
-        private float m_fSliderXPosition;
-        private CCSprite m_pMaskSprite;
-        private CCTexture2D m_pMaskTexture;
-        private CCLabelTTF m_pOffLabel;
-        private CCSprite m_pOffSprite;
-        private CCLabelTTF m_pOnLabel;
-        private CCSprite m_pOnSprite;
+        private CCSprite _thumbSprite;
+        private float _offPosition;
+        private float _onPosition;
+        private float _sliderXPosition;
+        private CCSprite _maskSprite;
+        private CCTexture2D _maskTexture;
+        private CCLabelTTF _offLabel;
+        private CCSprite _offSprite;
+        private CCLabelTTF _onLabel;
+        private CCSprite _onSprite;
 
         public CCControlSwitchSprite()
         {
-            m_fSliderXPosition = 0.0f;
-            m_fOnPosition = 0.0f;
-            m_fOffPosition = 0.0f;
-            m_pMaskTexture = null;
+            _sliderXPosition = 0.0f;
+            _onPosition = 0.0f;
+            _offPosition = 0.0f;
+            _maskTexture = null;
             TextureLocation = 0;
             MaskLocation = 0;
-            m_pOnSprite = null;
-            m_pOffSprite = null;
-            m_ThumbSprite = null;
-            m_pOnLabel = null;
-            m_pOffLabel = null;
+            _onSprite = null;
+            _offSprite = null;
+            _thumbSprite = null;
+            _onLabel = null;
+            _offLabel = null;
         }
 
         public float OnPosition
         {
-            get { return m_fOnPosition; }
-            set { m_fOnPosition = value; }
+            get { return _onPosition; }
+            set { _onPosition = value; }
         }
 
         public float OffPosition
         {
-            get { return m_fOffPosition; }
-            set { m_fOffPosition = value; }
+            get { return _offPosition; }
+            set { _offPosition = value; }
         }
 
         public CCTexture2D MaskTexture
         {
-            get { return m_pMaskTexture; }
-            set { m_pMaskTexture = value; }
+            get { return _maskTexture; }
+            set { _maskTexture = value; }
         }
 
         public uint TextureLocation { get; set; }
@@ -286,52 +286,52 @@ namespace Cocos2D
 
         public CCSprite OnSprite
         {
-            get { return m_pOnSprite; }
-            set { m_pOnSprite = value; }
+            get { return _onSprite; }
+            set { _onSprite = value; }
         }
 
         public CCSprite OffSprite
         {
-            get { return m_pOffSprite; }
-            set { m_pOffSprite = value; }
+            get { return _offSprite; }
+            set { _offSprite = value; }
         }
 
         public CCSprite ThumbSprite
         {
-            get { return m_ThumbSprite; }
-            set { m_ThumbSprite = value; }
+            get { return _thumbSprite; }
+            set { _thumbSprite = value; }
         }
 
 
         public CCLabelTTF OnLabel
         {
-            get { return m_pOnLabel; }
-            set { m_pOnLabel = value; }
+            get { return _onLabel; }
+            set { _onLabel = value; }
         }
 
         public CCLabelTTF OffLabel
         {
-            get { return m_pOffLabel; }
-            set { m_pOffLabel = value; }
+            get { return _offLabel; }
+            set { _offLabel = value; }
         }
 
         public float SliderXPosition
         {
-            get { return m_fSliderXPosition; }
+            get { return _sliderXPosition; }
             set
             {
-                if (value <= m_fOffPosition)
+                if (value <= _offPosition)
                 {
                     // Off
-                    value = m_fOffPosition;
+                    value = _offPosition;
                 }
-                else if (value >= m_fOnPosition)
+                else if (value >= _onPosition)
                 {
                     // On
-                    value = m_fOnPosition;
+                    value = _onPosition;
                 }
 
-                m_fSliderXPosition = value;
+                _sliderXPosition = value;
 
                 NeedsLayout();
             }
@@ -339,12 +339,12 @@ namespace Cocos2D
 
         public float OnSideWidth
         {
-            get { return m_pOnSprite.ContentSize.Width; }
+            get { return _onSprite.ContentSize.Width; }
         }
 
         public float OffSideWidth
         {
-            get { return m_pOffSprite.ContentSize.Height; }
+            get { return _offSprite.ContentSize.Height; }
         }
 
         #region CCActionTweenDelegate Members
@@ -363,9 +363,9 @@ namespace Cocos2D
             if (base.InitWithTexture(maskSprite.Texture))
             {
                 // Sets the default values
-                m_fOnPosition = 0;
-                m_fOffPosition = -onSprite.ContentSize.Width + thumbSprite.ContentSize.Width / 2;
-                m_fSliderXPosition = m_fOnPosition;
+                _onPosition = 0;
+                _offPosition = -onSprite.ContentSize.Width + thumbSprite.ContentSize.Width / 2;
+                _sliderXPosition = _onPosition;
 
                 OnSprite = onSprite;
                 OffSprite = offSprite;
@@ -373,7 +373,7 @@ namespace Cocos2D
                 OnLabel = onLabel;
                 OffLabel = offLabel;
 
-                AddChild(m_ThumbSprite);
+                AddChild(_thumbSprite);
 
                 // Set up the mask with the Mask shader
                 MaskTexture = maskSprite.Texture;
@@ -401,7 +401,7 @@ namespace Cocos2D
 				m_uMaskLocation       = glGetUniformLocation( getShaderProgram()->getProgram(), "u_mask");
 				CHECK_GL_ERROR_DEBUG();
 				*/
-                ContentSize = m_pMaskTexture.ContentSize;
+                ContentSize = _maskTexture.ContentSize;
 
                 NeedsLayout();
                 return true;
@@ -453,53 +453,53 @@ namespace Cocos2D
 
         public void NeedsLayout()
         {
-            m_pOnSprite.Position = new CCPoint(m_pOnSprite.ContentSize.Width / 2 + m_fSliderXPosition,
-                                               m_pOnSprite.ContentSize.Height / 2);
-            m_pOffSprite.Position = new CCPoint(m_pOnSprite.ContentSize.Width + m_pOffSprite.ContentSize.Width / 2 + m_fSliderXPosition,
-                                                m_pOffSprite.ContentSize.Height / 2);
-            m_ThumbSprite.Position = new CCPoint(m_pOnSprite.ContentSize.Width + m_fSliderXPosition,
-                                                 m_pMaskTexture.ContentSize.Height / 2);
+            _onSprite.Position = new CCPoint(_onSprite.ContentSize.Width / 2 + _sliderXPosition,
+                                               _onSprite.ContentSize.Height / 2);
+            _offSprite.Position = new CCPoint(_onSprite.ContentSize.Width + _offSprite.ContentSize.Width / 2 + _sliderXPosition,
+                                                _offSprite.ContentSize.Height / 2);
+            _thumbSprite.Position = new CCPoint(_onSprite.ContentSize.Width + _sliderXPosition,
+                                                 _maskTexture.ContentSize.Height / 2);
 
-            if (m_pOnLabel != null)
+            if (_onLabel != null)
             {
-                m_pOnLabel.Position = new CCPoint(m_pOnSprite.Position.X - m_ThumbSprite.ContentSize.Width / 6,
-                                                  m_pOnSprite.ContentSize.Height / 2);
+                _onLabel.Position = new CCPoint(_onSprite.Position.X - _thumbSprite.ContentSize.Width / 6,
+                                                  _onSprite.ContentSize.Height / 2);
             }
-            if (m_pOffLabel != null)
+            if (_offLabel != null)
             {
-                m_pOffLabel.Position = new CCPoint(m_pOffSprite.Position.X + m_ThumbSprite.ContentSize.Width / 6,
-                                                   m_pOffSprite.ContentSize.Height / 2);
+                _offLabel.Position = new CCPoint(_offSprite.Position.X + _thumbSprite.ContentSize.Width / 6,
+                                                   _offSprite.ContentSize.Height / 2);
             }
 
-            CCRenderTexture rt = new CCRenderTexture((int) m_pMaskTexture.ContentSize.Width, (int) m_pMaskTexture.ContentSize.Height,
+            CCRenderTexture rt = new CCRenderTexture((int) _maskTexture.ContentSize.Width, (int) _maskTexture.ContentSize.Height,
                                                         SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents);
 
             rt.BeginWithClear(0, 0, 0, 0);
 
-            m_pOnSprite.Visit();
-            m_pOffSprite.Visit();
+            _onSprite.Visit();
+            _offSprite.Visit();
 
-            if (m_pOnLabel != null)
+            if (_onLabel != null)
             {
-                m_pOnLabel.Visit();
+                _onLabel.Visit();
             }
-            if (m_pOffLabel != null)
+            if (_offLabel != null)
             {
-                m_pOffLabel.Visit();
+                _offLabel.Visit();
             }
 
-            if (m_pMaskSprite == null)
+            if (_maskSprite == null)
             {
-                m_pMaskSprite = new CCSprite(m_pMaskTexture);
-                m_pMaskSprite.AnchorPoint = new CCPoint(0, 0);
-                m_pMaskSprite.BlendFunc = new CCBlendFunc(CCOGLES.GL_ZERO, CCOGLES.GL_SRC_ALPHA);
+                _maskSprite = new CCSprite(_maskTexture);
+                _maskSprite.AnchorPoint = new CCPoint(0, 0);
+                _maskSprite.BlendFunc = new CCBlendFunc(CCOGLES.GL_ZERO, CCOGLES.GL_SRC_ALPHA);
             }
             else
             {
-                m_pMaskSprite.Texture = m_pMaskTexture;
+                _maskSprite.Texture = _maskTexture;
             }
 
-            m_pMaskSprite.Visit();
+            _maskSprite.Visit();
 
             rt.End();
 

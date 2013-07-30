@@ -13,8 +13,8 @@ namespace Cocos2D
 		 */
         public int Index 
         {
-            get { return m_uIdx; }
-            set { m_uIdx = value; }
+            get { return _idx; }
+            set { _idx = value; }
         }
 
 		/**
@@ -22,15 +22,15 @@ namespace Cocos2D
 		 */
 		public void Reset()
 		{
-			m_uIdx = CCArrayForObjectSorting.CC_INVALID_INDEX;
+			_idx = CCArrayForObjectSorting.CC_INVALID_INDEX;
 		}
 
 	    public int ObjectID
 	    {
-	        set { m_uIdx = value; }
-	        get { return m_uIdx; }
+	        set { _idx = value; }
+	        get { return _idx; }
 	    }
 
-	    private int m_uIdx;
+	    private int _idx;
 	}
 }

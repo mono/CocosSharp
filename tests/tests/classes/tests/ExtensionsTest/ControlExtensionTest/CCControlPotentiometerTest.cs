@@ -9,7 +9,6 @@ namespace tests.Extensions
 
         public CCControlPotentiometerTest()
         {
-            _displayValueLabel = null;
         }
 
         public CCLabelTTF DisplayValueLabel
@@ -79,7 +78,7 @@ namespace tests.Extensions
         {
             var pScene = new CCScene();
             var controlLayer = new CCControlPotentiometerTest();
-            if (controlLayer != null && controlLayer.Init())
+            if (controlLayer != null)
             {
                 controlLayer.getSceneTitleLabel().Text = (title);
                 pScene.AddChild(controlLayer);

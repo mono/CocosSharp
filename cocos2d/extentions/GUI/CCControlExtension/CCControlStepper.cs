@@ -164,7 +164,7 @@ namespace Cocos2D
                                                     minusSprite.ContentSize.Height / 2);
                 AddChild(_minusSprite);
 
-                MinusLabel = new CCLabelTTF("-", ControlStepperLabelFont, 40);
+                MinusLabel = new CCLabelTTF("-", ControlStepperLabelFont, 38);
                 _minusLabel.Color = ControlStepperLabelColorDisabled;
                 _minusLabel.Position = new CCPoint(_minusSprite.ContentSize.Width / 2,
                                                    _minusSprite.ContentSize.Height / 2);
@@ -177,7 +177,7 @@ namespace Cocos2D
                                 minusSprite.ContentSize.Height / 2);
                 AddChild(_plusSprite);
 
-                PlusLabel = new CCLabelTTF("+", ControlStepperLabelFont, 40);
+                PlusLabel = new CCLabelTTF("+", ControlStepperLabelFont, 38);
                 _plusLabel.Color = ControlStepperLabelColorEnabled;
                 _plusLabel.Position = _plusSprite.ContentSize.Center;
                 _plusSprite.AddChild(_plusLabel);
