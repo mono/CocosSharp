@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
@@ -64,7 +65,7 @@ namespace Cocos2D
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-    public class CCNode : ICCSelectorProtocol, ICCFocusable
+    public class CCNode : ICCSelectorProtocol, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate
     {
         /// <summary>
         /// Use this to determine if a tag has been set on the node.
@@ -112,6 +113,22 @@ namespace Cocos2D
         private bool m_bAdditionalTransformDirty;
         private CCAffineTransform m_sAdditionalTransform;
 
+        private string m_sName;
+
+        // input variables
+        private bool m_bKeypadEnabled;
+        private bool m_bGamePadEnabled;
+        private bool m_bTouchEnabled;
+        private CCTouchMode m_eTouchMode = CCTouchMode.OneByOne;
+        private int m_nTouchPriority;
+        private bool m_bGamePadDelegatesInited;
+
+        public enum CCTouchMode
+        {
+            AllAtOnce,
+            OneByOne
+        }
+
         public CCNode()
         {
             m_fScaleX = 1.0f;
@@ -126,6 +143,7 @@ namespace Cocos2D
             CCDirector director = CCDirector.SharedDirector;
             m_pActionManager = director.ActionManager;
             m_pScheduler = director.Scheduler;
+
         }
 
         public virtual bool Init()
@@ -577,6 +595,12 @@ namespace Cocos2D
             }
         }
 
+        public string Name 
+        {
+            get { return m_sName; }
+            set { m_sName = value; }
+        }
+
         #region SelectorProtocol Members
 
         public virtual void Update(float dt)
@@ -969,6 +993,14 @@ namespace Cocos2D
 
         public virtual void OnEnter()
         {
+
+            // register 'parent' nodes first
+            // since events are propagated in reverse order
+            if (m_bTouchEnabled)
+            {
+                RegisterWithTouchDispatcher();
+            }
+
             if (m_pChildren != null && m_pChildren.count > 0)
             {
                 CCNode[] elements = m_pChildren.Elements;
@@ -982,6 +1014,34 @@ namespace Cocos2D
 
             m_bRunning = true;
 
+            CCDirector director = CCDirector.SharedDirector;
+
+            // add this layer to concern the kaypad msg
+            if (m_bKeypadEnabled)
+            {
+                director.KeypadDispatcher.AddDelegate(this);
+            }
+
+            if (GamePadEnabled && director.GamePadEnabled)
+            {
+                if (!m_bGamePadDelegatesInited)
+                {
+                    m_OnGamePadButtonUpdateDelegate = new CCGamePadButtonDelegate(OnGamePadButtonUpdate);
+                    m_OnGamePadConnectionUpdateDelegate = new CCGamePadConnectionDelegate(OnGamePadConnectionUpdate);
+                    m_OnGamePadDPadUpdateDelegate = new CCGamePadDPadDelegate(OnGamePadDPadUpdate);
+                    m_OnGamePadStickUpdateDelegate = new CCGamePadStickUpdateDelegate(OnGamePadStickUpdate);
+                    m_OnGamePadTriggerUpdateDelegate = new CCGamePadTriggerDelegate(OnGamePadTriggerUpdate);
+                    m_bGamePadDelegatesInited = true;
+                }
+
+                CCApplication application = CCApplication.SharedApplication;
+
+                application.GamePadButtonUpdate += m_OnGamePadButtonUpdateDelegate;
+                application.GamePadConnectionUpdate += m_OnGamePadConnectionUpdateDelegate;
+                application.GamePadDPadUpdate += m_OnGamePadDPadUpdateDelegate;
+                application.GamePadStickUpdate += m_OnGamePadStickUpdateDelegate;
+                application.GamePadTriggerUpdate += m_OnGamePadTriggerUpdateDelegate;
+            }
             /*
             if (m_nScriptHandler)
             {
@@ -1016,6 +1076,30 @@ namespace Cocos2D
 
         public virtual void OnExit()
         {
+
+            CCDirector director = CCDirector.SharedDirector;
+
+            if (m_bTouchEnabled)
+            {
+                director.TouchDispatcher.RemoveDelegate(this);
+                //unregisterScriptTouchHandler();
+            }
+
+            if (m_bKeypadEnabled)
+            {
+                director.KeypadDispatcher.RemoveDelegate(this);
+            }
+
+            if (GamePadEnabled && director.GamePadEnabled)
+            {
+                CCApplication application = CCApplication.SharedApplication;
+                application.GamePadButtonUpdate -= m_OnGamePadButtonUpdateDelegate;
+                application.GamePadConnectionUpdate -= m_OnGamePadConnectionUpdateDelegate;
+                application.GamePadDPadUpdate -= m_OnGamePadDPadUpdateDelegate;
+                application.GamePadStickUpdate -= m_OnGamePadStickUpdateDelegate;
+                application.GamePadTriggerUpdate -= m_OnGamePadTriggerUpdateDelegate;
+            }
+
             PauseSchedulerAndActions();
 
             m_bRunning = false;
@@ -1357,5 +1441,222 @@ namespace Cocos2D
             }
         }
         */
+
+        public virtual void RegisterWithTouchDispatcher()
+        {
+            CCTouchDispatcher pDispatcher = CCDirector.SharedDirector.TouchDispatcher;
+
+            /*
+            if (m_pScriptHandlerEntry)
+            {
+                if (m_pScriptHandlerEntry->isMultiTouches())
+                {
+                    pDispatcher->addStandardDelegate(this, 0);
+                    LUALOG("[LUA] Add multi-touches event handler: %d", m_pScriptHandlerEntry->getHandler());
+                }
+                else
+                {
+                    pDispatcher->addTargetedDelegate(this,
+                                         m_pScriptHandlerEntry->getPriority(),
+                                         m_pScriptHandlerEntry->getSwallowsTouches());
+                    LUALOG("[LUA] Add touch event handler: %d", m_pScriptHandlerEntry->getHandler());
+                }
+                return;
+            }
+            */
+            if (m_eTouchMode == CCTouchMode.AllAtOnce)
+            {
+                pDispatcher.AddStandardDelegate(this, 0);
+            }
+            else
+            {
+                pDispatcher.AddTargetedDelegate(this, m_nTouchPriority, true);
+            }
+        }
+
+        public CCTouchMode TouchMode
+        {
+            get { return m_eTouchMode; }
+            set
+            {
+                if (m_eTouchMode != value)
+                {
+                    m_eTouchMode = value;
+
+                    if (m_bTouchEnabled)
+                    {
+                        TouchEnabled = false;
+                        TouchEnabled = true;
+                    }
+                }
+            }
+        }
+
+        public virtual bool TouchEnabled
+        {
+            get { return m_bTouchEnabled; }
+            set
+            {
+                if (m_bTouchEnabled != value)
+                {
+                    m_bTouchEnabled = value;
+
+                    if (m_bRunning)
+                    {
+                        if (value)
+                        {
+                            RegisterWithTouchDispatcher();
+                        }
+                        else
+                        {
+                            CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
+                        }
+                    }
+                }
+            }
+        }
+
+        public int TouchPriority
+        {
+            get { return m_nTouchPriority; }
+            set
+            {
+                if (m_nTouchPriority != value)
+                {
+                    m_nTouchPriority = value;
+
+                    if (m_bRunning)
+                    {
+                        TouchEnabled = false;
+                        TouchEnabled = true;
+                    }
+                }
+            }
+        }
+
+        public bool KeypadEnabled
+        {
+            get { return m_bKeypadEnabled; }
+            set
+            {
+                if (value != m_bKeypadEnabled)
+                {
+                    m_bKeypadEnabled = value;
+
+                    if (m_bRunning)
+                    {
+                        if (value)
+                        {
+                            CCDirector.SharedDirector.KeypadDispatcher.AddDelegate(this);
+                        }
+                        else
+                        {
+                            CCDirector.SharedDirector.KeypadDispatcher.RemoveDelegate(this);
+                        }
+                    }
+                }
+            }
+        }
+        public bool GamePadEnabled
+        {
+            get { return (m_bGamePadEnabled); }
+            set
+            {
+                if (value != m_bGamePadEnabled)
+                {
+                    m_bGamePadEnabled = value;
+                }
+                if (value && !CCDirector.SharedDirector.GamePadEnabled)
+                {
+                    CCDirector.SharedDirector.GamePadEnabled = true;
+                }
+            }
+        }
+
+        #region touches
+
+        #region ICCStandardTouchDelegate Members
+
+        public virtual void TouchesBegan(List<CCTouch> touches)
+        {
+        }
+
+        public virtual void TouchesMoved(List<CCTouch> touches)
+        {
+        }
+
+        public virtual void TouchesEnded(List<CCTouch> touches)
+        {
+        }
+
+        public virtual void TouchesCancelled(List<CCTouch> touches)
+        {
+        }
+
+        #endregion
+
+        #region ICCTargetedTouchDelegate Members
+
+        public virtual bool TouchBegan(CCTouch touch)
+        {
+            return true;
+        }
+
+        public virtual void TouchMoved(CCTouch touch)
+        {
+        }
+
+        public virtual void TouchEnded(CCTouch touch)
+        {
+        }
+
+        public virtual void TouchCancelled(CCTouch touch)
+        {
+        }
+
+        #endregion
+
+        #endregion
+
+
+        public virtual void KeyBackClicked()
+        {
+        }
+
+        public virtual void KeyMenuClicked()
+        {
+        }
+
+        #region GamePad Support
+        private CCGamePadButtonDelegate m_OnGamePadButtonUpdateDelegate;
+        private CCGamePadConnectionDelegate m_OnGamePadConnectionUpdateDelegate;
+        private CCGamePadDPadDelegate m_OnGamePadDPadUpdateDelegate;
+        private CCGamePadStickUpdateDelegate m_OnGamePadStickUpdateDelegate;
+        private CCGamePadTriggerDelegate m_OnGamePadTriggerUpdateDelegate;
+
+        protected virtual void OnGamePadTriggerUpdate(float leftTriggerStrength, float rightTriggerStrength, Microsoft.Xna.Framework.PlayerIndex player)
+        {
+        }
+
+        protected virtual void OnGamePadStickUpdate(CCGameStickStatus leftStick, CCGameStickStatus rightStick, Microsoft.Xna.Framework.PlayerIndex player)
+        {
+        }
+
+        protected virtual void OnGamePadDPadUpdate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player)
+        {
+            if (!HasFocus)
+            {
+                return;
+            }
+        }
+
+        protected virtual void OnGamePadConnectionUpdate(Microsoft.Xna.Framework.PlayerIndex player, bool IsConnected)
+        {
+        }
+
+        protected virtual void OnGamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player)
+        {
+        }
+        #endregion
     }
 }
