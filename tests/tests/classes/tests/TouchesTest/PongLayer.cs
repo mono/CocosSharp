@@ -51,19 +51,19 @@ namespace tests
 
             List<object> paddlesM = new List<object>(4);
 
-            Paddle paddle = Paddle.paddleWithTexture(paddleTexture);
+            Paddle paddle = new Paddle(paddleTexture);
             paddle.Position = new CCPoint(160, 15);
             paddlesM.Add(paddle);
 
-            paddle = Paddle.paddleWithTexture(paddleTexture);
+            paddle = new Paddle(paddleTexture);
             paddle.Position = new CCPoint(160, 480 - 20f - 15);
             paddlesM.Add(paddle);
 
-            paddle = Paddle.paddleWithTexture(paddleTexture);
+            paddle = new Paddle(paddleTexture);
             paddle.Position = new CCPoint(160, 100);
             paddlesM.Add(paddle);
 
-            paddle = Paddle.paddleWithTexture(paddleTexture);
+            paddle = new Paddle(paddleTexture);
             paddle.Position = new CCPoint(160, 480 - 20.0f - 100);
             paddlesM.Add(paddle);
 

@@ -37,34 +37,29 @@ namespace tests
         kPaddleStateUngrabbed
     }
 
-    public class Paddle : CCSprite, ICCTargetedTouchDelegate
+    public class Paddle : CCSprite//, ICCTargetedTouchDelegate
     {
         PaddleState m_state;
-        
+
+        public Paddle (CCTexture2D aTexture) : base (aTexture)
+        {
+            m_state = PaddleState.kPaddleStateUngrabbed;
+            TouchEnabled = true;
+        }
+
         public CCRect rect()
         {
             CCSize s = Texture.ContentSize;
             return new CCRect(-s.Width / 2, -s.Height / 2, s.Width, s.Height);
         }
 
-        public bool initWithTexture(CCTexture2D aTexture)
-        {
-            if (base.InitWithTexture(aTexture))
-            {
-                m_state = PaddleState.kPaddleStateUngrabbed;
-            }
-            return true;
-        }
-
         public override void OnEnter()
         {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
             base.OnEnter();
         }
 
         public override void OnExit()
         {
-            CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
             base.OnExit();
         }
 
@@ -73,7 +68,7 @@ namespace tests
             return rect().ContainsPoint(ConvertTouchToNodeSpaceAr(touch));
         }
 
-        public virtual bool TouchBegan(CCTouch touch)
+        public override bool TouchBegan(CCTouch touch)
         {
             if (m_state != PaddleState.kPaddleStateUngrabbed) return false;
             if (!containsTouchLocation(touch)) return false;
@@ -82,7 +77,7 @@ namespace tests
             return true;
         }
 
-        public virtual void TouchMoved(CCTouch touch)
+        public override void TouchMoved(CCTouch touch)
         {
             // If it weren't for the TouchDispatcher, you would need to keep a reference
             // to the touch from touchBegan and check that the current touch is the same
@@ -98,24 +93,15 @@ namespace tests
             base.Position = new CCPoint(touchPoint.X, base.Position.Y);
         }
 
-        public virtual void TouchEnded(CCTouch touch)
+        public override void TouchEnded(CCTouch touch)
         {
             Debug.Assert(m_state == PaddleState.kPaddleStateGrabbed, "Paddle - Unexpected state!");
             m_state = PaddleState.kPaddleStateUngrabbed;
         }
 
-        public static Paddle paddleWithTexture(CCTexture2D aTexture)
-        {
-            Paddle pPaddle = new Paddle();
-            pPaddle.initWithTexture(aTexture);
-            //pPaddle->autorelease();
-
-            return pPaddle;
-        }
-
-        public void TouchCancelled(CCTouch pTouch)
-        {
-            throw new NotImplementedException();
-        }
+//        public void TouchCancelled(CCTouch pTouch)
+//        {
+//            throw new NotImplementedException();
+//        }
     }
 }
