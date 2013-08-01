@@ -68,7 +68,6 @@ namespace Cocos2D
 
         public CCLayerGradient ()
         {
-            //Init();
         }
 
         public CCLayerGradient(byte startOpacity, byte endOpacity)
@@ -96,7 +95,11 @@ namespace Cocos2D
         public CCColor3B StartColor
         {
             get { return _realColor; }
-            set { base.Color = value; }
+            set
+            {
+                base.Color = value;
+                UpdateColor();
+            }
         }
 
         public CCColor3B EndColor
@@ -148,6 +151,11 @@ namespace Cocos2D
                 m_bCompressedInterpolation = value;
                 UpdateColor();
             }
+        }
+
+        public override bool Init()
+        {
+            return InitWithColor(new CCColor4B(0, 0, 0, 255), new CCColor4B(0, 0, 0, 255));
         }
 
         /// <summary>
