@@ -11,12 +11,28 @@ namespace Cocos2D
     /// </summary>
     public class CCLayerMultiplex : CCLayerRGBA
     {
+        /// <summary>
+        /// Indicates no layer to be displayed.
+        /// </summary>
+        public const int NoLayer = -1;
+        /// <summary>
+        /// Offset used to preserve uniqueness for the layer tags. This is necessary
+        /// to allow for SwitchTo(index) and SwitchTo(Layer.Tag) to work properly.
+        /// </summary>
         private const int kTagOffsetForUniqueness = 5000;
-        protected int m_nEnabledLayer=-1;
-//        protected List<CCLayer> m_pLayers;
+        /// <summary>
+        /// Current index of the active layer.
+        /// </summary>
+        protected int m_nEnabledLayer=NoLayer;
         protected Dictionary<int, CCLayer> m_pLayers = new Dictionary<int,CCLayer>();
         private CCAction m_InAction, m_OutAction;
+        public bool ShowFirstLayerOnEnter { get; set; }
 
+        #region Constructors
+        public CCLayerMultiplex()
+        {
+            ShowFirstLayerOnEnter = true;
+        }
         /// <summary>
         ///  creates a CCLayerMultiplex with one or more layers using a variable argument list. 
         /// </summary>
@@ -26,6 +42,7 @@ namespace Cocos2D
         public CCLayerMultiplex (params CCLayer[] layer)
         {
             InitWithLayers(layer);
+            ShowFirstLayerOnEnter = true;
         }
 
         public CCLayerMultiplex(CCAction inAction, CCAction outAction, params CCLayer[] layer)
@@ -33,10 +50,7 @@ namespace Cocos2D
             InitWithLayers(layer);
             m_InAction = inAction;
             m_OutAction = outAction;
-        }
-
-        public CCLayerMultiplex()
-        {
+            ShowFirstLayerOnEnter = true;
         }
 
         public CCLayerMultiplex(CCAction inAction, CCAction outAction)
@@ -45,6 +59,15 @@ namespace Cocos2D
             m_OutAction = outAction;
         }
 
+        public CCLayerMultiplex(CCAction inAction, CCAction outAction, CCLayer layer)
+        {
+            InitWithLayer(layer);
+            m_InAction = inAction;
+            m_OutAction = outAction;
+        }
+        #endregion
+
+        #region Legacy Init Methods
         private bool InitWithLayer(CCLayer layer)
         {
             m_pLayers = new Dictionary<int,CCLayer>();
@@ -71,6 +94,7 @@ namespace Cocos2D
             }
             return true;
         }
+        #endregion
 
         /// <summary>
         /// The action to play on the layer that becomes the active layer
@@ -89,19 +113,12 @@ namespace Cocos2D
             get { return (m_OutAction); }
             set { m_OutAction = value; }
         }
+
         /// <summary>
-        ///  * lua script can not init with undetermined number of variables
-        /// * so add these functinons to be used with lua.
+        /// Adds the given layer to the list of layers to multiplex. The CCNode.Tag is used
+        /// as thelayer tag, but is offset by the kTagOffsetForUniqueness constant.
         /// </summary>
         /// <param name="layer"></param>
-        /// <returns></returns>
-        public CCLayerMultiplex(CCAction inAction, CCAction outAction, CCLayer layer)
-        {
-            InitWithLayer(layer);
-            m_InAction = inAction;
-            m_OutAction = outAction;
-        }
-
         public void AddLayer(CCLayer layer)
         {
             if (m_pLayers == null)
@@ -134,58 +151,36 @@ namespace Cocos2D
             }
         }
 
-        /** switches to a certain layer indexed by n. 
-        The current (old) layer will be removed from it's parent with 'cleanup:YES'.
-        */
-
+        /// <summary>
+        /// This will switch to the first layer if the ShowFirstLayerOnEnter flag is true 
+        /// and there is a layer in the list of multiplexed layers.
+        /// </summary>
         public override void OnEnter()
         {
-            if (m_nEnabledLayer == -1 && m_pLayers.Count > 0)
+            if (m_nEnabledLayer == -1 && m_pLayers.Count > 0 && ShowFirstLayerOnEnter)
             {
                 SwitchTo(0);
-            }
-            else if(m_nEnabledLayer != -1)
-            {
-                if(m_InAction != null) {
-                    m_pLayers[m_nEnabledLayer].RunAction(m_InAction.Copy());
-                }
             }
             base.OnEnter();
         }
 
+        /// <summary>
+        /// Hides the current display layer and sets the current enabled layer to none.
+        /// The out action is played for the current display layer. Calling this method
+        /// will also set ShowFirstLayerOnEnter to false.
+        /// </summary>
         public void SwitchToNone() 
         {
-            if (m_nEnabledLayer != -1)
-            {
-                CCLayer outLayer = null;
-                if (m_pLayers.ContainsKey(m_nEnabledLayer))
-                {
-                    outLayer = m_pLayers[m_nEnabledLayer];
-                    if (m_OutAction != null)
-                    {
-                        outLayer.RunAction(
-                            new CCSequence(
-                                (CCFiniteTimeAction)m_OutAction.Copy(),
-                                new CCCallFunc(() => RemoveChild(outLayer, true))
-                                )
-                            );
-                    }
-                    else
-                    {
-                        RemoveChild(outLayer, true);
-                    }
-                }
-            }
-            // We have no enabled layer at this point
-            m_nEnabledLayer = -1;
+            SwitchTo(NoLayer);
         }
 
         /// <summary>
         /// Swtich to the given index layer and use the given action after the layer is
         /// added to the parent. The parameter can be the index or it can be the tag of the layer.
         /// </summary>
-        /// <param name="n">Send in -1 to hide all multiplexed layers. Otherwise, send in a tag or the logical index of the 
+        /// <param name="n">Send in NoLayer to hide all multiplexed layers. Otherwise, send in a tag or the logical index of the 
         /// layer to show.</param>
+        /// <returns>The layer that is going to be shown. This can return null if the SwitchTo layer is NoLayer</returns>
         public CCLayer SwitchTo(int n)
         {
             if (n != -1)
@@ -221,11 +216,12 @@ namespace Cocos2D
                     }
                 }
                 // We have no enabled layer at this point
-                m_nEnabledLayer = -1;
+                m_nEnabledLayer = NoLayer;
             }
-            // When -1, the multiplexer shows nothing.
-            if (n == -1)
+            // When NoLayer, the multiplexer shows nothing.
+            if (n == NoLayer)
             {
+                ShowFirstLayerOnEnter = false;
                 return (null);
             }
             if (!m_pLayers.ContainsKey(n))
