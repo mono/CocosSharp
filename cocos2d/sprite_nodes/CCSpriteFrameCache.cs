@@ -179,7 +179,7 @@ namespace Cocos2D
                 }
 
                 // add sprite frame
-                string key = framePrefix + pair.Key;
+                string key = /*framePrefix +*/ pair.Key;
                 if (!_AllowFrameOverwrite && m_pSpriteFrames.ContainsKey(key))
                 {
                     CCLog.Log("Frame named " + key + " already exists in the animation cache. Not overwriting existing record.");

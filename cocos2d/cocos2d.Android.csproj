@@ -212,6 +212,11 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9Sprite.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlColourPicker.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlHuePicker.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlPotentiometer.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlSaturationPicker.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlStepper.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCScrollView.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCSorting.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableView.cs" />
