@@ -370,6 +370,8 @@
     <Compile Include="sprite_nodes\CCSpriteBatchNode.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrame.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrameCache.cs" />
+    <Compile Include="sprite_nodes\CCSpriteSheet.cs" />
+    <Compile Include="sprite_nodes\CCSpriteSheetCache.cs" />
     <Compile Include="support\Compression\Adler.cs" />
     <Compile Include="support\Compression\Crc32.cs" />
     <Compile Include="support\Compression\FlushType.cs" />

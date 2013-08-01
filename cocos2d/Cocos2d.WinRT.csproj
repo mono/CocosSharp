@@ -1012,6 +1012,8 @@
     <Compile Include=".\sprite_nodes\CCSpriteFrameCache.cs">
       <LogicalName>sprite_nodes\CCSpriteFrameCache</LogicalName>
     </Compile>
+    <Compile Include="sprite_nodes\CCSpriteSheet.cs" />
+    <Compile Include="sprite_nodes\CCSpriteSheetCache.cs" />
     <Compile Include=".\support\CCUserDefault.cs">
       <LogicalName>support\CCUserDefault</LogicalName>
     </Compile>
