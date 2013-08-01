@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Cocos2D
+namespace Cocos2D.CCBReader
 {
     public class BlockData
     {
@@ -22,12 +22,22 @@ namespace Cocos2D
     {
         protected const string PROPERTY_POSITION = "position";
         protected const string PROPERTY_CONTENTSIZE = "contentSize";
+        protected const string PROPERTY_SKEW = "skew";
         protected const string PROPERTY_ANCHORPOINT = "anchorPoint";
         protected const string PROPERTY_SCALE = "scale";
         protected const string PROPERTY_ROTATION = "rotation";
+        protected const string PROPERTY_ROTATIONX = "rotationX";
+        protected const string PROPERTY_ROTATIONY = "rotationY";
         protected const string PROPERTY_TAG = "tag";
         protected const string PROPERTY_IGNOREANCHORPOINTFORPOSITION = "ignoreAnchorPointForPosition";
         protected const string PROPERTY_VISIBLE = "visible";
+
+        protected Dictionary<string, CCBValue> _customProperties; 
+
+        public CCNodeLoader()
+        {
+            _customProperties = new Dictionary<string, CCBValue>();
+        }
 
         public virtual CCNode CreateCCNode()
         {
@@ -38,6 +48,11 @@ namespace Cocos2D
         {
             CCNode node = CreateCCNode();
             return node;
+        }
+
+        public virtual Dictionary<string, CCBValue> CustomProperties
+        {
+            get { return _customProperties; }
         }
 
         public virtual void ParseProperties(CCNode node, CCNode parent, CCBReader reader)
@@ -55,8 +70,8 @@ namespace Cocos2D
                 // Check if the property can be set for this platform
                 bool setProp = false;
 
-                var platform = (CCBPlatform) reader.ReadByte();
-                if (platform == CCBPlatform.All)
+                var platform = (PlatformType) reader.ReadByte();
+                if (platform == PlatformType.All)
                 {
                     setProp = true;
                 }
@@ -82,7 +97,16 @@ namespace Cocos2D
 
                         // Skip properties that doesn't have a value to override
                         var extraPropsNames = (List<string>) node.UserObject;
-                        setProp &= extraPropsNames.Contains(propertyName);
+                        bool bFound = false;
+                        foreach (var pObj in extraPropsNames)
+                        {
+                            if (pObj == propertyName)
+                            {
+                                bFound = true;
+                                break;
+                            }
+                        }
+                        setProp &= bFound;
                     }
                 }
                 else if (isExtraProp && node == reader.AnimationManager.RootNode)
@@ -97,9 +121,9 @@ namespace Cocos2D
                     extraPropsNames.Add(propertyName);
                 }
 
-                switch ((CCBPropType) type)
+                switch ((PropertyType) type)
                 {
-                    case CCBPropType.Position:
+                    case PropertyType.Position:
                         {
                             CCPoint position = ParsePropTypePosition(node, parent, reader, propertyName);
                             if (setProp)
@@ -108,7 +132,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Point:
+                    case PropertyType.Point:
                         {
                             CCPoint point = ParsePropTypePoint(node, parent, reader);
                             if (setProp)
@@ -117,7 +141,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.PointLock:
+                    case PropertyType.PointLock:
                         {
                             CCPoint pointLock = ParsePropTypePointLock(node, parent, reader);
                             if (setProp)
@@ -126,7 +150,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Size:
+                    case PropertyType.Size:
                         {
                             CCSize size = ParsePropTypeSize(node, parent, reader);
                             if (setProp)
@@ -135,7 +159,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.ScaleLock:
+                    case PropertyType.ScaleLock:
                         {
                             float[] scaleLock = ParsePropTypeScaleLock(node, parent, reader, propertyName);
                             if (setProp)
@@ -144,7 +168,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Float:
+                    case PropertyType.Float:
                         {
                             float f = ParsePropTypeFloat(node, parent, reader);
                             if (setProp)
@@ -153,7 +177,16 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Degrees:
+                    case PropertyType.FloatXY:
+                        {
+                            var xy = ParsePropTypeFloatXY(node, parent, reader);
+                            if (setProp)
+                            {
+                                OnHandlePropTypeFloatXY(node, parent, propertyName, xy, reader);
+                            }
+                            break;
+                        }
+                    case PropertyType.Degrees:
                         {
                             float degrees = ParsePropTypeDegrees(node, parent, reader, propertyName);
                             if (setProp)
@@ -162,7 +195,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.FloatScale:
+                    case PropertyType.FloatScale:
                         {
                             float floatScale = ParsePropTypeFloatScale(node, parent, reader);
                             if (setProp)
@@ -171,7 +204,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Integer:
+                    case PropertyType.Integer:
                         {
                             int integer = ParsePropTypeInteger(node, parent, reader);
                             if (setProp)
@@ -180,7 +213,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.IntegerLabeled:
+                    case PropertyType.IntegerLabeled:
                         {
                             int integerLabeled = ParsePropTypeIntegerLabeled(node, parent, reader);
                             if (setProp)
@@ -189,7 +222,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.FloatVar:
+                    case PropertyType.FloatVar:
                         {
                             float[] floatVar = ParsePropTypeFloatVar(node, parent, reader);
                             if (setProp)
@@ -198,7 +231,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Check:
+                    case PropertyType.Check:
                         {
                             bool check = ParsePropTypeCheck(node, parent, reader, propertyName);
                             if (setProp)
@@ -207,7 +240,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.SpriteFrame:
+                    case PropertyType.SpriteFrame:
                         {
                             CCSpriteFrame ccSpriteFrame = ParsePropTypeSpriteFrame(node, parent, reader, propertyName);
                             if (setProp)
@@ -216,7 +249,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Animation:
+                    case PropertyType.Animation:
                         {
                             CCAnimation ccAnimation = ParsePropTypeAnimation(node, parent, reader);
                             if (setProp)
@@ -225,7 +258,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Texture:
+                    case PropertyType.Texture:
                         {
                             CCTexture2D ccTexture2D = ParsePropTypeTexture(node, parent, reader);
                             if (setProp)
@@ -234,7 +267,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Byte:
+                    case PropertyType.Byte:
                         {
                             byte b = ParsePropTypeByte(node, parent, reader, propertyName);
                             if (setProp)
@@ -243,7 +276,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Color3:
+                    case PropertyType.Color3:
                         {
                             CCColor3B color3B = ParsePropTypeColor3(node, parent, reader, propertyName);
                             if (setProp)
@@ -252,7 +285,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Color4FVar:
+                    case PropertyType.Color4FVar:
                         {
                             CCColor4F[] color4FVar = ParsePropTypeColor4FVar(node, parent, reader);
                             if (setProp)
@@ -261,7 +294,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Flip:
+                    case PropertyType.Flip:
                         {
                             bool[] flip = ParsePropTypeFlip(node, parent, reader);
                             if (setProp)
@@ -270,7 +303,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Blendmode:
+                    case PropertyType.Blendmode:
                         {
                             CCBlendFunc blendFunc = ParsePropTypeBlendFunc(node, parent, reader);
                             if (setProp)
@@ -279,7 +312,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.FntFile:
+                    case PropertyType.FntFile:
                         {
                             string fntFile = ParsePropTypeFntFile(node, parent, reader);
                             if (setProp)
@@ -288,7 +321,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.FontTTF:
+                    case PropertyType.FontTTF:
                         {
                             string fontTTF = ParsePropTypeFontTTF(node, parent, reader);
                             if (setProp)
@@ -297,7 +330,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.String:
+                    case PropertyType.String:
                         {
                             string s = ParsePropTypeString(node, parent, reader);
                             if (setProp)
@@ -306,7 +339,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Text:
+                    case PropertyType.Text:
                         {
                             string text = ParsePropTypeText(node, parent, reader);
                             if (setProp)
@@ -315,7 +348,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.Block:
+                    case PropertyType.Block:
                         {
                             BlockData blockData = ParsePropTypeBlock(node, parent, reader);
                             if (setProp)
@@ -324,7 +357,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.BlockCCControl:
+                    case PropertyType.BlockCCControl:
                         {
                             BlockCCControlData blockCCControlData = ParsePropTypeBlockCcControl(node, parent, reader);
                             if (setProp && blockCCControlData != null)
@@ -333,7 +366,7 @@ namespace Cocos2D
                             }
                             break;
                         }
-                    case CCBPropType.CCBFile:
+                    case PropertyType.CCBFile:
                         {
                             CCNode ccbFileNode = ParsePropTypeCcbFile(node, parent, reader);
                             if (setProp)
@@ -354,7 +387,7 @@ namespace Cocos2D
             float x = reader.ReadFloat();
             float y = reader.ReadFloat();
 
-            var type = (CCBPositionType) reader.ReadInt(false);
+            var type = (PositionType) reader.ReadInt(false);
 
             CCSize containerSize = reader.AnimationManager.GetContainerSize(parent);
 
@@ -400,36 +433,36 @@ namespace Cocos2D
 
             CCSize containerSize = reader.AnimationManager.GetContainerSize(parent);
 
-            switch ((CCBSizeType) type)
+            switch ((SizeType) type)
             {
-                case CCBSizeType.Absolute:
+                case SizeType.Absolute:
                     {
                         /* Nothing. */
                         break;
                     }
-                case CCBSizeType.RelativeContainer:
+                case SizeType.RelativeContainer:
                     {
                         width = containerSize.Width - width;
                         height = containerSize.Height - height;
                         break;
                     }
-                case CCBSizeType.Percent:
+                case SizeType.Percent:
                     {
                         width = (int) (containerSize.Width * width / 100.0f);
                         height = (int) (containerSize.Height * height / 100.0f);
                         break;
                     }
-                case CCBSizeType.HorizontalPercent:
+                case SizeType.HorizontalPercent:
                     {
                         width = (int) (containerSize.Width * width / 100.0f);
                         break;
                     }
-                case CCBSizeType.VerticalPercent:
+                case SizeType.VerticalPercent:
                     {
                         height = (int) (containerSize.Height * height / 100.0f);
                         break;
                     }
-                case CCBSizeType.MultiplyResolution:
+                case SizeType.MultiplyResolution:
                     {
                         float resolutionScale = CCBReader.ResolutionScale;
 
@@ -438,6 +471,9 @@ namespace Cocos2D
                         break;
                     }
                 default:
+                    {
+                        CCLog.Log("Unknown CCB type.");
+                    }
                     break;
             }
 
@@ -449,7 +485,7 @@ namespace Cocos2D
             float x = reader.ReadFloat();
             float y = reader.ReadFloat();
 
-            var type = (CCBScaleType) reader.ReadInt(false);
+            var type = (ScaleType) reader.ReadInt(false);
 
             CCBHelper.SetRelativeScale(node, x, y, type, propertyName);
 
@@ -464,7 +500,7 @@ namespace Cocos2D
                 reader.AnimationManager.SetBaseValue(baseValue, node, propertyName);
             }
 
-            if (type == CCBScaleType.MultiplyResolution)
+            if (type == ScaleType.MultiplyResolution)
             {
                 x *= CCBReader.ResolutionScale;
                 y *= CCBReader.ResolutionScale;
@@ -500,7 +536,7 @@ namespace Cocos2D
 
             int type = reader.ReadInt(false);
 
-            if ((CCBScaleType) type == CCBScaleType.MultiplyResolution)
+            if ((ScaleType) type == ScaleType.MultiplyResolution)
             {
                 f *= CCBReader.ResolutionScale;
             }
@@ -553,6 +589,7 @@ namespace Cocos2D
             {
                 if (spriteSheet.Length == 0)
                 {
+                    spriteFile = reader.CCBRootPath + spriteFile;
                     CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
                     var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
                     spriteFrame = new CCSpriteFrame(texture, bounds);
@@ -560,6 +597,7 @@ namespace Cocos2D
                 else
                 {
                     CCSpriteFrameCache frameCache = CCSpriteFrameCache.SharedSpriteFrameCache;
+                    spriteSheet = reader.CCBRootPath + spriteSheet;
 
                     // Load the sprite sheet only if it is not loaded
                     if (!reader.LoadedSpriteSheet.Contains(spriteSheet))
@@ -728,76 +766,96 @@ namespace Cocos2D
         protected virtual BlockData ParsePropTypeBlock(CCNode node, CCNode parent, CCBReader reader)
         {
             string selectorName = reader.ReadCachedString();
-            var selectorTarget = (CCBTargetType) reader.ReadInt(false);
+            var selectorTarget = (TargetType) reader.ReadInt(false);
 
-            if (selectorTarget != CCBTargetType.None)
+            if (selectorTarget != TargetType.None)
             {
                 object target = null;
-                if (selectorTarget == CCBTargetType.DocumentRoot)
+                if (!reader.IsJSControlled())
                 {
-                    target = reader.AnimationManager.RootNode;
-                }
-                else if (selectorTarget == CCBTargetType.Owner)
-                {
-                    target = reader.Owner;
-
-                    /* Scripting specific code because selector function is common for all callbacks.
-                     * So if we had 1 target and 1 selector function, the context (callback function name)
-                     * would get lost. Hence the need for a new target for each callback.
-                     */
-                    if (reader.hasScriptingOwner)
+                    if (selectorTarget == TargetType.DocumentRoot)
                     {
-                        var proxy = (ICCBScriptOwnerProtocol) reader.Owner;
-                        if (proxy != null)
-                        {
-                            target = proxy.CreateNew() as object;
-                        }
+                        target = reader.AnimationManager.RootNode;
                     }
-                }
-
-                if (target != null)
-                {
-                    if (selectorName.Length > 0)
+                    else if (selectorTarget == TargetType.Owner)
                     {
-						Action<object> selMenuHandler = null;
+                        target = reader.Owner;
 
-                        var targetAsCCBSelectorResolver = target as ICCBSelectorResolver;
-
-                        if (targetAsCCBSelectorResolver != null)
+                        /* Scripting specific code because selector function is common for all callbacks.
+                         * So if we had 1 target and 1 selector function, the context (callback function name)
+                         * would get lost. Hence the need for a new target for each callback.
+                         */
+                        if (reader._hasScriptingOwner)
                         {
-                            selMenuHandler = targetAsCCBSelectorResolver.OnResolveCCBCCMenuItemSelector(target, selectorName);
-                        }
-                        if (selMenuHandler == null)
-                        {
-                            ICCBSelectorResolver ccbSelectorResolver = reader.SelectorResolver;
-                            if (ccbSelectorResolver != null)
+                            var proxy = (ICCBScriptOwnerProtocol) reader.Owner;
+                            if (proxy != null)
                             {
-                                selMenuHandler = ccbSelectorResolver.OnResolveCCBCCMenuItemSelector(target, selectorName);
+                                target = proxy.CreateNew() as object;
                             }
                         }
+                    }
 
-                        if (selMenuHandler == null)
+                    if (target != null)
+                    {
+                        if (selectorName.Length > 0)
                         {
-                            CCLog.Log("Skipping selector '{0}' since no CCBSelectorResolver is present.", selectorName);
+                            Action<object> selMenuHandler = null;
+
+                            var targetAsCCBSelectorResolver = target as ICCBSelectorResolver;
+
+                            if (targetAsCCBSelectorResolver != null)
+                            {
+                                selMenuHandler = targetAsCCBSelectorResolver.OnResolveCCBCCMenuItemSelector(target,
+                                                                                                            selectorName);
+                            }
+                            if (selMenuHandler == null)
+                            {
+                                ICCBSelectorResolver ccbSelectorResolver = reader.SelectorResolver;
+                                if (ccbSelectorResolver != null)
+                                {
+                                    selMenuHandler = ccbSelectorResolver.OnResolveCCBCCMenuItemSelector(target,
+                                                                                                        selectorName);
+                                }
+                            }
+
+                            if (selMenuHandler == null)
+                            {
+                                CCLog.Log("Skipping selector '{0}' since no CCBSelectorResolver is present.",
+                                          selectorName);
+                            }
+                            else
+                            {
+                                var blockData = new BlockData();
+                                blockData.mSELMenuHandler = selMenuHandler;
+
+                                blockData.mTarget = target;
+
+                                return blockData;
+                            }
                         }
                         else
                         {
-                            var blockData = new BlockData();
-                            blockData.mSELMenuHandler = selMenuHandler;
-
-                            blockData.mTarget = target;
-
-                            return blockData;
+                            CCLog.Log("Unexpected empty selector.");
                         }
                     }
                     else
                     {
-                        CCLog.Log("Unexpected empty selector.");
+                        CCLog.Log("Unexpected NULL target for selector.");
                     }
                 }
                 else
                 {
-                    CCLog.Log("Unexpected NULL target for selector.");
+                    if (selectorTarget == TargetType.DocumentRoot)
+                    {
+                        reader.AddDocumentCallbackNode(node);
+                        reader.AddDocumentCallbackName(selectorName);
+
+                    }
+                    else
+                    {
+                        reader.AddOwnerCallbackNode(node);
+                        reader.AddOwnerCallbackName(selectorName);
+                    }
                 }
             }
 
@@ -807,73 +865,93 @@ namespace Cocos2D
         protected virtual BlockCCControlData ParsePropTypeBlockCcControl(CCNode node, CCNode parent, CCBReader reader)
         {
             string selectorName = reader.ReadCachedString();
-            var selectorTarget = (CCBTargetType) reader.ReadInt(false);
+            var selectorTarget = (TargetType) reader.ReadInt(false);
             var controlEvents = (CCControlEvent) reader.ReadInt(false);
 
-            if (selectorTarget != CCBTargetType.None)
+            if (selectorTarget != TargetType.None)
             {
-                object target = null;
-                if (selectorTarget == CCBTargetType.DocumentRoot)
+                if (!reader.IsJSControlled())
                 {
-                    target = reader.AnimationManager.RootNode;
-                }
-                else if (selectorTarget == CCBTargetType.Owner)
-                {
-                    target = reader.Owner;
-                }
-
-                if (target != null)
-                {
-                    if (selectorName.Length > 0)
+                    object target = null;
+                    if (selectorTarget == TargetType.DocumentRoot)
                     {
-						Action<object, CCControlEvent> selCCControlHandler = null;
+                        target = reader.AnimationManager.RootNode;
+                    }
+                    else if (selectorTarget == TargetType.Owner)
+                    {
+                        target = reader.Owner;
+                    }
 
-                        var targetAsCCBSelectorResolver = target as ICCBSelectorResolver;
-                        if (targetAsCCBSelectorResolver != null)
+                    if (target != null)
+                    {
+                        if (selectorName.Length > 0)
                         {
-                            selCCControlHandler = targetAsCCBSelectorResolver.OnResolveCCBCCControlSelector(target, selectorName);
-                        }
-                        if (selCCControlHandler == null)
-                        {
-                            ICCBSelectorResolver ccbSelectorResolver = reader.SelectorResolver;
-                            if (ccbSelectorResolver != null)
+                            Action<object, CCControlEvent> selCCControlHandler = null;
+
+                            var targetAsCCBSelectorResolver = target as ICCBSelectorResolver;
+                            if (targetAsCCBSelectorResolver != null)
                             {
-                                selCCControlHandler = ccbSelectorResolver.OnResolveCCBCCControlSelector(target, selectorName);
+                                selCCControlHandler = targetAsCCBSelectorResolver.OnResolveCCBCCControlSelector(target,
+                                                                                                                selectorName);
                             }
-                        }
+                            if (selCCControlHandler == null)
+                            {
+                                ICCBSelectorResolver ccbSelectorResolver = reader.SelectorResolver;
+                                if (ccbSelectorResolver != null)
+                                {
+                                    selCCControlHandler = ccbSelectorResolver.OnResolveCCBCCControlSelector(target,
+                                                                                                            selectorName);
+                                }
+                            }
 
-                        if (selCCControlHandler == null)
-                        {
-                            CCLog.Log("Skipping selector '{0}' since no CCBSelectorResolver is present.", selectorName);
+                            if (selCCControlHandler == null)
+                            {
+                                CCLog.Log("Skipping selector '{0}' since no CCBSelectorResolver is present.",
+                                          selectorName);
+                            }
+                            else
+                            {
+                                var blockCCControlData = new BlockCCControlData();
+                                blockCCControlData.mSELCCControlHandler = selCCControlHandler;
+
+                                blockCCControlData.mTarget = target;
+                                blockCCControlData.mControlEvents = controlEvents;
+
+                                return blockCCControlData;
+                            }
                         }
                         else
                         {
-                            var blockCCControlData = new BlockCCControlData();
-                            blockCCControlData.mSELCCControlHandler = selCCControlHandler;
-
-                            blockCCControlData.mTarget = target;
-                            blockCCControlData.mControlEvents = controlEvents;
-
-                            return blockCCControlData;
+                            CCLog.Log("Unexpected empty selector.");
                         }
                     }
                     else
                     {
-                        CCLog.Log("Unexpected empty selector.");
+                        CCLog.Log("Unexpected NULL target for selector.");
                     }
                 }
                 else
                 {
-                    CCLog.Log("Unexpected NULL target for selector.");
+                    if (selectorTarget == TargetType.DocumentRoot)
+                    {
+                        reader.AddDocumentCallbackNode(node);
+                        reader.AddDocumentCallbackName(selectorName);
+
+                    }
+                    else
+                    {
+                        reader.AddOwnerCallbackNode(node);
+                        reader.AddOwnerCallbackName(selectorName);
+                    }
                 }
             }
 
             return null;
         }
 
-        protected virtual CCNode ParsePropTypeCcbFile(CCNode node, CCNode parent, CCBReader reader)
+        protected virtual CCNode ParsePropTypeCcbFile(CCNode node, CCNode parent, CCBReader pCCBReader)
         {
-            string ccbFileName = reader.ReadCachedString();
+            string ccbFileName = pCCBReader.ReadCachedString();
 
             /* Change path extension to .ccbi. */
             string ccbFileWithoutPathExtension = CCBReader.DeletePathExtension(ccbFileName);
@@ -881,21 +959,73 @@ namespace Cocos2D
 
             // Load sub file
             string path = CCFileUtils.FullPathFromRelativePath(ccbFileName);
-            var ccbReader = new CCBReader(reader);
-
+            long size = 0;
             byte[] pBytes = CCFileUtils.GetFileBytes(path);
-            ccbReader.InitWithData(pBytes, reader.Owner);
-            ccbReader.AnimationManager.RootContainerSize = parent.ContentSize;
+            var reader = new CCBReader(pCCBReader);
 
-            CCNode ccbFileNode = ccbReader.ReadFileWithCleanUp(false);
+            reader.AnimationManager.RootContainerSize = parent.ContentSize;
 
-            if (ccbFileNode != null && ccbReader.AnimationManager.AutoPlaySequenceId != -1)
+            reader._bytes = pBytes;
+            reader._currentByte = 0;
+            reader._currentBit = 0;
+            reader._owner = pCCBReader._owner;
+
+            reader.AnimationManager._owner = reader._owner;
+
+            CCNode ccbFileNode = reader.ReadFileWithCleanUp(false, pCCBReader.AnimationManagers);
+
+            if (ccbFileNode != null && reader.AnimationManager.AutoPlaySequenceId != -1)
             {
                 // Auto play animations
-                ccbReader.AnimationManager.RunAnimations(ccbReader.AnimationManager.AutoPlaySequenceId, 0);
+                reader.AnimationManager.RunAnimationsForSequenceIdTweenDuration(reader.AnimationManager.AutoPlaySequenceId, 0);
+            }
+
+            if (reader.IsJSControlled() && pCCBReader.IsJSControlled() && null != reader._owner)
+            {
+                //set variables and callback to owner
+                //set callback
+                var ownerCallbackNames = reader.OwnerCallbackNames;
+                var ownerCallbackNodes = reader.OwnerCallbackNodes;
+                if (null != ownerCallbackNames && ownerCallbackNames.Count > 0 &&
+                    null != ownerCallbackNodes && ownerCallbackNodes.Count > 0)
+                {
+                    Debug.Assert(ownerCallbackNames.Count == ownerCallbackNodes.Count);
+                    int nCount = ownerCallbackNames.Count;
+                    for (int i = 0; i < nCount; i++)
+                    {
+                        pCCBReader.AddOwnerCallbackName(ownerCallbackNames[i]);
+                        pCCBReader.AddOwnerCallbackNode(ownerCallbackNodes[i]);
+                    }
+                }
+                //set variables
+                var ownerOutletNames = reader.OwnerOutletNames;
+                var ownerOutletNodes = reader.OwnerOutletNodes;
+                if (null != ownerOutletNames && ownerOutletNames.Count > 0 &&
+                    null != ownerOutletNodes && ownerOutletNodes.Count > 0)
+                {
+                    Debug.Assert(ownerOutletNames.Count == ownerOutletNodes.Count);
+                    int nCount = ownerOutletNames.Count;
+                    for (int i = 0; i < nCount; i++)
+                    {
+                        pCCBReader.AddOwnerOutletName(ownerOutletNames[i]);
+                        pCCBReader.AddOwnerOutletNode(ownerOutletNodes[i]);
+                    }
+                }
             }
 
             return ccbFileNode;
+        }
+
+        protected virtual float[] ParsePropTypeFloatXY(CCNode pNode, CCNode pParent, CCBReader ccbReader)
+        {
+            float x = ccbReader.ReadFloat();
+            float y = ccbReader.ReadFloat();
+
+            var floatXY = new float[2];
+            floatXY[0] = x;
+            floatXY[1] = y;
+
+            return floatXY;
         }
 
 
@@ -961,7 +1091,8 @@ namespace Cocos2D
         protected virtual void OnHandlePropTypeFloat(CCNode node, CCNode parent, string propertyName, float pFloat, CCBReader reader)
         {
             CCLog.Log("Unexpected property type: '{0}'!", propertyName);
-            Debug.Assert(false);
+             // It may be a custom property, add it to custom property dictionary.
+            _customProperties.Add(propertyName, new CCBValue(pFloat));
         }
 
         protected virtual void OnHandlePropTypeDegrees(CCNode node, CCNode parent, string propertyName, float pDegrees, CCBReader reader)
@@ -969,6 +1100,14 @@ namespace Cocos2D
             if (propertyName == PROPERTY_ROTATION)
             {
                 node.Rotation = pDegrees;
+            }
+            else if (propertyName == PROPERTY_ROTATIONX)
+            {
+                node.RotationX = pDegrees;
+            }
+            else if (propertyName == PROPERTY_ROTATIONY)
+            {
+                node.RotationY = pDegrees;
             }
             else
             {
@@ -991,8 +1130,10 @@ namespace Cocos2D
             }
             else
             {
-                CCLog.Log("Unexpected property type: '{0}'!", propertyName);
-                Debug.Assert(false);
+//                CCLog.Log("Unexpected property type: '{0}'!", propertyName);
+//                Debug.Assert(false);
+                // It may be a custom property, add it to custom property dictionary.
+                _customProperties.Add(propertyName, new CCBValue(pInteger));
             }
         }
 
@@ -1009,6 +1150,21 @@ namespace Cocos2D
             Debug.Assert(false);
         }
 
+        protected virtual void OnHandlePropTypeFloatXY(CCNode pNode, CCNode pParent, string pPropertyName,
+                                                       float[] pFoatVar, CCBReader ccbReader)
+        {
+            if (pPropertyName == PROPERTY_SKEW)
+            {
+                pNode.SkewX = pFoatVar[0];
+                pNode.SkewY = pFoatVar[1];
+            }
+            else
+            {
+                CCLog.Log("Unexpected property type: '{0}'!", pPropertyName);
+                Debug.Assert(false);
+            }
+        }
+
         protected virtual void OnHandlePropTypeCheck(CCNode node, CCNode parent, string propertyName, bool pCheck, CCBReader reader)
         {
             if (propertyName == PROPERTY_VISIBLE)
@@ -1021,8 +1177,10 @@ namespace Cocos2D
             }
             else
             {
-                CCLog.Log("Unexpected property type: '{0}'!", propertyName);
-                Debug.Assert(false);
+//                CCLog.Log("Unexpected property type: '{0}'!", propertyName);
+//                Debug.Assert(false);
+                // It may be a custom property, add it to custom property dictionary.
+                _customProperties.Add(propertyName, new CCBValue(pCheck));
             }
         }
 
@@ -1091,8 +1249,10 @@ namespace Cocos2D
 
         protected virtual void OnHandlePropTypeString(CCNode node, CCNode parent, string propertyName, string pString, CCBReader reader)
         {
-            CCLog.Log("Unexpected property type: '{0}'!", propertyName);
-            Debug.Assert(false);
+//            CCLog.Log("Unexpected property type: '{0}'!", propertyName);
+//            Debug.Assert(false);
+            // It may be a custom property, add it to custom property dictionary.
+            _customProperties.Add(propertyName, new CCBValue(pString));
         }
 
         protected virtual void OnHandlePropTypeText(CCNode node, CCNode parent, string propertyName, string pText, CCBReader reader)

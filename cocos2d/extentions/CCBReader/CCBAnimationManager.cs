@@ -1,24 +1,44 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using Cocos2D.CCBReader;
+using CocosDenshion;
 
-namespace Cocos2D
+namespace Cocos2D.CCBReader
 {
     public delegate void CCBAnimationManagerDelegate(string name);
 
     public class CCBAnimationManager 
     {
-        private readonly Dictionary<CCNode, Dictionary<string, object>> mBaseValues = new Dictionary<CCNode, Dictionary<string, object>>();
+        private Dictionary<CCNode, Dictionary<string, object>> _baseValues = new Dictionary<CCNode, Dictionary<string, object>>();
 
-        private readonly Dictionary<CCNode, Dictionary<int, Dictionary<string, CCBSequenceProperty>>> mNodeSequences =
+        private readonly Dictionary<CCNode, Dictionary<int, Dictionary<string, CCBSequenceProperty>>> _nodeSequences =
             new Dictionary<CCNode, Dictionary<int, Dictionary<string, CCBSequenceProperty>>>();
 
-        private readonly List<CCBSequence> mSequences = new List<CCBSequence>();
+        private List<CCBSequence> _sequences = new List<CCBSequence>();
 
-        private int mAutoPlaySequenceId;
-        private CCBAnimationManagerDelegate mDelegate;
-        private CCSize mRootContainerSize;
-        private CCNode mRootNode;
-        private CCBSequence mRunningSequence;
+        private int _autoPlaySequenceId;
+        private CCBAnimationManagerDelegate _delegate;
+        private CCSize _rootContainerSize;
+        private CCNode _rootNode;
+        private CCBSequence _runningSequence;
+
+        private readonly List<string> _documentOutletNames = new List<string>();
+        private readonly List<CCNode> _documentOutletNodes = new List<CCNode>();
+        private readonly List<string> _documentCallbackNames = new List<string>();
+        private readonly List<CCNode> _documentCallbackNodes = new List<CCNode>();
+        private readonly List<string> _keyframeCallbacks;
+        private readonly Dictionary<string, CCAction> _keyframeCallFuncs;
+    
+        private string _documentControllerName;
+        private string _lastCompletedSequenceName;
+    
+        private Action _animationCompleteCallbackFunc;
+
+        public bool _jsControlled;
+
+        public Object _owner;
 
         public CCBAnimationManager()
         {
@@ -32,36 +52,101 @@ namespace Cocos2D
 
         public List<CCBSequence> Sequences
         {
-            get { return mSequences; }
+            get { return _sequences; }
+            set { _sequences = value; }
         }
 
         public int AutoPlaySequenceId
         {
-            set { mAutoPlaySequenceId = value; }
-            get { return mAutoPlaySequenceId; }
+            set { _autoPlaySequenceId = value; }
+            get { return _autoPlaySequenceId; }
         }
 
         public CCNode RootNode
         {
-            get { return mRootNode; }
-            set { mRootNode = value; }
+            get { return _rootNode; }
+            set { _rootNode = value; }
+        }
+
+        public void AddDocumentCallbackNode(CCNode node)
+        {
+            _documentCallbackNodes.Add(node);
+        }
+
+        public void AddDocumentCallbackName(string name)
+        {
+            _documentCallbackNames.Add(name);
+        }
+
+        public void AddDocumentOutletNode(CCNode node)
+        {
+            _documentOutletNodes.Add(node);
+        }
+
+        public void AddDocumentOutletName(string name)
+        {
+            _documentOutletNames.Add(name);
+        }
+
+        public string DocumentControllerName
+        {
+            set { _documentControllerName = value; }
+            get { return _documentControllerName; }
+        }
+
+
+        public List<string> GetDocumentCallbackNames()
+        {
+            return _documentCallbackNames;
+        }
+
+        public List<CCNode> GetDocumentCallbackNodes()
+        {
+            return _documentCallbackNodes;
+        }
+
+        public List<string> GetDocumentOutletNames()
+        {
+            return _documentOutletNames;
+        }
+
+        public List<CCNode> GetDocumentOutletNodes()
+        {
+            return _documentOutletNodes;
+        }
+
+        public string GetLastCompletedSequenceName()
+        {
+            return _lastCompletedSequenceName;
+        }
+
+        public List<string> GetKeyframeCallbacks()
+        {
+            return _keyframeCallbacks;
         }
 
         public CCSize RootContainerSize
         {
-            get { return mRootContainerSize; }
-            set { mRootContainerSize = value; }
+            get { return _rootContainerSize; }
+            set { _rootContainerSize = value; }
         }
 
         public CCBAnimationManagerDelegate Delegate
         {
-            get { return mDelegate; }
-            set { mDelegate = value; }
+            get { return _delegate; }
+            set { _delegate = value; }
         }
 
         public string RunningSequenceName
         {
-            get { return mRunningSequence.Name; }
+            get
+            {
+                if (_runningSequence != null)
+                {
+                    return _runningSequence.Name;
+                }
+                return null;
+            }
         }
 
         public CCSize GetContainerSize(CCNode node)
@@ -72,118 +157,39 @@ namespace Cocos2D
             }
             else
             {
-                return mRootContainerSize;
+                return _rootContainerSize;
             }
         }
 
         public void AddNode(CCNode node, Dictionary<int, Dictionary<string, CCBSequenceProperty>> pSeq)
         {
-            mNodeSequences.Add(node, pSeq);
+            _nodeSequences.Add(node, pSeq);
         }
 
         public void SetBaseValue(object pValue, CCNode node, string pPropName)
         {
             Dictionary<string, object> props;
-            if (!mBaseValues.TryGetValue(node, out props))
+            if (!_baseValues.TryGetValue(node, out props))
             {
                 props = new Dictionary<string, object>();
-                mBaseValues.Add(node, props);
+                _baseValues.Add(node, props);
             }
 
             props[pPropName] = pValue;
         }
 
-        public void RunAnimations(string pName, float fTweenDuration)
-        {
-            int seqId = GetSequenceId(pName);
-            RunAnimations(seqId, fTweenDuration);
-        }
-
-        public void RunAnimations(string pName)
-        {
-            RunAnimations(pName, 0);
-        }
-
-        public void RunAnimations(int nSeqId, float fTweenDuration)
-        {
-            Debug.Assert(nSeqId != -1, "Sequence id couldn't be found");
-
-            mRootNode.StopAllActions();
-
-            foreach (var pElement in mNodeSequences)
-            {
-                CCNode node = pElement.Key;
-                node.StopAllActions();
-
-                // Refer to CCBReader::readKeyframe() for the real type of value
-                Dictionary<int, Dictionary<string, CCBSequenceProperty>> seqs = pElement.Value;
-
-                var seqNodePropNames = new List<string>();
-
-                Dictionary<string, CCBSequenceProperty> seqNodeProps;
-                if (seqs.TryGetValue(nSeqId, out seqNodeProps))
-                {
-                    // Reset nodes that have sequence node properties, and run actions on them
-                    foreach (var pElement1 in seqNodeProps)
-                    {
-                        string propName = pElement1.Key;
-                        CCBSequenceProperty seqProp = pElement1.Value;
-                        seqNodePropNames.Add(propName);
-
-                        SetFirstFrame(node, seqProp, fTweenDuration);
-                        RunAction(node, seqProp, fTweenDuration);
-                    }
-                }
-
-                // Reset the nodes that may have been changed by other timelines
-                Dictionary<string, object> nodeBaseValues;
-                if (mBaseValues.TryGetValue(node, out nodeBaseValues))
-                {
-                    foreach (var pElement2 in nodeBaseValues)
-                    {
-                        if (!seqNodePropNames.Contains(pElement2.Key))
-                        {
-                            object value = pElement2.Value;
-
-                            if (value != null)
-                            {
-                                SetAnimatedProperty(pElement2.Key, node, value, fTweenDuration);
-                            }
-                        }
-                    }
-                }
-            }
-
-            // Make callback at end of sequence
-            CCBSequence seq = GetSequence(nSeqId);
-            CCAction completeAction = new CCSequence (
-                new CCDelayTime (seq.Duration + fTweenDuration),
-                new CCCallFunc(SequenceCompleted)
-                );
-
-            mRootNode.RunAction(completeAction);
-
-            // Set the running scene
-            mRunningSequence = GetSequence(nSeqId);
-        }
-
-        // Commented out for now as it does not seem to be used
-//        public void Debug()
-//        {
-//        }
-
         private object GetBaseValue(CCNode node, string pPropName)
         {
-            return mBaseValues[node][pPropName];
+            return _baseValues[node][pPropName];
         }
 
         private int GetSequenceId(string pSequenceName)
         {
-            for (int i = 0; i < mSequences.Count; i++)
+            for (int i = 0; i < _sequences.Count; i++)
             {
-                if (mSequences[i].Name == pSequenceName)
+                if (_sequences[i].Name == pSequenceName)
                 {
-                    return mSequences[i].SequenceId;
+                    return _sequences[i].SequenceId;
                 }
             }
             return -1;
@@ -191,14 +197,34 @@ namespace Cocos2D
 
         private CCBSequence GetSequence(int nSequenceId)
         {
-            for (int i = 0; i < mSequences.Count; i++)
+            for (int i = 0; i < _sequences.Count; i++)
             {
-                if (mSequences[i].SequenceId == nSequenceId)
+                if (_sequences[i].SequenceId == nSequenceId)
                 {
-                    return mSequences[i];
+                    return _sequences[i];
                 }
             }
             return null;
+        }
+
+        public void MoveAnimationsFromNode(CCNode fromNode, CCNode toNode)
+        {
+            // Move base values
+
+             Dictionary<string, object> baseValue;
+            if (_baseValues.TryGetValue(fromNode, out baseValue)) 
+            {
+                _baseValues[toNode] = baseValue;
+                _baseValues.Remove(fromNode);
+            }
+
+            // Move seqs
+            Dictionary<int, Dictionary<string, CCBSequenceProperty>> seqs;
+            if (_nodeSequences.TryGetValue(fromNode, out seqs))
+            {
+                _nodeSequences[toNode] = seqs;
+                _nodeSequences.Remove(fromNode);
+            }
         }
 
         private CCActionInterval GetAction(CCBKeyframe pKeyframe0, CCBKeyframe pKeyframe1, string pPropName, CCNode node)
@@ -207,6 +233,16 @@ namespace Cocos2D
 
             switch (pPropName)
             {
+                case "rotationX":
+                    {
+                        CCBValue value = (CCBValue) pKeyframe1.Value;
+                        return new CCBRotateXTo(duration, value.GetFloatValue());
+                    }
+                case "rotationY":
+                    {
+                        CCBValue value = (CCBValue) pKeyframe1.Value;
+                        return new CCBRotateYTo(duration, value.GetFloatValue());
+                    }
                 case "rotation":
                     {
                         var value = (CCBValue) pKeyframe1.Value;
@@ -220,7 +256,7 @@ namespace Cocos2D
                 case "color":
                     {
                         var color = (CCColor3BWapper) pKeyframe1.Value;
-                        CCColor3B c = color.getColor();
+                        CCColor3B c = color.Color;
 
                         return new CCTintTo (duration, c.R, c.G, c.B);
                     }
@@ -239,7 +275,7 @@ namespace Cocos2D
                     {
                         // Get position type
                         var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                        var type = (CCBPositionType) array[2].GetIntValue();
+                        var type = (PositionType) array[2].GetIntValue();
 
                         // Get relative position
                         var value = (List<CCBValue>) pKeyframe1.Value;
@@ -256,14 +292,14 @@ namespace Cocos2D
                     {
                         // Get position type
                         var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                        var type = (CCBScaleType) array[2].GetIntValue();
+                        var type = (ScaleType) array[2].GetIntValue();
 
                         // Get relative scale
                         var value = (List<CCBValue>) pKeyframe1.Value;
                         float x = value[0].GetFloatValue();
                         float y = value[1].GetFloatValue();
 
-                        if (type == CCBScaleType.MultiplyResolution)
+                        if (type == ScaleType.MultiplyResolution)
                         {
                             float resolutionScale = CCBReader.ResolutionScale;
                             x *= resolutionScale;
@@ -271,6 +307,15 @@ namespace Cocos2D
                         }
 
                         return new CCScaleTo(duration, x, y);
+                    }
+                case "skew":
+                    {
+                        // Get relative skew
+                        var value = (List<CCBValue>)pKeyframe1.Value;
+                        float x = value[0].GetFloatValue();
+                        float y = value[1].GetFloatValue();
+        
+                        return new CCSkewTo(duration, x, y);
                     }
                 default:
                     CCLog.Log("CCBReader: Failed to create animation for property: {0}", pPropName);
@@ -288,7 +333,7 @@ namespace Cocos2D
                 var kf1 = new CCBKeyframe();
                 kf1.Value = pValue;
                 kf1.Time = fTweenDuraion;
-                kf1.EasingType = CCBKeyframeEasing.Linear;
+                kf1.EasingType = EasingType.Linear;
 
                 // Animate
                 CCActionInterval tweenAction = GetAction(null, kf1, pPropName, node);
@@ -302,7 +347,7 @@ namespace Cocos2D
                 {
                     // Get position type
                     var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                    var type = (CCBPositionType) array[2].GetIntValue();
+                    var type = (PositionType) array[2].GetIntValue();
 
                     // Get relative position
                     var value = (List<CCBValue>) pValue;
@@ -315,7 +360,7 @@ namespace Cocos2D
                 {
                     // Get scale type
                     var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                    var type = (CCBScaleType) array[2].GetIntValue();
+                    var type = (ScaleType) array[2].GetIntValue();
 
                     // Get relative scale
                     var value = (List<CCBValue>) pValue;
@@ -323,6 +368,16 @@ namespace Cocos2D
                     float y = value[1].GetFloatValue();
 
                     CCBHelper.SetRelativeScale(node, x, y, type, pPropName);
+                }
+                else if (pPropName == "skew")
+                {
+                    // Get relative scale
+                    var value = (List<CCBValue>)pValue;
+                    float x = value[0].GetFloatValue();
+                    float y = value[1].GetFloatValue();
+
+                    node.SkewX = x;
+                    node.SkewY = y;
                 }
                 else
                 {
@@ -333,6 +388,16 @@ namespace Cocos2D
                     {
                         float rotate = ((CCBValue) pValue).GetFloatValue();
                         node.Rotation = rotate;
+                    }
+                    else if (pPropName == "rotationX")
+                    {
+                        float rotate = ((CCBValue)pValue).GetFloatValue();
+                        node.RotationX = rotate;
+                    }
+                    else if (pPropName == "rotationY")
+                    {
+                        float rotate = ((CCBValue)pValue).GetFloatValue();
+                        node.RotationY = rotate;
                     }
                     else if (pPropName == "opacity")
                     {
@@ -346,7 +411,12 @@ namespace Cocos2D
                     else if (pPropName == "color")
                     {
                         var color = (CCColor3BWapper) pValue;
-                        ((CCSprite) node).Color = color.getColor();
+                        ((ICCRGBAProtocol) node).Color = color.Color;
+                    }
+                    else if (pPropName == "visible")
+                    {
+                        bool visible = ((CCBValue)pValue).GetBoolValue();
+                        node.Visible = visible;
                     }
                     else
                     {
@@ -376,41 +446,165 @@ namespace Cocos2D
             }
         }
 
-        private CCActionInterval GetEaseAction(CCActionInterval pAction, CCBKeyframeEasing nEasingType, float fEasingOpt)
+        private CCActionInterval GetEaseAction(CCActionInterval pAction, EasingType nEasingTypeType, float fEasingOpt)
         {
-            switch (nEasingType)
+            if (pAction is CCSequence)
             {
-                case CCBKeyframeEasing.Instant:
-                case CCBKeyframeEasing.Linear:
+                return pAction;
+            }
+
+            switch (nEasingTypeType)
+            {
+                case EasingType.Linear:
                     return pAction;
-                case CCBKeyframeEasing.CubicIn:
+                case EasingType.Instant:
+                    return new CCBEaseInstant(pAction);
+                case EasingType.CubicIn:
                     return new CCEaseIn(pAction, fEasingOpt);
-                case CCBKeyframeEasing.CubicOut:
+                case EasingType.CubicOut:
                     return new CCEaseOut(pAction, fEasingOpt);
-                case CCBKeyframeEasing.CubicInOut:
+                case EasingType.CubicInOut:
                     return new CCEaseInOut(pAction, fEasingOpt);
-                case CCBKeyframeEasing.BackIn:
+                case EasingType.BackIn:
                     return new CCEaseBackIn(pAction);
-                case CCBKeyframeEasing.BackOut:
+                case EasingType.BackOut:
                     return new CCEaseBackOut(pAction);
-                case CCBKeyframeEasing.BackInOut:
+                case EasingType.BackInOut:
                     return new CCEaseBackInOut(pAction);
-                case CCBKeyframeEasing.BounceIn:
+                case EasingType.BounceIn:
                     return new CCEaseBounceIn(pAction);
-                case CCBKeyframeEasing.BounceOut:
+                case EasingType.BounceOut:
                     return new CCEaseBounceOut(pAction);
-                case CCBKeyframeEasing.BounceInOut:
+                case EasingType.BounceInOut:
                     return new CCEaseBounceInOut(pAction);
-                case CCBKeyframeEasing.ElasticIn:
+                case EasingType.ElasticIn:
                     return new CCEaseElasticIn(pAction, fEasingOpt);
-                case CCBKeyframeEasing.ElasticOut:
+                case EasingType.ElasticOut:
                     return new CCEaseElasticOut(pAction, fEasingOpt);
-                case CCBKeyframeEasing.ElasticInOut:
+                case EasingType.ElasticInOut:
                     return new CCEaseElasticInOut(pAction, fEasingOpt);
                 default:
-                    CCLog.Log("CCBReader: Unkown easing type {0}", nEasingType);
+                    CCLog.Log("CCBReader: Unkown easing type {0}", nEasingTypeType);
                     return pAction;
             }
+        }
+
+        public Object ActionForCallbackChannel(CCBSequenceProperty channel)
+        {
+            float lastKeyframeTime = 0;
+
+            var actions = new List<CCFiniteTimeAction>();
+            var keyframes = channel.Keyframes;
+            int numKeyframes = keyframes.Count;
+
+            for (int i = 0; i < numKeyframes; ++i)
+            {
+
+                CCBKeyframe keyframe = keyframes[i];
+                float timeSinceLastKeyframe = keyframe.Time - lastKeyframeTime;
+                lastKeyframeTime = keyframe.Time;
+                if (timeSinceLastKeyframe > 0)
+                {
+                    actions.Add(new CCDelayTime(timeSinceLastKeyframe));
+                }
+
+                var keyVal = (List<CCBValue>)keyframe.Value;
+                string selectorName = keyVal[0].GetStringValue();
+                TargetType selectorTarget =
+                    (TargetType) int.Parse(keyVal[1].GetStringValue());
+
+                if (_jsControlled)
+                {
+                    string callbackName = string.Format("{0}:{1}", selectorTarget, selectorName);
+                    CCCallFunc callback = (CCCallFunc) _keyframeCallFuncs[callbackName].Copy();
+
+                    if (callback != null)
+                    {
+                        actions.Add(callback);
+                    }
+                }
+                else
+                {
+                    Object target = null;
+
+                    if (selectorTarget == TargetType.DocumentRoot)
+                        target = _rootNode;
+                    else if (selectorTarget == TargetType.Owner)
+                        target = _owner;
+
+                    if (target != null)
+                    {
+                        if (selectorName.Length > 0)
+                        {
+                            Action<CCNode> selCallFunc = null;
+
+                            ICCBSelectorResolver targetAsCCBSelectorResolver = target as ICCBSelectorResolver;
+
+                            if (targetAsCCBSelectorResolver != null)
+                            {
+                                selCallFunc = targetAsCCBSelectorResolver.OnResolveCCBCCCallFuncSelector(target,
+                                                                                                          selectorName);
+                            }
+
+                            if (selCallFunc == null)
+                            {
+                                CCLog.Log("Skipping selector {0} since no CCBSelectorResolver is present.",
+                                      selectorName);
+                            }
+                            else
+                            {
+                                CCCallFuncN callback = new CCCallFuncN(selCallFunc);
+                                actions.Add(callback);
+                            }
+                        }
+                        else
+                        {
+                            CCLog.Log("Unexpected empty selector.");
+                        }
+                    }
+                }
+            }
+            if (actions.Capacity < 1) return null;
+
+            return new CCSequence(actions.ToArray());
+        }
+
+        public Object ActionForSoundChannel(CCBSequenceProperty channel)
+        {
+            float lastKeyframeTime = 0;
+
+            var actions = new List<CCFiniteTimeAction>();
+            var keyframes = channel.Keyframes;
+            int numKeyframes = keyframes.Count;
+
+            for (int i = 0; i < numKeyframes; ++i)
+            {
+
+                CCBKeyframe keyframe = keyframes[i];
+                float timeSinceLastKeyframe = keyframe.Time - lastKeyframeTime;
+                lastKeyframeTime = keyframe.Time;
+                if (timeSinceLastKeyframe > 0)
+                {
+                    actions.Add(new CCDelayTime(timeSinceLastKeyframe));
+                }
+
+                var keyVal =  (List<CCBValue>)keyframe.Value;
+                string soundFile = keyVal[0].GetStringValue();
+
+                float pitch, pan, gain;
+
+                pitch = float.Parse(keyVal[1].GetStringValue());
+
+                pan = float.Parse(keyVal[2].GetStringValue());
+
+                gain = float.Parse(keyVal[3].GetStringValue());
+
+                actions.Add(CCBSoundEffect.ActionWithSoundFile(soundFile, pitch, pan, gain));
+            }
+
+            if (actions.Count < 1) return null;
+
+            return new CCSequence(actions.ToArray());
         }
 
         private void RunAction(CCNode node, CCBSequenceProperty pSeqProp, float fTweenDuration)
@@ -458,15 +652,151 @@ namespace Cocos2D
             }
         }
 
-        private void SequenceCompleted()
+        public void RunAnimations(string pName, float fTweenDuration)
         {
-            if (mDelegate != null)
+            RunAnimationsForSequenceNamedTweenDuration(pName, fTweenDuration);
+        }
+
+        public void RunAnimations(string pName)
+        {
+            RunAnimationsForSequenceNamed(pName);
+        }
+
+        public void RunAnimations(int nSeqId, float fTweenDuraiton)
+        {
+            RunAnimationsForSequenceIdTweenDuration(nSeqId, fTweenDuraiton);
+        }
+
+        public void RunAnimationsForSequenceIdTweenDuration(int nSeqId, float fTweenDuration)
+        {
+            Debug.Assert(nSeqId != -1, "Sequence id couldn't be found");
+
+            _rootNode.StopAllActions();
+
+            foreach (var pElement in _nodeSequences)
             {
-                mDelegate(mRunningSequence.Name);
+                CCNode node = pElement.Key;
+                node.StopAllActions();
+
+                // Refer to CCBReader::readKeyframe() for the real type of value
+                Dictionary<int, Dictionary<string, CCBSequenceProperty>> seqs = pElement.Value;
+
+                var seqNodePropNames = new List<string>();
+
+                Dictionary<string, CCBSequenceProperty> seqNodeProps;
+                if (seqs.TryGetValue(nSeqId, out seqNodeProps))
+                {
+                    // Reset nodes that have sequence node properties, and run actions on them
+                    foreach (var pElement1 in seqNodeProps)
+                    {
+                        string propName = pElement1.Key;
+                        CCBSequenceProperty seqProp = pElement1.Value;
+                        seqNodePropNames.Add(propName);
+
+                        SetFirstFrame(node, seqProp, fTweenDuration);
+                        RunAction(node, seqProp, fTweenDuration);
+                    }
+                }
+
+                // Reset the nodes that may have been changed by other timelines
+                Dictionary<string, object> nodeBaseValues;
+                if (_baseValues.TryGetValue(node, out nodeBaseValues))
+                {
+                    foreach (var pElement2 in nodeBaseValues)
+                    {
+                        if (!seqNodePropNames.Contains(pElement2.Key))
+                        {
+                            object value = pElement2.Value;
+
+                            if (value != null)
+                            {
+                                SetAnimatedProperty(pElement2.Key, node, value, fTweenDuration);
+                            }
+                        }
+                    }
+                }
             }
 
-            int nextSeqId = mRunningSequence.ChainedSequenceId;
-            mRunningSequence = null;
+            // Make callback at end of sequence
+            CCBSequence seq = GetSequence(nSeqId);
+            CCAction completeAction = new CCSequence (
+                new CCDelayTime (seq.Duration + fTweenDuration),
+                new CCCallFunc(SequenceCompleted)
+                );
+
+            _rootNode.RunAction(completeAction);
+
+            // Set the running scene
+
+            if (seq.CallBackChannel != null)
+            {
+                CCAction action = (CCAction) ActionForCallbackChannel(seq.CallBackChannel);
+                if (action != null)
+                {
+                    _rootNode.RunAction(action);
+                }
+            }
+
+            if (seq.SoundChannel != null)
+            {
+                CCAction action = (CCAction) ActionForSoundChannel(seq.SoundChannel);
+                if (action != null)
+                {
+                    _rootNode.RunAction(action);
+                }
+            }
+
+            _runningSequence = GetSequence(nSeqId);
+        }
+
+        public void RunAnimationsForSequenceNamedTweenDuration(string pName, float fTweenDuration)
+        {
+            int seqId = GetSequenceId(pName);
+            RunAnimationsForSequenceIdTweenDuration(seqId, fTweenDuration);
+        }
+
+        public void RunAnimationsForSequenceNamed(string pName)
+        {
+            RunAnimationsForSequenceNamedTweenDuration(pName, 0);
+        }
+
+        public void SetAnimationCompletedCallback(Action callbackFunc)
+        {
+            _animationCompleteCallbackFunc = callbackFunc;
+        }
+
+        // Commented out for now as it does not seem to be used
+        //public void Debug()
+        //{
+        //}
+
+        public void SetCallFunc(CCAction callFunc, string callbackNamed)
+        {
+            _keyframeCallFuncs.Add(callbackNamed, callFunc);
+        }
+        
+        private void SequenceCompleted()
+        {
+
+            string runningSequenceName = _runningSequence.Name;
+            int nextSeqId = _runningSequence.ChainedSequenceId;
+            _runningSequence = null;
+
+            if (_lastCompletedSequenceName != runningSequenceName)
+            {
+                _lastCompletedSequenceName = runningSequenceName;
+            }
+
+            if (_delegate != null)
+            {
+                _delegate(_runningSequence.Name);
+            }
+
+            if (_animationCompleteCallbackFunc != null)
+            {
+                _animationCompleteCallbackFunc();
+            }
+
 
             if (nextSeqId != -1)
             {
@@ -475,15 +805,16 @@ namespace Cocos2D
         }
     }
 
-    internal class CCBSetSpriteFrame : CCActionInstant
+    public class CCBSetSpriteFrame : CCActionInstant
     {
-        private CCSpriteFrame mSpriteFrame;
+        private CCSpriteFrame _spriteFrame;
 
         /** creates a Place action with a position */
 
         public CCBSetSpriteFrame()
         {
         }
+
         public CCBSetSpriteFrame(CCSpriteFrame pSpriteFrame)
         {
             InitWithSpriteFrame(pSpriteFrame);
@@ -491,13 +822,13 @@ namespace Cocos2D
 
         protected virtual bool InitWithSpriteFrame(CCSpriteFrame pSpriteFrame)
         {
-            mSpriteFrame = pSpriteFrame;
+            _spriteFrame = pSpriteFrame;
             return true;
         }
 
         public override void Update(float time)
         {
-            ((CCSprite) m_pTarget).DisplayFrame = mSpriteFrame;
+            ((CCSprite) m_pTarget).DisplayFrame = _spriteFrame;
         }
 
         public override object Copy(ICCCopyable pZone)
@@ -514,17 +845,74 @@ namespace Cocos2D
                 pZone =  (pRet);
             }
 
-            pRet.InitWithSpriteFrame(mSpriteFrame);
+            pRet.InitWithSpriteFrame(_spriteFrame);
             base.Copy(pZone);
             return pRet;
         }
+
+        public override CCFiniteTimeAction Reverse()
+        {
+            return (CCFiniteTimeAction) this.Copy();
+        }
     }
 
-    internal class CCBRotateTo : CCActionInterval
+    public class CCBSoundEffect : CCActionInstant
     {
-        private float mDiffAngle;
-        private float mDstAngle;
-        private float mStartAngle;
+        public static CCBSoundEffect ActionWithSoundFile(string file, float pitch, float pan, float gain)
+        {
+            CCBSoundEffect pRet = new CCBSoundEffect();
+            pRet.InitWithSoundFile(file, pitch, pan, gain);
+            return pRet;
+        }
+
+        public bool InitWithSoundFile(string file, float pitch, float pan, float gain)
+        {
+            _soundFile = file;
+            _pitch = pitch;
+            _pan = pan;
+            _gain = gain;
+            return true;
+        }
+
+        // Overrides
+        public override void Update(float time)
+        {
+            CCSimpleAudioEngine.SharedEngine.PlayEffect(_soundFile);
+        }
+
+        public override object Copy(ICCCopyable pZone)
+        {
+            CCBSoundEffect pRet;
+
+            if (pZone != null)
+            {
+                pRet = (CCBSoundEffect)(pZone);
+            }
+            else
+            {
+                pRet = new CCBSoundEffect();
+                pZone = (pRet);
+            }
+
+            pRet.InitWithSoundFile(_soundFile, _pitch, _pan, _gain);
+            base.Copy(pZone);
+            return pRet;
+        }
+
+        public override CCFiniteTimeAction Reverse()
+        {
+            return (CCFiniteTimeAction) this.Copy();
+        }
+
+        private string _soundFile;
+        private float _pitch, _pan, _gain;
+    }
+
+    public class CCBRotateTo : CCActionInterval
+    {
+        private float _diffAngle;
+        private float _dstAngle;
+        private float _startAngle;
 
         public CCBRotateTo()
         {
@@ -539,7 +927,7 @@ namespace Cocos2D
         {
             if (base.InitWithDuration(fDuration))
             {
-                mDstAngle = fAngle;
+                _dstAngle = fAngle;
 
                 return true;
             }
@@ -548,7 +936,7 @@ namespace Cocos2D
 
         public override void Update(float time)
         {
-            m_pTarget.Rotation = mStartAngle + (mDiffAngle * time);
+            m_pTarget.Rotation = _startAngle + (_diffAngle * time);
         }
 
         public override object Copy(ICCCopyable pZone)
@@ -565,16 +953,207 @@ namespace Cocos2D
                 pZone =  (pRet);
             }
 
-            pRet.InitWithDuration(m_fDuration, mDstAngle);
+            pRet.InitWithDuration(m_fDuration, _dstAngle);
             base.Copy(pZone);
             return pRet;
+        }
+
+        public override CCFiniteTimeAction Reverse()
+        {
+            Debug.Assert(false, "reverse() is not supported in CCBRotateTo");
+            return null;
         }
 
         protected internal override void StartWithTarget(CCNode node)
         {
             base.StartWithTarget(node);
-            mStartAngle = m_pTarget.Rotation;
-            mDiffAngle = mDstAngle - mStartAngle;
+            _startAngle = m_pTarget.Rotation;
+            _diffAngle = _dstAngle - _startAngle;
         }
     }
+
+    public class CCBRotateXTo : CCActionInterval
+    {
+        public CCBRotateXTo()
+        {
+        }
+
+        public CCBRotateXTo(float fDuration, float fAngle)
+        {
+            InitWithDuration(fDuration, fAngle);
+        }
+
+        public bool InitWithDuration(float fDuration, float fAngle)
+        {
+            if (InitWithDuration(fDuration))
+            {
+                _dstAngle = fAngle;
+        
+                return true;
+            }
+                return false;
+        }
+
+        // Overrides
+        protected internal override void StartWithTarget(CCNode target)
+        {
+            m_pOriginalTarget = target;
+            m_pTarget = target;
+            m_elapsed = 0.0f;
+            m_bFirstTick = true;
+            _startAngle = m_pTarget.RotationX;
+            _diffAngle = _dstAngle - _startAngle;
+        }
+
+        public override object Copy(ICCCopyable pZone)
+        {
+            CCBRotateXTo pRet;
+
+            if (pZone != null)
+            {
+                pRet = (CCBRotateXTo)(pZone);
+            }
+            else
+            {
+                pRet = new CCBRotateXTo();
+                pZone = (pRet);
+            }
+
+            pRet.InitWithDuration(m_fDuration, _dstAngle);
+            base.Copy(pZone);
+            return pRet;
+        }
+
+        public override CCFiniteTimeAction Reverse()
+        {
+            Debug.Assert(false, "reverse() is not supported in CCBRotateXTo");
+            return null;
+        }
+
+        public override void Update(float time)
+        {
+            m_pTarget.RotationX = _startAngle + (_diffAngle * time);
+        }
+
+        private float _startAngle;
+        private float _dstAngle;
+        private float _diffAngle;
+    }
+
+    public class CCBRotateYTo : CCActionInterval
+    {
+        public CCBRotateYTo()
+        {
+        }
+
+        public CCBRotateYTo(float fDuration, float fAngle)
+        {
+            InitWithDuration(fDuration, fAngle);
+        }
+
+        public bool InitWithDuration(float fDuration, float fAngle)
+        {
+            if (InitWithDuration(fDuration))
+            {
+                _dstAngle = fAngle;
+
+                return true;
+            }
+            return false;
+        }
+
+        // Overrides
+        protected internal override void StartWithTarget(CCNode target)
+        {
+            m_pOriginalTarget = target;
+            m_pTarget = target;
+            m_elapsed = 0.0f;
+            m_bFirstTick = true;
+            _startAngle = m_pTarget.RotationY;
+            _diffAngle = _dstAngle - _startAngle;
+        }
+
+        public override object Copy(ICCCopyable pZone)
+        {
+            CCBRotateYTo pRet;
+
+            if (pZone != null)
+            {
+                pRet = (CCBRotateYTo)(pZone);
+            }
+            else
+            {
+                pRet = new CCBRotateYTo();
+                pZone = (pRet);
+            }
+
+            pRet.InitWithDuration(m_fDuration, _dstAngle);
+            base.Copy(pZone);
+            return pRet;
+        }
+
+        public override CCFiniteTimeAction Reverse()
+        {
+            Debug.Assert(false, "reverse() is not supported in CCBRotateYTo");
+            return null;
+        }
+
+        public override void Update(float time)
+        {
+            m_pTarget.RotationY = _startAngle + (_diffAngle * time);
+        }
+
+        private float _startAngle;
+        private float _dstAngle;
+        private float _diffAngle;
+    }
+
+    class CCBEaseInstant : CCActionEase
+    {
+        public CCBEaseInstant()
+        {
+        }
+
+        public CCBEaseInstant(CCActionInterval pAction)
+        {
+            InitWithAction(pAction);
+        }
+
+        public override object Copy(ICCCopyable pZone)
+        {
+            CCBEaseInstant pRet;
+
+            if (pZone != null)
+            {
+                pRet = (CCBEaseInstant)(pZone);
+            }
+            else
+            {
+                pRet = new CCBEaseInstant();
+                pZone = (pRet);
+            }
+
+            pRet.InitWithAction(m_pInner);
+            base.Copy(pZone);
+            return pRet;
+        }
+
+        public override CCFiniteTimeAction Reverse()
+        {
+ 	         return new CCBEaseInstant((CCActionInterval)m_pInner.Reverse());
+        }
+
+        public override void Update(float time)
+        {
+            if (time < 0)
+            {
+                m_pInner.Update(0);
+            }
+            else
+            {
+                m_pInner.Update(1);
+            }
+        }
+    }
+
 }

@@ -1,11 +1,18 @@
+using System;
 using Cocos2D;
+using Cocos2D.CCBReader;
 
 namespace tests.Extensions
 {
     public class HelloCocosBuilderLayer : BaseLayer
     {
-        public CCSprite mBurstSprite;
         public CCLabelTTF mTestTitleLabelTTF;
+        public CCSprite mBurstSprite;
+
+        public int mCustomPropertyInt;
+        public float mCustomPropertyFloat;
+        public bool mCustomPropertyBoolean;
+        public string mCustomPropertyString;
 
         public override void OnNodeLoaded(CCNode node, CCNodeLoader nodeLoader)
         {
@@ -84,8 +91,8 @@ namespace tests.Extensions
             // the owner will cause lblTestTitle to be set by the CCBReader.
             // lblTestTitle is in the TestHeader.ccbi, which is referenced
             // from each of the test scenes.
-            CCNode animationsTest = ccbReader.ReadNodeGraphFromFile("ccb/ccb/TestAnimations.ccbi", this, ref actionManager);
-            ((AnimationsTestLayer) animationsTest).setAnimationManager(actionManager);
+            CCNode animationsTest = ccbReader.ReadNodeGraphFromFile("ccb/ccb/TestAnimations.ccbi", this);
+            ((AnimationsTestLayer) animationsTest).setAnimationManager(ccbReader.AnimationManager);
 
             mTestTitleLabelTTF.Text = ("TestAnimations.ccbi");
 
@@ -109,6 +116,11 @@ namespace tests.Extensions
         public void onScrollViewTestClicked(object pSender, CCControlEvent pCCControlEvent)
         {
             openTest("ccb/ccb/TestScrollViews.ccbi", "TestScrollViewsLayer", new Loader<ScrollViewTestLayer>());
+        }
+
+        public void onTimelineCallbackSoundClicked(object pSender, CCControlEvent pCCControlEvent)
+        {
+            openTest("ccb/ccb/TestTimelineCallback.ccbi", "TimelineCallbackTestLayer", new Loader<TimelineCallbackTestLayer>());
         }
     }
 }

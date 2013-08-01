@@ -389,7 +389,15 @@ namespace Cocos2D
                 if (value > m_uAllocatedParticles)
                 {
                     m_pParticles = new CCParticle[value];
-                    m_pQuads.Capacity = value;
+
+                    if (m_pQuads == null)
+                    {
+                        m_pQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(value); 
+                    }
+                    else
+                    {
+                        m_pQuads.Capacity = value;
+                    }
 
                     m_uTotalParticles = value;
 
