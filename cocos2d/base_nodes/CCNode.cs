@@ -1516,7 +1516,7 @@ namespace Cocos2D
             }
         }
 
-        public int TouchPriority
+        public virtual int TouchPriority
         {
             get { return m_nTouchPriority; }
             set
@@ -1534,7 +1534,7 @@ namespace Cocos2D
             }
         }
 
-        public bool KeypadEnabled
+        public virtual bool KeypadEnabled
         {
             get { return m_bKeypadEnabled; }
             set
@@ -1557,7 +1557,7 @@ namespace Cocos2D
                 }
             }
         }
-        public bool GamePadEnabled
+        public virtual bool GamePadEnabled
         {
             get { return (m_bGamePadEnabled); }
             set

@@ -191,7 +191,7 @@ namespace Cocos2D
             CheckTouchState();
         }
 
-        public bool TouchBegan(CCTouch pTouch)
+        public override bool TouchBegan(CCTouch pTouch)
         {
             var pos = ConvertTouchToNodeSpace(pTouch);
             if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
@@ -201,12 +201,12 @@ namespace Cocos2D
             return false;
         }
 
-        public void TouchMoved(CCTouch pTouch)
+        public override void TouchMoved(CCTouch pTouch)
         {
             //nothing
         }
 
-        public void TouchEnded(CCTouch pTouch)
+        public override void TouchEnded(CCTouch pTouch)
         {
             var pos = ConvertTouchToNodeSpace(pTouch);
             if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
@@ -215,7 +215,7 @@ namespace Cocos2D
             }
         }
 
-        public void TouchCancelled(CCTouch pTouch)
+        public override void TouchCancelled(CCTouch pTouch)
         {
             //nothing
         }

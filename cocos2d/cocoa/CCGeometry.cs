@@ -36,15 +36,15 @@ namespace Cocos2D
     {
         public static readonly CCPoint Zero = new CCPoint(0, 0);
 
-		public static readonly CCPoint AnchorMiddle = new CCPoint(0.5f, 0.5f);
-		public static readonly CCPoint AnchorLowerLeft = new CCPoint(0f, 0f);
-		public static readonly CCPoint AnchorUpperLeft = new CCPoint(0f, 1f);
-		public static readonly CCPoint AnchorLowerRight = new CCPoint(1f, 0f);
-		public static readonly CCPoint AnchorUpperRight = new CCPoint(1f, 1f);
-		public static readonly CCPoint AnchorMiddleRight = new CCPoint(1f, .5f);
-		public static readonly CCPoint AnchorMiddleLeft = new CCPoint(0f, .5f);
-		public static readonly CCPoint AnchorMiddleTop = new CCPoint(.5f, 1f);
-		public static readonly CCPoint AnchorMiddleBottom = new CCPoint(.5f, 0f);
+        public static readonly CCPoint AnchorMiddle = new CCPoint(0.5f, 0.5f);
+        public static readonly CCPoint AnchorLowerLeft = new CCPoint(0f, 0f);
+        public static readonly CCPoint AnchorUpperLeft = new CCPoint(0f, 1f);
+        public static readonly CCPoint AnchorLowerRight = new CCPoint(1f, 0f);
+        public static readonly CCPoint AnchorUpperRight = new CCPoint(1f, 1f);
+        public static readonly CCPoint AnchorMiddleRight = new CCPoint(1f, .5f);
+        public static readonly CCPoint AnchorMiddleLeft = new CCPoint(0f, .5f);
+        public static readonly CCPoint AnchorMiddleTop = new CCPoint(.5f, 1f);
+        public static readonly CCPoint AnchorMiddleBottom = new CCPoint(.5f, 0f);
 
         public float X;
         public float Y;

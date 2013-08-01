@@ -124,7 +124,7 @@ namespace Cocos2D
             base.OnExit();
         }
 
-        public virtual void RegisterWithTouchDispatcher()
+        public override void RegisterWithTouchDispatcher()
         {
             CCTouchDispatcher pDispatcher = CCDirector.SharedDirector.TouchDispatcher;
 
@@ -179,7 +179,7 @@ namespace Cocos2D
                 }
             }
         }
-        public virtual bool TouchEnabled
+        public override bool TouchEnabled
         {
             get { return m_bIsMultiTouchEnabled; }
             set
@@ -232,7 +232,7 @@ namespace Cocos2D
             }
         }
 
-        public bool KeypadEnabled
+        public override bool KeypadEnabled
         {
             get { return m_bKeypadEnabled; }
             set
@@ -255,7 +255,7 @@ namespace Cocos2D
                 }
             }
         }
-        public bool GamePadEnabled
+        public override bool GamePadEnabled
         {
             get { return (m_bGamePadEnabled); }
             set
@@ -275,19 +275,19 @@ namespace Cocos2D
 
         #region ICCStandardTouchDelegate Members
 
-        public virtual void TouchesBegan(List<CCTouch> touches)
+        public override void TouchesBegan(List<CCTouch> touches)
         {
         }
 
-        public virtual void TouchesMoved(List<CCTouch> touches)
+        public override void TouchesMoved(List<CCTouch> touches)
         {
         }
 
-        public virtual void TouchesEnded(List<CCTouch> touches)
+        public override void TouchesEnded(List<CCTouch> touches)
         {
         }
 
-        public virtual void TouchesCancelled(List<CCTouch> touches)
+        public override void TouchesCancelled(List<CCTouch> touches)
         {
         }
 
@@ -295,20 +295,20 @@ namespace Cocos2D
 
         #region ICCTargetedTouchDelegate Members
 
-        public virtual bool TouchBegan(CCTouch touch)
+        public override bool TouchBegan(CCTouch touch)
         {
             return true;
         }
 
-        public virtual void TouchMoved(CCTouch touch)
+        public override void TouchMoved(CCTouch touch)
         {
         }
 
-        public virtual void TouchEnded(CCTouch touch)
+        public override void TouchEnded(CCTouch touch)
         {
         }
 
-        public virtual void TouchCancelled(CCTouch touch)
+        public override void TouchCancelled(CCTouch touch)
         {
         }
 
@@ -320,11 +320,11 @@ namespace Cocos2D
         {
         }
 
-        public virtual void KeyBackClicked()
+        public override void KeyBackClicked()
         {
         }
 
-        public virtual void KeyMenuClicked()
+        public override void KeyMenuClicked()
         {
         }
 
@@ -335,15 +335,15 @@ namespace Cocos2D
         private CCGamePadStickUpdateDelegate m_OnGamePadStickUpdateDelegate;
         private CCGamePadTriggerDelegate m_OnGamePadTriggerUpdateDelegate;
 
-        protected virtual void OnGamePadTriggerUpdate(float leftTriggerStrength, float rightTriggerStrength, Microsoft.Xna.Framework.PlayerIndex player)
+        protected override void OnGamePadTriggerUpdate(float leftTriggerStrength, float rightTriggerStrength, Microsoft.Xna.Framework.PlayerIndex player)
         {
         }
 
-        protected virtual void OnGamePadStickUpdate(CCGameStickStatus leftStick, CCGameStickStatus rightStick, Microsoft.Xna.Framework.PlayerIndex player)
+        protected override void OnGamePadStickUpdate(CCGameStickStatus leftStick, CCGameStickStatus rightStick, Microsoft.Xna.Framework.PlayerIndex player)
         {
         }
 
-        protected virtual void OnGamePadDPadUpdate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player)
+        protected override void OnGamePadDPadUpdate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player)
         {
             if (!HasFocus)
             {
@@ -351,11 +351,11 @@ namespace Cocos2D
             }
         }
 
-        protected virtual void OnGamePadConnectionUpdate(Microsoft.Xna.Framework.PlayerIndex player, bool IsConnected)
+        protected override void OnGamePadConnectionUpdate(Microsoft.Xna.Framework.PlayerIndex player, bool IsConnected)
         {
         }
 
-        protected virtual void OnGamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player)
+        protected override void OnGamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player)
         {
         }
         #endregion
