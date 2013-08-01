@@ -542,6 +542,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlColourPickerTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlPotentiometerTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlStepperTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteSceneManager.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\TimelineCallbackTestLayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
