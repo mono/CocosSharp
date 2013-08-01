@@ -1,4 +1,5 @@
 ﻿using Cocos2D;
+using Cocos2D.CCBReader;
 
 namespace tests.Extensions
 {
@@ -25,11 +26,6 @@ namespace tests.Extensions
 
             /* Read a ccbi file. */
             CCNode node = ccbReader.ReadNodeGraphFromFile("ccb/HelloCocosBuilder.ccbi", this);
-
-            foreach (CCNode c in node.Children)
-            {
-                CCLog.Log("Node is at {0},{1}", c.PositionX, c.PositionY);
-            }
 
             if (node != null)
             {
