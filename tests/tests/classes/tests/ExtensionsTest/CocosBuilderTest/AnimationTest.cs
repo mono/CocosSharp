@@ -1,4 +1,5 @@
 ﻿using Cocos2D;
+using Cocos2D.CCBReader;
 
 namespace tests.Extensions
 {
@@ -13,22 +14,22 @@ namespace tests.Extensions
 
         public void onCCControlButtonIdleClicked(object pSender, CCControlEvent pCCControlEvent)
         {
-            mAnimationManager.RunAnimations("Idle", 0.3f);
+            mAnimationManager.RunAnimationsForSequenceNamedTweenDuration("Idle", 0.3f);
         }
 
         public void onCCControlButtonWaveClicked(object pSender, CCControlEvent pCCControlEvent)
         {
-            mAnimationManager.RunAnimations("Wave", 0.3f);
+            mAnimationManager.RunAnimationsForSequenceNamedTweenDuration("Wave", 0.3f);
         }
 
         public void onCCControlButtonJumpClicked(object pSender, CCControlEvent pCCControlEvent)
         {
-            mAnimationManager.RunAnimations("Jump", 0.3f);
+            mAnimationManager.RunAnimationsForSequenceNamedTweenDuration("Jump", 0.3f);
         }
 
         public void onCCControlButtonFunkyClicked(object pSender, CCControlEvent pCCControlEvent)
         {
-            mAnimationManager.RunAnimations("Funky", 0.3f);
+            mAnimationManager.RunAnimationsForSequenceNamedTweenDuration("Funky", 0.3f);
         }
     }
 }

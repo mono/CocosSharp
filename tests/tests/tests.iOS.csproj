@@ -318,7 +318,12 @@
     <Compile Include="classes\tests\Box2DTestBet\Tests\WebTest.cs" />
     <Compile Include="classes\tests\Box2DTestBet\Tests\YuPengPolygonTest.cs" />
     <Compile Include="classes\tests\Box2DTest\Box2DTest.cs" />
-    <Compile Include="classes\tests\BugsTest\Bug-458\Bug-458.cs">
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlColourPickerTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlPotentiometerTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlStepperTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteSceneManager.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteTest.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\TimelineCallbackTestLayer.cs" />    <Compile Include="classes\tests\BugsTest\Bug-458\Bug-458.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\tests\BugsTest\Bug-458\QuestionContainerSprite.cs">

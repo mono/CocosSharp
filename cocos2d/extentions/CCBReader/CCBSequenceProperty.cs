@@ -1,11 +1,40 @@
 using System.Collections.Generic;
 
-namespace Cocos2D
+namespace Cocos2D.CCBReader
 {
     public class CCBSequenceProperty 
     {
-        public string Name;
-        public CCBPropType Type { get; set; }
-        public readonly List<CCBKeyframe> Keyframes = new List<CCBKeyframe>();
+        public CCBSequenceProperty()
+        {
+            _name = "";
+            Init();
+        }
+
+        private bool Init()
+        {
+            _keyframes = new List<CCBKeyframe>();
+            return true;
+        }
+
+        private string _name;
+        private PropertyType _type;
+        private List<CCBKeyframe> _keyframes;
+
+        public PropertyType Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        public List<CCBKeyframe> Keyframes
+        {
+            get { return _keyframes; }
+        }
     }
 }

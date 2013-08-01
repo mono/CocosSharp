@@ -1012,6 +1012,8 @@
     <Compile Include=".\sprite_nodes\CCSpriteFrameCache.cs">
       <LogicalName>sprite_nodes\CCSpriteFrameCache</LogicalName>
     </Compile>
+    <Compile Include="sprite_nodes\CCSpriteSheet.cs" />
+    <Compile Include="sprite_nodes\CCSpriteSheetCache.cs" />
     <Compile Include=".\support\CCUserDefault.cs">
       <LogicalName>support\CCUserDefault</LogicalName>
     </Compile>
@@ -1174,6 +1176,11 @@
     <Compile Include="predefine\ICCSelectorProtocol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="actions\action_instants\CCRemoveSelf.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlColourPicker.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlHuePicker.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlPotentiometer.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlSaturationPicker.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlStepper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.Windows8.csproj">

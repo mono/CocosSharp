@@ -33,32 +33,32 @@ namespace Cocos2D
     public class CCControlSlider : CCControl
     {
         //maunally put in the setters
-        private CCSprite m_backgroundSprite;
-        private float m_maximumAllowedValue;
-        private float m_maximumValue;
-        private float m_minimumAllowedValue;
-        private float m_minimumValue;
-        private CCSprite m_progressSprite;
-        private CCSprite m_thumbSprite;
-        private float m_value;
+        private CCSprite _backgroundSprite;
+        private float _maximumAllowedValue;
+        private float _maximumValue;
+        private float _minimumAllowedValue;
+        private float _minimumValue;
+        private CCSprite _progressSprite;
+        private CCSprite _thumbSprite;
+        private float _value;
 
         public float Value
         {
-            get { return m_value; }
+            get { return _value; }
             set
             {
                 // set new value with sentinel
-                if (value < m_minimumValue)
+                if (value < _minimumValue)
                 {
-                    value = m_minimumValue;
+                    value = _minimumValue;
                 }
 
-                if (value > m_maximumValue)
+                if (value > _maximumValue)
                 {
-                    value = m_maximumValue;
+                    value = _maximumValue;
                 }
 
-                m_value = value;
+                _value = value;
 
                 NeedsLayout();
 
@@ -68,44 +68,44 @@ namespace Cocos2D
 
         public float MinimumAllowedValue
         {
-            get { return m_minimumAllowedValue; }
-            set { m_minimumAllowedValue = value; }
+            get { return _minimumAllowedValue; }
+            set { _minimumAllowedValue = value; }
         }
 
         public float MinimumValue
         {
-            get { return m_minimumValue; }
+            get { return _minimumValue; }
             set
             {
-                m_minimumValue = value;
-                m_minimumAllowedValue = value;
-                if (m_minimumValue >= m_maximumValue)
+                _minimumValue = value;
+                _minimumAllowedValue = value;
+                if (_minimumValue >= _maximumValue)
                 {
-                    m_maximumValue = m_minimumValue + 1.0f;
+                    _maximumValue = _minimumValue + 1.0f;
                 }
 
-                Value = m_value;
+                Value = _value;
             }
         }
 
         public float MaximumAllowedValue
         {
-            get { return m_maximumAllowedValue; }
-            set { m_maximumAllowedValue = value; }
+            get { return _maximumAllowedValue; }
+            set { _maximumAllowedValue = value; }
         }
 
         public float MaximumValue
         {
-            get { return m_maximumValue; }
+            get { return _maximumValue; }
             set
             {
-                m_maximumValue = value;
-                m_maximumAllowedValue = value;
-                if (m_maximumValue <= m_minimumValue)
+                _maximumValue = value;
+                _maximumAllowedValue = value;
+                if (_maximumValue <= _minimumValue)
                 {
-                    m_minimumValue = m_maximumValue - 1.0f;
+                    _minimumValue = _maximumValue - 1.0f;
                 }
-                Value = m_value;
+                Value = _value;
             }
         }
 
@@ -116,20 +116,20 @@ namespace Cocos2D
 
         public CCSprite ThumbSprite
         {
-            get { return m_thumbSprite; }
-            set { m_thumbSprite = value; }
+            get { return _thumbSprite; }
+            set { _thumbSprite = value; }
         }
 
         public CCSprite ProgressSprite
         {
-            get { return m_progressSprite; }
-            set { m_progressSprite = value; }
+            get { return _progressSprite; }
+            set { _progressSprite = value; }
         }
 
         public CCSprite BackgroundSprite
         {
-            get { return m_backgroundSprite; }
-            set { m_backgroundSprite = value; }
+            get { return _backgroundSprite; }
+            set { _backgroundSprite = value; }
         }
 
         public override bool Enabled
@@ -138,9 +138,9 @@ namespace Cocos2D
             set
             {
                 base.Enabled = value;
-                if (m_thumbSprite != null)
+                if (_thumbSprite != null)
                 {
-                    m_thumbSprite.Opacity = (byte) (value ? 255 : 128);
+                    _thumbSprite.Opacity = (byte) (value ? 255 : 128);
                 }
             }
         }
@@ -175,24 +175,24 @@ namespace Cocos2D
 
                 //setContentSize(CCSizeMake(backgroundSprite->getContentSize().width, thumbItem->getContentSize().height));
                 // Add the slider background
-                m_backgroundSprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-                m_backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
-                AddChild(m_backgroundSprite);
+                _backgroundSprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
+                _backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
+                AddChild(_backgroundSprite);
 
                 // Add the progress bar
-                m_progressSprite.AnchorPoint = new CCPoint(0.0f, 0.5f);
-                m_progressSprite.Position = new CCPoint(0.0f, ContentSize.Height / 2);
-                AddChild(m_progressSprite);
+                _progressSprite.AnchorPoint = new CCPoint(0.0f, 0.5f);
+                _progressSprite.Position = new CCPoint(0.0f, ContentSize.Height / 2);
+                AddChild(_progressSprite);
 
                 // Add the slider thumb  
-                m_thumbSprite.Position = new CCPoint(0, ContentSize.Height / 2);
-                AddChild(m_thumbSprite);
+                _thumbSprite.Position = new CCPoint(0, ContentSize.Height / 2);
+                AddChild(_thumbSprite);
 
                 // Init default values
-                m_minimumValue = 0.0f;
-                m_maximumValue = 1.0f;
+                _minimumValue = 0.0f;
+                _maximumValue = 1.0f;
 
-                Value = m_minimumValue;
+                Value = _minimumValue;
                 return true;
             }
             return false;
@@ -245,9 +245,9 @@ namespace Cocos2D
         {
             if (Selected)
             {
-                Value = ValueForLocation(m_thumbSprite.Position);
+                Value = ValueForLocation(_thumbSprite.Position);
             }
-            m_thumbSprite.Color = CCTypes.CCWhite;
+            _thumbSprite.Color = CCTypes.CCWhite;
             Selected = false;
         }
 
@@ -260,9 +260,9 @@ namespace Cocos2D
             {
                 touchLocation.X = 0;
             }
-            else if (touchLocation.X > m_backgroundSprite.ContentSize.Width)
+            else if (touchLocation.X > _backgroundSprite.ContentSize.Width)
             {
-                touchLocation.X = m_backgroundSprite.ContentSize.Width;
+                touchLocation.X = _backgroundSprite.ContentSize.Width;
             }
             return touchLocation;
         }
@@ -273,15 +273,15 @@ namespace Cocos2D
             touchLocation = Parent.ConvertToNodeSpace(touchLocation);
 
             CCRect rect = BoundingBox;
-            rect.Size.Width += m_thumbSprite.ContentSize.Width;
-            rect.Origin.X -= m_thumbSprite.ContentSize.Width / 2;
+            rect.Size.Width += _thumbSprite.ContentSize.Width;
+            rect.Origin.X -= _thumbSprite.ContentSize.Width / 2;
 
             return rect.ContainsPoint(touchLocation);
         }
 
         public override bool TouchBegan(CCTouch touch)
         {
-            if (!IsTouchInside(touch) || !Enabled)
+            if (!IsTouchInside(touch) || !Enabled || !Visible)
                 return false;
 
             CCPoint location = LocationFromTouch(touch);
@@ -297,35 +297,34 @@ namespace Cocos2D
 
         public override void TouchEnded(CCTouch pTouch)
         {
-            CCPoint location = LocationFromTouch(pTouch);
-            SliderEnded(location);
+            SliderEnded(CCPoint.Zero);
         }
 
         public override void NeedsLayout()
         {
-            if (null == m_thumbSprite || null == m_backgroundSprite || null == m_progressSprite)
+            if (null == _thumbSprite || null == _backgroundSprite || null == _progressSprite)
             {
                 return;
             }
             // Update thumb position for new value
-            float percent = (m_value - m_minimumValue) / (m_maximumValue - m_minimumValue);
+            float percent = (_value - _minimumValue) / (_maximumValue - _minimumValue);
 
-            CCPoint pos = m_thumbSprite.Position;
-            pos.X = percent * m_backgroundSprite.ContentSize.Width;
-            m_thumbSprite.Position = pos;
+            CCPoint pos = _thumbSprite.Position;
+            pos.X = percent * _backgroundSprite.ContentSize.Width;
+            _thumbSprite.Position = pos;
 
             // Stretches content proportional to newLevel
-            CCRect textureRect = m_progressSprite.TextureRect;
+            CCRect textureRect = _progressSprite.TextureRect;
             textureRect = new CCRect(textureRect.Origin.X, textureRect.Origin.Y, pos.X, textureRect.Size.Height);
-            m_progressSprite.SetTextureRect(textureRect, m_progressSprite.IsTextureRectRotated, textureRect.Size);
+            _progressSprite.SetTextureRect(textureRect, _progressSprite.IsTextureRectRotated, textureRect.Size);
         }
 
         /** Returns the value for the given location. */
 
         protected float ValueForLocation(CCPoint location)
         {
-            float percent = location.X / m_backgroundSprite.ContentSize.Width;
-            return Math.Max(Math.Min(m_minimumValue + percent * (m_maximumValue - m_minimumValue), m_maximumAllowedValue), m_minimumAllowedValue);
+            float percent = location.X / _backgroundSprite.ContentSize.Width;
+            return Math.Max(Math.Min(_minimumValue + percent * (_maximumValue - _minimumValue), _maximumAllowedValue), _minimumAllowedValue);
         }
     };
 }

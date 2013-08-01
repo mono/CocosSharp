@@ -1,4 +1,4 @@
-namespace Cocos2D
+namespace Cocos2D.CCBReader
 {
     internal class CCSpriteLoader : CCNodeLoader
     {
@@ -18,7 +18,14 @@ namespace Cocos2D
         {
             if (propertyName == PROPERTY_DISPLAYFRAME)
             {
-                ((CCSprite) node).DisplayFrame = spriteFrame;
+                if (spriteFrame != null)
+                {
+                    ((CCSprite) node).DisplayFrame = spriteFrame;
+                }
+                else
+                {
+                    CCLog.Log("ERROR: SpriteFrame NULL");
+                }
             }
             else
             {

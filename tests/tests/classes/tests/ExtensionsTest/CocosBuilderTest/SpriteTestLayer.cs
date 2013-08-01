@@ -5,7 +5,7 @@ using System.Text;
 
 namespace tests.Extensions
 {
-    class SpriteTestLayer: BaseLayer
+    class SpriteTestLayer: TestHeaderLayer
     {
     }
 }

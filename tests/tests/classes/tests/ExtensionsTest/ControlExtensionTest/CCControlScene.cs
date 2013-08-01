@@ -30,9 +30,16 @@ namespace tests.Extensions
 				AddChild(ribbon);
         
 				// Add the title
-				setSceneTitleLabel(new CCLabelTTF("Title", "arial", 12));
+				setSceneTitleLabel(new CCLabelTTF(" ", "Arial", 12));
 				m_pSceneTitleLabel.Position = new CCPoint(screensize.Width / 2, screensize.Height - m_pSceneTitleLabel.ContentSize.Height / 2 - 5);
 				AddChild(m_pSceneTitleLabel, 1);
+
+                // Add the subtitle
+                setSceneSubtitleLabel(new CCLabelTTF(" ", "Arial", 12));
+			    m_pSceneSubtitleLabel.Position = new CCPoint(screensize.Width / 2,
+			                                                 screensize.Height - m_pSceneTitleLabel.ContentSize.Height -
+			                                                 m_pSceneSubtitleLabel.ContentSize.Height / 2 - 10);
+                AddChild(m_pSceneSubtitleLabel, 1);
         
 				// Add the menu
 				var item1 = new CCMenuItemImage("Images/b1", "Images/b2", previousCallback);
@@ -45,7 +52,7 @@ namespace tests.Extensions
 				item2.Position = new CCPoint(screensize.Width / 2, 35);
 				item3.Position = new CCPoint(screensize.Width / 2 + 100, 37);
         
-				AddChild(menu ,1);
+				AddChild(menu, 1);
 
 				return true;
 			}
@@ -60,17 +67,17 @@ namespace tests.Extensions
 			pScene.runThisTest();
 		}
 
-		public void previousCallback(object sender)
+		public virtual void previousCallback(object sender)
 		{
 			CCDirector.SharedDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().previousControlScene());
 		}
 
-		public void restartCallback(object sender)
+		public virtual void restartCallback(object sender)
 		{
 			CCDirector.SharedDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().currentControlScene());
 		}
 		
-		public void nextCallback(object sender)
+		public virtual void nextCallback(object sender)
 		{
 			CCDirector.SharedDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().nextControlScene());
 		}
@@ -85,13 +92,23 @@ namespace tests.Extensions
 			} 
 		}
 
+        private CCLabelTTF m_pSceneSubtitleLabel;
+        public virtual CCLabelTTF getSceneSubtitleLabel() { return m_pSceneSubtitleLabel; }
+        public virtual void setSceneSubtitleLabel(CCLabelTTF var)
+        {
+            if (m_pSceneSubtitleLabel != var)
+            {
+                m_pSceneSubtitleLabel = var;
+            }
+        }
+
 
 		/** Title label of the scene. */
 		public static CCScene sceneWithTitle(string title)
 		{
 			var pScene = new CCScene();
 		    var controlLayer = new CCControlScene();
-		    if (controlLayer != null && controlLayer.Init())
+		    if (controlLayer != null)
 		    {
 		        controlLayer.getSceneTitleLabel().Text = (title);
 		        pScene.AddChild(controlLayer);
