@@ -835,11 +835,18 @@ namespace Cocos2D.CCBReader
                     // Load the sprite sheet only if it is not loaded            
                     if (!_loadedSpriteSheets.Contains(spriteSheet))
                     {
-                        frameCache.AddSpriteFramesWithFile(spriteSheet);
+                        string prefix = frameCache.AddSpriteFramesWithFile(spriteSheet);
+                        _FrameCachePrefix[spriteSheet] = prefix;
                         _loadedSpriteSheets.Add(spriteSheet);
                     }
-
-                    spriteFrame = frameCache.SpriteFrameByName(spriteFile);
+                    if (_FrameCachePrefix.ContainsKey(spriteSheet))
+                    {
+                        spriteFrame = frameCache.SpriteFrameByName(spriteFile, _FrameCachePrefix[spriteSheet]);
+                    }
+                    else
+                    {
+                        spriteFrame = frameCache.SpriteFrameByName(spriteFile);
+                    }
                 }
                 value = spriteFrame;
             }
@@ -848,6 +855,13 @@ namespace Cocos2D.CCBReader
 
             return keyframe;
         }
+
+        public Dictionary<string, string> SpriteFramePrefix
+        {
+            get { return (_FrameCachePrefix); }
+        }
+
+        private Dictionary<string, string> _FrameCachePrefix = new Dictionary<string, string>();
 
         private bool ReadHeader()
         {
