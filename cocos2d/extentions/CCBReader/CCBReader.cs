@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
+using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace Cocos2D.CCBReader
 {
-    public enum CCBPropType
+    public enum PropertyType
     {
         Position = 0,
         Size,
@@ -32,10 +34,11 @@ namespace Cocos2D
         CCBFile,
         String,
         BlockCCControl,
-        FloatScale
+        FloatScale,
+        FloatXY
     }
 
-    internal enum CCBFloat
+    internal enum FloatType
     {
         Float0 = 0,
         Float1,
@@ -45,21 +48,21 @@ namespace Cocos2D
         Full
     }
 
-    internal enum CCBPlatform
+    internal enum PlatformType
     {
         All = 0,
         IOS,
         Mac
     }
 
-    public enum CCBTargetType
+    public enum TargetType
     {
         None = 0,
         DocumentRoot = 1,
         Owner = 2,
     }
 
-    public enum CCBKeyframeEasing
+    public enum EasingType
     {
         Instant,
 
@@ -82,7 +85,7 @@ namespace Cocos2D
         BackInOut,
     }
 
-    public enum CCBPositionType
+    public enum PositionType
     {
         RelativeBottomLeft,
         RelativeTopLeft,
@@ -92,7 +95,7 @@ namespace Cocos2D
         MultiplyResolution,
     }
 
-    internal enum CCBSizeType
+    internal enum SizeType
     {
         Absolute,
         Percent,
@@ -102,7 +105,7 @@ namespace Cocos2D
         MultiplyResolution,
     }
 
-    public enum CCBScaleType
+    public enum ScaleType
     {
         Absolute,
         MultiplyResolution
@@ -113,9 +116,16 @@ namespace Cocos2D
      * @{
      */
 
-    internal class CCBFile : CCNode
+    public class CCBFile : CCNode
     {
-        public CCNode FileNode { get; set; }
+        private CCNode _CCBFileNode;
+
+        public CCNode FileNode
+        {
+            get { return _CCBFileNode; }
+            set { _CCBFileNode = value; }
+        }
+
         public CCBFile() { }
     }
 
@@ -128,6 +138,7 @@ namespace Cocos2D
     public interface ICCBSelectorResolver
     {
 		Action<object> OnResolveCCBCCMenuItemSelector(object target, string pSelectorName);
+        Action<CCNode> OnResolveCCBCCCallFuncSelector(Object pTarget, string pSelectorName);
 		Action<object, CCControlEvent> OnResolveCCBCCControlSelector(object target, string pSelectorName);
     }
 
@@ -142,23 +153,39 @@ namespace Cocos2D
 
     public class CCBReader 
     {
-        private const int kCCBVersion = 3;
+        private static float __ccbResolutionScale = 1.0f;
 
-        private readonly List<string> mAnimatedProps = new List<string>();
+        private const int CCBVersion = 5;
 
-        private readonly ICCBMemberVariableAssigner mCCBMemberVariableAssigner;
-        private readonly ICCBSelectorResolver mCCBSelectorResolver;
-        private readonly CCNodeLoaderLibrary mCCNodeLoaderLibrary;
-        private readonly ICCNodeLoaderListener mCCNodeLoaderListener;
-        private readonly List<string> mLoadedSpriteSheets;
-        private readonly List<string> mStringCache = new List<string>();
+        private readonly List<string> _animatedProps = new List<string>();
 
-        public bool hasScriptingOwner = false;
-        private CCBAnimationManager mActionManager;
-        private byte[] mBytes;
-        private int mCurrentBit;
-        private int mCurrentByte;
-        private object mOwner;
+        private readonly ICCBMemberVariableAssigner _CCBMemberVariableAssigner;
+        private readonly ICCBSelectorResolver _CCBSelectorResolver;
+        private readonly CCNodeLoaderLibrary _nodeLoaderLibrary;
+        private readonly ICCNodeLoaderListener _nodeLoaderListener;
+        private readonly List<string> _loadedSpriteSheets;
+        private readonly List<string> _stringCache = new List<string>();
+
+        public bool _hasScriptingOwner = false;
+        private CCBAnimationManager _actionManager;
+        internal byte[] _bytes;
+        internal int _currentBit;
+        internal int _currentByte;
+        internal object _owner;
+
+        private Dictionary<CCNode, CCBAnimationManager> _actionManagers;
+        private List<string> _ownerOutletNames;
+        private List<CCNode> _ownerOutletNodes;
+        private List<CCNode> _nodesWithAnimationManagers;
+        private List<CCBAnimationManager> _animationManagersForNodes;
+
+        private List<string> _ownerCallbackNames;
+        private List<CCNode> _ownerCallbackNodes;
+        private string _CCBRootPath;
+        private bool _jsControlled;
+
+        private static readonly UTF8Encoding utf8Encoder = new UTF8Encoding(false);
+         
 
         public CCBReader(CCNodeLoaderLibrary nodeLoaderLibrary)
             : this(nodeLoaderLibrary, null, null, null)
@@ -179,100 +206,104 @@ namespace Cocos2D
         public CCBReader(CCNodeLoaderLibrary nodeLoaderLibrary, ICCBMemberVariableAssigner memberVariableAssigner,
                          ICCBSelectorResolver selectorResolver, ICCNodeLoaderListener nodeLoaderListener)
         {
-            mCurrentByte = -1;
-            mCurrentBit = -1;
+            _currentByte = -1;
+            _currentBit = -1;
 
-            mLoadedSpriteSheets = new List<string>();
+            _loadedSpriteSheets = new List<string>();
 
-            mCCNodeLoaderLibrary = nodeLoaderLibrary;
-            mCCBMemberVariableAssigner = memberVariableAssigner;
-            mCCBSelectorResolver = selectorResolver;
-            mCCNodeLoaderListener = nodeLoaderListener;
+            _nodeLoaderLibrary = nodeLoaderLibrary;
+            _CCBMemberVariableAssigner = memberVariableAssigner;
+            _CCBSelectorResolver = selectorResolver;
+            _nodeLoaderListener = nodeLoaderListener;
+            Init();
         }
 
         public CCBReader(CCBReader reader)
         {
-            mCurrentByte = -1;
-            mCurrentBit = -1;
+            _currentByte = -1;
+            _currentBit = -1;
 
-            mLoadedSpriteSheets = reader.mLoadedSpriteSheets;
-            mCCNodeLoaderLibrary = reader.mCCNodeLoaderLibrary;
+            _loadedSpriteSheets = reader._loadedSpriteSheets;
+            _nodeLoaderLibrary = reader._nodeLoaderLibrary;
 
-            mCCBMemberVariableAssigner = reader.mCCBMemberVariableAssigner;
-            mCCBSelectorResolver = reader.mCCBSelectorResolver;
-            mCCNodeLoaderListener = reader.mCCNodeLoaderListener;
+            _CCBMemberVariableAssigner = reader._CCBMemberVariableAssigner;
+            _CCBSelectorResolver = reader._CCBSelectorResolver;
+            _nodeLoaderListener = reader._nodeLoaderListener;
+
+            _ownerCallbackNames = reader._ownerCallbackNames;
+            _ownerCallbackNodes = reader._ownerCallbackNodes;
+            _ownerOutletNames = reader._ownerOutletNames;
+            _ownerOutletNodes = reader._ownerOutletNodes;
+
+            _CCBRootPath = reader.CCBRootPath;
+
+            Init();
         }
 
         public CCBReader()
         {
-            mCurrentByte = -1;
-            mCurrentBit = -1;
+            _currentByte = -1;
+            _currentBit = -1;
+            Init();
         }
 
         public ICCBMemberVariableAssigner MemberVariableAssigner
         {
-            get { return mCCBMemberVariableAssigner; }
+            get { return _CCBMemberVariableAssigner; }
         }
 
         public ICCBSelectorResolver SelectorResolver
         {
-            get { return mCCBSelectorResolver; }
+            get { return _CCBSelectorResolver; }
         }
 
         public CCBAnimationManager AnimationManager
         {
-            get { return mActionManager; }
-            set { mActionManager = value; }
+            get { return _actionManager; }
+            set { _actionManager = value; }
         }
 
         // Used in CCNodeLoader.parseProperties()
 
         public List<string> AnimatedProperties
         {
-            get { return mAnimatedProps; }
+            get { return _animatedProps; }
         }
 
         public List<string> LoadedSpriteSheet
         {
-            get { return mLoadedSpriteSheets; }
+            get { return _loadedSpriteSheets; }
         }
 
         public object Owner
         {
-            get { return mOwner; }
+            get { return _owner; }
         }
 
         public static float ResolutionScale
         {
-            get
-            {
-                // Init resolution scale
-                //if (CCApplication.SharedApplication.TargetPlatform == kTarget.kTargetIpad)
-                //{
-                //    return 2;
-                //}
-                //else 
-                {
-                    return 1;
-                }
-            }
+            get { return __ccbResolutionScale; }
+            set { __ccbResolutionScale = value; }
         }
 
-        public bool InitWithData(byte[] bytes, object owner)
+        public string CCBRootPath
+        {
+            set
+            {
+                Debug.Assert(value != null, "");
+                _CCBRootPath = value;
+            }
+            get { return _CCBRootPath; }
+        }
+
+        private bool Init()
         {
             // Setup action manager
-            var pActionManager = new CCBAnimationManager();
+            CCBAnimationManager pActionManager = new CCBAnimationManager();
             AnimationManager = pActionManager;
-
-            // Setup byte array
-            mBytes = bytes;
-            mCurrentByte = 0;
-            mCurrentBit = 0;
-
-            mOwner = owner;
-
+            
             // Setup resolution scale and container size
-            mActionManager.RootContainerSize = CCDirector.SharedDirector.WinSize;
+            _actionManager.RootContainerSize = CCDirector.SharedDirector.WinSize;
 
             return true;
         }
@@ -289,46 +320,70 @@ namespace Cocos2D
 
         public CCNode ReadNodeGraphFromFile(string fileName, object owner, CCSize parentSize)
         {
-            CCBAnimationManager dummy = null;
-            return ReadNodeGraphFromFile(fileName, owner, parentSize, ref dummy);
-        }
-
-        public CCNode ReadNodeGraphFromFile(string fileName, object owner, ref CCBAnimationManager animationManager)
-        {
-            return ReadNodeGraphFromFile(fileName, owner, CCDirector.SharedDirector.WinSize, ref animationManager);
-        }
-
-        public CCNode ReadNodeGraphFromFile(string fileName, object owner, CCSize parentSize, ref CCBAnimationManager animationManager)
-        {
-            string pPath = CCFileUtils.FullPathFromRelativePath(fileName);
-            byte[] pBytes = CCFileUtils.GetFileBytes(pPath);
-            CCNode ret = ReadNodeGraphFromData(pBytes, owner, parentSize, ref animationManager);
-            return ret;
-        }
-
-        public CCNode ReadNodeGraphFromData(byte[] bytes, object owner, CCSize parentSize, ref CCBAnimationManager animationManager)
-        {
-            InitWithData(bytes, owner);
-            mActionManager.RootContainerSize = parentSize;
-
-            CCNode pNodeGraph = ReadFileWithCleanUp(true);
-
-            if (pNodeGraph != null && mActionManager.AutoPlaySequenceId != -1)
+            if (string.IsNullOrEmpty(fileName))
             {
-                // Auto play animations
-                mActionManager.RunAnimations(mActionManager.AutoPlaySequenceId, 0);
+                return null;
             }
 
-            // Return action manager by reference
-            animationManager = mActionManager;
+            string strCCBFileName = fileName;
+            string strSuffix = ".ccbi";
+            // Add ccbi suffix
+            if (!CCBReader.EndsWith(strCCBFileName, strSuffix))
+            {
+                strCCBFileName += strSuffix;
+            }
 
-            return pNodeGraph;
+            string strPath = CCFileUtils.FullPathFromRelativePath(strCCBFileName);
+
+            var pBytes = CCFileUtils.GetFileBytes(strPath);
+            byte[] data = pBytes;
+
+            CCNode ret = ReadNodeGraphFromData(data, owner, parentSize);
+
+            return ret;
         }
 
         public CCNode ReadNodeGraphFromData(byte[] bytes, object owner, CCSize parentSize)
         {
-            CCBAnimationManager dummy = null;
-            return ReadNodeGraphFromData(bytes, owner, parentSize, ref dummy);
+            _bytes = bytes;
+            _currentByte = 0;
+            _currentBit = 0;
+            _owner = owner;
+
+            _actionManager.RootContainerSize = parentSize;
+            _actionManager._owner = _owner;
+            _ownerOutletNodes = new List<CCNode>();
+            _ownerCallbackNodes = new List<CCNode>();
+
+            Dictionary<CCNode, CCBAnimationManager> animationManagers = new Dictionary<CCNode, CCBAnimationManager>();
+            CCNode pNodeGraph = ReadFileWithCleanUp(true, animationManagers);
+
+            if (pNodeGraph != null && _actionManager.AutoPlaySequenceId != -1 && !_jsControlled)
+            {
+                // Auto play animations
+                _actionManager.RunAnimationsForSequenceIdTweenDuration(_actionManager.AutoPlaySequenceId, 0);
+            }
+            // Assign actionManagers to userObject
+            if (_jsControlled)
+            {
+                _nodesWithAnimationManagers = new List<CCNode>();
+                _animationManagersForNodes = new List<CCBAnimationManager>();
+            }
+
+            foreach (var pElement in animationManagers)
+            {
+                CCNode pNode = pElement.Key;
+                CCBAnimationManager manager = animationManagers[pNode];
+                pNode.UserObject = manager;
+
+                if (_jsControlled)
+                {
+                    _nodesWithAnimationManagers.Add(pNode);
+                    _animationManagersForNodes.Add(manager);
+                }
+            }
+
+            return pNodeGraph;
         }
 
         public CCScene CreateSceneWithNodeGraphFromFile(string fileName)
@@ -343,23 +398,9 @@ namespace Cocos2D
 
         public CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner, CCSize parentSize)
         {
-            CCBAnimationManager dummy = null;
-            return CreateSceneWithNodeGraphFromFile(fileName, owner, parentSize, ref dummy);
-        }
-
-        /*
-        public CCScene createSceneWithNodeGraphFromFile(string pCCBFileName, object owner, ref CCBAnimationManager animationManager)
-        {
-            
-        }
-        */
-
-        public CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner, CCSize parentSize,
-                                                        ref CCBAnimationManager animationManager)
-        {
-            CCNode node = ReadNodeGraphFromFile(fileName, owner, parentSize, ref animationManager);
+            CCNode pNode = ReadNodeGraphFromFile(fileName, owner, parentSize);
             CCScene pScene = new CCScene();
-            pScene.AddChild(node);
+            pScene.AddChild(pNode);
 
             return pScene;
         }
@@ -394,11 +435,6 @@ namespace Cocos2D
         public static bool EndsWith(String pString, String pEnding)
         {
             return pString.EndsWith(pEnding);
-        }
-
-        public static String Concat(String pStringA, String pStringB)
-        {
-            return pStringA + pStringB;
         }
 
         /* Parse methods. */
@@ -446,8 +482,8 @@ namespace Cocos2D
 
         public byte ReadByte()
         {
-            byte b = mBytes[mCurrentByte];
-            mCurrentByte++;
+            byte b = _bytes[_currentByte];
+            _currentByte++;
             return b;
         }
 
@@ -456,32 +492,46 @@ namespace Cocos2D
             return 0 != ReadByte();
         }
 
+        public string ReadUTF8()
+        {
+            int b0 = ReadByte();
+            int b1 = ReadByte();
+
+            int numBytes = b0 << 8 | b1;
+
+            string result = utf8Encoder.GetString(_bytes, _currentByte, numBytes);
+
+            _currentByte += numBytes;
+
+            return result;
+        }
+
         public float ReadFloat()
         {
-            var type = (CCBFloat) ReadByte();
+            var type = (FloatType) ReadByte();
 
             switch (type)
             {
-                case CCBFloat.Float0:
+                case FloatType.Float0:
                     return 0;
-                case CCBFloat.Float1:
+                case FloatType.Float1:
                     return 1;
-                case CCBFloat.Minus1:
+                case FloatType.Minus1:
                     return -1;
-                case CCBFloat.Float05:
+                case FloatType.Float05:
                     return 0.5f;
-                case CCBFloat.Integer:
+                case FloatType.Integer:
                     return ReadInt(true);
                 default:
                     var byteArray = new byte[4];
 
-                    byteArray[0] = mBytes[mCurrentByte + 0];
-                    byteArray[1] = mBytes[mCurrentByte + 1];
-                    byteArray[2] = mBytes[mCurrentByte + 2];
-                    byteArray[3] = mBytes[mCurrentByte + 3];
+                    byteArray[0] = _bytes[_currentByte + 0];
+                    byteArray[1] = _bytes[_currentByte + 1];
+                    byteArray[2] = _bytes[_currentByte + 2];
+                    byteArray[3] = _bytes[_currentByte + 3];
 
                     float f = BitConverter.ToSingle(byteArray, 0);
-                    mCurrentByte += 4;
+                    _currentByte += 4;
                     return f;
             }
         }
@@ -489,10 +539,143 @@ namespace Cocos2D
         public string ReadCachedString()
         {
             int i = ReadInt(false);
-            return mStringCache[i];
+            return _stringCache[i];
         }
 
-        public CCNode ReadFileWithCleanUp(bool bCleanUp)
+        public bool IsJSControlled()
+        {
+            return _jsControlled;
+        }
+
+        public bool ReadCallbackKeyframesForSeq(CCBSequence seq)
+        {
+            int numKeyframes = ReadInt(false);
+            if (numKeyframes == 0) return true;
+
+            CCBSequenceProperty channel = new CCBSequenceProperty();
+            
+            for (int i = 0; i < numKeyframes; ++i)
+            {
+
+                float time = ReadFloat();
+                string callbackName = ReadCachedString();
+
+                int callbackType = ReadInt(false);
+
+                List<CCBValue> value = new List<CCBValue>();
+                value.Add(new CCBValue(callbackName));
+                value.Add(new CCBValue(callbackType.ToString()));
+
+                CCBKeyframe keyframe = new CCBKeyframe();
+
+                keyframe.Time = time;
+                keyframe.Value = value;
+
+                if (_jsControlled)
+                {
+                    string callbackIdentifier;
+                    _actionManager.GetKeyframeCallbacks().Add(String.Format("{0}:{1}", callbackType, callbackName));
+                }
+
+                channel.Keyframes.Add(keyframe);
+            }
+
+            seq.CallBackChannel = channel;
+
+            return true;
+        }
+
+        public bool ReadSoundKeyframesForSeq(CCBSequence seq)
+        {
+            int numKeyframes = ReadInt(false);
+            if (numKeyframes == 0) return true;
+
+            CCBSequenceProperty channel = new CCBSequenceProperty();
+
+            for (int i = 0; i < numKeyframes; ++i)
+            {
+
+                float time = ReadFloat();
+                string soundFile = ReadCachedString();
+                float pitch = ReadFloat();
+                float pan = ReadFloat();
+                float gain = ReadFloat();
+
+                List<CCBValue> value = new List<CCBValue>();
+
+                value.Add(new CCBValue(soundFile));
+                value.Add(new CCBValue(pitch.ToString()));
+                value.Add(new CCBValue(pan.ToString()));
+                value.Add(new CCBValue(gain.ToString()));
+
+                CCBKeyframe keyframe = new CCBKeyframe();
+                keyframe.Time = time;
+                keyframe.Value = value;
+                channel.Keyframes.Add(keyframe);
+            }
+
+            seq.SoundChannel = channel;
+
+            return true;
+        }
+
+        public List<string> OwnerCallbackNames
+        {
+            get { return new List<string>(_ownerCallbackNames); }
+        }
+
+        public List<CCNode> OwnerCallbackNodes
+        {
+            get { return _ownerCallbackNodes; }
+        }
+
+        public List<string> OwnerOutletNames
+        {
+            get { return new List<string>(_ownerOutletNames); }
+        }
+
+        public List<CCNode> OwnerOutletNodes
+        {
+            get { return _ownerOutletNodes; }
+        }
+
+        public List<CCNode> NodesWithAnimationManagers
+        {
+            get { return _nodesWithAnimationManagers; }
+        }
+
+        public List<CCBAnimationManager> AnimationManagersForNodes
+        {
+            get { return _animationManagersForNodes; }
+        }
+
+        public Dictionary<CCNode, CCBAnimationManager> AnimationManagers
+        {
+            get { return _actionManagers; }
+            set { _actionManagers = value; }
+        }
+
+        public void AddOwnerCallbackName(string name)
+        {
+            _ownerCallbackNames.Add(name);
+        }
+
+        public void AddOwnerCallbackNode(CCNode node)
+        {
+            _ownerCallbackNodes.Add(node);
+        }
+
+        public void AddDocumentCallbackName(string name)
+        {
+            _actionManager.AddDocumentCallbackName(name);
+        }
+
+        public void AddDocumentCallbackNode(CCNode node)
+        {
+            _actionManager.AddDocumentCallbackNode(node);
+        }
+
+        public CCNode ReadFileWithCleanUp(bool bCleanUp, Dictionary<CCNode, CCBAnimationManager> am)
         {
             if (!ReadHeader())
             {
@@ -509,7 +692,11 @@ namespace Cocos2D
                 return null;
             }
 
-            CCNode node = ReadNodeGraph();
+            AnimationManagers = am;
+
+            CCNode node = ReadNodeGraph(null);
+
+            _actionManagers[node] = _actionManager;
 
             if (bCleanUp)
             {
@@ -517,6 +704,19 @@ namespace Cocos2D
             }
 
             return node;
+        }
+
+        public void AddOwnerOutletName(string name)
+        {
+            _ownerOutletNames.Add(name);
+        }
+
+        public void AddOwnerOutletNode(CCNode node)
+        {
+            if (node == null)
+                return;
+
+            _ownerOutletNodes.Add(node);
         }
 
         private void CleanUpNodeGraph(CCNode node)
@@ -534,7 +734,7 @@ namespace Cocos2D
 
         private bool ReadSequences()
         {
-            List<CCBSequence> sequences = mActionManager.Sequences;
+            List<CCBSequence> sequences = _actionManager.Sequences;
 
             int numSeqs = ReadInt(false);
 
@@ -547,45 +747,48 @@ namespace Cocos2D
                 seq.SequenceId = ReadInt(false);
                 seq.ChainedSequenceId = ReadInt(true);
 
+                if (!ReadCallbackKeyframesForSeq(seq)) return false;
+                if (!ReadSoundKeyframesForSeq(seq)) return false;
+
                 sequences.Add(seq);
             }
 
-            mActionManager.AutoPlaySequenceId = ReadInt(true);
+            _actionManager.AutoPlaySequenceId = ReadInt(true);
             return true;
         }
 
 
-        private CCBKeyframe ReadKeyframe(CCBPropType type)
+        private CCBKeyframe ReadKeyframe(PropertyType type)
         {
             var keyframe = new CCBKeyframe();
 
             keyframe.Time = ReadFloat();
 
-            var easingType = (CCBKeyframeEasing) ReadInt(false);
+            var easingType = (EasingType) ReadInt(false);
             float easingOpt = 0;
             object value = null;
 
-            if (easingType == CCBKeyframeEasing.CubicIn
-                || easingType == CCBKeyframeEasing.CubicOut
-                || easingType == CCBKeyframeEasing.CubicInOut
-                || easingType == CCBKeyframeEasing.ElasticIn
-                || easingType == CCBKeyframeEasing.ElasticOut
-                || easingType == CCBKeyframeEasing.ElasticInOut)
+            if (easingType == EasingType.CubicIn
+                || easingType == EasingType.CubicOut
+                || easingType == EasingType.CubicInOut
+                || easingType == EasingType.ElasticIn
+                || easingType == EasingType.ElasticOut
+                || easingType == EasingType.ElasticInOut)
             {
                 easingOpt = ReadFloat();
             }
             keyframe.EasingType = easingType;
             keyframe.EasingOpt = easingOpt;
 
-            if (type == CCBPropType.Check)
+            if (type == PropertyType.Check)
             {
                 value = new CCBValue(ReadBool());
             }
-            else if (type == CCBPropType.Byte)
+            else if (type == PropertyType.Byte)
             {
                 value = new CCBValue(ReadByte());
             }
-            else if (type == CCBPropType.Color3)
+            else if (type == PropertyType.Color3)
             {
                 byte r = ReadByte();
                 byte g = ReadByte();
@@ -594,11 +797,11 @@ namespace Cocos2D
                 var c = new CCColor3B(r, g, b);
                 value = new CCColor3BWapper(c);
             }
-            else if (type == CCBPropType.Degrees)
+            else if (type == PropertyType.Degrees)
             {
                 value = new CCBValue(ReadFloat());
             }
-            else if (type == CCBPropType.ScaleLock || type == CCBPropType.Position)
+            else if (type == PropertyType.ScaleLock || type == PropertyType.Position || type == PropertyType.FloatXY)
             {
                 float a = ReadFloat();
                 float b = ReadFloat();
@@ -609,7 +812,7 @@ namespace Cocos2D
                         new CCBValue(b)
                     };
             }
-            else if (type == CCBPropType.SpriteFrame)
+            else if (type == PropertyType.SpriteFrame)
             {
                 string spriteSheet = ReadCachedString();
                 string spriteFile = ReadCachedString();
@@ -618,22 +821,32 @@ namespace Cocos2D
 
                 if (String.IsNullOrEmpty(spriteSheet))
                 {
+                    spriteFile = _CCBRootPath + spriteFile;
+
                     CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
                     var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
                     spriteFrame = new CCSpriteFrame(texture, bounds);
                 }
                 else
                 {
+                    spriteSheet = _CCBRootPath + spriteSheet;
                     CCSpriteFrameCache frameCache = CCSpriteFrameCache.SharedSpriteFrameCache;
 
                     // Load the sprite sheet only if it is not loaded            
-                    if (!mLoadedSpriteSheets.Contains(spriteSheet))
+                    if (!_loadedSpriteSheets.Contains(spriteSheet))
                     {
-                        frameCache.AddSpriteFramesWithFile(spriteSheet);
-                        mLoadedSpriteSheets.Add(spriteSheet);
+                        string prefix = frameCache.AddSpriteFramesWithFile(spriteSheet);
+                        _FrameCachePrefix[spriteSheet] = prefix;
+                        _loadedSpriteSheets.Add(spriteSheet);
                     }
-
-                    spriteFrame = frameCache.SpriteFrameByName(spriteFile);
+                    if (_FrameCachePrefix.ContainsKey(spriteSheet))
+                    {
+                        spriteFrame = frameCache.SpriteFrameByName(spriteFile, _FrameCachePrefix[spriteSheet]);
+                    }
+                    else
+                    {
+                        spriteFrame = frameCache.SpriteFrameByName(spriteFile);
+                    }
                 }
                 value = spriteFrame;
             }
@@ -643,30 +856,42 @@ namespace Cocos2D
             return keyframe;
         }
 
+        public Dictionary<string, string> SpriteFramePrefix
+        {
+            get { return (_FrameCachePrefix); }
+        }
+
+        private Dictionary<string, string> _FrameCachePrefix = new Dictionary<string, string>();
+
         private bool ReadHeader()
         {
             /* If no bytes loaded, don't crash about it. */
-            if (mBytes == null)
+            if (_bytes == null)
             {
                 return false;
             }
 
             /* Read magic bytes */
-            if (mBytes[mCurrentByte + 0] != 'i' || mBytes[mCurrentByte + 1] != 'b' || mBytes[mCurrentByte + 2] != 'c' ||
-                mBytes[mCurrentByte + 3] != 'c')
+            if (_bytes[_currentByte + 0] != 'i' || _bytes[_currentByte + 1] != 'b' || _bytes[_currentByte + 2] != 'c' ||
+                _bytes[_currentByte + 3] != 'c')
             {
                 return false;
             }
 
-            mCurrentByte += 4;
+            _currentByte += 4;
 
             /* Read version. */
             int version = ReadInt(false);
-            if (version != kCCBVersion)
+            if (version != CCBVersion)
             {
-                CCLog.Log("WARNING! Incompatible ccbi file version (file: %d reader: %d)", version, kCCBVersion);
+                CCLog.Log("WARNING! Incompatible ccbi file version (file: %d reader: %d)", version, CCBVersion);
                 return false;
             }
+
+            // Read JS check
+            _jsControlled = ReadBool();
+            _actionManager._jsControlled = _jsControlled;
+
 
             return true;
         }
@@ -677,13 +902,13 @@ namespace Cocos2D
 
             for (int i = 0; i < numStrings; i++)
             {
-                ReadStringCacheEntry();
+                _stringCache.Add(ReadUTF8());
             }
 
             return true;
         }
 
-        private void ReadStringCacheEntry()
+        /*private void ReadStringCacheEntry()
         {
             int b0 = ReadByte();
             int b1 = ReadByte();
@@ -691,12 +916,12 @@ namespace Cocos2D
             int numBytes = b0 << 8 | b1;
 
 
-            string s = Encoding.UTF8.GetString(mBytes, mCurrentByte, numBytes);
+            string s = Encoding.UTF8.GetString(_bytes, _currentByte, numBytes);
 
-            mCurrentByte += numBytes;
+            _currentByte += numBytes;
 
-            mStringCache.Add(s);
-        }
+            _stringCache.Add(s);
+        }*/
 
         private CCNode ReadNodeGraph()
         {
@@ -708,16 +933,23 @@ namespace Cocos2D
             /* Read class name. */
             string className = ReadCachedString();
 
+            string _jsControlledName = null;
+
+            if (_jsControlled)
+            {
+                _jsControlledName = ReadCachedString();
+            }
+
             // Read assignment type and name
-            var memberVarAssignmentType = (CCBTargetType) ReadInt(false);
+            var memberVarAssignmentType = (TargetType) ReadInt(false);
 
             string memberVarAssignmentName = String.Empty;
-            if (memberVarAssignmentType != CCBTargetType.None)
+            if (memberVarAssignmentType != TargetType.None)
             {
                 memberVarAssignmentName = ReadCachedString();
             }
 
-            CCNodeLoader ccNodeLoader = mCCNodeLoaderLibrary.GetCCNodeLoader(className);
+            CCNodeLoader ccNodeLoader = _nodeLoaderLibrary.GetCCNodeLoader(className);
             if (ccNodeLoader == null)
             {
                 CCLog.Log("no corresponding node loader for {0}", className);
@@ -727,14 +959,20 @@ namespace Cocos2D
             CCNode node = ccNodeLoader.LoadCCNode(parent, this);
 
             // Set root node
-            if (mActionManager.RootNode == null)
+            if (_actionManager.RootNode == null)
             {
-                mActionManager.RootNode = node;
+                _actionManager.RootNode = node;
+            }
+
+            // Assign controller
+            if (_jsControlled && node == _actionManager.RootNode)
+            {
+                _actionManager.DocumentControllerName = _jsControlledName;
             }
 
             // Read animated properties
             var seqs = new Dictionary<int, Dictionary<string, CCBSequenceProperty>>();
-            mAnimatedProps.Clear();
+            _animatedProps.Clear();
 
             int numSequence = ReadInt(false);
             for (int i = 0; i < numSequence; ++i)
@@ -749,8 +987,8 @@ namespace Cocos2D
                     var seqProp = new CCBSequenceProperty();
 
                     seqProp.Name = ReadCachedString();
-                    seqProp.Type = (CCBPropType) ReadInt(false);
-                    mAnimatedProps.Add(seqProp.Name);
+                    seqProp.Type = (PropertyType) ReadInt(false);
+                    _animatedProps.Add(seqProp.Name);
 
                     int numKeyframes = ReadInt(false);
 
@@ -769,24 +1007,29 @@ namespace Cocos2D
 
             if (seqs.Count > 0)
             {
-                mActionManager.AddNode(node, seqs);
+                _actionManager.AddNode(node, seqs);
             }
 
             // Read properties
             ccNodeLoader.ParseProperties(node, parent, this);
 
+            bool isCCBFileNode = node is CCBFile;
+
             // Handle sub ccb files (remove middle node)
-            if (node is CCBFile)
+            if (isCCBFileNode)
             {
                 var ccbFileNode = (CCBFile) node;
 
                 CCNode embeddedNode = ccbFileNode.FileNode;
                 embeddedNode.Position = ccbFileNode.Position;
                 embeddedNode.Rotation = ccbFileNode.Rotation;
-                embeddedNode.Scale = ccbFileNode.Scale;
+                embeddedNode.ScaleX = ccbFileNode.ScaleX;
+                embeddedNode.ScaleY = ccbFileNode.ScaleY;
                 embeddedNode.Tag = ccbFileNode.Tag;
                 embeddedNode.Visible = true;
-                embeddedNode.IgnoreAnchorPointForPosition = ccbFileNode.IgnoreAnchorPointForPosition;
+                //embeddedNode.IgnoreAnchorPointForPosition = ccbFileNode.IgnoreAnchorPointForPosition;
+
+                _actionManager.MoveAnimationsFromNode(ccbFileNode, embeddedNode);
 
                 ccbFileNode.FileNode = null;
 
@@ -800,39 +1043,88 @@ namespace Cocos2D
      [[JSCocoa sharedController] setObject:node withName:memberVarAssignmentName];
      }*/
 #else
-            if (memberVarAssignmentType != CCBTargetType.None)
+            if (memberVarAssignmentType != TargetType.None)
             {
-                object target = null;
-                if (memberVarAssignmentType == CCBTargetType.DocumentRoot)
+                if (!_jsControlled)
                 {
-                    target = mActionManager.RootNode;
-                }
-                else if (memberVarAssignmentType == CCBTargetType.Owner)
-                {
-                    target = mOwner;
-                }
-
-                if (target != null)
-                {
-                    bool assigned = false;
-
-                    var targetAsCCBMemberVariableAssigner = (ICCBMemberVariableAssigner) target;
-
-                    if (targetAsCCBMemberVariableAssigner != null)
+                    object target = null;
+                    if (memberVarAssignmentType == TargetType.DocumentRoot)
                     {
-                        assigned = targetAsCCBMemberVariableAssigner.OnAssignCCBMemberVariable(target, memberVarAssignmentName, node);
+                        target = _actionManager.RootNode;
+                    }
+                    else if (memberVarAssignmentType == TargetType.Owner)
+                    {
+                        target = _owner;
                     }
 
-                    if (!assigned && mCCBMemberVariableAssigner != null)
+                    if (target != null)
                     {
-                        mCCBMemberVariableAssigner.OnAssignCCBMemberVariable(target, memberVarAssignmentName, node);
+                        var targetAsCCBMemberVariableAssigner = target as ICCBMemberVariableAssigner;
+
+                        bool assigned = false;
+                        if (memberVarAssignmentType != TargetType.None)
+                        {
+                            if (targetAsCCBMemberVariableAssigner != null)
+                            {
+                                assigned = targetAsCCBMemberVariableAssigner.OnAssignCCBMemberVariable(target,
+                                                                                                       memberVarAssignmentName,
+                                                                                                       node);
+                            }
+
+                            if (!assigned && _CCBMemberVariableAssigner != null)
+                            {
+                                _CCBMemberVariableAssigner.OnAssignCCBMemberVariable(target, memberVarAssignmentName,
+                                                                                     node);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (memberVarAssignmentType == TargetType.DocumentRoot)
+                    {
+                        _actionManager.AddDocumentOutletName(memberVarAssignmentName);
+                        _actionManager.AddDocumentOutletNode(node);
+                    }
+                    else
+                    {
+                        _ownerOutletNames.Add(memberVarAssignmentName);
+                        _ownerOutletNodes.Add(node);
                     }
                 }
             }
+
+            // Assign custom properties.
+    if (ccNodeLoader.CustomProperties.Count > 0)
+    {
+        bool customAssigned = false;
+        
+        if(!_jsControlled)
+        {
+            Object target = node;
+            if(target != null)
+            {
+                ICCBMemberVariableAssigner targetAsCCBMemberVariableAssigner = target as ICCBMemberVariableAssigner;
+                if(targetAsCCBMemberVariableAssigner != null) {
+                    
+                    var pCustomPropeties = ccNodeLoader.CustomProperties;
+                    foreach (var pElement in pCustomPropeties)
+                    {
+                        customAssigned = targetAsCCBMemberVariableAssigner.OnAssignCCBCustomProperty(target, pElement.Key, pElement.Value);
+
+                        if(!customAssigned && _CCBMemberVariableAssigner != null)
+                        {
+                            customAssigned = _CCBMemberVariableAssigner.OnAssignCCBCustomProperty(target, pElement.Key, pElement.Value);
+                        }
+                    }
+                }
+            }
+        }
+    }
 #endif
             // CCB_ENABLE_JAVASCRIPT
 
-            mAnimatedProps.Clear();
+            _animatedProps.Clear();
 
             /* Read and add children. */
             int numChildren = ReadInt(false);
@@ -842,15 +1134,18 @@ namespace Cocos2D
                 node.AddChild(child);
             }
 
-            // Call onNodeLoaded
-            var nodeAsCCNodeLoaderListener = node as ICCNodeLoaderListener;
-            if (nodeAsCCNodeLoaderListener != null)
+            if (!isCCBFileNode)
             {
-                nodeAsCCNodeLoaderListener.OnNodeLoaded(node, ccNodeLoader);
-            }
-            else if (mCCNodeLoaderListener != null)
-            {
-                mCCNodeLoaderListener.OnNodeLoaded(node, ccNodeLoader);
+                // Call onNodeLoaded
+                var nodeAsCCNodeLoaderListener = node as ICCNodeLoaderListener;
+                if (nodeAsCCNodeLoaderListener != null)
+                {
+                    nodeAsCCNodeLoaderListener.OnNodeLoaded(node, ccNodeLoader);
+                }
+                else if (_nodeLoaderListener != null)
+                {
+                    _nodeLoaderListener.OnNodeLoaded(node, ccNodeLoader);
+                }
             }
 
             return node;
@@ -859,8 +1154,8 @@ namespace Cocos2D
         private bool GetBit()
         {
             bool bit;
-            byte b = mBytes[mCurrentByte];
-            if ((b & (1 << mCurrentBit)) != 0)
+            byte b = _bytes[_currentByte];
+            if ((b & (1 << _currentBit)) != 0)
             {
                 bit = true;
             }
@@ -869,12 +1164,12 @@ namespace Cocos2D
                 bit = false;
             }
 
-            mCurrentBit++;
+            _currentBit++;
 
-            if (mCurrentBit >= 8)
+            if (_currentBit >= 8)
             {
-                mCurrentBit = 0;
-                mCurrentByte++;
+                _currentBit = 0;
+                _currentByte++;
             }
 
             return bit;
@@ -883,18 +1178,13 @@ namespace Cocos2D
 
         private void AlignBits()
         {
-            if (mCurrentBit != 0)
+            if (_currentBit != 0)
             {
-                mCurrentBit = 0;
-                mCurrentByte++;
+                _currentBit = 0;
+                _currentByte++;
             }
         }
 
-        /*
-        private string readUTF8()
-        {
-            
-        }
-        */
+
     }
 }

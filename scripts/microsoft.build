@@ -2,19 +2,10 @@
 <project name="Cococs2D-XNA Build Script" default="build" basedir="..">
   <description>Default Cocos2D-XNA Automated Build script</description>
   <property name="os" value="${operating-system::get-platform(environment::get-operating-system())}" />
-  <property name="mdtooldir" value="/Applications/MonoDevelop.app/Contents/MacOS"/>
   <!--property name="psmtooldir" value="C:\Program Files (x86)\SCE\PSM\tools\PsmStudio\bin" /-->
 
   <target name="checkos" description="check the operating system">
     <property name="os" value="${operating-system::get-platform(environment::get-operating-system())}"/>
-    <if test="${os == 'Unix'}">
-      <if test="${directory::exists('/Applications') and directory::exists('/Library')}">
-        <property name="os" value="MacOS"/>
-        <if test="${not directory::exists(mdtooldir)}">
-          <property name="mdtooldir" value="${path::get-full-path('/Applications/Xamarin Studio.app/Contents/MacOS')}"/>
-        </if>
-      </if>
-    </if>
     <echo message="Detected : ${os}"/>
   </target>
 
@@ -23,7 +14,7 @@
     </delete>
   </target>
 
-  <target name="build" description="Build MonoGame Release" depends="monogame">
+  <target name="build" description="Build Microsoft XNA Release">
 
     <call target="buildwindows"/>
     <call target="buildwindowsphone7"/>
@@ -32,20 +23,8 @@
   </target>
 
   <target name="buildwindows" description="Build Windows" depends="clean">
-    <if test="${os == 'Win32NT'}">
       <exec program="msbuild " commandline="cocos2d-xna.Windows.sln /t:Clean /p:Configuration=Release" />
       <exec program="msbuild " commandline="cocos2d-xna.Windows.sln /t:Build /p:Configuration=Release" />
-      <exec program="msbuild " commandline="cocos2d-xna.WindowsGL.sln /t:Clean /p:Configuration=Release" />
-      <exec program="msbuild " commandline="cocos2d-xna.WindowsGL.sln /t:Build /p:Configuration=Release" />
-      <exec program="msbuild " commandline="cocos2d-xna.WindowsDX.sln /t:Clean /p:Configuration=Release" />
-      <exec program="msbuild " commandline="cocos2d-xna.WindowsDX.sln /t:Build /p:Configuration=Release" />
-    </if>
-    <if test="${os == 'Unix'}">
-      <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release cocos2d-xna.Windows.sln" />
-      <exec program="xbuild" commandline="/t:Build /p:Configuration=Release cocos2d-xna.Windows.sln" />
-      <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release cocos2d-xna.WindowsGL.sln" />
-      <exec program="xbuild" commandline="/t:Build /p:Configuration=Release cocos2d-xna.WindowsGL.sln" />
-    </if>
   </target>
 
   <target name="buildwindowsphone7" description="Build Windows Phone 7" depends="clean">

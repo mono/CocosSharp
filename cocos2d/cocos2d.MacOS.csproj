@@ -234,6 +234,11 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCControlUtils.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCInvocation.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9Sprite.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlColourPicker.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlHuePicker.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlPotentiometer.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlSaturationPicker.cs" />
+    <Compile Include="extentions\GUI\CCControlExtension\CCControlStepper.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCScrollView.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCSorting.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableView.cs" />
@@ -365,6 +370,8 @@
     <Compile Include="sprite_nodes\CCSpriteBatchNode.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrame.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrameCache.cs" />
+    <Compile Include="sprite_nodes\CCSpriteSheet.cs" />
+    <Compile Include="sprite_nodes\CCSpriteSheetCache.cs" />
     <Compile Include="support\Compression\Adler.cs" />
     <Compile Include="support\Compression\Crc32.cs" />
     <Compile Include="support\Compression\FlushType.cs" />

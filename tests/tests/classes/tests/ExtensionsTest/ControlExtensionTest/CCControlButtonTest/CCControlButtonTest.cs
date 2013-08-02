@@ -27,16 +27,34 @@ namespace tests.Extensions
         
 				// For each title in the array
 				object pObj = null;
+			    int i = 0;
 				foreach(var title in stringArray)
 				{
 					// Creates a button with this string as title
 					var button = standardButtonWithTitle(title);
-					button.Position = new CCPoint (total_width + button.ContentSize.Width / 2, button.ContentSize.Height / 2);
+				    if (i == 0)
+				    {
+				        button.Opacity = 50;
+                        button.Color = new CCColor3B(0, 255, 0);
+				    }
+                    else if (i == 1)
+                    {
+                        button.Opacity = 200;
+                        button.Color = new CCColor3B(0, 255, 0);
+                    }
+                    else if (i == 2)
+                    {
+                        button.Opacity = 100;
+                        button.Color = new CCColor3B(0, 0, 255);
+                    }
+
+				    button.Position = new CCPoint (total_width + button.ContentSize.Width / 2, button.ContentSize.Height / 2);
 					layer.AddChild(button);
             
 					// Compute the size of the layer
 					height = button.ContentSize.Height;
 					total_width += button.ContentSize.Width;
+				    i++;
 				}
 
 				layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -61,7 +79,7 @@ namespace tests.Extensions
 			var backgroundButton = new CCScale9SpriteFile("extensions/button");
 			var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
     
-			var titleButton = new CCLabelTTF(title, "Marker Felt", 30);
+			var titleButton = new CCLabelTTF(title, "Arial", 30);
 
 			titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -77,7 +95,6 @@ namespace tests.Extensions
 		{
 			var pScene = new CCScene();
 			var controlLayer = new CCControlButtonTest_HelloVariableSize();
-		    controlLayer.Init();
     		controlLayer.getSceneTitleLabel().Text = (title);
 			pScene.AddChild(controlLayer);
 			return pScene;
@@ -140,7 +157,7 @@ namespace tests.Extensions
             var backgroundButton = new CCScale9SpriteFile("extensions/button");
             var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
 
-            var titleButton = new CCLabelTTF(title, "Marker Felt", 30);
+            var titleButton = new CCLabelTTF(title, "Arial", 30);
 
             titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -159,7 +176,7 @@ namespace tests.Extensions
             backgroundButton.CapInsets = inset;
             backgroundHighlightedButton.CapInsets = inset;
 
-            var titleButton = new CCLabelTTF(title, "Marker Felt", 30);
+            var titleButton = new CCLabelTTF(title, "Arial", 30);
 
             titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -174,7 +191,6 @@ namespace tests.Extensions
         {
             var pScene = new CCScene();
             var controlLayer = new CCControlButtonTest_Inset();
-            controlLayer.Init();
             controlLayer.getSceneTitleLabel().Text = (title);
             pScene.AddChild(controlLayer);
             return pScene;
@@ -190,7 +206,7 @@ namespace tests.Extensions
 				CCSize screenSize = CCDirector.SharedDirector.WinSize;
 
 				// Add a label in which the button events will be displayed
-				setDisplayValueLabel(new CCLabelTTF("No Event", "Marker Felt", 32));
+				setDisplayValueLabel(new CCLabelTTF("No Event", "Arial", 32));
 				m_pDisplayValueLabel.AnchorPoint = new CCPoint(0.5f, -1);
 				m_pDisplayValueLabel.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 				AddChild(m_pDisplayValueLabel, 1);
@@ -199,7 +215,7 @@ namespace tests.Extensions
 				var backgroundButton = new CCScale9SpriteFile("extensions/button");
 				var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
         
-				var titleButton = new CCLabelTTF("Touch Me!", "Marker Felt", 30);
+				var titleButton = new CCLabelTTF("Touch Me!", "Arial", 30);
 
 				titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -285,7 +301,7 @@ namespace tests.Extensions
 		{
 			var pScene = new CCScene();
 			var controlLayer = new CCControlButtonTest_Event();
-			if (controlLayer != null && controlLayer.Init())
+			if (controlLayer != null)
 			{
 				controlLayer.getSceneTitleLabel().Text = (title);
 				pScene.AddChild(controlLayer);
@@ -348,11 +364,11 @@ namespace tests.Extensions
 		{
 			/** Creates and return a button with a default background and title color. */
 			var backgroundButton = new CCScale9SpriteFile("extensions/button");
-			backgroundButton.PreferredSize = new CCSize(45, 45);  // Set the prefered size
+			backgroundButton.PreferredSize = new CCSize(55, 55);  // Set the prefered size
 			var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
-			backgroundHighlightedButton.PreferredSize = new CCSize(45, 45);  // Set the prefered size
+			backgroundHighlightedButton.PreferredSize = new CCSize(55, 55);  // Set the prefered size
     
-			var titleButton = new CCLabelTTF(title, "Marker Felt", 30);
+			var titleButton = new CCLabelTTF(title, "Arial", 30);
 
 			titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -367,7 +383,7 @@ namespace tests.Extensions
 		{
 			var pScene = new CCScene();
 			var controlLayer = new CCControlButtonTest_Styling();
-			if (controlLayer != null && controlLayer.Init())
+			if (controlLayer != null)
 			{
 				controlLayer.getSceneTitleLabel().Text = (title);
 				pScene.AddChild(controlLayer);

@@ -26,7 +26,7 @@ namespace tests.Extensions
 
                 layer_width += background.ContentSize.Width;
 
-                m_pDisplayValueLabel = new CCLabelTTF("#color", "Marker Felt", 30);
+                m_pDisplayValueLabel = new CCLabelTTF("#color", "Arial", 30);
 
                 m_pDisplayValueLabel.Position = background.Position;
                 layer.AddChild(m_pDisplayValueLabel);
@@ -38,8 +38,8 @@ namespace tests.Extensions
                         new CCSprite("extensions/switch-on"),
                         new CCSprite("extensions/switch-off"),
                         new CCSprite("extensions/switch-thumb"),
-                        new CCLabelTTF("On", "Arial-BoldMT", 16),
-                        new CCLabelTTF("Off", "Arial-BoldMT", 16)
+                        new CCLabelTTF("On", "Arial", 16),
+                        new CCLabelTTF("Off", "Arial", 16)
                     );
                 switchControl.Position = new CCPoint(layer_width + 10 + switchControl.ContentSize.Width / 2, 0);
                 layer.AddChild(switchControl);
@@ -77,7 +77,7 @@ namespace tests.Extensions
         {
             CCScene pScene = new CCScene();
             var controlLayer = new CCControlSwitchTest();
-            if (controlLayer != null && controlLayer.Init())
+            if (controlLayer != null)
             {
                 controlLayer.getSceneTitleLabel().Text = (title);
                 pScene.AddChild(controlLayer);

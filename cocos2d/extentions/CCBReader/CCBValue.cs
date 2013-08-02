@@ -1,96 +1,116 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Cocos2D
+namespace Cocos2D.CCBReader
 {
-    internal class CCColor3BWapper 
+    public class CCColor3BWapper 
     {
         private CCColor3B color;
 
-        internal CCColor3BWapper(CCColor3B xcolor)
+        public CCColor3BWapper(CCColor3B xcolor)
         {
             color = xcolor;
         }
 
-        internal CCColor3B getColor()
+        public CCColor3B Color
         {
-            return color;
+            get { return color; }
         }
-    };
+    }
 
-    internal enum ValueType
+    public enum ValueType
     {
         Int,
         Float,
-        Pointer,
         Bool,
         UnsignedChar,
+        String,
+        Array
     }
 
-    internal class CCBValue 
+    public class CCBValue 
     {
-        private float fValue;
-        private ValueType mType;
-        private int nValue;
-        private byte[] pointer;
+        private float floatValue;
+        private ValueType _type;
+        private int intValue;
+        private string _strValue;
+        private object _arrValue;  
 
-        internal CCBValue (int xnValue)
+        public CCBValue (int nValue)
         {
-            nValue = xnValue;
-            mType = ValueType.Int;
+            intValue = nValue;
+            _type = ValueType.Int;
         }
 
-        internal CCBValue(bool bValue)
+        public CCBValue(bool bValue)
         {
-            nValue = bValue ? 1 : 0;
-            mType = ValueType.Bool;
+            intValue = bValue ? 1 : 0;
+            _type = ValueType.Bool;
         }
 
-        internal CCBValue(float xfValue)
+        public CCBValue(float fValue)
         {
-            fValue = xfValue;
-            mType = ValueType.Float;
+            floatValue = fValue;
+            _type = ValueType.Float;
         }
 
-        internal CCBValue(byte bValue)
+        public CCBValue(byte bValue)
         {
-            nValue = bValue;
-            mType = ValueType.UnsignedChar;
+            intValue = bValue;
+            _type = ValueType.UnsignedChar;
         }
 
-        internal CCBValue(byte[] xpointer)
+        public CCBValue(string pStr)
         {
-            pointer = xpointer;
-            mType = ValueType.Pointer;
+            _strValue = pStr;
+            _type = ValueType.String;
         }
 
-        internal int GetIntValue()
+        public CCBValue(object pArr)
         {
-            Debug.Assert(mType == ValueType.Int);
-            return nValue;
+            _arrValue = pArr;
+            _type = ValueType.Array;
         }
 
-        internal float GetFloatValue()
+        public int GetIntValue()
         {
-            Debug.Assert(mType == ValueType.Float);
-            return fValue;
+            Debug.Assert(_type == ValueType.Int, "The type of CCBValue isn't integer.");
+            return intValue;
         }
 
-        internal bool GetBoolValue()
+        public float GetFloatValue()
         {
-            Debug.Assert(mType == ValueType.Bool);
-            return nValue == 1;
+            Debug.Assert(_type == ValueType.Float, "The type of CCBValue isn't float.");
+            return floatValue;
         }
 
-        internal byte GetByteValue()
+        public bool GetBoolValue()
         {
-            Debug.Assert(mType == ValueType.UnsignedChar);
-            return (byte) nValue;
+            Debug.Assert(_type == ValueType.Bool, "The type of CCBValue isn't boolean.");
+            return intValue == 1;
         }
 
-        internal byte[] getPointer()
+        public byte GetByteValue()
         {
-            Debug.Assert(mType == ValueType.Pointer);
-            return pointer;
+            Debug.Assert(_type == ValueType.UnsignedChar, "The type of CCBValue isn't unsigned char.");
+            return (byte) intValue;
+        }
+
+        public string GetStringValue()
+        {
+            Debug.Assert(_type == ValueType.String, "The type of CCBValue isn't string.");
+            return _strValue;
+        }
+
+        public object GetArrayValue()
+        {
+            Debug.Assert(_type == ValueType.Array, "The type of CCBValue isn't array.");
+            return _arrValue;
+        }
+
+        public ValueType Type
+        {
+            get { return _type; }
         }
     }
 }

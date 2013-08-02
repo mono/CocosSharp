@@ -14,25 +14,25 @@ namespace Cocos2D
         public const int CCControlButtonMarginTB = 2; // px
 
         public const int kZoomActionTag = (0x7CCB0001);
-        protected bool m_bParentInited;
+        protected bool _parentInited;
 
-        protected CCScale9Sprite m_backgroundSprite;
-        protected Dictionary<CCControlState, CCScale9Sprite> m_backgroundSpriteDispatchTable;
-        protected string m_currentTitle;
+        protected CCScale9Sprite _backgroundSprite;
+        protected Dictionary<CCControlState, CCScale9Sprite> _backgroundSpriteDispatchTable;
+        protected string _currentTitle;
 
         /** The current color used to display the title. */
-        protected CCColor3B m_currentTitleColor;
-        protected bool m_doesAdjustBackgroundImage;
-        protected bool m_isPushed;
-        protected CCPoint m_labelAnchorPoint;
-        protected int m_marginH;
-        protected int m_marginV;
-        protected CCSize m_preferredSize;
-        protected Dictionary<CCControlState, CCColor3B> m_titleColorDispatchTable;
-        protected Dictionary<CCControlState, string> m_titleDispatchTable;
-        protected CCNode m_titleLabel;
-        protected Dictionary<CCControlState, CCNode> m_titleLabelDispatchTable;
-        protected bool m_zoomOnTouchDown;
+        protected CCColor3B _currentTitleColor;
+        protected bool _doesAdjustBackgroundImage;
+        protected bool _isPushed;
+        protected CCPoint _labelAnchorPoint;
+        protected int _marginH = CCControlButtonMarginLR;
+        protected int _marginV = CCControlButtonMarginTB;
+        protected CCSize _preferredSize;
+        protected Dictionary<CCControlState, CCColor3B> _titleColorDispatchTable;
+        protected Dictionary<CCControlState, string> _titleDispatchTable;
+        protected CCNode _titleLabel;
+        protected Dictionary<CCControlState, CCNode> _titleLabelDispatchTable;
+        protected bool _zoomOnTouchDown;
 
         public event CCButtonTapDelegate OnButtonTap;
 
@@ -45,14 +45,14 @@ namespace Cocos2D
 
         public CCScale9Sprite BackgroundSprite
         {
-            get { return m_backgroundSprite; }
-            set { m_backgroundSprite = value; }
+            get { return _backgroundSprite; }
+            set { _backgroundSprite = value; }
         }
 
         public CCNode TitleLabel
         {
-            get { return m_titleLabel; }
-            set { m_titleLabel = value; }
+            get { return _titleLabel; }
+            set { _titleLabel = value; }
         }
 
         public override byte Opacity
@@ -61,7 +61,7 @@ namespace Cocos2D
             set
             {
                 base.Opacity = value;
-                foreach (CCScale9Sprite item in m_backgroundSpriteDispatchTable.Values)
+                foreach (CCScale9Sprite item in _backgroundSpriteDispatchTable.Values)
                 {
                     item.Opacity = value;
                 }
@@ -74,7 +74,7 @@ namespace Cocos2D
             set
             {
                 base.Color = value;
-                foreach (CCScale9Sprite item in m_backgroundSpriteDispatchTable.Values)
+                foreach (CCScale9Sprite item in _backgroundSpriteDispatchTable.Values)
                 {
                     item.Color = value;
                 }
@@ -114,7 +114,7 @@ namespace Cocos2D
 
                 NeedsLayout();
 
-                if (m_zoomOnTouchDown)
+                if (_zoomOnTouchDown)
                 {
                     float scaleValue = (Highlighted && Enabled && !Selected) ? 1.1f : 1.0f;
                     CCAction zoomAction = new CCScaleTo(0.05f, scaleValue);
@@ -126,79 +126,79 @@ namespace Cocos2D
 
         public bool IsPushed
         {
-            get { return m_isPushed; }
+            get { return _isPushed; }
         }
 
         public override void NeedsLayout()
         {
-            if (!m_bParentInited)
+            if (!_parentInited)
             {
                 return;
             }
             // Hide the background and the label
-            if (m_titleLabel != null)
+            if (_titleLabel != null)
             {
-                m_titleLabel.Visible = false;
+                _titleLabel.Visible = false;
             }
-            if (m_backgroundSprite != null)
+            if (_backgroundSprite != null)
             {
-                m_backgroundSprite.Visible = false;
+                _backgroundSprite.Visible = false;
             }
             // Update anchor of all labels
-            LabelAnchorPoint = m_labelAnchorPoint;
+            LabelAnchorPoint = _labelAnchorPoint;
 
             // Update the label to match with the current state
 
-            m_currentTitle = GetTitleForState(m_eState);
-            m_currentTitleColor = GetTitleColorForState(m_eState);
+            _currentTitle = GetTitleForState(_state);
+            _currentTitleColor = GetTitleColorForState(_state);
 
-            TitleLabel = GetTitleLabelForState(m_eState);
+            TitleLabel = GetTitleLabelForState(_state);
 
-            var label = (ICCLabelProtocol) m_titleLabel;
-            if (label != null && !String.IsNullOrEmpty(m_currentTitle))
+            var label = (ICCLabelProtocol) _titleLabel;
+            if (label != null && !String.IsNullOrEmpty(_currentTitle))
             {
-                label.Text = (m_currentTitle);
+                label.Text = (_currentTitle);
             }
 
-            var rgbaLabel = (ICCRGBAProtocol) m_titleLabel;
+            var rgbaLabel = (ICCRGBAProtocol) _titleLabel;
             if (rgbaLabel != null)
             {
-                rgbaLabel.Color = m_currentTitleColor;
+                rgbaLabel.Color = _currentTitleColor;
             }
-            if (m_titleLabel != null)
+            if (_titleLabel != null)
             {
-                m_titleLabel.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
+                _titleLabel.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
             }
 
             // Update the background sprite
-            BackgroundSprite = GetBackgroundSpriteForState(m_eState);
-            if (m_backgroundSprite != null)
+            BackgroundSprite = GetBackgroundSpriteForState(_state);
+            if (_backgroundSprite != null)
             {
-                m_backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
+                _backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
             }
 
             // Get the title label size
             CCSize titleLabelSize = CCSize.Zero;
-            if (m_titleLabel != null)
+            if (_titleLabel != null)
             {
-                titleLabelSize = m_titleLabel.BoundingBox.Size;
+                titleLabelSize = _titleLabel.BoundingBox.Size;
             }
 
             // Adjust the background image if necessary
-            if (m_doesAdjustBackgroundImage)
+            if (_doesAdjustBackgroundImage)
             {
                 // Add the margins
-                if (m_backgroundSprite != null)
+                if (_backgroundSprite != null)
                 {
-                    m_backgroundSprite.ContentSize = new CCSize(titleLabelSize.Width + m_marginH * 2, titleLabelSize.Height + m_marginV * 2);
+                    _backgroundSprite.ContentSize = new CCSize(titleLabelSize.Width + _marginH * 2, titleLabelSize.Height + _marginV * 2);
                 }
             }
             else
             {
                 //TODO: should this also have margins if one of the preferred sizes is relaxed?
-                if (m_backgroundSprite != null)
+                if (_backgroundSprite != null)
                 {
-                    CCSize preferredSize = m_backgroundSprite.PreferredSize;
+                    CCSize preferredSize = _backgroundSprite.PreferredSize;
                     if (preferredSize.Width <= 0)
                     {
                         preferredSize.Width = titleLabelSize.Width;
@@ -208,37 +208,37 @@ namespace Cocos2D
                         preferredSize.Height = titleLabelSize.Height;
                     }
 
-                    m_backgroundSprite.ContentSize = preferredSize;
+                    _backgroundSprite.ContentSize = preferredSize;
                 }
             }
 
             // Set the content size
             CCRect rectTitle = CCRect.Zero;
-            if (m_titleLabel != null)
+            if (_titleLabel != null)
             {
-                rectTitle = m_titleLabel.BoundingBox;
+                rectTitle = _titleLabel.BoundingBox;
             }
             CCRect rectBackground = CCRect.Zero;
-            if (m_backgroundSprite != null)
+            if (_backgroundSprite != null)
             {
-                rectBackground = m_backgroundSprite.BoundingBox;
+                rectBackground = _backgroundSprite.BoundingBox;
             }
 
             CCRect maxRect = CCControlUtils.CCRectUnion(rectTitle, rectBackground);
             ContentSize = new CCSize(maxRect.Size.Width, maxRect.Size.Height);
 
-            if (m_titleLabel != null)
+            if (_titleLabel != null)
             {
-                m_titleLabel.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
+                _titleLabel.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
                 // Make visible label
-                m_titleLabel.Visible = true;
+                _titleLabel.Visible = true;
             }
 
-            if (m_backgroundSprite != null)
+            if (_backgroundSprite != null)
             {
-                m_backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
+                _backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
                 // Make visible the background
-                m_backgroundSprite.Visible = true;
+                _backgroundSprite.Visible = true;
             }
         }
 
@@ -247,13 +247,13 @@ namespace Cocos2D
 
         public void SetAdjustBackgroundImage(bool adjustBackgroundImage)
         {
-            m_doesAdjustBackgroundImage = adjustBackgroundImage;
+            _doesAdjustBackgroundImage = adjustBackgroundImage;
             NeedsLayout();
         }
 
         public bool DoesAdjustBackgroundImage()
         {
-            return m_doesAdjustBackgroundImage;
+            return _doesAdjustBackgroundImage;
         }
 
 
@@ -261,32 +261,32 @@ namespace Cocos2D
 
         public bool ZoomOnTouchDown
         {
-            set { m_zoomOnTouchDown = value; }
-            get { return m_zoomOnTouchDown; }
+            set { _zoomOnTouchDown = value; }
+            get { return _zoomOnTouchDown; }
         }
 
         /** The prefered size of the button, if label is larger it will be expanded. */
 
         public CCSize PreferredSize
         {
-            get { return m_preferredSize; }
+            get { return _preferredSize; }
             set
             {
                 if (value.Width == 0 && value.Height == 0)
                 {
-                    m_doesAdjustBackgroundImage = true;
+                    _doesAdjustBackgroundImage = true;
                 }
                 else
                 {
-                    m_doesAdjustBackgroundImage = false;
-                    foreach (var item in m_backgroundSpriteDispatchTable)
+                    _doesAdjustBackgroundImage = false;
+                    foreach (var item in _backgroundSpriteDispatchTable)
                     {
                         CCScale9Sprite sprite = item.Value;
                         sprite.PreferredSize = value;
                     }
                 }
 
-                m_preferredSize = value;
+                _preferredSize = value;
 
                 NeedsLayout();
             }
@@ -295,13 +295,13 @@ namespace Cocos2D
 
         public CCPoint LabelAnchorPoint
         {
-            get { return m_labelAnchorPoint; }
+            get { return _labelAnchorPoint; }
             set
             {
-                m_labelAnchorPoint = value;
-                if (m_titleLabel != null)
+                _labelAnchorPoint = value;
+                if (_titleLabel != null)
                 {
-                    m_titleLabel.AnchorPoint = value;
+                    _titleLabel.AnchorPoint = value;
                 }
             }
         }
@@ -311,14 +311,14 @@ namespace Cocos2D
         //set the margins at once (so we only have to do one call of needsLayout)
         protected virtual void SetMargins(int marginH, int marginV)
         {
-            m_marginV = marginV;
-            m_marginH = marginH;
+            _marginV = marginV;
+            _marginH = marginH;
             NeedsLayout();
         }
 
         public override bool Init()
         {
-            return InitWithLabelAndBackgroundSprite(new CCLabelTTF("", "Helvetica", 12), new CCScale9Sprite());
+            return InitWithLabelAndBackgroundSprite(new CCLabelTTF("", "Arial", 12), new CCScale9Sprite());
         }
 
         public virtual bool InitWithLabelAndBackgroundSprite(CCNode node, CCScale9Sprite backgroundSprite)
@@ -331,25 +331,25 @@ namespace Cocos2D
                 Debug.Assert(backgroundSprite != null, "Background sprite must not be nil.");
                 Debug.Assert(label != null || rgbaLabel != null || backgroundSprite != null);
 
-                m_bParentInited = true;
+                _parentInited = true;
 
                 // Initialize the button state tables
-                m_titleDispatchTable = new Dictionary<CCControlState, string>();
-                m_titleColorDispatchTable = new Dictionary<CCControlState, CCColor3B>();
-                m_titleLabelDispatchTable = new Dictionary<CCControlState, CCNode>();
-                m_backgroundSpriteDispatchTable = new Dictionary<CCControlState, CCScale9Sprite>();
+                _titleDispatchTable = new Dictionary<CCControlState, string>();
+                _titleColorDispatchTable = new Dictionary<CCControlState, CCColor3B>();
+                _titleLabelDispatchTable = new Dictionary<CCControlState, CCNode>();
+                _backgroundSpriteDispatchTable = new Dictionary<CCControlState, CCScale9Sprite>();
 
                 TouchEnabled = true;
-                m_isPushed = false;
-                m_zoomOnTouchDown = true;
+                _isPushed = false;
+                _zoomOnTouchDown = true;
 
-                m_currentTitle = null;
+                _currentTitle = null;
 
                 // Adjust the background image by default
                 SetAdjustBackgroundImage(true);
                 PreferredSize = CCSize.Zero;
                 // Zooming button by default
-                m_zoomOnTouchDown = true;
+                _zoomOnTouchDown = true;
 
                 // Set the default anchor point
                 IgnoreAnchorPointForPosition = false;
@@ -401,7 +401,7 @@ namespace Cocos2D
 
         protected virtual bool InitWithBackgroundSprite(CCScale9Sprite sprite)
         {
-            CCLabelTTF label = new CCLabelTTF("", "arial", 30);
+            CCLabelTTF label = new CCLabelTTF("", "Arial", 30);
             return InitWithLabelAndBackgroundSprite(label, sprite);
         }
 
@@ -418,8 +418,8 @@ namespace Cocos2D
                 return false;
             }
 
-            m_eState = CCControlState.Highlighted;
-            m_isPushed = true;
+            _state = CCControlState.Highlighted;
+            _isPushed = true;
             Highlighted = true;
             SendActionsForControlEvents(CCControlEvent.TouchDown);
             return true;
@@ -437,9 +437,9 @@ namespace Cocos2D
             }
 
             bool isTouchMoveInside = IsTouchInside(pTouch);
-            if (isTouchMoveInside && !m_bHighlighted)
+            if (isTouchMoveInside && !_highlighted)
             {
-                m_eState = CCControlState.Highlighted;
+                _state = CCControlState.Highlighted;
                 Highlighted = true;
                 SendActionsForControlEvents(CCControlEvent.TouchDragEnter);
             }
@@ -449,7 +449,7 @@ namespace Cocos2D
             }
             else if (!isTouchMoveInside && Highlighted)
             {
-                m_eState = CCControlState.Normal;
+                _state = CCControlState.Normal;
                 Highlighted = false;
 
                 SendActionsForControlEvents(CCControlEvent.TouchDragExit);
@@ -462,8 +462,8 @@ namespace Cocos2D
 
         public override void TouchEnded(CCTouch pTouch)
         {
-            m_eState = CCControlState.Normal;
-            m_isPushed = false;
+            _state = CCControlState.Normal;
+            _isPushed = false;
             Highlighted = false;
 
 
@@ -483,8 +483,8 @@ namespace Cocos2D
 
         public override void TouchCancelled(CCTouch pTouch)
         {
-            m_eState = CCControlState.Normal;
-            m_isPushed = false;
+            _state = CCControlState.Normal;
+            _isPushed = false;
             Highlighted = false;
             SendActionsForControlEvents(CCControlEvent.TouchCancel);
         }
@@ -500,14 +500,14 @@ namespace Cocos2D
 
         public virtual string GetTitleForState(CCControlState state)
         {
-            if (m_titleDispatchTable != null)
+            if (_titleDispatchTable != null)
             {
                 string title;
-                if (m_titleDispatchTable.TryGetValue(state, out title))
+                if (_titleDispatchTable.TryGetValue(state, out title))
                 {
                     return title;
                 }
-                if (m_titleDispatchTable.TryGetValue(CCControlState.Normal, out title))
+                if (_titleDispatchTable.TryGetValue(CCControlState.Normal, out title))
                 {
                     return title;
                 }
@@ -527,14 +527,14 @@ namespace Cocos2D
 
         public virtual void SetTitleForState(string title, CCControlState state)
         {
-            if (m_titleDispatchTable.ContainsKey(state))
+            if (_titleDispatchTable.ContainsKey(state))
             {
-                m_titleDispatchTable.Remove(state);
+                _titleDispatchTable.Remove(state);
             }
 
             if (!String.IsNullOrEmpty(title))
             {
-                m_titleDispatchTable.Add(state, title);
+                _titleDispatchTable.Add(state, title);
             }
 
             // If the current state if equal to the given state we update the layout
@@ -555,16 +555,16 @@ namespace Cocos2D
 
         public virtual CCColor3B GetTitleColorForState(CCControlState state)
         {
-            if (m_titleColorDispatchTable != null)
+            if (_titleColorDispatchTable != null)
             {
                 CCColor3B color;
 
-                if (m_titleColorDispatchTable.TryGetValue(state, out color))
+                if (_titleColorDispatchTable.TryGetValue(state, out color))
                 {
                     return color;
                 }
 
-                if (m_titleColorDispatchTable.TryGetValue(CCControlState.Normal, out color))
+                if (_titleColorDispatchTable.TryGetValue(CCControlState.Normal, out color))
                 {
                     return color;
                 }
@@ -582,12 +582,12 @@ namespace Cocos2D
 
         public virtual void SetTitleColorForState(CCColor3B color, CCControlState state)
         {
-            if (m_titleColorDispatchTable.ContainsKey(state))
+            if (_titleColorDispatchTable.ContainsKey(state))
             {
-                m_titleColorDispatchTable.Remove(state);
+                _titleColorDispatchTable.Remove(state);
             }
 
-            m_titleColorDispatchTable.Add(state, color);
+            _titleColorDispatchTable.Add(state, color);
 
             // If the current state if equal to the given state we update the layout
             if (State == state)
@@ -606,11 +606,11 @@ namespace Cocos2D
         public virtual CCNode GetTitleLabelForState(CCControlState state)
         {
             CCNode titleLabel;
-            if (m_titleLabelDispatchTable.TryGetValue(state, out titleLabel))
+            if (_titleLabelDispatchTable.TryGetValue(state, out titleLabel))
             {
                 return titleLabel;
             }
-            if (m_titleLabelDispatchTable.TryGetValue(CCControlState.Normal, out titleLabel))
+            if (_titleLabelDispatchTable.TryGetValue(CCControlState.Normal, out titleLabel))
             {
                 return titleLabel;
             }
@@ -630,13 +630,13 @@ namespace Cocos2D
         public virtual void SetTitleLabelForState(CCNode titleLabel, CCControlState state)
         {
             CCNode previousLabel;
-            if (m_titleLabelDispatchTable.TryGetValue(state, out previousLabel))
+            if (_titleLabelDispatchTable.TryGetValue(state, out previousLabel))
             {
                 RemoveChild(previousLabel, true);
-                m_titleLabelDispatchTable.Remove(state);
+                _titleLabelDispatchTable.Remove(state);
             }
 
-            m_titleLabelDispatchTable.Add(state, titleLabel);
+            _titleLabelDispatchTable.Add(state, titleLabel);
             titleLabel.Visible = false;
             titleLabel.AnchorPoint = new CCPoint(0.5f, 0.5f);
             AddChild(titleLabel, 1);
@@ -730,11 +730,11 @@ namespace Cocos2D
         public virtual CCScale9Sprite GetBackgroundSpriteForState(CCControlState state)
         {
             CCScale9Sprite backgroundSprite;
-            if (m_backgroundSpriteDispatchTable.TryGetValue(state, out backgroundSprite))
+            if (_backgroundSpriteDispatchTable.TryGetValue(state, out backgroundSprite))
             {
                 return backgroundSprite;
             }
-            if (m_backgroundSpriteDispatchTable.TryGetValue(CCControlState.Normal, out backgroundSprite))
+            if (_backgroundSpriteDispatchTable.TryGetValue(CCControlState.Normal, out backgroundSprite))
             {
                 return backgroundSprite;
             }
@@ -751,29 +751,29 @@ namespace Cocos2D
 
         public virtual void SetBackgroundSpriteForState(CCScale9Sprite sprite, CCControlState state)
         {
-            CCSize oldPreferredSize = m_preferredSize;
+            CCSize oldPreferredSize = _preferredSize;
 
             CCScale9Sprite previousBackgroundSprite;
-            if (m_backgroundSpriteDispatchTable.TryGetValue(state, out previousBackgroundSprite))
+            if (_backgroundSpriteDispatchTable.TryGetValue(state, out previousBackgroundSprite))
             {
                 RemoveChild(previousBackgroundSprite, true);
-                m_backgroundSpriteDispatchTable.Remove(state);
+                _backgroundSpriteDispatchTable.Remove(state);
             }
 
-            m_backgroundSpriteDispatchTable.Add(state, sprite);
+            _backgroundSpriteDispatchTable.Add(state, sprite);
             sprite.Visible = false;
             sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
             AddChild(sprite);
 
-            if (m_preferredSize.Width != 0 || m_preferredSize.Height != 0)
+            if (_preferredSize.Width != 0 || _preferredSize.Height != 0)
             {
-                if (oldPreferredSize.Equals(m_preferredSize))
+                if (oldPreferredSize.Equals(_preferredSize))
                 {
                     // Force update of preferred size
                     sprite.PreferredSize = new CCSize(oldPreferredSize.Width + 1, oldPreferredSize.Height + 1);
                 }
 
-                sprite.PreferredSize = m_preferredSize;
+                sprite.PreferredSize = _preferredSize;
             }
 
             // If the current state if equal to the given state we update the layout
