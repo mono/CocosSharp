@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <project name="Cococs2D-XNA Build Script" default="build" basedir="..">
   <description>Default Cocos2D-XNA Automated Build script</description>
+  <property name="apikey" value="${environment::get-variable('NUGET_API_KEY')}"/>
   <property name="os" value="${operating-system::get-platform(environment::get-operating-system())}" />
   <property name="mdtooldir" value="/Applications/MonoDevelop.app/Contents/MacOS"/>
   <!--property name="psmtooldir" value="C:\Program Files (x86)\SCE\PSM\tools\PsmStudio\bin" /-->
@@ -23,7 +24,7 @@
     </delete>
   </target>
 
-  <target name="build" description="Build MonoGame Release" depends="monogame">
+  <target name="build" description="Build Cocos2D-XNA Release" depends="monogame">
 
     <call target="buildandroid"/>
     <call target="buildouya"/>
@@ -32,8 +33,22 @@
 
   <target name="monogame" description="Build MonoGame Release" depends="checkos">
 
-    <copy file="${project::get-base-directory()}\MonoGame.build" tofile="${project::get-base-directory()}\MonoGame\default.build" overwrite="true"/>
-    <nant buildfile="${project::get-base-directory()}\MonoGame\default.build" target="build" />
+    <if test="${os == 'Win32NT'}">
+      <if test="${file::exists('C:\Program Files (x86)\MSBuild\Novell\Novell.MonoDroid.CSharp.targets')}">
+        <exec program="msbuild " commandline="..\MonoGame\MonoGame.Framework.Android.sln /t:Clean /p:Configuration=Release" />
+        <exec program="msbuild " commandline="..\MonoGame\MonoGame.Framework.Android.sln /t:Build /p:Configuration=Release" />
+        <exec program="msbuild " commandline="..\MonoGame\MonoGame.Framework.OUYA.sln /t:Clean /p:Configuration=Release" />
+        <exec program="msbuild " commandline="..\MonoGame\MonoGame.Framework.OUYA.sln /t:Build /p:Configuration=Release" />
+      </if>
+    </if>
+    <if test="${os == 'MacOS'}">
+      <if test="${file::exists('/Developer/MonoAndroid/usr/bin/mandroid')}">
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release ../MonoGame/MonoGame.Framework.Android.sln" />
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release ../MonoGame/MonoGame.Framework.Android.sln" />
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release ../MonoGame/MonoGame.Framework.OUYA.sln" />
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release ../MonoGame/MonoGame.Framework.OUYA.sln" />
+      </if>
+    </if>
 
   </target>
 

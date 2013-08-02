@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <project name="Cococs2D-XNA Build Script" default="build" basedir="..">
   <description>Default Cocos2D-XNA Automated Build script</description>
+  <property name="apikey" value="${environment::get-variable('NUGET_API_KEY')}"/>
   <property name="os" value="${operating-system::get-platform(environment::get-operating-system())}" />
   <property name="mdtooldir" value="/Applications/MonoDevelop.app/Contents/MacOS"/>
   <!--property name="psmtooldir" value="C:\Program Files (x86)\SCE\PSM\tools\PsmStudio\bin" /-->
