@@ -47,8 +47,8 @@
 
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Windows8.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsPhone8.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="push ${packages.dir.path}Cocos2D.Windows8.nuget  -s http://nuget.cocos2dxna.com/${apikey}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="push ${packages.dir.path}Cocos2D.WindowsPhone8.nuget -s http://nuget.cocos2dxna.com/${apikey}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="push ${packages.dir.path}\Cocos2D.Windows8.0.9.0.0.nupkg  -s http://nuget.cocos2dxna.com/${apikey}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="push ${packages.dir.path}\Cocos2D.WindowsPhone8.0.9.0.0.nupkg -s http://nuget.cocos2dxna.com/${apikey}" />
 
     </if>
   </target>

@@ -47,8 +47,8 @@
 
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Android.nuspec -OutputDirectory ${packages.dir.path}" />
       <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Ouya.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="push ${packages.dir.path}Cocos2D.Android.nuget  -s http://nuget.cocos2dxna.com/${apikey}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="push ${packages.dir.path}Cocos2D.Ouya.nuget -s http://nuget.cocos2dxna.com/${apikey}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="push ${packages.dir.path}\Cocos2D.Android.0.9.0.0.nupkg  -s http://nuget.cocos2dxna.com/${apikey}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="push ${packages.dir.path}\Cocos2D.Ouya.0.9.0.0.nupkg -s http://nuget.cocos2dxna.com/${apikey}" />
     </if>
   </target>
 
