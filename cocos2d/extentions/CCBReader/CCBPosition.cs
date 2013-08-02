@@ -5,39 +5,39 @@ using System.Linq;
 using System.Text;
 
 
-namespace Cocos2D
+namespace Cocos2D.CCBReader
 {
     public static class CCBHelper
     {
-        public static CCPoint GetAbsolutePosition(CCPoint pt, CCBPositionType nType, CCSize containerSize, string pPropName)
+        public static CCPoint GetAbsolutePosition(CCPoint pt, PositionType nType, CCSize containerSize, string pPropName)
         {
             CCPoint absPt = new CCPoint(0, 0);
             
-            if (nType == CCBPositionType.RelativeBottomLeft)
+            if (nType == PositionType.RelativeBottomLeft)
             {
                 absPt = pt;
             }
-            else if (nType == CCBPositionType.RelativeTopLeft)
+            else if (nType == PositionType.RelativeTopLeft)
             {
                 absPt.X = pt.X;
                 absPt.Y = containerSize.Height - pt.Y;
             }
-            else if (nType == CCBPositionType.RelativeTopRight)
+            else if (nType == PositionType.RelativeTopRight)
             {
                 absPt.X = containerSize.Width - pt.X;
                 absPt.Y = containerSize.Height - pt.Y;
             }
-            else if (nType == CCBPositionType.RelativeBottomRight)
+            else if (nType == PositionType.RelativeBottomRight)
             {
                 absPt.X = containerSize.Width - pt.X;
                 absPt.Y = pt.Y;
             }
-            else if (nType == CCBPositionType.Percent)
+            else if (nType == PositionType.Percent)
             {
                 absPt.X = (int) (containerSize.Width * pt.X / 100.0f);
                 absPt.Y = (int) (containerSize.Height * pt.Y / 100.0f);
             }
-            else if (nType == CCBPositionType.MultiplyResolution)
+            else if (nType == PositionType.MultiplyResolution)
             {
                 float resolutionScale = CCBReader.ResolutionScale;
 
@@ -48,11 +48,11 @@ namespace Cocos2D
             return absPt;
         }
 
-        public static void SetRelativeScale(CCNode node, float fScaleX, float fScaleY, CCBScaleType nType, string pPropName)
+        public static void SetRelativeScale(CCNode node, float fScaleX, float fScaleY, ScaleType nType, string pPropName)
         {
             Debug.Assert(node != null, "node should not be null");
 
-            if (nType == CCBScaleType.MultiplyResolution)
+            if (nType == ScaleType.MultiplyResolution)
             {
                 float resolutionScale = CCBReader.ResolutionScale;
 

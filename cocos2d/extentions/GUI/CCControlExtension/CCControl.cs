@@ -84,40 +84,41 @@ namespace Cocos2D
     public class CCControl : CCLayerRGBA
     {
         /** Number of kinds of control event. */
-        private const int kControlEventTotalNumber = 9;
-        protected bool m_bEnabled;
-        protected bool m_bHighlighted;
-        protected bool m_bSelected;
-        protected CCControlState m_eState;
-        protected bool m_hasVisibleParents;
+        private const int ControlEventTotalNumber = 9;
+        protected bool _enabled;
+        protected bool _highlighted;
+        protected bool _selected;
+        protected CCControlState _state;
+        protected bool _hasVisibleParents;
 
-        private bool m_bIsOpacityModifyRGB;
+        private bool _isOpacityModifyRGB;
 
         /** Changes the priority of the button. The lower the number, the higher the priority. */
-        private int m_nDefaultTouchPriority;
-        protected Dictionary<CCControlEvent, CCRawList<CCInvocation>> m_pDispatchTable;
+        private int _defaultTouchPriority;
+        protected Dictionary<CCControlEvent, CCRawList<CCInvocation>> _dispatchTable;
 
         public int DefaultTouchPriority
         {
-            get { return m_nDefaultTouchPriority; }
-            set { m_nDefaultTouchPriority = value; }
+            get { return _defaultTouchPriority; }
+            set { _defaultTouchPriority = value; }
         }
 
         /** The current control state constant. */
 
         public CCControlState State
         {
-            get { return m_eState; }
+            get { return _state; }
+            set { _state = value; }
         }
 
         #region RGBA Protocol
 
         public override bool IsOpacityModifyRGB
         {
-            get { return m_bIsOpacityModifyRGB; }
+            get { return _isOpacityModifyRGB; }
             set
             {
-                m_bIsOpacityModifyRGB = value;
+                _isOpacityModifyRGB = value;
                 
                 if (m_pChildren != null && m_pChildren.count > 0)
                 {
@@ -139,17 +140,17 @@ namespace Cocos2D
 
         public virtual bool Enabled
         {
-            get { return m_bEnabled; }
+            get { return _enabled; }
             set
             {
-                m_bEnabled = value;
-                if (m_bEnabled)
+                _enabled = value;
+                if (_enabled)
                 {
-                    m_eState = CCControlState.Normal;
+                    _state = CCControlState.Normal;
                 }
                 else
                 {
-                    m_eState = CCControlState.Disabled;
+                    _state = CCControlState.Disabled;
                 }
                 NeedsLayout();
             }
@@ -159,10 +160,10 @@ namespace Cocos2D
 
         public virtual bool Selected
         {
-            get { return m_bSelected; }
+            get { return _selected; }
             set
             {
-                m_bSelected = value;
+                _selected = value;
                 NeedsLayout();
             }
         }
@@ -171,10 +172,10 @@ namespace Cocos2D
 
         public virtual bool Highlighted
         {
-            get { return m_bHighlighted; }
+            get { return _highlighted; }
             set
             {
-                m_bHighlighted = value;
+                _highlighted = value;
                 NeedsLayout();
             }
         }
@@ -187,7 +188,7 @@ namespace Cocos2D
                 //this->setTouchEnabled(true);
                 //m_bIsTouchEnabled=true;
                 // Initialise instance variables
-                m_eState = CCControlState.Normal;
+                _state = CCControlState.Normal;
                 Enabled = true;
                 Selected = false;
                 Highlighted = false;
@@ -195,7 +196,7 @@ namespace Cocos2D
                 // Set the touch dispatcher priority by default to 1
                 DefaultTouchPriority = 1;
                 // Initialise the tables
-                m_pDispatchTable = new Dictionary<CCControlEvent, CCRawList<CCInvocation>>();
+                _dispatchTable = new Dictionary<CCControlEvent, CCRawList<CCInvocation>>();
                 return true;
             }
             return false;
@@ -203,7 +204,7 @@ namespace Cocos2D
 
         public override void RegisterWithTouchDispatcher()
         {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, m_nDefaultTouchPriority, true);
+            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, _defaultTouchPriority, true);
         }
 
         /**
@@ -216,7 +217,7 @@ namespace Cocos2D
         public virtual void SendActionsForControlEvents(CCControlEvent controlEvents)
         {
             // For each control events
-            for (int i = 0; i < kControlEventTotalNumber; i++)
+            for (int i = 0; i < ControlEventTotalNumber; i++)
             {
                 // If the given controlEvents bitmask contains the curent event
                 if ((controlEvents & (CCControlEvent) (1 << i)) != 0)
@@ -250,7 +251,7 @@ namespace Cocos2D
 		public virtual void AddTargetWithActionForControlEvents(object target, Action<object, CCControlEvent> action, CCControlEvent controlEvents)
         {
             // For each control events
-            for (int i = 0; i < kControlEventTotalNumber; i++)
+            for (int i = 0; i < ControlEventTotalNumber; i++)
             {
                 // If the given controlEvents bitmask contains the curent event
                 if (((int) controlEvents & (1 << i)) != 0)
@@ -276,7 +277,7 @@ namespace Cocos2D
 		public virtual void RemoveTargetWithActionForControlEvents(object target, Action<object, CCControlEvent> action, CCControlEvent controlEvents)
         {
             // For each control events
-            for (int i = 0; i < kControlEventTotalNumber; i++)
+            for (int i = 0; i < ControlEventTotalNumber; i++)
             {
                 // If the given controlEvents bitmask contains the curent event
                 if ((controlEvents & (CCControlEvent) (1 << i)) != 0)
@@ -295,7 +296,7 @@ namespace Cocos2D
         public virtual CCPoint GetTouchLocation(CCTouch touch)
         {
             CCPoint touchLocation = touch.Location; // Get the touch position
-            touchLocation = Parent.ConvertToNodeSpace(touchLocation); // Convert to the node space of this class
+            touchLocation = ConvertToNodeSpace(touchLocation); // Convert to the node space of this class
 
             return touchLocation;
         }
@@ -348,11 +349,11 @@ namespace Cocos2D
         protected CCRawList<CCInvocation> DispatchListforControlEvent(CCControlEvent controlEvent)
         {
             CCRawList<CCInvocation> invocationList;
-            if (!m_pDispatchTable.TryGetValue(controlEvent, out invocationList))
+            if (!_dispatchTable.TryGetValue(controlEvent, out invocationList))
             {
                 invocationList = new CCRawList<CCInvocation>(1);
 
-                m_pDispatchTable.Add(controlEvent, invocationList);
+                _dispatchTable.Add(controlEvent, invocationList);
             }
             return invocationList;
         }

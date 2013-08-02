@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 
-namespace Cocos2D
+namespace Cocos2D.CCBReader
 {
     public class CCNodeLoaderLibrary 
     {
-        private static CCNodeLoaderLibrary sSharedCCNodeLoaderLibrary;
+        private static CCNodeLoaderLibrary _instance;
         
-        private Dictionary<string, CCNodeLoader> mCCNodeLoaders = new Dictionary<string, CCNodeLoader>();
+        private Dictionary<string, CCNodeLoader> _nodeLoaders = new Dictionary<string, CCNodeLoader>();
 
         public void RegisterDefaultCCNodeLoaders()
         {
@@ -28,40 +28,40 @@ namespace Cocos2D
 
         public void RegisterCCNodeLoader(string pClassName, CCNodeLoader pCCNodeLoader)
         {
-            mCCNodeLoaders.Add(pClassName, pCCNodeLoader);
+            _nodeLoaders.Add(pClassName, pCCNodeLoader);
         }
 
         public void UnregisterCCNodeLoader(string pClassName)
         {
-            mCCNodeLoaders.Remove(pClassName);
+            _nodeLoaders.Remove(pClassName);
         }
 
         public CCNodeLoader GetCCNodeLoader(string pClassName)
         {
-            return mCCNodeLoaders[pClassName];
+            return _nodeLoaders[pClassName];
         }
 
         public void Purge(bool pDelete)
         {
-            mCCNodeLoaders.Clear();
+            _nodeLoaders.Clear();
         }
 
-        public static CCNodeLoaderLibrary SharedCCNodeLoaderLibrary
+        public static CCNodeLoaderLibrary Instance
         {
             get
             {
-                if (sSharedCCNodeLoaderLibrary == null)
+                if (_instance == null)
                 {
-                    sSharedCCNodeLoaderLibrary = new CCNodeLoaderLibrary();
-                    sSharedCCNodeLoaderLibrary.RegisterDefaultCCNodeLoaders();
+                    _instance = new CCNodeLoaderLibrary();
+                    _instance.RegisterDefaultCCNodeLoaders();
                 }
-                return sSharedCCNodeLoaderLibrary;
+                return _instance;
             }
         }
 
         public static void PurgeSharedCCNodeLoaderLibrary()
         {
-            sSharedCCNodeLoaderLibrary = null;
+            _instance = null;
         }
 
         public static CCNodeLoaderLibrary NewDefaultCCNodeLoaderLibrary()

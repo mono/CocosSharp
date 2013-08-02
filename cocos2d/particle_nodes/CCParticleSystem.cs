@@ -379,6 +379,7 @@ namespace Cocos2D
 
         protected CCParticleSystem ()
         {
+            Init();
         }
 
         public CCParticleSystem (string plistFile)

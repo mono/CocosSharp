@@ -39,7 +39,7 @@ namespace tests.Extensions
                     mCCControlEventLabel.Text = ("Value Changed.");
                     break;
                 default:
-                    Debug.Assert(false); // OH SHIT!
+                    Debug.Assert(false);
                     break;
             }
         }

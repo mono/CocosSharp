@@ -1,4 +1,4 @@
-namespace Cocos2D
+namespace Cocos2D.CCBReader
 {
     internal class CCControlLoader : CCNodeLoader
     {

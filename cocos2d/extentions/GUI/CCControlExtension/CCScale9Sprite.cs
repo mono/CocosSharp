@@ -9,15 +9,20 @@ namespace Cocos2D
     /// </summary>
     public class CCScale9Sprite : CCNodeRGBA
     {
+        protected CCSpriteBatchNode _scale9Image;
+        protected CCSprite _top;
+        protected CCSprite _topLeft;
+        protected CCSprite _topRight;
         protected CCSprite _bottom;
         protected CCSprite _bottomLeft;
         protected CCSprite _bottomRight;
         protected CCSprite _centre;
         protected CCSprite _left;
+        protected CCSprite _right;
 
         protected bool _opacityModifyRGB;
-        protected bool m_bSpriteFrameRotated;
-        protected bool m_bSpritesGenerated;
+        protected bool _spriteFrameRotated;
+        protected bool _spritesGenerated;
         protected byte _opacity = 255;
 
         /** 
@@ -25,23 +30,18 @@ namespace Cocos2D
         * On a non-resizeable sprite, this property is set to CGRectZero; the sprite 
         * does not use end caps and the entire sprite is subject to stretching. 
         */
-        private CCRect m_capInsets;
-        protected CCRect m_capInsetsInternal;
-        private float m_insetBottom;
-        private float m_insetLeft;
-        private float m_insetRight;
-        private float m_insetTop;
-        private CCSize m_originalSize;
-        protected bool m_positionsAreDirty;
-        private CCSize m_preferredSize;
-        protected CCColor3B m_sColorUnmodified;
-        protected CCRect m_spriteRect;
-        protected CCColor3B m_tColor = CCTypes.CCWhite;
-        protected CCSprite _right;
-        protected CCSpriteBatchNode _scale9Image;
-        protected CCSprite _top;
-        protected CCSprite _topLeft;
-        protected CCSprite _topRight;
+        private CCRect _capInsets;
+        protected CCRect _capInsetsInternal;
+        private float _insetBottom;
+        private float _insetLeft;
+        private float _insetRight;
+        private float _insetTop;
+        private CCSize _originalSize;
+        protected bool _positionsAreDirty;
+        private CCSize _preferredSize;
+        protected CCRect _spriteRect;
+        
+        
 
         public override CCSize ContentSize
         {
@@ -49,27 +49,27 @@ namespace Cocos2D
             set
             {
                 base.ContentSize = value;
-                m_positionsAreDirty = true;
+                _positionsAreDirty = true;
             }
         }
 
         public CCSize PreferredSize
         {
-            get { return m_preferredSize; }
+            get { return _preferredSize; }
             set
             {
                 ContentSize = value;
-                m_preferredSize = value;
+                _preferredSize = value;
             }
         }
 
         public CCRect CapInsets
         {
-            get { return m_capInsets; }
+            get { return _capInsets; }
             set
             {
                 CCSize contentSize = m_obContentSize;
-                UpdateWithBatchNode(_scale9Image, m_spriteRect, m_bSpriteFrameRotated, value);
+                UpdateWithBatchNode(_scale9Image, _spriteRect, _spriteFrameRotated, value);
                 ContentSize = contentSize;
             }
         }
@@ -78,58 +78,58 @@ namespace Cocos2D
         {
             set
             {
-                m_insetLeft = value;
+                _insetLeft = value;
                 UpdateCapInset();
             }
-            get { return m_insetLeft; }
+            get { return _insetLeft; }
         }
 
         public float InsetTop
         {
             set
             {
-                m_insetTop = value;
+                _insetTop = value;
                 UpdateCapInset();
             }
-            get { return m_insetTop; }
+            get { return _insetTop; }
         }
 
         public float InsetRight
         {
             set
             {
-                m_insetRight = value;
+                _insetRight = value;
                 UpdateCapInset();
             }
-            get { return m_insetRight; }
+            get { return _insetRight; }
         }
 
         public float InsetBottom
         {
             set
             {
-                m_insetBottom = value;
+                _insetBottom = value;
                 UpdateCapInset();
             }
-            get { return m_insetBottom; }
+            get { return _insetBottom; }
         }
 
         #region RGBA protocol
 
         public override CCColor3B Color
         {
-            get { return m_tColor; }
+            get { return _realColor; }
             set
             {
-                m_tColor = value;
+                base.Color = value;
                 if (_scale9Image != null && _scale9Image.Children != null && _scale9Image.Children.count != 0)
                 {
                     for (int i = 0; i < _scale9Image.Children.count; i++)
                     {
-                        var prot = _scale9Image.Children[i] as ICCRGBAProtocol;
-                        if (prot != null)
+                        var node = _scale9Image.Children[i] as ICCRGBAProtocol;
+                        if (node != null)
                         {
-                            prot.Color = value;
+                            node.Color = value;
                         }
                     }
                 }
@@ -138,18 +138,18 @@ namespace Cocos2D
 
         public override byte Opacity
         {
-            get { return _opacity; }
+            get { return _realOpacity; }
             set
             {
-                _opacity = value;
+                base.Opacity = value;
                 if (_scale9Image != null && _scale9Image.Children != null && _scale9Image.Children.count != 0)
                 {
                     for (int i = 0; i < _scale9Image.Children.count; i++)
                     {
-                        var prot = _scale9Image.Children[i] as ICCRGBAProtocol;
-                        if (prot != null)
+                        var node = _scale9Image.Children[i] as ICCRGBAProtocol;
+                        if (node != null)
                         {
-                            prot.Opacity = value;
+                            node.Opacity = value;
                         }
                     }
                 }
@@ -166,11 +166,45 @@ namespace Cocos2D
                 {
                     for (int i = 0; i < _scale9Image.Children.count; i++)
                     {
-                        var prot = _scale9Image.Children[i] as ICCRGBAProtocol;
-                        if (prot != null)
+                        var node = _scale9Image.Children[i] as ICCRGBAProtocol;
+                        if (node != null)
                         {
-                            prot.IsOpacityModifyRGB = value;
+                            node.IsOpacityModifyRGB = value;
                         }
+                    }
+                }
+            }
+        }
+
+        public override void UpdateDisplayedColor(CCColor3B parentColor)
+        {
+            base.UpdateDisplayedColor(parentColor);
+            if (_scale9Image != null && _scale9Image.Children != null && _scale9Image.Children.count != 0)
+            {
+                for (int i = 0; i < _scale9Image.Children.count; i++)
+                {
+                    var node = _scale9Image.Children[i] as ICCRGBAProtocol;
+                    if (node != null)
+                    {
+                        node.UpdateDisplayedColor(parentColor);
+                    }
+                }
+            }
+
+        }
+
+        public override void UpdateDisplayedOpacity(byte parentOpacity)
+        {
+            base.UpdateDisplayedOpacity(parentOpacity);
+            
+            if (_scale9Image != null && _scale9Image.Children != null && _scale9Image.Children.count != 0)
+            {
+                for (int i = 0; i < _scale9Image.Children.count; i++)
+                {
+                    var node = _scale9Image.Children[i] as ICCRGBAProtocol;
+                    if (node != null)
+                    {
+                        node.UpdateDisplayedOpacity(parentOpacity);
                     }
                 }
             }
@@ -195,9 +229,10 @@ namespace Cocos2D
             if (batchnode != null)
             {
                 UpdateWithBatchNode(batchnode, rect, rotated, capInsets);
-                AnchorPoint = new CCPoint(0.5f, 0.5f);
             }
-            m_positionsAreDirty = true;
+
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            _positionsAreDirty = true;
 
             return true;
         }
@@ -211,10 +246,10 @@ namespace Cocos2D
             RemoveAllChildrenWithCleanup(true);
 
             _scale9Image = batchnode;
-
             _scale9Image.RemoveAllChildrenWithCleanup(true);
 
-            m_capInsets = capInsets;
+            _capInsets = capInsets;
+            _spriteFrameRotated = rotated;
 
             // If there is no given rect
             if (rect.Equals(CCRect.Zero))
@@ -226,26 +261,26 @@ namespace Cocos2D
             }
 
             // Set the given rect's size as original size
-            m_spriteRect = rect;
-            m_originalSize = rect.Size;
-            m_preferredSize = m_originalSize;
-            m_capInsetsInternal = capInsets;
+            _spriteRect = rect;
+            _originalSize = rect.Size;
+            _preferredSize = _originalSize;
+            _capInsetsInternal = capInsets;
 
             float h = rect.Size.Height;
             float w = rect.Size.Width;
 
             // If there is no specified center region
-            if (m_capInsetsInternal.Equals(CCRect.Zero))
+            if (_capInsetsInternal.Equals(CCRect.Zero))
             {
-                m_capInsetsInternal = new CCRect(w / 3, h / 3, w / 3, h / 3);
+                _capInsetsInternal = new CCRect(w / 3, h / 3, w / 3, h / 3);
             }
 
-            float left_w = m_capInsetsInternal.Origin.X;
-            float center_w = m_capInsetsInternal.Size.Width;
+            float left_w = _capInsetsInternal.Origin.X;
+            float center_w = _capInsetsInternal.Size.Width;
             float right_w = rect.Size.Width - (left_w + center_w);
 
-            float top_h = m_capInsetsInternal.Origin.Y;
-            float center_h = m_capInsetsInternal.Size.Height;
+            float top_h = _capInsetsInternal.Origin.Y;
+            float center_h = _capInsetsInternal.Size.Height;
             float bottom_h = rect.Size.Height - (top_h + center_h);
 
             // calculate rects
@@ -460,13 +495,13 @@ namespace Cocos2D
             ContentSize = rect.Size;
             AddChild(_scale9Image);
 
-            if (m_bSpritesGenerated)
+            if (_spritesGenerated)
             {
                 // Restore color and opacity
                 Opacity = opacity;
                 Color = color;
             }
-            m_bSpritesGenerated = true;
+            _spritesGenerated = true;
 
             return true;
         }
@@ -563,7 +598,7 @@ namespace Cocos2D
 
         #region SpriteFrame Methods
 
-        internal virtual bool InitWithSpriteFrame(CCSpriteFrame spriteFrame, CCRect capInsets)
+        public virtual bool InitWithSpriteFrame(CCSpriteFrame spriteFrame, CCRect capInsets)
         {
             Debug.Assert(spriteFrame != null, "Sprite frame must be not nil");
 
@@ -572,14 +607,14 @@ namespace Cocos2D
             return pReturn;
         }
 
-        internal virtual bool InitWithSpriteFrame(CCSpriteFrame spriteFrame)
+        public virtual bool InitWithSpriteFrame(CCSpriteFrame spriteFrame)
         {
             Debug.Assert(spriteFrame != null, "Invalid spriteFrame for sprite");
             bool pReturn = InitWithSpriteFrame(spriteFrame, CCRect.Zero);
             return pReturn;
         }
 
-        internal virtual bool InitWithSpriteFrameName(string spriteFrameName, CCRect capInsets)
+        public virtual bool InitWithSpriteFrameName(string spriteFrameName, CCRect capInsets)
         {
             Debug.Assert(spriteFrameName != null, "Invalid spriteFrameName for sprite");
 
@@ -588,7 +623,7 @@ namespace Cocos2D
             return pReturn;
         }
 
-        internal virtual bool InitWithSpriteFrameName(string spriteFrameName)
+        public virtual bool InitWithSpriteFrameName(string spriteFrameName)
         {
             bool pReturn = InitWithSpriteFrameName(spriteFrameName, CCRect.Zero);
             return pReturn;
@@ -598,7 +633,7 @@ namespace Cocos2D
 
         public CCScale9Sprite(CCRect capInsets)
         {
-            InitWithBatchNode(_scale9Image, m_spriteRect, capInsets);
+            InitWithBatchNode(_scale9Image, _spriteRect, capInsets);
         }
 
         public CCScale9Sprite()
@@ -609,26 +644,16 @@ namespace Cocos2D
         protected void UpdateCapInset()
         {
             CCRect insets;
-            if (m_insetLeft == 0 && m_insetTop == 0 && m_insetRight == 0 && m_insetBottom == 0)
+            if (_insetLeft == 0 && _insetTop == 0 && _insetRight == 0 && _insetBottom == 0)
             {
                 insets = CCRect.Zero;
             }
             else
             {
-                if (m_bSpriteFrameRotated)
-                {
-                    insets = new CCRect(m_insetBottom,
-                                        m_insetLeft,
-                                        m_spriteRect.Size.Width - m_insetRight - m_insetLeft,
-                                        m_spriteRect.Size.Height - m_insetTop - m_insetBottom);
-                }
-                else
-                {
-                    insets = new CCRect(m_insetLeft,
-                                        m_insetTop,
-                                        m_spriteRect.Size.Width - m_insetLeft - m_insetRight,
-                                        m_spriteRect.Size.Height - m_insetTop - m_insetBottom);
-                }
+                insets = new CCRect(_insetLeft,
+                                    _insetTop,
+                                    _spriteRect.Size.Width - _insetLeft - _insetRight,
+                                    _spriteRect.Size.Height - _insetTop - _insetBottom);
             }
             CapInsets = insets;
         }
@@ -640,18 +665,18 @@ namespace Cocos2D
             UpdateWithBatchNode(batchnode, spriteFrame.Rect, spriteFrame.IsRotated, CCRect.Zero);
 
             // Reset insets
-            m_insetLeft = 0;
-            m_insetTop = 0;
-            m_insetRight = 0;
-            m_insetBottom = 0;
+            _insetLeft = 0;
+            _insetTop = 0;
+            _insetRight = 0;
+            _insetBottom = 0;
         }
 
         public override void Visit()
         {
-            if (m_positionsAreDirty)
+            if (_positionsAreDirty)
             {
                 UpdatePositions();
-                m_positionsAreDirty = false;
+                _positionsAreDirty = false;
             }
             base.Visit();
         }

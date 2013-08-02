@@ -35,17 +35,17 @@ namespace Cocos2D
 {
 	internal struct RGBA
 	{
-		public double r;       // percent
-		public double g;       // percent
-		public double b;       // percent
-		public double a;       // percent
+		public float r;       // percent
+		public float g;       // percent
+		public float b;       // percent
+		public float a;       // percent
 	}
 
-	internal struct HSV
+	public struct HSV
 	{
-		public double h;       // angle in degrees
-		public double s;       // percent
-		public double v;       // percent
+		public float h;       // angle in degrees
+		public float s;       // percent
+		public float v;       // percent
 	}
 
 	internal class CCControlUtils
@@ -68,7 +68,7 @@ namespace Cocos2D
 		public static HSV HSVfromRGB(RGBA value)
 		{
 			HSV o;
-			double min, max, delta;
+			float min, max, delta;
     
 			min = value.r < value.g ? value.r : value.g;
 			min = min  < value.b ? min  : value.b;
@@ -78,13 +78,13 @@ namespace Cocos2D
     
 			o.v = max;											// v
 			delta = max - min;
-			if( max > 0.0 )
+			if( max > 0.0f )
 			{
 				o.s = (delta / max);							// s
 			} else
 			{
 				// r = g = b = 0								// s = 0, v is undefined
-				o.s = 0.0;
+				o.s = 0.0f;
 				o.h = -1;										// its now undefined (don't know if setting to NAN is a good idea)
 				return o;
 			}
@@ -94,27 +94,27 @@ namespace Cocos2D
 			} else
 			{
 				if( value.g >= max )
-					o.h = 2.0 + ( value.b - value.r ) / delta;  // between cyan & yellow
+					o.h = 2.0f + ( value.b - value.r ) / delta;  // between cyan & yellow
 				else
-					o.h = 4.0 + ( value.r - value.g ) / delta;  // between magenta & cyan
+					o.h = 4.0f + ( value.r - value.g ) / delta;  // between magenta & cyan
 			}
     
-			o.h *= 60.0;										// degrees
+			o.h *= 60.0f;										// degrees
     
-			if( o.h < 0.0 )
-				o.h += 360.0;
+			if( o.h < 0.0f )
+				o.h += 360.0f;
     
 			return o;
 		}
 
 		public static RGBA RGBfromHSV(HSV value)
 		{
-			double hh, p, q, t, ff;
+			float hh, p, q, t, ff;
 			long i;
 			RGBA o;
-			o.a = 1;
+			o.a = 1f;
     
-			if (value.s <= 0.0) // < is bogus, just shuts up warnings
+			if (value.s <= 0.0f) // < is bogus, just shuts up warnings
 			{       
 				if (double.IsNaN(value.h)) // value.h == NAN
 				{   
@@ -125,20 +125,20 @@ namespace Cocos2D
 				}
         
 				// error - should never happen
-				o.r = 0.0;
-				o.g = 0.0;
-				o.b = 0.0;
+				o.r = 0.0f;
+				o.g = 0.0f;
+				o.b = 0.0f;
 				return o;
 			}
     
 			hh = value.h;
-			if(hh >= 360.0) hh = 0.0;
-			hh /= 60.0;
+			if(hh >= 360.0f) hh = 0.0f;
+			hh /= 60.0f;
 			i = (long)hh;
 			ff = hh - i;
-			p = value.v * (1.0 - value.s);
-			q = value.v * (1.0 - (value.s * ff));
-			t = value.v * (1.0 - (value.s * (1.0 - ff)));
+			p = value.v * (1.0f - value.s);
+			q = value.v * (1.0f - (value.s * ff));
+			t = value.v * (1.0f - (value.s * (1.0f - ff)));
     
 			switch(i)
 			{

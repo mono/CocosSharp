@@ -9,38 +9,38 @@ namespace Cocos2D
 
     public class CCInvocation 
     {
-        private readonly Action<object, CCControlEvent> m_pAction;
-        private readonly CCControlEvent m_pControlEvent;
+        private readonly Action<object, CCControlEvent> _action;
+        private readonly CCControlEvent _controlEvent;
 
-        private readonly object m_target;
+        private readonly object _target;
 
 		public CCInvocation(object target, Action<object, CCControlEvent> action, CCControlEvent controlEvent)
         {
-            m_target = target;
-            m_pAction = action;
-            m_pControlEvent = controlEvent;
+            _target = target;
+            _action = action;
+            _controlEvent = controlEvent;
         }
 
 		public Action<object, CCControlEvent> Action
         {
-            get { return m_pAction; }
+            get { return _action; }
         }
 
         public object Target
         {
-            get { return m_target; }
+            get { return _target; }
         }
 
         public CCControlEvent ControlEvent
         {
-            get { return m_pControlEvent; }
+            get { return _controlEvent; }
         }
 
         public void Invoke(object sender)
         {
-            if (m_target != null && m_pAction != null)
+            if (_target != null && _action != null)
             {
-                Action(sender, m_pControlEvent);
+                Action(sender, _controlEvent);
             }
         }
     }
