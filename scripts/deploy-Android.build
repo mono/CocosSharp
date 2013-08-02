@@ -45,10 +45,32 @@
 
       <mkdir dir="${packages.dir.path}" />
 
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Android.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Ouya.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="push ${packages.dir.path}\Cocos2D-XNA.Android.0.9.0.0.nupkg  -s http://nuget.cocos2dxna.com/ ${apikey}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="push ${packages.dir.path}\Cocos2D-XNA.Ouya.0.9.0.0.nupkg -s http://nuget.cocos2dxna.com/ ${apikey}" />
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.Android.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.Ouya.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="push"/>
+	<arg value="${packages.dir.path}\Cocos2D-XNA.Android.0.9.0.0.nupkg"/>
+	<arg value="-s"/>
+	<arg value="http://nuget.cocos2dxna.com/"/>
+	<arg value="${apikey}"/>
+      </exec>
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="push"/>
+	<arg value="${packages.dir.path}\Cocos2D-XNA.Ouya.0.9.0.0.nupkg"/>
+	<arg value="-s"/>
+	<arg value="http://nuget.cocos2dxna.com/"/>
+	<arg value="${apikey}"/>
+      </exec>
     </if>
   </target>
 
