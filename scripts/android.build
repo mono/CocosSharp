@@ -33,22 +33,8 @@
 
   <target name="monogame" description="Build MonoGame Release" depends="checkos">
 
-    <if test="${os == 'Win32NT'}">
-      <if test="${file::exists('C:\Program Files (x86)\MSBuild\Novell\Novell.MonoDroid.CSharp.targets')}">
-        <exec program="msbuild " commandline="MonoGame\MonoGame.Framework.Android.sln /t:Clean /p:Configuration=Release" />
-        <exec program="msbuild " commandline="MonoGame\MonoGame.Framework.Android.sln /t:Build /p:Configuration=Release" />
-        <exec program="msbuild " commandline="MonoGame\MonoGame.Framework.OUYA.sln /t:Clean /p:Configuration=Release" />
-        <exec program="msbuild " commandline="MonoGame\MonoGame.Framework.OUYA.sln /t:Build /p:Configuration=Release" />
-      </if>
-    </if>
-    <if test="${os == 'MacOS'}">
-      <if test="${file::exists('/Developer/MonoAndroid/usr/bin/mandroid')}">
-        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release MonoGame/MonoGame.Framework.Android.sln" />
-        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release MonoGame/MonoGame.Framework.Android.sln" />
-        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release MonoGame/MonoGame.Framework.OUYA.sln" />
-        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release MonoGame/MonoGame.Framework.OUYA.sln" />
-      </if>
-    </if>
+    <copy file="${project::get-base-directory()}\MonoGame.build" tofile="${project::get-base-directory()}\MonoGame\default.build" overwrite="true"/>
+    <nant buildfile="${project::get-base-directory()}\MonoGame\default.build" target="build-android" />
 
   </target>
 

@@ -31,18 +31,8 @@
 
   <target name="monogame" description="Build MonoGame Release" depends="checkos">
 
-    <if test="${os == 'Win32NT'}">
-      <exec program="msbuild " commandline="MonoGame\MonoGame.Framework.Windows.sln /t:Clean /p:Configuration=Release" />
-      <exec program="msbuild " commandline="MonoGame\MonoGame.Framework.Windows.sln /t:Build /p:Configuration=Release" />
-      <exec program="msbuild " commandline="MonoGame\MonoGame.Framework.WindowsGL.sln /t:Clean /p:Configuration=Release" />
-      <exec program="msbuild " commandline="MonoGame\MonoGame.Framework.WindowsGL.sln /t:Build /p:Configuration=Release" />
-    </if>
-    <if test="${os == 'Unix'}">
-      <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release MonoGame\MonoGame.Framework.Windows.sln" />
-      <exec program="xbuild" commandline="/t:Build /p:Configuration=Release MonoGame\MonoGame.Framework.Windows.sln" />
-      <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release MonoGame\MonoGame.Framework.WindowsGL.sln" />
-      <exec program="xbuild" commandline="/t:Build /p:Configuration=Release MonoGame\MonoGame.Framework.WindowsGL.sln" />
-    </if>
+    <copy file="${project::get-base-directory()}\MonoGame.build" tofile="${project::get-base-directory()}\MonoGame\default.build" overwrite="true"/>
+    <nant buildfile="${project::get-base-directory()}\MonoGame\default.build" target="build-windows" />
 
   </target>
 
