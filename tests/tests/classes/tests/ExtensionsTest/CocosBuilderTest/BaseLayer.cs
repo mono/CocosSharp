@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using Cocos2D;
-using ValueType = Cocos2D.ValueType;
+using ValueType = Cocos2D.CCBValueType;
 
 namespace tests.Extensions
 {

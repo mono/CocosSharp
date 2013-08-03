@@ -8,10 +8,9 @@ namespace Cocos2D
         
         private Dictionary<string, CCNodeLoader> _nodeLoaders = new Dictionary<string, CCNodeLoader>();
 
-        public CCNodeLoaderLibrary ()
-        {
-            RegisterDefaultCCNodeLoaders();
-        }
+        // Make this private so that the developer needs to go through SharedInstance
+        private CCNodeLoaderLibrary()
+        { }
 
         public void RegisterDefaultCCNodeLoaders()
         {
@@ -51,7 +50,7 @@ namespace Cocos2D
             _nodeLoaders.Clear();
         }
 
-        public static CCNodeLoaderLibrary Instance
+        public static CCNodeLoaderLibrary SharedInstance
         {
             get
             {

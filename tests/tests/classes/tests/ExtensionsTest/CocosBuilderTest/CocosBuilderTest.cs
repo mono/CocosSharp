@@ -16,7 +16,7 @@ namespace tests.Extensions
         public override void runThisTest()
         {
             /* Create an autorelease CCNodeLoaderLibrary. */
-            CCNodeLoaderLibrary ccNodeLoaderLibrary = new CCNodeLoaderLibrary();
+            CCNodeLoaderLibrary ccNodeLoaderLibrary = CCNodeLoaderLibrary.SharedInstance;
 
             ccNodeLoaderLibrary.RegisterCCNodeLoader("HelloCocosBuilderLayer", new Loader<HelloCocosBuilderLayer>());
 
