@@ -8,6 +8,11 @@ namespace Cocos2D
         
         private Dictionary<string, CCNodeLoader> _nodeLoaders = new Dictionary<string, CCNodeLoader>();
 
+        public CCNodeLoaderLibrary ()
+        {
+            RegisterDefaultCCNodeLoaders();
+        }
+
         public void RegisterDefaultCCNodeLoaders()
         {
             RegisterCCNodeLoader("CCNode", new CCNodeLoader());
@@ -62,13 +67,6 @@ namespace Cocos2D
         public static void PurgeSharedCCNodeLoaderLibrary()
         {
             _instance = null;
-        }
-
-        public static CCNodeLoaderLibrary NewDefaultCCNodeLoaderLibrary()
-        {
-            var ccNodeLoaderLibrary = new CCNodeLoaderLibrary();
-            ccNodeLoaderLibrary.RegisterDefaultCCNodeLoaders();
-            return ccNodeLoaderLibrary;
         }
     }
 }
