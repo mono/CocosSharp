@@ -24,7 +24,7 @@
     </delete>
   </target>
 
-  <target name="build" description="Build Cocos2D-XNA Release" depends="monogame">
+  <target name="build" description="Build Cocos2D-XNA Release" depends="clean,monogame">
 
     <call target="buildandroid"/>
     <call target="buildouya"/>
@@ -39,7 +39,7 @@
   </target>
 
 
-  <target name="buildandroid" description="Build Android" depends="clean">
+  <target name="buildandroid" description="Build Android">
     <if test="${os == 'Win32NT'}">
       <if test="${file::exists('C:\Program Files (x86)\MSBuild\Xamarin\Android\Xamarin.Android.CSharp.targets')}">
         <exec program="msbuild " commandline="cocos2d-xna.Android.sln /t:Clean /p:Configuration=Release" />
@@ -54,7 +54,7 @@
     </if>
   </target>
 
-  <target name="buildouya" description="Build Android" depends="clean">
+  <target name="buildouya" description="Build Ouya">
     <if test="${os == 'Win32NT'}">
       <if test="${file::exists('C:\Program Files (x86)\MSBuild\Xamarin\Android\Xamarin.Android.CSharp.targets')}">
           <exec program="msbuild " commandline="cocos2d-xna.Ouya.sln /t:Clean /p:Configuration=Release" />
