@@ -23,7 +23,7 @@
     </delete>
   </target>
 
-  <target name="build" description="Build MonoGame Release" depends="monogame">
+  <target name="build" description="Build Cocos2D-XNA Release" depends="monogame">
 
     <call target="buildwindowsphone8"/>
     <call target="buildwindows8"/>
@@ -33,7 +33,7 @@
   <target name="monogame" description="Build MonoGame Release" depends="checkos">
 
     <copy file="${project::get-base-directory()}\MonoGame.build" tofile="${project::get-base-directory()}\MonoGame\default.build" overwrite="true"/>
-    <nant buildfile="${project::get-base-directory()}\MonoGame\default.build" target="build" />
+    <nant buildfile="${project::get-base-directory()}\MonoGame\default.build" target="build-windows8" />
 
   </target>
 

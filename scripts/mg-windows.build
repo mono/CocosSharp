@@ -32,7 +32,7 @@
   <target name="monogame" description="Build MonoGame Release" depends="checkos">
 
     <copy file="${project::get-base-directory()}\MonoGame.build" tofile="${project::get-base-directory()}\MonoGame\default.build" overwrite="true"/>
-    <nant buildfile="${project::get-base-directory()}\MonoGame\default.build" target="build" />
+    <nant buildfile="${project::get-base-directory()}\MonoGame\default.build" target="build-windows" />
 
   </target>
 

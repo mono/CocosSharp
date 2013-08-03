@@ -19,7 +19,7 @@
   <files>
    
     <file src="..\..\cocos2d\bin\WindowsGL\Release\*.dll" target="lib\net40" />
-    <file src="C:\Program Files (x86)\MonoGame\v3.0\Assemblies\WindowsGL\SDL.dll" target="content\" />
+    <file src="..\..\MonoGame\ThirdParty\GamepadConfig\SDL.dll" target="content\" />
 
   </files>
 

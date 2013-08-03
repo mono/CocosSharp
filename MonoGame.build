@@ -23,6 +23,51 @@
     </delete>
   </target>
 
+  <target name="build-windows" description="Build MonoGame Release" depends="checkos">
+
+    <call target="buildwindows"/>
+
+  </target>
+
+  <target name="build-windows8" description="Build MonoGame Release" depends="checkos">
+
+    <call target="buildwindows8" />
+    <call target="buildwindowsphone" />
+
+  </target>
+
+  <target name="build-android" description="Build MonoGame Release" depends="checkos">
+
+    <call target="buildandroid" />
+
+  </target>
+
+  <target name="build-mac" description="Build MonoGame Release" depends="checkos">
+
+    <call target="buildmac" />
+    <call target="buildios" />
+
+  </target>
+
+  <target name="build-linux" description="Build MonoGame Release" depends="checkos">
+
+    <call target="buildlinux"/>
+
+  </target>
+
+  <target name="build-psm" description="Build MonoGame Release" depends="checkos">
+
+    <call target="buildpsm" />
+
+  </target>
+
+  <target name="build-tools" description="Build MonoGame Release" depends="checkos">
+
+    <call target="buildtools"/>
+    <call target="buildcontentprocessor"/>
+
+  </target>
+
   <target name="build" description="Build MonoGame Release" depends="checkos">
 
     <call target="buildwindows"/>
