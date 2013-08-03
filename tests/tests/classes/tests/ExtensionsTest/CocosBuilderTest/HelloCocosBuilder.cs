@@ -1,6 +1,5 @@
 using System;
 using Cocos2D;
-using Cocos2D.CCBReader;
 
 namespace tests.Extensions
 {

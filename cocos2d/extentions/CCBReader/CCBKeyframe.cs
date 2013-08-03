@@ -1,10 +1,10 @@
-namespace Cocos2D.CCBReader
+namespace Cocos2D
 {
     public class CCBKeyframe
     {
         public object Value;
         public float Time;
-        public EasingType EasingType;
+        public CCBEasingType EasingType;
         public float EasingOpt;
     }
 }

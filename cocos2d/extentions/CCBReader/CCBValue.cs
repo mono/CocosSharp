@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Cocos2D.CCBReader
+namespace Cocos2D
 {
     public class CCColor3BWapper 
     {

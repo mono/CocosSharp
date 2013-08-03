@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Cocos2D.CCBReader
+namespace Cocos2D
 {
     public class CCBSequenceProperty 
     {
@@ -17,10 +17,10 @@ namespace Cocos2D.CCBReader
         }
 
         private string _name;
-        private PropertyType _type;
+        private CCBPropertyType _type;
         private List<CCBKeyframe> _keyframes;
 
-        public PropertyType Type
+        public CCBPropertyType Type
         {
             get { return _type; }
             set { _type = value; }

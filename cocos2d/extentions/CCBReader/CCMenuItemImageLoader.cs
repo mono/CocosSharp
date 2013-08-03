@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Cocos2D.CCBReader
+namespace Cocos2D
 {
     public class CCMenuItemImageLoader : CCMenuItemLoader
     {

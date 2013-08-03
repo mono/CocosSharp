@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using Cocos2D;
-using Cocos2D.CCBReader;
-using ValueType = Cocos2D.CCBReader.ValueType;
+using ValueType = Cocos2D.ValueType;
 
 namespace tests.Extensions
 {

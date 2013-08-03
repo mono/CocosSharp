@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D.CCBReader
+namespace Cocos2D
 {
-    public enum PropertyType
+    public enum CCBPropertyType
     {
         Position = 0,
         Size,
@@ -38,7 +38,7 @@ namespace Cocos2D.CCBReader
         FloatXY
     }
 
-    internal enum FloatType
+    internal enum CCBFloatType
     {
         Float0 = 0,
         Float1,
@@ -55,14 +55,14 @@ namespace Cocos2D.CCBReader
         Mac
     }
 
-    public enum TargetType
+    public enum CCBTargetType
     {
         None = 0,
         DocumentRoot = 1,
         Owner = 2,
     }
 
-    public enum EasingType
+    public enum CCBEasingType
     {
         Instant,
 
@@ -85,7 +85,7 @@ namespace Cocos2D.CCBReader
         BackInOut,
     }
 
-    public enum PositionType
+    public enum CCBPositionType
     {
         RelativeBottomLeft,
         RelativeTopLeft,
@@ -105,7 +105,7 @@ namespace Cocos2D.CCBReader
         MultiplyResolution,
     }
 
-    public enum ScaleType
+    public enum CCBScaleType
     {
         Absolute,
         MultiplyResolution
@@ -508,19 +508,19 @@ namespace Cocos2D.CCBReader
 
         public float ReadFloat()
         {
-            var type = (FloatType) ReadByte();
+            var type = (CCBFloatType) ReadByte();
 
             switch (type)
             {
-                case FloatType.Float0:
+                case CCBFloatType.Float0:
                     return 0;
-                case FloatType.Float1:
+                case CCBFloatType.Float1:
                     return 1;
-                case FloatType.Minus1:
+                case CCBFloatType.Minus1:
                     return -1;
-                case FloatType.Float05:
+                case CCBFloatType.Float05:
                     return 0.5f;
-                case FloatType.Integer:
+                case CCBFloatType.Integer:
                     return ReadInt(true);
                 default:
                     var byteArray = new byte[4];
@@ -758,37 +758,37 @@ namespace Cocos2D.CCBReader
         }
 
 
-        private CCBKeyframe ReadKeyframe(PropertyType type)
+        private CCBKeyframe ReadKeyframe(CCBPropertyType type)
         {
             var keyframe = new CCBKeyframe();
 
             keyframe.Time = ReadFloat();
 
-            var easingType = (EasingType) ReadInt(false);
+            var easingType = (CCBEasingType) ReadInt(false);
             float easingOpt = 0;
             object value = null;
 
-            if (easingType == EasingType.CubicIn
-                || easingType == EasingType.CubicOut
-                || easingType == EasingType.CubicInOut
-                || easingType == EasingType.ElasticIn
-                || easingType == EasingType.ElasticOut
-                || easingType == EasingType.ElasticInOut)
+            if (easingType == CCBEasingType.CubicIn
+                || easingType == CCBEasingType.CubicOut
+                || easingType == CCBEasingType.CubicInOut
+                || easingType == CCBEasingType.ElasticIn
+                || easingType == CCBEasingType.ElasticOut
+                || easingType == CCBEasingType.ElasticInOut)
             {
                 easingOpt = ReadFloat();
             }
             keyframe.EasingType = easingType;
             keyframe.EasingOpt = easingOpt;
 
-            if (type == PropertyType.Check)
+            if (type == CCBPropertyType.Check)
             {
                 value = new CCBValue(ReadBool());
             }
-            else if (type == PropertyType.Byte)
+            else if (type == CCBPropertyType.Byte)
             {
                 value = new CCBValue(ReadByte());
             }
-            else if (type == PropertyType.Color3)
+            else if (type == CCBPropertyType.Color3)
             {
                 byte r = ReadByte();
                 byte g = ReadByte();
@@ -797,11 +797,11 @@ namespace Cocos2D.CCBReader
                 var c = new CCColor3B(r, g, b);
                 value = new CCColor3BWapper(c);
             }
-            else if (type == PropertyType.Degrees)
+            else if (type == CCBPropertyType.Degrees)
             {
                 value = new CCBValue(ReadFloat());
             }
-            else if (type == PropertyType.ScaleLock || type == PropertyType.Position || type == PropertyType.FloatXY)
+            else if (type == CCBPropertyType.ScaleLock || type == CCBPropertyType.Position || type == CCBPropertyType.FloatXY)
             {
                 float a = ReadFloat();
                 float b = ReadFloat();
@@ -812,7 +812,7 @@ namespace Cocos2D.CCBReader
                         new CCBValue(b)
                     };
             }
-            else if (type == PropertyType.SpriteFrame)
+            else if (type == CCBPropertyType.SpriteFrame)
             {
                 string spriteSheet = ReadCachedString();
                 string spriteFile = ReadCachedString();
@@ -941,10 +941,10 @@ namespace Cocos2D.CCBReader
             }
 
             // Read assignment type and name
-            var memberVarAssignmentType = (TargetType) ReadInt(false);
+            var memberVarAssignmentType = (CCBTargetType) ReadInt(false);
 
             string memberVarAssignmentName = String.Empty;
-            if (memberVarAssignmentType != TargetType.None)
+            if (memberVarAssignmentType != CCBTargetType.None)
             {
                 memberVarAssignmentName = ReadCachedString();
             }
@@ -987,7 +987,7 @@ namespace Cocos2D.CCBReader
                     var seqProp = new CCBSequenceProperty();
 
                     seqProp.Name = ReadCachedString();
-                    seqProp.Type = (PropertyType) ReadInt(false);
+                    seqProp.Type = (CCBPropertyType) ReadInt(false);
                     _animatedProps.Add(seqProp.Name);
 
                     int numKeyframes = ReadInt(false);
@@ -1043,16 +1043,16 @@ namespace Cocos2D.CCBReader
      [[JSCocoa sharedController] setObject:node withName:memberVarAssignmentName];
      }*/
 #else
-            if (memberVarAssignmentType != TargetType.None)
+            if (memberVarAssignmentType != CCBTargetType.None)
             {
                 if (!_jsControlled)
                 {
                     object target = null;
-                    if (memberVarAssignmentType == TargetType.DocumentRoot)
+                    if (memberVarAssignmentType == CCBTargetType.DocumentRoot)
                     {
                         target = _actionManager.RootNode;
                     }
-                    else if (memberVarAssignmentType == TargetType.Owner)
+                    else if (memberVarAssignmentType == CCBTargetType.Owner)
                     {
                         target = _owner;
                     }
@@ -1062,7 +1062,7 @@ namespace Cocos2D.CCBReader
                         var targetAsCCBMemberVariableAssigner = target as ICCBMemberVariableAssigner;
 
                         bool assigned = false;
-                        if (memberVarAssignmentType != TargetType.None)
+                        if (memberVarAssignmentType != CCBTargetType.None)
                         {
                             if (targetAsCCBMemberVariableAssigner != null)
                             {
@@ -1081,7 +1081,7 @@ namespace Cocos2D.CCBReader
                 }
                 else
                 {
-                    if (memberVarAssignmentType == TargetType.DocumentRoot)
+                    if (memberVarAssignmentType == CCBTargetType.DocumentRoot)
                     {
                         _actionManager.AddDocumentOutletName(memberVarAssignmentName);
                         _actionManager.AddDocumentOutletNode(node);

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Cocos2D.CCBReader
+namespace Cocos2D
 {
     public class CCNodeLoaderLibrary 
     {

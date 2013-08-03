@@ -1,4 +1,4 @@
-namespace Cocos2D.CCBReader
+namespace Cocos2D
 {
     internal class CCParticleSystemQuadLoader : CCNodeLoader
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Cocos2D.CCBReader
+namespace Cocos2D
 {
     public class CCBSequence 
     {
