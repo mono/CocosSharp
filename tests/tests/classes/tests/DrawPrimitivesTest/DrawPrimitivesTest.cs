@@ -78,6 +78,29 @@ namespace tests
         }
     }
 
+    public class DrawPrimitivesWithRenderTextureTest : BaseDrawNodeTest
+    {
+        public DrawPrimitivesWithRenderTextureTest()
+        {
+            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCRenderTexture text = new CCRenderTexture((int)s.Width, (int)s.Height);
+
+            CCDrawNode draw = new CCDrawNode();
+            text.AddChild(draw, 10);
+            text.Begin();
+            // Draw polygons
+            CCPoint[] points = new CCPoint[]
+                {
+                    new CCPoint(s.Height / 4, 0),
+                    new CCPoint(s.Width, s.Height / 5),
+                    new CCPoint(s.Width / 3 * 2, s.Height)
+                };
+            draw.DrawPolygon(points, points.Length, new CCColor4F(1, 0, 0, 0.5f), 4, new CCColor4F(0, 0, 1, 1));
+            text.End();
+            AddChild(text, 24);
+        }
+    }
+
     public class DrawPrimitivesTest : BaseDrawNodeTest
     {
         public override void Draw()
