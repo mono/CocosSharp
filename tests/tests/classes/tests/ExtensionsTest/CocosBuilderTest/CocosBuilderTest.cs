@@ -1,5 +1,4 @@
 ﻿using Cocos2D;
-using Cocos2D.CCBReader;
 
 namespace tests.Extensions
 {
@@ -17,7 +16,7 @@ namespace tests.Extensions
         public override void runThisTest()
         {
             /* Create an autorelease CCNodeLoaderLibrary. */
-            CCNodeLoaderLibrary ccNodeLoaderLibrary = CCNodeLoaderLibrary.NewDefaultCCNodeLoaderLibrary();
+            CCNodeLoaderLibrary ccNodeLoaderLibrary = new CCNodeLoaderLibrary();
 
             ccNodeLoaderLibrary.RegisterCCNodeLoader("HelloCocosBuilderLayer", new Loader<HelloCocosBuilderLayer>());
 

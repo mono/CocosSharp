@@ -1,6 +1,5 @@
 using System;
 using Cocos2D;
-using Cocos2D.CCBReader;
 
 namespace tests.Extensions
 {
@@ -24,7 +23,7 @@ namespace tests.Extensions
         public void openTest(string pCCBFileName, string pCCNodeName, CCNodeLoader pCCNodeLoader)
         {
             /* Create an autorelease CCNodeLoaderLibrary. */
-            CCNodeLoaderLibrary ccNodeLoaderLibrary = CCNodeLoaderLibrary.NewDefaultCCNodeLoaderLibrary();
+            CCNodeLoaderLibrary ccNodeLoaderLibrary = new CCNodeLoaderLibrary();
 
             ccNodeLoaderLibrary.RegisterCCNodeLoader("TestHeaderLayer", new Loader<TestHeaderLayer>());
             if (pCCNodeName != null && pCCNodeLoader != null)
@@ -77,7 +76,7 @@ namespace tests.Extensions
             CCBAnimationManager actionManager = null;
 
             /* Create an autorelease CCNodeLoaderLibrary. */
-            CCNodeLoaderLibrary ccNodeLoaderLibrary = CCNodeLoaderLibrary.NewDefaultCCNodeLoaderLibrary();
+            CCNodeLoaderLibrary ccNodeLoaderLibrary = new CCNodeLoaderLibrary();
 
             ccNodeLoaderLibrary.RegisterCCNodeLoader("TestHeaderLayer", new Loader<TestHeaderLayer>());
             ccNodeLoaderLibrary.RegisterCCNodeLoader("TestAnimationsLayer", new Loader<AnimationsTestLayer>());

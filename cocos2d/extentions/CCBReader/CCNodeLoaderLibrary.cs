@@ -1,12 +1,17 @@
 using System.Collections.Generic;
 
-namespace Cocos2D.CCBReader
+namespace Cocos2D
 {
     public class CCNodeLoaderLibrary 
     {
         private static CCNodeLoaderLibrary _instance;
         
         private Dictionary<string, CCNodeLoader> _nodeLoaders = new Dictionary<string, CCNodeLoader>();
+
+        public CCNodeLoaderLibrary ()
+        {
+            RegisterDefaultCCNodeLoaders();
+        }
 
         public void RegisterDefaultCCNodeLoaders()
         {
@@ -46,7 +51,7 @@ namespace Cocos2D.CCBReader
             _nodeLoaders.Clear();
         }
 
-        public static CCNodeLoaderLibrary Instance
+        public static CCNodeLoaderLibrary SharedInstance
         {
             get
             {
@@ -62,13 +67,6 @@ namespace Cocos2D.CCBReader
         public static void PurgeSharedCCNodeLoaderLibrary()
         {
             _instance = null;
-        }
-
-        public static CCNodeLoaderLibrary NewDefaultCCNodeLoaderLibrary()
-        {
-            var ccNodeLoaderLibrary = new CCNodeLoaderLibrary();
-            ccNodeLoaderLibrary.RegisterDefaultCCNodeLoaders();
-            return ccNodeLoaderLibrary;
         }
     }
 }

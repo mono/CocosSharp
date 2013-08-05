@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Cocos2D.CCBReader;
 using CocosDenshion;
 
-namespace Cocos2D.CCBReader
+namespace Cocos2D
 {
     public delegate void CCBAnimationManagerDelegate(string name);
 
@@ -275,7 +274,7 @@ namespace Cocos2D.CCBReader
                     {
                         // Get position type
                         var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                        var type = (PositionType) array[2].GetIntValue();
+                        var type = (CCBPositionType) array[2].GetIntValue();
 
                         // Get relative position
                         var value = (List<CCBValue>) pKeyframe1.Value;
@@ -292,14 +291,14 @@ namespace Cocos2D.CCBReader
                     {
                         // Get position type
                         var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                        var type = (ScaleType) array[2].GetIntValue();
+                        var type = (CCBScaleType) array[2].GetIntValue();
 
                         // Get relative scale
                         var value = (List<CCBValue>) pKeyframe1.Value;
                         float x = value[0].GetFloatValue();
                         float y = value[1].GetFloatValue();
 
-                        if (type == ScaleType.MultiplyResolution)
+                        if (type == CCBScaleType.MultiplyResolution)
                         {
                             float resolutionScale = CCBReader.ResolutionScale;
                             x *= resolutionScale;
@@ -333,7 +332,7 @@ namespace Cocos2D.CCBReader
                 var kf1 = new CCBKeyframe();
                 kf1.Value = pValue;
                 kf1.Time = fTweenDuraion;
-                kf1.EasingType = EasingType.Linear;
+                kf1.EasingType = CCBEasingType.Linear;
 
                 // Animate
                 CCActionInterval tweenAction = GetAction(null, kf1, pPropName, node);
@@ -347,7 +346,7 @@ namespace Cocos2D.CCBReader
                 {
                     // Get position type
                     var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                    var type = (PositionType) array[2].GetIntValue();
+                    var type = (CCBPositionType) array[2].GetIntValue();
 
                     // Get relative position
                     var value = (List<CCBValue>) pValue;
@@ -360,7 +359,7 @@ namespace Cocos2D.CCBReader
                 {
                     // Get scale type
                     var array = (List<CCBValue>) GetBaseValue(node, pPropName);
-                    var type = (ScaleType) array[2].GetIntValue();
+                    var type = (CCBScaleType) array[2].GetIntValue();
 
                     // Get relative scale
                     var value = (List<CCBValue>) pValue;
@@ -446,7 +445,7 @@ namespace Cocos2D.CCBReader
             }
         }
 
-        private CCActionInterval GetEaseAction(CCActionInterval pAction, EasingType nEasingTypeType, float fEasingOpt)
+        private CCActionInterval GetEaseAction(CCActionInterval pAction, CCBEasingType nEasingTypeType, float fEasingOpt)
         {
             if (pAction is CCSequence)
             {
@@ -455,33 +454,33 @@ namespace Cocos2D.CCBReader
 
             switch (nEasingTypeType)
             {
-                case EasingType.Linear:
+                case CCBEasingType.Linear:
                     return pAction;
-                case EasingType.Instant:
+                case CCBEasingType.Instant:
                     return new CCBEaseInstant(pAction);
-                case EasingType.CubicIn:
+                case CCBEasingType.CubicIn:
                     return new CCEaseIn(pAction, fEasingOpt);
-                case EasingType.CubicOut:
+                case CCBEasingType.CubicOut:
                     return new CCEaseOut(pAction, fEasingOpt);
-                case EasingType.CubicInOut:
+                case CCBEasingType.CubicInOut:
                     return new CCEaseInOut(pAction, fEasingOpt);
-                case EasingType.BackIn:
+                case CCBEasingType.BackIn:
                     return new CCEaseBackIn(pAction);
-                case EasingType.BackOut:
+                case CCBEasingType.BackOut:
                     return new CCEaseBackOut(pAction);
-                case EasingType.BackInOut:
+                case CCBEasingType.BackInOut:
                     return new CCEaseBackInOut(pAction);
-                case EasingType.BounceIn:
+                case CCBEasingType.BounceIn:
                     return new CCEaseBounceIn(pAction);
-                case EasingType.BounceOut:
+                case CCBEasingType.BounceOut:
                     return new CCEaseBounceOut(pAction);
-                case EasingType.BounceInOut:
+                case CCBEasingType.BounceInOut:
                     return new CCEaseBounceInOut(pAction);
-                case EasingType.ElasticIn:
+                case CCBEasingType.ElasticIn:
                     return new CCEaseElasticIn(pAction, fEasingOpt);
-                case EasingType.ElasticOut:
+                case CCBEasingType.ElasticOut:
                     return new CCEaseElasticOut(pAction, fEasingOpt);
-                case EasingType.ElasticInOut:
+                case CCBEasingType.ElasticInOut:
                     return new CCEaseElasticInOut(pAction, fEasingOpt);
                 default:
                     CCLog.Log("CCBReader: Unkown easing type {0}", nEasingTypeType);
@@ -510,8 +509,8 @@ namespace Cocos2D.CCBReader
 
                 var keyVal = (List<CCBValue>)keyframe.Value;
                 string selectorName = keyVal[0].GetStringValue();
-                TargetType selectorTarget =
-                    (TargetType) int.Parse(keyVal[1].GetStringValue());
+                CCBTargetType selectorTarget =
+                    (CCBTargetType) int.Parse(keyVal[1].GetStringValue());
 
                 if (_jsControlled)
                 {
@@ -527,9 +526,9 @@ namespace Cocos2D.CCBReader
                 {
                     Object target = null;
 
-                    if (selectorTarget == TargetType.DocumentRoot)
+                    if (selectorTarget == CCBTargetType.DocumentRoot)
                         target = _rootNode;
-                    else if (selectorTarget == TargetType.Owner)
+                    else if (selectorTarget == CCBTargetType.Owner)
                         target = _owner;
 
                     if (target != null)
