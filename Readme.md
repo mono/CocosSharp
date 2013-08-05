@@ -1,6 +1,6 @@
 # Cocos2D-XNA
 
-is a 2D/3D game developer’s framework that is written specifically for XNA. XNA is the game API developed by Microsoft for independently published games on Xbox Live Arcade. To support other platforms than the now deprecated Microsoft XNA targets, Cocos2D-XNA supports the MonoGame runtime.
+is a 2D/3D game developerâ€™s framework that is written specifically for XNA. XNA is the game API developed by Microsoft for independently published games on Xbox Live Arcade. To support other platforms than the now deprecated Microsoft XNA targets, Cocos2D-XNA supports the MonoGame runtime.
 
 This project is open source, freely available, and free of royalties or encumberance. The software is released under the highly permissive MIT License.
 
@@ -15,7 +15,7 @@ To obtain the code you will need a git client.  Either command line or Graphical
 Using the git command line you will need to clone the git repository.
 
 > $ git clone https://github.com/Cocos2DXNA/cocos2d-xna.git
-
+  
 Wait until the clone has finished.
 
 You should see something similar to the following:
@@ -38,7 +38,7 @@ Change into the cocos2d-xna directory to issue the following submodule commands.
 
 Output from above command:
 
-	Submodule 'MonoGame' (https://github.com/mono/MonoGame.git) registered for path 'MonoGame'
+	Submodule 'MonoGame' (git://github.com/mono/MonoGame.git) registered for path 'MonoGame'
 	Submodule 'tools/ouya' (https://github.com/slygamer/ouya-csharp.git) registered for path 'tools/ouya'
 
 You will then want to update the actual submodules:
@@ -94,7 +94,7 @@ Getting Started
 
 We have created solutions for all the supported platforms that serves as our TestBed for each platform.
 
-You can find those in the [tests directory](https://github.com/Cocos2DXNA/cocos2d-xna/tree/master/tests "Test Bed")
+You can find those in the [tests directory](https://github.com/mono/cocos2d-xna/tree/master/tests "Test Bed")
 
 	cocos2d-xna.Tests.Android.sln	
 	cocos2d-xna.Tests.Ouya.sln	
@@ -108,10 +108,9 @@ You can find those in the [tests directory](https://github.com/Cocos2DXNA/cocos2
 
 ### Samples
 
-[Xamarin’s Angry Ninjas](https://github.com/xamarin/AngryNinjas "Xamarin’s Angry Ninjas") sample application. We worked hard on converting that cocos2d-iphone game over to Cocos2D-XNA. Take a look at how it deploys raw assets and utilizes box2d. 
+[Xamarinâ€™s Angry Ninjas](https://github.com/xamarin/AngryNinjas "Xamarinâ€™s Angry Ninjas") sample application. We worked hard on converting that cocos2d-iphone game over to Cocos2D-XNA. Take a look at how it deploys raw assets and utilizes box2d. 
 
 Additional samples will be forthcoming as we find time to add more for you. 
-
 
 
 
