@@ -1121,9 +1121,11 @@
     <None Include="Info.iOS.plist">
       <Link>Info.plist</Link>
     </None>
-    <None Include="Content\fonts\MarkerFelt-22.xnb" />
-    <None Include="Content\fonts\MarkerFelt-18.xnb" />
-    <None Include="Content\fonts\MarkerFelt-16.xnb" />
+    <Content Include="Content\fonts\MarkerFelt-22.xnb" />
+    <Content Include="Content\fonts\MarkerFelt-18.xnb" />
+    <Content Include="Content\fonts\MarkerFelt-16.xnb" />
+    <Content Include="Content\fonts\MarkerFelt-Thin-12.xnb" />
+    <Content Include="Content\fonts\MarkerFelt-Thin-18.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />
