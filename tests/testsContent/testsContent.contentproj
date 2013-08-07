@@ -1212,7 +1212,7 @@
       <Processor>TextProcessor</Processor>
     </Compile>
     <Compile Include="fonts\markerFelt.fnt">
-      <Name>markerFelt.fnt</Name>
+      <Name>MarkerFelt.fnt</Name>
       <Importer>CocosFontImporter</Importer>
       <Processor>CocosFontProcessor</Processor>
     </Compile>
@@ -1261,6 +1261,17 @@
       <Name>ui.plist</Name>
       <Importer>CocosPListImporter</Importer>
       <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\MarkerFelt-Thin-18.spritefont">
+      <Name>MarkerFelt-Thin-18</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="fonts\MarkerFelt-Thin-12.spritefont">
+      <Name>MarkerFelt-Thin-12</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -2041,7 +2052,7 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
     <Compile Include="fonts\markerFelt.png">
-      <Name>markerFelt</Name>
+      <Name>MarkerFelt</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

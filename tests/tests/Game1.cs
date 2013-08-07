@@ -41,8 +41,8 @@ namespace tests
             Components.Add(application);
 
 #if !WINDOWS_PHONE && !XBOX && !WINRT && !WINDOWSDX && !NETFX_CORE
-            GamerServicesComponent component = new GamerServicesComponent(this);
-            this.Components.Add(component);
+            //GamerServicesComponent component = new GamerServicesComponent(this);
+            //this.Components.Add(component);
 #endif
         }
 
