@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{4ef34363-1190-4444-9f4b-7a262b397ee8}</ProjectGuid>
+    <ProjectGuid>{4EF34363-1190-4444-9F4B-7A262B397EE8}</ProjectGuid>
     <ProjectTypeGuids>{948B3504-5B70-4649-8FE4-BDE1FB46EC69};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -15,7 +15,7 @@
     <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
+    <OutputPath>bin\MacOSX\Debug</OutputPath>
     <DefineConstants>DEBUG;MONOMAC;OPENGL;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -30,7 +30,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>none</DebugType>
     <Optimize>False</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>bin\MacOSX\Release</OutputPath>
     <DefineConstants>MONOMAC</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -306,7 +306,8 @@
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlStepperTest.cs" />
     <Compile Include="classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteSceneManager.cs" />
     <Compile Include="classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteTest.cs" />
-    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\TimelineCallbackTestLayer.cs" />    <Compile Include="classes\tests\BugsTest\Bug-458\Bug-458.cs">
+    <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\TimelineCallbackTestLayer.cs" />
+    <Compile Include="classes\tests\BugsTest\Bug-458\Bug-458.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\tests\BugsTest\Bug-458\QuestionContainerSprite.cs">
@@ -2320,6 +2321,12 @@
     </Content>
     <Content Include="Assets\Content\fonts\ThonburiBold.ttf">
       <Link>Content\fonts\ThonburiBold.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\MarkerFelt-Thin-12.xnb">
+      <Link>Content\fonts\MarkerFelt-Thin-12.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\MarkerFelt-Thin-18.xnb">
+      <Link>Content\fonts\MarkerFelt-Thin-18.xnb</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>

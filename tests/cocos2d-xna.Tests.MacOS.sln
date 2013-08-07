@@ -1,13 +1,15 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.MacOS", "box2d\box2d.MacOS.csproj", "{A84510D8-7AED-411E-9616-DCFEA180969E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.MacOS", "tests\tests.MacOS.csproj", "{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.MacOS", "cocos2d\cocos2d.MacOS.csproj", "{A83510D8-7AED-411E-9616-DCFEA180969E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.MacOS", "..\box2d\box2d.MacOS.csproj", "{A84510D8-7AED-411E-9616-DCFEA180969E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.MacOS", "MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj", "{AE483C29-042E-4226-BA52-D247CE7676DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.MacOS", "..\cocos2d\cocos2d.MacOS.csproj", "{A83510D8-7AED-411E-9616-DCFEA180969E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.MacOS", "MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj", "{36C538E6-C32A-4A8D-A39C-566173D7118E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.MacOS", "..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj", "{AE483C29-042E-4226-BA52-D247CE7676DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.MacOS", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj", "{36C538E6-C32A-4A8D-A39C-566173D7118E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -112,10 +114,32 @@ Global
 		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|x86.ActiveCfg = Release|Any CPU
 		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|x86.Build.0 = Release|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Ad-Hoc|iPhone.ActiveCfg = Debug|x86
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Ad-Hoc|iPhone.Build.0 = Debug|x86
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.AppStore|iPhone.ActiveCfg = Debug|x86
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.AppStore|iPhone.Build.0 = Debug|x86
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Debug|x86.ActiveCfg = Debug|x86
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Debug|x86.Build.0 = Debug|x86
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Distribution|Any CPU.ActiveCfg = Release|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Distribution|Any CPU.Build.0 = Release|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Release|iPhone.Build.0 = Release|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Release|x86.ActiveCfg = Release|x86
+		{B7642AB5-22DD-4A5F-BF4C-68F8A3BA8525}.Release|x86.Build.0 = Release|x86
 		|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = box2d\box2d.MacOS.csproj
+		StartupItem = tests\tests\tests.MacOS.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
