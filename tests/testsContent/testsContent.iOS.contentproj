@@ -1249,6 +1249,16 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>MGSpriteFontDescriptionProcessor</Processor>
     </Compile>
+    <Compile Include="fonts\MarkerFelt-Thin-12.spritefont">
+      <Name>MarkerFelt-Thin-12</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="fonts\MarkerFelt-Thin-18.spritefont">
+      <Name>MarkerFelt-Thin-18</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="fonts\Paint Boy.ttf">
       <Name>Paint Boy</Name>
     </None>
