@@ -243,25 +243,27 @@ namespace Cocos2D
             SamplerState saveState = m_samplerState;
 
             m_samplerState = new SamplerState
-                {
-                    Filter = TextureFilter.Point,
-                    AddressU = saveState.AddressU,
-                    AddressV = saveState.AddressV,
-                    AddressW = saveState.AddressW
-                };
+            {
+                Filter = TextureFilter.Linear,
+                AddressU = saveState.AddressU,
+                AddressV = saveState.AddressV,
+                AddressW = saveState.AddressW
+            };
         }
 
         public void SetAliasTexParameters()
         {
+
             SamplerState saveState = m_samplerState;
 
             m_samplerState = new SamplerState
-                {
-                    Filter = TextureFilter.Linear,
-                    AddressU = saveState.AddressU,
-                    AddressV = saveState.AddressV,
-                    AddressW = saveState.AddressW
-                };
+            {
+                Filter = TextureFilter.Point,
+                AddressU = saveState.AddressU,
+                AddressV = saveState.AddressV,
+                AddressW = saveState.AddressW
+            };
+
         }
 
         #region Initialization
