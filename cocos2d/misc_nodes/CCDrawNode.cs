@@ -114,6 +114,44 @@ namespace Cocos2D
             public CCPoint n;
         }
 
+        public void DrawCircle(CCPoint center, float radius, CCColor4B color)
+        {
+            DrawCircle(center, radius, CCMacros.CCDegreesToRadians(360f), 360, color);
+        }
+
+        public void DrawCircle(CCPoint center, float radius, float angle, int segments, CCColor4B color)
+        {
+            float increment = MathHelper.Pi * 2.0f / segments;
+            double theta = 0.0;
+
+            CCPoint v1;
+            CCPoint v2 = CCPoint.Zero;
+            List<CCPoint> verts = new List<CCPoint>();
+
+            for (int i = 0; i < segments; i++)
+            {
+                v1 = center + new CCPoint((float)Math.Cos(theta), (float)Math.Sin(theta)) * radius;
+                v2 = center + new CCPoint((float)Math.Cos(theta + increment), (float)Math.Sin(theta + increment)) * radius;
+                verts.Add(v1);
+                theta += increment;
+            }
+            CCColor4F cf = new CCColor4F(color.R/255f, color.G/255f, color.B/255f, color.A/255f);
+            DrawPolygon(verts.ToArray(), verts.Count, cf, 0, new CCColor4F(0f, 0f, 0f, 0f));
+        }
+
+        public void DrawRect(CCRect rect, CCColor4B color)
+        {
+            float x1 = rect.MinX;
+            float y1 = rect.MinY;
+            float x2 = rect.MaxX;
+            float y2 = rect.MaxY;
+            CCPoint[] pt = new CCPoint[] { 
+                new CCPoint(x1,y1), new CCPoint(x2,y1), new CCPoint(x2,y2), new CCPoint(x1,y2)
+            };
+            CCColor4F cf = new CCColor4F(color.R/255f, color.G/255f, color.B/255f, color.A/255f);
+            DrawPolygon(pt, 4, cf, 0, new CCColor4F(0f, 0f, 0f, 0f));
+        }
+
         public void DrawPolygon(CCPoint[] verts, int count, CCColor4F fillColor, float borderWidth,
                                 CCColor4F borderColor)
         {
