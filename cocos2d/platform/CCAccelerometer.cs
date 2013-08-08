@@ -1,12 +1,14 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna;
 using Microsoft.Xna.Framework.Input;
+using System.Reflection;
 
 namespace Cocos2D
 {
     public class CCAccelerometer
     {
-#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT && !WINDOWSGL
+#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !WINDOWSGL
         // the accelerometer sensor on the device
         private static Microsoft.Devices.Sensors.Accelerometer accelerometer = null;
 #endif
@@ -20,7 +22,7 @@ namespace Cocos2D
 
         static CCAccelerometer()
         {
-#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT && !WINDOWSGL
+#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !WINDOWSGL
             try
             {
                 accelerometer = new Microsoft.Devices.Sensors.Accelerometer();
@@ -46,7 +48,7 @@ namespace Cocos2D
 
             if (pDelegate != null && !m_bActive)
             {
-#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT && !WINDOWSGL
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !WINDOWSGL
                     try
                 {
                     if (Microsoft.Devices.Sensors.Accelerometer.IsSupported)
@@ -79,12 +81,12 @@ namespace Cocos2D
             {
                 if (m_bActive && !m_bEmulation)
                 {
-#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT && !WINDOWSGL
-                    if (accelerometer != null)
-                    {
-                    accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
-                    accelerometer.Stop();
-                    }
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !WINDOWSGL
+                    //if (accelerometer != null)
+                    //{
+                    //    accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
+                    //    accelerometer.Stop();
+                    //}
 #endif
                 }
                 
@@ -96,15 +98,50 @@ namespace Cocos2D
         }
 
 
-#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !SILVERLIGHT && !WINDOWSGL
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !WINDOWSGL
         private void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
-            // store the accelerometer value in our variable to be used on the next Update
-            m_obAccelerationValue.X = e.SensorReading.Acceleration.Y;
-            m_obAccelerationValue.Y = -e.SensorReading.Acceleration.X;
-            m_obAccelerationValue.Z = e.SensorReading.Acceleration.Z;
+
+            //CCLog.Log("Acce value changed");
+            object val = e.SensorReading.GetType()
+             .GetProperty("Acceleration",
+                          BindingFlags.FlattenHierarchy |
+                          BindingFlags.Instance |
+                          BindingFlags.Public)
+             .GetValue(e.SensorReading, null);
+
+            if (val == null)
+                return;
+
+            // store the accelerometer value in our acceleration object to be updated.
+            UpdateAccelerationValue(val.ToString());
+
+            //m_obAccelerationValue.X = acceleration.X;
+            //m_obAccelerationValue.Y = acceleration.Y;
+            //m_obAccelerationValue.Z = acceleration.Z;
             m_obAccelerationValue.TimeStamp = e.SensorReading.Timestamp.Ticks;
         }
+
+        private void UpdateAccelerationValue(string acceleration)
+        {
+            string[] temp = acceleration.Substring(1, acceleration.Length - 2).Split(':');
+            m_obAccelerationValue.X = float.Parse(temp[1].Substring(0, temp[1].Length - 1));
+            m_obAccelerationValue.Y = float.Parse(temp[2].Substring(0, temp[2].Length - 1));
+            m_obAccelerationValue.Z = float.Parse(temp[3]);
+
+        }
+
+        private static Vector3 ParseVector3(string acceleration)
+        {
+
+            string[] temp = acceleration.Substring(1, acceleration.Length - 2).Split(':');
+            float x = float.Parse(temp[1].Substring(0, temp[1].Length - 1));
+            float y = float.Parse(temp[2].Substring(0, temp[2].Length - 1));
+            float z = float.Parse(temp[3]);
+            Vector3 rValue = new Vector3(x, y, z);
+            return rValue;
+        }
+
 #endif
 
         public void Update()

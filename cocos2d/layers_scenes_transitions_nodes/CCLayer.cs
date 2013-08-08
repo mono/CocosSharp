@@ -333,10 +333,10 @@ namespace Cocos2D
 
         public override void OnEnterTransitionDidFinish()
         {
-            if (m_bIsAccelerometerEnabled)
-            {
-                //CCDirector.sharedDirector().Accelerometer.setDelegate(this);
-            }
+            //if (m_bIsAccelerometerEnabled)
+            //{
+            //    CCDirector.SharedDirector.Accelerometer.SetDelegate(this);
+            //}
 
             base.OnEnterTransitionDidFinish();
         }

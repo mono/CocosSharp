@@ -29,8 +29,14 @@ namespace tests
             CCPoint ptNow = m_pBall.Position;
             CCPoint ptTemp = pDir.ConvertToUi(ptNow);
 
-            ptTemp.X += (float) pAccelerationValue.X * 9.81f;
-            ptTemp.Y -= (float) pAccelerationValue.Y * 9.81f;
+            //CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2}", pAccelerationValue.X, pAccelerationValue.Y, pAccelerationValue.Z);
+#if ANDROID
+            ptTemp.X -= (float) pAccelerationValue.X * 9.81f;
+            ptTemp.Y += (float) pAccelerationValue.Y * 9.81f;
+#else
+			ptTemp.X -= (float) pAccelerationValue.Y * 9.81f;
+			ptTemp.Y -= (float) pAccelerationValue.X * 9.81f;
+#endif
 
             CCPoint ptNext = pDir.ConvertToGl(ptTemp);
             ptNext.X = MathHelper.Clamp(ptNext.X, (ballSize.Width / 2.0f), (winSize.Width - ballSize.Width / 2.0f));
