@@ -273,8 +273,11 @@ namespace Cocos2D
 				return base.Text;
 			}
 			set {
-				InitializeFont(FontName, FontSize, value);
-				base.Text = value;
+				if (m_sInitialString != value)
+				{
+					InitializeFont (FontName, FontSize, value);
+					base.Text = value;
+				}
 			}
 		}
 
