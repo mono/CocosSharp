@@ -328,6 +328,13 @@ namespace Cocos2D
             }
         }
 
+        public bool IsUseAntiAlias
+        {
+            get { return Texture.IsUseAntiAlias; }
+
+            set { Texture.IsUseAntiAlias = value; }
+        }
+
         #region RGBA protocol
 
         private void UpdateColor()

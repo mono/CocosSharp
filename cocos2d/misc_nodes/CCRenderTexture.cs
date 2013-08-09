@@ -44,7 +44,7 @@ namespace Cocos2D
             h = (h * CCMacros.CCContentScaleFactor());
 
             m_pTexture = new CCTexture2D();
-            m_pTexture.SetAliasTexParameters();
+			m_pTexture.IsUseAntiAlias = false;
 
             m_pRenderTarget2D = CCDrawManager.CreateRenderTarget(w, h, colorFormat, depthFormat, usage);
             m_pTexture.InitWithTexture(m_pRenderTarget2D, colorFormat, true, false);

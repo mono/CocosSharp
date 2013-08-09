@@ -64,10 +64,12 @@ namespace Cocos2D
         private int m_uPixelsWide;
 
         private bool m_bManaged;
+        private bool m_bAntialias;
 
         public CCTexture2D()
         {
             m_samplerState = SamplerState.LinearClamp;
+            m_bAntialias = true;
         }
 
         public bool IsTextureDefined
@@ -146,6 +148,45 @@ namespace Cocos2D
         {
             get { return m_samplerState; }
             set { m_samplerState = value; }
+        }
+
+        public bool IsUseAntiAlias
+        {
+            get { return m_bAntialias; }
+
+            set
+            {
+                if (m_bAntialias != value)
+                {
+                    m_bAntialias = value;
+                    var saveState = m_samplerState;
+
+                    if (m_bAntialias)
+                    {
+                        m_samplerState = new SamplerState
+                        {
+                            Filter = TextureFilter.Linear,
+                            AddressU = saveState.AddressU,
+                            AddressV = saveState.AddressV,
+                            AddressW = saveState.AddressW
+                        };
+
+                    }
+                    else
+                    {
+                        m_samplerState = new SamplerState
+                        {
+                            Filter = TextureFilter.Point,
+                            AddressU = saveState.AddressU,
+                            AddressV = saveState.AddressV,
+                            AddressW = saveState.AddressW
+                        };
+
+                    }
+
+                }
+
+            }
         }
 
         public uint BitsPerPixelForFormat
@@ -238,6 +279,7 @@ namespace Cocos2D
             }
         }
 
+        [Obsolete("Use IsUseAntiAlias property.")]
         public void SetAntiAliasTexParameters()
         {
             SamplerState saveState = m_samplerState;
@@ -251,6 +293,7 @@ namespace Cocos2D
             };
         }
 
+        [Obsolete("Use IsUseAntiAlias property.")]
         public void SetAliasTexParameters()
         {
 

@@ -41,14 +41,14 @@ namespace tests
             // So sprite1 and sprite2 will be affected by this change
             //
             CCSprite sprite = (CCSprite)GetChildByTag((int)kTagSprite.kTagSprite1);
-            sprite.Texture.SetAliasTexParameters();
+			sprite.IsUseAntiAlias = false;
         }
 
         public override void OnExit()
         {
             // restore the tex parameter to AntiAliased.
             CCSprite sprite = (CCSprite)GetChildByTag((int)kTagSprite.kTagSprite1);
-            sprite.Texture.SetAntiAliasTexParameters();
+            sprite.IsUseAntiAlias = true;
             base.OnExit();
         }
 

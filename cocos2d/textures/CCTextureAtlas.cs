@@ -80,6 +80,13 @@ namespace Cocos2D
             set { m_pTexture = value; }
         }
 
+		public bool IsUseAntiAlias
+		{
+			get { return Texture.IsUseAntiAlias; }
+
+			set { Texture.IsUseAntiAlias = value; }
+		}
+
         #endregion
 
         public override string ToString()

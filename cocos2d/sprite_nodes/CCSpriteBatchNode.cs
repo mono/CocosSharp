@@ -39,9 +39,16 @@ namespace Cocos2D
                 if (value != null)
                 {
                     m_obContentSize = value.ContentSize;
-            }
+            	}
+        	}
         }
-        }
+
+		public bool IsUseAntiAlias
+		{
+			get { return Texture.IsUseAntiAlias; }
+
+			set { Texture.IsUseAntiAlias = value; }
+		}
 
         #endregion
 

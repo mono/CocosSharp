@@ -38,14 +38,14 @@ namespace tests
         {
             base.OnEnter();
             CCSpriteBatchNode batch = (CCSpriteBatchNode)GetChildByTag((int)kTags.kTagSpriteBatchNode);
-            batch.Texture.SetAliasTexParameters();
+			batch.IsUseAntiAlias = false;
         }
 
         public override void OnExit()
         {
             // restore the tex parameter to AntiAliased.
             CCSpriteBatchNode batch = (CCSpriteBatchNode)GetChildByTag((int)kTags.kTagSpriteBatchNode);
-            batch.Texture.SetAntiAliasTexParameters();
+            batch.IsUseAntiAlias = true;
             base.OnExit();
         }
 
