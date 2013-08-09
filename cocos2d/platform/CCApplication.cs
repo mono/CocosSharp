@@ -439,20 +439,28 @@ namespace Cocos2D
             ProcessGamePad(gps4, PlayerIndex.Four);
         }
 
-        private KeyboardState m_PriorKeyboardState;
+        private KeyboardState m_priorKeyboardState;
 
         private void ProcessKeyboard()
         {
-            KeyboardState k = Keyboard.GetState();
-            if(k.IsKeyUp(Keys.Back) && m_PriorKeyboardState.IsKeyDown(Keys.Back)) 
+			// Read the current keyboard state
+            KeyboardState currentKeyState = Keyboard.GetState();
+
+			// Check for Keypad interaction
+            if(currentKeyState.IsKeyUp(Keys.Back) && m_priorKeyboardState.IsKeyDown(Keys.Back)) 
             {
                 CCDirector.SharedDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.BackClicked);
             }
-            else if(k.IsKeyUp(Keys.Home) && m_PriorKeyboardState.IsKeyDown(Keys.Home)) 
+            else if(currentKeyState.IsKeyUp(Keys.Home) && m_priorKeyboardState.IsKeyDown(Keys.Home)) 
             {
                 CCDirector.SharedDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.MenuClicked);
             }
-            m_PriorKeyboardState = k;
+
+			CCDirector.SharedDirector.KeyboardDispatcher.DispatchKeyboardState ();
+
+			// Store the state for the next loop
+            m_priorKeyboardState = currentKeyState;
+
         }
 
         private CCPoint TransformPoint(float x, float y) {

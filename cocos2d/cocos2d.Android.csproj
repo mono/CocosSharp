@@ -417,6 +417,8 @@
     <Compile Include="support\Converters\CCSizeConverter.cs" />
     <Compile Include="support\Serialization\CCSerialization.cs" />
     <Compile Include="cocoa\ICCCopyable.cs" />
+    <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
+    <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -440,5 +442,8 @@
       <Project>{BA9476CF-99BA-4D03-92F2-73D2C5E58883}</Project>
       <Name>MonoGame.Framework.Android</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="keyboard_dispatcher\" />
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using Microsoft.Xna.Framework.Input;
 
 namespace Cocos2D
 {
@@ -65,7 +66,7 @@ namespace Cocos2D
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-    public class CCNode : ICCSelectorProtocol, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate
+    public class CCNode : ICCSelectorProtocol, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, ICCKeyboardDelegate
     {
         /// <summary>
         /// Use this to determine if a tag has been set on the node.
@@ -117,9 +118,11 @@ namespace Cocos2D
 
         // input variables
         private bool m_bKeypadEnabled;
+		private bool m_bKeyboardEnabled;
         private bool m_bGamePadEnabled;
         private bool m_bTouchEnabled;
         private CCTouchMode m_eTouchMode = CCTouchMode.OneByOne;
+		private CCKeyboardMode m_eKeyboardMode = CCKeyboardMode.All;
         private int m_nTouchPriority;
         private bool m_bGamePadDelegatesInited;
 
@@ -1016,11 +1019,18 @@ namespace Cocos2D
 
             CCDirector director = CCDirector.SharedDirector;
 
-            // add this layer to concern the kaypad msg
+            // add this node to concern the kaypad msg
             if (m_bKeypadEnabled)
             {
                 director.KeypadDispatcher.AddDelegate(this);
             }
+
+			// tell the director that this node is interested in Keyboard message
+			if (m_bKeyboardEnabled)
+			{
+				director.KeyboardDispatcher.AddDelegate(this);
+			}
+
 
             if (GamePadEnabled && director.GamePadEnabled)
             {
@@ -1089,6 +1099,11 @@ namespace Cocos2D
             {
                 director.KeypadDispatcher.RemoveDelegate(this);
             }
+
+			if (m_bKeyboardEnabled)
+			{
+				director.KeyboardDispatcher.RemoveDelegate(this);
+			}
 
             if (GamePadEnabled && director.GamePadEnabled)
             {
@@ -1557,6 +1572,43 @@ namespace Cocos2D
                 }
             }
         }
+
+		public virtual bool KeyboardEnabled
+		{
+			get { return m_bKeyboardEnabled; }
+			set
+			{
+				if (value != m_bKeyboardEnabled)
+				{
+					m_bKeyboardEnabled = value;
+
+					if (m_bRunning)
+					{
+						if (value)
+						{
+							CCDirector.SharedDirector.KeyboardDispatcher.AddDelegate(this);
+						}
+						else
+						{
+							CCDirector.SharedDirector.KeyboardDispatcher.RemoveDelegate(this);
+						}
+					}
+				}
+			}
+		}
+
+		public virtual CCKeyboardMode KeyboardMode
+		{
+			get { return m_eKeyboardMode; }
+			set
+			{
+				if (m_eKeyboardMode != value)
+				{
+					m_eKeyboardMode = value;
+				}
+			}
+		}
+
         public virtual bool GamePadEnabled
         {
             get { return (m_bGamePadEnabled); }
@@ -1626,6 +1678,19 @@ namespace Cocos2D
         public virtual void KeyMenuClicked()
         {
         }
+
+		#region Keyboard Support
+
+		public virtual void KeyPressed (Keys key) 
+		{ }
+
+		public virtual void KeyReleased (Keys key)
+		{ }
+
+		public virtual void KeyboardCurrentState (KeyboardState currentState)
+		{ }
+
+		#endregion
 
         #region GamePad Support
         private CCGamePadButtonDelegate m_OnGamePadButtonUpdateDelegate;
