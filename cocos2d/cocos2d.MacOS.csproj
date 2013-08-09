@@ -439,6 +439,8 @@
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="label_nodes\CCLabelUtilities-CoreGraphics.cs" />
     <Compile Include="label_nodes\CCLabel-CoreGraphics.cs" />
+    <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
+    <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">
@@ -458,5 +460,6 @@
     <Folder Include="support\Converters\" />
     <Folder Include="support\Serialization\" />
     <Folder Include="extentions\Box2D\" />
+    <Folder Include="keyboard_dispatcher\" />
   </ItemGroup>
 </Project>

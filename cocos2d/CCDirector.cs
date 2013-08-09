@@ -59,6 +59,7 @@ namespace Cocos2D
 #endif
 		private CCActionManager m_pActionManager;
         private CCKeypadDispatcher m_pKeypadDispatcher;
+		private CCKeyboardDispatcher m_pKeyboardDispatcher;
         private CCScene m_pNextScene;
         private CCNode m_pNotificationNode;
 
@@ -471,6 +472,12 @@ namespace Cocos2D
             set { m_pKeypadDispatcher = value; }
         }
 
+		public CCKeyboardDispatcher KeyboardDispatcher
+		{
+			get { return m_pKeyboardDispatcher; }
+			set { m_pKeyboardDispatcher = value; }
+		}
+
 #if !PSM &&!NETFX_CORE
 		public CCAccelerometer Accelerometer
         {
@@ -590,6 +597,9 @@ namespace Cocos2D
 
             // KeypadDispatcher
             m_pKeypadDispatcher = new CCKeypadDispatcher();
+
+			// KeyboardDispatcher
+			m_pKeyboardDispatcher = new CCKeyboardDispatcher();
 
 			// Accelerometer
 #if !PSM &&!NETFX_CORE

@@ -411,6 +411,8 @@
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCEGLTouchDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
+    <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
+    <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.Android.csproj">
@@ -430,4 +432,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="keyboard_dispatcher\" />
+  </ItemGroup>
 </Project>
