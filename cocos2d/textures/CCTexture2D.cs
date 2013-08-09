@@ -70,6 +70,8 @@ namespace Cocos2D
         {
             m_samplerState = SamplerState.LinearClamp;
 			IsAntialiased = false;  // We will set this to false by default
+
+            RefreshAntialiasSetting ();
         }
 
         public bool IsTextureDefined
@@ -159,28 +161,34 @@ namespace Cocos2D
                 if (m_bAntialiased != value)
                 {
                     m_bAntialiased = value;
-                    var saveState = m_samplerState;
 
-                    if (m_bAntialiased)
-                    {
-						m_samplerState = new SamplerState
-						{
-							Filter = TextureFilter.Linear
-						};
-                    }
-                    else
-                    {
-						m_samplerState = new SamplerState
-						{
-							Filter = TextureFilter.Point
-						};
-                    }
-
-                    m_samplerState.AddressU = saveState.AddressU;
-                    m_samplerState.AddressV = saveState.AddressV;
-                    m_samplerState.AddressW = saveState.AddressW;
+                    RefreshAntialiasSetting ();
                 }
             }
+        }
+
+        void RefreshAntialiasSetting ()
+        {
+            var saveState = m_samplerState;
+
+            if (m_bAntialiased)
+            {
+                m_samplerState = new SamplerState
+                {
+                    Filter = TextureFilter.Linear
+                };
+            }
+            else
+            {
+                m_samplerState = new SamplerState
+                {
+                    Filter = TextureFilter.Point
+                };
+            }
+
+            m_samplerState.AddressU = saveState.AddressU;
+            m_samplerState.AddressV = saveState.AddressV;
+            m_samplerState.AddressW = saveState.AddressW;
         }
 
         public uint BitsPerPixelForFormat
