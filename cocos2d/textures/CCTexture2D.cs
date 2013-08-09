@@ -165,27 +165,21 @@ namespace Cocos2D
                     {
 						m_samplerState = new SamplerState
 						{
-							Filter = TextureFilter.Point,
-							AddressU = saveState.AddressU,
-							AddressV = saveState.AddressV,
-							AddressW = saveState.AddressW
+							Filter = TextureFilter.Linear
 						};
-
                     }
                     else
                     {
 						m_samplerState = new SamplerState
 						{
-							Filter = TextureFilter.Linear,
-							AddressU = saveState.AddressU,
-							AddressV = saveState.AddressV,
-							AddressW = saveState.AddressW
+							Filter = TextureFilter.Point
 						};
-
                     }
 
+                    m_samplerState.AddressU = saveState.AddressU;
+                    m_samplerState.AddressV = saveState.AddressV;
+                    m_samplerState.AddressW = saveState.AddressW;
                 }
-
             }
         }
 
