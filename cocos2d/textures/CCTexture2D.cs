@@ -69,7 +69,7 @@ namespace Cocos2D
         public CCTexture2D()
         {
             m_samplerState = SamplerState.LinearClamp;
-            m_bAntialiased = true;
+			IsAntialiased = false;  // We will set this to false by default
         }
 
         public bool IsTextureDefined
@@ -163,24 +163,24 @@ namespace Cocos2D
 
                     if (m_bAntialiased)
                     {
-                        m_samplerState = new SamplerState
-                        {
-                            Filter = TextureFilter.Linear,
-                            AddressU = saveState.AddressU,
-                            AddressV = saveState.AddressV,
-                            AddressW = saveState.AddressW
-                        };
+						m_samplerState = new SamplerState
+						{
+							Filter = TextureFilter.Point,
+							AddressU = saveState.AddressU,
+							AddressV = saveState.AddressV,
+							AddressW = saveState.AddressW
+						};
 
                     }
                     else
                     {
-                        m_samplerState = new SamplerState
-                        {
-                            Filter = TextureFilter.Point,
-                            AddressU = saveState.AddressU,
-                            AddressV = saveState.AddressV,
-                            AddressW = saveState.AddressW
-                        };
+						m_samplerState = new SamplerState
+						{
+							Filter = TextureFilter.Linear,
+							AddressU = saveState.AddressU,
+							AddressV = saveState.AddressV,
+							AddressW = saveState.AddressW
+						};
 
                     }
 
