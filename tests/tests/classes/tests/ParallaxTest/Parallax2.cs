@@ -28,7 +28,7 @@ namespace tests
             tilemap.AnchorPoint = new CCPoint(0, 0);
 
             // Anti Aliased images
-            tilemap.IsUseAntiAlias = true;
+            tilemap.IsAntialiased = true;
 
             // background layer: another image
             CCSprite background = new CCSprite(TestResource.s_back);

@@ -16,7 +16,7 @@ namespace tests
         {
             CCTileMapAtlas map = CCTileMapAtlas.Create(s_TilesPng, s_LevelMapTga, 16, 16);
             // Convert it to "alias" (GL_LINEAR filtering)
-			map.IsUseAntiAlias = true;
+			map.IsAntialiased = true;
 
             CCSize s = map.ContentSize;
             CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
@@ -54,7 +54,7 @@ namespace tests
         {
             CCTileMapAtlas map = CCTileMapAtlas.Create(s_TilesPng, s_LevelMapTga, 16, 16);
             // Create an Aliased Atlas
-			map.IsUseAntiAlias = false;
+			map.IsAntialiased = false;
 
             CCSize s = map.ContentSize;
             CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
@@ -326,7 +326,7 @@ namespace tests
             AddChild(map, 0, kTagTileMap);
 
             CCTMXLayer layer = map.LayerNamed("Layer 0");
-			layer.IsUseAntiAlias = true;
+			layer.IsAntialiased = true;
 
             map.Scale = (1);
 
@@ -615,13 +615,13 @@ namespace tests
 
             CCTMXLayer layer;
             layer = map.LayerNamed("Layer 0");
-			layer.IsUseAntiAlias = true;
+			layer.IsAntialiased = true;
 
             layer = map.LayerNamed("Layer 1");
-			layer.IsUseAntiAlias = true;
+			layer.IsAntialiased = true;
 
             layer = map.LayerNamed("Layer 2");
-			layer.IsUseAntiAlias = true;
+			layer.IsAntialiased = true;
         }
 
         public override string title()

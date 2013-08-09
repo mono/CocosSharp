@@ -328,11 +328,11 @@ namespace Cocos2D
             }
         }
 
-        public bool IsUseAntiAlias
+        public bool IsAntialiased
         {
-            get { return Texture.IsUseAntiAlias; }
+            get { return Texture.IsAntialiased; }
 
-            set { Texture.IsUseAntiAlias = value; }
+            set { Texture.IsAntialiased = value; }
         }
 
         #region RGBA protocol

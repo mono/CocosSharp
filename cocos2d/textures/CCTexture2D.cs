@@ -64,12 +64,12 @@ namespace Cocos2D
         private int m_uPixelsWide;
 
         private bool m_bManaged;
-        private bool m_bAntialias;
+        private bool m_bAntialiased;
 
         public CCTexture2D()
         {
             m_samplerState = SamplerState.LinearClamp;
-            m_bAntialias = true;
+            m_bAntialiased = true;
         }
 
         public bool IsTextureDefined
@@ -150,18 +150,18 @@ namespace Cocos2D
             set { m_samplerState = value; }
         }
 
-        public bool IsUseAntiAlias
+        public bool IsAntialiased
         {
-            get { return m_bAntialias; }
+            get { return m_bAntialiased; }
 
             set
             {
-                if (m_bAntialias != value)
+                if (m_bAntialiased != value)
                 {
-                    m_bAntialias = value;
+                    m_bAntialiased = value;
                     var saveState = m_samplerState;
 
-                    if (m_bAntialias)
+                    if (m_bAntialiased)
                     {
                         m_samplerState = new SamplerState
                         {
@@ -279,7 +279,7 @@ namespace Cocos2D
             }
         }
 
-        [Obsolete("Use IsUseAntiAlias property.")]
+        [Obsolete("Use IsAntialiased property.")]
         public void SetAntiAliasTexParameters()
         {
             SamplerState saveState = m_samplerState;
@@ -293,7 +293,7 @@ namespace Cocos2D
             };
         }
 
-        [Obsolete("Use IsUseAntiAlias property.")]
+        [Obsolete("Use IsAntialiased property.")]
         public void SetAliasTexParameters()
         {
 
