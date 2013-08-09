@@ -165,14 +165,14 @@ namespace Cocos2D
                     {
 						m_samplerState = new SamplerState
 						{
-							Filter = TextureFilter.Point
+							Filter = TextureFilter.Linear
 						};
                     }
                     else
                     {
 						m_samplerState = new SamplerState
 						{
-							Filter = TextureFilter.Linear
+							Filter = TextureFilter.Point
 						};
                     }
 
