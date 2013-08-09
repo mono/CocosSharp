@@ -1000,7 +1000,7 @@ namespace tests
             AddChild(sprite);
 	
             // this is the default filterting
-            sprite.Texture.SetAntiAliasTexParameters();
+            sprite.IsAntialiased = true;
 	
             //
             // Sprite 1: GL_NEAREST
@@ -1011,7 +1011,7 @@ namespace tests
             AddChild(sprite2);
 	
             // Use Nearest in this one
-            sprite2.Texture.SetAliasTexParameters();
+			sprite2.IsAntialiased = false;
 		
             // scale them to show
             CCScaleBy sc = new CCScaleBy(3, 8.0f);
@@ -1377,7 +1377,7 @@ namespace tests
 
             sprite = new CCSprite("Images/grossinis_sister1");
             sprite.Position = new CCPoint(s.Width/5*1, s.Height/2);
-            sprite.Texture.SetAliasTexParameters();
+			sprite.IsAntialiased = false;
             sprite.Scale = 2;
             AddChild(sprite);
 
@@ -1385,7 +1385,7 @@ namespace tests
 	
             sprite = new CCSprite("Images/grossinis_sister1");
             sprite.Position = new CCPoint(s.Width/5*2, s.Height/2);
-            sprite.Texture.SetAntiAliasTexParameters();
+			sprite.IsAntialiased = true;
             sprite.Scale = 2;
             AddChild(sprite);
 
@@ -1393,7 +1393,7 @@ namespace tests
 	
             sprite = new CCSprite("Images/grossinis_sister2");
             sprite.Position = new CCPoint(s.Width/5*3, s.Height/2);
-            sprite.Texture.SetAliasTexParameters();
+			sprite.IsAntialiased = false;
             sprite.Scale = 2;
             AddChild(sprite);
 	
@@ -1401,7 +1401,7 @@ namespace tests
 
             sprite = new CCSprite("Images/grossinis_sister2");
             sprite.Position = new CCPoint(s.Width/5*4, s.Height/2);
-            sprite.Texture.SetAntiAliasTexParameters();
+			sprite.IsAntialiased = true;
             sprite.Scale = 2;
             AddChild(sprite);
         }

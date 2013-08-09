@@ -113,7 +113,8 @@ namespace Cocos2D
         public bool InitWithString(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
         {
             InitializeFont(fontName, fontSize, text);
-
+			m_FontName = fontName;
+			m_FontSize = fontSize;
             return base.InitWithString(text, GetFontKey(fontName, fontSize), dimensions, hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
         }
 
@@ -266,6 +267,20 @@ namespace Cocos2D
 
             base.Draw();
         }
+
+		public override string Text {
+			get {
+				return base.Text;
+			}
+			set {
+				if (m_sInitialString != value)
+				{
+					InitializeFont (FontName, FontSize, value);
+					base.Text = value;
+				}
+			}
+		}
+
 
         private static string GetFontKey(string fontName, float fontSize)
         {

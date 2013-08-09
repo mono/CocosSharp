@@ -390,7 +390,7 @@ namespace Cocos2D
             //  - easier to render
             // cons:
             //  - difficult to scale / rotate / etc.
-            m_pobTextureAtlas.Texture.SetAliasTexParameters();
+			m_pobTextureAtlas.IsAntialiased = false;
 
             //CFByteOrder o = CFByteOrderGetCurrent();
 

@@ -80,6 +80,13 @@ namespace Cocos2D
             set { m_pTexture = value; }
         }
 
+		public bool IsAntialiased
+		{
+			get { return Texture.IsAntialiased; }
+
+			set { Texture.IsAntialiased = value; }
+		}
+
         #endregion
 
         public override string ToString()

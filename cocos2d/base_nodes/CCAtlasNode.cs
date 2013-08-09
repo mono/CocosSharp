@@ -37,6 +37,13 @@ namespace Cocos2D
             set { m_uQuadsToDraw = value; }
         }
 
+		public bool IsAntialiased
+		{
+			get { return Texture.IsAntialiased; }
+
+			set { Texture.IsAntialiased = value; }
+		}
+
         #region ICCRGBAProtocol Members
 
         public override bool IsOpacityModifyRGB

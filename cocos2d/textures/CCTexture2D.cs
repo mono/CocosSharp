@@ -64,10 +64,12 @@ namespace Cocos2D
         private int m_uPixelsWide;
 
         private bool m_bManaged;
+        private bool m_bAntialiased;
 
         public CCTexture2D()
         {
             m_samplerState = SamplerState.LinearClamp;
+            m_bAntialiased = true;
         }
 
         public bool IsTextureDefined
@@ -146,6 +148,45 @@ namespace Cocos2D
         {
             get { return m_samplerState; }
             set { m_samplerState = value; }
+        }
+
+        public bool IsAntialiased
+        {
+            get { return m_bAntialiased; }
+
+            set
+            {
+                if (m_bAntialiased != value)
+                {
+                    m_bAntialiased = value;
+                    var saveState = m_samplerState;
+
+                    if (m_bAntialiased)
+                    {
+                        m_samplerState = new SamplerState
+                        {
+                            Filter = TextureFilter.Linear,
+                            AddressU = saveState.AddressU,
+                            AddressV = saveState.AddressV,
+                            AddressW = saveState.AddressW
+                        };
+
+                    }
+                    else
+                    {
+                        m_samplerState = new SamplerState
+                        {
+                            Filter = TextureFilter.Point,
+                            AddressU = saveState.AddressU,
+                            AddressV = saveState.AddressV,
+                            AddressW = saveState.AddressW
+                        };
+
+                    }
+
+                }
+
+            }
         }
 
         public uint BitsPerPixelForFormat
@@ -238,30 +279,34 @@ namespace Cocos2D
             }
         }
 
+        [Obsolete("Use IsAntialiased property.")]
         public void SetAntiAliasTexParameters()
         {
             SamplerState saveState = m_samplerState;
 
             m_samplerState = new SamplerState
-                {
-                    Filter = TextureFilter.Point,
-                    AddressU = saveState.AddressU,
-                    AddressV = saveState.AddressV,
-                    AddressW = saveState.AddressW
-                };
+            {
+                Filter = TextureFilter.Linear,
+                AddressU = saveState.AddressU,
+                AddressV = saveState.AddressV,
+                AddressW = saveState.AddressW
+            };
         }
 
+        [Obsolete("Use IsAntialiased property.")]
         public void SetAliasTexParameters()
         {
+
             SamplerState saveState = m_samplerState;
 
             m_samplerState = new SamplerState
-                {
-                    Filter = TextureFilter.Linear,
-                    AddressU = saveState.AddressU,
-                    AddressV = saveState.AddressV,
-                    AddressW = saveState.AddressW
-                };
+            {
+                Filter = TextureFilter.Point,
+                AddressU = saveState.AddressU,
+                AddressV = saveState.AddressV,
+                AddressW = saveState.AddressW
+            };
+
         }
 
         #region Initialization
