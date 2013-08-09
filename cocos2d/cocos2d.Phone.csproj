@@ -358,7 +358,6 @@
     <Compile Include="platform\Zlib\ZStreamException.cs" />
     <Compile Include="predefine\ccConfig.cs" />
     <Compile Include="predefine\CCMacros.cs" />
-    <Compile Include="predefine\CCPointExtension.cs" />
     <Compile Include="predefine\CCProtocols.cs" />
     <Compile Include="predefine\CCTouch.cs" />
     <Compile Include="predefine\ccTypes.cs" />
