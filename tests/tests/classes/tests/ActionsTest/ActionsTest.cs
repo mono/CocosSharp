@@ -304,14 +304,14 @@ namespace tests
             // add title and subtitle
             var str = title();
             var pTitle = str;
-            var label = new CCLabelTTF(pTitle, "arial", 18);
+            var label = new CCLabelTTF(pTitle, "arial", 32);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 30);
 
             var strSubtitle = subtitle();
             if (! strSubtitle.Equals(""))
             {
-                var l = new CCLabelTTF(strSubtitle, "arial", 22);
+                var l = new CCLabelTTF(strSubtitle, "arial", 16);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 60);
             }
