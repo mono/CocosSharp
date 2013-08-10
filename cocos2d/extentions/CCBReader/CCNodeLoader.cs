@@ -966,7 +966,7 @@ namespace Cocos2D
 
             // Load sub file
             string path = CCFileUtils.FullPathFromRelativePath(ccbFileName);
-            long size = 0;
+            //long size = 0;
             byte[] pBytes = CCFileUtils.GetFileBytes(path);
             var reader = new CCBReader(pCCBReader);
 

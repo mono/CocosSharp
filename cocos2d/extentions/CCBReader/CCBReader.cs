@@ -573,7 +573,7 @@ namespace Cocos2D
 
                 if (_jsControlled)
                 {
-                    string callbackIdentifier;
+                    //string callbackIdentifier;
                     _actionManager.GetKeyframeCallbacks().Add(String.Format("{0}:{1}", callbackType, callbackName));
                 }
 

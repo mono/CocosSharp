@@ -60,7 +60,7 @@ namespace Cocos2D
 
     public class CCImageTGA
     {
-        private TGAHeader header;
+        //private TGAHeader header;
 
         public int status;
         public byte type, pixelDepth;
