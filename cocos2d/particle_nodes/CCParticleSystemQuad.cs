@@ -539,9 +539,7 @@ void setupVBOandVAO()
 
         public CCParticleSystemQuad Clone()
         {
-            var p = new CCParticleSystemQuad();
-
-            p.InitWithTotalParticles(m_uTotalParticles);
+            var p = new CCParticleSystemQuad(m_uTotalParticles);
 
             // angle
             p.m_fAngle = m_fAngle;
