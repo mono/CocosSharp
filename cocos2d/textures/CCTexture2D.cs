@@ -69,7 +69,7 @@ namespace Cocos2D
         public CCTexture2D()
         {
             m_samplerState = SamplerState.LinearClamp;
-			IsAntialiased = false;  // We will set this to false by default
+            IsAntialiased = true;  // We will set this to true by default
 
             RefreshAntialiasSetting ();
         }
@@ -284,31 +284,13 @@ namespace Cocos2D
         [Obsolete("Use IsAntialiased property.")]
         public void SetAntiAliasTexParameters()
         {
-            SamplerState saveState = m_samplerState;
-
-            m_samplerState = new SamplerState
-            {
-                Filter = TextureFilter.Linear,
-                AddressU = saveState.AddressU,
-                AddressV = saveState.AddressV,
-                AddressW = saveState.AddressW
-            };
+            IsAntialiased = true;	
         }
 
         [Obsolete("Use IsAntialiased property.")]
         public void SetAliasTexParameters()
         {
-
-            SamplerState saveState = m_samplerState;
-
-            m_samplerState = new SamplerState
-            {
-                Filter = TextureFilter.Point,
-                AddressU = saveState.AddressU,
-                AddressV = saveState.AddressV,
-                AddressW = saveState.AddressW
-            };
-
+            IsAntialiased = false;	
         }
 
         #region Initialization
