@@ -210,6 +210,7 @@
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="label_nodes\CCLabelTTF.cs" />
     <Compile Include="label_nodes\CCLabelUtilities.cs" />
+    <Compile Include="platform\CCContentManager.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
     <Compile Include="platform\ICCFocusable.cs" />
     <Compile Include="platform\CCSpriteFontCache.cs" />
