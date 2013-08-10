@@ -13,6 +13,7 @@ namespace Cocos2D
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
+        [Obsolete("use CCContentManager.SharedContentManager.Load<string>()")]
         public static string LoadContentFile(string file)
         {
             string content = null;
