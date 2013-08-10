@@ -121,13 +121,14 @@ namespace Cocos2D
 
                 // offset (after layer orientation is set);
                 CCPoint offset = CalculateLayerOffset(layerInfo.Offset);
-                Position = CCMacros.CCPointPixelsToPoints(offset);
+                Position = offset.PixelsToPoints();
 
                 m_pAtlasIndexArray = new List<int>((int) totalNumberOfTiles);
 
-                ContentSize =
-                    CCMacros.CCSizePixelsToPoints(new CCSize(m_tLayerSize.Width * m_tMapTileSize.Width,
-                                                                 m_tLayerSize.Height * m_tMapTileSize.Height));
+                var contentSize = new CCSize(m_tLayerSize.Width * m_tMapTileSize.Width,
+                                      m_tLayerSize.Height * m_tMapTileSize.Height);
+
+                ContentSize = contentSize.PixelsToPoints();
 
                 m_bUseAutomaticVertexZ = false;
                 m_nVertexZvalue = 0;
@@ -174,7 +175,7 @@ namespace Cocos2D
                 if (tile == null)
                 {
                     CCRect rect = m_pTileSet.RectForGID(gid);
-                    rect = CCMacros.CCRectanglePixelsToPoints(rect);
+                    rect = rect.PixelsToPoints();
 
                     tile = new CCSprite(Texture, rect);
                     //
@@ -276,7 +277,7 @@ namespace Cocos2D
                     if (sprite != null)
                     {
                         CCRect rect = m_pTileSet.RectForGID(gid);
-                        rect = CCMacros.CCRectanglePixelsToPoints(rect);
+                        rect = rect.PixelsToPoints();
 
                         sprite.SetTextureRect(rect, false, rect.Size);
                         if (flags != 0)
@@ -360,7 +361,7 @@ namespace Cocos2D
                     ret = PositionForHexAt(pos);
                     break;
             }
-            ret = CCMacros.CCPointPixelsToPoints(ret);
+            ret = ret.PixelsToPoints();
             return ret;
         }
 
@@ -505,7 +506,7 @@ namespace Cocos2D
         private CCSprite AppendTileForGID(uint gid, CCPoint pos)
         {
             CCRect rect = m_pTileSet.RectForGID(gid);
-            rect = CCMacros.CCRectanglePixelsToPoints(rect);
+            rect = rect.PixelsToPoints();
 
             var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
 
@@ -530,7 +531,7 @@ namespace Cocos2D
         private CCSprite InsertTileForGID(uint gid, CCPoint pos)
         {
             CCRect rect = m_pTileSet.RectForGID(gid);
-            rect = CCMacros.CCRectanglePixelsToPoints(rect);
+            rect = rect.PixelsToPoints();
 
             var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
 
