@@ -73,12 +73,12 @@ namespace Cocos2D
         public const int kParticleStartSizeEqualToEndSize = kCCParticleStartSizeEqualToEndSize;
         public const int kParticleDurationInfinity = kCCParticleDurationInfinity;
 
-        protected bool m_bIsActive;
+        protected bool m_bIsActive = true;
         protected bool m_bIsAutoRemoveOnFinish;
         protected bool m_bIsBlendAdditive;
         protected bool m_bOpacityModifyRGB;
         protected bool m_bTransformSystemDirty;
-        protected CCPositionType m_ePositionType;
+        protected CCPositionType m_ePositionType = CCPositionType.Free;
         protected float m_fAngle;
         protected float m_fAngleVar;
         protected float m_fDuration;
@@ -95,12 +95,12 @@ namespace Cocos2D
         protected float m_fStartSizeVar;
         protected float m_fStartSpin;
         protected float m_fStartSpinVar;
-        protected CCEmitterMode m_nEmitterMode;
+        protected CCEmitterMode m_nEmitterMode = CCEmitterMode.Gravity;
         protected CCParticleBatchNode m_pBatchNode;
         protected CCParticle[] m_pParticles;
         protected CCTexture2D m_pTexture;
         protected string m_sPlistFile;
-        protected CCBlendFunc m_tBlendFunc;
+        protected CCBlendFunc m_tBlendFunc = CCBlendFunc.AlphaBlend;
 
         protected CCColor4F m_tEndColor;
         protected CCColor4F m_tEndColorVar;
@@ -379,7 +379,6 @@ namespace Cocos2D
 
         protected CCParticleSystem ()
         {
-            Init();
         }
 
         public CCParticleSystem (string plistFile)
