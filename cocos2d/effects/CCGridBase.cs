@@ -181,10 +181,7 @@ namespace Cocos2D
         {
             CCSize size = m_pTexture.ContentSizeInPixels;
 
-            CCDrawManager.SetViewPort(0, 0,
-                                    (int) (size.Width * CCMacros.CCContentScaleFactor()),
-                                    (int) (size.Height * CCMacros.CCContentScaleFactor())
-                );
+            CCDrawManager.SetViewPort(0, 0, (int)size.Width, (int)size.Height);
 
             CCDrawManager.ViewMatrix = Matrix.Identity;
             CCDrawManager.ProjectionMatrix = Matrix.Identity;
