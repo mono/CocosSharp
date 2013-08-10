@@ -70,8 +70,8 @@ namespace Cocos2D
             Debug.Assert(dict["version"].AsInt == 1, "Unsupported version. Upgrade cocos2d version");
 
             string textureFilename = dict["textureFilename"].AsString;
-            int width = dict["itemWidth"].AsInt / CCMacros.CCContentScaleFactor();
-            int height = dict["itemHeight"].AsInt / CCMacros.CCContentScaleFactor();
+            int width = (int)Math.Ceiling(dict["itemWidth"].AsInt / CCMacros.CCContentScaleFactor());
+            int height = (int)Math.Ceiling(dict["itemHeight"].AsInt / CCMacros.CCContentScaleFactor());
             var startChar = (char) dict["firstChar"].AsInt;
 
 

@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -40,8 +41,8 @@ namespace Cocos2D
 
         protected virtual bool InitWithWidthAndHeight(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
         {
-            w = (w * CCMacros.CCContentScaleFactor());
-            h = (h * CCMacros.CCContentScaleFactor());
+            w = (int)Math.Ceiling(w * CCMacros.CCContentScaleFactor());
+            h = (int)Math.Ceiling(h * CCMacros.CCContentScaleFactor());
 
             m_pTexture = new CCTexture2D();
 			m_pTexture.IsAntialiased = false;
