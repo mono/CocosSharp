@@ -121,7 +121,10 @@ namespace Cocos2D
         /// <summary>
         ///     texture name
         /// </summary>
-        public uint Name { get; set; }
+        public Texture2D Name
+        {
+            get { return XNATexture; }
+        }
 
         /// <summary>
         ///     content size
