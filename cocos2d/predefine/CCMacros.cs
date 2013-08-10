@@ -25,7 +25,7 @@ using System;
 
 namespace Cocos2D
 {
-    public class CCMacros
+    public static class CCMacros
     {
         /// <summary>
         /// simple macro that swaps 2 variables
@@ -77,82 +77,98 @@ namespace Cocos2D
         [Obsolete("use float.Epsilon instead")]
         public static readonly float FLT_EPSILON = float.Epsilon; // Was:  1.192092896e-07F;
 
-        public static int CCContentScaleFactor()
+        public static float CCContentScaleFactor()
         {
-            return 1;
+            return CCDirector.SharedDirector.ContentScaleFactor;
         }
 
+        [Obsolete("use CCRect.PixelsToPoints")]
         public static CCRect CCRectanglePixelsToPoints(CCRect pixels)
         {
-            return pixels;
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCRect(
+                pixels.Origin.X / cs, pixels.Origin.Y / cs,
+                pixels.Size.Width / cs, pixels.Size.Height / cs
+                );
         }
 
+        [Obsolete("use CCRect.PointsToPixels")]
         public static CCRect CCRectanglePointsToPixels(CCRect points)
         {
-            return points;
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCRect(
+                points.Origin.X * cs, points.Origin.Y * cs,
+                points.Size.Width * cs, points.Size.Height * cs
+                );
         }
 
-        public static CCSize CCSizePointsToPixels(CCSize size)
-        {
-            return size;
-        }
-
+        [Obsolete("use CCSize.PixelsToPoints")]
         public static CCSize CCSizePixelsToPoints(CCSize size)
         {
-            return size;
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCSize(size.Width / cs, size.Height / cs);
         }
 
+        [Obsolete("use CCSize.PointsToPixels")]
+        public static CCSize CCSizePointsToPixels(CCSize size)
+        {
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCSize(size.Width * cs, size.Height * cs);
+        }
+
+        [Obsolete("use CCPoint.PixelsToPoints")]
         public static CCPoint CCPointPixelsToPoints(CCPoint point)
         {
-            return point;
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCPoint(point.X / cs, point.Y / cs);
         }
 
+        [Obsolete("use CCPoint.PointsToPixels")]
         public static CCPoint CCPointPointsToPixels(CCPoint point)
         {
-            return point;
-        }
-        /*
-        public static bool CC_HOST_IS_BIG_ENDIAN()
-        {
-            return !BitConverter.IsLittleEndian;
-        }
-        public static uint CC_SWAP_INT32_LITTLE_TO_HOST(uint i)
-        {
-            return (CC_HOST_IS_BIG_ENDIAN() ? CC_SWAP32(i) : (i));
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCPoint(point.X * cs, point.Y * cs);
         }
 
-        public static ushort CC_SWAP_INT16_LITTLE_TO_HOST(ushort i)
+        public static CCRect PixelsToPoints(this CCRect r)
         {
-            return (CC_HOST_IS_BIG_ENDIAN() ? CC_SWAP16(i) : (i));
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCRect(r.Origin.X / cs, r.Origin.Y / cs, r.Size.Width / cs, r.Size.Height / cs);
         }
 
-        public static uint CC_SWAP_INT32_BIG_TO_HOST(uint i)
+        public static CCRect PointsToPixels(this CCRect r)
         {
-            return (CC_HOST_IS_BIG_ENDIAN() ? (i) : CC_SWAP32(i));
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCRect(r.Origin.X * cs, r.Origin.Y * cs, r.Size.Width * cs, r.Size.Height * cs);
         }
 
-        public static ushort CC_SWAP_INT16_BIG_TO_HOST(ushort i)
+        public static CCSize PixelsToPoints(this CCSize s)
         {
-            return (CC_HOST_IS_BIG_ENDIAN() ? (i) : CC_SWAP16(i));
-        }
-        // Only unsigned int can use these functions.
-
-        public static uint CC_SWAP32(uint i)
-        {
-            return ((i & 0x000000ff) << 24 | (i & 0x0000ff00) << 8 | (i & 0x00ff0000) >> 8 | (i & 0xff000000) >> 24);
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCSize(s.Width / cs, s.Height / cs);
         }
 
-        public static ushort CC_SWAP16(ushort i)
+        public static CCSize PointsToPixels(this CCSize s)
         {
-            return (ushort) ((i & 0x00ff) << 8 | (i & 0xff00) >> 8);
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCSize(s.Width * cs, s.Height * cs);
         }
-        */
 
+        public static CCPoint PixelsToPoints(this CCPoint p)
+        {
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCPoint(p.X / cs, p.Y / cs);
+        }
+
+        public static CCPoint PointsToPixels(this CCPoint p)
+        {
+            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            return new CCPoint(p.X * cs, p.Y * cs);
+        }
 
         /*
          * Macros of CCGeometry.h
          */
-
         [Obsolete("Use the CCPoint ctor")]
         public static CCPoint CCPointMake(float x, float y)
         {
@@ -181,17 +197,5 @@ namespace Cocos2D
          * Macros defined in CCSprite.h
          */
         public static readonly int CCSpriteIndexNotInitialized = 320000000; // 0xffffffff; // CCSprite invalid index on the CCSpriteBatchode
-
-        // #define CC_ENABLE_DEFAULT_GL_STATES() {				\
-        // glEnableClientState(GL_VERTEX_ARRAY);			\
-        // glEnableClientState(GL_COLOR_ARRAY);			\
-        // glEnableClientState(GL_TEXTURE_COORD_ARRAY);	\
-        // glEnable(GL_TEXTURE_2D);			
-
-        // #define CC_DISABLE_DEFAULT_GL_STATES() {			\
-        // glDisable(GL_TEXTURE_2D);						\
-        // glDisableClientState(GL_COLOR_ARRAY);			\
-        // glDisableClientState(GL_TEXTURE_COORD_ARRAY);	\
-        // glDisableClientState(GL_VERTEX_ARRAY);			\
     }
 }
