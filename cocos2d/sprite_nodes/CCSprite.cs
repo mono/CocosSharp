@@ -272,10 +272,10 @@ namespace Cocos2D
             {
                 return new CCSpriteFrame(
                     m_pobTexture,
-                    CCMacros.CCRectanglePointsToPixels(m_obRect),
+                    m_obRect.PointsToPixels(),
                     m_bRectRotated,
-                    CCMacros.CCPointPointsToPixels(m_obUnflippedOffsetPositionFromCenter),
-                    CCMacros.CCSizePointsToPixels(m_obContentSize)
+                    m_obUnflippedOffsetPositionFromCenter.PointsToPixels(),
+                    m_obContentSize.PointsToPixels()
                     );
             }
             set
@@ -672,7 +672,7 @@ namespace Cocos2D
 
         private void SetTextureCoords(CCRect rect)
         {
-            rect = CCMacros.CCRectanglePointsToPixels(rect);
+            rect = rect.PointsToPixels();
 
             CCTexture2D tex = m_pobBatchNode != null ? m_pobTextureAtlas.Texture : m_pobTexture;
             if (tex == null)

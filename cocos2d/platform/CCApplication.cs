@@ -49,6 +49,7 @@ namespace Cocos2D
             : base(game)
         {
             m_graphicsService = service;
+
             Content = game.Content;
 
             if (m_graphicsService.GraphicsDevice != null)
@@ -185,6 +186,7 @@ namespace Cocos2D
             set { m_pDelegate = value; }
         }
 
+        [Obsolete("use CCContentManager.SharedContentManager")]
         public ContentManager Content { get; private set; }
 
         public void ClearTouches()
@@ -198,6 +200,8 @@ namespace Cocos2D
         /// </summary>
         protected override void LoadContent()
         {
+            CCContentManager.Initialize(Game.Content.ServiceProvider, Game.Content.RootDirectory);
+
             base.LoadContent();
             
             ApplicationDidFinishLaunching();

@@ -23,7 +23,7 @@ namespace Cocos2D
         protected int m_uQuadsToDraw;
 
         // This varible is only used for CCLabelAtlas FPS display. So plz don't modify its value.
-        private bool m_bIgnoreContentScaleFactor;
+        protected bool m_bIgnoreContentScaleFactor;
 
         public CCTextureAtlas TextureAtlas
         {

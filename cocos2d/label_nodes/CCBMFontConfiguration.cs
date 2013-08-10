@@ -60,7 +60,7 @@ namespace Cocos2D
         {
             try
             {
-                return CCApplication.SharedApplication.Content.Load<CCBMFontConfiguration>(fntFile);
+                return CCContentManager.SharedContentManager.Load<CCBMFontConfiguration>(fntFile);
             }
             catch (ContentLoadException)
             {
@@ -75,7 +75,7 @@ namespace Cocos2D
 
         protected virtual bool InitWithFNTFile(string fntFile)
         {
-            string content = CCContent.LoadContentFile(fntFile);
+            string content = CCContentManager.SharedContentManager.Load<string>(fntFile);
             return InitWithString(content, fntFile);
         }
 

@@ -44,7 +44,7 @@ namespace CocosDenshion
 
             try
             {
-                m_effect = CCApplication.SharedApplication.Content.Load<SoundEffect>(pFileName);
+                m_effect = CCContentManager.SharedContentManager.Load<SoundEffect>(pFileName);
             }
             catch (Exception)
             {
@@ -52,7 +52,7 @@ namespace CocosDenshion
                 if (srcfile.IndexOf('.') > -1)
                 {
                     srcfile = srcfile.Substring(0, srcfile.LastIndexOf('.'));
-                    m_effect = CCApplication.SharedApplication.Content.Load<SoundEffect>(srcfile);
+                    m_effect = CCContentManager.SharedContentManager.Load<SoundEffect>(srcfile);
                 }
             }
             // Do not get an instance here b/c it is very slow. 

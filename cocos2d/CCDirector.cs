@@ -1147,7 +1147,7 @@ namespace Cocos2D
                 m_bDisplayStats = false;
                 return;
             }
-            float factor = m_obWinSizeInPoints.Height / 320.0f;
+            float factor = CCDrawManager.DesignResolutionSize.Height / 320.0f;
             var pos = CCDirector.SharedDirector.VisibleOrigin;
 
             m_pFPSLabel = new CCLabelAtlas();

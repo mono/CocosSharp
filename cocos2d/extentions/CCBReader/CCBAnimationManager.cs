@@ -27,8 +27,8 @@ namespace Cocos2D
         private readonly List<CCNode> _documentOutletNodes = new List<CCNode>();
         private readonly List<string> _documentCallbackNames = new List<string>();
         private readonly List<CCNode> _documentCallbackNodes = new List<CCNode>();
-        private readonly List<string> _keyframeCallbacks;
-        private readonly Dictionary<string, CCAction> _keyframeCallFuncs;
+        private readonly List<string> _keyframeCallbacks = new List<string>();
+        private readonly Dictionary<string, CCAction> _keyframeCallFuncs = new Dictionary<string, CCAction>();
     
         private string _documentControllerName;
         private string _lastCompletedSequenceName;

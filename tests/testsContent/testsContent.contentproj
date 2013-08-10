@@ -206,11 +206,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Images\fps_images.png">
-      <Name>fps_images</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Images\grossini-hd.png">
       <Name>grossini-hd</Name>
       <Importer>TextureImporter</Importer>
@@ -1273,6 +1268,71 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <Compile Include="hd\extensions\CCControlColourPickerSpriteSheet.plist">
+      <Name>CCControlColourPickerSpriteSheet.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\fonts\font-issue1343.fnt">
+      <Name>font-issue1343.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\fonts\konqa32.fnt">
+      <Name>konqa32.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\fonts\larabie-16.plist">
+      <Name>larabie-16.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\fonts\markerFelt.fnt">
+      <Name>markerFelt.fnt</Name>
+      <Importer>CocosFontImporter</Importer>
+      <Processor>CocosFontProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\fonts\tuffy_bold_italic-charmap.plist">
+      <Name>tuffy_bold_italic-charmap.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\blocks9ss.plist">
+      <Name>blocks9ss.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\bugs\circle.plist">
+      <Name>circle.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\ui.plist">
+      <Name>ui.plist</Name>
+      <Importer>CocosPListImporter</Importer>
+      <Processor>CocosPListProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\TileMaps\orthogonal-test3.tmx">
+      <Name>orthogonal-test3</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\TileMaps\orthogonal-test4.tmx">
+      <Name>orthogonal-test4</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\TileMaps\orthogonal-test6.tmx">
+      <Name>orthogonal-test6</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\TileMaps\test-object-layer.tmx">
+      <Name>test-object-layer</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="animations\ghosts.plist">
@@ -2198,6 +2258,305 @@
       <Name>gem-1</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\fps_images.png">
+      <Name>fps_images</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="hd\animations\dragon_animation.png">
+      <Name>dragon_animation</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\ccb\burst.png">
+      <Name>burst</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\background.png">
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\button.png">
+      <Name>button</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\buttonHighlighted.png">
+      <Name>buttonHighlighted</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\CCControlColourPickerSpriteSheet.png">
+      <Name>CCControlColourPickerSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\potentiometerButton.png">
+      <Name>potentiometerButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\potentiometerProgress.png">
+      <Name>potentiometerProgress</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\potentiometerTrack.png">
+      <Name>potentiometerTrack</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\ribbon.png">
+      <Name>ribbon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\sliderProgress.png">
+      <Name>sliderProgress</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\sliderProgress2.png">
+      <Name>sliderProgress2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\sliderThumb.png">
+      <Name>sliderThumb</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\sliderTrack.png">
+      <Name>sliderTrack</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\sliderTrack2.png">
+      <Name>sliderTrack2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\stepper-minus.png">
+      <Name>stepper-minus</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\extensions\stepper-plus.png">
+      <Name>stepper-plus</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\fonts\font-issue1343.png">
+      <Name>font-issue1343</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\fonts\konqa32.png">
+      <Name>konqa32</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\fonts\labelatlas.png">
+      <Name>labelatlas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\fonts\larabie-16.png">
+      <Name>larabie-16</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\fonts\markerFelt.png">
+      <Name>markerFelt</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\fonts\tuffy_bold_italic-charmap.png">
+      <Name>tuffy_bold_italic-charmap</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\fps_images.png">
+      <Name>fps_images</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\arrows.png">
+      <Name>arrows</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\arrowsBar.png">
+      <Name>arrowsBar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\b1.png">
+      <Name>b1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\b2.png">
+      <Name>b2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\background1.png">
+      <Name>background1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\background2.png">
+      <Name>background2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\background3.png">
+      <Name>background3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\ball.png">
+      <Name>ball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\blocks.png">
+      <Name>blocks</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\blocks9.png">
+      <Name>blocks9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\blocks9ss.png">
+      <Name>blocks9ss</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\bugs\circle.png">
+      <Name>circle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\bugs\picture.png">
+      <Name>picture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\bugs\test_issue_1179.png">
+      <Name>test_issue_1179</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\close.png">
+      <Name>close</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\f1.png">
+      <Name>f1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\f2.png">
+      <Name>f2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\grossini.png">
+      <Name>grossini</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\grossinis_sister1.png">
+      <Name>grossinis_sister1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\grossinis_sister2.png">
+      <Name>grossinis_sister2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\grossini_dance_01.png">
+      <Name>grossini_dance_01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\grossini_dance_02.png">
+      <Name>grossini_dance_02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\grossini_dance_03.png">
+      <Name>grossini_dance_03</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\grossini_dance_atlas.png">
+      <Name>grossini_dance_atlas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\hole_effect.png">
+      <Name>hole_effect</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\hole_stencil.png">
+      <Name>hole_stencil</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\Icon.png">
+      <Name>Icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\paddle.png">
+      <Name>paddle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\particles.png">
+      <Name>particles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\r1.png">
+      <Name>r1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\r2.png">
+      <Name>r2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\Images\ui.png">
+      <Name>ui</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\TileMaps\tiles.png">
+      <Name>tiles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="hd\TileMaps\tmw_desert_spacing.png">
+      <Name>tmw_desert_spacing</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

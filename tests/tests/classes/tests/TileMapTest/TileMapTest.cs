@@ -839,7 +839,7 @@ namespace tests
             m_tamara = new CCSprite(s_pPathSister1);
             map.AddChild(m_tamara, map.Children.Count);
             float mapWidth = map.MapSize.Width * map.TileSize.Width;
-            m_tamara.Position = CCMacros.CCPointPixelsToPoints(new CCPoint(mapWidth / 2, 0));
+            m_tamara.Position = new CCPoint(mapWidth / 2, 0).PixelsToPoints();
             m_tamara.AnchorPoint = (new CCPoint(0.5f, 0));
 
 
@@ -859,8 +859,7 @@ namespace tests
 
         private void repositionSprite(float dt)
         {
-            CCPoint p = m_tamara.Position;
-            p = CCMacros.CCPointPointsToPixels(p);
+            CCPoint p = m_tamara.Position.PointsToPixels();
             CCNode map = GetChildByTag(kTagTileMap);
 
             // there are only 4 layers. (grass and 3 trees layers)
@@ -919,8 +918,7 @@ namespace tests
 
         private void repositionSprite(float dt)
         {
-            CCPoint p = m_tamara.Position;
-            p = CCMacros.CCPointPointsToPixels(p);
+            CCPoint p = m_tamara.Position.PointsToPixels();
             CCNode map = GetChildByTag(kTagTileMap);
 
             // there are only 4 layers. (grass and 3 trees layers)
@@ -983,8 +981,7 @@ namespace tests
         {
             // tile height is 64x32
             // map size: 30x30
-            CCPoint p = m_tamara.Position;
-            p = CCMacros.CCPointPointsToPixels(p);
+            CCPoint p = m_tamara.Position.PointsToPixels();
             float newZ = -(p.Y + 32) / 16;
             m_tamara.VertexZ = newZ;
         }
@@ -1050,8 +1047,7 @@ namespace tests
         {
             // tile height is 101x81
             // map size: 12x12
-            CCPoint p = m_tamara.Position;
-            p = CCMacros.CCPointPointsToPixels(p);
+            CCPoint p = m_tamara.Position.PointsToPixels();
             m_tamara.VertexZ = -((p.Y + 81) / 81);
         }
 
