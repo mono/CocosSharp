@@ -340,7 +340,6 @@
     <Compile Include="platform\CCApplication.cs" />
     <Compile Include="platform\CCDevice.cs" />
     <Compile Include="platform\CCDictMaker.cs" />
-    <Compile Include="platform\CCFileData.cs" />
     <Compile Include="platform\CCFileUtils.cs" />
     <Compile Include="platform\CCLog.cs" />
     <Compile Include="platform\CCSAXParser.cs" />
