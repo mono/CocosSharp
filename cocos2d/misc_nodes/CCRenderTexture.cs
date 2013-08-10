@@ -70,7 +70,7 @@ namespace Cocos2D
 
             // Calculate the adjustment ratios based on the old and new projections
             CCDirector director = CCDirector.SharedDirector;
-            CCSize size = director.WinSize;
+            CCSize size = director.WinSizeInPixels;
             float widthRatio = size.Width / texSize.Width;
             float heightRatio = size.Height / texSize.Height;
 
