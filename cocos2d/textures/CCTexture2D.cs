@@ -693,7 +693,7 @@ namespace Cocos2D
 
             try
             {
-                texture = CCApplication.SharedApplication.Content.Load<Texture2D>(file);
+                texture = CCContentManager.SharedContentManager.Load<Texture2D>(file);
                 //????????????????????????????
                 return InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
             }
@@ -713,7 +713,7 @@ namespace Cocos2D
 
                 try
                 {
-                    texture = CCApplication.SharedApplication.Content.Load<Texture2D>(srcfile);
+                    texture = CCContentManager.SharedContentManager.Load<Texture2D>(srcfile);
                     //????????????????????????????
                     return InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
                 }
@@ -724,7 +724,7 @@ namespace Cocos2D
                         srcfile = srcfile + "-hd";
                         try
                         {
-                            texture = CCApplication.SharedApplication.Content.Load<Texture2D>(srcfile);
+                            texture = CCContentManager.SharedContentManager.Load<Texture2D>(srcfile);
                             m_bManaged = true;
                             //????????????????????????????
                             return InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);

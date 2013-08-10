@@ -154,7 +154,7 @@ namespace Cocos2D
 
         public bool Parse(string pszFile)
         {
-            string content = CCContent.LoadContentFile(pszFile);
+            string content = CCContentManager.SharedContentManager.Load<string>(pszFile);
             return Parse(content, content.Length);
         }
 

@@ -106,25 +106,7 @@ namespace Cocos2D
         {
             Debug.Assert(!string.IsNullOrEmpty(plist), "Invalid texture file name");
 
-            string path = CCFileUtils.FullPathFromRelativePath(plist);
-
-            PlistDocument document = null;
-            try
-            {
-                document = CCApplication.SharedApplication.Content.Load<PlistDocument>(path);
-            }
-            catch (System.Exception)
-            {
-                string xml = CCContent.LoadContentFile(path);
-                if (xml != null)
-                {
-                    document = new PlistDocument(xml);
-                }
-            }
-            if (document == null)
-            {
-                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + path));
-            }
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plist);
 
             PlistDictionary dict = document.Root.AsDictionary;
 
