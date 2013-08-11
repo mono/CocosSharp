@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -676,57 +677,49 @@ namespace Cocos2D
             m_CacheInfo.CacheType = CCTextureCacheType.AssetFile;
             m_CacheInfo.Data = file;
 
+            //TODO: may be move this functional to CCContentManager?
+
+            var contentManager = CCContentManager.SharedContentManager;
+
+            var loadedFile = file;
+
+            // first try to download xnb
+            if (Path.HasExtension(loadedFile))
+            {
+                loadedFile = Path.Combine(Path.GetDirectoryName(file), Path.GetFileNameWithoutExtension(file));
+            }
+
+            // use WeakReference. Link for regular textures are stored in CCTextureCache
+            texture = contentManager.TryLoad<Texture2D>(loadedFile, true);
+
+            if (texture != null)
+            {
+                // usually xnb texture prepared as PremultipliedAlpha
+                return InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
+            }
+
+            // try load raw image
+            if (loadedFile != file)
+            {
+                texture = contentManager.TryLoad<Texture2D>(file, true);
+
+                if (texture != null)
+                {
+                    // not premultiplied alpha
+                    return InitWithTexture(texture, DefaultAlphaPixelFormat, false, true);
+                }
+            }
+
+            // try load not supported format (for example tga)
             try
             {
-                texture = CCContentManager.SharedContentManager.Load<Texture2D>(file);
-                //????????????????????????????
-                return InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
+                using (var stream = contentManager.GetAssetStream(file))
+                {
+                    return InitWithStream(stream, DefaultAlphaPixelFormat);
+                }
             }
             catch (Exception)
             {
-            }
-
-            if (texture == null)
-            {
-                string srcfile = file;
-
-                if (srcfile.IndexOf('.') > -1)
-                {
-                    // Remove the extension
-                    srcfile = srcfile.Substring(0, srcfile.LastIndexOf('.'));
-                }
-
-                try
-                {
-                    texture = CCContentManager.SharedContentManager.Load<Texture2D>(srcfile);
-                    //????????????????????????????
-                    return InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
-                }
-                catch (Exception)
-                {
-                    if (!srcfile.EndsWith("-hd"))
-                    {
-                        srcfile = srcfile + "-hd";
-                        try
-                        {
-                            texture = CCContentManager.SharedContentManager.Load<Texture2D>(srcfile);
-                            m_bManaged = true;
-                            //????????????????????????????
-                            return InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
-                        }
-                        catch (Exception)
-                        {
-                            try
-                            {
-                                var stream = CCFileUtils.GetFileStream(file);
-                                return InitWithStream(stream, DefaultAlphaPixelFormat);
-                            }
-                            catch (Exception)
-                            {
-                            }
-                        }
-                    }
-                }
             }
 
             CCLog.Log("Texture {0} was not found.", file);
@@ -757,8 +750,21 @@ namespace Cocos2D
                     break;
 
                 case CCTextureCacheType.RawData:
-                    InitWithRawData((byte[])m_CacheInfo.Data, m_ePixelFormat, m_uPixelsWide, m_uPixelsHigh,
-                                    m_bHasPremultipliedAlpha, m_bHasMipmaps, m_tContentSize);
+#if NETFX_CORE
+                    var methodInfo = typeof(CCTexture2D).GetType().GetTypeInfo().GetDeclaredMethod("InitWithRawData");
+#else
+                    var methodInfo = typeof(CCTexture2D).GetMethod("InitWithRawData", BindingFlags.Public | BindingFlags.Instance);
+#endif
+                    var genericMethod = methodInfo.MakeGenericMethod(m_CacheInfo.Data.GetType());
+                    genericMethod.Invoke(this, new object[]
+                        {
+                            Convert.ChangeType(m_CacheInfo.Data, m_CacheInfo.Data.GetType()),
+                            m_ePixelFormat, m_uPixelsWide, m_uPixelsHigh, 
+                            m_bHasPremultipliedAlpha, m_bHasMipmaps, m_tContentSize
+                        });
+
+//                    InitWithRawData((byte[])m_CacheInfo.Data, m_ePixelFormat, m_uPixelsWide, m_uPixelsHigh,
+//                                    m_bHasPremultipliedAlpha, m_bHasMipmaps, m_tContentSize);
                     break;
 
                 case CCTextureCacheType.String:
@@ -822,8 +828,9 @@ namespace Cocos2D
 
             CCDrawManager.SetRenderTarget(renderTarget);
             CCDrawManager.spriteBatch.Begin();
-            CCDrawManager.spriteBatch.Draw(m_Texture2D, new Vector2(0, 0), Color.White);
-            CCDrawManager.SetRenderTarget((CCTexture2D) null);
+            CCDrawManager.spriteBatch.Draw(texture, new Vector2(0, 0), Color.White);
+            CCDrawManager.spriteBatch.End();
+            CCDrawManager.SetRenderTarget((CCTexture2D)null);
 
             return renderTarget;
         }
