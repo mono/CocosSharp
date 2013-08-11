@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
+using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
@@ -16,7 +16,7 @@ namespace Cocos2D
             SharedContentManager = new CCContentManager(serviceProvider, rootDirectory);
         }
 
-        private Dictionary<string, object> _loadedAssets = new Dictionary<string, object>();
+        private Dictionary<string, object> _loadedAssets;
         private Dictionary<string, WeakReference> _loadedWeakAssets = new Dictionary<string, WeakReference>();
         
         private Dictionary<string, string> _assetLookupDict = new Dictionary<string, string>();
@@ -27,17 +27,32 @@ namespace Cocos2D
 
         public CCContentManager(IServiceProvider serviceProvider) : base(serviceProvider)
         {
+#if MONOGAME
+            _loadedAssets = LoadedAssets;
+#else
+            _loadedAssets = new Dictionary<string, object>();
+#endif
         }
 
         public CCContentManager(IServiceProvider serviceProvider, string rootDirectory) : base(serviceProvider, rootDirectory)
         {
+#if MONOGAME
+            _loadedAssets = LoadedAssets;
+#else
+            _loadedAssets = new Dictionary<string, object>();
+#endif
         }
 
         public T TryLoad<T>(string assetName)
         {
+            return TryLoad<T>(assetName, false);
+        }
+
+        public T TryLoad<T>(string assetName, bool weakReference)
+        {
             try
             {
-                return Load<T>(assetName);
+                return Load<T>(assetName, weakReference);
             }
             catch (Exception)
             {
@@ -85,6 +100,8 @@ namespace Cocos2D
                 }
             }
 
+            var realName = GetRealName(assetName);
+
             CheckDefaultPath(_searchPaths);
             CheckDefaultPath(_searchResolutionsOrder);
 
@@ -92,10 +109,11 @@ namespace Cocos2D
             {
                 foreach (string resolutionOrder  in _searchResolutionsOrder)
                 {
-                    var path = Path.Combine(Path.Combine(searchPath, resolutionOrder), assetName);
+                    var path = Path.Combine(Path.Combine(searchPath, resolutionOrder), realName);
 
                     try
                     {
+                        //TODO: for platforms with access to the file system, first check for the existence of the file 
                         return InternalLoad<T>(assetName, path, weakReference);
                     }
                     catch (ContentLoadException)
@@ -106,6 +124,25 @@ namespace Cocos2D
             }
 
             throw new ContentLoadException("Failed to load the asset file from " + assetName);
+        }
+
+        private string GetRealName(string assetName)
+        {
+            if (_assetLookupDict.ContainsKey(assetName))
+            {
+                return _assetLookupDict[assetName];
+            }
+            return assetName;
+        }
+
+        public override void Unload()
+        {
+            base.Unload();
+
+#if !MONOGAME
+            _loadedAssets.Clear();
+#endif
+            _loadedWeakAssets.Clear();
         }
 
         private T InternalLoad<T>(string assetName, string path, bool weakReference)
@@ -136,8 +173,10 @@ namespace Cocos2D
                     var content = ReadAsset<CCContent>(path, null);
                     result = (T) (object) new PlistDocument(content.Content);
                 }
-
-                throw new ContentLoadException("Failed to load the asset file from " + assetName);
+                else
+                {
+                    throw new ContentLoadException("Failed to load the asset file from " + assetName);
+                }
             }
 
             if (weakReference)
@@ -150,6 +189,56 @@ namespace Cocos2D
             }
 
             return result;
+        }
+
+#if MONOGAME
+        protected override void ReloadGraphicsAssets()
+        {
+            base.ReloadGraphicsAssets();
+
+            foreach (var pair in _loadedWeakAssets)
+            {
+                if (pair.Value.IsAlive)
+                {
+                    var asset = pair.Value.Target;
+#if NETFX_CORE
+                    var methodInfo = typeof(ContentManager).GetType().GetTypeInfo().GetDeclaredMethod("ReloadAsset");
+#else
+                    var methodInfo = typeof(ContentManager).GetMethod("ReloadAsset", BindingFlags.NonPublic | BindingFlags.Instance);
+#endif
+                    var genericMethod = methodInfo.MakeGenericMethod(asset.GetType());
+                    genericMethod.Invoke(this, new object[] { pair.Key, Convert.ChangeType(asset, asset.GetType()) });
+                }
+            }
+        }
+#endif
+
+        public Stream GetAssetStream(string assetName)
+        {
+            var realName = GetRealName(assetName);
+
+            CheckDefaultPath(_searchPaths);
+            CheckDefaultPath(_searchResolutionsOrder);
+
+            foreach (var searchPath in _searchPaths)
+            {
+                foreach (string resolutionOrder in _searchResolutionsOrder)
+                {
+                    var path = Path.Combine(Path.Combine(searchPath, resolutionOrder), realName);
+
+                    try
+                    {
+                        //TODO: for platforms with access to the file system, first check for the existence of the file 
+                        return TitleContainer.OpenStream(path);
+                    }
+                    catch (Exception)
+                    {
+                        // try other path
+                    }
+                }
+            }
+
+            throw new ContentLoadException("Failed to load the asset stream from " + assetName);
         }
 
         public virtual void LoadFilenameLookupDictionaryFromFile(string filename)
