@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Ouya\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;ANDROID;OUYA;OPENGL;GLES</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;ANDROID;OUYA;OPENGL;GLES;MONOGAME</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -30,7 +30,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Ouya\Release\</OutputPath>
-    <DefineConstants>TRACE;ANDROID;OUYA;OPENGL;GLES</DefineConstants>
+    <DefineConstants>TRACE;ANDROID;OUYA;OPENGL;GLES;MONOGAME</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
