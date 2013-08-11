@@ -112,7 +112,7 @@ namespace CocosDenshion
 
             Close();
 
-            m_music = CCApplication.SharedApplication.Content.Load<Song>(pFileName);
+            m_music = CCContentManager.SharedContentManager.Load<Song>(pFileName);
 
             m_nSoundId = uId;
         }

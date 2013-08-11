@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -40,8 +41,8 @@ namespace Cocos2D
 
         protected virtual bool InitWithWidthAndHeight(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
         {
-            w = (w * CCMacros.CCContentScaleFactor());
-            h = (h * CCMacros.CCContentScaleFactor());
+            w = (int)Math.Ceiling(w * CCMacros.CCContentScaleFactor());
+            h = (int)Math.Ceiling(h * CCMacros.CCContentScaleFactor());
 
             m_pTexture = new CCTexture2D();
 			m_pTexture.IsAntialiased = false;
@@ -69,7 +70,7 @@ namespace Cocos2D
 
             // Calculate the adjustment ratios based on the old and new projections
             CCDirector director = CCDirector.SharedDirector;
-            CCSize size = director.WinSize;
+            CCSize size = director.WinSizeInPixels;
             float widthRatio = size.Width / texSize.Width;
             float heightRatio = size.Height / texSize.Height;
 

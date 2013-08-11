@@ -35,7 +35,7 @@ namespace Cocos2D
         protected bool _clippingToBounds;
         protected bool _dragging;
         protected bool _touchMoved;
-        protected CCScrollViewDirection _direction;
+        protected CCScrollViewDirection _direction = CCScrollViewDirection.Both;
         protected CCPoint _maxInset;
         protected float _maxScale;
         protected CCPoint _minInset;
@@ -51,12 +51,14 @@ namespace Cocos2D
         protected CCPoint _touchPoint;
         protected CCSize _viewSize;
 
-        protected int _pagesCount;
-
         public CCScrollView()
         {
-            _direction = CCScrollViewDirection.Both;
             Init();
+        }
+
+        public CCScrollView(CCSize size)
+        {
+            InitWithViewSize(size, null);
         }
 
         /**
@@ -69,12 +71,6 @@ namespace Cocos2D
         public CCScrollView(CCSize size, CCNode container)
         {
             InitWithViewSize(size, container);
-        }
-
-        public int PagesCount
-        {
-            get { return _pagesCount; }
-            set { _pagesCount = value; }
         }
 
         public float MinScale
@@ -250,8 +246,6 @@ namespace Cocos2D
         {
             if (base.Init())
             {
-				IgnoreAnchorPointForPosition = false;
-                
 				_container = container;
 
                 if (_container == null)
@@ -635,7 +629,7 @@ namespace Cocos2D
         public override void AddChild(CCNode child, int zOrder, int tag)
         {
             child.IgnoreAnchorPointForPosition = false;
-            child.AnchorPoint = CCPoint.Zero;
+            // child.AnchorPoint = CCPoint.Zero;
             if (_container != child)
             {
                 _container.AddChild(child, zOrder, tag);

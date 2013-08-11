@@ -70,7 +70,7 @@ namespace Cocos2D
                 if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
                 {
                     var appPath = AppDomain.CurrentDomain.BaseDirectory;
-                    var contentPath = Path.Combine(appPath, CCApplication.SharedApplication.Content.RootDirectory);
+                    var contentPath = Path.Combine(appPath, CCContentManager.SharedContentManager.RootDirectory);
                     var fontPath = Path.Combine(contentPath, fontName);
 
                     if (File.Exists(fontPath))
@@ -196,7 +196,7 @@ namespace Cocos2D
 
             CreateBitmap(w, h);
 
-            _graphics.Clear(System.Drawing.Color.Black);
+            _graphics.Clear(System.Drawing.Color.Transparent);
             _graphics.DrawString(s, _currentFont, _brush, 0, 0);
             _graphics.Flush();
 

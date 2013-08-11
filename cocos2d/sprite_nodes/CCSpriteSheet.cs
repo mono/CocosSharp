@@ -38,26 +38,7 @@ namespace Cocos2D
 
         public void InitWithFile(string fileName)
         {
-            string path = CCFileUtils.FullPathFromRelativePath(fileName);
-
-            PlistDocument document = null;
-            try
-            {
-                document = CCApplication.SharedApplication.Content.Load<PlistDocument>(path);
-            }
-            catch (System.Exception)
-            {
-                string xml = CCContent.LoadContentFile(path);
-                if (xml != null)
-                {
-                    document = new PlistDocument(xml);
-                }
-            }
-
-            if (document == null)
-            {
-                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + path));
-            }
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(fileName);
 
             var dict = document.Root.AsDictionary;
             var texturePath = "";
@@ -75,12 +56,12 @@ namespace Cocos2D
             if (!string.IsNullOrEmpty(texturePath))
             {
                 // build texture path relative to plist file
-                texturePath = CCFileUtils.FullPathFromRelativeFile(texturePath, path);
+                texturePath = CCFileUtils.FullPathFromRelativeFile(texturePath, fileName);
             }
             else
             {
                 // build texture path by replacing file extension
-                texturePath = path;
+                texturePath = fileName;
 
                 // remove .xxx
                 texturePath = CCFileUtils.RemoveExtension(texturePath);
@@ -118,23 +99,7 @@ namespace Cocos2D
 
         public void InitWithFile(string fileName, CCTexture2D texture)
         {
-            PlistDocument document = null;
-            try
-            {
-                document = CCApplication.SharedApplication.Content.Load<PlistDocument>(fileName);
-            }
-            catch (System.Exception)
-            {
-                string xml = CCContent.LoadContentFile(fileName);
-                if (xml != null)
-                {
-                    document = new PlistDocument(xml);
-                }
-            }
-            if (document == null)
-            {
-                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + fileName));
-            }
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(fileName);
 
             PlistDictionary dict = document.Root.AsDictionary;
 

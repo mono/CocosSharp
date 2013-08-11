@@ -189,6 +189,7 @@
     <Compile Include="layers_scenes_transitions_nodes\CCLayerRGBA.cs" />
     <Compile Include="misc_nodes\CCClippingNode.cs" />
     <Compile Include="misc_nodes\CCDrawNode.cs" />
+    <Compile Include="platform\CCContentManager.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
     <Compile Include="platform\ICCFocusable.cs" />
     <Compile Include="platform\CCInputState.cs" />
@@ -317,7 +318,6 @@
     <Compile Include="platform\CCApplication.cs" />
     <Compile Include="platform\CCDevice.cs" />
     <Compile Include="platform\CCDictMaker.cs" />
-    <Compile Include="platform\CCFileData.cs" />
     <Compile Include="platform\CCFileUtils.cs" />
     <Compile Include="platform\CCLog.cs" />
     <Compile Include="platform\CCSAXParser.cs" />

@@ -320,12 +320,12 @@
     <Compile Include="particle_nodes\CCParticleExamples.cs" />
     <Compile Include="particle_nodes\CCParticleSystem.cs" />
     <Compile Include="particle_nodes\CCParticleSystemQuad.cs" />
+    <Compile Include="Platform\CCContentManager.cs" />
     <Compile Include="Platform\CCAccelerometer.cs" />
     <Compile Include="Platform\CCAccelerometerDelegate.cs" />
     <Compile Include="Platform\CCApplication.cs" />
     <Compile Include="Platform\CCDevice.cs" />
     <Compile Include="Platform\CCDictMaker.cs" />
-    <Compile Include="Platform\CCFileData.cs" />
     <Compile Include="Platform\CCFileUtils.cs" />
     <Compile Include="Platform\CCLog.cs" />
     <Compile Include="Platform\CCSpriteFontCache.cs" />

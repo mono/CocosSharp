@@ -507,7 +507,7 @@ namespace Cocos2D
                 }
 
                 rect = fontDef.rect;
-                rect = CCMacros.CCRectanglePixelsToPoints(rect);
+                rect = rect.PixelsToPoints();
 
                 rect.Origin.X += m_tImageOffset.X;
                 rect.Origin.Y += m_tImageOffset.Y;
@@ -558,7 +558,7 @@ namespace Cocos2D
                     new CCPoint(
                         (float) nextFontPositionX + fontDef.xOffset + fontDef.rect.Size.Width * 0.5f + kerningAmount,
                         (float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
-                fontChar.Position = CCMacros.CCPointPixelsToPoints(fontPos);
+                fontChar.Position = fontPos.PixelsToPoints();
 
                 // update kerning
                 nextFontPositionX += fontDef.xAdvance + kerningAmount;
@@ -593,7 +593,7 @@ namespace Cocos2D
                 m_tDimensions.Height > 0 ? m_tDimensions.Height : tmpSize.Height
                 );
 
-            ContentSize = CCMacros.CCSizePixelsToPoints(tmpSize);
+            ContentSize = tmpSize.PixelsToPoints();
         }
 
         public virtual void SetString(string newString, bool needUpdateLabel)

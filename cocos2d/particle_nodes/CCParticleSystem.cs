@@ -99,7 +99,6 @@ namespace Cocos2D
         protected CCParticleBatchNode m_pBatchNode;
         protected CCParticle[] m_pParticles;
         protected CCTexture2D m_pTexture;
-        protected string m_sPlistFile;
         protected CCBlendFunc m_tBlendFunc = CCBlendFunc.AlphaBlend;
 
         protected CCColor4F m_tEndColor;
@@ -393,32 +392,9 @@ namespace Cocos2D
 
         public bool InitWithFile(string plistFile)
         {
-            bool bRet;
-            m_sPlistFile = CCFileUtils.FullPathFromRelativePath(plistFile);
+            PlistDocument doc = CCContentManager.SharedContentManager.Load<PlistDocument>(plistFile);
 
-            PlistDocument doc = null;
-            try
-            {
-                doc = CCApplication.SharedApplication.Content.Load<PlistDocument>(m_sPlistFile);
-            }
-            catch (Exception)
-            {
-                string xml = CCContent.LoadContentFile(m_sPlistFile);
-                if (xml != null)
-                {
-                    doc = new PlistDocument(xml);
-                }
-            }
-            if (doc == null)
-            {
-                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + m_sPlistFile));
-            }
-            Debug.Assert(doc != null, "Particles: file not found");
-            Debug.Assert(doc.Root != null, "Particles: file not found");
-
-            bRet = InitWithDictionary(doc.Root.AsDictionary);
-
-            return bRet;
+            return InitWithDictionary(doc.Root.AsDictionary);
         }
 
         public bool InitWithDictionary(PlistDictionary dictionary)
@@ -539,7 +515,6 @@ namespace Cocos2D
                         // texture        
                         // Try to get the texture from the cache
                         string textureName = dictionary["textureFileName"].AsString;
-                        string fullpath = CCFileUtils.FullPathFromRelativeFile(textureName, m_sPlistFile);
 
                         CCTexture2D tex = null;
 
@@ -550,7 +525,7 @@ namespace Cocos2D
                             CCFileUtils.IsPopupNotify = false;
                             try
                             {
-                                tex = CCTextureCache.SharedTextureCache.AddImage(fullpath);
+                                tex = CCTextureCache.SharedTextureCache.AddImage(textureName);
                             }
                             catch (Exception)
                             {
@@ -568,7 +543,7 @@ namespace Cocos2D
                         else
                         {
                             string textureData = dictionary["textureImageData"].AsString;
-                            Debug.Assert(textureData != null && textureData.Length > 0, string.Format("CCParticleSystem: textureData does not exist : {0}",textureName));
+                            Debug.Assert(!string.IsNullOrEmpty(textureData), string.Format("CCParticleSystem: textureData does not exist : {0}",textureName));
 
                             int dataLen = textureData.Length;
                             if (dataLen != 0)

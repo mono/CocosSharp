@@ -828,9 +828,6 @@
     <Compile Include=".\platform\CCDictMaker.cs">
       <LogicalName>platform\CCDictMaker</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCFileData.cs">
-      <LogicalName>platform\CCFileData</LogicalName>
-    </Compile>
     <Compile Include=".\platform\CCFileUtils.cs">
       <LogicalName>platform\CCFileUtils</LogicalName>
     </Compile>
@@ -1180,6 +1177,7 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCControlPotentiometer.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCControlSaturationPicker.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCControlStepper.cs" />
+    <Compile Include="Platform\CCContentManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.Windows8.csproj">

@@ -220,25 +220,7 @@ namespace Cocos2D
         /// <returns>The scope parameter derived from the pszPlist parameter.</returns>
         public string AddSpriteFramesWithFile(string pszPlist)
         {
-            string path = CCFileUtils.FullPathFromRelativePath(pszPlist);
-            //Dictionary<string, Object> dict = CCFileUtils.dictionaryWithContentsOfFile(pszPath);
-            PlistDocument document = null;
-            try
-            {
-                document = CCApplication.SharedApplication.Content.Load<PlistDocument>(path);
-            }
-            catch (System.Exception)
-            {
-                string xml = CCContent.LoadContentFile(path);
-                if (xml != null)
-                {
-                    document = new PlistDocument(xml);
-                }
-            }
-            if (document == null)
-            {
-                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + path));
-            }
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(pszPlist);
 
             PlistDictionary dict = document.Root.AsDictionary;
             string texturePath = "";
@@ -258,12 +240,12 @@ namespace Cocos2D
             if (!string.IsNullOrEmpty(texturePath))
             {
                 // build texture path relative to plist file
-                texturePath = CCFileUtils.FullPathFromRelativeFile(texturePath, path);
+                texturePath = CCFileUtils.FullPathFromRelativeFile(texturePath, pszPlist);
             }
             else
             {
                 // build texture path by replacing file extension
-                texturePath = path;
+                texturePath = pszPlist;
 
                 // remove .xxx
                 texturePath = CCFileUtils.RemoveExtension(texturePath);
@@ -359,25 +341,7 @@ namespace Cocos2D
         /// <returns>The framePrefix parameter</returns>
         public string AddSpriteFramesWithFile(string pszPlist, CCTexture2D pobTexture, string framePrefix)
         {
-            //string pszPath = CCFileUtils.fullPathFromRelativePath(pszPlist);
-            //Dictionary<string, Object> dict = CCFileUtils.dictionaryWithContentsOfFile(pszPath);
-            PlistDocument document = null;
-            try
-            {
-                document = CCApplication.SharedApplication.Content.Load<PlistDocument>(pszPlist);
-            }
-            catch (System.Exception)
-            {
-                string xml = CCContent.LoadContentFile(pszPlist);
-                if (xml != null)
-                {
-                    document = new PlistDocument(xml);
-                }
-            }
-            if (document == null)
-            {
-                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + pszPlist));
-            }
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(pszPlist);
 
             PlistDictionary dict = document.Root.AsDictionary;
 
@@ -449,25 +413,7 @@ namespace Cocos2D
 
         public void RemoveSpriteFramesFromFile(string plist)
         {
-            //string path = CCFileUtils.fullPathFromRelativePath(plist);
-            //Dictionary<string, object> dict = CCFileUtils.dictionaryWithContentsOfFile(path);
-            PlistDocument document = null;
-            try
-            {
-                document = CCApplication.SharedApplication.Content.Load<PlistDocument>(plist);
-            }
-            catch (System.Exception)
-            {
-                string xml = CCContent.LoadContentFile(plist);
-                if (xml != null)
-                {
-                    document = new PlistDocument(xml);
-                }
-            }
-            if (document == null)
-            {
-                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from " + plist));
-            }
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plist);
 
             PlistDictionary dict = document.Root.AsDictionary;
 

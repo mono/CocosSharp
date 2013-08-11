@@ -238,7 +238,7 @@ namespace Cocos2D
             tex = new CCTexture2D();
 
             var result = tex.InitWithString(m_pString,
-                               CCMacros.CCSizePointsToPixels(m_tDimensions),
+                               m_tDimensions.PointsToPixels(),
                                m_hAlignment,
                                m_vAlignment,
                                m_pFontName,

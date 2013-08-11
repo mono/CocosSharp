@@ -55,7 +55,7 @@ namespace Cocos2D
 
         public static Stream GetFileStream(string fileName)
         {
-            fileName = Path.Combine(CCApplication.SharedApplication.Content.RootDirectory, fileName);
+            fileName = Path.Combine(CCContentManager.SharedContentManager.RootDirectory, fileName);
             return TitleContainer.OpenStream(fileName);
         }
 
@@ -71,12 +71,12 @@ namespace Cocos2D
         /// <returns></returns>
         public static string GetFileData(string pszFileName)
         {
-            return(CCContent.LoadContentFile(pszFileName));
+            return CCContentManager.SharedContentManager.Load<string>(pszFileName);
         }
 
         public static byte[] GetFileBytes(string pszFileName)
         {
-            pszFileName = System.IO.Path.Combine(CCApplication.SharedApplication.Content.RootDirectory, pszFileName);
+            pszFileName = System.IO.Path.Combine(CCContentManager.SharedContentManager.RootDirectory, pszFileName);
 
             using (var stream = TitleContainer.OpenStream(pszFileName))
             {

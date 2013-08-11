@@ -27,7 +27,7 @@ namespace Cocos2D
             set
             {
                 m_obRect = value;
-                m_obRectInPixels = CCMacros.CCRectanglePointsToPixels(m_obRect);
+                m_obRectInPixels = m_obRect.PointsToPixels();
             }
         }
 
@@ -37,7 +37,7 @@ namespace Cocos2D
             set
             {
                 m_obRectInPixels = value;
-                m_obRect = CCMacros.CCRectanglePixelsToPoints(m_obRectInPixels);
+                m_obRect = m_obRectInPixels.PixelsToPoints();
             }
         }
 
@@ -47,7 +47,7 @@ namespace Cocos2D
             set
             {
                 m_obOffset = value;
-                m_obOffsetInPixels = CCMacros.CCPointPointsToPixels(m_obOffset);
+                m_obOffsetInPixels = m_obOffset.PointsToPixels();
             }
         }
 
@@ -57,7 +57,7 @@ namespace Cocos2D
             set
             {
                 m_obOffsetInPixels = value;
-                m_obOffset = CCMacros.CCPointPixelsToPoints(m_obOffsetInPixels);
+                m_obOffset = m_obOffsetInPixels.PixelsToPoints();
             }
         }
 
@@ -118,7 +118,7 @@ namespace Cocos2D
 
         protected virtual bool InitWithTexture(CCTexture2D pobTexture, CCRect rect)
         {
-            CCRect rectInPixels = CCMacros.CCRectanglePointsToPixels(rect);
+            CCRect rectInPixels = rect.PointsToPixels();
             return InitWithTexture(pobTexture, rectInPixels, false, new CCPoint(0, 0), rectInPixels.Size);
         }
 
@@ -128,11 +128,11 @@ namespace Cocos2D
             m_pobTexture = pobTexture;
 
             m_obRectInPixels = rect;
-            m_obRect = CCMacros.CCRectanglePixelsToPoints(rect);
+            m_obRect = rect.PixelsToPoints();
             m_obOffsetInPixels = offset;
-            m_obOffset = CCMacros.CCPointPixelsToPoints(m_obOffsetInPixels);
+            m_obOffset = m_obOffsetInPixels.PixelsToPoints();
             m_obOriginalSizeInPixels = originalSize;
-            m_obOriginalSize = CCMacros.CCSizePixelsToPoints(m_obOriginalSizeInPixels);
+            m_obOriginalSize = m_obOriginalSizeInPixels.PixelsToPoints();
             m_bRotated = rotated;
 
             return true;
@@ -149,11 +149,11 @@ namespace Cocos2D
             m_pobTexture = null;
             m_strTextureFilename = filename;
             m_obRectInPixels = rect;
-            m_obRect = CCMacros.CCRectanglePixelsToPoints(rect);
+            m_obRect = rect.PixelsToPoints();
             m_obOffsetInPixels = offset;
-            m_obOffset = CCMacros.CCPointPixelsToPoints(m_obOffsetInPixels);
+            m_obOffset = m_obOffsetInPixels.PixelsToPoints();
             m_obOriginalSizeInPixels = originalSize;
-            m_obOriginalSize = CCMacros.CCSizePixelsToPoints(m_obOriginalSizeInPixels);
+            m_obOriginalSize = m_obOriginalSizeInPixels.PixelsToPoints();
             m_bRotated = rotated;
 
             return true;
