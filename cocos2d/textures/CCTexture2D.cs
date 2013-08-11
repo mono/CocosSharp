@@ -758,7 +758,7 @@ namespace Cocos2D
                     var genericMethod = methodInfo.MakeGenericMethod(m_CacheInfo.Data.GetType());
                     genericMethod.Invoke(this, new object[]
                         {
-                            Convert.ChangeType(m_CacheInfo.Data, m_CacheInfo.Data.GetType()),
+                            Convert.ChangeType(m_CacheInfo.Data, m_CacheInfo.Data.GetType(),System.Globalization.CultureInfo.InvariantCulture),
                             m_ePixelFormat, m_uPixelsWide, m_uPixelsHigh, 
                             m_bHasPremultipliedAlpha, m_bHasMipmaps, m_tContentSize
                         });
