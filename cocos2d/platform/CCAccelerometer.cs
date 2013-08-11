@@ -102,7 +102,11 @@ namespace Cocos2D
         private void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
 
-            //CCLog.Log("Acce value changed");
+            // We have to use reflection to get the Vector3 value out of Acceleration
+            // What happens is that the Sensor used XNA Vector3 and what we have done is replaced
+            // the XNA with MonoGame which our Sensor does not compile against.
+            //
+            // Result is this ugly hack.
             object val = e.SensorReading.GetType()
              .GetProperty("Acceleration",
                           BindingFlags.FlattenHierarchy |
@@ -115,18 +119,20 @@ namespace Cocos2D
 
             // store the accelerometer value in our acceleration object to be updated.
             UpdateAccelerationValue(val.ToString());
-
-            //m_obAccelerationValue.X = acceleration.X;
-            //m_obAccelerationValue.Y = acceleration.Y;
-            //m_obAccelerationValue.Z = acceleration.Z;
+  
             m_obAccelerationValue.TimeStamp = e.SensorReading.Timestamp.Ticks;
         }
 
         private void UpdateAccelerationValue(string acceleration)
         {
             string[] temp = acceleration.Substring(1, acceleration.Length - 2).Split(':');
-            m_obAccelerationValue.X = float.Parse(temp[1].Substring(0, temp[1].Length - 1));
-            m_obAccelerationValue.Y = float.Parse(temp[2].Substring(0, temp[2].Length - 1));
+            // The format of the string is {X: 0000 Y: 0000 Z: 0000}
+            // Here we need to parse differently so that we can get a constant value back
+            //  Cocos2D-XNA mapps the Sensor reading of the X value to be our Y value
+            //  and the Y value to our X value.  Also the values need to be negated so that 
+            //  it maps correctly.
+            m_obAccelerationValue.Y = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
+            m_obAccelerationValue.X = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
             m_obAccelerationValue.Z = float.Parse(temp[3]);
 
         }
@@ -163,9 +169,9 @@ namespace Cocos2D
                     if (keyboardState.IsKeyDown(Keys.Right))
                         stateValue.X = .1f;
                     if (keyboardState.IsKeyDown(Keys.Up))
-                        stateValue.Y = .1f;
-                    if (keyboardState.IsKeyDown(Keys.Down))
                         stateValue.Y = -.1f;
+                    if (keyboardState.IsKeyDown(Keys.Down))
+                        stateValue.Y = .1f;
 
                     stateValue.Normalize();
 
