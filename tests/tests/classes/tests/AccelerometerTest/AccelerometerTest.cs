@@ -34,8 +34,10 @@ namespace tests
             ptTemp.X -= (float) pAccelerationValue.X * 9.81f;
             ptTemp.Y += (float) pAccelerationValue.Y * 9.81f;
 #else
-			ptTemp.X -= (float) pAccelerationValue.Y * 9.81f;
-			ptTemp.Y -= (float) pAccelerationValue.X * 9.81f;
+            //ptTemp.X -= (float) pAccelerationValue.Y * 9.81f;
+            //ptTemp.Y -= (float) pAccelerationValue.X * 9.81f;
+            ptTemp.X += (float)pAccelerationValue.X * 9.81f;
+            ptTemp.Y += (float)pAccelerationValue.Y * 9.81f;
 #endif
 
             CCPoint ptNext = pDir.ConvertToGl(ptTemp);
