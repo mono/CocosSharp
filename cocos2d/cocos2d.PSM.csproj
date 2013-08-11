@@ -335,7 +335,6 @@
     <Compile Include="Platform\Zlib\ZOutputStream.cs" />
     <Compile Include="Platform\Zlib\ZStream.cs" />
     <Compile Include="Platform\Zlib\ZStreamException.cs" />
-    <Compile Include="predefine\ccConfig.cs" />
     <Compile Include="predefine\CCMacros.cs" />
     <Compile Include="predefine\CCProtocols.cs" />
     <Compile Include="predefine\CCTouch.cs" />
