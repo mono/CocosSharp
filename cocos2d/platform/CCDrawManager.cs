@@ -315,6 +315,13 @@ namespace Cocos2D
             m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
             m_obScreenSize = m_obDesignResolutionSize = m_obViewPortRect.Size;
 
+            m_projectionMatrix = Matrix.Identity;
+            m_viewMatrix = Matrix.Identity;
+            m_worldMatrix = Matrix.Identity;
+            m_Matrix = Matrix.Identity;
+
+            m_worldMatrixChanged = m_viewMatrixChanged = m_projectionMatrixChanged = true;
+
             CCDrawingPrimitives.Init(graphicsDevice);
 
             graphicsDevice.Disposing += GraphicsDeviceDisposing;
