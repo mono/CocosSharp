@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
@@ -7,8 +8,22 @@ namespace Cocos2D
 {
     public class CCSpriteFontCache
     {
+        private struct FontMapEntry
+        {
+            public string FontName;
+            public float FontSize;
+        }
+
         private static ContentManager _contentManager;
         public static string FontRoot = "fonts";
+
+        private static Dictionary<string, int[]> _registeredFonts = new Dictionary<string, int[]>();
+        private static Dictionary<string, FontMapEntry> _loadedFontsMap = new Dictionary<string, FontMapEntry>();
+
+        public static void RegisterFont(string fontName, params int[] sizes)
+        {
+            _registeredFonts.Add(fontName, sizes);
+        }
 
         private CCSpriteFontCache()
         {
@@ -19,6 +34,15 @@ namespace Cocos2D
         {
             var cm = CCApplication.SharedApplication.Content;
             _contentManager = new ContentManager(cm.ServiceProvider, Path.Combine(cm.RootDirectory, FontRoot));
+        }
+
+        private string FontKey(string fontName, float fontSize)
+        {
+            if (fontSize == 0)
+            {
+                return fontName;
+            }
+            return String.Format("{0}-{1}", fontName, fontSize);
         }
 
         public SpriteFont GetFont(string fontName)
@@ -34,27 +58,96 @@ namespace Cocos2D
             }
         }
 
-        public SpriteFont GetFont(string fontName, float size)
+        public SpriteFont TryLoadFont(string fontName, float fontSize, out float loadedSize)
         {
-            if (size <= 0f)
+            var key = FontKey(fontName, fontSize);
+            
+            if (_loadedFontsMap.ContainsKey(key))
             {
-                return GetFont(fontName);
+                //Already loaded
+                var entry = _loadedFontsMap[key];
+                loadedSize = entry.FontSize;
+                return _contentManager.Load<SpriteFont>(FontKey(entry.FontName, entry.FontSize));
             }
+
+            SpriteFont result = null;
+            var loadedName = fontName;
+            loadedSize = fontSize;
+            try
+            {
+                result = InternalLoadFont(fontName, fontSize, out loadedSize);
+            }
+            catch (ContentLoadException)
+            {
+            }
+
+            //Try Default Font
+            if (result == null)
+            {
+                CCLog.Log("Can't find {0}, use system default ({1})", fontName, CCDrawManager.DefaultFont);
+                try
+                {
+                    loadedName = CCDrawManager.DefaultFont;
+                    result = InternalLoadFont(loadedName, fontSize, out loadedSize);
+                }
+                catch (ContentLoadException)
+                {
+                }
+            }
+
+            if (result != null)
+            {
+                _loadedFontsMap.Add(key, new FontMapEntry() {FontName = loadedName, FontSize = loadedSize});
+            }
+
+            return result;
+        }
+
+        private SpriteFont InternalLoadFont(string fontName, float fontSize, out float loadedSize)
+        {
+            loadedSize = fontSize;
 
             try
             {
-                return _contentManager.Load<SpriteFont>(String.Format("{0}-{1}", fontName, size));
+                return _contentManager.Load<SpriteFont>(FontKey(fontName, fontSize));
             }
-            catch (Exception)
+            catch (ContentLoadException)
             {
-                CCLog.Log("Can't find {0}-{1}, going to try using {0} instead.", fontName, size);
-                return GetFont(fontName);
             }
+
+            //Try nearest size
+            if (_registeredFonts.ContainsKey(fontName))
+            {
+                var sizes = _registeredFonts[fontName];
+
+                loadedSize = sizes[sizes.Length - 1];
+
+                for (int i = 0; i < sizes.Length; i++)
+                {
+                    if (sizes[i] >= fontSize)
+                    {
+                        loadedSize = sizes[i];
+                        break;
+                    }
+                }
+
+                try
+                {
+                    return _contentManager.Load<SpriteFont>(FontKey(fontName, loadedSize));
+                }
+                catch (ContentLoadException)
+                {
+                }
+            }
+
+            loadedSize = 0;
+            return _contentManager.Load<SpriteFont>(fontName);
         }
 
         public void Clear()
         {
             _contentManager.Unload();
+            _loadedFontsMap.Clear();
         }
 
         #region Singleton

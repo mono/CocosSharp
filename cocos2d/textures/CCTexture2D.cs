@@ -451,21 +451,11 @@ namespace Cocos2D
 
                 float loadedSize = fontSize;
 
-                SpriteFont font = CCSpriteFontCache.SharedInstance.GetFont(fontName, fontSize);
+                SpriteFont font = CCSpriteFontCache.SharedInstance.TryLoadFont(fontName, fontSize, out loadedSize);
 
                 if (font == null)
                 {
-                    CCLog.Log("Can't find {0}, use system default ({1})", fontName, CCDrawManager.DefaultFont);
-
-                    font = CCSpriteFontCache.SharedInstance.GetFont(CCDrawManager.DefaultFont, fontSize);
-                    if (font == null)
-                    {
-                        CCLog.Log("Failed to load default font. No font supported.");
-                    }
-                }
-
-                if (font == null)
-                {
+                    CCLog.Log("Failed to load default font. No font supported.");
                     return (false);
                 }
 
