@@ -364,28 +364,15 @@ namespace Cocos2D
                 {
                     case CCDirectorProjection.Projection2D:
 
-                        
                         CCDrawManager.ProjectionMatrix = Matrix.CreateOrthographicOffCenter(
-                            0, size.Width / CCMacros.CCContentScaleFactor(),
-                            0, size.Height / CCMacros.CCContentScaleFactor(),
+                            0, size.Width,
+                            0, size.Height,
                             -1024.0f, 1024.0f
                             );
 
                         CCDrawManager.ViewMatrix = Matrix.Identity;
-#if XBOX
-                        // From Gena and empoc on CodePlex. Tilemaps have a weird misalignment when drawing
-                        // so this might help with that problem.
-                        CCDrawManager.WorldMatrix = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
-#else
-                        CCDrawManager.WorldMatrix = Matrix.Identity;
-#endif
                         
-                        /*
-                        CCDrawManager.ProjectionMatrix = Matrix.Identity;
-                        Matrix projection = Matrix.CreateOrthographicOffCenter(0, size.width, 0, size.height, -1024.0f, 1024.0f);
-				        Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
-                        CCDrawManager.WorldMatrix = (halfPixelOffset * projection);
-                        */
+                        CCDrawManager.WorldMatrix = Matrix.Identity;
                         break;
 
                     case CCDirectorProjection.Projection3D:
@@ -402,19 +389,7 @@ namespace Cocos2D
                             Vector3.Up
                             );
 
-                        CCDrawManager.WorldMatrix = Matrix.Identity;
-
-                        /*
-                        CCDrawManager.ProjectionMatrix = Matrix.Identity;
-                        CCDrawManager.ViewMatrix = Matrix.Identity;
-                        CCDrawManager.WorldMatrix = Matrix.Identity;
-
-
-                        Matrix projection1 = Matrix.CreateOrthographicOffCenter(0, size.width, 0, size.height, -1024.0f, 1024.0f);
-				        Matrix halfPixelOffset1 = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
-                        CCDrawManager.WorldMatrix = (halfPixelOffset1 * projection1);
-                        */
-
+                            CCDrawManager.WorldMatrix = Matrix.Identity;
                         break;
 
                     case CCDirectorProjection.Custom:

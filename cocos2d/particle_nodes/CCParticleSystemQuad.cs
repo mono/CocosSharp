@@ -49,12 +49,7 @@ namespace Cocos2D
         private void InitTexCoordsWithRect(CCRect pointRect)
         {
             // convert to Tex coords
-
-            var rect = new CCRect(
-                pointRect.Origin.X * CCMacros.CCContentScaleFactor(),
-                pointRect.Origin.Y * CCMacros.CCContentScaleFactor(),
-                pointRect.Size.Width * CCMacros.CCContentScaleFactor(),
-                pointRect.Size.Height * CCMacros.CCContentScaleFactor());
+            var rect = pointRect.PointsToPixels();
 
             float wide = pointRect.Size.Width;
             float high = pointRect.Size.Height;

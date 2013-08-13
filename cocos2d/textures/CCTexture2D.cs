@@ -138,7 +138,7 @@ namespace Cocos2D
 
         public CCSize ContentSize
         {
-            get { return m_tContentSize / CCMacros.CCContentScaleFactor(); }
+            get { return m_tContentSize.PixelsToPoints(); }
         }
 
         /// <summary>

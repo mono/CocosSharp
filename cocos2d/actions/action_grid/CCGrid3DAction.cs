@@ -22,7 +22,7 @@ namespace Cocos2D
             {
                 if (m_pTarget != null && !m_pTarget.ContentSize.Equals(CCSize.Zero))
                 {
-                    m_pGrid = new CCGrid3D(m_sGridSize, m_pTarget.ContentSize * CCMacros.CCContentScaleFactor());
+                    m_pGrid = new CCGrid3D(m_sGridSize, m_pTarget.ContentSize.PointsToPixels());
                 }
                 else
                 {
