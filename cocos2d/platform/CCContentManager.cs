@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
@@ -188,7 +189,33 @@ namespace Cocos2D
                 _loadedAssets[assetName] = result;
             }
 
+            if (result is GraphicsResource)
+            {
+                (result as GraphicsResource).Disposing += AssetDisposing;
+            }
+
             return result;
+        }
+
+        private void AssetDisposing(object sender, EventArgs e)
+        {
+            foreach (var loadedAsset in _loadedAssets)
+            {
+                if (loadedAsset.Value == sender)
+                {
+                    _loadedAssets.Remove(loadedAsset.Key);
+                    return;
+                }
+            }
+
+            foreach (var loadedAsset in _loadedWeakAssets)
+            {
+                if (loadedAsset.Value.Target == sender)
+                {
+                    _loadedWeakAssets.Remove(loadedAsset.Key);
+                    return;
+                }
+            }
         }
 
 #if MONOGAME
