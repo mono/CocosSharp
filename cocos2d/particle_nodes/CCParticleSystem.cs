@@ -562,7 +562,8 @@ namespace Cocos2D
                                 catch (Exception ex)
                                 {
                                     CCLog.Log(ex.ToString());
-                                    throw (new NotSupportedException("Embedded textureImageData is a format that this platform does not understand. Use PNG, GIF, or JPEG for your particle systems."));
+                                    Texture = CCParticleExample.DefaultTexture;
+                                    //throw (new NotSupportedException("Embedded textureImageData is a format that this platform does not understand. Use PNG, GIF, or JPEG for your particle systems."));
                                 }
                             }
                         }
