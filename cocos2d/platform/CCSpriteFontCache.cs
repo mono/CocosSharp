@@ -22,7 +22,8 @@ namespace Cocos2D
 
         public static void RegisterFont(string fontName, params int[] sizes)
         {
-            _registeredFonts.Add(fontName, sizes);
+            Array.Sort(sizes);
+            _registeredFonts[fontName] = sizes;
         }
 
         private CCSpriteFontCache()
