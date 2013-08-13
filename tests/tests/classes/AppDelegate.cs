@@ -42,19 +42,41 @@ namespace tests
             //initialize director
             CCDirector pDirector = CCDirector.SharedDirector;
             pDirector.SetOpenGlView();
+
+            CCSpriteFontCache.RegisterFont("arial", 12, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 38, 50, 64);
+            CCSpriteFontCache.RegisterFont("MarkerFelt", 16, 18, 22);
+            CCSpriteFontCache.RegisterFont("MarkerFelt-Thin", 12, 18);
+            CCSpriteFontCache.RegisterFont("Paint Boy", 26);
+            CCSpriteFontCache.RegisterFont("Schwarzwald Regular", 26);
+            CCSpriteFontCache.RegisterFont("Scissor Cuts", 26);
+            CCSpriteFontCache.RegisterFont("A Damn Mess", 26);
+            CCSpriteFontCache.RegisterFont("Abberancy", 26);
+            CCSpriteFontCache.RegisterFont("Abduction", 26);
+
+            // turn on display FPS
+            pDirector.DisplayStats = true;
+            // set FPS. the default value is 1.0/60 if you don't call this
+            pDirector.AnimationInterval = 1.0 / 60;
+
+            CCSize designSize = new CCSize(480, 320);
+
+            if (CCDrawManager.FrameSize.Height > 320)
+            {
+                CCSize resourceSize = new CCSize(960, 640);
+                CCContentManager.SharedContentManager.SearchPaths.Add("hd");
+                pDirector.ContentScaleFactor = resourceSize.Height / designSize.Height;
+            }
+
+            CCDrawManager.SetDesignResolutionSize(designSize.Width, designSize.Height, CCResolutionPolicy.ShowAll);
+
+/*
 #if WINDOWS || WINDOWSGL
             CCDrawManager.SetDesignResolutionSize(1280, 768, CCResolutionPolicy.ExactFit);
 #else
             CCDrawManager.SetDesignResolutionSize(800, 480, CCResolutionPolicy.ShowAll);
             //CCDrawManager.SetDesignResolutionSize(480, 320, CCResolutionPolicy.ShowAll);
 #endif
-            // turn on display FPS
-            pDirector.DisplayStats = true;
-
-            // pDirector->setDeviceOrientation(kCCDeviceOrientationLandscapeLeft);
-
-            // set FPS. the default value is 1.0/60 if you don't call this
-            pDirector.AnimationInterval = 1.0 / 60;
+*/
 
             // create a scene. it's an autorelease object
             CCScene pScene = new CCScene();
