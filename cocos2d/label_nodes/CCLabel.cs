@@ -115,7 +115,7 @@ namespace Cocos2D
             InitializeFont(fontName, fontSize, text);
 			m_FontName = fontName;
 			m_FontSize = fontSize;
-            return base.InitWithString(text, GetFontKey(fontName, fontSize), dimensions, hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
+            return base.InitWithString(text, GetFontKey(fontName, fontSize), dimensions.PointsToPixels(), hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
         }
 
         private CCBMFontConfiguration InitializeFont(string fontName, float fontSize, string charset)
@@ -156,7 +156,7 @@ namespace Cocos2D
                 return fontConfig;
             }
 
-            CreateFont(fontName, fontSize, chars);
+            CreateFont(fontName, fontSize * CCMacros.CCContentScaleFactor(), chars);
 
             fontConfig.m_nCommonHeight = (int)Math.Ceiling(GetFontHeight());
 
