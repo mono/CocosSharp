@@ -356,8 +356,8 @@ namespace Box2D.Collision
         private float _Perimeter;
         private b2Vec2 _Extents, _Center;
 
-        public b2Vec2 LowerBound { get { return (m_lowerBound); } }
-        public b2Vec2 UpperBound { get { return (m_upperBound); } }
+        public b2Vec2 LowerBound { get { return (m_lowerBound); } set { m_lowerBound = value; _Dirty = true; } }
+        public b2Vec2 UpperBound { get { return (m_upperBound); } set { m_upperBound = value; _Dirty = true; } }
 
         private b2Vec2 m_lowerBound;    //< the lower vertex
         private b2Vec2 m_upperBound;    //< the upper vertex

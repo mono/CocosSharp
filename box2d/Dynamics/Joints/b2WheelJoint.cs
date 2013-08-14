@@ -333,9 +333,9 @@ namespace Box2D.Dynamics.Joints
             b2Vec2 ay = b2Math.b2Mul(qA, m_localYAxisA);
 
             float sAy = b2Math.b2Cross(d + rA, ay);
-            float sBy = b2Math.b2Cross(rB, ay);
+            float sBy = b2Math.b2Cross(ref rB, ref ay);
 
-            float C = b2Math.b2Dot(d, ay);
+            float C = b2Math.b2Dot(ref d, ref ay);
 
             float k = m_invMassA + m_invMassB + m_invIA * m_sAy * m_sAy + m_invIB * m_sBy * m_sBy;
 
@@ -396,7 +396,7 @@ namespace Box2D.Dynamics.Joints
             b2Vec2 d = pB - pA;
             b2Vec2 axis = bA.GetWorldVector(m_localXAxisA);
 
-            float translation = b2Math.b2Dot(d, axis);
+            float translation = b2Math.b2Dot(ref d, ref axis);
             return translation;
         }
 

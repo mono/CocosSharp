@@ -94,7 +94,7 @@ namespace Box2D.Collision.Shapes
         public b2ChainShape(b2ChainShape clone)
             : base((b2Shape)clone)
         {
-            CreateChain(clone.m_vertices, m_count);
+            CreateChain(clone.m_vertices, clone.m_count);
             PrevVertex = clone.PrevVertex;
             NextVertex = clone.NextVertex;
             m_hasPrevVertex = clone.m_hasPrevVertex;

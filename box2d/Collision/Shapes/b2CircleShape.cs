@@ -124,7 +124,7 @@ namespace Box2D.Collision.Shapes
             massData.center = m_p;
 
             // inertia about the local origin
-            massData.I = massData.mass * (0.5f * m_radius * m_radius + b2Math.b2Dot(m_p, m_p));
+            massData.I = massData.mass * (0.5f * m_radius * m_radius + m_p.LengthSquared);
             return (massData);
         }
     }

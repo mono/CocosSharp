@@ -199,8 +199,8 @@ namespace Box2D.Rope
                     continue;
                 }
 
-                float a = b2Math.b2Cross(d1, d2);
-                float b = b2Math.b2Dot(d1, d2);
+                float a = b2Math.b2Cross(ref d1, ref d2);
+                float b = b2Math.b2Dot(ref d1, ref d2);
 
                 float angle = b2Math.b2Atan2(a, b);
 
@@ -211,7 +211,7 @@ namespace Box2D.Rope
                 b2Vec2 J2 = Jd1 - Jd2;
                 b2Vec2 J3 = Jd2;
 
-                float mass = m1 * b2Math.b2Dot(J1, J1) + m2 * b2Math.b2Dot(J2, J2) + m3 * b2Math.b2Dot(J3, J3);
+                float mass = m1 * b2Math.b2Dot(ref J1, ref J1) + m2 * b2Math.b2Dot(ref J2, ref J2) + m3 * b2Math.b2Dot(ref J3, ref J3);
                 if (mass == 0.0f)
                 {
                     continue;
