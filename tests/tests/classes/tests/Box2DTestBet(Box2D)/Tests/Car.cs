@@ -250,7 +250,7 @@ namespace Box2D.TestBed.Tests
 
             m_debugDraw.DrawString(5, m_textLine, "Keys: left = a, brake = s, right = d, hz down = q, hz up = e");
             m_textLine += 15;
-            m_debugDraw.DrawString(5, m_textLine, "frequency = %g hz, damping ratio = %g", m_hz, m_zeta);
+            m_debugDraw.DrawString(5, m_textLine, "frequency = {0} hz, damping ratio = {1}", m_hz, m_zeta);
             m_textLine += 15;
         }
 

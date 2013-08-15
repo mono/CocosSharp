@@ -81,7 +81,7 @@ namespace Box2D.TestBed.Tests
 
             float ratio = m_joint1.GetRatio();
             float L = m_joint1.GetLengthA() + ratio * m_joint1.GetLengthB();
-            m_debugDraw.DrawString(5, m_textLine, "L1 + %4.2f * L2 = %4.2f", ratio, L);
+            m_debugDraw.DrawString(5, m_textLine, "L1 + {0:0000.00} * L2 = {1:0000.00}", ratio, L);
             m_textLine += 15;
         }
 
