@@ -9,10 +9,10 @@ namespace Box2D.Collision.Shapes
 {
     public class b2PolygonShape : b2Shape
     {
-        protected b2Vec2 m_centroid;
-        protected b2Vec2[] m_vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
-        protected b2Vec2[] m_normals = new b2Vec2[b2Settings.b2_maxPolygonVertices];
-        protected int m_vertexCount;
+        internal b2Vec2 m_centroid;
+        internal b2Vec2[] m_vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
+        internal b2Vec2[] m_normals = new b2Vec2[b2Settings.b2_maxPolygonVertices];
+        internal int m_vertexCount;
 
         public b2PolygonShape()
         {
@@ -91,7 +91,7 @@ namespace Box2D.Collision.Shapes
             m_normals[3].Set(-1.0f, 0.0f);
             m_centroid = center;
 
-            b2Transform xf = b2Transform.Create();
+            b2Transform xf = b2Transform.Identity;
             xf.p = center;
             xf.q.Set(angle);
 

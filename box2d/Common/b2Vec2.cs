@@ -12,13 +12,13 @@ namespace Box2D.Common
 
         public bool Equals(b2Vec2 o)
         {
-            return (m_x == o.m_x && m_y == o.m_y);
+            return (x == o.x && y == o.y);
         }
 
         public override bool Equals(object obj)
         {
             b2Vec2 o = (b2Vec2)obj;
-            return (m_x == o.m_x && m_y == o.m_y);
+            return (x == o.x && y == o.y);
         }
 
         public override int GetHashCode()
@@ -29,11 +29,11 @@ namespace Box2D.Common
         /// Construct using coordinates.
         public b2Vec2(float x_, float y_)
         {
-            m_x = x_;
-            m_y = y_;
-            _bNormalized = false;
-            _Length = 0f;
-            _LengthSquared = 0f;
+            x = x_;
+            y = y_;
+            //_bNormalized = false;
+            //_Length = 0f;
+           // _LengthSquared = 0f;
 //            _LengthSquared = m_x * m_x + m_y * m_y;
 //            _Length = b2Math.b2Sqrt(_LengthSquared);
 #if DEBUG
@@ -45,16 +45,16 @@ namespace Box2D.Common
         }
 
         /// Set this vector to all zeros.
-        public void SetZero() { m_x = 0f; m_y = 0f; _Length = 0f; _LengthSquared = 0f; }
+        public void SetZero() { x = 0f; y = 0f; /*_Length = 0f; _LengthSquared = 0f;*/ }
 
         /// Set this vector to some specified coordinates.
         public void Set(float x_, float y_) 
         { 
-            m_x = x_; 
-            m_y = y_;
-            _Length = 0f;
-            _LengthSquared = 0f;
-            _bNormalized = false;
+            x = x_; 
+            y = y_;
+            //_Length = 0f;
+            //_LengthSquared = 0f;
+            //_bNormalized = false;
 //            _LengthSquared = m_x * m_x + m_y * m_y;
 //            _Length = b2Math.b2Sqrt(_LengthSquared);
 #if DEBUG
@@ -68,36 +68,36 @@ namespace Box2D.Common
         /// Negate this vector.
         public static b2Vec2 operator -(b2Vec2 b)
         {
-            b2Vec2 v = b2Vec2.Zero;
-            v.m_x = -b.m_x;
-            v.m_y = -b.m_y;
+            b2Vec2 v;
+            v.x = -b.x;
+            v.y = -b.y;
             return v;
         }
 
         /// Add a vector to this vector.
         public static b2Vec2 operator +(b2Vec2 v1, b2Vec2 v2)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.m_x = v1.m_x + v2.m_x;
-            b.m_y = v1.m_y + v2.m_y;
+            b2Vec2 b;
+            b.x = v1.x + v2.x;
+            b.y = v1.y + v2.y;
             return (b);
         }
 
         /// Subtract a vector from this vector.
         public static b2Vec2 operator -(b2Vec2 v1, b2Vec2 v2)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.m_x = v1.m_x - v2.m_x;
-            b.m_y = v1.m_y - v2.m_y;
+            b2Vec2 b;
+            b.x = v1.x - v2.x;
+            b.y = v1.y - v2.y;
             return (b);
         }
 
         /// Multiply this vector by a scalar.
         public static b2Vec2 operator *(b2Vec2 v1, float a)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.m_x = v1.m_x * a;
-            b.m_y = v1.m_y * a;
+            b2Vec2 b;
+            b.x = v1.x * a;
+            b.y = v1.y * a;
             return (b);
         }
 
@@ -105,18 +105,18 @@ namespace Box2D.Common
         /// Divide this vector by a scalar.
         public static b2Vec2 operator /(b2Vec2 v1, float a)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.m_x = v1.m_x / a;
-            b.m_y = v1.m_y / a;
+            b2Vec2 b;
+            b.x = v1.x / a;
+            b.y = v1.y / a;
             return (b);
         }
 
         /// Multiply this vector by a scalar.
         public static b2Vec2 operator *(float a, b2Vec2 v1)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.m_x = v1.m_x * a;
-            b.m_y = v1.m_y * a;
+            b2Vec2 b;
+            b.x = v1.x * a;
+            b.y = v1.y * a;
             return (b);
         }
 
@@ -124,30 +124,22 @@ namespace Box2D.Common
         [Obsolete("Use the property accessor")]
         public float GetLength()
         {
-            return (_Length);
+            return (float)Math.Sqrt(x * x + y * y);
         }
 
         public float Length
         {
-            get
-            {
-                if (_Length == 0f)
-                {
-                    _LengthSquared = m_x * m_x + m_y * m_y;
-                    _Length = (float)Math.Sqrt(_LengthSquared);
-                }
-                return (_Length);
-            }
+            get { return (float) Math.Sqrt(x * x + y * y); }
         }
 
         public static bool operator ==(b2Vec2 a, b2Vec2 b)
         {
-            return a.m_x == b.m_x && a.m_y == b.m_y;
+            return a.x == b.x && a.y == b.y;
         }
 
         public static bool operator !=(b2Vec2 a, b2Vec2 b)
         {
-            return a.m_x != b.m_x || a.m_y != b.m_y;
+            return a.x != b.x || a.y != b.y;
         }
 
         /// Get the length squared. For performance, use this instead of
@@ -155,46 +147,27 @@ namespace Box2D.Common
         [Obsolete("Use the property accessor instead")]
         public float GetLengthSquared()
         {
-            if (_LengthSquared == 0f || _Length == 0f)
-            {
-                _LengthSquared = m_x * m_x + m_y * m_y;
-                _Length = (float)Math.Sqrt(_LengthSquared);
-            }
-            return _LengthSquared;
+            return x * x + y * y;
         }
 
         public float LengthSquared
         {
-            get
-            {
-                if (_Length == 0f || _LengthSquared == 0f)
-                {
-                    _LengthSquared = m_x * m_x + m_y * m_y;
-                    _Length = (float)Math.Sqrt(_LengthSquared);
-                }
-                return (_LengthSquared);
-            }
+            get { return x * x + y * y; }
         }
+
         /// Convert this vector into a unit vector. Returns the length.
         public float Normalize()
         {
-            if (_Length == 0f || _LengthSquared == 0f)
-            {
-                _LengthSquared = m_x * m_x + m_y * m_y;
-                _Length = (float)Math.Sqrt(_LengthSquared);
-            }
-            float length = _Length;
+            var length = (float)Math.Sqrt(x * x + y * y);
             if (length < b2Settings.b2_epsilon)
             {
                 return 0.0f;
             }
-            if (!_bNormalized)
-            {
-                float invLength = 1.0f / length;
-                m_x *= invLength;
-                m_y *= invLength;
-                _bNormalized = true;
-            }
+            
+            float invLength = 1.0f / length;
+            x *= invLength;
+            y *= invLength;
+
             return length;
         }
 
@@ -210,9 +183,9 @@ namespace Box2D.Common
         /// <returns></returns>
         public b2Vec2 UnitCross()
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.m_x = m_y;
-            b.m_y = -m_x;
+            b2Vec2 b;
+            b.x = y;
+            b.y = -x;
             return (b);
         }
         /// <summary>
@@ -221,26 +194,21 @@ namespace Box2D.Common
         /// <returns></returns>
         public b2Vec2 NegUnitCross()
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.m_x = -m_y;
-            b.m_y = m_x;
+            b2Vec2 b;
+            b.x = -y;
+            b.y = x;
             return (b);
         }
 
         /// Get the skew vector such that dot(skewvec, other) == cross(vec, other)
         public b2Vec2 Skew()
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.m_x = -m_y;
-            b.m_y = m_x;
+            b2Vec2 b;
+            b.x = -y;
+            b.y = x;
             return (b);
         }
 
-        public float x { get { return (m_x); } set { m_x = value; _Length = 0f; } }
-        public float y { get { return (m_y); } set { m_y = value; _Length = 0f; } }
-
-        internal float m_x, m_y;
-        private bool _bNormalized;
-        private float _Length, _LengthSquared;
+        public float x, y;
     }
 }

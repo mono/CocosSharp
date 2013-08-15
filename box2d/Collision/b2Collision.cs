@@ -288,7 +288,7 @@ namespace Box2D.Collision
             }
 
             b2ClipVertex[] incidentEdge = new b2ClipVertex[2];
-            b2FindIncidentEdge(incidentEdge, poly1, xf1, edge1, poly2, xf2);
+            b2FindIncidentEdge(incidentEdge, poly1, ref xf1, edge1, poly2, ref xf2);
 
             int count1 = poly1.VertexCount;
             b2Vec2[] vertices1 = poly1.Vertices;
@@ -305,11 +305,11 @@ namespace Box2D.Collision
             b2Vec2 localNormal = localTangent.UnitCross(); // b2Math.b2Cross(localTangent, 1.0f);
             b2Vec2 planePoint = 0.5f * (v11 + v12);
 
-            b2Vec2 tangent = b2Math.b2Mul(xf1.q, localTangent);
+            b2Vec2 tangent = b2Math.b2Mul(ref xf1.q, ref localTangent);
             b2Vec2 normal = tangent.UnitCross(); //  b2Math.b2Cross(tangent, 1.0f);
 
-            v11 = b2Math.b2Mul(xf1, v11);
-            v12 = b2Math.b2Mul(xf1, v12);
+            v11 = b2Math.b2Mul(ref xf1, ref v11);
+            v12 = b2Math.b2Mul(ref xf1, ref v12);
 
             // Face offset.
             float frontOffset = b2Math.b2Dot(ref normal, ref v11);
@@ -349,7 +349,7 @@ namespace Box2D.Collision
                 if (separation <= totalRadius)
                 {
                     b2ManifoldPoint cp = manifold.points[pointCount];
-                    cp.localPoint = b2Math.b2MulT(xf2, clipPoints2[i].v);
+                    cp.localPoint = b2Math.b2MulT(ref xf2, ref clipPoints2[i].v);
                     cp.id = clipPoints2[i].id;
                     if (flip != 0)
                     {
@@ -368,8 +368,8 @@ namespace Box2D.Collision
             manifold.pointCount = pointCount;
         }
 
-        public static float b2EdgeSeparation(b2PolygonShape poly1, b2Transform xf1, int edge1,
-                                      b2PolygonShape poly2, b2Transform xf2)
+        public static float b2EdgeSeparation(b2PolygonShape poly1, ref b2Transform xf1, int edge1,
+                                      b2PolygonShape poly2, ref b2Transform xf2)
         {
             b2Vec2[] vertices1 = poly1.Vertices;
             b2Vec2[] normals1 = poly1.Normals;
@@ -378,8 +378,8 @@ namespace Box2D.Collision
             b2Vec2[] vertices2 = poly2.Vertices;
 
             // Convert normal from poly1's frame into poly2's frame.
-            b2Vec2 normal1World = b2Math.b2Mul(xf1.q, normals1[edge1]);
-            b2Vec2 normal1 = b2Math.b2MulT(xf2.q, normal1World);
+            b2Vec2 normal1World = b2Math.b2Mul(ref xf1.q, ref normals1[edge1]);
+            b2Vec2 normal1 = b2Math.b2MulT(ref xf2.q, ref normal1World);
 
             // Find support vertex on poly2 for -normal.
             int index = 0;
@@ -395,9 +395,12 @@ namespace Box2D.Collision
                 }
             }
 
-            b2Vec2 v1 = b2Math.b2Mul(xf1, vertices1[edge1]);
-            b2Vec2 v2 = b2Math.b2Mul(xf2, vertices2[index]);
-            float separation = b2Math.b2Dot(v2 - v1, normal1World);
+            //b2Vec2 v1 = b2Math.b2Mul(ref xf1, ref vertices1[edge1]);
+            //b2Vec2 v2 = b2Math.b2Mul(ref xf2, ref vertices2[index]);
+            //float separation = b2Math.b2Dot(v2 - v1, normal1World);
+            b2Vec2 v = b2Math.b2Mul(ref xf2, ref vertices2[index]) - b2Math.b2Mul(ref xf1, ref vertices1[edge1]);
+            float separation = b2Math.b2Dot(ref v, ref normal1World);
+
             return separation;
         }
 
@@ -517,13 +520,13 @@ namespace Box2D.Collision
             }
 
             b2Vec2 n = b2Vec2.Zero; // new b2Vec2(-e.y, e.x); 
-            n.m_x = -e.y;
-            n.m_y = e.x;
+            n.x = -e.y;
+            n.y = e.x;
             diff = Q - A;
             if (b2Math.b2Dot(ref n, ref diff) < 0.0f)
             {
                 // n.Set(-n.x, -n.y);
-                n.Set(-n.m_x, -n.m_y);
+                n.Set(-n.x, -n.y);
             }
             n.Normalize();
 
@@ -584,20 +587,20 @@ namespace Box2D.Collision
         {
             b2Vec2 d1, d2;
             // No operator overloading here - do direct computation to reduce time complexity
-            
-            d1.m_x = b.LowerBoundX - a.UpperBoundX;
-            d1.m_y = b.LowerBoundY - a.UpperBoundY;
 
-            d2.m_x = a.LowerBoundX - b.UpperBoundX;
-            d2.m_y = a.LowerBoundY - b.UpperBoundY;
+            d1.x = b.LowerBoundX - a.UpperBoundX;
+            d1.y = b.LowerBoundY - a.UpperBoundY;
+
+            d2.x = a.LowerBoundX - b.UpperBoundX;
+            d2.y = a.LowerBoundY - b.UpperBoundY;
             
             // d1 = b.LowerBound - a.UpperBound;
             // d2 = a.LowerBound - b.UpperBound;
 
-            if (d1.m_x > 0.0f || d1.m_y > 0.0f)
+            if (d1.x > 0.0f || d1.y > 0.0f)
                 return false;
 
-            if (d2.m_x > 0.0f || d2.m_y > 0.0f)
+            if (d2.x > 0.0f || d2.y > 0.0f)
                 return false;
 
             return true;
@@ -635,15 +638,15 @@ namespace Box2D.Collision
             b2Vec2[] normals1 = poly1.Normals;
 
             // Vector pointing from the centroid of poly1 to the centroid of poly2.
-            b2Vec2 d = b2Math.b2Mul(xf2, poly2.Centroid) - b2Math.b2Mul(xf1, poly1.Centroid);
-            b2Vec2 dLocal1 = b2Math.b2MulT(xf1.q, d);
+            b2Vec2 d = b2Math.b2Mul(ref xf2, ref poly2.m_centroid) - b2Math.b2Mul(ref xf1, ref poly1.m_centroid);
+            b2Vec2 dLocal1 = b2Math.b2MulT(ref xf1.q, ref d);
 
             // Find edge normal on poly1 that has the largest projection onto d.
             int edge = 0;
             float maxDot = -b2Settings.b2_maxFloat;
             for (int i = 0; i < count1; ++i)
             {
-                float dot = b2Math.b2Dot(normals1[i], dLocal1);
+                float dot = b2Math.b2Dot(ref normals1[i], ref dLocal1);
                 if (dot > maxDot)
                 {
                     maxDot = dot;
@@ -652,15 +655,15 @@ namespace Box2D.Collision
             }
 
             // Get the separation for the edge normal.
-            float s = b2EdgeSeparation(poly1, xf1, edge, poly2, xf2);
+            float s = b2EdgeSeparation(poly1, ref xf1, edge, poly2, ref xf2);
 
             // Check the separation for the previous edge normal.
             int prevEdge = edge - 1 >= 0 ? edge - 1 : count1 - 1;
-            float sPrev = b2EdgeSeparation(poly1, xf1, prevEdge, poly2, xf2);
+            float sPrev = b2EdgeSeparation(poly1, ref xf1, prevEdge, poly2, ref xf2);
 
             // Check the separation for the next edge normal.
             int nextEdge = edge + 1 < count1 ? edge + 1 : 0;
-            float sNext = b2EdgeSeparation(poly1, xf1, nextEdge, poly2, xf2);
+            float sNext = b2EdgeSeparation(poly1, ref xf1, nextEdge, poly2, ref xf2);
 
             // Find the best edge and the search direction.
             int bestEdge;
@@ -692,7 +695,7 @@ namespace Box2D.Collision
                 else
                     edge = bestEdge + 1 < count1 ? bestEdge + 1 : 0;
 
-                s = b2EdgeSeparation(poly1, xf1, edge, poly2, xf2);
+                s = b2EdgeSeparation(poly1, ref xf1, edge, poly2, ref xf2);
 
                 if (s > bestSeparation)
                 {
@@ -710,8 +713,8 @@ namespace Box2D.Collision
         }
 
         public static void b2FindIncidentEdge(b2ClipVertex[] c,
-                                     b2PolygonShape poly1, b2Transform xf1, int edge1,
-                                     b2PolygonShape poly2, b2Transform xf2)
+                                     b2PolygonShape poly1, ref b2Transform xf1, int edge1,
+                                     b2PolygonShape poly2, ref b2Transform xf2)
         {
             b2Vec2[] normals1 = poly1.Normals;
 

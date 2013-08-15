@@ -58,8 +58,8 @@ namespace Box2D.Collision
             b2DistanceInput result = new b2DistanceInput();
             result.proxyA = b2DistanceProxy.Create();
             result.proxyB = b2DistanceProxy.Create();
-            result.transformA = b2Transform.Zero;
-            result.transformB = b2Transform.Zero;
+            result.transformA = b2Transform.Identity;
+            result.transformB = b2Transform.Identity;
             result.useRadii = false;
             return (result);
         }

@@ -9,22 +9,7 @@ namespace Box2D.Common
     /// the position and orientation of rigid frames.
     public struct b2Transform
     {
-        public static b2Transform Zero = b2Transform.Create();
-
-        public static b2Transform Create()
-        {
-            var transform = new b2Transform();
-            transform.p = b2Vec2.Zero;
-            transform.q = b2Rot.Create();
-            return transform;
-        }
-
-        /// The default ructor does nothing.
-        /*public b2Transform()
-        {
-            p = new b2Vec2();
-            q = new b2Rot();
-        }*/
+        public static b2Transform Identity = new b2Transform(b2Vec2.Zero, b2Rot.Identity);
 
         /// Initialize using a position vector and a rotation.
         public b2Transform(b2Vec2 position, b2Rot rotation)
