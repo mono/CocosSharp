@@ -75,7 +75,7 @@ namespace Box2D.TestBed.Tests
             base.Draw(settings);
             m_debugDraw.DrawString(5, m_textLine, "Press: (c) create a shape, (d) destroy a shape.");
             m_textLine += 15;
-            m_debugDraw.DrawString(5, m_textLine, "sensor = %d", m_sensor);
+            m_debugDraw.DrawString(5, m_textLine, "sensor = {0}", m_sensor);
             m_textLine += 15;
         }
 

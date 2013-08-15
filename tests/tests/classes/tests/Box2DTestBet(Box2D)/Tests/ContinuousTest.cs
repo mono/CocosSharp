@@ -87,7 +87,7 @@ namespace Box2D.TestBed.Tests
 
             if (b2DistanceProxy.b2_gjkCalls > 0)
             {
-                m_debugDraw.DrawString(5, m_textLine, "gjk calls = %d, ave gjk iters = %3.1f, max gjk iters = %d",
+                m_debugDraw.DrawString(5, m_textLine, "gjk calls = {0}, ave gjk iters = {1:000.0}, max gjk iters = {2}",
                                        b2DistanceProxy.b2_gjkCalls,
                                        b2DistanceProxy.b2_gjkIters / (float) (b2DistanceProxy.b2_gjkCalls),
                                        b2DistanceProxy.b2_gjkMaxIters);
@@ -96,13 +96,13 @@ namespace Box2D.TestBed.Tests
 
             if (b2TimeOfImpact.b2_toiCalls > 0)
             {
-                m_debugDraw.DrawString(5, m_textLine, "toi calls = %d, ave toi iters = %3.1f, max toi iters = %d",
+                m_debugDraw.DrawString(5, m_textLine, "toi calls = {0}, ave toi iters = {1:000.0}, max toi iters = {2}",
                                        b2TimeOfImpact.b2_toiCalls,
                                        b2TimeOfImpact.b2_toiIters / (float) (b2TimeOfImpact.b2_toiCalls),
                                        b2TimeOfImpact.b2_toiMaxRootIters);
                 m_textLine += 15;
 
-                m_debugDraw.DrawString(5, m_textLine, "ave toi root iters = %3.1f, max toi root iters = %d",
+                m_debugDraw.DrawString(5, m_textLine, "ave toi root iters = {0:000.0}, max toi root iters = {1}",
                                        b2TimeOfImpact.b2_toiRootIters / (float) (b2TimeOfImpact.b2_toiCalls),
                                        b2TimeOfImpact.b2_toiMaxRootIters);
                 m_textLine += 15;

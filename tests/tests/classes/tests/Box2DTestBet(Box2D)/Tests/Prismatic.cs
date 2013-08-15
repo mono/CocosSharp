@@ -81,7 +81,7 @@ namespace Box2D.TestBed.Tests
             m_debugDraw.DrawString(5, m_textLine, "Keys: (l) limits, (m) motors, (s) speed");
             m_textLine += 15;
             float force = m_joint.GetMotorForce(settings.hz);
-            m_debugDraw.DrawString(5, m_textLine, "Motor Force = %4.0f", (float) force);
+            m_debugDraw.DrawString(5, m_textLine, "Motor Force = {0:0000}", (float) force);
             m_textLine += 15;
         }
 

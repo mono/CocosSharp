@@ -26,10 +26,10 @@ namespace Box2D.TestBed
             //#if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
             //    CCLabelBMFont* label = new CCLabelBMFont(view.title().c_str(),  "fonts/arial16.fnt");
             //#else    
-            CCLabelTTF label = new CCLabelTTF(view.title(), "arial", 28);
+            CCLabelTTF label = new CCLabelTTF(view.title(), "arial", 18);
             //#endif
             AddChild(label, 1);
-            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 12);
 
             CCMenuItemImage item1 = new CCMenuItemImage("Images/b1", "Images/b2", backCallback);
             CCMenuItemImage item2 = new CCMenuItemImage("Images/r1", "Images/r2", restartCallback);

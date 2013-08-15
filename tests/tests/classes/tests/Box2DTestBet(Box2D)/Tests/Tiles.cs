@@ -112,10 +112,10 @@ namespace Box2D.TestBed.Tests
             int leafCount = cm.BroadPhase.GetProxyCount();
             int minimumNodeCount = 2 * leafCount - 1;
             float minimumHeight = (float)Math.Ceiling((float)Math.Log(minimumNodeCount) / (float)Math.Log(2.0f));
-            m_debugDraw.DrawString(5, m_textLine, "dynamic tree height = %d, min = %d", height, minimumHeight);
+            m_debugDraw.DrawString(5, m_textLine, "dynamic tree height = {0}, min = {1}", height, minimumHeight);
             m_textLine += 15;
 
-            m_debugDraw.DrawString(5, m_textLine, "create time = %6.2f ms, fixture count = %d",
+            m_debugDraw.DrawString(5, m_textLine, "create time = {0:000000.00} ms, fixture count = {1}",
                                    m_createTime, m_fixtureCount);
             m_textLine += 15;
         }

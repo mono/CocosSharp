@@ -293,7 +293,7 @@ namespace Box2D.TestBed.Tests
 
             m_debugDraw.DrawString(5, m_textLine, "Press 1-5 to drop stuff, m to change the mode");
             m_textLine += 15;
-            m_debugDraw.DrawString(5, m_textLine, "Mode = %d", m_mode);
+            m_debugDraw.DrawString(5, m_textLine, "Mode = {0}", m_mode);
             m_textLine += 15;
 
             float L = 11.0f;

@@ -425,28 +425,28 @@ namespace Box2D.TestBed
                     aveProfile.broadphase = scale * m_totalProfile.broadphase;
                 }
 
-                m_debugDraw.DrawString(5, m_textLine, "step [ave] (max) = %5.2f [%6.2f] (%6.2f)", p.step,
+                m_debugDraw.DrawString(5, m_textLine, "step [ave] (max) = {0:00000.00} [{1:000000.00}] ({2:000000.00})", p.step,
                                        aveProfile.step, m_maxProfile.step);
                 m_textLine += 15;
-                m_debugDraw.DrawString(5, m_textLine, "collide [ave] (max) = %5.2f [%6.2f] (%6.2f)", p.collide,
+                m_debugDraw.DrawString(5, m_textLine, "collide [ave] (max) = {0:00000.00} [{1:000000.00}] ({2:000000.00})", p.collide,
                                        aveProfile.collide, m_maxProfile.collide);
                 m_textLine += 15;
-                m_debugDraw.DrawString(5, m_textLine, "solve [ave] (max) = %5.2f [%6.2f] (%6.2f)", p.solve,
+                m_debugDraw.DrawString(5, m_textLine, "solve [ave] (max) = {0:00000.00} [{1:000000.00}] ({2:000000.00})", p.solve,
                                        aveProfile.solve, m_maxProfile.solve);
                 m_textLine += 15;
-                m_debugDraw.DrawString(5, m_textLine, "solve init [ave] (max) = %5.2f [%6.2f] (%6.2f)", p.solveInit,
+                m_debugDraw.DrawString(5, m_textLine, "solve init [ave] (max) = {0:00000.00} [{1:000000.00}] ({2:000000.00})", p.solveInit,
                                        aveProfile.solveInit, m_maxProfile.solveInit);
                 m_textLine += 15;
-                m_debugDraw.DrawString(5, m_textLine, "solve velocity [ave] (max) = %5.2f [%6.2f] (%6.2f)",
+                m_debugDraw.DrawString(5, m_textLine, "solve velocity [ave] (max) = {0:00000.00} [{1:000000.00}] ({2:000000.00})",
                                        p.solveVelocity, aveProfile.solveVelocity, m_maxProfile.solveVelocity);
                 m_textLine += 15;
-                m_debugDraw.DrawString(5, m_textLine, "solve position [ave] (max) = %5.2f [%6.2f] (%6.2f)",
+                m_debugDraw.DrawString(5, m_textLine, "solve position [ave] (max) = {0:00000.00} [{1:000000.00}] ({2:000000.00})",
                                        p.solvePosition, aveProfile.solvePosition, m_maxProfile.solvePosition);
                 m_textLine += 15;
-                m_debugDraw.DrawString(5, m_textLine, "solveTOI [ave] (max) = %5.2f [%6.2f] (%6.2f)", p.solveTOI,
+                m_debugDraw.DrawString(5, m_textLine, "solveTOI [ave] (max) = {0:00000.00} [{1:000000.00}] ({2:000000.00})", p.solveTOI,
                                        aveProfile.solveTOI, m_maxProfile.solveTOI);
                 m_textLine += 15;
-                m_debugDraw.DrawString(5, m_textLine, "broad-phase [ave] (max) = %5.2f [%6.2f] (%6.2f)", p.broadphase,
+                m_debugDraw.DrawString(5, m_textLine, "broad-phase [ave] (max) = {0:00000.00} [{1:000000.00}] ({2:000000.00})", p.broadphase,
                                        aveProfile.broadphase, m_maxProfile.broadphase);
                 m_textLine += 15;
             }

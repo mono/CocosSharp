@@ -62,7 +62,7 @@ namespace Box2D.TestBed.Tests
 
             m_debugDraw.DrawString(5, m_textLine, "Press (q,e) to adjust target angle");
             m_textLine += 15;
-            m_debugDraw.DrawString(5, m_textLine, "Target angle = %g degrees", m_angle * 180.0f / b2Settings.b2_pi);
+            m_debugDraw.DrawString(5, m_textLine, "Target angle = {0} degrees", m_angle * 180.0f / b2Settings.b2_pi);
             m_textLine += 15;
         }
 

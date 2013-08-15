@@ -127,7 +127,7 @@ namespace Box2D.TestBed.Tests
             m_debugDraw.DrawString(5, m_textLine, "Keys: (f) toggle friction, (m) toggle motor");
             m_textLine += 15;
             float torque = m_joint1.GetMotorTorque(settings.hz);
-            m_debugDraw.DrawString(5, m_textLine, "Motor Torque = %5.0f", torque);
+            m_debugDraw.DrawString(5, m_textLine, "Motor Torque = {0:00000}", torque);
             m_textLine += 15;
         }
 

@@ -152,12 +152,12 @@ namespace Box2D.TestBed.Tests
 
             ratio = m_joint4.GetRatio();
             value = m_joint1.GetJointAngle() + ratio * m_joint2.GetJointAngle();
-            m_debugDraw.DrawString(5, m_textLine, "theta1 + %4.2f * theta2 = %4.2f", ratio, value);
+            m_debugDraw.DrawString(5, m_textLine, "theta1 + {0:0000.00} * theta2 = {1:0000.00}", ratio, value);
             m_textLine += 15;
 
             ratio = m_joint5.GetRatio();
             value = m_joint2.GetJointAngle() + ratio * m_joint3.GetJointTranslation();
-            m_debugDraw.DrawString(5, m_textLine, "theta2 + %4.2f * delta = %4.2f", ratio, value);
+            m_debugDraw.DrawString(5, m_textLine, "theta2 + {0:0000.00} * delta = {1:0000.00}", ratio, value);
             m_textLine += 15;
         }
 
