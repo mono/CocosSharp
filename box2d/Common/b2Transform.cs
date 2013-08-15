@@ -27,21 +27,21 @@ namespace Box2D.Common
         }*/
 
         /// Initialize using a position vector and a rotation.
-        b2Transform(b2Vec2 position, b2Rot rotation)
+        public b2Transform(b2Vec2 position, b2Rot rotation)
         {
             p = position;
             q = rotation;
         }
 
         /// Set this to the identity transform.
-        void SetIdentity()
+        public void SetIdentity()
         {
             p.SetZero();
             q.SetIdentity();
         }
 
         /// Set this based on the position and angle.
-        void Set(b2Vec2 position, float angle)
+        public void Set(b2Vec2 position, float angle)
         {
             p = position;
             q.Set(angle);

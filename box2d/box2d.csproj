@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Windows\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS;PROFILING</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
@@ -113,6 +113,7 @@
     <Compile Include="Dynamics\Contacts\b2PolygonAndCircleContact.cs" />
     <Compile Include="Dynamics\Contacts\b2PolygonContact.cs" />
     <Compile Include="Dynamics\Ib2QueryCallback.cs" />
+    <Compile Include="Dynamics\Ib2RayCastCallback.cs" />
     <Compile Include="Dynamics\Joints\b2DistanceJoint.cs" />
     <Compile Include="Dynamics\Joints\b2DistanceJointDef.cs" />
     <Compile Include="Dynamics\Joints\b2FrictionJoint.cs" />
