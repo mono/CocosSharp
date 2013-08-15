@@ -17,8 +17,53 @@ namespace Cocos2D
             SharedContentManager = new CCContentManager(serviceProvider, rootDirectory);
         }
 
-        private Dictionary<string, object> _loadedAssets;
-        private Dictionary<string, WeakReference> _loadedWeakAssets = new Dictionary<string, WeakReference>();
+        private class AssetEntry
+        {
+            public readonly string AssetFileName;
+            public readonly bool WeakReference;
+            public readonly bool UseContentReader;
+            private object _asset;
+
+            public AssetEntry(object asset, string assetFileName, bool weakReference, bool useContentReader)
+            {
+                AssetFileName = assetFileName;
+                WeakReference = weakReference;
+                UseContentReader = useContentReader;
+                Asset = asset;
+            }
+
+            public object Asset
+            {
+                set
+                {
+                    if (WeakReference)
+                    {
+                        _asset = new WeakReference(value);
+                    }
+                    else
+                    {
+                        _asset = value;
+                    }
+                }
+                get
+                {
+                    if (WeakReference)
+                    {
+                        if (((WeakReference)_asset).IsAlive)
+                        {
+                            return ((WeakReference)_asset).Target;
+                        }
+                        return null;
+                    }
+                    else
+                    {
+                        return _asset;
+                    }
+                }
+            }
+        }
+
+        private Dictionary<string, AssetEntry> _loadedAssets;
         
         private Dictionary<string, string> _assetLookupDict = new Dictionary<string, string>();
         private List<string> _searchPaths = new List<string>();
@@ -28,20 +73,12 @@ namespace Cocos2D
 
         public CCContentManager(IServiceProvider serviceProvider) : base(serviceProvider)
         {
-#if MONOGAME
-            _loadedAssets = LoadedAssets;
-#else
-            _loadedAssets = new Dictionary<string, object>();
-#endif
+            _loadedAssets = new Dictionary<string, AssetEntry>();
         }
 
         public CCContentManager(IServiceProvider serviceProvider, string rootDirectory) : base(serviceProvider, rootDirectory)
         {
-#if MONOGAME
-            _loadedAssets = LoadedAssets;
-#else
-            _loadedAssets = new Dictionary<string, object>();
-#endif
+            _loadedAssets = new Dictionary<string, AssetEntry>();
         }
 
         public T TryLoad<T>(string assetName)
@@ -76,28 +113,12 @@ namespace Cocos2D
             }
 
             // Check for a previously loaded asset first
-            object asset;
-            if (_loadedAssets.TryGetValue(assetName, out asset))
+            AssetEntry entry;
+            if (_loadedAssets.TryGetValue(assetName, out entry))
             {
-                if (asset is T)
+                if (entry.Asset is T)
                 {
-                    return (T)asset;
-                }
-            }
-
-            WeakReference reference;
-            if (_loadedWeakAssets.TryGetValue(assetName, out reference))
-            {
-                if (reference.IsAlive)
-                {
-                    if (reference.Target is T)
-                    {
-                        return (T) reference.Target;
-                    }
-                }
-                else
-                {
-                    _loadedWeakAssets.Remove(assetName);
+                    return (T)entry.Asset;
                 }
             }
 
@@ -140,15 +161,14 @@ namespace Cocos2D
         {
             base.Unload();
 
-#if !MONOGAME
             _loadedAssets.Clear();
-#endif
-            _loadedWeakAssets.Clear();
         }
 
         private T InternalLoad<T>(string assetName, string path, bool weakReference)
         {
             T result = default(T);
+
+            bool useContentReader = true;
 
             try
             {
@@ -158,6 +178,8 @@ namespace Cocos2D
                     //TODO: No need CCContent, use TileContainer
                     var content = ReadAsset<CCContent>(path, null);
                     result = (T)(object)content.Content;
+                    
+                    useContentReader = false;
                 }
                 else
                 {
@@ -173,6 +195,8 @@ namespace Cocos2D
                     //TODO: No need CCContent, use TileContainer
                     var content = ReadAsset<CCContent>(path, null);
                     result = (T) (object) new PlistDocument(content.Content);
+                    
+                    useContentReader = false;
                 }
                 else
                 {
@@ -180,14 +204,9 @@ namespace Cocos2D
                 }
             }
 
-            if (weakReference)
-            {
-                _loadedWeakAssets[assetName] = new WeakReference(result);
-            }
-            else
-            {
-                _loadedAssets[assetName] = result;
-            }
+            var assetEntry = new AssetEntry(result, path, weakReference, useContentReader);
+
+            _loadedAssets[assetName] = assetEntry;
 
             if (result is GraphicsResource)
             {
@@ -201,18 +220,9 @@ namespace Cocos2D
         {
             foreach (var loadedAsset in _loadedAssets)
             {
-                if (loadedAsset.Value == sender)
+                if (loadedAsset.Value.Asset == sender)
                 {
                     _loadedAssets.Remove(loadedAsset.Key);
-                    return;
-                }
-            }
-
-            foreach (var loadedAsset in _loadedWeakAssets)
-            {
-                if (loadedAsset.Value.Target == sender)
-                {
-                    _loadedWeakAssets.Remove(loadedAsset.Key);
                     return;
                 }
             }
@@ -221,22 +231,28 @@ namespace Cocos2D
 #if MONOGAME
         protected override void ReloadGraphicsAssets()
         {
-            base.ReloadGraphicsAssets();
-
-            foreach (var pair in _loadedWeakAssets)
+            foreach (var pair in _loadedAssets)
             {
-                if (pair.Value.IsAlive)
+                if (pair.Value.UseContentReader && pair.Value.Asset != null)
                 {
-                    var asset = pair.Value.Target;
-#if NETFX_CORE
-                    var methodInfo = typeof(ContentManager).GetType().GetTypeInfo().GetDeclaredMethod("ReloadAsset");
-#else
-                    var methodInfo = typeof(ContentManager).GetMethod("ReloadAsset", BindingFlags.NonPublic | BindingFlags.Instance);
-#endif
-                    var genericMethod = methodInfo.MakeGenericMethod(asset.GetType());
-                    genericMethod.Invoke(this, new object[] { pair.Key, Convert.ChangeType(asset, asset.GetType()) });
+                    LoadedAssets.Add(pair.Value.AssetFileName, pair.Value.Asset);
                 }
             }
+
+            base.ReloadGraphicsAssets();
+
+            foreach (var pair in LoadedAssets)
+            {
+                foreach (var pair2 in _loadedAssets)
+                {
+                    if (pair2.Value.AssetFileName == pair.Key)
+                    {
+                        _loadedAssets[pair2.Key].Asset = pair.Value;
+                    }
+                }
+            }
+            
+            LoadedAssets.Clear();
         }
 #endif
 
