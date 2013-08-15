@@ -7,7 +7,7 @@ using Box2D.Collision;
 
 namespace Box2D.Dynamics
 {
-    public class b2WorldRayCastWrapper
+    public class b2WorldRayCastWrapper : Ib2RayCastCallback
     {
         public float RayCastCallback(b2RayCastInput input, int proxyId)
         {

@@ -83,6 +83,11 @@ namespace Box2D.Dynamics
             get { return (m_bodyCount); }
             set { m_bodyCount = value; }
         }
+
+        public int ContactCount {
+            get { return m_contactManager.ContactCount; }
+        }
+
         private int m_jointCount;
         public int JointCount
         {

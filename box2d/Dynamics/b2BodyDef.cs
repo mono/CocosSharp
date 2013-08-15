@@ -35,7 +35,7 @@ namespace Box2D.Dynamics
 
 		static public b2BodyDef Create() 
         {
-			var bodyDef = new b2BodyDef();
+			var bodyDef  = new b2BodyDef();
 			bodyDef.Defaults();
 			return bodyDef;
         }
