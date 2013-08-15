@@ -48,10 +48,10 @@ namespace Box2D.TestBed.Tests
 
             b2TOIOutput output = b2TimeOfImpact.Compute(input);
 
-            m_debugDraw.DrawString(5, m_textLine, "toi = %g", output.t);
+            m_debugDraw.DrawString(5, m_textLine, "toi = {0}", output.t);
             m_textLine += 15;
 
-            m_debugDraw.DrawString(5, m_textLine, "max toi iters = %d, max root iters = %d",
+            m_debugDraw.DrawString(5, m_textLine, "max toi iters = {0}, max root iters = {1}",
                                    b2TimeOfImpact.b2_toiMaxIters, b2TimeOfImpact.b2_toiMaxRootIters);
             m_textLine += 15;
 

@@ -90,7 +90,7 @@ namespace Box2D.TestBed.Tests
 
             {
                 int height = m_tree.GetHeight();
-                m_debugDraw.DrawString(5, m_textLine, "dynamic tree height = %d", height);
+                m_debugDraw.DrawString(5, m_textLine, "dynamic tree height = {0}", height);
                 m_textLine += 15;
             }
         }

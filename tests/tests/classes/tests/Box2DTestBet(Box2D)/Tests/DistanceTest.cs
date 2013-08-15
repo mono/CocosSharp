@@ -43,10 +43,10 @@ namespace Box2D.TestBed.Tests
             b2DistanceOutput output = new b2DistanceOutput();
             b2Simplex.b2Distance(ref output, ref cache, ref input);
 
-            m_debugDraw.DrawString(5, m_textLine, "distance = %g", output.distance);
+            m_debugDraw.DrawString(5, m_textLine, "distance = {0}", output.distance);
             m_textLine += 15;
 
-            m_debugDraw.DrawString(5, m_textLine, "iterations = %d", output.iterations);
+            m_debugDraw.DrawString(5, m_textLine, "iterations = {0}", output.iterations);
             m_textLine += 15;
 
             {
