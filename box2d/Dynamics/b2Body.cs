@@ -58,16 +58,17 @@ namespace Box2D.Dynamics
             set { m_islandIndex = value; }
         }
 
-        protected b2Transform m_xf = b2Transform.Create();        // the body origin transform
+        protected b2Transform m_xf = b2Transform.Identity;        // the body origin transform
         public b2Transform XF
         {
             get { return (m_xf); }
             set { m_xf = value; }
         }
+        
         public b2Transform Transform
         {
-            get { return (XF); }
-            set { XF = value; }
+            get { return m_xf; }
+            set { m_xf = value; }
         }
         public b2Vec2 Position
         {
@@ -866,7 +867,7 @@ namespace Box2D.Dynamics
 
         public virtual void SynchronizeFixtures()
         {
-            b2Transform xf1 = b2Transform.Create();
+            b2Transform xf1 = b2Transform.Identity;
             xf1.q.Set(Sweep.a0);
             xf1.p = Sweep.c0 - b2Math.b2Mul(xf1.q, Sweep.localCenter);
 

@@ -112,8 +112,8 @@ namespace Box2D.Collision.Shapes
             b2Vec2 v2 = m_vertex2;
             b2Vec2 e = v2 - v1;
             b2Vec2 normal = b2Vec2.Zero; // new b2Vec2(e.y, -e.x);
-            normal.m_x = e.m_y;
-            normal.m_y = -e.m_x;
+            normal.x = e.y;
+            normal.y = -e.x;
             normal.Normalize();
 
             // q = p1 + t * d
@@ -170,12 +170,12 @@ namespace Box2D.Collision.Shapes
             b2Vec2 v2 = b2Math.b2Mul(xf, m_vertex2);
 
             b2Vec2 lower = b2Vec2.Zero;
-            lower.m_x = v1.m_x < v2.m_x ? v1.m_x : v2.m_x;
-            lower.m_y = v1.m_y < v2.m_y ? v1.m_y : v2.m_y;
+            lower.x = v1.x < v2.x ? v1.x : v2.x;
+            lower.y = v1.y < v2.y ? v1.y : v2.y;
             //b2Math.b2Min(v1, v2);
             b2Vec2 upper = b2Vec2.Zero;
-            upper.m_x = v1.m_x > v2.m_x ? v1.m_x : v2.m_x;
-            upper.m_y = v1.m_y > v2.m_y ? v1.m_y : v2.m_y; 
+            upper.x = v1.x > v2.x ? v1.x : v2.x;
+            upper.y = v1.y > v2.y ? v1.y : v2.y; 
             // = b2Math.b2Max(v1, v2);
 
             b2AABB aabb = b2AABB.Default;

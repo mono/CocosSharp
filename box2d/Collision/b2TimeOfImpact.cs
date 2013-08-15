@@ -49,7 +49,7 @@ namespace Box2D.Collision
 			m_sweepA = sweepA;
 			m_sweepB = sweepB;
 			
-			b2Transform xfA = b2Transform.Create (), xfB = b2Transform.Create();
+			b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
 			m_sweepA.GetTransform(ref xfA, t1);
 			m_sweepB.GetTransform(ref xfB, t1);
 			
@@ -71,8 +71,8 @@ namespace Box2D.Collision
 				b2Vec2 localPointB1 = proxyB.GetVertex((int)cache.indexB[0]);
 				b2Vec2 localPointB2 = proxyB.GetVertex((int)cache.indexB[1]);
 
-                float b21x = localPointB2.m_x - localPointB1.m_x;
-                float b21y = localPointB2.m_y - localPointB1.m_y;
+                float b21x = localPointB2.x - localPointB1.x;
+                float b21y = localPointB2.y - localPointB1.y;
                 m_axis.x = -b21y;
                 m_axis.y = b21x;
 
@@ -124,7 +124,7 @@ namespace Box2D.Collision
 		
 		public float FindMinSeparation(ref int indexA, ref int indexB, float t)
 		{
-			b2Transform xfA = b2Transform.Create(), xfB = b2Transform.Create();
+			b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
 			m_sweepA.GetTransform(ref xfA,t);
 			m_sweepB.GetTransform(ref xfB,t);
 			
@@ -192,7 +192,7 @@ namespace Box2D.Collision
 		
 		public float Evaluate(int indexA, int indexB, float t)
 		{
-			b2Transform xfA = b2Transform.Create(), xfB = b2Transform.Create();
+			b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
 			m_sweepA.GetTransform(ref xfA, t);
 			m_sweepB.GetTransform(ref xfB, t);
 			
@@ -346,7 +346,7 @@ namespace Box2D.Collision
 			// This loop terminates when an axis is repeated (no progress is made).
 			while (true)
 			{
-				b2Transform xfA = b2Transform.Create(), xfB = b2Transform.Create();
+				b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
 				sweepA.GetTransform(ref xfA, t1);
 				sweepB.GetTransform(ref xfB, t1);
 				

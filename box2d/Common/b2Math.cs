@@ -89,7 +89,7 @@ namespace Box2D.Common
 #endif
         public static float b2Dot(ref b2Vec2 a, ref b2Vec2 b)
         {
-            return a.m_x * b.m_x + a.m_y * b.m_y;
+            return a.x * b.x + a.y * b.y;
         }
 
         [Obsolete("Use the ref b2Dot instead")]
@@ -98,7 +98,7 @@ namespace Box2D.Common
 #endif
         public static float b2Dot(b2Vec2 a, b2Vec2 b)
         {
-            return a.m_x * b.m_x + a.m_y * b.m_y;
+            return a.x * b.x + a.y * b.y;
         }
 
 #if AGGRESSIVE_INLINING
@@ -115,7 +115,7 @@ namespace Box2D.Common
 #endif
         public static float b2Cross(ref b2Vec2 a, ref b2Vec2 b)
         {
-            return a.m_x * b.m_y - a.m_y * b.m_x;
+            return a.x * b.y - a.y * b.x;
         }
 
         [Obsolete("Use the ref b2Cross")]
@@ -124,7 +124,7 @@ namespace Box2D.Common
 #endif
         public static float b2Cross(b2Vec2 a, b2Vec2 b)
         {
-            return a.m_x * b.m_y - a.m_y * b.m_x;
+            return a.x * b.y - a.y * b.x;
         }
 
 #if AGGRESSIVE_INLINING
@@ -142,9 +142,9 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2Cross(ref b2Vec2 a, float s)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.m_x = s * a.m_y;
-            b.m_y = -s * a.m_x;
+            b2Vec2 b;
+            b.x = s * a.y;
+            b.y = -s * a.x;
             return b;
         }
 
@@ -153,8 +153,9 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2Cross(float ax, float ay, float s)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.Set(s * ay, -s * ax);
+            b2Vec2 b;
+            b.x = s * ay;
+            b.y =  -s * ax;
             return b;
         }
 
@@ -165,9 +166,9 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2Cross(float s, ref b2Vec2 a)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.m_x = -s * a.m_y;
-            b.m_y = s * a.m_x;
+            b2Vec2 b;
+            b.x = -s * a.y;
+            b.y = s * a.x;
             return b;
         }
 
@@ -178,9 +179,9 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2Mul(ref b2Mat22 A, ref b2Vec2 v)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.m_x = A.ex.x * v.m_x + A.ey.x * v.m_y;
-            b.m_y = A.ex.y * v.m_x + A.ey.y * v.m_y;
+            b2Vec2 b;
+            b.x = A.ex.x * v.x + A.ey.x * v.y;
+            b.y = A.ex.y * v.x + A.ey.y * v.y;
             return b;
         }
 
@@ -191,8 +192,9 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2Mul(b2Mat22 A, b2Vec2 v)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.Set(A.ex.x * v.x + A.ey.x * v.y, A.ex.y * v.x + A.ey.y * v.y);
+            b2Vec2 b;
+            b.x = A.ex.x * v.x + A.ey.x * v.y;
+            b.y = A.ex.y * v.x + A.ey.y * v.y;
             return b;
         }
 
@@ -203,8 +205,9 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2MulT(ref b2Mat22 A, ref b2Vec2 v)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.Set(b2Dot(v, A.ex), b2Dot(v, A.ey));
+            b2Vec2 b;
+            b.x = b2Dot(ref v, ref A.ex);
+            b.y = b2Dot(ref v, ref A.ey);
             return b;
         }
 
@@ -277,10 +280,14 @@ namespace Box2D.Common
 #endif
         public static b2Mat22 b2MulT(b2Mat22 A, b2Mat22 B)
         {
-            b2Vec2 c1 = b2Vec2.Zero;
-            b2Vec2 c2 = b2Vec2.Zero;
-            c1.Set(b2Dot(A.ex, B.ex), b2Dot(A.ey, B.ex));
-            c2.Set(b2Dot(A.ex, B.ey), b2Dot(A.ey, B.ey));
+            b2Vec2 c1;
+            b2Vec2 c2;
+
+            c1.x = b2Dot(ref A.ex, ref B.ex);
+            c1.y = b2Dot(ref A.ey, ref B.ex);
+            c2.x = b2Dot(ref A.ex, ref B.ey);
+            c2.y = b2Dot(ref A.ey, ref B.ey);
+
             return new b2Mat22(c1, c2);
         }
 
@@ -299,8 +306,9 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2Mul22(b2Mat33 A, b2Vec2 v)
         {
-            b2Vec2 b = b2Vec2.Zero;
-            b.Set(A.ex.x * v.x + A.ey.x * v.y, A.ex.y * v.x + A.ey.y * v.y);
+            b2Vec2 b;
+            b.x = A.ex.x * v.x + A.ey.x * v.y;
+            b.y = A.ex.y * v.x + A.ey.y * v.y;
             return b;
         }
 
@@ -314,7 +322,7 @@ namespace Box2D.Common
             // [qs  qc]   [rs  rc]   [qs*rc+qc*rs -qs*rs+qc*rc]
             // s = qs * rc + qc * rs
             // c = qc * rc - qs * rs
-            b2Rot qr = b2Rot.Create();
+            b2Rot qr;
             qr.s = q.s * r.c + q.c * r.s;
             qr.c = q.c * r.c - q.s * r.s;
             return qr;
@@ -330,7 +338,7 @@ namespace Box2D.Common
             // [-qs qc]   [rs  rc]   [-qs*rc+qc*rs qs*rs+qc*rc]
             // s = qc * rs - qs * rc
             // c = qc * rc + qs * rs
-            b2Rot qr = b2Rot.Create();
+            b2Rot qr;
             qr.s = q.c * r.s - q.s * r.c;
             qr.c = q.c * r.c + q.s * r.s;
             return qr;
@@ -342,10 +350,21 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2Mul(b2Rot q, b2Vec2 v)
         {
-            float x=q.c * v.x - q.s * v.y;
-            float y=q.s * v.x + q.c * v.y;
-            b2Vec2 b = b2Vec2.Zero;
-            b.Set(x, y);
+            b2Vec2 b;
+            b.x = q.c * v.x - q.s * v.y;
+            b.y = q.s * v.x + q.c * v.y;
+            return b;
+        }
+
+        /// Rotate a vector
+#if AGGRESSIVE_INLINING
+        [MethodImpl(MethodImplOptions.AggressiveInlining)] 
+#endif
+        public static b2Vec2 b2Mul(ref b2Rot q, ref b2Vec2 v)
+        {
+            b2Vec2 b;
+            b.x = q.c * v.x - q.s * v.y;
+            b.y = q.s * v.x + q.c * v.y;
             return b;
         }
 
@@ -355,10 +374,20 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2MulT(b2Rot q, b2Vec2 v)
         {
-            float x = q.c * v.x + q.s * v.y;
-            float y =  -q.s * v.x + q.c * v.y;
-            b2Vec2 b = b2Vec2.Zero;
-            b.Set(x, y);
+            b2Vec2 b;
+            b.x = q.c * v.x + q.s * v.y;
+            b.y = -q.s * v.x + q.c * v.y;
+            return b;
+        }
+
+#if AGGRESSIVE_INLINING
+        [MethodImpl(MethodImplOptions.AggressiveInlining)] 
+#endif
+        public static b2Vec2 b2MulT(ref b2Rot q, ref b2Vec2 v)
+        {
+            b2Vec2 b;
+            b.x = q.c * v.x + q.s * v.y;
+            b.y = -q.s * v.x + q.c * v.y;
             return b;
         }
 
@@ -367,10 +396,20 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2Mul(b2Transform T, b2Vec2 v)
         {
-            float x = (T.q.c * v.x - T.q.s * v.y) + T.p.x;
-            float y = (T.q.s * v.x + T.q.c * v.y) + T.p.y;
-            b2Vec2 b = b2Vec2.Zero;
-            b.Set(x, y);
+            b2Vec2 b;
+            b.x = (T.q.c * v.x - T.q.s * v.y) + T.p.x;
+            b.y = (T.q.s * v.x + T.q.c * v.y) + T.p.y;
+            return b;
+        }
+
+#if AGGRESSIVE_INLINING
+        [MethodImpl(MethodImplOptions.AggressiveInlining)] 
+#endif
+        public static b2Vec2 b2Mul(ref b2Transform T, ref b2Vec2 v)
+        {
+            b2Vec2 b;
+            b.x = (T.q.c * v.x - T.q.s * v.y) + T.p.x;
+            b.y = (T.q.s * v.x + T.q.c * v.y) + T.p.y;
             return b;
         }
 
@@ -379,12 +418,24 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2MulT(b2Transform T, b2Vec2 v)
         {
+            b2Vec2 b;
             float px = v.x - T.p.x;
             float py = v.y - T.p.y;
-            float x = (T.q.c * px + T.q.s * py);
-            float y = (-T.q.s * px + T.q.c * py);
-            b2Vec2 b = b2Vec2.Zero;
-            b.Set(x, y);
+            b.x = (T.q.c * px + T.q.s * py);
+            b.y = (-T.q.s * px + T.q.c * py);
+            return b;
+        }
+
+#if AGGRESSIVE_INLINING
+        [MethodImpl(MethodImplOptions.AggressiveInlining)] 
+#endif
+        public static b2Vec2 b2MulT(ref b2Transform T, ref b2Vec2 v)
+        {
+            b2Vec2 b;
+            float px = v.x - T.p.x;
+            float py = v.y - T.p.y;
+            b.x = (T.q.c * px + T.q.s * py);
+            b.y = (-T.q.s * px + T.q.c * py);
             return b;
         }
 
@@ -395,7 +446,7 @@ namespace Box2D.Common
 #endif
         public static b2Transform b2Mul(b2Transform A, b2Transform B)
         {
-            b2Transform C = b2Transform.Create();
+            b2Transform C;
             C.q = b2Mul(A.q, B.q);
             C.p = b2Mul(A.q, B.p) + A.p;
             return C;
@@ -408,7 +459,7 @@ namespace Box2D.Common
 #endif
         public static b2Transform b2MulT(b2Transform A, b2Transform B)
         {
-            b2Transform C = b2Transform.Create();
+            b2Transform C;
             C.q = b2MulT(A.q, B.q);
             C.p = b2MulT(A.q, B.p - A.p);
             return C;
@@ -426,7 +477,7 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2Abs(b2Vec2 a)
         {
-            b2Vec2 bx = b2Vec2.Zero;
+            b2Vec2 bx;
             bx.x = Math.Abs(a.x);
             bx.y = Math.Abs(a.y);
             return bx;
@@ -453,7 +504,7 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2Min(b2Vec2 a, b2Vec2 b)
         {
-            b2Vec2 bx = b2Vec2.Zero;
+            b2Vec2 bx;
             bx.x = Math.Min(a.x, b.x);
             bx.y = Math.Min(a.y, b.y);
             return bx;
@@ -464,7 +515,7 @@ namespace Box2D.Common
 #endif
         public static b2Vec2 b2Max(b2Vec2 a, b2Vec2 b)
         {
-            b2Vec2 bx = b2Vec2.Zero;
+            b2Vec2 bx;
             bx.x = Math.Max(a.x, b.x);
             bx.y = Math.Max(a.y, b.y);
             return bx;

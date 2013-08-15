@@ -8,19 +8,7 @@ namespace Box2D.Common
     /// Rotation
     public struct b2Rot
     {
-
-        public static b2Rot Create()
-        {
-            var rot = new b2Rot();
-            rot.SetIdentity();
-            return rot;
-        }
-
-        /*public b2Rot() 
-        {
-            s = 0f; // sine of zero
-            c = 1f; // cosine of zero
-        }*/
+        public static b2Rot Identity = new b2Rot(0);
 
         /// Initialize from an angle in radians
         public b2Rot(float angle)
