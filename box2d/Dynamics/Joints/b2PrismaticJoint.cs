@@ -162,6 +162,11 @@ namespace Box2D.Dynamics.Joints
 
         public virtual float GetMaxMotorForce() { return m_maxMotorForce; }
 
+        public virtual float GetMotorSpeed()
+        {
+            return m_motorSpeed;
+        }
+
         public override void InitVelocityConstraints(b2SolverData data)
         {
             m_indexA = m_bodyA.IslandIndex;

@@ -10,7 +10,7 @@ namespace Box2D.Dynamics.Joints
     /// two dynamic body anchor points, and a pulley ratio.
     public class b2PulleyJointDef : b2JointDef
     {
-        b2PulleyJointDef()
+        public b2PulleyJointDef()
         {
             JointType = b2JointType.e_pulleyJoint;
             groundAnchorA.Set(-1.0f, 1.0f);

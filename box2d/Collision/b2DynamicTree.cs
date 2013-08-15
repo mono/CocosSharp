@@ -876,7 +876,7 @@ namespace Box2D.Collision
             }
         }
 
-        public void RayCast(b2WorldRayCastWrapper callback, b2RayCastInput input)
+        public void RayCast(Ib2RayCastCallback callback, b2RayCastInput input)
         {
             b2Vec2 p1 = input.p1;
             b2Vec2 p2 = input.p2;
