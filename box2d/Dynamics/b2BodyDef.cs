@@ -6,8 +6,10 @@ using Box2D.Common;
 
 namespace Box2D.Dynamics
 {
+    /// <summary>
     /// A body definition holds all the data needed to construct a rigid body.
     /// You can safely re-use body definitions. Shapes are added to a body after construction.
+    /// </summary>
     public struct b2BodyDef
     {
 

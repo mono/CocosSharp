@@ -320,7 +320,7 @@ namespace Box2D.Dynamics.Contacts
             m_manifold = m;
         }
 
-        public virtual void GetWorldManifold(b2WorldManifold worldManifold)
+        public virtual void GetWorldManifold(ref b2WorldManifold worldManifold)
         {
             b2Body bodyA = m_fixtureA.Body;
             b2Body bodyB = m_fixtureB.Body;
