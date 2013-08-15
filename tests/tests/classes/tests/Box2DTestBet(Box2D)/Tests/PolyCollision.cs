@@ -33,7 +33,7 @@ namespace Box2D.TestBed.Tests
             b2WorldManifold worldManifold = new b2WorldManifold();
             worldManifold.Initialize(ref manifold, m_transformA, m_polygonA.Radius, m_transformB, m_polygonB.Radius);
 
-            m_debugDraw.DrawString(5, m_textLine, "point count = %d", manifold.pointCount);
+            m_debugDraw.DrawString(5, m_textLine, "point count = {0}", manifold.pointCount);
             m_textLine += 15;
 
             {
