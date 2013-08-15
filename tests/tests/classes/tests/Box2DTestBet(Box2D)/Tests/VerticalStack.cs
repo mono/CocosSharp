@@ -100,9 +100,10 @@ namespace Box2D.TestBed.Tests
             }
         }
 
-        public override void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
-            base.Step(settings);
+            base.Draw(settings);
+
             m_debugDraw.DrawString(5, m_textLine, "Press: (,) to launch a bullet.");
             m_textLine += 15;
 

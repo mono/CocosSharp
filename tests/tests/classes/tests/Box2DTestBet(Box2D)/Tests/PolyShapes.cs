@@ -235,9 +235,9 @@ namespace Box2D.TestBed.Tests
             }
         }
 
-        public override void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
-            base.Step(settings);
+            base.Draw(settings);            
 
             PolyShapesCallback callback = new PolyShapesCallback();
             callback.m_circle.Radius = 2.0f;

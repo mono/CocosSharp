@@ -116,6 +116,14 @@ namespace Box2D.TestBed.Tests
             }
         }
 
+        protected override void Draw(Settings settings)
+        {
+            base.Draw(settings);
+
+            m_debugDraw.DrawString(5, m_textLine, "Keys: (d) dynamic, (s) static, (k) kinematic");
+            m_textLine += 15;
+        }
+
         public override void Step(Settings settings)
         {
             // Drive the kinematic body.
@@ -133,8 +141,6 @@ namespace Box2D.TestBed.Tests
             }
 
             base.Step(settings);
-            m_debugDraw.DrawString(5, m_textLine, "Keys: (d) dynamic, (s) static, (k) kinematic");
-            m_textLine += 15;
         }
 
         public b2Body m_attachment;

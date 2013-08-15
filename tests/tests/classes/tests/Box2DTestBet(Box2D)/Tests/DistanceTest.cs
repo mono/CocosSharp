@@ -28,9 +28,9 @@ namespace Box2D.TestBed.Tests
             }
         }
 
-        public override void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
-            base.Step(settings);
+            base.Draw(settings);
 
             b2DistanceInput input = b2DistanceInput.Create();
             input.proxyA.Set(m_polygonA, 0);
@@ -38,8 +38,7 @@ namespace Box2D.TestBed.Tests
             input.transformA = m_transformA;
             input.transformB = m_transformB;
             input.useRadii = true;
-            b2SimplexCache cache = new b2SimplexCache();
-            cache.Defaults();
+            b2SimplexCache cache = b2SimplexCache.Create();
             cache.count = 0;
             b2DistanceOutput output = new b2DistanceOutput();
             b2Simplex.b2Distance(ref output, ref cache, ref input);

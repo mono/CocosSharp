@@ -352,15 +352,20 @@ namespace Box2D.TestBed
             m_bomb.CreateFixture(fd);
         }
 
-        public void Draw(Settings settings)
+        public void InternalDraw(Settings settings)
         {
+            m_textLine = 30;
+
             m_debugDraw.Begin();
 
-            m_world.DrawDebugData();
+            Draw(settings);
 
             m_debugDraw.End();
+        }
 
-            return;
+        protected virtual void Draw(Settings settings)
+        {
+            m_world.DrawDebugData();
 
             if (settings.drawStats)
             {

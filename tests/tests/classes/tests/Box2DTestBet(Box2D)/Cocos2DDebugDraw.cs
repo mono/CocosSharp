@@ -35,11 +35,13 @@ namespace Box2D.TestBed
        
         private SpriteFont _spriteFont;
 
+        private List<StringData> _stringData;
 
         public Cocos2DDebugDraw()
         {
             _primitiveBatch = new CCPrimitiveBatch(CCDrawManager.GraphicsDevice);
             _spriteFont = CCApplication.SharedApplication.Content.Load<SpriteFont>("fonts/arial-12");
+            _stringData = new List<StringData>();
         }
 
         public override void DrawPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
@@ -160,9 +162,7 @@ namespace Box2D.TestBed
 
         public void DrawString(int x, int y, string format, params object[] objects)
         {
-            CCDrawManager.spriteBatch.Begin();
-            CCDrawManager.spriteBatch.DrawString(_spriteFont, String.Format(format, objects), new Vector2(x, y), TextColor);
-            CCDrawManager.spriteBatch.End();
+            _stringData.Add(new StringData(x, y, format, objects, Color.White));
         }
 
         public void DrawPoint(b2Vec2 p, float size, b2Color color)
@@ -196,6 +196,37 @@ namespace Box2D.TestBed
         public void End()
         {
             _primitiveBatch.End();
+
+            var _batch = CCDrawManager.spriteBatch;
+
+            _batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+
+            for (int i = 0; i < _stringData.Count; i++)
+            {
+                _batch.DrawString(_spriteFont, string.Format(_stringData[i].S, _stringData[i].Args),
+                                  new Vector2(_stringData[i].X, _stringData[i].Y), _stringData[i].Color);
+            }
+
+            _batch.End();
+
+            _stringData.Clear();
+        }
+
+        private struct StringData
+        {
+            public object[] Args;
+            public Color Color;
+            public string S;
+            public int X, Y;
+
+            public StringData(int x, int y, string s, object[] args, Color color)
+            {
+                X = x;
+                Y = y;
+                S = s;
+                Args = args;
+                Color = color;
+            }
         }
     }
 

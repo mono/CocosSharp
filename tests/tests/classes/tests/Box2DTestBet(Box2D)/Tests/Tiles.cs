@@ -103,21 +103,26 @@ namespace Box2D.TestBed.Tests
             m_createTime = timer.GetMilliseconds();
         }
 
-        public override void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
+            base.Draw(settings);
+
             b2ContactManager cm = m_world.ContactManager;
             int height = cm.BroadPhase.GetTreeHeight();
             int leafCount = cm.BroadPhase.GetProxyCount();
             int minimumNodeCount = 2 * leafCount - 1;
-            float minimumHeight = (float) Math.Ceiling((float) Math.Log(minimumNodeCount) / (float) Math.Log(2.0f));
+            float minimumHeight = (float)Math.Ceiling((float)Math.Log(minimumNodeCount) / (float)Math.Log(2.0f));
             m_debugDraw.DrawString(5, m_textLine, "dynamic tree height = %d, min = %d", height, minimumHeight);
             m_textLine += 15;
-
-            base.Step(settings);
 
             m_debugDraw.DrawString(5, m_textLine, "create time = %6.2f ms, fixture count = %d",
                                    m_createTime, m_fixtureCount);
             m_textLine += 15;
+        }
+
+        public override void Step(Settings settings)
+        {
+            base.Step(settings);
 
             //b2DynamicTree* tree = &m_world->m_contactManager.m_broadPhase.m_tree;
 

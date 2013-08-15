@@ -121,9 +121,9 @@ namespace Box2D.TestBed.Tests
             }
         }
 
-        public override void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
-            base.Step(settings);
+            base.Draw(settings);
             m_debugDraw.DrawString(5, m_textLine, "Keys: (f) toggle friction, (m) toggle motor");
             m_textLine += 15;
             float torque = m_joint1.GetMotorTorque(settings.hz);

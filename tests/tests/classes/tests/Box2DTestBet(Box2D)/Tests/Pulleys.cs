@@ -75,9 +75,9 @@ namespace Box2D.TestBed.Tests
             }
         }
 
-        public override void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
-            base.Step(settings);
+            base.Draw(settings);
 
             float ratio = m_joint1.GetRatio();
             float L = m_joint1.GetLengthA() + ratio * m_joint1.GetLengthB();

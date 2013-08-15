@@ -38,13 +38,7 @@ namespace Box2D.TestBed
         {
             base.Draw();
 
-            m_test.Draw(settings);
-
-            //CCDrawManager.PushMatrix();
-
-            //m_test.m_debugDraw.RenderDebugData();
-
-            //CCDrawManager.PopMatrix();
+            m_test.InternalDraw(settings);
         }
 
         public override void RegisterWithTouchDispatcher()

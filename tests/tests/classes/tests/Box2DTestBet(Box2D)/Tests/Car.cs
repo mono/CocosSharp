@@ -244,13 +244,18 @@ namespace Box2D.TestBed.Tests
             }
         }
 
-        public override void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
+            base.Draw(settings);
+
             m_debugDraw.DrawString(5, m_textLine, "Keys: left = a, brake = s, right = d, hz down = q, hz up = e");
             m_textLine += 15;
             m_debugDraw.DrawString(5, m_textLine, "frequency = %g hz, damping ratio = %g", m_hz, m_zeta);
             m_textLine += 15;
+        }
 
+        public override void Step(Settings settings)
+        {
             settings.viewCenter.x = m_car.Position.x;
             base.Step(settings);
         }

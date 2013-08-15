@@ -198,12 +198,12 @@ namespace Box2D.TestBed.Tests
             CreateLeg(1.0f, wheelAnchor);
         }
 
-        public override void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
+            base.Draw(settings);
+
             m_debugDraw.DrawString(5, m_textLine, "Keys: left = a, brake = s, right = d, toggle motor = m");
             m_textLine += 15;
-
-            base.Step(settings);
         }
 
         public override void Keyboard(char key)

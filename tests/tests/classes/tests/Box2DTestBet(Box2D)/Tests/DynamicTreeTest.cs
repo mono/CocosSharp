@@ -44,27 +44,9 @@ namespace Box2D.TestBed.Tests
             m_automated = false;
         }
 
-        public override void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
-            m_rayActor = null;
-            for (int i = 0; i < e_actorCount; ++i)
-            {
-                m_actors[i].fraction = 1.0f;
-                m_actors[i].overlap = false;
-            }
-
-            if (m_automated == true)
-            {
-                int actionCount = Math.Max(1, e_actorCount >> 2);
-
-                for (int i = 0; i < actionCount; ++i)
-                {
-                    Action();
-                }
-            }
-
-            Query();
-            RayCast();
+            base.Draw(settings);
 
             for (int i = 0; i < e_actorCount; ++i)
             {
@@ -111,6 +93,29 @@ namespace Box2D.TestBed.Tests
                 m_debugDraw.DrawString(5, m_textLine, "dynamic tree height = %d", height);
                 m_textLine += 15;
             }
+        }
+
+        public override void Step(Settings settings)
+        {
+            m_rayActor = null;
+            for (int i = 0; i < e_actorCount; ++i)
+            {
+                m_actors[i].fraction = 1.0f;
+                m_actors[i].overlap = false;
+            }
+
+            if (m_automated == true)
+            {
+                int actionCount = Math.Max(1, e_actorCount >> 2);
+
+                for (int i = 0; i < actionCount; ++i)
+                {
+                    Action();
+                }
+            }
+
+            Query();
+            RayCast();
 
             ++m_stepCount;
         }

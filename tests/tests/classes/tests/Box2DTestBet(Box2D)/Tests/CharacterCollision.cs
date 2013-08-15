@@ -216,6 +216,18 @@ namespace Box2D.TestBed.Tests
             }
         }
 
+        protected override void Draw(Settings settings)
+        {
+            base.Draw(settings);
+
+            m_debugDraw.DrawString(5, m_textLine, "This tests various character collision shapes.");
+            m_textLine += 15;
+            m_debugDraw.DrawString(5, m_textLine, "Limitation: square and hexagon can snag on aligned boxes.");
+            m_textLine += 15;
+            m_debugDraw.DrawString(5, m_textLine, "Feature: edge chains have smooth collision inside and out.");
+            m_textLine += 15;
+        }
+
         public override void Step(Settings settings)
         {
             b2Vec2 v = m_character.LinearVelocity;
@@ -223,12 +235,6 @@ namespace Box2D.TestBed.Tests
             m_character.LinearVelocity = v;
 
             base.Step(settings);
-            m_debugDraw.DrawString(5, m_textLine, "This tests various character collision shapes.");
-            m_textLine += 15;
-            m_debugDraw.DrawString(5, m_textLine, "Limitation: square and hexagon can snag on aligned boxes.");
-            m_textLine += 15;
-            m_debugDraw.DrawString(5, m_textLine, "Feature: edge chains have smooth collision inside and out.");
-            m_textLine += 15;
         }
 
         public b2Body m_character;

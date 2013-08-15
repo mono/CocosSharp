@@ -96,6 +96,14 @@ namespace Box2D.TestBed.Tests
             }
         }
 
+        protected override void Draw(Settings settings)
+        {
+            base.Draw(settings);
+
+            m_debugDraw.DrawString(5, m_textLine, "Press 'c' to create a circle.");
+            m_textLine += 15;
+        }
+
         public override void Step(Settings settings)
         {
             //bool sleeping = true;
@@ -137,9 +145,6 @@ namespace Box2D.TestBed.Tests
                     p.x += 0.0f;
                 }
             }
-
-            m_debugDraw.DrawString(5, m_textLine, "Press 'c' to create a circle.");
-            m_textLine += 15;
         }
     }
 }

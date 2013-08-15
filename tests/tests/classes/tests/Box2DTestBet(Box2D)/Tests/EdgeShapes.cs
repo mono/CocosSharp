@@ -160,17 +160,16 @@ namespace Box2D.TestBed.Tests
             }
         }
 
-        public override void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
-            bool advanceRay = settings.pause || settings.singleStep;
+            base.Draw(settings);
 
-            base.Step(settings);
             m_debugDraw.DrawString(5, m_textLine, "Press 1-5 to drop stuff");
             m_textLine += 15;
 
             float L = 25.0f;
             b2Vec2 point1 = new b2Vec2(0.0f, 10.0f);
-            b2Vec2 d = new b2Vec2(L * (float) Math.Cos(m_angle), -L * b2Math.b2Abs((float) Math.Sin(m_angle)));
+            b2Vec2 d = new b2Vec2(L * (float)Math.Cos(m_angle), -L * b2Math.b2Abs((float)Math.Sin(m_angle)));
             b2Vec2 point2 = point1 + d;
 
             EdgeShapesCallback callback = new EdgeShapesCallback();
@@ -190,6 +189,13 @@ namespace Box2D.TestBed.Tests
             {
                 m_debugDraw.DrawSegment(point1, point2, new b2Color(0.8f, 0.8f, 0.8f));
             }
+        }
+
+        public override void Step(Settings settings)
+        {
+            bool advanceRay = settings.pause || settings.singleStep;
+
+            base.Step(settings);
 
             if (advanceRay)
             {

@@ -16,9 +16,9 @@ namespace Box2D.TestBed.Tests
             m_shapeB.SetAsBox(2.5f, 2.5f);
         }
 
-        public override void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
-            base.Step(settings);
+            base.Draw(settings);
 
             b2Sweep sweepA = new b2Sweep();
             sweepA.alpha0 = 0;

@@ -28,7 +28,7 @@ namespace Box2D.TestBed.Tests
 
                 b2ChainShape loop = new b2ChainShape();
                 loop.CreateLoop(vs, 5);
-                b2FixtureDef fd = new b2FixtureDef();
+                b2FixtureDef fd = b2FixtureDef.Create();
                 fd.shape = loop;
                 fd.density = 0.0f;
                 ground.CreateFixture(fd);
@@ -51,7 +51,7 @@ namespace Box2D.TestBed.Tests
                 b2PolygonShape box = new b2PolygonShape();
                 box.SetAsBox(1.75f, 0.1f);
 
-                b2FixtureDef fd = new b2FixtureDef();
+                b2FixtureDef fd = b2FixtureDef.Create();
                 fd.shape = box;
                 fd.density = 1.0f;
 
@@ -92,13 +92,21 @@ namespace Box2D.TestBed.Tests
                 b2CircleShape shape = new b2CircleShape();
                 shape.Radius = 0.2f;
 
-                b2FixtureDef fd = new b2FixtureDef();
+                b2FixtureDef fd = b2FixtureDef.Create();
                 fd.shape = shape;
                 fd.density = 1.0f;
                 m_ball.CreateFixture(fd);
             }
 
             m_button = false;
+        }
+
+        protected override void Draw(Settings settings)
+        {
+            base.Draw(settings);
+
+            m_debugDraw.DrawString(5, m_textLine, "Press 'a' to control the flippers");
+            m_textLine += 15;
         }
 
         public override void Step(Settings settings)
@@ -115,10 +123,6 @@ namespace Box2D.TestBed.Tests
             }
 
             base.Step(settings);
-
-            m_debugDraw.DrawString(5, m_textLine, "Press 'a' to control the flippers");
-            m_textLine += 15;
-
         }
 
         public override void Keyboard(char key)

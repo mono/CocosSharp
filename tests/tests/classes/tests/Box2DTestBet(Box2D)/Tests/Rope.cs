@@ -54,6 +54,18 @@ namespace Box2D.TestBed.Tests
             }
         }
 
+        protected override void Draw(Settings settings)
+        {
+            base.Draw(settings);
+
+            m_rope.Draw(m_debugDraw);
+
+            m_debugDraw.DrawString(5, m_textLine, "Press (q,e) to adjust target angle");
+            m_textLine += 15;
+            m_debugDraw.DrawString(5, m_textLine, "Target angle = %g degrees", m_angle * 180.0f / b2Settings.b2_pi);
+            m_textLine += 15;
+        }
+
         public override void Step(Settings settings)
         {
             float dt = settings.hz > 0.0f ? 1.0f / settings.hz : 0.0f;
@@ -66,13 +78,6 @@ namespace Box2D.TestBed.Tests
             m_rope.Step(dt, 1);
 
             base.Step(settings);
-
-            m_rope.Draw(m_debugDraw);
-
-            m_debugDraw.DrawString(5, m_textLine, "Press (q,e) to adjust target angle");
-            m_textLine += 15;
-            m_debugDraw.DrawString(5, m_textLine, "Target angle = %g degrees", m_angle * 180.0f / b2Settings.b2_pi);
-            m_textLine += 15;
         }
 
         public b2Rope m_rope = new b2Rope();
