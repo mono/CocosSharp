@@ -459,7 +459,12 @@ namespace Cocos2D
                     return (false);
                 }
 
-                float scale = fontSize / loadedSize;
+                float scale = 1f;
+                
+                if (loadedSize != 0)
+                {
+                    scale = fontSize / loadedSize;
+                }
 
                 if (dimensions.Equals(CCSize.Zero))
                 {
