@@ -74,7 +74,7 @@ namespace Box2D.Collision.Shapes
         {
             m_count = count;
             m_vertices = new b2Vec2[count];
-            Array.Copy(m_vertices, vertices, count);
+            Array.Copy(vertices, m_vertices, count);
             m_hasPrevVertex = false;
             m_hasNextVertex = false;
         }
