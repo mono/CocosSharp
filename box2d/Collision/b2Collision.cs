@@ -112,7 +112,7 @@ namespace Box2D.Collision
             b2Vec2 pB = b2Math.b2Mul(xfB, circleB.Position);
 
             b2Vec2 d = pB - pA;
-            float distSqr = b2Math.b2Dot(d, d);
+            float distSqr = d.LengthSquared;
             float rA = circleA.Radius, rB = circleB.Radius;
             float radius = rA + rB;
             if (distSqr > radius * radius)
@@ -126,7 +126,7 @@ namespace Box2D.Collision
             manifold.pointCount = 1;
 
             manifold.points[0].localPoint = circleB.Position;
-            manifold.points[0].id = b2ContactFeature.Zero;
+            manifold.points[0].id.key = 0;
         }
 
         /// Compute the collision manifold between a polygon and a circle.
@@ -179,7 +179,7 @@ namespace Box2D.Collision
                 manifold.localNormal = normals[normalIndex];
                 manifold.localPoint = 0.5f * (v1 + v2);
                 manifold.points[0].localPoint = circleB.Position;
-                manifold.points[0].id = b2ContactFeature.Zero;
+                manifold.points[0].id.key = 0;
                 return;
             }
 
@@ -199,7 +199,7 @@ namespace Box2D.Collision
                 manifold.localNormal.Normalize();
                 manifold.localPoint = v1;
                 manifold.points[0].localPoint = circleB.Position;
-                manifold.points[0].id = b2ContactFeature.Zero;
+                manifold.points[0].id.key = 0;
             }
             else if (u2 <= 0.0f)
             {
@@ -214,7 +214,7 @@ namespace Box2D.Collision
                 manifold.localNormal.Normalize();
                 manifold.localPoint = v2;
                 manifold.points[0].localPoint = circleB.Position;
-                manifold.points[0].id = b2ContactFeature.Zero;
+                manifold.points[0].id.key = 0;
             }
             else
             {
@@ -230,7 +230,7 @@ namespace Box2D.Collision
                 manifold.localNormal = normals[vertIndex1];
                 manifold.localPoint = faceCenter;
                 manifold.points[0].localPoint = circleB.Position;
-                manifold.points[0].id = b2ContactFeature.Zero;
+                manifold.points[0].id.key = 0;
             }
         }
 
@@ -509,7 +509,7 @@ namespace Box2D.Collision
             }
 
             // Region AB
-            float den = e.Length; // b2Math.b2Dot(e, e);
+            float den = e.LengthSquared; // b2Math.b2Dot(e, e);
             System.Diagnostics.Debug.Assert(den > 0.0f);
             b2Vec2 xP = (1.0f / den) * (u * A + v * B);
             b2Vec2 xd = Q - xP;
