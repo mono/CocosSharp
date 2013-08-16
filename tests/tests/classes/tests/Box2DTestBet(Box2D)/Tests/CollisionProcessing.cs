@@ -144,6 +144,7 @@ namespace Box2D.TestBed.Tests
             }
 
             // Sort the nuke array to group duplicates.
+            // This is a reference value sort, not any kind of actual value sort...
             Array.Sort(nuke, 0, nukeCount);
 
             // Destroy the bodies, skipping duplicates.

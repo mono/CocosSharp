@@ -80,33 +80,46 @@ namespace Box2D.Collision
             bool hasVertex0 = edgeA.HasVertex0;
             bool hasVertex3 = edgeA.HasVertex3;
 
-            b2Vec2 edge1 = m_v2 - m_v1;
+            b2Vec2 edge1;// = m_v2 - m_v1;
+            edge1.x = m_v2.x - m_v1.x;
+            edge1.y = m_v2.y - m_v1.y;
             edge1.Normalize();
             m_normal1.Set(edge1.y, -edge1.x);
-            b2Vec2 cenMinusV1 = m_centroidB - m_v1;
-            float offset1 = b2Math.b2Dot(ref m_normal1, ref cenMinusV1);
+            b2Vec2 cenMinusV1;// = m_centroidB - m_v1;
+            cenMinusV1.x = m_centroidB.x - m_v1.x;
+            cenMinusV1.y = m_centroidB.y - m_v1.y;
+            float offset1 = m_normal1.x * cenMinusV1.x + m_normal1.y * cenMinusV1.y;// b2Math.b2Dot(ref m_normal1, ref cenMinusV1);
             float offset0 = 0.0f, offset2 = 0.0f;
             bool convex1 = false, convex2 = false;
 
             // Is there a preceding edge?
             if (hasVertex0)
             {
-                b2Vec2 edge0 = m_v1 - m_v0;
+                b2Vec2 edge0;// = m_v1 - m_v0;
+                edge0.x = m_v1.x - m_v0.x;
+                edge0.y = m_v1.y - m_v0.y;
                 edge0.Normalize();
                 m_normal0.Set(edge0.y, -edge0.x);
                 convex1 = b2Math.b2Cross(ref edge0, ref edge1) >= 0.0f;
-                b2Vec2 cenMinusV0 = m_centroidB - m_v0;
-                offset0 = b2Math.b2Dot(ref m_normal0, ref cenMinusV0);
+                b2Vec2 cenMinusV0;// = m_centroidB - m_v0;
+                cenMinusV0.x = m_centroidB.x - m_v0.x;
+                cenMinusV0.y = m_centroidB.y - m_v0.y;
+                offset0 = m_normal0.x * cenMinusV0.x + m_normal0.y * cenMinusV0.y; // b2Math.b2Dot(ref m_normal0, ref cenMinusV0);
             }
 
             // Is there a following edge?
             if (hasVertex3)
             {
-                b2Vec2 edge2 = m_v3 - m_v2;
+                b2Vec2 edge2;// = m_v3 - m_v2;
+                edge2.x = m_v3.x - m_v2.x;
+                edge2.y = m_v3.y - m_v2.y;
                 edge2.Normalize();
                 m_normal2.Set(edge2.y, -edge2.x);
-                convex2 = b2Math.b2Cross(edge1, edge2) > 0.0f;
-                offset2 = b2Math.b2Dot(m_normal2, m_centroidB - m_v2);
+                convex2 = b2Math.b2Cross(ref edge1, ref edge2) > 0.0f;
+                b2Vec2 tmp;
+                tmp.x = m_centroidB.x - m_v2.x;
+                tmp.y = m_centroidB.y - m_v2.y;
+                offset2 = m_normal2.x * tmp.x + m_normal2.y * tmp.y;// b2Math.b2Dot(m_normal2, m_centroidB - m_v2);
             }
 
             // Determine front or back collision. Determine collision normal limits.
@@ -324,10 +337,10 @@ namespace Box2D.Collision
 
                 // Search for the polygon normal that is most anti-parallel to the edge normal.
                 int bestIndex = 0;
-                float bestValue = b2Math.b2Dot(m_normal, m_polygonB.normals[0]);
+                float bestValue = b2Math.b2Dot(ref m_normal, ref m_polygonB.normals[0]);
                 for (int i = 1; i < m_polygonB.count; ++i)
                 {
-                    float value = b2Math.b2Dot(m_normal, m_polygonB.normals[i]);
+                    float value = b2Math.b2Dot(ref m_normal, ref m_polygonB.normals[i]);
                     if (value < bestValue)
                     {
                         bestValue = value;
@@ -392,8 +405,8 @@ namespace Box2D.Collision
 
             rf.sideNormal1 = new b2Vec2(rf.normal.y, -rf.normal.x);
             rf.sideNormal2 = -rf.sideNormal1;
-            rf.sideOffset1 = b2Math.b2Dot(rf.sideNormal1, rf.v1);
-            rf.sideOffset2 = b2Math.b2Dot(rf.sideNormal2, rf.v2);
+            rf.sideOffset1 = b2Math.b2Dot(ref rf.sideNormal1, ref rf.v1);
+            rf.sideOffset2 = b2Math.b2Dot(ref rf.sideNormal2, ref rf.v2);
 
             // Clip incident edge against extruded edge1 side edges.
             b2ClipVertex[] clipPoints1 = new b2ClipVertex[2];

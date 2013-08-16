@@ -111,7 +111,9 @@ namespace Box2D.Collision
             b2Vec2 pA = b2Math.b2Mul(xfA, circleA.Position);
             b2Vec2 pB = b2Math.b2Mul(xfB, circleB.Position);
 
-            b2Vec2 d = pB - pA;
+            b2Vec2 d;// = pB - pA;
+            d.x = pB.x - pA.x;
+            d.y = pB.y - pA.y;
             float distSqr = d.LengthSquared;
             float rA = circleA.Radius, rB = circleB.Radius;
             float radius = rA + rB;
@@ -150,7 +152,10 @@ namespace Box2D.Collision
 
             for (int i = 0; i < vertexCount; ++i)
             {
-                float s = b2Math.b2Dot(normals[i], cLocal - vertices[i]);
+                b2Vec2 tmp;
+                tmp.x = cLocal.x - vertices[i].x;
+                tmp.y = cLocal.y - vertices[i].y;
+                float s = normals[i].x * tmp.x + normals[i].y * tmp.y; // b2Math.b2Dot(normals[i], cLocal - vertices[i]);
 
                 if (s > radius)
                 {
