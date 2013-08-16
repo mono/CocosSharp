@@ -111,6 +111,7 @@
     <Compile Include="Common\b2Vec2.cs" />
     <Compile Include="Common\b2Vec3.cs" />
     <Compile Include="Dynamics\Ib2QueryCallback.cs" />
+    <Compile Include="Dynamics\Ib2RayCastCallback.cs" />
     <Compile Include="Dynamics\b2Body.cs" />
     <Compile Include="Dynamics\b2BodyDef.cs" />
     <Compile Include="Dynamics\b2ContactFilter.cs" />
