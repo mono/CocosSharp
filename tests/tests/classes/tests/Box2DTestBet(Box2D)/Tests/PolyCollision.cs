@@ -25,8 +25,10 @@ namespace Box2D.TestBed.Tests
             }
         }
 
-        private void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
+            base.Draw(settings);
+
             b2Manifold manifold = new b2Manifold();
             b2Collision.b2CollidePolygons(ref manifold, m_polygonA, ref m_transformA, m_polygonB, ref m_transformB);
 

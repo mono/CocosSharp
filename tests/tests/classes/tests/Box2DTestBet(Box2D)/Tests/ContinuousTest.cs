@@ -75,21 +75,15 @@ namespace Box2D.TestBed.Tests
             m_body.AngularVelocity = m_angularVelocity;
         }
 
-        public void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
-            if (m_stepCount == 12)
-            {
-                m_stepCount += 0;
-            }
-
-            base.Step(settings);
-
+            base.Draw(settings);
 
             if (b2DistanceProxy.b2_gjkCalls > 0)
             {
                 m_debugDraw.DrawString(5, m_textLine, "gjk calls = {0}, ave gjk iters = {1:000.0}, max gjk iters = {2}",
                                        b2DistanceProxy.b2_gjkCalls,
-                                       b2DistanceProxy.b2_gjkIters / (float) (b2DistanceProxy.b2_gjkCalls),
+                                       b2DistanceProxy.b2_gjkIters / (float)(b2DistanceProxy.b2_gjkCalls),
                                        b2DistanceProxy.b2_gjkMaxIters);
                 m_textLine += 15;
             }
@@ -98,15 +92,25 @@ namespace Box2D.TestBed.Tests
             {
                 m_debugDraw.DrawString(5, m_textLine, "toi calls = {0}, ave toi iters = {1:000.0}, max toi iters = {2}",
                                        b2TimeOfImpact.b2_toiCalls,
-                                       b2TimeOfImpact.b2_toiIters / (float) (b2TimeOfImpact.b2_toiCalls),
+                                       b2TimeOfImpact.b2_toiIters / (float)(b2TimeOfImpact.b2_toiCalls),
                                        b2TimeOfImpact.b2_toiMaxRootIters);
                 m_textLine += 15;
 
                 m_debugDraw.DrawString(5, m_textLine, "ave toi root iters = {0:000.0}, max toi root iters = {1}",
-                                       b2TimeOfImpact.b2_toiRootIters / (float) (b2TimeOfImpact.b2_toiCalls),
+                                       b2TimeOfImpact.b2_toiRootIters / (float)(b2TimeOfImpact.b2_toiCalls),
                                        b2TimeOfImpact.b2_toiMaxRootIters);
                 m_textLine += 15;
             }
+        }
+
+        public override void Step(Settings settings)
+        {
+            if (m_stepCount == 12)
+            {
+                m_stepCount += 0;
+            }
+
+            base.Step(settings);
 
             if (m_stepCount % 60 == 0)
             {
