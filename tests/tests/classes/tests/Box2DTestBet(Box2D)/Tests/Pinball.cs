@@ -16,7 +16,7 @@ namespace Box2D.TestBed.Tests
             // Ground body
             b2Body ground;
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 ground = m_world.CreateBody(bd);
 
                 b2Vec2[] vs = new b2Vec2[5];
@@ -28,7 +28,7 @@ namespace Box2D.TestBed.Tests
 
                 b2ChainShape loop = new b2ChainShape();
                 loop.CreateLoop(vs, 5);
-                b2FixtureDef fd = b2FixtureDef.Create();
+                b2FixtureDef fd = new b2FixtureDef();
                 fd.shape = loop;
                 fd.density = 0.0f;
                 ground.CreateFixture(fd);
@@ -39,7 +39,7 @@ namespace Box2D.TestBed.Tests
                 b2Vec2 p1 = new b2Vec2(-2.0f, 0.0f);
                 b2Vec2 p2 = new b2Vec2(2.0f, 0.0f);
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
 
                 bd.position = p1;
@@ -51,7 +51,7 @@ namespace Box2D.TestBed.Tests
                 b2PolygonShape box = new b2PolygonShape();
                 box.SetAsBox(1.75f, 0.1f);
 
-                b2FixtureDef fd = b2FixtureDef.Create();
+                b2FixtureDef fd = new b2FixtureDef();
                 fd.shape = box;
                 fd.density = 1.0f;
 
@@ -82,7 +82,7 @@ namespace Box2D.TestBed.Tests
 
             // Circle character
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(1.0f, 15.0f);
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.bullet = true;
@@ -92,7 +92,7 @@ namespace Box2D.TestBed.Tests
                 b2CircleShape shape = new b2CircleShape();
                 shape.Radius = 0.2f;
 
-                b2FixtureDef fd = b2FixtureDef.Create();
+                b2FixtureDef fd = new b2FixtureDef();
                 fd.shape = shape;
                 fd.density = 1.0f;
                 m_ball.CreateFixture(fd);

@@ -15,7 +15,7 @@ namespace Box2D.TestBed.Tests
         {
             b2Body ground = null;
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -29,7 +29,7 @@ namespace Box2D.TestBed.Tests
 
             // Define attachment
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
 
                 bd.position = new b2Vec2(0.0f, 3.0f);
@@ -42,7 +42,7 @@ namespace Box2D.TestBed.Tests
 
             // Define platform
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 
                 bd.position = new b2Vec2(-4.0f, 5.0f);
@@ -79,7 +79,7 @@ namespace Box2D.TestBed.Tests
 
             // Create a payload
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position = new b2Vec2(0.0f, 8.0f);
                 b2Body body = m_world.CreateBody(bd);

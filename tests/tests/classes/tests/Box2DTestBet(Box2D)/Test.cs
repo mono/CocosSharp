@@ -207,7 +207,7 @@ namespace Box2D.TestBed
 
             m_stepCount = 0;
 
-            b2BodyDef bodyDef = b2BodyDef.Create();
+            b2BodyDef bodyDef = new b2BodyDef();
             m_groundBody = m_world.CreateBody(bodyDef);
         }
 
@@ -328,7 +328,7 @@ namespace Box2D.TestBed
                 m_bomb = null;
             }
 
-            b2BodyDef bd = b2BodyDef.Create();
+            b2BodyDef bd = new b2BodyDef();
             bd.type = b2BodyType.b2_dynamicBody;
             bd.position = position;
             bd.bullet = true;

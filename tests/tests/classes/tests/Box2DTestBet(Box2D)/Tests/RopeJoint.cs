@@ -15,7 +15,7 @@ namespace Box2D.TestBed.Tests
         {
             b2Body ground;
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -44,7 +44,7 @@ namespace Box2D.TestBed.Tests
                 b2Body prevBody = ground;
                 for (int i = 0; i < N; ++i)
                 {
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
                     bd.position.Set(0.5f + 1.0f * i, y);
                     if (i == N - 1)

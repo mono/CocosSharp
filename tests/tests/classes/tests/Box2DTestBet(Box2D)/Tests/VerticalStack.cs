@@ -19,7 +19,7 @@ namespace Box2D.TestBed.Tests
         public VerticalStack()
         {
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -44,7 +44,7 @@ namespace Box2D.TestBed.Tests
 
                 for (int i = 0; i < e_rowCount; ++i)
                 {
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
 
                     int n = j * e_rowCount + i;
@@ -86,7 +86,7 @@ namespace Box2D.TestBed.Tests
                         fd.density = 20.0f;
                         fd.restitution = 0.05f;
 
-                        b2BodyDef bd  = b2BodyDef.Create();
+                        b2BodyDef bd  = new b2BodyDef();
                         bd.type = b2BodyType.b2_dynamicBody;
                         bd.bullet = true;
                         bd.position.Set(-31.0f, 5.0f);

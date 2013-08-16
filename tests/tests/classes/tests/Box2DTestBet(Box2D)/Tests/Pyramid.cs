@@ -15,7 +15,7 @@ namespace Box2D.TestBed.Tests
         public Pyramid()
         {
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -39,7 +39,7 @@ namespace Box2D.TestBed.Tests
 
                     for (int j = i; j < e_count; ++j)
                     {
-                        b2BodyDef bd  = b2BodyDef.Create();
+                        b2BodyDef bd  = new b2BodyDef();
                         bd.type = b2BodyType.b2_dynamicBody;
                         bd.position = y;
                         b2Body body = m_world.CreateBody(bd);

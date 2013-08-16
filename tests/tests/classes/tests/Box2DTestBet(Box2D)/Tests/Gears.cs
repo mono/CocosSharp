@@ -15,7 +15,7 @@ namespace Box2D.TestBed.Tests
         {
             b2Body ground = null;
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -34,19 +34,19 @@ namespace Box2D.TestBed.Tests
                 b2CircleShape circle2 = new b2CircleShape();
                 circle2.Radius = 2.0f;
 
-                b2BodyDef bd1  = b2BodyDef.Create();
+                b2BodyDef bd1  = new b2BodyDef();
                 bd1.type = b2BodyType.b2_staticBody;
                 bd1.position.Set(10.0f, 9.0f);
                 b2Body body1 = m_world.CreateBody(bd1);
                 body1.CreateFixture(circle1, 0.0f);
 
-                b2BodyDef bd2  = b2BodyDef.Create();
+                b2BodyDef bd2  = new b2BodyDef();
                 bd2.type = b2BodyType.b2_dynamicBody;
                 bd2.position.Set(10.0f, 8.0f);
                 b2Body body2 = m_world.CreateBody(bd2);
                 body2.CreateFixture(box, 5.0f);
 
-                b2BodyDef bd3  = b2BodyDef.Create();
+                b2BodyDef bd3  = new b2BodyDef();
                 bd3.type = b2BodyType.b2_dynamicBody;
                 bd3.position.Set(10.0f, 6.0f);
                 b2Body body3 = m_world.CreateBody(bd3);
@@ -79,7 +79,7 @@ namespace Box2D.TestBed.Tests
                 b2PolygonShape box = new b2PolygonShape();
                 box.SetAsBox(0.5f, 5.0f);
 
-                b2BodyDef bd1  = b2BodyDef.Create();
+                b2BodyDef bd1  = new b2BodyDef();
                 bd1.type = b2BodyType.b2_dynamicBody;
                 bd1.position.Set(-3.0f, 12.0f);
                 b2Body body1 = m_world.CreateBody(bd1);
@@ -93,7 +93,7 @@ namespace Box2D.TestBed.Tests
                 jd1.referenceAngle = body1.Angle - ground.Angle;
                 m_joint1 = (b2RevoluteJoint) m_world.CreateJoint(jd1);
 
-                b2BodyDef bd2  = b2BodyDef.Create();
+                b2BodyDef bd2  = new b2BodyDef();
                 bd2.type = b2BodyType.b2_dynamicBody;
                 bd2.position.Set(0.0f, 12.0f);
                 b2Body body2 = m_world.CreateBody(bd2);
@@ -103,7 +103,7 @@ namespace Box2D.TestBed.Tests
                 jd2.Initialize(ground, body2, bd2.position);
                 m_joint2 = (b2RevoluteJoint) m_world.CreateJoint(jd2);
 
-                b2BodyDef bd3  = b2BodyDef.Create();
+                b2BodyDef bd3  = new b2BodyDef();
                 bd3.type = b2BodyType.b2_dynamicBody;
                 bd3.position.Set(2.5f, 12.0f);
                 b2Body body3 = m_world.CreateBody(bd3);

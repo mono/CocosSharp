@@ -23,7 +23,7 @@ namespace Box2D.TestBed.Tests
         {
             // Ground
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -33,7 +33,7 @@ namespace Box2D.TestBed.Tests
 
             // Platform
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(0.0f, 10.0f);
                 b2Body body = m_world.CreateBody(bd);
 
@@ -47,7 +47,7 @@ namespace Box2D.TestBed.Tests
 
             // Actor
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(0.0f, 12.0f);
                 b2Body body = m_world.CreateBody(bd);

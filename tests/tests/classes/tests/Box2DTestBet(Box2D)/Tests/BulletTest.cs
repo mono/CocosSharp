@@ -15,7 +15,7 @@ namespace Box2D.TestBed.Tests
         public BulletTest()
         {
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(0.0f, 0.0f);
                 b2Body body = m_world.CreateBody(bd);
 
@@ -30,7 +30,7 @@ namespace Box2D.TestBed.Tests
             }
 
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(0.0f, 4.0f);
 

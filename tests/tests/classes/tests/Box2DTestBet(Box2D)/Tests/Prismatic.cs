@@ -15,7 +15,7 @@ namespace Box2D.TestBed.Tests
         {
             b2Body ground = null;
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -27,7 +27,7 @@ namespace Box2D.TestBed.Tests
                 b2PolygonShape shape = new b2PolygonShape();
                 shape.SetAsBox(2.0f, 0.5f);
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(-10.0f, 10.0f);
                 bd.angle = 0.5f * b2Settings.b2_pi;

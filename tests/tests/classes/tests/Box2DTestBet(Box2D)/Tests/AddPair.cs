@@ -27,7 +27,7 @@ namespace Box2D.TestBed.Tests
 
                 for (int i = 0; i < 400; ++i)
                 {
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
                     bd.position = new b2Vec2(Rand.RandomFloat(minX, maxX), Rand.RandomFloat(minY, maxY));
                     b2Body body = m_world.CreateBody(bd);
@@ -38,7 +38,7 @@ namespace Box2D.TestBed.Tests
             {
                 b2PolygonShape shape = new b2PolygonShape();
                 shape.SetAsBox(1.5f, 1.5f);
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position = new b2Vec2(-40.0f, 5.0f);
                 bd.bullet = true;

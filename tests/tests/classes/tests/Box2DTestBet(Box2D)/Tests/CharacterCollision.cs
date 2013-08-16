@@ -14,7 +14,7 @@ namespace Box2D.TestBed.Tests
         {
             // Ground body
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -26,7 +26,7 @@ namespace Box2D.TestBed.Tests
             // This shows the problematic case where a box shape can hit
             // an internal vertex.
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -40,7 +40,7 @@ namespace Box2D.TestBed.Tests
 
             // Chain shape
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.angle = 0.25f * b2Settings.b2_pi;
                 b2Body ground = m_world.CreateBody(bd);
 
@@ -58,7 +58,7 @@ namespace Box2D.TestBed.Tests
             // have non-smooth collision. There is no solution
             // to this problem.
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2PolygonShape shape = new b2PolygonShape();
@@ -72,7 +72,7 @@ namespace Box2D.TestBed.Tests
 
             // Square made from an edge loop. Collision should be smooth.
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2Vec2[] vs = new b2Vec2[4];
@@ -87,7 +87,7 @@ namespace Box2D.TestBed.Tests
 
             // Edge loop. Collision should be smooth.
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(-10.0f, 4.0f);
                 b2Body ground = m_world.CreateBody(bd);
 
@@ -109,7 +109,7 @@ namespace Box2D.TestBed.Tests
 
             // Square character 1
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(-3.0f, 8.0f);
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.fixedRotation = true;
@@ -129,7 +129,7 @@ namespace Box2D.TestBed.Tests
 
             // Square character 2
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(-5.0f, 5.0f);
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.fixedRotation = true;
@@ -149,7 +149,7 @@ namespace Box2D.TestBed.Tests
 
             // Hexagon character
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(-5.0f, 8.0f);
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.fixedRotation = true;
@@ -178,7 +178,7 @@ namespace Box2D.TestBed.Tests
 
             // Circle character
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(3.0f, 5.0f);
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.fixedRotation = true;
@@ -197,7 +197,7 @@ namespace Box2D.TestBed.Tests
 
             // Circle character
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(-7.0f, 6.0f);
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.allowSleep = false;

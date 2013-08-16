@@ -20,7 +20,7 @@ namespace Box2D.TestBed.Tests
                 b2FixtureDef sd = new b2FixtureDef();
                 sd.shape = shape;
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
                 ground.CreateFixture(sd);
             }
@@ -41,7 +41,7 @@ namespace Box2D.TestBed.Tests
             triangleShapeDef.shape = polygon;
             triangleShapeDef.density = 1.0f;
 
-            b2BodyDef triangleBodyDef  = b2BodyDef.Create();
+            b2BodyDef triangleBodyDef  = new b2BodyDef();
             triangleBodyDef.type = b2BodyType.b2_dynamicBody;
             triangleBodyDef.position.Set(Rand.RandomFloat(xLo, xHi), Rand.RandomFloat(yLo, yHi));
 
@@ -66,7 +66,7 @@ namespace Box2D.TestBed.Tests
             boxShapeDef.shape = polygon;
             boxShapeDef.density = 1.0f;
 
-            b2BodyDef boxBodyDef  = b2BodyDef.Create();
+            b2BodyDef boxBodyDef  = new b2BodyDef();
             boxBodyDef.type = b2BodyType.b2_dynamicBody;
             boxBodyDef.position.Set(Rand.RandomFloat(xLo, xHi), Rand.RandomFloat(yLo, yHi));
 
@@ -88,7 +88,7 @@ namespace Box2D.TestBed.Tests
             circleShapeDef.shape = circle;
             circleShapeDef.density = 1.0f;
 
-            b2BodyDef circleBodyDef  = b2BodyDef.Create();
+            b2BodyDef circleBodyDef  = new b2BodyDef();
             circleBodyDef.type = b2BodyType.b2_dynamicBody;
             circleBodyDef.position.Set(Rand.RandomFloat(xLo, xHi), Rand.RandomFloat(yLo, yHi));
 
