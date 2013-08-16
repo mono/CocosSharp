@@ -223,9 +223,7 @@ namespace Box2D.Dynamics.Contacts
         // Note: do not assume the fixture AABBs are overlapping or are valid.
         public virtual void Update(b2ContactListener listener)
         {
-            b2Manifold oldManifold = m_manifold;
-            oldManifold.points = m_manifold.CopyPoints();
-
+            b2Manifold oldManifold = GetManifold();
 
             // Re-enable this contact.
             m_flags |= b2ContactFlags.e_enabledFlag;
@@ -313,11 +311,14 @@ namespace Box2D.Dynamics.Contacts
         }
         public virtual b2Manifold GetManifold()
         {
-            return m_manifold;
+            var result = m_manifold;
+            result.CopyPointsFrom(ref m_manifold);
+            return result;
         }
-        public virtual void SetManifold(b2Manifold m)
+        public virtual void SetManifold(ref b2Manifold m)
         {
             m_manifold = m;
+            m_manifold.CopyPointsFrom(ref m);
         }
 
         public virtual void GetWorldManifold(ref b2WorldManifold worldManifold)
