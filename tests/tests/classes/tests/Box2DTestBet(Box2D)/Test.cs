@@ -180,9 +180,10 @@ namespace Box2D.TestBed
         public b2Vec2 m_mouseWorld;
         public int m_stepCount;
 
+#if PROFILING
         public b2Profile m_maxProfile;
         public b2Profile m_totalProfile;
-        
+#endif        
 
         public Test()
         {
@@ -384,7 +385,7 @@ namespace Box2D.TestBed
                                        height, balance, quality);
                 m_textLine += 15;
             }
-
+#if PROFILING
             // Track maximum profile times
             {
                 b2Profile p = m_world.Profile;
@@ -450,7 +451,7 @@ namespace Box2D.TestBed
                                        aveProfile.broadphase, m_maxProfile.broadphase);
                 m_textLine += 15;
             }
-
+#endif
             if (m_mouseJoint != null)
             {
                 b2Vec2 p1 = m_mouseJoint.GetAnchorB();
