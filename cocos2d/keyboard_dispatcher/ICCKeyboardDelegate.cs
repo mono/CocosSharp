@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Cocos2D
 {
-
+    [Flags]
 	public enum CCKeyboardMode
 	{
 		KeyPressed = 0x1,

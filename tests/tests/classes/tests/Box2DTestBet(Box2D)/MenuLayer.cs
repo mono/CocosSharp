@@ -20,9 +20,10 @@ namespace Box2D.TestBed
 
             Box2DView view = Box2DView.viewWithEntryID(entryId);
             AddChild(view, 0, kTagBox2DNode);
-            view.Scale = 10;
+            view.Scale = 8;
             view.AnchorPoint = new CCPoint(0, 0);
             view.Position = new CCPoint(s.Width / 2, s.Height / 4);
+
             //#if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
             //    CCLabelBMFont* label = new CCLabelBMFont(view.title().c_str(),  "fonts/arial16.fnt");
             //#else    
