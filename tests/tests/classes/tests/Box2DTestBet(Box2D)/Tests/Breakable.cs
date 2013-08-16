@@ -17,7 +17,7 @@ namespace Box2D.TestBed.Tests
         {
             // Ground body
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -27,7 +27,7 @@ namespace Box2D.TestBed.Tests
 
             // Breakable dynamic body
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position = new b2Vec2(0.0f, 40.0f);
                 bd.angle = 0.25f * b2Settings.b2_pi;
@@ -77,7 +77,7 @@ namespace Box2D.TestBed.Tests
             body1.DestroyFixture(m_piece2);
             m_piece2 = null;
 
-            b2BodyDef bd  = b2BodyDef.Create();
+            b2BodyDef bd  = new b2BodyDef();
             bd.type = b2BodyType.b2_dynamicBody;
             bd.position = body1.Position;
             bd.angle = body1.Angle;

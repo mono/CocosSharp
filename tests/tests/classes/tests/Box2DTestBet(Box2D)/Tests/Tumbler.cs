@@ -17,12 +17,12 @@ namespace Box2D.TestBed.Tests
         {
             b2Body ground;
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 ground = m_world.CreateBody(bd);
             }
 
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.allowSleep = false;
                 bd.position.Set(0.0f, 10.0f);
@@ -59,7 +59,7 @@ namespace Box2D.TestBed.Tests
 
             if (m_count < e_count)
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(0.0f, 10.0f);
                 b2Body body = m_world.CreateBody(bd);

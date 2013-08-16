@@ -34,7 +34,7 @@ namespace Box2D.TestBed.Tests
                 sd.shape = shape;
                 sd.friction = 0.3f;
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
                 ground.CreateFixture(sd);
             }
@@ -55,7 +55,7 @@ namespace Box2D.TestBed.Tests
             triangleShapeDef.filter.categoryBits = k_triangleCategory;
             triangleShapeDef.filter.maskBits = k_triangleMask;
 
-            b2BodyDef triangleBodyDef  = b2BodyDef.Create();
+            b2BodyDef triangleBodyDef  = new b2BodyDef();
             triangleBodyDef.type = b2BodyType.b2_dynamicBody;
             triangleBodyDef.position.Set(-5.0f, 2.0f);
 
@@ -75,7 +75,7 @@ namespace Box2D.TestBed.Tests
             body2.CreateFixture(triangleShapeDef);
 
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(-5.0f, 10.0f);
                 b2Body body = m_world.CreateBody(bd);
@@ -108,7 +108,7 @@ namespace Box2D.TestBed.Tests
             boxShapeDef.filter.categoryBits = k_boxCategory;
             boxShapeDef.filter.maskBits = k_boxMask;
 
-            b2BodyDef boxBodyDef  = b2BodyDef.Create();
+            b2BodyDef boxBodyDef  = new b2BodyDef();
             boxBodyDef.type = b2BodyType.b2_dynamicBody;
             boxBodyDef.position.Set(0.0f, 2.0f);
 
@@ -135,7 +135,7 @@ namespace Box2D.TestBed.Tests
             circleShapeDef.filter.categoryBits = k_circleCategory;
             circleShapeDef.filter.maskBits = k_circleMask;
 
-            b2BodyDef circleBodyDef  = b2BodyDef.Create();
+            b2BodyDef circleBodyDef  = new b2BodyDef();
             circleBodyDef.type = b2BodyType.b2_dynamicBody;
             circleBodyDef.position.Set(5.0f, 2.0f);
 

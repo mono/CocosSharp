@@ -17,7 +17,7 @@ namespace Cocos2D
         private static ContentManager _contentManager;
         public static string FontRoot = "fonts";
 
-        private static Dictionary<string, int[]> _registeredFonts = new Dictionary<string, int[]>();
+        private static Dictionary<string, int[]> _registeredFonts = new Dictionary<string, int[]>(StringComparer.OrdinalIgnoreCase);
         private static Dictionary<string, FontMapEntry> _loadedFontsMap = new Dictionary<string, FontMapEntry>();
 
         public static void RegisterFont(string fontName, params int[] sizes)

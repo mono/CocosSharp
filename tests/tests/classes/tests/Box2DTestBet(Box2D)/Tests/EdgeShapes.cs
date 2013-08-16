@@ -16,7 +16,7 @@ namespace Box2D.TestBed.Tests
         {
             // Ground body
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 float x1 = -20.0f;
@@ -94,7 +94,7 @@ namespace Box2D.TestBed.Tests
                 m_bodies[m_bodyIndex] = null;
             }
 
-            b2BodyDef bd  = b2BodyDef.Create();
+            b2BodyDef bd  = new b2BodyDef();
 
             float x = Rand.RandomFloat(-10.0f, 10.0f);
             float y = Rand.RandomFloat(10.0f, 20.0f);

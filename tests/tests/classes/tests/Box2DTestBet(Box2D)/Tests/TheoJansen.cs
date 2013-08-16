@@ -62,8 +62,8 @@ namespace Box2D.TestBed.Tests
             fd1.shape = poly1;
             fd2.shape = poly2;
 
-            b2BodyDef bd1  = b2BodyDef.Create();
-            b2BodyDef bd2  = b2BodyDef.Create();
+            b2BodyDef bd1  = new b2BodyDef();
+            b2BodyDef bd2  = new b2BodyDef();
             bd1.type = b2BodyType.b2_dynamicBody;
             bd2.type = b2BodyType.b2_dynamicBody;
             bd1.position = m_offset;
@@ -113,7 +113,7 @@ namespace Box2D.TestBed.Tests
 
             // Ground
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -133,7 +133,7 @@ namespace Box2D.TestBed.Tests
                 b2CircleShape shape = new b2CircleShape();
                 shape.Radius = 0.25f;
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(-40.0f + 2.0f * i, 0.5f);
 
@@ -150,7 +150,7 @@ namespace Box2D.TestBed.Tests
                 sd.density = 1.0f;
                 sd.shape = shape;
                 sd.filter.groupIndex = -1;
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position = pivot + m_offset;
                 m_chassis = m_world.CreateBody(bd);
@@ -165,7 +165,7 @@ namespace Box2D.TestBed.Tests
                 sd.density = 1.0f;
                 sd.shape = shape;
                 sd.filter.groupIndex = -1;
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position = pivot + m_offset;
                 m_wheel = m_world.CreateBody(bd);

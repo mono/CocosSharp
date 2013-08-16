@@ -20,7 +20,7 @@ namespace Box2D.TestBed.Tests
             b2Body[] bodies = new b2Body[3];
             b2Joint[] joints = new b2Joint[2];
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(1.304347801208496e+01f, 2.500000000000000e+00f);
                 bd.angle = 0.000000000000000e+00f;
@@ -59,7 +59,7 @@ namespace Box2D.TestBed.Tests
                 }
             }
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(8.478260636329651e-01f, 2.500000000000000e+00f);
                 bd.angle = 0.000000000000000e+00f;
@@ -99,7 +99,7 @@ namespace Box2D.TestBed.Tests
             }
 
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_staticBody;
                 bd.position.Set(0.000000000000000e+00f, 0.000000000000000e+00f);
                 bd.angle = 0.000000000000000e+00f;

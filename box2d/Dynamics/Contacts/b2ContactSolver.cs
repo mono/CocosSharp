@@ -762,7 +762,7 @@ namespace Box2D.Dynamics.Contacts
                     manifold.points[j].normalImpulse = vc.points[j].normalImpulse;
                     manifold.points[j].tangentImpulse = vc.points[j].tangentImpulse;
                 }
-                m_contacts[vc.contactIndex].SetManifold(manifold);
+                m_contacts[vc.contactIndex].SetManifold(ref manifold);
             }
         }
 

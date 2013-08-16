@@ -17,7 +17,7 @@ namespace Box2D.TestBed.Tests
         {
             b2Body ground = null;
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -39,7 +39,7 @@ namespace Box2D.TestBed.Tests
                 b2Body prevBody = ground;
                 for (int i = 0; i < e_count; ++i)
                 {
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
                     bd.position = new b2Vec2(-14.5f + 1.0f * i, 5.0f);
                     b2Body body = m_world.CreateBody(bd);
@@ -75,7 +75,7 @@ namespace Box2D.TestBed.Tests
                 fd.shape = shape;
                 fd.density = 1.0f;
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position = new b2Vec2(-8.0f + 8.0f * i, 12.0f);
                 b2Body body = m_world.CreateBody(bd);
@@ -91,7 +91,7 @@ namespace Box2D.TestBed.Tests
                 fd.shape = shape;
                 fd.density = 1.0f;
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(-6.0f + 6.0f * i, 10.0f);
                 b2Body body = m_world.CreateBody(bd);

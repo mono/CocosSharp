@@ -13,7 +13,7 @@ namespace Box2D.TestBed.Tests
         public EdgeTest()
         {
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2Vec2 v1 = new b2Vec2(-10.0f, 0.0f);
@@ -66,7 +66,7 @@ namespace Box2D.TestBed.Tests
             }
 
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(-0.5f, 0.6f);
                 bd.allowSleep = false;
@@ -79,7 +79,7 @@ namespace Box2D.TestBed.Tests
             }
 
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(1.0f, 0.6f);
                 bd.allowSleep = false;

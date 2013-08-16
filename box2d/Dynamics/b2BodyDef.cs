@@ -10,10 +10,15 @@ namespace Box2D.Dynamics
     /// A body definition holds all the data needed to construct a rigid body.
     /// You can safely re-use body definitions. Shapes are added to a body after construction.
     /// </summary>
-    public struct b2BodyDef
+    public class b2BodyDef
     {
 
-		public void Defaults() 
+        public b2BodyDef()
+        {
+            Defaults();
+        }
+
+        public void Defaults() 
 		{
 			userData = null;
 			position = b2Vec2.Zero;
@@ -32,13 +37,6 @@ namespace Box2D.Dynamics
 			active = true;
 			gravityScale = 1.0f;
 		}
-
-		static public b2BodyDef Create() 
-        {
-			var bodyDef  = new b2BodyDef();
-			bodyDef.Defaults();
-			return bodyDef;
-        }
 
         /// The body type: static, kinematic, or dynamic.
         /// Note: if a dynamic body would have zero mass, the mass is set to one.
