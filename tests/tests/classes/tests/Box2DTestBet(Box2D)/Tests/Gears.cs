@@ -144,9 +144,9 @@ namespace Box2D.TestBed.Tests
             }
         }
 
-        private void Step(Settings settings)
+        protected override void Draw(Settings settings)
         {
-            base.Step(settings);
+            base.Draw(settings);
 
             float ratio, value;
 
