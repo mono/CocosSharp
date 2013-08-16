@@ -137,7 +137,7 @@ namespace tests
             // Call the body factory which allocates memory for the ground body
             // from a pool and creates the ground box shape (also from a pool).
             // The body is also added to the world.
-            b2BodyDef def = b2BodyDef.Create();
+            b2BodyDef def = new b2BodyDef();
             def.allowSleep = true;
             def.position = b2Vec2.Zero;
             def.type = b2BodyType.b2_staticBody;
@@ -149,7 +149,7 @@ namespace tests
             // bottom
             b2EdgeShape groundBox = new b2EdgeShape();
             groundBox.Set(b2Vec2.Zero, new b2Vec2(s.Width / PTM_RATIO, 0));
-            b2FixtureDef fd = b2FixtureDef.Create();
+            b2FixtureDef fd = new b2FixtureDef();
             fd.shape = groundBox;
             groundBody.CreateFixture(fd);
 
@@ -234,7 +234,7 @@ namespace tests
 
             // Define the dynamic body.
             //Set up a 1m squared box in the physics world
-            b2BodyDef def = b2BodyDef.Create();
+            b2BodyDef def = new b2BodyDef();
             def.position = new b2Vec2(p.X / PTM_RATIO, p.Y / PTM_RATIO);
             def.type = b2BodyType.b2_dynamicBody;
             b2Body body = _world.CreateBody(def);
@@ -243,7 +243,7 @@ namespace tests
             dynamicBox.SetAsBox(.5f, .5f); //These are mid points for our 1m box
 
             // Define the dynamic body fixture.
-            b2FixtureDef fd = b2FixtureDef.Create();
+            b2FixtureDef fd = new b2FixtureDef();
             fd.shape = dynamicBox;
             fd.density = 1f;
             fd.friction = 0.3f;

@@ -13,7 +13,7 @@ namespace Box2D.TestBed.Tests
         public CompoundShapes()
         {
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(0.0f, 0.0f);
                 b2Body body = m_world.CreateBody(bd);
 
@@ -35,7 +35,7 @@ namespace Box2D.TestBed.Tests
                 for (int i = 0; i < 10; ++i)
                 {
                     float x = Rand.RandomFloat(-0.1f, 0.1f);
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
                     bd.position.Set(x + 5.0f, 1.05f + 2.5f * i);
                     bd.angle = Rand.RandomFloat(-b2Settings.b2_pi, b2Settings.b2_pi);
@@ -55,7 +55,7 @@ namespace Box2D.TestBed.Tests
                 for (int i = 0; i < 10; ++i)
                 {
                     float x = Rand.RandomFloat(-0.1f, 0.1f);
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
                     bd.position.Set(x - 5.0f, 1.05f + 2.5f * i);
                     bd.angle = Rand.RandomFloat(-b2Settings.b2_pi, b2Settings.b2_pi);
@@ -91,7 +91,7 @@ namespace Box2D.TestBed.Tests
                 for (int i = 0; i < 10; ++i)
                 {
                     float x = Rand.RandomFloat(-0.1f, 0.1f);
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
                     bd.position.Set(x, 2.05f + 2.5f * i);
                     bd.angle = 0.0f;
@@ -111,7 +111,7 @@ namespace Box2D.TestBed.Tests
                 b2PolygonShape right = new b2PolygonShape();
                 right.SetAsBox(0.15f, 2.7f, new b2Vec2(1.45f, 2.35f), -0.2f);
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(0.0f, 2.0f);
                 b2Body body = m_world.CreateBody(bd);

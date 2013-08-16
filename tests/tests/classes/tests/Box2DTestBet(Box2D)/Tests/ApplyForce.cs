@@ -19,7 +19,7 @@ namespace Box2D.TestBed.Tests
 
             b2Body ground;
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position = new b2Vec2(0.0f, 20.0f);
                 ground = m_world.CreateBody(bd);
 
@@ -79,7 +79,7 @@ namespace Box2D.TestBed.Tests
                 sd2.shape = poly2;
                 sd2.density = 2.0f;
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.angularDamping = 5.0f;
                 bd.linearDamping = 0.1f;
@@ -103,7 +103,7 @@ namespace Box2D.TestBed.Tests
 
                 for (int i = 0; i < 10; ++i)
                 {
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
 
                     bd.position = new b2Vec2(0.0f, 5.0f + 1.54f * i);

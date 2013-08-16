@@ -16,7 +16,7 @@ namespace Box2D.TestBed.Tests
         public SensorTest()
         {
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 {
@@ -52,7 +52,7 @@ namespace Box2D.TestBed.Tests
 
                 for (int i = 0; i < e_count; ++i)
                 {
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
                     bd.position.Set(-10.0f + 3.0f * i, 20.0f);
                     bd.userData = m_touching[i];

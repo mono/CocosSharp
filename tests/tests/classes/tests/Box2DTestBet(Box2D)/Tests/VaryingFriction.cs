@@ -13,7 +13,7 @@ namespace Box2D.TestBed.Tests
         public VaryingFriction()
         {
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -25,7 +25,7 @@ namespace Box2D.TestBed.Tests
                 b2PolygonShape shape = new b2PolygonShape();
                 shape.SetAsBox(13.0f, 0.25f);
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(-4.0f, 22.0f);
                 bd.angle = -0.25f;
 
@@ -37,7 +37,7 @@ namespace Box2D.TestBed.Tests
                 b2PolygonShape shape = new b2PolygonShape();
                 shape.SetAsBox(0.25f, 1.0f);
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(10.5f, 19.0f);
 
                 b2Body ground = m_world.CreateBody(bd);
@@ -48,7 +48,7 @@ namespace Box2D.TestBed.Tests
                 b2PolygonShape shape = new b2PolygonShape();
                 shape.SetAsBox(13.0f, 0.25f);
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(4.0f, 14.0f);
                 bd.angle = 0.25f;
 
@@ -60,7 +60,7 @@ namespace Box2D.TestBed.Tests
                 b2PolygonShape shape = new b2PolygonShape();
                 shape.SetAsBox(0.25f, 1.0f);
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(-10.5f, 11.0f);
 
                 b2Body ground = m_world.CreateBody(bd);
@@ -71,7 +71,7 @@ namespace Box2D.TestBed.Tests
                 b2PolygonShape shape = new b2PolygonShape();
                 shape.SetAsBox(13.0f, 0.25f);
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(-4.0f, 6.0f);
                 bd.angle = -0.25f;
 
@@ -91,7 +91,7 @@ namespace Box2D.TestBed.Tests
 
                 for (int i = 0; i < 5; ++i)
                 {
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
                     bd.position.Set(-15.0f + 4.0f * i, 28.0f);
                     b2Body body = m_world.CreateBody(bd);

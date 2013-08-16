@@ -15,7 +15,7 @@ namespace Box2D.TestBed.Tests
         {
             b2Body ground;
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -32,7 +32,7 @@ namespace Box2D.TestBed.Tests
                 b2CircleShape shape = new b2CircleShape();
                 shape.Radius = 0.5f;
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
 
                 b2RevoluteJointDef rjd = new b2RevoluteJointDef();
@@ -61,7 +61,7 @@ namespace Box2D.TestBed.Tests
                 b2CircleShape circle_shape = new b2CircleShape();
                 circle_shape.Radius = 3.0f;
 
-                b2BodyDef circle_bd  = b2BodyDef.Create();
+                b2BodyDef circle_bd  = new b2BodyDef();
                 circle_bd.type = b2BodyType.b2_dynamicBody;
                 circle_bd.position.Set(5.0f, 30.0f);
 
@@ -76,7 +76,7 @@ namespace Box2D.TestBed.Tests
                 b2PolygonShape polygon_shape = new b2PolygonShape();
                 polygon_shape.SetAsBox(10.0f, 0.2f, new b2Vec2(-10.0f, 0.0f), 0.0f);
 
-                b2BodyDef polygon_bd  = b2BodyDef.Create();
+                b2BodyDef polygon_bd  = new b2BodyDef();
                 polygon_bd.position.Set(20.0f, 10.0f);
                 polygon_bd.type = b2BodyType.b2_dynamicBody;
                 polygon_bd.bullet = true;
@@ -93,7 +93,7 @@ namespace Box2D.TestBed.Tests
 
             // Tests mass computation of a small object far from the origin
             {
-                b2BodyDef bodyDef  = b2BodyDef.Create();
+                b2BodyDef bodyDef  = new b2BodyDef();
                 bodyDef.type = b2BodyType.b2_dynamicBody;
                 b2Body body = m_world.CreateBody(bodyDef);
 

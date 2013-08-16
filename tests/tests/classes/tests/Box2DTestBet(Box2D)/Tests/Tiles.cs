@@ -19,7 +19,7 @@ namespace Box2D.TestBed.Tests
 
             {
                 float a = 0.5f;
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.y = -a;
                 b2Body ground = m_world.CreateBody(bd);
 
@@ -77,7 +77,7 @@ namespace Box2D.TestBed.Tests
 
                     for (int j = i; j < e_count; ++j)
                     {
-                        b2BodyDef bd  = b2BodyDef.Create();
+                        b2BodyDef bd  = new b2BodyDef();
                         bd.type = b2BodyType.b2_dynamicBody;
                         bd.position = y;
 

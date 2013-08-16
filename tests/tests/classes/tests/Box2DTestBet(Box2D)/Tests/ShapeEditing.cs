@@ -14,7 +14,7 @@ namespace Box2D.TestBed.Tests
         public ShapeEditing()
         {
             {
-                b2BodyDef bd1  = b2BodyDef.Create();
+                b2BodyDef bd1  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd1);
 
                 b2EdgeShape shape1 = new b2EdgeShape();
@@ -22,7 +22,7 @@ namespace Box2D.TestBed.Tests
                 ground.CreateFixture(shape1, 0.0f);
             }
 
-            b2BodyDef bd  = b2BodyDef.Create();
+            b2BodyDef bd  = new b2BodyDef();
             bd.type = b2BodyType.b2_dynamicBody;
             bd.position.Set(0.0f, 10.0f);
             m_body = m_world.CreateBody(bd);

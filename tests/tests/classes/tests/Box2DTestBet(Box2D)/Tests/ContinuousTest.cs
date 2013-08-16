@@ -14,7 +14,7 @@ namespace Box2D.TestBed.Tests
         public ContinuousTest()
         {
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(0.0f, 0.0f);
                 b2Body body = m_world.CreateBody(bd);
 
@@ -30,7 +30,7 @@ namespace Box2D.TestBed.Tests
 
 #if true
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(0.0f, 20.0f);
                 //bd.angle = 0.1f;
@@ -48,7 +48,7 @@ namespace Box2D.TestBed.Tests
             }
 #else
         {
-            b2BodyDef bd  = b2BodyDef.Create();
+            b2BodyDef bd  = new b2BodyDef();
             bd.type = b2BodyType.b2_dynamicBody;
             bd.position.Set(0.0f, 2.0f);
             b2Body body = m_world.CreateBody(bd);

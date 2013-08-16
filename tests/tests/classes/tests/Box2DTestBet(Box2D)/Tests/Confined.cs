@@ -16,7 +16,7 @@ namespace Box2D.TestBed.Tests
         public Confined()
         {
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 b2Body ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -52,7 +52,7 @@ namespace Box2D.TestBed.Tests
             {
                 for (int i = 0; i < e_rowCount; ++i)
                 {
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
                     bd.position.Set(-10.0f + (2.1f * j + 1.0f + 0.01f * i) * radius, (2.0f * i + 1.0f) * radius);
                     b2Body body = m_world.CreateBody(bd);
@@ -77,7 +77,7 @@ namespace Box2D.TestBed.Tests
             fd.friction = 0.0f;
 
             b2Vec2 p = new b2Vec2(Rand.RandomFloat(), 3.0f + Rand.RandomFloat());
-            b2BodyDef bd  = b2BodyDef.Create();
+            b2BodyDef bd  = new b2BodyDef();
             bd.type = b2BodyType.b2_dynamicBody;
             bd.position = p;
             //bd.allowSleep = false;

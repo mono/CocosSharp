@@ -19,7 +19,7 @@ namespace Box2D.TestBed.Tests
 
             b2Body ground = null;
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 ground = m_world.CreateBody(bd);
 
                 b2EdgeShape shape = new b2EdgeShape();
@@ -76,7 +76,7 @@ namespace Box2D.TestBed.Tests
 
             // Teeter
             {
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.position.Set(140.0f, 1.0f);
                 bd.type = b2BodyType.b2_dynamicBody;
                 b2Body body = m_world.CreateBody(bd);
@@ -111,7 +111,7 @@ namespace Box2D.TestBed.Tests
                 b2Body prevBody = ground;
                 for (int i = 0; i < N; ++i)
                 {
-                    b2BodyDef bd  = b2BodyDef.Create();
+                    b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
                     bd.position.Set(161.0f + 2.0f * i, -0.125f);
                     b2Body body = m_world.CreateBody(bd);
@@ -135,7 +135,7 @@ namespace Box2D.TestBed.Tests
                 box.SetAsBox(0.5f, 0.5f);
 
                 b2Body body = null;
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
 
                 bd.position.Set(230.0f, 0.5f);
@@ -174,7 +174,7 @@ namespace Box2D.TestBed.Tests
                 b2CircleShape circle = new b2CircleShape();
                 circle.Radius = 0.4f;
 
-                b2BodyDef bd  = b2BodyDef.Create();
+                b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position.Set(0.0f, 1.0f);
                 m_car = m_world.CreateBody(bd);
