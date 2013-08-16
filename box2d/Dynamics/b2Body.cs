@@ -35,7 +35,7 @@ namespace Box2D.Dynamics
     }
 
 
-    public class b2Body
+    public class b2Body : IComparable
     {
         protected b2BodyType m_type;
         public b2BodyType BodyType
@@ -216,7 +216,7 @@ namespace Box2D.Dynamics
         {
             get
             {
-                return m_I + m_mass * b2Math.b2Dot(Sweep.localCenter, Sweep.localCenter);
+                return m_I + m_mass * Sweep.localCenter.LengthSquared;
             }
         }
         public float InvertedI
@@ -258,6 +258,24 @@ namespace Box2D.Dynamics
             get { return (m_userData); }
             set { m_userData = value; }
         }
+
+        #region IComparable Members
+
+        public int CompareTo(object obj)
+        {
+            b2Body b2 = obj as b2Body;
+            if (b2 == null)
+            {
+                return (-1);
+            }
+            if (BodyType != b2.BodyType)
+            {
+                return (BodyType.CompareTo(b2.BodyType));
+            }
+            return (obj == this ? 0 : -1);
+        }
+
+        #endregion
 
         public b2Body(b2BodyDef bd, b2World world)
         {
@@ -951,5 +969,6 @@ namespace Box2D.Dynamics
             }
             System.Diagnostics.Debug.WriteLine("}");
         }
+
     }
 }
