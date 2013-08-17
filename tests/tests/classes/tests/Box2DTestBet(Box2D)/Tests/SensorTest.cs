@@ -55,7 +55,7 @@ namespace Box2D.TestBed.Tests
                     b2BodyDef bd  = new b2BodyDef();
                     bd.type = b2BodyType.b2_dynamicBody;
                     bd.position.Set(-10.0f + 3.0f * i, 20.0f);
-                    bd.userData = m_touching[i];
+                    bd.userData = i; //  m_touching[i];
 
                     m_touching[i] = false;
                     m_bodies[i] = m_world.CreateBody(bd);
@@ -76,8 +76,7 @@ namespace Box2D.TestBed.Tests
                 object userData = fixtureB.Body.UserData;
                 if (userData != null)
                 {
-                    bool touching = (bool) userData;
-                    touching = true;
+                    m_touching[(int)userData] = true;
                 }
             }
 
@@ -86,8 +85,7 @@ namespace Box2D.TestBed.Tests
                 object userData = fixtureA.Body.UserData;
                 if (userData != null)
                 {
-                    bool touching = (bool) userData;
-                    touching = true;
+                    m_touching[(int)userData] = true;
                 }
             }
         }
@@ -103,8 +101,7 @@ namespace Box2D.TestBed.Tests
                 object userData = fixtureB.Body.UserData;
                 if (userData != null)
                 {
-                    bool touching = (bool) userData;
-                    touching = false;
+                    m_touching[(int)userData] = false;
                 }
             }
 
@@ -113,8 +110,7 @@ namespace Box2D.TestBed.Tests
                 object userData = fixtureA.Body.UserData;
                 if (userData != null)
                 {
-                    bool touching = (bool) userData;
-                    touching = false;
+                    m_touching[(int)userData] = false;
                 }
             }
         }

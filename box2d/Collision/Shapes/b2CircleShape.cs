@@ -61,8 +61,14 @@ namespace Box2D.Collision.Shapes
 
         public override bool TestPoint(b2Transform transform, b2Vec2 p)
         {
-            b2Vec2 center = transform.p + b2Math.b2Mul(transform.q, m_p);
-            b2Vec2 d = p - center;
+            b2Vec2 tx = b2Math.b2Mul(transform.q, m_p);
+            b2Vec2 center;
+            center.x = transform.p.x + tx.x;
+            center.y = transform.p.y + tx.y;
+//            b2Vec2 center = transform.p + tx;
+            b2Vec2 d; // = p - center;
+            d.x = p.x - center.x;
+            d.y = p.y - center.y;
             return d.LengthSquared <= m_radius * m_radius;
         }
 
@@ -75,13 +81,23 @@ namespace Box2D.Collision.Shapes
         {
             output = b2RayCastOutput.Zero;
 
-            b2Vec2 position = transform.p + b2Math.b2Mul(transform.q, m_p);
-            b2Vec2 s = input.p1 - position;
+            b2Vec2 tx = b2Math.b2Mul(transform.q, m_p);
+//            b2Vec2 position = transform.p + tx;
+            b2Vec2 position;
+            position.x = transform.p.x + tx.x;
+            position.y = transform.p.y + tx.y;
+//            b2Vec2 s = input.p1 - position;
+            b2Vec2 s;
+            s.x = input.p1.x - position.x;
+            s.y = input.p1.y - position.y;
             float b = s.LengthSquared - m_radius * m_radius;
 
             // Solve quadratic equation.
-            b2Vec2 r = input.p2 - input.p1;
-            float c = b2Math.b2Dot(ref s, ref r);
+            b2Vec2 r;
+            r.x = input.p2.x - input.p1.x;
+            r.y = input.p2.y - input.p1.y;
+//            b2Vec2 r = input.p2 - input.p1;
+            float c = s.x * r.x + s.y + r.y; // b2Math.b2Dot(ref s, ref r);
             float rr = r.LengthSquared; //  b2Math.b2Dot(r, r);
             float sigma = c * c - rr * b;
 
@@ -99,7 +115,9 @@ namespace Box2D.Collision.Shapes
             {
                 a /= rr;
                 output.fraction = a;
-                output.normal = s + a * r;
+                output.normal.x = s.x + a * r.x;
+                output.normal.y = s.y + a * r.y;
+//                output.normal = s + a * r;
                 output.normal.Normalize();
                 return true;
             }
