@@ -11,6 +11,19 @@ namespace Box2D.TestBed.Tests
 {
     public class AddPair : Test
     {
+        private static bool _DoCircle = false;
+
+        public override void Keyboard(char key)
+        {
+            if (key == 'c')
+            {
+                _DoCircle = true;
+            }
+            else if (key == 'b')
+            {
+                _DoCircle = false;
+            }
+        }
 
         public AddPair()
         {
@@ -36,8 +49,17 @@ namespace Box2D.TestBed.Tests
             }
 
             {
-                b2PolygonShape shape = new b2PolygonShape();
-                shape.SetAsBox(1.5f, 1.5f);
+                b2Shape shape = null;
+                if (_DoCircle)
+                {
+                    shape = new b2CircleShape();
+                    ((b2CircleShape)shape).Radius = 1.5f;
+                }
+                else
+                {
+                    shape = new b2PolygonShape();
+                    ((b2PolygonShape)shape).SetAsBox(1.6f, 1.6f);
+                }
                 b2BodyDef bd  = new b2BodyDef();
                 bd.type = b2BodyType.b2_dynamicBody;
                 bd.position = new b2Vec2(-40.0f, 5.0f);

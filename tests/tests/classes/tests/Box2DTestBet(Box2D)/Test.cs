@@ -202,6 +202,8 @@ namespace Box2D.TestBed
             m_world.SetDestructionListener(m_destructionListener);
             m_world.SetContactListener(this);
             m_world.SetDebugDraw(m_debugDraw);
+            m_world.SetContinuousPhysics(true);
+            m_world.SetWarmStarting(true);
 
             m_bombSpawning = false;
 
@@ -373,7 +375,7 @@ namespace Box2D.TestBed
                 int bodyCount = m_world.BodyCount;
                 int contactCount = m_world.ContactCount;
                 int jointCount = m_world.JointCount;
-                m_debugDraw.DrawString(5, m_textLine, "bodies/contacts/joints = {0}{1}{2}", bodyCount, contactCount,
+                m_debugDraw.DrawString(5, m_textLine, "bodies/contacts/joints = {0}/{1}/{2}", bodyCount, contactCount,
                                        jointCount);
                 m_textLine += 15;
 
@@ -381,7 +383,7 @@ namespace Box2D.TestBed
                 int height = m_world.GetTreeHeight();
                 int balance = m_world.GetTreeBalance();
                 float quality = m_world.GetTreeQuality();
-                m_debugDraw.DrawString(5, m_textLine, "proxies/height/balance/quality = {0}{1}{2}{3}", proxyCount,
+                m_debugDraw.DrawString(5, m_textLine, "proxies/height/balance/quality = {0}/{1}/{2}/{3}", proxyCount,
                                        height, balance, quality);
                 m_textLine += 15;
             }
