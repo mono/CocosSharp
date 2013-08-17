@@ -33,8 +33,9 @@ namespace Box2D.Common
 
         /// Get the interpolated transform at a specific time.
         /// @param beta is a factor in [0,1], where 0 indicates alpha0.
-        public void GetTransform(ref b2Transform xfb, float beta)
+        public void GetTransform(out b2Transform xfb, float beta)
         {
+            xfb = new b2Transform();
             xfb.p = (1.0f - beta) * c0 + beta * c;
             float angle = (1.0f - beta) * a0 + beta * a;
             xfb.q.Set(angle);
