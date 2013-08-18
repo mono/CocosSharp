@@ -37,8 +37,8 @@ namespace Box2D.Collision
 		// TODO_ERIN might not need to return the separation
 		
 		public float Initialize(ref b2SimplexCache cache,
-		                        ref b2DistanceProxy proxyA, ref b2Sweep sweepA,
-		                        ref b2DistanceProxy proxyB, ref b2Sweep sweepB,
+		                        b2DistanceProxy proxyA, ref b2Sweep sweepA,
+		                        b2DistanceProxy proxyB, ref b2Sweep sweepB,
 		                        float t1)
 		{
 			m_proxyA = proxyA;
@@ -49,9 +49,9 @@ namespace Box2D.Collision
 			m_sweepA = sweepA;
 			m_sweepB = sweepB;
 			
-			b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
-			m_sweepA.GetTransform(ref xfA, t1);
-			m_sweepB.GetTransform(ref xfB, t1);
+			b2Transform xfA, xfB;
+			m_sweepA.GetTransform(out xfA, t1);
+			m_sweepB.GetTransform(out xfB, t1);
 			
 			if (count == 1)
 			{
@@ -124,9 +124,9 @@ namespace Box2D.Collision
 		
 		public float FindMinSeparation(ref int indexA, ref int indexB, float t)
 		{
-			b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
-			m_sweepA.GetTransform(ref xfA,t);
-			m_sweepB.GetTransform(ref xfB,t);
+			b2Transform xfA, xfB;
+			m_sweepA.GetTransform(out xfA,t);
+			m_sweepB.GetTransform(out xfB,t);
 			
 			switch (m_type)
 			{
@@ -192,9 +192,9 @@ namespace Box2D.Collision
 		
 		public float Evaluate(int indexA, int indexB, float t)
 		{
-			b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
-			m_sweepA.GetTransform(ref xfA, t);
-			m_sweepB.GetTransform(ref xfB, t);
+			b2Transform xfA, xfB;
+			m_sweepA.GetTransform(out xfA, t);
+			m_sweepB.GetTransform(out xfB, t);
 			
 			switch (m_type)
 			{
@@ -313,8 +313,8 @@ namespace Box2D.Collision
 			output.state = b2ImpactState.e_unknown;
 			output.t = input.tMax;
 			
-			b2DistanceProxy proxyA = input.proxyA.Copy();
-			b2DistanceProxy proxyB = input.proxyB.Copy();
+			b2DistanceProxy proxyA = input.proxyA;
+			b2DistanceProxy proxyB = input.proxyB;
 			
 			b2Sweep sweepA = input.sweepA;
 			b2Sweep sweepB = input.sweepB;
@@ -346,9 +346,9 @@ namespace Box2D.Collision
 			// This loop terminates when an axis is repeated (no progress is made).
 			while (true)
 			{
-				b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
-				sweepA.GetTransform(ref xfA, t1);
-				sweepB.GetTransform(ref xfB, t1);
+				b2Transform xfA, xfB;
+				sweepA.GetTransform(out xfA, t1);
+				sweepB.GetTransform(out xfB, t1);
 				
 				// Get the distance between shapes. We can also use the results
 				// to get a separating axis.
@@ -376,7 +376,7 @@ namespace Box2D.Collision
 				
 				// Initialize the separating axis.
 				b2SeparationFunction fcn = new b2SeparationFunction();
-				fcn.Initialize(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, t1);
+				fcn.Initialize(ref cache, proxyA, ref sweepA, proxyB, ref sweepB, t1);
 				#if false
 				// Dump the curve seen by the root finder
 				{

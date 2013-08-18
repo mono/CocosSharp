@@ -19,7 +19,7 @@ namespace Box2D.Common
 #endif
         public static float b2MixFriction(float friction1, float friction2)
         {
-            return (friction1 * friction2);
+            return (float)Math.Sqrt(friction1 * friction2);
         }
 
         /// Restitution mixing law. The idea is allow for anything to bounce off an inelastic surface.
