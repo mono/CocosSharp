@@ -81,6 +81,8 @@ namespace Cocos2D
         private CCLabelAtlas m_pUpdateTimeLabel;
         private CCLabelAtlas m_pDrawTimeLabel;
         private CCLabelAtlas m_pDrawsLabel;
+        private CCLabelAtlas m_pMemoryLabel;
+        private CCLabelAtlas m_pGCLabel;
 
         // Stopwatch for measure the time.
         Stopwatch m_pStopwatch;
@@ -1145,11 +1147,28 @@ namespace Cocos2D
             m_pDrawsLabel.InitWithString("000", texture, 12, 32, '.');
             m_pDrawsLabel.Scale = factor;
 
+            m_pMemoryLabel = new CCLabelAtlas();
+            m_pMemoryLabel.SetIgnoreContentScaleFactor(true);
+            m_pMemoryLabel.InitWithString("0", texture, 12, 32, '.');
+            m_pMemoryLabel.Scale = factor;
+            m_pMemoryLabel.Color = new CCColor3B(0, 0, 255);
+
+            m_pGCLabel = new CCLabelAtlas();
+            m_pGCLabel.SetIgnoreContentScaleFactor(true);
+            m_pGCLabel.InitWithString("0", texture, 12, 32, '.');
+            m_pGCLabel.Scale = factor;
+            m_pGCLabel.Color = new CCColor3B(255, 0, 0);
+
+            m_pMemoryLabel.Position = new CCPoint(0, 85 * factor) + pos;
+            m_pGCLabel.Position = new CCPoint(0, 68 * factor) + pos;
             m_pDrawsLabel.Position = new CCPoint(0, 51 * factor) + pos;
             m_pUpdateTimeLabel.Position = new CCPoint(0, 34 * factor) + pos;
             m_pDrawTimeLabel.Position = new CCPoint(0, 17 * factor) + pos;
             m_pFPSLabel.Position = pos;
         }
+
+        private WeakReference _wk = new WeakReference(new object());
+        private int _GCCount;  
 
         // display the FPS using a LabelAtlas
         // updates the FPS every frame
@@ -1157,6 +1176,12 @@ namespace Cocos2D
         {
             if (m_bDisplayStats)
             {
+                if (!_wk.IsAlive)
+                {
+                    _GCCount++;
+                    _wk = new WeakReference(new object());
+                }
+
                 if (m_pFPSLabel != null && m_pUpdateTimeLabel != null && m_pDrawsLabel != null)
                 {
                     if (m_fAccumDt > CCMacros.CCDirectorStatsUpdateIntervalInSeconds)
@@ -1169,12 +1194,17 @@ namespace Cocos2D
 
                         m_fAccumDt = m_fAccumDraw = m_fAccumUpdate = 0;
                         m_uDrawCount = m_uUpdateCount = 0;
+
+                        m_pMemoryLabel.Text = String.Format("{0}", GC.GetTotalMemory(false));
+                        m_pGCLabel.Text = String.Format("{0}", _GCCount);
                     }
             
                     m_pDrawsLabel.Visit();
                     m_pFPSLabel.Visit();
                     m_pUpdateTimeLabel.Visit();
                     m_pDrawTimeLabel.Visit();
+                    m_pMemoryLabel.Visit();
+                    m_pGCLabel.Visit();
                 }
             }    
         }
