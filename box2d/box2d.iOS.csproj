@@ -158,6 +158,7 @@
     <Compile Include="Dynamics\Joints\b2WeldJointDef.cs" />
     <Compile Include="Dynamics\Joints\b2WheelJoint.cs" />
     <Compile Include="Dynamics\Joints\b2WheelJointDef.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rope\b2Rope.cs" />
     <Compile Include="Rope\b2RopeDef.cs" />
     <Compile Include="b2FlagExtensions.cs" />
