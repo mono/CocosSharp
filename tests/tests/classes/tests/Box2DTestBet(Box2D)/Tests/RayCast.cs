@@ -355,7 +355,7 @@ namespace Box2D.TestBed.Tests
 
         public override void Step(Settings settings)
         {
-            bool advanceRay = settings.pause || settings.singleStep;
+            bool advanceRay = !settings.pause || settings.singleStep;
 
             base.Step(settings);
 
