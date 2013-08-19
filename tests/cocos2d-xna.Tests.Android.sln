@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.Android", "..\cocos2d\cocos2d.Android.csproj", "{64725C5B-A1BC-4974-8538-A1158BABF572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.Android", "tests\tests.Android.csproj", "{4ef34363-1190-4444-9f4b-7a262b397ee8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.Android", "tests\tests.Android.csproj", "{4EF34363-1190-4444-9F4B-7A262B397EE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Android", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj", "{BA9476CF-99BA-4D03-92F2-73D2C5E58883}"
 EndProject
@@ -19,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Debug|Android.ActiveCfg = Debug|Any CPU
-		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Debug|Android.Build.0 = Debug|Any CPU
-		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Release|Android.ActiveCfg = Release|Any CPU
-		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Release|Android.Build.0 = Release|Any CPU
-		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Debug|Android.ActiveCfg = Debug|Any CPU
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Debug|Android.Build.0 = Debug|Any CPU
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -35,24 +27,14 @@ Global
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Release|Android.Build.0 = Release|Any CPU
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64725C5B-A1BC-4974-8538-A1158BABF572}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4ef34363-1190-4444-9f4b-7a262b397ee8}.Debug|Android.ActiveCfg = Debug|Any CPU
-		{4ef34363-1190-4444-9f4b-7a262b397ee8}.Debug|Android.Build.0 = Debug|Any CPU
-		{4ef34363-1190-4444-9f4b-7a262b397ee8}.Debug|Android.Deploy.0 = Debug|Any CPU
-		{4ef34363-1190-4444-9f4b-7a262b397ee8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4ef34363-1190-4444-9f4b-7a262b397ee8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4ef34363-1190-4444-9f4b-7a262b397ee8}.Release|Android.ActiveCfg = Release|Any CPU
-		{4ef34363-1190-4444-9f4b-7a262b397ee8}.Release|Android.Build.0 = Release|Any CPU
-		{4ef34363-1190-4444-9f4b-7a262b397ee8}.Release|Android.Deploy.0 = Release|Any CPU
-		{4ef34363-1190-4444-9f4b-7a262b397ee8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4ef34363-1190-4444-9f4b-7a262b397ee8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Android.ActiveCfg = Debug|Any CPU
-		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Android.Build.0 = Debug|Any CPU
-		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Android.ActiveCfg = Release|Any CPU
-		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Android.Build.0 = Release|Any CPU
-		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF34363-1190-4444-9F4B-7A262B397EE8}.Debug|Android.ActiveCfg = Debug|Any CPU
+		{4EF34363-1190-4444-9F4B-7A262B397EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF34363-1190-4444-9F4B-7A262B397EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF34363-1190-4444-9F4B-7A262B397EE8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4EF34363-1190-4444-9F4B-7A262B397EE8}.Release|Android.ActiveCfg = Release|Any CPU
+		{4EF34363-1190-4444-9F4B-7A262B397EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF34363-1190-4444-9F4B-7A262B397EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF34363-1190-4444-9F4B-7A262B397EE8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{BA9476CF-99BA-4D03-92F2-73D2C5E58883}.Debug|Android.ActiveCfg = Debug|Any CPU
 		{BA9476CF-99BA-4D03-92F2-73D2C5E58883}.Debug|Android.Build.0 = Debug|Any CPU
 		{BA9476CF-99BA-4D03-92F2-73D2C5E58883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -61,11 +43,27 @@ Global
 		{BA9476CF-99BA-4D03-92F2-73D2C5E58883}.Release|Android.Build.0 = Release|Any CPU
 		{BA9476CF-99BA-4D03-92F2-73D2C5E58883}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA9476CF-99BA-4D03-92F2-73D2C5E58883}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = tests\tests.Android.csproj
+		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Debug|Android.ActiveCfg = Debug|Any CPU
+		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Debug|Android.Build.0 = Debug|Any CPU
+		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Release|Android.ActiveCfg = Release|Any CPU
+		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Release|Android.Build.0 = Release|Any CPU
+		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{565129E0-4EE5-4F6F-B403-C3484C9740BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Android.ActiveCfg = Debug|Any CPU
+		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Android.Build.0 = Debug|Any CPU
+		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Android.ActiveCfg = Release|Any CPU
+		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Android.Build.0 = Release|Any CPU
+		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B81B6701-7A78-4846-BF6F-04E0591F0F38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = tests\tests.Android.csproj
 	EndGlobalSection
 EndGlobal

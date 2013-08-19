@@ -1100,6 +1100,57 @@
     <Compile Include="Game1.cs" />
     <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
     <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Box2DView.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Box2dTestBedScene.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Cocos2DDebugDraw.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\MenuLayer.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Test.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\TestEntries.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\AddPair.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\ApplyForce.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\BodyTypes.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Breakable.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Bridge.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\BulletTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Cantilever.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Car.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Chain.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CharacterCollision.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionFiltering.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionProcessing.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CompoundShapes.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Confined.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\ContinuousTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\DistanceTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Dominos.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\DumpShell.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\DynamicTreeTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\EdgeShapes.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\EdgeTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Gears.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\OneSidedPlatform.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Pinball.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\PolyCollision.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\PolyShapes.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Prismatic.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Pulleys.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Pyramid.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\RayCast.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Revolute.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Rope.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\RopeJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\SensorTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\ShapeEditing.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\SliderCrank.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\SphereStack.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\TheoJansen.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Tiles.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\TimeOfImpact.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Tumbler.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\VaryingFriction.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\VaryingRestitution.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\VerticalStack.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Web.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2374,5 +2425,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
+    <Folder Include="classes\tests\Box2DTestBet%28Box2D%29\" />
   </ItemGroup>
 </Project>

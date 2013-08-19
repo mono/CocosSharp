@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\WindowsDX\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;WINDOWS;MONOGAME</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS;MONOGAME;WINDOWSDX</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\WindowsDX\Release\</OutputPath>
-    <DefineConstants>TRACE;WINDOWS;MONOGAME</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS;MONOGAME;WINDOWSDX</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
@@ -271,9 +271,9 @@
     <Compile Include="extentions\GUI\CCScrollView\CCTableViewCell.cs" />
     <Compile Include="keypad_dispatcher\ICCKeypadDelegate.cs" />
     <Compile Include="keypad_dispatcher\CCKeypadDispatcher.cs" />
-	  <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
-	  <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
-	  <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
+    <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
+    <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
+    <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
     <Compile Include="label_nodes\CCLabelBMFont.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayer.cs" />

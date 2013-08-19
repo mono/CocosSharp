@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("box2d")]
 [assembly: AssemblyProduct("box2d")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Box2D for Cocos2D-XNA")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCopyright("Copyright © Cocos2D-XNA Team; TotallyEvil Entertainment, LLC; Xamarin, Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

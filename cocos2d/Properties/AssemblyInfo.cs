@@ -8,9 +8,35 @@ using System.Resources;
 // associated with an assembly.
 [assembly: AssemblyTitle("cocos2d-xna")]
 [assembly: AssemblyProduct("cocos2d-xna")]
-[assembly: AssemblyDescription("")]
+
+#if OUYA
+[assembly: AssemblyDescription("Cocos2D-XNA for Ouya")]
+#else
+#if WINDOWSDX
+[assembly: AssemblyDescription("Cocos2D-XNA for Windows Desktop (DX)")]
+#elif WINDOWSGL
+[assembly: AssemblyDescription("Cocos2D-XNA for Windows Desktop (OpenGL)")]
+#elif ANDROID
+[assembly: AssemblyDescription("Cocos2D-XNA for Android")]
+#elif IPHONE
+[assembly: AssemblyDescription("Cocos2D-XNA for iOS")]
+#elif WINRT
+[assembly: AssemblyDescription("Cocos2D-XNA for Windows RT")]
+#elif WINDOWS_PHONE8
+[assembly: AssemblyDescription("Cocos2D-XNA for Windows Phone 8")]
+#elif WINDOWS_PHONE
+[assembly: AssemblyDescription("Cocos2D-XNA for Windows Phone 7")]
+#elif XBOX360
+[assembly: AssemblyDescription("Cocos2D-XNA for XBox 360")]
+#elif MACOS
+[assembly: AssemblyDescription("Cocos2D-XNA for Mac OSX")]
+#else
+[assembly: AssemblyDescription("Cocos2D-XNA for Windows Desktop (XNA)")]
+#endif
+#endif
+
 [assembly: AssemblyCompany("Open Source Software Provided As-Is")]
-[assembly: AssemblyCopyright("Copyright © Various Contributors")]
+[assembly: AssemblyCopyright("Copyright © Cocos2D-XNA Team; TotallyEvil Entertainment, LLC; Xamarin, Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
