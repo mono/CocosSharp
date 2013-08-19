@@ -311,9 +311,9 @@ namespace Box2D.Dynamics
                 {
                     BodyFlags &= ~b2BodyFlags.e_awakeFlag;
                     SleepTime = 0.0f;
-                    m_linearVelocity.SetZero();
+                    m_linearVelocity = b2Vec2.Zero;
                     m_angularVelocity = 0.0f;
-                    Force.SetZero();
+                    Force = b2Vec2.Zero;
                     Torque = 0.0f;
                 }
             }
@@ -380,7 +380,7 @@ namespace Box2D.Dynamics
                 return;
             }
 
-            if (IsAwake() == false)
+            if ((BodyFlags & b2BodyFlags.e_awakeFlag) == 0)
             {
                 SetAwake(true);
             }
@@ -396,7 +396,7 @@ namespace Box2D.Dynamics
                 return;
             }
 
-            if (IsAwake() == false)
+            if ((BodyFlags & b2BodyFlags.e_awakeFlag) == 0)
             {
                 SetAwake(true);
             }
@@ -411,7 +411,7 @@ namespace Box2D.Dynamics
                 return;
             }
 
-            if (IsAwake() == false)
+            if ((BodyFlags & b2BodyFlags.e_awakeFlag) == 0)
             {
                 SetAwake(true);
             }
@@ -426,7 +426,7 @@ namespace Box2D.Dynamics
                 return;
             }
 
-            if (IsAwake() == false)
+            if ((BodyFlags & b2BodyFlags.e_awakeFlag) == 0)
             {
                 SetAwake(true);
             }
@@ -441,7 +441,7 @@ namespace Box2D.Dynamics
                 return;
             }
 
-            if (IsAwake() == false)
+            if ((BodyFlags & b2BodyFlags.e_awakeFlag) == 0)
             {
                 SetAwake(true);
             }

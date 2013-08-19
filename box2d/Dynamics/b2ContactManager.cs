@@ -161,8 +161,8 @@ namespace Box2D.Dynamics
                     c.Flags &= ~b2ContactFlags.e_filterFlag;
                 }
 
-                bool activeA = bodyA.IsAwake() && bodyA.BodyType != b2BodyType.b2_staticBody;
-                bool activeB = bodyB.IsAwake() && bodyB.BodyType != b2BodyType.b2_staticBody;
+                bool activeA = (bodyA.BodyFlags & b2BodyFlags.e_awakeFlag) != 0 && bodyA.BodyType != b2BodyType.b2_staticBody;
+                bool activeB = (bodyB.BodyFlags & b2BodyFlags.e_awakeFlag) != 0 && bodyB.BodyType != b2BodyType.b2_staticBody;
 
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if (activeA == false && activeB == false)

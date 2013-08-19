@@ -33,11 +33,12 @@ namespace Box2D.TestBed
 
         public void tick(float dt)
         {
-            m_test.Step(settings);
         }
 
         public override void Draw()
         {
+            m_test.Step(settings);
+
             base.Draw();
 
             m_test.InternalDraw(settings);
