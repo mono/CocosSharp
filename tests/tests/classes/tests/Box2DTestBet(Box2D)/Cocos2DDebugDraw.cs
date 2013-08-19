@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Box2D.Collision;
 using Box2D.Common;
 using Cocos2D;
@@ -30,18 +31,17 @@ namespace Box2D.TestBed
 #endif
 
         private CCPrimitiveBatch _primitiveBatch;
-
         public Color TextColor = Color.White;
-       
         private SpriteFont _spriteFont;
-
         private List<StringData> _stringData;
+        private StringBuilder _stringBuilder;
 
         public Cocos2DDebugDraw()
         {
             _primitiveBatch = new CCPrimitiveBatch(CCDrawManager.GraphicsDevice);
             _spriteFont = CCApplication.SharedApplication.Content.Load<SpriteFont>("fonts/arial-12");
             _stringData = new List<StringData>();
+            _stringBuilder = new StringBuilder();
         }
 
         public override void DrawPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
@@ -203,8 +203,9 @@ namespace Box2D.TestBed
 
             for (int i = 0; i < _stringData.Count; i++)
             {
-                _batch.DrawString(_spriteFont, string.Format(_stringData[i].S, _stringData[i].Args),
-                                  new Vector2(_stringData[i].X, _stringData[i].Y), _stringData[i].Color);
+                _stringBuilder.Clear();
+                _stringBuilder.AppendFormat(_stringData[i].S, _stringData[i].Args);
+                _batch.DrawString(_spriteFont, _stringBuilder, new Vector2(_stringData[i].X, _stringData[i].Y), _stringData[i].Color);
             }
 
             _batch.End();

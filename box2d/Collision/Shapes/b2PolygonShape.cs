@@ -80,8 +80,8 @@ namespace Box2D.Collision.Shapes
             // Transform vertices and normals.
             for (int i = 0; i < m_vertexCount; ++i)
             {
-                Vertices[i] = b2Math.b2Mul(xf, Vertices[i]);
-                Normals[i] = b2Math.b2Mul(xf.q, Normals[i]);
+                Vertices[i] = b2Math.b2Mul(ref xf, ref Vertices[i]);
+                Normals[i] = b2Math.b2Mul(ref xf.q, ref Normals[i]);
             }
         }
 
@@ -277,12 +277,12 @@ namespace Box2D.Collision.Shapes
 
         public override b2AABB ComputeAABB(ref b2Transform xf, int childIndex)
         {
-            b2Vec2 lower = b2Math.b2Mul(xf, Vertices[0]);
+            b2Vec2 lower = b2Math.b2Mul(ref xf, ref Vertices[0]);
             b2Vec2 upper = lower;
 
             for (int i = 1; i < m_vertexCount; ++i)
             {
-                b2Vec2 v = b2Math.b2Mul(xf, Vertices[i]);
+                b2Vec2 v = b2Math.b2Mul(ref xf, ref Vertices[i]);
                 lower = b2Math.b2Min(lower, v);
                 upper = b2Math.b2Max(upper, v);
             }

@@ -63,7 +63,7 @@ namespace Box2D.Collision
 
         public void MoveProxy(int proxyId, b2AABB aabb, b2Vec2 displacement)
         {
-            bool buffer = m_tree.MoveProxy(proxyId, aabb, displacement);
+            bool buffer = m_tree.MoveProxy(proxyId, ref aabb, displacement);
             if (buffer)
             {
                 BufferMove(proxyId);

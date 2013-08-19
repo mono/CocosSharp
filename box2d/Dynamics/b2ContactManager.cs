@@ -129,10 +129,10 @@ namespace Box2D.Dynamics
             b2Contact c = m_contactList;
             while (c != null)
             {
-                b2Fixture fixtureA = c.GetFixtureA();
-                b2Fixture fixtureB = c.GetFixtureB();
-                int indexA = c.GetChildIndexA();
-                int indexB = c.GetChildIndexB();
+                b2Fixture fixtureA = c.FixtureA;
+                b2Fixture fixtureB = c.FixtureB;
+                int indexA = c.m_indexA;
+                int indexB = c.m_indexB;
                 b2Body bodyA = fixtureA.Body;
                 b2Body bodyB = fixtureB.Body;
 
@@ -143,7 +143,7 @@ namespace Box2D.Dynamics
                     if (bodyB.ShouldCollide(bodyA) == false)
                     {
                         b2Contact cNuke = c;
-                        c = cNuke.GetNext();
+                        c = cNuke.Next;
                         Destroy(cNuke);
                         continue;
                     }
@@ -152,7 +152,7 @@ namespace Box2D.Dynamics
                     if (m_contactFilter != null && m_contactFilter.ShouldCollide(fixtureA, fixtureB) == false)
                     {
                         b2Contact cNuke = c;
-                        c = cNuke.GetNext();
+                        c = cNuke.Next;
                         Destroy(cNuke);
                         continue;
                     }
@@ -167,26 +167,26 @@ namespace Box2D.Dynamics
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if (activeA == false && activeB == false)
                 {
-                    c = c.GetNext();
+                    c = c.Next;
                     continue;
                 }
 
-                int proxyIdA = fixtureA.Proxies[indexA].proxyId;
-                int proxyIdB = fixtureB.Proxies[indexB].proxyId;
+                int proxyIdA = fixtureA.m_proxies[indexA].proxyId;
+                int proxyIdB = fixtureB.m_proxies[indexB].proxyId;
                 bool overlap = m_broadPhase.TestOverlap(proxyIdA, proxyIdB);
 
                 // Here we destroy contacts that cease to overlap in the broad-phase.
                 if (overlap == false)
                 {
                     b2Contact cNuke = c;
-                    c = cNuke.GetNext();
+                    c = cNuke.Next;
                     Destroy(cNuke);
                     continue;
                 }
 
                 // The contact persists.
                 c.Update(m_contactListener);
-                c = c.GetNext();
+                c = c.Next;
             }
         }
 

@@ -427,7 +427,7 @@ namespace Box2D.Dynamics
 
                     if ((b.BodyFlags & b2BodyFlags.e_autoSleepFlag) == 0 ||
                         b.AngularVelocity * b.AngularVelocity > angTolSqr ||
-                        b2Math.b2Dot(b.LinearVelocity, b.LinearVelocity) > linTolSqr)
+                        b2Math.b2Dot(ref b.m_linearVelocity, ref b.m_linearVelocity) > linTolSqr)
                     {
                         b.SleepTime = 0.0f;
                         minSleepTime = 0.0f;
@@ -540,7 +540,7 @@ namespace Box2D.Dynamics
             float h = subStep.dt;
 
             // Integrate positions
-            for (int i = 0; i < m_bodyCount; ++i)
+            for (int i = 0, count = m_bodyCount; i < count; ++i)
             {
                 b2Vec2 c = m_positions[i].c;
                 float a = m_positions[i].a;
@@ -549,7 +549,7 @@ namespace Box2D.Dynamics
 
                 // Check for large velocities
                 b2Vec2 translation = h * v;
-                if (b2Math.b2Dot(translation, translation) > b2Settings.b2_maxTranslationSquared)
+                if (b2Math.b2Dot(ref translation, ref translation) > b2Settings.b2_maxTranslationSquared)
                 {
                     float ratio = b2Settings.b2_maxTranslation / translation.Length;
                     v *= ratio;
@@ -585,6 +585,9 @@ namespace Box2D.Dynamics
             contactSolver.Free();
         }
 
+        //Memory Optimization
+        b2ContactImpulse _impulse = b2ContactImpulse.Create();
+
         public void Report(b2ContactVelocityConstraint[] constraints)
         {
             if (m_listener == null)
@@ -592,21 +595,24 @@ namespace Box2D.Dynamics
                 return;
             }
 
-            b2ContactImpulse impulse = b2ContactImpulse.Create();
-            for (int i = 0; i < m_contactCount; ++i)
+            //b2ContactImpulse impulse = b2ContactImpulse.Create();
+            var normals = _impulse.normalImpulses;
+            var tangens = _impulse.tangentImpulses;
+
+            for (int i = 0, count = m_contactCount; i < count; ++i)
             {
                 b2Contact c = m_contacts[i];
 
                 b2ContactVelocityConstraint vc = constraints[i];
 
-                impulse.count = vc.pointCount;
+                _impulse.count = vc.pointCount;
                 for (int j = 0; j < vc.pointCount; ++j)
                 {
-                    impulse.normalImpulses[j] = vc.points[j].normalImpulse;
-                    impulse.tangentImpulses[j] = vc.points[j].tangentImpulse;
+                    normals[j] = vc.points[j].normalImpulse;
+                    tangens[j] = vc.points[j].tangentImpulse;
                 }
 
-                m_listener.PostSolve(c, ref impulse);
+                m_listener.PostSolve(c, ref _impulse);
             }
         }
     }

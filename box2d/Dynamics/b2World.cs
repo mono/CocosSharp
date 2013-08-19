@@ -1169,7 +1169,7 @@ namespace Box2D.Dynamics
                         int count = chain.Count;
                         b2Vec2[] vertices = chain.Vertices;
 
-                        b2Vec2 v1 = b2Math.b2Mul(xf, vertices[0]);
+                        b2Vec2 v1 = b2Math.b2Mul(ref xf, ref vertices[0]);
                         for (int i = 1; i < count; ++i)
                         {
                             b2Vec2 v2 = b2Math.b2Mul(ref xf, ref vertices[i]);

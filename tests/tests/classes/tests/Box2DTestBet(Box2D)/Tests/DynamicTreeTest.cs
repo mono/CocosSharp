@@ -251,7 +251,7 @@ namespace Box2D.TestBed.Tests
                 b2AABB aabb0 = actor.aabb;
                 MoveAABB(actor.aabb);
                 b2Vec2 displacement = actor.aabb.Center - aabb0.Center;
-                m_tree.MoveProxy(actor.proxyId, actor.aabb, displacement);
+                m_tree.MoveProxy(actor.proxyId, ref actor.aabb, displacement);
                 return;
             }
         }

@@ -53,7 +53,7 @@ namespace Box2D.Dynamics
         public float Friction;
         public float Restitution;
 
-        private List<b2FixtureProxy> m_proxies = new List<b2FixtureProxy>();
+        internal List<b2FixtureProxy> m_proxies = new List<b2FixtureProxy>();
         public IList<b2FixtureProxy> Proxies
         {
             get
@@ -174,14 +174,14 @@ namespace Box2D.Dynamics
             m_proxies.Clear();
             m_proxyCount = 0;
         }
-        public virtual void Synchronize(b2BroadPhase broadPhase, b2Transform transform1, b2Transform transform2)
+        public virtual void Synchronize(b2BroadPhase broadPhase, ref b2Transform transform1, ref b2Transform transform2)
         {
             if (m_proxyCount == 0)
             {
                 return;
             }
 
-            for (int i = 0; i < m_proxyCount; ++i)
+            for (int i = 0, count = m_proxyCount; i < count; ++i)
             {
                 b2FixtureProxy proxy = m_proxies[i];
 

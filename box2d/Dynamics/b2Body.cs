@@ -71,7 +71,7 @@ namespace Box2D.Dynamics
             get { return (Sweep.localCenter); }
         }
 
-        protected b2Vec2 m_linearVelocity = b2Vec2.Zero;
+        internal b2Vec2 m_linearVelocity = b2Vec2.Zero;
         public b2Vec2 LinearVelocity
         {
             get { return (m_linearVelocity); }
@@ -250,22 +250,22 @@ namespace Box2D.Dynamics
         }
         public virtual b2Vec2 GetWorldPoint(b2Vec2 localPoint)
         {
-            return b2Math.b2Mul(Transform, localPoint);
+            return b2Math.b2Mul(ref Transform, ref localPoint);
         }
 
         public virtual b2Vec2 GetWorldVector(b2Vec2 localVector)
         {
-            return b2Math.b2Mul(Transform.q, localVector);
+            return b2Math.b2Mul(ref Transform.q, ref localVector);
         }
 
         public virtual b2Vec2 GetLocalPoint(b2Vec2 worldPoint)
         {
-            return b2Math.b2MulT(Transform, worldPoint);
+            return b2Math.b2MulT(ref Transform, ref worldPoint);
         }
 
         public virtual b2Vec2 GetLocalVector(b2Vec2 worldVector)
         {
-            return b2Math.b2MulT(Transform.q, worldVector);
+            return b2Math.b2MulT(ref Transform.q, ref worldVector);
         }
 
         public virtual b2Vec2 GetLinearVelocityFromWorldPoint(b2Vec2 worldPoint)
@@ -659,7 +659,7 @@ namespace Box2D.Dynamics
             if (m_I > 0.0f && (BodyFlags & b2BodyFlags.e_fixedRotationFlag) == 0)
             {
                 // Center the inertia about the center of mass.
-                m_I -= Mass * b2Math.b2Dot(localCenter, localCenter);
+                m_I -= Mass * b2Math.b2Dot(ref localCenter, ref localCenter);
                 Debug.Assert(m_I > 0.0f);
                 InvertedI = 1.0f / m_I;
 
@@ -673,7 +673,7 @@ namespace Box2D.Dynamics
             // Move center of mass.
             b2Vec2 oldCenter = Sweep.c;
             Sweep.localCenter = localCenter;
-            Sweep.c0 = Sweep.c = b2Math.b2Mul(Transform, Sweep.localCenter);
+            Sweep.c0 = Sweep.c = b2Math.b2Mul(ref Transform, ref Sweep.localCenter);
 
             // Update center of mass velocity.
             b2Vec2 diff = Sweep.c - oldCenter;
@@ -707,7 +707,7 @@ namespace Box2D.Dynamics
 
             if (massData.I > 0.0f && (BodyFlags & b2BodyFlags.e_fixedRotationFlag) == 0)
             {
-                m_I = massData.I - Mass * b2Math.b2Dot(massData.center, massData.center);
+                m_I = massData.I - Mass * b2Math.b2Dot(ref massData.center, ref massData.center);
                 Debug.Assert(m_I > 0.0f);
                 InvertedI = 1.0f / m_I;
             }
@@ -715,7 +715,7 @@ namespace Box2D.Dynamics
             // Move center of mass.
             b2Vec2 oldCenter = Sweep.c;
             Sweep.localCenter = massData.center;
-            Sweep.c0 = Sweep.c = b2Math.b2Mul(Transform, Sweep.localCenter);
+            Sweep.c0 = Sweep.c = b2Math.b2Mul(ref Transform, ref Sweep.localCenter);
 
             // Update center of mass velocity.
             b2Vec2 diff = Sweep.c - oldCenter;
@@ -755,7 +755,7 @@ namespace Box2D.Dynamics
             Transform.q.Set(angle);
             Transform.p = position;
 
-            Sweep.c = b2Math.b2Mul(Transform, Sweep.localCenter);
+            Sweep.c = b2Math.b2Mul(ref Transform, ref Sweep.localCenter);
             Sweep.a = angle;
 
             Sweep.c0 = Sweep.c;
@@ -764,7 +764,7 @@ namespace Box2D.Dynamics
             b2BroadPhase broadPhase = World.ContactManager.BroadPhase;
             for (b2Fixture f = FixtureList; f != null; f = f.Next)
             {
-                f.Synchronize(broadPhase, Transform, Transform);
+                f.Synchronize(broadPhase, ref Transform, ref Transform);
             }
 
             World.ContactManager.FindNewContacts();
@@ -779,7 +779,7 @@ namespace Box2D.Dynamics
             b2BroadPhase broadPhase = World.ContactManager.BroadPhase;
             for (b2Fixture f = FixtureList; f != null; f = f.Next)
             {
-                f.Synchronize(broadPhase, xf1, Transform);
+                f.Synchronize(broadPhase, ref xf1, ref Transform);
             }
         }
 

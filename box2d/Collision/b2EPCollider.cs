@@ -71,7 +71,7 @@ namespace Box2D.Collision
         {
             m_xf = b2Math.b2MulT(xfA, xfB);
 
-            m_centroidB = b2Math.b2Mul(m_xf, polygonB.Centroid);
+            m_centroidB = b2Math.b2Mul(ref m_xf, ref polygonB.Centroid);
 
             m_v0 = edgeA.Vertex0;
             m_v1 = edgeA.Vertex1;
