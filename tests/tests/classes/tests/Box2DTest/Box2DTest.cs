@@ -194,6 +194,7 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
+        /*
         public override void Draw()
         {
             //
@@ -215,6 +216,7 @@ namespace tests
 
             //kmGLPopMatrix();
         }
+        */
 
         private const int kTagForPhysicsSprite = 99999;
 
@@ -258,6 +260,7 @@ namespace tests
         public override void Update(float dt)
         {
             _world.Step(dt, 8, 1);
+            //_world.Step(dt, 10, 3);
 
             foreach (CCPhysicsSprite sprite in _batch.Children)
             {
@@ -305,7 +308,8 @@ namespace tests
             {
                 CCPoint location = touch.Location;
 
-                addNewSpriteAtPosition(location);
+                for(int i = 0; i < 50; i++)
+                    addNewSpriteAtPosition(location);
             }
         }
     }

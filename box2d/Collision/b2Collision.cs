@@ -75,7 +75,7 @@ namespace Box2D.Collision
 
                 for (int j = 0; j < manifold2.pointCount; ++j)
                 {
-                    if (manifold2.points[j].id.Equals(id))
+                    if (manifold2.points[j].id.Equals(ref id))
                     {
                         state1[i] = b2PointState.b2_persistState;
                         break;
@@ -92,7 +92,7 @@ namespace Box2D.Collision
 
                 for (int j = 0; j < manifold1.pointCount; ++j)
                 {
-                    if (manifold1.points[j].id.Equals(id))
+                    if (manifold1.points[j].id.Equals(ref id))
                     {
                         state2[i] = b2PointState.b2_persistState;
                         break;
@@ -292,7 +292,7 @@ namespace Box2D.Collision
                 flip = 0;
             }
 
-            b2ClipVertex[] incidentEdge = new b2ClipVertex[2];
+            b2ClipVertex[] incidentEdge = b2ArrayPool<b2ClipVertex>.Create(2, true);
             b2FindIncidentEdge(incidentEdge, poly1, ref xf1, edge1, poly2, ref xf2);
 
             int count1 = poly1.VertexCount;
@@ -324,21 +324,30 @@ namespace Box2D.Collision
             float sideOffset2 = b2Math.b2Dot(ref tangent, ref v12) + totalRadius;
 
             // Clip incident edge against extruded edge1 side edges.
-            b2ClipVertex[] clipPoints1 = new b2ClipVertex[2];
-            b2ClipVertex[] clipPoints2 = new b2ClipVertex[2];
+            b2ClipVertex[] clipPoints1 = b2ArrayPool<b2ClipVertex>.Create(2, true);
             int np;
 
             // Clip to box side 1
             np = b2ClipSegmentToLine(clipPoints1, incidentEdge, -tangent, sideOffset1, (byte)iv1);
 
+            b2ArrayPool<b2ClipVertex>.Free(incidentEdge);
+
             if (np < 2)
+            {
+                b2ArrayPool<b2ClipVertex>.Free(clipPoints1);
                 return;
+            }
+
+            b2ClipVertex[] clipPoints2 = b2ArrayPool<b2ClipVertex>.Create(2, true);
 
             // Clip to negative box side 1
             np = b2ClipSegmentToLine(clipPoints2, clipPoints1, tangent, sideOffset2, (byte)iv2);
 
+            b2ArrayPool<b2ClipVertex>.Free(clipPoints1);
+
             if (np < 2)
             {
+                b2ArrayPool<b2ClipVertex>.Free(clipPoints2);
                 return;
             }
 
@@ -371,20 +380,24 @@ namespace Box2D.Collision
             }
 
             manifold.pointCount = pointCount;
+
+            b2ArrayPool<b2ClipVertex>.Free(clipPoints2);
         }
 
         public static float b2EdgeSeparation(b2PolygonShape poly1, ref b2Transform xf1, int edge1,
                                       b2PolygonShape poly2, ref b2Transform xf2)
         {
-            b2Vec2[] vertices1 = poly1.Vertices;
-            b2Vec2[] normals1 = poly1.Normals;
+            b2Vec2 normal = poly1.Normals[edge1];
 
-            int count2 = poly2.VertexCount;
+            int count2 = poly2.m_vertexCount;
             b2Vec2[] vertices2 = poly2.Vertices;
 
             // Convert normal from poly1's frame into poly2's frame.
-            b2Vec2 normal1World = b2Math.b2Mul(ref xf1.q, ref normals1[edge1]);
-            b2Vec2 normal1 = b2Math.b2MulT(ref xf2.q, ref normal1World);
+            float normal1Worldx = xf1.q.c * normal.x - xf1.q.s * normal.y;
+            float normal1Worldy = xf1.q.s * normal.x + xf1.q.c * normal.y;
+
+            float normal1x = xf2.q.c * normal1Worldx + xf2.q.s * normal1Worldy;
+            float normal1y = -xf2.q.s * normal1Worldx + xf2.q.c * normal1Worldy;
 
             // Find support vertex on poly2 for -normal.
             int index = 0;
@@ -392,7 +405,10 @@ namespace Box2D.Collision
 
             for (int i = 0; i < count2; ++i)
             {
-                float dot = b2Math.b2Dot(ref vertices2[i], ref normal1);
+                var vert = vertices2[i];
+                
+                float dot = vert.x * normal1x + vert.y * normal1y;
+                
                 if (dot < minDot)
                 {
                     minDot = dot;
@@ -400,11 +416,19 @@ namespace Box2D.Collision
                 }
             }
 
-            //b2Vec2 v1 = b2Math.b2Mul(ref xf1, ref vertices1[edge1]);
-            //b2Vec2 v2 = b2Math.b2Mul(ref xf2, ref vertices2[index]);
-            //float separation = b2Math.b2Dot(v2 - v1, normal1World);
-            b2Vec2 v = b2Math.b2Mul(ref xf2, ref vertices2[index]) - b2Math.b2Mul(ref xf1, ref vertices1[edge1]);
-            float separation = b2Math.b2Dot(ref v, ref normal1World);
+            var v1e1 = poly1.Vertices[edge1];
+            var v2i = vertices2[index];
+
+            float v1x = (xf1.q.c * v1e1.x - xf1.q.s * v1e1.y) + xf1.p.x;
+            float v1y = (xf1.q.s * v1e1.x + xf1.q.c * v1e1.y) + xf1.p.y;
+
+            float v2x = (xf2.q.c * v2i.x - xf2.q.s * v2i.y) + xf2.p.x;
+            float v2y = (xf2.q.s * v2i.x + xf2.q.c * v2i.y) + xf2.p.y;
+
+            v2x -= v1x;
+            v2y -= v1y;
+
+            float separation = v2x * normal1Worldx + v2y * normal1Worldy;
 
             return separation;
         }
@@ -551,8 +575,9 @@ namespace Box2D.Collision
                                         b2EdgeShape edgeA, ref b2Transform xfA,
                                         b2PolygonShape polygonB, ref b2Transform xfB)
         {
-            b2EPCollider b = new b2EPCollider();
+            b2EPCollider b = b2EPCollider.Create();
             b.Collide(ref manifold, edgeA, ref xfA, polygonB, ref xfB);
+            b.Free();
         }
 
         /// Clipping for contact manifolds.
@@ -643,7 +668,7 @@ namespace Box2D.Collision
             b2Vec2[] normals1 = poly1.Normals;
 
             // Vector pointing from the centroid of poly1 to the centroid of poly2.
-            b2Vec2 d = b2Math.b2Mul(ref xf2, ref poly2.m_centroid) - b2Math.b2Mul(ref xf1, ref poly1.m_centroid);
+            b2Vec2 d = b2Math.b2Mul(ref xf2, ref poly2.Centroid) - b2Math.b2Mul(ref xf1, ref poly1.Centroid);
             b2Vec2 dLocal1 = b2Math.b2MulT(ref xf1.q, ref d);
 
             // Find edge normal on poly1 that has the largest projection onto d.

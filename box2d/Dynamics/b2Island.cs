@@ -208,20 +208,26 @@ namespace Box2D.Dynamics
         {
             if (m_bodyCapacity < bodyCapacity)
             {
-                m_bodies = new b2Body[bodyCapacity];
-                m_bodyCapacity = bodyCapacity;
+                m_bodyCapacity = 128;
+                while (m_bodyCapacity < bodyCapacity) m_bodyCapacity <<= 1;
+
+                m_bodies = new b2Body[m_bodyCapacity];
                 m_velocities = new b2Velocity[m_bodyCapacity];
                 m_positions = new b2Position[m_bodyCapacity];
             }
             if (m_contactCapacity < contactCapacity)
             {
-                m_contacts = new b2Contact[contactCapacity];
-                m_contactCapacity = contactCapacity;
+                m_contactCapacity = 128;
+                while (m_contactCapacity < contactCapacity) m_contactCapacity <<= 1;
+
+                m_contacts = new b2Contact[m_contactCapacity];
             }
             if (m_jointCapacity < jointCapacity)
             {
-                m_joints = new b2Joint[jointCapacity];
-                m_jointCapacity = jointCapacity;
+                m_jointCapacity = 128;
+                while (m_jointCapacity < jointCapacity) m_jointCapacity <<= 1;
+
+                m_joints = new b2Joint[m_jointCapacity];
             }
 
             m_bodyCount = 0;
@@ -298,7 +304,7 @@ namespace Box2D.Dynamics
             contactSolverDef.positions = m_positions;
             contactSolverDef.velocities = m_velocities;
 
-            b2ContactSolver contactSolver = new b2ContactSolver(contactSolverDef);
+            b2ContactSolver contactSolver = b2ContactSolver.Create(ref contactSolverDef);
             contactSolver.InitializeVelocityConstraints();
 
             if (step.warmStarting)
@@ -419,7 +425,7 @@ namespace Box2D.Dynamics
                         continue;
                     }
 
-                    if (!(b.BodyFlags.HasFlag(b2BodyFlags.e_autoSleepFlag)) ||
+                    if ((b.BodyFlags & b2BodyFlags.e_autoSleepFlag) == 0 ||
                         b.AngularVelocity * b.AngularVelocity > angTolSqr ||
                         b2Math.b2Dot(b.LinearVelocity, b.LinearVelocity) > linTolSqr)
                     {
@@ -428,7 +434,7 @@ namespace Box2D.Dynamics
                     }
                     else
                     {
-                        b.SleepTime += h;
+                        b.SleepTime = b.SleepTime + h;
                         minSleepTime = Math.Min(minSleepTime, b.SleepTime);
                     }
                 }
@@ -442,9 +448,11 @@ namespace Box2D.Dynamics
                     }
                 }
             }
+
+            contactSolver.Free();
         }
 
-        public void SolveTOI(b2TimeStep subStep, int toiIndexA, int toiIndexB)
+        public void SolveTOI(ref b2TimeStep subStep, int toiIndexA, int toiIndexB)
         {
             Debug.Assert(toiIndexA < m_bodyCount);
             Debug.Assert(toiIndexB < m_bodyCount);
@@ -465,7 +473,7 @@ namespace Box2D.Dynamics
             contactSolverDef.step = subStep;
             contactSolverDef.positions = m_positions;
             contactSolverDef.velocities = m_velocities;
-            b2ContactSolver contactSolver = new b2ContactSolver(contactSolverDef);
+            b2ContactSolver contactSolver = b2ContactSolver.Create(ref contactSolverDef);
 
             // Solve position constraints.
             for (int i = 0; i < subStep.positionIterations; ++i)
@@ -573,6 +581,8 @@ namespace Box2D.Dynamics
             }
 
             Report(contactSolver.m_velocityConstraints);
+
+            contactSolver.Free();
         }
 
         public void Report(b2ContactVelocityConstraint[] constraints)

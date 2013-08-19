@@ -132,7 +132,7 @@ namespace Box2D.Collision
 			{
 			case SeparationType.e_points:
 			{
-				b2Vec2 axisA = b2Math.b2MulT(xfA.q, m_axis);
+                b2Vec2 axisA = b2Math.b2MulT(ref xfA.q, ref m_axis);
 				b2Vec2 axisB = b2Math.b2MulT(xfB.q, -m_axis);
 				
 				indexA = m_proxyA.GetSupport(axisA);
@@ -140,9 +140,9 @@ namespace Box2D.Collision
 				
 				b2Vec2 localPointA = m_proxyA.GetVertex(indexA);
 				b2Vec2 localPointB = m_proxyB.GetVertex(indexB);
-				
-				b2Vec2 pointA = b2Math.b2Mul(xfA, localPointA);
-				b2Vec2 pointB = b2Math.b2Mul(xfB, localPointB);
+
+                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref localPointA);
+                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref localPointB);
 				
 				float separation = b2Math.b2Dot(pointB - pointA, m_axis);
 				return separation;
@@ -150,8 +150,8 @@ namespace Box2D.Collision
 				
 			case SeparationType.e_faceA:
 			{
-				b2Vec2 normal = b2Math.b2Mul(xfA.q, m_axis);
-				b2Vec2 pointA = b2Math.b2Mul(xfA, m_localPoint);
+                b2Vec2 normal = b2Math.b2Mul(ref xfA.q, ref m_axis);
+                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref m_localPoint);
 				
 				b2Vec2 axisB = b2Math.b2MulT(xfB.q, -normal);
 				
@@ -159,7 +159,7 @@ namespace Box2D.Collision
 				indexB = m_proxyB.GetSupport(axisB);
 				
 				b2Vec2 localPointB = m_proxyB.GetVertex(indexB);
-				b2Vec2 pointB = b2Math.b2Mul(xfB, localPointB);
+                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref localPointB);
 				
 				float separation = b2Math.b2Dot(pointB - pointA, normal);
 				return separation;
@@ -167,8 +167,8 @@ namespace Box2D.Collision
 				
 			case SeparationType.e_faceB:
 			{
-				b2Vec2 normal = b2Math.b2Mul(xfB.q, m_axis);
-				b2Vec2 pointB = b2Math.b2Mul(xfB, m_localPoint);
+                b2Vec2 normal = b2Math.b2Mul(ref xfB.q, ref m_axis);
+                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref m_localPoint);
 				
 				b2Vec2 axisA = b2Math.b2MulT(xfA.q, -normal);
 				
@@ -176,7 +176,7 @@ namespace Box2D.Collision
 				indexA = m_proxyA.GetSupport(axisA);
 				
 				b2Vec2 localPointA = m_proxyA.GetVertex(indexA);
-				b2Vec2 pointA = b2Math.b2Mul(xfA, localPointA);
+                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref localPointA);
 				
 				float separation = b2Math.b2Dot(pointA - pointB, normal);
 				return separation;
@@ -200,14 +200,14 @@ namespace Box2D.Collision
 			{
 			case SeparationType.e_points:
 			{
-				b2Vec2 axisA = b2Math.b2MulT(xfA.q, m_axis);
+                b2Vec2 axisA = b2Math.b2MulT(ref xfA.q, ref m_axis);
 				b2Vec2 axisB = b2Math.b2MulT(xfB.q, -m_axis);
 				
 				b2Vec2 localPointA = m_proxyA.GetVertex(indexA);
 				b2Vec2 localPointB = m_proxyB.GetVertex(indexB);
-				
-				b2Vec2 pointA = b2Math.b2Mul(xfA, localPointA);
-				b2Vec2 pointB = b2Math.b2Mul(xfB, localPointB);
+
+                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref localPointA);
+                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref localPointB);
 				float separation = b2Math.b2Dot(pointB - pointA, m_axis);
 				
 				return separation;
@@ -215,13 +215,13 @@ namespace Box2D.Collision
 				
 			case SeparationType.e_faceA:
 			{
-				b2Vec2 normal = b2Math.b2Mul(xfA.q, m_axis);
-				b2Vec2 pointA = b2Math.b2Mul(xfA, m_localPoint);
+                b2Vec2 normal = b2Math.b2Mul(ref xfA.q, ref m_axis);
+                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref m_localPoint);
 				
 				b2Vec2 axisB = b2Math.b2MulT(xfB.q, -normal);
 				
 				b2Vec2 localPointB = m_proxyB.GetVertex(indexB);
-				b2Vec2 pointB = b2Math.b2Mul(xfB, localPointB);
+                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref localPointB);
 				
 				float separation = b2Math.b2Dot(pointB - pointA, normal);
 				return separation;
@@ -229,13 +229,13 @@ namespace Box2D.Collision
 				
 			case SeparationType.e_faceB:
 			{
-				b2Vec2 normal = b2Math.b2Mul(xfB.q, m_axis);
-				b2Vec2 pointB = b2Math.b2Mul(xfB, m_localPoint);
+                b2Vec2 normal = b2Math.b2Mul(ref xfB.q, ref m_axis);
+                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref m_localPoint);
 				
 				b2Vec2 axisA = b2Math.b2MulT(xfA.q, -normal);
 				
 				b2Vec2 localPointA = m_proxyA.GetVertex(indexA);
-				b2Vec2 pointA = b2Math.b2Mul(xfA, localPointA);
+                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref localPointA);
 				
 				float separation = b2Math.b2Dot(pointA - pointB, normal);
 				return separation;
@@ -301,7 +301,8 @@ namespace Box2D.Collision
 		public static int b2_toiCalls, b2_toiIters, b2_toiMaxIters;
 		public static int b2_toiRootIters, b2_toiMaxRootIters;
 		
-		
+		//Caches
+        static b2SimplexCache _cache = b2SimplexCache.Create();
 		
 		// CCD via the local separating axis method. This seeks progression
 		// by computing the largest time at which separation is maintained.
@@ -336,7 +337,7 @@ namespace Box2D.Collision
 			int iter = 0;
 			
 			// Prepare input for distance query.
-			b2SimplexCache cache = b2SimplexCache.Create();
+			b2SimplexCache cache = _cache;
 			b2DistanceInput distanceInput = new b2DistanceInput();
 			distanceInput.proxyA = input.proxyA;
 			distanceInput.proxyB = input.proxyB;

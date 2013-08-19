@@ -9,35 +9,17 @@ namespace Box2D.Collision.Shapes
 {
     public class b2PolygonShape : b2Shape
     {
-        internal b2Vec2 m_centroid;
-        internal b2Vec2[] m_vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
-        internal b2Vec2[] m_normals = new b2Vec2[b2Settings.b2_maxPolygonVertices];
+        public b2Vec2 Centroid;
+        public b2Vec2[] Vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
+        public b2Vec2[] Normals = new b2Vec2[b2Settings.b2_maxPolygonVertices];
         internal int m_vertexCount;
 
         public b2PolygonShape()
         {
-            m_type = b2ShapeType.e_polygon;
-            m_radius = b2Settings.b2_polygonRadius;
+            ShapeType = b2ShapeType.e_polygon;
+            Radius = b2Settings.b2_polygonRadius;
             m_vertexCount = 0;
-            m_centroid.SetZero();
-        }
-
-        public b2Vec2[] Vertices
-        {
-            get { return (m_vertices); }
-            set { m_vertices = value; }
-        }
-
-        public b2Vec2[] Normals
-        {
-            get { return (m_normals); }
-            set { m_normals = value; }
-        }
-
-        public b2Vec2 Centroid
-        {
-            get { return (m_centroid); }
-            set { m_centroid = value; }
+            Centroid.SetZero();
         }
 
         /// Get the vertex count.
@@ -52,9 +34,9 @@ namespace Box2D.Collision.Shapes
         public b2PolygonShape(b2PolygonShape copy)
             : base((b2Shape)copy)
         {
-            m_centroid = copy.m_centroid;
-            Array.Copy(copy.m_vertices, m_vertices, copy.m_vertices.Length);
-            Array.Copy(copy.m_normals, m_normals, copy.m_normals.Length);
+            Centroid = copy.Centroid;
+            Array.Copy(copy.Vertices, Vertices, copy.Vertices.Length);
+            Array.Copy(copy.Normals, Normals, copy.Normals.Length);
             m_vertexCount = copy.m_vertexCount;
         }
 
@@ -67,29 +49,29 @@ namespace Box2D.Collision.Shapes
         public void SetAsBox(float hx, float hy)
         {
             m_vertexCount = 4;
-            m_vertices[0].Set(-hx, -hy);
-            m_vertices[1].Set(hx, -hy);
-            m_vertices[2].Set(hx, hy);
-            m_vertices[3].Set(-hx, hy);
-            m_normals[0].Set(0.0f, -1.0f);
-            m_normals[1].Set(1.0f, 0.0f);
-            m_normals[2].Set(0.0f, 1.0f);
-            m_normals[3].Set(-1.0f, 0.0f);
-            m_centroid.SetZero();
+            Vertices[0].Set(-hx, -hy);
+            Vertices[1].Set(hx, -hy);
+            Vertices[2].Set(hx, hy);
+            Vertices[3].Set(-hx, hy);
+            Normals[0].Set(0.0f, -1.0f);
+            Normals[1].Set(1.0f, 0.0f);
+            Normals[2].Set(0.0f, 1.0f);
+            Normals[3].Set(-1.0f, 0.0f);
+            Centroid.SetZero();
         }
 
         public void SetAsBox(float hx, float hy, b2Vec2 center, float angle)
         {
             m_vertexCount = 4;
-            m_vertices[0].Set(-hx, -hy);
-            m_vertices[1].Set(hx, -hy);
-            m_vertices[2].Set(hx, hy);
-            m_vertices[3].Set(-hx, hy);
-            m_normals[0].Set(0.0f, -1.0f);
-            m_normals[1].Set(1.0f, 0.0f);
-            m_normals[2].Set(0.0f, 1.0f);
-            m_normals[3].Set(-1.0f, 0.0f);
-            m_centroid = center;
+            Vertices[0].Set(-hx, -hy);
+            Vertices[1].Set(hx, -hy);
+            Vertices[2].Set(hx, hy);
+            Vertices[3].Set(-hx, hy);
+            Normals[0].Set(0.0f, -1.0f);
+            Normals[1].Set(1.0f, 0.0f);
+            Normals[2].Set(0.0f, 1.0f);
+            Normals[3].Set(-1.0f, 0.0f);
+            Centroid = center;
 
             b2Transform xf = b2Transform.Identity;
             xf.p = center;
@@ -98,8 +80,8 @@ namespace Box2D.Collision.Shapes
             // Transform vertices and normals.
             for (int i = 0; i < m_vertexCount; ++i)
             {
-                m_vertices[i] = b2Math.b2Mul(xf, m_vertices[i]);
-                m_normals[i] = b2Math.b2Mul(xf.q, m_normals[i]);
+                Vertices[i] = b2Math.b2Mul(xf, Vertices[i]);
+                Normals[i] = b2Math.b2Mul(xf.q, Normals[i]);
             }
         }
 
@@ -159,7 +141,7 @@ namespace Box2D.Collision.Shapes
             // Copy vertices.
             for (int i = 0; i < m_vertexCount; ++i)
             {
-                m_vertices[i] = vertices[i];
+                Vertices[i] = vertices[i];
             }
 
             // Compute normals. Ensure the edges have non-zero length.
@@ -167,10 +149,10 @@ namespace Box2D.Collision.Shapes
             {
                 int i1 = i;
                 int i2 = i + 1 < m_vertexCount ? i + 1 : 0;
-                b2Vec2 edge = m_vertices[i2] - m_vertices[i1];
+                b2Vec2 edge = Vertices[i2] - Vertices[i1];
                  Debug.Assert(edge.LengthSquared > b2Settings.b2_epsilon * b2Settings.b2_epsilon);
-                 m_normals[i] = edge.UnitCross(); // b2Math.b2Cross(edge, 1.0f);
-                m_normals[i].Normalize();
+                 Normals[i] = edge.UnitCross(); // b2Math.b2Cross(edge, 1.0f);
+                Normals[i].Normalize();
             }
 
 #if DEBUG
@@ -204,16 +186,16 @@ namespace Box2D.Collision.Shapes
 #endif
 
             // Compute the polygon centroid.
-            m_centroid = ComputeCentroid(m_vertices, m_vertexCount);
+            Centroid = ComputeCentroid(Vertices, m_vertexCount);
         }
 
-        public override bool TestPoint(b2Transform xf, b2Vec2 p)
+        public override bool TestPoint(ref b2Transform xf, b2Vec2 p)
         {
             b2Vec2 pLocal = b2Math.b2MulT(xf.q, p - xf.p);
 
             for (int i = 0; i < m_vertexCount; ++i)
             {
-                float dot = b2Math.b2Dot(m_normals[i], pLocal - m_vertices[i]);
+                float dot = b2Math.b2Dot(Normals[i], pLocal - Vertices[i]);
                 if (dot > 0.0f)
                 {
                     return false;
@@ -223,8 +205,7 @@ namespace Box2D.Collision.Shapes
             return true;
         }
 
-        public override bool RayCast(out b2RayCastOutput output, b2RayCastInput input,
-                                        b2Transform xf, int childIndex)
+        public override bool RayCast(out b2RayCastOutput output, b2RayCastInput input, ref b2Transform xf, int childIndex)
         {
             output = b2RayCastOutput.Zero;
             // Put the ray into the polygon's frame of reference.
@@ -241,8 +222,8 @@ namespace Box2D.Collision.Shapes
                 // p = p1 + a * d
                 // dot(normal, p - v) = 0
                 // dot(normal, p1 - v) + a * dot(normal, d) = 0
-                float numerator = b2Math.b2Dot(m_normals[i], m_vertices[i] - p1);
-                float denominator = b2Math.b2Dot(m_normals[i], d);
+                float numerator = b2Math.b2Dot(Normals[i], Vertices[i] - p1);
+                float denominator = b2Math.b2Dot(Normals[i], d);
 
                 if (denominator == 0.0f)
                 {
@@ -287,28 +268,28 @@ namespace Box2D.Collision.Shapes
             if (index >= 0)
             {
                 output.fraction = lower;
-                output.normal = b2Math.b2Mul(xf.q, m_normals[index]);
+                output.normal = b2Math.b2Mul(xf.q, Normals[index]);
                 return true;
             }
 
             return false;
         }
 
-        public override b2AABB ComputeAABB(b2Transform xf, int childIndex)
+        public override b2AABB ComputeAABB(ref b2Transform xf, int childIndex)
         {
-            b2Vec2 lower = b2Math.b2Mul(xf, m_vertices[0]);
+            b2Vec2 lower = b2Math.b2Mul(xf, Vertices[0]);
             b2Vec2 upper = lower;
 
             for (int i = 1; i < m_vertexCount; ++i)
             {
-                b2Vec2 v = b2Math.b2Mul(xf, m_vertices[i]);
+                b2Vec2 v = b2Math.b2Mul(xf, Vertices[i]);
                 lower = b2Math.b2Min(lower, v);
                 upper = b2Math.b2Max(upper, v);
             }
 
             b2AABB aabb = b2AABB.Default;
             aabb.Set(lower, upper);
-            aabb.Fatten(m_radius);
+            aabb.Fatten(Radius);
             return(aabb);
         }
 
@@ -350,7 +331,7 @@ namespace Box2D.Collision.Shapes
             // This code would put the reference point inside the polygon.
             for (int i = 0; i < m_vertexCount; ++i)
             {
-                s += m_vertices[i];
+                s += Vertices[i];
             }
             s *= 1.0f / m_vertexCount;
 
@@ -359,10 +340,10 @@ namespace Box2D.Collision.Shapes
             for (int i = 0; i < m_vertexCount; ++i)
             {
                 // Triangle vertices.
-                b2Vec2 e1 = m_vertices[i] - s;
-                b2Vec2 e2 = i + 1 < m_vertexCount ? m_vertices[i + 1] - s : m_vertices[0] - s;
+                b2Vec2 e1 = Vertices[i] - s;
+                b2Vec2 e2 = i + 1 < m_vertexCount ? Vertices[i + 1] - s : Vertices[0] - s;
 
-                float D = b2Math.b2Cross(e1, e2);
+                float D = b2Math.b2Cross(ref e1, ref e2);
 
                 float triangleArea = 0.5f * D;
                 area += triangleArea;
@@ -400,7 +381,7 @@ namespace Box2D.Collision.Shapes
             massData.I = density * I;
 
             // Shift to center of mass then to original body origin.
-            massData.I += massData.mass * (b2Math.b2Dot(massData.center, massData.center) - b2Math.b2Dot(center, center));
+            massData.I += massData.mass * (b2Math.b2Dot(ref massData.center, ref massData.center) - b2Math.b2Dot(ref center, ref center));
             return (massData);
         }
     }

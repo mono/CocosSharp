@@ -95,7 +95,8 @@ namespace Box2D.Collision
                 case b2ShapeType.e_circle:
                     {
                         b2CircleShape circle = (b2CircleShape)shape;
-                        m_vertices = new b2Vec2[] { circle.Position };
+                        m_buffer[0] = circle.Position;
+                        m_vertices = m_buffer;
                         m_count = 1;
                         m_radius = circle.Radius;
                     }
@@ -134,7 +135,9 @@ namespace Box2D.Collision
                 case b2ShapeType.e_edge:
                     {
                         b2EdgeShape edge = (b2EdgeShape)shape;
-                        m_vertices = new b2Vec2[] { edge.Vertex1, edge.Vertex2 };
+                        m_buffer[0] = edge.Vertex1;
+                        m_buffer[1] = edge.Vertex2;
+                        m_vertices = m_buffer;
                         m_count = 2;
                         m_radius = edge.Radius;
                     }

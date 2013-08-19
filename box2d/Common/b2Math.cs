@@ -223,6 +223,15 @@ namespace Box2D.Common
 #if AGGRESSIVE_INLINING
         [MethodImpl(MethodImplOptions.AggressiveInlining)] 
 #endif
+        public static float b2Distance(ref b2Vec2 a, ref b2Vec2 b)
+        {
+            b2Vec2 c = a - b;
+            return c.Length;
+        }
+
+#if AGGRESSIVE_INLINING
+        [MethodImpl(MethodImplOptions.AggressiveInlining)] 
+#endif
         public static float b2DistanceSquared(b2Vec2 a, b2Vec2 b)
         {
             b2Vec2 c = a - b;

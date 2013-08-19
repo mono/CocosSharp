@@ -41,46 +41,17 @@ namespace Box2D.Dynamics
 
     public class b2Fixture
     {
-        private float m_density;
-        public float Density
-        {
-            get { return (m_density); }
-            set { m_density = value; }
-        }
-        private b2Fixture m_Next;
-        public b2Fixture Next
-        {
-            get { return (m_Next); }
-            set { m_Next = value; }
-        }
-        private b2Body m_body;
-        public b2Body Body
-        {
-            get { return (m_body); }
-            set { m_body = value; }
-        }
-        private b2Shape m_shape;
-        public b2Shape Shape
-        {
-            get { return (m_shape); }
-            set { m_shape = value; }
-        }
+        public float Density;
+        public b2Fixture Next;
+        public b2Body Body;
+        public b2Shape Shape;
+
         public b2ShapeType ShapeType
         {
-            get { return (m_shape.GetShapeType()); }
+            get { return (Shape.GetShapeType()); }
         }
-        private float m_friction;
-        public float Friction
-        {
-            get { return (m_friction); }
-            set { m_friction = value; }
-        }
-        private float m_restitution;
-        public float Restitution
-        {
-            get { return (m_restitution); }
-            set { m_restitution = value; }
-        }
+        public float Friction;
+        public float Restitution;
 
         private List<b2FixtureProxy> m_proxies = new List<b2FixtureProxy>();
         public IList<b2FixtureProxy> Proxies
@@ -101,7 +72,8 @@ namespace Box2D.Dynamics
             get { return (m_filter); }
             set { m_filter = value; Refilter(); }
         }
-        private bool m_isSensor;
+        
+        internal bool m_isSensor;
         public bool IsSensor
         {
             get { return (m_isSensor); }
@@ -109,32 +81,28 @@ namespace Box2D.Dynamics
             {
                 if (value != m_isSensor)
                 {
-                    m_body.SetAwake(true);
+                    Body.SetAwake(true);
                     m_isSensor = value;
                 }
             }
         }
 
-        private object m_userData;
-        public object UserData
-        {
-            get { return (m_userData); }
-            set { m_userData = value; }
-        }
+        public object UserData;
+
         public virtual bool TestPoint(b2Vec2 p)
         {
-            return m_shape.TestPoint(m_body.Transform, p);
+            return Shape.TestPoint(ref Body.Transform, p);
         }
 
         public virtual bool RayCast(out b2RayCastOutput output, b2RayCastInput input, int childIndex)
         {
-            return m_shape.RayCast(out output, input, m_body.Transform, childIndex);
+            return Shape.RayCast(out output, input, ref Body.Transform, childIndex);
         }
 
         public virtual b2MassData GetMassData()
         {
             b2MassData data;
-            data = m_shape.ComputeMass(m_density);
+            data = Shape.ComputeMass(Density);
             return (data);
         }
 
@@ -145,21 +113,21 @@ namespace Box2D.Dynamics
 
         public void Create(b2Body body, b2FixtureDef def)
         {
-            m_userData = def.userData;
-            m_friction = def.friction;
-            m_restitution = def.restitution;
+            UserData = def.userData;
+            Friction = def.friction;
+            Restitution = def.restitution;
 
-            m_body = body;
+            Body = body;
             Next = null;
 
             m_filter = def.filter;
 
             m_isSensor = def.isSensor;
 
-            m_shape = def.shape.Clone();
+            Shape = def.shape.Clone();
 
             // Reserve proxy space
-            int childCount = m_shape.GetChildCount();
+            int childCount = Shape.GetChildCount();
             for (int i = 0; i < childCount; ++i)
             {
                 b2FixtureProxy proxy = new b2FixtureProxy();
@@ -169,24 +137,24 @@ namespace Box2D.Dynamics
             }
             m_proxyCount = 0;
 
-            m_density = def.density;
+            Density = def.density;
         }
 
         public virtual void Destroy()
         {
             m_proxies = null;
-            m_shape = null;
+            Shape = null;
         }
 
         public virtual void CreateProxies(b2BroadPhase broadPhase, b2Transform xf)
         {
             // Create proxies in the broad-phase.
-            m_proxyCount = m_shape.GetChildCount();
+            m_proxyCount = Shape.GetChildCount();
 
             for (int i = 0; i < m_proxyCount; ++i)
             {
                 b2FixtureProxy proxy = m_proxies[i];
-                proxy.aabb = m_shape.ComputeAABB(xf, i);
+                proxy.aabb = Shape.ComputeAABB(ref xf, i);
                 proxy.fixture = this;
                 proxy.childIndex = i;
                 proxy.proxyId = broadPhase.CreateProxy(proxy.aabb, ref proxy);
@@ -219,8 +187,8 @@ namespace Box2D.Dynamics
 
                 // Compute an AABB that covers the swept shape (may miss some rotation effect).
                 b2AABB aabb1, aabb2;
-                aabb1 = m_shape.ComputeAABB(transform1, proxy.childIndex);
-                aabb2 = m_shape.ComputeAABB(transform2, proxy.childIndex);
+                aabb1 = Shape.ComputeAABB(ref transform1, proxy.childIndex);
+                aabb2 = Shape.ComputeAABB(ref transform2, proxy.childIndex);
 
                 proxy.aabb.Combine(ref aabb1, ref aabb2);
 
@@ -237,13 +205,13 @@ namespace Box2D.Dynamics
         }
         public virtual void Refilter()
         {
-            if (m_body == null)
+            if (Body == null)
             {
                 return;
             }
 
             // Flag associated contacts for filtering.
-            b2ContactEdge edge = m_body.ContactList;
+            b2ContactEdge edge = Body.ContactList;
             while (edge != null)
             {
                 b2Contact contact = edge.Contact;
@@ -257,7 +225,7 @@ namespace Box2D.Dynamics
                 edge = edge.Next;
             }
 
-            b2World world = m_body.World;
+            b2World world = Body.World;
 
             if (world == null)
             {
@@ -274,19 +242,19 @@ namespace Box2D.Dynamics
         public virtual void Dump(int bodyIndex)
         {
             System.Diagnostics.Debug.WriteLine("    b2FixtureDef fd;");
-            System.Diagnostics.Debug.WriteLine("    fd.friction = {0:N5};", m_friction);
-            System.Diagnostics.Debug.WriteLine("    fd.restitution = {0:N5};", m_restitution);
-            System.Diagnostics.Debug.WriteLine("    fd.density = {0:N5};", m_density);
+            System.Diagnostics.Debug.WriteLine("    fd.friction = {0:N5};", Friction);
+            System.Diagnostics.Debug.WriteLine("    fd.restitution = {0:N5};", Restitution);
+            System.Diagnostics.Debug.WriteLine("    fd.density = {0:N5};", Density);
             System.Diagnostics.Debug.WriteLine("    fd.isSensor = {0};", m_isSensor);
             System.Diagnostics.Debug.WriteLine("    fd.filter.categoryBits = {0};", m_filter.categoryBits);
             System.Diagnostics.Debug.WriteLine("    fd.filter.maskBits = {0};", m_filter.maskBits);
             System.Diagnostics.Debug.WriteLine("    fd.filter.groupIndex = {0};", m_filter.groupIndex);
 
-            switch (m_shape.ShapeType)
+            switch (Shape.ShapeType)
             {
                 case b2ShapeType.e_circle:
                     {
-                        b2CircleShape s = (b2CircleShape)m_shape;
+                        b2CircleShape s = (b2CircleShape)Shape;
                         System.Diagnostics.Debug.WriteLine("    b2CircleShape shape;");
                         System.Diagnostics.Debug.WriteLine("    shape.m_radius = {0:N5};", s.Radius);
                         System.Diagnostics.Debug.WriteLine("    shape.m_p.Set({0:N5}, {0:N5});", s.Position.x, s.Position.y);
@@ -295,7 +263,7 @@ namespace Box2D.Dynamics
 
                 case b2ShapeType.e_edge:
                     {
-                        b2EdgeShape s = (b2EdgeShape)m_shape;
+                        b2EdgeShape s = (b2EdgeShape)Shape;
                         System.Diagnostics.Debug.WriteLine("    b2EdgeShape shape;");
                         System.Diagnostics.Debug.WriteLine("    shape.m_radius = {0:N5};", s.Radius);
                         System.Diagnostics.Debug.WriteLine("    shape.m_vertex0.Set({0:N5}, {0:N5});", s.Vertex0.x, s.Vertex0.y);
@@ -309,7 +277,7 @@ namespace Box2D.Dynamics
 
                 case b2ShapeType.e_polygon:
                     {
-                        b2PolygonShape s = (b2PolygonShape)m_shape;
+                        b2PolygonShape s = (b2PolygonShape)Shape;
                         System.Diagnostics.Debug.WriteLine("    b2PolygonShape shape;");
                         System.Diagnostics.Debug.WriteLine("    b2Vec2 vs[{0}];", b2Settings.b2_maxPolygonVertices);
                         for (int i = 0; i < s.VertexCount; ++i)
@@ -322,7 +290,7 @@ namespace Box2D.Dynamics
 
                 case b2ShapeType.e_chain:
                     {
-                        b2ChainShape s = (b2ChainShape)m_shape;
+                        b2ChainShape s = (b2ChainShape)Shape;
                         System.Diagnostics.Debug.WriteLine("    b2ChainShape shape;");
                         System.Diagnostics.Debug.WriteLine("    b2Vec2 vs[{0}];", s.Count);
                         for (int i = 0; i < s.Count; ++i)

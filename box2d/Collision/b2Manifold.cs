@@ -48,7 +48,7 @@ namespace Box2D.Collision
     }
 
     // This is used to compute the current state of a contact manifold.
-    public struct b2WorldManifold
+    public class b2WorldManifold
     {
         // Evaluate the manifold with supplied transforms. This assumes
         // modest motion from the original state. This does not change the
@@ -58,10 +58,10 @@ namespace Box2D.Collision
                         b2Transform xfA, float radiusA,
                         b2Transform xfB, float radiusB)
         {
-
-            points = new b2Vec2[b2Settings.b2_maxManifoldPoints];
-            for (int p = 0; p < b2Settings.b2_maxManifoldPoints; p++)
-                points[p] = b2Vec2.Zero;
+            //points = new b2Vec2[b2Settings.b2_maxManifoldPoints];
+            
+            //for (int p = 0; p < b2Settings.b2_maxManifoldPoints; p++)
+            //    points[p] = b2Vec2.Zero;
 
             normal = b2Vec2.Zero;
 
@@ -130,22 +130,25 @@ namespace Box2D.Collision
         }
 
         public b2Vec2 normal;      //< world vector pointing from A to B
-        public b2Vec2[] points;    //< world contact point (point of intersection)
+        public b2Vec2[] points = new b2Vec2[b2Settings.b2_maxManifoldPoints];    //< world contact point (point of intersection)
     }
 
     public struct b2Manifold
     {
+        
         public static b2Manifold Create()
         {
             b2Manifold m = new b2Manifold();
             m.points =  new b2ManifoldPoint[b2Settings.b2_maxManifoldPoints];
             return (m);
         }
-
+        
+        
         public void CopyPointsFrom(ref b2Manifold other)
         {
             Array.Copy(other.points, points, b2Settings.b2_maxManifoldPoints);
         }
+        
 
         public b2ManifoldPoint[] points;//  = new b2ManifoldPoint[b2Settings.b2_maxManifoldPoints];    //< the points of contact
         public b2Vec2 localNormal;                                //< not use for Type::e_points

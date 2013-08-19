@@ -58,7 +58,7 @@ namespace Box2D.TestBed.Tests
             b2Vec2[] vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
 
             b2Transform transformA = new b2Transform();
-            sweepA.GetTransform(ref transformA, 0.0f);
+            sweepA.GetTransform(out transformA, 0.0f);
             for (int i = 0; i < m_shapeA.VertexCount; ++i)
             {
                 vertices[i] = b2Math.b2Mul(transformA, m_shapeA.Vertices[i]);
@@ -66,7 +66,7 @@ namespace Box2D.TestBed.Tests
             m_debugDraw.DrawPolygon(vertices, m_shapeA.VertexCount, new b2Color(0.9f, 0.9f, 0.9f));
 
             b2Transform transformB = new b2Transform();
-            sweepB.GetTransform(ref transformB, 0.0f);
+            sweepB.GetTransform(out transformB, 0.0f);
 
             b2Vec2 localPoint = new b2Vec2(2.0f, -0.1f);
 
@@ -76,14 +76,14 @@ namespace Box2D.TestBed.Tests
             }
             m_debugDraw.DrawPolygon(vertices, m_shapeB.VertexCount, new b2Color(0.5f, 0.9f, 0.5f));
 
-            sweepB.GetTransform(ref transformB, output.t);
+            sweepB.GetTransform(out transformB, output.t);
             for (int i = 0; i < m_shapeB.VertexCount; ++i)
             {
                 vertices[i] = b2Math.b2Mul(transformB, m_shapeB.Vertices[i]);
             }
             m_debugDraw.DrawPolygon(vertices, m_shapeB.VertexCount, new b2Color(0.5f, 0.7f, 0.9f));
 
-            sweepB.GetTransform(ref transformB, 1.0f);
+            sweepB.GetTransform(out transformB, 1.0f);
             for (int i = 0; i < m_shapeB.VertexCount; ++i)
             {
                 vertices[i] = b2Math.b2Mul(transformB, m_shapeB.Vertices[i]);

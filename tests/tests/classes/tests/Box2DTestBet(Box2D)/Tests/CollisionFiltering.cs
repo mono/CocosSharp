@@ -143,7 +143,7 @@ namespace Box2D.TestBed.Tests
             body5.CreateFixture(circleShapeDef);
 
             // Large circle
-            circle.Radius *= 2.0f;
+            circle.Radius = circle.Radius * 2.0f;
             circleShapeDef.filter.groupIndex = k_largeGroup;
             circleBodyDef.position.Set(5.0f, 6.0f);
 

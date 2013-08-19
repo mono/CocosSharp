@@ -17,6 +17,7 @@
 */
 using System;
 using System.Diagnostics;
+using System.Net.PeerToPeer.Collaboration;
 using Box2D.Common;
 using Box2D.Collision;
 using Box2D.Collision.Shapes;
@@ -122,7 +123,7 @@ namespace Box2D.Dynamics.Contacts
         public int pointCount;
     };
 
-    public class b2ContactSolver
+    internal class b2ContactSolver : b2ReusedObject<b2ContactSolver>
     {
         public b2TimeStep m_step;
         public b2Position[] m_positions;
@@ -132,17 +133,47 @@ namespace Box2D.Dynamics.Contacts
         public b2Contact[] m_contacts;
         public int m_count;
 
-        public b2ContactSolver(b2ContactSolverDef def)
+        public static b2ContactSolver Create(ref b2ContactSolverDef def)
         {
+            var result = Create();
+            result.Init(ref def);
+            return result;
+        }
+
+        private void Init(ref b2ContactSolverDef def)
+        {
+            if (m_positionConstraints == null || def.count > m_positionConstraints.Length)
+            {
+                var count = def.count;
+                var oldCount = 0;
+
+                var capacity = 4;
+                while (capacity < count)
+                {
+                    capacity *= 2;
+                }
+
+                if (m_positionConstraints == null)
+                {
+                    m_positionConstraints = new b2ContactPositionConstraint[capacity];
+                    m_velocityConstraints = new b2ContactVelocityConstraint[capacity];
+                }
+                else
+                {
+                    oldCount = m_positionConstraints.Length;
+                    Array.Resize(ref m_positionConstraints, capacity);
+                    Array.Resize(ref m_velocityConstraints, capacity);
+                }
+
+                for (int i = oldCount; i < capacity; i++)
+                {
+                    m_positionConstraints[i] = b2ContactPositionConstraint.Create();
+                    m_velocityConstraints[i] = b2ContactVelocityConstraint.Create();
+                }
+            }
+
             m_step = def.step;
             m_count = def.count;
-            m_positionConstraints = new b2ContactPositionConstraint[m_count];
-            for (int pc = 0; pc < m_count; pc++)
-                m_positionConstraints[pc] = b2ContactPositionConstraint.Create();
-
-            m_velocityConstraints = new b2ContactVelocityConstraint[m_count];
-            for (int vc = 0; vc < m_count; vc++)
-                m_velocityConstraints[vc] = b2ContactVelocityConstraint.Create();
 
             m_positions = def.positions;
             m_velocities = def.velocities;
@@ -219,15 +250,12 @@ namespace Box2D.Dynamics.Contacts
                     vcp.velocityBias = 0.0f;
 
                     pc.localPoints[j] = cp.localPoint;
-                    
-                    //vc.points[j] = vcp;
                 }
-
-                //Put back the struct data since struct data is copied by value
-                //m_positionConstraints[i] = pc;
-                //m_velocityConstraints[i] = vc;
             }
         }
+
+        //Cached WorldManifold
+        private b2WorldManifold _b2WorldManifold = new b2WorldManifold();
 
         // Initialize position dependent portions of the velocity constraints.
         public virtual void InitializeVelocityConstraints()
@@ -269,7 +297,8 @@ namespace Box2D.Dynamics.Contacts
                 xfA.p = cA - b2Math.b2Mul(ref xfA.q, ref localCenterA);
                 xfB.p = cB - b2Math.b2Mul(ref xfB.q, ref localCenterB);
 
-                b2WorldManifold worldManifold = new b2WorldManifold();
+                //b2WorldManifold worldManifold = new b2WorldManifold();
+                b2WorldManifold worldManifold = _b2WorldManifold;
                 worldManifold.Initialize(ref manifold, xfA, radiusA, xfB, radiusB);
 
                 vc.normal = worldManifold.normal;
@@ -305,8 +334,6 @@ namespace Box2D.Dynamics.Contacts
                     {
                         vcp.velocityBias = -vc.restitution * vRel;
                     }
-                    
-                    //vc.points[j] = vcp;
                 }
 
                 // If we have two points, then prepare the block solver.
@@ -340,9 +367,6 @@ namespace Box2D.Dynamics.Contacts
                         vc.pointCount = 1;
                     }
                 }
-                
-                //m_positionConstraints[i] = pc;
-                //m_velocityConstraints[i] = vc;
             }
         }
 
@@ -405,9 +429,13 @@ namespace Box2D.Dynamics.Contacts
                 b2Vec2 vB = m_velocities[indexB].v;
                 float wB = m_velocities[indexB].w;
 
-                b2Vec2 normal = vc.normal;
-                b2Vec2 tangent = normal.UnitCross(); // b2Math.b2Cross(normal, 1.0f);
+                float normalx = vc.normal.x;
+                float normaly = vc.normal.y;
+
+                float tangentx = normaly; // b2Math.b2Cross(normal, 1.0f);
+                float tangenty = -normalx;
                 float friction = vc.friction;
+
 
                 Debug.Assert(pointCount == 1 || pointCount == 2);
 
@@ -424,12 +452,11 @@ namespace Box2D.Dynamics.Contacts
                      */
 
                     // b2Vec2 dv = vB + b2Math.b2Cross(wB, ref vcp.rB) - vA - b2Math.b2Cross(wA, ref vcp.rA);
-                    b2Vec2 dv;
-                    dv.x = vB.x + (-wB * vcp.rB.y) - vA.x - (-wA * vcp.rA.y);
-                    dv.y = vB.y + (wB * vcp.rB.x) - vA.y - (wA * vcp.rA.x);
+                    float dvx = vB.x + (-wB * vcp.rB.y) - vA.x - (-wA * vcp.rA.y);
+                    float dvy = vB.y + (wB * vcp.rB.x) - vA.y - (wA * vcp.rA.x);
 
                     // Compute tangent force
-                    float vt = dv.x * tangent.x + dv.y * tangent.y; // b2Math.b2Dot(dv, tangent);
+                    float vt = dvx * tangentx + dvy * tangenty; // b2Math.b2Dot(dv, tangent);
                     float lambda = vcp.tangentMass * (-vt);
 
                     // b2Math.b2Clamp the accumulated force
@@ -440,23 +467,22 @@ namespace Box2D.Dynamics.Contacts
 
                     // Apply contact impulse
                     // P = lambda * tangent;
-                    b2Vec2 P;
-                    P.x = lambda * tangent.x;
-                    P.y = lambda * tangent.y;
+                    float Px = lambda * tangentx;
+                    float Py = lambda * tangenty;
 
                     // vA -= mA * P;
-                    vA.x -= mA * P.x;
-                    vA.y -= mA * P.y;
+                    vA.x -= mA * Px;
+                    vA.y -= mA * Py;
 
                    // wA -= iA * b2Math.b2Cross(vcp.rA, P);
-                    wA -= iA * (vcp.rA.x * P.y - vcp.rA.y * P.x);
+                    wA -= iA * (vcp.rA.x * Py - vcp.rA.y * Px);
 
                     // vB += mB * P;
-                    vB.x += mB * P.x;
-                    vB.y += mB * P.y; 
+                    vB.x += mB * Px;
+                    vB.y += mB * Py; 
 
                     // wB += iB * b2Math.b2Cross(vcp.rB, P);
-                    wB += iB * (vcp.rB.x * P.y - vcp.rB.y * P.x);
+                    wB += iB * (vcp.rB.x * Py - vcp.rB.y * Px);
 
                     //vc.points[j] = vcp;
                 }
@@ -468,12 +494,11 @@ namespace Box2D.Dynamics.Contacts
 
                     // Relative velocity at contact
                     // b2Vec2 dv = vB + b2Math.b2Cross(wB, ref vcp.rB) - vA - b2Math.b2Cross(wA, ref vcp.rA);
-                    b2Vec2 dv;
-                    dv.x = vB.x + (-wB * vcp.rB.y) - vA.x - (-wA * vcp.rA.y);
-                    dv.y = vB.y + (wB * vcp.rB.x) - vA.y - (wA * vcp.rA.x);
+                    float dvx = vB.x + (-wB * vcp.rB.y) - vA.x - (-wA * vcp.rA.y);
+                    float dvy = vB.y + (wB * vcp.rB.x) - vA.y - (wA * vcp.rA.x);
 
                     // Compute normal impulse
-                    float vn = dv.x * normal.x + dv.y * normal.y; //b2Math.b2Dot(ref dv, ref normal);
+                    float vn = dvx * normalx + dvy * normaly; //b2Math.b2Dot(ref dv, ref normal);
                     float lambda = -vcp.normalMass * (vn - vcp.velocityBias);
 
                     // b2Math.b2Clamp the accumulated impulse
@@ -483,23 +508,22 @@ namespace Box2D.Dynamics.Contacts
 
                     // Apply contact impulse
                     //b2Vec2 P = lambda * normal;
-                    b2Vec2 P;
-                    P.x = lambda * normal.x;
-                    P.y = lambda * normal.y;
+                    float Px = lambda * normalx;
+                    float Py = lambda * normaly;
 
                     // vA -= mA * P;
-                    vA.x -= mA * P.x;
-                    vA.y -= mA * P.y;
+                    vA.x -= mA * Px;
+                    vA.y -= mA * Py;
 
                     // wA -= iA * b2Math.b2Cross(vcp.rA, P);
-                    wA -= iA * (vcp.rA.x * P.y - vcp.rA.y * P.x);
+                    wA -= iA * (vcp.rA.x * Py - vcp.rA.y * Px);
 
                     // vB += mB * P;
-                    vB.x += mB * P.x;
-                    vB.y += mB * P.y;
+                    vB.x += mB * Px;
+                    vB.y += mB * Py;
 
                     // wB += iB * b2Math.b2Cross(vcp.rB, P);
-                    wB += iB * (vcp.rB.x * P.y - vcp.rB.y * P.x);
+                    wB += iB * (vcp.rB.x * Py - vcp.rB.y * Px);
                     
                     //vc.points[0] = vcp;
                 }
@@ -541,32 +565,30 @@ namespace Box2D.Dynamics.Contacts
                     b2VelocityConstraintPoint cp1 = vc.points[0];
                     b2VelocityConstraintPoint cp2 = vc.points[1];
 
-                    b2Vec2 a = new b2Vec2(cp1.normalImpulse, cp2.normalImpulse);
-                    Debug.Assert(a.x >= 0.0f && a.y >= 0.0f);
+                    float ax = cp1.normalImpulse;
+                    float ay = cp2.normalImpulse;
+                    Debug.Assert(ax >= 0.0f && ay >= 0.0f);
 
                     // Relative velocity at contact
                     // vB + b2Math.b2Cross(wB, ref cp1.rB) - vA - b2Math.b2Cross(wA, ref cp1.rA);
-                    b2Vec2 dv1; 
-                    dv1.x = vB.x + (-wB * cp1.rB.y) - vA.x - (-wA * cp1.rA.y);
-                    dv1.y = vB.y + (wB * cp1.rB.x) - vA.y - (wA * cp1.rA.x);
+                    float dv1x = vB.x + (-wB * cp1.rB.y) - vA.x - (-wA * cp1.rA.y);
+                    float dv1y = vB.y + (wB * cp1.rB.x) - vA.y - (wA * cp1.rA.x);
 
                     // vB + b2Math.b2Cross(wB, ref cp2.rB) - vA - b2Math.b2Cross(wA, ref cp2.rA);
-                    b2Vec2 dv2;
-                    dv2.x = vB.x + (-wB * cp2.rB.y) - vA.x - (-wA * cp2.rA.y);
-                    dv2.y = vB.y + (wB * cp2.rB.x) - vA.y - (wA * cp2.rA.x);
+                    float dv2x = vB.x + (-wB * cp2.rB.y) - vA.x - (-wA * cp2.rA.y);
+                    float dv2y = vB.y + (wB * cp2.rB.x) - vA.y - (wA * cp2.rA.x);
 
                     // Compute normal velocity
-                    float vn1 = dv1.x * normal.x + dv1.y * normal.y;// b2Math.b2Dot(ref dv1, ref normal);
-                    float vn2 = dv2.x * normal.x + dv2.y * normal.y;// b2Math.b2Dot(ref dv2, ref normal);
+                    float vn1 = dv1x * normalx + dv1y * normaly;// b2Math.b2Dot(ref dv1, ref normal);
+                    float vn2 = dv2x * normalx + dv2y * normaly;// b2Math.b2Dot(ref dv2, ref normal);
 
-                    b2Vec2 b;
-                    b.x = vn1 - cp1.velocityBias;
-                    b.y = vn2 - cp2.velocityBias;
+                    float bx = vn1 - cp1.velocityBias;
+                    float by = vn2 - cp2.velocityBias;
 
                     // Compute b'
                     // (A.ex.x * v.x + A.ey.x * v.y, A.ex.y * v.x + A.ey.y * v.y)
-                    b.x -= (vc.K.ex.x * a.x + vc.K.ey.x * a.y);
-                    b.y -= (vc.K.ex.y * a.x + vc.K.ey.y * a.y);
+                    bx -= (vc.K.ex.x * ax + vc.K.ey.x * ay);
+                    by -= (vc.K.ex.y * ax + vc.K.ey.y * ay);
                     // b -= b2Math.b2Mul(vc.K, a);
 
                     //            float k_errorTol = 1e-3f;
@@ -582,25 +604,36 @@ namespace Box2D.Dynamics.Contacts
                         //
                         // x = - inv(A) * b'
                         //
-                        b2Vec2 x = -b2Math.b2Mul(ref vc.normalMass, ref b);
+                        float xx = -(vc.normalMass.ex.x * bx + vc.normalMass.ey.x * by);
+                        float xy = -(vc.normalMass.ex.y * bx + vc.normalMass.ey.y * by);
 
-                        if (x.x >= 0.0f && x.y >= 0.0f)
+                        if (xx >= 0.0f && xy >= 0.0f)
                         {
                             // Get the incremental impulse
-                            b2Vec2 d = x - a;
+                            float dx = xx - ax;
+                            float dy = xy - ay;
 
                             // Apply incremental impulse
-                            b2Vec2 P1 = d.x * normal;
-                            b2Vec2 P2 = d.y * normal;
-                            vA -= mA * (P1 + P2);
-                            wA -= iA * (b2Math.b2Cross(ref cp1.rA, ref P1) + b2Math.b2Cross(ref cp2.rA, ref P2));
+                            float P1x = dx * normalx;
+                            float P1y = dx * normaly;
 
-                            vB += mB * (P1 + P2);
-                            wB += iB * (b2Math.b2Cross(ref cp1.rB, ref P1) + b2Math.b2Cross(ref cp2.rB, ref P2));
+                            float P2x = dy * normalx;
+                            float P2y = dy * normaly;
+
+                            float P12x = P1x + P2x;
+                            float P12y = P1y + P2y;
+
+                            vA.x -= mA * P12x;
+                            vA.y -= mA * P12y;
+                            wA -= iA * (cp1.rA.x * P1y - cp1.rA.y * P1x + (cp2.rA.x * P2y - cp2.rA.y * P2x));
+
+                            vB.x += mB * P12x;
+                            vB.y += mB * P12y;
+                            wB += iB * (cp1.rB.x * P1y - cp1.rB.y * P1x + (cp2.rB.x * P2y - cp2.rB.y * P2x));
 
                             // Accumulate
-                            cp1.normalImpulse = x.x;
-                            cp2.normalImpulse = x.y;
+                            cp1.normalImpulse = xx;
+                            cp2.normalImpulse = xy;
 
 #if B2_DEBUG_SOLVER
                     // Postconditions
@@ -623,28 +656,38 @@ namespace Box2D.Dynamics.Contacts
                         //   0 = a11 * x1 + a12 * 0 + b1' 
                         // vn2 = a21 * x1 + a22 * 0 + b2'
                         //
-                        x.x = -cp1.normalMass * b.x;
-                        x.y = 0.0f;
+                        xx = -cp1.normalMass * bx;
+                        xy = 0.0f;
                         vn1 = 0.0f;
-                        vn2 = vc.K.ex.y * x.x + b.y;
+                        vn2 = vc.K.ex.y * xx + by;
 
-                        if (x.x >= 0.0f && vn2 >= 0.0f)
+                        if (xx >= 0.0f && vn2 >= 0.0f)
                         {
                             // Get the incremental impulse
-                            b2Vec2 d = x - a;
+                            float dx = xx - ax;
+                            float dy = xy - ay;
 
                             // Apply incremental impulse
-                            b2Vec2 P1 = d.x * normal;
-                            b2Vec2 P2 = d.y * normal;
-                            vA -= mA * (P1 + P2);
-                            wA -= iA * (b2Math.b2Cross(ref cp1.rA, ref P1) + b2Math.b2Cross(ref cp2.rA, ref P2));
+                            float P1x = dx * normalx;
+                            float P1y = dx * normaly;
 
-                            vB += mB * (P1 + P2);
-                            wB += iB * (b2Math.b2Cross(ref cp1.rB, ref P1) + b2Math.b2Cross(ref cp2.rB, ref P2));
+                            float P2x = dy * normalx;
+                            float P2y = dy * normaly;
+
+                            float P12x = P1x + P2x;
+                            float P12y = P1y + P2y;
+
+                            vA.x -= mA * P12x;
+                            vA.y -= mA * P12y;
+                            wA -= iA * (cp1.rA.x * P1y - cp1.rA.y * P1x + (cp2.rA.x * P2y - cp2.rA.y * P2x));
+
+                            vB.x += mB * P12x;
+                            vB.y += mB * P12y;
+                            wB += iB * (cp1.rB.x * P1y - cp1.rB.y * P1x + (cp2.rB.x * P2y - cp2.rB.y * P2x));
 
                             // Accumulate
-                            cp1.normalImpulse = x.x;
-                            cp2.normalImpulse = x.y;
+                            cp1.normalImpulse = xx;
+                            cp2.normalImpulse = xy;
 
 #if B2_DEBUG_SOLVER
                     // Postconditions
@@ -665,28 +708,38 @@ namespace Box2D.Dynamics.Contacts
                         // vn1 = a11 * 0 + a12 * x2 + b1' 
                         //   0 = a21 * 0 + a22 * x2 + b2'
                         //
-                        x.x = 0.0f;
-                        x.y = -cp2.normalMass * b.y;
-                        vn1 = vc.K.ey.x * x.y + b.x;
+                        xx = 0.0f;
+                        xy = -cp2.normalMass * by;
+                        vn1 = vc.K.ey.x * xy + bx;
                         vn2 = 0.0f;
 
-                        if (x.y >= 0.0f && vn1 >= 0.0f)
+                        if (xy >= 0.0f && vn1 >= 0.0f)
                         {
                             // Resubstitute for the incremental impulse
-                            b2Vec2 d = x - a;
+                            float dx = xx - ax;
+                            float dy = xy - ay;
 
                             // Apply incremental impulse
-                            b2Vec2 P1 = d.x * normal;
-                            b2Vec2 P2 = d.y * normal;
-                            vA -= mA * (P1 + P2);
-                            wA -= iA * (b2Math.b2Cross(ref cp1.rA, ref P1) + b2Math.b2Cross(ref cp2.rA, ref P2));
+                            float P1x = dx * normalx;
+                            float P1y = dx * normaly;
 
-                            vB += mB * (P1 + P2);
-                            wB += iB * (b2Math.b2Cross(ref cp1.rB, ref P1) + b2Math.b2Cross(ref cp2.rB, ref P2));
+                            float P2x = dy * normalx;
+                            float P2y = dy * normaly;
+
+                            float P12x = P1x + P2x;
+                            float P12y = P1y + P2y;
+
+                            vA.x -= mA * P12x;
+                            vA.y -= mA * P12y;
+                            wA -= iA * (cp1.rA.x * P1y - cp1.rA.y * P1x + (cp2.rA.x * P2y - cp2.rA.y * P2x));
+
+                            vB.x += mB * P12x;
+                            vB.y += mB * P12y;
+                            wB += iB * (cp1.rB.x * P1y - cp1.rB.y * P1x + (cp2.rB.x * P2y - cp2.rB.y * P2x));
 
                             // Accumulate
-                            cp1.normalImpulse = x.x;
-                            cp2.normalImpulse = x.y;
+                            cp1.normalImpulse = xx;
+                            cp2.normalImpulse = xy;
 
 #if B2_DEBUG_SOLVER
                     // Postconditions
@@ -705,28 +758,38 @@ namespace Box2D.Dynamics.Contacts
                         // 
                         // vn1 = b1
                         // vn2 = b2;
-                        x.x = 0.0f;
-                        x.y = 0.0f;
-                        vn1 = b.x;
-                        vn2 = b.y;
+                        xx = 0.0f;
+                        xy = 0.0f;
+                        vn1 = bx;
+                        vn2 = by;
 
                         if (vn1 >= 0.0f && vn2 >= 0.0f)
                         {
                             // Resubstitute for the incremental impulse
-                            b2Vec2 d = x - a;
+                            float dx = xx - ax;
+                            float dy = xy - ay;
 
                             // Apply incremental impulse
-                            b2Vec2 P1 = d.x * normal;
-                            b2Vec2 P2 = d.y * normal;
-                            vA -= mA * (P1 + P2);
-                            wA -= iA * (b2Math.b2Cross(ref cp1.rA, ref P1) + b2Math.b2Cross(ref cp2.rA, ref P2));
+                            float P1x = dx * normalx;
+                            float P1y = dx * normaly;
 
-                            vB += mB * (P1 + P2);
-                            wB += iB * (b2Math.b2Cross(ref cp1.rB, ref P1) + b2Math.b2Cross(ref cp2.rB, ref P2));
+                            float P2x = dy * normalx;
+                            float P2y = dy * normaly;
+
+                            float P12x = P1x + P2x;
+                            float P12y = P1y + P2y;
+
+                            vA.x -= mA * P12x;
+                            vA.y -= mA * P12y;
+                            wA -= iA * (cp1.rA.x * P1y - cp1.rA.y * P1x + (cp2.rA.x * P2y - cp2.rA.y * P2x));
+
+                            vB.x += mB * P12x;
+                            vB.y += mB * P12y;
+                            wB += iB * (cp1.rB.x * P1y - cp1.rB.y * P1x + (cp2.rB.x * P2y - cp2.rB.y * P2x));
 
                             // Accumulate
-                            cp1.normalImpulse = x.x;
-                            cp2.normalImpulse = x.y;
+                            cp1.normalImpulse = xx;
+                            cp2.normalImpulse = xy;
 
                             break;
                         }
@@ -736,17 +799,12 @@ namespace Box2D.Dynamics.Contacts
                         break;
                     }
                     #endregion
-                    
-                    //vc.points[0] = cp1;
-                    //vc.points[1] = cp2;
                 }
 
                 m_velocities[indexA].v = vA;
                 m_velocities[indexA].w = wA;
                 m_velocities[indexB].v = vB;
                 m_velocities[indexB].w = wB;
-                
-                //m_velocityConstraints[i] = vc;
             }
         }
 
@@ -766,7 +824,7 @@ namespace Box2D.Dynamics.Contacts
             }
         }
 
-        public class b2PositionSolverManifold
+        public struct b2PositionSolverManifold
         {
             public b2PositionSolverManifold(b2ContactPositionConstraint pc, ref b2Transform xfA, ref b2Transform xfB, int index)
             {
@@ -776,41 +834,68 @@ namespace Box2D.Dynamics.Contacts
                 {
                     case b2ManifoldType.e_circles:
                         {
-                            b2Vec2 pointA = b2Math.b2Mul(xfA, pc.localPoint);
-                            b2Vec2 pointB = b2Math.b2Mul(xfB, pc.localPoints[0]);
+                            b2Vec2 pointA;
+                            pointA.x = (xfA.q.c * pc.localPoint.x - xfA.q.s * pc.localPoint.y) + xfA.p.x;
+                            pointA.y = (xfA.q.s * pc.localPoint.x + xfA.q.c * pc.localPoint.y) + xfA.p.y;
+
+                            var lc = pc.localPoints[0];
+                            b2Vec2 pointB;
+                            pointB.x = (xfB.q.c * lc.x - xfB.q.s * lc.y) + xfB.p.x;
+                            pointB.y = (xfB.q.s * lc.x + xfB.q.c * lc.y) + xfB.p.y;
+
                             normal = pointB - pointA;
                             normal.Normalize();
                             point = 0.5f * (pointA + pointB);
-                            separation = b2Math.b2Dot(pointB - pointA, normal) - pc.radiusA - pc.radiusB;
+                            b2Vec2 a = pointB - pointA;
+                            separation = a.x * normal.x + a.y * normal.y - pc.radiusA - pc.radiusB;
                         }
                         break;
 
                     case b2ManifoldType.e_faceA:
                         {
-                            normal = b2Math.b2Mul(xfA.q, pc.localNormal);
-                            b2Vec2 planePoint = b2Math.b2Mul(xfA, pc.localPoint);
+                            normal.x = xfA.q.c * pc.localNormal.x - xfA.q.s * pc.localNormal.y;
+                            normal.y = xfA.q.s * pc.localNormal.x + xfA.q.c * pc.localNormal.y;
 
-                            b2Vec2 clipPoint = b2Math.b2Mul(xfB, pc.localPoints[index]);
+                            b2Vec2 planePoint;
+                            planePoint.x = (xfA.q.c * pc.localPoint.x - xfA.q.s * pc.localPoint.y) + xfA.p.x;
+                            planePoint.y = (xfA.q.s * pc.localPoint.x + xfA.q.c * pc.localPoint.y) + xfA.p.y;
+
+                            var lc = pc.localPoints[index];
+                            b2Vec2 clipPoint;
+                            clipPoint.x = (xfB.q.c * lc.x - xfB.q.s * lc.y) + xfB.p.x;
+                            clipPoint.y = (xfB.q.s * lc.x + xfB.q.c * lc.y) + xfB.p.y;
+
                             b2Vec2 rCP = clipPoint - planePoint;
-                            separation = b2Math.b2Dot(ref rCP, ref normal) - pc.radiusA - pc.radiusB;
+                            separation = rCP.x * normal.x + rCP.y * normal.y - pc.radiusA - pc.radiusB;
                             point = clipPoint;
                         }
                         break;
 
                     case b2ManifoldType.e_faceB:
                         {
-                            normal = b2Math.b2Mul(xfB.q, pc.localNormal);
-                            b2Vec2 planePoint = b2Math.b2Mul(xfB, pc.localPoint);
+                            normal.x = xfB.q.c * pc.localNormal.x - xfB.q.s * pc.localNormal.y;
+                            normal.y = xfB.q.s * pc.localNormal.x + xfB.q.c * pc.localNormal.y;
+                            
+                            b2Vec2 planePoint;
+                            planePoint.x = (xfB.q.c * pc.localPoint.x - xfB.q.s * pc.localPoint.y) + xfB.p.x;
+                            planePoint.y = (xfB.q.s * pc.localPoint.x + xfB.q.c * pc.localPoint.y) + xfB.p.y;
 
-                            b2Vec2 clipPoint = b2Math.b2Mul(xfA, pc.localPoints[index]);
+                            var lc = pc.localPoints[index];
+                            b2Vec2 clipPoint;
+                            clipPoint.x = (xfA.q.c * lc.x - xfA.q.s * lc.y) + xfA.p.x;
+                            clipPoint.y = (xfA.q.s * lc.x + xfA.q.c * lc.y) + xfA.p.y;
+
                             b2Vec2 rCP = clipPoint - planePoint;
-                            separation = b2Math.b2Dot(ref rCP, ref normal) - pc.radiusA - pc.radiusB;
+                            separation = rCP.x * normal.x + rCP.y * normal.y - pc.radiusA - pc.radiusB;
                             point = clipPoint;
 
                             // Ensure normal points from A to B
                             normal = -normal;
                         }
                         break;
+
+                    default:
+                        throw new ArgumentException();
                 }
             }
 
@@ -824,9 +909,11 @@ namespace Box2D.Dynamics.Contacts
         {
             float minSeparation = 0.0f;
 
-            for (int i = 0; i < m_count; ++i)
+            var positionConstraints = m_positionConstraints;
+
+            for (int i = 0, count = m_count; i < count; ++i)
             {
-                b2ContactPositionConstraint pc = m_positionConstraints[i];
+                b2ContactPositionConstraint pc = positionConstraints[i];
 
                 int indexA = pc.indexA;
                 int indexB = pc.indexB;
@@ -844,23 +931,39 @@ namespace Box2D.Dynamics.Contacts
                 b2Vec2 cB = m_positions[indexB].c;
                 float aB = m_positions[indexB].a;
 
+                b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
+
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
-                    xfA.q.Set(aA);
-                    xfB.q.Set(aB);
-                    xfA.p = cA - b2Math.b2Mul(xfA.q, localCenterA);
-                    xfB.p = cB - b2Math.b2Mul(xfB.q, localCenterB);
+                    xfA.q.s = (float)Math.Sin(aA);
+                    xfA.q.c = (float)Math.Cos(aA);
+                    xfB.q.s = (float)Math.Sin(aB);
+                    xfB.q.c = (float)Math.Cos(aB);
+
+                    float bx = xfA.q.c * localCenterA.x - xfA.q.s * localCenterA.y;
+                    float by = xfA.q.s * localCenterA.x + xfA.q.c * localCenterA.y;
+                    xfA.p.x = cA.x - bx;
+                    xfA.p.y = cA.y - by;
+
+                    bx = xfB.q.c * localCenterB.x - xfB.q.s * localCenterB.y;
+                    by = xfB.q.s * localCenterB.x + xfB.q.c * localCenterB.y;
+                    xfB.p.x = cB.x - bx;
+                    xfB.p.y = cB.y - by;
 
                     b2PositionSolverManifold psm = new b2PositionSolverManifold(pc, ref xfA, ref xfB, j);
-                    b2Vec2 normal = psm.normal;
+                    
+                    float normalx = psm.normal.x;
+                    float normaly = psm.normal.y;
 
                     b2Vec2 point = psm.point;
                     float separation = psm.separation;
 
-                    b2Vec2 rA = point - cA;
-                    b2Vec2 rB = point - cB;
+                    float rAx = point.x - cA.x;
+                    float rAy = point.y - cA.y;
+
+                    float rBx = point.x - cB.x;
+                    float rBy = point.y - cB.y;
 
                     // Track max constraint error.
                     minSeparation = Math.Min(minSeparation, separation);
@@ -869,20 +972,23 @@ namespace Box2D.Dynamics.Contacts
                     float C = b2Math.b2Clamp(b2Settings.b2_baumgarte * (separation + b2Settings.b2_linearSlop), -b2Settings.b2_maxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
-                    float rnA = b2Math.b2Cross(ref rA, ref normal);
-                    float rnB = b2Math.b2Cross(ref rB, ref normal);
+                    float rnA = rAx * normaly - rAy * normalx;
+                    float rnB = rBx * normaly - rBy * normalx;
                     float K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
 
                     // Compute normal impulse
                     float impulse = K > 0.0f ? -C / K : 0.0f;
 
-                    b2Vec2 P = impulse * normal;
+                    float Px = impulse * normalx;
+                    float Py = impulse * normaly;
 
-                    cA -= mA * P;
-                    aA -= iA * b2Math.b2Cross(ref rA, ref P);
+                    cA.x -= mA * Px;
+                    cA.y -= mA * Py;
+                    aA -= iA * (rAx * Py - rAy * Px);
 
-                    cB += mB * P;
-                    aB += iB * b2Math.b2Cross(ref rB, ref P);
+                    cB.x += mB * Px;
+                    cB.y += mB * Py;
+                    aB += iB * (rBx * Py - rBy * Px);
                 }
 
                 m_positions[indexA].c = cA;
@@ -890,8 +996,6 @@ namespace Box2D.Dynamics.Contacts
 
                 m_positions[indexB].c = cB;
                 m_positions[indexB].a = aB;
-
-                //m_positionConstraints[i] = pc;
             }
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't

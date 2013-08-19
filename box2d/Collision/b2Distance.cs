@@ -95,12 +95,12 @@ namespace Box2D.Collision
 		public int indexA;    // wA index
 		public int indexB;    // wB index
 	};
-	
-	
-	
-	
-	
-	public struct b2Simplex
+
+
+
+
+
+    public class b2Simplex : b2ReusedObject<b2Simplex>
 	{
 		
 		public void ReadCache(ref b2SimplexCache cache,
@@ -111,7 +111,6 @@ namespace Box2D.Collision
 			
 			// Copy data from cache.
 			m_count = (int)cache.count;
-            m_vertices = new b2SimplexVertex[3];
 			for (int i = 0; i < m_count; ++i)
 			{
 				b2SimplexVertex v;
@@ -119,8 +118,8 @@ namespace Box2D.Collision
 				v.indexB = (int)cache.indexB[i];
 				b2Vec2 wALocal = proxyA.GetVertex(v.indexA);
 				b2Vec2 wBLocal = proxyB.GetVertex(v.indexB);
-				v.wA = b2Math.b2Mul(transformA, wALocal);
-				v.wB = b2Math.b2Mul(transformB, wBLocal);
+                v.wA = b2Math.b2Mul(ref transformA, ref wALocal);
+                v.wB = b2Math.b2Mul(ref transformB, ref wBLocal);
 				v.w = v.wB - v.wA;
 				v.a = 0.0f;
                 m_vertices[i] = v;
@@ -147,8 +146,8 @@ namespace Box2D.Collision
 				v.indexB = 0;
 				b2Vec2 wALocal = proxyA.GetVertex(0);
 				b2Vec2 wBLocal = proxyB.GetVertex(0);
-				v.wA = b2Math.b2Mul(transformA, wALocal);
-				v.wB = b2Math.b2Mul(transformB, wBLocal);
+                v.wA = b2Math.b2Mul(ref transformA, ref wALocal);
+                v.wB = b2Math.b2Mul(ref transformB, ref wBLocal);
 				v.w = v.wB - v.wA;
                 v.a = 0.0f;
 				m_count = 1;
@@ -260,7 +259,7 @@ namespace Box2D.Collision
 				return 0.0f;
 				
 			case 2:
-                return b2Math.b2Distance(m_vertices[0].w, m_vertices[1].w);
+                return b2Math.b2Distance(ref m_vertices[0].w, ref m_vertices[1].w);
 				
 			case 3:
                 return b2Math.b2Cross(m_vertices[1].w - m_vertices[0].w, m_vertices[2].w - m_vertices[0].w);
@@ -270,8 +269,8 @@ namespace Box2D.Collision
 				return 0.0f;
 			}
 		}
-		
-		private b2SimplexVertex[] m_vertices;
+
+        private b2SimplexVertex[] m_vertices = new b2SimplexVertex[3];
 		private int m_count;
 		
 		
@@ -305,7 +304,7 @@ namespace Box2D.Collision
 			b2Vec2 e12 = w2 - w1;
 			
 			// w1 region
-			float d12_2 = -b2Math.b2Dot(w1, e12);
+            float d12_2 = -b2Math.b2Dot(ref w1, ref e12);
 			if (d12_2 <= 0.0f)
 			{
 				// a2 <= 0, so we clamp it to 0
@@ -315,7 +314,7 @@ namespace Box2D.Collision
 			}
 			
 			// w2 region
-			float d12_1 = b2Math.b2Dot(w2, e12);
+            float d12_1 = b2Math.b2Dot(ref w2, ref e12);
 			if (d12_1 <= 0.0f)
 			{
 				// a1 <= 0, so we clamp it to 0
@@ -348,8 +347,8 @@ namespace Box2D.Collision
 			// [w1.e12 w2.e12][a2] = [0]
 			// a3 = 0
 			b2Vec2 e12 = w2 - w1;
-			float w1e12 = b2Math.b2Dot(w1, e12);
-			float w2e12 = b2Math.b2Dot(w2, e12);
+            float w1e12 = b2Math.b2Dot(ref w1, ref e12);
+            float w2e12 = b2Math.b2Dot(ref w2, ref e12);
 			float d12_1 = w2e12;
 			float d12_2 = -w1e12;
 			
@@ -358,8 +357,8 @@ namespace Box2D.Collision
 			// [w1.e13 w3.e13][a3] = [0]
 			// a2 = 0
 			b2Vec2 e13 = w3 - w1;
-			float w1e13 = b2Math.b2Dot(w1, e13);
-			float w3e13 = b2Math.b2Dot(w3, e13);
+            float w1e13 = b2Math.b2Dot(ref w1, ref e13);
+            float w3e13 = b2Math.b2Dot(ref w3, ref e13);
 			float d13_1 = w3e13;
 			float d13_2 = -w1e13;
 			
@@ -368,17 +367,17 @@ namespace Box2D.Collision
 			// [w2.e23 w3.e23][a3] = [0]
 			// a1 = 0
 			b2Vec2 e23 = w3 - w2;
-			float w2e23 = b2Math.b2Dot(w2, e23);
-			float w3e23 = b2Math.b2Dot(w3, e23);
+            float w2e23 = b2Math.b2Dot(ref w2, ref e23);
+            float w3e23 = b2Math.b2Dot(ref w3, ref e23);
 			float d23_1 = w3e23;
 			float d23_2 = -w2e23;
 			
 			// Triangle123
-			float n123 = b2Math.b2Cross(e12, e13);
-			
-			float d123_1 = n123 * b2Math.b2Cross(w2, w3);
-			float d123_2 = n123 * b2Math.b2Cross(w3, w1);
-			float d123_3 = n123 * b2Math.b2Cross(w1, w2);
+            float n123 = b2Math.b2Cross(ref e12, ref e13);
+
+            float d123_1 = n123 * b2Math.b2Cross(ref w2, ref w3);
+            float d123_2 = n123 * b2Math.b2Cross(ref w3, ref w1);
+            float d123_3 = n123 * b2Math.b2Cross(ref w1, ref w2);
 			
 			// w1 region
 			if (d12_2 <= 0.0f && d13_2 <= 0.0f)
@@ -457,7 +456,7 @@ namespace Box2D.Collision
 			b2Transform transformB = input.transformB;
 			
 			// Initialize the simplex.
-			b2Simplex simplex = new b2Simplex();
+			b2Simplex simplex = b2Simplex.Create();
 			simplex.ReadCache(ref cache, proxyA, ref transformA, proxyB, ref transformB);
 			
 			// Get simplex vertices as an array.
@@ -466,8 +465,8 @@ namespace Box2D.Collision
 			
 			// These store the vertices of the last simplex so that we
 			// can check for duplicates and prevent cycling.
-			int[] saveA = new int[3];
-			int[] saveB = new int[3];
+			int[] saveA = b2ArrayPool<int>.Create(3, true);
+            int[] saveB = b2ArrayPool<int>.Create(3, true);
 			int saveCount = 0;
 			
 			b2Vec2 closestPoint = simplex.GetClosestPoint();
@@ -580,7 +579,7 @@ namespace Box2D.Collision
 			
 			// Prepare output.
 			simplex.GetWitnessPoints(ref output.pointA, ref output.pointB);
-			output.distance = b2Math.b2Distance(output.pointA, output.pointB);
+			output.distance = b2Math.b2Distance(ref output.pointA, ref output.pointB);
 			output.iterations = iter;
 			
 			// Cache the simplex.
@@ -612,10 +611,10 @@ namespace Box2D.Collision
 					output.distance = 0.0f;
 				}
 			}
-            // Copy back the vertex changes because they are structs, but in C++ land they are reference values
-            //simplex.m_vertices[0] = vertices[0];
-            //simplex.m_vertices[1] = vertices[1];
-            //simplex.m_vertices[2] = vertices[2];
+
+            simplex.Free();
+            b2ArrayPool<int>.Free(saveA);
+            b2ArrayPool<int>.Free(saveB);
 		}
 	}
 }

@@ -226,7 +226,6 @@ namespace Box2D.Collision
                 b.UpperBoundY += d.y;
             }
 
-            b.UpdateAttributes();
             m_nodes[proxyId].aabb = b;
 
             InsertLeaf(proxyId);
@@ -842,7 +841,9 @@ namespace Box2D.Collision
 
         public void Query(Ib2QueryCallback w, b2AABB aabb)
         {
-            Stack<int> stack = new Stack<int>();
+            var stack = b2IntStack.Create();
+            stack.Reset();
+
             stack.Push(m_root);
 
             while (stack.Count > 0)
@@ -862,18 +863,20 @@ namespace Box2D.Collision
                         bool proceed = w.QueryCallback(nodeId);
                         if (proceed == false)
                         {
+                            stack.Free();
                             return;
                         }
                     }
                     else
                     {
-                        if(node.child1 != b2TreeNode.b2_nullNode)
+                        if (node.child1 != b2TreeNode.b2_nullNode)
                             stack.Push(node.child1);
                         if (node.child2 != b2TreeNode.b2_nullNode)
                             stack.Push(node.child2);
                     }
                 }
             }
+            stack.Free();
         }
 
         public void RayCast(Ib2RayCastCallback callback, b2RayCastInput input)

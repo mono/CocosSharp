@@ -572,6 +572,10 @@ namespace Box2D.TestBed
         {
         }
 
+        b2PointState[] state1 = new b2PointState[b2Settings.b2_maxManifoldPoints];
+        b2PointState[] state2 = new b2PointState[b2Settings.b2_maxManifoldPoints];
+        b2WorldManifold worldManifold = new b2WorldManifold();
+
         public override void PreSolve(b2Contact contact, ref b2Manifold oldManifold)
         {
             b2Manifold manifold = contact.GetManifold();
@@ -584,11 +588,8 @@ namespace Box2D.TestBed
             b2Fixture fixtureA = contact.GetFixtureA();
             b2Fixture fixtureB = contact.GetFixtureB();
 
-            b2PointState[] state1 = new b2PointState[b2Settings.b2_maxManifoldPoints]; 
-            b2PointState[] state2 = new b2PointState[b2Settings.b2_maxManifoldPoints];
             b2Collision.b2GetPointStates(state1, state2, ref oldManifold, ref manifold);
 
-            b2WorldManifold worldManifold = new b2WorldManifold();
             contact.GetWorldManifold(ref worldManifold);
 
             for (int i = 0; i < manifold.pointCount && m_pointCount < k_maxContactPoints; ++i)

@@ -24,6 +24,7 @@ using Box2D.Collision;
 
 namespace Box2D.Dynamics.Contacts
 {
+    /*
     public class b2EdgeAndPolygonContact : b2Contact
     {
 		public b2EdgeAndPolygonContact(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB)
@@ -43,4 +44,5 @@ namespace Box2D.Dynamics.Contacts
                                         (b2PolygonShape)m_fixtureB.Shape, ref xfB);
         }
     }
+    */
 }

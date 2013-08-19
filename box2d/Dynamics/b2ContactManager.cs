@@ -114,6 +114,8 @@ namespace Box2D.Dynamics
                 bodyB.ContactList = c.NodeB.Next;
             }
 
+            c.Free();
+
             // Call the factory.
             --m_contactCount;
         }
@@ -135,7 +137,7 @@ namespace Box2D.Dynamics
                 b2Body bodyB = fixtureB.Body;
 
                 // Is this contact flagged for filtering?
-                if (c.Flags.HasFlag(b2ContactFlags.e_filterFlag))
+                if ((c.Flags & b2ContactFlags.e_filterFlag) != 0)
                 {
                     // Should these bodies collide?
                     if (bodyB.ShouldCollide(bodyA) == false)
@@ -222,8 +224,8 @@ namespace Box2D.Dynamics
             {
                 if (edge.Other == bodyA)
                 {
-                    b2Fixture fA = edge.Contact.GetFixtureA();
-                    b2Fixture fB = edge.Contact.GetFixtureB();
+                    b2Fixture fA = edge.Contact.FixtureA;
+                    b2Fixture fB = edge.Contact.FixtureB;
                     int iA = edge.Contact.GetChildIndexA();
                     int iB = edge.Contact.GetChildIndexB();
 

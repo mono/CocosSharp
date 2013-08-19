@@ -12,27 +12,28 @@ namespace Box2D.Collision
 
         public bool IsValid()
         {
-            b2Vec2 d = m_upperBound - m_lowerBound;
+            b2Vec2 d = UpperBound - LowerBound;
             bool valid = d.x >= 0.0f && d.y >= 0.0f;
-            valid = valid && m_lowerBound.IsValid() && m_upperBound.IsValid();
+            valid = valid && LowerBound.IsValid() && UpperBound.IsValid();
             return valid;
         }
 
         public bool Equals(b2AABB o)
         {
-            return (m_lowerBound == o.LowerBound && m_upperBound == o.UpperBound);
+            return (LowerBound == o.LowerBound && UpperBound == o.UpperBound);
         }
 
         public override bool Equals(object obj)
         {
-            b2AABB o = (b2AABB)obj;
-            return (m_lowerBound == o.LowerBound && m_upperBound == o.UpperBound);
+            b2AABB o = (b2AABB) obj;
+            return (LowerBound == o.LowerBound && UpperBound == o.UpperBound);
         }
 
         public static bool operator ==(b2AABB a, b2AABB b)
         {
             return (a.Equals(b));
         }
+
         public static bool operator !=(b2AABB a, b2AABB b)
         {
             return (a.LowerBound != b.LowerBound || a.UpperBound != b.UpperBound);
@@ -42,11 +43,7 @@ namespace Box2D.Collision
         {
             get
             {
-                if (_Dirty)
-                {
-                    UpdateAttributes();
-                }
-                return _Center;
+                return (LowerBound + UpperBound) / 2f;
             }
         }
 
@@ -54,11 +51,7 @@ namespace Box2D.Collision
         {
             get
             {
-                if (_Dirty)
-                {
-                    UpdateAttributes();
-                }
-                return _Extents;
+                return (UpperBound - LowerBound) / 2f;
             }
         }
 
@@ -66,11 +59,7 @@ namespace Box2D.Collision
         {
             get
             {
-                if (_Dirty)
-                {
-                    UpdateAttributes();
-                }
-                return (_Perimeter);
+                return 2.0f * (UpperBound.x - LowerBound.x + UpperBound.y - LowerBound.y);
             }
         }
 
@@ -81,10 +70,6 @@ namespace Box2D.Collision
 #endif
         public b2Vec2 GetCenter()
         {
-            if (_Dirty)
-            {
-                UpdateAttributes();
-            }
             return (Center);
         }
 
@@ -95,10 +80,6 @@ namespace Box2D.Collision
 #endif
         public b2Vec2 GetExtents()
         {
-            if (_Dirty)
-            {
-                UpdateAttributes();
-            }
             return (Extents);
         }
 
@@ -109,21 +90,7 @@ namespace Box2D.Collision
 #endif
         public float GetPerimeter()
         {
-            if (_Dirty)
-            {
-                UpdateAttributes();
-            }
             return (Perimeter);
-        }
-
-        public void UpdateAttributes()
-        {
-            float wx = m_upperBound.x - m_lowerBound.x;
-            float wy = m_upperBound.y - m_lowerBound.y;
-            _Perimeter = 2.0f * (wx + wy);
-            _Extents = (m_upperBound - m_lowerBound)/2f;
-            _Center = (m_lowerBound + m_upperBound)/2f;
-            _Dirty = false;
         }
 
         /// Combine an AABB into this one.
@@ -132,16 +99,11 @@ namespace Box2D.Collision
 #endif
         public void Combine(ref b2AABB aabb)
         {
-            m_lowerBound.x = aabb.LowerBoundX < LowerBoundX ? aabb.LowerBoundX : LowerBoundX;
-            m_lowerBound.y = aabb.LowerBoundY < LowerBoundY ? aabb.LowerBoundY : LowerBoundY;
+            LowerBound.x = aabb.LowerBoundX < LowerBoundX ? aabb.LowerBoundX : LowerBoundX;
+            LowerBound.y = aabb.LowerBoundY < LowerBoundY ? aabb.LowerBoundY : LowerBoundY;
 
-            m_upperBound.x = aabb.UpperBoundX > UpperBoundX ? aabb.UpperBoundX : UpperBoundX;
-            m_upperBound.y = aabb.UpperBoundY > UpperBoundY ? aabb.UpperBoundY : UpperBoundY;
-
-            //m_lowerBound = b2Math.b2Min(m_lowerBound, aabb.LowerBound);
-            //m_upperBound = b2Math.b2Max(m_upperBound, aabb.UpperBound);
-
-            _Dirty = true;
+            UpperBound.x = aabb.UpperBoundX > UpperBoundX ? aabb.UpperBoundX : UpperBoundX;
+            UpperBound.y = aabb.UpperBoundY > UpperBoundY ? aabb.UpperBoundY : UpperBoundY;
         }
 
         /// Combine two AABBs into this one.
@@ -150,74 +112,73 @@ namespace Box2D.Collision
 #endif
         public void Combine(ref b2AABB aabb1, ref b2AABB aabb2)
         {
-            m_lowerBound.x = aabb1.LowerBoundX < aabb2.LowerBoundX ? aabb1.LowerBoundX : aabb2.LowerBoundX;
-            m_lowerBound.y = aabb1.LowerBoundY < aabb2.LowerBoundY ? aabb1.LowerBoundY : aabb2.LowerBoundY;
+            LowerBound.x = aabb1.LowerBoundX < aabb2.LowerBoundX ? aabb1.LowerBoundX : aabb2.LowerBoundX;
+            LowerBound.y = aabb1.LowerBoundY < aabb2.LowerBoundY ? aabb1.LowerBoundY : aabb2.LowerBoundY;
 
-            m_upperBound.x = aabb1.UpperBoundX > aabb2.UpperBoundX ? aabb1.UpperBoundX : aabb2.UpperBoundX;
-            m_upperBound.y = aabb1.UpperBoundY > aabb2.UpperBoundY ? aabb1.UpperBoundY : aabb2.UpperBoundY;
-
-//            m_lowerBound = b2Math.b2Min(aabb1.LowerBound, aabb2.LowerBound);
-//            m_upperBound = b2Math.b2Max(aabb1.UpperBound, aabb2.UpperBound);
-
-            _Dirty = true;
+            UpperBound.x = aabb1.UpperBoundX > aabb2.UpperBoundX ? aabb1.UpperBoundX : aabb2.UpperBoundX;
+            UpperBound.y = aabb1.UpperBoundY > aabb2.UpperBoundY ? aabb1.UpperBoundY : aabb2.UpperBoundY;
         }
 
 #if AGGRESSIVE_INLINING
         [MethodImpl(MethodImplOptions.AggressiveInlining)] 
 #endif
+
         public void Set(b2Vec2 lower, b2Vec2 upper)
         {
-            m_lowerBound = lower;
-            m_upperBound = upper;
-            _Dirty = true;
+            LowerBound = lower;
+            UpperBound = upper;
         }
 
 #if AGGRESSIVE_INLINING
         [MethodImpl(MethodImplOptions.AggressiveInlining)] 
 #endif
+
         public void Set(float lx, float ly, float ux, float uy)
         {
-            m_lowerBound.Set(lx,ly);
-            m_upperBound.Set(ux,uy);
-            _Dirty = true;
+            LowerBound.Set(lx, ly);
+            UpperBound.Set(ux, uy);
         }
 
 #if AGGRESSIVE_INLINING
         [MethodImpl(MethodImplOptions.AggressiveInlining)] 
 #endif
+
         public void SetLowerBound(float x, float y)
         {
-            m_lowerBound.Set(x,y);
-            _Dirty = true;
+            LowerBound.Set(x, y);
         }
+
 #if AGGRESSIVE_INLINING
         [MethodImpl(MethodImplOptions.AggressiveInlining)] 
 #endif
+
         public void SetUpperBound(float x, float y)
         {
-            m_upperBound.Set(x, y);
-            _Dirty = true;
+            UpperBound.Set(x, y);
         }
 
         public float LowerBoundX
         {
-            get { return (m_lowerBound.x); }
-            set { m_lowerBound.x = value; _Dirty = true; }
+            get { return (LowerBound.x); }
+            set { LowerBound.x = value; }
         }
+
         public float LowerBoundY
         {
-            get { return (m_lowerBound.y); }
-            set { m_lowerBound.y = value; _Dirty = true; }
+            get { return (LowerBound.y); }
+            set { LowerBound.y = value; }
         }
+
         public float UpperBoundX
         {
-            get { return (m_upperBound.x); }
-            set { m_upperBound.x = value; _Dirty = true; }
+            get { return (UpperBound.x); }
+            set { UpperBound.x = value; }
         }
+
         public float UpperBoundY
         {
-            get { return (m_upperBound.y); }
-            set { m_upperBound.y = value; _Dirty = true; }
+            get { return (UpperBound.y); }
+            set { UpperBound.y = value; }
         }
 
         /// Does this aabb contain the provided AABB.
@@ -227,13 +188,13 @@ namespace Box2D.Collision
         public bool Contains(ref b2AABB aabb)
         {
             bool result = true;
-            result = result && m_lowerBound.x <= aabb.LowerBoundX;
-            if(result)
-                result = result && m_lowerBound.y <= aabb.LowerBoundY;
-            if(result)
-                result = result && aabb.UpperBoundX <= m_upperBound.x;
-            if(result)
-                result = result && aabb.UpperBoundY <= m_upperBound.y;
+            result = result && LowerBound.x <= aabb.LowerBoundX;
+            if (result)
+                result = result && LowerBound.y <= aabb.LowerBoundY;
+            if (result)
+                result = result && aabb.UpperBoundX <= UpperBound.x;
+            if (result)
+                result = result && aabb.UpperBoundY <= UpperBound.y;
             return result;
         }
 
@@ -252,8 +213,8 @@ namespace Box2D.Collision
             {
                 float p_i, lb, ub, d_i, absd_i;
                 p_i = (i == 0 ? p.x : p.y);
-                lb = (i == 0 ? m_lowerBound.x : m_lowerBound.y);
-                ub = (i == 0 ? m_upperBound.x : m_upperBound.y);
+                lb = (i == 0 ? LowerBound.x : LowerBound.y);
+                ub = (i == 0 ? UpperBound.x : UpperBound.y);
                 absd_i = (i == 0 ? absD.x : absD.y);
                 d_i = (i == 0 ? d.x : d.y);
 
@@ -327,49 +288,36 @@ namespace Box2D.Collision
 #if AGGRESSIVE_INLINING
         [MethodImpl(MethodImplOptions.AggressiveInlining)] 
 #endif
+
         public void Fatten(float amt)
         {
-            m_upperBound.x += amt;
-            m_upperBound.y += amt;
+            UpperBound.x += amt;
+            UpperBound.y += amt;
 
-            m_lowerBound.x -= amt;
-            m_lowerBound.y -= amt;
-            _Dirty = true;
+            LowerBound.x -= amt;
+            LowerBound.y -= amt;
         }
 
 #if AGGRESSIVE_INLINING
         [MethodImpl(MethodImplOptions.AggressiveInlining)] 
 #endif
+
         public void Fatten()
         {
-            m_upperBound.x += b2Settings.b2_aabbExtensionVec.x;
-            m_upperBound.y += b2Settings.b2_aabbExtensionVec.y;
+            UpperBound.x += b2Settings.b2_aabbExtensionVec.x;
+            UpperBound.y += b2Settings.b2_aabbExtensionVec.y;
 
-            m_lowerBound.x -= b2Settings.b2_aabbExtensionVec.x;
-            m_lowerBound.y -= b2Settings.b2_aabbExtensionVec.y;
-            _Dirty = true;
+            LowerBound.x -= b2Settings.b2_aabbExtensionVec.x;
+            LowerBound.y -= b2Settings.b2_aabbExtensionVec.y;
         }
 
-        private bool _Dirty;
-
-        // Private attributes
-        private float _Perimeter;
-        private b2Vec2 _Extents, _Center;
-
-        public b2Vec2 LowerBound { get { return (m_lowerBound); } set { m_lowerBound = value; _Dirty = true; } }
-        public b2Vec2 UpperBound { get { return (m_upperBound); } set { m_upperBound = value; _Dirty = true; } }
-
-        private b2Vec2 m_lowerBound;    //< the lower vertex
-        private b2Vec2 m_upperBound;    //< the upper vertex
+        public b2Vec2 LowerBound; //< the lower vertex
+        public b2Vec2 UpperBound; //< the upper vertex
 
         public static b2AABB Default = new b2AABB()
         {
-            m_lowerBound = b2Vec2.Zero,
-            m_upperBound = b2Vec2.Zero,
-            _Dirty = true,
-            _Perimeter = 0f,
-            _Extents = b2Vec2.Zero,
-            _Center = b2Vec2.Zero
+            LowerBound = b2Vec2.Zero,
+            UpperBound = b2Vec2.Zero,
         };
 
     }
