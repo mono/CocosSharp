@@ -14,8 +14,8 @@
     <ProjectGuid>{4E108384-823E-4C73-AAB9-BD322AD09E70}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EmptyProject.WindowsGL</RootNamespace>
-    <AssemblyName>EmptyProject.WindowsGL</AssemblyName>
+    <RootNamespace>EmptyProject.WindowsDX</RootNamespace>
+    <AssemblyName>EmptyProject.WindowsDX</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
