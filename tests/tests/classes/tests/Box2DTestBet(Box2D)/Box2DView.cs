@@ -18,7 +18,7 @@ namespace Box2D.TestBed
             TouchEnabled = true;
             KeyboardEnabled = true;
 
-            Schedule(tick);
+            ScheduleUpdate();
 
             m_entry = TestEntries.TestList[entryId];
             m_test = m_entry.CreateFcn();
@@ -31,14 +31,14 @@ namespace Box2D.TestBed
             return m_entry.Name;
         }
 
-        public void tick(float dt)
+        public override void Update(float dt)
         {
+            base.Update(dt);
+            m_test.Step(settings);
         }
 
         public override void Draw()
         {
-            m_test.Step(settings);
-
             base.Draw();
 
             m_test.InternalDraw(settings);

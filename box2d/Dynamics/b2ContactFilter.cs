@@ -27,6 +27,6 @@ namespace Box2D.Dynamics
             return collide;
         }
 
-        public static b2ContactFilter b2_defaultFilter = null;
+        public static b2ContactFilter b2_defaultFilter = new b2ContactFilter();
     }
 }

@@ -57,7 +57,7 @@ namespace Box2D.TestBed.Tests
 
             b2Vec2[] vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
 
-            b2Transform transformA = new b2Transform();
+            b2Transform transformA;
             sweepA.GetTransform(out transformA, 0.0f);
             for (int i = 0; i < m_shapeA.VertexCount; ++i)
             {
@@ -65,7 +65,7 @@ namespace Box2D.TestBed.Tests
             }
             m_debugDraw.DrawPolygon(vertices, m_shapeA.VertexCount, new b2Color(0.9f, 0.9f, 0.9f));
 
-            b2Transform transformB = new b2Transform();
+            b2Transform transformB;
             sweepB.GetTransform(out transformB, 0.0f);
 
             b2Vec2 localPoint = new b2Vec2(2.0f, -0.1f);

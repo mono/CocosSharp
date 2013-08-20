@@ -81,34 +81,37 @@ namespace Box2D.Collision
 	};
 	
 	
-	public struct b2SimplexVertex
+    public struct b2Simplex
 	{
-        public static b2SimplexVertex Create()
+        public struct b2SimplexVertex
         {
-            return (new b2SimplexVertex());
-        }
-        
-        public b2Vec2 wA;        // support point in proxyA
-		public b2Vec2 wB;        // support point in proxyB
-		public b2Vec2 w;        // wB - wA
-		public float a;        // barycentric coordinate for closest point
-		public int indexA;    // wA index
-		public int indexB;    // wB index
-	};
+            public static b2SimplexVertex Create()
+            {
+                return (new b2SimplexVertex());
+            }
+
+            public b2Vec2 wA;        // support point in proxyA
+            public b2Vec2 wB;        // support point in proxyB
+            public b2Vec2 w;        // wB - wA
+            public float a;        // barycentric coordinate for closest point
+            public int indexA;    // wA index
+            public int indexB;    // wB index
+        };
 
 
+        private static b2SimplexVertex[] _vertices = new b2SimplexVertex[3];
 
-
-
-    public class b2Simplex : b2ReusedObject<b2Simplex>
-	{
+        private b2SimplexVertex[] m_vertices;
+        private int m_count;
 		
-		public void ReadCache(ref b2SimplexCache cache,
+		private void ReadCache(ref b2SimplexCache cache,
 		                      b2DistanceProxy proxyA, ref b2Transform transformA,
 		                      b2DistanceProxy proxyB, ref b2Transform transformB)
 		{
 			Debug.Assert(cache.count <= 3);
-			
+
+		    m_vertices = _vertices;
+
 			// Copy data from cache.
 			m_count = (int)cache.count;
 			for (int i = 0; i < m_count; ++i)
@@ -270,9 +273,6 @@ namespace Box2D.Collision
 			}
 		}
 
-        private b2SimplexVertex[] m_vertices = new b2SimplexVertex[3];
-		private int m_count;
-		
 		
 		// Solve a line segment using barycentric coordinates.
 		//
@@ -444,7 +444,10 @@ namespace Box2D.Collision
 			m_vertices[2].a = d123_3 * inv_d123;
 			m_count = 3;
 		}
-		
+
+        private static int[] _saveA = new int[3];
+        private static int[] _saveB = new int[3];
+
 		public static void b2Distance(ref b2DistanceOutput output, ref b2SimplexCache cache, ref b2DistanceInput input)
 		{
 			++b2DistanceProxy.b2_gjkCalls;
@@ -456,7 +459,7 @@ namespace Box2D.Collision
 			b2Transform transformB = input.transformB;
 			
 			// Initialize the simplex.
-			b2Simplex simplex = b2Simplex.Create();
+			b2Simplex simplex = new b2Simplex();
 			simplex.ReadCache(ref cache, proxyA, ref transformA, proxyB, ref transformB);
 			
 			// Get simplex vertices as an array.
@@ -465,8 +468,8 @@ namespace Box2D.Collision
 			
 			// These store the vertices of the last simplex so that we
 			// can check for duplicates and prevent cycling.
-			int[] saveA = b2ArrayPool<int>.Create(3, true);
-            int[] saveB = b2ArrayPool<int>.Create(3, true);
+            int[] saveA = _saveA;
+            int[] saveB = _saveB;
 			int saveCount = 0;
 			
 			b2Vec2 closestPoint = simplex.GetClosestPoint();
@@ -611,10 +614,6 @@ namespace Box2D.Collision
 					output.distance = 0.0f;
 				}
 			}
-
-            simplex.Free();
-            b2ArrayPool<int>.Free(saveA);
-            b2ArrayPool<int>.Free(saveB);
 		}
 	}
 }
