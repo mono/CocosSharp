@@ -192,9 +192,9 @@ namespace Cocos2D
 
                 if (typeof(T) == typeof(PlistDocument))
                 {
-                    //TODO: No need CCContent, use TileContainer
-                    var content = ReadAsset<CCContent>(path, null);
-                    result = (T) (object) new PlistDocument(content.Content);
+					string assetPath = Path.Combine(RootDirectory, path);
+					var streamContent = GetAssetStream(assetPath);
+                    result = (T) (object) new PlistDocument(streamContent);
                     
                     useContentReader = false;
                 }
