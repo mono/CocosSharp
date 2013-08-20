@@ -97,7 +97,7 @@ namespace Box2D.Collision.Shapes
             r.x = input.p2.x - input.p1.x;
             r.y = input.p2.y - input.p1.y;
 //            b2Vec2 r = input.p2 - input.p1;
-            float c = s.x * r.x + s.y + r.y; // b2Math.b2Dot(ref s, ref r);
+            float c = s.x * r.x + s.y * r.y; // b2Math.b2Dot(ref s, ref r);
             float rr = r.LengthSquared; //  b2Math.b2Dot(r, r);
             float sigma = c * c - rr * b;
 

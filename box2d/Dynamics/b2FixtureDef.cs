@@ -59,6 +59,6 @@ namespace Box2D.Dynamics
         public bool isSensor;
 
         /// Contact filtering data.
-        public b2Filter filter;
+        public b2Filter filter = b2Filter.Default;
     }
 }
