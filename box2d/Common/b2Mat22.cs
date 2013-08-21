@@ -77,7 +77,7 @@ namespace Box2D.Common
         public b2Mat22 GetInverse()
         {
             float a = ex.x, b = ey.x, c = ex.y, d = ey.y;
-            b2Mat22 B = new b2Mat22();
+            b2Mat22 B;
             float det = a * d - b * c;
             if (det != 0.0f)
             {
@@ -86,6 +86,18 @@ namespace Box2D.Common
             B.ex.x = det * d; B.ey.x = -det * b;
             B.ex.y = -det * c; B.ey.y = det * a;
             return B;
+        }
+
+        public void GetInverse(out b2Mat22 matrix)
+        {
+            float a = ex.x, b = ey.x, c = ex.y, d = ey.y;
+            float det = a * d - b * c;
+            if (det != 0.0f)
+            {
+                det = 1.0f / det;
+            }
+            matrix.ex.x = det * d; matrix.ey.x = -det * b;
+            matrix.ex.y = -det * c; matrix.ey.y = det * a;
         }
 
         /// Solve A * x = b, where b is a column vector. This is more efficient

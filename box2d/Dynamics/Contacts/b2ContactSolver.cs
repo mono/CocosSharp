@@ -260,6 +260,7 @@ namespace Box2D.Dynamics.Contacts
         // Initialize position dependent portions of the velocity constraints.
         public virtual void InitializeVelocityConstraints()
         {
+#if false
             for (int i = 0; i < m_count; ++i)
             {
                 b2ContactVelocityConstraint vc = m_velocityConstraints[i];
@@ -368,6 +369,140 @@ namespace Box2D.Dynamics.Contacts
                     }
                 }
             }
+#else
+            for (int i = 0; i < m_count; ++i)
+            {
+                b2ContactVelocityConstraint vc = m_velocityConstraints[i];
+                b2ContactPositionConstraint pc = m_positionConstraints[i];
+
+                float radiusA = pc.radiusA;
+                float radiusB = pc.radiusB;
+                b2Manifold manifold = m_contacts[vc.contactIndex].GetManifold();
+
+                int indexA = vc.indexA;
+                int indexB = vc.indexB;
+
+                float mA = vc.invMassA;
+                float mB = vc.invMassB;
+                float iA = vc.invIA;
+                float iB = vc.invIB;
+                b2Vec2 localCenterA = pc.localCenterA;
+                b2Vec2 localCenterB = pc.localCenterB;
+
+                b2Vec2 cA = m_positions[indexA].c;
+                float aA = m_positions[indexA].a;
+                b2Vec2 vA = m_velocities[indexA].v;
+                float wA = m_velocities[indexA].w;
+
+                b2Vec2 cB = m_positions[indexB].c;
+                float aB = m_positions[indexB].a;
+                b2Vec2 vB = m_velocities[indexB].v;
+                float wB = m_velocities[indexB].w;
+
+                Debug.Assert(manifold.pointCount > 0);
+
+                b2Transform xfA, xfB;
+
+                xfA.q.s = (float)Math.Sin(aA);
+                xfA.q.c = (float)Math.Cos(aA);
+
+                xfB.q.s = (float)Math.Sin(aB);
+                xfB.q.c = (float)Math.Cos(aB);
+
+                xfA.p.x = cA.x - (xfA.q.c * localCenterA.x - xfA.q.s * localCenterA.y);
+                xfA.p.y = cA.y - (xfA.q.s * localCenterA.x + xfA.q.c * localCenterA.y);
+                
+                xfB.p.x = cB.x - (xfB.q.c * localCenterB.x - xfB.q.s * localCenterB.y);
+                xfB.p.y = cB.y - (xfB.q.s * localCenterB.x + xfB.q.c * localCenterB.y);
+
+                //b2WorldManifold worldManifold = new b2WorldManifold();
+                b2WorldManifold worldManifold = _b2WorldManifold;
+                worldManifold.Initialize(ref manifold, xfA, radiusA, xfB, radiusB);
+
+                vc.normal = worldManifold.normal;
+
+                float normalx = vc.normal.x;
+                float normaly = vc.normal.y;
+
+                float tangentx = normaly; //  b2Math.b2Cross(vc.normal, 1.0f);
+                float tangenty = -normalx;
+
+                int pointCount = vc.pointCount;
+                for (int j = 0; j < pointCount; ++j)
+                {
+                    b2VelocityConstraintPoint vcp = vc.points[j];
+
+                    var point = worldManifold.points[j];
+
+                    vcp.rA.x = point.x - cA.x;
+                    vcp.rA.y = point.y - cA.y;
+
+                    vcp.rB.x = point.x - cB.x;
+                    vcp.rB.y = point.y - cB.y;
+
+                    float rnA = vcp.rA.x * normaly - vcp.rA.y * normalx;
+                    float rnB = vcp.rB.x * normaly - vcp.rB.y * normalx;
+
+                    float kNormal = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
+
+                    vcp.normalMass = kNormal > 0.0f ? 1.0f / kNormal : 0.0f;
+
+                    float rtA = vcp.rA.x * tangenty - vcp.rA.y * tangentx;
+                    float rtB = vcp.rB.x * tangenty - vcp.rB.y * tangentx;
+
+                    float kTangent = mA + mB + iA * rtA * rtA + iB * rtB * rtB;
+
+                    vcp.tangentMass = kTangent > 0.0f ? 1.0f / kTangent : 0.0f;
+
+                    // Setup a velocity bias for restitution.
+                    vcp.velocityBias = 0.0f;
+
+                    float bx = -wB * vcp.rB.y;
+                    float by = wB * vcp.rB.x;
+                    float ax = -wA * vcp.rA.y;
+                    float ay = wA * vcp.rA.x;
+
+                    float vRel = normalx * (vB.x + bx - vA.x - ax) + normaly * (vB.y + by - vA.y - ay);
+                    if (vRel < -b2Settings.b2_velocityThreshold)
+                    {
+                        vcp.velocityBias = -vc.restitution * vRel;
+                    }
+                }
+
+                // If we have two points, then prepare the block solver.
+                if (vc.pointCount == 2)
+                {
+                    b2VelocityConstraintPoint vcp1 = vc.points[0];
+                    b2VelocityConstraintPoint vcp2 = vc.points[1];
+
+                    float rn1A = vcp1.rA.x * normaly - vcp1.rA.y * normalx;
+                    float rn1B = vcp1.rB.x * normaly - vcp1.rB.y * normalx;
+                    float rn2A = vcp2.rA.x * normaly - vcp2.rA.y * normalx;
+                    float rn2B = vcp2.rB.x * normaly - vcp2.rB.y * normalx;
+
+                    float k11 = mA + mB + iA * rn1A * rn1A + iB * rn1B * rn1B;
+                    float k22 = mA + mB + iA * rn2A * rn2A + iB * rn2B * rn2B;
+                    float k12 = mA + mB + iA * rn1A * rn2A + iB * rn1B * rn2B;
+
+                    // Ensure a reasonable condition number.
+                    float k_maxConditionNumber = 1000.0f;
+                    if (k11 * k11 < k_maxConditionNumber * (k11 * k22 - k12 * k12))
+                    {
+                        vc.K.ex.x = k11;
+                        vc.K.ex.y = k12;
+                        vc.K.ey.x = k12;
+                        vc.K.ey.y = k22;
+                        vc.K.GetInverse(out vc.normalMass);
+                    }
+                    else
+                    {
+                        // The constraints are redundant, just use one.
+                        // TODO_ERIN use deepest?
+                        vc.pointCount = 1;
+                    }
+                }
+            }
+#endif
         }
 
         public virtual void WarmStart()
@@ -461,7 +596,16 @@ namespace Box2D.Dynamics.Contacts
 
                     // b2Math.b2Clamp the accumulated force
                     float maxFriction = friction * vcp.normalImpulse;
-                    float newImpulse = b2Math.b2Clamp(vcp.tangentImpulse + lambda, -maxFriction, maxFriction);
+                    float newImpulse = vcp.tangentImpulse + lambda;
+                    if (newImpulse < -maxFriction)
+                    {
+                        newImpulse = -maxFriction;
+                    }
+                    else if (newImpulse > maxFriction)
+                    {
+                        newImpulse = maxFriction;
+                    }
+
                     lambda = newImpulse - vcp.tangentImpulse;
                     vcp.tangentImpulse = newImpulse;
 
@@ -502,7 +646,11 @@ namespace Box2D.Dynamics.Contacts
                     float lambda = -vcp.normalMass * (vn - vcp.velocityBias);
 
                     // b2Math.b2Clamp the accumulated impulse
-                    float newImpulse = Math.Max(vcp.normalImpulse + lambda, 0.0f);
+                    float newImpulse = vcp.normalImpulse + lambda;
+                    if (newImpulse < 0f)
+                    {
+                        newImpulse = 0f;
+                    }
                     lambda = newImpulse - vcp.normalImpulse;
                     vcp.normalImpulse = newImpulse;
 
