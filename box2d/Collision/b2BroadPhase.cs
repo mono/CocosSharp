@@ -252,9 +252,24 @@ namespace Box2D.Collision
 
         #region IComparer<b2Pair> Members
 
-        public int Compare(b2Pair x, b2Pair y)
+        public int Compare(b2Pair pair1, b2Pair pair2)
         {
-            return (b2PairLessThan(x, y) ? -1 : 1);
+			//return (b2PairLessThan(x, y) ? -1 : 1);
+			
+            if (pair1.proxyIdA < pair2.proxyIdA)
+            {
+                return -1;
+            }
+
+            if (pair1.proxyIdA == pair2.proxyIdA)
+            {
+                if (pair1.proxyIdB < pair2.proxyIdB)
+                {
+                    return -1;
+                }
+            }
+
+            return 1;
         }
 
         #endregion
