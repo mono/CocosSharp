@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 
 namespace Cocos2D
@@ -28,7 +29,7 @@ namespace Cocos2D
 
         public CCSpriteSheet(Stream stream, CCTexture2D texture)
         {
-            InitWitchStream(stream, texture);
+            InitWithStream(stream, texture);
         }
 
         public CCSpriteSheet(PlistDictionary dictionary, CCTexture2D texture)
@@ -106,7 +107,7 @@ namespace Cocos2D
             InitWithDictionary(dict, texture);
         }
 
-        public void InitWitchStream(Stream stream, CCTexture2D texture)
+        public void InitWithStream(Stream stream, CCTexture2D texture)
         {
             var document = new PlistDocument();
             try
@@ -259,6 +260,24 @@ namespace Cocos2D
                 _spriteFrames[pair.Key] = spriteFrame;
             }
         }
+
+		public List<CCSpriteFrame> Frames 
+		{
+			get 
+			{
+				return _spriteFrames.Values.ToList ();
+			}
+
+		}
+
+		public CCSpriteFrame this [string name]
+		{
+			get 
+			{
+				return SpriteFrameByName (name);
+			}
+		}
+
 
         public CCSpriteFrame SpriteFrameByName(string name)
         {
