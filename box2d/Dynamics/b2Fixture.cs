@@ -53,8 +53,8 @@ namespace Box2D.Dynamics
         public float Friction;
         public float Restitution;
 
-        internal List<b2FixtureProxy> m_proxies = new List<b2FixtureProxy>();
-        public IList<b2FixtureProxy> Proxies
+        internal b2FixtureProxy[] m_proxies;
+        public b2FixtureProxy[] Proxies
         {
             get
             {
@@ -64,7 +64,7 @@ namespace Box2D.Dynamics
         private int m_proxyCount;
         public int ProxyCount
         {
-            get { return (m_proxies.Count); }
+            get { return (m_proxyCount); }
         }
         private b2Filter m_filter = b2Filter.Default;
         public b2Filter Filter
@@ -128,12 +128,11 @@ namespace Box2D.Dynamics
 
             // Reserve proxy space
             int childCount = Shape.GetChildCount();
+            m_proxies = b2ArrayPool<b2FixtureProxy>.Create(childCount, true);
             for (int i = 0; i < childCount; ++i)
             {
-                b2FixtureProxy proxy = new b2FixtureProxy();
-                proxy.fixture = null;
-                proxy.proxyId = b2BroadPhase.e_nullProxy;
-                m_proxies.Add(proxy);
+                m_proxies[i].fixture = null;
+                m_proxies[i].proxyId = b2BroadPhase.e_nullProxy;
             }
             m_proxyCount = 0;
 
@@ -142,6 +141,7 @@ namespace Box2D.Dynamics
 
         public virtual void Destroy()
         {
+            b2ArrayPool<b2FixtureProxy>.Free(m_proxies);
             m_proxies = null;
             Shape = null;
         }
@@ -166,12 +166,9 @@ namespace Box2D.Dynamics
             // Destroy proxies in the broad-phase.
             for (int i = 0; i < m_proxyCount; ++i)
             {
-                b2FixtureProxy proxy = m_proxies[i];
-                broadPhase.DestroyProxy(proxy.proxyId);
-                proxy.proxyId = b2BroadPhase.e_nullProxy;
-                m_proxies[i] = proxy;
+                broadPhase.DestroyProxy(m_proxies[i].proxyId);
+                m_proxies[i].proxyId = b2BroadPhase.e_nullProxy;
             }
-            m_proxies.Clear();
             m_proxyCount = 0;
         }
         public virtual void Synchronize(b2BroadPhase broadPhase, ref b2Transform transform1, ref b2Transform transform2)
