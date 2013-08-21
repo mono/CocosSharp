@@ -185,7 +185,16 @@ namespace Box2D.Dynamics
 
             for (int i = 0; i < m_proxyCount; ++i)
             {
-                b2FixtureProxy proxy = m_proxies[i];
+                b2FixtureProxy proxy;
+                if (i < m_proxies.Count)
+                {
+                    proxy = m_proxies[i];
+                }
+                else
+                {
+                    proxy = new b2FixtureProxy();
+                    m_proxies.Add(proxy);
+                }
                 proxy.aabb = m_shape.ComputeAABB(xf, i);
                 proxy.fixture = this;
                 proxy.childIndex = i;
@@ -196,7 +205,7 @@ namespace Box2D.Dynamics
         public virtual void DestroyProxies(b2BroadPhase broadPhase)
         {
             // Destroy proxies in the broad-phase.
-            for (int i = 0; i < m_proxyCount; ++i)
+            for (int i = 0; i < m_proxyCount && i < m_proxies.Count; ++i)
             {
                 b2FixtureProxy proxy = m_proxies[i];
                 broadPhase.DestroyProxy(proxy.proxyId);
