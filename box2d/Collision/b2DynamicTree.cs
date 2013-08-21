@@ -74,6 +74,9 @@ namespace Box2D.Collision
 
         private int m_insertionCount;
 
+        //TODO: Stack Size?
+        private static int[] _stack = new int[1024];
+
         public b2DynamicTree()
         {
             m_root = b2TreeNode.b2_nullNode;
@@ -840,9 +843,6 @@ namespace Box2D.Collision
             return m_nodes[proxyId].aabb;
         }
 
-        //TODO: Stack Size?
-        private static int[] _stack = new int[1024];
-
         public void Query(Ib2QueryCallback w, b2AABB aabb)
         {
             int stackCount = 0;
@@ -907,12 +907,14 @@ namespace Box2D.Collision
                 segmentAABB.Set(b2Math.b2Min(p1, t), b2Math.b2Max(p1, t));
             }
 
-            Stack<int> stack = new Stack<int>();
-            stack.Push(m_root);
+            int stackCount = 0;
+            var stack = _stack;
 
-            while (stack.Count > 0)
+            stack[stackCount++] = m_root;
+
+            while (stackCount > 0)
             {
-                int nodeId = stack.Pop();
+                int nodeId = stack[--stackCount];
                 if (nodeId == b2TreeNode.b2_nullNode)
                 {
                     continue;
@@ -960,8 +962,8 @@ namespace Box2D.Collision
                 }
                 else
                 {
-                    stack.Push(node.child1);
-                    stack.Push(node.child2);
+                    stack[stackCount++] = node.child1;
+                    stack[stackCount++] = node.child2;
                 }
             }
         }
