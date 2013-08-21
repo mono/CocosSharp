@@ -556,18 +556,24 @@ namespace Box2D.Dynamics
 
             // Remove the fixture from this body's singly linked list.
             Debug.Assert(FixtureCount > 0);
-            b2Fixture node = FixtureList;
             bool found = false;
-            while (node != null)
+            if (fixture == FixtureList)
             {
-                if (node == fixture)
+                FixtureList = fixture.Next;
+                found = true;
+            }
+            else
+            {
+                var node = FixtureList;
+                while (node.Next != null)
                 {
-                    node = fixture.Next;
-                    found = true;
-                    break;
+                    if (node.Next == fixture)
+                    {
+                        node.Next = fixture.Next;
+                        found = true;
+                        break;
+                    }
                 }
-
-                node = node.Next;
             }
 
             // You tried to remove a shape that is not attached to this body.
@@ -597,6 +603,8 @@ namespace Box2D.Dynamics
                 b2BroadPhase broadPhase = World.ContactManager.BroadPhase;
                 fixture.DestroyProxies(broadPhase);
             }
+
+            fixture.Destroy();
 
             fixture.Body = null;
             fixture.Next = null;
