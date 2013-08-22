@@ -2,7 +2,7 @@
 <project name="Cococs2D-XNA Build Script" default="build" basedir=".">
   <description>Default Cocos2D-XNA Automated Build script</description>
   <property name="os" value="${operating-system::get-platform(environment::get-operating-system())}" />
-  <property name="mdtooldir" value="/Applications/MonoDevelop.app/Contents/MacOS"/>
+  <property name="mdtooldir" value="/Applications/Xamarin\ Studio.app/Contents/MacOS"/>
   <!--property name="psmtooldir" value="C:\Program Files (x86)\SCE\PSM\tools\PsmStudio\bin" /-->
 
   <target name="checkos" description="check the operating system">
@@ -18,7 +18,7 @@
     <echo message="Detected : ${os}"/>
   </target>
 
-  <target name="clean">
+  <target name="clean" depends="checkos">
     <delete dir="${project::get-base-directory()}\cocos2d\obj" verbose="true">
     </delete>
   </target>
@@ -29,11 +29,11 @@
     <call target="buildwindowsphone7"/>
     <call target="buildwindowsphone8"/>
     <call target="buildwindows8"/>
+    <call target="buildios"/>
+    <call target="buildmac"/>
     <call target="buildandroid"/>
     <call target="buildouya"/>
     <call target="buildxbox360"/>
-    <call target="buildios"/>
-    <call target="buildmac"/>
 
     <call target="buildnugets"/>
 
@@ -41,9 +41,10 @@
   </target>
 
   <target name="monogame" description="Build MonoGame Release" depends="checkos">
-
-    <copy file="MonoGame.build" tofile="MonoGame/default.build" overwrite="true"/>
-    <nant buildfile="MonoGame/default.build" target="build" />
+    <if test="${os == 'Win32NT'}">
+    	<copy file="MonoGame.build" tofile="MonoGame/default.build" overwrite="true"/>
+    	<nant buildfile="MonoGame/default.build" target="build" />
+    </if>
 
   </target>
 
@@ -110,8 +111,8 @@
     </if>
     <if test="${os == 'MacOS'}">
       <if test="${file::exists('/Developer/MonoTouch/MSBuild/Xamarin.ObjcBinding.CSharp.targets')}">
-        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release  cocos2d-xna.iOS.sln" />
-        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release  cocos2d-xna.iOS.sln" />
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release|iPhone  cocos2d-xna.iOS.sln" />
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release|iPhone  cocos2d-xna.iOS.sln" />
       </if>
     </if>
   </target>
@@ -124,7 +125,7 @@
       </if>
     </if>
     <if test="${os == 'MacOS'}">
-      <if test="${file::exists('/Developer/MonoAndroid/usr/bin/mandroid')}">
+      <if test="${file::exists('/Developer/MonoAndroid/bin/mandroid')}">
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release cocos2d-xna.Android.sln" />
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release cocos2d-xna.Android.sln" />
       </if>
@@ -139,14 +140,14 @@
       </if>
     </if>
     <if test="${os == 'MacOS'}">
-      <if test="${file::exists('/Developer/MonoAndroid/usr/bin/mandroid')}">
+      <if test="${file::exists('/Developer/MonoAndroid/bin/mandroid')}">
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release cocos2d-xna.ouya.sln" />
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release cocos2d-xna.ouya.sln" />
       </if>
     </if>
   </target>
 
-  <target name="buildmac" description="Build Mac OSX" depends="checkos">
+  <target name="buildmac" description="Build Mac OSX" depends="clean">
     <if test="${os == 'MacOS'}">
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release cocos2d-xna.macos.sln" />
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release cocos2d-xna.macos.sln" />
