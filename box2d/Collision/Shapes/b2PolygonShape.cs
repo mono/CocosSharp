@@ -277,6 +277,7 @@ namespace Box2D.Collision.Shapes
 
         public override b2AABB ComputeAABB(ref b2Transform xf, int childIndex)
         {
+#if false
             b2Vec2 lower = b2Math.b2Mul(ref xf, ref Vertices[0]);
             b2Vec2 upper = lower;
 
@@ -291,6 +292,32 @@ namespace Box2D.Collision.Shapes
             aabb.Set(lower, upper);
             aabb.Fatten(Radius);
             return(aabb);
+#else
+            var vert = Vertices[0];
+            b2Vec2 lower;
+            lower.x = (xf.q.c * vert.x - xf.q.s * vert.y) + xf.p.x;
+            lower.y = (xf.q.s * vert.x + xf.q.c * vert.y) + xf.p.y;
+            b2Vec2 upper = lower;
+
+            for (int i = 1; i < m_vertexCount; ++i)
+            {
+                var vetr2 = Vertices[i];
+                b2Vec2 v;
+                v.x = (xf.q.c * vetr2.x - xf.q.s * vetr2.y) + xf.p.x;
+                v.y = (xf.q.s * vetr2.x + xf.q.c * vetr2.y) + xf.p.y;
+
+                lower.x = Math.Min(lower.x, v.x);
+                lower.y = Math.Min(lower.y, v.y);
+                upper.x = Math.Max(upper.x, v.x);
+                upper.y = Math.Max(upper.y, v.y);
+            }
+
+            b2AABB aabb;
+            aabb.LowerBound = lower;
+            aabb.UpperBound = upper;
+            aabb.Fatten(Radius);
+            return aabb;
+#endif
         }
 
         public override b2MassData ComputeMass(float density)

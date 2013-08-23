@@ -225,8 +225,9 @@ namespace Box2D.Common
 #endif
         public static float b2Distance(ref b2Vec2 a, ref b2Vec2 b)
         {
-            b2Vec2 c = a - b;
-            return c.Length;
+            float x = a.x - b.x;
+            float y = a.y - b.y;
+            return (float)Math.Sqrt(x * x + y * y);
         }
 
 #if AGGRESSIVE_INLINING
@@ -234,8 +235,9 @@ namespace Box2D.Common
 #endif
         public static float b2DistanceSquared(b2Vec2 a, b2Vec2 b)
         {
-            b2Vec2 c = a - b;
-            return c.LengthSquared; //  b2Dot(c, c);
+            float x = a.x - b.x;
+            float y = a.y - b.y;
+            return x * x + y * y;
         }
 
         /// Perform the dot product on two vectors.

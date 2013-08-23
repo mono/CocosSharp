@@ -35,17 +35,20 @@ namespace Box2D.Common
         /// @param beta is a factor in [0,1], where 0 indicates alpha0.
         public void GetTransform(out b2Transform xfb, float beta)
         {
-            xfb.p.x = (1.0f - beta) * c0.x + beta * c.x;
-            xfb.p.y = (1.0f - beta) * c0.y + beta * c.y;
+            float x = (1.0f - beta) * c0.x + beta * c.x;
+            float y = (1.0f - beta) * c0.y + beta * c.y;
 
             float angle = (1.0f - beta) * a0 + beta * a;
 
-            xfb.q.s = (float)Math.Sin(angle);
-            xfb.q.c = (float)Math.Cos(angle);
+            float sin = (float)Math.Sin(angle);
+            float cos = (float)Math.Cos(angle);
 
             // Shift to origin
-            xfb.p.x -= xfb.q.c * localCenter.x - xfb.q.s * localCenter.y;
-            xfb.p.y -= xfb.q.s * localCenter.x + xfb.q.c * localCenter.y;
+            xfb.p.x = x - (cos * localCenter.x - sin * localCenter.y);
+            xfb.p.y = y - (sin * localCenter.x + cos * localCenter.y);
+            
+            xfb.q.s = sin;
+            xfb.q.c = cos;
         }
 
         /// Advance the sweep forward, yielding a new initial state.

@@ -39,7 +39,7 @@ namespace Box2D.Collision
 		public float Initialize(ref b2SimplexCache cache,
 		                        b2DistanceProxy proxyA, ref b2Sweep sweepA,
 		                        b2DistanceProxy proxyB, ref b2Sweep sweepB,
-		                        float t1)
+                                float t1, ref b2Transform xfA, ref b2Transform xfB)
 		{
 			m_proxyA = proxyA;
 			m_proxyB = proxyB;
@@ -48,50 +48,66 @@ namespace Box2D.Collision
 			
 			m_sweepA = sweepA;
 			m_sweepB = sweepB;
-			
-			b2Transform xfA, xfB;
-			m_sweepA.GetTransform(out xfA, t1);
-			m_sweepB.GetTransform(out xfB, t1);
-			
+
 			if (count == 1)
 			{
 				m_type = SeparationType.e_points;
-				b2Vec2 localPointA = m_proxyA.GetVertex((int)cache.indexA[0]);
-				b2Vec2 localPointB = m_proxyB.GetVertex((int)cache.indexB[0]);
-                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref localPointA);
-                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref localPointB);
-				m_axis = pointB - pointA;
-				float s = m_axis.Normalize();
-				return s;
+				b2Vec2 localPointA = m_proxyA.m_vertices[(int)cache.indexA[0]];
+				b2Vec2 localPointB = m_proxyB.m_vertices[(int)cache.indexB[0]];
+
+                float pointAx = (xfA.q.c * localPointA.x - xfA.q.s * localPointA.y) + xfA.p.x;
+                float pointAy = (xfA.q.s * localPointA.x + xfA.q.c * localPointA.y) + xfA.p.y;
+
+                float pointBx = (xfB.q.c * localPointB.x - xfB.q.s * localPointB.y) + xfB.p.x;
+                float pointBy = (xfB.q.s * localPointB.x + xfB.q.c * localPointB.y) + xfB.p.y;
+			    
+				m_axis.x = pointBx - pointAx;
+                m_axis.y = pointBy - pointAy;
+                
+                float s = m_axis.Normalize();
+				
+                return s;
 			}
 			else if (cache.indexA[0] == cache.indexA[1])
 			{
 				// Two points on B and one on A.
 				m_type = SeparationType.e_faceB;
-				b2Vec2 localPointB1 = proxyB.GetVertex((int)cache.indexB[0]);
-				b2Vec2 localPointB2 = proxyB.GetVertex((int)cache.indexB[1]);
+				
+                b2Vec2 localPointB1 = proxyB.m_vertices[(int)cache.indexB[0]];
+				b2Vec2 localPointB2 = proxyB.m_vertices[(int)cache.indexB[1]];
 
                 float b21x = localPointB2.x - localPointB1.x;
                 float b21y = localPointB2.y - localPointB1.y;
+
                 m_axis.x = -b21y;
                 m_axis.y = b21x;
 
                 // m_axis = b2Math.b2Cross(localPointB2 - localPointB1, 1.0f);
 				m_axis.Normalize();
-				b2Vec2 normal = b2Math.b2Mul(xfB.q, m_axis);
+
+                float normalx = xfB.q.c * m_axis.x - xfB.q.s * m_axis.y;
+                float normaly = xfB.q.s * m_axis.x + xfB.q.c * m_axis.y;
+
+                m_localPoint.x = 0.5f * (localPointB1.x + localPointB2.x);
+                m_localPoint.y = 0.5f * (localPointB1.y + localPointB2.y);
+
+                float pointBx = (xfB.q.c * m_localPoint.x - xfB.q.s * m_localPoint.y) + xfB.p.x;
+                float pointBy = (xfB.q.s * m_localPoint.x + xfB.q.c * m_localPoint.y) + xfB.p.y;
 				
-				m_localPoint = 0.5f * (localPointB1 + localPointB2);
-                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref m_localPoint);
+				b2Vec2 localPointA = proxyA.m_vertices[(int)cache.indexA[0]];
+
+                float pointAx = (xfA.q.c * localPointA.x - xfA.q.s * localPointA.y) + xfA.p.x;
+                float pointAy = (xfA.q.s * localPointA.x + xfA.q.c * localPointA.y) + xfA.p.y;
 				
-				b2Vec2 localPointA = proxyA.GetVertex((int)cache.indexA[0]);
-                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref localPointA);
-				
-                b2Vec2 aminusb = pointA - pointB;
-				float s = b2Math.b2Dot(ref aminusb, ref normal);
+                float aminusbx = pointAx - pointBx;
+                float aminusby = pointAy - pointBy;
+
+                float s = aminusbx * normalx + aminusby * normaly;
 				if (s < 0.0f)
 				{
-					m_axis = -m_axis;
-					s = -s;
+					m_axis.x = -m_axis.x;
+                    m_axis.y = -m_axis.y;
+                    s = -s;
 				}
 				return s;
 			}
@@ -99,87 +115,141 @@ namespace Box2D.Collision
 			{
 				// Two points on A and one or two points on B.
 				m_type = SeparationType.e_faceA;
-				b2Vec2 localPointA1 = m_proxyA.GetVertex(cache.indexA[0]);
-				b2Vec2 localPointA2 = m_proxyA.GetVertex(cache.indexA[1]);
-                b2Vec2 a2minusa1 = localPointA2 - localPointA1;
-                m_axis = a2minusa1.UnitCross();// b2Math.b2Cross(localPointA2 - localPointA1, 1.0f);
-				m_axis.Normalize();
-				b2Vec2 normal = b2Math.b2Mul(xfA.q, m_axis);
 				
-				m_localPoint = 0.5f * (localPointA1 + localPointA2);
-                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref m_localPoint);
+                b2Vec2 localPointA1 = m_proxyA.m_vertices[cache.indexA[0]];
+				b2Vec2 localPointA2 = m_proxyA.m_vertices[cache.indexA[1]];
+
+                float a2minusa1x = localPointA2.x - localPointA1.x;
+                float a2minusa1y = localPointA2.y - localPointA1.y;
+
+                //m_axis = a2minusa1.UnitCross();// b2Math.b2Cross(localPointA2 - localPointA1, 1.0f);
+			    
+                m_axis.x = a2minusa1y;
+                m_axis.y = -a2minusa1x;
+
+                m_axis.Normalize();
+
+                float normalx = xfA.q.c * m_axis.x - xfA.q.s * m_axis.y;
+                float normaly = xfA.q.s * m_axis.x + xfA.q.c * m_axis.y;
+
+                m_localPoint.x = 0.5f * (localPointA1.x + localPointA2.x);
+                m_localPoint.y = 0.5f * (localPointA1.y + localPointA2.y);
+
+                float pointAx = (xfA.q.c * m_localPoint.x - xfA.q.s * m_localPoint.y) + xfA.p.x;
+                float pointAy = (xfA.q.s * m_localPoint.x + xfA.q.c * m_localPoint.y) + xfA.p.y;
 				
-				b2Vec2 localPointB = m_proxyB.GetVertex(cache.indexB[0]);
-                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref localPointB);
-                b2Vec2 bminusa = pointB - pointA;
-				float s = b2Math.b2Dot(ref bminusa, ref normal);
-				if (s < 0.0f)
+				b2Vec2 localPointB = m_proxyB.m_vertices[cache.indexB[0]];
+
+                float pointBx = (xfB.q.c * localPointB.x - xfB.q.s * localPointB.y) + xfB.p.x;
+                float pointBy = (xfB.q.s * localPointB.x + xfB.q.c * localPointB.y) + xfB.p.y;
+                
+                float bminusax = pointBx - pointAx;
+                float bminusay = pointBy - pointAy;
+
+                float s = bminusax * normalx + bminusay * normaly;
+				
+                if (s < 0.0f)
 				{
-					m_axis = -m_axis;
-					s = -s;
+                    m_axis.x = -m_axis.x;
+                    m_axis.y = -m_axis.y;
+                    s = -s;
 				}
 				return s;
 			}
 		}
-		
-		public float FindMinSeparation(ref int indexA, ref int indexB, float t)
+
+        public float FindMinSeparation(out int indexA, out int indexB, float t)
 		{
-			b2Transform xfA, xfB;
-			m_sweepA.GetTransform(out xfA,t);
-			m_sweepB.GetTransform(out xfB,t);
-			
-			switch (m_type)
+            b2Transform xfA, xfB;
+            m_sweepA.GetTransform(out xfA, t);
+            m_sweepB.GetTransform(out xfB, t);
+
+            switch (m_type)
 			{
 			case SeparationType.e_points:
 			{
-                b2Vec2 axisA = b2Math.b2MulT(ref xfA.q, ref m_axis);
-				b2Vec2 axisB = b2Math.b2MulT(xfB.q, -m_axis);
-				
-				indexA = m_proxyA.GetSupport(axisA);
-				indexB = m_proxyB.GetSupport(axisB);
-				
-				b2Vec2 localPointA = m_proxyA.GetVertex(indexA);
-				b2Vec2 localPointB = m_proxyB.GetVertex(indexB);
+                b2Vec2 axisA;
+                axisA.x = xfA.q.c * m_axis.x + xfA.q.s * m_axis.y;
+                axisA.y = -xfA.q.s * m_axis.x + xfA.q.c * m_axis.y;
 
-                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref localPointA);
-                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref localPointB);
+                b2Vec2 axisB;
+                axisB.x = xfB.q.c * -m_axis.x + xfB.q.s * -m_axis.y;
+                axisB.y = -xfB.q.s * -m_axis.x + xfB.q.c * -m_axis.y;
 				
-				float separation = b2Math.b2Dot(pointB - pointA, m_axis);
-				return separation;
+				indexA = m_proxyA.GetSupport(ref axisA);
+				indexB = m_proxyB.GetSupport(ref axisB);
+
+			    var vA = m_proxyA.m_vertices[indexA];
+                var vB = m_proxyB.m_vertices[indexB];
+
+                float pointAx = (xfA.q.c * vA.x - xfA.q.s * vA.y) + xfA.p.x;
+                float pointAy = (xfA.q.s * vA.x + xfA.q.c * vA.y) + xfA.p.y;
+
+                float pointBx = (xfB.q.c * vB.x - xfB.q.s * vB.y) + xfB.p.x;
+                float pointBy = (xfB.q.s * vB.x + xfB.q.c * vB.y) + xfB.p.y;
+
+                float distx = pointBx - pointAx;
+                float disty = pointBy - pointAy;
+
+                float separation = distx * m_axis.x + disty * m_axis.y;
+				
+                return separation;
 			}
 				
 			case SeparationType.e_faceA:
 			{
-                b2Vec2 normal = b2Math.b2Mul(ref xfA.q, ref m_axis);
-                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref m_localPoint);
-				
-				b2Vec2 axisB = b2Math.b2MulT(xfB.q, -normal);
+                float normalx = xfA.q.c * m_axis.x - xfA.q.s * m_axis.y;
+                float normaly = xfA.q.s * m_axis.x + xfA.q.c * m_axis.y;
+
+                float pointAx = (xfA.q.c * m_localPoint.x - xfA.q.s * m_localPoint.y) + xfA.p.x;
+                float pointAy = (xfA.q.s * m_localPoint.x + xfA.q.c * m_localPoint.y) + xfA.p.y;
+
+                b2Vec2 axisB;
+                axisB.x = xfB.q.c * -normalx + xfB.q.s * -normaly;
+                axisB.y = -xfB.q.s * -normalx + xfB.q.c * -normaly;
 				
 				indexA = -1;
-				indexB = m_proxyB.GetSupport(axisB);
+				indexB = m_proxyB.GetSupport(ref axisB);
+
+			    var vB = m_proxyB.m_vertices[indexB];
+
+                float pointBx = (xfB.q.c * vB.x - xfB.q.s * vB.y) + xfB.p.x;
+                float pointBy = (xfB.q.s * vB.x + xfB.q.c * vB.y) + xfB.p.y;
+
+                float distx = pointBx - pointAx;
+                float disty = pointBy - pointAy;
+                
+                float separation = distx * normalx + disty * normaly;
 				
-				b2Vec2 localPointB = m_proxyB.GetVertex(indexB);
-                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref localPointB);
-				
-				float separation = b2Math.b2Dot(pointB - pointA, normal);
-				return separation;
+                return separation;
 			}
 				
 			case SeparationType.e_faceB:
 			{
-                b2Vec2 normal = b2Math.b2Mul(ref xfB.q, ref m_axis);
-                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref m_localPoint);
-				
-				b2Vec2 axisA = b2Math.b2MulT(xfA.q, -normal);
+                float normalx = xfB.q.c * m_axis.x - xfB.q.s * m_axis.y;
+                float normaly = xfB.q.s * m_axis.x + xfB.q.c * m_axis.y;
+
+                float pointBx = (xfB.q.c * m_localPoint.x - xfB.q.s * m_localPoint.y) + xfB.p.x;
+                float pointBy = (xfB.q.s * m_localPoint.x + xfB.q.c * m_localPoint.y) + xfB.p.y;
+
+                b2Vec2 axisA;
+                axisA.x = xfA.q.c * -normalx + xfA.q.s * -normaly;
+                axisA.y = -xfA.q.s * -normalx + xfA.q.c * -normaly;
 				
 				indexB = -1;
-				indexA = m_proxyA.GetSupport(axisA);
+				indexA = m_proxyA.GetSupport(ref axisA);
+
+			    var vA = m_proxyA.m_vertices[indexA];
+
+                float pointAx = (xfA.q.c * vA.x - xfA.q.s * vA.y) + xfA.p.x;
+                float pointAy = (xfA.q.s * vA.x + xfA.q.c * vA.y) + xfA.p.y;
+
+                float distx = pointAx - pointBx;
+                float disty = pointAy - pointBy;
+                
+                float separation = distx * normalx + disty * normaly;
 				
-				b2Vec2 localPointA = m_proxyA.GetVertex(indexA);
-                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref localPointA);
-				
-				float separation = b2Math.b2Dot(pointA - pointB, normal);
-				return separation;
+                return separation;
 			}
 				
 			default:
@@ -192,53 +262,83 @@ namespace Box2D.Collision
 		
 		public float Evaluate(int indexA, int indexB, float t)
 		{
-			b2Transform xfA, xfB;
-			m_sweepA.GetTransform(out xfA, t);
-			m_sweepB.GetTransform(out xfB, t);
+            b2Transform xfA, xfB;
+            m_sweepA.GetTransform(out xfA, t);
+            m_sweepB.GetTransform(out xfB, t);
 			
 			switch (m_type)
 			{
 			case SeparationType.e_points:
 			{
-                b2Vec2 axisA = b2Math.b2MulT(ref xfA.q, ref m_axis);
-				b2Vec2 axisB = b2Math.b2MulT(xfB.q, -m_axis);
-				
-				b2Vec2 localPointA = m_proxyA.GetVertex(indexA);
-				b2Vec2 localPointB = m_proxyB.GetVertex(indexB);
+                float axisAx = xfA.q.c * m_axis.x + xfA.q.s * m_axis.y;
+                float axisAy = -xfA.q.s * m_axis.x + xfA.q.c * m_axis.y;
 
-                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref localPointA);
-                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref localPointB);
-				float separation = b2Math.b2Dot(pointB - pointA, m_axis);
+                //float axisBx = xfB.q.c * -axisAx + xfB.q.s * -axisAy;
+                //float axisBy = -xfB.q.s * -axisAx + xfB.q.c * -axisAy;
+
+			    var vA = m_proxyA.m_vertices[indexA];
+                var vB = m_proxyB.m_vertices[indexB];
+
+                float pointAx = (xfA.q.c * vA.x - xfA.q.s * vA.y) + xfA.p.x;
+                float pointAy = (xfA.q.s * vA.x + xfA.q.c * vA.y) + xfA.p.y;
+                
+                float pointBx = (xfB.q.c * vB.x - xfB.q.s * vB.y) + xfB.p.x;
+                float pointBy = (xfB.q.s * vB.x + xfB.q.c * vB.y) + xfB.p.y;
+
+                float distx = pointBx - pointAx;
+                float disty = pointBy - pointAy;
+                
+                float separation = distx * m_axis.x + disty * m_axis.y;
 				
 				return separation;
 			}
 				
 			case SeparationType.e_faceA:
 			{
-                b2Vec2 normal = b2Math.b2Mul(ref xfA.q, ref m_axis);
-                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref m_localPoint);
+                float normalx = xfA.q.c * m_axis.x - xfA.q.s * m_axis.y;
+                float normaly = xfA.q.s * m_axis.x + xfA.q.c * m_axis.y;
+
+                float pointAx = (xfA.q.c * m_localPoint.x - xfA.q.s * m_localPoint.y) + xfA.p.x;
+                float pointAy = (xfA.q.s * m_localPoint.x + xfA.q.c * m_localPoint.y) + xfA.p.y;
+
+                //float axisBx = xfB.q.c * -normalx + xfB.q.s * -normaly;
+                //float axisBy = -xfB.q.s * -normalx + xfB.q.c * -normaly;
+
+			    var vB = m_proxyB.m_vertices[indexB];
+
+                float pointBx = (xfB.q.c * vB.x - xfB.q.s * vB.y) + xfB.p.x;
+                float pointBy = (xfB.q.s * vB.x + xfB.q.c * vB.y) + xfB.p.y;
+
+                float distx = pointBx - pointAx;
+                float disty = pointBy - pointAy;
+
+                float separation = distx * normalx + disty * normaly;
 				
-				b2Vec2 axisB = b2Math.b2MulT(xfB.q, -normal);
-				
-				b2Vec2 localPointB = m_proxyB.GetVertex(indexB);
-                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref localPointB);
-				
-				float separation = b2Math.b2Dot(pointB - pointA, normal);
-				return separation;
+                return separation;
 			}
 				
 			case SeparationType.e_faceB:
 			{
-                b2Vec2 normal = b2Math.b2Mul(ref xfB.q, ref m_axis);
-                b2Vec2 pointB = b2Math.b2Mul(ref xfB, ref m_localPoint);
+                float normalx = xfB.q.c * m_axis.x - xfB.q.s * m_axis.y;
+                float normaly = xfB.q.s * m_axis.x + xfB.q.c * m_axis.y;
+
+                float pointBx = (xfB.q.c * m_localPoint.x - xfB.q.s * m_localPoint.y) + xfB.p.x;
+                float pointBy = (xfB.q.s * m_localPoint.x + xfB.q.c * m_localPoint.y) + xfB.p.y;
+
+                //float axisAx = xfA.q.c * -normalx + xfA.q.s * -normaly;
+                //float axisAy = -xfA.q.s * -normalx + xfA.q.c * -normaly;
+
+			    var vA = m_proxyA.m_vertices[indexA];
+
+                float pointAx = (xfA.q.c * vA.x - xfA.q.s * vA.y) + xfA.p.x;
+                float pointAy = (xfA.q.s * vA.x + xfA.q.c * vA.y) + xfA.p.y;
+
+                float distx = pointAx - pointBx;
+                float disty = pointAy - pointBy;
+
+                float separation = distx * normalx + disty * normaly;
 				
-				b2Vec2 axisA = b2Math.b2MulT(xfA.q, -normal);
-				
-				b2Vec2 localPointA = m_proxyA.GetVertex(indexA);
-                b2Vec2 pointA = b2Math.b2Mul(ref xfA, ref localPointA);
-				
-				float separation = b2Math.b2Dot(pointA - pointB, normal);
-				return separation;
+                return separation;
 			}
 				
 			default:
@@ -246,7 +346,7 @@ namespace Box2D.Collision
 				return 0.0f;
 			}
 		}
-		
+
 		private b2DistanceProxy m_proxyA;
 		private b2DistanceProxy m_proxyB;
 		private b2Sweep m_sweepA, m_sweepB;
@@ -347,16 +447,13 @@ namespace Box2D.Collision
 			// This loop terminates when an axis is repeated (no progress is made).
 			while (true)
 			{
-				b2Transform xfA, xfB;
-				sweepA.GetTransform(out xfA, t1);
-				sweepB.GetTransform(out xfB, t1);
+                // Get the distance between shapes. We can also use the results
+                // to get a separating axis.
+                sweepA.GetTransform(out distanceInput.transformA, t1);
+                sweepB.GetTransform(out distanceInput.transformB, t1);
 				
-				// Get the distance between shapes. We can also use the results
-				// to get a separating axis.
-				distanceInput.transformA = xfA;
-				distanceInput.transformB = xfB;
-				b2DistanceOutput distanceOutput = new b2DistanceOutput();
-				b2Simplex.b2Distance(ref distanceOutput, ref cache, ref distanceInput);
+				b2DistanceOutput distanceOutput;
+				b2Simplex.b2Distance(out distanceOutput, ref cache, ref distanceInput);
 				
 				// If the shapes are overlapped, we give up on continuous collision.
 				if (distanceOutput.distance <= 0.0f)
@@ -377,7 +474,8 @@ namespace Box2D.Collision
 				
 				// Initialize the separating axis.
 				b2SeparationFunction fcn = new b2SeparationFunction();
-				fcn.Initialize(ref cache, proxyA, ref sweepA, proxyB, ref sweepB, t1);
+                fcn.Initialize(ref cache, proxyA, ref sweepA, proxyB, ref sweepB, t1,
+                    ref distanceInput.transformA, ref distanceInput.transformB);
 				#if false
 				// Dump the curve seen by the root finder
 				{
@@ -412,8 +510,8 @@ namespace Box2D.Collision
 				while(true)
 				{
 					// Find the deepest point at t2. Store the witness point indices.
-					int indexA = 0, indexB = 0;
-					float s2 = fcn.FindMinSeparation(ref indexA, ref indexB, t2);
+					int indexA, indexB;
+					float s2 = fcn.FindMinSeparation(out indexA, out indexB, t2);
 					
 					// Is the final configuration separated?
 					if (s2 > target + tolerance)

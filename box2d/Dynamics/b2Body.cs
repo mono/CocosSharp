@@ -146,6 +146,9 @@ namespace Box2D.Dynamics
 
         public object UserData;
 
+        internal b2Velocity InternalVelocity;
+        internal b2Position InternalPosition;
+
         #region IComparable Members
 
         public int CompareTo(object obj)

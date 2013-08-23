@@ -149,9 +149,10 @@ namespace Box2D.Collision
 
         public bool TestOverlap(int proxyIdA, int proxyIdB)
         {
-            b2AABB aabbA = m_tree.GetFatAABB(proxyIdA);
-            b2AABB aabbB = m_tree.GetFatAABB(proxyIdB);
-            return b2Collision.b2TestOverlap(ref aabbA, ref aabbB);
+//            b2AABB aabbA = m_tree.GetFatAABB(proxyIdA);
+//            b2AABB aabbB = m_tree.GetFatAABB(proxyIdB);
+//            return b2Collision.b2TestOverlap(ref aabbA, ref aabbB);
+            return b2Collision.b2TestOverlap(ref m_tree.m_nodes[proxyIdA].aabb, ref m_tree.m_nodes[proxyIdB].aabb);
         }
 
         public b2AABB GetFatAABB(int proxyId)

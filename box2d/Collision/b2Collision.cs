@@ -57,8 +57,7 @@ namespace Box2D.Collision
 
         /// Compute the point states given two manifolds. The states pertain to the transition from manifold1
         /// to manifold2. So state1 is either persist or remove while state2 is either add or persist.
-        public static void b2GetPointStates(b2PointState[] state1, b2PointState[] state2,
-                              ref b2Manifold manifold1, ref b2Manifold manifold2)
+        public static void b2GetPointStates(b2PointState[] state1, b2PointState[] state2, b2Manifold manifold1, b2Manifold manifold2)
         {
             for (int i = 0; i < b2Settings.b2_maxManifoldPoints; ++i)
             {
@@ -102,9 +101,7 @@ namespace Box2D.Collision
         }
 
         /// Compute the collision manifold between two circles.
-        public static void b2CollideCircles(ref b2Manifold manifold,
-                               b2CircleShape circleA, ref b2Transform xfA,
-                               b2CircleShape circleB, ref b2Transform xfB)
+        public static void b2CollideCircles(b2Manifold manifold, b2CircleShape circleA, ref b2Transform xfA, b2CircleShape circleB, ref b2Transform xfB)
         {
             manifold.pointCount = 0;
 
@@ -132,9 +129,7 @@ namespace Box2D.Collision
         }
 
         /// Compute the collision manifold between a polygon and a circle.
-        public static void b2CollidePolygonAndCircle(ref b2Manifold manifold,
-                                        b2PolygonShape polygonA, ref b2Transform xfA,
-                                        b2CircleShape circleB, ref b2Transform xfB)
+        public static void b2CollidePolygonAndCircle(b2Manifold manifold, b2PolygonShape polygonA, ref b2Transform xfA, b2CircleShape circleB, ref b2Transform xfB)
         {
             manifold.pointCount = 0;
 
@@ -252,9 +247,7 @@ namespace Box2D.Collision
         private static b2ClipVertex[] _clipPoints1 = new b2ClipVertex[2];
         private static b2ClipVertex[] _clipPoints2 = new b2ClipVertex[2];
 
-        public static void b2CollidePolygons(ref b2Manifold manifold,
-                                b2PolygonShape polyA, ref b2Transform xfA,
-                                b2PolygonShape polyB, ref b2Transform xfB)
+        public static void b2CollidePolygons(b2Manifold manifold, b2PolygonShape polyA, ref b2Transform xfA, b2PolygonShape polyB, ref b2Transform xfB)
         {
             manifold.pointCount = 0;
             float totalRadius = polyA.Radius + polyB.Radius;
@@ -382,7 +375,6 @@ namespace Box2D.Collision
                         cp.id.typeA = cf.typeB;
                         cp.id.typeB = cf.typeA;
                     }
-                    manifold.points[pointCount] = cp;
                     ++pointCount;
                 }
             }
@@ -440,9 +432,7 @@ namespace Box2D.Collision
         }
 
         /// Compute the collision manifold between an edge and a circle.
-        public static void b2CollideEdgeAndCircle(ref b2Manifold manifold,
-                                        b2EdgeShape edgeA, ref b2Transform xfA,
-                                        b2CircleShape circleB, ref b2Transform xfB)
+        public static void b2CollideEdgeAndCircle(b2Manifold manifold, b2EdgeShape edgeA, ref b2Transform xfA, b2CircleShape circleB, ref b2Transform xfB)
         {
             manifold.pointCount = 0;
 
@@ -577,12 +567,10 @@ namespace Box2D.Collision
         }
 
         /// Compute the collision manifold between an edge and a circle.
-        public static void b2CollideEdgeAndPolygon(ref b2Manifold manifold,
-                                        b2EdgeShape edgeA, ref b2Transform xfA,
-                                        b2PolygonShape polygonB, ref b2Transform xfB)
+        public static void b2CollideEdgeAndPolygon(b2Manifold manifold, b2EdgeShape edgeA, ref b2Transform xfA, b2PolygonShape polygonB, ref b2Transform xfB)
         {
             b2EPCollider b = b2EPCollider.Create();
-            b.Collide(ref manifold, edgeA, ref xfA, polygonB, ref xfB);
+            b.Collide(manifold, edgeA, ref xfA, polygonB, ref xfB);
             b.Free();
         }
 
@@ -645,9 +633,8 @@ namespace Box2D.Collision
 
             b2SimplexCache cache = b2SimplexCache.Create();
 
-            b2DistanceOutput output = new b2DistanceOutput();
-
-            b2Simplex.b2Distance(ref output, ref cache, ref input);
+            b2DistanceOutput output;
+            b2Simplex.b2Distance(out output, ref cache, ref input);
 
 //            Console.WriteLine("{2} vs {3}: distance={0} after {1} iters", output.distance, output.iterations, shapeA.ShapeType, shapeB.ShapeType);
 
@@ -746,6 +733,7 @@ namespace Box2D.Collision
                                      b2PolygonShape poly1, ref b2Transform xf1, int edge1,
                                      b2PolygonShape poly2, ref b2Transform xf2)
         {
+#if false
             b2Vec2[] normals1 = poly1.Normals;
 
             int count2 = poly2.VertexCount;
@@ -783,6 +771,60 @@ namespace Box2D.Collision
             c[1].id.indexB = (byte)i2;
             c[1].id.typeA = b2ContactFeatureType.e_face;
             c[1].id.typeB = b2ContactFeatureType.e_vertex;
+#else
+            var edge = poly1.Normals[edge1];
+
+            int count2 = poly2.VertexCount;
+            b2Vec2[] vertices2 = poly2.Vertices;
+            b2Vec2[] normals2 = poly2.Normals;
+
+            // Get the normal of the reference edge in poly2's frame.
+            float bx = xf1.q.c * edge.x - xf1.q.s * edge.y;
+            float by = xf1.q.s * edge.x + xf1.q.c * edge.y;
+
+            float normal1x = xf2.q.c * bx + xf2.q.s * by;
+            float normal1y = -xf2.q.s * bx + xf2.q.c * by;
+
+            // Find the incident edge on poly2.
+            int index = 0;
+            float minDot = b2Settings.b2_maxFloat;
+            for (int i = 0; i < count2; ++i)
+            {
+                var normal = normals2[i];
+                float dot = normal1x * normal.x + normal1y * normal.y;
+                if (dot < minDot)
+                {
+                    minDot = dot;
+                    index = i;
+                }
+            }
+
+            // Build the clip vertices for the incident edge.
+            int i1 = index;
+            int i2 = i1 + 1 < count2 ? i1 + 1 : 0;
+
+            b2ClipVertex vertex;
+            var vi1 = vertices2[i1];
+            var vi2 = vertices2[i2];
+
+            vertex.v.x = (xf2.q.c * vi1.x - xf2.q.s * vi1.y) + xf2.p.x;
+            vertex.v.y = (xf2.q.s * vi1.x + xf2.q.c * vi1.y) + xf2.p.y;
+            vertex.id.indexA = (byte)edge1;
+            vertex.id.indexB = (byte)i1;
+            vertex.id.typeA = b2ContactFeatureType.e_face;
+            vertex.id.typeB = b2ContactFeatureType.e_vertex;
+
+            c[0] = vertex;
+
+            vertex.v.x = (xf2.q.c * vi2.x - xf2.q.s * vi2.y) + xf2.p.x;
+            vertex.v.y = (xf2.q.s * vi2.x + xf2.q.c * vi2.y) + xf2.p.y;
+            vertex.id.indexA = (byte)edge1;
+            vertex.id.indexB = (byte)i2;
+            vertex.id.typeA = b2ContactFeatureType.e_face;
+            vertex.id.typeB = b2ContactFeatureType.e_vertex;
+
+            c[1] = vertex;
+#endif
         }
     }
 }

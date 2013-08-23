@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Box2D;
+using Box2D.Collision;
 using Box2D.Common;
 using Box2D.Collision.Shapes;
 using Box2D.Dynamics;
+using Box2D.Dynamics.Contacts;
 using Microsoft.Xna.Framework;
 using Cocos2D;
 using Random = Cocos2D.CCRandom;
@@ -65,7 +67,7 @@ namespace tests
         public class Myb2Listener : b2ContactListener
         {
 
-            public override void PreSolve(Box2D.Dynamics.Contacts.b2Contact contact, ref Box2D.Collision.b2Manifold oldManifold)
+            public override void PreSolve(b2Contact contact, b2Manifold oldManifold)
             {
             }
 

@@ -66,8 +66,7 @@ namespace Box2D.Collision
         // 6. Visit each separating axes, only accept axes within the range
         // 7. Return if _any_ axis indicates separation
         // 8. Clip
-        public void Collide(ref b2Manifold manifold, b2EdgeShape edgeA, ref b2Transform xfA,
-                                   b2PolygonShape polygonB, ref b2Transform xfB)
+        public void Collide(b2Manifold manifold, b2EdgeShape edgeA, ref b2Transform xfA, b2PolygonShape polygonB, ref b2Transform xfB)
         {
             m_xf = b2Math.b2MulT(xfA, xfB);
 
@@ -471,7 +470,6 @@ namespace Box2D.Collision
                         cp.id.indexB = clipPoints2[i].id.indexA;
                     }
 
-                    manifold.points[pointCount] = cp;
                     ++pointCount;
                 }
             }

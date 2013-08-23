@@ -113,7 +113,7 @@ namespace Box2D.TestBed
         public int drawFrictionForces = 0;
         public bool drawCOMs = false;
         public bool drawStats = true;
-        public bool drawProfile = false;
+        public bool drawProfile = true;
         public int enableWarmStarting = 1;
         public int enableContinuous = 1;
         public int enableSubStepping = 0;
@@ -576,7 +576,7 @@ namespace Box2D.TestBed
         b2PointState[] state2 = new b2PointState[b2Settings.b2_maxManifoldPoints];
         b2WorldManifold worldManifold = new b2WorldManifold();
 
-        public override void PreSolve(b2Contact contact, ref b2Manifold oldManifold)
+        public override void PreSolve(b2Contact contact, b2Manifold oldManifold)
         {
             b2Manifold manifold = contact.GetManifold();
 
@@ -588,7 +588,7 @@ namespace Box2D.TestBed
             b2Fixture fixtureA = contact.GetFixtureA();
             b2Fixture fixtureB = contact.GetFixtureB();
 
-            b2Collision.b2GetPointStates(state1, state2, ref oldManifold, ref manifold);
+            b2Collision.b2GetPointStates(state1, state2, oldManifold, manifold);
 
             contact.GetWorldManifold(ref worldManifold);
 

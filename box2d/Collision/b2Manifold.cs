@@ -16,7 +16,7 @@ namespace Box2D.Collision
     /// This structure is stored across time steps, so we keep it small.
     /// Note: the impulses are used for internal caching and may not
     /// provide reliable contact forces, especially for high speed collisions.
-    public struct b2ManifoldPoint
+    public class b2ManifoldPoint
     {
         public b2Vec2 localPoint;       //< usage depends on manifold type
         public float normalImpulse;     //< the non-penetration impulse
@@ -54,9 +54,7 @@ namespace Box2D.Collision
         // modest motion from the original state. This does not change the
         // point count, impulses, etc. The radii must come from the shapes
         // that generated the manifold.
-        public void Initialize(ref b2Manifold manifold,
-            b2Transform xfA, float radiusA,
-            b2Transform xfB, float radiusB)
+        public void Initialize(b2Manifold manifold, ref b2Transform xfA, float radiusA, ref b2Transform xfB, float radiusB)
         {
             if (manifold.pointCount == 0)
             {
@@ -236,28 +234,50 @@ namespace Box2D.Collision
         public b2Vec2[] points = new b2Vec2[b2Settings.b2_maxManifoldPoints]; //< world contact point (point of intersection)
     }
 
-    public struct b2Manifold
+    public class b2Manifold
     {
-        
+        /*
         public static b2Manifold Create()
         {
             b2Manifold m = new b2Manifold();
             m.points =  new b2ManifoldPoint[b2Settings.b2_maxManifoldPoints];
             return (m);
         }
-        
-        
-        public void CopyPointsFrom(ref b2Manifold other)
-        {
-            Array.Copy(other.points, points, b2Settings.b2_maxManifoldPoints);
-        }
-        
-
-        public b2ManifoldPoint[] points;//  = new b2ManifoldPoint[b2Settings.b2_maxManifoldPoints];    //< the points of contact
+        */
+        public b2ManifoldPoint[] points;    //< the points of contact
         public b2Vec2 localNormal;                                //< not use for Type::e_points
         public b2Vec2 localPoint;                                //< usage depends on manifold type
         public b2ManifoldType type;
         public int pointCount;                                //< the number of manifold points
+
+        public b2Manifold()
+        {
+            points = new b2ManifoldPoint[b2Settings.b2_maxManifoldPoints];
+            for (int i = 0; i < points.Length; i++)
+            {
+                points[i] = new b2ManifoldPoint();
+            }
+        }
+
+        public void CopyFrom(b2Manifold other)
+        {
+            localNormal = other.localNormal;
+            localPoint = other.localPoint;          
+            type = other.type;
+            pointCount = other.pointCount;
+
+            for (int i = 0; i < points.Length; i++)
+            {
+                var cp1 = points[i];
+                var cp2 = other.points[i];
+
+                cp1.id = cp2.id;
+                cp1.localPoint = cp2.localPoint;
+                cp1.normalImpulse = cp2.normalImpulse;
+                cp1.tangentImpulse = cp2.tangentImpulse;
+            }
+            //Array.Copy(other.points, points, points.Length);
+        }
     }
 
 }

@@ -40,14 +40,14 @@ namespace Box2D.Dynamics
     }
 
     /// This is an internal structure.
-    public struct b2Position
+    internal struct b2Position
     {
         public b2Vec2 c;
         public float a;
     }
 
     /// This is an internal structure.
-    public struct b2Velocity
+    internal struct b2Velocity
     {
         public b2Vec2 v;
         public float w;
@@ -57,8 +57,9 @@ namespace Box2D.Dynamics
     public struct b2SolverData
     {
         public b2TimeStep step;
-        public b2Position[] positions;
-        public b2Velocity[] velocities;
+        //public b2Body[] Bodies;
+        //public b2Position[] positions;
+        //public b2Velocity[] velocities;
     }
 
 }

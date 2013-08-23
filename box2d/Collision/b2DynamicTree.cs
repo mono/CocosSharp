@@ -63,7 +63,7 @@ namespace Box2D.Collision
     {
         private int m_root;
 
-        private b2TreeNode[]  m_nodes;
+        internal b2TreeNode[]  m_nodes;
         private int m_nodeCount;
         private int m_nodeCapacity;
 

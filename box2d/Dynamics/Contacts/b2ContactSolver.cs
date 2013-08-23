@@ -17,7 +17,6 @@
 */
 using System;
 using System.Diagnostics;
-using System.Net.PeerToPeer.Collaboration;
 using Box2D.Common;
 using Box2D.Collision;
 using Box2D.Collision.Shapes;
@@ -25,6 +24,17 @@ using Box2D.Collision.Shapes;
 namespace Box2D.Dynamics.Contacts
 {
 
+    public struct b2ContactSolverDef
+    {
+        public b2TimeStep step;
+        public b2Contact[] contacts;
+        public int count;
+        //public b2Body[] Bodies;
+        //public b2Position[] positions;
+        //public b2Velocity[] velocities;
+    }
+
+    /*
     public class b2VelocityConstraintPoint
     {
         //public static b2VelocityConstraintPoint Zero = b2VelocityConstraintPoint.Create();
@@ -82,15 +92,6 @@ namespace Box2D.Dynamics.Contacts
         public int contactIndex;
     }
 
-    public struct b2ContactSolverDef
-    {
-        public b2TimeStep step;
-        public b2Contact[] contacts;
-        public int count;
-        public b2Position[] positions;
-        public b2Velocity[] velocities;
-    }
-
     public class b2ContactPositionConstraint
     {
         //public static b2ContactPositionConstraint Default = b2ContactPositionConstraint.Create();
@@ -122,15 +123,63 @@ namespace Box2D.Dynamics.Contacts
         public float radiusA, radiusB;
         public int pointCount;
     };
+    */
+    public class b2ConstraintPoint
+    {
+        //Position
+        public b2Vec2 localPoint;
+        
+        //Velocity
+        public b2Vec2 rA;
+        public b2Vec2 rB;
+        public float normalImpulse;
+        public float tangentImpulse;
+        public float normalMass;
+        public float tangentMass;
+        public float velocityBias;
+    }
+
+    public class b2ContactConstraint
+    {
+        public b2Body BodyA;
+        public b2Body BodyB;
+        public float invMassA, invMassB;
+        public float invIA, invIB;
+
+        public b2ConstraintPoint[] points = new [] {new b2ConstraintPoint(), new b2ConstraintPoint()};
+
+        //Position
+        public b2Vec2 localNormal;
+        public b2Vec2 localPoint;
+        public b2Vec2 localCenterA, localCenterB;
+        public b2ManifoldType type;
+        public float radiusA, radiusB;
+
+        public b2Vec2 c;
+        public float a;
+
+        //Velocity
+        public b2Vec2 normal;
+        public b2Mat22 normalMass;
+        public b2Mat22 K;
+        public float friction;
+        public float restitution;
+        
+        public b2Contact contact;
+
+        public b2Vec2 v;
+        public float w;
+
+        public int pointCount;
+    };
 
     internal class b2ContactSolver : b2ReusedObject<b2ContactSolver>
     {
         public b2TimeStep m_step;
-        public b2Position[] m_positions;
-        public b2Velocity[] m_velocities;
-        public b2ContactPositionConstraint[] m_positionConstraints;
-        public b2ContactVelocityConstraint[] m_velocityConstraints;
-        public b2Contact[] m_contacts;
+        //private b2Velocity[] m_velocities;
+        //private b2Position[] m_positions;
+        public b2ContactConstraint[] m_constraints;
+        //public b2Contact[] m_contacts;
         public int m_count;
 
         public static b2ContactSolver Create(ref b2ContactSolverDef def)
@@ -142,7 +191,7 @@ namespace Box2D.Dynamics.Contacts
 
         private void Init(ref b2ContactSolverDef def)
         {
-            if (m_positionConstraints == null || def.count > m_positionConstraints.Length)
+            if (m_constraints == null || def.count > m_constraints.Length)
             {
                 var count = def.count;
                 var oldCount = 0;
@@ -153,36 +202,34 @@ namespace Box2D.Dynamics.Contacts
                     capacity *= 2;
                 }
 
-                if (m_positionConstraints == null)
+                if (m_constraints == null)
                 {
-                    m_positionConstraints = new b2ContactPositionConstraint[capacity];
-                    m_velocityConstraints = new b2ContactVelocityConstraint[capacity];
+                    m_constraints = new b2ContactConstraint[capacity];
                 }
                 else
                 {
-                    oldCount = m_positionConstraints.Length;
-                    Array.Resize(ref m_positionConstraints, capacity);
-                    Array.Resize(ref m_velocityConstraints, capacity);
+                    oldCount = m_constraints.Length;
+                    Array.Resize(ref m_constraints, capacity);
                 }
 
                 for (int i = oldCount; i < capacity; i++)
                 {
-                    m_positionConstraints[i] = b2ContactPositionConstraint.Create();
-                    m_velocityConstraints[i] = b2ContactVelocityConstraint.Create();
+                    m_constraints[i] = new b2ContactConstraint();
                 }
             }
 
             m_step = def.step;
             m_count = def.count;
 
-            m_positions = def.positions;
-            m_velocities = def.velocities;
-            m_contacts = def.contacts;
+            //m_positions = def.positions;
+            //m_velocities = def.velocities;
+            //m_contacts = def.contacts;
+            var contacts = def.contacts;
 
             // Initialize position independent portions of the constraints.
-            for (int i = 0; i < m_count; ++i)
+            for (int i = 0, count = m_count; i < count; ++i)
             {
-                b2Contact contact = m_contacts[i];
+                b2Contact contact = contacts[i];
 
                 b2Fixture fixtureA = contact.FixtureA;
                 b2Fixture fixtureB = contact.FixtureB;
@@ -192,45 +239,45 @@ namespace Box2D.Dynamics.Contacts
                 float radiusB = shapeB.Radius;
                 b2Body bodyA = fixtureA.Body;
                 b2Body bodyB = fixtureB.Body;
-                b2Manifold manifold = contact.GetManifold();
+                b2Manifold manifold = contact.m_manifold;
 
                 int pointCount = manifold.pointCount;
                 Debug.Assert(pointCount > 0);
 
-                b2ContactVelocityConstraint vc = m_velocityConstraints[i];
-                vc.friction = contact.Friction;
-                vc.restitution = contact.Restitution;
-                vc.indexA = bodyA.IslandIndex;
-                vc.indexB = bodyB.IslandIndex;
-                vc.invMassA = bodyA.InvertedMass;
-                vc.invMassB = bodyB.InvertedMass;
-                vc.invIA = bodyA.InvertedI;
-                vc.invIB = bodyB.InvertedI;
-                vc.contactIndex = i;
-                vc.pointCount = pointCount;
-                vc.K.SetZero();
-                vc.normalMass.SetZero();
+                var constraint = m_constraints[i];
 
-                b2ContactPositionConstraint pc = m_positionConstraints[i];
-                pc.indexA = bodyA.IslandIndex;
-                pc.indexB = bodyB.IslandIndex;
-                pc.invMassA = bodyA.InvertedMass;
-                pc.invMassB = bodyB.InvertedMass;
-                pc.localCenterA = bodyA.Sweep.localCenter;
-                pc.localCenterB = bodyB.Sweep.localCenter;
-                pc.invIA = bodyA.InvertedI;
-                pc.invIB = bodyB.InvertedI;
-                pc.localNormal = manifold.localNormal;
-                pc.localPoint = manifold.localPoint;
-                pc.pointCount = pointCount;
-                pc.radiusA = radiusA;
-                pc.radiusB = radiusB;
-                pc.type = manifold.type;
+                constraint.friction = contact.Friction;
+                constraint.restitution = contact.Restitution;
+                constraint.BodyA = bodyA;
+                constraint.BodyB = bodyB;
+                constraint.invMassA = bodyA.InvertedMass;
+                constraint.invMassB = bodyB.InvertedMass;
+                constraint.invIA = bodyA.InvertedI;
+                constraint.invIB = bodyB.InvertedI;
+                constraint.contact = contact;
+                constraint.pointCount = pointCount;
+                constraint.K = b2Mat22.Zero;
+                constraint.normalMass = b2Mat22.Zero;
+
+                //constraint.indexA = bodyA.IslandIndex;
+                //constraint.indexB = bodyB.IslandIndex;
+                //constraint.invMassA = bodyA.InvertedMass;
+                //constraint.invMassB = bodyB.InvertedMass;
+                constraint.localCenterA = bodyA.Sweep.localCenter;
+                constraint.localCenterB = bodyB.Sweep.localCenter;
+                //constraint.invIA = bodyA.InvertedI;
+                //constraint.invIB = bodyB.InvertedI;
+                constraint.localNormal = manifold.localNormal;
+                constraint.localPoint = manifold.localPoint;
+                //constraint.pointCount = pointCount;
+                constraint.radiusA = radiusA;
+                constraint.radiusB = radiusB;
+                constraint.type = manifold.type;
 
                 for (int j = 0; j < pointCount; ++j)
                 {
                     b2ManifoldPoint cp = manifold.points[j];
-                    b2VelocityConstraintPoint vcp = vc.points[j];
+                    var vcp = constraint.points[j];
 
                     if (m_step.warmStarting)
                     {
@@ -243,13 +290,13 @@ namespace Box2D.Dynamics.Contacts
                         vcp.tangentImpulse = 0.0f;
                     }
 
-                    vcp.rA.SetZero();
-                    vcp.rB.SetZero();
+                    vcp.rA = b2Vec2.Zero;
+                    vcp.rB = b2Vec2.Zero;
                     vcp.normalMass = 0.0f;
                     vcp.tangentMass = 0.0f;
                     vcp.velocityBias = 0.0f;
 
-                    pc.localPoints[j] = cp.localPoint;
+                    constraint.points[j].localPoint = cp.localPoint;
                 }
             }
         }
@@ -370,34 +417,33 @@ namespace Box2D.Dynamics.Contacts
                 }
             }
 #else
-            for (int i = 0; i < m_count; ++i)
+            for (int i = 0, count = m_count; i < count; ++i)
             {
-                b2ContactVelocityConstraint vc = m_velocityConstraints[i];
-                b2ContactPositionConstraint pc = m_positionConstraints[i];
+                var vc = m_constraints[i];
 
-                float radiusA = pc.radiusA;
-                float radiusB = pc.radiusB;
-                b2Manifold manifold = m_contacts[vc.contactIndex].GetManifold();
+                float radiusA = vc.radiusA;
+                float radiusB = vc.radiusB;
+                b2Manifold manifold = vc.contact.m_manifold;
 
-                int indexA = vc.indexA;
-                int indexB = vc.indexB;
+                var bodyA = vc.BodyA;
+                var bodyB = vc.BodyB;
 
                 float mA = vc.invMassA;
                 float mB = vc.invMassB;
                 float iA = vc.invIA;
                 float iB = vc.invIB;
-                b2Vec2 localCenterA = pc.localCenterA;
-                b2Vec2 localCenterB = pc.localCenterB;
+                b2Vec2 localCenterA = vc.localCenterA;
+                b2Vec2 localCenterB = vc.localCenterB;
 
-                b2Vec2 cA = m_positions[indexA].c;
-                float aA = m_positions[indexA].a;
-                b2Vec2 vA = m_velocities[indexA].v;
-                float wA = m_velocities[indexA].w;
+                b2Vec2 cA = bodyA.InternalPosition.c;
+                float aA = bodyA.InternalPosition.a;
+                b2Vec2 vA = bodyA.InternalVelocity.v;
+                float wA = bodyA.InternalVelocity.w;
 
-                b2Vec2 cB = m_positions[indexB].c;
-                float aB = m_positions[indexB].a;
-                b2Vec2 vB = m_velocities[indexB].v;
-                float wB = m_velocities[indexB].w;
+                b2Vec2 cB = bodyB.InternalPosition.c;
+                float aB = bodyB.InternalPosition.a;
+                b2Vec2 vB = bodyB.InternalVelocity.v;
+                float wB = bodyB.InternalVelocity.w;
 
                 Debug.Assert(manifold.pointCount > 0);
 
@@ -417,7 +463,7 @@ namespace Box2D.Dynamics.Contacts
 
                 //b2WorldManifold worldManifold = new b2WorldManifold();
                 b2WorldManifold worldManifold = _b2WorldManifold;
-                worldManifold.Initialize(ref manifold, xfA, radiusA, xfB, radiusB);
+                worldManifold.Initialize(manifold, ref xfA, radiusA, ref xfB, radiusB);
 
                 vc.normal = worldManifold.normal;
 
@@ -430,7 +476,7 @@ namespace Box2D.Dynamics.Contacts
                 int pointCount = vc.pointCount;
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    b2VelocityConstraintPoint vcp = vc.points[j];
+                    var vcp = vc.points[j];
 
                     var point = worldManifold.points[j];
 
@@ -472,8 +518,8 @@ namespace Box2D.Dynamics.Contacts
                 // If we have two points, then prepare the block solver.
                 if (vc.pointCount == 2)
                 {
-                    b2VelocityConstraintPoint vcp1 = vc.points[0];
-                    b2VelocityConstraintPoint vcp2 = vc.points[1];
+                    var vcp1 = vc.points[0];
+                    var vcp2 = vc.points[1];
 
                     float rn1A = vcp1.rA.x * normaly - vcp1.rA.y * normalx;
                     float rn1B = vcp1.rB.x * normaly - vcp1.rB.y * normalx;
@@ -510,38 +556,47 @@ namespace Box2D.Dynamics.Contacts
             // Warm start.
             for (int i = 0; i < m_count; ++i)
             {
-                b2ContactVelocityConstraint vc = m_velocityConstraints[i];
+                var vc = m_constraints[i];
 
-                int indexA = vc.indexA;
-                int indexB = vc.indexB;
+                var bodyA = vc.BodyA;
+                var bodyB = vc.BodyB;
                 float mA = vc.invMassA;
                 float iA = vc.invIA;
                 float mB = vc.invMassB;
                 float iB = vc.invIB;
                 int pointCount = vc.pointCount;
 
-                b2Vec2 vA = m_velocities[indexA].v;
-                float wA = m_velocities[indexA].w;
-                b2Vec2 vB = m_velocities[indexB].v;
-                float wB = m_velocities[indexB].w;
+                b2Vec2 vA = bodyA.InternalVelocity.v;
+                float wA = bodyA.InternalVelocity.w;
+                b2Vec2 vB = bodyB.InternalVelocity.v;
+                float wB = bodyB.InternalVelocity.w;
 
                 b2Vec2 normal = vc.normal;
                 b2Vec2 tangent = normal.UnitCross(); //  b2Math.b2Cross(normal, 1.0f);
 
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    b2VelocityConstraintPoint vcp = vc.points[j];
-                    b2Vec2 P = vcp.normalImpulse * normal + vcp.tangentImpulse * tangent;
+                    var vcp = vc.points[j];
+
+                    b2Vec2 P;
+                    P.x = vcp.normalImpulse * normal.x + vcp.tangentImpulse * tangent.x;
+                    P.y = vcp.normalImpulse * normal.y + vcp.tangentImpulse * tangent.y;
+
                     wA -= iA * b2Math.b2Cross(ref vcp.rA, ref P);
-                    vA -= mA * P;
+
+                    vA.x -= mA * P.x;
+                    vA.y -= mA * P.y;
+                    
                     wB += iB * b2Math.b2Cross(ref vcp.rB, ref P);
-                    vB += mB * P;
+
+                    vB.x += mB * P.x;
+                    vB.y += mB * P.y;
                 }
 
-                m_velocities[indexA].v = vA;
-                m_velocities[indexA].w = wA;
-                m_velocities[indexB].v = vB;
-                m_velocities[indexB].w = wB;
+                bodyA.InternalVelocity.v = vA;
+                bodyA.InternalVelocity.w = wA;
+                bodyB.InternalVelocity.v = vB;
+                bodyB.InternalVelocity.w = wB;
             }
         }
 
@@ -549,20 +604,21 @@ namespace Box2D.Dynamics.Contacts
         {
             for (int i = 0; i < m_count; ++i)
             {
-                b2ContactVelocityConstraint vc = m_velocityConstraints[i];
+                var vc = m_constraints[i];
 
-                int indexA = vc.indexA;
-                int indexB = vc.indexB;
+                var bodyA = vc.BodyA;
+                var bodyB = vc.BodyB;
+
                 float mA = vc.invMassA;
                 float iA = vc.invIA;
                 float mB = vc.invMassB;
                 float iB = vc.invIB;
                 int pointCount = vc.pointCount;
 
-                b2Vec2 vA = m_velocities[indexA].v;
-                float wA = m_velocities[indexA].w;
-                b2Vec2 vB = m_velocities[indexB].v;
-                float wB = m_velocities[indexB].w;
+                b2Vec2 vA = bodyA.InternalVelocity.v;
+                float wA = bodyA.InternalVelocity.w;
+                b2Vec2 vB = bodyB.InternalVelocity.v;
+                float wB = bodyB.InternalVelocity.w;
 
                 float normalx = vc.normal.x;
                 float normaly = vc.normal.y;
@@ -578,7 +634,7 @@ namespace Box2D.Dynamics.Contacts
                 // than friction.
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    b2VelocityConstraintPoint vcp = vc.points[j];
+                    var vcp = vc.points[j];
 
                     // Relative velocity at contact
                     /*
@@ -634,7 +690,7 @@ namespace Box2D.Dynamics.Contacts
                 // Solve normal constraints
                 if (vc.pointCount == 1)
                 {
-                    b2VelocityConstraintPoint vcp = vc.points[0];
+                    var vcp = vc.points[0];
 
                     // Relative velocity at contact
                     // b2Vec2 dv = vB + b2Math.b2Cross(wB, ref vcp.rB) - vA - b2Math.b2Cross(wA, ref vcp.rA);
@@ -710,8 +766,8 @@ namespace Box2D.Dynamics.Contacts
                     //    = A * x + b'
                     // b' = b - A * a;
 
-                    b2VelocityConstraintPoint cp1 = vc.points[0];
-                    b2VelocityConstraintPoint cp2 = vc.points[1];
+                    var cp1 = vc.points[0];
+                    var cp2 = vc.points[1];
 
                     float ax = cp1.normalImpulse;
                     float ay = cp2.normalImpulse;
@@ -949,32 +1005,32 @@ namespace Box2D.Dynamics.Contacts
                     #endregion
                 }
 
-                m_velocities[indexA].v = vA;
-                m_velocities[indexA].w = wA;
-                m_velocities[indexB].v = vB;
-                m_velocities[indexB].w = wB;
+                bodyA.InternalVelocity.v = vA;
+                bodyA.InternalVelocity.w = wA;
+                bodyB.InternalVelocity.v = vB;
+                bodyB.InternalVelocity.w = wB;
             }
         }
 
         public virtual void StoreImpulses()
         {
-            for (int i = 0; i < m_count; ++i)
+            for (int i = 0, count = m_count; i < count; ++i)
             {
-                b2ContactVelocityConstraint vc = m_velocityConstraints[i];
-                b2Manifold manifold = m_contacts[vc.contactIndex].GetManifold();
+                var vc = m_constraints[i];
+                b2Manifold manifold = vc.contact.m_manifold;
 
                 for (int j = 0; j < vc.pointCount; ++j)
                 {
                     manifold.points[j].normalImpulse = vc.points[j].normalImpulse;
                     manifold.points[j].tangentImpulse = vc.points[j].tangentImpulse;
                 }
-                m_contacts[vc.contactIndex].SetManifold(ref manifold);
+                //m_contacts[vc.contactIndex].SetManifold(ref manifold);
             }
         }
 
         public struct b2PositionSolverManifold
         {
-            public b2PositionSolverManifold(b2ContactPositionConstraint pc, ref b2Transform xfA, ref b2Transform xfB, int index)
+            public b2PositionSolverManifold(b2ContactConstraint pc, ref b2Transform xfA, ref b2Transform xfB, int index)
             {
                 Debug.Assert(pc.pointCount > 0);
 
@@ -986,7 +1042,7 @@ namespace Box2D.Dynamics.Contacts
                             pointA.x = (xfA.q.c * pc.localPoint.x - xfA.q.s * pc.localPoint.y) + xfA.p.x;
                             pointA.y = (xfA.q.s * pc.localPoint.x + xfA.q.c * pc.localPoint.y) + xfA.p.y;
 
-                            var lc = pc.localPoints[0];
+                            var lc = pc.points[0].localPoint;
                             b2Vec2 pointB;
                             pointB.x = (xfB.q.c * lc.x - xfB.q.s * lc.y) + xfB.p.x;
                             pointB.y = (xfB.q.s * lc.x + xfB.q.c * lc.y) + xfB.p.y;
@@ -1008,7 +1064,7 @@ namespace Box2D.Dynamics.Contacts
                             planePoint.x = (xfA.q.c * pc.localPoint.x - xfA.q.s * pc.localPoint.y) + xfA.p.x;
                             planePoint.y = (xfA.q.s * pc.localPoint.x + xfA.q.c * pc.localPoint.y) + xfA.p.y;
 
-                            var lc = pc.localPoints[index];
+                            var lc = pc.points[index].localPoint;
                             b2Vec2 clipPoint;
                             clipPoint.x = (xfB.q.c * lc.x - xfB.q.s * lc.y) + xfB.p.x;
                             clipPoint.y = (xfB.q.s * lc.x + xfB.q.c * lc.y) + xfB.p.y;
@@ -1028,7 +1084,7 @@ namespace Box2D.Dynamics.Contacts
                             planePoint.x = (xfB.q.c * pc.localPoint.x - xfB.q.s * pc.localPoint.y) + xfB.p.x;
                             planePoint.y = (xfB.q.s * pc.localPoint.x + xfB.q.c * pc.localPoint.y) + xfB.p.y;
 
-                            var lc = pc.localPoints[index];
+                            var lc = pc.points[index].localPoint;
                             b2Vec2 clipPoint;
                             clipPoint.x = (xfA.q.c * lc.x - xfA.q.s * lc.y) + xfA.p.x;
                             clipPoint.y = (xfA.q.s * lc.x + xfA.q.c * lc.y) + xfA.p.y;
@@ -1057,14 +1113,14 @@ namespace Box2D.Dynamics.Contacts
         {
             float minSeparation = 0.0f;
 
-            var positionConstraints = m_positionConstraints;
+            var constraints = m_constraints;
 
             for (int i = 0, count = m_count; i < count; ++i)
             {
-                b2ContactPositionConstraint pc = positionConstraints[i];
+                var pc = constraints[i];
 
-                int indexA = pc.indexA;
-                int indexB = pc.indexB;
+                var bodyA = pc.BodyA;
+                var bodyB = pc.BodyB;
                 b2Vec2 localCenterA = pc.localCenterA;
                 float mA = pc.invMassA;
                 float iA = pc.invIA;
@@ -1073,13 +1129,13 @@ namespace Box2D.Dynamics.Contacts
                 float iB = pc.invIB;
                 int pointCount = pc.pointCount;
 
-                b2Vec2 cA = m_positions[indexA].c;
-                float aA = m_positions[indexA].a;
+                b2Vec2 cA = bodyA.InternalPosition.c;
+                float aA = bodyA.InternalPosition.a;
 
-                b2Vec2 cB = m_positions[indexB].c;
-                float aB = m_positions[indexB].a;
+                b2Vec2 cB = bodyB.InternalPosition.c;
+                float aB = bodyB.InternalPosition.a;
 
-                b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
+                b2Transform xfA, xfB;
 
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
@@ -1139,11 +1195,11 @@ namespace Box2D.Dynamics.Contacts
                     aB += iB * (rBx * Py - rBy * Px);
                 }
 
-                m_positions[indexA].c = cA;
-                m_positions[indexA].a = aA;
+                bodyA.InternalPosition.c = cA;
+                bodyA.InternalPosition.a = aA;
 
-                m_positions[indexB].c = cB;
-                m_positions[indexB].a = aB;
+                bodyB.InternalPosition.c = cB;
+                bodyB.InternalPosition.a = aB;
             }
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't
@@ -1158,17 +1214,18 @@ namespace Box2D.Dynamics.Contacts
 
             for (int i = 0; i < m_count; ++i)
             {
-                b2ContactPositionConstraint pc = m_positionConstraints[i];
+                var pc = m_constraints[i];
 
-                int indexA = pc.indexA;
-                int indexB = pc.indexB;
+                var bodyA = pc.BodyA;
+                var bodyB = pc.BodyB;
+
                 b2Vec2 localCenterA = pc.localCenterA;
                 b2Vec2 localCenterB = pc.localCenterB;
                 int pointCount = pc.pointCount;
 
                 float mA = 0.0f;
                 float iA = 0.0f;
-                if (indexA == toiIndexA || indexA == toiIndexB)
+                if (bodyA.IslandIndex == toiIndexA || bodyA.IslandIndex == toiIndexB)
                 {
                     mA = pc.invMassA;
                     iA = pc.invIA;
@@ -1176,17 +1233,17 @@ namespace Box2D.Dynamics.Contacts
 
                 float mB = pc.invMassB;
                 float iB = pc.invIB;
-                if (indexB == toiIndexA || indexB == toiIndexB)
+                if (bodyB.IslandIndex == toiIndexA || bodyB.IslandIndex == toiIndexB)
                 {
                     mB = pc.invMassB;
                     iB = pc.invIB;
                 }
 
-                b2Vec2 cA = m_positions[indexA].c;
-                float aA = m_positions[indexA].a;
+                b2Vec2 cA = bodyA.InternalPosition.c;
+                float aA = bodyA.InternalPosition.a;
 
-                b2Vec2 cB = m_positions[indexB].c;
-                float aB = m_positions[indexB].a;
+                b2Vec2 cB = bodyB.InternalPosition.c;
+                float aB = bodyB.InternalPosition.a;
 
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
@@ -1229,11 +1286,11 @@ namespace Box2D.Dynamics.Contacts
                     aB += iB * b2Math.b2Cross(rB, P);
                 }
 
-                m_positions[indexA].c = cA;
-                m_positions[indexA].a = aA;
+                bodyA.InternalPosition.c = cA;
+                bodyA.InternalPosition.a = aA;
 
-                m_positions[indexB].c = cB;
-                m_positions[indexB].a = aB;
+                bodyB.InternalPosition.c = cB;
+                bodyB.InternalPosition.a = aB;
 
                 //m_positionConstraints[i] = pc;
             }
