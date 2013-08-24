@@ -1173,7 +1173,15 @@ namespace Box2D.Dynamics.Contacts
                     minSeparation = Math.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float C = b2Math.b2Clamp(b2Settings.b2_baumgarte * (separation + b2Settings.b2_linearSlop), -b2Settings.b2_maxLinearCorrection, 0.0f);
+                    float C = b2Settings.b2_baumgarte * (separation + b2Settings.b2_linearSlop);
+                    if (C < -b2Settings.b2_maxLinearCorrection)
+                    {
+                        C = -b2Settings.b2_maxLinearCorrection;
+                    }
+                    else if (C > 0)
+                    {
+                        C = 0;
+                    }
 
                     // Compute the effective mass.
                     float rnA = rAx * normaly - rAy * normalx;
@@ -1248,11 +1256,17 @@ namespace Box2D.Dynamics.Contacts
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    b2Transform xfA = b2Transform.Identity, xfB = b2Transform.Identity;
-                    xfA.q.Set(aA);
-                    xfB.q.Set(aB);
-                    xfA.p = cA - b2Math.b2Mul(xfA.q, localCenterA);
-                    xfB.p = cB - b2Math.b2Mul(xfB.q, localCenterB);
+                    b2Transform xfA, xfB;
+                    xfA.q.s = (float)Math.Sin(aA);
+                    xfA.q.c = (float)Math.Cos(aA);
+                    xfB.q.s = (float)Math.Sin(aB);
+                    xfB.q.c = (float)Math.Cos(aB);
+
+                    xfA.p.x = cA.x - (xfA.q.c * localCenterA.x - xfA.q.s * localCenterA.y);
+                    xfA.p.y = cA.y - (xfA.q.s * localCenterA.x + xfA.q.c * localCenterA.y);
+
+                    xfB.p.x = cB.x - (xfB.q.c * localCenterB.x - xfB.q.s * localCenterB.y);
+                    xfB.p.y = cB.y - (xfB.q.s * localCenterB.x + xfB.q.c * localCenterB.y);
 
                     b2PositionSolverManifold psm = new b2PositionSolverManifold(pc, ref xfA, ref xfB, j);
                     b2Vec2 normal = psm.normal;
@@ -1260,8 +1274,11 @@ namespace Box2D.Dynamics.Contacts
                     b2Vec2 point = psm.point;
                     float separation = psm.separation;
 
-                    b2Vec2 rA = point - cA;
-                    b2Vec2 rB = point - cB;
+                    float rAx = point.x - cA.x;
+                    float rAy = point.y - cA.y;
+
+                    float rBx = point.x - cB.x;
+                    float rBy = point.y - cB.y;
 
                     // Track max constraint error.
                     minSeparation = Math.Min(minSeparation, separation);
@@ -1270,20 +1287,26 @@ namespace Box2D.Dynamics.Contacts
                     float C = b2Math.b2Clamp(b2Settings.b2_toiBaugarte * (separation + b2Settings.b2_linearSlop), -b2Settings.b2_maxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
-                    float rnA = b2Math.b2Cross(ref rA, ref normal);
-                    float rnB = b2Math.b2Cross(ref rB, ref normal);
+                    float rnA = rAx * normal.y - rAy * normal.x;
+                    float rnB = rBx * normal.y - rBy * normal.x;
+                    
                     float K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
 
                     // Compute normal impulse
                     float impulse = K > 0.0f ? -C / K : 0.0f;
 
-                    b2Vec2 P = impulse * normal;
+                    float Px = impulse * normal.x;
+                    float Py = impulse * normal.y;
 
-                    cA -= mA * P;
-                    aA -= iA * b2Math.b2Cross(rA, P);
+                    cA.x -= mA * Px;
+                    cA.y -= mA * Py;
 
-                    cB += mB * P;
-                    aB += iB * b2Math.b2Cross(rB, P);
+                    aA -= iA * (rAx * Py - rAy * Px);
+
+                    cB.x += mB * Px;
+                    cB.y += mB * Py;
+
+                    aB += iB * (rBx * Py - rBy * Px);
                 }
 
                 bodyA.InternalPosition.c = cA;
@@ -1291,8 +1314,6 @@ namespace Box2D.Dynamics.Contacts
 
                 bodyB.InternalPosition.c = cB;
                 bodyB.InternalPosition.a = aB;
-
-                //m_positionConstraints[i] = pc;
             }
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't

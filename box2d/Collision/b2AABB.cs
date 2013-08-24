@@ -99,11 +99,11 @@ namespace Box2D.Collision
 #endif
         public void Combine(ref b2AABB aabb)
         {
-            LowerBound.x = aabb.LowerBoundX < LowerBoundX ? aabb.LowerBoundX : LowerBoundX;
-            LowerBound.y = aabb.LowerBoundY < LowerBoundY ? aabb.LowerBoundY : LowerBoundY;
+            LowerBound.x = aabb.LowerBound.x < LowerBound.x ? aabb.LowerBound.x : LowerBound.x;
+            LowerBound.y = aabb.LowerBound.y < LowerBound.y ? aabb.LowerBound.y : LowerBound.y;
 
-            UpperBound.x = aabb.UpperBoundX > UpperBoundX ? aabb.UpperBoundX : UpperBoundX;
-            UpperBound.y = aabb.UpperBoundY > UpperBoundY ? aabb.UpperBoundY : UpperBoundY;
+            UpperBound.x = aabb.UpperBound.x > UpperBound.x ? aabb.UpperBound.x : UpperBound.x;
+            UpperBound.y = aabb.UpperBound.y > UpperBound.y ? aabb.UpperBound.y : UpperBound.y;
         }
 
         /// Combine two AABBs into this one.
@@ -112,11 +112,20 @@ namespace Box2D.Collision
 #endif
         public void Combine(ref b2AABB aabb1, ref b2AABB aabb2)
         {
-            LowerBound.x = aabb1.LowerBoundX < aabb2.LowerBoundX ? aabb1.LowerBoundX : aabb2.LowerBoundX;
-            LowerBound.y = aabb1.LowerBoundY < aabb2.LowerBoundY ? aabb1.LowerBoundY : aabb2.LowerBoundY;
+            LowerBound.x = aabb1.LowerBound.x < aabb2.LowerBound.x ? aabb1.LowerBound.x : aabb2.LowerBound.x;
+            LowerBound.y = aabb1.LowerBound.y < aabb2.LowerBound.y ? aabb1.LowerBound.y : aabb2.LowerBound.y;
 
-            UpperBound.x = aabb1.UpperBoundX > aabb2.UpperBoundX ? aabb1.UpperBoundX : aabb2.UpperBoundX;
-            UpperBound.y = aabb1.UpperBoundY > aabb2.UpperBoundY ? aabb1.UpperBoundY : aabb2.UpperBoundY;
+            UpperBound.x = aabb1.UpperBound.x > aabb2.UpperBound.x ? aabb1.UpperBound.x : aabb2.UpperBound.x;
+            UpperBound.y = aabb1.UpperBound.y > aabb2.UpperBound.y ? aabb1.UpperBound.y : aabb2.UpperBound.y;
+        }
+
+        public static void Combine(ref b2AABB aabb1, ref b2AABB aabb2, out b2AABB output)
+        {
+            output.LowerBound.x = aabb1.LowerBound.x < aabb2.LowerBound.x ? aabb1.LowerBound.x : aabb2.LowerBound.x;
+            output.LowerBound.y = aabb1.LowerBound.y < aabb2.LowerBound.y ? aabb1.LowerBound.y : aabb2.LowerBound.y;
+
+            output.UpperBound.x = aabb1.UpperBound.x > aabb2.UpperBound.x ? aabb1.UpperBound.x : aabb2.UpperBound.x;
+            output.UpperBound.y = aabb1.UpperBound.y > aabb2.UpperBound.y ? aabb1.UpperBound.y : aabb2.UpperBound.y;
         }
 
 #if AGGRESSIVE_INLINING

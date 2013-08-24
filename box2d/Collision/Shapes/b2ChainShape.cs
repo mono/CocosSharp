@@ -144,7 +144,7 @@ namespace Box2D.Collision.Shapes
             return (b);
         }
 
-        public override b2AABB ComputeAABB(ref b2Transform xf, int childIndex)
+        public override void ComputeAABB(out b2AABB output, ref b2Transform xf, int childIndex)
         {
             int i1 = childIndex;
             int i2 = childIndex + 1;
@@ -156,9 +156,8 @@ namespace Box2D.Collision.Shapes
             b2Vec2 v1 = b2Math.b2Mul(ref xf, ref Vertices[i1]);
             b2Vec2 v2 = b2Math.b2Mul(ref xf, ref Vertices[i2]);
 
-            b2AABB aabb = b2AABB.Default;
-            aabb.Set(b2Math.b2Min(v1, v2),b2Math.b2Max(v1, v2));
-            return (aabb);
+            b2Math.b2Min(ref v1, ref v2, out output.LowerBound);
+            b2Math.b2Max(ref v1, ref v2, out output.UpperBound);
         }
 
         public override b2MassData ComputeMass(float density)

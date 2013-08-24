@@ -46,7 +46,8 @@ namespace Box2D.TestBed.Tests
             input.sweepB = sweepB;
             input.tMax = 1.0f;
 
-            b2TOIOutput output = b2TimeOfImpact.Compute(input);
+            b2TOIOutput output;
+            b2TimeOfImpact.Compute(out output, ref input);
 
             m_debugDraw.DrawString(5, m_textLine, "toi = {0}", output.t);
             m_textLine += 15;

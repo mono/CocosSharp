@@ -132,24 +132,29 @@ namespace Box2D.Collision.Shapes
             return true;
         }
 
-        public override b2AABB ComputeAABB(ref b2Transform xf, int childIndex)
+        public override void ComputeAABB(out b2AABB output, ref b2Transform xf, int childIndex)
         {
-            b2Vec2 v1 = b2Math.b2Mul(ref xf, ref Vertex1);
-            b2Vec2 v2 = b2Math.b2Mul(ref xf, ref Vertex2);
+            b2Vec2 v1;
+            v1.x = (xf.q.c * Vertex1.x - xf.q.s * Vertex1.y) + xf.p.x;
+            v1.y = (xf.q.s * Vertex1.x + xf.q.c * Vertex1.y) + xf.p.y;
 
-            b2Vec2 lower = b2Vec2.Zero;
+            b2Vec2 v2;
+            v2.x = (xf.q.c * Vertex2.x - xf.q.s * Vertex2.y) + xf.p.x;
+            v2.y = (xf.q.s * Vertex2.x + xf.q.c * Vertex2.y) + xf.p.y;
+
+            b2Vec2 lower;
             lower.x = v1.x < v2.x ? v1.x : v2.x;
             lower.y = v1.y < v2.y ? v1.y : v2.y;
+            
             //b2Math.b2Min(v1, v2);
-            b2Vec2 upper = b2Vec2.Zero;
+            b2Vec2 upper;
             upper.x = v1.x > v2.x ? v1.x : v2.x;
             upper.y = v1.y > v2.y ? v1.y : v2.y; 
             // = b2Math.b2Max(v1, v2);
 
-            b2AABB aabb = b2AABB.Default;
-            aabb.Set(lower, upper);
-            aabb.Fatten(Radius);
-            return(aabb);
+            output.LowerBound = lower;
+            output.UpperBound = upper;
+            output.Fatten(Radius);
         }
 
         public override b2MassData ComputeMass(float density)

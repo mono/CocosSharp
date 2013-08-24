@@ -11,6 +11,7 @@ namespace Box2D.TestBed.Tests
 {
     public class DynamicTreeTest : Test, Ib2QueryCallback, Ib2RayCastCallback
     {
+        public const int b2_nullNode = -1;
 
         public const int e_actorCount = 128;
 
@@ -26,7 +27,7 @@ namespace Box2D.TestBed.Tests
                 Actor actor = new Actor();
                 m_actors[i] = actor;
                 GetRandomAABB(ref actor.aabb);
-                actor.proxyId = m_tree.CreateProxy(actor.aabb, actor);
+                actor.proxyId = m_tree.CreateProxy(ref actor.aabb, ref actor);
             }
 
             m_stepCount = 0;
@@ -51,7 +52,7 @@ namespace Box2D.TestBed.Tests
             for (int i = 0; i < e_actorCount; ++i)
             {
                 Actor actor = m_actors[i];
-                if (actor.proxyId == b2TreeNode.b2_nullNode)
+                if (actor.proxyId == b2_nullNode)
                     continue;
 
                 b2Color c = new b2Color(0.9f, 0.9f, 0.9f);
@@ -149,7 +150,7 @@ namespace Box2D.TestBed.Tests
             return true;
         }
 
-        public float RayCastCallback(b2RayCastInput input, int proxyId)
+        public float RayCastCallback(ref b2RayCastInput input, int proxyId)
         {
             Actor actor = (Actor) m_tree.GetUserData(proxyId);
 
@@ -213,10 +214,10 @@ namespace Box2D.TestBed.Tests
             {
                 int j = Rand.Random.Next() % e_actorCount;
                 Actor actor = m_actors[j];
-                if (actor.proxyId == b2TreeNode.b2_nullNode)
+                if (actor.proxyId == b2_nullNode)
                 {
                     GetRandomAABB(ref actor.aabb);
-                    actor.proxyId = m_tree.CreateProxy(actor.aabb, actor);
+                    actor.proxyId = m_tree.CreateProxy(ref actor.aabb, ref actor);
                     return;
                 }
             }
@@ -228,10 +229,10 @@ namespace Box2D.TestBed.Tests
             {
                 int j = Rand.Random.Next() % e_actorCount;
                 Actor actor = m_actors[j];
-                if (actor.proxyId != b2TreeNode.b2_nullNode)
+                if (actor.proxyId != b2_nullNode)
                 {
                     m_tree.DestroyProxy(actor.proxyId);
-                    actor.proxyId = b2TreeNode.b2_nullNode;
+                    actor.proxyId = b2_nullNode;
                     return;
                 }
             }
@@ -243,7 +244,7 @@ namespace Box2D.TestBed.Tests
             {
                 int j = Rand.Random.Next() % e_actorCount;
                 Actor actor = m_actors[j];
-                if (actor.proxyId == b2TreeNode.b2_nullNode)
+                if (actor.proxyId == b2_nullNode)
                 {
                     continue;
                 }
@@ -251,7 +252,7 @@ namespace Box2D.TestBed.Tests
                 b2AABB aabb0 = actor.aabb;
                 MoveAABB(actor.aabb);
                 b2Vec2 displacement = actor.aabb.Center - aabb0.Center;
-                m_tree.MoveProxy(actor.proxyId, ref actor.aabb, displacement);
+                m_tree.MoveProxy(actor.proxyId, ref actor.aabb, ref displacement);
                 return;
             }
         }
@@ -282,7 +283,7 @@ namespace Box2D.TestBed.Tests
 
             for (int i = 0; i < e_actorCount; ++i)
             {
-                if (m_actors[i].proxyId == b2TreeNode.b2_nullNode)
+                if (m_actors[i].proxyId == b2_nullNode)
                 {
                     continue;
                 }
@@ -306,7 +307,7 @@ namespace Box2D.TestBed.Tests
             b2RayCastOutput bruteOutput = new b2RayCastOutput();
             for (int i = 0; i < e_actorCount; ++i)
             {
-                if (m_actors[i].proxyId == b2TreeNode.b2_nullNode)
+                if (m_actors[i].proxyId == b2_nullNode)
                 {
                     continue;
                 }
@@ -330,7 +331,7 @@ namespace Box2D.TestBed.Tests
         private float m_worldExtent;
         private float m_proxyExtent;
 
-        private b2DynamicTree m_tree = new b2DynamicTree();
+        private b2DynamicTree<Actor> m_tree = new b2DynamicTree<Actor>();
         private b2AABB m_queryAABB;
         private b2RayCastInput m_rayCastInput;
         private b2RayCastOutput m_rayCastOutput;

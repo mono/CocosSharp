@@ -38,7 +38,7 @@ namespace Box2D.TestBed
 
         public Cocos2DDebugDraw()
         {
-            _primitiveBatch = new CCPrimitiveBatch(CCDrawManager.GraphicsDevice);
+            _primitiveBatch = new CCPrimitiveBatch(CCDrawManager.GraphicsDevice, 5000);
             _spriteFont = CCApplication.SharedApplication.Content.Load<SpriteFont>("fonts/arial-12");
             _stringData = new List<StringData>();
             _stringBuilder = new StringBuilder();
@@ -50,14 +50,17 @@ namespace Box2D.TestBed
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
+
+            var col = color.ToColor();
+
             for (int i = 0; i < vertexCount - 1; i++)
             {
-                _primitiveBatch.AddVertex(vertices[i].ToVector2(), color.ToColor(), PrimitiveType.LineList);
-                _primitiveBatch.AddVertex(vertices[i + 1].ToVector2(), color.ToColor(), PrimitiveType.LineList);
+                _primitiveBatch.AddVertex(vertices[i].ToVector2(), col, PrimitiveType.LineList);
+                _primitiveBatch.AddVertex(vertices[i + 1].ToVector2(), col, PrimitiveType.LineList);
             }
 
-            _primitiveBatch.AddVertex(vertices[vertexCount - 1].ToVector2(), color.ToColor(), PrimitiveType.LineList);
-            _primitiveBatch.AddVertex(vertices[0].ToVector2(), color.ToColor(), PrimitiveType.LineList);
+            _primitiveBatch.AddVertex(vertices[vertexCount - 1].ToVector2(), col, PrimitiveType.LineList);
+            _primitiveBatch.AddVertex(vertices[0].ToVector2(), col, PrimitiveType.LineList);
         }
 
         public override void DrawSolidPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
@@ -66,6 +69,7 @@ namespace Box2D.TestBed
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
+            
             if (vertexCount == 2)
             {
                 DrawPolygon(vertices, vertexCount, color);
@@ -73,14 +77,15 @@ namespace Box2D.TestBed
             }
 
             var colorFill = color.ToColor() * 0.5f;
- 
+
             for (int i = 1; i < vertexCount - 1; i++)
             {
                 _primitiveBatch.AddVertex(vertices[0].ToVector2(), colorFill, PrimitiveType.TriangleList);
                 _primitiveBatch.AddVertex(vertices[i].ToVector2(), colorFill, PrimitiveType.TriangleList);
                 _primitiveBatch.AddVertex(vertices[i + 1].ToVector2(), colorFill, PrimitiveType.TriangleList);
             }
-                DrawPolygon(vertices, vertexCount, color);
+         
+            DrawPolygon(vertices, vertexCount, color);
         }
 
         public override void DrawCircle(b2Vec2 center, float radius, b2Color color)
@@ -92,15 +97,16 @@ namespace Box2D.TestBed
             const double increment = Math.PI * 2.0 / CircleSegments;
             double theta = 0.0;
 
+            var col = color.ToColor();
+            Vector2 centr = center.ToVector2();
+
             for (int i = 0, count = CircleSegments; i < count; i++)
             {
-                b2Vec2 v1 = center + radius * new b2Vec2((float)Math.Cos(theta), (float)Math.Sin(theta));
-                b2Vec2 v2 = center +
-                             radius *
-                             new b2Vec2((float)Math.Cos(theta + increment), (float)Math.Sin(theta + increment));
+                Vector2 v1 = centr + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta));
+                Vector2 v2 = centr + radius * new Vector2((float)Math.Cos(theta + increment), (float)Math.Sin(theta + increment));
 
-                _primitiveBatch.AddVertex(v1.ToVector2(), color.ToColor(), PrimitiveType.LineList);
-                _primitiveBatch.AddVertex(v2.ToVector2(), color.ToColor(), PrimitiveType.LineList);
+                _primitiveBatch.AddVertex(ref v1, col, PrimitiveType.LineList);
+                _primitiveBatch.AddVertex(ref v2, col, PrimitiveType.LineList);
 
                 theta += increment;
             }
@@ -116,20 +122,19 @@ namespace Box2D.TestBed
             double theta = 0.0;
 
             var colorFill = color.ToColor() * 0.5f;
+            var centr = center.ToVector2();
 
-            b2Vec2 v0 = center + radius * new b2Vec2((float)Math.Cos(theta), (float)Math.Sin(theta));
+            Vector2 v0 = center.ToVector2() + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta));
             theta += increment;
 
             for (int i = 1; i < CircleSegments - 1; i++)
             {
-                b2Vec2 v1 = center + radius * new b2Vec2((float)Math.Cos(theta), (float)Math.Sin(theta));
-                b2Vec2 v2 = center +
-                             radius *
-                             new b2Vec2((float)Math.Cos(theta + increment), (float)Math.Sin(theta + increment));
+                var v1 = centr + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta));
+                var v2 = centr + radius * new Vector2((float)Math.Cos(theta + increment), (float)Math.Sin(theta + increment));
 
-                _primitiveBatch.AddVertex(v0.ToVector2(), colorFill, PrimitiveType.TriangleList);
-                _primitiveBatch.AddVertex(v1.ToVector2(), colorFill, PrimitiveType.TriangleList);
-                _primitiveBatch.AddVertex(v2.ToVector2(), colorFill, PrimitiveType.TriangleList);
+                _primitiveBatch.AddVertex(ref v0, colorFill, PrimitiveType.TriangleList);
+                _primitiveBatch.AddVertex(ref v1, colorFill, PrimitiveType.TriangleList);
+                _primitiveBatch.AddVertex(ref v2, colorFill, PrimitiveType.TriangleList);
 
                 theta += increment;
             }

@@ -26,31 +26,6 @@ using Box2D.Dynamics;
 namespace Box2D.Collision
 {
 
-    /// A node in the dynamic tree. The client does not interact with this directly.
-    public class b2TreeNode
-    {
-        public const int b2_nullNode = -1;
-
-        public bool IsLeaf()
-        {
-            return child1 == b2TreeNode.b2_nullNode;
-        }
-
-        /// Enlarged AABB
-        public b2AABB aabb;
-
-        public object userData;
-        public int parentOrNext;
-//        public int parent;
-//        public int next;
-
-        public int child1;
-        public int child2;
-
-        // leaf = 0, free node = -1
-        public int height;
-    };
-
     /// A dynamic AABB tree broad-phase, inspired by Nathanael Presson's btDbvt.
     /// A dynamic tree arranges data in a binary tree to accelerate
     /// queries such as volume queries and ray casts. Leafs are proxies
@@ -59,8 +34,33 @@ namespace Box2D.Collision
     /// object to move by small amounts without triggering a tree update.
     ///
     /// Nodes are pooled and relocatable, so we use node indices rather than pointers.
-    public class b2DynamicTree
+    public class b2DynamicTree<T>
     {
+        /// A node in the dynamic tree. The client does not interact with this directly.
+        public class b2TreeNode
+        {
+            public const int b2_nullNode = -1;
+
+            public bool IsLeaf()
+            {
+                return child1 == b2TreeNode.b2_nullNode;
+            }
+
+            /// Enlarged AABB
+            public b2AABB aabb;
+
+            public T userData;
+            public int parentOrNext;
+            //        public int parent;
+            //        public int next;
+
+            public int child1;
+            public int child2;
+
+            // leaf = 0, free node = -1
+            public int height;
+        };
+
         private int m_root;
 
         internal b2TreeNode[]  m_nodes;
@@ -148,7 +148,7 @@ namespace Box2D.Collision
             m_nodes[nodeId].child1 = b2TreeNode.b2_nullNode;
             m_nodes[nodeId].child2 = b2TreeNode.b2_nullNode;
             m_nodes[nodeId].height = 0;
-            m_nodes[nodeId].userData = null;
+            m_nodes[nodeId].userData = default(T);
             ++m_nodeCount;
             return nodeId;
         }
@@ -167,7 +167,7 @@ namespace Box2D.Collision
         // Create a proxy in the tree as a leaf node. We return the index
         // of the node instead of a pointer so that we can grow
         // the node pool.
-        public int CreateProxy(b2AABB aabb, object userData)
+        public int CreateProxy(ref b2AABB aabb, ref T userData)
         {
             int proxyId = AllocateNode();
 
@@ -191,7 +191,7 @@ namespace Box2D.Collision
             FreeNode(proxyId);
         }
 
-        public bool MoveProxy(int proxyId, ref b2AABB aabb, b2Vec2 displacement)
+        public bool MoveProxy(int proxyId, ref b2AABB aabb, ref b2Vec2 displacement)
         {
             Debug.Assert(0 <= proxyId && proxyId < m_nodeCapacity);
 
@@ -258,8 +258,8 @@ namespace Box2D.Collision
 
                 float area = m_nodes[index].aabb.Perimeter;
 
-                b2AABB combinedAABB = b2AABB.Default;
-                combinedAABB.Combine(ref m_nodes[index].aabb, ref leafAABB);
+                b2AABB combinedAABB;
+                b2AABB.Combine(ref m_nodes[index].aabb, ref leafAABB, out combinedAABB);
                 float combinedArea = combinedAABB.Perimeter;
 
                 // Cost of creating a new parent for this node and the new leaf
@@ -272,14 +272,14 @@ namespace Box2D.Collision
                 float cost1;
                 if (m_nodes[child1].IsLeaf())
                 {
-                    b2AABB aabb = b2AABB.Default;
-                    aabb.Combine(ref leafAABB, ref m_nodes[child1].aabb);
+                    b2AABB aabb;
+                    b2AABB.Combine(ref leafAABB, ref m_nodes[child1].aabb, out aabb);
                     cost1 = aabb.Perimeter + inheritanceCost;
                 }
                 else
                 {
-                    b2AABB aabb = b2AABB.Default;
-                    aabb.Combine(ref leafAABB, ref m_nodes[child1].aabb);
+                    b2AABB aabb;
+                    b2AABB.Combine(ref leafAABB, ref m_nodes[child1].aabb, out aabb);
                     float oldArea = m_nodes[child1].aabb.Perimeter;
                     float newArea = aabb.Perimeter;
                     cost1 = (newArea - oldArea) + inheritanceCost;
@@ -289,14 +289,14 @@ namespace Box2D.Collision
                 float cost2;
                 if (m_nodes[child2].IsLeaf())
                 {
-                    b2AABB aabb = b2AABB.Default;
-                    aabb.Combine(ref leafAABB, ref m_nodes[child2].aabb);
+                    b2AABB aabb;
+                    b2AABB.Combine(ref leafAABB, ref m_nodes[child2].aabb, out aabb);
                     cost2 = aabb.Perimeter + inheritanceCost;
                 }
                 else
                 {
-                    b2AABB aabb = b2AABB.Default;
-                    aabb.Combine(ref leafAABB, ref m_nodes[child2].aabb);
+                    b2AABB aabb;
+                    b2AABB.Combine(ref leafAABB, ref m_nodes[child2].aabb, out aabb);
                     float oldArea = m_nodes[child2].aabb.Perimeter;
                     float newArea = aabb.Perimeter;
                     cost2 = newArea - oldArea + inheritanceCost;
@@ -326,7 +326,7 @@ namespace Box2D.Collision
             int oldParent = m_nodes[sibling].parentOrNext;
             int newParent = AllocateNode();
             m_nodes[newParent].parentOrNext = oldParent;
-            m_nodes[newParent].userData = null;
+            m_nodes[newParent].userData = default(T);
             m_nodes[newParent].aabb.Combine(ref leafAABB, ref m_nodes[sibling].aabb);
             m_nodes[newParent].height = m_nodes[sibling].height + 1;
 
@@ -705,8 +705,8 @@ namespace Box2D.Collision
             height = 1 + Math.Max(height1, height2);
             Debug.Assert(node.height == height);
 
-            b2AABB aabb = b2AABB.Default;
-            aabb.Combine(ref m_nodes[child1].aabb, ref m_nodes[child2].aabb);
+            b2AABB aabb;
+            b2AABB.Combine(ref m_nodes[child1].aabb, ref m_nodes[child2].aabb, out aabb);
 
             Debug.Assert(aabb.LowerBound == node.aabb.LowerBound);
             Debug.Assert(aabb.UpperBound == node.aabb.UpperBound);
@@ -793,8 +793,8 @@ namespace Box2D.Collision
                     for (int j = i + 1; j < count; ++j)
                     {
                         b2AABB aabbj = m_nodes[nodes[j]].aabb;
-                        b2AABB b = b2AABB.Default;
-                        b.Combine(ref aabbi, ref aabbj);
+                        b2AABB b;
+                        b2AABB.Combine(ref aabbi, ref aabbj, out b);
                         float cost = b.Perimeter;
                         if (cost < minCost)
                         {
@@ -831,16 +831,16 @@ namespace Box2D.Collision
             Validate();
         }
 
-        public object GetUserData(int proxyId)
+        public T GetUserData(int proxyId)
         {
             Debug.Assert(0 <= proxyId && proxyId < m_nodeCapacity);
             return m_nodes[proxyId].userData;
         }
 
-        public b2AABB GetFatAABB(int proxyId)
+        public void GetFatAABB(int proxyId, out b2AABB output)
         {
             Debug.Assert(0 <= proxyId && proxyId < m_nodeCapacity);
-            return m_nodes[proxyId].aabb;
+            output = m_nodes[proxyId].aabb;
         }
 
         public void Query(Ib2QueryCallback w, b2AABB aabb)
@@ -939,12 +939,12 @@ namespace Box2D.Collision
 
                 if (node.IsLeaf())
                 {
-                    b2RayCastInput subInput = new b2RayCastInput();
+                    b2RayCastInput subInput;
                     subInput.p1 = input.p1;
                     subInput.p2 = input.p2;
                     subInput.maxFraction = maxFraction;
 
-                    float value = callback.RayCastCallback(subInput, nodeId);
+                    float value = callback.RayCastCallback(ref subInput, nodeId);
 
                     if (value == 0.0f)
                     {

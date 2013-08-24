@@ -81,7 +81,7 @@ namespace Box2D.Collision.Shapes
         /// @param aabb returns the axis aligned box.
         /// @param xf the world transform of the shape.
         /// @param childIndex the child shape
-        public abstract b2AABB ComputeAABB(ref b2Transform xf, int childIndex);
+        public abstract void ComputeAABB(out b2AABB output, ref b2Transform xf, int childIndex);
 
         /// Compute the mass properties of this shape using its dimensions and density.
         /// The inertia tensor is computed about the local origin.

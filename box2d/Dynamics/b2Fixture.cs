@@ -154,10 +154,10 @@ namespace Box2D.Dynamics
             for (int i = 0; i < m_proxyCount; ++i)
             {
                 b2FixtureProxy proxy = m_proxies[i];
-                proxy.aabb = Shape.ComputeAABB(ref xf, i);
+                Shape.ComputeAABB(out proxy.aabb, ref xf, i);
                 proxy.fixture = this;
                 proxy.childIndex = i;
-                proxy.proxyId = broadPhase.CreateProxy(proxy.aabb, ref proxy);
+                proxy.proxyId = broadPhase.CreateProxy(ref proxy.aabb, ref proxy);
                 m_proxies[i] = proxy;
             }
         }
@@ -184,14 +184,16 @@ namespace Box2D.Dynamics
 
                 // Compute an AABB that covers the swept shape (may miss some rotation effect).
                 b2AABB aabb1, aabb2;
-                aabb1 = Shape.ComputeAABB(ref transform1, proxy.childIndex);
-                aabb2 = Shape.ComputeAABB(ref transform2, proxy.childIndex);
+                Shape.ComputeAABB(out aabb1, ref transform1, proxy.childIndex);
+                Shape.ComputeAABB(out aabb2, ref transform2, proxy.childIndex);
 
                 proxy.aabb.Combine(ref aabb1, ref aabb2);
 
-                b2Vec2 displacement = transform2.p - transform1.p;
+                b2Vec2 displacement;
+                displacement.x = transform2.p.x - transform1.p.x;
+                displacement.y = transform2.p.y - transform1.p.y;
 
-                broadPhase.MoveProxy(proxy.proxyId, proxy.aabb, displacement);
+                broadPhase.MoveProxy(proxy.proxyId, ref proxy.aabb, ref displacement);
             }
         }
         public virtual void SetFilterData(b2Filter filter)

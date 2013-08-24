@@ -240,6 +240,13 @@ namespace Box2D.Common
             return x * x + y * y;
         }
 
+        public static float b2DistanceSquared(ref b2Vec2 a, ref b2Vec2 b)
+        {
+            float x = a.x - b.x;
+            float y = a.y - b.y;
+            return x * x + y * y;
+        }
+
         /// Perform the dot product on two vectors.
 #if AGGRESSIVE_INLINING
         [MethodImpl(MethodImplOptions.AggressiveInlining)] 
@@ -521,6 +528,12 @@ namespace Box2D.Common
             return bx;
         }
 
+        public static void b2Min(ref b2Vec2 a, ref b2Vec2 b, out b2Vec2 output)
+        {
+            output.x = Math.Min(a.x, b.x);
+            output.y = Math.Min(a.y, b.y);
+        }
+
 #if AGGRESSIVE_INLINING
         [MethodImpl(MethodImplOptions.AggressiveInlining)] 
 #endif
@@ -530,6 +543,12 @@ namespace Box2D.Common
             bx.x = Math.Max(a.x, b.x);
             bx.y = Math.Max(a.y, b.y);
             return bx;
+        }
+
+        public static void b2Max(ref b2Vec2 a, ref b2Vec2 b, out b2Vec2 output)
+        {
+            output.x = Math.Max(a.x, b.x);
+            output.y = Math.Max(a.y, b.y);
         }
 
 #if AGGRESSIVE_INLINING

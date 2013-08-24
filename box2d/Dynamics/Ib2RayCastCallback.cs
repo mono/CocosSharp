@@ -8,6 +8,6 @@ namespace Box2D.Dynamics
 {
     public interface Ib2RayCastCallback
     {
-        float RayCastCallback(b2RayCastInput input, int proxyId);
+        float RayCastCallback(ref b2RayCastInput input, int proxyId);
     }
 }

@@ -118,13 +118,16 @@ namespace Box2D.Collision.Shapes
             return false;
         }
 
-        public override b2AABB ComputeAABB(ref b2Transform transform, int childIndex)
+        public override void ComputeAABB(out b2AABB output, ref b2Transform transform, int childIndex)
         {
-            b2Vec2 p = transform.p + b2Math.b2Mul(ref transform.q, ref Position);
-            b2AABB aabb = b2AABB.Default;
-            aabb.SetLowerBound(p.x - Radius, p.y - Radius);
-            aabb.SetUpperBound(p.x + Radius, p.y + Radius);
-            return (aabb);
+            b2Vec2 p;
+            p.x = transform.p.x + transform.q.c * Position.x - transform.q.s * Position.y;
+            p.y = transform.p.y + transform.q.s * Position.x + transform.q.c * Position.y;
+            
+            output.LowerBound.x = p.x - Radius;
+            output.LowerBound.y = p.y - Radius;
+            output.UpperBound.x = p.x + Radius;
+            output.UpperBound.y = p.y + Radius;
         }
 
         public override b2MassData ComputeMass(float density)

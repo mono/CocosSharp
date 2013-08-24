@@ -196,11 +196,8 @@ namespace Box2D.Dynamics
             m_broadPhase.UpdatePairs(this);
         }
 
-        public void AddPair(object proxyUserDataA, object proxyUserDataB)
+        public void AddPair(ref b2FixtureProxy proxyA, ref b2FixtureProxy proxyB)
         {
-            b2FixtureProxy proxyA = (b2FixtureProxy)proxyUserDataA;
-            b2FixtureProxy proxyB = (b2FixtureProxy)proxyUserDataB;
-
             b2Fixture fixtureA = proxyA.fixture;
             b2Fixture fixtureB = proxyB.fixture;
 
@@ -226,8 +223,8 @@ namespace Box2D.Dynamics
                 {
                     b2Fixture fA = edge.Contact.FixtureA;
                     b2Fixture fB = edge.Contact.FixtureB;
-                    int iA = edge.Contact.GetChildIndexA();
-                    int iB = edge.Contact.GetChildIndexB();
+                    int iA = edge.Contact.m_indexA;
+                    int iB = edge.Contact.m_indexB;
 
                     if (fA == fixtureA && fB == fixtureB && iA == indexA && iB == indexB)
                     {
@@ -267,12 +264,12 @@ namespace Box2D.Dynamics
             }
 
             // Contact creation may swap fixtures.
-            fixtureA = c.GetFixtureA();
-            fixtureB = c.GetFixtureB();
-            indexA = c.GetChildIndexA();
-            indexB = c.GetChildIndexB();
-            bodyA = fixtureA.Body;
-            bodyB = fixtureB.Body;
+            //fixtureA = c.FixtureA;
+            //fixtureB = c.FixtureB;
+            //indexA = c.m_indexA;
+            //indexB = c.m_indexB;
+            bodyA = c.FixtureA.Body;
+            bodyB = c.FixtureB.Body;
 
             // Insert into the world.
             c.Prev = null;

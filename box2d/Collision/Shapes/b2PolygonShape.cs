@@ -275,7 +275,7 @@ namespace Box2D.Collision.Shapes
             return false;
         }
 
-        public override b2AABB ComputeAABB(ref b2Transform xf, int childIndex)
+        public override void ComputeAABB(out b2AABB output, ref b2Transform xf, int childIndex)
         {
 #if false
             b2Vec2 lower = b2Math.b2Mul(ref xf, ref Vertices[0]);
@@ -312,11 +312,9 @@ namespace Box2D.Collision.Shapes
                 upper.y = Math.Max(upper.y, v.y);
             }
 
-            b2AABB aabb;
-            aabb.LowerBound = lower;
-            aabb.UpperBound = upper;
-            aabb.Fatten(Radius);
-            return aabb;
+            output.LowerBound = lower;
+            output.UpperBound = upper;
+            output.Fatten(Radius);
 #endif
         }
 

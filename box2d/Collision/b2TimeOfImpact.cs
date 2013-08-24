@@ -406,9 +406,8 @@ namespace Box2D.Collision
 		
 		// CCD via the local separating axis method. This seeks progression
 		// by computing the largest time at which separation is maintained.
-		public static b2TOIOutput Compute(b2TOIInput input)
+        public static void Compute(out b2TOIOutput output, ref b2TOIInput input)
 		{
-			b2TOIOutput output = new b2TOIOutput();
 			++b2_toiCalls;
 			
 			output.state = b2ImpactState.e_unknown;
@@ -438,7 +437,7 @@ namespace Box2D.Collision
 			
 			// Prepare input for distance query.
 			b2SimplexCache cache = _cache;
-			b2DistanceInput distanceInput = new b2DistanceInput();
+			b2DistanceInput distanceInput;
 			distanceInput.proxyA = input.proxyA;
 			distanceInput.proxyB = input.proxyB;
 			distanceInput.useRadii = false;
@@ -630,7 +629,6 @@ namespace Box2D.Collision
 			}
 			
 			b2_toiMaxIters = Math.Max(b2_toiMaxIters, iter);
-			return (output);
 		}
 	}
 }

@@ -418,7 +418,7 @@ namespace Box2D.Collision
             int np;
 
             // Clip to box side 1
-            np = b2Collision.b2ClipSegmentToLine(clipPoints1, ie, rf.sideNormal1, rf.sideOffset1, (byte)rf.i1);
+            np = b2Collision.b2ClipSegmentToLine(clipPoints1, ie, ref rf.sideNormal1, rf.sideOffset1, (byte)rf.i1);
 
             if (np < b2Settings.b2_maxManifoldPoints)
             {
@@ -426,7 +426,7 @@ namespace Box2D.Collision
             }
 
             // Clip to negative box side 1
-            np = b2Collision.b2ClipSegmentToLine(clipPoints2, clipPoints1, rf.sideNormal2, rf.sideOffset2, (byte)rf.i2);
+            np = b2Collision.b2ClipSegmentToLine(clipPoints2, clipPoints1, ref rf.sideNormal2, rf.sideOffset2, (byte)rf.i2);
 
             if (np < b2Settings.b2_maxManifoldPoints)
             {

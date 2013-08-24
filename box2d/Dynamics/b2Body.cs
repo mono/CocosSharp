@@ -35,7 +35,7 @@ namespace Box2D.Dynamics
     }
 
 
-    public class b2Body : IComparable
+    public class b2Body : IComparable<b2Body>
     {
         public b2BodyType BodyType;
 
@@ -151,18 +151,13 @@ namespace Box2D.Dynamics
 
         #region IComparable Members
 
-        public int CompareTo(object obj)
+        public int CompareTo(b2Body b2)
         {
-            b2Body b2 = obj as b2Body;
-            if (b2 == null)
-            {
-                return (-1);
-            }
             if (BodyType != b2.BodyType)
             {
-                return (BodyType.CompareTo(b2.BodyType));
+                return BodyType - b2.BodyType;
             }
-            return (obj == this ? 0 : -1);
+            return (b2 == this ? 0 : -1);
         }
 
         #endregion
@@ -453,18 +448,24 @@ namespace Box2D.Dynamics
 
         public virtual void SynchronizeTransform()
         {
-            Transform.q.Set(Sweep.a);
-            Transform.p = Sweep.c - b2Math.b2Mul(Transform.q, Sweep.localCenter);
+            Transform.q.s = (float)Math.Sin(Sweep.a);
+            Transform.q.c = (float)Math.Cos(Sweep.a);
+            Transform.p.x = Sweep.c.x - (Transform.q.c * Sweep.localCenter.x - Transform.q.s * Sweep.localCenter.y);
+            Transform.p.y = Sweep.c.y - (Transform.q.s * Sweep.localCenter.x + Transform.q.c * Sweep.localCenter.y);
         }
 
         public virtual void Advance(float alpha)
         {
             // Advance to the new safe time. This doesn't sync the broad-phase.
             Sweep.Advance(alpha);
+            
             Sweep.c = Sweep.c0;
             Sweep.a = Sweep.a0;
-            Transform.q.Set(Sweep.a);
-            Transform.p = Sweep.c - b2Math.b2Mul(Transform.q, Sweep.localCenter);
+
+            Transform.q.s = (float)Math.Sin(Sweep.a);
+            Transform.q.c = (float)Math.Cos(Sweep.a);
+            Transform.p.x = Sweep.c.x - (Transform.q.c * Sweep.localCenter.x - Transform.q.s * Sweep.localCenter.y);
+            Transform.p.y = Sweep.c.y - (Transform.q.s * Sweep.localCenter.x + Transform.q.c * Sweep.localCenter.y);
         }
 
         public virtual void SetType(b2BodyType type)
@@ -783,9 +784,23 @@ namespace Box2D.Dynamics
 
         public virtual void SynchronizeFixtures()
         {
+            /*
             b2Transform xf1 = b2Transform.Identity;
             xf1.q.Set(Sweep.a0);
             xf1.p = Sweep.c0 - b2Math.b2Mul(xf1.q, Sweep.localCenter);
+
+            b2BroadPhase broadPhase = World.ContactManager.BroadPhase;
+            for (b2Fixture f = FixtureList; f != null; f = f.Next)
+            {
+                f.Synchronize(broadPhase, ref xf1, ref Transform);
+            }
+            */
+
+            b2Transform xf1;
+            xf1.q.s = (float)Math.Sin(Sweep.a0);
+            xf1.q.c = (float)Math.Cos(Sweep.a0);
+            xf1.p.x = Sweep.c0.x - (xf1.q.c * Sweep.localCenter.x - xf1.q.s * Sweep.localCenter.y);
+            xf1.p.y = Sweep.c0.y - (xf1.q.s * Sweep.localCenter.x + xf1.q.c * Sweep.localCenter.y);
 
             b2BroadPhase broadPhase = World.ContactManager.BroadPhase;
             for (b2Fixture f = FixtureList; f != null; f = f.Next)
