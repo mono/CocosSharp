@@ -78,16 +78,12 @@ namespace Cocos2D
 			data.Read(magicHeader, 0, 8);
 			data.Seek(0, SeekOrigin.Begin);
 			if (BitConverter.ToInt64 (magicHeader, 0) == 3472403351741427810) {
-#if !XNA
-				CCLog.Log ("Binary plist begin");
 				using (BinaryReader reader = new BinaryReader(data))
 				{
 					byte[] plistData = reader.ReadBytes((int) reader.BaseStream.Length);
 					root = readBinary(plistData);
 				}
 
-				CCLog.Log ("Binary plist end");
-#endif
 			} else {
 				//allow DTD but not try to resolve it from web
 				var settings = new XmlReaderSettings () {
@@ -338,7 +334,6 @@ namespace Cocos2D
         }
 
 #region Binary Plist Reader
-#if !XNA
 
 		// Taken from https://github.com/animetrics/PlistCS and modified to work for Cocos2D-XNA
 		private static List<int> offsetTable = new List<int>();
@@ -539,7 +534,7 @@ namespace Cocos2D
 			int charCount = getCount(headerPosition, out charStartPosition);
 
 			var buffer = objectTable.GetRange(charStartPosition, charCount);
-			return buffer.Count > 0 ? new PlistString(Encoding.ASCII.GetString(buffer.ToArray())) : new PlistString(string.Empty);
+			return buffer.Count > 0 ? new PlistString(Encoding.UTF8.GetString(buffer.ToArray(), 0, buffer.Count)) : new PlistString(string.Empty);
 		}
 		private PlistString parseBinaryUnicodeString(int headerPosition)
 		{
@@ -567,7 +562,7 @@ namespace Cocos2D
 				}
 			}
 
-			return new PlistString(Encoding.Unicode.GetString(buffer));
+			return new PlistString(Encoding.Unicode.GetString(buffer, 0, charCount));
 		}
         private PlistArray parseBinaryByteArray(int headerPosition)
 		{
@@ -650,7 +645,6 @@ namespace Cocos2D
 			return origin.AddSeconds(timestamp);
 		}
 
-#endif
 #endregion Binary Plist Reader
 
 
