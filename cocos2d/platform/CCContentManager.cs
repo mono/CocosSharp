@@ -193,11 +193,28 @@ namespace Cocos2D
                 if (typeof(T) == typeof(PlistDocument))
                 {
 					string assetPath = Path.Combine(RootDirectory, path);
-					var streamContent = GetAssetStream(assetPath);
-                    result = (T) (object) new PlistDocument(streamContent);
                     
+                    using (var streamContent = TitleContainer.OpenStream(assetPath))
+                    {
+                        result = (T) (object) new PlistDocument(streamContent);
+                    }
+
                     useContentReader = false;
                 }
+#if XNA
+                else if (typeof(T) == typeof(Texture2D) && Path.HasExtension(path))
+                {
+                    string assetPath = Path.Combine(RootDirectory, path);
+
+                    var servece = (IGraphicsDeviceService)ServiceProvider.GetService(typeof(IGraphicsDeviceService));
+
+                    using (var streamContent = TitleContainer.OpenStream(assetPath))
+                    {
+                        result = (T)(object)Texture2D.FromStream(servece.GraphicsDevice, streamContent);
+                    }
+                    useContentReader = false;
+                }
+#endif
                 else
                 {
                     throw new ContentLoadException("Failed to load the asset file from " + assetName);
