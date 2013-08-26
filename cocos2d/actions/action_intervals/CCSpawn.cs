@@ -25,7 +25,7 @@ namespace Cocos2D
             {
                 for (int i = 1; i < actions.Length - 1; i++)
                 {
-                    prev = new CCSequence(prev, actions[i]);
+                    prev = new CCSpawn(prev, actions[i]);
                 }
 
                 InitOneTwo(prev, actions[actions.Length - 1]);

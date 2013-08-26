@@ -623,7 +623,7 @@ namespace Cocos2D
         {
             Debug.Assert(pSpriteFrame != null);
 
-            bool bRet = InitWithTexture(pSpriteFrame.Texture, pSpriteFrame.Rect);
+			bool bRet = InitWithTexture (pSpriteFrame.Texture, pSpriteFrame.Rect, pSpriteFrame.IsRotated);
             DisplayFrame = pSpriteFrame;
 
             return bRet;
