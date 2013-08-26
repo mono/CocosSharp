@@ -203,6 +203,11 @@ namespace Cocos2D
 				var textureRect = CCRect.Parse (subImageDict ["textureRect"].AsString);
 				var spriteOffset = CCPoint.Parse (subImageDict ["spriteOffset"].AsString);
 
+				// We are going to override the sprite offset for now to be 0,0
+				// It seems the offset is calculated off of the original size but if 
+				// we pass this offset it throws our center position calculations off.
+				spriteOffset = CCPoint.Zero;
+
 				var textureRotated = false;
 				if (subImageDict.ContainsKey ("textureRotated")) {
 					textureRotated = subImageDict ["textureRotated"].AsBool;
