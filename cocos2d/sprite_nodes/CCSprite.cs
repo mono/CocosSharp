@@ -1,8 +1,5 @@
 using System;
-using System.Drawing;
 using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 
 namespace Cocos2D
