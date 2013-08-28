@@ -244,7 +244,7 @@ namespace Cocos2D
                                m_pFontName,
                                m_fFontSize * CCMacros.CCContentScaleFactor());
 
-//#if MONOMAC || IPHONE || IOS
+//#if MACOS || IPHONE || IOS
 //			// There was a problem loading the text for some reason or another if result is not true
 //			// For MonoMac and IOS Applications we will try to create a Native Label automatically
 //			// If the font is not found then a default font will be selected by the device and used.

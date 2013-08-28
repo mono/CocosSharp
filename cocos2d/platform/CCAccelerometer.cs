@@ -8,7 +8,7 @@ namespace Cocos2D
 {
     public class CCAccelerometer
     {
-#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !WINDOWSGL
+#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MACOS && !WINDOWSGL
         // the accelerometer sensor on the device
         private static Microsoft.Devices.Sensors.Accelerometer accelerometer = null;
 #endif
@@ -22,7 +22,7 @@ namespace Cocos2D
 
         static CCAccelerometer()
         {
-#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !WINDOWSGL
+#if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MACOS && !WINDOWSGL
             try
             {
                 accelerometer = new Microsoft.Devices.Sensors.Accelerometer();
@@ -48,7 +48,7 @@ namespace Cocos2D
 
             if (pDelegate != null && !m_bActive)
             {
-#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !WINDOWSGL
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MACOS && !WINDOWSGL
                     try
                 {
                     if (Microsoft.Devices.Sensors.Accelerometer.IsSupported)
@@ -81,7 +81,7 @@ namespace Cocos2D
             {
                 if (m_bActive && !m_bEmulation)
                 {
-#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !WINDOWSGL
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MACOS && !WINDOWSGL
                     //if (accelerometer != null)
                     //{
                     //    accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
@@ -98,7 +98,7 @@ namespace Cocos2D
         }
 
 
-#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MONOMAC && !WINDOWSGL
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MACOS && !WINDOWSGL
         private void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
 

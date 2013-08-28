@@ -988,7 +988,7 @@ namespace Cocos2D
 			{
 				return null;
 			}
-#elif MONOMAC || IOS
+#elif MACOS || IOS
 
 			return Texture2D.FromStream(CCDrawManager.GraphicsDevice, stream);
 #else

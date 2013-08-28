@@ -8,7 +8,7 @@ namespace tests.FontTest
 
 		private static readonly string[] fontList =
 		{
-#if IOS || IPHONE || MONOMAC
+#if IOS || IPHONE || MACOS
 			"Chalkboard SE",
 			"Chalkduster",
 			"Noteworthy",
