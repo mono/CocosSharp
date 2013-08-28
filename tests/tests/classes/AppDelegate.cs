@@ -15,7 +15,7 @@ namespace tests
 
             game.Window.AllowUserResizing = true;
             graphics.PreferMultiSampling = false;
-#if WINDOWS || WINDOWSGL || WINDOWSDX
+#if WINDOWS || WINDOWSGL || WINDOWSDX || MACOS
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
 #endif
