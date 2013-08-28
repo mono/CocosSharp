@@ -9,9 +9,9 @@ namespace Box2D.Dynamics
 {
     public class b2WorldRayCastWrapper : Ib2RayCastCallback
     {
-        public float RayCastCallback(b2RayCastInput input, int proxyId)
+        public float RayCastCallback(ref b2RayCastInput input, int proxyId)
         {
-            b2FixtureProxy proxy = (b2FixtureProxy)broadPhase.GetUserData(proxyId);
+            b2FixtureProxy proxy = broadPhase.GetUserData(proxyId);
             b2Fixture fixture = proxy.fixture;
             int index = proxy.childIndex;
             b2RayCastOutput output;

@@ -25,9 +25,20 @@ using Box2D.Collision;
 namespace Box2D.Dynamics.Contacts
 {
 
+    public enum ContactType
+    {
+        b2CircleContact,
+        b2PolygonAndCircleContact,
+        b2PolygonContact,
+        b2EdgeAndCircleContact,
+        b2EdgeAndPolygonContact,
+        b2ChainAndCircleContact,
+        b2ChainAndPolygonContact
+    }
+
     public struct b2ContactRegister
     {
-        public Type contactType;
+        public ContactType contactType;
         public bool isPrimary;
     }
 
@@ -70,80 +81,55 @@ namespace Box2D.Dynamics.Contacts
         // This contact has a valid TOI in m_toi
         e_toiFlag = 0x0020
     }
-    public abstract class b2Contact
+    public class b2Contact : b2ReusedObject<b2Contact>
     {
-
-        protected b2ContactFlags m_flags;
-
-        public b2ContactFlags Flags
-        {
-            get { return (m_flags); }
-            set { m_flags = value; }
-        }
+        public b2ContactFlags Flags;
 
         // World pool and list pointers.
-        protected b2Contact m_Prev;
-        public b2Contact Prev { 
-            get { return (m_Prev); }
-            set { m_Prev = value; }
-        }
-        protected b2Contact m_Next;
-        public b2Contact Next {
-            get { return (m_Next); }
-            set { m_Next = value; }
-        }
+        public b2Contact Prev;
+        public b2Contact Next;
 
         // Nodes for connecting bodies.
-        protected b2ContactEdge m_NodeA;
-        public b2ContactEdge NodeA {
-            get { return (m_NodeA); }
-            set { m_NodeA = value; }
-        }
-        protected b2ContactEdge m_nodeB;
-        public b2ContactEdge NodeB { 
-            get { return (m_nodeB); }
-            set { m_nodeB = value; }
-        }
+        public b2ContactEdge NodeA;
+        public b2ContactEdge NodeB;
 
-        protected b2Fixture m_fixtureA;
-        public b2Fixture FixtureA { get { return (m_fixtureA); }
-            set { m_fixtureA = value; }
-        }
-        protected b2Fixture m_fixtureB;
-        public b2Fixture FixtureB { get { return (m_fixtureB); }
-            set { m_fixtureB = value; }
-        }
+        public b2Fixture FixtureA;
+        public b2Fixture FixtureB;
 
-        protected int m_indexA;
-        protected int m_indexB;
+        internal int m_indexA;
+        internal int m_indexB;
 
-        protected b2Manifold m_manifold;
+        internal b2Manifold m_manifold;
 
         public int m_toiCount;
         public float m_toi;
 
-        protected float m_friction;
-        public float Friction { get { return (m_friction); } set { m_friction = value; } }
-        protected float m_restitution;
-        public float Restitution { get { return (m_restitution); } set { m_restitution = value; } }
-
-        /// Evaluate this contact with your own manifold and transforms.
-        public abstract void Evaluate(ref b2Manifold manifold, ref b2Transform xfA, ref b2Transform xfB);
+        public float Friction;
+        public float Restitution;
 
         protected static b2ContactRegister[,] s_registers = new b2ContactRegister[(int)b2ShapeType.e_typeCount, (int)b2ShapeType.e_typeCount];
 
-        static b2Contact()
+        private ContactType _type;
+
+        public b2Contact()
         {
-            AddType(typeof(b2CircleContact), b2ShapeType.e_circle, b2ShapeType.e_circle);
-            AddType(typeof(b2PolygonAndCircleContact), b2ShapeType.e_polygon, b2ShapeType.e_circle);
-            AddType(typeof(b2PolygonContact), b2ShapeType.e_polygon, b2ShapeType.e_polygon);
-            AddType(typeof(b2EdgeAndCircleContact), b2ShapeType.e_edge, b2ShapeType.e_circle);
-            AddType(typeof(b2EdgeAndPolygonContact), b2ShapeType.e_edge, b2ShapeType.e_polygon);
-            AddType(typeof(b2ChainAndCircleContact), b2ShapeType.e_chain, b2ShapeType.e_circle);
-            AddType(typeof(b2ChainAndPolygonContact), b2ShapeType.e_chain, b2ShapeType.e_polygon);
+            m_manifold = new b2Manifold();
+            NodeA = new b2ContactEdge();
+            NodeB = new b2ContactEdge();
         }
 
-        private static void AddType(Type createType,
+        static b2Contact()
+        {
+            AddType(ContactType.b2CircleContact, b2ShapeType.e_circle, b2ShapeType.e_circle);
+            AddType(ContactType.b2PolygonAndCircleContact, b2ShapeType.e_polygon, b2ShapeType.e_circle);
+            AddType(ContactType.b2PolygonContact, b2ShapeType.e_polygon, b2ShapeType.e_polygon);
+            AddType(ContactType.b2EdgeAndCircleContact, b2ShapeType.e_edge, b2ShapeType.e_circle);
+            AddType(ContactType.b2EdgeAndPolygonContact, b2ShapeType.e_edge, b2ShapeType.e_polygon);
+            AddType(ContactType.b2ChainAndCircleContact, b2ShapeType.e_chain, b2ShapeType.e_circle);
+            AddType(ContactType.b2ChainAndPolygonContact, b2ShapeType.e_chain, b2ShapeType.e_polygon);
+        }
+
+        private static void AddType(ContactType createType,
                                 b2ShapeType type1, b2ShapeType type2)
         {
             Debug.Assert(0 <= type1 && type1 < b2ShapeType.e_typeCount);
@@ -159,6 +145,57 @@ namespace Box2D.Dynamics.Contacts
             }
         }
 
+        /// Evaluate this contact with your own manifold and transforms.
+        public void Evaluate(b2Manifold manifold, ref b2Transform xfA, ref b2Transform xfB)
+        {
+            switch (_type)
+            {
+                case ContactType.b2CircleContact:
+                    b2Collision.b2CollideCircles(manifold, (b2CircleShape) FixtureA.Shape, ref xfA,
+                        (b2CircleShape) FixtureB.Shape, ref xfB);
+                    break;
+
+                case ContactType.b2PolygonAndCircleContact:
+                    b2Collision.b2CollidePolygonAndCircle(manifold, (b2PolygonShape) FixtureA.Shape, ref xfA,
+                        (b2CircleShape) FixtureB.Shape, ref xfB);
+                    break;
+
+                case ContactType.b2PolygonContact:
+                    b2Collision.b2CollidePolygons(manifold, (b2PolygonShape) FixtureA.Shape, ref xfA,
+                        (b2PolygonShape) FixtureB.Shape, ref xfB);
+                    break;
+
+                case ContactType.b2EdgeAndCircleContact:
+                    b2Collision.b2CollideEdgeAndCircle(manifold, (b2EdgeShape) FixtureA.Shape, ref xfA,
+                        (b2CircleShape) FixtureB.Shape, ref xfB);
+                    break;
+
+                case ContactType.b2EdgeAndPolygonContact:
+                    b2Collision.b2CollideEdgeAndPolygon(manifold, (b2EdgeShape) FixtureA.Shape, ref xfA,
+                        (b2PolygonShape) FixtureB.Shape, ref xfB);
+                    break;
+
+                case ContactType.b2ChainAndCircleContact:
+                    b2ChainShape chain = (b2ChainShape) FixtureA.Shape;
+                    b2EdgeShape edge;
+                    edge = chain.GetChildEdge(m_indexA);
+                    b2Collision.b2CollideEdgeAndCircle(manifold, edge, ref xfA, (b2CircleShape) FixtureB.Shape,
+                        ref xfB);
+                    break;
+
+                case ContactType.b2ChainAndPolygonContact:
+                    chain = (b2ChainShape) FixtureA.Shape;
+                    edge = chain.GetChildEdge(m_indexA);
+                    b2Collision.b2CollideEdgeAndPolygon(manifold, edge, ref xfA, (b2PolygonShape) FixtureB.Shape,
+                        ref xfB);
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+
         public static b2Contact Create(b2Fixture fixtureA, int indexA, b2Fixture fixtureB, int indexB)
         {
 
@@ -168,83 +205,91 @@ namespace Box2D.Dynamics.Contacts
             Debug.Assert(0 <= type1 && type1 < b2ShapeType.e_typeCount);
             Debug.Assert(0 <= type2 && type2 < b2ShapeType.e_typeCount);
 
-            Type createFcn = s_registers[(int)type1, (int)type2].contactType;
+            var contact = Create();
 
+            //Type createFcn = s_registers[(int)type1, (int)type2].contactType;
 
-            if (createFcn != null)
+            contact._type = s_registers[(int) type1, (int) type2].contactType;
+
+            //if (createFcn != null)
             {
                 if (s_registers[(int)type1, (int)type2].isPrimary)
                 {
-                    return ((b2Contact)Activator.CreateInstance(createFcn, new object[] { fixtureA, indexA, fixtureB, indexB }));
+                    //return ((b2Contact)Activator.CreateInstance(createFcn, new object[] { fixtureA, indexA, fixtureB, indexB }));
+                    contact.Init(fixtureA, indexA, fixtureB, indexB);
                 }
                 else
                 {
-                    return ((b2Contact)Activator.CreateInstance(createFcn, new object[] { fixtureB, indexB, fixtureA, indexA }));
+                    //return ((b2Contact)Activator.CreateInstance(createFcn, new object[] { fixtureB, indexB, fixtureA, indexA }));
+                    contact.Init(fixtureB, indexB, fixtureA, indexA);
                 }
             }
-            return (null);
+            return contact;
         }
 
         public b2Contact(b2Fixture fA, int indexA, b2Fixture fB, int indexB)
         {
-            m_flags = b2ContactFlags.e_enabledFlag;
+            Init(fA, indexA, fB, indexB);
+        }
 
-            m_fixtureA = fA;
-            m_fixtureB = fB;
+        protected void Init(b2Fixture fA, int indexA, b2Fixture fB, int indexB)
+        {
+            Flags = b2ContactFlags.e_enabledFlag;
+
+            FixtureA = fA;
+            FixtureB = fB;
 
             m_indexA = indexA;
             m_indexB = indexB;
 
-			m_manifold = b2Manifold.Create();
             m_manifold.pointCount = 0;
 
             Prev = null;
             Next = null;
 
-			m_NodeA = new b2ContactEdge();
-			m_NodeA.Contact = null;
-			m_NodeA.hasPrev = false;
-			m_NodeA.hasNext = false;
-			m_NodeA.Other = null;
+            NodeA.Contact = null;
+            NodeA.hasPrev = false;
+            NodeA.hasNext = false;
+            NodeA.Other = null;
 
-			m_nodeB = new b2ContactEdge();
-            m_nodeB.Contact = null;
-            m_nodeB.hasPrev = false;
-            m_nodeB.hasNext = false;
-            m_nodeB.Other = null;
+            NodeB.Contact = null;
+            NodeB.hasPrev = false;
+            NodeB.hasNext = false;
+            NodeB.Other = null;
 
             m_toiCount = 0;
 
-            m_friction = b2Math.b2MixFriction(m_fixtureA.Friction, m_fixtureB.Friction);
-            m_restitution = b2Math.b2MixRestitution(m_fixtureA.Restitution, m_fixtureB.Restitution);
+            Friction = b2Math.b2MixFriction(FixtureA.Friction, FixtureB.Friction);
+            Restitution = b2Math.b2MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
         }
+
+        //Memory save
+        private static b2Manifold oldManifold = new b2Manifold();
 
         // Update the contact manifold and touching status.
         // Note: do not assume the fixture AABBs are overlapping or are valid.
         public virtual void Update(b2ContactListener listener)
         {
-            b2Manifold oldManifold = GetManifold();
+            oldManifold.CopyFrom(m_manifold);
 
             // Re-enable this contact.
-            m_flags |= b2ContactFlags.e_enabledFlag;
+            Flags |= b2ContactFlags.e_enabledFlag;
 
             bool touching = false;
-            bool wasTouching = (m_flags & b2ContactFlags.e_touchingFlag) == b2ContactFlags.e_touchingFlag;
+            bool wasTouching = (Flags & b2ContactFlags.e_touchingFlag) == b2ContactFlags.e_touchingFlag;
 
-            bool sensorA = m_fixtureA.IsSensor;
-            bool sensorB = m_fixtureB.IsSensor;
-            bool sensor = sensorA || sensorB;
+            bool sensor = FixtureA.m_isSensor || FixtureB.m_isSensor;
 
-            b2Body bodyA = m_fixtureA.Body;
-            b2Body bodyB = m_fixtureB.Body;
+            b2Body bodyA = FixtureA.Body;
+            b2Body bodyB = FixtureB.Body;
             b2Transform xfA = bodyA.Transform;
             b2Transform xfB = bodyB.Transform;
 
             // Is this contact a sensor?
             if (sensor)
             {
-                b2Shape shapeA = m_fixtureA.Shape;
-                b2Shape shapeB = m_fixtureB.Shape;
+                b2Shape shapeA = FixtureA.Shape;
+                b2Shape shapeB = FixtureB.Shape;
                 touching = b2Collision.b2TestOverlap(shapeA, m_indexA, shapeB, m_indexB, ref xfA, ref xfB);
 
                 // Sensors don't generate manifolds.
@@ -252,7 +297,7 @@ namespace Box2D.Dynamics.Contacts
             }
             else
             {
-                Evaluate(ref m_manifold, ref xfA, ref xfB);
+                Evaluate(m_manifold, ref xfA, ref xfB);
                 touching = m_manifold.pointCount > 0;
 
                 // Match old contact ids to new contact ids and copy the
@@ -275,7 +320,6 @@ namespace Box2D.Dynamics.Contacts
                             break;
                         }
                     }
-                    m_manifold.points[i] = mp2;
                 }
 
                 if (touching != wasTouching)
@@ -287,11 +331,11 @@ namespace Box2D.Dynamics.Contacts
 
             if (touching)
             {
-                m_flags |= b2ContactFlags.e_touchingFlag;
+                Flags |= b2ContactFlags.e_touchingFlag;
             }
             else
             {
-                m_flags &= ~b2ContactFlags.e_touchingFlag;
+                Flags &= ~b2ContactFlags.e_touchingFlag;
             }
 
             if (wasTouching == false && touching == true && listener != null)
@@ -306,51 +350,50 @@ namespace Box2D.Dynamics.Contacts
 
             if (sensor == false && touching && listener != null)
             {
-                listener.PreSolve(this, ref oldManifold);
+                listener.PreSolve(this, oldManifold);
             }
         }
         public virtual b2Manifold GetManifold()
         {
-            var result = m_manifold;
-            result.CopyPointsFrom(ref m_manifold);
-            return result;
+            return m_manifold;
         }
+        /*
         public virtual void SetManifold(ref b2Manifold m)
         {
             m_manifold = m;
             m_manifold.CopyPointsFrom(ref m);
         }
-
+        */
         public virtual void GetWorldManifold(ref b2WorldManifold worldManifold)
         {
-            b2Body bodyA = m_fixtureA.Body;
-            b2Body bodyB = m_fixtureB.Body;
-            b2Shape shapeA = m_fixtureA.Shape;
-            b2Shape shapeB = m_fixtureB.Shape;
+            b2Body bodyA = FixtureA.Body;
+            b2Body bodyB = FixtureB.Body;
+            b2Shape shapeA = FixtureA.Shape;
+            b2Shape shapeB = FixtureB.Shape;
 
-            worldManifold.Initialize(ref m_manifold, bodyA.Transform, shapeA.Radius, bodyB.Transform, shapeB.Radius);
+            worldManifold.Initialize(m_manifold, ref bodyA.Transform, shapeA.Radius, ref bodyB.Transform, shapeB.Radius);
         }
 
         public virtual void SetEnabled(bool flag)
         {
             if (flag)
             {
-                m_flags |= b2ContactFlags.e_enabledFlag;
+                Flags |= b2ContactFlags.e_enabledFlag;
             }
             else
             {
-                m_flags &= ~b2ContactFlags.e_enabledFlag;
+                Flags &= ~b2ContactFlags.e_enabledFlag;
             }
         }
 
         public virtual bool IsEnabled()
         {
-            return (m_flags.HasFlag(b2ContactFlags.e_enabledFlag));
+            return (Flags & b2ContactFlags.e_enabledFlag) != 0;
         }
 
         public virtual bool IsTouching()
         {
-            return (m_flags.HasFlag(b2ContactFlags.e_touchingFlag));
+            return (Flags & b2ContactFlags.e_touchingFlag) != 0;
         }
 
         public virtual b2Contact GetNext()
@@ -365,12 +408,12 @@ namespace Box2D.Dynamics.Contacts
 
         public virtual b2Fixture GetFixtureA()
         {
-            return m_fixtureA;
+            return FixtureA;
         }
 
         public virtual b2Fixture GetFixtureB()
         {
-            return m_fixtureB;
+            return FixtureB;
         }
 
         public virtual int GetChildIndexA()
@@ -385,37 +428,37 @@ namespace Box2D.Dynamics.Contacts
 
         public virtual void FlagForFiltering()
         {
-            m_flags |= b2ContactFlags.e_filterFlag;
+            Flags |= b2ContactFlags.e_filterFlag;
         }
 
         public virtual void SetFriction(float friction)
         {
-            m_friction = friction;
+            Friction = friction;
         }
 
         public virtual float GetFriction()
         {
-            return m_friction;
+            return Friction;
         }
 
         public virtual void ResetFriction()
         {
-            m_friction = b2MixFriction(m_fixtureA.Friction, m_fixtureB.Friction);
+            Friction = b2MixFriction(FixtureA.Friction, FixtureB.Friction);
         }
 
         public virtual void SetRestitution(float restitution)
         {
-            m_restitution = restitution;
+            Restitution = restitution;
         }
 
         public virtual float GetRestitution()
         {
-            return m_restitution;
+            return Restitution;
         }
 
         public virtual void ResetRestitution()
         {
-            m_restitution = b2MixRestitution(m_fixtureA.Restitution, m_fixtureB.Restitution);
+            Restitution = b2MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
         }
 
         protected virtual float b2MixFriction(float friction1, float friction2)

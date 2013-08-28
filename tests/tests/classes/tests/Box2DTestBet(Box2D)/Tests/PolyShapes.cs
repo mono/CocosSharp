@@ -245,7 +245,8 @@ namespace Box2D.TestBed.Tests
             callback.m_transform.SetIdentity();
             callback.m_debugDraw = m_debugDraw;
 
-            b2AABB aabb = callback.m_circle.ComputeAABB(callback.m_transform, 0);
+            b2AABB aabb;
+            callback.m_circle.ComputeAABB(out aabb, ref callback.m_transform, 0);
 
             m_world.QueryAABB(callback, aabb);
 

@@ -9,73 +9,42 @@ namespace Box2D.Collision.Shapes
     public class b2EdgeShape : b2Shape
     {
         /// Optional adjacent vertices. These are used for smooth collision.
-        protected b2Vec2 m_vertex0 = new b2Vec2();
-        protected b2Vec2 m_vertex3 = new b2Vec2();
-        protected bool m_hasVertex0, m_hasVertex3;
+        public b2Vec2 Vertex0 = new b2Vec2();
+        public b2Vec2 Vertex3 = new b2Vec2();
+        public bool HasVertex0, HasVertex3;
         /// These are the edge vertices
-        protected b2Vec2 m_vertex1 = new b2Vec2();
-        protected b2Vec2 m_vertex2 = new b2Vec2();
-
-        public bool HasVertex0
-        {
-            get { return (m_hasVertex0); }
-            set { m_hasVertex0 = value; }
-        }
-        public bool HasVertex3
-        {
-            get { return (m_hasVertex3); }
-            set { m_hasVertex3 = value; }
-        }
-        public b2Vec2 Vertex0
-        {
-            get { return (m_vertex0); }
-            set { m_vertex0 = value; }
-        }
-        public b2Vec2 Vertex1
-        {
-            get { return (m_vertex1); }
-            set { m_vertex1 = value; }
-        }
-        public b2Vec2 Vertex2
-        {
-            get { return (m_vertex2); }
-            set { m_vertex2 = value; }
-        }
-        public b2Vec2 Vertex3
-        {
-            get { return (m_vertex3); }
-            set { m_vertex3 = value; }
-        }
+        public b2Vec2 Vertex1 = new b2Vec2();
+        public b2Vec2 Vertex2 = new b2Vec2();
 
         public b2EdgeShape()
         {
-            m_type = b2ShapeType.e_edge;
-            m_radius = b2Settings.b2_polygonRadius;
-            m_vertex0.x = 0.0f;
-            m_vertex0.y = 0.0f;
-            m_vertex3.x = 0.0f;
-            m_vertex3.y = 0.0f;
-            m_hasVertex0 = false;
-            m_hasVertex3 = false;
+            ShapeType = b2ShapeType.e_edge;
+            Radius = b2Settings.b2_polygonRadius;
+            Vertex0.x = 0.0f;
+            Vertex0.y = 0.0f;
+            Vertex3.x = 0.0f;
+            Vertex3.y = 0.0f;
+            HasVertex0 = false;
+            HasVertex3 = false;
         }
 
         public b2EdgeShape(b2EdgeShape e)
             : base((b2Shape)e)
         {
-            m_vertex1 = e.m_vertex1;
-            m_vertex2 = e.m_vertex2;
-            m_vertex3 = e.m_vertex3;
-            m_vertex0 = e.m_vertex0;
-            m_hasVertex0 = e.m_hasVertex0;
-            m_hasVertex3 = e.m_hasVertex3;
+            Vertex1 = e.Vertex1;
+            Vertex2 = e.Vertex2;
+            Vertex3 = e.Vertex3;
+            Vertex0 = e.Vertex0;
+            HasVertex0 = e.HasVertex0;
+            HasVertex3 = e.HasVertex3;
         }
 
         public virtual void Set(b2Vec2 v1, b2Vec2 v2)
         {
-            m_vertex1 = v1;
-            m_vertex2 = v2;
-            m_hasVertex0 = false;
-            m_hasVertex3 = false;
+            Vertex1 = v1;
+            Vertex2 = v2;
+            HasVertex0 = false;
+            HasVertex3 = false;
         }
 
         public override b2Shape Clone()
@@ -89,7 +58,7 @@ namespace Box2D.Collision.Shapes
             return 1;
         }
 
-        public override bool TestPoint(b2Transform xf, b2Vec2 p)
+        public override bool TestPoint(ref b2Transform xf, b2Vec2 p)
         {
             return false;
         }
@@ -98,8 +67,7 @@ namespace Box2D.Collision.Shapes
         // v = v1 + s * e
         // p1 + t * d = v1 + s * e
         // s * e - t * d = p1 - v1
-        public override bool RayCast(out b2RayCastOutput output, b2RayCastInput input,
-                                    b2Transform xf, int childIndex)
+        public override bool RayCast(out b2RayCastOutput output, b2RayCastInput input, ref b2Transform xf, int childIndex)
         {
             output = b2RayCastOutput.Zero;
 
@@ -108,8 +76,8 @@ namespace Box2D.Collision.Shapes
             b2Vec2 p2 = b2Math.b2MulT(xf.q, input.p2 - xf.p);
             b2Vec2 d = p2 - p1;
 
-            b2Vec2 v1 = m_vertex1;
-            b2Vec2 v2 = m_vertex2;
+            b2Vec2 v1 = Vertex1;
+            b2Vec2 v2 = Vertex2;
             b2Vec2 e = v2 - v1;
             b2Vec2 normal = b2Vec2.Zero; // new b2Vec2(e.y, -e.x);
             normal.x = e.y;
@@ -164,31 +132,36 @@ namespace Box2D.Collision.Shapes
             return true;
         }
 
-        public override b2AABB ComputeAABB(b2Transform xf, int childIndex)
+        public override void ComputeAABB(out b2AABB output, ref b2Transform xf, int childIndex)
         {
-            b2Vec2 v1 = b2Math.b2Mul(xf, m_vertex1);
-            b2Vec2 v2 = b2Math.b2Mul(xf, m_vertex2);
+            b2Vec2 v1;
+            v1.x = (xf.q.c * Vertex1.x - xf.q.s * Vertex1.y) + xf.p.x;
+            v1.y = (xf.q.s * Vertex1.x + xf.q.c * Vertex1.y) + xf.p.y;
 
-            b2Vec2 lower = b2Vec2.Zero;
+            b2Vec2 v2;
+            v2.x = (xf.q.c * Vertex2.x - xf.q.s * Vertex2.y) + xf.p.x;
+            v2.y = (xf.q.s * Vertex2.x + xf.q.c * Vertex2.y) + xf.p.y;
+
+            b2Vec2 lower;
             lower.x = v1.x < v2.x ? v1.x : v2.x;
             lower.y = v1.y < v2.y ? v1.y : v2.y;
+            
             //b2Math.b2Min(v1, v2);
-            b2Vec2 upper = b2Vec2.Zero;
+            b2Vec2 upper;
             upper.x = v1.x > v2.x ? v1.x : v2.x;
             upper.y = v1.y > v2.y ? v1.y : v2.y; 
             // = b2Math.b2Max(v1, v2);
 
-            b2AABB aabb = b2AABB.Default;
-            aabb.Set(lower, upper);
-            aabb.Fatten(m_radius);
-            return(aabb);
+            output.LowerBound = lower;
+            output.UpperBound = upper;
+            output.Fatten(Radius);
         }
 
         public override b2MassData ComputeMass(float density)
         {
             b2MassData massData = b2MassData.Default;
             massData.mass = 0.0f;
-            massData.center = 0.5f * (m_vertex1 + m_vertex2);
+            massData.center = 0.5f * (Vertex1 + Vertex2);
             massData.I = 0.0f;
             return (massData);
         }

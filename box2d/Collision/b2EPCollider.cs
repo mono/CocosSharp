@@ -7,55 +7,56 @@ using Box2D.Common;
 
 namespace Box2D.Collision
 {
-    public enum b2EPAxisType
+    public class b2EPCollider :b2ReusedObject<b2EPCollider>
     {
-        e_unknown,
-        e_edgeA,
-        e_edgeB
-    }
-
-    // This structure is used to keep track of the best separating axis.
-    public struct b2EPAxis
-    {
-        public b2EPAxisType type;
-        public int index;
-        public float separation;
-    }
-
-    // This holds polygon B expressed in frame A.
-    public struct b2TempPolygon
-    {
-        public static b2TempPolygon Create()
+        public enum b2EPAxisType
         {
-            b2TempPolygon bt;
-            bt.vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
-            bt.normals = new b2Vec2[b2Settings.b2_maxPolygonVertices];
-            bt.count = 0;
-            return (bt);
+            e_unknown,
+            e_edgeA,
+            e_edgeB
         }
-        public b2Vec2[] vertices;
-        public b2Vec2[] normals;
-        public int count;
-    };
 
-    // Reference face used for clipping
-    public struct b2ReferenceFace
-    {
-        public int i1, i2;
+        // This structure is used to keep track of the best separating axis.
+        public struct b2EPAxis
+        {
+            public b2EPAxisType type;
+            public int index;
+            public float separation;
+        }
 
-        public b2Vec2 v1, v2;
+        // Reference face used for clipping
+        public struct b2ReferenceFace
+        {
+            public int i1, i2;
 
-        public b2Vec2 normal;
+            public b2Vec2 v1, v2;
 
-        public b2Vec2 sideNormal1;
-        public float sideOffset1;
+            public b2Vec2 normal;
 
-        public b2Vec2 sideNormal2;
-        public float sideOffset2;
-    }
+            public b2Vec2 sideNormal1;
+            public float sideOffset1;
 
-    public class b2EPCollider
-    {
+            public b2Vec2 sideNormal2;
+            public float sideOffset2;
+        }
+
+        // This holds polygon B expressed in frame A.
+        internal struct b2TempPolygon
+        {
+            public static b2TempPolygon Create()
+            {
+                b2TempPolygon bt;
+                bt.vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
+                bt.normals = new b2Vec2[b2Settings.b2_maxPolygonVertices];
+                bt.count = 0;
+                return (bt);
+            }
+            public b2Vec2[] vertices;
+            public b2Vec2[] normals;
+            public int count;
+        };
+
+        
         // Algorithm:
         // 1. Classify v1 and v2
         // 2. Classify polygon centroid as front or back
@@ -65,12 +66,11 @@ namespace Box2D.Collision
         // 6. Visit each separating axes, only accept axes within the range
         // 7. Return if _any_ axis indicates separation
         // 8. Clip
-        public void Collide(ref b2Manifold manifold, b2EdgeShape edgeA, ref b2Transform xfA,
-                                   b2PolygonShape polygonB, ref b2Transform xfB)
+        public void Collide(b2Manifold manifold, b2EdgeShape edgeA, ref b2Transform xfA, b2PolygonShape polygonB, ref b2Transform xfB)
         {
             m_xf = b2Math.b2MulT(xfA, xfB);
 
-            m_centroidB = b2Math.b2Mul(m_xf, polygonB.Centroid);
+            m_centroidB = b2Math.b2Mul(ref m_xf, ref polygonB.Centroid);
 
             m_v0 = edgeA.Vertex0;
             m_v1 = edgeA.Vertex1;
@@ -278,12 +278,11 @@ namespace Box2D.Collision
             }
 
             // Get polygonB in frameA
-            m_polygonB = b2TempPolygon.Create();
             m_polygonB.count = polygonB.VertexCount;
             for (int i = 0; i < polygonB.VertexCount; ++i)
             {
-                m_polygonB.vertices[i] = b2Math.b2Mul(m_xf, polygonB.Vertices[i]);
-                m_polygonB.normals[i] = b2Math.b2Mul(m_xf.q, polygonB.Normals[i]);
+                m_polygonB.vertices[i] = b2Math.b2Mul(ref m_xf, ref polygonB.Vertices[i]);
+                m_polygonB.normals[i] = b2Math.b2Mul(ref m_xf.q, ref polygonB.Normals[i]);
             }
 
             m_radius = 2.0f * b2Settings.b2_polygonRadius;
@@ -329,7 +328,9 @@ namespace Box2D.Collision
                 primaryAxis = edgeAxis;
             }
 
-            b2ClipVertex[] ie = new b2ClipVertex[2];
+            //Cached b2ClipVertex[] ie = new b2ClipVertex[2];
+            b2ClipVertex[] ie = _ie;
+
             b2ReferenceFace rf;
             if (primaryAxis.type == b2EPAxisType.e_edgeA)
             {
@@ -409,12 +410,15 @@ namespace Box2D.Collision
             rf.sideOffset2 = b2Math.b2Dot(ref rf.sideNormal2, ref rf.v2);
 
             // Clip incident edge against extruded edge1 side edges.
-            b2ClipVertex[] clipPoints1 = new b2ClipVertex[2];
-            b2ClipVertex[] clipPoints2 = new b2ClipVertex[2];
+            //Cached b2ClipVertex[] clipPoints1 = new b2ClipVertex[2];
+            //Cached b2ClipVertex[] clipPoints2 = new b2ClipVertex[2];
+            b2ClipVertex[] clipPoints1 = _clipPoints1;
+            b2ClipVertex[] clipPoints2 = _clipPoints2;
+
             int np;
 
             // Clip to box side 1
-            np = b2Collision.b2ClipSegmentToLine(clipPoints1, ie, rf.sideNormal1, rf.sideOffset1, (byte)rf.i1);
+            np = b2Collision.b2ClipSegmentToLine(clipPoints1, ie, ref rf.sideNormal1, rf.sideOffset1, (byte)rf.i1);
 
             if (np < b2Settings.b2_maxManifoldPoints)
             {
@@ -422,7 +426,7 @@ namespace Box2D.Collision
             }
 
             // Clip to negative box side 1
-            np = b2Collision.b2ClipSegmentToLine(clipPoints2, clipPoints1, rf.sideNormal2, rf.sideOffset2, (byte)rf.i2);
+            np = b2Collision.b2ClipSegmentToLine(clipPoints2, clipPoints1, ref rf.sideNormal2, rf.sideOffset2, (byte)rf.i2);
 
             if (np < b2Settings.b2_maxManifoldPoints)
             {
@@ -454,7 +458,7 @@ namespace Box2D.Collision
 
                     if (primaryAxis.type == b2EPAxisType.e_edgeA)
                     {
-                        cp.localPoint = b2Math.b2MulT(m_xf, clipPoints2[i].v);
+                        cp.localPoint = b2Math.b2MulT(ref m_xf, ref clipPoints2[i].v);
                         cp.id = clipPoints2[i].id;
                     }
                     else
@@ -466,7 +470,6 @@ namespace Box2D.Collision
                         cp.id.indexB = clipPoints2[i].id.indexA;
                     }
 
-                    manifold.points[pointCount] = cp;
                     ++pointCount;
                 }
             }
@@ -519,7 +522,7 @@ namespace Box2D.Collision
                 }
 
                 // Adjacency
-                if (b2Math.b2Dot(n, perp) >= 0.0f)
+                if (b2Math.b2Dot(ref n, ref perp) >= 0.0f)
                 {
                     if (b2Math.b2Dot(n - m_upperLimit, m_normal) < -b2Settings.b2_angularSlop)
                     {
@@ -552,7 +555,11 @@ namespace Box2D.Collision
             e_convex
         };
 
-        protected b2TempPolygon m_polygonB;
+        private b2ClipVertex[] _clipPoints1 = new b2ClipVertex[2];
+        private b2ClipVertex[] _clipPoints2 = new b2ClipVertex[2];
+        private b2ClipVertex[] _ie = new b2ClipVertex[2]; 
+        
+        internal b2TempPolygon m_polygonB = b2TempPolygon.Create();
 
         protected b2Transform m_xf;
         protected b2Vec2 m_centroidB;

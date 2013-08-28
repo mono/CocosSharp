@@ -9,22 +9,16 @@ namespace Box2D.Collision.Shapes
     public class b2CircleShape : b2Shape
     {
         /// Position
-        protected b2Vec2 m_p = new b2Vec2();
+        public b2Vec2 Position = new b2Vec2();
 
         /// Get the vertex count.
         public virtual int GetVertexCount() { return 1; }
 
         public b2CircleShape()
         {
-            m_type = b2ShapeType.e_circle;
-            m_radius = 0.0f;
-            m_p.SetZero();
-        }
-
-        public b2Vec2 Position
-        {
-            get { return (m_p); }
-            set { m_p = value; }
+            ShapeType = b2ShapeType.e_circle;
+            Radius = 0.0f;
+            Position.SetZero();
         }
 
         public virtual int GetSupport(b2Vec2 d)
@@ -34,12 +28,12 @@ namespace Box2D.Collision.Shapes
 
         public virtual b2Vec2 GetSupportVertex(b2Vec2 d)
         {
-            return m_p;
+            return Position;
         }
 
         public virtual b2Vec2 GetVertex(int index)
         {
-            return m_p;
+            return Position;
         }
         /// Get the vertex count.
         public override int GetChildCount()
@@ -50,7 +44,7 @@ namespace Box2D.Collision.Shapes
         public b2CircleShape(b2CircleShape copy)
             : base(copy)
         {
-            m_p = copy.m_p;
+            Position = copy.Position;
         }
 
         public override b2Shape Clone()
@@ -59,9 +53,9 @@ namespace Box2D.Collision.Shapes
             return clone;
         }
 
-        public override bool TestPoint(b2Transform transform, b2Vec2 p)
+        public override bool TestPoint(ref b2Transform transform, b2Vec2 p)
         {
-            b2Vec2 tx = b2Math.b2Mul(transform.q, m_p);
+            b2Vec2 tx = b2Math.b2Mul(ref transform.q, ref Position);
             b2Vec2 center;
             center.x = transform.p.x + tx.x;
             center.y = transform.p.y + tx.y;
@@ -69,19 +63,18 @@ namespace Box2D.Collision.Shapes
             b2Vec2 d; // = p - center;
             d.x = p.x - center.x;
             d.y = p.y - center.y;
-            return d.LengthSquared <= m_radius * m_radius;
+            return d.LengthSquared <= Radius * Radius;
         }
 
         // Collision Detection in Interactive 3D Environments by Gino van den Bergen
         // From Section 3.1.2
         // x = s + a * r
         // norm(x) = radius
-        public override bool RayCast(out b2RayCastOutput output, b2RayCastInput input,
-                                    b2Transform transform, int childIndex)
+        public override bool RayCast(out b2RayCastOutput output, b2RayCastInput input, ref b2Transform transform, int childIndex)
         {
             output = b2RayCastOutput.Zero;
 
-            b2Vec2 tx = b2Math.b2Mul(transform.q, m_p);
+            b2Vec2 tx = b2Math.b2Mul(ref transform.q, ref Position);
 //            b2Vec2 position = transform.p + tx;
             b2Vec2 position;
             position.x = transform.p.x + tx.x;
@@ -90,7 +83,7 @@ namespace Box2D.Collision.Shapes
             b2Vec2 s;
             s.x = input.p1.x - position.x;
             s.y = input.p1.y - position.y;
-            float b = s.LengthSquared - m_radius * m_radius;
+            float b = s.LengthSquared - Radius * Radius;
 
             // Solve quadratic equation.
             b2Vec2 r;
@@ -125,24 +118,26 @@ namespace Box2D.Collision.Shapes
             return false;
         }
 
-        public override b2AABB ComputeAABB(b2Transform transform, int childIndex)
+        public override void ComputeAABB(out b2AABB output, ref b2Transform transform, int childIndex)
         {
-            b2Vec2 p = transform.p + b2Math.b2Mul(transform.q, m_p);
-            b2AABB aabb = b2AABB.Default;
-            aabb.SetLowerBound(p.x - m_radius, p.y - m_radius);
-            aabb.SetUpperBound(p.x + m_radius, p.y + m_radius);
-            aabb.UpdateAttributes();
-            return (aabb);
+            b2Vec2 p;
+            p.x = transform.p.x + transform.q.c * Position.x - transform.q.s * Position.y;
+            p.y = transform.p.y + transform.q.s * Position.x + transform.q.c * Position.y;
+            
+            output.LowerBound.x = p.x - Radius;
+            output.LowerBound.y = p.y - Radius;
+            output.UpperBound.x = p.x + Radius;
+            output.UpperBound.y = p.y + Radius;
         }
 
         public override b2MassData ComputeMass(float density)
         {
             b2MassData massData = new b2MassData();
-            massData.mass = density * (float)Math.PI * m_radius * m_radius;
-            massData.center = m_p;
+            massData.mass = density * (float)Math.PI * Radius * Radius;
+            massData.center = Position;
 
             // inertia about the local origin
-            massData.I = massData.mass * (0.5f * m_radius * m_radius + m_p.LengthSquared);
+            massData.I = massData.mass * (0.5f * Radius * Radius + Position.LengthSquared);
             return (massData);
         }
     }

@@ -86,15 +86,15 @@ namespace Box2D.Dynamics.Joints
             m_invIA = m_bodyA.InvertedI;
             m_invIB = m_bodyB.InvertedI;
 
-            b2Vec2 cA = data.positions[m_indexA].c;
-            float aA = data.positions[m_indexA].a;
-            b2Vec2 vA = data.velocities[m_indexA].v;
-            float wA = data.velocities[m_indexA].w;
+            b2Vec2 cA = m_bodyA.InternalPosition.c;
+            float aA = m_bodyA.InternalPosition.a;
+            b2Vec2 vA = m_bodyA.InternalVelocity.v;
+            float wA = m_bodyA.InternalVelocity.w;
 
-            b2Vec2 cB = data.positions[m_indexB].c;
-            float aB = data.positions[m_indexB].a;
-            b2Vec2 vB = data.velocities[m_indexB].v;
-            float wB = data.velocities[m_indexB].w;
+            b2Vec2 cB = m_bodyB.InternalPosition.c;
+            float aB = m_bodyB.InternalPosition.a;
+            b2Vec2 vB = m_bodyB.InternalVelocity.v;
+            float wB = m_bodyB.InternalVelocity.w;
 
             b2Rot qA = new b2Rot(aA);
             b2Rot qB = new b2Rot(aB);
@@ -180,18 +180,18 @@ namespace Box2D.Dynamics.Joints
                 m_impulse.SetZero();
             }
 
-            data.velocities[m_indexA].v = vA;
-            data.velocities[m_indexA].w = wA;
-            data.velocities[m_indexB].v = vB;
-            data.velocities[m_indexB].w = wB;
+            m_bodyA.InternalVelocity.v = vA;
+            m_bodyA.InternalVelocity.w = wA;
+            m_bodyB.InternalVelocity.v = vB;
+            m_bodyB.InternalVelocity.w = wB;
         }
 
         public override void SolveVelocityConstraints(b2SolverData data)
         {
-            b2Vec2 vA = data.velocities[m_indexA].v;
-            float wA = data.velocities[m_indexA].w;
-            b2Vec2 vB = data.velocities[m_indexB].v;
-            float wB = data.velocities[m_indexB].w;
+            b2Vec2 vA = m_bodyA.InternalVelocity.v;
+            float wA = m_bodyA.InternalVelocity.w;
+            b2Vec2 vB = m_bodyB.InternalVelocity.v;
+            float wB = m_bodyB.InternalVelocity.w;
 
             float mA = m_invMassA, mB = m_invMassB;
             float iA = m_invIA, iB = m_invIB;
@@ -239,18 +239,18 @@ namespace Box2D.Dynamics.Joints
                 wB += iB * (b2Math.b2Cross(ref m_rB, ref P) + impulse.z);
             }
 
-            data.velocities[m_indexA].v = vA;
-            data.velocities[m_indexA].w = wA;
-            data.velocities[m_indexB].v = vB;
-            data.velocities[m_indexB].w = wB;
+            m_bodyA.InternalVelocity.v = vA;
+            m_bodyA.InternalVelocity.w = wA;
+            m_bodyB.InternalVelocity.v = vB;
+            m_bodyB.InternalVelocity.w = wB;
         }
 
         public override bool SolvePositionConstraints(b2SolverData data)
         {
-            b2Vec2 cA = data.positions[m_indexA].c;
-            float aA = data.positions[m_indexA].a;
-            b2Vec2 cB = data.positions[m_indexB].c;
-            float aB = data.positions[m_indexB].a;
+            b2Vec2 cA = m_bodyA.InternalPosition.c;
+            float aA = m_bodyA.InternalPosition.a;
+            b2Vec2 cB = m_bodyB.InternalPosition.c;
+            float aB = m_bodyB.InternalPosition.a;
 
             b2Rot qA = new b2Rot(aA);
             b2Rot qB = new b2Rot(aB);
@@ -312,10 +312,10 @@ namespace Box2D.Dynamics.Joints
                 aB += iB * (b2Math.b2Cross(rB, P) + impulse.z);
             }
 
-            data.positions[m_indexA].c = cA;
-            data.positions[m_indexA].a = aA;
-            data.positions[m_indexB].c = cB;
-            data.positions[m_indexB].a = aB;
+            m_bodyA.InternalPosition.c = cA;
+            m_bodyA.InternalPosition.a = aA;
+            m_bodyB.InternalPosition.c = cB;
+            m_bodyB.InternalPosition.a = aB;
 
             return positionError <= b2Settings.b2_linearSlop && angularError <= b2Settings.b2_angularSlop;
         }
