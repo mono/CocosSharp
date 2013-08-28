@@ -112,7 +112,7 @@ namespace Box2D.Collision.Shapes
                 b2Vec2 e1 = p2 - p1;
                 b2Vec2 e2 = p3 - p1;
 
-                float D = b2Math.b2Cross(e1, e2);
+                float D = b2Math.b2Cross(ref e1, ref e2);
 
                 float triangleArea = 0.5f * D;
                 area += triangleArea;

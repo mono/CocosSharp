@@ -632,7 +632,6 @@ namespace Box2D.Dynamics
                         other.BodyFlags = other.BodyFlags | b2BodyFlags.e_islandFlag;
                     }
                 }
-                b2ArrayPool<b2Body>.Free(stack);
 
 #if PROFILING
                 b2Profile profile = new b2Profile();
@@ -656,8 +655,11 @@ namespace Box2D.Dynamics
                     }
                 }
             }
+            b2ArrayPool<b2Body>.Free(stack);
 
+#if PROFILING
             b2Timer timer = new b2Timer();
+#endif
             // Synchronize fixtures, check for out of range bodies.
             for (b2Body b = m_bodyList; b != null; b = b.Next)
             {
@@ -721,7 +723,9 @@ namespace Box2D.Dynamics
 
             // Find TOI events and solve them.
             b2Body[] bodies = m_TOIbodies;
+#if PROFILING
             b2Timer computeTimer = new b2Timer();
+#endif
             for (; ; )
             {
 #if PROFILING
@@ -812,7 +816,9 @@ namespace Box2D.Dynamics
                         input.sweepB = bB.Sweep;
                         input.tMax = 1.0f;
 
+#if PROFILING
                         computeTimer.Reset();
+#endif
                         b2TOIOutput output;
                         b2TimeOfImpact.Compute(out output, ref input);
 
@@ -1038,7 +1044,9 @@ namespace Box2D.Dynamics
 
         public void Step(float dt, int velocityIterations, int positionIterations)
         {
+#if PROFILING
             b2Timer stepTimer = new b2Timer();
+#endif
 
             // If new fixtures were added, we need to find the new contacts.
             if ((m_flags & b2WorldFlags.e_newFixture) != 0)
@@ -1066,7 +1074,9 @@ namespace Box2D.Dynamics
 
             step.warmStarting = m_warmStarting;
 
+#if PROFILING
             b2Timer timer = new b2Timer();
+#endif
             // Update contacts. This is where some contacts are destroyed.
             {
                 m_contactManager.Collide();
@@ -1078,7 +1088,9 @@ namespace Box2D.Dynamics
             // Integrate velocities, solve velocityraints, and integrate positions.
             if (m_stepComplete && step.dt > 0.0f)
             {
+#if PROFILING
                 timer.Reset();
+#endif
                 Solve(step);
 #if PROFILING
                 m_profile.solve = timer.GetMilliseconds();
@@ -1088,7 +1100,9 @@ namespace Box2D.Dynamics
             // Handle TOI events.
             if (m_continuousPhysics && step.dt > 0.0f)
             {
+#if PROFILING
                 timer.Reset();
+#endif
                 SolveTOI(step);
 #if PROFILING
                 m_profile.solveTOI = timer.GetMilliseconds();

@@ -191,10 +191,10 @@ namespace Box2D.Dynamics.Joints
                 impulse = m_linearImpulse - oldImpulse;
 
                 vA -= mA * impulse;
-                wA -= iA * b2Math.b2Cross(m_rA, impulse);
+                wA -= iA * b2Math.b2Cross(ref m_rA, ref impulse);
 
                 vB += mB * impulse;
-                wB += iB * b2Math.b2Cross(m_rB, impulse);
+                wB += iB * b2Math.b2Cross(ref m_rB, ref impulse);
             }
 
             m_bodyA.InternalVelocity.v = vA;
