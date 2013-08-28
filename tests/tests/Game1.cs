@@ -26,7 +26,11 @@ namespace tests
 //            }
 
             graphics.IsFullScreen = false;
-
+#if WINDOWS || MACOS
+            graphics.PreferredDepthStencilFormat = Microsoft.Xna.Framework.Graphics.DepthFormat.Depth24Stencil8;
+            graphics.PreferredBackBufferWidth = 1024;
+            graphics.PreferredBackBufferHeight = 768;
+#endif
             // Frame rate is 30 fps by default for Windows Phone.
             // Divide by 2 to make it 60 fps
             TargetElapsedTime = TimeSpan.FromTicks(333333 / 2);
