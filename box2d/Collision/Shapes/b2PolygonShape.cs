@@ -162,7 +162,7 @@ namespace Box2D.Collision.Shapes
             {
                 int i1 = i;
                 int i2 = i + 1 < m_vertexCount ? i + 1 : 0;
-                b2Vec2 edge = m_vertices[i2] - m_vertices[i1];
+                b2Vec2 edge = Vertices[i2] -Vertices[i1];
 
                 for (int j = 0; j < m_vertexCount; ++j)
                 {
@@ -172,7 +172,7 @@ namespace Box2D.Collision.Shapes
                         continue;
                     }
 
-                    b2Vec2 r = m_vertices[j] - m_vertices[i1];
+                    b2Vec2 r = Vertices[j] - Vertices[i1];
 
                     // If this crashes, your polygon is non-convex, has colinear edges,
                     // or the winding order is wrong.
