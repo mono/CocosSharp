@@ -15,14 +15,9 @@ namespace $safeprojectname$
 			: base(game, graphics)
 		{
 			s_pSharedApplication = this;
-#if WINDOWS || MACOS || MONOMAC || LINUX || OUYA || XBOX
-            preferredWidth = 1024;
-            preferredHeight = 768;
-#else
+			// Set the desired width for your device.
 			preferredWidth = 480;
 			preferredHeight = 320;
-
-#endif
 			graphics.PreferredBackBufferWidth = preferredWidth;
 			graphics.PreferredBackBufferHeight = preferredHeight;
 
