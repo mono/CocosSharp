@@ -1,7 +1,5 @@
 using System;
 using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 
 namespace Cocos2D
@@ -448,7 +446,31 @@ namespace Cocos2D
 
         #region Constructors
 
-        public CCSprite (CCTexture2D texture)
+        public CCSprite()
+        {
+            if (!Init())
+            {
+                CCLog.Log("CCSprite (): Problems initializing class");
+            }
+        }
+
+        public CCSprite(CCSize size)
+        {
+            if (!InitWithTexture(null, new CCRect(0, 0, size.Width, size.Height)))
+            {
+                CCLog.Log("CCSprite (CCSize size): Problems initializing class");
+            }
+        }
+
+        public CCSprite(CCRect rect)
+        {
+            if (!InitWithTexture(null, rect))
+            {
+                CCLog.Log("CCSprite (CCRect rect): Problems initializing class");
+            }
+        }
+
+        public CCSprite(CCTexture2D texture)
         {
             if (!InitWithTexture(texture))
             {
@@ -486,14 +508,6 @@ namespace Cocos2D
             if (!InitWithSpriteFrame(pSpriteFrame))
             {
 				CCLog.Log("CCSprite (CCSpriteFrame pSpriteFrame): Problems initializing class"); 
-			}
-        }
-
-        public CCSprite ()
-        {
-            if (!Init())
-            {
-				CCLog.Log("CCSprite (): Problems initializing class"); 
 			}
         }
 
@@ -606,7 +620,7 @@ namespace Cocos2D
         {
             Debug.Assert(pSpriteFrame != null);
 
-            bool bRet = InitWithTexture(pSpriteFrame.Texture, pSpriteFrame.Rect);
+			bool bRet = InitWithTexture (pSpriteFrame.Texture, pSpriteFrame.Rect, pSpriteFrame.IsRotated);
             DisplayFrame = pSpriteFrame;
 
             return bRet;

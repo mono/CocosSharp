@@ -173,12 +173,12 @@ namespace Cocos2D
             try
             {
                 //Special types
-                if (typeof(T) == typeof(string))
+                if (typeof (T) == typeof (string))
                 {
                     //TODO: No need CCContent, use TileContainer
                     var content = ReadAsset<CCContent>(path, null);
-                    result = (T)(object)content.Content;
-                    
+                    result = (T) (object) content.Content;
+
                     useContentReader = false;
                 }
                 else
@@ -189,17 +189,51 @@ namespace Cocos2D
             }
             catch (ContentLoadException)
             {
+                try
+                {
+                    if (typeof (T) == typeof (PlistDocument))
+                    {
+                        string assetPath = Path.Combine(RootDirectory, path);
 
-                if (typeof(T) == typeof(PlistDocument))
-                {
-					string assetPath = Path.Combine(RootDirectory, path);
-					var streamContent = GetAssetStream(assetPath);
-                    result = (T) (object) new PlistDocument(streamContent);
-                    
-                    useContentReader = false;
+                        try
+                        {
+                            using (var streamContent = TitleContainer.OpenStream(assetPath))
+                            {
+                                result = (T) (object) new PlistDocument(streamContent);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            //TODO: Remove This
+                            var content = ReadAsset<CCContent>(path, null);
+                            result = (T) (object) new PlistDocument(content.Content);
+                        }
+
+                        useContentReader = false;
+                    }
+#if XNA
+                    else if (typeof (T) == typeof (Texture2D) && Path.HasExtension(path))
+                    {
+                        string assetPath = Path.Combine(RootDirectory, path);
+
+                        var servece =
+                            (IGraphicsDeviceService) ServiceProvider.GetService(typeof (IGraphicsDeviceService));
+
+                        using (var streamContent = TitleContainer.OpenStream(assetPath))
+                        {
+                            result = (T) (object) Texture2D.FromStream(servece.GraphicsDevice, streamContent);
+                        }
+                        useContentReader = false;
+                    }
+#endif
+                    else
+                    {
+                        throw;
+                    }
                 }
-                else
+                catch (Exception)
                 {
+
                     throw new ContentLoadException("Failed to load the asset file from " + assetName);
                 }
             }

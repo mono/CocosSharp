@@ -138,6 +138,14 @@ namespace Cocos2D
             return texture;
         }
 
+		public CCTexture2D this[string key]
+		{
+			get 
+			{
+				return TextureForKey (key);
+			}
+		}
+
         public CCTexture2D TextureForKey(string key)
         {
             CCTexture2D texture = null;
