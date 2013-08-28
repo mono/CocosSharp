@@ -6,7 +6,7 @@ using System.Text;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-#if MONOMAC
+#if MACOS
 using MonoMac.CoreGraphics;
 using MonoMac.AppKit;
 using MonoMac.Foundation;

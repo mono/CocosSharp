@@ -15,8 +15,10 @@ namespace GameStarterKit
 			: base(game, graphics)
 		{
 			s_pSharedApplication = this;
-			// Set the preferred dimensions of your game, this is also known as
-			// your target resolution.
+			// Set the preferred dimensions of your game which will be the window dimensions
+			// of your game. On embedded devices like phones and tablets, this should match the
+			// resolution of your device target. Ouya can support two resolutions 720p and 1080p
+			// so you can choose whatever aspect ration you need for your game here.
 			preferredWidth = 480;
 			preferredHeight = 320;
 			graphics.PreferredBackBufferWidth = preferredWidth;

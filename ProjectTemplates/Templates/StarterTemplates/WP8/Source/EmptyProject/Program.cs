@@ -16,7 +16,7 @@ using Microsoft.Xna.Framework;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 #endif
-#if MONOMAC
+#if MACOS
 using MonoMac.AppKit;
 using MonoMac;
 #endif
@@ -45,7 +45,7 @@ namespace GameStarterKit
 		}
 	}
 #endif
-	#if MONOMAC
+	#if MACOS
 	class Program : NSApplicationDelegate 
 	{
 		private Game1 game;

@@ -91,7 +91,7 @@ namespace Jumpy
 			base.OnEnter ();
 			Schedule(Step);
 
-#if WINDOWS || MONOMAC
+#if WINDOWS || MACOS
             AccelerometerEnabled = false;
             TouchEnabled = true;
             TouchMode = CCTouchMode.OneByOne;
