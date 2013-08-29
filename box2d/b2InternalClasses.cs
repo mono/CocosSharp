@@ -49,12 +49,24 @@ namespace Box2D
             return new T[length];
         }
 
+#if WINDOWS_PHONE || XBOX
+        public static void Resize(ref T[] array, int length)
+        {
+            Resize(ref array, length, true);
+        }
+
+        public static void Resize(ref T[] array, int length, bool pow)
+        {
+            Free(array);
+            array = Create(length, pow);
+        }
+#else
         public static void Resize(ref T[] array, int length, bool pow = true)
         {
             Free(array);
             array = Create(length, pow);
         }
-
+#endif
         public static void Free(T[] array)
         {
             PoolEntry entry;
@@ -106,7 +118,31 @@ namespace Box2D
         {
             _unuseIndex = 0;
         }
+#if WINDOWS_PHONE || XBOX
+        public void Free()
+        {
+            Free(false);
+        }
 
+        public void Free(bool skipAssert)
+        {
+            if (index < _unuseIndex - 1)
+            {
+                var tmp = _created[--_unuseIndex];
+
+                tmp.index = index;
+                _created[index] = tmp;
+
+                index = _unuseIndex;
+                _created[_unuseIndex] = (T)this;
+            }
+            else
+            {
+                _unuseIndex--;
+            }
+        }
+    }
+#else
         public void Free(bool skipAssert = false)
         {
             if (index < _unuseIndex - 1)
@@ -125,6 +161,7 @@ namespace Box2D
             }
         }
     }
+#endif
 
     internal class b2IntStack : b2ReusedObject<b2IntStack>
     {
