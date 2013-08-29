@@ -196,6 +196,159 @@
     <Compile Include="..\tests\tests\classes\tests\Box2DTestBet\DebugViewXNA.cs">
       <Link>classes\tests\Box2DTestBet\DebugViewXNA</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Box2dTestBedScene.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Box2dTestBedScene</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Box2DView.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Box2DView</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Cocos2DDebugDraw.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Cocos2DDebugDraw</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\MenuLayer.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\MenuLayer</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Test.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Test</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\TestEntries.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\TestEntries</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\AddPair.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\AddPair</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\ApplyForce.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\ApplyForce</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\BodyTypes.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\BodyTypes</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Breakable.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Breakable</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Bridge.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Bridge</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\BulletTest.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\BulletTest</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Cantilever.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Cantilever</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Car.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Car</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Chain.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Chain</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\CharacterCollision.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\CharacterCollision</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionFiltering.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionFiltering</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionProcessing.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionProcessing</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\CompoundShapes.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\CompoundShapes</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Confined.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Confined</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\ContinuousTest.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\ContinuousTest</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\DistanceTest.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\DistanceTest</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Dominos.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Dominos</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\DumpShell.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\DumpShell</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\DynamicTreeTest.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\DynamicTreeTest</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\EdgeShapes.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\EdgeShapes</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\EdgeTest.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\EdgeTest</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Gears.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Gears</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\OneSidedPlatform.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\OneSidedPlatform</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Pinball.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Pinball</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\PolyCollision.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\PolyCollision</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\PolyShapes.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\PolyShapes</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Prismatic.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Prismatic</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Pulleys.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Pulleys</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Pyramid.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Pyramid</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\RayCast.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\RayCast</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Revolute.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Revolute</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Rope.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Rope</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\RopeJoint.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\RopeJoint</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\SensorTest.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\SensorTest</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\ShapeEditing.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\ShapeEditing</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\SliderCrank.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\SliderCrank</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\SphereStack.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\SphereStack</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\TheoJansen.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\TheoJansen</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Tiles.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Tiles</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\TimeOfImpact.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\TimeOfImpact</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Tumbler.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Tumbler</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\VaryingFriction.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\VaryingFriction</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\VaryingRestitution.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\VaryingRestitution</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\VerticalStack.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\VerticalStack</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Web.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Web</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Collision.cs">
       <Link>classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Collision</Link>
     </Compile>
@@ -895,8 +1048,17 @@
     <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\CocosBuilderTest\TestHeader.cs">
       <Link>classes\tests\ExtensionsTest\CocosBuilderTest\TestHeader</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\CocosBuilderTest\TimelineCallbackTestLayer.cs">
+      <Link>classes\tests\ExtensionsTest\CocosBuilderTest\TimelineCallbackTestLayer</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs">
       <Link>classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\ControlExtensionTest\CCControlColourPickerTest.cs">
+      <Link>classes\tests\ExtensionsTest\ControlExtensionTest\CCControlColourPickerTest</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\ControlExtensionTest\CCControlPotentiometerTest.cs">
+      <Link>classes\tests\ExtensionsTest\ControlExtensionTest\CCControlPotentiometerTest</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\ControlExtensionTest\CCControlScene.cs">
       <Link>classes\tests\ExtensionsTest\ControlExtensionTest\CCControlScene</Link>
@@ -907,6 +1069,9 @@
     <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSliderTest\CCControlSliderTest.cs">
       <Link>classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSliderTest\CCControlSliderTest</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\ControlExtensionTest\CCControlStepperTest.cs">
+      <Link>classes\tests\ExtensionsTest\ControlExtensionTest\CCControlStepperTest</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSwitchTest\CCControlSwitchTest.cs">
       <Link>classes\tests\ExtensionsTest\ControlExtensionTest\CCControlSwitchTest\CCControlSwitchTest</Link>
     </Compile>
@@ -915,6 +1080,12 @@
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\ExtensionsTestScene.cs">
       <Link>classes\tests\ExtensionsTest\ExtensionsTestScene</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteSceneManager.cs">
+      <Link>classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteSceneManager</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteTest.cs">
+      <Link>classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteTest</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\ExtensionsTest\TableViewTest\CustomTableViewCell.cs">
       <Link>classes\tests\ExtensionsTest\TableViewTest\CustomTableViewCell</Link>
