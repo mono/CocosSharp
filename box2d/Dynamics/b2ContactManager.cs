@@ -114,6 +114,8 @@ namespace Box2D.Dynamics
                 bodyB.ContactList = c.NodeB.Next;
             }
 
+            c.Free();
+
             // Call the factory.
             --m_contactCount;
         }
@@ -127,21 +129,21 @@ namespace Box2D.Dynamics
             b2Contact c = m_contactList;
             while (c != null)
             {
-                b2Fixture fixtureA = c.GetFixtureA();
-                b2Fixture fixtureB = c.GetFixtureB();
-                int indexA = c.GetChildIndexA();
-                int indexB = c.GetChildIndexB();
+                b2Fixture fixtureA = c.FixtureA;
+                b2Fixture fixtureB = c.FixtureB;
+                int indexA = c.m_indexA;
+                int indexB = c.m_indexB;
                 b2Body bodyA = fixtureA.Body;
                 b2Body bodyB = fixtureB.Body;
 
                 // Is this contact flagged for filtering?
-                if (c.Flags.HasFlag(b2ContactFlags.e_filterFlag))
+                if ((c.Flags & b2ContactFlags.e_filterFlag) != 0)
                 {
                     // Should these bodies collide?
                     if (bodyB.ShouldCollide(bodyA) == false)
                     {
                         b2Contact cNuke = c;
-                        c = cNuke.GetNext();
+                        c = cNuke.Next;
                         Destroy(cNuke);
                         continue;
                     }
@@ -150,7 +152,7 @@ namespace Box2D.Dynamics
                     if (m_contactFilter != null && m_contactFilter.ShouldCollide(fixtureA, fixtureB) == false)
                     {
                         b2Contact cNuke = c;
-                        c = cNuke.GetNext();
+                        c = cNuke.Next;
                         Destroy(cNuke);
                         continue;
                     }
@@ -159,32 +161,32 @@ namespace Box2D.Dynamics
                     c.Flags &= ~b2ContactFlags.e_filterFlag;
                 }
 
-                bool activeA = bodyA.IsAwake() && bodyA.BodyType != b2BodyType.b2_staticBody;
-                bool activeB = bodyB.IsAwake() && bodyB.BodyType != b2BodyType.b2_staticBody;
+                bool activeA = (bodyA.BodyFlags & b2BodyFlags.e_awakeFlag) != 0 && bodyA.BodyType != b2BodyType.b2_staticBody;
+                bool activeB = (bodyB.BodyFlags & b2BodyFlags.e_awakeFlag) != 0 && bodyB.BodyType != b2BodyType.b2_staticBody;
 
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if (activeA == false && activeB == false)
                 {
-                    c = c.GetNext();
+                    c = c.Next;
                     continue;
                 }
 
-                int proxyIdA = fixtureA.Proxies[indexA].proxyId;
-                int proxyIdB = fixtureB.Proxies[indexB].proxyId;
+                int proxyIdA = fixtureA.m_proxies[indexA].proxyId;
+                int proxyIdB = fixtureB.m_proxies[indexB].proxyId;
                 bool overlap = m_broadPhase.TestOverlap(proxyIdA, proxyIdB);
 
                 // Here we destroy contacts that cease to overlap in the broad-phase.
                 if (overlap == false)
                 {
                     b2Contact cNuke = c;
-                    c = cNuke.GetNext();
+                    c = cNuke.Next;
                     Destroy(cNuke);
                     continue;
                 }
 
                 // The contact persists.
                 c.Update(m_contactListener);
-                c = c.GetNext();
+                c = c.Next;
             }
         }
 
@@ -194,11 +196,8 @@ namespace Box2D.Dynamics
             m_broadPhase.UpdatePairs(this);
         }
 
-        public void AddPair(object proxyUserDataA, object proxyUserDataB)
+        public void AddPair(ref b2FixtureProxy proxyA, ref b2FixtureProxy proxyB)
         {
-            b2FixtureProxy proxyA = (b2FixtureProxy)proxyUserDataA;
-            b2FixtureProxy proxyB = (b2FixtureProxy)proxyUserDataB;
-
             b2Fixture fixtureA = proxyA.fixture;
             b2Fixture fixtureB = proxyB.fixture;
 
@@ -222,10 +221,10 @@ namespace Box2D.Dynamics
             {
                 if (edge.Other == bodyA)
                 {
-                    b2Fixture fA = edge.Contact.GetFixtureA();
-                    b2Fixture fB = edge.Contact.GetFixtureB();
-                    int iA = edge.Contact.GetChildIndexA();
-                    int iB = edge.Contact.GetChildIndexB();
+                    b2Fixture fA = edge.Contact.FixtureA;
+                    b2Fixture fB = edge.Contact.FixtureB;
+                    int iA = edge.Contact.m_indexA;
+                    int iB = edge.Contact.m_indexB;
 
                     if (fA == fixtureA && fB == fixtureB && iA == indexA && iB == indexB)
                     {
@@ -265,12 +264,12 @@ namespace Box2D.Dynamics
             }
 
             // Contact creation may swap fixtures.
-            fixtureA = c.GetFixtureA();
-            fixtureB = c.GetFixtureB();
-            indexA = c.GetChildIndexA();
-            indexB = c.GetChildIndexB();
-            bodyA = fixtureA.Body;
-            bodyB = fixtureB.Body;
+            //fixtureA = c.FixtureA;
+            //fixtureB = c.FixtureB;
+            //indexA = c.m_indexA;
+            //indexB = c.m_indexB;
+            bodyA = c.FixtureA.Body;
+            bodyB = c.FixtureB.Body;
 
             // Insert into the world.
             c.Prev = null;

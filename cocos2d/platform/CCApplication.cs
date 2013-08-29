@@ -31,7 +31,7 @@ namespace Cocos2D
         private readonly LinkedList<CCTouch> m_pTouches = new LinkedList<CCTouch>();
         private readonly List<CCTouch> movedTouches = new List<CCTouch>();
         private readonly List<CCTouch> newTouches = new List<CCTouch>();
-#if WINDOWS || WINDOWSGL || MONOMAC || WINDOWSGL
+#if WINDOWS || WINDOWSGL || MACOS || WINDOWSGL
         private int _lastMouseId;
         private MouseState _lastMouseState;
         private MouseState _prevMouseState;
@@ -49,7 +49,14 @@ namespace Cocos2D
             : base(game)
         {
             m_graphicsService = service;
+            PresentationParameters pp = new PresentationParameters();
+            pp.BackBufferWidth = ((GraphicsDeviceManager)service).PreferredBackBufferWidth;
+            pp.BackBufferHeight = ((GraphicsDeviceManager)service).PreferredBackBufferHeight;
+            pp.BackBufferFormat = ((GraphicsDeviceManager)service).PreferredBackBufferFormat;
+            pp.DepthStencilFormat = ((GraphicsDeviceManager)service).PreferredDepthStencilFormat;
+            pp.RenderTargetUsage = RenderTargetUsage.PreserveContents;
 
+            WindowSetup = pp;
             Content = game.Content;
 
             if (m_graphicsService.GraphicsDevice != null)
@@ -161,14 +168,56 @@ namespace Cocos2D
 
         protected virtual void ServiceDeviceCreated(object sender, EventArgs e)
         {
+            try
+            {
+                Game.Services.AddService(typeof(IGraphicsDeviceService), m_graphicsService);
+            }
+            catch (ArgumentException)
+            {
+                // Already contains the graphics device service.
+            }
             CCDrawManager.Init(m_graphicsService.GraphicsDevice);
         }
 
+        /// <summary>
+        /// Returns the presentation parameters for the game window. This implementation returns null
+        /// which will use the defaults of the platform.
+        /// </summary>
+        protected virtual PresentationParameters WindowSetup
+        {
+            get;
+            set;
+        }
+
+        private bool _DeviceWasCreated = false;
+
+        /// <summary>
+        /// Called just before the graphics device for the presentation is created. This method callback is used to setup
+        /// the device settings. The WindowSetup is used to set the presentation parameters.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected virtual void GraphicsPreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
         {
-            e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
-            e.GraphicsDeviceInformation.PresentationParameters.DepthStencilFormat = DepthFormat.Depth24Stencil8;
-            e.GraphicsDeviceInformation.PresentationParameters.BackBufferFormat = SurfaceFormat.Color;
+            PresentationParameters pp = WindowSetup;
+            if (pp != null)
+            {
+                e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = pp.RenderTargetUsage;
+                e.GraphicsDeviceInformation.PresentationParameters.DepthStencilFormat = pp.DepthStencilFormat;
+                e.GraphicsDeviceInformation.PresentationParameters.BackBufferFormat = pp.BackBufferFormat;
+                if (!_DeviceWasCreated)
+                {
+                    // Only set the buffer dimensions when the device was not created
+                    e.GraphicsDeviceInformation.PresentationParameters.BackBufferWidth = pp.BackBufferWidth;
+                    e.GraphicsDeviceInformation.PresentationParameters.BackBufferHeight = pp.BackBufferHeight;
+                }
+            }
+            else
+            {
+                e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
+                e.GraphicsDeviceInformation.PresentationParameters.DepthStencilFormat = DepthFormat.Depth24Stencil8;
+                e.GraphicsDeviceInformation.PresentationParameters.BackBufferFormat = SurfaceFormat.Color;
+            }
         }
 
         /// <summary>
@@ -208,6 +257,7 @@ namespace Cocos2D
 #if ANDROID
             CCDirector.SharedDirector.DirtyLabels();
 #endif
+            _DeviceWasCreated = true;
         }
 
         public override void Initialize()
@@ -290,6 +340,7 @@ namespace Cocos2D
             //TODO: Create CCGesture and convert the coordinates into the local coordinates.
         }
 
+        #region GamePad Support
         public event CCGamePadButtonDelegate GamePadButtonUpdate;
         public event CCGamePadDPadDelegate GamePadDPadUpdate;
         public event CCGamePadStickUpdateDelegate GamePadStickUpdate;
@@ -442,7 +493,9 @@ namespace Cocos2D
             ProcessGamePad(gps3, PlayerIndex.Three);
             ProcessGamePad(gps4, PlayerIndex.Four);
         }
+        #endregion
 
+        #region Keyboard support
         private KeyboardState m_priorKeyboardState;
 
         private void ProcessKeyboard()
@@ -466,6 +519,7 @@ namespace Cocos2D
             m_priorKeyboardState = currentKeyState;
 
         }
+        #endregion
 
         private CCPoint TransformPoint(float x, float y) {
             CCPoint newPoint;
@@ -487,7 +541,7 @@ namespace Cocos2D
 
                 // TODO: allow configuration to treat the game pad as a touch device.
 
-#if WINDOWS || WINDOWSGL || MONOMAC
+#if WINDOWS || WINDOWSGL || MACOS
                 _prevMouseState = _lastMouseState;
                 _lastMouseState = Mouse.GetState();
 

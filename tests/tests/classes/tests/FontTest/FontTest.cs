@@ -8,7 +8,7 @@ namespace tests.FontTest
 
         private static readonly string[] fontList =
             {
-//#if IOS || MONOMAC
+//#if IOS || MACOS
 //                "American Typewriter",
 //                "Marker Felt",
 //				"Chalkboard",

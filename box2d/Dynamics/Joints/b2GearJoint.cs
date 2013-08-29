@@ -198,25 +198,25 @@ namespace Box2D.Dynamics.Joints
             m_iC = m_bodyC.InvertedI;
             m_iD = m_bodyD.InvertedI;
 
-            b2Vec2 cA = data.positions[m_indexA].c;
-            float aA = data.positions[m_indexA].a;
-            b2Vec2 vA = data.velocities[m_indexA].v;
-            float wA = data.velocities[m_indexA].w;
+            b2Vec2 cA = m_bodyA.InternalPosition.c;
+            float aA = m_bodyA.InternalPosition.a;
+            b2Vec2 vA = m_bodyA.InternalVelocity.v;
+            float wA = m_bodyA.InternalVelocity.w;
 
-            b2Vec2 cB = data.positions[m_indexB].c;
-            float aB = data.positions[m_indexB].a;
-            b2Vec2 vB = data.velocities[m_indexB].v;
-            float wB = data.velocities[m_indexB].w;
+            b2Vec2 cB = m_bodyB.InternalPosition.c;
+            float aB = m_bodyB.InternalPosition.a;
+            b2Vec2 vB = m_bodyB.InternalVelocity.v;
+            float wB = m_bodyB.InternalVelocity.w;
 
-            b2Vec2 cC = data.positions[m_indexC].c;
-            float aC = data.positions[m_indexC].a;
-            b2Vec2 vC = data.velocities[m_indexC].v;
-            float wC = data.velocities[m_indexC].w;
+            b2Vec2 cC = m_bodyC.InternalPosition.c;
+            float aC = m_bodyC.InternalPosition.a;
+            b2Vec2 vC = m_bodyC.InternalVelocity.v;
+            float wC = m_bodyC.InternalVelocity.w;
 
-            b2Vec2 cD = data.positions[m_indexD].c;
-            float aD = data.positions[m_indexD].a;
-            b2Vec2 vD = data.velocities[m_indexD].v;
-            float wD = data.velocities[m_indexD].w;
+            b2Vec2 cD = m_bodyD.InternalPosition.c;
+            float aD = m_bodyD.InternalPosition.a;
+            b2Vec2 vD = m_bodyD.InternalVelocity.v;
+            float wD = m_bodyD.InternalVelocity.w;
 
             b2Rot qA = new b2Rot(aA);
             b2Rot qB = new b2Rot(aB);
@@ -280,26 +280,26 @@ namespace Box2D.Dynamics.Joints
                 m_impulse = 0.0f;
             }
 
-            data.velocities[m_indexA].v = vA;
-            data.velocities[m_indexA].w = wA;
-            data.velocities[m_indexB].v = vB;
-            data.velocities[m_indexB].w = wB;
-            data.velocities[m_indexC].v = vC;
-            data.velocities[m_indexC].w = wC;
-            data.velocities[m_indexD].v = vD;
-            data.velocities[m_indexD].w = wD;
+            m_bodyA.InternalVelocity.v = vA;
+            m_bodyA.InternalVelocity.w = wA;
+            m_bodyB.InternalVelocity.v = vB;
+            m_bodyB.InternalVelocity.w = wB;
+            m_bodyC.InternalVelocity.v = vC;
+            m_bodyC.InternalVelocity.w = wC;
+            m_bodyD.InternalVelocity.v = vD;
+            m_bodyD.InternalVelocity.w = wD;
         }
 
         public override void SolveVelocityConstraints(b2SolverData data)
         {
-            b2Vec2 vA = data.velocities[m_indexA].v;
-            float wA = data.velocities[m_indexA].w;
-            b2Vec2 vB = data.velocities[m_indexB].v;
-            float wB = data.velocities[m_indexB].w;
-            b2Vec2 vC = data.velocities[m_indexC].v;
-            float wC = data.velocities[m_indexC].w;
-            b2Vec2 vD = data.velocities[m_indexD].v;
-            float wD = data.velocities[m_indexD].w;
+            b2Vec2 vA = m_bodyA.InternalVelocity.v;
+            float wA = m_bodyA.InternalVelocity.w;
+            b2Vec2 vB = m_bodyB.InternalVelocity.v;
+            float wB = m_bodyB.InternalVelocity.w;
+            b2Vec2 vC = m_bodyC.InternalVelocity.v;
+            float wC = m_bodyC.InternalVelocity.w;
+            b2Vec2 vD = m_bodyD.InternalVelocity.v;
+            float wD = m_bodyD.InternalVelocity.w;
 
             float Cdot = b2Math.b2Dot(m_JvAC, vA - vC) + b2Math.b2Dot(m_JvBD, vB - vD);
             Cdot += (m_JwA * wA - m_JwC * wC) + (m_JwB * wB - m_JwD * wD);
@@ -316,26 +316,26 @@ namespace Box2D.Dynamics.Joints
             vD -= (m_mD * impulse) * m_JvBD;
             wD -= m_iD * impulse * m_JwD;
 
-            data.velocities[m_indexA].v = vA;
-            data.velocities[m_indexA].w = wA;
-            data.velocities[m_indexB].v = vB;
-            data.velocities[m_indexB].w = wB;
-            data.velocities[m_indexC].v = vC;
-            data.velocities[m_indexC].w = wC;
-            data.velocities[m_indexD].v = vD;
-            data.velocities[m_indexD].w = wD;
+            m_bodyA.InternalVelocity.v = vA;
+            m_bodyA.InternalVelocity.w = wA;
+            m_bodyB.InternalVelocity.v = vB;
+            m_bodyB.InternalVelocity.w = wB;
+            m_bodyC.InternalVelocity.v = vC;
+            m_bodyC.InternalVelocity.w = wC;
+            m_bodyD.InternalVelocity.v = vD;
+            m_bodyD.InternalVelocity.w = wD;
         }
 
         public override bool SolvePositionConstraints(b2SolverData data)
         {
-            b2Vec2 cA = data.positions[m_indexA].c;
-            float aA = data.positions[m_indexA].a;
-            b2Vec2 cB = data.positions[m_indexB].c;
-            float aB = data.positions[m_indexB].a;
-            b2Vec2 cC = data.positions[m_indexC].c;
-            float aC = data.positions[m_indexC].a;
-            b2Vec2 cD = data.positions[m_indexD].c;
-            float aD = data.positions[m_indexD].a;
+            b2Vec2 cA = m_bodyA.InternalPosition.c;
+            float aA = m_bodyA.InternalPosition.a;
+            b2Vec2 cB = m_bodyB.InternalPosition.c;
+            float aB = m_bodyB.InternalPosition.a;
+            b2Vec2 cC = m_bodyC.InternalPosition.c;
+            float aC = m_bodyC.InternalPosition.a;
+            b2Vec2 cD = m_bodyD.InternalPosition.c;
+            float aD = m_bodyD.InternalPosition.a;
 
             b2Rot qA = new b2Rot(aA);
             b2Rot qB = new b2Rot(aB);
@@ -415,14 +415,14 @@ namespace Box2D.Dynamics.Joints
             cD -= m_mD * impulse * JvBD;
             aD -= m_iD * impulse * JwD;
 
-            data.positions[m_indexA].c = cA;
-            data.positions[m_indexA].a = aA;
-            data.positions[m_indexB].c = cB;
-            data.positions[m_indexB].a = aB;
-            data.positions[m_indexC].c = cC;
-            data.positions[m_indexC].a = aC;
-            data.positions[m_indexD].c = cD;
-            data.positions[m_indexD].a = aD;
+            m_bodyA.InternalPosition.c = cA;
+            m_bodyA.InternalPosition.a = aA;
+            m_bodyB.InternalPosition.c = cB;
+            m_bodyB.InternalPosition.a = aB;
+            m_bodyC.InternalPosition.c = cC;
+            m_bodyC.InternalPosition.a = aC;
+            m_bodyD.InternalPosition.c = cD;
+            m_bodyD.InternalPosition.a = aD;
 
             // TODO_ERIN not implemented
             return linearError < b2Settings.b2_linearSlop;

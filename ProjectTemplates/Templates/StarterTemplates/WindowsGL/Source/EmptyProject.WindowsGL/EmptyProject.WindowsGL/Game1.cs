@@ -15,7 +15,7 @@ namespace EmptyProject.WindowsGL
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-//#if MONOMAC
+//#if MACOS
 //            Content.RootDirectory = "AngryNinjas/Content";
 //#else
 			Content.RootDirectory = "Content";

@@ -1027,6 +1027,7 @@
     <None Include="ccb\HelloCocosBuilder.ccb">
       <Name>HelloCocosBuilder</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="ccb\HelloCocosBuilder.ccbi">
       <Name>HelloCocosBuilder</Name>
@@ -1267,6 +1268,7 @@
       <Name>MarkerFelt-Thin-12</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
     <Compile Include="hd\extensions\CCControlColourPickerSpriteSheet.plist">
       <Name>CCControlColourPickerSpriteSheet.plist</Name>

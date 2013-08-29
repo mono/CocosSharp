@@ -33,7 +33,7 @@ namespace tests
             GamePadEnabled = true;
 			KeypadEnabled = true;
 #endif
-#if WINDOWS || WINDOWSGL || MONOMAC
+#if WINDOWS || WINDOWSGL || MACOS
 			GamePadEnabled = true;
 #endif
 
@@ -352,7 +352,7 @@ namespace tests
                 
                 case (int)TestCases.TEST_FONTS:
                         pScene = new FontTestScene(); break;
-#if IPHONE || IOS || MONOMAC || WINDOWSGL || WINDOWS || (ANDROID && !OUYA) || NETFX_CORE
+#if IPHONE || IOS || MACOS || WINDOWSGL || WINDOWS || (ANDROID && !OUYA) || NETFX_CORE
                 case (int)TestCases.TEST_SYSTEM_FONTS:
                     pScene = new SystemFontTestScene(); break;
 #endif

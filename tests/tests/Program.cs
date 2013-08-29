@@ -12,7 +12,7 @@ using Android.Widget;
 using Uri = Android.Net.Uri;
 using Microsoft.Xna.Framework;
 #endif
-#if MONOMAC
+#if MACOS
 using MonoMac.AppKit;
 using MonoMac;
 #endif
@@ -53,7 +53,7 @@ namespace tests
 		}
 	}
 #endif
-	#if MONOMAC
+	#if MACOS
 	class Program : NSApplicationDelegate 
 	{
 		private Game1 game;

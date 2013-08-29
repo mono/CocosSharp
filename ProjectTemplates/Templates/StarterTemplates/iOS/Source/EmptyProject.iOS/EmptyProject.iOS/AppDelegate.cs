@@ -15,7 +15,7 @@ namespace EmptyProject.iOS
 			: base(game, graphics)
 		{
 			s_pSharedApplication = this;
-#if WINDOWS || MACOS || MONOMAC || LINUX || OUYA || XBOX
+#if WINDOWS || MACOS || LINUX || OUYA || XBOX
             preferredWidth = 1024;
             preferredHeight = 768;
 #else
@@ -60,7 +60,7 @@ namespace EmptyProject.iOS
 			// 2D projection
 			pDirector.Projection = CCDirectorProjection.Projection2D;
 
-#if WINDOWS || MACOS || MONOMAC || LINUX || OUYA || XBOX
+#if WINDOWS || MACOS || LINUX || OUYA || XBOX
 			var resPolicy = CCResolutionPolicy.ExactFit; // This will stretch out your game
 #else
 			var resPolicy = CCResolutionPolicy.ShowAll; // This will letterbox your game

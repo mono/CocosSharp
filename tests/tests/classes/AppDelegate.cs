@@ -13,11 +13,12 @@ namespace tests
             s_pSharedApplication = this;
             CCDrawManager.InitializeDisplay(game, graphics, DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
 
-
+            game.Window.AllowUserResizing = true;
             graphics.PreferMultiSampling = false;
-
-            //graphics.PreferredBackBufferWidth = 480;
-            //graphics.PreferredBackBufferHeight = 320;
+#if WINDOWS || WINDOWSGL || WINDOWSDX || MACOS
+            graphics.PreferredBackBufferWidth = 1024;
+            graphics.PreferredBackBufferHeight = 768;
+#endif
         }
 
         /// <summary>

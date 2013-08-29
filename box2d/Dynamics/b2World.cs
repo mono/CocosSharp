@@ -47,7 +47,7 @@ namespace Box2D.Dynamics
 #if XBOX
             get { return ((m_flags & b2WorldFlags.e_locked) == b2WorldFlags.e_locked); }
 #else
-            get { return (m_flags.HasFlag(b2WorldFlags.e_locked)); }
+            get { return (m_flags & b2WorldFlags.e_locked) != 0; }
 #endif
         }
         private b2WorldFlags m_flags;
@@ -263,7 +263,7 @@ namespace Box2D.Dynamics
                 f0.DestroyProxies(m_contactManager.BroadPhase);
 
                 b.FixtureList = f;
-                b.FixtureCount -= 1;
+                b.FixtureCount = b.FixtureCount - 1;
             }
             b.FixtureList = null;
             b.FixtureCount = 0;
@@ -497,7 +497,7 @@ namespace Box2D.Dynamics
 #if PROFILING
                 m_profile.bodyCount++;
 #endif
-                b.BodyFlags &= ~b2BodyFlags.e_islandFlag;
+                b.BodyFlags = b.BodyFlags & ~b2BodyFlags.e_islandFlag;
             }
             for (b2Contact c = m_contactManager.ContactList; c != null; c = c.Next)
             {
@@ -516,10 +516,10 @@ namespace Box2D.Dynamics
 
             // Build and simulate all awake islands.
             int stackSize = m_bodyCount;
-            b2Body[] stack = new b2Body[stackSize];
+            b2Body[] stack = b2ArrayPool<b2Body>.Create(stackSize, true);
             for (b2Body seed = m_bodyList; seed != null; seed = seed.Next)
             {
-                if (seed.BodyFlags.HasFlag(b2BodyFlags.e_islandFlag))
+                if ((seed.BodyFlags & b2BodyFlags.e_islandFlag) != 0)
                 {
                     continue;
                 }
@@ -541,7 +541,7 @@ namespace Box2D.Dynamics
                 island.Clear();
                 int stackCount = 0;
                 stack[stackCount++] = seed;
-                seed.BodyFlags |= b2BodyFlags.e_islandFlag;
+                seed.BodyFlags = seed.BodyFlags | b2BodyFlags.e_islandFlag;
 
                 // Perform a depth first search (DFS) on the raint graph.
                 while (stackCount > 0)
@@ -566,7 +566,7 @@ namespace Box2D.Dynamics
                         b2Contact contact = ce.Contact;
 
                         // Has this contact already been added to an island?
-                        if (contact.Flags.HasFlag(b2ContactFlags.e_islandFlag))
+                        if ((contact.Flags & b2ContactFlags.e_islandFlag) != 0)
                         {
                             continue;
                         }
@@ -598,7 +598,7 @@ namespace Box2D.Dynamics
                         }
 
                         stack[stackCount++] = other;
-                        other.BodyFlags |= b2BodyFlags.e_islandFlag;
+                        other.BodyFlags = other.BodyFlags | b2BodyFlags.e_islandFlag;
                     }
 
                     // Search all joints connect to this body.
@@ -629,9 +629,10 @@ namespace Box2D.Dynamics
                         }
 
                         stack[stackCount++] = other;
-                        other.BodyFlags |= b2BodyFlags.e_islandFlag;
+                        other.BodyFlags = other.BodyFlags | b2BodyFlags.e_islandFlag;
                     }
                 }
+
 #if PROFILING
                 b2Profile profile = new b2Profile();
                 island.Solve(ref profile, step, m_gravity, m_allowSleep);
@@ -650,17 +651,20 @@ namespace Box2D.Dynamics
                     b2Body b = island.m_bodies[i];
                     if (b.BodyType == b2BodyType.b2_staticBody)
                     {
-                        b.BodyFlags &= ~b2BodyFlags.e_islandFlag;
+                        b.BodyFlags = b.BodyFlags & ~b2BodyFlags.e_islandFlag;
                     }
                 }
             }
+            b2ArrayPool<b2Body>.Free(stack);
 
+#if PROFILING
             b2Timer timer = new b2Timer();
+#endif
             // Synchronize fixtures, check for out of range bodies.
             for (b2Body b = m_bodyList; b != null; b = b.Next)
             {
                 // If a body was not in an island then it did not move.
-                if ((!b.BodyFlags.HasFlag(b2BodyFlags.e_islandFlag)))
+                if ((b.BodyFlags & b2BodyFlags.e_islandFlag) == 0)
                 {
                     continue;
                 }
@@ -686,6 +690,7 @@ namespace Box2D.Dynamics
         // TODO: Make this faster, it's very slow.
 
         private b2Island m_TOIIsland;
+        private b2Body[] m_TOIbodies = new b2Body[2];
 
         public void SolveTOI(b2TimeStep step)
         {
@@ -703,7 +708,7 @@ namespace Box2D.Dynamics
             {
                 for (b2Body b = m_bodyList; b != null; b = b.Next)
                 {
-                    b.BodyFlags &= ~b2BodyFlags.e_islandFlag;
+                    b.BodyFlags = b.BodyFlags & ~b2BodyFlags.e_islandFlag;
                     b.Sweep.alpha0 = 0.0f;
                 }
 
@@ -717,8 +722,10 @@ namespace Box2D.Dynamics
             }
 
             // Find TOI events and solve them.
-            b2Body[] bodies = new b2Body[2];
+            b2Body[] bodies = m_TOIbodies;
+#if PROFILING
             b2Timer computeTimer = new b2Timer();
+#endif
             for (; ; )
             {
 #if PROFILING
@@ -731,7 +738,7 @@ namespace Box2D.Dynamics
                 for (b2Contact c = m_contactManager.ContactList; c != null; c = c.Next)
                 {
                     // Is this contact disabled?
-                    if (c.IsEnabled() == false)
+                    if ((c.Flags & b2ContactFlags.e_enabledFlag) == 0)
                     {
                         continue;
                     }
@@ -743,18 +750,18 @@ namespace Box2D.Dynamics
                     }
 
                     float alpha = 1.0f;
-                    if (c.Flags.HasFlag(b2ContactFlags.e_toiFlag))
+                    if ((c.Flags & b2ContactFlags.e_toiFlag) != 0)
                     {
                         // This contact has a valid cached TOI.
                         alpha = c.m_toi;
                     }
                     else
                     {
-                        b2Fixture fA = c.GetFixtureA();
-                        b2Fixture fB = c.GetFixtureB();
+                        b2Fixture fA = c.FixtureA;
+                        b2Fixture fB = c.FixtureB;
 
                         // Is there a sensor?
-                        if (fA.IsSensor || fB.IsSensor)
+                        if (fA.m_isSensor || fB.m_isSensor)
                         {
                             continue;
                         }
@@ -765,8 +772,8 @@ namespace Box2D.Dynamics
                         b2BodyType typeA = bA.BodyType;
                         b2BodyType typeB = bB.BodyType;
 
-                        bool activeA = bA.IsAwake() && typeA != b2BodyType.b2_staticBody;
-                        bool activeB = bB.IsAwake() && typeB != b2BodyType.b2_staticBody;
+                        bool activeA = (bA.BodyFlags & b2BodyFlags.e_awakeFlag) != 0 && typeA != b2BodyType.b2_staticBody;
+                        bool activeB = (bB.BodyFlags & b2BodyFlags.e_awakeFlag) != 0 && typeB != b2BodyType.b2_staticBody;
 
                         // Is at least one body active (awake and dynamic or kinematic)?
                         if (activeA == false && activeB == false)
@@ -774,8 +781,8 @@ namespace Box2D.Dynamics
                             continue;
                         }
 
-                        bool collideA = bA.IsBullet() || typeA != b2BodyType.b2_dynamicBody;
-                        bool collideB = bB.IsBullet() || typeB != b2BodyType.b2_dynamicBody;
+                        bool collideA = (bA.BodyFlags & b2BodyFlags.e_bulletFlag) != 0 || typeA != b2BodyType.b2_dynamicBody;
+                        bool collideB = (bB.BodyFlags & b2BodyFlags.e_bulletFlag) != 0 || typeB != b2BodyType.b2_dynamicBody;
 
                         // Are these two non-bullet dynamic bodies?
                         if (collideA == false && collideB == false)
@@ -798,8 +805,8 @@ namespace Box2D.Dynamics
                             bB.Sweep.Advance(alpha0);
                         }
 
-                        int indexA = c.GetChildIndexA();
-                        int indexB = c.GetChildIndexB();
+                        int indexA = c.m_indexA;
+                        int indexB = c.m_indexB;
 
                         // Compute the time of impact in interval [0, minTOI]
                         b2TOIInput input = b2TOIInput.Zero;
@@ -809,8 +816,11 @@ namespace Box2D.Dynamics
                         input.sweepB = bB.Sweep;
                         input.tMax = 1.0f;
 
+#if PROFILING
                         computeTimer.Reset();
-                        b2TOIOutput output = b2TimeOfImpact.Compute(input);
+#endif
+                        b2TOIOutput output;
+                        b2TimeOfImpact.Compute(out output, ref input);
 
                         // Console.WriteLine("TOI Output={0}, t={1}", output.state, output.t);
 
@@ -849,10 +859,12 @@ namespace Box2D.Dynamics
                     break;
                 }
                 {
+#if PROFILING
                     b2Timer bt = new b2Timer();
+#endif
                     // Advance the bodies to the TOI.
-                    b2Fixture fA = minContact.GetFixtureA();
-                    b2Fixture fB = minContact.GetFixtureB();
+                    b2Fixture fA = minContact.FixtureA;
+                    b2Fixture fB = minContact.FixtureB;
                     b2Body bA = fA.Body;
                     b2Body bB = fB.Body;
 
@@ -868,7 +880,7 @@ namespace Box2D.Dynamics
                     ++minContact.m_toiCount;
 
                     // Is the contact solid?
-                    if (minContact.IsEnabled() == false || minContact.IsTouching() == false)
+                    if ((minContact.Flags & b2ContactFlags.e_enabledFlag) == 0 || (minContact.Flags & b2ContactFlags.e_touchingFlag) == 0)
                     {
                         // Restore the sweeps.
                         minContact.SetEnabled(false);
@@ -915,7 +927,7 @@ namespace Box2D.Dynamics
                                 b2Contact contact = ce.Contact;
 
                                 // Has this contact already been added to the island?
-                                if (contact.Flags.HasFlag(b2ContactFlags.e_islandFlag))
+                                if ((contact.Flags & b2ContactFlags.e_islandFlag) != 0)
                                 {
                                     continue;
                                 }
@@ -923,14 +935,14 @@ namespace Box2D.Dynamics
                                 // Only add static, kinematic, or bullet bodies.
                                 b2Body other = ce.Other;
                                 if (other.BodyType == b2BodyType.b2_dynamicBody &&
-                                    body.IsBullet() == false && other.IsBullet() == false)
+                                    (body.BodyFlags & b2BodyFlags.e_bulletFlag) == 0 && (other.BodyFlags & b2BodyFlags.e_bulletFlag) == 0)
                                 {
                                     continue;
                                 }
 
                                 // Skip sensors.
-                                bool sensorA = contact.FixtureA.IsSensor;
-                                bool sensorB = contact.FixtureB.IsSensor;
+                                bool sensorA = contact.FixtureA.m_isSensor;
+                                bool sensorB = contact.FixtureB.m_isSensor;
                                 if (sensorA || sensorB)
                                 {
                                     continue;
@@ -938,7 +950,7 @@ namespace Box2D.Dynamics
 
                                 // Tentatively advance the body to the TOI.
                                 b2Sweep backup = other.Sweep;
-                                if (other.BodyFlags.HasFlag(b2BodyFlags.e_islandFlag))
+                                if ((other.BodyFlags & b2BodyFlags.e_islandFlag) != 0)
                                 {
                                     other.Advance(minAlpha);
                                 }
@@ -947,7 +959,7 @@ namespace Box2D.Dynamics
                                 contact.Update(m_contactManager.ContactListener);
 
                                 // Was the contact disabled by the user?
-                                if (contact.IsEnabled() == false)
+                                if ((contact.Flags & b2ContactFlags.e_enabledFlag) == 0)
                                 {
                                     other.Sweep = backup;
                                     other.SynchronizeTransform();
@@ -955,7 +967,7 @@ namespace Box2D.Dynamics
                                 }
 
                                 // Are there contact points?
-                                if (contact.IsTouching() == false)
+                                if ((contact.Flags & b2ContactFlags.e_touchingFlag) == 0)
                                 {
                                     other.Sweep = backup;
                                     other.SynchronizeTransform();
@@ -967,7 +979,7 @@ namespace Box2D.Dynamics
                                 island.Add(contact);
 
                                 // Has the other body already been added to the island?
-                                if (other.BodyFlags.HasFlag(b2BodyFlags.e_islandFlag))
+                                if ((other.BodyFlags & b2BodyFlags.e_islandFlag) != 0)
                                 {
                                     continue;
                                 }
@@ -992,10 +1004,10 @@ namespace Box2D.Dynamics
                     subStep.positionIterations = 20;
                     subStep.velocityIterations = step.velocityIterations;
                     subStep.warmStarting = false;
-                    island.SolveTOI(subStep, bA.IslandIndex, bB.IslandIndex);
+                    island.SolveTOI(ref subStep, bA.IslandIndex, bB.IslandIndex);
 
                     // Reset island flags and synchronize broad-phase proxies.
-                    for (int i = 0; i < island.m_bodyCount; ++i)
+                    for (int i = 0, count = island.m_bodyCount; i < count; ++i)
                     {
                         b2Body body = island.m_bodies[i];
                         body.BodyFlags &= ~b2BodyFlags.e_islandFlag;
@@ -1032,10 +1044,12 @@ namespace Box2D.Dynamics
 
         public void Step(float dt, int velocityIterations, int positionIterations)
         {
+#if PROFILING
             b2Timer stepTimer = new b2Timer();
+#endif
 
             // If new fixtures were added, we need to find the new contacts.
-            if (m_flags.HasFlag(b2WorldFlags.e_newFixture))
+            if ((m_flags & b2WorldFlags.e_newFixture) != 0)
             {
                 m_contactManager.FindNewContacts();
                 m_flags &= ~b2WorldFlags.e_newFixture;
@@ -1060,7 +1074,9 @@ namespace Box2D.Dynamics
 
             step.warmStarting = m_warmStarting;
 
+#if PROFILING
             b2Timer timer = new b2Timer();
+#endif
             // Update contacts. This is where some contacts are destroyed.
             {
                 m_contactManager.Collide();
@@ -1072,7 +1088,9 @@ namespace Box2D.Dynamics
             // Integrate velocities, solve velocityraints, and integrate positions.
             if (m_stepComplete && step.dt > 0.0f)
             {
+#if PROFILING
                 timer.Reset();
+#endif
                 Solve(step);
 #if PROFILING
                 m_profile.solve = timer.GetMilliseconds();
@@ -1082,7 +1100,9 @@ namespace Box2D.Dynamics
             // Handle TOI events.
             if (m_continuousPhysics && step.dt > 0.0f)
             {
+#if PROFILING
                 timer.Reset();
+#endif
                 SolveTOI(step);
 #if PROFILING
                 m_profile.solveTOI = timer.GetMilliseconds();
@@ -1094,7 +1114,7 @@ namespace Box2D.Dynamics
                 m_inv_dt0 = step.inv_dt;
             }
 
-            if (m_flags.HasFlag(b2WorldFlags.e_clearForces))
+            if ((m_flags & b2WorldFlags.e_clearForces) != 0)
             {
                 ClearForces();
             }
@@ -1134,7 +1154,7 @@ namespace Box2D.Dynamics
             m_contactManager.BroadPhase.RayCast(wrapper, input);
         }
 
-        public void DrawShape(b2Fixture fixture, b2Transform xf, b2Color color)
+        public void DrawShape(b2Fixture fixture, ref b2Transform xf, b2Color color)
         {
             switch (fixture.ShapeType)
             {
@@ -1142,9 +1162,10 @@ namespace Box2D.Dynamics
                     {
                         b2CircleShape circle = (b2CircleShape)fixture.Shape;
 
-                        b2Vec2 center = b2Math.b2Mul(xf, circle.Position);
+                        b2Vec2 center = b2Math.b2Mul(ref xf, ref circle.Position);
                         float radius = circle.Radius;
-                        b2Vec2 axis = b2Math.b2Mul(xf.q, new b2Vec2(1.0f, 0.0f));
+                        b2Vec2 v = new b2Vec2(1.0f, 0.0f);
+                        b2Vec2 axis = b2Math.b2Mul(ref xf.q, ref v);
 
                         m_debugDraw.DrawSolidCircle(center, radius, axis, color);
                     }
@@ -1153,8 +1174,8 @@ namespace Box2D.Dynamics
                 case b2ShapeType.e_edge:
                     {
                         b2EdgeShape edge = (b2EdgeShape)fixture.Shape;
-                        b2Vec2 v1 = b2Math.b2Mul(xf, edge.Vertex1);
-                        b2Vec2 v2 = b2Math.b2Mul(xf, edge.Vertex2);
+                        b2Vec2 v1 = b2Math.b2Mul(ref xf, ref edge.Vertex1);
+                        b2Vec2 v2 = b2Math.b2Mul(ref xf, ref edge.Vertex2);
                         m_debugDraw.DrawSegment(v1, v2, color);
                     }
                     break;
@@ -1165,10 +1186,10 @@ namespace Box2D.Dynamics
                         int count = chain.Count;
                         b2Vec2[] vertices = chain.Vertices;
 
-                        b2Vec2 v1 = b2Math.b2Mul(xf, vertices[0]);
+                        b2Vec2 v1 = b2Math.b2Mul(ref xf, ref vertices[0]);
                         for (int i = 1; i < count; ++i)
                         {
-                            b2Vec2 v2 = b2Math.b2Mul(xf, vertices[i]);
+                            b2Vec2 v2 = b2Math.b2Mul(ref xf, ref vertices[i]);
                             m_debugDraw.DrawSegment(v1, v2, color);
                             m_debugDraw.DrawCircle(v1, 0.05f, color);
                             v1 = v2;
@@ -1180,14 +1201,16 @@ namespace Box2D.Dynamics
                     {
                         b2PolygonShape poly = (b2PolygonShape)fixture.Shape;
                         int vertexCount = poly.VertexCount;
-                        b2Vec2[] vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
+                        var vertices = b2ArrayPool<b2Vec2>.Create(b2Settings.b2_maxPolygonVertices, true);
 
                         for (int i = 0; i < vertexCount; ++i)
                         {
-                            vertices[i] = b2Math.b2Mul(xf, poly.Vertices[i]);
+                            vertices[i] = b2Math.b2Mul(ref xf, ref poly.Vertices[i]);
                         }
 
                         m_debugDraw.DrawSolidPolygon(vertices, vertexCount, color);
+
+                        b2ArrayPool<b2Vec2>.Free(vertices);
                     }
                     break;
 
@@ -1247,38 +1270,37 @@ namespace Box2D.Dynamics
 
             b2DrawFlags flags = m_debugDraw.Flags;
 
-            if (flags.HasFlag(b2DrawFlags.e_shapeBit))
+            if ((flags & b2DrawFlags.e_shapeBit) != 0)
             {
                 for (b2Body b = m_bodyList; b != null; b = b.Next)
                 {
-                    b2Transform xf = b.Transform;
                     for (b2Fixture f = b.FixtureList; f != null; f = f.Next)
                     {
                         if (b.IsActive() == false)
                         {
-                            DrawShape(f, xf, new b2Color(0.5f, 0.5f, 0.3f));
+                            DrawShape(f, ref b.Transform, new b2Color(0.5f, 0.5f, 0.3f));
                         }
                         else if (b.BodyType == b2BodyType.b2_staticBody)
                         {
-                            DrawShape(f, xf, new b2Color(0.5f, 0.9f, 0.5f));
+                            DrawShape(f, ref b.Transform, new b2Color(0.5f, 0.9f, 0.5f));
                         }
                         else if (b.BodyType == b2BodyType.b2_kinematicBody)
                         {
-                            DrawShape(f, xf, new b2Color(0.5f, 0.5f, 0.9f));
+                            DrawShape(f, ref b.Transform, new b2Color(0.5f, 0.5f, 0.9f));
                         }
                         else if (b.IsAwake() == false)
                         {
-                            DrawShape(f, xf, new b2Color(0.6f, 0.6f, 0.6f));
+                            DrawShape(f, ref b.Transform, new b2Color(0.6f, 0.6f, 0.6f));
                         }
                         else
                         {
-                            DrawShape(f, xf, new b2Color(0.9f, 0.7f, 0.7f));
+                            DrawShape(f, ref b.Transform, new b2Color(0.9f, 0.7f, 0.7f));
                         }
                     }
                 }
             }
 
-            if (flags.HasFlag(b2DrawFlags.e_jointBit))
+            if ((flags & b2DrawFlags.e_jointBit) != 0)
             {
                 for (b2Joint j = m_jointList; j != null; j = j.GetNext())
                 {
@@ -1286,13 +1308,13 @@ namespace Box2D.Dynamics
                 }
             }
 
-            if (flags.HasFlag(b2DrawFlags.e_pairBit))
+            if ((flags & b2DrawFlags.e_pairBit) != 0)
             {
                 b2Color color = new b2Color(0.3f, 0.9f, 0.9f);
                 for (b2Contact c = m_contactManager.ContactList; c != null; c = c.Next)
                 {
-                    //b2Fixture fixtureA = c.GetFixtureA();
-                    //b2Fixture fixtureB = c.GetFixtureB();
+                    //b2Fixture fixtureA = c.FixtureA;
+                    //b2Fixture fixtureB = c.FixtureB;
 
                     //b2Vec2 cA = fixtureA.GetAABB().Center;
                     //b2Vec2 cB = fixtureB.GetAABB().Center;
@@ -1301,7 +1323,7 @@ namespace Box2D.Dynamics
                 }
             }
 
-            if (flags.HasFlag(b2DrawFlags.e_aabbBit))
+            if ((flags & b2DrawFlags.e_aabbBit) != 0)
             {
                 b2Color color = new b2Color(0.9f, 0.3f, 0.9f);
                 b2BroadPhase bp = m_contactManager.BroadPhase;
@@ -1318,7 +1340,8 @@ namespace Box2D.Dynamics
                         for (int i = 0; i < f.ProxyCount; ++i)
                         {
                             b2FixtureProxy proxy = f.Proxies[i];
-                            b2AABB aabb = bp.GetFatAABB(proxy.proxyId);
+                            b2AABB aabb;
+                            bp.GetFatAABB(proxy.proxyId, out aabb);
                             b2Vec2[] vs = new b2Vec2[4];
                             vs[0].Set(aabb.LowerBound.x, aabb.LowerBound.y);
                             vs[1].Set(aabb.UpperBound.x, aabb.LowerBound.y);
@@ -1331,7 +1354,7 @@ namespace Box2D.Dynamics
                 }
             }
 
-            if (flags.HasFlag(b2DrawFlags.e_centerOfMassBit))
+            if ((flags & b2DrawFlags.e_centerOfMassBit) != 0)
             {
                 for (b2Body b = m_bodyList; b != null; b = b.Next)
                 {

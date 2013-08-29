@@ -123,7 +123,7 @@ namespace Box2D.TestBed.Tests
         }
 
         public b2Body m_body1;
-        public b2Vec2 m_velocity = new b2Vec2();
+        public b2Vec2 m_velocity;
         public float m_angularVelocity;
         public b2PolygonShape m_shape1 = new b2PolygonShape();
         public b2PolygonShape m_shape2 = new b2PolygonShape();

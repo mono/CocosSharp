@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Drawing;
 using System.IO;
 
-#if MONOMAC
+#if MACOS
 using MonoMac.CoreGraphics;
 using MonoMac.AppKit;
 using MonoMac.Foundation;
@@ -308,7 +308,7 @@ namespace Cocos2D
 
 			if (underLine) {
 				// Underline
-				#if MONOMAC
+				#if MACOS
 				int single = (int)MonoMac.AppKit.NSUnderlineStyle.Single;
 				int solid = (int)MonoMac.AppKit.NSUnderlinePattern.Solid;
 				var attss = single | solid;
@@ -325,7 +325,7 @@ namespace Cocos2D
 				//				NSColor bcolor = NSColor.Blue;
 				//				NSObject bcolorObject = new NSObject(bcolor.Handle);
 				//				attsDic.Add(NSAttributedString.StrikethroughColorAttributeName, bcolorObject);
-//				#if MONOMAC
+//				#if MACOS
 //				int stsingle = (int)MonoMac.AppKit.NSUnderlineStyle.Single;
 //				int stsolid = (int)MonoMac.AppKit.NSUnderlinePattern.Solid;
 //				var stattss = stsingle | stsolid;

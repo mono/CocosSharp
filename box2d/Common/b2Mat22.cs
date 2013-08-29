@@ -8,6 +8,8 @@ namespace Box2D.Common
     /// A 2-by-2 matrix. Stored in column-major order.
     public struct b2Mat22
     {
+        public static readonly b2Mat22 Zero = new b2Mat22(0f, 0f, 0f, 0f);
+        public static readonly b2Mat22 Identity = new b2Mat22(1f, 0f, 0f, 1f);
 
         /// Construct this matrix using columns.
         public b2Mat22(b2Vec2 c1, b2Vec2 c2)
@@ -19,8 +21,6 @@ namespace Box2D.Common
         /// Construct this matrix using scalars.
         public b2Mat22(float a11, float a12, float a21, float a22)
         {
-            ex = b2Vec2.Zero;
-            ey = b2Vec2.Zero;
             ex.x = a11; ex.y = a21;
             ey.x = a12; ey.y = a22;
         }
@@ -77,7 +77,7 @@ namespace Box2D.Common
         public b2Mat22 GetInverse()
         {
             float a = ex.x, b = ey.x, c = ex.y, d = ey.y;
-            b2Mat22 B = new b2Mat22();
+            b2Mat22 B;
             float det = a * d - b * c;
             if (det != 0.0f)
             {
@@ -86,6 +86,18 @@ namespace Box2D.Common
             B.ex.x = det * d; B.ey.x = -det * b;
             B.ex.y = -det * c; B.ey.y = det * a;
             return B;
+        }
+
+        public void GetInverse(out b2Mat22 matrix)
+        {
+            float a = ex.x, b = ey.x, c = ex.y, d = ey.y;
+            float det = a * d - b * c;
+            if (det != 0.0f)
+            {
+                det = 1.0f / det;
+            }
+            matrix.ex.x = det * d; matrix.ey.x = -det * b;
+            matrix.ex.y = -det * c; matrix.ey.y = det * a;
         }
 
         /// Solve A * x = b, where b is a column vector. This is more efficient
@@ -98,7 +110,8 @@ namespace Box2D.Common
             {
                 det = 1.0f / det;
             }
-            b2Vec2 x = b2Vec2.Zero;
+
+            b2Vec2 x;
             x.x = det * (a22 * b.x - a12 * b.y);
             x.y = det * (a11 * b.y - a21 * b.x);
             return x;

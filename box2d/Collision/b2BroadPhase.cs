@@ -18,7 +18,7 @@ namespace Box2D.Collision
     {
         public static int e_nullProxy = -1;
 
-        private b2DynamicTree m_tree;
+        private b2DynamicTree<b2FixtureProxy> m_tree;
 
         private int m_proxyCount;
 
@@ -43,12 +43,12 @@ namespace Box2D.Collision
             m_moveCapacity = 16;
             m_moveCount = 0;
             m_moveBuffer = new int[m_moveCapacity];
-			m_tree = new b2DynamicTree();
+            m_tree = new b2DynamicTree<b2FixtureProxy>();
         }
 
-        public int CreateProxy(b2AABB aabb, ref b2FixtureProxy userData)
+        public int CreateProxy(ref b2AABB aabb, ref b2FixtureProxy userData)
         {
-            int proxyId = m_tree.CreateProxy(aabb, userData);
+            int proxyId = m_tree.CreateProxy(ref aabb, ref userData);
             ++m_proxyCount;
             BufferMove(proxyId);
             return proxyId;
@@ -61,9 +61,9 @@ namespace Box2D.Collision
             m_tree.DestroyProxy(proxyId);
         }
 
-        public void MoveProxy(int proxyId, b2AABB aabb, b2Vec2 displacement)
+        public void MoveProxy(int proxyId, ref b2AABB aabb, ref b2Vec2 displacement)
         {
-            bool buffer = m_tree.MoveProxy(proxyId, aabb, displacement);
+            bool buffer = m_tree.MoveProxy(proxyId, ref aabb, ref displacement);
             if (buffer)
             {
                 BufferMove(proxyId);
@@ -142,21 +142,22 @@ namespace Box2D.Collision
             return false;
         }
 
-        public object GetUserData(int proxyId)
+        public b2FixtureProxy GetUserData(int proxyId)
         {
             return m_tree.GetUserData(proxyId);
         }
 
         public bool TestOverlap(int proxyIdA, int proxyIdB)
         {
-            b2AABB aabbA = m_tree.GetFatAABB(proxyIdA);
-            b2AABB aabbB = m_tree.GetFatAABB(proxyIdB);
-            return b2Collision.b2TestOverlap(ref aabbA, ref aabbB);
+//            b2AABB aabbA = m_tree.GetFatAABB(proxyIdA);
+//            b2AABB aabbB = m_tree.GetFatAABB(proxyIdB);
+//            return b2Collision.b2TestOverlap(ref aabbA, ref aabbB);
+            return b2Collision.b2TestOverlap(ref m_tree.m_nodes[proxyIdA].aabb, ref m_tree.m_nodes[proxyIdB].aabb);
         }
 
-        public b2AABB GetFatAABB(int proxyId)
+        public void GetFatAABB(int proxyId, out b2AABB output)
         {
-            return m_tree.GetFatAABB(proxyId);
+            m_tree.GetFatAABB(proxyId, out output);
         }
 
         public int GetProxyCount()
@@ -197,7 +198,8 @@ namespace Box2D.Collision
 
                 // We have to query the tree with the fat AABB so that
                 // we don't fail to create a pair that may touch later.
-                b2AABB fatAABB = m_tree.GetFatAABB(m_queryProxyId);
+                b2AABB fatAABB;
+                m_tree.GetFatAABB(m_queryProxyId, out fatAABB);
 
                 // Query tree, create pairs and add them pair buffer.
                 m_tree.Query(this, fatAABB);
@@ -218,10 +220,10 @@ namespace Box2D.Collision
             {
                 int i1 = i2;
                 b2Pair primaryPair = m_pairBuffer[i2];
-                object userDataA = m_tree.GetUserData(primaryPair.proxyIdA);
-                object userDataB = m_tree.GetUserData(primaryPair.proxyIdB);
+                var userDataA = m_tree.GetUserData(primaryPair.proxyIdA);
+                var userDataB = m_tree.GetUserData(primaryPair.proxyIdB);
 
-                callback.AddPair(userDataA, userDataB);
+                callback.AddPair(ref userDataA, ref userDataB);
                 ++i2;
 
                 // Skip any duplicate pairs.
@@ -252,9 +254,24 @@ namespace Box2D.Collision
 
         #region IComparer<b2Pair> Members
 
-        public int Compare(b2Pair x, b2Pair y)
+        public int Compare(b2Pair pair1, b2Pair pair2)
         {
-            return (b2PairLessThan(x, y) ? -1 : 1);
+			//return (b2PairLessThan(x, y) ? -1 : 1);
+			
+            if (pair1.proxyIdA < pair2.proxyIdA)
+            {
+                return -1;
+            }
+
+            if (pair1.proxyIdA == pair2.proxyIdA)
+            {
+                if (pair1.proxyIdB < pair2.proxyIdB)
+                {
+                    return -1;
+                }
+            }
+
+            return 1;
         }
 
         #endregion

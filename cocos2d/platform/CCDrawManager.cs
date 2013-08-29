@@ -1181,7 +1181,7 @@ namespace Cocos2D
             graphics.IsFullScreen = true;
 #endif
 
-#if WINDOWS || WINDOWSGL || MONOMAC
+#if WINDOWS || WINDOWSGL || MACOS
             game.IsMouseVisible = true;
             graphics.IsFullScreen = false;
 #endif

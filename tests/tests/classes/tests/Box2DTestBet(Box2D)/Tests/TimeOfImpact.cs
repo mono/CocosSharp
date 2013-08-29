@@ -46,7 +46,8 @@ namespace Box2D.TestBed.Tests
             input.sweepB = sweepB;
             input.tMax = 1.0f;
 
-            b2TOIOutput output = b2TimeOfImpact.Compute(input);
+            b2TOIOutput output;
+            b2TimeOfImpact.Compute(out output, ref input);
 
             m_debugDraw.DrawString(5, m_textLine, "toi = {0}", output.t);
             m_textLine += 15;
@@ -57,7 +58,7 @@ namespace Box2D.TestBed.Tests
 
             b2Vec2[] vertices = new b2Vec2[b2Settings.b2_maxPolygonVertices];
 
-            b2Transform transformA = new b2Transform();
+            b2Transform transformA;
             sweepA.GetTransform(out transformA, 0.0f);
             for (int i = 0; i < m_shapeA.VertexCount; ++i)
             {
@@ -65,7 +66,7 @@ namespace Box2D.TestBed.Tests
             }
             m_debugDraw.DrawPolygon(vertices, m_shapeA.VertexCount, new b2Color(0.9f, 0.9f, 0.9f));
 
-            b2Transform transformB = new b2Transform();
+            b2Transform transformB;
             sweepB.GetTransform(out transformB, 0.0f);
 
             b2Vec2 localPoint = new b2Vec2(2.0f, -0.1f);

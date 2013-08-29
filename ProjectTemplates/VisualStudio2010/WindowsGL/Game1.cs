@@ -16,6 +16,9 @@ namespace $safeprojectname$
     /// </summary>
     public class Game1 : Game
     {
+		private const int WINDOW_HEIGHT = 480;
+		private const int WINDOW_WIDTH = 720;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         
@@ -27,6 +30,8 @@ namespace $safeprojectname$
 			// This is the main Cocos2D connection. The CCApplication is the manager of the
 			// nodes that define your game.
 			//
+			graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
+			graphics.PreferredBackBufferHeight = WINDOW_HEIGHT;
             CCApplication application = new AppDelegate(this, graphics);
             this.Components.Add(application);
         }
