@@ -371,17 +371,17 @@ namespace Cocos2D
 
         static void GraphicsDeviceDeviceResetting(object sender, EventArgs e)
         {
-#if ANDROID
+//#if ANDROID
             CCGraphicsResource.DisposeAllResources();
             CCSpriteFontCache.SharedInstance.Clear();
-#endif
+//#endif
         }
 
         static void GraphicsDeviceDeviceReset(object sender, EventArgs e)
         {
-#if ANDROID
+//#if ANDROID
             m_bNeedReinitResources = true;
-#endif
+//#endif
         }
 
         static void GraphicsDeviceDeviceLost(object sender, EventArgs e)
