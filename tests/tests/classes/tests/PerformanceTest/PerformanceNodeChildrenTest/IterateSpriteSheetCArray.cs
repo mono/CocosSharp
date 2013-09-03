@@ -19,11 +19,13 @@ namespace tests
             //    CCProfilingBeginTimingBlock(_profilingTimer);
             //#endif
 
+            StartTimer();
             foreach (var pObject in pChildren)
             {
                 CCSprite pSprite = (CCSprite)pObject;
                 pSprite.Visible = false;
             }
+            EndTimer("Visible change array walk");
 
             //#if CC_ENABLE_PROFILERS
             //    CCProfilingEndTimingBlock(_profilingTimer);

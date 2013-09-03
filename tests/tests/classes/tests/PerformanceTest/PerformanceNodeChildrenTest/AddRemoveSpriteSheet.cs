@@ -9,6 +9,7 @@ namespace tests
 {
     public class AddRemoveSpriteSheet : NodeChildrenMainScene
     {
+
         public override void updateQuantityOfNodes()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
@@ -16,6 +17,7 @@ namespace tests
             // increase nodes
             if (currentQuantityOfNodes < quantityOfNodes)
             {
+                StartTimer();
                 for (int i = 0; i < (quantityOfNodes - currentQuantityOfNodes); i++)
                 {
                     CCSprite sprite = new CCSprite(batchNode.Texture, new CCRect(0, 0, 32, 32));
@@ -23,15 +25,18 @@ namespace tests
                     sprite.Position = new CCPoint(CCRandom.Next() * s.Width, CCRandom.Next() * s.Height);
                     sprite.Visible = false;
                 }
+                EndTimer("Current Quantity: add");
             }
             // decrease nodes
             else if (currentQuantityOfNodes > quantityOfNodes)
             {
+                StartTimer();
                 for (int i = 0; i < (currentQuantityOfNodes - quantityOfNodes); i++)
                 {
                     int index = currentQuantityOfNodes - i - 1;
                     batchNode.RemoveChildAtIndex(index, true);
                 }
+                EndTimer("Current Quantity: add");
             }
 
             currentQuantityOfNodes = quantityOfNodes;
