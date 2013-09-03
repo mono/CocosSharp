@@ -952,8 +952,11 @@ namespace Cocos2D
             {
                 int i, j, length = m_pChildren.count;
                 CCNode[] x = m_pChildren.Elements;
-                CCNode tempItem;
+//                CCNode tempItem;
 
+                CCNode.Quicksort(x, 0, length - 1);
+
+                /*
                 // insertion sort
                 for (i = 1; i < length; i++)
                 {
@@ -970,6 +973,7 @@ namespace Cocos2D
                     }
                     x[j + 1] = tempItem;
                 }
+                */
 
                 if (m_pobBatchNode != null)
                 {

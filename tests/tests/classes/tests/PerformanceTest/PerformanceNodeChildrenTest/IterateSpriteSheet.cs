@@ -50,7 +50,6 @@ namespace tests
 
         public override void Update(float dt)
         {
-            throw new NotFiniteNumberException();
         }
 
         public virtual string profilerName()

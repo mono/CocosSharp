@@ -8,8 +8,10 @@ namespace tests
 {
     public class ReorderSpriteSheet : AddRemoveSpriteSheet
     {
+        bool bDone = false;
         public override void Update(float dt)
         {
+            if (bDone) return;
             //srandom(0);
 
             // 15 percent
@@ -55,6 +57,7 @@ namespace tests
                     batchNode.RemoveChildByTag(PerformanceNodeChildrenTest.kTagBase + i, true);
                 }
             }
+            bDone = true;
         }
 
         public override string title()

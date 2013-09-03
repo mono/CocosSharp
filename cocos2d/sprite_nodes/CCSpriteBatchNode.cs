@@ -272,7 +272,7 @@ namespace Cocos2D
                 // CCNode tempItem;
                 
                 //insertion sort - change to qsort per RIQ
-                Quicksort(elements, 0, count - 1);
+                CCNode.Quicksort(elements, 0, count - 1);
 
                 /*
                 for (int i = 1; i < count; i++)

@@ -8,8 +8,10 @@ namespace tests
 {
     public class IterateSpriteSheetCArray : IterateSpriteSheet
     {
+        bool bDone = false;
         public override void Update(float dt)
         {
+            if (bDone) return;
             // iterate using fast enumeration protocol
             var pChildren = batchNode.Children;
 
@@ -26,6 +28,7 @@ namespace tests
             //#if CC_ENABLE_PROFILERS
             //    CCProfilingEndTimingBlock(_profilingTimer);
             //#endif
+            bDone = true;
         }
 
         public override string title()

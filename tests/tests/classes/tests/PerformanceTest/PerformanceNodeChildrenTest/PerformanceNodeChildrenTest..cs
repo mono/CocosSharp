@@ -16,7 +16,7 @@ namespace tests
         public static int kTagBase = 20000;
         public static int TEST_COUNT = 4;
 
-        public static int kMaxNodes = 15000;
+        public static int kMaxNodes = 50000;
         public static int kNodesIncrease = 500;
 
         public static int s_nCurCase = 0;

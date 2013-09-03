@@ -99,6 +99,7 @@ namespace Cocos2D
         protected CCActionManager m_pActionManager;
         protected CCCamera m_pCamera;
         protected CCRawList<CCNode> m_pChildren;
+        private Dictionary<int, List<CCNode>> m_pChildrenByTag;
         protected CCGridBase m_pGrid;
         protected CCNode m_pParent;
         protected CCScheduler m_pScheduler;
@@ -623,10 +624,15 @@ namespace Cocos2D
 
         #endregion
 
+        private bool m_bCleaned = false;
         ~CCNode()
         {
             //unregisterScriptHandler();
             Cleanup();
+            if(m_pChildren != null)
+                m_pChildren.Clear();
+            if(m_pChildrenByTag != null)
+                m_pChildrenByTag.Clear();
         }
 
         public void GetPosition(out float x, out float y)
@@ -644,6 +650,10 @@ namespace Cocos2D
 
         public virtual void Cleanup()
         {
+            if (m_bCleaned == true)
+            {
+                return;
+            }
             // actions
             StopAllActions();
 
@@ -658,6 +668,7 @@ namespace Cocos2D
                     elements[i].Cleanup();
                 }
             }
+            m_bCleaned = true;
         }
 
         public CCNode GetChildByTag(int tag)
@@ -666,6 +677,18 @@ namespace Cocos2D
 
             if (m_pChildren != null && m_pChildren.count > 0)
             {
+                if (m_pChildrenByTag.ContainsKey(tag))
+                {
+                    List<CCNode> l = m_pChildrenByTag[tag];
+                    foreach (CCNode n in l)
+                    {
+                        if (n.Tag == tag)
+                        {
+                            return (n);
+                        }
+                    }
+                }
+                /*
                 CCNode[] elements = m_pChildren.Elements;
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
@@ -674,6 +697,7 @@ namespace Cocos2D
                         return elements[i];
                     }
                 }
+                 */
             }
 
             return null;
@@ -701,8 +725,18 @@ namespace Cocos2D
             {
                 m_pChildren = new CCRawList<CCNode>();
             }
+            if (m_pChildrenByTag == null)
+            {
+                m_pChildrenByTag = new Dictionary<int, List<CCNode>>();
+            }
 
             InsertChild(child, zOrder);
+
+            if (!m_pChildrenByTag.ContainsKey(tag))
+            {
+                m_pChildrenByTag[tag] = new List<CCNode>();
+            }
+            m_pChildrenByTag[tag].Add(child);
 
             child.m_nTag = tag;
             child.Parent = this;
@@ -740,7 +774,19 @@ namespace Cocos2D
             {
                 return;
             }
-
+            try
+            {
+                if (m_pChildrenByTag.ContainsKey(child.Tag))
+                {
+                    m_pChildrenByTag[child.Tag].Remove(child);
+                }
+            }
+            catch (Exception)
+            {
+                // Ignore this here, don't care about this exception. It likely means either
+                // a concurrent modification has occured somewhere upstream, or the child was not
+                // added to the tag list successfully.
+            }
             if (m_pChildren.Contains(child))
             {
                 DetachChild(child, cleanup);
@@ -845,6 +891,56 @@ namespace Cocos2D
             child.m_uOrderOfArrival = s_globalOrderOfArrival++;
             child.m_nZOrder = zOrder;
         }
+        #region Child Sorting
+
+        // Quick sort taken from http://snipd.net/quicksort-in-c
+        public static void Quicksort(CCNode[] elements, int left, int right)
+        {
+            int i = left, j = right;
+            CCNode pivot = elements[(left + right) / 2];
+
+            while (i <= j)
+            {
+                /*
+                           (pivot.m_nZOrder < elements[i].m_nZOrder ||
+                            (pivot.m_nZOrder == elements[i].m_nZOrder && pivot.m_uOrderOfArrival < elements[i].m_uOrderOfArrival)))
+                 */
+                while ((elements[i].m_nZOrder < pivot.m_nZOrder ||
+                            (pivot.m_nZOrder == elements[i].m_nZOrder && elements[i].m_uOrderOfArrival < pivot.m_uOrderOfArrival)))
+                {
+                    i++;
+                }
+
+                while ((elements[j].m_nZOrder > pivot.m_nZOrder ||
+                            (pivot.m_nZOrder == elements[j].m_nZOrder && elements[j].m_uOrderOfArrival > pivot.m_uOrderOfArrival)))
+                {
+                    j--;
+                }
+
+                if (i <= j)
+                {
+                    // Swap
+                    CCNode tmp = elements[i];
+                    elements[i] = elements[j];
+                    elements[j] = tmp;
+
+                    i++;
+                    j--;
+                }
+            }
+
+            // Recursive calls
+            if (left < j)
+            {
+                Quicksort(elements, left, j);
+            }
+
+            if (i < right)
+            {
+                Quicksort(elements, i, right);
+            }
+        }
+
 
         public virtual void SortAllChildren()
         {
@@ -854,6 +950,8 @@ namespace Cocos2D
                 int length = m_pChildren.count;
                 CCNode[] x = m_pChildren.Elements;
 
+                Quicksort(x, 0, length-1);
+                /*
                 // insertion sort
                 for (i = 1; i < length; i++)
                 {
@@ -870,13 +968,14 @@ namespace Cocos2D
                     }
                     x[j + 1] = tempItem;
                 }
-
+                */
                 //don't need to check children recursively, that's done in visit of each child
 
                 m_bReorderChildDirty = false;
             }
         }
 
+        #endregion
         /// <summary>
         /// This is called from the Visit() method. This is where you DRAW your node. Only
         /// draw stuff from this method call.

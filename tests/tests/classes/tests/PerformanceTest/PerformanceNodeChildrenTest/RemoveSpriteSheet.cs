@@ -9,8 +9,11 @@ namespace tests
     public class RemoveSpriteSheet : AddRemoveSpriteSheet
     {
 
+        bool bDone = false;
         public override void Update(float dt)
         {
+
+            if (bDone) return;
             //srandom(0);
 
             // 15 percent
@@ -47,6 +50,7 @@ namespace tests
                 //        CCProfilingEndTimingBlock(_profilingTimer);
                 //#endif
             }
+            bDone = true;
         }
 
         public override string title()
