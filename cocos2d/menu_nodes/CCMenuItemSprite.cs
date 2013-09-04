@@ -4,6 +4,7 @@ namespace Cocos2D
 {
     public class CCMenuItemSprite : CCMenuItem
     {
+        protected float m_fOriginalScale;
         private CCNode m_pDisabledImage;
         private CCNode m_pNormalImage;
 
@@ -86,6 +87,7 @@ namespace Cocos2D
         public CCMenuItemSprite()
             : this(null, null, null, null)
         {
+            ZoomBehaviorOnTouch = false;
         }
 
 		public CCMenuItemSprite(Action<object> selector)
@@ -125,6 +127,11 @@ namespace Cocos2D
             CascadeOpacityEnabled = true;
         }
 
+        /// <summary>
+        /// Set this to true if you want to zoom-in/out on the button image like the CCMenuItemLabel works.
+        /// </summary>
+        public bool ZoomBehaviorOnTouch { get; set; }
+
         public override void Selected()
         {
             base.Selected();
@@ -144,6 +151,22 @@ namespace Cocos2D
                 else
                 {
                     m_pNormalImage.Visible = true;
+                    if (ZoomBehaviorOnTouch)
+                    {
+                        CCAction action = GetActionByTag(unchecked((int)kZoomActionTag));
+                        if (action != null)
+                        {
+                            StopAction(action);
+                        }
+                        else
+                        {
+                            m_fOriginalScale = Scale;
+                        }
+
+                        CCAction zoomAction = new CCScaleTo(0.1f, m_fOriginalScale * 1.2f);
+                        zoomAction.Tag = unchecked((int)kZoomActionTag);
+                        RunAction(zoomAction);
+                    }
                 }
             }
         }
@@ -158,12 +181,32 @@ namespace Cocos2D
                 if (m_pSelectedImage != null)
                 {
                     m_pSelectedImage.Visible = false;
+                    if (ZoomBehaviorOnTouch)
+                    {
+                        StopActionByTag(unchecked((int)kZoomActionTag));
+                        CCAction zoomAction = new CCScaleTo(0.1f, m_fOriginalScale);
+                        zoomAction.Tag = unchecked((int)kZoomActionTag);
+                        RunAction(zoomAction);
+                    }
                 }
 
                 if (m_pDisabledImage != null)
                 {
                     m_pDisabledImage.Visible = false;
                 }
+            }
+        }
+
+        public override void Activate()
+        {
+            if (m_bIsEnabled)
+            {
+                if (ZoomBehaviorOnTouch)
+                {
+                    StopAllActions();
+                    Scale = m_fOriginalScale;
+                }
+                base.Activate();
             }
         }
 
