@@ -63,14 +63,22 @@ namespace CocosDenshion
 
         public void SaveMediaState()
         {
-            // User is playing a song, so remember the song state.
-            m_SongToPlayAfterClose = MediaPlayer.Queue.ActiveSong;
-            m_VolumeAfterClose = MediaPlayer.Volume;
+            try
+            {
+                // User is playing a song, so remember the song state.
+                m_SongToPlayAfterClose = MediaPlayer.Queue.ActiveSong;
+                m_VolumeAfterClose = MediaPlayer.Volume;
 #if !NETFX_CORE
-            m_PlayPositionAfterClose = MediaPlayer.PlayPosition;
+                m_PlayPositionAfterClose = MediaPlayer.PlayPosition;
 #endif
-            m_IsRepeatingAfterClose = MediaPlayer.IsRepeating;
-            m_IsShuffleAfterClose = MediaPlayer.IsShuffled;
+                m_IsRepeatingAfterClose = MediaPlayer.IsRepeating;
+                m_IsShuffleAfterClose = MediaPlayer.IsShuffled;
+            }
+            catch (Exception ex)
+            {
+                CCLog.Log("Failed to save the media state of the game.");
+                CCLog.Log(ex.ToString());
+            }
         }
 
         public void RestoreMediaState()
@@ -84,8 +92,10 @@ namespace CocosDenshion
                 MediaPlayer.Volume = m_VolumeAfterClose;
                 MediaPlayer.Play(m_SongToPlayAfterClose);
             }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    CCLog.Log("Failed to restore the media state of the game.");
+                    CCLog.Log(ex.ToString());
                 }
         }
         }
