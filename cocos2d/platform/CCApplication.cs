@@ -58,6 +58,7 @@ namespace Cocos2D
 
             WindowSetup = pp;
             Content = game.Content;
+            HandleMediaStateAutomatically = true;
 
             if (m_graphicsService.GraphicsDevice != null)
             {
@@ -143,12 +144,17 @@ namespace Cocos2D
 
         }
 
+        protected bool HandleMediaStateAutomatically { get; set; }
+
         private void GameActivated(object sender, EventArgs e)
         {
             // Clear out the prior gamepad state because we don't want it anymore.
             m_PriorGamePadState.Clear();
 #if !IOS
-            CocosDenshion.CCSimpleAudioEngine.SharedEngine.SaveMediaState();
+            if (HandleMediaStateAutomatically)
+            {
+                CocosDenshion.CCSimpleAudioEngine.SharedEngine.SaveMediaState();
+            }
 #endif
             ApplicationWillEnterForeground();
         }
@@ -157,7 +163,10 @@ namespace Cocos2D
         {
             ApplicationDidEnterBackground();
 #if !IOS
-            CocosDenshion.CCSimpleAudioEngine.SharedEngine.RestoreMediaState();
+            if (HandleMediaStateAutomatically)
+            {
+                CocosDenshion.CCSimpleAudioEngine.SharedEngine.RestoreMediaState();
+            }
 #endif
         }
 
