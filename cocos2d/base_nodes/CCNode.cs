@@ -99,7 +99,7 @@ namespace Cocos2D
         protected CCActionManager m_pActionManager;
         protected CCCamera m_pCamera;
         protected CCRawList<CCNode> m_pChildren;
-        private Dictionary<int, List<CCNode>> m_pChildrenByTag;
+        protected Dictionary<int, List<CCNode>> m_pChildrenByTag;
         protected CCGridBase m_pGrid;
         protected CCNode m_pParent;
         protected CCScheduler m_pScheduler;
@@ -677,11 +677,13 @@ namespace Cocos2D
 
             if (m_pChildren != null && m_pChildren.count > 0)
             {
-                if (m_pChildrenByTag.ContainsKey(tag))
+                if (/*m_pChildrenByTag != null && */m_pChildrenByTag.ContainsKey(tag))
                 {
                     List<CCNode> l = m_pChildrenByTag[tag];
-                    foreach (CCNode n in l)
+                    for(int i=0; i < l.Count; i++) 
                     {
+                        // This is how cocos2d is implemented, FIFO on tag collisions.
+                        CCNode n = l[i];
                         if (n.Tag == tag)
                         {
                             return (n);
@@ -725,18 +727,8 @@ namespace Cocos2D
             {
                 m_pChildren = new CCRawList<CCNode>();
             }
-            if (m_pChildrenByTag == null)
-            {
-                m_pChildrenByTag = new Dictionary<int, List<CCNode>>();
-            }
 
-            InsertChild(child, zOrder);
-
-            if (!m_pChildrenByTag.ContainsKey(tag))
-            {
-                m_pChildrenByTag[tag] = new List<CCNode>();
-            }
-            m_pChildrenByTag[tag].Add(child);
+            InsertChild(child, zOrder, tag);
 
             child.m_nTag = tag;
             child.Parent = this;
@@ -824,6 +816,7 @@ namespace Cocos2D
             // not using detachChild improves speed here
             if (m_pChildren != null)
             {
+                m_pChildrenByTag.Clear();
                 CCNode[] elements = m_pChildren.Elements;
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
@@ -875,10 +868,19 @@ namespace Cocos2D
             m_pChildren.Remove(child);
         }
 
-        private void InsertChild(CCNode child, int z)
+        private void InsertChild(CCNode child, int z, int tag)
         {
             m_bReorderChildDirty = true;
             m_pChildren.Add(child);
+            if (m_pChildrenByTag == null)
+            {
+                m_pChildrenByTag = new Dictionary<int, List<CCNode>>();
+            }
+            if (!m_pChildrenByTag.ContainsKey(tag))
+            {
+                m_pChildrenByTag[tag] = new List<CCNode>();
+            }
+            m_pChildrenByTag[tag].Add(child);
             //child.m_nOrderOfArrival = s_globalOrderOfArrival++;
             child.m_nZOrder = z;
         }
