@@ -814,9 +814,12 @@ namespace Cocos2D
         public virtual void RemoveAllChildrenWithCleanup(bool cleanup)
         {
             // not using detachChild improves speed here
-            if (m_pChildren != null)
+            if (m_pChildren != null && m_pChildren.Count > 0)
             {
-                m_pChildrenByTag.Clear();
+                if (m_pChildrenByTag != null)
+                {
+                    m_pChildrenByTag.Clear();
+                }
                 CCNode[] elements = m_pChildren.Elements;
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
