@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Cocos2D-XNA.Ouya</id>
-    <version>0.9.0.0</version>
+    <version>1.0.0.0</version>
     <title>Cocos2D-XNA for OUYA</title>
     <authors>Cocos2D-XNA, Totally Evil Entertainment, LLC, and Xamarin, Inc.</authors>
     <owners>Cocos2D-XNA</owners>

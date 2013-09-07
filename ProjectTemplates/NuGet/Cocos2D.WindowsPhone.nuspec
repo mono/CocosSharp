@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Cocos2D-XNA.Phone</id>
-    <version>0.9.0.0</version>
+    <version>1.0.0.0</version>
     <title>Cocos2D-XNA for Windows Phone 7</title>
     <authors>Cocos2D-XNA, Totally Evil Entertainment, LLC, and Xamarin, Inc.</authors>
     <owners>Cocos2D-XNA</owners>
