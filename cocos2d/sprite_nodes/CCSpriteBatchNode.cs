@@ -100,7 +100,7 @@ namespace Cocos2D
 
             // no lazy alloc in this node
             m_pChildren = new CCRawList<CCNode>(capacity);
-
+            m_pChildrenByTag = new System.Collections.Generic.Dictionary<int, System.Collections.Generic.List<CCNode>>();
             m_pobDescendants = new CCRawList<CCSprite>(capacity);
 
             return true;
