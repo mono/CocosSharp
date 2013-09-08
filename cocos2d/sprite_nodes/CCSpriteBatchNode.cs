@@ -214,54 +214,6 @@ namespace Cocos2D
             m_pobTextureAtlas.RemoveAllQuads();
         }
 
-        // Quick sort taken from http://snipd.net/quicksort-in-c
-        public static void Quicksort(CCNode[] elements, int left, int right)
-        {
-            int i = left, j = right;
-            CCNode pivot = elements[(left + right) / 2];
-
-            while (i <= j)
-            {
-                /*
-                           (pivot.m_nZOrder < elements[i].m_nZOrder ||
-                            (pivot.m_nZOrder == elements[i].m_nZOrder && pivot.m_uOrderOfArrival < elements[i].m_uOrderOfArrival)))
-                 */
-                while ((elements[i].m_nZOrder < pivot.m_nZOrder ||
-                            (pivot.m_nZOrder == elements[i].m_nZOrder && elements[i].m_uOrderOfArrival < pivot.m_uOrderOfArrival)))
-                {
-                    i++;
-                }
-
-                while ((elements[j].m_nZOrder > pivot.m_nZOrder ||
-                            (pivot.m_nZOrder == elements[j].m_nZOrder && elements[j].m_uOrderOfArrival > pivot.m_uOrderOfArrival)))
-                {
-                    j--;
-                }
-
-                if (i <= j)
-                {
-                    // Swap
-                    CCNode tmp = elements[i];
-                    elements[i] = elements[j];
-                    elements[j] = tmp;
-
-                    i++;
-                    j--;
-                }
-            }
-
-            // Recursive calls
-            if (left < j)
-            {
-                Quicksort(elements, left, j);
-            }
-
-            if (i < right)
-            {
-                Quicksort(elements, i, right);
-            }
-        }
-
         //override sortAllChildren
         public override void SortAllChildren()
         {

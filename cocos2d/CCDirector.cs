@@ -1124,7 +1124,7 @@ namespace Cocos2D
                 m_bDisplayStats = false;
                 return;
             }
-            float factor = CCDrawManager.DesignResolutionSize.Height / 320.0f;
+            float factor = 1f;// CCDrawManager.DesignResolutionSize.Height / 320.0f;
             var pos = CCDirector.SharedDirector.VisibleOrigin;
 
 			if (m_pFPSLabel == null) 

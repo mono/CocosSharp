@@ -48,6 +48,7 @@ namespace Cocos2D
 
         internal CCLabelAtlas()
         {
+            SetIgnoreContentScaleFactor(true);
         }
 
         public CCLabelAtlas (string label, string fntFile)
