@@ -188,10 +188,10 @@ namespace Cocos2D
 
             m_pChildren.Insert(pos, child);
 
+            child.Parent = this;
+
             child.Tag = aTag;
             child.m_nZOrder = z;
-
-            child.Parent = this;
 
             if (m_bRunning)
             {
