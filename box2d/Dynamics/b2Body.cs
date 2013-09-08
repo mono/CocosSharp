@@ -71,7 +71,7 @@ namespace Box2D.Dynamics
             get { return (Sweep.localCenter); }
         }
 
-        internal b2Vec2 m_linearVelocity = b2Vec2.Zero;
+        public b2Vec2 m_linearVelocity = b2Vec2.Zero;
         public b2Vec2 LinearVelocity
         {
             get { return (m_linearVelocity); }
