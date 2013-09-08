@@ -90,30 +90,24 @@ namespace Cocos2D
 
         public static void DrawLine(CCPoint origin, CCPoint destination, CCColor4B color)
         {
-            float factor = CCDirector.SharedDirector.ContentScaleFactor;
-
             var c = new Color(color.R, color.G, color.B, color.A);
 
-            m_Batch.AddVertex(new Vector2(origin.X * factor, origin.Y * factor), c, PrimitiveType.LineList);
-            m_Batch.AddVertex(new Vector2(destination.X * factor, destination.Y * factor), c, PrimitiveType.LineList);
+            m_Batch.AddVertex(new Vector2(origin.X, origin.Y), c, PrimitiveType.LineList);
+            m_Batch.AddVertex(new Vector2(destination.X, destination.Y), c, PrimitiveType.LineList);
         }
 
         public static void DrawRect(CCRect rect, CCColor4B color)
         {
-            float factor = CCDirector.SharedDirector.ContentScaleFactor;
+            float x1 = rect.MinX;
+            float y1 = rect.MinY;
+            float x2 = rect.MaxX;
+            float y2 = rect.MaxY;
 
-            var c = new Color(color.R, color.G, color.B, color.A);
-
-            float x1 = rect.MinX * factor;
-            float y1 = rect.MinY * factor;
-            float x2 = rect.MaxX * factor;
-            float y2 = rect.MaxY * factor;
-            m_Batch.AddVertex(new Vector2(x1, y1), c, PrimitiveType.LineList);
-            m_Batch.AddVertex(new Vector2(x2, y1), c, PrimitiveType.LineList);
-            m_Batch.AddVertex(new Vector2(x2, y2), c, PrimitiveType.LineList);
-            m_Batch.AddVertex(new Vector2(x1, y2), c, PrimitiveType.LineList);
+            DrawLine(new CCPoint(x1, y1), new CCPoint(x2, y1), color);
+            DrawLine(new CCPoint(x2, y1), new CCPoint(x2, y2), color);
+            DrawLine(new CCPoint(x2, y2), new CCPoint(x1, y2), color);
+            DrawLine(new CCPoint(x1, y2), new CCPoint(x1, y1), color);
         }
-
 
         public static void DrawLine(b2Vec2 origin, b2Vec2 destination, b2Color color)
         {
@@ -381,7 +375,6 @@ namespace Cocos2D
         public static void DrawQuadBezier(CCPoint origin, CCPoint control, CCPoint destination, int segments, CCColor4B color)
         {
             var vertices = new VertexPositionColor[segments + 1];
-            float factor = CCDirector.SharedDirector.ContentScaleFactor;
 
             float t = 0.0f;
             for (int i = 0; i < segments; i++)
@@ -389,14 +382,15 @@ namespace Cocos2D
                 float x = CCSplineMath.QuadBezier(origin.X, control.X, destination.X, t);
                 float y = CCSplineMath.QuadBezier(origin.Y, control.Y, destination.Y, t);
 
-                vertices[i] = new VertexPositionColor();
-                vertices[i].Position = new Vector3(x * factor, y * factor, 0);
+                vertices[i].Position = new Vector3(x, y, 0);
                 vertices[i].Color = new Color(color.R, color.G, color.B, color.A);
+
                 t += 1.0f / segments;
             }
+            
             vertices[segments] = new VertexPositionColor
                 {
-                    Position = new Vector3(destination.X * factor, destination.Y * factor, 0),
+                    Position = new Vector3(destination.X, destination.Y, 0),
                     Color = new Color(color.R, color.G, color.B, color.A),
                 };
 
@@ -419,7 +413,6 @@ namespace Cocos2D
         public static void DrawCubicBezier(CCPoint origin, CCPoint control1, CCPoint control2, CCPoint destination, int segments, CCColor4B color)
         {
             var vertices = new VertexPositionColor[segments + 1];
-            float factor = CCDirector.SharedDirector.ContentScaleFactor;
 
             float t = 0;
             for (int i = 0; i < segments; ++i)
@@ -428,14 +421,14 @@ namespace Cocos2D
                 float y = CCSplineMath.CubicBezier(origin.Y, control1.Y, control2.Y, destination.Y, t);
 
                 vertices[i] = new VertexPositionColor();
-                vertices[i].Position = new Vector3(x * factor, y * factor, 0);
+                vertices[i].Position = new Vector3(x, y, 0);
                 vertices[i].Color = new Color(color.R, color.G, color.B, color.A);
                 t += 1.0f / segments;
             }
             vertices[segments] = new VertexPositionColor
                 {
                     Color = new Color(color.R, color.G, color.B, color.A),
-                    Position = new Vector3(destination.X * factor, destination.Y * factor, 0)
+                    Position = new Vector3(destination.X, destination.Y, 0)
                 };
 
             BasicEffect basicEffect = CCDrawManager.PrimitiveEffect;
