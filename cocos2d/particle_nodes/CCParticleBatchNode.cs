@@ -182,15 +182,6 @@ namespace Cocos2D
             {
                 m_pChildren = new CCRawList<CCNode>(4);
             }
-            if (m_pChildrenByTag == null)
-            {
-                m_pChildrenByTag = new Dictionary<int, List<CCNode>>();
-            }
-            if (!m_pChildrenByTag.ContainsKey(aTag))
-            {
-                m_pChildrenByTag[aTag] = new List<CCNode>();
-            }
-            m_pChildrenByTag[aTag].Add(child);
 
             //don't use a lazy insert
             int pos = SearchNewPositionInChildrenForZ(z);

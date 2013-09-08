@@ -94,7 +94,7 @@ namespace Cocos2D
         protected float m_fSkewY;
         protected float m_fVertexZ;
         internal protected uint m_uOrderOfArrival;
-        protected int m_nTag;
+        private int m_nTag;
         internal int m_nZOrder;
         protected CCActionManager m_pActionManager;
         protected CCCamera m_pCamera;
@@ -302,7 +302,17 @@ namespace Cocos2D
         public int Tag
         {
             get { return m_nTag; }
-            set { m_nTag = value; }
+            set
+            {
+                if (m_nTag != value)
+                {
+                    if (Parent != null)
+                    {
+                        Parent.ChangedChildTag(this, m_nTag, value);
+                    }
+                    m_nTag = value;
+                }
+            }
         }
 
         public object UserData
@@ -677,29 +687,14 @@ namespace Cocos2D
 
             if (m_pChildren != null && m_pChildren.count > 0)
             {
-                if (/*m_pChildrenByTag != null && */m_pChildrenByTag.ContainsKey(tag))
+                List<CCNode> list;
+                if (m_pChildrenByTag.TryGetValue(tag, out list))
                 {
-                    List<CCNode> l = m_pChildrenByTag[tag];
-                    for(int i=0; i < l.Count; i++) 
+                    if (list.Count > 0)
                     {
-                        // This is how cocos2d is implemented, FIFO on tag collisions.
-                        CCNode n = l[i];
-                        if (n.Tag == tag)
-                        {
-                            return (n);
-                        }
+                        return list[0];
                     }
                 }
-                /*
-                CCNode[] elements = m_pChildren.Elements;
-                for (int i = 0, count = m_pChildren.count; i < count; i++)
-                {
-                    if (elements[i].m_nTag == tag)
-                    {
-                        return elements[i];
-                    }
-                }
-                 */
             }
 
             return null;
@@ -766,19 +761,9 @@ namespace Cocos2D
             {
                 return;
             }
-            try
-            {
-                if (m_pChildrenByTag.ContainsKey(child.Tag))
-                {
-                    m_pChildrenByTag[child.Tag].Remove(child);
-                }
-            }
-            catch (Exception)
-            {
-                // Ignore this here, don't care about this exception. It likely means either
-                // a concurrent modification has occured somewhere upstream, or the child was not
-                // added to the tag list successfully.
-            }
+
+            ChangedChildTag(child, child.Tag, kCCNodeTagInvalid);
+
             if (m_pChildren.Contains(child))
             {
                 DetachChild(child, cleanup);
@@ -820,6 +805,7 @@ namespace Cocos2D
                 {
                     m_pChildrenByTag.Clear();
                 }
+                
                 CCNode[] elements = m_pChildren.Elements;
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
@@ -871,19 +857,42 @@ namespace Cocos2D
             m_pChildren.Remove(child);
         }
 
+        private void ChangedChildTag(CCNode child, int oldTag, int newTag)
+        {
+            List<CCNode> list;
+
+            if (m_pChildrenByTag != null && oldTag != kCCNodeTagInvalid)
+            {
+                if (m_pChildrenByTag.TryGetValue(oldTag, out list))
+                {
+                    list.Remove(child);
+                }
+            }
+
+            if (newTag != kCCNodeTagInvalid)
+            {
+                if (m_pChildrenByTag == null)
+                {
+                    m_pChildrenByTag = new Dictionary<int, List<CCNode>>();
+                }
+
+                if (!m_pChildrenByTag.TryGetValue(newTag, out list))
+                {
+                    list = new List<CCNode>();
+                    m_pChildrenByTag.Add(newTag, list);
+                }
+
+                list.Add(child);
+            }
+        }
+
         private void InsertChild(CCNode child, int z, int tag)
         {
             m_bReorderChildDirty = true;
             m_pChildren.Add(child);
-            if (m_pChildrenByTag == null)
-            {
-                m_pChildrenByTag = new Dictionary<int, List<CCNode>>();
-            }
-            if (!m_pChildrenByTag.ContainsKey(tag))
-            {
-                m_pChildrenByTag[tag] = new List<CCNode>();
-            }
-            m_pChildrenByTag[tag].Add(child);
+
+            ChangedChildTag(child, kCCNodeTagInvalid, tag);
+
             //child.m_nOrderOfArrival = s_globalOrderOfArrival++;
             child.m_nZOrder = z;
         }
