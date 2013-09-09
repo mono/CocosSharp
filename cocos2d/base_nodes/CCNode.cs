@@ -658,6 +658,19 @@ namespace Cocos2D
             m_bTransformDirty = m_bInverseDirty = true;
         }
 
+        protected virtual void ResetCleanState()
+        {
+            m_bCleaned = false;
+            if (m_pChildren != null && m_pChildren.count > 0)
+            {
+                CCNode[] elements = m_pChildren.Elements;
+                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                {
+                    elements[i].ResetCleanState();
+                }
+            }
+        }
+
         public virtual void Cleanup()
         {
             if (m_bCleaned == true)
@@ -725,9 +738,13 @@ namespace Cocos2D
 
             InsertChild(child, zOrder, tag);
 
-            child.m_nTag = tag;
             child.Parent = this;
+            child.m_nTag = tag;
             child.m_uOrderOfArrival = s_globalOrderOfArrival++;
+            if (child.m_bCleaned)
+            {
+                child.ResetCleanState();
+            }
 
             if (m_bRunning)
             {
