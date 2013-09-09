@@ -22,6 +22,10 @@ namespace tests
             AddChild(sp1, 0, CocosNodeTestStaticLibrary.kTagSprite1);
             AddChild(sp2, 0, CocosNodeTestStaticLibrary.kTagSprite2);
 
+            //initialization Cleanup() errors
+            RemoveChild(sp2, true);
+            AddChild(sp2, 0, CocosNodeTestStaticLibrary.kTagSprite2);
+
             sp1.RunAction(forever);
             sp2.RunAction(forever2);
 
