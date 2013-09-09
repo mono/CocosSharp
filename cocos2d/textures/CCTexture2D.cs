@@ -623,6 +623,9 @@ namespace Cocos2D
                 return false;
             }
 
+            PixelsWide = texture.Width;
+            PixelsHigh = texture.Height;
+
             if (OptimizeForPremultipliedAlpha && !premultipliedAlpha)
             {
                 m_Texture2D = ConvertToPremultiplied(texture, format);
