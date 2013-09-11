@@ -736,6 +736,9 @@ namespace Cocos2D
             {
                 m_pChildren = new CCRawList<CCNode>();
             }
+			if (m_pChildrenByTag == null) {
+				m_pChildrenByTag = new Dictionary<int, List<CCNode>> ();
+			}
 
             InsertChild(child, zOrder, tag);
 
