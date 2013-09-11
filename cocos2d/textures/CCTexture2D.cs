@@ -623,9 +623,6 @@ namespace Cocos2D
                 return false;
             }
 
-            PixelsWide = texture.Width;
-            PixelsHigh = texture.Height;
-
             if (OptimizeForPremultipliedAlpha && !premultipliedAlpha)
             {
                 m_Texture2D = ConvertToPremultiplied(texture, format);
@@ -819,7 +816,7 @@ namespace Cocos2D
 
             var renderTarget = new RenderTarget2D(
                 CCDrawManager.GraphicsDevice,
-                PixelsWide, PixelsHigh, m_bHasMipmaps, format,
+                texture.Width, texture.Height, m_bHasMipmaps, format,
                 DepthFormat.None, 0, RenderTargetUsage.DiscardContents
                 );
 
