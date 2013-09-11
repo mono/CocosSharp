@@ -370,6 +370,9 @@ namespace tests
                 case (int)TestCases.TEST_ORIENTATION:
                         pScene = new OrientationTestScene();
                         break;
+                case(int)TestCases.TEST_MULTITOUCH:
+                    pScene = new MultiTouchTestScene();
+                    break;
                 default:
                     break;
             }
