@@ -263,6 +263,7 @@
     <Compile Include="Classes\tests\CocosDenshionTest\CocosDenshionTest.cs" />
     <Compile Include="Classes\tests\FontTest\SystemFontTest.cs" />
     <Compile Include="Classes\tests\LabelTest\GitHubIssue5.cs" />
+    <Compile Include="classes\tests\MultiTouchTest\MultiTouchTest.cs" />
     <Compile Include="Classes\tests\NodeTest\CameraCenterTest.cs" />
     <Compile Include="Classes\tests\NodeTest\CameraOrbitTest.cs" />
     <Compile Include="Classes\tests\NodeTest\CameraZoomTest.cs" />
