@@ -327,21 +327,6 @@ namespace Cocos2D
 #endif
         #endregion
 
-#if ANDROID
-        //
-        // This causes the labels to be reconstructed during the draw loop otherwise they will
-        // get collected by the GC and appear as black boxes. Recent changes to MonoGame's develop3d
-        // branch may have made this method obsolete.
-        //
-        public virtual void DirtyLabels()
-        {
-            foreach (CCNode node in m_pobScenesStack)
-            {
-                node.DirtyLabels();
-            }
-        }
-#endif
-
         public ICCDirectorDelegate Delegate
         {
             get { return m_pProjectionDelegate; }
