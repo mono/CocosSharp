@@ -159,7 +159,7 @@ namespace Cocos2D
             }
             catch (Exception)
             {
-                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the particle definition file from stream"));
+                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the sprite sheet definition file from stream"));
             }
 
             PlistDictionary dict = document.Root.AsDictionary;
