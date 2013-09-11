@@ -349,6 +349,12 @@
     <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Web.cs">
       <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Web</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\CircleStress.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\CircleStress</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Collision.cs">
       <Link>classes\tests\Box2DTestBet\Farseer Physics Engine 3.3 XNA\Collision\Collision</Link>
     </Compile>

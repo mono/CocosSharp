@@ -698,8 +698,10 @@ namespace Cocos2D
         {
             Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
 
-            if (m_pChildren != null && m_pChildren.count > 0)
+            if (m_pChildrenByTag != null && m_pChildrenByTag.Count > 0)
             {
+                Debug.Assert(m_pChildren != null && m_pChildren.count > 0);
+
                 List<CCNode> list;
                 if (m_pChildrenByTag.TryGetValue(tag, out list))
                 {
@@ -709,7 +711,6 @@ namespace Cocos2D
                     }
                 }
             }
-
             return null;
         }
 
@@ -735,9 +736,6 @@ namespace Cocos2D
             {
                 m_pChildren = new CCRawList<CCNode>();
             }
-			if (m_pChildrenByTag == null) {
-				m_pChildrenByTag = new Dictionary<int, List<CCNode>> ();
-			}
 
             InsertChild(child, zOrder, tag);
 
