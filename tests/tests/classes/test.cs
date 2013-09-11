@@ -33,7 +33,7 @@ namespace Cocos2D
         TEST_LAYER,
         TEST_MENU,
         TEST_MOTION_STREAK,
-        //TEST_MUTITOUCH,
+        TEST_MULTITOUCH,
         TEST_COCOSNODE,
         TEST_ORIENTATION,
         TEST_PARALLAX,
@@ -90,7 +90,7 @@ namespace Cocos2D
             "LayerTest",
             "MenuTest",
             "MotionStreakTest",
-            //"MutiTouchTest"
+            "MultiTouchTest",
             "NodeTest",
             "OrientationTest",
             "ParallaxTest",
