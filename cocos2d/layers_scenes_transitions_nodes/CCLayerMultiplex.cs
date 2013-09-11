@@ -72,6 +72,7 @@ namespace Cocos2D
         {
             m_pLayers = new Dictionary<int,CCLayer>();
             m_pLayers[m_pLayers.Count] = layer;
+            _LayersInOrder.Add(m_pLayers.Count);
             if (layer.Tag != CCNode.kCCNodeTagInvalid)
             {
                 m_pLayers[layer.Tag + kTagOffsetForUniqueness] = layer;
@@ -115,6 +116,105 @@ namespace Cocos2D
         }
 
         /// <summary>
+        /// The list of layers in their insertion order.
+        /// </summary>
+        private List<int> _LayersInOrder = new List<int>();
+
+        /// <summary>
+        /// Switches to the first layer.
+        /// </summary>
+        /// <returns></returns>
+        public CCLayer SwitchToFirstLayer()
+        {
+            if (_LayersInOrder.Count == 0)
+            {
+                return (null);
+            }
+            return (SwitchTo(_LayersInOrder[0]));
+        }
+
+        /// <summary>
+        /// Switches to the next logical layer that was added to the multiplexer. Switches to the
+        /// first layer when no layer is active.
+        /// </summary>
+        public CCLayer SwitchToNextLayer()
+        {
+            if (_LayersInOrder.Count == 0)
+            {
+                return (null);
+            }
+            int idx = -1;
+            if (m_nEnabledLayer != -1)
+            {
+                for(int z = 0; z < _LayersInOrder.Count; z++)
+                {
+                    int ix = _LayersInOrder[z];
+                    if (m_pLayers[ix] != null)
+                    {
+                        if ((m_nEnabledLayer > kTagOffsetForUniqueness) && m_pLayers[ix].Tag == (m_nEnabledLayer - kTagOffsetForUniqueness))
+                        {
+                            idx = z;
+                            break;
+                        }
+                        else if(ix == m_nEnabledLayer) {
+                            idx = z;
+                            break;
+                        }
+                    }
+                }
+                idx = (idx + 1) % _LayersInOrder.Count;
+            }
+            else
+            {
+                idx = 0;
+            }
+            return(SwitchTo(_LayersInOrder[idx]));
+        }
+
+        /// <summary>
+        /// Switches to the previous logical layer that was added to the multiplexer. Switches to the
+        /// first layer when no layer is active.
+        /// </summary>
+        public CCLayer SwitchToPreviousLayer()
+        {
+            if (_LayersInOrder.Count == 0)
+            {
+                return (null);
+            }
+            int idx = -1;
+            if (m_nEnabledLayer != -1)
+            {
+                for (int z = 0; z < _LayersInOrder.Count; z++)
+                {
+                    int ix = _LayersInOrder[z];
+                    if (m_pLayers[ix] != null)
+                    {
+                        if ((m_nEnabledLayer > kTagOffsetForUniqueness) && m_pLayers[ix].Tag == (m_nEnabledLayer - kTagOffsetForUniqueness))
+                        {
+                            idx = z;
+                            break;
+                        }
+                        else if (ix == m_nEnabledLayer)
+                        {
+                            idx = z;
+                            break;
+                        }
+                    }
+                }
+                idx = idx - 1;
+                if (idx < 0)
+                {
+                    idx = _LayersInOrder.Count - 1;
+                }
+            }
+            else
+            {
+                idx = 0;
+            }
+            return(SwitchTo(_LayersInOrder[idx]));
+        }
+
+        /// <summary>
         /// Adds the given layer to the list of layers to multiplex. The CCNode.Tag is used
         /// as thelayer tag, but is offset by the kTagOffsetForUniqueness constant.
         /// </summary>
@@ -128,6 +228,7 @@ namespace Cocos2D
             else
             {
                 m_pLayers[m_pLayers.Count] = layer;
+                _LayersInOrder.Add(m_pLayers.Count);
                 if (layer.Tag != CCNode.kCCNodeTagInvalid)
                 {
                     m_pLayers[layer.Tag + kTagOffsetForUniqueness] = layer;

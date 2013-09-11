@@ -119,6 +119,7 @@
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Car.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Chain.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CharacterCollision.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CircleStress.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionFiltering.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionProcessing.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CompoundShapes.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\EdgeShapes.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\EdgeTest.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Gears.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\OneSidedPlatform.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Pinball.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\PolyCollision.cs" />

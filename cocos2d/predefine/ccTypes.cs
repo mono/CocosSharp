@@ -39,6 +39,26 @@ namespace Cocos2D
     /// </summary>
     public struct CCColor3B
     {
+        //ccColor3B predefined colors
+        //! White color (255,255,255)
+        public static readonly CCColor3B White = new CCColor3B(255, 255, 255);
+        //! Yellow color (255,255,0)
+        public static readonly CCColor3B Yellow = new CCColor3B(255, 255, 0);
+        //! Blue color (0,0,255)
+        public static readonly CCColor3B Blue = new CCColor3B(0, 0, 255);
+        //! Green Color (0,255,0)
+        public static readonly CCColor3B Green = new CCColor3B(0, 255, 0);
+        //! Red Color (255,0,0,)
+        public static readonly CCColor3B Red = new CCColor3B(255, 0, 0);
+        //! Magenta Color (255,0,255)
+        public static readonly CCColor3B Magenta = new CCColor3B(255, 0, 255);
+        //! Black Color (0,0,0)
+        public static readonly CCColor3B Black = new CCColor3B(0, 0, 0);
+        //! Orange Color (255,127,0)
+        public static readonly CCColor3B Orange = new CCColor3B(255, 127, 0);
+        //! Gray Color (166,166,166)
+        public static readonly CCColor3B Gray = new CCColor3B(166, 166, 166);
+
         /*
         public CCColor3B()
         {
@@ -80,15 +100,25 @@ namespace Cocos2D
     /// </summary>
     public struct CCColor4B
     {
-        /*
-        public CCColor4B()
-        {
-            r = 0;
-            g = 0;
-            b = 0;
-            a = 0;
-        }
-        */
+        //ccColor4B predefined colors
+        //! White color (255,255,255)
+        public static readonly CCColor4B White = new CCColor4B(255, 255, 255, 255);
+        //! Yellow color (255,255,0)
+        public static readonly CCColor4B Yellow = new CCColor4B(255, 255, 0, 255);
+        //! Blue color (0,0,255)
+        public static readonly CCColor4B Blue = new CCColor4B(0, 0, 255, 255);
+        //! Green Color (0,255,0)
+        public static readonly CCColor4B Green = new CCColor4B(0, 255, 0, 255);
+        //! Red Color (255,0,0,)
+        public static readonly CCColor4B Red = new CCColor4B(255, 0, 0, 255);
+        //! Magenta Color (255,0,255)
+        public static readonly CCColor4B Magenta = new CCColor4B(255, 0, 255, 255);
+        //! Black Color (0,0,0)
+        public static readonly CCColor4B Black = new CCColor4B(0, 0, 0, 255);
+        //! Orange Color (255,127,0)
+        public static readonly CCColor4B Orange = new CCColor4B(255, 127, 0, 255);
+        //! Gray Color (166,166,166)
+        public static readonly CCColor4B Gray = new CCColor4B(166, 166, 166, 255);
 
         public CCColor4B(byte inr, byte ing, byte inb, byte ina)
         {
@@ -351,6 +381,52 @@ namespace Cocos2D
         {
             return new CCPoint(p.X, p.Y);
         }
+
+        #region Operator Overloads
+
+        public static bool operator ==(CCPointI p1, CCPointI p2)
+        {
+            return p1.X == p2.X && p1.Y == p2.Y;
+        }
+
+        public static bool operator !=(CCPointI p1, CCPointI p2)
+        {
+            return p1.X != p2.X || p1.Y != p2.Y;
+        }
+
+        public static CCPointI operator -(CCPointI p1, CCPointI p2)
+        {
+            CCPointI pt;
+            pt.X = p1.X - p2.X;
+            pt.Y = p1.Y - p2.Y;
+            return pt;
+        }
+
+        public static CCPointI operator -(CCPointI p1)
+        {
+            CCPointI pt;
+            pt.X = -p1.X;
+            pt.Y = -p1.Y;
+            return pt;
+        }
+
+        public static CCPointI operator +(CCPointI p1, CCPointI p2)
+        {
+            CCPointI pt;
+            pt.X = p1.X + p2.X;
+            pt.Y = p1.Y + p2.Y;
+            return pt;
+        }
+
+        public static CCPointI operator +(CCPointI p1)
+        {
+            CCPointI pt;
+            pt.X = +p1.X;
+            pt.Y = +p1.Y;
+            return pt;
+        }
+
+        #endregion
     }
 
     public struct CCSizeI

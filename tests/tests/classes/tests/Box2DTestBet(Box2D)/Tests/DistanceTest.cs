@@ -40,8 +40,8 @@ namespace Box2D.TestBed.Tests
             input.useRadii = true;
             b2SimplexCache cache = b2SimplexCache.Create();
             cache.count = 0;
-            b2DistanceOutput output = new b2DistanceOutput();
-            b2Simplex.b2Distance(ref output, ref cache, ref input);
+            b2DistanceOutput output;
+            b2Simplex.b2Distance(out output, ref cache, ref input);
 
             m_debugDraw.DrawString(5, m_textLine, "distance = {0}", output.distance);
             m_textLine += 15;

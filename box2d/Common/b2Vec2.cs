@@ -52,11 +52,6 @@ namespace Box2D.Common
         { 
             x = x_; 
             y = y_;
-            //_Length = 0f;
-            //_LengthSquared = 0f;
-            //_bNormalized = false;
-//            _LengthSquared = m_x * m_x + m_y * m_y;
-//            _Length = b2Math.b2Sqrt(_LengthSquared);
 #if DEBUG
             if (!IsValid())
             {

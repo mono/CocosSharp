@@ -8,7 +8,12 @@ namespace Cocos2D
     public class CCRandom
     {
         // random seed 
-		private static readonly System.Random _random = new System.Random((int)DateTime.Now.Ticks);
+		private static System.Random _random = new System.Random((int)DateTime.Now.Ticks);
+
+        public static void Randomize(int seed)
+        {
+            _random = new System.Random(seed);
+        }
 
         //---------------------------------------------------------------- 
         // returns int from [min to max] 

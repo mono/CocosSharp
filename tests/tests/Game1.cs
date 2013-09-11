@@ -1,6 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Cocos2D;
 
@@ -16,17 +16,17 @@ namespace tests
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.DeviceCreated += new EventHandler<EventArgs>(graphics_DeviceCreated);
-            // graphics.ApplyChanges();
+
             Content.RootDirectory = "Content";
 
-//            if (graphics.GraphicsDevice == null)
-//            {
-//                CCLog.Log("FOO");
-//            }
-
             graphics.IsFullScreen = false;
+            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
 
+#if WINDOWS || MACOS
+            graphics.PreferredBackBufferWidth = 1024;
+            graphics.PreferredBackBufferHeight = 768;
+#endif
+            
             // Frame rate is 30 fps by default for Windows Phone.
             // Divide by 2 to make it 60 fps
             TargetElapsedTime = TimeSpan.FromTicks(333333 / 2);

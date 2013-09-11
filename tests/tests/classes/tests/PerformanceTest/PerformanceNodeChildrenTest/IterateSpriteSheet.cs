@@ -17,6 +17,7 @@ namespace tests
             // increase nodes
             if (currentQuantityOfNodes < quantityOfNodes)
             {
+                StartTimer();
                 for (int i = 0; i < (quantityOfNodes - currentQuantityOfNodes); i++)
                 {
                     CCSprite sprite = new CCSprite(batchNode.Texture, new CCRect(0, 0, 32, 32));
@@ -28,6 +29,7 @@ namespace tests
             // decrease nodes
             else if (currentQuantityOfNodes > quantityOfNodes)
             {
+                StartTimer();
                 for (int i = 0; i < (currentQuantityOfNodes - quantityOfNodes); i++)
                 {
                     int index = currentQuantityOfNodes - i - 1;
@@ -50,7 +52,6 @@ namespace tests
 
         public override void Update(float dt)
         {
-            throw new NotFiniteNumberException();
         }
 
         public virtual string profilerName()

@@ -816,7 +816,7 @@ namespace Cocos2D
 
             var renderTarget = new RenderTarget2D(
                 CCDrawManager.GraphicsDevice,
-                PixelsWide, PixelsHigh, m_bHasMipmaps, format,
+                texture.Width, texture.Height, m_bHasMipmaps, format,
                 DepthFormat.None, 0, RenderTargetUsage.DiscardContents
                 );
 
@@ -988,7 +988,7 @@ namespace Cocos2D
 			{
 				return null;
 			}
-#elif MONOMAC || IOS
+#elif MACOS || IOS
 
 			return Texture2D.FromStream(CCDrawManager.GraphicsDevice, stream);
 #else

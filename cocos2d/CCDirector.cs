@@ -327,21 +327,6 @@ namespace Cocos2D
 #endif
         #endregion
 
-#if ANDROID
-        //
-        // This causes the labels to be reconstructed during the draw loop otherwise they will
-        // get collected by the GC and appear as black boxes. Recent changes to MonoGame's develop3d
-        // branch may have made this method obsolete.
-        //
-        public virtual void DirtyLabels()
-        {
-            foreach (CCNode node in m_pobScenesStack)
-            {
-                node.DirtyLabels();
-            }
-        }
-#endif
-
         public ICCDirectorDelegate Delegate
         {
             get { return m_pProjectionDelegate; }
@@ -1097,67 +1082,83 @@ namespace Cocos2D
 
         public void CreateStatsLabel()
         {
-            CCTexture2D texture;
-            CCTextureCache textureCache = CCTextureCache.SharedTextureCache;
-
-            try
+            if (m_pFPSLabel == null)
             {
-                if (!textureCache.Contains("cc_fps_images"))
-                {
-                    texture = textureCache.AddImage(CCFPSImage.PngData, "cc_fps_images", SurfaceFormat.Bgra4444);
-                }
-                else
-                {
-                    texture = textureCache.TextureForKey("cc_fps_images");
-                }
+                CCTexture2D texture;
+                CCTextureCache textureCache = CCTextureCache.SharedTextureCache;
 
-                if (texture == null || (texture.ContentSize.Width == 0 && texture.ContentSize.Height == 0))
+                try
                 {
+                    if (!textureCache.Contains("cc_fps_images"))
+                    {
+                        texture = textureCache.AddImage(CCFPSImage.PngData, "cc_fps_images", SurfaceFormat.Bgra4444);
+                    }
+                    else
+                    {
+                        texture = textureCache.TextureForKey("cc_fps_images");
+                    }
+
+                    if (texture == null || (texture.ContentSize.Width == 0 && texture.ContentSize.Height == 0))
+                    {
+                        m_bDisplayStats = false;
+                        return;
+                    }
+                }
+                catch (Exception)
+                {
+                    // MonoGame may not allow texture.fromstream, so catch this exception here
+                    // and disable the stats
                     m_bDisplayStats = false;
                     return;
                 }
+
+                try
+                {
+                    m_pFPSLabel = new CCLabelAtlas();
+                    m_pFPSLabel.SetIgnoreContentScaleFactor(true);
+                    m_pFPSLabel.InitWithString("00.0", texture, 12, 32, '.');
+
+                    m_pUpdateTimeLabel = new CCLabelAtlas();
+                    m_pUpdateTimeLabel.SetIgnoreContentScaleFactor(true);
+                    m_pUpdateTimeLabel.InitWithString("0.000", texture, 12, 32, '.');
+
+                    m_pDrawTimeLabel = new CCLabelAtlas();
+                    m_pDrawTimeLabel.SetIgnoreContentScaleFactor(true);
+                    m_pDrawTimeLabel.InitWithString("0.000", texture, 12, 32, '.');
+
+                    m_pDrawsLabel = new CCLabelAtlas();
+                    m_pDrawsLabel.SetIgnoreContentScaleFactor(true);
+                    m_pDrawsLabel.InitWithString("000", texture, 12, 32, '.');
+
+                    m_pMemoryLabel = new CCLabelAtlas();
+                    m_pMemoryLabel.SetIgnoreContentScaleFactor(true);
+                    m_pMemoryLabel.InitWithString("0", texture, 12, 32, '.');
+                    m_pMemoryLabel.Color = new CCColor3B(0, 0, 255);
+
+                    m_pGCLabel = new CCLabelAtlas();
+                    m_pGCLabel.SetIgnoreContentScaleFactor(true);
+                    m_pGCLabel.InitWithString("0", texture, 12, 32, '.');
+                    m_pGCLabel.Color = new CCColor3B(255, 0, 0);
+                }
+                catch (Exception ex)
+                {
+                    m_pFPSLabel = null;
+                    m_bDisplayStats = false;
+                    CCLog.Log("Failed to create the stats labels.");
+                    CCLog.Log(ex.ToString());
+                    return;
+                }
             }
-            catch (Exception)
-            {
-                // MonoGame may not allow texture.fromstream, so catch this exception here
-                // and disable the stats
-                m_bDisplayStats = false;
-                return;
-            }
+
             float factor = CCDrawManager.DesignResolutionSize.Height / 320.0f;
             var pos = CCDirector.SharedDirector.VisibleOrigin;
 
-            m_pFPSLabel = new CCLabelAtlas();
-            m_pFPSLabel.SetIgnoreContentScaleFactor(true);
-            m_pFPSLabel.InitWithString("00.0", texture, 12, 32 , '.');
             m_pFPSLabel.Scale = factor;
-
-            m_pUpdateTimeLabel = new CCLabelAtlas();
-            m_pUpdateTimeLabel.SetIgnoreContentScaleFactor(true);
-            m_pUpdateTimeLabel.InitWithString("0.000", texture, 12, 32, '.');
             m_pUpdateTimeLabel.Scale = factor;
-
-            m_pDrawTimeLabel = new CCLabelAtlas();
-            m_pDrawTimeLabel.SetIgnoreContentScaleFactor(true);
-            m_pDrawTimeLabel.InitWithString("0.000", texture, 12, 32, '.');
             m_pDrawTimeLabel.Scale = factor;
-
-            m_pDrawsLabel = new CCLabelAtlas();
-            m_pDrawsLabel.SetIgnoreContentScaleFactor(true);
-            m_pDrawsLabel.InitWithString("000", texture, 12, 32, '.');
             m_pDrawsLabel.Scale = factor;
-
-            m_pMemoryLabel = new CCLabelAtlas();
-            m_pMemoryLabel.SetIgnoreContentScaleFactor(true);
-            m_pMemoryLabel.InitWithString("0", texture, 12, 32, '.');
             m_pMemoryLabel.Scale = factor;
-            m_pMemoryLabel.Color = new CCColor3B(0, 0, 255);
-
-            m_pGCLabel = new CCLabelAtlas();
-            m_pGCLabel.SetIgnoreContentScaleFactor(true);
-            m_pGCLabel.InitWithString("0", texture, 12, 32, '.');
             m_pGCLabel.Scale = factor;
-            m_pGCLabel.Color = new CCColor3B(255, 0, 0);
 
             m_pMemoryLabel.Position = new CCPoint(0, 85 * factor) + pos;
             m_pGCLabel.Position = new CCPoint(0, 68 * factor) + pos;

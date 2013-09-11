@@ -8,20 +8,6 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Cocos2D
 {
-    public enum CCOrientation
-    {
-        /// Device oriented vertically, home button on the bottom
-        Portrait = 0,
-
-        /// Device oriented vertically, home button on the top
-        PortraitUpsideDown = 1,
-
-        /// Device oriented horizontally, home button on the right
-        LandscapeLeft = 2,
-
-        /// Device oriented horizontally, home button on the left
-        LandscapeRight = 3,
-    };
 
     public abstract class CCApplication : DrawableGameComponent
     {
@@ -31,48 +17,30 @@ namespace Cocos2D
         private readonly LinkedList<CCTouch> m_pTouches = new LinkedList<CCTouch>();
         private readonly List<CCTouch> movedTouches = new List<CCTouch>();
         private readonly List<CCTouch> newTouches = new List<CCTouch>();
-#if WINDOWS || WINDOWSGL || MONOMAC || WINDOWSGL
+#if WINDOWS || WINDOWSGL || MACOS || WINDOWSGL
         private int _lastMouseId;
         private MouseState _lastMouseState;
         private MouseState _prevMouseState;
 #endif
-        //private CCBMFontConfiguration.ccBMFontDef hangOnToMe;
-
         protected bool m_bCaptured;
         protected ICCEGLTouchDelegate m_pDelegate;
 
-        private IGraphicsDeviceService m_graphicsService;
-
         public GameTime GameTime;
+
+        private bool _initialized;
 
         public CCApplication(Game game, IGraphicsDeviceService service)
             : base(game)
         {
-            m_graphicsService = service;
+            if (Game.Services.GetService(typeof(IGraphicsDeviceService)) == null)
+            {
+                Game.Services.AddService(typeof(IGraphicsDeviceService), service);
+            }
+
+            CCDrawManager.Init(service);
 
             Content = game.Content;
-
-            if (m_graphicsService.GraphicsDevice != null)
-            {
-                try
-                {
-                    Game.Services.AddService(typeof(IGraphicsDeviceService), m_graphicsService);
-                }
-                catch (ArgumentException)
-                {
-                    // Already contains the graphics device service.
-                }
-                CCDrawManager.Init(m_graphicsService.GraphicsDevice);
-            }
-            else
-            {
-                service.DeviceCreated += ServiceDeviceCreated;
-            }
-
-            if (service is GraphicsDeviceManager)
-            {
-                ((GraphicsDeviceManager)service).PreparingDeviceSettings += GraphicsPreparingDeviceSettings;
-            }
+            HandleMediaStateAutomatically = true;
 
             game.IsFixedTimeStep = true;
 
@@ -82,6 +50,7 @@ namespace Cocos2D
             game.Deactivated += GameDeactivated;
             game.Exiting += GameExiting;
 
+            //TODO: Move to CCContentManager
 #if IOS || WINDOWS_PHONE8
             // Please read the following discussions for the reasons of this.
             // http://monogame.codeplex.com/discussions/393775
@@ -131,17 +100,20 @@ namespace Cocos2D
                 ( ) => new CCBMFontPaddingtReader ()
                 
                 );
-
 #endif
-
         }
+
+        protected bool HandleMediaStateAutomatically { get; set; }
 
         private void GameActivated(object sender, EventArgs e)
         {
             // Clear out the prior gamepad state because we don't want it anymore.
             m_PriorGamePadState.Clear();
 #if !IOS
-            CocosDenshion.CCSimpleAudioEngine.SharedEngine.SaveMediaState();
+            if (HandleMediaStateAutomatically)
+            {
+                CocosDenshion.CCSimpleAudioEngine.SharedEngine.SaveMediaState();
+            }
 #endif
             ApplicationWillEnterForeground();
         }
@@ -150,25 +122,16 @@ namespace Cocos2D
         {
             ApplicationDidEnterBackground();
 #if !IOS
-            CocosDenshion.CCSimpleAudioEngine.SharedEngine.RestoreMediaState();
+            if (HandleMediaStateAutomatically)
+            {
+                CocosDenshion.CCSimpleAudioEngine.SharedEngine.RestoreMediaState();
+            }
 #endif
         }
 
         void GameExiting(object sender, EventArgs e)
         {
             CCDirector.SharedDirector.End();
-        }
-
-        protected virtual void ServiceDeviceCreated(object sender, EventArgs e)
-        {
-            CCDrawManager.Init(m_graphicsService.GraphicsDevice);
-        }
-
-        protected virtual void GraphicsPreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
-        {
-            e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
-            e.GraphicsDeviceInformation.PresentationParameters.DepthStencilFormat = DepthFormat.Depth24Stencil8;
-            e.GraphicsDeviceInformation.PresentationParameters.BackBufferFormat = SurfaceFormat.Color;
         }
 
         /// <summary>
@@ -200,23 +163,24 @@ namespace Cocos2D
         /// </summary>
         protected override void LoadContent()
         {
-            CCContentManager.Initialize(Game.Content.ServiceProvider, Game.Content.RootDirectory);
+            if (!_initialized)
+            {
+                CCContentManager.Initialize(Game.Content.ServiceProvider, Game.Content.RootDirectory);
 
-            base.LoadContent();
-            
-            ApplicationDidFinishLaunching();
-#if ANDROID
-            CCDirector.SharedDirector.DirtyLabels();
-#endif
+                base.LoadContent();
+
+                ApplicationDidFinishLaunching();
+
+                _initialized = true;
+            }
+            else
+            {
+                base.LoadContent();
+            }
         }
 
         public override void Initialize()
         {
-            //DebugSystem.Initialize(Game, "fonts/debugfont");
-            //DebugSystem.Instance.FpsCounter.Visible = true;
-            //DebugSystem.Instance.TimeRuler.Visible = true;
-            //DebugSystem.Instance.TimeRuler.ShowLog = true;
-
             s_pSharedApplication = this;
 
             InitInstance();
@@ -231,14 +195,6 @@ namespace Cocos2D
         public override void Update(GameTime gameTime)
         {
             GameTime = gameTime;
-
-            // We must call StartFrame at the top of Update to indicate to the TimeRuler
-            // that a new frame has started.
-            //DebugSystem.Instance.TimeRuler.StartFrame();
-
-            // We can now begin measuring our Update method
-            //DebugSystem.Instance.TimeRuler.BeginMark("Update", Color.Blue);
-
 
 #if !PSM &&!NETFX_CORE
             if (CCDirector.SharedDirector.Accelerometer != null)
@@ -261,17 +217,11 @@ namespace Cocos2D
             CCDirector.SharedDirector.Update(gameTime);
 
             base.Update(gameTime);
-
-            // End measuring the Update method
-            //DebugSystem.Instance.TimeRuler.EndMark("Update");
         }
 
         public override void Draw(GameTime gameTime)
         {
             GameTime = gameTime;
-
-            // Begin measuring our Draw method
-            //DebugSystem.Instance.TimeRuler.BeginMark("Draw", Color.Red);
 
             CCDrawManager.BeginDraw();
 
@@ -280,9 +230,6 @@ namespace Cocos2D
             base.Draw(gameTime);
 
             CCDrawManager.EndDraw();
-
-            // End measuring our Draw method
-            //DebugSystem.Instance.TimeRuler.EndMark("Draw");
         }
 
         protected virtual void HandleGesture(GestureSample gesture)
@@ -290,6 +237,7 @@ namespace Cocos2D
             //TODO: Create CCGesture and convert the coordinates into the local coordinates.
         }
 
+        #region GamePad Support
         public event CCGamePadButtonDelegate GamePadButtonUpdate;
         public event CCGamePadDPadDelegate GamePadDPadUpdate;
         public event CCGamePadStickUpdateDelegate GamePadStickUpdate;
@@ -442,7 +390,9 @@ namespace Cocos2D
             ProcessGamePad(gps3, PlayerIndex.Three);
             ProcessGamePad(gps4, PlayerIndex.Four);
         }
+        #endregion
 
+        #region Keyboard support
         private KeyboardState m_priorKeyboardState;
 
         private void ProcessKeyboard()
@@ -466,6 +416,7 @@ namespace Cocos2D
             m_priorKeyboardState = currentKeyState;
 
         }
+        #endregion
 
         private CCPoint TransformPoint(float x, float y) {
             CCPoint newPoint;
@@ -487,7 +438,7 @@ namespace Cocos2D
 
                 // TODO: allow configuration to treat the game pad as a touch device.
 
-#if WINDOWS || WINDOWSGL || MONOMAC
+#if WINDOWS || WINDOWSGL || MACOS
                 _prevMouseState = _lastMouseState;
                 _lastMouseState = Mouse.GetState();
 

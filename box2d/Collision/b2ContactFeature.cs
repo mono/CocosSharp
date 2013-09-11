@@ -47,6 +47,11 @@ namespace Box2D.Collision
             return (indexA == bcf.indexA && indexB == bcf.indexB && typeA == bcf.typeA && typeB == bcf.typeB);
         }
 
+        public bool Equals(ref b2ContactFeature bcf)
+        {
+            return (indexA == bcf.indexA && indexB == bcf.indexB && typeA == bcf.typeA && typeB == bcf.typeB);
+        }
+
         /// <summary>
         /// Hack to make the b2ContactID union from Box2D work.
         /// </summary>

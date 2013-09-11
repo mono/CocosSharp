@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using System.Globalization;
 #if !WINDOWS_PHONE && !XBOX && !WINDOWS &&!NETFX_CORE && !PSM
-#if MONOMAC
+#if MACOS
 using MonoMac.OpenGL;
 #elif WINDOWSGL || LINUX
 using OpenTK.Graphics.OpenGL;
@@ -62,10 +62,10 @@ namespace Cocos2D
                 #if GLES
                 var extstring = GL.GetString(RenderbufferStorage.Extensions);                       
 				GraphicsExtensions.CheckGLError();
-				#elif MONOMAC
+				#elif MACOS
 
 				// for right now there are errors with GL before we even get here so the 
-				// CheckGLError for MONOMAC is throwing errors even though the extensions are read
+				// CheckGLError for MACOS is throwing errors even though the extensions are read
 				// correctly.  Placed this here for now so that we can continue the processing
 				// until we find the real error.
 				var extstring = GL.GetString(StringName.Extensions);

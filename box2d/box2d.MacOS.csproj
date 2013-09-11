@@ -140,6 +140,7 @@
     <Compile Include="Rope\b2Rope.cs" />
     <Compile Include="Rope\b2RopeDef.cs" />
     <Compile Include="b2FlagExtensions.cs" />
+    <Compile Include="b2InternalClasses.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Collision\" />

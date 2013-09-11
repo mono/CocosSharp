@@ -1168,6 +1168,8 @@
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\VaryingRestitution.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\VerticalStack.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Web.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CircleStress.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">

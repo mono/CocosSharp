@@ -584,12 +584,12 @@ namespace Cocos2D
 
         public static bool operator ==(CCPoint p1, CCPoint p2)
         {
-            return (p1.Equals(p2));
+            return p1.X == p2.X && p1.Y == p2.Y;
         }
 
         public static bool operator !=(CCPoint p1, CCPoint p2)
         {
-            return (!p1.Equals(p2));
+            return p1.X != p2.X || p1.Y != p2.Y;
         }
 
         public static CCPoint operator -(CCPoint p1, CCPoint p2)
@@ -629,6 +629,14 @@ namespace Cocos2D
             CCPoint pt;
             pt.X = p.X * value;
             pt.Y = p.Y * value;
+            return pt;
+        }
+
+        public static CCPoint operator /(CCPoint p, float value)
+        {
+            CCPoint pt;
+            pt.X = p.X / value;
+            pt.Y = p.Y / value;
             return pt;
         }
 

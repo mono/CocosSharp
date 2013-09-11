@@ -16,7 +16,7 @@
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\MacOSX\Debug</OutputPath>
-    <DefineConstants>DEBUG;MONOMAC;OPENGL;</DefineConstants>
+    <DefineConstants>DEBUG;MONOMAC;MACOS;OPENGL;MONOGAME</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
@@ -31,7 +31,7 @@
     <DebugType>none</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\MacOSX\Release</OutputPath>
-    <DefineConstants>MONOMAC</DefineConstants>
+    <DefineConstants>MONOMAC;MACOS;MONOGAME;OPENGL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
@@ -46,7 +46,7 @@
     <DebugType>none</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants>MONOMAC</DefineConstants>
+    <DefineConstants>MONOMAC;MACOS;MONOGAME;OPENGL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseSGen>False</UseSGen>
@@ -62,7 +62,7 @@
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG; MONOMAC</DefineConstants>
+    <DefineConstants>DEBUG;MONOMAC;MACOS;MONOGAME;OPENGL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseSGen>False</UseSGen>
@@ -1151,6 +1151,8 @@
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\VaryingRestitution.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\VerticalStack.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Web.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CircleStress.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />

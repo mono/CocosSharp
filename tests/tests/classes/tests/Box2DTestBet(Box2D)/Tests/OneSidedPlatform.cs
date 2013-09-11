@@ -63,9 +63,9 @@ namespace Box2D.TestBed.Tests
             }
         }
 
-        public override void PreSolve(b2Contact contact, ref b2Manifold oldManifold)
+        public override void PreSolve(b2Contact contact, b2Manifold oldManifold)
         {
-            base.PreSolve(contact, ref oldManifold);
+            base.PreSolve(contact, oldManifold);
 
             b2Fixture fixtureA = contact.GetFixtureA();
             b2Fixture fixtureB = contact.GetFixtureB();

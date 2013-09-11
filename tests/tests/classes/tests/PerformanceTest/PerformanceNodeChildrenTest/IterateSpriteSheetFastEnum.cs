@@ -8,8 +8,10 @@ namespace tests
 {
     public class IterateSpriteSheetFastEnum : IterateSpriteSheet
     {
+        bool bDone = false;
         public override void Update(float dt)
         {
+            if (bDone) return;
             // iterate using fast enumeration protocol
             var pChildren = batchNode.Children;
 
@@ -17,15 +19,18 @@ namespace tests
             //    CCProfilingBeginTimingBlock(_profilingTimer);
             //#endif
 
+            StartTimer();
             foreach (var pObject in pChildren)
             {
                 CCSprite pSprite = (CCSprite)pObject;
                 pSprite.Visible = false;
             }
+            EndTimer("Set visible array walk");
 
             //#if CC_ENABLE_PROFILERS
             //    CCProfilingEndTimingBlock(_profilingTimer);
             //#endif
+            bDone = true;
         }
 
         public override string title()

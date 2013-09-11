@@ -13,10 +13,10 @@ namespace Box2D.Collision
         // GJK using Voronoi regions (Christer Ericson) and Barycentric coordinates.
         public static int b2_gjkCalls, b2_gjkIters, b2_gjkMaxIters;
 
-        private b2Vec2[] m_buffer;
-        private b2Vec2[] m_vertices;
-        private int m_count;
-        private float m_radius;
+        internal b2Vec2[] m_buffer;
+        internal b2Vec2[] m_vertices;
+        internal int m_count;
+        internal float m_radius;
 
         public float Radius { get { return (m_radius); } set { m_radius = value; } }
         public int Count { get { return (m_count); } set { m_count = value; } }
@@ -54,13 +54,19 @@ namespace Box2D.Collision
             return m_vertices[index];
         }
 
-        public int GetSupport(b2Vec2 d)
+        public int GetSupport(ref b2Vec2 d)
         {
             int bestIndex = 0;
-            float bestValue = b2Math.b2Dot(ref m_vertices[0], ref d);
+            
+            var v = m_vertices[0];
+            float bestValue = v.x * d.x + v.y * d.y;
+            
             for (int i = 1; i < m_count; ++i)
             {
-                float value = b2Math.b2Dot(ref m_vertices[i], ref d);
+                v = m_vertices[i];
+                
+                float value = v.x * d.x + v.y * d.y;
+            
                 if (value > bestValue)
                 {
                     bestIndex = i;
@@ -74,10 +80,12 @@ namespace Box2D.Collision
         public b2Vec2 GetSupportVertex(b2Vec2 d)
         {
             int bestIndex = 0;
-            float bestValue = b2Math.b2Dot(ref m_vertices[0], ref d);
+            var v = m_vertices[0];
+            float bestValue = v.x * d.x + v.y * d.y;
             for (int i = 1; i < m_count; ++i)
             {
-                float value = b2Math.b2Dot(ref m_vertices[i], ref d);
+                v = m_vertices[i];
+                float value = v.x * d.x + v.y * d.y;
                 if (value > bestValue)
                 {
                     bestIndex = i;
@@ -95,7 +103,8 @@ namespace Box2D.Collision
                 case b2ShapeType.e_circle:
                     {
                         b2CircleShape circle = (b2CircleShape)shape;
-                        m_vertices = new b2Vec2[] { circle.Position };
+                        m_buffer[0] = circle.Position;
+                        m_vertices = m_buffer;
                         m_count = 1;
                         m_radius = circle.Radius;
                     }
@@ -134,7 +143,9 @@ namespace Box2D.Collision
                 case b2ShapeType.e_edge:
                     {
                         b2EdgeShape edge = (b2EdgeShape)shape;
-                        m_vertices = new b2Vec2[] { edge.Vertex1, edge.Vertex2 };
+                        m_buffer[0] = edge.Vertex1;
+                        m_buffer[1] = edge.Vertex2;
+                        m_vertices = m_buffer;
                         m_count = 2;
                         m_radius = edge.Radius;
                     }

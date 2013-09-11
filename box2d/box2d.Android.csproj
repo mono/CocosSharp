@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="b2FlagExtensions.cs" />
+    <Compile Include="b2InternalClasses.cs" />
     <Compile Include="Collision\b2AABB.cs" />
     <Compile Include="Collision\b2BroadPhase.cs" />
     <Compile Include="Collision\b2Collision.cs" />

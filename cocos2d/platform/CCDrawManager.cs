@@ -258,6 +258,64 @@ namespace Cocos2D
             get { return m_fScaleY; }
         }
 
+        private static IGraphicsDeviceService m_graphicsService;
+        private static PresentationParameters m_presentationParameters = new PresentationParameters();
+        
+        public static void Init(IGraphicsDeviceService service)
+        {
+            m_graphicsService = service;
+
+            m_presentationParameters = new PresentationParameters()
+            {
+                RenderTargetUsage = RenderTargetUsage.PreserveContents,
+                DepthStencilFormat = DepthFormat.Depth24Stencil8,
+                BackBufferFormat = SurfaceFormat.Color
+            };
+
+            service.DeviceCreated += GraphicsDeviceDeviceCreated;
+
+            var manager = service as GraphicsDeviceManager;
+
+            if (manager != null)
+            {
+                var pp = m_presentationParameters;
+
+                pp.BackBufferWidth = manager.PreferredBackBufferWidth;
+                pp.BackBufferHeight = manager.PreferredBackBufferHeight;
+                pp.BackBufferFormat = manager.PreferredBackBufferFormat;
+                pp.DepthStencilFormat = manager.PreferredDepthStencilFormat;
+                pp.RenderTargetUsage = RenderTargetUsage.PreserveContents; //??? DiscardContents fast
+
+                manager.PreparingDeviceSettings += GraphicsPreparingDeviceSettings;
+            }
+        }
+
+        /// <summary>
+        /// Called just before the graphics device for the presentation is created. This method callback is used to setup
+        /// the device settings. The WindowSetup is used to set the presentation parameters.
+        /// </summary>
+        static void GraphicsPreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
+        {
+            var gdipp = e.GraphicsDeviceInformation.PresentationParameters;
+            var pp = m_presentationParameters;
+
+            gdipp.RenderTargetUsage = pp.RenderTargetUsage;
+            gdipp.DepthStencilFormat = pp.DepthStencilFormat;
+            gdipp.BackBufferFormat = pp.BackBufferFormat;
+            
+            if (graphicsDevice == null)
+            {
+                // Only set the buffer dimensions when the device was not created
+                gdipp.BackBufferWidth = pp.BackBufferWidth;
+                gdipp.BackBufferHeight = pp.BackBufferHeight;
+            }
+        }
+
+        static void GraphicsDeviceDeviceCreated(object sender, EventArgs e)
+        {
+            Init(m_graphicsService.GraphicsDevice);
+        }
+
         public static void Init(GraphicsDevice graphicsDevice)
         {
             CCDrawManager.graphicsDevice = graphicsDevice;
@@ -306,7 +364,7 @@ namespace Cocos2D
 #endif
             PresentationParameters pp = graphicsDevice.PresentationParameters;
             //pp.RenderTargetUsage = RenderTargetUsage.PreserveContents;
-            //_renderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, (int)pp.BackBufferHeight, false, pp.BackBufferFormat, pp.DepthStencilFormat, pp.MultiSampleCount, RenderTargetUsage.PreserveContents);
+            //m_renderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, (int)pp.BackBufferHeight, false, pp.BackBufferFormat, pp.DepthStencilFormat, pp.MultiSampleCount, RenderTargetUsage.PreserveContents);
 
             m_fScaleY = 1.0f;
             m_fScaleX = 1.0f;
@@ -371,17 +429,17 @@ namespace Cocos2D
 
         static void GraphicsDeviceDeviceResetting(object sender, EventArgs e)
         {
-#if ANDROID
+//#if ANDROID
             CCGraphicsResource.DisposeAllResources();
             CCSpriteFontCache.SharedInstance.Clear();
-#endif
+//#endif
         }
 
         static void GraphicsDeviceDeviceReset(object sender, EventArgs e)
         {
-#if ANDROID
+//#if ANDROID
             m_bNeedReinitResources = true;
-#endif
+//#endif
         }
 
         static void GraphicsDeviceDeviceLost(object sender, EventArgs e)
@@ -464,7 +522,7 @@ namespace Cocos2D
             }
 
             ResetDevice();
-            graphicsDevice.Clear(Color.Black);
+            Clear(Color.Black);
             DrawCount = 0;
         }
 
@@ -1181,7 +1239,7 @@ namespace Cocos2D
             graphics.IsFullScreen = true;
 #endif
 
-#if WINDOWS || WINDOWSGL || MONOMAC
+#if WINDOWS || WINDOWSGL || MACOS
             game.IsMouseVisible = true;
             graphics.IsFullScreen = false;
 #endif
@@ -1262,8 +1320,130 @@ namespace Cocos2D
 
         private struct MaskState
         {
+            public int Layer;
             public bool Inverted;
             public float AlphaTreshold;
+        }
+
+        private struct MaskDepthStencilStateCacheEntry
+        {
+            public DepthStencilState Clear;
+            public DepthStencilState ClearInvert;
+            public DepthStencilState DrawMask;
+            public DepthStencilState DrawMaskInvert;
+            public DepthStencilState DrawContent;
+            public DepthStencilState DrawContentDepth;
+
+            public DepthStencilState GetClearState(MaskState maskState)
+            {
+                DepthStencilState result = maskState.Inverted ? ClearInvert : Clear;
+
+                if (result == null)
+                {
+                    int maskLayer = 1 << maskState.Layer;
+
+                    result = new DepthStencilState()
+                    {
+                        DepthBufferEnable = false,
+
+                        StencilEnable = true,
+
+                        StencilFunction = CompareFunction.Never,
+
+                        StencilMask = maskLayer,
+                        StencilWriteMask = maskLayer,
+                        ReferenceStencil = maskLayer,
+
+                        StencilFail = !maskState.Inverted ? StencilOperation.Zero : StencilOperation.Replace
+                    };
+
+                    if (maskState.Inverted)
+                    {
+                        ClearInvert = result;
+                    }
+                    else
+                    {
+                        Clear = result;
+                    }
+                }
+
+                return result;
+            }
+
+            public DepthStencilState GetDrawMaskState(MaskState maskState)
+            {
+                DepthStencilState result = maskState.Inverted ? DrawMaskInvert : DrawMask;
+
+                if (result == null)
+                {
+                    int maskLayer = 1 << maskState.Layer;
+
+                    result = new DepthStencilState()
+                    {
+                        DepthBufferEnable = false,
+
+                        StencilEnable = true,
+
+                        StencilFunction = CompareFunction.Never,
+
+                        StencilMask = maskLayer,
+                        StencilWriteMask = maskLayer,
+                        ReferenceStencil = maskLayer,
+
+                        StencilFail = !maskState.Inverted ? StencilOperation.Replace : StencilOperation.Zero,
+                    };
+
+                    if (maskState.Inverted)
+                    {
+                        DrawMaskInvert = result;
+                    }
+                    else
+                    {
+                        DrawMask = result;
+                    }
+                }
+
+                return result;
+            }
+
+            public DepthStencilState GetDrawContentState(MaskState maskState, bool depth)
+            {
+                DepthStencilState result = depth ? DrawContentDepth : DrawContent;
+
+                if (result == null)
+                {
+                    int maskLayer = 1 << maskState.Layer;
+                    int maskLayerL = maskLayer - 1;
+                    int maskLayerLe = maskLayer | maskLayerL;
+
+                    result = new DepthStencilState()
+                    {
+                        DepthBufferEnable = _maskSavedStencilStates[_maskLayer].DepthBufferEnable,
+
+                        StencilEnable = true,
+
+                        StencilMask = maskLayerLe,
+                        StencilWriteMask = 0,
+                        ReferenceStencil = maskLayerLe,
+
+                        StencilFunction = CompareFunction.Equal,
+
+                        StencilPass = StencilOperation.Keep,
+                        StencilFail = StencilOperation.Keep,
+                    };
+
+                    if (depth)
+                    {
+                        DrawContentDepth = result;
+                    }
+                    else
+                    {
+                        DrawContent = result;
+                    }
+                }
+
+                return result;
+            }
         }
 
         private static int _maskLayer = -1;
@@ -1271,6 +1451,7 @@ namespace Cocos2D
         private static DepthStencilState[] _maskSavedStencilStates = new DepthStencilState[8];
         private static AlphaTestEffect _maskAlphaTest;
         private static MaskState[] _maskStates = new MaskState[8];
+        private static MaskDepthStencilStateCacheEntry[] _maskStatesCache = new MaskDepthStencilStateCacheEntry[8];
 
         public static bool BeginDrawMask(bool inverted, float alphaTreshold)
         {
@@ -1287,9 +1468,9 @@ namespace Cocos2D
                 return false;
             }
 
-            var maskState = new MaskState() { Inverted = inverted, AlphaTreshold = alphaTreshold };
-
             _maskLayer++;
+
+            var maskState = new MaskState() { Layer = _maskLayer, Inverted = inverted, AlphaTreshold = alphaTreshold };
 
             _maskStates[_maskLayer] = maskState;
             _maskSavedStencilStates[_maskLayer] = DepthStencilState;
@@ -1299,22 +1480,7 @@ namespace Cocos2D
             ///////////////////////////////////
             // CLEAR STENCIL BUFFER
 
-            var stencilState = new DepthStencilState()
-            {
-                DepthBufferEnable = false,
-
-                StencilEnable = true,
-
-                StencilFunction = CompareFunction.Never,
-
-                StencilMask = maskLayer,
-                StencilWriteMask = maskLayer,
-                ReferenceStencil = maskLayer,
-
-                StencilFail = !maskState.Inverted ? StencilOperation.Zero : StencilOperation.Replace
-            };
-            
-            DepthStencilState = stencilState;
+            DepthStencilState = _maskStatesCache[_maskLayer].GetClearState(maskState);
 
             // draw a fullscreen solid rectangle to clear the stencil buffer
             var size = CCDirector.SharedDirector.WinSize;
@@ -1331,22 +1497,7 @@ namespace Cocos2D
             ///////////////////////////////////
             // PREPARE TO DRAW MASK
 
-            stencilState = new DepthStencilState()
-            {
-                DepthBufferEnable = false,
-
-                StencilEnable = true,
-
-                StencilFunction = CompareFunction.Never,
-
-                StencilMask = maskLayer,
-                StencilWriteMask = maskLayer,
-                ReferenceStencil = maskLayer,
-
-                StencilFail = !maskState.Inverted ? StencilOperation.Replace : StencilOperation.Zero,
-            };
-            
-            DepthStencilState = stencilState;
+            DepthStencilState = _maskStatesCache[_maskLayer].GetDrawMaskState(maskState);
 
             if (maskState.AlphaTreshold < 1)
             {
@@ -1376,27 +1527,7 @@ namespace Cocos2D
                 PopEffect();
             }
 
-            int maskLayer = 1 << _maskLayer;
-            int maskLayerL = maskLayer - 1;
-            int maskLayerLe = maskLayer | maskLayerL; 
-
-            var stencilState = new DepthStencilState()
-            {
-                DepthBufferEnable = _maskSavedStencilStates[_maskLayer].DepthBufferEnable,
-
-                StencilEnable = true,
-
-                StencilMask = maskLayerLe,
-                StencilWriteMask = 0,
-                ReferenceStencil = maskLayerLe,
-
-                StencilFunction = CompareFunction.Equal,
-
-                StencilPass = StencilOperation.Keep,
-                StencilFail = StencilOperation.Keep,
-            };
-            
-            DepthStencilState = stencilState;
+            DepthStencilState = _maskStatesCache[_maskLayer].GetDrawContentState(maskState, _maskSavedStencilStates[_maskLayer].DepthBufferEnable);
         }
 
         public static void EndMask()

@@ -132,18 +132,35 @@ namespace Box2D.TestBed.Tests
             }
         }
 
+        private bool _ApplyToCenter = false;
+
         public override void Keyboard(char key)
         {
             switch (key)
             {
+                case 'c':
+                    _ApplyToCenter = !_ApplyToCenter;
+                    break;
                 case 'w':
                     {
                         b2Vec2 f = m_body.GetWorldVector(new b2Vec2(0.0f, -200.0f));
                         b2Vec2 p = m_body.GetWorldPoint(new b2Vec2(0.0f, 2.0f));
-                        m_body.ApplyForce(f, p);
+                        if(_ApplyToCenter)
+                            m_body.ApplyForceToCenter(f);
+                        else
+                            m_body.ApplyForce(f, p);
                     }
                     break;
-
+                case 'x':
+                    {
+                        b2Vec2 f = m_body.GetWorldVector(new b2Vec2(0.0f, 200.0f));
+                        b2Vec2 p = m_body.GetWorldPoint(new b2Vec2(0.0f, 2.0f));
+                        if (_ApplyToCenter)
+                            m_body.ApplyForceToCenter(f);
+                        else
+                            m_body.ApplyForce(f, p);
+                    }
+                    break;
                 case 'a':
                     {
                         m_body.ApplyTorque(50.0f);

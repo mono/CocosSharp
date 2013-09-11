@@ -8,6 +8,20 @@ namespace tests
 {
     public abstract class NodeChildrenMainScene : CCScene
     {
+        long lStart;
+
+        protected void StartTimer()
+        {
+            lStart = DateTime.Now.Ticks;
+        }
+
+        protected void EndTimer(string msg)
+        {
+            long diff = DateTime.Now.Ticks - lStart;
+            TimeSpan ts = new TimeSpan(diff);
+            CCLog.Log("{0} took {1} s, or {2} ms", msg, ts.TotalSeconds, ts.TotalMilliseconds);
+        }
+
         public virtual void initWithQuantityOfNodes(int nNodes)
         {
             //srand(time());

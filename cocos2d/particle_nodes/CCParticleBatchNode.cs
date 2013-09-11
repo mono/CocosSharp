@@ -1,10 +1,19 @@
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Cocos2D
 {
     public class CCParticleBatchNode : CCNode, ICCTextureProtocol
     {
         public const int kCCParticleDefaultCapacity = 500;
+        /// <summary>
+        /// The number of children that will trigger a binary search
+        /// </summary>
+        private const int kBinarySearchTrigger = 50;
+        /// <summary>
+        /// The number of children in the search range that will switch back to linear searching
+        /// </summary>
+        private const int kLinearSearchTrigger = 10;
 
         public readonly CCTextureAtlas TextureAtlas = new CCTextureAtlas();
         private CCBlendFunc m_tBlendFunc;
@@ -154,7 +163,7 @@ namespace Cocos2D
                 atlasIndex = 0;
             }
 
-            InsertChild(pChild, atlasIndex);
+            InsertChild(pChild, atlasIndex, tag);
 
             // update quad info
             pChild.BatchNode = this;
@@ -179,10 +188,10 @@ namespace Cocos2D
 
             m_pChildren.Insert(pos, child);
 
+            child.Parent = this;
+
             child.Tag = aTag;
             child.m_nZOrder = z;
-
-            child.Parent = this;
 
             if (m_bRunning)
             {
@@ -298,7 +307,47 @@ namespace Cocos2D
             newIndex += minusOne;
         }
 
+        private int BinarySearchNewPositionInChildrenForZ(int start, int end, int z)
+        {
+            // Partition in half
+            int count = end - start;
+            if (count < kLinearSearchTrigger)
+            {
+                return (SearchNewPositionInChildrenForZ(start, end, z));
+            }
+            int mid = (start + end) / 2;
+            CCNode child = m_pChildren.Elements[mid];
+            if (child.m_nZOrder > z)
+            {
+                return BinarySearchNewPositionInChildrenForZ(start, mid, z);
+            }
+            return (BinarySearchNewPositionInChildrenForZ(mid, end, z));
+        }
+
+        /// <summary>
+        /// Do a binary search if the number of children is larger than a set limit.
+        /// </summary>
+        /// <param name="z"></param>
+        /// <returns></returns>
         private int SearchNewPositionInChildrenForZ(int z)
+        {
+            int count = m_pChildren.count;
+            if (count > kBinarySearchTrigger)
+            {
+                return (BinarySearchNewPositionInChildrenForZ(0, count, z));
+            }
+            return (SearchNewPositionInChildrenForZ(0, count, z));
+        }
+
+        /// <summary>
+        /// Linearly search from start to end, exclusive of end, to find a position
+        /// in [start,end) where the given z < z[index+1].
+        /// </summary>
+        /// <param name="start">The start of the search range</param>
+        /// <param name="end">The end of the search range</param>
+        /// <param name="z">The z for comparison</param>
+        /// <returns>The index on [start,end)</returns>
+        private int SearchNewPositionInChildrenForZ(int start, int end, int z)
         {
             int count = m_pChildren.count;
 
@@ -400,7 +449,7 @@ namespace Cocos2D
         // CCParticleBatchNode - add / remove / reorder helper methods
 
         // add child helper
-        private void InsertChild(CCParticleSystem pSystem, int index)
+        private void InsertChild(CCParticleSystem pSystem, int index, int tag)
         {
             pSystem.AtlasIndex = index;
 

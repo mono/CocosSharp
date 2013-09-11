@@ -15,7 +15,7 @@ namespace GameStarterKit
 			: base(game, graphics)
 		{
 			s_pSharedApplication = this;
-#if WINDOWS || MACOS || MONOMAC || LINUX || OUYA || XBOX
+#if WINDOWS || MACOS || LINUX || OUYA || XBOX
             preferredWidth = 1024;
             preferredHeight = 768;
 #else
@@ -65,7 +65,7 @@ namespace GameStarterKit
             //	CCLOG(@"Retina Display Not supported");
 
 
-#if WINDOWS || MACOS || MONOMAC || LINUX || OUYA || XBOX
+#if WINDOWS || MACOS || LINUX || OUYA || XBOX
 			var resPolicy = ResolutionPolicy.ExactFit;
 #else
 			var resPolicy = ResolutionPolicy.ShowAll;

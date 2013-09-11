@@ -78,6 +78,12 @@ namespace Box2D.TestBed
                 new TestEntry {Name = "Slider Crank", CreateFcn = () => new SliderCrank()},
                 new TestEntry {Name = "Varying Friction", CreateFcn = () => new VaryingFriction()},
                 new TestEntry {Name = "AddPair", CreateFcn = () => new AddPair()},
+                
+
+                //new TestEntry {Name = "Circle Benchmark", CreateFcn = () => new CircleBenchmarkTest()},
+                new TestEntry {Name = "Liquid", CreateFcn = () => new LiquidTest()},
+                new TestEntry {Name = "Circle Stress", CreateFcn = () => new CircleStress()},
+                
                 new TestEntry {Name = null, CreateFcn = null}
             };
     }

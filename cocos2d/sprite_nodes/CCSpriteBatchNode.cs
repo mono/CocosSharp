@@ -100,7 +100,6 @@ namespace Cocos2D
 
             // no lazy alloc in this node
             m_pChildren = new CCRawList<CCNode>(capacity);
-
             m_pobDescendants = new CCRawList<CCSprite>(capacity);
 
             return true;
@@ -221,9 +220,12 @@ namespace Cocos2D
             {
                 int j = 0, count = m_pChildren.count;
                 CCNode[] elements = m_pChildren.Elements;
-                CCNode tempItem;
+                // CCNode tempItem;
+                
+                //insertion sort - change to qsort per RIQ
+                CCNode.Quicksort(elements, 0, count - 1);
 
-                //insertion sort
+                /*
                 for (int i = 1; i < count; i++)
                 {
                     tempItem = elements[i];
@@ -240,6 +242,7 @@ namespace Cocos2D
 
                     elements[j + 1] = tempItem;
                 }
+                */
 
                 //sorted now check all children
                 if (count > 0)

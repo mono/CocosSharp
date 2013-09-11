@@ -35,7 +35,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Windows\Release\</OutputPath>
-    <DefineConstants>TRACE;WINDOWS;PROFILING</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
@@ -60,6 +60,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="b2InternalClasses.cs" />
     <Compile Include="b2FlagExtensions.cs" />
     <Compile Include="Collision\b2AABB.cs" />
     <Compile Include="Collision\b2BroadPhase.cs" />

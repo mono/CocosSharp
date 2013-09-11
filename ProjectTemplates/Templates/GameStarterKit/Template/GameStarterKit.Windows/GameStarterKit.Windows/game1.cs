@@ -15,19 +15,10 @@ namespace $safeprojectname$
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-//#if MONOMAC
-//            Content.RootDirectory = "AngryNinjas/Content";
-//#else
 			Content.RootDirectory = "Content";
-//#endif
-//
-//#if XBOX || OUYA
-//            graphics.IsFullScreen = true;
-//#else
+			// Set to full screen, or not.
             graphics.IsFullScreen = false;
-//#endif
-
-            // Frame rate is 30 fps by default for Windows Phone.
+            // Frame rate is 60 fps.
             TargetElapsedTime = TimeSpan.FromTicks(333333 / 2);
 
             // Extend battery life under lock.
@@ -35,13 +26,15 @@ namespace $safeprojectname$
 
             CCApplication application = new AppDelegate(this, graphics);
             Components.Add(application);
-//#if XBOX || OUYA
+			// If you have a gamepad device then you should hookup these events.
+//
 //            CCDirector.SharedDirector.GamePadEnabled = true;
 //            application.GamePadButtonUpdate += new CCGamePadButtonDelegate(application_GamePadButtonUpdate);
-//#endif
+//
         }
 
-//#if XBOX || OUYA
+
+//
 //        private void application_GamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, PlayerIndex player)
 //        {
 //            if (backButton == CCGamePadButtonStatus.Pressed)
@@ -49,7 +42,7 @@ namespace $safeprojectname$
 //                ProcessBackClick();
 //            }
 //        }
-//#endif
+//
 
         private void ProcessBackClick()
         {

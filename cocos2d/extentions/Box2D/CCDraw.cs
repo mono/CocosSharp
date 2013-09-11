@@ -31,6 +31,7 @@ namespace Cocos2D
 	public class CCDraw : b2Draw
 	{
         private b2Vec2 _Center = new b2Vec2(0f, 0f);
+        private CCRawList<b2Vec2> _list = new CCRawList<b2Vec2>(128, true);
 
 		public CCDraw(int ptm) 
             : base(ptm)
@@ -50,7 +51,8 @@ namespace Cocos2D
 
         public override void DrawPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
         {
-            b2Vec2[] alt = new b2Vec2[vertexCount];
+            _list.Count = vertexCount;
+            var alt = _list.Elements;
             for (int i = 0; i < vertexCount; i++)
             {
                 alt[i] = vertices[i] * PTMRatio + _Center;
@@ -60,7 +62,8 @@ namespace Cocos2D
 
         public override void DrawSolidPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
         {
-            b2Vec2[] alt = new b2Vec2[vertexCount];
+            _list.Count = vertexCount;
+            var alt = _list.Elements;
             for (int i = 0; i < vertexCount; i++)
             {
                 alt[i] = vertices[i] * PTMRatio + _Center;

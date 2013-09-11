@@ -96,7 +96,7 @@ namespace Box2D.TestBed.Tests
             body5.CreateFixture(circleShapeDef);
 
             // Large circle
-            circle.Radius *= 2.0f;
+            circle.Radius = circle.Radius * 2.0f;
             circleBodyDef.position.Set(Rand.RandomFloat(xLo, xHi), Rand.RandomFloat(yLo, yHi));
 
             b2Body body6 = m_world.CreateBody(circleBodyDef);

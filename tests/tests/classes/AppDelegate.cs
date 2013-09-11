@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.Xna.Framework;
 using Cocos2D;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace tests
@@ -13,11 +14,16 @@ namespace tests
             s_pSharedApplication = this;
             CCDrawManager.InitializeDisplay(game, graphics, DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
 
-
+#if WINDOWS_PHONE8
+            HandleMediaStateAutomatically = false; // Bug in MonoGame - https://github.com/Cocos2DXNA/cocos2d-xna/issues/325
+#endif
+            game.Window.AllowUserResizing = true;
             graphics.PreferMultiSampling = false;
 
-            //graphics.PreferredBackBufferWidth = 480;
-            //graphics.PreferredBackBufferHeight = 320;
+#if WINDOWS || WINDOWSGL || WINDOWSDX || MACOS
+            graphics.PreferredBackBufferWidth = 1024;
+            graphics.PreferredBackBufferHeight = 768;
+#endif
         }
 
         /// <summary>
