@@ -8,20 +8,6 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Cocos2D
 {
-    public enum CCOrientation
-    {
-        /// Device oriented vertically, home button on the bottom
-        Portrait = 0,
-
-        /// Device oriented vertically, home button on the top
-        PortraitUpsideDown = 1,
-
-        /// Device oriented horizontally, home button on the right
-        LandscapeLeft = 2,
-
-        /// Device oriented horizontally, home button on the left
-        LandscapeRight = 3,
-    };
 
     public abstract class CCApplication : DrawableGameComponent
     {
@@ -36,51 +22,25 @@ namespace Cocos2D
         private MouseState _lastMouseState;
         private MouseState _prevMouseState;
 #endif
-        //private CCBMFontConfiguration.ccBMFontDef hangOnToMe;
-
         protected bool m_bCaptured;
         protected ICCEGLTouchDelegate m_pDelegate;
 
-        private IGraphicsDeviceService m_graphicsService;
-
         public GameTime GameTime;
+
+        private bool _initialized;
 
         public CCApplication(Game game, IGraphicsDeviceService service)
             : base(game)
         {
-            m_graphicsService = service;
-            PresentationParameters pp = new PresentationParameters();
-            pp.BackBufferWidth = ((GraphicsDeviceManager)service).PreferredBackBufferWidth;
-            pp.BackBufferHeight = ((GraphicsDeviceManager)service).PreferredBackBufferHeight;
-            pp.BackBufferFormat = ((GraphicsDeviceManager)service).PreferredBackBufferFormat;
-            pp.DepthStencilFormat = ((GraphicsDeviceManager)service).PreferredDepthStencilFormat;
-            pp.RenderTargetUsage = RenderTargetUsage.PreserveContents;
+            if (Game.Services.GetService(typeof(IGraphicsDeviceService)) == null)
+            {
+                Game.Services.AddService(typeof(IGraphicsDeviceService), service);
+            }
 
-            WindowSetup = pp;
+            CCDrawManager.Init(service);
+
             Content = game.Content;
             HandleMediaStateAutomatically = true;
-
-            if (m_graphicsService.GraphicsDevice != null)
-            {
-                try
-                {
-                    Game.Services.AddService(typeof(IGraphicsDeviceService), m_graphicsService);
-                }
-                catch (ArgumentException)
-                {
-                    // Already contains the graphics device service.
-                }
-                CCDrawManager.Init(m_graphicsService.GraphicsDevice);
-            }
-            else
-            {
-                service.DeviceCreated += ServiceDeviceCreated;
-            }
-
-            if (service is GraphicsDeviceManager)
-            {
-                ((GraphicsDeviceManager)service).PreparingDeviceSettings += GraphicsPreparingDeviceSettings;
-            }
 
             game.IsFixedTimeStep = true;
 
@@ -90,6 +50,7 @@ namespace Cocos2D
             game.Deactivated += GameDeactivated;
             game.Exiting += GameExiting;
 
+            //TODO: Move to CCContentManager
 #if IOS || WINDOWS_PHONE8
             // Please read the following discussions for the reasons of this.
             // http://monogame.codeplex.com/discussions/393775
@@ -139,9 +100,7 @@ namespace Cocos2D
                 ( ) => new CCBMFontPaddingtReader ()
                 
                 );
-
 #endif
-
         }
 
         protected bool HandleMediaStateAutomatically { get; set; }
@@ -175,60 +134,6 @@ namespace Cocos2D
             CCDirector.SharedDirector.End();
         }
 
-        protected virtual void ServiceDeviceCreated(object sender, EventArgs e)
-        {
-            try
-            {
-                Game.Services.AddService(typeof(IGraphicsDeviceService), m_graphicsService);
-            }
-            catch (ArgumentException)
-            {
-                // Already contains the graphics device service.
-            }
-            CCDrawManager.Init(m_graphicsService.GraphicsDevice);
-        }
-
-        /// <summary>
-        /// Returns the presentation parameters for the game window. This implementation returns null
-        /// which will use the defaults of the platform.
-        /// </summary>
-        protected virtual PresentationParameters WindowSetup
-        {
-            get;
-            set;
-        }
-
-        private bool _DeviceWasCreated = false;
-
-        /// <summary>
-        /// Called just before the graphics device for the presentation is created. This method callback is used to setup
-        /// the device settings. The WindowSetup is used to set the presentation parameters.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected virtual void GraphicsPreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
-        {
-            PresentationParameters pp = WindowSetup;
-            if (pp != null)
-            {
-                e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = pp.RenderTargetUsage;
-                e.GraphicsDeviceInformation.PresentationParameters.DepthStencilFormat = pp.DepthStencilFormat;
-                e.GraphicsDeviceInformation.PresentationParameters.BackBufferFormat = pp.BackBufferFormat;
-                if (!_DeviceWasCreated)
-                {
-                    // Only set the buffer dimensions when the device was not created
-                    e.GraphicsDeviceInformation.PresentationParameters.BackBufferWidth = pp.BackBufferWidth;
-                    e.GraphicsDeviceInformation.PresentationParameters.BackBufferHeight = pp.BackBufferHeight;
-                }
-            }
-            else
-            {
-                e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
-                e.GraphicsDeviceInformation.PresentationParameters.DepthStencilFormat = DepthFormat.Depth24Stencil8;
-                e.GraphicsDeviceInformation.PresentationParameters.BackBufferFormat = SurfaceFormat.Color;
-            }
-        }
-
         /// <summary>
         /// Callback by CCDirector for limit FPS
         /// </summary>
@@ -258,24 +163,24 @@ namespace Cocos2D
         /// </summary>
         protected override void LoadContent()
         {
-            CCContentManager.Initialize(Game.Content.ServiceProvider, Game.Content.RootDirectory);
+            if (!_initialized)
+            {
+                CCContentManager.Initialize(Game.Content.ServiceProvider, Game.Content.RootDirectory);
 
-            base.LoadContent();
-            
-            ApplicationDidFinishLaunching();
-#if ANDROID
-            CCDirector.SharedDirector.DirtyLabels();
-#endif
-            _DeviceWasCreated = true;
+                base.LoadContent();
+
+                ApplicationDidFinishLaunching();
+
+                _initialized = true;
+            }
+            else
+            {
+                base.LoadContent();
+            }
         }
 
         public override void Initialize()
         {
-            //DebugSystem.Initialize(Game, "fonts/debugfont");
-            //DebugSystem.Instance.FpsCounter.Visible = true;
-            //DebugSystem.Instance.TimeRuler.Visible = true;
-            //DebugSystem.Instance.TimeRuler.ShowLog = true;
-
             s_pSharedApplication = this;
 
             InitInstance();
@@ -290,14 +195,6 @@ namespace Cocos2D
         public override void Update(GameTime gameTime)
         {
             GameTime = gameTime;
-
-            // We must call StartFrame at the top of Update to indicate to the TimeRuler
-            // that a new frame has started.
-            //DebugSystem.Instance.TimeRuler.StartFrame();
-
-            // We can now begin measuring our Update method
-            //DebugSystem.Instance.TimeRuler.BeginMark("Update", Color.Blue);
-
 
 #if !PSM &&!NETFX_CORE
             if (CCDirector.SharedDirector.Accelerometer != null)
@@ -320,17 +217,11 @@ namespace Cocos2D
             CCDirector.SharedDirector.Update(gameTime);
 
             base.Update(gameTime);
-
-            // End measuring the Update method
-            //DebugSystem.Instance.TimeRuler.EndMark("Update");
         }
 
         public override void Draw(GameTime gameTime)
         {
             GameTime = gameTime;
-
-            // Begin measuring our Draw method
-            //DebugSystem.Instance.TimeRuler.BeginMark("Draw", Color.Red);
 
             CCDrawManager.BeginDraw();
 
@@ -339,9 +230,6 @@ namespace Cocos2D
             base.Draw(gameTime);
 
             CCDrawManager.EndDraw();
-
-            // End measuring our Draw method
-            //DebugSystem.Instance.TimeRuler.EndMark("Draw");
         }
 
         protected virtual void HandleGesture(GestureSample gesture)
