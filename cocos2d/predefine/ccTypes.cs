@@ -381,6 +381,52 @@ namespace Cocos2D
         {
             return new CCPoint(p.X, p.Y);
         }
+
+        #region Operator Overloads
+
+        public static bool operator ==(CCPointI p1, CCPointI p2)
+        {
+            return p1.X == p2.X && p1.Y == p2.Y;
+        }
+
+        public static bool operator !=(CCPointI p1, CCPointI p2)
+        {
+            return p1.X != p2.X || p1.Y != p2.Y;
+        }
+
+        public static CCPointI operator -(CCPointI p1, CCPointI p2)
+        {
+            CCPointI pt;
+            pt.X = p1.X - p2.X;
+            pt.Y = p1.Y - p2.Y;
+            return pt;
+        }
+
+        public static CCPointI operator -(CCPointI p1)
+        {
+            CCPointI pt;
+            pt.X = -p1.X;
+            pt.Y = -p1.Y;
+            return pt;
+        }
+
+        public static CCPointI operator +(CCPointI p1, CCPointI p2)
+        {
+            CCPointI pt;
+            pt.X = p1.X + p2.X;
+            pt.Y = p1.Y + p2.Y;
+            return pt;
+        }
+
+        public static CCPointI operator +(CCPointI p1)
+        {
+            CCPointI pt;
+            pt.X = +p1.X;
+            pt.Y = +p1.Y;
+            return pt;
+        }
+
+        #endregion
     }
 
     public struct CCSizeI
