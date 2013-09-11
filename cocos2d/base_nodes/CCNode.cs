@@ -155,32 +155,6 @@ namespace Cocos2D
           return true;
         }
 
-#if ANDROID
-        /// <summary>
-        /// Sets all of the sprite font labels as dirty so they redraw. This is necessary
-        /// in Android when the application resumes from the background.
-        /// </summary>
-        public virtual void DirtyLabels()
-        {
-            if (Children == null || Children.Count == 0)
-            {
-                return;
-            }
-            foreach (CCNode node in Children)
-            {
-                if (node == null)
-                {
-                    continue;
-                }
-                if (node is CCLabelTTF)
-                {
-                    ((CCLabelTTF)node).Dirty = true;
-                    ((CCLabelTTF)node).Refresh();
-                }
-                node.DirtyLabels();
-            }
-        }
-#endif
         #region Game State Management
         /// <summary>
         /// Gets whether or not this scene is serializable. If this is true,
