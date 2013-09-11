@@ -630,6 +630,7 @@
     <Compile Include="classes\tests\MotionStreakTest\MotionStreakTestScene.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\MultiTouchTest\MultiTouchTest.cs" />
     <Compile Include="classes\tests\NodeTest\CameraCenterTest.cs" />
     <Compile Include="classes\tests\NodeTest\CameraOrbitTest.cs" />
     <Compile Include="classes\tests\NodeTest\CameraZoomTest.cs" />

@@ -418,6 +418,7 @@
     <Compile Include="classes\tests\MotionStreakTest\MotionStreakTest1.cs" />
     <Compile Include="classes\tests\MotionStreakTest\MotionStreakTest2.cs" />
     <Compile Include="classes\tests\MotionStreakTest\MotionStreakTestScene.cs" />
+    <Compile Include="classes\tests\MultiTouchTest\MultiTouchTest.cs" />
     <Compile Include="classes\tests\NodeTest\CameraCenterTest.cs" />
     <Compile Include="classes\tests\NodeTest\CameraOrbitTest.cs" />
     <Compile Include="classes\tests\NodeTest\CameraZoomTest.cs" />
