@@ -303,7 +303,7 @@ namespace Cocos2D
             gdipp.DepthStencilFormat = pp.DepthStencilFormat;
             gdipp.BackBufferFormat = pp.BackBufferFormat;
             
-            if (graphicsDevice == null)
+            //if (graphicsDevice == null)
             {
                 // Only set the buffer dimensions when the device was not created
                 gdipp.BackBufferWidth = pp.BackBufferWidth;
@@ -366,12 +366,20 @@ namespace Cocos2D
             //pp.RenderTargetUsage = RenderTargetUsage.PreserveContents;
             //m_renderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, (int)pp.BackBufferHeight, false, pp.BackBufferFormat, pp.DepthStencilFormat, pp.MultiSampleCount, RenderTargetUsage.PreserveContents);
 
-            m_fScaleY = 1.0f;
-            m_fScaleX = 1.0f;
-            m_eResolutionPolicy = CCResolutionPolicy.UnKnown;
+            //m_eResolutionPolicy = CCResolutionPolicy.UnKnown;
+            m_obScreenSize = m_obViewPortRect.Size;
+            if (m_eResolutionPolicy != CCResolutionPolicy.UnKnown)
+            {
+                SetDesignResolutionSize(m_obDesignResolutionSize.Width, m_obDesignResolutionSize.Height, m_eResolutionPolicy);
+            }
+            else
+            {
+                m_fScaleY = 1.0f;
+                m_fScaleX = 1.0f;
 
-            m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
-            m_obScreenSize = m_obDesignResolutionSize = m_obViewPortRect.Size;
+                m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
+                m_obDesignResolutionSize = m_obScreenSize;
+            }
 
             m_projectionMatrix = Matrix.Identity;
             m_viewMatrix = Matrix.Identity;
@@ -432,13 +440,17 @@ namespace Cocos2D
 //#if ANDROID
             CCGraphicsResource.DisposeAllResources();
             CCSpriteFontCache.SharedInstance.Clear();
+#if XNA
+            CCContentManager.SharedContentManager.ReloadGraphicsAssets();
+#endif
+            m_bNeedReinitResources = true;
 //#endif
         }
 
         static void GraphicsDeviceDeviceReset(object sender, EventArgs e)
         {
 //#if ANDROID
-            m_bNeedReinitResources = true;
+        //m_bNeedReinitResources = true;
 //#endif
         }
 
@@ -1542,6 +1554,8 @@ namespace Cocos2D
 
     public enum CCResolutionPolicy
     {
+        UnKnown,
+
         // The entire application is visible in the specified area without trying to preserve the original aspect ratio. 
         // Distortion can occur, and the application may appear stretched or compressed.
         ExactFit,
@@ -1560,9 +1574,7 @@ namespace Cocos2D
         // canvas so that it fits the aspect ratio of the device
         // no distortion will occur however you must make sure your application works on different
         // aspect ratios
-        FixedWidth,
-
-        UnKnown,
+        FixedWidth
     }
 
 
@@ -1572,6 +1584,8 @@ namespace Cocos2D
 
         private bool _isDisposed;
 
+        private WeakReference _wr;
+
         public bool IsDisposed
         {
             get { return _isDisposed; }
@@ -1579,25 +1593,18 @@ namespace Cocos2D
 
         public CCGraphicsResource()
         {
-            _createdResources.Add(new WeakReference(this));
+            _wr = new WeakReference(this);
+            _createdResources.Add(_wr);
         }
 
         ~CCGraphicsResource()
         {
-            var resources = _createdResources.Elements;
-            for (int i = 0, count = _createdResources.Count; i < count; i++)
-            {
-                if (resources[i].Target == this)
-                {
-                    _createdResources.RemoveAt(i);
-                    return;
-                }
-            }
-
             if (!IsDisposed)
             {
                 Dispose();
             }
+
+            _createdResources.Remove(_wr);
         }
 
         public virtual void Dispose()
