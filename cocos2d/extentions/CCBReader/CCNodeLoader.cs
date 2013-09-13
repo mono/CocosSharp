@@ -602,18 +602,11 @@ namespace Cocos2D
                     // Load the sprite sheet only if it is not loaded
                     if (!reader.LoadedSpriteSheet.Contains(spriteSheet))
                     {
-                        string prefix = frameCache.AddSpriteFramesWithFile(spriteSheet);
-                        reader.SpriteFramePrefix[spriteSheet] = prefix;
+                        frameCache.AddSpriteFramesWithFile(spriteSheet);
                         reader.LoadedSpriteSheet.Add(spriteSheet);
                     }
-                    if (reader.SpriteFramePrefix.ContainsKey(spriteSheet))
-                    {
-                        spriteFrame = frameCache.SpriteFrameByName(spriteFile, reader.SpriteFramePrefix[spriteSheet]);
-                    }
-                    else
-                    {
-                        spriteFrame = frameCache.SpriteFrameByName(spriteFile);
-                    }
+
+                    spriteFrame = frameCache.SpriteFrameByName(spriteFile);
                 }
 
                 if (reader.AnimatedProperties.Contains(propertyName))
