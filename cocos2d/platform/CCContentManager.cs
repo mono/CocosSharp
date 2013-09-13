@@ -69,7 +69,7 @@ namespace Cocos2D
         private List<string> _searchPaths = new List<string>();
         private List<string> _searchResolutionsOrder = new List<string>(); 
 
-        private Dictionary<string, string> _assetPathCache = new Dictionary<string, string>();
+        private Dictionary<string, string> _failedAssets = new Dictionary<string, string>();
 
         public CCContentManager(IServiceProvider serviceProvider) : base(serviceProvider)
         {
@@ -88,13 +88,18 @@ namespace Cocos2D
 
         public T TryLoad<T>(string assetName, bool weakReference)
         {
+            if (_failedAssets.ContainsKey(assetName))
+            {
+                return default(T);
+            }
+
             try
             {
                 return Load<T>(assetName, weakReference);
             }
             catch (Exception)
             {
-                _assetPathCache[assetName] = null;
+                _failedAssets[assetName] = null;
                 
                 return default(T);
             }
@@ -102,7 +107,21 @@ namespace Cocos2D
 
         public override T Load<T>(string assetName)
         {
-            return Load<T>(assetName, false);
+            if (_failedAssets.ContainsKey(assetName))
+            {
+                throw new ContentLoadException("Failed to load the asset file from " + assetName);
+            }
+                
+            try
+            {
+                return Load<T>(assetName, false);
+            }
+            catch (Exception)
+            {
+                _failedAssets[assetName] = null;
+
+                throw;
+            }
         }
 
         public T Load<T>(string assetName, bool weakReference)
@@ -119,6 +138,10 @@ namespace Cocos2D
                 if (entry.Asset is T)
                 {
                     return (T)entry.Asset;
+                }
+                else
+                {
+                    return InternalLoad<T>(assetName, entry.AssetFileName, weakReference);
                 }
             }
 
@@ -287,6 +310,14 @@ namespace Cocos2D
             }
             
             LoadedAssets.Clear();
+        }
+#else
+        public void ReloadGraphicsAssets()
+        {
+            foreach (var asset in _loadedAssets)
+            {
+                asset.Value.Asset = null;
+            }
         }
 #endif
 
