@@ -38,10 +38,6 @@ namespace Cocos2D
 
         public void AddSpriteFramesWithDictionary(PlistDictionary pobDictionary, CCTexture2D pobTexture)
         {
-            AddSpriteFramesWithDictionary(pobDictionary, pobTexture, string.Empty);
-        }
-        public void AddSpriteFramesWithDictionary(PlistDictionary pobDictionary, CCTexture2D pobTexture, string framePrefix)
-        {
             /*
             Supported Zwoptex Formats:
 
@@ -179,7 +175,7 @@ namespace Cocos2D
                 }
 
                 // add sprite frame
-                string key = framePrefix + pair.Key;
+                string key = pair.Key;
                 if (!_AllowFrameOverwrite && m_pSpriteFrames.ContainsKey(key))
                 {
                     CCLog.Log("Frame named " + key + " already exists in the animation cache. Not overwriting existing record.");
@@ -191,34 +187,7 @@ namespace Cocos2D
             }
         }
 
-        private string ExtractPrefix(string source)
-        {
-            string framePrefix = source;
-            int idx = framePrefix.IndexOf('.');
-            while (idx > -1)
-            {
-                framePrefix = framePrefix.Substring(0, idx);
-                idx = framePrefix.IndexOf('.');
-            }
-            // Now remove the path
-            idx = framePrefix.Length - 1;
-            while (idx >= 0 && (framePrefix[idx] != '/' && framePrefix[idx] != '\\'))
-            {
-                idx--;
-            }
-            if (idx > 0)
-            {
-                framePrefix = framePrefix.Substring(idx) + framePrefix[0]; // Copy of the separator
-            }
-            return (framePrefix);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pszPlist"></param>
-        /// <returns>The scope parameter derived from the pszPlist parameter.</returns>
-        public string AddSpriteFramesWithFile(string pszPlist)
+        public void AddSpriteFramesWithFile(string pszPlist)
         {
             PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(pszPlist);
 
@@ -226,14 +195,12 @@ namespace Cocos2D
             string texturePath = "";
             PlistDictionary metadataDict = dict.ContainsKey("metadata") ? dict["metadata"].AsDictionary : null;
 
-            string framePrefix = string.Empty;
             if (metadataDict != null)
             {
                 // try to read  texture file name from meta data
                 if (metadataDict.ContainsKey("textureFileName"))
                 {
                     texturePath = metadataDict["textureFileName"].AsString;
-                    framePrefix = ExtractPrefix(texturePath);
                 }
             }
 
@@ -257,64 +224,31 @@ namespace Cocos2D
 
             if (pTexture != null)
             {
-                AddSpriteFramesWithDictionary(dict, pTexture, framePrefix);
+                AddSpriteFramesWithDictionary(dict, pTexture);
             }
             else
             {
                 CCLog.Log("cocos2d: CCSpriteFrameCache: Couldn't load texture");
             }
-            return (framePrefix);
         }
 
-        /// <summary>
-        /// Pulls the sprite frames from the given plist and texture source file. The plist file name is used
-        /// as the scope parameter for the frames.
-        /// </summary>
-        /// <param name="plist"></param>
-        /// <param name="textureFileName"></param>
-        /// <returns>The scope key for the frames</returns>
-        public string AddSpriteFramesWithFile(string plist, string textureFileName)
-        {
-            string scope = ExtractPrefix(plist);
-            AddSpriteFramesWithFile(plist, textureFileName, scope);
-            return (scope);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="plist">Contains the frame specs.</param>
-        /// <param name="textureFileName">The sprite sheet</param>
-        /// <param name="framePrefix">The scope of the frames</param>
-        /// <returns>The framePrefix parameter</returns>
-        public string AddSpriteFramesWithFile(string plist, string textureFileName, string framePrefix)
+        public void AddSpriteFramesWithFile(string plist, string textureFileName)
         {
             Debug.Assert(textureFileName != null);
+            
             CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(textureFileName);
 
             if (texture != null)
             {
-                AddSpriteFramesWithFile(plist, texture, framePrefix);
+                AddSpriteFramesWithFile(plist, texture);
             }
             else
             {
                 CCLog.Log("cocos2d: CCSpriteFrameCache: couldn't load texture file. File not found {0}", textureFileName);
             }
-            return (framePrefix);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pszPlist"></param>
-        /// <param name="pobTexture"></param>
-        /// <returns>The scope parameter derived from the pszPlist parameter.</returns>
-        public string AddSpriteFramesWithFile(string pszPlist, CCTexture2D pobTexture)
-        {
-            string scope = ExtractPrefix(pszPlist);
-            AddSpriteFramesWithFile(pszPlist, pobTexture, scope);
-            return (scope);
         }
 
-        public string AddSpriteFramesWithFile(Stream plist, CCTexture2D pobTexture, string framePrefix)
+        public void AddSpriteFramesWithFile(Stream plist, CCTexture2D pobTexture)
         {
             PlistDocument document = new PlistDocument();
             try
@@ -328,25 +262,16 @@ namespace Cocos2D
 
             PlistDictionary dict = document.Root.AsDictionary;
 
-            AddSpriteFramesWithDictionary(dict, pobTexture, framePrefix);
-            return (framePrefix);
+            AddSpriteFramesWithDictionary(dict, pobTexture);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pszPlist"></param>
-        /// <param name="pobTexture"></param>
-        /// <param name="framePrefix"></param>
-        /// <returns>The framePrefix parameter</returns>
-        public string AddSpriteFramesWithFile(string pszPlist, CCTexture2D pobTexture, string framePrefix)
+        public void AddSpriteFramesWithFile(string pszPlist, CCTexture2D pobTexture)
         {
             PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(pszPlist);
 
             PlistDictionary dict = document.Root.AsDictionary;
 
-            AddSpriteFramesWithDictionary(dict, pobTexture, framePrefix);
-            return (framePrefix);
+            AddSpriteFramesWithDictionary(dict, pobTexture);
         }
 
         public void AddSpriteFrame(CCSpriteFrame pobFrame, string pszFrameName)
@@ -456,36 +381,6 @@ namespace Cocos2D
             {
                 m_pSpriteFrames.Remove(key);
             }
-        }
-
-        /// <summary>
-        /// Get the sprite frame for the given name using the given prefix.
-        /// </summary>
-        /// <param name="pszName"></param>
-        /// <param name="prefix"></param>
-        /// <returns></returns>
-        public CCSpriteFrame SpriteFrameByName(string pszName, string prefix)
-        {
-            CCSpriteFrame frame;
-
-            if (!m_pSpriteFrames.TryGetValue(prefix + pszName, out frame))
-            {
-                // try alias dictionary
-                string key;
-                if (m_pSpriteFramesAliases.TryGetValue(prefix + pszName, out key))
-                {
-                    if (!m_pSpriteFrames.TryGetValue(key, out frame))
-                    {
-                        CCLog.Log("cocos2d: CCSpriteFrameCahce: Frame '{0}' in '{1}' not found", pszName, prefix);
-                    }
-                }
-            }
-
-            if (frame != null)
-            {
-                CCLog.Log("cocos2d: {0} frame {1}", pszName, frame.Rect.ToString());
-            }
-            return frame;
         }
 
         /// <summary>

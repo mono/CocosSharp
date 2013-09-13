@@ -37,7 +37,7 @@ namespace tests
             AddChild(infoLabel, 1, PerformanceParticleTest.kTagInfoLayer);
 
             // particles on stage
-            CCLabelAtlas labelAtlas = new CCLabelAtlas("0000", "Images/fps_Images", 16, 24, '.');
+            CCLabelAtlas labelAtlas = new CCLabelAtlas("0000", "Images/fps_Images", 12, 32, '.');
             AddChild(labelAtlas, 0, PerformanceParticleTest.kTagLabelAtlas);
             labelAtlas.Position = new CCPoint(s.Width - 66, 50);
 

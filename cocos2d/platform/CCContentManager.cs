@@ -5,6 +5,7 @@ using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace Cocos2D
 {
@@ -15,7 +16,73 @@ namespace Cocos2D
         internal static void Initialize(IServiceProvider serviceProvider, string rootDirectory)
         {
             SharedContentManager = new CCContentManager(serviceProvider, rootDirectory);
+#if IOS || WINDOWS_PHONE8
+            InitializeContentTypeReaders();
+#endif
         }
+
+#if IOS || WINDOWS_PHONE8
+        private bool _readersInited;
+
+        private static void InitializeContentTypeReaders()
+        {
+            // Please read the following discussions for the reasons of this.
+            // http://monogame.codeplex.com/discussions/393775
+            // http://monogame.codeplex.com/discussions/396792
+            // 
+            // https://github.com/mono/MonoGame/pull/726
+            //
+            // Also search Google for -> ContentTypeReaderManager.AddTypeCreator
+
+            if (_readersInited)
+            {
+                return;
+            }
+
+            // .FNT Reader
+            ContentTypeReaderManager.AddTypeCreator(
+                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Cocos2D.CCBMFontConfiguration+CCBMFontDef, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                () => new DictionaryReader<Int32, CCBMFontConfiguration.CCBMFontDef>()
+
+                );
+
+            ContentTypeReaderManager.AddTypeCreator(
+                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Cocos2D.CCBMFontConfiguration+CCKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                () => new DictionaryReader<Int32, CCBMFontConfiguration.CCKerningHashElement>()
+
+                );
+            ContentTypeReaderManager.AddTypeCreator(
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCRect, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                () => new CCRectReader()
+
+                );
+
+            ContentTypeReaderManager.AddTypeCreator(
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCPoint, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                () => new CCPointReader()
+
+                );
+            ContentTypeReaderManager.AddTypeCreator(
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCSize, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                () => new CCSizeReader()
+
+                );
+
+            ContentTypeReaderManager.AddTypeCreator(
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCBMFontConfiguration+CCKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                () => new KerningHashElementReader()
+
+                );
+
+            ContentTypeReaderManager.AddTypeCreator(
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCBMFontConfiguration+CCBMFontPadding, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                () => new CCBMFontPaddingtReader()
+
+                );
+
+            _readersInited = true;
+        }
+#endif
 
         private class AssetEntry
         {
@@ -69,7 +136,7 @@ namespace Cocos2D
         private List<string> _searchPaths = new List<string>();
         private List<string> _searchResolutionsOrder = new List<string>(); 
 
-        private Dictionary<string, string> _assetPathCache = new Dictionary<string, string>();
+        private Dictionary<string, string> _failedAssets = new Dictionary<string, string>();
 
         public CCContentManager(IServiceProvider serviceProvider) : base(serviceProvider)
         {
@@ -88,13 +155,18 @@ namespace Cocos2D
 
         public T TryLoad<T>(string assetName, bool weakReference)
         {
+            if (_failedAssets.ContainsKey(assetName))
+            {
+                return default(T);
+            }
+
             try
             {
                 return Load<T>(assetName, weakReference);
             }
             catch (Exception)
             {
-                _assetPathCache[assetName] = null;
+                _failedAssets[assetName] = null;
                 
                 return default(T);
             }
@@ -102,7 +174,21 @@ namespace Cocos2D
 
         public override T Load<T>(string assetName)
         {
-            return Load<T>(assetName, false);
+            if (_failedAssets.ContainsKey(assetName))
+            {
+                throw new ContentLoadException("Failed to load the asset file from " + assetName);
+            }
+                
+            try
+            {
+                return Load<T>(assetName, false);
+            }
+            catch (Exception)
+            {
+                _failedAssets[assetName] = null;
+
+                throw;
+            }
         }
 
         public T Load<T>(string assetName, bool weakReference)
@@ -119,6 +205,10 @@ namespace Cocos2D
                 if (entry.Asset is T)
                 {
                     return (T)entry.Asset;
+                }
+                else
+                {
+                    return InternalLoad<T>(assetName, entry.AssetFileName, weakReference);
                 }
             }
 
@@ -216,12 +306,12 @@ namespace Cocos2D
                     {
                         string assetPath = Path.Combine(RootDirectory, path);
 
-                        var servece =
+                        var service =
                             (IGraphicsDeviceService) ServiceProvider.GetService(typeof (IGraphicsDeviceService));
 
                         using (var streamContent = TitleContainer.OpenStream(assetPath))
                         {
-                            result = (T) (object) Texture2D.FromStream(servece.GraphicsDevice, streamContent);
+                            result = (T) (object) Texture2D.FromStream(service.GraphicsDevice, streamContent);
                         }
                         useContentReader = false;
                     }
@@ -287,6 +377,14 @@ namespace Cocos2D
             }
             
             LoadedAssets.Clear();
+        }
+#else
+        public void ReloadGraphicsAssets()
+        {
+            foreach (var asset in _loadedAssets)
+            {
+                asset.Value.Asset = null;
+            }
         }
 #endif
 

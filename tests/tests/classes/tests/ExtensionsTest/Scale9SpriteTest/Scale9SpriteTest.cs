@@ -7,7 +7,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("Images/blocks9ss.plist","Images/blocks9.png", "");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("Images/blocks9ss.plist");
             getSceneTitleLabel().Text = Title();
             getSceneSubtitleLabel().Text = Subtitle();
         }
@@ -443,7 +443,7 @@ namespace tests.Extensions
         {
             base.OnEnter();
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("Images/ui.plist", "Images/ui.png", "");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("Images/ui.plist");
 
             float x = winSize.Width / 4;
             float y = 0 + (winSize.Height / 2);
