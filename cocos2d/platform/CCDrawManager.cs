@@ -367,7 +367,9 @@ namespace Cocos2D
             //m_renderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, (int)pp.BackBufferHeight, false, pp.BackBufferFormat, pp.DepthStencilFormat, pp.MultiSampleCount, RenderTargetUsage.PreserveContents);
 
             //m_eResolutionPolicy = CCResolutionPolicy.UnKnown;
+            m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
             m_obScreenSize = m_obViewPortRect.Size;
+
             if (m_eResolutionPolicy != CCResolutionPolicy.UnKnown)
             {
                 SetDesignResolutionSize(m_obDesignResolutionSize.Width, m_obDesignResolutionSize.Height, m_eResolutionPolicy);
@@ -377,7 +379,6 @@ namespace Cocos2D
                 m_fScaleY = 1.0f;
                 m_fScaleX = 1.0f;
 
-                m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
                 m_obDesignResolutionSize = m_obScreenSize;
             }
 
