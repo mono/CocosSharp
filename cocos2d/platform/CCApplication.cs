@@ -49,58 +49,6 @@ namespace Cocos2D
             game.Activated += GameActivated;
             game.Deactivated += GameDeactivated;
             game.Exiting += GameExiting;
-
-            //TODO: Move to CCContentManager
-#if IOS || WINDOWS_PHONE8
-            // Please read the following discussions for the reasons of this.
-            // http://monogame.codeplex.com/discussions/393775
-            // http://monogame.codeplex.com/discussions/396792
-            // 
-            // https://github.com/mono/MonoGame/pull/726
-            //
-            // Also search Google for -> ContentTypeReaderManager.AddTypeCreator
-
-            // .FNT Reader
-            ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Cocos2D.CCBMFontConfiguration+CCBMFontDef, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
-                ( ) => new DictionaryReader<Int32, CCBMFontConfiguration.CCBMFontDef> ()
-
-                );
-
-            ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Cocos2D.CCBMFontConfiguration+CCKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
-                ( ) => new DictionaryReader<Int32, CCBMFontConfiguration.CCKerningHashElement> ()
-                
-                );
-            ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCRect, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
-                ( ) => new CCRectReader ()
-
-                );
-
-            ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCPoint, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
-                ( ) => new CCPointReader ()
-                
-                );
-            ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCSize, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
-                ( ) => new CCSizeReader ()
-                
-                );
-
-            ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCBMFontConfiguration+CCKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
-                ( ) => new KerningHashElementReader ()
-                
-                );
-
-            ContentTypeReaderManager.AddTypeCreator (
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCBMFontConfiguration+CCBMFontPadding, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
-                ( ) => new CCBMFontPaddingtReader ()
-                
-                );
-#endif
         }
 
         protected bool HandleMediaStateAutomatically { get; set; }
