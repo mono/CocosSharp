@@ -51,7 +51,7 @@ namespace tests
             CCMenuItem item2 = new CCMenuItemImage(s_SendScore, s_PressSendScore, this.menuCallback2);
 
             // Label Item (LabelAtlas)
-            CCLabelAtlas labelAtlas = new CCLabelAtlas("0123456789", "Images/fps_Images.png", 16, 24, '.');
+            CCLabelAtlas labelAtlas = new CCLabelAtlas("0123456789", "Images/fps_Images.png", 12, 32, '.');
             CCMenuItemLabel item3 = new CCMenuItemLabel(labelAtlas, this.menuCallbackDisabled);
             item3.DisabledColor = new CCColor3B(32, 32, 64);
             item3.Color = new CCColor3B(200, 200, 255);
