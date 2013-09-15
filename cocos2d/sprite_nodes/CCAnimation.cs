@@ -14,6 +14,25 @@ namespace Cocos2D
         public CCAnimation() : this (new List<CCSpriteFrame>(), 0)
         { }
 
+        public CCAnimation(CCSpriteSheet cs, string[] frames, float delay)
+        {
+            List<CCSpriteFrame> l = new List<CCSpriteFrame>();
+            foreach(string f in frames) 
+            {
+                CCSpriteFrame cf = cs[f];
+                if (cf != null)
+                {
+                    l.Add(cs[f]);
+                }
+            }
+            InitWithSpriteFrames(l, delay);
+        }
+
+        public CCAnimation(CCSpriteSheet cs, float delay)
+        {
+            InitWithSpriteFrames(cs.Frames, delay);
+        }
+
         public CCAnimation (List<CCSpriteFrame> frames, float delay)
         {
             InitWithSpriteFrames(frames, delay);
