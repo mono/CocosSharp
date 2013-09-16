@@ -22,7 +22,7 @@ namespace Cocos2D
         }
 
 #if IOS || WINDOWS_PHONE8
-        private bool _readersInited;
+        private static bool s_readersInited;
 
         private static void InitializeContentTypeReaders()
         {
@@ -34,7 +34,7 @@ namespace Cocos2D
             //
             // Also search Google for -> ContentTypeReaderManager.AddTypeCreator
 
-            if (_readersInited)
+            if (s_readersInited)
             {
                 return;
             }
@@ -80,7 +80,7 @@ namespace Cocos2D
 
                 );
 
-            _readersInited = true;
+            s_readersInited = true;
         }
 #endif
 
