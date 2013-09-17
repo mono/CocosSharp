@@ -1,11 +1,4 @@
-Copyright (c) 2010-2012 cocos2d-x.org
-
-Copyright (c) 2008-2010 Ricardo Quesada
-Copyright (c) 2011      Zynga Inc.
-Copyright (c) 2011-2012 openxlive.com
-Copyright (c) 2012      Totally Evil Entertainment, LLC
-Copyright (c) 2012      Gena Minchuk
-Copyright 2012 Xamarin Inc
+Copyright (c) The Cocos2D-XNA Team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

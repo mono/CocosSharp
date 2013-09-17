@@ -19,7 +19,7 @@ There are some style guidelines you must follow if you want your Pull Request to
 
 7. Use CCxxx as your class names for framework classes.
 
-8. Maintain the single level namespace "cocos2d/ALL_CLASSES_HERE"
+8. Maintain the single level namespace "Cocos2D/ALL_CLASSES_HERE"
 
 9. If you use our graphics, use them in the format that we give you. You are allowed to use the graphics, logos, etc., but you can not deface them or place your logo atop of our logos.
 

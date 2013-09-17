@@ -1,6 +1,6 @@
 # Cocos2D-XNA
 
-is a 2D/3D game developer’s framework that is written specifically for XNA. XNA is the game API developed by Microsoft for independently published games on Xbox Live Arcade. To support other platforms than the now deprecated Microsoft XNA targets, Cocos2D-XNA supports the MonoGame runtime.
+is a 2D/3D game developer’s framework that is written specifically for XNA. XNA is the game API developed by Microsoft for independently published games on Xbox Live Arcade. To support other platforms than the now deprecated Microsoft XNA targets, Cocos2D-XNA is compatible with the MonoGame runtime.
 
 This project is open source, freely available, and free of royalties or encumberance. The software is released under the highly permissive MIT License.
 
@@ -10,7 +10,7 @@ Download and Run
 
 ### Code on GitHub
 
-To obtain the code you will need a git client.  Either command line or Graphical.
+To obtain the code you will need a git client.  Either command line or graphical.
 
 Using the git command line you will need to clone the git repository.
 
