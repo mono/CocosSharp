@@ -116,6 +116,9 @@ namespace Cocos2D
             }
         }
 
+        /// <summary>
+        /// Rotation of the sprite, about the Z axis, in Degrees.
+        /// </summary>
         public override float Rotation
         {
             get { return base.Rotation; }
@@ -126,6 +129,9 @@ namespace Cocos2D
             }
         }
 
+        /// <summary>
+        /// Rotation of the sprite, about the X axis, in Degrees.
+        /// </summary>
         public override float RotationX
         {
             get { return base.RotationX; }
@@ -136,6 +142,9 @@ namespace Cocos2D
             }
         }
 
+        /// <summary>
+        /// Rotation of the sprite, about the Y axis, in Degrees.
+        /// </summary>
         public override float RotationY
         {
             get { return base.RotationY; }

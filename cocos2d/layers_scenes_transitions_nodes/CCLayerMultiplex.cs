@@ -71,8 +71,9 @@ namespace Cocos2D
         private bool InitWithLayer(CCLayer layer)
         {
             m_pLayers = new Dictionary<int,CCLayer>();
-            m_pLayers[m_pLayers.Count] = layer;
-            _LayersInOrder.Add(m_pLayers.Count);
+            int ix = m_pLayers.Count;
+            m_pLayers[ix] = layer;
+            _LayersInOrder.Add(ix);
             if (layer.Tag != CCNode.kCCNodeTagInvalid)
             {
                 m_pLayers[layer.Tag + kTagOffsetForUniqueness] = layer;
@@ -168,6 +169,10 @@ namespace Cocos2D
             {
                 idx = 0;
             }
+            if (idx == -1)
+            {
+                idx = 0;
+            }
             return(SwitchTo(_LayersInOrder[idx]));
         }
 
@@ -227,8 +232,9 @@ namespace Cocos2D
             }
             else
             {
-                m_pLayers[m_pLayers.Count] = layer;
-                _LayersInOrder.Add(m_pLayers.Count);
+                int ix = m_pLayers.Count;
+                m_pLayers[ix] = layer;
+                _LayersInOrder.Add(ix);
                 if (layer.Tag != CCNode.kCCNodeTagInvalid)
                 {
                     m_pLayers[layer.Tag + kTagOffsetForUniqueness] = layer;
