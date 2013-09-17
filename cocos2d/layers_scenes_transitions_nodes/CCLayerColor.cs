@@ -88,7 +88,7 @@ namespace Cocos2D
         public override bool Init()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            return InitWithColor(new CCColor4B(0, 0, 0, 0), s.Width, s.Height);
+            return InitWithColor(new CCColor4B(0, 0, 0, 255), s.Width, s.Height);
         }
 
         /// <summary>
