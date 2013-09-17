@@ -30,9 +30,9 @@ namespace tests
     public class TextureTestScene : TestScene
     {
 
-        static int TEST_CASE_COUNT = 5;
+        private static int TEST_CASE_COUNT = 6;
 
-        static int sceneIdx = -1;
+        private static int sceneIdx = -1;
 
         public static CCLayer createTextureTest(int index)
         {
@@ -40,91 +40,102 @@ namespace tests
 
             switch (index)
             {
-            case 0:
-                pLayer = new TextureCache1(); break;
-            case 1:
-                pLayer = new TextureSizeTest(); break;
-            case 2:
-                pLayer = new TextureGLRepeat(); break;
-            case 3:
-                pLayer = new TextureGLClamp(); break;
-			case 4:
-				pLayer = new TextureGLMirror(); break;
+                case 0:
+                    pLayer = new TextureCache1();
+                    break;
+                case 1:
+                    pLayer = new TextureSizeTest();
+                    break;
+                case 2:
+                    pLayer = new TextureGLRepeat();
+                    break;
+                case 3:
+                    pLayer = new TextureGLClamp();
+                    break;
+                case 4:
+                    pLayer = new TextureGLMirror();
+                    break;
+                case 5:
+                    pLayer = new TextureAsync();
+                    break;
 
-            //case 0:
-            //    pLayer = new TextureAlias(); break;
-            //case 1:
-            //    pLayer = new TextureMipMap(); break;
-            //case 2:
-            //    pLayer = new TexturePVRMipMap(); break;
-            //case 3:
-            //    pLayer = new TexturePVRMipMap2(); break;
-            //case 4:
-            //    pLayer = new TexturePVRNonSquare(); break;
-            //case 5:
-            //    pLayer = new TexturePVRNPOT4444(); break;
-            //case 6:
-            //    pLayer = new TexturePVRNPOT8888(); break;
-            //case 7:
-            //    pLayer = new TexturePVR2BPP(); break;
-            //case 8:
-            //    pLayer = new TexturePVRRaw(); break;
-            //case 9:
-            //    pLayer = new TexturePVR(); break;
-            //case 10:
-            //    pLayer = new TexturePVR4BPP(); break;
-            //case 11:
-            //    pLayer = new TexturePVRRGBA8888(); break;
-            //case 12:
-            //    pLayer = new TexturePVRBGRA8888(); break;
-            //case 13:
-            //    pLayer = new TexturePVRRGBA4444(); break;
-            //case 14:
-            //    pLayer = new TexturePVRRGBA4444GZ(); break;
-            //case 15:
-            //    pLayer = new TexturePVRRGBA4444CCZ(); break;
-            //case 16:
-            //    pLayer = new TexturePVRRGBA5551(); break;
-            //case 17:
-            //    pLayer = new TexturePVRRGB565(); break;
-            //case 18:
-            //    pLayer = new TexturePVRA8(); break;
-            //case 19:
-            //    pLayer = new TexturePVRI8(); break;
-            //case 20:
-            //    pLayer = new TexturePVRAI88(); break;
-            //case 21:
-            //    pLayer = new TexturePVRBadEncoding(); break;
-            //case 22:
-            //    pLayer = new TexturePNG(); break;
-            //case 23:
-            //    pLayer = new TextureJPEG(); break;
-            //case 24:
-            //    pLayer = new TexturePixelFormat(); break;
-            //case 25:
-            //    pLayer = new TextureBlend(); break;
-            //case 26:
-            //    pLayer = new TextureGlClamp(); break;
-            //case 27:
-            //    pLayer = new TextureGlRepeat(); break;
-            //case 28:
-            //    pLayer = new TextureSizeTest(); break;
-            //case 29:
-            //    pLayer = new TextureCache1(); break;
-            default:
-                break;
+                    //case 0:
+                    //    pLayer = new TextureAlias(); break;
+                    //case 1:
+                    //    pLayer = new TextureMipMap(); break;
+                    //case 2:
+                    //    pLayer = new TexturePVRMipMap(); break;
+                    //case 3:
+                    //    pLayer = new TexturePVRMipMap2(); break;
+                    //case 4:
+                    //    pLayer = new TexturePVRNonSquare(); break;
+                    //case 5:
+                    //    pLayer = new TexturePVRNPOT4444(); break;
+                    //case 6:
+                    //    pLayer = new TexturePVRNPOT8888(); break;
+                    //case 7:
+                    //    pLayer = new TexturePVR2BPP(); break;
+                    //case 8:
+                    //    pLayer = new TexturePVRRaw(); break;
+                    //case 9:
+                    //    pLayer = new TexturePVR(); break;
+                    //case 10:
+                    //    pLayer = new TexturePVR4BPP(); break;
+                    //case 11:
+                    //    pLayer = new TexturePVRRGBA8888(); break;
+                    //case 12:
+                    //    pLayer = new TexturePVRBGRA8888(); break;
+                    //case 13:
+                    //    pLayer = new TexturePVRRGBA4444(); break;
+                    //case 14:
+                    //    pLayer = new TexturePVRRGBA4444GZ(); break;
+                    //case 15:
+                    //    pLayer = new TexturePVRRGBA4444CCZ(); break;
+                    //case 16:
+                    //    pLayer = new TexturePVRRGBA5551(); break;
+                    //case 17:
+                    //    pLayer = new TexturePVRRGB565(); break;
+                    //case 18:
+                    //    pLayer = new TexturePVRA8(); break;
+                    //case 19:
+                    //    pLayer = new TexturePVRI8(); break;
+                    //case 20:
+                    //    pLayer = new TexturePVRAI88(); break;
+                    //case 21:
+                    //    pLayer = new TexturePVRBadEncoding(); break;
+                    //case 22:
+                    //    pLayer = new TexturePNG(); break;
+                    //case 23:
+                    //    pLayer = new TextureJPEG(); break;
+                    //case 24:
+                    //    pLayer = new TexturePixelFormat(); break;
+                    //case 25:
+                    //    pLayer = new TextureBlend(); break;
+                    //case 26:
+                    //    pLayer = new TextureGlClamp(); break;
+                    //case 27:
+                    //    pLayer = new TextureGlRepeat(); break;
+                    //case 28:
+                    //    pLayer = new TextureSizeTest(); break;
+                    //case 29:
+                    //    pLayer = new TextureCache1(); break;
+                default:
+                    break;
             }
 
             return pLayer;
         }
+
         protected override void NextTestCase()
         {
             nextTextureTest();
         }
+
         protected override void PreviousTestCase()
         {
             backTextureTest();
         }
+
         protected override void RestTestCase()
         {
             restartTextureTest();
@@ -141,8 +152,8 @@ namespace tests
         public static CCLayer backTextureTest()
         {
             sceneIdx--;
-            if( sceneIdx < 0 )
-                sceneIdx = TEST_CASE_COUNT -1;	
+            if (sceneIdx < 0)
+                sceneIdx = TEST_CASE_COUNT - 1;
 
             return createTextureTest(sceneIdx);
         }
@@ -174,29 +185,30 @@ namespace tests
             base.OnEnter();
 
             CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
-            CCSize s = CCDirector.SharedDirector.WinSize;	
+            CCSize s = CCDirector.SharedDirector.WinSize;
             CCLabelTTF label = new CCLabelTTF(title(), "arial", 26);
-            AddChild(label, 1, (int)(enumTag.kTagLabel));
-            label.Position = new CCPoint(s.Width/2, s.Height-50);
+            AddChild(label, 1, (int) (enumTag.kTagLabel));
+            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             string strSubtitle = subtitle();
-            if(strSubtitle.Length > 0)
+            if (strSubtitle.Length > 0)
             {
                 CCLabelTTF l = new CCLabelTTF(strSubtitle, "arial", 16);
                 AddChild(l, 1);
-                l.Position = new CCPoint(s.Width/2, s.Height-80);
+                l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }
 
-            CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, (backCallback) );
-            CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, (restartCallback) );
-            CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, (nextCallback) );
+            CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, (backCallback));
+            CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2,
+                (restartCallback));
+            CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, (nextCallback));
 
             CCMenu menu = new CCMenu(item1, item2, item3);
             menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.Width/2 - 100,30);
-            item2.Position = new CCPoint(s.Width/2, 30);
-            item3.Position = new CCPoint(s.Width/2 + 100,30);
-            AddChild(menu, 1);	
+            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
+            item2.Position = new CCPoint(s.Width / 2, 30);
+            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
+            AddChild(menu, 1);
             CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
         }
 
@@ -259,7 +271,7 @@ namespace tests
             if (sprite1 != null)
             {
                 CCLog.Log("OK\n");
-                sprite1.Position = new CCPoint(size.Width - 50, size.Height -50);
+                sprite1.Position = new CCPoint(size.Width - 50, size.Height - 50);
                 this.AddChild(sprite1);
             }
             else
@@ -285,12 +297,12 @@ namespace tests
                 CCLog.Log("Error\n");
             // 	@todo
             // This won't work in XNA4 - max is 2048 x 2048.
-        // 	CCLog("Loading 4096x4096 image...");
-        // 	sprite = CCSprite::create("Images/texture4096x4096.png");
-        // 	if( sprite )
-        // 		CCLog("OK\n");
-        // 	else
-        // 		CCLog("Error\n");
+            // 	CCLog("Loading 4096x4096 image...");
+            // 	sprite = CCSprite::create("Images/texture4096x4096.png");
+            // 	if( sprite )
+            // 		CCLog("OK\n");
+            // 	else
+            // 		CCLog("Error\n");
         }
 
         public override string title()
@@ -335,7 +347,7 @@ namespace tests
     //{
     //    TextureDemo::onEnter();
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCSprite *img = CCSprite::create("Images/test_image.jpeg");
     //    img->setPosition(ccp( s.width/2.0f, s.height/2.0f));
     //    addChild(img);
@@ -373,11 +385,11 @@ namespace tests
     //    img1->setTextureRect(CCRectMake(85, 121, 85, 121));
     //    img1->setPosition(ccp( 2*s.width/3.0f, s.height/2.0f));
     //    addChild(img1);
-	
-	
+
+
     //    CCEaseOut* scale1 = CCEaseOut::actionWithAction(CCScaleBy::actionWithDuration(4, 0.01f), 3);
     //    CCActionInterval* sc_back = scale1->reverse();
-	
+
     //    CCEaseOut* scale2 = (CCEaseOut*) (scale1->copy());
     //    scale2->autorelease();
     //    CCActionInterval* sc_back2 = scale2->reverse();
@@ -432,7 +444,7 @@ namespace tests
     //        CCEaseOut* scale2 = (CCEaseOut*) (scale1->copy());
     //        scale2->autorelease();
     //        CCActionInterval* sc_back2 = scale2->reverse();
-		
+
     //        imgMipMap->runAction(CCRepeatForever::actionWithAction((CCActionInterval*)(CCSequence::actions(scale1, sc_back, NULL))));
     //        img->runAction(CCRepeatForever::actionWithAction((CCActionInterval*)(CCSequence::actions(scale2, sc_back2, NULL))));
     //    }
@@ -457,11 +469,11 @@ namespace tests
     //{
     //    TextureDemo::onEnter();
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCSprite *imgMipMap = CCSprite::create("Images/test_image_rgba4444_mipmap.pvr");
     //    imgMipMap->setPosition(ccp( s.width/2.0f-100, s.height/2.0f));
     //    addChild(imgMipMap);
-	
+
     //    // support mipmap filtering
     //    ccTexParams texParams = { GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE };	
     //    imgMipMap->getTexture()->setTexParameters(&texParams);
@@ -469,14 +481,14 @@ namespace tests
     //    CCSprite *img = CCSprite::create("Images/test_image.png");
     //    img->setPosition(ccp( s.width/2.0f+100, s.height/2.0f));
     //    addChild(img);
-	
+
     //    CCEaseOut* scale1 = CCEaseOut::actionWithAction(CCScaleBy::actionWithDuration(4, 0.01f), 3);
     //    CCActionInterval* sc_back = scale1->reverse();
 
     //    CCEaseOut* scale2 = (CCEaseOut*) (scale1->copy());
     //    scale2->autorelease();
     //    CCActionInterval* sc_back2 = scale2->reverse();
-	
+
     //    imgMipMap->runAction(CCRepeatForever::actionWithAction((CCActionInterval*)(CCSequence::actions(scale1, sc_back, NULL))));
     //    img->runAction(CCRepeatForever::actionWithAction((CCActionInterval*)(CCSequence::actions(scale2, sc_back2, NULL))));
     //    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
@@ -505,7 +517,7 @@ namespace tests
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
 
     //    CCSprite *img = CCSprite::create("Images/test_image_pvrtc2bpp.pvr");
-	
+
     //    if( img )
     //    {
     //        img->setPosition(ccp( s.width/2.0f, s.height/2.0f));
@@ -531,7 +543,7 @@ namespace tests
     //    TextureDemo::onEnter();
     //#ifdef CC_SUPPORT_PVRTC
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCTexture2D *tex = CCTextureCache::sharedTextureCache()->addPVRTCImage("Images/test_image.pvrraw", 4, true, 128);
     //    CCSprite *img = CCSprite::spriteWithTexture(tex);
     //    img->setPosition(ccp( s.width/2.0f, s.height/2.0f));
@@ -559,9 +571,9 @@ namespace tests
     //{
     //    TextureDemo::onEnter();
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCSprite *img = CCSprite::create("Images/test_image.pvr");
-	
+
     //    if( img )
     //    {
     //        img->setPosition(ccp( s.width/2.0f, s.height/2.0f));
@@ -572,7 +584,7 @@ namespace tests
     //        CCLog("This test is not supported.");
     //    }
     //    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
-	
+
     //}
 
     //std::string TexturePVR::title()
@@ -593,7 +605,7 @@ namespace tests
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
 
     //    CCSprite *img = CCSprite::create("Images/test_image_pvrtc4bpp.pvr");
-	
+
     //    if( img )
     //    {
     //        img->setPosition(ccp( s.width/2.0f, s.height/2.0f));
@@ -645,7 +657,7 @@ namespace tests
     //{
     //    TextureDemo::onEnter();
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCSprite *img = CCSprite::create("Images/test_image_bgra8888.pvr");
     //    if( img )
     //    {
@@ -675,7 +687,7 @@ namespace tests
     //{
     //    TextureDemo::onEnter();
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCSprite *img = CCSprite::create("Images/test_image_rgba5551.pvr");
     //    img->setPosition(ccp( s.width/2.0f, s.height/2.0f));
     //    addChild(img);
@@ -698,7 +710,7 @@ namespace tests
     //{
     //    TextureDemo::onEnter();
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCSprite *img = CCSprite::create("Images/test_image_rgba4444.pvr");
     //    img->setPosition(ccp( s.width/2.0f, s.height/2.0f));
     //    addChild(img);
@@ -782,7 +794,7 @@ namespace tests
     //{
     //    TextureDemo::onEnter();
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCSprite *img = CCSprite::create("Images/test_image_rgb565.pvr");
     //    img->setPosition(ccp( s.width/2.0f, s.height/2.0f));
     //    addChild(img);
@@ -805,7 +817,7 @@ namespace tests
     //{
     //    TextureDemo::onEnter();
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCSprite *img = CCSprite::create("Images/test_image_a8.pvr");
     //    img->setPosition(ccp( s.width/2.0f, s.height/2.0f));
     //    addChild(img);
@@ -852,7 +864,7 @@ namespace tests
     //{
     //    TextureDemo::onEnter();
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCSprite *img = CCSprite::create("Images/test_image_ai88.pvr");
     //    img->setPosition(ccp( s.width/2.0f, s.height/2.0f));
     //    addChild(img);
@@ -903,7 +915,7 @@ namespace tests
     //{
     //    TextureDemo::onEnter();
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCSprite *img = CCSprite::create("Images/grossini_128x256_mipmap.pvr");
     //    img->setPosition(ccp( s.width/2.0f, s.height/2.0f));
     //    addChild(img);
@@ -958,7 +970,7 @@ namespace tests
     //{
     //    TextureDemo::onEnter();
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
+
     //    CCSprite *img = CCSprite::create("Images/grossini_pvr_rgba8888.pvr");
     //    if( img )
     //    {
@@ -989,34 +1001,34 @@ namespace tests
         {
             base.OnEnter();
             CCSize s = CCDirector.SharedDirector.WinSize;
-	
+
             //
             // Sprite 1: GL_LINEAR
             //
             // Default filter is GL_LINEAR
-	
+
             CCSprite sprite = new CCSprite("Images/grossinis_sister1");
-            sprite.Position = new CCPoint( s.Width/3.0f, s.Height/2.0f);
+            sprite.Position = new CCPoint(s.Width / 3.0f, s.Height / 2.0f);
             AddChild(sprite);
-	
+
             // this is the default filterting
             sprite.IsAntialiased = true;
-	
+
             //
             // Sprite 1: GL_NEAREST
             //	
-	
+
             CCSprite sprite2 = new CCSprite("Images/grossinis_sister2");
-            sprite2.Position = new CCPoint(2*s.Width/3.0f, s.Height/2.0f);
+            sprite2.Position = new CCPoint(2 * s.Width / 3.0f, s.Height / 2.0f);
             AddChild(sprite2);
-	
+
             // Use Nearest in this one
-			sprite2.IsAntialiased = false;
-		
+            sprite2.IsAntialiased = false;
+
             // scale them to show
             CCScaleBy sc = new CCScaleBy(3, 8.0f);
             CCScaleBy sc_back = (CCScaleBy) (sc.Reverse());
-            CCRepeatForever scaleforever = new CCRepeatForever ((CCActionInterval) (new CCSequence(sc, sc_back)));
+            CCRepeatForever scaleforever = new CCRepeatForever((CCActionInterval) (new CCSequence(sc, sc_back)));
             CCRepeatForever scaleToo = (CCRepeatForever) (scaleforever.Copy());
 
             sprite2.RunAction(scaleforever);
@@ -1050,15 +1062,15 @@ namespace tests
     //    // 3- 16-bit RGB5A1
     //    // 4- 16-bit RGB565
     //    TextureDemo::onEnter();
-	
+
     //    CCLabelTTF *label = (CCLabelTTF*) getChildByTag(kTagLabel);
     //    label->setColor(ccc3(16,16,255));
-	
+
     //    CCSize s = CCDirector::sharedDirector()->getWinSize();
 
     //    CCLayerColor *background = CCLayerColor::layerWithColorWidthHeight(ccc4(128,128,128,255), s.width, s.height);
     //    addChild(background, -1);
-	
+
     //    // RGBA 8888 image (32-bit)
     //    CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGBA8888);
     //    CCSprite *sprite1 = CCSprite::create("Images/test-rgba1.png");
@@ -1100,7 +1112,7 @@ namespace tests
     //    CCSprite *sprite5 = CCSprite::create("Images/test-rgba1.png");
     //    sprite5->setPosition(ccp(5*s.width/6, s.height/2+32));
     //    addChild(sprite5, 0);
-	
+
     //    // remove texture from texture manager	
     //    CCTextureCache::sharedTextureCache()->removeTexture(sprite5->getTexture());
 
@@ -1112,7 +1124,7 @@ namespace tests
     //    CCRepeatForever* seq_4ever3 = (CCRepeatForever*) (seq_4ever->copy()); seq_4ever3->autorelease();
     //    CCRepeatForever* seq_4ever4 = (CCRepeatForever*) (seq_4ever->copy()); seq_4ever4->autorelease();
     //    CCRepeatForever* seq_4ever5 = (CCRepeatForever*) (seq_4ever->copy()); seq_4ever5->autorelease();
-	
+
     //    sprite1->runAction(seq_4ever);
     //    sprite2->runAction(seq_4ever2);
     //    sprite3->runAction(seq_4ever3);
@@ -1228,59 +1240,59 @@ namespace tests
         {
             base.OnEnter();
             CCSize size = CCDirector.SharedDirector.WinSize;
-            
+
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
             var sprite = new CCSprite("Images/pattern1.png", new CCRect(0, 0, 512, 256));
-            AddChild(sprite, -1, (int)enumTag.kTagSprite1);
-            sprite.Position = new CCPoint(size.Width/2,size.Height/2);
-   
+            AddChild(sprite, -1, (int) enumTag.kTagSprite1);
+            sprite.Position = new CCPoint(size.Width / 2, size.Height / 2);
+
             // Cocos2D-XNA no longer uses TexParameters.  Please use the XNA SamplerState
 //            sprite.Texture.TexParameters = new CCTexParams() {  MagFilter = (uint)All.Linear,
 //                MinFilter = (uint)All.Linear,
 //                WrapS = (uint)All.ClampToEdge,
 //                WrapT = (uint)All.ClampToEdge
 //            };
-			sprite.Texture.SamplerState = SamplerState.LinearClamp;
+            sprite.Texture.SamplerState = SamplerState.LinearClamp;
 
             var rotate = new CCRotateBy(4, 360);
             sprite.RunAction(rotate);
             var scale = new CCScaleBy(2, 0.04f);
-            var scaleBack = (CCScaleBy)scale.Reverse();
+            var scaleBack = (CCScaleBy) scale.Reverse();
             var seq = new CCSequence(scale, scaleBack);
             sprite.RunAction(seq);
 
         }
-        
+
         public override string title()
         {
             return "Texture GL_CLAMP";
         }
-        
+
 //        public override string subtitle()
 //        {
 //            return "Texture is repeated within the area.";
 //        }
     }
 
-	//------------------------------------------------------------------
-	//
-	// TextureGLMirror
-	//
-	//------------------------------------------------------------------
-	public class TextureGLMirror : TextureDemo
-	{
-		public override void OnEnter()
-		{
-			base.OnEnter();
-			CCSize size = CCDirector.SharedDirector.WinSize;
-			
-			// The .png image MUST be power of 2 in order to create a continue effect.
-			// eg: 32x64, 512x128, 256x1024, 64x64, etc..
-			var sprite = new CCSprite("Images/pattern1.png", new CCRect(0, 0, 512, 256));
-			AddChild(sprite, -1, (int)enumTag.kTagSprite1);
-			sprite.Position = new CCPoint(size.Width/2,size.Height/2);
-			
+    //------------------------------------------------------------------
+    //
+    // TextureGLMirror
+    //
+    //------------------------------------------------------------------
+    public class TextureGLMirror : TextureDemo
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            CCSize size = CCDirector.SharedDirector.WinSize;
+
+            // The .png image MUST be power of 2 in order to create a continue effect.
+            // eg: 32x64, 512x128, 256x1024, 64x64, etc..
+            var sprite = new CCSprite("Images/pattern1.png", new CCRect(0, 0, 512, 256));
+            AddChild(sprite, -1, (int) enumTag.kTagSprite1);
+            sprite.Position = new CCPoint(size.Width / 2, size.Height / 2);
+
             // Cocos2D-XNA no longer uses TexParameters.  Please use the XNA SamplerState
 //			sprite.Texture.TexParameters = new CCTexParams() {  MagFilter = (uint)All.Linear,
 //				MinFilter = (uint)All.Linear,
@@ -1289,29 +1301,29 @@ namespace tests
 //			};
 
             var state = new SamplerState();
-			state.AddressU = TextureAddressMode.Mirror;
-			state.AddressV = TextureAddressMode.Wrap;
-			sprite.Texture.SamplerState = state;
+            state.AddressU = TextureAddressMode.Mirror;
+            state.AddressV = TextureAddressMode.Wrap;
+            sprite.Texture.SamplerState = state;
 
             var rotate = new CCRotateBy(4, 360);
-			sprite.RunAction(rotate);
-			var scale = new CCScaleBy(2, 0.04f);
-			var scaleBack = (CCScaleBy)scale.Reverse();
-			var seq = new CCSequence(scale, scaleBack);
-			sprite.RunAction(seq);
-			
-		}
-		
-		public override string title()
-		{
-			return "Texture GL_MIRROR";
-		}
-		
+            sprite.RunAction(rotate);
+            var scale = new CCScaleBy(2, 0.04f);
+            var scaleBack = (CCScaleBy) scale.Reverse();
+            var seq = new CCSequence(scale, scaleBack);
+            sprite.RunAction(seq);
+
+        }
+
+        public override string title()
+        {
+            return "Texture GL_MIRROR";
+        }
+
         public override string subtitle()
         {
             return "Texture is repeated within the area and Mirrored.";
         }
-	}
+    }
 
     //------------------------------------------------------------------
     //
@@ -1328,8 +1340,8 @@ namespace tests
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
             var sprite = new CCSprite("Images/pattern1.png", new CCRect(0, 0, 4096, 4096));
-            AddChild(sprite, -1, (int)enumTag.kTagSprite1);
-            sprite.Position = new CCPoint(size.Width/2,size.Height/2);
+            AddChild(sprite, -1, (int) enumTag.kTagSprite1);
+            sprite.Position = new CCPoint(size.Width / 2, size.Height / 2);
 
             // Cocos2D-XNA no longer uses TexParameters.  Please use the XNA SamplerState
 //            sprite.Texture.TexParameters = new CCTexParams() {  MagFilter = (uint)All.Linear,
@@ -1343,17 +1355,17 @@ namespace tests
             var rotate = new CCRotateBy(4, 360);
             sprite.RunAction(rotate);
             var scale = new CCScaleBy(2, 0.04f);
-            var scaleBack = (CCScaleBy)scale.Reverse();
+            var scaleBack = (CCScaleBy) scale.Reverse();
             var seq = new CCSequence(scale, scaleBack);
             sprite.RunAction(seq);
 
         }
-        
+
         public override string title()
         {
             return "Texture GL_REPEAT";
         }
-        
+
         public override string subtitle()
         {
             return "Texture is repeated within the area.";
@@ -1372,36 +1384,36 @@ namespace tests
             base.OnEnter();
 
             CCSize s = CCDirector.SharedDirector.WinSize;
-	
+
             CCSprite sprite;
 
             sprite = new CCSprite("Images/grossinis_sister1");
-            sprite.Position = new CCPoint(s.Width/5*1, s.Height/2);
-			sprite.IsAntialiased = false;
+            sprite.Position = new CCPoint(s.Width / 5 * 1, s.Height / 2);
+            sprite.IsAntialiased = false;
             sprite.Scale = 2;
             AddChild(sprite);
 
             CCTextureCache.SharedTextureCache.RemoveTexture(sprite.Texture);
-	
+
             sprite = new CCSprite("Images/grossinis_sister1");
-            sprite.Position = new CCPoint(s.Width/5*2, s.Height/2);
-			sprite.IsAntialiased = true;
+            sprite.Position = new CCPoint(s.Width / 5 * 2, s.Height / 2);
+            sprite.IsAntialiased = true;
             sprite.Scale = 2;
             AddChild(sprite);
 
             // 2nd set of sprites
-	
+
             sprite = new CCSprite("Images/grossinis_sister2");
-            sprite.Position = new CCPoint(s.Width/5*3, s.Height/2);
-			sprite.IsAntialiased = false;
+            sprite.Position = new CCPoint(s.Width / 5 * 3, s.Height / 2);
+            sprite.IsAntialiased = false;
             sprite.Scale = 2;
             AddChild(sprite);
-	
+
             CCTextureCache.SharedTextureCache.RemoveTextureForKey("Images/grossinis_sister2");
 
             sprite = new CCSprite("Images/grossinis_sister2");
-            sprite.Position = new CCPoint(s.Width/5*4, s.Height/2);
-			sprite.IsAntialiased = true;
+            sprite.Position = new CCPoint(s.Width / 5 * 4, s.Height / 2);
+            sprite.IsAntialiased = true;
             sprite.Scale = 2;
             AddChild(sprite);
         }
@@ -1420,6 +1432,83 @@ namespace tests
         }
     }
 
+    internal class TextureAsync : TextureDemo
+    {
+        private int m_nImageOffset;
 
+        public override void OnEnter()
+        {
+            base.OnEnter();
 
+            m_nImageOffset = 0;
+
+            CCSize size = CCDirector.SharedDirector.WinSize;
+
+            CCLabelTTF label = new CCLabelTTF("Loading...", "Marker Felt", 32);
+            label.Position = size.Center;
+            AddChild(label, 10);
+
+            CCScaleBy scale = new CCScaleBy(0.3f, 2);
+            CCScaleBy scale_back = (CCScaleBy) scale.Reverse();
+            CCSequence seq = new CCSequence(scale, scale_back);
+            label.RunAction(new CCRepeatForever(seq));
+
+            ScheduleOnce(LoadImages, 1.0f);
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            CCTextureCache.SharedTextureCache.RemoveAllTextures();
+        }
+
+        private void LoadImages(float dt)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    var szSpriteName = String.Format("Images/sprites_test/sprite-{0}-{1}.png", i, j);
+                    CCTextureCache.SharedTextureCache.AddImageAsync(szSpriteName, ImageLoaded);
+                }
+            }
+
+            CCTextureCache.SharedTextureCache.AddImageAsync("Images/background1.jpg", ImageLoaded);
+            CCTextureCache.SharedTextureCache.AddImageAsync("Images/background2.jpg", ImageLoaded);
+            CCTextureCache.SharedTextureCache.AddImageAsync("Images/background.png", ImageLoaded);
+            CCTextureCache.SharedTextureCache.AddImageAsync("Images/atlastest.png", ImageLoaded);
+            CCTextureCache.SharedTextureCache.AddImageAsync("Images/grossini_dance_atlas.png", ImageLoaded);
+        }
+
+        private void ImageLoaded(CCTexture2D tex)
+        {
+            CCDirector director = CCDirector.SharedDirector;
+
+            //CCAssert( [NSThread currentThread] == [director runningThread], @"FAIL. Callback should be on cocos2d thread");
+
+            // IMPORTANT: The order on the callback is not guaranteed. Don't depend on the callback
+
+            // This test just creates a sprite based on the Texture
+
+            CCSprite sprite = new CCSprite(tex);
+            sprite.AnchorPoint = CCPoint.Zero;
+            AddChild(sprite, -1);
+
+            CCSize size = director.WinSize;
+            int i = m_nImageOffset * 32;
+            sprite.Position = new CCPoint(i % (int) size.Width, (i / (int) size.Width) * 32);
+
+            m_nImageOffset++;
+        }
+
+        public override string title()
+        {
+            return "Texture Async Load";
+        }
+
+        public override string subtitle()
+        {
+            return "Textures should load while an animation is being run";
+        }
+    }
 }

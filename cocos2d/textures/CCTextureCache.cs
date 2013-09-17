@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,8 +11,16 @@ namespace Cocos2D
 {
 
     //TODO: AsyncLoad
-    public class CCTextureCache : IDisposable
+    public class CCTextureCache : IDisposable, ICCSelectorProtocol
     {
+        struct AsyncStruct
+        {
+            public string  FileName;
+            public Action<CCTexture2D> Action;
+        };
+        private List<AsyncStruct> _asyncLoadedImages = new List<AsyncStruct>();
+        private Thread _thread;
+
         private static CCTextureCache s_sharedTextureCache;
 
         private readonly object m_pDictLock = new object();
@@ -20,6 +29,10 @@ namespace Cocos2D
         ~CCTextureCache() 
         {
             Dispose();
+        }
+
+        public void Update(float dt)
+        {
         }
 
         public static CCTextureCache SharedTextureCache
@@ -53,6 +66,53 @@ namespace Cocos2D
             return m_pTextures.ContainsKey(assetFile);
         }
 
+        public void AddImageAsync(string fileimage, Action<CCTexture2D> action)
+        {
+            Debug.Assert(!String.IsNullOrEmpty(fileimage), "TextureCache: fileimage MUST not be NULL");
+
+            lock (_asyncLoadedImages)
+            {
+                _asyncLoadedImages.Add(new AsyncStruct() { FileName = fileimage, Action = action });
+            }
+
+            if (_thread == null)
+            {
+                _thread = new Thread(
+                    () =>
+                    {
+                        while (true)
+                        {
+                            lock (_asyncLoadedImages)
+                            {
+                                if (_asyncLoadedImages.Count == 0)
+                                {
+                                    _thread = null;
+                                    return;
+                                }
+                            }
+
+                            var image = _asyncLoadedImages[0];
+                            var texture = AddImage(image.FileName);
+
+                            if (image.Action != null)
+                            {
+                                CCDirector.SharedDirector.Scheduler.ScheduleSelector(
+                                   f => image.Action(texture), this, 0, 1, 0, false
+                                   );
+                            }
+
+                            lock (_asyncLoadedImages)
+                            {
+                                _asyncLoadedImages.RemoveAt(0);
+                            }
+                        }
+                    }
+                    );
+                
+                _thread.Start();
+            }
+        }
+
         public CCTexture2D AddImage(string fileimage)
         {
             Debug.Assert(!String.IsNullOrEmpty(fileimage), "TextureCache: fileimage MUST not be NULL");
@@ -61,13 +121,19 @@ namespace Cocos2D
             {
                 CCTexture2D texture;
 
-                if (!m_pTextures.TryGetValue(fileimage, out texture))
+                var assetName = fileimage;
+                if (Path.HasExtension(assetName))
+                {
+                    assetName = CCFileUtils.RemoveExtension(assetName);
+                }
+
+                if (!m_pTextures.TryGetValue(assetName, out texture))
                 {
                     texture = new CCTexture2D();
 
                     if (texture.InitWithFile(fileimage))
                     {
-                        m_pTextures.Add(fileimage, texture);
+                        m_pTextures.Add(assetName, texture);
                     }
                     else
                     {
@@ -151,6 +217,11 @@ namespace Cocos2D
             CCTexture2D texture = null;
             try
             {
+                if (Path.HasExtension(key))
+                {
+                    key = CCFileUtils.RemoveExtension(key);
+                }
+
                 m_pTextures.TryGetValue(key, out texture);
             }
             catch (ArgumentNullException)
@@ -217,10 +288,16 @@ namespace Cocos2D
 
         public void RemoveTextureForKey(string textureKeyName)
         {
-            if (textureKeyName == null)
+            if (String.IsNullOrEmpty(textureKeyName))
             {
                 return;
             }
+
+            if (Path.HasExtension(textureKeyName))
+            {
+                textureKeyName = CCFileUtils.RemoveExtension(textureKeyName);
+            }
+
             m_pTextures.Remove(textureKeyName);
         }
 
@@ -234,12 +311,15 @@ namespace Cocos2D
             foreach (var pair in copy)
             {
                 var texture = pair.Value.XNATexture;
-                var bytes = texture.Width * texture.Height * 4;
+
+                if (texture != null)
+                {
+                    var bytes = texture.Width * texture.Height * 4;
+                    CCLog.Log("{0} {1} x {2} => {3} KB.", pair.Key, texture.Width, texture.Height, bytes / 1024);
+                    total += bytes;
+                }
 
                 count++;
-                total += bytes;
-
-                CCLog.Log("{0} {1} x {2} => {3} KB.", pair.Key, texture.Width, texture.Height, bytes / 1024);
             }
             CCLog.Log("{0} textures, for {1} KB ({2:00.00} MB)", count, total / 1024, total / (1024f * 1024f));
         }

@@ -217,6 +217,9 @@ namespace Cocos2D
                 // remove .xxx
                 texturePath = CCFileUtils.RemoveExtension(texturePath);
 
+                // append .png
+                texturePath = texturePath + ".png";
+
                 CCLog.Log("cocos2d: CCSpriteFrameCache: Trying to use file {0} as texture", texturePath);
             }
 
