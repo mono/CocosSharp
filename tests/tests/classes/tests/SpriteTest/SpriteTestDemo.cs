@@ -56,6 +56,12 @@ namespace tests
             AddChild(menu, 1); 
         }
 
+        public override void OnExit()
+        {
+            base.OnExit();
+            CCSpriteFrameCache.PurgeSharedSpriteFrameCache();
+        }
+
         public void restartCallback(object pSender)
         {
             CCScene s = new SpriteTestScene();
