@@ -1595,7 +1595,11 @@ namespace Cocos2D
         public CCGraphicsResource()
         {
             _wr = new WeakReference(this);
-            _createdResources.Add(_wr);
+
+            lock (_createdResources)
+            {
+                _createdResources.Add(_wr);
+            }
         }
 
         ~CCGraphicsResource()
@@ -1605,7 +1609,10 @@ namespace Cocos2D
                 Dispose();
             }
 
-            _createdResources.Remove(_wr);
+            lock (_createdResources)
+            {
+                _createdResources.Remove(_wr);
+            }
         }
 
         public virtual void Dispose()
@@ -1619,24 +1626,30 @@ namespace Cocos2D
 
         internal static void ReinitAllResources()
         {
-            var resources = _createdResources.Elements;
-            for (int i = 0, count = _createdResources.Count; i < count; i++)
+            lock (_createdResources)
             {
-                if (resources[i].IsAlive)
+                var resources = _createdResources.Elements;
+                for (int i = 0, count = _createdResources.Count; i < count; i++)
                 {
-                    ((CCGraphicsResource) resources[i].Target).Reinit();
+                    if (resources[i].IsAlive)
+                    {
+                        ((CCGraphicsResource) resources[i].Target).Reinit();
+                    }
                 }
             }
         }
 
         internal static void DisposeAllResources()
         {
-            var resources = _createdResources.Elements;
-            for (int i = 0, count = _createdResources.Count; i < count; i++)
+            lock (_createdResources)
             {
-                if (resources[i].IsAlive)
+                var resources = _createdResources.Elements;
+                for (int i = 0, count = _createdResources.Count; i < count; i++)
                 {
-                    ((CCGraphicsResource) resources[i].Target).Dispose();
+                    if (resources[i].IsAlive)
+                    {
+                        ((CCGraphicsResource) resources[i].Target).Dispose();
+                    }
                 }
             }
         }
