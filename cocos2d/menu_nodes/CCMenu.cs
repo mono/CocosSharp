@@ -349,6 +349,7 @@ namespace Cocos2D
 
         public void AlignItemsVerticallyWithPadding(float padding)
         {
+            float width = 0f;
             float height = -padding;
 
             if (m_pChildren != null && m_pChildren.count > 0)
@@ -361,6 +362,7 @@ namespace Cocos2D
                         continue;
                     }
                     height += pChild.ContentSize.Height * pChild.ScaleY + padding;
+                    width = Math.Max(width, pChild.ContentSize.Width);
                 }
             }
 
@@ -377,8 +379,10 @@ namespace Cocos2D
                     }
                     pChild.Position = new CCPoint(0, y - pChild.ContentSize.Height * pChild.ScaleY / 2.0f);
                     y -= pChild.ContentSize.Height * pChild.ScaleY + padding;
+                    width = Math.Max(width, pChild.ContentSize.Width);
                 }
             }
+            ContentSize = new CCSize(width, height);
         }
 
         public void AlignItemsHorizontally()
@@ -388,6 +392,7 @@ namespace Cocos2D
 
         public void AlignItemsHorizontallyWithPadding(float padding)
         {
+            float height = 0f;
             float width = -padding;
             if (m_pChildren != null && m_pChildren.count > 0)
             {
@@ -396,9 +401,10 @@ namespace Cocos2D
                     CCNode pChild = m_pChildren[i];
                     if (pChild.Visible)
                     {
-                    width += pChild.ContentSize.Width * pChild.ScaleX + padding;
+                        width += pChild.ContentSize.Width * pChild.ScaleX + padding;
+                        height = Math.Max(height, pChild.ContentSize.Height);
+                    }
                 }
-            }
             }
 
             float x = -width / 2.0f;
@@ -410,11 +416,13 @@ namespace Cocos2D
                     CCNode pChild = m_pChildren[i];
                     if (pChild.Visible)
                     {
-                    pChild.Position = new CCPoint(x + pChild.ContentSize.Width * pChild.ScaleX / 2.0f, 0);
-                    x += pChild.ContentSize.Width * pChild.ScaleX + padding;
+                        pChild.Position = new CCPoint(x + pChild.ContentSize.Width * pChild.ScaleX / 2.0f, 0);
+                        x += pChild.ContentSize.Width * pChild.ScaleX + padding;
+                        height = Math.Max(height, pChild.ContentSize.Height);
+                    }
                 }
             }
-        }
+            ContentSize = new CCSize(width, height);
         }
 
         public void AlignItemsInColumns(params int[] columns)
