@@ -222,23 +222,51 @@ namespace Cocos2D
             }
         }
 
+        private static List<RasterizerState> _rasterizerStatesCache = new List<RasterizerState>();
+
+        private static RasterizerState GetScissorRasterizerState(bool scissorEnabled)
+        {
+            var currentState = graphicsDevice.RasterizerState;
+            
+            for (int i = 0; i < _rasterizerStatesCache.Count; i++)
+            {
+                var state = _rasterizerStatesCache[i];
+                if (
+                    state.ScissorTestEnable == scissorEnabled &&
+                    currentState.CullMode == state.CullMode &&
+                    currentState.DepthBias == state.DepthBias &&
+                    currentState.FillMode == state.FillMode &&
+                    currentState.MultiSampleAntiAlias == state.MultiSampleAntiAlias &&
+                    currentState.SlopeScaleDepthBias == state.SlopeScaleDepthBias
+                    )
+                {
+                    return state;
+                }
+            }
+
+            var newState = new RasterizerState
+            {
+                ScissorTestEnable = scissorEnabled,
+                CullMode = currentState.CullMode,
+                DepthBias = currentState.DepthBias,
+                FillMode = currentState.FillMode,
+                MultiSampleAntiAlias = currentState.MultiSampleAntiAlias,
+                SlopeScaleDepthBias = currentState.SlopeScaleDepthBias
+            };
+
+            _rasterizerStatesCache.Add(newState);
+
+            return newState;
+        }
+
         public static bool ScissorRectEnabled
         {
             get { return graphicsDevice.RasterizerState.ScissorTestEnable; }
             set
             {
-                var currentState = graphicsDevice.RasterizerState;
-                if (currentState.ScissorTestEnable != value)
+                if (graphicsDevice.RasterizerState.ScissorTestEnable != value)
                 {
-                    graphicsDevice.RasterizerState = new RasterizerState
-                    {
-                        ScissorTestEnable = value,
-                        CullMode = currentState.CullMode,
-                        DepthBias = currentState.DepthBias,
-                        FillMode = currentState.FillMode,
-                        MultiSampleAntiAlias = currentState.MultiSampleAntiAlias,
-                        SlopeScaleDepthBias = currentState.SlopeScaleDepthBias
-                    };
+                    graphicsDevice.RasterizerState = GetScissorRasterizerState(value);
                 }
             }
         }
