@@ -9,8 +9,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
-
-    //TODO: AsyncLoad
     public class CCTextureCache : IDisposable, ICCSelectorProtocol
     {
         struct AsyncStruct

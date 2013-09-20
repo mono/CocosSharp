@@ -118,9 +118,11 @@ namespace tests
             _world = new b2World(gravity);
             float debugWidth = s.Width / PTM_RATIO * 2f;
             float debugHeight = s.Height / PTM_RATIO * 2f;
-            CCDraw debugDraw = new CCDraw(new b2Vec2(debugWidth / 2f + 10, s.Height - debugHeight - 10), 2);
-            debugDraw.AppendFlags(b2DrawFlags.e_shapeBit);
-            _world.SetDebugDraw(debugDraw);
+
+            //CCBox2dDraw debugDraw = new CCBox2dDraw(new b2Vec2(debugWidth / 2f + 10, s.Height - debugHeight - 10), 2);
+            //debugDraw.AppendFlags(b2DrawFlags.e_shapeBit);
+            
+            //_world.SetDebugDraw(debugDraw);
             _world.SetAllowSleeping(true);
             _world.SetContinuousPhysics(true);
 
@@ -309,9 +311,7 @@ namespace tests
             foreach (CCTouch touch in touches)
             {
                 CCPoint location = touch.Location;
-
-                for(int i = 0; i < 50; i++)
-                    addNewSpriteAtPosition(location);
+                addNewSpriteAtPosition(location);
             }
         }
     }

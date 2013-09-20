@@ -170,7 +170,7 @@ namespace Box2D.TestBed
         public ContactPoint[] m_points = new ContactPoint[k_maxContactPoints];
         public int m_pointCount;
         public DestructionListener m_destructionListener;
-        public Cocos2DDebugDraw m_debugDraw;
+        public CCBox2dDraw m_debugDraw;
         public int m_textLine;
         public b2World m_world;
         public b2Body m_bomb;
@@ -188,7 +188,7 @@ namespace Box2D.TestBed
         public Test()
         {
             m_destructionListener = new DestructionListener();
-            m_debugDraw = new Cocos2DDebugDraw();
+            m_debugDraw = new CCBox2dDraw("fonts/arial-12");
 
             b2Vec2 gravity = new b2Vec2();
             gravity.Set(0.0f, -10.0f);

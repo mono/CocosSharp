@@ -552,7 +552,6 @@
     <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\TimelineCallbackTestLayer.cs" />
     <Compile Include="Classes\tests\Box2DTestBet%28Box2D%29\Box2dTestBedScene.cs" />
     <Compile Include="Classes\tests\Box2DTestBet%28Box2D%29\Box2DView.cs" />
-    <Compile Include="Classes\tests\Box2DTestBet%28Box2D%29\Cocos2DDebugDraw.cs" />
     <Compile Include="Classes\tests\Box2DTestBet%28Box2D%29\MenuLayer.cs" />
     <Compile Include="Classes\tests\Box2DTestBet%28Box2D%29\Test.cs" />
     <Compile Include="Classes\tests\Box2DTestBet%28Box2D%29\TestEntries.cs" />

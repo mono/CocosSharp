@@ -150,9 +150,6 @@
     <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Box2DView.cs">
       <Link>classes\tests\Box2DTestBet%28Box2D%29\Box2DView</Link>
     </Compile>
-    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Cocos2DDebugDraw.cs">
-      <Link>classes\tests\Box2DTestBet%28Box2D%29\Cocos2DDebugDraw</Link>
-    </Compile>
     <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\MenuLayer.cs">
       <Link>classes\tests\Box2DTestBet%28Box2D%29\MenuLayer</Link>
     </Compile>

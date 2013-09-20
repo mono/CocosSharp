@@ -167,6 +167,16 @@ namespace Cocos2D
         {
             return new Color(point.R, point.G, point.B, point.A);
         }
+
+        public static implicit operator CCColor3B(CCColor4B point)
+        {
+            return new CCColor3B(point.R, point.G, point.B);
+        }
+
+        public static implicit operator CCColor4B(CCColor3B point)
+        {
+            return new CCColor4B(point.R, point.G, point.B, 255);
+        }
     }
 
     /// <summary>
