@@ -78,6 +78,8 @@ namespace Cocos2D
                 _thread = new Thread(
                     () =>
                     {
+                        System.Threading.Thread.CurrentThread.Name = "TextureCacheAsync";
+
                         while (true)
                         {
                             lock (_asyncLoadedImages)
@@ -89,14 +91,22 @@ namespace Cocos2D
                                 }
                             }
 
-                            var image = _asyncLoadedImages[0];
-                            var texture = AddImage(image.FileName);
-
-                            if (image.Action != null)
+                            try
                             {
-                                CCDirector.SharedDirector.Scheduler.ScheduleSelector(
-                                   f => image.Action(texture), this, 0, 0, 0, false
-                                   );
+                                var image = _asyncLoadedImages[0];
+                                var texture = AddImage(image.FileName);
+
+                                if (image.Action != null)
+                                {
+                                    CCDirector.SharedDirector.Scheduler.ScheduleSelector(
+                                       f => image.Action(texture), this, 0, 0, 0, false
+                                       );
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                CCLog.Log("Failed to load image");
+                                CCLog.Log(ex.ToString());
                             }
 
                             lock (_asyncLoadedImages)
