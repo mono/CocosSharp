@@ -388,7 +388,8 @@ namespace Cocos2D
             }
             else
             {
-                foreach (var timer in element.Timers)
+                CCTimer[] timers = element.Timers.ToArray();
+                foreach (var timer in timers)
                 {
                     if (selector == timer.Selector)
                     {
