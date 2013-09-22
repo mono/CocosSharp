@@ -95,7 +95,7 @@ namespace Cocos2D
                             if (image.Action != null)
                             {
                                 CCDirector.SharedDirector.Scheduler.ScheduleSelector(
-                                   f => image.Action(texture), this, 0, 1, 0, false
+                                   f => image.Action(texture), this, 0, 0, 0, false
                                    );
                             }
 
