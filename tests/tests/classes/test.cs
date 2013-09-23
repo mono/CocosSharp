@@ -99,7 +99,7 @@ namespace Cocos2D
             "RenderTextureTest",
             "RotateWorldTest",
             "SceneTest",
-            "SchdulerTest",
+            "SchedulerTest",
             //"ShaderTest",
             "SpriteTest",
             "TextInputTest",

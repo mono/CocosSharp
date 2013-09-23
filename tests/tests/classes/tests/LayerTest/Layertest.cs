@@ -128,8 +128,7 @@ namespace tests
                 img.AnchorPoint = CCPoint.Zero;
                 img.Position = CCPoint.Zero;
                 l.AddChild(img);
-                l.AnchorPoint = new CCPoint(0.5f, 0.5f);
-                l.Position = new CCPoint(1024/2f, 768/2f);
+                l.Position = new CCPoint(128f, 128f);
                 child.AddLayer(l);
             }
             child.InAction = new CCFadeIn(1);

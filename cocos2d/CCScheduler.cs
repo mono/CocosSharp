@@ -369,39 +369,47 @@ namespace Cocos2D
 
             HashTimeEntry element;
 
-            if (!m_pHashForTimers.TryGetValue(target, out element))
+            lock (m_pHashForTimers)
             {
-                element = new HashTimeEntry {Target = target};
-                m_pHashForTimers[target] = element;
-
-                // Is this the 1st element ? Then set the pause level to all the selectors of this target
-                element.Paused = paused;
-            }
-            else
-            {
-                Debug.Assert(element.Paused == paused);
-            }
-
-            if (element.Timers == null)
-            {
-                element.Timers = new List<CCTimer>();
-            }
-            else
-            {
-                foreach (var timer in element.Timers)
+                if (!m_pHashForTimers.TryGetValue(target, out element))
                 {
-                    if (selector == timer.Selector)
+                    element = new HashTimeEntry { Target = target };
+                    m_pHashForTimers[target] = element;
+
+                    // Is this the 1st element ? Then set the pause level to all the selectors of this target
+                    element.Paused = paused;
+                }
+                else
+                {
+                    Debug.Assert(element.Paused == paused);
+                }
+
+                if (element.Timers == null)
+                {
+                    element.Timers = new List<CCTimer>();
+                }
+                else
+                {
+                    CCTimer[] timers = element.Timers.ToArray();
+                    foreach (var timer in timers)
                     {
-                        Debug.WriteLine(
-                            "CCSheduler#scheduleSelector. Selector already scheduled. Updating interval from: {0} to {1}",
-                            timer.Interval, interval);
-                        timer.Interval = interval;
-                        return;
+                        if (timer == null)
+                        {
+                            continue;
+                        }
+                        if (selector == timer.Selector)
+                        {
+                            CCLog.Log(
+                                "CCSheduler#scheduleSelector. Selector already scheduled. Updating interval from: {0} to {1}",
+                                timer.Interval, interval);
+                            timer.Interval = interval;
+                            return;
+                        }
                     }
                 }
-            }
 
-            element.Timers.Add(new CCTimer(this, target, selector, interval, repeat, delay));
+                element.Timers.Add(new CCTimer(this, target, selector, interval, repeat, delay));
+            }
         }
 
         /** Schedules the 'update' selector for a given target with a given priority.

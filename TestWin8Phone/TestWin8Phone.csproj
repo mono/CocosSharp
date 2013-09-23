@@ -189,6 +189,9 @@
     <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\CharacterCollision.cs">
       <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\CharacterCollision</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\CircleStress.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\CircleStress.cs</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionFiltering.cs">
       <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionFiltering</Link>
     </Compile>
@@ -224,6 +227,9 @@
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\Gears.cs">
       <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\Gears</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest.cs">
+      <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\OneSidedPlatform.cs">
       <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\OneSidedPlatform</Link>
@@ -819,7 +825,7 @@
     <Compile Include="..\tests\tests\classes\tests\Box2DTest\Box2DTest.cs">
       <Link>classes\tests\Box2DTest\Box2DTest</Link>
     </Compile>
-	<!--
+    <!--
     <Compile Include="..\tests\tests\classes\tests\Box2DTest\Box2dTestBedScene.cs">
       <Link>classes\tests\Box2DTest\Box2dTestBedScene</Link>
     </Compile>
@@ -1207,6 +1213,9 @@
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\MotionStreakTest\MotionStreakTestScene.cs">
       <Link>classes\tests\MotionStreakTest\MotionStreakTestScene</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\MultiTouchTest\MultiTouchTest.cs">
+      <Link>classes\tests\MultiTouchTest\MultiTouchTest.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\NodeTest\CameraCenterTest.cs">
       <Link>classes\tests\NodeTest\CameraCenterTest</Link>
