@@ -148,7 +148,7 @@ namespace Cocos2D
             //kmGLPopMatrix();
             CCDrawManager.PopMatrix();
 
-            m_uOrderOfArrival = 0;
+            //m_uOrderOfArrival = 0;
         }
 
         public override void AddChild(CCNode child, int zOrder, int tag)

@@ -565,11 +565,9 @@ namespace Cocos2D
             }
         }
 
-
         public uint OrderOfArrival
         {
             get { return m_uOrderOfArrival; }
-            set { m_uOrderOfArrival = value; }
         }
 
         public CCAffineTransform AdditionalTransform
@@ -886,7 +884,6 @@ namespace Cocos2D
 
             ChangedChildTag(child, kCCNodeTagInvalid, tag);
 
-            //child.m_nOrderOfArrival = s_globalOrderOfArrival++;
             child.m_nZOrder = z;
         }
 
@@ -999,7 +996,7 @@ namespace Cocos2D
                 Draw();
             }
 
-            m_uOrderOfArrival = 0;
+            //m_uOrderOfArrival = 0;
 
             if (m_pGrid != null && m_pGrid.Active)
             {
