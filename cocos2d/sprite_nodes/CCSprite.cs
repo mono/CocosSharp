@@ -959,36 +959,16 @@ namespace Cocos2D
         {
             if (m_bReorderChildDirty)
             {
-                int i, j, length = m_pChildren.count;
-                CCNode[] x = m_pChildren.Elements;
-//                CCNode tempItem;
+                var elements = m_pChildren.Elements;
+                int count = m_pChildren.count;
 
-                CCNode.Quicksort(x, 0, length - 1);
-
-                /*
-                // insertion sort
-                for (i = 1; i < length; i++)
-                {
-                    tempItem = x[i];
-                    j = i - 1;
-
-                    //continue moving element downwards while zOrder is smaller or when zOrder is the same but orderOfArrival is smaller
-                    while (j >= 0 &&
-                           (tempItem.m_nZOrder < x[j].m_nZOrder ||
-                            (tempItem.m_nZOrder == x[j].m_nZOrder && tempItem.m_uOrderOfArrival < x[j].m_uOrderOfArrival)))
-                    {
-                        x[j + 1] = x[j];
-                        j = j - 1;
-                    }
-                    x[j + 1] = tempItem;
-                }
-                */
+                Array.Sort(elements, 0, count, this);
 
                 if (m_pobBatchNode != null)
                 {
-                    foreach (CCNode node in m_pChildren)
+                    for (int i = 0; i < count; i++)
                     {
-                        (node).SortAllChildren();
+                        elements[i].SortAllChildren();
                     }
                 }
 

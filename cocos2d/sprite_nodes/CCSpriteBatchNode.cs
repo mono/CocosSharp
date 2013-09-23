@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 
 namespace Cocos2D
@@ -220,29 +221,8 @@ namespace Cocos2D
             {
                 int j = 0, count = m_pChildren.count;
                 CCNode[] elements = m_pChildren.Elements;
-                // CCNode tempItem;
-                
-                //insertion sort - change to qsort per RIQ
-                CCNode.Quicksort(elements, 0, count - 1);
 
-                /*
-                for (int i = 1; i < count; i++)
-                {
-                    tempItem = elements[i];
-                    j = i - 1;
-
-                    //continue moving element downwards while zOrder is smaller or when zOrder is the same but orderOfArrival is smaller
-                    while (j >= 0 &&
-                           (tempItem.m_nZOrder < elements[j].m_nZOrder ||
-                            (tempItem.m_nZOrder == elements[j].m_nZOrder && tempItem.m_uOrderOfArrival < elements[j].m_uOrderOfArrival)))
-                    {
-                        elements[j + 1] = elements[j];
-                        j--;
-                    }
-
-                    elements[j + 1] = tempItem;
-                }
-                */
+                Array.Sort(elements, 0, count, this);
 
                 //sorted now check all children
                 if (count > 0)

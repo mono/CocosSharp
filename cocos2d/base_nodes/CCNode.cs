@@ -66,7 +66,7 @@ namespace Cocos2D
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-    public class CCNode : ICCSelectorProtocol, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, ICCKeyboardDelegate
+    public class CCNode : ICCSelectorProtocol, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, ICCKeyboardDelegate, IComparer<CCNode>
     {
         /// <summary>
         /// Use this to determine if a tag has been set on the node.
@@ -609,6 +609,7 @@ namespace Cocos2D
         #endregion
 
         private bool m_bCleaned = false;
+
         ~CCNode()
         {
             //unregisterScriptHandler();
@@ -897,91 +898,35 @@ namespace Cocos2D
             child.m_uOrderOfArrival = s_globalOrderOfArrival++;
             child.m_nZOrder = zOrder;
         }
+        
         #region Child Sorting
 
-        // Quick sort taken from http://snipd.net/quicksort-in-c
-        public static void Quicksort(CCNode[] elements, int left, int right)
+        int IComparer<CCNode>.Compare(CCNode n1, CCNode n2)
         {
-            int i = left, j = right;
-            CCNode pivot = elements[(left + right) / 2];
-
-            while (i <= j)
+            if (n1.m_nZOrder < n2.m_nZOrder || (n1.m_nZOrder == n2.m_nZOrder && n1.m_uOrderOfArrival < n2.m_uOrderOfArrival))
             {
-                /*
-                           (pivot.m_nZOrder < elements[i].m_nZOrder ||
-                            (pivot.m_nZOrder == elements[i].m_nZOrder && pivot.m_uOrderOfArrival < elements[i].m_uOrderOfArrival)))
-                 */
-                while ((elements[i].m_nZOrder < pivot.m_nZOrder ||
-                            (pivot.m_nZOrder == elements[i].m_nZOrder && elements[i].m_uOrderOfArrival < pivot.m_uOrderOfArrival)))
-                {
-                    i++;
-                }
-
-                while ((elements[j].m_nZOrder > pivot.m_nZOrder ||
-                            (pivot.m_nZOrder == elements[j].m_nZOrder && elements[j].m_uOrderOfArrival > pivot.m_uOrderOfArrival)))
-                {
-                    j--;
-                }
-
-                if (i <= j)
-                {
-                    // Swap
-                    CCNode tmp = elements[i];
-                    elements[i] = elements[j];
-                    elements[j] = tmp;
-
-                    i++;
-                    j--;
-                }
+                return -1;
             }
 
-            // Recursive calls
-            if (left < j)
+            if (n1 == n2)
             {
-                Quicksort(elements, left, j);
+                return 0;
             }
 
-            if (i < right)
-            {
-                Quicksort(elements, i, right);
-            }
+            return 1;
         }
-
 
         public virtual void SortAllChildren()
         {
             if (m_bReorderChildDirty)
             {
-                int i;
-                int length = m_pChildren.count;
-                CCNode[] x = m_pChildren.Elements;
-
-                Quicksort(x, 0, length-1);
-                /*
-                // insertion sort
-                for (i = 1; i < length; i++)
-                {
-                    CCNode tempItem = x[i];
-                    int j = i - 1;
-
-                    //continue moving element downwards while zOrder is smaller or when zOrder is the same but mutatedIndex is smaller
-                    while (j >= 0 &&
-                           (tempItem.m_nZOrder < x[j].m_nZOrder ||
-                            (tempItem.m_nZOrder == x[j].m_nZOrder && tempItem.m_uOrderOfArrival < x[j].m_uOrderOfArrival)))
-                    {
-                        x[j + 1] = x[j];
-                        j = j - 1;
-                    }
-                    x[j + 1] = tempItem;
-                }
-                */
-                //don't need to check children recursively, that's done in visit of each child
-
+                Array.Sort(m_pChildren.Elements, 0, m_pChildren.count, this);
                 m_bReorderChildDirty = false;
             }
         }
 
         #endregion
+
         /// <summary>
         /// This is called from the Visit() method. This is where you DRAW your node. Only
         /// draw stuff from this method call.
