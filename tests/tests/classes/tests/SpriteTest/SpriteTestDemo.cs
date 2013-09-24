@@ -56,22 +56,19 @@ namespace tests
             AddChild(menu, 1); 
         }
 
-        public override void OnExit()
-        {
-            base.OnExit();
-            CCSpriteFrameCache.PurgeSharedSpriteFrameCache();
-        }
-
         public void restartCallback(object pSender)
         {
+            ClearCaches();
+
             CCScene s = new SpriteTestScene();
             s.AddChild(SpriteTestScene.restartSpriteTestAction());
-
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
+            ClearCaches();
+
             CCScene s = new SpriteTestScene();
             s.AddChild(SpriteTestScene.nextSpriteTestAction());
             CCDirector.SharedDirector.ReplaceScene(s);
@@ -79,9 +76,17 @@ namespace tests
 
         public void backCallback(object pSender)
         {
+            ClearCaches();
+            
             CCScene s = new SpriteTestScene();
             s.AddChild(SpriteTestScene.backSpriteTestAction());
             CCDirector.SharedDirector.ReplaceScene(s);
+        }
+
+        private void ClearCaches()
+        {
+            CCSpriteFrameCache.PurgeSharedSpriteFrameCache();
+            CCTextureCache.PurgeSharedTextureCache();
         }
     }
 }
