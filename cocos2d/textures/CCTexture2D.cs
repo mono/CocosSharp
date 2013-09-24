@@ -630,6 +630,11 @@ namespace Cocos2D
             return false;
         }
 
+        public bool InitWithTexture(Texture2D texture)
+        {
+            return InitWithTexture(texture, texture.Format, true, false);
+        }
+
         internal bool InitWithTexture(Texture2D texture, SurfaceFormat format, bool premultipliedAlpha, bool managed)
         {
             m_bManaged = managed;
