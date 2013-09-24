@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.IO;
+#if !WINDOWS_PHONE
 using System.Threading.Tasks;
+#endif
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
@@ -18,8 +20,9 @@ namespace Cocos2D
 
         private List<AsyncStruct> _asyncLoadedImages = new List<AsyncStruct>();
         private Action _processingAction;
+#if !WINDOWS_PHONE
         private Task _task;
-
+#endif
         private static CCTextureCache s_sharedTextureCache;
 
         private readonly object m_pDictLock = new object();
@@ -37,18 +40,23 @@ namespace Cocos2D
                 {
                     while (true)
                     {
+                        AsyncStruct image;
+
                         lock (_asyncLoadedImages)
                         {
                             if (_asyncLoadedImages.Count == 0)
                             {
+#if !WINDOWS_PHONE
                                 _task = null;
+#endif
                                 return;
                             }
+                            image = _asyncLoadedImages[0];
+                            _asyncLoadedImages.RemoveAt(0);
                         }
 
                         try
                         {
-                            var image = _asyncLoadedImages[0];
                             var texture = AddImage(image.FileName);
 
                             if (image.Action != null)
@@ -62,11 +70,6 @@ namespace Cocos2D
                         {
                             CCLog.Log("Failed to load image");
                             CCLog.Log(ex.ToString());
-                        }
-
-                        lock (_asyncLoadedImages)
-                        {
-                            _asyncLoadedImages.RemoveAt(0);
                         }
                     }
                 }
@@ -118,6 +121,9 @@ namespace Cocos2D
             }
 
 
+#if WINDOWS_PHONE
+                _processingAction();
+#else
             if (_task == null)
             {
                 _task = new Task(() => {
@@ -128,6 +134,7 @@ namespace Cocos2D
                 });
                 _task.Start();
             }
+#endif
         }
 
         public CCTexture2D AddImage(string fileimage)
