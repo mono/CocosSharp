@@ -61,8 +61,11 @@ namespace tests
             pDirector.DisplayStats = true;
             // set FPS. the default value is 1.0/60 if you don't call this
             pDirector.AnimationInterval = 1.0 / 60;
-
+#if WINDOWSGL || WINDOWSDX || MACOS
+            CCSize designSize = new CCSize(960, 640);
+#else
             CCSize designSize = new CCSize(480, 320);
+#endif
 
             if (CCDrawManager.FrameSize.Height > 320)
             {
