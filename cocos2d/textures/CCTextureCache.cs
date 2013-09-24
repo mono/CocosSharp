@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.IO;
-#if !WINRT && !WINDOWS_PHONE8
-using System.Threading;
-#else
-using Windows.System.Threading;
-#endif
-using Microsoft.Xna.Framework;
+using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
@@ -20,11 +15,10 @@ namespace Cocos2D
             public string  FileName;
             public Action<CCTexture2D> Action;
         };
+
         private List<AsyncStruct> _asyncLoadedImages = new List<AsyncStruct>();
-        private Action _ProcessingAction;
-#if !WINRT && !WINDOWS_PHONE8
-        private Thread _thread;
-#endif
+        private Action _processingAction;
+        private Task _task;
 
         private static CCTextureCache s_sharedTextureCache;
 
@@ -38,45 +32,45 @@ namespace Cocos2D
 
         private CCTextureCache()
         {
-            _ProcessingAction = new Action(
-            () =>
-            {
-
-                while (true)
+            _processingAction = new Action(
+                () =>
                 {
-                    lock (_asyncLoadedImages)
+                    while (true)
                     {
-                        if (_asyncLoadedImages.Count == 0)
+                        lock (_asyncLoadedImages)
                         {
-                            return;
+                            if (_asyncLoadedImages.Count == 0)
+                            {
+                                _task = null;
+                                return;
+                            }
                         }
-                    }
 
-                    try
-                    {
-                        var image = _asyncLoadedImages[0];
-                        var texture = AddImage(image.FileName);
-
-                        if (image.Action != null)
+                        try
                         {
-                            CCDirector.SharedDirector.Scheduler.ScheduleSelector(
-                               f => image.Action(texture), this, 0, 0, 0, false
-                               );
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        CCLog.Log("Failed to load image");
-                        CCLog.Log(ex.ToString());
-                    }
+                            var image = _asyncLoadedImages[0];
+                            var texture = AddImage(image.FileName);
 
-                    lock (_asyncLoadedImages)
-                    {
-                        _asyncLoadedImages.RemoveAt(0);
+                            if (image.Action != null)
+                            {
+                                CCDirector.SharedDirector.Scheduler.ScheduleSelector(
+                                    f => image.Action(texture), this, 0, 0, 0, false
+                                    );
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            CCLog.Log("Failed to load image");
+                            CCLog.Log(ex.ToString());
+                        }
+
+                        lock (_asyncLoadedImages)
+                        {
+                            _asyncLoadedImages.RemoveAt(0);
+                        }
                     }
                 }
-            }
-                    );
+                );
         }
 
         public void Update(float dt)
@@ -113,39 +107,27 @@ namespace Cocos2D
         {
             return m_pTextures.ContainsKey(assetFile);
         }
-#if WINRT || WINDOWS_PHONE8
-        /// <summary>
-        /// The asynchronous handler for the task.
-        /// </summary>
-        /// <param name="action"></param>
-        private void AddImageAsyncHandler(Windows.Foundation.IAsyncAction action)
-        {
-            _ProcessingAction();
-        }
-#endif
+
         public void AddImageAsync(string fileimage, Action<CCTexture2D> action)
         {
             Debug.Assert(!String.IsNullOrEmpty(fileimage), "TextureCache: fileimage MUST not be NULL");
 
             lock (_asyncLoadedImages)
             {
-                _asyncLoadedImages.Add(new AsyncStruct() { FileName = fileimage, Action = action });
+                _asyncLoadedImages.Add(new AsyncStruct() {FileName = fileimage, Action = action});
             }
 
 
-#if !WINRT && !WINDOWS_PHONE8
-            if (_thread == null)
+            if (_task == null)
             {
-                _thread = new Thread(() => {
+                _task = new Task(() => {
+#if !WINRT && !XBOX
                     System.Threading.Thread.CurrentThread.Name = "TextureCacheAsync";
-                    _ProcessingAction();
-                    _thread = null;
-                });
-                _thread.Start();
-            }
-#else
-            ThreadPool.RunAsync(new WorkItemHandler(AddImageAsyncHandler));
 #endif
+                    _processingAction();
+                });
+                _task.Start();
+            }
         }
 
         public CCTexture2D AddImage(string fileimage)

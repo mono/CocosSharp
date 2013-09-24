@@ -316,6 +316,13 @@ namespace Cocos2D
 
                 manager.PreparingDeviceSettings += GraphicsPreparingDeviceSettings;
             }
+            else
+            {
+                if (service.GraphicsDevice != null)
+                {
+                    Init(service.GraphicsDevice);
+                }
+            }
         }
 
         /// <summary>
