@@ -20,15 +20,10 @@ namespace Cocos2D
 
         public static object RunAsync(Action action)
         {
-            return RunAsync(action, null, null);
+            return RunAsync(action, null);
         }
-
+		
         public static object RunAsync(Action action, Action<object> taskCompleted)
-        {
-            return RunAsync(action, taskCompleted, null);
-        }
-
-        public static object RunAsync(Action action, Action<object> taskCompleted, string threadName)
         {
 #if WINDOWS_PHONE
             var worker = new BackgroundWorker();
@@ -56,14 +51,6 @@ namespace Cocos2D
             var task = new Task(
                 () =>
                 {
-
-#if !WINRT && !XBOX
-                    if (!String.IsNullOrEmpty(threadName))
-                    {
-                        System.Threading.Thread.CurrentThread.Name = threadName;
-                    }
-#endif
-
                     action();
 
                     if (taskCompleted != null)

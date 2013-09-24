@@ -116,7 +116,7 @@ namespace Cocos2D
 
             if (_task == null)
             {
-                _task = CCTask.RunAsync(_processingAction, null, "TextureCacheAsync");
+                _task = CCTask.RunAsync(_processingAction);
             }
         }
 
