@@ -421,6 +421,7 @@
     <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="Platform\CCFocusManager.cs" />
+    <Compile Include="Platform\CCTask.cs" />
     <Compile Include="Platform\ICCFocusable.cs" />
     <Compile Include="predefine\CCTypes.cs" />
     <Compile Include="support\CCUtils.cs" />

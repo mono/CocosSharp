@@ -246,9 +246,9 @@
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="keypad_dispatcher\ICCKeypadDelegate.cs" />
     <Compile Include="keypad_dispatcher\CCKeypadDispatcher.cs" />
-	  <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
-	  <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
-	  <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
+    <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
+    <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
+    <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
     <Compile Include="label_nodes\CCLabelBMFont.cs" />
     <Compile Include="label_nodes\CCLabelTTF.cs" />
@@ -320,6 +320,7 @@
     <Compile Include="platform\CCDictMaker.cs" />
     <Compile Include="platform\CCFileUtils.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
+    <Compile Include="platform\CCTask.cs" />
     <Compile Include="platform\ICCFocusable.cs" />
     <Compile Include="platform\CCInputState.cs" />
     <Compile Include="platform\CCLog.cs" />

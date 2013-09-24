@@ -301,6 +301,7 @@
     <Compile Include="Platform\CCDictMaker.cs" />
     <Compile Include="Platform\CCFileUtils.cs" />
     <Compile Include="Platform\CCFocusManager.cs" />
+    <Compile Include="Platform\CCTask.cs" />
     <Compile Include="Platform\ICCFocusable.cs" />
     <Compile Include="Platform\CCLog.cs" />
     <Compile Include="Platform\CCSAXParser.cs" />
