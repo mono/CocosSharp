@@ -1175,6 +1175,7 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCControlSaturationPicker.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCControlStepper.cs" />
     <Compile Include="Platform\CCContentManager.cs" />
+    <Compile Include="Platform\CCTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.Windows8.csproj">

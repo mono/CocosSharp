@@ -183,6 +183,7 @@
     <Compile Include="platform\CCContentManager.cs" />
     <Compile Include="platform\CCDevice.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
+    <Compile Include="platform\CCTask.cs" />
     <Compile Include="platform\ICCFocusable.cs" />
     <Compile Include="platform\CCSpriteFontCache.cs" />
     <Compile Include="platform\CCDrawManager.cs" />

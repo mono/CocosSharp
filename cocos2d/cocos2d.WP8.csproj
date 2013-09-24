@@ -337,6 +337,7 @@
     <Compile Include="platform\CCDictMaker.cs" />
     <Compile Include="platform\CCFileUtils.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
+    <Compile Include="platform\CCTask.cs" />
     <Compile Include="platform\ICCFocusable.cs" />
     <Compile Include="platform\CCLog.cs" />
     <Compile Include="platform\CCSAXParser.cs" />

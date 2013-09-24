@@ -191,6 +191,7 @@
     <Compile Include="misc_nodes\CCDrawNode.cs" />
     <Compile Include="platform\CCContentManager.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
+    <Compile Include="platform\CCTask.cs" />
     <Compile Include="platform\ICCFocusable.cs" />
     <Compile Include="platform\CCInputState.cs" />
     <Compile Include="platform\CCSpriteFontCache.cs" />
