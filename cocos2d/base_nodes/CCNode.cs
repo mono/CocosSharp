@@ -748,7 +748,7 @@ namespace Cocos2D
         public virtual void RemoveChild(CCNode child, bool cleanup)
         {
             // explicit nil handling
-            if (m_pChildren == null)
+            if (m_pChildren == null || child == null)
             {
                 return;
             }
