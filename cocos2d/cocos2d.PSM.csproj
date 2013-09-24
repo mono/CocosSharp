@@ -411,6 +411,9 @@
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="Platform\CCFocusManager.cs" />
     <Compile Include="Platform\ICCFocusable.cs" />
+    <Compile Include="label_nodes\CCLabel.cs" />
+    <Compile Include="label_nodes\CCLabelUtilities.cs" />
+    <Compile Include="label_nodes\CCLabel-PSM.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />
