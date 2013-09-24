@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.IO;
-#if !WINDOWS_PHONE
-using System.Threading.Tasks;
-#endif
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
@@ -20,9 +17,8 @@ namespace Cocos2D
 
         private List<AsyncStruct> _asyncLoadedImages = new List<AsyncStruct>();
         private Action _processingAction;
-#if !WINDOWS_PHONE
-        private Task _task;
-#endif
+        private object _task;
+
         private static CCTextureCache s_sharedTextureCache;
 
         private readonly object m_pDictLock = new object();
@@ -46,9 +42,7 @@ namespace Cocos2D
                         {
                             if (_asyncLoadedImages.Count == 0)
                             {
-#if !WINDOWS_PHONE
                                 _task = null;
-#endif
                                 return;
                             }
                             image = _asyncLoadedImages[0];
@@ -120,21 +114,10 @@ namespace Cocos2D
                 _asyncLoadedImages.Add(new AsyncStruct() {FileName = fileimage, Action = action});
             }
 
-
-#if WINDOWS_PHONE
-                _processingAction();
-#else
             if (_task == null)
             {
-                _task = new Task(() => {
-#if !WINRT && !XBOX
-                    System.Threading.Thread.CurrentThread.Name = "TextureCacheAsync";
-#endif
-                    _processingAction();
-                });
-                _task.Start();
+                _task = CCTask.RunAsync(_processingAction, null, "TextureCacheAsync");
             }
-#endif
         }
 
         public CCTexture2D AddImage(string fileimage)
