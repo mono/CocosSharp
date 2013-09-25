@@ -1,5 +1,5 @@
 using System;
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE|| XBOX360
 using System.ComponentModel;
 #else
 using System.Threading.Tasks;
@@ -25,7 +25,7 @@ namespace Cocos2D
 		
         public static object RunAsync(Action action, Action<object> taskCompleted)
         {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || XBOX360
             var worker = new BackgroundWorker();
             
             worker.DoWork +=
