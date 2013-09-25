@@ -515,11 +515,7 @@ namespace Cocos2D
                             {
                                 firstWord = true;
                                 textList.Add(nextText.ToString());
-#if XBOX || XBOX360
                                 nextText.Length = 0;
-#else
-                                nextText.Clear();
-#endif
                             }
                             else
                             {
