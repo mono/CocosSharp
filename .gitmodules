@@ -2,6 +2,7 @@
 	path = MonoGame
 	url = git://github.com/Cocos2DXNA/MonoGame.git
 	branch = develop
+
 [submodule "tools/ouya"]
 
 	path = tools/ouya
