@@ -288,7 +288,35 @@ namespace Cocos2D
 
         private static IGraphicsDeviceService m_graphicsService;
         private static PresentationParameters m_presentationParameters = new PresentationParameters();
-        
+        private static GraphicsDeviceManager m_GraphicsDeviceMgr;
+
+        private static void UpdatePresentationParametrs(GraphicsDeviceManager manager)
+        {
+            var pp = m_presentationParameters;
+
+            pp.BackBufferWidth = manager.PreferredBackBufferWidth;
+            pp.BackBufferHeight = manager.PreferredBackBufferHeight;
+            pp.BackBufferFormat = manager.PreferredBackBufferFormat;
+            pp.DepthStencilFormat = manager.PreferredDepthStencilFormat;
+            pp.RenderTargetUsage = RenderTargetUsage.PreserveContents; //??? DiscardContents fast
+        }
+
+        public static void InitializeDisplay(Game game, GraphicsDeviceManager graphics, DisplayOrientation supportedOrientations)
+        {
+            m_GraphicsDeviceMgr = graphics;
+
+            SetOrientation(supportedOrientations, false);
+
+#if ANDROID || WINDOWS_PHONE
+            graphics.IsFullScreen = true;
+#endif
+
+#if WINDOWS || WINDOWSGL || MACOS
+            game.IsMouseVisible = true;
+            graphics.IsFullScreen = false;
+#endif
+        }
+
         public static void Init(IGraphicsDeviceService service)
         {
             m_graphicsService = service;
@@ -306,13 +334,7 @@ namespace Cocos2D
 
             if (manager != null)
             {
-                var pp = m_presentationParameters;
-
-                pp.BackBufferWidth = manager.PreferredBackBufferWidth;
-                pp.BackBufferHeight = manager.PreferredBackBufferHeight;
-                pp.BackBufferFormat = manager.PreferredBackBufferFormat;
-                pp.DepthStencilFormat = manager.PreferredDepthStencilFormat;
-                pp.RenderTargetUsage = RenderTargetUsage.PreserveContents; //??? DiscardContents fast
+                UpdatePresentationParametrs(manager);
 
                 manager.PreparingDeviceSettings += GraphicsPreparingDeviceSettings;
             }
@@ -1152,8 +1174,6 @@ namespace Cocos2D
             CCDirector.SharedDirector.SetGlDefaultValues();
         }
 
-        private static GraphicsDeviceManager m_GraphicsDeviceMgr;
-
         public static void SetOrientation(DisplayOrientation supportedOrientations)
         {
             SetOrientation(supportedOrientations, true);
@@ -1223,13 +1243,13 @@ namespace Cocos2D
             {
                 if (onlyLandscape)
                 {
-                    m_GraphicsDeviceMgr.PreferredBackBufferWidth = 840;
+                    m_GraphicsDeviceMgr.PreferredBackBufferWidth = 800;
                     m_GraphicsDeviceMgr.PreferredBackBufferHeight = 480;
                 }
                 else if (onlyPortrait)
                 {
                     m_GraphicsDeviceMgr.PreferredBackBufferWidth = 480;
-                    m_GraphicsDeviceMgr.PreferredBackBufferHeight = 840;
+                    m_GraphicsDeviceMgr.PreferredBackBufferHeight = 800;
                 }
             }
             m_GraphicsDeviceMgr.SupportedOrientations = supportedOrientations;
@@ -1267,29 +1287,9 @@ namespace Cocos2D
                 }
             }
 #endif
+            UpdatePresentationParametrs(m_GraphicsDeviceMgr);
+
             m_GraphicsDeviceMgr.ApplyChanges();
-        }
-
-        public static void InitializeDisplay(Game game, GraphicsDeviceManager graphics, DisplayOrientation supportedOrientations)
-        {
-            m_GraphicsDeviceMgr = graphics;
-            SetOrientation(supportedOrientations, false);
-
-            //graphics.PreparingDeviceSettings += PreparingDeviceSettings;
-
-
-#if ANDROID
-            graphics.IsFullScreen = true;
-#endif
-
-#if WINDOWS || WINDOWSGL || WINDOWS_PHONE
-            graphics.IsFullScreen = true;
-#endif
-
-#if WINDOWS || WINDOWSGL || MACOS
-            game.IsMouseVisible = true;
-            graphics.IsFullScreen = false;
-#endif
         }
 
         public static CCPoint ScreenToWorld(float x, float y)
