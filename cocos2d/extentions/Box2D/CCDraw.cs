@@ -210,11 +210,7 @@ namespace Cocos2D
 
             for (int i = 0; i < _stringData.Count; i++)
             {
-#if XBOX || XBOX360
                 _stringBuilder.Length = 0;
-#else
-                _stringBuilder.Clear();
-#endif
                 _stringBuilder.AppendFormat(_stringData[i].S, _stringData[i].Args);
                 _batch.DrawString(_spriteFont, _stringBuilder, new Vector2(_stringData[i].X, _stringData[i].Y),
                     _stringData[i].Color);
