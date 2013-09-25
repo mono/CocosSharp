@@ -1,6 +1,11 @@
 # Cocos2D-XNA
 
-is a 2D/3D game developer’s framework that is written specifically for XNA. XNA is the game API developed by Microsoft for independently published games on Xbox Live Arcade. To support other platforms than the now deprecated Microsoft XNA targets, Cocos2D-XNA is compatible with the MonoGame runtime.
+Cocos2D-XNA is the premier 2D game development engine based upon the wildly popular and successful Cocos2D-X engine. With Cocos2D-XNA, the game developer can create fantastic games with rich user experiences without the tremendous cost of a proprietary game library. MIT licensed, and open source hosted at github.com, this framework gives developers total power and control over every aspect of their game. Cocos2D-XNA has been used to deploy games to nearly every type of device in use today using XNA from Microsoft or MonoGame. Now the power of XNA and the depth of Cocos2d are at every game developers reach, taking their creative genius to over 95% of the computing devices on the planet.
+
+Cocos2D-XNA : Reach To Infinity!
+
+License
+-------
 
 This project is open source, freely available, and free of royalties or encumberance. The software is released under the highly permissive MIT License.
 
@@ -38,7 +43,7 @@ Change into the cocos2d-xna directory to issue the following submodule commands.
 
 Output from above command:
 
-	Submodule 'MonoGame' (https://github.com/mono/MonoGame.git) registered for path 'MonoGame'
+	Submodule 'MonoGame' (https://github.com/Cocos2DXNA/MonoGame.git) registered for path 'MonoGame'
 	Submodule 'tools/ouya' (https://github.com/slygamer/ouya-csharp.git) registered for path 'tools/ouya'
 
 You will then want to update the actual submodules:
