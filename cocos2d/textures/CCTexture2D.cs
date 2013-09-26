@@ -479,7 +479,7 @@ namespace Cocos2D
                 
                 if (loadedSize != 0)
                 {
-                    scale = fontSize / loadedSize;
+                    scale = fontSize / loadedSize * CCSpriteFontCache.FontScale;
                 }
 
                 if (dimensions.Equals(CCSize.Zero))
