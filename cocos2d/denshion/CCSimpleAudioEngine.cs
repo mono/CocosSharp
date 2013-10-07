@@ -211,21 +211,75 @@ namespace CocosDenshion
             return SharedMusic.IsPlaying();
         }
 
-        public int PlayEffect(int nId)
+        public void PauseEffect(int fxid) 
         {
             try
             {
-                if (SharedList.ContainsKey(nId))
+                if (SharedList.ContainsKey(fxid))
                 {
-                    SharedList[nId].Play(false);
+                    SharedList[fxid].Pause();
                 }
             }
             catch (Exception ex)
             {
-                CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", nId);
+                CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", fxid);
                 CCLog.Log(ex.ToString());
             }
-            return (nId);
+        }
+
+        public void StopAllEffects()
+        {
+            List<CCEffectPlayer> l = new List<CCEffectPlayer>();
+
+            lock (SharedList)
+            {
+                try
+                {
+                    l.AddRange(SharedList.Values);
+                    SharedList.Clear();
+                }
+                catch (Exception ex)
+                {
+                    CCLog.Log("Unexpected exception while stopping all effects.");
+                    CCLog.Log(ex.ToString());
+                }
+            }
+            foreach (CCEffectPlayer p in l)
+            {
+                p.Stop();
+            }
+
+        }
+
+        public int PlayEffect(int fxid)
+        {
+            PlayEffect(fxid, false);
+            return (fxid);
+        }
+
+        public int PlayEffect(int fxid, bool bLoop)
+        {
+            lock (SharedList)
+            {
+                try
+                {
+                    if (SharedList.ContainsKey(fxid))
+                    {
+                        SharedList[fxid].Play(bLoop);
+                        if (bLoop)
+                        {
+                            _LoopedSounds[fxid] = fxid;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", fxid);
+                    CCLog.Log(ex.ToString());
+                }
+            }
+
+            return fxid;
         }
 
         /// <summary>
