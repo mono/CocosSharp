@@ -211,6 +211,23 @@ namespace CocosDenshion
             return SharedMusic.IsPlaying();
         }
 
+        public int PlayEffect(int nId)
+        {
+            try
+            {
+                if (SharedList.ContainsKey(nId))
+                {
+                    SharedList[nId].Play(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", nId);
+                CCLog.Log(ex.ToString());
+            }
+            return (nId);
+        }
+
         /// <summary>
         /// Play the sound effect with the given path and optionally set it to lopo.
         /// </summary>
