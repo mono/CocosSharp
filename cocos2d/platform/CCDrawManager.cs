@@ -495,21 +495,16 @@ namespace Cocos2D
 
         static void GraphicsDeviceDeviceResetting(object sender, EventArgs e)
         {
-//#if ANDROID
             CCGraphicsResource.DisposeAllResources();
             CCSpriteFontCache.SharedInstance.Clear();
 #if XNA
             CCContentManager.SharedContentManager.ReloadGraphicsAssets();
 #endif
             m_bNeedReinitResources = true;
-//#endif
         }
 
         static void GraphicsDeviceDeviceReset(object sender, EventArgs e)
         {
-//#if ANDROID
-        //m_bNeedReinitResources = true;
-//#endif
         }
 
         static void GraphicsDeviceDeviceLost(object sender, EventArgs e)

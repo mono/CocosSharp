@@ -2,15 +2,9 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
-#if !HAS_NATIVE_ZIPFILE_SUPPORT
-//using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.Xna.Framework.Graphics;
 using GZipInputStream=WP7Contrib.Communications.Compression.GZipStream; // Found in Support/Compression/GZipStream
 using ICSharpCode.SharpZipLib.Zip;
-#else
-using System.IO.Compression.ZipFile;
-using System.IO.Compression.GZip;
-#endif
 
 namespace Cocos2D
 {

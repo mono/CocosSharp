@@ -19,21 +19,6 @@ namespace Cocos2D
             // allocating data space
             AllocMemory();
 
-#if CC_TEXTURE_ATLAS_USE_VAO
-            setupVBOandVAO();
-#else
-            setupVBO();
-#endif
-
-            //setShaderProgram(CCShaderCache::sharedShaderCache().programForKey(kCCShader_PositionTextureColor));
-
-
-            // Need to listen the event only when not use batchnode, because it will use VBO
-            //CCNotificationCenter::sharedNotificationCenter().addObserver(this,
-            //                                                          callfuncO_selector(listenBackToForeground),
-            //                                                          EVNET_COME_TO_FOREGROUND,
-            //                                                          null);
-
             return true;
         }
 
@@ -61,11 +46,11 @@ namespace Cocos2D
             }
 
 #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
-                                    float left = (rect.origin.x*2+1) / (wide*2);
-    float bottom = (rect.origin.y*2+1) / (high*2);
-    float right = left + (rect.size.width*2-2) / (wide*2);
-    float top = bottom + (rect.size.height*2-2) / (high*2);
-        #else
+            float left = (rect.Origin.X * 2 + 1) / (wide * 2);
+            float bottom = (rect.Origin.Y * 2 + 1) / (high * 2);
+            float right = left + (rect.Size.Width * 2 - 2) / (wide * 2);
+            float top = bottom + (rect.Size.Height * 2 - 2) / (high * 2);
+#else
             float left = rect.Origin.X / wide;
             float bottom = rect.Origin.Y / high;
             float right = left + rect.Size.Width / wide;
@@ -297,14 +282,6 @@ namespace Cocos2D
             }
         }
 
-        protected override void PostStep()
-        {
-            //glBindBuffer(GL_ARRAY_BUFFER, m_pBuffersVBO[0] );
-            //glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(m_pQuads[0]) * m_uParticleCount, m_pQuads);
-            //glBindBuffer(GL_ARRAY_BUFFER, 0);
-            //CHECK_GL_ERROR_DEBUG();
-        }
-
         // overriding draw method
         public override void Draw()
         {
@@ -316,63 +293,6 @@ namespace Cocos2D
             CCDrawManager.BindTexture(m_pTexture);
             CCDrawManager.BlendFunc(m_tBlendFunc);
             CCDrawManager.DrawQuads(m_pQuads, 0, m_uParticleCount);
-
-            /*
-            CC_NODE_DRAW_SETUP();
-
-            ccGLBindTexture2D(m_pTexture.Name);
-            ccGLBlendFunc(m_tBlendFunc.src, m_tBlendFunc.dst);
-
-
-#if CC_TEXTURE_ATLAS_USE_VAO
-                                                                                                    //
-    // Using VBO and VAO
-    //
-    glBindVertexArray( m_uVAOname );
-
-#if CC_REBIND_INDICES_BUFFER
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_pBuffersVBO[1]);
-#endif
-
-    glDrawElements(GL_TRIANGLES, (GLsizei) m_uParticleIdx*6, GL_UNSIGNED_SHORT, 0);
-
-#if CC_REBIND_INDICES_BUFFER
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-#endif
-
-    glBindVertexArray( 0 );
-
-#else
-                //
-                // Using VBO without VAO
-                //
-
-#define kQuadSize sizeof(m_pQuads[0].bl)
-
-            ccGLEnableVertexAttribs(kCCVertexAttribFlag_PosColorTex);
-
-            glBindBuffer(GL_ARRAY_BUFFER, m_pBuffersVBO[0]);
-            // vertices
-            glVertexAttribPointer(kCCVertexAttrib_Position, 3, GL_FLOAT, GL_FALSE, kQuadSize,
-                                  (GLvoid*) offsetof(ccV3F_C4B_T2F, vertices));
-            // colors
-            glVertexAttribPointer(kCCVertexAttrib_Color, 4, GL_UNSIGNED_BYTE, GL_TRUE, kQuadSize,
-                                  (GLvoid*) offsetof(ccV3F_C4B_T2F, colors));
-            // tex coords
-            glVertexAttribPointer(kCCVertexAttrib_TexCoords, 2, GL_FLOAT, GL_FALSE, kQuadSize,
-                                  (GLvoid*) offsetof(ccV3F_C4B_T2F, texCoords));
-
-            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_pBuffersVBO[1]);
-
-            glDrawElements(GL_TRIANGLES, (GLsizei) m_uParticleIdx * 6, GL_UNSIGNED_SHORT, 0);
-
-            glBindBuffer(GL_ARRAY_BUFFER, 0);
-            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-        #endif
-            CC_INCREMENT_GL_DRAWS(1);
-            CHECK_GL_ERROR_DEBUG();
-*/
         }
 
         public override int TotalParticles
@@ -404,82 +324,12 @@ namespace Cocos2D
                             m_pParticles[i].atlasIndex = i;
                         }
                     }
-
-#if CC_TEXTURE_ATLAS_USE_VAO
-                    setupVBOandVAO();
-#else
-                    setupVBO();
-#endif
                 }
                 else
                 {
                     m_uTotalParticles = value;
                 }
             }
-        }
-
-#if CC_TEXTURE_ATLAS_USE_VAO
-void setupVBOandVAO()
-{
-    glGenVertexArrays(1, &m_uVAOname);
-    glBindVertexArray(m_uVAOname);
-
-//#define kQuadSize sizeof(m_pQuads[0].bl)
-
-    glGenBuffers(2, &m_pBuffersVBO[0]);
-
-    glBindBuffer(GL_ARRAY_BUFFER, m_pBuffersVBO[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0]) * m_uTotalParticles, m_pQuads, GL_DYNAMIC_DRAW);
-
-    // vertices
-    glEnableVertexAttribArray(kCCVertexAttrib_Position);
-    glVertexAttribPointer(kCCVertexAttrib_Position, 2, GL_FLOAT, GL_FALSE, kQuadSize, (GLvoid*) offsetof( ccV3F_C4B_T2F, vertices));
-
-    // colors
-    glEnableVertexAttribArray(kCCVertexAttrib_Color);
-    glVertexAttribPointer(kCCVertexAttrib_Color, 4, GL_UNSIGNED_BYTE, GL_TRUE, kQuadSize, (GLvoid*) offsetof( ccV3F_C4B_T2F, colors));
-
-    // tex coords
-    glEnableVertexAttribArray(kCCVertexAttrib_TexCoords);
-    glVertexAttribPointer(kCCVertexAttrib_TexCoords, 2, GL_FLOAT, GL_FALSE, kQuadSize, (GLvoid*) offsetof( ccV3F_C4B_T2F, texCoords));
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_pBuffersVBO[1]);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(m_pIndices[0]) * m_uTotalParticles * 6, m_pIndices, GL_STATIC_DRAW);
-
-    glBindVertexArray(0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-    CHECK_GL_ERROR_DEBUG();
-}
-#else
-
-        private void setupVBO()
-        {
-/*
-    glGenBuffers(2, &m_pBuffersVBO[0]);
-
-    glBindBuffer(GL_ARRAY_BUFFER, m_pBuffersVBO[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0]) * m_uTotalParticles, m_pQuads, GL_DYNAMIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_pBuffersVBO[1]);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(m_pIndices[0]) * m_uTotalParticles * 6, m_pIndices, GL_STATIC_DRAW);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-    CHECK_GL_ERROR_DEBUG();
-*/
-        }
-
-#endif
-
-        private void ListenBackToForeground(object obj)
-        {
-#if CC_TEXTURE_ATLAS_USE_VAO
-            setupVBOandVAO();
-#else
-            setupVBO();
-#endif
         }
 
         private bool AllocMemory()
@@ -505,11 +355,6 @@ void setupVBOandVAO()
                     {
                         AllocMemory();
                         Texture = oldBatch.Texture;
-#if CC_TEXTURE_ATLAS_USE_VAO
-                        setupVBOandVAO();
-#else
-                        setupVBO();
-#endif
                     }
                         // OLD: was it self render ? cleanup
                     else if (oldBatch == null)
@@ -519,11 +364,6 @@ void setupVBOandVAO()
                         m_pBatchNode.TextureAtlas.Dirty = true;
                         Array.Copy(m_pQuads.Elements, 0, batchQuads, m_uAtlasIndex, m_uTotalParticles);
                         m_pQuads = null;
-
-                        //glDeleteBuffers(2, &m_pBuffersVBO[0]);
-#if CC_TEXTURE_ATLAS_USE_VAO
-                        glDeleteVertexArrays(1, &m_uVAOname);
-#endif
                     }
                 }
             }
