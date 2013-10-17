@@ -222,7 +222,7 @@ namespace CocosDenshion
             }
             catch (Exception ex)
             {
-                CCLog.Log("Unexpected exception while pausing a SoundEffect: {0}", fxid);
+                CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", fxid);
                 CCLog.Log(ex.ToString());
             }
         }
