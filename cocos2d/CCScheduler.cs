@@ -275,11 +275,13 @@ namespace Cocos2D
                         for (elt.TimerIndex = 0; elt.TimerIndex < elt.Timers.Count; ++elt.TimerIndex)
                         {
                             elt.CurrentTimer = elt.Timers[elt.TimerIndex];
-                            elt.CurrentTimerSalvaged = false;
+							if(elt.CurrentTimer != null) {
+	                            elt.CurrentTimerSalvaged = false;
 
-                            elt.CurrentTimer.Update(dt);
+	                            elt.CurrentTimer.Update(dt);
 
-                            elt.CurrentTimer = null;
+	                            elt.CurrentTimer = null;
+							}
                         }
                     }
 
