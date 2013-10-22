@@ -24,9 +24,17 @@
             return true;
         }
 
+        /// <summary>
+        /// Start the flip operation on the given target which must be a CCSprite.
+        /// </summary>
+        /// <param name="target"></param>
         protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
+            if (!(target is CCSprite))
+            {
+                throw (new System.NotSupportedException("FlipX and FlipY actions only work on CCSprite instances."));
+            }
             ((CCSprite) (target)).FlipX = m_bFlipX;
         }
 

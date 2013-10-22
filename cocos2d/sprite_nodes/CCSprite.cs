@@ -176,6 +176,20 @@ namespace Cocos2D
             }
         }
 
+        /// <summary>
+        /// Scales the sprite to have the given size.
+        /// </summary>
+        /// <param name="size"></param>
+        public virtual void ScaleTo(CCSize size)
+        {
+            CCSize content = ContentSize;
+            float sx = size.Width / content.Width;
+            float sy = size.Height / content.Height;
+            base.ScaleX = sx;
+            base.ScaleY = sy;
+            SET_DIRTY_RECURSIVELY();
+        }
+
         public override float ScaleX
         {
             get { return base.ScaleX; }
