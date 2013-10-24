@@ -27,6 +27,11 @@ namespace Cocos2D
 			SpriteKit
 		}
 
+        public CCSpriteSheet(Dictionary<string, CCSpriteFrame> frames)
+        {
+            _spriteFrames = new Dictionary<string, CCSpriteFrame>(frames);
+        }
+
         public CCSpriteSheet(string fileName)
         {
             InitWithFile(fileName);
