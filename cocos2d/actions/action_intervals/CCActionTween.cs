@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System;
 
 namespace Cocos2D
 {
@@ -12,10 +13,17 @@ namespace Cocos2D
         protected float m_fDelta;
         protected float m_fFrom, m_fTo;
         protected string m_strKey;
-
+        protected Action<float, string> _tweenAction;
+ 
         public CCActionTween(float aDuration, string key, float from, float to)
         {
             InitWithDuration(aDuration, key, from, to);
+        }
+
+        public CCActionTween(float aDuration, string key, float from, float to, Action<float,string> tweenAction)
+        {
+            InitWithDuration(aDuration, key, from, to);
+            _tweenAction = tweenAction;
         }
 
         protected bool InitWithDuration(float aDuration, string key, float from, float to)
@@ -40,12 +48,20 @@ namespace Cocos2D
 
         public override void Update(float dt)
         {
-            ((ICCActionTweenDelegate) m_pTarget).UpdateTweenAction(m_fTo - m_fDelta * (1 - dt), m_strKey);
+            float amt = m_fTo - m_fDelta * (1 - dt);
+            if (_tweenAction != null)
+            {
+                _tweenAction(amt, m_strKey);
+            }
+            else if(m_pTarget is ICCActionTweenDelegate)
+            {
+                ((ICCActionTweenDelegate)m_pTarget).UpdateTweenAction(amt, m_strKey);
+            }
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCActionTween(m_fDuration, m_strKey, m_fTo, m_fFrom);
+            return new CCActionTween(m_fDuration, m_strKey, m_fTo, m_fFrom, _tweenAction);
         }
     }
 }
