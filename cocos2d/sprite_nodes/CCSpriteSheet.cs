@@ -27,9 +27,15 @@ namespace Cocos2D
 			SpriteKit
 		}
 
+        #region Constructors
+
         public CCSpriteSheet(Dictionary<string, CCSpriteFrame> frames)
         {
-            _spriteFrames = new Dictionary<string, CCSpriteFrame>(frames);
+            if (frames != null)
+            {
+                _spriteFrames = new Dictionary<string, CCSpriteFrame>(frames);
+                AutoCreateAliasList();
+            }
         }
 
         public CCSpriteSheet(string fileName)
@@ -61,8 +67,23 @@ namespace Cocos2D
         {
             InitWithDictionary(dictionary, texture);
         }
+        #endregion
 
-		private PlistType GetPlistType(PlistDictionary dict)
+        private void AutoCreateAliasList()
+        {
+            foreach (string key in _spriteFrames.Keys)
+            {
+                int idx = key.LastIndexOf('.');
+                if (idx > -1)
+                {
+                    string alias = key.Substring(0, idx);
+                    _spriteFramesAliases[alias] = key;
+                    CCLog.Log("Created alias for frame {0} as {1}", key, alias);
+                }
+            }
+        }
+
+        private PlistType GetPlistType(PlistDictionary dict)
 		{
 			var isSpriteKit = dict.ContainsKey ("format") ? dict ["format"].AsString == "APPL" : false;
 
@@ -202,7 +223,9 @@ namespace Cocos2D
 				LoadCocos2DDictionary(dict, texture);
         }
 
-		private void LoadAppleDictionary(PlistDictionary dict, CCTexture2D texture)
+        #region Loaders
+
+        private void LoadAppleDictionary(PlistDictionary dict, CCTexture2D texture)
 		{
 
 			var version = dict.ContainsKey ("version") ? dict ["version"].AsInt : 0; 
@@ -279,6 +302,7 @@ namespace Cocos2D
 					_spriteFrames [name] = spriteFrame;
 				}
 			}
+            AutoCreateAliasList();
 		}
 
 		private void LoadCocos2DDictionary(PlistDictionary dict, CCTexture2D texture)
@@ -414,11 +438,14 @@ namespace Cocos2D
 
 				_spriteFrames[pair.Key] = spriteFrame;
 			}
-
+            AutoCreateAliasList();
 		}
 
+        #endregion
 
-		public List<CCSpriteFrame> Frames 
+        #region Frame Access Methods
+
+        public List<CCSpriteFrame> Frames 
 		{
 			get 
 			{
@@ -448,7 +475,7 @@ namespace Cocos2D
                 {
                     if (!_spriteFrames.TryGetValue(key, out frame))
                     {
-                        CCLog.Log("cocos2d: CCSpriteFrameCahce: Frame '{0}' not found", name);
+                        CCLog.Log("cocos2d: CCSpriteFrameCache: Frame '{0}' not found", key);
                     }
                 }
             }
@@ -457,8 +484,14 @@ namespace Cocos2D
             {
                 CCLog.Log("cocos2d: {0} frame {1}", name, frame.Rect.ToString());
             }
+            else
+            {
+                CCLog.Log("cocos2d: CCSpriteFrameCache: Frame '{0}' not found", name);
+            }
             
             return frame;
         }
+
+        #endregion
     }
 }
