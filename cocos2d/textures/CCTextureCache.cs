@@ -52,7 +52,7 @@ namespace Cocos2D
                         try
                         {
                             var texture = AddImage(image.FileName);
-
+						CCLog.Log("Loaded texture: {0}", image.FileName);
                             if (image.Action != null)
                             {
                                 CCDirector.SharedDirector.Scheduler.ScheduleSelector(
@@ -62,7 +62,7 @@ namespace Cocos2D
                         }
                         catch (Exception ex)
                         {
-                            CCLog.Log("Failed to load image");
+						    CCLog.Log("Failed to load image {0}", image.FileName);
                             CCLog.Log(ex.ToString());
                         }
                     }
@@ -121,36 +121,33 @@ namespace Cocos2D
         }
 
         public CCTexture2D AddImage(string fileimage)
-        {
-            Debug.Assert(!String.IsNullOrEmpty(fileimage), "TextureCache: fileimage MUST not be NULL");
+		{
+			Debug.Assert (!String.IsNullOrEmpty (fileimage), "TextureCache: fileimage MUST not be NULL");
 
-            lock (m_pDictLock)
-            {
-                CCTexture2D texture;
+			CCTexture2D texture = null;
 
-                var assetName = fileimage;
-                if (Path.HasExtension(assetName))
-                {
-                    assetName = CCFileUtils.RemoveExtension(assetName);
-                }
+			var assetName = fileimage;
+			if (Path.HasExtension (assetName)) {
+				assetName = CCFileUtils.RemoveExtension (assetName);
+			}
 
-                if (!m_pTextures.TryGetValue(assetName, out texture))
-                {
-                    texture = new CCTexture2D();
+			lock (m_pDictLock) {
+				m_pTextures.TryGetValue (assetName, out texture);
+			}
+			if (texture == null) {
+				texture = new CCTexture2D ();
 
-                    if (texture.InitWithFile(fileimage))
-                    {
-                        m_pTextures.Add(assetName, texture);
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
+				if (texture.InitWithFile (fileimage)) {
+					lock (m_pDictLock) {
+						m_pTextures[assetName] = texture;
+					}
+				} else {
+					return null;
+				}
+			}
                 
-                return texture;
-            }
-        }
+			return texture;
+		}
 
         public CCTexture2D AddImage(byte[] data, string assetName, SurfaceFormat format)
         {
