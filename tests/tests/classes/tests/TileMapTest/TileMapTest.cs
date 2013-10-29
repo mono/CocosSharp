@@ -972,8 +972,6 @@ namespace tests
             CCSequence seq = new CCSequence(move, back);
             m_tamara.RunAction(new CCRepeatForever (seq));
 
-            m_tamara.Position = new CCPoint(m_tamara.Position.X + 100, m_tamara.Position.Y + 100);
-
             Schedule(repositionSprite);
         }
 
@@ -982,7 +980,7 @@ namespace tests
             // tile height is 64x32
             // map size: 30x30
             CCPoint p = m_tamara.Position.PointsToPixels();
-            float newZ = -(p.Y + 32) / 16;
+            float newZ = -(p.Y + 32f) / 16f;
             m_tamara.VertexZ = newZ;
         }
 
