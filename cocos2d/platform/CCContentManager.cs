@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -281,10 +282,21 @@ namespace Cocos2D
             {
                 try
                 {
-                    if (typeof (T) == typeof (PlistDocument))
-                    {
-                        string assetPath = Path.Combine(RootDirectory, path);
+                    string assetPath = Path.Combine(RootDirectory, path);
 
+                    if (typeof(T) == typeof(string))
+                    {
+                        using (var streamContent = TitleContainer.OpenStream(assetPath))
+                        {
+                            using (StreamReader reader = new StreamReader(streamContent, Encoding.UTF8))
+                            {
+                                result = (T)(object) reader.ReadToEnd();
+                            }
+                        }
+                        useContentReader = false;
+                    }
+                    else if (typeof(T) == typeof(PlistDocument))
+                    {
                         try
                         {
                             using (var streamContent = TitleContainer.OpenStream(assetPath))
@@ -304,8 +316,6 @@ namespace Cocos2D
 #if XNA
                     else if (typeof (T) == typeof (Texture2D) && Path.HasExtension(path))
                     {
-                        string assetPath = Path.Combine(RootDirectory, path);
-
                         var service =
                             (IGraphicsDeviceService) ServiceProvider.GetService(typeof (IGraphicsDeviceService));
 
@@ -399,7 +409,7 @@ namespace Cocos2D
             {
                 foreach (string resolutionOrder in _searchResolutionsOrder)
                 {
-                    var path = Path.Combine(Path.Combine(searchPath, resolutionOrder), realName);
+                    var path = Path.Combine(Path.Combine(RootDirectory, Path.Combine(searchPath, resolutionOrder)), realName);
 
                     try
                     {
