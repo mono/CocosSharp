@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Cocos2D
 {
@@ -759,6 +760,20 @@ namespace Cocos2D
             }
 
             return i;
+        }
+
+        public override void Draw()
+        {
+            var alphaTest = CCDrawManager.AlphaTestEffect;
+            
+            alphaTest.AlphaFunction = CompareFunction.Greater;
+            alphaTest.ReferenceAlpha = 0;
+
+            CCDrawManager.PushEffect(alphaTest);
+
+            base.Draw();
+
+            CCDrawManager.PopEffect();
         }
     }
 }

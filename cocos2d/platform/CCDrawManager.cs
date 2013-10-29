@@ -28,6 +28,7 @@ namespace Cocos2D
         public static string DefaultFont = "arial";
 
         public static BasicEffect PrimitiveEffect;
+        public static AlphaTestEffect AlphaTestEffect;
 
         private static BasicEffect m_defaultEffect;
         private static Effect m_currentEffect;
@@ -387,6 +388,8 @@ namespace Cocos2D
                 VertexColorEnabled = true
             };
 
+            AlphaTestEffect = new AlphaTestEffect(graphicsDevice);
+
             m_DepthEnableStencilState = new DepthStencilState
             {
                 DepthBufferEnable = true,
@@ -461,6 +464,7 @@ namespace Cocos2D
             graphicsDevice = null;
 
             PrimitiveEffect = null;
+            AlphaTestEffect = null;
 
             m_defaultEffect = null;
             m_currentEffect = null;
@@ -1491,7 +1495,6 @@ namespace Cocos2D
         private static int _maskLayer = -1;
         private static bool _maskOnceLog = false;
         private static DepthStencilState[] _maskSavedStencilStates = new DepthStencilState[8];
-        private static AlphaTestEffect _maskAlphaTest;
         private static MaskState[] _maskStates = new MaskState[8];
         private static MaskDepthStencilStateCacheEntry[] _maskStatesCache = new MaskDepthStencilStateCacheEntry[8];
 
@@ -1543,15 +1546,10 @@ namespace Cocos2D
 
             if (maskState.AlphaTreshold < 1)
             {
-                if (_maskAlphaTest == null)
-                {
-                    _maskAlphaTest = new AlphaTestEffect(GraphicsDevice);
-                    _maskAlphaTest.AlphaFunction = CompareFunction.Greater;
-                }
+                AlphaTestEffect.AlphaFunction = CompareFunction.Greater;
+                AlphaTestEffect.ReferenceAlpha = (byte)(255 * maskState.AlphaTreshold);
 
-                _maskAlphaTest.ReferenceAlpha = (byte)(255 * maskState.AlphaTreshold);
-
-                PushEffect(_maskAlphaTest);
+                PushEffect(AlphaTestEffect);
             }
 
             return true;
