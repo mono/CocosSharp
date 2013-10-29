@@ -241,7 +241,6 @@ namespace Cocos2D
         private float _onPosition;
         private float _sliderXPosition;
         private CCSprite _maskSprite;
-        private CCTexture2D _maskTexture;
         private CCLabelTTF _offLabel;
         private CCSprite _offSprite;
         private CCLabelTTF _onLabel;
@@ -252,14 +251,12 @@ namespace Cocos2D
             _sliderXPosition = 0.0f;
             _onPosition = 0.0f;
             _offPosition = 0.0f;
-            _maskTexture = null;
-            TextureLocation = 0;
-            MaskLocation = 0;
             _onSprite = null;
             _offSprite = null;
             _thumbSprite = null;
             _onLabel = null;
             _offLabel = null;
+            _maskSprite = null;
         }
 
         public float OnPosition
@@ -274,16 +271,12 @@ namespace Cocos2D
             set { _offPosition = value; }
         }
 
-        public CCTexture2D MaskTexture
+        public CCSprite MaskSprite
         {
-            get { return _maskTexture; }
-            set { _maskTexture = value; }
+            get { return _maskSprite; }
+            set { _maskSprite = value; }
         }
-
-        public uint TextureLocation { get; set; }
-
-        public uint MaskLocation { get; set; }
-
+        
         public CCSprite OnSprite
         {
             get { return _onSprite; }
@@ -301,7 +294,6 @@ namespace Cocos2D
             get { return _thumbSprite; }
             set { _thumbSprite = value; }
         }
-
 
         public CCLabelTTF OnLabel
         {
@@ -360,7 +352,11 @@ namespace Cocos2D
         public bool InitWithMaskSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite,
                                        CCSprite thumbSprite, CCLabelTTF onLabel, CCLabelTTF offLabel)
         {
-            if (base.InitWithTexture(maskSprite.Texture))
+            CCRect rect = maskSprite.TextureRect;
+            rect.Origin.X = rect.Origin.Y = 0;
+            rect.Size = maskSprite.ContentSize.PointsToPixels();
+
+            if (base.InitWithTexture(null, rect))
             {
                 // Sets the default values
                 _onPosition = 0;
@@ -372,36 +368,9 @@ namespace Cocos2D
                 ThumbSprite = thumbSprite;
                 OnLabel = onLabel;
                 OffLabel = offLabel;
+                MaskSprite = maskSprite;
 
                 AddChild(_thumbSprite);
-
-                // Set up the mask with the Mask shader
-                MaskTexture = maskSprite.Texture;
-
-                /*
-				CCGLProgram* pProgram = new CCGLProgram();
-				pProgram->initWithVertexShaderByteArray(ccPositionTextureColor_vert, ccExSwitchMask_frag);
-				setShaderProgram(pProgram);
-				pProgram->release();
-
-				CHECK_GL_ERROR_DEBUG();
-
-				getShaderProgram()->addAttribute(kCCAttributeNamePosition, kCCVertexAttrib_Position);
-				getShaderProgram()->addAttribute(kCCAttributeNameColor, kCCVertexAttrib_Color);
-				getShaderProgram()->addAttribute(kCCAttributeNameTexCoord, kCCVertexAttrib_TexCoords);
-				CHECK_GL_ERROR_DEBUG();
-
-				getShaderProgram()->link();
-				CHECK_GL_ERROR_DEBUG();
-
-				getShaderProgram()->updateUniforms();
-				CHECK_GL_ERROR_DEBUG();                
-
-				m_uTextureLocation    = glGetUniformLocation( getShaderProgram()->getProgram(), "u_texture");
-				m_uMaskLocation       = glGetUniformLocation( getShaderProgram()->getProgram(), "u_mask");
-				CHECK_GL_ERROR_DEBUG();
-				*/
-                ContentSize = _maskTexture.ContentSize;
 
                 NeedsLayout();
                 return true;
@@ -414,42 +383,7 @@ namespace Cocos2D
             CCDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
             CCDrawManager.BindTexture(Texture);
             CCDrawManager.DrawQuad(ref m_sQuad);
-
-            //    /*
-            //    CC_NODE_DRAW_SETUP();
-
-            //    ccGLEnableVertexAttribs(kCCVertexAttribFlag_PosColorTex);
-            //    ccGLBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-            //    getShaderProgram()->setUniformForModelViewProjectionMatrix();
-
-            //    glActiveTexture(GL_TEXTURE0);
-            //    glBindTexture( GL_TEXTURE_2D, getTexture()->getName());
-            //    glUniform1i(m_uTextureLocation, 0);
-
-            //    glActiveTexture(GL_TEXTURE1);
-            //    glBindTexture( GL_TEXTURE_2D, m_pMaskTexture->getName() );
-            //    glUniform1i(m_uMaskLocation, 1);
-
-            //#define kQuadSize sizeof(m_sQuad.bl)
-            //    long offset = (long)&m_sQuad;
-
-            //    // vertex
-            //    int diff = offsetof( ccV3F_C4B_T2F, vertices);
-            //    glVertexAttribPointer(kCCVertexAttrib_Position, 3, GL_FLOAT, GL_FALSE, kQuadSize, (void*) (offset + diff));
-
-            //    // texCoods
-            //    diff = offsetof( ccV3F_C4B_T2F, texCoords);
-            //    glVertexAttribPointer(kCCVertexAttrib_TexCoords, 2, GL_FLOAT, GL_FALSE, kQuadSize, (void*)(offset + diff));
-
-            //    // color
-            //    diff = offsetof( ccV3F_C4B_T2F, colors);
-            //    glVertexAttribPointer(kCCVertexAttrib_Color, 4, GL_UNSIGNED_BYTE, GL_TRUE, kQuadSize, (void*)(offset + diff));
-
-            //    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);    
-            //    glActiveTexture(GL_TEXTURE0);
-            //    */
         }
-
 
         public void NeedsLayout()
         {
@@ -458,7 +392,7 @@ namespace Cocos2D
             _offSprite.Position = new CCPoint(_onSprite.ContentSize.Width + _offSprite.ContentSize.Width / 2 + _sliderXPosition,
                                                 _offSprite.ContentSize.Height / 2);
             _thumbSprite.Position = new CCPoint(_onSprite.ContentSize.Width + _sliderXPosition,
-                                                 _maskTexture.ContentSize.Height / 2);
+                                                 _maskSprite.ContentSize.Height / 2);
 
             if (_onLabel != null)
             {
@@ -471,8 +405,11 @@ namespace Cocos2D
                                                    _offSprite.ContentSize.Height / 2);
             }
 
-            CCRenderTexture rt = new CCRenderTexture((int) _maskTexture.ContentSize.Width, (int) _maskTexture.ContentSize.Height,
-                                                        SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents);
+            var rt = new CCRenderTexture(
+                (int) _maskSprite.TextureRect.Size.Width,
+                (int) _maskSprite.TextureRect.Size.Height,
+                SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents
+                );
 
             rt.BeginWithClear(0, 0, 0, 0);
 
@@ -488,23 +425,14 @@ namespace Cocos2D
                 _offLabel.Visit();
             }
 
-            if (_maskSprite == null)
-            {
-                _maskSprite = new CCSprite(_maskTexture);
-                _maskSprite.AnchorPoint = new CCPoint(0, 0);
-                _maskSprite.BlendFunc = new CCBlendFunc(CCOGLES.GL_ZERO, CCOGLES.GL_SRC_ALPHA);
-            }
-            else
-            {
-                _maskSprite.Texture = _maskTexture;
-            }
+            _maskSprite.AnchorPoint = new CCPoint(0, 0);
+            _maskSprite.BlendFunc = new CCBlendFunc(CCOGLES.GL_ZERO, CCOGLES.GL_SRC_ALPHA);
 
             _maskSprite.Visit();
 
             rt.End();
 
-            Texture = rt.Sprite.Texture;
-            //IsFlipY = true;
+            InitWithTexture(rt.Sprite.Texture);
         }
     }
 }
