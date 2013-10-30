@@ -13,20 +13,30 @@ namespace Cocos2D
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        [Obsolete("use CCContentManager.SharedContentManager.Load<string>()")]
         public static string LoadContentFile(string file)
         {
             string content = null;
             try
             {
-                var data = CCApplication.SharedApplication.Content.Load<CCContent>(file);
-                if (data != null && data.Content != null)
-                {
-                    content = data.Content;
-                }
+                content = CCApplication.SharedApplication.Content.Load<string>(file);
             }
             catch (Exception)
             {
+                // Ignore - continue with loading as CCContent
+            }
+            if (content == null)
+            {
+                try
+                {
+                    var data = CCApplication.SharedApplication.Content.Load<CCContent>(file);
+                    if (data != null && data.Content != null)
+                    {
+                        content = data.Content;
+                    }
+                }
+                catch (Exception)
+                {
+                }
             }
             if (content == null)
             {
