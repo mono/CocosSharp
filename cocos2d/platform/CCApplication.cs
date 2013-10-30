@@ -97,8 +97,10 @@ namespace Cocos2D
             set { m_pDelegate = value; }
         }
 
-        [Obsolete("use CCContentManager.SharedContentManager")]
-        public ContentManager Content { get; private set; }
+        /// <summary>
+        /// This returns the shared CCContentManager.
+        /// </summary>
+        public ContentManager Content { get { return (CCContentManager.SharedContentManager); } private set {  } }
 
         public void ClearTouches()
         {

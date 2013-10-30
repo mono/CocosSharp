@@ -288,7 +288,7 @@ namespace Cocos2D
                     foreach (var item in _backgroundSpriteDispatchTable)
                     {
                         var sprite = item.Value as CCScale9Sprite;
-                        if (sprite == null)
+                        if (sprite != null)
                         {
                             sprite.PreferredSize = value;
                         }
