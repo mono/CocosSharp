@@ -354,7 +354,7 @@ namespace Cocos2D
         {
             CCRect rect = maskSprite.TextureRect;
             rect.Origin.X = rect.Origin.Y = 0;
-            rect.Size = maskSprite.ContentSize.PointsToPixels();
+            rect.Size = maskSprite.TextureRect.Size;
 
             if (base.InitWithTexture(null, rect))
             {
@@ -406,8 +406,8 @@ namespace Cocos2D
             }
 
             var rt = new CCRenderTexture(
-                (int) _maskSprite.TextureRect.Size.Width,
-                (int) _maskSprite.TextureRect.Size.Height,
+                (int) _maskSprite.ContentSizeInPixels.Width,
+                (int) _maskSprite.ContentSizeInPixels.Height,
                 SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents
                 );
 
@@ -433,6 +433,8 @@ namespace Cocos2D
             rt.End();
 
             InitWithTexture(rt.Sprite.Texture);
+            
+            ContentSize = _maskSprite.ContentSize;
         }
     }
 }
