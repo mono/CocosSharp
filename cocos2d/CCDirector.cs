@@ -1152,7 +1152,7 @@ namespace Cocos2D
                 }
             }
 
-            float factor = CCDrawManager.DesignResolutionSize.Height / 320.0f / 2;
+            const float factor = 2.0f;
             var pos = CCDirector.SharedDirector.VisibleOrigin;
 
             m_pFPSLabel.Scale = factor;
@@ -1162,12 +1162,12 @@ namespace Cocos2D
             m_pMemoryLabel.Scale = factor;
             m_pGCLabel.Scale = factor;
 
-            m_pMemoryLabel.Position = new CCPoint(4 * factor, 44 * factor) + pos;
-            m_pGCLabel.Position = new CCPoint(4 * factor, 36 * factor) + pos;
-            m_pDrawsLabel.Position = new CCPoint(4 * factor, 28 * factor) + pos;
-            m_pUpdateTimeLabel.Position = new CCPoint(4 * factor, 20 * factor) + pos;
-            m_pDrawTimeLabel.Position = new CCPoint(4 * factor, 12 * factor) + pos;
-            m_pFPSLabel.Position = new CCPoint(4 * factor, 4 * factor) + pos;
+            m_pMemoryLabel.Position = new CCPoint(2 * factor, 31 * factor) + pos;
+            m_pGCLabel.Position = new CCPoint(2 * factor, 25 * factor) + pos;
+            m_pDrawsLabel.Position = new CCPoint(2 * factor, 19 * factor) + pos;
+            m_pUpdateTimeLabel.Position = new CCPoint(2 * factor, 13 * factor) + pos;
+            m_pDrawTimeLabel.Position = new CCPoint(2 * factor, 7 * factor) + pos;
+            m_pFPSLabel.Position = new CCPoint(2 * factor, 1 * factor) + pos;
         }
 
         private WeakReference _wk = new WeakReference(new object());
