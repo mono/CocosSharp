@@ -4,7 +4,7 @@
     <id>Cocos2D-XNA.Ouya</id>
     <version>1.2.0.0</version>
     <title>Cocos2D-XNA for OUYA</title>
-    <authors>Cocos2D-XNA, Totally Evil Entertainment, LLC, and Xamarin, Inc.</authors>
+    <authors>Cocos2D-XNA, Totally Evil Entertainment, LLC.</authors>
     <owners>Cocos2D-XNA</owners>
     <licenseUrl>https://cocos2dxna.codeplex.com/license</licenseUrl>
     <projectUrl>http://cocos2dxna.codeplex.com</projectUrl>
@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cocos2D-XNA for OUYA is a simple game engine typically used for 2D games, educational software and 2D visualizations.   This code allows games to be built with a write-once, run-anywhere approach.</description>
     <copyright>Copyright 2013 Cocos2D-XNA</copyright>
-    <tags>cocos2d cocos2d-xna xna monogame 2D games visualization engine xamarin totallyevil android google</tags>
+    <tags>cocos2d cocos2d-xna xna monogame 2D games visualization engine totallyevil android google</tags>
 
   </metadata>
 

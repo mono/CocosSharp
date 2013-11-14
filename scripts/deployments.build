@@ -158,16 +158,66 @@
 
       <mkdir dir="${packages.dir.path}" />
 
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Windows.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsPhone7.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsGL.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Windows8.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsPhone8.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.iOS.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Android.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.Ouya.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.MGCB.nuspec -OutputDirectory ${packages.dir.path}" />
-      <exec program="${nuget.cmd.dir.path} " commandline="pack ${nuspec.file.dir.path}Cocos2D.WindowsDX.nuspec -OutputDirectory ${packages.dir.path}" />
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.Android.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.Windows.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.WindowsPhone7.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.WindowsGL.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.Windows8.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.WindowsPhone8.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.iOS.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.Ouya.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.MGCB.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
+      <exec program="${nuget.cmd.dir.path}">
+        <arg value="pack"/>
+	<arg value="${nuspec.file.dir.path}Cocos2D.WindowsDX.nuspec"/>
+	<arg value="-OutputDirectory"/>
+	<arg value="${packages.dir.path}"/>
+      </exec> 
     </if>
   </target>
 

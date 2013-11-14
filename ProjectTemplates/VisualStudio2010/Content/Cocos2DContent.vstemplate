@@ -1,6 +1,6 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
-    <Name>Cocos2D Content Project</Name>
+    <Name>Cocos2D-XNA Content Project</Name>
     <Description>An empty Cocos2D content project targeting one or more platforms.</Description>
     <ProjectType>CSharp</ProjectType>
     <SortOrder>1000</SortOrder>
