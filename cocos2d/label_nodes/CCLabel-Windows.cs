@@ -201,7 +201,7 @@ namespace Cocos2D
             glyphRun.FontSize = _currentDIP;
 
             var BrushColor = SharpDX.Color.White;
-
+            /*
             SharpDX.DirectWrite.Matrix mtrx = new SharpDX.DirectWrite.Matrix();
             mtrx.M11 = 1F;
             mtrx.M12 = 0;
@@ -209,7 +209,7 @@ namespace Cocos2D
             mtrx.M22 = 1F;
             mtrx.Dx = 0;
             mtrx.Dy = 0;
-
+            */
             //GlyphMetrics[] metrics = fontFace.GetGdiCompatibleGlyphMetrics(23, 1, mtrx, false, glyphIndices, false);
 
             //FontMetrics metr = fontFace.GetGdiCompatibleMetrics(23, 1, new SharpDX.DirectWrite.Matrix());
