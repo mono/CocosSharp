@@ -45,8 +45,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\..\..\..\NuGet\bin\Cocos2D-XNA.WindowsPhone8.0.9.0.0.nupkg">
-      <Link>Packages\Cocos2D-XNA.WindowsPhone8.0.9.0.0.nupkg</Link>
+    <Content Include="..\..\..\..\..\..\NuGet\bin\Cocos2D-XNA.WindowsPhone8.1.2.0.0.nupkg">
+      <Link>Packages\Cocos2D-XNA.WindowsPhone8.1.2.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="..\..\..\Template\bin\EmptyProject.WP8.zip">

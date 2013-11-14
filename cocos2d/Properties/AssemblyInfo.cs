@@ -36,7 +36,7 @@ using System.Resources;
 #endif
 
 [assembly: AssemblyCompany("Open Source Software Provided As-Is")]
-[assembly: AssemblyCopyright("Copyright © Cocos2D-XNA Team; TotallyEvil Entertainment, LLC; Xamarin, Inc.")]
+[assembly: AssemblyCopyright("Copyright © Cocos2D-XNA Team; TotallyEvil Entertainment, LLC.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -58,5 +58,5 @@ using System.Resources;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("2.0.3.0")]
+[assembly: AssemblyVersion("2.2.4.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

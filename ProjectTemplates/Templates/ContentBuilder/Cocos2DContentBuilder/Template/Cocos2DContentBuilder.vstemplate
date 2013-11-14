@@ -31,7 +31,7 @@
 	<WizardData>
 		<packages repository="extension"
 			  repositoryId="Cocos2D_XNAContentBuilder.1d4400b6-49ce-4cf1-9f64-ed68b2db9361">
-			<package id="Cocos2D-XNA.MGCB" version="0.9.0.0" />
+			<package id="Cocos2D-XNA.MGCB" version="1.2.0.0" />
 		</packages>
 	</WizardData>
 

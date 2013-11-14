@@ -49,8 +49,8 @@
       <Link>ProjectTemplates\Cocos2D-XNA\iOS\EmptyProject.iOS.zip</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\..\..\..\NuGet\bin\Cocos2D-XNA.iOS.0.9.0.0.nupkg">
-      <Link>Packages\Cocos2D-XNA.iOS.0.9.0.0.nupkg</Link>
+    <Content Include="..\..\..\..\..\..\NuGet\bin\Cocos2D-XNA.iOS.1.2.0.0.nupkg">
+      <Link>Packages\Cocos2D-XNA.iOS.1.2.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">

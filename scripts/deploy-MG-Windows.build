@@ -59,14 +59,14 @@
       </exec> 
       <exec program="${nuget.cmd.dir.path}">
         <arg value="push"/>
-	<arg value="${packages.dir.path}\Cocos2D-XNA.WindowsGL.1.1.0.0.nupkg"/>
+	<arg value="${packages.dir.path}\Cocos2D-XNA.WindowsGL.1.2.0.0.nupkg"/>
 	<arg value="-s"/>
 	<arg value="http://nuget.cocos2dxna.com/"/>
 	<arg value="${apikey}"/>
       </exec>
       <exec program="${nuget.cmd.dir.path}">
         <arg value="push"/>
-	<arg value="${packages.dir.path}\Cocos2D-XNA.WindowsDX.1.1.0.0.nupkg"/>
+	<arg value="${packages.dir.path}\Cocos2D-XNA.WindowsDX.1.2.0.0.nupkg"/>
 	<arg value="-s"/>
 	<arg value="http://nuget.cocos2dxna.com/"/>
 	<arg value="${apikey}"/>
