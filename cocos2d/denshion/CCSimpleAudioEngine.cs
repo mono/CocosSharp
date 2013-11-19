@@ -87,6 +87,7 @@ namespace CocosDenshion
         /// </summary>
         public void RestoreMediaState()
         {
+            // CCTask.RunAsync(CocosDenshion.CCSimpleAudioEngine.SharedEngine.RestoreMediaState); 
             SharedMusic.RestoreMediaState();
         }
 
@@ -95,6 +96,7 @@ namespace CocosDenshion
         /// </summary>
         public void SaveMediaState()
         {
+            // CCTask.RunAsync(CocosDenshion.CCSimpleAudioEngine.SharedEngine.SaveMediaState); 
             SharedMusic.SaveMediaState();
         }
         /**

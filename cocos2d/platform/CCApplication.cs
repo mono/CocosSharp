@@ -100,7 +100,7 @@ namespace Cocos2D
         /// <summary>
         /// This returns the shared CCContentManager.
         /// </summary>
-        public ContentManager Content { get { return (CCContentManager.SharedContentManager); } private set {  } }
+        public ContentManager Content { get { return(CCContentManager.SharedContentManager); } private set { } }
 
         public void ClearTouches()
         {

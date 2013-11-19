@@ -367,9 +367,11 @@ namespace Cocos2D
                 return (false);
             }
 #if WINDOWS_PHONE8
+            /*
             byte[] cloneOfData = new byte[data.Length];
             data.CopyTo(cloneOfData, 0);
             data = cloneOfData;
+             */
 #endif
 
             var texture = LoadTexture(new MemoryStream(data, false));
@@ -749,7 +751,8 @@ namespace Cocos2D
 
         public override void Reinit()
         {
-            CCLog.Log("reinit called on texture {0}", Name);
+            CCLog.Log("reinit called on texture '{0}' {1}x{2}", Name, m_tContentSize.Width, m_tContentSize.Height);
+
             Texture2D textureToDispose = null;
             if (m_Texture2D != null && !m_Texture2D.IsDisposed && !m_bManaged)
             {
@@ -804,7 +807,7 @@ namespace Cocos2D
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            if (textureToDispose != null)
+            if (textureToDispose != null && !textureToDispose.IsDisposed)
             {
                 textureToDispose.Dispose();
             }
