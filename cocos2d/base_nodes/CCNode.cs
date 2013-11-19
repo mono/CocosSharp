@@ -687,6 +687,8 @@ namespace Cocos2D
             return null;
         }
 
+        #region AddChild
+
         public void AddChild(CCNode child)
         {
             Debug.Assert(child != null, "Argument must be no-null");
@@ -726,6 +728,18 @@ namespace Cocos2D
                 child.OnEnterTransitionDidFinish();
             }
         }
+        private void InsertChild(CCNode child, int z, int tag)
+        {
+            m_bReorderChildDirty = true;
+            m_pChildren.Add(child);
+
+            ChangedChildTag(child, kCCNodeTagInvalid, tag);
+
+            child.m_nZOrder = z;
+        }
+        #endregion
+
+        #region RemoveChild
 
         public void RemoveFromParent()
         {
@@ -778,6 +792,25 @@ namespace Cocos2D
             }
             else
             {
+                RemoveChild(child, cleanup);
+            }
+        }
+
+        public virtual void RemoveAllChildrenByTag(int tag)
+        {
+            RemoveAllChildrenByTag(tag, true);
+        }
+
+        public virtual void RemoveAllChildrenByTag(int tag, bool cleanup)
+        {
+            Debug.Assert(tag != (int)CCNodeTag.Invalid, "Invalid tag");
+            while (true)
+            {
+                CCNode child = GetChildByTag(tag);
+                if (child == null)
+                {
+                    break;
+                }
                 RemoveChild(child, cleanup);
             }
         }
@@ -847,6 +880,7 @@ namespace Cocos2D
 
             m_pChildren.Remove(child);
         }
+        #endregion
 
         private void ChangedChildTag(CCNode child, int oldTag, int newTag)
         {
@@ -875,16 +909,6 @@ namespace Cocos2D
 
                 list.Add(child);
             }
-        }
-
-        private void InsertChild(CCNode child, int z, int tag)
-        {
-            m_bReorderChildDirty = true;
-            m_pChildren.Add(child);
-
-            ChangedChildTag(child, kCCNodeTagInvalid, tag);
-
-            child.m_nZOrder = z;
         }
 
         public virtual void ReorderChild(CCNode child, int zOrder)
