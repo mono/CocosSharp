@@ -64,10 +64,10 @@ namespace Cocos2D
             Matrix mat1 = m1.XnaMatrix;
             Matrix mat2 = m2.XnaMatrix;
             Matrix mat1to2 = mat1 * Matrix.Invert(mat2);
-            int width2 = target.Texture.XNATexture.Width;
-            int height2 = target.Texture.XNATexture.Height;
-            int width1 = Texture.XNATexture.Width;
-            int height1 = Texture.XNATexture.Height;
+            int width2 = (int)target.ContentSize.Width;
+            int height2 = (int)target.ContentSize.Height;
+            int width1 = (int)ContentSize.Width;
+            int height1 = (int)ContentSize.Height;
             byte[] maskA = CollisionMask;
             byte[] maskB = target.CollisionMask;
             for (int x1 = 0; x1 < width1; x1++)
