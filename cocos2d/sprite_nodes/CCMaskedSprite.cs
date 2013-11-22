@@ -54,13 +54,15 @@ namespace Cocos2D
         public virtual bool CollidesWith(CCMaskedSprite target, out CCPoint pt)
         {
             pt = CCPoint.Zero;
-            if (!BoundingBox.IntersectsRect(target.BoundingBox))
+            CCAffineTransform m1 = NodeToWorldTransform();
+            CCAffineTransform m2 = target.NodeToWorldTransform();
+            CCRect myBBInWorld = m1.Transform(BoundingBox);
+            CCRect targetBBInWorld = m2.Transform(target.BoundingBox);
+            if (!myBBInWorld.IntersectsRect(targetBBInWorld))
             {
                 return (false);
             }
             // Based upon http://www.riemers.net/eng/Tutorials/XNA/Csharp/Series2D/Putting_CD_into_practice.php
-            CCAffineTransform m1 = NodeToWorldTransform();
-            CCAffineTransform m2 = target.NodeToWorldTransform();
             Matrix mat1 = m1.XnaMatrix;
             Matrix mat2 = m2.XnaMatrix;
             Matrix mat1to2 = mat1 * Matrix.Invert(mat2);
