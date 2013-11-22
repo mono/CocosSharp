@@ -1446,15 +1446,12 @@ namespace Cocos2D
 
         public CCAffineTransform NodeToWorldTransform()
         {
-            CCAffineTransform t = NodeToParentTransform();
+            CCAffineTransform t = CCAffineTransform.Identity;
 
-            CCNode p = m_pParent;
-            while (p != null)
+            for (CCNode p = m_pParent; p != null; p = p.Parent)
             {
                 t.Concat(p.NodeToParentTransform());
-                p = p.Parent;
             }
-
             return t;
         }
 
