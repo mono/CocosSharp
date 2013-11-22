@@ -547,6 +547,47 @@ namespace Cocos2D
             }
         }
 
+        /// <summary>
+        /// Returns the given point, which is assumed to be in this node's coordinate
+        /// system, as a point in the given target's coordinate system.
+        /// </summary>
+        /// <param name="ptInNode"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public CCPoint ConvertPointTo(ref CCPoint ptInNode, CCNode target)
+        {
+            CCPoint pt = NodeToWorldTransform().Transform(ptInNode);
+            pt = target.WorldToNodeTransform().Transform(pt);
+            return (pt);
+        }
+
+        /// <summary>
+        /// Returns this node's bounding box in the coordinate system of the given target.
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public CCRect GetBoundingBox(CCNode target)
+        {
+            CCRect rect = WorldBoundingBox;
+            rect = target.WorldToNodeTransform().Transform(rect);
+            return (rect);
+        }
+
+        /// <summary>
+        /// Returns the bounding box of this node in world coordinates
+        /// </summary>
+        public CCRect WorldBoundingBox
+        {
+            get
+            {
+                var rect = new CCRect(0, 0, m_obContentSize.Width, m_obContentSize.Height);
+                return CCAffineTransform.Transform(rect, NodeToWorldTransform());
+            }
+        }
+
+        /// <summary>
+        /// Returns the bounding box of this node in the coordinate system of its parent.
+        /// </summary>
         public CCRect BoundingBox
         {
             get
@@ -556,6 +597,11 @@ namespace Cocos2D
             }
         }
 
+        /// <summary>
+        /// Returns the bounding box of this node, in the coordinate system of its parent,
+        /// with the scale, content scale, and other display transforms applied to return
+        /// the per-pixel bounding box.
+        /// </summary>
         public CCRect BoundingBoxInPixels
         {
             get
@@ -1452,6 +1498,10 @@ namespace Cocos2D
             for (CCNode p = m_pParent; p != null; p = p.Parent)
             {
                 n2p = p.NodeToParentTransform();
+                if (p is CCSpriteBatchNode)
+                {
+                    CCLog.Log("spriteBatch node transform: {0}", n2p);
+                }
                 t.Concat(ref n2p);
             }
             return t;
