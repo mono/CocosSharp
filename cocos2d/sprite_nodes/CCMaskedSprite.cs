@@ -56,8 +56,8 @@ namespace Cocos2D
             pt = CCPoint.Zero;
             CCAffineTransform m1 = NodeToWorldTransform();
             CCAffineTransform m2 = target.NodeToWorldTransform();
-            CCRect myBBInWorld = m1.Transform(BoundingBox);
-            CCRect targetBBInWorld = m2.Transform(target.BoundingBox);
+            CCRect myBBInWorld = WorldBoundingBox;
+            CCRect targetBBInWorld = target.WorldBoundingBox;
             if (!myBBInWorld.IntersectsRect(targetBBInWorld))
             {
                 return (false);

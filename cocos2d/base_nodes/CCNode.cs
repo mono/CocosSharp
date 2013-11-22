@@ -80,13 +80,15 @@ namespace Cocos2D
         public CCAffineTransform m_sTransform;
         protected bool m_bInverseDirty;
         protected bool m_bRunning;
-        public bool m_bTransformDirty;
+        protected bool m_bTransformDirty;
         protected bool m_bVisible;
         protected bool m_bReorderChildDirty;
         protected float m_fRotationX;
         protected float m_fRotationY;
         protected float m_fScaleX;
         protected float m_fScaleY;
+        protected bool m_bWorldTransformIsDirty = true;
+        protected CCAffineTransform m_NodeToWorldTransform = CCAffineTransform.Identity;
 
         //protected int m_nScriptHandler;
 
@@ -547,6 +549,47 @@ namespace Cocos2D
             }
         }
 
+        /// <summary>
+        /// Returns the given point, which is assumed to be in this node's coordinate
+        /// system, as a point in the given target's coordinate system.
+        /// </summary>
+        /// <param name="ptInNode"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public CCPoint ConvertPointTo(ref CCPoint ptInNode, CCNode target)
+        {
+            CCPoint pt = NodeToWorldTransform().Transform(ptInNode);
+            pt = target.WorldToNodeTransform().Transform(pt);
+            return (pt);
+        }
+
+        /// <summary>
+        /// Returns this node's bounding box in the coordinate system of the given target.
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public CCRect GetBoundingBox(CCNode target)
+        {
+            CCRect rect = WorldBoundingBox;
+            rect = target.WorldToNodeTransform().Transform(rect);
+            return (rect);
+        }
+
+        /// <summary>
+        /// Returns the bounding box of this node in world coordinates
+        /// </summary>
+        public CCRect WorldBoundingBox
+        {
+            get
+            {
+                var rect = new CCRect(0, 0, m_obContentSize.Width, m_obContentSize.Height);
+                return CCAffineTransform.Transform(rect, NodeToWorldTransform());
+            }
+        }
+
+        /// <summary>
+        /// Returns the bounding box of this node in the coordinate system of its parent.
+        /// </summary>
         public CCRect BoundingBox
         {
             get
@@ -556,6 +599,11 @@ namespace Cocos2D
             }
         }
 
+        /// <summary>
+        /// Returns the bounding box of this node, in the coordinate system of its parent,
+        /// with the scale, content scale, and other display transforms applied to return
+        /// the per-pixel bounding box.
+        /// </summary>
         public CCRect BoundingBoxInPixels
         {
             get
@@ -568,6 +616,18 @@ namespace Cocos2D
         public uint OrderOfArrival
         {
             get { return m_uOrderOfArrival; }
+        }
+
+        /// <summary>
+        /// Sets all of the transform indictators to dirty so that the visual transforms
+        /// are recomputed.
+        /// </summary>
+        public virtual void ForceTransformRefresh()
+        {
+            m_bTransformDirty = true;
+            m_bWorldTransformIsDirty = true;
+            m_bAdditionalTransformDirty = true;
+            m_bInverseDirty = true;
         }
 
         public CCAffineTransform AdditionalTransform
@@ -1416,6 +1476,7 @@ namespace Cocos2D
                 }
 
                 m_bTransformDirty = false;
+                m_bWorldTransformIsDirty = true;
             }
 
             return m_sTransform;
@@ -1447,14 +1508,17 @@ namespace Cocos2D
         public CCAffineTransform NodeToWorldTransform()
         {
             CCAffineTransform t = NodeToParentTransform();
-
-            CCNode p = m_pParent;
-            while (p != null)
+            if (!m_bWorldTransformIsDirty)
             {
-                t.Concat(p.NodeToParentTransform());
-                p = p.Parent;
+                return (m_NodeToWorldTransform);
             }
-
+            if (m_pParent != null)
+            {
+                CCAffineTransform n2p = m_pParent.NodeToWorldTransform();
+                t.Concat(ref n2p);
+            }
+            m_bWorldTransformIsDirty = false;
+            m_NodeToWorldTransform = t;
             return t;
         }
 
