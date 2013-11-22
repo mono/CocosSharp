@@ -15,12 +15,77 @@ namespace CollisionMaskGenerator
 
     class Program
     {
+        static bool bitwise = false;
+        static List<FileToProcess> files = new List<FileToProcess>();
+        static bool bAlphaMask = true;
+        static Color colorMask = Color.Black;
+        static int xFrames = 0;
+        static int yFrames = 0;
+        static int totalFrames = 0;
+        static int frameStride = 1;
+        static int frameWidth = 0;
+        static int frameHeight = 0;
+
+        static void ProcessFrames(Bitmap bmp, string outfile)
+        {
+            int w = bmp.Width;
+            int h = bmp.Height;
+            xFrames = w / frameWidth;
+            yFrames = h / frameHeight;
+            int dx = bmp.Width / xFrames;
+            int dy = bmp.Height / yFrames;
+
+            StreamWriter sw = null;
+            for (int iFrame = 1; iFrame <= totalFrames; iFrame++)
+            {
+                int x1 = (iFrame - 1) % xFrames * dx;
+                int y1 = (iFrame - 1) / yFrames * dy;
+                int x2 = x1 + dx;
+                int y2 = y1 + dy;
+                using (sw = new StreamWriter(string.Format(outfile, iFrame)))
+                {
+                    Console.WriteLine("Writing mask file to {0}", string.Format(outfile, iFrame));
+                    for (int y = y1; y < y2; y++)
+                    {
+                        for (int x = x1; x < x2; x++)
+                        {
+                            byte bTest = 0;
+                            if (bAlphaMask)
+                            {
+                                bTest = bmp.GetPixel(x, y).A;
+                            }
+                            else if (colorMask.R > 0)
+                            {
+                                bTest = bmp.GetPixel(x, y).R;
+                            }
+                            else if (colorMask.G > 0)
+                            {
+                                bTest = bmp.GetPixel(x, y).G;
+                            }
+                            else if (colorMask.B > 0)
+                            {
+                                bTest = bmp.GetPixel(x, y).B;
+                            }
+                            if (bTest != 0)
+                            {
+                                Console.Write("1");
+                                sw.Write("1");
+                            }
+                            else
+                            {
+                                sw.Write("0");
+                                Console.Write("0");
+                            }
+                        }
+                        Console.WriteLine();
+                        sw.WriteLine();
+                    }
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
-            bool bitwise = false;
-            List<FileToProcess> files = new List<FileToProcess>();
-            bool bAlphaMask = true;
-            Color colorMask =  Color.Black;
 
             for (int i = 0; i < args.Length; i++)
             {
@@ -42,6 +107,23 @@ namespace CollisionMaskGenerator
                 {
                     bAlphaMask = false;
                     colorMask = Color.Blue;
+                }
+                else if (args[i].Equals("/frames", StringComparison.OrdinalIgnoreCase) && (i+1 < args.Length))
+                {
+                    int ix = args[i + 1].IndexOf('x');
+                    frameWidth = int.Parse(args[i+1].Substring(0,ix));
+                    frameHeight = int.Parse(args[i + 1].Substring(ix + 1));
+                    i++;
+                }
+                else if (args[i].Equals("/framecount", StringComparison.OrdinalIgnoreCase) && (i + 1 < args.Length))
+                {
+                    totalFrames = int.Parse(args[i + 1]);
+                    i++;
+                }
+                else if (args[i].Equals("/skipframes", StringComparison.OrdinalIgnoreCase) && (i + 1 < args.Length))
+                {
+                    frameStride = int.Parse(args[i + 1]);
+                    i++;
                 }
                 else
                 {
@@ -80,6 +162,7 @@ namespace CollisionMaskGenerator
                 try
                 {
                     Image img = Image.FromFile(fp.Source);
+                    Bitmap bmp = (Bitmap)img;
                     int h = img.Height;
                     int w = img.Width;
                     Console.WriteLine("{0} : {1} x {2} as {3}", args[0], w, h, img.PixelFormat);
@@ -94,12 +177,19 @@ namespace CollisionMaskGenerator
                     {
                         outname = fi.Name.Replace(fi.Extension, ".mask");
                     }
+                    if (frameHeight > 0)
+                    {
+                        ProcessFrames(bmp, outname);
+                        continue;
+                    }
                     if (!bitwise)
                     {
+                        int dx = (xFrames > 0 ? w / xFrames : 0);
+                        int dy = (yFrames > 0 ? h / yFrames : 0);
+
                         using (StreamWriter sw = new StreamWriter(outname))
                         {
                             Console.WriteLine("Writing mask file to {0}", outname);
-                            Bitmap bmp = (Bitmap)img;
                             for (int y = 0; y < h; y++)
                             {
                                 for (int x = 0; x < w; x++)
@@ -142,9 +232,7 @@ namespace CollisionMaskGenerator
                         using (StreamWriter sw = new StreamWriter(outname))
                         {
                             Console.WriteLine("Writing mask file to {0}", outname);
-
                             sw.Write("{0} {1} ", w, h);
-                            Bitmap bmp = (Bitmap)img;
                             for (int y = 0; y < h; y++)
                             {
                                 for (int x = 0; x < w; x++)
