@@ -72,6 +72,10 @@ namespace Cocos2D
             int height1 = (int)ContentSize.Height;
             byte[] maskA = CollisionMask;
             byte[] maskB = target.CollisionMask;
+            if (maskA == null || maskB == null)
+            {
+                return (false);
+            }
             for (int x1 = 0; x1 < width1; x1++)
             {
                 for (int y1 = 0; y1 < height1; y1++)

@@ -305,7 +305,7 @@ namespace Cocos2D
             set
             {
                 m_fSkewX = value;
-                m_bTransformDirty = m_bInverseDirty = true;
+                SetTransformIsDirty();
             }
         }
 
@@ -315,7 +315,7 @@ namespace Cocos2D
             set
             {
                 m_fSkewY = value;
-                m_bTransformDirty = m_bInverseDirty = true;
+                SetTransformIsDirty();
             }
         }
 
@@ -351,7 +351,7 @@ namespace Cocos2D
             set
             {
                 m_fRotationX = m_fRotationY = value;
-                m_bTransformDirty = m_bInverseDirty = true;
+                SetTransformIsDirty();
             }
         }
 
@@ -361,7 +361,7 @@ namespace Cocos2D
             set
             {
                 m_fRotationX = value;
-                m_bTransformDirty = m_bInverseDirty = true;
+                SetTransformIsDirty();
             }
         }
 
@@ -371,7 +371,7 @@ namespace Cocos2D
             set
             {
                 m_fRotationY = value;
-                m_bTransformDirty = m_bInverseDirty = true;
+                SetTransformIsDirty();
             }
         }
 
@@ -388,7 +388,7 @@ namespace Cocos2D
             set
             {
                 m_fScaleX = m_fScaleY = value;
-                m_bTransformDirty = m_bInverseDirty = true;
+                SetTransformIsDirty();
             }
         }
 
@@ -401,7 +401,7 @@ namespace Cocos2D
             set
             {
                 m_fScaleX = value;
-                m_bTransformDirty = m_bInverseDirty = true;
+                SetTransformIsDirty();
             }
         }
 
@@ -414,7 +414,7 @@ namespace Cocos2D
             set
             {
                 m_fScaleY = value;
-                m_bTransformDirty = m_bInverseDirty = true;
+                SetTransformIsDirty();
             }
         }
 
@@ -428,7 +428,7 @@ namespace Cocos2D
             set
             {
                 m_obPosition = value;
-                m_bTransformDirty = m_bInverseDirty = true;
+                SetTransformIsDirty();
             }
         }
 
@@ -493,7 +493,7 @@ namespace Cocos2D
                     m_obAnchorPoint = value;
                     m_obAnchorPointInPoints = new CCPoint(m_obContentSize.Width * m_obAnchorPoint.X,
                                                                   m_obContentSize.Height * m_obAnchorPoint.Y);
-                    m_bTransformDirty = m_bInverseDirty = true;
+                    SetTransformIsDirty();
                 }
             }
         }
@@ -519,7 +519,7 @@ namespace Cocos2D
                     m_obContentSize = value;
                     m_obAnchorPointInPoints = new CCPoint(m_obContentSize.Width * m_obAnchorPoint.X,
                                                                   m_obContentSize.Height * m_obAnchorPoint.Y);
-                    m_bTransformDirty = m_bInverseDirty = true;
+                    SetTransformIsDirty();
                 }
             }
         }
@@ -544,7 +544,7 @@ namespace Cocos2D
                 if (value != m_bIgnoreAnchorPointForPosition)
                 {
                     m_bIgnoreAnchorPointForPosition = value;
-                    m_bTransformDirty = m_bInverseDirty = true;
+                    SetTransformIsDirty();
                 }
             }
         }
@@ -688,7 +688,7 @@ namespace Cocos2D
         {
             m_obPosition.X = x;
             m_obPosition.Y = y;
-            m_bTransformDirty = m_bInverseDirty = true;
+            SetTransformIsDirty();
         }
 
         protected virtual void ResetCleanState()
@@ -1476,10 +1476,33 @@ namespace Cocos2D
                 }
 
                 m_bTransformDirty = false;
-                m_bWorldTransformIsDirty = true;
             }
 
             return m_sTransform;
+        }
+
+        /// <summary>
+        /// Set my transform to be dirty and recursively set my children's transform to be dirty.
+        /// </summary>
+        protected virtual void SetTransformIsDirty()
+        {
+            m_bTransformDirty = true;
+            m_bInverseDirty = true;
+            // Me and all of my children have dirty world transforms now.
+            SetWorldTransformIsDirty();
+        }
+
+        protected virtual void SetWorldTransformIsDirty()
+        {
+            m_bWorldTransformIsDirty = true;
+            if (m_pChildren != null && m_pChildren.count > 0)
+            {
+                CCNode[] elements = m_pChildren.Elements;
+                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                {
+                    elements[i].SetWorldTransformIsDirty();
+                }
+            }
         }
 
         public virtual void UpdateTransform()
@@ -1508,6 +1531,9 @@ namespace Cocos2D
         public CCAffineTransform NodeToWorldTransform()
         {
             CCAffineTransform t = NodeToParentTransform();
+
+            // CCLog.Log("{0}.NodeToWorld: woldIsDirty={1}, transformIsDirty={2}", GetType().Name, m_bWorldTransformIsDirty, m_bTransformDirty);
+
             if (!m_bWorldTransformIsDirty)
             {
                 return (m_NodeToWorldTransform);
