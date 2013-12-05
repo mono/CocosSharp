@@ -131,14 +131,21 @@ namespace Cocos2D
                 bNotify = true;
             }
 
-            _switchSprite.RunAction(
-                new CCActionTween (
-                    0.2f,
-                    "sliderXPosition",
-                    _switchSprite.SliderXPosition,
-                    (_on) ? _switchSprite.OnPosition : _switchSprite.OffPosition
-                    )
-                );
+            if (animated)
+            {
+                _switchSprite.RunAction(
+                     new CCActionTween(
+                         0.2f,
+                     "sliderXPosition",
+                     _switchSprite.SliderXPosition,
+                     (_on) ? _switchSprite.OnPosition : _switchSprite.OffPosition
+                     )
+                 );
+            }
+            else
+            {
+                _switchSprite.SliderXPosition = (_on) ? _switchSprite.OnPosition : _switchSprite.OffPosition;
+            }
 
             if (bNotify)
             {
