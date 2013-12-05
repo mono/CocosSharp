@@ -8,8 +8,10 @@ namespace EmptyProject.Win8XAML
 	public class AppDelegate : CCApplication
 	{
 
-		int preferredWidth;
-		int preferredHeight;
+		// TODO: Set the preferred window bounds for the game, which is the
+		// design resolution of your game.
+		private int preferredWidth;
+		private int preferredHeight;
 
 		public AppDelegate(Game game, GraphicsDeviceManager graphics)
 			: base(game, graphics)
@@ -24,6 +26,9 @@ namespace EmptyProject.Win8XAML
 			
 			graphics.PreferMultiSampling = false;
 			
+			// TODO: Set your window dimensions here
+            graphics.PreferredBackBufferWidth = 1024;
+            graphics.PreferredBackBufferHeight = 768;
 		}
 		
 		/// <summary>

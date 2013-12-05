@@ -8,23 +8,23 @@ namespace EmptyProject
 	public class AppDelegate : CCApplication
 	{
 
-		int preferredWidth;
-		int preferredHeight;
+		// TODO: Set your design resolution
+		private int preferredWidth;
+		private int preferredHeight;
 
 		public AppDelegate(Game game, GraphicsDeviceManager graphics)
 			: base(game, graphics)
 		{
 			s_pSharedApplication = this;
-#if WINDOWS || MACOS || LINUX || OUYA || XBOX
-            preferredWidth = 1024;
-            preferredHeight = 768;
-#else
+
 			preferredWidth = 480;
 			preferredHeight = 320;
 
-#endif
-			graphics.PreferredBackBufferWidth = preferredWidth;
-			graphics.PreferredBackBufferHeight = preferredHeight;
+			// TODO: Set your preferred window dimensions, this will set a resolution
+			// that fits the hardware. You do not have to set this, so remove these lines
+			// if you want default behavior.
+			graphics.PreferredBackBufferWidth = 800;
+			graphics.PreferredBackBufferHeight = 480;
 
             CCDrawManager.InitializeDisplay(game, 
 			                              graphics, 
