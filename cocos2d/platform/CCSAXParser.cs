@@ -41,19 +41,22 @@ namespace Cocos2D
             return true;
         }
 
-        public bool Parse(string str, int length)
+        public bool ParseContent(string str)
         {
             TextReader textReader = new StringReader(str);
+            return (ParseContent(textReader));
+        }
+        public bool ParseContent(TextReader sr)
+        {
             var setting = new XmlReaderSettings();
 #if !PSM
             setting.DtdProcessing = DtdProcessing.Ignore;
 #endif
-            XmlReader xmlReader = XmlReader.Create(textReader, setting);
+            XmlReader xmlReader = XmlReader.Create(sr, setting);
             int dataindex = 0;
 
             int Width = 0;
             int Height = 0;
-            ;
 
             while (xmlReader.Read())
             {
@@ -150,12 +153,10 @@ namespace Cocos2D
             return true;
         }
 
-
-
-        public bool Parse(string pszFile)
+        public bool ParseContentFile(string pszFile)
         {
             string content = CCContentManager.SharedContentManager.Load<string>(pszFile);
-            return Parse(content, content.Length);
+            return ParseContent(content);
         }
 
         public void SetDelegator(ICCSAXDelegator pDelegator)

@@ -67,7 +67,7 @@ namespace Cocos2D
             }
             parser.SetDelegator(this);
 
-            parser.Parse(pFileName);
+            parser.ParseContentFile(pFileName);
             return m_pRootDict;
         }
 
@@ -88,7 +88,7 @@ namespace Cocos2D
             TextHandler(parser, System.Text.UTF8Encoding.UTF8.GetBytes("root"), 4);
             EndElement(parser, "key");
             
-            parser.Parse(pFileName);
+            parser.ParseContentFile(pFileName);
 
             EndElement(parser, "dict");
 

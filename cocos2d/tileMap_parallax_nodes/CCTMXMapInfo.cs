@@ -603,6 +603,12 @@ namespace Cocos2D
             InitWithTmxFile(tmxFile);
         }
 
+        public CCTMXMapInfo(StreamReader stream)
+        {
+            string s = stream.ReadToEnd();
+            InitWithXml(s, null);
+        }
+
         private void InternalInit(string tmxFileName, string resourcePath)
         {
             m_pTilesets = new List<CCTMXTilesetInfo>();
@@ -634,13 +640,13 @@ namespace Cocos2D
         /// <summary>
         /// initializes a TMX format witha  tmx file
         /// </summary>
-        public bool InitWithTmxFile(string tmxFile)
+        protected bool InitWithTmxFile(string tmxFile)
         {
             InternalInit(tmxFile, null);
             return ParseXmlFile(m_sTMXFileName);
         }
 
-        public bool InitWithXml(string tmxString, string resourcePath)
+        protected bool InitWithXml(string tmxString, string resourcePath)
         {
             InternalInit(null, resourcePath);
             return ParseXmlString(tmxString);
@@ -657,7 +663,7 @@ namespace Cocos2D
 
             parser.SetDelegator(this);
 
-            return parser.Parse(data, data.Length);
+            return parser.ParseContent(data);
         }
 
         /// <summary>
@@ -674,7 +680,7 @@ namespace Cocos2D
 
             parser.SetDelegator(this);
 
-            return parser.Parse(xmlFilename);
+            return parser.ParseContentFile(xmlFilename);
         }
 
         // the XML parser calls here with all the elements
