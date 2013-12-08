@@ -64,6 +64,7 @@ object->propertyNamed(name_of_the_property);
         protected List<CCTMXObjectGroup> m_pObjectGroups;
         protected Dictionary<string, string> m_pProperties;
         protected CCSize m_tMapSize;
+        public CCTMXMapInfo MapInfo { get; set; }
 
         protected CCSize m_tTileSize;
 
@@ -116,13 +117,24 @@ object->propertyNamed(name_of_the_property);
 
         #region public
 
+        public CCTMXTiledMap(string tmxFile)
+        {
+            InitWithTmxFile(tmxFile);
+        }
+
+        public CCTMXTiledMap(CCTMXMapInfo mapInfo)
+        {
+            ContentSize = CCSize.Zero;
+            BuildWithMapInfo(mapInfo);
+        }
+
         /// <summary>
         /// creates a TMX Tiled Map with a TMX file.
         /// </summary>
+        [Obsolete("Please use the ctor instead of the self factory pattern.")]
         public static CCTMXTiledMap Create(string tmxFile)
         {
-            var pRet = new CCTMXTiledMap();
-            pRet.InitWithTmxFile(tmxFile);
+            var pRet = new CCTMXTiledMap(tmxFile);
             return pRet;
         }
 
@@ -131,7 +143,7 @@ object->propertyNamed(name_of_the_property);
         /// </summary>
         public bool InitWithTmxFile(string tmxFile)
         {
-            Debug.Assert(!String.IsNullOrEmpty(tmxFile), "TMXTiledMap: tmx file should not bi nil");
+            Debug.Assert(!String.IsNullOrEmpty(tmxFile), "TMXTiledMap: tmx file should not be null");
 
             ContentSize = CCSize.Zero;
 
@@ -141,6 +153,7 @@ object->propertyNamed(name_of_the_property);
             {
                 return false;
             }
+
             Debug.Assert(mapInfo.Tilesets.Count != 0, "TMXTiledMap: Map not found. Please check the filename.");
 
             BuildWithMapInfo(mapInfo);
@@ -149,6 +162,7 @@ object->propertyNamed(name_of_the_property);
 
         private void BuildWithMapInfo(CCTMXMapInfo mapInfo)
         {
+            MapInfo = mapInfo;
             m_tMapSize = mapInfo.MapSize;
             m_tTileSize = mapInfo.TileSize;
             m_nMapOrientation = mapInfo.Orientation;
