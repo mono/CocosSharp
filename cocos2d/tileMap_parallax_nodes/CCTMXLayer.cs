@@ -88,7 +88,7 @@ namespace Cocos2D
 
         /** initializes a CCTMXLayer with a tileset info, a layer info and a map info */
 
-        public bool InitWithTilesetInfo(CCTMXTilesetInfo tilesetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
+        protected virtual bool InitWithTilesetInfo(CCTMXTilesetInfo tilesetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
         {
             // XXX: is 35% a good estimate ?
             CCSize size = layerInfo.LayerSize;
@@ -121,7 +121,7 @@ namespace Cocos2D
                 m_uLayerOrientation = (CCTMXOrientation) mapInfo.Orientation;
 
                 // offset (after layer orientation is set);
-                CCPoint offset = CalculateLayerOffset(layerInfo.Offset);
+                CCPoint offset = ApplyLayerOffset(layerInfo.Offset);
                 Position = offset.PixelsToPoints();
 
                 m_pAtlasIndexArray = new List<int>((int) totalNumberOfTiles);
@@ -144,7 +144,7 @@ namespace Cocos2D
         If you are going to call layer.tileGIDAt() then, don't release the map
         */
 
-        public void ReleaseMap()
+        public virtual void ReleaseMap()
         {
             m_pTiles = null;
             m_pAtlasIndexArray = null;
@@ -158,7 +158,7 @@ namespace Cocos2D
         - or layer.removeTileAt(ccp(x,y));
         */
 
-        public CCSprite TileAt(CCPoint pos)
+        public virtual CCSprite TileAt(CCPoint pos)
         {
             Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
             Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
@@ -204,7 +204,7 @@ namespace Cocos2D
         This method requires the the tile map has not been previously released (eg. don't call layer.releaseMap())
         */
 
-        public uint TileGIDAt(CCPoint pos)
+        public virtual uint TileGIDAt(CCPoint pos)
         {
             uint tmp;
             return TileGIDAt(pos, out tmp);
@@ -215,7 +215,7 @@ namespace Cocos2D
          This method requires the the tile map has not been previously released (eg. don't call [layer releaseMap])
          */
 
-        public uint TileGIDAt(CCPoint pos, out uint flags)
+        public virtual uint TileGIDAt(CCPoint pos, out uint flags)
         {
             Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
             Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
@@ -235,7 +235,7 @@ namespace Cocos2D
         If a tile is already placed at that position, then it will be removed.
         */
 
-        public void SetTileGID(uint gid, CCPoint pos)
+        public virtual void SetTileGID(uint gid, CCPoint pos)
         {
             SetTileGID(gid, pos, 0);
         }
@@ -247,7 +247,7 @@ namespace Cocos2D
          Use withFlags if the tile flags need to be changed as well
          */
 
-        public void SetTileGID(uint gid, CCPoint pos, uint flags)
+        public virtual void SetTileGID(uint gid, CCPoint pos, uint flags)
         {
             Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
             Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
@@ -297,7 +297,7 @@ namespace Cocos2D
 
         /** removes a tile at given tile coordinate */
 
-        public void RemoveTileAt(CCPoint pos)
+        public virtual void RemoveTileAt(CCPoint pos)
         {
             Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
             Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
@@ -347,7 +347,7 @@ namespace Cocos2D
 
         /** returns the position in points of a given tile coordinate */
 
-        public CCPoint PositionAt(CCPoint pos)
+        public virtual CCPoint PositionAt(CCPoint pos)
         {
             CCPoint ret = CCPoint.Zero;
             switch (m_uLayerOrientation)
@@ -368,7 +368,7 @@ namespace Cocos2D
 
         /** return the value for the specific property name */
 
-        public String PropertyNamed(string propertyName)
+        public virtual String PropertyNamed(string propertyName)
         {
             if (m_pProperties.ContainsKey(propertyName))
             {
@@ -382,7 +382,7 @@ namespace Cocos2D
 
         /** Creates the tiles */
 
-        public void SetupTiles()
+        public virtual void SetupTiles()
         {
             // Optimization: quick hack that sets the image size on the tileset
             m_pTileSet.m_tImageSize = m_pobTextureAtlas.Texture.ContentSizeInPixels;
@@ -483,7 +483,12 @@ namespace Cocos2D
             return xy;
         }
 
-        private CCPoint CalculateLayerOffset(CCPoint pos)
+        /// <summary>
+        /// Apply the tile offset to the given point. Returns the result of applying the offset to the given position.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        private CCPoint ApplyLayerOffset(CCPoint pos)
         {
             CCPoint ret = CCPoint.Zero;
             switch (m_uLayerOrientation)
@@ -642,7 +647,7 @@ namespace Cocos2D
             if ((gid & CCTMXTileFlags.TileDiagonal) != 0)
             {
                 // put the anchor in the middle for ease of rotation.
-                sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
+                sprite.AnchorPoint = CCPoint.AnchorMiddle;
                 CCPoint pointAtPos = PositionAt(pos);
                 sprite.Position = new CCPoint(pointAtPos.X + sprite.ContentSize.Height / 2,
                                               pointAtPos.Y + sprite.ContentSize.Width / 2);

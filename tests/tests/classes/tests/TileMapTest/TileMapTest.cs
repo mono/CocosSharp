@@ -125,7 +125,7 @@ namespace tests
             //CCLayerColor* color = new CCLayerColor( ccc4(64,64,64,255) );
             //addChild(color, -1);
 
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test2");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test2");
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -179,7 +179,7 @@ namespace tests
     {
         public TMXOrthoTest2()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test1");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test1");
             AddChild(map, 0, kTagTileMap);
 
             /*
@@ -215,7 +215,7 @@ namespace tests
     {
         public TMXOrthoTest3()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test3");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test3");
             AddChild(map, 0, kTagTileMap);
 
             /*
@@ -253,7 +253,7 @@ namespace tests
     {
         public TMXOrthoTest4()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test4");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test4");
             AddChild(map, 0, kTagTileMap);
 
             /*
@@ -322,7 +322,7 @@ namespace tests
         {
             m_gid = 0;
 
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test2");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test2");
             AddChild(map, 0, kTagTileMap);
 
             CCTMXLayer layer = map.LayerNamed("Layer 0");
@@ -460,7 +460,7 @@ namespace tests
             CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/hexa-test1");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/hexa-test1");
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -484,7 +484,7 @@ namespace tests
             CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test01");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test01");
             AddChild(map, 0, kTagTileMap);
 
             // move map to the center of the screen
@@ -511,7 +511,7 @@ namespace tests
             CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test11");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test11");
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -537,7 +537,7 @@ namespace tests
             CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test22");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test22");
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -566,7 +566,7 @@ namespace tests
             CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test2-uncompressed");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test2-uncompressed");
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -608,7 +608,7 @@ namespace tests
     {
         public TMXTilesetTest()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test5");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test5");
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -639,7 +639,7 @@ namespace tests
     {
         public TMXOrthoObjectsTest()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/ortho-objects");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/ortho-objects");
             AddChild(map, -1, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -671,24 +671,22 @@ namespace tests
         {
             var map = (CCTMXTiledMap) GetChildByTag(kTagTileMap);
             CCTMXObjectGroup group = map.ObjectGroupNamed("Object Group 1");
-
+            
             List<Dictionary<string, string>> objects = group.Objects;
             foreach (var dict in objects)
             {
-                int x = int.Parse(dict["x"]);
-                int y = int.Parse(dict["y"]);
-                int width = dict.ContainsKey("width") ? int.Parse(dict["width"]) : 0;
-                int height = dict.ContainsKey("height") ? int.Parse(dict["height"]) : 0;
-
-                //glLineWidth(3);
+                float x = float.Parse(dict["x"]);
+                float y = float.Parse(dict["y"]);
+                float width = (dict.ContainsKey("width") ? float.Parse(dict["width"]) : 0f);
+                float height = (dict.ContainsKey("height") ? float.Parse(dict["height"]) : 0f);
 
                 var color = new CCColor4B(255, 255, 0, 255);
 
                 CCDrawingPrimitives.Begin();
-                CCDrawingPrimitives.DrawLine(new CCPoint(x, y), new CCPoint((x + width), y), color);
-                CCDrawingPrimitives.DrawLine(new CCPoint((x + width), y), new CCPoint((x + width), (y + height)), color);
-                CCDrawingPrimitives.DrawLine(new CCPoint((x + width), (y + height)), new CCPoint(x, (y + height)), color);
-                CCDrawingPrimitives.DrawLine(new CCPoint(x, (y + height)), new CCPoint(x, y), color);
+                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform().Transform(new CCPoint(x, y)), this.NodeToWorldTransform().Transform(new CCPoint((x + width), y)), color);
+                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform().Transform(new CCPoint((x + width), y)), this.NodeToWorldTransform().Transform(new CCPoint((x + width), (y + height))), color);
+                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform().Transform(new CCPoint((x + width), (y + height))), this.NodeToWorldTransform().Transform(new CCPoint(x, (y + height))), color);
+                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform().Transform(new CCPoint(x, (y + height))), this.NodeToWorldTransform().Transform(new CCPoint(x, y)), color);
                 CCDrawingPrimitives.End();
 
                 //glLineWidth(1);
@@ -715,7 +713,7 @@ namespace tests
     {
         public TMXIsoObjectsTest()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test-objectgroup");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test-objectgroup");
             AddChild(map, -1, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -789,7 +787,7 @@ namespace tests
     {
         public TMXResizeTest()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test5");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test5");
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -829,7 +827,7 @@ namespace tests
 
         public TMXIsoZorder()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test-zorder");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test-zorder");
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -898,7 +896,7 @@ namespace tests
 
         public TMXOrthoZorder()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test-zorder");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test-zorder");
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -956,7 +954,7 @@ namespace tests
 
         public TMXIsoVertexZ()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test-vertexz");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test-vertexz");
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -1022,7 +1020,7 @@ namespace tests
 
         public TMXOrthoVertexZ()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test-vertexz");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test-vertexz");
             AddChild(map, 0, kTagTileMap);
 
             CCSize s = map.ContentSize;
@@ -1084,7 +1082,7 @@ namespace tests
     {
         public TMXIsoMoveLayer()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test-movelayer");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test-movelayer");
             AddChild(map, 0, kTagTileMap);
 
             map.Position = new CCPoint(-700, -50);
@@ -1110,7 +1108,7 @@ namespace tests
     {
         public TMXOrthoMoveLayer()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test-movelayer");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test-movelayer");
             AddChild(map, 0, kTagTileMap);
         }
 
@@ -1135,7 +1133,7 @@ namespace tests
     {
         public TMXTilePropertyTest()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/ortho-tile-property");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/ortho-tile-property");
             AddChild(map, 0, kTagTileMap);
 
             for (uint i = 1; i <= 20; i++)
@@ -1164,7 +1162,7 @@ namespace tests
     {
         public TMXOrthoFlipTest()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/ortho-rotation-test");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/ortho-rotation-test");
             AddChild(map, 0, kTagTileMap);
 
             /*
@@ -1195,7 +1193,7 @@ namespace tests
     {
         public TMXOrthoFlipRunTimeTest()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/ortho-rotation-test");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/ortho-rotation-test");
             AddChild(map, 0, kTagTileMap);
 
             /*
@@ -1270,7 +1268,7 @@ namespace tests
     {
         public TMXOrthoFromXMLTest()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test1");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test1");
             AddChild(map, 0, kTagTileMap);
 
             /*
@@ -1301,7 +1299,7 @@ namespace tests
     {
         public TMXBug987()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/orthogonal-test6");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test6");
             AddChild(map, 0, kTagTileMap);
 
             /*
@@ -1341,7 +1339,7 @@ namespace tests
     {
         public TMXBug787()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/iso-test-bug787");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test-bug787");
             AddChild(map, 0, kTagTileMap);
 
             map.Scale = (0.25f);
@@ -1813,7 +1811,7 @@ namespace tests
     {
         public TMXGIDObjectsTest()
         {
-            CCTMXTiledMap map = CCTMXTiledMap.Create("TileMaps/test-object-layer");
+            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/test-object-layer");
             AddChild(map, -1, kTagTileMap);
         }
 
