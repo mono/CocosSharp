@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     internal static partial class CCLabelUtilities
     {

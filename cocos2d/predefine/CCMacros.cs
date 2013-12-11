@@ -23,7 +23,7 @@ THE SOFTWARE.
 
 using System;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public static class CCMacros
     {

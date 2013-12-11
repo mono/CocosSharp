@@ -1,5 +1,5 @@
 ﻿using System;
-using Cocos2D;
+using CocosSharp;
 
 namespace tests.classes
 {
