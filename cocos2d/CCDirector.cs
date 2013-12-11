@@ -1114,31 +1114,33 @@ namespace Cocos2D
 
                 try
                 {
+                    texture.IsAntialiased = false; // disable antialiasing so the labels are always sharp
+                    
                     m_pFPSLabel = new CCLabelAtlas();
-                    m_pFPSLabel.SetIgnoreContentScaleFactor(true);
-                    m_pFPSLabel.InitWithString("00.0", texture, 12, 32, '.');
+                    m_pFPSLabel.SetIgnoreContentScaleFactor(false);
+                    m_pFPSLabel.InitWithString("00.0", texture, 4, 8, '.');
 
                     m_pUpdateTimeLabel = new CCLabelAtlas();
-                    m_pUpdateTimeLabel.SetIgnoreContentScaleFactor(true);
-                    m_pUpdateTimeLabel.InitWithString("0.000", texture, 12, 32, '.');
+                    m_pUpdateTimeLabel.SetIgnoreContentScaleFactor(false);
+                    m_pUpdateTimeLabel.InitWithString("0.000", texture, 4, 8, '.');
 
                     m_pDrawTimeLabel = new CCLabelAtlas();
-                    m_pDrawTimeLabel.SetIgnoreContentScaleFactor(true);
-                    m_pDrawTimeLabel.InitWithString("0.000", texture, 12, 32, '.');
+                    m_pDrawTimeLabel.SetIgnoreContentScaleFactor(false);
+                    m_pDrawTimeLabel.InitWithString("0.000", texture, 4, 8, '.');
 
                     m_pDrawsLabel = new CCLabelAtlas();
-                    m_pDrawsLabel.SetIgnoreContentScaleFactor(true);
-                    m_pDrawsLabel.InitWithString("000", texture, 12, 32, '.');
+                    m_pDrawsLabel.SetIgnoreContentScaleFactor(false);
+                    m_pDrawsLabel.InitWithString("000", texture, 4, 8, '.');
 
                     m_pMemoryLabel = new CCLabelAtlas();
-                    m_pMemoryLabel.SetIgnoreContentScaleFactor(true);
-                    m_pMemoryLabel.InitWithString("0", texture, 12, 32, '.');
-                    m_pMemoryLabel.Color = new CCColor3B(0, 0, 255);
+                    m_pMemoryLabel.SetIgnoreContentScaleFactor(false);
+                    m_pMemoryLabel.InitWithString("0", texture, 4, 8, '.');
+                    m_pMemoryLabel.Color = new CCColor3B(35, 185, 255);
 
                     m_pGCLabel = new CCLabelAtlas();
-                    m_pGCLabel.SetIgnoreContentScaleFactor(true);
-                    m_pGCLabel.InitWithString("0", texture, 12, 32, '.');
-                    m_pGCLabel.Color = new CCColor3B(255, 0, 0);
+                    m_pGCLabel.SetIgnoreContentScaleFactor(false);
+                    m_pGCLabel.InitWithString("0", texture, 4, 8, '.');
+                    m_pGCLabel.Color = new CCColor3B(255, 196, 54);
                 }
                 catch (Exception ex)
                 {
@@ -1150,7 +1152,7 @@ namespace Cocos2D
                 }
             }
 
-            float factor = CCDrawManager.DesignResolutionSize.Height / 320.0f;
+            const float factor = 2.0f;
             var pos = CCDirector.SharedDirector.VisibleOrigin;
 
             m_pFPSLabel.Scale = factor;
@@ -1160,12 +1162,12 @@ namespace Cocos2D
             m_pMemoryLabel.Scale = factor;
             m_pGCLabel.Scale = factor;
 
-            m_pMemoryLabel.Position = new CCPoint(0, 85 * factor) + pos;
-            m_pGCLabel.Position = new CCPoint(0, 68 * factor) + pos;
-            m_pDrawsLabel.Position = new CCPoint(0, 51 * factor) + pos;
-            m_pUpdateTimeLabel.Position = new CCPoint(0, 34 * factor) + pos;
-            m_pDrawTimeLabel.Position = new CCPoint(0, 17 * factor) + pos;
-            m_pFPSLabel.Position = pos;
+            m_pMemoryLabel.Position = new CCPoint(2 * factor, 31 * factor) + pos;
+            m_pGCLabel.Position = new CCPoint(2 * factor, 25 * factor) + pos;
+            m_pDrawsLabel.Position = new CCPoint(2 * factor, 19 * factor) + pos;
+            m_pUpdateTimeLabel.Position = new CCPoint(2 * factor, 13 * factor) + pos;
+            m_pDrawTimeLabel.Position = new CCPoint(2 * factor, 7 * factor) + pos;
+            m_pFPSLabel.Position = new CCPoint(2 * factor, 1 * factor) + pos;
         }
 
         private WeakReference _wk = new WeakReference(new object());
