@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Cocos2D.Compression.Zlib;
 using WP7Contrib.Communications.Compression;
 
 namespace CocosSharp

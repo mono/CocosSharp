@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace CocosSharp
+namespace Cocos2D.Compression.Zlib
 {
     public class SupportClass
     {

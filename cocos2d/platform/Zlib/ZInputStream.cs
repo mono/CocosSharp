@@ -44,7 +44,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System.IO;
 
-namespace CocosSharp
+namespace Cocos2D.Compression.Zlib
 {
     public class ZInputStream : BinaryReader
     {

@@ -42,7 +42,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 * and contributors of zlib.
 */
 
-namespace CocosSharp
+namespace Cocos2D.Compression.Zlib
 {
     internal sealed class Inflate
     {

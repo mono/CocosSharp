@@ -16,7 +16,7 @@ using FactoryWrite = SharpDX.DirectWrite.Factory;
 using FactoryImaging = SharpDX.WIC.ImagingFactory;
 
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public partial class CCLabel
     {
