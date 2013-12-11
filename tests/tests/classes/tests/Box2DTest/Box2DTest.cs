@@ -7,8 +7,8 @@ using Box2D.Collision.Shapes;
 using Box2D.Dynamics;
 using Box2D.Dynamics.Contacts;
 using Microsoft.Xna.Framework;
-using Cocos2D;
-using Random = Cocos2D.CCRandom;
+using CocosSharp;
+using Random = CocosSharp.CCRandom;
 
 namespace tests
 {

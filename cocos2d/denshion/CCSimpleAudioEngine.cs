@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System;
-using Cocos2D;
+using CocosSharp;
 
 namespace CocosDenshion
 {

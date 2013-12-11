@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Cocos2D;
+using CocosSharp;
 
 namespace tests.Clipping
 {

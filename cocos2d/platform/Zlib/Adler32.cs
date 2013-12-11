@@ -43,7 +43,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 * and contributors of zlib.
 */
 
-namespace Cocos2D.Compression.Zlib
+namespace CocosSharp
 {
     internal sealed class Adler32
     {

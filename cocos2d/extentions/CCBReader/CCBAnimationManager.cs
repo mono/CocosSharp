@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using CocosDenshion;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public delegate void CCBAnimationManagerDelegate(string name);
 

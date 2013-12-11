@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     internal class TransformUtils
     {

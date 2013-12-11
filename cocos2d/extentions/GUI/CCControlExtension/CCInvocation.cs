@@ -4,7 +4,7 @@ using System;
  * Helper class to store targets and selectors (and eventually, params?) in the same CCMutableArray. Basically a very crude form of a NSInvocation
  */
 
-namespace Cocos2D
+namespace CocosSharp
 {
 
     public class CCInvocation 

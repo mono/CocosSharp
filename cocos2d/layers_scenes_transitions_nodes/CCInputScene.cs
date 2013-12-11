@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// This is the input sensitive version of the scene. This class reacts to touches

@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     internal struct CCV3F_T2F : IVertexType
     {

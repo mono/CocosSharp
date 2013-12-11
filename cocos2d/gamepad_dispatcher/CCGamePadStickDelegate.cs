@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// Mapped from the gamepad game stick status, will tell yoyu when the game

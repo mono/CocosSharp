@@ -29,7 +29,7 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCLayer : CCNode, ICCAccelerometerDelegate
     {

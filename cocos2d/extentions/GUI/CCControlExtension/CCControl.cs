@@ -36,7 +36,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /** Kinds of possible events for the control objects. */
 

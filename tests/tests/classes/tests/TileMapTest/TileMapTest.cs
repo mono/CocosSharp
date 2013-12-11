@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 
 namespace tests
 {

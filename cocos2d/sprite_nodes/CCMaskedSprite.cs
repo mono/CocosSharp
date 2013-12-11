@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// This is a sprite with a collision mask assigned to it. The sprite collision works by testing

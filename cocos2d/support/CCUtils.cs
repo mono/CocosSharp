@@ -45,7 +45,7 @@ using RenderbufferStorage = OpenTK.Graphics.ES20.All;
 #endif
 #endif
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCUtils
     {

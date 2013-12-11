@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCCardinalSplineTo : CCActionInterval
     {

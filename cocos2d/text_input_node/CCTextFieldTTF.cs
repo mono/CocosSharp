@@ -2,7 +2,7 @@ using System;
 #if !WINDOWS_PHONE && !XBOX && !PSM
 using Microsoft.Xna.Framework.GamerServices;
 #endif
-namespace Cocos2D
+namespace CocosSharp
 {
 	public delegate void CCTextFieldTTFDelegate(object sender, ref string text, ref bool canceled);
 

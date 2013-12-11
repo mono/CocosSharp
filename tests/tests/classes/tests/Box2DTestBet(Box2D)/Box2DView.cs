@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Box2D.Common;
-using Cocos2D;
+using CocosSharp;
 using Microsoft.Xna.Framework.Input;
 
 namespace Box2D.TestBed

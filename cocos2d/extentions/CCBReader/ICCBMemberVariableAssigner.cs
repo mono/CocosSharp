@@ -1,6 +1,6 @@
 using System;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public interface ICCBMemberVariableAssigner
     {

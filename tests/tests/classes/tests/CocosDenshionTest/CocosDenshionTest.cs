@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
-using Cocos2D;
+using CocosSharp;
 using CocosDenshion;
 using System.Diagnostics;
 

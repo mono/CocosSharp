@@ -31,7 +31,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// RGB color composed of bytes 3 bytes

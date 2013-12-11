@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Cocos2D;
+using CocosSharp;
 
 namespace tests
 {
@@ -84,9 +84,9 @@ namespace tests
             var sprite = new CCSprite(@"Images\grossini_dance_01");
             sprite.Color = new CCColor3B
             {
-                B = (byte)Cocos2D.CCRandom.Next(0, 255),
-                G = (byte)Cocos2D.CCRandom.Next(0, 255),
-                R = (byte)Cocos2D.CCRandom.Next(0, 255)
+                B = (byte)CocosSharp.CCRandom.Next(0, 255),
+                G = (byte)CocosSharp.CCRandom.Next(0, 255),
+                R = (byte)CocosSharp.CCRandom.Next(0, 255)
             };
             return sprite;
         }

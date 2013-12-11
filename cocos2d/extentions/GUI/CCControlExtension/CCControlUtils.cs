@@ -31,7 +31,7 @@
 
 using System;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 	internal struct RGBA
 	{

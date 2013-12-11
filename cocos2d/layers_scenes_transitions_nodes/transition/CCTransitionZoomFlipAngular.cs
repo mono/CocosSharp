@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCTransitionZoomFlipAngular : CCTransitionSceneOriented
     {

@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using BitMiracle.LibTiff.Classic;
 #endif
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public enum CCImageFormat
     {

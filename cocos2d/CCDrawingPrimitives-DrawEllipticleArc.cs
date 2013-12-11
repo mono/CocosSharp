@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Box2D;
 using Box2D.Common;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     
     /**

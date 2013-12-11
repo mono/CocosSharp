@@ -7,7 +7,7 @@ using Android.Util;
 
 #endif
 
-namespace Cocos2D
+namespace CocosSharp
 {
 
     public static class CCDevice

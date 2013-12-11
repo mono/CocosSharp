@@ -2,7 +2,7 @@ using System;
 using Microsoft.Xna.Framework.Content;
 
 
-namespace Cocos2D
+namespace CocosSharp
 {
     internal class CCBMFontPaddingtReader : ContentTypeReader<CCBMFontConfiguration.CCBMFontPadding>
     {

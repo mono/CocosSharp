@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 #if !NETFX_CORE
 	public class CCSizeConverter : TypeConverter

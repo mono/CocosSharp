@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Cocos2D;
+using CocosSharp;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     //
     // CCTimer
@@ -176,7 +176,7 @@ namespace Cocos2D
     The 'custom selectors' should be avoided when possible. It is faster, and consumes less memory to use the 'update selector'.
     */
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCScheduler
     {

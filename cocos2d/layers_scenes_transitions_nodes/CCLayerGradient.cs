@@ -27,7 +27,7 @@ THE SOFTWARE.
 using System;
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /** CCLayerGradient is a subclass of CCLayerColor that draws gradients across
   the background.

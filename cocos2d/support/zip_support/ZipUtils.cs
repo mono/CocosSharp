@@ -29,7 +29,7 @@ using System.Text;
 using WP7Contrib.Communications.Compression;
 using System.IO;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 
     public enum CCZ_COMPRESSION

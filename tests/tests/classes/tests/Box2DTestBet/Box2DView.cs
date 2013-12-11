@@ -5,7 +5,7 @@ using System.Text;
 using FarseerPhysics.TestBed.Framework;
 using FarseerPhysics.TestBed.Tests;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 
 namespace tests.classes.tests.Box2DTestBet
 {

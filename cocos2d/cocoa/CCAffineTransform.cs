@@ -24,7 +24,7 @@ THE SOFTWARE.
 using System;
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public struct CCAffineTransform
     {

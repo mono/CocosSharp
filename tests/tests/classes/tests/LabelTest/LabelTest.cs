@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Cocos2D;
+using CocosSharp;
 using tests;
 using System.Diagnostics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public enum TagSprite
     {

@@ -34,7 +34,7 @@ using FarseerPhysics.Controllers;
 using FarseerPhysics.Dynamics.Contacts;
 using FarseerPhysics.Dynamics.Joints;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 
 namespace FarseerPhysics.Dynamics
 {

@@ -30,7 +30,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// Helper class to handle file operations

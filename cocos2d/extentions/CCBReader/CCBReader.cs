@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public enum CCBPropertyType
     {

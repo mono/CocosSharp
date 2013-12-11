@@ -1,7 +1,7 @@
 
 using System;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// @brief CCMenuItem base class

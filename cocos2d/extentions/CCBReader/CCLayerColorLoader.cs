@@ -1,4 +1,4 @@
-namespace Cocos2D
+namespace CocosSharp
 {
     internal class CCLayerColorLoader : CCLayerLoader
     {

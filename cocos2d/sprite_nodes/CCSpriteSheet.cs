@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCSpriteSheet
     {

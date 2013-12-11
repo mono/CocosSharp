@@ -1,6 +1,6 @@
 using System;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 	internal static partial class CCLabelUtilities
 	{

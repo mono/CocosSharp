@@ -29,7 +29,7 @@ using Microsoft.Xna.Framework.Content;
 
 //using System.Xml.Linq;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCSAXParser
     {

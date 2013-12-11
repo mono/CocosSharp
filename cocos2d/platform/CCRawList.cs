@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     ///<summary>
     /// No-frills list that wraps an accessible array.

@@ -25,7 +25,7 @@ THE SOFTWARE.
 
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCTransitionFade : CCTransitionScene
     {

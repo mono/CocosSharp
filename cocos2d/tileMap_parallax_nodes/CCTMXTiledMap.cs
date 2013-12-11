@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /** @brief CCTMXTiledMap knows how to parse and render a TMX map.
 

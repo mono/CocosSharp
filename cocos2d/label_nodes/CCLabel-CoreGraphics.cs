@@ -21,7 +21,7 @@ using MonoTouch.CoreText;
 using MonoTouch.ImageIO;
 #endif
 
-namespace Cocos2D
+namespace CocosSharp
 {
 	public partial class CCLabel
 	{

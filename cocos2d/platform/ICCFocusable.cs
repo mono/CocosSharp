@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// Interface for nodes that can be focused. 

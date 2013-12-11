@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public static class CCBHelper
     {

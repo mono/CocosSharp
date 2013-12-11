@@ -4,7 +4,7 @@ using Microsoft.Xna;
 using Microsoft.Xna.Framework.Input;
 using System.Reflection;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCAccelerometer
     {

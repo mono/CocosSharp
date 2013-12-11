@@ -6,7 +6,7 @@ using System.Text;
 
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public partial class CCLabel : CCLabelBMFont
     {

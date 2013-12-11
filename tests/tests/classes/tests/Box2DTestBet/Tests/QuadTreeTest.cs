@@ -6,7 +6,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
 using FarseerPhysics.TestBed.Framework;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 
 namespace FarseerPhysics.TestBed.Tests
 {

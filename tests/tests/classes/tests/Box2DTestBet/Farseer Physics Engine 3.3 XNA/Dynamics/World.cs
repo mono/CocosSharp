@@ -36,7 +36,7 @@ using FarseerPhysics.Dynamics.Joints;
 //using HashSet = FarseerPhysics.Common.HashSet;
 //using HashSet<FarseerPhysics.Dynamics.Body> = FarseerPhysics.Common.HashSet<FarseerPhysics.Dynamics.Body>;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 
 namespace FarseerPhysics.Dynamics
 {

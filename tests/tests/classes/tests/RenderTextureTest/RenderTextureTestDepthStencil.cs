@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Cocos2D;
-using Random = Cocos2D.CCRandom;
+using CocosSharp;
+using Random = CocosSharp.CCRandom;
 
 namespace tests
 {

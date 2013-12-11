@@ -28,7 +28,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 	public class PlistDictionary : PlistObjectBase, IEnumerable<KeyValuePair<string, PlistObjectBase>>
 	{
@@ -134,7 +134,7 @@ namespace Cocos2D
 			}
 
 			if (dict.ContainsKey (key)) {
-				Cocos2D.CCLog.Log ("Warning: ignoring duplicate key: {0} (null? {1} empty? {2})", key, key == null, key == "");
+				CocosSharp.CCLog.Log ("Warning: ignoring duplicate key: {0} (null? {1} empty? {2})", key, key == null, key == "");
 			} else {
 				dict.Add (key, value);
 			}

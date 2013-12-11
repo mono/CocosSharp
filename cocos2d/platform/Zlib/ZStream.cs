@@ -44,7 +44,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 
-namespace Cocos2D.Compression.Zlib
+namespace CocosSharp
 {
     public sealed class ZStream
     {

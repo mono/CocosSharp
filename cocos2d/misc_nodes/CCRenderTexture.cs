@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public partial class CCRenderTexture : CCNode
     {

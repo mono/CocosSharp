@@ -25,7 +25,7 @@ THE SOFTWARE.
 
 using System;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// @brief CCFadeOutUpTiles action.

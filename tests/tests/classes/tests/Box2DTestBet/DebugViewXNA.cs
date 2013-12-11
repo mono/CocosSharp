@@ -12,7 +12,7 @@ using FarseerPhysics.Dynamics.Joints;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Cocos2D;
+using CocosSharp;
 
 namespace FarseerPhysics.DebugViews
 {

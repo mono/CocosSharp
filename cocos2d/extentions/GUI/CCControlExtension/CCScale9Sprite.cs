@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// This is a special sprite container that represents a 9 point sprite region, where 8 of hte

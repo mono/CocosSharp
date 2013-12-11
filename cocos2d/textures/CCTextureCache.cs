@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCTextureCache : IDisposable, ICCSelectorProtocol
     {

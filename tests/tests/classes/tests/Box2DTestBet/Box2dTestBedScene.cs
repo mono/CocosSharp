@@ -1,4 +1,4 @@
-﻿using Cocos2D;
+﻿using CocosSharp;
 
 namespace tests.classes.tests.Box2DTestBet
 {

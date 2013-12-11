@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 
     internal static class CCParticleExample

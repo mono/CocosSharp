@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public abstract class CCReusedObject<T> where T : CCReusedObject<T>, new()
     {

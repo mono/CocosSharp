@@ -1,5 +1,5 @@
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     ///  Object than contains the delegate and priority of the event handler.

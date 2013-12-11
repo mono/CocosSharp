@@ -25,7 +25,7 @@ THE SOFTWARE.
 
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCTiledGrid3D : CCGridBase
     {

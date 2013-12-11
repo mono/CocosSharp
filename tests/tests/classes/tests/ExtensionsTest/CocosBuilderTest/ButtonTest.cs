@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using Cocos2D;
+using CocosSharp;
 
 namespace tests.Extensions
 {

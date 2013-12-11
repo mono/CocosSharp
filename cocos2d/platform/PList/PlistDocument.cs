@@ -36,7 +36,7 @@ using Win8StoreIOUtility = Cocos2D.Win8StoreIOUtility;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 #if IOS
     [MonoTouch.Foundation.Preserve (AllMembers = true)]

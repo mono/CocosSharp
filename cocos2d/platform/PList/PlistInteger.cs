@@ -26,7 +26,7 @@
 
 using System;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 	public class PlistInteger : PlistObject<int>
 	{

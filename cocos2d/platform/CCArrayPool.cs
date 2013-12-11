@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public static class ArrayPool<T>
     {

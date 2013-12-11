@@ -25,7 +25,7 @@ THE SOFTWARE.
 using System;
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// A CCCamera is used in every CCNode.

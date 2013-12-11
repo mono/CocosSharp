@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 #endif
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public static class CCTask
     {

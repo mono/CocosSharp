@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// CCMultipleLayer is a CCLayer with the ability to multiplex it's children.

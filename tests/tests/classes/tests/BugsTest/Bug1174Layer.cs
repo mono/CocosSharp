@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Cocos2D;
+using CocosSharp;
 using System.Diagnostics;
-using Random = Cocos2D.CCRandom;
+using Random = CocosSharp.CCRandom;
 
 namespace tests
 {

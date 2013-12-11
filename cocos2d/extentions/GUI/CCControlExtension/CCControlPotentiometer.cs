@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /** @class ControlPotentiometer Potentiometer control for Cocos2D. */
 

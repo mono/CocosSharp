@@ -1,5 +1,5 @@
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCTMXTileFlags
     {

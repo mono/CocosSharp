@@ -32,7 +32,7 @@ using Box2D.Dynamics.Contacts;
 using Box2D.Dynamics.Joints;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Cocos2D;
+using CocosSharp;
 using Random = System.Random;
 
 namespace Box2D.TestBed

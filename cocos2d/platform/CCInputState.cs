@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public enum CCGestureDirection
     {

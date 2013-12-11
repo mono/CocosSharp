@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 	public class CCKeyboardDispatcher
 	{

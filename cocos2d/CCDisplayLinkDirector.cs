@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCDisplayLinkDirector : CCDirector
     {

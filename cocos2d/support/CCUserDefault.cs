@@ -24,7 +24,7 @@ THE SOFTWARE.
 // root name of xml
 
 using System;
-using Cocos2D;
+using CocosSharp;
 using System.IO;
 #if !WINDOWS && !MACOS && !LINUX && !NETFX_CORE
 using System.IO.IsolatedStorage;
@@ -38,7 +38,7 @@ using System.Xml;
 
 // Note: Something to use here http://msdn.microsoft.com/en-us/library/hh582102.aspx
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCUserDefault 
     {

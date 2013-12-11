@@ -26,7 +26,7 @@ THE SOFTWARE.
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// CCLayerColor is a subclass of CCLayer that implements the CCRGBAProtocol protocol

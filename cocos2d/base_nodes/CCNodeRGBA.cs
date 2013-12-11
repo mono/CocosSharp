@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /** CCNodeRGBA is a subclass of CCNode that implements the CCRGBAProtocol protocol.
  

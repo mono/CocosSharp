@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCParticleBatchNode : CCNode, ICCTextureProtocol
     {

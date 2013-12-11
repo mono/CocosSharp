@@ -27,7 +27,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 #if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
     [Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof (CCPointConverter))]

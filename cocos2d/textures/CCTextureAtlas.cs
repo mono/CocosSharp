@@ -27,7 +27,7 @@ using System;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// A class that implements a Texture Atlas.

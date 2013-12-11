@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Content;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 #if IOS
     [MonoTouch.Foundation.Preserve (AllMembers = true)]
@@ -183,50 +183,50 @@ namespace Cocos2D
             int index = line.IndexOf("id=");
             int index2 = line.IndexOf(' ', index);
             string value = line.Substring(index, index2 - index);
-            characterDefinition.charID = Cocos2D.CCUtils.CCParseInt(value.Replace("id=", ""));
+            characterDefinition.charID = CocosSharp.CCUtils.CCParseInt(value.Replace("id=", ""));
             //CCAssert(characterDefinition->charID < kCCBMFontMaxChars, "BitmpaFontAtlas: CharID bigger than supported");
 
             // Character x
             index = line.IndexOf("x=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.Origin.X = Cocos2D.CCUtils.CCParseFloat(value.Replace("x=", ""));
+            characterDefinition.rect.Origin.X = CocosSharp.CCUtils.CCParseFloat(value.Replace("x=", ""));
 
             // Character y
             index = line.IndexOf("y=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.Origin.Y = Cocos2D.CCUtils.CCParseFloat(value.Replace("y=", ""));
+            characterDefinition.rect.Origin.Y = CocosSharp.CCUtils.CCParseFloat(value.Replace("y=", ""));
 
             // Character width
             index = line.IndexOf("width=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.Size.Width = Cocos2D.CCUtils.CCParseFloat(value.Replace("width=", ""));
+            characterDefinition.rect.Size.Width = CocosSharp.CCUtils.CCParseFloat(value.Replace("width=", ""));
 
             // Character height
             index = line.IndexOf("height=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.Size.Height = Cocos2D.CCUtils.CCParseFloat(value.Replace("height=", ""));
+            characterDefinition.rect.Size.Height = CocosSharp.CCUtils.CCParseFloat(value.Replace("height=", ""));
 
             // Character xoffset
             index = line.IndexOf("xoffset=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.xOffset = Cocos2D.CCUtils.CCParseInt(value.Replace("xoffset=", ""));
+            characterDefinition.xOffset = CocosSharp.CCUtils.CCParseInt(value.Replace("xoffset=", ""));
 
             // Character yoffset
             index = line.IndexOf("yoffset=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.yOffset = Cocos2D.CCUtils.CCParseInt(value.Replace("yoffset=", ""));
+            characterDefinition.yOffset = CocosSharp.CCUtils.CCParseInt(value.Replace("yoffset=", ""));
 
             // Character xadvance
             index = line.IndexOf("xadvance=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.xAdvance = Cocos2D.CCUtils.CCParseInt(value.Replace("xadvance=", ""));
+            characterDefinition.xAdvance = CocosSharp.CCUtils.CCParseInt(value.Replace("xadvance=", ""));
         }
 
         // info face
@@ -245,10 +245,10 @@ namespace Cocos2D
 
             value = value.Replace("padding=", "");
             string[] temp = value.Split(',');
-            m_tPadding.top = Cocos2D.CCUtils.CCParseInt(temp[0]);
-            m_tPadding.right = Cocos2D.CCUtils.CCParseInt(temp[1]);
-            m_tPadding.bottom = Cocos2D.CCUtils.CCParseInt(temp[2]);
-            m_tPadding.left = Cocos2D.CCUtils.CCParseInt(temp[3]);
+            m_tPadding.top = CocosSharp.CCUtils.CCParseInt(temp[0]);
+            m_tPadding.right = CocosSharp.CCUtils.CCParseInt(temp[1]);
+            m_tPadding.bottom = CocosSharp.CCUtils.CCParseInt(temp[2]);
+            m_tPadding.left = CocosSharp.CCUtils.CCParseInt(temp[3]);
 
             //CCLOG("cocos2d: padding: %d,%d,%d,%d", m_tPadding.left, m_tPadding.top, m_tPadding.right, m_tPadding.bottom);
         }
@@ -265,7 +265,7 @@ namespace Cocos2D
             int index = line.IndexOf("lineHeight=");
             int index2 = line.IndexOf(' ', index);
             string value = line.Substring(index, index2 - index);
-            m_nCommonHeight = Cocos2D.CCUtils.CCParseInt(value.Replace("lineHeight=", ""));
+            m_nCommonHeight = CocosSharp.CCUtils.CCParseInt(value.Replace("lineHeight=", ""));
 
             // scaleW. sanity check
             index = line.IndexOf("scaleW=") + "scaleW=".Length;
@@ -312,7 +312,7 @@ namespace Cocos2D
             index2 = line.IndexOf('"', index);
             value = line.Substring(index, index2 - index);
 
-            m_sAtlasName = Cocos2D.CCFileUtils.FullPathFromRelativeFile(value, fntFile);
+            m_sAtlasName = CocosSharp.CCFileUtils.FullPathFromRelativeFile(value, fntFile);
         }
 
         private void parseKerningEntry(string line)
@@ -327,21 +327,21 @@ namespace Cocos2D
             int index = line.IndexOf("first=");
             int index2 = line.IndexOf(' ', index);
             string value = line.Substring(index, index2 - index);
-            first = Cocos2D.CCUtils.CCParseInt(value.Replace("first=", ""));
+            first = CocosSharp.CCUtils.CCParseInt(value.Replace("first=", ""));
 
             // second
             int second;
             index = line.IndexOf("second=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            second = Cocos2D.CCUtils.CCParseInt(value.Replace("second=", ""));
+            second = CocosSharp.CCUtils.CCParseInt(value.Replace("second=", ""));
 
             // amount
             int amount;
             index = line.IndexOf("amount=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index);
-            amount = Cocos2D.CCUtils.CCParseInt(value.Replace("amount=", ""));
+            amount = CocosSharp.CCUtils.CCParseInt(value.Replace("amount=", ""));
 
             try
             {
@@ -352,7 +352,7 @@ namespace Cocos2D
             }
             catch (Exception)
             {
-                Cocos2D.CCLog.Log("Failed to parse font line: {0}", line);
+                CocosSharp.CCLog.Log("Failed to parse font line: {0}", line);
             }
         }
 

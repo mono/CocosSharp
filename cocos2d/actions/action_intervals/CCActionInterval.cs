@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     // Extra action for making a CCSequence or CCSpawn when only adding one action to it.
     internal class CCExtraAction : CCFiniteTimeAction

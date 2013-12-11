@@ -1,4 +1,4 @@
-﻿using Cocos2D;
+﻿using CocosSharp;
 using tests;
 
 namespace Box2D.TestBed

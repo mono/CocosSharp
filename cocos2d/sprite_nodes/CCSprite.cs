@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Diagnostics;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public class CCSprite : CCNodeRGBA, ICCTextureProtocol
     {

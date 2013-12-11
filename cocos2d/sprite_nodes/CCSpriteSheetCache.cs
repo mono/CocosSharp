@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Cocos2D.sprite_nodes
+namespace CocosSharp
 {
     public class CCSpriteSheetCache
     {

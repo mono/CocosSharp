@@ -19,7 +19,7 @@ using MonoTouch.CoreText;
 using MonoTouch.ImageIO;
 #endif
 
-namespace Cocos2D
+namespace CocosSharp
 {
 	internal static partial class CCLabelUtilities
 	{
@@ -472,7 +472,7 @@ namespace Cocos2D
 
 }
 
-namespace Cocos2D
+namespace CocosSharp
 {
 	[Flags]
 	internal enum FontStyle {

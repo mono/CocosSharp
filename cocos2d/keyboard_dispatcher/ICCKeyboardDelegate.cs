@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework.Input;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     [Flags]
 	public enum CCKeyboardMode

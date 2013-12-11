@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using GZipInputStream=WP7Contrib.Communications.Compression.GZipStream; // Found in Support/Compression/GZipStream
 using ICSharpCode.SharpZipLib.Zip;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     // ideas taken from:
     //     . The ocean spray in your face [Jeff Lander]

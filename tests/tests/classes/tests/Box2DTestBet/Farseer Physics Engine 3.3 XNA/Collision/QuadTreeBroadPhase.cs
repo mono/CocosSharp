@@ -4,7 +4,7 @@ using FarseerPhysics;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 
 public class QuadTreeBroadPhase : IBroadPhase
 {

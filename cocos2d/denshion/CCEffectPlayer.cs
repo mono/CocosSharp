@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Audio;
-using Cocos2D;
+using CocosSharp;
 
 namespace CocosDenshion
 {

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework.Input;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     internal enum CCNodeTag
     {

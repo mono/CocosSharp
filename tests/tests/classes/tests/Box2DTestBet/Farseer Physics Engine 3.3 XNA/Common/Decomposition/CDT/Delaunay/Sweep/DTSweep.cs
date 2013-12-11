@@ -619,7 +619,7 @@ namespace Poly2Tri.Triangulation.Delaunay.Sweep
                     if (eq == tcx.EdgeEvent.ConstrainedEdge.Q
                         && ep == tcx.EdgeEvent.ConstrainedEdge.P)
                     {
-                        if (tcx.IsDebugEnabled) Cocos2D.CCLog.Log("[FLIP] - constrained edge done"); // TODO: remove
+                        if (tcx.IsDebugEnabled) CocosSharp.CCLog.Log("[FLIP] - constrained edge done"); // TODO: remove
                         t.MarkConstrainedEdge(ep, eq);
                         ot.MarkConstrainedEdge(ep, eq);
                         Legalize(tcx, t);
@@ -627,14 +627,14 @@ namespace Poly2Tri.Triangulation.Delaunay.Sweep
                     }
                     else
                     {
-                        if (tcx.IsDebugEnabled) Cocos2D.CCLog.Log("[FLIP] - subedge done"); // TODO: remove
+                        if (tcx.IsDebugEnabled) CocosSharp.CCLog.Log("[FLIP] - subedge done"); // TODO: remove
                         // XXX: I think one of the triangles should be legalized here?
                     }
                 }
                 else
                 {
                     if (tcx.IsDebugEnabled)
-                        Cocos2D.CCLog.Log("[FLIP] - flipping and continuing with triangle still crossing edge");
+                        CocosSharp.CCLog.Log("[FLIP] - flipping and continuing with triangle still crossing edge");
                             // TODO: remove
                     Orientation o = TriangulationUtil.Orient2d(eq, op, ep);
                     t = NextFlipTriangle(tcx, o, t, ot, p, op);

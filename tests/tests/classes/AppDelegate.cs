@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 using Microsoft.Xna.Framework.Graphics;
 
 

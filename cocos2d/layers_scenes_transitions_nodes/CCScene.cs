@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     /// <summary>
     /// brief CCScene is a subclass of CCNode that is used only as an abstract concept.

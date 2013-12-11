@@ -1,4 +1,4 @@
-using Cocos2D;
+using CocosSharp;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace tests
