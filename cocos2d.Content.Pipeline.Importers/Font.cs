@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Xna.Framework.Content.Pipeline;
+using CocosSharp;
 
 namespace Cocos2D.Content.Pipeline.Importers
 {

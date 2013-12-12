@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Cocos2D;
+using CocosSharp;
 using tests;
 
 namespace TestWin8Phone
