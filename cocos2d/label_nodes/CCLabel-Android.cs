@@ -4,7 +4,7 @@ using Android.App;
 using Android.Graphics;
 using Android.Util;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public partial class CCLabel
     {
