@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework.Content.Pipeline;
 using TInput = System.String;
 using TOutput = CocosSharp.CCContent;
 
-namespace Cocos2D.Content.Pipeline.Importers.TMX
+namespace CocosSharp.Content.Pipeline.Importers.TMX
 {
     [ContentProcessor(DisplayName = "TMX Processor")]
     public class TMXProcessor : ContentProcessor<TInput, TOutput>

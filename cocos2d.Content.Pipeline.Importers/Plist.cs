@@ -5,9 +5,9 @@ using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
 using CocosSharp;
 
-namespace Cocos2D.Content.Pipeline.Importers
+namespace CocosSharp.Content.Pipeline.Importers
 {
-    [ContentImporter(".plist", DisplayName = "Cocos2D - Plist", DefaultProcessor = "CocosPListProcessor")]
+    [ContentImporter(".plist", DisplayName = "CocosSharp - Plist", DefaultProcessor = "CocosPListProcessor")]
     public class CocosPListImporter : ContentImporter<String>
     {
         public override String Import(string filename, ContentImporterContext context)
@@ -16,7 +16,7 @@ namespace Cocos2D.Content.Pipeline.Importers
         }
     }
 
-    [ContentProcessor(DisplayName = "Cocos2D - Plist")]
+    [ContentProcessor(DisplayName = "CocosSharp - Plist")]
     public class CocosPListProcessor : ContentProcessor<string, PlistDocument>
     {
         public override PlistDocument Process(string fileName, ContentProcessorContext context)

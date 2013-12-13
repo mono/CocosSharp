@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content.Pipeline;
 using TInput = System.String;
 using TOutput = CocosSharp.CCContent;
 
-namespace Cocos2D.Content.Pipeline.Importers
+namespace CocosSharp.Content.Pipeline.Importers
 {
     [ContentProcessor(DisplayName = "TextProcessor")]
     public class TextProcessor : ContentProcessor<TInput, TOutput>

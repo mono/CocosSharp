@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content.Pipeline;
 
 using TImport = System.String;
 
-namespace Cocos2D.Content.Pipeline.Importers
+namespace CocosSharp.Content.Pipeline.Importers
 {
     [ContentImporter(".*", DisplayName = "Text Importer", DefaultProcessor = "TextImporter")]
     public class TextImporter : ContentImporter<TImport>

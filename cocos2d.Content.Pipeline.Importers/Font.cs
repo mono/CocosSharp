@@ -3,9 +3,9 @@ using System.IO;
 using Microsoft.Xna.Framework.Content.Pipeline;
 using CocosSharp;
 
-namespace Cocos2D.Content.Pipeline.Importers
+namespace CocosSharp.Content.Pipeline.Importers
 {
-    [ContentImporter(".fnt", DisplayName = "Cocos2D - Font", DefaultProcessor = "CocosFontProcessor")]
+    [ContentImporter(".fnt", DisplayName = "CocosSharp - Font", DefaultProcessor = "CocosFontProcessor")]
     public class CocosFontImporter : ContentImporter<String>
     {
         public override String Import(string filename, ContentImporterContext context)
@@ -14,7 +14,7 @@ namespace Cocos2D.Content.Pipeline.Importers
         }
     }
 
-    [ContentProcessor(DisplayName = "Cocos2D - Font")]
+    [ContentProcessor(DisplayName = "CocosSharp - Font")]
     public class CocosFontProcessor : ContentProcessor<string, CCBMFontConfiguration>
     {
         public override CCBMFontConfiguration Process(string fileName, ContentProcessorContext context)
