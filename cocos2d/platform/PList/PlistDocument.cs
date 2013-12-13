@@ -31,7 +31,7 @@ using System.IO;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Content;
 #if NETFX_CORE
-using Win8StoreIOUtility = Cocos2D.Win8StoreIOUtility;
+using Win8StoreIOUtility = CocosSharp.Win8StoreIOUtility;
 #endif
 using System.Collections.Generic;
 using System.Text;

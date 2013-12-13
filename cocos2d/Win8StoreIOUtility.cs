@@ -1,6 +1,7 @@
 using System;
 using System.IO;
-namespace Cocos2D
+
+namespace CocosSharp
 {
 	public class Win8StoreIOUtility
 	{

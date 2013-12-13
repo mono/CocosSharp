@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Xml;
 
-namespace Cocos2D
+namespace CocosSharp
 {
 	public static class Win8IOExtensions
 	{
