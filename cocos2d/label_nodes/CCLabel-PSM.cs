@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Cocos2D
+namespace CocosSharp
 {
     public partial class CCLabel
     {

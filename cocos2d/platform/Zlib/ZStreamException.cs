@@ -45,7 +45,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using System;
 using System.IO;
 
-namespace Cocos2D.Compression.Zlib
+namespace CocosSharp.Compression.Zlib
 {
     public class ZStreamException : IOException
     {

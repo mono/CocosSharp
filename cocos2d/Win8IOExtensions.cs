@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Xml;
+
 namespace Cocos2D
 {
 	public static class Win8IOExtensions
