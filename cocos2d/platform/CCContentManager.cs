@@ -42,41 +42,41 @@ namespace CocosSharp
 
             // .FNT Reader
             ContentTypeReaderManager.AddTypeCreator(
-                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Cocos2D.CCBMFontConfiguration+CCBMFontDef, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[CocosSharp.CCBMFontConfiguration+CCBMFontDef, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 () => new DictionaryReader<Int32, CCBMFontConfiguration.CCBMFontDef>()
 
                 );
 
             ContentTypeReaderManager.AddTypeCreator(
-                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Cocos2D.CCBMFontConfiguration+CCKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[CocosSharp.CCBMFontConfiguration+CCKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 () => new DictionaryReader<Int32, CCBMFontConfiguration.CCKerningHashElement>()
 
                 );
             ContentTypeReaderManager.AddTypeCreator(
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCRect, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[CocosSharp.CCRect, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 () => new CCRectReader()
 
                 );
 
             ContentTypeReaderManager.AddTypeCreator(
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCPoint, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[CocosSharp.CCPoint, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 () => new CCPointReader()
 
                 );
             ContentTypeReaderManager.AddTypeCreator(
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCSize, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[CocosSharp.CCSize, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 () => new CCSizeReader()
 
                 );
 
             ContentTypeReaderManager.AddTypeCreator(
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCBMFontConfiguration+CCKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[CocosSharp.CCBMFontConfiguration+CCKerningHashElement, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 () => new KerningHashElementReader()
 
                 );
 
             ContentTypeReaderManager.AddTypeCreator(
-                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[Cocos2D.CCBMFontConfiguration+CCBMFontPadding, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                "Microsoft.Xna.Framework.Content.ReflectiveReader`1[[CocosSharp.CCBMFontConfiguration+CCBMFontPadding, cocos2d-xna, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 () => new CCBMFontPaddingtReader()
 
                 );
