@@ -604,9 +604,9 @@
       <Project>{b81b6701-7a78-4846-bf6f-04e0591f0f38}</Project>
       <Name>box2d.WindowsGL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\cocos2d.WindowsGL.csproj">
+    <ProjectReference Include="..\..\cocos2d\CocosSharp.WindowsGL.csproj">
       <Project>{0c0afdff-a4e4-49f4-b6db-a761b0db64a8}</Project>
-      <Name>cocos2d.WindowsGL</Name>
+      <Name>CocosSharp.WindowsGL</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsGL.csproj">
       <Project>{7de47032-a904-4c29-bd22-2d235e8d91ba}</Project>

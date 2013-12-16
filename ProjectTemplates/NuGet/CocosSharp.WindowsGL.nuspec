@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>CocosSharp.WindowsGL</id>
+    <version>1.2.0.0</version>
+    <title>CocosSharp for Windows using OpenGL</title>
+    <authors>CocosSharp, Xamarin, Inc.</authors>
+    <owners>Xamarin</owners>
+    <licenseUrl>https://xamarin.codeplex.com/license</licenseUrl>
+    <projectUrl>http://xamarin.codeplex.com</projectUrl>
+    <iconUrl>http://xamarin.codeplex.com</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CocosSharp for Windows GL is a simple game engine typically used for 2D games, educational software and 2D visualizations.   This code allows games to be built with a write-once, run-anywhere approach.</description>
+    <copyright>Copyright 2013 Xamarin, Inc.</copyright>
+    <tags>cocos2d CocosSharp xna monogame 2D games visualization engine opengl desktop windows</tags>
+
+  </metadata>
+
+  <files>
+   
+    <file src="..\..\cocos2d\bin\WindowsGL\Release\*.dll" target="lib\net40" />
+    <file src="..\..\MonoGame\ThirdParty\GamepadConfig\SDL.dll" target="content\" />
+
+  </files>
+
+</package>
