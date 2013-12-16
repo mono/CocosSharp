@@ -8,11 +8,10 @@
     <ProjectGuid>{A83510D8-7AED-411E-9616-DCFEA180969E}</ProjectGuid>
     <ProjectTypeGuids>{948B3504-5B70-4649-8FE4-BDE1FB46EC69};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <Description>cocos2d for MonoMac</Description>
+    <Description>CocosSharp for MonoMac</Description>
     <RootNamespace>Cocos2D</RootNamespace>
     <SuppressXamMacUpsell>True</SuppressXamMacUpsell>
-    <AssemblyName>cocos2d-xna</AssemblyName>
-	<UseMSBuildEngine>False</UseMSBuildEngine>
+    <AssemblyName>CocosSharp</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -29,7 +28,7 @@
     <EnablePackageSigning>False</EnablePackageSigning>
     <IncludeMonoRuntime>False</IncludeMonoRuntime>
     <UseSGen>False</UseSGen>
-	<UseMSBuildEngine>False</UseMSBuildEngine>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -45,7 +44,7 @@
     <EnablePackageSigning>False</EnablePackageSigning>
     <IncludeMonoRuntime>False</IncludeMonoRuntime>
     <UseSGen>False</UseSGen>
-	<UseMSBuildEngine>False</UseMSBuildEngine>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Distribution|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -59,7 +58,7 @@
     <EnablePackageSigning>False</EnablePackageSigning>
     <IncludeMonoRuntime>False</IncludeMonoRuntime>
     <UseSGen>False</UseSGen>
-	<UseMSBuildEngine>False</UseMSBuildEngine>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
