@@ -53,7 +53,7 @@ namespace CocosSharp
     }
 
 
-    public class CCParticleSystem : CCNode, ICCTextureProtocol
+    public class CCParticleSystem : CCNode, ICCTexture
     {
         /** The Particle emitter lives forever */
         public const int kCCParticleDurationInfinity = -1;

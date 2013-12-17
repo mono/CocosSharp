@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-    public class CCParticleBatchNode : CCNode, ICCTextureProtocol
+    public class CCParticleBatchNode : CCNode, ICCTexture
     {
         public const int kCCParticleDefaultCapacity = 500;
         /// <summary>

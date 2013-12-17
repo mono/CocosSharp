@@ -23,7 +23,7 @@ THE SOFTWARE.
 
 namespace CocosSharp
 {
-    public interface ICCSelectorProtocol
+    public interface ICCUpdatable
     {
         void Update(float dt);
     }

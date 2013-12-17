@@ -48,7 +48,7 @@
         {
             base.StartWithTarget(target);
 
-            var pRGBAProtocol = target as ICCRGBAProtocol;
+            var pRGBAProtocol = target as ICCColor;
             if (pRGBAProtocol != null)
             {
                 m_fromOpacity = pRGBAProtocol.Opacity;
@@ -57,7 +57,7 @@
 
         public override void Update(float time)
         {
-            var pRGBAProtocol = m_pTarget as ICCRGBAProtocol;
+            var pRGBAProtocol = m_pTarget as ICCColor;
             if (pRGBAProtocol != null)
             {
                 pRGBAProtocol.Opacity = (byte) (m_fromOpacity + (m_toOpacity - m_fromOpacity) * time);

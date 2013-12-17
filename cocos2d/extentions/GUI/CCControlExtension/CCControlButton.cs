@@ -61,7 +61,7 @@ namespace CocosSharp
             set
             {
                 base.Opacity = value;
-                foreach (ICCRGBAProtocol item in _backgroundSpriteDispatchTable.Values)
+                foreach (ICCColor item in _backgroundSpriteDispatchTable.Values)
                 {
                     if (item != null)
                     {
@@ -77,7 +77,7 @@ namespace CocosSharp
             set
             {
                 base.Color = value;
-                foreach (ICCRGBAProtocol item in _backgroundSpriteDispatchTable.Values)
+                foreach (ICCColor item in _backgroundSpriteDispatchTable.Values)
                 {
                     if (item != null)
                     {
@@ -160,13 +160,13 @@ namespace CocosSharp
 
             TitleLabel = GetTitleLabelForState(_state);
 
-            var label = (ICCLabelProtocol) _titleLabel;
+            var label = (ICCTextContainer) _titleLabel;
             if (label != null && !String.IsNullOrEmpty(_currentTitle))
             {
                 label.Text = (_currentTitle);
             }
 
-            var rgbaLabel = (ICCRGBAProtocol) _titleLabel;
+            var rgbaLabel = (ICCColor) _titleLabel;
             if (rgbaLabel != null)
             {
                 rgbaLabel.Color = _currentTitleColor;
@@ -335,8 +335,8 @@ namespace CocosSharp
             if (base.Init())
             {
                 Debug.Assert(node != null, "Label must not be nil.");
-                var label = node as ICCLabelProtocol;
-                var rgbaLabel = node as ICCRGBAProtocol;
+                var label = node as ICCTextContainer;
+                var rgbaLabel = node as ICCColor;
                 Debug.Assert(backgroundSprite != null, "Background sprite must not be nil.");
                 Debug.Assert(label != null || rgbaLabel != null || backgroundSprite != null);
 
@@ -669,7 +669,7 @@ namespace CocosSharp
 
         public virtual string GetTitleTtfForState(CCControlState state)
         {
-            var label = (ICCLabelProtocol) GetTitleLabelForState(state);
+            var label = (ICCTextContainer) GetTitleLabelForState(state);
             var labelTtf = label as CCLabelTTF;
             if (labelTtf != null)
             {
@@ -680,7 +680,7 @@ namespace CocosSharp
 
         public virtual void SetTitleTtfSizeForState(float size, CCControlState state)
         {
-            var label = (ICCLabelProtocol) GetTitleLabelForState(state);
+            var label = (ICCTextContainer) GetTitleLabelForState(state);
             if (label != null)
             {
                 var labelTtf = label as CCLabelTTF;
@@ -720,7 +720,7 @@ namespace CocosSharp
 
         public virtual string GetTitleBmFontForState(CCControlState state)
         {
-            var label = (ICCLabelProtocol) GetTitleLabelForState(state);
+            var label = (ICCTextContainer) GetTitleLabelForState(state);
             var labelBmFont = label as CCLabelBMFont;
             if (labelBmFont != null)
             {

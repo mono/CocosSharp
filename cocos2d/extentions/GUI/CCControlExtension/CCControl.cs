@@ -124,7 +124,7 @@ namespace CocosSharp
                 {
                     for (int i = 0, count = m_pChildren.count; i < count; i++)
                     {
-                        var item = m_pChildren.Elements[i] as ICCRGBAProtocol;
+                        var item = m_pChildren.Elements[i] as ICCColor;
                         if (item != null)
                         {
                             item.IsOpacityModifyRGB = value;

@@ -34,7 +34,7 @@ namespace CocosSharp
     /// - opacity
     /// - RGB colors
     /// </summary>
-    public class CCLayerColor : CCLayerRGBA, ICCBlendProtocol
+    public class CCLayerColor : CCLayerRGBA, ICCBlendable
     {
         protected VertexPositionColor[] m_pSquareVertices = new VertexPositionColor[4];
         protected CCBlendFunc m_tBlendFunc;

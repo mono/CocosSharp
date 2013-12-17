@@ -126,7 +126,7 @@ namespace CocosSharp
                 {
                     for (int i = 0; i < _scale9Image.Children.count; i++)
                     {
-                        var node = _scale9Image.Children[i] as ICCRGBAProtocol;
+                        var node = _scale9Image.Children[i] as ICCColor;
                         if (node != null)
                         {
                             node.Color = value;
@@ -146,7 +146,7 @@ namespace CocosSharp
                 {
                     for (int i = 0; i < _scale9Image.Children.count; i++)
                     {
-                        var node = _scale9Image.Children[i] as ICCRGBAProtocol;
+                        var node = _scale9Image.Children[i] as ICCColor;
                         if (node != null)
                         {
                             node.Opacity = value;
@@ -166,7 +166,7 @@ namespace CocosSharp
                 {
                     for (int i = 0; i < _scale9Image.Children.count; i++)
                     {
-                        var node = _scale9Image.Children[i] as ICCRGBAProtocol;
+                        var node = _scale9Image.Children[i] as ICCColor;
                         if (node != null)
                         {
                             node.IsOpacityModifyRGB = value;
@@ -183,7 +183,7 @@ namespace CocosSharp
             {
                 for (int i = 0; i < _scale9Image.Children.count; i++)
                 {
-                    var node = _scale9Image.Children[i] as ICCRGBAProtocol;
+                    var node = _scale9Image.Children[i] as ICCColor;
                     if (node != null)
                     {
                         node.UpdateDisplayedColor(parentColor);
@@ -201,7 +201,7 @@ namespace CocosSharp
             {
                 for (int i = 0; i < _scale9Image.Children.count; i++)
                 {
-                    var node = _scale9Image.Children[i] as ICCRGBAProtocol;
+                    var node = _scale9Image.Children[i] as ICCColor;
                     if (node != null)
                     {
                         node.UpdateDisplayedOpacity(parentOpacity);

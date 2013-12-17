@@ -3,7 +3,7 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCLabelTTF : CCSprite, ICCLabelProtocol
+    public class CCLabelTTF : CCSprite, ICCTextContainer
     {
         private float m_fFontSize;
         private CCTextAlignment m_hAlignment;

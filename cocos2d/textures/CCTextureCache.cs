@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    public class CCTextureCache : IDisposable, ICCSelectorProtocol
+    public class CCTextureCache : IDisposable, ICCUpdatable
     {
         struct AsyncStruct
         {

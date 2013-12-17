@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public class CCSprite : CCNodeRGBA, ICCTextureProtocol
+    public class CCSprite : CCNodeRGBA, ICCTexture
     {
         protected bool m_bDirty; // Sprite needs to be updated
         protected bool m_bFlipX;

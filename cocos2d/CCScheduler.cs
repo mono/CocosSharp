@@ -10,10 +10,10 @@ namespace CocosSharp
     //
     /** @brief Light weight timer */
 
-    public class CCTimer : ICCSelectorProtocol
+    public class CCTimer : ICCUpdatable
     {
         private CCScheduler _scheduler;
-        private readonly ICCSelectorProtocol m_pTarget;
+        private readonly ICCUpdatable m_pTarget;
 
         private readonly bool m_bRunForever;
         private readonly float m_fDelay;
@@ -35,7 +35,7 @@ namespace CocosSharp
         /** Initializes a timer with a target and a selector. 
          */
 
-        public CCTimer(CCScheduler scheduler, ICCSelectorProtocol target, Action<float> selector)
+        public CCTimer(CCScheduler scheduler, ICCUpdatable target, Action<float> selector)
             : this(scheduler, target, selector, 0, 0, 0)
         {
         }
@@ -44,12 +44,12 @@ namespace CocosSharp
          *  Target is not needed in c#, it is just for compatibility.
          */
 
-        public CCTimer(CCScheduler scheduler, ICCSelectorProtocol target, Action<float> selector, float seconds)
+        public CCTimer(CCScheduler scheduler, ICCUpdatable target, Action<float> selector, float seconds)
             : this(scheduler, target, selector, seconds, 0, 0)
         {
         }
 
-        public CCTimer(CCScheduler scheduler, ICCSelectorProtocol target, Action<float> selector, float seconds,
+        public CCTimer(CCScheduler scheduler, ICCUpdatable target, Action<float> selector, float seconds,
                        uint repeat, float delay)
         {
             _scheduler = scheduler;
@@ -184,11 +184,11 @@ namespace CocosSharp
         public const int kCCPrioritySystem = int.MinValue;
         public const int kCCPriorityNonSystemMin = kCCPrioritySystem + 1;
 
-        private readonly Dictionary<ICCSelectorProtocol, HashTimeEntry> m_pHashForTimers =
-            new Dictionary<ICCSelectorProtocol, HashTimeEntry>();
+        private readonly Dictionary<ICCUpdatable, HashTimeEntry> m_pHashForTimers =
+            new Dictionary<ICCUpdatable, HashTimeEntry>();
 
-        private readonly Dictionary<ICCSelectorProtocol, HashUpdateEntry> m_pHashForUpdates =
-            new Dictionary<ICCSelectorProtocol, HashUpdateEntry>();
+        private readonly Dictionary<ICCUpdatable, HashUpdateEntry> m_pHashForUpdates =
+            new Dictionary<ICCUpdatable, HashUpdateEntry>();
 
         // hash used to fetch quickly the list entries for pause,delete,etc
         private readonly LinkedList<ListEntry> m_pUpdates0List = new LinkedList<ListEntry>(); // list priority == 0
@@ -202,7 +202,7 @@ namespace CocosSharp
         public float TimeScale = 1.0f;
 
         private static HashTimeEntry[] s_pTmpHashSelectorArray = new HashTimeEntry[128];
-        private static ICCSelectorProtocol[] s_pTmpSelectorArray = new ICCSelectorProtocol[128];
+        private static ICCUpdatable[] s_pTmpSelectorArray = new ICCUpdatable[128];
 
         internal void update(float dt)
         {
@@ -253,13 +253,13 @@ namespace CocosSharp
                 var count = m_pHashForTimers.Keys.Count;
                 if (s_pTmpSelectorArray.Length < count)
                 {
-                    s_pTmpSelectorArray = new ICCSelectorProtocol[s_pTmpSelectorArray.Length * 2];
+                    s_pTmpSelectorArray = new ICCUpdatable[s_pTmpSelectorArray.Length * 2];
                 }
                 m_pHashForTimers.Keys.CopyTo(s_pTmpSelectorArray, 0);
 
                 for (int i = 0; i < count; i++)
                 {
-                    ICCSelectorProtocol key = s_pTmpSelectorArray[i];
+                    ICCUpdatable key = s_pTmpSelectorArray[i];
                     if (!m_pHashForTimers.ContainsKey(key))
                     {
                         continue;
@@ -363,7 +363,7 @@ namespace CocosSharp
          @since v0.99.3, repeat and delay added in v1.1
          */
 
-        public void ScheduleSelector(Action<float> selector, ICCSelectorProtocol target, float interval, uint repeat,
+        public void ScheduleSelector(Action<float> selector, ICCUpdatable target, float interval, uint repeat,
                                      float delay, bool paused)
         {
             Debug.Assert(selector != null);
@@ -425,7 +425,7 @@ namespace CocosSharp
     	     @since v0.99.3
     	     */
 
-        public void ScheduleUpdateForTarget(ICCSelectorProtocol targt, int priority, bool paused)
+        public void ScheduleUpdateForTarget(ICCUpdatable targt, int priority, bool paused)
         {
             HashUpdateEntry element;
 
@@ -460,7 +460,7 @@ namespace CocosSharp
     	     @since v0.99.3
     	     */
 
-        public void UnscheduleSelector(Action<float> selector, ICCSelectorProtocol target)
+        public void UnscheduleSelector(Action<float> selector, ICCUpdatable target)
         {
             // explicity handle nil arguments when removing an object
             if (selector == null || target == null)
@@ -513,7 +513,7 @@ namespace CocosSharp
     	     @since v0.99.3
     	     */
 
-        public void UnscheduleAllForTarget(ICCSelectorProtocol target)
+        public void UnscheduleAllForTarget(ICCUpdatable target)
         {
             // explicit NULL handling
             if (target == null)
@@ -573,7 +573,7 @@ namespace CocosSharp
         }
         */
 
-        public void UnscheduleUpdateForTarget(ICCSelectorProtocol target)
+        public void UnscheduleUpdateForTarget(ICCUpdatable target)
         {
             if (target == null)
             {
@@ -650,14 +650,14 @@ namespace CocosSharp
             }
         }
 
-        public List<ICCSelectorProtocol> PauseAllTargets()
+        public List<ICCUpdatable> PauseAllTargets()
         {
             return PauseAllTargetsWithMinPriority(int.MinValue);
         }
 
-        public List<ICCSelectorProtocol> PauseAllTargetsWithMinPriority(int minPriority)
+        public List<ICCUpdatable> PauseAllTargetsWithMinPriority(int minPriority)
         {
-            var idsWithSelectors = new List<ICCSelectorProtocol>();
+            var idsWithSelectors = new List<ICCUpdatable>();
 
             // Custom Selectors
             foreach (HashTimeEntry element in m_pHashForTimers.Values)
@@ -703,15 +703,15 @@ namespace CocosSharp
             return idsWithSelectors;
         }
 
-        public void ResumeTargets(List<ICCSelectorProtocol> targetsToResume)
+        public void ResumeTargets(List<ICCUpdatable> targetsToResume)
         {
-            foreach (ICCSelectorProtocol target in targetsToResume)
+            foreach (ICCUpdatable target in targetsToResume)
             {
                 ResumeTarget(target);
             }
         }
 
-        public void PauseTarget(ICCSelectorProtocol target)
+        public void PauseTarget(ICCUpdatable target)
         {
             Debug.Assert(target != null);
 
@@ -730,7 +730,7 @@ namespace CocosSharp
             }
         }
 
-        public void ResumeTarget(ICCSelectorProtocol target)
+        public void ResumeTarget(ICCUpdatable target)
         {
             Debug.Assert(target != null);
 
@@ -749,7 +749,7 @@ namespace CocosSharp
             }
         }
 
-        public bool IsTargetPaused(ICCSelectorProtocol target)
+        public bool IsTargetPaused(ICCUpdatable target)
         {
             Debug.Assert(target != null, "target must be non nil");
 
@@ -794,7 +794,7 @@ namespace CocosSharp
             }
         }
 
-        private void PriorityIn(LinkedList<ListEntry> list, ICCSelectorProtocol target, int priority, bool paused)
+        private void PriorityIn(LinkedList<ListEntry> list, ICCUpdatable target, int priority, bool paused)
         {
             var listElement = new ListEntry
                 {
@@ -838,7 +838,7 @@ namespace CocosSharp
             m_pHashForUpdates.Add(target, hashElement);
         }
 
-        private void AppendIn(LinkedList<ListEntry> list, ICCSelectorProtocol target, bool paused)
+        private void AppendIn(LinkedList<ListEntry> list, ICCUpdatable target, bool paused)
         {
             var listElement = new ListEntry
                 {
@@ -867,7 +867,7 @@ namespace CocosSharp
             public CCTimer CurrentTimer;
             public bool CurrentTimerSalvaged;
             public bool Paused;
-            public ICCSelectorProtocol Target;
+            public ICCUpdatable Target;
             public int TimerIndex;
             public List<CCTimer> Timers;
         }
@@ -880,7 +880,7 @@ namespace CocosSharp
         {
             public ListEntry Entry; // entry in the list
             public LinkedList<ListEntry> List; // Which list does it belong to ?
-            public ICCSelectorProtocol Target; // hash key
+            public ICCUpdatable Target; // hash key
         }
 
         #endregion
@@ -892,7 +892,7 @@ namespace CocosSharp
             public bool MarkedForDeletion;
             public bool Paused;
             public int Priority;
-            public ICCSelectorProtocol Target;
+            public ICCUpdatable Target;
         }
 
         #endregion

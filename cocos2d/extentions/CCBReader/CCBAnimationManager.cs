@@ -401,7 +401,7 @@ namespace CocosSharp
                     else if (pPropName == "opacity")
                     {
                         byte opacity = ((CCBValue) pValue).GetByteValue();
-                        ((ICCRGBAProtocol) node).Opacity = opacity;
+                        ((ICCColor) node).Opacity = opacity;
                     }
                     else if (pPropName == "displayFrame")
                     {
@@ -410,7 +410,7 @@ namespace CocosSharp
                     else if (pPropName == "color")
                     {
                         var color = (CCColor3BWapper) pValue;
-                        ((ICCRGBAProtocol) node).Color = color.Color;
+                        ((ICCColor) node).Color = color.Color;
                     }
                     else if (pPropName == "visible")
                     {

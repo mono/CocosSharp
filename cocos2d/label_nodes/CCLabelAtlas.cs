@@ -3,7 +3,7 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCLabelAtlas : CCAtlasNode, ICCLabelProtocol
+    public class CCLabelAtlas : CCAtlasNode, ICCTextContainer
     {
         protected char m_cMapStartChar;
         protected string m_sString = "";

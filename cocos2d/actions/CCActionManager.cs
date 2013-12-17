@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public class CCActionManager : ICCSelectorProtocol
+    public class CCActionManager : ICCUpdatable
     {
         private static CCNode[] m_pTmpKeysArray = new CCNode[128];
         private bool m_bCurrentTargetSalvaged;

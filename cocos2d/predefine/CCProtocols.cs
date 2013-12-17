@@ -26,7 +26,7 @@ using System;
 
 namespace CocosSharp
 {
-    public interface ICCRGBAProtocol
+    public interface ICCColor
     {
         /// <summary>
         /// Gets or sets the color
@@ -82,7 +82,7 @@ namespace CocosSharp
     /// You can specify the blending fuction.
     /// @since v0.99.0
     /// </summary>
-    public interface ICCBlendProtocol
+    public interface ICCBlendable
     {
         /// <summary>
         /// gets or sets the source blending function for the texture
@@ -102,7 +102,7 @@ namespace CocosSharp
     /// But you can change the blending funtion at any time.
     /// @since v0.8.0
     /// </remarks>
-    public interface ICCTextureProtocol : ICCBlendProtocol
+    public interface ICCTexture : ICCBlendable
     {
         /// <summary>
         /// gets or sets a new texture. it will be retained
@@ -112,7 +112,7 @@ namespace CocosSharp
     /// <summary>
     /// gets or sets a new Label string.
     /// </summary>
-    public interface ICCLabelProtocol
+    public interface ICCTextContainer
     {
         string Text { get; set; }
 
@@ -128,7 +128,7 @@ namespace CocosSharp
     /// <summary>
     /// OpenGL projection protocol
     /// </summary>
-    public interface ICCProjectionProtocol
+    public interface ICCProjection
     {
         /// <summary>
         /// Called by CCDirector when the porjection is updated, and "custom" projection is used

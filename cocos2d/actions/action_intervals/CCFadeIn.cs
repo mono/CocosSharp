@@ -28,7 +28,7 @@
 
         public override void Update(float time)
         {
-            var pRGBAProtocol = m_pTarget as ICCRGBAProtocol;
+            var pRGBAProtocol = m_pTarget as ICCColor;
             if (pRGBAProtocol != null)
             {
                 pRGBAProtocol.Opacity = (byte) (255 * time);

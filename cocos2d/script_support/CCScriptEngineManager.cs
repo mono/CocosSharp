@@ -32,7 +32,7 @@ namespace CocosSharp
     {
         //private CCScriptEngineProtocol m_pScriptEngine;
 
-        public CCScriptEngineProtocol ScriptEngine { get; set; }
+        public ICCScriptingEngine ScriptEngine { get; set; }
 
         public static CCScriptEngineManager SharedScriptEngineManager
         {

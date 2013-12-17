@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public class CCSpriteBatchNode : CCNode, ICCTextureProtocol
+    public class CCSpriteBatchNode : CCNode, ICCTexture
     {
         private const int kDefaultSpriteBatchCapacity = 29;
 

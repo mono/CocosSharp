@@ -51,7 +51,7 @@ namespace CocosSharp
         protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
-            var protocol = m_pTarget as ICCRGBAProtocol;
+            var protocol = m_pTarget as ICCColor;
             if (protocol != null)
             {
                 m_from = protocol.Color;
@@ -60,7 +60,7 @@ namespace CocosSharp
 
         public override void Update(float time)
         {
-            var protocol = m_pTarget as ICCRGBAProtocol;
+            var protocol = m_pTarget as ICCColor;
             if (protocol != null)
             {
                 protocol.Color = new CCColor3B((byte) (m_from.R + (m_to.R - m_from.R) * time),

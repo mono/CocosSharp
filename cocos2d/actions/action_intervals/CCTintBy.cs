@@ -58,7 +58,7 @@ namespace CocosSharp
         {
             base.StartWithTarget(target);
 
-            var protocol = target as ICCRGBAProtocol;
+            var protocol = target as ICCColor;
             if (protocol != null)
             {
                 CCColor3B color = protocol.Color;
@@ -70,7 +70,7 @@ namespace CocosSharp
 
         public override void Update(float time)
         {
-            var protocol = m_pTarget as ICCRGBAProtocol;
+            var protocol = m_pTarget as ICCColor;
             if (protocol != null)
             {
                 protocol.Color = new CCColor3B((byte) (m_fromR + m_deltaR * time),

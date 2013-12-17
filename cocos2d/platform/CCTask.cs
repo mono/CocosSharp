@@ -9,14 +9,14 @@ namespace CocosSharp
 {
     public static class CCTask
     {
-        private class TaskSelector : ICCSelectorProtocol
+        private class TaskSelector : ICCUpdatable
         {
             public void Update(float dt)
             {
             }
         }
 
-        private static ICCSelectorProtocol _taskSelector = new TaskSelector();
+        private static ICCUpdatable _taskSelector = new TaskSelector();
 
         public static object RunAsync(Action action)
         {

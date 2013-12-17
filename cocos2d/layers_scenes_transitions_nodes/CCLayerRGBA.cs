@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CocosSharp
 {
-    public class CCLayerRGBA : CCLayer, ICCRGBAProtocol
+    public class CCLayerRGBA : CCLayer, ICCColor
     {
         protected byte _displayedOpacity;
         protected byte _realOpacity;
@@ -24,7 +24,7 @@ namespace CocosSharp
                 if (_cascadeColorEnabled)
                 {
                     var parentColor = CCTypes.CCWhite;
-                    var parent = m_pParent as ICCRGBAProtocol;
+                    var parent = m_pParent as ICCColor;
                     if (parent != null && parent.CascadeColorEnabled)
                     {
                         parentColor = parent.DisplayedColor;
@@ -50,7 +50,7 @@ namespace CocosSharp
                 if (_cascadeOpacityEnabled)
                 {
                     byte parentOpacity = 255;
-                    var pParent = m_pParent as ICCRGBAProtocol;
+                    var pParent = m_pParent as ICCColor;
                     if (pParent != null && pParent.CascadeOpacityEnabled)
                     {
                         parentOpacity = pParent.DisplayedOpacity;
@@ -118,7 +118,7 @@ namespace CocosSharp
                 {
                     for (int i = 0, count = m_pChildren.count; i < count; i++)
                     {
-                        var item = m_pChildren.Elements[i] as ICCRGBAProtocol;
+                        var item = m_pChildren.Elements[i] as ICCColor;
                         if (item != null)
                         {
                             item.UpdateDisplayedColor(_displayedColor);
@@ -136,7 +136,7 @@ namespace CocosSharp
             {
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
-                    var item = m_pChildren.Elements[i] as ICCRGBAProtocol;
+                    var item = m_pChildren.Elements[i] as ICCColor;
                     if (item != null)
                     {
                         item.UpdateDisplayedOpacity(_displayedOpacity);

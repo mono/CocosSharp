@@ -55,12 +55,12 @@ namespace CocosSharp
                 {
                     if (!value)
                     {
-                        m_tColorBackup = (m_pLabel as ICCRGBAProtocol).Color;
-                        (m_pLabel as ICCRGBAProtocol).Color = m_tDisabledColor;
+                        m_tColorBackup = (m_pLabel as ICCColor).Color;
+                        (m_pLabel as ICCColor).Color = m_tDisabledColor;
                     }
                     else
                     {
-                        (m_pLabel as ICCRGBAProtocol).Color = m_tColorBackup;
+                        (m_pLabel as ICCColor).Color = m_tColorBackup;
                     }
                 }
                 base.Enabled = value;
@@ -83,7 +83,7 @@ namespace CocosSharp
 
         public void SetString(string label)
         {
-            (m_pLabel as ICCLabelProtocol).Text = (label);
+            (m_pLabel as ICCTextContainer).Text = (label);
             ContentSize = m_pLabel.ContentSize;
         }
 

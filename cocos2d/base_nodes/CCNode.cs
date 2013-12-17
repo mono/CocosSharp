@@ -66,7 +66,7 @@ namespace CocosSharp
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-    public class CCNode : ICCSelectorProtocol, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, ICCKeyboardDelegate, IComparer<CCNode>
+    public class CCNode : ICCUpdatable, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, ICCKeyboardDelegate, IComparer<CCNode>
     {
         /// <summary>
         /// Use this to determine if a tag has been set on the node.

@@ -28,7 +28,7 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-    public class CCScriptEngineProtocol
+    public class ICCScriptingEngine
     {
         // functions for excute touch event
         public virtual bool ExecuteTouchEvent(string pszFuncName, CCTouch pTouch)
