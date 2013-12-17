@@ -981,9 +981,6 @@
     <Compile Include=".\script_support\CCScriptEngineManager.cs">
       <LogicalName>script_support\CCScriptEngineManager</LogicalName>
     </Compile>
-    <Compile Include=".\script_support\CCScriptEngineProtocol.cs">
-      <LogicalName>script_support\CCScriptEngineProtocol</LogicalName>
-    </Compile>
     <Compile Include=".\sprite_nodes\CCAnimation.cs">
       <LogicalName>sprite_nodes\CCAnimation</LogicalName>
     </Compile>
@@ -1166,7 +1163,6 @@
     <Compile Include=".\Win8StoreIOUtility.cs">
       <LogicalName>Win8StoreIOUtility</LogicalName>
     </Compile>
-    <Compile Include="predefine\ICCSelectorProtocol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="actions\action_instants\CCRemoveSelf.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCControlColourPicker.cs" />
@@ -1176,6 +1172,8 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCControlStepper.cs" />
     <Compile Include="Platform\CCContentManager.cs" />
     <Compile Include="Platform\CCTask.cs" />
+	<Compile Include="predefine\ICCUpdatable.cs" />
+	<Compile Include="script_support\ICCScriptingEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.Windows8.csproj">
