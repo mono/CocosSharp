@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <ProjectGuid>{FBE4633D-00D1-4391-8184-63B91DA28D4B}</ProjectGuid>
+    <ProjectGuid>{AD41B56E-E912-45AF-A98F-C8371406A547}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cocos2d.Content.Pipeline.Importers</RootNamespace>
-    <AssemblyName>cocos2d.Content.Pipeline.Importers</AssemblyName>
+    <RootNamespace>CocosSharp.Content.Pipeline.Importers</RootNamespace>
+    <AssemblyName>CocosSharp.Content.Pipeline.Importers</AssemblyName>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -63,9 +63,9 @@
     <Compile Include="TMX\TMXProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cocos2d\cocos2d.Windows.csproj">
-      <Project>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</Project>
-      <Name>cocos2d.Windows</Name>
+    <ProjectReference Include="..\cocos2d\CocosSharp.Windows.csproj">
+      <Project>{a4c23f03-a3f7-4ac6-b3e9-ea240c7e2fca}</Project>
+      <Name>CocosSharp.Windows</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

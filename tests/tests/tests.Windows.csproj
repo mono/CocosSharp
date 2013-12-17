@@ -639,9 +639,9 @@
       <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
       <Name>box2d</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\cocos2d.Windows.csproj">
+    <ProjectReference Include="..\..\cocos2d\CocosSharp.Windows.csproj">
       <Project>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</Project>
-      <Name>cocos2d.Windows</Name>
+      <Name>CocosSharp.Windows</Name>
     </ProjectReference>
     <ProjectReference Include="..\testsContent\testsContent.contentproj">
       <Name>testsContent %28Content%29</Name>
