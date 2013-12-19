@@ -12,7 +12,7 @@ namespace CocosDenshion
     /// that play music, e.g. Zune and phone, you must not intefere with the background music
     /// unless the user has allowed it.
     /// </summary>
-    public class CCMusicPlayer
+	public class CCMusicPlayer : IDisposable
     {
         public static ulong s_mciError;
 
@@ -100,18 +100,47 @@ namespace CocosDenshion
         }
         }
 
-        ~CCMusicPlayer()
-        {
-            Close();
-            try
-            {
-            RestoreMediaState();
-            }
-            catch (Exception)
-            {
-                // Ignore
-            }
-        }
+		#region Cleaning up
+
+		~CCMusicPlayer()
+		{
+			this.Dispose(false);
+		}
+
+		public void Dispose()
+		{
+			this.Dispose(true);
+
+			GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (disposing) 
+			{
+				// Dispose of managed resources
+			}
+
+			/*
+			Close here eventually calls the static method MediaPlayer.Stop().
+			This breaks the chain of dispose calls (i.e. we have no ivars to dispose of), so we have
+			to do this cleaning up regardless of whether or not this object was explictily disposed
+			*/
+			this.Close();
+
+			try
+			{
+				RestoreMediaState();
+			}
+			catch (Exception)
+			{
+				// Ignore
+			}
+
+		}
+
+		#endregion Cleaning up
+
 
         public void Open(string pFileName, int uId)
         {

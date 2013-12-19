@@ -4,7 +4,7 @@ using CocosSharp;
 
 namespace CocosDenshion
 {
-    public class CCEffectPlayer
+	public class CCEffectPlayer : IDisposable
     {
         public static ulong s_mciError;
         private SoundEffect m_effect;
@@ -28,10 +28,27 @@ namespace CocosDenshion
             }
         }
 
-        ~CCEffectPlayer()
-        {
-            Close();
-        }
+		#region Cleaning up
+
+		// No unmanaged resources, so no need for finalizer
+
+		public void Dispose()
+		{
+			this.Dispose(true);
+
+			GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (disposing && _sfxInstance != null) 
+			{
+				_sfxInstance.Dispose();
+			}
+		}
+
+		#endregion Cleaning up
+
 
         public void Open(string pFileName, int uId)
         {

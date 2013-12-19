@@ -666,30 +666,46 @@ namespace CocosSharp
 
         #endregion
 
+		public void GetPosition(out float x, out float y)
+		{
+			x = m_obPosition.X;
+			y = m_obPosition.Y;
+		}
+
+		public void SetPosition(float x, float y)
+		{
+			m_obPosition.X = x;
+			m_obPosition.Y = y;
+			SetTransformIsDirty();
+		}
+
+		#region Cleaning up
+
         private bool m_bCleaned = false;
 
         ~CCNode()
         {
             //unregisterScriptHandler();
-            Cleanup();
-            if(m_pChildren != null)
-                m_pChildren.Clear();
-            if(m_pChildrenByTag != null)
-                m_pChildrenByTag.Clear();
+			this.Dispose(false);
         }
 
-        public void GetPosition(out float x, out float y)
-        {
-            x = m_obPosition.X;
-            y = m_obPosition.Y;
-        }
+		public void Dispose()
+		{
+			this.Dispose(true);
 
-        public void SetPosition(float x, float y)
-        {
-            m_obPosition.X = x;
-            m_obPosition.Y = y;
-            SetTransformIsDirty();
-        }
+			GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (disposing) 
+			{
+				// Dispose of managed resources
+			}
+
+			// Want to stop all actions and timers regardless of whether or not this object was explicitly disposed
+			this.Cleanup();
+		}
 
         protected virtual void ResetCleanState()
         {
@@ -726,6 +742,9 @@ namespace CocosSharp
             }
             m_bCleaned = true;
         }
+
+		#endregion Cleaning up
+
 
         public CCNode GetChildByTag(int tag)
         {

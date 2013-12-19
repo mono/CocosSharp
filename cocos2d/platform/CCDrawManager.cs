@@ -1629,23 +1629,35 @@ namespace CocosSharp
             }
         }
 
+		#region Cleaning up
+
         ~CCGraphicsResource()
         {
-            if (!IsDisposed)
-            {
-                Dispose();
-            }
-
-            lock (_createdResources)
-            {
-                _createdResources.Remove(_wr);
-            }
+			this.Dispose(false);
         }
 
-        public virtual void Dispose()
+        public void Dispose()
         {
-            _isDisposed = true;
+			this.Dispose(true);
+
+			GC.SuppressFinalize(this);
         }
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (disposing) 
+			{
+				_isDisposed = true;
+			}
+
+			lock (_createdResources)
+			{
+				_createdResources.Remove(_wr);
+			}
+		}
+
+		#endregion Cleaning up
+
 
         public virtual void Reinit()
         {
@@ -1813,13 +1825,13 @@ namespace CocosSharp
             UpdateBuffer();
         }
 
-        public override void Dispose()
+		protected override void Dispose(bool disposing)
         {
-            base.Dispose();
+			base.Dispose(disposing);
             
-            if (_vertexBuffer != null && !_vertexBuffer.IsDisposed)
+			if (disposing && _vertexBuffer != null && !_vertexBuffer.IsDisposed)
             {
-                _vertexBuffer.Dispose();
+				_vertexBuffer.Dispose();
             }
             
             _vertexBuffer = null;
@@ -1911,16 +1923,16 @@ namespace CocosSharp
             }
         }
 
-        public override void Dispose()
+		protected override void Dispose(bool disposing)
         {
-            base.Dispose();
+			base.Dispose(disposing);
 
-            if (_indexBuffer != null && !_indexBuffer.IsDisposed)
-            {
-                _indexBuffer.Dispose();
-            }
+			if (disposing && _indexBuffer != null && !_indexBuffer.IsDisposed) 
+			{
+				_indexBuffer.Dispose();
+			}
 
-            _indexBuffer = null;
+			_indexBuffer = null;
         }
     }
 }

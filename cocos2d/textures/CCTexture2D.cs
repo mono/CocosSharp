@@ -269,15 +269,16 @@ namespace CocosSharp
             }
         }
 
-        public override void Dispose()
+		protected override void Dispose(bool disposing)
         {
-            base.Dispose();
+			base.Dispose(disposing);
 
-            if (m_Texture2D != null && !m_Texture2D.IsDisposed && !m_bManaged)
-            {
-                m_Texture2D.Dispose();
-            }
-            m_Texture2D = null;
+			if (disposing && m_Texture2D != null && !m_Texture2D.IsDisposed && !m_bManaged) 
+			{
+				m_Texture2D.Dispose();
+			}
+
+			m_Texture2D = null;
         }
 
         public override string ToString()

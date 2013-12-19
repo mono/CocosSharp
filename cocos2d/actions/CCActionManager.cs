@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using System;
 
 namespace CocosSharp
 {
-    public class CCActionManager : ICCUpdatable
+	public class CCActionManager : ICCUpdatable, IDisposable
     {
         private static CCNode[] m_pTmpKeysArray = new CCNode[128];
         private bool m_bCurrentTargetSalvaged;
@@ -85,10 +86,33 @@ namespace CocosSharp
 
         #endregion
 
+
+		#region Cleaning up
+
         ~CCActionManager()
         {
-            RemoveAllActions();
+			this.Dispose(false);
         }
+
+		public void Dispose()
+		{
+			this.Dispose(true);
+
+			GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (disposing) 
+			{
+				// Dispose of managed resources
+			}
+
+			this.RemoveAllActions();
+		}
+
+		#endregion Cleaning up
+
 
         protected void DeleteHashElement(HashElement element)
         {

@@ -24,10 +24,6 @@ namespace CocosSharp
         private readonly object m_pDictLock = new object();
         protected Dictionary<string, CCTexture2D> m_pTextures = new Dictionary<string, CCTexture2D>();
 
-        ~CCTextureCache() 
-        {
-            Dispose();
-        }
 
         private CCTextureCache()
         {
@@ -328,15 +324,30 @@ namespace CocosSharp
             CCLog.Log("{0} textures, for {1} KB ({2:00.00} MB)", count, total / 1024, total / (1024f * 1024f));
         }
 
+		#region Cleaning up
+
+		// No unmanaged resources, so no need for finalizer
+
         public void Dispose()
         {
-            if (m_pTextures != null)
-            {
-                foreach (CCTexture2D t in m_pTextures.Values)
-                {
-                    t.Dispose();
-                }
-            }
+			this.Dispose(true);
+
+			GC.SuppressFinalize(this);
         }
-    }
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (disposing && m_pTextures != null)
+			{
+				foreach (CCTexture2D t in m_pTextures.Values)
+				{
+					t.Dispose();
+				}
+
+				m_pTextures = null;
+			}
+		}
+    	
+		#endregion Cleaning up
+	}
 }
