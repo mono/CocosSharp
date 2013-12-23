@@ -1,6 +1,6 @@
 namespace CocosSharp
 {
-    public static class CCSplineMath
+	internal static class CCSplineMath
     {
         // CatmullRom Spline formula:
         /// <summary>
@@ -13,7 +13,7 @@ namespace CocosSharp
         /// <param name="tension"> The parameter c is a tension parameter that must be in the interval (0,1). In some sense, this can be interpreted as the "length" of the tangent. c=1 will yield all zero tangents, and c=0 yields a Catmull–Rom spline.</param>
         /// <param name="t">Time along the spline</param>
         /// <returns>The point along the spline for the given time (t)</returns>
-        public static CCPoint CCCardinalSplineAt(CCPoint p0, CCPoint p1, CCPoint p2, CCPoint p3, float tension, float t)
+		internal static CCPoint CCCardinalSplineAt(CCPoint p0, CCPoint p1, CCPoint p2, CCPoint p3, float tension, float t)
         {
             if (tension < 0f)
             {
@@ -46,13 +46,13 @@ namespace CocosSharp
         //	((1 - t) + t)3 = 1 
         // Expands to 
         //   (1 - t)3 + 3t(1-t)2 + 3t2(1 - t) + t3 = 1 
-        public static float CubicBezier(float a, float b, float c, float d, float t)
+		internal static float CubicBezier(float a, float b, float c, float d, float t)
         {
             float t1 = 1f - t;
             return ((t1 * t1 * t1) * a + 3f * t * (t1 * t1) * b + 3f * (t * t) * (t1) * c + (t * t * t) * d);
         }
 
-        public static float QuadBezier(float a, float b, float c, float t)
+		internal static float QuadBezier(float a, float b, float c, float t)
         {
             float t1 = 1f - t;
             return (t1 * t1) * a + 2.0f * (t1) * t * b + (t * t) * c;
