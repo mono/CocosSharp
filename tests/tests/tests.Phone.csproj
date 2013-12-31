@@ -1169,7 +1169,7 @@
       <Name>box2d.Phone</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\cocos2d\CocosSharp.Phone.csproj">
-      <Project>{47EE6CE6-493D-4967-944A-5E55B71AA9FD}</Project>
+      <Project>{F2C5422D-4464-4494-9EB1-2C9EA9DC3C21}</Project>
       <Name>CocosSharp.Phone</Name>
     </ProjectReference>
     <ProjectReference Include="..\testsContent\testsContent.contentproj">
