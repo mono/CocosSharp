@@ -1168,9 +1168,9 @@
       <Project>{8165599E-6F37-41B7-91CD-C7C66232B5F2}</Project>
       <Name>box2d.Phone</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\cocos2d.Phone.csproj">
+    <ProjectReference Include="..\..\cocos2d\CocosSharp.Phone.csproj">
       <Project>{47EE6CE6-493D-4967-944A-5E55B71AA9FD}</Project>
-      <Name>cocos2d.Phone</Name>
+      <Name>CocosSharp.Phone</Name>
     </ProjectReference>
     <ProjectReference Include="..\testsContent\testsContent.contentproj">
       <Name>testsContent %28Content%29</Name>
