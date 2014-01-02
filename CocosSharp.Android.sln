@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.Android", "cocos2d\cocos2d.Android.csproj", "{64725C5B-A1BC-4974-8538-A1158BABF572}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Android", "cocos2d\CocosSharp.Android.csproj", "{64725C5B-A1BC-4974-8538-A1158BABF572}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Android", "MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj", "{BA9476CF-99BA-4D03-92F2-73D2C5E58883}"
 EndProject

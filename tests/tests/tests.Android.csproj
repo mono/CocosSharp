@@ -2089,9 +2089,9 @@
       <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
       <Name>box2d.Android</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\cocos2d.Android.csproj">
-      <Project>{64725C5B-A1BC-4974-8538-A1158BABF572}</Project>
-      <Name>cocos2d.Android</Name>
+    <ProjectReference Include="..\..\cocos2d\CocosSharp.Android.csproj">
+      <Project>{6e02afd1-c476-4f9a-a9a8-caac4b03783a}</Project>
+      <Name>CocosSharp.Android</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj">
       <Project>{BA9476CF-99BA-4D03-92F2-73D2C5E58883}</Project>
