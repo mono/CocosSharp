@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A83510D8-7AED-411E-9616-DCFEA180969E}</ProjectGuid>
+    <ProjectGuid>{511B1B80-F539-4CEC-AB62-3652A9275E7E}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <Description>cocos2d for MonoTouch</Description>
-    <RootNamespace>Cocos2D</RootNamespace>
+    <RootNamespace>CocosSharp</RootNamespace>
     <SynchReleaseVersion>False</SynchReleaseVersion>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
@@ -67,6 +67,9 @@
     <DefineConstants>IPHONE;IOS;GLES;OPENGL;MONOGAME</DefineConstants>
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <AssemblyName>cocos2d-xna.iOS</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyName>CocosSharp</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -464,8 +467,8 @@
     <Compile Include="label_nodes\CCLabel-CoreGraphics.cs" />
     <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
     <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
-	<Compile Include="predefine\ICCUpdatable.cs" />
-	<Compile Include="script_support\ICCScriptingEngine.cs" />
+    <Compile Include="predefine\ICCUpdatable.cs" />
+    <Compile Include="script_support\ICCScriptingEngine.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -482,7 +485,5 @@
       <Name>MonoGame.Framework.iOS</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="keyboard_dispatcher\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

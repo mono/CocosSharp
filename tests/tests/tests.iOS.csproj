@@ -25,6 +25,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <AssemblyName>cocos2dTests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>True</DebugSymbols>
@@ -90,7 +91,7 @@
     <MtouchUseLlvm>True</MtouchUseLlvm>
     <MtouchI18n />
     <MtouchArch>ARMv7, ARMv7s</MtouchArch>
-    <AssemblyName>cocos2d.tests</AssemblyName>
+    <AssemblyName>cocos2dtests</AssemblyName>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -1618,13 +1619,13 @@
     <Compile Include="classes\tests\ExtensionsTest\TableViewTest\TableViewTestScene.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cocos2d\cocos2d.iOS.csproj">
-      <Project>{A83510D8-7AED-411E-9616-DCFEA180969E}</Project>
-      <Name>cocos2d.iOS</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\box2d\box2d.iOS.csproj">
       <Project>{7877D4F9-F781-465A-9C1F-D113F246A994}</Project>
       <Name>box2d.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\cocos2d\CocosSharp.iOS.csproj">
+      <Project>{511b1b80-f539-4cec-ab62-3652a9275e7e}</Project>
+      <Name>CocosSharp.iOS</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.iOS.csproj">
       <Project>{DB8508BB-9849-4CC2-BC0F-8EB5DACB3C47}</Project>
@@ -1668,7 +1669,5 @@
   <ItemGroup>
     <BundleResource Include="Content\fonts\Marker Felt.xnb" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="classes\tests\Box2DTestBet%28Box2D%29\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
