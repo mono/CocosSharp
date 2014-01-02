@@ -135,14 +135,14 @@
   <target name="buildouya" description="Build Android" depends="clean">
     <if test="${os == 'Win32NT'}">
       <if test="${file::exists('C:\Program Files (x86)\MSBuild\Xamarin\Android\Xamarin.Android.CSharp.targets')}">
-          <exec program="msbuild " commandline="cocos2d-xna.Ouya.sln /t:Clean /p:Configuration=Release" />
-          <exec program="msbuild " commandline="cocos2d-xna.Ouya.sln /t:Build /p:Configuration=Release" />
+          <exec program="msbuild " commandline="CocosSharp.Ouya.sln /t:Clean /p:Configuration=Release" />
+          <exec program="msbuild " commandline="CocosSharp.Ouya.sln /t:Build /p:Configuration=Release" />
       </if>
     </if>
     <if test="${os == 'MacOS'}">
       <if test="${file::exists('/Developer/MonoAndroid/bin/mandroid')}">
-        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release cocos2d-xna.ouya.sln" />
-        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release cocos2d-xna.ouya.sln" />
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release CocosSharp.ouya.sln" />
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release CocosSharp.ouya.sln" />
       </if>
     </if>
   </target>
