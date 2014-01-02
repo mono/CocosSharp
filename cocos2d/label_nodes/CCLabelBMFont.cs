@@ -305,7 +305,7 @@ namespace CocosSharp
 
         public CCLabelBMFont()
         {
-            Init();
+            InitWithString(null, null, new CCSize(kCCLabelAutomaticWidth, 0), CCTextAlignment.Left, CCVerticalTextAlignment.Top, CCPoint.Zero, null);
         }
 
         public CCLabelBMFont(string str, string fntFile, float width)
@@ -328,12 +328,7 @@ namespace CocosSharp
             InitWithString(str, fntFile, new CCSize(width, 0), alignment, CCVerticalTextAlignment.Top, imageOffset, null);
         }
 
-        public override bool Init()
-        {
-            return InitWithString(null, null, new CCSize(kCCLabelAutomaticWidth, 0), CCTextAlignment.Left, CCVerticalTextAlignment.Top, CCPoint.Zero, null);
-        }
-
-        protected virtual bool InitWithString(string theString, string fntFile, CCSize dimentions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment,
+        protected virtual void InitWithString(string theString, string fntFile, CCSize dimentions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment,
                                               CCPoint imageOffset, CCTexture2D texture)
         {
             Debug.Assert(m_pConfiguration == null, "re-init is no longer supported");
@@ -346,7 +341,7 @@ namespace CocosSharp
                 if (newConf == null)
                 {
                     CCLog.Log("CCLabelBMFont: Impossible to create font. Please check file: '{0}'", fntFile);
-                    return false;
+                    return;
                 }
 
                 m_pConfiguration = newConf;
@@ -415,9 +410,9 @@ namespace CocosSharp
 
                 SetString(theString, true);
 
-                return true;
+                return;
             }
-            return false;
+            return;
         }
 
         private int KerningAmountForFirst(int first, int second)

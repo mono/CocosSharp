@@ -12,14 +12,8 @@ namespace CocosSharp
         private CCSize m_tDimensions;
         private CCVerticalTextAlignment m_vAlignment;
 
-        public CCLabelTTF ()
+        public CCLabelTTF () : this("", "Helvetica", 12.0f)
         {
-            m_hAlignment = CCTextAlignment.Center;
-            m_vAlignment = CCVerticalTextAlignment.Top;
-            m_pFontName = string.Empty;
-            m_fFontSize = 0.0f;
-
-            Init();
         }
         
         public CCLabelTTF (string text, string fontName, float fontSize) : 
@@ -183,44 +177,22 @@ namespace CocosSharp
             return string.Format("FontName:{0}, FontSize:{1}", m_pFontName, m_fFontSize);
         }
 
-        public override bool Init()
+        protected void InitWithString(string text, string fontName, float fontSize, 
+                                    CCSize dimensions, CCTextAlignment hAlignment,
+                                    CCVerticalTextAlignment vAlignment)
         {
-            return InitWithString("", "Helvetica", 12);
-        }
+            base.Init();            
 
-        public bool InitWithString(string label, string fontName, float fontSize, CCSize dimensions, CCTextAlignment alignment)
-        {
-            return InitWithString(label, fontName, fontSize, dimensions, alignment, CCVerticalTextAlignment.Top);
-        }
+            // shader program
+            //this->setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(SHADER_PROGRAM));
 
-        public bool InitWithString(string label, string fontName, float fontSize)
-        {
-            return InitWithString(label, fontName, fontSize, CCSize.Zero, CCTextAlignment.Left,
-                                  CCVerticalTextAlignment.Top);
-        }
+            m_tDimensions = new CCSize(dimensions.Width, dimensions.Height);
+            m_hAlignment = hAlignment;
+            m_vAlignment = vAlignment;
+            m_pFontName = fontName;
+            m_fFontSize = fontSize;
 
-
-        public bool InitWithString(string text, string fontName, float fontSize,
-                                   CCSize dimensions, CCTextAlignment hAlignment,
-                                   CCVerticalTextAlignment vAlignment)
-        {
-            if (base.Init())
-            {
-                // shader program
-                //this->setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(SHADER_PROGRAM));
-
-                m_tDimensions = new CCSize(dimensions.Width, dimensions.Height);
-                m_hAlignment = hAlignment;
-                m_vAlignment = vAlignment;
-                m_pFontName = fontName;
-                m_fFontSize = fontSize;
-
-                Text = (text);
-
-                return true;
-            }
-
-            return false;
+            this.Text = text;            
         }
 
         private void updateTexture()

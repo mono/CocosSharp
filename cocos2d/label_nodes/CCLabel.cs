@@ -97,25 +97,10 @@ namespace CocosSharp
 
         public CCLabel(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
         {
-            InitWithString(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
-        }
-
-        public bool InitWithString(string text, string fontName, float fontSize)
-        {
-            return InitWithString(text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Left, CCVerticalTextAlignment.Top);
-        }
-
-        public bool InitWithString(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment)
-        {
-            return InitWithString(text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top);
-        }
-
-        public bool InitWithString(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
-        {
             InitializeFont(fontName, fontSize, text);
-			m_FontName = fontName;
-			m_FontSize = fontSize;
-            return base.InitWithString(text, GetFontKey(fontName, fontSize), dimensions.PointsToPixels(), hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
+            m_FontName = fontName;
+            m_FontSize = fontSize;
+            base.InitWithString(text, GetFontKey(fontName, fontSize), dimensions.PointsToPixels(), hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
         }
 
         private CCBMFontConfiguration InitializeFont(string fontName, float fontSize, string charset)

@@ -53,16 +53,6 @@ namespace CocosSharp
 
         public CCLabelAtlas (string label, string fntFile)
         {
-            InitWithString(label, fntFile);
-        }
-
-        public CCLabelAtlas (string label, string charMapFile, int itemWidth, int itemHeight, char startCharMap)
-        {
-            InitWithString(label, charMapFile, itemWidth, itemHeight, startCharMap);
-        }
-
-        public bool InitWithString(string theString, string fntFile)
-        {
             string data = CCFileUtils.GetFileData(fntFile);
 
             PlistDocument doc = new PlistDocument(data);
@@ -74,23 +64,27 @@ namespace CocosSharp
             int width = (int)Math.Ceiling(dict["itemWidth"].AsInt / CCMacros.CCContentScaleFactor());
             int height = (int)Math.Ceiling(dict["itemHeight"].AsInt / CCMacros.CCContentScaleFactor());
             var startChar = (char) dict["firstChar"].AsInt;
-
-            return InitWithString(theString, textureFilename, width, height, startChar);
+			
+			InitWithString(label, textureFilename, width, height, startChar);
         }
 
-        public bool InitWithString(string label, string charMapFile, int itemWidth, int itemHeight, char startCharMap)
+        public CCLabelAtlas (string label, string charMapFile, int itemWidth, int itemHeight, char startCharMap)
+        {
+            InitWithString(label, charMapFile, itemWidth, itemHeight, startCharMap);
+        }
+
+        private void InitWithString(string label, string charMapFile, int itemWidth, int itemHeight, char startCharMap)
         {
             Debug.Assert(label != null);
             if (base.InitWithTileFile(charMapFile, itemWidth, itemHeight, label.Length))
             {
                 m_cMapStartChar = startCharMap;
                 Text = (label);
-                return true;
             }
-            return false;
         }
 
-        public bool InitWithString(string label, CCTexture2D texture, int itemWidth, int itemHeight, char startCharMap)
+        // Used by CCDirector after label is created to reset value
+        internal bool InitWithString(string label, CCTexture2D texture, int itemWidth, int itemHeight, char startCharMap)
         {
             Debug.Assert(label != null);
             if (base.InitWithTexture(texture, itemWidth, itemHeight, label.Length))
