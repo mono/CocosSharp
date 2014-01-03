@@ -89,8 +89,8 @@ namespace CocosSharp
                     {
                         if ((y2 >= 0) && (y2 < height2))
                         {
-                            int iA = x1 + y1 * width1;
-                            int iB = x2 + y2 * width2;
+							int iA = x1 + (height1-y1) * width1;
+							int iB = x2 + (height2-y2) * width2;
                             if (iA >= maskA.Length || iB >= maskB.Length)
                             {
                                 continue;
