@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</ProjectGuid>
+    <ProjectGuid>{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CocosSharp</RootNamespace>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProductVersion>12.0.0</ProductVersion>
@@ -449,8 +449,8 @@
     <Compile Include="touch_dispatcher\ICCStandardTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTargetedTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
-	<Compile Include="predefine\ICCUpdatable.cs" />
-	<Compile Include="script_support\ICCScriptingEngine.cs" />
+    <Compile Include="predefine\ICCUpdatable.cs" />
+    <Compile Include="script_support\ICCScriptingEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Windows.csproj">

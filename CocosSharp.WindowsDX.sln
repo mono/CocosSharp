@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2d.WindowsDX", "cocos2d\cocos2d.WindowsDX.csproj", "{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsDX", "cocos2d\CocosSharp.WindowsDX.csproj", "{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.Windows", "MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Windows.csproj", "{AE483C29-042E-4226-BA52-D247CE7676DA}"
 EndProject

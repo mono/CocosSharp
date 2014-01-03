@@ -55,8 +55,8 @@
       <exec program="msbuild " commandline="CocosSharp.Windows.sln /t:Build /p:Configuration=Release" />
       <exec program="msbuild " commandline="CocosSharp.WindowsGL.sln /t:Clean /p:Configuration=Release" />
       <exec program="msbuild " commandline="CocosSharp.WindowsGL.sln /t:Build /p:Configuration=Release" />
-      <exec program="msbuild " commandline="cocos2d-xna.WindowsDX.sln /t:Clean /p:Configuration=Release" />
-      <exec program="msbuild " commandline="cocos2d-xna.WindowsDX.sln /t:Build /p:Configuration=Release" />
+      <exec program="msbuild " commandline="CocosSharp.WindowsDX.sln /t:Clean /p:Configuration=Release" />
+      <exec program="msbuild " commandline="CocosSharp.WindowsDX.sln /t:Build /p:Configuration=Release" />
     </if>
     <if test="${os == 'Unix'}">
       <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release CocosSharp.Windows.sln" />
@@ -178,7 +178,7 @@
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Android.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Ouya.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}Cocos2D.MGCB.nuspec" -OutputDirectory "${packages.dir.path}"' /-->
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}Cocos2D.WindowsDX.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsDX.nuspec" -OutputDirectory "${packages.dir.path}"' />
     </if>
   </target>
 
