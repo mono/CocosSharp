@@ -116,8 +116,7 @@ namespace tests
 
                 stream.Position = 0;
 
-                var tex = new CCTexture2D();
-                tex.InitWithStream(stream);
+				var tex = new CCTexture2D(stream);
 
                 CCSprite sprite = new CCSprite(tex);
 

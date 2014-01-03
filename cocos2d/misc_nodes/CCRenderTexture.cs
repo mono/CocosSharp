@@ -44,11 +44,11 @@ namespace CocosSharp
             w = (int)Math.Ceiling(w * CCMacros.CCContentScaleFactor());
             h = (int)Math.Ceiling(h * CCMacros.CCContentScaleFactor());
 
-            m_pTexture = new CCTexture2D();
-			m_pTexture.IsAntialiased = false;
 
             m_pRenderTarget2D = CCDrawManager.CreateRenderTarget(w, h, colorFormat, depthFormat, usage);
-            m_pTexture.InitWithTexture(m_pRenderTarget2D, colorFormat, true, false);
+
+            m_pTexture = new CCTexture2D(m_pRenderTarget2D, colorFormat, true, false);
+            m_pTexture.IsAntialiased = false;
 
             m_bFirstUsage = true;
 

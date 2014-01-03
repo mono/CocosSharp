@@ -67,6 +67,9 @@ namespace CocosSharp
         private bool m_bManaged;
         private bool m_bAntialiased;
 
+
+        #region Constructors
+
         public CCTexture2D()
         {
             m_samplerState = SamplerState.LinearClamp;
@@ -74,6 +77,63 @@ namespace CocosSharp
 
             RefreshAntialiasSetting ();
         }
+        
+        public CCTexture2D (int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat, bool premultipliedAlpha=true, bool mipMap=false) : this()
+        {
+            Init(pixelsWide, pixelsHigh, pixelFormat, premultipliedAlpha, mipMap);
+        }
+        
+        public CCTexture2D (int pixelsWide, int pixelsHigh, bool premultipliedAlpha=true, bool mipMap=false) 
+            : this(pixelsWide, pixelsHigh, DefaultAlphaPixelFormat, premultipliedAlpha, mipMap)
+        {
+        }
+        
+        public CCTexture2D (byte[] data, SurfaceFormat pixelFormat, bool mipMap=false) : this()
+        {
+            InitWithData(data, pixelFormat, mipMap);
+        }
+        
+        public CCTexture2D (byte[] data, bool mipMap = false) : this(data, DefaultAlphaPixelFormat, mipMap)
+        {
+        }
+        
+        public CCTexture2D (Stream stream) : this (stream, DefaultAlphaPixelFormat)
+        {
+        }
+        
+        public CCTexture2D (Stream stream, SurfaceFormat pixelFormat) : this()
+        {
+            InitWithStream(stream, pixelFormat);
+        }
+        
+        public CCTexture2D (string text, CCSize dimensions, CCTextAlignment hAlignment, 
+                            CCVerticalTextAlignment vAlignment, string fontName, float fontSize) : this()
+        {
+            InitWithString(text, dimensions, hAlignment, vAlignment, fontName, fontSize);
+        }
+
+        public CCTexture2D(string text, string fontName, float fontSize) 
+            : this(text, CCSize.Zero, CCTextAlignment.Center, CCVerticalTextAlignment.Top, fontName, fontSize)
+        {
+        }
+
+        public CCTexture2D(Texture2D texture, SurfaceFormat format, bool premultipliedAlpha=true, bool managed=false)
+        {
+            InitWithTexture(texture, format, premultipliedAlpha, managed);
+        }
+
+        public CCTexture2D(Texture2D texture, bool premultipliedAlpha=true, bool managed=false) 
+            : this(texture, texture.Format, premultipliedAlpha, managed)
+        {
+        }
+
+        public CCTexture2D(string file) : this()
+        {
+            InitWithFile(file);
+        }
+
+        #endregion Constructors
+
 
         public bool IsTextureDefined
         {
@@ -316,22 +376,7 @@ namespace CocosSharp
 
         #region Initialization
 
-        public bool Init(int pixelsWide, int pixelsHigh)
-        {
-            return Init(pixelsWide, pixelsHigh, DefaultAlphaPixelFormat, true, false);
-        }
-
-        public bool Init(int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat)
-        {
-            return Init(pixelsWide, pixelsHigh, pixelFormat, true, false);
-        }
-
-        public bool Init(int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat, bool premultipliedAlpha)
-        {
-            return Init(pixelsWide, pixelsHigh, pixelFormat, premultipliedAlpha, false);
-        }
-
-        public bool Init(int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat, bool premultipliedAlpha, bool mipMap)
+        private void Init(int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat, bool premultipliedAlpha, bool mipMap)
         {
             try
             {
@@ -342,26 +387,18 @@ namespace CocosSharp
                     m_CacheInfo.CacheType = CCTextureCacheType.None;
                     m_CacheInfo.Data = null;
 
-                    return true;
+                    return;
                 }
             }
             catch (Exception)
             {
             }
-            return false;
+            
+            return;
         }
 
-        public bool InitWithData(byte[] data)
-        {
-            return InitWithData(data, DefaultAlphaPixelFormat);
-        }
-
-        public bool InitWithData(byte[] data, SurfaceFormat pixelFormat)
-        {
-            return InitWithData(data, DefaultAlphaPixelFormat, false);
-        }
-
-        public bool InitWithData(byte[] data, SurfaceFormat pixelFormat, bool mipMap)
+        // Bool return type is used by CCTextureCache
+        internal bool InitWithData(byte[] data, SurfaceFormat pixelFormat, bool mipMap=false)
         {
             if (data == null)
             {
@@ -396,12 +433,7 @@ namespace CocosSharp
             return false;
         }
 
-        public bool InitWithStream(Stream stream)
-        {
-            return InitWithStream(stream, DefaultAlphaPixelFormat);
-        }
-
-        public bool InitWithStream(Stream stream, SurfaceFormat pixelFormat)
+        private void InitWithStream(Stream stream, SurfaceFormat pixelFormat)
         {
             Texture2D texture;
             try
@@ -410,31 +442,22 @@ namespace CocosSharp
                 
                 InitWithTexture(texture, pixelFormat, false, false);
 
-                return true;
+                return;
             }
             catch (Exception)
             {
-                return false;
+
             }
         }
 
-        public bool InitWithRawData<T>(T[] data, SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh,
-                                       bool premultipliedAlpha)
+        internal bool InitWithRawData<T>(T[] data, SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh, bool premultipliedAlpha, bool mipMap=false)
             where T : struct
         {
-            return InitWithRawData(data, pixelFormat, pixelsWide, pixelsHigh,
-                                   premultipliedAlpha, false, new CCSize(pixelsWide, pixelsHigh));
+            return InitWithRawData(data, pixelFormat, pixelsWide, pixelsHigh, premultipliedAlpha, mipMap, new CCSize(pixelsWide, pixelsHigh));
         }
-
-        public bool InitWithRawData<T>(T[] data, SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh,
-                                       bool premultipliedAlpha, bool mipMap)
-            where T : struct
-        {
-            return InitWithRawData(data, pixelFormat, pixelsWide, pixelsHigh,
-                                   premultipliedAlpha, mipMap, new CCSize(pixelsWide, pixelsHigh));
-        }
-
-        public bool InitWithRawData<T>(T[] data, SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh,
+        
+        // Bool return value used by CCTextureCache
+        internal bool InitWithRawData<T>(T[] data, SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh,
                                        bool premultipliedAlpha, bool mipMap, CCSize contentSize) where T : struct
         {
             try
@@ -459,13 +482,7 @@ namespace CocosSharp
             return true;
         }
 
-        public bool InitWithString(string text, string fontName, float fontSize)
-        {
-            return InitWithString(text, CCSize.Zero, CCTextAlignment.Center, CCVerticalTextAlignment.Top, fontName,
-                                  fontSize);
-        }
-
-        public bool InitWithString(string text, CCSize dimensions, CCTextAlignment hAlignment,
+        private void InitWithString(string text, CCSize dimensions, CCTextAlignment hAlignment,
                                    CCVerticalTextAlignment vAlignment, string fontName,
                                    float fontSize)
         {
@@ -475,7 +492,7 @@ namespace CocosSharp
 
                 if (string.IsNullOrEmpty(text))
                 {
-                    return false;
+                    return;
                 }
 
                 float loadedSize = fontSize;
@@ -485,7 +502,7 @@ namespace CocosSharp
                 if (font == null)
                 {
                     CCLog.Log("Failed to load default font. No font supported.");
-                    return (false);
+                    return;
                 }
 
                 float scale = 1f;
@@ -629,21 +646,17 @@ namespace CocosSharp
                         VAlignment = vAlignment
                     };
 
-                    return true;
+                    return;
                 }
             }
             catch (Exception ex)
             {
                 CCLog.Log(ex.ToString());
             }
-            return false;
         }
 
-        public bool InitWithTexture(Texture2D texture)
-        {
-            return InitWithTexture(texture, texture.Format, true, false);
-        }
-
+        // Method called externally by CCDrawManager
+        // Bool return type is used by CCTexture2D methods
         internal bool InitWithTexture(Texture2D texture, SurfaceFormat format, bool premultipliedAlpha, bool managed)
         {
             m_bManaged = managed;
@@ -692,7 +705,8 @@ namespace CocosSharp
             return true;
         }
 
-        public bool InitWithFile(string file)
+        // Bool return type is used by CCTextureCache
+        internal bool InitWithFile(string file)
         {
             m_bManaged = false;
 
@@ -739,7 +753,7 @@ namespace CocosSharp
             {
                 using (var stream = contentManager.GetAssetStream(file))
                 {
-                    return InitWithStream(stream, DefaultAlphaPixelFormat);
+                    InitWithStream(stream, DefaultAlphaPixelFormat);
                 }
             }
             catch (Exception)

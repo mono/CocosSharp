@@ -169,8 +169,7 @@ namespace CocosSharp
 
             m_tBlendFunc = CCBlendFunc.AlphaBlend; 
 
-            m_pTextureAtlas = new CCTextureAtlas();
-            m_pTextureAtlas.InitWithTexture(texture, itemsToRender);
+            m_pTextureAtlas = new CCTextureAtlas(texture, itemsToRender);
 
             UpdateBlendFunc();
             UpdateOpacityModifyRgb();

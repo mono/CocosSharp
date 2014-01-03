@@ -215,19 +215,18 @@ namespace CocosSharp
 
         #region create and init
 
-        /// <summary>
-        /// creates a TextureAtlas with an filename and with an initial capacity for Quads.
-        /// The TextureAtlas capacity can be increased in runtime.
-        /// </summary>
-        public static CCTextureAtlas Create(string file, int capacity)
+        public CCTextureAtlas()
         {
-            var pTextureAtlas = new CCTextureAtlas();
-            if (pTextureAtlas.InitWithFile(file, capacity))
-            {
-                return pTextureAtlas;
-            }
+        }
 
-            return null;
+        public CCTextureAtlas(string file, int capacity) : this()
+        {
+            InitWithFile (file, capacity);
+        }
+
+        public CCTextureAtlas(CCTexture2D texture, int capacity) : this()
+        {
+            InitWithTexture (texture, capacity);
         }
 
         /// <summary>
@@ -235,31 +234,14 @@ namespace CocosSharp
         /// The TextureAtlas capacity can be increased in runtime.
         /// WARNING: Do not reinitialize the TextureAtlas because it will leak memory (issue #706)
         /// </summary>
-        public bool InitWithFile(string file, int capacity)
+        private void InitWithFile(string file, int capacity)
         {
             // retained in property
             CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(file);
             if (texture != null)
             {
-                return InitWithTexture(texture, capacity);
+                InitWithTexture(texture, capacity);
             }
-            return false;
-        }
-
-        /// <summary>
-        /// creates a TextureAtlas with a previously initialized Texture2D object, and
-        /// with an initial capacity for n Quads. 
-        /// The TextureAtlas capacity can be increased in runtime.
-        /// </summary>
-        public static CCTextureAtlas Create(CCTexture2D texture, int capacity)
-        {
-            var pTextureAtlas = new CCTextureAtlas();
-            if (pTextureAtlas.InitWithTexture(texture, capacity))
-            {
-                return pTextureAtlas;
-            }
-
-            return null;
         }
 
         /// <summary>
@@ -268,7 +250,8 @@ namespace CocosSharp
         /// The TextureAtlas capacity can be increased in runtime.
         /// WARNING: Do not reinitialize the TextureAtlas because it will leak memory (issue #706)
         /// </summary>
-        public bool InitWithTexture(CCTexture2D texture, int capacity)
+        // Called by CCParticleBatchNode and CCSpriteBatchNode on an already instantiated texture atlas object 
+        internal void InitWithTexture(CCTexture2D texture, int capacity)
         {
             //Debug.Assert(texture != null);
 
@@ -287,8 +270,6 @@ namespace CocosSharp
             m_pQuads = m_pVertexBuffer.Data;
 
             Dirty = true;
-
-            return true;
         }
 
         #endregion
