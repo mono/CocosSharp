@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DC731E59-0193-4F7C-BC61-B53BA0BF1F3C}</ProjectGuid>
+    <ProjectGuid>{158FF52F-6E3B-498C-9C96-A4DA9FD4E6E0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cocos2d.WinRT</RootNamespace>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <RootNamespace>CocosSharp</RootNamespace>
+    <AssemblyName>CocosSgarp</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -1172,8 +1172,8 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCControlStepper.cs" />
     <Compile Include="Platform\CCContentManager.cs" />
     <Compile Include="Platform\CCTask.cs" />
-	<Compile Include="predefine\ICCUpdatable.cs" />
-	<Compile Include="script_support\ICCScriptingEngine.cs" />
+    <Compile Include="predefine\ICCUpdatable.cs" />
+    <Compile Include="script_support\ICCScriptingEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.Windows8.csproj">

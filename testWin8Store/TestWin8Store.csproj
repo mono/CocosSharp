@@ -105,9 +105,9 @@
       <Project>{b81b6701-7a78-4846-bf6f-04e0591f0f38}</Project>
       <Name>box2d.Windows8</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cocos2d\Cocos2d.WinRT.csproj">
-      <Project>{dc731e59-0193-4f7c-bc61-b53ba0bf1f3c}</Project>
-      <Name>Cocos2d.WinRT</Name>
+    <ProjectReference Include="..\cocos2d\CocosSharp.WinRT.csproj">
+      <Project>{158ff52f-6e3b-498c-9c96-a4da9fd4e6e0}</Project>
+      <Name>CocosSharp.WinRT</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Windows8.csproj">
       <Project>{0518563c-acca-4a14-8c5d-ddbe93e2605f}</Project>
