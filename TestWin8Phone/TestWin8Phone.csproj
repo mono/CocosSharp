@@ -1783,9 +1783,9 @@
       <Project>{1F6DEC85-9C75-45CF-BECA-BD3187A398B1}</Project>
       <Name>box2d.WP8</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cocos2d\cocos2d.WP8.csproj">
-      <Project>{7BF6F2D8-9E09-4A0A-84C1-1A5FF795D56A}</Project>
-      <Name>cocos2d.WP8</Name>
+    <ProjectReference Include="..\cocos2d\CocosSharp.WP8.csproj">
+      <Project>{69E49CEA-FD66-43DA-9F7B-53455767EF63}</Project>
+      <Name>CocosSharp.WP8</Name>
     </ProjectReference>
     <ProjectReference Include="..\cocos2d\external lib\ICSharpCodeSource\src\ICSharpCode.SharpZLib.WP8.csproj">
       <Project>{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}</Project>

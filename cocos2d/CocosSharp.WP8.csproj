@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7BF6F2D8-9E09-4A0A-84C1-1A5FF795D56A}</ProjectGuid>
+    <ProjectGuid>{69E49CEA-FD66-43DA-9F7B-53455767EF63}</ProjectGuid>
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cocos2D</RootNamespace>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <RootNamespace>CocosSharp</RootNamespace>
+    <AssemblyName>CocosSharp</AssemblyName>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -263,9 +263,9 @@
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="keypad_dispatcher\ICCKeypadDelegate.cs" />
     <Compile Include="keypad_dispatcher\CCKeypadDispatcher.cs" />
-	  <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
-	  <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
-	  <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
+    <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
+    <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
+    <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
     <Compile Include="label_nodes\CCLabelBMFont.cs" />
     <Compile Include="label_nodes\CCLabelTTF.cs" />
@@ -447,8 +447,8 @@
     <Compile Include="touch_dispatcher\ICCStandardTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTargetedTouchDelegate.cs" />
     <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
-	<Compile Include="predefine\ICCUpdatable.cs" />
-	<Compile Include="script_support\ICCScriptingEngine.cs" />
+    <Compile Include="predefine\ICCUpdatable.cs" />
+    <Compile Include="script_support\ICCScriptingEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.WP8.csproj">
