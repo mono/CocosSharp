@@ -78,8 +78,8 @@
   <target name="buildxbox360" description="Build XBox 360" depends="clean">
     <if test="${os == 'Win32NT'}">
       <if test="${file::exists('c:\Program Files (x86)\MSBuild\Microsoft\XNA Game Studio\v4.0\Microsoft.Xna.GameStudio.Windows Phone.targets')}">
-        <exec program="msbuild " commandline='cocos2d-xna.XBox360.sln /t:Clean /p:Configuration=Release /p:Platform="XBox 360"' />
-        <exec program="msbuild " commandline='cocos2d-xna.XBox360.sln /t:Build /p:Configuration=Release /p:Platform="XBox 360"' />
+        <exec program="msbuild " commandline='CocosSharp.XBox360.sln /t:Clean /p:Configuration=Release /p:Platform="XBox 360"' />
+        <exec program="msbuild " commandline='CocosSharp.XBox360.sln /t:Build /p:Configuration=Release /p:Platform="XBox 360"' />
       </if>
     </if>
   </target>
