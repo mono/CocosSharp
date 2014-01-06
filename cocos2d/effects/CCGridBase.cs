@@ -119,7 +119,7 @@ namespace CocosSharp
         protected virtual bool InitWithSize(CCGridSize gridSize, CCSize size)
         {
             // we only use rgba8888
-            var pTexture = new CCTexture2D((int)size.Width, (int)size.Height, SurfaceFormat.Color, true);
+            var pTexture = new CCTexture2D((int)size.Width, (int)size.Height, SurfaceFormat.Color, true, false);
 
             InitWithSize(gridSize, pTexture, false);
 

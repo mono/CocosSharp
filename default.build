@@ -173,7 +173,7 @@
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsPhone7.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsGL.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Windows8.nuspec" -OutputDirectory "${packages.dir.path}"' />
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}Cocos2D.WindowsPhone8.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsPhone8.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.iOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Android.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Ouya.nuspec" -OutputDirectory "${packages.dir.path}"' />

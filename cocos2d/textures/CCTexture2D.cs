@@ -78,26 +78,44 @@ namespace CocosSharp
             RefreshAntialiasSetting ();
         }
         
-        public CCTexture2D (int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat, bool premultipliedAlpha=true, bool mipMap=false) : this()
+        public CCTexture2D (int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat, bool premultipliedAlpha, bool mipMap) : this()
         {
             Init(pixelsWide, pixelsHigh, pixelFormat, premultipliedAlpha, mipMap);
         }
-        
-        public CCTexture2D (int pixelsWide, int pixelsHigh, bool premultipliedAlpha=true, bool mipMap=false) 
-            : this(pixelsWide, pixelsHigh, DefaultAlphaPixelFormat, premultipliedAlpha, mipMap)
+
+        public CCTexture2D(int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat)
+            : this(pixelsWide, pixelsHigh, pixelFormat, true, false)
+        {   }
+
+        public CCTexture2D(int pixelsWide, int pixelsHigh) 
+            : this(pixelsWide, pixelsHigh, DefaultAlphaPixelFormat, true, false)
         {
         }
-        
-        public CCTexture2D (byte[] data, SurfaceFormat pixelFormat, bool mipMap=false) : this()
+
+        public CCTexture2D(byte[] data, SurfaceFormat pixelFormat, bool mipMap)
+            : this()
         {
             InitWithData(data, pixelFormat, mipMap);
         }
-        
-        public CCTexture2D (byte[] data, bool mipMap = false) : this(data, DefaultAlphaPixelFormat, mipMap)
+
+        public CCTexture2D(byte[] data, SurfaceFormat pixelFormat)
+            : this()
+        {
+            InitWithData(data, pixelFormat, false);
+        }
+
+        public CCTexture2D(byte[] data, bool mipMap)
+            : this(data, DefaultAlphaPixelFormat, mipMap)
         {
         }
-        
-        public CCTexture2D (Stream stream) : this (stream, DefaultAlphaPixelFormat)
+
+        public CCTexture2D(byte[] data)
+            : this(data, DefaultAlphaPixelFormat, false)
+        {
+        }
+
+        public CCTexture2D(Stream stream)
+            : this(stream, DefaultAlphaPixelFormat)
         {
         }
         
@@ -117,13 +135,18 @@ namespace CocosSharp
         {
         }
 
-        public CCTexture2D(Texture2D texture, SurfaceFormat format, bool premultipliedAlpha=true, bool managed=false)
+        public CCTexture2D(Texture2D texture, SurfaceFormat format, bool premultipliedAlpha, bool managed)
         {
             InitWithTexture(texture, format, premultipliedAlpha, managed);
         }
 
-        public CCTexture2D(Texture2D texture, bool premultipliedAlpha=true, bool managed=false) 
-            : this(texture, texture.Format, premultipliedAlpha, managed)
+        public CCTexture2D(Texture2D texture, SurfaceFormat format)
+        {
+            InitWithTexture(texture, format, true, false);
+        }
+
+        public CCTexture2D(Texture2D texture) 
+            : this(texture, texture.Format, true, false)
         {
         }
 
@@ -398,7 +421,13 @@ namespace CocosSharp
         }
 
         // Bool return type is used by CCTextureCache
-        internal bool InitWithData(byte[] data, SurfaceFormat pixelFormat, bool mipMap=false)
+        internal bool InitWithData(byte[] data, SurfaceFormat pixelFormat)
+        {
+            return InitWithData(data, pixelFormat, false);
+        }
+
+        // Bool return type is used by CCTextureCache
+        internal bool InitWithData(byte[] data, SurfaceFormat pixelFormat, bool mipMap)
         {
             if (data == null)
             {
@@ -450,7 +479,7 @@ namespace CocosSharp
             }
         }
 
-        internal bool InitWithRawData<T>(T[] data, SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh, bool premultipliedAlpha, bool mipMap=false)
+        internal bool InitWithRawData<T>(T[] data, SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh, bool premultipliedAlpha, bool mipMap)
             where T : struct
         {
             return InitWithRawData(data, pixelFormat, pixelsWide, pixelsHigh, premultipliedAlpha, mipMap, new CCSize(pixelsWide, pixelsHigh));
