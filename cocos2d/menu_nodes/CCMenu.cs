@@ -33,9 +33,10 @@ namespace CocosSharp
         /// </summary>
         private CCMenu() 
         {
-            Init();
+            InitWithItems(null);
 //            ContentSize = CCDirector.SharedDirector.WinSize;
         }
+
         public CCMenu(params CCMenuItem[] items)
         {
             InitWithItems(items);
@@ -129,22 +130,12 @@ namespace CocosSharp
             set { m_bEnabled = value; }
         }
 
-        public override bool Init()
-        {
-            return InitWithArray(null);
-        }
-
-        public bool InitWithItems(params CCMenuItem[] items)
-        {
-            return InitWithArray(items);
-        }
-
         /// <summary>
         /// The position of the menu is set to the center of the main screen
         /// </summary>
         /// <param name="items"></param>
         /// <returns></returns>
-        private bool InitWithArray(params CCMenuItem[] items)
+        private void InitWithItems(params CCMenuItem[] items)
         {
             if (_Items.Count > 0)
             {
@@ -187,10 +178,7 @@ namespace CocosSharp
                 // enable cascade color and opacity on menus
                 CascadeColorEnabled = true;
                 CascadeOpacityEnabled = true;
-
-                return true;
             }
-            return false;
         }
 
         /*

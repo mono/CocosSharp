@@ -54,13 +54,12 @@ namespace CocosSharp
         /// </summary>
         /// <param name="selector"></param>
         /// <returns></returns>
-        public bool InitWithTarget(Action<object> selector)
+        protected void InitWithTarget(Action<object> selector)
         {
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_pfnSelector = selector;
             m_bIsEnabled = true;
             m_bIsSelected = false;
-            return true;
         }
 
         /// <summary>

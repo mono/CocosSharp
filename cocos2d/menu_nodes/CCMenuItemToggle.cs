@@ -8,15 +8,24 @@ namespace CocosSharp
         public List<CCMenuItem> m_pSubItems;
         private int m_uSelectedIndex;
 
+        #region Constructors
+
         public CCMenuItemToggle()
         {
             InitWithTarget(null);
+        }
+
+        public CCMenuItemToggle(CCMenuItem item)
+        {
+            InitWithItem(item);
         }
 
         public CCMenuItemToggle(Action<object> selector, params CCMenuItem[] items)
         {
             InitWithTarget(selector, items);
         }
+
+        #endregion Constructors
 
         public int SelectedIndex
         {
@@ -60,7 +69,7 @@ namespace CocosSharp
             }
         }
 
-        public bool InitWithTarget(Action<object> selector, CCMenuItem[] items)
+        private void InitWithTarget(Action<object> selector, CCMenuItem[] items)
         {
             base.InitWithTarget(selector);
             m_pSubItems = new List<CCMenuItem>();
@@ -70,17 +79,9 @@ namespace CocosSharp
             }
             m_uSelectedIndex = int.MaxValue;
             SelectedIndex = 0;
-            return true;
         }
 
-        public static CCMenuItemToggle Create(CCMenuItem item)
-        {
-            var pRet = new CCMenuItemToggle();
-            pRet.InitWithItem(item);
-            return pRet;
-        }
-
-        public bool InitWithItem(CCMenuItem item)
+        private void InitWithItem(CCMenuItem item)
         {
             base.InitWithTarget(null);
             m_pSubItems = new List<CCMenuItem>();
@@ -90,8 +91,6 @@ namespace CocosSharp
 
             CascadeColorEnabled = true;
             CascadeOpacityEnabled = true;
-
-            return true;
         }
 
         public void AddSubItem(CCMenuItem item)
