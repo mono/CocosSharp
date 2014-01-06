@@ -379,19 +379,14 @@ namespace CocosSharp
             InitWithFile(plistFile);
         }
 
-        public override bool Init()
-        {
-            return InitWithTotalParticles(150);
-        }
-
-        public bool InitWithFile(string plistFile)
+        private void InitWithFile (string plistFile)
         {
             PlistDocument doc = CCContentManager.SharedContentManager.Load<PlistDocument>(plistFile);
 
-            return InitWithDictionary(doc.Root.AsDictionary);
+            InitWithDictionary(doc.Root.AsDictionary);
         }
 
-        public bool InitWithDictionary(PlistDictionary dictionary)
+        private bool InitWithDictionary (PlistDictionary dictionary)
         {
             bool bRet = false;
 
@@ -637,7 +632,8 @@ namespace CocosSharp
             return outputBytes;
         }
 
-        public virtual bool InitWithTotalParticles(int numberOfParticles)
+        // bool return type used by overriden init methods in CCParticleExample
+        protected virtual bool InitWithTotalParticles(int numberOfParticles)
         {
             m_uTotalParticles = numberOfParticles;
 

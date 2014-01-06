@@ -118,23 +118,20 @@ namespace tests
             CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
             CCTextureCache.SharedTextureCache.RemoveTexture(texture);
 
-            particleSystem = new CCParticleSystemQuad();
+            particleSystem = new CCParticleSystemQuad(quantityParticles);
 
             switch (subtestNumber)
             {
                 case 1:
                     CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Color;
-                    particleSystem.InitWithTotalParticles(quantityParticles);
                     particleSystem.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
                     break;
                 case 2:
                     CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Bgra4444;
-                    particleSystem.InitWithTotalParticles(quantityParticles);
                     particleSystem.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
                     break;
                 case 3:
                     CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Alpha8;
-                    particleSystem.InitWithTotalParticles(quantityParticles);
                     particleSystem.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
                     break;
                 //     case 4:
@@ -144,17 +141,14 @@ namespace tests
                 //         break;
                 case 4:
                     CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Color;
-                    particleSystem.InitWithTotalParticles(quantityParticles);
                     particleSystem.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
                     break;
                 case 5:
                     CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Bgra4444;
-                    particleSystem.InitWithTotalParticles(quantityParticles);
                     particleSystem.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
                     break;
                 case 6:
                     CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Alpha8;
-                    particleSystem.InitWithTotalParticles(quantityParticles);
                     particleSystem.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
                     break;
                 //     case 8:

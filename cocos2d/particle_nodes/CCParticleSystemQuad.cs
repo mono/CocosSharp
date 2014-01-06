@@ -9,9 +9,9 @@ namespace CocosSharp
     {
         private CCRawList<CCV3F_C4B_T2F_Quad> m_pQuads; // quads to be rendered
 
-        //implementation CCParticleSystemQuad
+        // implementation CCParticleSystemQuad
         // overriding the init method
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             // base initialization
             base.InitWithTotalParticles(numberOfParticles);

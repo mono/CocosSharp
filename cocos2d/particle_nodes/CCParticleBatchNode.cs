@@ -68,7 +68,7 @@ namespace CocosSharp
          * init with CCTexture2D
          */
 
-        public bool InitWithTexture(CCTexture2D tex, int capacity)
+        private void InitWithTexture(CCTexture2D tex, int capacity)
         {
             TextureAtlas.InitWithTexture(tex, capacity);
 
@@ -77,17 +77,16 @@ namespace CocosSharp
 
             m_tBlendFunc = CCBlendFunc.AlphaBlend;
 
-            return true;
         }
 
         /*
          * init with FileImage
          */
 
-        public bool InitWithFile(string fileImage, int capacity)
+        private void InitWithFile(string fileImage, int capacity)
         {
             CCTexture2D tex = CCTextureCache.SharedTextureCache.AddImage(fileImage);
-            return InitWithTexture(tex, capacity);
+            InitWithTexture(tex, capacity);
         }
 
         // CCParticleBatchNode - composition
