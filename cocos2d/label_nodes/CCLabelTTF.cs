@@ -207,14 +207,13 @@ namespace CocosSharp
 
             // let system compute label's width or height when its value is 0
             // refer to cocos2d-x issue #1430
-            tex = new CCTexture2D();
-
-            var result = tex.InitWithString(m_pString,
-                               m_tDimensions.PointsToPixels(),
-                               m_hAlignment,
-                               m_vAlignment,
-                               m_pFontName,
-                               m_fFontSize * CCMacros.CCContentScaleFactor());
+            tex = new CCTexture2D(
+                m_pString,
+                m_tDimensions.PointsToPixels(),
+                m_hAlignment,
+                m_vAlignment,
+                m_pFontName,
+                m_fFontSize * CCMacros.CCContentScaleFactor());
 
 //#if MACOS || IPHONE || IOS
 //			// There was a problem loading the text for some reason or another if result is not true

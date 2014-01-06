@@ -124,7 +124,7 @@ namespace CocosSharp
 
         public Atlas1()
         {
-            m_textureAtlas = CCTextureAtlas.Create(TestResource.s_AtlasTest, 3);
+			m_textureAtlas = new CCTextureAtlas (TestResource.s_AtlasTest, 3);
             //m_textureAtlas.retain();
 
             CCSize s = CCDirector.SharedDirector.WinSize;

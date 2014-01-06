@@ -67,7 +67,7 @@ namespace CocosSharp
             }
         }
 
-		protected bool InitWithLabel(CCNode label, Action<object> selector)
+        protected void InitWithLabel(CCNode label, Action<object> selector)
         {
             base.InitWithTarget(selector);
             m_fOriginalScale = 1.0f;
@@ -77,8 +77,6 @@ namespace CocosSharp
 
             CascadeColorEnabled = true;
             CascadeOpacityEnabled = true;
-
-            return true;
         }
 
         public void SetString(string label)

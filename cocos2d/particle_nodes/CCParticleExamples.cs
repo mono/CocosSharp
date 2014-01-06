@@ -81,7 +81,7 @@ namespace CocosSharp
         public CCParticleFire () : base (250)
         { }
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {
@@ -161,7 +161,7 @@ namespace CocosSharp
         public CCParticleFireworks () : base(1500)
         { }
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {
@@ -242,7 +242,7 @@ namespace CocosSharp
         public CCParticleSun () : base (350)
         { }
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {
@@ -322,7 +322,7 @@ namespace CocosSharp
         public CCParticleGalaxy ()  :base (200)
         {}
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {
@@ -402,7 +402,7 @@ namespace CocosSharp
         public CCParticleFlower () : base (250)
         { }
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {
@@ -482,7 +482,7 @@ namespace CocosSharp
         public CCParticleMeteor () : base(150)
         { }
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {
@@ -562,7 +562,7 @@ namespace CocosSharp
         public CCParticleSpiral () : base(500)
         { }
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {
@@ -642,7 +642,7 @@ namespace CocosSharp
         public CCParticleExplosion () : base(700)
         {   }
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {
@@ -721,7 +721,7 @@ namespace CocosSharp
         public CCParticleSmoke () : base(200)
         { }
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {
@@ -797,7 +797,7 @@ namespace CocosSharp
         public CCParticleSnow () : base(700)
         { }
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {
@@ -877,7 +877,7 @@ namespace CocosSharp
         public CCParticleRain () : base(1000)
         { }
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {

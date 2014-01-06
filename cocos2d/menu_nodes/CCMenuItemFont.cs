@@ -47,7 +47,7 @@ namespace CocosSharp
             get { return m_strFontName; }
         }
 
-		public bool InitWithString(string value, Action<object> selector)
+        private void InitWithString(string value, Action<object> selector)
         {
             //CCAssert( value != NULL && strlen(value) != 0, "Value length must be greater than 0");
 
@@ -56,7 +56,6 @@ namespace CocosSharp
 
             CCLabelTTF label = new CCLabelTTF(value, m_strFontName, m_uFontSize);
             base.InitWithLabel(label, selector);
-            return true;
         }
 
         protected void RecreateLabel()

@@ -504,8 +504,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleSystemQuad();
-            m_emitter.InitWithTotalParticles(50);
+            m_emitter = new CCParticleSystemQuad(50);
             //m_emitter.autorelease();
 
             m_background.AddChild(m_emitter, 10);
@@ -591,8 +590,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleSystemQuad();
-            m_emitter.InitWithTotalParticles(300);
+            m_emitter = new CCParticleSystemQuad(300);
             //m_emitter.autorelease();
 
             m_background.AddChild(m_emitter, 10);
@@ -833,8 +831,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleSystemQuad();
-            m_emitter.InitWithTotalParticles(1000);
+            m_emitter = new CCParticleSystemQuad(1000);
             //m_emitter.autorelease();
 
             m_background.AddChild(m_emitter, 10);
@@ -998,10 +995,9 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            m_emitter = new CCParticleSystemQuad();
-
             string filename = "Particles/" + m_title;
-            m_emitter.InitWithFile(filename);
+            m_emitter = new CCParticleSystemQuad(filename);
+
             AddChild(m_emitter, 10);
 
             m_emitter.BlendAdditive = true;
@@ -1032,8 +1028,7 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            m_emitter = new CCParticleSystemQuad();
-            m_emitter.InitWithTotalParticles(200);
+            m_emitter = new CCParticleSystemQuad(200);
             AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/stars-grayscale");
 
@@ -1114,8 +1109,7 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            m_emitter = new CCParticleSystemQuad();
-            m_emitter.InitWithTotalParticles(200);
+            m_emitter = new CCParticleSystemQuad(200);
             AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/stars-grayscale");
 
@@ -1196,8 +1190,7 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            m_emitter = new CCParticleSystemQuad();
-            m_emitter.InitWithTotalParticles(100);
+            m_emitter = new CCParticleSystemQuad(100);
             AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
 
@@ -1288,8 +1281,7 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            var system = new CCParticleSystemQuad();
-            system.InitWithFile("Particles/SpinningPeas");
+            var system = new CCParticleSystemQuad("Particles/SpinningPeas");
             system.SetTextureWithRect(CCTextureCache.SharedTextureCache.AddImage("Images/particles"),
                                       new CCRect(0, 0, 32, 32));
             AddChild(system, 10);
@@ -1523,7 +1515,11 @@ namespace tests
             return InitWithTotalParticles(150);
         }
 
-        public override bool InitWithTotalParticles(int numberOfParticles)
+        public RainbowEffect (int numOfParticles) : base (numOfParticles)
+        {
+        }
+
+        protected override bool InitWithTotalParticles(int numberOfParticles)
         {
             if (base.InitWithTotalParticles(numberOfParticles))
             {
@@ -1605,8 +1601,7 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            var particle = new RainbowEffect();
-            particle.InitWithTotalParticles(50);
+            var particle = new RainbowEffect(50);
 
             AddChild(particle);
 
@@ -1794,8 +1789,7 @@ namespace tests
 
             for (int i = 0; i < 3; i++)
             {
-                var particleSystem = new CCParticleSystemQuad();
-                particleSystem.InitWithTotalParticles(200);
+                var particleSystem = new CCParticleSystemQuad(200);
                 particleSystem.Texture = (m_pBatchNode.Texture);
 
                 // duration
