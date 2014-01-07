@@ -35,23 +35,31 @@ namespace CocosSharp
             {
                 //in case of being called at sub class
                 pCopy = (CCAnimationFrame) (pZone);
+                pCopy.InitWithSpriteFrame((CCSpriteFrame) m_pSpriteFrame.Copy(), m_fDelayUnits, m_pUserInfo);
             }
             else
             {
-                pCopy = new CCAnimationFrame();
+                pCopy = new CCAnimationFrame((CCSpriteFrame) m_pSpriteFrame.Copy(), m_fDelayUnits, m_pUserInfo);
             }
-
-            pCopy.InitWithSpriteFrame((CCSpriteFrame) m_pSpriteFrame.Copy(), m_fDelayUnits, m_pUserInfo);
 
             return pCopy;
         }
 
-        public bool InitWithSpriteFrame(CCSpriteFrame spriteFrame, float delayUnits, PlistDictionary userInfo)
+        #region Constructors
+
+        public CCAnimationFrame(CCSpriteFrame spriteFrame, float delayUnits, PlistDictionary userInfo)
+        {
+            InitWithSpriteFrame(spriteFrame, delayUnits, userInfo);
+        }
+
+        #endregion Constructors
+
+
+        private void InitWithSpriteFrame(CCSpriteFrame spriteFrame, float delayUnits, PlistDictionary userInfo)
         {
             m_pSpriteFrame = spriteFrame;
             m_fDelayUnits = delayUnits;
             m_pUserInfo = userInfo;
-            return true;
         }
     }
 }

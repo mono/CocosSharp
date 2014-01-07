@@ -76,7 +76,7 @@ namespace CocosSharp
             get { return m_fTotalDelayUnits; }
         }
 
-        public bool InitWithSpriteFrames(List<CCSpriteFrame> pFrames, float delay)
+        private void InitWithSpriteFrames(List<CCSpriteFrame> pFrames, float delay)
         {
             if (pFrames != null)
             {/*
@@ -96,18 +96,15 @@ namespace CocosSharp
                 foreach (CCSpriteFrame pObj in pFrames)
                 {
                     var frame = (CCSpriteFrame) pObj;
-                    var animFrame = new CCAnimationFrame();
-                    animFrame.InitWithSpriteFrame(frame, 1, null);
+                    var animFrame = new CCAnimationFrame(frame, 1, null);
                     m_pFrames.Add(animFrame);
 
                     m_fTotalDelayUnits++;
                 }
             }
-
-            return true;
         }
 
-        public bool InitWithAnimationFrames(List<CCAnimationFrame> arrayOfAnimationFrames, float delayPerUnit, uint loops)
+        private void InitWithAnimationFrames(List<CCAnimationFrame> arrayOfAnimationFrames, float delayPerUnit, uint loops)
         {
             if (arrayOfAnimationFrames != null)
             {/*
@@ -128,8 +125,6 @@ namespace CocosSharp
                 var animFrame = (CCAnimationFrame) pObj;
                 m_fTotalDelayUnits += animFrame.DelayUnits;
             }
-
-            return true;
         }
 
         public void AddSprite(CCSprite sprite)
@@ -140,8 +135,7 @@ namespace CocosSharp
 
         public void AddSpriteFrame(CCSpriteFrame pFrame)
         {
-            var animFrame = new CCAnimationFrame();
-            animFrame.InitWithSpriteFrame(pFrame, 1.0f, null);
+            var animFrame = new CCAnimationFrame(pFrame, 1.0f, null);
             m_pFrames.Add(animFrame);
 
             // update duration

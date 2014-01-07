@@ -116,13 +116,13 @@ namespace CocosSharp
             InitWithTexture(pobTexture, rect, rotated, offset, originalSize);
         }
 
-        protected virtual bool InitWithTexture(CCTexture2D pobTexture, CCRect rect)
+        private void InitWithTexture(CCTexture2D pobTexture, CCRect rect)
         {
             CCRect rectInPixels = rect.PointsToPixels();
-            return InitWithTexture(pobTexture, rectInPixels, false, new CCPoint(0, 0), rectInPixels.Size);
+            InitWithTexture(pobTexture, rectInPixels, false, new CCPoint(0, 0), rectInPixels.Size);
         }
 
-        protected virtual bool InitWithTexture(CCTexture2D pobTexture, CCRect rect, bool rotated, CCPoint offset,
+        private void InitWithTexture(CCTexture2D pobTexture, CCRect rect, bool rotated, CCPoint offset,
                                     CCSize originalSize)
         {
             m_pobTexture = pobTexture;
@@ -134,17 +134,14 @@ namespace CocosSharp
             m_obOriginalSizeInPixels = originalSize;
             m_obOriginalSize = m_obOriginalSizeInPixels.PixelsToPoints();
             m_bRotated = rotated;
-
-            return true;
         }
 
-        protected virtual bool InitWithTextureFilename(String filename, CCRect rect)
+        private void InitWithTextureFilename(String filename, CCRect rect)
         {
-            return InitWithTextureFilename(filename, rect, false, CCPoint.Zero, rect.Size);
+            InitWithTextureFilename(filename, rect, false, CCPoint.Zero, rect.Size);
         }
 
-        protected virtual bool InitWithTextureFilename(String filename, CCRect rect, bool rotated, CCPoint offset,
-                                            CCSize originalSize)
+        private void InitWithTextureFilename(String filename, CCRect rect, bool rotated, CCPoint offset, CCSize originalSize)
         {
             m_pobTexture = null;
             m_strTextureFilename = filename;
@@ -155,8 +152,6 @@ namespace CocosSharp
             m_obOriginalSizeInPixels = originalSize;
             m_obOriginalSize = m_obOriginalSizeInPixels.PixelsToPoints();
             m_bRotated = rotated;
-
-            return true;
         }
     }
 }

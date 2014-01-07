@@ -15,7 +15,6 @@ namespace CocosSharp
                 if (s_pSharedAnimationCache == null)
                 {
                     s_pSharedAnimationCache = new CCAnimationCache();
-                    s_pSharedAnimationCache.Init();
                 }
 
                 return s_pSharedAnimationCache;
@@ -26,6 +25,18 @@ namespace CocosSharp
         {
             s_pSharedAnimationCache = null;
         }
+
+
+        #region Constructors
+
+        // Singleton, so ensure users only call SharedAnimationCache to get instance
+        protected CCAnimationCache()
+        {
+            m_pAnimations = new Dictionary<string, CCAnimation>();
+        }
+
+        #endregion Constructors
+
 
         public void AddAnimation(CCAnimation animation, string name)
         {
@@ -115,12 +126,6 @@ namespace CocosSharp
             AddAnimationsWithDictionary(dict);
         }
 
-        public bool Init()
-        {
-            m_pAnimations = new Dictionary<string, CCAnimation>();
-            return true;
-        }
-
         private void ParseVersion1(PlistDictionary animations)
         {
             CCSpriteFrameCache frameCache = CCSpriteFrameCache.SharedSpriteFrameCache;
@@ -156,8 +161,7 @@ namespace CocosSharp
                         continue;
                     }
 
-                    var animFrame = new CCAnimationFrame();
-                    animFrame.InitWithSpriteFrame(spriteFrame, 1, null);
+                    var animFrame = new CCAnimationFrame(spriteFrame, 1, null);
                     frames.Add(animFrame);
                 }
 
@@ -225,8 +229,7 @@ namespace CocosSharp
                     float delayUnits = entry["delayUnits"].AsFloat;
                     PlistDictionary userInfo = entry["notification"].AsDictionary;
 
-                    var animFrame = new CCAnimationFrame();
-                    animFrame.InitWithSpriteFrame(spriteFrame, delayUnits, userInfo);
+                    var animFrame = new CCAnimationFrame(spriteFrame, delayUnits, userInfo);
 
                     array.Add(animFrame);
                 }

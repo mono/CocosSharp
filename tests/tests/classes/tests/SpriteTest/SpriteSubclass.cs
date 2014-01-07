@@ -8,16 +8,20 @@ namespace tests
 {
     internal class MySprite1 : CCSprite
     {
-        public MySprite1()
+        private void InitSprite()
         {
             ivar = 10;
+        }
+
+        public MySprite1(CCSpriteFrame frame): base(frame)
+        {
+            InitSprite();
         }
 
         public static MySprite1 Create(string pszSpriteFrameName)
         {
             CCSpriteFrame pFrame = CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName(pszSpriteFrameName);
-            MySprite1 pobSprite = new MySprite1();
-            pobSprite.InitWithSpriteFrame(pFrame);
+            MySprite1 pobSprite = new MySprite1(pFrame);
 
             return pobSprite;
         }
@@ -27,16 +31,19 @@ namespace tests
 
     internal class MySprite2 : CCSprite
     {
-
-        public MySprite2()
+        private void InitSprite()
         {
             ivar = 10;
         }
 
+        public MySprite2(string fileName): base(fileName)
+        {
+            InitSprite();
+        }
+
         public new static MySprite2 Create(string pszName)
         {
-            MySprite2 pobSprite = new MySprite2();
-            pobSprite.InitWithFile(pszName);
+            MySprite2 pobSprite = new MySprite2(pszName);
             return pobSprite;
         }
 

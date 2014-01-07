@@ -77,13 +77,14 @@ namespace CocosSharp
             InitWithFile(fileImage, capacity);
         }
 
-        protected virtual bool InitWithFile(string fileImage, int capacity)
+        private void InitWithFile(string fileImage, int capacity)
         {
             CCTexture2D pTexture2D = CCTextureCache.SharedTextureCache.AddImage(fileImage);
-            return InitWithTexture(pTexture2D, capacity);
+            InitWithTexture(pTexture2D, capacity);
         }
 
-        protected virtual bool InitWithTexture(CCTexture2D tex, int capacity)
+        // Bool return type used by subclasses
+        protected bool InitWithTexture(CCTexture2D tex, int capacity)
         {
             m_blendFunc = CCBlendFunc.AlphaBlend;
 
@@ -104,12 +105,6 @@ namespace CocosSharp
             m_pobDescendants = new CCRawList<CCSprite>(capacity);
 
             return true;
-        }
-
-        public override bool Init()
-        {
-            var texture = new CCTexture2D();
-            return InitWithTexture(texture, 0);
         }
 
         public override void Visit()

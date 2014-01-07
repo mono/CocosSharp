@@ -32,6 +32,10 @@ namespace tests
 {
     public class Ball : CCSprite
     {
+        public Ball(CCTexture2D tex): base(tex)
+        {
+        }
+
         public float radius()
         {
             return Texture.ContentSize.Width / 2;
@@ -101,8 +105,7 @@ namespace tests
 
         public static Ball ballWithTexture(CCTexture2D aTexture)
         {
-            Ball pBall = new Ball();
-            pBall.InitWithTexture(aTexture);
+            Ball pBall = new Ball(aTexture);
             //pBall->autorelease();
 
             return pBall;

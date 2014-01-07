@@ -536,12 +536,8 @@ namespace CocosSharp
 
         #endregion
 
-        public override bool Init()
-        {
-            return InitWithTexture(null, new CCRect());
-        }
-
-        public bool InitWithTexture(CCTexture2D pTexture, CCRect rect, bool rotated)
+        // Called by non-subclasses which also make use of bool return type
+        internal bool InitWithTexture(CCTexture2D pTexture, CCRect rect, bool rotated)
         {
             base.Init();
 
@@ -587,12 +583,14 @@ namespace CocosSharp
             return true;
         }
 
-        public virtual bool InitWithTexture(CCTexture2D texture, CCRect rect)
+        // Called by non-subclasses which also make use of bool return type
+        internal bool InitWithTexture(CCTexture2D texture, CCRect rect)
         {
             return InitWithTexture(texture, rect, false);
         }
 
-        public virtual bool InitWithTexture(CCTexture2D texture)
+        // Called by non-subclasses which also make use of bool return type
+        internal bool InitWithTexture(CCTexture2D texture)
         {
             Debug.Assert(texture != null, "Invalid texture for sprite");
 
@@ -602,7 +600,8 @@ namespace CocosSharp
             return InitWithTexture(texture, rect);
         }
 
-        public virtual bool InitWithFile(string fileName)
+        // Bool return type used internally
+        private bool InitWithFile(string fileName)
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
 
@@ -625,7 +624,8 @@ namespace CocosSharp
             return false;
         }
 
-        protected virtual bool InitWithFile(string fileName, CCRect rect)
+        // Bool return type used internally
+        private bool InitWithFile(string fileName, CCRect rect)
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
 
@@ -639,7 +639,8 @@ namespace CocosSharp
             return false;
         }
 
-        protected virtual bool InitWithSpriteFrame(CCSpriteFrame pSpriteFrame)
+        // Bool return type used internally
+        private bool InitWithSpriteFrame(CCSpriteFrame pSpriteFrame)
         {
             Debug.Assert(pSpriteFrame != null);
 

@@ -67,6 +67,7 @@ namespace CocosSharp
         {
             InitWithDictionary(dictionary, texture);
         }
+
         #endregion
 
         private void AutoCreateAliasList()
@@ -91,7 +92,7 @@ namespace CocosSharp
 
 		}
 
-        public void InitWithFile(string fileName)
+        private void InitWithFile(string fileName)
         {
             PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(fileName);
 
@@ -156,7 +157,7 @@ namespace CocosSharp
             }
         }
 
-        public void InitWithFile(string fileName, string textureFileName)
+        private void InitWithFile(string fileName, string textureFileName)
         {
             Debug.Assert(textureFileName != null);
             
@@ -172,7 +173,7 @@ namespace CocosSharp
             }
         }
 
-        public void InitWithFile(string fileName, CCTexture2D texture)
+        private void InitWithFile(string fileName, CCTexture2D texture)
         {
             PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(fileName);
 
@@ -181,7 +182,7 @@ namespace CocosSharp
             InitWithDictionary(dict, texture);
         }
 
-        public void InitWithStream(Stream stream, string textureFileName)
+        private void InitWithStream(Stream stream, string textureFileName)
         {
             CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(textureFileName);
 
@@ -195,7 +196,7 @@ namespace CocosSharp
             }
         }
 
-        public void InitWithStream(Stream stream, CCTexture2D texture)
+        private void InitWithStream(Stream stream, CCTexture2D texture)
         {
             var document = new PlistDocument();
             try
@@ -212,7 +213,7 @@ namespace CocosSharp
             InitWithDictionary(dict, texture);
         }
 
-        public void InitWithDictionary(PlistDictionary dict, CCTexture2D texture)
+        private void InitWithDictionary(PlistDictionary dict, CCTexture2D texture)
         {
             _spriteFrames.Clear();
             _spriteFramesAliases.Clear();

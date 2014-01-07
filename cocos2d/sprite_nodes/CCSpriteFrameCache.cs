@@ -14,12 +14,17 @@ namespace CocosSharp
         protected Dictionary<string, string> m_pSpriteFramesAliases;
         private bool _AllowFrameOverwrite = false;
 
-        public bool Init()
+        #region Constructors
+
+        // Singleton, so ensure users only call SharedSpriteFrameCache to get instance
+        protected CCSpriteFrameCache()
         {
             m_pSpriteFrames = new Dictionary<string, CCSpriteFrame>();
             m_pSpriteFramesAliases = new Dictionary<string, string>();
-            return true;
         }
+
+        #endregion Constructors
+
 
         /// <summary>
         /// When false, an exception is thrown if an animation frame is overwritten.
@@ -422,7 +427,6 @@ namespace CocosSharp
                 if (pSharedSpriteFrameCache == null)
                 {
                     pSharedSpriteFrameCache = new CCSpriteFrameCache();
-                    pSharedSpriteFrameCache.Init();
                 }
 
                 return pSharedSpriteFrameCache;
