@@ -20,7 +20,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // create the streak object and add it to the scene
-            streak = CCMotionStreak.Create(3, 3, 64, CCTypes.CCWhite, s_streak);
+            streak = new CCMotionStreak(3, 3, 64, CCTypes.CCWhite, s_streak);
             AddChild(streak);
 
             streak.Position = (new CCPoint(s.Width / 2, s.Height / 2));

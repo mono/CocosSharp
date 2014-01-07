@@ -39,7 +39,7 @@ namespace CocosSharp
             InitWithWidthAndHeight(w, h, format, depthFormat, usage);
         }
 
-        protected virtual bool InitWithWidthAndHeight(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
+        private void InitWithWidthAndHeight(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
         {
             w = (int)Math.Ceiling(w * CCMacros.CCContentScaleFactor());
             h = (int)Math.Ceiling(h * CCMacros.CCContentScaleFactor());
@@ -57,8 +57,6 @@ namespace CocosSharp
             m_pSprite.BlendFunc = CCBlendFunc.AlphaBlend;
 
             AddChild(m_pSprite);
-
-            return true;
         }
 
         public virtual void Begin()

@@ -19,7 +19,7 @@ namespace tests
             // ask director the the window size
             CCSize size = CCDirector.SharedDirector.WinSize;
 
-            streak = CCMotionStreak.Create(2.0f, 1.0f, 50.0f, new CCColor3B(255, 255, 0), "Images/Icon");
+            streak = new CCMotionStreak(2.0f, 1.0f, 50.0f, new CCColor3B(255, 255, 0), "Images/Icon");
             AddChild(streak);
 
             m_center = new CCPoint(size.Width / 2, size.Height / 2);

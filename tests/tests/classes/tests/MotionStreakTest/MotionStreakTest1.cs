@@ -36,7 +36,7 @@ namespace tests
             m_target.Position = new CCPoint(s.Width / 4, 0);
 
             // create the streak object and add it to the scene
-            streak = CCMotionStreak.Create(2, 3, 32, CCTypes.CCGreen, s_streak);
+            streak = new CCMotionStreak(2, 3, 32, CCTypes.CCGreen, s_streak);
             streak.FastMode = true;
             AddChild(streak);
             // schedule an update on each frame so we can syncronize the streak with the target

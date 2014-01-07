@@ -15,23 +15,16 @@ namespace CocosSharp
 
         public CCDrawNode()
         {
-            Init();
+            base.Init();
+
+            m_sBlendFunc = CCBlendFunc.AlphaBlend;
+            m_pVertices = new CCRawList<VertexPositionColor>(512);
         }
 
         public CCBlendFunc BlendFunc
         {
             get { return m_sBlendFunc; }
             set { m_sBlendFunc = value; }
-        }
-
-        public override bool Init()
-        {
-            base.Init();
-
-            m_sBlendFunc = CCBlendFunc.AlphaBlend;
-            m_pVertices = new CCRawList<VertexPositionColor>(512);
-
-            return true;
         }
 
         /** draw a dot at a position, with a given radius and color */

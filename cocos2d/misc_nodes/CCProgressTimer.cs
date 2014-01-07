@@ -161,7 +161,7 @@ namespace CocosSharp
 
         #endregion
 
-        protected virtual bool InitWithSprite(CCSprite sp)
+        private void InitWithSprite(CCSprite sp)
         {
             Percentage = 0.0f;
             m_pVertexData = null;
@@ -176,7 +176,6 @@ namespace CocosSharp
 
             // shader program
             //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
-            return true;
         }
 
         private static short[] s_pIndexes;
