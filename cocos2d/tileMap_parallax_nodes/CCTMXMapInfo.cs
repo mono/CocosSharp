@@ -640,16 +640,16 @@ namespace CocosSharp
         /// <summary>
         /// initializes a TMX format witha  tmx file
         /// </summary>
-        protected bool InitWithTmxFile(string tmxFile)
+        private void InitWithTmxFile(string tmxFile)
         {
             InternalInit(tmxFile, null);
-            return ParseXmlFile(m_sTMXFileName);
+            ParseXmlFile(m_sTMXFileName);
         }
 
-        protected bool InitWithXml(string tmxString, string resourcePath)
+        private void InitWithXml(string tmxString, string resourcePath)
         {
             InternalInit(null, resourcePath);
-            return ParseXmlString(tmxString);
+            ParseXmlString(tmxString);
         }
 
         public bool ParseXmlString(string data)

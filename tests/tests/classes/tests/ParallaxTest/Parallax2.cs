@@ -21,7 +21,7 @@ namespace tests
 
 
             // Middle layer: a Tile map atlas
-            CCTileMapAtlas tilemap = CCTileMapAtlas.Create(s_TilesPng, s_LevelMapTga, 16, 16);
+            CCTileMapAtlas tilemap = new CCTileMapAtlas(s_TilesPng, s_LevelMapTga, 16, 16);
             tilemap.ReleaseMap();
 
             // change the transform anchor to 0,0 (optional)

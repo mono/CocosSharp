@@ -13,12 +13,11 @@ namespace CocosSharp
             InitWithCcPoint(ratio, offset);
         }
 
-        public bool InitWithCcPoint(CCPoint ratio, CCPoint offset)
+        private void InitWithCcPoint(CCPoint ratio, CCPoint offset)
         {
             Ratio = ratio;
             Offset = offset;
             Child = null;
-            return true;
         }
     }
 }

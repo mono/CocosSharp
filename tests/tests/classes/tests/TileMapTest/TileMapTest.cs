@@ -14,7 +14,7 @@ namespace tests
     {
         public TileMapTest()
         {
-            CCTileMapAtlas map = CCTileMapAtlas.Create(s_TilesPng, s_LevelMapTga, 16, 16);
+            CCTileMapAtlas map = new CCTileMapAtlas(s_TilesPng, s_LevelMapTga, 16, 16);
             // Convert it to "alias" (GL_LINEAR filtering)
 			map.IsAntialiased = true;
 
@@ -52,7 +52,7 @@ namespace tests
     {
         public TileMapEditTest()
         {
-            CCTileMapAtlas map = CCTileMapAtlas.Create(s_TilesPng, s_LevelMapTga, 16, 16);
+            CCTileMapAtlas map = new CCTileMapAtlas(s_TilesPng, s_LevelMapTga, 16, 16);
             // Create an Aliased Atlas
 			map.IsAntialiased = false;
 

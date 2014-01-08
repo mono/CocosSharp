@@ -88,7 +88,7 @@ namespace CocosSharp
 
         /** initializes a CCTMXLayer with a tileset info, a layer info and a map info */
 
-        protected virtual bool InitWithTilesetInfo(CCTMXTilesetInfo tilesetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
+        private void InitWithTilesetInfo(CCTMXTilesetInfo tilesetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
         {
             // XXX: is 35% a good estimate ?
             CCSize size = layerInfo.LayerSize;
@@ -133,10 +133,7 @@ namespace CocosSharp
 
                 m_bUseAutomaticVertexZ = false;
                 m_nVertexZvalue = 0;
-
-                return true;
             }
-            return false;
         }
 
         /** dealloc the map that contains the tile position from memory.

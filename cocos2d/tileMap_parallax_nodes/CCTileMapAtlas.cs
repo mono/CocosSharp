@@ -18,14 +18,18 @@ namespace CocosSharp
             set { m_pTGAInfo = value; }
         }
 
-        public static CCTileMapAtlas Create(string tile, string mapFile, int tileWidth, int tileHeight)
+
+        #region Constructors
+
+        public CCTileMapAtlas(string tile, string mapFile, int tileWidth, int tileHeight)
         {
-            var pRet = new CCTileMapAtlas();
-            pRet.InitWithTileFile(tile, mapFile, tileWidth, tileHeight);
-            return pRet;
+            InitWithTileFile(tile, mapFile, tileWidth, tileHeight);
         }
 
-        public bool InitWithTileFile(string tile, string mapFile, int tileWidth, int tileHeight)
+        #endregion Constructors 
+
+
+        private void InitWithTileFile(string tile, string mapFile, int tileWidth, int tileHeight)
         {
             LoadTgAfile(mapFile);
             CalculateItemsToRender();
@@ -35,9 +39,7 @@ namespace CocosSharp
                 m_pPosToAtlasIndex = new Dictionary<CCGridSize, int>();
                 UpdateAtlasValues();
                 ContentSize = new CCSize(m_pTGAInfo.width * m_uItemWidth, m_pTGAInfo.height * m_uItemHeight);
-                return true;
             }
-            return false;
         }
 
         public Color TileAt(CCGridSize position)

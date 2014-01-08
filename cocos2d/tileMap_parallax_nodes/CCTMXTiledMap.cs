@@ -149,19 +149,9 @@ object->propertyNamed(name_of_the_property);
         }
 
         /// <summary>
-        /// creates a TMX Tiled Map with a TMX file.
-        /// </summary>
-        [Obsolete("Please use the ctor instead of the self factory pattern.")]
-        public static CCTMXTiledMap Create(string tmxFile)
-        {
-            var pRet = new CCTMXTiledMap(tmxFile);
-            return pRet;
-        }
-
-        /// <summary>
         /// initializes a TMX Tiled Map with a TMX file
         /// </summary>
-        protected virtual bool InitWithTmxFile(string tmxFile)
+        private void InitWithTmxFile(string tmxFile)
         {
             Debug.Assert(!String.IsNullOrEmpty(tmxFile), "TMXTiledMap: tmx file should not be null");
 
@@ -171,13 +161,12 @@ object->propertyNamed(name_of_the_property);
 
             if (mapInfo == null)
             {
-                return false;
+                return;
             }
 
             Debug.Assert(mapInfo.Tilesets.Count != 0, "TMXTiledMap: Map not found. Please check the filename.");
 
             BuildWithMapInfo(mapInfo);
-            return true;
         }
 
         private void BuildWithMapInfo(CCTMXMapInfo mapInfo)
