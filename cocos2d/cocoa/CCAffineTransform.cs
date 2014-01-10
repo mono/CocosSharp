@@ -191,7 +191,7 @@ namespace CocosSharp
         public void ConcatTranslation(float x, float y)
         {
             tx += x;
-            tx += y;
+            ty += y;
         }
 
         public void SetScale(float scaleX, float scaleY)
