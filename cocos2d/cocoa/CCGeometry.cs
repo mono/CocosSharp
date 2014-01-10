@@ -651,6 +651,11 @@ namespace CocosSharp
 #endif
         }
 
+        public static implicit operator CCPoint(Vector2 point)
+        {
+             return new CCPoint(point.X, point.Y);
+        }
+
         public static implicit operator Vector2(CCPoint point)
         {
             return new Vector2(point.X, point.Y);
