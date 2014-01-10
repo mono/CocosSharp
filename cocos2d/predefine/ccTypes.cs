@@ -120,6 +120,20 @@ namespace CocosSharp
         //! Gray Color (166,166,166)
         public static readonly CCColor4B Gray = new CCColor4B(166, 166, 166, 255);
 
+        public byte R;
+        public byte G;
+        public byte B;
+        public byte A;
+
+
+        public CCColor4B(byte inr, byte ing, byte inb)
+        {
+            R = inr;
+            G = ing;
+            B = inb;
+            A = 255;
+        }
+
         public CCColor4B(byte inr, byte ing, byte inb, byte ina)
         {
             R = inr;
@@ -147,11 +161,6 @@ namespace CocosSharp
             A = color.A;
         }
 
-        public byte R;
-        public byte G;
-        public byte B;
-        public byte A;
-
         public override string ToString()
         {
             return (string.Format("{0},{1},{2},{3}", R, G, B, A));
@@ -177,6 +186,29 @@ namespace CocosSharp
         {
             return new CCColor4B(point.R, point.G, point.B, 255);
         }
+
+        public static bool operator ==(CCColor4B p1, CCColor4B p2)
+        {
+            return p1.R == p2.R && p1.G == p2.G && p1.B == p2.B && p1.A == p2.A;
+        }
+
+        public static bool operator !=(CCColor4B p1, CCColor4B p2)
+        {
+            return p1.R != p2.R || p1.G != p2.G || p1.B != p2.B || p1.A != p2.A;
+        }
+
+        public static CCColor4B Lerp(CCColor4B value1, CCColor4B value2, float amount)
+        {
+            CCColor4B color;
+ 
+            color.A = (byte)(value1.A + ((value2.A - value1.A) * amount));
+            color.R = (byte)(value1.R + ((value2.R - value1.R) * amount));
+            color.G = (byte)(value1.G + ((value2.G - value1.G) * amount));
+            color.B = (byte)(value1.B + ((value2.B - value1.B) * amount));
+ 
+            return color;
+        }
+ 
     }
 
     /// <summary>
@@ -513,6 +545,11 @@ namespace CocosSharp
             MinY = Math.Min(MinY, r.MinY);
             MaxX = Math.Max(MaxX, r.MaxX);
             MaxY = Math.Max(MaxY, r.MaxY);
+        }
+
+        public bool Intersects(ref CCBoundingBoxI rect)
+        {
+            return !(MaxX < rect.MinX || rect.MaxX < MinX || MaxY < rect.MinY || rect.MaxY < MinY);
         }
 
         public void SetLerp(CCBoundingBoxI a, CCBoundingBoxI b, float ratio)
