@@ -111,19 +111,17 @@ namespace CocosSharp
             return bRet;
         }
 
-        protected virtual bool InitWithSize(CCGridSize gridSize)
+        protected void InitWithSize(CCGridSize gridSize)
         {
-            return InitWithSize(gridSize, CCDirector.SharedDirector.WinSizeInPixels);
+            InitWithSize(gridSize, CCDirector.SharedDirector.WinSizeInPixels);
         }
 
-        protected virtual bool InitWithSize(CCGridSize gridSize, CCSize size)
+        protected void InitWithSize(CCGridSize gridSize, CCSize size)
         {
             // we only use rgba8888
             var pTexture = new CCTexture2D((int)size.Width, (int)size.Height, SurfaceFormat.Color, true, false);
 
             InitWithSize(gridSize, pTexture, false);
-
-            return true;
         }
 
         public ulong NextPOT(ulong x)

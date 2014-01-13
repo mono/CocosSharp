@@ -11,7 +11,7 @@ namespace CocosSharp
         private static float m_PointSize = 3f;
         private static CCColor4B m_Color;
 
-        public static void Init(GraphicsDevice graphics)
+        internal static void Init(GraphicsDevice graphics)
         {
             m_Batch = new CCPrimitiveBatch(graphics);
         }

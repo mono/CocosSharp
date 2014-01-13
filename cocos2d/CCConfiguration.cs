@@ -131,11 +131,6 @@ namespace CocosSharp
             throw new NotImplementedException();
         }
 
-        public bool Init()
-        {
-            return true;
-        }
-
         static CCConfiguration m_sharedConfiguration = new CCConfiguration();
 
         /// <summary>
@@ -146,7 +141,6 @@ namespace CocosSharp
             get {
             if (!m_sharedConfiguration.m_bInited)
             {
-                m_sharedConfiguration.Init();
                 m_sharedConfiguration.m_bInited = true;
             }
 

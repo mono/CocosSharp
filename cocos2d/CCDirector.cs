@@ -495,19 +495,20 @@ namespace CocosSharp
                 if (s_sharedDirector == null)
                 {
                     s_sharedDirector = new CCDisplayLinkDirector();
-                    s_sharedDirector.Init();
                 }
                 return s_sharedDirector;
             }
             }
 
-        public virtual bool NeedsInit
+        #region Constructors
+
+        protected CCDirector()
         {
-            get { return m_NeedsInit; }
-            set { m_NeedsInit = value; }
+            Init();
         }
 
-        public virtual bool Init()
+        // Purging the director requires we re-initialize
+        private void Init()
         {
             SetDefaultValues();
 
@@ -571,8 +572,9 @@ namespace CocosSharp
             //CCPoolManager::sharedPoolManager()->push();
 
             m_NeedsInit = false;
-            return true;
         }
+
+        #endregion Constructors
 
         private bool m_GamePadEnabled = false;
         /// <summary>

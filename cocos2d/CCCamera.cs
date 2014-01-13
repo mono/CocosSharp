@@ -60,7 +60,7 @@ namespace CocosSharp
 
         public CCCamera()
         {
-            Init();
+            Restore();
         }
 
         /// <summary>
@@ -70,11 +70,6 @@ namespace CocosSharp
         {
             get { return m_bDirty; }
             set { m_bDirty = value; }
-        }
-
-        public void Init()
-        {
-            Restore();
         }
 
         public override string ToString()
