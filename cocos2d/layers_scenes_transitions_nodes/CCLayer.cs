@@ -48,14 +48,19 @@ namespace CocosSharp
         public CCLayer(CCClipMode clipMode)
         {
             m_childClippingMode = clipMode;
+
+            TouchMode = CCTouchMode.AllAtOnce;
+
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_bIgnoreAnchorPointForPosition = true;
+
             CCDirector director = CCDirector.SharedDirector;
             if (director != null)
             {
                 ContentSize = director.WinSize;
+                m_bIsAccelerometerEnabled = false;
+                m_bDidInit = true;
             }
-            Init();
         }
 
         /// <summary>
@@ -274,27 +279,6 @@ namespace CocosSharp
                     m_pRenderTexture.Sprite.Visit();
                 }
             }
-        }
-
-        public override bool Init()
-        {
-            if (m_bDidInit)
-            {
-                return (true);
-            }
-
-            TouchMode = CCTouchMode.AllAtOnce;
-
-            bool bRet = false;
-            CCDirector director = CCDirector.SharedDirector;
-            if (director != null)
-            {
-                //                ContentSize = director.WinSize;
-                m_bIsAccelerometerEnabled = false;
-                bRet = true;
-                m_bDidInit = true;
-            }
-            return bRet;
         }
 
         public override void OnEnter()

@@ -57,14 +57,12 @@ namespace CocosSharp
         /// <summary>
         /// initializes a transition with duration and incoming scene
         /// </summary>
-        public virtual bool InitWithDuration(float t, CCScene scene, CCTransitionOrientation orientation)
+        private void InitWithDuration(float t, CCScene scene, CCTransitionOrientation orientation)
         {
             if (base.InitWithDuration(t, scene))
             {
                 m_eOrientation = orientation;
             }
-
-            return true;
         }
     }
 }

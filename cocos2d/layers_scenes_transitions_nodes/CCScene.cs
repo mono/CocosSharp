@@ -15,7 +15,7 @@ namespace CocosSharp
         /// <summary>
         /// Sets the anchor point to the middle of the scene but ignores the anchor for positioning.
         /// </summary>
-        public CCScene()
+        public CCScene() : base()
         {
             m_bIgnoreAnchorPointForPosition = true;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -31,14 +31,6 @@ namespace CocosSharp
             {
                 return (false);
             }
-        }
-        /// <summary>
-        /// Initialize this scene
-        /// </summary>
-        /// <returns></returns>
-        public override bool Init()
-        {
-            return (true);
         }
     }
 }

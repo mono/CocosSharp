@@ -66,8 +66,9 @@ namespace CocosSharp
         private CCColor3B m_endColor;
 
 
-        public CCLayerGradient ()
+        public CCLayerGradient() : base()
         {
+            InitWithColor(new CCColor4B(0, 0, 0, 255), new CCColor4B(0, 0, 0, 255));
         }
 
         public CCLayerGradient(byte startOpacity, byte endOpacity)
@@ -153,23 +154,18 @@ namespace CocosSharp
             }
         }
 
-        public override bool Init()
-        {
-            return InitWithColor(new CCColor4B(0, 0, 0, 255), new CCColor4B(0, 0, 0, 255));
-        }
-
         /// <summary>
         /// Initializes the CCLayer with a gradient between start and end.
         /// </summary>
-        protected virtual bool InitWithColor(CCColor4B start, CCColor4B end)
+        private void InitWithColor(CCColor4B start, CCColor4B end)
         {
-            return InitWithColor(start, end, new CCPoint(0, -1));
+            InitWithColor(start, end, new CCPoint(0, -1));
         }
 
         /// <summary>
         /// Initializes the CCLayer with a gradient between start and end in the direction of v.
         /// </summary>
-        protected virtual bool InitWithColor(CCColor4B start, CCColor4B end, CCPoint v)
+        private void InitWithColor(CCColor4B start, CCColor4B end, CCPoint v)
         {
             m_endColor = new CCColor3B();
             m_endColor.R = end.R;
@@ -182,7 +178,7 @@ namespace CocosSharp
 
             m_bCompressedInterpolation = true;
 
-            return base.InitWithColor(new CCColor4B(start.R, start.G, start.B, 255));
+            base.InitWithColor(new CCColor4B(start.R, start.G, start.B, 255));
         }
 
 

@@ -92,7 +92,8 @@ namespace CocosSharp
             InitWithDuration(t, scene);
         }
 
-        protected virtual bool InitWithDuration(float t, CCScene scene)
+        // Bool return type used by subclasses
+        protected bool InitWithDuration(float t, CCScene scene)
         {
             Debug.Assert(scene != null, "Argument scene must be non-nil");
 

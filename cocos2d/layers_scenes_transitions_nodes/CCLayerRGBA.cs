@@ -83,7 +83,10 @@ namespace CocosSharp
             set { _cascadeOpacityEnabled = value; }
         }
 
-        public CCLayerRGBA()
+
+        #region Constructors
+
+        public CCLayerRGBA() : base()
         {
             _displayedOpacity = 255;
             _realOpacity = 255;
@@ -94,17 +97,8 @@ namespace CocosSharp
             _cascadeOpacityEnabled = false;
         }
 
-        public override bool Init()
-        {
-            base.Init();
+        #endregion Constructors
 
-            _displayedOpacity = _realOpacity = 255;
-            _displayedColor = _realColor = CCTypes.CCWhite;
-            CascadeOpacityEnabled = false;
-            CascadeColorEnabled = false;
-
-            return true;
-        }
 
         public virtual void UpdateDisplayedColor(CCColor3B parentColor)
         {

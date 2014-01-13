@@ -55,7 +55,7 @@ namespace CocosSharp
         /// If back is true then the effect is reversed to appear as if the incoming 
         /// scene is being turned from left over the outgoing scene.
         /// </summary>
-        public virtual bool InitWithDuration(float t, CCScene scene, bool backwards)
+        private void InitWithDuration(float t, CCScene scene, bool backwards)
         {
             // XXX: needed before [super init]
             m_bBack = backwards;
@@ -64,8 +64,6 @@ namespace CocosSharp
             {
                 // do something
             }
-
-            return true;
         }
 
         public CCActionInterval ActionWithSize(CCGridSize vector)

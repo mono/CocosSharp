@@ -49,19 +49,17 @@ namespace CocosSharp
         /// <summary>
         /// initializes the transition with a duration and with an RGB color 
         /// </summary>
-        protected virtual bool InitWithDuration(float duration, CCScene scene, CCColor3B color)
+        private void InitWithDuration(float duration, CCScene scene, CCColor3B color)
         {
             if (base.InitWithDuration(duration, scene))
             {
                 m_tColor = new CCColor4B {R = color.R, G = color.G, B = color.B, A = 0};
             }
-            return true;
         }
 
-        protected override bool InitWithDuration(float t, CCScene scene)
+        private new void InitWithDuration(float t, CCScene scene)
         {
             InitWithDuration(t, scene, new CCColor3B(Color.Black));
-            return true;
         }
 
         public override void OnEnter()

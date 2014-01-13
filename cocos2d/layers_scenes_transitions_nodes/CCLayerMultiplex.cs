@@ -29,61 +29,44 @@ namespace CocosSharp
         public bool ShowFirstLayerOnEnter { get; set; }
 
         #region Constructors
-        public CCLayerMultiplex()
+
+        public CCLayerMultiplex() : base()
         {
             ShowFirstLayerOnEnter = true;
         }
+
         /// <summary>
         ///  creates a CCLayerMultiplex with one or more layers using a variable argument list. 
         /// </summary>
         /// <param name="layer"></param>
         /// <param name="?"></param>
         /// <returns></returns>
-        public CCLayerMultiplex (params CCLayer[] layer)
+        public CCLayerMultiplex (params CCLayer[] layers) : this(null, null, layers)
         {
-            InitWithLayers(layer);
-            ShowFirstLayerOnEnter = true;
         }
 
-        public CCLayerMultiplex(CCAction inAction, CCAction outAction, params CCLayer[] layer)
+        public CCLayerMultiplex(CCAction inAction, CCAction outAction, params CCLayer[] layers) : this()
         {
-            InitWithLayers(layer);
-            m_InAction = inAction;
-            m_OutAction = outAction;
-            ShowFirstLayerOnEnter = true;
-        }
+            if (layers != null) 
+            {
+                InitWithLayers (layers);
+            }
 
-        public CCLayerMultiplex(CCAction inAction, CCAction outAction)
-        {
             m_InAction = inAction;
             m_OutAction = outAction;
         }
 
-        public CCLayerMultiplex(CCAction inAction, CCAction outAction, CCLayer layer)
+        public CCLayerMultiplex(CCAction inAction, CCAction outAction) : this(inAction, outAction, null)
         {
-            InitWithLayer(layer);
-            m_InAction = inAction;
-            m_OutAction = outAction;
         }
+
         #endregion
 
         #region Legacy Init Methods
-        private bool InitWithLayer(CCLayer layer)
-        {
-            m_pLayers = new Dictionary<int,CCLayer>();
-            int ix = m_pLayers.Count;
-            m_pLayers[ix] = layer;
-            _LayersInOrder.Add(ix);
-            if (layer.Tag != CCNode.kCCNodeTagInvalid)
-            {
-                m_pLayers[layer.Tag + kTagOffsetForUniqueness] = layer;
-            }
-            return true;
-        }
 
         /** initializes a MultiplexLayer with one or more layers using a variable argument list. */
 
-        private bool InitWithLayers(params CCLayer[] layer)
+        private void InitWithLayers(params CCLayer[] layer)
         {
             m_pLayers = new Dictionary<int, CCLayer>();
             for (int i = 0; i < layer.Length; i++)
@@ -94,8 +77,8 @@ namespace CocosSharp
                     m_pLayers[layer[i].Tag + kTagOffsetForUniqueness] = layer[i];
                 }
             }
-            return true;
         }
+
         #endregion
 
         /// <summary>
@@ -228,7 +211,7 @@ namespace CocosSharp
         {
             if (m_pLayers == null)
             {
-                InitWithLayer(layer);
+                InitWithLayers(layer);
             }
             else
             {

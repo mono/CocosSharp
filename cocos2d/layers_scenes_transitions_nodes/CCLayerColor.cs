@@ -39,25 +39,23 @@ namespace CocosSharp
         protected VertexPositionColor[] m_pSquareVertices = new VertexPositionColor[4];
         protected CCBlendFunc m_tBlendFunc;
 
-        public CCLayerColor()
+        public CCLayerColor() : this(new CCColor4B(0, 0, 0, 0), 0.0f, 0.0f)
         {
-            Init();
         }
 
         /// <summary>
         /// creates a CCLayer with color, width and height in Points
         /// </summary>
-        public CCLayerColor (CCColor4B color, float width, float height) : this()
+        public CCLayerColor (CCColor4B color, float width, float height) : base()
         {
             InitWithColor(color, width, height);
         }
-        
+
         /// <summary>
         /// creates a CCLayer with color. Width and height are the window size. 
         /// </summary>
-        public CCLayerColor (CCColor4B color) : this()
+        public CCLayerColor (CCColor4B color) : this(color, 0.0f, 0.0f)
         {
-            InitWithColor(color);
         }
 
         /// <summary>
@@ -85,27 +83,22 @@ namespace CocosSharp
 
         #region InitWithXXX
 
-        public override bool Init()
+        protected void InitWithColor(CCColor4B color)
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
-            return InitWithColor(new CCColor4B(0, 0, 0, 0), s.Width, s.Height);
-        }
-
-        /// <summary>
-        /// initializes a CCLayer with color
-        /// </summary>
-        public virtual bool InitWithColor(CCColor4B color)
-        {
-            CCSize s = CCDirector.SharedDirector.WinSize;
-            return InitWithColor(color, s.Width, s.Height);
+            InitWithColor (color, 0.0f, 0.0f);
         }
 
         /// <summary>
         /// initializes a CCLayer with color, width and height in Points
         /// </summary>
-        public virtual bool InitWithColor(CCColor4B color, float width, float height)
+        private void InitWithColor(CCColor4B color, float width, float height)
         {
-            base.Init();
+            if (width == 0.0f || height == 0.0f) 
+            {
+                CCSize s = CCDirector.SharedDirector.WinSize;
+                width = s.Width;
+                height = s.Height;
+            }
 
             // default blend function
             m_tBlendFunc = CCBlendFunc.NonPremultiplied;
@@ -123,8 +116,6 @@ namespace CocosSharp
 
             UpdateColor();
             ContentSize = new CCSize(width, height);
-            
-            return true;
         }
 
         #endregion

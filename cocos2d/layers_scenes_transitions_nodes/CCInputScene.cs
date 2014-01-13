@@ -16,44 +16,27 @@ namespace CocosSharp
         private bool m_bIsMultiTouchEnabled;
         private bool m_bIsSingleTouchEnabled;
 
-        public CCInputScene()
+        public CCInputScene() : base()
         {
             m_OnGamePadButtonUpdateDelegate = new CCGamePadButtonDelegate(OnGamePadButtonUpdate);
             m_OnGamePadConnectionUpdateDelegate = new CCGamePadConnectionDelegate(OnGamePadConnectionUpdate);
             m_OnGamePadDPadUpdateDelegate = new CCGamePadDPadDelegate(OnGamePadDPadUpdate);
             m_OnGamePadStickUpdateDelegate = new CCGamePadStickUpdateDelegate(OnGamePadStickUpdate);
             m_OnGamePadTriggerUpdateDelegate = new CCGamePadTriggerDelegate(OnGamePadTriggerUpdate);
-        }
-        private bool m_bDidInit = false;
 
-        public override bool Init()
-        {
-            if (m_bDidInit)
-            {
-                return (true);
-            }
-            bool bRet = false;
             CCDirector director = CCDirector.SharedDirector;
             if (director != null)
             {
-                //                ContentSize = director.WinSize;
                 m_bIsMultiTouchEnabled = false;
                 m_bIsSingleTouchEnabled = false;
                 m_bIsAccelerometerEnabled = false;
                 m_bKeypadEnabled = false;
                 m_bGamePadEnabled = false;
-                bRet = true;
-                m_bDidInit = true;
             }
-            return bRet;
         }
 
         public override void OnEnter()
         {
-            if (!m_bDidInit)
-            {
-                Init();
-            }
             // register 'parent' nodes first
             // since events are propagated in reverse order
             if (m_bIsMultiTouchEnabled || m_bIsSingleTouchEnabled)
