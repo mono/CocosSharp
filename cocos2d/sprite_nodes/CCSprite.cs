@@ -471,7 +471,7 @@ namespace CocosSharp
 
         public CCSprite()
         {
-            if (!Init())
+            if (!InitWithTexture(null, new CCRect()))
             {
                 CCLog.Log("CCSprite (): Problems initializing class");
             }
@@ -587,11 +587,6 @@ namespace CocosSharp
         internal bool InitWithTexture(CCTexture2D texture, CCRect rect)
         {
             return InitWithTexture(texture, rect, false);
-        }
-
-        public override bool Init()
-        {
-            return InitWithTexture(null, new CCRect());
         }
 
         // Called by non-subclasses which also make use of bool return type
