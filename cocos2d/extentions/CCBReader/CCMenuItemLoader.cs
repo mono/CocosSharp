@@ -21,7 +21,7 @@ namespace CocosSharp
             {
                 if (null != pBlockData) // Add this condition to allow CCMenuItemImage without target/selector predefined 
                 {
-                    ((CCMenuItem) node).SetTarget(pBlockData.mSELMenuHandler);
+					((CCMenuItem) node).Target = pBlockData.mSELMenuHandler;
                 }
             }
             else

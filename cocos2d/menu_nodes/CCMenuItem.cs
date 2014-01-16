@@ -21,7 +21,7 @@ namespace CocosSharp
         protected string m_functionName;
         protected Action<object> m_pfnSelector;
 
-        public CCMenuItem()
+		public CCMenuItem() : this (null)
         {
             m_bIsSelected = false;
             m_bIsEnabled = false;
@@ -35,7 +35,7 @@ namespace CocosSharp
         /// <returns></returns>
         public CCMenuItem(Action<object> selector)
         {
-            InitWithTarget(selector);
+			InitWithItems(selector);
         }
 
         public virtual bool Enabled
@@ -54,7 +54,7 @@ namespace CocosSharp
         /// </summary>
         /// <param name="selector"></param>
         /// <returns></returns>
-        protected void InitWithTarget(Action<object> selector)
+		private void InitWithItems(Action<object> selector)
         {
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_pfnSelector = selector;
@@ -121,13 +121,13 @@ namespace CocosSharp
             throw new NotImplementedException("CCMenuItem.RegisterScriptHandler is not supported in this version of Cocos2d-XNA");
         }
 
-        /// <summary>
-        /// set the target/selector of the menu item
-        /// </summary>
-        /// <param name="selector"></param>
-        public virtual void SetTarget(Action<object> selector)
-        {
-            m_pfnSelector = selector;
-        }
+		/// <summary>
+		/// set the target/selector of the menu item
+		/// </summary>
+		/// <param name="selector"></param>
+		public Action<object> Target
+		{
+			set { m_pfnSelector = value; }
+		}
     }
 }
