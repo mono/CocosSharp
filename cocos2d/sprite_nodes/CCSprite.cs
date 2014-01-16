@@ -589,6 +589,11 @@ namespace CocosSharp
             return InitWithTexture(texture, rect, false);
         }
 
+        public override bool Init()
+        {
+            return InitWithTexture(null, new CCRect());
+        }
+
         // Called by non-subclasses which also make use of bool return type
         internal bool InitWithTexture(CCTexture2D texture)
         {
