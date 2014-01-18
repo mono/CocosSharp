@@ -10,9 +10,11 @@ namespace CocosSharp
         public CCMenuItemFont (string value) : this(value, null)
         { }
         
-		public CCMenuItemFont (string value, Action<object> selector)
+		public CCMenuItemFont (string value, Action<object> selector) 
+			: base (new CCLabelTTF(value, _fontName, _fontSize), selector)
         {
-            InitWithString(value, selector);
+			m_strFontName = _fontName;
+			m_uFontSize = _fontSize;
         }
         
         public static uint FontSize
@@ -45,17 +47,6 @@ namespace CocosSharp
                 RecreateLabel();
             }
             get { return m_strFontName; }
-        }
-
-        private void InitWithString(string value, Action<object> selector)
-        {
-            //CCAssert( value != NULL && strlen(value) != 0, "Value length must be greater than 0");
-
-            m_strFontName = _fontName;
-            m_uFontSize = _fontSize;
-
-            CCLabelTTF label = new CCLabelTTF(value, m_strFontName, m_uFontSize);
-            base.InitWithLabel(label, selector);
         }
 
         protected void RecreateLabel()

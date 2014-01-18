@@ -430,7 +430,7 @@ namespace CocosSharp
             //pp.RenderTargetUsage = RenderTargetUsage.PreserveContents;
             //m_renderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, (int)pp.BackBufferHeight, false, pp.BackBufferFormat, pp.DepthStencilFormat, pp.MultiSampleCount, RenderTargetUsage.PreserveContents);
 
-            //m_eResolutionPolicy = CCResolutionPolicy.UnKnown;
+			//m_eResolutionPolicy = CCResolutionPolicy.UnKnown;
             m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
             m_obScreenSize = m_obViewPortRect.Size;
 

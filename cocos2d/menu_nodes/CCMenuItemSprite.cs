@@ -110,9 +110,9 @@ namespace CocosSharp
         {
         }
 
-		public CCMenuItemSprite(CCNode normalSprite, CCNode selectedSprite, CCNode disabledSprite, Action<object> selector)
+		public CCMenuItemSprite(CCNode normalSprite, CCNode selectedSprite, CCNode disabledSprite, Action<object> selector) 
+			: base (selector)
         {
-            InitWithTarget(selector);
 
             NormalImage = normalSprite;
             SelectedImage = selectedSprite;

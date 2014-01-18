@@ -90,7 +90,7 @@ namespace CocosSharp
         #region State Management
 		
 #if !PSM &&!NETFX_CORE
-        private string m_sStorageDirName = "cocos2dDirector";
+		private string m_sStorageDirName = "CocosSharpDirector";
         private string m_sSaveFileName = "SceneList.dat";
         private string m_sSceneSaveFileName = "Scene{0}.dat";
 

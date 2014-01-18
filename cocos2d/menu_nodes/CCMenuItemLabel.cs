@@ -11,7 +11,7 @@ namespace CocosSharp
 
         protected CCMenuItemLabel() {}
 
-		public CCMenuItemLabel (CCNode label, Action<object> selector)
+		public CCMenuItemLabel (CCNode label, Action<object> selector) : base (selector)
         {
             InitWithLabel(label, selector);
         }
@@ -67,9 +67,8 @@ namespace CocosSharp
             }
         }
 
-        protected void InitWithLabel(CCNode label, Action<object> selector)
+		private void InitWithLabel(CCNode label, Action<object> selector)
         {
-            base.InitWithTarget(selector);
             m_fOriginalScale = 1.0f;
             m_tColorBackup = CCTypes.CCWhite;
             DisabledColor = new CCColor3B(126, 126, 126);
