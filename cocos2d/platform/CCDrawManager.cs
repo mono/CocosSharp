@@ -126,6 +126,8 @@ namespace CocosSharp
         public static GraphicsDevice GraphicsDevice
         {
             get { return graphicsDevice; }
+
+			set { InitializeGraphicsDevice (value); }
         }
 
         public static BlendState BlendState
@@ -347,7 +349,7 @@ namespace CocosSharp
             {
                 if (service.GraphicsDevice != null)
                 {
-                    Init(service.GraphicsDevice);
+					GraphicsDevice = service.GraphicsDevice;
                 }
             }
         }
@@ -375,10 +377,10 @@ namespace CocosSharp
 
         static void GraphicsDeviceDeviceCreated(object sender, EventArgs e)
         {
-            Init(m_graphicsService.GraphicsDevice);
+			GraphicsDevice = m_graphicsService.GraphicsDevice;
         }
 
-        public static void Init(GraphicsDevice graphicsDevice)
+		private static void InitializeGraphicsDevice(GraphicsDevice graphicsDevice)
         {
             CCDrawManager.graphicsDevice = graphicsDevice;
 
