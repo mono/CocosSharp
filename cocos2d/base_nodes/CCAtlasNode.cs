@@ -208,6 +208,9 @@ namespace CocosSharp
 
 		public bool IgnoreContentScaleFactor
 		{
+			get {
+				return m_bIgnoreContentScaleFactor;
+			}
 			set 
 			{
 				m_bIgnoreContentScaleFactor = value;
