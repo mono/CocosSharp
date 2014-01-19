@@ -66,9 +66,9 @@ namespace tests
 
             if (CCDrawManager.FrameSize.Height > 320)
             {
-                CCSize resourceSize = new CCSize(960, 640);
+				CCSize resourceSize = new CCSize(960, 640);
                 CCContentManager.SharedContentManager.SearchPaths.Add("hd");
-                pDirector.ContentScaleFactor = resourceSize.Height / designSize.Height;
+				pDirector.ContentScaleFactor = resourceSize.Height / designSize.Height;
             }
 
             CCDrawManager.SetDesignResolutionSize(designSize.Width, designSize.Height, CCResolutionPolicy.ShowAll);

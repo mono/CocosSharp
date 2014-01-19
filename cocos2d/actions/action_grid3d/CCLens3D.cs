@@ -15,7 +15,7 @@ namespace CocosSharp
         {
         }
 
-        public CCLens3D(float duration, CCGridSize gridSize, CCPoint position, float radius) : base()
+		public CCLens3D(float duration, CCGridSize gridSize, CCPoint position, float radius) : base()
         {
             InitWithDuration(duration, gridSize, position, radius);
         }
@@ -44,9 +44,10 @@ namespace CocosSharp
             {
                 if (!value.Equals(m_position))
                 {
-                    m_position = value;
-                    m_positionInPixels.X = value.X * CCDirector.SharedDirector.ContentScaleFactor;
-                    m_positionInPixels.Y = value.Y * CCDirector.SharedDirector.ContentScaleFactor;
+					var scale = CCDirector.SharedDirector.ContentScaleFactor;
+					m_position.X = value.X / scale;
+					m_position.X = value.Y / scale;
+					m_positionInPixels = value;
                     m_bDirty = true;
                 }
             }
@@ -57,7 +58,7 @@ namespace CocosSharp
             if (base.InitWithDuration(duration, gridSize))
             {
                 m_position = new CCPoint(-1, -1);
-                m_positionInPixels = new CCPoint();
+				m_positionInPixels = CCPoint.Zero;
 
                 Position = position;
                 m_fRadius = radius;

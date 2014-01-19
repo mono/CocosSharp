@@ -63,7 +63,7 @@ namespace CocosSharp
         {
         }
 
-        public CCShaky3D(float duration, CCGridSize gridSize, int range, bool shakeZ) : base(duration)
+		public CCShaky3D(float duration, CCGridSize gridSize, int range, bool shakeZ) : base(duration)
         {
             InitWithDuration(duration, gridSize, range, shakeZ);
         }
