@@ -48,7 +48,7 @@ namespace CocosSharp
 
         internal CCLabelAtlas()
         {
-            SetIgnoreContentScaleFactor(true);
+			IgnoreContentScaleFactor = true;
         }
 
         public CCLabelAtlas (string label, string fntFile)

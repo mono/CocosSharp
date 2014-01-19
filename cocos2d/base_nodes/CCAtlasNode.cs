@@ -206,9 +206,12 @@ namespace CocosSharp
             m_pTextureAtlas.DrawNumberOfQuads(m_uQuadsToDraw, 0);
         }
 
-        public void SetIgnoreContentScaleFactor(bool bIgnoreContentScaleFactor)
-        {
-            m_bIgnoreContentScaleFactor = bIgnoreContentScaleFactor;
-        }
+		public bool IgnoreContentScaleFactor
+		{
+			set 
+			{
+				m_bIgnoreContentScaleFactor = value;
+			}
+		}
     }
 }
