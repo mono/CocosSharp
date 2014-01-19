@@ -11,7 +11,7 @@ namespace tests
         public new static CCActionInterval actionWithDuration(float t)
         {
             CCSize size = CCDirector.SharedDirector.WinSize;
-            return new CCRipple3D(t, new CCGridSize(32, 24), new CCPoint(size.Width / 2, size.Height / 2), 240, 4, 160);
+			return new CCRipple3D(t, new CCGridSize(32, 24), new CCPoint(size.Width / 2, size.Height / 2), size.Width / CCDirector.SharedDirector.ContentScaleFactor, 4, 160);
         }
     }
 }

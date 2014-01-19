@@ -17,9 +17,13 @@ namespace CocosSharp
             get { return m_position; }
             set
             {
-                m_position = value;
-                m_positionInPixels.X = value.X * CCDirector.SharedDirector.ContentScaleFactor;
-                m_positionInPixels.Y = value.Y * CCDirector.SharedDirector.ContentScaleFactor;
+				if (!value.Equals(m_position))
+				{
+					var scale = CCDirector.SharedDirector.ContentScaleFactor;
+					m_position.X = value.X / scale;
+					m_position.X = value.Y / scale;
+					m_positionInPixels = value;
+				}
             }
         }
 
@@ -40,7 +44,8 @@ namespace CocosSharp
         {
             if (base.InitWithDuration(duration, gridSize))
             {
-                m_positionInPixels = new CCPoint();
+				m_position = new CCPoint(-1, -1);
+				m_positionInPixels = CCPoint.Zero;
 
                 Position = position;
                 m_fRadius = radius;
