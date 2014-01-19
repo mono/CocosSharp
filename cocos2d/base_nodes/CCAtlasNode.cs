@@ -213,6 +213,8 @@ namespace CocosSharp
 			}
 			set 
 			{
+				// This varible is only used for CCLabelAtlas FPS display. So plz don't modify its value.
+				// We really need to take a look at this.
 				m_bIgnoreContentScaleFactor = value;
 			}
 		}
