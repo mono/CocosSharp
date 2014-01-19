@@ -37,7 +37,7 @@ namespace CocosSharp
                 Game.Services.AddService(typeof(IGraphicsDeviceService), service);
             }
 
-			CCDrawManager.Init(service);
+			CCDrawManager.GraphicsDeviceService = service;
 
             Content = game.Content;
             HandleMediaStateAutomatically = true;
@@ -49,6 +49,7 @@ namespace CocosSharp
             game.Activated += GameActivated;
             game.Deactivated += GameDeactivated;
             game.Exiting += GameExiting;
+
         }
 
         protected bool HandleMediaStateAutomatically { get; set; }
