@@ -27,7 +27,7 @@ namespace CocosSharp
 
     public class CCActionInterval : CCFiniteTimeAction
     {
-        protected bool m_bFirstTick;
+        protected bool m_bFirstTick = true;
         protected float m_elapsed;
 
         public float Elapsed
@@ -47,23 +47,8 @@ namespace CocosSharp
         {
         }
 
-        public CCActionInterval(float d)
+        public CCActionInterval(float d) : base(d)
         {
-            InitWithDuration(d);
-        }
-
-        // Perform a deep copy of CCACtionInterval
-        protected internal CCActionInterval(CCActionInterval actionInterval) : base(actionInterval)
-        {
-            InitWithDuration(actionInterval.m_fDuration);
-        }
-
-        // Used by CCSequence and CCParallel
-        // In general though, subclasses should aim to call the base constructor, rather than this explicitly
-        protected void InitWithDuration(float d)
-        {
-            m_fDuration = d;
-
             // prevent division by 0
             // This comparison could be in step:, but it might decrease the performance
             // by 3% in heavy based action games.
@@ -71,12 +56,46 @@ namespace CocosSharp
             {
                 m_fDuration = float.Epsilon;
             }
+        }
 
-            m_elapsed = 0;
-            m_bFirstTick = true;
+        // Perform a deep copy of CCACtionInterval
+        protected internal CCActionInterval(CCActionInterval actionInterval) : base(actionInterval)
+        {
+            // prevent division by 0
+            // This comparison could be in step:, but it might decrease the performance
+            // by 3% in heavy based action games.
+            if (m_fDuration == 0)
+            {
+                m_fDuration = float.Epsilon;
+            }
         }
 
         #endregion Constructors
+
+
+        // Used by CCSequence and CCParallel
+        // In general though, subclasses should aim to call the base constructor, rather than this explicitly
+        public override float Duration
+        {
+            get
+            {
+                return base.Duration;
+            }
+            set
+            {
+                m_fDuration = value;
+                // prevent division by 0
+                // This comparison could be in step:, but it might decrease the performance
+                // by 3% in heavy based action games.
+                if (m_fDuration == 0)
+                {
+                    m_fDuration = float.Epsilon;
+                }
+
+                m_elapsed = 0;
+                m_bFirstTick = true;
+            }
+        }
 
 
         public override object Copy(ICCCopyable zone)

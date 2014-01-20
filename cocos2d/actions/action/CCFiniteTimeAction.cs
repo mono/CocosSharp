@@ -4,7 +4,7 @@ namespace CocosSharp
     {
         protected float m_fDuration;
 
-        public float Duration
+        public virtual float Duration
         {
             get { return m_fDuration; }
             set { m_fDuration = value; }
@@ -15,6 +15,11 @@ namespace CocosSharp
 
         protected CCFiniteTimeAction()
         {
+        }
+
+        protected CCFiniteTimeAction(float d)
+        {
+            m_fDuration = d;
         }
 
         public CCFiniteTimeAction(CCFiniteTimeAction finiteTimeAction) : base(finiteTimeAction)

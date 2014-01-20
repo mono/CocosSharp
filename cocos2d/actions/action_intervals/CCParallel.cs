@@ -20,7 +20,7 @@ namespace CocosSharp
         {
             // Can't call base(duration) because max action duration needs to be determined here
             float maxDuration = actions.OrderByDescending (action => action.Duration).First().Duration;
-            base.InitWithDuration(maxDuration);
+            Duration = maxDuration;
 
             InitCCParallel(actions);
         }

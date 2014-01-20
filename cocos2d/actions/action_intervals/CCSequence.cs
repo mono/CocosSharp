@@ -36,7 +36,7 @@ namespace CocosSharp
 
             // Can't call base(duration) because we need to calculate duration here
             float combinedDuration = actions.Sum(action => action.Duration);
-            base.InitWithDuration(combinedDuration);
+            Duration = combinedDuration;
 
             if (actions.Length == 1)
             {

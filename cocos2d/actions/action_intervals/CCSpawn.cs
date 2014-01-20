@@ -39,7 +39,7 @@ namespace CocosSharp
             // Instead call base's init method here
             if(prev != null && next != null)
             {
-                base.InitWithDuration(Math.Max(prev.Duration, next.Duration));
+                Duration = Math.Max(prev.Duration, next.Duration);
                 InitCCSpawn(prev, next);
             }
         }
