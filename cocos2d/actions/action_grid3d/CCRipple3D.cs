@@ -63,7 +63,8 @@ namespace CocosSharp
 
         private void InitRipple3D(CCPoint position, float radius, int waves, float amplitude)
         {
-            m_positionInPixels = new CCPoint();
+            m_position = new CCPoint(-1, -1);
+            m_positionInPixels = CCPoint.Zero;
 
             Position = position;
             m_fRadius = radius;
