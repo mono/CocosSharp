@@ -14,30 +14,24 @@ namespace CocosSharp
         protected float m_fFrom, m_fTo;
         protected string m_strKey;
         protected Action<float, string> _tweenAction;
- 
+
+
+        #region Constructors
+
         public CCActionTween(float aDuration, string key, float from, float to)
         {
-            InitWithDuration(aDuration, key, from, to);
+            m_strKey = key;
+            m_fTo = to;
+            m_fFrom = from;
         }
 
-        public CCActionTween(float aDuration, string key, float from, float to, Action<float,string> tweenAction)
+        public CCActionTween(float aDuration, string key, float from, float to, Action<float,string> tweenAction) : this(aDuration, key, from, to)
         {
-            InitWithDuration(aDuration, key, from, to);
             _tweenAction = tweenAction;
         }
 
-        protected bool InitWithDuration(float aDuration, string key, float from, float to)
-        {
-            if (base.InitWithDuration(aDuration))
-            {
-                m_strKey = key;
-                m_fTo = to;
-                m_fFrom = from;
-                return true;
-            }
+        #endregion Constructors
 
-            return false;
-        }
 
         protected internal override void StartWithTarget(CCNode target)
         {

@@ -4,6 +4,9 @@
     {
         private CCPoint m_tPosition;
 
+
+        #region Constructors
+
         protected CCPlace()
         {
         }
@@ -18,21 +21,16 @@
             InitWithPosition(pos);
         }
 
-        protected virtual bool InitWithPosition(CCPoint pos)
+        private void InitWithPosition(CCPoint pos)
         {
             m_tPosition = pos;
-            return true;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                var pRet = (CCPlace) (pZone);
-                base.Copy(pZone);
-                pRet.InitWithPosition(m_tPosition);
-                return pRet;
-            }
             return new CCPlace(this);
         }
 

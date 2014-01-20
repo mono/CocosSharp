@@ -2,29 +2,22 @@
 {
     public class CCDelayTime : CCActionInterval
     {
-        public CCDelayTime(float d)
+        #region Constructors
+
+        public CCDelayTime(float d) : base(d)
         {
-            InitWithDuration(d);
         }
 
         protected CCDelayTime(CCDelayTime delayTime) : base(delayTime)
         {
         }
 
+        #endregion Constructors
+
+
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = (CCDelayTime) (pZone);
-                base.Copy(pZone);
-
-                return pCopy;
-            }
-            else
-            {
-                return new CCDelayTime(this);
-            }
+            return new CCDelayTime(this);
         }
 
         public override void Update(float time)

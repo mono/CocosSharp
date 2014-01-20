@@ -7,15 +7,6 @@ namespace CocosSharp
     {
         private CCGrid3D m_pGrid;
 
-        protected CCGrid3DAction(float duration)
-            : base(duration)
-        {
-        }
-
-        protected CCGrid3DAction()
-        {
-        }
-
         public override CCGridBase Grid
         {
             get
@@ -37,6 +28,29 @@ namespace CocosSharp
                 m_pGrid = (CCGrid3D) value;
             }
         }
+
+
+        #region Constructors
+
+        protected CCGrid3DAction()
+        {
+        }
+
+        protected CCGrid3DAction(float duration) : base(duration)
+        {
+        }
+
+        protected CCGrid3DAction(float duration, CCGridSize gridSize) : base(duration, gridSize)
+        {
+        }
+
+        // Perform a deep copy of CCGrid3DAction
+        protected CCGrid3DAction(CCGrid3DAction action) : base(action)
+        {
+        }
+
+        #endregion Constructors
+
 
         public CCVertex3F Vertex(CCGridSize pos)
         {

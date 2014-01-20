@@ -6,44 +6,34 @@ namespace CocosSharp
     {
         private Action<CCNode> m_pCallFuncN;
 
+
+        #region Constructors
+
         public CCCallFuncN() : base()
         {
-            m_pCallFuncN = null;
         }
 
-
-        public CCCallFuncN(Action<CCNode> selector)
+        public CCCallFuncN(Action<CCNode> selector) : base()
         {
-            InitWithTarget(selector);
+            InitCCCallFuncN(selector);
         }
 
         public CCCallFuncN(CCCallFuncN callFuncN) : base(callFuncN)
         {
-            InitWithTarget(callFuncN.m_pCallFuncN);
+            InitCCCallFuncN(callFuncN.m_pCallFuncN);
         }
 
-        public bool InitWithTarget(Action<CCNode> selector)
+        private void InitCCCallFuncN(Action<CCNode> selector)
         {
             m_pCallFuncN = selector;
-            return false;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                //in case of being called at sub class
-                var pRet = (CCCallFuncN) (zone);
-                base.Copy(zone);
-
-                pRet.InitWithTarget(m_pCallFuncN);
-
-                return pRet;
-            }
-            else
-            {
-                return new CCCallFuncN(this);
-            }
+            return new CCCallFuncN(this);
         }
 
         public override void Execute()

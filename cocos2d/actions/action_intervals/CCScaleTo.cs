@@ -11,8 +11,10 @@ namespace CocosSharp
         protected float m_fStartScaleX;
         protected float m_fStartScaleY;
 
-        protected CCScaleTo(CCScaleTo copy)
-            : base(copy)
+
+        #region Constructors
+
+        protected CCScaleTo(CCScaleTo copy) : base(copy)
         {
             m_fEndScaleX = copy.m_fEndScaleX;
             m_fEndScaleY = copy.m_fEndScaleY;
@@ -30,20 +32,12 @@ namespace CocosSharp
             m_fEndScaleY = sy;
         }
 
+        #endregion Constructors
+
+
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = zone as CCScaleTo;
-                base.Copy(zone);
-                m_fEndScaleX = ret.m_fEndScaleX;
-                m_fEndScaleY = ret.m_fEndScaleY;
-                return ret;
-            }
-            else
-            {
-                return new CCScaleTo(this);
-            }
+            return new CCScaleTo(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)

@@ -36,22 +36,39 @@ namespace CocosSharp
         protected CCTile[] m_pTiles;
         protected int[] m_pTilesOrder;
 
+
+        #region Constructors
+
+        public CCShuffleTiles()
+        {
+        }
+
+        /// <summary>
+        /// creates the action with a random seed, the grid size and the duration 
+        /// </summary>
+        public CCShuffleTiles(CCGridSize gridSize, float duration, int seed) : base(duration, gridSize)
+        {
+            InitCCShuffleTiles(seed);
+        }
+
+        // Perform deep copy of CCShuffleTiles
+        public CCShuffleTiles(CCShuffleTiles shuffleTiles) : base(shuffleTiles)
+        {
+            InitCCShuffleTiles(shuffleTiles.m_nSeed);
+        }
+
         /// <summary>
         /// initializes the action with a random seed, the grid size and the duration
         /// </summary>
-        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int seed)
+        private void InitCCShuffleTiles(int seed)
         {
-            if (base.InitWithDuration(duration, gridSize))
-            {
-                m_nSeed = seed;
-                m_pTilesOrder = null;
-                m_pTiles = null;
-
-                return true;
-            }
-
-            return false;
+            m_nSeed = seed;
+            m_pTilesOrder = null;
+            m_pTiles = null;
         }
+
+        #endregion Constructors
+
 
         public void Shuffle(ref int[] pArray, int nLen)
         {
@@ -161,34 +178,7 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCShuffleTiles pCopy;
-            if (pZone != null)
-            {
-                pCopy = (CCShuffleTiles) (pZone);
-            }
-            else
-            {
-                pCopy = new CCShuffleTiles();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nSeed);
-
-            return pCopy;
-        }
-
-        public CCShuffleTiles()
-        {
-        }
-
-        /// <summary>
-        /// creates the action with a random seed, the grid size and the duration 
-        /// </summary>
-        public CCShuffleTiles(CCGridSize gridSize, float duration, int seed) : base(duration)
-        {
-            InitWithDuration(duration, gridSize, seed);
+            return new CCShuffleTiles(this);
         }
     }
 }

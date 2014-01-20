@@ -58,7 +58,7 @@ namespace CocosSharp
 
             m_pOutScene.RunAction
                 (
-                    new CCSequence
+                        new CCSequence
                         (
                             EaseAction(action),
                             new CCCallFunc(Finish),

@@ -9,45 +9,30 @@ namespace CocosSharp
         protected CCPoint m_previousPos;
 
 
-        public CCJumpBy(float duration, CCPoint position, float height, uint jumps)
+        #region Constructors
+
+        public CCJumpBy(float duration, CCPoint position, float height, uint jumps) : base(duration)
         {
-            InitWithDuration(duration, position, height, jumps);
+            InitCCJumpBy(position, height, jumps);
         }
 
         protected CCJumpBy(CCJumpBy jumpBy) : base(jumpBy)
         {
-            InitWithDuration(jumpBy.m_fDuration, jumpBy.m_delta, jumpBy.m_height, jumpBy.m_nJumps);
+            InitCCJumpBy(jumpBy.m_delta, jumpBy.m_height, jumpBy.m_nJumps);
         }
 
-        protected bool InitWithDuration(float duration, CCPoint position, float height, uint jumps)
+        private void InitCCJumpBy(CCPoint position, float height, uint jumps)
         {
-            if (base.InitWithDuration(duration))
-            {
-                m_delta = position;
-                m_height = height;
-                m_nJumps = jumps;
-
-                return true;
-            }
-
-            return false;
+            m_delta = position;
+            m_height = height;
+            m_nJumps = jumps;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = zone as CCJumpBy;
-                if (ret == null)
-                {
-                    return null;
-                }
-                base.Copy(zone);
-
-                ret.InitWithDuration(m_fDuration, m_delta, m_height, m_nJumps);
-
-                return ret;
-            }
             return new CCJumpBy(this);
         }
 

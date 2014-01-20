@@ -2,30 +2,26 @@ namespace CocosSharp
 {
     public class CCSkewBy : CCSkewTo
     {
+        #region Constructors
+
         public CCSkewBy(float t, float deltaSkewX, float deltaSkewY) : base(t, deltaSkewX, deltaSkewY)
         {
-            InitWithDuration(t, deltaSkewX, deltaSkewY);
+            InitCCSkewBy(deltaSkewX, deltaSkewY);
         }
 
         protected CCSkewBy(CCSkewBy skewBy) : base(skewBy)
         {
-            InitWithDuration(skewBy.m_fDuration, skewBy.m_fSkewX, skewBy.m_fSkewY);
+            InitCCSkewBy(skewBy.m_fSkewX, skewBy.m_fSkewY);
         }
 
-        protected override bool InitWithDuration(float t, float sx, float sy)
+        private void InitCCSkewBy(float sx, float sy)
         {
-            bool bRet = false;
-
-            if (base.InitWithDuration(t, sx, sy))
-            {
-                m_fSkewX = sx;
-                m_fSkewY = sy;
-
-                bRet = true;
-            }
-
-            return bRet;
+            m_fSkewX = sx;
+            m_fSkewY = sy;
         }
+
+        #endregion Constructors
+
 
         protected internal override void StartWithTarget(CCNode target)
         {

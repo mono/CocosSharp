@@ -5,14 +5,18 @@ namespace CocosSharp
 {
     public class CCPageTurn3D : CCGrid3DAction
     {
+        #region Constructors
+
         public CCPageTurn3D()
         {
         }
 
-        public CCPageTurn3D(float duration, CCGridSize gridSize)
+        public CCPageTurn3D(float duration, CCGridSize gridSize) : base(duration, gridSize)
         {
-            InitWithDuration(duration, gridSize);
         }
+
+        #endregion Constructors
+
 
         public override void Update(float time)
         {

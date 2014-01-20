@@ -5,40 +5,41 @@ namespace CocosSharp
         protected float m_fFrom;
         protected float m_fTo;
 
+
+        #region Constructors
+
+        protected CCProgressTo()
+        {
+        }
+
+        /// <summary>
+        /// Creates and initializes with a duration and a percent
+        /// </summary>
+        public CCProgressTo(float duration, float fPercent) : base(duration)
+        {
+            InitCCProgressTo(fPercent);
+        }
+
+        // Perform deep copy of CCProgressTo
+        public CCProgressTo(CCProgressTo progress) : base(progress)
+        {
+            InitCCProgressTo(progress.m_fTo);
+        }
+
         /// <summary>
         /// Initializes with a duration and a percent
         /// </summary>
-        protected virtual bool InitWithDuration(float duration, float fPercent)
+        private void InitCCProgressTo(float fPercent)
         {
-            if (base.InitWithDuration(duration))
-            {
-                m_fTo = fPercent;
-
-                return true;
-            }
-
-            return false;
+            m_fTo = fPercent;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCProgressTo pCopy;
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                pCopy = (CCProgressTo) (pZone);
-            }
-            else
-            {
-                pCopy = new CCProgressTo();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_fTo);
-
-            return pCopy;
+            return new CCProgressTo(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)
@@ -56,18 +57,6 @@ namespace CocosSharp
         public override void Update(float time)
         {
             ((CCProgressTimer) m_pTarget).Percentage = m_fFrom + (m_fTo - m_fFrom) * time;
-        }
-
-        protected CCProgressTo()
-        {
-        }
-
-        /// <summary>
-        /// Creates and initializes with a duration and a percent
-        /// </summary>
-        public CCProgressTo(float duration, float fPercent) : base(duration)
-        {
-            InitWithDuration(duration, fPercent);
         }
     }
 }

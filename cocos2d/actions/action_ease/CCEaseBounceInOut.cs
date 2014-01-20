@@ -2,6 +2,8 @@ namespace CocosSharp
 {
     public class CCEaseBounceInOut : CCActionEase
     {
+        #region Constructors
+
         public CCEaseBounceInOut(CCActionInterval pAction) : base(pAction)
         {
         }
@@ -10,6 +12,9 @@ namespace CocosSharp
         {
         }
 
+        #endregion Constructors
+
+
         public override void Update(float time)
         {
             m_pInner.Update(CCEaseMath.BounceInOut(time));
@@ -17,14 +22,6 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = pZone as CCEaseBounceInOut;
-                pCopy.InitWithAction((CCActionInterval) (m_pInner.Copy()));
-
-                return pCopy;
-            }
             return new CCEaseBounceInOut(this);
         }
 

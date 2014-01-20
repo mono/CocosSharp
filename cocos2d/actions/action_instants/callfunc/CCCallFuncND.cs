@@ -7,37 +7,31 @@ namespace CocosSharp
         protected Action<CCNode, object> m_pCallFuncND;
         protected object m_pData;
 
+
+        #region Constructors
+
         public CCCallFuncND(Action<CCNode, object> selector, object d) : base()
         {
-            InitWithTarget(selector, d);
+            InitCCCallFuncND(selector, d);
         }
 
         public CCCallFuncND(CCCallFuncND callFuncND) : base(callFuncND)
         {
-            InitWithTarget(callFuncND.m_pCallFuncND, callFuncND.m_pData);
+            InitCCCallFuncND(callFuncND.m_pCallFuncND, callFuncND.m_pData);
         }
 
-        public bool InitWithTarget(Action<CCNode, object> selector, object d)
+        private void InitCCCallFuncND(Action<CCNode, object> selector, object d)
         {
             m_pData = d;
             m_pCallFuncND = selector;
-            return true;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                //in case of being called at sub class
-                var pRet = (CCCallFuncND) (zone);
-                base.Copy(zone);
-                pRet.InitWithTarget(m_pCallFuncND, m_pData);
-                return pRet;
-            }
-            else
-            {
-                return new CCCallFuncND(this);
-            }
+            return new CCCallFuncND(this);
         }
 
         public override void Execute()

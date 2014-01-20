@@ -2,15 +2,18 @@ namespace CocosSharp
 {
     public class CCBezierTo : CCBezierBy
     {
+        #region Constructors
+
         public CCBezierTo(float t, CCBezierConfig c) : base(t, c)
         {
-            InitWithDuration(t, c);
         }
 
         protected CCBezierTo(CCBezierTo bezierTo) : base(bezierTo)
         {
-            InitWithDuration(bezierTo.m_fDuration, bezierTo.m_sConfig);
         }
+
+        #endregion Constructors
+
 
         protected internal override void StartWithTarget(CCNode target)
         {
@@ -22,14 +25,6 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null && zone != null)
-            {
-                var ret = zone as CCBezierTo;
-                base.Copy(zone);
-                ret.InitWithDuration(m_fDuration, m_sConfig);
-
-                return ret;
-            }
             return new CCBezierTo(this);
         }
     }

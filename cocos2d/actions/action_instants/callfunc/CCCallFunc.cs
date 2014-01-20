@@ -7,6 +7,9 @@ namespace CocosSharp
         private Action m_pCallFunc;
         protected string m_scriptFuncName;
 
+
+        #region Constructors
+
         public CCCallFunc()
         {
             m_scriptFuncName = "";
@@ -23,6 +26,9 @@ namespace CocosSharp
             m_pCallFunc = callFunc.m_pCallFunc;
             m_scriptFuncName = callFunc.m_scriptFuncName;
         }
+
+        #endregion Constructors
+
 
         public virtual void Execute()
         {
@@ -42,19 +48,7 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pRet = (CCCallFunc) (pZone);
-                base.Copy(pZone);
-                pRet.m_pCallFunc = m_pCallFunc;
-                pRet.m_scriptFuncName = m_scriptFuncName;
-                return pRet;
-            }
-            else
-            {
-                return new CCCallFunc(this);
-            }
+            return new CCCallFunc(this);
         }
     }
 }

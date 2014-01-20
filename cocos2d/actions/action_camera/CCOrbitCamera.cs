@@ -19,6 +19,9 @@ namespace CocosSharp
         protected float m_fRadZ;
         protected float m_fRadius;
 
+
+        #region Constructors
+
         public CCOrbitCamera()
         {
             m_fRadius = 0.0f;
@@ -58,6 +61,9 @@ namespace CocosSharp
             m_fRadDeltaZ = CCMacros.CCDegreesToRadians(deltaAngleZ);
             m_fRadDeltaX = CCMacros.CCDegreesToRadians(deltaAngleX);
         }
+
+        #endregion Constructors
+
 
         public void SphericalRadius(out float newRadius, out float zenith, out float azimuth)
         {

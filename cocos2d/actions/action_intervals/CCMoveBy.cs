@@ -7,47 +7,31 @@ namespace CocosSharp
         protected CCPoint m_startPosition;
         protected CCPoint m_previousPosition;
 
-        public CCMoveBy(float duration, CCPoint position) 
+
+        #region Constructors
+
+        public CCMoveBy(float duration, CCPoint position) : base(duration)
         {
             InitWithDuration(duration, position);
         }
 
+        // Perform deep copy of CCMoveBy
         protected CCMoveBy(CCMoveBy moveBy) : base(moveBy)
         {
             InitWithDuration(moveBy.m_fDuration, moveBy.m_positionDelta);
         }
 
-        protected virtual bool InitWithDuration(float duration, CCPoint position)
+        private void InitWithDuration(float duration, CCPoint position)
         {
-            if (base.InitWithDuration(duration))
-            {
-                m_positionDelta = position;
-                return true;
-            }
-            return false;
+            m_positionDelta = position;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = zone as CCMoveBy;
-
-                if (ret == null)
-                {
-                    return null;
-                }
-
-                base.Copy(zone);
-
-                ret.InitWithDuration(m_fDuration, m_positionDelta);
-
-                return ret;
-            }
-            else
-            {
-                return new CCMoveBy(this);
-            }
+            return new CCMoveBy(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)

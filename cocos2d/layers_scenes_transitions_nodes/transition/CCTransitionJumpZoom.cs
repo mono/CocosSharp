@@ -29,7 +29,8 @@ namespace CocosSharp
             m_pOutScene.RunAction(jumpZoomOut);
             m_pInScene.RunAction
                 (
-                    new CCSequence(
+                        new CCSequence
+                        (
                             delay,
                             jumpZoomIn,
                             new CCCallFunc(Finish)

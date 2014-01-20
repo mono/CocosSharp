@@ -22,42 +22,40 @@ namespace CocosSharp
             set { m_fAmplitudeRate = value; }
         }
 
-        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int waves, float amplitude,
-                                                bool horizontal, bool vertical)
+
+        #region Constructors
+
+        protected CCWaves()
         {
-            if (base.InitWithDuration(duration, gridSize))
-            {
-                m_nWaves = waves;
-                m_fAmplitude = amplitude;
-                m_fAmplitudeRate = 1.0f;
-                m_bHorizontal = horizontal;
-                m_bVertical = vertical;
-
-                return true;
-            }
-
-            return false;
         }
+
+        public CCWaves(float duration, CCGridSize gridSize, int waves, float amplitude, bool horizontal, bool vertical)
+            : base(duration, gridSize)
+        {
+            InitCCWaves(waves, amplitude, horizontal, vertical);
+        }
+
+        // Perform deep copy of CCWaves
+        public CCWaves(CCWaves waves) : base(waves)
+        {
+            InitCCWaves(waves.m_nWaves, waves.m_fAmplitude, waves.m_bHorizontal, waves.m_bVertical);
+        }
+
+        private void InitCCWaves(int waves, float amplitude, bool horizontal, bool vertical)
+        {
+            m_nWaves = waves;
+            m_fAmplitude = amplitude;
+            m_fAmplitudeRate = 1.0f;
+            m_bHorizontal = horizontal;
+            m_bVertical = vertical;
+        }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCWaves pCopy;
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                pCopy = (CCWaves) (pZone);
-            }
-            else
-            {
-                pCopy = new CCWaves();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nWaves, m_fAmplitude, m_bHorizontal, m_bVertical);
-
-            return pCopy;
+            return new CCWaves(this);
         }
 
         public override void Update(float time)
@@ -87,16 +85,6 @@ namespace CocosSharp
                     SetVertex(new CCGridSize(i, j), ref v);
                 }
             }
-        }
-
-        protected CCWaves()
-        {
-        }
-
-        public CCWaves(float duration, CCGridSize gridSize, int waves, float amplitude, bool horizontal, bool vertical)
-            : base(duration)
-        {
-            InitWithDuration(duration, gridSize, waves, amplitude, horizontal, vertical);
         }
     }
 }

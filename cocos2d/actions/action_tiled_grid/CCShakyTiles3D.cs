@@ -30,41 +30,39 @@ namespace CocosSharp
         protected bool m_bShakeZ;
         protected int m_nRandrange;
 
-        /// <summary>
-        ///  initializes the action with a range, whether or not to shake Z vertices, a grid size, and duration
-        /// </summary>
-        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int nRange, bool bShakeZ)
+
+        #region Constructors
+
+        public CCShakyTiles3D()
         {
-            if (base.InitWithDuration(duration, gridSize))
-            {
-                m_nRandrange = nRange;
-                m_bShakeZ = bShakeZ;
-
-                return true;
-            }
-
-            return false;
         }
+
+        /// <summary>
+        /// creates the action with a range, whether or not to shake Z vertices, a grid size, and duration
+        /// </summary>
+        public CCShakyTiles3D(float duration, CCGridSize gridSize, int nRange, bool bShakeZ) : base(duration, gridSize)
+        {
+            InitCCShakyTiles3D(nRange, bShakeZ);
+        }
+
+        // Perform deep copy of CCShakyTiles3D
+        public CCShakyTiles3D(CCShakyTiles3D shakyTiles) : base(shakyTiles)
+        {
+            InitCCShakyTiles3D(shakyTiles.m_nRandrange, shakyTiles.m_bShakeZ);
+        }
+
+        private void InitCCShakyTiles3D(int nRange, bool bShakeZ)
+        {
+            m_nRandrange = nRange;
+            m_bShakeZ = bShakeZ;
+        }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCShakyTiles3D pCopy;
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                pCopy = (CCShakyTiles3D) (pZone);
-            }
-            else
-            {
-                pCopy = new CCShakyTiles3D();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nRandrange, m_bShakeZ);
-
-            return pCopy;
+            return new CCShakyTiles3D(this);
         }
 
         public override void Update(float time)
@@ -99,18 +97,6 @@ namespace CocosSharp
                     SetTile(new CCGridSize(i, j), ref coords);
                 }
             }
-        }
-
-        public CCShakyTiles3D()
-        {
-        }
-
-        /// <summary>
-        /// creates the action with a range, whether or not to shake Z vertices, a grid size, and duration
-        /// </summary>
-        public CCShakyTiles3D(float duration, CCGridSize gridSize, int nRange, bool bShakeZ) : base(duration)
-        {
-            InitWithDuration(duration, gridSize, nRange, bShakeZ);
         }
     }
 }

@@ -10,37 +10,30 @@ namespace CocosSharp
             get { return m_pForcedTarget; }
         }
 
-        public CCTargetedAction(CCNode target, CCFiniteTimeAction pAction)
+
+        #region Constructors
+
+        public CCTargetedAction(CCNode target, CCFiniteTimeAction pAction) : base(pAction.Duration)
         {
-            InitWithTarget(target, pAction);
+            InitCCTargetedAction(target, pAction);
         }
 
         public CCTargetedAction(CCTargetedAction targetedAction) : base(targetedAction)
         {
-            InitWithTarget(targetedAction.m_pForcedTarget, (CCFiniteTimeAction) targetedAction.m_pAction.Copy());
+            InitCCTargetedAction(targetedAction.m_pForcedTarget, new CCFiniteTimeAction(targetedAction.m_pAction));
         }
 
-        protected bool InitWithTarget(CCNode target, CCFiniteTimeAction pAction)
+        private void InitCCTargetedAction(CCNode target, CCFiniteTimeAction pAction)
         {
-            if (base.InitWithDuration(pAction.Duration))
-            {
-                m_pForcedTarget = target;
-                m_pAction = pAction;
-                return true;
-            }
-            return false;
+            m_pForcedTarget = target;
+            m_pAction = pAction;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null) //in case of being called at sub class
-            {
-                var pRet = (CCTargetedAction) (pZone);
-                base.Copy(pZone);
-                // win32 : use the m_pOther's copy object.
-                pRet.InitWithTarget(m_pForcedTarget, (CCFiniteTimeAction) m_pAction.Copy());
-                return pRet;
-            }
             return new CCTargetedAction(this);
         }
 

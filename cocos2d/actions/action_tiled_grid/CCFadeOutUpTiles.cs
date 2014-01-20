@@ -33,6 +33,22 @@ namespace CocosSharp
     /// </summary>
     public class CCFadeOutUpTiles : CCFadeOutTRTiles
     {
+        #region Constructors
+
+        public CCFadeOutUpTiles()
+        {
+        }
+
+        /// <summary>
+        /// creates the action with the grid size and the duration 
+        /// </summary>
+        public CCFadeOutUpTiles(float duration, CCGridSize gridSize) : base(duration, gridSize)
+        {
+        }
+
+        #endregion Constructors
+
+
         public override float TestFunc(CCGridSize pos, float time)
         {
             float fy = m_sGridSize.Y * time;
@@ -56,18 +72,6 @@ namespace CocosSharp
             coords.TopRight.Y -= dy; // (step.Y / 2) * (1.0f - distance);
 
             SetTile(pos, ref coords);
-        }
-
-        public CCFadeOutUpTiles()
-        {
-        }
-
-        /// <summary>
-        /// creates the action with the grid size and the duration 
-        /// </summary>
-        public CCFadeOutUpTiles(float duration, CCGridSize gridSize) : base(duration)
-        {
-            InitWithDuration(duration, gridSize);
         }
     }
 }

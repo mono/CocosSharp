@@ -5,40 +5,42 @@ namespace CocosSharp
         protected float m_fFrom;
         protected float m_fTo;
 
+
+        #region Constructors
+
+        protected CCProgressFromTo()
+        {
+        }
+
+        /// <summary>
+        /// Creates and initializes the action with a duration, a "from" percentage and a "to" percentage
+        /// </summary>
+        public CCProgressFromTo(float duration, float fFromPercentage, float fToPercentage) : base(duration)
+        {
+            InitCCProgressFromTo(fFromPercentage, fToPercentage);
+        }
+
+        // Perform deep copy of CCProgressFromTo
+        public CCProgressFromTo(CCProgressFromTo progress) : base(progress)
+        {
+            InitCCProgressFromTo(progress.m_fFrom, progress.m_fTo);
+        }
+
         /// <summary>
         /// Initializes the action with a duration, a "from" percentage and a "to" percentage
         /// </summary>
-        protected virtual bool InitWithDuration(float duration, float fFromPercentage, float fToPercentage)
+        private void InitCCProgressFromTo(float fFromPercentage, float fToPercentage)
         {
-            // if (CCActionInterval::initWithDuration(duration))
-            if (InitWithDuration(duration))
-            {
-                m_fTo = fToPercentage;
-                m_fFrom = fFromPercentage;
-                return true;
-            }
-
-            return false;
+            m_fTo = fToPercentage;
+            m_fFrom = fFromPercentage;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCProgressFromTo pCopy;
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                pCopy = (CCProgressFromTo) (pZone);
-            }
-            else
-            {
-                pCopy = new CCProgressFromTo();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-            pCopy.InitWithDuration(m_fDuration, m_fFrom, m_fTo);
-
-            return pCopy;
+            return new CCProgressFromTo(this);
         }
 
         public override CCFiniteTimeAction Reverse()
@@ -55,18 +57,6 @@ namespace CocosSharp
         public override void Update(float time)
         {
             ((CCProgressTimer) (m_pTarget)).Percentage = m_fFrom + (m_fTo - m_fFrom) * time;
-        }
-
-        protected CCProgressFromTo()
-        {
-        }
-
-        /// <summary>
-        /// Creates and initializes the action with a duration, a "from" percentage and a "to" percentage
-        /// </summary>
-        public CCProgressFromTo(float duration, float fFromPercentage, float fToPercentage) : base(duration)
-        {
-            InitWithDuration(duration, fFromPercentage, fToPercentage);
         }
     }
 }

@@ -6,50 +6,45 @@ namespace CocosSharp
     {
         protected CCGridSize m_sGridSize;
 
+        public virtual CCGridBase Grid
+        {
+            set { }
+            get { return null; }
+        }
+
+
+        #region Constructors
+
         public CCGridAction()
         {
         }
 
-        public CCGridAction(float duration)
-            : base(duration)
+        public CCGridAction(float duration) : base(duration)
         {
         }
 
-        public CCGridAction(float duration, CCGridSize gridSize) : base(duration)
+        public CCGridAction(float duration, CCGridSize gridSize) : this(duration)
         {
-            InitWithDuration(duration, gridSize);
+            InitCCGridAction(gridSize);
         }
 
-        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize)
+        // Perform deep copy of CCGridAction
+        public CCGridAction(CCGridAction gridAction) : base(gridAction)
         {
-            if (base.InitWithDuration(duration))
-            {
-                m_sGridSize = gridSize;
-                return true;
-            }
-            return false;
+            InitCCGridAction(gridAction.m_sGridSize);
         }
 
-        public CCGridAction(CCGridAction gridAction) : this(gridAction.m_fDuration, gridAction.m_sGridSize)
+        private void InitCCGridAction(CCGridSize gridSize)
         {
+            m_sGridSize = gridSize; 
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = (CCGridAction) (pZone);
-                base.Copy(pZone);
-
-                pCopy.InitWithDuration(m_fDuration, m_sGridSize);
-
-                return pCopy;
-            }
-            else
-            {
-                return new CCGridAction(this);
-            }
+            return new CCGridAction(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)
@@ -90,12 +85,6 @@ namespace CocosSharp
         public override CCFiniteTimeAction Reverse()
         {
             return new CCReverseTime(this);
-        }
-
-        public virtual CCGridBase Grid
-        {
-            set { }
-            get { return null; }
         }
     }
 }

@@ -5,56 +5,42 @@ namespace CocosSharp
 {
     public class CCFlipX3D : CCGrid3DAction
     {
+        #region Constructors
+
         public CCFlipX3D()
         {
         }
 
-        public CCFlipX3D(float duration)
+        public CCFlipX3D(float duration, CCGridSize gridSize) : base(duration, gridSize)
         {
-            InitWithDuration(duration, new CCGridSize(1, 1));
+            InitWithDuration(duration, gridSize);
         }
 
-        public CCFlipX3D(CCFlipX3D flipX3D)
+        public CCFlipX3D(float duration) : this(duration, new CCGridSize(1, 1))
+        {
+        }
+
+        // Perform a deep copy of CCFlipX3D
+        public CCFlipX3D(CCFlipX3D flipX3D) : base(flipX3D)
         {
             InitWithDuration(flipX3D.m_fDuration, flipX3D.m_sGridSize);
         }
 
-        /// <summary>
-        /// initializes the action with duration
-        /// </summary>
-        public new bool InitWithDuration(float duration)
-        {
-            return InitWithDuration(duration, new CCGridSize(1, 1));
-        }
-
-        protected override bool InitWithDuration(float duration, CCGridSize gridSize)
+        private void InitWithDuration(float duration, CCGridSize gridSize)
         {
             if (gridSize.X != 1 || gridSize.Y != 1)
             {
                 // Grid size must be (1,1)
                 Debug.Assert(false);
-                return false;
             }
-
-            return base.InitWithDuration(duration, gridSize);
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = (CCFlipX3D) (pZone);
-                base.Copy(pZone);
-
-                pCopy.InitWithDuration(m_fDuration, m_sGridSize);
-
-                return pCopy;
-            }
-            else
-            {
-                return new CCFlipX3D(this);
-            }
+            return new CCFlipX3D(this);
         }
 
         public override void Update(float time)

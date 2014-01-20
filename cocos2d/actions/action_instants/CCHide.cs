@@ -2,6 +2,8 @@
 {
     public class CCHide : CCActionInstant
     {
+        #region Constructors
+
         public CCHide()
         {
         }
@@ -9,6 +11,9 @@
         protected CCHide(CCHide hide) : base(hide)
         {
         }
+
+        #endregion Constructors
+
 
         protected internal override void StartWithTarget(CCNode target)
         {
@@ -23,12 +28,6 @@
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                var pRet = (CCHide) (pZone);
-                base.Copy(pZone);
-                return pRet;
-            }
             return new CCHide(this);
         }
     }

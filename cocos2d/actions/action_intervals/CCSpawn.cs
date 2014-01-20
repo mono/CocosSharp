@@ -8,9 +8,12 @@ namespace CocosSharp
         protected CCFiniteTimeAction m_pOne;
         protected CCFiniteTimeAction m_pTwo;
 
-        protected CCSpawn(CCFiniteTimeAction action1, CCFiniteTimeAction action2)
+
+        #region Constructors
+
+        protected CCSpawn(CCFiniteTimeAction action1, CCFiniteTimeAction action2) : base(Math.Max(action1.Duration, action2.Duration))
         {
-            InitOneTwo(action1, action2);
+            InitCCSpawn(action1, action2);
         }
 
         public CCSpawn(params CCFiniteTimeAction[] actions)
@@ -19,7 +22,7 @@ namespace CocosSharp
 
             if (actions.Length == 1)
             {
-                InitOneTwo(prev, new CCExtraAction());
+                InitCCSpawn(prev, new CCExtraAction());
             }
             else
             {
@@ -28,74 +31,45 @@ namespace CocosSharp
                     prev = new CCSpawn(prev, actions[i]);
                 }
 
-                InitOneTwo(prev, actions[actions.Length - 1]);
+                InitCCSpawn(prev, actions[actions.Length - 1]);
             }
         }
 
         protected CCSpawn(CCSpawn spawn) : base(spawn)
         {
-            var param1 = spawn.m_pOne.Copy() as CCFiniteTimeAction;
-            var param2 = spawn.m_pTwo.Copy() as CCFiniteTimeAction;
+            CCFiniteTimeAction param1 = new CCFiniteTimeAction(spawn.m_pOne);
+            CCFiniteTimeAction param2 = new CCFiniteTimeAction(spawn.m_pTwo);
 
-            InitOneTwo(param1, param2);
+            InitCCSpawn(param1, param2);
         }
 
-        protected bool InitOneTwo(CCFiniteTimeAction action1, CCFiniteTimeAction action2)
+        private void InitCCSpawn(CCFiniteTimeAction action1, CCFiniteTimeAction action2)
         {
             Debug.Assert(action1 != null);
             Debug.Assert(action2 != null);
 
-            bool bRet = false;
-
             float d1 = action1.Duration;
             float d2 = action2.Duration;
 
-            if (base.InitWithDuration(Math.Max(d1, d2)))
+            m_pOne = action1;
+            m_pTwo = action2;
+
+            if (d1 > d2)
             {
-                m_pOne = action1;
-                m_pTwo = action2;
-
-                if (d1 > d2)
-                {
-                    m_pTwo = new CCSequence(action2, new CCDelayTime(d1 - d2));
-                }
-                else if (d1 < d2)
-                {
-                    m_pOne = new CCSequence(action1, new CCDelayTime(d2 - d1));
-                }
-
-                bRet = true;
+                m_pTwo = new CCSequence(action2, new CCDelayTime(d1 - d2));
             }
-
-            return bRet;
+            else if (d1 < d2)
+            {
+                m_pOne = new CCSequence(action1, new CCDelayTime(d2 - d1));
+            }
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = zone as CCSpawn;
-                if (ret == null)
-                {
-                    return null;
-                }
-                base.Copy(zone);
-
-                var param1 = m_pOne.Copy() as CCFiniteTimeAction;
-                var param2 = m_pTwo.Copy() as CCFiniteTimeAction;
-                if (param1 == null || param2 == null)
-                {
-                    return null;
-                }
-
-                ret.InitOneTwo(param1, param2);
-
-                return ret;
-            }
-            else
-            {
-                return new CCSpawn(this);
-            }
+            return new CCSpawn(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)

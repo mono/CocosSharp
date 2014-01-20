@@ -20,37 +20,37 @@ namespace CocosSharp
             set { m_fAmplitudeRate = value; }
         }
 
-        public bool InitWithWaves(float duration, CCGridSize gridSize, int waves, float amplitude)
+
+        #region Constructors
+
+        protected CCWaves3D()
         {
-            if (InitWithDuration(duration, gridSize))
-            {
-                m_nWaves = waves;
-                m_fAmplitude = amplitude;
-                m_fAmplitudeRate = 1.0f;
-                return true;
-            }
-            return false;
         }
+
+        public CCWaves3D(float duration, CCGridSize gridSize, int waves, float amplitude) : base(duration, gridSize)
+        {
+            InitWaves3D(waves, amplitude);
+        }
+
+        // Perform deep copy of CCWaves3D
+        public CCWaves3D(CCWaves3D waves3d) : base(waves3d)
+        {
+            InitWaves3D(waves3d.m_nWaves, waves3d.m_fAmplitude);
+        }
+
+        private void InitWaves3D(int waves, float amplitude)
+        {
+            m_nWaves = waves;
+            m_fAmplitude = amplitude;
+            m_fAmplitudeRate = 1.0f;
+        }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCWaves3D pCopy;
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                pCopy = (CCWaves3D) (pZone);
-            }
-            else
-            {
-                pCopy = new CCWaves3D();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-
-            pCopy.InitWithWaves(m_fDuration, m_sGridSize, m_nWaves, m_fAmplitude);
-
-            return pCopy;
+            return new CCWaves3D(this);
         }
 
         public override void Update(float time)
@@ -66,15 +66,6 @@ namespace CocosSharp
                     SetVertex(new CCGridSize(i, j), ref v);
                 }
             }
-        }
-
-        protected CCWaves3D()
-        {
-        }
-
-        public CCWaves3D(float duration, CCGridSize gridSize, int waves, float amplitude) : base(duration)
-        {
-            InitWithWaves(duration, gridSize, waves, amplitude);
         }
     }
 }

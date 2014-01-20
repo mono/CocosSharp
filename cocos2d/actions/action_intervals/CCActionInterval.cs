@@ -30,6 +30,19 @@ namespace CocosSharp
         protected bool m_bFirstTick;
         protected float m_elapsed;
 
+        public float Elapsed
+        {
+            get { return m_elapsed; }
+        }
+
+        public override bool IsDone
+        {
+            get { return m_elapsed >= m_fDuration; }
+        }
+
+
+        #region Constructors
+
         protected CCActionInterval()
         {
         }
@@ -39,17 +52,15 @@ namespace CocosSharp
             InitWithDuration(d);
         }
 
-        protected CCActionInterval(CCActionInterval actionInterval) : base(actionInterval)
+        // Perform a deep copy of CCACtionInterval
+        protected internal CCActionInterval(CCActionInterval actionInterval) : base(actionInterval)
         {
             InitWithDuration(actionInterval.m_fDuration);
         }
 
-        public float Elapsed
-        {
-            get { return m_elapsed; }
-        }
-
-        protected bool InitWithDuration(float d)
+        // Used by CCSequence and CCParallel
+        // In general though, subclasses should aim to call the base constructor, rather than this explicitly
+        protected void InitWithDuration(float d)
         {
             m_fDuration = d;
 
@@ -63,29 +74,14 @@ namespace CocosSharp
 
             m_elapsed = 0;
             m_bFirstTick = true;
-
-            return true;
         }
 
-        public override bool IsDone
-        {
-            get { return m_elapsed >= m_fDuration; }
-        }
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = (CCActionInterval) (zone);
-                base.Copy(zone);
-
-                ret.InitWithDuration(m_fDuration);
-                return ret;
-            }
-            else
-            {
-                return new CCActionInterval(this);
-            }
+            return new CCActionInterval(this);
         }
 
         public override void Step(float dt)

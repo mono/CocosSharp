@@ -5,47 +5,31 @@ namespace CocosSharp
         protected CCColor3B m_from;
         protected CCColor3B m_to;
 
-        public CCTintTo(float duration, byte red, byte green, byte blue)
+
+        #region Constructors
+
+        public CCTintTo(float duration, byte red, byte green, byte blue) : base(duration)
         {
-            InitWithDuration(duration, red, green, blue);
+            InitCCTintTo(red, green, blue);
         }
 
+        // Perform deep copy of CCTintTo
         protected CCTintTo(CCTintTo tintTo) : base(tintTo)
         {
-            InitWithDuration(tintTo.m_fDuration, tintTo.m_to.R, tintTo.m_to.G, tintTo.m_to.B);
+            InitCCTintTo(tintTo.m_to.R, tintTo.m_to.G, tintTo.m_to.B);
         }
 
-        public bool InitWithDuration(float duration, byte red, byte green, byte blue)
+        private void InitCCTintTo(byte red, byte green, byte blue)
         {
-            if (base.InitWithDuration(duration))
-            {
-                m_to = new CCColor3B(red, green, blue);
-                return true;
-            }
-
-            return false;
+            m_to = new CCColor3B(red, green, blue);
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null && zone != null)
-            {
-                var ret = zone as CCTintTo;
-                if (ret == null)
-                {
-                    return null;
-                }
-
-                base.Copy(zone);
-
-                ret.InitWithDuration(m_fDuration, m_to.R, m_to.G, m_to.B);
-
-                return ret;
-            }
-            else
-            {
-                return new CCTintTo(this);
-            }
+            return new CCTintTo(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)

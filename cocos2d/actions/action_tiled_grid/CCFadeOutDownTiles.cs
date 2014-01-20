@@ -33,16 +33,7 @@ namespace CocosSharp
     /// </summary>
     public class CCFadeOutDownTiles : CCFadeOutUpTiles
     {
-        public override float TestFunc(CCGridSize pos, float time)
-        {
-            var n = new CCPoint((m_sGridSize.X * (1.0f - time)), (m_sGridSize.Y * (1.0f - time)));
-            if (pos.Y == 0)
-            {
-                return 1.0f;
-            }
-
-            return (float) Math.Pow(n.Y / pos.Y, 6);
-        }
+        #region Constructors
 
         public CCFadeOutDownTiles()
         {
@@ -53,7 +44,20 @@ namespace CocosSharp
         /// </summary>
         public CCFadeOutDownTiles(float duration, CCGridSize gridSize) : base(duration, gridSize)
         {
-            InitWithDuration(duration, gridSize);
+        }
+
+        #endregion Constructors
+
+
+        public override float TestFunc(CCGridSize pos, float time)
+        {
+            var n = new CCPoint((m_sGridSize.X * (1.0f - time)), (m_sGridSize.Y * (1.0f - time)));
+            if (pos.Y == 0)
+            {
+                return 1.0f;
+            }
+
+            return (float) Math.Pow(n.Y / pos.Y, 6);
         }
     }
 }

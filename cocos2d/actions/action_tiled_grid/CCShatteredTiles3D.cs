@@ -34,42 +34,43 @@ namespace CocosSharp
         protected bool m_bShatterZ;
         protected int m_nRandrange;
 
+
+        #region Constructors
+
+        public CCShatteredTiles3D()
+        {
+        }
+
+        /// <summary>
+        /// creates the action with a range, whether of not to shatter Z vertices, a grid size and duration
+        /// </summary>
+        public CCShatteredTiles3D(float duration, CCGridSize gridSize, int nRange, bool bShatterZ) : base(duration, gridSize)
+        {
+            InitCCShatteredTiles3D(nRange, bShatterZ);
+        }
+
+        // Perform deep copy of CCShatteredTiles3D
+        public CCShatteredTiles3D(CCShatteredTiles3D shatteredTiles) : base(shatteredTiles)
+        {
+            InitCCShatteredTiles3D(shatteredTiles.m_nRandrange, shatteredTiles.m_bShatterZ);
+        }
+
         /// <summary>
         /// initializes the action with a range, whether or not to shatter Z vertices, a grid size and duration
         /// </summary>
-        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int nRange, bool bShatterZ)
+        private void InitCCShatteredTiles3D(int nRange, bool bShatterZ)
         {
-            if (base.InitWithDuration(duration, gridSize))
-            {
-                m_bOnce = false;
-                m_nRandrange = nRange;
-                m_bShatterZ = bShatterZ;
-
-                return true;
-            }
-
-            return false;
+            m_bOnce = false;
+            m_nRandrange = nRange;
+            m_bShatterZ = bShatterZ;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCShatteredTiles3D pCopy;
-            if (pZone != null)
-            {
-                pCopy = (CCShatteredTiles3D) (pZone);
-            }
-            else
-            {
-                pCopy = new CCShatteredTiles3D();
-                pZone = (pCopy);
-            }
-
-            //copy super class's member
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nRandrange, m_bShatterZ);
-
-            return pCopy;
+            return new CCShatteredTiles3D(this);
         }
 
         public override void Update(float time)
@@ -110,18 +111,6 @@ namespace CocosSharp
 
                 m_bOnce = true;
             }
-        }
-
-        public CCShatteredTiles3D()
-        {
-        }
-
-        /// <summary>
-        /// creates the action with a range, whether of not to shatter Z vertices, a grid size and duration
-        /// </summary>
-        public CCShatteredTiles3D(float duration, CCGridSize gridSize, int nRange, bool bShatterZ) : base(duration)
-        {
-            InitWithDuration(duration, gridSize, nRange, bShatterZ);
         }
     }
 }

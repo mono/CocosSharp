@@ -4,11 +4,20 @@
     {
         protected int m_nTimes;
 
-        protected virtual bool InitWithTimes(int times)
+
+        #region Constructors
+
+        public CCReuseGrid()
+        {
+        }
+
+        public CCReuseGrid(int times)
         {
             m_nTimes = times;
-            return true;
         }
+
+        #endregion Constructors
+
 
         protected internal override void StartWithTarget(CCNode target)
         {
@@ -18,15 +27,6 @@
             {
                 m_pTarget.Grid.ReuseGrid += m_nTimes;
             }
-        }
-
-        public CCReuseGrid()
-        {
-        }
-
-        public CCReuseGrid(int times)
-        {
-            InitWithTimes(times);
         }
     }
 }

@@ -4,6 +4,9 @@
     {
         private bool m_bFlipY;
 
+
+        #region Constructors
+
         public CCFlipY()
         {
         }
@@ -24,6 +27,9 @@
             InitWithFlipY(m_bFlipY);
         }
 
+        #endregion Constructors
+
+
         protected internal override void StartWithTarget(CCNode target)
         {
             base.StartWithTarget(target);
@@ -37,13 +43,6 @@
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                var pRet = (CCFlipY) (pZone);
-                base.Copy(pZone);
-                pRet.InitWithFlipY(m_bFlipY);
-                return pRet;
-            }
             return new CCFlipY(this);
         }
     }

@@ -12,22 +12,27 @@ namespace CocosSharp
             set { m_EaseFunc = value; }
         }
 
-        public CCEaseCustom(CCActionInterval pAction, Func<float, float> easeFunc)
+
+        #region Constructors
+
+        public CCEaseCustom(CCActionInterval pAction, Func<float, float> easeFunc) : base(pAction)
         {
             InitWithAction(pAction, easeFunc);
         }
 
-        protected CCEaseCustom(CCEaseCustom easeCustom)
-            : base(easeCustom)
+        // Perform a deep copy of CCEaseCustom
+        protected CCEaseCustom(CCEaseCustom easeCustom) : base(easeCustom)
         {
             InitWithAction((CCActionInterval) easeCustom.InnerAction.Copy(), easeCustom.EaseFunc);
         }
 
         public void InitWithAction(CCActionInterval action, Func<float, float> easeFunc)
         {
-            base.InitWithAction(action);
             m_EaseFunc = easeFunc;
         }
+
+        #endregion Constructors
+
 
         public override void Update(float time)
         {
@@ -41,15 +46,6 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = pZone as CCEaseCustom;
-                base.Copy(pCopy);
-                pCopy.InitWithAction((CCActionInterval) m_pInner.Copy(), m_EaseFunc);
-
-                return pCopy;
-            }
             return new CCEaseCustom(this);
         }
     }

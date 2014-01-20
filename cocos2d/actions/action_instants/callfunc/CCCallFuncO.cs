@@ -7,6 +7,15 @@ namespace CocosSharp
         private Action<object> m_pCallFuncO;
         private object m_pObject;
 
+        public object Object
+        {
+            get { return m_pObject; }
+            set { m_pObject = value; }
+        }
+
+
+        #region Constructors
+
         public CCCallFuncO()
         {
             m_pObject = null;
@@ -15,36 +24,26 @@ namespace CocosSharp
 
         public CCCallFuncO(Action<object> selector, object pObject) : this()
         {
-            InitWithTarget(selector, pObject);
+            InitCCCallFuncO(selector, pObject);
         }
 
         protected CCCallFuncO(CCCallFuncO callFuncO) : base(callFuncO)
         {
-            InitWithTarget(callFuncO.m_pCallFuncO, callFuncO.m_pObject);
+            InitCCCallFuncO(callFuncO.m_pCallFuncO, callFuncO.m_pObject);
         }
 
-        public bool InitWithTarget(Action<object> selector, object pObject)
+        private void InitCCCallFuncO(Action<object> selector, object pObject)
         {
             m_pObject = pObject;
             m_pCallFuncO = selector;
-            return true;
         }
 
-        // super methods
+        #endregion Constructors
+
+
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                //in case of being called at sub class
-                var pRet = (CCCallFuncO) (zone);
-                base.Copy(zone);
-                pRet.InitWithTarget(m_pCallFuncO, m_pObject);
-                return pRet;
-            }
-            else
-            {
-                return new CCCallFuncO(this);
-            }
+            return new CCCallFuncO(this);
         }
 
         public override void Execute()
@@ -58,12 +57,6 @@ namespace CocosSharp
             //    CCScriptEngineManager::sharedScriptEngineManager()->getScriptEngine()->executeCallFunc0(
             //            m_scriptFuncName.c_str(), m_pObject);
             //}
-        }
-
-        public object Object
-        {
-            get { return m_pObject; }
-            set { m_pObject = value; }
         }
     }
 }

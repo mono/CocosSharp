@@ -6,19 +6,41 @@ namespace CocosSharp
     {
         private CCTiledGrid3D m_pGrid;
 
+        public override CCGridBase Grid
+        {
+            get
+            {
+                m_pGrid = new CCTiledGrid3D(m_sGridSize);
+                return m_pGrid;
+            }
+            set
+            {
+                Debug.Assert(value is CCTiledGrid3D);
+                m_pGrid = (CCTiledGrid3D) value;
+            }
+        }
+
+
+        #region Constructors
+
         public CCTiledGrid3DAction()
         {
         }
 
-        public CCTiledGrid3DAction(float duration)
-            : base(duration)
+        public CCTiledGrid3DAction(float duration) : base(duration)
         {
         }
 
-        public CCTiledGrid3DAction(float duration, CCGridSize gridSize)
-            : base(duration, gridSize)
+        public CCTiledGrid3DAction(float duration, CCGridSize gridSize) : base(duration, gridSize)
         {
         }
+
+        public CCTiledGrid3DAction(CCTiledGrid3DAction gridAction) : base(gridAction)
+        {
+        }
+
+        #endregion Constructors
+
 
         public CCQuad3 Tile(CCGridSize pos)
         {
@@ -33,20 +55,6 @@ namespace CocosSharp
         public void SetTile(CCGridSize pos, ref CCQuad3 coords)
         {
             m_pGrid.SetTile(pos, ref coords);
-        }
-
-        public override CCGridBase Grid
-        {
-            get
-            {
-                m_pGrid = new CCTiledGrid3D(m_sGridSize);
-                return m_pGrid;
-            }
-            set
-            {
-                Debug.Assert(value is CCTiledGrid3D);
-                m_pGrid = (CCTiledGrid3D) value;
-            }
         }
     }
 }

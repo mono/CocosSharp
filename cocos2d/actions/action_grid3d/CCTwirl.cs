@@ -33,41 +33,38 @@ namespace CocosSharp
             set { m_fAmplitudeRate = value; }
         }
 
-        protected virtual bool initWithDuration(float duration, CCGridSize gridSize, CCPoint position, int twirls,
-                                                float amplitude)
+
+        #region Constructors
+
+        protected CCTwirl()
         {
-            if (base.InitWithDuration(duration, gridSize))
-            {
-                m_positionInPixels = new CCPoint();
-                Position = position;
-                m_nTwirls = twirls;
-                m_fAmplitude = amplitude;
-                m_fAmplitudeRate = 1.0f;
-
-                return true;
-            }
-
-            return false;
         }
+
+        public CCTwirl(float duration, CCGridSize gridSize, CCPoint position, int twirls, float amplitude) : base(duration, gridSize)
+        {
+            InitCCTwirl(position, twirls, amplitude);
+        }
+
+        public CCTwirl(CCTwirl twirl) : base(twirl)
+        {
+            InitCCTwirl(twirl.Position, twirl.m_nTwirls, twirl.m_fAmplitude);
+        }
+
+        private void InitCCTwirl(CCPoint position, int twirls, float amplitude)
+        {  
+            m_positionInPixels = new CCPoint();
+            Position = position;
+            m_nTwirls = twirls;
+            m_fAmplitude = amplitude;
+            m_fAmplitudeRate = 1.0f;
+        }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCTwirl pCopy;
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                pCopy = (CCTwirl) (pZone);
-            }
-            else
-            {
-                pCopy = new CCTwirl();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-
-            pCopy.initWithDuration(m_fDuration, m_sGridSize, m_position, m_nTwirls, m_fAmplitude);
-            return pCopy;
+            return new CCTwirl(this);
         }
 
         public override void Update(float time)
@@ -97,16 +94,6 @@ namespace CocosSharp
                     SetVertex(new CCGridSize(i, j), ref v);
                 }
             }
-        }
-
-        protected CCTwirl()
-        {
-        }
-
-        public CCTwirl(float duration, CCGridSize gridSize, CCPoint position, int twirls, float amplitude)
-            : base(duration)
-        {
-            initWithDuration(duration, gridSize, position, twirls, amplitude);
         }
     }
 }

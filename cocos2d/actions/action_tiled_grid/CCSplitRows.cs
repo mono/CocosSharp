@@ -30,34 +30,41 @@ namespace CocosSharp
         protected int m_nRows;
         protected CCSize m_winSize;
 
+
+        #region Constructors
+
+        public CCSplitRows()
+        {
+        }
+
+        /// <summary>
+        ///  creates the action with the number of rows to split and the duration 
+        /// </summary>
+        public CCSplitRows(float duration, int nRows) : base(duration, new CCGridSize(1, nRows))
+        {
+            InitCCSplitRows(nRows);
+        }
+
+        // Perform deep copy of CCSplitRows
+        public CCSplitRows(CCSplitRows splitRows) : base(splitRows)
+        {
+            InitCCSplitRows(splitRows.m_nRows);
+        }
+
         /// <summary>
         /// initializes the action with the number of rows to split and the duration
         /// </summary>
-        protected virtual bool InitWithDuration(float duration, int nRows)
+        private void InitCCSplitRows(int nRows)
         {
             m_nRows = nRows;
-
-            return base.InitWithDuration(duration, new CCGridSize(1, nRows));
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCSplitRows pCopy;
-            if (pZone != null)
-            {
-                pCopy = (CCSplitRows) (pZone);
-            }
-            else
-            {
-                pCopy = new CCSplitRows();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_nRows);
-
-            return pCopy;
+            return new CCSplitRows(this);
         }
 
         public override void Update(float time)
@@ -87,18 +94,6 @@ namespace CocosSharp
         {
             base.StartWithTarget(target);
             m_winSize = CCDirector.SharedDirector.WinSizeInPixels;
-        }
-
-        public CCSplitRows()
-        {
-        }
-
-        /// <summary>
-        ///  creates the action with the number of rows to split and the duration 
-        /// </summary>
-        public CCSplitRows(float duration, int nRows) : base(duration)
-        {
-            InitWithDuration(duration, nRows);
         }
     }
 }

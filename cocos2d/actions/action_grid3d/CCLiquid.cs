@@ -8,20 +8,6 @@ namespace CocosSharp
         protected float m_fAmplitudeRate;
         protected int m_nWaves;
 
-        public CCLiquid()
-        {
-        }
-
-        public CCLiquid(float duration, CCGridSize gridSize, int waves, float amplitude)
-        {
-            InitWithDuratuon(duration, gridSize, waves, amplitude);
-        }
-
-        public CCLiquid(CCLiquid liquid)
-        {
-            InitWithDuratuon(liquid.m_fDuration, liquid.m_sGridSize, liquid.m_nWaves, liquid.m_fAmplitude);
-        }
-
         public float Amplitude
         {
             get { return m_fAmplitude; }
@@ -35,35 +21,36 @@ namespace CocosSharp
         }
 
 
-        public bool InitWithDuratuon(float duration, CCGridSize gridSize, int waves, float amplitude)
-        {
-            if (InitWithDuration(duration, gridSize))
-            {
-                m_nWaves = waves;
-                m_fAmplitude = amplitude;
-                m_fAmplitudeRate = 1.0f;
+        #region Constructors
 
-                return true;
-            }
-            return false;
+        public CCLiquid()
+        {
         }
+
+        public CCLiquid(float duration, CCGridSize gridSize, int waves, float amplitude) : base(duration, gridSize)
+        {
+            InitCCLiquid(waves, amplitude);
+        }
+
+        // Perform deep copy of CCLiquid
+        public CCLiquid(CCLiquid liquid)
+        {
+            InitCCLiquid(liquid.m_nWaves, liquid.m_fAmplitude);
+        }
+
+        private void InitCCLiquid(int waves, float amplitude)
+        {
+            m_nWaves = waves;
+            m_fAmplitude = amplitude;
+            m_fAmplitudeRate = 1.0f;
+        }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = (CCLiquid) (pZone);
-                base.Copy(pZone);
-
-                pCopy.InitWithDuratuon(m_fDuration, m_sGridSize, m_nWaves, m_fAmplitude);
-
-                return pCopy;
-            }
-            else
-            {
-                return new CCLiquid(this);
-            }
+            return new CCLiquid(this);
         }
 
         public override void Update(float time)

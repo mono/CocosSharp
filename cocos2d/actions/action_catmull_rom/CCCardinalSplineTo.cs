@@ -19,42 +19,34 @@ namespace CocosSharp
             set { m_pPoints = value; }
         }
 
-        public CCCardinalSplineTo(float duration, List<CCPoint> points, float tension)
+
+        #region Constructors
+
+        public CCCardinalSplineTo(float duration, List<CCPoint> points, float tension) : base(duration)
         {
-            InitWithDuration(duration, points, tension);
+            Init(points, tension);
         }
 
+        // Perform a deep copy of CCACtionInterval
         protected CCCardinalSplineTo(CCCardinalSplineTo cardinalSplineTo) : base(cardinalSplineTo)
         {
-            InitWithDuration(cardinalSplineTo.m_fDuration, cardinalSplineTo.m_pPoints, cardinalSplineTo.m_fTension);
+            Init(cardinalSplineTo.m_pPoints, cardinalSplineTo.m_fTension);
         }
 
-        public bool InitWithDuration(float duration, List<CCPoint> points, float tension)
+        private void Init(List<CCPoint> points, float tension)
         {
             Debug.Assert(points.Count > 0, "Invalid configuration. It must at least have one control point");
 
-            if (base.InitWithDuration(duration))
-            {
-                Points = points;
-                m_fTension = tension;
-
-                return true;
-            }
-
-            return false;
+            Points = points;
+            m_fTension = tension;
         }
 
+        #endregion Constructors
+
+
+        // This should be changed to DeepCopy()
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null) //in case of being called at sub class
-            {
-                var pRet = (CCCardinalSplineTo) (pZone);
-                base.Copy(pZone);
-
-                pRet.InitWithDuration(Duration, m_pPoints, m_fTension);
-
-                return pRet;
-            }
             return new CCCardinalSplineTo(this);
         }
 
@@ -128,10 +120,15 @@ namespace CocosSharp
     {
         protected CCPoint m_startPosition;
 
+
+        #region Constructors
+
         public CCCardinalSplineBy(float duration, List<CCPoint> points, float tension) : base(duration, points, tension)
         {
-            InitWithDuration(duration, points, tension);
         }
+
+        #endregion Constructors
+
 
         protected internal override void StartWithTarget(CCNode target)
         {
@@ -192,16 +189,6 @@ namespace CocosSharp
     {
         public CCCatmullRomTo(float dt, List<CCPoint> points) : base(dt, points, 0.5f)
         {
-            InitWithDuration(dt, points);
-        }
-
-        public bool InitWithDuration(float dt, List<CCPoint> points)
-        {
-            if (base.InitWithDuration(dt, points, 0.5f))
-            {
-                return true;
-            }
-            return false;
         }
     }
 
@@ -209,17 +196,6 @@ namespace CocosSharp
     {
         public CCCatmullRomBy(float dt, List<CCPoint> points) : base(dt, points, 0.5f)
         {
-            InitWithDuration(dt, points);
-        }
-
-        public bool InitWithDuration(float dt, List<CCPoint> points)
-        {
-            if (base.InitWithDuration(dt, points, 0.5f))
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

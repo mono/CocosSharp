@@ -14,8 +14,10 @@ namespace CocosSharp
         protected float m_fUpYOrig;
         protected float m_fUpZOrig;
 
-        protected CCActionCamera(float duration)
-            : base(duration)
+
+        #region Constructors
+
+        protected CCActionCamera(float duration) : base(duration)
         {
         }
 
@@ -48,6 +50,9 @@ namespace CocosSharp
             m_fUpYOrig = 0;
             m_fUpZOrig = 0;
         }
+
+        #endregion Constructors
+
 
         protected internal override void StartWithTarget(CCNode target)
         {

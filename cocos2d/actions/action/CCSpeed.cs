@@ -7,47 +7,45 @@ namespace CocosSharp
         protected float m_fSpeed;
         protected CCActionInterval m_pInnerAction;
 
+        public float Speed
+        {
+            get { return m_fSpeed; }
+            set { m_fSpeed = value; }
+        }
+
+        public override bool IsDone
+        {
+            get { return m_pInnerAction.IsDone; }
+        }
+
+
+        #region Constructors
+
         public CCSpeed(CCActionInterval action, float fRate)
         {
-            InitWithAction(action, fRate);
+            InitCCSpeed(action, fRate);
         }
 
+        // Perform deep copy of CCSpeed
         protected CCSpeed(CCSpeed speed) : base(speed)
         {
-            InitWithAction((CCActionInterval) speed.m_pInnerAction.Copy(), speed.m_fSpeed);
+            InitCCSpeed((CCActionInterval) speed.m_pInnerAction.Copy(), speed.m_fSpeed);
         }
 
-        protected bool InitWithAction(CCActionInterval action, float fRate)
+        private void InitCCSpeed(CCActionInterval action, float fRate)
         {
             Debug.Assert(action != null);
 
             m_pInnerAction = action;
             m_fSpeed = fRate;
-
-            return true;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = (CCSpeed) zone;
-                base.Copy(zone);
-
-                ret.InitWithAction((CCActionInterval) m_pInnerAction.Copy(), m_fSpeed);
-
-                return ret;
-            }
-            else
-            {
-                return new CCSpeed(this);
-            }
-        }
-
-        public float Speed
-        {
-            get { return m_fSpeed; }
-            set { m_fSpeed = value; }
+            return new CCSpeed(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)
@@ -65,11 +63,6 @@ namespace CocosSharp
         public override void Step(float dt)
         {
             m_pInnerAction.Step(dt * m_fSpeed);
-        }
-
-        public override bool IsDone
-        {
-            get { return m_pInnerAction.IsDone; }
         }
 
         public virtual CCActionInterval Reverse()

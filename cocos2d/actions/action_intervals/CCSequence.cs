@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Linq;
 
 namespace CocosSharp
 {
@@ -8,54 +9,6 @@ namespace CocosSharp
         protected CCFiniteTimeAction[] m_pActions = new CCFiniteTimeAction[2];
         protected float m_split;
         private bool _HasInfiniteAction = false;
-
-        public CCSequence(CCFiniteTimeAction action1, CCFiniteTimeAction action2)
-        {
-            InitOneTwo(action1, action2);
-        }
-
-        public CCSequence(params CCFiniteTimeAction[] actions)
-        {
-            CCFiniteTimeAction prev = actions[0];
-
-            if (actions.Length == 1)
-            {
-                InitOneTwo(prev, new CCExtraAction());
-            }
-            else
-            {
-                for (int i = 1; i < actions.Length - 1; i++)
-                {
-                    prev = new CCSequence(prev, actions[i]);
-                }
-
-                InitOneTwo(prev, actions[actions.Length - 1]);
-            }
-        }
-
-        protected CCSequence(CCSequence sequence) : base(sequence)
-        {
-            var param1 = sequence.m_pActions[0].Copy() as CCFiniteTimeAction;
-            var param2 = sequence.m_pActions[1].Copy() as CCFiniteTimeAction;
-
-            InitOneTwo(param1, param2);
-        }
-
-        protected bool InitOneTwo(CCFiniteTimeAction actionOne, CCFiniteTimeAction actionTwo)
-        {
-            Debug.Assert(actionOne != null);
-            Debug.Assert(actionTwo != null);
-
-            float d = actionOne.Duration + actionTwo.Duration;
-            base.InitWithDuration(d);
-
-            m_pActions[0] = actionOne;
-            m_pActions[1] = actionTwo;
-
-            _HasInfiniteAction = (actionOne is CCRepeatForever) || (actionTwo is CCRepeatForever);
-
-            return true;
-        }
 
         public override bool IsDone
         {
@@ -69,36 +22,63 @@ namespace CocosSharp
             }
         }
 
-        public override object Copy(ICCCopyable zone)
+
+        #region Constructors
+
+        public CCSequence(CCFiniteTimeAction action1, CCFiniteTimeAction action2) : base(action1.Duration + action2.Duration)
         {
-            ICCCopyable tmpZone = zone;
-            CCSequence ret;
+            InitCCSequence(action1, action2);
+        }
 
-            if (tmpZone != null && tmpZone != null)
+        public CCSequence(params CCFiniteTimeAction[] actions) : base()
+        {
+            CCFiniteTimeAction prev = actions[0];
+
+            // Can't call base(duration) because we need to calculate duration here
+            float combinedDuration = actions.Sum(action => action.Duration);
+            base.InitWithDuration(combinedDuration);
+
+            if (actions.Length == 1)
             {
-                ret = tmpZone as CCSequence;
-                if (ret == null)
-                {
-                    return null;
-                }
-                base.Copy(tmpZone);
-
-                var param1 = m_pActions[0].Copy() as CCFiniteTimeAction;
-                var param2 = m_pActions[1].Copy() as CCFiniteTimeAction;
-
-                if (param1 == null || param2 == null)
-                {
-                    return null;
-                }
-
-                ret.InitOneTwo(param1, param2);
-
-                return ret;
+                InitCCSequence(prev, new CCExtraAction());
             }
             else
             {
-                return new CCSequence(this);
+                for (int i = 1; i < actions.Length - 1; i++)
+                {
+                    prev = new CCSequence(prev, actions[i]);
+                }
+
+                InitCCSequence(prev, actions[actions.Length - 1]);
             }
+        }
+
+        // Perform deep copy of CCSequence
+        protected CCSequence(CCSequence sequence) : base(sequence)
+        {
+            CCFiniteTimeAction param1 = new CCFiniteTimeAction(sequence.m_pActions [0]);
+            CCFiniteTimeAction param2 = new CCFiniteTimeAction(sequence.m_pActions [1]);
+
+            InitCCSequence(param1, param2);
+        }
+
+        private void InitCCSequence(CCFiniteTimeAction actionOne, CCFiniteTimeAction actionTwo)
+        {
+            Debug.Assert(actionOne != null);
+            Debug.Assert(actionTwo != null);
+
+            m_pActions[0] = actionOne;
+            m_pActions[1] = actionTwo;
+
+            _HasInfiniteAction = (actionOne is CCRepeatForever) || (actionTwo is CCRepeatForever);
+        }
+
+        #endregion Constructors
+
+
+        public override object Copy(ICCCopyable zone)
+        {
+            return new CCSequence(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)

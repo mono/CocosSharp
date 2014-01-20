@@ -58,7 +58,7 @@ namespace CocosSharp
                 );
 
             RunAction(
-                new CCSequence(
+                    new CCSequence(
                     EaseAction(seq),
                     new CCCallFunc(Finish),
                     new CCStopGrid()

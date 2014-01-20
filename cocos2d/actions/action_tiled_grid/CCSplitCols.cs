@@ -30,33 +30,42 @@ namespace CocosSharp
         protected int m_nCols;
         protected CCSize m_winSize;
 
+
+        #region Constructors
+
+        public CCSplitCols()
+        {
+        }
+
+        /// <summary>
+        /// creates the action with the number of columns to split and the duration
+        /// </summary>
+        public CCSplitCols(float duration, int nCols) : base(duration, new CCGridSize(nCols, 1))
+        {
+            InitCCSplitCols(nCols);
+        }
+
+        // Perform deep copy of CCSplitCols
+        public CCSplitCols(CCSplitCols splitCols) : base(splitCols)
+        {
+            InitCCSplitCols(splitCols.m_nCols);
+        }
+
         /// <summary>
         ///  initializes the action with the number of columns to split and the duration 
         /// </summary>
-        protected virtual bool InitWithDuration(float duration, int nCols)
+        private void InitCCSplitCols(int nCols)
         {
             m_nCols = nCols;
-            return base.InitWithDuration(duration, new CCGridSize(nCols, 1));
         }
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCSplitCols pCopy;
-            if (pZone != null)
-            {
-                pCopy = (CCSplitCols) (pZone);
-            }
-            else
-            {
-                pCopy = new CCSplitCols();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-            pCopy.InitWithDuration(m_fDuration, m_nCols);
-
-            return pCopy;
+            return new CCSplitCols(this);
         }
+
+        #endregion Constructors
+
 
         public override void Update(float time)
         {
@@ -85,18 +94,6 @@ namespace CocosSharp
         {
             base.StartWithTarget(target);
             m_winSize = CCDirector.SharedDirector.WinSizeInPixels;
-        }
-
-        public CCSplitCols()
-        {
-        }
-
-        /// <summary>
-        /// creates the action with the number of columns to split and the duration
-        /// </summary>
-        public CCSplitCols(float duration, int nCols) : base(duration)
-        {
-            InitWithDuration(duration, nCols);
         }
     }
 }

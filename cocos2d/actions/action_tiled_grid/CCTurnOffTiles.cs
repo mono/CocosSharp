@@ -36,21 +36,42 @@ namespace CocosSharp
         protected int m_nTilesCount;
         protected int[] m_pTilesOrder;
 
+
+        #region Constructors
+
         /// <summary>
-        /// initializes the action with a random seed, the grid size and the duration 
+        /// creates the action with the grid size and the duration
         /// </summary>
-        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int seed)
+        public CCTurnOffTiles(float duration, CCGridSize gridSize) : base(duration, gridSize)
         {
-            if (base.InitWithDuration(duration, gridSize))
-            {
-                m_nSeed = seed;
-                m_pTilesOrder = null;
-
-                return true;
-            }
-
-            return false;
         }
+
+        public CCTurnOffTiles()
+        {
+        }
+
+        /// <summary>
+        /// creates the action with a random seed, the grid size and the duration 
+        /// </summary>
+        public CCTurnOffTiles(float duration, CCGridSize gridSize, int seed) : base(duration, gridSize)
+        {
+            InitCCTurnOffTiles(seed);
+        }
+
+        // Perform a deep copy of CCTurnOffTiles
+        public CCTurnOffTiles (CCTurnOffTiles turnOffTiles): base(turnOffTiles)
+        {
+            InitCCTurnOffTiles(turnOffTiles.m_nSeed);
+        }
+
+        private void InitCCTurnOffTiles(int seed)
+        {
+            m_nSeed = seed;
+            m_pTilesOrder = null;
+        }
+
+        #endregion Constructors
+
 
         public void Shuffle(int[] pArray, int nLen)
         {
@@ -77,22 +98,7 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCTurnOffTiles pCopy;
-            if (pZone != null)
-            {
-                pCopy = (CCTurnOffTiles) (pZone);
-            }
-            else
-            {
-                pCopy = new CCTurnOffTiles();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nSeed);
-
-            return pCopy;
+            return new CCTurnOffTiles(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)
@@ -137,26 +143,6 @@ namespace CocosSharp
                     TurnOnTile(tilePos);
                 }
             }
-        }
-
-        /// <summary>
-        /// creates the action with the grid size and the duration
-        /// </summary>
-        public CCTurnOffTiles(float duration, CCGridSize gridSize) : base(duration)
-        {
-            InitWithDuration(duration, gridSize);
-        }
-
-        public CCTurnOffTiles()
-        {
-        }
-
-        /// <summary>
-        /// creates the action with a random seed, the grid size and the duration 
-        /// </summary>
-        public CCTurnOffTiles(float duration, CCGridSize gridSize, int seed) : base(duration)
-        {
-            InitWithDuration(duration, gridSize, seed);
         }
     }
 }

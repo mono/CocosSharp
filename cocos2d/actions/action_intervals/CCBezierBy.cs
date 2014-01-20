@@ -8,37 +8,30 @@ namespace CocosSharp
         protected CCPoint m_startPosition;
         protected CCPoint m_previousPosition;
 
-        public CCBezierBy(float t, CCBezierConfig c)
+
+        #region Constructors
+
+        public CCBezierBy(float t, CCBezierConfig c) : base(t)
         {
-            InitWithDuration(t, c);
+            InitCCBezierBy(c);
         }
 
+        // Perform a deep copy of CCBezierBy
         protected CCBezierBy(CCBezierBy bezierBy) : base(bezierBy)
         {
-            InitWithDuration(bezierBy.m_fDuration, bezierBy.m_sConfig);
+            InitCCBezierBy(bezierBy.m_sConfig);
         }
 
-        protected bool InitWithDuration(float t, CCBezierConfig c)
+        private void InitCCBezierBy(CCBezierConfig c)
         {
-            if (base.InitWithDuration(t))
-            {
-                m_sConfig = c;
-                return true;
-            }
-            return false;
+            m_sConfig = c;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = zone as CCBezierBy;
-                base.Copy(zone);
-
-                ret.InitWithDuration(m_fDuration, m_sConfig);
-
-                return ret;
-            }
             return new CCBezierBy(this);
         }
 

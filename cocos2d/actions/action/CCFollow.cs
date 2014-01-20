@@ -16,6 +16,23 @@ namespace CocosSharp
         protected CCPoint m_obHalfScreenSize;
         protected CCNode m_pobFollowedNode;
 
+        /// <summary>
+        /// whether camera should be limited to certain area
+        /// </summary>
+        public bool BoundarySet
+        {
+            get { return m_bBoundarySet; }
+            set { m_bBoundarySet = value; }
+        }
+
+        public override bool IsDone
+        {
+            get { return !m_pobFollowedNode.IsRunning; }
+        }
+
+
+        #region Constructors
+
         public CCFollow(CCNode followedNode, CCRect rect)
         {
             InitWithTarget(followedNode, rect);
@@ -26,16 +43,7 @@ namespace CocosSharp
             m_nTag = follow.m_nTag;
         }
 
-        /// <summary>
-        /// whether camera should be limited to certain area
-        /// </summary>
-        public bool BoundarySet
-        {
-            get { return m_bBoundarySet; }
-            set { m_bBoundarySet = value; }
-        }
-
-        private bool InitWithTarget(CCNode pFollowedNode, CCRect rect)
+        private void InitWithTarget(CCNode pFollowedNode, CCRect rect)
         {
             Debug.Assert(pFollowedNode != null);
 
@@ -80,23 +88,14 @@ namespace CocosSharp
                     m_bBoundaryFullyCovered = true;
                 }
             }
-
-            return true;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = (CCFollow) zone;
-                base.Copy(zone);
-                ret.m_nTag = m_nTag;
-                return ret;
-            }
-            else
-            {
-                return new CCFollow(this);
-            }
+            return new CCFollow(this);
         }
 
         public override void Step(float dt)
@@ -120,11 +119,6 @@ namespace CocosSharp
             {
                 m_pTarget.Position = m_obHalfScreenSize - m_pobFollowedNode.Position;
             }
-        }
-
-        public override bool IsDone
-        {
-            get { return !m_pobFollowedNode.IsRunning; }
         }
 
         public override void Stop()

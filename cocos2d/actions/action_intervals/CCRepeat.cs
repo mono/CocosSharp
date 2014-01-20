@@ -8,71 +8,46 @@ namespace CocosSharp
         protected uint m_uTimes;
         protected uint m_uTotal;
 
-
-        public CCRepeat(CCFiniteTimeAction action, uint times)
-        {
-            InitWithAction(action, times);
-        }
-
-        protected CCRepeat(CCRepeat repeat) : base(repeat)
-        {
-            var param = repeat.m_pInnerAction.Copy() as CCFiniteTimeAction;
-            InitWithAction(param, repeat.m_uTimes);
-        }
-
         public CCFiniteTimeAction InnerAction
         {
             get { return m_pInnerAction; }
             set { m_pInnerAction = value; }
         }
 
-        public bool InitWithAction(CCFiniteTimeAction action, uint times)
+
+        #region Constructors
+
+        public CCRepeat(CCFiniteTimeAction action, uint times) : base(action.Duration * times)
         {
-            float d = action.Duration * times;
-
-            if (base.InitWithDuration(d))
-            {
-                m_uTimes = times;
-                m_pInnerAction = action;
-
-                m_bActionInstant = action is CCActionInstant;
-                //an instant action needs to be executed one time less in the update method since it uses startWithTarget to execute the action
-                if (m_bActionInstant)
-                {
-                    m_uTimes -= 1;
-                }
-                m_uTotal = 0;
-
-                return true;
-            }
-
-            return false;
+            InitWithAction(action, times);
         }
+
+        // Perform deep copy of CCRepeat
+        protected CCRepeat(CCRepeat repeat) : base(repeat)
+        {
+            InitWithAction(new CCFiniteTimeAction(repeat.m_pInnerAction), repeat.m_uTimes);
+        }
+
+        private void InitWithAction(CCFiniteTimeAction action, uint times)
+        {
+            m_uTimes = times;
+            m_pInnerAction = action;
+
+            m_bActionInstant = action is CCActionInstant;
+            //an instant action needs to be executed one time less in the update method since it uses startWithTarget to execute the action
+            if (m_bActionInstant)
+            {
+                m_uTimes -= 1;
+            }
+            m_uTotal = 0;
+        }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = zone as CCRepeat;
-                if (ret == null)
-                {
-                    return null;
-                }
-                base.Copy(zone);
-
-                var param = m_pInnerAction.Copy() as CCFiniteTimeAction;
-                if (param == null)
-                {
-                    return null;
-                }
-                ret.InitWithAction(param, m_uTimes);
-
-                return ret;
-            }
-            else
-            {
-                return new CCRepeat(this);
-            }
+            return new CCRepeat(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)

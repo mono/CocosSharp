@@ -4,6 +4,8 @@ namespace CocosSharp
 {
     public class CCEaseIn : CCEaseRateAction
     {
+        #region Constructors
+
         public CCEaseIn(CCActionInterval pAction, float fRate) : base(pAction, fRate)
         {
         }
@@ -12,6 +14,9 @@ namespace CocosSharp
         {
         }
 
+        #endregion Constructors
+
+
         public override void Update(float time)
         {
             m_pInner.Update((float) Math.Pow(time, m_fRate));
@@ -19,14 +24,6 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = pZone as CCEaseIn;
-                pCopy.InitWithAction((CCActionInterval) (m_pInner.Copy()), m_fRate);
-
-                return pCopy;
-            }
             return new CCEaseIn(this);
         }
 

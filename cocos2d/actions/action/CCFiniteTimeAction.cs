@@ -4,19 +4,26 @@ namespace CocosSharp
     {
         protected float m_fDuration;
 
-        protected CCFiniteTimeAction()
-        {
-        }
-
-        protected CCFiniteTimeAction(CCFiniteTimeAction finiteTimeAction) : base(finiteTimeAction)
-        {
-        }
-
         public float Duration
         {
             get { return m_fDuration; }
             set { m_fDuration = value; }
         }
+
+
+        #region Constructors
+
+        protected CCFiniteTimeAction()
+        {
+        }
+
+        public CCFiniteTimeAction(CCFiniteTimeAction finiteTimeAction) : base(finiteTimeAction)
+        {
+            m_fDuration = finiteTimeAction.Duration;
+        }
+
+        #endregion Constructors
+      
 
         public virtual CCFiniteTimeAction Reverse()
         {

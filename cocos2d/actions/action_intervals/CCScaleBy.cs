@@ -2,21 +2,23 @@ namespace CocosSharp
 {
     public class CCScaleBy : CCScaleTo
     {
-        protected CCScaleBy(CCScaleBy copy)
-            : base(copy)
+        #region Constructors
+
+        protected CCScaleBy(CCScaleBy copy) : base(copy)
         {
             // Handled by the base class.
         }
 
-        public CCScaleBy(float duration, float s)
-            : base(duration, s)
+        public CCScaleBy(float duration, float s) : base(duration, s)
         {
         }
 
-        public CCScaleBy(float duration, float sx, float sy)
-            : base(duration, sx, sy)
+        public CCScaleBy(float duration, float sx, float sy) : base(duration, sx, sy)
         {
         }
+
+        #endregion Constructors
+
 
         protected internal override void StartWithTarget(CCNode target)
         {
@@ -32,16 +34,7 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = zone as CCScaleBy;
-                base.Copy(zone); // Handles all data copying.
-                return ret;
-            }
-            else
-            {
                 return new CCScaleBy(this);
-            }
         }
     }
 }

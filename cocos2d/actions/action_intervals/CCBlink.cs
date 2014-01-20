@@ -5,42 +5,31 @@
         protected uint m_nTimes;
         protected bool m_bOriginalState;
 
-        public CCBlink(float duration, uint uBlinks)
+
+        #region Constructors
+
+        public CCBlink(float duration, uint uBlinks) : base(duration)
         {
-            InitWithDuration(duration, uBlinks);
+            InitCCBlink(uBlinks);
         }
 
+        // Perform deep copy of CCBlink
         protected CCBlink(CCBlink blink) : base(blink)
         {
-            InitWithDuration(m_fDuration, m_nTimes);
+            InitCCBlink(blink.m_nTimes);
         }
 
-        protected bool InitWithDuration(float duration, uint uBlinks)
+        private void InitCCBlink(uint uBlinks)
         {
-            if (base.InitWithDuration(duration))
-            {
-                m_nTimes = uBlinks;
-                return true;
-            }
-
-            return false;
+            m_nTimes = uBlinks;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = (CCBlink) (pZone);
-                base.Copy(pZone);
-
-                pCopy.InitWithDuration(m_fDuration, m_nTimes);
-                return pCopy;
-            }
-            else
-            {
-                return new CCBlink(this);
-            }
+            return new CCBlink(this);
         }
 
         public override void Stop()

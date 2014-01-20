@@ -4,6 +4,9 @@ namespace CocosSharp
     {
         protected CCActionInterval m_pInner;
 
+
+        #region Constructors
+
         // This can be taken out once all the classes that extend it have had their constructors created.
         protected CCActionEase()
         {
@@ -14,38 +17,28 @@ namespace CocosSharp
             get { return m_pInner; }
         }
 
-        public CCActionEase(CCActionInterval pAction)
+        public CCActionEase(CCActionInterval pAction) : base(pAction.Duration)
         {
             InitWithAction(pAction);
         }
 
+        // Perform a deep copy of CCActionEase
         protected CCActionEase(CCActionEase actionEase) : base(actionEase)
         {
-            InitWithAction((CCActionInterval) (actionEase.m_pInner.Copy()));
+            InitWithAction(new CCActionInterval(actionEase.m_pInner));
         }
 
-        protected bool InitWithAction(CCActionInterval pAction)
+        private void InitWithAction(CCActionInterval pAction)
         {
-            if (base.InitWithDuration(pAction.Duration))
-            {
-                m_pInner = pAction;
-                return true;
-            }
-            return false;
+            m_pInner = pAction;
         }
 
+        #endregion Constructors
+
+
+        // This should be changed to DeepCopy()
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = pZone as CCActionEase;
-                base.Copy(pZone);
-
-                pCopy.InitWithAction((CCActionInterval) (m_pInner.Copy()));
-
-                return pCopy;
-            }
             return new CCActionEase(this);
         }
 

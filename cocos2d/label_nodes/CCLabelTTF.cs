@@ -12,25 +12,6 @@ namespace CocosSharp
         private CCSize m_tDimensions;
         private CCVerticalTextAlignment m_vAlignment;
 
-        public CCLabelTTF () : this("", "Helvetica", 12.0f)
-        {
-        }
-        
-        public CCLabelTTF (string text, string fontName, float fontSize) : 
-            this (text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Center,
-                  CCVerticalTextAlignment.Top)
-        { }
-        
-        public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) :
-            this (text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
-        { }
-        
-        public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment,
-                           CCVerticalTextAlignment vAlignment)
-        {
-            InitWithString(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
-        }
-
         public string FontName
         {
             get { return m_pFontName; }
@@ -111,6 +92,46 @@ namespace CocosSharp
                     }
                 }
 
+
+        #region Constructors
+
+        public CCLabelTTF () : this("", "Helvetica", 12.0f)
+        {
+        }
+
+        public CCLabelTTF (string text, string fontName, float fontSize) : 
+        this (text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Center,
+            CCVerticalTextAlignment.Top)
+        { }
+
+        public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) :
+        this (text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
+        { }
+
+        public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
+        {
+            InitWithString(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
+        }
+
+        private void InitWithString(string text, string fontName, float fontSize, 
+            CCSize dimensions, CCTextAlignment hAlignment,
+            CCVerticalTextAlignment vAlignment)
+        {
+            // shader program
+            //this->setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(SHADER_PROGRAM));
+
+            m_tDimensions = new CCSize(dimensions.Width, dimensions.Height);
+            m_hAlignment = hAlignment;
+            m_vAlignment = vAlignment;
+            m_pFontName = fontName;
+            m_fFontSize = fontSize;
+
+            this.Text = text;          
+        }
+
+        #endregion Constructors
+
+
         internal void Refresh()
         {
             //
@@ -175,24 +196,6 @@ namespace CocosSharp
         public override string ToString()
         {
             return string.Format("FontName:{0}, FontSize:{1}", m_pFontName, m_fFontSize);
-        }
-
-        protected void InitWithString(string text, string fontName, float fontSize, 
-                                    CCSize dimensions, CCTextAlignment hAlignment,
-                                    CCVerticalTextAlignment vAlignment)
-        {
-            base.Init();            
-
-            // shader program
-            //this->setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(SHADER_PROGRAM));
-
-            m_tDimensions = new CCSize(dimensions.Width, dimensions.Height);
-            m_hAlignment = hAlignment;
-            m_vAlignment = vAlignment;
-            m_pFontName = fontName;
-            m_fFontSize = fontSize;
-
-            this.Text = text;            
         }
 
         private void updateTexture()

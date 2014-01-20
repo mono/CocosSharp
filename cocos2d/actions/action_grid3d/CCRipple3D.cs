@@ -42,6 +42,10 @@ namespace CocosSharp
 
         #region Constructors
 
+        public CCRipple3D()
+        {
+        }
+
         public CCRipple3D(float duration) : base(duration)
         {
         }

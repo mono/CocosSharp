@@ -6,30 +6,25 @@ namespace CocosSharp
     {
         protected CCFiniteTimeAction m_pOther;
 
+
+        #region Constructors
+
         public CCReverseTime(CCFiniteTimeAction action) : base(action.Duration)
         {
             m_pOther = action;
         }
 
-        protected CCReverseTime(CCReverseTime copy)
-            : base(copy)
+        protected CCReverseTime(CCReverseTime copy) : base(copy)
         {
-            m_pOther = copy.m_pOther;
+            m_pOther = new CCFiniteTimeAction(copy.m_pOther);
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = zone as CCReverseTime;
-                base.Copy(zone);
-                m_pOther = (CCFiniteTimeAction) ret.m_pOther; // .Copy() was in here before
-                return ret;
-            }
-            else
-            {
-                return new CCReverseTime(this);
-            }
+            return new CCReverseTime(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)

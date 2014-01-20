@@ -4,7 +4,7 @@ namespace CocosSharp
 {
     public class CCFlipY3D : CCFlipX3D
     {
-        /** creates the action with duration */
+        #region Constructors
 
         public CCFlipY3D()
         {
@@ -17,6 +17,9 @@ namespace CocosSharp
         public CCFlipY3D(CCFlipY3D flipY3D) : base(flipY3D)
         {
         }
+
+        #endregion Constructors
+
 
         public override void Update(float time)
         {
@@ -85,20 +88,7 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = (CCFlipY3D) (pZone);
-                base.Copy(pZone);
-
-                pCopy.InitWithDuration(m_fDuration, m_sGridSize);
-
-                return pCopy;
-            }
-            else
-            {
-                return new CCFlipY3D(this);
-            }
+            return new CCFlipY3D(this);
         }
     }
 }

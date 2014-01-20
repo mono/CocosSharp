@@ -53,41 +53,43 @@ namespace CocosSharp
             set { m_fAmplitudeRate = value; }
         }
 
+
+        #region Constructors
+
+        public CCWavesTiles3D()
+        {
+        }
+
+        /// <summary>
+        /// creates the action with a number of waves, the waves amplitude, the grid size and the duration
+        /// </summary>
+        public CCWavesTiles3D(float duration, CCGridSize gridSize, int waves, float amplitude) : base(duration, gridSize)
+        {
+            InitCCWavesTiles3D(waves, amplitude);
+        }
+
+        // Perform deep copy of CCWavesTiles3D
+        public CCWavesTiles3D(CCWavesTiles3D wavesTiles) : base(wavesTiles)
+        {
+            InitCCWavesTiles3D(wavesTiles.m_nWaves, wavesTiles.m_fAmplitude);
+        }
+
         /// <summary>
         ///  initializes the action with a number of waves, the waves amplitude, the grid size and the duration 
         /// </summary>
-        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int waves, float amplitude)
+        private void InitCCWavesTiles3D(int waves, float amplitude)
         {
-            if (base.InitWithDuration(duration, gridSize))
-            {
-                m_nWaves = waves;
-                m_fAmplitude = amplitude;
-                m_fAmplitudeRate = 1.0f;
-
-                return true;
-            }
-
-            return false;
+            m_nWaves = waves;
+            m_fAmplitude = amplitude;
+            m_fAmplitudeRate = 1.0f;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCWavesTiles3D pCopy;
-            if (pZone != null)
-            {
-                pCopy = (CCWavesTiles3D) (pZone);
-            }
-            else
-            {
-                pCopy = new CCWavesTiles3D();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nWaves, m_fAmplitude);
-
-            return pCopy;
+            return new CCWavesTiles3D(this);
         }
 
         public override void Update(float time)
@@ -110,18 +112,6 @@ namespace CocosSharp
                     SetTile(new CCGridSize(i, j), ref coords);
                 }
             }
-        }
-
-        public CCWavesTiles3D()
-        {
-        }
-
-        /// <summary>
-        /// creates the action with a number of waves, the waves amplitude, the grid size and the duration
-        /// </summary>
-        public CCWavesTiles3D(float duration, CCGridSize gridSize, int waves, float amplitude) : base(duration)
-        {
-            InitWithDuration(duration, gridSize, waves, amplitude);
         }
     }
 }

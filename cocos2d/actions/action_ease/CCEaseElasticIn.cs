@@ -5,6 +5,8 @@ namespace CocosSharp
 {
     public class CCEaseElasticIn : CCEaseElastic
     {
+        #region Constructors
+
         public CCEaseElasticIn(CCActionInterval pAction) : base(pAction, 0.3f)
         {
         }
@@ -16,6 +18,9 @@ namespace CocosSharp
         protected CCEaseElasticIn(CCEaseElasticIn easeElasticIn) : base(easeElasticIn)
         {
         }
+
+        #endregion Constructors
+
 
         public override void Update(float time)
         {
@@ -29,14 +34,6 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = pZone as CCEaseElasticIn;
-                pCopy.InitWithAction((CCActionInterval) (m_pInner.Copy()), m_fPeriod);
-
-                return pCopy;
-            }
             return new CCEaseElasticIn(this);
         }
     }

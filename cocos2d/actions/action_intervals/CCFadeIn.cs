@@ -2,28 +2,22 @@
 {
     public class CCFadeIn : CCActionInterval
     {
-        public CCFadeIn(float d)
+        #region Constructors
+
+        public CCFadeIn(float d) : base(d)
         {
-            InitWithDuration(d);
         }
 
         protected CCFadeIn(CCFadeIn fadeIn) : base(fadeIn)
         {
         }
 
+        #endregion Constructors
+
+
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = (CCFadeIn) (pZone);
-                base.Copy(pZone);
-                return pCopy;
-            }
-            else
-            {
-                return new CCFadeIn(this);
-            }
+            return new CCFadeIn(this);
         }
 
         public override void Update(float time)

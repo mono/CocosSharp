@@ -33,6 +33,26 @@ namespace CocosSharp
     /// </summary>
     public class CCFadeOutTRTiles : CCTiledGrid3DAction
     {
+        #region Constructors
+
+        public CCFadeOutTRTiles()
+        {
+        }
+
+        public CCFadeOutTRTiles(float duration) : base(duration)
+        {
+        }
+
+        /// <summary>
+        /// creates the action with the grid size and the duration
+        /// </summary>
+        public CCFadeOutTRTiles(float duration, CCGridSize gridSize) : base(duration, gridSize)
+        {
+        }
+
+        #endregion Constructors
+
+
         public virtual float TestFunc(CCGridSize pos, float time)
         {
             float px = m_sGridSize.X * time;
@@ -106,23 +126,6 @@ namespace CocosSharp
                     }
                 }
             }
-        }
-
-        public CCFadeOutTRTiles()
-        {
-        }
-
-        public CCFadeOutTRTiles(float duration)
-            : base(duration)
-        {
-        }
-
-        /// <summary>
-        /// creates the action with the grid size and the duration
-        /// </summary>
-        public CCFadeOutTRTiles(float duration, CCGridSize gridSize) : base(duration)
-        {
-            InitWithDuration(duration, gridSize);
         }
     }
 }

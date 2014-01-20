@@ -11,62 +11,59 @@ namespace CocosSharp
         protected CCSpriteFrame m_pOrigFrame;
         private uint m_uExecutedLoops;
 
-        public CCAnimate(CCAnimation pAnimation)
+
+        #region Constructors
+
+        public CCAnimate(CCAnimation pAnimation) : this(pAnimation, pAnimation.Duration * pAnimation.Loops)
         {
+        }
+
+        private CCAnimate(CCAnimation pAnimation, float totalDuration) : base(totalDuration)
+        {
+            Debug.Assert(totalDuration == pAnimation.Duration * pAnimation.Loops);
+
             InitWithAnimation(pAnimation);
         }
 
+        // Perform deep copy of CCAnimation
         protected CCAnimate(CCAnimate animate) : base(animate)
         {
-            InitWithAnimation((CCAnimation) animate.m_pAnimation.Copy());
+            InitWithAnimation(new CCAnimation(animate.m_pAnimation));
         }
 
-        protected bool InitWithAnimation(CCAnimation pAnimation)
+        private void InitWithAnimation(CCAnimation pAnimation)
         {
             Debug.Assert(pAnimation != null);
 
-            float singleDuration = pAnimation.Duration;
+            m_pAnimation = pAnimation;
+            m_nNextFrame = 0;
+            m_pOrigFrame = null;
+            m_uExecutedLoops = 0;
 
-            if (base.InitWithDuration(singleDuration * pAnimation.Loops))
+            m_pSplitTimes.Capacity = pAnimation.Frames.Count;
+
+            float singleDuration = m_pAnimation.Duration;
+            float accumUnitsOfTime = 0;
+            float newUnitOfTimeValue = singleDuration / m_pAnimation.TotalDelayUnits;
+
+            var pFrames = m_pAnimation.Frames;
+
+            //TODO: CCARRAY_VERIFY_TYPE(pFrames, CCAnimationFrame *);
+
+            foreach (var pObj in pFrames)
             {
-                m_nNextFrame = 0;
-                m_pAnimation = pAnimation;
-                m_pOrigFrame = null;
-                m_uExecutedLoops = 0;
-
-                m_pSplitTimes.Capacity = pAnimation.Frames.Count;
-
-                float accumUnitsOfTime = 0;
-                float newUnitOfTimeValue = singleDuration / pAnimation.TotalDelayUnits;
-
-                var pFrames = pAnimation.Frames;
-
-                //TODO: CCARRAY_VERIFY_TYPE(pFrames, CCAnimationFrame *);
-
-                foreach (var pObj in pFrames)
-                {
-                    var frame = (CCAnimationFrame) pObj;
-                    float value = (accumUnitsOfTime * newUnitOfTimeValue) / singleDuration;
-                    accumUnitsOfTime += frame.DelayUnits;
-                    m_pSplitTimes.Add(value);
-                }
-                return true;
+                var frame = (CCAnimationFrame) pObj;
+                float value = (accumUnitsOfTime * newUnitOfTimeValue) / singleDuration;
+                accumUnitsOfTime += frame.DelayUnits;
+                m_pSplitTimes.Add(value);
             }
-            return false;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = (CCAnimate) (pZone);
-                base.Copy(pZone);
-
-                pCopy.InitWithAnimation((CCAnimation) m_pAnimation.Copy());
-
-                return pCopy;
-            }
             return new CCAnimate(this);
         }
 

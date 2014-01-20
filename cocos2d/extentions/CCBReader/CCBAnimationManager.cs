@@ -913,25 +913,31 @@ namespace CocosSharp
         private float _dstAngle;
         private float _startAngle;
 
+
+        #region Constructors
+
         public CCBRotateTo()
         {
         }
 
         public CCBRotateTo(float fDuration, float fAngle) : base(fDuration)
         {
-            InitWithDuration(fDuration, fAngle);
+            InitCCBRotateTo(fAngle);
         }
 
-        protected virtual bool InitWithDuration(float fDuration, float fAngle)
+        // Perform deep copy of CCBRotateTo
+        public CCBRotateTo(CCBRotateTo rotateTo) : base(rotateTo)
         {
-            if (base.InitWithDuration(fDuration))
-            {
-                _dstAngle = fAngle;
-
-                return true;
-            }
-            return false;
+            InitCCBRotateTo(rotateTo._dstAngle);
         }
+
+        private void InitCCBRotateTo(float fAngle)
+        {
+            _dstAngle = fAngle;
+        }
+
+        #endregion Constructors
+
 
         public override void Update(float time)
         {
@@ -940,21 +946,7 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCBRotateTo pRet;
-
-            if (pZone != null)
-            {
-                pRet = (CCBRotateTo) (pZone);
-            }
-            else
-            {
-                pRet = new CCBRotateTo();
-                pZone =  (pRet);
-            }
-
-            pRet.InitWithDuration(m_fDuration, _dstAngle);
-            base.Copy(pZone);
-            return pRet;
+            return new CCBRotateTo(this);
         }
 
         public override CCFiniteTimeAction Reverse()
@@ -973,25 +965,30 @@ namespace CocosSharp
 
     public class CCBRotateXTo : CCActionInterval
     {
+        #region Constructors
+
         public CCBRotateXTo()
         {
         }
 
-        public CCBRotateXTo(float fDuration, float fAngle)
+        public CCBRotateXTo(float fDuration, float fAngle) : base(fDuration)
         {
-            InitWithDuration(fDuration, fAngle);
+            InitCCBRotateXTo(fAngle);
         }
 
-        public bool InitWithDuration(float fDuration, float fAngle)
+        // Perform deep copy of CCBRotateXTo
+        public CCBRotateXTo(CCBRotateXTo rotateXTo) : base(rotateXTo)
         {
-            if (InitWithDuration(fDuration))
-            {
-                _dstAngle = fAngle;
-        
-                return true;
-            }
-                return false;
+            InitCCBRotateXTo(rotateXTo._dstAngle);
         }
+
+        private void InitCCBRotateXTo(float fAngle)
+        {
+            _dstAngle = fAngle;
+        }
+
+        #endregion Constructors
+
 
         // Overrides
         protected internal override void StartWithTarget(CCNode target)
@@ -1006,21 +1003,7 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCBRotateXTo pRet;
-
-            if (pZone != null)
-            {
-                pRet = (CCBRotateXTo)(pZone);
-            }
-            else
-            {
-                pRet = new CCBRotateXTo();
-                pZone = (pRet);
-            }
-
-            pRet.InitWithDuration(m_fDuration, _dstAngle);
-            base.Copy(pZone);
-            return pRet;
+            return new CCBRotateXTo(this);
         }
 
         public override CCFiniteTimeAction Reverse()
@@ -1041,25 +1024,29 @@ namespace CocosSharp
 
     public class CCBRotateYTo : CCActionInterval
     {
+        #region Constructors
+
         public CCBRotateYTo()
         {
         }
 
-        public CCBRotateYTo(float fDuration, float fAngle)
+        public CCBRotateYTo(float fDuration, float fAngle) : base(fDuration)
         {
-            InitWithDuration(fDuration, fAngle);
+            InitCCBRotateYTo(fAngle);
         }
 
-        public bool InitWithDuration(float fDuration, float fAngle)
+        public CCBRotateYTo(CCBRotateYTo rotateYTo) : base(rotateYTo)
         {
-            if (InitWithDuration(fDuration))
-            {
-                _dstAngle = fAngle;
-
-                return true;
-            }
-            return false;
+            InitCCBRotateYTo(rotateYTo._dstAngle);
         }
+
+        private void InitCCBRotateYTo(float fAngle)
+        {
+            _dstAngle = fAngle;
+        }
+
+        #endregion Constructors
+
 
         // Overrides
         protected internal override void StartWithTarget(CCNode target)
@@ -1074,21 +1061,7 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCBRotateYTo pRet;
-
-            if (pZone != null)
-            {
-                pRet = (CCBRotateYTo)(pZone);
-            }
-            else
-            {
-                pRet = new CCBRotateYTo();
-                pZone = (pRet);
-            }
-
-            pRet.InitWithDuration(m_fDuration, _dstAngle);
-            base.Copy(pZone);
-            return pRet;
+            return new CCBRotateYTo(this);
         }
 
         public override CCFiniteTimeAction Reverse()
@@ -1109,32 +1082,27 @@ namespace CocosSharp
 
     class CCBEaseInstant : CCActionEase
     {
+        #region Constructors
+
         public CCBEaseInstant()
         {
         }
 
-        public CCBEaseInstant(CCActionInterval pAction)
+        public CCBEaseInstant(CCActionInterval pAction) : base(pAction)
         {
-            InitWithAction(pAction);
         }
+
+        // Perform deep copy of CCBEaseInstant
+        public CCBEaseInstant(CCBEaseInstant easeInstant) : base(easeInstant)
+        {
+        }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCBEaseInstant pRet;
-
-            if (pZone != null)
-            {
-                pRet = (CCBEaseInstant)(pZone);
-            }
-            else
-            {
-                pRet = new CCBEaseInstant();
-                pZone = (pRet);
-            }
-
-            pRet.InitWithAction(m_pInner);
-            base.Copy(pZone);
-            return pRet;
+            return new CCBEaseInstant(this);
         }
 
         public override CCFiniteTimeAction Reverse()

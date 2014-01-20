@@ -56,24 +56,26 @@ namespace CocosSharp
             }
         }
 
-        public CCTextFieldTTF(string text, string fontName, float fontSize) :
-            this(text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Center,
-                 CCVerticalTextAlignment.Top)
+
+        #region Constructors
+
+        public CCTextFieldTTF(string text, string fontName, float fontSize) 
+            : this(text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Center, CCVerticalTextAlignment.Top)
         {
         }
 
-        public CCTextFieldTTF(string text, string fontName, float fontSize, CCSize dimensions,
-                              CCTextAlignment hAlignment) :
-                                  this(text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
+        public CCTextFieldTTF(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) 
+            : this(text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
         {
         }
 
-        public CCTextFieldTTF(string text, string fontName, float fontSize, CCSize dimensions,
-                              CCTextAlignment hAlignment,
-                              CCVerticalTextAlignment vAlignment)
+        public CCTextFieldTTF(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
+            : base (text, fontName, fontSize, dimensions, hAlignment, vAlignment)
         {
-            InitWithString(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
         }
+
+        #endregion Constructors
+
 
         public void Edit()
         {

@@ -9,61 +9,34 @@ namespace CocosSharp
         protected float m_fStartAngleX;
         protected float m_fStartAngleY;
 
-        private CCRotateTo()
+
+        #region Constructors
+
+        public CCRotateTo(float duration, float fDeltaAngleX, float fDeltaAngleY) : base(duration)
+        {
+            InitCCRotateTo(fDeltaAngleX, fDeltaAngleY);
+        }
+
+        public CCRotateTo(float duration, float fDeltaAngle) : this(duration, fDeltaAngle, fDeltaAngle)
         {
         }
 
-        public CCRotateTo(float duration, float fDeltaAngle)
+        protected CCRotateTo(CCRotateTo rotateTo) : base(rotateTo)
         {
-            InitWithDuration(duration, fDeltaAngle);
+            InitCCRotateTo(rotateTo.m_fDstAngleX, rotateTo.m_fDstAngleY);
         }
 
-        public CCRotateTo(float duration, float fDeltaAngleX, float fDeltaAngleY)
+        private void InitCCRotateTo(float fDeltaAngleX, float fDeltaAngleY)
         {
-            InitWithDuration(duration, fDeltaAngleX, fDeltaAngleY);
+            m_fDstAngleX = fDeltaAngleX;
+            m_fDstAngleY = fDeltaAngleY;
         }
 
-        protected CCRotateTo(CCRotateTo rotateTo)
-            : base(rotateTo)
-        {
-            InitWithDuration(rotateTo.m_fDuration, rotateTo.m_fDstAngleX, rotateTo.m_fDstAngleY);
-        }
+        #endregion Constructors
 
-        private bool InitWithDuration(float duration, float fDeltaAngle)
-        {
-            if (base.InitWithDuration(duration))
-            {
-                m_fDstAngleX = m_fDstAngleY = fDeltaAngle;
-                return true;
-            }
-            return false;
-        }
-
-        private bool InitWithDuration(float duration, float fDeltaAngleX, float fDeltaAngleY)
-        {
-            if (base.InitWithDuration(duration))
-            {
-                m_fDstAngleX = fDeltaAngleX;
-                m_fDstAngleY = fDeltaAngleY;
-                return true;
-            }
-            return false;
-        }
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = zone as CCRotateTo;
-                if (ret == null)
-                {
-                    return null;
-                }
-                base.Copy(ret);
-
-                ret.InitWithDuration(m_fDuration, m_fDstAngleX, m_fDstAngleY);
-                return ret;
-            }
             return new CCRotateTo(this);
         }
 

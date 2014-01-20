@@ -12,15 +12,6 @@ namespace CocosSharp
         protected CCNode m_pOriginalTarget;
         protected CCNode m_pTarget;
 
-        public CCAction()
-        {
-            m_nTag = (int) CCActionTag.Invalid;
-        }
-
-        protected CCAction(CCAction action)
-        {
-            m_nTag = action.m_nTag;
-        }
 
         public CCNode Target
         {
@@ -39,6 +30,27 @@ namespace CocosSharp
             set { m_nTag = value; }
         }
 
+        public virtual bool IsDone
+        {
+            get { return true; }
+        }
+
+
+        #region Constructors
+
+        public CCAction()
+        {
+            m_nTag = (int) CCActionTag.Invalid;
+        }
+
+        protected CCAction(CCAction action)
+        {
+            m_nTag = action.m_nTag;
+        }
+
+        #endregion Constructor
+
+
         public virtual CCAction Copy()
         {
             return (CCAction) Copy(null);
@@ -46,20 +58,7 @@ namespace CocosSharp
 
         public virtual object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                ((CCAction) zone).m_nTag = m_nTag;
-                return zone;
-            }
-            else
-            {
-                return new CCAction(this);
-            }
-        }
-
-        public virtual bool IsDone
-        {
-            get { return true; }
+            return new CCAction(this);
         }
 
         protected internal virtual void StartWithTarget(CCNode target)

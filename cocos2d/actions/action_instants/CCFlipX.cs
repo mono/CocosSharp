@@ -4,6 +4,9 @@
     {
         private bool m_bFlipX;
 
+
+        #region Constructors
+
         protected CCFlipX()
         {
         }
@@ -18,11 +21,13 @@
             InitWithFlipX(m_bFlipX);
         }
 
-        protected virtual bool InitWithFlipX(bool x)
+        private void InitWithFlipX(bool x)
         {
             m_bFlipX = x;
-            return true;
         }
+
+        #endregion Constructors
+
 
         /// <summary>
         /// Start the flip operation on the given target which must be a CCSprite.
@@ -45,13 +50,6 @@
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                var pRet = (CCFlipX) (pZone);
-                base.Copy(pZone);
-                pRet.InitWithFlipX(m_bFlipX);
-                return pRet;
-            }
             return new CCFlipX(this);
         }
     }

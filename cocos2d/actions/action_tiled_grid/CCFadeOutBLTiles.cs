@@ -29,6 +29,22 @@ namespace CocosSharp
 {
     public class CCFadeOutBLTiles : CCFadeOutTRTiles
     {
+        #region Constructors
+
+        public CCFadeOutBLTiles()
+        {
+        }
+
+        /// <summary>
+        /// creates the action with the grid size and the duration
+        /// </summary>
+        public CCFadeOutBLTiles(float duration, CCGridSize gridSize) : base(duration, gridSize)
+        {
+        }
+
+        #endregion Constructors
+
+
         public override float TestFunc(CCGridSize pos, float time)
         {
             var n = new CCPoint((m_sGridSize.X * (1.0f - time)), (m_sGridSize.Y * (1.0f - time)));
@@ -38,18 +54,6 @@ namespace CocosSharp
             }
 
             return (float) Math.Pow((n.X + n.Y) / (pos.X + pos.Y), 6);
-        }
-
-        public CCFadeOutBLTiles()
-        {
-        }
-
-        /// <summary>
-        /// creates the action with the grid size and the duration
-        /// </summary>
-        public CCFadeOutBLTiles(float duration, CCGridSize gridSize) : base(duration)
-        {
-            InitWithDuration(duration, gridSize);
         }
     }
 }

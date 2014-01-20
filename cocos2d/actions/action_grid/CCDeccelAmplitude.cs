@@ -13,16 +13,22 @@ namespace CocosSharp
             set { m_fRate = value; }
         }
 
-        protected virtual bool InitWithAction(CCAction pAction, float duration)
+
+        #region Constructors
+
+        public CCDeccelAmplitude(CCAction pAction, float duration) : base(duration)
         {
-            if (base.InitWithDuration(duration))
-            {
-                m_fRate = 1.0f;
-                m_pOther = pAction as CCActionInterval;
-                return true;
-            }
-            return false;
+            InitWithAction(pAction);
         }
+
+        private void InitWithAction(CCAction pAction)
+        {
+            m_fRate = 1.0f;
+            m_pOther = pAction as CCActionInterval;
+        }
+
+        #endregion Constructors
+
 
         protected internal override void StartWithTarget(CCNode target)
         {
@@ -39,11 +45,6 @@ namespace CocosSharp
         public override CCFiniteTimeAction Reverse()
         {
             return new CCDeccelAmplitude(m_pOther.Reverse(), m_fDuration);
-        }
-
-        public CCDeccelAmplitude(CCAction pAction, float duration) : base(duration)
-        {
-            InitWithAction(pAction, duration);
         }
     }
 }

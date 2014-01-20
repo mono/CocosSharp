@@ -11,37 +11,6 @@ namespace CocosSharp
         protected List<CCAnimationFrame> m_pFrames;
         protected uint m_uLoops;
 
-        public CCAnimation() : this (new List<CCSpriteFrame>(), 0)
-        { }
-
-        public CCAnimation(CCSpriteSheet cs, string[] frames, float delay)
-        {
-            List<CCSpriteFrame> l = new List<CCSpriteFrame>();
-            foreach(string f in frames) 
-            {
-                CCSpriteFrame cf = cs[f];
-                if (cf != null)
-                {
-                    l.Add(cs[f]);
-                }
-            }
-            InitWithSpriteFrames(l, delay);
-        }
-
-        public CCAnimation(CCSpriteSheet cs, float delay)
-        {
-            InitWithSpriteFrames(cs.Frames, delay);
-        }
-
-        public CCAnimation (List<CCSpriteFrame> frames, float delay)
-        {
-            InitWithSpriteFrames(frames, delay);
-        }
-        
-        public CCAnimation (List<CCAnimationFrame> arrayOfAnimationFrameNames, float delayPerUnit, uint loops)
-        {
-            InitWithAnimationFrames(arrayOfAnimationFrameNames, delayPerUnit, loops);
-        }
 
         public float Duration
         {
@@ -74,6 +43,48 @@ namespace CocosSharp
         public float TotalDelayUnits
         {
             get { return m_fTotalDelayUnits; }
+        }
+
+
+        #region Constructors
+
+        public CCAnimation() : this (new List<CCSpriteFrame>(), 0)
+        { }
+
+        public CCAnimation(CCSpriteSheet cs, string[] frames, float delay)
+        {
+            List<CCSpriteFrame> l = new List<CCSpriteFrame>();
+            foreach(string f in frames) 
+            {
+                CCSpriteFrame cf = cs[f];
+                if (cf != null)
+                {
+                    l.Add(cs[f]);
+                }
+            }
+            InitWithSpriteFrames(l, delay);
+        }
+
+        public CCAnimation(CCSpriteSheet cs, float delay)
+        {
+            InitWithSpriteFrames(cs.Frames, delay);
+        }
+
+        // Perform deep copy of CCAnimation
+        public CCAnimation(CCAnimation animation) : base()
+        {
+            InitWithAnimationFrames (animation.m_pFrames, animation.m_fDelayPerUnit, animation.m_uLoops);
+            RestoreOriginalFrame = animation.m_bRestoreOriginalFrame;
+        }
+
+        public CCAnimation (List<CCSpriteFrame> frames, float delay)
+        {
+            InitWithSpriteFrames(frames, delay);
+        }
+
+        public CCAnimation (List<CCAnimationFrame> arrayOfAnimationFrameNames, float delayPerUnit, uint loops)
+        {
+            InitWithAnimationFrames(arrayOfAnimationFrameNames, delayPerUnit, loops);
         }
 
         private void InitWithSpriteFrames(List<CCSpriteFrame> pFrames, float delay)
@@ -127,6 +138,9 @@ namespace CocosSharp
             }
         }
 
+        #endregion Constructors
+
+
         public void AddSprite(CCSprite sprite)
         {
             CCSpriteFrame f = new CCSpriteFrame(sprite.Texture, new CCRect(0, 0, sprite.ContentSize.Width, sprite.ContentSize.Height));
@@ -164,21 +178,7 @@ namespace CocosSharp
 
         public object Copy(ICCCopyable pZone)
         {
-            CCAnimation pCopy = null;
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                pCopy = (CCAnimation) (pZone);
-            }
-            else
-            {
-                pCopy = new CCAnimation();
-            }
-
-            pCopy.InitWithAnimationFrames(m_pFrames, m_fDelayPerUnit, m_uLoops);
-            pCopy.RestoreOriginalFrame = m_bRestoreOriginalFrame;
-
-            return pCopy;
+            return new CCAnimation(this);
         }
     }
 }

@@ -2,6 +2,13 @@ namespace CocosSharp
 {
     public class CCActionInstant : CCFiniteTimeAction
     {
+        public override bool IsDone
+        {
+            get { return true; }
+        }
+
+        #region Constructors
+
         protected CCActionInstant()
         {
         }
@@ -10,20 +17,12 @@ namespace CocosSharp
         {
         }
 
+        #endregion Constructors
+
+
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = (CCActionInstant) zone;
-                base.Copy(zone);
-                return ret;
-            }
             return new CCActionInstant(this);
-        }
-
-        public override bool IsDone
-        {
-            get { return true; }
         }
 
         public override void Step(float dt)

@@ -2,39 +2,29 @@ namespace CocosSharp
 {
     public class CCMoveTo : CCMoveBy
     {
+        #region Constructors
+
         public CCMoveTo(float duration, CCPoint position): base(duration, position)
         {
+            InitCCMoveTo(position);
         }
 
         protected CCMoveTo(CCMoveTo moveTo) : base(moveTo)
         {
-            InitWithDuration(moveTo.m_fDuration, moveTo.m_endPosition);
+            InitCCMoveTo(moveTo.m_endPosition);
         }
 
-        protected override bool InitWithDuration(float duration, CCPoint position)
+        private void InitCCMoveTo(CCPoint position)
         {
-            if (base.InitWithDuration(duration))
-            {
-                m_endPosition = position;
-                return true;
-            }
-            return false;
+            m_endPosition = position;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = (CCMoveTo) zone;
-                base.Copy(zone);
-                ret.InitWithDuration(m_fDuration, m_endPosition);
-
-                return ret;
-            }
-            else
-            {
-                return new CCMoveTo(this);
-            }
+            return new CCMoveTo(this);
         }
 
         public override void Update(float time)

@@ -6,6 +6,9 @@ namespace CocosSharp
     {
         protected CCActionInterval m_pInnerAction;
 
+
+        #region Constructors
+
         public CCActionInterval InnerAction
         {
             get { return m_pInnerAction; }
@@ -14,47 +17,27 @@ namespace CocosSharp
 
         public CCRepeatForever(CCActionInterval action)
         {
-            InitWithAction(action);
+            InitCCRepeatForever(action);
         }
 
+        // Perform deep copy of CCRepeatForever
         protected CCRepeatForever(CCRepeatForever repeatForever) : base(repeatForever)
         {
-            var param = repeatForever.m_pInnerAction.Copy() as CCActionInterval;
-            InitWithAction(param);
+            InitCCRepeatForever(new CCActionInterval(repeatForever.m_pInnerAction));
         }
 
-        protected bool InitWithAction(CCActionInterval action)
+        private void InitCCRepeatForever(CCActionInterval action)
         {
             Debug.Assert(action != null);
             m_pInnerAction = action;
-            // Duration = action.Duration;
-            return true;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = zone as CCRepeatForever;
-                if (ret == null)
-                {
-                    return null;
-                }
-                base.Copy(zone);
-
-                var param = m_pInnerAction.Copy() as CCActionInterval;
-                if (param == null)
-                {
-                    return null;
-                }
-                ret.InitWithAction(param);
-
-                return ret;
-            }
-            else
-            {
-                return new CCRepeatForever(this);
-            }
+            return new CCRepeatForever(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)

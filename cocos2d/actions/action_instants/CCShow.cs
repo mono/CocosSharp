@@ -2,6 +2,8 @@
 {
     public class CCShow : CCActionInstant
     {
+        #region Constructors
+
         public CCShow()
         {
         }
@@ -9,6 +11,9 @@
         protected CCShow(CCShow show) : base(show)
         {
         }
+
+        #endregion Constructors
+
 
         protected internal override void StartWithTarget(CCNode target)
         {
@@ -23,12 +28,6 @@
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                var pRet = (CCShow) (pZone);
-                base.Copy(pZone);
-                return pRet;
-            }
             return new CCShow(this);
         }
     }

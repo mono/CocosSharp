@@ -11,43 +11,31 @@ namespace CocosSharp
         protected float m_fStartSkewX;
         protected float m_fStartSkewY;
 
-        public CCSkewTo(float t, float sx, float sy)
+
+        #region Constructors
+
+        public CCSkewTo(float t, float sx, float sy) : base(t)
         {
-            InitWithDuration(t, sx, sy);
+            InitCCSkewTo(sx, sy);
         }
 
+        // Perform deep copy of CCSkewTo
         protected CCSkewTo(CCSkewTo skewTo) : base(skewTo)
         {
-            InitWithDuration(skewTo.m_fDuration, skewTo.m_fEndSkewX, skewTo.m_fStartSkewY);
+            InitCCSkewTo(skewTo.m_fEndSkewX, skewTo.m_fStartSkewY);
         }
 
-        protected virtual bool InitWithDuration(float t, float sx, float sy)
+        private void InitCCSkewTo(float sx, float sy)
         {
-            bool bRet = false;
-
-            if (base.InitWithDuration(t))
-            {
-                m_fEndSkewX = sx;
-                m_fEndSkewY = sy;
-
-                bRet = true;
-            }
-
-            return bRet;
+            m_fEndSkewX = sx;
+            m_fEndSkewY = sy;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = (CCSkewTo) (pZone);
-                base.Copy(pZone);
-
-                pCopy.InitWithDuration(m_fDuration, m_fEndSkewX, m_fEndSkewY);
-
-                return pCopy;
-            }
             return new CCSkewTo(this);
         }
 

@@ -2,6 +2,8 @@
 {
     public class CCToggleVisibility : CCActionInstant
     {
+        #region Constructors
+
         public CCToggleVisibility()
         {
         }
@@ -10,14 +12,11 @@
         {
         }
 
+        #endregion Constructors
+
+
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = (CCToggleVisibility) zone;
-                base.Copy(zone);
-                return ret;
-            }
             return new CCToggleVisibility(this);
         }
 

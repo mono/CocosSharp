@@ -9,38 +9,49 @@ namespace CocosSharp
     {
         protected CCFiniteTimeAction[] m_pActions;
 
+
+        #region Constructors
+
         public CCParallel()
         {
         }
 
-        /// <summary>
-        /// Constructs the parallel sequence from the given array of actions.
-        /// </summary>
-        /// <param name="actions"></param>
-        public CCParallel(params CCFiniteTimeAction[] actions)
+        public CCParallel(params CCFiniteTimeAction[] actions) : base()
+        {
+            // Can't call base(duration) because max action duration needs to be determined here
+            float maxDuration = actions.OrderByDescending (action => action.Duration).First().Duration;
+            base.InitWithDuration(maxDuration);
+
+            InitCCParallel(actions);
+        }
+
+        public CCParallel(CCParallel parallel) : base(parallel)
+        {
+            CCFiniteTimeAction[] cp = new CCFiniteTimeAction[parallel.m_pActions.Length];
+            for (int i = 0; i < parallel.m_pActions.Length; i++)
+            {
+                cp[i] = new CCFiniteTimeAction(parallel.m_pActions [i]);
+            }
+
+            InitCCParallel(cp);
+        }
+
+        private void InitCCParallel(CCFiniteTimeAction[] actions)
         {
             m_pActions = actions;
-            float duration = 0f;
-            for (int i = 0; i < m_pActions.Length; i++)
-            {
-                var actionDuration = m_pActions[i].Duration;
-                if (duration < actionDuration)
-                {
-                    duration = actionDuration;
-                }
-            }
 
             for (int i = 0; i < m_pActions.Length; i++)
             {
                 var actionDuration = m_pActions[i].Duration;
-                if (actionDuration < duration)
+                if (actionDuration < m_fDuration)
                 {
-                    m_pActions[i] = new CCSequence(m_pActions[i], new CCDelayTime(duration - actionDuration));
+                    m_pActions[i] = new CCSequence(m_pActions[i], new CCDelayTime(m_fDuration - actionDuration));
                 }
             }
-
-            base.InitWithDuration(duration);
         }
+
+        #endregion Constructors
+
 
         protected internal override void StartWithTarget(CCNode target)
         {
@@ -49,16 +60,6 @@ namespace CocosSharp
             {
                 m_pActions[i].StartWithTarget(target);
             }
-        }
-
-        public CCParallel(CCParallel copy) : base(copy)
-        {
-            CCFiniteTimeAction[] cp = new CCFiniteTimeAction[copy.m_pActions.Length];
-            for (int i = 0; i < copy.m_pActions.Length; i++)
-            {
-                cp[i] = copy.m_pActions[i].Copy() as CCFiniteTimeAction;
-            }
-            m_pActions = cp;
         }
 
         /// <summary>

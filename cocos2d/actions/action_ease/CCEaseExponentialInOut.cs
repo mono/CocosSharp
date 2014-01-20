@@ -4,6 +4,8 @@ namespace CocosSharp
 {
     public class CCEaseExponentialInOut : CCActionEase
     {
+        #region Constructors
+
         public CCEaseExponentialInOut(CCActionInterval pAction) : base(pAction)
         {
         }
@@ -12,6 +14,9 @@ namespace CocosSharp
         {
         }
 
+        #endregion Constructors
+
+
         public override void Update(float time)
         {
             m_pInner.Update(CCEaseMath.ExponentialInOut(time));
@@ -19,14 +24,6 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                var pCopy = pZone as CCEaseExponentialInOut;
-                pCopy.InitWithAction((CCActionInterval) (m_pInner.Copy()));
-
-                return pCopy;
-            }
             return new CCEaseExponentialInOut(this);
         }
 

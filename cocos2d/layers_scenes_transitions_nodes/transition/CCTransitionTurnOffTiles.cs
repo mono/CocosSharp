@@ -58,7 +58,7 @@ namespace CocosSharp
             CCFiniteTimeAction action = EaseAction(toff);
             m_pOutScene.RunAction
                 (
-                    new CCSequence
+                        new CCSequence
                         (
                             action,
                             new CCCallFunc((Finish)),
