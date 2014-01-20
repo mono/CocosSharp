@@ -17,18 +17,13 @@ namespace CocosSharp
 
         public CCEaseCustom(CCActionInterval pAction, Func<float, float> easeFunc) : base(pAction)
         {
-            InitWithAction(pAction, easeFunc);
+            EaseFunc = easeFunc;
         }
 
         // Perform a deep copy of CCEaseCustom
         protected CCEaseCustom(CCEaseCustom easeCustom) : base(easeCustom)
         {
-            InitWithAction((CCActionInterval) easeCustom.InnerAction.Copy(), easeCustom.EaseFunc);
-        }
-
-        public void InitWithAction(CCActionInterval action, Func<float, float> easeFunc)
-        {
-            m_EaseFunc = easeFunc;
+            EaseFunc = easeCustom.EaseFunc;
         }
 
         #endregion Constructors

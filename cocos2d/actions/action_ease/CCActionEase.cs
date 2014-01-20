@@ -15,22 +15,18 @@ namespace CocosSharp
         public CCActionInterval InnerAction
         {
             get { return m_pInner; }
+            private set { m_pInner = value; } 
         }
 
         public CCActionEase(CCActionInterval pAction) : base(pAction.Duration)
         {
-            InitWithAction(pAction);
+            InnerAction = pAction;
         }
 
         // Perform a deep copy of CCActionEase
         protected CCActionEase(CCActionEase actionEase) : base(actionEase)
         {
-            InitWithAction(new CCActionInterval(actionEase.m_pInner));
-        }
-
-        private void InitWithAction(CCActionInterval pAction)
-        {
-            m_pInner = pAction;
+            InnerAction = new CCActionInterval(actionEase.m_pInner);
         }
 
         #endregion Constructors
