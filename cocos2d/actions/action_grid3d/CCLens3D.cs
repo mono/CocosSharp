@@ -68,8 +68,8 @@ namespace CocosSharp
             m_bDirty = true;
         }
 
-        #endregion Constructors
 
+        #endregion Constructors
 
         public override object Copy(ICCCopyable pZone)
         {

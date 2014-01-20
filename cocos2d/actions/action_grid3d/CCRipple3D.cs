@@ -17,9 +17,13 @@ namespace CocosSharp
             get { return m_position; }
             set
             {
-                m_position = value;
-                m_positionInPixels.X = value.X * CCDirector.SharedDirector.ContentScaleFactor;
-                m_positionInPixels.Y = value.Y * CCDirector.SharedDirector.ContentScaleFactor;
+				if (!value.Equals(m_position))
+				{
+					var scale = CCDirector.SharedDirector.ContentScaleFactor;
+					m_position.X = value.X / scale;
+					m_position.X = value.Y / scale;
+					m_positionInPixels = value;
+				}
             }
         }
 
@@ -35,11 +39,8 @@ namespace CocosSharp
             get { return m_fAmplitudeRate; }
         }
 
-        #region Constructors
 
-        public CCRipple3D()
-        {
-        }
+        #region Constructors
 
         public CCRipple3D(float duration) : base(duration)
         {

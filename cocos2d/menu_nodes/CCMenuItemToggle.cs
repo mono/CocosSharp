@@ -10,19 +10,20 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCMenuItemToggle()
-        {
-            InitWithTarget(null);
-        }
+		public CCMenuItemToggle() 
+			: base(null)
+        {   }
 
         public CCMenuItemToggle(CCMenuItem item)
+			: base(null)
         {
             InitWithItem(item);
         }
 
-        public CCMenuItemToggle(Action<object> selector, params CCMenuItem[] items)
+		public CCMenuItemToggle(Action<object> selector, params CCMenuItem[] items)
+			: base(selector)
         {
-            InitWithTarget(selector, items);
+            InitWithItems(items);
         }
 
         #endregion Constructors
@@ -69,9 +70,8 @@ namespace CocosSharp
             }
         }
 
-        private void InitWithTarget(Action<object> selector, CCMenuItem[] items)
+        private void InitWithItems(CCMenuItem[] items)
         {
-            base.InitWithTarget(selector);
             m_pSubItems = new List<CCMenuItem>();
             foreach (CCMenuItem item in items)
             {
@@ -83,7 +83,6 @@ namespace CocosSharp
 
         private void InitWithItem(CCMenuItem item)
         {
-            base.InitWithTarget(null);
             m_pSubItems = new List<CCMenuItem>();
             m_pSubItems.Add(item);
             m_uSelectedIndex = int.MaxValue;

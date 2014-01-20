@@ -471,7 +471,7 @@ namespace CocosSharp
 
         public CCSprite()
         {
-            if (!Init())
+            if (!InitWithTexture(null, new CCRect()))
             {
                 CCLog.Log("CCSprite (): Problems initializing class");
             }

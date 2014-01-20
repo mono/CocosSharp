@@ -185,7 +185,6 @@
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="label_nodes\CCLabel-Gdi.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
-    <Compile Include="layers_scenes_transitions_nodes\CCInputScene.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerRGBA.cs" />
     <Compile Include="misc_nodes\CCClippingNode.cs" />
     <Compile Include="misc_nodes\CCDrawNode.cs" />

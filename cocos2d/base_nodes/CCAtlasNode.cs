@@ -206,9 +206,17 @@ namespace CocosSharp
             m_pTextureAtlas.DrawNumberOfQuads(m_uQuadsToDraw, 0);
         }
 
-        public void SetIgnoreContentScaleFactor(bool bIgnoreContentScaleFactor)
-        {
-            m_bIgnoreContentScaleFactor = bIgnoreContentScaleFactor;
-        }
+		public bool IgnoreContentScaleFactor
+		{
+			get {
+				return m_bIgnoreContentScaleFactor;
+			}
+			set 
+			{
+				// This varible is only used for CCLabelAtlas FPS display. So plz don't modify its value.
+				// We really need to take a look at this.
+				m_bIgnoreContentScaleFactor = value;
+			}
+		}
     }
 }

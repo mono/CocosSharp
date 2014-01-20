@@ -18,7 +18,6 @@ namespace tests
             // TEST: If no texture is given, then Opacity + Color should work.
 
             sprite = new CCSprite();
-            sprite.Init();
             sprite.TextureRect = new CCRect(0, 0, 300, 300);
             sprite.Color = CCTypes.CCRed;
             sprite.Opacity = 128;
@@ -26,7 +25,6 @@ namespace tests
             AddChild(sprite, 100);
 
             sprite = new CCSprite();
-            sprite.Init();
             sprite.TextureRect = new CCRect(0, 0, 300, 300);
             sprite.Color = CCTypes.CCBlue;
             sprite.Opacity = 128;

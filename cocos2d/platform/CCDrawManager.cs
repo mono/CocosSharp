@@ -126,6 +126,8 @@ namespace CocosSharp
         public static GraphicsDevice GraphicsDevice
         {
             get { return graphicsDevice; }
+
+			set { InitializeGraphicsDevice (value); }
         }
 
         public static BlendState BlendState
@@ -323,33 +325,32 @@ namespace CocosSharp
 #endif
         }
 
-        public static void Init(IGraphicsDeviceService service)
+		public static IGraphicsDeviceService GraphicsDeviceService
         {
-            m_graphicsService = service;
-            m_presentationParameters = new PresentationParameters()
-            {
-                RenderTargetUsage = RenderTargetUsage.DiscardContents,
-                DepthStencilFormat = DepthFormat.Depth24Stencil8,
-                BackBufferFormat = SurfaceFormat.Color
-            };
+			set {
+				var service = value;
+				m_graphicsService = service;
+				m_presentationParameters = new PresentationParameters () {
+					RenderTargetUsage = RenderTargetUsage.DiscardContents,
+					DepthStencilFormat = DepthFormat.Depth24Stencil8,
+					BackBufferFormat = SurfaceFormat.Color
+				};
 
-            service.DeviceCreated += GraphicsDeviceDeviceCreated;
+				service.DeviceCreated += GraphicsDeviceDeviceCreated;
 
-            var manager = service as GraphicsDeviceManager;
+				var manager = service as GraphicsDeviceManager;
 
-            if (manager != null)
-            {
-                UpdatePresentationParametrs(manager);
+				if (manager != null) {
+					UpdatePresentationParametrs (manager);
 
-                manager.PreparingDeviceSettings += GraphicsPreparingDeviceSettings;
-            }
-            else
-            {
-                if (service.GraphicsDevice != null)
-                {
-                    Init(service.GraphicsDevice);
-                }
-            }
+					manager.PreparingDeviceSettings += GraphicsPreparingDeviceSettings;
+				} else {
+					if (service.GraphicsDevice != null) {
+						GraphicsDevice = service.GraphicsDevice;
+					}
+				}
+
+			}
         }
 
         /// <summary>
@@ -375,10 +376,10 @@ namespace CocosSharp
 
         static void GraphicsDeviceDeviceCreated(object sender, EventArgs e)
         {
-            Init(m_graphicsService.GraphicsDevice);
+			GraphicsDevice = m_graphicsService.GraphicsDevice;
         }
 
-        public static void Init(GraphicsDevice graphicsDevice)
+		private static void InitializeGraphicsDevice(GraphicsDevice graphicsDevice)
         {
             CCDrawManager.graphicsDevice = graphicsDevice;
 
@@ -430,7 +431,7 @@ namespace CocosSharp
             //pp.RenderTargetUsage = RenderTargetUsage.PreserveContents;
             //m_renderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, (int)pp.BackBufferHeight, false, pp.BackBufferFormat, pp.DepthStencilFormat, pp.MultiSampleCount, RenderTargetUsage.PreserveContents);
 
-            //m_eResolutionPolicy = CCResolutionPolicy.UnKnown;
+			//m_eResolutionPolicy = CCResolutionPolicy.UnKnown;
             m_obViewPortRect = new CCRect(0, 0, pp.BackBufferWidth, pp.BackBufferHeight);
             m_obScreenSize = m_obViewPortRect.Size;
 

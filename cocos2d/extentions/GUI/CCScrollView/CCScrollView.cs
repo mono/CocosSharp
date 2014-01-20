@@ -51,15 +51,13 @@ namespace CocosSharp
         protected CCPoint _touchPoint;
         protected CCSize _viewSize;
 
-        public CCScrollView()
-        {
-            Init();
-        }
+        public CCScrollView() 
+            : this (new CCSize(200, 200), null)
+        {  }
 
         public CCScrollView(CCSize size)
-        {
-            InitWithViewSize(size, null);
-        }
+            : this(size, null)
+        {  }
 
         /**
         * Returns an autoreleased scroll view object.
@@ -222,11 +220,6 @@ namespace CocosSharp
 				_clippingToBounds = value; 
 				ChildClippingMode =_clippingToBounds ? CCClipMode.Bounds : CCClipMode.None;
 			}
-        }
-
-        public override bool Init()
-        {
-            return InitWithViewSize(new CCSize(200, 200), null);
         }
 
         public override void RegisterWithTouchDispatcher()

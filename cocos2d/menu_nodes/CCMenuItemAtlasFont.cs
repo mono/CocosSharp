@@ -35,7 +35,8 @@ namespace CocosSharp
         {
             // CCAssert( value != NULL && strlen(value) != 0, "value length must be greater than 0");
             var label = new CCLabelAtlas(value, charMapFile, itemWidth, itemHeight, startCharMap);
-            base.InitWithLabel(label, selector);
+			base.Label = label;
+			base.Target = selector;
         }
     }
 }

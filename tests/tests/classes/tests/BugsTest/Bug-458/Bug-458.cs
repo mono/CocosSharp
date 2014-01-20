@@ -18,8 +18,6 @@ namespace tests
 
                 QuestionContainerSprite question = new QuestionContainerSprite();
                 QuestionContainerSprite question2 = new QuestionContainerSprite();
-                question.Init();
-                question2.Init();
 
                 //		[question setContentSize:CGSizeMake(50,50)];
                 //		[question2 setContentSize:CGSizeMake(50,50)];
