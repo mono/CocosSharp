@@ -19,10 +19,11 @@ namespace CocosSharp
         public CCSpawn(params CCFiniteTimeAction[] actions)
         {
             CCFiniteTimeAction prev = actions[0];
+            CCFiniteTimeAction next = null;
 
             if (actions.Length == 1)
             {
-                InitCCSpawn(prev, new CCExtraAction());
+                next = new CCExtraAction();
             }
             else
             {
@@ -31,7 +32,15 @@ namespace CocosSharp
                     prev = new CCSpawn(prev, actions[i]);
                 }
 
-                InitCCSpawn(prev, actions[actions.Length - 1]);
+                next = actions[actions.Length - 1];
+            }
+
+            // Can't call base(duration) because we need to determine max duration
+            // Instead call base's init method here
+            if(prev != null && next != null)
+            {
+                base.InitWithDuration(Math.Max(prev.Duration, next.Duration));
+                InitCCSpawn(prev, next);
             }
         }
 
