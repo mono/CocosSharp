@@ -11,20 +11,6 @@ namespace CocosSharp
         protected CCPoint m_positionInPixels;
         protected bool m_bConcave;
 
-        public CCLens3D()
-        {
-        }
-
-        public CCLens3D(float duration, CCGridSize gridSize, CCPoint position, float radius) : base()
-        {
-            InitWithDuration(duration, gridSize, position, radius);
-        }
-
-        public CCLens3D(CCLens3D lens3D)
-        {
-            InitWithDuration(lens3D.m_fDuration, lens3D.m_sGridSize, lens3D.m_position, lens3D.m_fRadius);
-        }
-
         public float LensEffect
         {
             get { return m_fLensEffect; }
@@ -52,41 +38,42 @@ namespace CocosSharp
             }
         }
 
-        public bool InitWithDuration(float duration, CCGridSize gridSize, CCPoint position, float radius)
+
+        #region Constructors
+
+        public CCLens3D()
         {
-            if (base.InitWithDuration(duration, gridSize))
-            {
-                m_position = new CCPoint(-1, -1);
-                m_positionInPixels = new CCPoint();
-
-                Position = position;
-                m_fRadius = radius;
-                m_fLensEffect = 0.7f;
-                m_bConcave = false;
-                m_bDirty = true;
-
-                return true;
-            }
-
-            return false;
         }
+
+        public CCLens3D(float duration, CCGridSize gridSize, CCPoint position, float radius) : base(duration, gridSize)
+        {
+            InitLens3D(position, radius);
+        }
+
+        // Perform a deep copy of CCLens3D
+        public CCLens3D(CCLens3D lens3D) : base(lens3D)
+        {
+            InitLens3D(lens3D.m_position, lens3D.m_fRadius);
+        }
+
+        private void InitLens3D(CCPoint position, float radius)
+        {
+            m_position = new CCPoint(-1, -1);
+            m_positionInPixels = new CCPoint();
+
+            Position = position;
+            m_fRadius = radius;
+            m_fLensEffect = 0.7f;
+            m_bConcave = false;
+            m_bDirty = true;
+        }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            if (pZone != null)
-            {
-                // in case of being called at sub class
-                var pCopy = (CCLens3D) (pZone);
-                base.Copy(pZone);
-
-                pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_position, m_fRadius);
-
-                return pCopy;
-            }
-            else
-            {
-                return new CCLens3D(this);
-            }
+            return new CCLens3D(this);
         }
 
         public override void Update(float time)

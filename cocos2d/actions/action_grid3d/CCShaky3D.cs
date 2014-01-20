@@ -5,37 +5,36 @@ namespace CocosSharp
         protected bool m_bShakeZ;
         protected int m_nRandrange;
 
-        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, int range, bool shakeZ)
+
+        #region Constructors
+
+        protected CCShaky3D()
         {
-            if (base.InitWithDuration(duration, gridSize))
-            {
-                m_nRandrange = range;
-                m_bShakeZ = shakeZ;
-
-                return true;
-            }
-
-            return false;
         }
+
+        public CCShaky3D(float duration, CCGridSize gridSize, int range, bool shakeZ) : base(duration, gridSize)
+        {
+            InitCCShaky3D(range, shakeZ);
+        }
+
+        // Perform deep copy of CCShaky3D
+        public CCShaky3D(CCShaky3D shaky) : base(shaky)
+        {
+            InitCCShaky3D(shaky.m_nRandrange, shaky.m_bShakeZ);
+        }
+
+        private void InitCCShaky3D(int range, bool shakeZ)
+        {
+            m_nRandrange = range;
+            m_bShakeZ = shakeZ;
+        }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCShaky3D pCopy;
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                pCopy = (CCShaky3D) (pZone);
-            }
-            else
-            {
-                pCopy = new CCShaky3D();
-                pZone = pCopy;
-            }
-
-            base.Copy(pZone);
-
-            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_nRandrange, m_bShakeZ);
-            return pCopy;
+            return new CCShaky3D(this);
         }
 
         public override void Update(float time)
@@ -57,15 +56,6 @@ namespace CocosSharp
                     SetVertex(new CCGridSize(i, j), ref v);
                 }
             }
-        }
-
-        protected CCShaky3D()
-        {
-        }
-
-        public CCShaky3D(float duration, CCGridSize gridSize, int range, bool shakeZ) : base(duration)
-        {
-            InitWithDuration(duration, gridSize, range, shakeZ);
         }
     }
 }

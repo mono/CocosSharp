@@ -35,43 +35,44 @@ namespace CocosSharp
             get { return m_fAmplitudeRate; }
         }
 
-        protected virtual bool InitWithDuration(float duration, CCGridSize gridSize, CCPoint position, float radius,
-                                                int waves, float amplitude)
+        #region Constructors
+
+        public CCRipple3D()
         {
-            if (base.InitWithDuration(duration, gridSize))
-            {
-                m_positionInPixels = new CCPoint();
-
-                Position = position;
-                m_fRadius = radius;
-                m_nWaves = waves;
-                m_fAmplitude = amplitude;
-                m_fAmplitudeRate = 1.0f;
-
-                return true;
-            }
-
-            return false;
         }
+
+        public CCRipple3D(float duration) : base(duration)
+        {
+        }
+
+        public CCRipple3D(float duration, CCGridSize gridSize, CCPoint position, float radius, int waves, float amplitude) 
+            : base(duration, gridSize)
+        {
+            InitRipple3D(position, radius, waves, amplitude);
+        }
+
+        public CCRipple3D(CCRipple3D ripple) : base(ripple)
+        {
+            InitRipple3D(ripple.m_position, ripple.m_fRadius, ripple.m_nWaves, ripple.m_fAmplitude);
+        }
+
+        private void InitRipple3D(CCPoint position, float radius, int waves, float amplitude)
+        {
+            m_positionInPixels = new CCPoint();
+
+            Position = position;
+            m_fRadius = radius;
+            m_nWaves = waves;
+            m_fAmplitude = amplitude;
+            m_fAmplitudeRate = 1.0f;
+        }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable pZone)
         {
-            CCRipple3D pCopy;
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                pCopy = (CCRipple3D) (pZone);
-            }
-            else
-            {
-                pCopy = new CCRipple3D();
-                pZone = (pCopy);
-            }
-
-            base.Copy(pZone);
-            pCopy.InitWithDuration(m_fDuration, m_sGridSize, m_position, m_fRadius, m_nWaves, m_fAmplitude);
-
-            return pCopy;
+            return new CCRipple3D(this);
         }
 
         public override void Update(float time)
@@ -108,19 +109,5 @@ namespace CocosSharp
             }
         }
 
-        public CCRipple3D()
-        {
-        }
-
-        public CCRipple3D(float duration)
-            : base(duration)
-        {
-        }
-
-        public CCRipple3D(float duration, CCGridSize gridSize, CCPoint position, float radius, int waves,
-                          float amplitude) : base(duration)
-        {
-            InitWithDuration(duration, gridSize, position, radius, waves, amplitude);
-        }
     }
 }
