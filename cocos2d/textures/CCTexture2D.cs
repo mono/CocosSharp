@@ -78,7 +78,8 @@ namespace CocosSharp
             RefreshAntialiasSetting ();
         }
         
-        public CCTexture2D (int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat, bool premultipliedAlpha, bool mipMap) : this()
+        public CCTexture2D (int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat, bool premultipliedAlpha, bool mipMap) 
+            : this()
         {
             Init(pixelsWide, pixelsHigh, pixelFormat, premultipliedAlpha, mipMap);
         }
@@ -119,13 +120,15 @@ namespace CocosSharp
         {
         }
         
-        public CCTexture2D (Stream stream, SurfaceFormat pixelFormat) : this()
+        public CCTexture2D (Stream stream, SurfaceFormat pixelFormat) 
+            : this()
         {
             InitWithStream(stream, pixelFormat);
         }
         
         public CCTexture2D (string text, CCSize dimensions, CCTextAlignment hAlignment, 
-                            CCVerticalTextAlignment vAlignment, string fontName, float fontSize) : this()
+                            CCVerticalTextAlignment vAlignment, string fontName, float fontSize) 
+            : this()
         {
             InitWithString(text, dimensions, hAlignment, vAlignment, fontName, fontSize);
         }
@@ -136,11 +139,13 @@ namespace CocosSharp
         }
 
         public CCTexture2D(Texture2D texture, SurfaceFormat format, bool premultipliedAlpha, bool managed)
+            : this()
         {
             InitWithTexture(texture, format, premultipliedAlpha, managed);
         }
 
         public CCTexture2D(Texture2D texture, SurfaceFormat format)
+            : this()
         {
             InitWithTexture(texture, format, true, false);
         }
@@ -150,7 +155,8 @@ namespace CocosSharp
         {
         }
 
-        public CCTexture2D(string file) : this()
+        public CCTexture2D(string file) 
+            : this()
         {
             InitWithFile(file);
         }
