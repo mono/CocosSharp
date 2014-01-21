@@ -13,81 +13,68 @@ This project is open source, freely available, and free of royalties
 or encumberance. The software is released under the highly permissive
 MIT License.
 
+Git
+---
 
-Download and Run
-----------------
+When you first check out, run
 
-### Code on GitHub
+   git clone --recursive git@github.com:xamarin/CocosSharp
 
-To obtain the code you will need a git client.  Either command line or graphical.
+so you will have all the submodules checked out for you.
 
-Using the git command line you will need to clone the git repository.
+With existing checkouts, run
 
-> $ git clone https://github.com/xamarin/CocosSharp.git
+   git submodule update --init --recursive
 
-Wait until the clone has finished.
+to make sure you get the latest changes in the submodules. Repos that
+were checked out recursively will do this automatically, but it
+doesn't hurt to run this manually.
 
-You should see something similar to the following:
+To pull external changes into a submodule
 
-	Cloning into 'CocosSharp'...
-	remote: Counting objects: 20553, done.
-	remote: Compressing objects: 100% (7677/7677), done.
-	remote: Total 20553 (delta 14127), reused 18870 (delta 12446)
-	Receiving objects: 100% (20553/20553), 100.83 MiB | 634 KiB/s, done.
-	Resolving deltas: 100% (14127/14127), done.
-	Checking out files: 100% (4130/4130), done.
+   cd <submodule>
+   git pull origin <branch>
+   cd <top-level>; git add <submodule>
+   git commit
 
-To support Android, iOS, and other platforms, you must have a version
-of MonoGame (develop branch) version 3.0 available. The MonoGame
-repository is a submodule of the Cocos2D-XNA project that all the
-solutions reference.
+To make changes in a submodule
 
-To initialise and update the required MonoGame submodules that we
-reference you will need to do the following:
+   cd <submodule>
 
-In the CocosSharp directory to issue the following submodule commands.
+   # By default, submodules are detached because they point to a
+   # specific commit. Use git-checkout to put yourself back on a
+   # branch.
+   #
+   git checkout <branch>
 
-> $ git submodule init
+   work as normal, the submodule is a normal repo
 
-Output from above command:
+   git commit/push new changes to the repo (submodule)
 
-	Submodule 'MonoGame' (https://github.com/Cocos2DXNA/MonoGame.git) registered for path 'MonoGame'
-	Submodule 'tools/ouya' (https://github.com/slygamer/ouya-csharp.git) registered for path 'tools/ouya'
+   cd <top-level>; git add <submodule> # this will record the new commits to xamcore
 
-You will then want to update the actual submodules:
+   git commit
 
-> $ git submodule update
+* To switch the repo of a submodule
 
-Output from above command:
+   edit '.gitmodules' to point to the new location
 
-	Cloning into 'MonoGame'...
-	remote: Counting objects: 32905, done.
-	remote: Compressing objects: 100% (10011/10011), done.
-	remote: Total 32905 (delta 24991), reused 29779 (delta 22574)
-	Receiving objects: 100% (32905/32905), 33.33 MiB | 305 KiB/s, done.
-	Resolving deltas: 100% (24991/24991), done.
-	Submodule path 'MonoGame': checked out 'bd6518a33c91c43a46f14aa68bdc854c08e6bc2a'
-	Cloning into 'tools/ouya'...
-	remote: Counting objects: 249, done.
-	remote: Compressing objects: 100% (139/139), done.
-	remote: Total 249 (delta 100), reused 231 (delta 86)
-	Receiving objects: 100% (249/249), 2.88 MiB | 620 KiB/s, done.
-	Resolving deltas: 100% (100/100), done.
-	Submodule path 'tools/ouya': checked out '5f712a4b3845bad2974b30bc0c243eb503812ea9'
+   git submodule sync -- <path of the submodule> # updates .git/config
 
-MonoGame has it's own external dependencies so we will also need to obtain those as well.
+   # I think this will checkout from the new location, internally. It
+   # may take a while for big repos.
+   #
+   git submodule update --recursive
 
-> $ cd MonoGame
+   git checkout <desired new hash> # This changes the pointer of the submodule
 
-> $ git submodule init
+The desired output diff is a change in .gitmodule to reflect the
+change in the remote URL, and a change in /<submodule> where you see
+the desired change in the commit hash
 
-> $ git submodule update ThirdParty/Libs
-
-Notice above that we only need the ThirdParty/Libs to actually build
-Cocos2D-XNA.
 
 You now have everything you need to start start developing with
-Cocos2D-XNA
+CocosSharp
 
 Getting Started
 ---------------
