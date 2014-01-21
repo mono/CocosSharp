@@ -306,7 +306,7 @@ namespace CocosSharp
             pp.BackBufferHeight = manager.PreferredBackBufferHeight;
             pp.BackBufferFormat = manager.PreferredBackBufferFormat;
             pp.DepthStencilFormat = manager.PreferredDepthStencilFormat;
-            pp.RenderTargetUsage = RenderTargetUsage.DiscardContents; //??? DiscardContents fast
+            pp.RenderTargetUsage = RenderTargetUsage.PreserveContents; // PreserveContents or problems with backgrounds not showing up
         }
 
         public static void InitializeDisplay(Game game, GraphicsDeviceManager graphics, DisplayOrientation supportedOrientations)
@@ -331,7 +331,7 @@ namespace CocosSharp
 				var service = value;
 				m_graphicsService = service;
 				m_presentationParameters = new PresentationParameters () {
-					RenderTargetUsage = RenderTargetUsage.DiscardContents,
+                    RenderTargetUsage = RenderTargetUsage.PreserveContents,
 					DepthStencilFormat = DepthFormat.Depth24Stencil8,
 					BackBufferFormat = SurfaceFormat.Color
 				};
