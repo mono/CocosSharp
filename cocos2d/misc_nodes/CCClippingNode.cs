@@ -26,29 +26,28 @@ namespace CocosSharp
             set { m_fAlphaThreshold = value; }
         }
 
+
+        #region Constructors
+
         public CCClippingNode()
         {
-            Init(null);
+            InitCCClippingNode(null);
         }
 
         public CCClippingNode(CCNode stencil)
         {
-            Init(stencil);
+            InitCCClippingNode(stencil);
         }
 
-        public override bool Init()
-        {
-            return Init(null);
-        }
-
-        public bool Init(CCNode stencil)
+        private void InitCCClippingNode(CCNode stencil)
         {
             m_pStencil = stencil;
             m_fAlphaThreshold = 1;
             m_bInverted = false;
-
-            return true;
         }
+
+        #endregion Constructors
+
 
         public override void OnEnter()
         {

@@ -101,10 +101,8 @@ namespace tests.Clipping
             return "";
         }
 
-        public override bool Init()
+        public BaseClippingNodeTest() : base()
         {
-            base.Init();
-
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCSprite background = new CCSprite(TestResource.s_back3);
@@ -138,8 +136,6 @@ namespace tests.Clipping
             AddChild(menu, 1);
 
             Setup();
-
-            return true;
         }
 
         public void restartCallback(object pSender)
