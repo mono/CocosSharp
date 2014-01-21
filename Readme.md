@@ -1,13 +1,17 @@
-# Cocos2D-XNA
+# CocosSharp
 
-Cocos2D-XNA is the premier 2D game development engine based upon the wildly popular and successful Cocos2D-X engine. With Cocos2D-XNA, the game developer can create fantastic games with rich user experiences without the tremendous cost of a proprietary game library. MIT licensed, and open source hosted at github.com, this framework gives developers total power and control over every aspect of their game. Cocos2D-XNA has been used to deploy games to nearly every type of device in use today using XNA from Microsoft or MonoGame. Now the power of XNA and the depth of Cocos2d are at every game developers reach, taking their creative genius to over 95% of the computing devices on the planet.
+CocosSharp is an easy to use library for simple games using C# and F#.
+It is a .NET port of the popular Cocos2D engine, derived from the
+Cocos2D-X engine via Cocos2D-XNA.
 
-Cocos2D-XNA : Reach To Infinity!
+This library is MIT licensed.
 
 License
 -------
 
-This project is open source, freely available, and free of royalties or encumberance. The software is released under the highly permissive MIT License.
+This project is open source, freely available, and free of royalties
+or encumberance. The software is released under the highly permissive
+MIT License.
 
 
 Download and Run
@@ -19,13 +23,13 @@ To obtain the code you will need a git client.  Either command line or graphical
 
 Using the git command line you will need to clone the git repository.
 
-> $ git clone https://github.com/Cocos2DXNA/cocos2d-xna.git
+> $ git clone https://github.com/xamarin/CocosSharp.git
 
 Wait until the clone has finished.
 
 You should see something similar to the following:
 
-	Cloning into 'cocos2d-xna'...
+	Cloning into 'CocosSharp'...
 	remote: Counting objects: 20553, done.
 	remote: Compressing objects: 100% (7677/7677), done.
 	remote: Total 20553 (delta 14127), reused 18870 (delta 12446)
@@ -33,11 +37,15 @@ You should see something similar to the following:
 	Resolving deltas: 100% (14127/14127), done.
 	Checking out files: 100% (4130/4130), done.
 
-To support Android, iOS, and other platforms, you must have a version of MonoGame (develop branch) version 3.0 available. The MonoGame repository is a submodule of the Cocos2D-XNA project that all the solutions reference.
+To support Android, iOS, and other platforms, you must have a version
+of MonoGame (develop branch) version 3.0 available. The MonoGame
+repository is a submodule of the Cocos2D-XNA project that all the
+solutions reference.
 
-To initialise and update the required MonoGame submodules that we reference you will need to do the following:
+To initialise and update the required MonoGame submodules that we
+reference you will need to do the following:
 
-Change into the cocos2d-xna directory to issue the following submodule commands.
+In the CocosSharp directory to issue the following submodule commands.
 
 > $ git submodule init
 
@@ -75,49 +83,48 @@ MonoGame has it's own external dependencies so we will also need to obtain those
 
 > $ git submodule update ThirdParty/Libs
 
-Notice above that we only need the ThirdParty/Libs to actually build Cocos2D-XNA.
+Notice above that we only need the ThirdParty/Libs to actually build
+Cocos2D-XNA.
 
-You now have everything you need to start start developing with Cocos2D-XNA
-
-Templates for Visual Studio
----------------------------
-
-To make things as easy as possible we also provide templates for Visual Studio.
-
-There is a tutorial on [Finding and Installing the templates](http://cocoa-mono.org/archives/494/cocos2d-xna-getting-started-part-1/ "Cocos2D-XNA Getting Started")
-
-Templates for Xamarin Studio
-----------------------------
-
-We are working hard on getting these out.
-
+You now have everything you need to start start developing with
+Cocos2D-XNA
 
 Getting Started
 ---------------
 
 ### Test Bed
 
-We have created solutions for all the supported platforms that serves as our TestBed for each platform.
+We have created solutions for all the supported platforms that serves
+as our TestBed for each platform.
 
-You can find those in the [tests directory](https://github.com/Cocos2DXNA/cocos2d-xna/tree/master/tests "Test Bed")
+You can find those in the [tests directory](https://github.com/xamarin/CocosSharp/tree/master/tests "Test Bed")
 
-	cocos2d-xna.Tests.Android.sln	
-	cocos2d-xna.Tests.Ouya.sln	
-	cocos2d-xna.Tests.Windows.sln	
-	cocos2d-xna.Tests.Windows8.sln	
-	cocos2d-xna.Tests.WindowsDX.sln	
-	cocos2d-xna.Tests.WindowsGL.sln	
-	cocos2d-xna.Tests.WindowsPhone.sln	
-	cocos2d-xna.Tests.WindowsPhone7.sln	
-	cocos2d-xna.Tests.iOS.sln	
+	CocosSharp.Tests.Android.sln	
+	CocosSharp.Tests.Ouya.sln	
+	CocosSharp.Tests.Windows.sln	
+	CocosSharp.Tests.Windows8.sln	
+	CocosSharp.Tests.WindowsDX.sln	
+	CocosSharp.Tests.WindowsGL.sln	
+	CocosSharp.Tests.WindowsPhone.sln	
+	CocosSharp.Tests.WindowsPhone7.sln	
+	CocosSharp.Tests.iOS.sln	
 
 ### Samples
 
-[Xamarin's Angry Ninjas](https://github.com/xamarin/AngryNinjas "Xamarin’s Angry Ninjas") sample application. We worked hard on converting that cocos2d-iphone game over to Cocos2D-XNA. Take a look at how it deploys raw assets and utilizes box2d. 
+[Xamarin's Angry Ninjas](https://github.com/xamarin/AngryNinjas
+"Xamarin’s Angry Ninjas") sample application. We worked hard on
+converting that cocos2d-iphone game over to Cocos2D-XNA. Take a look
+at how it deploys raw assets and utilizes box2d.
 
 Additional samples will be forthcoming as we find time to add more for you. 
 
+History
+-------
 
+This project is a fork of the Cocos2D-XNA project, which is a port of
+the C++-based Cocos2D-X API, which in turn is a cross-platform port of
+the cocos2d-iphone project.  
 
-
-
+The focus of this fork is to create a library that is idiomatically
+correct for C# and remove many of the historical warts inherited from
+the straight ports from C++ and Objective-C.
