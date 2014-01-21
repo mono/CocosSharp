@@ -37,7 +37,7 @@ namespace CocosSharp
 
         public override bool IsDone
         {
-            get { return m_elapsed >= m_fDuration; }
+            get { return m_elapsed >= Duration; }
         }
 
 
@@ -49,25 +49,13 @@ namespace CocosSharp
 
         public CCActionInterval(float d) : base(d)
         {
-            // prevent division by 0
-            // This comparison could be in step:, but it might decrease the performance
-            // by 3% in heavy based action games.
-            if (m_fDuration == 0)
-            {
-                m_fDuration = float.Epsilon;
-            }
+            this.Duration = d;
         }
 
         // Perform a deep copy of CCACtionInterval
         protected internal CCActionInterval(CCActionInterval actionInterval) : base(actionInterval)
         {
-            // prevent division by 0
-            // This comparison could be in step:, but it might decrease the performance
-            // by 3% in heavy based action games.
-            if (m_fDuration == 0)
-            {
-                m_fDuration = float.Epsilon;
-            }
+            this.Duration = actionInterval.Duration;
         }
 
         #endregion Constructors
@@ -83,15 +71,16 @@ namespace CocosSharp
             }
             set
             {
-                m_fDuration = value;
+                float newDuration = value;
                 // prevent division by 0
                 // This comparison could be in step:, but it might decrease the performance
                 // by 3% in heavy based action games.
-                if (m_fDuration == 0)
+                if (newDuration == 0)
                 {
-                    m_fDuration = float.Epsilon;
+                    newDuration = float.Epsilon;
                 }
 
+                base.Duration = newDuration;
                 m_elapsed = 0;
                 m_bFirstTick = true;
             }
