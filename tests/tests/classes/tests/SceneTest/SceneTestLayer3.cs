@@ -10,15 +10,8 @@ namespace tests
     {
         string s_pPathGrossini = "Images/grossini";
 
-        public SceneTestLayer3()
+        public SceneTestLayer3() : base(new CCColor4B(0, 0, 255, 255))
         {
-            Init();
-        }
-
-        public override bool Init()
-        {
-            InitWithColor(new CCColor4B(0, 0, 255, 255));
-
             var item0 = new CCMenuItemFont("(3) Touch to pushScene (self)", item0Clicked);
             var item1 = new CCMenuItemFont("(3) Touch to popScene", item1Clicked);
             var item2 = new CCMenuItemFont("(3) Touch to popToRootScene", item2Clicked);
@@ -39,8 +32,6 @@ namespace tests
             sprite.RunAction(repeat);
 
             Schedule(testDealloc);
-
-            return true;
         }
 
         public virtual void testDealloc(float dt)

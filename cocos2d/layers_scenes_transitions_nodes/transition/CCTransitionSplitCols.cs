@@ -31,6 +31,17 @@ namespace CocosSharp
     /// </summary>
     public class CCTransitionSplitCols : CCTransitionScene, ICCTransitionEaseScene
     {
+        #region Constructors
+
+        public CCTransitionSplitCols() { }
+
+        public CCTransitionSplitCols(float t, CCScene scene) : base(t, scene)
+        {
+        }
+
+        #endregion Constructors
+
+
         #region ICCTransitionEaseScene Members
 
         public virtual CCFiniteTimeAction EaseAction(CCActionInterval action)
@@ -64,13 +75,6 @@ namespace CocosSharp
                     new CCStopGrid()
                     )
                 );
-        }
-
-        public CCTransitionSplitCols() { }
-
-        public CCTransitionSplitCols(float t, CCScene scene) : base(t, scene)
-        {
-            InitWithDuration(t, scene);
         }
     }
 }

@@ -67,11 +67,15 @@ namespace CocosSharp
                 );
         }
 
+        #region Constructors
+
         public CCTransitionFadeTR() { }
         public CCTransitionFadeTR(float t, CCScene scene) : base(t, scene)
         {
-            InitWithDuration(t, scene);
         }
+
+        #endregion Constructors
+
 
         protected override void SceneOrder()
         {

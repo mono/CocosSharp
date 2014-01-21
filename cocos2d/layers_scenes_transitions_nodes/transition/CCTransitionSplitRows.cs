@@ -35,12 +35,15 @@ namespace CocosSharp
         {
             return new CCSplitRows(m_fDuration / 2.0f, 3);
         }
-        
+
+        #region Constructors
+
         public CCTransitionSplitRows() { }
 
         public CCTransitionSplitRows(float t, CCScene scene) : base(t, scene)
         {
-            InitWithDuration(t, scene);
         }
+
+        #endregion Constructors
     }
 }

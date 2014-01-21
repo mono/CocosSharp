@@ -35,11 +35,16 @@ namespace CocosSharp
         {
             return new CCFadeOutUpTiles(m_fDuration, size);
         }
+
+
+        #region Constructors
+
         public CCTransitionFadeUp() { }
 
         public CCTransitionFadeUp(float t, CCScene scene) : base(t, scene)
         {
-            InitWithDuration(t, scene);
         }
+
+        #endregion Constructors
     }
 }

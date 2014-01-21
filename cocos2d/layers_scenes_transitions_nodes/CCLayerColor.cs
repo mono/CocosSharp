@@ -39,25 +39,6 @@ namespace CocosSharp
         protected VertexPositionColor[] m_pSquareVertices = new VertexPositionColor[4];
         protected CCBlendFunc m_tBlendFunc;
 
-        public CCLayerColor() : this(new CCColor4B(0, 0, 0, 0), 0.0f, 0.0f)
-        {
-        }
-
-        /// <summary>
-        /// creates a CCLayer with color, width and height in Points
-        /// </summary>
-        public CCLayerColor (CCColor4B color, float width, float height) : base()
-        {
-            InitWithColor(color, width, height);
-        }
-
-        /// <summary>
-        /// creates a CCLayer with color. Width and height are the window size. 
-        /// </summary>
-        public CCLayerColor (CCColor4B color) : this(color, 0.0f, 0.0f)
-        {
-        }
-
         /// <summary>
         /// override contentSize
         /// </summary>
@@ -81,17 +62,71 @@ namespace CocosSharp
             }
         }
 
-        #region InitWithXXX
 
-        protected void InitWithColor(CCColor4B color)
+        #region ICCBlendProtocol Members
+
+        /// <summary>
+        /// BlendFunction. Conforms to CCBlendProtocol protocol 
+        /// </summary>
+        public virtual CCBlendFunc BlendFunc
         {
-            InitWithColor (color, 0.0f, 0.0f);
+            get { return m_tBlendFunc; }
+            set { m_tBlendFunc = value; }
+        }
+
+        #endregion
+
+
+        #region RGBA Protocol
+
+        public override CCColor3B Color
+        {
+            get { return base.Color; }
+            set
+            {
+                base.Color = value;
+                UpdateColor();
+            }
+        }
+
+        public override byte Opacity
+        {
+            get { return base.Opacity; }
+            set
+            {
+                base.Opacity = value;
+                UpdateColor();
+            }
+        }
+
+        #endregion
+
+
+        #region Constructors
+
+        public CCLayerColor() : this(new CCColor4B(0, 0, 0, 0), 0.0f, 0.0f)
+        {
+        }
+
+        /// <summary>
+        /// creates a CCLayer with color, width and height in Points
+        /// </summary>
+        public CCLayerColor (CCColor4B color, float width, float height) : base()
+        {
+            InitCCLayerColor(color, width, height);
+        }
+
+        /// <summary>
+        /// creates a CCLayer with color. Width and height are the window size. 
+        /// </summary>
+        public CCLayerColor (CCColor4B color) : this(color, 0.0f, 0.0f)
+        {
         }
 
         /// <summary>
         /// initializes a CCLayer with color, width and height in Points
         /// </summary>
-        private void InitWithColor(CCColor4B color, float width, float height)
+        private void InitCCLayerColor(CCColor4B color, float width, float height)
         {
             if (width == 0.0f || height == 0.0f) 
             {
@@ -118,7 +153,8 @@ namespace CocosSharp
             ContentSize = new CCSize(width, height);
         }
 
-        #endregion
+        #endregion Constructors
+
 
         #region changesize
 
@@ -149,43 +185,6 @@ namespace CocosSharp
         public void ChangeWidthAndHeight(float w, float h)
         {
             ContentSize = new CCSize(w, h);
-        }
-
-        #endregion
-
-        #region ICCBlendProtocol Members
-
-        /// <summary>
-        /// BlendFunction. Conforms to CCBlendProtocol protocol 
-        /// </summary>
-        public virtual CCBlendFunc BlendFunc
-        {
-            get { return m_tBlendFunc; }
-            set { m_tBlendFunc = value; }
-        }
-
-        #endregion
-
-        #region RGBA Protocol
-
-        public override CCColor3B Color
-        {
-            get { return base.Color; }
-            set
-            {
-                base.Color = value;
-                UpdateColor();
-            }
-        }
-
-        public override byte Opacity
-        {
-            get { return base.Opacity; }
-            set
-            {
-                base.Opacity = value;
-                UpdateColor();
-            }
         }
 
         #endregion

@@ -28,6 +28,25 @@ namespace CocosSharp
         private CCAction m_InAction, m_OutAction;
         public bool ShowFirstLayerOnEnter { get; set; }
 
+        /// <summary>
+        /// The action to play on the layer that becomes the active layer
+        /// </summary>
+        public CCAction InAction
+        {
+            get { return (m_InAction); }
+            set { m_InAction = value; }
+        }
+
+        /// <summary>
+        /// The action to play on the active layer when it becomes inactive.
+        /// </summary>
+        public CCAction OutAction
+        {
+            get { return (m_OutAction); }
+            set { m_OutAction = value; }
+        }
+
+
         #region Constructors
 
         public CCLayerMultiplex() : base()
@@ -60,12 +79,6 @@ namespace CocosSharp
         {
         }
 
-        #endregion
-
-        #region Legacy Init Methods
-
-        /** initializes a MultiplexLayer with one or more layers using a variable argument list. */
-
         private void InitWithLayers(params CCLayer[] layer)
         {
             m_pLayers = new Dictionary<int, CCLayer>();
@@ -79,25 +92,8 @@ namespace CocosSharp
             }
         }
 
-        #endregion
+        #endregion Constructors
 
-        /// <summary>
-        /// The action to play on the layer that becomes the active layer
-        /// </summary>
-        public CCAction InAction
-        {
-            get { return (m_InAction); }
-            set { m_InAction = value; }
-        }
-
-        /// <summary>
-        /// The action to play on the active layer when it becomes inactive.
-        /// </summary>
-        public CCAction OutAction
-        {
-            get { return (m_OutAction); }
-            set { m_OutAction = value; }
-        }
 
         /// <summary>
         /// The list of layers in their insertion order.

@@ -36,10 +36,14 @@ namespace CocosSharp
             return new CCFadeOutBLTiles(m_fDuration, size);
         }
 
+        #region Constructors
+
         public CCTransitionFadeBL() { }
         public CCTransitionFadeBL(float t, CCScene scene) : base(t, scene)
         {
-            InitWithDuration(t, scene);
         }
+
+        #endregion Constructors
+
     }
 }

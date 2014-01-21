@@ -7,10 +7,8 @@ namespace tests
         //UxString	m_strTitle;
         private static int MAX_LAYER = 22;
 
-        public TextLayer()
+        public TextLayer() : base(CCTypes.CreateColor(32, 32, 32, 255))
         {
-            InitWithColor(CCTypes.CreateColor(32, 32, 32, 255));
-
             var node = new CCNode();
             CCActionInterval effect = getAction();
             node.RunAction(effect);

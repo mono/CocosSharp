@@ -32,10 +32,16 @@ namespace CocosSharp
             return new CCFadeOutDownTiles(m_fDuration, size);
         }
 
+
+        #region Constructors
+
         public CCTransitionFadeDown() { }
+
         public CCTransitionFadeDown(float t, CCScene scene) : base(t, scene)
         {
-            InitWithDuration(t, scene);
         }
+
+        #endregion Constructors
+
     }
 }

@@ -176,10 +176,8 @@ namespace tests
         public CCSprite m_background;
         public CCParticleSystem m_emitter;
 
-        public ParticleDemo()
+        public ParticleDemo() : base(CCTypes.CreateColor(127, 127, 127, 255))
         {
-            InitWithColor(CCTypes.CreateColor(127, 127, 127, 255));
-
             m_emitter = null;
 
             TouchEnabled = true;

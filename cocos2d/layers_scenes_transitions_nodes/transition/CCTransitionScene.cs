@@ -11,6 +11,16 @@ namespace CocosSharp
         protected CCScene m_pInScene;
         protected CCScene m_pOutScene;
 
+        public override bool IsTransition
+        {
+            get
+            {
+                return (true);
+            }
+        }
+
+        #region Constructors
+
         // This can be taken out once all the transitions have been modified with constructors.
         protected CCTransitionScene() {}
 
@@ -21,19 +31,33 @@ namespace CocosSharp
         }
         */
 
-        public CCTransitionScene (float t, CCScene scene)
+        public CCTransitionScene (float t, CCScene scene) : base()
         {
-            InitWithDuration(t, scene);
+            InitCCTransitionScene(t, scene);
         }
-        
 
-        public override bool IsTransition
+        private void InitCCTransitionScene(float t, CCScene scene)
         {
-            get
+            Debug.Assert(scene != null, "Argument scene must be non-nil");
+
+            m_fDuration = t;
+
+            // retain
+            m_pInScene = scene;
+            m_pOutScene = CCDirector.SharedDirector.RunningScene;
+            if (m_pOutScene == null)
             {
-                return (true);
+                // Creating an empty scene.
+                m_pOutScene = new CCScene();
             }
+
+            Debug.Assert(m_pInScene != m_pOutScene, "Incoming scene must be different from the outgoing scene");
+
+            SceneOrder();
         }
+
+        #endregion Constructors
+
 
         public override void Draw()
         {
@@ -89,35 +113,7 @@ namespace CocosSharp
 
         public virtual void Reset(float t, CCScene scene)
         {
-            InitWithDuration(t, scene);
-        }
-
-        // Bool return type used by subclasses
-        protected bool InitWithDuration(float t, CCScene scene)
-        {
-            Debug.Assert(scene != null, "Argument scene must be non-nil");
-
-            if (base.Init())
-            {
-                m_fDuration = t;
-
-                // retain
-                m_pInScene = scene;
-                m_pOutScene = CCDirector.SharedDirector.RunningScene;
-                if (m_pOutScene == null)
-                {
-                    // Creating an empty scene.
-                    m_pOutScene = new CCScene();
-                    m_pOutScene.Init();
-                }
-
-                Debug.Assert(m_pInScene != m_pOutScene, "Incoming scene must be different from the outgoing scene");
-
-                SceneOrder();
-
-                return true;
-            }
-            return false;
+            InitCCTransitionScene(t, scene);
         }
 
         public void Finish()

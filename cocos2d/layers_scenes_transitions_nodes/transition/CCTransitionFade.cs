@@ -32,35 +32,32 @@ namespace CocosSharp
         private const int kSceneFade = 2147483647;
         protected CCColor4B m_tColor;
 
+
+        #region Constructors
+
         /// <summary>
         /// creates the transition with a duration and with an RGB color
         /// Example: FadeTransition::create(2, scene, ccc3(255,0,0); // red color
         /// </summary>
         public CCTransitionFade (float duration, CCScene scene, CCColor3B color) : base (duration, scene)
         {
-            InitWithDuration(duration, scene, color);
+            InitCCTransitionFade(color);
         }
 
-        public CCTransitionFade (float t, CCScene scene) : this (t, scene, new CCColor3B())
+        public CCTransitionFade (float t, CCScene scene) : this (t, scene, new CCColor3B(Color.Black))
         {
-            //return Create(t, scene, new CCColor3B());
         }
 
         /// <summary>
         /// initializes the transition with a duration and with an RGB color 
         /// </summary>
-        private void InitWithDuration(float duration, CCScene scene, CCColor3B color)
+        private void InitCCTransitionFade(CCColor3B color)
         {
-            if (base.InitWithDuration(duration, scene))
-            {
-                m_tColor = new CCColor4B {R = color.R, G = color.G, B = color.B, A = 0};
-            }
+            m_tColor = new CCColor4B {R = color.R, G = color.G, B = color.B, A = 0};
         }
 
-        private new void InitWithDuration(float t, CCScene scene)
-        {
-            InitWithDuration(t, scene, new CCColor3B(Color.Black));
-        }
+        #endregion Constructors
+
 
         public override void OnEnter()
         {

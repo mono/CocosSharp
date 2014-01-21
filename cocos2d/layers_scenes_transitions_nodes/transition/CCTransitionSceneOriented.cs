@@ -44,6 +44,9 @@ namespace CocosSharp
     {
         protected CCTransitionOrientation m_eOrientation;
 
+
+        #region Constructors
+
         public CCTransitionSceneOriented() { }
 
         /// <summary>
@@ -51,18 +54,18 @@ namespace CocosSharp
         /// </summary>
         public CCTransitionSceneOriented (float t, CCScene scene, CCTransitionOrientation orientation) : base (t, scene)
         {
-            m_eOrientation = orientation;
+            InitCCTransitionSceneOriented(orientation);
         }
 
         /// <summary>
         /// initializes a transition with duration and incoming scene
         /// </summary>
-        private void InitWithDuration(float t, CCScene scene, CCTransitionOrientation orientation)
+        private void InitCCTransitionSceneOriented(CCTransitionOrientation orientation)
         {
-            if (base.InitWithDuration(t, scene))
-            {
-                m_eOrientation = orientation;
-            }
+            m_eOrientation = orientation;
         }
+
+        #endregion Constructors
+
     }
 }
