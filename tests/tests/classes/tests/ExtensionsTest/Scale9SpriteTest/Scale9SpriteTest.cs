@@ -95,8 +95,7 @@ namespace tests.Extensions
 
             CCLog.Log("S9FrameNameSpriteSheet ...");
 
-            var blocks = new CCScale9Sprite();
-            blocks.InitWithSpriteFrameName("blocks9.png");
+            var blocks = CCScale9Sprite.SpriteWithFrameName("blocks9.png");
             CCLog.Log("... created");
 
             blocks.Position = new CCPoint(x, y);
@@ -131,8 +130,7 @@ namespace tests.Extensions
 
             CCLog.Log("S9FrameNameSpriteSheetRotated ...");
 
-            var blocks = new CCScale9Sprite();
-            blocks.InitWithSpriteFrameName("blocks9r.png");
+            var blocks = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
 
             CCLog.Log("... created");
 
@@ -213,8 +211,7 @@ namespace tests.Extensions
 
             CCLog.Log("S9FrameNameSpriteSheetScaledNoInsets ...");
 
-            var blocks_scaled = new CCScale9Sprite();
-            blocks_scaled.InitWithSpriteFrameName("blocks9.png");
+            var blocks_scaled = CCScale9Sprite.SpriteWithFrameName("blocks9.png");
 
             CCLog.Log("... created");
 
@@ -253,8 +250,7 @@ namespace tests.Extensions
 
             CCLog.Log("S9FrameNameSpriteSheetRotatedScaledNoInsets ...");
 
-            var blocks_scaled = new CCScale9Sprite();
-            blocks_scaled.InitWithSpriteFrameName("blocks9r.png");
+            var blocks_scaled = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
             CCLog.Log("... created");
 
             blocks_scaled.Position = new CCPoint(x, y);
@@ -337,8 +333,7 @@ namespace tests.Extensions
 
             CCLog.Log("S9FrameNameSpriteSheetInsets ...");
 
-            var blocks_with_insets = new CCScale9Sprite();
-            blocks_with_insets.InitWithSpriteFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
+            var blocks_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
             CCLog.Log("... created");
 
             blocks_with_insets.Position = new CCPoint(x, y);
@@ -373,8 +368,7 @@ namespace tests.Extensions
 
             CCLog.Log("S9FrameNameSpriteSheetInsetsScaled ...");
 
-            var blocks_scaled_with_insets = new CCScale9Sprite();
-            blocks_scaled_with_insets.InitWithSpriteFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
+            var blocks_scaled_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
             CCLog.Log("... created");
 
             blocks_scaled_with_insets.ContentSize = new CCSize(96 * 4.5f, 96 * 2.5f);
@@ -412,8 +406,7 @@ namespace tests.Extensions
 
             CCLog.Log("S9FrameNameSpriteSheetRotatedInsets ...");
 
-            var blocks_with_insets = new CCScale9Sprite();
-            blocks_with_insets.InitWithSpriteFrameName("blocks9r.png", new CCRect(32, 32, 32, 32));
+            var blocks_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9r.png", new CCRect(32, 32, 32, 32));
             CCLog.Log("... created");
 
             blocks_with_insets.Position = new CCPoint(x, y);
@@ -450,8 +443,7 @@ namespace tests.Extensions
 
             CCLog.Log("S9_TexturePacker ...");
 
-            var s = new CCScale9Sprite();
-            s.InitWithSpriteFrameName("button_normal.png");
+            var s = CCScale9Sprite.SpriteWithFrameName("button_normal.png");
             CCLog.Log("... created");
 
             s.Position = new CCPoint(x, y);
@@ -465,8 +457,7 @@ namespace tests.Extensions
 
             x = winSize.Width * 3 / 4;
 
-            var s2 = new CCScale9Sprite();
-            s2.InitWithSpriteFrameName("button_actived.png");
+            var s2 = CCScale9Sprite.SpriteWithFrameName("button_actived.png");
             CCLog.Log("... created");
 
             s2.Position = new CCPoint(x, y);
@@ -504,8 +495,7 @@ namespace tests.Extensions
 
             CCLog.Log("S9FrameNameSpriteSheetRotatedInsetsScaled ...");
 
-            var blocks_scaled_with_insets = new CCScale9Sprite();
-            blocks_scaled_with_insets.InitWithSpriteFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
+            var blocks_scaled_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
             CCLog.Log("... created");
 
             blocks_scaled_with_insets.ContentSize = new CCSize(96 * 4.5f, 96 * 2.5f);
@@ -543,8 +533,7 @@ namespace tests.Extensions
 
             CCLog.Log("Scale9FrameNameSpriteSheetRotatedSetCapInsetLater ...");
 
-            var blocks_scaled_with_insets = new CCScale9Sprite();
-            blocks_scaled_with_insets.InitWithSpriteFrameName("blocks9r.png");
+            var blocks_scaled_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
             CCLog.Log("... created");
 
             blocks_scaled_with_insets.InsetLeft = 32;
@@ -587,8 +576,7 @@ namespace tests.Extensions
 
             CCLog.Log("S9CascadeOpacityAndColor ...");
 
-            var blocks_scaled_with_insets = new CCScale9Sprite();
-            blocks_scaled_with_insets.InitWithSpriteFrameName("blocks9r.png");
+            var blocks_scaled_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
             CCLog.Log("... created");
 
             blocks_scaled_with_insets.Position = new CCPoint(x, y);
