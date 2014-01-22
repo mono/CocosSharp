@@ -212,31 +212,6 @@ namespace CocosSharp
 
         #endregion
 
-        public override bool Init()
-        {
-            return InitWithBatchNode(null, CCRect.Zero, CCRect.Zero);
-        }
-
-        public bool InitWithBatchNode(CCSpriteBatchNode batchnode, CCRect rect, CCRect capInsets)
-        {
-            return InitWithBatchNode(batchnode, rect, false, capInsets);
-        }
-
-        public bool InitWithBatchNode(CCSpriteBatchNode batchnode, CCRect rect, bool rotated, CCRect capInsets)
-        {
-            base.Init();
-
-            if (batchnode != null)
-            {
-                UpdateWithBatchNode(batchnode, rect, rotated, capInsets);
-            }
-
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
-            _positionsAreDirty = true;
-
-            return true;
-        }
-
         public bool UpdateWithBatchNode(CCSpriteBatchNode batchnode, CCRect rect, bool rotated, CCRect capInsets)
         {
             var opacity = Opacity;
@@ -566,80 +541,100 @@ namespace CocosSharp
             _centre.Position = new CCPoint(leftWidth, bottomHeight);
         }
 
-        #region File Init Methods
-        internal virtual bool InitWithFile(string file, CCRect rect, CCRect capInsets)
-        {
-            Debug.Assert(!string.IsNullOrEmpty(file), "Invalid file for sprite");
 
-            CCSpriteBatchNode batchnode = new CCSpriteBatchNode(file, 9);
-            bool pReturn = InitWithBatchNode(batchnode, rect, capInsets);
-            return pReturn;
+        #region Constructors
+
+        public CCScale9Sprite(CCSpriteBatchNode batchnode, CCRect rect, bool rotated, CCRect capInsets)
+        {
+            InitCCScale9Sprite(batchnode, rect, rotated, capInsets);
         }
 
-        internal virtual bool InitWithFile(string file, CCRect rect)
+        public CCScale9Sprite(CCSpriteBatchNode batchnode, CCRect rect, CCRect capInsets) 
+            : this(batchnode, rect, false, capInsets)
         {
-            Debug.Assert(!string.IsNullOrEmpty(file), "Invalid file for sprite");
-            bool pReturn = InitWithFile(file, rect, CCRect.Zero);
-            return pReturn;
         }
 
-        internal virtual bool InitWithFile(CCRect capInsets, string file)
+        public CCScale9Sprite() : this((CCSpriteBatchNode)null, CCRect.Zero, CCRect.Zero)
         {
-            bool pReturn = InitWithFile(file, CCRect.Zero, capInsets);
-            return pReturn;
         }
 
-        internal virtual bool InitWithFile(string file)
+        public CCScale9Sprite(CCRect capInsets) : this((CCSpriteBatchNode)null, CCRect.Zero, capInsets)
         {
-            bool pReturn = InitWithFile(file, CCRect.Zero);
-            return pReturn;
-        }
-        #endregion
-
-        #region SpriteFrame Methods
-
-        public virtual bool InitWithSpriteFrame(CCSpriteFrame spriteFrame, CCRect capInsets)
-        {
-            Debug.Assert(spriteFrame != null, "Sprite frame must be not nil");
-
-            CCSpriteBatchNode batchnode = new CCSpriteBatchNode(spriteFrame.Texture, 9);
-            bool pReturn = InitWithBatchNode(batchnode, spriteFrame.Rect, spriteFrame.IsRotated, capInsets);
-            return pReturn;
         }
 
-        public virtual bool InitWithSpriteFrame(CCSpriteFrame spriteFrame)
+        // File
+
+        public CCScale9Sprite(string file, CCRect rect, CCRect capInsets) : this(new CCSpriteBatchNode(file, 9), rect, capInsets)
         {
-            Debug.Assert(spriteFrame != null, "Invalid spriteFrame for sprite");
-            bool pReturn = InitWithSpriteFrame(spriteFrame, CCRect.Zero);
-            return pReturn;
         }
 
-        public virtual bool InitWithSpriteFrameName(string spriteFrameName, CCRect capInsets)
+        public CCScale9Sprite(string file, CCRect rect) : this(file, rect, CCRect.Zero)
         {
-            Debug.Assert(spriteFrameName != null, "Invalid spriteFrameName for sprite");
-
-            CCSpriteFrame frame = CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName(spriteFrameName);
-            bool pReturn = InitWithSpriteFrame(frame, capInsets);
-            return pReturn;
         }
 
-        public virtual bool InitWithSpriteFrameName(string spriteFrameName)
+        public CCScale9Sprite(string file) : this(file, CCRect.Zero)
         {
-            bool pReturn = InitWithSpriteFrameName(spriteFrameName, CCRect.Zero);
-            return pReturn;
         }
 
-        #endregion
+        // Sprite frame
 
-        public CCScale9Sprite(CCRect capInsets)
+        public CCScale9Sprite(CCSpriteFrame spriteFrame, CCRect capInsets) 
+            : this(new CCSpriteBatchNode(spriteFrame.Texture, 9), spriteFrame.Rect, spriteFrame.IsRotated, capInsets)
         {
-            InitWithBatchNode(_scale9Image, _spriteRect, capInsets);
         }
 
-        public CCScale9Sprite()
+        public CCScale9Sprite(CCSpriteFrame spriteFrame) : this(spriteFrame, CCRect.Zero)
         {
-            Init();
         }
+
+        // Sprite frame name
+
+        // A constructor with argument string already exists (filename), so create this factory method instead
+        public static CCScale9Sprite SpriteWithFrameName(string spriteFrameName, CCRect capInsets)
+        {
+            CCScale9Sprite sprite = new CCScale9Sprite();
+            sprite.InitWithSpriteFrameName(spriteFrameName, capInsets);
+
+            return sprite;
+        }
+
+        public static CCScale9Sprite SpriteWithFrameName(string spriteFrameName)
+        {
+            return CCScale9Sprite.SpriteWithFrameName(spriteFrameName, CCRect.Zero);
+        }
+
+        private void InitCCScale9Sprite(CCSpriteBatchNode batchnode, CCRect rect, bool rotated, CCRect capInsets)
+        {
+            if (batchnode != null)
+            {
+                UpdateWithBatchNode(batchnode, rect, rotated, capInsets);
+            }
+
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            _positionsAreDirty = true;
+        }
+
+        // Init calls that are called externally for objects that are already instantiated
+
+        internal void InitWithSpriteFrame(CCSpriteFrame spriteFrame)
+        {
+            InitCCScale9Sprite(new CCSpriteBatchNode(spriteFrame.Texture, 9), spriteFrame.Rect, spriteFrame.IsRotated, CCRect.Zero);
+        }
+
+        internal void InitWithSpriteFrameName(string spriteFrameName)
+        {
+            InitWithSpriteFrameName(spriteFrameName, CCRect.Zero);
+        }
+
+        internal void InitWithSpriteFrameName(string spriteFrameName, CCRect capInsets)
+        {
+            CCSpriteFrame spriteFrame = CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName(spriteFrameName);
+
+            InitCCScale9Sprite(new CCSpriteBatchNode(spriteFrame.Texture, 9), spriteFrame.Rect, spriteFrame.IsRotated, capInsets);
+        }
+
+        #endregion Constructors
+
 
         protected void UpdateCapInset()
         {

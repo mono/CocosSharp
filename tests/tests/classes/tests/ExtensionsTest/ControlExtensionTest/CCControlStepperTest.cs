@@ -13,48 +13,43 @@ namespace tests.Extensions
             set { _displayValueLabel = value; }
         }
 
-        public override bool Init()
+        public CCControlStepperTest()
         {
-            if (base.Init())
-            {
-                CCSize screenSize = CCDirector.SharedDirector.WinSize;
+            CCSize screenSize = CCDirector.SharedDirector.WinSize;
 
-                var layer = new CCNode();
-                layer.Position = screenSize.Center;
-                AddChild(layer, 1);
+            var layer = new CCNode();
+            layer.Position = screenSize.Center;
+            AddChild(layer, 1);
 
-                float layer_width = 0;
+            float layer_width = 0;
 
-                // Add the black background for the text
-                CCScale9Sprite background = new CCScale9SpriteFile("extensions/buttonBackground.png");
-                background.ContentSize = new CCSize(100, 50);
-                background.Position = new CCPoint(layer_width + background.ContentSize.Width / 2.0f, 0);
-                layer.AddChild(background);
+            // Add the black background for the text
+            CCScale9Sprite background = new CCScale9SpriteFile("extensions/buttonBackground.png");
+            background.ContentSize = new CCSize(100, 50);
+            background.Position = new CCPoint(layer_width + background.ContentSize.Width / 2.0f, 0);
+            layer.AddChild(background);
 
-                DisplayValueLabel = new CCLabelTTF("0", "Arial", 26);
+            DisplayValueLabel = new CCLabelTTF("0", "Arial", 26);
 
-                _displayValueLabel.Position = background.Position;
-                layer.AddChild(_displayValueLabel);
+            _displayValueLabel.Position = background.Position;
+            layer.AddChild(_displayValueLabel);
 
-                layer_width += background.ContentSize.Width;
+            layer_width += background.ContentSize.Width;
 
-                CCControlStepper stepper = MakeControlStepper();
-                stepper.Position = new CCPoint(layer_width + 10 + stepper.ContentSize.Width / 2, 0);
-                stepper.AddTargetWithActionForControlEvents(this, ValueChanged,
-                                                            CCControlEvent.ValueChanged);
-                layer.AddChild(stepper);
+            CCControlStepper stepper = MakeControlStepper();
+            stepper.Position = new CCPoint(layer_width + 10 + stepper.ContentSize.Width / 2, 0);
+            stepper.AddTargetWithActionForControlEvents(this, ValueChanged,
+                                                        CCControlEvent.ValueChanged);
+            layer.AddChild(stepper);
 
-                layer_width += stepper.ContentSize.Width;
+            layer_width += stepper.ContentSize.Width;
 
-                // Set the layer size
-                layer.ContentSize = new CCSize(layer_width, 0);
-                layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            // Set the layer size
+            layer.ContentSize = new CCSize(layer_width, 0);
+            layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-                // Update the value label
-                ValueChanged(stepper, CCControlEvent.ValueChanged);
-                return true;
-            }
-            return false;
+            // Update the value label
+            ValueChanged(stepper, CCControlEvent.ValueChanged);
         }
 
         /** Creates and returns a new ControlStepper. */

@@ -9,37 +9,35 @@ namespace CocosSharp
     {
         protected bool m_bIsNeedCleanUp;
 
+
+        #region Constructors
+
         public CCRemoveSelf()
         {
-            Init(true);
+            InitCCRemoveSelf(true);
         }
 
         public CCRemoveSelf(bool isNeedCleanUp)
         {
-            Init(isNeedCleanUp);
+            InitCCRemoveSelf(isNeedCleanUp);
         }
 
         protected CCRemoveSelf(CCRemoveSelf removeSelf)
             : base(removeSelf)
         {
-            Init(removeSelf.m_bIsNeedCleanUp);
+            InitCCRemoveSelf(removeSelf.m_bIsNeedCleanUp);
         }
 
-        protected bool Init(bool isNeedCleanUp)
+        private void InitCCRemoveSelf(bool isNeedCleanUp)
         {
             m_bIsNeedCleanUp = isNeedCleanUp;
-            return true;
         }
+
+        #endregion Constructors
+
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = (CCRemoveSelf) zone;
-                base.Copy(zone);
-                ret.Init(m_bIsNeedCleanUp);
-                return ret;
-            }
             return new CCRemoveSelf(this);
         }
 

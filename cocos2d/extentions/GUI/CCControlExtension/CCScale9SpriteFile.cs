@@ -7,21 +7,20 @@ namespace CocosSharp
 {
     public class CCScale9SpriteFile : CCScale9Sprite
     {
-        public CCScale9SpriteFile(string file, CCRect rect, CCRect capInsets)
+        public CCScale9SpriteFile(string file, CCRect rect, CCRect capInsets) : base(file, rect, capInsets)
         {
-            InitWithFile(file, rect, capInsets);
         }
-        public CCScale9SpriteFile(string file, CCRect rect)
+
+        public CCScale9SpriteFile(string file, CCRect rect) : base(file, rect)
         {
-            InitWithFile(file, rect);
         }
-        public CCScale9SpriteFile(CCRect capInsets, string file)
+
+        public CCScale9SpriteFile(CCRect capInsets, string file) : base(file, CCRect.Zero, capInsets)
         {
-            InitWithFile(file, capInsets);
         }
-        public CCScale9SpriteFile(string file)
+
+        public CCScale9SpriteFile(string file) : base(file)
         {
-            InitWithFile(file);
         }
     }
 }

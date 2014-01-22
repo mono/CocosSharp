@@ -17,14 +17,6 @@ namespace CocosSharp
         protected int boxPos;
         protected int boxSize;
 
-        public CCControlSaturationBrightnessPicker()
-        {
-        }
-
-        public CCControlSaturationBrightnessPicker(CCNode target, CCPoint pos)
-        {
-            InitWithTargetAndPos(target, pos);
-        }
 
         public float Saturation
         {
@@ -81,30 +73,35 @@ namespace CocosSharp
             }
         }
 
-        public virtual bool InitWithTargetAndPos(CCNode target, CCPoint pos)
+
+        #region Constructors
+
+        public CCControlSaturationBrightnessPicker()
         {
-            if (base.Init())
-            {
-                TouchEnabled = true;
-                // Add background and slider sprites
-                _background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPickerBackground.png", target, pos,
-                                                                               CCPoint.Zero);
-                _overlay = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPickerOverlay.png", target, pos,
-                                                                            CCPoint.Zero);
-                _shadow = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPickerShadow.png", target, pos,
-                                                                           CCPoint.Zero);
-                _slider = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPicker.png", target, pos,
-                                                                           new CCPoint(0.5f, 0.5f));
-
-                _startPos = pos; // starting position of the colour picker        
-                boxPos = 35; // starting position of the virtual box area for picking a colour
-                boxSize = (int) _background.ContentSize.Width / 2;
-                // the size (width and height) of the virtual box for picking a colour from
-                return true;
-            }
-
-            return false;
         }
+
+        public CCControlSaturationBrightnessPicker(CCNode target, CCPoint pos)
+        {
+            InitCCControlSaturationBrightnessPicker(target, pos);
+        }
+
+        private void InitCCControlSaturationBrightnessPicker(CCNode target, CCPoint pos)
+        {
+            TouchEnabled = true;
+            // Add background and slider sprites
+            _background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPickerBackground.png", target, pos, CCPoint.Zero);
+            _overlay = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPickerOverlay.png", target, pos, CCPoint.Zero);
+            _shadow = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPickerShadow.png", target, pos, CCPoint.Zero);
+            _slider = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPicker.png", target, pos, new CCPoint(0.5f, 0.5f));
+
+            _startPos = pos; // starting position of the colour picker        
+            boxPos = 35; // starting position of the virtual box area for picking a colour
+            boxSize = (int) _background.ContentSize.Width / 2;
+            // the size (width and height) of the virtual box for picking a colour from
+        }
+
+        #endregion Constructors
+
 
         public virtual void UpdateWithHSV(HSV hsv)
         {

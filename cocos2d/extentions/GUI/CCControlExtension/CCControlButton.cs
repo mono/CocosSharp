@@ -36,12 +36,6 @@ namespace CocosSharp
 
         public event CCButtonTapDelegate OnButtonTap;
 
-        /// <summary>
-        /// Default ctor. Does nothing.
-        /// </summary>
-        public CCControlButton()
-        {
-        }
 
         public CCNode BackgroundSprite
         {
@@ -134,6 +128,136 @@ namespace CocosSharp
         {
             get { return _isPushed; }
         }
+
+        /** Adjust the button zooming on touchdown. Default value is YES. */
+
+        public bool ZoomOnTouchDown
+        {
+            set { _zoomOnTouchDown = value; }
+            get { return _zoomOnTouchDown; }
+        }
+
+        /** The prefered size of the button, if label is larger it will be expanded. */
+
+        public CCSize PreferredSize
+        {
+            get { return _preferredSize; }
+            set
+            {
+                if (value.Width == 0 && value.Height == 0)
+                {
+                    _doesAdjustBackgroundImage = true;
+                }
+                else
+                {
+                    _doesAdjustBackgroundImage = false;
+                    foreach (var item in _backgroundSpriteDispatchTable)
+                    {
+                        var sprite = item.Value as CCScale9Sprite;
+                        if (sprite != null)
+                        {
+                            sprite.PreferredSize = value;
+                        }
+                    }
+                }
+
+                _preferredSize = value;
+
+                NeedsLayout();
+            }
+        }
+
+        public CCPoint LabelAnchorPoint
+        {
+            get { return _labelAnchorPoint; }
+            set
+            {
+                _labelAnchorPoint = value;
+                if (_titleLabel != null)
+                {
+                    _titleLabel.AnchorPoint = value;
+                }
+            }
+        }
+
+
+        #region Constructors
+
+        public CCControlButton() : this("", "Arial", 12.0f)
+        {
+        }
+
+        public CCControlButton(CCNode label, CCNode backgroundSprite)
+        {
+            InitCCControlButton(label, backgroundSprite);
+        }
+
+        public CCControlButton(string title, string fontName, float fontSize) 
+            : this(new CCLabelTTF(title, fontName, fontSize), new CCNode()) 
+        {
+        }
+
+        public CCControlButton(CCNode sprite) : this(new CCLabelTTF("", "Arial", 30), sprite)
+        {
+        }
+
+        private void InitCCControlButton(CCNode node, CCNode backgroundSprite)
+        {
+            Debug.Assert(node != null, "Label must not be nil.");
+            var label = node as ICCTextContainer;
+            var rgbaLabel = node as ICCColor;
+            Debug.Assert(backgroundSprite != null, "Background sprite must not be nil.");
+            Debug.Assert(label != null || rgbaLabel != null || backgroundSprite != null);
+
+            _parentInited = true;
+
+            // Initialize the button state tables
+            _titleDispatchTable = new Dictionary<CCControlState, string>();
+            _titleColorDispatchTable = new Dictionary<CCControlState, CCColor3B>();
+            _titleLabelDispatchTable = new Dictionary<CCControlState, CCNode>();
+            _backgroundSpriteDispatchTable = new Dictionary<CCControlState, CCNode>();
+
+            TouchEnabled = true;
+            _isPushed = false;
+            _zoomOnTouchDown = true;
+
+            _currentTitle = null;
+
+            // Adjust the background image by default
+            SetAdjustBackgroundImage(true);
+            PreferredSize = CCSize.Zero;
+            // Zooming button by default
+            _zoomOnTouchDown = true;
+
+            // Set the default anchor point
+            IgnoreAnchorPointForPosition = false;
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
+
+            // Set the nodes
+            TitleLabel = node;
+            BackgroundSprite = backgroundSprite;
+
+            // Set the default color and opacity
+            Color = new CCColor3B(255, 255, 255);
+            Opacity = 255;
+            IsOpacityModifyRGB = true;
+
+            // Initialize the dispatch table
+
+            string tempString = label.Text;
+            //tempString->autorelease();
+            SetTitleForState(tempString, CCControlState.Normal);
+            SetTitleColorForState(rgbaLabel.Color, CCControlState.Normal);
+            SetTitleLabelForState(node, CCControlState.Normal);
+            SetBackgroundSpriteForState(backgroundSprite, CCControlState.Normal);
+
+            LabelAnchorPoint = new CCPoint(0.5f, 0.5f);
+
+            NeedsLayout();
+        }
+
+        #endregion Constructors
+
 
         public override void NeedsLayout()
         {
@@ -263,57 +387,6 @@ namespace CocosSharp
         }
 
 
-        /** Adjust the button zooming on touchdown. Default value is YES. */
-
-        public bool ZoomOnTouchDown
-        {
-            set { _zoomOnTouchDown = value; }
-            get { return _zoomOnTouchDown; }
-        }
-
-        /** The prefered size of the button, if label is larger it will be expanded. */
-
-        public CCSize PreferredSize
-        {
-            get { return _preferredSize; }
-            set
-            {
-                if (value.Width == 0 && value.Height == 0)
-                {
-                    _doesAdjustBackgroundImage = true;
-                }
-                else
-                {
-                    _doesAdjustBackgroundImage = false;
-                    foreach (var item in _backgroundSpriteDispatchTable)
-                    {
-                        var sprite = item.Value as CCScale9Sprite;
-                        if (sprite != null)
-                        {
-                            sprite.PreferredSize = value;
-                        }
-                    }
-                }
-
-                _preferredSize = value;
-
-                NeedsLayout();
-            }
-        }
-
-
-        public CCPoint LabelAnchorPoint
-        {
-            get { return _labelAnchorPoint; }
-            set
-            {
-                _labelAnchorPoint = value;
-                if (_titleLabel != null)
-                {
-                    _titleLabel.AnchorPoint = value;
-                }
-            }
-        }
 
         /** The current title that is displayed on the button. */
 
@@ -323,100 +396,6 @@ namespace CocosSharp
             _marginV = marginV;
             _marginH = marginH;
             NeedsLayout();
-        }
-
-        public override bool Init()
-        {
-            return InitWithLabelAndBackgroundSprite(new CCLabelTTF("", "Arial", 12), new CCSprite());
-        }
-
-        public virtual bool InitWithLabelAndBackgroundSprite(CCNode node, CCNode backgroundSprite)
-        {
-            if (base.Init())
-            {
-                Debug.Assert(node != null, "Label must not be nil.");
-                var label = node as ICCTextContainer;
-                var rgbaLabel = node as ICCColor;
-                Debug.Assert(backgroundSprite != null, "Background sprite must not be nil.");
-                Debug.Assert(label != null || rgbaLabel != null || backgroundSprite != null);
-
-                _parentInited = true;
-
-                // Initialize the button state tables
-                _titleDispatchTable = new Dictionary<CCControlState, string>();
-                _titleColorDispatchTable = new Dictionary<CCControlState, CCColor3B>();
-                _titleLabelDispatchTable = new Dictionary<CCControlState, CCNode>();
-                _backgroundSpriteDispatchTable = new Dictionary<CCControlState, CCNode>();
-
-                TouchEnabled = true;
-                _isPushed = false;
-                _zoomOnTouchDown = true;
-
-                _currentTitle = null;
-
-                // Adjust the background image by default
-                SetAdjustBackgroundImage(true);
-                PreferredSize = CCSize.Zero;
-                // Zooming button by default
-                _zoomOnTouchDown = true;
-
-                // Set the default anchor point
-                IgnoreAnchorPointForPosition = false;
-                AnchorPoint = new CCPoint(0.5f, 0.5f);
-
-                // Set the nodes
-                TitleLabel = node;
-                BackgroundSprite = backgroundSprite;
-
-                // Set the default color and opacity
-                Color = new CCColor3B(255, 255, 255);
-                Opacity = 255;
-                IsOpacityModifyRGB = true;
-
-                // Initialize the dispatch table
-
-                string tempString = label.Text;
-                //tempString->autorelease();
-                SetTitleForState(tempString, CCControlState.Normal);
-                SetTitleColorForState(rgbaLabel.Color, CCControlState.Normal);
-                SetTitleLabelForState(node, CCControlState.Normal);
-                SetBackgroundSpriteForState(backgroundSprite, CCControlState.Normal);
-
-                LabelAnchorPoint = new CCPoint(0.5f, 0.5f);
-
-                NeedsLayout();
-
-                return true;
-            }
-            //couldn't init the CCControl
-            return false;
-        }
-
-        public CCControlButton(CCNode label, CCNode backgroundSprite)
-        {
-            InitWithLabelAndBackgroundSprite(label, backgroundSprite);
-        }
-
-        protected virtual bool InitWithTitleAndFontNameAndFontSize(string title, string fontName, float fontSize)
-        {
-            CCLabelTTF label = new CCLabelTTF(title, fontName, fontSize);
-            return InitWithLabelAndBackgroundSprite(label, new CCNode());
-        }
-
-        public CCControlButton(string title, string fontName, float fontSize)
-        {
-            InitWithTitleAndFontNameAndFontSize(title, fontName, fontSize);
-        }
-
-        protected virtual bool InitWithBackgroundSprite(CCNode sprite)
-        {
-            CCLabelTTF label = new CCLabelTTF("", "Arial", 30);
-            return InitWithLabelAndBackgroundSprite(label, sprite);
-        }
-
-        public CCControlButton(CCNode sprite)
-        {
-            InitWithBackgroundSprite(sprite);
         }
 
         //events

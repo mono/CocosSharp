@@ -180,27 +180,32 @@ namespace CocosSharp
             }
         }
 
+        
+        #region Constructors
 
-        public override bool Init()
+        public CCControl()
         {
-            if (base.Init())
-            {
-                //this->setTouchEnabled(true);
-                //m_bIsTouchEnabled=true;
-                // Initialise instance variables
-                _state = CCControlState.Normal;
-                Enabled = true;
-                Selected = false;
-                Highlighted = false;
-
-                // Set the touch dispatcher priority by default to 1
-                DefaultTouchPriority = 1;
-                // Initialise the tables
-                _dispatchTable = new Dictionary<CCControlEvent, CCRawList<CCInvocation>>();
-                return true;
-            }
-            return false;
+            InitCCControl();
         }
+
+        private void InitCCControl()
+        {
+            //this->setTouchEnabled(true);
+            //m_bIsTouchEnabled=true;
+            // Initialise instance variables
+            _state = CCControlState.Normal;
+            Enabled = true;
+            Selected = false;
+            Highlighted = false;
+
+            // Set the touch dispatcher priority by default to 1
+            DefaultTouchPriority = 1;
+            // Initialise the tables
+            _dispatchTable = new Dictionary<CCControlEvent, CCRawList<CCInvocation>>();
+        }
+
+        #endregion Constructors
+
 
         public override void RegisterWithTouchDispatcher()
         {
@@ -403,21 +408,6 @@ namespace CocosSharp
                 }
             }
         }
-
-        /// <summary>
-        /// Default constructor. Does nothing
-        /// </summary>
-        public CCControl()
-        {
-        }
-
-        // for the subclass of CCLayer, each has to implement the static "create" method 
-//        [Obsolete("Use the default ctor")]
- //       public new static CCLayer Create()
-//        {
-//            var ret = new CCLayer();
-//            return (ret);
-//        }
 
         public virtual void NeedsLayout()
         {

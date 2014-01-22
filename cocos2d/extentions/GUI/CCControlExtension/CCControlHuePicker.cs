@@ -11,15 +11,6 @@ namespace CocosSharp
         private CCSprite _slider;
         private CCPoint _startPos;
 
-        public CCControlHuePicker()
-        {
-        }
-
-        public CCControlHuePicker(CCNode target, CCPoint pos)
-        {
-            InitWithTargetAndPos(target, pos);
-        }
-
         public float Hue
         {
             get { return _hue; }
@@ -80,28 +71,6 @@ namespace CocosSharp
             set { _startPos = value; }
         }
 
-        public virtual bool InitWithTargetAndPos(CCNode target, CCPoint pos)
-        {
-            if (base.Init())
-            {
-                TouchEnabled = true;
-                // Add background and slider sprites
-                Background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("huePickerBackground.png", target,
-                                                                              pos, CCPoint.Zero);
-                Slider = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPicker.png", target, pos,
-                                                                          new CCPoint(0.5f, 0.5f));
-
-                _slider.Position = new CCPoint(pos.X, pos.Y + _background.BoundingBox.Size.Height * 0.5f);
-                _startPos = pos;
-
-                // Sets the default value
-                _hue = 0.0f;
-                _huePercentage = 0.0f;
-                return true;
-            }
-            return false;
-        }
-
         public override bool Enabled
         {
             get
@@ -117,6 +86,38 @@ namespace CocosSharp
                 }
             }
         }
+
+
+        #region Constructors
+
+        public CCControlHuePicker()
+        {
+        }
+
+        public CCControlHuePicker(CCNode target, CCPoint pos)
+        {
+            InitCCControlHuePicker(target, pos);
+        }
+
+        private void InitCCControlHuePicker(CCNode target, CCPoint pos)
+        {
+            TouchEnabled = true;
+            // Add background and slider sprites
+            Background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("huePickerBackground.png", target,
+                                                                          pos, CCPoint.Zero);
+            Slider = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPicker.png", target, pos,
+                                                                      new CCPoint(0.5f, 0.5f));
+
+            _slider.Position = new CCPoint(pos.X, pos.Y + _background.BoundingBox.Size.Height * 0.5f);
+            _startPos = pos;
+
+            // Sets the default value
+            _hue = 0.0f;
+            _huePercentage = 0.0f;
+        }
+
+        #endregion Constructors
+
 
         protected void UpdateSliderPosition(CCPoint location)
         {

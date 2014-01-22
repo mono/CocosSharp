@@ -145,6 +145,31 @@ namespace CocosSharp
             }
         }
 
+
+        #region Constructors
+
+        /*        * 
+        * Creates a slider with a given background sprite and a progress bar and a
+        * thumb item.
+        *
+        * @see initWithBackgroundSprite:progressSprite:thumbMenuItem:
+        */
+
+        public CCControlSlider(CCSprite backgroundSprite, CCSprite progressSprite, CCSprite thumbSprite)
+        {
+            InitCCControlSlider(backgroundSprite, progressSprite, thumbSprite);
+        }
+
+        /** 
+        * Creates slider with a background filename, a progress filename and a 
+        * thumb image filename.
+        */
+
+        public CCControlSlider(string bgFile, string progressFile, string thumbFile) 
+            : this(new CCSprite(bgFile), new CCSprite(progressFile), new CCSprite(thumbFile))
+        {
+        }
+
         /** 
 		* Initializes a slider with a background sprite, a progress bar and a thumb
 		* item.
@@ -154,80 +179,47 @@ namespace CocosSharp
 		* @param thumbItem         CCMenuItem, that is used as a thumb.
 		*/
 
-        public virtual bool InitWithSprites(CCSprite backgroundSprite, CCSprite progressSprite, CCSprite thumbSprite)
+        private void InitCCControlSlider(CCSprite backgroundSprite, CCSprite progressSprite, CCSprite thumbSprite)
         {
-            if (base.Init())
-            {
-                Debug.Assert(backgroundSprite != null, "Background sprite must be not nil");
-                Debug.Assert(progressSprite != null, "Progress sprite must be not nil");
-                Debug.Assert(thumbSprite != null, "Thumb sprite must be not nil");
+            Debug.Assert(backgroundSprite != null, "Background sprite must be not nil");
+            Debug.Assert(progressSprite != null, "Progress sprite must be not nil");
+            Debug.Assert(thumbSprite != null, "Thumb sprite must be not nil");
 
-                IgnoreAnchorPointForPosition = false;
-                TouchEnabled = true;
+            IgnoreAnchorPointForPosition = false;
+            TouchEnabled = true;
 
-                BackgroundSprite = backgroundSprite;
-                ProgressSprite = progressSprite;
-                ThumbSprite = thumbSprite;
+            BackgroundSprite = backgroundSprite;
+            ProgressSprite = progressSprite;
+            ThumbSprite = thumbSprite;
 
-                // Defines the content size
-                CCRect maxRect = CCControlUtils.CCRectUnion(backgroundSprite.BoundingBox, thumbSprite.BoundingBox);
-                ContentSize = new CCSize(maxRect.Size.Width, maxRect.Size.Height);
+            // Defines the content size
+            CCRect maxRect = CCControlUtils.CCRectUnion(backgroundSprite.BoundingBox, thumbSprite.BoundingBox);
+            ContentSize = new CCSize(maxRect.Size.Width, maxRect.Size.Height);
 
-                //setContentSize(CCSizeMake(backgroundSprite->getContentSize().width, thumbItem->getContentSize().height));
-                // Add the slider background
-                _backgroundSprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-                _backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
-                AddChild(_backgroundSprite);
+            //setContentSize(CCSizeMake(backgroundSprite->getContentSize().width, thumbItem->getContentSize().height));
+            // Add the slider background
+            _backgroundSprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            _backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
+            AddChild(_backgroundSprite);
 
-                // Add the progress bar
-                _progressSprite.AnchorPoint = new CCPoint(0.0f, 0.5f);
-                _progressSprite.Position = new CCPoint(0.0f, ContentSize.Height / 2);
-                AddChild(_progressSprite);
+            // Add the progress bar
+            _progressSprite.AnchorPoint = new CCPoint(0.0f, 0.5f);
+            _progressSprite.Position = new CCPoint(0.0f, ContentSize.Height / 2);
+            AddChild(_progressSprite);
 
-                // Add the slider thumb  
-                _thumbSprite.Position = new CCPoint(0, ContentSize.Height / 2);
-                AddChild(_thumbSprite);
+            // Add the slider thumb  
+            _thumbSprite.Position = new CCPoint(0, ContentSize.Height / 2);
+            AddChild(_thumbSprite);
 
-                // Init default values
-                _minimumValue = 0.0f;
-                _maximumValue = 1.0f;
+            // Init default values
+            _minimumValue = 0.0f;
+            _maximumValue = 1.0f;
 
-                Value = _minimumValue;
-                return true;
-            }
-            return false;
+            Value = _minimumValue;
         }
 
-        /** 
-		* Creates slider with a background filename, a progress filename and a 
-		* thumb image filename.
-		*/
+        #endregion Constructors
 
-        public CCControlSlider(string bgFile, string progressFile, string thumbFile)
-        {
-            // Prepare background for slider
-            CCSprite backgroundSprite = new CCSprite(bgFile);
-
-            // Prepare progress for slider
-            CCSprite progressSprite = new CCSprite(progressFile);
-
-            // Prepare thumb (menuItem) for slider
-            CCSprite thumbSprite = new CCSprite(thumbFile);
-
-            InitWithSprites(backgroundSprite, progressSprite, thumbSprite);
-        }
-
-        /** 
-		* Creates a slider with a given background sprite and a progress bar and a
-		* thumb item.
-		*
-		* @see initWithBackgroundSprite:progressSprite:thumbMenuItem:
-		*/
-
-        public CCControlSlider(CCSprite backgroundSprite, CCSprite progressSprite, CCSprite thumbSprite)
-        {
-            InitWithSprites(backgroundSprite, progressSprite, thumbSprite);
-        }
 
         protected void SliderBegan(CCPoint location)
         {

@@ -14,33 +14,6 @@ namespace CocosSharp
         private CCSprite _thumbSprite;
         protected float _value;
 
-        public CCControlPotentiometer()
-        {
-            _thumbSprite = null;
-            _progressTimer = null;
-            _value = 0.0f;
-            _minimumValue = 0.0f;
-            _maximumValue = 0.0f;
-        }
-
-        /** 
-         * Creates potentiometer with a track filename and a progress filename.
-         */
-
-        public CCControlPotentiometer(string backgroundFile, string progressFile, string thumbFile)
-        {
-            // Prepare track for potentiometer
-            var backgroundSprite = new CCSprite(backgroundFile);
-
-            // Prepare thumb for potentiometer
-            var thumbSprite = new CCSprite(thumbFile);
-
-            // Prepare progress for potentiometer
-            var progressTimer = new CCProgressTimer(new CCSprite(progressFile));
-            //progressTimer.type              = kProgressTimerTypeRadialCW;
-            InitWithTrackSprite_ProgressTimer_ThumbSprite(backgroundSprite, progressTimer, thumbSprite);
-        }
-
         public override bool Enabled
         {
             get { return base.Enabled; }
@@ -128,31 +101,58 @@ namespace CocosSharp
             }
         }
 
-        public bool InitWithTrackSprite_ProgressTimer_ThumbSprite(CCSprite trackSprite, CCProgressTimer progressTimer,
-                                                                  CCSprite thumbSprite)
+
+        #region Constructors
+
+        public CCControlPotentiometer()
         {
-            if (base.Init())
-            {
-                TouchEnabled = true;
-
-                ProgressTimer = progressTimer;
-                ThumbSprite = thumbSprite;
-                thumbSprite.Position = progressTimer.Position;
-
-                AddChild(thumbSprite, 2);
-                AddChild(progressTimer, 1);
-                AddChild(trackSprite);
-
-                ContentSize = trackSprite.ContentSize;
-
-                // Init default values
-                _minimumValue = 0.0f;
-                _maximumValue = 1.0f;
-                Value = _minimumValue;
-                return true;
-            }
-            return false;
+            _thumbSprite = null;
+            _progressTimer = null;
+            _value = 0.0f;
+            _minimumValue = 0.0f;
+            _maximumValue = 0.0f;
         }
+
+        /*        * 
+         * Creates potentiometer with a track filename and a progress filename.
+         */
+
+        public CCControlPotentiometer(string backgroundFile, string progressFile, string thumbFile)
+        {
+            // Prepare track for potentiometer
+            var backgroundSprite = new CCSprite(backgroundFile);
+
+            // Prepare thumb for potentiometer
+            var thumbSprite = new CCSprite(thumbFile);
+
+            // Prepare progress for potentiometer
+            var progressTimer = new CCProgressTimer(new CCSprite(progressFile));
+            //progressTimer.type              = kProgressTimerTypeRadialCW;
+            InitCCControlPotentiometer(backgroundSprite, progressTimer, thumbSprite);
+        }
+
+        private void InitCCControlPotentiometer(CCSprite trackSprite, CCProgressTimer progressTimer, CCSprite thumbSprite)
+        {
+            TouchEnabled = true;
+
+            ProgressTimer = progressTimer;
+            ThumbSprite = thumbSprite;
+            thumbSprite.Position = progressTimer.Position;
+
+            AddChild(thumbSprite, 2);
+            AddChild(progressTimer, 1);
+            AddChild(trackSprite);
+
+            ContentSize = trackSprite.ContentSize;
+
+            // Init default values
+            _minimumValue = 0.0f;
+            _maximumValue = 1.0f;
+            Value = _minimumValue;
+        }
+
+        #endregion Constructors
+
 
         public override bool IsTouchInside(CCTouch touch)
         {

@@ -9,10 +9,6 @@ namespace CocosSharp
         protected HSV _hsv;
         private CCControlHuePicker _huePicker;
 
-        public CCControlColourPicker()
-        {
-            Init();
-        }
 
         public CCControlSaturationBrightnessPicker ColourPicker
         {
@@ -31,6 +27,75 @@ namespace CocosSharp
             get { return _background; }
             set { _background = value; }
         }
+
+
+        #region Constructors
+
+        public CCControlColourPicker()
+        {
+            InitCCControlColourPicker();
+        }
+
+        private void InitCCControlColourPicker()
+        {
+            TouchEnabled = true;
+            // Cache the sprites
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("extensions/CCControlColourPickerSpriteSheet.plist");
+
+            // Create the sprite batch node
+            var spriteSheet = new CCSpriteBatchNode("extensions/CCControlColourPickerSpriteSheet.png");
+            AddChild(spriteSheet);
+
+            // MIPMAP
+//        ccTexParams params  = {GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
+            /* Comment next line to avoid something like mosaic in 'ControlExtensionTest',
+	   especially the display of 'huePickerBackground.png' when in 800*480 window size with 480*320 design resolution and hd(960*640) resources.
+    */
+//        spriteSheet->getTexture()->setAliasTexParameters();
+//         spriteSheet->getTexture()->setTexParameters(&params);
+//         spriteSheet->getTexture()->generateMipmap();
+
+            // Init default color
+            _hsv.h = 0;
+            _hsv.s = 0;
+            _hsv.v = 0;
+
+            // Add image
+            _background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("menuColourPanelBackground.png",
+                                                                           spriteSheet, CCPoint.Zero,
+                                                                           new CCPoint(0.5f, 0.5f));
+
+            CCPoint backgroundPointZero = _background.Position -
+                                          new CCPoint(_background.ContentSize.Width / 2,
+                                                      _background.ContentSize.Height / 2);
+
+            // Setup panels
+            float hueShift = 8;
+            float colourShift = 28;
+
+            CCPoint huePickerPos = new CCPoint(backgroundPointZero.X + hueShift, backgroundPointZero.Y + hueShift);
+            _huePicker = new CCControlHuePicker(spriteSheet, huePickerPos);
+
+            CCPoint colourPickerPos = new CCPoint(backgroundPointZero.X + colourShift, backgroundPointZero.Y + colourShift);
+            _colourPicker = new CCControlSaturationBrightnessPicker(spriteSheet, colourPickerPos);
+
+            // Setup events
+            _huePicker.AddTargetWithActionForControlEvents(this, HueSliderValueChanged,
+                                                           CCControlEvent.ValueChanged);
+            _colourPicker.AddTargetWithActionForControlEvents(this, ColourSliderValueChanged,
+                                                              CCControlEvent.ValueChanged);
+
+            // Set defaults
+            UpdateHueAndControlPicker();
+            AddChild(_huePicker);
+            AddChild(_colourPicker);
+
+            // Set content size
+            ContentSize = _background.ContentSize;
+        }
+
+        #endregion Constructors
+
 
         public void SetColor(CCColor3B colorValue)
         {
@@ -58,81 +123,6 @@ namespace CocosSharp
             {
                 _colourPicker.Enabled = bEnabled;
             }
-        }
-
-        public static CCControlColourPicker Create()
-        {
-            var pRet = new CCControlColourPicker();
-            pRet.Init();
-            return pRet;
-        }
-
-
-        public override bool Init()
-        {
-            if (base.Init())
-            {
-                TouchEnabled = true;
-                // Cache the sprites
-                CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile(
-                    "extensions/CCControlColourPickerSpriteSheet.plist");
-
-                // Create the sprite batch node
-                var spriteSheet = new CCSpriteBatchNode("extensions/CCControlColourPickerSpriteSheet.png");
-                AddChild(spriteSheet);
-
-                // MIPMAP
-//        ccTexParams params  = {GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
-                /* Comment next line to avoid something like mosaic in 'ControlExtensionTest',
-		   especially the display of 'huePickerBackground.png' when in 800*480 window size with 480*320 design resolution and hd(960*640) resources.
-	    */
-//        spriteSheet->getTexture()->setAliasTexParameters();
-//         spriteSheet->getTexture()->setTexParameters(&params);
-//         spriteSheet->getTexture()->generateMipmap();
-
-                // Init default color
-                _hsv.h = 0;
-                _hsv.s = 0;
-                _hsv.v = 0;
-
-                // Add image
-                _background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("menuColourPanelBackground.png",
-                                                                               spriteSheet, CCPoint.Zero,
-                                                                               new CCPoint(0.5f, 0.5f));
-
-                CCPoint backgroundPointZero = _background.Position -
-                                              new CCPoint(_background.ContentSize.Width / 2,
-                                                          _background.ContentSize.Height / 2);
-
-                // Setup panels
-                float hueShift = 8;
-                float colourShift = 28;
-
-                _huePicker = new CCControlHuePicker();
-                _huePicker.InitWithTargetAndPos(spriteSheet,
-                                                new CCPoint(backgroundPointZero.X + hueShift,
-                                                            backgroundPointZero.Y + hueShift));
-                _colourPicker = new CCControlSaturationBrightnessPicker();
-                _colourPicker.InitWithTargetAndPos(spriteSheet,
-                                                   new CCPoint(backgroundPointZero.X + colourShift,
-                                                               backgroundPointZero.Y + colourShift));
-
-                // Setup events
-                _huePicker.AddTargetWithActionForControlEvents(this, HueSliderValueChanged,
-                                                               CCControlEvent.ValueChanged);
-                _colourPicker.AddTargetWithActionForControlEvents(this, ColourSliderValueChanged,
-                                                                  CCControlEvent.ValueChanged);
-
-                // Set defaults
-                UpdateHueAndControlPicker();
-                AddChild(_huePicker);
-                AddChild(_colourPicker);
-
-                // Set content size
-                ContentSize = _background.ContentSize;
-                return true;
-            }
-            return false;
         }
 
         //virtual ~ControlColourPicker();
