@@ -19,7 +19,7 @@ namespace tests
             */
 
 			var director = CCDirector.SharedDirector;
-			var target = Lens3DTarget.Create(lens);
+			var target = new Lens3DTarget(lens);
             // Please make sure the target been added to its parent.
             AddChild(target);
 
@@ -44,11 +44,9 @@ namespace tests
                 set { m_pLens3D.Position = value; }
             }
 
-            public static Lens3DTarget Create(CCLens3D pAction)
+            public Lens3DTarget (CCLens3D pAction)
             {
-                var pRet = new Lens3DTarget();
-                pRet.m_pLens3D = pAction;
-                return pRet;
+                m_pLens3D = pAction;
             }
         }
 
