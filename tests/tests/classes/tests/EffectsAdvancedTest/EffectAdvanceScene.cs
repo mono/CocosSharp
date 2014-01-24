@@ -54,7 +54,7 @@ namespace tests
             sceneIdx++;
             sceneIdx = sceneIdx % MAX_LAYER;
 
-            CCLayer pLayer = createEffectAdvanceLayer(sceneIdx);
+			var pLayer = createEffectAdvanceLayer(sceneIdx);
 
             return pLayer;
         }
@@ -66,21 +66,21 @@ namespace tests
             if (sceneIdx < 0)
                 sceneIdx += total;
 
-            CCLayer pLayer = createEffectAdvanceLayer(sceneIdx);
+			var pLayer = createEffectAdvanceLayer(sceneIdx);
 
             return pLayer;
         }
 
         public static CCLayer restartEffectAdvanceAction()
         {
-            CCLayer pLayer = createEffectAdvanceLayer(sceneIdx);
+			var pLayer = createEffectAdvanceLayer(sceneIdx);
 
             return pLayer;
         }
 
         public override void runThisTest()
         {
-            CCLayer pLayer = nextEffectAdvanceAction();
+			var pLayer = nextEffectAdvanceAction();
 
             AddChild(pLayer);
             CCDirector.SharedDirector.ReplaceScene(this);

@@ -14,9 +14,9 @@ namespace tests
 
             //CCDirector::sharedDirector()->setProjection(CCDirectorProjection2D);
 
-            CCActionInterval effect = new CCLiquid (2, new CCGridSize(32, 24), 1, 20);
+			var effect = new CCLiquid (2, new CCGridSize(32, 24), 1, 20);
 
-            CCActionInterval stopEffect = (CCActionInterval)(new CCSequence(
+			var stopEffect = (CCActionInterval)(new CCSequence(
                                                  effect,
                                                  new CCDelayTime (2),
                                                  new CCStopGrid()
@@ -24,7 +24,7 @@ namespace tests
                 //					 [[effect copy] autorelease],
                                                  ));
 
-            CCNode bg = GetChildByTag(EffectAdvanceScene.kTagBackground);
+			var bg = GetChildByTag(EffectAdvanceScene.kTagBackground);
             bg.RunAction(stopEffect);
         }
 

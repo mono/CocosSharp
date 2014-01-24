@@ -8,22 +8,22 @@ namespace tests
         {
             base.OnEnter();
 
-            CCActionInterval effect = (new CCSequence(new CCDelayTime (2.0f), new CCShaky3D(5.0f, new CCGridSize(5, 5), 16, false)));
+			var effect = new CCSequence(new CCDelayTime (2.0f), new CCShaky3D(5.0f, new CCGridSize(5, 5), 16, false));
 
             // cleanup
-            CCNode bg = GetChildByTag(EffectAdvanceScene.kTagBackground);
+			var bg = this[EffectAdvanceScene.kTagBackground];
             RemoveChild(bg, true);
 
             // background
-            CCLayerColor layer = new CCLayerColor(new CCColor4B(255, 0, 0, 255));
+			var layer = new CCLayerColor(new CCColor4B(255, 0, 0, 255));
             AddChild(layer, -10);
-            CCSprite sprite = new CCSprite("Images/grossini");
+			var sprite = new CCSprite("Images/grossini");
             sprite.Position = new CCPoint(50, 80);
             layer.AddChild(sprite, 10);
 
             // foreground
-            CCLayerColor layer2 = new CCLayerColor(new CCColor4B(0, 255, 0, 255));
-            CCSprite fog = new CCSprite("Images/Fog");
+			var layer2 = new CCLayerColor(new CCColor4B(0, 255, 0, 255));
+			var fog = new CCSprite("Images/Fog");
 
             var bf = new CCBlendFunc {Source = CCOGLES.GL_SRC_ALPHA, Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA};
             fog.BlendFunc = bf;

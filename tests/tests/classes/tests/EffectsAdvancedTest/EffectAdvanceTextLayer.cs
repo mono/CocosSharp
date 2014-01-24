@@ -42,17 +42,17 @@ namespace tests
 			var sc2_back = sc2.Reverse();
             tamara.RunAction(new CCRepeatForever ((CCActionInterval)(new CCSequence(sc2, sc2_back))));
 
-            CCLabelTTF label = new CCLabelTTF(title(), "arial", 28);
+			var label = new CCLabelTTF(title(), "arial", 28);
 
             label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 80);
             AddChild(label);
             label.Tag = EffectAdvanceScene.kTagLabel;
 
-            CCMenuItemImage item1 = new CCMenuItemImage("Images/b1", "Images/b2", backCallback);
-            CCMenuItemImage item2 = new CCMenuItemImage("Images/r1", "Images/r2", restartCallback);
-            CCMenuItemImage item3 = new CCMenuItemImage("Images/f1", "Images/f2", nextCallback);
+			var item1 = new CCMenuItemImage("Images/b1", "Images/b2", backCallback);
+			var item2 = new CCMenuItemImage("Images/r1", "Images/r2", restartCallback);
+			var item3 = new CCMenuItemImage("Images/f1", "Images/f2", nextCallback);
 
-            CCMenu menu = new CCMenu(item1, item2, item3);
+			var menu = new CCMenu(item1, item2, item3);
 
             menu.Position = CCPoint.Zero;
             item1.Position = new CCPoint(CCVisibleRect.Center.X - item2.ContentSize.Width * 2,
@@ -76,7 +76,7 @@ namespace tests
 
         public void restartCallback(object pSender)
         {
-            CCScene s = new EffectAdvanceScene();
+			var s = new EffectAdvanceScene();
             s.AddChild(EffectAdvanceScene.restartEffectAdvanceAction());
 
             CCDirector.SharedDirector.ReplaceScene(s);
@@ -84,14 +84,14 @@ namespace tests
 
         public void nextCallback(object pSender)
         {
-            CCScene s = new EffectAdvanceScene();
+			var s = new EffectAdvanceScene();
             s.AddChild(EffectAdvanceScene.nextEffectAdvanceAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
-            CCScene s = new EffectAdvanceScene();
+			var s = new EffectAdvanceScene();
             s.AddChild(EffectAdvanceScene.backEffectAdvanceAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
