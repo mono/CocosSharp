@@ -745,6 +745,12 @@ namespace CocosSharp
 
 		#endregion Cleaning up
 
+		public CCNode this [int tag]
+		{
+			get {
+				return GetChildByTag (tag);
+			}
+		}
 
         public CCNode GetChildByTag(int tag)
         {
