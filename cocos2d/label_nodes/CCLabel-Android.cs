@@ -108,7 +108,7 @@ namespace CocosSharp
 
             var size = GetMeasureString(text);
 
-            CreateBitmap((int) size.Width + 2, (int) size.Height + 2);
+            CreateBitmap((int)(Math.Ceiling(size.Width += 2)), (int)(Math.Ceiling(size.Height += 2)));
 
             _canvas.DrawColor(Android.Graphics.Color.Black);
 
