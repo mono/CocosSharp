@@ -12,9 +12,9 @@ namespace tests
         {
 			base.OnEnter();
 
-			var bg = GetChildByTag(EffectAdvanceScene.kTagBackground);
-			var target1 = bg.GetChildByTag(EffectAdvanceScene.kTagSprite1);
-			var target2 = bg.GetChildByTag(EffectAdvanceScene.kTagSprite2);
+			var bg = this[EffectAdvanceScene.kTagBackground];
+			var target1 = bg[EffectAdvanceScene.kTagSprite1];
+			var target2 = bg[EffectAdvanceScene.kTagSprite2];
 
 			var waves = new CCWaves(5, new CCGridSize(15, 10), 5, 20, true, false);
 			var shaky = new CCShaky3D(5, new CCGridSize(15, 10), 4, false);
