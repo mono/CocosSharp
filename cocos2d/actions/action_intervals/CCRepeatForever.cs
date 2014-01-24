@@ -15,6 +15,12 @@ namespace CocosSharp
             set { m_pInnerAction = value; }
         }
 
+		public CCRepeatForever (params CCFiniteTimeAction[] actions)
+		{
+			InitCCRepeatForever (new CCSequence (actions));
+
+		}
+
         public CCRepeatForever(CCActionInterval action)
         {
             InitCCRepeatForever(action);
