@@ -1289,6 +1289,16 @@ namespace CocosSharp
 
         #region Actions
 
+		public void AddAction (CCAction action, bool paused = false)
+		{
+			ActionManager.AddAction (action, this, paused);
+		}
+
+		public void AddActions (bool paused, params CCFiniteTimeAction[] actions)
+		{
+			ActionManager.AddAction (new CCSequence(actions), this, paused);
+		}
+
         public CCActionManager ActionManager
         {
             get { return m_pActionManager; }
@@ -1308,6 +1318,14 @@ namespace CocosSharp
             m_pActionManager.AddAction(action, this, !m_bRunning);
             return action;
         }
+
+		public CCAction RunActions(params CCFiniteTimeAction[] actions)
+		{
+			Debug.Assert(actions != null, "Argument must be non-nil");
+			var action = new CCSequence (actions);
+			m_pActionManager.AddAction(action, this, !m_bRunning);
+			return action;
+		}
 
         public void StopAllActions()
         {

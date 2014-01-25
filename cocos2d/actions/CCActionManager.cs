@@ -201,7 +201,7 @@ namespace CocosSharp
             }
         }
 
-        public void AddAction(CCAction action, CCNode target, bool paused)
+		public void AddAction(CCAction action, CCNode target, bool paused = false)
         {
             Debug.Assert(action != null);
             Debug.Assert(target != null);
