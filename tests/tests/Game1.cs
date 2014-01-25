@@ -20,7 +20,9 @@ namespace tests
             Content.RootDirectory = "Content";
 
             graphics.IsFullScreen = false;
-            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
+
+			// Keep this at Depth24 or the PageUp and PageDown transitions will not work
+			graphics.PreferredDepthStencilFormat = DepthFormat.Depth24;
 
 #if WINDOWS || MACOS
             graphics.PreferredBackBufferWidth = 1024;
