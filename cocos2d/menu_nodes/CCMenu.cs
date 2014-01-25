@@ -145,40 +145,37 @@ namespace CocosSharp
                     RemoveChild(i, false);
                 }
             }
-            if (base.Init())
+            TouchPriority = kCCMenuHandlerPriority;
+            TouchMode = CCTouchMode.OneByOne;
+            TouchEnabled = true;
+
+            m_bEnabled = true;
+            // menu in the center of the screen
+            CCSize s = CCDirector.SharedDirector.WinSize;
+
+            IgnoreAnchorPointForPosition = true;
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            ContentSize = s;
+
+            Position = (new CCPoint(s.Width / 2, s.Height / 2));
+
+            if (items != null)
             {
-                TouchPriority = kCCMenuHandlerPriority;
-                TouchMode = CCTouchMode.OneByOne;
-                TouchEnabled = true;
-
-                m_bEnabled = true;
-                // menu in the center of the screen
-                CCSize s = CCDirector.SharedDirector.WinSize;
-
-                IgnoreAnchorPointForPosition = true;
-                AnchorPoint = new CCPoint(0.5f, 0.5f);
-                ContentSize = s;
-
-                Position = (new CCPoint(s.Width / 2, s.Height / 2));
-
-                if (items != null)
+                int z = 0;
+                foreach (CCMenuItem item in items)
                 {
-                    int z = 0;
-                    foreach (CCMenuItem item in items)
-                    {
-                        AddChild(item, z);
-                        z++;
-                    }
+                    AddChild(item, z);
+                    z++;
                 }
-
-                //    [self alignItemsVertically];
-                m_pSelectedItem = null;
-                m_eState = CCMenuState.Waiting;
-
-                // enable cascade color and opacity on menus
-                CascadeColorEnabled = true;
-                CascadeOpacityEnabled = true;
             }
+
+            //    [self alignItemsVertically];
+            m_pSelectedItem = null;
+            m_eState = CCMenuState.Waiting;
+
+            // enable cascade color and opacity on menus
+            CascadeColorEnabled = true;
+            CascadeOpacityEnabled = true;
         }
 
         /*
