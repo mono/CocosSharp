@@ -10,136 +10,137 @@ namespace tests
 {
     public class Bug1174Layer : BugsTestBaseLayer
     {
-        public override bool Init()
+
+        public Bug1174Layer()
         {
-            if (base.Init())
+            InitBug1174Layer();
+        }
+
+        private void InitBug1174Layer()
+        {
+            // 		// seed
+            // 		srand(0);
+
+            CCPoint A, B, C, D, p1, p2, p3, p4;
+            float s, t;
+
+            int err = 0;
+            int ok = 0;
+
+            //
+            // Test 1.
+            //
+            CCLog.Log("Test1 - Start");
+            for (int i = 0; i < 10000; i++)
             {
-                // 		// seed
-                // 		srand(0);
+                // A | b
+                // -----
+                // c | d
+                float ax = CCRandom.Next() * -5000;
+                float ay = CCRandom.Next() * 5000;
 
-                CCPoint A, B, C, D, p1, p2, p3, p4;
-                float s, t;
+                // a | b
+                // -----
+                // c | D
+                float dx = CCRandom.Next() * 5000;
+                float dy = CCRandom.Next() * -5000;
 
-                int err = 0;
-                int ok = 0;
+                // a | B
+                // -----
+                // c | d
+                float bx = CCRandom.Next() * 5000;
+                float by = CCRandom.Next() * 5000;
 
-                //
-                // Test 1.
-                //
-                CCLog.Log("Test1 - Start");
-                for (int i = 0; i < 10000; i++)
-                {
-                    // A | b
-                    // -----
-                    // c | d
-                    float ax = CCRandom.Next() * -5000;
-                    float ay = CCRandom.Next() * 5000;
+                // a | b
+                // -----
+                // C | d
+                float cx = CCRandom.Next() * -5000;
+                float cy = CCRandom.Next() * -5000;
 
-                    // a | b
-                    // -----
-                    // c | D
-                    float dx = CCRandom.Next() * 5000;
-                    float dy = CCRandom.Next() * -5000;
+                A = new CCPoint(ax, ay);
+                B = new CCPoint(bx, by);
+                C = new CCPoint(cx, cy);
+                D = new CCPoint(dx, dy);
+                //if (CCPoint.ccpLineIntersect(A, D, B, C, ref s, ref t))
+                //{
+                //    if (check_for_error(A, D, B, C, s, t) != 0)
+                //        err++;
+                //    else
+                //        ok++;
+                //}
+            }
+            CCLog.Log("Test1 - End. OK=%i, Err=%i", ok, err);
 
-                    // a | B
-                    // -----
-                    // c | d
-                    float bx = CCRandom.Next() * 5000;
-                    float by = CCRandom.Next() * 5000;
+            //
+            // Test 2.
+            //
+            CCLog.Log("Test2 - Start");
 
-                    // a | b
-                    // -----
-                    // C | d
-                    float cx = CCRandom.Next() * -5000;
-                    float cy = CCRandom.Next() * -5000;
+            p1 = new CCPoint(220, 480);
+            p2 = new CCPoint(304, 325);
+            p3 = new CCPoint(264, 416);
+            p4 = new CCPoint(186, 416);
+            s = 0.0f;
+            t = 0.0f;
+            if (CCPoint.LineIntersect(p1, p2, p3, p4, ref s, ref t))
+                check_for_error(p1, p2, p3, p4, s, t);
 
-                    A = new CCPoint(ax, ay);
-                    B = new CCPoint(bx, by);
-                    C = new CCPoint(cx, cy);
-                    D = new CCPoint(dx, dy);
-                    //if (CCPoint.ccpLineIntersect(A, D, B, C, ref s, ref t))
-                    //{
-                    //    if (check_for_error(A, D, B, C, s, t) != 0)
-                    //        err++;
-                    //    else
-                    //        ok++;
-                    //}
-                }
-                CCLog.Log("Test1 - End. OK=%i, Err=%i", ok, err);
+            CCLog.Log("Test2 - End");
 
-                //
-                // Test 2.
-                //
-                CCLog.Log("Test2 - Start");
+                
+            //
+            // Test 3
+            //
+            CCLog.Log("Test3 - Start");
 
-                p1 = new CCPoint(220, 480);
-                p2 = new CCPoint(304, 325);
-                p3 = new CCPoint(264, 416);
-                p4 = new CCPoint(186, 416);
+            ok = 0;
+            err = 0;
+            for (int i = 0; i < 10000; i++)
+            {
+                // A | b
+                // -----
+                // c | d
+                float ax = CCRandom.Next() * -500;
+                float ay = CCRandom.Next() * 500;
+                p1 = new CCPoint(ax, ay);
+
+                // a | b
+                // -----
+                // c | D
+                float dx = CCRandom.Next() * 500;
+                float dy = CCRandom.Next() * -500;
+                p2 = new CCPoint(dx, dy);
+
+
+                //////
+
+                float y = ay - ((ay - dy) / 2.0f);
+
+                // a | b
+                // -----
+                // C | d
+                float cx = CCRandom.Next() * -500;
+                p3 = new CCPoint(cx, y);
+
+                // a | B
+                // -----
+                // c | d
+                float bx = CCRandom.Next() * 500;
+                p4 = new CCPoint(bx, y);
+
                 s = 0.0f;
                 t = 0.0f;
                 if (CCPoint.LineIntersect(p1, p2, p3, p4, ref s, ref t))
-                    check_for_error(p1, p2, p3, p4, s, t);
-
-                CCLog.Log("Test2 - End");
-
-                
-                //
-                // Test 3
-                //
-                CCLog.Log("Test3 - Start");
-
-                ok = 0;
-                err = 0;
-                for (int i = 0; i < 10000; i++)
                 {
-                    // A | b
-                    // -----
-                    // c | d
-                    float ax = CCRandom.Next() * -500;
-                    float ay = CCRandom.Next() * 500;
-                    p1 = new CCPoint(ax, ay);
-
-                    // a | b
-                    // -----
-                    // c | D
-                    float dx = CCRandom.Next() * 500;
-                    float dy = CCRandom.Next() * -500;
-                    p2 = new CCPoint(dx, dy);
-
-
-                    //////
-
-                    float y = ay - ((ay - dy) / 2.0f);
-
-                    // a | b
-                    // -----
-                    // C | d
-                    float cx = CCRandom.Next() * -500;
-                    p3 = new CCPoint(cx, y);
-
-                    // a | B
-                    // -----
-                    // c | d
-                    float bx = CCRandom.Next() * 500;
-                    p4 = new CCPoint(bx, y);
-
-                    s = 0.0f;
-                    t = 0.0f;
-                    if (CCPoint.LineIntersect(p1, p2, p3, p4, ref s, ref t))
-                    {
-                        if (check_for_error(p1, p2, p3, p4, s, t) != 0)
-                            err++;
-                        else
-                            ok++;
-                    }
+                    if (check_for_error(p1, p2, p3, p4, s, t) != 0)
+                        err++;
+                    else
+                        ok++;
                 }
 
                 CCLog.Log("Test3 - End. OK=%i, err=%i", ok, err);
-                return true;
             }
 
-            return false;
         }
 
         public int check_for_error(CCPoint p1, CCPoint p2, CCPoint p3, CCPoint p4, float s, float t)

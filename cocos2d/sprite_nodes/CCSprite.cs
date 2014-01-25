@@ -539,7 +539,6 @@ namespace CocosSharp
         // Called by non-subclasses which also make use of bool return type
         internal bool InitWithTexture(CCTexture2D pTexture, CCRect rect, bool rotated)
         {
-            base.Init();
 
             m_pobBatchNode = null;
 

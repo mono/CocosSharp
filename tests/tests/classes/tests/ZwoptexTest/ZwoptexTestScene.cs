@@ -26,7 +26,7 @@ namespace tests
         public static ZwoptexTestScene node()
         {
             var pRet = new ZwoptexTestScene();
-            if (pRet != null && pRet.Init())
+            if (pRet != null)
             {
                 return pRet;
             }

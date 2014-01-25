@@ -8,6 +8,11 @@ namespace tests
 {
     public class MultiTouchTestLayer : CCLayer
     {
+        public MultiTouchTestLayer()
+        {
+            TouchEnabled = true;
+        }
+
         private CCColor3B[] s_TouchColors = new CCColor3B[] 
         {
             CCColor3B.Yellow,
@@ -18,16 +23,6 @@ namespace tests
         };
 
         private static Dictionary<int, TouchPoint> s_dic = new Dictionary<int, TouchPoint>();
-
-        public override bool Init()
-        {
-            if (base.Init())
-            {
-                TouchEnabled = true;
-                return true;
-            }
-            return false;
-        }
 
         public override void RegisterWithTouchDispatcher()
         {

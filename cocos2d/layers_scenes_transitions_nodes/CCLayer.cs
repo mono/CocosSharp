@@ -283,10 +283,7 @@ namespace CocosSharp
 
         public override void OnEnter()
         {
-            if(!m_bDidInit) {
-                Init();
-            }
-
+ 
             // then iterate over all the children
             base.OnEnter();
 

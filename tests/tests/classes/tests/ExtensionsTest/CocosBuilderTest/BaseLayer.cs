@@ -10,7 +10,6 @@ namespace tests.Extensions
         public override CCNode CreateCCNode()
         {
             var ret = new T();
-            ret.Init();
             return ret;
         }
     }

@@ -23,44 +23,39 @@ namespace tests
             return pScene;
         }
 
-        public override bool Init()
+        public Bug914Layer()
         {
             // always call "super" init
             // Apple recommends to re-assign "self" with the "super" return value
-            if (base.Init())
+            TouchEnabled = true;
+            // ask director the the window size
+            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCLayerColor layer;
+            for (int i = 0; i < 5; i++)
             {
-                TouchEnabled = true;
-                // ask director the the window size
-                CCSize size = CCDirector.SharedDirector.WinSize;
-                CCLayerColor layer;
-                for (int i = 0; i < 5; i++)
-                {
-                    layer = new CCLayerColor(new CCColor4B((byte)(i*20), (byte)(i*20), (byte)(i*20),255));
-                    layer.ContentSize = new CCSize(i * 100, i * 100);
-                    layer.Position = new CCPoint(size.Width / 2, size.Height / 2);
-                    layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
-                    layer.IgnoreAnchorPointForPosition = true;
-                    AddChild(layer, -1 - i);
+                layer = new CCLayerColor(new CCColor4B((byte)(i*20), (byte)(i*20), (byte)(i*20),255));
+                layer.ContentSize = new CCSize(i * 100, i * 100);
+                layer.Position = new CCPoint(size.Width / 2, size.Height / 2);
+                layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+                layer.IgnoreAnchorPointForPosition = true;
+                AddChild(layer, -1 - i);
                     
-                }
-
-                // create and initialize a Label
-                CCLabelTTF label = new CCLabelTTF("Hello World", "Marker Felt", 64);
-                CCMenuItem item1 = new CCMenuItemFont("restart", restart);
-
-                CCMenu menu = new CCMenu(item1);
-                menu.AlignItemsVertically();
-                menu.Position = new CCPoint(size.Width / 2, 100);
-                AddChild(menu);
-
-                // position the label on the center of the screen
-                label.Position = new CCPoint(size.Width / 2, size.Height / 2);
-
-                // add the label as a child to this Layer
-                AddChild(label);
-                return true;
             }
-            return false;
+
+            // create and initialize a Label
+            CCLabelTTF label = new CCLabelTTF("Hello World", "Marker Felt", 64);
+            CCMenuItem item1 = new CCMenuItemFont("restart", restart);
+
+            CCMenu menu = new CCMenu(item1);
+            menu.AlignItemsVertically();
+            menu.Position = new CCPoint(size.Width / 2, 100);
+            AddChild(menu);
+
+            // position the label on the center of the screen
+            label.Position = new CCPoint(size.Width / 2, size.Height / 2);
+
+            // add the label as a child to this Layer
+            AddChild(label);
         }
 
         public void ccTouchesMoved(List<CCTouch> touches)

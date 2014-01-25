@@ -152,11 +152,6 @@ namespace CocosSharp
 
         }
 
-        public virtual bool Init()
-        {
-          return true;
-        }
-
         #region Game State Management
         /// <summary>
         /// Gets whether or not this scene is serializable. If this is true,

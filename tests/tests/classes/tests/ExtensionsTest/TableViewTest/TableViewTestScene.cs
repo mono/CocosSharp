@@ -5,19 +5,23 @@ namespace tests.Extensions
 {
     public class TableViewTestLayer : CCLayer, ICCTableViewDataSource, ICCTableViewDelegate
     {
+
+        public TableViewTestLayer()
+        {
+
+            InitTableViewTestLayer();
+        }
+
         public static void runTableViewTest()
         {
             var pScene = new CCScene();
             var pLayer = new TableViewTestLayer();
-            pLayer.Init();
             pScene.AddChild(pLayer);
             CCDirector.SharedDirector.ReplaceScene(pScene);
         }
 
-        public override bool Init()
+        private bool InitTableViewTestLayer()
         {
-            if (!base.Init())
-                return false;
 
             var winSize = CCDirector.SharedDirector.WinSize;
 

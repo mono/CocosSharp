@@ -102,17 +102,6 @@ namespace CocosSharp
             _cascadeOpacityEnabled = false;
         }
 
-        public override bool Init()
-        {
-            //base.Init();
-
-            _displayedOpacity = _realOpacity = 255;
-            _displayedColor = _realColor = CCTypes.CCWhite;
-            _cascadeOpacityEnabled = _cascadeColorEnabled = false;
-            
-            return true;
-        }
-
         public virtual void UpdateDisplayedColor(CCColor3B parentColor)
         {
             _displayedColor.R = (byte) (_realColor.R * parentColor.R / 255.0f);

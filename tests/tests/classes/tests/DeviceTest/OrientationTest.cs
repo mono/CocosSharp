@@ -13,6 +13,12 @@ namespace tests
         static int sceneIdx = -1;
         public static DisplayOrientation s_currentOrientation = DisplayOrientation.LandscapeLeft;
 
+        public OrientationTest()
+        {
+            InitOrientationTest();
+        }
+
+
         public static CCLayer CreateTestCaseLayer(int index)
         {
             switch (index)
@@ -20,7 +26,6 @@ namespace tests
                 case 0:
                     {
                         Orientation1 pRet = new Orientation1();
-                        pRet.Init();
                         return pRet;
                     }
                 default:
@@ -50,13 +55,11 @@ namespace tests
             return CreateTestCaseLayer(sceneIdx);
         }
 
-        public override bool Init()
+        private bool InitOrientationTest ()
         {
             bool bRet = false;
             do
             {
-                if (!base.Init())
-                    break;
 
                 CCSize s = CCDirector.SharedDirector.WinSize;
 
@@ -122,13 +125,18 @@ namespace tests
 
     public class Orientation1 : OrientationTest
     {
-        public override bool Init()
+
+        public Orientation1()
+        {
+            InitOrientation1();
+        }
+
+        private bool InitOrientation1()
         {
             bool bRet = false;
             do
             {
-                if (!base.Init())
-                    break;
+
                 TouchEnabled = true;
                 CCSize s = CCDirector.SharedDirector.WinSize;
 

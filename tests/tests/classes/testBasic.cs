@@ -7,14 +7,12 @@ namespace tests
     {
         public TestScene()
         {
-            base.Init();
             _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
             _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
         }
 
         public TestScene(bool bPortrait)
         {
-            base.Init();
             _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
             _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
         }

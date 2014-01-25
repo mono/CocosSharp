@@ -237,34 +237,30 @@ namespace CocosSharp
 
         protected virtual bool InitWithViewSize(CCSize size, CCNode container)
         {
-            if (base.Init())
+			_container = container;
+
+            if (_container == null)
             {
-				_container = container;
-
-                if (_container == null)
-                {
-                    _container = new CCLayer();
-                    _container.IgnoreAnchorPointForPosition = false;
-                    _container.AnchorPoint = CCPoint.Zero;
-                }
-
-                ViewSize = size;
-
-                TouchEnabled = true;
-                _touches = new List<CCTouch>();
-                _delegate = null;
-                _bounceable = true;
-                _clippingToBounds = true;
-                _direction = CCScrollViewDirection.Both;
-                _container.Position = new CCPoint(0.0f, 0.0f);
-                _touchLength = 0.0f;
-
-                AddChild(_container);
-                _minScale = _maxScale = 1.0f;
-
-                return true;
+                _container = new CCLayer();
+                _container.IgnoreAnchorPointForPosition = false;
+                _container.AnchorPoint = CCPoint.Zero;
             }
-            return false;
+
+            ViewSize = size;
+
+            TouchEnabled = true;
+            _touches = new List<CCTouch>();
+            _delegate = null;
+            _bounceable = true;
+            _clippingToBounds = true;
+            _direction = CCScrollViewDirection.Both;
+            _container.Position = new CCPoint(0.0f, 0.0f);
+            _touchLength = 0.0f;
+
+            AddChild(_container);
+            _minScale = _maxScale = 1.0f;
+
+            return true;
         }
 
         /**

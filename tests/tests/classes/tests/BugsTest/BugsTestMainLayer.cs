@@ -41,39 +41,30 @@ namespace tests
             {
                 case 0:
                     pLayer = new Bug350Layer();
-                    pLayer.Init();
                     break;
                 case 1:
                     pLayer = new Bug422Layer();
-                    pLayer.Init();
                     break;
                 case 2:
                     pLayer = new Bug458Layer();
-                    pLayer.Init();
                     break;
                 case 3:
                     pLayer = new Bug624Layer();
-                    pLayer.Init();
                     break;
                 case 4:
                     pLayer = new Bug886Layer();
-                    pLayer.Init();
                     break;
                 case 5:
                     pLayer = new Bug899Layer();
-                    pLayer.Init();
                     break;
                 case 6:
                     pLayer = new Bug914Layer();
-                    pLayer.Init();
                     break;
                 case 7:
                     pLayer = new Bug1159Layer();
-                    pLayer.Init();
                     break;
                 case 8:
                     pLayer = new Bug1174Layer();
-                    pLayer.Init();
                     break;
                 default:
                     break;

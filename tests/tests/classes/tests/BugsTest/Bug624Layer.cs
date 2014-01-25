@@ -11,24 +11,19 @@ namespace tests
     {
         public Bug624Layer() 
         {
-            Init();
+            InitBug624Layer();
         }
-        public override bool Init()
+
+        private void InitBug624Layer()
         {
-            if (base.Init())
-            {
-                CCSize size = CCDirector.SharedDirector.WinSize;
-                CCLabelTTF label = new CCLabelTTF("Layer1", "MarkerFelt", 22);
+            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCLabelTTF label = new CCLabelTTF("Layer1", "MarkerFelt", 22);
 
-                label.Position = new CCPoint(size.Width / 2, size.Height / 2);
-                AddChild(label);
-                AccelerometerEnabled = true;
-                Schedule(switchLayer, 5.0f);
+            label.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            AddChild(label);
+            AccelerometerEnabled = true;
+            Schedule(switchLayer, 5.0f);
 
-                return true;
-            }
-
-            return false;
         }
 
         public void switchLayer(float dt)
@@ -50,22 +45,17 @@ namespace tests
 
     public class Bug624Layer2 : BugsTestBaseLayer
     {
-        public override bool Init()
+
+        public Bug624Layer2()
         {
-            if (base.Init())
-            {
-                CCSize size = CCDirector.SharedDirector.WinSize;
-                CCLabelTTF label = new CCLabelTTF("Layer2", "MarkerFelt", 36);
+            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCLabelTTF label = new CCLabelTTF("Layer2", "MarkerFelt", 36);
 
-                label.Position = new CCPoint(size.Width / 2, size.Height / 2);
-                AddChild(label);
-                AccelerometerEnabled = true;
-                Schedule(switchLayer, 5.0f);
+            label.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            AddChild(label);
+            AccelerometerEnabled = true;
+            Schedule(switchLayer, 5.0f);
 
-                return true;
-            }
-
-            return false;
         }
 
         public void switchLayer(float dt)
@@ -80,11 +70,6 @@ namespace tests
         public virtual void didAccelerate(CCAcceleration pAccelerationValue)
         {
             CCLog.Log("Layer2 accel");
-        }
-
-        public Bug624Layer2()
-        {
-            Init();
         }
 
         //LAYER_NODE_FUNC(Bug624Layer2);

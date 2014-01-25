@@ -8,18 +8,13 @@ namespace tests
 {
     public class Bug899Layer : BugsTestBaseLayer
     {
-        public override bool Init()
+        public Bug899Layer()
         {
             //CCDirector.SharedDirector.EnableRetinaDisplay(true);
-            if (base.Init())
-            {
-                CCSprite bg = new CCSprite("Images/bugs/RetinaDisplay");
-                AddChild(bg, 0);
-                bg.AnchorPoint = new CCPoint(0, 0);
+            CCSprite bg = new CCSprite("Images/bugs/RetinaDisplay");
+            AddChild(bg, 0);
+            bg.AnchorPoint = new CCPoint(0, 0);
 
-                return true;
-            }
-            return false;
         }
     }
 }

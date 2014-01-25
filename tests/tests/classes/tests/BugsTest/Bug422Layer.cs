@@ -10,15 +10,10 @@ namespace tests
 {
     public class Bug422Layer : BugsTestBaseLayer
     {
-        public override bool Init()
-        {
-            if (base.Init())
-            {
-                reset();
-                return true;
-            }
 
-            return false;
+        public Bug422Layer()
+        {
+            reset();
         }
 
         public void reset()

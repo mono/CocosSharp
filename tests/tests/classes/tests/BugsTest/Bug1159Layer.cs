@@ -8,10 +8,14 @@ namespace tests
 {
     public class Bug1159Layer : BugsTestBaseLayer
     {
-        public override bool Init()
+
+        public Bug1159Layer()
         {
-            if (base.Init())
-            {
+            InitBug1159Layer();
+        }
+
+        private void InitBug1159Layer()
+        {
                 CCSize s = CCDirector.SharedDirector.WinSize;
 
                 CCLayerColor background = new CCLayerColor(new CCColor4B(255, 0, 255, 255));
@@ -38,10 +42,6 @@ namespace tests
                 menu.Position = new CCPoint(s.Width - 200.0f, 50.0f);
                 AddChild(menu);
 
-                return true;
-            }
-
-            return false;
         }
 
         public static CCScene scene()

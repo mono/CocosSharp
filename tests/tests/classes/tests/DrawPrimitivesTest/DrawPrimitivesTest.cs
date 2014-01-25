@@ -8,6 +8,12 @@ namespace tests
 {
     public class BaseDrawNodeTest : CCLayer
     {
+
+        public BaseDrawNodeTest()
+        {
+            InitBaseDrawNodeTest();
+        }
+
         public virtual void Setup()
         {
         }
@@ -22,9 +28,8 @@ namespace tests
             return "";
         }
 
-        public override bool Init()
+        private void InitBaseDrawNodeTest ()
         {
-            base.Init();
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
@@ -53,7 +58,6 @@ namespace tests
 
             AddChild(menu, 1);
 
-            return true;
         }
 
         public void restartCallback(object pSender)
@@ -200,9 +204,13 @@ namespace tests
 
     public class DrawNodeTest : BaseDrawNodeTest
     {
-        public override bool Init()
+        public DrawNodeTest()
         {
-            base.Init();
+            InitDrawNodeTest();
+        }
+
+        private bool InitDrawNodeTest ()
+        {
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 

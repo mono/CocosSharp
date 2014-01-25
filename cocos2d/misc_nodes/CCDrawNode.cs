@@ -15,8 +15,6 @@ namespace CocosSharp
 
         public CCDrawNode()
         {
-            base.Init();
-
             m_sBlendFunc = CCBlendFunc.AlphaBlend;
             m_pVertices = new CCRawList<VertexPositionColor>(512);
         }
