@@ -15,8 +15,7 @@ namespace tests
             //     Lens3D is Grid3D and it's size is (15,10)
             //     Waves3D is Grid3D and it's size is (15,10)
 
-			var size = CCDirector.SharedDirector.WinSize;
-			var lens = new CCLens3D(0.0f, new CCGridSize(15, 10), new CCPoint(size.Width / 2, size.Height / 2), 240);
+			var lens = new CCLens3D(0.0f, new CCGridSize(15, 10), CCVisibleRect.Center, 240);
 			var waves = new CCWaves3D(10, new CCGridSize(15, 10), 18, 15);
 
 

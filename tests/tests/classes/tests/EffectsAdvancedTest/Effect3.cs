@@ -19,11 +19,12 @@ namespace tests
 			var waves = new CCWaves(5, new CCGridSize(15, 10), 5, 20, true, false);
 			var shaky = new CCShaky3D(5, new CCGridSize(15, 10), 4, false);
 
-            target1.RunAction(new CCRepeatForever (waves));
-            target2.RunAction(new CCRepeatForever (shaky));
+			target1.RunAction(new CCRepeatForever (waves));
+			target2.RunAction(new CCRepeatForever (shaky));
 
             // moving background. Testing issue #244
 			var move = new CCMoveBy (3, new CCPoint(200, 0));
+
 			bg.RunAction(new CCRepeatForever (move, move.Reverse()));
         }
 

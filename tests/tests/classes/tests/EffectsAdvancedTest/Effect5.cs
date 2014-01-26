@@ -16,16 +16,8 @@ namespace tests
 
 			var effect = new CCLiquid (2, new CCGridSize(32, 24), 1, 20);
 
-			var stopEffect = (CCActionInterval)(new CCSequence(
-                                                 effect,
-                                                 new CCDelayTime (2),
-                                                 new CCStopGrid()
-                //					 [DelayTime::actionWithDuration:2],
-                //					 [[effect copy] autorelease],
-                                                 ));
-
-			var bg = GetChildByTag(EffectAdvanceScene.kTagBackground);
-            bg.RunAction(stopEffect);
+			var bg = this[EffectAdvanceScene.kTagBackground];
+			bg.RunActions(effect, new CCDelayTime (2), new CCStopGrid());
         }
 
         public override void OnExit()
@@ -37,7 +29,7 @@ namespace tests
 
         public override string title()
         {
-            return "Test Stop-Copy-Restar";
+			return "Test Stop-Copy-Restart";
         }
     }
 }
