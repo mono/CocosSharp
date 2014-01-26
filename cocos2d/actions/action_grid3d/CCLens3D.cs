@@ -30,11 +30,11 @@ namespace CocosSharp
             {
                 if (!value.Equals(m_position))
                 {
-                    m_position = value;
                     var scale = CCDirector.SharedDirector.ContentScaleFactor;
-                    m_position.X = value.X / scale;
-                    m_position.X = value.Y / scale;
-                    m_positionInPixels = value;
+					m_position = value;
+					m_positionInPixels.X = value.X * scale;
+					m_positionInPixels.Y = value.Y * scale;
+
                     m_bDirty = true;
                 }
             }

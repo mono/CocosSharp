@@ -10,8 +10,8 @@ namespace tests
     {
         public new static CCActionInterval actionWithDuration(float t)
         {
-            CCSize size = CCDirector.SharedDirector.WinSize;
-			return new CCLens3D(t, new CCGridSize(15, 10), new CCPoint(size.Width / 2, size.Height / 2), size.Width/CCDirector.SharedDirector.ContentScaleFactor);
+			var size = TextLayer.BaseNode[EffectTestScene.kTagBackground].ContentSize;
+			return new CCLens3D(t, new CCGridSize(15, 10), size.Center, size.Width);
         }
     }
 }

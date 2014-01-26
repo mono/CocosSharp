@@ -10,7 +10,7 @@ namespace tests
     {
         public override void runThisTest()
         {
-            AddChild(TextLayer.node());
+			AddChild(new TextLayer());
             CCDirector.SharedDirector.ReplaceScene(this);
         }
 

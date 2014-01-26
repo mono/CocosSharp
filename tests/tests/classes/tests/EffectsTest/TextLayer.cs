@@ -6,34 +6,37 @@ namespace tests
     {
         //UxString	m_strTitle;
         private static int MAX_LAYER = 22;
+		public static CCNode BaseNode;
 
         public TextLayer() : base(CCTypes.CreateColor(32, 32, 32, 255))
         {
-            var node = new CCNode();
-            CCActionInterval effect = getAction();
-            node.RunAction(effect);
-            AddChild(node, 0, EffectTestScene.kTagBackground);
+            BaseNode = new CCNode();
+
+			AddChild(BaseNode, 0, EffectTestScene.kTagBackground);
 
             var bg = new CCSprite(TestResource.s_back3);
-            node.AddChild(bg, 0);
+			BaseNode.AddChild(bg, 0, EffectTestScene.kTagBackground);
             bg.AnchorPoint = new CCPoint(0.5f, 0.5f);
             bg.Position = CCVisibleRect.Center;
 
-            var grossini = new CCSprite(TestResource.s_pPathSister2);
-            node.AddChild(grossini, 1);
-            grossini.Position = new CCPoint(CCVisibleRect.Left.X + CCVisibleRect.VisibleRect.Size.Width / 3,
+			CCActionInterval effect = getAction();
+			BaseNode.RunAction(effect);
+
+			var Kathia = new CCSprite(TestResource.s_pPathSister2);
+            BaseNode.AddChild(Kathia, 1);
+            Kathia.Position = new CCPoint(CCVisibleRect.Left.X + CCVisibleRect.VisibleRect.Size.Width / 3,
                                             CCVisibleRect.Center.Y);
             CCActionInterval sc = new CCScaleBy(2, 5);
             CCFiniteTimeAction sc_back = sc.Reverse();
-            grossini.RunAction(new CCRepeatForever((new CCSequence(sc, sc_back))));
+            Kathia.RunAction(new CCRepeatForever((new CCSequence(sc, sc_back))));
 
-            var tamara = new CCSprite(TestResource.s_pPathSister1);
-            node.AddChild(tamara, 1);
-            tamara.Position = new CCPoint(CCVisibleRect.Left.X + 2 * CCVisibleRect.VisibleRect.Size.Width / 3,
+			var Tamara = new CCSprite(TestResource.s_pPathSister1);
+			BaseNode.AddChild(Tamara, 1);
+			Tamara.Position = new CCPoint(CCVisibleRect.Left.X + 2 * CCVisibleRect.VisibleRect.Size.Width / 3,
                                           CCVisibleRect.Center.Y);
             CCActionInterval sc2 = new CCScaleBy(2, 5);
             CCFiniteTimeAction sc2_back = sc2.Reverse();
-            tamara.RunAction(new CCRepeatForever((new CCSequence(sc2, sc2_back))));
+			Tamara.RunAction(new CCRepeatForever((new CCSequence(sc2, sc2_back))));
 
             var label = new CCLabelTTF(EffectTestScene.effectsList[EffectTestScene.actionIdx], "arial", 32);
 
@@ -168,16 +171,11 @@ namespace tests
         public void newScene()
         {
             CCScene s = new EffectTestScene();
-            CCNode child = node();
+			CCNode child = new TextLayer();
             s.AddChild(child);
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public static TextLayer node()
-        {
-            var pLayer = new TextLayer();
 
-            return pLayer;
-        }
     }
 }
