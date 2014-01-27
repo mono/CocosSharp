@@ -8,10 +8,15 @@ namespace tests
 {
     public class Ripple3DDemo : CCRipple3D
     {
-        public new static CCActionInterval actionWithDuration(float t)
-        {
+
+		public Ripple3DDemo(float t) : base (t, new CCGridSize(32, 24))
+		{
 			var size = TextLayer.BaseNode[EffectTestScene.kTagBackground].ContentSize;
-			return new CCRipple3D(t, new CCGridSize(32, 24), size.Center, size.Width, 4, 160);
-        }
+			Position = size.Center;
+			Radius = size.Width;
+			Waves = 4;
+			Amplitude = 160;
+		}
+
     }
 }

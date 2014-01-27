@@ -28,7 +28,19 @@ namespace CocosSharp
             }
         }
 
-        public float Amplitude
+		public float Radius
+		{
+			get { return m_fRadius; }
+			set { m_fRadius = value; }
+		}
+
+		public int Waves
+		{
+			get { return m_nWaves; }
+			set { m_nWaves = value; }
+		}
+
+		public float Amplitude
         {
             get { return m_fAmplitude; }
             set { m_fAmplitude = value; }
@@ -43,15 +55,17 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCRipple3D()
+        public CCRipple3D(float duration) 
+			: base(duration)
         {
         }
 
-        public CCRipple3D(float duration) : base(duration)
-        {
-        }
+		public CCRipple3D(float duration, CCGridSize gridSize) 
+			: this(duration, gridSize, CCPoint.Zero, 0, 0, 0)
+		{
+		}
 
-        public CCRipple3D(float duration, CCGridSize gridSize, CCPoint position, float radius, int waves, float amplitude) 
+		public CCRipple3D(float duration, CCGridSize gridSize, CCPoint position, float radius, int waves, float amplitude) 
             : base(duration, gridSize)
         {
             InitRipple3D(position, radius, waves, amplitude);

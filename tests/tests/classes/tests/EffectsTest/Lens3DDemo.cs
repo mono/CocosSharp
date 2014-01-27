@@ -14,8 +14,9 @@ namespace tests
         {
             var size = TextLayer.BaseNode[EffectTestScene.kTagBackground].ContentSize;
             var sizeinpixels = TextLayer.BaseNode[EffectTestScene.kTagBackground].ContentSizeInPixels;
-            Position = size.Center / CCDirector.SharedDirector.ContentScaleFactor;
-            Radius = size.Width / CCDirector.SharedDirector.ContentScaleFactor;
+			Position = size.Center; // CCDirector.SharedDirector.ContentScaleFactor;
+			Radius = size.Height;// / CCDirector.SharedDirector.ContentScaleFactor;
+			//Concave = true;
         }
 
     }

@@ -11,6 +11,7 @@ namespace tests
         public TextLayer() : base(CCTypes.CreateColor(32, 32, 32, 255))
         {
             BaseNode = new CCNode();
+			BaseNode.ContentSize = CCVisibleRect.VisibleRect.Size;
 
 			AddChild(BaseNode, 0, EffectTestScene.kTagBackground);
 
@@ -82,7 +83,7 @@ namespace tests
                 case 4:
                     return new Lens3DDemo(t);
                 case 5:
-                    return Ripple3DDemo.actionWithDuration(t);
+					return new Ripple3DDemo(t);
                 case 6:
                     return LiquidDemo.actionWithDuration(t);
                 case 7:

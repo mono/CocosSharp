@@ -94,16 +94,24 @@ namespace CocosSharp
 
         public override void Update(float time)
         {
-            if (m_bDirty)
-            {
+			if (m_bDirty)
+			{
                 int i, j;
 
+				CCGridSize gs;
+				CCPoint vect = CCPoint.Zero;
                 for (i = 0; i < m_sGridSize.X + 1; ++i)
                 {
                     for (j = 0; j < m_sGridSize.Y + 1; ++j)
                     {
-                        CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
-                        var vect = new CCPoint(m_positionInPixels.X - v.X, m_positionInPixels.Y - v.Y);
+
+						gs.X = i;
+						gs.Y = j;
+
+						CCVertex3F v = OriginalVertex(gs);
+						vect.X = m_positionInPixels.X - v.X;
+						vect.Y = m_positionInPixels.Y - v.Y;
+
                         float r = vect.Length;
 
                         if (r < m_fRadius)
@@ -129,9 +137,9 @@ namespace CocosSharp
 
                         SetVertex(new CCGridSize(i, j), ref v);
                     }
-                }
+				}
 
-                m_bDirty = false;
+				m_bDirty = false;
             }
         }
     }
