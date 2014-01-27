@@ -12,10 +12,9 @@ namespace tests
         public Lens3DDemo(float t)
             : base(t, new CCGridSize(15, 10))
         {
-            var size = TextLayer.BaseNode[EffectTestScene.kTagBackground].ContentSize;
-            var sizeinpixels = TextLayer.BaseNode[EffectTestScene.kTagBackground].ContentSizeInPixels;
-			Position = size.Center; // CCDirector.SharedDirector.ContentScaleFactor;
-			Radius = size.Height;// / CCDirector.SharedDirector.ContentScaleFactor;
+            var size = TextLayer.BaseNode.ContentSize;
+			Position = size.Center; 
+			Radius = size.Height;
 			//Concave = true;
         }
 

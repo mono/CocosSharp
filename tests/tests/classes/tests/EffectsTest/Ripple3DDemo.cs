@@ -11,7 +11,7 @@ namespace tests
 
 		public Ripple3DDemo(float t) : base (t, new CCGridSize(32, 24))
 		{
-			var size = TextLayer.BaseNode[EffectTestScene.kTagBackground].ContentSize;
+			var size = TextLayer.BaseNode.ContentSize;
 			Position = size.Center;
 			Radius = size.Width;
 			Waves = 4;

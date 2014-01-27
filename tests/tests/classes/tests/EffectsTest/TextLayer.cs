@@ -10,34 +10,36 @@ namespace tests
 
         public TextLayer() : base(CCTypes.CreateColor(32, 32, 32, 255))
         {
-            BaseNode = new CCNode();
-			BaseNode.ContentSize = CCVisibleRect.VisibleRect.Size;
+            //BaseNode = new CCNode();
+			//BaseNode.ContentSize = CCVisibleRect.VisibleRect.Size;
 
-			AddChild(BaseNode, 0, EffectTestScene.kTagBackground);
+			//AddChild(BaseNode, 0, EffectTestScene.kTagBackground);
 
             var bg = new CCSprite(TestResource.s_back3);
-			BaseNode.AddChild(bg, 0, EffectTestScene.kTagBackground);
-            bg.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            BaseNode = bg;
+			AddChild(bg, 0, EffectTestScene.kTagBackground);
             bg.Position = CCVisibleRect.Center;
 
-			CCActionInterval effect = getAction();
-			BaseNode.RunAction(effect);
+			BaseNode.RunAction(CurrentAction);
 
 			var Kathia = new CCSprite(TestResource.s_pPathSister2);
             BaseNode.AddChild(Kathia, 1);
-            Kathia.Position = new CCPoint(CCVisibleRect.Left.X + CCVisibleRect.VisibleRect.Size.Width / 3,
-                                            CCVisibleRect.Center.Y);
-            CCActionInterval sc = new CCScaleBy(2, 5);
-            CCFiniteTimeAction sc_back = sc.Reverse();
-            Kathia.RunAction(new CCRepeatForever((new CCSequence(sc, sc_back))));
+
+            Kathia.Position = new CCPoint(bg.ContentSize.Width / 3, bg.ContentSize.Center.Y);
+
+            var sc = new CCScaleBy(2, 5);
+            var sc_back = sc.Reverse();
+            Kathia.RunAction(new CCRepeatForever(sc, sc_back));
 
 			var Tamara = new CCSprite(TestResource.s_pPathSister1);
 			BaseNode.AddChild(Tamara, 1);
 			Tamara.Position = new CCPoint(CCVisibleRect.Left.X + 2 * CCVisibleRect.VisibleRect.Size.Width / 3,
                                           CCVisibleRect.Center.Y);
-            CCActionInterval sc2 = new CCScaleBy(2, 5);
-            CCFiniteTimeAction sc2_back = sc2.Reverse();
-			Tamara.RunAction(new CCRepeatForever((new CCSequence(sc2, sc2_back))));
+            Tamara.Position = new CCPoint(2 * bg.ContentSize.Width / 3, bg.ContentSize.Center.Y);
+
+            var sc2 = new CCScaleBy(2, 5);
+            var sc2_back = sc2.Reverse();
+			Tamara.RunAction(new CCRepeatForever(sc2, sc2_back));
 
             var label = new CCLabelTTF(EffectTestScene.effectsList[EffectTestScene.actionIdx], "arial", 32);
 
@@ -121,16 +123,18 @@ namespace tests
             return null;
         }
 
-        public CCActionInterval getAction()
+        public CCActionInterval CurrentAction
         {
-            CCActionInterval pEffect = createEffect(EffectTestScene.actionIdx, 3);
-
-            return pEffect;
+            get
+            {
+                var pEffect = createEffect(EffectTestScene.actionIdx, 3);
+                return pEffect;
+            }
         }
 
         public void checkAnim(float dt)
         {
-            CCNode s2 = GetChildByTag(EffectTestScene.kTagBackground);
+            var s2 = this[EffectTestScene.kTagBackground];
             if (s2.NumberOfRunningActions() == 0 && s2.Grid != null)
                 s2.Grid = null;
             ;
