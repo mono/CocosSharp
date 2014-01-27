@@ -8,10 +8,15 @@ namespace tests
 {
     public class Lens3DDemo : CCLens3D
     {
-        public new static CCActionInterval actionWithDuration(float t)
+
+        public Lens3DDemo(float t)
+            : base(t, new CCGridSize(15, 10))
         {
-			var size = TextLayer.BaseNode[EffectTestScene.kTagBackground].ContentSize;
-			return new CCLens3D(t, new CCGridSize(15, 10), size.Center, size.Width);
+            var size = TextLayer.BaseNode[EffectTestScene.kTagBackground].ContentSize;
+            var sizeinpixels = TextLayer.BaseNode[EffectTestScene.kTagBackground].ContentSizeInPixels;
+            Position = size.Center / CCDirector.SharedDirector.ContentScaleFactor;
+            Radius = size.Width / CCDirector.SharedDirector.ContentScaleFactor;
         }
+
     }
 }

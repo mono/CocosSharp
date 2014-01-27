@@ -80,7 +80,7 @@ namespace tests
                 case 3:
                     return FlipY3DDemo.actionWithDuration(t);
                 case 4:
-                    return Lens3DDemo.actionWithDuration(t);
+                    return new Lens3DDemo(t);
                 case 5:
                     return Ripple3DDemo.actionWithDuration(t);
                 case 6:

@@ -40,12 +40,26 @@ namespace CocosSharp
             }
         }
 
+        public float Radius
+        {
+            get { return m_fRadius; }
+            set
+            {
+                if (!value.Equals(m_fRadius))
+                {
+                    m_fRadius = value;
+                    m_bDirty = true;
+                }
+            }
+        }
+
+
 
         #region Constructors
 
-        public CCLens3D()
-        {
-        }
+        public CCLens3D(float duration, CCGridSize gridSize)
+            : this(duration, gridSize, CCPoint.Zero, 0)
+        { }
 
         public CCLens3D(float duration, CCGridSize gridSize, CCPoint position, float radius) : base(duration, gridSize)
         {
