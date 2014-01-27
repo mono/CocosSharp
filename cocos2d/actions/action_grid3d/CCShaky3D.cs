@@ -2,15 +2,15 @@ namespace CocosSharp
 {
     public class CCShaky3D : CCGrid3DAction
     {
-        protected bool m_bShakeZ;
+		protected bool m_bShakeZ;
         protected int m_nRandrange;
 
 
         #region Constructors
 
-        protected CCShaky3D()
-        {
-        }
+		public CCShaky3D(float duration, CCGridSize gridSize) 
+			: this(duration, gridSize, 0, true)
+		{	}
 
         public CCShaky3D(float duration, CCGridSize gridSize, int range, bool shakeZ) : base(duration, gridSize)
         {
@@ -31,6 +31,17 @@ namespace CocosSharp
 
         #endregion Constructors
 
+		public bool Shake
+		{
+			get { return m_bShakeZ; }
+			protected set { m_bShakeZ = value; }
+		}
+
+		public int Range
+		{
+			get { return m_nRandrange; }
+			protected set { m_nRandrange = value; }
+		}
 
         public override object Copy(ICCCopyable pZone)
         {

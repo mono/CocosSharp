@@ -8,9 +8,11 @@ namespace tests
 {
     public class Shaky3DDemo : CCShaky3D
     {
-        public static CCActionInterval actionWithDuration(float t)
-        {
-            return new CCShaky3D(t, new CCGridSize(15, 10), 5, true);
+		public Shaky3DDemo (float t) : base (t, new CCGridSize(15, 10), 5, true)
+		{
+			// Testing of Properties
+			//Range = 5;
+			//Shake = true;
         }
     }
 }

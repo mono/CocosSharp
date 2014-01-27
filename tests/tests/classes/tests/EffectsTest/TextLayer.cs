@@ -75,7 +75,7 @@ namespace tests
             switch (nIndex)
             {
                 case 0:
-                    return Shaky3DDemo.actionWithDuration(t);
+					return new Shaky3DDemo (t);
                 case 1:
                     return Waves3DDemo.actionWithDuration(t);
                 case 2:
