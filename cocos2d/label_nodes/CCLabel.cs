@@ -56,6 +56,20 @@ namespace CocosSharp
             }
         }
 
+        public override string Text {
+            get {
+                return base.Text;
+            }
+            set {
+                if (m_sInitialString != value)
+                {
+                    InitializeFont (FontName, FontSize, value);
+                    base.Text = value;
+                }
+            }
+        }
+
+
         public static void InitializeTTFAtlas(int width, int height)
         {
             m_nWidth = width;
@@ -68,6 +82,14 @@ namespace CocosSharp
             m_pNodes.Clear();
             m_pNodes.Add(new ivec3() { x = 1, y = 1, z = m_nWidth - 2 });
         }
+
+        private static string GetFontKey(string fontName, float fontSize)
+        {
+            return String.Format("ttf-{0}-{1}", fontName, fontSize);
+        }
+
+
+        #region Constructors
 
         public CCLabel()
         {
@@ -95,13 +117,16 @@ namespace CocosSharp
         {
         }
 
-        public CCLabel(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
+        public CCLabel(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment) 
+            : base(text, GetFontKey(fontName, fontSize), dimensions.PointsToPixels(), hAlignment, vAlignment, CCPoint.Zero, m_pTexture)
         {
             InitializeFont(fontName, fontSize, text);
             m_FontName = fontName;
             m_FontSize = fontSize;
-            base.InitWithString(text, GetFontKey(fontName, fontSize), dimensions.PointsToPixels(), hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
         }
+
+        #endregion Constructors
+
 
         private CCBMFontConfiguration InitializeFont(string fontName, float fontSize, string charset)
         {
@@ -251,25 +276,6 @@ namespace CocosSharp
             }
 
             base.Draw();
-        }
-
-		public override string Text {
-			get {
-				return base.Text;
-			}
-			set {
-				if (m_sInitialString != value)
-				{
-					InitializeFont (FontName, FontSize, value);
-					base.Text = value;
-				}
-			}
-		}
-
-
-        private static string GetFontKey(string fontName, float fontSize)
-        {
-            return String.Format("ttf-{0}-{1}", fontName, fontSize);
         }
 
         #region Skyline Bottom Left

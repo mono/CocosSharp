@@ -102,18 +102,20 @@ namespace CocosSharp
         public CCLabelTTF (string text, string fontName, float fontSize) : 
         this (text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Center,
             CCVerticalTextAlignment.Top)
-        { }
+        { 
+        }
 
         public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) :
         this (text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
-        { }
+        { 
+        }
 
         public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
         {
-            InitWithString(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
+            InitCCLabelTTF(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
         }
 
-        private void InitWithString(string text, string fontName, float fontSize, 
+        private void InitCCLabelTTF(string text, string fontName, float fontSize, 
             CCSize dimensions, CCTextAlignment hAlignment,
             CCVerticalTextAlignment vAlignment)
         {

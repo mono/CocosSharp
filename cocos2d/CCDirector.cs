@@ -1118,30 +1118,24 @@ namespace CocosSharp
                 {
 					texture.IsAntialiased = false; // disable antialiasing so the labels are always sharp
                     
-                    m_pFPSLabel = new CCLabelAtlas();
+                    m_pFPSLabel = new CCLabelAtlas("00.0", texture, 4, 8, '.');
 					m_pFPSLabel.IgnoreContentScaleFactor = false;
-                    m_pFPSLabel.InitWithString("00.0", texture, 4, 8, '.');
 
-                    m_pUpdateTimeLabel = new CCLabelAtlas();
+                    m_pUpdateTimeLabel = new CCLabelAtlas("0.000", texture, 4, 8, '.');
 					m_pUpdateTimeLabel.IgnoreContentScaleFactor = false;
-                    m_pUpdateTimeLabel.InitWithString("0.000", texture, 4, 8, '.');
 
-                    m_pDrawTimeLabel = new CCLabelAtlas();
+                    m_pDrawTimeLabel = new CCLabelAtlas("0.000", texture, 4, 8, '.');
 					m_pDrawTimeLabel.IgnoreContentScaleFactor = false;
-                    m_pDrawTimeLabel.InitWithString("0.000", texture, 4, 8, '.');
 
-                    m_pDrawsLabel = new CCLabelAtlas();
+                    m_pDrawsLabel = new CCLabelAtlas("000", texture, 4, 8, '.');
 					m_pDrawsLabel.IgnoreContentScaleFactor = false;
-                    m_pDrawsLabel.InitWithString("000", texture, 4, 8, '.');
 
-                    m_pMemoryLabel = new CCLabelAtlas();
+                    m_pMemoryLabel = new CCLabelAtlas("0", texture, 4, 8, '.');
 					m_pMemoryLabel.IgnoreContentScaleFactor = false;
-                    m_pMemoryLabel.InitWithString("0", texture, 4, 8, '.');
                     m_pMemoryLabel.Color = new CCColor3B(35, 185, 255);
 
-                    m_pGCLabel = new CCLabelAtlas();
+                    m_pGCLabel = new CCLabelAtlas("0", texture, 4, 8, '.');
 					m_pGCLabel.IgnoreContentScaleFactor = false;
-                    m_pGCLabel.InitWithString("0", texture, 4, 8, '.');
                     m_pGCLabel.Color = new CCColor3B(255, 196, 54);
 
                 }

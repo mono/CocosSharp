@@ -115,14 +115,6 @@ namespace CocosSharp
     public interface ICCTextContainer
     {
         string Text { get; set; }
-
-        // sets a new label using an string
-        [Obsolete("Use Label Property")]
-        void SetString(string label);
-        
-        // returns the string that is rendered
-        [Obsolete("Use Label Property")]
-        string GetString();
     }
 
     /// <summary>

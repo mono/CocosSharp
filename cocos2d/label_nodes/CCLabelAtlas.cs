@@ -8,7 +8,6 @@ namespace CocosSharp
         protected char m_cMapStartChar;
         protected string m_sString = "";
 
-        #region ICCLabelProtocol Members
         public string Text
         {
             get { return m_sString; }
@@ -32,69 +31,46 @@ namespace CocosSharp
             }
         }
 
-        [Obsolete("Use Label Property")]
-        public void SetString(string label)
-        {
-            Text = label;
-        }
 
-        [Obsolete("Use Label Property")]
-        public string GetString() 
-        {
-            return Text;
-        }
-
-        #endregion
+        #region Constructors
 
         internal CCLabelAtlas()
         {
 			IgnoreContentScaleFactor = true;
         }
 
-        public CCLabelAtlas (string label, string fntFile)
+        public CCLabelAtlas(string label, string fntFile) : this(label, new PlistDocument(CCFileUtils.GetFileData(fntFile)).Root as PlistDictionary)
         {
-            string data = CCFileUtils.GetFileData(fntFile);
-
-            PlistDocument doc = new PlistDocument(data);
-            var dict = doc.Root as PlistDictionary;
-
-            Debug.Assert(dict["version"].AsInt == 1, "Unsupported version. Upgrade cocos2d version");
-
-            string textureFilename = dict["textureFilename"].AsString;
-            int width = (int)Math.Ceiling(dict["itemWidth"].AsInt / CCMacros.CCContentScaleFactor());
-            int height = (int)Math.Ceiling(dict["itemHeight"].AsInt / CCMacros.CCContentScaleFactor());
-            var startChar = (char) dict["firstChar"].AsInt;
-			
-			InitWithString(label, textureFilename, width, height, startChar);
         }
 
-        public CCLabelAtlas (string label, string charMapFile, int itemWidth, int itemHeight, char startCharMap)
+        private CCLabelAtlas(string label, PlistDictionary fontPlistDict) 
+            : this(label, fontPlistDict["textureFilename"].AsString, 
+                (int)Math.Ceiling(fontPlistDict["itemWidth"].AsInt / CCMacros.CCContentScaleFactor()), 
+                (int)Math.Ceiling(fontPlistDict["itemHeight"].AsInt / CCMacros.CCContentScaleFactor()),
+                (char)fontPlistDict["firstChar"].AsInt)
         {
-            InitWithString(label, charMapFile, itemWidth, itemHeight, startCharMap);
+            Debug.Assert(fontPlistDict["version"].AsInt == 1, "Unsupported version. Upgrade cocos2d version");
         }
 
-        private void InitWithString(string label, string charMapFile, int itemWidth, int itemHeight, char startCharMap)
+        public CCLabelAtlas(string label, string charMapFile, int itemWidth, int itemHeight, char startCharMap) : base(charMapFile, itemWidth, itemHeight, label.Length)
         {
-            Debug.Assert(label != null);
-            if (base.InitWithTileFile(charMapFile, itemWidth, itemHeight, label.Length))
-            {
-                m_cMapStartChar = startCharMap;
-                Text = (label);
-            }
+            InitCCLabelAtlas(label, startCharMap);
         }
 
-        // Used by CCDirector after label is created to reset value
-        internal bool InitWithString(string label, CCTexture2D texture, int itemWidth, int itemHeight, char startCharMap)
+        public CCLabelAtlas(string label, CCTexture2D texture, int itemWidth, int itemHeight, char startCharMap) : base(texture, itemWidth, itemHeight, label.Length)
+        {
+            InitCCLabelAtlas(label, startCharMap);
+        }
+
+        private void InitCCLabelAtlas(string label, char startCharMap)
         {
             Debug.Assert(label != null);
-            if (base.InitWithTexture(texture, itemWidth, itemHeight, label.Length))
-            {
-                m_cMapStartChar = startCharMap;
-                Text = (label);
-                return true;
-            }
-            return false;
+            m_cMapStartChar = startCharMap;
+            Text = (label);
         }
+
+        #endregion Constructors
+
 
         public override void UpdateAtlasValues()
         {

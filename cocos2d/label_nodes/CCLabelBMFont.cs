@@ -24,6 +24,15 @@ namespace CocosSharp
         protected CCSprite m_pReusedChar;
         protected bool m_bLabelDirty;
 
+        protected byte m_cDisplayedOpacity = 255;
+        protected byte m_cRealOpacity = 255;
+        protected CCColor3B m_tDisplayedColor = CCTypes.CCWhite;
+        protected CCColor3B m_tRealColor = CCTypes.CCWhite;
+        protected bool m_bCascadeColorEnabled = true;
+        protected bool m_bCascadeOpacityEnabled = true;
+        protected bool m_bIsOpacityModifyRGB = false;
+
+
         public override CCPoint AnchorPoint
         {
             get { return base.AnchorPoint; }
@@ -138,8 +147,6 @@ namespace CocosSharp
             }
         }
 
-        #region ICCLabelProtocol Members
-
         public virtual string Text
         {
             get { return m_sInitialString; }
@@ -153,29 +160,8 @@ namespace CocosSharp
             }
         }
 
-        [Obsolete("Use Label Property")]
-        public void SetString(string label)
-        {
-            Text = label;
-        }
 
-        [Obsolete("Use Label Property")]
-        public string GetString()
-        {
-            return Text;
-        }
-
-        #endregion
-
-        #region ICCRGBAProtocol Members
-
-        protected byte m_cDisplayedOpacity = 255;
-        protected byte m_cRealOpacity = 255;
-        protected CCColor3B m_tDisplayedColor = CCTypes.CCWhite;
-        protected CCColor3B m_tRealColor = CCTypes.CCWhite;
-        protected bool m_bCascadeColorEnabled = true;
-        protected bool m_bCascadeOpacityEnabled = true;
-        protected bool m_bIsOpacityModifyRGB = false;
+        #region ICCRGBAProtocol properties
 
         public virtual CCColor3B Color
         {
@@ -260,34 +246,6 @@ namespace CocosSharp
             set { m_bCascadeOpacityEnabled = value; }
         }
 
-        public virtual void UpdateDisplayedColor(CCColor3B parentColor)
-        {
-            m_tDisplayedColor.R = (byte) (m_tRealColor.R * parentColor.R / 255.0f);
-            m_tDisplayedColor.G = (byte) (m_tRealColor.G * parentColor.G / 255.0f);
-            m_tDisplayedColor.B = (byte) (m_tRealColor.B * parentColor.B / 255.0f);
-
-            if (m_pChildren != null)
-            {
-                for (int i = 0, count = m_pChildren.count; i < count; i++)
-                {
-                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedColor(m_tDisplayedColor);
-                }
-            }
-        }
-
-        public virtual void UpdateDisplayedOpacity(byte parentOpacity)
-        {
-            m_cDisplayedOpacity = (byte) (m_cRealOpacity * parentOpacity / 255.0f);
-
-            if (m_pChildren != null)
-            {
-                for (int i = 0, count = m_pChildren.count; i < count; i++)
-                {
-                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedOpacity(m_cDisplayedOpacity);
-                }
-            }
-        }
-
         #endregion
 
         public static void FNTConfigRemoveCache()
@@ -303,18 +261,20 @@ namespace CocosSharp
             FNTConfigRemoveCache();
         }
 
-        public CCLabelBMFont()
-        {
-            InitWithString(null, null, new CCSize(kCCLabelAutomaticWidth, 0), CCTextAlignment.Left, CCVerticalTextAlignment.Top, CCPoint.Zero, null);
-        }
 
-        public CCLabelBMFont(string str, string fntFile, float width)
-            : this(str, fntFile, width, CCTextAlignment.Left, CCPoint.Zero)
+        #region Constructors
+
+        public CCLabelBMFont() : this("", "")
         {
         }
 
         public CCLabelBMFont(string str, string fntFile)
-            : this(str, fntFile, kCCLabelAutomaticWidth, CCTextAlignment.Left, CCPoint.Zero)
+            : this(str, fntFile, 0.0f)
+        {
+        }
+
+        public CCLabelBMFont(string str, string fntFile, float width)
+            : this(str, fntFile, width, CCTextAlignment.Left)
         {
         }
 
@@ -323,13 +283,30 @@ namespace CocosSharp
         {
         }
 
-        public CCLabelBMFont(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset)
+        public CCLabelBMFont(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset) 
+            : this(str, fntFile, width, alignment, imageOffset, null)
         {
-            InitWithString(str, fntFile, new CCSize(width, 0), alignment, CCVerticalTextAlignment.Top, imageOffset, null);
         }
 
-        protected virtual void InitWithString(string theString, string fntFile, CCSize dimentions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment,
-                                              CCPoint imageOffset, CCTexture2D texture)
+        public CCLabelBMFont(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset, CCTexture2D texture)
+            : this(str, fntFile, width, alignment, CCVerticalTextAlignment.Top, imageOffset, null)
+        {
+        }
+
+        public CCLabelBMFont(string str, string fntFile, float width, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+            CCPoint imageOffset, CCTexture2D texture)
+            : this(str, fntFile, new CCSize(width, 0), hAlignment, vAlignment, imageOffset, texture)
+        {
+        }
+
+        public CCLabelBMFont(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+            CCPoint imageOffset, CCTexture2D texture)
+        {
+            InitCCLabelBMFont(str, fntFile, dimensions, hAlignment, vAlignment, imageOffset, texture);
+        }
+
+        private void InitCCLabelBMFont(string theString, string fntFile, CCSize dimentions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+            CCPoint imageOffset, CCTexture2D texture)
         {
             Debug.Assert(m_pConfiguration == null, "re-init is no longer supported");
             Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null),
@@ -413,6 +390,37 @@ namespace CocosSharp
                 return;
             }
             return;
+        }
+
+        #endregion Constructors
+
+
+        public virtual void UpdateDisplayedColor(CCColor3B parentColor)
+        {
+            m_tDisplayedColor.R = (byte) (m_tRealColor.R * parentColor.R / 255.0f);
+            m_tDisplayedColor.G = (byte) (m_tRealColor.G * parentColor.G / 255.0f);
+            m_tDisplayedColor.B = (byte) (m_tRealColor.B * parentColor.B / 255.0f);
+
+            if (m_pChildren != null)
+            {
+                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                {
+                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedColor(m_tDisplayedColor);
+                }
+            }
+        }
+
+        public virtual void UpdateDisplayedOpacity(byte parentOpacity)
+        {
+            m_cDisplayedOpacity = (byte) (m_cRealOpacity * parentOpacity / 255.0f);
+
+            if (m_pChildren != null)
+            {
+                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                {
+                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedOpacity(m_cDisplayedOpacity);
+                }
+            }
         }
 
         private int KerningAmountForFirst(int first, int second)
