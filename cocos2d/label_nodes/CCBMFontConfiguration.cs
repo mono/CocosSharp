@@ -63,23 +63,18 @@ namespace CocosSharp
         {
         }
 
-        protected CCBMFontConfiguration(string data, string fntFile)
+        // Content pipeline makes use of this constructor
+        internal CCBMFontConfiguration(string data, string fntFile)
         {
             InitWithString(data, fntFile);
         }
 
-        protected virtual bool InitWithString(string data, string fntFile)
+        private void InitWithString(string data, string fntFile)
         {
             m_pKerningDictionary.Clear();
             m_pFontDefDictionary.Clear();
 
             m_pCharacterSet = ParseConfigFile(data, fntFile);
-
-            if (m_pCharacterSet == null)
-            {
-                return false;
-            }
-            return true;
         }
 
         #endregion Constructors
