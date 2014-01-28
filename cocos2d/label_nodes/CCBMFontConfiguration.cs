@@ -40,23 +40,10 @@ namespace CocosSharp
             get { return m_pCharacterSet; }
         }
 
-        public CCBMFontConfiguration()
-        {
-        }
 
-        public CCBMFontConfiguration(string data, string fntFile)
-        {
-            InitWithString(data, fntFile);
-        }
+        #region Constructors
 
-        /// <summary>
-        /// This create method is left in the project because this class is loaded
-        /// by the ContentManager. This create factory is a legitimate use of the
-        /// self factory pattern.
-        /// </summary>
-        /// <param name="fntFile"></param>
-        /// <returns></returns>
-        public static CCBMFontConfiguration Create(string fntFile)
+        public static CCBMFontConfiguration FontConfigurationWithFile(string fntFile)
         {
             try
             {
@@ -64,19 +51,21 @@ namespace CocosSharp
             }
             catch (ContentLoadException)
             {
-                var pRet = new CCBMFontConfiguration();
-                if (pRet.InitWithFNTFile(fntFile))
-                {
-                    return pRet;
-                }
+                return new CCBMFontConfiguration(fntFile);
             }
-            return null;
         }
 
-        protected virtual bool InitWithFNTFile(string fntFile)
+        internal CCBMFontConfiguration()
         {
-            string content = CCContentManager.SharedContentManager.Load<string>(fntFile);
-            return InitWithString(content, fntFile);
+        }
+
+        protected CCBMFontConfiguration(string fntFile) : this(CCContentManager.SharedContentManager.Load<string>(fntFile), fntFile)
+        {
+        }
+
+        protected CCBMFontConfiguration(string data, string fntFile)
+        {
+            InitWithString(data, fntFile);
         }
 
         protected virtual bool InitWithString(string data, string fntFile)
@@ -92,6 +81,9 @@ namespace CocosSharp
             }
             return true;
         }
+
+        #endregion Constructors
+
 
         private List<int> ParseConfigFile(string pBuffer, string fntFile)
         {

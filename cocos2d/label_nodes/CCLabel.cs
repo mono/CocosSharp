@@ -118,11 +118,12 @@ namespace CocosSharp
         }
 
         public CCLabel(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment) 
-            : base(text, GetFontKey(fontName, fontSize), dimensions.PointsToPixels(), hAlignment, vAlignment, CCPoint.Zero, m_pTexture)
         {
+            // Can't call base(text, ...), becasue we have to initialize font first
             InitializeFont(fontName, fontSize, text);
             m_FontName = fontName;
             m_FontSize = fontSize;
+            base.InitCCLabelBMFont(text, GetFontKey(fontName, fontSize), dimensions.PointsToPixels(), hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
         }
 
         #endregion Constructors

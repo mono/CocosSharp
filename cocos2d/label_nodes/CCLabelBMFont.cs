@@ -305,7 +305,7 @@ namespace CocosSharp
             InitCCLabelBMFont(str, fntFile, dimensions, hAlignment, vAlignment, imageOffset, texture);
         }
 
-        private void InitCCLabelBMFont(string theString, string fntFile, CCSize dimentions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+        protected void InitCCLabelBMFont(string theString, string fntFile, CCSize dimentions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
             CCPoint imageOffset, CCTexture2D texture)
         {
             Debug.Assert(m_pConfiguration == null, "re-init is no longer supported");
@@ -942,7 +942,7 @@ namespace CocosSharp
 
             if (!s_pConfigurations.TryGetValue(file, out pRet))
             {
-                pRet = CCBMFontConfiguration.Create(file);
+                pRet = CCBMFontConfiguration.FontConfigurationWithFile(file);
                 s_pConfigurations.Add(file, pRet);
             }
 
