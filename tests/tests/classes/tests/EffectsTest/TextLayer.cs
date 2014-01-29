@@ -77,7 +77,7 @@ namespace tests
                 case 0:
 					return new Shaky3DDemo (t);
                 case 1:
-                    return Waves3DDemo.actionWithDuration(t);
+					return new Waves3DDemo(t);
                 case 2:
                     return FlipX3DDemo.actionWithDuration(t);
                 case 3:
