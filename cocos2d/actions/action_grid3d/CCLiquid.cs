@@ -20,14 +20,15 @@ namespace CocosSharp
             set { m_fAmplitudeRate = value; }
         }
 
+		public int Waves
+		{
+			get { return m_nWaves; }
+			set { m_nWaves = value; }
+		}
 
         #region Constructors
 
-        public CCLiquid()
-        {
-        }
-
-        public CCLiquid(float duration, CCGridSize gridSize, int waves, float amplitude) : base(duration, gridSize)
+		public CCLiquid(float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0) : base(duration, gridSize)
         {
             InitCCLiquid(waves, amplitude);
         }

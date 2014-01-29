@@ -8,9 +8,12 @@ namespace tests
 {
     public class LiquidDemo : CCLiquid
     {
-        public static CCActionInterval actionWithDuration(float t)
+		public LiquidDemo (float t)
+			: base (t, new CCGridSize(16, 12), 4, 20)
         {
-            return new CCLiquid (t, new CCGridSize(16, 12), 4, 20);
+			// Testing properties
+			//Waves = 4;
+			//Amplitude = 20;
         }
     }
 }

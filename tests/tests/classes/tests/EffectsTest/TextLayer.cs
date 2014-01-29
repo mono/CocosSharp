@@ -87,7 +87,7 @@ namespace tests
                 case 5:
 					return new Ripple3DDemo(t);
                 case 6:
-                    return LiquidDemo.actionWithDuration(t);
+					return new LiquidDemo(t);
                 case 7:
                     return WavesDemo.actionWithDuration(t);
                 case 8:
