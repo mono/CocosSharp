@@ -22,14 +22,28 @@ namespace CocosSharp
             set { m_fAmplitudeRate = value; }
         }
 
+		public int Waves
+		{
+			get { return m_nWaves; }
+			set { m_nWaves = value; }
+		}
 
-        #region Constructors
+		public bool Vertical
+		{
+			get { return m_bVertical; }
+			set { m_bVertical = value; }
+		}
 
-        protected CCWaves()
-        {
-        }
+		public bool Horizontal
+		{
+			get { return m_bHorizontal; }
+			set { m_bHorizontal = value; }
+		}
 
-        public CCWaves(float duration, CCGridSize gridSize, int waves, float amplitude, bool horizontal, bool vertical)
+		#region Constructors
+
+
+		public CCWaves(float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0, bool horizontal = true, bool vertical = true)
             : base(duration, gridSize)
         {
             InitCCWaves(waves, amplitude, horizontal, vertical);

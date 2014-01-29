@@ -89,7 +89,7 @@ namespace tests
                 case 6:
 					return new LiquidDemo(t);
                 case 7:
-                    return WavesDemo.actionWithDuration(t);
+					return new WavesDemo(t);
                 case 8:
                     return TwirlDemo.actionWithDuration(t);
                 case 9:
