@@ -29,17 +29,29 @@ namespace CocosSharp
         private LinkedList<CCMenuItem> _Items = new LinkedList<CCMenuItem>();
 
         /// <summary>
-        /// Default ctor that sets the content size of the menu to match the window size.
+        /// Returns the menu item with the focus. Note that this only has a value if the GamePad or Keyboard is enabled. Touch
+        /// devices do not have a "focus" concept.
         /// </summary>
-        private CCMenu() 
+        public CCMenuItem FocusedItem
         {
-            InitWithItems(null);
-//            ContentSize = CCDirector.SharedDirector.WinSize;
+            get
+            {
+                // Find the item with the focus
+                foreach(CCMenuItem item in _Items) 
+                {
+                    if (item.HasFocus)
+                    {
+                        return (item);
+                    }
+                }
+                return (null);
+            }
         }
 
-        public CCMenu(params CCMenuItem[] items)
+        public bool Enabled
         {
-            InitWithItems(items);
+            get { return m_bEnabled; }
+            set { m_bEnabled = value; }
         }
 
         public override bool HasFocus
@@ -54,6 +66,72 @@ namespace CocosSharp
                 }
             }
         }
+
+
+        #region Constructors
+
+        /// <summary>
+        /// Default ctor that sets the content size of the menu to match the window size.
+        /// </summary>
+        private CCMenu() : this(null)
+        {
+        }
+
+        public CCMenu(params CCMenuItem[] items)
+        {
+            InitCCMenu(items);
+        }
+
+        /// <summary>
+        /// The position of the menu is set to the center of the main screen
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        private void InitCCMenu(params CCMenuItem[] items)
+        {
+            if (_Items.Count > 0)
+            {
+                List<CCMenuItem> copy = new List<CCMenuItem>(_Items);
+                foreach (CCMenuItem i in copy)
+                {
+                    RemoveChild(i, false);
+                }
+            }
+            TouchPriority = kCCMenuHandlerPriority;
+            TouchMode = CCTouchMode.OneByOne;
+            TouchEnabled = true;
+
+            m_bEnabled = true;
+            // menu in the center of the screen
+            CCSize s = CCDirector.SharedDirector.WinSize;
+
+            IgnoreAnchorPointForPosition = true;
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            ContentSize = s;
+
+            Position = (new CCPoint(s.Width / 2, s.Height / 2));
+
+            if (items != null)
+            {
+                int z = 0;
+                foreach (CCMenuItem item in items)
+                {
+                    AddChild(item, z);
+                    z++;
+                }
+            }
+
+            //    [self alignItemsVertically];
+            m_pSelectedItem = null;
+            m_eState = CCMenuState.Waiting;
+
+            // enable cascade color and opacity on menus
+            CascadeColorEnabled = true;
+            CascadeOpacityEnabled = true;
+        }
+
+        #endregion Constructors
+
 
         /// <summary>
         /// Handles the button press event to track which focused menu item will get the activation
@@ -102,80 +180,6 @@ namespace CocosSharp
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Returns the menu item with the focus. Note that this only has a value if the GamePad or Keyboard is enabled. Touch
-        /// devices do not have a "focus" concept.
-        /// </summary>
-        public CCMenuItem FocusedItem
-        {
-            get
-            {
-                // Find the item with the focus
-                foreach(CCMenuItem item in _Items) 
-                {
-                    if (item.HasFocus)
-                    {
-                        return (item);
-                    }
-                }
-                return (null);
-            }
-        }
-
-        public bool Enabled
-        {
-            get { return m_bEnabled; }
-            set { m_bEnabled = value; }
-        }
-
-        /// <summary>
-        /// The position of the menu is set to the center of the main screen
-        /// </summary>
-        /// <param name="items"></param>
-        /// <returns></returns>
-        private void InitWithItems(params CCMenuItem[] items)
-        {
-            if (_Items.Count > 0)
-            {
-                List<CCMenuItem> copy = new List<CCMenuItem>(_Items);
-                foreach (CCMenuItem i in copy)
-                {
-                    RemoveChild(i, false);
-                }
-            }
-            TouchPriority = kCCMenuHandlerPriority;
-            TouchMode = CCTouchMode.OneByOne;
-            TouchEnabled = true;
-
-            m_bEnabled = true;
-            // menu in the center of the screen
-            CCSize s = CCDirector.SharedDirector.WinSize;
-
-            IgnoreAnchorPointForPosition = true;
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
-            ContentSize = s;
-
-            Position = (new CCPoint(s.Width / 2, s.Height / 2));
-
-            if (items != null)
-            {
-                int z = 0;
-                foreach (CCMenuItem item in items)
-                {
-                    AddChild(item, z);
-                    z++;
-                }
-            }
-
-            //    [self alignItemsVertically];
-            m_pSelectedItem = null;
-            m_eState = CCMenuState.Waiting;
-
-            // enable cascade color and opacity on menus
-            CascadeColorEnabled = true;
-            CascadeOpacityEnabled = true;
         }
 
         /*

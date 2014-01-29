@@ -4,6 +4,8 @@ namespace CocosSharp
 {
     public class CCMenuItemImage : CCMenuItemSprite
     {
+        #region Constructors
+
         public CCMenuItemImage() : this(null, null, null, null)
         {
         }
@@ -42,6 +44,9 @@ namespace CocosSharp
             : this(normalImage, selectedImage, disabledImage, null)
         {
         }
+
+        #endregion Constructors
+
 
         public void SetNormalSpriteFrame(CCSpriteFrame frame)
         {

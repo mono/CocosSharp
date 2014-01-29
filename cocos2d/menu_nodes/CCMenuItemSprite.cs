@@ -84,6 +84,14 @@ namespace CocosSharp
             }
         }
 
+        /// <summary>
+        /// Set this to true if you want to zoom-in/out on the button image like the CCMenuItemLabel works.
+        /// </summary>
+        public bool ZoomBehaviorOnTouch { get; set; }
+
+
+        #region Constructors
+
         public CCMenuItemSprite()
             : this(null, null, null, null)
         {
@@ -96,24 +104,23 @@ namespace CocosSharp
         }
 
 		public CCMenuItemSprite(string normalSprite, string selectedSprite, Action<object> selector)
-            :this(new CCSprite(normalSprite), new CCSprite(selectedSprite), null, selector)
+            : this(new CCSprite(normalSprite), new CCSprite(selectedSprite), null, selector)
         {
         }
 
         public CCMenuItemSprite(CCNode normalSprite, CCNode selectedSprite)
-            :this(normalSprite, selectedSprite, null, null)
+            : this(normalSprite, selectedSprite, null, null)
         {
         }
 
 		public CCMenuItemSprite(CCNode normalSprite, CCNode selectedSprite, Action<object> selector)
-            :this(normalSprite, selectedSprite, null, selector)
+            : this(normalSprite, selectedSprite, null, selector)
         {
         }
 
 		public CCMenuItemSprite(CCNode normalSprite, CCNode selectedSprite, CCNode disabledSprite, Action<object> selector) 
-			: base (selector)
+			: base(selector)
         {
-
             NormalImage = normalSprite;
             SelectedImage = selectedSprite;
             DisabledImage = disabledSprite;
@@ -127,10 +134,8 @@ namespace CocosSharp
             CascadeOpacityEnabled = true;
         }
 
-        /// <summary>
-        /// Set this to true if you want to zoom-in/out on the button image like the CCMenuItemLabel works.
-        /// </summary>
-        public bool ZoomBehaviorOnTouch { get; set; }
+        #endregion Constructors
+
 
         public override void Selected()
         {

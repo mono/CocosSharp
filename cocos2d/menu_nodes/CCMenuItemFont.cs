@@ -7,16 +7,6 @@ namespace CocosSharp
         protected string m_strFontName;
         protected uint m_uFontSize;
 
-        public CCMenuItemFont (string value) : this(value, null)
-        { }
-        
-		public CCMenuItemFont (string value, Action<object> selector) 
-			: base (new CCLabelTTF(value, _fontName, _fontSize), selector)
-        {
-			m_strFontName = _fontName;
-			m_uFontSize = _fontSize;
-        }
-        
         public static uint FontSize
         {
             get { return _fontSize; }
@@ -48,6 +38,22 @@ namespace CocosSharp
             }
             get { return m_strFontName; }
         }
+
+
+        #region Constructors
+
+        public CCMenuItemFont (string value) : this(value, null)
+        { }
+
+        public CCMenuItemFont (string value, Action<object> selector) 
+            : base (new CCLabelTTF(value, _fontName, _fontSize), selector)
+        {
+            m_strFontName = _fontName;
+            m_uFontSize = _fontSize;
+        }
+
+        #endregion Constructors
+
 
         protected void RecreateLabel()
         {

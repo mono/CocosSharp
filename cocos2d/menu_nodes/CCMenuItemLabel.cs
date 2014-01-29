@@ -9,15 +9,6 @@ namespace CocosSharp
         protected CCColor3B m_tColorBackup;
         protected CCColor3B m_tDisabledColor;
 
-        protected CCMenuItemLabel() {}
-
-		public CCMenuItemLabel (CCNode label, Action<object> selector) : base (selector)
-        {
-            InitWithLabel(label, selector);
-        }
-
-        public CCMenuItemLabel (CCNode label) : this(label, null)
-        { }
 
         public CCColor3B DisabledColor
         {
@@ -67,6 +58,22 @@ namespace CocosSharp
             }
         }
 
+
+        #region Constructors
+
+        protected CCMenuItemLabel() 
+        {
+        }
+
+        public CCMenuItemLabel (CCNode label, Action<object> selector) : base (selector)
+        {
+            InitWithLabel(label, selector);
+        }
+
+        public CCMenuItemLabel (CCNode label) : this(label, null)
+        { 
+        }
+
 		private void InitWithLabel(CCNode label, Action<object> selector)
         {
             m_fOriginalScale = 1.0f;
@@ -77,6 +84,9 @@ namespace CocosSharp
             CascadeColorEnabled = true;
             CascadeOpacityEnabled = true;
         }
+
+        #endregion Constructors
+
 
         public void SetString(string label)
         {

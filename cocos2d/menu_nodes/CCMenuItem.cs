@@ -21,22 +21,6 @@ namespace CocosSharp
         protected string m_functionName;
         protected Action<object> m_pfnSelector;
 
-		public CCMenuItem() : this (null)
-        {
-            m_bIsSelected = false;
-            m_bIsEnabled = false;
-            m_pfnSelector = null;
-        }
-
-        /// <summary>
-        /// Creates a CCMenuItem with a target/selector
-        /// </summary>
-        /// <param name="selector"></param>
-        /// <returns></returns>
-        public CCMenuItem(Action<object> selector)
-        {
-			InitWithItems(selector);
-        }
 
         public virtual bool Enabled
         {
@@ -50,11 +34,42 @@ namespace CocosSharp
         }
 
         /// <summary>
+        /// Returns the outside box
+        /// </summary>
+        /// <returns></returns>
+        public CCRect Rectangle
+        {
+            get {
+                return new CCRect (m_obPosition.X - m_obContentSize.Width * m_obAnchorPoint.X,
+                    m_obPosition.Y - m_obContentSize.Height * m_obAnchorPoint.Y,
+                    m_obContentSize.Width,
+                    m_obContentSize.Height);
+            }
+        }
+
+
+        #region Constructors
+
+        public CCMenuItem() : this(null)
+        {
+        }
+
+        /// <summary>
+        /// Creates a CCMenuItem with a target/selector
+        /// </summary>
+        /// <param name="selector"></param>
+        /// <returns></returns>
+        public CCMenuItem(Action<object> selector)
+        {
+            InitCCMenuItem(selector);
+        }
+
+        /// <summary>
         /// Initializes a CCMenuItem with a target/selector
         /// </summary>
         /// <param name="selector"></param>
         /// <returns></returns>
-		private void InitWithItems(Action<object> selector)
+        private void InitCCMenuItem(Action<object> selector)
         {
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_pfnSelector = selector;
@@ -62,19 +77,8 @@ namespace CocosSharp
             m_bIsSelected = false;
         }
 
-        /// <summary>
-        /// Returns the outside box
-        /// </summary>
-        /// <returns></returns>
-        public CCRect Rectangle
-        {
-			get {
-				return new CCRect (m_obPosition.X - m_obContentSize.Width * m_obAnchorPoint.X,
-				                          m_obPosition.Y - m_obContentSize.Height * m_obAnchorPoint.Y,
-				                          m_obContentSize.Width,
-				                          m_obContentSize.Height);
-			}
-        }
+        #endregion Constructors
+
 
         /// <summary>
         /// Activate the item
