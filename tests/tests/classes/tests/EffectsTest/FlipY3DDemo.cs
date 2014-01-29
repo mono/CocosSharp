@@ -2,15 +2,16 @@ using CocosSharp;
 
 namespace tests
 {
-    public class FlipY3DDemo : CCFlipY3D
+	public class FlipY3DDemo : CCSequence
     {
-        public static CCActionInterval actionWithDuration(float t)
-        {
-            CCFlipX3D flipx = new CCFlipY3D(t);
-            CCFiniteTimeAction flipx_back = flipx.Reverse();
-            CCDelayTime delay = new CCDelayTime (2);
+		public FlipY3DDemo (float t) 
+		{
+			var flipY = new CCFlipY3D (t);
+			var flipY_Reverse = flipY.Reverse ();
+			var delay = new CCDelayTime (2);
 
-            return (new CCSequence(flipx, delay, flipx_back));
-        }
+			this.Actions = new CCFiniteTimeAction[] {flipY, delay, flipY_Reverse};
+		}
+
     }
 }

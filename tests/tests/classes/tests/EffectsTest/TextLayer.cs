@@ -79,9 +79,9 @@ namespace tests
                 case 1:
 					return new Waves3DDemo(t);
                 case 2:
-                    return FlipX3DDemo.actionWithDuration(t);
+					return new FlipX3DDemo(t);
                 case 3:
-                    return FlipY3DDemo.actionWithDuration(t);
+					return new FlipY3DDemo(t);
                 case 4:
                     return new Lens3DDemo(t);
                 case 5:

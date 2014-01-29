@@ -22,8 +22,47 @@ namespace CocosSharp
             }
         }
 
+		protected virtual CCFiniteTimeAction[]  Actions
+		{
+			get 
+			{
+				return (CCFiniteTimeAction[])m_pActions;
+			}
+			set 
+			{
+				// Check to make sure we are immutable after creation
+				Debug.Assert((m_pActions.Length == 2) || 
+					(m_pActions[0] == null && m_pActions[1] == null), 
+					"Can not change the actions after creation, you must create a new CCSequence object");
+				var actions = value;
+
+				CCFiniteTimeAction prev = actions[0];
+
+				// Can't call base(duration) because we need to calculate duration here
+				float combinedDuration = actions.Sum(action => action.Duration);
+				Duration = combinedDuration;
+
+				if (actions.Length == 1)
+				{
+					InitCCSequence(prev, new CCExtraAction());
+				}
+				else
+				{
+					for (int i = 1; i < actions.Length - 1; i++)
+					{
+						prev = new CCSequence(prev, actions[i]);
+					}
+
+					InitCCSequence(prev, actions[actions.Length - 1]);
+				}
+
+			}
+		}
 
         #region Constructors
+
+		protected CCSequence ()
+		{	}
 
         public CCSequence(CCFiniteTimeAction action1, CCFiniteTimeAction action2) : base(action1.Duration + action2.Duration)
         {
@@ -32,25 +71,7 @@ namespace CocosSharp
 
         public CCSequence(params CCFiniteTimeAction[] actions) : base()
         {
-            CCFiniteTimeAction prev = actions[0];
-
-            // Can't call base(duration) because we need to calculate duration here
-            float combinedDuration = actions.Sum(action => action.Duration);
-            Duration = combinedDuration;
-
-            if (actions.Length == 1)
-            {
-                InitCCSequence(prev, new CCExtraAction());
-            }
-            else
-            {
-                for (int i = 1; i < actions.Length - 1; i++)
-                {
-                    prev = new CCSequence(prev, actions[i]);
-                }
-
-                InitCCSequence(prev, actions[actions.Length - 1]);
-            }
+			Actions = actions;
         }
 
         // Perform deep copy of CCSequence

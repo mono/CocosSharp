@@ -6,10 +6,6 @@ namespace CocosSharp
     {
         #region Constructors
 
-        public CCFlipY3D()
-        {
-        }
-
         public CCFlipY3D(float duration) : base(duration)
         {
         }

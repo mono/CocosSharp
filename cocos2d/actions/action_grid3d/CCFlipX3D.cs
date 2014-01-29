@@ -7,18 +7,13 @@ namespace CocosSharp
     {
         #region Constructors
 
-        public CCFlipX3D()
-        {
-        }
-
         public CCFlipX3D(float duration, CCGridSize gridSize) : base(duration, gridSize)
         {
             InitWithDuration(duration, gridSize);
         }
 
-        public CCFlipX3D(float duration) : this(duration, new CCGridSize(1, 1))
-        {
-        }
+		public CCFlipX3D(float duration) : this(duration, CCGridSize.One)
+        { }
 
         // Perform a deep copy of CCFlipX3D
         public CCFlipX3D(CCFlipX3D flipX3D) : base(flipX3D)
