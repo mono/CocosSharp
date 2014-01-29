@@ -13,10 +13,12 @@ namespace CocosSharp
         private CCBlendFunc m_sBlendFunc;
         private bool m_bDirty;
 
-        public CCDrawNode()
+        /** draw a polygon with a fill color and line color */
+
+        private struct ExtrudeVerts
         {
-            m_sBlendFunc = CCBlendFunc.AlphaBlend;
-            m_pVertices = new CCRawList<VertexPositionColor>(512);
+            public CCPoint offset;
+            public CCPoint n;
         }
 
         public CCBlendFunc BlendFunc
@@ -24,6 +26,18 @@ namespace CocosSharp
             get { return m_sBlendFunc; }
             set { m_sBlendFunc = value; }
         }
+
+
+        #region Constructors
+
+        public CCDrawNode()
+        {
+            m_sBlendFunc = CCBlendFunc.AlphaBlend;
+            m_pVertices = new CCRawList<VertexPositionColor>(512);
+        }
+
+        #endregion Constructors
+
 
         /** draw a dot at a position, with a given radius and color */
 
@@ -95,14 +109,6 @@ namespace CocosSharp
             m_pVertices.Add(new VertexPositionColor(v5, cl)); //__t(n)
 
             m_bDirty = true;
-        }
-
-        /** draw a polygon with a fill color and line color */
-
-        private struct ExtrudeVerts
-        {
-            public CCPoint offset;
-            public CCPoint n;
         }
 
         public void DrawCircle(CCPoint center, float radius, CCColor4B color)

@@ -13,37 +13,37 @@ namespace CocosSharp
         protected CCSprite m_pSprite;
         protected CCTexture2D m_pTexture;
 
-        public CCRenderTexture()
-        {
-            m_ePixelFormat = SurfaceFormat.Color;
-        }
-
         public CCSprite Sprite
         {
             get { return m_pSprite; }
             set { m_pSprite = value; }
         }
 
-        public CCRenderTexture(int w, int h)
+
+        #region Constructors
+
+        public CCRenderTexture()
         {
-            InitWithWidthAndHeight(w, h, SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents);
+            m_ePixelFormat = SurfaceFormat.Color;
         }
 
-        public CCRenderTexture(int w, int h, SurfaceFormat format)
+        public CCRenderTexture(int w, int h) : this(w, h, SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents)
         {
-            InitWithWidthAndHeight(w, h, format, DepthFormat.None, RenderTargetUsage.DiscardContents);
+        }
+
+        public CCRenderTexture(int w, int h, SurfaceFormat format) : this(w, h, format, DepthFormat.None, RenderTargetUsage.DiscardContents)
+        {
         }
 
         public CCRenderTexture(int w, int h, SurfaceFormat format, DepthFormat depthFormat, RenderTargetUsage usage)
         {
-            InitWithWidthAndHeight(w, h, format, depthFormat, usage);
+            InitCCRenderTexture(w, h, format, depthFormat, usage);
         }
 
-        private void InitWithWidthAndHeight(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
+        private void InitCCRenderTexture(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
         {
             w = (int)Math.Ceiling(w * CCMacros.CCContentScaleFactor());
             h = (int)Math.Ceiling(h * CCMacros.CCContentScaleFactor());
-
 
             m_pRenderTarget2D = CCDrawManager.CreateRenderTarget(w, h, colorFormat, depthFormat, usage);
 
@@ -58,6 +58,9 @@ namespace CocosSharp
 
             AddChild(m_pSprite);
         }
+
+        #endregion Constructors
+
 
         public virtual void Begin()
         {

@@ -25,6 +25,8 @@ namespace CocosSharp
         //kProgressTextureCoords holds points {0,1} {0,0} {1,0} {1,1} we can represent it as bits
         private const uint kCCProgressTextureCoords = 0x4b;
 
+        private static short[] s_pIndexes;
+
         protected bool m_bReverseDirection;
         protected CCProgressTimerType m_eType;
         protected float m_fPercentage;
@@ -161,7 +163,21 @@ namespace CocosSharp
 
         #endregion
 
-        private void InitWithSprite(CCSprite sp)
+
+        #region Constructors
+
+        public CCProgressTimer(string fileName) : this(new CCSprite(fileName))
+        {
+        }
+
+        /** Creates a progress timer with the sprite as the shape the timer goes through */
+
+        public CCProgressTimer(CCSprite sp)
+        {
+            InitCCProgressTimer(sp);
+        }
+
+        private void InitCCProgressTimer(CCSprite sp)
         {
             Percentage = 0.0f;
             m_pVertexData = null;
@@ -178,7 +194,8 @@ namespace CocosSharp
             //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
         }
 
-        private static short[] s_pIndexes;
+        #endregion Constructors
+
 
         public override void Draw()
         {
@@ -231,19 +248,6 @@ namespace CocosSharp
                                                         s_pIndexes, 0, count);
                 }
             }
-        }
-
-
-        public CCProgressTimer(string fileName)
-        {
-            InitWithSprite(new CCSprite(fileName));
-        }
-
-        /** Creates a progress timer with the sprite as the shape the timer goes through */
-
-        public CCProgressTimer(CCSprite sp)
-        {
-            InitWithSprite(sp);
         }
 
         protected CCTex2F TextureCoordFromAlphaPoint(CCPoint alpha)

@@ -29,9 +29,8 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCClippingNode()
+        public CCClippingNode() : this(null)
         {
-            InitCCClippingNode(null);
         }
 
         public CCClippingNode(CCNode stencil)

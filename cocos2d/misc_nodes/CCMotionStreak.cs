@@ -35,7 +35,6 @@ namespace CocosSharp
             }
         }
 
-
         #region RGBA Protocol
 
         public override byte Opacity
@@ -88,28 +87,17 @@ namespace CocosSharp
             m_tBlendFunc = CCBlendFunc.NonPremultiplied;
         }
 
-        public CCMotionStreak(float fade, float minSeg, float stroke, CCColor3B color, string path)
-        {
-            InitWithFade(fade, minSeg, stroke, color, path);
-        }
-
         public CCMotionStreak(float fade, float minSeg, float stroke, CCColor3B color, CCTexture2D texture)
         {
-            InitWithFade(fade, minSeg, stroke, color, texture);
+            InitCCMotionStreak(fade, minSeg, stroke, color, texture);
         }
 
-        #endregion Constructors
-
-
-        private void InitWithFade(float fade, float minSeg, float stroke, CCColor3B color, string path)
+        public CCMotionStreak(float fade, float minSeg, float stroke, CCColor3B color, string path) 
+            : this(fade, minSeg, stroke, color, CCTextureCache.SharedTextureCache.AddImage(path))
         {
-            Debug.Assert(!String.IsNullOrEmpty(path), "Invalid filename");
-
-            CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(path);
-            InitWithFade(fade, minSeg, stroke, color, texture);
         }
 
-        private void InitWithFade(float fade, float minSeg, float stroke, CCColor3B color, CCTexture2D texture)
+        private void InitCCMotionStreak(float fade, float minSeg, float stroke, CCColor3B color, CCTexture2D texture)
         {
             Position = CCPoint.Zero;
             AnchorPoint = CCPoint.Zero;
@@ -137,8 +125,10 @@ namespace CocosSharp
             Texture = texture;
             Color = color;
             ScheduleUpdate();
-
         }
+
+        #endregion Constructors
+
 
         public void TintWithColor(CCColor3B colors)
         {
