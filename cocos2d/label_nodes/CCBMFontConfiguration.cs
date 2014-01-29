@@ -59,12 +59,12 @@ namespace CocosSharp
         {
         }
 
-        protected CCBMFontConfiguration(string fntFile) : this(CCContentManager.SharedContentManager.Load<string>(fntFile), fntFile)
+        internal CCBMFontConfiguration(string fntFile) : this(CCContentManager.SharedContentManager.Load<string>(fntFile), fntFile)
         {
         }
 
         // Content pipeline makes use of this constructor
-        internal CCBMFontConfiguration(string data, string fntFile)
+        public CCBMFontConfiguration(string data, string fntFile)
         {
             InitWithString(data, fntFile);
         }
