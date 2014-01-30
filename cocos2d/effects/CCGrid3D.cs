@@ -59,6 +59,14 @@ namespace CocosSharp
             return m_pVertices[pos.X * (m_sGridSize.Y + 1) + pos.Y].vertices;
         }
 
+		/// <summary>
+		/// returns the vertex at a given position
+		/// </summary>
+		public CCVertex3F Vertex(int x, int y)
+		{
+			return m_pVertices[x * (m_sGridSize.Y + 1) + y].vertices;
+		}
+
         /// <summary>
         /// returns the original (non-transformed) vertex at a given position
         /// </summary>
@@ -66,6 +74,14 @@ namespace CocosSharp
         {
             return m_pOriginalVertices[pos.X * (m_sGridSize.Y + 1) + pos.Y];
         }
+
+		/// <summary>
+		/// returns the original (non-transformed) vertex at a given position
+		/// </summary>
+		public CCVertex3F OriginalVertex(int x, int y)
+		{
+			return m_pOriginalVertices[x * (m_sGridSize.Y + 1) + y];
+		}
 
         /// <summary>
         /// sets a new vertex at a given position
@@ -75,6 +91,15 @@ namespace CocosSharp
             m_pVertices[pos.X * (m_sGridSize.Y + 1) + pos.Y].vertices = vertex;
             m_bDirty = true;
         }
+
+		/// <summary>
+		/// sets a new vertex at a given position
+		/// </summary>
+		public void SetVertex(int x, int y, ref CCVertex3F vertex)
+		{
+			m_pVertices[x * (m_sGridSize.Y + 1) + y].vertices = vertex;
+			m_bDirty = true;
+		}
 
         public override void Blit()
         {
