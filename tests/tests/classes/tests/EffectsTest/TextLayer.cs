@@ -95,7 +95,7 @@ namespace tests
                 case 9:
 					return new ShakyTiles3DDemo(t);
                 case 10:
-                    return ShatteredTiles3DDemo.actionWithDuration(t);
+					return new ShatteredTiles3DDemo(t);
                 case 11:
                     return ShuffleTilesDemo.actionWithDuration(t);
                 case 12:

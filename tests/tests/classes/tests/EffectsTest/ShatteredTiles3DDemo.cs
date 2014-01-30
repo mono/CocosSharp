@@ -6,11 +6,14 @@ using CocosSharp;
 
 namespace tests
 {
-    public class ShatteredTiles3DDemo : CCShatteredTiles3D
+	public class ShatteredTiles3DDemo : CCShatteredTiles3D 
     {
-        public new static CCActionInterval actionWithDuration(float t)
+		public ShatteredTiles3DDemo(float t) 
+			: base(t, new CCGridSize(16, 12), 5, true)
         {
-            return new CCShatteredTiles3D(t, new CCGridSize(16, 12), 5, true);
+			// Testing Properties
+			//Range = 5;
+			//ShatterZ = true;
         }
     }
 }

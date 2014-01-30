@@ -34,6 +34,17 @@ namespace CocosSharp
         protected bool m_bShatterZ;
         protected int m_nRandrange;
 
+		protected bool ShatterZ
+		{
+			get { return m_bShatterZ; }
+			set { m_bShatterZ = value; }
+		}
+
+		protected int Range
+		{
+			get { return m_nRandrange; }
+			set { m_nRandrange = value; }
+		}
 
         #region Constructors
 
@@ -44,7 +55,7 @@ namespace CocosSharp
         /// <summary>
         /// creates the action with a range, whether of not to shatter Z vertices, a grid size and duration
         /// </summary>
-        public CCShatteredTiles3D(float duration, CCGridSize gridSize, int nRange, bool bShatterZ) : base(duration, gridSize)
+		public CCShatteredTiles3D(float duration, CCGridSize gridSize, int nRange = 0, bool bShatterZ = true) : base(duration, gridSize)
         {
             InitCCShatteredTiles3D(nRange, bShatterZ);
         }
@@ -77,35 +88,37 @@ namespace CocosSharp
         {
             int i, j;
 
+			var doubleRange = m_nRandrange * 2;
+
             if (m_bOnce == false)
             {
                 for (i = 0; i < m_sGridSize.X; ++i)
                 {
                     for (j = 0; j < m_sGridSize.Y; ++j)
                     {
-                        CCQuad3 coords = OriginalTile(new CCGridSize(i, j));
+                        CCQuad3 coords = OriginalTile(i, j);
 
                         // X
-                        coords.BottomLeft.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.BottomRight.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.TopLeft.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.TopRight.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                        coords.BottomLeft.X += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                        coords.BottomRight.X += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                        coords.TopLeft.X += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                        coords.TopRight.X += (CCRandom.Next() % doubleRange) - m_nRandrange;
 
                         // Y
-                        coords.BottomLeft.Y += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.BottomRight.Y += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.TopLeft.Y += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                        coords.TopRight.Y += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                        coords.BottomLeft.Y += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                        coords.BottomRight.Y += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                        coords.TopLeft.Y += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                        coords.TopRight.Y += (CCRandom.Next() % doubleRange) - m_nRandrange;
 
                         if (m_bShatterZ)
                         {
-                            coords.BottomLeft.Z += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                            coords.BottomRight.Z += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                            coords.TopLeft.Z += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
-                            coords.TopRight.Z += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
+                            coords.BottomLeft.Z += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                            coords.BottomRight.Z += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                            coords.TopLeft.Z += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                            coords.TopRight.Z += (CCRandom.Next() % doubleRange) - m_nRandrange;
                         }
 
-                        SetTile(new CCGridSize(i, j), ref coords);
+                        SetTile(i, j, ref coords);
                     }
                 }
 
