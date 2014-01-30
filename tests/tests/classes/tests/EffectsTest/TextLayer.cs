@@ -91,7 +91,7 @@ namespace tests
                 case 7:
 					return new WavesDemo(t);
                 case 8:
-                    return TwirlDemo.actionWithDuration(t);
+					return new TwirlDemo(t);
                 case 9:
                     return ShakyTiles3DDemo.actionWithDuration(t);
                 case 10:

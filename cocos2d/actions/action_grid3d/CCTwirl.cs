@@ -15,9 +15,10 @@ namespace CocosSharp
             get { return m_position; }
             set
             {
+				var scale = CCDirector.SharedDirector.ContentScaleFactor;
                 m_position = value;
-                m_positionInPixels.X = value.X * CCDirector.SharedDirector.ContentScaleFactor;
-                m_positionInPixels.Y = value.Y * CCDirector.SharedDirector.ContentScaleFactor;
+				m_positionInPixels.X = value.X * scale;
+				m_positionInPixels.Y = value.Y * scale;
             }
         }
 
@@ -33,14 +34,20 @@ namespace CocosSharp
             set { m_fAmplitudeRate = value; }
         }
 
+		protected int Twirls
+		{
+			get { return m_nTwirls; }
+			set { m_nTwirls = value; }
+		}
 
         #region Constructors
 
-        protected CCTwirl()
-        {
-        }
 
-        public CCTwirl(float duration, CCGridSize gridSize, CCPoint position, int twirls, float amplitude) : base(duration, gridSize)
+		public CCTwirl (float duration, CCGridSize gridSize)
+			: this (duration, gridSize, CCPoint.Zero)
+		{ }
+
+		public CCTwirl(float duration, CCGridSize gridSize, CCPoint position, int twirls= 0, float amplitude = 0) : base(duration, gridSize)
         {
             InitCCTwirl(position, twirls, amplitude);
         }
@@ -52,7 +59,7 @@ namespace CocosSharp
 
         private void InitCCTwirl(CCPoint position, int twirls, float amplitude)
         {  
-            m_positionInPixels = new CCPoint();
+			m_positionInPixels = CCPoint.Zero;
             Position = position;
             m_nTwirls = twirls;
             m_fAmplitude = amplitude;
