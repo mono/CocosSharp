@@ -35,8 +35,7 @@ namespace CocosSharp
                 for (int j = 0; j <= m_sGridSize.Y; ++j)
                 {
                     // Get original vertex
-                    var gs = new CCGridSize(i, j);
-                    CCVertex3F p = OriginalVertex(gs);
+					CCVertex3F p = OriginalVertex(i, j);
 
                     var R = (float) Math.Sqrt((p.X * p.X) + ((p.Y - ay) * (p.Y - ay)));
                     float r = R * sinTheta;
@@ -71,7 +70,7 @@ namespace CocosSharp
                     }
 
                     // Set new coords
-                    SetVertex(gs, ref p);
+					SetVertex(i, j, ref p);
                 }
             }
         }

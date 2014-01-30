@@ -98,17 +98,13 @@ namespace CocosSharp
 			{
                 int i, j;
 
-				CCGridSize gs;
 				CCPoint vect = CCPoint.Zero;
                 for (i = 0; i < m_sGridSize.X + 1; ++i)
                 {
                     for (j = 0; j < m_sGridSize.Y + 1; ++j)
                     {
 
-						gs.X = i;
-						gs.Y = j;
-
-						CCVertex3F v = OriginalVertex(gs);
+						CCVertex3F v = OriginalVertex(i, j);
 						vect.X = m_positionInPixels.X - v.X;
 						vect.Y = m_positionInPixels.Y - v.Y;
 
@@ -135,7 +131,7 @@ namespace CocosSharp
                             }
                         }
 
-                        SetVertex(new CCGridSize(i, j), ref v);
+						SetVertex(i, j, ref v);
                     }
 				}
 

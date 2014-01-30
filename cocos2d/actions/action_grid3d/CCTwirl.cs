@@ -79,17 +79,14 @@ namespace CocosSharp
             int i, j;
             CCPoint c = m_positionInPixels;
 
-			var gridSize = CCGridSize.Zero;
 			var avg = CCPoint.Zero;
 
             for (i = 0; i < (m_sGridSize.X + 1); ++i)
             {
                 for (j = 0; j < (m_sGridSize.Y + 1); ++j)
                 {
-					gridSize.X = i;
-					gridSize.Y = j;
 
-					CCVertex3F v = OriginalVertex(gridSize);
+					CCVertex3F v = OriginalVertex(i,j);
 
 					avg.X = i - (m_sGridSize.X / 2.0f);
 					avg.Y = j - (m_sGridSize.Y / 2.0f);
@@ -106,7 +103,7 @@ namespace CocosSharp
                     v.X = c.X + dx;
                     v.Y = c.Y + dy;
 
-					SetVertex(gridSize, ref v);
+					SetVertex(i,j, ref v);
                 }
             }
         }

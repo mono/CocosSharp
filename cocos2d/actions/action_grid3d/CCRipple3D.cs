@@ -100,16 +100,11 @@ namespace CocosSharp
         {
             int i, j;
 
-            CCGridSize gs;
-
             for (i = 0; i < (m_sGridSize.X + 1); ++i)
             {
                 for (j = 0; j < (m_sGridSize.Y + 1); ++j)
                 {
-                    gs.X = i;
-                    gs.Y = j;
-
-                    CCVertex3F v = OriginalVertex(gs);
+					CCVertex3F v = OriginalVertex(i, j);
 
                     float x = m_positionInPixels.X - v.X;
                     float y = m_positionInPixels.Y - v.Y;
@@ -125,7 +120,7 @@ namespace CocosSharp
                                 m_fAmplitudeRate * rate);
                     }
 
-                    SetVertex(gs, ref v);
+					SetVertex(i, j, ref v);
                 }
             }
         }

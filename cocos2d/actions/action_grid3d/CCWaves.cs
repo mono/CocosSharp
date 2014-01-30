@@ -80,7 +80,7 @@ namespace CocosSharp
             {
                 for (j = 0; j < m_sGridSize.Y + 1; ++j)
                 {
-                    CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
+                    CCVertex3F v = OriginalVertex(i, j);
 
                     if (m_bVertical)
                     {
@@ -96,7 +96,7 @@ namespace CocosSharp
                                 m_fAmplitudeRate));
                     }
 
-                    SetVertex(new CCGridSize(i, j), ref v);
+                    SetVertex(i, j, ref v);
                 }
             }
         }

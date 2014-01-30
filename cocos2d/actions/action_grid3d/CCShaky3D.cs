@@ -56,7 +56,7 @@ namespace CocosSharp
             {
                 for (j = 0; j < (m_sGridSize.Y + 1); ++j)
                 {
-                    CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
+                    CCVertex3F v = OriginalVertex(i, j);
                     v.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     v.Y += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     if (m_bShakeZ)
@@ -64,7 +64,7 @@ namespace CocosSharp
                         v.Z += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     }
 
-                    SetVertex(new CCGridSize(i, j), ref v);
+                    SetVertex(i, j, ref v);
                 }
             }
         }

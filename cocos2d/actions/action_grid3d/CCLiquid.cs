@@ -62,14 +62,14 @@ namespace CocosSharp
             {
                 for (j = 1; j < m_sGridSize.Y; ++j)
                 {
-                    CCVertex3F v = OriginalVertex(new CCGridSize(i, j));
+                    CCVertex3F v = OriginalVertex(i, j);
                     v.X = (v.X +
                            ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.X * .01f) * m_fAmplitude *
                             m_fAmplitudeRate));
                     v.Y = (v.Y +
                            ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.Y * .01f) * m_fAmplitude *
                             m_fAmplitudeRate));
-                    SetVertex(new CCGridSize(i, j), ref v);
+                    SetVertex(i, j, ref v);
                 }
             }
         }

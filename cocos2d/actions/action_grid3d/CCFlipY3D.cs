@@ -27,8 +27,8 @@ namespace CocosSharp
             CCVertex3F v0, v1, v;
             var diff = new CCVertex3F();
 
-            v0 = OriginalVertex(new CCGridSize(1, 1));
-            v1 = OriginalVertex(new CCGridSize(0, 0));
+            v0 = OriginalVertex(1, 1);
+            v1 = OriginalVertex(0, 0);
 
             float y0 = v0.Y;
             float y1 = v1.Y;
