@@ -51,20 +51,53 @@ namespace CocosSharp
 
         #endregion Constructors
 
-
+		/// <summary>
+		/// returns the vertex at a given position
+		/// </summary>
         public CCVertex3F Vertex(CCGridSize pos)
         {
             return m_pGrid.Vertex(pos);
         }
 
+		/// <summary>
+		/// returns the vertex at a given position
+		/// </summary>
+		public CCVertex3F Vertex(int x, int y)
+		{
+			return m_pGrid.Vertex(x,y);
+		}
+
+		/// <summary>
+		/// returns the original (non-transformed) vertex at a given position
+		/// </summary>
         public CCVertex3F OriginalVertex(CCGridSize pos)
         {
             return m_pGrid.OriginalVertex(pos);
         }
 
+		/// <summary>
+		/// returns the original (non-transformed) vertex at a given position
+		/// </summary>
+		public CCVertex3F OriginalVertex(int x, int y)
+		{
+			return m_pGrid.OriginalVertex(x,y);
+		}
+
+		/// <summary>
+		/// sets a new vertex at a given position
+		/// </summary>
         public void SetVertex(CCGridSize pos, ref CCVertex3F vertex)
         {
             m_pGrid.SetVertex(pos, ref vertex);
         }
+
+		/// <summary>
+		/// sets a new vertex at a given position
+		/// </summary>
+		public void SetVertex(int x, int y, ref CCVertex3F vertex)
+		{
+			m_pGrid.SetVertex(x,y, ref vertex);
+		}
+
     }
 }
