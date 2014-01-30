@@ -84,7 +84,7 @@ namespace CocosSharp
             {
                 for (j = 0; j < m_sGridSize.Y; ++j)
                 {
-                    CCQuad3 coords = OriginalTile(new CCGridSize(i, j));
+                    CCQuad3 coords = OriginalTile(i, j);
                     // X
                     coords.BottomLeft.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     coords.BottomRight.X += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
@@ -105,7 +105,7 @@ namespace CocosSharp
                         coords.TopRight.Z += (CCRandom.Next() % (m_nRandrange * 2)) - m_nRandrange;
                     }
 
-                    SetTile(new CCGridSize(i, j), ref coords);
+                    SetTile(i, j, ref coords);
                 }
             }
         }
