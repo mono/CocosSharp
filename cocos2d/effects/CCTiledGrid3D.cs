@@ -54,6 +54,24 @@ namespace CocosSharp
                 };
         }
 
+		/// <summary>
+		///  returns the tile at the given position
+		/// </summary>
+		public CCQuad3 Tile(int x, int y)
+		{
+			int idx = (m_sGridSize.Y * x + y) * 4;
+
+			CCV3F_T2F[] vertArray = m_pVertices;
+
+			return new CCQuad3
+			{
+				BottomLeft = vertArray[idx + 0].vertices,
+				BottomRight = vertArray[idx + 1].vertices,
+				TopLeft = vertArray[idx + 2].vertices,
+				TopRight = vertArray[idx + 3].vertices
+			};
+		}
+
         /// <summary>
         /// returns the original tile (untransformed) at the given position
         /// </summary>
@@ -62,6 +80,15 @@ namespace CocosSharp
             int idx = (m_sGridSize.Y * pos.X + pos.Y);
             return m_pOriginalVertices[idx];
         }
+
+		/// <summary>
+		/// returns the original tile (untransformed) at the given position
+		/// </summary>
+		public CCQuad3 OriginalTile(int x, int y)
+		{
+			int idx = (m_sGridSize.Y * x + y);
+			return m_pOriginalVertices[idx];
+		}
 
         /// <summary>
         /// sets a new tile
@@ -79,6 +106,23 @@ namespace CocosSharp
 
             m_bDirty = true;
         }
+
+		/// <summary>
+		/// sets a new tile
+		/// </summary>
+		public void SetTile(int x, int y, ref CCQuad3 coords)
+		{
+			int idx = (m_sGridSize.Y * x + y) * 4;
+
+			CCV3F_T2F[] vertArray = m_pVertices;
+
+			vertArray[idx + 0].vertices = coords.BottomLeft;
+			vertArray[idx + 1].vertices = coords.BottomRight;
+			vertArray[idx + 2].vertices = coords.TopLeft;
+			vertArray[idx + 3].vertices = coords.TopRight;
+
+			m_bDirty = true;
+		}
 
         public override void Blit()
         {
