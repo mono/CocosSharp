@@ -84,35 +84,69 @@ namespace CocosSharp
 
         public CCGridSize GetDelta(CCGridSize pos)
         {
-            var pos2 = new CCPoint();
+			var pos2 = CCPoint.Zero;
 
             int idx = pos.X * m_sGridSize.Y + pos.Y;
+			int tileOrder = m_pTilesOrder [idx];
 
-            pos2.X = (m_pTilesOrder[idx] / m_sGridSize.Y);
-            pos2.Y = (m_pTilesOrder[idx] % m_sGridSize.Y);
+			pos2.X = (tileOrder / m_sGridSize.Y);
+			pos2.Y = (tileOrder % m_sGridSize.Y);
 
             return new CCGridSize((int) (pos2.X - pos.X), (int) (pos2.Y - pos.Y));
         }
 
-        public void PlaceTile(CCGridSize pos, CCTile t)
+		public CCGridSize GetDelta(int x, int y)
+		{
+			var pos2 = CCPoint.Zero;
+
+			int idx = x * m_sGridSize.Y + y;
+			int tileOrder = m_pTilesOrder [idx];
+
+			pos2.X = (tileOrder / m_sGridSize.Y);
+			pos2.Y = (tileOrder % m_sGridSize.Y);
+
+			return new CCGridSize((int) (pos2.X - x), (int) (pos2.Y - y));
+		}
+
+        public void PlaceTile(CCGridSize pos, CCTile tile)
         {
             CCQuad3 coords = OriginalTile(pos);
 
             CCPoint step = m_pTarget.Grid.Step;
-            coords.BottomLeft.X += (int) (t.Position.X * step.X);
-            coords.BottomLeft.Y += (int) (t.Position.Y * step.Y);
+            coords.BottomLeft.X += (int) (tile.Position.X * step.X);
+            coords.BottomLeft.Y += (int) (tile.Position.Y * step.Y);
 
-            coords.BottomRight.X += (int) (t.Position.X * step.X);
-            coords.BottomRight.Y += (int) (t.Position.Y * step.Y);
+            coords.BottomRight.X += (int) (tile.Position.X * step.X);
+            coords.BottomRight.Y += (int) (tile.Position.Y * step.Y);
 
-            coords.TopLeft.X += (int) (t.Position.X * step.X);
-            coords.TopLeft.Y += (int) (t.Position.Y * step.Y);
+            coords.TopLeft.X += (int) (tile.Position.X * step.X);
+            coords.TopLeft.Y += (int) (tile.Position.Y * step.Y);
 
-            coords.TopRight.X += (int) (t.Position.X * step.X);
-            coords.TopRight.Y += (int) (t.Position.Y * step.Y);
+            coords.TopRight.X += (int) (tile.Position.X * step.X);
+            coords.TopRight.Y += (int) (tile.Position.Y * step.Y);
 
             SetTile(pos, ref coords);
         }
+
+		public void PlaceTile(int x, int y, CCTile tile)
+		{
+			CCQuad3 coords = OriginalTile(x,y);
+
+			CCPoint step = m_pTarget.Grid.Step;
+			coords.BottomLeft.X += (int) (tile.Position.X * step.X);
+			coords.BottomLeft.Y += (int) (tile.Position.Y * step.Y);
+
+			coords.BottomRight.X += (int) (tile.Position.X * step.X);
+			coords.BottomRight.Y += (int) (tile.Position.Y * step.Y);
+
+			coords.TopLeft.X += (int) (tile.Position.X * step.X);
+			coords.TopLeft.Y += (int) (tile.Position.Y * step.Y);
+
+			coords.TopRight.X += (int) (tile.Position.X * step.X);
+			coords.TopRight.Y += (int) (tile.Position.Y * step.Y);
+
+			SetTile(x, y, ref coords);
+		}
 
         protected internal override void StartWithTarget(CCNode target)
         {
@@ -150,7 +184,7 @@ namespace CocosSharp
                         {
                             Position = new CCPoint(i, j),
                             StartPosition = new CCPoint(i, j),
-                            Delta = GetDelta(new CCGridSize(i, j))
+                            Delta = GetDelta(i, j)
                         };
 
                     f++;
@@ -169,7 +203,7 @@ namespace CocosSharp
                 {
                     CCTile item = m_pTiles[f];
                     item.Position = new CCPoint((item.Delta.X * time), (item.Delta.Y * time));
-                    PlaceTile(new CCGridSize(i, j), item);
+                    PlaceTile(i, j, item);
 
                     f++;
                 }

@@ -6,15 +6,15 @@ using CocosSharp;
 
 namespace tests
 {
-    public class FadeOutTRTilesDemo : CCFadeOutTRTiles
+	public class FadeOutTRTilesDemo : CCSequence
     {
-        public static CCActionInterval actionWithDuration(float t)
+		public FadeOutTRTilesDemo(float t)
         {
             CCFadeOutTRTiles fadeout = new CCFadeOutTRTiles(t, new CCGridSize(16, 12));
             CCFiniteTimeAction back = fadeout.Reverse();
             CCDelayTime delay = new CCDelayTime (0.5f);
 
-            return (CCActionInterval)(new CCSequence(fadeout, delay, back));
+			Actions = new CCFiniteTimeAction[] {fadeout, delay, back};
         }
     }
 }

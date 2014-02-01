@@ -97,9 +97,9 @@ namespace tests
                 case 10:
 					return new ShatteredTiles3DDemo(t);
                 case 11:
-                    return ShuffleTilesDemo.actionWithDuration(t);
+					return new ShuffleTilesDemo(t);
                 case 12:
-                    return FadeOutTRTilesDemo.actionWithDuration(t);
+					return new FadeOutTRTilesDemo(t);
                 case 13:
                     return FadeOutBLTilesDemo.actionWithDuration(t);
                 case 14:
