@@ -101,11 +101,11 @@ namespace tests
                 case 12:
 					return new FadeOutTRTilesDemo(t);
                 case 13:
-                    return FadeOutBLTilesDemo.actionWithDuration(t);
+					return new FadeOutBLTilesDemo(t);
                 case 14:
-                    return FadeOutUpTilesDemo.actionWithDuration(t);
+					return new FadeOutUpTilesDemo(t);
                 case 15:
-                    return FadeOutDownTilesDemo.actionWithDuration(t);
+					return new FadeOutDownTilesDemo(t);
                 case 16:
                     return TurnOffTilesDemo.actionWithDuration(t);
                 case 17:
