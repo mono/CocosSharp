@@ -37,6 +37,12 @@ namespace CocosSharp
         protected int[] m_pTilesOrder;
 
 
+		protected int Seed
+		{
+			get { return m_nSeed; }
+			set { m_nSeed = value; }
+		}
+
         #region Constructors
 
         /// <summary>
@@ -53,7 +59,7 @@ namespace CocosSharp
         /// <summary>
         /// creates the action with a random seed, the grid size and the duration 
         /// </summary>
-        public CCTurnOffTiles(float duration, CCGridSize gridSize, int seed) : base(duration, gridSize)
+		public CCTurnOffTiles(float duration, CCGridSize gridSize, int seed) : base(duration, gridSize)
         {
             InitCCTurnOffTiles(seed);
         }

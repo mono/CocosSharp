@@ -107,7 +107,7 @@ namespace tests
                 case 15:
 					return new FadeOutDownTilesDemo(t);
                 case 16:
-                    return TurnOffTilesDemo.actionWithDuration(t);
+					return new TurnOffTilesDemo(t);
                 case 17:
                     return WavesTiles3DDemo.actionWithDuration(t);
                 case 18:
