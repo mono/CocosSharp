@@ -111,7 +111,7 @@ namespace tests
                 case 17:
 					return new WavesTiles3DDemo(t);
                 case 18:
-                    return JumpTiles3DDemo.actionWithDuration(t);
+					return new JumpTiles3DDemo(t);
                 case 19:
                     return SplitRowsDemo.actionWithDuration(t);
                 case 20:

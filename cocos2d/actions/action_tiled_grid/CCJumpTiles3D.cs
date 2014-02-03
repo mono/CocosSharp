@@ -51,6 +51,11 @@ namespace CocosSharp
             set { m_fAmplitudeRate = value; }
         }
 
+		protected int NumberOfJumps
+		{
+			get { return m_nJumps; }
+			set { m_nJumps = value; }
+		}
 
         #region Constructors
 
@@ -58,7 +63,7 @@ namespace CocosSharp
         {
         }
 
-        public CCJumpTiles3D(float duration, CCGridSize gridSize, int numberOfJumps, float amplitude) : base(duration, gridSize)
+		public CCJumpTiles3D(float duration, CCGridSize gridSize, int numberOfJumps = 0, float amplitude = 0) : base(duration, gridSize)
         {
             InitCCJumpTiles3D(numberOfJumps, amplitude);
         }
@@ -98,7 +103,7 @@ namespace CocosSharp
             {
                 for (j = 0; j < m_sGridSize.Y; j++)
                 {
-                    CCQuad3 coords = OriginalTile(new CCGridSize(i, j));
+                    CCQuad3 coords = OriginalTile(i, j);
 
                     if (((i + j) % 2) == 0)
                     {
@@ -115,7 +120,7 @@ namespace CocosSharp
                         coords.TopRight.Z += sinz2;
                     }
 
-                    SetTile(new CCGridSize(i, j), ref coords);
+					SetTile(i, j, ref coords);
                 }
             }
         }

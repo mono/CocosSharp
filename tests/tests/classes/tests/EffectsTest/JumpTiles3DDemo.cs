@@ -8,10 +8,12 @@ namespace tests
 {
     public class JumpTiles3DDemo : CCJumpTiles3D
     {
-        public new static CCActionInterval actionWithDuration(float t)
+		public JumpTiles3DDemo(float t)
+			: base (t, new CCGridSize(15, 10), 2, 30)
         {
-            CCSize size = CCDirector.SharedDirector.WinSize;
-            return new CCJumpTiles3D(t, new CCGridSize(15, 10), 2, 30);
+			//Testing properities
+			//NumberOfJumps = 2;
+			//Amplitude = 30;
         }
     }
 }
