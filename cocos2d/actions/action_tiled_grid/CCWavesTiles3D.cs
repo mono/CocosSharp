@@ -53,7 +53,11 @@ namespace CocosSharp
             set { m_fAmplitudeRate = value; }
         }
 
-
+		protected int Waves
+		{
+			get { return m_nWaves; }
+			set { m_nWaves = value; }
+		}
         #region Constructors
 
         public CCWavesTiles3D()
@@ -63,7 +67,7 @@ namespace CocosSharp
         /// <summary>
         /// creates the action with a number of waves, the waves amplitude, the grid size and the duration
         /// </summary>
-        public CCWavesTiles3D(float duration, CCGridSize gridSize, int waves, float amplitude) : base(duration, gridSize)
+		public CCWavesTiles3D(float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0) : base(duration, gridSize)
         {
             InitCCWavesTiles3D(waves, amplitude);
         }
@@ -100,7 +104,7 @@ namespace CocosSharp
             {
                 for (j = 0; j < m_sGridSize.Y; j++)
                 {
-                    CCQuad3 coords = OriginalTile(new CCGridSize(i, j));
+                    CCQuad3 coords = OriginalTile(i, j);
 
                     coords.BottomLeft.Z = ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 +
                                                             (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) *
@@ -109,7 +113,7 @@ namespace CocosSharp
                     coords.TopLeft.Z = coords.BottomLeft.Z;
                     coords.TopRight.Z = coords.BottomLeft.Z;
 
-                    SetTile(new CCGridSize(i, j), ref coords);
+                    SetTile(i, j, ref coords);
                 }
             }
         }

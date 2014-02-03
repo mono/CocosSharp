@@ -109,7 +109,7 @@ namespace tests
                 case 16:
 					return new TurnOffTilesDemo(t);
                 case 17:
-                    return WavesTiles3DDemo.actionWithDuration(t);
+					return new WavesTiles3DDemo(t);
                 case 18:
                     return JumpTiles3DDemo.actionWithDuration(t);
                 case 19:

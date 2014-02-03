@@ -8,9 +8,12 @@ namespace tests
 {
     public class WavesTiles3DDemo : CCWavesTiles3D
     {
-        public new static CCActionInterval actionWithDuration(float t)
+		public WavesTiles3DDemo(float t)
+			: base (t, new CCGridSize(15, 10), 4, 120)
         {
-            return new CCWavesTiles3D(t, new CCGridSize(15, 10), 4, 120);
+			// Testing properties
+			//Waves = 4;
+			//Amplitude = 120;
         }
     }
 }
