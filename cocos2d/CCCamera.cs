@@ -58,10 +58,6 @@ namespace CocosSharp
         protected float m_fUpZ;
         private Matrix m_lookupMatrix;
 
-        public CCCamera()
-        {
-            Restore();
-        }
 
         /// <summary>
         ///  sets \ get the dirty value
@@ -71,6 +67,17 @@ namespace CocosSharp
             get { return m_bDirty; }
             set { m_bDirty = value; }
         }
+
+
+        #region Constructors
+
+        public CCCamera()
+        {
+            Restore();
+        }
+
+        #endregion Constructors
+
 
         public override string ToString()
         {

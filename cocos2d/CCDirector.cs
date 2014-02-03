@@ -17,6 +17,24 @@ namespace CocosSharp
     }
 
     /// <summary>
+    ///  Possible OpenGL projections used by director
+    /// </summary>
+    public enum CCDirectorProjection
+    {
+        /// sets a 2D projection (orthogonal projection)
+        Projection2D,
+
+        /// sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
+        Projection3D,
+
+        /// it calls "updateProjection" on the projection delegate.
+        Custom,
+
+        /// Default projection is 3D projection
+        Default = Projection3D
+    }
+
+    /// <summary>
     /// Class that creates and handle the main Window and manages how and when to execute the Scenes.
     /// 
     /// The CCDirector is also responsible for:
@@ -38,61 +56,364 @@ namespace CocosSharp
 
     public abstract class CCDirector
     {
-        private static CCDirector s_sharedDirector;
+        static CCDirector s_sharedDirector;
 
-        private readonly float kDefaultFPS = 60f;
-        private readonly List<CCScene> m_pobScenesStack = new List<CCScene>();
-        private bool m_bNextDeltaTimeZero;
-        private bool m_bPaused;
+        readonly float kDefaultFPS = 60f;
+        readonly List<CCScene> m_pobScenesStack = new List<CCScene>();
+        bool m_bNextDeltaTimeZero;
+        bool m_bPaused;
         protected bool m_bPurgeDirecotorInNextLoop; // this flag will be set to true in end()
-        private bool m_bSendCleanupToScene;
+        bool m_bSendCleanupToScene;
         protected double m_dAnimationInterval;
         protected double m_dOldAnimationInterval;
-        private CCDirectorProjection m_eProjection;
-        private float m_fContentScaleFactor = 1.0f;
-        private float m_fDeltaTime;
-        private bool m_NeedsInit = true;
+        CCDirectorProjection m_eProjection;
+        float m_fContentScaleFactor = 1.0f;
+        float m_fDeltaTime;
+        bool m_NeedsInit = true;
         internal CCSize m_obWinSizeInPoints;
 		
 #if !PSM &&!NETFX_CORE
-        private CCAccelerometer m_pAccelerometer;
+        CCAccelerometer m_pAccelerometer;
+        string m_sStorageDirName = "CocosSharpDirector";
+        string m_sSaveFileName = "SceneList.dat";
+        string m_sSceneSaveFileName = "Scene{0}.dat";
 #endif
-		private CCActionManager m_pActionManager;
-        private CCKeypadDispatcher m_pKeypadDispatcher;
-		private CCKeyboardDispatcher m_pKeyboardDispatcher;
-        private CCScene m_pNextScene;
-        private CCNode m_pNotificationNode;
+		CCActionManager m_pActionManager;
+        CCKeypadDispatcher m_pKeypadDispatcher;
+		CCKeyboardDispatcher m_pKeyboardDispatcher;
+        CCScene m_pNextScene;
+        CCNode m_pNotificationNode;
 
-        private ICCDirectorDelegate m_pProjectionDelegate;
-        private CCScene m_pRunningScene;
-        private CCScheduler m_pScheduler;
-        private CCTouchDispatcher m_pTouchDispatcher;
+        ICCDirectorDelegate m_pProjectionDelegate;
+        CCScene m_pRunningScene;
+        CCScheduler m_pScheduler;
+        CCTouchDispatcher m_pTouchDispatcher;
 
-        private bool m_bDisplayStats;
+        bool m_bDisplayStats;
         
-        private uint m_uTotalFrames;
-        private float m_fAccumDt;
-        private uint m_uUpdateCount;
-        private float m_fAccumDraw;
-        private uint m_uDrawCount;
-        private float m_fAccumUpdate;
+        uint m_uTotalFrames;
+        float m_fAccumDt;
+        uint m_uUpdateCount;
+        float m_fAccumDraw;
+        uint m_uDrawCount;
+        float m_fAccumUpdate;
         
-        private CCLabelAtlas m_pFPSLabel;
-        private CCLabelAtlas m_pUpdateTimeLabel;
-        private CCLabelAtlas m_pDrawTimeLabel;
-        private CCLabelAtlas m_pDrawsLabel;
-        private CCLabelAtlas m_pMemoryLabel;
-        private CCLabelAtlas m_pGCLabel;
+        CCLabelAtlas m_pFPSLabel;
+        CCLabelAtlas m_pUpdateTimeLabel;
+        CCLabelAtlas m_pDrawTimeLabel;
+        CCLabelAtlas m_pDrawsLabel;
+        CCLabelAtlas m_pMemoryLabel;
+        CCLabelAtlas m_pGCLabel;
 
         // Stopwatch for measure the time.
         Stopwatch m_pStopwatch;
-        
+
+        bool m_GamePadEnabled = false;
+
+        WeakReference _wk = new WeakReference(new object());
+        int _GCCount;  
+
+        /// <summary>
+        /// returns a shared instance of the director
+        /// </summary>
+        /// <value> </value>
+        public static CCDirector SharedDirector
+        {
+            get
+            {
+                if (s_sharedDirector == null)
+                {
+                    s_sharedDirector = new CCDisplayLinkDirector();
+                }
+                return s_sharedDirector;
+            }
+        }
+
+        public float ZEye
+        {
+            get { return (m_obWinSizeInPoints.Height / 1.1566f); }
+        }
+
+        public CCSize VisibleSize
+        {
+            get { return CCDrawManager.VisibleSize; }
+        }
+
+        public CCPoint VisibleOrigin
+        {
+            get { return CCDrawManager.VisibleOrigin; }
+        }
+
+        public CCScheduler Scheduler
+        {
+            get { return m_pScheduler; }
+            set { m_pScheduler = value; }
+        }
+
+        public CCActionManager ActionManager
+        {
+            get { return m_pActionManager; }
+            set { m_pActionManager = value; }
+        }
+
+        public CCTouchDispatcher TouchDispatcher
+        {
+            get { return m_pTouchDispatcher; }
+            set { m_pTouchDispatcher = value; }
+        }
+
+        public CCKeypadDispatcher KeypadDispatcher
+        {
+            get { return m_pKeypadDispatcher; }
+            set { m_pKeypadDispatcher = value; }
+        }
+
+        public CCKeyboardDispatcher KeyboardDispatcher
+        {
+            get { return m_pKeyboardDispatcher; }
+            set { m_pKeyboardDispatcher = value; }
+        }
+
+        #if !PSM &&!NETFX_CORE
+        public CCAccelerometer Accelerometer
+        {
+            get { return m_pAccelerometer; }
+            set { m_pAccelerometer = value; }
+        }
+        #endif
+
+        public CCScene RunningScene
+        {
+            get { return m_pRunningScene; }
+        }
+
+        public virtual double AnimationInterval
+        {
+            get { return m_dAnimationInterval; }
+            set { m_dAnimationInterval = value; }
+        }
+
+        public bool DisplayStats
+        {
+            get { return m_bDisplayStats; }
+            set
+            {
+                m_bDisplayStats = value;
+                if (value)
+                {
+                    m_pStopwatch.Reset();
+                    m_pStopwatch.Start();
+                }
+            }
+        }
+
+        public bool IsPaused
+        {
+            get { return m_bPaused; }
+        }
+
+        public CCNode NotificationNode
+        {
+            get { return m_pNotificationNode; }
+            set { m_pNotificationNode = value; }
+        }
+
+        public ICCDirectorDelegate Delegate
+        {
+            get { return m_pProjectionDelegate; }
+            set { m_pProjectionDelegate = value; }
+        }
+
+        public CCDirectorProjection Projection
+        {
+            get { return m_eProjection; }
+            set
+            {
+                SetViewport();
+
+                CCSize size = m_obWinSizeInPoints;
+
+                switch (value)
+                {
+                case CCDirectorProjection.Projection2D:
+
+                    CCDrawManager.ProjectionMatrix = Matrix.CreateOrthographicOffCenter(
+                        0, size.Width,
+                        0, size.Height,
+                        -1024.0f, 1024.0f
+                    );
+
+                    CCDrawManager.ViewMatrix = Matrix.Identity;
+
+                    CCDrawManager.WorldMatrix = Matrix.Identity;
+                    break;
+
+                case CCDirectorProjection.Projection3D:
+
+                    CCDrawManager.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(
+                        MathHelper.Pi / 3.0f,
+                        size.Width / size.Height,
+                        0.1f, 1500 //ZEye * 2f
+                    );
+
+                    CCDrawManager.ViewMatrix = Matrix.CreateLookAt(
+                        new Vector3(size.Width / 2.0f, size.Height / 2.0f, ZEye),
+                        new Vector3(size.Width / 2.0f, size.Height / 2.0f, 0f),
+                        Vector3.Up
+                    );
+
+                    CCDrawManager.WorldMatrix = Matrix.Identity;
+                    break;
+
+                case CCDirectorProjection.Custom:
+                    if (m_pProjectionDelegate != null)
+                    {
+                        m_pProjectionDelegate.UpdateProjection();
+                    }
+                    break;
+
+                default:
+                    Debug.Assert(true, "cocos2d: Director: unrecognized projection");
+                    break;
+                }
+
+                m_eProjection = value;
+            }
+        }
+
+        public CCSize WinSize
+        {
+            get { return m_obWinSizeInPoints; }
+        }
+
+        public CCSize WinSizeInPixels
+        {
+            get { return m_obWinSizeInPoints * m_fContentScaleFactor; }
+        }
+
+        /// <summary>
+        /// Set to true if this platform has a game pad connected.
+        /// </summary>
+        public bool GamePadEnabled
+        {
+            get { return (m_GamePadEnabled); }
+            set { m_GamePadEnabled = value; }
+        }
+
+        public float ContentScaleFactor
+        {
+            get { return m_fContentScaleFactor; }
+            set
+            {
+                if (value != m_fContentScaleFactor)
+                {
+                    m_fContentScaleFactor = value;
+                }
+            }
+        }
+
+        /** Give the number of scenes present in the scene stack.
+         *  Note: this count also includes the root scene node.
+         */
+        public int SceneCount
+        {
+            get { return m_pobScenesStack.Count; }
+        }
+
+        /// <summary>
+        /// Returns true if there is more than 1 scene on the stack.
+        /// </summary>
+        /// <returns></returns>
+        public bool CanPopScene
+        {
+            get
+            {
+                int c = m_pobScenesStack.Count;
+                return (c > 1);
+            }
+        }
+
+
+        #region Constructors
+
+        protected CCDirector()
+        {
+            InitCCDirector();
+        }
+
+        // Purging the director requires we re-initialize
+        private void InitCCDirector()
+        {
+            SetDefaultValues();
+
+            // scenes
+            m_pRunningScene = null;
+            m_pNextScene = null;
+
+            m_pNotificationNode = null;
+
+            m_dOldAnimationInterval = m_dAnimationInterval = 1.0 / kDefaultFPS;
+
+            // Set default projection (3D)
+            m_eProjection = CCDirectorProjection.Default;
+
+            // projection delegate if "Custom" projection is used
+            m_pProjectionDelegate = null;
+
+            // FPS
+            m_fAccumDt = 0.0f;
+            m_pFPSLabel = null;
+            m_pUpdateTimeLabel = null;
+            m_pDrawTimeLabel = null;
+            m_pDrawsLabel = null;
+            m_bDisplayStats = false;
+            m_uTotalFrames = 0;
+
+            m_pStopwatch = new Stopwatch();
+
+            // paused ?
+            m_bPaused = false;
+
+            // purge ?
+            m_bPurgeDirecotorInNextLoop = false;
+
+            m_obWinSizeInPoints = CCSize.Zero;
+
+            //m_pobOpenGLView = null;
+
+            m_fContentScaleFactor = 1.0f;
+
+            // scheduler
+            m_pScheduler = new CCScheduler();
+            // action manager
+            m_pActionManager = new CCActionManager();
+            m_pScheduler.ScheduleUpdateForTarget(m_pActionManager, CCScheduler.kCCPrioritySystem, false);
+            // touchDispatcher
+            m_pTouchDispatcher = new CCTouchDispatcher();
+            m_pTouchDispatcher.Init();
+
+            // KeypadDispatcher
+            m_pKeypadDispatcher = new CCKeypadDispatcher();
+
+            // KeyboardDispatcher
+            m_pKeyboardDispatcher = new CCKeyboardDispatcher();
+
+            // Accelerometer
+            #if !PSM &&!NETFX_CORE
+            m_pAccelerometer = new CCAccelerometer();
+            #endif
+            // create autorelease pool
+            //CCPoolManager::sharedPoolManager()->push();
+
+            m_NeedsInit = false;
+        }
+
+        #endregion Constructors
+
+
         #region State Management
 		
 #if !PSM &&!NETFX_CORE
-		private string m_sStorageDirName = "CocosSharpDirector";
-        private string m_sSaveFileName = "SceneList.dat";
-        private string m_sSceneSaveFileName = "Scene{0}.dat";
 
         /// <summary>
         /// Write out the current state of the director and all of its scenes.
@@ -323,269 +644,13 @@ namespace CocosSharp
             {
                 storage.DeleteFile(Path.Combine(m_sStorageDirName, file));
             }
-                        }
+        }
 #endif
         #endregion
-
-        public ICCDirectorDelegate Delegate
-        {
-            get { return m_pProjectionDelegate; }
-            set { m_pProjectionDelegate = value; }
-        }
 
         public void SetViewport()
         {
             CCDrawManager.SetViewPortInPoints(0, 0, (int)m_obWinSizeInPoints.Width, (int)m_obWinSizeInPoints.Height);
-        }
-
-        public CCDirectorProjection Projection
-        {
-            get { return m_eProjection; }
-            set
-            {
-                SetViewport();
-
-                CCSize size = m_obWinSizeInPoints;
-
-                switch (value)
-                {
-                    case CCDirectorProjection.Projection2D:
-
-                        CCDrawManager.ProjectionMatrix = Matrix.CreateOrthographicOffCenter(
-                            0, size.Width,
-                            0, size.Height,
-                            -1024.0f, 1024.0f
-                            );
-
-                        CCDrawManager.ViewMatrix = Matrix.Identity;
-                        
-                        CCDrawManager.WorldMatrix = Matrix.Identity;
-                        break;
-
-                    case CCDirectorProjection.Projection3D:
-
-                        CCDrawManager.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(
-                            MathHelper.Pi / 3.0f,
-                            size.Width / size.Height,
-                            0.1f, 1500 //ZEye * 2f
-                            );
-
-                        CCDrawManager.ViewMatrix = Matrix.CreateLookAt(
-                            new Vector3(size.Width / 2.0f, size.Height / 2.0f, ZEye),
-                            new Vector3(size.Width / 2.0f, size.Height / 2.0f, 0f),
-                            Vector3.Up
-                            );
-
-                            CCDrawManager.WorldMatrix = Matrix.Identity;
-                        break;
-
-                    case CCDirectorProjection.Custom:
-                        if (m_pProjectionDelegate != null)
-                        {
-                            m_pProjectionDelegate.UpdateProjection();
-                        }
-                        break;
-
-                    default:
-                        Debug.Assert(true, "cocos2d: Director: unrecognized projection");
-                        break;
-                }
-
-                m_eProjection = value;
-            }
-        }
-
-        public float ZEye
-        {
-            get { return (m_obWinSizeInPoints.Height / 1.1566f); }
-        }
-
-        public CCSize VisibleSize
-        {
-            get { return CCDrawManager.VisibleSize; }
-        }
-
-        public CCPoint VisibleOrigin
-        {
-            get { return CCDrawManager.VisibleOrigin; }
-        }
-
-        public CCScheduler Scheduler
-        {
-            get { return m_pScheduler; }
-            set { m_pScheduler = value; }
-        }
-
-        public CCActionManager ActionManager
-        {
-            get { return m_pActionManager; }
-            set { m_pActionManager = value; }
-        }
-
-        public CCTouchDispatcher TouchDispatcher
-        {
-            get { return m_pTouchDispatcher; }
-            set { m_pTouchDispatcher = value; }
-        }
-
-        public CCKeypadDispatcher KeypadDispatcher
-        {
-            get { return m_pKeypadDispatcher; }
-            set { m_pKeypadDispatcher = value; }
-        }
-
-		public CCKeyboardDispatcher KeyboardDispatcher
-		{
-			get { return m_pKeyboardDispatcher; }
-			set { m_pKeyboardDispatcher = value; }
-		}
-
-#if !PSM &&!NETFX_CORE
-		public CCAccelerometer Accelerometer
-        {
-            get { return m_pAccelerometer; }
-            set { m_pAccelerometer = value; }
-        }
-#endif
-        public CCScene RunningScene
-        {
-            get { return m_pRunningScene; }
-        }
-
-        public virtual double AnimationInterval
-        {
-            get { return m_dAnimationInterval; }
-            set { m_dAnimationInterval = value; }
-        }
-
-        public bool DisplayStats
-        {
-            get { return m_bDisplayStats; }
-            set
-            {
-                m_bDisplayStats = value;
-                if (value)
-                {
-                    m_pStopwatch.Reset();
-                    m_pStopwatch.Start();
-                }
-            }
-        }
-
-        public bool IsPaused
-        {
-            get { return m_bPaused; }
-        }
-
-        public CCNode NotificationNode
-        {
-            get { return m_pNotificationNode; }
-            set { m_pNotificationNode = value; }
-        }
-
-
-        /// <summary>
-        /// returns a shared instance of the director
-        /// </summary>
-        /// <value> </value>
-        public static CCDirector SharedDirector
-        {
-            get
-            {
-                if (s_sharedDirector == null)
-                {
-                    s_sharedDirector = new CCDisplayLinkDirector();
-                }
-                return s_sharedDirector;
-            }
-            }
-
-        #region Constructors
-
-        protected CCDirector()
-        {
-            Init();
-        }
-
-        // Purging the director requires we re-initialize
-        private void Init()
-        {
-            SetDefaultValues();
-
-            // scenes
-            m_pRunningScene = null;
-            m_pNextScene = null;
-
-            m_pNotificationNode = null;
-
-            m_dOldAnimationInterval = m_dAnimationInterval = 1.0 / kDefaultFPS;
-
-            // Set default projection (3D)
-            m_eProjection = CCDirectorProjection.Default;
-
-            // projection delegate if "Custom" projection is used
-            m_pProjectionDelegate = null;
-
-            // FPS
-            m_fAccumDt = 0.0f;
-            m_pFPSLabel = null;
-            m_pUpdateTimeLabel = null;
-            m_pDrawTimeLabel = null;
-            m_pDrawsLabel = null;
-            m_bDisplayStats = false;
-            m_uTotalFrames = 0;
-
-            m_pStopwatch = new Stopwatch();
-
-            // paused ?
-            m_bPaused = false;
-
-            // purge ?
-            m_bPurgeDirecotorInNextLoop = false;
-
-            m_obWinSizeInPoints = CCSize.Zero;
-
-            //m_pobOpenGLView = null;
-
-            m_fContentScaleFactor = 1.0f;
-
-            // scheduler
-            m_pScheduler = new CCScheduler();
-            // action manager
-            m_pActionManager = new CCActionManager();
-            m_pScheduler.ScheduleUpdateForTarget(m_pActionManager, CCScheduler.kCCPrioritySystem, false);
-            // touchDispatcher
-            m_pTouchDispatcher = new CCTouchDispatcher();
-            m_pTouchDispatcher.Init();
-
-            // KeypadDispatcher
-            m_pKeypadDispatcher = new CCKeypadDispatcher();
-
-			// KeyboardDispatcher
-			m_pKeyboardDispatcher = new CCKeyboardDispatcher();
-
-			// Accelerometer
-#if !PSM &&!NETFX_CORE
-            m_pAccelerometer = new CCAccelerometer();
-#endif
-            // create autorelease pool
-            //CCPoolManager::sharedPoolManager()->push();
-
-            m_NeedsInit = false;
-        }
-
-        #endregion Constructors
-
-        private bool m_GamePadEnabled = false;
-        /// <summary>
-        /// Set to true if this platform has a game pad connected.
-        /// </summary>
-        public bool GamePadEnabled
-        {
-            get { return (m_GamePadEnabled); }
-            set {
-                m_GamePadEnabled = value;
-            }
         }
 
         internal void SetGlDefaultValues()
@@ -752,16 +817,6 @@ namespace CocosSharp
             return new CCPoint(glPoint.X, m_obWinSizeInPoints.Height - glPoint.Y);
         }
 
-        public CCSize WinSize
-        {
-            get { return m_obWinSizeInPoints; }
-        }
-
-        public CCSize WinSizeInPixels
-        {
-            get { return m_obWinSizeInPoints * m_fContentScaleFactor; }
-        }
-
         public void End()
         {
             m_bPurgeDirecotorInNextLoop = true;
@@ -845,7 +900,7 @@ namespace CocosSharp
             if (m_NeedsInit)
             {
                 CCLog.Log("CCDirector(): Resume needs Init(). The director will re-initialize.");
-                Init();
+                InitCCDirector();
             }
             if (!m_bPaused)
             {
@@ -869,21 +924,6 @@ namespace CocosSharp
 
         public abstract void StartAnimation();
 
-        #region mobile platforms specific functions
-
-        public float ContentScaleFactor
-        {
-            get { return m_fContentScaleFactor; }
-            set
-            {
-                if (value != m_fContentScaleFactor)
-                {
-                    m_fContentScaleFactor = value;
-                }
-            }
-        }
-
-        #endregion
 
         #region Scene Management
 
@@ -928,14 +968,6 @@ namespace CocosSharp
             m_pNextScene = pScene;
         }
 
-        /** Give the number of scenes present in the scene stack.
-         *  Note: this count also includes the root scene node.
-         */
-        public int SceneCount
-        {
-            get { return m_pobScenesStack.Count; }
-        }
-
         /// <summary>
         /// Push the given scene to the top of the scene stack.
         /// </summary>
@@ -948,19 +980,6 @@ namespace CocosSharp
 
             m_pobScenesStack.Add(pScene);
             m_pNextScene = pScene;
-        }
-
-        /// <summary>
-        /// Returns true if there is more than 1 scene on the stack.
-        /// </summary>
-        /// <returns></returns>
-        public bool CanPopScene
-        {
-            get
-            {
-                int c = m_pobScenesStack.Count;
-                return (c > 1);
-            }
         }
 
         public void PopScene(float t, CCTransitionScene s)
@@ -1167,9 +1186,6 @@ namespace CocosSharp
             m_pFPSLabel.Position = new CCPoint(2 * factor, 1 * factor) + pos;
         }
 
-        private WeakReference _wk = new WeakReference(new object());
-        private int _GCCount;  
-
         // display the FPS using a LabelAtlas
         // updates the FPS every frame
         private void ShowStats()
@@ -1208,23 +1224,5 @@ namespace CocosSharp
                 }
             }    
         }
-    }
-
-    /// <summary>
-    ///  Possible OpenGL projections used by director
-    /// </summary>
-    public enum CCDirectorProjection
-    {
-        /// sets a 2D projection (orthogonal projection)
-        Projection2D,
-
-        /// sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
-        Projection3D,
-
-        /// it calls "updateProjection" on the projection delegate.
-        Custom,
-
-        /// Default projection is 3D projection
-        Default = Projection3D
     }
 }

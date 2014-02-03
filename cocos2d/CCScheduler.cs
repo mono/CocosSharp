@@ -28,6 +28,9 @@ namespace CocosSharp
         public float Interval;
         public Action<float> Selector;
 
+
+        #region Constructors
+
         public CCTimer()
         {
         }
@@ -72,6 +75,9 @@ namespace CocosSharp
             Interval = seconds;
         }
         */
+
+        #endregion Constructors
+
 
         #region SelectorProtocol Members
 

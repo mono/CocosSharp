@@ -11,6 +11,12 @@ namespace CocosSharp
         private static float m_PointSize = 3f;
         private static CCColor4B m_Color;
 
+        public CCColor4B DefaultColor
+        {
+            get { return m_Color; }
+            set { m_Color = value; }
+        }
+
         internal static void Init(GraphicsDevice graphics)
         {
             m_Batch = new CCPrimitiveBatch(graphics);
@@ -19,12 +25,6 @@ namespace CocosSharp
         public static void Begin()
         {
             m_Batch.Begin();
-        }
-
-        public CCColor4B DefaultColor
-        {
-            get { return m_Color; }
-            set { m_Color = value; }
         }
 
         public static void End()
