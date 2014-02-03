@@ -56,7 +56,12 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCSpriteBatchNode(CCTexture2D tex=null, int capacity=kDefaultSpriteBatchCapacity)
+        // We need this constructor for all the subclasses that initialise by directly calling InitCCSpriteBatchNode
+        public CCSpriteBatchNode()
+        {
+        }
+
+        public CCSpriteBatchNode(CCTexture2D tex, int capacity=kDefaultSpriteBatchCapacity)
         {
             InitCCSpriteBatchNode(tex, capacity);
         }

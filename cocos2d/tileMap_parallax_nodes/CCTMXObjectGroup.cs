@@ -14,12 +14,6 @@ namespace CocosSharp
 
         protected CCPoint m_tPositionOffset;
 
-        public CCTMXObjectGroup()
-        {
-            m_pObjects = new List<Dictionary<string, string>>();
-            m_pProperties = new Dictionary<string, string>();
-        }
-
         /// <summary>
         /// offset position of child objects
         /// </summary>
@@ -52,6 +46,18 @@ namespace CocosSharp
             get { return m_sGroupName; }
             set { m_sGroupName = value; }
         }
+
+
+        #region Constructors
+
+        public CCTMXObjectGroup()
+        {
+            m_pObjects = new List<Dictionary<string, string>>();
+            m_pProperties = new Dictionary<string, string>();
+        }
+
+        #endregion Constructors
+
 
         /// <summary>
         ///  return the value for the specific property name

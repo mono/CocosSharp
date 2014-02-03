@@ -26,21 +26,21 @@ namespace CocosSharp
             InitWithTileFile(tile, mapFile, tileWidth, tileHeight);
         }
 
-        #endregion Constructors 
-
-
         private void InitWithTileFile(string tile, string mapFile, int tileWidth, int tileHeight)
         {
             LoadTgAfile(mapFile);
             CalculateItemsToRender();
 
-            if (base.InitWithTileFile(tile, tileWidth, tileHeight, m_nItemsToRender))
-            {
-                m_pPosToAtlasIndex = new Dictionary<CCGridSize, int>();
-                UpdateAtlasValues();
-                ContentSize = new CCSize(m_pTGAInfo.width * m_uItemWidth, m_pTGAInfo.height * m_uItemHeight);
-            }
+            // We can't call base constructor because we need to determine num of items to render first
+            base.InitWithTileFile(tile, tileWidth, tileHeight, m_nItemsToRender);
+
+            m_pPosToAtlasIndex = new Dictionary<CCGridSize, int>();
+            UpdateAtlasValues();
+            ContentSize = new CCSize(m_pTGAInfo.width * m_uItemWidth, m_pTGAInfo.height * m_uItemHeight);
         }
+
+        #endregion Constructors 
+
 
         public Color TileAt(CCGridSize position)
         {

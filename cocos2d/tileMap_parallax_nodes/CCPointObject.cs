@@ -8,16 +8,21 @@ namespace CocosSharp
         public CCPoint Offset;
         public CCPoint Ratio;
 
-        public CCPointObject (CCPoint ratio, CCPoint offset)
+
+        #region Constructors
+
+        public CCPointObject(CCPoint ratio, CCPoint offset)
         {
-            InitWithCcPoint(ratio, offset);
+            InitCCPointObject(ratio, offset);
         }
 
-        private void InitWithCcPoint(CCPoint ratio, CCPoint offset)
+        private void InitCCPointObject(CCPoint ratio, CCPoint offset)
         {
             Ratio = ratio;
             Offset = offset;
             Child = null;
         }
+
+        #endregion Constructors
     }
 }

@@ -172,6 +172,69 @@ namespace CocosSharp
 
         #endregion
 
+
+        #region Constructors
+
+        /// <summary>
+        /// creates a TMX Format with a tmx file
+        /// </summary>
+        public CCTMXMapInfo (string tmxFile)
+        {
+            InitWithTmxFile(tmxFile);
+        }
+
+        public CCTMXMapInfo(StreamReader stream)
+        {
+            string s = stream.ReadToEnd();
+            InitWithXml(s, null);
+        }
+
+        private void InternalInit(string tmxFileName, string resourcePath)
+        {
+            m_pTilesets = new List<CCTMXTilesetInfo>();
+            m_pLayers = new List<CCTMXLayerInfo>();
+
+            if (tmxFileName != null)
+            {
+                m_sTMXFileName = CCFileUtils.FullPathFromRelativePath(tmxFileName);
+            }
+
+            if (resourcePath != null)
+            {
+                m_sResources = resourcePath;
+            }
+
+            m_pObjectGroups = new List<CCTMXObjectGroup>(4);
+
+            m_pProperties = new Dictionary<string, string>();
+            m_pTileProperties = new Dictionary<uint, Dictionary<string, string>>();
+
+            // tmp vars
+            m_sCurrentString = null;
+            m_bStoringCharacters = false;
+            m_nLayerAttribs = (int) CCTMXLayerAttrib.None;
+            m_nParentElement = (int) CCTMXProperty.None;
+            m_uCurrentFirstGID = 0;
+        }
+
+        /// <summary>
+        /// initializes a TMX format witha  tmx file
+        /// </summary>
+        private void InitWithTmxFile(string tmxFile)
+        {
+            InternalInit(tmxFile, null);
+            ParseXmlFile(m_sTMXFileName);
+        }
+
+        private void InitWithXml(string tmxString, string resourcePath)
+        {
+            InternalInit(null, resourcePath);
+            ParseXmlString(tmxString);
+        }
+
+        #endregion Constructors
+
+
         #region ICCSAXDelegator Members
 
         public void StartElement(object ctx, string name, string[] atts)
@@ -595,62 +658,6 @@ namespace CocosSharp
 
         #endregion
 
-        /// <summary>
-        /// creates a TMX Format with a tmx file
-        /// </summary>
-        public CCTMXMapInfo (string tmxFile)
-        {
-            InitWithTmxFile(tmxFile);
-        }
-
-        public CCTMXMapInfo(StreamReader stream)
-        {
-            string s = stream.ReadToEnd();
-            InitWithXml(s, null);
-        }
-
-        private void InternalInit(string tmxFileName, string resourcePath)
-        {
-            m_pTilesets = new List<CCTMXTilesetInfo>();
-            m_pLayers = new List<CCTMXLayerInfo>();
-
-            if (tmxFileName != null)
-            {
-                m_sTMXFileName = CCFileUtils.FullPathFromRelativePath(tmxFileName);
-            }
-
-            if (resourcePath != null)
-            {
-                m_sResources = resourcePath;
-            }
-
-            m_pObjectGroups = new List<CCTMXObjectGroup>(4);
-
-            m_pProperties = new Dictionary<string, string>();
-            m_pTileProperties = new Dictionary<uint, Dictionary<string, string>>();
-
-            // tmp vars
-            m_sCurrentString = null;
-            m_bStoringCharacters = false;
-            m_nLayerAttribs = (int) CCTMXLayerAttrib.None;
-            m_nParentElement = (int) CCTMXProperty.None;
-            m_uCurrentFirstGID = 0;
-        }
-
-        /// <summary>
-        /// initializes a TMX format witha  tmx file
-        /// </summary>
-        private void InitWithTmxFile(string tmxFile)
-        {
-            InternalInit(tmxFile, null);
-            ParseXmlFile(m_sTMXFileName);
-        }
-
-        private void InitWithXml(string tmxString, string resourcePath)
-        {
-            InternalInit(null, resourcePath);
-            ParseXmlString(tmxString);
-        }
 
         public bool ParseXmlString(string data)
         {

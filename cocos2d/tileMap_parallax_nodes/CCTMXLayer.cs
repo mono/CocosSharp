@@ -79,9 +79,12 @@ namespace CocosSharp
             set { m_sLayerName = value; }
         }
 
+
+        #region Constructors
+
         /** creates a CCTMXLayer with an tileset info, a layer info and a map info */
 
-        public CCTMXLayer (CCTMXTilesetInfo tilesetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
+        public CCTMXLayer(CCTMXTilesetInfo tilesetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
         {
             InitWithTilesetInfo(tilesetInfo, layerInfo, mapInfo);
         }
@@ -139,6 +142,9 @@ namespace CocosSharp
         Unless you want to know at runtime the tiles positions, you can safely call this method.
         If you are going to call layer.tileGIDAt() then, don't release the map
         */
+
+        #endregion Constructors
+
 
         public virtual void ReleaseMap()
         {

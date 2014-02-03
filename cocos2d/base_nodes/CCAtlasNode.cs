@@ -152,14 +152,14 @@ namespace CocosSharp
             InitWithTexture(texture, tileWidth, tileHeight, itemsToRender);
         }
 
-        public bool InitWithTileFile(string tile, int tileWidth, int tileHeight, int itemsToRender)
+        protected void InitWithTileFile(string tile, int tileWidth, int tileHeight, int itemsToRender)
         {
             Debug.Assert(tile != null, "title should not be null");
             var texture = CCTextureCache.SharedTextureCache.AddImage(tile);
-            return InitWithTexture(texture, tileWidth, tileHeight, itemsToRender);
+            InitWithTexture(texture, tileWidth, tileHeight, itemsToRender);
         }
 
-        public bool InitWithTexture(CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender)
+        private void InitWithTexture(CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender)
         {
             m_uItemWidth = tileWidth;
             m_uItemHeight = tileHeight;
@@ -177,8 +177,6 @@ namespace CocosSharp
             CalculateMaxItems();
 
             m_uQuadsToDraw = itemsToRender;
-
-            return true;
         }
 
         private void CalculateMaxItems()

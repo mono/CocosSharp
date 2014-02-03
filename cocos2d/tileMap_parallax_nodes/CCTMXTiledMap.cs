@@ -118,13 +118,16 @@ object->propertyNamed(name_of_the_property);
 
         #region public
 
+
+        #region Constructors
+
         /// <summary>
         /// Construct the Tiled map from the given TMX file, which is assumed to be a content managed file.
         /// </summary>
         /// <param name="tmxFile"></param>
         public CCTMXTiledMap(string tmxFile)
         {
-            InitWithTmxFile(tmxFile);
+            InitCCTMXTiledMap(tmxFile);
         }
 
         /// <summary>
@@ -151,7 +154,7 @@ object->propertyNamed(name_of_the_property);
         /// <summary>
         /// initializes a TMX Tiled Map with a TMX file
         /// </summary>
-        private void InitWithTmxFile(string tmxFile)
+        private void InitCCTMXTiledMap(string tmxFile)
         {
             Debug.Assert(!String.IsNullOrEmpty(tmxFile), "TMXTiledMap: tmx file should not be null");
 
@@ -168,6 +171,9 @@ object->propertyNamed(name_of_the_property);
 
             BuildWithMapInfo(mapInfo);
         }
+
+        #endregion Constructors
+
 
         private void BuildWithMapInfo(CCTMXMapInfo mapInfo)
         {
