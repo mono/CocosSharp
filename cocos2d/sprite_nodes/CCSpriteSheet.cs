@@ -27,6 +27,7 @@ namespace CocosSharp
 			SpriteKit
 		}
 
+
         #region Constructors
 
         public CCSpriteSheet(Dictionary<string, CCSpriteFrame> frames)
@@ -43,14 +44,14 @@ namespace CocosSharp
             InitWithFile(fileName);
         }
 
-        public CCSpriteSheet(string fileName, string textureFileName)
+        public CCSpriteSheet(string fileName, string textureFileName) 
+            : this(fileName, CCTextureCache.SharedTextureCache.AddImage(textureFileName))
         {
-            InitWithFile(fileName, textureFileName);
         }
 
-        public CCSpriteSheet(string fileName, CCTexture2D texture)
+        public CCSpriteSheet(string fileName, CCTexture2D texture) 
+            : this(CCContentManager.SharedContentManager.Load<PlistDocument>(fileName).Root.AsDictionary, texture)
         {
-            InitWithFile(fileName, texture);
         }
 
         public CCSpriteSheet(Stream stream, CCTexture2D texture)
@@ -58,39 +59,15 @@ namespace CocosSharp
             InitWithStream(stream, texture);
         }
 
-        public CCSpriteSheet(Stream stream, string texture)
+        public CCSpriteSheet(Stream stream, string textureFileName) 
+            : this(stream, CCTextureCache.SharedTextureCache.AddImage(textureFileName))
         {
-            InitWithStream(stream, texture);
         }
 
         public CCSpriteSheet(PlistDictionary dictionary, CCTexture2D texture)
         {
             InitWithDictionary(dictionary, texture);
         }
-
-        #endregion
-
-        private void AutoCreateAliasList()
-        {
-            foreach (string key in _spriteFrames.Keys)
-            {
-                int idx = key.LastIndexOf('.');
-                if (idx > -1)
-                {
-                    string alias = key.Substring(0, idx);
-                    _spriteFramesAliases[alias] = key;
-                    CCLog.Log("Created alias for frame {0} as {1}", key, alias);
-                }
-            }
-        }
-
-        private PlistType GetPlistType(PlistDictionary dict)
-		{
-			var isSpriteKit = dict.ContainsKey ("format") ? dict ["format"].AsString == "APPL" : false;
-
-			return isSpriteKit ? PlistType.SpriteKit : PlistType.Cocos2D;
-
-		}
 
         private void InitWithFile(string fileName)
         {
@@ -157,45 +134,6 @@ namespace CocosSharp
             }
         }
 
-        private void InitWithFile(string fileName, string textureFileName)
-        {
-            Debug.Assert(textureFileName != null);
-            
-            CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(textureFileName);
-
-            if (texture != null)
-            {
-                InitWithFile(fileName, texture);
-            }
-            else
-            {
-                CCLog.Log("CCSpriteSheet: couldn't load texture file. File not found {0}", textureFileName);
-            }
-        }
-
-        private void InitWithFile(string fileName, CCTexture2D texture)
-        {
-            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(fileName);
-
-            PlistDictionary dict = document.Root.AsDictionary;
-
-            InitWithDictionary(dict, texture);
-        }
-
-        private void InitWithStream(Stream stream, string textureFileName)
-        {
-            CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(textureFileName);
-
-            if (texture != null)
-            {
-                InitWithStream(stream, texture);
-            }
-            else
-            {
-                CCLog.Log("CCSpriteSheet: couldn't load texture file. File not found {0}", textureFileName);
-            }
-        }
-
         private void InitWithStream(Stream stream, CCTexture2D texture)
         {
             var document = new PlistDocument();
@@ -222,6 +160,31 @@ namespace CocosSharp
 				LoadAppleDictionary (dict, texture);
 			else
 				LoadCocos2DDictionary(dict, texture);
+        }
+
+        #endregion Constructors
+
+
+        private void AutoCreateAliasList()
+        {
+            foreach (string key in _spriteFrames.Keys)
+            {
+                int idx = key.LastIndexOf('.');
+                if (idx > -1)
+                {
+                    string alias = key.Substring(0, idx);
+                    _spriteFramesAliases[alias] = key;
+                    CCLog.Log("Created alias for frame {0} as {1}", key, alias);
+                }
+            }
+        }
+
+        private PlistType GetPlistType(PlistDictionary dict)
+        {
+            var isSpriteKit = dict.ContainsKey ("format") ? dict ["format"].AsString == "APPL" : false;
+
+            return isSpriteKit ? PlistType.SpriteKit : PlistType.Cocos2D;
+
         }
 
         #region Loaders

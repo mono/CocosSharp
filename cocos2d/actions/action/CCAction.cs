@@ -45,7 +45,9 @@ namespace CocosSharp
 
         protected CCAction(CCAction action)
         {
-            m_nTag = action.m_nTag;
+            m_nTag = (int) CCActionTag.Invalid;
+            m_pOriginalTarget = null;
+            m_pTarget = null;
         }
 
         #endregion Constructor

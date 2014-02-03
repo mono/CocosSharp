@@ -101,39 +101,38 @@ namespace CocosSharp
                 texture = CCTextureCache.SharedTextureCache.AddImage(tilesetInfo.m_sSourceImage);
             }
 
-            if (base.InitWithTexture(texture, (int) capacity))
-            {
-                // layerInfo
-                m_sLayerName = layerInfo.Name;
-                m_tLayerSize = size;
-                m_pTiles = layerInfo.Tiles;
-                m_uMinGID = layerInfo.MinGID;
-                m_uMaxGID = layerInfo.MaxGID;
-                m_cOpacity = layerInfo.Opacity;
-                Properties = new Dictionary<string, string>(layerInfo.Properties);
-                m_fContentScaleFactor = CCDirector.SharedDirector.ContentScaleFactor;
+            base.InitCCSpriteBatchNode(texture, (int)capacity);
 
-                // tilesetInfo
-                m_pTileSet = tilesetInfo;
+            // layerInfo
+            m_sLayerName = layerInfo.Name;
+            m_tLayerSize = size;
+            m_pTiles = layerInfo.Tiles;
+            m_uMinGID = layerInfo.MinGID;
+            m_uMaxGID = layerInfo.MaxGID;
+            m_cOpacity = layerInfo.Opacity;
+            Properties = new Dictionary<string, string>(layerInfo.Properties);
+            m_fContentScaleFactor = CCDirector.SharedDirector.ContentScaleFactor;
 
-                // mapInfo
-                m_tMapTileSize = mapInfo.TileSize;
-                m_uLayerOrientation = (CCTMXOrientation) mapInfo.Orientation;
+            // tilesetInfo
+            m_pTileSet = tilesetInfo;
 
-                // offset (after layer orientation is set);
-                CCPoint offset = ApplyLayerOffset(layerInfo.Offset);
-                Position = offset.PixelsToPoints();
+            // mapInfo
+            m_tMapTileSize = mapInfo.TileSize;
+            m_uLayerOrientation = (CCTMXOrientation) mapInfo.Orientation;
 
-                m_pAtlasIndexArray = new List<int>((int) totalNumberOfTiles);
+            // offset (after layer orientation is set);
+            CCPoint offset = ApplyLayerOffset(layerInfo.Offset);
+            Position = offset.PixelsToPoints();
 
-                var contentSize = new CCSize(m_tLayerSize.Width * m_tMapTileSize.Width,
-                                      m_tLayerSize.Height * m_tMapTileSize.Height);
+            m_pAtlasIndexArray = new List<int>((int) totalNumberOfTiles);
 
-                ContentSize = contentSize.PixelsToPoints();
+            var contentSize = new CCSize(m_tLayerSize.Width * m_tMapTileSize.Width,
+                                  m_tLayerSize.Height * m_tMapTileSize.Height);
 
-                m_bUseAutomaticVertexZ = false;
-                m_nVertexZvalue = 0;
-            }
+            ContentSize = contentSize.PixelsToPoints();
+
+            m_bUseAutomaticVertexZ = false;
+            m_nVertexZvalue = 0;
         }
 
         /** dealloc the map that contains the tile position from memory.

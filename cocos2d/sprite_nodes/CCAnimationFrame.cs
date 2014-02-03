@@ -23,43 +23,33 @@ namespace CocosSharp
             get { return m_pUserInfo; }
         }
 
-		public CCAnimationFrame Copy()
-		{
-			return (CCAnimationFrame)Copy(null);
-		}
-
-        public object Copy(ICCCopyable pZone)
-        {
-            CCAnimationFrame pCopy;
-            if (pZone != null)
-            {
-                //in case of being called at sub class
-                pCopy = (CCAnimationFrame) (pZone);
-                pCopy.InitWithSpriteFrame((CCSpriteFrame) m_pSpriteFrame.Copy(), m_fDelayUnits, m_pUserInfo);
-            }
-            else
-            {
-                pCopy = new CCAnimationFrame((CCSpriteFrame) m_pSpriteFrame.Copy(), m_fDelayUnits, m_pUserInfo);
-            }
-
-            return pCopy;
-        }
 
         #region Constructors
 
         public CCAnimationFrame(CCSpriteFrame spriteFrame, float delayUnits, PlistDictionary userInfo)
         {
-            InitWithSpriteFrame(spriteFrame, delayUnits, userInfo);
+            InitCCAnimationFrame(spriteFrame, delayUnits, userInfo);
         }
 
-        #endregion Constructors
+        public CCAnimationFrame(CCAnimationFrame animFrame)
+        {
+            InitCCAnimationFrame(animFrame.m_pSpriteFrame.Copy(null) as CCSpriteFrame, animFrame.m_fDelayUnits, animFrame.m_pUserInfo);
+        }
 
-
-        private void InitWithSpriteFrame(CCSpriteFrame spriteFrame, float delayUnits, PlistDictionary userInfo)
+        private void InitCCAnimationFrame(CCSpriteFrame spriteFrame, float delayUnits, PlistDictionary userInfo)
         {
             m_pSpriteFrame = spriteFrame;
             m_fDelayUnits = delayUnits;
             m_pUserInfo = userInfo;
         }
+
+        #endregion Constructors
+
+
+        public object Copy(ICCCopyable pZone)
+        {
+            return new CCAnimationFrame(this);
+        }
+
     }
 }

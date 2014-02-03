@@ -21,6 +21,18 @@ namespace CocosSharp
             }
         }
 
+        public CCAnimation this[string index]
+        {
+            get
+            {
+                return (AnimationByName(index));
+            }
+            set
+            {
+                m_pAnimations[index] = value;
+            }
+        }
+
         public static void PurgeSharedAnimationCache()
         {
             s_pSharedAnimationCache = null;
@@ -53,18 +65,6 @@ namespace CocosSharp
                 return;
             }
             m_pAnimations.Remove(name);
-        }
-
-        public CCAnimation this[string index]
-        {
-            get
-            {
-                return (AnimationByName(index));
-            }
-            set
-            {
-                m_pAnimations[index] = value;
-            }
         }
 
         public CCAnimation AnimationByName(string name)

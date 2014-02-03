@@ -27,9 +27,11 @@ namespace CocosSharp
         }
 
         // Perform deep copy of CCRepeatForever
-        protected CCRepeatForever(CCRepeatForever repeatForever) : base(repeatForever)
+        public CCRepeatForever(CCRepeatForever repeatForever) : base(repeatForever)
         {
-            InitCCRepeatForever(new CCActionInterval(repeatForever.m_pInnerAction));
+            // The InnerAction may be a subclass of CCActionInterval
+            // Therefore, use the Copy method to ensure the "deepest" constructor is used
+            InitCCRepeatForever(repeatForever.m_pInnerAction.Copy() as CCActionInterval);
         }
 
         private void InitCCRepeatForever(CCActionInterval action)

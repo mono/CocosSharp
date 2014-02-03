@@ -47,7 +47,8 @@ namespace CocosSharp
         {
         }
 
-        #endregion
+        #endregion Constructors
+
 
         #region Sprite Collission
 

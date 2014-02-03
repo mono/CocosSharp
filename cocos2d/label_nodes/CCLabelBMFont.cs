@@ -362,34 +362,30 @@ namespace CocosSharp
                 theString = String.Empty;
             }
 
-            if (base.InitWithTexture(texture, theString.Length))
-            {
-                m_tDimensions = dimentions;
+            base.InitCCSpriteBatchNode(texture, theString.Length);
 
-                m_pHAlignment = hAlignment;
-                m_pVAlignment = vAlignment;
+            m_tDimensions = dimentions;
 
-                m_cDisplayedOpacity = m_cRealOpacity = 255;
-                m_tDisplayedColor = m_tRealColor = CCTypes.CCWhite;
-                m_bCascadeOpacityEnabled = true;
-                m_bCascadeColorEnabled = true;
+            m_pHAlignment = hAlignment;
+            m_pVAlignment = vAlignment;
 
-                m_obContentSize = CCSize.Zero;
+            m_cDisplayedOpacity = m_cRealOpacity = 255;
+            m_tDisplayedColor = m_tRealColor = CCTypes.CCWhite;
+            m_bCascadeOpacityEnabled = true;
+            m_bCascadeColorEnabled = true;
 
-                m_bIsOpacityModifyRGB = m_pobTextureAtlas.Texture.HasPremultipliedAlpha;
-                AnchorPoint = new CCPoint(0.5f, 0.5f);
+            m_obContentSize = CCSize.Zero;
 
-                m_tImageOffset = imageOffset;
+            m_bIsOpacityModifyRGB = m_pobTextureAtlas.Texture.HasPremultipliedAlpha;
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-                m_pReusedChar = new CCSprite();
-                m_pReusedChar.InitWithTexture(m_pobTextureAtlas.Texture, CCRect.Zero, false);
-                m_pReusedChar.BatchNode = this;
+            m_tImageOffset = imageOffset;
 
-                SetString(theString, true);
+            m_pReusedChar = new CCSprite();
+            m_pReusedChar.InitWithTexture(m_pobTextureAtlas.Texture, CCRect.Zero, false);
+            m_pReusedChar.BatchNode = this;
 
-                return;
-            }
-            return;
+            SetString(theString, true);
         }
 
         #endregion Constructors
@@ -539,8 +535,7 @@ namespace CocosSharp
                     //}
                     //else
                     {
-                        fontChar = new CCSprite();
-                        fontChar.InitWithTexture(m_pobTextureAtlas.Texture, rect);
+                        fontChar = new CCSprite(m_pobTextureAtlas.Texture, rect);
                         AddChild(fontChar, i, i);
                     }
 

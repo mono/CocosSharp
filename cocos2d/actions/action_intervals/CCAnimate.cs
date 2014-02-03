@@ -160,7 +160,7 @@ namespace CocosSharp
                         break;
                     }
 
-                    pNewArray.Add(pElement.Copy() as CCAnimationFrame);
+                    pNewArray.Add(pElement.Copy(null) as CCAnimationFrame);
                 }
             }
 

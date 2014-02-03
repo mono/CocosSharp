@@ -14,17 +14,18 @@ namespace CocosSharp
         protected Dictionary<string, string> m_pSpriteFramesAliases;
         private bool _AllowFrameOverwrite = false;
 
-        #region Constructors
-
-        // Singleton, so ensure users only call SharedSpriteFrameCache to get instance
-        protected CCSpriteFrameCache()
+        public static CCSpriteFrameCache SharedSpriteFrameCache
         {
-            m_pSpriteFrames = new Dictionary<string, CCSpriteFrame>();
-            m_pSpriteFramesAliases = new Dictionary<string, string>();
+            get
+            {
+                if (pSharedSpriteFrameCache == null)
+                {
+                    pSharedSpriteFrameCache = new CCSpriteFrameCache();
+                }
+
+                return pSharedSpriteFrameCache;
+            }
         }
-
-        #endregion Constructors
-
 
         /// <summary>
         /// When false, an exception is thrown if an animation frame is overwritten.
@@ -40,6 +41,19 @@ namespace CocosSharp
                 _AllowFrameOverwrite = value;
             }
         }
+
+
+        #region Constructors
+
+        // Singleton, so ensure users only call SharedSpriteFrameCache to get instance
+        protected CCSpriteFrameCache()
+        {
+            m_pSpriteFrames = new Dictionary<string, CCSpriteFrame>();
+            m_pSpriteFramesAliases = new Dictionary<string, string>();
+        }
+
+        #endregion Constructors
+
 
         public void AddSpriteFramesWithDictionary(PlistDictionary pobDictionary, CCTexture2D pobTexture)
         {
@@ -418,19 +432,6 @@ namespace CocosSharp
                 CCLog.Log("cocos2d: {0} frame {1}", pszName, frame.Rect.ToString());
             }
             return frame;
-        }
-
-        public static CCSpriteFrameCache SharedSpriteFrameCache
-        {
-            get
-            {
-                if (pSharedSpriteFrameCache == null)
-                {
-                    pSharedSpriteFrameCache = new CCSpriteFrameCache();
-                }
-
-                return pSharedSpriteFrameCache;
-            }
         }
 
         public static void PurgeSharedSpriteFrameCache()

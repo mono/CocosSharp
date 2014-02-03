@@ -91,39 +91,34 @@ namespace CocosSharp
 
         #endregion
 
-        public CCSpriteFrame() { }
 
-		public CCSpriteFrame Copy()
+        #region Constructors
+
+        public CCSpriteFrame() 
+        { 
+        }
+
+        public CCSpriteFrame(CCSpriteFrame spriteFrame) 
+            : this(spriteFrame.m_pobTexture, spriteFrame.m_obRectInPixels, spriteFrame.m_bRotated, 
+            spriteFrame.m_obOffsetInPixels, spriteFrame.m_obOriginalSizeInPixels)
 		{
-			return (CCSpriteFrame)Copy(null);
 		}
 
-        public object Copy(ICCCopyable pZone)
+        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect, CCSize originalSize)
         {
-            var pCopy = new CCSpriteFrame();
-            pCopy.InitWithTexture(m_pobTexture, m_obRectInPixels, m_bRotated, m_obOffsetInPixels, m_obOriginalSizeInPixels);
-            return pCopy;
+            InitCCSpriteFrame(pobTexture, rect, originalSize);
         }
 
-        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect)
+        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect) : this(pobTexture, rect, rect.Size)
         {
-            InitWithTexture(pobTexture, rect);
         }
 
-        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect, bool rotated, CCPoint offset,
-                                           CCSize originalSize)
+        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect, bool rotated, CCPoint offset, CCSize originalSize)
         {
-            InitWithTexture(pobTexture, rect, rotated, offset, originalSize);
+            InitCCSpriteFrame(pobTexture, rect, originalSize, rotated, offset);
         }
 
-        private void InitWithTexture(CCTexture2D pobTexture, CCRect rect)
-        {
-            CCRect rectInPixels = rect.PointsToPixels();
-            InitWithTexture(pobTexture, rectInPixels, false, new CCPoint(0, 0), rectInPixels.Size);
-        }
-
-        private void InitWithTexture(CCTexture2D pobTexture, CCRect rect, bool rotated, CCPoint offset,
-                                    CCSize originalSize)
+        private void InitCCSpriteFrame(CCTexture2D pobTexture, CCRect rect, CCSize originalSize, bool rotated=false, CCPoint offset=default(CCPoint))
         {
             m_pobTexture = pobTexture;
 
@@ -136,22 +131,12 @@ namespace CocosSharp
             m_bRotated = rotated;
         }
 
-        private void InitWithTextureFilename(String filename, CCRect rect)
-        {
-            InitWithTextureFilename(filename, rect, false, CCPoint.Zero, rect.Size);
-        }
+        #endregion Constructors
 
-        private void InitWithTextureFilename(String filename, CCRect rect, bool rotated, CCPoint offset, CCSize originalSize)
+
+        public object Copy(ICCCopyable pZone)
         {
-            m_pobTexture = null;
-            m_strTextureFilename = filename;
-            m_obRectInPixels = rect;
-            m_obRect = rect.PixelsToPoints();
-            m_obOffsetInPixels = offset;
-            m_obOffset = m_obOffsetInPixels.PixelsToPoints();
-            m_obOriginalSizeInPixels = originalSize;
-            m_obOriginalSize = m_obOriginalSizeInPixels.PixelsToPoints();
-            m_bRotated = rotated;
+            return new CCSpriteFrame(this);
         }
     }
 }

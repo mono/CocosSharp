@@ -905,7 +905,7 @@ namespace tests
             // File animation
             //
             // with 4 loops
-            var animation3 = (CCAnimation) animation2.Copy();
+            var animation3 = new CCAnimation(animation2);
             animation3.Loops = 4;
 
 

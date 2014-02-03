@@ -335,48 +335,39 @@ namespace CocosSharp
                 centertopbounds = CCAffineTransform.Transform(centertopbounds, t);
 
                 // Centre
-                _centre = new CCSprite();
-                _centre.InitWithTexture(_scale9Image.Texture, centerbounds);
+                _centre = new CCSprite(_scale9Image.Texture, centerbounds);
                 _scale9Image.AddChild(_centre, 0, (int)Positions.Centre);
 
                 // Top
-                _top = new CCSprite();
-                _top.InitWithTexture(_scale9Image.Texture, centertopbounds);
+                _top = new CCSprite(_scale9Image.Texture, centerbounds);
                 _scale9Image.AddChild(_top, 1, (int)Positions.Top);
 
                 // Bottom
-                _bottom = new CCSprite();
-                _bottom.InitWithTexture(_scale9Image.Texture, centerbottombounds);
+                _bottom = new CCSprite(_scale9Image.Texture, centerbottombounds);
                 _scale9Image.AddChild(_bottom, 1, (int)Positions.Bottom);
 
                 // Left
-                _left = new CCSprite();
-                _left.InitWithTexture(_scale9Image.Texture, leftcenterbounds);
+                _left = new CCSprite(_scale9Image.Texture, leftcenterbounds);
                 _scale9Image.AddChild(_left, 1, (int)Positions.Left);
 
                 // Right
-                _right = new CCSprite();
-                _right.InitWithTexture(_scale9Image.Texture, rightcenterbounds);
+                _right = new CCSprite(_scale9Image.Texture, rightcenterbounds);
                 _scale9Image.AddChild(_right, 1, (int)Positions.Right);
 
                 // Top left
-                _topLeft = new CCSprite();
-                _topLeft.InitWithTexture(_scale9Image.Texture, lefttopbounds);
+                _topLeft = new CCSprite(_scale9Image.Texture, lefttopbounds);
                 _scale9Image.AddChild(_topLeft, 2, (int)Positions.TopLeft);
 
                 // Top right
-                _topRight = new CCSprite();
-                _topRight.InitWithTexture(_scale9Image.Texture, righttopbounds);
+                _topRight = new CCSprite(_scale9Image.Texture, righttopbounds);
                 _scale9Image.AddChild(_topRight, 2, (int)Positions.TopRight);
 
                 // Bottom left
-                _bottomLeft = new CCSprite();
-                _bottomLeft.InitWithTexture(_scale9Image.Texture, leftbottombounds);
+                _bottomLeft = new CCSprite(_scale9Image.Texture, leftbottombounds);
                 _scale9Image.AddChild(_bottomLeft, 2, (int)Positions.BottomLeft);
 
                 // Bottom right
-                _bottomRight = new CCSprite();
-                _bottomRight.InitWithTexture(_scale9Image.Texture, rightbottombounds);
+                _bottomRight = new CCSprite(_scale9Image.Texture, rightbottombounds);
                 _scale9Image.AddChild(_bottomRight, 2, (int)Positions.BottomRight);
             }
             else

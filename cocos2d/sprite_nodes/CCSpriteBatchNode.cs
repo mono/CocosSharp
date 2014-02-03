@@ -53,38 +53,20 @@ namespace CocosSharp
 
         #endregion
 
-        public CCSpriteBatchNode()
+
+        #region Constructors
+
+        public CCSpriteBatchNode(CCTexture2D tex=null, int capacity=kDefaultSpriteBatchCapacity)
+        {
+            InitCCSpriteBatchNode(tex, capacity);
+        }
+
+        public CCSpriteBatchNode(string fileImage, int capacity=kDefaultSpriteBatchCapacity) 
+            : this(CCTextureCache.SharedTextureCache.AddImage(fileImage), capacity)
         {
         }
 
-        public CCSpriteBatchNode(CCTexture2D tex)
-        {
-            InitWithTexture(tex, kDefaultSpriteBatchCapacity);
-        }
-
-        public CCSpriteBatchNode(CCTexture2D tex, int capacity)
-        {
-            InitWithTexture(tex, capacity);
-        }
-
-        public CCSpriteBatchNode(string fileImage)
-        {
-            InitWithFile(fileImage, kDefaultSpriteBatchCapacity);
-        }
-
-        public CCSpriteBatchNode(string fileImage, int capacity)
-        {
-            InitWithFile(fileImage, capacity);
-        }
-
-        private void InitWithFile(string fileImage, int capacity)
-        {
-            CCTexture2D pTexture2D = CCTextureCache.SharedTextureCache.AddImage(fileImage);
-            InitWithTexture(pTexture2D, capacity);
-        }
-
-        // Bool return type used by subclasses
-        protected bool InitWithTexture(CCTexture2D tex, int capacity)
+        protected void InitCCSpriteBatchNode(CCTexture2D tex, int capacity=kDefaultSpriteBatchCapacity)
         {
             m_blendFunc = CCBlendFunc.AlphaBlend;
 
@@ -103,9 +85,10 @@ namespace CocosSharp
             // no lazy alloc in this node
             m_pChildren = new CCRawList<CCNode>(capacity);
             m_pobDescendants = new CCRawList<CCSprite>(capacity);
-
-            return true;
         }
+
+        #endregion Constructors
+
 
         public override void Visit()
         {

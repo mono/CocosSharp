@@ -467,79 +467,36 @@ namespace CocosSharp
 
         #endregion
 
+
         #region Constructors
 
-        public CCSprite()
+        public CCSprite(CCTexture2D texture=null, CCRect rect=default(CCRect), bool rotated=false)
         {
-            if (!InitWithTexture(null, new CCRect()))
-            {
-                CCLog.Log("CCSprite (): Problems initializing class");
-            }
+            InitWithTexture(texture, rect);
         }
 
-        public CCSprite(CCSize size)
+        public CCSprite(CCSize size) : this((CCTexture2D)null, new CCRect(0, 0, size.Width, size.Height))
         {
-            if (!InitWithTexture(null, new CCRect(0, 0, size.Width, size.Height)))
-            {
-                CCLog.Log("CCSprite (CCSize size): Problems initializing class");
-            }
         }
 
-        public CCSprite(CCRect rect)
+        public CCSprite(CCTexture2D texture) 
+            : this(texture, new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height))
         {
-            if (!InitWithTexture(null, rect))
-            {
-                CCLog.Log("CCSprite (CCRect rect): Problems initializing class");
-            }
         }
 
-        public CCSprite(CCTexture2D texture)
+        public CCSprite(CCSpriteFrame spriteFrame)
         {
-            if (!InitWithTexture(texture))
-            {
-				CCLog.Log("CCSprite (CCTexture2D texture): Problems initializing class"); 
-            }
+            InitWithSpriteFrame(spriteFrame);
         }
 
-        public CCSprite (CCTexture2D texture, CCRect rect)
+        public CCSprite(string fileName, CCRect rect=default(CCRect))
         {
-            if (!InitWithTexture(texture, rect))
-            {
-				CCLog.Log("CCSprite (CCTexture2D texture, CCRect rect): Problems initializing class"); 
-
-            }
+            InitWithFile(fileName, rect);
         }
 
-        public CCSprite (string fileName)
+        // Used externally by non-subclasses
+        internal void InitWithTexture(CCTexture2D pTexture, CCRect rect=default(CCRect), bool rotated=false)
         {
-            if (!InitWithFile(fileName))
-            {
-				CCLog.Log("CCSprite (string fileName): Problems initializing class"); 
-			}
-        }
-
-        public CCSprite (string fileName, CCRect rect)
-        {
-            if (!InitWithFile(fileName, rect))
-            {
-				CCLog.Log("CCSprite (string fileName, CCRect rect): Problems initializing class"); 
-			}
-        }
-
-        public CCSprite (CCSpriteFrame pSpriteFrame)
-        {
-            if (!InitWithSpriteFrame(pSpriteFrame))
-            {
-				CCLog.Log("CCSprite (CCSpriteFrame pSpriteFrame): Problems initializing class"); 
-			}
-        }
-
-        #endregion
-
-        // Called by non-subclasses which also make use of bool return type
-        internal bool InitWithTexture(CCTexture2D pTexture, CCRect rect, bool rotated)
-        {
-
             m_pobBatchNode = null;
 
             // shader program
@@ -573,81 +530,48 @@ namespace CocosSharp
 
             // update texture (calls updateBlendFunc)
             Texture = pTexture;
+
+            if (rect == default(CCRect) && Texture != null) 
+            {
+                rect.Size = Texture.ContentSize;
+            }
+
             SetTextureRect(rect, rotated, rect.Size);
 
             // by default use "Self Render".
             // if the sprite is added to a batchnode, then it will automatically switch to "batchnode Render"
             BatchNode = null;
-
-            return true;
         }
 
-        // Called by non-subclasses which also make use of bool return type
-        internal bool InitWithTexture(CCTexture2D texture, CCRect rect)
+        private void InitWithSpriteFrame(CCSpriteFrame spriteFrame)
         {
-            return InitWithTexture(texture, rect, false);
+            InitWithTexture(spriteFrame.Texture, spriteFrame.Rect, spriteFrame.IsRotated);
+            DisplayFrame = spriteFrame;
         }
 
-        // Called by non-subclasses which also make use of bool return type
-        internal bool InitWithTexture(CCTexture2D texture)
-        {
-            Debug.Assert(texture != null, "Invalid texture for sprite");
-
-            var rect = new CCRect();
-            rect.Size = texture.ContentSize;
-
-            return InitWithTexture(texture, rect);
-        }
-
-        // Bool return type used internally
-        private bool InitWithFile(string fileName)
+        private void InitWithFile(string fileName, CCRect rect=default(CCRect))
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
 
             m_TextureFile = fileName;
+
+            // Try sprite frame cache first
             CCSpriteFrame pFrame = CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName(fileName);
-            if (pFrame != null)
+            if (pFrame != null) {
+                InitWithSpriteFrame (pFrame);
+            } 
+            else 
             {
-                return InitWithSpriteFrame(pFrame);
+                // If frame doesn't exist, try texture cache
+                CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(fileName);
+                if (pTexture != null) {
+                    InitWithTexture (pTexture, rect);
+                }
             }
-
-            CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(fileName);
-
-            if (null != pTexture)
-            {
-                var rect = new CCRect();
-                rect.Size = pTexture.ContentSize;
-                return InitWithTexture(pTexture, rect);
-            }
-
-            return false;
         }
 
-        // Bool return type used internally
-        private bool InitWithFile(string fileName, CCRect rect)
-        {
-            Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
+        #endregion Constructors
 
-            m_TextureFile = fileName;
-            CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(fileName);
-            if (pTexture != null)
-            {
-                return InitWithTexture(pTexture, rect);
-            }
-
-            return false;
-        }
-
-        // Bool return type used internally
-        private bool InitWithSpriteFrame(CCSpriteFrame pSpriteFrame)
-        {
-            Debug.Assert(pSpriteFrame != null);
-
-			bool bRet = InitWithTexture (pSpriteFrame.Texture, pSpriteFrame.Rect, pSpriteFrame.IsRotated);
-            DisplayFrame = pSpriteFrame;
-
-            return bRet;
-        }
 
         public void SetTextureRect(CCRect rect)
         {
