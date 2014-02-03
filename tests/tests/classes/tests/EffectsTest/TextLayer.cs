@@ -113,7 +113,7 @@ namespace tests
                 case 18:
 					return new JumpTiles3DDemo(t);
                 case 19:
-                    return SplitRowsDemo.actionWithDuration(t);
+					return new SplitRowsDemo(t);
                 case 20:
                     return SplitColsDemo.actionWithDuration(t);
                 case 21:
