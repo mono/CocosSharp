@@ -30,6 +30,11 @@ namespace CocosSharp
         protected int m_nCols;
         protected CCSize m_winSize;
 
+		protected int Columns
+		{
+			get { return m_nCols; }
+			set { m_nCols = value; }
+		}
 
         #region Constructors
 
@@ -73,7 +78,7 @@ namespace CocosSharp
 
             for (i = 0; i < m_sGridSize.X; ++i)
             {
-                CCQuad3 coords = OriginalTile(new CCGridSize(i, 0));
+                CCQuad3 coords = OriginalTile(i, 0);
                 float direction = 1;
 
                 if ((i % 2) == 0)
@@ -86,7 +91,7 @@ namespace CocosSharp
                 coords.TopLeft.Y += direction * m_winSize.Height * time;
                 coords.TopRight.Y += direction * m_winSize.Height * time;
 
-                SetTile(new CCGridSize(i, 0), ref coords);
+                SetTile(i, 0, ref coords);
             }
         }
 

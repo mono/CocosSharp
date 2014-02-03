@@ -115,7 +115,7 @@ namespace tests
                 case 19:
 					return new SplitRowsDemo(t);
                 case 20:
-                    return SplitColsDemo.actionWithDuration(t);
+					return new SplitColsDemo(t);
                 case 21:
                     return PageTurn3DDemo.actionWithDuration(t);
             }

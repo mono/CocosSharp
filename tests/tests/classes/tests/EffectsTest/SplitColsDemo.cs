@@ -8,9 +8,10 @@ namespace tests
 {
     public class SplitColsDemo : CCSplitCols
     {
-        public new static CCActionInterval actionWithDuration(float t)
+		public SplitColsDemo(float t)
+			: base (t,9)
         {
-            return new CCSplitCols(t, 9);
+            
         }
     }
 }
