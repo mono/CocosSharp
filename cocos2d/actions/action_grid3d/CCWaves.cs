@@ -40,8 +40,8 @@ namespace CocosSharp
 			set { m_bHorizontal = value; }
 		}
 
-		#region Constructors
 
+		#region Constructors
 
 		public CCWaves(float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0, bool horizontal = true, bool vertical = true)
             : base(duration, gridSize)

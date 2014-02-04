@@ -24,16 +24,16 @@ namespace CocosSharp
 
         public CCCardinalSplineTo(float duration, List<CCPoint> points, float tension) : base(duration)
         {
-            Init(points, tension);
+            InitCCCardinalSplineTo(points, tension);
         }
 
         // Perform a deep copy of CCACtionInterval
         protected CCCardinalSplineTo(CCCardinalSplineTo cardinalSplineTo) : base(cardinalSplineTo)
         {
-            Init(cardinalSplineTo.m_pPoints, cardinalSplineTo.m_fTension);
+            InitCCCardinalSplineTo(cardinalSplineTo.m_pPoints, cardinalSplineTo.m_fTension);
         }
 
-        private void Init(List<CCPoint> points, float tension)
+        private void InitCCCardinalSplineTo(List<CCPoint> points, float tension)
         {
             Debug.Assert(points.Count > 0, "Invalid configuration. It must at least have one control point");
 

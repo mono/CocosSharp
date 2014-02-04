@@ -22,16 +22,16 @@ namespace CocosSharp
         {
             Debug.Assert(totalDuration == pAnimation.Duration * pAnimation.Loops);
 
-            InitWithAnimation(pAnimation);
+            InitCCAnimate(pAnimation);
         }
 
         // Perform deep copy of CCAnimation
         protected CCAnimate(CCAnimate animate) : base(animate)
         {
-            InitWithAnimation(animate.m_pAnimation.DeepCopy());
+            InitCCAnimate(animate.m_pAnimation.DeepCopy());
         }
 
-        private void InitWithAnimation(CCAnimation pAnimation)
+        private void InitCCAnimate(CCAnimation pAnimation)
         {
             Debug.Assert(pAnimation != null);
 

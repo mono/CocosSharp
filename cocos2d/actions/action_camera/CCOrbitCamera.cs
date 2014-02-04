@@ -38,18 +38,17 @@ namespace CocosSharp
 
         protected CCOrbitCamera(CCOrbitCamera copy) : base(copy)
         {
-            Init(copy.m_fRadius, copy.m_fDeltaRadius, copy.m_fAngleZ, copy.m_fDeltaAngleZ, copy.m_fAngleX,
-                 copy.m_fDeltaAngleX);
+            InitCCOrbitCamera(copy.m_fRadius, copy.m_fDeltaRadius, copy.m_fAngleZ, copy.m_fDeltaAngleZ, 
+                copy.m_fAngleX, copy.m_fDeltaAngleX);
         }
 
         public CCOrbitCamera(float t, float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX,
                              float deltaAngleX) : base(t)
         {
-            Init(radius, deltaRadius, angleZ, deltaAngleZ, angleX, deltaAngleX);
+            InitCCOrbitCamera(radius, deltaRadius, angleZ, deltaAngleZ, angleX, deltaAngleX);
         }
 
-        private void Init(float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX,
-                          float deltaAngleX)
+        private void InitCCOrbitCamera(float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX, float deltaAngleX)
         {
             m_fRadius = radius;
             m_fDeltaRadius = deltaRadius;
@@ -97,18 +96,7 @@ namespace CocosSharp
 
         public override object Copy(ICCCopyable zone)
         {
-            if (zone != null)
-            {
-                var ret = zone as CCOrbitCamera;
-                base.Copy(zone);
-                Init(ret.m_fRadius, ret.m_fDeltaRadius, ret.m_fAngleZ, ret.m_fDeltaAngleZ, ret.m_fAngleX,
-                     ret.m_fDeltaAngleX);
-                return ret;
-            }
-            else
-            {
-                return new CCOrbitCamera(this);
-            }
+            return new CCOrbitCamera(this);
         }
 
         protected internal override void StartWithTarget(CCNode target)

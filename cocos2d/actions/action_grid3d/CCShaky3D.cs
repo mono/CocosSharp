@@ -5,6 +5,18 @@ namespace CocosSharp
 		protected bool m_bShakeZ;
         protected int m_nRandrange;
 
+        protected bool Shake
+        {
+            get { return m_bShakeZ; }
+            set { m_bShakeZ = value; }
+        }
+
+        protected int Range
+        {
+            get { return m_nRandrange; }
+            set { m_nRandrange = value; }
+        }
+
 
         #region Constructors
 
@@ -26,18 +38,6 @@ namespace CocosSharp
         }
 
         #endregion Constructors
-
-		protected bool Shake
-		{
-			get { return m_bShakeZ; }
-			set { m_bShakeZ = value; }
-		}
-
-		protected int Range
-		{
-			get { return m_nRandrange; }
-			set { m_nRandrange = value; }
-		}
 
         public override object Copy(ICCCopyable pZone)
         {

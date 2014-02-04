@@ -84,26 +84,7 @@ namespace CocosSharp
         /// <returns></returns>
         public override object Copy(ICCCopyable zone)
         {
-            ICCCopyable tmpZone = zone;
-            CCParallel ret;
-
-            if (tmpZone != null && tmpZone != null)
-            {
-                ret = zone as CCParallel;
-                base.Copy(zone);
-
-                CCFiniteTimeAction[] cp = new CCFiniteTimeAction[m_pActions.Length];
-                for (int i = 0; i < m_pActions.Length; i++)
-                {
-                    cp[i] = m_pActions[i].Copy() as CCFiniteTimeAction;
-                }
-                ret.m_pActions = cp;
-                return ret;
-            }
-            else
-            {
-                return new CCParallel(this);
-            }
+            return new CCParallel(this);
         }
 
         public override void Stop()

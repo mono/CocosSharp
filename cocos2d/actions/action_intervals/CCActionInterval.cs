@@ -40,27 +40,6 @@ namespace CocosSharp
             get { return m_elapsed >= Duration; }
         }
 
-
-        #region Constructors
-
-        protected CCActionInterval()
-        {
-        }
-
-        public CCActionInterval(float d) : base(d)
-        {
-            this.Duration = d;
-        }
-
-        // Perform a deep copy of CCACtionInterval
-        protected internal CCActionInterval(CCActionInterval actionInterval) : base(actionInterval)
-        {
-            this.Duration = actionInterval.Duration;
-        }
-
-        #endregion Constructors
-
-
         // Used by CCSequence and CCParallel
         // In general though, subclasses should aim to call the base constructor, rather than this explicitly
         public override float Duration
@@ -85,6 +64,26 @@ namespace CocosSharp
                 m_bFirstTick = true;
             }
         }
+
+
+        #region Constructors
+
+        protected CCActionInterval()
+        {
+        }
+
+        public CCActionInterval(float d) : base(d)
+        {
+            this.Duration = d;
+        }
+
+        // Perform a deep copy of CCACtionInterval
+        protected internal CCActionInterval(CCActionInterval actionInterval) : base(actionInterval)
+        {
+            this.Duration = actionInterval.Duration;
+        }
+
+        #endregion Constructors
 
 
         public override object Copy(ICCCopyable zone)

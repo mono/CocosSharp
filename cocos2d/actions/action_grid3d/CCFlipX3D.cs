@@ -9,7 +9,7 @@ namespace CocosSharp
 
         public CCFlipX3D(float duration, CCGridSize gridSize) : base(duration, gridSize)
         {
-            InitWithDuration(duration, gridSize);
+            InitCCFlipX3D(duration, gridSize);
         }
 
 		public CCFlipX3D(float duration) : this(duration, CCGridSize.One)
@@ -18,10 +18,10 @@ namespace CocosSharp
         // Perform a deep copy of CCFlipX3D
         public CCFlipX3D(CCFlipX3D flipX3D) : base(flipX3D)
         {
-            InitWithDuration(flipX3D.m_fDuration, flipX3D.m_sGridSize);
+            InitCCFlipX3D(flipX3D.m_fDuration, flipX3D.m_sGridSize);
         }
 
-        private void InitWithDuration(float duration, CCGridSize gridSize)
+        private void InitCCFlipX3D(float duration, CCGridSize gridSize)
         {
             if (gridSize.X != 1 || gridSize.Y != 1)
             {
