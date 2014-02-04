@@ -2,7 +2,7 @@
 
 namespace CocosSharp
 {
-    public class CCAnimationFrame : ICCCopyable
+    public class CCAnimationFrame : ICCCopyable<CCAnimationFrame>
     {
         private float m_fDelayUnits;
         private CCSpriteFrame m_pSpriteFrame;
@@ -31,9 +31,9 @@ namespace CocosSharp
             InitCCAnimationFrame(spriteFrame, delayUnits, userInfo);
         }
 
-        public CCAnimationFrame(CCAnimationFrame animFrame)
+        private CCAnimationFrame(CCAnimationFrame animFrame)
         {
-            InitCCAnimationFrame(animFrame.m_pSpriteFrame.Copy(null) as CCSpriteFrame, animFrame.m_fDelayUnits, animFrame.m_pUserInfo);
+            InitCCAnimationFrame(animFrame.m_pSpriteFrame.DeepCopy(), animFrame.m_fDelayUnits, animFrame.m_pUserInfo);
         }
 
         private void InitCCAnimationFrame(CCSpriteFrame spriteFrame, float delayUnits, PlistDictionary userInfo)
@@ -46,7 +46,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public object Copy(ICCCopyable pZone)
+        public CCAnimationFrame DeepCopy()
         {
             return new CCAnimationFrame(this);
         }

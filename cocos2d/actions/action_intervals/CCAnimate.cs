@@ -28,7 +28,7 @@ namespace CocosSharp
         // Perform deep copy of CCAnimation
         protected CCAnimate(CCAnimate animate) : base(animate)
         {
-            InitWithAnimation(new CCAnimation(animate.m_pAnimation));
+            InitWithAnimation(animate.m_pAnimation.DeepCopy());
         }
 
         private void InitWithAnimation(CCAnimation pAnimation)
@@ -160,7 +160,7 @@ namespace CocosSharp
                         break;
                     }
 
-                    pNewArray.Add(pElement.Copy(null) as CCAnimationFrame);
+                    pNewArray.Add(pElement.DeepCopy());
                 }
             }
 
