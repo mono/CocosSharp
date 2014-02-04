@@ -1,4 +1,4 @@
-﻿﻿using System.Reflection;
+﻿using System.Reflection;
 using Microsoft.Xna.Framework;
 using CocosSharp;
 using Microsoft.Xna.Framework.Graphics;
@@ -20,9 +20,13 @@ namespace tests
             game.Window.AllowUserResizing = true;
             graphics.PreferMultiSampling = false;
 
-#if WINDOWS || WINDOWSGL || WINDOWSDX || MACOS
+#if WINDOWS || WINDOWSGL || WINDOWSDX 
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
+#endif
+#if MACOS
+			graphics.PreferredBackBufferWidth = 960;
+			graphics.PreferredBackBufferHeight = 640;
 #endif
         }
 

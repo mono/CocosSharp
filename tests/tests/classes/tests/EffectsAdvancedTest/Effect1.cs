@@ -25,8 +25,8 @@ namespace tests
 			var orbit = new CCOrbitCamera(5, 1, 2, 0, 180, 0, -90);
 			var orbit_back = orbit.Reverse();
 
-            target.RunAction(new CCRepeatForever (orbit, orbit_back));
-            target.RunAction(new CCSequence(lens, delay, reuse, waves));
+			target.RunForever(orbit, orbit_back);
+			target.RunActions(lens, delay, reuse, waves);
         }
 
         public override string title()

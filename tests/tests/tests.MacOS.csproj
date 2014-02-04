@@ -2400,6 +2400,77 @@
     <Content Include="Assets\Content\fonts\MarkerFelt-Thin-18.xnb">
       <Link>Content\fonts\MarkerFelt-Thin-18.xnb</Link>
     </Content>
+    <Content Include="Content\hd\animations\dragon_animation.xnb" />
+    <Content Include="Content\hd\ccb\burst.xnb" />
+    <Content Include="Content\hd\extensions\CCControlColourPickerSpriteSheet.plist.xnb" />
+    <Content Include="Content\hd\extensions\CCControlColourPickerSpriteSheet.xnb" />
+    <Content Include="Content\hd\extensions\background.xnb" />
+    <Content Include="Content\hd\extensions\button.xnb" />
+    <Content Include="Content\hd\extensions\buttonHighlighted.xnb" />
+    <Content Include="Content\hd\extensions\potentiometerButton.xnb" />
+    <Content Include="Content\hd\extensions\potentiometerProgress.xnb" />
+    <Content Include="Content\hd\extensions\potentiometerTrack.xnb" />
+    <Content Include="Content\hd\extensions\ribbon.xnb" />
+    <Content Include="Content\hd\extensions\sliderProgress.xnb" />
+    <Content Include="Content\hd\extensions\sliderProgress2.xnb" />
+    <Content Include="Content\hd\extensions\sliderThumb.xnb" />
+    <Content Include="Content\hd\extensions\sliderTrack.xnb" />
+    <Content Include="Content\hd\extensions\sliderTrack2.xnb" />
+    <Content Include="Content\hd\extensions\stepper-minus.xnb" />
+    <Content Include="Content\hd\extensions\stepper-plus.xnb" />
+    <Content Include="Content\hd\fonts\font-issue1343.fnt.xnb" />
+    <Content Include="Content\hd\fonts\font-issue1343.xnb" />
+    <Content Include="Content\hd\fonts\konqa32.fnt.xnb" />
+    <Content Include="Content\hd\fonts\konqa32.xnb" />
+    <Content Include="Content\hd\fonts\labelatlas.xnb" />
+    <Content Include="Content\hd\fonts\larabie-16.plist.xnb" />
+    <Content Include="Content\hd\fonts\larabie-16.xnb" />
+    <Content Include="Content\hd\fonts\markerFelt.fnt.xnb" />
+    <Content Include="Content\hd\fonts\markerFelt.xnb" />
+    <Content Include="Content\hd\fonts\tuffy_bold_italic-charmap.plist.xnb" />
+    <Content Include="Content\hd\fonts\tuffy_bold_italic-charmap.xnb" />
+    <Content Include="Content\hd\Images\Icon.xnb" />
+    <Content Include="Content\hd\Images\arrows.xnb" />
+    <Content Include="Content\hd\Images\arrowsBar.xnb" />
+    <Content Include="Content\hd\Images\b1.xnb" />
+    <Content Include="Content\hd\Images\b2.xnb" />
+    <Content Include="Content\hd\Images\background1.xnb" />
+    <Content Include="Content\hd\Images\background2.xnb" />
+    <Content Include="Content\hd\Images\background3.xnb" />
+    <Content Include="Content\hd\Images\ball.xnb" />
+    <Content Include="Content\hd\Images\blocks.xnb" />
+    <Content Include="Content\hd\Images\blocks9.xnb" />
+    <Content Include="Content\hd\Images\blocks9ss.plist.xnb" />
+    <Content Include="Content\hd\Images\blocks9ss.xnb" />
+    <Content Include="Content\hd\Images\close.xnb" />
+    <Content Include="Content\hd\Images\f1.xnb" />
+    <Content Include="Content\hd\Images\f2.xnb" />
+    <Content Include="Content\hd\Images\fps_images.xnb" />
+    <Content Include="Content\hd\Images\grossini.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_01.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_02.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_03.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_atlas.xnb" />
+    <Content Include="Content\hd\Images\grossinis_sister1.xnb" />
+    <Content Include="Content\hd\Images\grossinis_sister2.xnb" />
+    <Content Include="Content\hd\Images\hole_effect.xnb" />
+    <Content Include="Content\hd\Images\hole_stencil.xnb" />
+    <Content Include="Content\hd\Images\paddle.xnb" />
+    <Content Include="Content\hd\Images\particles.xnb" />
+    <Content Include="Content\hd\Images\r1.xnb" />
+    <Content Include="Content\hd\Images\r2.xnb" />
+    <Content Include="Content\hd\Images\ui.plist.xnb" />
+    <Content Include="Content\hd\Images\ui.xnb" />
+    <Content Include="Content\hd\TileMaps\orthogonal-test3.xnb" />
+    <Content Include="Content\hd\TileMaps\orthogonal-test4.xnb" />
+    <Content Include="Content\hd\TileMaps\orthogonal-test6.xnb" />
+    <Content Include="Content\hd\TileMaps\test-object-layer.xnb" />
+    <Content Include="Content\hd\TileMaps\tiles.xnb" />
+    <Content Include="Content\hd\TileMaps\tmw_desert_spacing.xnb" />
+    <Content Include="Content\hd\Images\bugs\circle.plist.xnb" />
+    <Content Include="Content\hd\Images\bugs\circle.xnb" />
+    <Content Include="Content\hd\Images\bugs\picture.xnb" />
+    <Content Include="Content\hd\Images\bugs\test_issue_1179.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
@@ -2447,5 +2518,6 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="classes\tests\Box2DTestBet%28Box2D%29\" />
+    <Folder Include="Content\hd\" />
   </ItemGroup>
 </Project>
