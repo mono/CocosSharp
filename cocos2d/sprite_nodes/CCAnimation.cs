@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CocosSharp
 {
-    public class CCAnimation : ICCCopyable
+    public class CCAnimation : ICCCopyable<CCAnimation>
     {
         protected bool m_bRestoreOriginalFrame;
         protected float m_fDelayPerUnit;
@@ -72,7 +72,7 @@ namespace CocosSharp
         }
 
         // Perform deep copy of CCAnimation
-        public CCAnimation(CCAnimation animation) : this(animation.m_pFrames, animation.m_fDelayPerUnit, animation.m_uLoops)
+        private CCAnimation(CCAnimation animation) : this(animation.m_pFrames, animation.m_fDelayPerUnit, animation.m_uLoops)
         {
             RestoreOriginalFrame = animation.m_bRestoreOriginalFrame;
         }
@@ -120,6 +120,10 @@ namespace CocosSharp
 
         #endregion Constructors
 
+        public CCAnimation DeepCopy()
+        {
+            return new CCAnimation(this);
+        }
 
         public void AddSprite(CCSprite sprite)
         {
@@ -149,11 +153,6 @@ namespace CocosSharp
         {
             CCSpriteFrame pFrame = new CCSpriteFrame(pobTexture, rect);
             AddSpriteFrame(pFrame);
-        }
-
-        public object Copy(ICCCopyable pZone)
-        {
-            return new CCAnimation(this);
         }
     }
 }

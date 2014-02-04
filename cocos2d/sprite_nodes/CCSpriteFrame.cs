@@ -4,7 +4,7 @@ using System;
 
 namespace CocosSharp
 {
-    public partial class CCSpriteFrame : ICCCopyable
+    public partial class CCSpriteFrame : ICCCopyable<CCSpriteFrame>
     {
         #region properties
 
@@ -98,7 +98,7 @@ namespace CocosSharp
         { 
         }
 
-        public CCSpriteFrame(CCSpriteFrame spriteFrame) 
+        private CCSpriteFrame(CCSpriteFrame spriteFrame) 
             : this(spriteFrame.m_pobTexture, spriteFrame.m_obRectInPixels, spriteFrame.m_bRotated, 
             spriteFrame.m_obOffsetInPixels, spriteFrame.m_obOriginalSizeInPixels)
 		{
@@ -134,7 +134,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public object Copy(ICCCopyable pZone)
+        public CCSpriteFrame DeepCopy()
         {
             return new CCSpriteFrame(this);
         }
