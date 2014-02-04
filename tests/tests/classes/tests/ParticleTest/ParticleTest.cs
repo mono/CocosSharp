@@ -1510,76 +1510,72 @@ namespace tests
     {
         public bool init()
         {
-            return InitWithTotalParticles(150);
+            return true;
         }
 
-        public RainbowEffect (int numOfParticles) : base (numOfParticles)
+        public RainbowEffect(int numOfParticles) : base(numOfParticles)
         {
+            InitRainbowEffects();
         }
 
-        protected override bool InitWithTotalParticles(int numberOfParticles)
+        private void InitRainbowEffects()
         {
-            if (base.InitWithTotalParticles(numberOfParticles))
-            {
-                // additive
-                BlendAdditive = (false);
+            // additive
+            BlendAdditive = (false);
 
-                // duration
-                Duration = (kCCParticleDurationInfinity);
+            // duration
+            Duration = (kCCParticleDurationInfinity);
 
-                // Gravity Mode
-                EmitterMode = CCEmitterMode.Gravity;
+            // Gravity Mode
+            EmitterMode = CCEmitterMode.Gravity;
 
-                // Gravity Mode: gravity
-                Gravity = (new CCPoint(0, 0));
+            // Gravity Mode: gravity
+            Gravity = (new CCPoint(0, 0));
 
-                // Gravity mode: radial acceleration
-                RadialAccel = (0);
-                RadialAccelVar = (0);
+            // Gravity mode: radial acceleration
+            RadialAccel = (0);
+            RadialAccelVar = (0);
 
-                // Gravity mode: speed of particles
-                Speed = (120);
-                SpeedVar = (0);
+            // Gravity mode: speed of particles
+            Speed = (120);
+            SpeedVar = (0);
 
 
-                // angle
-                Angle = (180);
-                AngleVar = (0);
+            // angle
+            Angle = (180);
+            AngleVar = (0);
 
-                // emitter position
-                CCSize winSize = CCDirector.SharedDirector.WinSize;
-                Position = (new CCPoint(winSize.Width / 2, winSize.Height / 2));
-                PosVar = (CCPoint.Zero);
+            // emitter position
+            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            Position = (new CCPoint(winSize.Width / 2, winSize.Height / 2));
+            PosVar = (CCPoint.Zero);
 
-                // life of particles
-                Life = (0.5f);
-                LifeVar = (0);
+            // life of particles
+            Life = (0.5f);
+            LifeVar = (0);
 
-                // size, in pixels
-                StartSize = (25.0f);
-                StartSizeVar = (0);
-                EndSize = (kCCParticleStartSizeEqualToEndSize);
+            // size, in pixels
+            StartSize = (25.0f);
+            StartSizeVar = (0);
+            EndSize = (kCCParticleStartSizeEqualToEndSize);
 
-                // emits per seconds
-                EmissionRate = (TotalParticles / Life);
+            // emits per seconds
+            EmissionRate = (TotalParticles / Life);
 
-                // color of particles
-                StartColor = (new CCColor4F(50, 50, 50, 50));
-                EndColor = (new CCColor4F(0, 0, 0, 0));
+            // color of particles
+            StartColor = (new CCColor4F(50, 50, 50, 50));
+            EndColor = (new CCColor4F(0, 0, 0, 0));
 
-                m_tStartColorVar.R = 0.0f;
-                m_tStartColorVar.G = 0.0f;
-                m_tStartColorVar.B = 0.0f;
-                m_tStartColorVar.A = 0.0f;
-                m_tEndColorVar.R = 0.0f;
-                m_tEndColorVar.G = 0.0f;
-                m_tEndColorVar.B = 0.0f;
-                m_tEndColorVar.A = 0.0f;
+            m_tStartColorVar.R = 0.0f;
+            m_tStartColorVar.G = 0.0f;
+            m_tStartColorVar.B = 0.0f;
+            m_tStartColorVar.A = 0.0f;
+            m_tEndColorVar.R = 0.0f;
+            m_tEndColorVar.G = 0.0f;
+            m_tEndColorVar.B = 0.0f;
+            m_tEndColorVar.A = 0.0f;
 
-                Texture = (CCTextureCache.SharedTextureCache.AddImage("Images/particles"));
-                return true;
-            }
-            return false;
+            Texture = (CCTextureCache.SharedTextureCache.AddImage("Images/particles"));
         }
 
         public override void Update(float dt)

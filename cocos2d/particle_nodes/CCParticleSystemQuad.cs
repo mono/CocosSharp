@@ -9,26 +9,30 @@ namespace CocosSharp
     {
         private CCRawList<CCV3F_C4B_T2F_Quad> m_pQuads; // quads to be rendered
 
-        // implementation CCParticleSystemQuad
-        // overriding the init method
-        protected override bool InitWithTotalParticles(int numberOfParticles)
+
+        #region Constructors
+
+        internal CCParticleSystemQuad()
+        {  
+        }
+
+        public CCParticleSystemQuad(int numberOfParticles) : base(numberOfParticles)
         {
-            // base initialization
+        }
+
+        public CCParticleSystemQuad(string plistFile) : base(plistFile)
+        { 
+        }
+
+        protected override void InitWithTotalParticles(int numberOfParticles)
+        {
             base.InitWithTotalParticles(numberOfParticles);
 
-            // allocating data space
             AllocMemory();
-
-            return true;
         }
 
-        public CCParticleSystemQuad (string plistFile) : base(plistFile)
-        { }
+        #endregion Constructors
 
-        public CCParticleSystemQuad (int numberOfParticles) 
-        {
-            InitWithTotalParticles(numberOfParticles);
-        }
 
         // pointRect should be in Texture coordinates, not pixel coordinates
         private void InitTexCoordsWithRect(CCRect pointRect)
@@ -368,9 +372,6 @@ namespace CocosSharp
                 }
             }
         }
-
-        public CCParticleSystemQuad () : base()
-        {  }
 
         public CCParticleSystemQuad Clone()
         {

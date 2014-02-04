@@ -370,200 +370,237 @@ namespace CocosSharp
 
         #endregion
 
-        protected CCParticleSystem ()
+
+        #region Constructors
+
+        protected CCParticleSystem()
         {
         }
 
-        public CCParticleSystem (string plistFile)
+        protected CCParticleSystem(int numberOfParticles)
         {
-            InitWithFile(plistFile);
+            InitWithTotalParticles(numberOfParticles);
         }
 
-        private void InitWithFile (string plistFile)
+        public CCParticleSystem(string plistFile)
         {
             PlistDocument doc = CCContentManager.SharedContentManager.Load<PlistDocument>(plistFile);
-
-            InitWithDictionary(doc.Root.AsDictionary);
+            InitCCParticleSystem(doc.Root.AsDictionary);
         }
 
-        private bool InitWithDictionary (PlistDictionary dictionary)
+        private void InitCCParticleSystem(PlistDictionary dictionary)
         {
-            bool bRet = false;
+            int maxParticles = dictionary["maxParticles"].AsInt;
 
-            do
+            InitWithTotalParticles(maxParticles);
+
+            // angle
+            m_fAngle = dictionary["angle"].AsFloat;
+            m_fAngleVar = dictionary["angleVariance"].AsFloat;
+
+            // duration
+            m_fDuration = dictionary["duration"].AsFloat;
+
+            // blend function 
+            m_tBlendFunc.Source = dictionary["blendFuncSource"].AsInt;
+            m_tBlendFunc.Destination = dictionary["blendFuncDestination"].AsInt;
+
+            // color
+            m_tStartColor.R = dictionary["startColorRed"].AsFloat;
+            m_tStartColor.G = dictionary["startColorGreen"].AsFloat;
+            m_tStartColor.B = dictionary["startColorBlue"].AsFloat;
+            m_tStartColor.A = dictionary["startColorAlpha"].AsFloat;
+
+            m_tStartColorVar.R = dictionary["startColorVarianceRed"].AsFloat;
+            m_tStartColorVar.G = dictionary["startColorVarianceGreen"].AsFloat;
+            m_tStartColorVar.B = dictionary["startColorVarianceBlue"].AsFloat;
+            m_tStartColorVar.A = dictionary["startColorVarianceAlpha"].AsFloat;
+
+            m_tEndColor.R = dictionary["finishColorRed"].AsFloat;
+            m_tEndColor.G = dictionary["finishColorGreen"].AsFloat;
+            m_tEndColor.B = dictionary["finishColorBlue"].AsFloat;
+            m_tEndColor.A = dictionary["finishColorAlpha"].AsFloat;
+
+            m_tEndColorVar.R = dictionary["finishColorVarianceRed"].AsFloat;
+            m_tEndColorVar.G = dictionary["finishColorVarianceGreen"].AsFloat;
+            m_tEndColorVar.B = dictionary["finishColorVarianceBlue"].AsFloat;
+            m_tEndColorVar.A = dictionary["finishColorVarianceAlpha"].AsFloat;
+
+            // particle size
+            m_fStartSize = dictionary["startParticleSize"].AsFloat;
+            m_fStartSizeVar = dictionary["startParticleSizeVariance"].AsFloat;
+            m_fEndSize = dictionary["finishParticleSize"].AsFloat;
+            m_fEndSizeVar = dictionary["finishParticleSizeVariance"].AsFloat;
+
+            // position
+            float x = dictionary["sourcePositionx"].AsFloat;
+            float y = dictionary["sourcePositiony"].AsFloat;
+            Position = new CCPoint(x, y);
+            m_tPosVar.X = dictionary["sourcePositionVariancex"].AsFloat;
+            m_tPosVar.Y = dictionary["sourcePositionVariancey"].AsFloat;
+
+            // Spinning
+            m_fStartSpin = dictionary["rotationStart"].AsFloat;
+            m_fStartSpinVar = dictionary["rotationStartVariance"].AsFloat;
+            m_fEndSpin = dictionary["rotationEnd"].AsFloat;
+            m_fEndSpinVar = dictionary["rotationEndVariance"].AsFloat;
+
+            m_nEmitterMode = (CCEmitterMode) dictionary["emitterType"].AsInt;
+
+            // Mode A: Gravity + tangential accel + radial accel
+            if (m_nEmitterMode == CCEmitterMode.Gravity)
             {
-                int maxParticles = dictionary["maxParticles"].AsInt;
-                // self, not super
-                if (InitWithTotalParticles(maxParticles))
+                // gravity
+                modeA.gravity.X = dictionary["gravityx"].AsFloat;
+                modeA.gravity.Y = dictionary["gravityy"].AsFloat;
+
+                // speed
+                modeA.speed = dictionary["speed"].AsFloat;
+                modeA.speedVar = dictionary["speedVariance"].AsFloat;
+
+                // radial acceleration
+                modeA.radialAccel = dictionary["radialAcceleration"].AsFloat;
+                modeA.radialAccelVar = dictionary["radialAccelVariance"].AsFloat;
+
+                // tangential acceleration
+                modeA.tangentialAccel = dictionary["tangentialAcceleration"].AsFloat;
+                modeA.tangentialAccelVar = dictionary["tangentialAccelVariance"].AsFloat;
+
+                // rotation is dir
+                modeA.rotationIsDir = dictionary["rotationIsDir"].AsBool;
+            }
+
+                // or Mode B: radius movement
+            else if (m_nEmitterMode == CCEmitterMode.Radius)
+            {
+                modeB.startRadius = dictionary["maxRadius"].AsFloat;
+                modeB.startRadiusVar = dictionary["maxRadiusVariance"].AsFloat;
+                modeB.endRadius = dictionary["minRadius"].AsFloat;
+                modeB.endRadiusVar = 0.0f;
+                modeB.rotatePerSecond = dictionary["rotatePerSecond"].AsFloat;
+                modeB.rotatePerSecondVar = dictionary["rotatePerSecondVariance"].AsFloat;
+            }
+            else
+            {
+                Debug.Assert(false, "Invalid emitterType in config file");
+                return;
+            }
+
+            // life span
+            m_fLife = dictionary["particleLifespan"].AsFloat;
+            m_fLifeVar = dictionary["particleLifespanVariance"].AsFloat;
+
+            // emission Rate
+            m_fEmissionRate = m_uTotalParticles / m_fLife;
+
+            //don't get the internal texture if a batchNode is used
+            if (m_pBatchNode == null)
+            {
+                // Set a compatible default for the alpha transfer
+                m_bOpacityModifyRGB = false;
+
+                // texture        
+                // Try to get the texture from the cache
+                string textureName = dictionary["textureFileName"].AsString;
+
+                CCTexture2D tex = null;
+
+                if (!string.IsNullOrEmpty(textureName))
                 {
-                    // angle
-                    m_fAngle = dictionary["angle"].AsFloat;
-                    m_fAngleVar = dictionary["angleVariance"].AsFloat;
-
-                    // duration
-                    m_fDuration = dictionary["duration"].AsFloat;
-
-                    // blend function 
-                    m_tBlendFunc.Source = dictionary["blendFuncSource"].AsInt;
-                    m_tBlendFunc.Destination = dictionary["blendFuncDestination"].AsInt;
-
-                    // color
-                    m_tStartColor.R = dictionary["startColorRed"].AsFloat;
-                    m_tStartColor.G = dictionary["startColorGreen"].AsFloat;
-                    m_tStartColor.B = dictionary["startColorBlue"].AsFloat;
-                    m_tStartColor.A = dictionary["startColorAlpha"].AsFloat;
-
-                    m_tStartColorVar.R = dictionary["startColorVarianceRed"].AsFloat;
-                    m_tStartColorVar.G = dictionary["startColorVarianceGreen"].AsFloat;
-                    m_tStartColorVar.B = dictionary["startColorVarianceBlue"].AsFloat;
-                    m_tStartColorVar.A = dictionary["startColorVarianceAlpha"].AsFloat;
-
-                    m_tEndColor.R = dictionary["finishColorRed"].AsFloat;
-                    m_tEndColor.G = dictionary["finishColorGreen"].AsFloat;
-                    m_tEndColor.B = dictionary["finishColorBlue"].AsFloat;
-                    m_tEndColor.A = dictionary["finishColorAlpha"].AsFloat;
-
-                    m_tEndColorVar.R = dictionary["finishColorVarianceRed"].AsFloat;
-                    m_tEndColorVar.G = dictionary["finishColorVarianceGreen"].AsFloat;
-                    m_tEndColorVar.B = dictionary["finishColorVarianceBlue"].AsFloat;
-                    m_tEndColorVar.A = dictionary["finishColorVarianceAlpha"].AsFloat;
-
-                    // particle size
-                    m_fStartSize = dictionary["startParticleSize"].AsFloat;
-                    m_fStartSizeVar = dictionary["startParticleSizeVariance"].AsFloat;
-                    m_fEndSize = dictionary["finishParticleSize"].AsFloat;
-                    m_fEndSizeVar = dictionary["finishParticleSizeVariance"].AsFloat;
-
-                    // position
-                    float x = dictionary["sourcePositionx"].AsFloat;
-                    float y = dictionary["sourcePositiony"].AsFloat;
-                    Position = new CCPoint(x, y);
-                    m_tPosVar.X = dictionary["sourcePositionVariancex"].AsFloat;
-                    m_tPosVar.Y = dictionary["sourcePositionVariancey"].AsFloat;
-
-                    // Spinning
-                    m_fStartSpin = dictionary["rotationStart"].AsFloat;
-                    m_fStartSpinVar = dictionary["rotationStartVariance"].AsFloat;
-                    m_fEndSpin = dictionary["rotationEnd"].AsFloat;
-                    m_fEndSpinVar = dictionary["rotationEndVariance"].AsFloat;
-
-                    m_nEmitterMode = (CCEmitterMode) dictionary["emitterType"].AsInt;
-
-                    // Mode A: Gravity + tangential accel + radial accel
-                    if (m_nEmitterMode == CCEmitterMode.Gravity)
+                    // set not pop-up message box when load image failed
+                    bool bNotify = CCFileUtils.IsPopupNotify;
+                    CCFileUtils.IsPopupNotify = false;
+                    try
                     {
-                        // gravity
-                        modeA.gravity.X = dictionary["gravityx"].AsFloat;
-                        modeA.gravity.Y = dictionary["gravityy"].AsFloat;
-
-                        // speed
-                        modeA.speed = dictionary["speed"].AsFloat;
-                        modeA.speedVar = dictionary["speedVariance"].AsFloat;
-
-                        // radial acceleration
-                        modeA.radialAccel = dictionary["radialAcceleration"].AsFloat;
-                        modeA.radialAccelVar = dictionary["radialAccelVariance"].AsFloat;
-
-                        // tangential acceleration
-                        modeA.tangentialAccel = dictionary["tangentialAcceleration"].AsFloat;
-                        modeA.tangentialAccelVar = dictionary["tangentialAccelVariance"].AsFloat;
-
-                        // rotation is dir
-                        modeA.rotationIsDir = dictionary["rotationIsDir"].AsBool;
+                        tex = CCTextureCache.SharedTextureCache.AddImage(textureName);
+                    }
+                    catch (Exception)
+                    {
+                        tex = null;
                     }
 
-                        // or Mode B: radius movement
-                    else if (m_nEmitterMode == CCEmitterMode.Radius)
-                    {
-                        modeB.startRadius = dictionary["maxRadius"].AsFloat;
-                        modeB.startRadiusVar = dictionary["maxRadiusVariance"].AsFloat;
-                        modeB.endRadius = dictionary["minRadius"].AsFloat;
-                        modeB.endRadiusVar = 0.0f;
-                        modeB.rotatePerSecond = dictionary["rotatePerSecond"].AsFloat;
-                        modeB.rotatePerSecondVar = dictionary["rotatePerSecondVariance"].AsFloat;
-                    }
-                    else
-                    {
-                        Debug.Assert(false, "Invalid emitterType in config file");
-                        break;
-                    }
-
-                    // life span
-                    m_fLife = dictionary["particleLifespan"].AsFloat;
-                    m_fLifeVar = dictionary["particleLifespanVariance"].AsFloat;
-
-                    // emission Rate
-                    m_fEmissionRate = m_uTotalParticles / m_fLife;
-
-                    //don't get the internal texture if a batchNode is used
-                    if (m_pBatchNode == null)
-                    {
-                        // Set a compatible default for the alpha transfer
-                        m_bOpacityModifyRGB = false;
-
-                        // texture        
-                        // Try to get the texture from the cache
-                        string textureName = dictionary["textureFileName"].AsString;
-
-                        CCTexture2D tex = null;
-
-                        if (!string.IsNullOrEmpty(textureName))
-                        {
-                            // set not pop-up message box when load image failed
-                            bool bNotify = CCFileUtils.IsPopupNotify;
-                            CCFileUtils.IsPopupNotify = false;
-                            try
-                            {
-                                tex = CCTextureCache.SharedTextureCache.AddImage(textureName);
-                            }
-                            catch (Exception)
-                            {
-                                tex = null;
-                            }
-
-                            // reset the value of UIImage notify
-                            CCFileUtils.IsPopupNotify = bNotify;
-                        }
-
-                        if (tex != null)
-                        {
-                            Texture = tex;
-                        }
-                        else
-                        {
-                            string textureData = dictionary["textureImageData"].AsString;
-                            Debug.Assert(!string.IsNullOrEmpty(textureData), string.Format("CCParticleSystem: textureData does not exist : {0}",textureName));
-
-                            int dataLen = textureData.Length;
-                            if (dataLen != 0)
-                            {
-
-                                var dataBytes = Convert.FromBase64String(textureData);
-                                Debug.Assert(dataBytes != null, string.Format("CCParticleSystem: error decoding textureImageData : {0}",textureName));
-
-                                var imageBytes = Inflate(dataBytes);
-                                Debug.Assert(imageBytes != null, string.Format("CCParticleSystem: error init image with Data for texture : {0}",textureName));
-
-                                try
-                                {
-                                    Texture = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, SurfaceFormat.Color);
-                                }
-                                catch (Exception ex)
-                                {
-                                    CCLog.Log(ex.ToString());
-                                    Texture = CCParticleExample.DefaultTexture;
-                                    //throw (new NotSupportedException("Embedded textureImageData is a format that this platform does not understand. Use PNG, GIF, or JPEG for your particle systems."));
-                                }
-                            }
-                        }
-                        Debug.Assert(Texture != null, string.Format("CCParticleSystem: error loading the texture : {0}", textureName));
-                    }
-                    bRet = true;
+                    // reset the value of UIImage notify
+                    CCFileUtils.IsPopupNotify = bNotify;
                 }
-            } while (false);
 
-            return bRet;
+                if (tex != null)
+                {
+                    Texture = tex;
+                }
+                else
+                {
+                    string textureData = dictionary["textureImageData"].AsString;
+                    Debug.Assert(!string.IsNullOrEmpty(textureData), string.Format("CCParticleSystem: textureData does not exist : {0}",textureName));
+
+                    int dataLen = textureData.Length;
+                    if (dataLen != 0)
+                    {
+
+                        var dataBytes = Convert.FromBase64String(textureData);
+                        Debug.Assert(dataBytes != null, string.Format("CCParticleSystem: error decoding textureImageData : {0}",textureName));
+
+                        var imageBytes = Inflate(dataBytes);
+                        Debug.Assert(imageBytes != null, string.Format("CCParticleSystem: error init image with Data for texture : {0}",textureName));
+
+                        try
+                        {
+                            Texture = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, SurfaceFormat.Color);
+                        }
+                        catch (Exception ex)
+                        {
+                            CCLog.Log(ex.ToString());
+                            Texture = CCParticleExample.DefaultTexture;
+                            //throw (new NotSupportedException("Embedded textureImageData is a format that this platform does not understand. Use PNG, GIF, or JPEG for your particle systems."));
+                        }
+                    }
+                }
+
+                Debug.Assert(Texture != null, string.Format("CCParticleSystem: error loading the texture : {0}", textureName));
+            }
         }
+
+        protected virtual void InitWithTotalParticles(int numberOfParticles)
+        {
+            m_uTotalParticles = numberOfParticles;
+
+            m_pParticles = new CCParticle[m_uTotalParticles];
+
+            m_uAllocatedParticles = numberOfParticles;
+
+            if (m_pBatchNode != null)
+            {
+                for (int i = 0; i < m_uTotalParticles; i++)
+                {
+                    m_pParticles[i].atlasIndex = i;
+                }
+            }
+            // default, active
+            m_bIsActive = true;
+
+            // default blend function
+            m_tBlendFunc = CCBlendFunc.AlphaBlend;
+
+            // default movement type;
+            m_ePositionType = CCPositionType.Free;
+
+            // by default be in mode A:
+            m_nEmitterMode = CCEmitterMode.Gravity;
+
+            // default: modulate
+            // XXX: not used
+            //    colorModulate = YES;
+
+            m_bIsAutoRemoveOnFinish = false;
+
+            // Optimization: compile udpateParticle method
+            //updateParticleSel = @selector(updateQuadWithParticle:newPosition:);
+            //updateParticleImp = (CC_UPDATE_PARTICLE_IMP) [self methodForSelector:updateParticleSel];
+            //for batchNode
+            m_bTransformSystemDirty = false;
+        }
+
+        #endregion Constructors
+
 
         /// <summary>
         /// Decompresses the given data stream from its source ZIP or GZIP format.
@@ -630,49 +667,6 @@ namespace CocosSharp
             }
 
             return outputBytes;
-        }
-
-        // bool return type used by overriden init methods in CCParticleExample
-        protected virtual bool InitWithTotalParticles(int numberOfParticles)
-        {
-            m_uTotalParticles = numberOfParticles;
-
-            m_pParticles = new CCParticle[m_uTotalParticles];
-
-            m_uAllocatedParticles = numberOfParticles;
-
-            if (m_pBatchNode != null)
-            {
-                for (int i = 0; i < m_uTotalParticles; i++)
-                {
-                    m_pParticles[i].atlasIndex = i;
-                }
-            }
-            // default, active
-            m_bIsActive = true;
-
-            // default blend function
-            m_tBlendFunc = CCBlendFunc.AlphaBlend;
-                
-            // default movement type;
-            m_ePositionType = CCPositionType.Free;
-
-            // by default be in mode A:
-            m_nEmitterMode = CCEmitterMode.Gravity;
-
-            // default: modulate
-            // XXX: not used
-            //    colorModulate = YES;
-
-            m_bIsAutoRemoveOnFinish = false;
-
-            // Optimization: compile udpateParticle method
-            //updateParticleSel = @selector(updateQuadWithParticle:newPosition:);
-            //updateParticleImp = (CC_UPDATE_PARTICLE_IMP) [self methodForSelector:updateParticleSel];
-            //for batchNode
-            m_bTransformSystemDirty = false;
-
-            return true;
         }
 
         public override void OnEnter()

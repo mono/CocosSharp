@@ -43,32 +43,24 @@ namespace CocosSharp
 
         #endregion
 
-        /*
-         * creation with CCTexture2D
-         */
 
-        public CCParticleBatchNode (CCTexture2D tex) : this(tex, kCCParticleDefaultCapacity)
-        { }
+        #region Constructors
 
-        public CCParticleBatchNode (CCTexture2D tex, int capacity /* = kCCParticleDefaultCapacity*/)
+        public CCParticleBatchNode(CCTexture2D tex, int capacity=kCCParticleDefaultCapacity)
         {
-            InitWithTexture(tex, capacity);
+            InitCCParticleBatchNode(tex, capacity);
         }
 
-        /*
-         * creation with File Image
-         */
-
-        public CCParticleBatchNode (string imageFile, int capacity /* = kCCParticleDefaultCapacity*/)
+        public CCParticleBatchNode (string imageFile, int capacity=kCCParticleDefaultCapacity) 
+            : this(CCTextureCache.SharedTextureCache.AddImage(imageFile), capacity)
         {
-            InitWithFile(imageFile, capacity);
         }
 
         /*
          * init with CCTexture2D
          */
 
-        private void InitWithTexture(CCTexture2D tex, int capacity)
+        private void InitCCParticleBatchNode(CCTexture2D tex, int capacity)
         {
             TextureAtlas.InitWithTexture(tex, capacity);
 
@@ -79,15 +71,8 @@ namespace CocosSharp
 
         }
 
-        /*
-         * init with FileImage
-         */
+        #endregion Constructors
 
-        private void InitWithFile(string fileImage, int capacity)
-        {
-            CCTexture2D tex = CCTextureCache.SharedTextureCache.AddImage(fileImage);
-            InitWithTexture(tex, capacity);
-        }
 
         // CCParticleBatchNode - composition
 
