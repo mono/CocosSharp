@@ -114,7 +114,7 @@ namespace tests
 					return new JumpTiles3DDemo(t);
                 case 19:
 					return new SplitRowsDemo(t);
-                case 20:
+			case 20:                             
 					return new SplitColsDemo(t);
                 case 21:
 					return new PageTurn3DDemo(t);

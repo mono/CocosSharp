@@ -8,11 +8,7 @@ namespace CocosSharp
 
         #region Constructors
 
-		public CCShaky3D(float duration, CCGridSize gridSize) 
-			: this(duration, gridSize, 0, true)
-		{	}
-
-        public CCShaky3D(float duration, CCGridSize gridSize, int range, bool shakeZ) : base(duration, gridSize)
+		public CCShaky3D(float duration, CCGridSize gridSize, int range = 0, bool shakeZ = true) : base(duration, gridSize)
         {
             InitCCShaky3D(range, shakeZ);
         }
@@ -31,16 +27,16 @@ namespace CocosSharp
 
         #endregion Constructors
 
-		public bool Shake
+		protected bool Shake
 		{
 			get { return m_bShakeZ; }
-			protected set { m_bShakeZ = value; }
+			set { m_bShakeZ = value; }
 		}
 
-		public int Range
+		protected int Range
 		{
 			get { return m_nRandrange; }
-			protected set { m_nRandrange = value; }
+			set { m_nRandrange = value; }
 		}
 
         public override object Copy(ICCCopyable pZone)

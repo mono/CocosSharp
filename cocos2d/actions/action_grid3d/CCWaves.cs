@@ -22,19 +22,19 @@ namespace CocosSharp
             set { m_fAmplitudeRate = value; }
         }
 
-		public int Waves
+		protected int Waves
 		{
 			get { return m_nWaves; }
 			set { m_nWaves = value; }
 		}
 
-		public bool Vertical
+		protected bool Vertical
 		{
 			get { return m_bVertical; }
 			set { m_bVertical = value; }
 		}
 
-		public bool Horizontal
+		protected bool Horizontal
 		{
 			get { return m_bHorizontal; }
 			set { m_bHorizontal = value; }
