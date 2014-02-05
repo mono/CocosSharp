@@ -235,7 +235,7 @@ namespace CocosSharp
             m_pVertices.Clear();
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             if (m_bDirty)
             {

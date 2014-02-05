@@ -31,7 +31,7 @@ namespace CocosSharp
             InitCCAnimationFrame(spriteFrame, delayUnits, userInfo);
         }
 
-        private CCAnimationFrame(CCAnimationFrame animFrame)
+        protected CCAnimationFrame(CCAnimationFrame animFrame)
         {
             InitCCAnimationFrame(animFrame.m_pSpriteFrame.DeepCopy(), animFrame.m_fDelayUnits, animFrame.m_pUserInfo);
         }

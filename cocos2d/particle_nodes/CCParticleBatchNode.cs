@@ -391,7 +391,7 @@ namespace CocosSharp
             TextureAtlas.RemoveAllQuads();
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             if (TextureAtlas.TotalQuads == 0)
             {

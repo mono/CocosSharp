@@ -189,7 +189,7 @@ namespace CocosSharp
 
         #endregion
 
-        public override void Draw()
+        protected override void Draw()
         {
             CCDrawManager.TextureEnabled = false;
             CCDrawManager.BlendFunc(m_tBlendFunc);

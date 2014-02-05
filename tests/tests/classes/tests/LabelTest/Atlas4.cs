@@ -78,7 +78,7 @@ namespace tests
             label1.Text = (Stepstring);
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 

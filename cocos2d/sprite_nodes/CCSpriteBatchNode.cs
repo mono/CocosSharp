@@ -330,7 +330,7 @@ namespace CocosSharp
             m_bReorderChildDirty = reorder;
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             // Optimization: Fast Dispatch	
             if (m_pobTextureAtlas.TotalQuads == 0)

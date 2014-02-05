@@ -944,7 +944,7 @@ namespace CocosSharp
             return pRet;
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             if (m_bLabelDirty)
             {

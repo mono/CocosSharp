@@ -42,7 +42,7 @@ namespace tests.classes.tests.Box2DTestBet
             m_test.Update(settings, CCApplication.SharedApplication.GameTime);
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             base.Draw();
 

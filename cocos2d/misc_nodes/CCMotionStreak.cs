@@ -389,7 +389,7 @@ namespace CocosSharp
             m_uNuPoints = 0;
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             CCDrawManager.BlendFunc(m_tBlendFunc);
             CCDrawManager.BindTexture(m_pTexture);

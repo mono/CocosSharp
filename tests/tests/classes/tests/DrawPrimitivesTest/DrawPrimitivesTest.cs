@@ -107,7 +107,7 @@ namespace tests
 
     public class DrawPrimitivesTest : BaseDrawNodeTest
     {
-        public override void Draw()
+        protected override void Draw()
         {
             base.Draw();
 

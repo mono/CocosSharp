@@ -1032,7 +1032,7 @@ namespace CocosSharp
         /// This is called from the Visit() method. This is where you DRAW your node. Only
         /// draw stuff from this method call.
         /// </summary>
-        public virtual void Draw()
+        protected virtual void Draw()
         {
             // Does nothing in the root node class.
         }

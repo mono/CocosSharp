@@ -32,7 +32,7 @@ namespace CocosSharp
         public CCTransitionCrossFade (float t, CCScene scene) : base (t, scene)
         {  }
 
-        public override void Draw()
+        protected override void Draw()
         {
             // override draw since both scenes (textures) are rendered in 1 scene
         }

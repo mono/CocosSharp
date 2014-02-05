@@ -58,7 +58,7 @@ namespace tests
             return "Manual creation of CCTextureAtlas";
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             // GL_VERTEX_ARRAY, GL_COLOR_ARRAY, GL_TEXTURE_COORD_ARRAY
             // GL_TEXTURE_2D

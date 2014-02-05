@@ -59,7 +59,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public override void Draw()
+        protected override void Draw()
         {
             base.Draw();
 

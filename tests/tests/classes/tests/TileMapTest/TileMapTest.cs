@@ -667,7 +667,7 @@ namespace tests
             ////----UXLOG("platform: %x", platform);
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             var map = (CCTMXTiledMap) GetChildByTag(kTagTileMap);
             CCTMXObjectGroup group = map.ObjectGroupNamed("Object Group 1");
@@ -738,7 +738,7 @@ namespace tests
             */
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             var map = (CCTMXTiledMap) GetChildByTag(kTagTileMap);
             CCTMXObjectGroup group = map.ObjectGroupNamed("Object Group 1");
@@ -1815,7 +1815,7 @@ namespace tests
             AddChild(map, -1, kTagTileMap);
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             var map = (CCTMXTiledMap) GetChildByTag(kTagTileMap);
             CCTMXObjectGroup group = map.ObjectGroupNamed("Object Layer 1");

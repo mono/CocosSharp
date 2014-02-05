@@ -4,7 +4,7 @@ namespace tests.Extensions
 {
 	public class CustomTableViewCell : CCTableViewCell
 	{
-		public override void Draw()
+        protected override void Draw()
 		{
 			base.Draw();
 			

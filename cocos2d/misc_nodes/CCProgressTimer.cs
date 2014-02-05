@@ -197,7 +197,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public override void Draw()
+        protected override void Draw()
         {
             if (m_pVertexData == null || m_pSprite == null)
                 return;

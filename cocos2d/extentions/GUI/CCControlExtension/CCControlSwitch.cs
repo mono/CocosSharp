@@ -389,7 +389,7 @@ namespace CocosSharp
 
         #endregion
 
-        public override void Draw()
+        protected override void Draw()
         {
             CCDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
             CCDrawManager.BindTexture(Texture);

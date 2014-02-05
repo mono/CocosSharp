@@ -171,7 +171,7 @@ namespace CocosSharp
             return "Manual creation of CCTextureAtlas";
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             // GL_VERTEX_ARRAY, GL_COLOR_ARRAY, GL_TEXTURE_COORD_ARRAY
             // GL_TEXTURE_2D
@@ -321,7 +321,7 @@ namespace CocosSharp
             label1.Text = (Stepstring);
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
             //ccDrawLine(new CCPoint(0, s.height / 2), new CCPoint(s.width, s.height / 2));

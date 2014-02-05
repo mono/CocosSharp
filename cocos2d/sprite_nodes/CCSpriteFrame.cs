@@ -98,7 +98,7 @@ namespace CocosSharp
         { 
         }
 
-        private CCSpriteFrame(CCSpriteFrame spriteFrame) 
+        protected CCSpriteFrame(CCSpriteFrame spriteFrame) 
             : this(spriteFrame.m_pobTexture, spriteFrame.m_obRectInPixels, spriteFrame.m_bRotated, 
             spriteFrame.m_obOffsetInPixels, spriteFrame.m_obOriginalSizeInPixels)
 		{

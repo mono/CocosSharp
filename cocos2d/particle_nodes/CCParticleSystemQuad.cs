@@ -287,7 +287,7 @@ namespace CocosSharp
         }
 
         // overriding draw method
-        public override void Draw()
+        protected override void Draw()
         {
             Debug.Assert(m_pBatchNode == null, "draw should not be called when added to a particleBatchNode");
             //Debug.Assert(m_uParticleIdx == m_uParticleCount, "Abnormal error in particle quad");

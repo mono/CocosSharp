@@ -262,7 +262,7 @@ namespace CocosSharp
             return fontConfig;
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             if (m_bFontDirty)
             {

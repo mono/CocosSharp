@@ -769,7 +769,7 @@ namespace CocosSharp
             return i;
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             var alphaTest = CCDrawManager.AlphaTestEffect;
             

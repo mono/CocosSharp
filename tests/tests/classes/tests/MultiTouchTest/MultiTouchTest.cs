@@ -102,7 +102,7 @@ namespace tests
     public class TouchPoint : CCNode
     {
 
-        public override void Draw()
+        protected override void Draw()
         {
             CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawLine(new CCPoint(0, _touchPoint.Y), new CCPoint(ContentSize.Width, _touchPoint.Y),

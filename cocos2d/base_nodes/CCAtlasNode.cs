@@ -197,7 +197,7 @@ namespace CocosSharp
             Debug.Assert(false, "CCAtlasNode:Abstract updateAtlasValue not overridden");
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             CCDrawManager.BlendFunc(m_tBlendFunc);
 

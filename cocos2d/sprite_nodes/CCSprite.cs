@@ -813,7 +813,7 @@ namespace CocosSharp
             }
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             Debug.Assert(m_pobBatchNode == null);
 

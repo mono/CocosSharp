@@ -36,7 +36,7 @@ namespace Box2D.TestBed
             base.Update(dt);
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             m_test.Step(settings);
 

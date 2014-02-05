@@ -72,7 +72,7 @@ namespace CocosSharp
         }
 
         // Perform deep copy of CCAnimation
-        private CCAnimation(CCAnimation animation) : this(animation.m_pFrames, animation.m_fDelayPerUnit, animation.m_uLoops)
+        protected CCAnimation(CCAnimation animation) : this(animation.m_pFrames, animation.m_fDelayPerUnit, animation.m_uLoops)
         {
             RestoreOriginalFrame = animation.m_bRestoreOriginalFrame;
         }

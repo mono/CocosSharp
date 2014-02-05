@@ -1425,7 +1425,7 @@ namespace tests
             m_kathia.RunAction(seq2);
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             base.Draw();
 
@@ -1516,7 +1516,7 @@ namespace tests
             m_kathia.RunAction(seq2);
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             base.Draw();
 
@@ -1803,7 +1803,7 @@ namespace tests
 
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             base.Draw();
 
@@ -1893,7 +1893,7 @@ namespace tests
 
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             base.Draw();
 
