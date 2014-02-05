@@ -7,6 +7,8 @@ namespace CocosSharp
 {
     public class CCScale9SpriteFile : CCScale9Sprite
     {
+        #region Constructors
+
         public CCScale9SpriteFile(string file, CCRect rect, CCRect capInsets) : base(file, rect, capInsets)
         {
         }
@@ -22,5 +24,7 @@ namespace CocosSharp
         public CCScale9SpriteFile(string file) : base(file)
         {
         }
+
+        #endregion Constructors
     }
 }

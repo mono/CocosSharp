@@ -51,26 +51,6 @@ namespace CocosSharp
         protected CCPoint _touchPoint;
         protected CCSize _viewSize;
 
-        public CCScrollView() 
-            : this (new CCSize(200, 200), null)
-        {  }
-
-        public CCScrollView(CCSize size)
-            : this(size, null)
-        {  }
-
-        /**
-        * Returns an autoreleased scroll view object.
-        *
-        * @param size view size
-        * @param container parent object
-        * @return autoreleased scroll view object
-        */
-        public CCScrollView(CCSize size, CCNode container)
-        {
-            InitWithViewSize(size, container);
-        }
-
         public float MinScale
         {
             get { return _minScale; }
@@ -222,9 +202,27 @@ namespace CocosSharp
 			}
         }
 
-        public override void RegisterWithTouchDispatcher()
+
+        #region Constructors
+
+        public CCScrollView() 
+            : this (new CCSize(200, 200), null)
+        {  }
+
+        public CCScrollView(CCSize size)
+            : this(size, null)
+        {  }
+
+        /*        *
+        * Returns an autoreleased scroll view object.
+        *
+        * @param size view size
+        * @param container parent object
+        * @return autoreleased scroll view object
+        */
+        public CCScrollView(CCSize size, CCNode container)
         {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, TouchPriority, false);
+            InitCCScrollView(size, container);
         }
 
         /**
@@ -235,7 +233,7 @@ namespace CocosSharp
      * @return scroll view object
      */
 
-        protected virtual bool InitWithViewSize(CCSize size, CCNode container)
+        private void InitCCScrollView(CCSize size, CCNode container)
         {
 			_container = container;
 
@@ -259,16 +257,22 @@ namespace CocosSharp
 
             AddChild(_container);
             _minScale = _maxScale = 1.0f;
+        }
 
-            return true;
+        #endregion Constructors
+
+
+        public override void RegisterWithTouchDispatcher()
+        {
+            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, TouchPriority, false);
         }
 
         /**
-     * Sets a new content offset. It ignores max/min offset. It just sets what's given. (just like UIKit's UIScrollView)
-     *
-     * @param offset new offset
-     * @param If YES, the view scrolls to the new offset
-     */
+        * Sets a new content offset. It ignores max/min offset. It just sets what's given. (just like UIKit's UIScrollView)
+        *
+        * @param offset new offset
+        * @param If YES, the view scrolls to the new offset
+        */
 
         public void SetContentOffset(CCPoint offset)
         {

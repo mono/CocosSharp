@@ -115,6 +115,28 @@ namespace CocosSharp
             set { _tableViewDelegate = value; }
         }
 
+        /**
+         * determines how cell is ordered and filled in the view.
+         */
+        public CCTableViewVerticalFillOrder VerticalFillOrder
+        {
+            get { return _vordering; }
+            set
+            {
+                if (_vordering != value)
+                {
+                    _vordering = value;
+                    if (_cellsUsed.Count > 0)
+                    {
+                        ReloadData();
+                    }
+                }
+            }
+        }
+
+
+        #region Constructors
+
         public CCTableView()
         {
             _oldDirection = CCScrollViewDirection.None;
@@ -139,49 +161,28 @@ namespace CocosSharp
          * @param container parent object for cells
          * @return table view
          */
-        public CCTableView(ICCTableViewDataSource dataSource, CCSize size, CCNode container)
+        public CCTableView(ICCTableViewDataSource dataSource, CCSize size, CCNode container) : base(size, container)
         {
-            InitWithViewSize(size, container);
+            InitCCTableView();
             DataSource = dataSource;
             _updateCellPositions();
             _updateContentSize();
         }
 
-        public new bool InitWithViewSize(CCSize size, CCNode container)
+        private void InitCCTableView()
         {
-            if (base.InitWithViewSize(size, container))
-            {
-                _cellsPositions = new List<float>();
-                _cellsUsed = new CCArrayForObjectSorting();
-                _cellsFreed = new CCArrayForObjectSorting();
-                _indices = new List<int>();
-                _vordering = CCTableViewVerticalFillOrder.FillBottomUp;
-                Direction = CCScrollViewDirection.Vertical;
+            _cellsPositions = new List<float>();
+            _cellsUsed = new CCArrayForObjectSorting();
+            _cellsFreed = new CCArrayForObjectSorting();
+            _indices = new List<int>();
+            _vordering = CCTableViewVerticalFillOrder.FillBottomUp;
+            Direction = CCScrollViewDirection.Vertical;
 
-                base.Delegate = this;
-                return true;
-            }
-            return false;
+            base.Delegate = this;
         }
 
-        /**
-         * determines how cell is ordered and filled in the view.
-         */
-        public CCTableViewVerticalFillOrder VerticalFillOrder
-        {
-            get { return _vordering; }
-            set
-            {
-                if (_vordering != value)
-                {
-                    _vordering = value;
-                    if (_cellsUsed.Count > 0)
-                    {
-                        ReloadData();
-                    }
-                }
-            }
-        }
+        #endregion Constructors
+
 
         /**
          * reloads data from data source.  the view will be refreshed.

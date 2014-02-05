@@ -12,11 +12,6 @@ namespace CocosSharp
     {
         private int objectID;
 
-        public CCSortedObject()
-        {
-            objectID = 0;
-        }
-
         #region CCSortableObject Members
 
         public virtual int ObjectID
@@ -26,6 +21,11 @@ namespace CocosSharp
         }
 
         #endregion
+
+        public CCSortedObject()
+        {
+            objectID = 0;
+        }
     };
 
     public class CCArrayForObjectSorting : List<object>

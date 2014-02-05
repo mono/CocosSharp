@@ -7,6 +7,8 @@ namespace CocosSharp
 {
     public class CCScale9SpriteFrame : CCScale9Sprite
     {
+        #region Constructors
+
         public CCScale9SpriteFrame(CCSpriteFrame spriteFrame, CCRect capInsets) : base(spriteFrame, capInsets)
         {
         }
@@ -17,14 +19,16 @@ namespace CocosSharp
 
         public CCScale9SpriteFrame(string spriteFrameName, CCRect capInsets) : base()
         {
-            // Can't call base(string,...) because we're using that for file names
+            // Can't call base(string,...) because we're using the string parameter for file names
             base.InitWithSpriteFrameName(spriteFrameName, capInsets);
         }
 
         public CCScale9SpriteFrame(string alias)
         {
-            // Can't call base(string,...) because we're using that for file names
+            // Can't call base(string,...) because we're using the string parameter for file names
             base.InitWithSpriteFrameName(alias);
         }
+
+        #endregion Constructors
     }
 }
