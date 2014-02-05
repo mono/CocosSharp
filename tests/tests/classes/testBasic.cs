@@ -5,6 +5,10 @@ namespace tests
 {
     public abstract class TestScene : CCScene
     {
+
+		public static int MENU_LEVEL = 99999;
+		public static int TITLE_LEVEL = 99999;
+
         public TestScene()
         {
             _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);

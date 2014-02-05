@@ -16,7 +16,7 @@ namespace tests
 
 			var effect = new CCLiquid (2, new CCGridSize(32, 24), 1, 20);
 
-			var bg = this[EffectAdvanceScene.kTagBackground];
+			var bg = _bgNode;
 			bg.RunActions(effect, new CCDelayTime (2), new CCStopGrid());
         }
 

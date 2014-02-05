@@ -11,8 +11,7 @@ namespace tests
 			var effect = new CCSequence(new CCDelayTime (2.0f), new CCShaky3D(5.0f, new CCGridSize(5, 5), 16, false));
 
             // cleanup
-			var bg = this[EffectAdvanceScene.kTagBackground];
-            RemoveChild(bg, true);
+			RemoveChild(_bgNode, true);
 
             // background
 			var layer = new CCLayerColor(new CCColor4B(255, 0, 0, 255));
@@ -22,15 +21,17 @@ namespace tests
             layer.AddChild(sprite, 10);
 
             // foreground
+			var layer2Node = new CCNode ();
 			var layer2 = new CCLayerColor(new CCColor4B(0, 255, 0, 255));
 			var fog = new CCSprite("Images/Fog");
 
-            var bf = new CCBlendFunc {Source = CCOGLES.GL_SRC_ALPHA, Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA};
-            fog.BlendFunc = bf;
-            layer2.AddChild(fog, 1);
-            AddChild(layer2, 1);
+			var bf = new CCBlendFunc {Source = CCOGLES.GL_SRC_ALPHA, Destination = CCOGLES.GL_ONE_MINUS_SRC_ALPHA};
+			fog.BlendFunc = bf;
+			layer2.AddChild(fog, 1);
+			AddChild(layer2Node, 1);
+			layer2Node.AddChild (layer2);
 
-            layer2.RunAction(new CCRepeatForever (effect));
+			layer2Node.RunForever(effect);
         }
 
         public override string title()

@@ -8,8 +8,6 @@ namespace tests
         {
             base.OnEnter();
 
-			var target = this[EffectAdvanceScene.kTagBackground];
-
             // To reuse a grid the grid size and the grid type must be the same.
             // in this case:
             //     Lens3D is Grid3D and it's size is (15,10)
@@ -25,8 +23,8 @@ namespace tests
 			var orbit = new CCOrbitCamera(5, 1, 2, 0, 180, 0, -90);
 			var orbit_back = orbit.Reverse();
 
-			target.RunForever(orbit, orbit_back);
-			target.RunActions(lens, delay, reuse, waves);
+			_bgNode.RunForever(orbit, orbit_back);
+			_bgNode.RunActions(lens, delay, reuse, waves);
         }
 
         public override string title()

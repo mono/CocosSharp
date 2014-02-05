@@ -10,6 +10,9 @@ namespace tests
     {
         protected CCTextureAtlas m_atlas;
         protected string m_strTitle;
+		protected CCNode _bgNode;
+		protected CCNode _target1;
+		protected CCNode _target2;
 
         public EffectAdvanceTextLayer()
         {
@@ -22,33 +25,61 @@ namespace tests
         {
             base.OnEnter();
 
+			_bgNode = new CCNode ();
+			_bgNode.AnchorPoint = CCPoint.AnchorMiddle;
+			AddChild (_bgNode);
+
+			//_bgNode.Position = CCVisibleRect.Center;
+
 			var bg = new CCSprite("Images/background3");
-            AddChild(bg, 0, EffectAdvanceScene.kTagBackground);
             bg.Position = CCVisibleRect.Center;
+			//AddChild(bg, 0, EffectAdvanceScene.kTagBackground);
+			_bgNode.AddChild (bg);
 
+			_target1 = new CCNode ();
+			_target1.AnchorPoint = CCPoint.AnchorMiddle;
             grossini = new CCSprite("Images/grossinis_sister2");
-			bg.AddChild(grossini, 1, EffectAdvanceScene.kTagSprite1);
+			//bg.AddChild(grossini, 1, EffectAdvanceScene.kTagSprite1);
+			_target1.AddChild (grossini);
+			_bgNode.AddChild (_target1);
 
-			grossini.Position = new CCPoint(bg.ContentSize.Width / 3, bg.ContentSize.Center.Y);
+			//_target1.Position = new CCPoint(CCVisibleRect.Left.X + CCVisibleRect.VisibleRect.Size.Width / 3, CCVisibleRect.Bottom.Y + 200);
+			grossini.Position = new CCPoint(CCVisibleRect.Left.X + CCVisibleRect.VisibleRect.Size.Width / 3, CCVisibleRect.Bottom.Y + 200);
 
 			var sc = new CCScaleBy(2, 5);
 			var sc_back = sc.Reverse();
-            grossini.RunAction(new CCRepeatForever ((CCActionInterval)(new CCSequence(sc, sc_back))));
+			grossini.RunForever (sc, sc_back);
+
+			_target2 = new CCNode ();
+			_target2.AnchorPoint = CCPoint.AnchorMiddle;
 
             tamara = new CCSprite("Images/grossinis_sister1");
-			bg.AddChild(tamara, 1, EffectAdvanceScene.kTagSprite2);
+			//bg.AddChild(tamara, 1, EffectAdvanceScene.kTagSprite2);
 
-			tamara.Position = new CCPoint (2 * bg.ContentSize.Width / 3, bg.ContentSize.Center.Y);
+			_target2.AddChild (tamara);
+			_bgNode.AddChild (_target2);
+			//_target2.Position = new CCPoint (CCVisibleRect.Left.X + 2 * CCVisibleRect.VisibleRect.Size.Width / 3, CCVisibleRect.Bottom.Y + 200);
+			tamara.Position = new CCPoint (CCVisibleRect.Left.X + 2 * CCVisibleRect.VisibleRect.Size.Width / 3, CCVisibleRect.Bottom.Y + 200);
+
+
 
 			var sc2 = new CCScaleBy(2, 5);
 			var sc2_back = sc2.Reverse();
-            tamara.RunAction(new CCRepeatForever ((CCActionInterval)(new CCSequence(sc2, sc2_back))));
+			tamara.RunForever(sc2, sc2_back);
 
 			var label = new CCLabelTTF(title(), "arial", 28);
 
             label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 80);
-            AddChild(label);
+			AddChild(label,TestScene.TITLE_LEVEL);
             label.Tag = EffectAdvanceScene.kTagLabel;
+
+			if (!string.IsNullOrEmpty(subtitle())) 
+			{
+				var subLabel = new CCLabelTTF(subtitle(), "arial", 20);
+				subLabel.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 100);
+				AddChild(subLabel,TestScene.TITLE_LEVEL);
+				//label.Tag = EffectAdvanceScene.kTagLabel;
+			}
 
 			var item1 = new CCMenuItemImage("Images/b1", "Images/b2", backCallback);
 			var item2 = new CCMenuItemImage("Images/r1", "Images/r2", restartCallback);
@@ -63,7 +94,7 @@ namespace tests
             item3.Position = new CCPoint(CCVisibleRect.Center.X + item2.ContentSize.Width * 2,
                                          CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
 
-            AddChild(menu, 1);
+			AddChild(menu, TestScene.MENU_LEVEL);
         }
 
         public virtual string title()

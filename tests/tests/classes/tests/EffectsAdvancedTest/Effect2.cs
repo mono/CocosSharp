@@ -8,8 +8,6 @@ namespace tests
         {
             base.OnEnter();
 
-			var target = this[EffectAdvanceScene.kTagBackground];
-
             // To reuse a grid the grid size and the grid type must be the same.
             // in this case:
             //     ShakyTiles is TiledGrid3D and it's size is (15,10)
@@ -32,7 +30,7 @@ namespace tests
             //	id orbit_back = [orbit reverse];
             //
             //	[target runAction: [RepeatForever::actionWithAction: [Sequence actions: orbit, orbit_back, nil]]];
-			target.RunActions (shaky, delay, reuse, shuffle, (CCFiniteTimeAction) delay.Copy(), turnoff, turnon);
+			_bgNode.RunActions (shaky, delay, reuse, shuffle, (CCFiniteTimeAction) delay.Copy(), turnoff, turnon);
         }
 
         public override string title()

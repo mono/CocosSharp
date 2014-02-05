@@ -23,7 +23,7 @@ namespace tests
 
 			target.AddActions(false, move, move_back);
 
-			RunAction(lens);
+			_bgNode.RunAction(lens);
         }
 
         public override string title()

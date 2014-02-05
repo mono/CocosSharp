@@ -12,20 +12,20 @@ namespace tests
         {
 			base.OnEnter();
 
-			var bg = this[EffectAdvanceScene.kTagBackground];
-			var target1 = bg[EffectAdvanceScene.kTagSprite1];
-			var target2 = bg[EffectAdvanceScene.kTagSprite2];
+			//var bg = this[EffectAdvanceScene.kTagBackground];
+			//var target1 = bg[EffectAdvanceScene.kTagSprite1];
+			//var target2 = bg[EffectAdvanceScene.kTagSprite2];
 
 			var waves = new CCWaves(5, new CCGridSize(15, 10), 5, 20, true, false);
 			var shaky = new CCShaky3D(5, new CCGridSize(15, 10), 4, false);
 
-			target1.RunForever(waves);
-			target2.RunForever(shaky);
+			grossini.RunForever(waves);
+			tamara.RunForever(shaky);
 
             // moving background. Testing issue #244
 			var move = new CCMoveBy (3, new CCPoint(200, 0));
 
-			bg.RunForever(move, move.Reverse());
+			_bgNode.RunForever(move, move.Reverse());
         }
 
         public override string title()
