@@ -118,6 +118,12 @@ namespace CocosSharp
             m_bFirstTick = true;
         }
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return null;//new CCActionState (this, target);
+
+		}
+
         public override CCFiniteTimeAction Reverse()
         {
             throw new NotImplementedException();
@@ -133,4 +139,49 @@ namespace CocosSharp
             set { Debug.Assert(false); }
         }
     }
+
+	public class CCActionIntervalState : CCFinateTimeActionState
+	{
+
+		protected bool m_bFirstTick = true;
+		protected float m_elapsed;
+
+		public float Elapsed
+		{
+			get { return m_elapsed; }
+		}
+
+		public override bool IsDone
+		{
+			get { return m_elapsed >= Duration; }
+		}
+
+		public CCActionIntervalState (CCActionInterval action, CCNode target)
+			: base(action, target)
+		{ 
+			m_elapsed = 0.0f;
+			m_bFirstTick = true;
+		}
+
+		public override void Step(float dt)
+		{
+			if (m_bFirstTick)
+			{
+				m_bFirstTick = false;
+				m_elapsed = 0f;
+			}
+			else
+			{
+				m_elapsed += dt;
+			}
+
+			Update(Math.Max(0f,
+				Math.Min(1, m_elapsed /
+					Math.Max(m_fDuration, float.Epsilon)
+				)
+			)
+			);
+		}
+	}
+
 }

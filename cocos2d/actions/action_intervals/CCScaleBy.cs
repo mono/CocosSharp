@@ -4,10 +4,6 @@ namespace CocosSharp
     {
         #region Constructors
 
-        protected CCScaleBy(CCScaleBy copy) : base(copy)
-        {
-            // Handled by the base class.
-        }
 
         public CCScaleBy(float duration, float s) : base(duration, s)
         {
@@ -19,22 +15,29 @@ namespace CocosSharp
 
         #endregion Constructors
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCScaleByState (this, target);
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_fDeltaX = m_fStartScaleX * m_fEndScaleX - m_fStartScaleX;
-            m_fDeltaY = m_fStartScaleY * m_fEndScaleY - m_fStartScaleY;
-        }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
             return new CCScaleBy(m_fDuration, 1 / m_fEndScaleX, 1 / m_fEndScaleY);
         }
 
-        public override object Copy(ICCCopyable zone)
-        {
-                return new CCScaleBy(this);
-        }
     }
+
+	public class CCScaleByState : CCScaleToState
+	{
+
+		public CCScaleByState (CCScaleTo action, CCNode target)
+			: base(action, target)
+		{ 
+			m_fDeltaX = m_fStartScaleX * m_fEndScaleX - m_fStartScaleX;
+			m_fDeltaY = m_fStartScaleY * m_fEndScaleY - m_fStartScaleY;
+		}
+
+	}
+
 }
