@@ -63,6 +63,12 @@ namespace CocosSharp
             return new CCAction(this);
         }
 
+		protected internal virtual CCActionState StartAction (CCNode target)
+		{
+			return null;//new CCActionState (this, target);
+
+		}
+
         protected internal virtual void StartWithTarget(CCNode target)
         {
             m_pOriginalTarget = m_pTarget = target;
@@ -87,4 +93,42 @@ namespace CocosSharp
 #endif
         }
     }
+
+	public class CCActionState {
+
+		public CCNode Target { get; protected set; }
+		public CCNode OriginalTarget { get; protected set; }
+		public CCAction Action { get; protected set;}
+
+		public CCActionState (CCAction action, CCNode target)
+		{
+			this.Action = action;
+			this.Target = target;
+			this.OriginalTarget = target;
+		}
+
+		public virtual bool IsDone
+		{
+			get { return true; }
+		}
+
+		public virtual void Stop()
+		{
+			Target = null;
+		}
+
+		public virtual void Step(float dt)
+		{
+			#if DEBUG
+			CCLog.Log("[Action step]. override me");
+			#endif
+		}
+
+		public virtual void Update(float time)
+		{
+			#if DEBUG
+			CCLog.Log("[Action update]. override me");
+			#endif
+		}
+	}
 }

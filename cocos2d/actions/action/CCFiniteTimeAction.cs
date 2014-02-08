@@ -29,6 +29,11 @@ namespace CocosSharp
 
         #endregion Constructors
       
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return null;//new CCFinateTimeActionState (this, target);
+
+		}
 
         public virtual CCFiniteTimeAction Reverse()
         {
@@ -36,4 +41,23 @@ namespace CocosSharp
             return null;
         }
     }
+
+	public class CCFinateTimeActionState : CCActionState
+	{
+		protected float m_fDuration;
+
+
+		public CCFinateTimeActionState (CCFiniteTimeAction action, CCNode target)
+			: base(action, target)
+		{ 
+			Duration = action.Duration;
+		}
+
+		public virtual float Duration
+		{
+			get { return m_fDuration; }
+			set { m_fDuration = value; }
+		}
+
+	}
 }
