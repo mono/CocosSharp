@@ -696,17 +696,17 @@ namespace tests
 
             centerSprites(3);
 
-            var actionTo = new CCRotateTo (2, 45);
-            var actionTo2 = new CCRotateTo (2, -45);
-            var actionTo0 = new CCRotateTo (2, 0);
-            m_tamara.RunAction(new CCSequence(actionTo, actionTo0));
+			var actionTo = new CCRotateTo (2, 45);
+			var actionTo2 = new CCRotateTo (2, -45);
+			var actionTo0 = new CCRotateTo (2, 0);
+			m_tamara.RunActions(actionTo, actionTo0);
 
-            var actionBy = new CCRotateBy (2, 360);
+			var actionBy = new CCRotateBy (2, 360);
             var actionByBack = actionBy.Reverse();
-            m_grossini.RunAction(new CCSequence(actionBy, actionByBack));
+			m_grossini.RunActions(actionBy, actionByBack);
 
             // m_kathia->runAction( CCSequence::actions(actionTo2, actionTo0->copy()->autorelease(), NULL));
-            m_kathia.RunAction(new CCSequence(actionTo2, (CCActionInterval) actionTo0.Copy()));
+			m_kathia.RunActions(actionTo2, actionTo0);
         }
 
         public override string subtitle()
