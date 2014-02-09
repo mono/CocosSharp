@@ -7,119 +7,120 @@ namespace CocosSharp
 {
     public class CCCardinalSplineTo : CCActionInterval
     {
-        protected float m_fDeltaT;
-        protected float m_fTension;
-        protected List<CCPoint> m_pPoints;
-        protected CCPoint m_previousPosition;
-        protected CCPoint m_accumulatedDiff;
-
-        public List<CCPoint> Points
-        {
-            get { return m_pPoints; }
-            set { m_pPoints = value; }
-        }
-
 
         #region Constructors
 
         public CCCardinalSplineTo(float duration, List<CCPoint> points, float tension) : base(duration)
         {
-            InitCCCardinalSplineTo(points, tension);
-        }
+			Debug.Assert(points.Count > 0, "Invalid configuration. It must at least have one control point");
 
-        // Perform a deep copy of CCACtionInterval
-        protected CCCardinalSplineTo(CCCardinalSplineTo cardinalSplineTo) : base(cardinalSplineTo)
-        {
-            InitCCCardinalSplineTo(cardinalSplineTo.m_pPoints, cardinalSplineTo.m_fTension);
+			Points = points;
+			Tension = tension;
         }
-
-        private void InitCCCardinalSplineTo(List<CCPoint> points, float tension)
-        {
-            Debug.Assert(points.Count > 0, "Invalid configuration. It must at least have one control point");
-
-            Points = points;
-            m_fTension = tension;
-        }
+ 
 
         #endregion Constructors
 
+		public List<CCPoint> Points { get; protected set; }
+		public float Tension { get; protected set; }
 
-        // This should be changed to DeepCopy()
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCCardinalSplineTo(this);
-        }
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCCardinalSplineToState (this, target);
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
+		}
 
-            m_fDeltaT = 1f / m_pPoints.Count;
-
-            m_previousPosition = target.Position;
-            m_accumulatedDiff = CCPoint.Zero;
-        }
-
-        public override void Update(float time)
-        {
-            int p;
-            float lt;
-
-            // eg.
-            // p..p..p..p..p..p..p
-            // 1..2..3..4..5..6..7
-            // want p to be 1, 2, 3, 4, 5, 6
-            if (time == 1)
-            {
-                p = m_pPoints.Count - 1;
-                lt = 1;
-            }
-            else
-            {
-                p = (int) (time / m_fDeltaT);
-                lt = (time - m_fDeltaT * p) / m_fDeltaT;
-            }
-
-            // Interpolate    
-            var c = m_pPoints.Count - 1;
-            CCPoint pp0 = m_pPoints[Math.Min(c, Math.Max(p - 1, 0))];
-            CCPoint pp1 = m_pPoints[Math.Min(c, Math.Max(p + 0, 0))];
-            CCPoint pp2 = m_pPoints[Math.Min(c, Math.Max(p + 1, 0))];
-            CCPoint pp3 = m_pPoints[Math.Min(c, Math.Max(p + 2, 0))];
-
-            CCPoint newPos = CCSplineMath.CCCardinalSplineAt(pp0, pp1, pp2, pp3, m_fTension, lt);
-
-            // Support for stacked actions
-            CCNode node = m_pTarget;
-            CCPoint diff = node.Position - m_previousPosition;
-            if (diff.X != 0 || diff.Y != 0)
-            {
-                m_accumulatedDiff = m_accumulatedDiff + diff;
-                newPos = newPos + m_accumulatedDiff;
-            }
-
-            UpdatePosition(newPos);
-        }
+		// Take me out later - See comments in CCAction
+		public override bool HasState 
+		{ 
+			get { return true; }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
-            List<CCPoint> pReverse = m_pPoints.ToList();
+            List<CCPoint> pReverse = Points.ToList();
             pReverse.Reverse();
 
-            return new CCCardinalSplineTo(m_fDuration, pReverse, m_fTension);
+            return new CCCardinalSplineTo(m_fDuration, pReverse, Tension);
         }
 
-        public virtual void UpdatePosition(CCPoint newPos)
-        {
-            m_pTarget.Position = newPos;
-            m_previousPosition = newPos;
-        }
     }
+
+	public class CCCardinalSplineToState : CCActionIntervalState
+	{
+		protected float DeltaT { get; set; }
+		protected CCPoint PreviousPosition { get; set; }
+		protected CCPoint AccumulatedDiff { get; set; }
+		protected List<CCPoint> Points { get; set; }
+		protected float Tension { get; set; }
+
+
+		public CCCardinalSplineToState (CCCardinalSplineTo action, CCNode target)
+			: base(action, target)
+		{ 
+			Points = action.Points;
+			Tension = action.Tension;
+
+			DeltaT = 1f / Points.Count;
+
+			PreviousPosition = target.Position;
+			AccumulatedDiff = CCPoint.Zero;
+		}
+
+
+		public override void Update(float time)
+		{
+			int p;
+			float lt;
+
+			// eg.
+			// p..p..p..p..p..p..p
+			// 1..2..3..4..5..6..7
+			// want p to be 1, 2, 3, 4, 5, 6
+			if (time == 1)
+			{
+				p = Points.Count - 1;
+				lt = 1;
+			}
+			else
+			{
+				p = (int) (time / DeltaT);
+				lt = (time - DeltaT * p) / DeltaT;
+			}
+
+			// Interpolate    
+			var c = Points.Count - 1;
+			CCPoint pp0 = Points[Math.Min(c, Math.Max(p - 1, 0))];
+			CCPoint pp1 = Points[Math.Min(c, Math.Max(p + 0, 0))];
+			CCPoint pp2 = Points[Math.Min(c, Math.Max(p + 1, 0))];
+			CCPoint pp3 = Points[Math.Min(c, Math.Max(p + 2, 0))];
+
+			CCPoint newPos = CCSplineMath.CCCardinalSplineAt(pp0, pp1, pp2, pp3, Tension, lt);
+
+			// Support for stacked actions
+			CCNode node = Target;
+			CCPoint diff = node.Position - PreviousPosition;
+			if (diff.X != 0 || diff.Y != 0)
+			{
+				AccumulatedDiff = AccumulatedDiff + diff;
+				newPos = newPos + AccumulatedDiff;
+			}
+
+			UpdatePosition(newPos);
+		}
+
+		public virtual void UpdatePosition(CCPoint newPos)
+		{
+			Target.Position = newPos;
+			PreviousPosition = newPos;
+		}
+
+	}
+
+
 
     public class CCCardinalSplineBy : CCCardinalSplineTo
     {
-        protected CCPoint m_startPosition;
-
 
         #region Constructors
 
@@ -129,16 +130,15 @@ namespace CocosSharp
 
         #endregion Constructors
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCCardinalSplineByState (this, target);
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_startPosition = target.Position;
-        }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
-            List<CCPoint> copyConfig = m_pPoints.ToList();
+            List<CCPoint> copyConfig = Points.ToList();
 
             //
             // convert "absolutes" to "diffs"
@@ -175,15 +175,29 @@ namespace CocosSharp
                 p = abs;
             }
 
-            return new CCCardinalSplineBy(m_fDuration, copyConfig, m_fTension);
+            return new CCCardinalSplineBy(m_fDuration, copyConfig, Tension);
         }
 
-        public override void UpdatePosition(CCPoint newPos)
-        {
-            m_pTarget.Position = newPos + m_startPosition;
-            m_previousPosition = m_pTarget.Position;
-        }
     }
+
+
+	public class CCCardinalSplineByState : CCCardinalSplineToState
+	{
+		protected CCPoint StartPosition { get; set; }
+
+		public CCCardinalSplineByState (CCCardinalSplineTo action, CCNode target)
+			: base(action, target)
+		{ 
+			StartPosition = target.Position;
+		}
+
+		public override void UpdatePosition(CCPoint newPos)
+		{
+			Target.Position = newPos + StartPosition;
+			PreviousPosition = Target.Position;
+		}
+
+	}
 
     public class CCCatmullRomTo : CCCardinalSplineTo
     {
