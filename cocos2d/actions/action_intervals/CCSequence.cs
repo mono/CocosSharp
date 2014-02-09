@@ -10,25 +10,14 @@ namespace CocosSharp
         protected float m_split;
         private bool _HasInfiniteAction = false;
 
-        public override bool IsDone
-        {
-            get
-            {
-                if (_HasInfiniteAction && m_pActions[m_last] is CCRepeatForever)
-                {
-                    return (false);
-                }
-                return base.IsDone;
-            }
-        }
-
-		protected virtual CCFiniteTimeAction[]  Actions
+		public virtual CCFiniteTimeAction[]  Actions
 		{
 			get 
 			{
 				return (CCFiniteTimeAction[])m_pActions;
 			}
-			set 
+
+			protected set 
 			{
 				// Check to make sure we are immutable after creation
 				Debug.Assert((m_pActions.Length == 2) || 
@@ -74,14 +63,14 @@ namespace CocosSharp
 			Actions = actions;
         }
 
-        // Perform deep copy of CCSequence
-        protected CCSequence(CCSequence sequence) : base(sequence)
-        {
-            CCFiniteTimeAction param1 = new CCFiniteTimeAction(sequence.m_pActions [0]);
-            CCFiniteTimeAction param2 = new CCFiniteTimeAction(sequence.m_pActions [1]);
-
-            InitCCSequence(param1, param2);
-        }
+//        // Perform deep copy of CCSequence
+//        protected CCSequence(CCSequence sequence) : base(sequence)
+//        {
+//            CCFiniteTimeAction param1 = new CCFiniteTimeAction(sequence.m_pActions [0]);
+//            CCFiniteTimeAction param2 = new CCFiniteTimeAction(sequence.m_pActions [1]);
+//
+//            InitCCSequence(param1, param2);
+//        }
 
         private void InitCCSequence(CCFiniteTimeAction actionOne, CCFiniteTimeAction actionTwo)
         {
@@ -96,112 +85,290 @@ namespace CocosSharp
 
         #endregion Constructors
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCSequenceState (this, target);
 
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCSequence(this);
-        }
+		}
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_split = m_pActions[0].Duration / m_fDuration;
-            m_last = -1;
-        }
+		// Take me out later - See comments in CCAction
+		public override bool HasState 
+		{ 
+			get { return true; }
+		}
 
-        public override void Stop()
-        {
-            // Issue #1305
-            if (m_last != - 1)
-            {
-                m_pActions[m_last].Stop();
-            }
+//        protected internal override void StartWithTarget(CCNode target)
+//        {
+//            base.StartWithTarget(target);
+//            m_split = m_pActions[0].Duration / m_fDuration;
+//            m_last = -1;
+//        }
 
-            base.Stop();
-        }
-
-        public override void Step(float dt)
-        {
-            if (m_last > -1 && (m_pActions[m_last] is CCRepeat || m_pActions[m_last] is CCRepeatForever))
-            {
-                // Repeats are step based, not update
-                m_pActions[m_last].Step(dt);
-            }
-            else
-            {
-                base.Step(dt);
-            }
-        }
-
-        public override void Update(float t)
-        {
-            bool bRestart = false;
-            int found;
-            float new_t;
-
-            if (t < m_split)
-            {
-                // action[0]
-                found = 0;
-                if (m_split != 0)
-                    new_t = t / m_split;
-                else
-                    new_t = 1;
-            }
-            else
-            {
-                // action[1]
-                found = 1;
-                if (m_split == 1)
-                    new_t = 1;
-                else
-                    new_t = (t - m_split) / (1 - m_split);
-            }
-
-            if (found == 1)
-            {
-                if (m_last == -1)
-                {
-                    // action[0] was skipped, execute it.
-                    m_pActions[0].StartWithTarget(m_pTarget);
-                    m_pActions[0].Update(1.0f);
-                    m_pActions[0].Stop();
-                }
-                else if (m_last == 0)
-                {
-                    // switching to action 1. stop action 0.
-                    m_pActions[0].Update(1.0f);
-                    m_pActions[0].Stop();
-                }
-            }
-            else if (found == 0 && m_last == 1)
-            {
-                // Reverse mode ?
-                // XXX: Bug. this case doesn't contemplate when _last==-1, found=0 and in "reverse mode"
-                // since it will require a hack to know if an action is on reverse mode or not.
-                // "step" should be overriden, and the "reverseMode" value propagated to inner Sequences.
-                m_pActions[1].Update(0);
-                m_pActions[1].Stop();
-            }
-            // Last action found and it is done.
-            if (found == m_last && m_pActions[found].IsDone)
-            {
-                return;
-            }
-
-            // Last action found and it is done
-            if (found != m_last || bRestart)
-            {
-                m_pActions[found].StartWithTarget(m_pTarget);
-            }
-
-            m_pActions[found].Update(new_t);
-            m_last = found;
-        }
+//        public override void Stop()
+//        {
+//            // Issue #1305
+//            if (m_last != - 1)
+//            {
+//                m_pActions[m_last].Stop();
+//            }
+//
+//            base.Stop();
+//        }
+//
+//        public override void Step(float dt)
+//        {
+//            if (m_last > -1 && (m_pActions[m_last] is CCRepeat || m_pActions[m_last] is CCRepeatForever))
+//            {
+//                // Repeats are step based, not update
+//                m_pActions[m_last].Step(dt);
+//            }
+//            else
+//            {
+//                base.Step(dt);
+//            }
+//        }
+//
+//        public override void Update(float t)
+//        {
+//            bool bRestart = false;
+//            int found;
+//            float new_t;
+//
+//            if (t < m_split)
+//            {
+//                // action[0]
+//                found = 0;
+//                if (m_split != 0)
+//                    new_t = t / m_split;
+//                else
+//                    new_t = 1;
+//            }
+//            else
+//            {
+//                // action[1]
+//                found = 1;
+//                if (m_split == 1)
+//                    new_t = 1;
+//                else
+//                    new_t = (t - m_split) / (1 - m_split);
+//            }
+//
+//            if (found == 1)
+//            {
+//                if (m_last == -1)
+//                {
+//                    // action[0] was skipped, execute it.
+//                    m_pActions[0].StartWithTarget(m_pTarget);
+//                    m_pActions[0].Update(1.0f);
+//                    m_pActions[0].Stop();
+//                }
+//                else if (m_last == 0)
+//                {
+//                    // switching to action 1. stop action 0.
+//                    m_pActions[0].Update(1.0f);
+//                    m_pActions[0].Stop();
+//                }
+//            }
+//            else if (found == 0 && m_last == 1)
+//            {
+//                // Reverse mode ?
+//                // XXX: Bug. this case doesn't contemplate when _last==-1, found=0 and in "reverse mode"
+//                // since it will require a hack to know if an action is on reverse mode or not.
+//                // "step" should be overriden, and the "reverseMode" value propagated to inner Sequences.
+//                m_pActions[1].Update(0);
+//                m_pActions[1].Stop();
+//            }
+//            // Last action found and it is done.
+//            if (found == m_last && m_pActions[found].IsDone)
+//            {
+//                return;
+//            }
+//
+//            // Last action found and it is done
+//            if (found != m_last || bRestart)
+//            {
+//                m_pActions[found].StartWithTarget(m_pTarget);
+//            }
+//
+//            m_pActions[found].Update(new_t);
+//            m_last = found;
+//        }
 
         public override CCFiniteTimeAction Reverse()
         {
             return new CCSequence(m_pActions[1].Reverse(), m_pActions[0].Reverse());
         }
     }
+
+	public class CCSequenceState : CCActionIntervalState
+	{
+		protected int m_last;
+		protected CCFiniteTimeAction[] m_pActions = new CCFiniteTimeAction[2];
+		protected CCFiniteTimeActionState[] m_pActionStates;
+		protected float m_split;
+		private bool _HasInfiniteAction = false;
+
+		public CCSequenceState (CCSequence action, CCNode target)
+			: base(action, target)
+		{ 
+			m_pActions = action.Actions;
+			m_pActionStates = new CCFiniteTimeActionState[m_pActions.Length];
+			m_split = m_pActions[0].Duration / m_fDuration;
+			m_last = -1;
+
+		}
+
+		public override bool IsDone
+		{
+			get
+			{
+				if (_HasInfiniteAction && m_pActions[m_last] is CCRepeatForever)
+				{
+					return (false);
+				}
+				return base.IsDone;
+			}
+		}
+
+
+		public override void Stop()
+		{
+			// Issue #1305
+			if (m_last != - 1)
+			{
+				if (!m_pActions[m_last].HasState)
+					m_pActions[m_last].Stop();
+				else
+					m_pActionStates[m_last].Stop();
+			}
+
+			base.Stop();
+		}
+
+		public override void Step(float dt)
+		{
+			if (m_last > -1 && (m_pActions[m_last] is CCRepeat || m_pActions[m_last] is CCRepeatForever))
+			{
+				if (!m_pActions[m_last].HasState)
+				// Repeats are step based, not update
+				m_pActions[m_last].Step(dt);
+				else
+					m_pActionStates[m_last].Step(dt);
+			}
+			else
+			{
+				base.Step(dt);
+			}
+		}
+
+		public override void Update(float t)
+		{
+			bool bRestart = false;
+			int found;
+			float new_t;
+
+			if (t < m_split)
+			{
+				// action[0]
+				found = 0;
+				if (m_split != 0)
+					new_t = t / m_split;
+				else
+					new_t = 1;
+			}
+			else
+			{
+				// action[1]
+				found = 1;
+				if (m_split == 1)
+					new_t = 1;
+				else
+					new_t = (t - m_split) / (1 - m_split);
+			}
+
+			if (found == 1)
+			{
+				if (m_last == -1)
+				{
+					if (!m_pActions [0].HasState) {
+						// action[0] was skipped, execute it.
+						m_pActions [0].StartWithTarget (Target);
+						m_pActions [0].Update (1.0f);
+						m_pActions [0].Stop ();
+					} else {
+						// action[0] was skipped, execute it.
+						m_pActions [0].StartWithTarget (Target);
+						m_pActionStates [0] = (CCFiniteTimeActionState)m_pActions [0].StartAction (Target);
+						m_pActionStates [0].Update (1.0f);
+						m_pActionStates [0].Stop ();
+					}
+				}
+				else if (m_last == 0)
+				{
+					if (!m_pActions [0].HasState) {
+						// switching to action 1. stop action 0.
+						m_pActions [0].Update (1.0f);
+						m_pActions [0].Stop ();
+					} else {
+						m_pActionStates [0].Update (1.0f);
+						m_pActionStates [0].Stop ();
+					}
+				}
+			}
+			else if (found == 0 && m_last == 1)
+			{
+				if (!m_pActions [0].HasState) {
+					// Reverse mode ?
+					// XXX: Bug. this case doesn't contemplate when _last==-1, found=0 and in "reverse mode"
+					// since it will require a hack to know if an action is on reverse mode or not.
+					// "step" should be overriden, and the "reverseMode" value propagated to inner Sequences.
+					m_pActions [1].Update (0);
+					m_pActions [1].Stop ();
+				} else {
+					// Reverse mode ?
+					// XXX: Bug. this case doesn't contemplate when _last==-1, found=0 and in "reverse mode"
+					// since it will require a hack to know if an action is on reverse mode or not.
+					// "step" should be overriden, and the "reverseMode" value propagated to inner Sequences.
+					m_pActionStates [1].Update (0);
+					m_pActionStates [1].Stop ();
+
+				}
+			}
+
+			if (!m_pActions [found].HasState) {
+				// Last action found and it is done.
+				if (found == m_last && m_pActions [found].IsDone) {
+					return;
+				}
+
+
+				// Last action found and it is done
+				if (found != m_last || bRestart) {
+					m_pActions [found].StartWithTarget (Target);
+				}
+
+				m_pActions [found].Update (new_t);
+				m_last = found;
+			} else {
+
+				// Last action found and it is done.
+				if (found == m_last && m_pActionStates [found].IsDone) {
+					return;
+				}
+
+
+				// Last action found and it is done
+				if (found != m_last || bRestart) {
+					m_pActionStates [found] =  (CCFiniteTimeActionState)m_pActions [found].StartAction (Target);
+				}
+
+				m_pActionStates [found].Update (new_t);
+				m_last = found;
+
+			}
+		}
+
+
+	}
+
 }

@@ -6,45 +6,45 @@ namespace CocosSharp
 
         public CCMoveTo(float duration, CCPoint position): base(duration, position)
         {
-            InitCCMoveTo(position);
-        }
-
-        protected CCMoveTo(CCMoveTo moveTo) : base(moveTo)
-        {
-            InitCCMoveTo(moveTo.m_endPosition);
-        }
-
-        private void InitCCMoveTo(CCPoint position)
-        {
-            m_endPosition = position;
+			m_endPosition = position;
         }
 
         #endregion Constructors
 
+		public CCPoint PositionEnd
+		{
+			get { return m_endPosition; }
+		}
 
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCMoveTo(this);
-        }
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCMoveToState (this, target);
 
-        public override void Update(float time)
-        {
-            if (m_pTarget != null)
-            {
-                CCPoint currentPos = m_pTarget.Position;
-                CCPoint diff = currentPos - m_previousPosition;
-                //m_startPosition = m_startPosition + diff;
-                CCPoint newPos = m_startPosition + m_positionDelta * time;
-                m_pTarget.Position = newPos;
-                m_previousPosition = newPos;
-            }
-        }
-
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_startPosition = target.Position;
-            m_positionDelta = m_endPosition - target.Position;
-        }
+		}
     }
+
+	public class CCMoveToState : CCMoveByState
+	{
+
+		public CCMoveToState (CCMoveTo action, CCNode target)
+			: base(action, target)
+		{ 
+			m_startPosition = target.Position;
+			m_positionDelta = action.PositionEnd - target.Position;
+		}
+
+		public override void Update(float time)
+		{
+			if (Target != null)
+			{
+				CCPoint currentPos = Target.Position;
+				CCPoint diff = currentPos - m_previousPosition;
+				//m_startPosition = m_startPosition + diff;
+				CCPoint newPos = m_startPosition + m_positionDelta * time;
+				Target.Position = newPos;
+				m_previousPosition = newPos;
+			}
+		}
+	}
+
 }

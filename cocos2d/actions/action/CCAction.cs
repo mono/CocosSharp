@@ -35,6 +35,12 @@ namespace CocosSharp
             get { return true; }
         }
 
+		// Tempory work property to be taken out after we have separated out the state.
+		// This shoud be overridden in all classes that have been separated
+		public virtual bool HasState 
+		{ 
+			get { return false; }
+		}
 
         #region Constructors
 

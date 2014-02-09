@@ -42,12 +42,12 @@ namespace CocosSharp
         }
     }
 
-	public class CCFinateTimeActionState : CCActionState
+	public class CCFiniteTimeActionState : CCActionState
 	{
 		protected float m_fDuration;
 
 
-		public CCFinateTimeActionState (CCFiniteTimeAction action, CCNode target)
+		public CCFiniteTimeActionState (CCFiniteTimeAction action, CCNode target)
 			: base(action, target)
 		{ 
 			Duration = action.Duration;

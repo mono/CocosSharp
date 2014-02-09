@@ -140,7 +140,7 @@ namespace CocosSharp
         }
     }
 
-	public class CCActionIntervalState : CCFinateTimeActionState
+	public class CCActionIntervalState : CCFiniteTimeActionState
 	{
 
 		protected bool m_bFirstTick = true;
