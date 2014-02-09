@@ -542,10 +542,10 @@ namespace tests
             var actionBy2 = new CCSkewBy (2, 45.0f, 45.0f);
             var actionByBack = actionBy.Reverse();
 
-            m_tamara.RunAction(new CCSequence(actionTo, actionToBack));
-            m_grossini.RunAction(new CCSequence(actionBy, actionByBack));
+			m_tamara.RunActions(actionTo, actionToBack);
+			m_grossini.RunActions(actionBy, actionByBack);
 
-            m_kathia.RunAction(new CCSequence(actionBy2, actionBy2.Reverse()));
+			m_kathia.RunActions(actionBy2, actionBy2.Reverse());
         }
 
         public override string subtitle()
