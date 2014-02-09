@@ -562,21 +562,17 @@ namespace tests
 
             centerSprites(3);
 
-            var actionTo = new CCRotateTo(2, 37.2f, -37.2f);
+			var actionTo = new CCRotateTo(2, 180, 180);
             var actionToBack = new CCRotateTo(2, 0, 0);
-            var actionBy = new CCRotateBy(2, 0.0f, -90.0f);
-            var actionBy2 = new CCRotateBy(2, 45.0f, 45.0f);
-            var actionByBack = (CCRotateBy) actionBy.Reverse();
+			var actionBy = new CCRotateBy(2, 0.0f, 360);
+			var actionByBack = actionBy.Reverse();
 
-            m_tamara.RunAction(new CCSequence(actionTo, actionToBack));
-            m_grossini.RunAction(new CCSequence(actionBy, actionByBack));
+			var actionBy2 = new CCRotateBy(2, 360, 0.0f);
+			var actionBy2Back = actionBy2.Reverse ();
 
-            m_kathia.RunAction(new CCSequence(actionBy2, actionBy2.Reverse()));
-
-            m_tamara.RunAction(new CCSequence(actionTo, actionToBack));
-            m_grossini.RunAction(new CCSequence(actionBy, actionByBack));
-
-            m_kathia.RunAction(new CCSequence(actionBy2, actionBy2.Reverse()));
+			m_tamara.RunActions(actionBy, actionByBack);
+			m_grossini.RunActions(actionTo, actionToBack);
+			m_kathia.RunActions(actionBy2, actionBy2Back);
         }
 
         public override string subtitle()
@@ -677,9 +673,9 @@ namespace tests
             var rotateToBack = new CCRotateTo (2, 0);
             var actionToBack = new CCSkewTo (2, 0, 0);
 
-            box.RunAction(new CCSequence(actionTo, actionToBack));
-            box.RunAction(new CCSequence(rotateTo, rotateToBack));
-            box.RunAction(new CCSequence(actionScaleTo, actionScaleToBack));
+			box.RunActions(actionTo, actionToBack);
+			box.RunActions(rotateTo, rotateToBack);
+			box.RunActions(actionScaleTo, actionScaleToBack);
         }
 
         public override string subtitle()

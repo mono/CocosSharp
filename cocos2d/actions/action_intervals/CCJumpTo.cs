@@ -8,22 +8,24 @@ namespace CocosSharp
         {
         }
 
-        protected CCJumpTo(CCJumpTo jumpTo) : base(jumpTo)
-        {
-        }
-
         #endregion Constructors
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCJumpToState (this, target);
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_delta = new CCPoint(m_delta.X - m_startPosition.X, m_delta.Y - m_startPosition.Y);
-        }
+		}
 
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCJumpTo(this);
-        }
     }
+
+	public class CCJumpToState : CCJumpByState
+	{
+
+		public CCJumpToState (CCJumpBy action, CCNode target)
+			: base(action, target)
+		{ 
+			m_delta = new CCPoint(m_delta.X - m_startPosition.X, m_delta.Y - m_startPosition.Y);
+		}
+	}
+
 }
