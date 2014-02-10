@@ -4,70 +4,65 @@ namespace CocosSharp
 {
     public class CCSpeed : CCAction
     {
-        protected float m_fSpeed;
-        protected CCActionInterval m_pInnerAction;
-
-        public float Speed
-        {
-            get { return m_fSpeed; }
-            set { m_fSpeed = value; }
-        }
-
-        public override bool IsDone
-        {
-            get { return m_pInnerAction.IsDone; }
-        }
+        public float Speed { get; private set; }
+        protected internal CCActionInterval InnerAction { get; private set; }
 
 
         #region Constructors
 
         public CCSpeed(CCActionInterval action, float fRate)
         {
-            InitCCSpeed(action, fRate);
-        }
-
-        // Perform deep copy of CCSpeed
-        protected CCSpeed(CCSpeed speed) : base(speed)
-        {
-            InitCCSpeed((CCActionInterval) speed.m_pInnerAction.Copy(), speed.m_fSpeed);
-        }
-
-        private void InitCCSpeed(CCActionInterval action, float fRate)
-        {
-            Debug.Assert(action != null);
-
-            m_pInnerAction = action;
-            m_fSpeed = fRate;
+            InnerAction = action;
+            Speed = fRate;
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable zone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCSpeed(this);
+            return new CCSpeedState(this, target);
         }
 
-        protected internal override void StartWithTarget(CCNode target)
+        public virtual CCSpeed Reverse()
         {
-            base.StartWithTarget(target);
-            m_pInnerAction.StartWithTarget(target);
+            return new CCSpeed((CCActionInterval)InnerAction.Reverse(), Speed);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCSpeedState : CCActionState
+    {
+        protected CCActionIntervalState InnerActionState { get; private set; }
+
+        protected CCSpeed SpeedAction
+        {
+            get { return Action as CCSpeed; }
+        }
+
+        public override bool IsDone
+        {
+            get { return InnerActionState.IsDone; }
+        }
+
+        public CCSpeedState(CCSpeed action, CCNode target) : base(action, target)
+        {
+            InnerActionState = (CCActionIntervalState)action.InnerAction.StartAction(target);
         }
 
         public override void Stop()
         {
-            m_pInnerAction.Stop();
+            InnerActionState.Stop();
             base.Stop();
         }
 
         public override void Step(float dt)
         {
-            m_pInnerAction.Step(dt * m_fSpeed);
-        }
-
-        public virtual CCActionInterval Reverse()
-        {
-            return (CCActionInterval) (CCAction) new CCSpeed((CCActionInterval) m_pInnerAction.Reverse(), m_fSpeed);
+            InnerActionState.Step(dt * SpeedAction.Speed);
         }
     }
+
+    #endregion Action state
 }

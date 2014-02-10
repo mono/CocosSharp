@@ -1107,18 +1107,18 @@ namespace CocosSharp
 
         public override CCFiniteTimeAction Reverse()
         {
- 	         return new CCBEaseInstant((CCActionInterval)m_pInner.Reverse());
+            return new CCBEaseInstant((CCActionInterval)InnerAction.Reverse());
         }
 
         public override void Update(float time)
         {
             if (time < 0)
             {
-                m_pInner.Update(0);
+                InnerAction.Update(0);
             }
             else
             {
-                m_pInner.Update(1);
+                InnerAction.Update(1);
             }
         }
     }

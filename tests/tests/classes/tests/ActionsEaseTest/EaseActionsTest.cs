@@ -526,22 +526,15 @@ namespace tests
             var seq3_1 = new CCSequence(jump2, jump1);
             var seq3_2 = new CCSequence(rot1, rot2);
             var spawn = new CCSpawn(seq3_1, seq3_2);
-            _speedAction1 = new CCSpeed (new CCRepeatForever (spawn), 1.0f);
-            _speedAction2 = (CCSpeed)_speedAction1.Copy();
-            _speedAction3 = (CCSpeed)_speedAction1.Copy();
+
+            /* Uncomment out below parameter once CCSpawn and CCRepeatForever has action state separation */
+            _speedAction1 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 1.0f);
+            _speedAction2 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 2.0f);
+            _speedAction3 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 0.5f);
 
             m_grossini.RunAction(_speedAction1);
             m_tamara.RunAction(_speedAction2);
             m_kathia.RunAction(_speedAction3);
-
-            Schedule(altertime, 1.0f);
-        }
-
-        public void altertime(float dt)
-        {
-            _speedAction1.Speed = CCRandom.Float_0_1() * 2;
-            _speedAction2.Speed = CCRandom.Float_0_1() * 2;
-            _speedAction3.Speed = CCRandom.Float_0_1() * 2;
         }
 
         public override String title()
