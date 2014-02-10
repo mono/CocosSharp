@@ -11,26 +11,34 @@ namespace CocosSharp
         {
         }
 
-        public CCEaseSineIn(CCEaseSineIn easesineIn) : base(easesineIn)
-        {
-        }
-
         #endregion Constructors
 
 
-        public override void Update(float time)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            m_pInner.Update(CCEaseMath.SineIn(time));
+            return new CCEaseSineInState(this, target);
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCEaseSineOut((CCActionInterval) m_pInner.Reverse());
-        }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCEaseSineIn(this);
+            return new CCEaseSineOut((CCActionInterval)InnerAction.Reverse());
         }
     }
+
+
+    #region Action state
+
+    public class CCEaseSineInState : CCActionEaseState
+    {
+        public CCEaseSineInState(CCEaseSineIn action, CCNode target) : base(action, target)
+        {
+        }
+
+        public override void Update(float time)
+        {
+            InnerActionState.Update(CCEaseMath.SineIn(time));
+        }
+    }
+
+    #endregion Action state
 }

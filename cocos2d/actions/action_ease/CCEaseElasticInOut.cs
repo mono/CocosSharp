@@ -7,7 +7,7 @@ namespace CocosSharp
     {
         #region Constructors
 
-        public CCEaseElasticInOut(CCActionInterval pAction) : base(pAction, 0.3f)
+        public CCEaseElasticInOut(CCActionInterval pAction) : this(pAction, 0.3f)
         {
         }
 
@@ -15,26 +15,34 @@ namespace CocosSharp
         {
         }
 
-        protected CCEaseElasticInOut(CCEaseElasticInOut easeElasticInOut) : base(easeElasticInOut)
-        {
-        }
-
         #endregion Constructors
 
 
-        public override void Update(float time)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            m_pInner.Update(CCEaseMath.ElasticInOut(time, m_fPeriod));
+            return new CCEaseElasticInOutState(this, target);
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCEaseElasticInOut((CCActionInterval) m_pInner.Reverse(), m_fPeriod);
-        }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCEaseElasticInOut(this);
+            return new CCEaseElasticInOut((CCActionInterval)InnerAction.Reverse(), Period);
         }
     }
+
+
+    #region Action state
+
+    public class CCEaseElasticInOutState : CCEaseElasticState
+    {
+        public CCEaseElasticInOutState(CCEaseElasticInOut action, CCNode target) : base(action, target)
+        {
+        }
+
+        public override void Update(float time)
+        {
+            InnerActionState.Update(CCEaseMath.ElasticInOut(time, EaseElasticAction.Period));
+        }
+    }
+
+    #endregion Action state
 }

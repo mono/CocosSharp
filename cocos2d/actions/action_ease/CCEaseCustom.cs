@@ -4,13 +4,7 @@ namespace CocosSharp
 {
     public partial class CCEaseCustom : CCActionEase
     {
-        private Func<float, float> m_EaseFunc;
-
-        public Func<float, float> EaseFunc
-        {
-            get { return m_EaseFunc; }
-            set { m_EaseFunc = value; }
-        }
+        public Func<float, float> EaseFunc { get; private set; }
 
 
         #region Constructors
@@ -20,28 +14,39 @@ namespace CocosSharp
             EaseFunc = easeFunc;
         }
 
-        // Perform a deep copy of CCEaseCustom
-        protected CCEaseCustom(CCEaseCustom easeCustom) : base(easeCustom)
-        {
-            EaseFunc = easeCustom.EaseFunc;
-        }
-
         #endregion Constructors
 
 
-        public override void Update(float time)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            m_pInner.Update(m_EaseFunc(time));
+            return new CCEaseCustomState(this, target);
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCReverseTime(new CCEaseCustom(this));
-        }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCEaseCustom(this);
+            return new CCReverseTime(this);
         }
     }
+
+
+    #region Action state
+
+    public class CCEaseCustomState : CCActionEaseState
+    {
+        protected CCEaseCustom EaseCustomAction 
+        { 
+            get { return Action as CCEaseCustom; } 
+        }
+
+        public CCEaseCustomState(CCEaseCustom action, CCNode target) : base(action, target)
+        {
+        }
+
+        public override void Update(float time)
+        {
+            InnerActionState.Update(EaseCustomAction.EaseFunc(time));
+        }
+    }
+
+    #endregion Action state
 }

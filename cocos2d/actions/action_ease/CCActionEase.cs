@@ -2,7 +2,13 @@ namespace CocosSharp
 {
     public class CCActionEase : CCActionInterval
     {
-        protected CCActionInterval m_pInner;
+        protected internal CCActionInterval InnerAction { get; private set; }
+
+        // Take me out later - See comments in CCAction
+        public override bool HasState 
+        { 
+            get { return true; }
+        }
 
 
         #region Constructors
@@ -12,52 +18,48 @@ namespace CocosSharp
         {
         }
 
-        public CCActionInterval InnerAction
-        {
-            get { return m_pInner; }
-            private set { m_pInner = value; } 
-        }
-
         public CCActionEase(CCActionInterval pAction) : base(pAction.Duration)
         {
             InnerAction = pAction;
         }
 
-        // Perform a deep copy of CCActionEase
-        protected CCActionEase(CCActionEase actionEase) : base(actionEase)
-        {
-            InnerAction = new CCActionInterval(actionEase.m_pInner);
-        }
-
         #endregion Constructors
 
 
-        // This should be changed to DeepCopy()
-        public override object Copy(ICCCopyable pZone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCActionEase(this);
+            return new CCActionEaseState(this, target);
         }
 
-        protected internal override void StartWithTarget(CCNode target)
+        public override CCFiniteTimeAction Reverse()
         {
-            base.StartWithTarget(target);
-            m_pInner.StartWithTarget(m_pTarget);
+            return new CCActionEase((CCActionInterval)InnerAction.Reverse());
+        }
+    }
+
+
+    #region Action state
+
+    public class CCActionEaseState : CCActionIntervalState
+    {
+        protected CCActionIntervalState InnerActionState { get; private set; }
+
+        public CCActionEaseState(CCActionEase action, CCNode target) : base(action, target)
+        {
+            InnerActionState = (CCActionIntervalState)action.InnerAction.StartAction(target);
         }
 
         public override void Stop()
         {
-            m_pInner.Stop();
+            InnerActionState.Stop();
             base.Stop();
         }
 
         public override void Update(float time)
         {
-            m_pInner.Update(time);
-        }
-
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCActionEase((CCActionInterval) m_pInner.Reverse());
+            InnerActionState.Update(time);
         }
     }
+
+    #endregion Action state
 }

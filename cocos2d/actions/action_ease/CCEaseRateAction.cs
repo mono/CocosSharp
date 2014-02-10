@@ -2,44 +2,49 @@ namespace CocosSharp
 {
     public class CCEaseRateAction : CCActionEase
     {
-        protected float m_fRate;
-
-        public float Rate
-        {
-            get { return m_fRate; }
-            set { m_fRate = value; }
-        }
+        public float Rate { get; private set; }
 
 
         #region Constructors
 
         public CCEaseRateAction(CCActionInterval pAction, float fRate) : base(pAction)
         {
-            InitWithRate(fRate);
-        }
-
-        // Perform deep copy of CCEaseRateAction
-        public CCEaseRateAction(CCEaseRateAction easeRateAction) : base(easeRateAction)
-        {
-            InitWithRate(easeRateAction.m_fRate);
-        }
-
-        private void InitWithRate(float fRate)
-        {
-            m_fRate = fRate;
+            Rate = fRate;
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable pZone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCEaseRateAction(this);
+            return new CCEaseRateActionState(this, target);
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCEaseRateAction((CCActionInterval) m_pInner.Reverse(), 1 / m_fRate);
+            return new CCEaseRateAction((CCActionInterval)InnerAction.Reverse(), 1 / Rate);
         }
     }
+
+
+    #region Action state
+
+    public class CCEaseRateActionState : CCActionEaseState
+    {
+        protected CCEaseRateAction EaseRateAction 
+        { 
+            get { return Action as CCEaseRateAction; } 
+        }
+
+        public CCEaseRateActionState(CCEaseRateAction action, CCNode target) : base(action, target)
+        {
+        }
+
+        public override void Update(float time)
+        {
+            InnerActionState.Update(CCEaseMath.ExponentialOut(time));
+        }
+    }
+
+    #endregion Action state
 }

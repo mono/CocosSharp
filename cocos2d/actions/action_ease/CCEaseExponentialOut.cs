@@ -10,26 +10,34 @@ namespace CocosSharp
         {
         }
 
-        public CCEaseExponentialOut(CCEaseExponentialOut easeExponentialOut) : base(easeExponentialOut)
-        {
-        }
-
         #endregion Constructors
 
 
-        public override void Update(float time)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            m_pInner.Update(CCEaseMath.ExponentialOut(time));
+            return new CCEaseExponentialOutState(this, target);
         }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCEaseExponentialIn((CCActionInterval) m_pInner.Reverse());
-        }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCEaseExponentialOut(this);
+            return new CCEaseExponentialIn((CCActionInterval)InnerAction.Reverse());
         }
     }
+
+
+    #region Action state
+
+    public class CCEaseExponentialOutState : CCActionEaseState
+    {
+        public CCEaseExponentialOutState(CCEaseExponentialOut action, CCNode target) : base(action, target)
+        {
+        }
+
+        public override void Update(float time)
+        {
+            InnerActionState.Update(CCEaseMath.ExponentialOut(time));
+        }
+    }
+
+    #endregion Action state
 }
