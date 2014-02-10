@@ -509,6 +509,8 @@ namespace tests
 
     public class SpeedTest : EaseSpriteDemo
     {
+        CCSpeed _speedAction1, _speedAction2, _speedAction3;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -524,31 +526,22 @@ namespace tests
             var seq3_1 = new CCSequence(jump2, jump1);
             var seq3_2 = new CCSequence(rot1, rot2);
             var spawn = new CCSpawn(seq3_1, seq3_2);
-            var action = new CCSpeed (new CCRepeatForever (spawn), 1.0f);
-            action.Tag = EaseTest.kTagAction1;
+            _speedAction1 = new CCSpeed (new CCRepeatForever (spawn), 1.0f);
+            _speedAction2 = (CCSpeed)_speedAction1.Copy();
+            _speedAction3 = (CCSpeed)_speedAction1.Copy();
 
-            var action2 = (CCAction) (action.Copy());
-            var action3 = (CCAction) (action.Copy());
-
-            action2.Tag = EaseTest.kTagAction1;
-            action3.Tag = EaseTest.kTagAction1;
-
-            m_grossini.RunAction(action2);
-            m_tamara.RunAction(action3);
-            m_kathia.RunAction(action);
+            m_grossini.RunAction(_speedAction1);
+            m_tamara.RunAction(_speedAction2);
+            m_kathia.RunAction(_speedAction3);
 
             Schedule(altertime, 1.0f);
         }
 
         public void altertime(float dt)
         {
-            var action1 = (CCSpeed) (m_grossini.GetActionByTag(EaseTest.kTagAction1));
-            var action2 = (CCSpeed) (m_tamara.GetActionByTag(EaseTest.kTagAction1));
-            var action3 = (CCSpeed) (m_kathia.GetActionByTag(EaseTest.kTagAction1));
-
-            action1.Speed = CCRandom.Float_0_1() * 2;
-            action2.Speed = CCRandom.Float_0_1() * 2;
-            action3.Speed = CCRandom.Float_0_1() * 2;
+            _speedAction1.Speed = CCRandom.Float_0_1() * 2;
+            _speedAction2.Speed = CCRandom.Float_0_1() * 2;
+            _speedAction3.Speed = CCRandom.Float_0_1() * 2;
         }
 
         public override String title()
