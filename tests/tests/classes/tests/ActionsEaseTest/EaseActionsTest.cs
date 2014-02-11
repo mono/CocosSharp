@@ -509,8 +509,8 @@ namespace tests
 
     public class SpeedTest : EaseSpriteDemo
     {
-        CCSpeed _speedAction1, _speedAction2, _speedAction3;
-
+        CCSpeed speedAction1, speedAction2, speedAction3;
+       
         public override void OnEnter()
         {
             base.OnEnter();
@@ -528,13 +528,13 @@ namespace tests
             var spawn = new CCSpawn(seq3_1, seq3_2);
 
             /* Uncomment out below parameter once CCSpawn and CCRepeatForever has action state separation */
-            _speedAction1 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 1.0f);
-            _speedAction2 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 2.0f);
-            _speedAction3 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 0.5f);
+            speedAction1 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 1.0f);
+            speedAction2 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 2.0f);
+            speedAction3 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 0.5f);
 
-            m_grossini.RunAction(_speedAction1);
-            m_tamara.RunAction(_speedAction2);
-            m_kathia.RunAction(_speedAction3);
+            m_grossini.RunAction(speedAction1);
+            m_tamara.RunAction(speedAction2);
+            m_kathia.RunAction(speedAction3);
         }
 
         public override String title()

@@ -24,9 +24,9 @@ namespace CocosSharp
             return new CCSpeedState(this, target);
         }
 
-        public virtual CCSpeed Reverse()
+        public virtual CCActionInterval Reverse()
         {
-            return new CCSpeed((CCActionInterval)InnerAction.Reverse(), Speed);
+            return (CCActionInterval) (CCAction) new CCSpeed((CCActionInterval)InnerAction.Reverse(), Speed);
         }
     }
 

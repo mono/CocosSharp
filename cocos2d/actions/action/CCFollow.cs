@@ -105,8 +105,8 @@ namespace CocosSharp
 
     public class CCFollowState : CCActionState
     {
-        CCFollow.CCFollowBoundary _cachedBoundary;
-        CCPoint _cachedHalfScreenSize;
+        CCFollow.CCFollowBoundary cachedBoundary;
+        CCPoint cachedHalfScreenSize;
 
         protected CCFollow FollowAction
         {
@@ -122,8 +122,8 @@ namespace CocosSharp
         {
             // Cache these structs so we don't have to get them at each running step
             CCFollow followAction = FollowAction;
-            _cachedBoundary = followAction.Boundary;
-            _cachedHalfScreenSize = followAction.HalfScreenSize;
+            cachedBoundary = followAction.Boundary;
+            cachedHalfScreenSize = followAction.HalfScreenSize;
         }
 
         public override void Stop()
@@ -145,16 +145,16 @@ namespace CocosSharp
                     return;
                 }
 
-                CCPoint tempPos = _cachedHalfScreenSize - followedNodePos;
+                CCPoint tempPos = cachedHalfScreenSize - followedNodePos;
 
                 Target.Position = new CCPoint(
-                    MathHelper.Clamp(tempPos.X, _cachedBoundary.LeftBoundary, _cachedBoundary.RightBoundary),
-                    MathHelper.Clamp(tempPos.Y, _cachedBoundary.BottomBoundary, _cachedBoundary.TopBoundary)
+                    MathHelper.Clamp(tempPos.X, cachedBoundary.LeftBoundary, cachedBoundary.RightBoundary),
+                    MathHelper.Clamp(tempPos.Y, cachedBoundary.BottomBoundary, cachedBoundary.TopBoundary)
                 );
             }
             else
             {
-                Target.Position = _cachedHalfScreenSize - followedNodePos;
+                Target.Position = cachedHalfScreenSize - followedNodePos;
             }
         }
     }
