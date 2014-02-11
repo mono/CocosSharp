@@ -5,29 +5,38 @@ namespace CocosSharp
 {
     public class CCFollow : CCAction
     {
-        protected bool m_bBoundaryFullyCovered;
+        internal struct CCFollowBoundary
+        {
+            internal float BottomBoundary { get; private set; } 
+            internal float LeftBoundary { get; private set; }
+            internal float RightBoundary { get; private set; }  
+            internal float TopBoundary { get; private set; } 
 
-        protected bool m_bBoundarySet;
-        protected float m_fBottomBoundary;
-        protected float m_fLeftBoundary;
-        protected float m_fRightBoundary;
-        protected float m_fTopBoundary;
-        protected CCPoint m_obFullScreenSize;
-        protected CCPoint m_obHalfScreenSize;
-        protected CCNode m_pobFollowedNode;
+            internal CCFollowBoundary(float bottomB, float leftB, float rightB, float topB) : this()
+            {
+                BottomBoundary = bottomB;
+                LeftBoundary = leftB;
+                RightBoundary = rightB;
+                TopBoundary = topB;
+            }
+        }
 
         /// <summary>
         /// whether camera should be limited to certain area
         /// </summary>
-        public bool BoundarySet
-        {
-            get { return m_bBoundarySet; }
-            set { m_bBoundarySet = value; }
-        }
+        public bool BoundarySet { get; private set; }
+        public bool BoundaryFullyCovered { get; private set; }
+        internal CCFollowBoundary Boundary { get; private set; }
 
-        public override bool IsDone
-        {
-            get { return !m_pobFollowedNode.IsRunning; }
+        internal CCPoint FullScreenSize { get; private set; }
+        internal CCPoint HalfScreenSize { get; private set; }
+
+        protected internal CCNode FollowedNode { get; private set; }
+
+        // Take me out later - See comments in CCAction
+        public override bool HasState 
+        { 
+            get { return true; }
         }
 
 
@@ -35,96 +44,120 @@ namespace CocosSharp
 
         public CCFollow(CCNode followedNode, CCRect rect)
         {
-            InitWithTarget(followedNode, rect);
-        }
+            Debug.Assert(followedNode != null);
 
-        protected CCFollow(CCFollow follow) : base(follow)
-        {
-            m_nTag = follow.m_nTag;
-        }
-
-        private void InitWithTarget(CCNode pFollowedNode, CCRect rect)
-        {
-            Debug.Assert(pFollowedNode != null);
-
-            m_pobFollowedNode = pFollowedNode;
+            FollowedNode = followedNode;
             if (rect.Equals(CCRect.Zero))
             {
-                m_bBoundarySet = false;
+                BoundarySet = false;
             }
             else
             {
-                m_bBoundarySet = true;
+                BoundarySet = true;
             }
 
-            m_bBoundaryFullyCovered = false;
+            BoundaryFullyCovered = false;
 
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            m_obFullScreenSize = (CCPoint) winSize;
-            m_obHalfScreenSize = m_obFullScreenSize * 0.5f;
+            FullScreenSize = (CCPoint)winSize;
+            HalfScreenSize = FullScreenSize * 0.5f;
 
-            if (m_bBoundarySet)
+            if (BoundarySet)
             {
-                m_fLeftBoundary = -((rect.Origin.X + rect.Size.Width) - m_obFullScreenSize.X);
-                m_fRightBoundary = -rect.Origin.X;
-                m_fTopBoundary = -rect.Origin.Y;
-                m_fBottomBoundary = -((rect.Origin.Y + rect.Size.Height) - m_obFullScreenSize.Y);
+                float leftBoundary = -((rect.Origin.X + rect.Size.Width) - FullScreenSize.X);
+                float rightBoundary = -rect.Origin.X;
+                float topBoundary = -rect.Origin.Y;
+                float bottomBoundary = -((rect.Origin.Y + rect.Size.Height) - FullScreenSize.Y);
 
-                if (m_fRightBoundary < m_fLeftBoundary)
+                if (rightBoundary < leftBoundary)
                 {
                     // screen width is larger than world's boundary width
                     //set both in the middle of the world
-                    m_fRightBoundary = m_fLeftBoundary = (m_fLeftBoundary + m_fRightBoundary) / 2;
+                    rightBoundary = leftBoundary = (leftBoundary + rightBoundary) / 2;
                 }
-                if (m_fTopBoundary < m_fBottomBoundary)
+                if (topBoundary < bottomBoundary)
                 {
                     // screen width is larger than world's boundary width
                     //set both in the middle of the world
-                    m_fTopBoundary = m_fBottomBoundary = (m_fTopBoundary + m_fBottomBoundary) / 2;
+                    topBoundary = bottomBoundary = (topBoundary + bottomBoundary) / 2;
                 }
 
-                if ((m_fTopBoundary == m_fBottomBoundary) && (m_fLeftBoundary == m_fRightBoundary))
+                if ((topBoundary == bottomBoundary) && (leftBoundary == rightBoundary))
                 {
-                    m_bBoundaryFullyCovered = true;
+                    BoundaryFullyCovered = true;
                 }
+
+                Boundary = new CCFollowBoundary(bottomBoundary, leftBoundary, rightBoundary, topBoundary);
             }
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable zone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCFollow(this);
+            return new CCFollowState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCFollowState : CCActionState
+    {
+        CCFollow.CCFollowBoundary _cachedBoundary;
+        CCPoint _cachedHalfScreenSize;
+
+        protected CCFollow FollowAction
+        {
+            get { return Action as CCFollow; }
         }
 
-        public override void Step(float dt)
+        public override bool IsDone
         {
-            if (m_bBoundarySet)
-            {
-                // whole map fits inside a single screen, no need to modify the position - unless map boundaries are increased
-                if (m_bBoundaryFullyCovered)
-                {
-                    return;
-                }
+            get { return !FollowAction.FollowedNode.IsRunning; }
+        }
 
-                CCPoint tempPos = m_obHalfScreenSize - m_pobFollowedNode.Position;
-
-                m_pTarget.Position = new CCPoint(
-                    MathHelper.Clamp(tempPos.X, m_fLeftBoundary, m_fRightBoundary),
-                    MathHelper.Clamp(tempPos.Y, m_fBottomBoundary, m_fTopBoundary)
-                    );
-            }
-            else
-            {
-                m_pTarget.Position = m_obHalfScreenSize - m_pobFollowedNode.Position;
-            }
+        public CCFollowState(CCFollow action, CCNode target) : base(action, target)
+        {
+            // Cache these structs so we don't have to get them at each running step
+            CCFollow followAction = FollowAction;
+            _cachedBoundary = followAction.Boundary;
+            _cachedHalfScreenSize = followAction.HalfScreenSize;
         }
 
         public override void Stop()
         {
-            m_pTarget = null;
+            Target = null;
             base.Stop();
         }
+
+        public override void Step(float dt)
+        {
+            CCFollow followAction = FollowAction;
+            CCPoint followedNodePos = followAction.FollowedNode.Position;
+
+            if (followAction.BoundarySet)
+            {
+                // whole map fits inside a single screen, no need to modify the position - unless map boundaries are increased
+                if (followAction.BoundaryFullyCovered)
+                {
+                    return;
+                }
+
+                CCPoint tempPos = _cachedHalfScreenSize - followedNodePos;
+
+                Target.Position = new CCPoint(
+                    MathHelper.Clamp(tempPos.X, _cachedBoundary.LeftBoundary, _cachedBoundary.RightBoundary),
+                    MathHelper.Clamp(tempPos.Y, _cachedBoundary.BottomBoundary, _cachedBoundary.TopBoundary)
+                );
+            }
+            else
+            {
+                Target.Position = _cachedHalfScreenSize - followedNodePos;
+            }
+        }
     }
+
+    #endregion Action state
 }
