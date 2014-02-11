@@ -5,9 +5,6 @@ namespace CocosSharp
     public class CCBezierBy : CCActionInterval
     {
 		public CCBezierConfig BezierConfig { get; private set; }
-//		protected CCPoint StartPosition { get; set; }
-//		protected CCPoint PreviousPosition { get; set; }
-
 
         #region Constructors
 
