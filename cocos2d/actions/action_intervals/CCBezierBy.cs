@@ -4,88 +4,94 @@ namespace CocosSharp
 {
     public class CCBezierBy : CCActionInterval
     {
-        protected CCBezierConfig m_sConfig;
-        protected CCPoint m_startPosition;
-        protected CCPoint m_previousPosition;
+		public CCBezierConfig BezierConfig { get; private set; }
+//		protected CCPoint StartPosition { get; set; }
+//		protected CCPoint PreviousPosition { get; set; }
 
 
         #region Constructors
 
-        public CCBezierBy(float t, CCBezierConfig c) : base(t)
+        public CCBezierBy(float t, CCBezierConfig config) : base(t)
         {
-            InitCCBezierBy(c);
+			BezierConfig = config;
         }
 
-        // Perform a deep copy of CCBezierBy
-        protected CCBezierBy(CCBezierBy bezierBy) : base(bezierBy)
-        {
-            InitCCBezierBy(bezierBy.m_sConfig);
-        }
-
-        private void InitCCBezierBy(CCBezierConfig c)
-        {
-            m_sConfig = c;
-        }
 
         #endregion Constructors
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCBezierByState (this, target);
 
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCBezierBy(this);
-        }
+		}
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_previousPosition = m_startPosition = target.Position;
-        }
-
-        public override void Update(float time)
-        {
-            if (m_pTarget != null)
-            {
-                float xa = 0;
-                float xb = m_sConfig.ControlPoint1.X;
-                float xc = m_sConfig.ControlPoint2.X;
-                float xd = m_sConfig.EndPosition.X;
-
-                float ya = 0;
-                float yb = m_sConfig.ControlPoint1.Y;
-                float yc = m_sConfig.ControlPoint2.Y;
-                float yd = m_sConfig.EndPosition.Y;
-
-                float x = CCSplineMath.CubicBezier(xa, xb, xc, xd, time);
-                float y = CCSplineMath.CubicBezier(ya, yb, yc, yd, time);
-
-                CCPoint currentPos = m_pTarget.Position;
-                CCPoint diff = currentPos - m_previousPosition;
-                m_startPosition = m_startPosition + diff;
-        
-                CCPoint newPos = m_startPosition + new CCPoint(x, y);
-                m_pTarget.Position = newPos;
-
-                m_previousPosition = newPos;
-            }
-        }
+		public override bool HasState {
+			get {
+				return true;
+			}
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
-            CCBezierConfig r;
+			CCBezierConfig r;
 
-            r.EndPosition = -m_sConfig.EndPosition;
-            r.ControlPoint1 = m_sConfig.ControlPoint2 + -m_sConfig.EndPosition;
-            r.ControlPoint2 = m_sConfig.ControlPoint1 + -m_sConfig.EndPosition;
+            r.EndPosition = -BezierConfig.EndPosition;
+            r.ControlPoint1 = BezierConfig.ControlPoint2 + -BezierConfig.EndPosition;
+            r.ControlPoint2 = BezierConfig.ControlPoint1 + -BezierConfig.EndPosition;
 
             var action = new CCBezierBy(m_fDuration, r);
             return action;
         }
     }
 
-    public struct CCBezierConfig
+	public class CCBezierByState : CCActionIntervalState
+	{
+		protected CCBezierConfig BezierConfig { get; set; }
+		protected CCPoint StartPosition { get; set; }
+		protected CCPoint PreviousPosition { get; set; }
+
+
+		public CCBezierByState (CCBezierBy action, CCNode target)
+			: base(action, target)
+		{ 
+			BezierConfig = action.BezierConfig;
+			PreviousPosition = StartPosition = target.Position;
+		}
+
+		public override void Update(float time)
+		{
+			if (Target != null)
+			{
+				float xa = 0;
+				float xb = BezierConfig.ControlPoint1.X;
+				float xc = BezierConfig.ControlPoint2.X;
+				float xd = BezierConfig.EndPosition.X;
+
+				float ya = 0;
+				float yb = BezierConfig.ControlPoint1.Y;
+				float yc = BezierConfig.ControlPoint2.Y;
+				float yd = BezierConfig.EndPosition.Y;
+
+				float x = CCSplineMath.CubicBezier(xa, xb, xc, xd, time);
+				float y = CCSplineMath.CubicBezier(ya, yb, yc, yd, time);
+
+				CCPoint currentPos = Target.Position;
+				CCPoint diff = currentPos - PreviousPosition;
+				StartPosition = StartPosition + diff;
+
+				CCPoint newPos = StartPosition + new CCPoint(x, y);
+				Target.Position = newPos;
+
+				PreviousPosition = newPos;
+			}
+		}
+
+	}
+
+	public struct CCBezierConfig
     {
-        public CCPoint ControlPoint1;
-        public CCPoint ControlPoint2;
-        public CCPoint EndPosition;
+		public CCPoint ControlPoint1;
+		public CCPoint ControlPoint2;
+		public CCPoint EndPosition;
     }
 }

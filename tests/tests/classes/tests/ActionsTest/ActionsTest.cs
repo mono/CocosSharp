@@ -724,9 +724,9 @@ namespace tests
             var actionUp = new CCJumpBy (2, new CCPoint(0, 0), 80, 4);
             var actionByBack = actionBy.Reverse();
 
-            m_tamara.RunAction(actionTo);
-            m_grossini.RunAction(new CCSequence(actionBy, actionByBack));
-            m_kathia.RunAction(new CCRepeatForever (actionUp));
+			m_tamara.RunAction (actionTo);
+			m_grossini.RunActions (actionBy, actionByBack);
+			m_kathia.RunForever (actionUp);
         }
 
         public override string subtitle()
@@ -751,19 +751,19 @@ namespace tests
             centerSprites(3);
 
             // sprite 1
-            CCBezierConfig bezier;
+			CCBezierConfig bezier;
             bezier.ControlPoint1 = new CCPoint(0, s.Height / 2);
             bezier.ControlPoint2 = new CCPoint(300, -s.Height / 2);
             bezier.EndPosition = new CCPoint(300, 100);
 
             var bezierForward = new CCBezierBy (3, bezier);
             var bezierBack = bezierForward.Reverse();
-            var rep = new CCRepeatForever ((CCActionInterval)new CCSequence(bezierForward, bezierBack));
+            var rep = new CCRepeatForever (bezierForward, bezierBack);
 
 
             // sprite 2
             m_tamara.Position = new CCPoint(80, 160);
-            CCBezierConfig bezier2;
+			CCBezierConfig bezier2;
             bezier2.ControlPoint1 = new CCPoint(100, s.Height / 2);
             bezier2.ControlPoint2 = new CCPoint(200, -s.Height / 2);
             bezier2.EndPosition = new CCPoint(240, 160);
@@ -1689,7 +1689,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // sprite 1
-            CCBezierConfig bezier;
+			CCBezierConfig bezier;
             bezier.ControlPoint1 = new CCPoint(0, s.Height / 2);
             bezier.ControlPoint2 = new CCPoint(300, -s.Height / 2);
             bezier.EndPosition = new CCPoint(300, 100);

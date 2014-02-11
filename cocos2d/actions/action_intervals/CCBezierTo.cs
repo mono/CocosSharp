@@ -4,28 +4,36 @@ namespace CocosSharp
     {
         #region Constructors
 
-        public CCBezierTo(float t, CCBezierConfig c) : base(t, c)
-        {
-        }
-
-        protected CCBezierTo(CCBezierTo bezierTo) : base(bezierTo)
-        {
-        }
+        public CCBezierTo(float t, CCBezierConfig c) 
+			: base(t, c)
+        { }
 
         #endregion Constructors
 
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_sConfig.ControlPoint1 = (m_sConfig.ControlPoint1 - m_startPosition);
-            m_sConfig.ControlPoint2 = (m_sConfig.ControlPoint2 - m_startPosition);
-            m_sConfig.EndPosition = (m_sConfig.EndPosition - m_startPosition);
-        }
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCBezierToState (this, target);
 
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCBezierTo(this);
-        }
+		}
+
     }
+
+	public class CCBezierToState : CCBezierByState
+	{
+
+		public CCBezierToState (CCBezierBy action, CCNode target)
+			: base(action, target)
+		{ 
+			var config = BezierConfig;
+
+			config.ControlPoint1 -= StartPosition;
+			config.ControlPoint2 -= StartPosition;
+			config.EndPosition -= StartPosition;
+
+			BezierConfig = config;
+		}
+
+	}
+
 }
