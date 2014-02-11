@@ -821,8 +821,8 @@ namespace tests
             var action2 = new CCFadeOut  (1.0f);
             var action2Back = action2.Reverse();
 
-            m_tamara.RunAction(new CCSequence(action1, action1Back));
-            m_kathia.RunAction(new CCSequence(action2, action2Back));
+			m_tamara.RunActions(action1, action1Back);
+			m_kathia.RunActions(action2, action2Back);
         }
 
         public override string subtitle()
@@ -843,8 +843,8 @@ namespace tests
             var action2 = new CCTintBy (2, -127, -255, -127);
             var action2Back = action2.Reverse();
 
-            m_tamara.RunAction(action1);
-            m_kathia.RunAction(new CCSequence(action2, action2Back));
+			m_tamara.RunAction(action1);
+			m_kathia.RunActions (action2, action2Back);
         }
 
         public override string subtitle()
