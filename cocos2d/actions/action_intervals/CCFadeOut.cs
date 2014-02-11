@@ -8,30 +8,42 @@
         {
         }
 
-        protected CCFadeOut(CCFadeOut fadeOut) : base(fadeOut)
-        {
-        }
-
         #endregion Constructors
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCFadeOutState (this, target);
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCFadeOut(this);
-        }
+		}
 
-        public override void Update(float time)
-        {
-            var pRGBAProtocol = m_pTarget as ICCColor;
-            if (pRGBAProtocol != null)
-            {
-                pRGBAProtocol.Opacity = (byte) (255 * (1 - time));
-            }
-        }
+		// Take me out later - See comments in CCAction
+		public override bool HasState 
+		{ 
+			get { return true; }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCFadeIn(m_fDuration);
+            return new CCFadeIn(Duration);
         }
     }
+
+	public class CCFadeOutState : CCActionIntervalState
+	{
+
+		public CCFadeOutState (CCFadeOut action, CCNode target)
+			: base(action, target)
+		{	}
+
+		public override void Update(float time)
+		{
+			var pRGBAProtocol = Target as ICCColor;
+			if (pRGBAProtocol != null)
+			{
+				pRGBAProtocol.Opacity = (byte) (255 * (1 - time));
+			}
+		}
+
+	}
+
 }
