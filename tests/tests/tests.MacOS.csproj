@@ -2471,6 +2471,17 @@
     <Content Include="Content\hd\Images\bugs\circle.xnb" />
     <Content Include="Content\hd\Images\bugs\picture.xnb" />
     <Content Include="Content\hd\Images\bugs\test_issue_1179.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_04.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_05.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_06.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_07.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_08.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_09.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_10.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_11.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_12.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_13.xnb" />
+    <Content Include="Content\hd\Images\grossini_dance_14.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
