@@ -1545,12 +1545,10 @@ namespace tests
             centerSprites(2);
 
             var jump1 = new CCJumpBy (2, CCPoint.Zero, 100, 3);
-            var jump2 = (CCJumpBy) jump1.Copy();
             var rot1 = new CCRotateBy (1, 360);
-            var rot2 = (CCRotateBy) rot1.Copy();
 
-            var t1 = new CCTargetedAction (m_kathia, jump2);
-            var t2 = new CCTargetedAction (m_kathia, rot2);
+			var t1 = new CCTargetedAction (m_kathia, jump1);
+			var t2 = new CCTargetedAction (m_kathia, rot1);
 
 
             var seq = new CCSequence(jump1, t1, rot1, t2);

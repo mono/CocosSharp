@@ -246,7 +246,8 @@ namespace CocosSharp
 			var state = action.StartAction (target);
 			element.ActionStates.Add (state);
 
-            action.StartWithTarget(target);
+			if (state == null)
+            	action.StartWithTarget(target);
         }
 
         public void RemoveAllActions()

@@ -1,61 +1,76 @@
 namespace CocosSharp
 {
-    public class CCTargetedAction : CCActionInterval
-    {
-        protected CCFiniteTimeAction m_pAction;
-        protected CCNode m_pForcedTarget;
+	public class CCTargetedAction : CCActionInterval
+	{
+		public CCFiniteTimeAction TargetedAction { get; private set; }
+		public CCNode ForcedTarget { get; private set; }
 
-        public CCNode ForcedTarget
-        {
-            get { return m_pForcedTarget; }
-        }
+		#region Constructors
+
+		public CCTargetedAction(CCNode target, CCFiniteTimeAction pAction) : base(pAction.Duration)
+		{
+			ForcedTarget = target;
+			TargetedAction = pAction;
+		}
+
+		#endregion Constructors
+
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCTargetedActionState (this, target);
+
+		}
+
+		// Take me out later - See comments in CCAction
+		public override bool HasState 
+		{ 
+			get { return true; }
+		}
+
+		public override CCFiniteTimeAction Reverse()
+		{
+			return new CCTargetedAction(ForcedTarget, TargetedAction.Reverse());
+		}
+	}
+
+	public class CCTargetedActionState : CCActionIntervalState
+	{
+		protected CCFiniteTimeAction TargetedAction { get; set; }
+		protected CCFiniteTimeActionState ActionState { get; set; }
+		protected CCNode ForcedTarget { get; set; }
+
+		public CCTargetedActionState (CCTargetedAction action, CCNode target)
+			: base(action, target)
+		{	
+
+			ForcedTarget = action.ForcedTarget;
+			TargetedAction = action.TargetedAction;
+
+			if (!TargetedAction.HasState)
+				TargetedAction.StartWithTarget(ForcedTarget);
+			else
+				ActionState = (CCFiniteTimeActionState)TargetedAction.StartAction(ForcedTarget);
+
+		}
+
+		public override void Stop()
+		{
+
+			if (!TargetedAction.HasState)
+				TargetedAction.Stop();
+			else
+				ActionState.Stop();
+		}
+
+		public override void Update(float time)
+		{
+			if (!TargetedAction.HasState)
+				TargetedAction.Update(time);
+			else
+				ActionState.Update(time);
+		}
 
 
-        #region Constructors
+	}
 
-        public CCTargetedAction(CCNode target, CCFiniteTimeAction pAction) : base(pAction.Duration)
-        {
-            InitCCTargetedAction(target, pAction);
-        }
-
-        public CCTargetedAction(CCTargetedAction targetedAction) : base(targetedAction)
-        {
-            InitCCTargetedAction(targetedAction.m_pForcedTarget, new CCFiniteTimeAction(targetedAction.m_pAction));
-        }
-
-        private void InitCCTargetedAction(CCNode target, CCFiniteTimeAction pAction)
-        {
-            m_pForcedTarget = target;
-            m_pAction = pAction;
-        }
-
-        #endregion Constructors
-
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCTargetedAction(this);
-        }
-
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_pAction.StartWithTarget(m_pForcedTarget);
-        }
-
-        public override void Stop()
-        {
-            m_pAction.Stop();
-        }
-
-        public override void Update(float time)
-        {
-            m_pAction.Update(time);
-        }
-
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCTargetedAction(m_pForcedTarget, m_pAction.Reverse());
-        }
-    }
 }
