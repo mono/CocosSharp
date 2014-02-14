@@ -360,17 +360,32 @@ namespace CocosSharp
             if (m_pTargets.TryGetValue(target, out element))
             {
                 int limit = element.Actions.Count;
+				bool tagFound = false;
+
                 for (int i = 0; i < limit; i++)
                 {
                     CCAction action = element.Actions[i];
 
-                    if (action.Tag == tag && action.OriginalTarget == target)
-                    {
-                        RemoveActionAtIndex(i, element);
-                        break;
-                    }
+					if (action.HasState) 
+					{
+						if (action.Tag == tag && element.ActionStates[i].OriginalTarget == target) {
+							RemoveActionAtIndex (i, element);
+							tagFound = true;
+							break;
+						}
+					} 
+					else 
+					{
+						if (action.Tag == tag && action.OriginalTarget == target) {
+							RemoveActionAtIndex (i, element);
+							tagFound = true;
+							break;
+						}
+					}
                 }
-                CCLog.Log("cocos2d : removeActionByTag: Tag " + tag + " not found");
+
+				if (!tagFound)
+                	CCLog.Log("cocos2d : removeActionByTag: Tag " + tag + " not found");
             }
             else
             {
@@ -382,8 +397,12 @@ namespace CocosSharp
         {
             Debug.Assert(tag != (int) CCActionTag.Invalid);
 
+			// Early out if we do not have any targets to search
+			if (m_pTargets.Count == 0)
+				return null;
+
             HashElement element;
-            if (m_pTargets.TryGetValue(target, out element))
+			if (m_pTargets.TryGetValue(target, out element))
             {
                 if (element.Actions != null)
                 {
