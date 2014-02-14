@@ -726,7 +726,7 @@ namespace tests
 
 			m_tamara.RunAction (actionTo);
 			m_grossini.RunActions (actionBy, actionByBack);
-			m_kathia.RunForever (actionUp);
+			m_kathia.RepeatForever (actionUp);
         }
 
         public override string subtitle()
@@ -1292,15 +1292,12 @@ namespace tests
             alignSpritesLeft(2);
 
             var a1 = new CCMoveBy (1, new CCPoint(150, 0));
-            var action1 = new CCRepeat (
-                new CCSequence(new CCPlace(new CCPoint(60, 60)), a1),
-                3);
-            var action2 = new CCRepeatForever (
-                (new CCSequence(a1, a1.Reverse()))
-                );
 
-            m_kathia.RunAction(action1);
-			m_tamara.RunAction(action2);
+			// Repeat 3 times the Move to position (CCPlace) and then the MoveBy
+			m_kathia.Repeat(3, new CCPlace(new CCPoint(60, 60)), a1);
+
+			// Repeat forever the MoveBy
+			m_tamara.RepeatForever(a1, a1.Reverse());
         }
 
         public override string subtitle()
