@@ -356,6 +356,10 @@ namespace CocosSharp
             Debug.Assert((tag != (int) CCActionTag.Invalid));
             Debug.Assert(target != null);
 
+			// Early out if we do not have any targets to search
+			if (m_pTargets.Count == 0)
+				return;
+
             HashElement element;
             if (m_pTargets.TryGetValue(target, out element))
             {
