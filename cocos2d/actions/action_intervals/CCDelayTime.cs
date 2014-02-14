@@ -8,25 +8,36 @@
         {
         }
 
-        protected CCDelayTime(CCDelayTime delayTime) : base(delayTime)
-        {
-        }
-
         #endregion Constructors
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCDelayTimeState (this, target);
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCDelayTime(this);
-        }
+		}
 
-        public override void Update(float time)
-        {
-        }
+		// Take me out later - See comments in CCAction
+		public override bool HasState 
+		{ 
+			get { return true; }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
             return new CCDelayTime(m_fDuration);
         }
     }
+
+	public class CCDelayTimeState : CCActionIntervalState
+	{
+
+		public CCDelayTimeState (CCDelayTime action, CCNode target)
+			: base(action, target)
+		{ }
+
+		public override void Update(float time)
+		{
+		}
+
+	}
 }
