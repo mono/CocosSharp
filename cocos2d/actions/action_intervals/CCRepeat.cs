@@ -49,69 +49,6 @@ namespace CocosSharp
 			get { return true; }
 		}
 
-
-//        protected internal override void StartWithTarget(CCNode target)
-//        {
-//            Total = 0;
-//            m_fNextDt = InnerAction.Duration / m_fDuration;
-//            base.StartWithTarget(target);
-//            InnerAction.StartWithTarget(target);
-//        }
-//
-//        public override void Stop()
-//        {
-//            InnerAction.Stop();
-//            base.Stop();
-//        }
-//
-//        // issue #80. Instead of hooking step:, hook update: since it can be called by any 
-//        // container action like Repeat, Sequence, AccelDeccel, etc..
-//        public override void Update(float dt)
-//        {
-//            if (dt >= m_fNextDt)
-//            {
-//                while (dt > m_fNextDt && Total < Times)
-//                {
-//                    InnerAction.Update(1.0f);
-//                    Total++;
-//
-//                    InnerAction.Stop();
-//                    InnerAction.StartWithTarget(m_pTarget);
-//                    m_fNextDt += InnerAction.Duration / m_fDuration;
-//                }
-//
-//                // fix for issue #1288, incorrect end value of repeat
-//                if (dt >= 1.0f && Total < Times)
-//                {
-//                    Total++;
-//                }
-//
-//                // don't set an instant action back or update it, it has no use because it has no duration
-//                if (!m_bActionInstant)
-//                {
-//                    if (Total == Times)
-//                    {
-//                        InnerAction.Update(1f);
-//                        InnerAction.Stop();
-//                    }
-//                    else
-//                    {
-//                        // issue #390 prevent jerk, use right update
-//                        InnerAction.Update(dt - (m_fNextDt - InnerAction.Duration / m_fDuration));
-//                    }
-//                }
-//            }
-//            else
-//            {
-//                InnerAction.Update((dt * Times) % 1.0f);
-//            }
-//        }
-//
-//        public override bool IsDone
-//        {
-//            get { return Total == Times; }
-//        }
-
         public override CCFiniteTimeAction Reverse()
         {
             return new CCRepeat(InnerAction.Reverse(), Times);

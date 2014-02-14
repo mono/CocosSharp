@@ -31,11 +31,6 @@
 			get { return true; }
 		}
 
-//        protected internal override void StartWithTarget(CCNode target)
-//        {
-//            base.StartWithTarget(target);
-//            m_pTarget.Position = Position;
-//        }
     }
 
 	public class CCPlaceState : CCFiniteTimeActionState
