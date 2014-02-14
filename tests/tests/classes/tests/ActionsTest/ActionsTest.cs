@@ -21,7 +21,7 @@ namespace tests
         ACTION_BLINK_LAYER,
         ACTION_FADE_LAYER,
         ACTION_TINT_LAYER,
-        ACTION_ANIMATE_LAYER,
+		//ACTION_ANIMATE_LAYER,
         ACTION_SEQUENCE_LAYER,
         ACTION_SEQUENCE2_LAYER,
         ACTION_SPAWN_LAYER,
@@ -108,9 +108,9 @@ namespace tests
                 case (int) ActionTest.ACTION_TINT_LAYER:
                     pLayer = new ActionTint();
                     break;
-                case (int) ActionTest.ACTION_ANIMATE_LAYER:
-                    pLayer = new ActionAnimate();
-                    break;
+//                case (int) ActionTest.ACTION_ANIMATE_LAYER:
+//                    pLayer = new ActionAnimate();
+//                    break;
                 case (int) ActionTest.ACTION_SEQUENCE_LAYER:
                     pLayer = new ActionSequence();
                     break;
@@ -1147,9 +1147,9 @@ namespace tests
 
             var act1 = new CCRotateTo (1, 90);
             var act2 = new CCRotateTo (1, 0);
-            var seq = (new CCSequence(act1, act2));
-            var rep1 = new CCRepeatForever ((CCActionInterval)seq);
-            var rep2 = new CCRepeat ((CCFiniteTimeAction)(seq.Copy()), 10);
+            var seq = new CCSequence(act1, act2);
+            var rep1 = new CCRepeatForever (seq);
+            var rep2 = new CCRepeat (seq, 10);
 
             m_tamara.RunAction(rep1);
             m_kathia.RunAction(rep2);
@@ -1296,11 +1296,11 @@ namespace tests
                 new CCSequence(new CCPlace(new CCPoint(60, 60)), a1),
                 3);
             var action2 = new CCRepeatForever (
-                (new CCSequence((CCActionInterval) (a1.Copy()), a1.Reverse()))
+                (new CCSequence(a1, a1.Reverse()))
                 );
 
             m_kathia.RunAction(action1);
-            m_tamara.RunAction(action2);
+			m_tamara.RunAction(action2);
         }
 
         public override string subtitle()
