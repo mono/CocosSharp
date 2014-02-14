@@ -4,52 +4,76 @@ namespace CocosSharp
 {
     public class CCReverseTime : CCActionInterval
     {
-        protected CCFiniteTimeAction m_pOther;
-
+		public CCFiniteTimeAction Other { get; private set; }
 
         #region Constructors
 
         public CCReverseTime(CCFiniteTimeAction action) : base(action.Duration)
         {
-            m_pOther = action;
-        }
-
-        protected CCReverseTime(CCReverseTime copy) : base(copy)
-        {
-            m_pOther = new CCFiniteTimeAction(copy.m_pOther);
+            Other = action;
         }
 
         #endregion Constructors
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCReverseTimeState (this, target);
 
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCReverseTime(this);
-        }
+		}
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_pOther.StartWithTarget(target);
-        }
-
-        public override void Stop()
-        {
-            m_pOther.Stop();
-            base.Stop();
-        }
-
-        public override void Update(float time)
-        {
-            if (m_pOther != null)
-            {
-                m_pOther.Update(1 - time);
-            }
-        }
+		// Take me out later - See comments in CCAction
+		public override bool HasState 
+		{ 
+			get { return true; }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
-            return m_pOther.Copy() as CCFiniteTimeAction;
+            return Other;
         }
     }
+
+	public class CCReverseTimeState : CCActionIntervalState
+	{
+
+		protected CCFiniteTimeAction Other { get; set; }
+		protected CCFiniteTimeActionState OtherState { get; set; }
+
+		public CCReverseTimeState (CCReverseTime action, CCNode target)
+			: base(action, target)
+		{	
+			Other = action.Other;
+			if (!Other.HasState) {
+				//action.StartWithTarget (target);
+				Other.StartWithTarget (target);
+			} 
+			else 
+			{
+				OtherState = (CCFiniteTimeActionState) Other.StartAction (target);
+			}
+		}
+
+		public override void Stop()
+		{
+			if (!Other.HasState) {
+				Other.Stop ();
+				//Action.Stop ();
+			} else {
+				OtherState.Stop ();
+			}
+		}
+
+		public override void Update(float time)
+		{
+			if (Other != null)
+			{
+				if (!Other.HasState)
+					Other.Update (1 - time);
+				else
+					OtherState.Update (1 - time);
+			}
+		}
+
+	}
+
 }
