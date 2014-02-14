@@ -125,16 +125,16 @@ namespace CocosSharp
 
 		public virtual void Step(float dt)
 		{
-			#if DEBUG
-			CCLog.Log("[Action step]. override me");
-			#endif
+#if DEBUG
+			CCLog.Log("[Action State step]. override me");
+#endif
 		}
 
 		public virtual void Update(float time)
 		{
-			#if DEBUG
-			CCLog.Log("[Action update]. override me");
-			#endif
+#if DEBUG
+			CCLog.Log("[Action State update]. override me");
+#endif
 		}
 	}
 }
