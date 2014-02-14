@@ -53,6 +53,7 @@ namespace CocosSharp
     {
         public static SurfaceFormat DefaultAlphaPixelFormat = SurfaceFormat.Color;
         public static bool OptimizeForPremultipliedAlpha = true;
+        public static bool DefaultIsAntialiased = true;
 
         private CCTextureCacheInfo m_CacheInfo;
         private Texture2D m_Texture2D;
@@ -73,7 +74,7 @@ namespace CocosSharp
         public CCTexture2D()
         {
             m_samplerState = SamplerState.LinearClamp;
-            IsAntialiased = true;  // We will set this to true by default
+            IsAntialiased = DefaultIsAntialiased;
 
             RefreshAntialiasSetting ();
         }
