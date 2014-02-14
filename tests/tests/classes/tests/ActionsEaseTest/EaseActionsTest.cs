@@ -527,14 +527,13 @@ namespace tests
             var seq3_2 = new CCSequence(rot1, rot2);
             var spawn = new CCSpawn(seq3_1, seq3_2);
 
-            /* Uncomment out below parameter once CCSpawn and CCRepeatForever has action state separation */
-            speedAction1 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 1.0f);
-            speedAction2 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 2.0f);
-            speedAction3 = new CCSpeed(seq3_1 /*new CCRepeatForever (spawn)*/, 0.5f);
+            speedAction1 = new CCSpeed(new CCRepeatForever (spawn), 1.0f);
+            speedAction2 = new CCSpeed(new CCRepeatForever (spawn), 2.0f);
+            speedAction3 = new CCSpeed(new CCRepeatForever (spawn), 0.5f);
 
             m_grossini.RunAction(speedAction1);
-            m_tamara.RunAction(speedAction2);
-            m_kathia.RunAction(speedAction3);
+			m_tamara.RunAction(speedAction2);
+			m_kathia.RunAction(speedAction3);
         }
 
         public override String title()
@@ -577,7 +576,7 @@ namespace tests
             {
                 case 0:
                     return new SpriteEase();
-                case 1:
+				case 1:
                     return new SpriteEaseInOut();
                 case 2:
                     return new SpriteEaseExponential();
@@ -599,7 +598,7 @@ namespace tests
                     return new SpriteEaseBack();
                 case 11:
                     return new SpriteEaseBackInOut();
-                case 12:
+				case 12:
                     return new SpeedTest();
             }
             return null;
