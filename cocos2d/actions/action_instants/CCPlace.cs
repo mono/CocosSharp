@@ -12,6 +12,11 @@
             Position = pos;
         }
 
+		public CCPlace(int posX, int posY)
+		{
+			Position = new CCPoint (posX, posY);
+		}
+
         #endregion Constructors
 
 		protected internal override CCActionState StartAction (CCNode target)
