@@ -50,7 +50,7 @@ namespace CocosSharp
 
                         m_pCurrentTarget.CurrentActionSalvaged = false;
 
-						if (m_pCurrentTarget.CurrentActionState != null) 
+						if (m_pCurrentTarget.CurrentAction.HasState) 
 						{
 							m_pCurrentTarget.CurrentActionState.Step (dt);
 
@@ -63,10 +63,10 @@ namespace CocosSharp
 							} else if (m_pCurrentTarget.CurrentActionState.IsDone) {
 								m_pCurrentTarget.CurrentActionState.Stop ();
 
-								CCAction action = m_pCurrentTarget.CurrentAction;
+								CCActionState actionState = m_pCurrentTarget.CurrentActionState;
 								// Make currentAction nil to prevent removeAction from salvaging it.
 								m_pCurrentTarget.CurrentAction = null;
-								RemoveAction (action);
+								RemoveAction (actionState);
 							}
 
 						} 
@@ -243,11 +243,12 @@ namespace CocosSharp
             Debug.Assert(!element.Actions.Contains(action));
             element.Actions.Add(action);
 
-			var state = action.StartAction (target);
-			element.ActionStates.Add (state);
-
-			if (state == null)
-            	action.StartWithTarget(target);
+			if (action.HasState) {
+				var state = action.StartAction (target);
+				element.ActionStates.Add (state);
+			} else {
+					action.StartWithTarget (target);
+			}
         }
 
         public void RemoveAllActions()

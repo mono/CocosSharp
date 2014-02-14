@@ -31,7 +31,7 @@ namespace CocosSharp
       
 		protected internal override CCActionState StartAction (CCNode target)
 		{
-			return null;//new CCFinateTimeActionState (this, target);
+			return null; //new CCFiniteTimeActionState (this, target);
 
 		}
 

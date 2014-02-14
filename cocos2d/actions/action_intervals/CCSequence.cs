@@ -131,8 +131,6 @@ namespace CocosSharp
 				else
 					actionStates[last].Stop();
 			}
-
-			base.Stop();
 		}
 
 		public override void Step(float dt)
