@@ -23,7 +23,7 @@ namespace tests
 			var orbit = new CCOrbitCamera(5, 1, 2, 0, 180, 0, -90);
 			var orbit_back = orbit.Reverse();
 
-			_bgNode.RunForever(orbit, orbit_back);
+			_bgNode.RepeatForever(orbit, orbit_back);
 			_bgNode.RunActions(lens, delay, reuse, waves);
         }
 

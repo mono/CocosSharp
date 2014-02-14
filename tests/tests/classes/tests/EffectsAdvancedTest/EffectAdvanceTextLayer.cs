@@ -48,7 +48,7 @@ namespace tests
 
 			var sc = new CCScaleBy(2, 5);
 			var sc_back = sc.Reverse();
-			grossini.RunForever (sc, sc_back);
+			grossini.RepeatForever (sc, sc_back);
 
 			_target2 = new CCNode ();
 			_target2.AnchorPoint = CCPoint.AnchorMiddle;
@@ -65,7 +65,7 @@ namespace tests
 
 			var sc2 = new CCScaleBy(2, 5);
 			var sc2_back = sc2.Reverse();
-			tamara.RunForever(sc2, sc2_back);
+			tamara.RepeatForever(sc2, sc2_back);
 
 			var label = new CCLabelTTF(title(), "arial", 28);
 

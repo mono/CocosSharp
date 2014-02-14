@@ -19,13 +19,13 @@ namespace tests
 			var waves = new CCWaves(5, new CCGridSize(15, 10), 5, 20, true, false);
 			var shaky = new CCShaky3D(5, new CCGridSize(15, 10), 4, false);
 
-			grossini.RunForever(waves);
-			tamara.RunForever(shaky);
+			grossini.RepeatForever(waves);
+			tamara.RepeatForever(shaky);
 
             // moving background. Testing issue #244
 			var move = new CCMoveBy (3, new CCPoint(200, 0));
 
-			_bgNode.RunForever(move, move.Reverse());
+			_bgNode.RepeatForever(move, move.Reverse());
         }
 
         public override string title()

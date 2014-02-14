@@ -31,7 +31,7 @@ namespace tests
 			AddChild(layer2Node, 1);
 			layer2Node.AddChild (layer2);
 
-			layer2Node.RunForever(effect);
+			layer2Node.RepeatForever(effect);
         }
 
         public override string title()
