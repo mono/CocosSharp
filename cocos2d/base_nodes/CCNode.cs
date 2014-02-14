@@ -1312,13 +1312,24 @@ namespace CocosSharp
             }
         }
 
-		public CCAction RunForever (params CCFiniteTimeAction[] actions)
+		public CCAction Repeat (uint times, params CCFiniteTimeAction[] actions)
+		{
+			return RunAction (new CCRepeat (new CCSequence(actions), times));
+
+		}
+
+		public CCAction Repeat (uint times, CCActionInterval action)
+		{
+			return RunAction (new CCRepeat (action, times));
+		}
+
+		public CCAction RepeatForever (params CCFiniteTimeAction[] actions)
 		{
 			return RunAction (new CCRepeatForever (actions));
 
 		}
 
-		public CCAction RunForever (CCActionInterval action)
+		public CCAction RepeatForever (CCActionInterval action)
 		{
 			return RunAction (new CCRepeatForever (action));
 		}
